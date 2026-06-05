@@ -17,6 +17,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { Route } from "next";
+import {
+  ComingSoonGlass,
+  ComingSoonCard,
+} from "@/components/coming-soon/ComingSoonGlass";
 
 export const metadata: Metadata = {
   title: "Compare · QG Intelligence",
@@ -67,245 +71,164 @@ const INDICATORS: IndicatorRow[] = [
 
 export default async function ComparePage() {
   return (
-    <div
-      style={{
-        position: "relative",
-        height: "100%",
-        overflow: "hidden",
-        background: "var(--qgi-bg)",
-        color: "var(--qgi-text)",
-      }}
-    >
-      {/* ── Blurred professional-mockup backdrop ──────────────────────────── */}
-      <div
-        aria-hidden="true"
-        style={{
-          filter: "blur(8px) saturate(1.15)",
-          pointerEvents: "none",
-          userSelect: "none",
-          height: "100%",
-          padding: "32px 48px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "22px",
-        }}
-      >
-        {/* §1 — Hero band: huge flags + big country names + compound score */}
-        <section
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr auto 1fr",
-            gap: "32px",
-            alignItems: "center",
-            background: "var(--qgi-surface)",
-            border: "1px solid var(--qgi-border)",
-            borderRadius: "10px",
-            padding: "28px 40px",
-            minHeight: "180px",
-          }}
-        >
-          <CountryHero
-            name="UNITED STATES"
-            iso="USA"
-            iso2="us"
-            compound={47}
-            litCount={12}
-            accent={USA}
-            align="left"
-          />
-          <div
+    <ComingSoonGlass
+      backdrop={
+        <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
+          {/* §1 — Hero band: huge flags + big country names + compound score */}
+          <section
             style={{
-              fontSize: "44px",
-              fontWeight: 800,
-              letterSpacing: "4px",
-              color: "var(--qgi-text-dim)",
-              fontFamily: "ui-monospace, monospace",
+              display: "grid",
+              gridTemplateColumns: "1fr auto 1fr",
+              gap: "32px",
+              alignItems: "center",
+              background: "var(--qgi-surface)",
+              border: "1px solid var(--qgi-border)",
+              borderRadius: "10px",
+              padding: "28px 40px",
+              minHeight: "180px",
             }}
           >
-            VS
-          </div>
-          <CountryHero
-            name="CHINA"
-            iso="CHN"
-            iso2="cn"
-            compound={73}
-            litCount={18}
-            accent={CHN}
-            align="right"
-          />
-        </section>
+            <CountryHero
+              name="UNITED STATES"
+              iso="USA"
+              iso2="us"
+              compound={47}
+              litCount={12}
+              accent={USA}
+              align="left"
+            />
+            <div
+              style={{
+                fontSize: "44px",
+                fontWeight: 800,
+                letterSpacing: "4px",
+                color: "var(--qgi-text-dim)",
+                fontFamily: "ui-monospace, monospace",
+              }}
+            >
+              VS
+            </div>
+            <CountryHero
+              name="CHINA"
+              iso="CHN"
+              iso2="cn"
+              compound={73}
+              litCount={18}
+              accent={CHN}
+              align="right"
+            />
+          </section>
 
-        {/* §2 — Recipe matchup bars (full-width strip) */}
-        <section
-          style={{
-            background: "var(--qgi-surface)",
-            border: "1px solid var(--qgi-border)",
-            borderRadius: "10px",
-            padding: "24px 32px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "14px",
-            flex: 1,
-            minHeight: 0,
-          }}
-        >
-          <PanelHeader
-            eyebrow="§01 · Shared trend matchup"
-            title="Where the two countries diverge most"
-          />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "10px",
-              flex: 1,
-              minHeight: 0,
-            }}
-          >
-            {MATCHUP.map((m) => (
-              <RecipeMatchupRow key={m.recipe} row={m} />
-            ))}
-          </div>
-        </section>
-
-        {/* §3 — Bottom strip: indicator face-off + 3 stat tiles */}
-        <section
-          style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 1.5fr) minmax(0, 1fr)",
-            gap: "20px",
-          }}
-        >
-          {/* Left: indicator face-off panel */}
-          <div
+          {/* §2 — Recipe matchup bars (full-width strip) */}
+          <section
             style={{
               background: "var(--qgi-surface)",
               border: "1px solid var(--qgi-border)",
               borderRadius: "10px",
-              padding: "20px 28px 22px",
+              padding: "24px 32px",
               display: "flex",
               flexDirection: "column",
-              gap: "12px",
+              gap: "14px",
+              flex: 1,
+              minHeight: 0,
             }}
           >
             <PanelHeader
-              eyebrow="§02 · Indicator face-off"
-              title="Drivers behind the gap"
+              eyebrow="§01 · Shared trend matchup"
+              title="Where the two countries diverge most"
             />
-            <div style={{ display: "flex", flexDirection: "column", gap: "9px" }}>
-              {INDICATORS.map((ind) => (
-                <IndicatorFaceOffRow key={ind.name} row={ind} />
-              ))}
-            </div>
-          </div>
-
-          {/* Right: 3 stat tiles stacked */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateRows: "1fr 1fr 1fr",
-              gap: "12px",
-            }}
-          >
-            <StatTile
-              label="Trends both match"
-              big="9"
-              caption="shared catalog entries lit"
-              accent={GREEN}
-            />
-            <StatTile
-              label="Compound risk gap"
-              big="+26"
-              caption="China leads on a bounded 0-100 scale"
-              accent={CHN}
-            />
-            <StatTile
-              label="Historical analogue overlap"
-              big="4 / 7"
-              caption="four shared historical pre-event matches"
-              accent={PURPLE}
-            />
-          </div>
-        </section>
-      </div>
-
-      {/* ── Coming-soon overlay ────────────────────────────────────────────── */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "24px",
-          background: "rgba(11, 18, 27, 0.55)",
-        }}
-      >
-        <section
-          data-tour="compare-coming-soon"
-          aria-labelledby="compare-lockdown-heading"
-          style={{
-            background: "var(--qgi-surface)",
-            border: "1px solid var(--qgi-border)",
-            borderLeft: "3px solid var(--qgi-accent)",
-            borderRadius: "8px",
-            padding: "30px 34px",
-            maxWidth: "540px",
-            width: "100%",
-            boxShadow: "0 24px 64px rgba(0, 0, 0, 0.55)",
-            textAlign: "left",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "10px",
-              letterSpacing: "3.5px",
-              textTransform: "uppercase",
-              color: "var(--qgi-accent)",
-              fontFamily: "ui-monospace, monospace",
-              marginBottom: "12px",
-            }}
-          >
-            Coming soon
-          </div>
-          <h1
-            id="compare-lockdown-heading"
-            style={{
-              fontSize: "23px",
-              fontWeight: 600,
-              lineHeight: 1.25,
-              margin: "0 0 12px",
-              color: "var(--qgi-text)",
-            }}
-          >
-            Side-by-side country comparison
-          </h1>
-          <p
-            style={{
-              fontSize: "13.5px",
-              lineHeight: 1.6,
-              color: "var(--qgi-text-muted)",
-              margin: 0,
-            }}
-          >
-            We&apos;re currently working on making it possible for you to compare
-            countries to one another. Same trends, same metrics, side by side. Until then,
-            you can compare any country to its closest historical analogue via
-            <Link
-              href={"/analogues" as Route}
+            <div
               style={{
-                color: "var(--qgi-accent)",
-                textDecoration: "none",
-                marginLeft: "5px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                flex: 1,
+                minHeight: 0,
               }}
             >
-              Analogues
-            </Link>
-            .
-          </p>
-        </section>
-      </div>
-    </div>
+              {MATCHUP.map((m) => (
+                <RecipeMatchupRow key={m.recipe} row={m} />
+              ))}
+            </div>
+          </section>
+
+          {/* §3 — Bottom strip: indicator face-off + 3 stat tiles */}
+          <section
+            style={{
+              display: "grid",
+              gridTemplateColumns: "minmax(0, 1.5fr) minmax(0, 1fr)",
+              gap: "20px",
+            }}
+          >
+            {/* Left: indicator face-off panel */}
+            <div
+              style={{
+                background: "var(--qgi-surface)",
+                border: "1px solid var(--qgi-border)",
+                borderRadius: "10px",
+                padding: "20px 28px 22px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "12px",
+              }}
+            >
+              <PanelHeader
+                eyebrow="§02 · Indicator face-off"
+                title="Drivers behind the gap"
+              />
+              <div style={{ display: "flex", flexDirection: "column", gap: "9px" }}>
+                {INDICATORS.map((ind) => (
+                  <IndicatorFaceOffRow key={ind.name} row={ind} />
+                ))}
+              </div>
+            </div>
+
+            {/* Right: 3 stat tiles stacked */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateRows: "1fr 1fr 1fr",
+                gap: "12px",
+              }}
+            >
+              <StatTile
+                label="Trends both match"
+                big="9"
+                caption="shared catalog entries lit"
+                accent={GREEN}
+              />
+              <StatTile
+                label="Compound risk gap"
+                big="+26"
+                caption="China leads on a bounded 0-100 scale"
+                accent={CHN}
+              />
+              <StatTile
+                label="Historical analogue overlap"
+                big="4 / 7"
+                caption="four shared historical pre-event matches"
+                accent={PURPLE}
+              />
+            </div>
+          </section>
+        </div>
+      }
+    >
+      <ComingSoonCard title="Side-by-side country comparison">
+        <p style={{ margin: 0 }}>
+          We&apos;re currently working on making it possible for you to compare countries
+          to one another. Same trends, same metrics, side by side. Until then, you can
+          compare any country to its closest historical analogue via{" "}
+          <Link
+            href={"/analogues" as Route}
+            style={{ color: "var(--qgi-accent)", textDecoration: "none" }}
+          >
+            Analogues
+          </Link>
+          .
+        </p>
+      </ComingSoonCard>
+    </ComingSoonGlass>
   );
 }
 

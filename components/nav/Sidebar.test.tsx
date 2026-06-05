@@ -30,7 +30,8 @@ describe("Sidebar", () => {
     expect(screen.getByText("Risk Board")).toBeInTheDocument();
     expect(screen.getByText("Compare")).toBeInTheDocument();
     expect(screen.getByText("Analogues")).toBeInTheDocument();
-    expect(screen.getByText("Patterns")).toBeInTheDocument();
+    // 2026-06-05: "Patterns" retired (replaced by Analogues); nav entry removed.
+    expect(screen.queryByText("Patterns")).not.toBeInTheDocument();
     expect(screen.queryByText("Nearest Analog")).not.toBeInTheDocument();
     expect(screen.queryByText("Recipe Tracker")).not.toBeInTheDocument();
     expect(screen.queryByText("Compound Risk")).not.toBeInTheDocument();

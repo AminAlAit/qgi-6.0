@@ -143,6 +143,20 @@ const nextConfig: NextConfig = {
    */
   async redirects() {
     return [
+      // 2026-06-05 (founder): /patterns retired from the public surface; the
+      // Analogue is its replacement. The route files + SCDI/pattern code are
+      // kept (saved), but every /patterns URL now redirects to /analogues.
+      // Placed first so it supersedes the older /patterns/* rules below.
+      {
+        source: "/patterns",
+        destination: "/analogues",
+        permanent: true,
+      },
+      {
+        source: "/patterns/:path*",
+        destination: "/analogues",
+        permanent: true,
+      },
       // 2026-05-31 (founder): /landing-v2 promoted to the homepage "/".
       // Preserve any links to the old staging URL.
       {
@@ -246,12 +260,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/patterns-merged",
-        destination: "/patterns",
+        destination: "/analogues",
         permanent: true,
       },
       {
         source: "/patterns-merged/:slug*",
-        destination: "/patterns/:slug*",
+        destination: "/analogues",
         permanent: true,
       },
 
