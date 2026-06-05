@@ -196,11 +196,20 @@ const nextConfig: NextConfig = {
       // (catalog ledger) was deleted; its AUC column reborn as the per-card
       // Confidence badge on /trends. Bookmarks preserved here.
       // NOTE: /blog/recipe-tracker is a SEPARATE route (the audience-facing
-      // program-update blog post) — it lives on and must NOT be caught by
-      // this redirect. We use an exact source string, not a prefix wildcard.
+      // status-board blog post) — it has its own exact redirect below; this
+      // exact source string deliberately does not catch it.
       {
         source: "/recipe-tracker",
         destination: "/trends",
+        permanent: true,
+      },
+
+      // 2026-06-05 (founder): the status-board blog post renamed to match
+      // the site-wide Trends vocabulary — /blog/recipe-tracker is now
+      // /blog/trend-tracker. Exact source; other /blog/* slugs unaffected.
+      {
+        source: "/blog/recipe-tracker",
+        destination: "/blog/trend-tracker",
         permanent: true,
       },
 
@@ -210,9 +219,8 @@ const nextConfig: NextConfig = {
       // deliberately scoped to the /recipes path only:
       //   - "/recipes"        — the gallery
       //   - "/recipes/:path*" — detail pages (e.g. /recipes/foreign_intervention)
-      // They do NOT match /api/recipes (different prefix), /recipe-tracker
-      // (handled above, no trailing "s"), or /blog/recipe-tracker (the blog
-      // post, which keeps its slug).
+      // They do NOT match /api/recipes (different prefix), /recipe-tracker,
+      // or /blog/recipe-tracker (both handled above with exact sources).
       {
         source: "/recipes",
         destination: "/trends",

@@ -1,13 +1,20 @@
 {
-  "generated": "2026-05-23",
+  "generated": "2026-06-05",
   "schema": "recipe-tracker-v1",
+  "vintage_current": "te-fleet-run-2",
   "n_recipes": 71,
   "status_counts": {
     "graduated": 0,
     "in_progress": 0,
     "live_legacy": 3,
-    "walked_no_graduation": 4,
-    "queued": 64
+    "walked_no_graduation": 41,
+    "queued": 27
+  },
+  "tier_counts": {
+    "validated": 0,
+    "directional": 9,
+    "experimental": 35,
+    "queued": 27
   },
   "recipes": [
     {
@@ -18,13 +25,38 @@
       "l1_color": "#7B5EE6",
       "l2_label": "Electoral Politics",
       "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
       "description_compelling": "A national vote, scheduled or sudden, that puts continued rule of an incumbent regime on the line. Years before the ballot, you'll see media independence, judicial autonomy, and political-rights metrics start to shift. Common in countries oscillating between liberalization and rollback, where the line between a referendum and a regime test is thin.",
       "stats": {
-        "loco_auc": 0.7085,
+        "loco_auc": 0.656,
+        "ci95_lo": 0.6363,
+        "ci95_hi": 0.6766,
         "window_y": 3,
         "n_indicators": 4,
-        "verdict": "Did not hold up"
-      }
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "f-ml-1-poc-2026-05",
+          "loco_auc": 0.7085,
+          "window_y": 3,
+          "n_indicators": 4,
+          "verdict": "Did not hold up"
+        },
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.656,
+          "ci95_lo": 0.6363,
+          "ci95_hi": 0.6766,
+          "window_y": 3,
+          "n_indicators": 4,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "government_formation",
@@ -33,8 +65,32 @@
       "l1_label": "Political Power",
       "l1_color": "#7B5EE6",
       "l2_label": "Government Formation",
-      "status": "queued",
-      "description_compelling": "A new cabinet takes office or a sitting one falls — through election, coalition collapse, or constitutional succession. Watch party-fragmentation indices, parliamentary deadlock metrics, and electoral-system stress in the year before. Coalition-heavy parliamentary democracies and presidential systems with narrow majorities throw this signal most often."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "A new cabinet takes office or a sitting one falls — through election, coalition collapse, or constitutional succession. Watch party-fragmentation indices, parliamentary deadlock metrics, and electoral-system stress in the year before. Coalition-heavy parliamentary democracies and presidential systems with narrow majorities throw this signal most often.",
+      "stats": {
+        "loco_auc": 0.5794,
+        "ci95_lo": 0.5442,
+        "ci95_hi": 0.6095,
+        "window_y": 18,
+        "n_indicators": 2,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.5794,
+          "ci95_lo": 0.5442,
+          "ci95_hi": 0.6095,
+          "window_y": 18,
+          "n_indicators": 2,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "constitutional_change",
@@ -43,8 +99,32 @@
       "l1_label": "Political Power",
       "l1_color": "#7B5EE6",
       "l2_label": "Constitutional Change",
-      "status": "queued",
-      "description_compelling": "A formal rewrite or significant amendment to a country's foundational law — term limits redrawn, presidential powers expanded, or a new constitution adopted wholesale. Judicial constraints, legislative independence, and executive-power indices typically drift for years before the legal change. Frequent in young democracies and in mature autocracies looking to extend incumbency."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "A formal rewrite or significant amendment to a country's foundational law — term limits redrawn, presidential powers expanded, or a new constitution adopted wholesale. Judicial constraints, legislative independence, and executive-power indices typically drift for years before the legal change. Frequent in young democracies and in mature autocracies looking to extend incumbency.",
+      "stats": {
+        "loco_auc": 0.5916,
+        "ci95_lo": 0.553,
+        "ci95_hi": 0.6323,
+        "window_y": 18,
+        "n_indicators": 2,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.5916,
+          "ci95_lo": 0.553,
+          "ci95_hi": 0.6323,
+          "window_y": 18,
+          "n_indicators": 2,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "decentralization_and_federalism",
@@ -54,6 +134,8 @@
       "l1_color": "#7B5EE6",
       "l2_label": "Constitutional Change",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "Power moves down — fiscal authority, policing, or administrative competence transferred from the center to regions or municipalities. Federal-balance scores, regional-revenue shares, and intergovernmental-conflict measures usually begin shifting first. Common in post-conflict settlements and in large, ethnically diverse states pressured to devolve."
     },
     {
@@ -63,8 +145,32 @@
       "l1_label": "Political Power",
       "l1_color": "#7B5EE6",
       "l2_label": "Democratic Transition",
-      "status": "queued",
-      "description_compelling": "An authoritarian or hybrid regime opens up — competitive elections return, civil liberties rebound, the press relaxes. Electoral democracy indices and free-and-fair-election scores climb steadily across a half-decade or more. Look for it in post-revolutionary states, post-junta openings, and elite-pact transitions."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "An authoritarian or hybrid regime opens up — competitive elections return, civil liberties rebound, the press relaxes. Electoral democracy indices and free-and-fair-election scores climb steadily across a half-decade or more. Look for it in post-revolutionary states, post-junta openings, and elite-pact transitions.",
+      "stats": {
+        "loco_auc": 0.6967,
+        "ci95_lo": 0.6584,
+        "ci95_hi": 0.7345,
+        "window_y": 7,
+        "n_indicators": 5,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6967,
+          "ci95_lo": 0.6584,
+          "ci95_hi": 0.7345,
+          "window_y": 7,
+          "n_indicators": 5,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "executive_power_consolidation",
@@ -73,8 +179,32 @@
       "l1_label": "Political Power",
       "l1_color": "#7B5EE6",
       "l2_label": "Executive Power Consolidation",
-      "status": "queued",
-      "description_compelling": "Power moves up — courts neutered, parliament sidelined, opposition jailed, term limits scrapped. Judicial and legislative-constraint indices fall in a coordinated arc over years. The pattern fits backsliding democracies and consolidating autocracies; it preceded the Hungarian, Turkish, and Venezuelan transformations."
+      "status": "walked_no_graduation",
+      "tier": "directional",
+      "audience": "in_play",
+      "description_compelling": "Power moves up — courts neutered, parliament sidelined, opposition jailed, term limits scrapped. Judicial and legislative-constraint indices fall in a coordinated arc over years. The pattern fits backsliding democracies and consolidating autocracies; it preceded the Hungarian, Turkish, and Venezuelan transformations.",
+      "stats": {
+        "loco_auc": 0.7816,
+        "ci95_lo": 0.714,
+        "ci95_hi": 0.8351,
+        "window_y": 7,
+        "n_indicators": 9,
+        "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+        "tier_label_user_facing": "Directional"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "directional",
+          "loco_auc": 0.7816,
+          "ci95_lo": 0.714,
+          "ci95_hi": 0.8351,
+          "window_y": 7,
+          "n_indicators": 9,
+          "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+          "tier_label_user_facing": "Directional"
+        }
+      ]
     },
     {
       "recipe_id": "military_coup",
@@ -83,8 +213,32 @@
       "l1_label": "Political Power",
       "l1_color": "#7B5EE6",
       "l2_label": "Military Coup",
-      "status": "queued",
-      "description_compelling": "An armed seizure of executive power — tanks at the palace, broadcasters off air, the constitution suspended by communiqué. Legitimacy-of-leadership metrics, military-civilian balance, and political-stability scores usually trend down for several years first. Concentrated in Sahel states, post-colonial fragments, and any government that loses elite legitimacy without losing formal office."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "An armed seizure of executive power — tanks at the palace, broadcasters off air, the constitution suspended by communiqué. Legitimacy-of-leadership metrics, military-civilian balance, and political-stability scores usually trend down for several years first. Concentrated in Sahel states, post-colonial fragments, and any government that loses elite legitimacy without losing formal office.",
+      "stats": {
+        "loco_auc": 0.6858,
+        "ci95_lo": 0.6321,
+        "ci95_hi": 0.7377,
+        "window_y": 25,
+        "n_indicators": 5,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6858,
+          "ci95_lo": 0.6321,
+          "ci95_hi": 0.7377,
+          "window_y": 25,
+          "n_indicators": 5,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "transitional_justice",
@@ -93,8 +247,32 @@
       "l1_label": "Political Power",
       "l1_color": "#7B5EE6",
       "l2_label": "Transitional Justice",
-      "status": "queued",
-      "description_compelling": "A country reckons with past atrocities — truth commissions, lustration laws, war-crimes tribunals, reparations programs. Rule-of-law indices, judicial-independence scores, and post-conflict mobility metrics typically climb in tandem. Appears after civil wars end, after dictatorships fall, and (rarely) inside still-fragile transitions hoping to forestall the next round."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "A country reckons with past atrocities — truth commissions, lustration laws, war-crimes tribunals, reparations programs. Rule-of-law indices, judicial-independence scores, and post-conflict mobility metrics typically climb in tandem. Appears after civil wars end, after dictatorships fall, and (rarely) inside still-fragile transitions hoping to forestall the next round.",
+      "stats": {
+        "loco_auc": 0.7205,
+        "ci95_lo": 0.6647,
+        "ci95_hi": 0.7693,
+        "window_y": 25,
+        "n_indicators": 5,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.7205,
+          "ci95_lo": 0.6647,
+          "ci95_hi": 0.7693,
+          "window_y": 25,
+          "n_indicators": 5,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "peacekeeping_and_peace_process",
@@ -103,8 +281,32 @@
       "l1_label": "Political Power",
       "l1_color": "#7B5EE6",
       "l2_label": "Peacekeeping & Peace Process",
-      "status": "queued",
-      "description_compelling": "An active armed conflict moves toward formal settlement — ceasefires hold, mediators arrive, foreign troops monitor, a power-sharing draft circulates. Battle-deaths, refugee-flow, and political-stability scores ease for a year or two before the deal is signed. Typical of long-running civil conflicts where both sides have hit a hurting stalemate."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "An active armed conflict moves toward formal settlement — ceasefires hold, mediators arrive, foreign troops monitor, a power-sharing draft circulates. Battle-deaths, refugee-flow, and political-stability scores ease for a year or two before the deal is signed. Typical of long-running civil conflicts where both sides have hit a hurting stalemate.",
+      "stats": {
+        "loco_auc": 0.675,
+        "ci95_lo": 0.626,
+        "ci95_hi": 0.7229,
+        "window_y": 15,
+        "n_indicators": 3,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.675,
+          "ci95_lo": 0.626,
+          "ci95_hi": 0.7229,
+          "window_y": 15,
+          "n_indicators": 3,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "interstate_war",
@@ -113,8 +315,32 @@
       "l1_label": "Conflict & Violence",
       "l1_color": "#E64545",
       "l2_label": "Interstate War",
-      "status": "queued",
-      "description_compelling": "Two or more sovereign states exchange sustained military force across a recognized border — air strikes, ground formations, naval engagements. Sovereignty indices, physical-violence indices, and battle-death trajectories all spike. Rarer than civil war in absolute terms but heavily concentrated in disputed-border regions and rival-power flashpoints."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "Two or more sovereign states exchange sustained military force across a recognized border — air strikes, ground formations, naval engagements. Sovereignty indices, physical-violence indices, and battle-death trajectories all spike. Rarer than civil war in absolute terms but heavily concentrated in disputed-border regions and rival-power flashpoints.",
+      "stats": {
+        "loco_auc": 0.7087,
+        "ci95_lo": 0.6242,
+        "ci95_hi": 0.7794,
+        "window_y": 18,
+        "n_indicators": 4,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.7087,
+          "ci95_lo": 0.6242,
+          "ci95_hi": 0.7794,
+          "window_y": 18,
+          "n_indicators": 4,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "civil_war_and_insurgency",
@@ -124,11 +350,36 @@
       "l1_color": "#E64545",
       "l2_label": "Civil War & Insurgency",
       "status": "live_legacy",
+      "tier": "experimental",
+      "audience": "prior_version",
       "description_compelling": "An organized armed group challenges the state for territory or control, producing sustained combat and mass displacement. Years out, you see regulatory-quality scores, ethnic-power-balance measures, and per-capita-growth metrics drift downward together. Recurrent in weak-state belts: the Sahel, the Horn, parts of South and Southeast Asia.",
       "stats": {
-        "loco_auc": 0.7786,
-        "verdict": "Did not hold up under re-validation"
-      }
+        "loco_auc": 0.6882,
+        "ci95_lo": 0.6522,
+        "ci95_hi": 0.7216,
+        "window_y": 12,
+        "n_indicators": 4,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "f-ml-1-poc-2026-05",
+          "loco_auc": 0.7786,
+          "verdict": "Did not hold up under re-validation"
+        },
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6882,
+          "ci95_lo": 0.6522,
+          "ci95_hi": 0.7216,
+          "window_y": 12,
+          "n_indicators": 4,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "terrorist_attack",
@@ -138,15 +389,40 @@
       "l1_color": "#E64545",
       "l2_label": "Terrorism & Extremism",
       "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
       "description_compelling": "A non-state armed actor strikes a civilian or symbolic target — a bombing, a hostage taking, a coordinated raid — to coerce policy or signal capacity. Watch civil-liberty restrictions, political-violence indices, and refugee-origin numbers for the multi-year build-up. The signal lights up most around active insurgencies, border-spillover zones, and states with deeply uneven security coverage.",
       "stats": {
-        "loco_auc": 0.8862,
-        "v1_separation_pp": 8.5,
-        "v4_oot_recall": 0.0,
+        "loco_auc": 0.6278,
+        "ci95_lo": 0.5858,
+        "ci95_hi": 0.665,
         "window_y": 3,
-        "n_indicators": 6,
-        "verdict": "Marginal: did not hold up"
-      }
+        "n_indicators": 2,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "f-ml-1-poc-2026-05",
+          "loco_auc": 0.8862,
+          "v1_separation_pp": 8.5,
+          "v4_oot_recall": 0.0,
+          "window_y": 3,
+          "n_indicators": 6,
+          "verdict": "Marginal: did not hold up"
+        },
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6278,
+          "ci95_lo": 0.5858,
+          "ci95_hi": 0.665,
+          "window_y": 3,
+          "n_indicators": 2,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "foreign_intervention",
@@ -156,17 +432,42 @@
       "l1_color": "#E64545",
       "l2_label": "Foreign Military Intervention",
       "status": "walked_no_graduation",
+      "tier": "directional",
+      "audience": "in_play",
       "description_compelling": "A foreign state deploys military force inside another sovereign territory — direct combat, contracted irregulars, or a coercive presence sustained over months. Regulatory quality, gender-distributed power, and fiscal-capacity scores drift downward across nearly two decades before the boots arrive. The countries that match best are weak states adjacent to great-power rivalries.",
       "stats": {
-        "loco_auc": 0.9147,
-        "v1_separation_pp": 25.8,
-        "v4_oot_recall": 0.867,
-        "window_y": 18,
-        "n_indicators": 4,
-        "blog_url": "/blog/foreign-intervention-graduation",
-        "verdict": "On hold pending re-validation",
-        "n_countries_scored": 68
-      }
+        "loco_auc": 0.7227,
+        "ci95_lo": 0.6572,
+        "ci95_hi": 0.7733,
+        "window_y": 25,
+        "n_indicators": 5,
+        "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+        "tier_label_user_facing": "Directional"
+      },
+      "vintages": [
+        {
+          "vintage": "f-ml-1-poc-2026-05",
+          "loco_auc": 0.9147,
+          "v1_separation_pp": 25.8,
+          "v4_oot_recall": 0.867,
+          "window_y": 18,
+          "n_indicators": 4,
+          "blog_url": "/blog/foreign-intervention-graduation",
+          "verdict": "Vacated (sample-truncation leak, 2026-05-25)",
+          "n_countries_scored": 68
+        },
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "directional",
+          "loco_auc": 0.7227,
+          "ci95_lo": 0.6572,
+          "ci95_hi": 0.7733,
+          "window_y": 25,
+          "n_indicators": 5,
+          "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+          "tier_label_user_facing": "Directional"
+        }
+      ]
     },
     {
       "recipe_id": "ethnic_and_communal_conflict",
@@ -175,8 +476,32 @@
       "l1_label": "Conflict & Violence",
       "l1_color": "#E64545",
       "l2_label": "Ethnic & Communal Violence",
-      "status": "queued",
-      "description_compelling": "Organized violence between ethnic, religious, or communal groups — riots, pogroms, low-intensity sectarian war — producing fatalities and displacement. Group-power inequalities, equal-protection indices, and refugee-origin counts move first. The pattern is strongest in plural societies where one group dominates institutions and another contests them."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "Organized violence between ethnic, religious, or communal groups — riots, pogroms, low-intensity sectarian war — producing fatalities and displacement. Group-power inequalities, equal-protection indices, and refugee-origin counts move first. The pattern is strongest in plural societies where one group dominates institutions and another contests them.",
+      "stats": {
+        "loco_auc": 0.6986,
+        "ci95_lo": 0.6214,
+        "ci95_hi": 0.7648,
+        "window_y": 21,
+        "n_indicators": 2,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6986,
+          "ci95_lo": 0.6214,
+          "ci95_hi": 0.7648,
+          "window_y": 21,
+          "n_indicators": 2,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "political_violence",
@@ -185,8 +510,32 @@
       "l1_label": "Conflict & Violence",
       "l1_color": "#E64545",
       "l2_label": "Political Violence",
-      "status": "queued",
-      "description_compelling": "Targeted violence against political actors — assassinations, party-office firebombings, activist disappearances, election-day attacks. Physical-violence indices, freedom-from-killings scores, and civil-society repression measures all degrade in the years before. Common in polarized democracies and in autocracies during contested successions."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "Targeted violence against political actors — assassinations, party-office firebombings, activist disappearances, election-day attacks. Physical-violence indices, freedom-from-killings scores, and civil-society repression measures all degrade in the years before. Common in polarized democracies and in autocracies during contested successions.",
+      "stats": {
+        "loco_auc": 0.6301,
+        "ci95_lo": 0.5888,
+        "ci95_hi": 0.6719,
+        "window_y": 3,
+        "n_indicators": 2,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6301,
+          "ci95_lo": 0.5888,
+          "ci95_hi": 0.6719,
+          "window_y": 3,
+          "n_indicators": 2,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "political_repression",
@@ -195,8 +544,32 @@
       "l1_label": "Governance & Rights",
       "l1_color": "#E68F29",
       "l2_label": "Political Repression",
-      "status": "queued",
-      "description_compelling": "The state turns its tools on its critics — journalists detained, NGOs deregistered, opposition leaders barred, protests dispersed. Civil-liberty scores, party-ban indices, and judicial-independence measures decline in coordination. The pattern matches consolidating autocracies and democracies sliding toward majoritarian hard rule."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "The state turns its tools on its critics — journalists detained, NGOs deregistered, opposition leaders barred, protests dispersed. Civil-liberty scores, party-ban indices, and judicial-independence measures decline in coordination. The pattern matches consolidating autocracies and democracies sliding toward majoritarian hard rule.",
+      "stats": {
+        "loco_auc": 0.6847,
+        "ci95_lo": 0.6447,
+        "ci95_hi": 0.7232,
+        "window_y": 10,
+        "n_indicators": 5,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6847,
+          "ci95_lo": 0.6447,
+          "ci95_hi": 0.7232,
+          "window_y": 10,
+          "n_indicators": 5,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "political_corruption",
@@ -205,8 +578,32 @@
       "l1_label": "Governance & Rights",
       "l1_color": "#E68F29",
       "l2_label": "Political Corruption",
-      "status": "queued",
-      "description_compelling": "Office is converted into income — kickbacks, no-bid contracts, ghost employees, capital flight by senior officials — at a scale that distorts the public budget. Executive-corruption indices, control-of-corruption scores, and neopatrimonialism measures climb together over many years. Concentrated in resource-rich autocracies and weak-institution democracies."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "Office is converted into income — kickbacks, no-bid contracts, ghost employees, capital flight by senior officials — at a scale that distorts the public budget. Executive-corruption indices, control-of-corruption scores, and neopatrimonialism measures climb together over many years. Concentrated in resource-rich autocracies and weak-institution democracies.",
+      "stats": {
+        "loco_auc": 0.6813,
+        "ci95_lo": 0.6329,
+        "ci95_hi": 0.7306,
+        "window_y": 5,
+        "n_indicators": 2,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6813,
+          "ci95_lo": 0.6329,
+          "ci95_hi": 0.7306,
+          "window_y": 5,
+          "n_indicators": 2,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "human_rights_violation",
@@ -215,8 +612,32 @@
       "l1_label": "Governance & Rights",
       "l1_color": "#E68F29",
       "l2_label": "Human Rights Violations",
-      "status": "queued",
-      "description_compelling": "Documented state or state-tolerated abuse at scale — torture, extrajudicial killings, arbitrary detention, systematic targeting of identifiable groups. Freedom-from-torture, freedom-from-killings, and equal-protection indices all degrade together. The signal lights up across closed autocracies and conflict-zone states with collapsed accountability."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "Documented state or state-tolerated abuse at scale — torture, extrajudicial killings, arbitrary detention, systematic targeting of identifiable groups. Freedom-from-torture, freedom-from-killings, and equal-protection indices all degrade together. The signal lights up across closed autocracies and conflict-zone states with collapsed accountability.",
+      "stats": {
+        "loco_auc": 0.7193,
+        "ci95_lo": 0.6735,
+        "ci95_hi": 0.7621,
+        "window_y": 15,
+        "n_indicators": 3,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.7193,
+          "ci95_lo": 0.6735,
+          "ci95_hi": 0.7621,
+          "window_y": 15,
+          "n_indicators": 3,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "human_rights_reform",
@@ -225,8 +646,32 @@
       "l1_label": "Governance & Rights",
       "l1_color": "#E68F29",
       "l2_label": "Human Rights Reform",
-      "status": "queued",
-      "description_compelling": "Civil and political liberties expand by statute or court ruling — same-sex marriage, abortion access, anti-discrimination protections, indigenous-rights recognition. Civil-liberty subscores and CSO-freedom indices typically rise across the prior decade. Common in post-transition democracies and in mature liberal states catching up to social change."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "Civil and political liberties expand by statute or court ruling — same-sex marriage, abortion access, anti-discrimination protections, indigenous-rights recognition. Civil-liberty subscores and CSO-freedom indices typically rise across the prior decade. Common in post-transition democracies and in mature liberal states catching up to social change.",
+      "stats": {
+        "loco_auc": 0.6306,
+        "ci95_lo": 0.5682,
+        "ci95_hi": 0.6899,
+        "window_y": 15,
+        "n_indicators": 2,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6306,
+          "ci95_lo": 0.5682,
+          "ci95_hi": 0.6899,
+          "window_y": 15,
+          "n_indicators": 2,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "military_policy_and_reform",
@@ -235,8 +680,32 @@
       "l1_label": "Governance & Rights",
       "l1_color": "#E68F29",
       "l2_label": "Military Policy & Security Reform",
-      "status": "queued",
-      "description_compelling": "Material change to how a country recruits, deploys, or controls its armed forces — conscription reform, defense-spending shifts, command restructuring, civil-military rebalancing. Government-effectiveness scores, judicial-constraint measures, and political-stability indices typically reposition first. Frequent in states with assertive militaries renegotiating their political role."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "Material change to how a country recruits, deploys, or controls its armed forces — conscription reform, defense-spending shifts, command restructuring, civil-military rebalancing. Government-effectiveness scores, judicial-constraint measures, and political-stability indices typically reposition first. Frequent in states with assertive militaries renegotiating their political role.",
+      "stats": {
+        "loco_auc": 0.6723,
+        "ci95_lo": 0.6222,
+        "ci95_hi": 0.7185,
+        "window_y": 15,
+        "n_indicators": 3,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6723,
+          "ci95_lo": 0.6222,
+          "ci95_hi": 0.7185,
+          "window_y": 15,
+          "n_indicators": 3,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "currency_crisis",
@@ -245,8 +714,32 @@
       "l1_label": "Economic Stress",
       "l1_color": "#3FA9F5",
       "l2_label": "Currency & Banking Crisis",
-      "status": "queued",
-      "description_compelling": "A national currency collapses against its reference basket — typically 15-30% within a year — forcing capital controls, emergency IMF talks, and dollarization debates. Watch inflation, short-term external debt, and the current-account balance for years of accumulating pressure. Repeat customers: emerging markets running fixed pegs they can't defend."
+      "status": "walked_no_graduation",
+      "tier": "directional",
+      "audience": "in_play",
+      "description_compelling": "A national currency collapses against its reference basket — typically 15-30% within a year — forcing capital controls, emergency IMF talks, and dollarization debates. Watch inflation, short-term external debt, and the current-account balance for years of accumulating pressure. Repeat customers: emerging markets running fixed pegs they can't defend.",
+      "stats": {
+        "loco_auc": 0.8572,
+        "ci95_lo": 0.7933,
+        "ci95_hi": 0.903,
+        "window_y": 3,
+        "n_indicators": 5,
+        "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+        "tier_label_user_facing": "Directional"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "directional",
+          "loco_auc": 0.8572,
+          "ci95_lo": 0.7933,
+          "ci95_hi": 0.903,
+          "window_y": 3,
+          "n_indicators": 5,
+          "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+          "tier_label_user_facing": "Directional"
+        }
+      ]
     },
     {
       "recipe_id": "banking_and_financial_crisis",
@@ -255,8 +748,32 @@
       "l1_label": "Economic Stress",
       "l1_color": "#3FA9F5",
       "l2_label": "Currency & Banking Crisis",
-      "status": "queued",
-      "description_compelling": "A banking-system stress event severe enough to force public intervention: deposit runs, emergency liquidity windows, recapitalizations, or asset-quality writedowns at scale. We watch the credit-to-GDP gap, NPL trajectory, and external-account pressure for the multi-year build-up. Common in emerging markets after credit booms; common in advanced economies after asset-price shocks."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "A banking-system stress event severe enough to force public intervention: deposit runs, emergency liquidity windows, recapitalizations, or asset-quality writedowns at scale. We watch the credit-to-GDP gap, NPL trajectory, and external-account pressure for the multi-year build-up. Common in emerging markets after credit booms; common in advanced economies after asset-price shocks.",
+      "stats": {
+        "loco_auc": 0.7707,
+        "ci95_lo": 0.6827,
+        "ci95_hi": 0.8404,
+        "window_y": 25,
+        "n_indicators": 3,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.7707,
+          "ci95_lo": 0.6827,
+          "ci95_hi": 0.8404,
+          "window_y": 25,
+          "n_indicators": 3,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "economic_recession",
@@ -266,11 +783,36 @@
       "l1_color": "#3FA9F5",
       "l2_label": "Economic Recession & Austerity",
       "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
       "description_compelling": "Two or more quarters of negative real growth, typically with rising unemployment, falling investment, and tightening credit. Investment, unemployment, and trade-balance trajectories drift for a year or two beforehand. Frequent in commodity exporters during price slumps, in financialized economies during credit-cycle tops, and across rich economies during exogenous shocks.",
       "stats": {
-        "loco_auc": 0.6978,
-        "verdict": "Did not hold up"
-      }
+        "loco_auc": 0.6611,
+        "ci95_lo": 0.6077,
+        "ci95_hi": 0.7103,
+        "window_y": 10,
+        "n_indicators": 3,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "f-ml-1-poc-2026-05",
+          "loco_auc": 0.6978,
+          "verdict": "Did not hold up"
+        },
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6611,
+          "ci95_lo": 0.6077,
+          "ci95_hi": 0.7103,
+          "window_y": 10,
+          "n_indicators": 3,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "fiscal_policy_change",
@@ -279,8 +821,32 @@
       "l1_label": "Economic Stress",
       "l1_color": "#3FA9F5",
       "l2_label": "Fiscal & Monetary Policy",
-      "status": "queued",
-      "description_compelling": "A material rewrite of who gets taxed and what gets spent — emergency budgets, austerity packages, tax-code overhauls, defense or welfare reorderings. Debt-to-GDP, fiscal-capacity, and external-interest-burden measures pressure the move months to years out. Common in countries returning from IMF programs, in mid-cycle democracies, and during war or pandemic shocks."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "A material rewrite of who gets taxed and what gets spent — emergency budgets, austerity packages, tax-code overhauls, defense or welfare reorderings. Debt-to-GDP, fiscal-capacity, and external-interest-burden measures pressure the move months to years out. Common in countries returning from IMF programs, in mid-cycle democracies, and during war or pandemic shocks.",
+      "stats": {
+        "loco_auc": 0.6623,
+        "ci95_lo": 0.609,
+        "ci95_hi": 0.7119,
+        "window_y": 10,
+        "n_indicators": 3,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6623,
+          "ci95_lo": 0.609,
+          "ci95_hi": 0.7119,
+          "window_y": 10,
+          "n_indicators": 3,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "monetary_policy_change",
@@ -289,8 +855,32 @@
       "l1_label": "Economic Stress",
       "l1_color": "#3FA9F5",
       "l2_label": "Fiscal & Monetary Policy",
-      "status": "queued",
-      "description_compelling": "A central bank shifts gear — rate-cycle inflection, regime change (inflation targeting to FX peg, or vice versa), or a balance-sheet operation that resets liquidity expectations. Inflation, growth, and bank-asset-to-GDP measures usually telegraph the pivot. Visible in inflation-targeting emerging markets and in rich-world banks managing post-crisis policy normalization."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "A central bank shifts gear — rate-cycle inflection, regime change (inflation targeting to FX peg, or vice versa), or a balance-sheet operation that resets liquidity expectations. Inflation, growth, and bank-asset-to-GDP measures usually telegraph the pivot. Visible in inflation-targeting emerging markets and in rich-world banks managing post-crisis policy normalization.",
+      "stats": {
+        "loco_auc": 0.783,
+        "ci95_lo": 0.6967,
+        "ci95_hi": 0.845,
+        "window_y": 3,
+        "n_indicators": 3,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.783,
+          "ci95_lo": 0.6967,
+          "ci95_hi": 0.845,
+          "window_y": 3,
+          "n_indicators": 3,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "economic_liberalization",
@@ -299,8 +889,32 @@
       "l1_label": "Economic Stress",
       "l1_color": "#3FA9F5",
       "l2_label": "Economic Liberalization",
-      "status": "queued",
-      "description_compelling": "A government opens markets — privatizations, deregulation, capital-account liberalization, tariff cuts — usually as a coherent policy program with foreign backing or aspiration. Trade openness, FDI inflows, and regulatory-quality scores climb steadily. Frequent in post-socialist transitions, in IMF-program countries, and in middle-income states pivoting toward integration."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "A government opens markets — privatizations, deregulation, capital-account liberalization, tariff cuts — usually as a coherent policy program with foreign backing or aspiration. Trade openness, FDI inflows, and regulatory-quality scores climb steadily. Frequent in post-socialist transitions, in IMF-program countries, and in middle-income states pivoting toward integration.",
+      "stats": {
+        "loco_auc": 0.6919,
+        "ci95_lo": 0.6197,
+        "ci95_hi": 0.7584,
+        "window_y": 5,
+        "n_indicators": 1,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6919,
+          "ci95_lo": 0.6197,
+          "ci95_hi": 0.7584,
+          "window_y": 5,
+          "n_indicators": 1,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "economic_nationalization",
@@ -309,8 +923,32 @@
       "l1_label": "Economic Stress",
       "l1_color": "#3FA9F5",
       "l2_label": "Economic Nationalization",
-      "status": "queued",
-      "description_compelling": "The state reclaims strategic industries — oil and gas, banking, telecoms, mining — through expropriation, forced share transfers, or compulsory licensing. Sovereignty indices, neopatrimonialism scores, and FDI flows shift in the years before. Strongest in resource-dependent states and in populist governments under fiscal pressure."
+      "status": "walked_no_graduation",
+      "tier": "directional",
+      "audience": "in_play",
+      "description_compelling": "The state reclaims strategic industries — oil and gas, banking, telecoms, mining — through expropriation, forced share transfers, or compulsory licensing. Sovereignty indices, neopatrimonialism scores, and FDI flows shift in the years before. Strongest in resource-dependent states and in populist governments under fiscal pressure.",
+      "stats": {
+        "loco_auc": 0.7806,
+        "ci95_lo": 0.7097,
+        "ci95_hi": 0.8391,
+        "window_y": 10,
+        "n_indicators": 4,
+        "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+        "tier_label_user_facing": "Directional"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "directional",
+          "loco_auc": 0.7806,
+          "ci95_lo": 0.7097,
+          "ci95_hi": 0.8391,
+          "window_y": 10,
+          "n_indicators": 4,
+          "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+          "tier_label_user_facing": "Directional"
+        }
+      ]
     },
     {
       "recipe_id": "economic_recovery",
@@ -320,6 +958,8 @@
       "l1_color": "#3FA9F5",
       "l2_label": "Economic Recovery & Growth",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "An economy climbs out of contraction — growth resumes, unemployment falls, capex returns, credit conditions ease. GDP-growth, unemployment, FDI, and government-effectiveness trajectories all turn together. Common after IMF stabilizations, after political-stability shocks resolve, and after major commodity-price reversals."
     },
     {
@@ -329,8 +969,32 @@
       "l1_label": "Economic Stress",
       "l1_color": "#3FA9F5",
       "l2_label": "Economic Recovery & Growth",
-      "status": "queued",
-      "description_compelling": "A country crosses a threshold — middle-income status, top-20 GDP, an investment-grade rating, or a major-export-position rank. Compound-growth, institutional-quality, and capital-stock measures climb for a decade or more first. Recurrent across the Asian growth story; emerging in select Gulf, Central European, and Southeast Asian economies."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "A country crosses a threshold — middle-income status, top-20 GDP, an investment-grade rating, or a major-export-position rank. Compound-growth, institutional-quality, and capital-stock measures climb for a decade or more first. Recurrent across the Asian growth story; emerging in select Gulf, Central European, and Southeast Asian economies.",
+      "stats": {
+        "loco_auc": 0.7374,
+        "ci95_lo": 0.6507,
+        "ci95_hi": 0.8166,
+        "window_y": 25,
+        "n_indicators": 5,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.7374,
+          "ci95_lo": 0.6507,
+          "ci95_hi": 0.8166,
+          "window_y": 25,
+          "n_indicators": 5,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "trade_agreement",
@@ -339,8 +1003,32 @@
       "l1_label": "Economic Stress",
       "l1_color": "#3FA9F5",
       "l2_label": "Trade & Investment",
-      "status": "queued",
-      "description_compelling": "Two or more states sign a deal cutting tariff or non-tariff barriers — bilateral FTAs, accession to regional blocs, sector-specific pacts. Trade openness, FDI flows, and regulatory-quality scores usually trend up first. Frequent in middle-income exporters anchoring credibility, and in regional integration projects deepening over time."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "Two or more states sign a deal cutting tariff or non-tariff barriers — bilateral FTAs, accession to regional blocs, sector-specific pacts. Trade openness, FDI flows, and regulatory-quality scores usually trend up first. Frequent in middle-income exporters anchoring credibility, and in regional integration projects deepening over time.",
+      "stats": {
+        "loco_auc": 0.7108,
+        "ci95_lo": 0.6336,
+        "ci95_hi": 0.7727,
+        "window_y": 3,
+        "n_indicators": 4,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.7108,
+          "ci95_lo": 0.6336,
+          "ci95_hi": 0.7727,
+          "window_y": 3,
+          "n_indicators": 4,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "trade_dispute",
@@ -350,6 +1038,8 @@
       "l1_color": "#3FA9F5",
       "l2_label": "Trade & Investment",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "Two states cross from negotiation to retaliation — tariff hikes, WTO cases, export bans, anti-dumping duties — usually in concentrated sectors. Trade-share and sovereignty indices tilt first, often alongside domestic political shifts. Recurrent between rival great powers and between trade partners with unbalanced surpluses."
     },
     {
@@ -360,6 +1050,8 @@
       "l1_color": "#3FA9F5",
       "l2_label": "Trade & Investment",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "A material inflow or outflow of cross-border capital into productive assets — a greenfield mega-project, a strategic acquisition, a portfolio of brownfield buyouts. FDI/GDP, regulatory quality, and corruption indices set the table for years. Strongest in countries opening markets, in commodity provinces during boom phases, and in EM economies on the next-frontier list."
     },
     {
@@ -370,6 +1062,8 @@
       "l1_color": "#3FA9F5",
       "l2_label": "Trade & Investment",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "The state picks winners — semiconductor subsidies, EV mandates, national-champion creation, strategic-import substitution. Trade composition, FDI direction, and regulatory-capacity scores reposition before the policy goes public. Frequent in catch-up economies and, more recently, in advanced economies turning protectionist."
     },
     {
@@ -379,8 +1073,32 @@
       "l1_label": "Economic Stress",
       "l1_color": "#3FA9F5",
       "l2_label": "Trade & Investment",
-      "status": "queued",
-      "description_compelling": "An external coalition imposes — or lifts — targeted financial, trade, or arms-export restrictions against a country, individual, or sector. Sovereignty indices, trade-share metrics, and FDI flows respond well before the formal designation. The recurring targets cluster around great-power rival states, sanctioned autocracies, and proliferation-risk regimes."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "An external coalition imposes — or lifts — targeted financial, trade, or arms-export restrictions against a country, individual, or sector. Sovereignty indices, trade-share metrics, and FDI flows respond well before the formal designation. The recurring targets cluster around great-power rival states, sanctioned autocracies, and proliferation-risk regimes.",
+      "stats": {
+        "loco_auc": 0.807,
+        "ci95_lo": 0.7407,
+        "ci95_hi": 0.8597,
+        "window_y": 15,
+        "n_indicators": 5,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.807,
+          "ci95_lo": 0.7407,
+          "ci95_hi": 0.8597,
+          "window_y": 15,
+          "n_indicators": 5,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "foreign_aid_and_development",
@@ -390,6 +1108,8 @@
       "l1_color": "#3FA9F5",
       "l2_label": "Foreign Aid & Development",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "A material bilateral or multilateral aid commitment — disaster relief, multi-year development envelopes, debt-restructuring packages — that shifts the recipient's fiscal trajectory. ODA-to-GDP, debt-stock, and government-effectiveness measures trend together. Recurrent in low-income states emerging from conflict and in middle-income states caught in debt-distress cycles."
     },
     {
@@ -399,8 +1119,32 @@
       "l1_label": "Social Mobilization",
       "l1_color": "#3FBF8F",
       "l2_label": "Mass Protest",
-      "status": "queued",
-      "description_compelling": "Hundreds of thousands take to the streets — sustained, coordinated, willing to face teargas — against a policy or a regime. Civil-society participation, civil-liberty scores, and youth-unemployment trajectories pressure the moment for years beforehand. Recurrent in countries with capable civil societies bumping against unresponsive governments."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "Hundreds of thousands take to the streets — sustained, coordinated, willing to face teargas — against a policy or a regime. Civil-society participation, civil-liberty scores, and youth-unemployment trajectories pressure the moment for years beforehand. Recurrent in countries with capable civil societies bumping against unresponsive governments.",
+      "stats": {
+        "loco_auc": 0.6551,
+        "ci95_lo": 0.6129,
+        "ci95_hi": 0.6945,
+        "window_y": 5,
+        "n_indicators": 3,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6551,
+          "ci95_lo": 0.6129,
+          "ci95_hi": 0.6945,
+          "window_y": 5,
+          "n_indicators": 3,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "labor_action",
@@ -409,8 +1153,32 @@
       "l1_label": "Social Mobilization",
       "l1_color": "#3FBF8F",
       "l2_label": "Labor Action",
-      "status": "queued",
-      "description_compelling": "Organized work stoppage at scale — general strikes, sector-wide walkouts, coordinated industrial action with political consequence. Unemployment, civil-society freedom, and youth-precarity metrics typically trend ahead of the action. Frequent in unionized industrial democracies and in resource economies during commodity-price reversals."
+      "status": "walked_no_graduation",
+      "tier": "directional",
+      "audience": "in_play",
+      "description_compelling": "Organized work stoppage at scale — general strikes, sector-wide walkouts, coordinated industrial action with political consequence. Unemployment, civil-society freedom, and youth-precarity metrics typically trend ahead of the action. Frequent in unionized industrial democracies and in resource economies during commodity-price reversals.",
+      "stats": {
+        "loco_auc": 0.8145,
+        "ci95_lo": 0.7397,
+        "ci95_hi": 0.8727,
+        "window_y": 18,
+        "n_indicators": 6,
+        "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+        "tier_label_user_facing": "Directional"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "directional",
+          "loco_auc": 0.8145,
+          "ci95_lo": 0.7397,
+          "ci95_hi": 0.8727,
+          "window_y": 18,
+          "n_indicators": 6,
+          "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+          "tier_label_user_facing": "Directional"
+        }
+      ]
     },
     {
       "recipe_id": "social_policy_reform",
@@ -420,6 +1188,8 @@
       "l1_color": "#3FBF8F",
       "l2_label": "Social Policy Reform",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "Substantive reset to welfare, pension, healthcare, family, or housing policy — a basic-income pilot scaled, a national pension overhaul, or a children's-allowance program legislated. Civil-society participation and inequality measures drive the political demand. Common in middle-income countries hitting demographic transitions and in advanced economies confronting aging."
     },
     {
@@ -430,6 +1200,8 @@
       "l1_color": "#3FBF8F",
       "l2_label": "Social Policy Reform",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "A national health system is restructured — universal coverage extended, insurance markets reformed, hospitals nationalized or privatized. Government-effectiveness, transparency, and debt-capacity scores usually shift in the years before. Frequent after epidemics or after elections that put health front-and-center."
     },
     {
@@ -440,6 +1212,8 @@
       "l1_color": "#3FBF8F",
       "l2_label": "Poverty & Inequality",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "A sustained spike in extreme poverty or the Gini coefficient — typically a standard-deviation move above the country's baseline — that registers in social-cohesion and political outcomes. Vulnerable-employment, youth-unemployment, and inflation trajectories build the pressure. Recurrent in middle-income states hit by inflation, in fragile states losing remittances, and in commodity producers during price slumps."
     },
     {
@@ -449,8 +1223,32 @@
       "l1_label": "Social Mobilization",
       "l1_color": "#3FBF8F",
       "l2_label": "Religious & Social Movements",
-      "status": "queued",
-      "description_compelling": "A non-electoral social mobilization with durable identity claims — a religious revival shaping policy, a moral-traditionalist movement reorienting parties, a transnational solidarity wave changing public discourse. Civil-society participation, private-liberty indices, and ethnic-power balance reorient first. Common in mature democracies, in post-secular transitions, and across diaspora-linked political fields."
+      "status": "walked_no_graduation",
+      "tier": "directional",
+      "audience": "in_play",
+      "description_compelling": "A non-electoral social mobilization with durable identity claims — a religious revival shaping policy, a moral-traditionalist movement reorienting parties, a transnational solidarity wave changing public discourse. Civil-society participation, private-liberty indices, and ethnic-power balance reorient first. Common in mature democracies, in post-secular transitions, and across diaspora-linked political fields.",
+      "stats": {
+        "loco_auc": 0.8186,
+        "ci95_lo": 0.7334,
+        "ci95_hi": 0.8808,
+        "window_y": 21,
+        "n_indicators": 7,
+        "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+        "tier_label_user_facing": "Directional"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "directional",
+          "loco_auc": 0.8186,
+          "ci95_lo": 0.7334,
+          "ci95_hi": 0.8808,
+          "window_y": 21,
+          "n_indicators": 7,
+          "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+          "tier_label_user_facing": "Directional"
+        }
+      ]
     },
     {
       "recipe_id": "migration_and_refugees",
@@ -459,8 +1257,32 @@
       "l1_label": "Social Mobilization",
       "l1_color": "#3FBF8F",
       "l2_label": "Migration & Refugees",
-      "status": "queued",
-      "description_compelling": "Cross-border population movement at a scale that reshapes both origin and destination — refugee flows from conflict, economic outmigration, or climate-driven displacement exceeding one percent of population. Refugee-origin counts, private-liberty indices, and political-stability scores deteriorate in the origin years before. Common in conflict-belt states and in climate-stressed agricultural economies."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "Cross-border population movement at a scale that reshapes both origin and destination — refugee flows from conflict, economic outmigration, or climate-driven displacement exceeding one percent of population. Refugee-origin counts, private-liberty indices, and political-stability scores deteriorate in the origin years before. Common in conflict-belt states and in climate-stressed agricultural economies.",
+      "stats": {
+        "loco_auc": 0.6162,
+        "ci95_lo": 0.5715,
+        "ci95_hi": 0.663,
+        "window_y": 5,
+        "n_indicators": 1,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6162,
+          "ci95_lo": 0.5715,
+          "ci95_hi": 0.663,
+          "window_y": 5,
+          "n_indicators": 1,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "bilateral_treaty",
@@ -470,7 +1292,31 @@
       "l1_color": "#9F7AEA",
       "l2_label": "Bilateral Treaties",
       "status": "live_legacy",
-      "description_compelling": "Two states sign a formal bilateral pact — investment treaty, defense agreement, visa regime, status-of-forces document — recording a new institutional relationship. Trade openness, FDI flows, and rule-of-law metrics frame the diplomatic ground. Common between major economies and their second-tier partners, and across former-colonial-power relationships being repositioned."
+      "tier": "experimental",
+      "audience": "prior_version",
+      "description_compelling": "Two states sign a formal bilateral pact — investment treaty, defense agreement, visa regime, status-of-forces document — recording a new institutional relationship. Trade openness, FDI flows, and rule-of-law metrics frame the diplomatic ground. Common between major economies and their second-tier partners, and across former-colonial-power relationships being repositioned.",
+      "stats": {
+        "loco_auc": 0.5977,
+        "ci95_lo": 0.5628,
+        "ci95_hi": 0.6301,
+        "window_y": 21,
+        "n_indicators": 2,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.5977,
+          "ci95_lo": 0.5628,
+          "ci95_hi": 0.6301,
+          "window_y": 21,
+          "n_indicators": 2,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "multilateral_agreement",
@@ -480,7 +1326,31 @@
       "l1_color": "#9F7AEA",
       "l2_label": "Multilateral Agreements",
       "status": "live_legacy",
-      "description_compelling": "Three or more states ratify a shared framework — climate accord, regional trade bloc, security architecture, transparency convention. Democracy indices, transparency-of-law scores, and trade-openness trajectories tend to climb in the lead-up. Strongest among consolidating regional blocs (EU, ASEAN, Mercosur) and stable middle-income democracies."
+      "tier": "experimental",
+      "audience": "prior_version",
+      "description_compelling": "Three or more states ratify a shared framework — climate accord, regional trade bloc, security architecture, transparency convention. Democracy indices, transparency-of-law scores, and trade-openness trajectories tend to climb in the lead-up. Strongest among consolidating regional blocs (EU, ASEAN, Mercosur) and stable middle-income democracies.",
+      "stats": {
+        "loco_auc": 0.6592,
+        "ci95_lo": 0.6063,
+        "ci95_hi": 0.7068,
+        "window_y": 25,
+        "n_indicators": 3,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6592,
+          "ci95_lo": 0.6063,
+          "ci95_hi": 0.7068,
+          "window_y": 25,
+          "n_indicators": 3,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "diplomatic_rupture",
@@ -489,8 +1359,32 @@
       "l1_label": "Diplomacy & Geopolitics",
       "l1_color": "#9F7AEA",
       "l2_label": "Diplomatic Rupture",
-      "status": "queued",
-      "description_compelling": "Two states downgrade or sever relations — ambassadors expelled, embassies closed, recognition withdrawn, treaties suspended. Sovereignty indices, trade-share, and political-stability metrics usually shift years before the public break. Recurrent in great-power rivalry corridors and in regional ideology splits."
+      "status": "walked_no_graduation",
+      "tier": "directional",
+      "audience": "in_play",
+      "description_compelling": "Two states downgrade or sever relations — ambassadors expelled, embassies closed, recognition withdrawn, treaties suspended. Sovereignty indices, trade-share, and political-stability metrics usually shift years before the public break. Recurrent in great-power rivalry corridors and in regional ideology splits.",
+      "stats": {
+        "loco_auc": 0.7334,
+        "ci95_lo": 0.6579,
+        "ci95_hi": 0.7934,
+        "window_y": 10,
+        "n_indicators": 4,
+        "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+        "tier_label_user_facing": "Directional"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "directional",
+          "loco_auc": 0.7334,
+          "ci95_lo": 0.6579,
+          "ci95_hi": 0.7934,
+          "window_y": 10,
+          "n_indicators": 4,
+          "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+          "tier_label_user_facing": "Directional"
+        }
+      ]
     },
     {
       "recipe_id": "territorial_disputes",
@@ -499,8 +1393,32 @@
       "l1_label": "Diplomacy & Geopolitics",
       "l1_color": "#9F7AEA",
       "l2_label": "Territorial Disputes",
-      "status": "queued",
-      "description_compelling": "An active contest over land or maritime boundary — disputed border patrols, exclusive-zone harassment, settlement-construction provocations. Sovereignty, internal-displacement, and physical-violence indices move first. Concentrated in the South China Sea, the South Caucasus, parts of South Asia, and disputed maritime EEZs."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "An active contest over land or maritime boundary — disputed border patrols, exclusive-zone harassment, settlement-construction provocations. Sovereignty, internal-displacement, and physical-violence indices move first. Concentrated in the South China Sea, the South Caucasus, parts of South Asia, and disputed maritime EEZs.",
+      "stats": {
+        "loco_auc": 0.7065,
+        "ci95_lo": 0.6424,
+        "ci95_hi": 0.7599,
+        "window_y": 21,
+        "n_indicators": 5,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.7065,
+          "ci95_lo": 0.6424,
+          "ci95_hi": 0.7599,
+          "window_y": 21,
+          "n_indicators": 5,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "regional_integration",
@@ -509,8 +1427,32 @@
       "l1_label": "Diplomacy & Geopolitics",
       "l1_color": "#9F7AEA",
       "l2_label": "Regional Integration",
-      "status": "queued",
-      "description_compelling": "A country deepens membership in a regional bloc — accession, customs-union deepening, monetary-union convergence, security-architecture pooling. Trade openness, transparency, regulatory-quality, and democracy scores rise together over a decade. Most common in EU candidate states, in ASEAN deepening, and across African continental integration efforts."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "A country deepens membership in a regional bloc — accession, customs-union deepening, monetary-union convergence, security-architecture pooling. Trade openness, transparency, regulatory-quality, and democracy scores rise together over a decade. Most common in EU candidate states, in ASEAN deepening, and across African continental integration efforts.",
+      "stats": {
+        "loco_auc": 0.722,
+        "ci95_lo": 0.6713,
+        "ci95_hi": 0.7738,
+        "window_y": 25,
+        "n_indicators": 3,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.722,
+          "ci95_lo": 0.6713,
+          "ci95_hi": 0.7738,
+          "window_y": 25,
+          "n_indicators": 3,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "earthquake",
@@ -520,6 +1462,8 @@
       "l1_color": "#E94989",
       "l2_label": "Natural Disaster",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "A seismic event of magnitude six or greater that produces population casualties, displacement, and recovery-fiscal stress. The hazard is geological, but exposure is institutional — government-effectiveness, displacement-history, and fiscal-capacity measures shape outcomes. Concentrated along Pacific Ring and Mediterranean fault systems."
     },
     {
@@ -530,6 +1474,8 @@
       "l1_color": "#E94989",
       "l2_label": "Natural Disaster",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "Hydro-meteorological disasters at scale — typhoons, hurricanes, monsoon floods, storm surges — producing casualty counts and infrastructure damage that mark the public ledger. Government-effectiveness, displacement-baseline, and debt-headroom scores set the recovery path. Recurrent across coastal South and Southeast Asia, the Caribbean, and the US Gulf Coast."
     },
     {
@@ -540,6 +1486,8 @@
       "l1_color": "#E94989",
       "l2_label": "Natural Disaster",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "A significant eruption — VEI three or higher — that disrupts agriculture, aviation, or settlement and forces a national response. As with seismic risk, exposure runs through institutional capacity. Concentrated in Indonesia, the Philippines, the Andes, and the East African Rift."
     },
     {
@@ -549,8 +1497,32 @@
       "l1_label": "Humanitarian Crisis",
       "l1_color": "#E94989",
       "l2_label": "Natural Disaster",
-      "status": "queued",
-      "description_compelling": "An umbrella recipe for major hazard events — multi-type disasters, cascading hazards, or country-specific aggregation when the hazard mix is the load-bearing pattern. Government-effectiveness, displacement-baseline, and debt-headroom indicators predict recovery quality. Useful for small or disaster-frequent states where individual recipes thin out."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "An umbrella recipe for major hazard events — multi-type disasters, cascading hazards, or country-specific aggregation when the hazard mix is the load-bearing pattern. Government-effectiveness, displacement-baseline, and debt-headroom indicators predict recovery quality. Useful for small or disaster-frequent states where individual recipes thin out.",
+      "stats": {
+        "loco_auc": 0.6377,
+        "ci95_lo": 0.5746,
+        "ci95_hi": 0.6959,
+        "window_y": 21,
+        "n_indicators": 1,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6377,
+          "ci95_lo": 0.5746,
+          "ci95_hi": 0.6959,
+          "window_y": 21,
+          "n_indicators": 1,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "drought_and_famine",
@@ -560,6 +1532,8 @@
       "l1_color": "#E94989",
       "l2_label": "Drought & Famine",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "A sustained agricultural failure producing food-security collapse — declared famine, mass cross-border migration, emergency food appeals at international scale. Government-effectiveness, fiscal-capacity, and refugee-origin trajectories move first. Concentrated across the Horn of Africa, the Sahel, Yemen, and parts of Central America."
     },
     {
@@ -569,8 +1543,32 @@
       "l1_label": "Humanitarian Crisis",
       "l1_color": "#E94989",
       "l2_label": "Epidemic & Pandemic",
-      "status": "queued",
-      "description_compelling": "A transmissible-disease outbreak sustained beyond baseline morbidity or mortality — local epidemic that goes national, regional that goes global. Government-effectiveness, transparency-of-law, fiscal-headroom, and democracy indices shape both the response and the political fallout. Recurrent in West and Central Africa, in dense Asian megacities, and across global travel hubs."
+      "status": "walked_no_graduation",
+      "tier": "directional",
+      "audience": "in_play",
+      "description_compelling": "A transmissible-disease outbreak sustained beyond baseline morbidity or mortality — local epidemic that goes national, regional that goes global. Government-effectiveness, transparency-of-law, fiscal-headroom, and democracy indices shape both the response and the political fallout. Recurrent in West and Central Africa, in dense Asian megacities, and across global travel hubs.",
+      "stats": {
+        "loco_auc": 0.8794,
+        "ci95_lo": 0.8386,
+        "ci95_hi": 0.9105,
+        "window_y": 10,
+        "n_indicators": 6,
+        "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+        "tier_label_user_facing": "Directional"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "directional",
+          "loco_auc": 0.8794,
+          "ci95_lo": 0.8386,
+          "ci95_hi": 0.9105,
+          "window_y": 10,
+          "n_indicators": 6,
+          "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+          "tier_label_user_facing": "Directional"
+        }
+      ]
     },
     {
       "recipe_id": "humanitarian_crisis",
@@ -580,6 +1578,8 @@
       "l1_color": "#E94989",
       "l2_label": "Humanitarian Crisis",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "A compound emergency — conflict overlaid on drought overlaid on collapsed institutions — requiring multi-actor relief response at national scale. Conflict, governance, and food-security indicators all degrade together. Recurrent in Yemen, Sudan, the eastern DRC, Afghanistan, and Haiti."
     },
     {
@@ -590,6 +1590,8 @@
       "l1_color": "#E94989",
       "l2_label": "Water & Resource Crisis",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "Severe water stress that crosses into political consequence — capital-city rationing, transboundary disputes, agricultural collapse from aquifer drawdown. Resource-stress, governance, and demographic-pressure measures move years before. Concentrated in MENA, the Indian subcontinent, the US Southwest, and arid African belts."
     },
     {
@@ -599,8 +1601,32 @@
       "l1_label": "Structural Trends",
       "l1_color": "#7A8FA0",
       "l2_label": "Energy Policy & Resources",
-      "status": "queued",
-      "description_compelling": "A structural rewrite to electricity generation, transmission, fuel pricing, or energy-mix targets — net-zero legislation, subsidy reform, grid reorganization, nuclear restart. Regulatory quality, government effectiveness, and trade openness shift first. Common in OECD energy transitions and in subsidy-heavy emerging markets under fiscal pressure."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "A structural rewrite to electricity generation, transmission, fuel pricing, or energy-mix targets — net-zero legislation, subsidy reform, grid reorganization, nuclear restart. Regulatory quality, government effectiveness, and trade openness shift first. Common in OECD energy transitions and in subsidy-heavy emerging markets under fiscal pressure.",
+      "stats": {
+        "loco_auc": 0.6779,
+        "ci95_lo": 0.6164,
+        "ci95_hi": 0.736,
+        "window_y": 10,
+        "n_indicators": 4,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6779,
+          "ci95_lo": 0.6164,
+          "ci95_hi": 0.736,
+          "window_y": 10,
+          "n_indicators": 4,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "oil_and_gas",
@@ -610,6 +1636,8 @@
       "l1_color": "#7A8FA0",
       "l2_label": "Energy Policy & Resources",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "A material event in the hydrocarbon sector — major discovery, production deal, pricing realignment, licensing-round shift, or contract dispute large enough to move the national fiscal picture. Trade share, neopatrimonialism, FDI, and corruption indices move in concert. Concentrated in Gulf producers, sub-Saharan resource states, and the shale producers."
     },
     {
@@ -620,6 +1648,8 @@
       "l1_color": "#7A8FA0",
       "l2_label": "Energy Policy & Resources",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "A material renewables build-out or policy commitment — gigawatt-scale solar or wind capacity, green-hydrogen plans, mandatory off-take regimes, grid-scale storage. Regulatory quality and trade openness lead the move. Strongest across Western Europe, China, India, and sun-rich, wind-rich emerging markets making a play for the next industrial wave."
     },
     {
@@ -630,6 +1660,8 @@
       "l1_color": "#7A8FA0",
       "l2_label": "Environmental Policy",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "Material environmental legislation or regulatory shift — carbon pricing, deforestation enforcement, water-rights overhaul, protected-area expansion. Government effectiveness, transparency, and trade openness move first. Common in EU member states, in resource-dependent middle-income countries, and in any government facing rising urban-environmentalist constituencies."
     },
     {
@@ -640,6 +1672,8 @@
       "l1_color": "#7A8FA0",
       "l2_label": "Climate Agreements",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "Material participation in the international climate regime — Paris ratification, updated NDC, withdrawal announcement, or major bilateral climate finance commitment. Transparency, trade openness, regulatory quality, and democracy scores set the diplomatic ground. Concentrated in EU states, Latin American climate-leader democracies, and (recently) the major emerging emitters."
     },
     {
@@ -650,6 +1684,8 @@
       "l1_color": "#7A8FA0",
       "l2_label": "Resource Conflict",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "Violence over land, water, mineral, or pastoral resources — herder-farmer killings, mining-community clashes, dam-construction insurgencies. Group-power balances, displacement counts, and physical-violence indices all drift together in the years before. Concentrated across the Sahel, the Horn, parts of the Andes, and contested mining frontiers."
     },
     {
@@ -659,8 +1695,32 @@
       "l1_label": "Structural Trends",
       "l1_color": "#7A8FA0",
       "l2_label": "Infrastructure & Urban Development",
-      "status": "queued",
-      "description_compelling": "A large-scale capital project — a port, a high-speed-rail line, a hydropower scheme, a Belt-and-Road corridor — exceeding one percent of GDP or creating cross-border economic linkage. FDI flows, debt-stock changes, government-effectiveness scores, and corruption indices map the political-economic ground. Recurrent in fast-growing emerging markets and in states with active strategic-partner financing."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "A large-scale capital project — a port, a high-speed-rail line, a hydropower scheme, a Belt-and-Road corridor — exceeding one percent of GDP or creating cross-border economic linkage. FDI flows, debt-stock changes, government-effectiveness scores, and corruption indices map the political-economic ground. Recurrent in fast-growing emerging markets and in states with active strategic-partner financing.",
+      "stats": {
+        "loco_auc": 0.6843,
+        "ci95_lo": 0.5963,
+        "ci95_hi": 0.7624,
+        "window_y": 12,
+        "n_indicators": 1,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.6843,
+          "ci95_lo": 0.5963,
+          "ci95_hi": 0.7624,
+          "window_y": 12,
+          "n_indicators": 1,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "urban_development",
@@ -670,6 +1730,8 @@
       "l1_color": "#7A8FA0",
       "l2_label": "Infrastructure & Urban Development",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "Sustained metropolitan transformation — new-city construction, slum upgrading at scale, mass-transit build-outs, housing-policy resets that materially change urban form. Government effectiveness, urbanization rates, and capital-stock metrics move together. Strongest across rapidly urbanizing Asia, parts of Africa, and Gulf city-states."
     },
     {
@@ -680,6 +1742,8 @@
       "l1_color": "#7A8FA0",
       "l2_label": "Education & Knowledge",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "A national rewrite of curriculum, school financing, teacher policy, or higher-education governance — a PISA-driven overhaul, a university expansion plan, a public-private partnership model rolled out. Government effectiveness, democracy, regulatory-quality, and transparency scores move first. Common after political transitions and in countries where demographic transitions reset the schooling pipeline."
     },
     {
@@ -690,6 +1754,8 @@
       "l1_color": "#7A8FA0",
       "l2_label": "Education & Knowledge",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "Structural change to a country's research and higher-education ecosystem — national research-council overhaul, R&D-intensity targets, international collaboration treaties, foreign-faculty programs. Public-spending shares and government-effectiveness scores anchor the trajectory. Frequent in middle-income economies pushing toward knowledge-economy status and in oil states diversifying."
     },
     {
@@ -700,6 +1766,8 @@
       "l1_color": "#7A8FA0",
       "l2_label": "Digital & Technology",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "Material legislation or regulation governing the digital economy — data-privacy laws, platform regulation, AI governance frameworks, digital-ID systems, internet-shutdown protocols. Regulatory quality, transparency, government effectiveness, and civil-liberty scores move first. Common across the EU, advanced Asia, and (in the restrictive direction) consolidating autocracies."
     },
     {
@@ -709,8 +1777,32 @@
       "l1_label": "Structural Trends",
       "l1_color": "#7A8FA0",
       "l2_label": "Digital & Technology",
-      "status": "queued",
-      "description_compelling": "A nation-scale technology event with strategic stakes — a semiconductor-fab milestone, an AI-model rollout, a launch-vehicle first flight, a fusion-experiment record. R&D intensity, FDI flows in tech sectors, and regulatory-quality scores reposition first. Concentrated across the great-power tech race: US, China, EU, with India, Israel, South Korea, and Taiwan in the next ring."
+      "status": "walked_no_graduation",
+      "tier": "experimental",
+      "audience": "coming_soon",
+      "description_compelling": "A nation-scale technology event with strategic stakes — a semiconductor-fab milestone, an AI-model rollout, a launch-vehicle first flight, a fusion-experiment record. R&D intensity, FDI flows in tech sectors, and regulatory-quality scores reposition first. Concentrated across the great-power tech race: US, China, EU, with India, Israel, South Korea, and Taiwan in the next ring.",
+      "stats": {
+        "loco_auc": 0.7732,
+        "ci95_lo": 0.6787,
+        "ci95_hi": 0.8409,
+        "window_y": 12,
+        "n_indicators": 5,
+        "verdict": "HARD_FAIL",
+        "tier_label_user_facing": "Experimental"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "experimental",
+          "loco_auc": 0.7732,
+          "ci95_lo": 0.6787,
+          "ci95_hi": 0.8409,
+          "window_y": 12,
+          "n_indicators": 5,
+          "verdict": "HARD_FAIL",
+          "tier_label_user_facing": "Experimental"
+        }
+      ]
     },
     {
       "recipe_id": "cyberattack",
@@ -720,6 +1812,8 @@
       "l1_color": "#7A8FA0",
       "l2_label": "Digital & Technology",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "A state-linked or critical-infrastructure-targeting cyber incident with measurable economic, operational, or diplomatic consequence — power-grid disruption, hospital-system attack, election-infrastructure breach. Regulatory quality, government effectiveness, sovereignty, and political-stability scores frame the target landscape. Concentrated in great-power rival corridors and in front-line digital states like Ukraine, Estonia, Israel."
     },
     {
@@ -730,6 +1824,8 @@
       "l1_color": "#7A8FA0",
       "l2_label": "Cultural & Heritage",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "Major cultural-heritage events with political stakes — UNESCO inscriptions or de-listings, repatriation deals, monument destruction, language-policy battles. Civil-liberty, transparency, and equal-protection scores often shift in the years before. Recurrent in post-conflict states, in identity-contested democracies, and across the colonial-restitution corridor."
     },
     {
@@ -740,6 +1836,8 @@
       "l1_color": "#7A8FA0",
       "l2_label": "Cultural & Heritage",
       "status": "queued",
+      "tier": "queued",
+      "audience": "coming_soon",
       "description_compelling": "A country hosts a mega-event — Olympics, World Cup, Expo — or wins a high-stakes bid that materially restructures its capital-investment and diplomatic profile. Trade openness, FDI, government effectiveness, and democracy scores reposition over the decade beforehand. Increasingly concentrated in Gulf and Asian states using mega-events as soft-power instruments."
     },
     {
@@ -749,9 +1847,33 @@
       "l1_label": "Structural Trends",
       "l1_color": "#7A8FA0",
       "l2_label": "Agricultural Policy",
-      "status": "queued",
-      "description_compelling": "Material change to a country's agricultural support — subsidy reform, land-reform legislation, export-ban regimes, irrigation overhauls, agricultural-trade liberalization. Trade openness, rural-employment shares, fiscal capacity, and government-effectiveness scores all shift first. Common in EU CAP rounds, India's recurring farm-law fights, and African green-revolution programs."
+      "status": "walked_no_graduation",
+      "tier": "directional",
+      "audience": "in_play",
+      "description_compelling": "Material change to a country's agricultural support — subsidy reform, land-reform legislation, export-ban regimes, irrigation overhauls, agricultural-trade liberalization. Trade openness, rural-employment shares, fiscal capacity, and government-effectiveness scores all shift first. Common in EU CAP rounds, India's recurring farm-law fights, and African green-revolution programs.",
+      "stats": {
+        "loco_auc": 0.7362,
+        "ci95_lo": 0.669,
+        "ci95_hi": 0.7906,
+        "window_y": 10,
+        "n_indicators": 3,
+        "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+        "tier_label_user_facing": "Directional"
+      },
+      "vintages": [
+        {
+          "vintage": "te-fleet-run-2",
+          "tier": "directional",
+          "loco_auc": 0.7362,
+          "ci95_lo": 0.669,
+          "ci95_hi": 0.7906,
+          "window_y": 10,
+          "n_indicators": 3,
+          "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+          "tier_label_user_facing": "Directional"
+        }
+      ]
     }
   ],
-  "last_updated": "2026-05-29"
+  "last_updated": "2026-06-05"
 }

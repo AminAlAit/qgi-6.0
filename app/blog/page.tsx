@@ -130,7 +130,7 @@ export default function BlogIndexPage() {
           {/* Pinned: Recipe Tracker — always at the top, above all posts */}
           <div className="mb-10">
             <Link
-              href={"/blog/recipe-tracker" as Route}
+              href={"/blog/trend-tracker" as Route}
               className="group block rounded-lg overflow-hidden transition-transform hover:-translate-y-0.5"
               style={{
                 backgroundColor: "var(--qgi-surface)",
@@ -179,16 +179,16 @@ export default function BlogIndexPage() {
                   className="text-xl font-semibold mb-2 group-hover:underline"
                   style={{ color: "var(--qgi-text)" }}
                 >
-                  Recipe Tracker
+                  Trend Tracker
                 </h2>
                 <p
                   className="text-sm leading-relaxed"
                   style={{ color: "var(--qgi-text-muted)" }}
                 >
-                  Live status board for all 71 QGI recipes, across 8 geopolitical
-                  families. One graduated. Six in validation. Sixty-four queued.
-                  Graduation requires clearing hard validation gates in held-out
-                  historical data, and most candidates will not.
+                  Live status board for all 71 QGI trends, across 8 geopolitical families.
+                  Nine in play, thirty-five experimental, twenty-seven queued. A trend
+                  only drives country scores after clearing validation gates in held-out
+                  historical data, and most will not on a given walk.
                 </p>
               </div>
             </Link>
