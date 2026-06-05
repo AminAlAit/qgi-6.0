@@ -1,14 +1,24 @@
 /**
- * Types and loader for data/recipe-tracker.json — the recipe status board.
+ * Types and loader for data/recipe-tracker.json — the trend status board
+ * (rendered at /blog/trend-tracker; "Trends" is the user-facing name for
+ * what the pipeline calls recipes — the file and ids keep the pipeline
+ * vocabulary because the qgi-ml bake reads description_compelling from
+ * this file by name).
  *
- * Schema: recipe-tracker-v1. 71 recipes across 8 L1 families.
+ * Schema: recipe-tracker-v1. 71 trends across 8 L1 families.
  * Server-side only — reads the baked snapshot at SSR/build time.
  *
- * Status values and their visual tiers:
- *   graduated          → GRADUATED (1 recipe, foreign_intervention)
- *   live_legacy        → IN VALIDATION (4 recipes, on dashboard via earlier pathway)
- *   walked_no_graduation → IN VALIDATION (2 recipes, F-ML-1 walked, did not clear gates)
- *   queued             → QUEUED (64 recipes)
+ * Tier ladder (confidence-tier-policy, ratified 2026-05-31), refreshed per
+ * fleet-run vintage (current: te-fleet-run-2, walked 2026-06-01):
+ *   validated     → cleared every validation gate (none yet; the bar is hard)
+ *   directional   → in play on the dashboard; calibration pending (9)
+ *   experimental  → walked, did not clear the gates (35)
+ *   queued        → not yet walked (27)
+ *
+ * `status` is the legacy vocabulary kept for back-compat with older
+ * consumers; new surfaces should read `tier`. `vintages[]` is append-only
+ * per the run-separation rule — one row per fleet-run walk, never
+ * overwritten.
  */
 import "server-only";
 
@@ -26,15 +36,27 @@ export type RecipeStatus =
   | "walked_no_graduation"
   | "queued";
 
+export type RecipeTier = "validated" | "directional" | "experimental" | "queued";
+
+export type RecipeAudience = "in_play" | "coming_soon" | "prior_version";
+
 export interface RecipeStats {
   loco_auc?: number;
-  v1_separation_pp?: number;
-  v4_oot_recall?: number;
+  ci95_lo?: number;
+  ci95_hi?: number;
   window_y?: number;
   n_indicators?: number;
   n_countries_scored?: number;
-  blog_url?: string;
   verdict?: string;
+  tier_label_user_facing?: string;
+}
+
+export interface RecipeVintageRow extends RecipeStats {
+  vintage: string;
+  tier?: RecipeTier;
+  v1_separation_pp?: number;
+  v4_oot_recall?: number;
+  blog_url?: string;
 }
 
 export interface Recipe {
@@ -45,14 +67,19 @@ export interface Recipe {
   l1_color: string;
   l2_label: string;
   status: RecipeStatus;
-  stats: RecipeStats | null;
+  tier: RecipeTier;
+  audience: RecipeAudience;
+  stats?: RecipeStats | null;
+  vintages?: RecipeVintageRow[];
 }
 
 export interface RecipeTrackerData {
   generated: string;
   schema: string;
+  vintage_current: string;
   n_recipes: number;
   status_counts: Record<string, number>;
+  tier_counts: Record<RecipeTier, number>;
   recipes: Recipe[];
 }
 
@@ -72,7 +99,7 @@ const TRACKER_FILE = path.join(process.cwd(), "data", "recipe-tracker.json");
 let _cache: RecipeTrackerData | null = null;
 
 /**
- * Load the recipe tracker data. Throws if the file is missing or malformed.
+ * Load the trend tracker data. Throws if the file is missing or malformed.
  * Cached in-process after the first read.
  */
 export async function loadRecipeTracker(): Promise<RecipeTrackerData> {
@@ -92,7 +119,7 @@ export async function loadRecipeTracker(): Promise<RecipeTrackerData> {
 }
 
 /**
- * Group recipes by L1 family, preserving the canonical L1 order (A–H).
+ * Group trends by L1 family, preserving the canonical L1 order (A–H).
  */
 export function groupByFamily(recipes: Recipe[]): RecipeFamily[] {
   const map = new Map<string, RecipeFamily>();
@@ -114,18 +141,21 @@ export function groupByFamily(recipes: Recipe[]): RecipeFamily[] {
 }
 
 /**
- * Map a recipe status to its visual tier label.
+ * User-facing label for a confidence tier. "Directional" trends are the ones
+ * in play on the dashboard, so the board badges them with the audience word.
  */
-export function tierLabel(status: RecipeStatus): string {
-  switch (status) {
-    case "graduated":
-      return "Graduated";
-    case "in_progress":
-      return "In Progress";
-    case "live_legacy":
-    case "walked_no_graduation":
-      return "In Validation";
+export function tierBadgeLabel(tier: RecipeTier): string {
+  switch (tier) {
+    case "validated":
+      return "Validated";
+    case "directional":
+      return "In play";
+    case "experimental":
+      return "Experimental";
     case "queued":
       return "Queued";
+    default:
+      // Exhaustiveness guard: a new RecipeTier member fails compilation here.
+      return tier satisfies never;
   }
 }
