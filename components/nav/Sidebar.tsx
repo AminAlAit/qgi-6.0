@@ -147,8 +147,8 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
   // /recipe-tracker entry removed 2026-05-29 — the route itself was deleted
   // as part of the V4.1 round-3 amendment (2-bucket vocabulary). The catalog
   // ledger view is folded into /trends; the AUC column reborn as the per-
-  // card "Confidence" badge. The /blog/recipe-tracker post is unaffected
-  // (different route, audience-facing blog post about the program).
+  // card "Confidence" badge. The status-board blog post is unaffected
+  // (different route; /blog/trend-tracker since 2026-06-05).
 ];
 
 /** Flatten the structure to the leaf-route list — used by the

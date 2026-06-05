@@ -37,23 +37,24 @@ const STATIC_ROUTES: Array<{
   { path: "/dashboard", changeFrequency: "daily", priority: 0.95 },
   { path: "/trends", changeFrequency: "weekly", priority: 0.9 },
   { path: "/countries", changeFrequency: "daily", priority: 0.9 },
-  { path: "/patterns", changeFrequency: "weekly", priority: 0.7 },
+  // /patterns retired 2026-06-05 (308 → /analogues); removed from the
+  // sitemap to avoid surfacing a redirecting URL.
   { path: "/risk-board", changeFrequency: "daily", priority: 0.8 },
   // /compound-risk taken down 2026-05-30; sitemap entry removed.
   // Redirect 308 → /risk-board.
   { path: "/compare", changeFrequency: "weekly", priority: 0.6 },
   { path: "/analogues", changeFrequency: "weekly", priority: 0.6 },
   // /recipe-tracker route deleted 2026-05-29 — folded into /trends via
-  // the per-card Confidence badge. The blog post at /blog/recipe-tracker
-  // is unaffected (separate route, audience-facing program update).
+  // the per-card Confidence badge. The status-board blog post lives at
+  // /blog/trend-tracker (renamed 2026-06-05 from /blog/recipe-tracker).
   { path: "/methodology", changeFrequency: "monthly", priority: 0.8 },
   { path: "/methodology/indicators", changeFrequency: "monthly", priority: 0.6 },
   { path: "/methodology/events", changeFrequency: "monthly", priority: 0.6 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.4 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.6 },
-  // Recipe Tracker: continuously updated as recipes graduate or enter validation.
+  // Trend Tracker: continuously updated as trends move between tiers.
   {
-    path: "/blog/recipe-tracker",
+    path: "/blog/trend-tracker",
     changeFrequency: "weekly",
     priority: 0.7,
   },
