@@ -13,6 +13,7 @@ import { SkipLink } from "@/components/SkipLink";
 import { RotatingWordmark } from "@/components/landing-v2/RotatingWordmark";
 import { ClosestMatches } from "@/components/dashboard-v4-1/ClosestMatches";
 import { buildClosestMatches } from "@/lib/te-mock/dashboard-v4-1-data";
+import NewsletterForm from "@/components/NewsletterForm";
 
 export const metadata: Metadata = {
   title: "QG Intelligence · Geopolitics, measured",
@@ -298,13 +299,14 @@ export default async function HomePage() {
                 </span>
               </p>
               <p
-                className="text-sm leading-relaxed"
+                className="text-sm leading-relaxed mb-6"
                 style={{ color: "var(--qgi-text-muted)" }}
               >
                 We are putting together a monthly digest of new country readings and
-                notable resemblances. Sign-ups will open here shortly. No marketing, no
-                noise.
+                notable resemblances. Leave your email and you will be the first to get
+                it, plus early word as new features go live. No marketing, no noise.
               </p>
+              <NewsletterForm />
             </div>
           </div>
         </section>
