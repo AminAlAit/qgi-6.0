@@ -6,11 +6,11 @@ import { addNewsletterContact, deliverEmail } from "@/lib/email-delivery";
  * POST /api/newsletter
  *
  * Captures a newsletter sign-up (email only). Two things happen per sign-up:
- *  1. The address is stored as a contact in the Resend Audience when
- *     RESEND_AUDIENCE_ID is configured (the durable list).
+ *  1. The address is stored as a contact in the Resend Audience (the durable
+ *     list; account-level on Resend's current API, needs only RESEND_API_KEY).
  *  2. A notification email goes to amin@qgintelligence.com on EVERY sign-up
- *     (founder ask, 2026-06-05), which also doubles as the no-audience
- *     fallback so an address is never silently dropped.
+ *     (founder ask, 2026-06-05), which also doubles as the fallback so an
+ *     address is never silently dropped if the audience write fails.
  *
  * Returns 200 {ok:true} when either path succeeded, 422 on a bad email, 503
  * when both fail — the client surfaces a graceful retry, never a fake success.
@@ -44,9 +44,9 @@ export async function POST(req: Request) {
 
   const email = parsed.data.email;
 
-  // Persist the address as a contact in the Resend audience (when configured),
-  // AND notify the founder inbox on every sign-up (founder ask, 2026-06-05).
-  // Either succeeding means the sign-up is not lost.
+  // Persist the address as a contact in the Resend audience, AND notify the
+  // founder inbox on every sign-up (founder ask, 2026-06-05). Either
+  // succeeding means the sign-up is not lost.
   const saved = await addNewsletterContact(email);
   const notified = await deliverEmail({
     to: "amin@qgintelligence.com",
@@ -55,8 +55,8 @@ export async function POST(req: Request) {
       saved.ok
         ? "yes"
         : saved.configured
-          ? "FAILED (audience error)"
-          : "no (audience not configured)"
+          ? "FAILED (see Resend logs; possible key-permissions issue)"
+          : "no (Resend key not configured)"
     }\n`,
   });
 
