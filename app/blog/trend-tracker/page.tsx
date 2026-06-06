@@ -112,11 +112,14 @@ function WalkedCard({ recipe }: { recipe: Recipe }) {
       : null;
 
   return (
-    <li>
+    // h-full: every card fills its grid cell so cards in a row share a height
+    // regardless of title wrapping / sublabel presence; the stats band pins
+    // to the bottom edge (mt-auto) so the row reads as one aligned band.
+    <li className="h-full">
       <Link
         href={href}
         aria-label={`${recipe.label}: ${tierBadgeLabel(recipe.tier).toLowerCase()}, open the trend page`}
-        className="block rounded-lg overflow-hidden transition-transform hover:-translate-y-0.5"
+        className="block h-full rounded-lg overflow-hidden transition-transform hover:-translate-y-0.5"
         style={{
           backgroundColor: "var(--qgi-surface)",
           border: `1px solid ${l1Color}${emphatic ? "40" : "26"}`,
@@ -126,7 +129,7 @@ function WalkedCard({ recipe }: { recipe: Recipe }) {
             : "0 1px 4px rgba(0,0,0,0.3)",
         }}
       >
-        <div className="p-4">
+        <div className="p-4 h-full flex flex-col">
           {/* Header row */}
           <div className="flex items-start justify-between gap-2 mb-3">
             <div>
@@ -158,9 +161,9 @@ function WalkedCard({ recipe }: { recipe: Recipe }) {
             </span>
           </div>
 
-          {/* Stats band — populated for every walked trend */}
+          {/* Stats band — populated for every walked trend; bottom-pinned */}
           <dl
-            className="flex flex-wrap gap-x-5 gap-y-2 pt-3"
+            className="flex flex-wrap gap-x-5 gap-y-2 pt-3 mt-auto"
             style={{ borderTop: `1px solid ${l1Color}${emphatic ? "30" : "1c"}` }}
           >
             {stats.loco_auc !== undefined && (
@@ -189,11 +192,13 @@ function ComingSoonCard({ recipe }: { recipe: Recipe }) {
   const l1Color = recipe.l1_color;
 
   return (
-    <li>
+    // h-full so a coming-soon card sharing a row with walked cards (at a tier
+    // boundary) stretches to the row height instead of floating shorter.
+    <li className="h-full">
       <div
         role="article"
         aria-label={`${recipe.label}: coming soon, validation not yet started`}
-        className="block rounded-lg overflow-hidden"
+        className="block h-full rounded-lg overflow-hidden"
         style={{
           backgroundColor: "var(--qgi-surface)",
           border: `1px solid ${l1Color}18`,
