@@ -4,8 +4,15 @@
  * 2026-06-05: renamed from /blog/recipe-tracker (founder direction: the
  * concept is called Trends everywhere users see it; "recipe" stays pipeline
  * vocabulary only). The old slug 308s here via next.config. Data refreshed
- * to the te-fleet-run-2 vintage: tier ladder Validated / In play
- * (directional) / Experimental / Queued replaces the graduation-era statuses.
+ * to the te-fleet-run-2 vintage.
+ *
+ * 2026-06-06 alignment with /trends (founder catch): "in play" is the
+ * audience word for EVERY walked trend (all 44 this vintage — the /trends
+ * gallery chips them all "in play" per the ratified two-bucket vocabulary,
+ * and the dashboard surfaces scores from all 44). The tier ladder
+ * (directional / experimental) grades confidence WITHIN the in-play set, it
+ * does not gate visibility. Walked cards all render stats and link to their
+ * /trends page; only the 27 not-yet-walked are inert ("Coming soon").
  */
 import type { Metadata } from "next";
 import type { Route } from "next";
@@ -21,12 +28,12 @@ import {
 export const metadata: Metadata = {
   title: "Trend Tracker · QG Intelligence",
   description:
-    "Live status board for all 71 QGI trends. Nine in play, thirty-five experimental, twenty-seven queued. Every trend must clear hard validation gates in held-out historical data before its scores carry weight.",
+    "Live status board for all 71 QGI trends. 44 in play on the dashboard (9 directional, 35 experimental on the confidence ladder), 27 coming soon. Every trend walks the same validation gates in held-out historical data.",
   alternates: { canonical: "https://qgintelligence.com/blog/trend-tracker" },
   openGraph: {
     title: "Trend Tracker · QG Intelligence",
     description:
-      "Live status board for all 71 QGI trends: in play, experimental, and queued.",
+      "Live status board for all 71 QGI trends: 44 in play, graded on a confidence ladder, and 27 coming soon.",
     url: "https://qgintelligence.com/blog/trend-tracker",
     siteName: "QG Intelligence",
     type: "website",
@@ -35,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Trend Tracker · QG Intelligence",
     description:
-      "71 QGI trends: 9 in play, 35 experimental, 27 queued. Every score is gated on validation against held-out history.",
+      "71 QGI trends: 44 in play (9 directional, 35 experimental), 27 coming soon. Every score is gated on validation against held-out history.",
   },
 };
 
@@ -88,10 +95,16 @@ function TierBadge({ tier }: { tier: Recipe["tier"] }) {
   );
 }
 
-/** A trend that is in play: live scores on the dashboard, card links through. */
-function InPlayCard({ recipe }: { recipe: Recipe }) {
+/**
+ * Any walked trend — in play on the dashboard, stats populated, card links
+ * to its /trends page (mirroring the gallery, where all 44 are clickable).
+ * Directional/validated trends carry the emphatic treatment (family glow,
+ * accent score); experimental trends render the same anatomy, muted.
+ */
+function WalkedCard({ recipe }: { recipe: Recipe }) {
   const stats = recipe.stats ?? {};
   const l1Color = recipe.l1_color;
+  const emphatic = recipe.tier === "directional" || recipe.tier === "validated";
   const href = `/trends/${recipe.recipe_id}` as Route;
   const ci =
     stats.ci95_lo !== undefined && stats.ci95_hi !== undefined
@@ -102,13 +115,15 @@ function InPlayCard({ recipe }: { recipe: Recipe }) {
     <li>
       <Link
         href={href}
-        aria-label={`${recipe.label}: in play, open the trend page`}
+        aria-label={`${recipe.label}: ${tierBadgeLabel(recipe.tier).toLowerCase()}, open the trend page`}
         className="block rounded-lg overflow-hidden transition-transform hover:-translate-y-0.5"
         style={{
           backgroundColor: "var(--qgi-surface)",
-          border: `1px solid ${l1Color}40`,
-          borderLeft: `3px solid ${l1Color}`,
-          boxShadow: `0 0 16px ${l1Color}22, 0 1px 4px rgba(0,0,0,0.3)`,
+          border: `1px solid ${l1Color}${emphatic ? "40" : "26"}`,
+          borderLeft: `3px solid ${l1Color}${emphatic ? "" : "80"}`,
+          boxShadow: emphatic
+            ? `0 0 16px ${l1Color}22, 0 1px 4px rgba(0,0,0,0.3)`
+            : "0 1px 4px rgba(0,0,0,0.3)",
         }}
       >
         <div className="p-4">
@@ -120,7 +135,7 @@ function InPlayCard({ recipe }: { recipe: Recipe }) {
               </div>
               <h3
                 className="text-base font-semibold leading-tight"
-                style={{ color: "var(--qgi-text)" }}
+                style={{ color: emphatic ? "var(--qgi-text)" : "var(--qgi-text-muted)" }}
               >
                 {recipe.label}
               </h3>
@@ -136,20 +151,24 @@ function InPlayCard({ recipe }: { recipe: Recipe }) {
             {/* Arrow affordance */}
             <span
               className="text-sm mt-0.5 flex-shrink-0"
-              style={{ color: l1Color }}
+              style={{ color: emphatic ? l1Color : "var(--qgi-text-dim)" }}
               aria-hidden="true"
             >
               &rarr;
             </span>
           </div>
 
-          {/* Stats band */}
+          {/* Stats band — populated for every walked trend */}
           <dl
             className="flex flex-wrap gap-x-5 gap-y-2 pt-3"
-            style={{ borderTop: `1px solid ${l1Color}30` }}
+            style={{ borderTop: `1px solid ${l1Color}${emphatic ? "30" : "1c"}` }}
           >
             {stats.loco_auc !== undefined && (
-              <StatChip label="OOC score" value={stats.loco_auc.toFixed(2)} accent />
+              <StatChip
+                label="OOC score"
+                value={stats.loco_auc.toFixed(2)}
+                accent={emphatic}
+              />
             )}
             {ci && <StatChip label="95% CI" value={ci} />}
             {stats.window_y !== undefined && (
@@ -159,67 +178,21 @@ function InPlayCard({ recipe }: { recipe: Recipe }) {
               <StatChip label="Signals" value={String(stats.n_indicators)} />
             )}
           </dl>
-
-          {/* Reading note */}
-          <p
-            className="text-[10px] mt-3 leading-relaxed"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
-            Out-of-country score on held-out history. Similarity, not a calibrated
-            probability.
-          </p>
         </div>
       </Link>
     </li>
   );
 }
 
-/** A trend walked in the current vintage that did not clear the gates. */
-function ExperimentalCard({ recipe }: { recipe: Recipe }) {
+/** A trend not yet walked — inert, dimmed, mirroring /trends "Coming soon". */
+function ComingSoonCard({ recipe }: { recipe: Recipe }) {
   const l1Color = recipe.l1_color;
 
   return (
     <li>
       <div
         role="article"
-        aria-label={`${recipe.label}: experimental, scores held back`}
-        className="block rounded-lg overflow-hidden"
-        style={{
-          backgroundColor: "var(--qgi-surface)",
-          border: `1px solid ${l1Color}26`,
-          borderLeft: `3px solid ${l1Color}80`,
-          cursor: "default",
-        }}
-      >
-        <div className="p-4">
-          <div className="mb-1">
-            <TierBadge tier={recipe.tier} />
-          </div>
-          <h3
-            className="text-base font-semibold leading-tight"
-            style={{ color: "var(--qgi-text-muted)" }}
-          >
-            {recipe.label}
-          </h3>
-          {recipe.l2_label !== recipe.label && (
-            <p className="text-[11px] mt-0.5" style={{ color: "var(--qgi-text-dim)" }}>
-              {recipe.l2_label}
-            </p>
-          )}
-        </div>
-      </div>
-    </li>
-  );
-}
-
-function QueuedCard({ recipe }: { recipe: Recipe }) {
-  const l1Color = recipe.l1_color;
-
-  return (
-    <li>
-      <div
-        role="article"
-        aria-label={`${recipe.label}: queued, validation not yet started`}
+        aria-label={`${recipe.label}: coming soon, validation not yet started`}
         className="block rounded-lg overflow-hidden"
         style={{
           backgroundColor: "var(--qgi-surface)",
@@ -251,10 +224,8 @@ function QueuedCard({ recipe }: { recipe: Recipe }) {
 }
 
 function TrendCard({ recipe }: { recipe: Recipe }) {
-  if (recipe.tier === "directional" || recipe.tier === "validated")
-    return <InPlayCard recipe={recipe} />;
-  if (recipe.tier === "queued") return <QueuedCard recipe={recipe} />;
-  return <ExperimentalCard recipe={recipe} />;
+  if (recipe.tier === "queued") return <ComingSoonCard recipe={recipe} />;
+  return <WalkedCard recipe={recipe} />;
 }
 
 const TIER_ORDER: Record<Recipe["tier"], number> = {
@@ -320,9 +291,12 @@ export default async function TrendTrackerPage() {
   const families = groupByFamily(data.recipes);
 
   const validatedCount = data.tier_counts.validated ?? 0;
-  const inPlayCount = data.tier_counts.directional ?? 0;
+  const directionalCount = data.tier_counts.directional ?? 0;
   const experimentalCount = data.tier_counts.experimental ?? 0;
-  const queuedCount = data.tier_counts.queued ?? 0;
+  const comingSoonCount = data.tier_counts.queued ?? 0;
+  // "In play" is the audience word for every walked trend — it matches the
+  // /trends gallery chips and the dashboard, which scores all of them.
+  const inPlayCount = validatedCount + directionalCount + experimentalCount;
 
   return (
     <div
@@ -404,11 +378,12 @@ export default async function TrendTrackerPage() {
 
           <h1 className="text-3xl font-semibold mb-4">Trend Tracker</h1>
 
-          {/* Status summary chips. validated (0 today) is deliberately merged
-              into the "In play" chip; when the first trend clears every gate,
-              add a separate "Validated" chip here rather than letting the
-              count silently absorb it. */}
-          <div className="flex flex-wrap gap-3 mb-8">
+          {/* Status summary chips. "In play" = every walked trend (matches the
+              /trends gallery); the directional/experimental chips break the
+              in-play set down by confidence tier. When the first trend reaches
+              "validated", add its own chip here rather than letting the
+              directional count silently absorb it. */}
+          <div className="flex flex-wrap gap-3 mb-3">
             <div
               className="flex items-center gap-2 px-3 py-1.5 rounded text-xs"
               style={{
@@ -420,9 +395,24 @@ export default async function TrendTrackerPage() {
                 className="font-data tabular-nums font-semibold"
                 style={{ color: "var(--qgi-success)" }}
               >
-                {inPlayCount + validatedCount}
+                {inPlayCount}
               </span>
               <span style={{ color: "var(--qgi-text-muted)" }}>In play</span>
+            </div>
+            <div
+              className="flex items-center gap-2 px-3 py-1.5 rounded text-xs"
+              style={{
+                backgroundColor: "rgba(52, 211, 153, 0.04)",
+                border: "1px solid rgba(52, 211, 153, 0.12)",
+              }}
+            >
+              <span
+                className="font-data tabular-nums font-semibold"
+                style={{ color: "var(--qgi-text-muted)" }}
+              >
+                {directionalCount}
+              </span>
+              <span style={{ color: "var(--qgi-text-muted)" }}>Directional</span>
             </div>
             <div
               className="flex items-center gap-2 px-3 py-1.5 rounded text-xs"
@@ -450,9 +440,9 @@ export default async function TrendTrackerPage() {
                 className="font-data tabular-nums font-semibold"
                 style={{ color: "var(--qgi-text-muted)" }}
               >
-                {queuedCount}
+                {comingSoonCount}
               </span>
-              <span style={{ color: "var(--qgi-text-dim)" }}>Queued</span>
+              <span style={{ color: "var(--qgi-text-dim)" }}>Coming soon</span>
             </div>
             <div
               className="flex items-center gap-2 px-3 py-1.5 rounded text-xs"
@@ -471,6 +461,12 @@ export default async function TrendTrackerPage() {
             </div>
           </div>
 
+          {/* One global reading note instead of one per card */}
+          <p className="text-[12px] mb-8" style={{ color: "var(--qgi-text-muted)" }}>
+            Scores are out-of-country similarity on held-out history, not calibrated
+            probabilities.
+          </p>
+
           {/* Intro paragraph */}
           <div
             className="rounded-lg p-6"
@@ -484,26 +480,30 @@ export default async function TrendTrackerPage() {
               style={{ color: "var(--qgi-text-muted)" }}
             >
               QGI reads every country against {data.n_recipes} trends, named patterns of
-              geopolitical change, and every trend must earn its place on the dashboard by
-              clearing validation gates in held-out historical data. This board is the
+              geopolitical change, and every trend earns its standing the same way: a walk
+              through validation gates in held-out historical data. This board is the
               index of that program.{" "}
               <strong style={{ color: "var(--qgi-text)" }}>
-                {inPlayCount + validatedCount} trends are in play
+                {inPlayCount} trends are in play
               </strong>
-              : they separate the years before an event from quiet years in countries the
-              model never trained on, and they drive the live country scores on the
-              dashboard.{" "}
+              : walked under the Trajectory Engine and live across the dashboard, each
+              scored on how well it separates the years before an event from quiet years
+              in countries the model never trained on. Within them, the confidence ladder
+              grades the result:{" "}
+              <strong style={{ color: "var(--qgi-text)" }}>
+                {directionalCount} are directional
+              </strong>
+              , the strongest separations of this vintage, and{" "}
               <strong style={{ color: "var(--qgi-text)" }}>
                 {experimentalCount} are experimental
               </strong>
-              : walked through the exact same gates without clearing them, so their scores
-              stay off the dashboard. The remaining{" "}
+              , weaker separations to read with more caution. The remaining{" "}
               <strong style={{ color: "var(--qgi-text)" }}>
-                {queuedCount} are queued
-              </strong>{" "}
-              for a future run. The bar is set in held-out history, and most trends will
-              not clear it on a given walk: that is the point of having one. The board
-              updates with every fleet run.
+                {comingSoonCount} are coming soon
+              </strong>
+              : not yet walked. The bar is set in held-out history, and most trends will
+              not top the ladder on a given walk: that is the point of having one. The
+              board updates with every fleet run.
             </p>
           </div>
         </div>
@@ -533,9 +533,7 @@ export default async function TrendTrackerPage() {
         >
           <p>
             Updated {data.generated} &middot; vintage {data.vintage_current} &middot; QG
-            Intelligence &middot; {data.n_recipes} trends across 8 families. Scores from
-            trends in play are out-of-country similarity scores, not calibrated
-            probabilities.
+            Intelligence &middot; {data.n_recipes} trends across 8 families.
           </p>
           <p className="mt-2">
             <Link
