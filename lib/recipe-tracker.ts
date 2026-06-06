@@ -141,19 +141,23 @@ export function groupByFamily(recipes: Recipe[]): RecipeFamily[] {
 }
 
 /**
- * User-facing label for a confidence tier. "Directional" trends are the ones
- * in play on the dashboard, so the board badges them with the audience word.
+ * User-facing label for a confidence tier. NOTE the vocabulary layering
+ * (aligned with /trends, 2026-06-06): "in play" is the AUDIENCE word and it
+ * covers every walked trend (all 44 this vintage) — the /trends gallery
+ * chips all of them "in play". The tier ladder grades confidence WITHIN the
+ * in-play set, so the board badges tiers by their own names and reserves
+ * "Coming soon" (the /trends word) for the not-yet-walked.
  */
 export function tierBadgeLabel(tier: RecipeTier): string {
   switch (tier) {
     case "validated":
       return "Validated";
     case "directional":
-      return "In play";
+      return "Directional";
     case "experimental":
       return "Experimental";
     case "queued":
-      return "Queued";
+      return "Coming soon";
     default:
       // Exhaustiveness guard: a new RecipeTier member fails compilation here.
       return tier satisfies never;

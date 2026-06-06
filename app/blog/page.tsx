@@ -186,9 +186,10 @@ export default function BlogIndexPage() {
                   style={{ color: "var(--qgi-text-muted)" }}
                 >
                   Live status board for all 71 QGI trends, across 8 geopolitical families.
-                  Nine in play, thirty-five experimental, twenty-seven queued. A trend
-                  only drives country scores after clearing validation gates in held-out
-                  historical data, and most will not on a given walk.
+                  Forty-four in play on the dashboard, graded on a confidence ladder;
+                  twenty-seven coming soon. Every trend walks the same validation gates in
+                  held-out historical data, and most will not top the ladder on a given
+                  walk.
                 </p>
               </div>
             </Link>
