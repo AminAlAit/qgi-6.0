@@ -10,9 +10,9 @@ export default function Image() {
   return new ImageResponse(
     <OgFrame
       eyebrow="Blog · Trend Tracker"
-      title="71 trends. 9 in play. The rest must earn it."
-      tagline="Live status board for every QGI trend. A trend only drives country scores after clearing validation gates in held-out historical data, and most will not on a given walk."
-      rightStat={{ value: "9", label: "Trends in play" }}
+      title="71 trends. 44 in play. Every one walks the gates."
+      tagline="Live status board for every QGI trend. Each one is scored against validation gates in held-out historical data and graded on a confidence ladder, and most will not top it on a given walk."
+      rightStat={{ value: "44", label: "Trends in play" }}
     />,
     OG_SIZE
   );
