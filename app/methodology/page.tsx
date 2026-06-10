@@ -419,6 +419,70 @@ export default function MethodologyPage() {
             </p>
           </Section>
 
+          {/* The news layer — Topics + verdicts (HF merge 2026-06-10) */}
+          <Section id="news-layer" title="The news layer">
+            <p
+              className="text-sm leading-relaxed mb-3"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Trends are structural: shapes learned from decades of indicator history. The
+              news layer adds a second, faster reading.{" "}
+              <strong style={{ color: "var(--qgi-text)" }}>Topics</strong> are fourteen
+              news-native categories, from electoral politics to economic distress, each
+              connected to the trends it can confirm. For every covered country we measure
+              the <strong style={{ color: "var(--qgi-text)" }}>news pulse</strong> of each
+              topic monthly: the share of that country&apos;s global news coverage on that
+              theme, drawn from the GDELT Global Knowledge Graph and indexed against the
+              country&apos;s own eleven-year history. A pulse of 50 is that country&apos;s
+              normal; 100 is far above it. A country is only ever compared with itself, so
+              a loud news cycle in one place never drowns out a quiet one elsewhere.
+            </p>
+            <p
+              className="text-sm leading-relaxed mb-3"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              The two readings never merge into one number. Both run from 0 to 100, and a
+              reading counts as elevated from 60 upward. They combine into a verdict for
+              each country and topic:
+            </p>
+            <ul
+              className="space-y-2 text-sm leading-relaxed mb-3"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              <li>
+                <strong style={{ color: "var(--qgi-warning)" }}>Active.</strong>{" "}
+                Structural resemblance and news pulse are both elevated. The combinations
+                to open first.
+              </li>
+              <li>
+                <strong style={{ color: "var(--qgi-accent)" }}>Signal.</strong> The news
+                is loud but the structure is not primed. Often noise; worth a glance, not
+                an alarm.
+              </li>
+              <li>
+                <strong style={{ color: "var(--qgi-text)" }}>Latent.</strong> The
+                structure is primed and the news has not arrived. Where attention pays
+                before the coverage does.
+              </li>
+              <li>
+                <strong style={{ color: "var(--qgi-text)" }}>Quiet.</strong> Neither
+                reading is elevated.
+              </li>
+            </ul>
+            <p
+              className="text-sm leading-relaxed"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Each topic earns its standing against the verified event record, election by
+              election, crisis by crisis. Two are validated so far:{" "}
+              <strong style={{ color: "var(--qgi-text)" }}>Electoral</strong> and{" "}
+              <strong style={{ color: "var(--qgi-text)" }}>Economic</strong> pulses tend
+              to move ahead of their events by about two months. The rest are tracked and
+              scored while their validation runs. The layer reads twelve countries today
+              and grows as the signal proves out.
+            </p>
+          </Section>
+
           {/* How to read a score */}
           <Section id="how-to-read" title="How to read a score">
             <ul
