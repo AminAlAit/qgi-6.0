@@ -63,7 +63,7 @@ const LIGHT: EchartsTokens = {
   countryB: "#ea580c",
   predicted: "#94a3b8",
   success: "#16a34a",
-  warning: "#b45309",
+  warning: "#92400e", // amber-800; matches --qgi-warning light (small-text contrast)
   danger: "#dc2626",
 };
 

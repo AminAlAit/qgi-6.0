@@ -101,7 +101,7 @@
   --qgi-predicted: #94a3b8; /* slate-400 */
   /* Status */
   --qgi-success: #16a34a; /* green-600 */
-  --qgi-warning: #b45309; /* amber-700 */
+  --qgi-warning: #92400e; /* amber-800 — 7.0:1 on bg; amber-700 fell below 4.5:1 on warning-tinted (cream) strips at small sizes */
   --qgi-danger: #dc2626; /* red-600 */
 }
 
