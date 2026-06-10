@@ -31,6 +31,11 @@ import { RankHistoryPanel } from "@/components/countries-v4-1/RankHistoryPanel";
 import { SensitivityPanel } from "@/components/countries-v4-1/SensitivityPanel";
 import { AnalogsPanelV41 } from "@/components/countries-v4-1/AnalogsPanelV41";
 import { VintageSourcesPanel } from "@/components/countries-v4-1/ReadMePanels";
+import {
+  NewsSignalsPanel,
+  TopicDriftPanel,
+} from "@/components/countries-v4-1/NewsSignalsPanels";
+import { getHfCountryPanelData } from "@/lib/hf/pulse-detail";
 
 interface Params {
   params: Promise<{ iso: string }>;
@@ -76,6 +81,11 @@ export default async function CountryV41DetailPage({ params }: Params) {
   const fams = familiesByBestScore(country);
   const driversAccent = fams[0]?.color ?? NEUTRAL_SLATE;
 
+  // News layer (HF merge step 2): board topics + 36-month pulse, sliced
+  // server-side. Null for countries outside today's 12-country coverage —
+  // the page renders without the news panels, no placeholder.
+  const hf = getHfCountryPanelData(country.iso);
+
   return (
     <div
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
@@ -118,7 +128,35 @@ export default async function CountryV41DetailPage({ params }: Params) {
               <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
               <span>{country.iso}</span>
             </nav>
-            <HowToReadButton routeKey="countries-v4.1-detail" />
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              {/* ⚡ Live Pulse — the advanced per-country news terminal
+                  (founder-ratified sub-route, 2026-06-10). Only rendered
+                  for covered countries. */}
+              {hf && (
+                <Link
+                  href={`/countries/${iso}/live-pulse` as Route}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    height: "30px",
+                    padding: "0 14px",
+                    borderRadius: "15px",
+                    border: "1px solid var(--qgi-accent)",
+                    color: "var(--qgi-accent)",
+                    background: "var(--qgi-accent-glow)",
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    letterSpacing: "1px",
+                    textDecoration: "none",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  ⚡ Live Pulse
+                </Link>
+              )}
+              <HowToReadButton routeKey="countries-v4.1-detail" />
+            </div>
           </div>
           <CountryV41Header country={country} />
         </div>
@@ -128,6 +166,11 @@ export default async function CountryV41DetailPage({ params }: Params) {
       <div style={{ maxWidth: "1080px", margin: "0 auto", padding: "24px 24px 64px" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           <LitRecipesPanel country={country} />
+
+          {/* News layer zone A: what the news is amplifying right now
+              (Reza placement map: between lit recipes and the drivers pair).
+              Keyed by country so chip selection resets across navigations. */}
+          {hf && <NewsSignalsPanel key={`news-${hf.iso3}`} detail={hf} />}
 
           <div data-tour="drivers-panels">
             <PanelPair>
@@ -156,6 +199,16 @@ export default async function CountryV41DetailPage({ params }: Params) {
           )}
 
           <AnalogsPanelV41 country={country} />
+
+          {/* News layer zone B: the twelve-month theme-by-theme drift
+              (placement map: above provenance). */}
+          {hf && (
+            <TopicDriftPanel
+              key={`drift-${hf.iso3}`}
+              detail={hf}
+              accent={NEUTRAL_SLATE}
+            />
+          )}
 
           <VintageSourcesPanel country={country} />
         </div>
