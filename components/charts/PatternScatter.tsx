@@ -3,6 +3,8 @@
 import ReactECharts from "echarts-for-react";
 import { useRouter } from "next/navigation";
 import type { PatternRow } from "@/lib/types";
+import { useTheme } from "@/lib/hooks/useTheme";
+import { getEchartsTokens } from "@/lib/echarts-theme";
 
 interface Props {
   patterns: PatternRow[];
@@ -10,6 +12,8 @@ interface Props {
 
 export function PatternScatter({ patterns }: Props) {
   const router = useRouter();
+  const { isDark } = useTheme();
+  const t = getEchartsTokens(isDark);
 
   const data = patterns.map((p) => [
     p.pattern_length,
@@ -28,7 +32,7 @@ export function PatternScatter({ patterns }: Props) {
     title: {
       text: "The Strengths & Lengths of International Relationships",
       textStyle: {
-        color: "var(--qgi-text-muted)",
+        color: t.textMuted,
         fontSize: 11,
         fontWeight: 400,
         letterSpacing: 2,
@@ -38,15 +42,15 @@ export function PatternScatter({ patterns }: Props) {
     },
     tooltip: {
       trigger: "item",
-      backgroundColor: "#1e2d42",
-      borderColor: "#243347",
-      textStyle: { color: "#e2e8f0", fontSize: 11 },
+      backgroundColor: t.surface2,
+      borderColor: t.border,
+      textStyle: { color: t.text, fontSize: 11 },
       formatter: (params: { value: (string | number)[] }) => {
         const [len, idx, pps, ca, cb, sya, syb] = params.value;
         return [
-          `<b style="color:#38bdf8">${ca}</b> → <b style="color:#fb923c">${cb}</b>`,
+          `<b style="color:${t.countryA}">${ca}</b> → <b style="color:${t.countryB}">${cb}</b>`,
           `Duration: ${len} yrs &nbsp;|&nbsp; Indexes: ${idx}`,
-          `Score: <span style="color:#f59e0b">${Number(pps).toFixed(3)}</span>`,
+          `Score: <span style="color:${t.amber}">${Number(pps).toFixed(3)}</span>`,
           `${sya}–${Number(sya) + Number(len) - 1} / ${syb}–${Number(syb) + Number(len) - 1}`,
         ].join("<br/>");
       },
@@ -56,21 +60,21 @@ export function PatternScatter({ patterns }: Props) {
       name: "PATTERN DURATION (YRS)",
       nameLocation: "middle",
       nameGap: 32,
-      nameTextStyle: { color: "#8aa6be", fontSize: 9, letterSpacing: 1 },
+      nameTextStyle: { color: t.textDim, fontSize: 9, letterSpacing: 1 },
       type: "value",
-      axisLine: { lineStyle: { color: "#243347" } },
-      splitLine: { lineStyle: { color: "#1a2a3a" } },
-      axisLabel: { color: "#7a90a8", fontSize: 10 },
+      axisLine: { lineStyle: { color: t.border } },
+      splitLine: { lineStyle: { color: t.splitLine } },
+      axisLabel: { color: t.textMuted, fontSize: 10 },
     },
     yAxis: {
       name: "INDICATOR MATCHES",
       nameLocation: "middle",
       nameGap: 40,
-      nameTextStyle: { color: "#8aa6be", fontSize: 9, letterSpacing: 1 },
+      nameTextStyle: { color: t.textDim, fontSize: 9, letterSpacing: 1 },
       type: "value",
-      axisLine: { lineStyle: { color: "#243347" } },
-      splitLine: { lineStyle: { color: "#1a2a3a" } },
-      axisLabel: { color: "#7a90a8", fontSize: 10 },
+      axisLine: { lineStyle: { color: t.border } },
+      splitLine: { lineStyle: { color: t.splitLine } },
+      axisLabel: { color: t.textMuted, fontSize: 10 },
     },
     series: [
       {
@@ -78,14 +82,14 @@ export function PatternScatter({ patterns }: Props) {
         data,
         symbolSize: (val: number[]) => Math.max(4, Math.min(32, val[2] * 30)),
         itemStyle: {
-          color: "rgba(56, 189, 248, 0.55)",
-          borderColor: "#38bdf8",
+          color: t.accent + "8c", // ~55% alpha
+          borderColor: t.accent,
           borderWidth: 0.5,
         },
         emphasis: {
           itemStyle: {
-            color: "#38bdf8",
-            borderColor: "#fff",
+            color: t.accent,
+            borderColor: isDark ? "#fff" : t.text,
             borderWidth: 1.5,
           },
         },
