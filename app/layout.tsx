@@ -109,7 +109,21 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${soraBrand.variable} h-full`}
+      // The no-flash script below may add `class="light"` to <html> before React
+      // hydrates (only for users who opted into light); suppress the resulting
+      // attribute-mismatch warning. Dark-default users have no mismatch at all.
+      suppressHydrationWarning
     >
+      <head>
+        {/* No-flash theme: runs synchronously before first paint. Dark is the
+            default (:root); add `light` only when the user has opted in. Inline
+            string (not a Script component) so it executes during HTML parse. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{if(localStorage.getItem('qgi-theme')==='light'){document.documentElement.classList.add('light');}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className="h-full antialiased">
         <script
           type="application/ld+json"

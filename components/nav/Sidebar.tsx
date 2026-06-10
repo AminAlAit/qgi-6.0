@@ -15,6 +15,7 @@ import {
   PanelLeftClose,
   PanelLeft,
 } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 // Navigation items.
 // History:
@@ -509,6 +510,14 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
             );
           })}
         </nav>
+
+        {/* Light/dark toggle (2026-06-10). Sits just above the tour/footer.
+            Icon-only and centred when collapsed; icon + word when expanded. */}
+        <div
+          className={`mx-2 mt-1 mb-1 flex ${collapsed ? "justify-center" : "justify-start"}`}
+        >
+          <ThemeToggle variant={collapsed ? "icon" : "labeled"} />
+        </div>
 
         {/* Tour re-trigger button. Hides gracefully when collapsed
             (overflow-hidden clips it; the icon-only mode has no space). */}
