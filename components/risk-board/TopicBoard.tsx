@@ -336,7 +336,7 @@ export function TopicBoard({ data }: Props) {
           letterSpacing: "0.3px",
         }}
       >
-        Covering 12 countries across 6 topics today; new ones enter as their signals
+        Covering 12 countries across 6 themes today; new ones enter as their signals
         validate. Pulse updates monthly; structural scores refresh each release.
       </div>
     </div>
@@ -925,8 +925,8 @@ function QuadrantMap({
         }}
       >
         Every covered country on one canvas for {topic.label}: structure runs across, news
-        pulse runs up. Top right is where both line up. Topics marked ▲ carry a validated
-        news lead on their events of about two months.
+        pulse runs up. Top right is where both line up. Themes marked ▲ carry a validated
+        news lead of about two months.
       </p>
       <ReactECharts option={option} style={{ height: "440px", width: "100%" }} />
     </div>

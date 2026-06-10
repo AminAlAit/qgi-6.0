@@ -34,7 +34,11 @@ export interface RuleEntry {
 export interface PageHowToRead {
   /** 1 sentence, page-specific framing. */
   lede: string;
-  rules: [RuleEntry, RuleEntry, RuleEntry, RuleEntry];
+  /** Four rules house-style; five allowed where a page gains a distinct
+   *  data layer (the country profile's news panels, 2026-06-10). */
+  rules:
+    | [RuleEntry, RuleEntry, RuleEntry, RuleEntry]
+    | [RuleEntry, RuleEntry, RuleEntry, RuleEntry, RuleEntry];
 }
 
 export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
@@ -127,7 +131,7 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
   },
 
   "countries-v4.1-detail": {
-    lede: "Four rules for reading a single country's profile.",
+    lede: "Five rules for reading a single country's profile.",
     rules: [
       {
         title: "Scores are ranks, not probabilities",
@@ -140,6 +144,12 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
       {
         title: "Corrections are published on purpose",
         body: "If a trend that previously fired for this country has since been withdrawn or revised, the profile updates to show the corrected state. The prior result is not erased.",
+      },
+      {
+        // News layer (2026-06-10): the panels' resemblance-not-forecast
+        // firewall, in the designated escape valve (V4.1 §9).
+        title: "News pulse measures attention, not events",
+        body: "The news panels show how much of this country's coverage is running on each theme versus its own history. Pulse confirms or questions a structural reading; it does not forecast an event.",
       },
       {
         title: "Nothing here is a forecast",
