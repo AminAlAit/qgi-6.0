@@ -31,7 +31,7 @@ export function ThemeToggle({ variant = "icon" }: { variant?: "icon" | "labeled"
         <Moon size={16} strokeWidth={1.5} aria-hidden="true" />
       )}
       {variant === "labeled" && (
-        <span className="text-[10px] tracking-wider uppercase" suppressHydrationWarning>
+        <span className="text-[10.5px] tracking-wider uppercase" suppressHydrationWarning>
           {isDark ? "Light" : "Dark"}
         </span>
       )}

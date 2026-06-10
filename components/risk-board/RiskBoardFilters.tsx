@@ -354,7 +354,7 @@ function FilteredGrid({
           background: "var(--qgi-bg)",
           borderBottom: "1px solid var(--qgi-border)",
           fontFamily: "ui-monospace, monospace",
-          fontSize: "10px",
+          fontSize: "10.5px",
           letterSpacing: "1px",
           color: "var(--qgi-text-dim)",
         }}
@@ -660,7 +660,7 @@ function HeatCell({
       >
         <div
           style={{
-            fontSize: "10.5px",
+            fontSize: "11px",
             color: "var(--qgi-text-dim)",
             fontWeight: 500,
             lineHeight: 1.2,
@@ -713,7 +713,7 @@ function HeatCell({
             display: "flex",
             alignItems: "center",
             gap: "5px",
-            fontSize: "10.5px",
+            fontSize: "11px",
             color: "var(--qgi-text-dim)",
             fontWeight: 500,
             lineHeight: 1.2,
@@ -809,7 +809,7 @@ function HeatCell({
             display: "flex",
             alignItems: "center",
             gap: "5px",
-            fontSize: "10.5px",
+            fontSize: "11px",
             color: "var(--qgi-text)",
             fontWeight: isHovered ? 700 : 500,
             lineHeight: 1.2,
@@ -924,7 +924,7 @@ function CountryMultiPicker({
             background: "var(--qgi-surface)",
             border: "1px solid var(--qgi-border)",
             borderRadius: "3px",
-            fontSize: "10.5px",
+            fontSize: "11px",
             color: "var(--qgi-text)",
             fontFamily: "ui-monospace, monospace",
           }}

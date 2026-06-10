@@ -9,6 +9,7 @@
  * plain language.
  */
 import { Sparkles } from "lucide-react";
+import { ExplainTip } from "@/components/design/ExplainTip";
 import { FlagImg } from "./FlagImg";
 import { FamilyChip } from "./FamilyChip";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
@@ -95,7 +96,11 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
             >
               In active rotation
             </span>
-            <span
+            {/* Real tooltip, not a title attr: three of five usability
+                personas (2026-06-11) hit this pill as a definition dead-end
+                and one called it a blocker for citing the number. */}
+            <ExplainTip
+              text="Compound Risk blends this country's elevated trend matches (50 and above) into one bounded 0-100 reading, dampened when few trends are elevated. It is a breadth-times-intensity summary, not a probability."
               style={{
                 fontSize: "11px",
                 padding: "3px 9px",
@@ -105,11 +110,11 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
                 letterSpacing: "0.3px",
                 fontFamily: "ui-monospace, monospace",
                 fontWeight: 600,
+                display: "inline-block",
               }}
-              title="A bounded 0-100 score that averages this country's trend matches, dampened for thin coverage. Not a probability."
             >
               Compound Risk {country.compound_score.toFixed(0)}
-            </span>
+            </ExplainTip>
           </div>
           <button
             data-tour="generate-report-button"

@@ -12,6 +12,7 @@
  * uses a calm slate-blue. Family color never floods the surface.
  */
 import type { CSSProperties, ReactNode } from "react";
+import { ExplainTip } from "@/components/design/ExplainTip";
 
 export function PanelShell({
   title,
@@ -84,25 +85,27 @@ export function PanelShell({
           </h2>
         </div>
         {tooltip && (
-          <span
-            title={tooltip}
-            role="note"
+          // Real tooltip (hover + click + keyboard), not a native title attr:
+          // the 2026-06-11 persona panel unanimously hit this chip as a dead
+          // click. 10px -> 10.5px per the same panel's tiny-text findings.
+          <ExplainTip
+            text={tooltip}
             style={{
-              fontSize: "10px",
+              fontSize: "10.5px",
               letterSpacing: "0.4px",
               color: "var(--qgi-text-muted)",
               fontFamily: "ui-monospace, monospace",
-              cursor: "help",
               border: "1px solid var(--qgi-border)",
               borderRadius: "3px",
               padding: "1px 6px",
               userSelect: "none",
               whiteSpace: "nowrap",
               flexShrink: 0,
+              display: "inline-block",
             }}
           >
             ⓘ what this means
-          </span>
+          </ExplainTip>
         )}
       </header>
       {caption && (
