@@ -131,7 +131,7 @@ export function NewsSignalsPanel({ detail }: { detail: HfCountryDetail }) {
                   display: "inline-flex",
                   alignItems: "baseline",
                   gap: "6px",
-                  fontSize: "10px",
+                  fontSize: "10.5px",
                 }}
               >
                 <span style={{ color: verdictColor(v), fontWeight: 600 }}>
@@ -139,7 +139,7 @@ export function NewsSignalsPanel({ detail }: { detail: HfCountryDetail }) {
                 </span>
                 <span
                   className="font-data"
-                  style={{ color: "var(--qgi-text-dim)", fontSize: "10.5px" }}
+                  style={{ color: "var(--qgi-text-dim)", fontSize: "11px" }}
                 >
                   {s.cell ? Math.round(s.cell.pulse) : "–"}
                 </span>
@@ -185,6 +185,8 @@ export function NewsSignalsPanel({ detail }: { detail: HfCountryDetail }) {
         <span style={{ flex: 1 }} />
         <Link
           href={"/methodology#news-layer" as Route}
+          target="_blank"
+          rel="noopener"
           style={{ color: "var(--qgi-accent)", textDecoration: "none", fontSize: "11px" }}
         >
           How verdicts are assigned →
@@ -258,7 +260,7 @@ function PulseEventsChart({
       axisTick: { show: false },
       axisLabel: {
         color: t.textDim,
-        fontSize: 9,
+        fontSize: 10,
         interval: 5,
         formatter: (v: string) => v.slice(2),
       },
@@ -268,7 +270,7 @@ function PulseEventsChart({
       max: 100,
       axisLine: { show: false },
       splitLine: { lineStyle: { color: t.splitLine, opacity: 0.5 } },
-      axisLabel: { color: t.textDim, fontSize: 9 },
+      axisLabel: { color: t.textDim, fontSize: 10 },
     },
     series: [
       {
@@ -280,9 +282,26 @@ function PulseEventsChart({
         areaStyle: { color: `${t.accent}22` },
         markPoint: {
           symbol: "pin",
-          symbolSize: 18,
+          symbolSize: 20,
           itemStyle: { color: t.surface2, borderColor: t.amber, borderWidth: 1.5 },
           label: { show: false },
+          // Hovering a pin names its event (persona panel finding).
+          emphasis: {
+            label: {
+              show: true,
+              position: "top" as const,
+              formatter: (p: { value?: string }) => p.value ?? "",
+              color: t.text,
+              fontSize: 10.5,
+              backgroundColor: t.surface2,
+              borderColor: t.amber,
+              borderWidth: 1,
+              borderRadius: 4,
+              padding: [4, 8],
+              width: 220,
+              overflow: "break" as const,
+            },
+          },
           data: markers.map((m) => ({ coord: m.coord, value: m.label })),
         },
         markLine: {
@@ -293,7 +312,7 @@ function PulseEventsChart({
             show: true,
             position: "insideEndTop" as const,
             color: t.textDim,
-            fontSize: 9,
+            fontSize: 10,
             formatter: "elevated",
           },
           data: [{ yAxis: thresholds.pulse }],
@@ -356,7 +375,7 @@ export function TopicDriftPanel({
       splitLine: { show: false },
       axisLabel: {
         color: t.textDim,
-        fontSize: 9,
+        fontSize: 10,
         formatter: (v: string) => v.slice(2),
       },
     },
@@ -388,7 +407,7 @@ export function TopicDriftPanel({
         itemStyle: { borderColor: t.surface, borderWidth: 3, borderRadius: 3 },
         label: {
           show: true,
-          fontSize: 9.5,
+          fontSize: 10,
           fontFamily: "ui-monospace, monospace",
           color: isDark ? "#06131c" : "#ffffff",
           formatter: (p: { value: [number, number, number] }) =>

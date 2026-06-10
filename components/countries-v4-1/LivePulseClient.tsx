@@ -16,6 +16,7 @@
 
 import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
+import { ExplainTip } from "@/components/design/ExplainTip";
 import { useTheme } from "@/lib/hooks/useTheme";
 import { getEchartsTokens, type EchartsTokens } from "@/lib/echarts-theme";
 import type { HfVerdict } from "@/lib/hf/topics-data";
@@ -98,7 +99,7 @@ export function LivePulseClient({ detail }: { detail: HfCountryDetail }) {
                 alignItems: "center",
                 gap: "6px",
                 padding: "5px 11px",
-                fontSize: "10.5px",
+                fontSize: "11px",
                 fontFamily: "ui-monospace, monospace",
                 letterSpacing: "0.3px",
                 background: active ? "var(--qgi-surface-2)" : "transparent",
@@ -164,10 +165,14 @@ export function LivePulseClient({ detail }: { detail: HfCountryDetail }) {
             </span>
           </Metric>
           {sel.topic.validated && (
-            <span
+            // The site's strongest empirical claim earns a real tooltip with
+            // its basis (persona panel: analysts wanted to cite it but the
+            // badge was a dead hover).
+            <ExplainTip
+              text="Validated against the verified event record: across the covered countries, this theme's news pulse moved ahead of its events by about two months on average, and the lead held under a strictly out-of-sample recomputation. The full validation is on the methodology page."
               style={{
                 marginLeft: "auto",
-                fontSize: "10px",
+                fontSize: "10.5px",
                 letterSpacing: "0.5px",
                 color: "var(--qgi-success)",
                 border:
@@ -175,10 +180,11 @@ export function LivePulseClient({ detail }: { detail: HfCountryDetail }) {
                 borderRadius: "10px",
                 padding: "3px 10px",
                 whiteSpace: "nowrap",
+                display: "inline-block",
               }}
             >
               ▲ Leads events by ~2 months
-            </span>
+            </ExplainTip>
           )}
         </div>
       )}
@@ -229,7 +235,7 @@ export function LivePulseClient({ detail }: { detail: HfCountryDetail }) {
 
       <div
         style={{
-          fontSize: "10.5px",
+          fontSize: "11px",
           color: "var(--qgi-text-dim)",
           fontFamily: "ui-monospace, monospace",
           letterSpacing: "0.3px",
@@ -245,9 +251,11 @@ export function LivePulseClient({ detail }: { detail: HfCountryDetail }) {
 function Metric({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+      {/* 8.5px -> 10px (persona panel: the labels for the terminal's primary
+          numbers were "effectively invisible"). */}
       <span
         style={{
-          fontSize: "8.5px",
+          fontSize: "10px",
           letterSpacing: "1.5px",
           textTransform: "uppercase",
           color: "var(--qgi-text-dim)",
@@ -265,7 +273,7 @@ function MiniTitle({ children }: { children: React.ReactNode }) {
   return (
     <div
       style={{
-        fontSize: "10px",
+        fontSize: "10.5px",
         letterSpacing: "1.5px",
         textTransform: "uppercase",
         color: "var(--qgi-text-dim)",
@@ -336,7 +344,7 @@ function StageChart({
       axisTick: { show: false },
       axisLabel: {
         color: t.textDim,
-        fontSize: 9,
+        fontSize: 10,
         hideOverlap: true,
         formatter: (v: string) => v.slice(0, 7),
       },
@@ -346,7 +354,7 @@ function StageChart({
       max: 100,
       axisLine: { show: false },
       splitLine: { lineStyle: { color: t.splitLine, opacity: 0.5 } },
-      axisLabel: { color: t.textDim, fontSize: 9 },
+      axisLabel: { color: t.textDim, fontSize: 10 },
     },
     dataZoom: [
       { type: "inside", start: win.start, end: win.end },
@@ -384,9 +392,27 @@ function StageChart({
         areaStyle: { color: `${t.accent}1e` },
         markPoint: {
           symbol: "pin",
-          symbolSize: 18,
+          symbolSize: 20,
           itemStyle: { color: t.surface2, borderColor: t.amber, borderWidth: 1.5 },
           label: { show: false },
+          // Hovering a pin names its event (persona panel: every persona
+          // chased the pins and hit a dead end).
+          emphasis: {
+            label: {
+              show: true,
+              position: "top" as const,
+              formatter: (p: { value?: string }) => p.value ?? "",
+              color: t.text,
+              fontSize: 10.5,
+              backgroundColor: t.surface2,
+              borderColor: t.amber,
+              borderWidth: 1,
+              borderRadius: 4,
+              padding: [4, 8],
+              width: 220,
+              overflow: "break" as const,
+            },
+          },
           data: markers.map((m) => ({ coord: m.coord, value: m.label })),
         },
         markLine: {
@@ -399,7 +425,7 @@ function StageChart({
           label: {
             show: true,
             position: "insideEndTop" as const,
-            fontSize: 9,
+            fontSize: 10,
             fontFamily: "ui-monospace, monospace",
             color: t.textDim,
             formatter: "elevated",
@@ -414,7 +440,7 @@ function StageChart({
                     label: {
                       show: true,
                       position: "insideEndTop" as const,
-                      fontSize: 9,
+                      fontSize: 10,
                       fontFamily: "ui-monospace, monospace",
                       color: t.amber,
                       formatter: "structural",
@@ -497,7 +523,7 @@ function CountryQuadrant({
           show: labeled,
           position: "right" as const,
           color: isSel ? t.text : t.textMuted,
-          fontSize: isSel ? 11 : 9.5,
+          fontSize: isSel ? 12 : 10.5,
           fontWeight: (isSel ? 600 : 400) as 400 | 600,
           formatter: s.topic.label,
         },
@@ -528,10 +554,10 @@ function CountryQuadrant({
       name: "STRUCTURAL",
       nameLocation: "middle",
       nameGap: 24,
-      nameTextStyle: { color: t.textDim, fontSize: 8.5, letterSpacing: 1 },
+      nameTextStyle: { color: t.textDim, fontSize: 9.5, letterSpacing: 1 },
       axisLine: { lineStyle: { color: t.border } },
       splitLine: { show: false },
-      axisLabel: { color: t.textDim, fontSize: 9 },
+      axisLabel: { color: t.textDim, fontSize: 10 },
     },
     yAxis: {
       min: 0,
@@ -539,10 +565,10 @@ function CountryQuadrant({
       name: "PULSE",
       nameLocation: "middle",
       nameGap: 28,
-      nameTextStyle: { color: t.textDim, fontSize: 8.5, letterSpacing: 1 },
+      nameTextStyle: { color: t.textDim, fontSize: 9.5, letterSpacing: 1 },
       axisLine: { lineStyle: { color: t.border } },
       splitLine: { show: false },
-      axisLabel: { color: t.textDim, fontSize: 9 },
+      axisLabel: { color: t.textDim, fontSize: 10 },
     },
     // Name the quadrants once, faintly — the one place the whole verdict
     // vocabulary becomes self-evident at a glance (review finding).
@@ -598,9 +624,9 @@ function cornerCaption(
     style: {
       text,
       fill,
-      fontSize: 8.5,
+      fontSize: 9.5,
       fontFamily: "ui-monospace, monospace",
-      opacity: 0.75,
+      opacity: 0.8,
     },
     silent: true,
     z: 1,
@@ -646,7 +672,7 @@ function DriftMatrix({
       splitLine: { show: false },
       axisLabel: {
         color: t.textDim,
-        fontSize: 8.5,
+        fontSize: 9.5,
         interval: 3,
         formatter: (v: string) => v.slice(2),
       },
@@ -662,10 +688,10 @@ function DriftMatrix({
       // cross-panel selection loop (review finding).
       axisLabel: {
         color: t.textMuted,
-        fontSize: 9.5,
+        fontSize: 10.5,
         formatter: (value: string, idx: number) =>
           idx === selectedIdx ? `{sel|${value}}` : value,
-        rich: { sel: { color: t.accent, fontWeight: 600 as const, fontSize: 9.5 } },
+        rich: { sel: { color: t.accent, fontWeight: 600 as const, fontSize: 10.5 } },
       },
     },
     visualMap: {

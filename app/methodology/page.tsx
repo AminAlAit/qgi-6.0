@@ -477,7 +477,12 @@ export default function MethodologyPage() {
               election, crisis by crisis. Two are validated so far:{" "}
               <strong style={{ color: "var(--qgi-text)" }}>Electoral</strong> and{" "}
               <strong style={{ color: "var(--qgi-text)" }}>Economic</strong> pulses tend
-              to move ahead of their events by about two months. The rest are tracked and
+              to move ahead of their events by about two months. That lead was measured by
+              aligning every verified election and economic crisis across the covered
+              countries at month zero and reading the pulse in the months before; the lead
+              held, and for elections strengthened, when the pulse was recomputed using
+              only information available at the time. Themes whose pulse showed no lead,
+              such as conflict onsets, are not marked as leading. The rest are tracked and
               scored while their validation runs. The layer reads twelve countries today
               and grows as the signal proves out.
             </p>

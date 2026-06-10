@@ -24,7 +24,7 @@
  * Active=warning amber, Signal=accent cyan, Latent=muted, Quiet=dim.
  */
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { Route } from "next";
 import dynamic from "next/dynamic";
@@ -96,9 +96,36 @@ interface Props {
 }
 
 export function TopicBoard({ data }: Props) {
-  const [lens, setLens] = useState<Lens>("scan");
-  const [mode, setMode] = useState<"grid" | "map">("grid");
+  const [lens, setLensState] = useState<Lens>("scan");
+  const [mode, setModeState] = useState<"grid" | "map">("grid");
   const [mapTopic, setMapTopic] = useState<string>("T06");
+
+  // Remember the last lens + view between sessions (persona ask). The rAF
+  // defer follows the Sidebar's localStorage-sync idiom.
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => {
+      try {
+        const l = localStorage.getItem("qgi-topics-lens");
+        if (l === "scan" || l === "surge" || l === "primed") setLensState(l);
+        if (localStorage.getItem("qgi-topics-mode") === "map") setModeState("map");
+      } catch {
+        // localStorage blocked; defaults stand.
+      }
+    });
+    return () => cancelAnimationFrame(raf);
+  }, []);
+  const setLens = (l: Lens) => {
+    setLensState(l);
+    try {
+      localStorage.setItem("qgi-topics-lens", l);
+    } catch {}
+  };
+  const setMode = (m: "grid" | "map") => {
+    setModeState(m);
+    try {
+      localStorage.setItem("qgi-topics-mode", m);
+    } catch {}
+  };
 
   const topics = data.boardTopics;
 
@@ -245,7 +272,7 @@ export function TopicBoard({ data }: Props) {
                   textTransform: "capitalize",
                 }}
               >
-                {m === "grid" ? "Grid" : "Map"}
+                {m === "grid" ? "Grid" : "Quadrant"}
               </button>
             );
           })}
@@ -257,7 +284,7 @@ export function TopicBoard({ data }: Props) {
         <p
           style={{
             color: "var(--qgi-text-dim)",
-            fontSize: "12px",
+            fontSize: "12.5px",
             margin: "0 0 12px",
             lineHeight: 1.5,
           }}
@@ -316,6 +343,8 @@ export function TopicBoard({ data }: Props) {
         <span style={{ flex: 1 }} />
         <Link
           href={"/methodology#news-layer" as Route}
+          target="_blank"
+          rel="noopener"
           style={{
             color: "var(--qgi-accent)",
             textDecoration: "none",
@@ -372,7 +401,7 @@ function HeroStrip({
     >
       <span
         style={{
-          fontSize: "9px",
+          fontSize: "10px",
           letterSpacing: "2px",
           textTransform: "uppercase",
           color: "var(--qgi-warning)",
@@ -445,6 +474,12 @@ const SUMMARY_HEADER: Record<Lens, string> = {
   primed: "Primed",
 };
 
+const SUMMARY_TOOLTIP: Record<Lens, string> = {
+  scan: "How many of this country's themes read Active right now: structure primed and news running together.",
+  surge: "This country's biggest single-theme rise in news pulse versus last month.",
+  primed: "How many themes read Latent: structure elevated while the news stays quiet.",
+};
+
 function VerdictGrid({
   topics,
   rows,
@@ -481,7 +516,7 @@ function VerdictGrid({
           background: "var(--qgi-bg)",
           borderBottom: "1px solid var(--qgi-border)",
           fontFamily: "ui-monospace, monospace",
-          fontSize: "10px",
+          fontSize: "11px",
           letterSpacing: "1px",
           color: "var(--qgi-text-dim)",
         }}
@@ -512,7 +547,7 @@ function VerdictGrid({
             {t.validated && (
               <div
                 style={{
-                  fontSize: "8px",
+                  fontSize: "9.5px",
                   color: "var(--qgi-success)",
                   letterSpacing: "0.5px",
                   marginTop: "2px",
@@ -525,6 +560,7 @@ function VerdictGrid({
         ))}
         <div style={{ padding: "10px 6px", textAlign: "center" }}>
           {SUMMARY_HEADER[lens]}
+          <InfoTooltip text={SUMMARY_TOOLTIP[lens]} />
         </div>
       </div>
 
@@ -702,7 +738,7 @@ function TopicCell({
     >
       <span
         style={{
-          fontSize: "10px",
+          fontSize: "11px",
           fontWeight: 600,
           letterSpacing: "0.5px",
           padding: "2px 8px",
@@ -718,7 +754,7 @@ function TopicCell({
       {lens === "surge" && delta !== null ? (
         <span
           style={{
-            fontSize: "10px",
+            fontSize: "11px",
             fontFamily: "ui-monospace, monospace",
             color:
               delta >= 5
@@ -793,6 +829,7 @@ function QuadrantMap({
               : t.textDim;
       return {
         name: c.name,
+        href: c.linkable ? `/countries/${c.iso3.toLowerCase()}` : null,
         value: [cell.struct, cell.pulse],
         verdict: cell.verdict,
         symbol:
@@ -804,7 +841,7 @@ function QuadrantMap({
           show: true,
           position: "bottom" as const,
           color: verdictColor,
-          fontSize: 10,
+          fontSize: 10.5,
           formatter: c.name,
         },
       };
@@ -839,12 +876,12 @@ function QuadrantMap({
       name: "STRUCTURAL RESEMBLANCE",
       nameLocation: "middle",
       nameGap: 30,
-      nameTextStyle: { color: t.textDim, fontSize: 9, letterSpacing: 1 },
+      nameTextStyle: { color: t.textDim, fontSize: 10, letterSpacing: 1 },
       axisLine: { lineStyle: { color: t.border } },
       // Minor gridlines off: the 60/60 threshold lines ARE the read of this
       // chart and must be the only interior lines (review finding).
       splitLine: { show: false },
-      axisLabel: { color: t.textMuted, fontSize: 10 },
+      axisLabel: { color: t.textMuted, fontSize: 10.5 },
     },
     yAxis: {
       min: 0,
@@ -852,10 +889,10 @@ function QuadrantMap({
       name: "NEWS PULSE",
       nameLocation: "middle",
       nameGap: 36,
-      nameTextStyle: { color: t.textDim, fontSize: 9, letterSpacing: 1 },
+      nameTextStyle: { color: t.textDim, fontSize: 10, letterSpacing: 1 },
       axisLine: { lineStyle: { color: t.border } },
       splitLine: { show: false },
-      axisLabel: { color: t.textMuted, fontSize: 10 },
+      axisLabel: { color: t.textMuted, fontSize: 10.5 },
     },
     graphic: [
       quadLabel(0.97, 0.06, "Active", t.warning, "right"),
@@ -867,6 +904,9 @@ function QuadrantMap({
       {
         type: "scatter",
         data: points,
+        // Persona panel: the flags begged to be clicked. Pointer cursor +
+        // click-through to the country profile (linkable countries only).
+        cursor: "pointer",
         // Shift colliding country labels apart instead of letting them
         // overprint (review finding: NigeriaThailand ran together).
         labelLayout: { moveOverlap: "shiftY" as const },
@@ -900,7 +940,7 @@ function QuadrantMap({
               type="button"
               onClick={() => onTopic(x.id)}
               style={{
-                fontSize: "10.5px",
+                fontSize: "11px",
                 padding: "4px 10px",
                 background: active ? "var(--qgi-surface-2)" : "transparent",
                 color: active ? "var(--qgi-text)" : "var(--qgi-text-muted)",
@@ -928,7 +968,15 @@ function QuadrantMap({
         pulse runs up. Top right is where both line up. Themes marked ▲ carry a validated
         news lead of about two months.
       </p>
-      <ReactECharts option={option} style={{ height: "440px", width: "100%" }} />
+      <ReactECharts
+        option={option}
+        onEvents={{
+          click: (p: { data?: { href?: string | null } }) => {
+            if (p.data?.href) window.location.assign(p.data.href);
+          },
+        }}
+        style={{ height: "440px", width: "100%" }}
+      />
     </div>
   );
 }
@@ -945,7 +993,7 @@ function quadLabel(
     left: align === "left" ? `${xr * 100}%` : undefined,
     right: align === "right" ? `${(1 - xr) * 100}%` : undefined,
     top: `${yr * 100}%`,
-    style: { text, fill, fontSize: 11, fontWeight: "bold" as const },
+    style: { text, fill, fontSize: 12, fontWeight: "bold" as const },
     z: 1,
   };
 }

@@ -134,7 +134,7 @@ function ViewButton({
       </span>
       <span
         style={{
-          fontSize: "9px",
+          fontSize: "10px",
           letterSpacing: "1.2px",
           textTransform: "uppercase",
           fontFamily: "ui-monospace, monospace",
