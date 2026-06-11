@@ -81,21 +81,10 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
               flexWrap: "wrap",
             }}
           >
-            <span
-              style={{
-                fontSize: "11px",
-                padding: "3px 9px",
-                border: "1px solid var(--qgi-border)",
-                color: "var(--qgi-text-muted)",
-                background: "rgba(122,143,160,0.10)",
-                borderRadius: "4px",
-                letterSpacing: "0.3px",
-                fontFamily: "ui-monospace, monospace",
-              }}
-              title={`These trends are currently in active rotation on the risk board. Open the trend page for the full methodology and current performance.`}
-            >
-              In active rotation
-            </span>
+            {/* "In active rotation" chip removed 2026-06-11 (founder): it was
+                static decoration shown identically for every country, and its
+                grammar read as if the COUNTRY were in rotation. The per-trend
+                "in play" labels carry that status where it belongs. */}
             {/* Real tooltip, not a title attr: three of five usability
                 personas (2026-06-11) hit this pill as a definition dead-end
                 and one called it a blocker for citing the number. */}

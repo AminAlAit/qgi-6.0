@@ -140,23 +140,51 @@ export function LivePulseClient({ detail }: { detail: HfCountryDetail }) {
             borderRadius: "6px",
           }}
         >
-          <Metric label="Verdict">
+          <Metric
+            label="Verdict"
+            explain="The combined reading for this theme. Active: structural and news pulse both at 60 or above. Signal: news pulse at 60 or above but structure below 60, often noise. Latent: structure at 60 or above while the news stays quiet. Quiet: neither reaches 60."
+          >
             <span style={{ color: verdictVar(verdict), fontWeight: 700 }}>
               {VERDICT_LABEL[verdict]}
             </span>
           </Metric>
-          <Metric label="Structural">
+          <Metric
+            label="Structural"
+            explain={
+              "How closely this country's long-run indicators resemble the shape that ran ahead of this kind of event in the past. 0 to 100; 60 and above counts as elevated."
+            }
+          >
             <span className="font-data">
               {cell.struct !== null ? Math.round(cell.struct) : "–"}
             </span>
           </Metric>
-          <Metric label="News pulse">
+          <Metric
+            label="News pulse"
+            explain={
+              "How much of this country's news coverage is on this theme this month, measured against its own history. 50 is the country's normal month; 60 and above counts as elevated."
+            }
+          >
             <span className="font-data" style={{ color: "var(--qgi-accent)" }}>
               {Math.round(cell.pulse)}
             </span>
           </Metric>
-          <Metric label="vs last month">
-            <span className="font-data" style={{ color: "var(--qgi-text-muted)" }}>
+          <Metric
+            label="vs last month"
+            explain={
+              "How much the news pulse moved since last month. A positive jump (amber) means the theme took over more of the country's coverage; a negative move (green) means it eased."
+            }
+          >
+            <span
+              className="font-data"
+              style={{
+                color:
+                  cell.prevPulse !== null && cell.pulse - cell.prevPulse >= 5
+                    ? "var(--qgi-warning)"
+                    : cell.prevPulse !== null && cell.pulse - cell.prevPulse <= -5
+                      ? "var(--qgi-success)"
+                      : "var(--qgi-text-muted)",
+              }}
+            >
               {cell.prevPulse === null
                 ? "–"
                 : Math.round(cell.pulse - cell.prevPulse) === 0
@@ -169,7 +197,7 @@ export function LivePulseClient({ detail }: { detail: HfCountryDetail }) {
             // its basis (persona panel: analysts wanted to cite it but the
             // badge was a dead hover).
             <ExplainTip
-              text="Validated against the verified event record: across the covered countries, this theme's news pulse moved ahead of its events by about two months on average, and the lead held under a strictly out-of-sample recomputation. The full validation is on the methodology page."
+              text="Measured on about 190 verified events (elections; currency, inflation and banking crises) across the covered countries, 2015 to 2026: this theme's news pulse moved ahead of its events by about two months on average, and the lead held when recomputed using only information available at the time. Full validation on the methodology page."
               style={{
                 marginLeft: "auto",
                 fontSize: "10.5px",
@@ -217,7 +245,9 @@ export function LivePulseClient({ detail }: { detail: HfCountryDetail }) {
             padding: "12px",
           }}
         >
-          <MiniTitle>All themes · structure × pulse</MiniTitle>
+          <MiniTitle explain="Every theme plotted by its two readings: structural resemblance runs across, news pulse runs up. The dashed lines mark 60, the elevated threshold, and the corner names are the four verdicts. Click a dot to put that theme on the chart above.">
+            All themes · structure × pulse
+          </MiniTitle>
           <CountryQuadrant detail={detail} selectedId={topicId} onSelect={setTopicId} />
         </div>
         <div
@@ -228,7 +258,9 @@ export function LivePulseClient({ detail }: { detail: HfCountryDetail }) {
             padding: "12px",
           }}
         >
-          <MiniTitle>Two years · theme by theme</MiniTitle>
+          <MiniTitle explain="Each row is a theme and each column a month; brighter cells mean a higher news pulse that month. The highlighted row is the theme on the chart above.">
+            Two years · theme by theme
+          </MiniTitle>
           <DriftMatrix detail={detail} selectedId={topicId} />
         </div>
       </div>
@@ -248,28 +280,56 @@ export function LivePulseClient({ detail }: { detail: HfCountryDetail }) {
   );
 }
 
-function Metric({ label, children }: { label: string; children: React.ReactNode }) {
+function Metric({
+  label,
+  explain,
+  children,
+}: {
+  label: string;
+  /** Plain-language definition for first-time readers (hover/click/keys). */
+  explain?: string;
+  children: React.ReactNode;
+}) {
+  const labelSpan = (
+    <span
+      style={{
+        fontSize: "10px",
+        letterSpacing: "1.5px",
+        textTransform: "uppercase",
+        color: "var(--qgi-text-dim)",
+        fontFamily: "ui-monospace, monospace",
+        borderBottom: explain ? "1px dotted var(--qgi-text-dim)" : "none",
+        paddingBottom: explain ? "1px" : 0,
+      }}
+    >
+      {label}
+    </span>
+  );
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-      {/* 8.5px -> 10px (persona panel: the labels for the terminal's primary
-          numbers were "effectively invisible"). */}
-      <span
-        style={{
-          fontSize: "10px",
-          letterSpacing: "1.5px",
-          textTransform: "uppercase",
-          color: "var(--qgi-text-dim)",
-          fontFamily: "ui-monospace, monospace",
-        }}
-      >
-        {label}
-      </span>
+      {explain ? <ExplainTip text={explain}>{labelSpan}</ExplainTip> : labelSpan}
       <span style={{ fontSize: "19px", lineHeight: 1.1 }}>{children}</span>
     </div>
   );
 }
 
-function MiniTitle({ children }: { children: React.ReactNode }) {
+function MiniTitle({
+  explain,
+  children,
+}: {
+  explain?: string;
+  children: React.ReactNode;
+}) {
+  const inner = (
+    <span
+      style={{
+        borderBottom: explain ? "1px dotted var(--qgi-text-dim)" : "none",
+        paddingBottom: explain ? "1px" : 0,
+      }}
+    >
+      {children}
+    </span>
+  );
   return (
     <div
       style={{
@@ -281,7 +341,7 @@ function MiniTitle({ children }: { children: React.ReactNode }) {
         margin: "2px 0 8px",
       }}
     >
-      {children}
+      {explain ? <ExplainTip text={explain}>{inner}</ExplainTip> : inner}
     </div>
   );
 }
@@ -322,6 +382,10 @@ function StageChart({
     animation: false,
     tooltip: {
       trigger: "axis",
+      // Render on document.body so the popup can never be squeezed or cut
+      // at a panel border (founder catch 2026-06-11; ECharts analog of the
+      // #567 InfoTooltip position:fixed fix).
+      appendToBody: true,
       backgroundColor: t.surface2,
       borderColor: t.border,
       textStyle: { color: t.text, fontSize: 11 },
@@ -395,24 +459,10 @@ function StageChart({
           symbolSize: 20,
           itemStyle: { color: t.surface2, borderColor: t.amber, borderWidth: 1.5 },
           label: { show: false },
-          // Hovering a pin names its event (persona panel: every persona
-          // chased the pins and hit a dead end).
-          emphasis: {
-            label: {
-              show: true,
-              position: "top" as const,
-              formatter: (p: { value?: string }) => p.value ?? "",
-              color: t.text,
-              fontSize: 10.5,
-              backgroundColor: t.surface2,
-              borderColor: t.amber,
-              borderWidth: 1,
-              borderRadius: 4,
-              padding: [4, 8],
-              width: 220,
-              overflow: "break" as const,
-            },
-          },
+          // No emphasis label: the axis tooltip already names the event on a
+          // pinned month, and two boxes saying the same thing read as a bug
+          // (founder catch 2026-06-11).
+          emphasis: { disabled: true },
           data: markers.map((m) => ({ coord: m.coord, value: m.label })),
         },
         markLine: {
@@ -428,7 +478,7 @@ function StageChart({
             fontSize: 10,
             fontFamily: "ui-monospace, monospace",
             color: t.textDim,
-            formatter: "elevated",
+            formatter: "elevated 60",
           },
           data: [
             { yAxis: thresholds.pulse },
@@ -443,7 +493,7 @@ function StageChart({
                       fontSize: 10,
                       fontFamily: "ui-monospace, monospace",
                       color: t.amber,
-                      formatter: "structural",
+                      formatter: `structural ${Math.round(struct)}`,
                     },
                   },
                 ]
@@ -539,6 +589,10 @@ function CountryQuadrant({
   const option = {
     backgroundColor: "transparent",
     tooltip: {
+      // Render on document.body so the popup can never be squeezed or cut
+      // at a panel border (founder catch 2026-06-11; ECharts analog of the
+      // #567 InfoTooltip position:fixed fix).
+      appendToBody: true,
       backgroundColor: t.surface2,
       borderColor: t.border,
       textStyle: { color: t.text, fontSize: 11 },
@@ -656,6 +710,10 @@ function DriftMatrix({
   const option = {
     backgroundColor: "transparent",
     tooltip: {
+      // Render on document.body so the popup can never be squeezed or cut
+      // at a panel border (founder catch 2026-06-11; ECharts analog of the
+      // #567 InfoTooltip position:fixed fix).
+      appendToBody: true,
       backgroundColor: t.surface2,
       borderColor: t.border,
       textStyle: { color: t.text, fontSize: 11 },

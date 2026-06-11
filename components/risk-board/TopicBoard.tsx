@@ -186,7 +186,7 @@ export function TopicBoard({ data }: Props) {
       {/* Intro — the one tab-appropriate sentence under the page h1 (the
           review's P0: the old static page copy described trend rows while
           this view shows country rows). No second heading. */}
-      <p
+      <div
         style={{
           color: "var(--qgi-text-muted)",
           fontSize: "15px",
@@ -195,12 +195,13 @@ export function TopicBoard({ data }: Props) {
           margin: "0 0 16px",
         }}
       >
-        Each cell combines a country&apos;s structural resemblance with its monthly news
-        pulse
-        <InfoTooltip text="News pulse is a monthly index of how much of this country's news coverage is on this theme. 50 is the country's own long-run normal; higher means more attention than usual." />{" "}
+        Each cell combines a country&apos;s structural resemblance
+        <InfoTooltip text="How closely the country's long-run indicators resemble the shape that ran ahead of this kind of event in the past, from 0 to 100. 60 and above counts as elevated." />{" "}
+        with its monthly news pulse
+        <InfoTooltip text="How much of this country's news coverage is on this theme, measured against its own history. 50 is the country's normal month; 60 and above counts as elevated." />{" "}
         into a single reading. Scan a row for which themes are running hot, or a column
         for which countries are drawing attention on one theme.
-      </p>
+      </div>
 
       {/* Hero: strongest combined reading */}
       {hero && mode === "grid" && (
@@ -476,7 +477,8 @@ const SUMMARY_HEADER: Record<Lens, string> = {
 
 const SUMMARY_TOOLTIP: Record<Lens, string> = {
   scan: "How many of this country's themes read Active right now: structure primed and news running together.",
-  surge: "This country's biggest single-theme rise in news pulse versus last month.",
+  surge:
+    "This country's biggest single-theme rise in news pulse versus last month, in points on the 0 to 100 pulse scale.",
   primed: "How many themes read Latent: structure elevated while the news stays quiet.",
 };
 
@@ -669,7 +671,14 @@ function CountryNameCell({
       {inner}
     </Link>
   ) : (
-    inner
+    // Visually distinct from linked peers + says why (QA finding: identical
+    // styling with no affordance difference read as broken links).
+    <span
+      title={`${country.name}: country profile coming soon. The news readings are live.`}
+      style={{ opacity: 0.75, cursor: "help" }}
+    >
+      {inner}
+    </span>
   );
 }
 
@@ -861,6 +870,10 @@ function QuadrantMap({
     backgroundColor: "transparent",
     tooltip: {
       trigger: "item",
+      // Render on document.body so the popup can never be squeezed or cut
+      // at a panel border (founder catch 2026-06-11; ECharts analog of the
+      // #567 InfoTooltip position:fixed fix).
+      appendToBody: true,
       backgroundColor: t.surface2,
       borderColor: t.border,
       textStyle: { color: t.text, fontSize: 11 },
