@@ -142,6 +142,7 @@ export function NewsSignalsPanel({ detail }: { detail: HfCountryDetail }) {
                   style={{ color: "var(--qgi-text-dim)", fontSize: "11px" }}
                 >
                   {s.cell ? Math.round(s.cell.pulse) : "–"}
+                  <span style={{ opacity: 0.55 }}>/100</span>
                 </span>
               </span>
             </button>
@@ -232,6 +233,10 @@ function PulseEventsChart({
     animation: false,
     tooltip: {
       trigger: "axis",
+      // Render on document.body so the popup can never be squeezed or cut
+      // at a panel border (founder catch 2026-06-11; ECharts analog of the
+      // #567 InfoTooltip position:fixed fix).
+      appendToBody: true,
       backgroundColor: t.surface2,
       borderColor: t.border,
       textStyle: { color: t.text, fontSize: 11 },
@@ -285,23 +290,9 @@ function PulseEventsChart({
           symbolSize: 20,
           itemStyle: { color: t.surface2, borderColor: t.amber, borderWidth: 1.5 },
           label: { show: false },
-          // Hovering a pin names its event (persona panel finding).
-          emphasis: {
-            label: {
-              show: true,
-              position: "top" as const,
-              formatter: (p: { value?: string }) => p.value ?? "",
-              color: t.text,
-              fontSize: 10.5,
-              backgroundColor: t.surface2,
-              borderColor: t.amber,
-              borderWidth: 1,
-              borderRadius: 4,
-              padding: [4, 8],
-              width: 220,
-              overflow: "break" as const,
-            },
-          },
+          // No emphasis label: the axis tooltip names the event on a pinned
+          // month; a second box duplicating it reads as a bug (founder catch).
+          emphasis: { disabled: true },
           data: markers.map((m) => ({ coord: m.coord, value: m.label })),
         },
         markLine: {
@@ -313,7 +304,7 @@ function PulseEventsChart({
             position: "insideEndTop" as const,
             color: t.textDim,
             fontSize: 10,
-            formatter: "elevated",
+            formatter: "elevated 60",
           },
           data: [{ yAxis: thresholds.pulse }],
         },
@@ -359,6 +350,10 @@ export function TopicDriftPanel({
   const option = {
     backgroundColor: "transparent",
     tooltip: {
+      // Render on document.body so the popup can never be squeezed or cut
+      // at a panel border (founder catch 2026-06-11; ECharts analog of the
+      // #567 InfoTooltip position:fixed fix).
+      appendToBody: true,
       backgroundColor: t.surface2,
       borderColor: t.border,
       textStyle: { color: t.text, fontSize: 11 },

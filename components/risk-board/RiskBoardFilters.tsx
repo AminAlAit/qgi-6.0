@@ -145,7 +145,7 @@ export function RiskBoardFilters({ recipes, l1Families, countryUniverse }: Props
   }, [recipes, selectedL1]);
 
   const customMode = selectedCountries.length > 0;
-  const activeFilterCount = selectedL1.size + (customMode ? 1 : 0);
+  const activeFilterCount = selectedL1.size + selectedCountries.length;
 
   return (
     <>

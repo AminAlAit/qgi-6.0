@@ -119,6 +119,11 @@ export function TourProvider() {
   }, []);
 
   if (pageSteps.length === 0) return null;
+  // QA sweep 2026-06-11: with run=false Joyride stays mounted and its portal
+  // (#react-joyride-portal + spotlight SVG) lingers in the DOM intercepting
+  // pointer events over its bounding rect — dead clicks on the legend and
+  // quadrant after dismissing the tour. Unmount it entirely when idle.
+  if (!run) return null;
 
   return (
     <Joyride

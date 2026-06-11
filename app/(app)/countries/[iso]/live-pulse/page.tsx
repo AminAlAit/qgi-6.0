@@ -16,6 +16,7 @@ import type { Route } from "next";
 import { getCountryByIso } from "@/lib/te-mock/countries-v4-data";
 import { CountryV41Header } from "@/components/countries-v4-1/CountryV41Header";
 import { LivePulseClient } from "@/components/countries-v4-1/LivePulseClient";
+import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import { getHfCountryDetail, hfCoveredIso3 } from "@/lib/hf/pulse-detail";
 
 interface Params {
@@ -93,19 +94,40 @@ export default async function LivePulsePage({ params }: Params) {
               <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
               <span style={{ color: "var(--qgi-accent)" }}>Live Pulse</span>
             </nav>
-            <span
-              style={{
-                fontSize: "10px",
-                letterSpacing: "3px",
-                textTransform: "uppercase",
-                color: "var(--qgi-accent)",
-                fontFamily: "ui-monospace, monospace",
-              }}
-            >
-              ⚡ Live Pulse
-            </span>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <span
+                style={{
+                  fontSize: "10px",
+                  letterSpacing: "3px",
+                  textTransform: "uppercase",
+                  color: "var(--qgi-accent)",
+                  fontFamily: "ui-monospace, monospace",
+                }}
+              >
+                ⚡ Live Pulse
+              </span>
+              {/* Soft landing (founder 2026-06-11): the terminal stays dense,
+                  but first-timers get the same how-to-read affordance the
+                  structural pages carry. */}
+              <HowToReadButton routeKey="live-pulse" />
+            </div>
           </div>
           <CountryV41Header country={country} />
+          {/* One orientation sentence for direct arrivals. */}
+          <p
+            style={{
+              color: "var(--qgi-text-muted)",
+              fontSize: "13.5px",
+              lineHeight: 1.6,
+              maxWidth: "860px",
+              margin: "12px 0 0",
+            }}
+          >
+            Live Pulse reads {country.name} through fourteen news themes. Pick a theme and
+            the chart shows a decade of its news pulse, how much of the country&apos;s
+            news coverage runs on that theme each month, against the structural reading
+            and the events on the verified record.
+          </p>
         </div>
       </div>
 
