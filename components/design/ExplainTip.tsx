@@ -25,7 +25,11 @@ export function ExplainTip({
   style?: CSSProperties;
 }) {
   const [show, setShow] = useState(false);
-  const [coords, setCoords] = useState<{ top: number; left: number } | null>(null);
+  const [coords, setCoords] = useState<{
+    top: number;
+    left: number;
+    flip?: boolean;
+  } | null>(null);
   const triggerRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -33,7 +37,14 @@ export function ExplainTip({
     const update = () => {
       if (!triggerRef.current) return;
       const r = triggerRef.current.getBoundingClientRect();
-      setCoords({ top: r.top - 8, left: r.left + r.width / 2 });
+      // Clamp to the viewport + flip below when near the top (QA panel).
+      const half = 150;
+      const left = Math.min(
+        Math.max(r.left + r.width / 2, half + 8),
+        window.innerWidth - half - 8
+      );
+      const flip = r.top < 120;
+      setCoords({ top: flip ? r.bottom + 8 : r.top - 8, left, flip });
     };
     update();
     window.addEventListener("scroll", update, { capture: true, passive: true });
@@ -77,7 +88,7 @@ export function ExplainTip({
             position: "fixed",
             top: coords.top,
             left: coords.left,
-            transform: "translate(-50%, -100%)",
+            transform: coords.flip ? "translate(-50%, 0)" : "translate(-50%, -100%)",
             zIndex: 9999,
             backgroundColor: "var(--qgi-surface-2)",
             color: "var(--qgi-text)",

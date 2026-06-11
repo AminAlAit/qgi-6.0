@@ -386,6 +386,7 @@ function StageChart({
       // at a panel border (founder catch 2026-06-11; ECharts analog of the
       // #567 InfoTooltip position:fixed fix).
       appendToBody: true,
+      confine: true,
       backgroundColor: t.surface2,
       borderColor: t.border,
       textStyle: { color: t.text, fontSize: 11 },
@@ -593,6 +594,7 @@ function CountryQuadrant({
       // at a panel border (founder catch 2026-06-11; ECharts analog of the
       // #567 InfoTooltip position:fixed fix).
       appendToBody: true,
+      confine: true,
       backgroundColor: t.surface2,
       borderColor: t.border,
       textStyle: { color: t.text, fontSize: 11 },
@@ -678,7 +680,7 @@ function cornerCaption(
     style: {
       text,
       fill,
-      fontSize: 9.5,
+      fontSize: 10,
       fontFamily: "ui-monospace, monospace",
       opacity: 0.8,
     },
@@ -714,6 +716,7 @@ function DriftMatrix({
       // at a panel border (founder catch 2026-06-11; ECharts analog of the
       // #567 InfoTooltip position:fixed fix).
       appendToBody: true,
+      confine: true,
       backgroundColor: t.surface2,
       borderColor: t.border,
       textStyle: { color: t.text, fontSize: 11 },

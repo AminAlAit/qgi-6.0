@@ -14,6 +14,7 @@ import { useState } from "react";
 import { Search, ChevronDown } from "lucide-react";
 import type { CurrentCountryEntry } from "@/lib/te-mock/nearest-analog-data";
 import { AnalogResults } from "./AnalogResults";
+import { AnalogClusterPanel } from "./AnalogClusterPanel";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { flagFor } from "@/lib/te-mock/country-flags";
 
@@ -276,6 +277,11 @@ export function CountryPicker({
 
       {/* Results — swaps on selection */}
       <AnalogResults entry={selected} />
+
+      {/* The analogue map (HF merge step 3) — the same matches, spatially. */}
+      <div style={{ marginTop: "20px" }}>
+        <AnalogClusterPanel key={selected.iso} entry={selected} />
+      </div>
     </div>
   );
 }

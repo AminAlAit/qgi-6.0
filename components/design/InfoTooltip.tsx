@@ -18,7 +18,11 @@ import { useState, useRef, useEffect } from "react";
  */
 export function InfoTooltip({ text }: { text: string }) {
   const [show, setShow] = useState(false);
-  const [coords, setCoords] = useState<{ top: number; left: number } | null>(null);
+  const [coords, setCoords] = useState<{
+    top: number;
+    left: number;
+    flip?: boolean;
+  } | null>(null);
   const triggerRef = useRef<HTMLSpanElement>(null);
 
   // Recompute tooltip position whenever it opens (and on scroll/resize while open).
@@ -30,9 +34,16 @@ export function InfoTooltip({ text }: { text: string }) {
     const update = () => {
       if (!triggerRef.current) return;
       const r = triggerRef.current.getBoundingClientRect();
-      // Place tooltip 8px above the icon, horizontally centered on it
-      // (transform: translate(-50%, -100%) handles the centering + lift)
-      setCoords({ top: r.top - 8, left: r.left + r.width / 2 });
+      // Clamp horizontally so the ~288px card never leaves the viewport,
+      // and flip below the trigger when there is no headroom (QA panel
+      // 2026-06-11: right-edge and top-edge clipping).
+      const half = 150;
+      const left = Math.min(
+        Math.max(r.left + r.width / 2, half + 8),
+        window.innerWidth - half - 8
+      );
+      const flip = r.top < 120;
+      setCoords({ top: flip ? r.bottom + 8 : r.top - 8, left, flip });
     };
     update();
     window.addEventListener("scroll", update, { capture: true, passive: true });
@@ -63,7 +74,7 @@ export function InfoTooltip({ text }: { text: string }) {
             setShow(!show);
           }
         }}
-        className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-full text-[8px] font-bold transition-colors cursor-help"
+        className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-full text-[10px] font-bold transition-colors cursor-help"
         style={{
           backgroundColor: "var(--qgi-surface-2)",
           color: "var(--qgi-text-dim)",
@@ -83,7 +94,7 @@ export function InfoTooltip({ text }: { text: string }) {
             position: "fixed",
             top: coords.top,
             left: coords.left,
-            transform: "translate(-50%, -100%)",
+            transform: coords.flip ? "translate(-50%, 0)" : "translate(-50%, -100%)",
             zIndex: 9999,
             backgroundColor: "var(--qgi-surface-2)",
             color: "var(--qgi-text)",

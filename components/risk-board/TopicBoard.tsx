@@ -25,6 +25,7 @@
  */
 
 import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import type { Route } from "next";
 import dynamic from "next/dynamic";
@@ -821,6 +822,7 @@ function QuadrantMap({
 }) {
   const { isDark } = useTheme();
   const t = getEchartsTokens(isDark);
+  const router = useRouter();
   const topic = topics.find((x) => x.id === mapTopic) ?? topics[0];
 
   const points = data.countries
@@ -874,6 +876,7 @@ function QuadrantMap({
       // at a panel border (founder catch 2026-06-11; ECharts analog of the
       // #567 InfoTooltip position:fixed fix).
       appendToBody: true,
+      confine: true,
       backgroundColor: t.surface2,
       borderColor: t.border,
       textStyle: { color: t.text, fontSize: 11 },
@@ -985,7 +988,7 @@ function QuadrantMap({
         option={option}
         onEvents={{
           click: (p: { data?: { href?: string | null } }) => {
-            if (p.data?.href) window.location.assign(p.data.href);
+            if (p.data?.href) router.push(p.data.href as Route);
           },
         }}
         style={{ height: "440px", width: "100%" }}

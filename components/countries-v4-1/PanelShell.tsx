@@ -109,7 +109,10 @@ export function PanelShell({
         )}
       </header>
       {caption && (
-        <p
+        // <div>, not <p>: captions take ReactNode and may contain tooltip
+        // components whose popups are block-level — a <div> inside a <p> is
+        // invalid HTML and logged hydration errors (QA panel 2026-06-11).
+        <div
           style={{
             fontSize: "12px",
             lineHeight: 1.5,
@@ -119,7 +122,7 @@ export function PanelShell({
           }}
         >
           {caption}
-        </p>
+        </div>
       )}
       {children}
     </section>
