@@ -237,6 +237,7 @@ function PulseEventsChart({
       // at a panel border (founder catch 2026-06-11; ECharts analog of the
       // #567 InfoTooltip position:fixed fix).
       appendToBody: true,
+      confine: true,
       backgroundColor: t.surface2,
       borderColor: t.border,
       textStyle: { color: t.text, fontSize: 11 },
@@ -354,6 +355,7 @@ export function TopicDriftPanel({
       // at a panel border (founder catch 2026-06-11; ECharts analog of the
       // #567 InfoTooltip position:fixed fix).
       appendToBody: true,
+      confine: true,
       backgroundColor: t.surface2,
       borderColor: t.border,
       textStyle: { color: t.text, fontSize: 11 },

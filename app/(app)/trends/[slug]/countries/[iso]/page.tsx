@@ -48,6 +48,8 @@ import {
   CompositeOverlayPanel,
 } from "@/components/recipe-country/MatchAlignmentPanel";
 import { CountriesPanel } from "@/components/precedents-v4-1/CountriesPanel";
+import { TrendConfirmRejectPanel } from "@/components/precedents-v4-1/TrendConfirmRejectPanel";
+import { getTrendNewsSignal } from "@/lib/hf/trend-signal";
 
 interface Params {
   params: Promise<{ slug: string; iso: string }>;
@@ -99,6 +101,14 @@ export default async function CountryRecipeMatchPage({ params }: Params) {
   if (!countryName) notFound();
 
   const score = match?.score ?? degraded?.score;
+
+  // News layer (HF merge step 3): the confirm/reject quadrant for this
+  // country x trend. Renders only when the trend has a feeding theme AND
+  // the country is in today's covered set.
+  const newsSignal = getTrendNewsSignal(slug);
+  const hasNewsRow = Boolean(
+    newsSignal && countryName && newsSignal.rows.some((r) => r.name === countryName)
+  );
   const lc = recipe.label.toLowerCase();
   const mock = getMock(recipe);
   const windowYears =
@@ -266,6 +276,15 @@ export default async function CountryRecipeMatchPage({ params }: Params) {
       {/* ── Body ── */}
       <div style={{ maxWidth: "1080px", margin: "0 auto", padding: "24px 24px 64px" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          {hasNewsRow && newsSignal && countryName && (
+            <TrendConfirmRejectPanel
+              key={`cr-${slug}-${iso}`}
+              slug={slug}
+              trendLabel={recipe.label}
+              countryName={countryName}
+              signal={newsSignal}
+            />
+          )}
           {match ? (
             <>
               <MatchAlignmentPanel
