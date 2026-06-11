@@ -9,6 +9,11 @@
  * out one country's series before anything crosses to the client.
  */
 
+// Build-time guard (PR #179 review): this module carries the ~380KB full
+// history file and must never reach a client bundle. Importing it from a
+// "use client" module now fails the build instead of silently shipping it.
+import "server-only";
+
 import detail from "@/data/hf-pulse-detail.json";
 import { getHfBoard, type HfCell, type HfTopic } from "@/lib/hf/topics-data";
 
