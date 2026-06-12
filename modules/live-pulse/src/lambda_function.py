@@ -87,10 +87,11 @@ MIN_TOPIC_DOCS = int(os.environ.get("HF_MIN_TOPIC_DOCS", "5"))
 # Frontend staleness contract: generated_at older than this => not "Live".
 STALE_AFTER_HOURS = int(os.environ.get("HF_STALE_AFTER_HOURS", "2"))
 
-# GDELT serves the raw files over HTTPS with a valid cert; prefer it so the
-# trailing-window fetches can't be MITM-tampered in transit (the parser
-# ingests attacker-influenceable text — counts only, but hygiene still holds).
-GDELT_BASE = "https://data.gdeltproject.org/gdeltv2"
+# GDELT's raw file server is HTTP-only in practice: its HTTPS endpoint presents
+# a certificate that fails hostname verification (caught by the canary
+# 2026-06-12; the PoC has always used http here). The data is public and we
+# only count V2Themes matches, so the MITM surface is negligible.
+GDELT_BASE = "http://data.gdeltproject.org/gdeltv2"
 LASTUPDATE_URL = f"{GDELT_BASE}/lastupdate.txt"
 
 # GKG 2.1 column indices (0-based).
