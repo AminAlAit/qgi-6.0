@@ -13,7 +13,6 @@ import {
 import { RiskBoardViews } from "@/components/risk-board/RiskBoardViews";
 import { TopicBoard } from "@/components/risk-board/TopicBoard";
 import { getHfBoard } from "@/lib/hf/topics-data";
-import { getLiveStamp } from "@/lib/hf/live-pulse";
 import { LivePulseStamp } from "@/components/hf/LivePulseStamp";
 import { familyColor } from "@/lib/te-mock/l1-families";
 import { statusLabel } from "@/lib/te-mock/country-families";
@@ -24,17 +23,10 @@ export const metadata: Metadata = {
     "Present-tense, tier-gated discrimination ranks across the trend catalog. The honest replacement for the retired Signals page.",
 };
 
-// ISR (live-pulse track): re-read the live news-pulse file at runtime every 5
-// minutes (with the Vercel OIDC token) instead of freezing it at build time.
-// The hourly poller writes the file; 5 min keeps the freshness stamp current
-// without per-request S3 reads.
-export const revalidate = 300;
-
-export default async function RiskBoardPage() {
-  // News-pulse freshness gate (live-pulse track). Absent until the hourly
-  // poller is applied + seeded, in which case the stamp renders nothing and
-  // the Topics board shows the monthly vintage exactly as before.
-  const liveStamp = await getLiveStamp();
+export default function RiskBoardPage() {
+  // The news-pulse freshness stamp (live-pulse track) fetches its state
+  // client-side from /api/live-pulse — see LivePulseStamp. The page stays
+  // static; the stamp self-hides until live data is available.
 
   // Pull rows for the board (the curated set: scored + a representative
   // queued sample) and project to the slim public-safe shape before passing
@@ -199,17 +191,11 @@ export default async function RiskBoardPage() {
           }
           topics={
             <>
-              {/* Guard the wrapper (not just the stamp) so the 12px margin
-                  doesn't reserve space when absent — the stamp itself also
-                  returns null for absent, this keeps the layout clean too. */}
-              {liveStamp.status !== "absent" && (
-                <div style={{ margin: "0 0 12px" }}>
-                  <LivePulseStamp
-                    status={liveStamp.status}
-                    ageMinutes={liveStamp.ageMinutes}
-                  />
-                </div>
-              )}
+              {/* Self-fetching client stamp; renders nothing until live data
+                  arrives, so no empty space is reserved. */}
+              <div style={{ margin: "0 0 12px" }}>
+                <LivePulseStamp />
+              </div>
               <TopicBoard data={getHfBoard()} />
             </>
           }
