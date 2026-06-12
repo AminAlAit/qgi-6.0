@@ -9,6 +9,7 @@
  * plain language.
  */
 import { Sparkles } from "lucide-react";
+import { ExplainTip } from "@/components/design/ExplainTip";
 import { FlagImg } from "./FlagImg";
 import { FamilyChip } from "./FamilyChip";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
@@ -80,22 +81,15 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
               flexWrap: "wrap",
             }}
           >
-            <span
-              style={{
-                fontSize: "11px",
-                padding: "3px 9px",
-                border: "1px solid var(--qgi-border)",
-                color: "var(--qgi-text-muted)",
-                background: "rgba(122,143,160,0.10)",
-                borderRadius: "4px",
-                letterSpacing: "0.3px",
-                fontFamily: "ui-monospace, monospace",
-              }}
-              title={`These trends are currently in active rotation on the risk board. Open the trend page for the full methodology and current performance.`}
-            >
-              In active rotation
-            </span>
-            <span
+            {/* "In active rotation" chip removed 2026-06-11 (founder): it was
+                static decoration shown identically for every country, and its
+                grammar read as if the COUNTRY were in rotation. The per-trend
+                "in play" labels carry that status where it belongs. */}
+            {/* Real tooltip, not a title attr: three of five usability
+                personas (2026-06-11) hit this pill as a definition dead-end
+                and one called it a blocker for citing the number. */}
+            <ExplainTip
+              text="Compound Risk blends this country's elevated trend matches (50 and above) into one bounded 0-100 reading, dampened when few trends are elevated. It is a breadth-times-intensity summary, not a probability."
               style={{
                 fontSize: "11px",
                 padding: "3px 9px",
@@ -105,11 +99,11 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
                 letterSpacing: "0.3px",
                 fontFamily: "ui-monospace, monospace",
                 fontWeight: 600,
+                display: "inline-block",
               }}
-              title="A bounded 0-100 score that averages this country's trend matches, dampened for thin coverage. Not a probability."
             >
               Compound Risk {country.compound_score.toFixed(0)}
-            </span>
+            </ExplainTip>
           </div>
           <button
             data-tour="generate-report-button"

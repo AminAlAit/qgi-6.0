@@ -10,6 +10,9 @@ import {
   RiskBoardFilters,
   type RiskBoardRecipeProjection,
 } from "@/components/risk-board/RiskBoardFilters";
+import { RiskBoardViews } from "@/components/risk-board/RiskBoardViews";
+import { TopicBoard } from "@/components/risk-board/TopicBoard";
+import { getHfBoard } from "@/lib/hf/topics-data";
 import { familyColor } from "@/lib/te-mock/l1-families";
 import { statusLabel } from "@/lib/te-mock/country-families";
 
@@ -108,29 +111,16 @@ export default function RiskBoardPage() {
               fontSize: "32px",
               fontWeight: 600,
               lineHeight: 1.15,
-              margin: "0 0 10px",
+              margin: 0,
             }}
           >
             Where today&apos;s country paths resemble history&apos;s event trends
           </h1>
-          <p
-            style={{
-              color: "var(--qgi-text-muted)",
-              fontSize: "15px",
-              lineHeight: 1.6,
-              maxWidth: "820px",
-              margin: 0,
-            }}
-          >
-            {/* 2026-05-30 polish: dropped "discrimination ranks" jargon and
-                the "Not a forecast" hedge. New copy frames rows + cells
-                + the multi-country pick-and-compare affordance. No em-dashes
-                per V4.1 §11. */}
-            Each row is an event trend, a shape reconstructed from past cases. Each cell
-            shows how closely a country&apos;s recent path matches that shape. Scan a row
-            for today&apos;s closest matches, or pick countries to compare them across the
-            catalog.
-          </p>
+          {/* HF merge review (2026-06-10): the descriptive paragraph moved
+              INTO each tab view so the visible explanation always matches
+              the visible grid (the old static copy described trend rows
+              while the Topics tab shows country rows). One h1 + one
+              tab-appropriate sentence, per V4.1 §5. */}
         </div>
 
         {/* "Today across the catalog" hero strip removed 2026-05-29 —
@@ -143,39 +133,63 @@ export default function RiskBoardPage() {
             2026-05-30 — redundant with the filter bar that immediately
             announces what this surface is. The grid stands on its own. */}
 
-        <div data-tour="risk-board-grid">
-          <RiskBoardFilters
-            recipes={boardRecipes}
-            l1Families={l1Families}
-            countryUniverse={countryUniverse}
-          />
-        </div>
+        {/* HF merge step 1 (2026-06-10): the board now carries two views.
+            Trends = the structural grid (unchanged, below). News Topics =
+            the news-layer verdict board (TopicBoard). Both render
+            server-side and stay mounted; RiskBoardViews only toggles
+            visibility, so filter/lens state survives tab flips. */}
+        <RiskBoardViews
+          trends={
+            <>
+              <p
+                style={{
+                  color: "var(--qgi-text-muted)",
+                  fontSize: "15px",
+                  lineHeight: 1.6,
+                  maxWidth: "820px",
+                  margin: "0 0 16px",
+                }}
+              >
+                {/* 2026-05-30 polish: dropped "discrimination ranks" jargon and
+                    the "Not a forecast" hedge. No em-dashes per V4.1 §11. */}
+                Each row is an event trend, a shape reconstructed from past cases. Each
+                cell shows how closely a country&apos;s recent path matches that shape.
+                Scan a row for today&apos;s closest matches, or pick countries to compare
+                them across the catalog.
+              </p>
+              <div data-tour="risk-board-grid">
+                <RiskBoardFilters
+                  recipes={boardRecipes}
+                  l1Families={l1Families}
+                  countryUniverse={countryUniverse}
+                />
+              </div>
+              {/* Recent movements panel (structural, vintage-over-vintage) */}
+              <RecentMovements />
+              {/* Trends-tab footer (cadence copy is per-view; the Topics view
+                  carries its own). */}
+              <footer
+                style={{
+                  marginTop: "32px",
+                  padding: "16px 0",
+                  borderTop: "1px solid var(--qgi-border)",
+                  fontSize: "11px",
+                  color: "var(--qgi-text-dim)",
+                  fontFamily: "ui-monospace, monospace",
+                  letterSpacing: "0.3px",
+                }}
+              >
+                Scores refresh on each data release. New trends appear as their evidence
+                base grows.
+              </footer>
+            </>
+          }
+          topics={<TopicBoard data={getHfBoard()} />}
+        />
 
-        {/* Recent movements panel */}
-        <RecentMovements />
-
-        {/* Footer note */}
-        <footer
-          style={{
-            marginTop: "32px",
-            padding: "16px 0",
-            borderTop: "1px solid var(--qgi-border)",
-            fontSize: "11px",
-            color: "var(--qgi-text-dim)",
-            fontFamily: "ui-monospace, monospace",
-            letterSpacing: "0.3px",
-            display: "flex",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: "12px",
-          }}
-        >
-          {/* V4.1 §2: "Vintage: {BOARD_VINTAGE}" removed from footer. */}
-          <span>
-            Scores refresh on each data release. New trends appear as their evidence base
-            grows.
-          </span>
-        </footer>
+        {/* V4.1 §2: "Vintage: {BOARD_VINTAGE}" removed from footer.
+            2026-06-10: the cadence footer moved inside the Trends tab node
+            so the Topics view doesn't stack two footers. */}
       </div>
     </div>
   );

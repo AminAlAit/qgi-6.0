@@ -22,7 +22,8 @@ export type RouteKey =
   | "compare"
   | "patterns-v4"
   | "patterns-v4-detail"
-  | "recipe-country-match";
+  | "recipe-country-match"
+  | "live-pulse";
 
 export interface RuleEntry {
   /** Short title, sentence case, ~5 words. */
@@ -34,7 +35,11 @@ export interface RuleEntry {
 export interface PageHowToRead {
   /** 1 sentence, page-specific framing. */
   lede: string;
-  rules: [RuleEntry, RuleEntry, RuleEntry, RuleEntry];
+  /** Four rules house-style; five allowed where a page gains a distinct
+   *  data layer (the country profile's news panels, 2026-06-10). */
+  rules:
+    | [RuleEntry, RuleEntry, RuleEntry, RuleEntry]
+    | [RuleEntry, RuleEntry, RuleEntry, RuleEntry, RuleEntry];
 }
 
 export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
@@ -127,7 +132,7 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
   },
 
   "countries-v4.1-detail": {
-    lede: "Four rules for reading a single country's profile.",
+    lede: "Five rules for reading a single country's profile.",
     rules: [
       {
         title: "Scores are ranks, not probabilities",
@@ -142,8 +147,42 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
         body: "If a trend that previously fired for this country has since been withdrawn or revised, the profile updates to show the corrected state. The prior result is not erased.",
       },
       {
+        // News layer (2026-06-10): the panels' resemblance-not-forecast
+        // firewall, in the designated escape valve (V4.1 §9).
+        title: "News pulse measures attention, not events",
+        body: "The news panels show how much of this country's coverage is running on each theme versus its own history. Pulse confirms or questions a structural reading; it does not forecast an event.",
+      },
+      {
         title: "Nothing here is a forecast",
         body: "The indicators and pattern scores on this page describe structural resemblance to historical cases. They do not constitute a prediction of a specific event for this country.",
+      },
+    ],
+  },
+
+  // Live Pulse terminal (2026-06-11): the soft landing for the news layer.
+  // Written for a first-time reader; the terminal itself stays dense.
+  "live-pulse": {
+    lede: "Five rules for reading the Live Pulse terminal.",
+    rules: [
+      {
+        title: "Two readings, never one number",
+        body: "Structural is how closely this country's long-run indicators resemble the shape that ran ahead of this kind of event in the past, from 0 to 100. News pulse is how much of the country's news coverage is on this theme right now, where 50 is its own normal month.",
+      },
+      {
+        title: "News pulse measures attention, not events",
+        body: "A pulse of 100 means the theme dominates this country's coverage compared with its own history. It confirms or questions a structural reading; it does not forecast an event.",
+      },
+      {
+        title: "The verdict is the combination",
+        body: "Active means structure and news are both elevated, from 60 upward. Signal is news without structural backing, often noise. Latent is structure primed while the news stays quiet. Quiet is neither.",
+      },
+      {
+        title: "Pins are real events",
+        body: "The pins on the chart mark events from the verified record. Hover a pinned month and the tooltip names what happened.",
+      },
+      {
+        title: "Themes marked with a triangle have a measured lead",
+        body: "For the Electoral and Economic themes, the news pulse has tended to move about two months ahead of related events on the verified record. Other themes are tracked while their validation runs.",
       },
     ],
   },

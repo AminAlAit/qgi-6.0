@@ -15,6 +15,7 @@ import {
   PanelLeftClose,
   PanelLeft,
 } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 // Navigation items.
 // History:
@@ -510,6 +511,14 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
           })}
         </nav>
 
+        {/* Light/dark toggle (2026-06-10). Sits just above the tour/footer.
+            Icon-only and centred when collapsed; icon + word when expanded. */}
+        <div
+          className={`mx-2 mt-1 mb-1 flex ${collapsed ? "justify-center" : "justify-start"}`}
+        >
+          <ThemeToggle variant={collapsed ? "icon" : "labeled"} />
+        </div>
+
         {/* Tour re-trigger button. Hides gracefully when collapsed
             (overflow-hidden clips it; the icon-only mode has no space). */}
         {!collapsed && (
@@ -520,7 +529,7 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
               window.localStorage.setItem("qgi-tour-launch", "manual");
               window.location.reload();
             }}
-            className="mx-3 mb-2 mt-1 px-3 py-2 rounded text-[10px] tracking-widest uppercase font-semibold border transition-colors text-left cursor-pointer hover:border-[var(--qgi-accent)] hover:text-[var(--qgi-text)]"
+            className="mx-3 mb-2 mt-1 px-3 py-2 rounded text-[10.5px] tracking-widest uppercase font-semibold border transition-colors text-left cursor-pointer hover:border-[var(--qgi-accent)] hover:text-[var(--qgi-text)]"
             style={{
               borderColor: "var(--qgi-border)",
               color: "var(--qgi-text-muted)",
@@ -544,7 +553,7 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
             monthly). */}
         {!collapsed && dataVintage && (
           <div
-            className="mx-3 mb-3 px-3 py-1.5 text-[10px] tracking-[0.1em] uppercase font-medium leading-[1.35]"
+            className="mx-3 mb-3 px-3 py-1.5 text-[10.5px] tracking-[0.1em] uppercase font-medium leading-[1.35]"
             style={{
               color: "var(--qgi-text-dim)",
               fontFamily: "ui-monospace, monospace",
@@ -558,7 +567,7 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
         {/* Footer — shows text when expanded; hides when collapsed. */}
         {!collapsed && (
           <div
-            className="px-5 py-4 border-t text-[10px] tracking-wider"
+            className="px-5 py-4 border-t text-[10.5px] tracking-wider"
             style={{
               borderColor: "var(--qgi-border)",
               color: "var(--qgi-text-dim)",
@@ -646,7 +655,7 @@ function NavLeafLink({
           style={{
             whiteSpace: "nowrap",
             lineHeight: 1.3,
-            ...(isLongLabel ? { fontSize: "9px", letterSpacing: "0" } : {}),
+            ...(isLongLabel ? { fontSize: "10px", letterSpacing: "0" } : {}),
           }}
         >
           {label}
@@ -658,7 +667,7 @@ function NavLeafLink({
       {comingSoon && !collapsed && (
         <span
           aria-hidden="true"
-          className="shrink-0 text-center px-1 py-0.5 rounded text-[8px] font-semibold normal-case"
+          className="shrink-0 text-center px-1 py-0.5 rounded text-[9px] font-semibold normal-case"
           style={{
             color: "var(--qgi-text-dim)",
             border: "1px solid var(--qgi-border)",
