@@ -222,8 +222,8 @@ module "live_pulse" {
   data_lake_bucket_arn  = module.storage.bucket_arn
   cost_alerts_topic_arn = module.storage.cost_alerts_topic_arn
 
-  # Canary-safe: flip to "ENABLED" after the manual invoke passes (runbook S6).
-  schedule_state = "DISABLED"
+  # Canary passed 2026-06-12 (status live, 65/72 cells, FIPS correct); clock on.
+  schedule_state = "ENABLED"
 
   tags = local.tags
 }
