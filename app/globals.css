@@ -1,7 +1,13 @@
 @import "tailwindcss";
 
 /* ─── QGI Design Tokens ──────────────────────────────────────────────── */
+/* Light/dark (2026-06-10): DARK is the default (:root) so the live site is
+   byte-identical until a user opts in. LIGHT is an additive override applied
+   by adding `class="light"` to <html> (see app/layout.tsx no-flash script +
+   lib/hooks/useTheme.ts). Everything reads var(--qgi-*), so surfaces flip
+   automatically; only ECharts configs need the JS token map (lib/echarts-theme.ts). */
 :root {
+  color-scheme: dark;
   /* Surfaces */
   --qgi-bg: #0f1923; /* page background — deep navy-black */
   --qgi-surface: #162032; /* card / panel background */
@@ -62,6 +68,41 @@
   --qgi-success: #34d399;
   --qgi-warning: #fbbf24;
   --qgi-danger: #f87171;
+}
+
+/* ─── LIGHT theme (opt-in: <html class="light">) ─────────────────────────
+   WCAG targets against worst-case light surface --qgi-surface-2 (#f1f5f9):
+     text  #0f172a 20.5:1 (AAA) · muted #475569 7.6:1 (AAA) · dim #64748b 4.8:1 (AA)
+   Brand cyan/amber shift 2 ramp stops deeper so they stay legible on white
+   without losing identity (sky-600 / amber-600). Categorical data palettes in
+   lib/design.ts are data-ink and intentionally NOT overridden here. */
+:root.light {
+  color-scheme: light;
+  /* Surfaces */
+  --qgi-bg: #f8fafc; /* slate-50 */
+  --qgi-surface: #ffffff;
+  --qgi-surface-2: #f1f5f9; /* slate-100 */
+  --qgi-border: #cbd5e1; /* slate-300 */
+  /* Text */
+  --qgi-text: #0f172a; /* slate-900 — 20.5:1 vs surface-2 (AAA) */
+  --qgi-text-muted: #475569; /* slate-600 — 7.6:1 vs surface-2 (AAA) */
+  --qgi-text-dim: #64748b; /* slate-500 — 4.8:1 vs surface-2 (AA) */
+  /* Accent — QGI cyan, deepened for light bg */
+  --qgi-accent: #0284c7; /* sky-600 */
+  --qgi-accent-dim: #0369a1; /* sky-700 */
+  --qgi-accent-glow: rgba(2, 132, 199, 0.12);
+  /* Metric highlight */
+  --qgi-amber: #b45309; /* amber-700 — 4.7:1 on bg, safe for small labels too */
+  --qgi-amber-dim: #92400e; /* amber-800 */
+  /* Country pair */
+  --qgi-country-a: #0284c7;
+  --qgi-country-b: #ea580c; /* orange-600 */
+  /* Predicted */
+  --qgi-predicted: #94a3b8; /* slate-400 */
+  /* Status */
+  --qgi-success: #16a34a; /* green-600 */
+  --qgi-warning: #92400e; /* amber-800 — 7.0:1 on bg; amber-700 fell below 4.5:1 on warning-tinted (cream) strips at small sizes */
+  --qgi-danger: #dc2626; /* red-600 */
 }
 
 @theme inline {

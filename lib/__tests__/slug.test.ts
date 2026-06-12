@@ -70,7 +70,14 @@ describe("countrySlug", () => {
 });
 
 // #836 (R8-W1redo-Yuki-3) — ISO-2 code resolution in resolveCountryBySlug.
-describe("resolveCountryBySlug — ISO-2 code resolution", () => {
+//
+// 2026-06-11 flake fix: the first test in this block dynamically imports
+// lib/country-risks and Zod-validates the ~1MB country-risks.json. In
+// isolation that takes ~0.5-2s, but under the full parallel suite (40
+// worker-contended files) it intermittently exceeds vitest's 5s default
+// and fails the pre-push hook on changes that touch nothing related
+// (reproduced identically on origin/main). 30s is headroom, not slowness.
+describe("resolveCountryBySlug — ISO-2 code resolution", { timeout: 30_000 }, () => {
   it("resolves KR (uppercase) to South Korea", async () => {
     const { resolveCountryBySlug } = await import("@/lib/country-risks");
     const result = await resolveCountryBySlug("KR");

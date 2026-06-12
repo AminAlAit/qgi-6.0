@@ -44,6 +44,8 @@ import { ScoreDistributionPanel } from "@/components/precedents-v4-1/ScoreDistri
 import { PrecedentsTimelinePanel } from "@/components/precedents-v4-1/PrecedentsTimelinePanel";
 import { PatternAlignmentPanel } from "@/components/precedents-v4-1/PatternAlignmentPanel";
 import { IndicatorSensitivityPanel } from "@/components/precedents-v4-1/IndicatorSensitivityPanel";
+import { TrendNewsSignalPanel } from "@/components/precedents-v4-1/TrendNewsSignalPanel";
+import { getTrendNewsSignal } from "@/lib/hf/trend-signal";
 import { ExpandableShell } from "@/components/te-v4-shared/ExpandableShell";
 
 interface Params {
@@ -98,6 +100,10 @@ export default async function RecipeDetailV41Page({ params }: Params) {
   const shapeData = getShapeData(slug);
   const corpusEvents = getCorpusEvents(slug);
   const totalEventsInCorpus = getTotalEventsInCorpus(slug);
+
+  // News layer (HF merge step 3): the trend's primary theme x covered
+  // countries. Null for news-blind trends -> the panel simply absent.
+  const newsSignal = getTrendNewsSignal(slug);
 
   const demo = isDemoGraduated(recipe);
   const effectiveStatus = demo ? "graduated" : recipe.status;
@@ -257,6 +263,17 @@ export default async function RecipeDetailV41Page({ params }: Params) {
           totalEventsInCorpus={totalEventsInCorpus || (mock.nPositives ?? 0)}
         />
       </ExpandableShell>
+
+      {/* 2b. NEWS SIGNAL — where the news is running with this trend right
+          now (HF merge step 3). Absent for news-blind trends. */}
+      {newsSignal && (
+        <TrendNewsSignalPanel
+          key={`news-${slug}`}
+          slug={slug}
+          trendLabel={recipe.label}
+          signal={newsSignal}
+        />
+      )}
 
       {/* 3. RESULTS (what does it find) + the shape it aligns to */}
       <CountriesPanel

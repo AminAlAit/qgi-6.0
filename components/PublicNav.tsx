@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { Route } from "next";
 import { useEffect, useState } from "react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 /**
  * Shared top nav for every public-marketing page (landing, /about, /reports,
@@ -83,6 +84,8 @@ export function PublicNav({ currentPage = null }: PublicNavProps) {
       >
         Contact
       </Link>
+
+      <ThemeToggle variant="icon" />
 
       <Link
         href={"/dashboard" as Route}

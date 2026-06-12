@@ -175,7 +175,7 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
                   giving the row a true table-like alignment. */}
               <span
                 style={{
-                  fontSize: "9.5px",
+                  fontSize: "10.5px",
                   padding: "2px 8px",
                   borderRadius: "10px",
                   fontFamily: "ui-monospace, monospace",

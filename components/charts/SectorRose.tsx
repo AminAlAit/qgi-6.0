@@ -2,6 +2,8 @@
 
 import ReactECharts from "echarts-for-react";
 import { sectorColor } from "@/lib/design";
+import { useTheme } from "@/lib/hooks/useTheme";
+import { getEchartsTokens } from "@/lib/echarts-theme";
 
 interface Props {
   data: { name: string; value: number }[];
@@ -10,13 +12,15 @@ interface Props {
 }
 
 export function SectorRose({ data, onSectorClick, activeSector }: Props) {
+  const { isDark } = useTheme();
+  const t = getEchartsTokens(isDark);
+
   const enriched = data.map((d) => ({
     ...d,
     itemStyle: {
-      color:
-        activeSector && activeSector !== d.name
-          ? "rgba(36, 51, 71, 0.8)"
-          : sectorColor(d.name),
+      // Inactive sectors recede to a muted grey (themed); active keep their
+      // categorical sector hue (data-ink, intentionally not themed).
+      color: activeSector && activeSector !== d.name ? t.predicted : sectorColor(d.name),
     },
   }));
 
@@ -24,9 +28,9 @@ export function SectorRose({ data, onSectorClick, activeSector }: Props) {
     backgroundColor: "transparent",
     tooltip: {
       trigger: "item",
-      backgroundColor: "#1e2d42",
-      borderColor: "#243347",
-      textStyle: { color: "#e2e8f0", fontSize: 11 },
+      backgroundColor: t.surface2,
+      borderColor: t.border,
+      textStyle: { color: t.text, fontSize: 11 },
       formatter: "{b}: {c} indicators",
     },
     series: [
@@ -38,12 +42,12 @@ export function SectorRose({ data, onSectorClick, activeSector }: Props) {
         data: enriched,
         label: {
           show: true,
-          color: "#7a90a8",
+          color: t.textMuted,
           fontSize: 9,
           formatter: "{b}",
         },
         emphasis: {
-          label: { color: "#e2e8f0", fontSize: 10, fontWeight: 600 },
+          label: { color: t.text, fontSize: 10, fontWeight: 600 },
         },
       },
     ],
