@@ -13,6 +13,8 @@ import {
 import { RiskBoardViews } from "@/components/risk-board/RiskBoardViews";
 import { TopicBoard } from "@/components/risk-board/TopicBoard";
 import { getHfBoard } from "@/lib/hf/topics-data";
+import { getLiveStamp } from "@/lib/hf/live-pulse";
+import { LivePulseStamp } from "@/components/hf/LivePulseStamp";
 import { familyColor } from "@/lib/te-mock/l1-families";
 import { statusLabel } from "@/lib/te-mock/country-families";
 
@@ -22,7 +24,12 @@ export const metadata: Metadata = {
     "Present-tense, tier-gated discrimination ranks across the trend catalog. The honest replacement for the retired Signals page.",
 };
 
-export default function RiskBoardPage() {
+export default async function RiskBoardPage() {
+  // News-pulse freshness gate (live-pulse track). Absent until the hourly
+  // poller is applied + seeded, in which case the stamp renders nothing and
+  // the Topics board shows the monthly vintage exactly as before.
+  const liveStamp = await getLiveStamp();
+
   // Pull rows for the board (the curated set: scored + a representative
   // queued sample) and project to the slim public-safe shape before passing
   // to the client. Raw verdict/stats/status enum are stripped server-side.
@@ -184,7 +191,22 @@ export default function RiskBoardPage() {
               </footer>
             </>
           }
-          topics={<TopicBoard data={getHfBoard()} />}
+          topics={
+            <>
+              {/* Guard the wrapper (not just the stamp) so the 12px margin
+                  doesn't reserve space when absent — the stamp itself also
+                  returns null for absent, this keeps the layout clean too. */}
+              {liveStamp.status !== "absent" && (
+                <div style={{ margin: "0 0 12px" }}>
+                  <LivePulseStamp
+                    status={liveStamp.status}
+                    ageMinutes={liveStamp.ageMinutes}
+                  />
+                </div>
+              )}
+              <TopicBoard data={getHfBoard()} />
+            </>
+          }
         />
 
         {/* V4.1 §2: "Vintage: {BOARD_VINTAGE}" removed from footer.
