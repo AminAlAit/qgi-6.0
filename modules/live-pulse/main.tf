@@ -71,6 +71,19 @@ resource "aws_iam_role_policy" "poller" {
         ]
       },
       {
+        # GetObject on a not-yet-written key (the buckets cache, on the first
+        # run) returns 404 NoSuchKey ONLY if the caller has s3:ListBucket on the
+        # bucket; without it S3 returns 403 AccessDenied, which the handler
+        # (correctly) treats as a real error and fails. Unconditioned because a
+        # prefix condition is not honored for GetObject's implicit existence
+        # check. GetObject/PutObject above stay scoped to the two dashboard keys,
+        # so this only grants the ability to LIST key names. (Found by the canary.)
+        Sid      = "ListForMissingKey404"
+        Effect   = "Allow"
+        Action   = ["s3:ListBucket"]
+        Resource = var.data_lake_bucket_arn
+      },
+      {
         # Write the rolling bucket cache + the live output the frontend reads.
         Sid    = "WriteOutput"
         Effect = "Allow"
