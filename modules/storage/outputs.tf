@@ -45,5 +45,9 @@ output "pipeline_a_counter_table_arn" { value = aws_dynamodb_table.pipeline_a_co
 
 output "sns_topic_arn" { value = aws_sns_topic.pipeline_notifications.arn }
 
+# Cost-guard SNS topic — pages the QGI ops inbox when a budget/alarm breaches.
+# Consumed by the live-pulse module's budget + DLQ alarm (live-pulse track).
+output "cost_alerts_topic_arn" { value = aws_sns_topic.cost_alerts.arn }
+
 output "glue_database_name" { value = aws_glue_catalog_database.qgi_data.name }
 output "athena_workgroup_name" { value = aws_athena_workgroup.qgi.name }
