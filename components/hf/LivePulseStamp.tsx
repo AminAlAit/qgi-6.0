@@ -3,22 +3,28 @@
 /**
  * LivePulseStamp — the freshness gate's visible face.
  *
- * Renders the live news-pulse state from getLiveStamp() (lib/hf/live-pulse).
- * Confidence-first, no theatrics (V4.1): a single dot + a plain sentence. It
- * renders NOTHING when the poller has no fresh data ("absent"), so every
- * surface looks exactly as it does today until the hourly Lambda is live.
+ * Fetches the live news-pulse state CLIENT-SIDE from /api/live-pulse. That
+ * route runs in a request context, where the Vercel OIDC token (needed to read
+ * the private S3 file) is available — ISR static regeneration is NOT such a
+ * context, so reading S3 from the page server component silently returned
+ * `absent`. Fetching from the dynamic route keeps the pages fast/static while
+ * still showing live data.
  *
- * Props are plain serializable values so a server component can compute the
- * stamp once (getLiveStamp) and hand it down without shipping the S3 reader
- * to the client.
+ * Confidence-first, no theatrics (V4.1): a single dot + a plain sentence. It
+ * renders NOTHING while loading or when the poller has no fresh data
+ * ("absent"), so every surface looks exactly as before until data is live.
  */
+import { useEffect, useState } from "react";
 import type { LiveStatus } from "@/lib/hf/live-pulse-core";
 
 export interface LivePulseStampProps {
-  status: LiveStatus;
-  ageMinutes: number | null;
   /** Compact variant for dense headers (smaller text, no trailing hint). */
   compact?: boolean;
+}
+
+interface StampState {
+  status: LiveStatus;
+  ageMinutes: number | null;
 }
 
 function ago(min: number | null): string {
@@ -29,9 +35,27 @@ function ago(min: number | null): string {
   return `${h}h ago`;
 }
 
-export function LivePulseStamp({ status, ageMinutes, compact = false }: LivePulseStampProps) {
-  // Absent = no poller data yet. Stay invisible (today's default look).
-  if (status === "absent") return null;
+export function LivePulseStamp({ compact = false }: LivePulseStampProps) {
+  const [stamp, setStamp] = useState<StampState | null>(null);
+
+  useEffect(() => {
+    let live = true;
+    fetch("/api/live-pulse")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d: StampState | null) => {
+        if (live && d) setStamp(d);
+      })
+      .catch(() => {
+        /* network/absent -> stay invisible */
+      });
+    return () => {
+      live = false;
+    };
+  }, []);
+
+  // Loading or absent (no poller data yet) -> stay invisible (default look).
+  if (!stamp || stamp.status === "absent") return null;
+  const { status, ageMinutes } = stamp;
 
   const config: Record<
     Exclude<LiveStatus, "absent">,

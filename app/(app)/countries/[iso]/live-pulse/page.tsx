@@ -18,17 +18,11 @@ import { CountryV41Header } from "@/components/countries-v4-1/CountryV41Header";
 import { LivePulseClient } from "@/components/countries-v4-1/LivePulseClient";
 import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import { getHfCountryDetail, hfCoveredIso3 } from "@/lib/hf/pulse-detail";
-import { getLiveStamp } from "@/lib/hf/live-pulse";
 import { LivePulseStamp } from "@/components/hf/LivePulseStamp";
 
 interface Params {
   params: Promise<{ iso: string }>;
 }
-
-// ISR (live-pulse track): the prerendered per-country pages re-read the live
-// pulse file at runtime every 5 minutes (with the Vercel OIDC token) so the
-// freshness stamp reflects the hourly poller instead of build time.
-export const revalidate = 300;
 
 export async function generateStaticParams() {
   // Covered by the news layer AND present in the curated country set.
@@ -60,10 +54,6 @@ export default async function LivePulsePage({ params }: Params) {
   const country = getCountryByIso(iso);
   const detail = country ? getHfCountryDetail(country.iso) : null;
   if (!country || !detail) notFound();
-
-  // News-pulse freshness gate (live-pulse track). Renders nothing until the
-  // hourly poller is live; the terminal stays exactly as it is today.
-  const liveStamp = await getLiveStamp();
 
   return (
     <div
@@ -117,13 +107,9 @@ export default async function LivePulsePage({ params }: Params) {
               >
                 ⚡ Live Pulse
               </span>
-              {/* News-pulse freshness — only shows once the hourly poller is
-                  live; otherwise invisible (terminal shows monthly readings). */}
-              <LivePulseStamp
-                status={liveStamp.status}
-                ageMinutes={liveStamp.ageMinutes}
-                compact
-              />
+              {/* News-pulse freshness — self-fetching client widget; only
+                  shows once the hourly poller is live, else invisible. */}
+              <LivePulseStamp compact />
               {/* Soft landing (founder 2026-06-11): the terminal stays dense,
                   but first-timers get the same how-to-read affordance the
                   structural pages carry. */}
