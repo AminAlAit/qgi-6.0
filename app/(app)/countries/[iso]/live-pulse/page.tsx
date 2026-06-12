@@ -25,6 +25,11 @@ interface Params {
   params: Promise<{ iso: string }>;
 }
 
+// ISR (live-pulse track): the prerendered per-country pages re-read the live
+// pulse file at runtime every 5 minutes (with the Vercel OIDC token) so the
+// freshness stamp reflects the hourly poller instead of build time.
+export const revalidate = 300;
+
 export async function generateStaticParams() {
   // Covered by the news layer AND present in the curated country set.
   return hfCoveredIso3()

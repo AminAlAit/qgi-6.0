@@ -24,6 +24,12 @@ export const metadata: Metadata = {
     "Present-tense, tier-gated discrimination ranks across the trend catalog. The honest replacement for the retired Signals page.",
 };
 
+// ISR (live-pulse track): re-read the live news-pulse file at runtime every 5
+// minutes (with the Vercel OIDC token) instead of freezing it at build time.
+// The hourly poller writes the file; 5 min keeps the freshness stamp current
+// without per-request S3 reads.
+export const revalidate = 300;
+
 export default async function RiskBoardPage() {
   // News-pulse freshness gate (live-pulse track). Absent until the hourly
   // poller is applied + seeded, in which case the stamp renders nothing and
