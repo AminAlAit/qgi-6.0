@@ -62,7 +62,17 @@ export async function getLivePulse(nowMs: number = Date.now()): Promise<LivePuls
   // stale by construction). A local override is honored only for dev.
   try {
     const { S3Client, GetObjectCommand } = await import("@aws-sdk/client-s3");
-    const s3 = new S3Client({ region: REGION });
+    // On Vercel (AWS_ROLE_ARN set) read via OIDC federation — a short-lived
+    // assumed-role token, no stored AWS key. Locally / at build time there is
+    // no OIDC token, so fall back to the default credential chain; a failure
+    // there just yields `absent` (the monthly fallback), never a crash.
+    const roleArn = process.env.AWS_ROLE_ARN;
+    const credentials = roleArn
+      ? (await import("@vercel/oidc-aws-credentials-provider")).awsCredentialsProvider({
+          roleArn,
+        })
+      : undefined;
+    const s3 = new S3Client({ region: REGION, ...(credentials ? { credentials } : {}) });
     const resp = await s3.send(new GetObjectCommand({ Bucket: BUCKET, Key: S3_KEY }));
     const body = await resp.Body?.transformToString();
     if (body) {
