@@ -197,6 +197,38 @@ module "monitoring" {
 }
 
 # ---------------------------------------------------------------------------
+# Live-pulse poller — hourly GDELT-GKG nowcast -> dashboard/hf-pulse-live.json
+#
+# Founder go 2026-06-11 ("I like it. Go."). The chosen private-and-free path:
+# one bounded Lambda fired hourly by EventBridge Scheduler, in the account
+# that owns the data-lake bucket, so the write is an in-account IAM-role call
+# (no GitHub minutes, no second cloud, no always-on box, no keys).
+#
+# CANARY ROLLOUT (SRE + methodology panel 2026-06-12): ships with the hourly
+# clock DISABLED so the first apply creates the infra WITHOUT auto-firing.
+# Runbook: apply -> seed the baseline -> ONE manual `aws lambda invoke` ->
+# validate hf-pulse-live.json (FIPS totals, z near 50, sparsity=null) -> only
+# THEN flip schedule_state to "ENABLED" and re-apply + commit. The frontend
+# staleness gate falls back to the monthly verdict until the clock is on.
+# ---------------------------------------------------------------------------
+module "live_pulse" {
+  source = "../../modules/live-pulse"
+
+  environment    = var.environment
+  aws_account_id = var.aws_account_id
+  region         = var.region
+
+  data_lake_bucket_name = module.storage.bucket_name
+  data_lake_bucket_arn  = module.storage.bucket_arn
+  cost_alerts_topic_arn = module.storage.cost_alerts_topic_arn
+
+  # Canary-safe: flip to "ENABLED" after the manual invoke passes (runbook S6).
+  schedule_state = "DISABLED"
+
+  tags = local.tags
+}
+
+# ---------------------------------------------------------------------------
 # GHA self-hosted runner — c7g.medium Spot Graviton (qgi-aws-tf#970)
 #
 # Replaces GHA-hosted minutes for the qgi-frontend repo so the
