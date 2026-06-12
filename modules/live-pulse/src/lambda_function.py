@@ -381,6 +381,13 @@ def lambda_handler(event, context):  # noqa: ARG001
     _put_json(LIVE_KEY, live)
 
     live_cells = sum(1 for c in cells.values() if c.get("pulse") is not None)
+    # Per-country 24h doc totals — the canary's FIPS smoking gun. If a country
+    # reads 0 here while others read thousands, its FIPS 10-4 code is not
+    # matching GDELT's V2Locations (the LE/SU/BM/TS/NI trap). Cheap, one line.
+    print(
+        "per-country 24h totals: "
+        + ", ".join(f"{iso3}={agg[iso3][0]}" for iso3 in sorted(agg))
+    )
     print(
         f"OK: wrote {LIVE_KEY} — {live_cells}/{len(cells)} cells live, "
         f"{live['files_in_window']} files in {WINDOW_HOURS}h window, "
