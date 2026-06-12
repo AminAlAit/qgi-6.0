@@ -204,11 +204,12 @@ module "monitoring" {
 # that owns the data-lake bucket, so the write is an in-account IAM-role call
 # (no GitHub minutes, no second cloud, no always-on box, no keys).
 #
-# Ships ENABLED (founder-ratified Scheduler exception — see the module). To
-# stage the infra without the clock, set schedule_state = "DISABLED" here.
-# The frontend staleness gate ships in the same change (qgi-frontend
-# lib/hf/live-pulse.ts) so a stale/missing file always falls back to the
-# monthly verdict.
+# CANARY ROLLOUT (SRE + methodology panel 2026-06-12): ships with the hourly
+# clock DISABLED so the first apply creates the infra WITHOUT auto-firing.
+# Runbook: apply -> seed the baseline -> ONE manual `aws lambda invoke` ->
+# validate hf-pulse-live.json (FIPS totals, z near 50, sparsity=null) -> only
+# THEN flip schedule_state to "ENABLED" and re-apply + commit. The frontend
+# staleness gate falls back to the monthly verdict until the clock is on.
 # ---------------------------------------------------------------------------
 module "live_pulse" {
   source = "../../modules/live-pulse"
@@ -220,6 +221,9 @@ module "live_pulse" {
   data_lake_bucket_name = module.storage.bucket_name
   data_lake_bucket_arn  = module.storage.bucket_arn
   cost_alerts_topic_arn = module.storage.cost_alerts_topic_arn
+
+  # Canary-safe: flip to "ENABLED" after the manual invoke passes (runbook S6).
+  schedule_state = "DISABLED"
 
   tags = local.tags
 }

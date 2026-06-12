@@ -59,14 +59,22 @@ variable "log_retention_days" {
 
 variable "memory_size" {
   type        = number
-  default     = 512
-  description = "Lambda memory (MB). 512 is ample: files are streamed one at a time."
+  default     = 1024
+  description = <<-EOT
+    Lambda memory (MB). Files are streamed one at a time so memory is not the
+    bottleneck; 1024 (vs 512) buys proportionally more vCPU, which cuts the
+    cold-cache fetch/parse time. Still firmly in the free tier at hourly cadence.
+  EOT
 }
 
 variable "timeout" {
   type        = number
-  default     = 300
-  description = "Lambda timeout (s). Steady-state runs finish in seconds; the cap covers a cold cache."
+  default     = 600
+  description = <<-EOT
+    Lambda timeout (s). Steady-state runs finish in seconds; 600 gives ample
+    headroom for a COLD cache (up to MAX_FETCH sequential GKG fetches). Timeout
+    is free unless used, so the headroom costs nothing.
+  EOT
 }
 
 variable "tags" {

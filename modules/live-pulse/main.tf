@@ -261,3 +261,30 @@ resource "aws_cloudwatch_metric_alarm" "dlq_not_empty" {
   ok_actions    = var.cost_alerts_topic_arn == "" ? [] : [var.cost_alerts_topic_arn]
   tags          = var.tags
 }
+
+# ---------------------------------------------------------------------------
+# Runaway guard (FinOps review) — the $1 Lambda budget is account-wide and lags
+# up to 24h, so a `rate(1 minute)` typo could burn real money before it fires.
+# This per-function alarm trips within the hour: an hourly schedule means ~1
+# invocation/hour (3 at most with the 2 Scheduler retries); >4/hour is a
+# misconfigured rate() or a loop. Cheap insurance with a fast signal.
+# ---------------------------------------------------------------------------
+resource "aws_cloudwatch_metric_alarm" "invocations_runaway" {
+  alarm_name          = "${local.function_name}-invocations-runaway"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 1
+  metric_name         = "Invocations"
+  namespace           = "AWS/Lambda"
+  period              = 3600
+  statistic           = "Sum"
+  threshold           = 4
+  alarm_description   = "live-pulse poller firing far more than hourly — possible rate() misconfig or loop"
+  treat_missing_data  = "notBreaching"
+
+  dimensions = {
+    FunctionName = aws_lambda_function.poller.function_name
+  }
+
+  alarm_actions = var.cost_alerts_topic_arn == "" ? [] : [var.cost_alerts_topic_arn]
+  tags          = var.tags
+}
