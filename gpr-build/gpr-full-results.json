@@ -1,0 +1,685 @@
+{
+  "scored_countries": [
+    "ARG",
+    "EGY",
+    "THA",
+    "TUN",
+    "VEN"
+  ],
+  "n_scored": 5,
+  "n_gprc_columns_in_key": 44,
+  "window": "2015-02 to 2026-05",
+  "per_country": [
+    {
+      "iso3": "ARG",
+      "n_months": 136,
+      "window": "2015-02 to 2026-05",
+      "pearson_r": 0.3806322232345998,
+      "spearman_r": 0.4673934250317042,
+      "pearson_delta": 0.38556449954005256,
+      "spike_recall": 0.5,
+      "rmse_z": 1.112984974530564,
+      "pearson_r_2015_2019": 0.24740304583694886,
+      "pearson_r_2020plus": 0.5538852417272243,
+      "spearman_delta_2015_2019": 0.4910947737549602,
+      "spearman_delta_2020plus": 0.42359535201640464,
+      "n_2015_2019": 59,
+      "n_2020plus": 77,
+      "calibration": {
+        "a": -0.04172836698429713,
+        "b": 0.29072044769135486,
+        "n_train": 82,
+        "n_holdout": 54,
+        "train_window": "2015-02 to 2021-11",
+        "holdout_window": "2021-12 to 2026-05",
+        "rmse_train": 0.0351452651084731,
+        "rmse_holdout": 0.02795044812878117
+      },
+      "production_gate_metric": "pearson_levels_calibrated",
+      "production_gate_bar": 0.9,
+      "production_gate_value": 0.3806322232345998,
+      "production_pass": false,
+      "_spearman_levels": 0.4065742707676175,
+      "_n_spikes": 14
+    },
+    {
+      "iso3": "EGY",
+      "n_months": 136,
+      "window": "2015-02 to 2026-05",
+      "pearson_r": 0.7707797626109321,
+      "spearman_r": 0.6023266022827041,
+      "pearson_delta": 0.8035583721872981,
+      "spike_recall": 0.8571428571428571,
+      "rmse_z": 0.6770823249636163,
+      "pearson_r_2015_2019": 0.6008338419975158,
+      "pearson_r_2020plus": 0.9276003355339821,
+      "spearman_delta_2015_2019": 0.45313605463102524,
+      "spearman_delta_2020plus": 0.6721804511278195,
+      "n_2015_2019": 59,
+      "n_2020plus": 77,
+      "calibration": {
+        "a": -0.15167364388342228,
+        "b": 0.5636134592529528,
+        "n_train": 82,
+        "n_holdout": 54,
+        "train_window": "2015-02 to 2021-11",
+        "holdout_window": "2021-12 to 2026-05",
+        "rmse_train": 0.07566783736935773,
+        "rmse_holdout": 0.3023689635070029
+      },
+      "production_gate_metric": "pearson_levels_calibrated",
+      "production_gate_bar": 0.9,
+      "production_gate_value": 0.7707797626109321,
+      "production_pass": false,
+      "_spearman_levels": 0.650675063212633,
+      "_n_spikes": 14
+    },
+    {
+      "iso3": "THA",
+      "n_months": 136,
+      "window": "2015-02 to 2026-05",
+      "pearson_r": 0.6293494897527854,
+      "spearman_r": 0.45884847679343055,
+      "pearson_delta": 0.602932523580239,
+      "spike_recall": 0.7857142857142857,
+      "rmse_z": 0.8609883974214919,
+      "pearson_r_2015_2019": 0.20540893359757875,
+      "pearson_r_2020plus": 0.8401096730414345,
+      "spearman_delta_2015_2019": 0.28598234335107203,
+      "spearman_delta_2020plus": 0.5864935064935065,
+      "n_2015_2019": 59,
+      "n_2020plus": 77,
+      "calibration": {
+        "a": -0.0033917221364604087,
+        "b": 0.1122831271976208,
+        "n_train": 82,
+        "n_holdout": 54,
+        "train_window": "2015-02 to 2021-11",
+        "holdout_window": "2021-12 to 2026-05",
+        "rmse_train": 0.023805840802520403,
+        "rmse_holdout": 0.045582773261302285
+      },
+      "production_gate_metric": "pearson_levels_calibrated",
+      "production_gate_bar": 0.9,
+      "production_gate_value": 0.6293494897527854,
+      "production_pass": false,
+      "_spearman_levels": 0.36877135142094797,
+      "_n_spikes": 14
+    },
+    {
+      "iso3": "TUN",
+      "n_months": 136,
+      "window": "2015-02 to 2026-05",
+      "pearson_r": 0.7532382590695295,
+      "spearman_r": 0.32704166305953375,
+      "pearson_delta": 0.5917320450020777,
+      "spike_recall": 0.6428571428571429,
+      "rmse_z": 0.702512264562647,
+      "pearson_r_2015_2019": 0.79441140592151,
+      "pearson_r_2020plus": 0.4166908518157029,
+      "spearman_delta_2015_2019": 0.45978036851333476,
+      "spearman_delta_2020plus": 0.20915926179084074,
+      "n_2015_2019": 59,
+      "n_2020plus": 77,
+      "calibration": {
+        "a": -0.06653221022516743,
+        "b": 0.153701307216621,
+        "n_train": 82,
+        "n_holdout": 54,
+        "train_window": "2015-02 to 2021-11",
+        "holdout_window": "2021-12 to 2026-05",
+        "rmse_train": 0.02492292419349986,
+        "rmse_holdout": 0.019896321004614186
+      },
+      "production_gate_metric": "pearson_levels_calibrated",
+      "production_gate_bar": 0.9,
+      "production_gate_value": 0.7532382590695295,
+      "production_pass": false,
+      "_spearman_levels": 0.5704036538344242,
+      "_n_spikes": 14
+    },
+    {
+      "iso3": "VEN",
+      "n_months": 136,
+      "window": "2015-02 to 2026-05",
+      "pearson_r": 0.6067693746387107,
+      "spearman_r": 0.4211589113257243,
+      "pearson_delta": 0.2510923664051974,
+      "spike_recall": 0.5,
+      "rmse_z": 0.8868265054240196,
+      "pearson_r_2015_2019": 0.5636411452801705,
+      "pearson_r_2020plus": 0.6363476756272137,
+      "spearman_delta_2015_2019": 0.3572241533113907,
+      "spearman_delta_2020plus": 0.48642515379357487,
+      "n_2015_2019": 59,
+      "n_2020plus": 77,
+      "calibration": {
+        "a": -0.22116823652671325,
+        "b": 0.6663985443550937,
+        "n_train": 82,
+        "n_holdout": 54,
+        "train_window": "2015-02 to 2021-11",
+        "holdout_window": "2021-12 to 2026-05",
+        "rmse_train": 0.07094099700859714,
+        "rmse_holdout": 0.2731696438141875
+      },
+      "production_gate_metric": "pearson_levels_calibrated",
+      "production_gate_bar": 0.9,
+      "production_gate_value": 0.6067693746387107,
+      "production_pass": false,
+      "_spearman_levels": 0.6698917036400935,
+      "_n_spikes": 14
+    }
+  ],
+  "mean_pearson_r_levels_diagnostic": 0.6281538218613114,
+  "mean_spearman_r_headline": 0.4553538156986193,
+  "mean_pearson_delta": 0.5269759613429729,
+  "mean_spike_recall": 0.6571428571428571,
+  "spike_recall_chance_baseline": 0.25,
+  "production_gate": {
+    "metric": "pearson_levels_calibrated",
+    "bar": 0.9,
+    "bar_note": "PRODUCTION targets per-country r >= 0.90 on the CALIBRATED levels series (Caldara-Iacoviello fidelity bar). This is a DIFFERENT, stricter bar than the PoC's 0.35 mean delta-Spearman gate. Metric reported as 'pearson_levels_calibrated' so the levels-vs-delta choice is never switched silently (Ji-Hoon must-fix #1).",
+    "n_pass": 0,
+    "n_scored": 5,
+    "pass_iso3": [],
+    "PASS_ALL": false
+  },
+  "poc_equivalent_gate": {
+    "metric": "mean delta-Spearman",
+    "bar": "mean >= 0.35 AND >=3 countries >=0.25 AND none negative",
+    "mean_delta_spearman": 0.4553538156986193,
+    "n_countries_ge_0.25": 5,
+    "any_negative": false,
+    "PASS": true
+  },
+  "honesty_note": "Re-implementation on a DIFFERENT corpus (GDELT machine-coded vs Iacoviello's ~10 newspapers), different normalization window, different country-attribution. Levels are NOT directly comparable; correlations test SHAPE, calibration RMSE uses an affine fit to put the proxy on his scale. Never claim the proxy IS GPR.",
+  "share_out_of_range_flags": [
+    {
+      "iso3": "BGD",
+      "month": "2016-07",
+      "value": 1.2108884802760032
+    },
+    {
+      "iso3": "BGD",
+      "month": "2017-09",
+      "value": 1.0253582034403952
+    },
+    {
+      "iso3": "MMR",
+      "month": "2017-09",
+      "value": 1.2519251740625787
+    },
+    {
+      "iso3": "MMR",
+      "month": "2017-10",
+      "value": 1.1647876043495673
+    },
+    {
+      "iso3": "MMR",
+      "month": "2017-11",
+      "value": 1.05630269667619
+    },
+    {
+      "iso3": "MMR",
+      "month": "2018-08",
+      "value": 1.0475439387111312
+    },
+    {
+      "iso3": "MMR",
+      "month": "2018-09",
+      "value": 1.05287821240073
+    },
+    {
+      "iso3": "MMR",
+      "month": "2021-02",
+      "value": 1.0516296684259296
+    },
+    {
+      "iso3": "MMR",
+      "month": "2021-03",
+      "value": 1.1066847223932046
+    },
+    {
+      "iso3": "EGY",
+      "month": "2023-10",
+      "value": 1.1505636941986022
+    },
+    {
+      "iso3": "EGY",
+      "month": "2023-11",
+      "value": 1.024122462459959
+    },
+    {
+      "iso3": "IRN",
+      "month": "2017-06",
+      "value": 1.076857564238383
+    },
+    {
+      "iso3": "IRN",
+      "month": "2023-10",
+      "value": 1.375840244520486
+    },
+    {
+      "iso3": "IRN",
+      "month": "2023-11",
+      "value": 1.2419217717449544
+    },
+    {
+      "iso3": "IRN",
+      "month": "2023-12",
+      "value": 1.1223843868012133
+    },
+    {
+      "iso3": "IRN",
+      "month": "2024-01",
+      "value": 1.351338206758279
+    },
+    {
+      "iso3": "IRN",
+      "month": "2024-02",
+      "value": 1.105465785921388
+    },
+    {
+      "iso3": "IRN",
+      "month": "2024-04",
+      "value": 1.0681013199851939
+    },
+    {
+      "iso3": "IRN",
+      "month": "2024-07",
+      "value": 1.0556050588173629
+    },
+    {
+      "iso3": "IRN",
+      "month": "2024-08",
+      "value": 1.2975211103370243
+    },
+    {
+      "iso3": "IRN",
+      "month": "2024-09",
+      "value": 1.2212763762059538
+    },
+    {
+      "iso3": "IRN",
+      "month": "2024-10",
+      "value": 1.2623137643741067
+    },
+    {
+      "iso3": "IRN",
+      "month": "2024-11",
+      "value": 1.0744851423990327
+    },
+    {
+      "iso3": "IRN",
+      "month": "2024-12",
+      "value": 1.1814600407889237
+    },
+    {
+      "iso3": "IRN",
+      "month": "2026-06",
+      "value": 1.0092905335656654
+    },
+    {
+      "iso3": "LBN",
+      "month": "2015-03",
+      "value": 1.079329436569019
+    },
+    {
+      "iso3": "LBN",
+      "month": "2015-04",
+      "value": 1.0387023696253002
+    },
+    {
+      "iso3": "LBN",
+      "month": "2015-05",
+      "value": 1.1879921174397305
+    },
+    {
+      "iso3": "LBN",
+      "month": "2015-06",
+      "value": 1.0871736867392696
+    },
+    {
+      "iso3": "LBN",
+      "month": "2015-07",
+      "value": 1.0195651254283176
+    },
+    {
+      "iso3": "LBN",
+      "month": "2015-10",
+      "value": 1.0102156202616226
+    },
+    {
+      "iso3": "LBN",
+      "month": "2015-11",
+      "value": 1.1578184480234261
+    },
+    {
+      "iso3": "LBN",
+      "month": "2015-12",
+      "value": 1.1102627356725665
+    },
+    {
+      "iso3": "LBN",
+      "month": "2016-01",
+      "value": 1.0338536126208022
+    },
+    {
+      "iso3": "LBN",
+      "month": "2016-02",
+      "value": 1.061620518870823
+    },
+    {
+      "iso3": "LBN",
+      "month": "2016-03",
+      "value": 1.016910903203837
+    },
+    {
+      "iso3": "LBN",
+      "month": "2016-09",
+      "value": 1.0002177497122593
+    },
+    {
+      "iso3": "LBN",
+      "month": "2016-12",
+      "value": 1.072098951053058
+    },
+    {
+      "iso3": "LBN",
+      "month": "2017-04",
+      "value": 1.0528995067110245
+    },
+    {
+      "iso3": "LBN",
+      "month": "2017-07",
+      "value": 1.0379245548101577
+    },
+    {
+      "iso3": "LBN",
+      "month": "2017-08",
+      "value": 1.0722105877051136
+    },
+    {
+      "iso3": "LBN",
+      "month": "2018-04",
+      "value": 1.0229853954214763
+    },
+    {
+      "iso3": "LBN",
+      "month": "2023-04",
+      "value": 1.0116654052453191
+    },
+    {
+      "iso3": "LBN",
+      "month": "2023-10",
+      "value": 1.6434836248276434
+    },
+    {
+      "iso3": "LBN",
+      "month": "2023-11",
+      "value": 1.5758622381396261
+    },
+    {
+      "iso3": "LBN",
+      "month": "2023-12",
+      "value": 1.4442893945899529
+    },
+    {
+      "iso3": "LBN",
+      "month": "2024-01",
+      "value": 1.5315962943167647
+    },
+    {
+      "iso3": "LBN",
+      "month": "2024-02",
+      "value": 1.3617123617123617
+    },
+    {
+      "iso3": "LBN",
+      "month": "2024-03",
+      "value": 1.2281581850779202
+    },
+    {
+      "iso3": "LBN",
+      "month": "2024-04",
+      "value": 1.3311025817668865
+    },
+    {
+      "iso3": "LBN",
+      "month": "2024-05",
+      "value": 1.183783032472158
+    },
+    {
+      "iso3": "LBN",
+      "month": "2024-06",
+      "value": 1.4051378988960213
+    },
+    {
+      "iso3": "LBN",
+      "month": "2024-07",
+      "value": 1.2795514755714374
+    },
+    {
+      "iso3": "LBN",
+      "month": "2024-08",
+      "value": 1.5097217551755953
+    },
+    {
+      "iso3": "LBN",
+      "month": "2024-09",
+      "value": 1.5454879516412041
+    },
+    {
+      "iso3": "LBN",
+      "month": "2024-10",
+      "value": 1.499591739316132
+    },
+    {
+      "iso3": "LBN",
+      "month": "2024-11",
+      "value": 1.4546692009007822
+    },
+    {
+      "iso3": "LBN",
+      "month": "2024-12",
+      "value": 1.3478851707151351
+    },
+    {
+      "iso3": "LBN",
+      "month": "2025-01",
+      "value": 1.2148792539494746
+    },
+    {
+      "iso3": "LBN",
+      "month": "2025-02",
+      "value": 1.1687657430730478
+    },
+    {
+      "iso3": "LBN",
+      "month": "2025-03",
+      "value": 1.1806289446646119
+    },
+    {
+      "iso3": "LBN",
+      "month": "2025-04",
+      "value": 1.1255130653878977
+    },
+    {
+      "iso3": "LBN",
+      "month": "2025-05",
+      "value": 1.0719607098794723
+    },
+    {
+      "iso3": "LBN",
+      "month": "2025-06",
+      "value": 1.1396846760238415
+    },
+    {
+      "iso3": "LBN",
+      "month": "2025-07",
+      "value": 1.1117894736842104
+    },
+    {
+      "iso3": "LBN",
+      "month": "2025-08",
+      "value": 1.0769661417131173
+    },
+    {
+      "iso3": "LBN",
+      "month": "2025-09",
+      "value": 1.1348339214016303
+    },
+    {
+      "iso3": "LBN",
+      "month": "2025-10",
+      "value": 1.1015315780416453
+    },
+    {
+      "iso3": "LBN",
+      "month": "2025-11",
+      "value": 1.0722194211959262
+    },
+    {
+      "iso3": "LBN",
+      "month": "2025-12",
+      "value": 1.074962413080248
+    },
+    {
+      "iso3": "LBN",
+      "month": "2026-01",
+      "value": 1.0532351242056615
+    },
+    {
+      "iso3": "LBN",
+      "month": "2026-02",
+      "value": 1.0631365708176241
+    },
+    {
+      "iso3": "LBN",
+      "month": "2026-03",
+      "value": 1.4365784232865966
+    },
+    {
+      "iso3": "LBN",
+      "month": "2026-04",
+      "value": 1.3366337130778385
+    },
+    {
+      "iso3": "LBN",
+      "month": "2026-05",
+      "value": 1.267520055354942
+    },
+    {
+      "iso3": "LBN",
+      "month": "2026-06",
+      "value": 1.3770795163063394
+    },
+    {
+      "iso3": "PAK",
+      "month": "2015-12",
+      "value": 1.0265706575197358
+    },
+    {
+      "iso3": "PAK",
+      "month": "2016-01",
+      "value": 1.0452562542659585
+    },
+    {
+      "iso3": "PAK",
+      "month": "2019-02",
+      "value": 1.0000893681670588
+    },
+    {
+      "iso3": "PAK",
+      "month": "2021-08",
+      "value": 1.1503070869037548
+    },
+    {
+      "iso3": "PAK",
+      "month": "2025-05",
+      "value": 1.0958966324932002
+    },
+    {
+      "iso3": "SDN",
+      "month": "2015-04",
+      "value": 1.0495996197301547
+    },
+    {
+      "iso3": "SDN",
+      "month": "2016-07",
+      "value": 1.0016976158920674
+    },
+    {
+      "iso3": "SDN",
+      "month": "2017-01",
+      "value": 1.0824896863335733
+    },
+    {
+      "iso3": "SDN",
+      "month": "2017-02",
+      "value": 1.0333790648522378
+    },
+    {
+      "iso3": "SDN",
+      "month": "2020-11",
+      "value": 1.0794473982393447
+    },
+    {
+      "iso3": "SDN",
+      "month": "2023-10",
+      "value": 1.0416557046391302
+    },
+    {
+      "iso3": "SDN",
+      "month": "2024-06",
+      "value": 1.007531651418538
+    },
+    {
+      "iso3": "SDN",
+      "month": "2025-06",
+      "value": 1.0170810974227193
+    },
+    {
+      "iso3": "SDN",
+      "month": "2025-11",
+      "value": 1.0566580670768009
+    },
+    {
+      "iso3": "TUN",
+      "month": "2015-03",
+      "value": 1.197706876369421
+    },
+    {
+      "iso3": "TUN",
+      "month": "2015-06",
+      "value": 1.2754711695860361
+    },
+    {
+      "iso3": "TUN",
+      "month": "2015-07",
+      "value": 1.1494167063923943
+    },
+    {
+      "iso3": "TUN",
+      "month": "2015-11",
+      "value": 1.0027360348222614
+    },
+    {
+      "iso3": "TUN",
+      "month": "2016-03",
+      "value": 1.0881915802771895
+    },
+    {
+      "iso3": "TUN",
+      "month": "2016-07",
+      "value": 1.115749494949495
+    },
+    {
+      "iso3": "TUN",
+      "month": "2016-12",
+      "value": 1.0746676768372478
+    }
+  ],
+  "proxy_source": "rebuilt (t02,t03)/total_docs from topic_monthly.csv"
+}

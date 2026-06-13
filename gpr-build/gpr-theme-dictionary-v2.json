@@ -1,0 +1,182 @@
+{
+  "schema": "qgi-gpr-theme-dictionary",
+  "version": "2.1.0",
+  "status": "v2.1 — token set corrected against the GDELT GKG master theme list (free registry, no BQ); see qgi-ml/gpr-build adversarial review 2026-06-13. Threat/Act split (1–5 / 6–8) empirically confirmed (Σcat1-5 ~ GPRHT r=0.989, Σcat6-8 ~ GPRHA r=0.999). PRE-CREDS — NO BigQuery / bq / gcloud has been run against this. Every token listed under a category's verify_on_creds[] MUST be confirmed to exist and be non-zero on the GKG theme-lookup (the free GKG-THEMES lookup CSV at data.gdeltproject.org, zero BQ bytes) before any P2 backfill. This file EXTENDS gpr-poc/gpr-theme-dictionary.json v1 (the frozen 2-topic PoC verdict artifact); it does not replace it.",
+  "supersedes_note": "v1 mapped Iacoviello's 8 categories onto exactly 2 QGI Topics (t02 Armed Conflict + t03 Terrorism) and explicitly flagged its own weak spots: Military Buildups (cat 3) and Nuclear Threats (cat 4) under-detected because GDELT codes them as 'defense policy' / 'diplomacy', not 'armed conflict', and threat-language (cats 1-4) under-detected vs realized acts (the THREAT-SKEW). v2 directly targets that weakness by mapping each of the 8 categories to granular GKG V2THEMES token families (adding MILITARY / WMD / WEAPONS_PROLIFERATION / TAX_WEAPONS_* families) instead of two coarse Topics. v2.1 corrects all P0 nonexistent tokens identified in the 2026-06-13 adversarial review against the free GKG master theme list.",
+
+  "changelog": [
+    "v2.1 (2026-06-13): P0 correctness fixes — (1) cat4: replaced nonexistent NUCLEAR gkg_theme with WMD+WB_2503_WEAPONS_PROLIFERATION_AND_ARMS_CONTROL+MIL_WEAPONS_PROLIFERATION; added WB_509_NUCLEAR_ENERGY as explicit exclude token; removed TAX_WEAPONS_NUCLEAR+PROLIFERATION from verify_on_creds; set confidence=weak; global SHAREH_CAT_4 only / no per-country IRN gate. (2) Fixed wrong WB node numbers: WB_588_NUCLEAR_ENERGY→WB_509_NUCLEAR_ENERGY (cat4 exclude); WB_2457_PEACE_OPERATIONS→WB_2470_PEACE_OPERATIONS_AND_CONFLICT_MANAGEMENT (cat2); added WB_2471_PEACEKEEPING. (3) Removed TAX_MILITARY from all verify_on_creds (false-positive trap: only TAX_MILITARY_TITLE* exists, 80M+ docs of noise). (4) Deleted confirmed-nonexistent tokens from verify_on_creds everywhere: MILITARY_TENSION+WAR_RISK (cat1); MOBILIZATION+ARMS_CONTROL+WB_2466_ARMS_AND_MILITARY_EXPENDITURE (cat3); TAX_WEAPONS_NUCLEAR (cat4); RADICALIZATION (cat5, replaced by JIHAD in gkg_themes); AIRSTRIKE+SIEGE (cat7); TAX_TERROR+TAX_TERROR_BOMBING+SUICIDE_ATTACK (cat8). P1 coverage adds: cat3 added TAX_WEAPONS+SLFID_MILITARY_SPENDING+MIL_SELF_IDENTIFIED_ARMS_DEAL+MILITARY_COOPERATION to verify_on_creds; cat8 added ASSASSINATION+TAX_WEAPONS_SUICIDE_BOMBER+TAX_WEAPONS_SUICIDE_BOMB+TAX_TERROR_GROUP_ to verify_on_creds; cat5 moved JIHAD to gkg_themes (dropped RADICALIZATION); cat2 added WB_2471_PEACEKEEPING+PEACEKEEPING to verify_on_creds with anti-correlation warning. P2 honesty: precision-risk notes on WB_2433_CONFLICT_AND_VIOLENCE+UNGP_CRIME_VIOLENCE; provenance distinguished validated-T02/T03 vs topics.json-looser tokens; skew_expectation updated to reflect 8-way non-separability and residual threat under-detection."
+  ],
+
+  "provenance": {
+    "answer_key": "Caldara & Iacoviello, 'Measuring Geopolitical Risk', American Economic Review 2022, 112(4):1194-1225. 8 GPR word-categories (Table 1 / search-query appendix). CC-BY.",
+    "answer_key_file": "<USER_HOME>/Desktop/trojan/qgi-6.0/qgi-ml/gpr-poc/data/gpr_export.xls (xlrd, Sheet1, 1518x115; cols 17-24 = SHAREH_CAT_1..8 per-category global shares; cols 25-68 = GPRC_<ISO3> raw-percent-of-articles; cols 1-3 = GPR/GPRT/GPRA recent blend/threats/acts; cols 4-6 = GPRH/GPRHT/GPRHA historical; embedded var_name/var_label codebook in cols 113/114).",
+    "codebook_confirmation": "Empirically confirmed against the embedded codebook + the published Threats/Acts split: sum(SHAREH_CAT_1..5) vs GPRHT (Threats) Pearson r=0.9889; sum(SHAREH_CAT_6..8) vs GPRHA (Acts) r=0.9994; the cross checks are low (CAT_1..5 vs GPRHA r=0.380, CAT_6..8 vs GPRHT r=0.455). Decisive: CAT_1-5 = the five Threat categories, CAT_6-8 = the three Act categories, in the paper's published 1->8 order. The 'H' prefix on SHAREH_* = Historical 3-newspaper corpus (1900-), paired with GPRH/GPRHT/GPRHA; the recent 10-newspaper series is GPR/GPRT/GPRA (1985-).",
+    "proxy_taxonomy": "GDELT GKG V2THEMES tokens matched per category via RE2 REGEXP_CONTAINS(V2Themes, ...), the same runtime mechanism the validated QGI Topic dictionary uses. Token evidence comes from TWO sources: (A) the VALIDATED QGI Topic regexes (<USER_HOME>/qgi-gdelt-poc/topic_theme_patterns.json, '1.0-validated' 2026-06-09, every Topic non-zero in 2016 AND 2024 probe weeks) and the bigquery-validation-kit.sql ECON_* set — these are the STRICT confirmed tokens; (B) the looser topics.json T02/T03 gkg_themes lists, which include tokens appearing in the topic config but NOT yet run through the strict probe-week validation. MILITARY, CEASEFIRE, KILL, INSURGENCY, JIHAD come from source (B), not the strict validated source (A). Tokens NOT in either proven set are flagged verify_on_creds.",
+    "proxy_file": "<USER_HOME>/Desktop/trojan/qgi-6.0/qgi-ml/gpr-poc/data/topic_monthly.csv (country_code is FIPS 10-4 2-letter, NOT ISO2).",
+    "owned_table_pattern": "<USER_HOME>/qgi-gdelt-poc/update_pulse.py build_sql() (the canonical owned-table builder for qgi_gdelt.gkg_topic_flags) is the template the GPR backfill forks; reads of the resulting owned sibling table qgi_gdelt.gkg_gpr_flags sit in the 1TB/month free tier (seed_live_baseline.py read pattern).",
+    "validation_report": "qgi-docs/internal/roadmap/qgi-gpr-poc-validation.md",
+    "build_plan": "qgi-docs/internal/roadmap/qgi-gpr-build-plan.md (T2.3, deliverable 1 — this file).",
+    "ratified_by": "v1 ratified by Ji-Hoon (protocol + pre-registered bar) and Kwame (mapping fidelity + framing). v2 is DRAFT awaiting P0 ratification. v2.1 token corrections applied against free GKG master theme list 2026-06-13."
+  },
+
+  "matching_mechanism": {
+    "field": "V2Themes (GKG 2.1 column index 8; aka V2THEMES). Semicolon-delimited tokens, each optionally carrying a ',charOffset' suffix (e.g. 'TERROR,1843;ARMEDCONFLICT,55'). Use V2Themes (GKG 2.1), NOT the legacy coarser GKG 1.0 THEMES/GKGTHEMES field.",
+    "operator": "REGEXP_CONTAINS(V2Themes, r'<family_re>') per category — RE2 syntax, identical to the validated Topic dictionary. Token boundaries matter: GKG tokens are UPPERCASE underscore-joined, so a bare 'WAR' substring would also hit 'WARNING'/'STEWARD'. Anchor on documented token stems (WB_2468_CONVENTIONAL_WAR, ARMEDCONFLICT, TERROR), never loose substrings.",
+    "owned_table_target": "Production does NOT REGEXP raw GKG per query. Materialize ONE owned, date-partitioned sibling table qgi_gdelt.gkg_gpr_flags (alongside the live-pulse qgi_gdelt.gkg_topic_flags) with one BOOL column per GPR category (g1..g8) + gpr_any + FIPS country_code + tone, computed ONCE over raw gdelt-bq.gdeltv2.gkg_partitioned, then read cheaply forever. Do NOT widen the existing 194M-row gkg_topic_flags table (its closed partitions are immutable and already paid; widening forces a full re-scan). See build-plan §4/§5 and gpr_monthly_country.sql."
+  },
+
+  "country_attribution": {
+    "field": "V2Locations (GKG 2.1 column index 10). Semicolon-delimited blocks, each '#'-delimited: type#fullname#countrycode#adm1#lat#long#featureID. Country code = block field index 2 (0-based), FIPS 10-4 2-letter (LE=Lebanon, IR=Iran, TS=Tunisia), NOT ISO2.",
+    "extract": "REGEXP_EXTRACT_ALL(V2Locations, r'#([A-Z]{2})#') then UNNEST; a doc attributes to every DISTINCT country it mentions (Iacoviello's 'articles that also mention that country' rule). De-dup country within a doc so one article counts once per country.",
+    "prominence_gate": "V2EnhancedLocations carries per-mention char offsets for a prominence filter, but topic_theme_patterns.json found offset<=500 drops 47% of docs (too strict). P1 uses ANY-mention (no prominence gate), matching Iacoviello; revisit only if multi-country noise breaks the r>0.9 gate.",
+    "fips_to_iso3": "Join GKG FIPS to the answer key's GPRC_<ISO3> via the FIPS->ISO3 map in seed_live_baseline.py / v1 country_join (LE->LBN, IR->IRN, TS->TUN, BM->MMR, NI->NGA, SU->SDN, BG->BGD, AR->ARG, EG->EGY, TH->THA, VE->VEN, PK->PAK). For the full 44-country replication, BUILD the map for all 44 GPRC ISO3s from a FIPS<->ISO3 reference table — do NOT hand-type (the SQL's illustrative hand list e.g. KS/SF/SZ/GM is typo-prone and must not be trusted)."
+  },
+
+  "date_and_coverage": {
+    "month_key": "DATE (GKG 2.1 column index 1), YYYYMMDDHHMMSS. Month = SUBSTR(CAST(DATE AS STRING),1,6) => YYYYMM. This is the GROUP-BY key.",
+    "prune_key": "_PARTITIONTIME on gdelt-bq.gdeltv2.gkg_partitioned (TIMESTAMP, daily partitions). A DIFFERENT field from DATE; BOTH needed. ALL raw-GKG queries MUST filter on _PARTITIONTIME for cost pruning (qgi-aws-tf#807). Use gkg_partitioned, NOT the unpartitioned gkg (which has no _PARTITIONTIME).",
+    "coverage": "GKG 2.1 (V2Themes + V2Locations) begins 2015-02-18, fully covering the PoC window (2015-02..2026-05) and the 2015-2019 calibration overlap."
+  },
+
+  "affine_invariance_note": "Iacoviello's published GPRC = raw_share / mean(1985-2019) * 100 is a positive affine transform of the raw share. Pearson and Spearman are invariant to a*x+b with a>0, so the proxy may be correlated against EITHER the raw-share export (gpr_export.xls SHAREH_CAT_* / GPRC_<ISO3>) or the reconstructed mean-100 index with identical r. No normalization-matching is required to test SHAPE. Levels remain incomparable because the corpus (GDELT machine-coded vs ~10 newspapers) and the denominator ('fraction of THIS country's coverage' vs GPRC's 'fraction of ALL articles GPR-about-this-country') differ; only within-country co-movement is comparable.",
+
+  "categories": [
+    {
+      "cat": 1,
+      "name": "War Threats",
+      "threat_or_act": "threat",
+      "definition": "Words signaling the RISK / danger of war or military conflict generically (war risk, threat of war, military threat, geopolitical tensions near war/conflict topic words).",
+      "gkg_themes": ["WB_2468_CONVENTIONAL_WAR", "WB_2462_POLITICAL_VIOLENCE", "WB_2433_CONFLICT_AND_VIOLENCE"],
+      "confidence": "partial",
+      "verify_on_creds": [],
+      "note": "gkg_themes here are all in the validated T02 dictionary (confident). They anchor the SUBJECT (war/conflict) but GDELT under-detects pure threat / sabre-rattling language with no kinetic event — it reads as foreign-policy coverage (v1 confidence 'partial'). PRECISION RISK: WB_2433_CONFLICT_AND_VIOLENCE is a very high-volume token (~118M docs); it covers generic crime/violence, not only geopolitical war threats, and will dominate the OR — kept for PoC continuity but likely over-inclusive. v2.0 verify_on_creds items MILITARY_TENSION and WAR_RISK have been confirmed NONEXISTENT in the GKG master theme list and removed. P2 mitigation under consideration (NOT in this frozen dict): a NEGATIVE-tone gate V15Tone[0] < threshold over conflict tokens to lift forward-looking threat framing, mirroring the currency-crisis tone gate in bigquery-validation-kit.sql QUERY B."
+    },
+    {
+      "cat": 2,
+      "name": "Peace Threats",
+      "threat_or_act": "threat",
+      "definition": "Threats TO peace / deterioration of an existing peace; instability short of war; breakdown of peace processes, ceasefires, ultimatums, war scares, saber-rattling against a peace baseline.",
+      "gkg_themes": ["WB_2462_POLITICAL_VIOLENCE", "WB_2433_CONFLICT_AND_VIOLENCE", "CEASEFIRE"],
+      "confidence": "partial",
+      "verify_on_creds": ["PEACEKEEPING", "WB_2470_PEACE_OPERATIONS_AND_CONFLICT_MANAGEMENT", "WB_2471_PEACEKEEPING"],
+      "note": "CEASEFIRE is in the topics.json T02 gkg_themes list (a ceasefire breaking down is the canonical peace-threat). The WB_* conflict nodes are shared with cat1 — categories overlap BY DESIGN; the doc-level OR-flag per category handles double-counting. Same threat-language under-detection as cat1. PRECISION RISK: WB_2433_CONFLICT_AND_VIOLENCE (~118M docs) is a generic volume risk; UNGP_CRIME_VIOLENCE (~54.8M docs) would add even more generic noise if added — only use with a conflict co-occurrence gate. WB_2457_PEACE_OPERATIONS was the wrong node number (nonexistent); corrected to WB_2470_PEACE_OPERATIONS_AND_CONFLICT_MANAGEMENT and WB_2471_PEACEKEEPING. ANTI-CORRELATION WARNING: PEACEKEEPING and WB_2471_PEACEKEEPING / WB_2470 tokens should be treated with extreme caution or de-weighted — routine peacekeeping operations are the INVERSE of a peace threat; they are deployed AFTER a peace breakdown, so they may add recall but with a systematic lag/anti-correlation risk at the peace-breakdown detection window. If used: apply a tone-gate or de-weight these tokens in the scoring formula."
+    },
+    {
+      "cat": 3,
+      "name": "Military Buildups",
+      "threat_or_act": "threat",
+      "definition": "Arms build-ups, military mobilization, defense escalation, weapons-program tensions, troop deployments, rearmament, military maneuvers short of fighting.",
+      "gkg_themes": ["MILITARY"],
+      "confidence": "weak",
+      "verify_on_creds": ["TAX_WEAPONS", "SLFID_MILITARY_SPENDING", "MIL_SELF_IDENTIFIED_ARMS_DEAL", "MILITARY_COOPERATION"],
+      "note": "THIS IS A PRIMARY v2 TARGET — v1 explicitly flagged Military Buildups as a known blind spot ('reported as defense policy not armed conflict; add GDELT MILITARY/ARMSCONTROL families'). MILITARY is a confident core GKG theme (also in topics.json T02) and is the one token recovering the 'defense-policy' coverage v1 missed. v2.1 ADDS confirmed verify_on_creds: TAX_WEAPONS (the whole TAX_WEAPONS_* tree — present and rich with specific weapon-system tokens); SLFID_MILITARY_SPENDING (self-identified military spending); MIL_SELF_IDENTIFIED_ARMS_DEAL; MILITARY_COOPERATION. REMOVED (confirmed nonexistent): WB_2466_ARMS_AND_MILITARY_EXPENDITURE (wrong WB node, silently matches nothing), ARMS_CONTROL (standalone stem does not exist), TAX_MILITARY (FALSE-POSITIVE TRAP: only TAX_MILITARY_TITLE* exists, covering military ranks/job titles with 80M+ noise docs — NEVER include the bare TAX_MILITARY stem), MOBILIZATION (nonexistent standalone). Do NOT use TAX_MILITARY as a prefix match without the _TITLE suffix or an explicit named-unit stem."
+    },
+    {
+      "cat": 4,
+      "name": "Nuclear Threats",
+      "threat_or_act": "threat",
+      "definition": "Nuclear-weapon threats, proliferation tensions, nuclear escalation, nuclear-program brinkmanship; near risk/threat qualifiers.",
+      "gkg_themes": ["WMD", "WB_2503_WEAPONS_PROLIFERATION_AND_ARMS_CONTROL", "MIL_WEAPONS_PROLIFERATION"],
+      "confidence": "weak",
+      "exclude_tokens": ["WB_509_NUCLEAR_ENERGY"],
+      "verify_on_creds": [],
+      "note": "v2.1 COMPLETE OVERHAUL of this category. The old gkg_theme NUCLEAR does NOT exist as a GKG theme token (the only nuclear-related node is WB_509_NUCLEAR_ENERGY, a civilian energy theme). Replaced with three confirmed present tokens: WMD (weapons of mass destruction), WB_2503_WEAPONS_PROLIFERATION_AND_ARMS_CONTROL, and MIL_WEAPONS_PROLIFERATION. WB_509_NUCLEAR_ENERGY is listed in exclude_tokens: it is a CIVILIAN ENERGY theme that should be explicitly EXCLUDED from any nuclear-weapons detection to avoid counting reactor-construction news as geopolitical risk (apply NOT REGEXP_CONTAINS(V2Themes, r'WB_509_NUCLEAR_ENERGY') alongside the positive match, or accept some civilian nuclear bleed at PoC stage). Previous v2.0 verify_on_creds TAX_WEAPONS_NUCLEAR and PROLIFERATION (standalone) are confirmed NONEXISTENT and removed. Confidence set to 'weak' — this WMD/proliferation token set captures treaty negotiations and proliferation-concern coverage but may miss raw nuclear-saber-rattling headlines that GKG codes only as foreign-policy. VALIDATION SCOPE: cat4 is validated ONLY against the global SHAREH_CAT_4 series, NOT per-country GPRC — IRN has no GPRC answer-key column, so the per-country gate is inapplicable. The previous v2.0 note about TAX_WEAPONS_NUCLEAR being the cleanest separator is MOOT: that token does not exist. Old WB node number WB_588_NUCLEAR_ENERGY was wrong (nonexistent); correct node is WB_509_NUCLEAR_ENERGY (used here only as the exclude token)."
+    },
+    {
+      "cat": 5,
+      "name": "Terror Threats",
+      "threat_or_act": "threat",
+      "definition": "The THREAT of terrorism / anticipated terror attacks / terror plots, warnings, alerts (not yet realized).",
+      "gkg_themes": ["TERROR", "WB_2467_TERRORISM", "EXTREMIS", "JIHAD"],
+      "confidence": "good",
+      "verify_on_creds": [],
+      "note": "gkg_themes are the validated T03 dictionary set (good). TERROR is a stem matching TERROR/TERRORISM/TERRORIST; EXTREMIS a stem for EXTREMISM/EXTREMIST — both anchored, do not over-hit. JIHAD has been moved from verify_on_creds into gkg_themes — it appears in topics.json T03 (source B: looser, not strict-validated) and is a confirmed present, useful terror-threat token; treat it as 'topics.json-level' confidence rather than the strict validated T03 level. RADICALIZATION (v2.0 verify_on_creds) is confirmed NONEXISTENT in the GKG master theme list and has been removed. GKG conflates terror THREATS and terror ACTS under the same TERROR* tokens, so cats 5 and 8 share most tokens and separate mainly by tense/tone, not distinct themes. Validate the COMBINED terror signal (cat5+cat8) against SHAREH_CAT_5+SHAREH_CAT_8; only attempt the threat/act split if the blended terror category clears the gate."
+    },
+    {
+      "cat": 6,
+      "name": "Beginning of War",
+      "threat_or_act": "act",
+      "definition": "Onset / outbreak of war or armed conflict (a realized act): invasion, declaration of war, country at war, war broke out, onset of conflict.",
+      "gkg_themes": ["ARMEDCONFLICT", "WB_2468_CONVENTIONAL_WAR", "WB_2451_REBELS", "VIOLENT_UNREST", "UNGP_CRIME_VIOLENCE"],
+      "confidence": "good",
+      "verify_on_creds": ["INSURGENCY"],
+      "note": "Realized conflict events are GDELT's core strength (v1 cat6 confidence 'good'). ARMEDCONFLICT is the cleanest realized-conflict token; all gkg_themes here are in the validated T02 dictionary. PRECISION RISK: UNGP_CRIME_VIOLENCE (~54.8M docs) is very high-volume and covers generic crime/violence broadly, not only armed-conflict onset — it dominates the OR and may inflate cat6 precision. Kept for PoC continuity but flag for removal or conflict co-occurrence gating in production. cats 6+7 share the armed-conflict token core; onset vs escalation are hard to split on themes alone — validate combined (cat6+cat7) vs SHAREH_CAT_6+SHAREH_CAT_7. INSURGENCY appears in topics.json T02 (source B: looser, not strict-validated; WB_2451_REBELS covers most of it); verify on creds before including."
+    },
+    {
+      "cat": 7,
+      "name": "Escalation of War",
+      "threat_or_act": "act",
+      "definition": "Escalation / intensification of an ongoing war (a realized act): war escalates/intensifies, military escalation, spread of the war, heavy fighting/combat, offensive.",
+      "gkg_themes": ["ARMEDCONFLICT", "WB_2468_CONVENTIONAL_WAR", "WB_2462_POLITICAL_VIOLENCE"],
+      "confidence": "good",
+      "verify_on_creds": ["KILL"],
+      "note": "Well captured by the armed-conflict core (v1 cat7 confidence 'good'); shares its core with cat6. v2.1 REMOVED confirmed-nonexistent tokens from verify_on_creds: AIRSTRIKE (nonexistent standalone stem) and SIEGE (nonexistent standalone stem). KILL remains in verify_on_creds — it appears in topics.json T02 (source B: looser) but is very broad (KILLING in non-war contexts) and likely over-inclusive; gate with a conflict co-occurrence or drop. The escalation-specific tokens that would separate cat7 from cat6 (AIRSTRIKE, SIEGE) unfortunately do not exist as GKG stems — the cat6/cat7 split is not theme-separable. Validate combined (cat6+cat7)."
+    },
+    {
+      "cat": 8,
+      "name": "Terror Acts",
+      "threat_or_act": "act",
+      "definition": "Actual terrorist attacks / acts (a realized act): terrorist attack, act of terror, suicide bombing, terrorists struck/killed, named realized-attack language.",
+      "gkg_themes": ["TERROR", "WB_2467_TERRORISM", "EXTREMIS"],
+      "confidence": "good",
+      "verify_on_creds": ["ASSASSINATION", "TAX_WEAPONS_SUICIDE_BOMBER", "TAX_WEAPONS_SUICIDE_BOMB", "TAX_TERROR_GROUP_"],
+      "note": "Realized terror events well captured by the TERROR core (shared with cat5 — GKG does not cleanly tense-split). v2.1 REMOVED confirmed-nonexistent tokens from verify_on_creds: TAX_TERROR (nonexistent stem), TAX_TERROR_BOMBING (nonexistent), SUICIDE_ATTACK (nonexistent standalone). ADDED confirmed present tokens to verify_on_creds: ASSASSINATION; TAX_WEAPONS_SUICIDE_BOMBER; TAX_WEAPONS_SUICIDE_BOMB (these are the realized-act suicide-attack tokens in the TAX_WEAPONS_* tree, the correct prefix not TAX_TERROR_*); TAX_TERROR_GROUP_ (named-organization mentions — FP-safe realized-terror proxy because named terror groups appear predominantly in acts coverage). These verify_on_creds items are what let cat8 (acts) add signal beyond cat5 (threats); they are the HIGH-VALUE creds-side enumeration targets for the TAX_* tree. cat8 is empirically sparse/low-corr in the answer key (rare realized terror), so expect noisy per-category validation. Validate blended cat5+cat8 against SHAREH_CAT_5+SHAREH_CAT_8."
+    }
+  ],
+
+  "blended_proxy": {
+    "name": "QGI-GPR country proxy (8-category blend)",
+    "formula": "blended_share[country, month] = matched_docs / total_country_docs, where matched_docs = COUNT(DISTINCT doc_id) of docs attributed to that country/month whose V2Themes matches ANY of the 8 category families (a doc-level OR across g1..g8 = gpr_any), and total_country_docs = COUNT(DISTINCT doc_id) of ALL GKG docs attributed to that country that month (any theme / no theme).",
+    "denominator_rule": "total_country_docs = COUNT(DISTINCT doc_id), ANY theme — NEVER sum(category flags). Categories overlap (a nuclear-armed-conflict article hits cats 2,3,4,6 at once); a single doc-OR per category (and a single gpr_any OR across all 8) keeps the blended share bounded in [0,1]. This fixes v1's additive 2-topic share that could exceed 1 (v1 had 97 country-months with share>1.0, max 1.83).",
+    "headline_validation_target": "GPRC_<ISO3> (country level, the r>0.9 PRODUCTION gate per build-plan §7) and global GPR. Affine-invariant — see affine_invariance_note.",
+    "threats_acts_split": {
+      "note": "Mirrors Iacoviello's GPRT (Threats) / GPRA (Acts) decomposition, confirmed empirically against the answer key (sum SHAREH_CAT_1..5 ~ GPRHT r=0.9889; sum SHAREH_CAT_6..8 ~ GPRHA r=0.9994). The split is ORTHOGONAL to the subject (war/terror) collapse.",
+      "threats_proxy": {
+        "categories": [1, 2, 3, 4, 5],
+        "flag_columns": ["g1", "g2", "g3", "g4", "g5"],
+        "formula": "matched_docs(OR of g1..g5) / total_country_docs",
+        "validation_target": "GPRT (recent) / GPRHT (historical), and global sum(SHAREH_CAT_1..5)"
+      },
+      "acts_proxy": {
+        "categories": [6, 7, 8],
+        "flag_columns": ["g6", "g7", "g8"],
+        "formula": "matched_docs(OR of g6..g8) / total_country_docs",
+        "validation_target": "GPRA (recent) / GPRHA (historical), and global sum(SHAREH_CAT_6..8)"
+      },
+      "skew_expectation": "v1 showed the proxy skews toward ACTS (GDELT theme-coding tilts to realized events over threat language). v2's added WMD/PROLIFERATION/WEAPONS threat-side tokens (cats 3-4) provide MODEST lift, but the threat-act skew is NOT eliminated. The realistic expectation for v2.1: tracks the Acts half (GPRA) well (empirically confirmed r=0.999); still under-detects pure Threats — modestly improved on military/weapons tokens in cat3, partially improved on nuclear via WMD/proliferation in cat4. NOTE: the 8-way category split is NOT theme-separable in GDELT. The tokens for AIRSTRIKE/SIEGE (cat6 vs cat7 distinction) and TAX_TERROR_BOMBING (cat5 vs cat8 distinction) DO NOT EXIST as GKG stems. The only validatable units are: threats (cats 1–5) vs acts (cats 6–8), and subject groupings (war+military / nuclear / terror / blended). Do NOT report per-category r as the headline metric; report only the threat-block, acts-block, and blended totals as primary validation units."
+    },
+    "subject_groupings_for_validation": {
+      "note": "Because GKG themes do not cleanly separate threat-language from realized-acts within the same subject, the most robust validatable unit is the SUBJECT-collapsed grouping, validated against the answer key's per-category SHAREH_CAT_* columns SUMMED to the same grouping. The 8-way split is an exploratory stretch goal; the subject groupings and the threats/acts split are the honest primary units.",
+      "war_and_military": {"cats": [1, 2, 3, 6, 7], "answer_key": "SHAREH_CAT_1+2+3+6+7", "qgi_v1_topic": "t02"},
+      "nuclear": {"cats": [4], "answer_key": "SHAREH_CAT_4", "note": "Thin / IRN-centric; validate global SHAREH_CAT_4 only — most countries (incl. IRN) lack a GPRC counterpart. No per-country gate for cat4."},
+      "terror": {"cats": [5, 8], "answer_key": "SHAREH_CAT_5+8", "qgi_v1_topic": "t03"},
+      "blended_gpr": {"cats": [1, 2, 3, 4, 5, 6, 7, 8], "answer_key": "GPRC_<ISO3> (country) + global GPR", "note": "The headline replication target; r>0.9 production gate applies HERE."}
+    },
+    "metric_rule": "State WHICH metric the reported r is on — levels-Pearson (trend-inflated DIAGNOSTIC) vs delta-Spearman (month-over-month change, the honest co-movement measure) — and do NOT silently switch (Ji-Hoon must-fix #1). The PoC PASS bar was 0.35 delta-Spearman (mean 0.4554 on ARG/EGY/THA/TUN/VEN); the v2 PRODUCTION gate is r>0.9 on the affine-anchored series per build-plan §7."
+  },
+
+  "guards_carried_from_v1": [
+    "Headline metric is delta-Spearman on month-over-month change; levels-Pearson is a trend-inflated DIAGNOSTIC, never the headline. State levels-vs-delta when reporting the r>0.9 gate; never silently switch.",
+    "Denominator is total_country_docs (COUNT DISTINCT doc_id, any theme), NEVER sum(category flags). One doc-level OR flag per category; a separate gpr_any OR for the blend.",
+    "Dictionary FROZEN before P2 validation — no per-country token tuning on the test window (leakage guard, build-plan §7). No country dropping (TUN kept despite being noisiest in the PoC). No window shopping.",
+    "share is bounded [0,1] here (single doc-OR per category => 0<=matched<=total), unlike v1's additive 2-topic share. Still assert 0<=share<=1 per category and 0<=blended_share<=1; any violation is a counting bug, not a clamp target.",
+    "t05 Protest / civil unrest stays OUT OF SCOPE — domestic contentious politics is a different risk family with no GPRC counterpart; including it depresses r for stable countries and spuriously inflates it where domestic turmoil co-occurs with external coverage (VEN/ARG/TUN).",
+    "The 7 PoC countries with no GPRC column (BGD/IRN/LBN/MMR/NGA/PAK/SDN) and any of the 44 that miss the per-country gate ship as 'QGI-GPR (uncalibrated)', NEVER 'GPR-validated'.",
+    "Confidence-first comms: this is a re-implementation on a DIFFERENT corpus (GDELT machine-coded vs Caldara-Iacoviello's ~10 newspapers) with a DIFFERENT normalization window (GDELT 2015+ vs his 1985-2019 baseline). Never claim it IS the GPR; always 'GDELT re-implementation, calibrated to Caldara-Iacoviello (2022)'. Pair every r with the four asymmetries (different corpus / different normalization window / threat-act skew / country-attribution mechanism) and the 5-of-12 PoC scope.",
+    "TAX_MILITARY is permanently EXCLUDED from all category token lists. Only TAX_MILITARY_TITLE* exists in GKG (military ranks/job titles, 80M+ noise documents). Using bare TAX_MILITARY as a prefix match is a false-positive trap.",
+    "The 8-way category split is NOT theme-separable in GDELT. AIRSTRIKE and SIEGE (needed to split cat6 vs cat7) do not exist as GKG stems. TAX_TERROR_BOMBING (needed to split cat5 vs cat8) does not exist. Primary validation units are: threats block (cats 1-5), acts block (cats 6-8), and subject groupings. Do not report per-category r as the headline metric."
+  ],
+
+  "verify_on_creds_punchlist": [
+    "Enumerate the TAX_WEAPONS_* / TAX_TERROR_GROUP_* token trees (cats 3/8 depend on them) via the free GDELT GKG-THEMES lookup CSV at data.gdeltproject.org — ZERO BQ bytes — or a SELECT DISTINCT theme over the lookup table. NOTE: TAX_MILITARY is confirmed NOT useful (only _TITLE variants exist); do not waste time on it.",
+    "Confirm every WB_<NNNN>_<NAME> node number now used: 2433/2451/2462/2467/2468/2470/2471/2503/509. A wrong WB number silently matches nothing.",
+    "Verify cat4 exclude token WB_509_NUCLEAR_ENERGY is the correct confirmed node for civilian nuclear energy (so it can be properly excluded from the weapons-proliferation regex). The old WB_588_NUCLEAR_ENERGY was wrong.",
+    "Confirm cat3 verify_on_creds: TAX_WEAPONS (full tree presence), SLFID_MILITARY_SPENDING, MIL_SELF_IDENTIFIED_ARMS_DEAL, MILITARY_COOPERATION.",
+    "Confirm cat8 verify_on_creds: ASSASSINATION, TAX_WEAPONS_SUICIDE_BOMBER, TAX_WEAPONS_SUICIDE_BOMB, TAX_TERROR_GROUP_ (named-org prefix).",
+    "Confirm cat2 verify_on_creds: PEACEKEEPING, WB_2470_PEACE_OPERATIONS_AND_CONFLICT_MANAGEMENT, WB_2471_PEACEKEEPING. If confirmed, add WITH ANTI-CORRELATION CAVEAT and tone-gate or de-weight in scoring.",
+    "Confirm cat6/cat7 verify_on_creds: INSURGENCY, KILL. Decide KILL inclusion — likely over-broad; gate with a conflict co-occurrence or drop.",
+    "Build the full FIPS->ISO3 map for all 44 GPRC countries from a FIPS<->ISO3 reference table (no hand-typing).",
+    "CONFIRMED NONEXISTENT (do not attempt to verify): MILITARY_TENSION, WAR_RISK (cat1); MOBILIZATION, ARMS_CONTROL standalone, WB_2466_ARMS_AND_MILITARY_EXPENDITURE, TAX_MILITARY standalone (cat3); NUCLEAR standalone, TAX_WEAPONS_NUCLEAR, WB_588_NUCLEAR_ENERGY, PROLIFERATION standalone (cat4); RADICALIZATION (cat5); AIRSTRIKE, SIEGE (cat7); TAX_TERROR, TAX_TERROR_BOMBING, SUICIDE_ATTACK standalone (cat8). These are dead entries and should never be re-added."
+  ]
+}
