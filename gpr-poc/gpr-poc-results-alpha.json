@@ -1,0 +1,2208 @@
+{
+  "overlap_countries": [
+    "ARG",
+    "EGY",
+    "THA",
+    "TUN",
+    "VEN"
+  ],
+  "primary_mapping": "(t02+t03)/total_docs",
+  "headline_metric": "delta-Spearman (month-over-month change), primary mapping only",
+  "window": "2015-02 to 2026-05",
+  "per_country": [
+    {
+      "iso3": "ARG",
+      "n_months": 136,
+      "pearson_r": 0.3806322232345998,
+      "spearman_r": 0.4673934250317042,
+      "spike_recall": 0.5,
+      "pearson_r_2015_2019": 0.24740304583694886,
+      "pearson_r_2020plus": 0.5538852417272243,
+      "rmse_z": 1.112984974530564
+    },
+    {
+      "iso3": "EGY",
+      "n_months": 136,
+      "pearson_r": 0.7707797626109321,
+      "spearman_r": 0.6023266022827041,
+      "spike_recall": 0.8571428571428571,
+      "pearson_r_2015_2019": 0.6008338419975158,
+      "pearson_r_2020plus": 0.9276003355339821,
+      "rmse_z": 0.6770823249636163
+    },
+    {
+      "iso3": "THA",
+      "n_months": 136,
+      "pearson_r": 0.6293494897527854,
+      "spearman_r": 0.45884847679343055,
+      "spike_recall": 0.7857142857142857,
+      "pearson_r_2015_2019": 0.20540893359757875,
+      "pearson_r_2020plus": 0.8401096730414345,
+      "rmse_z": 0.8609883974214919
+    },
+    {
+      "iso3": "TUN",
+      "n_months": 136,
+      "pearson_r": 0.7532382590695295,
+      "spearman_r": 0.32704166305953375,
+      "spike_recall": 0.6428571428571429,
+      "pearson_r_2015_2019": 0.79441140592151,
+      "pearson_r_2020plus": 0.4166908518157029,
+      "rmse_z": 0.702512264562647
+    },
+    {
+      "iso3": "VEN",
+      "n_months": 136,
+      "pearson_r": 0.6067693746387107,
+      "spearman_r": 0.4211589113257243,
+      "spike_recall": 0.5,
+      "pearson_r_2015_2019": 0.5636411452801705,
+      "pearson_r_2020plus": 0.6363476756272137,
+      "rmse_z": 0.8868265054240196
+    }
+  ],
+  "per_country_diagnostics": [
+    {
+      "iso3": "ARG",
+      "n_months": 136,
+      "window": "2015-02 to 2026-05",
+      "pearson_r": 0.3806322232345998,
+      "spearman_r": 0.4673934250317042,
+      "spike_recall": 0.5,
+      "pearson_r_2015_2019": 0.24740304583694886,
+      "pearson_r_2020plus": 0.5538852417272243,
+      "rmse_z": 1.112984974530564,
+      "_pearson_levels": 0.3806322232345998,
+      "_spearman_levels": 0.4065742707676175,
+      "_pearson_delta": 0.38556449954005256,
+      "_spearman_delta_headline": 0.4673934250317042,
+      "_spearman_delta_2015_2019": 0.4910947737549602,
+      "_spearman_delta_2020plus": 0.42359535201640464,
+      "_n_early": 59,
+      "_n_late": 77,
+      "_n_spikes": 14
+    },
+    {
+      "iso3": "EGY",
+      "n_months": 136,
+      "window": "2015-02 to 2026-05",
+      "pearson_r": 0.7707797626109321,
+      "spearman_r": 0.6023266022827041,
+      "spike_recall": 0.8571428571428571,
+      "pearson_r_2015_2019": 0.6008338419975158,
+      "pearson_r_2020plus": 0.9276003355339821,
+      "rmse_z": 0.6770823249636163,
+      "_pearson_levels": 0.7707797626109321,
+      "_spearman_levels": 0.650675063212633,
+      "_pearson_delta": 0.8035583721872981,
+      "_spearman_delta_headline": 0.6023266022827041,
+      "_spearman_delta_2015_2019": 0.45313605463102524,
+      "_spearman_delta_2020plus": 0.6721804511278195,
+      "_n_early": 59,
+      "_n_late": 77,
+      "_n_spikes": 14
+    },
+    {
+      "iso3": "THA",
+      "n_months": 136,
+      "window": "2015-02 to 2026-05",
+      "pearson_r": 0.6293494897527854,
+      "spearman_r": 0.45884847679343055,
+      "spike_recall": 0.7857142857142857,
+      "pearson_r_2015_2019": 0.20540893359757875,
+      "pearson_r_2020plus": 0.8401096730414345,
+      "rmse_z": 0.8609883974214919,
+      "_pearson_levels": 0.6293494897527854,
+      "_spearman_levels": 0.36877135142094797,
+      "_pearson_delta": 0.602932523580239,
+      "_spearman_delta_headline": 0.45884847679343055,
+      "_spearman_delta_2015_2019": 0.28598234335107203,
+      "_spearman_delta_2020plus": 0.5864935064935065,
+      "_n_early": 59,
+      "_n_late": 77,
+      "_n_spikes": 14
+    },
+    {
+      "iso3": "TUN",
+      "n_months": 136,
+      "window": "2015-02 to 2026-05",
+      "pearson_r": 0.7532382590695295,
+      "spearman_r": 0.32704166305953375,
+      "spike_recall": 0.6428571428571429,
+      "pearson_r_2015_2019": 0.79441140592151,
+      "pearson_r_2020plus": 0.4166908518157029,
+      "rmse_z": 0.702512264562647,
+      "_pearson_levels": 0.7532382590695295,
+      "_spearman_levels": 0.5704036538344242,
+      "_pearson_delta": 0.5917320450020777,
+      "_spearman_delta_headline": 0.32704166305953375,
+      "_spearman_delta_2015_2019": 0.45978036851333476,
+      "_spearman_delta_2020plus": 0.20915926179084074,
+      "_n_early": 59,
+      "_n_late": 77,
+      "_n_spikes": 14
+    },
+    {
+      "iso3": "VEN",
+      "n_months": 136,
+      "window": "2015-02 to 2026-05",
+      "pearson_r": 0.6067693746387107,
+      "spearman_r": 0.4211589113257243,
+      "spike_recall": 0.5,
+      "pearson_r_2015_2019": 0.5636411452801705,
+      "pearson_r_2020plus": 0.6363476756272137,
+      "rmse_z": 0.8868265054240196,
+      "_pearson_levels": 0.6067693746387107,
+      "_spearman_levels": 0.6698917036400935,
+      "_pearson_delta": 0.2510923664051974,
+      "_spearman_delta_headline": 0.4211589113257243,
+      "_spearman_delta_2015_2019": 0.3572241533113907,
+      "_spearman_delta_2020plus": 0.48642515379357487,
+      "_n_early": 59,
+      "_n_late": 77,
+      "_n_spikes": 14
+    }
+  ],
+  "mean_pearson_r": 0.6281538218613114,
+  "mean_pearson_r_note": "LEVELS Pearson - trend-inflated, DIAGNOSTIC ONLY, not the verdict",
+  "mean_spearman_r": 0.4553538156986193,
+  "mean_spearman_r_note": "HEADLINE = mean month-over-month-change Spearman, primary mapping",
+  "mean_pearson_delta": 0.5269759613429729,
+  "mean_spike_recall": 0.6571428571428571,
+  "pooled_spike_recall_supporting": 0.6571428571428571,
+  "spike_recall_chance_baseline": 0.25,
+  "alternates": [
+    {
+      "mapping": "(t02+t03+t05)/total_docs",
+      "mean_pearson_r": 0.6108291559633616
+    },
+    {
+      "mapping": "(t02)/total_docs",
+      "mean_pearson_r": 0.6549036954966517
+    }
+  ],
+  "primary_mean_pearson_levels_for_reference": 0.6281538218613114,
+  "preregistered_verdict": {
+    "metric": "mean delta-Spearman, primary mapping",
+    "bar": "mean >= 0.35 AND >=3/5 countries >=0.25 AND none negative",
+    "mean_delta_spearman": 0.4553538156986193,
+    "n_countries_ge_0.25": 5,
+    "any_negative": false,
+    "PASS": true,
+    "spike_recall_supporting_bar": "pooled >= 0.45 vs 0.25 chance",
+    "pooled_spike_recall": 0.6571428571428571
+  },
+  "share_out_of_range_flags": [
+    {
+      "code": "BG",
+      "month": "2016-07",
+      "mapping": "primary",
+      "value": 1.2108884802760032
+    },
+    {
+      "code": "BG",
+      "month": "2016-07",
+      "mapping": "alt_t05",
+      "value": 1.3188861296987848
+    },
+    {
+      "code": "BG",
+      "month": "2017-09",
+      "mapping": "primary",
+      "value": 1.0253582034403952
+    },
+    {
+      "code": "BG",
+      "month": "2017-09",
+      "mapping": "alt_t05",
+      "value": 1.1493848617136289
+    },
+    {
+      "code": "BG",
+      "month": "2024-08",
+      "mapping": "alt_t05",
+      "value": 1.031347652631449
+    },
+    {
+      "code": "BM",
+      "month": "2017-09",
+      "mapping": "primary",
+      "value": 1.2519251740625787
+    },
+    {
+      "code": "BM",
+      "month": "2017-09",
+      "mapping": "alt_t05",
+      "value": 1.4176495260464725
+    },
+    {
+      "code": "BM",
+      "month": "2017-10",
+      "mapping": "primary",
+      "value": 1.1647876043495673
+    },
+    {
+      "code": "BM",
+      "month": "2017-10",
+      "mapping": "alt_t05",
+      "value": 1.229923297292302
+    },
+    {
+      "code": "BM",
+      "month": "2017-11",
+      "mapping": "primary",
+      "value": 1.05630269667619
+    },
+    {
+      "code": "BM",
+      "month": "2017-11",
+      "mapping": "alt_t05",
+      "value": 1.1584094023645275
+    },
+    {
+      "code": "BM",
+      "month": "2017-12",
+      "mapping": "alt_t05",
+      "value": 1.0192790993906427
+    },
+    {
+      "code": "BM",
+      "month": "2018-01",
+      "mapping": "alt_t05",
+      "value": 1.029193851597921
+    },
+    {
+      "code": "BM",
+      "month": "2018-02",
+      "mapping": "alt_t05",
+      "value": 1.0868400018806714
+    },
+    {
+      "code": "BM",
+      "month": "2018-08",
+      "mapping": "primary",
+      "value": 1.0475439387111312
+    },
+    {
+      "code": "BM",
+      "month": "2018-08",
+      "mapping": "alt_t05",
+      "value": 1.1730959891843173
+    },
+    {
+      "code": "BM",
+      "month": "2018-09",
+      "mapping": "primary",
+      "value": 1.05287821240073
+    },
+    {
+      "code": "BM",
+      "month": "2018-09",
+      "mapping": "alt_t05",
+      "value": 1.1904996793765106
+    },
+    {
+      "code": "BM",
+      "month": "2021-02",
+      "mapping": "primary",
+      "value": 1.0516296684259296
+    },
+    {
+      "code": "BM",
+      "month": "2021-02",
+      "mapping": "alt_t05",
+      "value": 1.6425204463961969
+    },
+    {
+      "code": "BM",
+      "month": "2021-03",
+      "mapping": "primary",
+      "value": 1.1066847223932046
+    },
+    {
+      "code": "BM",
+      "month": "2021-03",
+      "mapping": "alt_t05",
+      "value": 1.8035454881201527
+    },
+    {
+      "code": "BM",
+      "month": "2021-04",
+      "mapping": "alt_t05",
+      "value": 1.4216471261080927
+    },
+    {
+      "code": "BM",
+      "month": "2021-05",
+      "mapping": "alt_t05",
+      "value": 1.177200643530223
+    },
+    {
+      "code": "BM",
+      "month": "2021-06",
+      "mapping": "alt_t05",
+      "value": 1.0609650161888968
+    },
+    {
+      "code": "BM",
+      "month": "2021-11",
+      "mapping": "alt_t05",
+      "value": 1.0552971122619152
+    },
+    {
+      "code": "BM",
+      "month": "2021-12",
+      "mapping": "alt_t05",
+      "value": 1.2376653369724964
+    },
+    {
+      "code": "BM",
+      "month": "2022-07",
+      "mapping": "alt_t05",
+      "value": 1.1676661669165418
+    },
+    {
+      "code": "BM",
+      "month": "2025-09",
+      "mapping": "alt_t05",
+      "value": 1.0385036211118637
+    },
+    {
+      "code": "BM",
+      "month": "2025-12",
+      "mapping": "alt_t05",
+      "value": 1.0176170124048785
+    },
+    {
+      "code": "EG",
+      "month": "2023-10",
+      "mapping": "primary",
+      "value": 1.1505636941986022
+    },
+    {
+      "code": "EG",
+      "month": "2023-10",
+      "mapping": "alt_t05",
+      "value": 1.2661588730443813
+    },
+    {
+      "code": "EG",
+      "month": "2023-11",
+      "mapping": "primary",
+      "value": 1.024122462459959
+    },
+    {
+      "code": "EG",
+      "month": "2023-11",
+      "mapping": "alt_t05",
+      "value": 1.1195156909836566
+    },
+    {
+      "code": "IR",
+      "month": "2015-05",
+      "mapping": "alt_t05",
+      "value": 1.055062630480167
+    },
+    {
+      "code": "IR",
+      "month": "2015-10",
+      "mapping": "alt_t05",
+      "value": 1.042456974307141
+    },
+    {
+      "code": "IR",
+      "month": "2015-11",
+      "mapping": "alt_t05",
+      "value": 1.0271525789807499
+    },
+    {
+      "code": "IR",
+      "month": "2016-12",
+      "mapping": "alt_t05",
+      "value": 1.11158233890829
+    },
+    {
+      "code": "IR",
+      "month": "2017-01",
+      "mapping": "alt_t05",
+      "value": 1.114875253649423
+    },
+    {
+      "code": "IR",
+      "month": "2017-02",
+      "mapping": "alt_t05",
+      "value": 1.0748963213542626
+    },
+    {
+      "code": "IR",
+      "month": "2017-04",
+      "mapping": "alt_t05",
+      "value": 1.1154029505425007
+    },
+    {
+      "code": "IR",
+      "month": "2017-05",
+      "mapping": "alt_t05",
+      "value": 1.0553555448576906
+    },
+    {
+      "code": "IR",
+      "month": "2017-06",
+      "mapping": "primary",
+      "value": 1.076857564238383
+    },
+    {
+      "code": "IR",
+      "month": "2017-06",
+      "mapping": "alt_t05",
+      "value": 1.165583909765065
+    },
+    {
+      "code": "IR",
+      "month": "2017-11",
+      "mapping": "alt_t05",
+      "value": 1.013574122617823
+    },
+    {
+      "code": "IR",
+      "month": "2017-12",
+      "mapping": "alt_t05",
+      "value": 1.0458886087428465
+    },
+    {
+      "code": "IR",
+      "month": "2018-01",
+      "mapping": "alt_t05",
+      "value": 1.0853062142625058
+    },
+    {
+      "code": "IR",
+      "month": "2018-02",
+      "mapping": "alt_t05",
+      "value": 1.0289444004915245
+    },
+    {
+      "code": "IR",
+      "month": "2018-04",
+      "mapping": "alt_t05",
+      "value": 1.0559223335080206
+    },
+    {
+      "code": "IR",
+      "month": "2018-09",
+      "mapping": "alt_t05",
+      "value": 1.1225876834538937
+    },
+    {
+      "code": "IR",
+      "month": "2018-12",
+      "mapping": "alt_t05",
+      "value": 1.0406334000282949
+    },
+    {
+      "code": "IR",
+      "month": "2019-02",
+      "mapping": "alt_t05",
+      "value": 1.0068973518577602
+    },
+    {
+      "code": "IR",
+      "month": "2019-09",
+      "mapping": "alt_t05",
+      "value": 1.015372627638622
+    },
+    {
+      "code": "IR",
+      "month": "2019-10",
+      "mapping": "alt_t05",
+      "value": 1.1066383997086595
+    },
+    {
+      "code": "IR",
+      "month": "2019-11",
+      "mapping": "alt_t05",
+      "value": 1.0840647495158402
+    },
+    {
+      "code": "IR",
+      "month": "2019-12",
+      "mapping": "alt_t05",
+      "value": 1.1170711143986574
+    },
+    {
+      "code": "IR",
+      "month": "2020-01",
+      "mapping": "alt_t05",
+      "value": 1.1835376313033434
+    },
+    {
+      "code": "IR",
+      "month": "2020-11",
+      "mapping": "alt_t05",
+      "value": 1.0215740421125301
+    },
+    {
+      "code": "IR",
+      "month": "2021-08",
+      "mapping": "alt_t05",
+      "value": 1.09363938294804
+    },
+    {
+      "code": "IR",
+      "month": "2022-09",
+      "mapping": "alt_t05",
+      "value": 1.019036408653651
+    },
+    {
+      "code": "IR",
+      "month": "2022-10",
+      "mapping": "alt_t05",
+      "value": 1.1429508747034096
+    },
+    {
+      "code": "IR",
+      "month": "2023-10",
+      "mapping": "primary",
+      "value": 1.375840244520486
+    },
+    {
+      "code": "IR",
+      "month": "2023-10",
+      "mapping": "alt_t05",
+      "value": 1.5330224444976999
+    },
+    {
+      "code": "IR",
+      "month": "2023-11",
+      "mapping": "primary",
+      "value": 1.2419217717449544
+    },
+    {
+      "code": "IR",
+      "month": "2023-11",
+      "mapping": "alt_t05",
+      "value": 1.3807679942846938
+    },
+    {
+      "code": "IR",
+      "month": "2023-12",
+      "mapping": "primary",
+      "value": 1.1223843868012133
+    },
+    {
+      "code": "IR",
+      "month": "2023-12",
+      "mapping": "alt_t05",
+      "value": 1.2575140840710703
+    },
+    {
+      "code": "IR",
+      "month": "2024-01",
+      "mapping": "primary",
+      "value": 1.351338206758279
+    },
+    {
+      "code": "IR",
+      "month": "2024-01",
+      "mapping": "alt_t05",
+      "value": 1.5075359427496637
+    },
+    {
+      "code": "IR",
+      "month": "2024-02",
+      "mapping": "primary",
+      "value": 1.105465785921388
+    },
+    {
+      "code": "IR",
+      "month": "2024-02",
+      "mapping": "alt_t05",
+      "value": 1.2508925932730017
+    },
+    {
+      "code": "IR",
+      "month": "2024-03",
+      "mapping": "alt_t05",
+      "value": 1.1186580677955333
+    },
+    {
+      "code": "IR",
+      "month": "2024-04",
+      "mapping": "primary",
+      "value": 1.0681013199851939
+    },
+    {
+      "code": "IR",
+      "month": "2024-04",
+      "mapping": "alt_t05",
+      "value": 1.1677301484346612
+    },
+    {
+      "code": "IR",
+      "month": "2024-06",
+      "mapping": "alt_t05",
+      "value": 1.0807524059492564
+    },
+    {
+      "code": "IR",
+      "month": "2024-07",
+      "mapping": "primary",
+      "value": 1.0556050588173629
+    },
+    {
+      "code": "IR",
+      "month": "2024-07",
+      "mapping": "alt_t05",
+      "value": 1.1956285707867524
+    },
+    {
+      "code": "IR",
+      "month": "2024-08",
+      "mapping": "primary",
+      "value": 1.2975211103370243
+    },
+    {
+      "code": "IR",
+      "month": "2024-08",
+      "mapping": "alt_t05",
+      "value": 1.4076357904826844
+    },
+    {
+      "code": "IR",
+      "month": "2024-09",
+      "mapping": "primary",
+      "value": 1.2212763762059538
+    },
+    {
+      "code": "IR",
+      "month": "2024-09",
+      "mapping": "alt_t05",
+      "value": 1.333023783728009
+    },
+    {
+      "code": "IR",
+      "month": "2024-10",
+      "mapping": "primary",
+      "value": 1.2623137643741067
+    },
+    {
+      "code": "IR",
+      "month": "2024-10",
+      "mapping": "alt_t05",
+      "value": 1.3642524176828876
+    },
+    {
+      "code": "IR",
+      "month": "2024-11",
+      "mapping": "primary",
+      "value": 1.0744851423990327
+    },
+    {
+      "code": "IR",
+      "month": "2024-11",
+      "mapping": "alt_t05",
+      "value": 1.1899617553128574
+    },
+    {
+      "code": "IR",
+      "month": "2024-12",
+      "mapping": "primary",
+      "value": 1.1814600407889237
+    },
+    {
+      "code": "IR",
+      "month": "2024-12",
+      "mapping": "alt_t05",
+      "value": 1.3021673865953916
+    },
+    {
+      "code": "IR",
+      "month": "2025-01",
+      "mapping": "alt_t05",
+      "value": 1.061188857437634
+    },
+    {
+      "code": "IR",
+      "month": "2025-02",
+      "mapping": "alt_t05",
+      "value": 1.0320182111440306
+    },
+    {
+      "code": "IR",
+      "month": "2025-03",
+      "mapping": "alt_t05",
+      "value": 1.062974195986473
+    },
+    {
+      "code": "IR",
+      "month": "2025-07",
+      "mapping": "alt_t05",
+      "value": 1.0311701017479782
+    },
+    {
+      "code": "IR",
+      "month": "2025-09",
+      "mapping": "alt_t05",
+      "value": 1.047870528109029
+    },
+    {
+      "code": "IR",
+      "month": "2025-10",
+      "mapping": "alt_t05",
+      "value": 1.0434111704500246
+    },
+    {
+      "code": "IR",
+      "month": "2025-12",
+      "mapping": "alt_t05",
+      "value": 1.0309230920901293
+    },
+    {
+      "code": "IR",
+      "month": "2026-01",
+      "mapping": "alt_t05",
+      "value": 1.3797433500994722
+    },
+    {
+      "code": "IR",
+      "month": "2026-02",
+      "mapping": "alt_t05",
+      "value": 1.0230202170914253
+    },
+    {
+      "code": "IR",
+      "month": "2026-03",
+      "mapping": "alt_t05",
+      "value": 1.0882904036437884
+    },
+    {
+      "code": "IR",
+      "month": "2026-04",
+      "mapping": "alt_t05",
+      "value": 1.0409755544640495
+    },
+    {
+      "code": "IR",
+      "month": "2026-06",
+      "mapping": "primary",
+      "value": 1.0092905335656654
+    },
+    {
+      "code": "IR",
+      "month": "2026-06",
+      "mapping": "alt_t05",
+      "value": 1.100511185802413
+    },
+    {
+      "code": "LE",
+      "month": "2015-03",
+      "mapping": "primary",
+      "value": 1.079329436569019
+    },
+    {
+      "code": "LE",
+      "month": "2015-03",
+      "mapping": "alt_t05",
+      "value": 1.2053771919299268
+    },
+    {
+      "code": "LE",
+      "month": "2015-04",
+      "mapping": "primary",
+      "value": 1.0387023696253002
+    },
+    {
+      "code": "LE",
+      "month": "2015-04",
+      "mapping": "alt_t05",
+      "value": 1.154836663495084
+    },
+    {
+      "code": "LE",
+      "month": "2015-05",
+      "mapping": "primary",
+      "value": 1.1879921174397305
+    },
+    {
+      "code": "LE",
+      "month": "2015-05",
+      "mapping": "alt_t05",
+      "value": 1.348516811209209
+    },
+    {
+      "code": "LE",
+      "month": "2015-06",
+      "mapping": "primary",
+      "value": 1.0871736867392696
+    },
+    {
+      "code": "LE",
+      "month": "2015-06",
+      "mapping": "alt_t05",
+      "value": 1.2306814541960283
+    },
+    {
+      "code": "LE",
+      "month": "2015-07",
+      "mapping": "primary",
+      "value": 1.0195651254283176
+    },
+    {
+      "code": "LE",
+      "month": "2015-07",
+      "mapping": "alt_t05",
+      "value": 1.1501544058547315
+    },
+    {
+      "code": "LE",
+      "month": "2015-08",
+      "mapping": "alt_t05",
+      "value": 1.2018517096195338
+    },
+    {
+      "code": "LE",
+      "month": "2015-09",
+      "mapping": "alt_t05",
+      "value": 1.1339735933286132
+    },
+    {
+      "code": "LE",
+      "month": "2015-10",
+      "mapping": "primary",
+      "value": 1.0102156202616226
+    },
+    {
+      "code": "LE",
+      "month": "2015-10",
+      "mapping": "alt_t05",
+      "value": 1.1491030813908663
+    },
+    {
+      "code": "LE",
+      "month": "2015-11",
+      "mapping": "primary",
+      "value": 1.1578184480234261
+    },
+    {
+      "code": "LE",
+      "month": "2015-11",
+      "mapping": "alt_t05",
+      "value": 1.2598926305514886
+    },
+    {
+      "code": "LE",
+      "month": "2015-12",
+      "mapping": "primary",
+      "value": 1.1102627356725665
+    },
+    {
+      "code": "LE",
+      "month": "2015-12",
+      "mapping": "alt_t05",
+      "value": 1.231179488480344
+    },
+    {
+      "code": "LE",
+      "month": "2016-01",
+      "mapping": "primary",
+      "value": 1.0338536126208022
+    },
+    {
+      "code": "LE",
+      "month": "2016-01",
+      "mapping": "alt_t05",
+      "value": 1.2282910727295
+    },
+    {
+      "code": "LE",
+      "month": "2016-02",
+      "mapping": "primary",
+      "value": 1.061620518870823
+    },
+    {
+      "code": "LE",
+      "month": "2016-02",
+      "mapping": "alt_t05",
+      "value": 1.204998217994568
+    },
+    {
+      "code": "LE",
+      "month": "2016-03",
+      "mapping": "primary",
+      "value": 1.016910903203837
+    },
+    {
+      "code": "LE",
+      "month": "2016-03",
+      "mapping": "alt_t05",
+      "value": 1.1344272513722073
+    },
+    {
+      "code": "LE",
+      "month": "2016-04",
+      "mapping": "alt_t05",
+      "value": 1.0739612655178226
+    },
+    {
+      "code": "LE",
+      "month": "2016-05",
+      "mapping": "alt_t05",
+      "value": 1.0472678893851564
+    },
+    {
+      "code": "LE",
+      "month": "2016-06",
+      "mapping": "alt_t05",
+      "value": 1.0846922985358887
+    },
+    {
+      "code": "LE",
+      "month": "2016-07",
+      "mapping": "alt_t05",
+      "value": 1.0410281578716047
+    },
+    {
+      "code": "LE",
+      "month": "2016-08",
+      "mapping": "alt_t05",
+      "value": 1.0291670088418057
+    },
+    {
+      "code": "LE",
+      "month": "2016-09",
+      "mapping": "primary",
+      "value": 1.0002177497122593
+    },
+    {
+      "code": "LE",
+      "month": "2016-09",
+      "mapping": "alt_t05",
+      "value": 1.1675801785547641
+    },
+    {
+      "code": "LE",
+      "month": "2016-10",
+      "mapping": "alt_t05",
+      "value": 1.0478968577975611
+    },
+    {
+      "code": "LE",
+      "month": "2016-11",
+      "mapping": "alt_t05",
+      "value": 1.0270812091818458
+    },
+    {
+      "code": "LE",
+      "month": "2016-12",
+      "mapping": "primary",
+      "value": 1.072098951053058
+    },
+    {
+      "code": "LE",
+      "month": "2016-12",
+      "mapping": "alt_t05",
+      "value": 1.2122972290416172
+    },
+    {
+      "code": "LE",
+      "month": "2017-01",
+      "mapping": "alt_t05",
+      "value": 1.0945857255198757
+    },
+    {
+      "code": "LE",
+      "month": "2017-02",
+      "mapping": "alt_t05",
+      "value": 1.0466354906650484
+    },
+    {
+      "code": "LE",
+      "month": "2017-03",
+      "mapping": "alt_t05",
+      "value": 1.0841505792723305
+    },
+    {
+      "code": "LE",
+      "month": "2017-04",
+      "mapping": "primary",
+      "value": 1.0528995067110245
+    },
+    {
+      "code": "LE",
+      "month": "2017-04",
+      "mapping": "alt_t05",
+      "value": 1.2331865894229666
+    },
+    {
+      "code": "LE",
+      "month": "2017-05",
+      "mapping": "alt_t05",
+      "value": 1.1053938181372749
+    },
+    {
+      "code": "LE",
+      "month": "2017-06",
+      "mapping": "alt_t05",
+      "value": 1.091704774548852
+    },
+    {
+      "code": "LE",
+      "month": "2017-07",
+      "mapping": "primary",
+      "value": 1.0379245548101577
+    },
+    {
+      "code": "LE",
+      "month": "2017-07",
+      "mapping": "alt_t05",
+      "value": 1.1450335429033052
+    },
+    {
+      "code": "LE",
+      "month": "2017-08",
+      "mapping": "primary",
+      "value": 1.0722105877051136
+    },
+    {
+      "code": "LE",
+      "month": "2017-08",
+      "mapping": "alt_t05",
+      "value": 1.173165796286969
+    },
+    {
+      "code": "LE",
+      "month": "2017-09",
+      "mapping": "alt_t05",
+      "value": 1.0620733237799396
+    },
+    {
+      "code": "LE",
+      "month": "2017-10",
+      "mapping": "alt_t05",
+      "value": 1.0616787388155091
+    },
+    {
+      "code": "LE",
+      "month": "2017-11",
+      "mapping": "alt_t05",
+      "value": 1.0560542249826292
+    },
+    {
+      "code": "LE",
+      "month": "2017-12",
+      "mapping": "alt_t05",
+      "value": 1.1118783421386476
+    },
+    {
+      "code": "LE",
+      "month": "2018-01",
+      "mapping": "alt_t05",
+      "value": 1.0559314191931979
+    },
+    {
+      "code": "LE",
+      "month": "2018-02",
+      "mapping": "alt_t05",
+      "value": 1.1355240305799477
+    },
+    {
+      "code": "LE",
+      "month": "2018-03",
+      "mapping": "alt_t05",
+      "value": 1.0156487974694137
+    },
+    {
+      "code": "LE",
+      "month": "2018-04",
+      "mapping": "primary",
+      "value": 1.0229853954214763
+    },
+    {
+      "code": "LE",
+      "month": "2018-04",
+      "mapping": "alt_t05",
+      "value": 1.1925036530774762
+    },
+    {
+      "code": "LE",
+      "month": "2018-05",
+      "mapping": "alt_t05",
+      "value": 1.1157163104665968
+    },
+    {
+      "code": "LE",
+      "month": "2018-09",
+      "mapping": "alt_t05",
+      "value": 1.0649725639437118
+    },
+    {
+      "code": "LE",
+      "month": "2018-12",
+      "mapping": "alt_t05",
+      "value": 1.1112180911469907
+    },
+    {
+      "code": "LE",
+      "month": "2019-06",
+      "mapping": "alt_t05",
+      "value": 1.0410363935899356
+    },
+    {
+      "code": "LE",
+      "month": "2019-08",
+      "mapping": "alt_t05",
+      "value": 1.0944960801745736
+    },
+    {
+      "code": "LE",
+      "month": "2019-09",
+      "mapping": "alt_t05",
+      "value": 1.041764705882353
+    },
+    {
+      "code": "LE",
+      "month": "2019-10",
+      "mapping": "alt_t05",
+      "value": 1.2910938508114547
+    },
+    {
+      "code": "LE",
+      "month": "2019-11",
+      "mapping": "alt_t05",
+      "value": 1.2387179414993947
+    },
+    {
+      "code": "LE",
+      "month": "2019-12",
+      "mapping": "alt_t05",
+      "value": 1.144437244767258
+    },
+    {
+      "code": "LE",
+      "month": "2020-01",
+      "mapping": "alt_t05",
+      "value": 1.2376704774243246
+    },
+    {
+      "code": "LE",
+      "month": "2021-05",
+      "mapping": "alt_t05",
+      "value": 1.1571506710985822
+    },
+    {
+      "code": "LE",
+      "month": "2023-04",
+      "mapping": "primary",
+      "value": 1.0116654052453191
+    },
+    {
+      "code": "LE",
+      "month": "2023-04",
+      "mapping": "alt_t05",
+      "value": 1.1821547270393893
+    },
+    {
+      "code": "LE",
+      "month": "2023-10",
+      "mapping": "primary",
+      "value": 1.6434836248276434
+    },
+    {
+      "code": "LE",
+      "month": "2023-10",
+      "mapping": "alt_t05",
+      "value": 1.8266688783603056
+    },
+    {
+      "code": "LE",
+      "month": "2023-11",
+      "mapping": "primary",
+      "value": 1.5758622381396261
+    },
+    {
+      "code": "LE",
+      "month": "2023-11",
+      "mapping": "alt_t05",
+      "value": 1.7297355639503509
+    },
+    {
+      "code": "LE",
+      "month": "2023-12",
+      "mapping": "primary",
+      "value": 1.4442893945899529
+    },
+    {
+      "code": "LE",
+      "month": "2023-12",
+      "mapping": "alt_t05",
+      "value": 1.5888674204474977
+    },
+    {
+      "code": "LE",
+      "month": "2024-01",
+      "mapping": "primary",
+      "value": 1.5315962943167647
+    },
+    {
+      "code": "LE",
+      "month": "2024-01",
+      "mapping": "alt_t05",
+      "value": 1.7136647069303403
+    },
+    {
+      "code": "LE",
+      "month": "2024-02",
+      "mapping": "primary",
+      "value": 1.3617123617123617
+    },
+    {
+      "code": "LE",
+      "month": "2024-02",
+      "mapping": "alt_t05",
+      "value": 1.5105218855218856
+    },
+    {
+      "code": "LE",
+      "month": "2024-03",
+      "mapping": "primary",
+      "value": 1.2281581850779202
+    },
+    {
+      "code": "LE",
+      "month": "2024-03",
+      "mapping": "alt_t05",
+      "value": 1.3473831195697146
+    },
+    {
+      "code": "LE",
+      "month": "2024-04",
+      "mapping": "primary",
+      "value": 1.3311025817668865
+    },
+    {
+      "code": "LE",
+      "month": "2024-04",
+      "mapping": "alt_t05",
+      "value": 1.4727553062362628
+    },
+    {
+      "code": "LE",
+      "month": "2024-05",
+      "mapping": "primary",
+      "value": 1.183783032472158
+    },
+    {
+      "code": "LE",
+      "month": "2024-05",
+      "mapping": "alt_t05",
+      "value": 1.3260767586913842
+    },
+    {
+      "code": "LE",
+      "month": "2024-06",
+      "mapping": "primary",
+      "value": 1.4051378988960213
+    },
+    {
+      "code": "LE",
+      "month": "2024-06",
+      "mapping": "alt_t05",
+      "value": 1.5432993344622534
+    },
+    {
+      "code": "LE",
+      "month": "2024-07",
+      "mapping": "primary",
+      "value": 1.2795514755714374
+    },
+    {
+      "code": "LE",
+      "month": "2024-07",
+      "mapping": "alt_t05",
+      "value": 1.412285133386729
+    },
+    {
+      "code": "LE",
+      "month": "2024-08",
+      "mapping": "primary",
+      "value": 1.5097217551755953
+    },
+    {
+      "code": "LE",
+      "month": "2024-08",
+      "mapping": "alt_t05",
+      "value": 1.6092673547341283
+    },
+    {
+      "code": "LE",
+      "month": "2024-09",
+      "mapping": "primary",
+      "value": 1.5454879516412041
+    },
+    {
+      "code": "LE",
+      "month": "2024-09",
+      "mapping": "alt_t05",
+      "value": 1.6348699622426575
+    },
+    {
+      "code": "LE",
+      "month": "2024-10",
+      "mapping": "primary",
+      "value": 1.499591739316132
+    },
+    {
+      "code": "LE",
+      "month": "2024-10",
+      "mapping": "alt_t05",
+      "value": 1.6052872899027713
+    },
+    {
+      "code": "LE",
+      "month": "2024-11",
+      "mapping": "primary",
+      "value": 1.4546692009007822
+    },
+    {
+      "code": "LE",
+      "month": "2024-11",
+      "mapping": "alt_t05",
+      "value": 1.5580458796740624
+    },
+    {
+      "code": "LE",
+      "month": "2024-12",
+      "mapping": "primary",
+      "value": 1.3478851707151351
+    },
+    {
+      "code": "LE",
+      "month": "2024-12",
+      "mapping": "alt_t05",
+      "value": 1.479441767319607
+    },
+    {
+      "code": "LE",
+      "month": "2025-01",
+      "mapping": "primary",
+      "value": 1.2148792539494746
+    },
+    {
+      "code": "LE",
+      "month": "2025-01",
+      "mapping": "alt_t05",
+      "value": 1.337490430788503
+    },
+    {
+      "code": "LE",
+      "month": "2025-02",
+      "mapping": "primary",
+      "value": 1.1687657430730478
+    },
+    {
+      "code": "LE",
+      "month": "2025-02",
+      "mapping": "alt_t05",
+      "value": 1.2888943499006777
+    },
+    {
+      "code": "LE",
+      "month": "2025-03",
+      "mapping": "primary",
+      "value": 1.1806289446646119
+    },
+    {
+      "code": "LE",
+      "month": "2025-03",
+      "mapping": "alt_t05",
+      "value": 1.3132981065609863
+    },
+    {
+      "code": "LE",
+      "month": "2025-04",
+      "mapping": "primary",
+      "value": 1.1255130653878977
+    },
+    {
+      "code": "LE",
+      "month": "2025-04",
+      "mapping": "alt_t05",
+      "value": 1.2576502621205348
+    },
+    {
+      "code": "LE",
+      "month": "2025-05",
+      "mapping": "primary",
+      "value": 1.0719607098794723
+    },
+    {
+      "code": "LE",
+      "month": "2025-05",
+      "mapping": "alt_t05",
+      "value": 1.1726772326089019
+    },
+    {
+      "code": "LE",
+      "month": "2025-06",
+      "mapping": "primary",
+      "value": 1.1396846760238415
+    },
+    {
+      "code": "LE",
+      "month": "2025-06",
+      "mapping": "alt_t05",
+      "value": 1.2662949432801385
+    },
+    {
+      "code": "LE",
+      "month": "2025-07",
+      "mapping": "primary",
+      "value": 1.1117894736842104
+    },
+    {
+      "code": "LE",
+      "month": "2025-07",
+      "mapping": "alt_t05",
+      "value": 1.2395789473684211
+    },
+    {
+      "code": "LE",
+      "month": "2025-08",
+      "mapping": "primary",
+      "value": 1.0769661417131173
+    },
+    {
+      "code": "LE",
+      "month": "2025-08",
+      "mapping": "alt_t05",
+      "value": 1.2087238030328846
+    },
+    {
+      "code": "LE",
+      "month": "2025-09",
+      "mapping": "primary",
+      "value": 1.1348339214016303
+    },
+    {
+      "code": "LE",
+      "month": "2025-09",
+      "mapping": "alt_t05",
+      "value": 1.2640953887334225
+    },
+    {
+      "code": "LE",
+      "month": "2025-10",
+      "mapping": "primary",
+      "value": 1.1015315780416453
+    },
+    {
+      "code": "LE",
+      "month": "2025-10",
+      "mapping": "alt_t05",
+      "value": 1.2184035204169432
+    },
+    {
+      "code": "LE",
+      "month": "2025-11",
+      "mapping": "primary",
+      "value": 1.0722194211959262
+    },
+    {
+      "code": "LE",
+      "month": "2025-11",
+      "mapping": "alt_t05",
+      "value": 1.1593223757184632
+    },
+    {
+      "code": "LE",
+      "month": "2025-12",
+      "mapping": "primary",
+      "value": 1.074962413080248
+    },
+    {
+      "code": "LE",
+      "month": "2025-12",
+      "mapping": "alt_t05",
+      "value": 1.1853270062018417
+    },
+    {
+      "code": "LE",
+      "month": "2026-01",
+      "mapping": "primary",
+      "value": 1.0532351242056615
+    },
+    {
+      "code": "LE",
+      "month": "2026-01",
+      "mapping": "alt_t05",
+      "value": 1.2490756787983823
+    },
+    {
+      "code": "LE",
+      "month": "2026-02",
+      "mapping": "primary",
+      "value": 1.0631365708176241
+    },
+    {
+      "code": "LE",
+      "month": "2026-02",
+      "mapping": "alt_t05",
+      "value": 1.2052501266107705
+    },
+    {
+      "code": "LE",
+      "month": "2026-03",
+      "mapping": "primary",
+      "value": 1.4365784232865966
+    },
+    {
+      "code": "LE",
+      "month": "2026-03",
+      "mapping": "alt_t05",
+      "value": 1.6014262436885196
+    },
+    {
+      "code": "LE",
+      "month": "2026-04",
+      "mapping": "primary",
+      "value": 1.3366337130778385
+    },
+    {
+      "code": "LE",
+      "month": "2026-04",
+      "mapping": "alt_t05",
+      "value": 1.4467161054180118
+    },
+    {
+      "code": "LE",
+      "month": "2026-05",
+      "mapping": "primary",
+      "value": 1.267520055354942
+    },
+    {
+      "code": "LE",
+      "month": "2026-05",
+      "mapping": "alt_t05",
+      "value": 1.3716673513957662
+    },
+    {
+      "code": "LE",
+      "month": "2026-06",
+      "mapping": "primary",
+      "value": 1.3770795163063394
+    },
+    {
+      "code": "LE",
+      "month": "2026-06",
+      "mapping": "alt_t05",
+      "value": 1.4787834371564677
+    },
+    {
+      "code": "PK",
+      "month": "2015-04",
+      "mapping": "alt_t05",
+      "value": 1.0161106983106896
+    },
+    {
+      "code": "PK",
+      "month": "2015-12",
+      "mapping": "primary",
+      "value": 1.0265706575197358
+    },
+    {
+      "code": "PK",
+      "month": "2015-12",
+      "mapping": "alt_t05",
+      "value": 1.1082498928094024
+    },
+    {
+      "code": "PK",
+      "month": "2016-01",
+      "mapping": "primary",
+      "value": 1.0452562542659585
+    },
+    {
+      "code": "PK",
+      "month": "2016-01",
+      "mapping": "alt_t05",
+      "value": 1.165093119777513
+    },
+    {
+      "code": "PK",
+      "month": "2016-05",
+      "mapping": "alt_t05",
+      "value": 1.0034015734885953
+    },
+    {
+      "code": "PK",
+      "month": "2016-07",
+      "mapping": "alt_t05",
+      "value": 1.089572922732464
+    },
+    {
+      "code": "PK",
+      "month": "2016-08",
+      "mapping": "alt_t05",
+      "value": 1.0729348043403188
+    },
+    {
+      "code": "PK",
+      "month": "2016-09",
+      "mapping": "alt_t05",
+      "value": 1.0869000796443722
+    },
+    {
+      "code": "PK",
+      "month": "2019-02",
+      "mapping": "primary",
+      "value": 1.0000893681670588
+    },
+    {
+      "code": "PK",
+      "month": "2019-02",
+      "mapping": "alt_t05",
+      "value": 1.0974708808722333
+    },
+    {
+      "code": "PK",
+      "month": "2019-03",
+      "mapping": "alt_t05",
+      "value": 1.0268431819315782
+    },
+    {
+      "code": "PK",
+      "month": "2021-08",
+      "mapping": "primary",
+      "value": 1.1503070869037548
+    },
+    {
+      "code": "PK",
+      "month": "2021-08",
+      "mapping": "alt_t05",
+      "value": 1.2770493913427237
+    },
+    {
+      "code": "PK",
+      "month": "2021-09",
+      "mapping": "alt_t05",
+      "value": 1.0790691561763683
+    },
+    {
+      "code": "PK",
+      "month": "2025-05",
+      "mapping": "primary",
+      "value": 1.0958966324932002
+    },
+    {
+      "code": "PK",
+      "month": "2025-05",
+      "mapping": "alt_t05",
+      "value": 1.1738151979220355
+    },
+    {
+      "code": "PK",
+      "month": "2026-03",
+      "mapping": "alt_t05",
+      "value": 1.1085032704886495
+    },
+    {
+      "code": "PK",
+      "month": "2026-04",
+      "mapping": "alt_t05",
+      "value": 1.0658943424007676
+    },
+    {
+      "code": "SU",
+      "month": "2015-03",
+      "mapping": "alt_t05",
+      "value": 1.079894779286112
+    },
+    {
+      "code": "SU",
+      "month": "2015-04",
+      "mapping": "primary",
+      "value": 1.0495996197301547
+    },
+    {
+      "code": "SU",
+      "month": "2015-04",
+      "mapping": "alt_t05",
+      "value": 1.1616878130827453
+    },
+    {
+      "code": "SU",
+      "month": "2015-05",
+      "mapping": "alt_t05",
+      "value": 1.0348575319505553
+    },
+    {
+      "code": "SU",
+      "month": "2015-06",
+      "mapping": "alt_t05",
+      "value": 1.1149218508201795
+    },
+    {
+      "code": "SU",
+      "month": "2015-08",
+      "mapping": "alt_t05",
+      "value": 1.0128263029536628
+    },
+    {
+      "code": "SU",
+      "month": "2016-01",
+      "mapping": "alt_t05",
+      "value": 1.2180047756380439
+    },
+    {
+      "code": "SU",
+      "month": "2016-02",
+      "mapping": "alt_t05",
+      "value": 1.0083385449239108
+    },
+    {
+      "code": "SU",
+      "month": "2016-03",
+      "mapping": "alt_t05",
+      "value": 1.0054210628519644
+    },
+    {
+      "code": "SU",
+      "month": "2016-04",
+      "mapping": "alt_t05",
+      "value": 1.0132962852454126
+    },
+    {
+      "code": "SU",
+      "month": "2016-07",
+      "mapping": "primary",
+      "value": 1.0016976158920674
+    },
+    {
+      "code": "SU",
+      "month": "2016-07",
+      "mapping": "alt_t05",
+      "value": 1.1000848807946033
+    },
+    {
+      "code": "SU",
+      "month": "2017-01",
+      "mapping": "primary",
+      "value": 1.0824896863335733
+    },
+    {
+      "code": "SU",
+      "month": "2017-01",
+      "mapping": "alt_t05",
+      "value": 1.293576059197171
+    },
+    {
+      "code": "SU",
+      "month": "2017-02",
+      "mapping": "primary",
+      "value": 1.0333790648522378
+    },
+    {
+      "code": "SU",
+      "month": "2017-02",
+      "mapping": "alt_t05",
+      "value": 1.2079127887574623
+    },
+    {
+      "code": "SU",
+      "month": "2017-03",
+      "mapping": "alt_t05",
+      "value": 1.0256617818097231
+    },
+    {
+      "code": "SU",
+      "month": "2017-05",
+      "mapping": "alt_t05",
+      "value": 1.0363822277929875
+    },
+    {
+      "code": "SU",
+      "month": "2019-01",
+      "mapping": "alt_t05",
+      "value": 1.1108100147275406
+    },
+    {
+      "code": "SU",
+      "month": "2019-02",
+      "mapping": "alt_t05",
+      "value": 1.1155729676787463
+    },
+    {
+      "code": "SU",
+      "month": "2019-04",
+      "mapping": "alt_t05",
+      "value": 1.359467526456082
+    },
+    {
+      "code": "SU",
+      "month": "2019-05",
+      "mapping": "alt_t05",
+      "value": 1.3164695575996497
+    },
+    {
+      "code": "SU",
+      "month": "2019-06",
+      "mapping": "alt_t05",
+      "value": 1.5151317079547684
+    },
+    {
+      "code": "SU",
+      "month": "2019-07",
+      "mapping": "alt_t05",
+      "value": 1.2345186728165451
+    },
+    {
+      "code": "SU",
+      "month": "2019-12",
+      "mapping": "alt_t05",
+      "value": 1.0951357924604783
+    },
+    {
+      "code": "SU",
+      "month": "2020-02",
+      "mapping": "alt_t05",
+      "value": 1.0661817031707124
+    },
+    {
+      "code": "SU",
+      "month": "2020-10",
+      "mapping": "alt_t05",
+      "value": 1.06052544063851
+    },
+    {
+      "code": "SU",
+      "month": "2020-11",
+      "mapping": "primary",
+      "value": 1.0794473982393447
+    },
+    {
+      "code": "SU",
+      "month": "2020-11",
+      "mapping": "alt_t05",
+      "value": 1.1723176152706354
+    },
+    {
+      "code": "SU",
+      "month": "2020-12",
+      "mapping": "alt_t05",
+      "value": 1.070821031913398
+    },
+    {
+      "code": "SU",
+      "month": "2021-05",
+      "mapping": "alt_t05",
+      "value": 1.0076856897046171
+    },
+    {
+      "code": "SU",
+      "month": "2021-10",
+      "mapping": "alt_t05",
+      "value": 1.1868452247460994
+    },
+    {
+      "code": "SU",
+      "month": "2021-11",
+      "mapping": "alt_t05",
+      "value": 1.1036787974683544
+    },
+    {
+      "code": "SU",
+      "month": "2022-04",
+      "mapping": "alt_t05",
+      "value": 1.0479228795339484
+    },
+    {
+      "code": "SU",
+      "month": "2023-04",
+      "mapping": "alt_t05",
+      "value": 1.0198478783026421
+    },
+    {
+      "code": "SU",
+      "month": "2023-05",
+      "mapping": "alt_t05",
+      "value": 1.006247768654052
+    },
+    {
+      "code": "SU",
+      "month": "2023-06",
+      "mapping": "alt_t05",
+      "value": 1.0666428486364177
+    },
+    {
+      "code": "SU",
+      "month": "2023-07",
+      "mapping": "alt_t05",
+      "value": 1.0539409089540102
+    },
+    {
+      "code": "SU",
+      "month": "2023-08",
+      "mapping": "alt_t05",
+      "value": 1.0666558861578266
+    },
+    {
+      "code": "SU",
+      "month": "2023-10",
+      "mapping": "primary",
+      "value": 1.0416557046391302
+    },
+    {
+      "code": "SU",
+      "month": "2023-10",
+      "mapping": "alt_t05",
+      "value": 1.1500482329211612
+    },
+    {
+      "code": "SU",
+      "month": "2023-11",
+      "mapping": "alt_t05",
+      "value": 1.072012854221443
+    },
+    {
+      "code": "SU",
+      "month": "2023-12",
+      "mapping": "alt_t05",
+      "value": 1.0386020918217331
+    },
+    {
+      "code": "SU",
+      "month": "2024-01",
+      "mapping": "alt_t05",
+      "value": 1.088961866483678
+    },
+    {
+      "code": "SU",
+      "month": "2024-03",
+      "mapping": "alt_t05",
+      "value": 1.064002416814121
+    },
+    {
+      "code": "SU",
+      "month": "2024-04",
+      "mapping": "alt_t05",
+      "value": 1.0247165721907303
+    },
+    {
+      "code": "SU",
+      "month": "2024-05",
+      "mapping": "alt_t05",
+      "value": 1.106837606837607
+    },
+    {
+      "code": "SU",
+      "month": "2024-06",
+      "mapping": "primary",
+      "value": 1.007531651418538
+    },
+    {
+      "code": "SU",
+      "month": "2024-06",
+      "mapping": "alt_t05",
+      "value": 1.1017928102763146
+    },
+    {
+      "code": "SU",
+      "month": "2024-09",
+      "mapping": "alt_t05",
+      "value": 1.0650359153562414
+    },
+    {
+      "code": "SU",
+      "month": "2024-10",
+      "mapping": "alt_t05",
+      "value": 1.0714476972509819
+    },
+    {
+      "code": "SU",
+      "month": "2024-12",
+      "mapping": "alt_t05",
+      "value": 1.042422776030325
+    },
+    {
+      "code": "SU",
+      "month": "2025-01",
+      "mapping": "alt_t05",
+      "value": 1.045714512669791
+    },
+    {
+      "code": "SU",
+      "month": "2025-03",
+      "mapping": "alt_t05",
+      "value": 1.0270462633451958
+    },
+    {
+      "code": "SU",
+      "month": "2025-05",
+      "mapping": "alt_t05",
+      "value": 1.036932557937679
+    },
+    {
+      "code": "SU",
+      "month": "2025-06",
+      "mapping": "primary",
+      "value": 1.0170810974227193
+    },
+    {
+      "code": "SU",
+      "month": "2025-06",
+      "mapping": "alt_t05",
+      "value": 1.1483636913309652
+    },
+    {
+      "code": "SU",
+      "month": "2025-08",
+      "mapping": "alt_t05",
+      "value": 1.0554314628253636
+    },
+    {
+      "code": "SU",
+      "month": "2025-09",
+      "mapping": "alt_t05",
+      "value": 1.0229660501866806
+    },
+    {
+      "code": "SU",
+      "month": "2025-10",
+      "mapping": "alt_t05",
+      "value": 1.1184451473281172
+    },
+    {
+      "code": "SU",
+      "month": "2025-11",
+      "mapping": "primary",
+      "value": 1.0566580670768009
+    },
+    {
+      "code": "SU",
+      "month": "2025-11",
+      "mapping": "alt_t05",
+      "value": 1.144109280941986
+    },
+    {
+      "code": "SU",
+      "month": "2025-12",
+      "mapping": "alt_t05",
+      "value": 1.0477704780542354
+    },
+    {
+      "code": "SU",
+      "month": "2026-02",
+      "mapping": "alt_t05",
+      "value": 1.0398408740054625
+    },
+    {
+      "code": "SU",
+      "month": "2026-03",
+      "mapping": "alt_t05",
+      "value": 1.0631048270267138
+    },
+    {
+      "code": "SU",
+      "month": "2026-04",
+      "mapping": "alt_t05",
+      "value": 1.0189050307682548
+    },
+    {
+      "code": "TS",
+      "month": "2015-03",
+      "mapping": "primary",
+      "value": 1.197706876369421
+    },
+    {
+      "code": "TS",
+      "month": "2015-03",
+      "mapping": "alt_t05",
+      "value": 1.316392532340847
+    },
+    {
+      "code": "TS",
+      "month": "2015-06",
+      "mapping": "primary",
+      "value": 1.2754711695860361
+    },
+    {
+      "code": "TS",
+      "month": "2015-06",
+      "mapping": "alt_t05",
+      "value": 1.376139079282544
+    },
+    {
+      "code": "TS",
+      "month": "2015-07",
+      "mapping": "primary",
+      "value": 1.1494167063923943
+    },
+    {
+      "code": "TS",
+      "month": "2015-07",
+      "mapping": "alt_t05",
+      "value": 1.23901995880517
+    },
+    {
+      "code": "TS",
+      "month": "2015-11",
+      "mapping": "primary",
+      "value": 1.0027360348222614
+    },
+    {
+      "code": "TS",
+      "month": "2015-11",
+      "mapping": "alt_t05",
+      "value": 1.0906622447922065
+    },
+    {
+      "code": "TS",
+      "month": "2015-12",
+      "mapping": "alt_t05",
+      "value": 1.0164199192462988
+    },
+    {
+      "code": "TS",
+      "month": "2016-01",
+      "mapping": "alt_t05",
+      "value": 1.0619322527581907
+    },
+    {
+      "code": "TS",
+      "month": "2016-03",
+      "mapping": "primary",
+      "value": 1.0881915802771895
+    },
+    {
+      "code": "TS",
+      "month": "2016-03",
+      "mapping": "alt_t05",
+      "value": 1.1919332664511575
+    },
+    {
+      "code": "TS",
+      "month": "2016-07",
+      "mapping": "primary",
+      "value": 1.115749494949495
+    },
+    {
+      "code": "TS",
+      "month": "2016-07",
+      "mapping": "alt_t05",
+      "value": 1.1788848484848484
+    },
+    {
+      "code": "TS",
+      "month": "2016-12",
+      "mapping": "primary",
+      "value": 1.0746676768372478
+    },
+    {
+      "code": "TS",
+      "month": "2016-12",
+      "mapping": "alt_t05",
+      "value": 1.165128452372753
+    }
+  ],
+  "method_notes": "PRIMARY proxy (t02+t03)/total_docs vs Caldara-Iacoviello GPRC_<ISO3>, monthly, overlap window only. HEADLINE = delta-Spearman (Ji-Hoon must-fix #1: levels-Pearson is trend-inflated on these non-stationary share series and is demoted to diagnostic). 2015-2019/2020+ split is a temporal-stability descriptor, NOT a gate (no fitted params; must-fix #2). Spike-recall on de-trended (delta) series, top-decile |dGPRC| vs top-quartile |dproxy|, chance baseline 0.25 (must-fix #3). Mapping FROZEN; t05/t02 alternates exploratory only, never the verdict. FIPS->ISO3 join (TUN=TS, MMR=BM, LBN=LE, BGD=BG, NGA=NI, SDN=SU); CSV 2026-06 dropped by month-intersection (xls ends 2026-05); total_docs==0 months skipped; share in [0,1] asserted and flagged not clamped. stdlib + xlrd only."
+}

@@ -1,0 +1,166 @@
+{
+  "schema": "qgi-gpr-theme-dictionary",
+  "version": "1.0.0",
+  "locked_date_note": "Locked at P0 ratification (PoC PASS). Authoritative date = the git commit that introduces this file; see commit, do not trust any inline date.",
+  "provenance": {
+    "answer_key": "Caldara & Iacoviello, 'Measuring Geopolitical Risk', American Economic Review 2022, 112(4):1194-1225. 8 GPR word-categories (Table 1 / search-query appendix). CC-BY.",
+    "answer_key_file": "C:/tmp/gpr_export.xls (xlrd, Sheet1, 1518x115; GPRC_<ISO3> raw-percent-of-articles columns; embedded var_label codebook in cols 113/114)",
+    "proxy_taxonomy": "QGI 14 news-native Topics (t01-t14) derived from GDELT GKG V2THEMES/V2LOCATIONS; same owned-table pattern as qgi_gdelt.gkg_topic_flags / the live-pulse layer.",
+    "proxy_file": "<USER_HOME>/qgi-gdelt-poc/data/topic_monthly.csv (country_code is FIPS 2-letter, NOT ISO2)",
+    "ratified_by": "Ji-Hoon (protocol + pre-registered bar) and Kwame (mapping fidelity + framing); recompute reconciled ALPHA/BETA/GAMMA, max_abs_discrepancy_r=0.0000.",
+    "validation_report": "qgi-docs/internal/roadmap/qgi-gpr-poc-validation.md",
+    "build_plan": "qgi-docs/internal/roadmap/qgi-gpr-build-plan.md (T2.3, deliverable 1)"
+  },
+  "status": "PoC v1 (localhost, no AWS). This is the artifact the full build's dictionary step (build-plan P1 step 3.1) starts from; the full build is expected to EXTEND, not replace it.",
+
+  "primary_proxy": {
+    "formula": "(t02 + t03) / total_docs",
+    "qgi_topics": ["t02", "t03"],
+    "denominator": "total_docs",
+    "denominator_note": "Per-country GDELT total document count for the month. NEVER sum(topics) (Topics are non-exclusive and overlap). This makes the proxy 'fraction of THIS country's coverage that is conflict/terror', which differs from GPRC's 'fraction of ALL articles that are GPR-about-this-country' -> levels are NOT comparable, only within-country co-movement.",
+    "frozen": true,
+    "frozen_note": "Pre-registered before results and FROZEN. The verdict reads off this mapping ONLY. The alternates below are EXPLORATORY and may never claim the verdict, even if they score higher on a diagnostic metric.",
+    "rationale": "GPR's 8 categories collapse by subject into exactly two phenomena: war/military conflict (cats 1,2,3,4,6,7) -> t02 Armed Conflict; terrorism (cats 5,8) -> t03 Terrorism. The Threats/Acts split is orthogonal (it cuts each phenomenon into forward-looking vs realized) and introduces no third subject. So t02+t03 is the closest a-priori alignment the QGI Topic taxonomy permits to Iacoviello's war+terror construct.",
+    "headline_metric": "month-over-month-change (delta) Spearman rank correlation vs GPRC_<ISO3>. Levels-Pearson is trend-inflated and is a DIAGNOSTIC only.",
+    "poc_result": {
+      "mean_delta_spearman_5_countries": 0.4554,
+      "mean_pearson_levels_diagnostic": 0.6282,
+      "pooled_spike_recall_detrended": 0.657,
+      "verdict": "PASS",
+      "scope": "5 of 12 QGI countries (ARG, EGY, THA, TUN, VEN); the other 7 have no GPRC column."
+    }
+  },
+
+  "affine_invariance_note": "Iacoviello's published GPRC = raw_share / mean(1985-2019) * 100 is a positive affine transform of the raw share. Pearson and Spearman are invariant to a*x+b with a>0, so the proxy may be correlated against EITHER the raw-share export (this file) or the reconstructed mean-100 index with identical r. No normalization-matching is required to test shape. Levels remain incomparable for the corpus/denominator reasons above.",
+
+  "categories": [
+    {
+      "cat": 1,
+      "name": "War Threats",
+      "threat_or_act": "threat",
+      "definition": "Words signaling the RISK of war/military conflict (e.g. 'war risk', 'military threat', 'risk of war').",
+      "qgi_topics": ["t02"],
+      "confidence": "partial",
+      "note": "t02 Armed Conflict is the right subject bucket, but GDELT under-detects pure threat/sabre-rattling language with no kinetic event; reads as foreign-policy coverage."
+    },
+    {
+      "cat": 2,
+      "name": "Peace Threats",
+      "threat_or_act": "threat",
+      "definition": "Threats to peace / deterioration of peace, military build-ups, sabre-rattling short of war.",
+      "qgi_topics": ["t02"],
+      "confidence": "partial",
+      "note": "Same threat-language under-detection as cat 1."
+    },
+    {
+      "cat": 3,
+      "name": "Military Buildups",
+      "threat_or_act": "threat",
+      "definition": "Arms build-ups, military mobilization, defense escalation, weapons/nuclear-program tensions.",
+      "qgi_topics": ["t02"],
+      "confidence": "weak",
+      "note": "Often reported as 'defense policy', not 'armed conflict'; a known blind spot the full build should add explicit theme tokens for (GDELT MILITARY/ARMSCONTROL families)."
+    },
+    {
+      "cat": 4,
+      "name": "Nuclear Threats",
+      "threat_or_act": "threat",
+      "definition": "Nuclear-weapon threats, proliferation tensions, nuclear escalation.",
+      "qgi_topics": ["t02"],
+      "confidence": "weak",
+      "note": "Much of this is reported as diplomacy/negotiation, not armed conflict -> the most under-covered category. Material for IRN specifically (the nuclear file) -- but IRN has NO GPRC answer key, so this gap does not bias the 5-country PoC verdict; it limits coverage. The full build should add a NUCLEAR/PROLIFERATION theme set (build-plan 3.1)."
+    },
+    {
+      "cat": 5,
+      "name": "Terror Threats",
+      "threat_or_act": "threat",
+      "definition": "The THREAT of terrorism / anticipated terror attacks.",
+      "qgi_topics": ["t03"],
+      "confidence": "good",
+      "note": "t03 Terrorism covers anticipated and realized terror together."
+    },
+    {
+      "cat": 6,
+      "name": "Beginning of War",
+      "threat_or_act": "act",
+      "definition": "Onset/outbreak of war and armed conflict (an act).",
+      "qgi_topics": ["t02"],
+      "confidence": "good",
+      "note": "Realized conflict events are GDELT's strength; t02 detects these well."
+    },
+    {
+      "cat": 7,
+      "name": "Escalation of War",
+      "threat_or_act": "act",
+      "definition": "Escalation/intensification of an ongoing war (an act).",
+      "qgi_topics": ["t02"],
+      "confidence": "good",
+      "note": "Realized escalation events well captured by t02."
+    },
+    {
+      "cat": 8,
+      "name": "Terror Acts",
+      "threat_or_act": "act",
+      "definition": "Actual terrorist attacks/acts (an act).",
+      "qgi_topics": ["t03"],
+      "confidence": "good",
+      "note": "Realized terror events well captured by t03."
+    }
+  ],
+
+  "threat_act_mapping": {
+    "note": "Iacoviello's Threats/Acts split (GPRT/GPRA) is ORTHOGONAL to the subject mapping and does not change the topic assignment. Recorded so the full build can resolve threat vs act separately if it adds threat-language theme tokens.",
+    "threats_categories": [1, 2, 3, 4, 5],
+    "acts_categories": [6, 7, 8],
+    "proxy_skew": "The 2-topic proxy skews toward ACTS (realized conflict/terror) and away from THREATS (anticipatory risk: cats 1-4), because GDELT theme-coding tilts to events over threat language. Expect better tracking of GPRA/acts dynamics than the pure-threat component. Composition difference, not necessarily a shape break."
+  },
+
+  "exclusions": [
+    {
+      "qgi_topic": "t05",
+      "topic_name": "Protest / civil unrest",
+      "status": "OUT OF SCOPE - explicitly excluded from the verdict mapping",
+      "reason": "GPR is inter-state war-and-terror geopolitical risk. Domestic contentious politics (protests, riots, strikes) is a DIFFERENT risk family with NO counterpart in the GPRC answer key. Including it mechanically depresses correlation for protest-heavy/stable countries AND can spuriously INFLATE it for countries (VEN/ARG/TUN) where domestic turmoil co-occurs with external geopolitical coverage -- a confound, not signal. If the (t02+t03+t05) alternate scores higher, that reflects corpus co-occurrence, NOT evidence that protest is geopolitical risk; it must never relabel t05 as GPR."
+    }
+  ],
+
+  "alternates_exploratory_only": [
+    {
+      "mapping": "(t02+t03+t05)/total_docs",
+      "mean_pearson_levels": 0.6108,
+      "verdict_eligible": false,
+      "note": "Adds protest; scored LOWER on levels-Pearson than primary. Exploratory only; see exclusions[t05]."
+    },
+    {
+      "mapping": "(t02)/total_docs",
+      "mean_pearson_levels": 0.6549,
+      "verdict_eligible": false,
+      "note": "Conflict-only; scored marginally HIGHER on levels-Pearson (0.6549 > primary 0.6282). DELIBERATELY NOT PROMOTED -- the primary mapping is frozen and the verdict reads off delta-Spearman, not levels-Pearson. Declining to swap to this higher diagnostic score is the anti-cherry-picking guard."
+    }
+  ],
+
+  "country_join": {
+    "csv_country_code_format": "FIPS 2-letter (NOT ISO2 -- the original task prompt's 'ISO2' label was wrong).",
+    "fips_to_iso3_examples": {"TS": "TUN", "BM": "MMR", "LE": "LBN", "BG": "BGD", "NI": "NGA", "SU": "SDN"},
+    "gprc_panel_iso3": ["ARG","AUS","BEL","BRA","CAN","CHE","CHL","CHN","COL","DEU","DNK","EGY","ESP","FIN","FRA","GBR","HKG","HUN","IDN","IND","ISR","ITA","JPN","KOR","MEX","MYS","NLD","NOR","PER","PHL","POL","PRT","RUS","SAU","SWE","THA","TUN","TUR","TWN","UKR","USA","VEN","VNM","ZAF"],
+    "poc_overlap_validated": ["ARG","EGY","THA","TUN","VEN"],
+    "poc_uncovered_no_answer_key": ["BGD","IRN","LBN","MMR","NGA","PAK","SDN"],
+    "month_decode": "xls 'month' column is an xlrd date-float (serial, datemode=0). Decode via xlrd.xldate.xldate_as_datetime(serial, datemode).strftime('%Y-%m'); special-case serial==1.0 -> '1900-01' (XLDateAmbiguous edge). Inner-join on month drops the CSV's 2026-06 (xls ends 2026-05).",
+    "window": "2015-02 to 2026-05, 136 aligned months per country."
+  },
+
+  "data_integrity_flags": {
+    "share_can_exceed_1": "QGI Topics are NOT mutually exclusive; a conflict-with-terrorism article tags both t02 and t03, so (t02+t03) can exceed total_docs. 97 primary-mapping country-months had share>1.0 (max 1.83), concentrated in the 7 uncovered high-conflict countries (LBN/IRN/SDN/MMR); among the 5 verdict countries only EGY (2: 2023-10/11 Gaza onset = real signal) and TUN (7: early small-volume 2015-16). The proxy is a co-occurrence-weighted conflict-intensity share, NOT a strict probability. LOGGED, NEVER CLAMPED. Scale-invariant correlations are unaffected; it is a further reason levels are incomparable.",
+    "guard": "Assert 0<=share for every country-month; log+flag share>1 rather than silently clamp -- a clamp would hide a real topic-counting assumption."
+  },
+
+  "guards_carried_to_full_build": [
+    "Headline metric is delta-Spearman; levels-Pearson is a flagged trend-inflated diagnostic, never the headline.",
+    "Primary mapping frozen; alternates exploratory-only and may never claim the verdict.",
+    "No country dropping (TUN kept despite being noisiest).",
+    "No window shopping; the 2015-2019/2020+ split is a temporal-stability descriptor, NOT a gate (zero fitted parameters; per-window underpowered).",
+    "Denominator is total_docs, never sum(topics).",
+    "The 7 uncovered countries are NOT in any PASS/FAIL; ship them only as 'QGI-GPR (uncalibrated)', never 'GPR-validated'.",
+    "Confidence-first comms: every r pairs with the four asymmetries (different corpus / different normalization window / threat-act skew / country-attribution mechanism) and the 5-of-12 scope. Lead with 'proxy, not GPR'."
+  ]
+}

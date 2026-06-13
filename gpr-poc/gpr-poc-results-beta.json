@@ -1,0 +1,121 @@
+{
+  "overlap_countries": [
+    "ARG",
+    "EGY",
+    "THA",
+    "TUN",
+    "VEN"
+  ],
+  "per_country": [
+    {
+      "iso3": "ARG",
+      "n_months": 136,
+      "pearson_r": 0.3806,
+      "spearman_r": 0.4066,
+      "pearson_r_2015_2019": 0.2474,
+      "pearson_r_2020plus": 0.5539,
+      "spike_recall": 0.4286,
+      "rmse_z": 1.113,
+      "spearman_delta": 0.4674,
+      "pearson_delta": 0.3856,
+      "spike_recall_detrended": 0.5,
+      "first_month": "2015-02",
+      "last_month": "2026-05",
+      "n_spike_months": 14
+    },
+    {
+      "iso3": "EGY",
+      "n_months": 136,
+      "pearson_r": 0.7708,
+      "spearman_r": 0.6507,
+      "pearson_r_2015_2019": 0.6008,
+      "pearson_r_2020plus": 0.9276,
+      "spike_recall": 0.9286,
+      "rmse_z": 0.6771,
+      "spearman_delta": 0.6023,
+      "pearson_delta": 0.8036,
+      "spike_recall_detrended": 0.8571,
+      "first_month": "2015-02",
+      "last_month": "2026-05",
+      "n_spike_months": 14
+    },
+    {
+      "iso3": "THA",
+      "n_months": 136,
+      "pearson_r": 0.6293,
+      "spearman_r": 0.3688,
+      "pearson_r_2015_2019": 0.2054,
+      "pearson_r_2020plus": 0.8401,
+      "spike_recall": 0.8571,
+      "rmse_z": 0.861,
+      "spearman_delta": 0.4588,
+      "pearson_delta": 0.6029,
+      "spike_recall_detrended": 0.7857,
+      "first_month": "2015-02",
+      "last_month": "2026-05",
+      "n_spike_months": 14
+    },
+    {
+      "iso3": "TUN",
+      "n_months": 136,
+      "pearson_r": 0.7532,
+      "spearman_r": 0.5704,
+      "pearson_r_2015_2019": 0.7944,
+      "pearson_r_2020plus": 0.4167,
+      "spike_recall": 0.9286,
+      "rmse_z": 0.7025,
+      "spearman_delta": 0.327,
+      "pearson_delta": 0.5917,
+      "spike_recall_detrended": 0.6429,
+      "first_month": "2015-02",
+      "last_month": "2026-05",
+      "n_spike_months": 14
+    },
+    {
+      "iso3": "VEN",
+      "n_months": 136,
+      "pearson_r": 0.6068,
+      "spearman_r": 0.6699,
+      "pearson_r_2015_2019": 0.5636,
+      "pearson_r_2020plus": 0.6363,
+      "spike_recall": 0.9286,
+      "rmse_z": 0.8868,
+      "spearman_delta": 0.4212,
+      "pearson_delta": 0.2511,
+      "spike_recall_detrended": 0.5,
+      "first_month": "2015-02",
+      "last_month": "2026-05",
+      "n_spike_months": 14
+    }
+  ],
+  "mean_pearson_r": 0.6282,
+  "mean_spearman_r": 0.5333,
+  "mean_spearman_delta_HEADLINE": 0.4554,
+  "mean_pearson_delta": 0.527,
+  "pooled_spike_recall_detrended": 0.6571,
+  "primary_mapping": "(t02+t03)/total_docs",
+  "alternates": [
+    {
+      "mapping": "(t02+t03+t05)/total_docs",
+      "mean_pearson_r": 0.6108
+    },
+    {
+      "mapping": "(t02)/total_docs",
+      "mean_pearson_r": 0.6549
+    }
+  ],
+  "window": "2015-02..2026-05",
+  "n_warnings": 335,
+  "warnings_sample": [
+    "BGD 2016-07 primary share out of [0,1]: 1.2108884802760032",
+    "BGD 2016-07 alt1 share out of [0,1]: 1.3188861296987848",
+    "BGD 2017-09 primary share out of [0,1]: 1.0253582034403952",
+    "BGD 2017-09 alt1 share out of [0,1]: 1.1493848617136289",
+    "BGD 2024-08 alt1 share out of [0,1]: 1.031347652631449",
+    "MMR 2017-09 primary share out of [0,1]: 1.2519251740625787",
+    "MMR 2017-09 alt1 share out of [0,1]: 1.4176495260464725",
+    "MMR 2017-10 primary share out of [0,1]: 1.1647876043495673",
+    "MMR 2017-10 alt1 share out of [0,1]: 1.229923297292302",
+    "MMR 2017-11 primary share out of [0,1]: 1.05630269667619"
+  ]
+}
