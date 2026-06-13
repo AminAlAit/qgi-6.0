@@ -5,12 +5,24 @@ render for both phases, the dictionary-driven threats/acts split, placeholder
 completeness, and the country-filter toggle. The bq subprocess path is a
 verbatim port of seed_live_baseline.bq_query and is NOT exercised here.
 
+Also covers the new hardening features (items 1-4 in the architecture review):
+  - CLUSTER BY present in DDL (schema hardening)
+  - slice_id renders into the INSERT (manifest audit tag)
+  - manifest guard refuses an already-paid slice
+  - incremental --month path renders a single-partition INSERT
+
 Run:  python -m pytest test_gpr_rollup.py -v
 """
+import json
+import os
 import re
+import tempfile
 
 from gpr_rollup import (
-    load_categories, render_sql, _half_or, _slug, GPRC_FIPS_ILLUSTRATIVE,
+    load_categories, render_sql, render_incremental_sql,
+    _half_or, _slug, _make_slice_id,
+    load_manifest, check_manifest_allows_slice, advance_manifest,
+    GPRC_FIPS_ILLUSTRATIVE,
 )
 
 
@@ -117,3 +129,224 @@ def test_country_filter_absent_when_none():
 def test_slug_lowercases_and_underscores():
     assert _slug("Military Buildups") == "military_buildups"
     assert _slug("Beginning of War") == "beginning_of_war"
+
+
+# ============================================================================
+# NEW TESTS: hardening features (architecture review items 1-4)
+# ============================================================================
+
+# ---- item 1: CLUSTER BY in DDL ----------------------------------------------
+def test_cluster_by_country_code_in_ddl():
+    """CLUSTER BY country_code must appear in the Phase A CREATE TABLE DDL.
+
+    This MUST be set before the first insert; changing clustering after data
+    is written requires a full table rewrite (that would be a re-scan).
+    """
+    sql = render_sql("A", load_categories())
+    assert "CLUSTER BY country_code" in sql, (
+        "CLUSTER BY country_code missing from CREATE TABLE DDL. "
+        "Must be present before any data is written."
+    )
+
+
+def test_partition_by_event_date_still_present():
+    """PARTITION BY event_date must coexist with the new CLUSTER BY."""
+    sql = render_sql("A", load_categories())
+    assert "PARTITION BY event_date" in sql
+
+
+# ---- item 2: slice_id renders into the INSERT --------------------------------
+def test_slice_id_rendered_in_phase_a_insert():
+    """The INSERT must carry the slice_id literal so SELECT DISTINCT slice_id
+    shows exactly which slices were paid for, and duplicate inserts are detectable.
+    """
+    sql = render_sql("A", load_categories(),
+                     slice_start="2015-02-18", slice_end="2016-01-01")
+    # The rendered value should be the literal string '2015-02-18_2016-01-01'
+    assert "'2015-02-18_2016-01-01' AS slice_id" in sql, (
+        f"slice_id literal not found in rendered INSERT. SQL excerpt:\n"
+        f"{sql[sql.find('INSERT'):sql.find('INSERT')+500]}"
+    )
+
+
+def test_slice_id_changes_with_different_bounds():
+    """Different slice bounds must produce different slice_id values."""
+    sql1 = render_sql("A", load_categories(),
+                      slice_start="2015-02-18", slice_end="2016-01-01")
+    sql2 = render_sql("A", load_categories(),
+                      slice_start="2016-01-01", slice_end="2017-01-01")
+    assert "'2015-02-18_2016-01-01' AS slice_id" in sql1
+    assert "'2016-01-01_2017-01-01' AS slice_id" in sql2
+    # They must differ
+    assert "'2015-02-18_2016-01-01' AS slice_id" not in sql2
+
+
+def test_make_slice_id_format():
+    assert _make_slice_id("2015-02-18", "2016-01-01") == "2015-02-18_2016-01-01"
+    assert _make_slice_id("2020-01-01", "2021-01-01") == "2020-01-01_2021-01-01"
+
+
+# ---- item 3: manifest guard refuses an already-paid slice -------------------
+def _make_tmp_manifest(immutable_through=None, segments=None):
+    """Build a minimal manifest dict for testing."""
+    return {
+        "manifest_version": "1.0",
+        "never_rebuy_rule": "test",
+        "source_table": "gdelt-bq.gdeltv2.gkg_partitioned",
+        "owned_table": "extreme-lattice-344211.qgi_gdelt.gkg_gpr_flags",
+        "immutable_through": immutable_through,
+        "segments_compiled": segments or [],
+        "cost_to_date": {"tb_billed": 0.0, "usd_over_free_tier": 0.0},
+    }
+
+
+def test_manifest_guard_refuses_closed_slice():
+    """A slice whose end-date <= immutable_through must be REFUSED."""
+    manifest = _make_tmp_manifest(immutable_through="2016-01")
+    # end-date 2016-01-01 is the first day of 2016-01; the last closed month
+    # is 2016-01, so 2016-01-01 <= 2016-01-01 -> STOP
+    try:
+        check_manifest_allows_slice(manifest, "2016-01-01")
+    except SystemExit as e:
+        assert "STOP" in str(e), f"Expected STOP message, got: {e}"
+    else:
+        raise AssertionError("Expected SystemExit for a closed slice")
+
+
+def test_manifest_guard_refuses_deep_history():
+    """A clearly historical slice must be refused when ledger is set."""
+    manifest = _make_tmp_manifest(immutable_through="2020-12")
+    try:
+        check_manifest_allows_slice(manifest, "2016-01-01")
+    except SystemExit as e:
+        assert "STOP" in str(e)
+    else:
+        raise AssertionError("Expected SystemExit for a deep-history slice")
+
+
+def test_manifest_guard_allows_future_slice():
+    """A slice whose end-date > immutable_through must be allowed."""
+    manifest = _make_tmp_manifest(immutable_through="2015-12")
+    # end 2016-01-01 is after immutable_through 2015-12 -> OK
+    check_manifest_allows_slice(manifest, "2016-01-01")  # must not raise
+
+
+def test_manifest_guard_allows_all_when_immutable_through_is_none():
+    """With immutable_through=null (fresh manifest), all slices are allowed."""
+    manifest = _make_tmp_manifest(immutable_through=None)
+    check_manifest_allows_slice(manifest, "2016-01-01")  # must not raise
+
+
+def test_manifest_guard_refuses_end_in_closed_range():
+    """Slice ending well within the closed range must be refused."""
+    manifest = _make_tmp_manifest(immutable_through="2020-12")
+    try:
+        check_manifest_allows_slice(manifest, "2019-01-01")  # deep inside
+    except SystemExit as e:
+        assert "STOP" in str(e)
+    else:
+        raise AssertionError("Expected SystemExit")
+
+
+def test_load_manifest_raises_on_missing_file():
+    """load_manifest must raise FileNotFoundError for a missing path."""
+    try:
+        load_manifest("/nonexistent/path/manifest.json")
+    except FileNotFoundError as e:
+        assert "STOP" in str(e)
+    else:
+        raise AssertionError("Expected FileNotFoundError")
+
+
+def test_advance_manifest_appends_segment_and_bumps_immutable_through():
+    """advance_manifest must append the segment and bump immutable_through."""
+    manifest = _make_tmp_manifest(immutable_through=None)
+    with tempfile.NamedTemporaryFile(suffix=".json", delete=False, mode="w") as f:
+        json.dump(manifest, f)
+        tmp_path = f.name
+    try:
+        # Load the file we just wrote
+        m = json.load(open(tmp_path, encoding="utf-8"))
+        advance_manifest(m, "2015-02-18", "2016-01-01",
+                         bytes_scanned_tb=0.25, cost_usd=0.0,
+                         path=tmp_path)
+        # Re-read from disk to verify persistence
+        saved = json.load(open(tmp_path, encoding="utf-8"))
+        assert saved["immutable_through"] == "2015-12", (
+            f"Expected 2015-12, got {saved['immutable_through']}"
+        )
+        assert len(saved["segments_compiled"]) == 1
+        seg = saved["segments_compiled"][0]
+        assert seg["slice_id"] == "2015-02-18_2016-01-01"
+        assert seg["bytes_scanned_tb"] == 0.25
+    finally:
+        os.unlink(tmp_path)
+
+
+def test_advance_manifest_only_moves_immutable_forward():
+    """Advancing with an older slice must not move immutable_through backward."""
+    manifest = _make_tmp_manifest(immutable_through="2020-12")
+    with tempfile.NamedTemporaryFile(suffix=".json", delete=False, mode="w") as f:
+        json.dump(manifest, f)
+        tmp_path = f.name
+    try:
+        m = json.load(open(tmp_path, encoding="utf-8"))
+        # An older slice that ends in 2016
+        advance_manifest(m, "2015-02-18", "2016-01-01", path=tmp_path)
+        saved = json.load(open(tmp_path, encoding="utf-8"))
+        # Must stay at 2020-12, not go backward to 2015-12
+        assert saved["immutable_through"] == "2020-12", (
+            f"immutable_through moved backward: {saved['immutable_through']}"
+        )
+    finally:
+        os.unlink(tmp_path)
+
+
+# ---- item 4: incremental --month path renders a single-partition INSERT -----
+def test_incremental_render_produces_insert_only():
+    """--mode incremental must render an INSERT with NO CREATE TABLE."""
+    sql = render_incremental_sql(load_categories(), "2026-06")
+    assert "INSERT INTO" in sql
+    assert "CREATE TABLE" not in sql, (
+        "Incremental render must not include CREATE TABLE (table already exists)"
+    )
+
+
+def test_incremental_covers_exactly_one_month():
+    """The incremental INSERT must bound _PARTITIONTIME to exactly one month."""
+    sql = render_incremental_sql(load_categories(), "2026-06")
+    # Should contain the first day of the month as the lower bound
+    assert "2026-06-01" in sql
+    # Should contain the first day of the NEXT month as the upper bound (exclusive)
+    assert "2026-07-01" in sql
+    # Must NOT scan before the month
+    assert "2026-05" not in sql
+
+
+def test_incremental_slice_id_matches_month_bounds():
+    """The slice_id in the incremental INSERT must match the month's [start, end)."""
+    sql = render_incremental_sql(load_categories(), "2026-06")
+    assert "'2026-06-01_2026-07-01' AS slice_id" in sql, (
+        f"incremental slice_id not found. SQL:\n{sql[:800]}"
+    )
+
+
+def test_incremental_december_rolls_to_next_year():
+    """December must correctly roll the upper bound to January of the next year."""
+    sql = render_incremental_sql(load_categories(), "2025-12")
+    assert "2025-12-01" in sql
+    assert "2026-01-01" in sql  # upper bound exclusive
+
+
+def test_incremental_no_placeholders_left():
+    """Incremental SQL must have no unrendered {{ }} placeholders."""
+    sql = render_incremental_sql(load_categories(), "2026-06")
+    leftover = re.findall(r"\{\{[A-Z][A-Z0-9_]*\}\}", sql)
+    assert not leftover, f"Unrendered placeholders: {leftover}"
+
+
+def test_incremental_has_partition_time_filter():
+    """Incremental INSERT must have _PARTITIONTIME guards (cost driver)."""
+    sql = render_incremental_sql(load_categories(), "2026-06")
+    assert "_PARTITIONTIME >= TIMESTAMP(" in sql
+    assert "_PARTITIONTIME <  TIMESTAMP(" in sql

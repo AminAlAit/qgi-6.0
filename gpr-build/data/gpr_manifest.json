@@ -1,0 +1,18 @@
+{
+  "manifest_version": "1.0",
+  "purpose": "Ledger of GPR backfill slices already SCANNED + INSERTED + PAID FOR into the owned table. Before ANY Phase A INSERT, check here: never re-scan a slice whose end-date is <= immutable_through. Append-only — never delete or overwrite a closed segment.",
+  "never_rebuy_rule": "If a slice's end-date <= immutable_through, that date range is closed. Read from BigQuery qgi_gdelt.gkg_gpr_flags or the S3 Parquet exports. Raw GKG (gdelt-bq.gdeltv2.gkg_partitioned) is paid and touched ONLY for date ranges strictly after immutable_through.",
+  "source_table": "gdelt-bq.gdeltv2.gkg_partitioned",
+  "owned_table": "extreme-lattice-344211.qgi_gdelt.gkg_gpr_flags",
+  "s3_export_prefix": "s3://qgi-data-lake-222222222222/gdelt/gpr/flags/",
+  "s3_monthly_rollup": "s3://qgi-data-lake-222222222222/dashboard/gpr-monthly.json",
+  "immutable_through": null,
+  "segments_compiled": [],
+  "recovery_note": "S3 as durable asset, BQ as rebuildable cache. If the owned BQ table is lost or corrupted: (1) re-CREATE the table using gpr_rollup.py --phase A --print-sql (free, no scan); (2) load from the S3 Parquet exports under s3_export_prefix using bq load --source_format=PARQUET — zero BigQuery scan bytes, no re-buy. The segments_compiled ledger maps each slice to its S3 Parquet key so recovery can be targeted (load only the needed slice). Never re-scan raw GKG to recover data already in S3.",
+  "cost_to_date": {
+    "month": null,
+    "tb_billed": 0.0,
+    "usd_over_free_tier": 0.0,
+    "monthly_budget_usd": 50
+  }
+}

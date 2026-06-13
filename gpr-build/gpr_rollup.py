@@ -19,6 +19,13 @@ SAFE BY DEFAULT (cost rule qgi-aws-tf#807 + Claude-no-AWS-creds qgi-aws-tf#809):
     alone refuses. --confirm is the founder's explicit cost-acknowledgement of the
     byte number, per #807 (Phase A is CAUTION: ack the single byte figure first).
 
+MANIFEST LEDGER (never-query-twice guard):
+  * gpr-build/data/gpr_manifest.json tracks every paid Phase A slice.
+  * Before emitting any Phase A INSERT, the manifest is checked: any slice whose
+    end-date <= immutable_through is REFUSED with a clear STOP message.
+  * After a slice succeeds (founder confirms), call advance_manifest() to append
+    the segment and bump immutable_through.
+
 Mirrors the proven owned-table pattern in
   <USER_HOME>/qgi-gdelt-poc/seed_live_baseline.py  (bq dry-run bytes parse,
   --maximum_bytes_billed cap, owned-table read, FIPS->ISO3) and update_pulse.py.
@@ -30,16 +37,19 @@ USAGE
   python gpr_rollup.py --phase A --slice 2015-02-18 2016-01-01   # one backfill slice (CAUTION)
   python gpr_rollup.py --print-sql                      # just print the rendered SQL and exit
   python gpr_rollup.py --phase B --execute --confirm    # FOUNDER ONLY: run for real (cost-ack)
+  python gpr_rollup.py --mode incremental --month 2026-06   # single new monthly partition (cheap)
 
 Stdlib only (json/argparse/os/re/subprocess). No pandas/numpy/scipy.
-Tested: python -m pytest tests/ -v  (pure render_sql / dictionary-load targets;
+Tested: python -m pytest test_gpr_rollup.py -v  (pure render_sql / dictionary-load targets;
 the bq subprocess path is a verbatim port of seed_live_baseline.bq_query and is
 NOT exercised here - no creds).
 """
 import argparse
+import datetime as dt
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 
@@ -48,6 +58,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SQL_TEMPLATE = os.path.join(ROOT, "gpr_rollup.sql")
 DICT_FILE = os.path.join(ROOT, "gpr-theme-dictionary-v2.json")
+MANIFEST_PATH = os.path.join(ROOT, "data", "gpr_manifest.json")
 
 # --- creds-side config (founder confirms; ported verbatim from seed_live_baseline) ---
 BQ = r"/workspace\google-cloud-sdk\bin\bq.cmd"
@@ -59,6 +70,11 @@ PUBLIC_GKG = "gdelt-bq.gdeltv2.gkg_partitioned"   # date-partitioned variant (ha
 # (qgi-aws-tf#807). With the 5-column projection + _PARTITIONTIME prune a yearly
 # Phase-A slice should sit well under this.
 MAX_BYTES = 200 * 10**9
+
+# S3 durable export destinations (BQ = rebuildable cache; S3 = durable asset).
+S3_BUCKET = "qgi-data-lake-222222222222"
+S3_FLAGS_PREFIX = f"s3://{S3_BUCKET}/gdelt/gpr/flags"     # per-slice Parquet lands here
+S3_MONTHLY_KEY = f"s3://{S3_BUCKET}/dashboard/gpr-monthly.json"
 
 # Phase B country restriction for the replication phase. The 44 GPRC FIPS codes
 # are ILLUSTRATIVE / verify-on-creds (KS=S.Korea, SF=S.Africa, SZ=Switzerland,
@@ -134,6 +150,11 @@ def _half_or(cats: list[dict], threat_or_act: str) -> str:
     return " OR ".join(half)
 
 
+def _make_slice_id(slice_start: str, slice_end: str) -> str:
+    """Build the manifest audit tag: 'YYYY-MM-DD_YYYY-MM-DD'."""
+    return f"{slice_start}_{slice_end}"
+
+
 def render_sql(
     phase: str,
     cats: list[dict],
@@ -148,6 +169,9 @@ def render_sql(
     `country_fips` None or [] => no Phase-B country filter (all countries).
     Returns the full rendered template; the caller splits Phase A / Phase B by
     statement if it wants to run them separately.
+
+    The `slice_id` value (manifest audit tag) is derived from slice_start +
+    slice_end and injected into the Phase A INSERT as a string literal.
     """
     tmpl = open(SQL_TEMPLATE, encoding="utf-8").read()
 
@@ -165,6 +189,8 @@ def render_sql(
     else:
         country_filter = "-- (no country filter: all countries)"
 
+    slice_id = _make_slice_id(slice_start, slice_end)
+
     subs = {
         "{{CAT_FLAG_EXPRS}}": flag_exprs,
         "{{CAT_OR_LIST}}": or_list,
@@ -176,6 +202,7 @@ def render_sql(
         "{{COUNTRY_FILTER}}": country_filter,
         "{{PARTITION_START}}": f"'{slice_start}'",
         "{{PARTITION_END}}": f"'{slice_end}'",
+        "{{SLICE_ID}}": f"'{slice_id}'",
         "{{MONTH_START}}": f"'{month_start}'",
         "{{OWNED_TABLE}}": OWNED_TABLE,
         "{{PUBLIC_GKG}}": PUBLIC_GKG,
@@ -215,8 +242,169 @@ def _extract_phase(rendered: str, phase: str) -> str:
 
 
 # ----------------------------------------------------------------------------
+# Manifest ledger (never-query-twice guard)
+# ----------------------------------------------------------------------------
+def load_manifest(path: str = MANIFEST_PATH) -> dict:
+    """Load the GPR backfill manifest. Raises if file is missing (safety: create it first)."""
+    if not os.path.exists(path):
+        raise FileNotFoundError(
+            f"STOP: manifest ledger not found at {path}. "
+            "Create it (see gpr-build/data/gpr_manifest.json in the repo) before running any Phase A."
+        )
+    return json.load(open(path, encoding="utf-8"))
+
+
+def check_manifest_allows_slice(manifest: dict, slice_end: str) -> None:
+    """Refuse any slice already covered by the closed ledger.
+
+    A slice is already paid for if its end-date <= immutable_through.
+    slice_end is 'YYYY-MM-DD' (exclusive upper bound of the slice).
+    immutable_through is 'YYYY-MM' or null.
+
+    Raises SystemExit with a STOP message if the slice is already closed.
+    """
+    it = manifest.get("immutable_through")
+    if it is None:
+        return  # nothing compiled yet — all slices are allowed
+    # Convert immutable_through 'YYYY-MM' to 'YYYY-MM-01' for comparison
+    it_date = dt.date.fromisoformat(it + "-01")
+    end_date = dt.date.fromisoformat(slice_end)
+    if end_date <= it_date:
+        raise SystemExit(
+            f"\nSTOP — ALREADY PAID FOR.\n"
+            f"  Slice end ({slice_end}) <= immutable_through ({it}).\n"
+            f"  This date range is in the closed ledger. Re-scanning it would be a duplicate spend.\n"
+            f"  Read from the owned BQ table or S3 Parquet exports instead.\n"
+            f"  Segments already compiled: {[s.get('slice_id') for s in manifest.get('segments_compiled', [])]}"
+        )
+
+
+def advance_manifest(
+    manifest: dict,
+    slice_start: str,
+    slice_end: str,
+    bytes_scanned_tb: float = 0.0,
+    cost_usd: float = 0.0,
+    s3_parquet_key: str | None = None,
+    path: str = MANIFEST_PATH,
+) -> None:
+    """Append a compiled segment and bump immutable_through. Called after a slice INSERT succeeds.
+
+    slice_end is 'YYYY-MM-DD' (exclusive). immutable_through is bumped to the
+    last COMPLETE month covered by this slice (slice_end's month minus 1, since
+    slice_end is exclusive and may be the first day of a month).
+    """
+    end_date = dt.date.fromisoformat(slice_end)
+    # The slice covers up to (but not including) slice_end; the last full month
+    # is the month before slice_end's month.
+    last_month_date = (end_date.replace(day=1) - dt.timedelta(days=1))
+    new_immutable = f"{last_month_date.year:04d}-{last_month_date.month:02d}"
+
+    # Only advance immutable_through if this slice closes further than what's recorded.
+    current_it = manifest.get("immutable_through")
+    if current_it is None or new_immutable > current_it:
+        manifest["immutable_through"] = new_immutable
+
+    slice_id = _make_slice_id(slice_start, slice_end)
+    segment = {
+        "slice_id": slice_id,
+        "slice_start": slice_start,
+        "slice_end_exclusive": slice_end,
+        "immutable_through": new_immutable,
+        "bytes_scanned_tb": round(bytes_scanned_tb, 4),
+        "cost_usd_over_free_tier": round(cost_usd, 4),
+        "compiled_utc_date": dt.date.today().isoformat(),
+        "source_table": manifest.get("source_table", PUBLIC_GKG),
+        "owned_table": manifest.get("owned_table", f"{PROJECT}.{OWNED_TABLE}"),
+    }
+    if s3_parquet_key:
+        segment["s3_parquet_key"] = s3_parquet_key
+
+    manifest.setdefault("segments_compiled", []).append(segment)
+
+    # Update cost tracker
+    cost_tracker = manifest.setdefault("cost_to_date", {})
+    cost_tracker["month"] = dt.date.today().strftime("%Y-%m")
+    cost_tracker["tb_billed"] = round(
+        cost_tracker.get("tb_billed", 0.0) + bytes_scanned_tb, 4
+    )
+    cost_tracker["usd_over_free_tier"] = round(
+        cost_tracker.get("usd_over_free_tier", 0.0) + cost_usd, 4
+    )
+
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    json.dump(manifest, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print(f"  manifest: immutable_through -> {manifest['immutable_through']}")
+    print(f"  manifest: segment '{slice_id}' appended -> {path}")
+
+
+# ----------------------------------------------------------------------------
+# Incremental monthly INSERT (cheap upkeep after backfill)
+# ----------------------------------------------------------------------------
+def render_incremental_sql(cats: list[dict], month: str) -> str:
+    """Render a single-partition INSERT for ONE new monthly partition.
+
+    `month` is 'YYYY-MM'. The INSERT covers _PARTITIONTIME for that calendar
+    month only: [YYYY-MM-01, YYYY-MM+1-01). This is the cheap monthly upkeep
+    path after the one-time backfill is complete — it never rescans history.
+
+    Returns the Phase A INSERT SQL only (no CREATE TABLE — the table already exists).
+    """
+    # Parse month into start/end date bounds
+    y, m = int(month[:4]), int(month[5:7])
+    slice_start = f"{y:04d}-{m:02d}-01"
+    m_next = m + 1
+    y_next = y + (1 if m_next > 12 else 0)
+    m_next = (m_next - 1) % 12 + 1
+    slice_end = f"{y_next:04d}-{m_next:02d}-01"
+
+    # Render the full Phase A SQL then strip the CREATE TABLE block — only
+    # the INSERT is needed for the incremental path (table already exists).
+    full_sql = render_sql(
+        "A", cats,
+        slice_start=slice_start,
+        slice_end=slice_end,
+    )
+    # Drop everything before the INSERT INTO line
+    insert_idx = full_sql.find("INSERT INTO")
+    if insert_idx == -1:
+        raise ValueError("could not find INSERT INTO in rendered Phase A SQL")
+    insert_sql = full_sql[insert_idx:]
+    header = (
+        f"-- INCREMENTAL MONTHLY INSERT for {month}\n"
+        f"-- Covers _PARTITIONTIME [{slice_start}, {slice_end})\n"
+        f"-- slice_id = '{_make_slice_id(slice_start, slice_end)}'\n"
+        f"-- Run AFTER checking gpr_manifest.json: never re-insert a closed month.\n\n"
+    )
+    return header + insert_sql
+
+
+# ----------------------------------------------------------------------------
 # bq dry-run byte estimate (verbatim port of seed_live_baseline.bq_query)
 # ----------------------------------------------------------------------------
+def _discover_cloudsdk_python() -> str:
+    """Find a usable Python interpreter for the Cloud SDK.
+
+    The old hardcoded bundledpython path is wrong for this machine (the bundled
+    Python may not exist or may be the wrong version). We try, in order:
+      1. The bundled path (preserved for machines where it exists).
+      2. `python3.12` on PATH (this machine's canonical interpreter per the
+         CLOUDSDK_PYTHON=python3.12 note in the requirements).
+      3. `python3` on PATH.
+      4. `python` on PATH.
+    Falls back to the first one found; returns the path as a string.
+    """
+    bundled = r"/workspace\google-cloud-sdk\platform\bundledpython\python.exe"
+    if os.path.exists(bundled):
+        return bundled
+    for candidate in ("python3.12", "python3", "python"):
+        found = shutil.which(candidate)
+        if found:
+            return found
+    # Last resort: return the current interpreter
+    return sys.executable
+
+
 def bq_dry_run_bytes(sql: str) -> float:
     """Return the GB BigQuery WOULD scan. FREE - a dry-run never executes/bills.
 
@@ -228,9 +416,7 @@ def bq_dry_run_bytes(sql: str) -> float:
     is free). NOT exercised in CI (no creds); the founder runs it.
     """
     env = dict(os.environ)
-    env["CLOUDSDK_PYTHON"] = (
-        r"/workspace\google-cloud-sdk\platform\bundledpython\python.exe"
-    )
+    env["CLOUDSDK_PYTHON"] = _discover_cloudsdk_python()
     cmd = [
         BQ, "query", "--use_legacy_sql=false", f"--project_id={PROJECT}",
         f"--maximum_bytes_billed={MAX_BYTES}", "--dry_run",
@@ -242,6 +428,91 @@ def bq_dry_run_bytes(sql: str) -> float:
     out = r.stdout + r.stderr
     m = re.search(r"([\d,]+) bytes", out)
     return int(m.group(1).replace(",", "")) / 1e9 if m else float("nan")
+
+
+def bq_execute(sql: str) -> str:
+    """Run a BigQuery SQL statement (non-dry-run). Returns stdout+stderr.
+
+    Called ONLY when --execute AND --confirm are both passed.
+    Uses the same CLOUDSDK_PYTHON discovery as bq_dry_run_bytes.
+    NOT exercised in CI (no creds).
+    """
+    env = dict(os.environ)
+    env["CLOUDSDK_PYTHON"] = _discover_cloudsdk_python()
+    cmd = [
+        BQ, "query", "--use_legacy_sql=false", f"--project_id={PROJECT}",
+        f"--maximum_bytes_billed={MAX_BYTES}",
+        sql.replace("\n", " "),
+    ]
+    r = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=7200)
+    if r.returncode != 0:
+        raise RuntimeError(f"bq execute failed:\n{r.stderr[:2000]}")
+    return r.stdout + r.stderr
+
+
+def export_slice_to_s3(slice_start: str, slice_end: str) -> str:
+    """Export a slice's rows from the owned BQ table to S3 as Parquet.
+
+    Strategy: BigQuery's EXPORT DATA AS PARQUET supports GCS as a destination
+    but NOT S3 directly. We therefore use a two-hop approach:
+      1. BQ EXPORT DATA -> GCS (gs://qgi-gdelt-gpr-export/flags/<slice_id>/*.parquet)
+      2. gsutil rsync GCS -> local temp, then aws s3 cp to S3.
+
+    An alternative is `bq extract` (same GCS hop required). Direct BQ->S3 export
+    is NOT supported natively as of 2026; GCS is the mandatory intermediate.
+
+    This function emits the three commands as a shell script (string) for the
+    founder to review and run — it does NOT execute them.
+
+    The S3 key pattern:
+      s3://qgi-data-lake-222222222222/gdelt/gpr/flags/gkg_gpr_flags_<slice_id>.parquet/
+
+    Returns the S3 key prefix for this slice (for the manifest).
+    """
+    slice_id = _make_slice_id(slice_start, slice_end)
+    gcs_tmp = f"gs://qgi-gdelt-gpr-export/flags/{slice_id}/"
+    local_tmp = os.path.join(ROOT, "data", "export_tmp", slice_id)
+    s3_dest = f"{S3_FLAGS_PREFIX}/gkg_gpr_flags_{slice_id}.parquet/"
+
+    export_sql = (
+        f"EXPORT DATA OPTIONS("
+        f"uri='{gcs_tmp}*.parquet', format='PARQUET', overwrite=true) AS "
+        f"SELECT * FROM `{PROJECT}.{OWNED_TABLE}` "
+        f"WHERE event_date >= DATE('{slice_start}') AND event_date < DATE('{slice_end}')"
+    )
+
+    script = (
+        f"# --- S3 export for slice {slice_id} ---\n"
+        f"# Step 1: export from BQ to GCS (BQ cannot write directly to S3)\n"
+        f'bq query --use_legacy_sql=false --project_id={PROJECT} "{export_sql.replace(chr(10), " ")}"\n\n'
+        f"# Step 2: sync GCS -> local temp\n"
+        f'gsutil -m rsync -r "{gcs_tmp}" "{local_tmp}"\n\n'
+        f"# Step 3: upload local -> S3\n"
+        f'aws s3 cp "{local_tmp}" "{s3_dest}" --recursive --content-type application/octet-stream\n\n'
+        f"# Step 4: clean up local temp and GCS temp\n"
+        f'rm -rf "{local_tmp}"\n'
+        f'gsutil -m rm -r "{gcs_tmp}"\n'
+    )
+    return script, s3_dest
+
+
+def export_monthly_rollup_to_s3(csv_path: str, execute: bool = False) -> None:
+    """Upload the Phase B monthly roll-up JSON/CSV to S3 (the durable frontend asset).
+
+    Mirrors seed_live_baseline.py's --upload pattern.
+    Gate: only uploads when `execute=True` (the founder's --execute --confirm is the cost-ack).
+    """
+    if not execute:
+        print(f"\nS3 upload gated behind --execute --confirm.")
+        print(f"Founder: aws s3 cp {csv_path} {S3_MONTHLY_KEY}")
+        return
+    print(f"\nuploading Phase B rollup -> {S3_MONTHLY_KEY}")
+    subprocess.run(
+        ["aws", "s3", "cp", csv_path, S3_MONTHLY_KEY,
+         "--content-type", "application/json"],
+        check=True,
+    )
+    print("  uploaded.")
 
 
 def free_dry_run_cmd(sql: str) -> str:
@@ -273,10 +544,45 @@ def main() -> None:
                     help="FOUNDER ONLY: intent to run for real. Requires --confirm too.")
     ap.add_argument("--confirm", action="store_true",
                     help="FOUNDER cost-ack of the byte number (#807). Required with --execute.")
+    ap.add_argument("--upload", action="store_true",
+                    help="Phase B --execute path: also upload the monthly rollup to S3.")
+    ap.add_argument("--mode", choices=["backfill", "incremental"], default="backfill",
+                    help="backfill = historical slices (default); incremental = single new month.")
+    ap.add_argument("--month", metavar="YYYY-MM",
+                    help="--mode incremental: the new month to insert (e.g. 2026-06).")
     args = ap.parse_args()
 
     cats = load_categories()
     country_fips = None if args.all_countries else GPRC_FIPS_ILLUSTRATIVE
+
+    # --- incremental mode: single-partition upkeep after backfill ---
+    if args.mode == "incremental":
+        if not args.month:
+            raise SystemExit("--mode incremental requires --month YYYY-MM")
+        if not re.match(r"^\d{4}-\d{2}$", args.month):
+            raise SystemExit(f"--month must be YYYY-MM, got {args.month!r}")
+        sql = render_incremental_sql(cats, args.month)
+        print(f"INCREMENTAL INSERT  for {args.month}  - CAUTION: raw scan + WRITE (small)")
+        print("-" * 60)
+        print(sql)
+        if args.print_sql:
+            return
+        if not args.execute:
+            print("\nDEFAULT = DRY RUN. No query executed. Founder: add --execute --confirm.")
+            print("Estimate bytes FREE:\n  " + free_dry_run_cmd(sql))
+        elif not args.confirm:
+            raise SystemExit(
+                "REFUSED: --execute requires --confirm (the explicit #807 cost-ack)."
+            )
+        else:
+            gb = bq_dry_run_bytes(sql)
+            usd = max(0.0, gb / 1000) * 6.25
+            print(f"dry-run: {gb:,.2f} GB  (~${usd:.2f}) — proceeding…")
+            bq_execute(sql)
+            print("  incremental INSERT done.")
+        return
+
+    # --- standard backfill or Phase B path ---
     sql = render_sql(
         args.phase, cats,
         slice_start=args.slice[0], slice_end=args.slice[1],
@@ -301,6 +607,12 @@ def main() -> None:
     if args.print_sql:
         return
 
+    # --- manifest guard for Phase A ---
+    if args.phase == "A":
+        manifest = load_manifest()
+        check_manifest_allows_slice(manifest, args.slice[1])
+        print(f"manifest check: slice {args.slice[0]}..{args.slice[1]} not in closed ledger — OK")
+
     # --- the guard: a real run needs BOTH --execute AND --confirm ---
     if not args.execute:
         print("DEFAULT = DRY RUN. No query executed, no bytes billed.")
@@ -319,20 +631,57 @@ def main() -> None:
         )
 
     # --execute AND --confirm: founder, with the qgi-claude-readonly creds.
-    # Dry-run estimate first (free), print it, THEN the founder wires the real run.
+    # Dry-run estimate first (free), print it, THEN run.
     gb = bq_dry_run_bytes(sql)
     usd = max(0.0, gb / 1000) * 6.25  # on-demand; first 1 TB/month free
     print(f"dry-run estimate : {gb:,.2f} GB  (~${usd:.2f} at $6.25/TB before the 1 TB free tier)")
     print("(--execute --confirm given) proceeding to real run…")
-    # Phase B is a read-only SELECT: port seed_live_baseline.bq_query(csv_out=...)
-    # to land the CSV here, then run validate against gpr_export.xls. Phase A's
-    # CREATE/INSERT needs a WRITE-capable role (NOT qgi-claude-readonly) and is
-    # left for the founder to execute deliberately.
-    raise SystemExit(
-        "STOP: real execution is intentionally not wired in this PRE-CREDS scaffold. "
-        "Founder: for Phase B, port seed_live_baseline.bq_query(csv_out=...) to write "
-        "the rollup CSV; for Phase A, run the rendered CREATE/INSERT with a write role."
-    )
+
+    if args.phase == "A":
+        # Re-load manifest before execution (guard re-check after dry-run)
+        manifest = load_manifest()
+        check_manifest_allows_slice(manifest, args.slice[1])
+        bq_execute(sql)
+        print(f"  Phase A INSERT complete for slice {args.slice[0]}..{args.slice[1]}")
+
+        # S3 export: emit the script for founder review (does not run aws commands)
+        slice_script, s3_dest = export_slice_to_s3(args.slice[0], args.slice[1])
+        print("\n--- S3 export script (review and run manually) ---")
+        print(slice_script)
+        print("--- end S3 export script ---\n")
+
+        # Advance the ledger
+        tb = gb / 1000
+        advance_manifest(
+            manifest,
+            args.slice[0], args.slice[1],
+            bytes_scanned_tb=tb,
+            cost_usd=usd,
+            s3_parquet_key=s3_dest,
+        )
+
+    elif args.phase == "B":
+        csv_out = os.path.join(ROOT, "data", "gpr_monthly.csv")
+        os.makedirs(os.path.dirname(csv_out), exist_ok=True)
+
+        # Run Phase B: owned-table read -> CSV
+        env = dict(os.environ)
+        env["CLOUDSDK_PYTHON"] = _discover_cloudsdk_python()
+        cmd = [
+            BQ, "query", "--use_legacy_sql=false", f"--project_id={PROJECT}",
+            f"--maximum_bytes_billed={MAX_BYTES}",
+            "--format=csv", "--max_rows=10000000",
+            sql.replace("\n", " "),
+        ]
+        r = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=3600)
+        if r.returncode != 0:
+            raise RuntimeError(f"Phase B bq failed:\n{r.stderr[:2000]}")
+        with open(csv_out, "w", encoding="utf-8", newline="") as f:
+            f.write(r.stdout)
+        print(f"  Phase B rollup written -> {csv_out}")
+
+        # S3 upload (mirrors seed_live_baseline --upload)
+        export_monthly_rollup_to_s3(csv_out, execute=args.upload)
 
 
 if __name__ == "__main__":

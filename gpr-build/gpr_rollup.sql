@@ -65,6 +65,7 @@
 --   {{COUNTRY_FILTER}}     AND country_code IN ('AR','EG',...)   (Phase B; FIPS list, optional)
 --   {{PARTITION_START}}    '2015-02-18'    (Phase A slice lower bound, _PARTITIONTIME prune)
 --   {{PARTITION_END}}      '2016-01-01'    (Phase A slice upper bound, exclusive)
+--   {{SLICE_ID}}           '2015-02-18_2016-01-01'   (manifest audit tag: slice bounds joined with '_')
 --   {{OWNED_TABLE}}        qgi_gdelt.gkg_gpr_flags
 --   {{PUBLIC_GKG}}         gdelt-bq.gdeltv2.gkg_partitioned
 --   {{MONTH_START}}        '2015-02-01'    (Phase B owned-table prune lower bound)
@@ -89,12 +90,16 @@ CREATE TABLE IF NOT EXISTS `{{OWNED_TABLE}}`
   doc_id        STRING,        -- GKGRECORDID
   event_date    DATE,          -- PARSE_DATE over DATE (YYYYMMDDHHMMSS)
   country_code  STRING,        -- FIPS 10-4 2-letter; one row per (doc, country)
+  slice_id      STRING,        -- backfill slice that wrote this row, e.g. '2015-02-18_2016-01-01'
+                               -- SELECT DISTINCT slice_id to audit coverage; guards duplicate inserts
   -- 8x  gN_<slug> BOOL, one per GPR category (rendered from the dictionary):
   {{CAT_COL_DDL}}
   gpr_any       BOOL,          -- doc-OR across all 8 categories (headline flag)
   tone          FLOAT64        -- V2Tone[0]; for the P2 negative-tone threat-gate experiment
 )
-PARTITION BY event_date;       -- owned table is date-partitioned for cheap Phase-B reads
+PARTITION BY event_date        -- owned table is date-partitioned for cheap Phase-B reads
+CLUSTER BY country_code;       -- CLUSTER added before first insert: per-country Phase-B reads ~100x cheaper
+                               -- (changing clustering after data is written requires a full table rewrite)
 
 INSERT INTO `{{OWNED_TABLE}}`
 WITH src AS (
@@ -119,6 +124,7 @@ flagged AS (
 )
 SELECT
   doc_id, event_date, country_code,
+  {{SLICE_ID}} AS slice_id,     -- manifest audit key: 'START_END' e.g. '2015-02-18_2016-01-01'
   {{CAT_LOGICAL_OR}}
   LOGICAL_OR({{CAT_OR_LIST}}) AS gpr_any,
   MAX(tone) AS tone
