@@ -37,7 +37,7 @@
 --
 -- COST CONTROLS baked in (qgi-aws-tf#807):
 --   * _PARTITIONTIME date-prune on EVERY raw-GKG scan (the cost driver).
---   * SELECT only V2Themes, V2Locations, DATE, V15Tone, GKGRECORDID
+--   * SELECT only V2Themes, V2Locations, DATE, V2Tone, GKGRECORDID
 --     (5-column projection; GKG is a wide table - selecting 5 cols cuts
 --     bytes-scanned ~10-100x per build-plan §5). NO SELECT *.
 --   * Phase B touches only the OWNED flag table, which is itself date-
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `{{OWNED_TABLE}}`
   -- 8x  gN_<slug> BOOL, one per GPR category (rendered from the dictionary):
   {{CAT_COL_DDL}}
   gpr_any       BOOL,          -- doc-OR across all 8 categories (headline flag)
-  tone          FLOAT64        -- V15Tone[0]; for the P2 negative-tone threat-gate experiment
+  tone          FLOAT64        -- V2Tone[0]; for the P2 negative-tone threat-gate experiment
 )
 PARTITION BY event_date;       -- owned table is date-partitioned for cheap Phase-B reads
 
@@ -103,7 +103,7 @@ WITH src AS (
     PARSE_DATE('%Y%m%d', SUBSTR(CAST(DATE AS STRING), 1, 8)) AS event_date,
     REGEXP_EXTRACT_ALL(V2Locations, r'#([A-Z]{2})#') AS fips_list,
     V2Themes,
-    SAFE_CAST(SPLIT(V15Tone, ',')[OFFSET(0)] AS FLOAT64) AS tone
+    SAFE_CAST(SPLIT(V2Tone, ',')[OFFSET(0)] AS FLOAT64) AS tone
   FROM `{{PUBLIC_GKG}}`
   WHERE _PARTITIONTIME >= TIMESTAMP({{PARTITION_START}})   -- date-prune (REQUIRED, cost driver)
     AND _PARTITIONTIME <  TIMESTAMP({{PARTITION_END}})     -- slice upper bound (exclusive)
