@@ -1262,7 +1262,7 @@ function NewsSidebar({
               fontSize: "12px",
             }}
           >
-            No recent coverage in the feed.
+            Live headlines coming soon.
           </div>
         ) : (
           sorted.map((a, i) => {
