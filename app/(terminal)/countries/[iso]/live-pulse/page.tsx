@@ -20,7 +20,13 @@ import { getCountryByIso } from "@/lib/te-mock/countries-v4-data";
 import { getHfCountryDetail, hfCoveredIso3 } from "@/lib/hf/pulse-detail";
 import { getHfBoard } from "@/lib/hf/topics-data";
 import { getLivePulseSeries } from "@/lib/hf/live-pulse-series";
+import { getBucketSeries, getBucketArticles } from "@/lib/hf/live-pulse-buckets";
 import { LivePulseTerminal } from "@/components/countries-v4-1/LivePulseTerminal";
+
+// The terminal shell (metadata, topics, monthly history) is statically
+// generated; ISR re-renders at most every 5 min so the intraday live series
+// stays fresh without a blocking S3 read on every request.
+export const revalidate = 300;
 
 interface Params {
   params: Promise<{ iso: string }>;
@@ -60,9 +66,37 @@ export default async function LivePulsePage({ params }: Params) {
   const detail = getHfCountryDetail(iso);
   if (!detail) notFound();
 
-  // Multi-resolution series + article feed (Track 2). Null until the data
-  // exists for this country; the terminal falls back to the monthly view.
+  // Committed shell: topic metadata + the validated monthly (1M) history.
+  // Null for countries outside coverage; the terminal falls back to monthly.
   const seriesData = await getLivePulseSeries(detail.iso3);
+
+  // Overlay the LIVE intraday series (1H/4H/1D) read from the poller's bucket
+  // cache at request time, z-scored exactly as the board's pulse, onto that
+  // shell (1W/1M kept). ALWAYS replace the committed sample articles with the
+  // live feed (empty until the poller emits it) — even on the monthly-fallback
+  // path — so the news rail shows an honest "coming soon", never stale sample
+  // headlines under "LIVE NEWS".
+  let liveData = seriesData;
+  if (seriesData) {
+    const [liveSeries, liveArticles] = await Promise.all([
+      getBucketSeries(detail.iso3),
+      getBucketArticles(detail.iso3),
+    ]);
+    const series: typeof seriesData.series = { ...seriesData.series };
+    if (liveSeries) {
+      for (const [topic, byRes] of Object.entries(liveSeries)) {
+        series[topic] = { ...(series[topic] ?? {}), ...byRes };
+      }
+    }
+    liveData = {
+      ...seriesData,
+      series,
+      articles: liveArticles,
+      source: liveSeries
+        ? "live GDELT (hourly) · validated monthly history"
+        : seriesData.source,
+    };
+  }
 
   // Rail country list — every news-covered country. Flag is resolved from the
   // name inside the terminal (FlagImg), so this stays independent of the
@@ -85,7 +119,7 @@ export default async function LivePulsePage({ params }: Params) {
   return (
     <LivePulseTerminal
       detail={detail}
-      seriesData={seriesData}
+      seriesData={liveData}
       countries={countries}
       backHref={backHref}
       backLabel={backLabel}
