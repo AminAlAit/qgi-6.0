@@ -7,7 +7,9 @@
   },
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/fetch-build-data.mjs",
     "build": "next build",
+    "gen:build-manifest": "node scripts/gen-build-manifest.mjs",
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",
