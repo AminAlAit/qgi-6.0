@@ -166,7 +166,7 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
     rules: [
       {
         title: "Two readings, never one number",
-        body: "Structural is how closely this country's long-run indicators resemble the shape that ran ahead of this kind of event in the past, from 0 to 100. News pulse is how much of the country's news coverage is on this theme right now, where 50 is its own normal month.",
+        body: "Structural is how closely this country's long-run signals resemble the shape that ran ahead of this kind of event in the past, from 0 to 100. News pulse is how much of the country's news coverage is on this theme right now, where 50 is its own normal month.",
       },
       {
         title: "News pulse measures attention, not events",
@@ -181,7 +181,7 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
         body: "The pins on the chart mark events from the verified record. Hover a pinned month and the tooltip names what happened.",
       },
       {
-        title: "Themes marked with a triangle have a measured lead",
+        title: "Some themes move ahead of events",
         body: "For the Electoral and Economic themes, the news pulse has tended to move about two months ahead of related events on the verified record. Other themes are tracked while their validation runs.",
       },
     ],

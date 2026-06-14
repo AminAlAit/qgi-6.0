@@ -107,24 +107,17 @@ export function hfCoveredIso3(): string[] {
 }
 
 /**
- * Trimmed slice for the standard country page: board topics only, last 36
- * months. The full-depth series stay on /countries/[iso]/live-pulse.
+ * Country-page slice: the six board topics, FULL monthly history (2015->now).
+ *
+ * The profile "News signals" chart defaults to the last 12 months and the
+ * reader scrolls back through earlier years (Surface-A redesign 2026-06-13),
+ * so it needs the whole series, not a 36-month trim. TopicDriftPanel slices
+ * its own last-12 window. Payload stays ~tens of KB (6 topics x ~140 months).
  */
 export function getHfCountryPanelData(iso3Upper: string): HfCountryDetail | null {
   const d = getHfCountryDetail(iso3Upper);
   if (!d) return null;
-  const series = d.series
-    .filter((s) => s.topic.board)
-    .map((s) => {
-      const months = s.months.slice(-36);
-      const from = months[0] ?? "";
-      return {
-        ...s,
-        months,
-        pulse: s.pulse.slice(-36),
-        events: s.events.filter((e) => e.date >= from),
-      };
-    });
+  const series = d.series.filter((s) => s.topic.board);
   // No board coverage -> no panels (never render empty frames).
   if (series.length === 0) return null;
   return { ...d, series };
