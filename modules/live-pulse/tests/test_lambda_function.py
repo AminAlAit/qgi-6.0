@@ -139,3 +139,64 @@ def test_board_has_six_topics_and_each_compiles():
     assert lf.BOARD == ["T01", "T02", "T03", "T05", "T06", "T07"]
     for tid in lf.BOARD:
         assert tid in lf.TOPIC_RE  # compiled without error at import
+
+
+# --- article capture + feed roll-up ----------------------------------------
+def test_article_row_parses_columns():
+    row = [""] * 16
+    row[lf.C_DATE] = "20260614013000"
+    row[lf.C_DOMAIN] = "example.com"
+    row[lf.C_URL] = "https://example.com/iran-vote"
+    row[lf.C_TONE] = "-3.2,1,4,5"
+    hits = [1, 0, 0, 0, 0, 0]  # first matched board topic -> T01
+    art = lf._article_row(row, hits, "20260614013000")
+    assert art["url"] == "https://example.com/iran-vote"
+    assert art["domain"] == "example.com"
+    assert art["dt"] == "20260614013000"
+    assert art["tone"] == -3.2
+    assert art["topic"] == "T01"
+    assert art["topicLabel"] == "Electoral"
+
+
+def test_article_row_none_without_url():
+    row = [""] * 16
+    assert lf._article_row(row, [1, 0, 0, 0, 0, 0], "20260614013000") is None
+
+
+def test_article_row_unparseable_tone_is_null():
+    row = [""] * 16
+    row[lf.C_URL] = "https://x.com/a"
+    row[lf.C_TONE] = "not-a-number"
+    art = lf._article_row(row, [0, 1, 0, 0, 0, 0], "20260614013000")
+    assert art["tone"] is None
+    assert art["topic"] == "T02"
+
+
+def test_merge_articles_dedup_window_and_strip_iso3():
+    from datetime import datetime
+
+    t0 = datetime(2026, 6, 14, 1, 30, 0)
+    existing = {"LBN": [{"dt": "20260613020000", "url": "u-old", "topic": "T02"}]}
+    new_rows = [
+        {"iso3": "LBN", "dt": "20260614010000", "url": "u-new", "topic": "T05"},
+        {"iso3": "LBN", "dt": "20260614013000", "url": "u-old", "topic": "T02"},  # newer dup
+        {"iso3": "EGY", "dt": "20260601000000", "url": "u-stale", "topic": "T01"},  # > 24h old
+    ]
+    out = lf.merge_articles(existing, new_rows, t0, window_hours=24, cap=40)
+    assert [r["url"] for r in out["LBN"]] == ["u-old", "u-new"]  # newest first
+    assert out["LBN"][0]["dt"] == "20260614013000"  # dedup kept the newer copy
+    assert all("iso3" not in r for r in out["LBN"])
+    assert "EGY" not in out  # only row was older than the window -> country dropped
+
+
+def test_merge_articles_respects_per_country_cap():
+    from datetime import datetime
+
+    t0 = datetime(2026, 6, 14, 1, 30, 0)
+    new_rows = [
+        {"iso3": "LBN", "dt": f"2026061401{i:02d}00", "url": f"u{i}", "topic": "T02"}
+        for i in range(10)
+    ]
+    out = lf.merge_articles({}, new_rows, t0, window_hours=24, cap=3)
+    assert len(out["LBN"]) == 3
+    assert out["LBN"][0]["url"] == "u9"  # newest kept

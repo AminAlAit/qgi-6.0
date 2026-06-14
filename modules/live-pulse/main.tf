@@ -61,13 +61,14 @@ resource "aws_iam_role_policy" "poller" {
         Resource = "arn:aws:logs:*:${var.aws_account_id}:log-group:/aws/lambda/${local.function_name}*"
       },
       {
-        # Read the baseline + rolling bucket cache.
+        # Read the baseline + rolling bucket cache + the rolling article feed.
         Sid    = "ReadState"
         Effect = "Allow"
         Action = ["s3:GetObject"]
         Resource = [
           "${var.data_lake_bucket_arn}/dashboard/hf-pulse-baseline.json",
           "${var.data_lake_bucket_arn}/dashboard/hf-pulse-buckets.json",
+          "${var.data_lake_bucket_arn}/dashboard/hf-pulse-articles.json",
         ]
       },
       {
@@ -84,13 +85,15 @@ resource "aws_iam_role_policy" "poller" {
         Resource = var.data_lake_bucket_arn
       },
       {
-        # Write the rolling bucket cache + the live output the frontend reads.
+        # Write the rolling bucket cache + the live output the frontend reads +
+        # the rolling 24h headline feed for the terminal news rail.
         Sid    = "WriteOutput"
         Effect = "Allow"
         Action = ["s3:PutObject"]
         Resource = [
           "${var.data_lake_bucket_arn}/dashboard/hf-pulse-buckets.json",
           "${var.data_lake_bucket_arn}/dashboard/hf-pulse-live.json",
+          "${var.data_lake_bucket_arn}/dashboard/hf-pulse-articles.json",
         ]
       },
       {

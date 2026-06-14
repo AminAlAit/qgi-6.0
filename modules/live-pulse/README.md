@@ -6,6 +6,13 @@ qgi-frontend reads that file at runtime (same S3 pattern as
 `country-risks.json`) behind a staleness gate, so a stale or missing file
 always degrades to the monthly board verdict.
 
+The same run also writes `dashboard/hf-pulse-articles.json` — a rolling 24h,
+per-country feed of the matched headlines (url, domain, tone, first topic) for
+the Live Pulse terminal's news rail. It is best-effort: a failure there is
+logged and never fails the pulse run. (The terminal's intraday charts are
+rebuilt frontend-side straight from `hf-pulse-buckets.json`, so they need no
+change here.)
+
 Authorized by founder "I like it. Go." (2026-06-11). Chosen over GitHub
 Actions because the free CI-minute pool is depleted by other repos and the
 repos stay private; chosen over an always-on box because it must cost $0.
