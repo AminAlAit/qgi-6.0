@@ -63,3 +63,6 @@ preview-screenshots/
 # repo (~60MB). Still in S3 (frontend-data/te-fleet-run-1/) + git history +
 # reproducible via qgi-ml/scripts/bake_te_fleet_run_1.py.
 /data/te-fleet-run-1/
+
+# localhost-only live-pulse demo snapshot; S3 is the live source on Vercel, never commit
+data/hf-pulse-live.json
