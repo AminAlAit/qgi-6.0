@@ -91,7 +91,70 @@ resource "aws_iam_role_policy" "vercel_frontend_reader" {
   })
 }
 
+# ---------------------------------------------------------------------------
+# Vercel BUILD-time reader (S3 build-fetch slim-down, founder go 2026-06-15)
+#
+# Separate from the runtime reader (security review, "Daniel"): the build needs
+# to pull the heavy te-fleet-run-* fleet vintages from S3 during `next build`
+# (qgi-frontend scripts/fetch-build-data.mjs), but the RUNTIME functions must
+# NOT be able to read the whole fleet — they stay pinned to the 5 dashboard/*
+# keys above. So the build assumes THIS role (via AWS_BUILD_ROLE_ARN in Vercel),
+# not the runtime one. Same Vercel OIDC provider + prod/preview sub.
+#
+# GetObject ONLY (no s3:ListBucket): the build reads exact keys from the
+# committed data/build-manifest.json — it never enumerates the bucket — so it
+# needs no list permission and cannot discover other objects. Scope mirrors the
+# GitHub Actions fleet-sync role: frontend-data/te-fleet-run-*.
+# ---------------------------------------------------------------------------
+resource "aws_iam_role" "vercel_build_reader" {
+  name = "qgi-vercel-build-reader"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect    = "Allow"
+      Principal = { Federated = aws_iam_openid_connect_provider.vercel.arn }
+      Action    = "sts:AssumeRoleWithWebIdentity"
+      # Identical AND-semantics condition as the runtime reader: exact aud +
+      # exact prod/preview subs, StringEquals (no wildcards). Preview is a
+      # deliberate inclusion — fetch-build-data.mjs runs during preview deploys.
+      Condition = {
+        StringEquals = {
+          "${local.vercel_oidc_host}:aud" = local.vercel_oidc_aud
+          "${local.vercel_oidc_host}:sub" = [
+            "owner:aminalaits-projects:project:qgi-frontend:environment:production",
+            "owner:aminalaits-projects:project:qgi-frontend:environment:preview",
+          ]
+        }
+      }
+    }]
+  })
+  tags = local.tags
+}
+
+resource "aws_iam_role_policy" "vercel_build_reader" {
+  role = aws_iam_role.vercel_build_reader.id
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Sid    = "ReadFleetVintages"
+      Effect = "Allow"
+      Action = ["s3:GetObject"]
+      # Exact-key reads from the committed manifest -> no ListBucket, the build
+      # cannot enumerate the bucket. Trailing /* keeps the grant to objects
+      # INSIDE a vintage dir (a hypothetical flat frontend-data/te-fleet-run-*.json
+      # never matches); covers the live vintage + any future te-fleet-run-N the
+      # manifest is later bumped to.
+      Resource = ["${module.storage.bucket_arn}/frontend-data/te-fleet-run-*/*"]
+    }]
+  })
+}
+
 output "vercel_frontend_reader_role_arn" {
   value       = aws_iam_role.vercel_frontend_reader.arn
   description = "Set this as AWS_ROLE_ARN in the Vercel qgi-frontend project (production env)."
+}
+
+output "vercel_build_reader_role_arn" {
+  value       = aws_iam_role.vercel_build_reader.arn
+  description = "Set this as AWS_BUILD_ROLE_ARN in the Vercel qgi-frontend project (production + preview)."
 }
