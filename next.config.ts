@@ -128,6 +128,35 @@ const nextConfig: NextConfig = {
   },
   poweredByHeader: false,
   /**
+   * Keep the heavy committed STRUCTURAL data out of the news-terminal's
+   * serverless bundle (perma-fix, 2026-06-14).
+   *
+   * The Live Pulse terminal renders only the news layer (hf-pulse / live-pulse
+   * data). But it imports getCountryByIso for one back-link, which transitively
+   * pulls in the entire te-mock fleet/analogue graph — ~280 MB of committed
+   * JSON the terminal NEVER reads at runtime, traced into its function purely
+   * as dead weight. That pushed the function past Vercel's 250 MB limit
+   * (the #189 deploy failed on exactly this).
+   *
+   * These excludes drop that dead weight. They are GLOB patterns
+   * (te-fleet-run-*, etc.), so they stay correct as the fleet grows — a new run
+   * or score file is excluded automatically, no maintenance. Only files the
+   * terminal provably does not read at runtime are listed; the data it does use
+   * (hf-pulse-detail, hf-topics, live-pulse/*, country-index, recipe-tracker)
+   * is untouched, and data-heavy routes keep full access.
+   */
+  outputFileTracingExcludes: {
+    "**/live-pulse/**": [
+      "data/te-fleet-run-*/**",
+      "data/analogues*.json",
+      "data/verified-events.json",
+      "data/country-events.json",
+      "data/country-partners-index.json",
+      "data/country-risks.json",
+      "data/structural-twins*.json",
+    ],
+  },
+  /**
    * 2026-05-28 — V4.1 canonical promotion redirects.
    *
    * Only four redirect families remain after the V4.1 promo:
