@@ -66,6 +66,8 @@ BUCKET = os.environ.get("QGI_DATA_LAKE_BUCKET", "qgi-data-lake-222222222222")
 BASELINE_KEY = os.environ.get("HF_BASELINE_KEY", "dashboard/hf-pulse-baseline.json")
 BUCKETS_KEY = os.environ.get("HF_BUCKETS_KEY", "dashboard/hf-pulse-buckets.json")
 LIVE_KEY = os.environ.get("HF_LIVE_KEY", "dashboard/hf-pulse-live.json")
+# Live 24h headline feed for the terminal news rail (rolling, per-country cap).
+ARTICLES_KEY = os.environ.get("HF_ARTICLES_KEY", "dashboard/hf-pulse-articles.json")
 
 # Rolling share window (how much trailing data defines "now").
 WINDOW_HOURS = int(os.environ.get("HF_WINDOW_HOURS", "24"))
@@ -84,6 +86,15 @@ MAX_FETCH = int(os.environ.get("HF_MAX_FETCH", "60"))
 MIN_COUNTRY_DOCS = int(os.environ.get("HF_MIN_COUNTRY_DOCS", "200"))
 MIN_TOPIC_DOCS = int(os.environ.get("HF_MIN_TOPIC_DOCS", "5"))
 
+# Live article feed: rolling window + per-country cap keep the S3 object small.
+# Its own var (defaults to the same 24h as WINDOW_HOURS); set both if you
+# retune the pulse window and want the headline window to track it.
+ARTICLE_WINDOW_HOURS = int(os.environ.get("HF_ARTICLE_WINDOW_HOURS", "24"))
+MAX_ARTICLES_PER_COUNTRY = int(os.environ.get("HF_MAX_ARTICLES", "40"))
+# Parse-cost backstop: stop collecting article rows from a single 15-min file
+# once this many are captured (the doc counts are still fully tallied).
+MAX_ARTICLES_PER_FILE = int(os.environ.get("HF_MAX_ARTICLES_PER_FILE", "400"))
+
 # Frontend staleness contract: generated_at older than this => not "Live".
 STALE_AFTER_HOURS = int(os.environ.get("HF_STALE_AFTER_HOURS", "2"))
 
@@ -96,6 +107,8 @@ LASTUPDATE_URL = f"{GDELT_BASE}/lastupdate.txt"
 
 # GKG 2.1 column indices (0-based).
 C_THEMES, C_LOC = 8, 10
+# Extra columns for the article feed: DATE, SourceCommonName, DocumentIdentifier, V2Tone.
+C_DATE, C_DOMAIN, C_URL, C_TONE = 1, 3, 4, 15
 
 # Board topics — the founder-ratified six. Order is fixed: it indexes the
 # compact bucket arrays [total, T01, T02, T03, T05, T06, T07].
@@ -116,6 +129,10 @@ TOPIC_PATTERNS = {
     "T07": r"SANCTIONS|WB_698_TRADE|WB_775_TRADE_POLICY|EMBARGO|TARIFF|FOREIGNINVEST",
 }
 TOPIC_RE = {t: re.compile(p) for t, p in TOPIC_PATTERNS.items()}
+TOPIC_LABEL = {
+    "T01": "Electoral", "T02": "Conflict", "T03": "Terrorism",
+    "T05": "Protest", "T06": "Economic", "T07": "Trade & Sanctions",
+}
 
 # The 12 PoC countries: FIPS 10-4 (GDELT) -> ISO3 (frontend cell keys).
 FIPS_TO_ISO3 = {
@@ -199,6 +216,36 @@ def compute_cells(agg, stats):
     return cells
 
 
+def merge_articles(existing, new_rows, t0, window_hours, cap):
+    """Roll the live headline feed (pure; takes t0).
+
+    Merge the run's freshly-parsed rows into the existing per-country feed,
+    dedup by url (newest wins), drop anything older than the window, and keep
+    the newest `cap` per country. Returns {iso3: [rows]} with the iso3 field
+    stripped from each row (it is the dict key).
+    """
+    cutoff = (t0 - timedelta(hours=window_hours)).strftime("%Y%m%d%H%M%S")
+    by_country = {}  # iso3 -> {url: row}
+    for iso3, rows in (existing or {}).items():
+        for r in rows:
+            if r.get("url"):
+                by_country.setdefault(iso3, {})[r["url"]] = r
+    for r in new_rows:
+        iso3 = r.get("iso3")
+        if not iso3 or not r.get("url"):
+            continue
+        by_country.setdefault(iso3, {})[r["url"]] = {
+            k: v for k, v in r.items() if k != "iso3"
+        }
+    out = {}
+    for iso3, urlmap in by_country.items():
+        rows = [r for r in urlmap.values() if r.get("dt", "") >= cutoff]
+        rows.sort(key=lambda r: r.get("dt", ""), reverse=True)
+        if rows:
+            out[iso3] = rows[:cap]
+    return out
+
+
 # --------------------------------------------------------------------------
 # S3 + network helpers
 # --------------------------------------------------------------------------
@@ -245,11 +292,40 @@ def _window_stamps(t0: datetime, hours: int):
     return [(t0 - timedelta(minutes=15 * i)).strftime("%Y%m%d%H%M%S") for i in range(n)]
 
 
-def _count_file(stamp: str):
-    """Fetch + parse one GKG file -> compact [total, *board] per ISO3.
+def _article_row(row, hits, stamp):
+    """One article dict (without iso3) from a matched GKG row, or None if no url.
 
-    Returns None on a fetch/parse miss (GDELT has occasional gaps); the
-    caller treats a miss as "no bucket for this slot".
+    Pure parse of a few extra columns; the topic is the first matched board
+    theme. Tone is V2Tone[0] (negative = critical), or null when unparseable.
+    """
+    art_url = row[C_URL] if len(row) > C_URL else ""
+    if not art_url:
+        return None
+    # First matched board topic. The default makes this safe even if a future
+    # caller passes all-zero hits (current callers gate on `any(hits)`).
+    topic = next((t for t, h in zip(BOARD, hits) if h), BOARD[0])
+    tone = None
+    if len(row) > C_TONE and row[C_TONE]:
+        try:
+            tone = round(float(row[C_TONE].split(",")[0]), 1)
+        except (ValueError, IndexError):
+            tone = None
+    return {
+        "dt": row[C_DATE] if len(row) > C_DATE and row[C_DATE] else stamp,
+        "domain": row[C_DOMAIN] if len(row) > C_DOMAIN else "",
+        "url": art_url,
+        "tone": tone,
+        "topic": topic,
+        "topicLabel": TOPIC_LABEL.get(topic, topic),
+    }
+
+
+def _count_file(stamp: str):
+    """Fetch + parse one GKG file -> (compact counts per ISO3, article rows).
+
+    counts: {iso3: [total, *board]}. articles: matched headline rows
+    [{iso3, dt, domain, url, tone, topic, topicLabel}] for the live news rail,
+    capped per file. Returns (None, []) on a fetch/parse miss (GDELT gaps).
     """
     url = f"{GDELT_BASE}/{stamp}.gkg.csv.zip"
     try:
@@ -257,10 +333,11 @@ def _count_file(stamp: str):
         zf = zipfile.ZipFile(io.BytesIO(raw))
         name = zf.namelist()[0]
     except Exception:  # noqa: BLE001
-        return None
+        return None, []
 
     # iso3 -> [total, t01, t02, t03, t05, t06, t07]
     counts = {iso3: [0, 0, 0, 0, 0, 0, 0] for iso3 in FIPS_TO_ISO3.values()}
+    articles = []
     with zf.open(name) as fh:
         reader = csv.reader(
             io.TextIOWrapper(fh, encoding="utf-8", errors="replace"), delimiter="\t"
@@ -288,8 +365,16 @@ def _count_file(stamp: str):
                 vec[0] += 1
                 for i, h in enumerate(hits, start=1):
                     vec[i] += h
+            # Capture one headline per (matched doc, country) for the news rail;
+            # the doc counts above are unaffected.
+            if any(hits) and len(articles) < MAX_ARTICLES_PER_FILE:
+                art = _article_row(row, hits, stamp)
+                if art:
+                    for fips in fips_set:
+                        articles.append({"iso3": FIPS_TO_ISO3[fips], **art})
     # Drop empty countries to keep the cache small.
-    return {iso3: vec for iso3, vec in counts.items() if vec[0] > 0}
+    counts = {iso3: vec for iso3, vec in counts.items() if vec[0] > 0}
+    return counts, articles
 
 
 def _stale_marker(status: str, extra: dict | None = None) -> dict:
@@ -337,11 +422,13 @@ def lambda_handler(event, context):  # noqa: ARG001
     to_fetch, skipped = select_fetch(wanted, buckets, recent_cut, MAX_FETCH)
 
     fetched = 0
+    new_articles = []
     for stamp in to_fetch:
-        result = _count_file(stamp)
-        if result is not None:
-            buckets[stamp] = result
+        counts, arts = _count_file(stamp)
+        if counts is not None:
+            buckets[stamp] = counts
             fetched += 1
+            new_articles.extend(arts)
 
     # Prune anything older than the cache horizon, then persist the cache.
     keep = set(wanted)
@@ -380,6 +467,31 @@ def lambda_handler(event, context):  # noqa: ARG001
         "cells": cells,
     }
     _put_json(LIVE_KEY, live)
+
+    # --- roll the live headline feed (best-effort; never fails the cells) ---
+    # Only touch the feed when this run actually parsed new articles; an
+    # all-cached run leaves the existing feed untouched (saves a round-trip).
+    if new_articles:
+        try:
+            existing = (_get_json(ARTICLES_KEY) or {}).get("articles", {})
+            feed = merge_articles(
+                existing, new_articles, t0, ARTICLE_WINDOW_HOURS, MAX_ARTICLES_PER_COUNTRY
+            )
+            _put_json(
+                ARTICLES_KEY,
+                {
+                    "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                    "source": "GDELT GKG raw (live)",
+                    "window_hours": ARTICLE_WINDOW_HOURS,
+                    "articles": feed,
+                },
+            )
+            print(
+                f"articles: {sum(len(v) for v in feed.values())} rows across "
+                f"{len(feed)} countries (+{len(new_articles)} new this run)"
+            )
+        except Exception as exc:  # noqa: BLE001 — articles must never fail the pulse run
+            print(f"NOTE: article feed skipped this run: {exc}")
 
     live_cells = sum(1 for c in cells.values() if c.get("pulse") is not None)
     # Per-country 24h doc totals — the canary's FIPS smoking gun. If a country
