@@ -80,6 +80,11 @@ resource "aws_iam_role_policy" "vercel_frontend_reader" {
       # ListBucket needed -> the role cannot enumerate the bucket.
       Resource = [
         "${module.storage.bucket_arn}/dashboard/hf-pulse-live.json",
+        # Live Pulse terminal (2026-06-14): intraday charts + the headline feed
+        # are rebuilt frontend-side from these, read at runtime via this role.
+        "${module.storage.bucket_arn}/dashboard/hf-pulse-buckets.json",
+        "${module.storage.bucket_arn}/dashboard/hf-pulse-baseline.json",
+        "${module.storage.bucket_arn}/dashboard/hf-pulse-articles.json",
         "${module.storage.bucket_arn}/dashboard/country-risks.json",
       ]
     }]
