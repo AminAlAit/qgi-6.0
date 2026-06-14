@@ -36,6 +36,8 @@ import {
   TopicDriftPanel,
 } from "@/components/countries-v4-1/NewsSignalsPanels";
 import { getHfCountryPanelData } from "@/lib/hf/pulse-detail";
+import { getGprEntry } from "@/lib/gpr/gpr-country-data";
+import { GprConfirmationPanel } from "@/components/countries-v4-1/GprConfirmationPanel";
 
 interface Params {
   params: Promise<{ iso: string }>;
@@ -85,6 +87,10 @@ export default async function CountryV41DetailPage({ params }: Params) {
   // server-side. Null for countries outside today's 12-country coverage —
   // the page renders without the news panels, no placeholder.
   const hf = getHfCountryPanelData(country.iso);
+
+  // GPR confirmation layer: present only for the 44 countries with a published
+  // benchmark; null (panel absent) everywhere else.
+  const gprEntry = getGprEntry(country.iso);
 
   return (
     <div
@@ -199,6 +205,8 @@ export default async function CountryV41DetailPage({ params }: Params) {
           )}
 
           <AnalogsPanelV41 country={country} />
+
+          {gprEntry && <GprConfirmationPanel entry={gprEntry} />}
 
           {/* News layer zone B: the twelve-month theme-by-theme drift
               (placement map: above provenance). */}

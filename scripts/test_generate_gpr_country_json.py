@@ -84,3 +84,23 @@ def test_ranked_insertion_order(payload: dict):
     # Countries inserted by descending signal strength for scannable diffs.
     deltas = [c["delta_spearman"] for c in payload["countries"].values()]
     assert deltas == sorted(deltas, reverse=True)
+
+
+def test_series_shape(payload: dict):
+    # Every validated country carries a movement series (may be empty in CI).
+    for c in payload["countries"].values():
+        s = c["series"]
+        assert set(s.keys()) == {"dates", "values"}
+        assert len(s["dates"]) == len(s["values"])
+        assert all(isinstance(v, float) for v in s["values"])
+        assert s["dates"] == sorted(s["dates"])  # ascending YYYY-MM
+
+
+@pytest.mark.skipif(
+    not os.path.exists(gen.PROXY_PATH), reason="proxy series file absent (CI)"
+)
+def test_series_content(payload: dict):
+    sau = payload["countries"]["SAU"]["series"]
+    assert len(sau["dates"]) == 136
+    assert sau["dates"][0] == "2015-02" and sau["dates"][-1] == "2026-05"
+    assert all(0.0 <= v <= 1.0 for v in sau["values"])

@@ -67,6 +67,29 @@ NAMES = {
     "ZAF": "South Africa",
 }
 
+# Per-ISO3 monthly proxy series (QGI's own GPR movement) for the country-page
+# sparkline. Lives on the founder's machine; CI overrides via GPR_PROXY_PATH
+# (or skips the series — the committed data/gpr-country.json already carries it).
+PROXY_PATH = os.environ.get("GPR_PROXY_PATH", "C:/tmp/gpr_proxy44_v2.json")
+
+
+def load_proxy() -> dict:
+    """Per-ISO3 {YYYY-MM: float} proxy series; {} when the file is absent."""
+    try:
+        with open(PROXY_PATH, encoding="utf-8") as fh:
+            return json.load(fh)
+    except (OSError, ValueError):
+        return {}
+
+
+def series_for(proxy: dict, iso3: str) -> dict:
+    """Ascending monthly movement series for the country-page sparkline."""
+    months = proxy.get(iso3)
+    if not months:
+        return {"dates": [], "values": []}
+    dates = sorted(months.keys())
+    return {"dates": dates, "values": [round(float(months[d]), 3) for d in dates]}
+
 
 def tier_for(delta_spearman: float) -> str:
     """Classify a country by its change-Spearman against the published GPR."""
@@ -85,6 +108,7 @@ def build(results: dict) -> dict:
     entries = sorted(
         panel["per_country"], key=lambda e: e["spearman_delta"], reverse=True
     )
+    proxy = load_proxy()
 
     countries: dict[str, dict] = {}
     for e in entries:
@@ -101,6 +125,7 @@ def build(results: dict) -> dict:
             "spike_recall": round(e["spike_recall"], 4),
             "n_months": e["n"],
             "window": e.get("window", ""),
+            "series": series_for(proxy, iso3),
         }
 
     tier_counts = {"A": 0, "B": 0, "C": 0}
