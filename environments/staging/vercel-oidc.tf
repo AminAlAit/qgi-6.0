@@ -115,7 +115,8 @@ resource "aws_iam_role" "vercel_build_reader" {
       Principal = { Federated = aws_iam_openid_connect_provider.vercel.arn }
       Action    = "sts:AssumeRoleWithWebIdentity"
       # Identical AND-semantics condition as the runtime reader: exact aud +
-      # exact prod/preview subs, StringEquals (no wildcards).
+      # exact prod/preview subs, StringEquals (no wildcards). Preview is a
+      # deliberate inclusion — fetch-build-data.mjs runs during preview deploys.
       Condition = {
         StringEquals = {
           "${local.vercel_oidc_host}:aud" = local.vercel_oidc_aud
@@ -139,9 +140,11 @@ resource "aws_iam_role_policy" "vercel_build_reader" {
       Effect = "Allow"
       Action = ["s3:GetObject"]
       # Exact-key reads from the committed manifest -> no ListBucket, the build
-      # cannot enumerate the bucket. The prefix covers the live vintage plus any
-      # future te-fleet-run-N the manifest is later bumped to.
-      Resource = "${module.storage.bucket_arn}/frontend-data/te-fleet-run-*"
+      # cannot enumerate the bucket. Trailing /* keeps the grant to objects
+      # INSIDE a vintage dir (a hypothetical flat frontend-data/te-fleet-run-*.json
+      # never matches); covers the live vintage + any future te-fleet-run-N the
+      # manifest is later bumped to.
+      Resource = ["${module.storage.bucket_arn}/frontend-data/te-fleet-run-*/*"]
     }]
   })
 }
