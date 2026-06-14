@@ -65,6 +65,9 @@ export function NewsSignalsPanel({ detail }: { detail: HfCountryDetail }) {
     return best?.topic.id ?? detail.series[0]?.topic.id;
   }, [detail]);
   const [topicId, setTopicId] = useState(initial);
+  // Monthly is the overview cadence here; weekly arrives with the live data
+  // layer (the monthly series can't be honestly resampled to weeks).
+  const [resolution, setResolution] = useState<"1M" | "1W">("1M");
 
   const sel = detail.series.find((s) => s.topic.id === topicId) ?? detail.series[0];
 
@@ -76,7 +79,7 @@ export function NewsSignalsPanel({ detail }: { detail: HfCountryDetail }) {
       caption={
         <>
           What the news is amplifying for {detail.name} right now. Select a theme to see
-          its three-year pulse against the events on the record.
+          its news pulse against the verified events.
         </>
       }
       fullWidth
@@ -150,6 +153,56 @@ export function NewsSignalsPanel({ detail }: { detail: HfCountryDetail }) {
         })}
       </div>
 
+      {/* Resolution + window hint. Monthly is live; weekly unlocks with the
+          live data layer. Last twelve months shown by default; drag to scroll
+          into earlier years. */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          marginBottom: "8px",
+          fontFamily: "ui-monospace, monospace",
+          fontSize: "10px",
+        }}
+      >
+        {(["1M", "1W"] as const).map((r) => {
+          const active = r === resolution;
+          const gated = r === "1W";
+          return (
+            <button
+              key={r}
+              type="button"
+              disabled={gated}
+              onClick={() => !gated && setResolution(r)}
+              aria-pressed={gated ? undefined : active}
+              aria-disabled={gated || undefined}
+              title={gated ? "Weekly view arrives with the live data layer" : undefined}
+              style={{
+                padding: "3px 9px",
+                borderRadius: "4px",
+                border: "1px solid var(--qgi-border)",
+                background: active ? "var(--qgi-surface-2)" : "transparent",
+                color: gated
+                  ? "var(--qgi-text-dim)"
+                  : active
+                    ? "var(--qgi-text)"
+                    : "var(--qgi-text-muted)",
+                boxShadow: active ? "inset 0 0 0 1px var(--qgi-accent)" : "none",
+                cursor: gated ? "not-allowed" : "pointer",
+                opacity: gated ? 0.55 : 1,
+                letterSpacing: "0.5px",
+              }}
+            >
+              {r}
+            </button>
+          );
+        })}
+        <span style={{ color: "var(--qgi-text-dim)", marginLeft: "2px" }}>
+          last 12 months · drag left for earlier years
+        </span>
+      </div>
+
       {sel && <PulseEventsChart series={sel} thresholds={detail.thresholds} />}
 
       {/* Verdict legend — the country page carries the explanatory arc, so
@@ -221,6 +274,11 @@ function PulseEventsChart({
   const t = getEchartsTokens(isDark);
   const struct = series.cell?.struct ?? null;
 
+  // Open on the last 12 months; the reader drags left to scroll into earlier
+  // years (no double-range slider, TradingView idiom, founder 2026-06-13).
+  const n = series.months.length;
+  const defaultStart = n > 12 ? Math.round(((n - 12) / n) * 100) : 0;
+
   const markers = series.events
     .map((e) => {
       const i = series.months.indexOf(e.date);
@@ -267,8 +325,10 @@ function PulseEventsChart({
       axisLabel: {
         color: t.textDim,
         fontSize: 10,
-        interval: 5,
-        formatter: (v: string) => v.slice(2),
+        hideOverlap: true,
+        // Full year on January, month number otherwise — so year boundaries
+        // stay legible as the reader scrolls back through history.
+        formatter: (v: string) => (v.endsWith("-01") ? v.slice(0, 4) : v.slice(5)),
       },
     },
     yAxis: {
@@ -278,6 +338,18 @@ function PulseEventsChart({
       splitLine: { lineStyle: { color: t.splitLine, opacity: 0.5 } },
       axisLabel: { color: t.textDim, fontSize: 10 },
     },
+    // Inside-only pan/zoom: drag to scroll through history, wheel to zoom. No
+    // slider (founder: "TradingView doesn't have it, we don't need it").
+    dataZoom: [
+      {
+        type: "inside",
+        start: defaultStart,
+        end: 100,
+        zoomOnMouseWheel: true,
+        moveOnMouseMove: true,
+        moveOnMouseWheel: false,
+      },
+    ],
     series: [
       {
         name: "News pulse",

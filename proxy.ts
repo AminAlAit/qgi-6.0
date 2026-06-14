@@ -33,7 +33,14 @@ export const config = {
   matcher: [
     "/dashboard/:path*",
     "/trends/:path*",
-    "/countries/:path*",
+    // Gate the country profile while leaving the public Live Pulse terminal at
+    // /countries/:iso/live-pulse open. Per the Next.js 16 proxy matcher rules,
+    // a named param matches exactly ONE segment (rule 2: "/countries/:iso" hits
+    // /countries/IRN but NOT /countries/IRN/live-pulse). We deliberately do NOT
+    // add a bare "/countries": rule 5 makes bare paths start-anchored, so it
+    // would also catch /countries/IRN/live-pulse and re-gate the terminal. The
+    // country *list* page is non-sensitive and left ungated as the safe tradeoff.
+    "/countries/:iso",
     "/risk-board/:path*",
     "/compound-risk/:path*",
     "/compare/:path*",
