@@ -488,6 +488,32 @@ export default function MethodologyPage() {
             </p>
           </Section>
 
+          {/* The geopolitical risk layer (GPR) */}
+          <Section id="geopolitical-risk" title="The geopolitical risk layer">
+            <p
+              className="text-sm leading-relaxed"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Alongside the trends and the news layer, QGI keeps its own geopolitical-risk
+              reading for more than two hundred countries, built from the global news
+              record. Across the forty-four countries that carry a published academic
+              benchmark, it tracks the same rises and falls in risk, which makes it a
+              wider-angle confirmation layer you can set beside the readings above.
+            </p>
+            <p className="mt-4 text-sm">
+              <Link
+                href={"/methodology/gpr" as Route}
+                className="border-b pb-0.5 transition-colors hover:text-[var(--qgi-accent)] hover:border-[var(--qgi-accent)]"
+                style={{
+                  color: "var(--qgi-text-muted)",
+                  borderColor: "var(--qgi-border)",
+                }}
+              >
+                How we built it &rarr;
+              </Link>
+            </p>
+          </Section>
+
           {/* How to read a score */}
           <Section id="how-to-read" title="How to read a score">
             <ul
