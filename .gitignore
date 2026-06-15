@@ -64,5 +64,16 @@ preview-screenshots/
 # reproducible via qgi-ml/scripts/bake_te_fleet_run_1.py.
 /data/te-fleet-run-1/
 
+# te-fleet-run-2 dataset (the LIVE vintage, ~96MB). 2026-06-15: moved out of git
+# and FETCHED from S3 at build by scripts/fetch-build-data.mjs (prebuild step),
+# pinned + per-file checksum-verified via data/build-manifest.json. REQUIRED at
+# build — a failed/partial fetch fails the build loudly (no stale deploy). Still
+# in S3 (frontend-data/te-fleet-run-2/), git history, and reproducible via the
+# fleet bake. Bump the live vintage by regenerating the manifest (npm run
+# gen:build-manifest) — a tiny reviewable diff, not a 96MB commit.
+/data/te-fleet-run-2/
+
 # localhost-only live-pulse demo snapshot; S3 is the live source on Vercel, never commit
 data/hf-pulse-live.json
+
+.vercel
