@@ -86,8 +86,10 @@ preview-screenshots/
 /data/early-warning.json
 /data/salience/
 # Dead cascade-patterns data (removed 2026-06-15, qgi-aws-tf #996): the only
-# importer was the retired lib/cascade-patterns module, now deleted.
-/data/ranking.json
+# importer was the retired lib/cascade-patterns module, now deleted. NOTE:
+# ranking.json was wrongly removed here too — the X-card engine renderer
+# (twitter-x/engine/render_cards_v3.mjs, twins card) reads it by path, so it is
+# RESTORED and tracked again. The #996 orphan scan checked frontend src only.
 /data/country-partners-index.json
 /data/cascade-patterns-featured.json
 /data/pair-windows/
