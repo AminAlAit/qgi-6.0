@@ -4,6 +4,7 @@ import type { Route } from "next";
 import { PublicNav } from "@/components/PublicNav";
 import { PublicFooter } from "@/components/PublicFooter";
 import { SkipLink } from "@/components/SkipLink";
+import { MiniSparkline } from "@/components/countries-v4-1/MiniSparkline";
 import gpr from "@/data/gpr-country.json";
 
 /**
@@ -29,6 +30,7 @@ type GprCountry = {
   spike_recall: number;
   n_months: number;
   window: string;
+  series: { dates: string[]; values: number[] };
 };
 
 const META = gpr.meta;
@@ -42,26 +44,32 @@ const TIERS: Array<{
   key: "A" | "B" | "C";
   label: string;
   tint: string;
+  /** Concrete hex for the sparkline stroke (a CSS var fails in headless/OG
+   *  renderers, and a thin muted-text stroke reads too faint). */
+  line: string;
   blurb: string;
 }> = [
   {
     key: "A",
     label: "Strong signal",
     tint: "#3FBF8F",
+    line: "#3FBF8F",
     blurb: "Our movements closely track the published benchmark.",
   },
   {
     key: "B",
     label: "Confirmed signal",
     tint: "var(--qgi-accent)",
+    line: "#38bdf8",
     blurb: "Clear, reliable agreement on direction and spikes.",
   },
   {
     key: "C",
     label: "Weak signal",
     tint: "var(--qgi-text-muted)",
+    line: "#6B8CAE",
     blurb:
-      "Movement signal is positive but faint here. We show the data and flag the uncertainty.",
+      "Our reading and the benchmark move in the same direction here, but the agreement is weak. We label these indicative rather than confirmed.",
   },
 ];
 
@@ -261,11 +269,20 @@ export default function MethodologyGprPage() {
           {/* Per-country signal quality */}
           <Section title="Signal quality, country by country">
             <p
-              className="text-sm leading-relaxed mb-6"
+              className="text-sm leading-relaxed mb-3"
               style={{ color: "var(--qgi-text-muted)" }}
             >
               For the {META.n_validated} countries with a published benchmark, here is how
-              well QGI-GPR tracks it, graded into three tiers.
+              well QGI-GPR tracks it, graded into three tiers. Each line traces the shape
+              of that country&rsquo;s risk movement across the period, on its own scale.
+            </p>
+            <p
+              className="text-[13px] leading-relaxed mb-6"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
+              Each line is scaled to that country&rsquo;s own range to show the shape of
+              movement, not the level of risk; heights cannot be compared across
+              countries. It ends at the latest reading.
             </p>
 
             {TIERS.map((t) => {
@@ -298,26 +315,48 @@ export default function MethodologyGprPage() {
                   >
                     {t.blurb}
                   </p>
-                  <div className="flex flex-wrap gap-2">
-                    {members.map((c) => (
-                      <span
-                        key={c.iso3}
-                        className="inline-flex items-center gap-1.5 rounded border px-2.5 py-1 text-xs"
-                        style={{
-                          borderColor: "var(--qgi-border)",
-                          backgroundColor: "var(--qgi-bg)",
-                          color: "var(--qgi-text)",
-                        }}
-                      >
-                        {c.name}
-                        <span
-                          className="font-data text-[10px]"
-                          style={{ color: "var(--qgi-text-dim)" }}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {members.map((c) => {
+                      const v = c.series?.values ?? [];
+                      const lo = v.length ? Math.min(...v) : 0;
+                      const hi = v.length ? Math.max(...v) : 1;
+                      const pad = (hi - lo) * 0.1 || 0.05;
+                      return (
+                        <div
+                          key={c.iso3}
+                          role="group"
+                          aria-label={`${c.name} geopolitical risk movement, ${t.label}`}
+                          className="flex items-center justify-between gap-2 rounded border px-2.5 py-1.5"
+                          style={{
+                            borderColor: "var(--qgi-border)",
+                            backgroundColor: "var(--qgi-surface)",
+                          }}
                         >
-                          {c.iso3}
-                        </span>
-                      </span>
-                    ))}
+                          <div className="min-w-0">
+                            <div
+                              className="text-xs truncate"
+                              style={{ color: "var(--qgi-text)" }}
+                            >
+                              {c.name}
+                            </div>
+                            <div
+                              className="font-data text-[10px]"
+                              style={{ color: "var(--qgi-text-dim)" }}
+                            >
+                              {c.iso3}
+                            </div>
+                          </div>
+                          <MiniSparkline
+                            values={v}
+                            color={t.line}
+                            width={84}
+                            height={26}
+                            min={lo - pad}
+                            max={hi + pad}
+                          />
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               );
