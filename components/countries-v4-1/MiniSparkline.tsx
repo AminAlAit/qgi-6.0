@@ -30,7 +30,9 @@ export function MiniSparkline({
   const innerH = height - pad * 2;
   const span = Math.max(1, max - min);
   const n = values.length;
-  const x = (i: number) => pad + (n === 1 ? 0 : (i / (n - 1)) * innerW);
+  // A single point centers (and renders as the end dot); >=2 points span the
+  // width. (n===1 at the left edge would otherwise render an invisible line.)
+  const x = (i: number) => pad + (n <= 1 ? innerW / 2 : (i / (n - 1)) * innerW);
   const y = (v: number) =>
     pad + innerH - ((Math.max(min, Math.min(max, v)) - min) / span) * innerH;
 
