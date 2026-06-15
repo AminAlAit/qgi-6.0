@@ -2,7 +2,7 @@ import type { CompoundCountry } from "@/lib/te-mock/compound-risk-data";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { flagFor } from "@/lib/te-mock/country-flags";
-import { familyColor } from "@/lib/te-mock/l1-families";
+import { familyColor, familyLabel } from "@/lib/te-mock/l1-families";
 
 interface Props {
   countries: CompoundCountry[];
@@ -161,7 +161,11 @@ export function CompoundOverlapChart({ countries }: Props) {
             countries.flatMap((c) =>
               c.lit_recipes.map((r) => [
                 r.l1_id,
-                { id: r.l1_id, label: r.l1_label, color: r.l1_color },
+                {
+                  id: r.l1_id,
+                  label: familyLabel(r.l1_id, r.l1_label),
+                  color: r.l1_color,
+                },
               ])
             )
           ).values()

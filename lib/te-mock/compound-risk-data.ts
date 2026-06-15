@@ -30,6 +30,7 @@ import recipeTracker from "@/data/recipe-tracker.json";
 import { getAllRecipes, getRecipe, type TrackerRecipe } from "@/lib/te-mock/recipes";
 import { loadCountryIndex, SAMPLE_10_RECIPE_IDS } from "@/lib/te-data-contract/load";
 import { flagFromIso2, NAME_TO_ISO2 } from "@/lib/te-mock/country-iso2";
+import { familyLabel } from "@/lib/te-mock/l1-families";
 
 export interface CompoundLitRecipe {
   recipe_id: string;
@@ -454,7 +455,10 @@ function buildTECompoundCountries(): CompoundCountry[] {
         score: r.score ?? 0,
         decile: Math.round((r.score ?? 0) / 10),
         l1_id: r.l1_id ?? "",
-        l1_label: r.l1_label ?? "",
+        // #997: country-index l1_label was bake-corrupted (a wrong taxonomy's
+        // words on the correct A-H letter); l1_id stays correct, so resolve the
+        // canonical label from l1-families rather than trusting the baked string.
+        l1_label: familyLabel(r.l1_id ?? "", r.l1_label),
         l1_color: r.l1_color ?? "#7A8FA0",
       }));
 
