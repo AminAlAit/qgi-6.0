@@ -148,12 +148,10 @@ const nextConfig: NextConfig = {
   outputFileTracingExcludes: {
     "**/live-pulse/**": [
       "data/te-fleet-run-*/**",
-      "data/analogues*.json",
       "data/verified-events.json",
-      "data/country-events.json",
-      "data/country-partners-index.json",
       "data/country-risks.json",
-      "data/structural-twins*.json",
+      // (analogues*/country-events/country-partners-index/structural-twins were
+      // removed from git in the 2026-06-15 slim-down — no longer need excluding.)
     ],
   },
   /**

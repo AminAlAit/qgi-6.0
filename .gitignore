@@ -85,6 +85,11 @@ preview-screenshots/
 /data/structural-twins.json
 /data/early-warning.json
 /data/salience/
+# Dead cascade-patterns data (removed 2026-06-15, qgi-aws-tf #996): the only
+# importer was the retired lib/cascade-patterns module, now deleted.
+/data/ranking.json
+/data/country-partners-index.json
+/data/cascade-patterns-featured.json
 /data/pair-windows/
 
 # localhost-only live-pulse demo snapshot; S3 is the live source on Vercel, never commit
