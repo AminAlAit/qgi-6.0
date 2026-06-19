@@ -841,7 +841,8 @@ function QuadrantMap({
       return {
         name: c.name,
         href: c.linkable ? `/countries/${c.iso3.toLowerCase()}` : null,
-        value: [cell.struct, cell.pulse],
+        // x = news pulse, y = structural resemblance (matches the X-card orientation).
+        value: [cell.pulse, cell.struct],
         verdict: cell.verdict,
         symbol:
           iso2 && /^[a-z]{2}$/.test(iso2)
@@ -860,10 +861,10 @@ function QuadrantMap({
     .filter(Boolean);
 
   const th = data.thresholds;
-  // Derive the x floor from the data (10-step, capped at 30) so a future
-  // low-structure country can never be silently clipped off the canvas.
-  const structVals = points.map((p) => p!.value[0] as number);
-  const xMin = Math.min(
+  // Derive the structural (y) floor from the data (10-step, capped at 30) so a
+  // future low-structure country can never be silently clipped off the canvas.
+  const structVals = points.map((p) => p!.value[1] as number);
+  const structMin = Math.min(
     30,
     Math.max(0, Math.floor((Math.min(...structVals) - 5) / 10) * 10)
   );
@@ -881,18 +882,18 @@ function QuadrantMap({
       borderColor: t.border,
       textStyle: { color: t.text, fontSize: 11 },
       formatter: (p: { data: { name: string; value: number[]; verdict: HfVerdict } }) =>
-        `<b>${p.data.name}</b><br/>structural ${Math.round(p.data.value[0])} · news pulse ${Math.round(
-          p.data.value[1]
+        `<b>${p.data.name}</b><br/>structural ${Math.round(p.data.value[1])} · news pulse ${Math.round(
+          p.data.value[0]
         )}<br/>${VERDICT_STYLE[p.data.verdict].label}`,
     },
     grid: { left: 56, right: 28, top: 30, bottom: 46 },
     xAxis: {
-      min: xMin,
+      min: 0,
       max: 100,
-      name: "STRUCTURAL RESEMBLANCE",
+      name: "HOW LOUD THE NEWS IS",
       nameLocation: "middle",
       nameGap: 30,
-      nameTextStyle: { color: t.textDim, fontSize: 10, letterSpacing: 1 },
+      nameTextStyle: { color: t.textDim, fontSize: 10, letterSpacing: 1.5 },
       axisLine: { lineStyle: { color: t.border } },
       // Minor gridlines off: the 60/60 threshold lines ARE the read of this
       // chart and must be the only interior lines (review finding).
@@ -900,20 +901,20 @@ function QuadrantMap({
       axisLabel: { color: t.textMuted, fontSize: 10.5 },
     },
     yAxis: {
-      min: 0,
+      min: structMin,
       max: 100,
-      name: "NEWS PULSE",
+      name: "RESEMBLANCE TO HISTORICAL CASES",
       nameLocation: "middle",
       nameGap: 36,
-      nameTextStyle: { color: t.textDim, fontSize: 10, letterSpacing: 1 },
+      nameTextStyle: { color: t.textDim, fontSize: 10, letterSpacing: 1.5 },
       axisLine: { lineStyle: { color: t.border } },
       splitLine: { show: false },
       axisLabel: { color: t.textMuted, fontSize: 10.5 },
     },
     graphic: [
       quadLabel(0.97, 0.06, "Active", t.warning, "right"),
-      quadLabel(0.08, 0.06, "Signal", t.accent, "left"),
-      quadLabel(0.97, 0.84, "Latent", t.textMuted, "right"),
+      quadLabel(0.08, 0.06, "Latent", t.textMuted, "left"),
+      quadLabel(0.97, 0.84, "Signal", t.accent, "right"),
       quadLabel(0.08, 0.84, "Quiet", t.textDim, "left"),
     ],
     series: [
@@ -931,7 +932,7 @@ function QuadrantMap({
           symbol: "none",
           lineStyle: { color: t.textDim, type: "dashed", width: 1.2 },
           label: { show: false },
-          data: [{ xAxis: th.struct }, { yAxis: th.pulse }],
+          data: [{ xAxis: th.pulse }, { yAxis: th.struct }],
         },
       },
     ],
@@ -980,9 +981,16 @@ function QuadrantMap({
           lineHeight: 1.5,
         }}
       >
-        Every covered country on one canvas for {topic.label}: structure runs across, news
-        pulse runs up. Top right is where both line up. Themes marked ▲ carry a validated
-        news lead of about two months.
+        <span style={{ color: "var(--qgi-warning)" }}>Active</span>
+        {" = both elevated · "}
+        <span style={{ color: "var(--qgi-accent)" }}>Signal</span>
+        {" = news without structure · "}
+        <span style={{ color: "var(--qgi-text-muted)" }}>Latent</span>
+        {" = structure without news · "}
+        <span style={{ color: "var(--qgi-text-dim)" }}>Quiet</span>
+        {" = neither."}
+        <br />
+        {"▲ Themes with a validated news lead of about two months."}
       </p>
       <ReactECharts
         option={option}
