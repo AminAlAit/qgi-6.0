@@ -68,13 +68,14 @@
  */
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import type { Route } from "next";
 import { PanelBase } from "./PanelBase";
 import { iso2For } from "@/lib/te-mock/country-flags";
 import type { CountryScore } from "@/lib/te-mock/recipe-v4-1-mock";
+import { NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
 
 interface Props {
   familyColor: string;
@@ -126,8 +127,8 @@ export function CountriesPanel({
       caption={
         showResults && countriesTop.length > 0
           ? expanded
-            ? `Full roster: ${totalScored} countries, ranked by score (highest first).`
-            : `Top ${topSorted.length} and bottom ${bottomSorted.length} of ${totalScored} scored countries.`
+            ? `Full roster: ${totalScored} countries, ranked by resemblance score (%), highest first.`
+            : `Top ${topSorted.length} and bottom ${bottomSorted.length} of ${totalScored} scored countries · resemblance score (%).`
           : undefined
       }
       sectionPending={!showResults || countriesTop.length === 0 ? "discrimination" : null}
@@ -158,6 +159,7 @@ export function CountriesPanel({
           familyColor={familyColor}
           recipeId={recipeId}
           highlightName={highlightName}
+          countriesFull={countriesFull}
         />
       )}
     </PanelBase>
@@ -174,6 +176,7 @@ function TopAndBottom({
   familyColor,
   recipeId,
   highlightName,
+  countriesFull,
 }: {
   top: CountryScore[];
   bottom: CountryScore[];
@@ -182,7 +185,17 @@ function TopAndBottom({
   familyColor: string;
   recipeId?: string;
   highlightName?: string;
+  countriesFull: CountryScore[];
 }) {
+  // Compute median score across all scored countries so each row can render
+  // the "typical country" marker on the proportional bar.
+  const medianScore = useMemo(() => {
+    if (countriesFull.length === 0) return 50;
+    const sorted = [...countriesFull].map((c) => c.score).sort((a, b) => a - b);
+    const mid = Math.floor(sorted.length / 2);
+    return sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
+  }, [countriesFull]);
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
       <ZoneHeading label="Top" subLabel="highest-scoring" accent={familyColor} />
@@ -199,6 +212,8 @@ function TopAndBottom({
             divider={i < top.length - 1}
             recipeId={recipeId}
             highlight={c.name === highlightName}
+            medianScore={medianScore}
+            showMedianLabel={i === 0}
           />
         ))}
       </ol>
@@ -223,6 +238,7 @@ function TopAndBottom({
             divider={i < bottom.length - 1}
             recipeId={recipeId}
             highlight={c.name === highlightName}
+            medianScore={medianScore}
           />
         ))}
       </ol>
@@ -334,6 +350,13 @@ function FullRoster({
   recipeId?: string;
   highlightName?: string;
 }) {
+  const medianScore = useMemo(() => {
+    if (countries.length === 0) return 50;
+    const sorted = [...countries].map((c) => c.score).sort((a, b) => a - b);
+    const mid = Math.floor(sorted.length / 2);
+    return sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
+  }, [countries]);
+
   return (
     <div
       style={{
@@ -360,6 +383,8 @@ function FullRoster({
             dense
             recipeId={recipeId}
             highlight={c.name === highlightName}
+            medianScore={medianScore}
+            showMedianLabel={i === 0}
           />
         ))}
       </ol>
@@ -392,6 +417,8 @@ function CountryRow({
   dense = false,
   recipeId,
   highlight = false,
+  medianScore,
+  showMedianLabel = false,
 }: {
   rank: number;
   name: string;
@@ -405,6 +432,10 @@ function CountryRow({
   recipeId?: string;
   /** When true, the row is outlined ("you are here"). */
   highlight?: boolean;
+  /** Median score across all scored countries; drives the "typical country" marker. */
+  medianScore?: number;
+  /** When true, render the visible "typical" caption above the median marker (once per list). */
+  showMedianLabel?: boolean;
 }) {
   const padY = dense ? "6px" : "8px";
   const iso2 = iso2For(name);
@@ -412,9 +443,12 @@ function CountryRow({
   // null in the flag map, which would produce a malformed URL.
   const linkable = !!recipeId && !!iso2 && /^[a-z]{2}$/.test(iso2);
 
+  const barHeight = dense ? "4px" : "5px";
+  const fillColor = highlight || score >= 70 ? familyColor : NEUTRAL_SLATE;
+
   const rowStyle: CSSProperties = {
     display: "grid",
-    gridTemplateColumns: "28px 20px minmax(0, 1fr) auto",
+    gridTemplateColumns: "28px 20px minmax(0, 1fr) 80px auto",
     gap: "8px",
     alignItems: "center",
     padding: dense ? `${padY} 8px` : `${padY} 6px`,
@@ -427,6 +461,9 @@ function CountryRow({
     cursor: linkable ? "pointer" : "default",
     transition: "background 120ms ease",
   };
+
+  // Clamp score to [0, 100] for the fill width.
+  const fillPct = Math.max(0, Math.min(100, score));
 
   const content = (
     <>
@@ -463,6 +500,76 @@ function CountryRow({
       >
         {name}
       </span>
+      {/* Proportional score bar — 80px column, with optional median marker.
+          Outer wrapper is position:relative + overflow:visible so the median
+          marker can poke slightly outside the bar track height.
+          Inner track carries overflow:hidden to cleanly clip the fill. */}
+      <div
+        aria-hidden
+        style={{
+          position: "relative",
+          height: barHeight,
+          alignSelf: "center",
+        }}
+      >
+        {/* Bar track + fill */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            borderRadius: "2px",
+            background: "var(--qgi-border)",
+            overflow: "hidden",
+          }}
+        >
+          <div
+            style={{
+              width: `${fillPct}%`,
+              height: "100%",
+              background: fillColor,
+              opacity: 0.8,
+            }}
+          />
+        </div>
+        {/* Typical-country median marker — sits outside overflow:hidden so
+            the dashed tick is not clipped by the bar track. Extends 3px
+            above and below the track so it reads as a reference line. */}
+        {medianScore !== undefined && (
+          <>
+            <div
+              title="Typical country"
+              style={{
+                position: "absolute",
+                top: "-3px",
+                bottom: "-3px",
+                left: `${Math.max(0, Math.min(100, medianScore))}%`,
+                width: 0,
+                borderLeft: "1px dashed var(--qgi-text-dim)",
+                opacity: 0.5,
+                pointerEvents: "none",
+              }}
+            />
+            {showMedianLabel && (
+              <span
+                style={{
+                  position: "absolute",
+                  top: "-14px",
+                  left: `${Math.max(0, Math.min(100, medianScore))}%`,
+                  transform: "translateX(-50%)",
+                  fontFamily: "ui-monospace, monospace",
+                  fontSize: "8.5px",
+                  whiteSpace: "nowrap",
+                  color: "var(--qgi-text-dim)",
+                  opacity: 0.75,
+                  pointerEvents: "none",
+                }}
+              >
+                typical
+              </span>
+            )}
+          </>
+        )}
+      </div>
       <span
         style={{
           fontFamily: "ui-monospace, monospace",
@@ -471,7 +578,7 @@ function CountryRow({
           fontWeight: scoreWeight,
         }}
       >
-        {score.toFixed(1)}
+        {Math.round(score)}
       </span>
     </>
   );

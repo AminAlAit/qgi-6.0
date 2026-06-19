@@ -63,7 +63,7 @@ export function WhyScoresPanel({
               gap: "10px",
             }}
           >
-            {rows.map((r) => {
+            {rows.map((r, idx) => {
               // Round-2: direction_sign +1/-1 from shap_direction_signs on the card.
               const sign = r.direction_sign;
               const dirArrow = sign === 1 ? "↑" : sign === -1 ? "↓" : null;
@@ -73,6 +73,7 @@ export function WhyScoresPanel({
                   : sign === -1
                     ? "#3FBF8F" // risk-decreasing → green calming
                     : undefined;
+              const isTop = idx === 0;
               return (
                 // key uses indicator_name to keep raw provider codes out of the
                 // SSR'd HTML stream — rule §3 (never the code; always the name).
@@ -88,7 +89,8 @@ export function WhyScoresPanel({
                   >
                     <span
                       style={{
-                        fontSize: "12.5px",
+                        fontSize: isTop ? "13.5px" : "12.5px",
+                        fontWeight: isTop ? 700 : undefined,
                         color: "var(--qgi-text)",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
@@ -155,8 +157,8 @@ export function WhyScoresPanel({
                       style={{
                         width: `${r.signal_share_pct}%`,
                         height: "100%",
-                        background: NEUTRAL_SLATE,
-                        opacity: 0.85,
+                        background: isTop ? accent : NEUTRAL_SLATE,
+                        opacity: isTop ? 0.7 : 0.85,
                       }}
                     />
                   </div>
@@ -164,18 +166,17 @@ export function WhyScoresPanel({
               );
             })}
           </ul>
-          {/* Round-2 footnote: signed magnitude pending #974. direction_sign +/- is wired; raw shap_value not yet emitted. */}
           <p
             style={{
-              margin: "8px 0 0",
+              margin: "10px 0 0",
               fontSize: "10.5px",
               color: "var(--qgi-text-dim)",
+              fontStyle: "italic",
               fontFamily: "ui-monospace, monospace",
               letterSpacing: "0.2px",
-              fontStyle: "italic",
             }}
           >
-            Signed magnitude coming soon.
+            Weight is not movement. A signal can rank highly while barely shifting.
           </p>
         </>
       )}
