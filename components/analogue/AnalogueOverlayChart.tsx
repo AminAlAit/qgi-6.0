@@ -235,7 +235,7 @@ export function AnalogueOverlayChart({
           fill={DIM}
           fontFamily="ui-monospace, monospace"
         >
-          −{n - 1}y
+          {n - 1} years earlier
         </text>
         <text
           x={PAD.l + INNER_W}
@@ -245,7 +245,7 @@ export function AnalogueOverlayChart({
           textAnchor="end"
           fontFamily="ui-monospace, monospace"
         >
-          end
+          the moment
         </text>
       </svg>
 
