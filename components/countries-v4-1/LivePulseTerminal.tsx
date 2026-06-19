@@ -389,7 +389,8 @@ function Header({ backHref, backLabel }: { backHref: string; backLabel: string }
       <Sep />
       <div
         style={{
-          fontFamily: "var(--font-qg-brand), sans-serif",
+          fontFamily:
+            "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
           fontSize: "18px",
           fontWeight: 700,
           color: "var(--qgi-accent)",
@@ -817,6 +818,27 @@ function Stage({
           color="var(--qgi-accent)"
           tip="How much of this country's news coverage is on this theme right now, measured against its own history. 50 is a normal month for this country; 60 and above is elevated."
         />
+        {struct !== null && pulse !== null && (
+          <p
+            style={{
+              width: "100%",
+              margin: "4px 0 0",
+              fontSize: "11px",
+              lineHeight: 1.4,
+              fontFamily: "ui-monospace, monospace",
+              color: "var(--qgi-text-dim)",
+            }}
+          >
+            <span style={{ color: "var(--qgi-accent)", fontWeight: 700 }}>
+              News at {Math.round(pulse)}
+            </span>
+            {pulse >= struct ? " · above " : " · below "}
+            <span style={{ color: "var(--qgi-warning)", fontWeight: 700 }}>
+              structural fair value {Math.round(struct)}
+            </span>
+            {` for ${sel?.topic.label ?? "this topic"}.`}
+          </p>
+        )}
       </div>
 
       {/* chart */}
@@ -1102,7 +1124,7 @@ function StageChart({
         );
       },
     },
-    grid: { left: 50, right: 18, top: 16, bottom: view.slider ? 34 : 18 },
+    grid: { left: 64, right: 18, top: 16, bottom: view.slider ? 34 : 18 },
     xAxis: {
       type: "category",
       data: view.x,
@@ -1119,6 +1141,11 @@ function StageChart({
     yAxis: {
       min: 0,
       max: 100,
+      name: "News Pressure (%)",
+      nameLocation: "middle",
+      nameGap: 48,
+      nameRotate: 90,
+      nameTextStyle: { color: t.textDim, fontSize: 10, letterSpacing: 0.5 },
       axisLine: { show: false },
       splitLine: { lineStyle: { color: t.splitLine, opacity: 0.4, type: "dashed" } },
       axisLabel: { color: t.textDim, fontSize: 10 },
