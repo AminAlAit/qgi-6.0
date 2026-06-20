@@ -68,6 +68,13 @@ interface Props {
 
 const MAX_SELECTED = 10;
 
+/** Short chip labels for the filter bar — saves horizontal space without
+ *  changing canonical family names elsewhere. */
+const CHIP_SHORT_LABEL: Record<string, string> = {
+  "Diplomacy & Geopolitics": "Diplomacy",
+  "Humanitarian Crisis": "Humanitarian",
+};
+
 export function RiskBoardFilters({ recipes, l1Families, countryUniverse }: Props) {
   const [selectedL1, setSelectedL1] = useState<Set<string>>(new Set());
   // Round-3.5 (2026-05-29): status filter retired. The grid is scored-only
@@ -195,18 +202,18 @@ export function RiskBoardFilters({ recipes, l1Families, countryUniverse }: Props
                 type="button"
                 onClick={() => toggleL1(fam.id)}
                 style={{
-                  fontSize: "10.5px",
-                  padding: "4px 9px",
+                  fontSize: "10px",
+                  padding: "3px 7px",
                   background: active ? displayColor : "transparent",
                   color: active ? "var(--qgi-bg)" : displayColor,
                   border: `1px solid ${displayColor}`,
                   borderRadius: "4px",
                   fontFamily: "ui-monospace, monospace",
-                  letterSpacing: "0.4px",
+                  letterSpacing: "0.3px",
                   cursor: "pointer",
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "5px",
+                  gap: "4px",
                 }}
                 title={`Toggle ${fam.label}`}
               >
@@ -219,7 +226,7 @@ export function RiskBoardFilters({ recipes, l1Families, countryUniverse }: Props
                   }}
                 />
                 {/* V4.1 §1.2: family letter glyph banned. Label only. */}
-                {fam.label}
+                {CHIP_SHORT_LABEL[fam.label] ?? fam.label}
               </button>
             );
           })}
@@ -336,7 +343,7 @@ function FilteredGrid({
   // we always render exactly 10 columns (#1..#10). In custom mode the
   // number matches the user's selection (1..10).
   const colCount = customCountries ? customCountries.length : 10;
-  const gridTemplate = `280px repeat(${colCount}, minmax(0, 1fr))`;
+  const gridTemplate = `clamp(160px, 28%, 280px) repeat(${colCount}, minmax(60px, 1fr))`;
 
   return (
     <div
@@ -344,7 +351,7 @@ function FilteredGrid({
         border: "1px solid var(--qgi-border)",
         borderRadius: "8px",
         background: "var(--qgi-surface)",
-        overflow: "hidden",
+        overflow: "auto",
       }}
     >
       <div

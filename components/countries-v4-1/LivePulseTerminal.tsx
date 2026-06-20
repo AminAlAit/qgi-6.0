@@ -184,12 +184,18 @@ function fmtStamp(dt: string): string {
 export function LivePulseTerminal({
   detail,
   seriesData,
+  articles: articlesProp,
   countries,
   backHref,
   backLabel,
 }: {
   detail: HfCountryDetail;
   seriesData: LivePulseSeriesData | null;
+  /** Live article feed fetched independently of the series shell. Falls back
+   *  to seriesData.articles when absent, then to []. This decoupling ensures
+   *  the news rail is always populated even on countries that have articles
+   *  but no committed live-pulse series JSON yet. */
+  articles?: LiveArticle[];
   countries: RailCountry[];
   backHref: string;
   backLabel: string;
@@ -338,7 +344,10 @@ export function LivePulseTerminal({
         thresholds={detail.thresholds}
       />
 
-      <NewsSidebar articles={seriesData?.articles ?? []} countryName={detail.name} />
+      <NewsSidebar
+        articles={articlesProp ?? seriesData?.articles ?? []}
+        countryName={detail.name}
+      />
 
       <StatusBar
         built={detail.built}

@@ -132,7 +132,6 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     href: "/compare",
     icon: <Columns2 size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
-    comingSoon: true,
   },
   // Sanctions Simulator (2026-06-04) — Phase-0 teaser. Impact model in R&D;
   // ships as a coming-soon surface while the counterfactual work runs.
@@ -143,7 +142,6 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     href: "/sanctions-simulator",
     icon: <ShieldAlert size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
-    comingSoon: true,
   },
   // /recipe-tracker entry removed 2026-05-29 — the route itself was deleted
   // as part of the V4.1 round-3 amendment (2-bucket vocabulary). The catalog
@@ -209,6 +207,26 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
     if (!stored) return;
     const raf = requestAnimationFrame(() => setCollapsed(true));
     return () => cancelAnimationFrame(raf);
+  }, []);
+
+  // Auto-collapse the sidebar at viewport widths ≤ 900px (tablet portrait)
+  // so the main content area gains back ~170px. Restores the user's stored
+  // preference when the viewport expands again. Desktop-only: mobile uses
+  // the hamburger overlay and is unaffected by this logic.
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 900px)");
+    const handler = (e: MediaQueryListEvent | MediaQueryList) => {
+      if (e.matches) {
+        setCollapsed(true);
+      } else {
+        // Restore stored pref on expand (may be collapsed by user choice).
+        setCollapsed(readStoredCollapsed());
+      }
+    };
+    // Run immediately for the current state.
+    handler(mq);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
   }, []);
 
   function toggleCollapsed() {
@@ -567,10 +585,12 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
         {/* Footer — shows text when expanded; hides when collapsed. */}
         {!collapsed && (
           <div
-            className="px-5 py-4 border-t text-[10.5px] tracking-wider"
+            className="px-5 py-3 border-t text-[10.5px] tracking-wider shrink-0"
             style={{
               borderColor: "var(--qgi-border)",
               color: "var(--qgi-text-dim)",
+              overflow: "hidden",
+              lineHeight: 1.3,
             }}
           >
             QUANTITATIVE
@@ -625,8 +645,8 @@ function NavLeafLink({
   comingSoon?: boolean;
 }) {
   const active = isActiveRoute(pathname, href);
-  // Long labels ("Sanctions Simulator") get a smaller, tighter font so they sit
-  // on ONE line in the 224px rail instead of wrapping. Short labels keep the
+  // Long labels (>14 chars) get a smaller, tighter font so they sit on ONE
+  // line in the 224px rail instead of wrapping. Short labels keep the
   // standard 12px tracking-widest treatment.
   const isLongLabel = label.length > 14;
   return (
@@ -655,7 +675,7 @@ function NavLeafLink({
           style={{
             whiteSpace: "nowrap",
             lineHeight: 1.3,
-            ...(isLongLabel ? { fontSize: "10px", letterSpacing: "0" } : {}),
+            ...(isLongLabel ? { fontSize: "11px", letterSpacing: "0" } : {}),
           }}
         >
           {label}
