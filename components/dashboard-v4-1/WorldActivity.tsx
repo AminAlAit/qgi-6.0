@@ -27,7 +27,7 @@ const COLLAPSED_COUNT = 5;
 export function WorldActivity({ rows }: { rows: WorldActivityRow[] }) {
   return (
     <CollapsibleRows
-      panelTitle="What's moving this release"
+      panelTitle="What's Moving This Release"
       panelCaption="Country movements, trend leaders, and historical resemblances pulled from the current scoring run."
       accent={CALM_SLATE_BLUE}
       collapsedCount={COLLAPSED_COUNT}
@@ -40,6 +40,9 @@ export function WorldActivity({ rows }: { rows: WorldActivityRow[] }) {
 }
 
 // isLast is injected by CollapsibleRows on the last visible row.
+// IMPORTANT: `isLast` must be destructured here and used ONLY for styling.
+// It must NOT be forwarded to <Link> or any DOM element — doing so produces
+// a React "unrecognized prop on DOM element" console error on every mount.
 function Row({ row, isLast = false }: { row: WorldActivityRow; isLast?: boolean }) {
   const Icon = ICON_FOR_ACTIVITY_KEY[row.iconKey];
   const body = (
@@ -93,6 +96,8 @@ function Row({ row, isLast = false }: { row: WorldActivityRow; isLast?: boolean 
     </div>
   );
 
+  // `isLast` is consumed above for border suppression; it is NOT passed to
+  // <Link> so React never forwards it to the underlying <a> DOM element.
   return (
     <Link
       href={row.href as Route}

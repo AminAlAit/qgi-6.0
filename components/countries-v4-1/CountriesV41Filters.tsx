@@ -79,10 +79,14 @@ export function CountriesV41Filters({
         ))}
       </div>
 
-      <span style={{ flex: 1 }} />
-
       <div
-        style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+          flexWrap: "wrap",
+          marginLeft: "auto",
+        }}
       >
         <span
           style={{

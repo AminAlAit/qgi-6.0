@@ -261,7 +261,7 @@ export function RecipeCard({
             {isWalked && recipe.stats?.window_y && (
               <span style={chipStyle("muted")}>
                 {recipe.stats?.window_y}y window · {recipe.stats?.n_indicators ?? "?"}{" "}
-                signals
+                {recipe.stats?.n_indicators === 1 ? "signal" : "signals"}
               </span>
             )}
           </div>
@@ -406,6 +406,7 @@ export function RecipeCard({
     return (
       <div
         aria-disabled="true"
+        title="This trend is not yet available"
         style={{ textDecoration: "none", color: "inherit", display: "block" }}
       >
         {cardChrome}

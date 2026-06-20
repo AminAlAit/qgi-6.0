@@ -35,7 +35,7 @@ export function TrajectorySparkline({
   leftLabel = "t-12q",
   rightLabel = "t-0",
 }: TrajectorySparklineProps) {
-  const pad = { top: 8, right: 8, bottom: 14, left: 24 };
+  const pad = { top: 8, right: 8, bottom: 16, left: 28 };
   const innerW = width - pad.left - pad.right;
   const innerH = height - pad.top - pad.bottom;
 
@@ -69,7 +69,7 @@ export function TrajectorySparkline({
         <text
           x={2}
           y={pad.top + 4}
-          fontSize="8"
+          fontSize="10"
           fill="var(--qgi-text-dim)"
           fontFamily="ui-monospace, monospace"
         >
@@ -78,7 +78,7 @@ export function TrajectorySparkline({
         <text
           x={2}
           y={pad.top + innerH}
-          fontSize="8"
+          fontSize="10"
           fill="var(--qgi-text-dim)"
           fontFamily="ui-monospace, monospace"
         >
@@ -140,7 +140,7 @@ export function TrajectorySparkline({
         <text
           x={pad.left}
           y={height - 2}
-          fontSize="8"
+          fontSize="10"
           fill="var(--qgi-text-dim)"
           fontFamily="ui-monospace, monospace"
         >
@@ -149,7 +149,7 @@ export function TrajectorySparkline({
         <text
           x={pad.left + innerW}
           y={height - 2}
-          fontSize="8"
+          fontSize="10"
           fill="var(--qgi-text-dim)"
           fontFamily="ui-monospace, monospace"
           textAnchor="end"

@@ -5,14 +5,16 @@
  * vocabulary because the qgi-ml bake reads description_compelling from
  * this file by name).
  *
- * Schema: recipe-tracker-v1. 71 trends across 8 L1 families.
+ * Schema: recipe-tracker-v1. 69 active trends across 8 L1 families
+ * (2 deactivated 2026-06-20: natural_disaster, epidemic_and_pandemic —
+ * exogenous-shock methodology category error per founder authorization).
  * Server-side only — reads the baked snapshot at SSR/build time.
  *
  * Tier ladder (confidence-tier-policy, ratified 2026-05-31), refreshed per
  * fleet-run vintage (current: te-fleet-run-2, walked 2026-06-01):
  *   validated     → cleared every validation gate (none yet; the bar is hard)
- *   directional   → in play on the dashboard; calibration pending (9)
- *   experimental  → walked, did not clear the gates (35)
+ *   directional   → in play on the dashboard; calibration pending (8)
+ *   experimental  → walked, did not clear the gates (34)
  *   queued        → not yet walked (27)
  *
  * `status` is the legacy vocabulary kept for back-compat with older
@@ -71,6 +73,13 @@ export interface Recipe {
   audience: RecipeAudience;
   stats?: RecipeStats | null;
   vintages?: RecipeVintageRow[];
+  /**
+   * When true, recipe is excluded from the trend catalog and all counts.
+   * Set in recipe-tracker.json. The loader strips these from the returned
+   * recipes array so no consumer needs to re-filter.
+   */
+  deactivated?: boolean;
+  deactivation_reason?: string;
 }
 
 export interface RecipeTrackerData {
@@ -101,6 +110,10 @@ let _cache: RecipeTrackerData | null = null;
 /**
  * Load the trend tracker data. Throws if the file is missing or malformed.
  * Cached in-process after the first read.
+ *
+ * Deactivated recipes (deactivated: true) are stripped from the returned
+ * recipes array. The n_recipes and tier_counts in recipe-tracker.json are
+ * already updated to reflect the active-only count (69 as of 2026-06-20).
  */
 export async function loadRecipeTracker(): Promise<RecipeTrackerData> {
   if (_cache !== null) return _cache;
@@ -114,8 +127,11 @@ export async function loadRecipeTracker(): Promise<RecipeTrackerData> {
       `recipe-tracker.json schema '${parsed.schema}' unsupported; expected 'recipe-tracker-v1'`
     );
   }
-  _cache = parsed;
-  return parsed;
+  // Strip deactivated recipes from the public-facing data. Scores/events are
+  // preserved on disk; they just do not appear in the trend catalog or counts.
+  const active = { ...parsed, recipes: parsed.recipes.filter((r) => !r.deactivated) };
+  _cache = active;
+  return active;
 }
 
 /**
