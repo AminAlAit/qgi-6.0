@@ -83,8 +83,8 @@ export default function RecipesV41GalleryPage() {
               maxWidth: "780px",
             }}
           >
-            All {recipes.length} structural-event trends, grouped by category. Pick any
-            trend to open its full report card.
+            All {recipes.length} structural-event trends, grouped by category. Click any
+            to open its full report card.
           </p>
         </div>
 

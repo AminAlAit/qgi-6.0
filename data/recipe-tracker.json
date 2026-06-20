@@ -2,18 +2,18 @@
   "generated": "2026-06-05",
   "schema": "recipe-tracker-v1",
   "vintage_current": "te-fleet-run-2",
-  "n_recipes": 71,
+  "n_recipes": 69,
   "status_counts": {
     "graduated": 0,
     "in_progress": 0,
     "live_legacy": 3,
-    "walked_no_graduation": 41,
+    "walked_no_graduation": 39,
     "queued": 27
   },
   "tier_counts": {
     "validated": 0,
-    "directional": 9,
-    "experimental": 35,
+    "directional": 8,
+    "experimental": 34,
     "queued": 27
   },
   "recipes": [
@@ -1500,6 +1500,8 @@
       "status": "walked_no_graduation",
       "tier": "experimental",
       "audience": "coming_soon",
+      "deactivated": true,
+      "deactivation_reason": "EXOGENOUS_SHOCK — purely exogenous event; structural indicators describe vulnerability/impact, not predictability of occurrence. HARD_FAIL driven by single freedom-of-expression indicator (noise). Founder-authorized 2026-06-20.",
       "description_compelling": "An umbrella recipe for major hazard events — multi-type disasters, cascading hazards, or country-specific aggregation when the hazard mix is the load-bearing pattern. Government-effectiveness, displacement-baseline, and debt-headroom indicators predict recovery quality. Useful for small or disaster-frequent states where individual recipes thin out.",
       "stats": {
         "loco_auc": 0.6377,
@@ -1546,6 +1548,8 @@
       "status": "walked_no_graduation",
       "tier": "directional",
       "audience": "in_play",
+      "deactivated": true,
+      "deactivation_reason": "EXOGENOUS_SHOCK — purely exogenous disease emergence; indicators describe wealth/capacity proxy, not epidemic predictability. n_pos=8 wealth-proxy artifact; Majles M6 (2026-05-01) 5-2 voted for re-scoping. Founder-authorized 2026-06-20.",
       "description_compelling": "A transmissible-disease outbreak sustained beyond baseline morbidity or mortality — local epidemic that goes national, regional that goes global. Government-effectiveness, transparency-of-law, fiscal-headroom, and democracy indices shape both the response and the political fallout. Recurrent in West and Central Africa, in dense Asian megacities, and across global travel hubs.",
       "stats": {
         "loco_auc": 0.8794,

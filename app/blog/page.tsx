@@ -185,8 +185,8 @@ export default function BlogIndexPage() {
                   className="text-sm leading-relaxed"
                   style={{ color: "var(--qgi-text-muted)" }}
                 >
-                  Live status board for all 71 QGI trends, across 8 geopolitical families.
-                  Forty-four in play on the dashboard, graded on a confidence ladder;
+                  Live status board for all 69 QGI trends, across 8 geopolitical families.
+                  Forty-two in play on the dashboard, graded on a confidence ladder;
                   twenty-seven coming soon. Every trend walks the same validation gates in
                   held-out historical data, and most will not top the ladder on a given
                   walk.

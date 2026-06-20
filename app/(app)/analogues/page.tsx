@@ -120,21 +120,30 @@ export default async function NearestAnalogPage({
           >
             Pick a country today, the engine shows you the closest historical match:
             &ldquo;this looks most like Tunisia 2008 + Argentina 2015.&rdquo; Pure
-            shape-matching across the 71-trend library. A <strong>similarity</strong>{" "}
+            shape-matching across the 69-trend library. A <strong>similarity</strong>{" "}
             statement, not a forecast: the historical outcome is what happened to the
             analogue country, never a prediction about today&apos;s.
           </p>
         </header>
 
         {/* Main: picker + results column · methodology side panel */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 1fr) 340px",
-            gap: "24px",
-            alignItems: "start",
-          }}
-        >
+        <style>{`
+          .qgi-analogues-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 340px;
+            gap: 24px;
+            align-items: start;
+          }
+          @media (max-width: 900px) {
+            .qgi-analogues-grid {
+              grid-template-columns: 1fr;
+            }
+            .qgi-analogues-methodology {
+              position: static !important;
+            }
+          }
+        `}</style>
+        <div className="qgi-analogues-grid">
           <main style={{ minWidth: 0 }}>
             <CountryPicker
               entries={entries}
@@ -142,7 +151,15 @@ export default async function NearestAnalogPage({
               unavailableName={unavailableName ?? undefined}
             />
           </main>
-          <div style={{ position: "sticky", top: "24px" }}>
+          <div
+            className="qgi-analogues-methodology"
+            style={{
+              position: "sticky",
+              top: "24px",
+              maxHeight: "calc(100vh - 48px)",
+              overflowY: "auto",
+            }}
+          >
             <MethodologyBox />
           </div>
         </div>

@@ -14,6 +14,9 @@ import { RotatingWordmark } from "@/components/landing-v2/RotatingWordmark";
 import { ClosestMatches } from "@/components/dashboard-v4-1/ClosestMatches";
 import { buildClosestMatches } from "@/lib/te-mock/dashboard-v4-1-data";
 import NewsletterForm from "@/components/NewsletterForm";
+import { FeaturedReportCard } from "@/components/highlights/FeaturedReportCard";
+import { GemCard } from "@/components/highlights/GemCard";
+import { AnalogSpotlight } from "@/components/highlights/AnalogSpotlight";
 
 export const metadata: Metadata = {
   title: "QG Intelligence · Geopolitics, measured",
@@ -149,6 +152,76 @@ export default async function HomePage() {
             >
               Open the full dashboard &rarr;
             </Link>
+          </div>
+        </section>
+
+        {/* Highlights — Featured Report + Structural Gems */}
+        <section
+          id="highlights"
+          className="border-t"
+          style={{ borderColor: "var(--qgi-border)" }}
+        >
+          <div className="mx-auto max-w-6xl px-6 py-20 flex flex-col gap-16">
+            {/* Block A — Featured Report */}
+            <FeaturedReportCard />
+
+            {/* Divider */}
+            <div style={{ borderTop: "1px solid var(--qgi-border)" }} />
+
+            {/* Block B — Structural Gems strip */}
+            <div>
+              <p
+                className="text-[10px] tracking-widest uppercase mb-2"
+                style={{
+                  color: "var(--qgi-text-dim)",
+                  fontFamily: "ui-monospace, monospace",
+                }}
+              >
+                Structural Resemblances
+              </p>
+              <h2
+                className="text-xl font-semibold mb-8"
+                style={{ color: "var(--qgi-text)" }}
+              >
+                Where countries rhyme
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <GemCard
+                  eyebrow="Civil War & Insurgency"
+                  headline="India & Pakistan: 99% structural resemblance."
+                  body="Each other's #1 structural peer on Civil War & Insurgency in the 156-country cohort. The convergence is recent, not decades-embedded."
+                  href="/reports/india-pakistan-mirror"
+                  accentColor="#E64545"
+                />
+                <GemCard
+                  eyebrow="Multilateral Agreement"
+                  headline="Niger scores 94, Burkina 2. Same structural fingerprint. Opposite trajectories."
+                  body="Two AES juntas with near-identical profiles are moving in opposite directions on multilateral engagement. 95% structural match, 92 points apart."
+                  href="/reports/niger-burkina-divergence"
+                  accentColor="#5B7E99"
+                />
+                <GemCard
+                  eyebrow="Sovereign Credit Note"
+                  headline="Ukraine's structural twin is Bosnia 1996."
+                  body="The largest gap in the 156-country analogue corpus — 16 points above the next cluster. A falsifiable credit thesis anchored in the historical record."
+                  href="/reports/ukraine-bosnia-mirror"
+                  accentColor="#7B5EE6"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Analog Spotlight — full-bleed surface band */}
+        <section
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            borderTop: "1px solid var(--qgi-border)",
+            borderBottom: "1px solid var(--qgi-border)",
+          }}
+        >
+          <div className="mx-auto max-w-6xl px-6 py-20">
+            <AnalogSpotlight />
           </div>
         </section>
 

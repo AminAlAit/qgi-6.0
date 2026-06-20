@@ -83,7 +83,7 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
         data-tour="analog-results"
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(320px, 100%), 1fr))",
           gap: "16px",
         }}
       >
@@ -182,7 +182,7 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
           <div
             style={{ fontSize: "12px", color: "var(--qgi-text-muted)", lineHeight: 1.5 }}
           >
-            All 71 trends in the QGI catalog with mini-trajectories: browse every
+            All 69 trends in the QGI catalog with mini-trajectories: browse every
             trajectory shape, queued or tested, that the analogue finder draws from.
           </div>
         </div>
@@ -206,7 +206,7 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
           }}
         >
           <GitCompare size={14} strokeWidth={2} />
-          Browse all 71 trends
+          Browse all 69 trends
         </Link>
       </section>
     </div>

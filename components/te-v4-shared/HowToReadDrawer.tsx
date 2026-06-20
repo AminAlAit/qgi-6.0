@@ -98,6 +98,27 @@ export function HowToReadDrawer({ routeKey, open, onClose }: HowToReadDrawerProp
     };
   }, [open, onClose]);
 
+  // Shift the main content area right when the drawer is open so it doesn't
+  // hide behind the panel. We apply padding-right on #main-content directly
+  // (the flex-1 scrolling container in AppLayout) via a CSS transition so
+  // the page feels like it's making room rather than being covered.
+  useEffect(() => {
+    const mainEl = document.getElementById("main-content");
+    if (!mainEl) return;
+    const drawerWidth = Math.min(420, window.innerWidth - 56);
+    if (open) {
+      mainEl.style.transition = `padding-right ${ANIM_MS}ms ${EASING}`;
+      mainEl.style.paddingRight = `${drawerWidth}px`;
+    } else {
+      mainEl.style.transition = `padding-right ${ANIM_MS}ms ${EASING}`;
+      mainEl.style.paddingRight = "";
+    }
+    return () => {
+      mainEl.style.paddingRight = "";
+      mainEl.style.transition = "";
+    };
+  }, [open]);
+
   if (!mounted) return null;
 
   const content = HOW_TO_READ_CONTENT[routeKey];
@@ -135,7 +156,7 @@ export function HowToReadDrawer({ routeKey, open, onClose }: HowToReadDrawerProp
           top: 0,
           right: 0,
           bottom: 0,
-          width: "min(420px, 100vw)",
+          width: "min(420px, calc(100vw - 56px))",
           background: "var(--qgi-surface)",
           borderLeft: `3px solid ${CALM_SLATE_BLUE}`,
           padding: "24px 24px 32px",
