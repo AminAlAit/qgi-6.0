@@ -322,12 +322,15 @@ export function buildTopPairTeasers(n = 3): CountryPairTeaser[] {
   try {
     const analogs = loadAnalogs();
     const recipes = getAllRecipes();
+    const activeIds = new Set(recipes.map((r) => r.recipe_id));
     const recipeLabel = (id: string) =>
       recipes.find((r) => r.recipe_id === id)?.label ?? id;
     const flat: CountryPairTeaser[] = [];
     for (const entry of analogs.entries) {
       for (const a of entry.analogs) {
         if (a.weak_analog) continue;
+        // Skip deactivated recipes (natural_disaster, epidemic_and_pandemic).
+        if (!activeIds.has(a.primary_recipe_id)) continue;
         flat.push({
           country_a: entry.name,
           country_a_iso2: iso2For(entry.name) ?? null,
@@ -506,7 +509,15 @@ function firedAtToDate(firedAt: string): string {
 export function buildWorldActivityRows(): WorldActivityRow[] {
   try {
     const feed = loadActivityFeed();
-    const sorted = [...feed.events].sort((a, b) => b.fired_at.localeCompare(a.fired_at));
+    // Drop activity events for deactivated recipes (natural_disaster,
+    // epidemic_and_pandemic) so they don't surface on the Briefing.
+    const activeIds = new Set(getAllRecipes().map((r) => r.recipe_id));
+    const sorted = [...feed.events]
+      .filter((evt) => {
+        const rid = (evt as { recipe_id?: string }).recipe_id;
+        return !rid || activeIds.has(rid);
+      })
+      .sort((a, b) => b.fired_at.localeCompare(a.fired_at));
     return sorted.map((evt): WorldActivityRow => {
       const date = firedAtToDate(evt.fired_at);
       if (evt.kind === "walk_fired") {
@@ -522,8 +533,8 @@ export function buildWorldActivityRows(): WorldActivityRow[] {
         };
         const verdictLabel =
           e.verdict === "MARGINAL_PENDING_BETA_CALIBRATION"
-            ? "directional — beta calibration pending"
-            : "experimental — under review";
+            ? "directional, beta calibration pending"
+            : "experimental, under review";
         return {
           date,
           kind: "recipe_top10_shift",
@@ -577,7 +588,7 @@ export function buildWorldActivityRows(): WorldActivityRow[] {
       return {
         date,
         kind: "corpus_growth",
-        title: `Catalog event — ${evt.kind}`,
+        title: `Catalog event: ${evt.kind}`,
         detail: `Recorded ${date}.`,
         href: `/methodology`,
         color: "#5B7E99",

@@ -7,6 +7,74 @@ const MUTED = "var(--qgi-text-muted)";
 const DIM = "var(--qgi-text-dim)";
 const BORDER = "var(--qgi-border)";
 
+function PhotoThumb({
+  src,
+  credit,
+  title,
+}: {
+  src: string;
+  credit?: string;
+  title: string;
+}) {
+  return (
+    <div
+      className="relative w-full overflow-hidden"
+      style={{
+        aspectRatio: "16 / 9",
+        backgroundColor: BG,
+        borderBottom: `1px solid ${BORDER}`,
+      }}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={credit ? `${title} — photo credit: ${credit}` : title}
+        loading="lazy"
+        sizes="(max-width: 1024px) 50vw, 33vw"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          display: "block",
+          zIndex: 0,
+        }}
+      />
+      {/* accent bar — rendered after img so it paints above it */}
+      <div
+        className="absolute left-0 top-0 h-full"
+        style={{ width: 3, backgroundColor: ACCENT, zIndex: 2 }}
+      />
+      {credit && (
+        <span
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            bottom: 4,
+            right: 6,
+            fontSize: 8,
+            lineHeight: 1.2,
+            color: "rgba(255,255,255,0.9)",
+            backgroundColor: "rgba(0,0,0,0.55)",
+            padding: "1px 4px",
+            borderRadius: 2,
+            zIndex: 3,
+            pointerEvents: "none",
+            userSelect: "none",
+            maxWidth: "calc(100% - 16px)",
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {credit}
+        </span>
+      )}
+    </div>
+  );
+}
+
 function FrameShell({
   topLabel,
   children,
@@ -38,6 +106,39 @@ function FrameShell({
       )}
       <div className="absolute inset-0 flex items-center pl-8 pr-6">{children}</div>
     </div>
+  );
+}
+
+function EyestatThumb({
+  primary,
+  label,
+  secondary,
+  countryLabel,
+}: {
+  primary: string;
+  label: string;
+  secondary?: string;
+  countryLabel?: string;
+}) {
+  return (
+    <FrameShell topLabel={countryLabel}>
+      <div className="flex flex-col">
+        <span
+          className="font-data font-bold leading-none"
+          style={{ fontSize: 46, color: ACCENT }}
+        >
+          {primary}
+        </span>
+        <span className="text-sm font-semibold mt-2" style={{ color: TEXT }}>
+          {label}
+        </span>
+        {secondary && (
+          <span className="text-[11px] mt-1" style={{ color: MUTED }}>
+            {secondary}
+          </span>
+        )}
+      </div>
+    </FrameShell>
   );
 }
 
@@ -223,6 +324,25 @@ function DefaultThumb({ category }: { category: string }) {
 }
 
 export function ReportThumbnail({ report }: { report: Report }) {
+  // Photo thumbnail: takes priority over SVG thumbs when report.image is set.
+  if (report.image) {
+    return (
+      <PhotoThumb src={report.image} credit={report.imageCredit} title={report.title} />
+    );
+  }
+
+  // Eyestat SVG thumb: if the report declares eyestat data, render that instead of a slug-specific thumb.
+  if (report.eyestat) {
+    return (
+      <EyestatThumb
+        primary={report.eyestat.primary}
+        label={report.eyestat.label}
+        secondary={report.eyestat.secondary}
+        countryLabel={report.eyestat.countryLabel}
+      />
+    );
+  }
+
   switch (report.slug) {
     case "ghana-mauritania-mirror":
       return <GhanaThumb />;

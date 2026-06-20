@@ -28,12 +28,12 @@ import {
 export const metadata: Metadata = {
   title: "Trend Tracker · QG Intelligence",
   description:
-    "Live status board for all 71 QGI trends. 44 in play on the dashboard (9 directional, 35 experimental on the confidence ladder), 27 coming soon. Every trend walks the same validation gates in held-out historical data.",
+    "Live status board for all 69 QGI trends. 42 in play on the dashboard (8 directional, 34 experimental on the confidence ladder), 27 coming soon. Every trend walks the same validation gates in held-out historical data.",
   alternates: { canonical: "https://qgintelligence.com/blog/trend-tracker" },
   openGraph: {
     title: "Trend Tracker · QG Intelligence",
     description:
-      "Live status board for all 71 QGI trends: 44 in play, graded on a confidence ladder, and 27 coming soon.",
+      "Live status board for all 69 QGI trends: 42 in play, graded on a confidence ladder, and 27 coming soon.",
     url: "https://qgintelligence.com/blog/trend-tracker",
     siteName: "QG Intelligence",
     type: "website",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Trend Tracker · QG Intelligence",
     description:
-      "71 QGI trends: 44 in play (9 directional, 35 experimental), 27 coming soon. Every score is gated on validation against held-out history.",
+      "69 QGI trends: 42 in play (8 directional, 34 experimental), 27 coming soon. Every score is gated on validation against held-out history.",
   },
 };
 

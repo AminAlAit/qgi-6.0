@@ -64,6 +64,14 @@ export interface TrackerRecipe {
    * if absent — detail page falls through to `mock.definition`.
    */
   description_compelling?: string;
+  /**
+   * When true, this recipe is excluded from the displayed trend catalog,
+   * all counts, and all aggregations. Set in recipe-tracker.json.
+   * Reason: exogenous-shock methodology category error (natural_disaster,
+   * epidemic_and_pandemic deactivated 2026-06-20 per founder authorization).
+   */
+  deactivated?: boolean;
+  deactivation_reason?: string;
   stats: {
     loco_auc?: number;
     window_y?: number;
@@ -233,20 +241,29 @@ let _allRecipesCache: TrackerRecipe[] | null = null;
 
 /**
  * Returns the unified recipe list with TE-WINS dedupe:
- *   - All 71 cascade-era rows from recipe-tracker.json (engine: "cascade")
- *   - PLUS the 44 TE rows derived from card-v3 (engine: "trajectory-engine-v1")
+ *   - All 69 active cascade-era rows from recipe-tracker.json (engine: "cascade")
+ *     (2 recipes deactivated 2026-06-20: natural_disaster, epidemic_and_pandemic —
+ *     exogenous-shock methodology category error; see deactivated flag in tracker)
+ *   - PLUS the TE rows derived from card-v3 (engine: "trajectory-engine-v1"),
+ *     also filtered for deactivated recipes
  *   - Any recipe_id present in BOTH sets has the cascade row REMOVED — the
  *     TE walk is the current state, the cascade row was its pre-walk
  *     placeholder. The cascade engine version is still queryable via
  *     getCascadeRecipe(recipeId) for the Recipe Tracker historical column.
  *
- * All 44 fleet-run-1 recipe IDs are a subset of the 71 cascade catalog rows.
- * The remaining 27 cascade-only rows render as "Coming soon" in /trends.
+ * Deactivated recipes (deactivated: true in recipe-tracker.json) are excluded
+ * from this list and therefore from /trends counts and all aggregations.
+ * Their score files and curated events are preserved on disk.
  */
 export function getAllRecipes(): TrackerRecipe[] {
   if (_allRecipesCache) return _allRecipesCache;
-  const cascade = cascadeRecipes();
-  const te = buildTERecipes();
+  const cascade = cascadeRecipes().filter((r) => !r.deactivated);
+  const teAll = buildTERecipes();
+  // Also exclude deactivated recipes from TE rows (cross-check against tracker)
+  const cascadeById = new Map(
+    (recipeTracker as { recipes: TrackerRecipe[] }).recipes.map((r) => [r.recipe_id, r])
+  );
+  const te = teAll.filter((r) => !cascadeById.get(r.recipe_id)?.deactivated);
   const teIds = new Set(te.map((r) => r.recipe_id));
   const cascadeKept = cascade.filter((r) => !teIds.has(r.recipe_id));
   // Order: cascade-kept first, then TE rows. /trends groups by status/tier.

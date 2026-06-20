@@ -3,19 +3,26 @@ import type { Metadata } from "next";
 import { PublicNav } from "@/components/PublicNav";
 import { PublicFooter } from "@/components/PublicFooter";
 import { SkipLink } from "@/components/SkipLink";
-import { getDisplayableReports, getLatestForRail } from "./_data/reports-manifest";
+import {
+  SECTION_LABEL,
+  getDisplayableReports,
+  getLatestForRail,
+  getLiveStats,
+} from "./_data/reports-manifest";
+import { PublicationMasthead } from "./_components/PublicationMasthead";
 import { LatestRail } from "./_components/LatestRail";
-import { CategoryFilteredGrid } from "./_components/CategorySegmentedControl";
+import { ClusterProvenanceRail } from "./_components/ClusterProvenanceRail";
+import { TierFilteredGrid } from "./_components/TierFilteredGrid";
 
 export const metadata: Metadata = {
-  title: "Intelligence Reports · QG Intelligence",
+  title: `${SECTION_LABEL} · QG Intelligence`,
   description:
     "Pattern-driven analysis of sovereign risk, geopolitical alignment, and structural divergence. Reproducible by design.",
   alternates: {
     canonical: "https://qgintelligence.com/reports",
   },
   openGraph: {
-    title: "Intelligence Reports · QG Intelligence",
+    title: `${SECTION_LABEL} · QG Intelligence`,
     description:
       "Pattern-driven analysis of sovereign risk, geopolitical alignment, and structural divergence.",
     url: "https://qgintelligence.com/reports",
@@ -24,7 +31,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ReportsPage() {
+export default async function ReportsPage() {
+  const { reportCount, countryCount } = getLiveStats();
   const latest = getLatestForRail();
   const latestSlugs = new Set(latest.map((r) => r.slug));
   const browsable = getDisplayableReports().filter((r) => !latestSlugs.has(r.slug));
@@ -66,29 +74,13 @@ export default function ReportsPage() {
         tabIndex={-1}
         className="mx-auto max-w-6xl px-6 py-12 lg:py-16 focus:outline-none"
       >
-        <div className="mb-12">
-          <div
-            className="text-[10px] tracking-widest uppercase mb-3 font-data"
-            style={{ color: "var(--qgi-accent)" }}
-          >
-            Reports
-          </div>
-          <h1 className="text-3xl lg:text-4xl font-semibold mb-4 leading-tight">
-            Intelligence Reports
-          </h1>
-          <p
-            className="text-base lg:text-lg leading-relaxed max-w-3xl"
-            style={{ color: "var(--qgi-text-muted)" }}
-          >
-            Pattern-driven analysis of sovereign risk, geopolitical alignment, and
-            structural divergence. Each report is generated from live pipeline data and is
-            fully reproducible by design.
-          </p>
-        </div>
+        <PublicationMasthead reportCount={reportCount} countryCount={countryCount} />
+
+        <ClusterProvenanceRail clusters={[]} />
 
         <LatestRail reports={latest} />
 
-        <CategoryFilteredGrid reports={browsable} />
+        <TierFilteredGrid reports={browsable} />
       </main>
 
       <PublicFooter />

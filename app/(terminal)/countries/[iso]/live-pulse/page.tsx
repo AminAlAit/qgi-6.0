@@ -76,12 +76,18 @@ export default async function LivePulsePage({ params }: Params) {
   // live feed (empty until the poller emits it) — even on the monthly-fallback
   // path — so the news rail shows an honest "coming soon", never stale sample
   // headlines under "LIVE NEWS".
+  //
+  // Articles are fetched unconditionally so the news rail is always populated
+  // from the live poller output regardless of whether a committed live-pulse
+  // series JSON exists for this country (e.g. a newly added board country that
+  // has articles but no prototype series file yet).
+  const [liveSeries, liveArticles] = await Promise.all([
+    seriesData ? getBucketSeries(detail.iso3) : null,
+    getBucketArticles(detail.iso3),
+  ]);
+
   let liveData = seriesData;
   if (seriesData) {
-    const [liveSeries, liveArticles] = await Promise.all([
-      getBucketSeries(detail.iso3),
-      getBucketArticles(detail.iso3),
-    ]);
     const series: typeof seriesData.series = { ...seriesData.series };
     if (liveSeries) {
       for (const [topic, byRes] of Object.entries(liveSeries)) {
@@ -120,6 +126,7 @@ export default async function LivePulsePage({ params }: Params) {
     <LivePulseTerminal
       detail={detail}
       seriesData={liveData}
+      articles={liveArticles}
       countries={countries}
       backHref={backHref}
       backLabel={backLabel}

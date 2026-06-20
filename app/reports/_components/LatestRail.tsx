@@ -11,17 +11,17 @@ export function LatestRail({ reports }: LatestRailProps) {
 
   return (
     <section
-      aria-labelledby="latest-rail-label"
+      aria-labelledby="recent-rail-label"
       className="mb-10 pb-10"
       style={{ borderBottom: "1px solid var(--qgi-border)" }}
     >
       <div className="flex items-center gap-3 mb-5">
         <h2
-          id="latest-rail-label"
+          id="recent-rail-label"
           className="text-[11px] tracking-[0.25em] uppercase font-data font-semibold"
           style={{ color: "var(--qgi-accent)" }}
         >
-          Latest
+          Recent
         </h2>
         <span
           className="h-px flex-1"
