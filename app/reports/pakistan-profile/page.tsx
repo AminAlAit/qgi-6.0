@@ -968,13 +968,16 @@ export default function PakistanProfileReportPage() {
               The Uganda 2021 Repression Mirror
             </h3>
             <p>
-              The political repression model&apos;s top analogue is Uganda 2021 (match
-              0.9057, secondary: elections and voting). Uganda 2021 was Yoweri
-              Museveni&apos;s post-election systematic persecution of Bobi Wine&apos;s
-              National Unity Platform: hundreds of supporters killed in pre-election
-              violence, Wine himself shot and arrested, widespread detention of opposition
-              figures after a heavily manipulated vote. Rwanda 2021 (match 0.8885) and
-              Zimbabwe 2019 (match 0.8805) follow as second and third analogues.
+              Like Democratic Transition, the political repression model carries an
+              Experimental tier and a HARD_FAIL verdict in the current walk, so its score
+              is structural orientation only, not a validated probability. The political
+              repression model&apos;s top analogue is Uganda 2021 (match 0.9057,
+              secondary: elections and voting). Uganda 2021 was Yoweri Museveni&apos;s
+              post-election systematic persecution of Bobi Wine&apos;s National Unity
+              Platform: hundreds of supporters killed in pre-election violence, Wine
+              himself shot and arrested, widespread detention of opposition figures after
+              a heavily manipulated vote. Rwanda 2021 (match 0.8885) and Zimbabwe 2019
+              (match 0.8805) follow as second and third analogues.
             </p>
             <p>
               The Zimbabwe analogue deserves particular attention for Pakistan&apos;s
@@ -1318,7 +1321,7 @@ export default function PakistanProfileReportPage() {
               {[
                 "[V-Dem Institute, 2026] Varieties of Democracy Dataset v14. University of Gothenburg. Indicators: v2x_clpol, v2x_clpriv, v2x_libdem, v2stfisccap, v2x_gender, v2lgqstexp, v2x_partipdem, v2x_corr, v2x_regime, v2x_neopat, v2xeg_eqprotec, v2x_partip.",
                 "[World Bank Development Indicators, 2026] SP.POP.TOTL, SP.DYN.LE00.IN, SH.DYN.MORT, NY.GDP.MKTP.KD.ZG, SM.POP.NETM, NY.GNP.PCAP.CD.",
-                "[IMF, September 2024] Extended Fund Facility -- Pakistan. Program documentation, disbursement records, and structural benchmarks.",
+                "[IMF, September 2024] Extended Fund Facility for Pakistan. Program documentation, disbursement records, and structural benchmarks.",
                 "[IMF Article IV, 2025] Pakistan: Selected Issues and Staff Report.",
                 "[Pakistan Bureau of Statistics, FY2025-26] GDP and growth estimates.",
                 "[State Bank of Pakistan, May 2026] Foreign exchange reserves and monetary statistics.",
