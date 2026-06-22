@@ -31,10 +31,11 @@ export function BriefingCommandBar(_props: Props) {
         borderBottom: "1px solid var(--qgi-border)",
       }}
     >
-      {/* Wordmark — "BRIEFING" */}
+      {/* Bar label — "BRIEFING" */}
       <span
         style={{
-          fontFamily: "'Century Gothic', 'CenturyGothic', Arial, sans-serif",
+          fontFamily:
+            "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
           fontSize: "11px",
           fontWeight: 700,
           letterSpacing: "4px",

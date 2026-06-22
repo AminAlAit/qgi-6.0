@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { Route } from "next";
 import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
+import { Wordmark } from "@/components/brand/Wordmark";
 import Chart1DivergenceBars, {
   Chart1DivergenceBarsHero,
 } from "./charts/Chart1DivergenceBars";
@@ -193,35 +194,7 @@ export default function NigerBurkinaDivergenceReportPage() {
         }}
       >
         <div className="mx-auto max-w-4xl flex items-center justify-between px-6 py-4">
-          <Link href={"/" as Route} className="flex items-baseline gap-1" title="Home">
-            <span
-              style={{
-                fontSize: "18px",
-                lineHeight: 1,
-                letterSpacing: "0.04em",
-                color: "var(--qgi-accent)",
-                marginRight: "-0.05em",
-                fontFamily:
-                  "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
-                fontWeight: 700,
-              }}
-            >
-              QG
-            </span>
-            <span
-              className="uppercase"
-              style={{
-                fontSize: "10px",
-                letterSpacing: "0.2em",
-                color: "var(--qgi-text-muted)",
-                fontWeight: 500,
-                fontFamily:
-                  "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
-              }}
-            >
-              Intelligence
-            </span>
-          </Link>
+          <Wordmark variant="report" href={"/" as Route} title="Home" />
           <nav className="flex items-center gap-4">
             <Link
               href={"/reports" as Route}

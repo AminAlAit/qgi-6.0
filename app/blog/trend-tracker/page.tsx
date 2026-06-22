@@ -17,6 +17,7 @@
 import type { Metadata } from "next";
 import type { Route } from "next";
 import Link from "next/link";
+import { Wordmark } from "@/components/brand/Wordmark";
 import {
   loadRecipeTracker,
   groupByFamily,
@@ -317,20 +318,7 @@ export default async function TrendTrackerPage() {
         }}
       >
         <div className="mx-auto max-w-5xl flex items-center justify-between px-6 py-4">
-          <Link href={"/" as Route} className="flex items-baseline gap-1" title="Home">
-            <span
-              className="font-data text-sm tracking-[0.25em] font-semibold"
-              style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
-            >
-              QG
-            </span>
-            <span
-              className="text-[11px] tracking-widest uppercase"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Intelligence
-            </span>
-          </Link>
+          <Wordmark variant="nav" href={"/" as Route} title="Home" />
           <Link
             href={"/blog" as Route}
             className="text-xs tracking-wider uppercase"

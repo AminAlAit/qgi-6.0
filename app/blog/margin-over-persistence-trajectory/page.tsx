@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
+import { Wordmark } from "@/components/brand/Wordmark";
 
 export const metadata: Metadata = {
   title: "The margin keeps widening · QGI Blog",
@@ -57,20 +58,7 @@ export default function MarginTrajectoryPost() {
         }}
       >
         <div className="mx-auto max-w-4xl flex items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-baseline gap-1" title="Home">
-            <span
-              className="font-data text-sm tracking-[0.25em] font-semibold"
-              style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
-            >
-              QG
-            </span>
-            <span
-              className="text-[11px] tracking-widest uppercase"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Intelligence
-            </span>
-          </Link>
+          <Wordmark variant="nav" href="/" title="Home" />
           <Link
             href="/blog"
             className="text-xs tracking-wider uppercase"
