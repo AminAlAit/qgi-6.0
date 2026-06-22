@@ -702,9 +702,13 @@ export default function PakistanProfileReportPage() {
               multi-recipe structural scan.
             </p>
             <p>
-              The most analytically specific finding: Pakistan in 2026 structurally
-              resembles Pakistan in 2011, with a <Fn n={2}>match score of 0.9712</Fn> in
-              the foreign intervention model.
+              And the closest structural analogue to Pakistan 2026, out of every
+              country-year QGI scores, is not a peer in open crisis. It is Pakistan
+              itself.
+            </p>
+            <p>
+              In 2011, at a <Fn n={2}>match score of 0.9712</Fn> in the foreign
+              intervention model.
             </p>
             <p>That comparison is the story.</p>
           </section>
@@ -712,7 +716,7 @@ export default function PakistanProfileReportPage() {
           {/* --- Five Models --- */}
           <section id="five-models">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              The Structural Picture: Five Models, Five Top-20 Rankings
+              1. The Structural Picture: Five Models, Five Top-20 Rankings
             </h2>
             <p>
               QGI&apos;s scoring vintage te-fleet-run-2, scored at 2026-06-01T22:58:47
@@ -734,10 +738,11 @@ export default function PakistanProfileReportPage() {
               produce often.
             </p>
             <p>
-              A note on what is excluded here. The natural disaster and
-              epidemic-and-pandemic recipes are deactivated from this analysis as
-              exogenous-shock categories that do not meet the endogenous-crisis-shape
-              criteria that give QGI&apos;s structural findings their comparative value.
+              Two recipes are deliberately switched off here. Natural disaster and
+              epidemic-and-pandemic are exogenous shocks, things that happen to a country,
+              not crises its own structure builds toward. They fail the endogenous-shape
+              test that gives QGI&apos;s comparisons their value, so they do not count
+              toward this profile.
             </p>
 
             <PullQuote>
@@ -764,7 +769,7 @@ export default function PakistanProfileReportPage() {
           {/* --- Lead Signals --- */}
           <section id="lead-signals">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              The Lead Signal: What the Indicators Are Actually Saying
+              2. The Lead Signal: What the Indicators Are Actually Saying
             </h2>
 
             <h3 className="text-lg font-semibold mt-6 mb-2">
@@ -874,7 +879,7 @@ export default function PakistanProfileReportPage() {
           {/* --- Self-Analogue --- */}
           <section id="self-analogue">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              The Historical Analogue: What Pakistan 2011 Implies
+              3. The Historical Analogue: What Pakistan 2011 Implies
             </h2>
             <p>
               The foreign intervention model&apos;s top analogue for Pakistan 2026 is
@@ -1009,7 +1014,7 @@ export default function PakistanProfileReportPage() {
           {/* --- News vs Structure --- */}
           <section id="news-vs-structure">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              The News-versus-Structure Picture: Five Silent Alarms
+              4. The News-versus-Structure Picture: Five Silent Alarms
             </h2>
             <p>
               QGI&apos;s high-frequency news layer (hf-topics.json, built 2026-06-09)
@@ -1075,7 +1080,7 @@ export default function PakistanProfileReportPage() {
             </p>
 
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              The Forward Look: Resemblance, Precedent, and the Bifurcation
+              5. The Forward Look: Resemblance, Precedent, and the Bifurcation
             </h2>
             <p>
               QGI&apos;s framework requires a falsifiable forward statement. It does not
@@ -1138,7 +1143,7 @@ export default function PakistanProfileReportPage() {
             </p>
 
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              The Multi-Recipe Convergence: What This Means for Risk Analysis
+              6. The Multi-Recipe Convergence: What This Means for Risk Analysis
             </h2>
             <p>
               The central methodological argument behind this report is this: no desk
@@ -1179,7 +1184,7 @@ export default function PakistanProfileReportPage() {
 
           {/* --- Methodology --- */}
           <aside
-            id="methodology-note"
+            id="methodology-footnote"
             role="note"
             aria-label="Methodology note"
             className="my-8 rounded-lg p-5 text-xs leading-relaxed"
