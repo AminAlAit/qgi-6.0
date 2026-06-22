@@ -1,10 +1,11 @@
-# Cascade/SCDI-exclusive outputs — null when enable_cascade = false.
-# The pipeline module variable batch_job_queue_arn has default = "" so
-# environments can omit it when enable_cascade = false.
-output "job_queue_arn" { value = one(aws_batch_job_queue.scdi[*].arn) }
-output "job_queue_name" { value = one(aws_batch_job_queue.scdi[*].name) }
-output "job_definition_arn" { value = one(aws_batch_job_definition.scdi_finder[*].arn) }
-output "job_definition_name" { value = one(aws_batch_job_definition.scdi_finder[*].name) }
+# Cascade/SCDI-exclusive outputs — "" (not null) when enable_cascade = false, to match
+# storage/outputs.tf + pipeline/outputs.tf and avoid null propagating into a consumer
+# (an explicit null passed to a variable overrides its default). batch_job_queue_arn
+# in the pipeline module also has default = "".
+output "job_queue_arn" { value = coalesce(one(aws_batch_job_queue.scdi[*].arn), "") }
+output "job_queue_name" { value = coalesce(one(aws_batch_job_queue.scdi[*].name), "") }
+output "job_definition_arn" { value = coalesce(one(aws_batch_job_definition.scdi_finder[*].arn), "") }
+output "job_definition_name" { value = coalesce(one(aws_batch_job_definition.scdi_finder[*].name), "") }
 
 # #FAR-1: Phase 1 indicator fetcher Fargate Spot resources
 output "fetcher_job_queue_arn" { value = aws_batch_job_queue.fetcher.arn }
