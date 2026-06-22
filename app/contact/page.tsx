@@ -4,6 +4,7 @@ import { PublicNav } from "@/components/PublicNav";
 import { PublicFooter } from "@/components/PublicFooter";
 import { SkipLink } from "@/components/SkipLink";
 import ContactForm from "@/components/ContactForm";
+import { Wordmark } from "@/components/brand/Wordmark";
 
 export const metadata: Metadata = {
   title: "Contact · QG Intelligence",
@@ -28,25 +29,7 @@ export default function ContactPage() {
         }}
       >
         <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-baseline gap-1" title="Home">
-            <span
-              className="text-sm tracking-[0.25em] font-semibold"
-              style={{
-                color: "var(--qgi-accent)",
-                marginRight: "-0.25em",
-                fontFamily:
-                  "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
-              }}
-            >
-              QG
-            </span>
-            <span
-              className="text-[11px] tracking-widest uppercase"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Intelligence
-            </span>
-          </Link>
+          <Wordmark variant="nav" href="/" title="Home" />
           <PublicNav />
         </div>
       </header>

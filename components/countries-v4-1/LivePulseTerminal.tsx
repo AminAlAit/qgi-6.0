@@ -400,23 +400,31 @@ function Header({ backHref, backLabel }: { backHref: string; backLabel: string }
         style={{
           fontFamily:
             "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
-          fontSize: "18px",
-          fontWeight: 700,
-          color: "var(--qgi-accent)",
-          letterSpacing: "1px",
+          display: "flex",
+          alignItems: "baseline",
+          gap: "8px",
         }}
       >
-        QG
+        <span
+          style={{
+            fontSize: "18px",
+            fontWeight: 700,
+            color: "var(--qgi-accent)",
+            letterSpacing: "1px",
+          }}
+        >
+          QG
+        </span>
         <span
           style={{
             fontSize: "10px",
-            fontWeight: 400,
-            letterSpacing: "4px",
+            fontWeight: 500,
+            letterSpacing: "2px",
             color: "var(--qgi-text-muted)",
-            marginLeft: "7px",
+            textTransform: "uppercase",
           }}
         >
-          INTELLIGENCE
+          Intelligence
         </span>
       </div>
       <Sep />

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { Route } from "next";
 import { PublicNav } from "@/components/PublicNav";
+import { Wordmark } from "@/components/brand/Wordmark";
 import { PublicFooter } from "@/components/PublicFooter";
 import { SkipLink } from "@/components/SkipLink";
 import { MiniSparkline } from "@/components/countries-v4-1/MiniSparkline";
@@ -108,20 +109,7 @@ export default function MethodologyGprPage() {
         }}
       >
         <div className="mx-auto max-w-4xl flex items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-baseline gap-1" title="Home">
-            <span
-              className="font-data text-sm tracking-[0.25em] font-semibold"
-              style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
-            >
-              QG
-            </span>
-            <span
-              className="text-[11px] tracking-widest uppercase"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Intelligence
-            </span>
-          </Link>
+          <Wordmark variant="nav" href={"/" as Route} title="Home" />
           <PublicNav currentPage="methodology" />
         </div>
       </header>

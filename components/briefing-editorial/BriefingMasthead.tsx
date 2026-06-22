@@ -31,18 +31,22 @@ export function BriefingMasthead({
         gap: "8px",
       }}
     >
-      {/* Wordmark */}
+      {/* Bar label — two-tone: QG in accent, INTELLIGENCE in muted */}
       <span
         style={{
-          fontFamily: "'Century Gothic', 'AppleGothic', 'Century', sans-serif",
+          fontFamily:
+            "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
           fontSize: "11px",
-          fontWeight: 600,
+          fontWeight: 700,
           letterSpacing: "5px",
           textTransform: "uppercase",
-          color: "var(--qgi-text)",
+          display: "inline-flex",
+          alignItems: "baseline",
+          gap: "5px",
         }}
       >
-        QG INTELLIGENCE
+        <span style={{ color: "var(--qgi-accent)" }}>QG</span>
+        <span style={{ color: "var(--qgi-text-muted)" }}>Intelligence</span>
       </span>
 
       {/* Centre: cadence + vintage quarter. Full ISO version is surfaced as a

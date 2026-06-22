@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Wordmark } from "@/components/brand/Wordmark";
 
 /**
  * Shared footer for every public-marketing page (landing, /about, /reports,
@@ -26,20 +27,7 @@ export function PublicFooter() {
     >
       <div className="mx-auto max-w-6xl px-6 py-10">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6">
-          <Link href="/" className="flex items-baseline gap-1" title="Home">
-            <span
-              className="font-data text-xs tracking-[0.25em] font-semibold"
-              style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
-            >
-              QG
-            </span>
-            <span
-              className="text-[10px] tracking-widest uppercase"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Intelligence
-            </span>
-          </Link>
+          <Wordmark variant="footer" href="/" title="Home" />
           <nav
             aria-label="Footer"
             className="flex flex-wrap items-center gap-x-6 gap-y-2"
