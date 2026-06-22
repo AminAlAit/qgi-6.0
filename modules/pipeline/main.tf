@@ -309,8 +309,11 @@ resource "aws_lambda_function" "a_reporter" {
   environment {
     variables = {
       SNS_TOPIC_ARN = var.sns_topic_arn
-      # Cross-reference guard #4: b_orchestrator is gated; use empty string when cascade off.
-      PIPELINE_B_ARN = var.enable_cascade ? aws_lambda_function.b_orchestrator[0].arn : ""
+      # Cross-reference guard #4: b_orchestrator is gated. Use one()+coalesce — NOT a
+      # ternary with [0]: Terraform does not reliably short-circuit conditional branches,
+      # so aws_lambda_function.b_orchestrator[0] would error at plan when count = 0 (QA).
+      # one(...[*].arn) -> arn when cascade on, null when off; coalesce makes that "".
+      PIPELINE_B_ARN = coalesce(one(aws_lambda_function.b_orchestrator[*].arn), "")
       # #FAR-1: tables read by the detailed email reporter
       TRACKER_TABLE = var.indicator_table_name
       COUNTER_TABLE = var.pipeline_a_counter_table_name
