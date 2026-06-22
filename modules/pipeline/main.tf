@@ -91,11 +91,15 @@ resource "aws_lambda_function" "ops_janitor" {
 
   environment {
     variables = {
-      QUEUE_URLS = join(",", [
+      # Cross-reference guard #3: include B/C queue urls only when enable_cascade=true.
+      # compact() strips the empty strings that flow through when cascade is off.
+      QUEUE_URLS = join(",", compact([
         var.queue_a_main_url, var.queue_a_dlq_url,
-        var.queue_b_main_url, var.queue_b_dlq_url,
-        var.queue_c_main_url, var.queue_c_dlq_url,
-      ])
+        var.enable_cascade ? var.queue_b_main_url : "",
+        var.enable_cascade ? var.queue_b_dlq_url : "",
+        var.enable_cascade ? var.queue_c_main_url : "",
+        var.enable_cascade ? var.queue_c_dlq_url : "",
+      ]))
     }
   }
 
@@ -304,8 +308,9 @@ resource "aws_lambda_function" "a_reporter" {
 
   environment {
     variables = {
-      SNS_TOPIC_ARN  = var.sns_topic_arn
-      PIPELINE_B_ARN = aws_lambda_function.b_orchestrator.arn
+      SNS_TOPIC_ARN = var.sns_topic_arn
+      # Cross-reference guard #4: b_orchestrator is gated; use empty string when cascade off.
+      PIPELINE_B_ARN = var.enable_cascade ? aws_lambda_function.b_orchestrator[0].arn : ""
       # #FAR-1: tables read by the detailed email reporter
       TRACKER_TABLE = var.indicator_table_name
       COUNTER_TABLE = var.pipeline_a_counter_table_name
@@ -352,9 +357,17 @@ resource "aws_lambda_function" "a_completer" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 2 — Batch orchestrator (launches one Batch job per updated indicator)
+# Phase 2 — Batch orchestrator (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.b_orchestrator -> b_orchestrator[0]
+moved {
+  from = aws_lambda_function.b_orchestrator
+  to   = aws_lambda_function.b_orchestrator[0]
+}
+
 resource "aws_lambda_function" "b_orchestrator" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-b-scdi-finder-batch-orchestrator"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
@@ -380,9 +393,17 @@ resource "aws_lambda_function" "b_orchestrator" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 2 — batch checker (polls Batch job queue, called by Step Functions)
+# Phase 2 — batch checker (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.ops_batch_checker -> ops_batch_checker[0]
+moved {
+  from = aws_lambda_function.ops_batch_checker
+  to   = aws_lambda_function.ops_batch_checker[0]
+}
+
 resource "aws_lambda_function" "ops_batch_checker" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-ops-batch-checker"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
@@ -405,9 +426,17 @@ resource "aws_lambda_function" "ops_batch_checker" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 2 — b dispatcher (alternative fan-out path, not in Step Functions ASL)
+# Phase 2 — b dispatcher (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.b_dispatcher -> b_dispatcher[0]
+moved {
+  from = aws_lambda_function.b_dispatcher
+  to   = aws_lambda_function.b_dispatcher[0]
+}
+
 resource "aws_lambda_function" "b_dispatcher" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-b-dispatcher"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
@@ -432,10 +461,18 @@ resource "aws_lambda_function" "b_dispatcher" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 2 — scdi finder Lambda (lightweight version for small runs)
+# Phase 2 — scdi finder Lambda (Cascade/SCDI-exclusive — gated by enable_cascade)
 # Not in Step Functions — triggered manually or via b-dispatcher.
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.b_scdi_finder -> b_scdi_finder[0]
+moved {
+  from = aws_lambda_function.b_scdi_finder
+  to   = aws_lambda_function.b_scdi_finder[0]
+}
+
 resource "aws_lambda_function" "b_scdi_finder" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-b-scdi-finder"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
@@ -462,9 +499,17 @@ resource "aws_lambda_function" "b_scdi_finder" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 4 — c dispatcher (fans out one SQS message per country)
+# Phase 4 — c dispatcher (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.c_dispatcher -> c_dispatcher[0]
+moved {
+  from = aws_lambda_function.c_dispatcher
+  to   = aws_lambda_function.c_dispatcher[0]
+}
+
 resource "aws_lambda_function" "c_dispatcher" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-c-dispatcher"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
@@ -494,9 +539,17 @@ resource "aws_lambda_function" "c_dispatcher" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 4 — c worker (SQS-triggered, runs Athena INSERT per country)
+# Phase 4 — c worker (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.c_worker -> c_worker[0]
+moved {
+  from = aws_lambda_function.c_worker
+  to   = aws_lambda_function.c_worker[0]
+}
+
 resource "aws_lambda_function" "c_worker" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-c-worker"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
@@ -525,18 +578,34 @@ resource "aws_lambda_function" "c_worker" {
   tags = var.tags
 }
 
+# moved block: aws_lambda_event_source_mapping.c_worker_sqs -> c_worker_sqs[0]
+moved {
+  from = aws_lambda_event_source_mapping.c_worker_sqs
+  to   = aws_lambda_event_source_mapping.c_worker_sqs[0]
+}
+
 resource "aws_lambda_event_source_mapping" "c_worker_sqs" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count                              = var.enable_cascade ? 1 : 0
   event_source_arn                   = var.queue_c_main_arn
-  function_name                      = aws_lambda_function.c_worker.arn
+  function_name                      = aws_lambda_function.c_worker[0].arn
   batch_size                         = 10
   maximum_batching_window_in_seconds = 5
   enabled                            = true
 }
 
 # ---------------------------------------------------------------------------
-# Phase 4 — completion checker (polls qgi-completion-counters instead of hard wait)
+# Phase 4 — completion checker (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.c_checker -> c_checker[0]
+moved {
+  from = aws_lambda_function.c_checker
+  to   = aws_lambda_function.c_checker[0]
+}
+
 resource "aws_lambda_function" "c_checker" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-c-checker"
   handler          = "lambda_function.lambda_handler"
   timeout          = 30
@@ -560,10 +629,17 @@ resource "aws_lambda_function" "c_checker" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 4/5 — c DLQ inspector
-# Fixes prod bug: prod used non-existent 'countries_parquet' table.
+# Phase 4/5 — c DLQ inspector (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.c_dlq_inspector -> c_dlq_inspector[0]
+moved {
+  from = aws_lambda_function.c_dlq_inspector
+  to   = aws_lambda_function.c_dlq_inspector[0]
+}
+
 resource "aws_lambda_function" "c_dlq_inspector" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-c-dlq-inspector"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
@@ -590,9 +666,17 @@ resource "aws_lambda_function" "c_dlq_inspector" {
   tags = var.tags
 }
 
+# moved block: aws_lambda_event_source_mapping.c_dlq_inspector_sqs -> c_dlq_inspector_sqs[0]
+moved {
+  from = aws_lambda_event_source_mapping.c_dlq_inspector_sqs
+  to   = aws_lambda_event_source_mapping.c_dlq_inspector_sqs[0]
+}
+
 resource "aws_lambda_event_source_mapping" "c_dlq_inspector_sqs" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   event_source_arn = var.queue_c_dlq_arn
-  function_name    = aws_lambda_function.c_dlq_inspector.arn
+  function_name    = aws_lambda_function.c_dlq_inspector[0].arn
   batch_size       = 1
   enabled          = true
 }
@@ -615,7 +699,13 @@ resource "aws_lambda_function" "ops_dlq_scanner" {
 
   environment {
     variables = {
-      DLQ_URLS      = join(",", [var.queue_a_dlq_url, var.queue_b_dlq_url, var.queue_c_dlq_url])
+      # Cross-reference guard #3: include B/C DLQ urls only when enable_cascade=true.
+      # compact() strips empty strings that flow through when cascade is off.
+      DLQ_URLS      = join(",", compact([
+        var.queue_a_dlq_url,
+        var.enable_cascade ? var.queue_b_dlq_url : "",
+        var.enable_cascade ? var.queue_c_dlq_url : "",
+      ]))
       SNS_TOPIC_ARN = var.sns_topic_arn
     }
   }
@@ -625,9 +715,17 @@ resource "aws_lambda_function" "ops_dlq_scanner" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 5 — Recipe engine (matches patterns + events → recipes)
+# Phase 5 — Recipe engine (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.recipe_engine -> recipe_engine[0]
+moved {
+  from = aws_lambda_function.recipe_engine
+  to   = aws_lambda_function.recipe_engine[0]
+}
+
 resource "aws_lambda_function" "recipe_engine" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-recipe-engine"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
@@ -653,7 +751,7 @@ resource "aws_lambda_function" "recipe_engine" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 5 — Recipe Engine List Formatter (#162 Layer 2)
+# Phase 5 — Recipe Engine List Formatter (Cascade/SCDI-exclusive — gated by enable_cascade)
 #
 # Tiny Lambda (~20 lines of real work) that parses the Athena query results
 # from the "5b.2. Enumerate country_a_ids" state and pre-generates all
@@ -661,7 +759,15 @@ resource "aws_lambda_function" "recipe_engine" {
 # country, and INSERTs for the rest). Does NO Athena execution itself.
 # Max wall time: ~10 seconds.
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.recipe_engine_list_formatter -> recipe_engine_list_formatter[0]
+moved {
+  from = aws_lambda_function.recipe_engine_list_formatter
+  to   = aws_lambda_function.recipe_engine_list_formatter[0]
+}
+
 resource "aws_lambda_function" "recipe_engine_list_formatter" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count         = var.enable_cascade ? 1 : 0
   function_name = "qgi-pipeline-recipe-engine-list-formatter"
   handler       = "lambda_function.lambda_handler"
   # timeout 60s → 900s + memory 256MB → 512MB per #533 (smart-chunking,
@@ -718,14 +824,22 @@ resource "aws_lambda_function" "recipe_engine_list_formatter" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 5 — Recipe Engine Finalize (#162 Layer 2)
+# Phase 5 — Recipe Engine Finalize (Cascade/SCDI-exclusive — gated by enable_cascade)
 #
 # Post-write Lambda: runs AFTER the Map state has populated all recipe
 # partitions. Responsibilities: count/category stats, recipes_normalized
 # view (#158 follow-up), convergence view (#133), dashboard JSONs (#146).
 # All bounded aggregates on the finished recipes table: ~2-3 min wall time.
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.recipe_engine_finalize -> recipe_engine_finalize[0]
+moved {
+  from = aws_lambda_function.recipe_engine_finalize
+  to   = aws_lambda_function.recipe_engine_finalize[0]
+}
+
 resource "aws_lambda_function" "recipe_engine_finalize" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-recipe-engine-finalize"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
@@ -752,12 +866,20 @@ resource "aws_lambda_function" "recipe_engine_finalize" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 5b.7 — Partners Index Generator (GH#277)
+# Phase 5b.7 — Partners Index Generator (Cascade/SCDI-exclusive — gated by enable_cascade)
 #
 # Reads the finished recipes table and generates a partners-index JSON
 # (country-pair co-occurrence rankings) for the frontend.
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.partners_index_generator -> partners_index_generator[0]
+moved {
+  from = aws_lambda_function.partners_index_generator
+  to   = aws_lambda_function.partners_index_generator[0]
+}
+
 resource "aws_lambda_function" "partners_index_generator" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-partners-index-generator"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
@@ -786,12 +908,20 @@ resource "aws_lambda_function" "partners_index_generator" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 5b.8 — Pattern Density Generator (GH#278)
+# Phase 5b.8 — Pattern Density Generator (Cascade/SCDI-exclusive — gated by enable_cascade)
 #
 # Computes per-country pattern density metrics and writes a density JSON
 # for use in risk scoring and frontend visualisations.
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.pattern_density_generator -> pattern_density_generator[0]
+moved {
+  from = aws_lambda_function.pattern_density_generator
+  to   = aws_lambda_function.pattern_density_generator[0]
+}
+
 resource "aws_lambda_function" "pattern_density_generator" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-pattern-density-generator"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
@@ -820,12 +950,20 @@ resource "aws_lambda_function" "pattern_density_generator" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 5b.9 — Structural Twins Generator (GH#279)
+# Phase 5b.9 — Structural Twins Generator (Cascade/SCDI-exclusive — gated by enable_cascade)
 #
 # Identifies structurally similar country pairs based on shared pattern
 # profiles and writes a twins JSON for the frontend analogue feature.
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.structural_twins_generator -> structural_twins_generator[0]
+moved {
+  from = aws_lambda_function.structural_twins_generator
+  to   = aws_lambda_function.structural_twins_generator[0]
+}
+
 resource "aws_lambda_function" "structural_twins_generator" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-structural-twins-generator"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
@@ -854,13 +992,21 @@ resource "aws_lambda_function" "structural_twins_generator" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 5b.10 — Pair Windows Generator (GH#281)
+# Phase 5b.10 — Pair Windows Generator (Cascade/SCDI-exclusive — gated by enable_cascade)
 #
 # Queries ALL patterns ordered by (country_a_id, country_b_id, pps DESC),
 # takes top 200 windows per pair, and writes one JSON file per predictor
 # country to dashboard/pair-windows/{country_a_id}.json.
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.pair_windows_generator -> pair_windows_generator[0]
+moved {
+  from = aws_lambda_function.pair_windows_generator
+  to   = aws_lambda_function.pair_windows_generator[0]
+}
+
 resource "aws_lambda_function" "pair_windows_generator" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-pair-windows-generator"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
@@ -889,7 +1035,7 @@ resource "aws_lambda_function" "pair_windows_generator" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 5b.10b — Pair Windows Enumerator (#369)
+# Phase 5b.10b — Pair Windows Enumerator (Cascade/SCDI-exclusive — gated by enable_cascade)
 #
 # AFTER the 5b.10a CTAS has materialised ``pair_windows_staging``,
 # this Lambda runs a tiny ``SELECT DISTINCT country_a_id`` query
@@ -902,7 +1048,15 @@ resource "aws_lambda_function" "pair_windows_generator" {
 # rollback fallback — delete after 2 successful prod runs of the
 # new pipeline (see #369 migration plan).
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.pair_windows_enumerator -> pair_windows_enumerator[0]
+moved {
+  from = aws_lambda_function.pair_windows_enumerator
+  to   = aws_lambda_function.pair_windows_enumerator[0]
+}
+
 resource "aws_lambda_function" "pair_windows_enumerator" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-pair-windows-enumerator"
   handler          = "lambda_function.lambda_handler"
   timeout          = 60
@@ -931,7 +1085,7 @@ resource "aws_lambda_function" "pair_windows_enumerator" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 5b.10c child — Pair Windows Writer (#369)
+# Phase 5b.10c child — Pair Windows Writer (Cascade/SCDI-exclusive — gated by enable_cascade)
 #
 # Distributed-Map child. Reads ONE country_a_id's partition from
 # ``pair_windows_staging`` (bounded ~42K rows), builds the JSON
@@ -939,7 +1093,15 @@ resource "aws_lambda_function" "pair_windows_enumerator" {
 # Wall time ~5-10s per invocation. With MaxConcurrency=20 across
 # 214 countries, the full Map completes in ~2 min.
 # ---------------------------------------------------------------------------
+# moved block: aws_lambda_function.pair_windows_writer -> pair_windows_writer[0]
+moved {
+  from = aws_lambda_function.pair_windows_writer
+  to   = aws_lambda_function.pair_windows_writer[0]
+}
+
 resource "aws_lambda_function" "pair_windows_writer" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count            = var.enable_cascade ? 1 : 0
   function_name    = "qgi-pipeline-pair-windows-writer"
   handler          = "lambda_function.lambda_handler"
   timeout          = 300
@@ -1009,7 +1171,10 @@ resource "aws_lambda_function" "batch_job_terminator" {
 
   environment {
     variables = {
-      BATCH_JOB_QUEUE = "qgi-pipeline-b-high-priority-queue"
+      # Cross-reference guard #5: the cost kill-switch watches the Phase B SCDI
+      # queue when cascade is ON (staging — UNCHANGED), and the TE recipe-fleet
+      # queue when cascade is OFF (QA), where the Phase B queue does not exist.
+      BATCH_JOB_QUEUE = var.enable_cascade ? "qgi-pipeline-b-high-priority-queue" : "qgi-recipe-fleet-queue"
     }
   }
 
@@ -1216,14 +1381,23 @@ resource "aws_scheduler_schedule" "fetch_monthly" {
 }
 
 # ---------------------------------------------------------------------------
-# Step Functions — Main pipeline state machine
+# Step Functions — Main cascade pipeline state machine
+# (Cascade/SCDI-exclusive — gated by enable_cascade)
 #
 # Changes vs production:
 # - Phase 3: Glue crawler replaced with MSCK REPAIR TABLE scdis (issue #66)
 # - Phase 4 MSCK uses QGI-Lambda-Workgroup (prod used hardcoded 'primary')
 # - All ARNs are environment-specific (no management account hardcoding)
 # ---------------------------------------------------------------------------
+# moved block: aws_sfn_state_machine.pipeline -> pipeline[0]
+moved {
+  from = aws_sfn_state_machine.pipeline
+  to   = aws_sfn_state_machine.pipeline[0]
+}
+
 resource "aws_sfn_state_machine" "pipeline" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count    = var.enable_cascade ? 1 : 0
   name     = "qgi-indicator-monthly-updater"
   role_arn = var.stepfunctions_role_arn
 
@@ -1302,7 +1476,7 @@ resource "aws_sfn_state_machine" "pipeline" {
       # dashboards_only: invoke finalize directly, skip everything else
       "Finalize Dashboards" = {
         Type     = "Task"
-        Resource = aws_lambda_function.recipe_engine_finalize.arn
+        Resource = aws_lambda_function.recipe_engine_finalize[0].arn
         Parameters = {
           "run_id.$" = "$$.Execution.Name"
         }
@@ -1362,7 +1536,7 @@ resource "aws_sfn_state_machine" "pipeline" {
 
       "2a. Dispatch SCDI Batch" = {
         Type     = "Task"
-        Resource = aws_lambda_function.b_orchestrator.arn
+        Resource = aws_lambda_function.b_orchestrator[0].arn
         Parameters = {
           mode              = var.batch_invoke_mode
           "indicator_ids.$" = "$.reporter_result.updated_ids"
@@ -1385,7 +1559,7 @@ resource "aws_sfn_state_machine" "pipeline" {
 
       "2c. Check SCDI Batch" = {
         Type       = "Task"
-        Resource   = aws_lambda_function.ops_batch_checker.arn
+        Resource   = aws_lambda_function.ops_batch_checker[0].arn
         ResultPath = "$.batch_status"
         Retry      = local.lambda_retry
         Next       = "2d. SCDI Done?"
@@ -1422,7 +1596,7 @@ resource "aws_sfn_state_machine" "pipeline" {
 
       "4a. Dispatch Pattern Synth" = {
         Type     = "Task"
-        Resource = aws_lambda_function.c_dispatcher.arn
+        Resource = aws_lambda_function.c_dispatcher[0].arn
         Parameters = {
           action     = "start"
           "run_id.$" = "$$.Execution.Name"
@@ -1440,7 +1614,7 @@ resource "aws_sfn_state_machine" "pipeline" {
 
       "4c. Check Pattern Counter" = {
         Type     = "Task"
-        Resource = aws_lambda_function.c_checker.arn
+        Resource = aws_lambda_function.c_checker[0].arn
         Parameters = {
           "run_id.$"   = "$$.Execution.Name"
           "expected.$" = "$.dispatch_c_output.dispatched_count"
@@ -1536,7 +1710,7 @@ resource "aws_sfn_state_machine" "pipeline" {
 
       "5b.3. List Formatter" = {
         Type     = "Task"
-        Resource = aws_lambda_function.recipe_engine_list_formatter.arn
+        Resource = aws_lambda_function.recipe_engine_list_formatter[0].arn
         Parameters = {
           "run_id.$" = "$$.Execution.Name"
         }
@@ -1716,7 +1890,7 @@ resource "aws_sfn_state_machine" "pipeline" {
 
       "5b.6. Finalize" = {
         Type     = "Task"
-        Resource = aws_lambda_function.recipe_engine_finalize.arn
+        Resource = aws_lambda_function.recipe_engine_finalize[0].arn
         Parameters = {
           "run_id.$"           = "$$.Execution.Name"
           "partitions_total.$" = "$.recipe_list.partitions_total"
@@ -1728,7 +1902,7 @@ resource "aws_sfn_state_machine" "pipeline" {
 
       "5b.7. Generate Partners Index" = {
         Type     = "Task"
-        Resource = aws_lambda_function.partners_index_generator.arn
+        Resource = aws_lambda_function.partners_index_generator[0].arn
         Parameters = {
           "run_id.$" = "$$.Execution.Name"
         }
@@ -1739,7 +1913,7 @@ resource "aws_sfn_state_machine" "pipeline" {
 
       "5b.8. Generate Pattern Density" = {
         Type     = "Task"
-        Resource = aws_lambda_function.pattern_density_generator.arn
+        Resource = aws_lambda_function.pattern_density_generator[0].arn
         Parameters = {
           "run_id.$" = "$$.Execution.Name"
         }
@@ -1750,7 +1924,7 @@ resource "aws_sfn_state_machine" "pipeline" {
 
       "5b.9. Generate Structural Twins" = {
         Type     = "Task"
-        Resource = aws_lambda_function.structural_twins_generator.arn
+        Resource = aws_lambda_function.structural_twins_generator[0].arn
         Parameters = {
           "run_id.$" = "$$.Execution.Name"
         }
@@ -1830,7 +2004,7 @@ resource "aws_sfn_state_machine" "pipeline" {
 
       "5b.10b. Enumerate Country A IDs" = {
         Type     = "Task"
-        Resource = aws_lambda_function.pair_windows_enumerator.arn
+        Resource = aws_lambda_function.pair_windows_enumerator[0].arn
         Parameters = {
           "run_id.$" = "$$.Execution.Name"
         }
@@ -1859,7 +2033,7 @@ resource "aws_sfn_state_machine" "pipeline" {
           States = {
             "Write Pair Windows JSON" = {
               Type     = "Task"
-              Resource = aws_lambda_function.pair_windows_writer.arn
+              Resource = aws_lambda_function.pair_windows_writer[0].arn
               Retry = [{
                 ErrorEquals     = ["States.ALL"]
                 IntervalSeconds = 10
@@ -1911,11 +2085,19 @@ resource "aws_sfn_state_machine" "pipeline" {
 }
 
 # ---------------------------------------------------------------------------
-# EventBridge Scheduler — 1st of month, 06:00 Europe/Berlin
+# EventBridge Scheduler — Main cascade SFN (Cascade/SCDI-exclusive — gated by enable_cascade)
 # DISABLED by default in all environments.
 # Enable manually or via CI/CD gate after verifying a successful staging run.
 # ---------------------------------------------------------------------------
+# moved block: aws_scheduler_schedule.monthly -> monthly[0]
+moved {
+  from = aws_scheduler_schedule.monthly
+  to   = aws_scheduler_schedule.monthly[0]
+}
+
 resource "aws_scheduler_schedule" "monthly" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count      = var.enable_cascade ? 1 : 0
   name       = "qgi-indicator-monthly-updater-1st"
   group_name = "default"
 
@@ -1929,7 +2111,7 @@ resource "aws_scheduler_schedule" "monthly" {
   state = "DISABLED"
 
   target {
-    arn      = aws_sfn_state_machine.pipeline.arn
+    arn      = aws_sfn_state_machine.pipeline[0].arn
     role_arn = var.eventbridge_scheduler_role_arn
   }
 }

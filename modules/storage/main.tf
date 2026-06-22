@@ -404,29 +404,61 @@ resource "aws_sqs_queue" "a_main" {
 }
 
 # ---------------------------------------------------------------------------
-# SQS — Phase B
+# SQS — Phase B  (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved blocks: adding count requires state address to change from
+#   module.storage.aws_sqs_queue.b_dlq   -> .b_dlq[0]
+#   module.storage.aws_sqs_queue.b_main  -> .b_main[0]
+moved {
+  from = aws_sqs_queue.b_dlq
+  to   = aws_sqs_queue.b_dlq[0]
+}
+
+moved {
+  from = aws_sqs_queue.b_main
+  to   = aws_sqs_queue.b_main[0]
+}
+
 resource "aws_sqs_queue" "b_dlq" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count                     = var.enable_cascade ? 1 : 0
   name                      = "qgi-pipeline-b-dlq"
   message_retention_seconds = 1209600
   tags                      = var.tags
 }
 
 resource "aws_sqs_queue" "b_main" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count                      = var.enable_cascade ? 1 : 0
   name                       = "qgi-pipeline-b-main-queue"
   visibility_timeout_seconds = 900
   message_retention_seconds  = 345600
   redrive_policy = jsonencode({
-    deadLetterTargetArn = aws_sqs_queue.b_dlq.arn
+    deadLetterTargetArn = aws_sqs_queue.b_dlq[0].arn
     maxReceiveCount     = 3
   })
   tags = var.tags
 }
 
 # ---------------------------------------------------------------------------
-# SQS — Phase C
+# SQS — Phase C  (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved blocks: adding count requires state address to change from
+#   module.storage.aws_sqs_queue.c_dlq   -> .c_dlq[0]
+#   module.storage.aws_sqs_queue.c_main  -> .c_main[0]
+moved {
+  from = aws_sqs_queue.c_dlq
+  to   = aws_sqs_queue.c_dlq[0]
+}
+
+moved {
+  from = aws_sqs_queue.c_main
+  to   = aws_sqs_queue.c_main[0]
+}
+
 resource "aws_sqs_queue" "c_dlq" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count                      = var.enable_cascade ? 1 : 0
   name                       = "qgi-pipeline-c-dlq"
   message_retention_seconds  = 1209600
   visibility_timeout_seconds = 900 # must be >= c-dlq-inspector Lambda timeout
@@ -434,11 +466,13 @@ resource "aws_sqs_queue" "c_dlq" {
 }
 
 resource "aws_sqs_queue" "c_main" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count                      = var.enable_cascade ? 1 : 0
   name                       = "qgi-pipeline-c-main-queue"
   visibility_timeout_seconds = 900
   message_retention_seconds  = 345600
   redrive_policy = jsonencode({
-    deadLetterTargetArn = aws_sqs_queue.c_dlq.arn
+    deadLetterTargetArn = aws_sqs_queue.c_dlq[0].arn
     maxReceiveCount     = 3
   })
   tags = var.tags
@@ -638,9 +672,17 @@ resource "aws_glue_catalog_database" "qgi_data" {
 }
 
 # ---------------------------------------------------------------------------
-# Glue — scdis table (output of Phase B / scdi-finder Batch job)
+# Glue — scdis table (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved block: aws_glue_catalog_table.scdis -> scdis[0]
+moved {
+  from = aws_glue_catalog_table.scdis
+  to   = aws_glue_catalog_table.scdis[0]
+}
+
 resource "aws_glue_catalog_table" "scdis" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count         = var.enable_cascade ? 1 : 0
   name          = "scdis"
   database_name = aws_glue_catalog_database.qgi_data.name
   table_type    = "EXTERNAL_TABLE"
@@ -704,8 +746,13 @@ resource "aws_glue_catalog_table" "scdis" {
 }
 
 # ---------------------------------------------------------------------------
-# Glue — dscdis table (Phase 5 v0.0b Stage D output of dscdi-finder Batch job)
+# Glue — dscdis table (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved block: aws_glue_catalog_table.dscdis -> dscdis[0]
+moved {
+  from = aws_glue_catalog_table.dscdis
+  to   = aws_glue_catalog_table.dscdis[0]
+}
 # DSCDI = Detrended Similar-Country Dynamic Indicator. Per the Phase 5 v0.0b
 # unanimous CSD reconvene DECISION 2026-05-05, this table is ADDITIVE alongside
 # scdis (not a replacement). The 6-way mini-Majles agreed on a two-pass
@@ -745,6 +792,8 @@ resource "aws_glue_catalog_table" "scdis" {
 #   - CSD reconvene DECISION: qgi-docs/internal/majles/in-progress/2026-05-05_Ihsa_phase5-v0-0b-csd-reconvene_DECISION.md
 #   - DSCDI module (the writer's library): qgi-pipeline/batch/dscdi-finder/src/dscdi_finder.py
 resource "aws_glue_catalog_table" "dscdis" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count         = var.enable_cascade ? 1 : 0
   name          = "dscdis"
   database_name = aws_glue_catalog_database.qgi_data.name
   table_type    = "EXTERNAL_TABLE"
@@ -802,8 +851,13 @@ resource "aws_glue_catalog_table" "dscdis" {
 }
 
 # ---------------------------------------------------------------------------
-# Glue — dscdi_indicator_manifest table (Phase 5 v0.0b Stage F preflight)
+# Glue — dscdi_indicator_manifest table (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved block: aws_glue_catalog_table.dscdi_indicator_manifest -> dscdi_indicator_manifest[0]
+moved {
+  from = aws_glue_catalog_table.dscdi_indicator_manifest
+  to   = aws_glue_catalog_table.dscdi_indicator_manifest[0]
+}
 # One row per indicator processed by dscdi-finder. This is the Phase 6 EB
 # framework's queryable substrate-quality surface — distinguishes the 4
 # Class A demeaning_insufficient flagged indicators (FP.CPI.TOTL.ZG,
@@ -825,6 +879,8 @@ resource "aws_glue_catalog_table" "dscdis" {
 #   - DSCDIResult dataclass: qgi-pipeline/batch/dscdi-finder/src/dscdi_finder.py
 #   - Stage E completion report: qgi-docs/internal/ops/cascade-track/results/phase-5-v0.0b-stage-e-completion.md
 resource "aws_glue_catalog_table" "dscdi_indicator_manifest" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count         = var.enable_cascade ? 1 : 0
   name          = "dscdi_indicator_manifest"
   database_name = aws_glue_catalog_database.qgi_data.name
   table_type    = "EXTERNAL_TABLE"
@@ -910,9 +966,17 @@ resource "aws_glue_catalog_table" "dscdi_indicator_manifest" {
 }
 
 # ---------------------------------------------------------------------------
-# Glue — patterns table (output of Phase C / pattern synthesizer)
+# Glue — patterns table (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved block: aws_glue_catalog_table.patterns -> patterns[0]
+moved {
+  from = aws_glue_catalog_table.patterns
+  to   = aws_glue_catalog_table.patterns[0]
+}
+
 resource "aws_glue_catalog_table" "patterns" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count         = var.enable_cascade ? 1 : 0
   name          = "patterns"
   database_name = aws_glue_catalog_database.qgi_data.name
   table_type    = "EXTERNAL_TABLE"
@@ -1103,7 +1167,7 @@ resource "aws_glue_catalog_table" "indicators_completed" {
 }
 
 # ---------------------------------------------------------------------------
-# Glue — recipes_aggregated table (#462 Fork B Level-4 Recipe object)
+# Glue — recipes_aggregated table (Cascade/SCDI-exclusive — gated by enable_cascade)
 #
 # Phase 5b.6.5 output: one row per L3 event_category (71 rows total). The
 # Recipe-as-aggregated-fingerprint phase the audit found missing — founder's
@@ -1122,7 +1186,15 @@ resource "aws_glue_catalog_table" "indicators_completed" {
 # control so a producer-side regression fails LOUD on the next pipeline
 # run rather than silently drifting.
 # ---------------------------------------------------------------------------
+# moved block: aws_glue_catalog_table.recipes_aggregated -> recipes_aggregated[0]
+moved {
+  from = aws_glue_catalog_table.recipes_aggregated
+  to   = aws_glue_catalog_table.recipes_aggregated[0]
+}
+
 resource "aws_glue_catalog_table" "recipes_aggregated" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count         = var.enable_cascade ? 1 : 0
   name          = "recipes_aggregated"
   database_name = aws_glue_catalog_database.qgi_data.name
   table_type    = "EXTERNAL_TABLE"
@@ -1203,7 +1275,7 @@ resource "aws_glue_catalog_table" "recipes_aggregated" {
 }
 
 # ---------------------------------------------------------------------------
-# Glue — pattern_indicator_lookup table (#495 cost-reduction)
+# Glue — pattern_indicator_lookup table (Cascade/SCDI-exclusive — gated by enable_cascade)
 #
 # A thin projection of qgi_data.patterns containing only
 # (pattern_id, indicator_numeric_ids) — ~50 MB compressed vs 64 GB for the
@@ -1221,7 +1293,15 @@ resource "aws_glue_catalog_table" "recipes_aggregated" {
 # ~500K rows at 50 MB total). Full-table scans on the lookup are cheap;
 # no partition pruning benefit.
 # ---------------------------------------------------------------------------
+# moved block: aws_glue_catalog_table.pattern_indicator_lookup -> pattern_indicator_lookup[0]
+moved {
+  from = aws_glue_catalog_table.pattern_indicator_lookup
+  to   = aws_glue_catalog_table.pattern_indicator_lookup[0]
+}
+
 resource "aws_glue_catalog_table" "pattern_indicator_lookup" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count         = var.enable_cascade ? 1 : 0
   name          = "pattern_indicator_lookup"
   database_name = aws_glue_catalog_database.qgi_data.name
   table_type    = "EXTERNAL_TABLE"
