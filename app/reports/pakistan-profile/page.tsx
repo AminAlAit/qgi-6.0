@@ -1179,7 +1179,7 @@ export default function PakistanProfileReportPage() {
 
           {/* --- Methodology --- */}
           <aside
-            id="methodology-note"
+            id="methodology-footnote"
             role="note"
             aria-label="Methodology note"
             className="my-8 rounded-lg p-5 text-xs leading-relaxed"
