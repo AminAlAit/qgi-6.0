@@ -26,10 +26,11 @@ export function CommandBar({ vintage, inPlayCount, liveStatus }: Props) {
         borderBottom: "1px solid var(--qgi-border)",
       }}
     >
-      {/* Wordmark */}
+      {/* Bar label */}
       <span
         style={{
-          fontFamily: "'Century Gothic', 'CenturyGothic', Arial, sans-serif",
+          fontFamily:
+            "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
           fontSize: "11px",
           fontWeight: 700,
           letterSpacing: "4px",

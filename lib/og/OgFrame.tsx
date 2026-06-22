@@ -13,9 +13,11 @@ import type { CSSProperties } from "react";
  */
 
 const NAVY = "#0f1923";
-const ACCENT = "#a78bfa";
+// canonical dark-mode --qgi-accent (electric blue); was '#a78bfa' violet — wrong
+const ACCENT = "#38bdf8";
 const TEXT = "#f5f5f5";
-const MUTED = "#94a3b8";
+// canonical dark-mode --qgi-text-muted (steel); was '#94a3b8'
+const MUTED = "#9ab0c4";
 const DIM = "#64748b";
 
 export type OgFrameProps = {
@@ -70,7 +72,7 @@ export function OgFrame({ eyebrow, title, tagline, rightStat }: OgFrameProps) {
             color: ACCENT,
             fontSize: 22,
             fontWeight: 700,
-            letterSpacing: 6,
+            letterSpacing: 4,
           }}
         >
           QG
@@ -78,7 +80,8 @@ export function OgFrame({ eyebrow, title, tagline, rightStat }: OgFrameProps) {
         <span
           style={{
             color: MUTED,
-            fontSize: 14,
+            fontSize: 13,
+            fontWeight: 500,
             letterSpacing: 3,
             textTransform: "uppercase",
           }}

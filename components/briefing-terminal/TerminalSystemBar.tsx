@@ -50,15 +50,19 @@ export function TerminalSystemBar({
       >
         <span
           style={{
-            fontFamily: "'Century Gothic', 'Futura', sans-serif",
+            fontFamily:
+              "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
             fontSize: "10px",
             fontWeight: 700,
             letterSpacing: "1px",
-            color: "var(--qgi-text)",
             textTransform: "uppercase",
+            display: "inline-flex",
+            alignItems: "baseline",
+            gap: "0",
           }}
         >
-          QGI·INTELLIGENCE
+          <span style={{ color: "var(--qgi-accent)" }}>QG</span>
+          <span style={{ color: "var(--qgi-text-muted)" }}>·INTELLIGENCE</span>
         </span>
         <span style={{ color: "var(--qgi-border)", fontSize: "9px" }}>·</span>
         <span

@@ -97,6 +97,7 @@ export default function Image() {
         world today.
       </div>
 
+      {/* QG Intelligence corner watermark — bottom-right */}
       <div
         style={{
           position: "absolute",
@@ -109,19 +110,20 @@ export default function Image() {
       >
         <span
           style={{
-            color: "#a78bfa",
+            color: "#38bdf8",
             fontSize: 18,
             fontWeight: 700,
-            letterSpacing: "0.2em",
+            letterSpacing: 3,
           }}
         >
           QG
         </span>
         <span
           style={{
-            color: "rgba(255,255,255,0.4)",
+            color: "rgba(148,176,196,0.6)",
             fontSize: 11,
-            letterSpacing: "0.15em",
+            fontWeight: 500,
+            letterSpacing: 2,
             textTransform: "uppercase",
           }}
         >

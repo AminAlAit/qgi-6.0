@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Wordmark } from "@/components/brand/Wordmark";
 import EventsTable from "@/components/methodology/EventsTable";
 import StatPie from "@/components/methodology/StatPie";
 import { PIE_PALETTE, type PieSlice } from "@/components/methodology/pie-data";
@@ -64,20 +65,7 @@ export default function MethodologyEventsPage() {
         }}
       >
         <div className="mx-auto max-w-7xl flex items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-baseline gap-1" title="Home">
-            <span
-              className="font-data text-sm tracking-[0.25em] font-semibold"
-              style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
-            >
-              QG
-            </span>
-            <span
-              className="text-[11px] tracking-widest uppercase"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Intelligence
-            </span>
-          </Link>
+          <Wordmark variant="nav" href="/" title="Home" />
           <Link
             href="/methodology"
             className="text-[11px] tracking-widest uppercase"
