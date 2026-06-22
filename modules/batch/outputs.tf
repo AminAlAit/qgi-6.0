@@ -1,7 +1,10 @@
-output "job_queue_arn" { value = aws_batch_job_queue.scdi.arn }
-output "job_queue_name" { value = aws_batch_job_queue.scdi.name }
-output "job_definition_arn" { value = aws_batch_job_definition.scdi_finder.arn }
-output "job_definition_name" { value = aws_batch_job_definition.scdi_finder.name }
+# Cascade/SCDI-exclusive outputs — null when enable_cascade = false.
+# The pipeline module variable batch_job_queue_arn has default = "" so
+# environments can omit it when enable_cascade = false.
+output "job_queue_arn" { value = one(aws_batch_job_queue.scdi[*].arn) }
+output "job_queue_name" { value = one(aws_batch_job_queue.scdi[*].name) }
+output "job_definition_arn" { value = one(aws_batch_job_definition.scdi_finder[*].arn) }
+output "job_definition_name" { value = one(aws_batch_job_definition.scdi_finder[*].name) }
 
 # #FAR-1: Phase 1 indicator fetcher Fargate Spot resources
 output "fetcher_job_queue_arn" { value = aws_batch_job_queue.fetcher.arn }

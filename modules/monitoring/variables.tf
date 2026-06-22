@@ -35,3 +35,16 @@ variable "lambda_execution_role_arn" {
   type        = string
   default     = ""
 }
+
+# ---------------------------------------------------------------------------
+# enable_cascade: gates the CloudWatch alarms tied to Cascade Lambdas
+# (qgi-v191-* scoring-drift alarms and qgi-caught-exception-finalize-* alarms).
+# Alarms for Phase A / live-pulse / TE are NOT gated.
+#   true  (default) = full staging behaviour — ZERO plan diff on staging.
+#   false           = Cascade/SCDI monitoring resources not created (QA env).
+# ---------------------------------------------------------------------------
+variable "enable_cascade" {
+  type        = bool
+  default     = true
+  description = "When false, V1.9.1 scoring-drift alarms and caught-exception-finalize alarms are skipped. Default true preserves existing staging behaviour."
+}
