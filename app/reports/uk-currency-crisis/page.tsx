@@ -12,7 +12,7 @@ import PrintButton from "./PrintButton";
  *
  * Source draft: qgi-docs/internal/testing/uk-currency-crisis/draft-article.md
  * Scoring run:  te-fleet-run-2, scored 2026-06-01T22:58:47 UTC
- * Byline:       Amin Al-Ait (NEVER a persona name — see E3 in report guidelines)
+ * Byline:       Amin Al-Ait (NEVER a persona name, see E3 in report guidelines)
  * Template:     mirrors app/reports/ghana-mauritania-mirror/page.tsx exactly
  */
 
@@ -22,17 +22,17 @@ const PUBLISH_DATE = "2026-06-19";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "The Judiciary Doesn't Rate-Set — QG Intelligence Report",
+  title: "The Judiciary Doesn't Rate-Set · QG Intelligence Report",
   description:
-    "QGI ranks the United Kingdom first of 157 countries for currency-crisis structural resemblance in 2026. The largest single driver is not the gilt yield or the current account deficit — it is judicial reform attempts. cv-AUC 0.7346.",
+    "QGI ranks the United Kingdom first of 157 countries for currency-crisis structural resemblance in 2026. The largest single driver is not the gilt yield or the current account deficit, it is judicial reform attempts. cv-AUC 0.7346.",
   alternates: {
     canonical: "https://qgintelligence.com/reports/uk-currency-crisis",
   },
   openGraph: {
     title:
-      "The Judiciary Doesn't Rate-Set — But It's Topping QGI's Currency-Crisis Leaderboard",
+      "The Judiciary Doesn't Rate-Set, But It's Topping QGI's Currency-Crisis Leaderboard",
     description:
-      "UK ranks #1 of 157 for currency-crisis structural resemblance. Nearest analogue: the UK itself, 1992, match score 0.975. The lead driver is not the current account — it is judicial reform attempts.",
+      "UK ranks #1 of 157 for currency-crisis structural resemblance. Nearest analogue: the UK itself, 1992, match score 0.975. The lead driver is not the current account, it is judicial reform attempts.",
     url: "https://qgintelligence.com/reports/uk-currency-crisis",
     siteName: "QG Intelligence",
     type: "article",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "The Judiciary Doesn't Rate-Set — But It's Topping QGI's Currency-Crisis Leaderboard",
+      "The Judiciary Doesn't Rate-Set, But It's Topping QGI's Currency-Crisis Leaderboard",
     description:
       "UK is #1 of 157 for currency-crisis structural resemblance. Lead driver: judicial reform attempts, 34.5% of signal. Nearest analogue: UK 1992, match score 0.975.",
   },
@@ -293,8 +293,8 @@ export default function UKCurrencyCrisisReportPage() {
       />
 
       <ArticleJsonLd
-        headline="The Judiciary Doesn't Rate-Set — But It's Topping QGI's Currency-Crisis Leaderboard"
-        description="QGI ranks the UK first of 157 countries for currency-crisis structural resemblance in 2026. The largest single driver is not the gilt yield or current account deficit — it is judicial reform attempts."
+        headline="The Judiciary Doesn't Rate-Set, But It's Topping QGI's Currency-Crisis Leaderboard"
+        description="QGI ranks the UK first of 157 countries for currency-crisis structural resemblance in 2026. The largest single driver is not the gilt yield or current account deficit, it is judicial reform attempts."
         url="https://qgintelligence.com/reports/uk-currency-crisis"
         datePublished={`${PUBLISH_DATE}T00:00:00Z`}
         imageUrl="https://qgintelligence.com/reports/uk-currency-crisis/opengraph-image"
@@ -398,6 +398,14 @@ export default function UKCurrencyCrisisReportPage() {
           {/* ── Introduction ── */}
           <section id="intro">
             <p>
+              The standard macro anxiety report on the UK runs as follows: a structural
+              current account deficit persisting for three decades; gilt yields at their
+              highest in a generation; government debt tracking toward 96% of GDP; a pound
+              that rose against the dollar while falling against the euro; debt service
+              costs tripled in five years. That picture is real, and genuinely
+              uncomfortable. It is also, as it turns out, the secondary story.
+            </p>
+            <p>
               QGI&apos;s currency-crisis model ranks the United Kingdom first of 157
               countries in 2026. The largest single driver of that ranking is not the gilt
               yield, not the current account deficit: it is judicial reform attempts. A
@@ -429,21 +437,12 @@ export default function UKCurrencyCrisisReportPage() {
               from a structurally similar contemporaneous case) both pairing currency
               crisis with acute institutional breakdown at the courts-executive boundary.
             </p>
-            <p>
-              The standard macro anxiety report on the UK runs as follows: a structural
-              current account deficit persisting for three decades; gilt yields at their
-              highest in a generation; government debt tracking toward 96% of GDP; a pound
-              that rose against the dollar while falling against the euro; debt service
-              costs tripled in five years. That picture is real and genuinely
-              uncomfortable. It is also, in QGI&apos;s framework, the secondary story: the
-              backdrop against which a lead institutional signal is being missed.
-            </p>
           </section>
 
           {/* ── The Model and Its Honest Limitations ── */}
           <section id="limitations">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              The Model and Its Honest Limitations
+              1. The Model and Its Honest Limitations
             </h2>
             <p>
               Before the analysis, the disclosure. QGI&apos;s currency-crisis model
@@ -473,7 +472,7 @@ export default function UKCurrencyCrisisReportPage() {
           {/* ── What Is Actually Driving the Score ── */}
           <section id="drivers">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              What Is Actually Driving the Score
+              2. What Is Actually Driving the Score
             </h2>
             <p>
               QGI&apos;s framework decomposes each country score into its contributing
@@ -514,7 +513,7 @@ export default function UKCurrencyCrisisReportPage() {
           {/* ── The Judicial Dimension ── */}
           <section id="judicial">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              The Judicial Dimension: What the Model Is Measuring
+              3. The Judicial Dimension: What the Model Is Measuring
             </h2>
             <p>
               The{" "}
@@ -618,7 +617,7 @@ export default function UKCurrencyCrisisReportPage() {
           {/* ── The Macroeconomic Layer ── */}
           <section id="macro">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              The Macroeconomic Layer: The Conventional Story Is Also Real
+              4. The Macroeconomic Layer: The Conventional Story Is Also Real
             </h2>
             <p>
               Stripping out the judicial signal, the remaining 65.5% of the QGI score is
@@ -705,7 +704,7 @@ export default function UKCurrencyCrisisReportPage() {
           {/* ── Black Wednesday ── */}
           <section id="black-wednesday">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              Black Wednesday: The Self-Rhyme
+              5. Black Wednesday: The Self-Rhyme
             </h2>
             <p>
               The nearest historical analogue in QGI&apos;s model is the{" "}
@@ -893,7 +892,7 @@ export default function UKCurrencyCrisisReportPage() {
           {/* ── What Is Different This Time ── */}
           <section id="differences">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              What Is Different This Time: How the Crisis Would Manifest
+              6. What Is Different This Time: How the Crisis Would Manifest
             </h2>
             <p>
               The self-rhyme is structural, not mechanical. There are important
@@ -972,7 +971,7 @@ export default function UKCurrencyCrisisReportPage() {
           {/* ── The Forward Call ── */}
           <section id="forward-call">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              The Forward Call
+              7. The Forward Call
             </h2>
             <p>QGI&apos;s framework requires a falsifiable forward statement.</p>
             <p>
@@ -1171,13 +1170,13 @@ export default function UKCurrencyCrisisReportPage() {
                 "[OBR, March 2026] Economic and Fiscal Outlook. Office for Budget Responsibility.",
                 '[Bank of England Insights, 2026] "What Were the Drivers of UK Long-Term Interest Rates in 2025?"',
                 '[Human Rights Watch, Nov 2023] "UK Supreme Court Finds UK-Rwanda Asylum Scheme Unlawful."',
-                '[OHCHR, March 2024] "UK-Rwanda Bill Threatens to Undermine Independence of Judiciary — UN Experts."',
+                '[OHCHR, March 2024] "UK-Rwanda Bill Threatens to Undermine Independence of Judiciary, UN Experts."',
                 '[International Bar Association, 2024] "Migration: UK Gov Plans to Overrule SC Rwanda Defeat."',
                 '[Public Law for Everyone, July 2025] "The Developing Domestic Debate About the ECHR."',
                 '[NIESR, 2026] "Could a Gilt Market Shock Derail the Economy in 2026?"',
                 '[Wikipedia] "Black Wednesday."',
                 '[Economics Observatory] "The Birth of Inflation Targeting: Why Did the ERM Crisis Happen?"',
-                '[John Major Archive, Oct 1990] "Mr Major\'s Exchange Rate Mechanism Statement — 15 October 1990."',
+                '[John Major Archive, Oct 1990] "Mr Major\'s Exchange Rate Mechanism Statement, 15 October 1990."',
                 '[Economics Help] "UK in ERM 1990–92"; "UK Recession of 1991–92"; "Lawson Boom of the Late 1980s."',
                 '[OMFIF, 2017] "Britain\'s Most Stupid Decision."',
                 '[IG UK] "Black Wednesday Explained."',
@@ -1189,7 +1188,7 @@ export default function UKCurrencyCrisisReportPage() {
                 '[Wikipedia] "R v Secretary of State for Foreign and Commonwealth Affairs, ex p Rees-Mogg."',
                 '[House of Lords, 1999] "Regina v Secretary of State for Transport ex parte Factortame."',
                 '[BIICL, 2026] "The Chisinau Declaration on the ECHR and Migration."',
-                '[Law Society] "Judicial Review Reform"; "Big Win for Rule of Law — Government Restores Judges\' Discretion."',
+                '[Law Society] "Judicial Review Reform"; "Big Win for Rule of Law, Government Restores Judges\' Discretion."',
               ].map((s, i) => (
                 <li key={i}>{s}</li>
               ))}
