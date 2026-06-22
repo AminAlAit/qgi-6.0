@@ -8,7 +8,7 @@ const TOC_ENTRIES = [
   { id: "lead-signals", label: "The Lead Signals" },
   { id: "self-analogue", label: "The 2011 Self-Analogue" },
   { id: "news-vs-structure", label: "News vs Structure" },
-  { id: "methodology-note", label: "Methodology" },
+  { id: "methodology-footnote", label: "Methodology" },
 ];
 
 export default function TocSidebar() {
