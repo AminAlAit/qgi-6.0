@@ -16,6 +16,7 @@ import {
   PanelLeft,
 } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Wordmark } from "@/components/brand/Wordmark";
 
 // Navigation items.
 // History:
@@ -437,40 +438,10 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
               <Link
                 href="/dashboard"
                 onClick={closeOnNavigate}
-                className="flex items-baseline gap-1.5 px-5 py-6 transition-colors hover:bg-[var(--qgi-surface-2)] min-w-0 flex-1 overflow-hidden"
+                className="flex items-center px-5 py-6 transition-colors hover:bg-[var(--qgi-surface-2)] min-w-0 flex-1 overflow-hidden"
                 title="Go to Briefing (command center)"
               >
-                <span
-                  style={{
-                    fontSize: "26px",
-                    lineHeight: 1,
-                    letterSpacing: "0.04em",
-                    color: "var(--qgi-accent)",
-                    marginRight: "-0.05em",
-                    // 2026-05-28 (founder pick): Century Gothic Bold for the QG
-                    // wordmark, matching the Gemini infographics. Fallback chain:
-                    // Century Gothic (Windows), URW Gothic (Linux), Avant Garde /
-                    // Geometric Sans (macOS), Sora (prev web brand), generic sans.
-                    fontFamily:
-                      "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
-                    fontWeight: 700,
-                    flexShrink: 0,
-                  }}
-                >
-                  QG
-                </span>
-                <span
-                  className="uppercase"
-                  style={{
-                    fontSize: "12px",
-                    letterSpacing: "0.2em",
-                    color: "var(--qgi-text-muted)",
-                    fontWeight: 500,
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  Intelligence
-                </span>
+                <Wordmark variant="nav" />
               </Link>
 
               {/* Desktop-only collapse toggle (expanded state). Hidden on mobile

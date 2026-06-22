@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Route } from "next";
 import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
+import { Wordmark } from "@/components/brand/Wordmark";
 
 /**
  * Foreign Intervention recipe graduation — first ML-validated QGI recipe.
@@ -159,20 +160,7 @@ export default function ForeignInterventionGraduationPage() {
         }}
       >
         <div className="mx-auto max-w-4xl flex items-center justify-between px-6 py-4">
-          <Link href={"/" as Route} className="flex items-baseline gap-1" title="Home">
-            <span
-              className="font-data text-sm tracking-[0.25em] font-semibold"
-              style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
-            >
-              QG
-            </span>
-            <span
-              className="text-[11px] tracking-widest uppercase"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Intelligence
-            </span>
-          </Link>
+          <Wordmark variant="nav" href={"/" as Route} title="Home" />
           <Link
             href={"/blog" as Route}
             className="text-xs tracking-wider uppercase"
