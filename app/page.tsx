@@ -11,6 +11,7 @@ import { PublicNav } from "@/components/PublicNav";
 import { PublicFooter } from "@/components/PublicFooter";
 import { SkipLink } from "@/components/SkipLink";
 import { RotatingWordmark } from "@/components/landing-v2/RotatingWordmark";
+import { Wordmark } from "@/components/brand/Wordmark";
 import { ClosestMatches } from "@/components/dashboard-v4-1/ClosestMatches";
 import { buildClosestMatches } from "@/lib/te-mock/dashboard-v4-1-data";
 import NewsletterForm from "@/components/NewsletterForm";
@@ -62,25 +63,7 @@ export default async function HomePage() {
         }}
       >
         <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
-          <Link href={"/" as Route} className="flex items-baseline gap-1.5" title="Home">
-            <span
-              className="text-[26px] leading-none tracking-[0.04em] font-bold"
-              style={{
-                color: "var(--qgi-accent)",
-                marginRight: "-0.05em",
-                fontFamily:
-                  "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
-              }}
-            >
-              QG
-            </span>
-            <span
-              className="text-[13px] tracking-widest uppercase"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Intelligence
-            </span>
-          </Link>
+          <Wordmark variant="nav" href={"/" as Route} title="Home" />
           <PublicNav />
         </div>
       </header>
