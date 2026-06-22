@@ -398,6 +398,14 @@ export default function UKCurrencyCrisisReportPage() {
           {/* ── Introduction ── */}
           <section id="intro">
             <p>
+              The standard macro anxiety report on the UK runs as follows: a structural
+              current account deficit persisting for three decades; gilt yields at their
+              highest in a generation; government debt tracking toward 96% of GDP; a pound
+              that rose against the dollar while falling against the euro; debt service
+              costs tripled in five years. That picture is real, and genuinely
+              uncomfortable. It is also, as it turns out, the secondary story.
+            </p>
+            <p>
               QGI&apos;s currency-crisis model ranks the United Kingdom first of 157
               countries in 2026. The largest single driver of that ranking is not the gilt
               yield, not the current account deficit: it is judicial reform attempts. A
@@ -429,21 +437,12 @@ export default function UKCurrencyCrisisReportPage() {
               from a structurally similar contemporaneous case) both pairing currency
               crisis with acute institutional breakdown at the courts-executive boundary.
             </p>
-            <p>
-              The standard macro anxiety report on the UK runs as follows: a structural
-              current account deficit persisting for three decades; gilt yields at their
-              highest in a generation; government debt tracking toward 96% of GDP; a pound
-              that rose against the dollar while falling against the euro; debt service
-              costs tripled in five years. That picture is real and genuinely
-              uncomfortable. It is also, in QGI&apos;s framework, the secondary story: the
-              backdrop against which a lead institutional signal is being missed.
-            </p>
           </section>
 
           {/* ── The Model and Its Honest Limitations ── */}
           <section id="limitations">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              The Model and Its Honest Limitations
+              1. The Model and Its Honest Limitations
             </h2>
             <p>
               Before the analysis, the disclosure. QGI&apos;s currency-crisis model
@@ -473,7 +472,7 @@ export default function UKCurrencyCrisisReportPage() {
           {/* ── What Is Actually Driving the Score ── */}
           <section id="drivers">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              What Is Actually Driving the Score
+              2. What Is Actually Driving the Score
             </h2>
             <p>
               QGI&apos;s framework decomposes each country score into its contributing
@@ -514,7 +513,7 @@ export default function UKCurrencyCrisisReportPage() {
           {/* ── The Judicial Dimension ── */}
           <section id="judicial">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              The Judicial Dimension: What the Model Is Measuring
+              3. The Judicial Dimension: What the Model Is Measuring
             </h2>
             <p>
               The{" "}
@@ -618,7 +617,7 @@ export default function UKCurrencyCrisisReportPage() {
           {/* ── The Macroeconomic Layer ── */}
           <section id="macro">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              The Macroeconomic Layer: The Conventional Story Is Also Real
+              4. The Macroeconomic Layer: The Conventional Story Is Also Real
             </h2>
             <p>
               Stripping out the judicial signal, the remaining 65.5% of the QGI score is
@@ -705,7 +704,7 @@ export default function UKCurrencyCrisisReportPage() {
           {/* ── Black Wednesday ── */}
           <section id="black-wednesday">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              Black Wednesday: The Self-Rhyme
+              5. Black Wednesday: The Self-Rhyme
             </h2>
             <p>
               The nearest historical analogue in QGI&apos;s model is the{" "}
@@ -893,7 +892,7 @@ export default function UKCurrencyCrisisReportPage() {
           {/* ── What Is Different This Time ── */}
           <section id="differences">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              What Is Different This Time: How the Crisis Would Manifest
+              6. What Is Different This Time: How the Crisis Would Manifest
             </h2>
             <p>
               The self-rhyme is structural, not mechanical. There are important
@@ -972,7 +971,7 @@ export default function UKCurrencyCrisisReportPage() {
           {/* ── The Forward Call ── */}
           <section id="forward-call">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              The Forward Call
+              7. The Forward Call
             </h2>
             <p>QGI&apos;s framework requires a falsifiable forward statement.</p>
             <p>
