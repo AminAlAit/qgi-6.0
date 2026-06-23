@@ -153,13 +153,13 @@ module "recipe_fleet" {
   data_lake_bucket_name = module.storage.bucket_name
   data_lake_bucket_arn  = module.storage.bucket_arn
 
-  # fleet-run-2 (2026-06-01, Path A): fresh S3 prefixes so run-2 walks into a clean
-  # namespace. The walk's resume guard skips any recipe with an existing
-  # greedy-result.json, so pointing at run-2 prefixes keeps run-1's ml-results/ +
-  # ml-checkpoints/ UNTOUCHED and stops any recipe from being wrongly skipped. The
-  # cloud bake reads the same prefix, so run-2's bake reads run-2's walk outputs.
-  ml_results_prefix     = "ml-results-run2/"
-  ml_checkpoints_prefix = "ml-checkpoints-run2/"
+  # fleet-run-3 (2026-06-01): FRESH prefixes again. run-2's walk data (in ml-results-run2/)
+  # was produced by a stale image lacking #136/#137/#141, so it's a write-off; run-3 re-walks
+  # on the pinned image into a clean namespace. The resume guard skips any recipe with an
+  # existing greedy-result.json, so a NEW prefix is required or all 44 would be skipped. The
+  # cloud bake reads the same prefix (--ml-results-prefix var.ml_results_prefix).
+  ml_results_prefix     = "ml-results-run3/"
+  ml_checkpoints_prefix = "ml-checkpoints-run3/"
 
   # IMAGE PERMA-FIX (2026-06-01): pin to a SPECIFIC build tag (the module resolves it to an
   # immutable digest), never ':latest'. This is the build carrying the #136/#137/#141
