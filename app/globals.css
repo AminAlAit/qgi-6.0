@@ -10,6 +10,12 @@
   color-scheme: dark;
   /* Surfaces */
   --qgi-bg: #0f1923; /* page background — deep navy-black */
+  --qgi-bg-translucent: rgba(
+    15,
+    25,
+    35,
+    0.85
+  ); /* --qgi-bg (#0f1923 = rgb 15,25,35) at 85% — the sticky-header backdrop. Theme-aware: see :root.light. */
   --qgi-surface: #162032; /* card / panel background */
   --qgi-surface-2: #1e2d42; /* elevated surface (hover, selected) */
   --qgi-border: #243347; /* subtle borders */
@@ -80,6 +86,12 @@
   color-scheme: light;
   /* Surfaces */
   --qgi-bg: #f8fafc; /* slate-50 */
+  --qgi-bg-translucent: rgba(
+    248,
+    250,
+    252,
+    0.85
+  ); /* --qgi-bg (slate-50 = rgb 248,250,252) at 85% — sticky-header backdrop in light mode */
   --qgi-surface: #ffffff;
   --qgi-surface-2: #f1f5f9; /* slate-100 */
   --qgi-border: #cbd5e1; /* slate-300 */
