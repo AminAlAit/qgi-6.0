@@ -16,7 +16,7 @@ terraform {
   }
 }
 
-# All resources deploy into the qgi-staging account.
+# All resources deploy into the qgi-qa account.
 #
 # #96: assume_role is now toggleable via var.use_cross_account_assume_role.
 # Default (false) = caller credentials are used directly. Set to true when

@@ -1,11 +1,11 @@
 variable "environment" {
   type    = string
-  default = "staging"
+  default = "qa"
 }
 
 variable "aws_account_id" {
   type        = string
-  description = "qgi-staging account ID"
+  description = "qgi-qa account ID"
 }
 
 variable "management_account_id" {
