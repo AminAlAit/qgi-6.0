@@ -48,3 +48,15 @@ variable "tags" {
   type    = map(string)
   default = {}
 }
+
+# ---------------------------------------------------------------------------
+# enable_cascade: gates the Phase B SCDI compute environment, job queue,
+# scdi-finder job definition, and related log groups.
+#   true  (default) = full staging behaviour — ZERO plan diff on staging.
+#   false           = Cascade/SCDI Batch resources not created (QA env).
+# ---------------------------------------------------------------------------
+variable "enable_cascade" {
+  type        = bool
+  default     = true
+  description = "When false, the Phase B SCDI Batch CE/queue/jobdef are skipped. Default true preserves existing staging behaviour."
+}

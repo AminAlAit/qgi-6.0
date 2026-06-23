@@ -23,3 +23,14 @@ variable "tags" {
   type    = map(string)
   default = {}
 }
+
+# ---------------------------------------------------------------------------
+# enable_cascade: gates the entire Cascade/SCDI/ML1 stack.
+#   true  (default) = full staging behaviour — ZERO plan diff on staging.
+#   false           = Cascade/SCDI resources not created (QA env).
+# ---------------------------------------------------------------------------
+variable "enable_cascade" {
+  type        = bool
+  default     = true
+  description = "When false, all Cascade/SCDI/ML1 SQS queues and Glue tables are skipped. Default true preserves existing staging behaviour."
+}

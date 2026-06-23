@@ -11,22 +11,30 @@ output "queue_a_main_arn" { value = aws_sqs_queue.a_main.arn }
 output "queue_a_dlq_url" { value = aws_sqs_queue.a_dlq.url }
 output "queue_a_dlq_arn" { value = aws_sqs_queue.a_dlq.arn }
 
-output "queue_b_main_url" { value = aws_sqs_queue.b_main.url }
-output "queue_b_main_arn" { value = aws_sqs_queue.b_main.arn }
-output "queue_b_dlq_url" { value = aws_sqs_queue.b_dlq.url }
-output "queue_b_dlq_arn" { value = aws_sqs_queue.b_dlq.arn }
+# Cascade/SCDI-exclusive queues — empty string when enable_cascade = false.
+# Pipeline module variables for B/C queue urls/arns have default = "" so
+# environments can omit these when enable_cascade = false.
+output "queue_b_main_url" { value = one(aws_sqs_queue.b_main[*].url) != null ? one(aws_sqs_queue.b_main[*].url) : "" }
+output "queue_b_main_arn" { value = one(aws_sqs_queue.b_main[*].arn) != null ? one(aws_sqs_queue.b_main[*].arn) : "" }
+output "queue_b_dlq_url" { value = one(aws_sqs_queue.b_dlq[*].url) != null ? one(aws_sqs_queue.b_dlq[*].url) : "" }
+output "queue_b_dlq_arn" { value = one(aws_sqs_queue.b_dlq[*].arn) != null ? one(aws_sqs_queue.b_dlq[*].arn) : "" }
 
-output "queue_c_main_url" { value = aws_sqs_queue.c_main.url }
-output "queue_c_main_arn" { value = aws_sqs_queue.c_main.arn }
-output "queue_c_dlq_url" { value = aws_sqs_queue.c_dlq.url }
-output "queue_c_dlq_arn" { value = aws_sqs_queue.c_dlq.arn }
+output "queue_c_main_url" { value = one(aws_sqs_queue.c_main[*].url) != null ? one(aws_sqs_queue.c_main[*].url) : "" }
+output "queue_c_main_arn" { value = one(aws_sqs_queue.c_main[*].arn) != null ? one(aws_sqs_queue.c_main[*].arn) : "" }
+output "queue_c_dlq_url" { value = one(aws_sqs_queue.c_dlq[*].url) != null ? one(aws_sqs_queue.c_dlq[*].url) : "" }
+output "queue_c_dlq_arn" { value = one(aws_sqs_queue.c_dlq[*].arn) != null ? one(aws_sqs_queue.c_dlq[*].arn) : "" }
 
+# all_queue_arns: always includes Phase A queues; Phase B/C queues are
+# included only when enable_cascade = true. The IAM module's
+# lambda_execution_role uses this for SQS permissions.
 output "all_queue_arns" {
-  value = [
-    aws_sqs_queue.a_main.arn, aws_sqs_queue.a_dlq.arn,
-    aws_sqs_queue.b_main.arn, aws_sqs_queue.b_dlq.arn,
-    aws_sqs_queue.c_main.arn, aws_sqs_queue.c_dlq.arn,
-  ]
+  value = concat(
+    [aws_sqs_queue.a_main.arn, aws_sqs_queue.a_dlq.arn],
+    aws_sqs_queue.b_main[*].arn,
+    aws_sqs_queue.b_dlq[*].arn,
+    aws_sqs_queue.c_main[*].arn,
+    aws_sqs_queue.c_dlq[*].arn,
+  )
 }
 
 output "indicator_table_name" { value = aws_dynamodb_table.indicator_updates.name }
