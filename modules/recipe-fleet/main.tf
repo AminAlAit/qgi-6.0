@@ -201,22 +201,25 @@ resource "aws_batch_compute_environment" "recipe_fleet_spot" {
 
     min_vcpus = 0
     # FLEET-9 / Condition F STRUCTURAL COST CAP (the real $100 enforcement): this ceiling
-    # bounds the worst-case burn — no Spot-retry storm can outrun it. INVARIANT any FLEET-4
-    # raise MUST preserve (PR #33 review: the retry_strategy attempts=2 DOUBLES the bound —
+    # bounds the worst-case burn — no Spot-retry storm can outrun it. INVARIANT any raise
+    # MUST preserve (PR #33 review: the retry_strategy attempts=2 DOUBLES the bound —
     # a job can run attempts × attempt_duration of billed vCPU; and the SFN 40h ceiling does
     # NOT terminate already-running Batch jobs, so it is not a billing bound):
     #   max_vcpus × attempts × attempt_duration_h × ~$0.05  ≤  $100
-    # FLEET-4 raised this 16→48 PAIRED with the attempt_duration cut 36h→18h below, keeping
-    # the invariant: 48 × 2 attempts × 18 h × $0.05 ≈ $86 (under $100). $0.05/vCPU-hr is a
-    # deliberately high (≈3×) Spot upper bound. The $100 DAILY budget (modules/storage
-    # fleet_daily_100) is the monitor on top. 48 also throttles concurrent fat jobs (16 vCPU
-    # each → ≤3 at once) regardless of the SFN MaxConcurrency.
-    # SPEED CRANK (2026-06-01): 48 -> 128, PAIRED with the attempt_duration cut 18h->6h
-    # below. Each job finishes in <3h, so 6h is safe headroom; the raise lets ~all ~19 jobs
-    # run concurrently (MaxConcurrency 5->20) -> ~16h wall-clock collapses to ~3-4h. The
-    # FLEET-9 invariant HOLDS: 128 x 2 attempts x 6 h x $0.05 = $77 worst-case (under $100,
-    # and LOWER than the old $86).
-    max_vcpus     = 128
+    # CHEAPEST-RESTING-STATE (2026-06-02): the 2026-06-01 speed-crank (48->128, paired with
+    # MaxConcurrency 5->20 + the 18h->6h timeout cut) was for a planned run-3 re-walk that is
+    # NO LONGER happening — run-2's walk data is salvageable, so the only remaining job is a
+    # single re-bake. This reverts PAST the FLEET-4 intermediate (the pre-crank baseline was
+    # 48, not 16) all the way back to the original sweet spot, because the founder wants the
+    # cheapest possible RESTING state, not the throughput-tuned fan-out config. 16 is the
+    # exact vCPU of one fat recipe (c7g.4xlarge), so a fat job is never stuck in RUNNABLE; with
+    # MaxConcurrency=2 below, fat jobs serialize (one at a time) — the cheapest, smallest-blast-
+    # radius shape. This is the founder-ratified quarterly sweet spot (max_vcpus=16 +
+    # MaxConcurrency=2 -> ~15-18h / ~$25 for ~44 recipes). FLEET-9 holds with huge margin:
+    # 16 × 2 attempts × 8 h × $0.05 = $12.80 worst-case. $0.05/vCPU-hr is a deliberately high
+    # (≈3×) Spot upper bound; the $100 DAILY budget (modules/storage fleet_daily_100) monitors
+    # on top.
+    max_vcpus     = 16
     desired_vcpus = 0  # scale-to-zero — nothing runs between fan-outs
 
     instance_role = var.ecs_instance_profile_arn
@@ -294,20 +297,20 @@ resource "aws_batch_job_definition" "recipe_fleet_walker" {
     # #931: reduced 3 -> 2. One reclaim retry is enough; a SECOND failure is almost
     # certainly a data/code issue, not a transient reclaim. attempts is the multiplier in
     # the FLEET-9 structural cost cap (max_vcpus × attempts × attempt_duration_h × rate):
-    # at 2 × 18 h it is the runaway-cost bound, since the SFN 40h ceiling does NOT kill a
+    # at 2 × 8 h it is the runaway-cost bound, since the SFN 40h ceiling does NOT kill a
     # running Batch job (see compute env max_vcpus note).
     attempts = 2
   }
 
   timeout {
-    # FLEET-4: cut 36h→18h. With #961 parallelization + #962 sizing the slowest job (1 fat
-    # recipe at 16 vCPU — elections was 21.8h SERIAL on a laptop → ~2-3h at 16 vCPU) finishes
-    # well under 18h, so this is comfortable headroom AND the per-recipe wall-time bound. The
-    # cut is what keeps the FLEET-9 cap holding at max_vcpus=48 (48 × 2 × 18 × $0.05 ≈ $86).
-    # SPEED CRANK (2026-06-01): 18h -> 6h. The slowest job (1 fat recipe at 16 vCPU, or a
-    # ~5-small batch) finishes in <3h, so 6h is comfortable headroom AND the cut is what lets
-    # max_vcpus rise to 128 while the FLEET-9 cap holds (128 x 2 x 6 x $0.05 = $77).
-    attempt_duration_seconds = 21600
+    # SAFETY net + per-attempt wall-time bound (NOT a normal-path cost lever — a 3h job costs
+    # 3h regardless of this ceiling; it only caps a HUNG job before the attempts=2 retry).
+    # The slowest real job (1 fat recipe at 16 vCPU — elections was 21.8h SERIAL on a laptop ->
+    # ~2-3h at 16 vCPU; or a ~5-recipe small batch run sequentially) finishes in <3h. 8h is a
+    # comfortable ~2.7x safety buffer over that (founder's "tiny extra buffer for safety",
+    # 2026-06-02) while staying far below a runaway burn. FLEET-9 cap holds with huge margin:
+    # max_vcpus=16 × 2 attempts × 8 h × $0.05 = $12.80.
+    attempt_duration_seconds = 28800
   }
 
   container_properties = jsonencode({
@@ -980,18 +983,20 @@ resource "aws_sfn_state_machine" "recipe_fleet" {
       # FLEET-4b: ItemsPath is "$.runnable_jobs" — the SIZED form from the manifest
       # (build_recipe_manifest #962). Each item = {recipe_ids, vcpu, tier, ...}; the caller
       # passes the manifest's runnable_jobs as the execution input (pre-filtered to N_pos>=60).
-      # MaxConcurrency (see the SPEED CRANK note on the Map state below): actual concurrency
-      # is hard-bounded by the compute env max_vcpus=128 (sum of the jobs' vCPUs), so it
-      # never exceeds the cost cap.
+      # MaxConcurrency (see the note on the Map state below): actual concurrency is also
+      # hard-bounded by the compute env max_vcpus=16 (sum of the jobs' vCPUs), so it never
+      # exceeds the cost cap.
       # -----------------------------------------------------------------
       "Fleet Fan-out" = {
         Type           = "Map"
         ItemsPath      = "$.runnable_jobs"
-        # SPEED CRANK (2026-06-01): 5 -> 20 so all ~19 jobs run in ONE wave instead of ~4
-        # (5-at-a-time was the 16h bottleneck, not the per-job time). Real concurrency is
-        # still hard-bounded by compute-env max_vcpus=128 (sum of the jobs' vCPUs), so this
-        # never exceeds the cost cap.
-        MaxConcurrency = 20
+        # CHEAPEST-RESTING-STATE (2026-06-02): reverted the 2026-06-01 speed-crank (5 -> 20)
+        # back to the design §2a / quarterly-sweet-spot value of 2. The run-3 re-walk that
+        # motivated the crank is NOT happening (run-2 is salvageable), so the cheapest, slowest,
+        # smallest-blast-radius shape is wanted: 2 jobs at a time serialize the fleet and pair
+        # with max_vcpus=16 (one fat job at a time). Real concurrency is also hard-bounded by
+        # compute-env max_vcpus=16 (sum of the jobs' vCPUs), so this never exceeds the cost cap.
+        MaxConcurrency = 2
         ItemProcessor = {
           ProcessorConfig = {
             Mode = "INLINE"
