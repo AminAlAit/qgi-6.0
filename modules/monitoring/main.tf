@@ -37,7 +37,40 @@ locals {
 # on the first bad run. PAGES via SNS.
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# V1.9.1 scoring-drift alarms (Cascade/SCDI-exclusive — gated by enable_cascade)
+# These alarms monitor recipe_engine_finalize outputs which only exist in a
+# Cascade-enabled environment.
+# ---------------------------------------------------------------------------
+# moved blocks for all 6 V1.9.1 alarms
+moved {
+  from = aws_cloudwatch_metric_alarm.high_country_count_low
+  to   = aws_cloudwatch_metric_alarm.high_country_count_low[0]
+}
+moved {
+  from = aws_cloudwatch_metric_alarm.high_country_count_high
+  to   = aws_cloudwatch_metric_alarm.high_country_count_high[0]
+}
+moved {
+  from = aws_cloudwatch_metric_alarm.median_salience_low
+  to   = aws_cloudwatch_metric_alarm.median_salience_low[0]
+}
+moved {
+  from = aws_cloudwatch_metric_alarm.median_salience_high
+  to   = aws_cloudwatch_metric_alarm.median_salience_high[0]
+}
+moved {
+  from = aws_cloudwatch_metric_alarm.country_risks_bytes_low
+  to   = aws_cloudwatch_metric_alarm.country_risks_bytes_low[0]
+}
+moved {
+  from = aws_cloudwatch_metric_alarm.country_risks_bytes_high
+  to   = aws_cloudwatch_metric_alarm.country_risks_bytes_high[0]
+}
+
 resource "aws_cloudwatch_metric_alarm" "high_country_count_low" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count               = var.enable_cascade ? 1 : 0
   alarm_name          = "qgi-v191-high-country-count-out-of-band-low"
   alarm_description   = "V1.9.1 HIGH_COUNTRY_COUNT dropped below 15 (target band [25,45], guardrail [15,60]). Indicates scoring collapse or upstream data loss."
   namespace           = local.namespace
@@ -55,6 +88,8 @@ resource "aws_cloudwatch_metric_alarm" "high_country_count_low" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "high_country_count_high" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count               = var.enable_cascade ? 1 : 0
   alarm_name          = "qgi-v191-high-country-count-out-of-band-high"
   alarm_description   = "V1.9.1 HIGH_COUNTRY_COUNT exceeded 60 (target band [25,45], guardrail [15,60]). Indicates score inflation or threshold drift."
   namespace           = local.namespace
@@ -81,6 +116,8 @@ resource "aws_cloudwatch_metric_alarm" "high_country_count_high" {
 # ---------------------------------------------------------------------------
 
 resource "aws_cloudwatch_metric_alarm" "median_salience_low" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count               = var.enable_cascade ? 1 : 0
   alarm_name          = "qgi-v191-median-salience-out-of-band-low"
   alarm_description   = "V1.9.1 MEDIAN_SALIENCE_SCORE below 0.2 for two consecutive runs. Likely score compression or scoring bug."
   namespace           = local.namespace
@@ -98,6 +135,8 @@ resource "aws_cloudwatch_metric_alarm" "median_salience_low" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "median_salience_high" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count               = var.enable_cascade ? 1 : 0
   alarm_name          = "qgi-v191-median-salience-out-of-band-high"
   alarm_description   = "V1.9.1 MEDIAN_SALIENCE_SCORE above 1.5 for two consecutive runs. Likely score inflation or upstream-signal break."
   namespace           = local.namespace
@@ -123,6 +162,8 @@ resource "aws_cloudwatch_metric_alarm" "median_salience_high" {
 # ---------------------------------------------------------------------------
 
 resource "aws_cloudwatch_metric_alarm" "country_risks_bytes_low" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count               = var.enable_cascade ? 1 : 0
   alarm_name          = "qgi-v191-country-risks-bytes-out-of-band-low"
   alarm_description   = "V1.9.1 COUNTRY_RISKS_BYTES dropped below 200 KB. Likely schema break or empty payload. ALARM-ONLY (no page)."
   namespace           = local.namespace
@@ -140,6 +181,8 @@ resource "aws_cloudwatch_metric_alarm" "country_risks_bytes_low" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "country_risks_bytes_high" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count               = var.enable_cascade ? 1 : 0
   alarm_name          = "qgi-v191-country-risks-bytes-out-of-band-high"
   alarm_description   = "V1.9.1 COUNTRY_RISKS_BYTES exceeded 2 MB. Likely runaway payload or serialization regression. ALARM-ONLY (no page)."
   namespace           = local.namespace
@@ -217,8 +260,37 @@ locals {
   }
 }
 
-resource "aws_cloudwatch_metric_alarm" "caught_exception" {
-  for_each = local.caught_exception_targets
+# ---------------------------------------------------------------------------
+# Caught-exception alarms for recipe_engine_finalize
+# (Cascade/SCDI-exclusive — gated by enable_cascade)
+# ---------------------------------------------------------------------------
+# moved blocks for all 5 caught_exception alarms (for_each keys)
+moved {
+  from = aws_cloudwatch_metric_alarm.caught_exception["finalize-convergence"]
+  to   = aws_cloudwatch_metric_alarm.caught_exception_cascade["finalize-convergence"]
+}
+moved {
+  from = aws_cloudwatch_metric_alarm.caught_exception["finalize-dashboard"]
+  to   = aws_cloudwatch_metric_alarm.caught_exception_cascade["finalize-dashboard"]
+}
+moved {
+  from = aws_cloudwatch_metric_alarm.caught_exception["finalize-country-risks"]
+  to   = aws_cloudwatch_metric_alarm.caught_exception_cascade["finalize-country-risks"]
+}
+moved {
+  from = aws_cloudwatch_metric_alarm.caught_exception["finalize-recipes-aggregated"]
+  to   = aws_cloudwatch_metric_alarm.caught_exception_cascade["finalize-recipes-aggregated"]
+}
+moved {
+  from = aws_cloudwatch_metric_alarm.caught_exception["finalize-country-recipe-scores"]
+  to   = aws_cloudwatch_metric_alarm.caught_exception_cascade["finalize-country-recipe-scores"]
+}
+
+resource "aws_cloudwatch_metric_alarm" "caught_exception_cascade" {
+  # Cascade/SCDI-exclusive: all caught_exception targets are on
+  # recipe_engine_finalize, which only runs in Cascade environments.
+  # Omitted when enable_cascade = false.
+  for_each = var.enable_cascade ? local.caught_exception_targets : {}
 
   alarm_name        = "qgi-caught-exception-${each.key}"
   alarm_description = "Lambda ${each.value.lambda} caught-and-continued an exception at Location=${each.value.location} (#409). Driven by 2026-04-22 silent-failure incident (country-risks.json silently stopped regenerating for 2 days). Single-event paging so the same class cannot recur — triage via CloudWatch Logs Insights on the affected Lambda for [EXCEPTION] lines."

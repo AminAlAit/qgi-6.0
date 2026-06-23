@@ -43,25 +43,53 @@ variable "eventbridge_scheduler_role_arn" {
   type = string
 }
 
+# Cascade/SCDI-exclusive — default "" so QA env can omit when enable_cascade=false.
 variable "batch_job_queue_arn" {
-  type = string
+  type        = string
+  default     = ""
+  description = "Batch job queue ARN for ops-batch-checker (Phase B SCDI queue). Empty string when enable_cascade = false."
 }
 
 variable "batch_job_definition_arn" {
-  type = string
+  type        = string
+  default     = ""
+  description = "Batch job definition ARN for the scdi-finder job. Empty string when enable_cascade = false."
 }
 
 # SQS queue URLs and ARNs
 variable "queue_a_main_url" { type = string }
 variable "queue_a_main_arn" { type = string }
 variable "queue_a_dlq_url" { type = string }
-variable "queue_b_main_url" { type = string }
-variable "queue_b_main_arn" { type = string }
-variable "queue_b_dlq_url" { type = string }
-variable "queue_c_main_url" { type = string }
-variable "queue_c_main_arn" { type = string }
-variable "queue_c_dlq_url" { type = string }
-variable "queue_c_dlq_arn" { type = string }
+# Cascade/SCDI-exclusive — default "" so QA env can omit when enable_cascade=false.
+variable "queue_b_main_url" {
+  type    = string
+  default = ""
+}
+variable "queue_b_main_arn" {
+  type    = string
+  default = ""
+}
+variable "queue_b_dlq_url" {
+  type    = string
+  default = ""
+}
+# Cascade/SCDI-exclusive — default "" so QA env can omit when enable_cascade=false.
+variable "queue_c_main_url" {
+  type    = string
+  default = ""
+}
+variable "queue_c_main_arn" {
+  type    = string
+  default = ""
+}
+variable "queue_c_dlq_url" {
+  type    = string
+  default = ""
+}
+variable "queue_c_dlq_arn" {
+  type    = string
+  default = ""
+}
 
 variable "completion_table_name" {
   type        = string
@@ -161,3 +189,16 @@ variable "ops_email_address" {
   default     = "contact@qgintelligence.com"
   description = "SNS subscription email for V-Dem ingest pipeline notifications. Founder direction (2026-04-27): contact@qgintelligence.com is the ops inbox; not aminalait.de@gmail.com (personal)."
 }
+
+# ---------------------------------------------------------------------------
+# enable_cascade: gates all Cascade/SCDI/ML1 Lambdas, event source mappings,
+# and the Main cascade Step Function.
+#   true  (default) = full staging behaviour — ZERO plan diff on staging.
+#   false           = Cascade/SCDI pipeline resources not created (QA env).
+# ---------------------------------------------------------------------------
+variable "enable_cascade" {
+  type        = bool
+  default     = true
+  description = "When false, all Cascade/SCDI/ML1 Lambdas, SQS ESMs, and the Main cascade SFN are skipped. Default true preserves existing staging behaviour."
+}
+

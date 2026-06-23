@@ -19,14 +19,22 @@ data "aws_security_group" "default" {
 }
 
 # ---------------------------------------------------------------------------
-# Batch compute environment
+# Batch compute environment (Cascade/SCDI-exclusive — gated by enable_cascade)
 # Right-sized: jobs need 2 vCPU / 4 GB.
 # Spot with multiple Graviton instance types for best availability + price.
 # m6g.large (~$0.034/hr), c7g.large (~$0.043/hr), m7g.large (~$0.045/hr)
 # All verified available in eu-central-1 a/b/c.
 # maxvCpus=512 for good concurrency. Spot is cheaper but slower to allocate.
 # ---------------------------------------------------------------------------
+# moved block: aws_batch_compute_environment.scdi_spot -> scdi_spot[0]
+moved {
+  from = aws_batch_compute_environment.scdi_spot
+  to   = aws_batch_compute_environment.scdi_spot[0]
+}
+
 resource "aws_batch_compute_environment" "scdi_spot" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count                    = var.enable_cascade ? 1 : 0
   compute_environment_name = "qgi-pipeline-b-spot-environment"
   type                     = "MANAGED"
   state                    = "ENABLED"
@@ -56,35 +64,57 @@ resource "aws_batch_compute_environment" "scdi_spot" {
 }
 
 # ---------------------------------------------------------------------------
-# Batch job queue
+# Batch job queue (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved block: aws_batch_job_queue.scdi -> scdi[0]
+moved {
+  from = aws_batch_job_queue.scdi
+  to   = aws_batch_job_queue.scdi[0]
+}
+
 resource "aws_batch_job_queue" "scdi" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count    = var.enable_cascade ? 1 : 0
   name     = "qgi-pipeline-b-high-priority-queue"
   state    = "ENABLED"
   priority = 100
 
   compute_environment_order {
     order               = 1
-    compute_environment = aws_batch_compute_environment.scdi_spot.arn
+    compute_environment = aws_batch_compute_environment.scdi_spot[0].arn
   }
 
   tags = var.tags
 }
 
 # ---------------------------------------------------------------------------
-# CloudWatch log group for Batch job logs
+# CloudWatch log group for Batch job logs (Cascade/SCDI-exclusive — gated by enable_cascade)
 # Must exist before the first job runs; awslogs driver will fail otherwise.
 # ---------------------------------------------------------------------------
+# moved block: aws_cloudwatch_log_group.scdi_finder -> scdi_finder[0]
+moved {
+  from = aws_cloudwatch_log_group.scdi_finder
+  to   = aws_cloudwatch_log_group.scdi_finder[0]
+}
+
 resource "aws_cloudwatch_log_group" "scdi_finder" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count             = var.enable_cascade ? 1 : 0
   name              = "/aws/batch/qgi-scdi-finder"
   retention_in_days = 30
   tags              = var.tags
 }
 
-# Phase 5 v0.0b Stage D: log group for dscdi-finder Batch job. Created at
-# Stage D so it exists before the first DSCDI Batch job submission at
-# Stage F (deferred to end-of-cascade-mandate test-run authorization).
+# Phase 5 v0.0b Stage D: log group for dscdi-finder Batch job (Cascade/SCDI-exclusive — gated by enable_cascade).
+# moved block: aws_cloudwatch_log_group.dscdi_finder -> dscdi_finder[0]
+moved {
+  from = aws_cloudwatch_log_group.dscdi_finder
+  to   = aws_cloudwatch_log_group.dscdi_finder[0]
+}
+
 resource "aws_cloudwatch_log_group" "dscdi_finder" {
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count             = var.enable_cascade ? 1 : 0
   name              = "/aws/batch/qgi-dscdi-finder"
   retention_in_days = 30
   tags              = var.tags
@@ -361,13 +391,21 @@ resource "aws_batch_job_definition" "indicator_fetcher" {
 }
 
 # ---------------------------------------------------------------------------
-# Batch job definition — scdi-finder
+# Batch job definition — scdi-finder (Cascade/SCDI-exclusive — gated by enable_cascade)
 # Image lives in the management account ECR (shared registry).
 # Cross-account pull requires an ECR resource policy in the management
 # account — add to qgi-aws-tf Terraform (tracked in issue #8).
 # ---------------------------------------------------------------------------
+# moved block: aws_batch_job_definition.scdi_finder -> scdi_finder[0]
+moved {
+  from = aws_batch_job_definition.scdi_finder
+  to   = aws_batch_job_definition.scdi_finder[0]
+}
+
 resource "aws_batch_job_definition" "scdi_finder" {
-  name = "scdi-finder-job"
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count = var.enable_cascade ? 1 : 0
+  name  = "scdi-finder-job"
   type = "container"
 
   platform_capabilities = ["EC2"]
@@ -418,8 +456,13 @@ resource "aws_batch_job_definition" "scdi_finder" {
 }
 
 # ---------------------------------------------------------------------------
-# Batch job definition — dscdi-finder (Phase 5 v0.0b Stage D)
+# Batch job definition — dscdi-finder (Cascade/SCDI-exclusive — gated by enable_cascade)
 # ---------------------------------------------------------------------------
+# moved block: aws_batch_job_definition.dscdi_finder -> dscdi_finder[0]
+moved {
+  from = aws_batch_job_definition.dscdi_finder
+  to   = aws_batch_job_definition.dscdi_finder[0]
+}
 # DSCDI = Detrended Similar-Country Dynamic Indicator. Per the Phase 5 v0.0b
 # unanimous CSD reconvene DECISION 2026-05-05, this Batch job runs ALONGSIDE
 # scdi-finder (additive, not replacement). It uses the same indicator-panel
@@ -448,8 +491,10 @@ resource "aws_batch_job_definition" "scdi_finder" {
 #   - Stage C input spec: qgi-docs/internal/ops/cascade-track/phase-5-v0.0b-stage-c-input-spec.md
 #   - CSD reconvene DECISION: qgi-docs/internal/majles/in-progress/2026-05-05_Ihsa_phase5-v0-0b-csd-reconvene_DECISION.md
 resource "aws_batch_job_definition" "dscdi_finder" {
-  name = "dscdi-finder-job"
-  type = "container"
+  # Cascade/SCDI-exclusive. Omitted when enable_cascade = false.
+  count = var.enable_cascade ? 1 : 0
+  name  = "dscdi-finder-job"
+  type  = "container"
 
   platform_capabilities = ["EC2"]
 
