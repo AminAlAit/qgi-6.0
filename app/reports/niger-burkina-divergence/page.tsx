@@ -190,7 +190,7 @@ export default function NigerBurkinaDivergenceReportPage() {
         className="sticky top-0 z-50 border-b backdrop-blur-md print:hidden"
         style={{
           borderColor: "var(--qgi-border)",
-          backgroundColor: "rgba(15, 25, 35, 0.85)",
+          backgroundColor: "var(--qgi-bg-translucent)",
         }}
       >
         <div className="mx-auto max-w-4xl flex items-center justify-between px-6 py-4">
