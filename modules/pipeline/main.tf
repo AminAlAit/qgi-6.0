@@ -313,7 +313,7 @@ resource "aws_lambda_function" "a_reporter" {
       # ternary with [0]: Terraform does not reliably short-circuit conditional branches,
       # so aws_lambda_function.b_orchestrator[0] would error at plan when count = 0 (QA).
       # one(...[*].arn) -> arn when cascade on, null when off; coalesce makes that "".
-      PIPELINE_B_ARN = coalesce(one(aws_lambda_function.b_orchestrator[*].arn), "")
+      PIPELINE_B_ARN = try(aws_lambda_function.b_orchestrator[0].arn, "")
       # #FAR-1: tables read by the detailed email reporter
       TRACKER_TABLE = var.indicator_table_name
       COUNTER_TABLE = var.pipeline_a_counter_table_name
