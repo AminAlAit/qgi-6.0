@@ -1,7 +1,7 @@
 # Cascade SFN — "" (not null) when enable_cascade = false, so the iam module's
 # `var.state_machine_arn != ""` fallback (iam/main.tf) is taken in a TE-only env.
-output "state_machine_arn" { value = coalesce(one(aws_sfn_state_machine.pipeline[*].arn), "") }
-output "state_machine_name" { value = coalesce(one(aws_sfn_state_machine.pipeline[*].name), "") }
+output "state_machine_arn" { value = try(aws_sfn_state_machine.pipeline[0].arn, "") }
+output "state_machine_name" { value = try(aws_sfn_state_machine.pipeline[0].name, "") }
 output "fetch_state_machine_arn" { value = aws_sfn_state_machine.fetch_pipeline.arn }
 output "fetch_state_machine_name" { value = aws_sfn_state_machine.fetch_pipeline.name }
 
@@ -16,12 +16,12 @@ output "lambda_arns" {
     ops_dlq_scanner      = aws_lambda_function.ops_dlq_scanner.arn
     batch_job_terminator = aws_lambda_function.batch_job_terminator.arn
     # Cascade/SCDI-exclusive Lambdas — "" (not null) when enable_cascade = false
-    b_orchestrator    = coalesce(one(aws_lambda_function.b_orchestrator[*].arn), "")
-    b_dispatcher      = coalesce(one(aws_lambda_function.b_dispatcher[*].arn), "")
-    b_scdi_finder     = coalesce(one(aws_lambda_function.b_scdi_finder[*].arn), "")
-    ops_batch_checker = coalesce(one(aws_lambda_function.ops_batch_checker[*].arn), "")
-    c_dispatcher      = coalesce(one(aws_lambda_function.c_dispatcher[*].arn), "")
-    c_worker          = coalesce(one(aws_lambda_function.c_worker[*].arn), "")
-    c_dlq_inspector   = coalesce(one(aws_lambda_function.c_dlq_inspector[*].arn), "")
+    b_orchestrator    = try(aws_lambda_function.b_orchestrator[0].arn, "")
+    b_dispatcher      = try(aws_lambda_function.b_dispatcher[0].arn, "")
+    b_scdi_finder     = try(aws_lambda_function.b_scdi_finder[0].arn, "")
+    ops_batch_checker = try(aws_lambda_function.ops_batch_checker[0].arn, "")
+    c_dispatcher      = try(aws_lambda_function.c_dispatcher[0].arn, "")
+    c_worker          = try(aws_lambda_function.c_worker[0].arn, "")
+    c_dlq_inspector   = try(aws_lambda_function.c_dlq_inspector[0].arn, "")
   }
 }
