@@ -1,0 +1,1041 @@
+{
+  "schema_version": 1,
+  "generated": "2026-06-25",
+  "provider_blocks": {
+    "WB": [
+      1,
+      275
+    ],
+    "VDEM": [
+      276,
+      314
+    ],
+    "FAOSTAT": [
+      315,
+      399
+    ],
+    "UCDP": [
+      400,
+      449
+    ],
+    "UNHCR": [
+      450,
+      499
+    ],
+    "IDMC": [
+      500,
+      549
+    ],
+    "ILOSTAT": [
+      550,
+      699
+    ],
+    "UNDP": [
+      700,
+      749
+    ],
+    "OECD": [
+      750,
+      849
+    ],
+    "OWID": [
+      850,
+      899
+    ],
+    "VDEM_EXT": [
+      900,
+      1399
+    ],
+    "WB_EXT": [
+      1400,
+      2399
+    ],
+    "GDELT": [
+      9000,
+      9999
+    ]
+  },
+  "indicators": [
+    {
+      "indicator_id": "IL-01",
+      "provider": "ILOSTAT",
+      "numeric_id": 550,
+      "name": "Informality rate (% employment in informal economy)",
+      "status": "candidate",
+      "category": "Economic",
+      "description": "Informal economy share; no tax base / safety net; shocks hit informal workers first.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.ilo.org/rest/",
+        "coverage_countries": 130,
+        "start_year": 2000,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "IL-02",
+      "provider": "ILOSTAT",
+      "numeric_id": 551,
+      "name": "Labor income share of GDP (%)",
+      "status": "candidate",
+      "category": "Economic",
+      "description": "Share of GDP to workers vs capital; declining share -> inequality, polarization.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.ilo.org/rest/",
+        "coverage_countries": 180,
+        "start_year": 1990,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "IL-03",
+      "provider": "ILOSTAT",
+      "numeric_id": 552,
+      "name": "Mean real wage growth (annual %)",
+      "status": "candidate",
+      "category": "Economic",
+      "description": "Real wage trajectory; declining real wages precede strikes and unrest.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.ilo.org/rest/",
+        "coverage_countries": 100,
+        "start_year": 2000,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "IL-04",
+      "provider": "ILOSTAT",
+      "numeric_id": 553,
+      "name": "Working poverty rate (% employed below $2.15/day)",
+      "status": "candidate",
+      "category": "Social",
+      "description": "Employed but poor; precedes political violence in developing economies.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.ilo.org/rest/",
+        "coverage_countries": 140,
+        "start_year": 2000,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "IL-05",
+      "provider": "ILOSTAT",
+      "numeric_id": 554,
+      "name": "Unemployment by education (% tertiary-educated unemployed)",
+      "status": "candidate",
+      "category": "Social",
+      "description": "Educated unemployed: the Arab-Spring demographic.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.ilo.org/rest/",
+        "coverage_countries": 120,
+        "start_year": 2000,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "IL-06",
+      "provider": "ILOSTAT",
+      "numeric_id": 555,
+      "name": "Gender wage gap (female/male ratio)",
+      "status": "candidate",
+      "category": "Social",
+      "description": "Gender inequality regime signal; tracks social liberalization/backlash.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.ilo.org/rest/",
+        "coverage_countries": 100,
+        "start_year": 2000,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "IL-07",
+      "provider": "ILOSTAT",
+      "numeric_id": 556,
+      "name": "Excess hours worked (% working >48h/week)",
+      "status": "candidate",
+      "category": "Economic",
+      "description": "Hidden labor stress: underemployment / exploitation signal.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.ilo.org/rest/",
+        "coverage_countries": 110,
+        "start_year": 2000,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "IL-08",
+      "provider": "ILOSTAT",
+      "numeric_id": 557,
+      "name": "Social protection coverage (% pop with >=1 benefit)",
+      "status": "candidate",
+      "category": "Social",
+      "description": "Share with any safety net; low coverage + shock -> rapid poverty spike.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.ilo.org/rest/",
+        "coverage_countries": 170,
+        "start_year": 2000,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "IL-09",
+      "provider": "ILOSTAT",
+      "numeric_id": 558,
+      "name": "Social protection expenditure (% GDP)",
+      "status": "candidate",
+      "category": "Government",
+      "description": "Safety-net spending; decline signals austerity -> fiscal change/protests.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.ilo.org/rest/",
+        "coverage_countries": 150,
+        "start_year": 2000,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "IL-10",
+      "provider": "ILOSTAT",
+      "numeric_id": 559,
+      "name": "Long-term unemployment (12+ months, % labor force)",
+      "status": "candidate",
+      "category": "Economic",
+      "description": "Structural unemployment; precedes long-run instability/populism.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.ilo.org/rest/",
+        "coverage_countries": 120,
+        "start_year": 2000,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "IL-11",
+      "provider": "ILOSTAT",
+      "numeric_id": 560,
+      "name": "Youth NEET rate (% not in education/employment/training)",
+      "status": "candidate",
+      "category": "Social",
+      "description": "Most dangerous demographic for instability; Arab Spring signature.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.ilo.org/rest/",
+        "coverage_countries": 150,
+        "start_year": 2000,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "IL-12",
+      "provider": "ILOSTAT",
+      "numeric_id": 561,
+      "name": "Manufacturing employment share (%)",
+      "status": "candidate",
+      "category": "Economic",
+      "description": "Deindustrialization signal; rapid decline -> populist backlash.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.ilo.org/rest/",
+        "coverage_countries": 160,
+        "start_year": 1990,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "IL-13",
+      "provider": "ILOSTAT",
+      "numeric_id": 562,
+      "name": "Strikes and lockouts (days lost per 1000 workers)",
+      "status": "candidate",
+      "category": "Social",
+      "description": "Direct labor conflict; spikes precede political_violence. Patchy coverage.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.ilo.org/rest/",
+        "coverage_countries": 80,
+        "start_year": 1969,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UN-01",
+      "provider": "UNHCR",
+      "numeric_id": 450,
+      "name": "Refugees by country of origin (total)",
+      "status": "candidate",
+      "category": "Demographic",
+      "description": "People who fled this country; direct 'how bad inside' measure.",
+      "provider_meta": {
+        "api": "rest",
+        "endpoint": "api.unhcr.org/population/v1/",
+        "coverage_countries": 200,
+        "start_year": 1951,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UN-02",
+      "provider": "UNHCR",
+      "numeric_id": 451,
+      "name": "Refugees by country of asylum (total)",
+      "status": "candidate",
+      "category": "Demographic",
+      "description": "Refugees hosted; large influxes strain hosts and trigger secondary instability.",
+      "provider_meta": {
+        "api": "rest",
+        "endpoint": "api.unhcr.org/population/v1/",
+        "coverage_countries": 200,
+        "start_year": 1951,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UN-03",
+      "provider": "UNHCR",
+      "numeric_id": 452,
+      "name": "New asylum applications (by origin country)",
+      "status": "candidate",
+      "category": "Demographic",
+      "description": "Leading indicator; precedes recognized refugee counts by 6-24 months.",
+      "provider_meta": {
+        "api": "rest",
+        "endpoint": "api.unhcr.org/population/v1/",
+        "coverage_countries": 160,
+        "start_year": 2000,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UN-04",
+      "provider": "UNHCR",
+      "numeric_id": 453,
+      "name": "IDPs (internally displaced persons, total)",
+      "status": "candidate",
+      "category": "Demographic",
+      "description": "Displaced but inside; measures internal conflict severity.",
+      "provider_meta": {
+        "api": "rest",
+        "endpoint": "api.unhcr.org/population/v1/",
+        "coverage_countries": 80,
+        "start_year": 2000,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UN-05",
+      "provider": "UNHCR",
+      "numeric_id": 454,
+      "name": "Voluntary refugee returns (annual)",
+      "status": "candidate",
+      "category": "Demographic",
+      "description": "People going home; rising returns = post-conflict stabilization.",
+      "provider_meta": {
+        "api": "rest",
+        "endpoint": "api.unhcr.org/population/v1/",
+        "coverage_countries": 150,
+        "start_year": 1990,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UN-06",
+      "provider": "UNHCR",
+      "numeric_id": 455,
+      "name": "Stateless persons (total in country)",
+      "status": "candidate",
+      "category": "Governance",
+      "description": "No nationality; governance failure / ethnic discrimination signal.",
+      "provider_meta": {
+        "api": "rest",
+        "endpoint": "api.unhcr.org/population/v1/",
+        "coverage_countries": 80,
+        "start_year": 2004,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "ID-01",
+      "provider": "IDMC",
+      "numeric_id": 500,
+      "name": "New internal displacements by conflict (annual flow)",
+      "status": "candidate",
+      "category": "Demographic",
+      "description": "Newly displaced by conflict; flow = better early warning than stock.",
+      "provider_meta": {
+        "api": "rest",
+        "endpoint": "api.internal-displacement.org/",
+        "needs_api_key": true,
+        "coverage_countries": 150,
+        "start_year": 2008,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "ID-02",
+      "provider": "IDMC",
+      "numeric_id": 501,
+      "name": "New internal displacements by disaster (annual flow)",
+      "status": "candidate",
+      "category": "Demographic",
+      "description": "Disaster displacement; climate vulnerability signal.",
+      "provider_meta": {
+        "api": "rest",
+        "endpoint": "api.internal-displacement.org/",
+        "needs_api_key": true,
+        "coverage_countries": 180,
+        "start_year": 2008,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "ID-03",
+      "provider": "IDMC",
+      "numeric_id": 502,
+      "name": "IDP stock by conflict (end-of-year total)",
+      "status": "candidate",
+      "category": "Demographic",
+      "description": "Accumulated conflict displacement; chronic-conflict signal.",
+      "provider_meta": {
+        "api": "rest",
+        "endpoint": "api.internal-displacement.org/",
+        "needs_api_key": true,
+        "coverage_countries": 60,
+        "start_year": 2008,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UC-01",
+      "provider": "UCDP",
+      "numeric_id": 400,
+      "name": "Battle-related deaths (best estimate, annual)",
+      "status": "candidate",
+      "category": "Military",
+      "description": "Counted conflict fatalities; ground truth for civil_war.",
+      "provider_meta": {
+        "api": "rest",
+        "endpoint": "ucdpapi.pcr.uu.se/api/",
+        "country_codes": "gw",
+        "coverage_countries": 185,
+        "start_year": 1989,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UC-02",
+      "provider": "UCDP",
+      "numeric_id": 401,
+      "name": "Number of active conflicts (intrastate + interstate)",
+      "status": "candidate",
+      "category": "Military",
+      "description": "Simultaneous armed conflicts; multi-front wars differ qualitatively.",
+      "provider_meta": {
+        "api": "rest",
+        "endpoint": "ucdpapi.pcr.uu.se/api/",
+        "country_codes": "gw",
+        "coverage_countries": 185,
+        "start_year": 1946,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UC-03",
+      "provider": "UCDP",
+      "numeric_id": 402,
+      "name": "Conflict onset (binary: new conflict in country-year)",
+      "status": "candidate",
+      "category": "Military",
+      "description": "Fresh conflict start; doubles as an ML label for civil_war.",
+      "provider_meta": {
+        "api": "rest",
+        "endpoint": "ucdpapi.pcr.uu.se/api/",
+        "country_codes": "gw",
+        "coverage_countries": 185,
+        "start_year": 1946,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UC-04",
+      "provider": "UCDP",
+      "numeric_id": 403,
+      "name": "One-sided violence fatalities",
+      "status": "candidate",
+      "category": "Military",
+      "description": "Civilians targeted by state/rebels; precedes full civil_war by 1-2y.",
+      "provider_meta": {
+        "api": "rest",
+        "endpoint": "ucdpapi.pcr.uu.se/api/",
+        "country_codes": "gw",
+        "coverage_countries": 160,
+        "start_year": 1989,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UD-01",
+      "provider": "UNDP",
+      "numeric_id": 700,
+      "name": "Human Development Index (HDI, 0-1)",
+      "status": "candidate",
+      "category": "Social",
+      "description": "Health+education+income composite; stagnation signals frustration.",
+      "provider_meta": {
+        "api": "csv",
+        "source": "hdr.undp.org/data-center/",
+        "coverage_countries": 193,
+        "start_year": 1990,
+        "license": "CC BY 3.0 IGO"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UD-02",
+      "provider": "UNDP",
+      "numeric_id": 701,
+      "name": "Inequality-adjusted HDI (IHDI, 0-1)",
+      "status": "candidate",
+      "category": "Social",
+      "description": "HDI discounted for inequality; HDI-IHDI gap = concentrated development.",
+      "provider_meta": {
+        "api": "csv",
+        "source": "hdr.undp.org/data-center/",
+        "coverage_countries": 150,
+        "start_year": 2010,
+        "license": "CC BY 3.0 IGO"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UD-03",
+      "provider": "UNDP",
+      "numeric_id": 702,
+      "name": "Gender Inequality Index (GII, 0-1)",
+      "status": "candidate",
+      "category": "Social",
+      "description": "Reproductive health + empowerment + labor gaps; tracks authoritarianism.",
+      "provider_meta": {
+        "api": "csv",
+        "source": "hdr.undp.org/data-center/",
+        "coverage_countries": 170,
+        "start_year": 1995,
+        "license": "CC BY 3.0 IGO"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UD-04",
+      "provider": "UNDP",
+      "numeric_id": 703,
+      "name": "Multidimensional Poverty Index (MPI)",
+      "status": "candidate",
+      "category": "Social",
+      "description": "Non-monetary deprivation; high MPI + stress -> destabilization.",
+      "provider_meta": {
+        "api": "csv",
+        "source": "hdr.undp.org/data-center/",
+        "coverage_countries": 110,
+        "start_year": 2000,
+        "license": "CC BY 3.0 IGO"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UD-05",
+      "provider": "UNDP",
+      "numeric_id": 704,
+      "name": "Mean years of schooling",
+      "status": "candidate",
+      "category": "Education",
+      "description": "Human capital stock; low attainment + youth bulge = stagnation risk.",
+      "provider_meta": {
+        "api": "csv",
+        "source": "hdr.undp.org/data-center/",
+        "coverage_countries": 193,
+        "start_year": 1990,
+        "license": "CC BY 3.0 IGO"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UD-06",
+      "provider": "UNDP",
+      "numeric_id": 705,
+      "name": "Expected years of schooling",
+      "status": "candidate",
+      "category": "Education",
+      "description": "Forward-looking schooling; rapid change signals education policy shifts.",
+      "provider_meta": {
+        "api": "csv",
+        "source": "hdr.undp.org/data-center/",
+        "coverage_countries": 193,
+        "start_year": 1990,
+        "license": "CC BY 3.0 IGO"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UD-07",
+      "provider": "UNDP",
+      "numeric_id": 706,
+      "name": "Gender Development Index (GDI = female HDI / male HDI)",
+      "status": "candidate",
+      "category": "Social",
+      "description": "Gender gap in development; low GDI = institutional rigidity.",
+      "provider_meta": {
+        "api": "csv",
+        "source": "hdr.undp.org/data-center/",
+        "coverage_countries": 170,
+        "start_year": 1995,
+        "license": "CC BY 3.0 IGO"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "OE-01",
+      "provider": "OECD",
+      "numeric_id": 750,
+      "name": "Composite Leading Indicators (CLI)",
+      "status": "candidate",
+      "category": "Economic",
+      "description": "Predicts GDP turning points 6-9 months ahead; best OECD early warning.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.oecd.org/public/rest/",
+        "freq": "monthly",
+        "coverage_countries": 50,
+        "start_year": 1960,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "OE-02",
+      "provider": "OECD",
+      "numeric_id": 751,
+      "name": "Consumer Confidence Index (CCI)",
+      "status": "candidate",
+      "category": "Economic",
+      "description": "Citizen economic mood; sharp declines precede contractions.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.oecd.org/public/rest/",
+        "freq": "quarterly",
+        "coverage_countries": 38,
+        "start_year": 1960,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "OE-03",
+      "provider": "OECD",
+      "numeric_id": 752,
+      "name": "Business Confidence Index (BCI)",
+      "status": "candidate",
+      "category": "Economic",
+      "description": "Business investment intent; collapse precedes contraction/election loss.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.oecd.org/public/rest/",
+        "freq": "quarterly",
+        "coverage_countries": 38,
+        "start_year": 1960,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "OE-04",
+      "provider": "OECD",
+      "numeric_id": 753,
+      "name": "Total social spending (% GDP, SOCX)",
+      "status": "candidate",
+      "category": "Government",
+      "description": "Welfare-state generosity; tracks polarization patterns.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.oecd.org/public/rest/",
+        "freq": "annual",
+        "coverage_countries": 38,
+        "start_year": 1980,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "OE-05",
+      "provider": "OECD",
+      "numeric_id": 754,
+      "name": "Gini (disposable income, annual)",
+      "status": "candidate",
+      "category": "Social",
+      "description": "Annual Gini where WB Gini has 5-7y gaps; fills a rich-country hole.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.oecd.org/public/rest/",
+        "freq": "annual",
+        "coverage_countries": 38,
+        "start_year": 1985,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "OE-06",
+      "provider": "OECD",
+      "numeric_id": 755,
+      "name": "Tax revenue (% GDP)",
+      "status": "candidate",
+      "category": "Finance",
+      "description": "Tax-collection capacity = governance capacity; drops signal decay.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.oecd.org/public/rest/",
+        "freq": "annual",
+        "coverage_countries": 80,
+        "start_year": 1965,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "OE-07",
+      "provider": "OECD",
+      "numeric_id": 756,
+      "name": "Total Factor Productivity growth (annual %)",
+      "status": "candidate",
+      "category": "Economic",
+      "description": "Productivity growth; TFP stagnation precedes economic_crisis.",
+      "provider_meta": {
+        "api": "sdmx",
+        "base_url": "sdmx.oecd.org/public/rest/",
+        "freq": "quarterly",
+        "coverage_countries": 38,
+        "start_year": 1985,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "OW-01",
+      "provider": "OWID",
+      "numeric_id": 850,
+      "name": "Polity V score (-10 to +10)",
+      "status": "candidate",
+      "category": "Governance",
+      "description": "Autocracy-democracy scale; Polity-vs-VDem divergence is informative. Static after 2018.",
+      "provider_meta": {
+        "api": "csv",
+        "url": "github.com/owid/owid-datasets",
+        "coverage_countries": 167,
+        "start_year": 1800,
+        "end_year": 2018,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "OW-04",
+      "provider": "OWID",
+      "numeric_id": 851,
+      "name": "CO2 emissions growth rate (annual %, GCP)",
+      "status": "candidate",
+      "category": "Environment",
+      "description": "Rate of change of emissions; boom/contraction signal (WB has level).",
+      "provider_meta": {
+        "api": "csv",
+        "url": "github.com/owid/owid-datasets",
+        "coverage_countries": 200,
+        "start_year": 1850,
+        "license": "CC BY 4.0"
+      },
+      "lifecycle": {
+        "added": "2026-06-25",
+        "vetted": null,
+        "activated": null,
+        "reason": null
+      },
+      "vet": null
+    }
+  ]
+}
