@@ -1,12 +1,12 @@
-name: Validate Events
+name: Validate
 
 on:
   push:
     branches: [main]
-    paths: ['events/**']
+    paths: ['events/**', 'registries/**']
   pull_request:
     branches: [main]
-    paths: ['events/**']
+    paths: ['events/**', 'registries/**']
 
 jobs:
   validate:
@@ -18,3 +18,5 @@ jobs:
           python-version: '3.13'
       - name: Validate event JSON files
         run: python scripts/validate_events.py
+      - name: Validate candidate registry
+        run: python scripts/validate_registry.py
