@@ -118,10 +118,12 @@ module "pipeline" {
   # the map resolves — today's legacy rows without a provider tag also
   # land on WB per the dispatcher's `provider = ind.get("provider") or "WB"`
   # default.
-  batch_job_definition_map = {
+  batch_job_definition_map = merge({
     WB      = module.batch.fetcher_job_definition_arn
     FAOSTAT = module.batch.fao_fetcher_job_definition_arn
-  }
+    # Enrichment stage 2: new-provider fetchers (keys = dispatcher provider tags).
+    # IDMC is wired but needs IDMC_API_KEY before an activated run (deferred).
+  }, module.batch.new_fetcher_job_definition_arns)
   pipeline_a_counter_table_name = module.storage.pipeline_a_counter_table_name
 
   # #494 step 6: V-Dem annual-refresh pipeline. Reuses the shared
