@@ -284,17 +284,21 @@ def run_gate(
 
     # Roll up each candidate across recipes. A candidate is:
     #   active                     - cracks the top-40 of >= 1 recipe (worth ingesting)
+    #   not_evaluated              - appeared in ZERO successful per-recipe screens
+    #                                (e.g. every recipe errored / no recipes) -> NOT inert
     #   coverage_failed_everywhere - never cracks AND coverage-failed on every recipe
     #                                (a data/coverage problem, not a weak signal)
     #   inert                      - never cracks but was genuinely screened somewhere
     #                                (provably below every cutoff -> skippable)
-    active_candidates, inert_candidates, coverage_failed_everywhere = [], [], []
+    active_candidates, inert_candidates, coverage_failed_everywhere, not_evaluated = [], [], [], []
     for cid in candidate_ids:
         entries = [c for r in per_recipe for c in r.get("per_candidate", [])
                    if c["candidate_id"] == cid]
         if any(c["cracks_top40"] for c in entries):
             active_candidates.append(cid)
-        elif entries and all(c["coverage_fail"] for c in entries):
+        elif not entries:
+            not_evaluated.append(cid)
+        elif all(c["coverage_fail"] for c in entries):
             coverage_failed_everywhere.append(cid)
         else:
             inert_candidates.append(cid)
@@ -312,6 +316,7 @@ def run_gate(
         "active_candidates": active_candidates,
         "inert_candidates": inert_candidates,
         "coverage_failed_everywhere": coverage_failed_everywhere,
+        "not_evaluated_candidates": not_evaluated,
         "cost_forecast": forecast_cost(flagged),
         "per_recipe": per_recipe,
     }
@@ -341,6 +346,8 @@ def main(argv: list[str] | None = None) -> int:
                     help="Negative-sampling seed; match the target walk's --seed for an exact cutoff "
                          f"(default {DEFAULT_SEED}, the fleet production default)")
     ap.add_argument("--negatives-per-positive", type=int, default=3)
+    ap.add_argument("--top-n", type=int, default=drv.TOP_N_PREFILTER,
+                    help=f"Prefilter cutoff rank (default {drv.TOP_N_PREFILTER}, the walk's TOP_N_PREFILTER)")
     ap.add_argument("--output", type=Path, default=None, help="Write manifest JSON here")
     args = ap.parse_args(argv)
 
@@ -361,6 +368,7 @@ def main(argv: list[str] | None = None) -> int:
         shape_dir=args.shape_dir,
         seed=args.seed,
         negatives_per_positive=args.negatives_per_positive,
+        top_n=args.top_n,
     )
 
     out = json.dumps(manifest, indent=2)
