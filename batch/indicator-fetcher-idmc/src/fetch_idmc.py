@@ -164,10 +164,12 @@ def fetch_idmc_raw() -> list[dict]:
         resp.raise_for_status()
         body = resp.json()
 
-        # API returns {"count": N, "next": ..., "previous": ..., "results": [...]}
-        batch = body.get("results", body if isinstance(body, list) else [])
+        # API returns {"count": N, "next": ..., "results": [...]} (or a bare list).
+        if isinstance(body, list):
+            items.extend(body)
+            break
+        batch = body.get("results", [])
         items.extend(batch)
-
         if not batch or body.get("next") is None:
             break
         offset += len(batch)

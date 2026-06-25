@@ -354,3 +354,9 @@ def test_all_specs_have_required_keys():
     for iid, cfg in f.SPECS.items():
         missing = required - set(cfg)
         assert not missing, f"{iid} spec missing keys: {missing}"
+
+
+def test_fetch_one_rejects_unknown_id():
+    import pytest
+    with pytest.raises(ValueError):
+        f.fetch_one({"id_string": "ZZ-99"})
