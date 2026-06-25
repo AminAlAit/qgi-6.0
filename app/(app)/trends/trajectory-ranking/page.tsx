@@ -24,9 +24,7 @@ export const metadata: Metadata = {
 
 export default function TrajectoryRankingPage() {
   return (
-    <div
-      style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
-    >
+    <div style={{ background: "var(--qgi-bg)", color: "var(--qgi-text)" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "24px" }}>
         {/* Breadcrumb */}
         <nav

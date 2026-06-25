@@ -93,9 +93,17 @@ export default function MethodologyEventsPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-          <StatPie title="Events by master group" slices={MASTER_GROUP_SLICES} />
-          <StatPie title="Events by source" slices={SOURCE_SLICES} />
+        {/* Single column on phones so each donut gets full width (the two
+            side-by-side donuts previously crushed the right legend off-screen).
+            StatPie's own inner row already wraps + truncates; min-w-0 keeps the
+            grid cell from blowing past the container. */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+          <div className="min-w-0">
+            <StatPie title="Events by master group" slices={MASTER_GROUP_SLICES} />
+          </div>
+          <div className="min-w-0">
+            <StatPie title="Events by source" slices={SOURCE_SLICES} />
+          </div>
         </div>
 
         <EventsTable />

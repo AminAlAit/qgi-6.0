@@ -71,6 +71,12 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
             marginBottom: "10px",
             flexWrap: "wrap",
             justifyContent: "space-between",
+            /* Constrain so children cannot push past the available column
+               width (which on phones is the viewport minus sidebar margins).
+               Without this, the flex row can try to fit both children on one
+               line even when there is no room, causing overflow. */
+            maxWidth: "100%",
+            minWidth: 0,
           }}
         >
           <div
@@ -127,7 +133,13 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
               letterSpacing: "0.3px",
               cursor: "not-allowed",
               opacity: 0.85,
-              whiteSpace: "nowrap",
+              /* Allow the label to wrap on very narrow viewports so the
+                 button never bleeds past the container edge.
+                 whiteSpace: "nowrap" removed — the Soon badge is a separate
+                 inline element so it naturally wraps below on phones. */
+              maxWidth: "100%",
+              flexShrink: 1,
+              minWidth: 0,
             }}
           >
             <Sparkles
@@ -135,9 +147,24 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
               strokeWidth={1.8}
               aria-hidden="true"
               color="var(--qgi-accent)"
+              style={{ flexShrink: 0 }}
             />
-            <span style={{ fontFamily: "var(--font-qg-brand)" }}>
+            {/* On phones (<420px) shorten label to "Report"; on wider
+                viewports show the full "Generate Country Report" string.
+                Done with two sibling spans toggled via CSS classes that
+                reference a container-query-free breakpoint using the
+                Tailwind responsive prefix on the className. */}
+            <span
+              className="hidden min-[420px]:inline"
+              style={{ fontFamily: "var(--font-qg-brand)", whiteSpace: "nowrap" }}
+            >
               Generate Country Report
+            </span>
+            <span
+              className="inline min-[420px]:hidden"
+              style={{ fontFamily: "var(--font-qg-brand)", whiteSpace: "nowrap" }}
+            >
+              Report
             </span>
             <span
               style={{
@@ -151,6 +178,8 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
                 textTransform: "uppercase",
                 fontWeight: 700,
                 fontFamily: "var(--font-qg-brand)",
+                whiteSpace: "nowrap",
+                flexShrink: 0,
               }}
             >
               Soon

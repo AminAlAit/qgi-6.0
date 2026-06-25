@@ -3,9 +3,7 @@ import Link from "next/link";
 import type { Route } from "next";
 import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
 import { Wordmark } from "@/components/brand/Wordmark";
-import Chart1CosinePeerRanking, {
-  Chart1CosinePeerRankingHero,
-} from "./charts/Chart1CosinePeerRanking";
+import { Chart1CosinePeerRankingHero } from "./charts/Chart1CosinePeerRanking";
 import Chart2BilateralMultilateralSequence from "./charts/Chart2BilateralMultilateralSequence";
 import Chart3IndicatorFingerprint from "./charts/Chart3IndicatorFingerprint";
 import TocSidebar from "./TocSidebar";
@@ -229,7 +227,11 @@ export default function UkraineBosniaMirrorReportPage() {
         </div>
 
         <div className="mb-8">
-          <Chart1CosinePeerRankingHero />
+          {/* On tablet/phone the hero SVG viewBox (770px wide) can overflow the
+              article column; allow horizontal scroll so country names are legible. */}
+          <div className="overflow-x-auto -mx-2 px-2">
+            <Chart1CosinePeerRankingHero />
+          </div>
           <p
             className="mt-1 text-xs text-center"
             style={{ color: "var(--qgi-text-dim)" }}

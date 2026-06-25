@@ -303,7 +303,7 @@ export default function MethodologyGprPage() {
                   >
                     {t.blurb}
                   </p>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  <div className="grid grid-cols-1 min-[480px]:grid-cols-2 sm:grid-cols-3 gap-2">
                     {members.map((c) => {
                       const v = c.series?.values ?? [];
                       const lo = v.length ? Math.min(...v) : 0;
