@@ -260,7 +260,7 @@ function FamilySection({ family }: { family: RecipeFamily }) {
         />
         <h2
           id={`family-${family.l1_id}`}
-          className="text-sm font-semibold tracking-wider uppercase"
+          className="text-base sm:text-sm font-semibold tracking-wider uppercase"
           style={{ color: family.l1_color }}
         >
           {family.l1_label}

@@ -130,6 +130,7 @@ export function Wordmark({
     alignItems: "baseline",
     gap: s.gap,
     textDecoration: "none",
+    flexShrink: 0,
   };
 
   if (href != null) {

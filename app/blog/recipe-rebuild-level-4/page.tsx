@@ -147,17 +147,21 @@ export default function RecipeRebuildLevel4Post() {
             those analogues. Here is the shape, side by side:
           </p>
 
-          <div
-            className="rounded-lg border overflow-x-auto my-6"
-            style={{
-              borderColor: "var(--qgi-border)",
-              backgroundColor: "var(--qgi-surface)",
-            }}
-          >
-            <pre
-              className="font-data text-[11px] leading-relaxed p-5 m-0 whitespace-pre"
-              style={{ color: "var(--qgi-text)" }}
-            >{`  TODAY (Level 3): one row per matched Pattern instance
+          {/* Scroll wrapper: the ASCII diagram is ~66 chars wide; on phones it
+              overflows. overflow-x-auto lets the user pan. The right-side
+              gradient hint makes scrollability discoverable without JS. */}
+          <div className="relative my-6">
+            <div
+              className="rounded-lg border overflow-x-auto"
+              style={{
+                borderColor: "var(--qgi-border)",
+                backgroundColor: "var(--qgi-surface)",
+              }}
+            >
+              <pre
+                className="font-data text-[11px] leading-relaxed p-5 m-0 whitespace-pre"
+                style={{ color: "var(--qgi-text)", minWidth: "min-content" }}
+              >{`  TODAY (Level 3): one row per matched Pattern instance
   ┌──────────────────────────────────────────────────────────────┐
   │ recipe_id     country_a   country_b   start_a   length       │
   │ event_category   event_year_a   event_year_b   pps           │
@@ -184,6 +188,16 @@ export default function RecipeRebuildLevel4Post() {
   │ coverage_bias_diagnostic : 11/47 OECD, 36/47 non-OECD        │
   │ similarity(country C, this Recipe) -> 0..1                   │
   └──────────────────────────────────────────────────────────────┘`}</pre>
+            </div>
+            {/* Right-edge scroll hint: fades out on tablet/desktop where no
+                scroll is needed (the content fits). Pure CSS, no JS. */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 right-0 w-8 rounded-r-lg sm:hidden"
+              style={{
+                background: "linear-gradient(to right, transparent, var(--qgi-surface))",
+              }}
+            />
           </div>
 
           <p>

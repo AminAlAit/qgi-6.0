@@ -27,7 +27,26 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       </a>
       <div className="flex h-full overflow-x-hidden">
         <Sidebar dataVintage={dataVintage} />
-        <main id="main-content" className="flex-1 overflow-y-auto" tabIndex={-1}>
+        {/* pt-14 on mobile reserves a clear gutter (~56px, ~10px below the
+            fixed top-left hamburger button) so page chrome — breadcrumbs,
+            eyebrows, the Briefing command bar wordmark — never renders under it
+            on phones. Desktop (md+) shows the static sidebar and needs no offset.
+            NOTE: the `md` breakpoint here must stay matched to the Sidebar
+            hamburger's `md:hidden` (both 768px) — if that hamburger breakpoint
+            ever changes, change this `md:pt-0` to match. This pt-14 only pushes
+            NORMAL-FLOW content clear of the hamburger; any `position:fixed` /
+            `position:sticky` element rendered inside a page must add its OWN
+            top offset on mobile (≈ top: 56px below md) — the layout padding
+            cannot move fixed/sticky descendants out from under the hamburger.
+            `min-w-0` lets this flex child shrink below its content's intrinsic
+            width, so internal horizontal-scroll containers (e.g. the risk-board
+            and topic-board matrices' overflow-x:auto wrappers) actually scroll
+            instead of forcing the column wider. */}
+        <main
+          id="main-content"
+          className="flex-1 min-w-0 overflow-y-auto pt-14 md:pt-0"
+          tabIndex={-1}
+        >
           {children}
         </main>
       </div>

@@ -14,9 +14,13 @@
  * the monthly news pulse (2015→present), with the live GDELT feed for the three
  * live topics (Conflict · Protest · Economic distress). The other eleven are
  * history-only today and say so.
+ *
+ * Mobile layout (<1024px): stacked vertical flow instead of the 3-column grid.
+ * Desktop (>=1024px): original layout unchanged.
  */
 
 import { useEffect, useMemo, useState } from "react";
+import { useResponsiveLayout } from "@/lib/hooks/useMediaQuery";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import type { Route } from "next";
@@ -239,6 +243,16 @@ export function LivePulseTerminal({
   const [mode, setMode] = useState<Mode>("history");
   const [res, setRes] = useState<Resolution>("1M");
   const [filter, setFilter] = useState("");
+  // Mobile rail drawer open/closed state
+  const [railOpen, setRailOpen] = useState(false);
+
+  // Responsive: switch to the stacked layout below 1024px, gated behind a
+  // neutral skeleton until mounted. This is a full-screen (terminal) route with
+  // no overflow-x-hidden shell, so emitting the 1024px desktop grid during SSR
+  // would clip to a blank on phones. `useResponsiveLayout` flips `mounted` and
+  // `isMobile` in ONE commit, so there is no frame where the desktop grid shows
+  // on a phone (mounted=true while isMobile is still stale).
+  const { mounted, isMobile } = useResponsiveLayout("(max-width: 1023px)");
 
   const sel = detail.series.find((s) => s.topic.id === topicId) ?? detail.series[0];
   const cell = sel?.cell ?? null;
@@ -299,7 +313,10 @@ export function LivePulseTerminal({
     };
   }, [mode, res, isLive, multi, sel, liveLabels]);
 
-  return (
+  // The desktop 3-pane grid, defined as a function so it can render BOTH
+  // pre-mount (for real desktop, chosen by CSS) and post-mount with no desktop
+  // flash — and is only evaluated when actually rendered (never on mobile).
+  const desktopGrid = () => (
     <div
       style={{
         height: "100dvh",
@@ -317,7 +334,6 @@ export function LivePulseTerminal({
       }}
     >
       <Header backHref={backHref} backLabel={backLabel} />
-
       <Rail
         countries={countries}
         currentIso3={detail.iso3}
@@ -327,7 +343,6 @@ export function LivePulseTerminal({
         filter={filter}
         onFilter={setFilter}
       />
-
       <Stage
         sel={sel}
         countryName={detail.name}
@@ -343,12 +358,10 @@ export function LivePulseTerminal({
         view={view}
         thresholds={detail.thresholds}
       />
-
       <NewsSidebar
         articles={articlesProp ?? seriesData?.articles ?? []}
         countryName={detail.name}
       />
-
       <StatusBar
         built={detail.built}
         liveLabels={liveLabels}
@@ -356,6 +369,216 @@ export function LivePulseTerminal({
       />
     </div>
   );
+
+  // Pre-mount: render the REAL desktop grid for >=1024px (CSS lg:block) so the
+  // desktop has no skeleton/CLS (SSR and post-mount output match), and a neutral
+  // skeleton only for <1024px (CSS lg:hidden) so the 1024px grid never crushes a
+  // phone before the matchMedia branch resolves. The media query picks the right
+  // one at first paint with no JS.
+  if (!mounted) {
+    return (
+      <>
+        <div
+          className="lg:hidden"
+          role="status"
+          aria-live="polite"
+          style={{
+            minHeight: "100dvh",
+            width: "100%",
+            background: "var(--qgi-bg)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "ui-monospace, monospace",
+              fontSize: "12px",
+              letterSpacing: "1px",
+              color: "var(--qgi-text-dim)",
+            }}
+          >
+            Loading Live Pulse…
+          </span>
+        </div>
+        <div className="hidden lg:block">{desktopGrid()}</div>
+      </>
+    );
+  }
+
+  // ── MOBILE layout (<1024px): stacked vertical flow ──────────────────────
+  if (isMobile) {
+    return (
+      <div
+        style={{
+          minHeight: "100dvh",
+          display: "flex",
+          flexDirection: "column",
+          background: "var(--qgi-bg)",
+          color: "var(--qgi-text)",
+          fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
+          overflowX: "hidden",
+        }}
+      >
+        {/* 1. Header */}
+        <MobileHeader backHref={backHref} backLabel={backLabel} />
+
+        {/* 2. Country / Topic selector — collapsible drawer */}
+        <div
+          style={{
+            borderBottom: "1px solid var(--qgi-border)",
+          }}
+        >
+          {/* Drawer toggle button — min 44px tap target, clear interactive affordance */}
+          <button
+            type="button"
+            onClick={() => setRailOpen((o) => !o)}
+            aria-expanded={railOpen}
+            aria-label={`${railOpen ? "Close" : "Open"} country and topic selector`}
+            style={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "0 16px",
+              minHeight: "48px",
+              background: "var(--qgi-surface)",
+              border: "none",
+              borderBottom: railOpen ? "1px solid var(--qgi-border)" : "none",
+              color: "var(--qgi-text-muted)",
+              fontSize: "12px",
+              letterSpacing: "0.5px",
+              cursor: "pointer",
+              fontFamily: "inherit",
+              gap: "8px",
+            }}
+          >
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                flex: 1,
+                minWidth: 0,
+              }}
+            >
+              {/* "Filters" label makes it scannable as a control */}
+              <span
+                style={{
+                  fontSize: "9px",
+                  letterSpacing: "1.5px",
+                  color: "var(--qgi-text-dim)",
+                  flexShrink: 0,
+                  textTransform: "uppercase",
+                }}
+              >
+                COUNTRY / TOPIC
+              </span>
+              <span style={{ color: "var(--qgi-border)", flexShrink: 0 }}>·</span>
+              <span
+                style={{
+                  color: "var(--qgi-accent)",
+                  fontWeight: 700,
+                  flexShrink: 0,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {detail.name}
+              </span>
+              <span style={{ color: "var(--qgi-border)", flexShrink: 0 }}>·</span>
+              <span
+                style={{
+                  color: "var(--qgi-text-muted)",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {sel?.topic.label}
+              </span>
+            </span>
+            {/* Chevron with border pill so it reads as a button */}
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "28px",
+                height: "28px",
+                border: "1px solid var(--qgi-border)",
+                borderRadius: "14px",
+                flexShrink: 0,
+                fontSize: "12px",
+                color: "var(--qgi-accent)",
+                background: "var(--qgi-bg)",
+              }}
+            >
+              {railOpen ? "▲" : "▼"}
+            </span>
+          </button>
+
+          {/* Collapsible rail content */}
+          {railOpen && (
+            <div style={{ background: "var(--qgi-bg)", padding: "12px 16px 16px" }}>
+              <Rail
+                countries={countries}
+                currentIso3={detail.iso3}
+                series={detail.series}
+                topicId={topicId}
+                onTopic={(id) => {
+                  setTopicId(id);
+                  setRailOpen(false);
+                }}
+                filter={filter}
+                onFilter={setFilter}
+                mobile
+              />
+            </div>
+          )}
+        </div>
+
+        {/* 3. Stage — chart + verdict + timeframe controls — full width */}
+        <div style={{ flex: "none" }}>
+          <Stage
+            sel={sel}
+            countryName={detail.name}
+            verdict={verdict}
+            struct={struct}
+            pulse={pulse}
+            isLive={isLive}
+            mode={mode}
+            onMode={setMode}
+            res={res}
+            onRes={setRes}
+            resAvail={resAvail}
+            view={view}
+            thresholds={detail.thresholds}
+            mobile
+          />
+        </div>
+
+        {/* 4. LIVE NEWS list — full width, no fixed height */}
+        <NewsSidebarMobile
+          articles={articlesProp ?? seriesData?.articles ?? []}
+          countryName={detail.name}
+        />
+
+        {/* 5. Status bar */}
+        <StatusBar
+          built={detail.built}
+          liveLabels={liveLabels}
+          topicCount={detail.series.length}
+        />
+      </div>
+    );
+  }
+
+  // ── DESKTOP layout (>=1024px): original 3-column grid — UNCHANGED ────────
+  // Post-mount desktop (>=1024px): the same grid, now without the CSS gate.
+  return desktopGrid();
 }
 
 /* ── header ──────────────────────────────────────────────────────────── */
@@ -448,6 +671,79 @@ function Header({ backHref, backLabel }: { backHref: string; backLabel: string }
   );
 }
 
+/* ── mobile header: compact single-row ──────────────────────────────── */
+
+function MobileHeader({ backHref, backLabel }: { backHref: string; backLabel: string }) {
+  return (
+    <header
+      style={{
+        background: "var(--qgi-surface)",
+        borderBottom: "2px solid var(--qgi-accent)",
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
+        padding: "0 14px",
+        height: "48px",
+        flexShrink: 0,
+      }}
+    >
+      <Link
+        href={backHref as Route}
+        aria-label={backLabel || "Back"}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "4px",
+          padding: "0 10px",
+          border: "1px solid var(--qgi-border)",
+          borderRadius: "16px",
+          background: "var(--qgi-bg)",
+          color: "var(--qgi-text-muted)",
+          fontSize: "11px",
+          letterSpacing: "0.5px",
+          textDecoration: "none",
+          flexShrink: 0,
+          minHeight: "44px",
+          minWidth: "44px",
+          justifyContent: "center",
+        }}
+      >
+        ←
+      </Link>
+      {/* 'QG' + 'LIVE PULSE' is a bespoke compact lockup for this 48px terminal
+          header — the shared <Wordmark> renders the full "QG INTELLIGENCE" nav
+          mark, which is too wide here and carries the wrong label. The Century
+          Gothic stack matches Wordmark's brand font. */}
+      <span
+        style={{
+          fontFamily:
+            "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', var(--font-qg-brand), sans-serif",
+          fontSize: "17px",
+          fontWeight: 700,
+          color: "var(--qgi-accent)",
+          letterSpacing: "1px",
+          flexShrink: 0,
+        }}
+      >
+        QG
+      </span>
+      <span
+        style={{
+          fontSize: "11px",
+          color: "var(--qgi-accent)",
+          fontWeight: 700,
+          letterSpacing: "2px",
+          flexShrink: 0,
+        }}
+      >
+        LIVE PULSE
+      </span>
+      <span style={{ flex: 1 }} />
+      <LivePulseStamp compact />
+    </header>
+  );
+}
+
 function Sep() {
   return (
     <span style={{ width: "1px", height: "18px", background: "var(--qgi-border)" }} />
@@ -479,6 +775,7 @@ function Rail({
   onTopic,
   filter,
   onFilter,
+  mobile,
 }: {
   countries: RailCountry[];
   currentIso3: string;
@@ -487,10 +784,164 @@ function Rail({
   onTopic: (id: string) => void;
   filter: string;
   onFilter: (v: string) => void;
+  mobile?: boolean;
 }) {
   const shown = countries.filter(
     (c) => !filter || c.name.toLowerCase().includes(filter.toLowerCase())
   );
+
+  // Mobile: natural flow (no fixed heights, no overflow:hidden)
+  if (mobile) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        {/* Country list */}
+        <div>
+          <SecLabel left="COUNTRY" right={String(countries.length)} mobile />
+          <input
+            value={filter}
+            onChange={(e) => onFilter(e.target.value)}
+            placeholder="filter…"
+            aria-label="Filter countries"
+            style={{
+              minHeight: "44px",
+              width: "100%",
+              background: "var(--qgi-bg)",
+              border: "1px solid var(--qgi-border)",
+              borderRadius: "4px",
+              color: "var(--qgi-text-muted)",
+              fontSize: "13px",
+              padding: "0 10px",
+              marginBottom: "8px",
+              fontFamily: "inherit",
+              boxSizing: "border-box",
+            }}
+          />
+          <div
+            style={{
+              maxHeight: "200px",
+              overflowY: "auto",
+              border: "1px solid var(--qgi-border)",
+              borderRadius: "4px",
+            }}
+          >
+            {shown.map((c) => {
+              const on = c.iso3 === currentIso3;
+              return (
+                <Link
+                  key={c.iso3}
+                  href={`/countries/${c.param}/live-pulse` as Route}
+                  aria-current={on ? "page" : undefined}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    minHeight: "44px",
+                    padding: "0 12px",
+                    fontSize: "13px",
+                    textDecoration: "none",
+                    color: on ? "var(--qgi-text)" : "var(--qgi-text-muted)",
+                    background: on ? "var(--qgi-surface-2)" : "transparent",
+                    borderLeft: `3px solid ${on ? "var(--qgi-accent)" : "transparent"}`,
+                    borderBottom: "1px solid var(--qgi-border)",
+                  }}
+                >
+                  <FlagImg emoji="" name={c.name} width={20} radius={1} />
+                  {c.name}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Topic chips */}
+        <div>
+          <SecLabel left="TOPIC" right={String(series.length)} mobile />
+          <div
+            role="group"
+            aria-label="News topics"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "6px",
+            }}
+          >
+            {series.map((s) => {
+              const on = s.topic.id === topicId;
+              const v = s.cell?.verdict ?? "QUIET";
+              const live = LIVE_TOPICS.has(s.topic.id);
+              return (
+                <button
+                  key={s.topic.id}
+                  type="button"
+                  onClick={() => onTopic(s.topic.id)}
+                  aria-pressed={on}
+                  title={`${s.topic.id} · ${s.topic.name}${live ? " (live feed)" : ""}. Verdict: ${v}. ${s.topic.scope}`}
+                  style={{
+                    minHeight: "44px",
+                    border: `1px solid ${on ? "var(--qgi-accent)" : "var(--qgi-border)"}`,
+                    boxShadow: on ? "inset 0 0 0 1px var(--qgi-accent)" : "none",
+                    borderRadius: "4px",
+                    background: on ? "var(--qgi-surface-2)" : "var(--qgi-bg)",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "0 8px",
+                    gap: "6px",
+                    position: "relative",
+                    overflow: "hidden",
+                    fontSize: "11px",
+                    letterSpacing: "0.3px",
+                    fontFamily: "inherit",
+                    color: on ? "var(--qgi-text)" : "var(--qgi-text-muted)",
+                    textAlign: "left",
+                  }}
+                >
+                  <span
+                    aria-hidden
+                    style={{
+                      width: "3px",
+                      height: "16px",
+                      borderRadius: "2px",
+                      flexShrink: 0,
+                      background: verdictVar(v),
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontWeight: 700,
+                      color: on ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
+                      fontSize: "10px",
+                      flexShrink: 0,
+                    }}
+                  >
+                    {s.topic.id}
+                  </span>
+                  <span style={{ overflow: "hidden", textOverflow: "ellipsis", flex: 1 }}>
+                    {s.topic.label}
+                  </span>
+                  {live && (
+                    <span
+                      aria-hidden
+                      className="animate-pulse"
+                      style={{
+                        flexShrink: 0,
+                        width: "6px",
+                        height: "6px",
+                        borderRadius: "50%",
+                        background: "var(--qgi-success)",
+                      }}
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Desktop rail (original)
   return (
     <div
       style={{
@@ -651,13 +1102,22 @@ function Rail({
   );
 }
 
-function SecLabel({ left, right }: { left: string; right: string }) {
+function SecLabel({
+  left,
+  right,
+  mobile,
+}: {
+  left: string;
+  right: string;
+  mobile?: boolean;
+}) {
   return (
     <div
       style={{
-        fontSize: "9px",
+        // Mobile bumps to 10px / 1px tracking for legibility; desktop unchanged.
+        fontSize: mobile ? "10px" : "9px",
         color: "var(--qgi-text-muted)",
-        letterSpacing: "2px",
+        letterSpacing: mobile ? "1px" : "2px",
         margin: "0 0 6px",
         display: "flex",
         justifyContent: "space-between",
@@ -697,6 +1157,7 @@ function Stage({
   resAvail,
   view,
   thresholds,
+  mobile,
 }: {
   sel: HfTopicSeries | undefined;
   countryName: string;
@@ -711,15 +1172,16 @@ function Stage({
   resAvail: (r: Resolution) => boolean;
   view: ChartView;
   thresholds: { struct: number; pulse: number };
+  mobile?: boolean;
 }) {
   const vcol = verdictVar(verdict);
   return (
     <div
       style={{
-        gridArea: "stage",
+        gridArea: mobile ? undefined : "stage",
         display: "flex",
         flexDirection: "column",
-        padding: "12px",
+        padding: mobile ? "12px 14px" : "12px",
         gap: "10px",
         minWidth: 0,
       }}
@@ -742,7 +1204,8 @@ function Stage({
           <span
             style={{
               minWidth: "96px",
-              height: "36px",
+              minHeight: mobile ? "44px" : "36px",
+              height: mobile ? undefined : "36px",
               borderRadius: "5px",
               display: "flex",
               alignItems: "center",
@@ -753,6 +1216,7 @@ function Stage({
               border: `1px solid ${vcol}`,
               color: vcol,
               background: `color-mix(in srgb, ${vcol} 13%, transparent)`,
+              padding: mobile ? "0 14px" : undefined,
             }}
           >
             {VERDICT_LABEL[verdict]}
@@ -763,7 +1227,7 @@ function Stage({
             display: "flex",
             alignItems: "center",
             gap: "9px",
-            fontSize: "14px",
+            fontSize: mobile ? "16px" : "14px",
             fontWeight: 700,
           }}
         >
@@ -772,9 +1236,12 @@ function Stage({
         {sel && (
           <span
             style={{
-              fontSize: "10px",
+              fontSize: mobile ? "12px" : "10px",
               letterSpacing: "1px",
-              padding: "4px 9px",
+              padding: mobile ? "0 12px" : "4px 9px",
+              minHeight: mobile ? "44px" : undefined,
+              display: "flex",
+              alignItems: "center",
               borderRadius: "4px",
               border: "1px solid var(--qgi-accent)",
               color: "var(--qgi-accent)",
@@ -809,10 +1276,10 @@ function Stage({
                   background: on ? "var(--qgi-surface)" : "transparent",
                   color: on ? "var(--qgi-accent)" : "var(--qgi-text-muted)",
                   boxShadow: on ? "inset 0 0 0 1px var(--qgi-accent)" : "none",
-                  fontSize: "10.5px",
+                  fontSize: mobile ? "13px" : "10.5px",
                   letterSpacing: "1px",
-                  height: "26px",
-                  padding: "0 15px",
+                  height: mobile ? "44px" : "26px",
+                  padding: mobile ? "0 18px" : "0 15px",
                   borderRadius: "16px",
                   cursor: "pointer",
                   fontFamily: "inherit",
@@ -861,7 +1328,8 @@ function Stage({
       {/* chart */}
       <div
         style={{
-          flex: 1,
+          flex: mobile ? undefined : 1,
+          height: mobile ? "280px" : undefined,
           background: "var(--qgi-surface)",
           border: "1px solid var(--qgi-border)",
           borderRadius: "4px",
@@ -894,17 +1362,18 @@ function Stage({
             view={view}
             struct={struct}
             thresholds={thresholds}
+            mobile={mobile}
           />
         )}
-        {/* timeframe row */}
+        {/* timeframe row — larger tap targets on mobile */}
         <div
           role="group"
           aria-label="Timeframe"
           style={{
             display: "flex",
             justifyContent: "center",
-            gap: "6px",
-            padding: "8px 0 10px",
+            gap: mobile ? "8px" : "6px",
+            padding: mobile ? "10px 0 12px" : "8px 0 10px",
           }}
         >
           {ALL_RES.map((r) => {
@@ -925,17 +1394,17 @@ function Stage({
                 }
                 onClick={() => onRes(r)}
                 style={{
-                  width: "42px",
-                  height: "24px",
+                  width: mobile ? "54px" : "42px",
+                  height: mobile ? "44px" : "24px",
                   border: `1px solid ${on ? "var(--qgi-accent)" : "var(--qgi-border)"}`,
-                  borderRadius: "3px",
+                  borderRadius: mobile ? "4px" : "3px",
                   background: on ? "var(--qgi-surface-2)" : "transparent",
                   color: on
                     ? "var(--qgi-accent)"
                     : disabled
                       ? "var(--qgi-text-dim)"
                       : "var(--qgi-text-muted)",
-                  fontSize: "10px",
+                  fontSize: mobile ? "13px" : "10px",
                   cursor: disabled ? "not-allowed" : "pointer",
                   opacity: disabled ? 0.4 : 1,
                   fontFamily: "inherit",
@@ -1048,10 +1517,12 @@ function StageChart({
   view,
   struct,
   thresholds,
+  mobile,
 }: {
   view: Extract<ChartView, { kind: "chart" }>;
   struct: number | null;
   thresholds: { struct: number; pulse: number };
+  mobile?: boolean;
 }) {
   const { isDark } = useTheme();
   const t = getEchartsTokens(isDark);
@@ -1141,7 +1612,9 @@ function StageChart({
         );
       },
     },
-    grid: { left: 64, right: 18, top: 16, bottom: view.slider ? 34 : 18 },
+    // Mobile: tighter left gutter so Y-axis labels (0–100) clear the edge.
+    // 48px fits "100" at 10px monospace; desktop keeps 64 for the axis name.
+    grid: { left: mobile ? 48 : 64, right: 18, top: 16, bottom: view.slider ? 34 : 18 },
     xAxis: {
       type: "category",
       data: view.x,
@@ -1158,9 +1631,11 @@ function StageChart({
     yAxis: {
       min: 0,
       max: 100,
-      name: "News Pressure (%)",
+      // Hide rotated axis name on mobile — saves ~16px of left gutter and
+      // keeps axis labels flush inside the chart area on 360px screens.
+      name: mobile ? "" : "News Pressure (%)",
       nameLocation: "middle",
-      nameGap: 48,
+      nameGap: mobile ? 0 : 48,
       nameRotate: 90,
       nameTextStyle: { color: t.textDim, fontSize: 10, letterSpacing: 0.5 },
       axisLine: { show: false },
@@ -1395,6 +1870,157 @@ function NewsSidebar({
       >
         News attention across all topics from the global GDELT feed, not verified events.
         Click to open.
+      </div>
+    </div>
+  );
+}
+
+/* ── mobile news list: full-width, no fixed height ───────────────────── */
+
+function NewsSidebarMobile({
+  articles,
+  countryName,
+}: {
+  articles: LiveArticle[];
+  countryName: string;
+}) {
+  const sorted = useMemo(
+    () => [...articles].sort((a, b) => (a.dt < b.dt ? 1 : a.dt > b.dt ? -1 : 0)),
+    [articles]
+  );
+  return (
+    <div
+      style={{
+        borderTop: "1px solid var(--qgi-border)",
+        background: "var(--qgi-surface)",
+      }}
+    >
+      {/* Section header */}
+      <div
+        style={{
+          height: "44px",
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+          padding: "0 16px",
+          borderBottom: "1px solid var(--qgi-border)",
+        }}
+      >
+        <span
+          style={{
+            fontSize: "11px",
+            color: "var(--qgi-text-muted)",
+            letterSpacing: "2px",
+          }}
+        >
+          LIVE NEWS
+        </span>
+        <span
+          style={{
+            fontSize: "11px",
+            color: "var(--qgi-text-muted)",
+            border: "1px solid var(--qgi-border)",
+            borderRadius: "10px",
+            padding: "3px 10px",
+          }}
+        >
+          {countryName}
+        </span>
+      </div>
+
+      {/* Article list — no max-height, scrolls with the page */}
+      {sorted.length === 0 ? (
+        <div
+          style={{
+            padding: "32px 16px",
+            textAlign: "center",
+            color: "var(--qgi-text-dim)",
+            fontSize: "13px",
+          }}
+        >
+          Live headlines coming soon.
+        </div>
+      ) : (
+        sorted.map((a, i) => {
+          const tint = TOPIC_TINT[a.topic] ?? "var(--qgi-text-muted)";
+          const tone = a.tone;
+          const toneCol =
+            tone === null
+              ? "var(--qgi-text-dim)"
+              : tone < -1
+                ? "var(--qgi-warning)"
+                : tone > 1
+                  ? "var(--qgi-success)"
+                  : "var(--qgi-text-muted)";
+          const title = deriveTitle(a.url, a.domain, a.topicLabel);
+          return (
+            <a
+              key={`${a.url}-${i}`}
+              href={a.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "block",
+                padding: "12px 16px",
+                borderBottom: "1px solid var(--qgi-border)",
+                borderLeft: `3px solid ${tint}`,
+                textDecoration: "none",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  fontSize: "10px",
+                  letterSpacing: "0.5px",
+                  color: "var(--qgi-text-muted)",
+                  marginBottom: "4px",
+                }}
+              >
+                <span>
+                  {a.domain
+                    .replace(/^www\./, "")
+                    .toUpperCase()
+                    .slice(0, 24)}
+                </span>
+                <span>{fmtStamp(a.dt)}</span>
+              </div>
+              <div
+                style={{
+                  fontSize: "13px",
+                  color: "var(--qgi-text)",
+                  lineHeight: 1.4,
+                  marginBottom: "6px",
+                }}
+              >
+                {title}
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  fontSize: "10px",
+                }}
+              >
+                <span style={{ color: tint, fontWeight: 600 }}>{a.topicLabel}</span>
+                {tone !== null && (
+                  <span style={{ color: toneCol }}>tone {tone.toFixed(1)}</span>
+                )}
+              </div>
+            </a>
+          );
+        })
+      )}
+      <div
+        style={{
+          fontSize: "10px",
+          color: "var(--qgi-text-dim)",
+          padding: "10px 16px",
+          borderTop: "1px solid var(--qgi-border)",
+        }}
+      >
+        News attention from the global GDELT feed, not verified events. Tap to open.
       </div>
     </div>
   );

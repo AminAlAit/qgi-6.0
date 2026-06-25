@@ -180,7 +180,11 @@ export function TopicBoard({ data }: Props) {
     return best;
   }, [rows, topics]);
 
-  const gridTemplate = `200px repeat(${topics.length}, minmax(0, 1fr)) 72px`;
+  // Label column fixed at 200px (full country names stay legible). The 14-column
+  // matrix can't shrink to a phone's width, so the grid lives in an
+  // overflow-x:auto wrapper (below) with an explicit min-width and scrolls
+  // horizontally on phones rather than being silently clipped by the shell.
+  const gridTemplate = `200px repeat(${topics.length}, minmax(44px, 1fr)) 72px`;
 
   return (
     <div>
@@ -503,95 +507,130 @@ function VerdictGrid({
   history: HfBoard["history"];
 }) {
   return (
-    <div
-      style={{
-        border: "1px solid var(--qgi-border)",
-        borderRadius: "8px",
-        background: "var(--qgi-surface)",
-        overflow: "hidden",
-      }}
-    >
-      {/* Header */}
+    <>
+      {/* Three-layer scroll structure (iOS Safari border-radius + scroll
+        correctness): a rounded CLIP FRAME (overflow:hidden, no scroll) wraps a
+        SCROLLER (overflowX:auto) which wraps the min-width CONTENT. Keeping the
+        border-radius on a non-scrolling frame avoids the corner-clipping /
+        scrollbar glitches that occur when overflow:auto and border-radius sit
+        on the same element. */}
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: gridTemplate,
-          background: "var(--qgi-bg)",
-          borderBottom: "1px solid var(--qgi-border)",
-          fontFamily: "ui-monospace, monospace",
-          fontSize: "11px",
-          letterSpacing: "1px",
-          color: "var(--qgi-text-dim)",
+          border: "1px solid var(--qgi-border)",
+          borderRadius: "8px",
+          background: "var(--qgi-surface)",
+          overflow: "hidden",
         }}
       >
-        <div style={{ padding: "10px 14px", borderRight: "1px solid var(--qgi-border)" }}>
-          Country ↓ · Topic →
-        </div>
-        {topics.map((t) => (
-          <div
-            key={t.id}
-            style={{
-              padding: "8px 6px",
-              textAlign: "center",
-              borderRight: "1px solid var(--qgi-border)",
-              lineHeight: 1.4,
-            }}
-          >
-            <span style={{ color: "var(--qgi-text-muted)", whiteSpace: "nowrap" }}>
-              {t.label}
-              <InfoTooltip
-                text={`${t.name}. ${t.scope} ${
-                  t.validated
-                    ? "Validated: its news pulse tends to move ahead of related events by about two months."
-                    : "Tracked and scored; validation against the event record is ongoing."
-                }`}
-              />
-            </span>
-            {t.validated && (
+        <div style={{ overflowX: "auto" }}>
+          {/* Inner grid must be at least as wide as all columns need to be legible.
+          200px label + 14 topics × 44px + 72px summary ≈ 888px minimum.
+          On screens wider than this, minmax(44px,1fr) expands to fill. */}
+          <div style={{ minWidth: `${200 + topics.length * 44 + 72}px` }}>
+            {/* Header */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: gridTemplate,
+                background: "var(--qgi-bg)",
+                borderBottom: "1px solid var(--qgi-border)",
+                fontFamily: "ui-monospace, monospace",
+                fontSize: "11px",
+                letterSpacing: "1px",
+                color: "var(--qgi-text-dim)",
+              }}
+            >
               <div
                 style={{
-                  fontSize: "9.5px",
-                  color: "var(--qgi-success)",
-                  letterSpacing: "0.5px",
-                  marginTop: "2px",
+                  padding: "10px 14px",
+                  borderRight: "1px solid var(--qgi-border)",
                 }}
               >
-                ▲ Leads ~2 mo
+                Country ↓ · Topic →
               </div>
-            )}
+              {topics.map((t) => (
+                <div
+                  key={t.id}
+                  style={{
+                    padding: "8px 6px",
+                    textAlign: "center",
+                    borderRight: "1px solid var(--qgi-border)",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  <span style={{ color: "var(--qgi-text-muted)", whiteSpace: "nowrap" }}>
+                    {t.label}
+                    <InfoTooltip
+                      text={`${t.name}. ${t.scope} ${
+                        t.validated
+                          ? "Validated: its news pulse tends to move ahead of related events by about two months."
+                          : "Tracked and scored; validation against the event record is ongoing."
+                      }`}
+                    />
+                  </span>
+                  {t.validated && (
+                    <div
+                      style={{
+                        fontSize: "9.5px",
+                        color: "var(--qgi-success)",
+                        letterSpacing: "0.5px",
+                        marginTop: "2px",
+                      }}
+                    >
+                      ▲ Leads ~2 mo
+                    </div>
+                  )}
+                </div>
+              ))}
+              <div style={{ padding: "10px 6px", textAlign: "center" }}>
+                {SUMMARY_HEADER[lens]}
+                <InfoTooltip text={SUMMARY_TOOLTIP[lens]} />
+              </div>
+            </div>
+
+            {/* Rows */}
+            {rows.map((row, ri) => (
+              <div
+                key={row.country.iso3}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: gridTemplate,
+                  borderBottom:
+                    ri === rows.length - 1 ? "none" : "1px solid var(--qgi-border)",
+                }}
+              >
+                <CountryNameCell country={row.country} />
+                {row.cells.map((cell, ci) => (
+                  <TopicCell
+                    key={topics[ci].id}
+                    cell={cell}
+                    lens={lens}
+                    country={row.country}
+                    topic={topics[ci]}
+                    spark={history[`${row.country.iso3}|${topics[ci].id}`]?.pulse}
+                  />
+                ))}
+                <SummaryCell lens={lens} row={row} />
+              </div>
+            ))}
           </div>
-        ))}
-        <div style={{ padding: "10px 6px", textAlign: "center" }}>
-          {SUMMARY_HEADER[lens]}
-          <InfoTooltip text={SUMMARY_TOOLTIP[lens]} />
         </div>
       </div>
-
-      {/* Rows */}
-      {rows.map((row, ri) => (
-        <div
-          key={row.country.iso3}
-          style={{
-            display: "grid",
-            gridTemplateColumns: gridTemplate,
-            borderBottom: ri === rows.length - 1 ? "none" : "1px solid var(--qgi-border)",
-          }}
-        >
-          <CountryNameCell country={row.country} />
-          {row.cells.map((cell, ci) => (
-            <TopicCell
-              key={topics[ci].id}
-              cell={cell}
-              lens={lens}
-              country={row.country}
-              topic={topics[ci]}
-              spark={history[`${row.country.iso3}|${topics[ci].id}`]?.pulse}
-            />
-          ))}
-          <SummaryCell lens={lens} row={row} />
-        </div>
-      ))}
-    </div>
+      {/* Mobile/tablet scroll affordance: the 14-topic matrix overflows below ~lg,
+        where the iOS scrollbar is hidden. CSS-only (no JS, no data-obscuring fade). */}
+      <p
+        className="lg:hidden"
+        style={{
+          margin: "8px 2px 0",
+          fontSize: "11px",
+          fontFamily: "ui-monospace, monospace",
+          color: "var(--qgi-text-dim)",
+          textAlign: "center",
+        }}
+      >
+        ← scroll sideways to see all topics →
+      </p>
+    </>
   );
 }
 
