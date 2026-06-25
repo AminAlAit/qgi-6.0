@@ -151,10 +151,20 @@ export function TopicBoard({ data }: Props) {
 
   const sortedRows = useMemo(() => {
     const r = [...rows];
-    if (lens === "surge") r.sort((a, b) => b.maxDelta - a.maxDelta);
+    if (lens === "surge")
+      r.sort((a, b) => b.maxDelta - a.maxDelta || b.pulseSum - a.pulseSum);
     else if (lens === "primed")
-      r.sort((a, b) => b.latentCount - a.latentCount || b.structSum - a.structSum);
-    else r.sort((a, b) => b.activeCount - a.activeCount || b.pulseSum - a.pulseSum);
+      r.sort(
+        (a, b) =>
+          b.latentCount - a.latentCount || b.structSum - a.structSum || b.pulseSum - a.pulseSum
+      );
+    // Third tiebreak (structSum / pulseSum) keeps the long cold tail meaningfully
+    // ordered at 30 rows instead of falling back to insertion order.
+    else
+      r.sort(
+        (a, b) =>
+          b.activeCount - a.activeCount || b.pulseSum - a.pulseSum || b.structSum - a.structSum
+      );
     return r;
   }, [rows, lens]);
 
@@ -367,8 +377,9 @@ export function TopicBoard({ data }: Props) {
           letterSpacing: "0.3px",
         }}
       >
-        Covering 12 countries across 6 themes today; new ones enter as their signals
-        validate. Pulse updates monthly; structural scores refresh each release.
+        Covering {data.countries.length} countries across {data.boardTopics.length} themes
+        today; new ones enter as their signals validate. Pulse updates monthly; structural
+        scores refresh each release.
       </div>
     </div>
   );
@@ -508,10 +519,12 @@ function VerdictGrid({
         border: "1px solid var(--qgi-border)",
         borderRadius: "8px",
         background: "var(--qgi-surface)",
-        overflow: "hidden",
+        // Was "hidden" — an overflow-clip ancestor breaks the sticky header
+        // below. At 30 rows a non-sticky header scrolls off after ~2 rows.
+        overflow: "visible",
       }}
     >
-      {/* Header */}
+      {/* Header — sticky so the topic columns stay labelled while scrolling 30 rows */}
       <div
         style={{
           display: "grid",
@@ -522,6 +535,12 @@ function VerdictGrid({
           fontSize: "11px",
           letterSpacing: "1px",
           color: "var(--qgi-text-dim)",
+          position: "sticky",
+          top: 0, // visual QA: bump to the sticky-nav height if one is added
+          zIndex: 10,
+          // The container's overflow is now "visible" (for sticky), so the
+          // header must round its own top corners to match the 8px card.
+          borderRadius: "8px 8px 0 0",
         }}
       >
         <div style={{ padding: "10px 14px", borderRight: "1px solid var(--qgi-border)" }}>
@@ -925,8 +944,10 @@ function QuadrantMap({
         // click-through to the country profile (linkable countries only).
         cursor: "pointer",
         // Shift colliding country labels apart instead of letting them
-        // overprint (review finding: NigeriaThailand ran together).
-        labelLayout: { moveOverlap: "shiftY" as const },
+        // overprint (review finding: NigeriaThailand ran together). shiftXY
+        // (not shiftY) so 30 flags clustering in the Active corner can spread
+        // on both axes.
+        labelLayout: { moveOverlap: "shiftXY" as const },
         markLine: {
           silent: true,
           symbol: "none",
@@ -999,7 +1020,7 @@ function QuadrantMap({
             if (p.data?.href) router.push(p.data.href as Route);
           },
         }}
-        style={{ height: "440px", width: "100%" }}
+        style={{ height: "520px", width: "100%" }}
       />
     </div>
   );
