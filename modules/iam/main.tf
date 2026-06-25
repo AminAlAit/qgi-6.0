@@ -140,6 +140,16 @@ resource "aws_iam_role_policy" "github_actions_ecr_push" {
           "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-b-scdi-finder",
           # #106 recipe-fleet image (qgi-pipeline/batch/recipe-fleet/Dockerfile).
           "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-recipe-fleet",
+          # Enrichment stage 2: the 7 new-provider fetcher images
+          # (modules/batch/new_fetchers.tf). Without these, qgi-pipeline CI image
+          # pushes 403 AccessDenied — the #635 sibling-resource-drift pattern.
+          "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-a-indicator-fetcher-unhcr",
+          "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-a-indicator-fetcher-ucdp",
+          "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-a-indicator-fetcher-ilostat",
+          "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-a-indicator-fetcher-oecd",
+          "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-a-indicator-fetcher-idmc",
+          "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-a-indicator-fetcher-undp",
+          "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-a-indicator-fetcher-owid",
         ]
       },
     ]
