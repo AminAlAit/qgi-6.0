@@ -12,7 +12,7 @@ import TaxonomyHorizontalTree from "@/components/methodology/TaxonomyHorizontalT
 import IndicatorTaxonomyTree from "@/components/methodology/IndicatorTaxonomyTree";
 import { CascadeFlow } from "@/components/methodology/CascadeFlow";
 import { CountryFlag } from "@/components/design/CountryFlag";
-import { TOTAL_INDICATORS } from "@/lib/site-stats";
+import { TOTAL_INDICATORS, NEWS_COUNTRIES } from "@/lib/site-stats";
 
 export const metadata: Metadata = {
   title: "Methodology · QG Intelligence",
@@ -471,8 +471,8 @@ export default function MethodologyPage() {
               held, and for elections strengthened, when the pulse was recomputed using
               only information available at the time. Themes whose pulse showed no lead,
               such as conflict onsets, are not marked as leading. The rest are tracked and
-              scored while their validation runs. The layer reads twelve countries today
-              and grows as the signal proves out.
+              scored while their validation runs. The layer reads {NEWS_COUNTRIES} countries
+              today and grows as the signal proves out.
             </p>
           </Section>
 
