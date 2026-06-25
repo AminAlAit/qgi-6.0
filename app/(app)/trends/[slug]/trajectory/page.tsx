@@ -62,9 +62,7 @@ export default async function TrajectoryDeepDivePage({ params }: PageProps) {
   const quarterLabels = Array.from({ length: 12 }, (_, i) => `Q${i + 1}`);
 
   return (
-    <div
-      style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
-    >
+    <div style={{ background: "var(--qgi-bg)", color: "var(--qgi-text)" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "24px" }}>
         {/* Breadcrumb */}
         <nav
@@ -229,12 +227,12 @@ export default async function TrajectoryDeepDivePage({ params }: PageProps) {
               ))}
             </div>
 
-            {/* Y-axis legend */}
+            {/* Chart footnotes — stack to one column below 480px (phones),
+                side-by-side above. Pure Tailwind, no injected <style>. */}
             <div
+              className="flex flex-col gap-1 min-[480px]:flex-row min-[480px]:justify-between min-[480px]:gap-0"
               style={{
-                display: "flex",
-                justifyContent: "space-between",
-                fontSize: "9.5px",
+                fontSize: "10.5px",
                 fontFamily: "ui-monospace, monospace",
                 color: "var(--qgi-text-dim)",
               }}

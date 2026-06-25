@@ -110,9 +110,16 @@ export default function MethodologyIndicatorsPage() {
           </div>
 
           <section className="mb-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <StatPie title="Indicators by provider" slices={PROVIDER_SLICES} />
-              <StatPie title="Indicators by theme" slices={THEME_SLICES} />
+            {/* Single column on phones so each donut gets full width (avoids the
+                two-donuts-side-by-side legend clip). StatPie's inner row already
+                wraps + truncates; min-w-0 stops grid-cell blowout. */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="min-w-0">
+                <StatPie title="Indicators by provider" slices={PROVIDER_SLICES} />
+              </div>
+              <div className="min-w-0">
+                <StatPie title="Indicators by theme" slices={THEME_SLICES} />
+              </div>
             </div>
           </section>
 

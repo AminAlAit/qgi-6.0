@@ -8,8 +8,12 @@
  * its layer-3 children. Click again to collapse.
  *
  * Pure SVG — no echarts. Editorial / QGI-elegant. Hover shows event count.
+ *
+ * Mobile (<640px): replaces the SVG with a vertical accordion list so no
+ * content is clipped by the fixed 760px minWidth.
  */
 import { useState, useMemo } from "react";
+import { useResponsiveLayout } from "@/lib/hooks/useMediaQuery";
 import taxonomy from "@/data/taxonomy-with-counts.json";
 
 type Layer1 = {
@@ -47,6 +51,13 @@ export default function TaxonomyHorizontalTree() {
   };
   const [expanded, setExpanded] = useState<Set<string>>(new Set()); // L2 ids that have L3 visible
   const [hoveredL3, setHoveredL3] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState<Set<string>>(new Set()); // L1 ids open (mobile accordion)
+
+  // Below 640px, swap the fixed-width SVG dendrogram for a vertical accordion.
+  // Combined hook flips mounted + isMobile in one commit, so the server never
+  // emits the wide (760px) SVG on a phone (which would flash a horizontal
+  // scrollbar) and there is no desktop-branch frame after mount.
+  const { mounted, isMobile } = useResponsiveLayout("(max-width: 639px)");
 
   // Compute the layout: every L1 group occupies a vertical span equal to its L2 children
   // (plus expanded L3 children if any).
@@ -110,6 +121,171 @@ export default function TaxonomyHorizontalTree() {
     });
   }
 
+  // ── Mobile accordion (< 640 px) ──────────────────────────────────────────
+  function toggleL1Mobile(id: string) {
+    setMobileOpen((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }
+  function toggleL2Mobile(l2id: string) {
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      if (next.has(l2id)) next.delete(l2id);
+      else next.add(l2id);
+      return next;
+    });
+  }
+
+  if (!mounted) {
+    return (
+      <div
+        className="rounded-lg border"
+        style={{
+          borderColor: "var(--qgi-border)",
+          backgroundColor: "var(--qgi-surface)",
+          minHeight: 240,
+        }}
+      >
+        <p role="status" aria-live="polite" className="sr-only">
+          Loading taxonomy…
+        </p>
+      </div>
+    );
+  }
+
+  if (isMobile) {
+    return (
+      <div>
+        <p className="text-sm mb-4 leading-relaxed" style={{ color: "var(--qgi-text)" }}>
+          Every verified event is mapped to one of {data.summary.layer3_count} canonical
+          leaf categories, organised in {data.summary.layer1_count} master groups and{" "}
+          {data.summary.layer2_count} sub-categories. Tap a group to expand.
+        </p>
+        <div
+          className="rounded-lg border divide-y divide-[var(--qgi-border)]"
+          style={{
+            borderColor: "var(--qgi-border)",
+            backgroundColor: "var(--qgi-surface)",
+          }}
+        >
+          {data.layer1.map((l1) => {
+            const isOpen = mobileOpen.has(l1.id);
+            return (
+              <div key={l1.id} style={{ borderColor: "var(--qgi-border)" }}>
+                {/* L1 header */}
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  onClick={() => toggleL1Mobile(l1.id)}
+                  className="w-full flex items-center justify-between px-3 py-2.5 text-left"
+                  style={{ fontFamily: FONT_FAMILY }}
+                >
+                  <span className="flex items-center gap-2">
+                    <span
+                      style={{
+                        display: "inline-block",
+                        width: 8,
+                        height: 8,
+                        borderRadius: "50%",
+                        backgroundColor: l1.color_hint || "#7B5EE6",
+                        flexShrink: 0,
+                      }}
+                    />
+                    <span
+                      className="text-[13px] font-medium"
+                      style={{ color: "var(--qgi-text)" }}
+                    >
+                      {l1.display_label || l1.label}
+                    </span>
+                  </span>
+                  <span className="flex items-center gap-2 shrink-0">
+                    <span
+                      className="text-[11px]"
+                      style={{ color: "var(--qgi-text-muted)" }}
+                    >
+                      {(l1.event_count || 0).toLocaleString()} events
+                    </span>
+                    <span style={{ color: "var(--qgi-text-muted)", fontSize: 11 }}>
+                      {isOpen ? "▾" : "▸"}
+                    </span>
+                  </span>
+                </button>
+
+                {/* L2 list */}
+                {isOpen && (
+                  <div
+                    className="pb-1"
+                    style={{ borderTop: "1px solid var(--qgi-border)" }}
+                  >
+                    {l1.layer2.map((l2) => {
+                      const l2Open = expanded.has(l2.id);
+                      return (
+                        <div key={l2.id}>
+                          <button
+                            type="button"
+                            aria-expanded={l2Open}
+                            onClick={() => toggleL2Mobile(l2.id)}
+                            className="w-full flex items-center justify-between px-4 py-2 text-left"
+                            style={{ fontFamily: FONT_FAMILY }}
+                          >
+                            <span
+                              className="text-[12px]"
+                              style={{ color: "var(--qgi-text)" }}
+                            >
+                              {l2Open ? "▾" : "▸"} {l2.label}
+                            </span>
+                            <span
+                              className="text-[11px] shrink-0 ml-2"
+                              style={{ color: "var(--qgi-accent)" }}
+                            >
+                              {(l2.event_count || 0).toLocaleString()}
+                            </span>
+                          </button>
+                          {/* L3 leaves */}
+                          {l2Open && (
+                            <div className="pl-6 pb-1">
+                              {l2.layer3.map((cat) => (
+                                <div
+                                  key={cat}
+                                  className="flex items-center justify-between py-1 px-2"
+                                >
+                                  <span
+                                    className="text-[11px]"
+                                    style={{ color: "var(--qgi-text-muted)" }}
+                                  >
+                                    · {prettyL3(cat)}
+                                  </span>
+                                  <span
+                                    className="text-[10px] shrink-0 ml-2"
+                                    style={{ color: "var(--qgi-text-muted)" }}
+                                  >
+                                    {(data.layer3_counts[cat] || 0).toLocaleString()}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+        <p className="text-[11px] mt-3" style={{ color: "var(--qgi-text-muted)" }}>
+          Counts are verified events only. Categories with zero events have not yet had
+          any verified events curated against them.
+        </p>
+      </div>
+    );
+  }
+
+  // ── Desktop / tablet SVG dendrogram (>= 640 px) ──────────────────────────
   return (
     <div>
       <p
@@ -286,6 +462,8 @@ export default function TaxonomyHorizontalTree() {
           any verified events curated against them.
         </p>
         <button
+          type="button"
+          aria-expanded={expanded.size > 0}
           onClick={() => {
             const allL2Ids = data.layer1.flatMap((l1) => l1.layer2.map((l2) => l2.id));
             const allExpanded = expanded.size === allL2Ids.length;

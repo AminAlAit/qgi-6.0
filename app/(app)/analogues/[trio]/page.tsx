@@ -395,7 +395,7 @@ export default async function AnaloguePairPage({ params }: Params) {
                 {pair.analogueName} and the trend). The dashed line and its band are the{" "}
                 {pair.trendLabel}
                 {
-                  " trend's own canonical shape for that indicator. Hover any chart for the year-by-year values."
+                  " trend's own canonical shape for that indicator. Tap or hover any chart for the year-by-year values."
                 }
               </p>
               {/* legend */}
@@ -446,7 +446,7 @@ export default async function AnaloguePairPage({ params }: Params) {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(min(320px, 100%), 1fr))",
                   gap: "16px",
                 }}
               >

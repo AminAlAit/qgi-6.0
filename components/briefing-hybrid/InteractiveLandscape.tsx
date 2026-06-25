@@ -21,12 +21,11 @@
  * Rendered with ssr:false via dynamic import in InteractiveLandscapeWrapper.
  */
 import { useState, useMemo } from "react";
+import { useResponsiveLayout } from "@/lib/hooks/useMediaQuery";
 import ReactECharts from "echarts-for-react";
 import { useTheme } from "@/lib/hooks/useTheme";
 import { getEchartsTokens } from "@/lib/echarts-theme";
 import type { ScatterPoint } from "@/components/briefing-signal/QuadrantSection";
-import type { Route } from "next";
-import Link from "next/link";
 
 const VERDICT_COLORS = {
   ACTIVE: "#E05C5C",
@@ -73,6 +72,11 @@ export function InteractiveLandscape({ points }: Props) {
   const [selectedVerdict, setSelectedVerdict] = useState<
     keyof typeof VERDICT_COLORS | null
   >(null);
+
+  // Phone-width (<=480px) chart adjustments. The combined hook flips `mounted`
+  // and `isNarrow` in one commit; the chart is gated on `mounted` below so it
+  // renders ONCE with the correct margins instead of flashing desktop→narrow.
+  const { mounted, isMobile: isNarrow } = useResponsiveLayout("(max-width: 480px)");
 
   const isFiltered =
     selectedCountry !== ALL || selectedTopic !== ALL || selectedVerdict !== null;
@@ -208,27 +212,40 @@ export function InteractiveLandscape({ points }: Props) {
         },
       },
       // No ECharts legend — color key is rendered as HTML chips in the controls row.
-      grid: { top: 16, right: 16, bottom: 52, left: 60 },
+      // On narrow phones: tighten left margin (y-axis name hidden → shown as caption),
+      // reduce font sizes to reclaim plot area.
+      grid: {
+        top: 16,
+        right: 16,
+        bottom: isNarrow ? 44 : 52,
+        left: isNarrow ? 36 : 60,
+      },
       xAxis: {
         name: "News Pressure (%)",
         nameLocation: "middle" as const,
-        nameGap: 30,
-        nameTextStyle: { color: t.textDim, fontSize: 11.5, fontWeight: 600 },
+        nameGap: isNarrow ? 26 : 30,
+        nameTextStyle: {
+          color: t.textDim,
+          fontSize: isNarrow ? 10 : 11.5,
+          fontWeight: 600,
+        },
         min: 0,
         max: 100,
         axisLine: { lineStyle: { color: t.border } },
-        axisLabel: { color: t.textMuted, fontSize: 11 },
+        axisLabel: { color: t.textMuted, fontSize: isNarrow ? 10 : 11 },
         splitLine: { lineStyle: { color: t.splitLine } },
       },
       yAxis: {
-        name: `Structural Fair Value for ${new Date().getFullYear()} (%)`,
+        // On phone the long y-axis name overlaps the plot; hide it and show a
+        // plain-text caption below the chart instead.
+        name: isNarrow ? "" : `Structural Fair Value for ${new Date().getFullYear()} (%)`,
         nameLocation: "middle" as const,
         nameGap: 40,
         nameTextStyle: { color: t.textDim, fontSize: 11.5, fontWeight: 600 },
         min: 0,
         max: 100,
         axisLine: { lineStyle: { color: t.border } },
-        axisLabel: { color: t.textMuted, fontSize: 11 },
+        axisLabel: { color: t.textMuted, fontSize: isNarrow ? 10 : 11 },
         splitLine: { lineStyle: { color: t.splitLine } },
       },
       series: [
@@ -278,7 +295,7 @@ export function InteractiveLandscape({ points }: Props) {
         },
       ],
     };
-  }, [points, selectedCountry, selectedTopic, selectedVerdict, t, isFiltered]);
+  }, [points, selectedCountry, selectedTopic, selectedVerdict, t, isFiltered, isNarrow]);
 
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
@@ -473,11 +490,40 @@ export function InteractiveLandscape({ points }: Props) {
 
       {/* The plot itself (header + controls above, quadrant guide below all
           share this same panel) */}
-      <ReactECharts
-        option={option}
-        style={{ height: "440px", width: "100%" }}
-        opts={{ renderer: "svg" }}
-      />
+      <div
+        role="img"
+        aria-label="Signal landscape scatter: News Pressure (x) versus Structural Fair Value (y), one dot per country-topic."
+        aria-describedby={isNarrow ? "landscape-yaxis-caption" : undefined}
+      >
+        {mounted ? (
+          <ReactECharts
+            option={option}
+            style={{ height: isNarrow ? "400px" : "440px", width: "100%" }}
+            opts={{ renderer: "svg" }}
+          />
+        ) : (
+          // Reserve the chart's height before mount so the breakpoint-dependent
+          // ECharts renders exactly once (no desktop→narrow margin flash / CLS).
+          <div style={{ height: "440px", width: "100%" }} aria-hidden="true" />
+        )}
+      </div>
+      {/* On narrow phones the y-axis name is suppressed to save space — show it
+          as a plain caption beneath the chart instead. */}
+      {isNarrow && (
+        <div
+          id="landscape-yaxis-caption"
+          style={{
+            fontSize: "10px",
+            color: "var(--qgi-text-dim)",
+            textAlign: "center",
+            marginTop: "2px",
+            fontWeight: 600,
+            letterSpacing: "0.2px",
+          }}
+        >
+          ↑ Structural Fair Value for {new Date().getFullYear()} (%)
+        </div>
+      )}
 
       {/* Quadrant guide — what each corner means, in plain English. Laid out
             2x2 to mirror the plot (top = more structure, right = louder news). */}
@@ -496,7 +542,9 @@ export function InteractiveLandscape({ points }: Props) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            // On phones <~320px two 1fr columns collapse gracefully;
+            // minmax(150px,1fr) keeps 2 columns at ≥300px and stacks to 1 below that.
+            gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
             gap: "10px",
           }}
         >

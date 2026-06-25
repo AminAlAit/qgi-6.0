@@ -343,141 +343,183 @@ function FilteredGrid({
   // we always render exactly 10 columns (#1..#10). In custom mode the
   // number matches the user's selection (1..10).
   const colCount = customCountries ? customCountries.length : 10;
-  const gridTemplate = `clamp(160px, 28%, 280px) repeat(${colCount}, minmax(60px, 1fr))`;
+  // Label column: floor reduced to 96px on narrow screens (was 160px) so the
+  // 10 data columns aren't pushed off-screen. 28% resolves to ~215px at 768px
+  // and ~280px at desktop — unchanged above 1024px.
+  // Per-cell min reduced from 60px to 44px so 10 columns fit at 768px without
+  // overflow (96 + 10×44 = 536px < 768px available).
+  const gridTemplate = `clamp(96px, 28%, 280px) repeat(${colCount}, minmax(44px, 1fr))`;
 
   return (
-    <div
-      style={{
-        border: "1px solid var(--qgi-border)",
-        borderRadius: "8px",
-        background: "var(--qgi-surface)",
-        overflow: "auto",
-      }}
-    >
+    <div>
+      {/* Rounded CLIP FRAME (overflow:hidden, no scroll) + inner SCROLLER
+        (overflow:auto). Keeping border-radius on the non-scrolling frame avoids
+        the iOS Safari corner-clipping / scrollbar glitch that occurs when
+        overflow:auto and border-radius are on the same element. */}
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: gridTemplate,
-          background: "var(--qgi-bg)",
-          borderBottom: "1px solid var(--qgi-border)",
-          fontFamily: "ui-monospace, monospace",
-          fontSize: "10.5px",
-          letterSpacing: "1px",
-          color: "var(--qgi-text-dim)",
+          border: "1px solid var(--qgi-border)",
+          borderRadius: "8px",
+          background: "var(--qgi-surface)",
+          overflow: "hidden",
         }}
       >
-        <div style={{ padding: "10px 14px", borderRight: "1px solid var(--qgi-border)" }}>
-          Trend ↓ · Country →
-        </div>
-        {/* Header columns — rank labels in BOTH modes. In custom mode the
+        <div style={{ overflow: "auto" }}>
+          {/* Explicit min-width on the scroller's content (mirrors TopicBoard's
+              VerdictGrid): guarantees the overflow:auto scroller always has
+              content wider than a phone viewport to scroll. Floor = label clamp
+              floor (96px) + colCount × 44px per-cell floor. On desktop this is a
+              floor only — the grid's 1fr tracks expand to fill the container. */}
+          <div style={{ minWidth: `${96 + colCount * 44}px` }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: gridTemplate,
+                background: "var(--qgi-bg)",
+                borderBottom: "1px solid var(--qgi-border)",
+                fontFamily: "ui-monospace, monospace",
+                fontSize: "10.5px",
+                letterSpacing: "1px",
+                color: "var(--qgi-text-dim)",
+              }}
+            >
+              <div
+                style={{
+                  padding: "10px 14px",
+                  borderRight: "1px solid var(--qgi-border)",
+                }}
+              >
+                Trend ↓ · Country →
+              </div>
+              {/* Header columns — rank labels in BOTH modes. In custom mode the
             cells re-sort per row by score, so a fixed country header at
             the top would mismatch the cells beneath; rank labels stay
             stable and the cells carry their own country identity. */}
-        {Array.from({ length: colCount }, (_, i) => (
-          <div
-            key={i}
-            style={{
-              padding: "10px 6px",
-              textAlign: "center",
-              borderRight: i === colCount - 1 ? "none" : "1px solid var(--qgi-border)",
-            }}
-          >
-            #{i + 1}
-          </div>
-        ))}
-      </div>
+              {Array.from({ length: colCount }, (_, i) => (
+                <div
+                  key={i}
+                  style={{
+                    padding: "10px 6px",
+                    textAlign: "center",
+                    borderRight:
+                      i === colCount - 1 ? "none" : "1px solid var(--qgi-border)",
+                  }}
+                >
+                  #{i + 1}
+                </div>
+              ))}
+            </div>
 
-      {/* Round-3.5.2 (2026-05-29) — recipes grouped by L1 family. Each
+            {/* Round-3.5.2 (2026-05-29) — recipes grouped by L1 family. Each
           family gets a section header strip in its own family color so
           the grid reads as A-Z-keyed bands instead of an undifferentiated
           flat list. Group order follows the canonical A..H L1 sequence
           (already passed down via the l1Families prop). */}
-      {(() => {
-        const groups: Array<{
-          l1_id: string;
-          l1_label: string;
-          l1_color: string;
-          items: typeof rows;
-        }> = [];
-        const seen = new Map<string, number>();
-        for (const r of rows) {
-          let idx = seen.get(r.recipe.l1_id);
-          if (idx === undefined) {
-            idx = groups.length;
-            seen.set(r.recipe.l1_id, idx);
-            groups.push({
-              l1_id: r.recipe.l1_id,
-              l1_label: r.recipe.l1_label,
-              l1_color: familyColor(r.recipe.l1_id, r.recipe.l1_color),
-              items: [],
-            });
-          }
-          groups[idx].items.push(r);
-        }
-        // Stable canonical L1 ordering (A..H).
-        groups.sort((a, b) => a.l1_id.localeCompare(b.l1_id));
+            {(() => {
+              const groups: Array<{
+                l1_id: string;
+                l1_label: string;
+                l1_color: string;
+                items: typeof rows;
+              }> = [];
+              const seen = new Map<string, number>();
+              for (const r of rows) {
+                let idx = seen.get(r.recipe.l1_id);
+                if (idx === undefined) {
+                  idx = groups.length;
+                  seen.set(r.recipe.l1_id, idx);
+                  groups.push({
+                    l1_id: r.recipe.l1_id,
+                    l1_label: r.recipe.l1_label,
+                    l1_color: familyColor(r.recipe.l1_id, r.recipe.l1_color),
+                    items: [],
+                  });
+                }
+                groups[idx].items.push(r);
+              }
+              // Stable canonical L1 ordering (A..H).
+              groups.sort((a, b) => a.l1_id.localeCompare(b.l1_id));
 
-        const totalRows = rows.length;
-        let renderedRowIdx = 0;
-        return groups.map((g, gi) => (
-          <div key={g.l1_id}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                padding: "10px 16px 9px",
-                background: `linear-gradient(90deg, ${hexToRgba(g.l1_color, 0.16)} 0%, ${hexToRgba(g.l1_color, 0.02)} 100%)`,
-                borderTop: gi === 0 ? "none" : "1px solid var(--qgi-border)",
-                borderBottom: "1px solid var(--qgi-border)",
-              }}
-            >
-              <span
-                aria-hidden="true"
-                style={{
-                  width: "10px",
-                  height: "10px",
-                  borderRadius: "50%",
-                  background: g.l1_color,
-                  flexShrink: 0,
-                }}
-              />
-              <span
-                style={{
-                  fontSize: "11px",
-                  letterSpacing: "1.5px",
-                  textTransform: "uppercase",
-                  color: g.l1_color,
-                  fontWeight: 600,
-                  fontFamily: "ui-monospace, monospace",
-                }}
-              >
-                {g.l1_label}
-              </span>
-              {/* L1 group recipe-count chip removed 2026-05-29 — the
+              const totalRows = rows.length;
+              let renderedRowIdx = 0;
+              return groups.map((g, gi) => (
+                <div key={g.l1_id}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      padding: "10px 16px 9px",
+                      background: `linear-gradient(90deg, ${hexToRgba(g.l1_color, 0.16)} 0%, ${hexToRgba(g.l1_color, 0.02)} 100%)`,
+                      borderTop: gi === 0 ? "none" : "1px solid var(--qgi-border)",
+                      borderBottom: "1px solid var(--qgi-border)",
+                    }}
+                  >
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        width: "10px",
+                        height: "10px",
+                        borderRadius: "50%",
+                        background: g.l1_color,
+                        flexShrink: 0,
+                      }}
+                    />
+                    <span
+                      style={{
+                        fontSize: "11px",
+                        letterSpacing: "1.5px",
+                        textTransform: "uppercase",
+                        color: g.l1_color,
+                        fontWeight: 600,
+                        fontFamily: "ui-monospace, monospace",
+                      }}
+                    >
+                      {g.l1_label}
+                    </span>
+                    {/* L1 group recipe-count chip removed 2026-05-29 — the
                   family label alone carries enough context; the count
                   was visual noise. */}
-            </div>
-            {g.items.map(({ recipe, row }) => {
-              const isLast = renderedRowIdx === totalRows - 1;
-              renderedRowIdx += 1;
-              return (
-                <RecipeGridRow
-                  key={recipe.recipe_id}
-                  recipe={recipe}
-                  row={row}
-                  customCountries={customCountries}
-                  hoveredCountry={hoveredCountry}
-                  onHoverCountry={onHoverCountry}
-                  dimOthersOnHover={dimOthersOnHover}
-                  gridTemplate={gridTemplate}
-                  isLast={isLast}
-                />
-              );
-            })}
+                  </div>
+                  {g.items.map(({ recipe, row }) => {
+                    const isLast = renderedRowIdx === totalRows - 1;
+                    renderedRowIdx += 1;
+                    return (
+                      <RecipeGridRow
+                        key={recipe.recipe_id}
+                        recipe={recipe}
+                        row={row}
+                        customCountries={customCountries}
+                        hoveredCountry={hoveredCountry}
+                        onHoverCountry={onHoverCountry}
+                        dimOthersOnHover={dimOthersOnHover}
+                        gridTemplate={gridTemplate}
+                        isLast={isLast}
+                      />
+                    );
+                  })}
+                </div>
+              ));
+            })()}
           </div>
-        ));
-      })()}
+        </div>
+      </div>
+      {/* Mobile scroll affordance: a plain CSS-gated hint below the grid (no
+        data-obscuring fade, no overflow:hidden that would suppress the iOS
+        scrollbar). md:hidden → shown only below 768px, where the matrix
+        overflows. CSS-only, matching TopicBoard's hint (no JS re-render). */}
+      <p
+        className="md:hidden"
+        style={{
+          margin: "8px 2px 0",
+          fontSize: "11px",
+          fontFamily: "ui-monospace, monospace",
+          color: "var(--qgi-text-dim)",
+          textAlign: "center",
+        }}
+      >
+        ← scroll sideways to see all ranks →
+      </p>
     </div>
   );
 }

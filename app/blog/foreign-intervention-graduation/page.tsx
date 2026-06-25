@@ -449,20 +449,25 @@ export default function ForeignInterventionGraduationPage() {
                     foreign_intervention canonical pre-crisis profile.
                   </p>
                 </figcaption>
-                <Image
-                  src={`/risk-metric/foreign_intervention/${entry.file}`}
-                  alt={`Indicator trajectory overlay for ${entry.country} versus the foreign_intervention canonical crisis profile`}
-                  width={900}
-                  height={400}
-                  className="w-full rounded border"
-                  style={{
-                    borderColor: "var(--qgi-border)",
-                    backgroundColor: "var(--qgi-surface)",
-                    maxHeight: "320px",
-                    objectFit: "contain",
-                  }}
-                  unoptimized
-                />
+                {/* Scroll container: on phones the chart PNG is wider than the
+                    viewport; overflow-x-auto lets the user pan to see all panels.
+                    On tablet/desktop the Image fills the figure width naturally. */}
+                <div
+                  className="overflow-x-auto rounded border"
+                  style={{ borderColor: "var(--qgi-border)" }}
+                >
+                  <Image
+                    src={`/risk-metric/foreign_intervention/${entry.file}`}
+                    alt={`Indicator trajectory overlay for ${entry.country} versus the foreign_intervention canonical crisis profile`}
+                    width={900}
+                    height={400}
+                    className="min-w-[640px] w-full block"
+                    style={{
+                      backgroundColor: "var(--qgi-surface)",
+                    }}
+                    unoptimized
+                  />
+                </div>
               </figure>
             ))}
           </div>

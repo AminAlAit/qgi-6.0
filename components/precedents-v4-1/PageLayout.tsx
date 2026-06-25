@@ -199,7 +199,7 @@ export function PageLayout({
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(340px, 100%), 1fr))",
             gridAutoRows: "auto",
             gap: "16px",
             // stretch so same-row panels equalize height — clean aligned edges

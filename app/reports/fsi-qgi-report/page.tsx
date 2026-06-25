@@ -695,7 +695,14 @@ function parseTable(lines: string[]): string {
     )
     .join("");
 
-  return `<div class="rpt-table-wrap"><table class="rpt-table"><thead><tr>${thCells}</tr></thead><tbody>${tbodyRows}</tbody></table></div>`;
+  // Outer .rpt-table-scroll (position:relative, NO overflow) carries the
+  // right-edge scroll-fade so it stays pinned at the visible edge; the inner
+  // .rpt-table-wrap is the overflow-x:auto scroller. (A fade placed inside the
+  // scroller would scroll away with the table and never signal overflow.)
+  // The fade is gated to .rpt-table-wide (>3 columns) so narrow 2-3 column
+  // tables that fit on a phone never get a content-dimming gradient.
+  const wideClass = headers.length > 3 ? " rpt-table-wide" : "";
+  return `<div class="rpt-table-scroll${wideClass}"><div class="rpt-table-wrap"><table class="rpt-table"><thead><tr>${thCells}</tr></thead><tbody>${tbodyRows}</tbody></table></div></div>`;
 }
 
 /* ---------------------------------------------------------------------------
@@ -762,7 +769,7 @@ export default function FSIReportPage() {
       </header>
 
       {/* Layout: sidebar TOC + main content */}
-      <div className="flex justify-center">
+      <div className="flex justify-center w-full min-w-0">
         {/* Table of Contents sidebar */}
         <aside className="rpt-toc-sidebar hidden xl:block fixed left-0 top-16 w-56 h-[calc(100vh-4rem)] overflow-y-auto px-4 py-8 print:hidden">
           <div
@@ -786,7 +793,14 @@ export default function FSIReportPage() {
         </aside>
 
         {/* Main content */}
-        <article className="rpt-article mx-auto max-w-[800px] px-6 py-12">
+        <article
+          className="rpt-article mx-auto w-full min-w-0 py-12"
+          style={{
+            maxWidth: "800px",
+            paddingLeft: "clamp(16px,4vw,24px)",
+            paddingRight: "clamp(16px,4vw,24px)",
+          }}
+        >
           {/* Top bar */}
           <div className="flex items-center justify-between mb-8 print:hidden">
             <Link
@@ -846,6 +860,14 @@ export default function FSIReportPage() {
       <style
         dangerouslySetInnerHTML={{
           __html: `
+/* Content container — long words/URLs wrap instead of stretching the article.
+   break-word (not anywhere) so only over-long tokens break, never mid-word in
+   normal prose. */
+.rpt-content {
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
 /* Report typography */
 .rpt-h1 {
   font-size: 1.75rem;
@@ -932,11 +954,40 @@ export default function FSIReportPage() {
 }
 
 /* Tables */
+/* Outer wrapper: position anchor for the fade, NO overflow of its own. */
+.rpt-table-scroll {
+  position: relative;
+  margin: 1rem 0 1.5rem;
+  max-width: 100%;
+}
 .rpt-table-wrap {
   overflow-x: auto;
-  margin: 1rem 0 1.5rem;
   border-radius: 6px;
   border: 1px solid var(--qgi-border);
+  max-width: 100%;
+}
+/* Right-edge fade scroll affordance — ONLY on wide (>3 column) tables, which
+   are the ones that actually overflow a phone. Lives on the NON-scrolling outer
+   wrapper so it stays pinned at the visible right edge instead of scrolling off
+   with the table. Narrow 2-3 column tables (.rpt-table-scroll without
+   .rpt-table-wide) get no fade, so their last column is never dimmed. */
+.rpt-table-scroll.rpt-table-wide::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 24px;
+  pointer-events: none;
+  background: linear-gradient(to right, transparent, var(--qgi-surface, #0d1117));
+  border-radius: 0 6px 6px 0;
+}
+/* Phone-only affordance: hide from ~640px up, where the article is wide enough
+   that tables fit and the overlay would otherwise dim real content on desktop. */
+@media (min-width: 640px) {
+  .rpt-table-scroll.rpt-table-wide::after {
+    display: none;
+  }
 }
 .rpt-table {
   width: 100%;
@@ -968,6 +1019,19 @@ export default function FSIReportPage() {
 }
 .rpt-table td strong {
   color: var(--qgi-text);
+}
+/* Mobile table density */
+@media (max-width: 420px) {
+  .rpt-table th,
+  .rpt-table td {
+    padding: 0.4rem 0.5rem;
+  }
+  .rpt-table td {
+    white-space: normal;
+  }
+  .rpt-table {
+    font-size: 0.72rem;
+  }
 }
 
 /* TOC sidebar */
