@@ -99,6 +99,7 @@ resource "aws_batch_job_definition" "new_fetcher" {
       # INDICATOR_ID / INDICATORS_JSON per task via containerOverrides.
       { name = "JITTER_MIN_S", value = "60" },
       { name = "JITTER_MAX_S", value = "300" },
+      { name = "MAX_FETCH_ATTEMPTS", value = "5" }, # matches the FAO bulk-fetcher default
     ]
 
     logConfiguration = {
