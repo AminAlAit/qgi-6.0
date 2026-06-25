@@ -21,7 +21,7 @@ import type { Route } from "next";
 import { getMock, type TrackerRecipe } from "@/lib/te-mock/recipes";
 import type { PatternEntry } from "@/lib/te-mock/patterns-v4-data";
 import { COUNTRIES_V4 } from "@/lib/te-mock/countries-v4-data";
-import { familyColor, NEUTRAL_SLATE, CALM_SLATE_BLUE } from "@/lib/te-mock/l1-families";
+import { familyColor, CALM_SLATE_BLUE } from "@/lib/te-mock/l1-families";
 import { flagFor } from "@/lib/te-mock/country-flags";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { PanelShell } from "@/components/countries-v4-1/PanelShell";
@@ -84,9 +84,7 @@ export function TrajectoryDetail({
   const archetype = describeArchetype(pattern.shape_points);
 
   return (
-    <div
-      style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
-    >
+    <div style={{ background: "var(--qgi-bg)", color: "var(--qgi-text)" }}>
       {/* Header band */}
       <div
         style={{

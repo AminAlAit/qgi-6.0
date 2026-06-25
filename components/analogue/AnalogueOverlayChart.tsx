@@ -13,7 +13,7 @@
  * last index = the end). Hovering anywhere shows a guide line, per-line dots,
  * and a readout of each value at that year. Gaps (null) break a line.
  */
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export interface AnalogueOverlayChartProps {
   subject: (number | null)[];
@@ -54,6 +54,9 @@ export function AnalogueOverlayChart({
 }: AnalogueOverlayChartProps) {
   const n = windowYears;
   const svgRef = useRef<SVGSVGElement | null>(null);
+  // Touch-start coords: used to tell a horizontal scrub (suppress page scroll,
+  // read the chart) from a vertical swipe (let the page scroll through).
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const [hover, setHover] = useState<number | null>(null);
 
   const sx = (i: number) => PAD.l + (n <= 1 ? 0 : (i / (n - 1)) * INNER_W);
@@ -88,15 +91,60 @@ export function AnalogueOverlayChart({
     return -1;
   };
 
+  const resolveIdx = (clientX: number, rect: DOMRect) => {
+    const xView = ((clientX - rect.left) / rect.width) * W_PX;
+    const idx = Math.round(((xView - PAD.l) / INNER_W) * (n - 1));
+    return Math.max(0, Math.min(n - 1, idx));
+  };
+
   const onMove = (e: React.MouseEvent<SVGSVGElement>) => {
     const svg = svgRef.current;
     if (!svg) return;
-    const rect = svg.getBoundingClientRect();
-    const xView = ((e.clientX - rect.left) / rect.width) * W_PX;
-    let idx = Math.round(((xView - PAD.l) / INNER_W) * (n - 1));
-    idx = Math.max(0, Math.min(n - 1, idx));
-    setHover(idx);
+    setHover(resolveIdx(e.clientX, svg.getBoundingClientRect()));
   };
+
+  const onTouchStart = (e: React.TouchEvent<SVGSVGElement>) => {
+    const svg = svgRef.current;
+    if (!svg || !e.touches[0]) return;
+    touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    setHover(resolveIdx(e.touches[0].clientX, svg.getBoundingClientRect()));
+  };
+
+  const onTouchEnd = () => {
+    touchStartRef.current = null;
+    setHover(null);
+  };
+
+  // touchmove must be a NON-passive native listener: React's synthetic
+  // onTouchMove is registered passive, so e.preventDefault() there is ignored
+  // and the page would scroll while scrubbing. Attach imperatively with
+  // { passive: false }. We ONLY preventDefault for a HORIZONTAL scrub (dx > dy)
+  // so a vertical swipe that happens to start on the chart still scrolls the
+  // page (never traps the page on a small screen).
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg) return;
+    const handler = (e: TouchEvent) => {
+      if (!e.touches[0]) return;
+      const start = touchStartRef.current;
+      if (start) {
+        const dx = Math.abs(e.touches[0].clientX - start.x);
+        const dy = Math.abs(e.touches[0].clientY - start.y);
+        // Vertical-dominant gesture → let the page scroll, don't scrub.
+        if (dy > dx) return;
+      }
+      e.preventDefault();
+      const rect = svg.getBoundingClientRect();
+      const xView = ((e.touches[0].clientX - rect.left) / rect.width) * W_PX;
+      const idx = Math.max(
+        0,
+        Math.min(n - 1, Math.round(((xView - PAD.l) / INNER_W) * (n - 1)))
+      );
+      setHover(idx);
+    };
+    svg.addEventListener("touchmove", handler, { passive: false });
+    return () => svg.removeEventListener("touchmove", handler);
+  }, [n]);
 
   const yearsBefore = hover === null ? 0 : n - 1 - hover;
   const fmt = (v: number | null | undefined) =>
@@ -116,6 +164,8 @@ export function AnalogueOverlayChart({
         style={{ display: "block", cursor: "crosshair" }}
         onMouseMove={onMove}
         onMouseLeave={() => setHover(null)}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
       >
         {/* gridlines */}
         {[0, 50, 100].map((g) => (
@@ -231,7 +281,7 @@ export function AnalogueOverlayChart({
         <text
           x={PAD.l}
           y={H_PX - 6}
-          fontSize={8}
+          fontSize={10}
           fill={DIM}
           fontFamily="ui-monospace, monospace"
         >
@@ -240,7 +290,7 @@ export function AnalogueOverlayChart({
         <text
           x={PAD.l + INNER_W}
           y={H_PX - 6}
-          fontSize={8}
+          fontSize={10}
           fill={DIM}
           textAnchor="end"
           fontFamily="ui-monospace, monospace"
@@ -262,7 +312,7 @@ export function AnalogueOverlayChart({
             borderRadius: 6,
             padding: "6px 8px",
             pointerEvents: "none",
-            fontSize: 10,
+            fontSize: 11,
             fontFamily: "ui-monospace, monospace",
             lineHeight: 1.5,
             whiteSpace: "nowrap",

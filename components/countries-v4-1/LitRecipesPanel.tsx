@@ -16,6 +16,13 @@
  * Honesty: the caption carries Kwame's canonical graduation-gap sentence;
  * status chips use blessed plain labels (statusLabel); green is reserved
  * for a genuinely deployed recipe, which is none today.
+ *
+ * 2026-06-25 (mobile): the 4-column desktop grid (label | bar | score |
+ * status) overflows a 360px phone (the status column was silently clipped
+ * under overflow-x:hidden). The row reflows to a 2-line stack below 640px via
+ * a CSS Module with grid-template-areas (./LitRecipesPanel.module.css) — pure
+ * CSS, so this stays a server component with no matchMedia hook and no
+ * SSR/first-paint reflow.
  */
 import Link from "next/link";
 import type { Route } from "next";
@@ -25,6 +32,7 @@ import { familyColor, NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
 import { statusLabel, type StatusTone } from "@/lib/te-mock/country-families";
 import { iso2For } from "@/lib/te-mock/country-flags";
 import type { CountryV4 } from "@/lib/te-mock/countries-v4-data";
+import styles from "./LitRecipesPanel.module.css";
 
 function statusChipStyle(tone: StatusTone): React.CSSProperties {
   if (tone === "deployed") {
@@ -68,36 +76,15 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
         {rows.map((r) => {
           const color = familyColor(r.l1_id, r.l1_color);
           const { label, tone } = statusLabel(r.status);
+          const href = (
+            iso2 ? `/trends/${r.recipe_id}/countries/${iso2}` : `/trends/${r.recipe_id}`
+          ) as Route;
+
           return (
-            <Link
-              key={r.recipe_id}
-              href={
-                (iso2
-                  ? `/trends/${r.recipe_id}/countries/${iso2}`
-                  : `/trends/${r.recipe_id}`) as Route
-              }
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-                display: "grid",
-                // Fixed widths on the trailing columns so the bar column
-                // starts at the same x-position on every row. Previously
-                // both trailing columns were `auto`, which let the status
-                // chip's variable width ("Not yet tested" vs "Tested, did
-                // not hold up") push the fr-based columns sideways and
-                // visually misalign the bars. 36px = 2-3 digit score;
-                // 190px holds the longest statusLabel string with the
-                // chip right-aligned inside it.
-                gridTemplateColumns: "minmax(0, 1.4fr) minmax(120px, 1fr) 36px 190px",
-                alignItems: "center",
-                gap: "12px",
-                padding: "8px 8px",
-                borderRadius: "5px",
-                borderBottom: "1px solid rgba(255,255,255,0.04)",
-              }}
-            >
-              {/* Recipe icon + label (Rule 1: chip is per-recipe, use the recipe's icon) */}
+            <Link key={r.recipe_id} href={href} className={styles.row}>
+              {/* label cell (icon + recipe name) */}
               <div
+                className={styles.label}
                 style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: 0 }}
               >
                 <span
@@ -131,13 +118,12 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
                 </span>
               </div>
 
-              {/* Score bar — NEUTRAL_SLATE per V4.1 rule 8 (magnitude bars
-                  carry the rank-not-probability semantics; family color
-                  stays on the chip glyph and the row left-edge accent
-                  but never on the rank bar itself). */}
+              {/* score bar cell (fills its grid column) */}
               <div
+                className={styles.bar}
                 style={{
                   height: "8px",
+                  width: "100%",
                   borderRadius: "2px",
                   background: "var(--qgi-bg)",
                   border: "1px solid var(--qgi-border)",
@@ -155,8 +141,9 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
                 />
               </div>
 
-              {/* Score number */}
+              {/* score number cell */}
               <span
+                className={styles.score}
                 style={{
                   fontFamily: "ui-monospace, monospace",
                   fontSize: "14px",
@@ -170,10 +157,9 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
                 {r.score.toFixed(0)}
               </span>
 
-              {/* Honest status chip — right-aligned inside the fixed
-                  190px column so every row's chip ends at the same edge,
-                  giving the row a true table-like alignment. */}
+              {/* honest status chip cell */}
               <span
+                className={styles.chip}
                 style={{
                   fontSize: "10.5px",
                   padding: "2px 8px",
@@ -181,7 +167,6 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
                   fontFamily: "ui-monospace, monospace",
                   letterSpacing: "0.2px",
                   whiteSpace: "nowrap",
-                  justifySelf: "end",
                   ...statusChipStyle(tone),
                 }}
               >

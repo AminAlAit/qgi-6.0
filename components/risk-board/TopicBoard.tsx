@@ -38,6 +38,7 @@ import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
 import { flagFor, iso2For } from "@/lib/te-mock/country-flags";
 import { useTheme } from "@/lib/hooks/useTheme";
+import { useMediaQuery } from "@/lib/hooks/useMediaQuery";
 import { getEchartsTokens } from "@/lib/echarts-theme";
 import type { HfBoard, HfCell, HfTopic, HfVerdict } from "@/lib/hf/topics-data";
 
@@ -156,14 +157,18 @@ export function TopicBoard({ data }: Props) {
     else if (lens === "primed")
       r.sort(
         (a, b) =>
-          b.latentCount - a.latentCount || b.structSum - a.structSum || b.pulseSum - a.pulseSum
+          b.latentCount - a.latentCount ||
+          b.structSum - a.structSum ||
+          b.pulseSum - a.pulseSum
       );
     // Third tiebreak (structSum / pulseSum) keeps the long cold tail meaningfully
     // ordered at 30 rows instead of falling back to insertion order.
     else
       r.sort(
         (a, b) =>
-          b.activeCount - a.activeCount || b.pulseSum - a.pulseSum || b.structSum - a.structSum
+          b.activeCount - a.activeCount ||
+          b.pulseSum - a.pulseSum ||
+          b.structSum - a.structSum
       );
     return r;
   }, [rows, lens]);
@@ -513,18 +518,26 @@ function VerdictGrid({
   gridTemplate: string;
   history: HfBoard["history"];
 }) {
-  return (
-    <div
-      style={{
-        border: "1px solid var(--qgi-border)",
-        borderRadius: "8px",
-        background: "var(--qgi-surface)",
-        // Was "hidden" — an overflow-clip ancestor breaks the sticky header
-        // below. At 30 rows a non-sticky header scrolls off after ~2 rows.
-        overflow: "visible",
-      }}
-    >
-      {/* Header — sticky so the topic columns stay labelled while scrolling 30 rows */}
+  // Below 1024px the 14-topic matrix can't fit a phone, so it scrolls
+  // horizontally inside a clip frame; the header can't be page-sticky there
+  // (an overflow-x:auto ancestor breaks sticky-to-page). On desktop we keep
+  // main's design: overflow:visible container + a page-sticky header so the
+  // topic columns stay labelled while scrolling 30 country rows.
+  const isMobile = useMediaQuery("(max-width: 1023px)");
+  const headerSticky: React.CSSProperties = isMobile
+    ? {}
+    : {
+        position: "sticky",
+        top: 0, // visual QA: bump to the sticky-nav height if one is added
+        zIndex: 10,
+        // The container's overflow is "visible" (for sticky), so the header
+        // rounds its own top corners to match the 8px card.
+        borderRadius: "8px 8px 0 0",
+      };
+
+  const matrix = (
+    <>
+      {/* Header — page-sticky on desktop so topic columns stay labelled. */}
       <div
         style={{
           display: "grid",
@@ -535,12 +548,7 @@ function VerdictGrid({
           fontSize: "11px",
           letterSpacing: "1px",
           color: "var(--qgi-text-dim)",
-          position: "sticky",
-          top: 0, // visual QA: bump to the sticky-nav height if one is added
-          zIndex: 10,
-          // The container's overflow is now "visible" (for sticky), so the
-          // header must round its own top corners to match the 8px card.
-          borderRadius: "8px 8px 0 0",
+          ...headerSticky,
         }}
       >
         <div style={{ padding: "10px 14px", borderRight: "1px solid var(--qgi-border)" }}>
@@ -610,6 +618,56 @@ function VerdictGrid({
           <SummaryCell lens={lens} row={row} />
         </div>
       ))}
+    </>
+  );
+
+  if (isMobile) {
+    // Mobile (<1024px): horizontal-scroll the matrix inside a rounded clip
+    // frame (14 topics don't fit a phone). Header is not page-sticky here.
+    return (
+      <>
+        <div
+          style={{
+            border: "1px solid var(--qgi-border)",
+            borderRadius: "8px",
+            background: "var(--qgi-surface)",
+            overflow: "hidden",
+          }}
+        >
+          <div style={{ overflowX: "auto" }}>
+            {/* min-width so the scroller always has content wider than a phone.
+                200px label + topics × 44px + 72px summary. */}
+            <div style={{ minWidth: `${200 + topics.length * 44 + 72}px` }}>{matrix}</div>
+          </div>
+        </div>
+        <p
+          className="lg:hidden"
+          style={{
+            margin: "8px 2px 0",
+            fontSize: "11px",
+            fontFamily: "ui-monospace, monospace",
+            color: "var(--qgi-text-dim)",
+            textAlign: "center",
+          }}
+        >
+          ← scroll sideways to see all topics →
+        </p>
+      </>
+    );
+  }
+
+  // Desktop (>=1024px): main's design — overflow:visible so the header can be
+  // page-sticky while scrolling 30 country rows. The 14 topics fit; no h-scroll.
+  return (
+    <div
+      style={{
+        border: "1px solid var(--qgi-border)",
+        borderRadius: "8px",
+        background: "var(--qgi-surface)",
+        overflow: "visible",
+      }}
+    >
+      {matrix}
     </div>
   );
 }

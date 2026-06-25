@@ -10,8 +10,12 @@
  *
  * Source: data/indicator-catalog.json — the 109 active in-play indicators
  * (assembled from the pipeline's indicators.json + the fleet V-Dem set).
+ *
+ * Mobile (<640px): replaces the fixed 880px SVG with a vertical accordion
+ * list so no content is clipped.
  */
 import { useState, useMemo } from "react";
+import { useResponsiveLayout } from "@/lib/hooks/useMediaQuery";
 import catalog from "@/data/indicator-catalog.json";
 
 interface CatalogEntry {
@@ -40,6 +44,12 @@ const LEAF_COUNT_X = 870; // far-right, right-aligned recipe-usage label
 const FONT_FAMILY = "ui-monospace, SFMono-Regular, Menlo, monospace";
 
 function truncate(s: string, n = 46): string {
+  return s.length > n ? s.slice(0, n - 1) + "…" : s;
+}
+
+/** Truncate theme labels in the SVG so they don't collide with the count badge
+ *  on tablet (768px, where the 880px viewBox scales to ~88% → ~175px available). */
+function truncateTheme(s: string, n = 28): string {
   return s.length > n ? s.slice(0, n - 1) + "…" : s;
 }
 
@@ -85,6 +95,11 @@ export default function IndicatorTaxonomyTree() {
 
   const [expanded, setExpanded] = useState<Set<string>>(new Set()); // "provider::theme"
   const [hovered, setHovered] = useState<string | null>(null);
+
+  // Below 640px, swap the fixed-width SVG dendrogram for a vertical accordion.
+  // Combined hook flips mounted + isMobile in one commit so SSR never emits the
+  // wide (880px) SVG on a phone and there is no desktop-branch frame post-mount.
+  const { mounted, isMobile } = useResponsiveLayout("(max-width: 639px)");
 
   const layout = useMemo(() => {
     const rows: {
@@ -136,6 +151,156 @@ export default function IndicatorTaxonomyTree() {
 
   const allKeys = providers.flatMap((p) => p.themes.map((t) => `${p.name}::${t.theme}`));
 
+  if (!mounted) {
+    return (
+      <div
+        className="rounded-lg border"
+        style={{
+          borderColor: "var(--qgi-border)",
+          backgroundColor: "var(--qgi-surface)",
+          minHeight: 240,
+        }}
+      >
+        <p role="status" aria-live="polite" className="sr-only">
+          Loading indicator taxonomy…
+        </p>
+      </div>
+    );
+  }
+
+  // ── Mobile accordion (< 640 px) ──────────────────────────────────────────
+  if (isMobile) {
+    return (
+      <div
+        className="rounded-lg border divide-y divide-[var(--qgi-border)]"
+        style={{
+          borderColor: "var(--qgi-border)",
+          backgroundColor: "var(--qgi-surface)",
+        }}
+      >
+        {providers.map((p) => {
+          const provKey = `prov::${p.name}`;
+          const isProvOpen = expanded.has(provKey);
+          return (
+            <div key={p.name} style={{ borderColor: "var(--qgi-border)" }}>
+              {/* Provider header */}
+              <button
+                type="button"
+                aria-expanded={isProvOpen}
+                onClick={() => toggle(provKey)}
+                className="w-full flex items-center justify-between px-3 py-2.5 text-left"
+                style={{ fontFamily: FONT_FAMILY }}
+              >
+                <span className="flex items-center gap-2">
+                  <span
+                    style={{
+                      display: "inline-block",
+                      width: 8,
+                      height: 8,
+                      borderRadius: "50%",
+                      backgroundColor: p.color,
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span
+                    className="text-[13px] font-medium"
+                    style={{ color: "var(--qgi-text)" }}
+                  >
+                    {p.name}
+                  </span>
+                </span>
+                <span className="flex items-center gap-2 shrink-0">
+                  <span
+                    className="text-[11px]"
+                    style={{ color: "var(--qgi-text-muted)" }}
+                  >
+                    {p.count} indicators
+                  </span>
+                  <span style={{ color: "var(--qgi-text-muted)", fontSize: 11 }}>
+                    {isProvOpen ? "▾" : "▸"}
+                  </span>
+                </span>
+              </button>
+
+              {/* Theme list */}
+              {isProvOpen && (
+                <div
+                  className="pb-1"
+                  style={{ borderTop: "1px solid var(--qgi-border)" }}
+                >
+                  {p.themes.map((t) => {
+                    const key = `${p.name}::${t.theme}`;
+                    const isThemeOpen = expanded.has(key);
+                    return (
+                      <div key={key}>
+                        <button
+                          type="button"
+                          aria-expanded={isThemeOpen}
+                          onClick={() => toggle(key)}
+                          className="w-full flex items-center justify-between px-4 py-2 text-left"
+                          style={{ fontFamily: FONT_FAMILY }}
+                        >
+                          <span
+                            className="text-[12px]"
+                            style={{ color: "var(--qgi-text)" }}
+                          >
+                            {isThemeOpen ? "▾" : "▸"} {t.theme}
+                          </span>
+                          <span
+                            className="text-[11px] shrink-0 ml-2"
+                            style={{ color: "var(--qgi-accent)" }}
+                          >
+                            {t.indicators.length}
+                          </span>
+                        </button>
+                        {/* Indicator leaves */}
+                        {isThemeOpen && (
+                          <div className="pl-6 pb-1">
+                            {t.indicators.map((ind) => {
+                              const fed = (ind.recipe_count || 0) > 0;
+                              return (
+                                <div
+                                  key={ind.code}
+                                  className="flex items-start justify-between py-1 px-2 gap-2"
+                                >
+                                  <span
+                                    className="text-[11px] leading-snug"
+                                    style={{ color: "var(--qgi-text-muted)" }}
+                                  >
+                                    · {ind.name}
+                                  </span>
+                                  <span
+                                    className="text-[10px] shrink-0"
+                                    style={{ color: "var(--qgi-text-muted)" }}
+                                  >
+                                    {fed
+                                      ? `${ind.recipe_count} trend${ind.recipe_count === 1 ? "" : "s"}`
+                                      : "tracked"}
+                                  </span>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          );
+        })}
+        <div className="px-3 py-2">
+          <p className="text-[11px]" style={{ color: "var(--qgi-text-muted)" }}>
+            A filled dot (on desktop) means the indicator currently feeds at least one
+            trend; &ldquo;tracked&rdquo; means it is monitored but not yet used.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Desktop / tablet SVG dendrogram (>= 640 px) ──────────────────────────
   return (
     <div
       className="rounded-lg border p-2 overflow-x-auto"
@@ -247,7 +412,7 @@ export default function IndicatorTaxonomyTree() {
                 />
                 <circle cx={r.x} cy={r.y} r="3" fill={r.provider.color} />
                 <text x={r.x + 8} y={r.y + 2} fontSize="11" fill="var(--qgi-text)">
-                  {isOpen ? "▾" : "▸"} {r.theme}
+                  {isOpen ? "▾" : "▸"} {truncateTheme(r.theme ?? "")}
                 </text>
                 <text
                   x={r.x + 190}
@@ -311,6 +476,8 @@ export default function IndicatorTaxonomyTree() {
           means it is tracked but not yet used by one.
         </p>
         <button
+          type="button"
+          aria-expanded={expanded.size > 0}
           onClick={() => setExpanded(expanded.size > 0 ? new Set() : new Set(allKeys))}
           className="text-[11px] tracking-wider uppercase px-3 py-1.5 rounded transition-colors hover:bg-white/5"
           style={{

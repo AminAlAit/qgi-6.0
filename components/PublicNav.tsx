@@ -48,7 +48,7 @@ export function PublicNav({ currentPage = null }: PublicNavProps) {
   // Blog) before "how does it work" (Methodology) before "who is this"
   // (About). Contact is a utility endpoint adjacent to the CTA.
   return (
-    <nav className="flex items-center gap-3 sm:gap-6 relative">
+    <nav className="flex items-center gap-3 sm:gap-6 relative pl-4 lg:pl-8">
       <Link
         href={"/reports" as Route}
         className={`hidden md:inline-flex ${baseClass}`}
@@ -65,14 +65,14 @@ export function PublicNav({ currentPage = null }: PublicNavProps) {
       </Link>
       <Link
         href={"/methodology" as Route}
-        className={baseClass}
+        className={`hidden md:inline-flex ${baseClass}`}
         style={{ color: colorFor("methodology") }}
       >
         Methodology
       </Link>
       <Link
         href={"/about" as Route}
-        className={baseClass}
+        className={`hidden md:inline-flex ${baseClass}`}
         style={{ color: colorFor("about") }}
       >
         About
@@ -89,12 +89,15 @@ export function PublicNav({ currentPage = null }: PublicNavProps) {
 
       <Link
         href={"/dashboard" as Route}
-        className="text-[10px] sm:text-xs tracking-wider uppercase px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-colors whitespace-nowrap"
+        className="inline-flex items-center justify-center min-h-[44px] text-[10px] sm:text-xs tracking-wider uppercase px-2 sm:px-4 py-1.5 sm:py-2 rounded transition-colors whitespace-nowrap"
         style={{
           backgroundColor: "var(--qgi-accent)",
           color: "var(--qgi-bg)",
         }}
       >
+        {/* Single text node ("Open Dashboard") kept intact for the nav-label
+            tests; phone compactness comes from the reduced px-2 / text-[10px]
+            above rather than from shortening the words. */}
         Open Dashboard
       </Link>
 
@@ -104,7 +107,7 @@ export function PublicNav({ currentPage = null }: PublicNavProps) {
         aria-expanded={open}
         aria-controls="public-mobile-menu"
         onClick={() => setOpen((o) => !o)}
-        className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded border transition-colors hover:bg-[var(--qgi-surface-2)]"
+        className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded border transition-colors hover:bg-[var(--qgi-surface-2)] mr-1"
         style={{
           borderColor: "var(--qgi-border)",
           color: "var(--qgi-text-muted)",
@@ -155,9 +158,7 @@ export function PublicNav({ currentPage = null }: PublicNavProps) {
             borderColor: "var(--qgi-border)",
           }}
         >
-          {/* Mobile hamburger inherits desktop order: Reports → Blog → Contact.
-              (Methodology + About stay visible on mobile, so they are not
-              duplicated here.) */}
+          {/* Mobile hamburger: full nav order — Reports → Blog → Methodology → About → Contact. */}
           <Link
             href={"/reports" as Route}
             onClick={closeOnNav}
@@ -173,6 +174,22 @@ export function PublicNav({ currentPage = null }: PublicNavProps) {
             style={{ color: colorFor("blog") }}
           >
             Blog
+          </Link>
+          <Link
+            href={"/methodology" as Route}
+            onClick={closeOnNav}
+            className="block px-4 py-3 text-sm tracking-wider uppercase transition-colors hover:bg-[var(--qgi-surface-2)]"
+            style={{ color: colorFor("methodology") }}
+          >
+            Methodology
+          </Link>
+          <Link
+            href={"/about" as Route}
+            onClick={closeOnNav}
+            className="block px-4 py-3 text-sm tracking-wider uppercase transition-colors hover:bg-[var(--qgi-surface-2)]"
+            style={{ color: colorFor("about") }}
+          >
+            About
           </Link>
           <Link
             href={"/contact" as Route}

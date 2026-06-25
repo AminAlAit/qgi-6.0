@@ -87,6 +87,13 @@ export function TourProvider() {
     const dismissed = readCookie(COOKIE_NAME) === COOKIE_VALUE;
     if (dismissed) return;
     if (pageSteps.length === 0) return;
+    // Don't AUTO-fire the tour on phone/tablet: Joyride anchors its popovers
+    // over the dense hero/cards and the tooltip ends up overlapping the very
+    // surface it describes on narrow viewports (#26/#37). The tour stays fully
+    // available at any width via the sidebar "Take the tour" link (manual
+    // launch above is unaffected by this guard). Boundary is inclusive so
+    // iPad landscape (exactly 1024px) does not auto-fire either.
+    if (window.innerWidth <= 1024) return;
     // Small delay so the page hydrates before Joyride tries to anchor.
     const t = window.setTimeout(() => {
       setRun(true);
