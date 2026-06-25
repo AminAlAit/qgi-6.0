@@ -38,6 +38,13 @@ const POSTS: Array<{
   tags: string[];
 }> = [
   {
+    slug: "twelve-to-thirty",
+    title: "Twelve to thirty, in one scan",
+    date: "2026-06-25",
+    dek: "We expanded the news board from twelve countries to thirty. Adding a country cost essentially nothing, nine of the thirty still show no live pulse, and the next twenty are a one-line change. What we did, and what it means.",
+    tags: ["news layer", "GDELT", "scaling"],
+  },
+  {
     slug: "foreign-intervention-graduation",
     title:
       "Foreign Intervention, graduated: what eighteen years of indicator trajectories say",
