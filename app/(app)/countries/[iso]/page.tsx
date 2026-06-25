@@ -84,8 +84,8 @@ export default async function CountryV41DetailPage({ params }: Params) {
   const driversAccent = fams[0]?.color ?? NEUTRAL_SLATE;
 
   // News layer (HF merge step 2): board topics + 36-month pulse, sliced
-  // server-side. Null for countries outside today's 12-country coverage —
-  // the page renders without the news panels, no placeholder.
+  // server-side. Null for countries outside the news-coverage set
+  // (see hf-topics.json) — the page renders without the news panels, no placeholder.
   const hf = getHfCountryPanelData(country.iso);
 
   // GPR confirmation layer: present only for the 44 countries with a published

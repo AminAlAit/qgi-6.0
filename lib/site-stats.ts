@@ -52,6 +52,16 @@ export const TOTAL_INDICATORS = 109;
 export const TOTAL_INDICATOR_CATALOG = 109;
 
 /**
+ * Countries covered by the live NEWS layer (Risk Board "Topics" + per-country
+ * Live Pulse). This is the SINGLE source of truth for the news-coverage count
+ * in copy — update it here (one line) when expanding coverage. The authoritative
+ * country LIST lives in the pipeline registry (qgi-gdelt-poc/news_countries.json)
+ * and flows to the board via data/hf-topics.json; this constant must match
+ * hf-topics.json `countries.length`. See the news-expansion runbook.
+ */
+export const NEWS_COUNTRIES = 30;
+
+/**
  * UN-recognized states. Constant scope descriptor — appears in marketing
  * copy that frames "global coverage" rather than pipeline arithmetic.
  */
