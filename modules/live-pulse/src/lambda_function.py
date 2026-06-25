@@ -134,10 +134,14 @@ TOPIC_LABEL = {
     "T05": "Protest", "T06": "Economic", "T07": "Trade & Sanctions",
 }
 
-# The 12 PoC countries: FIPS 10-4 (GDELT) -> ISO3 (frontend cell keys).
+# 30 countries (news 12 -> 30, 2026-06-25): FIPS 10-4 (GDELT) -> ISO3 (cell keys).
+# New cells emit null until seed_live_baseline.py is re-run with the same 18 FIPS.
 FIPS_TO_ISO3 = {
     "LE": "LBN", "EG": "EGY", "IR": "IRN", "PK": "PAK", "SU": "SDN", "NI": "NGA",
     "VE": "VEN", "AR": "ARG", "TS": "TUN", "BM": "MMR", "TH": "THA", "BG": "BGD",
+    "YM": "YEM", "SY": "SYR", "IZ": "IRQ", "UP": "UKR", "ET": "ETH", "CG": "COD",
+    "AF": "AFG", "RS": "RUS", "LY": "LBY", "IS": "ISR", "SO": "SOM", "ML": "MLI",
+    "HA": "HTI", "TU": "TUR", "CT": "CAF", "MZ": "MOZ", "ID": "IDN", "ZI": "ZWE",
 }
 
 csv.field_size_limit(10_000_000)
