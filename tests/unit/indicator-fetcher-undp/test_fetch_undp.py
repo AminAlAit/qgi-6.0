@@ -282,3 +282,9 @@ class TestSharedBase:
             base.to_canonical_frame(
                 pd.DataFrame({"country": ["A"], "year": [2000]})
             )
+
+
+def test_fetch_one_rejects_unknown_id():
+    import pytest
+    with pytest.raises(ValueError):
+        f.fetch_one({"id_string": "ZZ-99"})

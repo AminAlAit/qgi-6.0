@@ -284,3 +284,9 @@ def test_specs_ow04_has_correct_columns_and_fallback():
     assert cfg["year_col"] == "year"
     assert cfg["value_col"] == "co2_growth_prct"
     assert cfg.get("fallback_level_col") == "co2"
+
+
+def test_fetch_one_rejects_unknown_id():
+    import pytest
+    with pytest.raises(ValueError):
+        f.fetch_one({"id_string": "ZZ-99"})

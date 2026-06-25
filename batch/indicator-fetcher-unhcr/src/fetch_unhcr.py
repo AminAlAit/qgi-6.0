@@ -67,8 +67,14 @@ def parse_unhcr_records(records: list[dict], cfg: dict[str, str],
     return (pd.DataFrame(rows).groupby(["country", "year"], as_index=False)["value"].sum())
 
 
+_raw_cache: dict[str, list[dict]] = {}
+
+
 def fetch_unhcr_raw(endpoint: str) -> list[dict]:
-    """Paginated GET of the UNHCR population API. Returns the flat item list."""
+    """Paginated GET of the UNHCR population API. Returns the flat item list.
+    Cached per endpoint so the 4 indicators sharing 'population' fetch it once."""
+    if endpoint in _raw_cache:
+        return _raw_cache[endpoint]
     import requests
     items: list[dict] = []
     page = 1
@@ -77,13 +83,17 @@ def fetch_unhcr_raw(endpoint: str) -> list[dict]:
             "yearFrom": YEAR_FROM, "limit": 10000, "page": page, "coa_all": "true", "coo_all": "true"})
         resp.raise_for_status()
         body = resp.json()
-        batch = body.get("items", body if isinstance(body, list) else [])
+        if isinstance(body, list):           # some endpoints return a bare list
+            batch, total_pages = body, 1
+        else:
+            batch = body.get("items", [])
+            total_pages = int(body.get("maxPages") or body.get("totalPages") or 1)
         items.extend(batch)
-        total_pages = body.get("maxPages") or body.get("totalPages") or 1
-        if page >= int(total_pages) or not batch:
+        if page >= total_pages or not batch:
             break
         page += 1
     base.logger.info(f"UNHCR {endpoint}: {len(items)} records over {page} page(s)")
+    _raw_cache[endpoint] = items
     return items
 
 

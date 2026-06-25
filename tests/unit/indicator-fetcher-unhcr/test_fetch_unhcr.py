@@ -88,3 +88,9 @@ def test_parse_unhcr_empty_when_nothing_resolves():
 
 def test_unhcr_specs_cover_all_six():
     assert set(f.SPECS) == {"UN-01", "UN-02", "UN-03", "UN-04", "UN-05", "UN-06"}
+
+
+def test_fetch_one_rejects_unknown_id():
+    import pytest
+    with pytest.raises(ValueError):
+        f.fetch_one({"id_string": "ZZ-99"})
