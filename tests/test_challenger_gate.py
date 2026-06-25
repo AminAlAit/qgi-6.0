@@ -204,3 +204,33 @@ def test_run_gate_handles_missing_positives(tmp_path):
     assert "error" in rec
     assert "nonexistent" not in manifest["flagged_recipes"]
     assert "nonexistent" not in manifest["unflagged_recipes"]
+    # All recipes errored -> candidate never screened: not_evaluated, NOT inert.
+    assert manifest["not_evaluated_candidates"] == ["cand_ind"]
+    assert manifest["inert_candidates"] == []
+
+
+def test_run_gate_coverage_failed_everywhere(tmp_path):
+    # A candidate too sparse to clear the coverage gate on the only recipe lands in
+    # coverage_failed_everywhere (a data problem), NOT inert. No sklearn needed: the
+    # candidate coverage-fails before any LR, and the pool is empty.
+    pdir = tmp_path / "panels"
+    d = pdir / "cand_sparse"
+    d.mkdir(parents=True)
+    # covers only 3 countries -> n_countries_survive (3) < MIN_SURVIVE_COUNTRIES (10)
+    rows = [{"country": c, "year": y, "value": float(y)}
+            for c in ("C00", "C01", "C02") for y in range(2000, 2021)]
+    pd.DataFrame(rows).to_parquet(d / "cand_sparse.parquet")
+    shape = tmp_path / "shapes" / "r1"
+    shape.mkdir(parents=True)
+    pos = [f"c{i % 12:02d},{2010 + (i % 8)}" for i in range(40)]   # 40 positives over 12 countries
+    (shape / "positives.csv").write_text("country_id,event_year\n" + "\n".join(pos) + "\n", encoding="utf-8")
+    manifest = cg.run_gate(
+        panel_dir=pdir,
+        candidate_ids=["cand_sparse"],
+        recipes=[{"recipe_id": "r1", "status": "walked_no_graduation"}],
+        shape_dir=tmp_path / "shapes",
+    )
+    assert manifest["coverage_failed_everywhere"] == ["cand_sparse"]
+    assert manifest["inert_candidates"] == []
+    assert manifest["active_candidates"] == []
+    assert manifest["not_evaluated_candidates"] == []
