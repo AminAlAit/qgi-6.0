@@ -1,0 +1,405 @@
+[
+  {
+    "code": "v2regendtype",
+    "why": "Encodes the mechanism by which the previous regime fell (coup, election, negotiation, collapse), providing a baseline structural memory of institutional fragility that shapes how the current order may unravel. Regimes that replaced predecessors through coups or collapse face systematically higher recurrence risk for violent power transitions, making this a strong prior for political-violence and regime-change Trends.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem near-universal coverage from 1900; coding relies on expert assessment so quality varies for pre-WWII and micro-states.",
+    "trends": [
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Prior coup-driven regime change is the single strongest structural predictor of coup recurrence; directly encodes the mechanism this Trend predicts."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Regimes that arrived via collapse or forced negotiation are more likely to over-centralise power as a survival strategy."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Transition type (negotiated vs. collapse) strongly conditions whether democratisation succeeds; orthogonal to the continuous V-Dem scores already in the pool."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Regime-collapse endings correlate with post-conflict power vacuums that seed insurgencies; adds path-dependence signal beyond current governance indices."
+      }
+    ]
+  },
+  {
+    "code": "IDMC_DIS_HAZ_FLOOD",
+    "why": "Annual new displacements specifically from flood events capture acute climate-driven population shocks that strain state capacity, overwhelm social protection systems, and can trigger secondary political instability — a more hazard-specific signal than aggregate disaster displacement. Disaggregating by hazard type lets models distinguish chronic flood-exposed countries from those hit by political violence or cyclones.",
+    "country_coverage": 150,
+    "coverage_confidence": "medium",
+    "year_start": 2008,
+    "year_end": 2024,
+    "coverage_note": "IDMC disaster data starts 2008; coverage skewed toward countries with significant displacement events — low-displacement countries may show zero rather than missing.",
+    "trends": [
+      {
+        "trend_id": "flood_and_cyclone",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Direct causal match — flood displacement is the primary humanitarian output of the flood/cyclone event category; likely to be a top-5 feature."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Large-scale flood displacement is a canonical trigger for humanitarian crises; strong contemporaneous correlation with crisis declarations."
+      },
+      {
+        "trend_id": "drought_and_famine",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Marginal: countries exposed to repeated flood displacement often share underlying climate vulnerability with drought-prone areas, but the direct signal link is weak."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Repeated flood displacement can convert internal IDPs into cross-border refugees; adds a leading indicator for migration pressure."
+      }
+    ]
+  },
+  {
+    "code": "v2stcritapparm",
+    "why": "Measures whether military officers are promoted on merit versus political loyalty — a key indicator of coup-proofing versus professionalism that determines how the armed forces respond to civilian authority in crises. Loyalty-based militaries simultaneously signal authoritarian consolidation and fragile civil-military relations prone to factional splits or coup plotting.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert coding; near-universal country coverage but early-period scores (pre-1950) carry higher uncertainty in many regions.",
+    "trends": [
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "High",
+        "lift_pct": "+7-14%",
+        "reason": "Merit-vs-loyalty appointment is a core structural determinant of coup risk; factional military rivalry emerges when loyalty overrides competence."
+      },
+      {
+        "trend_id": "military_policy_and_reform",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Military reform events are directly indexed by shifts in appointment criteria; this indicator likely leads the event."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Executives who purge merit-based officers and install loyalists are consolidating power; the two variables co-move but loyalty appointments may lead the visible consolidation."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Loyalty-appointed militaries are more willing tools of domestic repression; adds explanatory dimension beyond civilian judicial/police repression indicators."
+      }
+    ]
+  },
+  {
+    "code": "NY.ADJ.SVNG.GN.ZS",
+    "why": "Adjusted net savings subtracts natural resource depletion and pollution damage from gross savings, capturing whether a country is genuinely building or drawing down its wealth — a long-run sustainability signal that leads fiscal crises and resource-curse dynamics. Chronic negative genuine savings predict the exhaustion of buffers that states rely on to absorb shocks without political destabilisation.",
+    "country_coverage": 170,
+    "coverage_confidence": "high",
+    "year_start": 1990,
+    "year_end": 2023,
+    "coverage_note": "WB WDI coverage from ~1990; some small states and resource-rich countries have gaps where depletion estimates are uncertain.",
+    "trends": [
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Sustained negative genuine savings is a multi-year leading indicator of wealth erosion that precedes growth collapse; more forward-looking than GDP growth itself."
+      },
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Governments facing genuine-savings deterioration are more likely to enact emergency fiscal shifts; the signal prefaces revenue or expenditure reform events."
+      },
+      {
+        "trend_id": "resource_conflict",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Resource depletion embedded in the metric directly links to resource-rent exhaustion and the competition/conflict that follows; strong theoretical link."
+      },
+      {
+        "trend_id": "oil_and_gas",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Oil-dependent states show volatile genuine savings correlated with price cycles; the metric aggregates both oil wealth and its depletion cost in one signal."
+      },
+      {
+        "trend_id": "environmental_policy",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Emission damage component adds a climate-policy-readiness signal but it is marginal compared to the fiscal and resource channels."
+      }
+    ]
+  },
+  {
+    "code": "v2jupurge",
+    "why": "Captures politically-motivated removals of judges, a low-frequency but high-salience event that directly measures executive encroachment on judicial independence and serves as a leading indicator for broader democratic backsliding. Judicial purges tend to cluster before executive power consolidation events and constitute a concrete, measurable precursor distinguishable from gradual de-institutionalisation.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-scored; global coverage with higher score uncertainty in early decades and micro-states.",
+    "trends": [
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Judicial purge is a canonical mechanism of consolidation — dismantling check institutions before expanding executive authority; strong leading indicator."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+6-10%",
+        "reason": "Removing independent judges removes the institutional barrier to arbitrary detention, trials, and repression; directly enables the event category."
+      },
+      {
+        "trend_id": "constitutional_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Constitutional rewrites often follow or accompany judicial purges to lock in new power arrangements; purge timing may lead the formal constitutional event."
+      },
+      {
+        "trend_id": "transitional_justice",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Purges in transition contexts signal failed or reversed accountability mechanisms; tangential but adds post-conflict institution-building signal."
+      }
+    ]
+  },
+  {
+    "code": "MS.MIL.XPND.ZS",
+    "why": "Military expenditure as a share of central government spending measures the degree to which the state prioritises coercive capacity over civilian services — a structural signal for both internal security preoccupation and resource trade-offs that erode public goods provision. High and rising military shares can precede coup risk (praetorian states) or reflect pre-conflict arms build-ups.",
+    "country_coverage": 170,
+    "coverage_confidence": "high",
+    "year_start": 1988,
+    "year_end": 2023,
+    "coverage_note": "WB WDI from 1988 (SIPRI-sourced); some states have multi-year gaps due to unreported or classified budgets.",
+    "trends": [
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Praetorian budget capture — high military spending share reflects institutional power that correlates with coup propensity in civil-military theory."
+      },
+      {
+        "trend_id": "interstate_war",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Government-expenditure military share captures fiscal commitment to war-fighting capacity beyond GDP share; strong link to inter-state conflict build-up."
+      },
+      {
+        "trend_id": "military_policy_and_reform",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Budget share shifts are a direct measurable signal of military policy change events — rearmament, drawdown, or force restructuring."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Counter-insurgency campaigns show up as rising expenditure share; elevated baseline also signals institutional militarisation that precedes civil conflict."
+      }
+    ]
+  },
+  {
+    "code": "NY.GDP.OIL.RT.ZS",
+    "why": "Oil rents as a share of GDP directly quantifies petro-state dependency and the associated vulnerability to commodity price shocks that can trigger fiscal crises, subsidy cuts, and popular unrest when oil revenues collapse. It is a structurally important indicator because it shapes the distribution of political economy incentives — patronage systems, ruling coalition survival, and the rentier bargain.",
+    "country_coverage": 190,
+    "coverage_confidence": "high",
+    "year_start": 1970,
+    "year_end": 2022,
+    "coverage_note": "WB WDI back to 1970 for most producers; non-oil countries report zero (which is valid), so effective signal coverage is narrower (~60-70 countries with non-trivial values).",
+    "trends": [
+      {
+        "trend_id": "oil_and_gas",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Direct measurement of oil-revenue centrality to the economy; the strongest single structural predictor for oil sector policy and crisis events."
+      },
+      {
+        "trend_id": "resource_conflict",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "High oil-rent share creates resource-curse conditions — grievance over distribution, rebel funding, and state fragility from rent shocks."
+      },
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Oil-rent shocks (price collapses) force emergency fiscal adjustments; this indicator captures the exposure level that makes fiscal policy events likely."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Petro-states show boom-bust GDP cycles tightly linked to oil rent; exposure amplifies recession risk from external price shocks."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Subsidy-cut protests in oil economies are a well-documented transmission channel from rent collapse to social mobilisation."
+      }
+    ]
+  },
+  {
+    "code": "v2juhcind",
+    "why": "High court independence from executive interference is a foundational institutional variable: when the apex court is captured, it removes the last formal check on executive arbitrariness, enabling a cascade of repression, property rights erosion, and political persecution. Deterioration in this indicator is a measurable early-warning signal that precedes both democratic backsliding and business-climate crises.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-coded; full country-year panel back to 1900 with typical uncertainty caveats for early decades.",
+    "trends": [
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Judicial capture is a defining step in the consolidation playbook; this indicator directly measures the variable the Trend predicts."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "An executive-compliant court validates mass detentions and political trials; loss of high-court independence enables repression escalation."
+      },
+      {
+        "trend_id": "constitutional_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Court packing and constitutional court restructuring events are directly indexed by this score; independence drops often co-occur with constitutional change."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Without independent judicial oversight, human rights violations face no domestic remedy; the institutional pathway is well-established in the literature."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_PEACE_AGREE_SIGNED",
+    "why": "A binary flag for peace agreement signings captures a discrete institutional milestone in conflict resolution that reshapes the political landscape — creating both opportunities for sustained peace and risks of implementation failure and spoiler violence. As a leading-to-lagging marker it is useful on both sides: post-conflict Trends can be anchored to the agreement date, and the absence of agreements despite prolonged conflict is itself informative.",
+    "country_coverage": 100,
+    "coverage_confidence": "medium",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "UCDP PAD covers only conflict-affected countries (by definition); most country-years are zero, which is valid but sparse — effectively a conditional indicator.",
+    "trends": [
+      {
+        "trend_id": "peacekeeping_and_peace_process",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Direct measurement of the defining event in this Trend category; agreement signing is the canonical terminating event for armed conflict phases."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Agreement signings follow civil war phases and predict short-term conflict intensity drops; the lead-lag relationship is strong and bidirectional in time-series."
+      },
+      {
+        "trend_id": "transitional_justice",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Peace agreements often include transitional justice provisions; signing year is a temporal anchor for accountability-process events."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Failed or stalled agreements can coincide with renewed repression of civil society; marginal signal through the implementation-failure pathway."
+      }
+    ]
+  },
+  {
+    "code": "v2meharjrn",
+    "why": "Physical harassment and imprisonment of journalists is a high-specificity indicator of the state's tolerance for information pluralism and its willingness to use coercion to suppress political narratives — capturing a direct repression mechanism rather than a diffuse press-freedom composite. It tends to intensify ahead of elections, coup attempts, and protest crackdowns where controlling the information environment becomes operationally important to incumbents.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-coded; globally consistent panel; individual event-level accuracy in autocracies may be understated due to hidden repression.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Journalist harassment is a component-level measure of repression targeting information actors; directly indexes the repression event type."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Consolidating executives systematically harass journalists to suppress opposition narratives; this variable captures the information-control arm of power seizure."
+      },
+      {
+        "trend_id": "elections_and_voting",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Pre-election journalist crackdowns are a documented pattern in electoral autocracies; the score may lead election-integrity deterioration events."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Repression of journalists during protests amplifies grievances and is a contemporaneous signal for protest escalation and state response severity."
+      }
+    ]
+  },
+  {
+    "code": "OWID_TERRORISM_DEATHS",
+    "why": "Annual deaths from terrorist attacks (GTD) provide a lethality-weighted measure of terrorism intensity that goes beyond incident counts to capture the severity of organised political violence below the armed-conflict threshold. Fatality trends are more signal-rich for political risk models than binary occurrence flags because they track whether groups are scaling capacity or winding down.",
+    "country_coverage": 170,
+    "coverage_confidence": "high",
+    "year_start": 1970,
+    "year_end": 2023,
+    "coverage_note": "GTD via OWID; coverage is near-global but 1993 data are missing from GTD (methodology change); OWID may interpolate or leave as gap — verify for that year.",
+    "trends": [
+      {
+        "trend_id": "terrorist_attack",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Directly measures lethality of the event category; fatality count is the canonical outcome variable this Trend models — likely a top-3 feature."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "High terrorism deaths often co-occur with insurgencies using terror tactics; the variable captures sub-state violence that precedes or accompanies civil war escalation."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Terrorism deaths are a primary input to any political violence index; cross-type signal that should crack the top-40 for this Trend."
+      },
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "High terrorism environments are a primary justification for foreign military intervention; deaths signal the threat level that triggers external involvement."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Communal violence groups sometimes use terror tactics; fatality signal provides partial overlap with sub-state ethnic violence patterns."
+      }
+    ]
+  }
+]
