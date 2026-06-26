@@ -1,0 +1,2074 @@
+[
+  {
+    "code": "HDI",
+    "name": "Human Development Index",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Composite index of life expectancy, education, and GNI per capita; 1990-2023 annual time series for ~193 countries"
+  },
+  {
+    "code": "HDI_RANK",
+    "name": "Human Development Index Rank",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Country rank on HDI; ordinal position among ~193 countries annually"
+  },
+  {
+    "code": "LE",
+    "name": "Life Expectancy at Birth",
+    "category": "Health",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Life expectancy (years) used as HDI health component; HDR-harmonized series distinct from WB SP.DYN.LE00.IN"
+  },
+  {
+    "code": "EYS",
+    "name": "Expected Years of Schooling",
+    "category": "Education",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Expected years of schooling for children of school-entry age; HDI education component"
+  },
+  {
+    "code": "MYS",
+    "name": "Mean Years of Schooling",
+    "category": "Education",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Average years of schooling for adults 25+; HDI education component"
+  },
+  {
+    "code": "GNIPC",
+    "name": "Gross National Income Per Capita (PPP 2017 USD)",
+    "category": "Economic",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "GNI per capita in constant 2017 PPP international $; HDI income component; HDR-harmonized"
+  },
+  {
+    "code": "IHDI",
+    "name": "Inequality-Adjusted Human Development Index",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "HDI adjusted for inequality in health, education, and income; discount from HDI captures inequality penalty"
+  },
+  {
+    "code": "LOSS",
+    "name": "Overall Loss in HDI Due to Inequality (%)",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Percentage difference between HDI and IHDI; overall inequality penalty on human development"
+  },
+  {
+    "code": "INEQ_LE",
+    "name": "Inequality in Life Expectancy",
+    "category": "Health",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Atkinson measure of inequality in distribution of expected length of life within a country"
+  },
+  {
+    "code": "INEQ_EDU",
+    "name": "Inequality in Education",
+    "category": "Education",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Atkinson measure of inequality in years of schooling distribution; captures within-country education gap"
+  },
+  {
+    "code": "INEQ_INC",
+    "name": "Inequality in Income",
+    "category": "Economic",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Atkinson measure of income inequality used in IHDI computation; distinct from Gini"
+  },
+  {
+    "code": "GDI",
+    "name": "Gender Development Index",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Ratio of female to male HDI; captures gender gaps in health, education, and income dimensions"
+  },
+  {
+    "code": "HDI_F",
+    "name": "HDI Female",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Human Development Index computed for female population; component of GDI"
+  },
+  {
+    "code": "HDI_M",
+    "name": "HDI Male",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Human Development Index computed for male population; component of GDI"
+  },
+  {
+    "code": "LE_F",
+    "name": "Female Life Expectancy at Birth",
+    "category": "Health",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Life expectancy at birth for females; GDI health sub-component"
+  },
+  {
+    "code": "LE_M",
+    "name": "Male Life Expectancy at Birth",
+    "category": "Health",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Life expectancy at birth for males; GDI health sub-component"
+  },
+  {
+    "code": "EYS_F",
+    "name": "Expected Years of Schooling (Female)",
+    "category": "Education",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Expected years of schooling for girls of school-entry age; GDI education sub-component"
+  },
+  {
+    "code": "EYS_M",
+    "name": "Expected Years of Schooling (Male)",
+    "category": "Education",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Expected years of schooling for boys of school-entry age; GDI education sub-component"
+  },
+  {
+    "code": "MYS_F",
+    "name": "Mean Years of Schooling (Female)",
+    "category": "Education",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Mean years of schooling for women aged 25+; GDI education sub-component"
+  },
+  {
+    "code": "MYS_M",
+    "name": "Mean Years of Schooling (Male)",
+    "category": "Education",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Mean years of schooling for men aged 25+; GDI education sub-component"
+  },
+  {
+    "code": "GNIPC_F",
+    "name": "GNI Per Capita (Female, PPP 2017 USD)",
+    "category": "Economic",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Estimated GNI per capita for females; GDI income sub-component"
+  },
+  {
+    "code": "GNIPC_M",
+    "name": "GNI Per Capita (Male, PPP 2017 USD)",
+    "category": "Economic",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Estimated GNI per capita for males; GDI income sub-component"
+  },
+  {
+    "code": "GII",
+    "name": "Gender Inequality Index",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Composite index of reproductive health, empowerment, and labour market gender inequality; 0=equal, 1=maximum inequality"
+  },
+  {
+    "code": "GII_RANK",
+    "name": "Gender Inequality Index Rank",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Country rank on GII; country ordering on gender inequality"
+  },
+  {
+    "code": "MMR",
+    "name": "Maternal Mortality Ratio",
+    "category": "Health",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Deaths per 100,000 live births; GII reproductive health component; proxy for healthcare system adequacy"
+  },
+  {
+    "code": "ABR",
+    "name": "Adolescent Birth Rate",
+    "category": "Health",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Births per 1,000 women aged 15-19; GII reproductive health component; fragility and health system signal"
+  },
+  {
+    "code": "SE_F",
+    "name": "Female Population with at Least Some Secondary Education (%)",
+    "category": "Education",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of females 25+ with at least some secondary education; GII empowerment component"
+  },
+  {
+    "code": "SE_M",
+    "name": "Male Population with at Least Some Secondary Education (%)",
+    "category": "Education",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of males 25+ with at least some secondary education; GII empowerment component"
+  },
+  {
+    "code": "PR_F",
+    "name": "Female Share of Parliament Seats (%)",
+    "category": "Governance",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of seats in national parliament held by women; GII empowerment component; political inclusion signal"
+  },
+  {
+    "code": "PR_M",
+    "name": "Male Share of Parliament Seats (%)",
+    "category": "Governance",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of seats in national parliament held by men; GII empowerment component complement"
+  },
+  {
+    "code": "LFPR_F",
+    "name": "Female Labour Force Participation Rate (%)",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Female share of working-age population in labour force; GII labour market component; economic inclusion signal"
+  },
+  {
+    "code": "LFPR_M",
+    "name": "Male Labour Force Participation Rate (%)",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Male share of working-age population in labour force; GII labour market complement"
+  },
+  {
+    "code": "PHDI",
+    "name": "Planetary Pressures-Adjusted Human Development Index",
+    "category": "Environment",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "HDI discounted by planetary pressure (CO2 emissions + material footprint); captures sustainability-adjusted development"
+  },
+  {
+    "code": "DIFF_HDI_PHDI",
+    "name": "Difference between HDI and PHDI",
+    "category": "Environment",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Planetary pressure penalty on HDI; higher values = worse environmental footprint relative to development level"
+  },
+  {
+    "code": "CO2_PROD",
+    "name": "CO2 Emissions Per Capita (production-based, tonnes)",
+    "category": "Environment",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Per capita CO2 emissions from production; PHDI planetary pressure component"
+  },
+  {
+    "code": "MF",
+    "name": "Material Footprint Per Capita (tonnes)",
+    "category": "Environment",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Total raw material extraction attributed to domestic final demand per capita; PHDI planetary pressure component"
+  },
+  {
+    "code": "MPI",
+    "name": "Multidimensional Poverty Index",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Composite index of acute poverty across health, education, and living standards; 0-1 scale from household surveys"
+  },
+  {
+    "code": "MPI_HEADCOUNT",
+    "name": "Multidimensional Poverty Headcount (%)",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of population classified as multidimensionally poor (deprived in 1/3+ of weighted indicators)"
+  },
+  {
+    "code": "MPI_INTENSITY",
+    "name": "Intensity of Multidimensional Poverty (%)",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Average share of weighted deprivations among the multidimensionally poor; breadth of poverty signal"
+  },
+  {
+    "code": "MPI_NUTRITION",
+    "name": "Contribution of Nutrition to MPI (%)",
+    "category": "Health",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of MPI score driven by nutrition deprivation; fragility health signal"
+  },
+  {
+    "code": "MPI_CHILD_MORT",
+    "name": "Contribution of Child Mortality to MPI (%)",
+    "category": "Health",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of MPI score driven by child mortality deprivation; acute welfare signal"
+  },
+  {
+    "code": "MPI_SCHOOLING",
+    "name": "Contribution of Years of Schooling to MPI (%)",
+    "category": "Education",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of MPI score from schooling deprivation; education exclusion signal"
+  },
+  {
+    "code": "MPI_ATTENDANCE",
+    "name": "Contribution of School Attendance to MPI (%)",
+    "category": "Education",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of MPI score from school attendance deprivation; present-tense education access"
+  },
+  {
+    "code": "MPI_COOKING_FUEL",
+    "name": "Contribution of Cooking Fuel to MPI (%)",
+    "category": "Environment",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of MPI from cooking fuel deprivation (reliance on solid fuels); infrastructure/energy access signal"
+  },
+  {
+    "code": "MPI_SANITATION",
+    "name": "Contribution of Sanitation to MPI (%)",
+    "category": "Health",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of MPI from sanitation deprivation; infrastructure and public health signal"
+  },
+  {
+    "code": "MPI_WATER",
+    "name": "Contribution of Drinking Water to MPI (%)",
+    "category": "Health",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of MPI from unsafe drinking water deprivation; acute fragility and state capacity signal"
+  },
+  {
+    "code": "MPI_ELECTRICITY",
+    "name": "Contribution of Electricity to MPI (%)",
+    "category": "Infrastructure",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of MPI from electricity deprivation; infrastructure development signal"
+  },
+  {
+    "code": "MPI_HOUSING",
+    "name": "Contribution of Housing to MPI (%)",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of MPI from housing deprivation; living standards and urban development signal"
+  },
+  {
+    "code": "MPI_ASSETS",
+    "name": "Contribution of Assets to MPI (%)",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of MPI from asset deprivation; wealth and household capital signal"
+  },
+  {
+    "code": "GSNI",
+    "name": "Gender Social Norms Index",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share of population with biases against gender equality across political, educational, economic, and bodily integrity dimensions"
+  },
+  {
+    "code": "GSNI_DIM_POL",
+    "name": "GSNI Political Dimension Bias (%)",
+    "category": "Governance",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share with bias against women in politics; governance gender equity signal"
+  },
+  {
+    "code": "GSNI_DIM_EDU",
+    "name": "GSNI Education Dimension Bias (%)",
+    "category": "Education",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share with bias against equal education for women; educational gender norm signal"
+  },
+  {
+    "code": "GSNI_DIM_ECO",
+    "name": "GSNI Economic Dimension Bias (%)",
+    "category": "Economic",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share with bias against women's economic participation; economic inclusion norm"
+  },
+  {
+    "code": "GSNI_DIM_BODILY",
+    "name": "GSNI Bodily Integrity Dimension Bias (%)",
+    "category": "Social",
+    "provider": "UNDP HDR",
+    "license": "CC BY 3.0 IGO",
+    "note": "Share condoning violence against women; bodily autonomy norm signal relevant to fragility"
+  },
+  {
+    "code": "OECD_GINI",
+    "name": "Gini Coefficient of Disposable Income (OECD IDD)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Gini of equivalised household disposable income; IDD; ~40 OECD countries annually; higher quality/harmonized than WB Gini"
+  },
+  {
+    "code": "OECD_POVRATE",
+    "name": "Relative Income Poverty Rate (50% median)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share of population with income below 50% of national median; OECD IDD; ~40 OECD countries"
+  },
+  {
+    "code": "OECD_POVRATE_60",
+    "name": "Relative Income Poverty Rate (60% median)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share below 60% of median income; EU-aligned poverty threshold; OECD IDD"
+  },
+  {
+    "code": "OECD_POVGAP",
+    "name": "Income Poverty Gap (50% median threshold)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Mean shortfall of poor households' income from the 50% median poverty line; depth of poverty signal"
+  },
+  {
+    "code": "OECD_S80S20",
+    "name": "S80/S20 Income Share Ratio",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Ratio of income of top 20% to bottom 20%; OECD IDD; inequality concentration signal"
+  },
+  {
+    "code": "OECD_P90P10",
+    "name": "P90/P10 Income Percentile Ratio",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Ratio of 90th to 10th income percentile; measures mid-to-bottom inequality spread"
+  },
+  {
+    "code": "OECD_TOPSHARE1",
+    "name": "Top 1% Income Share",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Pre-tax national income share of top 1%; elites concentration signal; OECD/WID-sourced"
+  },
+  {
+    "code": "OECD_TOPSHARE10",
+    "name": "Top 10% Income Share",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Pre-tax national income share of top 10%; overall elite concentration signal"
+  },
+  {
+    "code": "OECD_POVRATE_CHILD",
+    "name": "Child Poverty Rate (under 18, 50% median)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Relative poverty rate among children under 18; fragility and social exclusion signal"
+  },
+  {
+    "code": "OECD_POVRATE_ELD",
+    "name": "Elderly Poverty Rate (66+, 50% median)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Relative poverty rate among persons aged 66+; pension adequacy and social protection signal"
+  },
+  {
+    "code": "OECD_POVRATE_WORK",
+    "name": "In-Work Poverty Rate",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Poverty rate among working-age adults in employment; labour market quality signal"
+  },
+  {
+    "code": "OECD_SOCX_TOT",
+    "name": "Total Public Social Expenditure (% GDP)",
+    "category": "Government",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Gross public social spending as share of GDP; SOCX database; 1980-2023; ~38 OECD + accession countries"
+  },
+  {
+    "code": "OECD_SOCX_OLDAGE",
+    "name": "Public Old-Age Social Expenditure (% GDP)",
+    "category": "Government",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Public spending on old-age pensions and services as % GDP; SOCX; pension state generosity signal"
+  },
+  {
+    "code": "OECD_SOCX_SURVIVORS",
+    "name": "Public Survivors' Social Expenditure (% GDP)",
+    "category": "Government",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Public spending on survivor pensions/benefits as % GDP; SOCX"
+  },
+  {
+    "code": "OECD_SOCX_INCAP",
+    "name": "Public Incapacity-Related Social Expenditure (% GDP)",
+    "category": "Government",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Disability, sickness, and occupational accident benefits as % GDP; SOCX"
+  },
+  {
+    "code": "OECD_SOCX_HEALTH",
+    "name": "Public Health Expenditure (% GDP) — SOCX",
+    "category": "Health",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Public health spending as % GDP from SOCX; broader than SHA-based estimates; covers in-kind and cash health transfers"
+  },
+  {
+    "code": "OECD_SOCX_FAMILY",
+    "name": "Public Family Social Expenditure (% GDP)",
+    "category": "Government",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Child/family benefits, parental leave, childcare as % GDP; SOCX; welfare state breadth signal"
+  },
+  {
+    "code": "OECD_SOCX_ALMP",
+    "name": "Public Active Labour Market Programme Expenditure (% GDP)",
+    "category": "Government",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "ALMP spending (job training, placement services, subsidised employment) as % GDP; SOCX; labour adjustment capacity"
+  },
+  {
+    "code": "OECD_SOCX_UNEMP",
+    "name": "Public Unemployment Social Expenditure (% GDP)",
+    "category": "Government",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Unemployment benefits as % GDP; SOCX; labour market resilience signal"
+  },
+  {
+    "code": "OECD_SOCX_HOUSING",
+    "name": "Public Housing Social Expenditure (% GDP)",
+    "category": "Government",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Housing allowances and social housing as % GDP; SOCX; affordability and urban stress signal"
+  },
+  {
+    "code": "OECD_SOCX_OTHER",
+    "name": "Other Public Social Expenditure (% GDP)",
+    "category": "Government",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Residual social spending (poverty relief, etc.) as % GDP; SOCX"
+  },
+  {
+    "code": "OECD_SOCX_PRIV",
+    "name": "Total Private Social Expenditure (% GDP)",
+    "category": "Government",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Mandatory and voluntary private social spending as % GDP; SOCX; total welfare economy breadth"
+  },
+  {
+    "code": "OECD_SOCX_NET",
+    "name": "Net Total Social Expenditure (% GDP)",
+    "category": "Government",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Net public + private social spending after taxes on benefits as % GDP; SOCX; true social protection effort"
+  },
+  {
+    "code": "OECD_TAXREV",
+    "name": "Total Tax Revenue (% GDP)",
+    "category": "Finance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Total government tax revenues as % GDP; Revenue Statistics 2025; 1965-2024; 38 OECD + ~100 via Global Rev Stats"
+  },
+  {
+    "code": "OECD_TAX_PIT",
+    "name": "Personal Income Tax Revenue (% GDP)",
+    "category": "Finance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Personal income tax receipts as % GDP; Revenue Statistics; tax structure signal"
+  },
+  {
+    "code": "OECD_TAX_CIT",
+    "name": "Corporate Income Tax Revenue (% GDP)",
+    "category": "Finance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Corporate tax receipts as % GDP; Revenue Statistics; business environment and fiscal extractiveness"
+  },
+  {
+    "code": "OECD_TAX_SSC",
+    "name": "Social Security Contributions (% GDP)",
+    "category": "Finance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Employee and employer social security contributions as % GDP; Revenue Statistics; welfare funding signal"
+  },
+  {
+    "code": "OECD_TAX_VAT",
+    "name": "Value Added Tax Revenue (% GDP)",
+    "category": "Finance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "VAT / GST revenues as % GDP; Revenue Statistics; consumption tax reliance signal"
+  },
+  {
+    "code": "OECD_TAX_PROP",
+    "name": "Property Tax Revenue (% GDP)",
+    "category": "Finance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Recurrent taxes on immovable property as % GDP; Revenue Statistics; local finance signal"
+  },
+  {
+    "code": "OECD_MFP",
+    "name": "Multifactor Productivity Index (2015=100)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Multi-factor (total factor) productivity; residual GDP growth not from labour or capital; 38 OECD countries; efficiency signal"
+  },
+  {
+    "code": "OECD_LABPROD",
+    "name": "Labour Productivity per Hour Worked (USD PPP)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "GDP per hour worked in constant 2021 USD PPP; productivity compendium; long time series for OECD countries"
+  },
+  {
+    "code": "OECD_LABPROD_EMP",
+    "name": "Labour Productivity per Person Employed (USD PPP)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "GDP per employed person in constant 2021 USD PPP; broader coverage than per-hour measure"
+  },
+  {
+    "code": "OECD_CLI",
+    "name": "Composite Leading Indicator (Amplitude Adjusted)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Monthly/annualized CLI designed to anticipate turning points in business cycle; ~100 countries; economic momentum signal"
+  },
+  {
+    "code": "OECD_UNEMP",
+    "name": "Unemployment Rate (%)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Standardised unemployment rate (ILO definition); OECD Employment Database; long annual series; ~38+ countries"
+  },
+  {
+    "code": "OECD_UNEMP_YOUTH",
+    "name": "Youth Unemployment Rate (15-24, %)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Unemployment rate for 15-24 year olds; OECD Labour Force Statistics; political stability risk signal"
+  },
+  {
+    "code": "OECD_LFPR",
+    "name": "Labour Force Participation Rate (%)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Labour force as % of working-age population (15-64); OECD Employment Database; economic capacity signal"
+  },
+  {
+    "code": "OECD_LFPR_F",
+    "name": "Female Labour Force Participation Rate (%, OECD)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Female LFPR from OECD harmonized series; complements HDR LFPR_F; higher quality for OECD members"
+  },
+  {
+    "code": "OECD_EMP_RATE",
+    "name": "Employment Rate (15-64, %)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Employed persons as % of population aged 15-64; OECD Employment Database; headline labour market health"
+  },
+  {
+    "code": "OECD_PART_EMPL",
+    "name": "Part-Time Employment Rate (%)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Part-time workers as share of total employment; OECD Labour Force Statistics; labour market precariousness signal"
+  },
+  {
+    "code": "OECD_HOURS_WORKED",
+    "name": "Average Annual Hours Worked per Employee",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Mean annual working hours per employee; OECD Employment Database; labour intensity and work culture signal"
+  },
+  {
+    "code": "OECD_AVG_WAGE",
+    "name": "Average Annual Wages (USD PPP 2022)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Average annual gross wages in constant 2022 USD PPP; DSD_EARNINGS@AV_AN_WAGE; OECD countries"
+  },
+  {
+    "code": "OECD_REALMIN_WAGE",
+    "name": "Real Minimum Wage (2022 USD PPP)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Statutory minimum wage in constant PPP USD; DSD_EARNINGS@RMW; 30 OECD countries; labour market floor signal"
+  },
+  {
+    "code": "OECD_UNIT_LABOUR",
+    "name": "Unit Labour Costs (index)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Ratio of labour compensation per unit output; OECD Productivity; international competitiveness signal"
+  },
+  {
+    "code": "OECD_HEALTH_EXP_TOT",
+    "name": "Total Health Expenditure (% GDP)",
+    "category": "Health",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Total (public + private) health spending as % GDP; OECD Health Statistics (SHA 2011); ~50 countries"
+  },
+  {
+    "code": "OECD_HEALTH_EXP_PUB",
+    "name": "Government/Compulsory Health Expenditure (% current health exp)",
+    "category": "Health",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share of health spending from government/compulsory schemes; OECD Health Statistics; public coverage signal"
+  },
+  {
+    "code": "OECD_HEALTH_EXP_PC",
+    "name": "Health Expenditure Per Capita (USD PPP)",
+    "category": "Health",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Current health expenditure per capita in PPP USD; OECD Health Statistics; absolute investment level"
+  },
+  {
+    "code": "OECD_DOCTORS",
+    "name": "Practising Physicians per 1,000 Population",
+    "category": "Health",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Number of practising physicians per 1,000 inhabitants; OECD Health at a Glance; health system capacity"
+  },
+  {
+    "code": "OECD_NURSES",
+    "name": "Practising Nurses per 1,000 Population",
+    "category": "Health",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Number of practising nurses per 1,000 inhabitants; OECD Health at a Glance; healthcare workforce signal"
+  },
+  {
+    "code": "OECD_HOSP_BEDS",
+    "name": "Hospital Beds per 1,000 Population",
+    "category": "Health",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Curative (acute) care hospital beds per 1,000 population; OECD Health Statistics; healthcare infrastructure"
+  },
+  {
+    "code": "OECD_LE",
+    "name": "Life Expectancy at Birth (OECD Health Statistics)",
+    "category": "Health",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Life expectancy at birth, total; OECD Health Statistics; harmonized for OECD members; higher quality than WB for these countries"
+  },
+  {
+    "code": "OECD_INFANT_MORT",
+    "name": "Infant Mortality Rate (per 1,000 live births)",
+    "category": "Health",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Deaths under 1 year per 1,000 live births; OECD Health Statistics; welfare state effectiveness signal"
+  },
+  {
+    "code": "OECD_OBESITY",
+    "name": "Share of Population Obese (%)",
+    "category": "Health",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Measured obesity prevalence (BMI>=30); OECD Health at a Glance; long-term chronic disease burden signal"
+  },
+  {
+    "code": "OECD_SMOKING",
+    "name": "Daily Smokers (% population 15+)",
+    "category": "Health",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share of adults smoking daily; OECD Health Statistics; public health risk factor; ~50 countries"
+  },
+  {
+    "code": "OECD_EDUC_ENROLL_TER",
+    "name": "Tertiary Education Enrollment Rate (%)",
+    "category": "Education",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Entry rate into tertiary education; Education at a Glance; human capital pipeline signal"
+  },
+  {
+    "code": "OECD_EDUC_GRAD_TER",
+    "name": "Tertiary Education Graduation Rate (%)",
+    "category": "Education",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Graduation rate from tertiary education; Education at a Glance; knowledge economy readiness"
+  },
+  {
+    "code": "OECD_EDUC_SPEND_GDP",
+    "name": "Education Expenditure (% GDP)",
+    "category": "Education",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Total public expenditure on education as % GDP; Education at a Glance; investment in human capital"
+  },
+  {
+    "code": "OECD_EDUC_SPEND_PC",
+    "name": "Education Expenditure Per Student (USD PPP)",
+    "category": "Education",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Annual expenditure per student at tertiary level in USD PPP; Education at a Glance; quality/efficiency signal"
+  },
+  {
+    "code": "OECD_EDUC_ATTAIN_HIGH",
+    "name": "Population with Tertiary Education (25-64, %)",
+    "category": "Education",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share of 25-64 year olds with tertiary credentials; Education at a Glance; human capital stock"
+  },
+  {
+    "code": "OECD_NEET",
+    "name": "NEET Rate (Youth Not in Employment, Education, or Training, %)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share of 15-29 year olds not in employment, education, or training; social exclusion and unrest risk signal"
+  },
+  {
+    "code": "OECD_PISA_READ",
+    "name": "PISA Reading Score (Mean)",
+    "category": "Education",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Mean PISA score for 15-year-olds in reading; triennial (2000-2022); 90+ countries; human capital quality signal"
+  },
+  {
+    "code": "OECD_PISA_MATH",
+    "name": "PISA Mathematics Score (Mean)",
+    "category": "Education",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Mean PISA score for 15-year-olds in mathematics; triennial; STEM and economic competitiveness signal"
+  },
+  {
+    "code": "OECD_PISA_SCI",
+    "name": "PISA Science Score (Mean)",
+    "category": "Education",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Mean PISA score for 15-year-olds in science; triennial; innovation capacity signal"
+  },
+  {
+    "code": "OECD_PISA_EQUITY",
+    "name": "PISA: Variance in Reading Explained by Socioeconomic Status (%)",
+    "category": "Education",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share of variance in student reading scores explained by ESCS; education system equity signal"
+  },
+  {
+    "code": "OECD_TRUST_GOV",
+    "name": "Trust in National Government (% Confident)",
+    "category": "Governance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share of survey respondents confident in national government; OECD How's Life / Gallup World Poll; 2007-2024; OECD countries"
+  },
+  {
+    "code": "OECD_TRUST_SURVEY",
+    "name": "Trust in National Government (OECD Trust Survey, %)",
+    "category": "Governance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Trust in government from OECD dedicated trust survey (2021/2023 rounds); 30 OECD countries; institutional legitimacy signal"
+  },
+  {
+    "code": "OECD_TRUST_PARL",
+    "name": "Trust in Parliament (% Confident)",
+    "category": "Governance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share trusting national parliament; OECD How's Life; legislative institution legitimacy signal"
+  },
+  {
+    "code": "OECD_TRUST_COURTS",
+    "name": "Trust in the Judicial System (% Confident)",
+    "category": "Governance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share trusting national courts/legal system; OECD How's Life; rule of law perception signal"
+  },
+  {
+    "code": "OECD_VOTER_TURNOUT",
+    "name": "Voter Turnout (% Registered Voters)",
+    "category": "Governance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Voter turnout in most recent national election; OECD BLI/Government at a Glance; civic engagement signal"
+  },
+  {
+    "code": "OECD_GOVTRANSPARENCY",
+    "name": "Open Government Data Availability Index",
+    "category": "Governance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "OECD OURdata index of openness, usefulness, and re-usability of government data; digital governance signal"
+  },
+  {
+    "code": "OECD_PUB_EMP",
+    "name": "General Government Employment (% Total Employment)",
+    "category": "Government",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Public sector workers as share of total employment; Government at a Glance; state size and bureaucratic capacity signal"
+  },
+  {
+    "code": "OECD_GOV_WOMEN_SENIOR",
+    "name": "Women in Senior Government Positions (%)",
+    "category": "Governance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share of women in senior/middle management in central government; Government at a Glance; institutional gender equity"
+  },
+  {
+    "code": "OECD_GOVEXP_GDP",
+    "name": "General Government Total Expenditure (% GDP)",
+    "category": "Government",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Total government outlays as % GDP; OECD National Accounts / Economic Outlook; state size signal"
+  },
+  {
+    "code": "OECD_GOVREV_GDP",
+    "name": "General Government Total Revenue (% GDP)",
+    "category": "Government",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Total government revenues as % GDP; OECD National Accounts; fiscal capacity signal"
+  },
+  {
+    "code": "OECD_GOVBAL_GDP",
+    "name": "General Government Net Lending/Borrowing (% GDP)",
+    "category": "Finance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Fiscal balance as % GDP; OECD Economic Outlook; deficit/surplus signal; fiscal sustainability"
+  },
+  {
+    "code": "OECD_GOVDEBT_GDP",
+    "name": "General Government Net Financial Liabilities (% GDP)",
+    "category": "Finance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Net government financial liabilities as % GDP; OECD; fiscal vulnerability signal; distinct from gross debt"
+  },
+  {
+    "code": "OECD_GOVDEBT_GROSS",
+    "name": "General Government Gross Debt (% GDP)",
+    "category": "Finance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Gross government debt as % GDP; OECD Economic Outlook; sovereign debt sustainability signal"
+  },
+  {
+    "code": "OECD_INT_PAYMENT",
+    "name": "Government Interest Payments (% GDP)",
+    "category": "Finance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Government interest payments on debt as % GDP; fiscal burden signal; debt service capacity"
+  },
+  {
+    "code": "OECD_CURR_ACCT",
+    "name": "Current Account Balance (% GDP)",
+    "category": "Trade",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Current account balance as % GDP; OECD Economic Outlook; external balance and vulnerability signal"
+  },
+  {
+    "code": "OECD_INFLATION",
+    "name": "Consumer Price Inflation (%, annual)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Annual CPI inflation; OECD Main Economic Indicators; macroeconomic stability signal"
+  },
+  {
+    "code": "OECD_CORE_CPI",
+    "name": "Core Consumer Price Inflation (%, annual)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "CPI inflation excluding food and energy; OECD; underlying price pressure signal"
+  },
+  {
+    "code": "OECD_GDPGROW",
+    "name": "Real GDP Growth Rate (%, annual)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Annual real GDP growth; OECD Economic Outlook; harmonized series for ~38 OECD + ~20 partners"
+  },
+  {
+    "code": "OECD_GDPPC",
+    "name": "GDP Per Capita (USD PPP, constant 2022)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "GDP per capita in constant 2022 PPP USD; OECD National Accounts; income level signal for OECD countries"
+  },
+  {
+    "code": "OECD_TRADE_OPENNESS",
+    "name": "Trade Openness (Exports + Imports, % GDP)",
+    "category": "Trade",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Sum of exports and imports of goods and services as % GDP; OECD National Accounts"
+  },
+  {
+    "code": "OECD_FDI_INFLOW",
+    "name": "FDI Inflows (% GDP)",
+    "category": "Finance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Foreign direct investment inflows as % GDP; OECD International Investment Statistics; external confidence signal"
+  },
+  {
+    "code": "OECD_FDI_OUTFLOW",
+    "name": "FDI Outflows (% GDP)",
+    "category": "Finance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Foreign direct investment outflows as % GDP; OECD; capital export capacity signal"
+  },
+  {
+    "code": "OECD_RD_SPEND",
+    "name": "R&D Expenditure (% GDP)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Gross domestic expenditure on R&D (GERD) as % GDP; OECD MSTI; innovation capacity and knowledge economy signal"
+  },
+  {
+    "code": "OECD_RD_RESEARCHERS",
+    "name": "Researchers per 1,000 Labour Force",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "FTE researchers per 1,000 total labour force; OECD MSTI; human capital in innovation signal"
+  },
+  {
+    "code": "OECD_ODA_GNI",
+    "name": "ODA as % of GNI (Donor Countries)",
+    "category": "Other",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Official development assistance as % GNI; DAC donors; aid generosity and geopolitical engagement signal"
+  },
+  {
+    "code": "OECD_ODA_RECVD",
+    "name": "ODA Received (% GNI, Recipient Countries)",
+    "category": "Finance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Net ODA received as % GNI; DAC/OECD CRS; aid dependence signal for developing OECD partners"
+  },
+  {
+    "code": "OECD_LIFESATISF",
+    "name": "Life Satisfaction (Mean Score 0-10)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Average Cantril ladder life satisfaction; OECD How's Life / BLI; subjective well-being and social cohesion signal"
+  },
+  {
+    "code": "OECD_SOCIAL_CONNECT",
+    "name": "Social Network Support (%)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share reporting having someone to rely on in trouble; OECD BLI; social capital and resilience signal"
+  },
+  {
+    "code": "OECD_AIR_POLLUTION",
+    "name": "Population Exposed to PM2.5 > 10 ug/m3 (%)",
+    "category": "Environment",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share of population exposed to PM2.5 above WHO guideline; OECD BLI / Environment at a Glance; public health risk"
+  },
+  {
+    "code": "OECD_HOMICIDE",
+    "name": "Homicide Rate (per 100,000 population)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Intentional homicide deaths per 100,000; OECD Society at a Glance; personal security and fragility signal"
+  },
+  {
+    "code": "OECD_PRISON_RATE",
+    "name": "Prison Population Rate (per 100,000)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Incarceration rate per 100,000 inhabitants; OECD Society at a Glance; criminal justice intensity signal"
+  },
+  {
+    "code": "OECD_NET_MIGR",
+    "name": "Net Migration Rate (per 1,000 population)",
+    "category": "Demographic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Net migration flows per 1,000 population; OECD International Migration Outlook; demographic and stability signal"
+  },
+  {
+    "code": "OECD_MIGR_STOCK",
+    "name": "Foreign-Born Population Share (%)",
+    "category": "Demographic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Foreign-born as % of total population; OECD DIOC; social integration and demographic composition signal"
+  },
+  {
+    "code": "OECD_MIGR_INTEG",
+    "name": "Employment Rate of Foreign-Born vs Native-Born (Gap, pp)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Employment rate gap between native-born and foreign-born; OECD; immigrant integration signal"
+  },
+  {
+    "code": "OECD_FERTILITY",
+    "name": "Total Fertility Rate",
+    "category": "Demographic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Total fertility rate; OECD Health Statistics / Society at a Glance; demographic trajectory signal"
+  },
+  {
+    "code": "OECD_POP_65PLUS",
+    "name": "Population Aged 65+ (% Total)",
+    "category": "Demographic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share of population aged 65 and over; OECD; ageing and fiscal sustainability signal"
+  },
+  {
+    "code": "OECD_DEP_RATIO",
+    "name": "Old-Age Dependency Ratio",
+    "category": "Demographic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Population 65+ relative to working-age (15-64) population; OECD; pension sustainability signal"
+  },
+  {
+    "code": "OECD_HOUSING_COST",
+    "name": "Housing Cost Overburden Rate (%)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share spending >40% of income on housing; OECD BLI; housing stress and social risk signal"
+  },
+  {
+    "code": "OECD_ROOMS_PC",
+    "name": "Rooms Per Person",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Average number of rooms per person; OECD BLI; housing quality and overcrowding signal"
+  },
+  {
+    "code": "OECD_INCOME_AVG",
+    "name": "Average Household Disposable Income Per Capita (USD PPP)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Average adjusted household net disposable income per capita; OECD BLI; living standard signal"
+  },
+  {
+    "code": "OECD_NET_WEALTH",
+    "name": "Average Household Net Financial Wealth Per Capita (USD PPP)",
+    "category": "Finance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Mean household net financial wealth per capita; OECD BLI; household balance sheet signal"
+  },
+  {
+    "code": "OECD_WATER_QUAL",
+    "name": "Water Quality Satisfaction (%)",
+    "category": "Environment",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share satisfied with local water quality; OECD BLI / Gallup; environmental quality perception signal"
+  },
+  {
+    "code": "OECD_ENV_TAX",
+    "name": "Environmentally Related Tax Revenue (% GDP)",
+    "category": "Environment",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Taxes on energy, transport, pollution, resources as % GDP; OECD Environment; green fiscal policy signal"
+  },
+  {
+    "code": "OECD_GREENHOUSE",
+    "name": "Greenhouse Gas Emissions Per Capita (tonnes CO2eq)",
+    "category": "Environment",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Total GHG emissions per capita; OECD Environment at a Glance; climate responsibility signal"
+  },
+  {
+    "code": "OECD_MUNI_WASTE",
+    "name": "Municipal Waste Generated Per Capita (kg)",
+    "category": "Environment",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Municipal waste per capita; OECD Environment at a Glance; consumption intensity and governance signal"
+  },
+  {
+    "code": "OECD_ENERGY_INTENS",
+    "name": "Energy Intensity of GDP (TOE per 1,000 USD PPP)",
+    "category": "Energy",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Total energy supply per unit GDP; OECD Environment / IEA via OECD; energy efficiency signal"
+  },
+  {
+    "code": "OECD_RENEW_SHARE",
+    "name": "Renewables Share of Total Primary Energy Supply (%)",
+    "category": "Energy",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Share of renewables in total primary energy supply; OECD/IEA via OECD data; energy transition signal"
+  },
+  {
+    "code": "OECD_PATENT",
+    "name": "Patent Applications per Million Population",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Triadic patent families per million population; OECD MSTI; innovation output signal"
+  },
+  {
+    "code": "OECD_ICT_INVEST",
+    "name": "ICT Investment (% GDP)",
+    "category": "Infrastructure",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "ICT investment as % of GDP; OECD National Accounts; digital infrastructure investment signal"
+  },
+  {
+    "code": "OECD_BROADBAND",
+    "name": "Fixed Broadband Subscriptions per 100 Inhabitants",
+    "category": "Infrastructure",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Fixed (wired) broadband subscriptions per 100 inhabitants; OECD Broadband Statistics; digital infrastructure"
+  },
+  {
+    "code": "OECD_SELFEMPL",
+    "name": "Self-Employment Rate (% Total Employment)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Self-employed as % of total employment; OECD Labour Force Statistics; informal sector and entrepreneurship signal"
+  },
+  {
+    "code": "OECD_UNION_DENSITY",
+    "name": "Trade Union Density (%)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Union members as % of all wage and salary earners; OECD Labour Market Statistics; labour bargaining power signal"
+  },
+  {
+    "code": "OECD_STRIKES",
+    "name": "Working Days Lost to Strikes per 1,000 Employees",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Days not worked due to industrial action per 1,000 employees; OECD; labour unrest signal"
+  },
+  {
+    "code": "OECD_EMPROT_REG",
+    "name": "Employment Protection Legislation Index (Regular Contracts)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Strictness of dismissal protection for regular workers; OECD EPL Index; labour market flexibility signal"
+  },
+  {
+    "code": "OECD_EMPROT_TEMP",
+    "name": "Employment Protection Legislation Index (Temporary Contracts)",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Strictness of regulations on temporary employment; OECD EPL Index; dual labour market signal"
+  },
+  {
+    "code": "OECD_PMR",
+    "name": "Product Market Regulation Index",
+    "category": "Economic",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Composite index of barriers to entry and competition in product markets; OECD PMR; business environment signal"
+  },
+  {
+    "code": "OECD_CORP_TAX_RATE",
+    "name": "Corporate Income Tax Statutory Rate (%)",
+    "category": "Finance",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Top statutory corporate income tax rate; OECD Tax Policy; business climate and tax competition signal"
+  },
+  {
+    "code": "OECD_PENSION_REPLACE",
+    "name": "Pension Replacement Rate (Net, % Pre-Retirement Earnings)",
+    "category": "Social",
+    "provider": "OECD",
+    "license": "CC BY 4.0",
+    "note": "Net pension entitlement as % of individual pre-retirement earnings; OECD Pensions at a Glance; old-age security signal"
+  },
+  {
+    "code": "OWID_DELIBDEM",
+    "name": "Deliberative Democracy Index (V-Dem v2x_delibdem)",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Extent to which political decisions are motivated by public reasoning for the common good; 0-1; V-Dem 1900-2025; ~180 countries; NOT in existing 109"
+  },
+  {
+    "code": "OWID_PARTIPDEM",
+    "name": "Participatory Democracy Index (V-Dem v2x_partipdem)",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Extent of citizen participation through civil society and direct democracy; 0-1; V-Dem 1789-2025; NOT in existing 109"
+  },
+  {
+    "code": "OWID_EGALDEM",
+    "name": "Egalitarian Democracy Index (V-Dem v2x_egaldem)",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Extent to which democratic rights are protected equally across social groups; 0-1; V-Dem 1789-2025; NOT in existing 109"
+  },
+  {
+    "code": "OWID_STATECAP",
+    "name": "State Capacity Index (Hanson & Sigman)",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Composite Bayesian latent variable index of coercive+extractive+administrative state capacity; 177 countries 1960-2015; NOT in 109"
+  },
+  {
+    "code": "OWID_STATECAP_EXTRACT",
+    "name": "Extractive State Capacity (Hanson & Sigman)",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Sub-dimension: government ability to raise sustainable revenues (tax+non-tax); 177 countries 1960-2015"
+  },
+  {
+    "code": "OWID_STATECAP_COERCE",
+    "name": "Coercive State Capacity (Hanson & Sigman)",
+    "category": "Military",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Sub-dimension: government control of territory and monopoly on legitimate force; 177 countries 1960-2015"
+  },
+  {
+    "code": "OWID_STATECAP_ADMIN",
+    "name": "Administrative State Capacity (Hanson & Sigman)",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Sub-dimension: bureaucratic quality, skilled/impartial public servants; 177 countries 1960-2015"
+  },
+  {
+    "code": "OWID_UCDP_CONFLICT",
+    "name": "Armed Conflict Ongoing (UCDP/PRIO, binary)",
+    "category": "Other",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Indicator of active armed conflict (>=25 battle deaths/year) in country; UCDP/PRIO; CC BY 4.0; 1946-2024"
+  },
+  {
+    "code": "OWID_UCDP_BATTLE_DEATHS",
+    "name": "Battle-Related Deaths (UCDP, count)",
+    "category": "Other",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Best estimate of annual battle-related deaths in state-based conflicts; UCDP GED; CC BY 4.0; 1989-2024"
+  },
+  {
+    "code": "OWID_UCDP_DEATH_RATE",
+    "name": "Battle-Related Deaths per 100,000 Population",
+    "category": "Other",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Conflict intensity normalized by population; UCDP/OWID; risk-adjusted violence signal"
+  },
+  {
+    "code": "OWID_UCDP_ONESIDED",
+    "name": "One-Sided Violence Deaths (UCDP, count)",
+    "category": "Other",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Deaths from government or organized group violence against unarmed civilians; UCDP; repression signal"
+  },
+  {
+    "code": "OWID_UCDP_NONSTATE",
+    "name": "Non-State Conflict Deaths (UCDP, count)",
+    "category": "Other",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Deaths in conflicts between organized non-state armed groups (no government party); UCDP; intra-societal violence"
+  },
+  {
+    "code": "OWID_UCDP_NCONFLICT",
+    "name": "Number of Active State-Based Conflicts",
+    "category": "Other",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Count of ongoing state-based armed conflicts per country-year; UCDP; conflict multiplicity signal"
+  },
+  {
+    "code": "OWID_UCDP_CONFLICT_TYPE",
+    "name": "Conflict Type (Intrastate/Interstate/Internationalized)",
+    "category": "Other",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Classification of conflict as intrastate, internationalized intrastate, or interstate; UCDP/PRIO; conflict nature signal"
+  },
+  {
+    "code": "OWID_HDI_OWID",
+    "name": "Human Development Index (OWID harmonized long-run)",
+    "category": "Social",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "OWID-extended HDI series going back to 1800 combining Gapminder and UNDP sources; useful for historical context"
+  },
+  {
+    "code": "OWID_CHILDMORT",
+    "name": "Under-5 Child Mortality Rate (per 1,000 live births)",
+    "category": "Health",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "U5MR from UN IGME; CC BY compatible; welfare and state capacity signal; OWID-harmonized 1800-2023"
+  },
+  {
+    "code": "OWID_MATERNALMORT",
+    "name": "Maternal Mortality Ratio (per 100,000 live births, WHO)",
+    "category": "Health",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "MMR from WHO/UN MMEIG; OWID series; healthcare quality and access signal; distinct from HDR MMR"
+  },
+  {
+    "code": "OWID_URBAN_SHARE",
+    "name": "Urban Population Share (%)",
+    "category": "Demographic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share of population in urban areas; UN World Urbanization Prospects via OWID; urbanization trajectory signal"
+  },
+  {
+    "code": "OWID_SLUM_SHARE",
+    "name": "Urban Slum Population Share (%)",
+    "category": "Social",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share of urban population living in slums; UN-HABITAT via OWID; urban fragility and inequality signal"
+  },
+  {
+    "code": "OWID_ELECTACCESS",
+    "name": "Access to Electricity (% Population)",
+    "category": "Infrastructure",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share of population with electricity access; IEA/WB via OWID; OWID-extended long-run series; infrastructure signal"
+  },
+  {
+    "code": "OWID_FOSSIL_SHARE",
+    "name": "Fossil Fuels Share of Primary Energy (%)",
+    "category": "Energy",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share of fossil fuels (coal+oil+gas) in primary energy consumption; OWID Energy Data (CC BY 4.0); energy dependence"
+  },
+  {
+    "code": "OWID_RENEW_ELEC",
+    "name": "Renewable Electricity Share (%)",
+    "category": "Energy",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share of electricity from renewables; OWID Energy Data; energy transition signal; OWID-produced CC BY 4.0"
+  },
+  {
+    "code": "OWID_CO2PC",
+    "name": "CO2 Emissions Per Capita (tonnes, OWID)",
+    "category": "Environment",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Consumption-based CO2 emissions per capita; OWID CO2 Dataset (CC BY 4.0); distinct from WB production-based"
+  },
+  {
+    "code": "OWID_CO2_CONS",
+    "name": "CO2 Emissions — Consumption-Based (million tonnes)",
+    "category": "Environment",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Total consumption-based CO2 (adjusting for imports/exports of embedded emissions); OWID CO2 Dataset; full ecological footprint"
+  },
+  {
+    "code": "OWID_INTERNET",
+    "name": "Internet Users (% Population)",
+    "category": "Infrastructure",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share of population using the internet; ITU/WB via OWID; digital inclusion and modernization signal"
+  },
+  {
+    "code": "OWID_MOBILE_SUBS",
+    "name": "Mobile Phone Subscriptions per 100 People",
+    "category": "Infrastructure",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Mobile cellular subscriptions per 100 inhabitants; ITU via OWID; connectivity and economic activity signal"
+  },
+  {
+    "code": "OWID_TFERTILITY",
+    "name": "Total Fertility Rate (OWID long-run)",
+    "category": "Demographic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "OWID-extended TFR back to 1800 (Gapminder + UN WPP); demographic transition signal; distinct from WB short series"
+  },
+  {
+    "code": "OWID_POPGROW",
+    "name": "Population Growth Rate (% annual)",
+    "category": "Demographic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Annual rate of population growth; UN WPP via OWID; demographic pressure signal"
+  },
+  {
+    "code": "OWID_MEDIAN_AGE",
+    "name": "Median Age of Population",
+    "category": "Demographic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Median age of total population; UN WPP via OWID; demographic structure and ageing signal"
+  },
+  {
+    "code": "OWID_POP_YOUNG",
+    "name": "Youth Bulge (Population 15-24, % Total)",
+    "category": "Demographic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share of 15-24 year olds in total population; UN WPP via OWID; political instability risk signal"
+  },
+  {
+    "code": "OWID_PRIM_EDUC_COMP",
+    "name": "Primary Education Completion Rate (%)",
+    "category": "Education",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share of relevant cohort completing primary education; UNESCO via OWID; foundational education signal"
+  },
+  {
+    "code": "OWID_LITERACY",
+    "name": "Adult Literacy Rate (%)",
+    "category": "Education",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share of adults (15+) who can read and write; UNESCO via OWID; long-run human capital signal"
+  },
+  {
+    "code": "OWID_WATER_SAFE",
+    "name": "Access to Safe Drinking Water (%)",
+    "category": "Health",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share with access to safely managed drinking water; WHO/UNICEF JMP via OWID; infrastructure and health signal"
+  },
+  {
+    "code": "OWID_SANITATION_SAFE",
+    "name": "Access to Safe Sanitation (%)",
+    "category": "Health",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share with access to safely managed sanitation; WHO/UNICEF JMP via OWID; public health infrastructure signal"
+  },
+  {
+    "code": "OWID_HANDWASH",
+    "name": "Access to Basic Handwashing Facilities (%)",
+    "category": "Health",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share with handwashing facility with soap and water; WHO/UNICEF JMP via OWID; hygiene and public health"
+  },
+  {
+    "code": "OWID_VACCIN_DPT",
+    "name": "DTP3 Vaccination Coverage (%)",
+    "category": "Health",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Children immunized with three doses of DTP vaccine; WHO/UNICEF via OWID; health system effectiveness signal"
+  },
+  {
+    "code": "OWID_VACCIN_MEASLES",
+    "name": "Measles Vaccination Coverage (%)",
+    "category": "Health",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share of 1-year-olds vaccinated against measles (MCV1); WHO/UNICEF via OWID; health system reach signal"
+  },
+  {
+    "code": "OWID_HIV_PREV",
+    "name": "HIV Prevalence (% Population 15-49)",
+    "category": "Health",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "HIV/AIDS prevalence among adults 15-49; UNAIDS via OWID; chronic disease burden and social fragility"
+  },
+  {
+    "code": "OWID_MALARIA_INC",
+    "name": "Malaria Incidence (per 1,000 at-risk)",
+    "category": "Health",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "New malaria cases per 1,000 population at risk; WHO via OWID; health system capacity and fragility signal"
+  },
+  {
+    "code": "OWID_TB_INC",
+    "name": "Tuberculosis Incidence (per 100,000)",
+    "category": "Health",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "New TB cases per 100,000 population; WHO via OWID; public health and poverty-related disease signal"
+  },
+  {
+    "code": "OWID_OBESITY_ADULT",
+    "name": "Adult Obesity Prevalence (BMI>=30, % Adults)",
+    "category": "Health",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share of adults with BMI>=30; WHO via OWID; chronic disease burden and nutrition transition signal"
+  },
+  {
+    "code": "OWID_CALORIC_SUPPLY",
+    "name": "Daily Caloric Supply per Capita (kcal/day)",
+    "category": "Social",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Per capita dietary energy supply; FAO via OWID; food security and nutrition signal"
+  },
+  {
+    "code": "OWID_UNDERNOURISH",
+    "name": "Prevalence of Undernourishment (%)",
+    "category": "Social",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share below minimum dietary energy requirement; FAO via OWID; food insecurity and political risk signal"
+  },
+  {
+    "code": "OWID_FOODPROD_IDX",
+    "name": "Food Production Index (per capita, 2014-16=100)",
+    "category": "Economic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Per capita food production relative to 2014-16 baseline; FAO via OWID; food self-sufficiency signal"
+  },
+  {
+    "code": "OWID_REFUGEES_ORIGIN",
+    "name": "Refugees by Country of Origin (count)",
+    "category": "Demographic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Number of refugees from country; UNHCR via OWID; political crisis and push factor signal"
+  },
+  {
+    "code": "OWID_REFUGEES_HOSTED",
+    "name": "Refugees Hosted by Country (count)",
+    "category": "Demographic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Number of refugees hosted by country; UNHCR via OWID; regional stability and burden signal"
+  },
+  {
+    "code": "OWID_IDP",
+    "name": "Internally Displaced Persons (count)",
+    "category": "Demographic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Number of IDPs due to conflict and violence; UNHCR/IDMC via OWID; internal conflict severity signal"
+  },
+  {
+    "code": "OWID_ASYLUM_SEEKERS",
+    "name": "Asylum Seekers from Country (count)",
+    "category": "Demographic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Pending asylum claims from nationals; UNHCR via OWID; political crisis signal distinct from refugee status"
+  },
+  {
+    "code": "OWID_TERRORISM_DEATHS",
+    "name": "Terrorism Deaths (count, GTD)",
+    "category": "Other",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Annual deaths from terrorist attacks; Global Terrorism Database (START/GTD) via OWID; political violence signal"
+  },
+  {
+    "code": "OWID_TERRORISM_ATTACKS",
+    "name": "Terrorist Attacks (count, GTD)",
+    "category": "Other",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Annual count of terrorist incidents; GTD via OWID; terrorism frequency and instability signal"
+  },
+  {
+    "code": "OWID_MILSPEND_SIPRI",
+    "name": "Military Spending (% GDP, SIPRI)",
+    "category": "Military",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Military expenditure as % GDP; SIPRI (CC BY 4.0) via OWID; defence burden and conflict orientation signal"
+  },
+  {
+    "code": "OWID_ARMEDFORCES_SHARE",
+    "name": "Armed Forces Personnel (% Labour Force)",
+    "category": "Military",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Armed forces as % of total labour force; IISS/CoW via OWID; military size relative to economy signal"
+  },
+  {
+    "code": "OWID_GINI_PRETAX",
+    "name": "Pre-Tax National Income Gini",
+    "category": "Economic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Gini of pre-tax national income; World Inequality Database (WID) via OWID; market inequality signal distinct from disposable income Gini"
+  },
+  {
+    "code": "OWID_GINI_POSTTAX",
+    "name": "Post-Tax National Income Gini",
+    "category": "Economic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Gini of post-tax national income; WID via OWID; redistributive effect of fiscal system signal"
+  },
+  {
+    "code": "OWID_EXTPOV_SHARE",
+    "name": "Share in Extreme Poverty (<$2.15/day)",
+    "category": "Social",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share of population below $2.15/day 2017 PPP; World Bank PIP via OWID; distinct from WB series due to OWID gap-filling"
+  },
+  {
+    "code": "OWID_POV_400",
+    "name": "Share in Poverty (<$4.00/day)",
+    "category": "Social",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share below $4/day moderate poverty line; WB PIP via OWID; developing-country standard of living signal"
+  },
+  {
+    "code": "OWID_POV_830",
+    "name": "Share in Poverty (<$8.30/day)",
+    "category": "Social",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share below $8.30/day; WB PIP via OWID; upper-middle income poverty threshold signal"
+  },
+  {
+    "code": "OWID_REDISTRIB",
+    "name": "Reduction in Inequality via Taxes and Transfers (Gini points)",
+    "category": "Government",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Difference between market and disposable income Gini; OWID/LIS computation; fiscal redistribution effectiveness"
+  },
+  {
+    "code": "OWID_REGIMETYPE",
+    "name": "Political Regime Type (Regimes of the World, V-Dem RoW)",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "4-category classification: closed autocracy/electoral autocracy/electoral democracy/liberal democracy; V-Dem RoW 1900-2025; NOT in existing 109"
+  },
+  {
+    "code": "OWID_AUTOCRAT_AGE",
+    "name": "Age of Current Political Regime (years)",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Years since the current political regime was established; V-Dem ERT via OWID; regime stability signal"
+  },
+  {
+    "code": "OWID_AUTOCRATIZATION",
+    "name": "Autocratization Episode (binary, ERT)",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Whether country is in an ongoing autocratization episode; V-Dem Episodes of Regime Transformation; regime change signal"
+  },
+  {
+    "code": "OWID_DEMOCRATIZATION",
+    "name": "Democratization Episode (binary, ERT)",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Whether country is in an ongoing democratization episode; V-Dem ERT; positive regime transition signal"
+  },
+  {
+    "code": "OWID_BIRTHREGIST",
+    "name": "Birth Registration Rate (%)",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Share of children under 5 whose births are registered; UNICEF/World Bank via OWID; administrative state capacity signal"
+  },
+  {
+    "code": "OWID_WJPRULEOFLAW",
+    "name": "World Justice Project Rule of Law Index (Overall)",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "WJP Rule of Law Index; 0-1 scale (1=strongest); OWID-hosted; covers constraints on government, no corruption, open government, fundamental rights, order & security, regulatory enforcement, civil/criminal justice"
+  },
+  {
+    "code": "OWID_WJPRULEOFLAW_CORR",
+    "name": "WJP Rule of Law — Absence of Corruption",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Sub-index of WJP RoL measuring corruption absence in executive, judiciary, police, military; 0-1"
+  },
+  {
+    "code": "OWID_WJPRULEOFLAW_ORDER",
+    "name": "WJP Rule of Law — Order and Security",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Sub-index measuring crime control, civil conflict absence, violence against civilians; 0-1"
+  },
+  {
+    "code": "OWID_WJPRULEOFLAW_RIGHTS",
+    "name": "WJP Rule of Law — Fundamental Rights",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Sub-index of civil liberties and fundamental rights protections; 0-1; distinct from V-Dem measures"
+  },
+  {
+    "code": "OWID_PRESSFREEDOM",
+    "name": "Press Freedom Index (RSF)",
+    "category": "Governance",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Reporters Without Borders Press Freedom Index; 0-100 (100=most free); OWID-hosted; media environment signal"
+  },
+  {
+    "code": "OWID_FOODPRICES",
+    "name": "Food Price Index (FAO, 2014-16=100)",
+    "category": "Economic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "FAO Food Price Index; annual average; OWID; food price shock signal relevant to political instability"
+  },
+  {
+    "code": "OWID_CEREAL_YIELD",
+    "name": "Cereal Yield (tonnes per hectare)",
+    "category": "Economic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Average yield of cereals per hectare; FAO via OWID; agricultural productivity and food security signal"
+  },
+  {
+    "code": "OWID_ARABLE_LAND",
+    "name": "Arable Land per Capita (hectares)",
+    "category": "Environment",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Arable land per person; FAO via OWID; food security and resource pressure signal"
+  },
+  {
+    "code": "OWID_FOREST_SHARE",
+    "name": "Forest Area (% Land Area)",
+    "category": "Environment",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Forest coverage as % of land area; FAO via OWID; environmental depletion and resource signal"
+  },
+  {
+    "code": "OWID_CO2_CUMUL",
+    "name": "Cumulative CO2 Emissions Per Capita (tonnes)",
+    "category": "Environment",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Cumulative historical CO2 per capita; OWID CO2 Dataset; historical responsibility and carbon debt signal"
+  },
+  {
+    "code": "OWID_TEMP_ANOM",
+    "name": "Annual Average Temperature Anomaly (°C)",
+    "category": "Environment",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Country-level temperature anomaly vs pre-industrial baseline; Berkeley Earth via OWID; climate exposure signal"
+  },
+  {
+    "code": "OWID_HEATDEATHS",
+    "name": "Heat-Related Deaths per 100,000",
+    "category": "Health",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Mortality attributable to heat; various health sources via OWID; climate-health nexus signal"
+  },
+  {
+    "code": "OWID_ENERGYPC",
+    "name": "Primary Energy Consumption per Capita (kWh)",
+    "category": "Energy",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Per capita primary energy consumption; OWID Energy Data (CC BY 4.0); development and industrialization signal"
+  },
+  {
+    "code": "OWID_COAL_SHARE",
+    "name": "Coal Share of Primary Energy (%)",
+    "category": "Energy",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Coal as % of total primary energy; OWID Energy Data; energy mix and emissions intensity signal"
+  },
+  {
+    "code": "OWID_OIL_SHARE",
+    "name": "Oil Share of Primary Energy (%)",
+    "category": "Energy",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Oil as % of total primary energy; OWID Energy Data; oil dependence and vulnerability signal"
+  },
+  {
+    "code": "OWID_GAS_SHARE",
+    "name": "Natural Gas Share of Primary Energy (%)",
+    "category": "Energy",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Natural gas as % of total primary energy; OWID Energy Data; energy mix and import dependence signal"
+  },
+  {
+    "code": "OWID_SOLAR_SHARE",
+    "name": "Solar Share of Electricity Generation (%)",
+    "category": "Energy",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Solar power as % of electricity generation; OWID Energy Data; renewable transition pace signal"
+  },
+  {
+    "code": "OWID_WIND_SHARE",
+    "name": "Wind Share of Electricity Generation (%)",
+    "category": "Energy",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Wind power as % of electricity generation; OWID Energy Data; renewable transition pace signal"
+  },
+  {
+    "code": "OWID_GDPPC_MADDISON",
+    "name": "GDP Per Capita (Maddison Project, 2011 USD)",
+    "category": "Economic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Long-run GDP per capita back to 1820; Maddison Project Database via OWID; historical economic trajectory signal"
+  },
+  {
+    "code": "OWID_LABPROD_GROWTH",
+    "name": "Labour Productivity Growth (% annual)",
+    "category": "Economic",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "Annual growth of GDP per employed person; Penn World Table via OWID; long-run productivity trajectory"
+  },
+  {
+    "code": "OWID_MULTIDIM_POV_SHARE",
+    "name": "Multidimensional Poverty Headcount — OWID (Alkire-Foster)",
+    "category": "Social",
+    "provider": "OWID",
+    "license": "CC BY 4.0",
+    "note": "OWID-harmonized global MPI headcount; OPHI/UNDP; broader country coverage than HDR version for some years"
+  }
+]

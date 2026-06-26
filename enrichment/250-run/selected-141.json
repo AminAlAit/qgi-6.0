@@ -1,0 +1,1271 @@
+[
+ {
+  "code": "v2regendtype",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 4,
+  "name": "Regime End Type",
+  "note": "How current regime ended: coup/election/negotiation/collapse",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "MS.MIL.TOTL.P1",
+  "provider": "WB",
+  "category": "Military",
+  "votes": 4,
+  "name": "Armed forces personnel, total",
+  "note": "Absolute military size; military power indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "NY.GDP.MINR.RT.ZS",
+  "provider": "WB",
+  "category": "Economic",
+  "votes": 4,
+  "name": "Mineral rents (% of GDP)",
+  "note": "Mineral resource rents; extractive dependency",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "NV.IND.MANF.KD.ZG",
+  "provider": "WB",
+  "category": "Economic",
+  "votes": 4,
+  "name": "Manufacturing, value added (annual % growth)",
+  "note": "Manufacturing growth; industrialization pace",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "IQ.CPA.PUBS.XQ",
+  "provider": "WB",
+  "category": "Governance",
+  "votes": 4,
+  "name": "CPIA public sector management and institutions cluster average (1=low to 6=high)",
+  "note": "Public institution quality; state capacity composite",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2xca_academ",
+  "provider": "V-Dem",
+  "category": "Social",
+  "votes": 4,
+  "name": "Academic Freedom Index",
+  "note": "Academic freedom: research, teaching, autonomy, campus safety",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "TC-002",
+  "provider": "FAOSTAT",
+  "category": "Trade",
+  "votes": 4,
+  "name": "Cereal imports (metric tonnes)",
+  "note": "Volume of cereal imports; food import dependency and price shock vulnerability.",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2xcl_rol",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 5,
+  "name": "Equality Before Law and Individual Liberty Index",
+  "note": "V-Dem v2xcl_rol — country-year political indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "FR.INR.RINR",
+  "provider": "WB",
+  "category": "Finance",
+  "votes": 5,
+  "name": "Real interest rate (%)",
+  "note": "Real lending cost; investment incentive measure",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "IQ.CPA.IRAI.XQ",
+  "provider": "WB",
+  "category": "Governance",
+  "votes": 5,
+  "name": "CPIA average (IDA resource allocation index)",
+  "note": "Composite IDA country policy assessment; governance quality",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2xcl_prpty",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 5,
+  "name": "Property Rights Index",
+  "note": "V-Dem v2xcl_prpty — country-year political indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "IC.FRM.BRIB.ZS",
+  "provider": "WB",
+  "category": "Governance",
+  "votes": 5,
+  "name": "Bribery incidence (% of firms experiencing at least one bribe payment request)",
+  "note": "Business bribery rate; corruption direct measure",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UNHCR_RECOG_RATE",
+  "provider": "UNHCR",
+  "category": "Governance",
+  "votes": 5,
+  "name": "Refugee Recognition Rate (derived: recognized / total decisions, annual)",
+  "note": "Share of decided claims that receive refugee status; internationally accepted measure of origin-country threat level",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "OWID_POP_YOUNG",
+  "provider": "OWID",
+  "category": "Demographic",
+  "votes": 5,
+  "name": "Youth Bulge (Population 15-24, % Total)",
+  "note": "Share of 15-24 year olds in total population; UN WPP via OWID; political instability risk signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "IDMC_DIS_HAZ_FLOOD",
+  "provider": "IDMC",
+  "category": "Environment",
+  "votes": 5,
+  "name": "Disaster Displacement — Flood-Related New Displacements (annual)",
+  "note": "New displacements caused specifically by flood events; disaggregated hazard type from IDMC /aggregated/disaster_data/",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "IDMC_DIS_HAZ_STORM",
+  "provider": "IDMC",
+  "category": "Environment",
+  "votes": 5,
+  "name": "Disaster Displacement — Storm-Related New Displacements (annual)",
+  "note": "New displacements from storm/cyclone events; extreme weather fragility signal disaggregated by hazard",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "SDGB-012",
+  "provider": "FAOSTAT",
+  "category": "Environment",
+  "votes": 5,
+  "name": "SDG 6.4.2 Level of water stress — freshwater withdrawal as % of available freshwater (%)",
+  "note": "Water stress ratio; agricultural water security and conflict risk from scarcity.",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "FD.AST.PRVT.GD.ZS",
+  "provider": "WB",
+  "category": "Finance",
+  "votes": 6,
+  "name": "Domestic credit to private sector (% of GDP)",
+  "note": "Credit depth; financial development and leverage",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "EMP_NIFL_SEX_RT",
+  "provider": "ILOSTAT",
+  "category": "Economic",
+  "votes": 6,
+  "name": "Informal employment rate by sex (%)",
+  "note": "Share of employed in informal arrangements; instability, social protection deficit proxy",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2lgoppart",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 6,
+  "name": "Legislature Opposition Parties Operate Freely",
+  "note": "Opposition parties operate freely in legislature",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "OWID_WJPRULEOFLAW",
+  "provider": "OWID",
+  "category": "Governance",
+  "votes": 6,
+  "name": "World Justice Project Rule of Law Index (Overall)",
+  "note": "WJP Rule of Law Index; 0-1 scale (1=strongest); OWID-hosted; covers constraints on government, no corruption, open government, fundamental rights, order & security, regulatory enforcement, civil/criminal justice",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_CONFLICT_ISSUES_TERR",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 6,
+  "name": "Rebel Group Territorial Demands Active (binary, country-year)",
+  "note": "Binary: rebel groups with stated territorial/autonomy demands active; from UCDP Conflict Issues Dataset, secessionism signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "DT.INT.DECT.GN.ZS",
+  "provider": "WB",
+  "category": "Government",
+  "votes": 6,
+  "name": "Interest payments on external debt (% of GNI)",
+  "note": "Interest payments relative to GNI",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "GC.XPN.INTP.RV.ZS",
+  "provider": "WB",
+  "category": "Government",
+  "votes": 6,
+  "name": "Interest payments (% of revenue)",
+  "note": "Debt servicing share of revenue; fiscal stress",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "TT.PRI.MRCH.XD.WD",
+  "provider": "WB",
+  "category": "Trade",
+  "votes": 6,
+  "name": "Net barter terms of trade index (2000 = 100)",
+  "note": "Export vs import price ratio; commodity terms of trade",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2x_liberal",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 6,
+  "name": "Liberal Component Index",
+  "note": "V-Dem v2x_liberal — country-year political indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2exembez",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 6,
+  "name": "Executive Embezzlement and Theft",
+  "note": "Executive embezzles public funds for private use",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2exl_legitideol",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 6,
+  "name": "Ideology-Based Legitimation",
+  "note": "Legitimacy based on official state ideology",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2stcritapparm",
+  "provider": "V-Dem",
+  "category": "Government",
+  "votes": 6,
+  "name": "Military Appointment Criteria (Merit vs. Loyalty)",
+  "note": "Military officers appointed by merit, not political loyalty",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_OS_GOVT_PERP",
+  "provider": "UCDP",
+  "category": "Governance",
+  "votes": 6,
+  "name": "Government-Perpetrated One-Sided Violence Active (binary, country-year)",
+  "note": "Binary: government is perpetrator of one-sided violence against civilians; state repression / democide signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UNHCR_REF_RATIO_POP",
+  "provider": "UNHCR",
+  "category": "Social",
+  "votes": 6,
+  "name": "Refugees as Share of Origin Country Population (derived)",
+  "note": "Refugees from country / total population; normalizes for country size, key comparability metric for ML features",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2smorgviol",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 6,
+  "name": "Social Media Used to Organize Offline Violence",
+  "note": "Social media used to coordinate real-world political violence",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "STR_NWRK_NOC_NB",
+  "provider": "ILOSTAT",
+  "category": "Social",
+  "votes": 6,
+  "name": "Workers involved in strikes and lockouts — total (thousands)",
+  "note": "Total workers in strikes; breadth of industrial unrest",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "EAR_XTLP_SEX_RT",
+  "provider": "ILOSTAT",
+  "category": "Economic",
+  "votes": 6,
+  "name": "Low pay rate by sex (%)",
+  "note": "Share of workers earning below 2/3 of median wage; low-pay prevalence and inequality",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "EN.CLC.MDAT.ZS",
+  "provider": "WB",
+  "category": "Environment",
+  "votes": 6,
+  "name": "Droughts, floods, extreme temperatures (% of population, average 1990-2009)",
+  "note": "Climate disaster exposure; climate fragility baseline",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "IDMC_CONF_STOCK",
+  "provider": "IDMC",
+  "category": "Social",
+  "votes": 6,
+  "name": "Conflict IDP Stock (end-year total)",
+  "note": "Total people living in conflict-induced internal displacement at year-end; headline fragility and crisis duration indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "DT.DOD.DECT.EX.ZS",
+  "provider": "WB",
+  "category": "Government",
+  "votes": 7,
+  "name": "External debt stocks (% of exports of goods, services and primary income)",
+  "note": "External debt vs export capacity; debt sustainability",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "GC.NFN.TOTL.GD.ZS",
+  "provider": "WB",
+  "category": "Government",
+  "votes": 7,
+  "name": "Net lending (+) / net borrowing (-) (% of GDP)",
+  "note": "Fiscal balance (net); primary/deficit signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "BN.CAB.XOKA.CD",
+  "provider": "WB",
+  "category": "Trade",
+  "votes": 7,
+  "name": "Current account balance (BoP, current US$)",
+  "note": "Absolute current account balance; external position level",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "BX.TRF.PWKR.DT.GD.ZS",
+  "provider": "WB",
+  "category": "Economic",
+  "votes": 7,
+  "name": "Personal remittances, received (% of GDP)",
+  "note": "Remittance dependency; diaspora economy signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "FR.INR.RISK",
+  "provider": "WB",
+  "category": "Finance",
+  "votes": 7,
+  "name": "Risk premium on lending (lending rate minus treasury bill rate, %)",
+  "note": "Banking risk spread; credit market tightness",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "NE.GDI.TOTL.KD.ZG",
+  "provider": "WB",
+  "category": "Economic",
+  "votes": 7,
+  "name": "Gross capital formation (annual % growth)",
+  "note": "Investment growth momentum",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "NY.ADJ.SVNG.GN.ZS",
+  "provider": "WB",
+  "category": "Environment",
+  "votes": 7,
+  "name": "Adjusted net savings, including particulate emission damage (% of GNI)",
+  "note": "Genuine savings rate; long-run wealth sustainability",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2x_diagacc",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 7,
+  "name": "Diagonal Accountability Index",
+  "note": "Civil society and media as accountability mechanism",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2x_accountability",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 7,
+  "name": "Accountability Index",
+  "note": "Overall accountability: vertical + horizontal + diagonal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_SB_CONFLICT_COUNT",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 7,
+  "name": "Number of Active State-Based Conflicts (country-year count)",
+  "note": "Count of distinct state-based conflict dyads active in country-year; multi-front war complexity signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_SB_EXT_SUPPORT",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 7,
+  "name": "External Support to Conflict Parties (binary, from ESD dataset)",
+  "note": "Binary: at least one warring party receiving external state support; internationalization and proxy-war signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UNHCR_REF_COA",
+  "provider": "UNHCR",
+  "category": "Social",
+  "votes": 7,
+  "name": "Refugees by Country of Asylum (total stock, end-year)",
+  "note": "End-year stock of refugees hosted in each country; measures humanitarian burden and regional spillover",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UNHCR_ASYAPP_NEW_COO",
+  "provider": "UNHCR",
+  "category": "Social",
+  "votes": 7,
+  "name": "New Asylum Applications by Country of Origin (annual flow)",
+  "note": "Annual asylum claims originating from each country; push-factor signal reflecting persecution or conflict intensity",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UNHCR_ASY_BACKLOG_YEARS",
+  "provider": "UNHCR",
+  "category": "Governance",
+  "votes": 7,
+  "name": "Asylum Backlog Duration (pending stock / annual decisions, derived)",
+  "note": "Implied years to clear pending asylum backlog at current decision rate; institutional capacity and rule-of-law proxy",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "STR_DAYS_NOC_NB",
+  "provider": "ILOSTAT",
+  "category": "Social",
+  "votes": 7,
+  "name": "Working days lost through strikes and lockouts — total",
+  "note": "Total working days lost; headline economic cost of industrial conflict",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "ILR_TUMT_NOC_RT",
+  "provider": "ILOSTAT",
+  "category": "Social",
+  "votes": 7,
+  "name": "Trade union membership rate (union density) (%)",
+  "note": "Share of employees in trade unions; worker bargaining power and social dialogue signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "MPI",
+  "provider": "UNDP HDR",
+  "category": "Social",
+  "votes": 7,
+  "name": "Multidimensional Poverty Index",
+  "note": "Composite index of acute poverty across health, education, and living standards; 0-1 scale from household surveys",
+  "license": "CC BY 3.0 IGO"
+ },
+ {
+  "code": "v2xcs_ccsi",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 7,
+  "name": "Core Civil Society Index",
+  "note": "Core civil society: organizational freedom, participation, consultation",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2x_regime_amb",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 7,
+  "name": "Regimes of the World — Ambiguous Cases",
+  "note": "V-Dem v2x_regime_amb — country-year political indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2jucomp",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 7,
+  "name": "Compliance with Judiciary",
+  "note": "V-Dem v2jucomp — country-year political indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2jupurge",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 7,
+  "name": "Judicial Purges",
+  "note": "Politically-motivated removal of judges",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2catrauni",
+  "provider": "V-Dem",
+  "category": "Social",
+  "votes": 7,
+  "name": "Engagement in Independent Trade Unions",
+  "note": "V-Dem v2catrauni — country-year political indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_OS_DEATHS_BEST",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 7,
+  "name": "One-Sided Violence Deaths — Best Estimate (country-year aggregate)",
+  "note": "Best-estimate civilian fatalities from one-sided violence aggregated to country-year; targeted killing and atrocity intensity",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_SB_INTENSITY_WAR",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 7,
+  "name": "State-Based War Intensity Flag (≥1000 deaths, binary, country-year)",
+  "note": "Binary: state-based conflict reaches 'war' threshold (≥1,000 battle deaths); from incompatibility coding in PRIO-ACD dataset",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "IDMC_CONF_NEW_DISP",
+  "provider": "IDMC",
+  "category": "Social",
+  "votes": 7,
+  "name": "Conflict New Displacements (annual flow)",
+  "note": "New internal displacement movements triggered by conflict/violence in the year; a person displaced twice counted twice — flow measure",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "IDMC_CONF_YEARS_CONSECUTIVE",
+  "provider": "IDMC",
+  "category": "Other",
+  "votes": 7,
+  "name": "Years in Consecutive Conflict Displacement (derived from IDMC stock series)",
+  "note": "Count of consecutive years with conflict IDP stock > 0; protracted displacement duration, chronicity indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "OWID_STATECAP_COERCE",
+  "provider": "OWID",
+  "category": "Military",
+  "votes": 7,
+  "name": "Coercive State Capacity (Hanson & Sigman)",
+  "note": "Sub-dimension: government control of territory and monopoly on legitimate force; 177 countries 1960-2015",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "ET-001",
+  "provider": "FAOSTAT",
+  "category": "Environment",
+  "votes": 7,
+  "name": "Mean surface temperature change on land (degrees C vs 1951-1980 baseline)",
+  "note": "Country-level temperature anomaly (1961-2025); climate change exposure and agricultural risk.",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "FS-001",
+  "provider": "FAOSTAT",
+  "category": "Health",
+  "votes": 8,
+  "name": "Prevalence of undernourishment (PoU)",
+  "note": "% population with chronic dietary energy deficit; SDG 2.1.1 anchor indicator; stability pillar of food security.",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "FS-004",
+  "provider": "FAOSTAT",
+  "category": "Social",
+  "votes": 8,
+  "name": "Prevalence of severe food insecurity (FIES)",
+  "note": "% population with severe food insecurity only (sub-indicator of FIES suite); access pillar proxy.",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "IDMC_CONF_STOCK_POP",
+  "provider": "IDMC",
+  "category": "Social",
+  "votes": 8,
+  "name": "Conflict IDP Stock per 1,000 Population (normalized)",
+  "note": "Conflict IDP stock normalized by population; intensity-adjusted internal displacement burden",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2svstterr",
+  "provider": "V-Dem",
+  "category": "Government",
+  "votes": 8,
+  "name": "State Territorial Control",
+  "note": "Full territorial control; no warlords or rebel-held areas",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2svinlaut",
+  "provider": "V-Dem",
+  "category": "Government",
+  "votes": 8,
+  "name": "International Autonomy (Degree of External Constraint)",
+  "note": "International constraints on government autonomy",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "OWID_PRESSFREEDOM",
+  "provider": "OWID",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Press Freedom Index (RSF)",
+  "note": "Reporters Without Borders Press Freedom Index; 0-100 (100=most free); OWID-hosted; media environment signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "MS.MIL.XPND.ZS",
+  "provider": "WB",
+  "category": "Military",
+  "votes": 8,
+  "name": "Military expenditure (% of central government expenditure)",
+  "note": "Military share of govt spending; resource allocation",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "OWID_STATECAP_EXTRACT",
+  "provider": "OWID",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Extractive State Capacity (Hanson & Sigman)",
+  "note": "Sub-dimension: government ability to raise sustainable revenues (tax+non-tax); 177 countries 1960-2015",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "OWID_WJPRULEOFLAW_CORR",
+  "provider": "OWID",
+  "category": "Governance",
+  "votes": 8,
+  "name": "WJP Rule of Law — Absence of Corruption",
+  "note": "Sub-index of WJP RoL measuring corruption absence in executive, judiciary, police, military; 0-1",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "OWID_MILSPEND_SIPRI",
+  "provider": "OWID",
+  "category": "Military",
+  "votes": 8,
+  "name": "Military Spending (% GDP, SIPRI)",
+  "note": "Military expenditure as % GDP; SIPRI (CC BY 4.0) via OWID; defence burden and conflict orientation signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2x_pubcorr",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Public Sector Corruption Index",
+  "note": "Public sector corruption in service delivery",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2xnp_regcorr",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Regime Corruption Index",
+  "note": "V-Dem v2xnp_regcorr — country-year political indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2xnp_client",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Clientelism Index",
+  "note": "Clientelism: vote buying, patron-client linkages, particularism",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2regdur",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Regime Duration (Years in Power)",
+  "note": "Years of current regime; longer = more entrenched/stable",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "OWID_AUTOCRATIZATION",
+  "provider": "OWID",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Autocratization Episode (binary, ERT)",
+  "note": "Whether country is in an ongoing autocratization episode; V-Dem Episodes of Regime Transformation; regime change signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_OS_DEATHS_GOVT",
+  "provider": "UCDP",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Government-Perpetrated Civilian Deaths Best Estimate (one-sided, country-year)",
+  "note": "Fatalities from government one-sided violence; state atrocity magnitude, distinct from battlefield deaths",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UNHCR_IDP_RATIO_POP",
+  "provider": "UNHCR",
+  "category": "Social",
+  "votes": 8,
+  "name": "IDPs as Share of Country Population (derived)",
+  "note": "UNHCR IDP stock / total population; normalized internal displacement burden, comparability-adjusted",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UNHCR_FORCDISP_TOTAL",
+  "provider": "UNHCR",
+  "category": "Social",
+  "votes": 8,
+  "name": "Total Forcibly Displaced (refugees + asylum-seekers + IDPs, derived)",
+  "note": "Aggregate forced displacement burden for a country; single composite signal for ML feature engineering",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "FS-003",
+  "provider": "FAOSTAT",
+  "category": "Social",
+  "votes": 8,
+  "name": "Prevalence of moderate or severe food insecurity (FIES)",
+  "note": "% population experiencing moderate/severe food insecurity per Food Insecurity Experience Scale; SDG 2.1.2.",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "FB.BNK.NPLS.ZS",
+  "provider": "WB",
+  "category": "Finance",
+  "votes": 8,
+  "name": "Bank nonperforming loans to total gross loans (%)",
+  "note": "Banking sector health; credit risk indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "NY.GDP.OIL.RT.ZS",
+  "provider": "WB",
+  "category": "Economic",
+  "votes": 8,
+  "name": "Oil rents (% of GDP)",
+  "note": "Oil rent share of GDP; petro-state exposure",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "NY.GDP.TOTL.RT.ZS",
+  "provider": "WB",
+  "category": "Economic",
+  "votes": 8,
+  "name": "Total natural resources rents (% of GDP)",
+  "note": "Natural resource dependency; Dutch disease risk",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "LAP_2GDP_NOC_RT",
+  "provider": "ILOSTAT",
+  "category": "Economic",
+  "votes": 8,
+  "name": "Labour income share as a percent of GDP — ILO modelled (%)",
+  "note": "Wage/labour share of GDP; functional income distribution; SDG 10.4.1 primary input",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "SDGB-009",
+  "provider": "FAOSTAT",
+  "category": "Economic",
+  "votes": 8,
+  "name": "SDG 2.c.1 Indicator of food price anomalies (IFPA)",
+  "note": "Food price volatility anomaly indicator; early warning for food price spikes and political instability.",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "CAHD-002",
+  "provider": "FAOSTAT",
+  "category": "Social",
+  "votes": 8,
+  "name": "Prevalence of population unable to afford a healthy diet (% population)",
+  "note": "Share unable to afford CoHD; demand-side food access gap with income distribution component.",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "IDMC_TOTAL_DISP_GDP_RATIO",
+  "provider": "IDMC",
+  "category": "Economic",
+  "votes": 8,
+  "name": "Total Displaced Persons to GDP Ratio (derived, IDMC stock / WB GDP)",
+  "note": "IDP stock relative to economic size; economic displacement burden signal independent of population scale",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "IDMC_DIS_NEW_DISP_POP",
+  "provider": "IDMC",
+  "category": "Social",
+  "votes": 8,
+  "name": "Disaster New Displacements per 1,000 Population (normalized)",
+  "note": "Disaster displacement flow normalized by population; disaster vulnerability intensity metric",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "OWID_SLUM_SHARE",
+  "provider": "OWID",
+  "category": "Social",
+  "votes": 8,
+  "name": "Urban Slum Population Share (%)",
+  "note": "Share of urban population living in slums; UN-HABITAT via OWID; urban fragility and inequality signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2x_execorr",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Executive Corruption Index",
+  "note": "Executive corruption: bribery, embezzlement, cronyism",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2exrescon",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Executive Respects Constitution",
+  "note": "Executive respects constitutional and judicial constraints",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "INEQ_INC",
+  "provider": "UNDP HDR",
+  "category": "Economic",
+  "votes": 8,
+  "name": "Inequality in Income",
+  "note": "Atkinson measure of income inequality used in IHDI computation; distinct from Gini",
+  "license": "CC BY 3.0 IGO"
+ },
+ {
+  "code": "v2x_horacc",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Horizontal Accountability Index",
+  "note": "V-Dem v2x_horacc — country-year political indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2x_veracc",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Vertical Accountability Index",
+  "note": "Vertical accountability through elections and parties",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2x_cspart",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Civil Society Participation Index",
+  "note": "V-Dem v2x_cspart — country-year political indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2juhcind",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "High Court Independence",
+  "note": "High court independent from executive interference",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2lgotovst",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Executive Oversight by Legislature",
+  "note": "V-Dem v2lgotovst — country-year political indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2mecenefi",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Internet Censorship Effort",
+  "note": "Government internet censorship effort",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2smfordom",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Foreign Government Domestic Disinformation",
+  "note": "Foreign governments run domestic disinformation campaigns",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2smpolsoc",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Online Political Polarization of Society",
+  "note": "Online political polarization causing social fragmentation",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2csantimv",
+  "provider": "V-Dem",
+  "category": "Social",
+  "votes": 8,
+  "name": "Anti-System Movements Active",
+  "note": "Anti-system movements challenging regime",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2regantireg",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Strength of Anti-Regime Sentiment",
+  "note": "Strength of anti-regime sentiment in population and elites",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "OWID_REGIMETYPE",
+  "provider": "OWID",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Political Regime Type (Regimes of the World, V-Dem RoW)",
+  "note": "4-category classification: closed autocracy/electoral autocracy/electoral democracy/liberal democracy; V-Dem RoW 1900-2025; NOT in existing 109",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "OWID_STATECAP",
+  "provider": "OWID",
+  "category": "Governance",
+  "votes": 8,
+  "name": "State Capacity Index (Hanson & Sigman)",
+  "note": "Composite Bayesian latent variable index of coercive+extractive+administrative state capacity; 177 countries 1960-2015; NOT in 109",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_DECO_ELECTORAL_VIOLENCE",
+  "provider": "UCDP",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Deadly Electoral Violence Events (count, country-year, from DECO)",
+  "note": "Count of georeferenced lethal electoral violence events; election-period instability signal distinct from armed conflict",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_VIOL_PROTEST_DEATHS",
+  "provider": "UCDP",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Violent Political Protest Deaths (country-year aggregate)",
+  "note": "Fatalities from violent political protests (below armed conflict threshold); protest repression and political volatility signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_GED_TOTAL_DEATHS",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 8,
+  "name": "GED Total Deaths Best Estimate (all types combined, country-year)",
+  "note": "Aggregate of best-estimate deaths from all GED events (SB+NS+OS) in country-year; total lethality from organized violence",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_SB_ONSET",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 8,
+  "name": "State-Based Conflict Onset (binary: new conflict in year, country-year)",
+  "note": "Binary flag for new conflict onset from UCDP Onset Dataset; leading rather than contemporaneous conflict signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_YEARS_SINCE_LAST_CONFLICT",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 8,
+  "name": "Years Since Last Active Conflict (country-year, derived)",
+  "note": "Years elapsed since last UCDP-recorded organized violence above threshold; post-conflict stability duration, recurrence risk proxy",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_PEACE_AGREE_SIGNED",
+  "provider": "UCDP",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Peace Agreement Signed (binary, country-year, from UCDP PAD)",
+  "note": "Binary: at least one peace agreement signed in country-year; peace process milestone signal from UCDP Peace Agreement Dataset",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "IDMC_CONF_NEW_DISP_POP",
+  "provider": "IDMC",
+  "category": "Social",
+  "votes": 8,
+  "name": "Conflict New Displacements per 1,000 Population (normalized)",
+  "note": "Conflict-induced new displacements normalized by population; cross-country comparability for ML features",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "IDMC_TOTAL_NEW_DISP",
+  "provider": "IDMC",
+  "category": "Social",
+  "votes": 8,
+  "name": "Total New Displacements (conflict + disaster, annual flow)",
+  "note": "Combined new displacement movements from all causes; aggregate mobility-shock signal for ML",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UNHCR_REF_COO",
+  "provider": "UNHCR",
+  "category": "Social",
+  "votes": 8,
+  "name": "Refugees by Country of Origin (total stock, end-year)",
+  "note": "End-year stock of people recognized as refugees originating from each country; core displacement pressure signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UNHCR_STA",
+  "provider": "UNHCR",
+  "category": "Social",
+  "votes": 8,
+  "name": "Stateless Persons (end-year stock)",
+  "note": "Count of persons without any nationality; indicator of ethnic/citizenship discrimination and governance failure",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "OWID_TERRORISM_ATTACKS",
+  "provider": "OWID",
+  "category": "Other",
+  "votes": 8,
+  "name": "Terrorist Attacks (count, GTD)",
+  "note": "Annual count of terrorist incidents; GTD via OWID; terrorism frequency and instability signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "OWID_WJPRULEOFLAW_ORDER",
+  "provider": "OWID",
+  "category": "Governance",
+  "votes": 8,
+  "name": "WJP Rule of Law — Order and Security",
+  "note": "Sub-index measuring crime control, civil conflict absence, violence against civilians; 0-1",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "EIP_NEET_SEX_AGE_RT",
+  "provider": "ILOSTAT",
+  "category": "Social",
+  "votes": 8,
+  "name": "Share of youth not in employment, education or training (NEET) by sex and age (%)",
+  "note": "NEET rate; SDG 8.6.1 indicator; catches discouraged youth outside all productive activity",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "GC.BAL.CASH.GD.ZS",
+  "provider": "WB",
+  "category": "Government",
+  "votes": 8,
+  "name": "Cash surplus/deficit (% of GDP)",
+  "note": "Fiscal cash balance; short-term fiscal health",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2x_civlib",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Civil Liberties Index",
+  "note": "V-Dem v2x_civlib — country-year political indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2x_freexp",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Freedom of Expression Index",
+  "note": "V-Dem v2x_freexp — country-year political indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2x_frassoc",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Freedom of Association Index",
+  "note": "V-Dem v2x_frassoc — country-year political indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2jupoatck",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Government Attacks on Judiciary",
+  "note": "V-Dem v2jupoatck — country-year political indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2mecrit",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Print and Broadcast Media Critical of Government",
+  "note": "Media criticizes government and reports opposition views",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2meharjrn",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Harassment of Journalists",
+  "note": "Physical harassment/imprisonment of journalists",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2smgovdom",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Government Domestic Disinformation",
+  "note": "V-Dem v2smgovdom — country-year political indicator",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2smarrest",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Arrests for Online Political Content",
+  "note": "Arrests of individuals for online political speech",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2caassemb",
+  "provider": "V-Dem",
+  "category": "Social",
+  "votes": 8,
+  "name": "Freedom of Peaceful Assembly",
+  "note": "Citizens can freely assemble for protests and meetings",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "v2casoe",
+  "provider": "V-Dem",
+  "category": "Social",
+  "votes": 8,
+  "name": "State of Emergency Declared",
+  "note": "State of emergency declared restricting civil liberties",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_SB_DEATHS_BEST",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 8,
+  "name": "State-Based Conflict Battle Deaths — Best Estimate (country-year aggregate)",
+  "note": "Best-estimate battle-related deaths from state-based conflicts aggregated to country-year; core conflict intensity metric",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_GED_CIV_DEATHS",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 8,
+  "name": "GED Civilian Deaths Best Estimate (all violence types, country-year)",
+  "note": "Sum of deaths_civilians across all GED events in country-year; direct civilian harm signal from all organized violence",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "UCDP_NS_DEATHS_BEST",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 8,
+  "name": "Non-State Conflict Deaths — Best Estimate (country-year aggregate)",
+  "note": "Best-estimate fatalities from non-state (communal/militia) conflicts aggregated to country-year; sub-state violence level",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "VC.IHR.PSRC.P5",
+  "provider": "WB",
+  "category": "Social",
+  "votes": 8,
+  "name": "Intentional homicides (per 100,000 people)",
+  "note": "Homicide rate; violence and security environment",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "SP.POP.0014.TO.ZS",
+  "provider": "WB",
+  "category": "Demographic",
+  "votes": 8,
+  "name": "Population ages 0-14 (% of total population)",
+  "note": "Youth bulge; demographic dividend/pressure signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "SDG_0131_SEX_SOC_RT",
+  "provider": "ILOSTAT",
+  "category": "Social",
+  "votes": 8,
+  "name": "SDG 1.3.1 — Proportion of population covered by social protection floors/systems (%)",
+  "note": "Social protection coverage breadth; SDG custodian ILO; fragility and welfare-state signal",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "GII",
+  "provider": "UNDP HDR",
+  "category": "Social",
+  "votes": 8,
+  "name": "Gender Inequality Index",
+  "note": "Composite index of reproductive health, empowerment, and labour market gender inequality; 0=equal, 1=maximum inequality",
+  "license": "CC BY 3.0 IGO"
+ },
+ {
+  "code": "IHDI",
+  "provider": "UNDP HDR",
+  "category": "Social",
+  "votes": 8,
+  "name": "Inequality-Adjusted Human Development Index",
+  "note": "HDI adjusted for inequality in health, education, and income; discount from HDI captures inequality penalty",
+  "license": "CC BY 3.0 IGO"
+ },
+ {
+  "code": "OWID_STATECAP_ADMIN",
+  "provider": "OWID",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Administrative State Capacity (Hanson & Sigman)",
+  "note": "Sub-dimension: bureaucratic quality, skilled/impartial public servants; 177 countries 1960-2015",
+  "license": "CC BY 4.0"
+ },
+ {
+  "code": "OWID_TERRORISM_DEATHS",
+  "provider": "OWID",
+  "category": "Other",
+  "votes": 8,
+  "name": "Terrorism Deaths (count, GTD)",
+  "note": "Annual deaths from terrorist attacks; Global Terrorism Database (START/GTD) via OWID; political violence signal",
+  "license": "CC BY 4.0"
+ }
+]
