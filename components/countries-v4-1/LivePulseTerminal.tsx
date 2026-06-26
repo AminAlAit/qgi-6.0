@@ -40,6 +40,10 @@ import { ExplainTip } from "@/components/design/ExplainTip";
 
 const ReactECharts = dynamic(() => import("echarts-for-react"), { ssr: false });
 
+// Canonical series colors: News pulse = amber, Structural = teal.
+// Matches X-card grammar and NewsSignalsPanels (FIX 3).
+const STRUCTURAL_TEAL = "#2dd4bf";
+
 /* ── identity ────────────────────────────────────────────────────────── */
 
 interface RailCountry {
@@ -1299,7 +1303,7 @@ function Stage({
         <Readout
           label="PULSE"
           value={pulse === null ? "n/a" : String(Math.round(pulse))}
-          color="var(--qgi-accent)"
+          color="var(--qgi-warning)"
           tip="How much of this country's news coverage is on this theme right now, measured against its own history. 50 is a normal month for this country; 60 and above is elevated."
         />
         {struct !== null && pulse !== null && (
@@ -1313,11 +1317,12 @@ function Stage({
               color: "var(--qgi-text-dim)",
             }}
           >
-            <span style={{ color: "var(--qgi-accent)", fontWeight: 700 }}>
+            {/* News pulse = amber, structural = teal — canonical grammar (FIX 3). */}
+            <span style={{ color: "var(--qgi-warning)", fontWeight: 700 }}>
               News at {Math.round(pulse)}
             </span>
             {pulse >= struct ? " · above " : " · below "}
-            <span style={{ color: "var(--qgi-warning)", fontWeight: 700 }}>
+            <span style={{ color: STRUCTURAL_TEAL, fontWeight: 700 }}>
               structural fair value {Math.round(struct)}
             </span>
             {` for ${sel?.topic.label ?? "this topic"}.`}
@@ -1645,16 +1650,18 @@ function StageChart({
     dataZoom: dz,
     series: [
       {
+        // News pulse = AMBER (t.amber) — canonical X-card grammar (FIX 3).
         name: "Pulse",
         type: "line",
         data: view.y,
         symbol: "none",
         sampling: "lttb",
-        lineStyle: { width: 1.6, color: view.reliable ? t.accent : t.textDim },
-        areaStyle: { color: `${t.accent}1e` },
+        lineStyle: { width: 1.6, color: view.reliable ? t.amber : t.textDim },
+        areaStyle: { color: `${t.amber}1e` },
         markPoint: {
           symbol: "pin",
           symbolSize: 18,
+          // Pin border stays amber — visually belongs to the news-pulse series.
           itemStyle: { color: t.surface2, borderColor: t.amber, borderWidth: 1.4 },
           label: { show: false },
           emphasis: { disabled: true },
@@ -1663,12 +1670,13 @@ function StageChart({
         markLine: {
           silent: true,
           symbol: "none",
-          lineStyle: { color: t.textDim, type: "dashed", width: 1 },
+          // Threshold line tinted amber to belong to its series.
+          lineStyle: { color: t.amber, type: "dashed", width: 1, opacity: 0.6 },
           label: {
             show: true,
             position: "insideEndTop" as const,
             fontSize: 10,
-            color: t.textDim,
+            color: t.amber,
             formatter: `elevated ${thresholds.pulse}`,
           },
           data: [
@@ -1676,13 +1684,18 @@ function StageChart({
             ...(showStruct
               ? [
                   {
+                    // Structural line = TEAL dashed (FIX 3).
                     yAxis: struct as number,
-                    lineStyle: { color: t.amber, type: "dashed" as const, width: 1.4 },
+                    lineStyle: {
+                      color: STRUCTURAL_TEAL,
+                      type: "dashed" as const,
+                      width: 1.4,
+                    },
                     label: {
                       show: true,
                       position: "insideEndTop" as const,
                       fontSize: 10,
-                      color: t.amber,
+                      color: STRUCTURAL_TEAL,
                       formatter: `structural ${Math.round(struct as number)}`,
                     },
                   },

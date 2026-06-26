@@ -44,6 +44,16 @@ import type { HfBoard, HfCell, HfTopic, HfVerdict } from "@/lib/hf/topics-data";
 
 /* ── Verdict presentation ────────────────────────────────────────────── */
 
+/** Canonical zone names used in the quadrant legend and zone corner labels.
+ *  The compact cell pills keep the shorter names (Active/Signal/Latent/Quiet)
+ *  per the "leave compact per-theme chip tags" scope limit. */
+const VERDICT_ZONE_LABEL: Record<HfVerdict, string> = {
+  ACTIVE: "Both Firing",
+  SIGNAL: "News-Only",
+  LATENT: "Silent Alarm",
+  QUIET: "Quiet",
+};
+
 const VERDICT_STYLE: Record<
   HfVerdict,
   { label: string; color: string; bg: string; border: string }
@@ -342,18 +352,14 @@ export function TopicBoard({ data }: Props) {
         {(Object.keys(VERDICT_STYLE) as HfVerdict[]).map((v) => (
           <span
             key={v}
-            style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
+            style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}
           >
-            <span
-              aria-hidden="true"
-              style={{
-                width: "8px",
-                height: "8px",
-                borderRadius: "50%",
-                background: VERDICT_STYLE[v].color,
-              }}
-            />
-            {VERDICT_STYLE[v].label}
+            {/* Color lives on the quadrant corner label in the chart, not on an
+                orphan dot. The verdict name here is tinted to match that corner
+                label so the key-to-chart connection is immediately visible. */}
+            <span style={{ color: VERDICT_STYLE[v].color, fontWeight: 600 }}>
+              {VERDICT_ZONE_LABEL[v]}
+            </span>
             <InfoTooltip text={data.verdicts[v]} />
           </span>
         ))}
@@ -938,14 +944,6 @@ function QuadrantMap({
     .filter(Boolean);
 
   const th = data.thresholds;
-  // Derive the structural (y) floor from the data (10-step, capped at 30) so a
-  // future low-structure country can never be silently clipped off the canvas.
-  const structVals = points.map((p) => p!.value[1] as number);
-  const structMin = Math.min(
-    30,
-    Math.max(0, Math.floor((Math.min(...structVals) - 5) / 10) * 10)
-  );
-
   const option = {
     backgroundColor: "transparent",
     tooltip: {
@@ -961,7 +959,7 @@ function QuadrantMap({
       formatter: (p: { data: { name: string; value: number[]; verdict: HfVerdict } }) =>
         `<b>${p.data.name}</b><br/>structural ${Math.round(p.data.value[1])} · news pulse ${Math.round(
           p.data.value[0]
-        )}<br/>${VERDICT_STYLE[p.data.verdict].label}`,
+        )}<br/>${VERDICT_ZONE_LABEL[p.data.verdict]}`,
     },
     grid: { left: 56, right: 28, top: 30, bottom: 46 },
     xAxis: {
@@ -978,7 +976,7 @@ function QuadrantMap({
       axisLabel: { color: t.textMuted, fontSize: 10.5 },
     },
     yAxis: {
-      min: structMin,
+      min: 0,
       max: 100,
       name: "RESEMBLANCE TO HISTORICAL CASES",
       nameLocation: "middle",
@@ -989,9 +987,9 @@ function QuadrantMap({
       axisLabel: { color: t.textMuted, fontSize: 10.5 },
     },
     graphic: [
-      quadLabel(0.97, 0.06, "Active", t.warning, "right"),
-      quadLabel(0.08, 0.06, "Latent", t.textMuted, "left"),
-      quadLabel(0.97, 0.84, "Signal", t.accent, "right"),
+      quadLabel(0.97, 0.06, "Both Firing", t.warning, "right"),
+      quadLabel(0.08, 0.06, "Silent Alarm", t.textMuted, "left"),
+      quadLabel(0.97, 0.84, "News-Only", t.accent, "right"),
       quadLabel(0.08, 0.84, "Quiet", t.textDim, "left"),
     ],
     series: [
@@ -1001,11 +999,45 @@ function QuadrantMap({
         // Persona panel: the flags begged to be clicked. Pointer cursor +
         // click-through to the country profile (linkable countries only).
         cursor: "pointer",
-        // Shift colliding country labels apart instead of letting them
-        // overprint (review finding: NigeriaThailand ran together). shiftXY
-        // (not shiftY) so 30 flags clustering in the Active corner can spread
-        // on both axes.
-        labelLayout: { moveOverlap: "shiftXY" as const },
+        // Deterministic label de-overlap, resolution-independent: both axes are
+        // 0-100, so clustering is done in DATA-space (no hardcoded pixel sizes,
+        // so it holds on any viewport). Each nearby peer sitting at-or-above a
+        // point pushes its label one ~18px row further down, fanning dense
+        // clusters (e.g. the top-right Active corner) into a clean vertical
+        // ladder. Points near the right edge (pulse > 78) flip to a left anchor
+        // so the text reads inward and never clips at x=100.
+        labelLayout: (params: {
+          dataIndex: number;
+          labelRect: { x: number; y: number; width: number; height: number };
+          seriesIndex: number;
+        }) => {
+          const pt = points[params.dataIndex];
+          if (!pt) return {};
+          const [px, py] = pt.value as [number, number];
+          // A flag label collides when its anchor is close on BOTH axes; the
+          // thresholds approximate the label box (wider than tall) in 0-100
+          // value units.
+          const NEAR_X = 14;
+          const NEAR_Y = 9;
+          let rank = 0;
+          for (let qi = 0; qi < points.length; qi++) {
+            if (qi === params.dataIndex) continue;
+            const q = points[qi];
+            if (!q) continue;
+            const [qx, qy] = q.value as [number, number];
+            if (
+              Math.abs(qx - px) < NEAR_X &&
+              Math.abs(qy - py) < NEAR_Y &&
+              (qy > py || (qy === py && qx < px))
+            ) {
+              rank += 1;
+            }
+          }
+          return {
+            dy: rank * 18,
+            align: px > 78 ? ("right" as const) : ("center" as const),
+          };
+        },
         markLine: {
           silent: true,
           symbol: "none",
@@ -1060,11 +1092,11 @@ function QuadrantMap({
           lineHeight: 1.5,
         }}
       >
-        <span style={{ color: "var(--qgi-warning)" }}>Active</span>
+        <span style={{ color: "var(--qgi-warning)" }}>Both Firing</span>
         {" = both elevated · "}
-        <span style={{ color: "var(--qgi-accent)" }}>Signal</span>
+        <span style={{ color: "var(--qgi-accent)" }}>News-Only</span>
         {" = news without structure · "}
-        <span style={{ color: "var(--qgi-text-muted)" }}>Latent</span>
+        <span style={{ color: "var(--qgi-text-muted)" }}>Silent Alarm</span>
         {" = structure without news · "}
         <span style={{ color: "var(--qgi-text-dim)" }}>Quiet</span>
         {" = neither."}
