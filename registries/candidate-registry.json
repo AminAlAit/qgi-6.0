@@ -1288,7 +1288,12 @@
       "status": "vetted",
       "category": "Demographic",
       "description": "A high share of 15-24 year-olds creates a large pool of economically marginalized, politically activated youth — a robust cross-national predictor of mass mobilization and insurgency onset. It captures the structural demographic pressure that precedes protest waves, labor unrest, and recruitment into armed groups.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "UN World Population Prospects (UN WPP), UN DESA Population Division",
+        "source_license": "CC BY 3.0 IGO",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
@@ -1302,7 +1307,7 @@
       "provider": "IDMC",
       "numeric_id": 503,
       "name": "Disaster Displacement — Flood-Related New Displacements (annual)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Environment",
       "description": "Annual new displacements specifically from flood events capture acute climate-driven population shocks that strain state capacity, overwhelm social protection systems, and can trigger secondary political instability — a more hazard-specific signal than aggregate disaster displacement. Disaggregating by hazard type lets models distinguish chronic flood-exposed countries from those hit by political violence or cyclones.",
       "provider_meta": {},
@@ -1310,7 +1315,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -1319,7 +1324,7 @@
       "provider": "IDMC",
       "numeric_id": 504,
       "name": "Disaster Displacement — Storm-Related New Displacements (annual)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Environment",
       "description": "Storm-related displacement isolates extreme-weather shock intensity from other hazard types, offering a cleaner signal of cyclone/typhoon exposure that degrades food security, displaces populations, and strains governance before broader humanitarian crises crystallise. Disaggregating by hazard type prevents flood and storm dynamics from cancelling each other out.",
       "provider_meta": {},
@@ -1327,7 +1332,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -1408,7 +1413,7 @@
       "provider": "OWID",
       "numeric_id": 853,
       "name": "World Justice Project Rule of Law Index (Overall)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Governance",
       "description": "The WJP Rule of Law overall index is a dense composite (8 sub-indices) measuring constraints on government power, corruption absence, open government, fundamental rights, order and security, and civil/criminal justice — a systematic summary of institutional quality that captures cross-cutting governance deterioration preceding multiple event types, with annual panel structure suited to greedy feature selection.",
       "provider_meta": {},
@@ -1416,7 +1421,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -1624,7 +1629,7 @@
       "provider": "IDMC",
       "numeric_id": 505,
       "name": "Conflict IDP Stock (end-year total)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Social",
       "description": "End-year IDP stock is a durable, slow-decay measure of unresolved internal conflict — it accumulates over protracted crises and persists long after acute fighting ebbs, making it an excellent lagging severity signal and chronicity marker for conflict trends. Unlike flow measures it captures entrenched displacement that cannot be explained by recent events alone.",
       "provider_meta": {},
@@ -1632,7 +1637,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -2039,7 +2044,7 @@
       "provider": "IDMC",
       "numeric_id": 506,
       "name": "Conflict New Displacements (annual flow)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Social",
       "description": "Annual new conflict displacement flows measure the acute shock dimension of instability — each new displacement event reflects active violence or forced movement, making this a real-time intensity gauge rather than a stock of accumulated crisis. As a flow rather than stock variable it captures escalation velocity and is less subject to long-term baseline drift.",
       "provider_meta": {},
@@ -2047,7 +2052,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -2056,7 +2061,7 @@
       "provider": "IDMC",
       "numeric_id": 507,
       "name": "Years in Consecutive Conflict Displacement (derived from IDMC stock series)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Other",
       "description": "The count of consecutive years with active conflict IDP stock above zero measures displacement chronicity and protracted-conflict duration, which captures different information from annual flow data: long streaks signal entrenched conflict ecosystems with high recurrence risk. QGI benefits from this temporal-persistence dimension because it differentiates states in acute crisis (high flow, low streak) from those in chronic low-grade conflict (low annual flow, long streak) that are prone to sudde",
       "provider_meta": {},
@@ -2064,7 +2069,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -2076,7 +2081,12 @@
       "status": "vetted",
       "category": "Military",
       "description": "The Hanson-Sigman coercive state capacity sub-dimension measures a government's control over territory and monopoly on the legitimate use of force — the foundational prerequisite for conflict suppression and public order. It captures state fragility specifically on the coercion axis, distinct from extractive or administrative capacity, providing unique predictive value for conflict-related Trends.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "Hanson & Sigman (2021), 'Leviathan's Latent Dimensions', Journal of Politics — replication data on Harvard Dataverse DOI:10.7910/DVN/IFZXQX",
+        "source_license": "CC0 1.0 (Harvard Dataverse default for JoP replication data — unconfirmed, needs direct dataset-page check)",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
@@ -2141,7 +2151,7 @@
       "provider": "IDMC",
       "numeric_id": 508,
       "name": "Conflict IDP Stock per 1,000 Population (normalized)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Social",
       "description": "Normalizing conflict IDP stock by population converts a size-confounded count into a per-capita displacement intensity that is cross-nationally comparable and more directly reflects the state capacity collapse, territorial control loss, and sustained violence that define protracted political crises.",
       "provider_meta": {},
@@ -2149,7 +2159,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -2196,7 +2206,7 @@
       "provider": "OWID",
       "numeric_id": 855,
       "name": "Press Freedom Index (RSF)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Governance",
       "description": "The RSF Press Freedom Index measures the operating environment for journalists — repression of media is both a symptom of governance deterioration and an active mechanism that suppresses the information environment needed for accountability. For QGI, it captures a media-freedom pathway to instability distinct from direct political repression indicators.",
       "provider_meta": {},
@@ -2204,7 +2214,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -2235,7 +2245,12 @@
       "status": "vetted",
       "category": "Governance",
       "description": "Extractive state capacity — the government's ability to raise sustained revenues — is a foundational determinant of fiscal resilience, public goods provision, and regime stability; states that cannot tax reliably are far more vulnerable to fiscal crises, foreign-debt spirals, and popular delegitimisation. It is theoretically distinct from administrative or coercive capacity and adds non-redundant signal.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "Hanson & Sigman (2021), 'Leviathan's Latent Dimensions', Journal of Politics — replication data on Harvard Dataverse DOI:10.7910/DVN/IFZXQX",
+        "source_license": "CC0 1.0 (Harvard Dataverse default for JoP replication data — unconfirmed, needs direct dataset-page check)",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
@@ -2249,7 +2264,7 @@
       "provider": "OWID",
       "numeric_id": 857,
       "name": "WJP Rule of Law — Absence of Corruption",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Governance",
       "description": "The WJP Rule of Law Absence of Corruption sub-index provides a cross-institutionally validated annual measure of corruption across executive, judiciary, police, and military — the four channels through which systemic corruption erodes state legitimacy and precipitates political crises. Unlike perception-based composite indices, it is grounded in population surveys and expert assessments, giving it higher construct validity for QGI's rule-of-law and governance Trends.",
       "provider_meta": {},
@@ -2257,7 +2272,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -2266,7 +2281,7 @@
       "provider": "OWID",
       "numeric_id": 858,
       "name": "Military Spending (% GDP, SIPRI)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Military",
       "description": "Military expenditure as share of GDP is a broad defence-burden and conflict-orientation signal; rapid increases precede militarization events and reflect threat perception, while high sustained levels constrain fiscal space for social spending. SIPRI data is the international gold standard for cross-national military expenditure comparisons.",
       "provider_meta": {},
@@ -2274,7 +2289,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -2362,7 +2377,12 @@
       "status": "vetted",
       "category": "Governance",
       "description": "The V-Dem ERT Autocratization Episode binary flag directly identifies countries in active processes of democratic erosion, making it one of the most theory-aligned predictors of executive power consolidation, political repression, and eventual regime change. As a binary state variable it provides a crisp switching signal that complements continuous V-Dem indices.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "V-Dem (Episodes of Regime Transformation — ERT dataset)",
+        "source_license": "CC BY 4.0",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
@@ -2552,7 +2572,7 @@
       "provider": "IDMC",
       "numeric_id": 509,
       "name": "Total Displaced Persons to GDP Ratio (derived, IDMC stock / WB GDP)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Economic",
       "description": "Normalising total IDP stock against GDP captures the economic displacement burden independently of population scale, revealing whether a country's productive capacity is being overwhelmed by forced immobility — a signal of cumulative conflict-economy degradation distinct from headcount measures. This ratio is particularly useful for QGI's Trends involving economic crisis in conflict-affected states where GDP is itself eroded.",
       "provider_meta": {},
@@ -2560,7 +2580,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -2569,7 +2589,7 @@
       "provider": "IDMC",
       "numeric_id": 510,
       "name": "Disaster New Displacements per 1,000 Population (normalized)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Social",
       "description": "Disaster new displacements normalized by population provides a cross-country-comparable intensity metric for how severely disaster events displace populations relative to country size — a size-adjusted shock measure critical for ML: it prevents large-population countries from dominating the feature space and enables meaningful comparison between small and large countries.",
       "provider_meta": {},
@@ -2577,7 +2597,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -2589,7 +2609,12 @@
       "status": "vetted",
       "category": "Social",
       "description": "Urban slum population share measures the concentration of economically marginalised, spatially segregated populations within cities — a well-documented structural precondition for urban unrest, political radicalisation, and grievance-based mass protest, especially where urbanisation outpaces formal employment and service delivery. It also serves as a slow-moving inequality proxy distinct from income-distribution measures.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "UN-HABITAT Urban Indicators Database",
+        "source_license": "CC BY 4.0",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
@@ -2851,7 +2876,12 @@
       "status": "vetted",
       "category": "Governance",
       "description": "The V-Dem Regimes of the World 4-category typology (closed autocracy → liberal democracy) encodes regime-type as a categorical structural variable that conditions almost every political risk mechanism — coup risk, protest dynamics, conflict recurrence, and repression intensity all differ fundamentally across these categories, making regime type one of the most powerful stratifying features in any political-risk model.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "V-Dem Regimes of the World (RoW) classification",
+        "source_license": "CC BY 4.0",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
@@ -2868,7 +2898,12 @@
       "status": "vetted",
       "category": "Governance",
       "description": "The Hanson & Sigman composite State Capacity Index aggregates coercive, extractive, and administrative sub-dimensions into a single latent variable, capturing the government's ability to govern, tax, and control territory simultaneously. Low state capacity is the structural precondition underlying civil war, coup risk, and governance collapse across multiple Trends.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "Hanson & Sigman (2021) State Capacity Index — 'Leviathan's Latent Dimensions', Journal of Politics 83(4)",
+        "source_license": "CC BY 4.0",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
@@ -2984,7 +3019,7 @@
       "provider": "IDMC",
       "numeric_id": 511,
       "name": "Conflict New Displacements per 1,000 Population (normalized)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Social",
       "description": "Population-normalised conflict displacement provides a cross-country comparable intensity metric that raw displacement counts cannot: a country displacing 100,000 people out of 500,000 is qualitatively different from one displacing 100,000 out of 50 million. This normalised form is the ML-preferred input, reducing spurious country-size correlations in the greedy feature selection.",
       "provider_meta": {},
@@ -2992,7 +3027,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -3001,7 +3036,7 @@
       "provider": "IDMC",
       "numeric_id": 512,
       "name": "Total New Displacements (conflict + disaster, annual flow)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Social",
       "description": "Total new displacements (conflict plus disaster combined) is a high-frequency, high-sensitivity aggregate shock signal that captures acute population mobility across both violence-driven and climate-driven crises in a single annual metric; its composite nature makes it valuable for Trends where the displacement trigger is mixed (e.g., conflict in drought-stricken regions) and it avoids the artificial separation that disaggregated series impose on compound crises. Rapid increases signal acute det",
       "provider_meta": {},
@@ -3009,7 +3044,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -3052,7 +3087,7 @@
       "provider": "OWID",
       "numeric_id": 863,
       "name": "Terrorist Attacks (count, GTD)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Other",
       "description": "The annual count of terrorist incidents directly measures sub-state political violence below the armed-conflict threshold, capturing both the operational capacity of non-state armed groups and government inability to contain them. For QGI Trends, terrorism frequency is an especially useful lagged feature — sustained attack cadence predicts escalation to civil war onset and government repression cycles.",
       "provider_meta": {},
@@ -3060,7 +3095,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -3069,7 +3104,7 @@
       "provider": "OWID",
       "numeric_id": 864,
       "name": "WJP Rule of Law — Order and Security",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Governance",
       "description": "The WJP Order and Security sub-index specifically measures crime control, absence of civil conflict, and violence against civilians — the security dimension of rule of law separated from the broader governance composite. Its specificity to physical security and civil order makes it more directly predictive of violence-related Trends than the overall WJP index, capturing institutional failure modes that precede conflict escalation.",
       "provider_meta": {},
@@ -3077,7 +3112,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
       },
       "vet": null
     },
@@ -3417,7 +3452,12 @@
       "status": "vetted",
       "category": "Governance",
       "description": "Administrative state capacity measures government ability to deliver services through skilled, impartial bureaucracies — a foundational pillar of stability that determines whether fiscal resources translate into public goods or patronage, and whether formal policies are actually implemented. It captures the bureaucratic implementation gap that distinguishes fragile from resilient states independent of resource levels.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "Hanson & Sigman (2021), 'Leviathan's Latent Dimensions', Journal of Politics — replication data on Harvard Dataverse DOI:10.7910/DVN/IFZXQX",
+        "source_license": "CC0 1.0 (Harvard Dataverse default for JoP replication data — unconfirmed, needs direct dataset-page check)",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
@@ -3431,7 +3471,7 @@
       "provider": "OWID",
       "numeric_id": 866,
       "name": "Terrorism Deaths (count, GTD)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Other",
       "description": "Annual deaths from terrorist attacks (GTD) provide a lethality-weighted measure of terrorism intensity that goes beyond incident counts to capture the severity of organised political violence below the armed-conflict threshold. Fatality trends are more signal-rich for political risk models than binary occurrence flags because they track whether groups are scaling capacity or winding down.",
       "provider_meta": {},
@@ -3439,7 +3479,318 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "license: non-commercial (IDMC CC BY-NC-SA; OWID SIPRI/GTD/WJP/RSF proprietary)"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UNHCR_IDP",
+      "provider": "UNHCR",
+      "numeric_id": 465,
+      "name": "Internally Displaced Persons (UNHCR-reported, end-year stock)",
+      "status": "vetted",
+      "category": "Social",
+      "description": "UNHCR's own IDP stock estimates (separate from IDMC); measures internal displacement in countries UNHCR has operational mandate",
+      "provider_meta": {},
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "v2jucorrdc",
+      "provider": "VDEM_EXT",
+      "numeric_id": 945,
+      "name": "Judicial Corruption in Decision-Making",
+      "status": "vetted",
+      "category": "Governance",
+      "description": "V-Dem v2jucorrdc — country-year political indicator",
+      "provider_meta": {
+        "base_provider": "VDEM"
+      },
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "v2meslfcen",
+      "provider": "VDEM_EXT",
+      "numeric_id": 946,
+      "name": "Media Self-Censorship",
+      "status": "vetted",
+      "category": "Governance",
+      "description": "Journalist self-censorship due to political pressure",
+      "provider_meta": {
+        "base_provider": "VDEM"
+      },
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UNHCR_IDP_CHANGE_RATE",
+      "provider": "UNHCR",
+      "numeric_id": 466,
+      "name": "UNHCR IDP Stock Annual Change Rate (%, derived)",
+      "status": "vetted",
+      "category": "Social",
+      "description": "Percentage change in UNHCR-reported IDP stock year-on-year; acceleration of displacement crisis or recovery signal",
+      "provider_meta": {},
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UCDP_GED_OS_EVENTS",
+      "provider": "UCDP",
+      "numeric_id": 420,
+      "name": "GED One-Sided Violence Events Count (country-year aggregate)",
+      "status": "vetted",
+      "category": "Other",
+      "description": "Count of georeferenced one-sided violence events; civilian targeting frequency, atrocity event density",
+      "provider_meta": {},
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "MS.MIL.XPND.CN",
+      "provider": "WB_EXT",
+      "numeric_id": 1419,
+      "name": "Military expenditure (current LCU)",
+      "status": "vetted",
+      "category": "Military",
+      "description": "Nominal military spending; defence budget context",
+      "provider_meta": {
+        "base_provider": "WB"
+      },
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "v2cltrnslw",
+      "provider": "VDEM_EXT",
+      "numeric_id": 947,
+      "name": "Transparent Laws with Predictable Enforcement",
+      "status": "vetted",
+      "category": "Governance",
+      "description": "Laws publicly known and consistently applied",
+      "provider_meta": {
+        "base_provider": "VDEM"
+      },
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "v2mebias",
+      "provider": "VDEM_EXT",
+      "numeric_id": 948,
+      "name": "Media Bias (Pro-Government)",
+      "status": "vetted",
+      "category": "Governance",
+      "description": "Systematic pro-government bias in mainstream media",
+      "provider_meta": {
+        "base_provider": "VDEM"
+      },
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "v2merange",
+      "provider": "VDEM_EXT",
+      "numeric_id": 949,
+      "name": "Print and Broadcast Media Perspectives Diversity",
+      "status": "vetted",
+      "category": "Governance",
+      "description": "Diversity of political perspectives in media",
+      "provider_meta": {
+        "base_provider": "VDEM"
+      },
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UCDP_GED_NS_EVENTS",
+      "provider": "UCDP",
+      "numeric_id": 421,
+      "name": "GED Non-State Violence Events Count (country-year aggregate)",
+      "status": "vetted",
+      "category": "Other",
+      "description": "Count of georeferenced non-state conflict events in country-year; communal violence frequency signal",
+      "provider_meta": {},
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "v2clrspct",
+      "provider": "VDEM_EXT",
+      "numeric_id": 950,
+      "name": "Rigorous and Impartial Public Administration",
+      "status": "vetted",
+      "category": "Governance",
+      "description": "Impartial professional public administration",
+      "provider_meta": {
+        "base_provider": "VDEM"
+      },
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UCDP_GED_GEOREGION_SPREAD",
+      "provider": "UCDP",
+      "numeric_id": 422,
+      "name": "GED Geographic Spread (count of distinct ADM1 regions with events, country-year)",
+      "status": "vetted",
+      "category": "Other",
+      "description": "Number of distinct first-level administrative regions with GED events; spatial diffusion of conflict, territorial control signal",
+      "provider_meta": {},
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "v2jucnind",
+      "provider": "VDEM_EXT",
+      "numeric_id": 951,
+      "name": "Lower Court Independence",
+      "status": "vetted",
+      "category": "Governance",
+      "description": "V-Dem v2jucnind — country-year political indicator",
+      "provider_meta": {
+        "base_provider": "VDEM"
+      },
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "v2juhccomp",
+      "provider": "VDEM_EXT",
+      "numeric_id": 952,
+      "name": "Compliance with High Court",
+      "status": "vetted",
+      "category": "Governance",
+      "description": "V-Dem v2juhccomp — country-year political indicator",
+      "provider_meta": {
+        "base_provider": "VDEM"
+      },
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UCDP_OS_ACTOR_COUNT",
+      "provider": "UCDP",
+      "numeric_id": 423,
+      "name": "Number of Active One-Sided Violence Actors (country-year)",
+      "status": "vetted",
+      "category": "Other",
+      "description": "Count of distinct actors committing one-sided violence in country-year; plurality of targeting actors, repression breadth",
+      "provider_meta": {},
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "v2exthftps",
+      "provider": "VDEM_EXT",
+      "numeric_id": 953,
+      "name": "Public Sector Theft",
+      "status": "vetted",
+      "category": "Governance",
+      "description": "V-Dem v2exthftps — country-year political indicator",
+      "provider_meta": {
+        "base_provider": "VDEM"
+      },
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "v2juaccnt",
+      "provider": "VDEM_EXT",
+      "numeric_id": 954,
+      "name": "Judicial Accountability Mechanisms",
+      "status": "vetted",
+      "category": "Governance",
+      "description": "Mechanisms for holding judiciary accountable",
+      "provider_meta": {
+        "base_provider": "VDEM"
+      },
+      "lifecycle": {
+        "added": "2026-06-26",
+        "vetted": "2026-06-26",
+        "activated": null,
+        "reason": "250-run license-backfill (panel) 2026-06-26"
       },
       "vet": null
     }
