@@ -83,13 +83,24 @@ def _today() -> str:
     return date.today().isoformat()
 
 
+def base_provider(provider: str) -> str:
+    """Resolve an allocation-overflow block (e.g. 'WB_EXT') to its base provider
+    ('WB'). Overflow blocks exist only to give WB / V-Dem numeric_id room beyond
+    the legacy 1-314 range; they share the base provider's control-surface sheet
+    and fetcher routing. A plain provider passes through unchanged."""
+    return provider[:-4] if provider.endswith("_EXT") else provider
+
+
 def provider_for_sheet(provider: str) -> str:
-    """Control-surface sheet name for a provider (preserves legacy sheet names)."""
-    if provider == "WB":
+    """Control-surface sheet name for a provider (preserves legacy sheet names).
+    Overflow (*_EXT) blocks resolve to their base provider's sheet so new WB /
+    V-Dem indicators land in the existing phase_2 / vdem sheets the fetchers read."""
+    p = base_provider(provider)
+    if p == "WB":
         return "phase_2_indicators"
-    if provider == "VDEM":
+    if p == "VDEM":
         return "vdem_indicators"
-    return f"{provider.lower()}_indicators"
+    return f"{p.lower()}_indicators"
 
 
 def empty_registry() -> dict[str, Any]:

@@ -130,6 +130,25 @@ def test_to_control_surface_uses_legacy_sheet_names():
     assert "vdem_indicators" in sheets
 
 
+def test_ext_blocks_resolve_to_base_provider_sheet():
+    # overflow blocks map back to the base provider; plain providers pass through
+    assert rg.base_provider("WB_EXT") == "WB"
+    assert rg.base_provider("VDEM_EXT") == "VDEM"
+    assert rg.base_provider("UCDP") == "UCDP"
+    assert rg.provider_for_sheet("WB_EXT") == "phase_2_indicators"
+    assert rg.provider_for_sheet("VDEM_EXT") == "vdem_indicators"
+    # a new WB indicator allocated from WB_EXT lands in the legacy WB sheet,
+    # NOT a dead 'wb_ext_indicators' sheet nothing reads.
+    reg = rg.empty_registry()
+    lo, _ = rg.PROVIDER_BLOCKS["WB_EXT"]
+    rg.add_indicator(reg, indicator_id="SL.UEM.NEET.ZS", provider="WB_EXT",
+                     name="NEET", category="Social", status="active", numeric_id=lo)
+    sheets = rg.to_control_surface(reg)
+    assert "phase_2_indicators" in sheets
+    assert "wb_ext_indicators" not in sheets
+    assert sheets["phase_2_indicators"][0]["id_string"] == "SL.UEM.NEET.ZS"
+
+
 def test_to_allow_list_is_active_only():
     reg = rg.empty_registry()
     rg.add_indicator(reg, indicator_id="UC-01", provider="UCDP", name="a", category="Military",
