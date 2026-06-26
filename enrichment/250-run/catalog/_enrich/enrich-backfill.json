@@ -1,0 +1,663 @@
+[
+  {
+    "code": "UNHCR_IDP",
+    "why": "End-year stock of internally displaced persons captures the cumulative internal human cost of ongoing conflict or persecution, acting as a slow-moving but high-signal barometer of civil war severity and forced movement crises. Rising IDP stocks pre-date or co-occur with most humanitarian crises, political repression escalations, and insurgency intensifications.",
+    "country_coverage": 100,
+    "coverage_confidence": "medium",
+    "year_start": 1993,
+    "year_end": 2024,
+    "coverage_note": "UNHCR operational mandate covers ~100 countries; IDP data sparse pre-1993 and absent for low-displacement stable states.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+15-25%",
+        "reason": "IDP stock is a direct output and lagged predictor of civil war intensity; strongly correlated with conflict onset and escalation."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+15-20%",
+        "reason": "Large IDP populations define humanitarian emergencies and drive aid mobilization events."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Medium",
+        "lift_pct": "+8-12%",
+        "reason": "Internal displacement often converts to cross-border refugee flows; IDP trajectory leads refugee stock changes."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "State-driven displacement is a key mechanism of political repression in authoritarian contexts."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-10%",
+        "reason": "Ethnic cleansing and communal violence are major IDP-generating mechanisms."
+      }
+    ]
+  },
+  {
+    "code": "v2jucorrdc",
+    "why": "Judicial corruption in decision-making measures the degree to which court rulings are influenced by bribes or political interference rather than law, directly signalling rule-of-law breakdown and the erosion of institutional constraints on power. Declining judicial integrity is a leading indicator of executive overreach, contract insecurity, and opposition suppression.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem covers ~180 countries from 1900; coverage is expert-coded and reliable from ~1945 onward.",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "Judicial corruption is one of the clearest institutional manifestations of systemic political corruption."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+10-15%",
+        "reason": "Corrupt judiciary enables selective prosecution and judicial harassment of political opponents."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+8-12%",
+        "reason": "Executive capture of courts is a hallmark step in power consolidation; judicial corruption co-moves with autocratization."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-10%",
+        "reason": "Without independent judiciary, human rights abuses go unaddressed and unpunished, reinforcing abuse cycles."
+      },
+      {
+        "trend_id": "transitional_justice",
+        "lift_bucket": "Low",
+        "lift_pct": "+3-6%",
+        "reason": "Judicial integrity reforms are a key component of transitional justice post-conflict."
+      }
+    ]
+  },
+  {
+    "code": "v2meslfcen",
+    "why": "Media self-censorship captures the chilling effect of political pressure on journalists even in the absence of formal censorship laws, reflecting the de facto information environment and the state's coercive reach over public discourse. High self-censorship precedes and enables further repression by suppressing exposure of governance failures.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem full-panel expert survey; reliable coverage from ~1945; thin for very small states pre-1990.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+12-18%",
+        "reason": "Self-censorship is both symptom and enabler of political repression; strongly co-moves with repression events."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+8-12%",
+        "reason": "Information control through media intimidation is a core autocratization mechanism."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+7-11%",
+        "reason": "When journalists self-censor, human rights abuses are underreported, reducing accountability pressure."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Low",
+        "lift_pct": "+3-6%",
+        "reason": "Reduction in self-censorship often accompanies democratic openings as a lagged signal."
+      }
+    ]
+  },
+  {
+    "code": "UNHCR_IDP_CHANGE_RATE",
+    "why": "The year-on-year percentage change in IDP stock captures the acceleration or deceleration of internal displacement crises, providing a dynamic leading signal where the level stock may lag; a sudden spike often precedes or coincides with major conflict escalations, natural disasters, or repression campaigns. The rate-of-change dimension is more sensitive to crisis onset than the absolute stock.",
+    "country_coverage": 95,
+    "coverage_confidence": "medium",
+    "year_start": 1994,
+    "year_end": 2024,
+    "coverage_note": "Derived from UNHCR_IDP stock; requires two consecutive years of data, so effective start is 1994; same mandate coverage gaps apply.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "Rapid IDP acceleration directly tracks conflict escalation events; rate spikes lead international recognition of new conflict phases."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Crisis acceleration rate is a primary trigger for humanitarian response mobilization."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "Sudden IDP spikes in relatively low-conflict contexts point to state-driven forced displacement."
+      },
+      {
+        "trend_id": "peacekeeping_and_peace_process",
+        "lift_bucket": "Low",
+        "lift_pct": "+3-6%",
+        "reason": "Declining IDP rate (negative change) co-moves with peace agreement implementation progress."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_GED_OS_EVENTS",
+    "why": "The count of georeferenced one-sided violence events measures how frequently armed actors deliberately target civilians, capturing atrocity frequency independently of battlefield deaths; event counts are more sensitive to low-intensity targeting campaigns than death aggregates and detect repression before lethality thresholds are crossed. This frequency signal is particularly valuable for Trends involving terrorism, political violence, and human rights.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "UCDP GED covers all countries with at least one qualifying event; zero-event countries excluded, so effective coverage is conflict-affected states only (~150).",
+    "trends": [
+      {
+        "trend_id": "terrorist_attack",
+        "lift_bucket": "High",
+        "lift_pct": "+15-25%",
+        "reason": "One-sided violence events capture the category of civilian-targeted attacks most analogous to terrorism events."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+15-22%",
+        "reason": "OS event count is a direct operationalization of political violence against civilians."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "High",
+        "lift_pct": "+12-18%",
+        "reason": "Each OS event is by definition a violation; event density captures abuse institutionalization."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Medium",
+        "lift_pct": "+8-12%",
+        "reason": "Insurgent and government OS events are elevated during civil war contexts."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+7-11%",
+        "reason": "Government one-sided violence is a direct measure of violent repression of civilian populations."
+      }
+    ]
+  },
+  {
+    "code": "MS.MIL.XPND.CN",
+    "why": "Nominal military expenditure in local currency units provides a scale-independent measure of the absolute defence budget, capturing procurement cycles, military build-ups, and sudden mobilization spending that percentage-of-GDP measures may obscure during economic contraction. It is the foundational input for military policy analysis and arms race detection.",
+    "country_coverage": 170,
+    "coverage_confidence": "high",
+    "year_start": 1960,
+    "year_end": 2023,
+    "coverage_note": "World Bank / SIPRI data via WB API; ~170 countries from 1960 with some gaps for small states and centrally planned economies pre-1990.",
+    "trends": [
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-10%",
+        "reason": "Military budget growth and reallocation patterns signal institutional military assertiveness preceding coup attempts."
+      },
+      {
+        "trend_id": "military_policy_and_reform",
+        "lift_bucket": "High",
+        "lift_pct": "+12-18%",
+        "reason": "Spending level and trajectory are the primary observable of military policy shifts."
+      },
+      {
+        "trend_id": "interstate_war",
+        "lift_bucket": "Medium",
+        "lift_pct": "+7-12%",
+        "reason": "Pre-war mobilization shows as sudden nominal spending jumps not always visible as % of GDP."
+      },
+      {
+        "trend_id": "sanctions_and_arms_embargo",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Arms embargo effectiveness can be tracked via domestic spending shifts as import channels close."
+      },
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "Low",
+        "lift_pct": "+3-6%",
+        "reason": "Host or intervening country spending spikes accompany foreign military operations."
+      }
+    ]
+  },
+  {
+    "code": "v2cltrnslw",
+    "why": "Transparent laws with predictable enforcement measures whether legal rules are publicly known and consistently applied by state agents, capturing the foundational rule-of-law condition that underpins investment security, contract enforcement, and political predictability. Deterioration in law transparency is a structural precursor to governance breakdown and business environment collapse.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem full-panel; reliable from ~1945; small-state coverage thins before 1970.",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "Opaque and unpredictably enforced laws are the operating environment in which corruption thrives."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+8-12%",
+        "reason": "Selective law enforcement is a tool of political control; deterioration co-moves with autocratization."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Legal unpredictability deters investment and undermines contracts, contributing to economic deterioration."
+      },
+      {
+        "trend_id": "human_rights_reform",
+        "lift_bucket": "Low",
+        "lift_pct": "+3-6%",
+        "reason": "Improvements in law transparency are a leading component of human rights reform packages."
+      }
+    ]
+  },
+  {
+    "code": "v2mebias",
+    "why": "Systematic pro-government media bias measures the degree to which mainstream media consistently frames events in favour of the ruling power, capturing the information distortion that suppresses accountability and manufactures consent for repressive policies. High media bias is both a symptom of existing autocracy and an accelerant of further concentration of power.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-coded panel; reliable from ~1945; coding thins for micro-states pre-1980.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "Media capture is a key pillar of political repression, enabling narrative control to accompany coercive control."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+10-15%",
+        "reason": "State media bias is a diagnostic indicator of executive media capture during autocratization episodes."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Reduction in media bias is a key observable during democratic liberalization and transitions."
+      },
+      {
+        "trend_id": "elections_and_voting",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-8%",
+        "reason": "Biased election coverage distorts electoral competition; high bias predicts unfair election outcomes."
+      }
+    ]
+  },
+  {
+    "code": "v2merange",
+    "why": "Print and broadcast media perspectives diversity measures the range of political viewpoints accessible through mainstream media, capturing pluralism as a structural property of the information environment; low diversity signals information monopoly that restricts opposition mobilization and public accountability. Media diversity is a leading indicator of civil liberties trajectory.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-coded panel; reliable from ~1945; thin for micro-states and some conflict-affected states pre-1970.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+8-13%",
+        "reason": "Media narrowing to pro-government voices is a direct indicator of shrinking political space and repression."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+10-15%",
+        "reason": "Suppression of media diversity is a textbook step in executive power consolidation and autocratization."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Perceived information monopoly is a driver of protest grievances; low diversity precedes protest mobilization."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-10%",
+        "reason": "Media liberalization and diversity expansion are early observables of democratic openings."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Low",
+        "lift_pct": "+3-6%",
+        "reason": "Restricted media range allows human rights abuses to go unreported and unpunished."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_GED_NS_EVENTS",
+    "why": "The count of non-state violence events (communal, militia-on-militia, clan, or identity-based clashes not involving government) measures sub-state conflict frequency independently of state-based war, capturing social fragmentation, ethnic tension spillovers, and ungoverned-space dynamics that often precede or accompany broader political instability. Non-state violence event density is a strong signal for ethnic conflict and political violence Trends.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "UCDP GED non-state dataset; coverage limited to countries with at least one qualifying event; zero-event peaceful states excluded.",
+    "trends": [
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "High",
+        "lift_pct": "+18-28%",
+        "reason": "Non-state GED events are primarily communal/ethnic clashes; this is the most direct event-category match."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "Non-state violence events are political violence below the state-based conflict threshold."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Medium",
+        "lift_pct": "+7-12%",
+        "reason": "Non-state conflict often occurs in parallel with or as a precursor to civil war escalation."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Low",
+        "lift_pct": "+3-6%",
+        "reason": "Social grievances driving non-state violence often also fuel protest mobilization in parallel."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-10%",
+        "reason": "Communal violence disrupts local food systems and healthcare; non-state event density predicts localized humanitarian crises."
+      }
+    ]
+  },
+  {
+    "code": "v2clrspct",
+    "why": "Rigorous and impartial public administration measures whether public servants apply laws and regulations consistently without favouritism or political interference, capturing the operational integrity of the state apparatus that underpins every other governance function. Deterioration in administrative impartiality signals state capture at the bureaucratic level, preceding broader governance collapse.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-coded panel; reliable from ~1945 for most regions; thin for micro-states and some Pacific island states.",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "Partial administration is the primary channel through which corruption manifests in service delivery and enforcement."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+7-11%",
+        "reason": "Politicization of the bureaucracy is a key tool of executive capture; declining impartiality tracks autocratization."
+      },
+      {
+        "trend_id": "human_rights_reform",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Administrative impartiality is a necessary condition for human rights protections to be operationally enforced."
+      },
+      {
+        "trend_id": "social_policy_reform",
+        "lift_bucket": "Low",
+        "lift_pct": "+3-6%",
+        "reason": "Effective social policy reform requires impartial implementation by public servants."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_GED_GEOREGION_SPREAD",
+    "why": "The count of distinct first-level administrative regions hosting GED events measures the spatial diffusion of organized violence across a country's territory, capturing whether conflict is contained or spreading — a critical dimension of territorial control loss that point-estimates of deaths miss. Geographic spread is a strong predictor of state fragmentation, insurgent expansion, and escalation to full civil war.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "Derived from UCDP GED with ADM1 geocoding; coverage matches GED conflict-affected country set; ADM1 attribution quality improved post-2000.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+15-22%",
+        "reason": "Geographic spread of conflict events is a defining feature of insurgency expansion and state territorial loss."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "Spread across regions indicates violence is no longer localized but nationally diffused — a qualitative escalation signal."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+7-12%",
+        "reason": "Communal conflict spread across multiple regions indicates nationwide ethnic tension rather than local incident."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+8-13%",
+        "reason": "Violence spread across regions drives nationwide humanitarian access crises and displacement."
+      },
+      {
+        "trend_id": "peacekeeping_and_peace_process",
+        "lift_bucket": "Low",
+        "lift_pct": "+3-6%",
+        "reason": "Declining geographic spread signals conflict contraction and is an observable for peace process progress."
+      }
+    ]
+  },
+  {
+    "code": "v2jucnind",
+    "why": "Lower court independence measures whether judges in courts of first instance and intermediate appeals are insulated from political interference, capturing the day-to-day rule-of-law experience of ordinary citizens and businesses which is often more practically important than high court independence. Erosion at the lower court level is typically the first sign of judicial system capture and precedes high-profile constitutional crises.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-coded panel; reliable from ~1945; thin for micro-states and some conflict-affected states.",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "Lower court interference enables selective prosecution of opponents and protection of corrupt networks."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+10-15%",
+        "reason": "Lower court capture allows mass politically-motivated prosecutions at scale."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+7-11%",
+        "reason": "Subordinating lower courts is an early step in judicial capture during autocratization sequences."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Dependent lower courts deny victims of human rights abuses their primary legal recourse."
+      }
+    ]
+  },
+  {
+    "code": "v2juhccomp",
+    "why": "Compliance with high court decisions measures whether the executive and other state actors actually implement rulings from the highest court, capturing the effective rather than nominal independence of the judiciary; a high court can be formally independent but politically neutered if its rulings are ignored. Non-compliance is a direct indicator of constitutional crisis and unchecked executive power.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-coded panel; reliable from ~1945; some thin coverage for micro-states and failed states where courts are non-functional.",
+    "trends": [
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+12-18%",
+        "reason": "Ignoring court rulings is a defining act of executive overreach and the clearest signal of constitutional breakdown."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+10-15%",
+        "reason": "Non-compliance enables continued enforcement of repressive policies even when courts rule against them."
+      },
+      {
+        "trend_id": "constitutional_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+7-12%",
+        "reason": "Persistent non-compliance often precedes formal constitutional amendments to entrench executive authority."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Improvement in high court compliance is an observable marker of democratic consolidation phases."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Ignoring human rights rulings directly perpetuates violations and signals impunity."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_OS_ACTOR_COUNT",
+    "why": "The count of distinct actors committing one-sided violence in a country-year captures the plurality and fragmentation of perpetrator landscape, distinguishing a monopoly-violence state from a fragmented conflict arena where multiple armed groups compete to target civilians. A high actor count signals governance vacuum and inability of any single authority to monopolize coercion — a strong predictor of protracted conflict and state fragmentation.",
+    "country_coverage": 130,
+    "coverage_confidence": "medium",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "Coverage limited to countries with at least one OS violence event; actor attribution quality is high from UCDP but country-year counts are sparse for low-violence contexts; ~130 countries with at least one observation.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+12-18%",
+        "reason": "Multiple OS actors indicate a fragmented conflict landscape typical of multi-faction civil wars."
+      },
+      {
+        "trend_id": "terrorist_attack",
+        "lift_bucket": "Medium",
+        "lift_pct": "+7-12%",
+        "reason": "Proliferation of targeting actors includes terrorist organizations; actor count correlates with terrorism breadth."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "Multiple actors perpetrating civilian-directed violence indicates systemically high political violence."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-10%",
+        "reason": "Multiple targeting actors make humanitarian access more complex and dangerous."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Ethnic conflict fragmentation manifests as multiple communal actors in OS violence data."
+      }
+    ]
+  },
+  {
+    "code": "v2exthftps",
+    "why": "Public sector theft measures the extent to which executive officials personally embezzle public resources for private gain, capturing the most direct and severe form of corruption that drains state capacity and signals the breakdown of any principal-agent accountability between citizens and government. High executive theft predicts fiscal deterioration and erosion of state service delivery that fuels mass discontent.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-coded panel; reliable from ~1945; thin for micro-states and some Pacific island nations.",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+15-22%",
+        "reason": "Public sector theft is a direct operational measure of grand corruption at the executive level."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+7-12%",
+        "reason": "Personalistic theft of public resources is associated with neopatrimonial autocratic regimes."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-10%",
+        "reason": "Visible corruption and public theft are major drivers of anti-government mass protest mobilization."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Resource theft from public coffers directly reduces spending on social programmes, worsening poverty and inequality."
+      },
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "Low",
+        "lift_pct": "+3-6%",
+        "reason": "High-theft contexts often trigger IMF/donor-conditioned fiscal policy reforms as a crisis response."
+      }
+    ]
+  },
+  {
+    "code": "v2juaccnt",
+    "why": "Judicial accountability mechanisms measures whether formal institutions exist and function to hold judges accountable for misconduct, capturing the structural safeguards that prevent judicial power from itself becoming arbitrary or corrupt. Weak accountability creates a dual-risk environment: both executive capture of courts and judicial unilateralism go unchecked, undermining the rule of law from within.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert-coded panel; reliable from ~1945; thin for micro-states and failed-state contexts where judicial institutions are absent.",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "Medium",
+        "lift_pct": "+7-12%",
+        "reason": "Without judicial accountability, judges can participate in corrupt networks with impunity, reinforcing systemic corruption."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-10%",
+        "reason": "Absence of accountability enables politically-motivated rulings to persist without correction mechanisms."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+6-10%",
+        "reason": "Dismantling judicial accountability bodies is an autocratization tactic to prevent judicial independence from being enforced."
+      },
+      {
+        "trend_id": "human_rights_reform",
+        "lift_bucket": "Low",
+        "lift_pct": "+3-6%",
+        "reason": "Establishing functional judicial accountability is an institutional milestone in rule-of-law reform tracks."
+      },
+      {
+        "trend_id": "transitional_justice",
+        "lift_bucket": "Low",
+        "lift_pct": "+3-5%",
+        "reason": "Judicial accountability mechanisms are a key reform component in post-conflict transitional justice frameworks."
+      }
+    ]
+  }
+]
