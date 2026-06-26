@@ -1,0 +1,412 @@
+[
+  {
+    "code": "IQ.CPA.PUBS.XQ",
+    "why": "This composite CPIA score captures state capacity across public financial management, procurement, revenue mobilisation, and transparency — the institutional backbone that either contains or amplifies political shocks. Weak public-sector management is a structural precondition for fiscal crises, corruption spirals, and governance breakdowns that precede multiple instability event types.",
+    "country_coverage": 75,
+    "coverage_confidence": "high",
+    "year_start": 2005,
+    "year_end": 2023,
+    "coverage_note": "IDA-eligible and blend countries only (~75 countries); excludes all IBRD-only middle- and high-income countries, so sample is heavily skewed toward fragile/low-income states.",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Public-sector management quality is the single most direct institutional measure of corruption-enabling conditions; strong theoretical and empirical link to corruption event trajectories."
+      },
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "PFM sub-component directly measures budget process quality; deteriorations precede fiscal stress and austerity-driven policy changes."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Low state-capacity scores correlate with regimes substituting coercion for service delivery legitimacy; plausible top-40 entry."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-5%",
+        "reason": "Poor public institutions amplify recession severity and lengthen recovery; secondary economic signal."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Low",
+        "lift_pct": "+1-3%",
+        "reason": "Institutional failure can catalyse protest but the link is diffuse and mediated by many intervening variables."
+      }
+    ]
+  },
+  {
+    "code": "EMP_NIFL_SEX_RT",
+    "why": "Informal employment rate reflects the share of the workforce outside social protection and stable labour contracts — a structural vulnerability that depresses resilience to economic shocks and fuels grievance-based mobilisation. High informality is both a poverty trap signal and a governance-quality indicator, directly relevant to social unrest and economic crisis event types.",
+    "country_coverage": 130,
+    "coverage_confidence": "medium",
+    "year_start": 2000,
+    "year_end": 2023,
+    "coverage_note": "ILO modelled estimates extend coverage to ~130 countries but with varying data quality; early years before 2005 are sparse for many countries; high-income OECD countries have near-complete coverage while low-income coverage relies heavily on modelling.",
+    "trends": [
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Informality-driven precarity and social protection exclusion are canonical grievance conditions underpinning protest waves; likely top-40 entry for this Trend."
+      },
+      {
+        "trend_id": "labor_action",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Informal employment rate defines the boundary of organised labour; spikes in formal-sector insecurity and transitions into informality directly precipitate strikes and lockouts."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Informality is a core structural cause of persistent poverty and wage inequality; strong causal and empirical pathway."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "High informality limits automatic stabilisers during downturns, amplifying recession depth; useful secondary feature."
+      },
+      {
+        "trend_id": "social_policy_reform",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-5%",
+        "reason": "Policy reforms targeting social protection and formalisation are often directly triggered by high informality levels."
+      }
+    ]
+  },
+  {
+    "code": "STR_NWRK_NOC_NB",
+    "why": "The breadth of strike participation (workers involved, not just event count) captures the scale of coordinated labour grievance and is a leading indicator of social tension that can escalate into broader political mobilisation. Unlike fatality-based signals, it detects institutional friction early, before violence thresholds are crossed.",
+    "country_coverage": 90,
+    "coverage_confidence": "medium",
+    "year_start": 1990,
+    "year_end": 2022,
+    "coverage_note": "Highly uneven: ILO administrative data depends on national labour ministries; many low-income countries lack consistent reporting; coverage effectively ~90 countries with usable series but sparse for sub-Saharan Africa and parts of Asia.",
+    "trends": [
+      {
+        "trend_id": "labor_action",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "This is the definitional outcome metric for the Labor Action Trend; workers-in-strikes is the most direct empirical input and almost certain to be a top feature."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Large-scale strike mobilisation frequently co-occurs with or presages street protest waves; strong empirical cross-event correlation."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Regimes facing large worker mobilisations often escalate repression; strike breadth may lead repression onset by 1-2 years."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+2-5%",
+        "reason": "Major strike waves are often triggered by wage cuts and layoffs during recessions; bidirectional signal."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "Low",
+        "lift_pct": "+1-3%",
+        "reason": "Strike activity is a lagging indicator of inequality but the causal link is indirect and the feature may not crack top-40 for this Trend."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_SB_EXT_SUPPORT",
+    "why": "External state support to conflict parties converts internal conflicts into proxy wars, dramatically prolonging duration, raising lethality, and triggering foreign intervention — the presence of this binary flag distinguishes internationalised conflicts from purely domestic ones and is a strong predictor of escalation cascades. It captures the geopolitical dimension that purely domestic indicators miss.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 1975,
+    "year_end": 2022,
+    "coverage_note": "Coverage conditional on conflict occurring; for non-conflict country-years the flag is 0 (informative absence); ESD dataset extends back to 1975 for relevant dyads but not all UCDP SB conflicts have coded external support.",
+    "trends": [
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "External support is mechanistically upstream of foreign intervention escalation; this is the most direct available signal for this Trend and almost certain to be a top-5 feature."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Proxy-war dynamics sustain insurgencies that would otherwise collapse; external support is a strong duration and intensity predictor."
+      },
+      {
+        "trend_id": "interstate_war",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "External support to conflict parties is a direct precursor path to interstate escalation when the supporting state becomes directly involved."
+      },
+      {
+        "trend_id": "sanctions_and_arms_embargo",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Internationalised conflicts with external sponsors frequently attract UN sanctions and arms embargoes against the supporting party or recipient."
+      },
+      {
+        "trend_id": "territorial_disputes",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-5%",
+        "reason": "External support often correlates with territorial-autonomy conflicts where a neighbouring state backs separatist rebels."
+      }
+    ]
+  },
+  {
+    "code": "IDMC_CONF_NEW_DISP",
+    "why": "Annual new conflict displacement flows measure the acute shock dimension of instability — each new displacement event reflects active violence or forced movement, making this a real-time intensity gauge rather than a stock of accumulated crisis. As a flow rather than stock variable it captures escalation velocity and is less subject to long-term baseline drift.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 2009,
+    "year_end": 2023,
+    "coverage_note": "IDMC conflict displacement coverage starts reliably from 2009; pre-2009 data exists but is incomplete; country coverage is ~150 with any conflict displacement; zero-inflated for peaceful countries (informative zeros).",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+7-14%",
+        "reason": "New conflict displacement is the most immediate observable consequence of insurgency escalation; strongly correlated with conflict intensity and highly likely to enter the greedy top features."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Displacement flows are a primary definitional component of humanitarian crises; this indicator would almost certainly be a top feature for this Trend."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Internal displacement precedes and predicts outward refugee flows; the flow measure captures the transition dynamic better than stock measures."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "New displacements are caused by and co-occur with political violence episodes; strong contemporaneous and leading signal."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Communal conflicts produce displacement but often at sub-threshold scale; plausible top-40 entry for ethnic conflict Trend."
+      }
+    ]
+  },
+  {
+    "code": "v2x_pubcorr",
+    "why": "V-Dem's Public Sector Corruption Index aggregates expert-coded corruption in service delivery, public sector procurement, and judiciary — moving beyond perceptions to coded observable behaviours across 180 countries since 1900. It captures the institutional degradation pathway through which corruption erodes state legitimacy, triggering protest, fiscal crises, and democratic backsliding.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem standard coverage; near-universal for post-1945; pre-1945 estimates have wider confidence intervals. For QGI the effective window is 1970-2024 given recipe length requirements.",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "This is the definitional signal for the Corruption Trend; public-sector corruption index is the most direct and comprehensive available measure and near-certain to dominate the greedy selection."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Anti-corruption protest is one of the most common mass-mobilisation triggers globally; the public-sector dimension is particularly salient for service-delivery grievances."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+5-9%",
+        "reason": "Corruption is both a cause of democratic breakdown and a target of reform; the index captures both corruption-driven erosion and reform-driven improvement trajectories."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Executive power grabs are frequently enabled by and accompanied by expanding public-sector corruption as patronage networks are built."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Corrupt judicial and security institutions are enablers of human rights violations; secondary pathway signal."
+      }
+    ]
+  },
+  {
+    "code": "CAHD-002",
+    "why": "The prevalence of inability to afford a healthy diet combines food price levels with household income distributions, making it a demand-side food security indicator that is sensitive to both commodity price shocks and welfare inequality — it directly precedes food-related grievances and can escalate rapidly when prices spike. Unlike production-side metrics, it captures whether populations can actually access adequate food.",
+    "country_coverage": 150,
+    "coverage_confidence": "medium",
+    "year_start": 2017,
+    "year_end": 2022,
+    "coverage_note": "FAO Cost of Healthy Diet methodology only became available from 2017; short time series limits recipe walk depth — this is a significant caveat for XGBoost walks requiring multi-year movement shapes. Coverage ~150 countries.",
+    "trends": [
+      {
+        "trend_id": "drought_and_famine",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Unaffordability of healthy diet is the closest available proxy to famine access-failure; it directly measures the demand-side food security collapse that characterises famine onset."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Food price grievances are among the strongest empirical predictors of protest onset; unaffordable healthy diet captures the income-price interaction that triggers mobilisation."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+5-9%",
+        "reason": "Diet unaffordability is a direct outcome measure of poverty and inequality; strongly correlated with income distribution and purchasing power."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Food insecurity at scale is a defining component of humanitarian crises; this indicator contributes a demand-side dimension absent from supply metrics."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Low",
+        "lift_pct": "+1-3%",
+        "reason": "Short time series (2017+) and indirect link make this a marginal feature for economic recession; likely below top-40 threshold for this Trend given competition from macro indicators."
+      }
+    ]
+  },
+  {
+    "code": "v2smpolsoc",
+    "why": "V-Dem's Online Political Polarisation of Society measures expert-coded assessments of how social media-driven polarisation fragments social cohesion and erodes the centrist space needed for democratic bargaining. Rising polarisation is a pre-radicalisation signal that predicts escalation from online to offline political conflict and is increasingly a leading indicator of democratic erosion and violent unrest.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 2000,
+    "year_end": 2024,
+    "coverage_note": "V-Dem standard coverage; this item was only added once internet/social media became relevant, so reliable data effectively starts around 2000-2005; pre-2000 data should not be used.",
+    "trends": [
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+5-9%",
+        "reason": "Online polarisation both mobilises and radicalises protest participants; strong empirical association with protest wave onset in the 2010s-2020s."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Social polarisation is a consistent upstream condition for political violence escalation; polarisation reduces barriers to viewing violence as legitimate."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+4-8%",
+        "reason": "Polarisation is a primary mechanism of democratic backsliding — it creates conditions for strongmen to exploit divisions and consolidate power."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Polarising leaders actively cultivate online division as a governance strategy; the indicator may capture both cause and effect of consolidation."
+      },
+      {
+        "trend_id": "religious_and_social_movement",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-5%",
+        "reason": "Identity-based social movements are often amplified by online polarisation; plausible but secondary pathway."
+      }
+    ]
+  },
+  {
+    "code": "UNHCR_STA",
+    "why": "Stateless persons — those with no recognised nationality — signal systematic ethnic, religious, or political discrimination embedded in legal and governance frameworks. Statelessness is both an outcome of past ethnic conflict and a structural driver of future instability, as stateless communities face compound marginalisation that correlates with communal conflict and human rights crisis events.",
+    "country_coverage": 90,
+    "coverage_confidence": "medium",
+    "year_start": 1990,
+    "year_end": 2023,
+    "coverage_note": "UNHCR stateless data is highly uneven — it depends on countries actively reporting stateless populations, which many do not; actual global stateless population is estimated at 4M+ but recorded total is ~3.9M across ~90 reporting countries; undercount is severe for Asia (especially South/Southeast Asia) where statelessness is most prevalent.",
+    "trends": [
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Statelessness is both a product of ethnic persecution and a structural driver of communal conflict; large stateless populations are a direct precursor signal for this Trend."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Statelessness is definitionally a human rights issue; high stateless populations indicate systematic legal discrimination that is a strong prior for HRV events."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Stateless persons are among the most likely to become refugees when conflict erupts; the indicator adds the discrimination-pathway dimension to displacement models."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "States that maintain large stateless populations typically also deploy broader repression against minority groups."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Low",
+        "lift_pct": "+1-3%",
+        "reason": "Statelessness contributes to humanitarian vulnerability but is too structurally stable a variable to be a strong leading indicator of acute humanitarian crises."
+      }
+    ]
+  },
+  {
+    "code": "v2casoe",
+    "why": "Declaration of a state of emergency represents an executive's formal invocation of emergency powers that suspend normal constitutional constraints — it is both a symptom of acute political crisis and a tool of repression that can escalate instability. As an event-coded V-Dem variable it captures a discrete legal threshold-crossing that is rare enough to have strong signal value.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem standard coverage; reliable for post-1945; effective QGI window ~1970-2024. Binary nature means the variable is sparse in stable periods, which is informative but may limit predictive utility in non-crisis baselines.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "State of emergency is the most commonly used legal instrument for mass repression; declaring one is both a signal of ongoing repression and an enabler of escalation."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Emergency declarations are a primary mechanism through which executives consolidate power; they frequently precede or accompany constitutional power grabs."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+5-9%",
+        "reason": "SOE declarations both respond to mass protests and frequently trigger renewed protest by activating opposition; bidirectional signal with strong contemporaneous correlation."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Emergency declarations sometimes precede or accompany coup attempts as competing actors contest executive authority under emergency conditions."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Governments fighting insurgencies frequently declare emergencies; the variable may be contemporaneous rather than leading for this Trend."
+      }
+    ]
+  }
+]

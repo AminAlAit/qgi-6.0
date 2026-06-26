@@ -1,0 +1,412 @@
+[
+  {
+    "code": "v2xcl_prpty",
+    "why": "Weak property rights signal deteriorating rule of law and elite predation, conditions that historically precede political crises, mass protest, and institutional collapse. As a V-Dem expert-survey index it captures the subjective reality that citizens and investors face, not just formal legal text.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "Near-universal V-Dem coverage from 1900; post-WWII country expansion means most countries from 1945+; very sparse for microstates pre-1970.",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Property rights erosion is a direct structural correlate of corruption regimes; strong theoretical and empirical link."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Property rights contraction reliably precedes and accompanies power consolidation; captures the legal dismantling step."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Declining property rights accompany the crackdown environment but are partially redundant with other civil-liberties V-Dem signals."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Land seizures, expropriation, and property insecurity motivate protest mobilization especially in middle-income countries."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Low",
+        "lift_pct": "+1-4%",
+        "reason": "Tangential via investment-chilling effect; economic channels captured more directly by growth/credit variables."
+      }
+    ]
+  },
+  {
+    "code": "TT.PRI.MRCH.XD.WD",
+    "why": "Terms-of-trade shifts determine the real purchasing power of a country's exports and are a leading driver of fiscal stress, currency pressure, and social unrest in commodity-dependent states — exactly the macro shock profile preceding economic crises and political turbulence.",
+    "country_coverage": 150,
+    "coverage_confidence": "medium",
+    "year_start": 1980,
+    "year_end": 2023,
+    "coverage_note": "WB WDI coverage concentrated on goods-exporting economies; service-dominant and small-island states often missing; pre-1980 sparse.",
+    "trends": [
+      {
+        "trend_id": "currency_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "ToT deterioration directly compresses foreign-exchange earnings, is a textbook currency-crisis precursor; strong causal channel."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "High",
+        "lift_pct": "+5-9%",
+        "reason": "Commodity ToT collapses are among the most reliable recession triggers for resource-exporting countries."
+      },
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Revenue shortfalls from ToT decline force austerity or deficit spending; policy response often a data-visible event."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "ToT-driven import price spikes translate to food/fuel cost-of-living pressure that fuels street mobilization."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "Low",
+        "lift_pct": "+1-3%",
+        "reason": "Indirect pathway via economic grievance; signal is partially diluted by many intervening variables."
+      }
+    ]
+  },
+  {
+    "code": "BN.CAB.XOKA.CD",
+    "why": "The current account balance in absolute USD captures the scale of a country's external financing gap or surplus, making it a direct precursor to balance-of-payments crises, IMF programme entry, currency devaluations, and associated political shocks that are disproportionately large in absolute-dollar terms for bigger economies.",
+    "country_coverage": 185,
+    "coverage_confidence": "high",
+    "year_start": 1980,
+    "year_end": 2023,
+    "coverage_note": "Near-universal WB WDI coverage from ~1980; small island states and post-Soviet countries join from 1990/1992; absolute USD series can be noisy for dollarised economies.",
+    "trends": [
+      {
+        "trend_id": "currency_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Sustained large current-account deficits are the canonical BoP vulnerability signal that precedes currency crises."
+      },
+      {
+        "trend_id": "banking_and_financial_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Current account reversals often accompany sudden-stop financial crises and banking sector stress."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Abrupt CAB deterioration is a coincident-to-leading recession signal, especially for import-heavy economies."
+      },
+      {
+        "trend_id": "sanctions_and_arms_embargo",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Sanctions regimes visibly compress export receipts and shift the CAB; the absolute-USD series captures scale of impact."
+      },
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "Low",
+        "lift_pct": "+1-4%",
+        "reason": "CAB feeds fiscal narrative but the link is indirect; government revenue channels more directly covered by other fiscal indicators."
+      }
+    ]
+  },
+  {
+    "code": "MPI",
+    "why": "The Multidimensional Poverty Index captures the acute deprivation that conventional income measures miss — poor health, low education, and inadequate living standards simultaneously — providing a structural fragility baseline that predicts the susceptibility of a population to mobilization under stress events.",
+    "country_coverage": 110,
+    "coverage_confidence": "medium",
+    "year_start": 2010,
+    "year_end": 2022,
+    "coverage_note": "Coverage limited to low- and lower-middle-income countries where household surveys exist; high-income OECD countries absent; irregular survey rounds mean time series has gaps (often 3-5 year intervals, not annual).",
+    "trends": [
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+7-14%",
+        "reason": "MPI is the definitional measure of multidimensional poverty; directly models the state this Trend event describes."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "High MPI countries are overwhelmingly the sites of humanitarian crises; strong baseline fragility signal."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Accumulated deprivation lowers the threshold for grievance-driven protest mobilization under trigger shocks."
+      },
+      {
+        "trend_id": "drought_and_famine",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "MPI's food/health components directly overlap with famine vulnerability; high-MPI populations have lowest coping capacity."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "Structural deprivation feeds insurgent recruitment but MPI is slow-moving vs. the dynamic conflict variables."
+      }
+    ]
+  },
+  {
+    "code": "IDMC_CONF_STOCK_POP",
+    "why": "Normalizing conflict IDP stock by population converts a size-confounded count into a per-capita displacement intensity that is cross-nationally comparable and more directly reflects the state capacity collapse, territorial control loss, and sustained violence that define protracted political crises.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 2009,
+    "year_end": 2024,
+    "coverage_note": "IDMC conflict stock series starts 2009 and covers ~150 conflict-affected countries; countries with zero displacement are inherently absent, creating a structural zero-inflation issue for ML preprocessing.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Per-capita IDP stock is the most direct observable of sustained internal conflict; strong signal for onset and persistence."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Conflict displacement at population scale is a definitional component of humanitarian crises; very strong empirical link."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Population-scale displacement often accompanies or follows systematic repression campaigns; correlated but non-identical."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "IDP stocks are upstream of cross-border refugee flows; normalised version improves comparability for this Trend."
+      },
+      {
+        "trend_id": "peacekeeping_and_peace_process",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "High IDP stocks trigger peace interventions but causality is reverse; marginal as a predictor of the event itself."
+      }
+    ]
+  },
+  {
+    "code": "UNHCR_IDP_RATIO_POP",
+    "why": "UNHCR's IDP stock normalized by population provides a governance-sourced view of internal displacement intensity that complements IDMC's figure — when both series agree, confidence in the displacement signal increases; divergence flags data quality issues for quality-control in the ML pipeline.",
+    "country_coverage": 80,
+    "coverage_confidence": "medium",
+    "year_start": 1993,
+    "year_end": 2024,
+    "coverage_note": "UNHCR IDP stock is limited to countries where UNHCR has operational presence and a mandate; coverage far narrower than IDMC (~80 countries vs 150+); significantly correlated with IDMC_CONF_STOCK_POP so feature collinearity is a concern.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Captures displacement at the high end of the severity spectrum where UNHCR has declared its mandate; valid conflict intensity signal."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "UNHCR's mandate-based IDP coverage is specifically for the most severe humanitarian crisis contexts."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "IDP pressure precedes and correlates with cross-border refugee movements; normalised ratio improves cross-country comparability."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "UNHCR IDP presence implies repression in many cases but the series is too narrow geographically to be a primary signal."
+      },
+      {
+        "trend_id": "peacekeeping_and_peace_process",
+        "lift_bucket": "Low",
+        "lift_pct": "+1-3%",
+        "reason": "UNHCR presence correlates with peace operations but adds little marginal signal beyond conflict and humanitarian variables."
+      }
+    ]
+  },
+  {
+    "code": "INEQ_INC",
+    "why": "The Atkinson-based income inequality measure used in the IHDI captures distributional skew that Gini misses at the extremes, and is a known predictor of grievance-driven unrest: societies where income concentration accelerates are more susceptible to populist mobilization, elite-mass conflict, and social instability.",
+    "country_coverage": 150,
+    "coverage_confidence": "medium",
+    "year_start": 1990,
+    "year_end": 2022,
+    "coverage_note": "UNDP HDR coverage ~150 countries but survey-dependent — high-income and conflict countries have gaps; annual interpolation used between survey rounds, reducing temporal precision; distinct from GINI so not redundant with WB series.",
+    "trends": [
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Direct measure of income inequality that defines this Trend category; strongest theoretical fit."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Empirical literature consistently links rising inequality to protest mobilization; Atkinson measure captures top-tail concentration especially relevant."
+      },
+      {
+        "trend_id": "labor_action",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Income inequality is a direct driver of wage-dispute strikes and labour mobilisation; captures the distributional grievance."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "High pre-existing inequality can amplify recession severity but the reverse channel is stronger; tangential signal."
+      },
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Corruption and inequality co-evolve but INEQ_INC is an outcome variable not a direct corruption signal."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_VIOL_PROTEST_DEATHS",
+    "why": "Deaths from violent political protests sit below the armed-conflict threshold but above routine demonstrations, marking the inflection zone where state-civilian tension escalates — this sub-conflict violence level is a leading indicator of full conflict onset and political regime instability.",
+    "country_coverage": 145,
+    "coverage_confidence": "high",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "Derived from UCDP GED events classified as political protests with lethal outcomes; available wherever GED has coverage (~145 countries); zero-inflated — peaceful countries will record zero for most years.",
+    "trends": [
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Lethal protest events are the direct quantitative measure of violent mobilization defining this Trend; high specificity."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Protest fatalities frequently arise from state repression of demonstrators; strong bidirectional signal."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+6-10%",
+        "reason": "Sub-conflict lethal protest deaths are a primary component of political violence Trend; near-definitional link."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Protest-driven violence often precedes or accompanies democratization episodes; useful leading signal."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Escalating protest violence is a recognized early-stage conflict escalation signal; moderate predictive value."
+      }
+    ]
+  },
+  {
+    "code": "v2x_freexp",
+    "why": "Freedom of expression captures the information environment available to citizens and opposition actors: its contraction is a hallmark of autocratization and political repression episodes, while its expansion is a necessary precondition for democratic transitions — making it a versatile leading indicator across multiple political risk Trends.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem near-universal coverage from 1900; reliable from ~1945 onwards for most countries; microstates and island nations may have thinner expert coverage pre-1990.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Media suppression and speech restriction are definitional elements of repression regimes; direct causal link."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Declining free expression is a canonical early step in autocratization and power consolidation sequences."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Freedom of expression improvements are both a signal and a precondition of democratic opening; useful transition predictor."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Sudden crackdowns on expression can trigger protest mobilization; expanding expression also enables protest coordination."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Press freedom restrictions and speech suppression are core human rights violations; moderate conceptual overlap."
+      }
+    ]
+  },
+  {
+    "code": "SDG_0131_SEX_SOC_RT",
+    "why": "Social protection coverage determines how much of the population has a buffer when economic or climate shocks hit — countries with thin coverage are far more vulnerable to shock-triggered unrest, labour conflict, and humanitarian crises, making this a key structural resilience signal in the QGI pool.",
+    "country_coverage": 180,
+    "coverage_confidence": "medium",
+    "year_start": 2000,
+    "year_end": 2023,
+    "coverage_note": "ILOSTAT modelled estimates cover ~180 countries but many data-poor countries rely on imputed ILO models rather than survey data; early years (pre-2005) have wider confidence intervals; sex-disaggregated breakdowns available for a subset.",
+    "trends": [
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Low social protection coverage is the structural foundation of poverty crises; captures state welfare capacity directly."
+      },
+      {
+        "trend_id": "labor_action",
+        "lift_bucket": "High",
+        "lift_pct": "+5-9%",
+        "reason": "Absence of social protection drives workers to strike action as the only available income security mechanism."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Austerity-driven cuts to social protection are a direct protest trigger; coverage level is the baseline exposure."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Populations with zero social protection coverage are the most exposed when humanitarian shocks materialise."
+      },
+      {
+        "trend_id": "social_policy_reform",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Coverage changes capture reform outcomes but the Trend is better predicted by institutional change signals than coverage level per se."
+      }
+    ]
+  }
+]

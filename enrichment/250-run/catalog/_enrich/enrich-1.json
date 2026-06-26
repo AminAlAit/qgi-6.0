@@ -1,0 +1,352 @@
+[
+  {
+    "code": "MS.MIL.TOTL.P1",
+    "why": "Absolute military size captures the coercive capacity of the state; rapid expansions or contractions signal rearmament, coup-preparedness, or fiscal strain that precede political ruptures. It provides a raw-power baseline that complements spending-ratio indicators already in the pool.",
+    "country_coverage": 170,
+    "coverage_confidence": "high",
+    "year_start": 1985,
+    "year_end": 2023,
+    "coverage_note": "WB WDI sourced from IISS; reasonable coverage from 1985 onward, thinner for small states and fragile states pre-1990.",
+    "trends": [
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Military size trajectory is a first-order predictor of coup feasibility; large, growing armies correlate with coup attempts."
+      },
+      {
+        "trend_id": "interstate_war",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Military mobilisation patterns directly precede interstate conflict escalation and are a structural readiness signal."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Force size relative to population captures counterinsurgency capacity and predicts conflict duration."
+      },
+      {
+        "trend_id": "military_policy_and_reform",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "Step changes in personnel levels often coincide with formal military reform events."
+      }
+    ]
+  },
+  {
+    "code": "IDMC_DIS_HAZ_STORM",
+    "why": "Storm-related displacement isolates extreme-weather shock intensity from other hazard types, offering a cleaner signal of cyclone/typhoon exposure that degrades food security, displaces populations, and strains governance before broader humanitarian crises crystallise. Disaggregating by hazard type prevents flood and storm dynamics from cancelling each other out.",
+    "country_coverage": 140,
+    "coverage_confidence": "medium",
+    "year_start": 2008,
+    "year_end": 2024,
+    "coverage_note": "IDMC disaster disaggregated series starts 2008; storm events concentrated in tropical-cyclone-belt countries, many landlocked states show zero or near-zero rows.",
+    "trends": [
+      {
+        "trend_id": "flood_and_cyclone",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Direct hazard-specific signal; storm displacement is the most salient feature for cyclone/flood event prediction."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+7-12%",
+        "reason": "Large storm displacement events are among the fastest pathways to acute humanitarian crises."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Repeated storm displacement cycles convert internal displacement into cross-border migration pressure."
+      },
+      {
+        "trend_id": "drought_and_famine",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Storm/cyclone displacement sometimes damages crops and storage, creating localized food insecurity as a secondary pathway."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_OS_GOVT_PERP",
+    "why": "This binary flags years when the state itself is the perpetrator of one-sided civilian killings, distinguishing regime-directed repression from battlefield violence — a critical distinction for predicting political crises, mass protest, and international intervention triggers. Its presence in a country-year sharply elevates the base rate of subsequent political ruptures.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "UCDP one-sided violence dataset from 1989; only conflict-affected or repressive contexts contribute positives — large share of zeros for peaceful states is structurally meaningful.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "Government-perpetrated killing is the definitional core event for political repression trends; near-certain top-feature candidate."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "State-directed civilian deaths are among the most severe human rights violation signals in the pool."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "State killing of civilians is a documented trigger for subsequent mass protest mobilisation."
+      },
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "International responses to atrocities (R2P invocations, no-fly zones) are preceded by government one-sided violence."
+      }
+    ]
+  },
+  {
+    "code": "v2x_diagacc",
+    "why": "Diagonal accountability captures the watchdog power of civil society and independent media to hold executives to account — a dimension orthogonal to formal institutional checks, and one that erodes measurably before autocratisation accelerates. Declining diagonal accountability predicts democratic backsliding and repression events with a multi-year lead.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem covers virtually all countries from 1900; pre-1945 estimates carry higher coding uncertainty.",
+    "trends": [
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Diagonal accountability erosion is a canonical leading indicator of executive power grabs documented across autocratisation episodes."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+7-12%",
+        "reason": "Repressive states systematically weaken civil society and media before and during repression campaigns."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Diagonal accountability levels distinguish genuine democratisation from facade transitions."
+      },
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Media and civil society constraints reduce anti-corruption oversight, correlating with corruption event escalation."
+      }
+    ]
+  },
+  {
+    "code": "v2catrauni",
+    "why": "Independent trade union engagement measures the organisational infrastructure of civil society outside formal political channels; suppression of unions is an early governance stress indicator that also proxies for the social mobilisation capacity underpinning labour actions and mass protests. It captures a dimension of political competition not fully reflected in electoral indicators.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem full panel; coverage strongest post-1945; pre-1945 labour context harder to code for some regions.",
+    "trends": [
+      {
+        "trend_id": "labor_action",
+        "lift_bucket": "High",
+        "lift_pct": "+9-15%",
+        "reason": "Trade union organisational freedom directly determines the capacity and frequency of strike and labour action events."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Strong independent unions provide logistical backbone for mass protest coalitions beyond purely labour grievances."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Crackdowns on unions often accompany broader repression campaigns; union suppression is a repression leading indicator."
+      },
+      {
+        "trend_id": "social_policy_reform",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "Organised labour pressure shapes social policy bargaining; union strength is a partial predictor of reform momentum."
+      }
+    ]
+  },
+  {
+    "code": "OWID_STATECAP_EXTRACT",
+    "why": "Extractive state capacity — the government's ability to raise sustained revenues — is a foundational determinant of fiscal resilience, public goods provision, and regime stability; states that cannot tax reliably are far more vulnerable to fiscal crises, foreign-debt spirals, and popular delegitimisation. It is theoretically distinct from administrative or coercive capacity and adds non-redundant signal.",
+    "country_coverage": 177,
+    "coverage_confidence": "medium",
+    "year_start": 1960,
+    "year_end": 2015,
+    "coverage_note": "Hanson & Sigman dataset ends at 2015; post-2015 gap limits near-term predictive window unless complemented by WB tax-revenue indicators.",
+    "trends": [
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Revenue-raising capacity sets the structural ceiling for fiscal policy; low extractive capacity predicts austerity-forced policy shifts."
+      },
+      {
+        "trend_id": "banking_and_financial_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Governments with weak extractive capacity cannot backstop financial systems, raising sovereign-bank nexus vulnerability."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Low fiscal capacity limits counter-cyclical response, deepening and lengthening recessions."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "Revenue-starved states sometimes resort to coercive rent extraction in lieu of legitimate taxation."
+      }
+    ]
+  },
+  {
+    "code": "NY.GDP.TOTL.RT.ZS",
+    "why": "Total natural resource rents as a share of GDP measures the degree to which a state's economy and fiscal system depend on extractable resource windfalls — a key driver of Dutch disease, elite rent-seeking, and regime vulnerability to commodity price shocks. Resource-dependent states show systematically different instability pathways (boom-bust, coup risk, secessionism over resource zones).",
+    "country_coverage": 200,
+    "coverage_confidence": "high",
+    "year_start": 1970,
+    "year_end": 2022,
+    "coverage_note": "WB WDI broad coverage from 1970; some micro-states and recent entrants have gaps; rents methodology revised several times so early series may not be fully comparable.",
+    "trends": [
+      {
+        "trend_id": "resource_conflict",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "High resource rent dependency is the primary structural precondition for resource-driven conflict; near-definitive feature for this trend."
+      },
+      {
+        "trend_id": "oil_and_gas",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Total rents (majority oil/gas in most high-dependency states) directly tracks fiscal exposure driving oil-and-gas political events."
+      },
+      {
+        "trend_id": "economic_nationalization",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "Nationalisation events cluster around resource-rich countries when rents shift or external prices spike."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Resource rent dependency increases conflict attractiveness via lootable wealth, funding rebel movements and prolonging wars."
+      }
+    ]
+  },
+  {
+    "code": "v2lgotovst",
+    "why": "Legislative oversight of the executive is a direct measure of institutional checks on executive power; its erosion is a near-universal precursor to authoritarian consolidation, corruption escalation, and constitutional crises. This indicator adds a horizontal accountability dimension distinct from judicial independence and civil society watchdog indicators.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem full panel; single-party or zero-legislature periods coded at floor values; coding reliability strongest post-1950.",
+    "trends": [
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+9-15%",
+        "reason": "Declining legislative oversight is a textbook step in executive power consolidation; high theoretical and empirical basis."
+      },
+      {
+        "trend_id": "constitutional_change",
+        "lift_bucket": "High",
+        "lift_pct": "+7-12%",
+        "reason": "Constitutional changes that alter power balances are often preceded and enabled by weakened legislative oversight."
+      },
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Weak oversight removes the primary institutional brake on executive corruption."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Dysfunctional legislatures create political vacuums that military actors exploit for coup justification."
+      }
+    ]
+  },
+  {
+    "code": "IDMC_CONF_NEW_DISP_POP",
+    "why": "Population-normalised conflict displacement provides a cross-country comparable intensity metric that raw displacement counts cannot: a country displacing 100,000 people out of 500,000 is qualitatively different from one displacing 100,000 out of 50 million. This normalised form is the ML-preferred input, reducing spurious country-size correlations in the greedy feature selection.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 2009,
+    "year_end": 2024,
+    "coverage_note": "IDMC conflict displacement series starts 2009; countries with no recorded conflict show zero rows — structurally meaningful; sparse for very small island states.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Population-scale conflict displacement is a direct intensity proxy for active civil war and insurgency, likely to enter top features."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Normalised displacement captures humanitarian burden relative to country capacity, a core crisis severity signal."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "High per-capita internal displacement is a strong predictor of subsequent cross-border refugee flows."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Conflict displacement at population scale reflects sustained political violence rather than isolated incidents."
+      }
+    ]
+  },
+  {
+    "code": "v2smgovdom",
+    "why": "Government-run domestic disinformation campaigns are a measurable indicator of information-environment weaponisation — a modern governance failure that undermines electoral integrity, suppresses opposition, and precedes democratic backsliding. As a V-Dem-coded indicator it is available at country-year resolution from 1990 onward, filling a gap not covered by traditional institutional indicators.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1990,
+    "year_end": 2024,
+    "coverage_note": "V-Dem social media indicators coded from 1990; pre-social-media years reflect offline propaganda proxies so early values require interpretation caution.",
+    "trends": [
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "State disinformation is a signature tool of executive power consolidation, documented systematically in autocratisation literature."
+      },
+      {
+        "trend_id": "elections_and_voting",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Government disinformation campaigns peak around elections to suppress opposition and manipulate voter behaviour."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Information repression co-occurs with physical repression as complementary tools of political control."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Intensified disinformation can both suppress and — when publics detect manipulation — trigger reactive protest mobilisation."
+      }
+    ]
+  }
+]

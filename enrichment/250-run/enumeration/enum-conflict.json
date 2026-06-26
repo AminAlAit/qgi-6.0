@@ -1,0 +1,1210 @@
+[
+  {
+    "code": "UNHCR_REF_COO",
+    "name": "Refugees by Country of Origin (total stock, end-year)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "End-year stock of people recognized as refugees originating from each country; core displacement pressure signal"
+  },
+  {
+    "code": "UNHCR_REF_COA",
+    "name": "Refugees by Country of Asylum (total stock, end-year)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "End-year stock of refugees hosted in each country; measures humanitarian burden and regional spillover"
+  },
+  {
+    "code": "UNHCR_ASY_COO",
+    "name": "Asylum Seekers by Country of Origin (pending stock, end-year)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Pending asylum applications originating from each country; early-warning outflow indicator before recognition"
+  },
+  {
+    "code": "UNHCR_ASY_COA",
+    "name": "Asylum Seekers by Country of Asylum (pending stock, end-year)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Pending asylum claims hosted in each country; measures asylum system pressure and irregular migration flows"
+  },
+  {
+    "code": "UNHCR_IDP",
+    "name": "Internally Displaced Persons (UNHCR-reported, end-year stock)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "UNHCR's own IDP stock estimates (separate from IDMC); measures internal displacement in countries UNHCR has operational mandate"
+  },
+  {
+    "code": "UNHCR_RET_REF",
+    "name": "Returned Refugees (annual flow)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Annual flow of refugees who returned to their country of origin; durable-solution indicator, signals conflict resolution"
+  },
+  {
+    "code": "UNHCR_RET_IDP",
+    "name": "Returned IDPs (annual flow)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Annual flow of IDPs who returned to place of origin; signals internal conflict abatement and stabilization"
+  },
+  {
+    "code": "UNHCR_STA",
+    "name": "Stateless Persons (end-year stock)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Count of persons without any nationality; indicator of ethnic/citizenship discrimination and governance failure"
+  },
+  {
+    "code": "UNHCR_OOC",
+    "name": "Others of Concern to UNHCR (end-year stock)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Persons not fitting standard refugee/IDP/stateless categories but needing protection; catch-all vulnerability signal"
+  },
+  {
+    "code": "UNHCR_OIP",
+    "name": "Other People in Need of International Protection (end-year stock)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "People needing international protection outside the 1951 Convention definition; expanded vulnerability measure"
+  },
+  {
+    "code": "UNHCR_HST",
+    "name": "Host Community Population (persons in host communities, end-year)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Persons in communities hosting significant displaced populations; proxy for absorption burden and local tension risk"
+  },
+  {
+    "code": "UNHCR_ASYAPP_NEW",
+    "name": "New Asylum Applications Filed (annual flow, country of asylum)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Annual count of new asylum claims submitted to each country's system; real-time pull-factor and crisis magnitude indicator"
+  },
+  {
+    "code": "UNHCR_ASYAPP_NEW_COO",
+    "name": "New Asylum Applications by Country of Origin (annual flow)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Annual asylum claims originating from each country; push-factor signal reflecting persecution or conflict intensity"
+  },
+  {
+    "code": "UNHCR_ASYDEC_RECOG",
+    "name": "Asylum Decisions — Recognized (refugee status granted, annual)",
+    "category": "Governance",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Number of positive refugee status determinations per year; indicates severity of origin-country conditions as assessed internationally"
+  },
+  {
+    "code": "UNHCR_ASYDEC_REJ",
+    "name": "Asylum Decisions — Rejected (annual)",
+    "category": "Governance",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Number of rejected asylum claims per year; combined with recognitions yields recognition rate, a proxy for legitimate refugee claims"
+  },
+  {
+    "code": "UNHCR_ASYDEC_CLOSED",
+    "name": "Asylum Decisions — Closed/Otherwise (annual)",
+    "category": "Governance",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Administrative closures of asylum claims; signals procedural efficiency or backlog management in asylum countries"
+  },
+  {
+    "code": "UNHCR_RECOG_RATE",
+    "name": "Refugee Recognition Rate (derived: recognized / total decisions, annual)",
+    "category": "Governance",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Share of decided claims that receive refugee status; internationally accepted measure of origin-country threat level"
+  },
+  {
+    "code": "UNHCR_RESET_DEP",
+    "name": "Resettlement Departures (annual flow, by country of origin)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Refugees departing for resettlement in a third country; durable solution flow, inverse signal to ongoing crisis severity"
+  },
+  {
+    "code": "UNHCR_RESET_SUB",
+    "name": "Resettlement Submissions (annual, by country of origin)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "UNHCR cases submitted for resettlement consideration; leading indicator of pipeline before departure"
+  },
+  {
+    "code": "UNHCR_NATURAL",
+    "name": "Naturalizations (refugees naturalized in country of asylum, annual)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Refugees acquiring citizenship in host country; durable solution indicator, signals permanent integration vs return"
+  },
+  {
+    "code": "UNHCR_REF_RATIO_POP",
+    "name": "Refugees as Share of Origin Country Population (derived)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Refugees from country / total population; normalizes for country size, key comparability metric for ML features"
+  },
+  {
+    "code": "UNHCR_IDP_RATIO_POP",
+    "name": "IDPs as Share of Country Population (derived)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "UNHCR IDP stock / total population; normalized internal displacement burden, comparability-adjusted"
+  },
+  {
+    "code": "UNHCR_UNRWA_REF",
+    "name": "UNRWA-Mandated Refugees (Palestine refugees, end-year)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Palestine refugee population under UNRWA mandate by host country; key for MENA political-risk features"
+  },
+  {
+    "code": "UNHCR_IDMC_IDP",
+    "name": "IDMC IDP Stock (UNHCR/IDMC combined, end-year)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "IDP figures from IDMC as relayed through UNHCR population API /idmc/ endpoint; broader IDP coverage than UNHCR alone"
+  },
+  {
+    "code": "UNHCR_FORCDISP_TOTAL",
+    "name": "Total Forcibly Displaced (refugees + asylum-seekers + IDPs, derived)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Aggregate forced displacement burden for a country; single composite signal for ML feature engineering"
+  },
+  {
+    "code": "UNHCR_RESET_DEMO_MALE",
+    "name": "Resettlement Submissions — Male Share (demographics, annual)",
+    "category": "Demographic",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Gender composition of resettlement pipeline; demographic disaggregation from RSQ demographics endpoint"
+  },
+  {
+    "code": "UNHCR_RESET_DEMO_CHILD",
+    "name": "Resettlement Submissions — Children Share (0-17, annual)",
+    "category": "Demographic",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Child share in resettlement submissions; vulnerability structure of displaced cohort, fragility signal"
+  },
+  {
+    "code": "UNHCR_REF_TOP_COA_CONC",
+    "name": "Refugee Hosting Concentration (share in top-3 asylum countries, derived)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Geographic concentration of outflowing refugees; measures whether displacement is regional vs globally dispersed"
+  },
+  {
+    "code": "UNHCR_ASY_PENDING_STOCK",
+    "name": "Total Pending Asylum Cases Stock (end-year, country of asylum)",
+    "category": "Governance",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Accumulated unresolved asylum applications; measures system backlog and unresolved protection needs"
+  },
+  {
+    "code": "IDMC_CONF_NEW_DISP",
+    "name": "Conflict New Displacements (annual flow)",
+    "category": "Social",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "New internal displacement movements triggered by conflict/violence in the year; a person displaced twice counted twice — flow measure"
+  },
+  {
+    "code": "IDMC_CONF_STOCK",
+    "name": "Conflict IDP Stock (end-year total)",
+    "category": "Social",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Total people living in conflict-induced internal displacement at year-end; headline fragility and crisis duration indicator"
+  },
+  {
+    "code": "IDMC_DIS_NEW_DISP",
+    "name": "Disaster New Displacements (annual flow)",
+    "category": "Social",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "New internal displacements caused by sudden-onset natural disasters in the year; climate-risk and resilience signal"
+  },
+  {
+    "code": "IDMC_DIS_STOCK",
+    "name": "Disaster IDP Stock (end-year total)",
+    "category": "Social",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "People in protracted disaster-induced displacement at year-end; reflects unresolved disaster exposure without durable solutions"
+  },
+  {
+    "code": "IDMC_TOTAL_NEW_DISP",
+    "name": "Total New Displacements (conflict + disaster, annual flow)",
+    "category": "Social",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Combined new displacement movements from all causes; aggregate mobility-shock signal for ML"
+  },
+  {
+    "code": "IDMC_TOTAL_STOCK",
+    "name": "Total IDP Stock (conflict + disaster, end-year)",
+    "category": "Social",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Combined end-year IDP stock from all causes; broadest internal displacement measure available from IDMC"
+  },
+  {
+    "code": "IDMC_CONF_NEW_DISP_POP",
+    "name": "Conflict New Displacements per 1,000 Population (normalized)",
+    "category": "Social",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Conflict-induced new displacements normalized by population; cross-country comparability for ML features"
+  },
+  {
+    "code": "IDMC_CONF_STOCK_POP",
+    "name": "Conflict IDP Stock per 1,000 Population (normalized)",
+    "category": "Social",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Conflict IDP stock normalized by population; intensity-adjusted internal displacement burden"
+  },
+  {
+    "code": "IDMC_DIS_NEW_DISP_POP",
+    "name": "Disaster New Displacements per 1,000 Population (normalized)",
+    "category": "Social",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Disaster displacement flow normalized by population; disaster vulnerability intensity metric"
+  },
+  {
+    "code": "IDMC_DIS_STOCK_POP",
+    "name": "Disaster IDP Stock per 1,000 Population (normalized)",
+    "category": "Social",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Disaster IDP stock normalized by population; protracted climate/natural hazard exposure signal"
+  },
+  {
+    "code": "IDMC_CONF_HAZARD_GEOPOLITICAL",
+    "name": "Conflict Displacement — Geopolitical Violence Events (annual count)",
+    "category": "Other",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Count of IDU-recorded conflict displacement events classified as geopolitical violence; from IDMC event-level /disaster_events/ endpoint"
+  },
+  {
+    "code": "IDMC_DIS_HAZ_FLOOD",
+    "name": "Disaster Displacement — Flood-Related New Displacements (annual)",
+    "category": "Environment",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "New displacements caused specifically by flood events; disaggregated hazard type from IDMC /aggregated/disaster_data/"
+  },
+  {
+    "code": "IDMC_DIS_HAZ_STORM",
+    "name": "Disaster Displacement — Storm-Related New Displacements (annual)",
+    "category": "Environment",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "New displacements from storm/cyclone events; extreme weather fragility signal disaggregated by hazard"
+  },
+  {
+    "code": "IDMC_DIS_HAZ_EARTHQUAKE",
+    "name": "Disaster Displacement — Earthquake New Displacements (annual)",
+    "category": "Environment",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "New displacements from seismic events; geophysical risk measure disaggregated from IDMC disaster events"
+  },
+  {
+    "code": "IDMC_DIS_HAZ_DROUGHT",
+    "name": "Disaster Displacement — Drought-Related New Displacements (annual)",
+    "category": "Environment",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "New displacements from drought events; climate-stress and food-security fragility signal"
+  },
+  {
+    "code": "IDMC_DIS_HAZ_WILDFIRE",
+    "name": "Disaster Displacement — Wildfire New Displacements (annual)",
+    "category": "Environment",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "New displacements from wildfire events; increasingly relevant climate-change-linked displacement driver"
+  },
+  {
+    "code": "IDMC_DIS_HAZ_VOLCANIC",
+    "name": "Disaster Displacement — Volcanic Activity New Displacements (annual)",
+    "category": "Environment",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "New displacements from volcanic eruptions; geophysical hazard disaggregation for island/volcanic-zone countries"
+  },
+  {
+    "code": "IDMC_DIS_HAZ_LANDSLIDE",
+    "name": "Disaster Displacement — Landslide New Displacements (annual)",
+    "category": "Environment",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "New displacements from mass movement/landslide events; terrain-risk and precipitation-interaction signal"
+  },
+  {
+    "code": "IDMC_DIS_HAZ_TSUNAMI",
+    "name": "Disaster Displacement — Tsunami New Displacements (annual)",
+    "category": "Environment",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "New displacements from tsunami events; low-frequency, high-impact coastal exposure signal"
+  },
+  {
+    "code": "IDMC_CONF_YEARS_CONSECUTIVE",
+    "name": "Years in Consecutive Conflict Displacement (derived from IDMC stock series)",
+    "category": "Other",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Count of consecutive years with conflict IDP stock > 0; protracted displacement duration, chronicity indicator"
+  },
+  {
+    "code": "IDMC_CONF_DISP_EVENTS",
+    "name": "Number of Conflict Displacement Events (annual count, from IDU)",
+    "category": "Other",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Count of distinct displacement trigger events from Internal Displacement Updates; event frequency signal"
+  },
+  {
+    "code": "IDMC_DIS_EVENTS_COUNT",
+    "name": "Number of Disaster Displacement Events (annual count, from IDU)",
+    "category": "Environment",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Count of distinct disaster events causing displacement; disaster frequency signal from /disaster_events/ endpoint"
+  },
+  {
+    "code": "IDMC_CONFIDENCE_SCORE",
+    "name": "IDMC Data Confidence Assessment Score (country-year)",
+    "category": "Other",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "IDMC's own data reliability score for country-year displacement estimates; useful as feature weight or exclusion filter"
+  },
+  {
+    "code": "IDMC_CONF_STOCK_CHANGE",
+    "name": "Conflict IDP Stock Year-on-Year Change (derived)",
+    "category": "Social",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Annual delta in conflict IDP stock; distinguishes worsening vs stabilizing displacement situations"
+  },
+  {
+    "code": "IDMC_DIS_STOCK_CHANGE",
+    "name": "Disaster IDP Stock Year-on-Year Change (derived)",
+    "category": "Social",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Annual delta in disaster IDP stock; captures whether protracted disaster displacement is growing or resolving"
+  },
+  {
+    "code": "UCDP_SB_EXIST",
+    "name": "State-Based Armed Conflict Active (binary, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary flag: at least one active state-based armed conflict in the country-year (from OrganizedViolenceCY); conflict presence indicator"
+  },
+  {
+    "code": "UCDP_NS_EXIST",
+    "name": "Non-State Armed Conflict Active (binary, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary flag: non-state conflict (no government party) active in country-year; communal violence and militia conflict signal"
+  },
+  {
+    "code": "UCDP_OS_EXIST",
+    "name": "One-Sided Violence Active (binary, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary flag: one-sided violence against civilians active in country-year; atrocity and targeting of civilians signal"
+  },
+  {
+    "code": "UCDP_SB_INTRA",
+    "name": "Intrastate State-Based Conflict Active (binary, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: intrastate state-based conflict active; distinguishes internal civil war from interstate conflict"
+  },
+  {
+    "code": "UCDP_SB_INTER",
+    "name": "Interstate State-Based Conflict Active (binary, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: interstate conflict between governments active in country-year; external threat and cross-border war signal"
+  },
+  {
+    "code": "UCDP_SB_DEATHS_BEST",
+    "name": "State-Based Conflict Battle Deaths — Best Estimate (country-year aggregate)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Best-estimate battle-related deaths from state-based conflicts aggregated to country-year; core conflict intensity metric"
+  },
+  {
+    "code": "UCDP_SB_DEATHS_LOW",
+    "name": "State-Based Conflict Battle Deaths — Low Estimate (country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Lower-bound battle death estimate; captures uncertainty range for conflict intensity in ML feature engineering"
+  },
+  {
+    "code": "UCDP_SB_DEATHS_HIGH",
+    "name": "State-Based Conflict Battle Deaths — High Estimate (country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Upper-bound battle death estimate; uncertainty spread (high-low) is itself a useful feature signaling data opacity"
+  },
+  {
+    "code": "UCDP_NS_DEATHS_BEST",
+    "name": "Non-State Conflict Deaths — Best Estimate (country-year aggregate)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Best-estimate fatalities from non-state (communal/militia) conflicts aggregated to country-year; sub-state violence level"
+  },
+  {
+    "code": "UCDP_NS_DEATHS_LOW",
+    "name": "Non-State Conflict Deaths — Low Estimate (country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Lower-bound non-state conflict fatality estimate; uncertainty floor for communal violence intensity"
+  },
+  {
+    "code": "UCDP_NS_DEATHS_HIGH",
+    "name": "Non-State Conflict Deaths — High Estimate (country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Upper-bound non-state conflict fatality estimate; uncertainty ceiling for communal violence signal"
+  },
+  {
+    "code": "UCDP_OS_DEATHS_BEST",
+    "name": "One-Sided Violence Deaths — Best Estimate (country-year aggregate)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Best-estimate civilian fatalities from one-sided violence aggregated to country-year; targeted killing and atrocity intensity"
+  },
+  {
+    "code": "UCDP_OS_DEATHS_LOW",
+    "name": "One-Sided Violence Deaths — Low Estimate (country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Lower-bound civilian deaths from one-sided violence; floor estimate for atrocity magnitude"
+  },
+  {
+    "code": "UCDP_OS_DEATHS_HIGH",
+    "name": "One-Sided Violence Deaths — High Estimate (country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Upper-bound civilian deaths from one-sided violence; ceiling estimate, spread signals reporting uncertainty in repressive states"
+  },
+  {
+    "code": "UCDP_TOTAL_DEATHS_BEST",
+    "name": "Total Organized Violence Deaths — Best Estimate (all three types, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Sum of state-based + non-state + one-sided best-estimate deaths; mutually exclusive categories so summable without double-count"
+  },
+  {
+    "code": "UCDP_SB_CONFLICT_COUNT",
+    "name": "Number of Active State-Based Conflicts (country-year count)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Count of distinct state-based conflict dyads active in country-year; multi-front war complexity signal"
+  },
+  {
+    "code": "UCDP_NS_CONFLICT_COUNT",
+    "name": "Number of Active Non-State Conflicts (country-year count)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Count of distinct non-state conflict dyads in country-year; militia/communal fragmentation signal"
+  },
+  {
+    "code": "UCDP_OS_ACTOR_COUNT",
+    "name": "Number of Active One-Sided Violence Actors (country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Count of distinct actors committing one-sided violence in country-year; plurality of targeting actors, repression breadth"
+  },
+  {
+    "code": "UCDP_SB_INTENSITY_WAR",
+    "name": "State-Based War Intensity Flag (≥1000 deaths, binary, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: state-based conflict reaches 'war' threshold (≥1,000 battle deaths); from incompatibility coding in PRIO-ACD dataset"
+  },
+  {
+    "code": "UCDP_SB_INCOMPAT_TERR",
+    "name": "Territorial Incompatibility Conflict Active (binary, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: conflict over control of territory (as opposed to government) active; separatism/secessionism signal"
+  },
+  {
+    "code": "UCDP_SB_INCOMPAT_GOV",
+    "name": "Government Incompatibility Conflict Active (binary, country-year)",
+    "category": "Governance",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: conflict over control of central government active in country-year; coup/revolution/insurgency signal"
+  },
+  {
+    "code": "UCDP_SB_EXTRA_SYS",
+    "name": "Extra-Systemic (Colonial/Imperial) Conflict Active (binary, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: extra-systemic armed conflict (colonial or imperial) active; from type_of_conflict=1 in PRIO-ACD"
+  },
+  {
+    "code": "UCDP_SB_ONSET",
+    "name": "State-Based Conflict Onset (binary: new conflict in year, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary flag for new conflict onset from UCDP Onset Dataset; leading rather than contemporaneous conflict signal"
+  },
+  {
+    "code": "UCDP_SB_REACTIVATION",
+    "name": "State-Based Conflict Reactivation (binary, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: previously terminated conflict re-escalated; signals fragility of peace agreements and ceasefire fragility"
+  },
+  {
+    "code": "UCDP_CONFLICT_TERM",
+    "name": "Conflict Termination Event (binary, from UCDP Termination Dataset)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: at least one conflict dyad terminated in country-year; conflict resolution/ceasefire signal"
+  },
+  {
+    "code": "UCDP_TERM_PEACE_AGREE",
+    "name": "Termination by Peace Agreement (binary, country-year)",
+    "category": "Governance",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Conflict ended via formal peace agreement; quality-of-peace signal — negotiated settlements vs military victory"
+  },
+  {
+    "code": "UCDP_TERM_CEASEFIRE",
+    "name": "Termination by Ceasefire (binary, country-year)",
+    "category": "Governance",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Conflict ended by ceasefire agreement; fragile termination type, historically high recurrence risk"
+  },
+  {
+    "code": "UCDP_TERM_MIL_VICTORY",
+    "name": "Termination by Military Victory (binary, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Conflict ended by decisive military victory; durability signal — military victories have lower recurrence than ceasefires"
+  },
+  {
+    "code": "UCDP_GED_SB_EVENTS",
+    "name": "GED State-Based Violence Events Count (country-year aggregate)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Count of georeferenced state-based violence events in country-year from GED; event frequency intensity indicator"
+  },
+  {
+    "code": "UCDP_GED_NS_EVENTS",
+    "name": "GED Non-State Violence Events Count (country-year aggregate)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Count of georeferenced non-state conflict events in country-year; communal violence frequency signal"
+  },
+  {
+    "code": "UCDP_GED_OS_EVENTS",
+    "name": "GED One-Sided Violence Events Count (country-year aggregate)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Count of georeferenced one-sided violence events; civilian targeting frequency, atrocity event density"
+  },
+  {
+    "code": "UCDP_GED_CIV_DEATHS",
+    "name": "GED Civilian Deaths Best Estimate (all violence types, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Sum of deaths_civilians across all GED events in country-year; direct civilian harm signal from all organized violence"
+  },
+  {
+    "code": "UCDP_GED_TOTAL_DEATHS",
+    "name": "GED Total Deaths Best Estimate (all types combined, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Aggregate of best-estimate deaths from all GED events (SB+NS+OS) in country-year; total lethality from organized violence"
+  },
+  {
+    "code": "UCDP_GED_GEOREGION_SPREAD",
+    "name": "GED Geographic Spread (count of distinct ADM1 regions with events, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Number of distinct first-level administrative regions with GED events; spatial diffusion of conflict, territorial control signal"
+  },
+  {
+    "code": "UCDP_GED_PRIOGRID_SPREAD",
+    "name": "GED PrioGrid Cell Spread (count of distinct 0.5-degree cells with events, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Number of distinct PRIO-GRID cells with violence events; fine-grained geographic diffusion of organized violence"
+  },
+  {
+    "code": "UCDP_SB_ACTOR_GOVT",
+    "name": "Government as Conflict Party (binary, country-year)",
+    "category": "Governance",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: country's government is an active party to state-based conflict; direct regime-survival threat signal"
+  },
+  {
+    "code": "UCDP_SB_EXT_SUPPORT",
+    "name": "External Support to Conflict Parties (binary, from ESD dataset)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: at least one warring party receiving external state support; internationalization and proxy-war signal"
+  },
+  {
+    "code": "UCDP_SB_EXT_SUPPORT_TYPE",
+    "name": "External Support Type (troops/weapons/finance, ordinal, from ESD)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Type of external support provided to conflict parties; differentiates material (troops/weapons) from logistic/financial support"
+  },
+  {
+    "code": "UCDP_VIOL_PROTEST_COUNT",
+    "name": "Violent Political Protests — Dyad Count (country-year)",
+    "category": "Governance",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Count of violent political protest dyads from UCDP Violent Political Protest Dataset; sub-conflict political unrest level"
+  },
+  {
+    "code": "UCDP_VIOL_PROTEST_DEATHS",
+    "name": "Violent Political Protest Deaths (country-year aggregate)",
+    "category": "Governance",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Fatalities from violent political protests (below armed conflict threshold); protest repression and political volatility signal"
+  },
+  {
+    "code": "UCDP_CONFLICT_ISSUES_TERR",
+    "name": "Rebel Group Territorial Demands Active (binary, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: rebel groups with stated territorial/autonomy demands active; from UCDP Conflict Issues Dataset, secessionism signal"
+  },
+  {
+    "code": "UCDP_CONFLICT_ISSUES_IDEOL",
+    "name": "Rebel Group Ideological/Revolutionary Demands Active (binary, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: rebel groups seeking regime change on ideological grounds; revolutionary vs. separatist conflict type distinction"
+  },
+  {
+    "code": "UCDP_OS_GOVT_PERP",
+    "name": "Government-Perpetrated One-Sided Violence Active (binary, country-year)",
+    "category": "Governance",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: government is perpetrator of one-sided violence against civilians; state repression / democide signal"
+  },
+  {
+    "code": "UCDP_OS_NONSTATE_PERP",
+    "name": "Non-State Actor One-Sided Violence Active (binary, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: non-state armed group committing one-sided violence; terrorism / insurgent targeting signal distinct from state repression"
+  },
+  {
+    "code": "UCDP_OS_DEATHS_GOVT",
+    "name": "Government-Perpetrated Civilian Deaths Best Estimate (one-sided, country-year)",
+    "category": "Governance",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Fatalities from government one-sided violence; state atrocity magnitude, distinct from battlefield deaths"
+  },
+  {
+    "code": "UCDP_OS_DEATHS_NONSTATE",
+    "name": "Non-State Actor Civilian Deaths Best Estimate (one-sided, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Fatalities from non-state one-sided violence; insurgent/terrorist targeting of civilians intensity"
+  },
+  {
+    "code": "UCDP_PEACE_AGREE_SIGNED",
+    "name": "Peace Agreement Signed (binary, country-year, from UCDP PAD)",
+    "category": "Governance",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: at least one peace agreement signed in country-year; peace process milestone signal from UCDP Peace Agreement Dataset"
+  },
+  {
+    "code": "UCDP_PEACE_AGREE_COUNT",
+    "name": "Peace Agreements Signed Count (country-year)",
+    "category": "Governance",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Number of peace agreements signed; multiple agreements may reflect repeated failures or comprehensive peacebuilding"
+  },
+  {
+    "code": "UCDP_BATTLE_DEATHS_DYADIC_MAX",
+    "name": "Maximum Battle Deaths Across Dyads (country-year, most lethal dyad)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Battle deaths of most lethal single conflict dyad; captures dominant conflict without dilution from minor simultaneous conflicts"
+  },
+  {
+    "code": "UCDP_DYAD_COUNT_SB",
+    "name": "State-Based Conflict Dyad Count (country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Number of distinct state-based dyads (government vs. each armed group) active in country-year; multi-party conflict complexity"
+  },
+  {
+    "code": "UCDP_DEATHS_LOG",
+    "name": "Total Organized Violence Deaths Log-Transformed (country-year, derived)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Natural log of total organized violence deaths; reduces skew for ML regression features, preferred transformation for lethality"
+  },
+  {
+    "code": "UCDP_CONF_DURATION",
+    "name": "Conflict Duration (years since first onset, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Years elapsed since first conflict onset in country; chronicity signal — long-running conflicts have different risk profiles"
+  },
+  {
+    "code": "UCDP_SB_LOCATION_COUNTRY",
+    "name": "Country is Primary Battle Location (binary, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: country is the primary geographic location of state-based conflict (gwno_loc matches country); direct vs spillover risk"
+  },
+  {
+    "code": "UCDP_CANDIDATE_EVENTS_MONTHLY",
+    "name": "Candidate Events Monthly Count (nowcast, country-year partial)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Monthly candidate GED events (1-month lag release); enables quasi-real-time annualization for nowcasting features"
+  },
+  {
+    "code": "UCDP_NS_ORG_TYPE",
+    "name": "Non-State Conflict Organization Type (communal vs. organized, country-year flag)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Whether non-state violence is between communal groups vs organized armed groups (org variable); violence type differentiation"
+  },
+  {
+    "code": "UCDP_EOSV_ETHNIC_TARGET",
+    "name": "Ethnic Civilian Targeting Active (binary, from EOSV dataset)",
+    "category": "Social",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: one-sided violence with ethnic identity targeting of victims active; ethnic persecution and atrocity risk signal"
+  },
+  {
+    "code": "UCDP_DECO_ELECTORAL_VIOLENCE",
+    "name": "Deadly Electoral Violence Events (count, country-year, from DECO)",
+    "category": "Governance",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Count of georeferenced lethal electoral violence events; election-period instability signal distinct from armed conflict"
+  },
+  {
+    "code": "UCDP_GED_SB_CIVIL_WAR_DEATHS",
+    "name": "GED Intrastate Civil War Deaths Best Estimate (country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "GED-aggregated battle deaths from intrastate conflict type; separates civil war mortality from interstate conflict deaths"
+  },
+  {
+    "code": "UCDP_GED_INTER_WAR_DEATHS",
+    "name": "GED Interstate War Deaths Best Estimate (country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "GED-aggregated battle deaths from interstate conflict; international war mortality distinct from internal conflict signal"
+  },
+  {
+    "code": "UCDP_GED_ACTIVE_YEARS",
+    "name": "GED Active Conflict Years (count of years with events, derived)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Rolling count of years with active GED events for a country; persistence / conflict-years-experienced signal"
+  },
+  {
+    "code": "UNHCR_REF_COO_MAJOR_DEST",
+    "name": "Refugee Flow to Top Destination Country (persons, annual, by origin)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Largest single-country refugee outflow direction from origin country; bilateral route concentration signal"
+  },
+  {
+    "code": "UNHCR_REGIONAL_BURDEN_SHARE",
+    "name": "Refugees Hosted as Share of Regional Total (derived, country-year)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Share of regional refugee hosting burden borne by country; burden-sharing and regional solidarity indicator"
+  },
+  {
+    "code": "UNHCR_ASY_BACKLOG_YEARS",
+    "name": "Asylum Backlog Duration (pending stock / annual decisions, derived)",
+    "category": "Governance",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Implied years to clear pending asylum backlog at current decision rate; institutional capacity and rule-of-law proxy"
+  },
+  {
+    "code": "IDMC_CONF_DISP_PERC_EXTREME",
+    "name": "Extreme Conflict Displacement Year Flag (top decile globally, derived)",
+    "category": "Other",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Binary: conflict displacement in top 10% globally for that year; threshold-crossed signal for ML classification"
+  },
+  {
+    "code": "IDMC_DIS_DISP_PERC_EXTREME",
+    "name": "Extreme Disaster Displacement Year Flag (top decile globally, derived)",
+    "category": "Other",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Binary: disaster displacement in top 10% globally for that year; extreme climate-event signal"
+  },
+  {
+    "code": "UCDP_OSV_INTENSITY_RATIO",
+    "name": "One-Sided Violence Share of Total Organized Violence Deaths (derived)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Civilian-targeting deaths as fraction of total organized violence deaths; measures targeting-of-civilians vs combatant-focus shift"
+  },
+  {
+    "code": "UCDP_NS_VS_SB_RATIO",
+    "name": "Non-State to State-Based Violence Lethality Ratio (derived)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Ratio of non-state deaths to state-based deaths; measures whether violence is dominated by sub-state militia vs government conflict"
+  },
+  {
+    "code": "UCDP_SB_INTENSIFICATION",
+    "name": "State-Based Conflict Intensification (year-on-year death change, derived)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Year-on-year delta in state-based battle deaths; escalation vs de-escalation direction signal for trend detection"
+  },
+  {
+    "code": "UNHCR_IDP_CHANGE_RATE",
+    "name": "UNHCR IDP Stock Annual Change Rate (%, derived)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Percentage change in UNHCR-reported IDP stock year-on-year; acceleration of displacement crisis or recovery signal"
+  },
+  {
+    "code": "UNHCR_REF_OUTFLOW_RATE",
+    "name": "Refugee Outflow Rate (new refugees as % of prior-year stock, derived)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Pace at which refugee stock is being augmented; crisis velocity indicator separate from absolute magnitude"
+  },
+  {
+    "code": "UNHCR_DURABLE_SOL_RATE",
+    "name": "Durable Solutions Rate (solutions as % of refugee stock, derived)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Share of refugee population accessing durable solutions annually; crisis resolution pace and international burden-sharing signal"
+  },
+  {
+    "code": "UCDP_GED_UNCERTAINTY_MEAN",
+    "name": "GED Mean Death Estimate Uncertainty (high-low spread, country-year mean)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Average (high-low) uncertainty range across GED events in country-year; proxy for conflict opacity and media access restrictions"
+  },
+  {
+    "code": "UCDP_GED_EVENT_CLARITY_LOW",
+    "name": "GED Low-Clarity Events Share (country-year, % events with low event_clarity)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Share of GED events with low coding clarity (event_clarity field); information opacity signal correlated with media suppression"
+  },
+  {
+    "code": "IDMC_DIS_HAZ_EXTREME_WEATHER",
+    "name": "Disaster Displacement — Extreme Temperature Events (annual new displacements)",
+    "category": "Environment",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Displacement from extreme heat/cold events; climate-stress signal distinct from storm/flood displacement"
+  },
+  {
+    "code": "IDMC_DIS_HAZ_MASS_MOVEMENT_WET",
+    "name": "Disaster Displacement — Wet Mass Movement (mudslide/debris, annual new displacements)",
+    "category": "Environment",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "Displacement from wet mass movement (rain-triggered landslides); precipitation-slope interaction risk signal"
+  },
+  {
+    "code": "UNHCR_STATELESS_RISK_FLAG",
+    "name": "Stateless Population ≥10,000 (binary, country-year)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Binary: stateless population exceeds 10,000 — threshold for internationally significant statelessness situation"
+  },
+  {
+    "code": "UNHCR_REF_PROTECTION_SPACE",
+    "name": "Refugee to Population Ratio in Asylum Country (%, derived)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Refugees as share of asylum country population; measures pressure on protection space and potential for social tension"
+  },
+  {
+    "code": "UCDP_SB_INTRA_INTERNATIONALISED",
+    "name": "Internationalised Intrastate Conflict Active (binary, type_of_conflict=3, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: civil war with foreign state involvement (type_of_conflict=3 in PRIO-ACD); proxy war / internationalization signal"
+  },
+  {
+    "code": "UCDP_SB_PURE_CIVIL_WAR",
+    "name": "Pure Intrastate Conflict Active (binary, type_of_conflict=2, country-year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: domestic civil war without external state involvement (type_of_conflict=2); separates proxy wars from purely internal"
+  },
+  {
+    "code": "IDMC_CONF_NEW_DISP_5Y_AVG",
+    "name": "Conflict New Displacements 5-Year Rolling Average (derived)",
+    "category": "Social",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "5-year moving average of conflict new displacements; smoothed trend that reduces single-year event spikes for ML stability"
+  },
+  {
+    "code": "IDMC_DIS_NEW_DISP_5Y_AVG",
+    "name": "Disaster New Displacements 5-Year Rolling Average (derived)",
+    "category": "Environment",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "5-year moving average of disaster new displacements; baseline climate exposure trend smoothed over medium term"
+  },
+  {
+    "code": "UNHCR_ASY_APP_NEW_COA_GROWTH",
+    "name": "Asylum Applications Growth Rate (YoY %, country of asylum)",
+    "category": "Governance",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Year-on-year growth rate of new asylum applications received; migration pressure acceleration signal for receiving states"
+  },
+  {
+    "code": "UNHCR_REF_ORIGIN_HHI",
+    "name": "Refugee Origin Concentration Index (HHI across origin countries, derived)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Herfindahl index of refugee hosting country's origin-country mix; concentrated=single crisis, dispersed=structural inflow"
+  },
+  {
+    "code": "UCDP_SB_DEATHS_PER_EVENT",
+    "name": "Average Battle Deaths per State-Based Violence Event (country-year, derived)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Mean lethality per GED event; distinguishes mass-casualty events from diffuse attrition warfare"
+  },
+  {
+    "code": "UCDP_NS_DEATHS_PER_EVENT",
+    "name": "Average Deaths per Non-State Violence Event (country-year, derived)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Mean lethality per non-state GED event; massacre vs skirmish distinction in communal violence"
+  },
+  {
+    "code": "UCDP_OS_DEATHS_PER_EVENT",
+    "name": "Average Deaths per One-Sided Violence Event (country-year, derived)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Mean civilian deaths per one-sided violence event; tactical pattern of targeting — mass atrocities vs targeted killings"
+  },
+  {
+    "code": "UCDP_GED_NOCTURNAL_EVENTS",
+    "name": "GED Events with Unclear Temporal Precision (country-year share, derived)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Share of events with low temporal precision (date_start ≠ date_end span >1 month); reporting opacity index"
+  },
+  {
+    "code": "IDMC_TOTAL_DISP_GDP_RATIO",
+    "name": "Total Displaced Persons to GDP Ratio (derived, IDMC stock / WB GDP)",
+    "category": "Economic",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "IDP stock relative to economic size; economic displacement burden signal independent of population scale"
+  },
+  {
+    "code": "UCDP_ANY_CONFLICT_EVER",
+    "name": "Country Ever Had UCDP-Recorded Conflict (binary, cumulative through year)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Binary: country has experienced any UCDP-recorded organized violence by current year; historical conflict legacy signal"
+  },
+  {
+    "code": "UCDP_YEARS_SINCE_LAST_CONFLICT",
+    "name": "Years Since Last Active Conflict (country-year, derived)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Years elapsed since last UCDP-recorded organized violence above threshold; post-conflict stability duration, recurrence risk proxy"
+  },
+  {
+    "code": "UCDP_NS_COMMUNAL_VS_ORG",
+    "name": "Communal Non-State Conflict Share (% of NS conflicts that are communal, country-year)",
+    "category": "Social",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Fraction of non-state conflicts that are communal (ethnic/religious) vs organized armed group; conflict type composition signal"
+  },
+  {
+    "code": "UNHCR_REF_INFLOW_COA",
+    "name": "Refugee Inflow to Country of Asylum (new arrivals, annual flow)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "New refugee arrivals in country-year as asylum destination; immigration pressure and humanitarian burden signal"
+  },
+  {
+    "code": "UNHCR_STA_CHANGE",
+    "name": "Stateless Population Change (year-on-year delta)",
+    "category": "Social",
+    "provider": "UNHCR",
+    "license": "CC BY 4.0",
+    "note": "Annual change in stateless population; growing statelessness signals policy exclusion or denaturalization campaigns"
+  },
+  {
+    "code": "UCDP_GED_NS_COMMUNAL_DEATHS",
+    "name": "GED Communal Non-State Violence Deaths (country-year, best estimate)",
+    "category": "Social",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Deaths from communal non-state violence (ethnic/religious clashes); social fragmentation and intercommunal tension signal"
+  },
+  {
+    "code": "UCDP_GED_NS_ORG_DEATHS",
+    "name": "GED Organized Non-State Violence Deaths (country-year, best estimate)",
+    "category": "Other",
+    "provider": "UCDP",
+    "license": "CC BY 4.0",
+    "note": "Deaths from organized armed group non-state conflicts; militia/criminal organization violence separate from communal clashes"
+  },
+  {
+    "code": "IDMC_DIS_NEW_DISP_CUMUL_10Y",
+    "name": "Cumulative Disaster Displacements Over Past 10 Years (derived)",
+    "category": "Environment",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "10-year sum of annual disaster new displacements; chronic climate exposure signal for structural risk assessment"
+  },
+  {
+    "code": "IDMC_CONF_NEW_DISP_CUMUL_10Y",
+    "name": "Cumulative Conflict Displacements Over Past 10 Years (derived)",
+    "category": "Social",
+    "provider": "IDMC",
+    "license": "CC BY 4.0",
+    "note": "10-year sum of annual conflict new displacements; chronic conflict-driven displacement exposure signal"
+  }
+]

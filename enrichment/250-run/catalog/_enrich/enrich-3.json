@@ -1,0 +1,412 @@
+[
+  {
+    "code": "NV.IND.MANF.KD.ZG",
+    "why": "Manufacturing growth captures real-sector economic momentum; sharp contractions precede recession events and fuel social unrest via job losses and industrial hollowing. It complements GDP-level signals with a sector-specific pace measure that responds faster to external shocks and trade disruptions.",
+    "country_coverage": 155,
+    "coverage_confidence": "medium",
+    "year_start": 1970,
+    "year_end": 2023,
+    "coverage_note": "WB WDI; broad coverage but thin for small/fragile states and some MENA; data gaps common pre-1980 for lower-income countries.",
+    "trends": [
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Manufacturing contraction is a leading indicator of recession; likely to crack the greedy top-40 for this Trend and enter top features."
+      },
+      {
+        "trend_id": "economic_recovery",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Positive manufacturing growth is a canonical recovery signal; model should capture the directional swing from contraction to expansion."
+      },
+      {
+        "trend_id": "labor_action",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Industrial contraction correlates with layoffs and labor unrest; plausibly cracks top-40 in countries where manufacturing is a large sector."
+      },
+      {
+        "trend_id": "industrial_policy",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Policy interventions often follow or precede manufacturing trend reversals; medium signal strength in economies with active industrial strategy."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "Prolonged manufacturing decline deepens inequality but the relationship is indirect and lagged; marginal lift expected."
+      }
+    ]
+  },
+  {
+    "code": "FD.AST.PRVT.GD.ZS",
+    "why": "Private credit depth captures financial leverage and the degree of banking system intermediation; rapid credit expansions are among the strongest known predictors of banking and currency crises, while prolonged contraction signals deflationary stress. The series directly captures the financial-system amplification channel central to economic-stress Trends.",
+    "country_coverage": 185,
+    "coverage_confidence": "high",
+    "year_start": 1960,
+    "year_end": 2023,
+    "coverage_note": "WB WDI; one of the broadest financial series; minor gaps for conflict-affected and sanctioned states in early decades.",
+    "trends": [
+      {
+        "trend_id": "banking_and_financial_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Credit booms and busts are textbook banking-crisis predictors; this series directly captures the pre-crisis leverage build-up and is very likely a top-40 entry."
+      },
+      {
+        "trend_id": "currency_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+7-14%",
+        "reason": "Excessive private credit fuels capital-flow vulnerabilities and FX pressures that culminate in currency crises; consistently appears in crisis literature."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Credit-cycle downturns amplify recessions; negative credit growth flags contraction risk, though recession has many concurrent drivers."
+      },
+      {
+        "trend_id": "economic_liberalization",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Liberalization events are often accompanied by financial deepening and credit expansion; plausible top-40 entrant for this Trend."
+      },
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "Low",
+        "lift_pct": "+1-4%",
+        "reason": "Post-crisis credit collapse forces emergency fiscal responses; tangential upstream signal with indirect causal path."
+      }
+    ]
+  },
+  {
+    "code": "v2smorgviol",
+    "why": "Directly measures the degree to which social media is used to coordinate real-world political violence, capturing a digital mobilization pathway absent from traditional indicators. Provides a near-contemporaneous signal of violence organization that can precede or accompany attacks, political violence events, and protest escalation.",
+    "country_coverage": 178,
+    "coverage_confidence": "medium",
+    "year_start": 2000,
+    "year_end": 2024,
+    "coverage_note": "V-Dem; global coverage but v2sm* social media items are only meaningful post-2000; reliable signal from ~2010 onward as social media penetration expanded globally.",
+    "trends": [
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Direct mechanistic link: social media coordination of offline violence is definitionally captured by this indicator — very likely top-40 entry for political violence Trend."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Social media mobilization underpins modern protest waves; overlaps substantially with organizing for collective action and protest escalation."
+      },
+      {
+        "trend_id": "terrorist_attack",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "Online radicalization and coordination precede attacks; plausible top-40 entry, though not all terrorism is organized via mainstream social platforms."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Hate speech and incitement on social media fuel communal violence; captures the enabling digital environment for inter-group conflict."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "Governments often respond to online-coordinated violence with repression; causal direction may weaken the signal but it is a plausible co-variate."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_SB_CONFLICT_COUNT",
+    "why": "Counts distinct active state-based conflict dyads per country-year, capturing multi-front war complexity that single binary active/inactive flags miss. A country fighting three simultaneous armed groups faces qualitatively different instability than one with a contained single insurgency, making this a unique structural signal.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "UCDP; covers all states globally but non-zero values only for ~60-80 conflict-affected countries per year; zero-inflated distribution; complete coverage for active-conflict countries.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Count of active conflict dyads is a core measure of insurgency complexity and directly aligns with the civil war Trend's movement shape; near-certain top-40 entry."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Multiple concurrent state-based conflicts amplify overall political violence and reflect broader state-society breakdown."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "Multiple simultaneous conflicts compound displacement, food insecurity, and civilian harm; plausible top-40 entry."
+      },
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Complex multi-party conflict environments attract foreign intervention as external actors back different warring factions."
+      },
+      {
+        "trend_id": "peacekeeping_and_peace_process",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "High conflict counts create demand for peace processes; the link is real but indirect and temporally delayed."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_SB_INTENSITY_WAR",
+    "why": "Binary flag for state-based conflict reaching war threshold (≥1,000 battle deaths), distinguishing low-level armed conflict from full-scale war. This threshold crossing historically correlates with regime change, mass displacement, and external intervention events — marking the qualitative escalation that reshapes political trajectories.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "UCDP/PRIO-ACD; same coverage as SB conflict series; binary variable so zero-inflated; all active-conflict countries captured with consistent threshold coding.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "War-intensity threshold is the definitional ceiling of civil war severity; highest prior for top-40 entry in this Trend."
+      },
+      {
+        "trend_id": "interstate_war",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Interstate wars almost always cross the war threshold; binary flag will be near-perfectly predictive for active war years."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "War-level violence drives mass displacement and refugee flows; plausible top-40 entrant for migration/refugee Trends."
+      },
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-9%",
+        "reason": "War-intensity conflicts historically attract foreign military involvement, either to support a side or impose a ceasefire."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "Full-scale war raises military salience and can trigger coups, but causation is contested and the signal is weaker than direct political indicators."
+      }
+    ]
+  },
+  {
+    "code": "OWID_MILSPEND_SIPRI",
+    "why": "Military expenditure as share of GDP is a broad defence-burden and conflict-orientation signal; rapid increases precede militarization events and reflect threat perception, while high sustained levels constrain fiscal space for social spending. SIPRI data is the international gold standard for cross-national military expenditure comparisons.",
+    "country_coverage": 170,
+    "coverage_confidence": "high",
+    "year_start": 1960,
+    "year_end": 2023,
+    "coverage_note": "SIPRI via OWID; comprehensive for most countries from 1988; pre-1988 thinner especially for post-Soviet states and sub-Saharan Africa; small and closed-regime states occasionally missing.",
+    "trends": [
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "High",
+        "lift_pct": "+7-14%",
+        "reason": "High military spending relative to GDP correlates with oversized armed forces and coup-prone civil-military relations; well-documented in coup literature."
+      },
+      {
+        "trend_id": "military_policy_and_reform",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Spending trajectories directly proxy military policy posture; near-certain top-40 entry for this Trend as large shifts accompany structural reforms or demobilization."
+      },
+      {
+        "trend_id": "interstate_war",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "Military build-up as share of GDP is a classic arms-race and conflict-preparation signal preceding interstate war."
+      },
+      {
+        "trend_id": "sanctions_and_arms_embargo",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "High military spending combined with aggressive posture often triggers international sanctions; plausible top-40 entry."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "Military spending rises during civil wars but also during peaceful deterrence; weaker discriminative signal than conflict-specific indicators."
+      }
+    ]
+  },
+  {
+    "code": "SDGB-009",
+    "why": "The SDG 2.c.1 Indicator of Food Price Anomalies (IFPA) directly measures domestic food price volatility anomalies, flagging periods when prices diverge sharply from international benchmarks — historically a trigger for mass protests and political instability in food-import-dependent countries. As a real-time early-warning index it is action-oriented rather than purely descriptive.",
+    "country_coverage": 130,
+    "coverage_confidence": "low",
+    "year_start": 2010,
+    "year_end": 2023,
+    "coverage_note": "FAOSTAT SDG 2.c.1; coverage limited to countries with sufficient price series data; shorter time series (~2010+) constrains recipe training on early history; benchmark-year or sparse collection in some countries.",
+    "trends": [
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Food price spikes are a canonical mass-protest trigger (Arab Spring 2011, bread-riot literature); IFPA anomaly flag likely top-40 entry for protest Trend."
+      },
+      {
+        "trend_id": "drought_and_famine",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Domestic food price anomalies co-occur with supply shocks from drought; strong mechanistic link to famine-related event onset."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "Food price volatility amplifies humanitarian crises; plausible top-40 entry especially in fragile-state contexts."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Price anomalies disproportionately harm low-income households, worsening inequality and deepening poverty; moderate link to crisis events."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Food price shocks can contribute to broader economic stress but causal direction is often reversed (recession causes food insecurity); marginal lift."
+      }
+    ]
+  },
+  {
+    "code": "v2smfordom",
+    "why": "Measures whether foreign governments run disinformation campaigns targeting the domestic population, capturing information-warfare interference as a distinct channel of foreign meddling separate from military or economic pressure. Rising scores signal externally manufactured political instability particularly relevant to hybrid-warfare and election-interference scenarios.",
+    "country_coverage": 178,
+    "coverage_confidence": "medium",
+    "year_start": 2000,
+    "year_end": 2024,
+    "coverage_note": "V-Dem; global coverage but reliable only post-2000 for v2sm* items; expert-survey based so may lag fast-moving information environments by 1-2 years; pre-2008 values near-zero for most countries.",
+    "trends": [
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "High",
+        "lift_pct": "+9-16%",
+        "reason": "Foreign disinformation campaigns are a primary tool of hybrid warfare and typically co-occur with or precede other forms of foreign intervention; direct mechanistic alignment."
+      },
+      {
+        "trend_id": "elections_and_voting",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Election interference via disinformation is the most documented use case; high scores predict contested or delegitimized electoral outcomes."
+      },
+      {
+        "trend_id": "diplomatic_rupture",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Exposed foreign disinformation operations frequently trigger diplomatic expulsions and ruptures between targeted and perpetrating states."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Governments targeted by foreign disinformation often respond with increased domestic surveillance and repression to counter perceived foreign-backed opposition."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "Foreign disinformation frequently amplifies inter-ethnic grievances; marginal contribution where ethnic fault lines already exist."
+      }
+    ]
+  },
+  {
+    "code": "UNHCR_REF_COO",
+    "why": "End-year stock of refugees originating from each country is a cumulative, internationally-validated measure of how dangerous conditions have become for that country's population — effectively a global consensus judgment on origin-country risk. Stocks respond to conflict onset, political repression, and humanitarian crises and persist as slow-moving structural signals.",
+    "country_coverage": 190,
+    "coverage_confidence": "high",
+    "year_start": 1951,
+    "year_end": 2024,
+    "coverage_note": "UNHCR; near-universal coverage; pre-1990 series sparse for many countries; consistent annual data broadly available from ~1990 onward; near-zero values for stable countries still present in series.",
+    "trends": [
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "REF_COO is the primary refugee stock measure; definitionally aligned with migration/refugee Trend — near-certain top-40 entry."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Mass refugee production is a hallmark of civil war; refugee stock levels strongly co-vary with civil war duration and intensity."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Refugee stock is a core humanitarian crisis metric reflecting cumulative displacement pressure; likely top-40 entry for this Trend."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "Refugee flows from non-conflict states are often driven by political persecution; plausible top-40 entry for repression Trend."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Large refugee stocks signal systematic human rights failures in origin country; moderate lift expected."
+      }
+    ]
+  },
+  {
+    "code": "v2caassemb",
+    "why": "Freedom of peaceful assembly is a direct civil-liberties indicator measuring whether citizens can freely gather for protests and political meetings; restrictions on assembly are an early-stage precursor to mass protest escalation and a marker of political repression that often precedes broader human rights deterioration.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem; global coverage from 1900; expert-survey methodology provides consistent coding across regime types; high confidence for post-1990 data across all regions.",
+    "trends": [
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Assembly restrictions are both a direct antecedent and co-occurring feature of protest events; very likely top-40 entry with strong directional signal."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Banning or restricting assemblies is a canonical repression tool; near-certain top-40 entry for political repression Trend."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "Assembly freedom is a core human rights dimension; plausible top-40 entry as part of a civil liberties indicator cluster."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Democratization events are associated with expanding assembly rights; indicator likely captures both the run-up and consolidation phases of transitions."
+      },
+      {
+        "trend_id": "labor_action",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "Assembly rights affect workers' ability to strike and organize collectively; marginal lift as labor action has more direct predictors."
+      }
+    ]
+  }
+]

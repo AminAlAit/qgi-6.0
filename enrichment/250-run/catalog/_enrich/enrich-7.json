@@ -1,0 +1,370 @@
+[
+  {
+    "code": "v2xcl_rol",
+    "why": "Captures how consistently a state applies law equally and protects individual liberties — deterioration precedes regime crackdowns, political repression episodes, and mass protest cycles. As a composite rule-of-law signal it provides a slow-moving but high-signal baseline that cross-validates faster V-Dem indicators already in the pool.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "Near-universal V-Dem coverage from 1900; pre-1950 data thinner for small states; contemporary coverage essentially complete.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Rule-of-law collapse is a structural precursor to state repression; index captures the erosion arc directly."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "High",
+        "lift_pct": "+7-12%",
+        "reason": "Individual liberty sub-dimension directly indexes the conditions that define human-rights violation events."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Legal equality scores shift significantly around transitions; adds signal distinct from electoral V-Dem components."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Perceived inequality before law is a documented grievance driver for large-scale protest mobilisation."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_CONFLICT_ISSUES_TERR",
+    "why": "Flags active rebel groups making territorial or autonomy demands — a direct structural precursor to secessionist insurgencies and civil-war escalation distinct from battle-death intensity signals. It captures the presence of a mobilised challenger with an existential stake, which shapes both onset probability and conflict duration.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 1975,
+    "year_end": 2023,
+    "coverage_note": "Coverage limited to countries with active UCDP-recorded conflict; zero-conflict countries coded implicitly 0 but must be derived; pre-1989 coverage thinner.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Territorial demand is a core incompatibility type in UCDP taxonomy; binary flag cleanly identifies the insurgency-prone structural state."
+      },
+      {
+        "trend_id": "decentralization_and_federalism",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Autonomous-demand conflicts are the main driver of federalisation and devolution events; indicator is a near-direct cause signal."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "Territorial demands often overlap with ethnic mobilisation; adds conflict-structure dimension not captured by death counts."
+      },
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Secessionist conflicts attract external patron support and intervention; territorial-demand flag is a proxy for intervention risk."
+      }
+    ]
+  },
+  {
+    "code": "IDMC_CONF_STOCK",
+    "why": "End-year IDP stock is a durable, slow-decay measure of unresolved internal conflict — it accumulates over protracted crises and persists long after acute fighting ebbs, making it an excellent lagging severity signal and chronicity marker for conflict trends. Unlike flow measures it captures entrenched displacement that cannot be explained by recent events alone.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 2009,
+    "year_end": 2024,
+    "coverage_note": "IDMC conflict stock reliable from 2009; disaster stock from 2008; pre-2009 UNHCR IDP series must be substituted for early history; zero-conflict country coverage good.",
+    "trends": [
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+10-16%",
+        "reason": "IDP stock is the headline severity metric for humanitarian crises; cumulative nature catches protracted emergencies that event counts miss."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Large stock signals an ongoing or recently-ended civil conflict; strongly separates active-war from post-war countries."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Internal displacement pressure precedes and correlates with cross-border refugee outflows; orthogonal to UNHCR refugee stock."
+      },
+      {
+        "trend_id": "peacekeeping_and_peace_process",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "IDP stock reduction or plateau is a key metric triggering and measuring peace-process progress; signal complements UCDP conflict end data."
+      }
+    ]
+  },
+  {
+    "code": "UNHCR_ASY_BACKLOG_YEARS",
+    "why": "Derived asylum-backlog duration (pending stock divided by annual decisions) is a rule-of-law and state-capacity proxy for destination countries — long backlogs signal overwhelmed judicial systems and governance strain while also reflecting sustained origin-country push-factor intensity that exceeds host-state processing bandwidth. It is analytically distinct from raw refugee counts.",
+    "country_coverage": 85,
+    "coverage_confidence": "medium",
+    "year_start": 2000,
+    "year_end": 2023,
+    "coverage_note": "Reliable derivation requires both pending stock and decisions data; coverage limited to ~85 receiving states with functioning asylum systems; thin pre-2000; derived field needs construction from raw UNHCR tables.",
+    "trends": [
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "High",
+        "lift_pct": "+7-12%",
+        "reason": "Backlog duration captures the structural absorption gap between refugee-flow intensity and host-state capacity, a key migration-crisis dynamic."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Sustained backlog in destination states may reflect politically-driven slowdowns in recognition for specific nationalities, signalling repression abroad."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "High originating-country refugee pressure captured via backlog adds a continuous structural human-rights signal independent of event coding."
+      }
+    ]
+  },
+  {
+    "code": "ET-001",
+    "why": "Country-level land surface temperature anomaly is a direct measure of climate-change exposure that underpins agricultural yield shocks, food-price spikes, and water scarcity — pathways established in the conflict-climate literature as intermediate steps toward political instability. Including it gives the pool a slow-moving exogenous structural driver orthogonal to all governance and economic signals.",
+    "country_coverage": 190,
+    "coverage_confidence": "high",
+    "year_start": 1961,
+    "year_end": 2025,
+    "coverage_note": "FAOSTAT temperature-change series covers virtually all countries from 1961 with annual updates; baseline period 1951-1980; small island states occasionally missing.",
+    "trends": [
+      {
+        "trend_id": "drought_and_famine",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Temperature anomaly is the primary physical driver of droughts; directly predicts arid-zone yield failures that precede famine events."
+      },
+      {
+        "trend_id": "resource_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "Climate stress amplifies competition over scarce land and water; temperature anomaly is the best available proxy for this structural pressure."
+      },
+      {
+        "trend_id": "water_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Elevated temperature anomaly increases evapotranspiration and reduces surface-water availability, the core physical driver of water crises."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Multi-year temperature anomalies compound into food insecurity and displacement that define humanitarian emergencies, especially in semi-arid regions."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "Climate-driven displacement is a growing but still secondary driver relative to conflict; temperature anomaly adds a marginal orthogonal signal."
+      }
+    ]
+  },
+  {
+    "code": "v2regdur",
+    "why": "Regime duration captures the entrenchment of the current political order — very short durations flag fragile newly-established regimes prone to early collapse, while very long durations signal ossified systems at risk of sudden legitimacy collapse or succession crisis. This non-linear signal complements continuous governance-quality indexes by encoding regime-lifecycle position.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "Full V-Dem coverage from 1900; regime-end and restart dates validated by expert coders; near-complete for all sovereign states.",
+    "trends": [
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Coup probability peaks at both very short durations (unstable new regimes) and after very long autocratic tenures; duration encodes this non-linear risk."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+7-12%",
+        "reason": "Transitions cluster around regime exhaustion after long autocratic periods or at vulnerable early stages; duration is a direct lifecycle position signal."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Mid-to-long duration regimes consolidate power incrementally; duration trend predicts the consolidation arc better than a single-year snapshot."
+      },
+      {
+        "trend_id": "constitutional_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Constitutional rewrites cluster at regime-transition boundaries and during long-regime consolidation phases, both captured by duration."
+      }
+    ]
+  },
+  {
+    "code": "OWID_SLUM_SHARE",
+    "why": "Urban slum population share measures the concentration of economically marginalised, spatially segregated populations within cities — a well-documented structural precondition for urban unrest, political radicalisation, and grievance-based mass protest, especially where urbanisation outpaces formal employment and service delivery. It also serves as a slow-moving inequality proxy distinct from income-distribution measures.",
+    "country_coverage": 120,
+    "coverage_confidence": "medium",
+    "year_start": 1990,
+    "year_end": 2020,
+    "coverage_note": "UN-HABITAT via OWID; coverage strongest for developing-country cities; high-income OECD countries often excluded or near-zero; temporal frequency sparse (census-linked, ~5-year updates); interpolation needed for annual ML features.",
+    "trends": [
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Slum share is a direct spatial index of the grievance-dense urban poor who constitute the mobilisation base for large-scale urban protests."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+7-12%",
+        "reason": "Slum share directly quantifies acute urban poverty; orthogonal to income-based inequality measures and adds housing/services deprivation dimension."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Dense informal settlements provide cover and recruitment for armed groups; slum share correlates with sub-state violent event density in the literature."
+      },
+      {
+        "trend_id": "social_policy_reform",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "High slum share creates political pressure for housing and social policy reforms; secondary signal with moderate empirical support."
+      }
+    ]
+  },
+  {
+    "code": "OWID_REGIMETYPE",
+    "why": "The V-Dem Regimes of the World 4-category typology (closed autocracy → liberal democracy) encodes regime-type as a categorical structural variable that conditions almost every political risk mechanism — coup risk, protest dynamics, conflict recurrence, and repression intensity all differ fundamentally across these categories, making regime type one of the most powerful stratifying features in any political-risk model.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2025,
+    "coverage_note": "Full V-Dem RoW coverage from 1900; OWID-hosted for easy access; treated as ordered categorical or one-hot encoded for XGBoost; essentially complete contemporary coverage.",
+    "trends": [
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Coup risk is overwhelmingly concentrated in electoral and closed autocracies; regime type is the single strongest structural predictor of coup occurrence."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "Transition events are definitionally moves between regime categories; the current type captures the starting position of every potential transition arc."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+9-15%",
+        "reason": "Systematic state repression is structurally associated with closed and electoral autocracies; regime type stratifies repression risk sharply."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Consolidation episodes begin in electoral autocracies or eroding democracies; current regime type sets the feasibility and form of consolidation."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Protest scale and state response dynamics differ substantially between regime types; type provides essential context for protest-mobilisation signals."
+      }
+    ]
+  },
+  {
+    "code": "EIP_NEET_SEX_AGE_RT",
+    "why": "NEET rate captures the share of youth excluded from all productive activity — the most direct measure of youth marginalisation and a leading indicator of the grievance pool available for protest mobilisation, radicalization, and recruitment into armed groups. Combined with youth-bulge size indicators it creates a two-dimensional youth-risk surface that neither variable alone provides.",
+    "country_coverage": 165,
+    "coverage_confidence": "medium",
+    "year_start": 1995,
+    "year_end": 2024,
+    "coverage_note": "ILOSTAT modelled estimates extend coverage to ~165 countries from the 2000s; raw survey data sparser for LICs pre-2005; SDG 8.6.1 custodian series with improving annual updates; sex disaggregation adds optional feature dimension.",
+    "trends": [
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "NEET youth are the empirically documented mobilisation base for large protest waves; the rate directly measures idle-youth grievance density."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "High NEET rates expand the pool available for insurgent recruitment; cross-national studies find NEET a significant onset predictor after controlling for poverty."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "NEET is a structural labour-market inequality measure that complements income Gini; captures the non-monetary exclusion dimension of poverty crises."
+      },
+      {
+        "trend_id": "labor_action",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "High NEET signals labour-market dysfunction that politically activates both excluded youth and incumbent workers facing wage competition from informal labour."
+      },
+      {
+        "trend_id": "terrorist_attack",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "Marginal signal: NEET is associated with domestic radicalisation pathways but the link is conditional on ideology and state capacity, reducing direct lift."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_NS_DEATHS_BEST",
+    "why": "Non-state conflict deaths — between communal, militia, or clan groups without government involvement — are analytically distinct from state-based war and one-sided violence, capturing sub-state societal breakdown and inter-group competition that can precede or outlast formal armed conflict. As a country-year aggregate it measures the ambient level of armed factional violence, a key signal for ethnic conflict and state-fragility trends.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "UCDP GED non-state coverage from 1989; limited to countries with recorded non-state events; zero-event countries implicitly 0 but require explicit coding in feature construction; Africa and Asia best covered.",
+    "trends": [
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "High",
+        "lift_pct": "+12-20%",
+        "reason": "Non-state conflicts are predominantly communal and ethnic in UCDP taxonomy; this indicator is essentially a direct measurement of the outcome event category."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Non-state violence often precedes state-based war escalation or persists in conflict periphery; adds a leading or co-occurring armed-violence dimension."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "High non-state death counts signal societal breakdown and civilian exposure to violence that defines humanitarian emergency thresholds."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-9%",
+        "reason": "Non-state deaths are a core component of political violence; the metric disaggregates the violence portfolio beyond government-involved events."
+      },
+      {
+        "trend_id": "resource_conflict",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-5%",
+        "reason": "Resource-dispute fatalities among non-state actors (pastoralists, mining militias) are captured here but are a minority of non-state deaths overall."
+      }
+    ]
+  }
+]
