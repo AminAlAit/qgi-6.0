@@ -126,24 +126,6 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "IDMC_DIS_HAZ_FLOOD",
-  "provider": "IDMC",
-  "category": "Environment",
-  "votes": 5,
-  "name": "Disaster Displacement — Flood-Related New Displacements (annual)",
-  "note": "New displacements caused specifically by flood events; disaggregated hazard type from IDMC /aggregated/disaster_data/",
-  "license": "CC BY 4.0"
- },
- {
-  "code": "IDMC_DIS_HAZ_STORM",
-  "provider": "IDMC",
-  "category": "Environment",
-  "votes": 5,
-  "name": "Disaster Displacement — Storm-Related New Displacements (annual)",
-  "note": "New displacements from storm/cyclone events; extreme weather fragility signal disaggregated by hazard",
-  "license": "CC BY 4.0"
- },
- {
   "code": "SDGB-012",
   "provider": "FAOSTAT",
   "category": "Environment",
@@ -177,15 +159,6 @@
   "votes": 6,
   "name": "Legislature Opposition Parties Operate Freely",
   "note": "Opposition parties operate freely in legislature",
-  "license": "CC BY 4.0"
- },
- {
-  "code": "OWID_WJPRULEOFLAW",
-  "provider": "OWID",
-  "category": "Governance",
-  "votes": 6,
-  "name": "World Justice Project Rule of Law Index (Overall)",
-  "note": "WJP Rule of Law Index; 0-1 scale (1=strongest); OWID-hosted; covers constraints on government, no corruption, open government, fundamental rights, order & security, regulatory enforcement, civil/criminal justice",
   "license": "CC BY 4.0"
  },
  {
@@ -312,15 +285,6 @@
   "votes": 6,
   "name": "Droughts, floods, extreme temperatures (% of population, average 1990-2009)",
   "note": "Climate disaster exposure; climate fragility baseline",
-  "license": "CC BY 4.0"
- },
- {
-  "code": "IDMC_CONF_STOCK",
-  "provider": "IDMC",
-  "category": "Social",
-  "votes": 6,
-  "name": "Conflict IDP Stock (end-year total)",
-  "note": "Total people living in conflict-induced internal displacement at year-end; headline fragility and crisis duration indicator",
   "license": "CC BY 4.0"
  },
  {
@@ -540,24 +504,6 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "IDMC_CONF_NEW_DISP",
-  "provider": "IDMC",
-  "category": "Social",
-  "votes": 7,
-  "name": "Conflict New Displacements (annual flow)",
-  "note": "New internal displacement movements triggered by conflict/violence in the year; a person displaced twice counted twice — flow measure",
-  "license": "CC BY 4.0"
- },
- {
-  "code": "IDMC_CONF_YEARS_CONSECUTIVE",
-  "provider": "IDMC",
-  "category": "Other",
-  "votes": 7,
-  "name": "Years in Consecutive Conflict Displacement (derived from IDMC stock series)",
-  "note": "Count of consecutive years with conflict IDP stock > 0; protracted displacement duration, chronicity indicator",
-  "license": "CC BY 4.0"
- },
- {
   "code": "OWID_STATECAP_COERCE",
   "provider": "OWID",
   "category": "Military",
@@ -594,15 +540,6 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "IDMC_CONF_STOCK_POP",
-  "provider": "IDMC",
-  "category": "Social",
-  "votes": 8,
-  "name": "Conflict IDP Stock per 1,000 Population (normalized)",
-  "note": "Conflict IDP stock normalized by population; intensity-adjusted internal displacement burden",
-  "license": "CC BY 4.0"
- },
- {
   "code": "v2svstterr",
   "provider": "V-Dem",
   "category": "Government",
@@ -621,15 +558,6 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "OWID_PRESSFREEDOM",
-  "provider": "OWID",
-  "category": "Governance",
-  "votes": 8,
-  "name": "Press Freedom Index (RSF)",
-  "note": "Reporters Without Borders Press Freedom Index; 0-100 (100=most free); OWID-hosted; media environment signal",
-  "license": "CC BY 4.0"
- },
- {
   "code": "MS.MIL.XPND.ZS",
   "provider": "WB",
   "category": "Military",
@@ -645,24 +573,6 @@
   "votes": 8,
   "name": "Extractive State Capacity (Hanson & Sigman)",
   "note": "Sub-dimension: government ability to raise sustainable revenues (tax+non-tax); 177 countries 1960-2015",
-  "license": "CC BY 4.0"
- },
- {
-  "code": "OWID_WJPRULEOFLAW_CORR",
-  "provider": "OWID",
-  "category": "Governance",
-  "votes": 8,
-  "name": "WJP Rule of Law — Absence of Corruption",
-  "note": "Sub-index of WJP RoL measuring corruption absence in executive, judiciary, police, military; 0-1",
-  "license": "CC BY 4.0"
- },
- {
-  "code": "OWID_MILSPEND_SIPRI",
-  "provider": "OWID",
-  "category": "Military",
-  "votes": 8,
-  "name": "Military Spending (% GDP, SIPRI)",
-  "note": "Military expenditure as % GDP; SIPRI (CC BY 4.0) via OWID; defence burden and conflict orientation signal",
   "license": "CC BY 4.0"
  },
  {
@@ -798,24 +708,6 @@
   "votes": 8,
   "name": "Prevalence of population unable to afford a healthy diet (% population)",
   "note": "Share unable to afford CoHD; demand-side food access gap with income distribution component.",
-  "license": "CC BY 4.0"
- },
- {
-  "code": "IDMC_TOTAL_DISP_GDP_RATIO",
-  "provider": "IDMC",
-  "category": "Economic",
-  "votes": 8,
-  "name": "Total Displaced Persons to GDP Ratio (derived, IDMC stock / WB GDP)",
-  "note": "IDP stock relative to economic size; economic displacement burden signal independent of population scale",
-  "license": "CC BY 4.0"
- },
- {
-  "code": "IDMC_DIS_NEW_DISP_POP",
-  "provider": "IDMC",
-  "category": "Social",
-  "votes": 8,
-  "name": "Disaster New Displacements per 1,000 Population (normalized)",
-  "note": "Disaster displacement flow normalized by population; disaster vulnerability intensity metric",
   "license": "CC BY 4.0"
  },
  {
@@ -1017,24 +909,6 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "IDMC_CONF_NEW_DISP_POP",
-  "provider": "IDMC",
-  "category": "Social",
-  "votes": 8,
-  "name": "Conflict New Displacements per 1,000 Population (normalized)",
-  "note": "Conflict-induced new displacements normalized by population; cross-country comparability for ML features",
-  "license": "CC BY 4.0"
- },
- {
-  "code": "IDMC_TOTAL_NEW_DISP",
-  "provider": "IDMC",
-  "category": "Social",
-  "votes": 8,
-  "name": "Total New Displacements (conflict + disaster, annual flow)",
-  "note": "Combined new displacement movements from all causes; aggregate mobility-shock signal for ML",
-  "license": "CC BY 4.0"
- },
- {
   "code": "UNHCR_REF_COO",
   "provider": "UNHCR",
   "category": "Social",
@@ -1050,24 +924,6 @@
   "votes": 8,
   "name": "Stateless Persons (end-year stock)",
   "note": "Count of persons without any nationality; indicator of ethnic/citizenship discrimination and governance failure",
-  "license": "CC BY 4.0"
- },
- {
-  "code": "OWID_TERRORISM_ATTACKS",
-  "provider": "OWID",
-  "category": "Other",
-  "votes": 8,
-  "name": "Terrorist Attacks (count, GTD)",
-  "note": "Annual count of terrorist incidents; GTD via OWID; terrorism frequency and instability signal",
-  "license": "CC BY 4.0"
- },
- {
-  "code": "OWID_WJPRULEOFLAW_ORDER",
-  "provider": "OWID",
-  "category": "Governance",
-  "votes": 8,
-  "name": "WJP Rule of Law — Order and Security",
-  "note": "Sub-index measuring crime control, civil conflict absence, violence against civilians; 0-1",
   "license": "CC BY 4.0"
  },
  {
@@ -1260,12 +1116,173 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "OWID_TERRORISM_DEATHS",
-  "provider": "OWID",
+  "code": "UNHCR_IDP",
+  "provider": "UNHCR",
+  "category": "Social",
+  "votes": 8,
+  "name": "Internally Displaced Persons (UNHCR-reported, end-year stock)",
+  "note": "UNHCR's own IDP stock estimates (separate from IDMC); measures internal displacement in countries UNHCR has operational mandate",
+  "license": "CC BY 4.0",
+  "replaces_signal": "displacement"
+ },
+ {
+  "code": "v2jucorrdc",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Judicial Corruption in Decision-Making",
+  "note": "V-Dem v2jucorrdc — country-year political indicator",
+  "license": "CC BY 4.0",
+  "replaces_signal": "rule-of-law/corruption"
+ },
+ {
+  "code": "v2meslfcen",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Media Self-Censorship",
+  "note": "Journalist self-censorship due to political pressure",
+  "license": "CC BY 4.0",
+  "replaces_signal": "press-freedom"
+ },
+ {
+  "code": "UNHCR_IDP_CHANGE_RATE",
+  "provider": "UNHCR",
+  "category": "Social",
+  "votes": 8,
+  "name": "UNHCR IDP Stock Annual Change Rate (%, derived)",
+  "note": "Percentage change in UNHCR-reported IDP stock year-on-year; acceleration of displacement crisis or recovery signal",
+  "license": "CC BY 4.0",
+  "replaces_signal": "displacement"
+ },
+ {
+  "code": "UCDP_GED_OS_EVENTS",
+  "provider": "UCDP",
   "category": "Other",
   "votes": 8,
-  "name": "Terrorism Deaths (count, GTD)",
-  "note": "Annual deaths from terrorist attacks; Global Terrorism Database (START/GTD) via OWID; political violence signal",
-  "license": "CC BY 4.0"
+  "name": "GED One-Sided Violence Events Count (country-year aggregate)",
+  "note": "Count of georeferenced one-sided violence events; civilian targeting frequency, atrocity event density",
+  "license": "CC BY 4.0",
+  "replaces_signal": "terrorism/violence"
+ },
+ {
+  "code": "MS.MIL.XPND.CN",
+  "provider": "WB",
+  "category": "Military",
+  "votes": 8,
+  "name": "Military expenditure (current LCU)",
+  "note": "Nominal military spending; defence budget context",
+  "license": "CC BY 4.0",
+  "replaces_signal": "military-spending"
+ },
+ {
+  "code": "v2cltrnslw",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Transparent Laws with Predictable Enforcement",
+  "note": "Laws publicly known and consistently applied",
+  "license": "CC BY 4.0",
+  "replaces_signal": "rule-of-law"
+ },
+ {
+  "code": "v2mebias",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Media Bias (Pro-Government)",
+  "note": "Systematic pro-government bias in mainstream media",
+  "license": "CC BY 4.0",
+  "replaces_signal": "press-freedom"
+ },
+ {
+  "code": "v2merange",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Print and Broadcast Media Perspectives Diversity",
+  "note": "Diversity of political perspectives in media",
+  "license": "CC BY 4.0",
+  "replaces_signal": "press-freedom"
+ },
+ {
+  "code": "UCDP_GED_NS_EVENTS",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 8,
+  "name": "GED Non-State Violence Events Count (country-year aggregate)",
+  "note": "Count of georeferenced non-state conflict events in country-year; communal violence frequency signal",
+  "license": "CC BY 4.0",
+  "replaces_signal": "terrorism/violence"
+ },
+ {
+  "code": "v2clrspct",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Rigorous and Impartial Public Administration",
+  "note": "Impartial professional public administration",
+  "license": "CC BY 4.0",
+  "replaces_signal": "rule-of-law/order-security"
+ },
+ {
+  "code": "UCDP_GED_GEOREGION_SPREAD",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 8,
+  "name": "GED Geographic Spread (count of distinct ADM1 regions with events, country-year)",
+  "note": "Number of distinct first-level administrative regions with GED events; spatial diffusion of conflict, territorial control signal",
+  "license": "CC BY 4.0",
+  "replaces_signal": "terrorism/violence"
+ },
+ {
+  "code": "v2jucnind",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 7,
+  "name": "Lower Court Independence",
+  "note": "V-Dem v2jucnind — country-year political indicator",
+  "license": "CC BY 4.0",
+  "replaces_signal": "rule-of-law/judicial"
+ },
+ {
+  "code": "v2juhccomp",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 7,
+  "name": "Compliance with High Court",
+  "note": "V-Dem v2juhccomp — country-year political indicator",
+  "license": "CC BY 4.0",
+  "replaces_signal": "rule-of-law/judicial"
+ },
+ {
+  "code": "UCDP_OS_ACTOR_COUNT",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 5,
+  "name": "Number of Active One-Sided Violence Actors (country-year)",
+  "note": "Count of distinct actors committing one-sided violence in country-year; plurality of targeting actors, repression breadth",
+  "license": "CC BY 4.0",
+  "replaces_signal": "terrorism/violence"
+ },
+ {
+  "code": "v2exthftps",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 4,
+  "name": "Public Sector Theft",
+  "note": "V-Dem v2exthftps — country-year political indicator",
+  "license": "CC BY 4.0",
+  "replaces_signal": "rule-of-law/corruption"
+ },
+ {
+  "code": "v2juaccnt",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 3,
+  "name": "Judicial Accountability Mechanisms",
+  "note": "Mechanisms for holding judiciary accountable",
+  "license": "CC BY 4.0",
+  "replaces_signal": "rule-of-law/judicial-accountability"
  }
 ]

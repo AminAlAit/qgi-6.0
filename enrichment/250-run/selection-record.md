@@ -16,7 +16,7 @@
 
 **Agreement (genuine consensus):** 77 unanimous (8/8) · 28 at 7/8 · 19 at 6/8 · 10 at 5/8 · 7 at 4/8. **124 of 141 (88%) carry ≥6-of-8 agreement.**
 
-**Providers:** V-Dem 45 · WB 26 · UCDP 16 · OWID 15 · IDMC 10 · UNHCR 9 · FAOSTAT 8 · ILOSTAT 8 · UNDP 4. **OECD 0** — panel deliberately excluded it (≈38-country coverage fails the global coverage gate; WB/OWID surrogates cover the same signals with full panels).
+**Providers (original pre-audit selection):** V-Dem 45 · WB 26 · UCDP 16 · OWID 15 · IDMC 10 · UNHCR 9 · FAOSTAT 8 · ILOSTAT 8 · UNDP 4. **OECD 0** — panel deliberately excluded it (≈38-country coverage fails the global coverage gate). **→ After the 2026-06-26 license audit (see addendum), the live 141 is: V-Dem 55 · WB 27 · UCDP 20 · UNHCR 11 · FAOSTAT 8 · OWID 8 · ILOSTAT 8 · UNDP 4 · IDMC 0.**
 
 **Categories:** Governance 56 · Social 31 · conflict-deaths (“Other”) 14 · Economic 12 · Government 8 · Environment 6 · Military 4 · Finance 4 · Trade 3 · Demographic 2 · Health 1.
 
@@ -35,3 +35,13 @@
 ## Next
 
 Founder decision on the 141 (accept / rebalance / review via the `catalog/` page) → load into `qgi-data/registries/candidate-registry.json` (held-WB flip `hold→process`; new picks add as `vetted`) → push 7 fetcher images → fetch → vet + challenger-gate → te-fleet-run-3 → Majles top-40 prefilter ruling.
+
+## License audit + backfill (2026-06-26)
+
+A post-selection COMMERCIAL-license audit (QGI is sold commercially) found the original enumeration had mis-tagged some licenses. Verified against official sources:
+
+- **DROPPED 17 (non-commercial / proprietary):** IDMC x10 (CC BY-NC-SA 3.0 IGO, confirmed in the IDMC API schema); OWID x7 whose underlying sources are proprietary/NC -- SIPRI (military spend), GTD/START x2 (terrorism), WJP x3 (rule of law), RSF (press freedom).
+- **KEPT (verified commercial-OK):** WB, UCDP, ILOSTAT, UNHCR, UNDP (CC BY / CC BY-IGO); FAOSTAT (CC BY 4.0 -- the "commercial promotion" clause bars advertising, not feature-use); V-Dem (official FAQ: "open source and free for anyone to use, no permission needed" -- already in production; a formal written OK is advisable since V-Dem does not stamp a CC version); OWID-clean x8 (V-Dem / UN / Hanson-Sigman sources).
+- **BACKFILLED 17** via the same 8-persona panel from a license-clean pool (1,370 candidates; WB/V-Dem/FAOSTAT/ILOSTAT/UCDP/UNHCR/UNDP only), covering every lost signal: displacement -> UNHCR x2; rule-of-law/corruption -> V-Dem x7; press freedom -> V-Dem x3; terrorism/violence -> UCDP x4; military spend -> WB x1. 12 of 17 unanimous.
+
+Net count still 141, now all commercial-license-clean. Registry: the 17 dropped -> `quarantined` (reason: license); the 17 backfill -> `vetted`. Sources: V-Dem FAQ, FAOSTAT db-terms-of-use, IDMC API #copyright.
