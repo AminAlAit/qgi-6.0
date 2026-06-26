@@ -1,0 +1,172 @@
+[
+ {
+  "code": "UNHCR_IDP",
+  "provider": "UNHCR",
+  "category": "Social",
+  "votes": 8,
+  "name": "Internally Displaced Persons (UNHCR-reported, end-year stock)",
+  "note": "UNHCR's own IDP stock estimates (separate from IDMC); measures internal displacement in countries UNHCR has operational mandate",
+  "license": "CC BY 4.0",
+  "replaces_signal": "displacement"
+ },
+ {
+  "code": "v2jucorrdc",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Judicial Corruption in Decision-Making",
+  "note": "V-Dem v2jucorrdc — country-year political indicator",
+  "license": "CC BY 4.0",
+  "replaces_signal": "rule-of-law/corruption"
+ },
+ {
+  "code": "v2meslfcen",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Media Self-Censorship",
+  "note": "Journalist self-censorship due to political pressure",
+  "license": "CC BY 4.0",
+  "replaces_signal": "press-freedom"
+ },
+ {
+  "code": "UNHCR_IDP_CHANGE_RATE",
+  "provider": "UNHCR",
+  "category": "Social",
+  "votes": 8,
+  "name": "UNHCR IDP Stock Annual Change Rate (%, derived)",
+  "note": "Percentage change in UNHCR-reported IDP stock year-on-year; acceleration of displacement crisis or recovery signal",
+  "license": "CC BY 4.0",
+  "replaces_signal": "displacement"
+ },
+ {
+  "code": "UCDP_GED_OS_EVENTS",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 8,
+  "name": "GED One-Sided Violence Events Count (country-year aggregate)",
+  "note": "Count of georeferenced one-sided violence events; civilian targeting frequency, atrocity event density",
+  "license": "CC BY 4.0",
+  "replaces_signal": "terrorism/violence"
+ },
+ {
+  "code": "MS.MIL.XPND.CN",
+  "provider": "WB",
+  "category": "Military",
+  "votes": 8,
+  "name": "Military expenditure (current LCU)",
+  "note": "Nominal military spending; defence budget context",
+  "license": "CC BY 4.0",
+  "replaces_signal": "military-spending"
+ },
+ {
+  "code": "v2cltrnslw",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Transparent Laws with Predictable Enforcement",
+  "note": "Laws publicly known and consistently applied",
+  "license": "CC BY 4.0",
+  "replaces_signal": "rule-of-law"
+ },
+ {
+  "code": "v2mebias",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Media Bias (Pro-Government)",
+  "note": "Systematic pro-government bias in mainstream media",
+  "license": "CC BY 4.0",
+  "replaces_signal": "press-freedom"
+ },
+ {
+  "code": "v2merange",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Print and Broadcast Media Perspectives Diversity",
+  "note": "Diversity of political perspectives in media",
+  "license": "CC BY 4.0",
+  "replaces_signal": "press-freedom"
+ },
+ {
+  "code": "UCDP_GED_NS_EVENTS",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 8,
+  "name": "GED Non-State Violence Events Count (country-year aggregate)",
+  "note": "Count of georeferenced non-state conflict events in country-year; communal violence frequency signal",
+  "license": "CC BY 4.0",
+  "replaces_signal": "terrorism/violence"
+ },
+ {
+  "code": "v2clrspct",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 8,
+  "name": "Rigorous and Impartial Public Administration",
+  "note": "Impartial professional public administration",
+  "license": "CC BY 4.0",
+  "replaces_signal": "rule-of-law/order-security"
+ },
+ {
+  "code": "UCDP_GED_GEOREGION_SPREAD",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 8,
+  "name": "GED Geographic Spread (count of distinct ADM1 regions with events, country-year)",
+  "note": "Number of distinct first-level administrative regions with GED events; spatial diffusion of conflict, territorial control signal",
+  "license": "CC BY 4.0",
+  "replaces_signal": "terrorism/violence"
+ },
+ {
+  "code": "v2jucnind",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 7,
+  "name": "Lower Court Independence",
+  "note": "V-Dem v2jucnind — country-year political indicator",
+  "license": "CC BY 4.0",
+  "replaces_signal": "rule-of-law/judicial"
+ },
+ {
+  "code": "v2juhccomp",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 7,
+  "name": "Compliance with High Court",
+  "note": "V-Dem v2juhccomp — country-year political indicator",
+  "license": "CC BY 4.0",
+  "replaces_signal": "rule-of-law/judicial"
+ },
+ {
+  "code": "UCDP_OS_ACTOR_COUNT",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": 5,
+  "name": "Number of Active One-Sided Violence Actors (country-year)",
+  "note": "Count of distinct actors committing one-sided violence in country-year; plurality of targeting actors, repression breadth",
+  "license": "CC BY 4.0",
+  "replaces_signal": "terrorism/violence"
+ },
+ {
+  "code": "v2exthftps",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 4,
+  "name": "Public Sector Theft",
+  "note": "V-Dem v2exthftps — country-year political indicator",
+  "license": "CC BY 4.0",
+  "replaces_signal": "rule-of-law/corruption"
+ },
+ {
+  "code": "v2juaccnt",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": 3,
+  "name": "Judicial Accountability Mechanisms",
+  "note": "Mechanisms for holding judiciary accountable",
+  "license": "CC BY 4.0",
+  "replaces_signal": "rule-of-law/judicial-accountability"
+ }
+]
