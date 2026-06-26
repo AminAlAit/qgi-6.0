@@ -1,29 +1,54 @@
-"""ILOSTAT SDMX fetcher (enrichment stage 2).
+"""ILOSTAT SDMX fetcher (enrichment stage 2) — spec-driven.
 
-One Fargate task per IL-xx indicator (dispatcher sends INDICATOR_ID). Pulls the
-ILOSTAT SDMX REST API (sdmx.ilo.org/rest/, no auth, CC BY 4.0), aggregates to
-(canonical country, year, value), and hands the frame to the shared base which
-writes parquet-completed + DDB + tracker + counter.
+One Fargate task per IL-xx indicator (dispatcher sends INDICATOR_ID or
+INDICATORS_JSON).  Pulls the ILOSTAT SDMX REST API (sdmx.ilo.org/rest/,
+no auth, CC BY 4.0), aggregates to (canonical country, year, value), and
+hands the frame to the shared base which writes parquet-completed + DDB +
+tracker + counter.
 
-Country codes in ILOSTAT SDMX are ISO alpha-3 (REF_AREA dimension) -> mapped to
-canonical name_1 via the shared country-m49-map (iso_alpha3 column).
+SPEC-DRIVEN DESIGN
+------------------
+All indicator definitions live in src/specs.json (baked into the image).
+Each entry has:
+  code            : canonical indicator id (IL-01 … IL-22+)
+  dataflow        : ILOSTAT dataset ID  (without the "ILO,DF_" prefix)
+  key             : dot-separated SDMX key; empty segment = wildcard
+  is_derived      : bool — if true the indicator is computed from 1-2 base series
+  derivation      : (derived only) dict describing the computation:
+                    type = "ratio" | "annual_change" | "per1000" | "binary"
+  dataflow_numerator / key_numerator  : (ratio) numerator fetch
+  dataflow_denominator / key_denominator : (ratio) denominator fetch
+  dataflow_base / key_base            : (annual_change / per1000 / binary) base fetch
 
-SDMX data URL pattern:
+Adding a new indicator = edit specs.json + rebuild the image.  No Python changes
+needed for standard non-derived indicators.
+
+COUNTRY CODES
+-------------
+ILOSTAT SDMX uses ISO alpha-3 in the REF_AREA dimension → mapped to canonical
+name_1 via the shared country-m49-map (iso_alpha3 column).
+
+SDMX URL PATTERN
+----------------
   https://sdmx.ilo.org/rest/data/ILO,DF_<DATAFLOW>,1.0/<KEY>
-  where KEY = dot-separated dimension values in DSD order; empty segment = wildcard.
+  (pandasdmx constructs this automatically from dataflow + key)
 
-For each indicator we select the "total" dimension slice that collapses
-SEX/AGE/CLASSIF breakdowns, keeping only [REF_AREA, TIME_PERIOD, OBS_VALUE].
-The library used is pandasdmx (sdmx1 on PyPI), imported lazily inside
-fetch_ilostat_raw so the module loads cleanly under test without it installed.
+DIMENSION-KEY CONVENTIONS (ILOSTAT)
+------------------------------------
+  _T / SEX_T              = total (both sexes)
+  AGE_AGGREGATE_TOTAL     = all ages
+  ECO_AGGREGATE_TOTAL     = all industries
+  NOC                     = no classification (single-dim datasets)
+  DUR_GE12M               = duration >=12 months
 
 NOTE: dataflow IDs and dimension keys were confirmed via DBnomics ILO catalogue
-and SDMX REST endpoint listing 2026-06-25.  Run ONE live smoke per indicator on
+and SDMX REST endpoint listing 2026-06-26.  Run ONE live smoke per indicator on
 AWS before production to confirm field names (the parse logic is unit-tested
 against a representative synthetic payload matching the pandasdmx Series index).
 """
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 from typing import Any
@@ -39,194 +64,55 @@ ILO_BASE = "https://sdmx.ilo.org/rest"
 YEAR_FROM = 1990
 
 # ---------------------------------------------------------------------------
-# SPECS dict: id_string -> SDMX fetch config
-#
-# Fields:
-#   dataflow  : ILOSTAT dataset ID (without the "ILO,DF_" prefix that pandasdmx adds)
-#   key       : dot-separated dimension key in DSD order; empty segment = wildcard;
-#               order follows each dataset's DSD (REF_AREA first, then
-#               provider-specific classification dims, then SEX / AGE / etc.)
-#   value_col : pandasdmx obs attribute or the default "value" - always "value" after
-#               to_pandas() since we read the OBS_VALUE series.
-#   agg       : aggregation for annual output when source is already annual ("mean"
-#               is a no-op on annual but safe for any quarterly/monthly source)
-#   notes     : human-readable description + confirmed source
-#
-# Dimension-key conventions (ILOSTAT):
-#   _T / SEX_T       = total (both sexes)
-#   AGE_AGGREGATE_TOTAL = all ages aggregate
-#   ECO_AGGREGATE_TOTAL = all industries aggregate
-#   NOC              = no classification (single-dim indicators)
-#
-# DSD dimension order (most datasets):
-#   REF_AREA . FREQ . TIME_PERIOD is implicit in SDMX;
-#   remaining dims in DSD order follow the dataset's codelist.
+# Load specs.json — baked alongside this script in the image.
+# The dict is keyed by 'code' for O(1) lookup at task runtime.
+# ---------------------------------------------------------------------------
+_SPECS_PATH = Path(__file__).resolve().parent / "specs.json"
+
+
+def _load_specs() -> dict[str, dict[str, Any]]:
+    with open(_SPECS_PATH, encoding="utf-8") as fh:
+        entries = json.load(fh)
+    return {e["code"]: e for e in entries}
+
+
+# SPECS is module-level so tests can inspect it without re-parsing each time.
+SPECS: dict[str, dict[str, Any]] = _load_specs()
+
+
+# ---------------------------------------------------------------------------
+# Raw SDMX fetch (pandasdmx / sdmx1, lazy import)
 # ---------------------------------------------------------------------------
 
-SPECS: dict[str, dict[str, Any]] = {
-    # IL-01: Informality rate — SDG 8.3.1 proxy
-    # Dataset: SDG_0831_SEX_ECO_RT (Proportion of informal employment in total
-    # employment by sex and sector, %)
-    # Key dims: REF_AREA . SOURCE . ECO . SEX . FREQ
-    # We take total economy (ECO_AGGREGATE_TOTAL) + both sexes (SEX_T)
-    "IL-01": {
-        "dataflow": "SDG_0831_SEX_ECO_RT",
-        "key": ".A.ECO_AGGREGATE_TOTAL.SEX_T",  # REF_AREA wildcard, annual, total sector, total sex
-        "notes": "Informal employment % total employment (SDG 8.3.1). Confirmed: DBnomics ILO/SDG_0831_SEX_ECO_RT",
-    },
-    # IL-02: Labour income share of GDP — SDG 10.4.1
-    # Dataset: SDG_1041_NOC_RT (Labour income share as a % of GDP)
-    # This is a single-dim indicator (NOC = no classification beyond country)
-    "IL-02": {
-        "dataflow": "SDG_1041_NOC_RT",
-        "key": ".A.",  # REF_AREA wildcard, annual, NOC wildcard
-        "notes": "Labour income share of GDP % (SDG 10.4.1). Source: ILOEST modelled estimates.",
-    },
-    # IL-03: Mean real wage growth — ILO Global Wage Report indicator
-    # Dataset: WAG_INXM_NOC_NB (Mean nominal monthly earnings of employees, local currency)
-    # NB: ILOSTAT does not publish a direct real-wage-growth series in SDMX;
-    # we use the nominal mean wages annual index as the closest available series.
-    # For a real-growth rate a deflator would be needed; flag in notes.
-    "IL-03": {
-        "dataflow": "WAG_INXM_NOC_NB",
-        "key": ".A.ECO_AGGREGATE_TOTAL.SEX_T",  # total industry, total sex, annual
-        "notes": (
-            "Mean nominal monthly earnings, total economy (proxy for wage level / growth). "
-            "Dataset: WAG_INXM_NOC_NB. Real-wage-growth rate requires CPI deflation "
-            "which is not applied here — value is level in local currency."
-        ),
-    },
-    # IL-04: Working poverty rate (<$2.15/day) — SDG 1.1.1
-    # Dataset: SDG_0111_SEX_AGE_RT (Proportion of employed living below poverty line)
-    # Key dims: REF_AREA . SOURCE . AGE . SEX . FREQ
-    "IL-04": {
-        "dataflow": "SDG_0111_SEX_AGE_RT",
-        "key": ".A.AGE_YTHADULT_YGE15.SEX_T",  # 15+ workers, both sexes, annual
-        "notes": (
-            "Working poverty rate % (<$2.15/day, SDG 1.1.1). "
-            "Dataset: SDG_0111_SEX_AGE_RT. Confirmed: Rilostat docs."
-        ),
-    },
-    # IL-05: Unemployment rate (tertiary education) — from unemployment by education
-    # Dataset: UNE_2UNE_SEX_EDU_RT (Unemployment rate by sex and education)
-    # Key dims: REF_AREA . SOURCE . EDU . SEX . FREQ
-    # EDU_AGGREGATE_TERTIARY = tertiary education (ISCED 5-8)
-    "IL-05": {
-        "dataflow": "UNE_2UNE_SEX_EDU_RT",
-        "key": ".A.EDU_AGGREGATE_TERTIARY.SEX_T",  # tertiary ed, total sex, annual
-        "notes": (
-            "Unemployment rate for tertiary-educated persons (%). "
-            "Dataset: UNE_2UNE_SEX_EDU_RT. EDU_AGGREGATE_TERTIARY = ISCED 5-8."
-        ),
-    },
-    # IL-06: Gender wage gap — SDG 8.5.1 proxy
-    # Dataset: SDG_0851_SEX_OCU_NB (Average hourly earnings by sex, local currency)
-    # We compute the gap ourselves: (male - female) / male * 100
-    # or pull the pre-computed gap if available. ILOSTAT publishes this series
-    # directly as the gender pay gap %. Use EAR_4MTH_SEX_ECO_CUR_NB and compute,
-    # or use SDG_0851 disaggregated by SEX_M and SEX_F.
-    # For simplicity we pull the SDG series and take OCU_ISCO08_TOTAL, both sexes.
-    # The value field for both-sex average hourly earnings (not a gap) is returned;
-    # note this is a wage level not a gap — flag appropriately.
-    "IL-06": {
-        "dataflow": "SDG_0851_SEX_OCU_NB",
-        "key": ".A.OCU_ISCO08_TOTAL.SEX_T",  # all occupations, total sex
-        "notes": (
-            "Average hourly earnings total (proxy; gender gap = male-female differential). "
-            "Dataset: SDG_0851_SEX_OCU_NB. For a true gap metric pull SEX_M and SEX_F "
-            "and compute (M-F)/M*100 — not done here to avoid multi-series fetch complexity."
-        ),
-    },
-    # IL-07: Excess hours (>48h/wk share of employed)
-    # Dataset: HOW_XEES_SEX_ECO_NB (Employed persons working more than 48 hours/week
-    # by sex and economic activity, thousands)
-    # Key dims: REF_AREA . SOURCE . ECO . SEX . FREQ
-    "IL-07": {
-        "dataflow": "HOW_XEES_SEX_ECO_NB",
-        "key": ".A.ECO_AGGREGATE_TOTAL.SEX_T",  # total industry, total sex, annual
-        "notes": (
-            "Employed persons working >48h/week (thousands, total economy). "
-            "Dataset: HOW_XEES_SEX_ECO_NB. "
-            "Note: absolute count, not rate — divide by total employment for a rate."
-        ),
-    },
-    # IL-08: Social protection coverage
-    # Dataset: SDG_0131_SEX_SOC_RT (Proportion of population covered by social
-    # protection floors/systems, %)
-    # Key dims: REF_AREA . SOURCE . SOC . SEX . FREQ
-    # SOC_AGGREGATE_ATLEAST1 = covered by at least one benefit
-    "IL-08": {
-        "dataflow": "SDG_0131_SEX_SOC_RT",
-        "key": ".A.SOC_AGGREGATE_ATLEAST1.SEX_T",  # at-least-one benefit, total sex
-        "notes": (
-            "Social protection coverage: % population covered by at least one benefit (SDG 1.3.1). "
-            "Dataset: SDG_0131_SEX_SOC_RT. Confirmed: DBnomics ILO/SDG_0131_SEX_SOC_RT."
-        ),
-    },
-    # IL-09: Social protection expenditure % GDP
-    # Dataset: SOC_EXPR_NOC_RT (Social protection expenditure as % of GDP)
-    # This is from the ILO World Social Protection Report database.
-    "IL-09": {
-        "dataflow": "SOC_EXPR_NOC_RT",
-        "key": ".A.",  # REF_AREA wildcard, annual, NOC wildcard
-        "notes": (
-            "Social protection expenditure as % of GDP. "
-            "Dataset: SOC_EXPR_NOC_RT. Source: ILO World Social Protection Report DB."
-        ),
-    },
-    # IL-10: Long-term unemployment (12m+) rate
-    # Dataset: UNE_TUNE_SEX_AGE_DUR_NB (Unemployment by sex, age and duration, thousands)
-    # We filter duration DUR_GE12M (12 months or more) and all ages, total sex.
-    # Key dims: REF_AREA . SOURCE . AGE . SEX . DUR . FREQ
-    "IL-10": {
-        "dataflow": "UNE_TUNE_SEX_AGE_DUR_NB",
-        "key": ".A.AGE_AGGREGATE_TOTAL.SEX_T.DUR_GE12M",  # total age, total sex, 12m+
-        "notes": (
-            "Long-term unemployed (12m+), thousands. "
-            "Dataset: UNE_TUNE_SEX_AGE_DUR_NB. DUR_GE12M = duration >=12 months. "
-            "Confirmed: fgeerolf.com/data/ilo/UNE_TUNE_SEX_AGE_DUR_NB_A.html."
-        ),
-    },
-    # IL-11: Youth NEET rate
-    # Dataset: EES_TNEE_SEX_AGE_RT (Share of youth not in employment, education or
-    # training by sex and age, %) — ILO modelled estimates
-    # Key dims: REF_AREA . SOURCE . AGE . SEX . FREQ
-    "IL-11": {
-        "dataflow": "EES_TNEE_SEX_AGE_RT",
-        "key": ".A.AGE_YTHADULT_Y15-24.SEX_T",  # 15-24 youth, total sex, annual
-        "notes": (
-            "Youth NEET rate % (15-24, not in employment/education/training). "
-            "Dataset: EES_TNEE_SEX_AGE_RT. Source: ILO modelled estimates."
-        ),
-    },
-    # IL-12: Manufacturing employment share
-    # Dataset: EMP_TEMP_SEX_ECO_NB (Employment by sex and economic activity, thousands)
-    # We pull manufacturing sector (ECO_AGGREGATE_MAN) and divide by total employment.
-    # For simplicity return manufacturing employment in thousands; caller can normalise.
-    "IL-12": {
-        "dataflow": "EMP_TEMP_SEX_ECO_NB",
-        "key": ".A.ECO_AGGREGATE_MAN.SEX_T",  # manufacturing, total sex, annual
-        "notes": (
-            "Employment in manufacturing (thousands). "
-            "Dataset: EMP_TEMP_SEX_ECO_NB. ECO_AGGREGATE_MAN = ISIC C. "
-            "Confirmed: DBnomics ILO/EMP_TEMP_SEX_ECO_NB."
-        ),
-    },
-    # IL-13: Strikes & lockouts — days not worked per 1000 workers
-    # Dataset: ILR_STR_NOC_RT (Days not worked due to strikes/lockouts per 1000 employees)
-    "IL-13": {
-        "dataflow": "ILR_STR_NOC_RT",
-        "key": ".A.",  # REF_AREA wildcard, annual, NOC wildcard
-        "notes": (
-            "Days not worked due to strikes and lockouts per 1000 employees. "
-            "Dataset: ILR_STR_NOC_RT. Source: ILOSTAT industrial-relations database."
-        ),
-    },
-}
+def fetch_ilostat_raw(dataflow: str, key: str) -> "pd.Series":
+    """Fetch one ILOSTAT SDMX dataflow slice via pandasdmx.
 
+    Returns the raw pandasdmx observation Series (multi-indexed by dimensions).
+    Raises on HTTP errors so the base harness can catch and log them.
+    """
+    import sdmx  # sdmx1 on PyPI — lazy import so module loads clean under test
+
+    client = sdmx.Client("ILO")
+    resp = client.data(
+        dataflow,
+        key=key,
+        params={"startPeriod": str(YEAR_FROM)},
+    )
+    ds = sdmx.to_pandas(resp)
+    # to_pandas returns a Series or a dict of Series; flatten either case.
+    if isinstance(ds, dict):
+        if not ds:
+            return pd.Series(dtype=float)
+        ds = pd.concat(list(ds.values()))
+    return ds
+
+
+# ---------------------------------------------------------------------------
+# Parse pandasdmx observation Series → DataFrame[country, year, value]
+# ---------------------------------------------------------------------------
 
 def parse_ilostat_records(
-    obs_series: "pd.Series",  # pandasdmx obs series (multi-index: country, period)
+    obs_series: "pd.Series | None",
     iso3_map: dict[str, str],
 ) -> pd.DataFrame:
     """PURE: pandasdmx observation Series -> DataFrame[country, year, value].
@@ -239,30 +125,33 @@ def parse_ilostat_records(
     per (country, year).  Annual sources pass through unchanged.
 
     Rows whose REF_AREA ISO3 doesn't resolve to a canonical name are dropped
-    (regional aggregates, unknown codes, territories not in QGI map).
+    (regional aggregates, unknown codes, territories not in the QGI map).
     """
     if obs_series is None or obs_series.empty:
         return pd.DataFrame(columns=["country", "year", "value"])
 
-    # Flatten the MultiIndex to a frame
     frame = obs_series.reset_index()
 
-    # Identify the REF_AREA and TIME_PERIOD columns regardless of position
-    # pandasdmx names them by the dimension ID from the DSD.
+    # Identify columns regardless of position — pandasdmx names them by the
+    # dimension ID from the DSD.
     ref_col = next(
         (c for c in frame.columns if str(c).upper() in ("REF_AREA", "AREA", "COUNTRY")),
         None,
     )
     time_col = next(
-        (c for c in frame.columns if str(c).upper() in ("TIME_PERIOD", "TIME", "PERIOD", "YEAR")),
+        (c for c in frame.columns
+         if str(c).upper() in ("TIME_PERIOD", "TIME", "PERIOD", "YEAR")),
         None,
     )
-    # OBS_VALUE by NAME (pandasdmx may append attribute columns, so don't assume last).
-    val_col = next((c for c in frame.columns if str(c).upper() == "OBS_VALUE"), frame.columns[-1])
+    # OBS_VALUE by name; fall back to last column.
+    val_col = next(
+        (c for c in frame.columns if str(c).upper() == "OBS_VALUE"),
+        frame.columns[-1],
+    )
 
     if ref_col is None or time_col is None:
         base.logger.warning(
-            f"parse_ilostat_records: could not detect REF_AREA/TIME_PERIOD columns "
+            "parse_ilostat_records: could not detect REF_AREA/TIME_PERIOD columns "
             f"in {list(frame.columns)}"
         )
         return pd.DataFrame(columns=["country", "year", "value"])
@@ -274,8 +163,7 @@ def parse_ilostat_records(
         if not name:
             continue
         raw_time = str(row[time_col]).strip()
-        # Extract year from 'YYYY', 'YYYY-Qn', 'YYYY-Mn', 'YYYY-Sn', etc.
-        year_str = raw_time[:4]
+        year_str = raw_time[:4]  # works for 'YYYY', 'YYYY-Qn', 'YYYY-Mn', 'YYYY-Sn'
         try:
             year = int(year_str)
         except ValueError:
@@ -286,7 +174,7 @@ def parse_ilostat_records(
             val = float(row[val_col])
         except (TypeError, ValueError):
             continue
-        if val != val:  # NaN
+        if val != val:  # NaN guard
             continue
         rows.append({"country": name, "year": year, "value": val})
 
@@ -294,7 +182,7 @@ def parse_ilostat_records(
         return pd.DataFrame(columns=["country", "year", "value"])
 
     df = pd.DataFrame(rows)
-    # Aggregate sub-annual observations to annual mean (no-op for annual data)
+    # Aggregate sub-annual observations to annual mean (no-op for annual data).
     return (
         df.groupby(["country", "year"], as_index=False)["value"]
         .mean()
@@ -302,42 +190,100 @@ def parse_ilostat_records(
     )
 
 
-def fetch_ilostat_raw(dataflow: str, key: str) -> "pd.Series":
-    """Fetch one ILOSTAT SDMX dataflow slice via pandasdmx.
+# ---------------------------------------------------------------------------
+# Derived-indicator computation
+# ---------------------------------------------------------------------------
 
-    Returns the raw pandasdmx observation Series (multi-indexed).
-    Raises on HTTP errors so the base harness can catch and log them.
+def _fetch_and_parse(dataflow: str, key: str, iso3_map: dict[str, str]) -> pd.DataFrame:
+    """Fetch one SDMX slice and parse to [country, year, value]."""
+    raw = fetch_ilostat_raw(dataflow, key)
+    return parse_ilostat_records(raw, iso3_map)
+
+
+def compute_derived(spec: dict[str, Any], iso3_map: dict[str, str]) -> pd.DataFrame:
+    """Compute a derived indicator per the derivation spec.
+
+    Supported types:
+      ratio         : numerator / denominator * 100  (percentage ratio)
+      annual_change : year-on-year diff of the base series
+      binary        : 1 if base > 0 else 0
     """
-    import sdmx  # pandasdmx / sdmx1 — lazy import
+    derivation = spec.get("derivation") or {}
+    deriv_type = derivation.get("type", "")
+    code = spec["code"]
 
-    client = sdmx.Client("ILO")
-    # pandasdmx resolves the dataflow to ILO,DF_<dataflow>,latest automatically
-    # when we pass resource_id and key.
-    resp = client.data(
-        dataflow,
-        key=key,
-        params={"startPeriod": str(YEAR_FROM), "format": "genericdata"},
-    )
-    ds = sdmx.to_pandas(resp)
-    # to_pandas returns a Series or a dict of Series; flatten either case
-    if isinstance(ds, dict):
-        if not ds:
-            return pd.Series(dtype=float)
-        # Concatenate all series (different attributes / keys)
-        ds = pd.concat(list(ds.values()))
-    return ds
+    if deriv_type == "ratio":
+        num_df = _fetch_and_parse(
+            spec["dataflow_numerator"], spec["key_numerator"], iso3_map
+        )
+        den_df = _fetch_and_parse(
+            spec["dataflow_denominator"], spec["key_denominator"], iso3_map
+        )
+        if num_df.empty or den_df.empty:
+            base.logger.warning(f"{code}: ratio derivation returned empty component frame")
+            return pd.DataFrame(columns=["country", "year", "value"])
+        merged = num_df.merge(
+            den_df, on=["country", "year"], suffixes=("_num", "_den")
+        )
+        merged = merged[merged["value_den"] != 0].copy()
+        merged["value"] = merged["value_num"] / merged["value_den"] * 100.0
+        return merged[["country", "year", "value"]].reset_index(drop=True)
+
+    elif deriv_type == "annual_change":
+        base_df = _fetch_and_parse(
+            spec["dataflow_base"], spec["key_base"], iso3_map
+        )
+        if base_df.empty:
+            return pd.DataFrame(columns=["country", "year", "value"])
+        base_df = base_df.sort_values(["country", "year"])
+        base_df["value"] = base_df.groupby("country")["value"].diff()
+        # Drop rows where diff is NaN (first observation per country).
+        base_df = base_df.dropna(subset=["value"])
+        return base_df[["country", "year", "value"]].reset_index(drop=True)
+
+    elif deriv_type == "binary":
+        base_df = _fetch_and_parse(
+            spec["dataflow_base"], spec["key_base"], iso3_map
+        )
+        if base_df.empty:
+            return pd.DataFrame(columns=["country", "year", "value"])
+        base_df = base_df.copy()
+        base_df["value"] = (base_df["value"] > 0).astype(float)
+        return base_df[["country", "year", "value"]].reset_index(drop=True)
+
+    else:
+        raise ValueError(
+            f"{code}: unknown derivation type {deriv_type!r}. "
+            "Supported: ratio, annual_change, binary"
+        )
 
 
-def fetch_one(spec: dict) -> pd.DataFrame:
+# ---------------------------------------------------------------------------
+# fetch_one — dispatcher entry point called by run_fetcher
+# ---------------------------------------------------------------------------
+
+def fetch_one(spec: dict[str, Any]) -> pd.DataFrame:
+    """Fetch and parse one indicator.  spec must contain 'id_string'."""
     iid = spec["id_string"]
-    if iid not in SPECS:
+    cfg = SPECS.get(iid)
+    if cfg is None:
         raise ValueError(f"unknown ILOSTAT indicator {iid!r}")
-    cfg = SPECS[iid]
+
+    iso3_map = base.load_iso3_country_map()
+
+    if cfg.get("is_derived"):
+        base.logger.info(
+            f"{iid}: computing derived indicator "
+            f"(type={cfg.get('derivation', {}).get('type', '?')})"
+        )
+        return compute_derived(cfg, iso3_map)
+
+    # Standard (non-derived) fetch
     base.logger.info(
-        f"{iid}: fetching dataflow={cfg['dataflow']} key={cfg['key']!r}"
+        f"{iid}: fetching dataflow={cfg['dataflow']!r} key={cfg['key']!r}"
     )
     raw = fetch_ilostat_raw(cfg["dataflow"], cfg["key"])
-    return parse_ilostat_records(raw, base.load_iso3_country_map())
+    return parse_ilostat_records(raw, iso3_map)
 
 
 if __name__ == "__main__":
