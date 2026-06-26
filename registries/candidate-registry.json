@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated": "2026-06-26",
+  "generated": "2026-06-27",
   "provider_blocks": {
     "WB": [
       1,
@@ -1430,7 +1430,7 @@
       "provider": "UCDP",
       "numeric_id": 404,
       "name": "Rebel Group Territorial Demands Active (binary, country-year)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Other",
       "description": "Flags active rebel groups making territorial or autonomy demands — a direct structural precursor to secessionist insurgencies and civil-war escalation distinct from battle-death intensity signals. It captures the presence of a mobilised challenger with an existential stake, which shapes both onset probability and conflict duration.",
       "provider_meta": {},
@@ -1438,7 +1438,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "not-fetchable from public API (panel-swapped for a fetchable equivalent)"
       },
       "vet": null
     },
@@ -1796,7 +1796,7 @@
       "provider": "UCDP",
       "numeric_id": 407,
       "name": "External Support to Conflict Parties (binary, from ESD dataset)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Other",
       "description": "External state support to conflict parties converts internal conflicts into proxy wars, dramatically prolonging duration, raising lethality, and triggering foreign intervention — the presence of this binary flag distinguishes internationalised conflicts from purely domestic ones and is a strong predictor of escalation cascades. It captures the geopolitical dimension that purely domestic indicators miss.",
       "provider_meta": {},
@@ -1804,7 +1804,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "not-fetchable from public API (panel-swapped for a fetchable equivalent)"
       },
       "vet": null
     },
@@ -2078,7 +2078,7 @@
       "provider": "OWID",
       "numeric_id": 854,
       "name": "Coercive State Capacity (Hanson & Sigman)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Military",
       "description": "The Hanson-Sigman coercive state capacity sub-dimension measures a government's control over territory and monopoly on the legitimate use of force — the foundational prerequisite for conflict suppression and public order. It captures state fragility specifically on the coercion axis, distinct from extractive or administrative capacity, providing unique predictive value for conflict-related Trends.",
       "provider_meta": {
@@ -2091,7 +2091,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "not-fetchable from public API (panel-swapped for a fetchable equivalent)"
       },
       "vet": null
     },
@@ -2242,7 +2242,7 @@
       "provider": "OWID",
       "numeric_id": 856,
       "name": "Extractive State Capacity (Hanson & Sigman)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Governance",
       "description": "Extractive state capacity — the government's ability to raise sustained revenues — is a foundational determinant of fiscal resilience, public goods provision, and regime stability; states that cannot tax reliably are far more vulnerable to fiscal crises, foreign-debt spirals, and popular delegitimisation. It is theoretically distinct from administrative or coercive capacity and adds non-redundant signal.",
       "provider_meta": {
@@ -2255,7 +2255,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "not-fetchable from public API (panel-swapped for a fetchable equivalent)"
       },
       "vet": null
     },
@@ -2555,7 +2555,7 @@
       "provider": "FAOSTAT",
       "numeric_id": 322,
       "name": "Prevalence of population unable to afford a healthy diet (% population)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Social",
       "description": "The prevalence of inability to afford a healthy diet combines food price levels with household income distributions, making it a demand-side food security indicator that is sensitive to both commodity price shocks and welfare inequality — it directly precedes food-related grievances and can escalate rapidly when prices spike. Unlike production-side metrics, it captures whether populations can actually access adequate food.",
       "provider_meta": {},
@@ -2563,7 +2563,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "not-fetchable from public API (panel-swapped for a fetchable equivalent)"
       },
       "vet": null
     },
@@ -2917,7 +2917,7 @@
       "provider": "UCDP",
       "numeric_id": 411,
       "name": "Deadly Electoral Violence Events (count, country-year, from DECO)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Governance",
       "description": "Georeferenced lethal electoral violence event counts capture the specific political-competition violence that clusters around electoral cycles — distinct from armed conflict, it signals contested political environments where candidates, parties, and voters face physical coercion, which is a leading indicator of disputed elections, regime delegitimisation, and post-election crisis escalation.",
       "provider_meta": {},
@@ -2925,7 +2925,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "not-fetchable from public API (panel-swapped for a fetchable equivalent)"
       },
       "vet": null
     },
@@ -2934,7 +2934,7 @@
       "provider": "UCDP",
       "numeric_id": 412,
       "name": "Violent Political Protest Deaths (country-year aggregate)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Governance",
       "description": "Deaths from violent political protests sit below the armed-conflict threshold but above routine demonstrations, marking the inflection zone where state-civilian tension escalates — this sub-conflict violence level is a leading indicator of full conflict onset and political regime instability.",
       "provider_meta": {},
@@ -2942,7 +2942,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "not-fetchable from public API (panel-swapped for a fetchable equivalent)"
       },
       "vet": null
     },
@@ -3002,7 +3002,7 @@
       "provider": "UCDP",
       "numeric_id": 416,
       "name": "Peace Agreement Signed (binary, country-year, from UCDP PAD)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Governance",
       "description": "A binary flag for peace agreement signings captures a discrete institutional milestone in conflict resolution that reshapes the political landscape — creating both opportunities for sustained peace and risks of implementation failure and spoiler violence. As a leading-to-lagging marker it is useful on both sides: post-conflict Trends can be anchored to the agreement date, and the absence of agreements despite prolonged conflict is itself informative.",
       "provider_meta": {},
@@ -3010,7 +3010,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "not-fetchable from public API (panel-swapped for a fetchable equivalent)"
       },
       "vet": null
     },
@@ -3449,7 +3449,7 @@
       "provider": "OWID",
       "numeric_id": 865,
       "name": "Administrative State Capacity (Hanson & Sigman)",
-      "status": "vetted",
+      "status": "quarantined",
       "category": "Governance",
       "description": "Administrative state capacity measures government ability to deliver services through skilled, impartial bureaucracies — a foundational pillar of stability that determines whether fiscal resources translate into public goods or patronage, and whether formal policies are actually implemented. It captures the bureaucratic implementation gap that distinguishes fragile from resilient states independent of resource levels.",
       "provider_meta": {
@@ -3462,7 +3462,7 @@
         "added": "2026-06-26",
         "vetted": "2026-06-26",
         "activated": null,
-        "reason": "8-persona panel selection, 250-run 2026-06-25"
+        "reason": "not-fetchable from public API (panel-swapped for a fetchable equivalent)"
       },
       "vet": null
     },
@@ -3791,6 +3791,154 @@
         "vetted": "2026-06-26",
         "activated": null,
         "reason": "250-run license-backfill (panel) 2026-06-26"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UCDP_SB_INTRA_INTERNATIONALISED",
+      "provider": "UCDP",
+      "numeric_id": 424,
+      "name": "Internationalized intrastate conflict (active)",
+      "status": "vetted",
+      "category": "Other",
+      "description": "Internationalized intrastate conflict (active)",
+      "provider_meta": {},
+      "lifecycle": {
+        "added": "2026-06-27",
+        "vetted": "2026-06-27",
+        "activated": null,
+        "reason": "250-run fetchable swap (panel + verify) 2026-06-27"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UCDP_CONFLICT_TERMINATED",
+      "provider": "UCDP",
+      "numeric_id": 425,
+      "name": "Conflict episode terminated (de-escalation)",
+      "status": "vetted",
+      "category": "Governance",
+      "description": "Conflict episode terminated (de-escalation)",
+      "provider_meta": {},
+      "lifecycle": {
+        "added": "2026-06-27",
+        "vetted": "2026-06-27",
+        "activated": null,
+        "reason": "250-run fetchable swap (panel + verify) 2026-06-27"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UCDP_SB_INCOMPAT_TERR",
+      "provider": "UCDP",
+      "numeric_id": 426,
+      "name": "Territorial-incompatibility conflict (active)",
+      "status": "vetted",
+      "category": "Other",
+      "description": "Territorial-incompatibility conflict (active)",
+      "provider_meta": {},
+      "lifecycle": {
+        "added": "2026-06-27",
+        "vetted": "2026-06-27",
+        "activated": null,
+        "reason": "250-run fetchable swap (panel + verify) 2026-06-27"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "v2elpeace",
+      "provider": "VDEM_EXT",
+      "numeric_id": 955,
+      "name": "Election other electoral violence",
+      "status": "vetted",
+      "category": "Governance",
+      "description": "Election other electoral violence",
+      "provider_meta": {
+        "base_provider": "VDEM"
+      },
+      "lifecycle": {
+        "added": "2026-06-27",
+        "vetted": "2026-06-27",
+        "activated": null,
+        "reason": "250-run fetchable swap (panel + verify) 2026-06-27"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "UCDP_GED_UNREST_EVENTS",
+      "provider": "UCDP",
+      "numeric_id": 427,
+      "name": "Non-state + one-sided violence event tempo",
+      "status": "vetted",
+      "category": "Other",
+      "description": "Non-state + one-sided violence event tempo",
+      "provider_meta": {},
+      "lifecycle": {
+        "added": "2026-06-27",
+        "vetted": "2026-06-27",
+        "activated": null,
+        "reason": "250-run fetchable swap (panel + verify) 2026-06-27"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "v2strenarm",
+      "provider": "VDEM_EXT",
+      "numeric_id": 956,
+      "name": "Remuneration in the armed forces (coercive capacity)",
+      "status": "vetted",
+      "category": "Government",
+      "description": "Remuneration in the armed forces (coercive capacity)",
+      "provider_meta": {
+        "base_provider": "VDEM"
+      },
+      "lifecycle": {
+        "added": "2026-06-27",
+        "vetted": "2026-06-27",
+        "activated": null,
+        "reason": "250-run fetchable swap (panel + verify) 2026-06-27"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "IQ.CPA.PADM.XQ",
+      "provider": "WB_EXT",
+      "numeric_id": 1420,
+      "name": "CPIA quality of public administration",
+      "status": "vetted",
+      "category": "Government",
+      "description": "CPIA quality of public administration",
+      "provider_meta": {
+        "base_provider": "WB"
+      },
+      "lifecycle": {
+        "added": "2026-06-27",
+        "vetted": "2026-06-27",
+        "activated": null,
+        "reason": "250-run fetchable swap (panel + verify) 2026-06-27"
+      },
+      "vet": null
+    },
+    {
+      "indicator_id": "FS-007",
+      "provider": "FAOSTAT",
+      "numeric_id": 323,
+      "name": "Dietary energy from cereals/roots/tubers (%)",
+      "status": "vetted",
+      "category": "Social",
+      "description": "Dietary energy from cereals/roots/tubers (%)",
+      "provider_meta": {
+        "fao_domain_code": "FS",
+        "fao_item_code": "21012",
+        "fao_element_code": "6121",
+        "frequency": "3yr_avg",
+        "transform": "first-difference"
+      },
+      "lifecycle": {
+        "added": "2026-06-27",
+        "vetted": "2026-06-27",
+        "activated": null,
+        "reason": "250-run fetchable swap (panel + verify) 2026-06-27"
       },
       "vet": null
     }
