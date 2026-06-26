@@ -11,7 +11,18 @@ Covers:
   - parse_owid_records — OW-04 fallback: derive YoY % change from co2 level column
   - aggregate / continent rows dropped (empty Code and OWID_ prefix)
   - unknown ISO-3 codes dropped
-  - SPECS dictionary covers OW-01 and OW-04
+  - SPECS dictionary now spec-driven (all codes from specs.json)
+
+  NEW (spec-driven path):
+  - OWID_REGIMETYPE — V-Dem RoW 4-category regime type (direct value)
+  - OWID_AUTOCRATIZATION — V-Dem ERT binary flag (country_text_id country column)
+  - OWID_POP_YOUNG — youth share derived from age-group columns (is_derived=true)
+  - OWID_SLUM_SHARE — % urban population in slums (direct value)
+  - OWID_STATECAP — Hanson & Sigman state capacity index (direct value)
+  - _apply_derivation — ages_15_24_share path
+  - _apply_derivation — unknown derivation raises ValueError
+  - fetch_one rejects unknown indicator code
+  - specs.json integrity — all expected codes present, key schema correct
 """
 from __future__ import annotations
 
@@ -44,6 +55,8 @@ ISO3: dict[str, str] = {
     "BRA": "Brazil",
     "DEU": "Germany",
     "USA": "United States",
+    "GBR": "United Kingdom",
+    "KEN": "Kenya",
 }
 
 # ---------------------------------------------------------------------------
@@ -264,29 +277,278 @@ def test_parse_owid_co2_nan_growth_prct_rows_dropped():
     assert out.iloc[0]["value"] == pytest.approx(3.5)
 
 # ---------------------------------------------------------------------------
-# SPECS dict sanity
+# OWID_REGIMETYPE: V-Dem RoW regime type (new spec-driven code)
 # ---------------------------------------------------------------------------
 
-def test_specs_covers_ow01_and_ow04():
-    assert set(f.SPECS) == {"OW-01", "OW-04"}
+def _regime_type_df() -> pd.DataFrame:
+    """Synthetic OWID political-regime.csv payload."""
+    return pd.DataFrame({
+        "Entity": ["Afghanistan", "China", "Brazil", "Germany", "World"],
+        "Code": ["AFG", "CHN", "BRA", "DEU", "OWID_WRL"],
+        "Year": [2022, 2022, 2022, 2022, 2022],
+        "Political regime": [0, 0, 2, 3, np.nan],
+    })
 
 
-def test_specs_ow01_has_correct_columns():
+def test_parse_owid_regime_type_direct_value():
+    """OWID_REGIMETYPE: regime integer extracted and OWID_ aggregate dropped."""
+    out = f.parse_owid_records(
+        raw_df=_regime_type_df(),
+        value_col="Political regime",
+        iso3_map=ISO3,
+        code_col="Code",
+        year_col="Year",
+    )
+    recs = {r["country"]: r["value"] for r in out.to_dict("records")}
+    assert recs["Afghanistan"] == pytest.approx(0.0)  # closed autocracy
+    assert recs["China"] == pytest.approx(0.0)        # closed autocracy
+    assert recs["Brazil"] == pytest.approx(2.0)       # electoral democracy
+    assert recs["Germany"] == pytest.approx(3.0)      # liberal democracy
+    assert "World" not in recs  # OWID_ aggregate dropped
+
+
+def test_parse_owid_regime_type_nan_world_row_drops():
+    """World row has NaN regime value — must be dropped regardless of NaN drop or OWID_ rule."""
+    df = pd.DataFrame({
+        "Entity": ["World"],
+        "Code": ["OWID_WRL"],
+        "Year": [2022],
+        "Political regime": [np.nan],
+    })
+    out = f.parse_owid_records(df, "Political regime", ISO3, code_col="Code", year_col="Year")
+    assert len(out) == 0
+
+# ---------------------------------------------------------------------------
+# OWID_AUTOCRATIZATION: V-Dem ERT binary flag (non-standard country_text_id col)
+# ---------------------------------------------------------------------------
+
+def _ert_df() -> pd.DataFrame:
+    """Synthetic ERT CSV payload (country_text_id column, not 'Code')."""
+    return pd.DataFrame({
+        "country_text_id": ["AFG", "BRA", "CHN", "DEU", "GBR", ""],
+        "year": [2020, 2020, 2020, 2020, 2020, 2020],
+        "aut_ep": [1, 0, 1, 0, 0, 0],
+        "other_col": [1, 2, 3, 4, 5, 6],
+    })
+
+
+def test_parse_owid_autocratization_uses_country_text_id():
+    """OWID_AUTOCRATIZATION uses country_text_id as the ISO-3 column."""
+    out = f.parse_owid_records(
+        raw_df=_ert_df(),
+        value_col="aut_ep",
+        iso3_map=ISO3,
+        code_col="country_text_id",
+        year_col="year",
+    )
+    recs = {r["country"]: r["value"] for r in out.to_dict("records")}
+    assert recs["Afghanistan"] == pytest.approx(1.0)  # in autocratization episode
+    assert recs["Brazil"] == pytest.approx(0.0)       # not in episode
+    assert recs["China"] == pytest.approx(1.0)
+    assert recs["Germany"] == pytest.approx(0.0)
+    assert recs["United Kingdom"] == pytest.approx(0.0)
+    # empty code row must be dropped
+    assert len(recs) == 5
+
+
+def test_parse_owid_autocratization_drops_empty_code():
+    """Empty country_text_id rows (aggregates or unmatched) are dropped."""
+    df = pd.DataFrame({
+        "country_text_id": ["", "AFG"],
+        "year": [2020, 2020],
+        "aut_ep": [1, 0],
+    })
+    out = f.parse_owid_records(
+        raw_df=df,
+        value_col="aut_ep",
+        iso3_map=ISO3,
+        code_col="country_text_id",
+        year_col="year",
+    )
+    assert len(out) == 1
+    assert out.iloc[0]["country"] == "Afghanistan"
+
+# ---------------------------------------------------------------------------
+# OWID_POP_YOUNG: derived — youth-bulge share (is_derived=true)
+# ---------------------------------------------------------------------------
+
+def _pop_age_df() -> pd.DataFrame:
+    """Synthetic OWID population-by-age-group.csv payload."""
+    return pd.DataFrame({
+        "Entity": ["Afghanistan", "China", "Brazil", "World"],
+        "Code": ["AFG", "CHN", "BRA", "OWID_WRL"],
+        "Year": [2020, 2020, 2020, 2020],
+        # Absolute counts (thousands)
+        "Under-5s":    [  5_000,  80_000, 15_000, 600_000],
+        "Ages 5-14":   [  8_000, 130_000, 25_000, 900_000],
+        "Ages 15-24":  [  6_000, 170_000, 30_000, 1_200_000],
+        "Ages 25-64":  [ 15_000, 800_000, 90_000, 4_000_000],
+        "Ages 65+":    [  2_000, 180_000, 20_000, 700_000],
+    })
+
+
+def _pop_young_spec() -> dict:
+    """Minimal spec dict for OWID_POP_YOUNG derivation."""
+    return {
+        "code": "OWID_POP_YOUNG",
+        "is_derived": True,
+        "derivation": "ages_15_24_share: value=(Ages 15-24)/(Under-5s+Ages 5-14+Ages 15-24+Ages 25-64+Ages 65+)*100",
+    }
+
+
+def test_apply_derivation_ages_15_24_share_correct_ratio():
+    """_apply_derivation computes youth share = Ages15-24 / total_pop * 100."""
+    df = _pop_age_df().copy()
+    # Exclude OWID_ aggregate row for pure derivation test
+    df = df[df["Code"] != "OWID_WRL"].reset_index(drop=True)
+    result = f._apply_derivation(df, _pop_young_spec())
+    assert "_derived_value" in result.columns
+    # AFG: 6000 / (5000+8000+6000+15000+2000) = 6000/36000 ≈ 16.67%
+    afg_row = result[result["Code"] == "AFG"].iloc[0]
+    expected_afg = 6_000 / (5_000 + 8_000 + 6_000 + 15_000 + 2_000) * 100
+    assert afg_row["_derived_value"] == pytest.approx(expected_afg, rel=1e-5)
+    # CHN: 170000 / (80000+130000+170000+800000+180000) = 170000/1360000 ≈ 12.5%
+    chn_row = result[result["Code"] == "CHN"].iloc[0]
+    expected_chn = 170_000 / (80_000 + 130_000 + 170_000 + 800_000 + 180_000) * 100
+    assert chn_row["_derived_value"] == pytest.approx(expected_chn, rel=1e-5)
+
+
+def test_parse_owid_pop_young_end_to_end():
+    """parse_owid_records with is_derived=True drops OWID_ aggregates and returns share."""
+    spec = _pop_young_spec()
+    out = f.parse_owid_records(
+        raw_df=_pop_age_df(),
+        value_col="Ages 15-24",   # value_col ignored for derived; derivation drives
+        iso3_map=ISO3,
+        code_col="Code",
+        year_col="Year",
+        derivation=spec["derivation"],
+        spec=spec,
+    )
+    recs = {r["country"]: r["value"] for r in out.to_dict("records")}
+    # OWID_WRL aggregate must be dropped
+    assert "World" not in recs
+    # AFG share sanity check
+    expected_afg = 6_000 / (5_000 + 8_000 + 6_000 + 15_000 + 2_000) * 100
+    assert recs["Afghanistan"] == pytest.approx(expected_afg, rel=1e-5)
+    # All values should be percentages in a plausible range
+    for country, share in recs.items():
+        assert 0.0 < share < 100.0, f"{country}: unexpected share {share}"
+
+
+def test_apply_derivation_unknown_raises():
+    """Unknown derivation string must raise ValueError, not silently produce wrong output."""
+    spec = {"code": "OW-99", "derivation": "magic_unsupported_transform"}
+    with pytest.raises(ValueError, match="Unknown derivation string"):
+        f._apply_derivation(pd.DataFrame({"x": [1]}), spec)
+
+
+def test_apply_derivation_missing_age_cols_raises():
+    """If any required age-group column is absent, ValueError is raised."""
+    df = pd.DataFrame({
+        "Code": ["AFG"],
+        "Year": [2020],
+        "Ages 15-24": [6_000],
+        # Missing Under-5s, Ages 5-14, Ages 25-64, Ages 65+
+    })
+    spec = _pop_young_spec()
+    with pytest.raises(ValueError, match="missing age-group columns"):
+        f._apply_derivation(df, spec)
+
+# ---------------------------------------------------------------------------
+# OWID_SLUM_SHARE: direct value (new spec-driven code)
+# ---------------------------------------------------------------------------
+
+def _slum_df() -> pd.DataFrame:
+    """Synthetic OWID slum-share CSV payload."""
+    return pd.DataFrame({
+        "Entity": ["Kenya", "Brazil", "Germany", "Asia"],
+        "Code": ["KEN", "BRA", "DEU", "OWID_ASI"],
+        "Year": [2018, 2018, 2018, 2018],
+        "Proportion of urban population living in slums (%)": [50.0, 24.3, 1.2, np.nan],
+    })
+
+
+def test_parse_owid_slum_share_direct_value():
+    """OWID_SLUM_SHARE: percentage value extracted directly, OWID_ aggregate dropped."""
+    out = f.parse_owid_records(
+        raw_df=_slum_df(),
+        value_col="Proportion of urban population living in slums (%)",
+        iso3_map=ISO3,
+        code_col="Code",
+        year_col="Year",
+    )
+    recs = {r["country"]: r["value"] for r in out.to_dict("records")}
+    assert recs["Kenya"] == pytest.approx(50.0)
+    assert recs["Brazil"] == pytest.approx(24.3)
+    assert recs["Germany"] == pytest.approx(1.2)
+    assert "Asia" not in recs  # OWID_ aggregate dropped
+
+# ---------------------------------------------------------------------------
+# SPECS dict sanity — updated for spec-driven approach
+# ---------------------------------------------------------------------------
+
+_EXPECTED_CODES = {
+    "OW-01",
+    "OW-04",
+    "OWID_REGIMETYPE",
+    "OWID_AUTOCRATIZATION",
+    "OWID_POP_YOUNG",
+    "OWID_SLUM_SHARE",
+    "OWID_STATECAP",
+}
+
+
+def test_specs_covers_all_expected_codes():
+    """specs.json must contain all expected indicator codes."""
+    assert _EXPECTED_CODES.issubset(set(f.SPECS)), (
+        f"Missing codes: {_EXPECTED_CODES - set(f.SPECS)}"
+    )
+
+
+def test_specs_ow01_correct_field_names():
+    """OW-01 spec uses the standard OWID grapher Code/Year column names."""
     cfg = f.SPECS["OW-01"]
-    assert cfg["code_col"] == "Code"
-    assert cfg["year_col"] == "Year"
-    assert cfg["value_col"] == "Democracy"
+    assert cfg["country_field"] == "Code"
+    assert cfg["year_field"] == "Year"
+    assert cfg["value_field"] == "Democracy"
+    assert not cfg.get("is_derived", False)
 
 
-def test_specs_ow04_has_correct_columns_and_fallback():
+def test_specs_ow04_has_correct_fields_and_fallback():
+    """OW-04 spec uses iso_code column and carries fallback_level_col."""
     cfg = f.SPECS["OW-04"]
-    assert cfg["code_col"] == "iso_code"
-    assert cfg["year_col"] == "year"
-    assert cfg["value_col"] == "co2_growth_prct"
+    assert cfg["country_field"] == "iso_code"
+    assert cfg["year_field"] == "year"
+    assert cfg["value_field"] == "co2_growth_prct"
     assert cfg.get("fallback_level_col") == "co2"
+    assert not cfg.get("is_derived", False)
+
+
+def test_specs_owid_pop_young_is_derived_with_derivation():
+    """OWID_POP_YOUNG must be marked is_derived=true with a non-null derivation string."""
+    cfg = f.SPECS["OWID_POP_YOUNG"]
+    assert cfg["is_derived"] is True
+    assert cfg.get("derivation") is not None
+    assert "ages_15_24_share" in cfg["derivation"]
+
+
+def test_specs_owid_autocratization_uses_ert_country_col():
+    """OWID_AUTOCRATIZATION must reference the ERT country_text_id column."""
+    cfg = f.SPECS["OWID_AUTOCRATIZATION"]
+    assert cfg["country_field"] == "country_text_id"
+    assert cfg["value_field"] == "aut_ep"
+    assert not cfg.get("is_derived", False)
+
+
+def test_specs_all_entries_have_required_keys():
+    """Every spec entry must carry the fields the fetcher depends on."""
+    required = {"code", "fetchable", "endpoint_or_dataset", "value_field", "country_field"}
+    for code, cfg in f.SPECS.items():
+        missing = required - set(cfg)
+        assert not missing, f"Spec {code!r} missing keys: {missing}"
 
 
 def test_fetch_one_rejects_unknown_id():
-    import pytest
     with pytest.raises(ValueError):
         f.fetch_one({"id_string": "ZZ-99"})
