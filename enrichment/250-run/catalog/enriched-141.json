@@ -13,7 +13,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem near-universal coverage from 1900; coding relies on expert assessment so quality varies for pre-WWII and micro-states.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "military_coup",
@@ -55,7 +55,7 @@
   "year_start": 1985,
   "year_end": 2023,
   "coverage_note": "WB WDI sourced from IISS; reasonable coverage from 1985 onward, thinner for small states and fragile states pre-1990.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "military_coup",
@@ -97,7 +97,7 @@
   "year_start": 1970,
   "year_end": 2022,
   "coverage_note": "Good global coverage via WB WDI; mineral-poor countries report near-zero rather than missing, so effective coverage is high; some small island states and microstates may be absent.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "military_coup",
@@ -145,7 +145,7 @@
   "year_start": 1970,
   "year_end": 2023,
   "coverage_note": "WB WDI; broad coverage but thin for small/fragile states and some MENA; data gaps common pre-1980 for lower-income countries.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "economic_recession",
@@ -193,7 +193,7 @@
   "year_start": 2005,
   "year_end": 2023,
   "coverage_note": "IDA-eligible and blend countries only (~75 countries); excludes all IBRD-only middle- and high-income countries, so sample is heavily skewed toward fragile/low-income states.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_corruption",
@@ -241,7 +241,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem near-universal coverage from 1900; expert-coded estimates become thinner before ~1950 for smaller states but post-1970 data is robust for ~180 countries.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -283,7 +283,7 @@
   "year_start": 1961,
   "year_end": 2023,
   "coverage_note": "FAOSTAT Supply Utilization Accounts; near-universal coverage from 1961; small island micro-states and some early-1960s newly-independent states have gaps.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "drought_and_famine",
@@ -331,7 +331,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "Near-universal V-Dem coverage from 1900; pre-1950 data thinner for small states; contemporary coverage essentially complete.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -373,7 +373,7 @@
   "year_start": 1980,
   "year_end": 2023,
   "coverage_note": "Coverage improves post-1990; many low-income countries lack consistent series; volatile outlier years (hyperinflation episodes) may need capping before use.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "currency_crisis",
@@ -421,7 +421,7 @@
   "year_start": 2005,
   "year_end": 2023,
   "coverage_note": "IDA-eligible countries only (~75); excludes IBRD-only and high-income states; scores available annually from 2005.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "executive_power_consolidation",
@@ -463,7 +463,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "Near-universal V-Dem coverage from 1900; post-WWII country expansion means most countries from 1945+; very sparse for microstates pre-1970.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_corruption",
@@ -511,7 +511,7 @@
   "year_start": 2002,
   "year_end": 2023,
   "coverage_note": "Enterprise Survey coverage is irregular — roughly 3-5-year gaps per country; concentrated in lower-middle-income and IDA countries; many high-income and small-island states absent.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_corruption",
@@ -553,7 +553,7 @@
   "year_start": 1990,
   "year_end": 2024,
   "coverage_note": "Only countries with meaningful asylum claim volumes produce stable rates; very small origin countries have high variance from small denominators; coverage improves markedly post-2000.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "civil_war_and_insurgency",
@@ -601,7 +601,7 @@
   "year_start": 1950,
   "year_end": 2023,
   "coverage_note": "UN WPP via OWID; near-universal coverage including small states; projections extend to 2100 but historical series used.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "mass_protest",
@@ -649,7 +649,7 @@
   "year_start": 2000,
   "year_end": 2020,
   "coverage_note": "FAOSTAT SDG 6.4.2 coverage is uneven: ~170 countries reported but many only have data for benchmark years (2015, 2017, 2020) rather than annual series; interpolation common; small island states and microstates often absent.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "drought_and_famine",
@@ -697,7 +697,7 @@
   "year_start": 1960,
   "year_end": 2023,
   "coverage_note": "WB WDI; one of the broadest financial series; minor gaps for conflict-affected and sanctioned states in early decades.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "banking_and_financial_crisis",
@@ -745,7 +745,7 @@
   "year_start": 2000,
   "year_end": 2023,
   "coverage_note": "ILO modelled estimates extend coverage to ~130 countries but with varying data quality; early years before 2005 are sparse for many countries; high-income OECD countries have near-complete coverage while low-income coverage relies heavily on modelling.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "mass_protest",
@@ -793,7 +793,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-coded; reliable from ~1950+ for most countries; pre-1950 thinner but still broad; unicameral/no-legislature states coded accordingly.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "executive_power_consolidation",
@@ -822,48 +822,6 @@
   ]
  },
  {
-  "code": "UCDP_CONFLICT_ISSUES_TERR",
-  "name": "Rebel Group Territorial Demands Active (binary, country-year)",
-  "provider": "UCDP",
-  "category": "Other",
-  "votes": 6,
-  "note": "Binary: rebel groups with stated territorial/autonomy demands active; from UCDP Conflict Issues Dataset, secessionism signal",
-  "license": "CC BY 4.0",
-  "why": "Flags active rebel groups making territorial or autonomy demands — a direct structural precursor to secessionist insurgencies and civil-war escalation distinct from battle-death intensity signals. It captures the presence of a mobilised challenger with an existential stake, which shapes both onset probability and conflict duration.",
-  "country_coverage": 150,
-  "coverage_confidence": "high",
-  "year_start": 1975,
-  "year_end": 2023,
-  "coverage_note": "Coverage limited to countries with active UCDP-recorded conflict; zero-conflict countries coded implicitly 0 but must be derived; pre-1989 coverage thinner.",
-  "replaces_signal": null,
-  "trends": [
-   {
-    "trend_id": "civil_war_and_insurgency",
-    "lift_bucket": "High",
-    "lift_pct": "+10-18%",
-    "reason": "Territorial demand is a core incompatibility type in UCDP taxonomy; binary flag cleanly identifies the insurgency-prone structural state."
-   },
-   {
-    "trend_id": "decentralization_and_federalism",
-    "lift_bucket": "High",
-    "lift_pct": "+8-14%",
-    "reason": "Autonomous-demand conflicts are the main driver of federalisation and devolution events; indicator is a near-direct cause signal."
-   },
-   {
-    "trend_id": "ethnic_and_communal_conflict",
-    "lift_bucket": "Medium",
-    "lift_pct": "+5-10%",
-    "reason": "Territorial demands often overlap with ethnic mobilisation; adds conflict-structure dimension not captured by death counts."
-   },
-   {
-    "trend_id": "foreign_intervention",
-    "lift_bucket": "Medium",
-    "lift_pct": "+4-8%",
-    "reason": "Secessionist conflicts attract external patron support and intervention; territorial-demand flag is a proxy for intervention risk."
-   }
-  ]
- },
- {
   "code": "DT.INT.DECT.GN.ZS",
   "name": "Interest payments on external debt (% of GNI)",
   "provider": "WB",
@@ -877,7 +835,7 @@
   "year_start": 1970,
   "year_end": 2023,
   "coverage_note": "Strongest coverage for developing economies with World Bank reporting obligations; rich OECD countries with market-financed debt may have gaps in early decades.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "currency_crisis",
@@ -925,7 +883,7 @@
   "year_start": 1990,
   "year_end": 2023,
   "coverage_note": "Coverage strong for emerging markets from 1995; sparser for low-income states pre-2000 and some small islands throughout.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "currency_crisis",
@@ -967,7 +925,7 @@
   "year_start": 1980,
   "year_end": 2023,
   "coverage_note": "WB WDI coverage concentrated on goods-exporting economies; service-dominant and small-island states often missing; pre-1980 sparse.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "currency_crisis",
@@ -1015,7 +973,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem near-universal coverage; pre-1945 estimates rely on sparse historical coding and carry wider uncertainty intervals.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "executive_power_consolidation",
@@ -1063,7 +1021,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert survey coverage; early decades (pre-1950) thinner for smaller states but coverage is broad from 1970 onward.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_corruption",
@@ -1105,7 +1063,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem standard coverage; expert-coded so some thin-state coverage is less reliable pre-1950.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "executive_power_consolidation",
@@ -1153,7 +1111,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert coding; near-universal country coverage but early-period scores (pre-1950) carry higher uncertainty in many regions.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "military_coup",
@@ -1195,7 +1153,7 @@
   "year_start": 1989,
   "year_end": 2023,
   "coverage_note": "UCDP one-sided violence dataset from 1989; only conflict-affected or repressive contexts contribute positives — large share of zeros for peaceful states is structurally meaningful.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -1237,7 +1195,7 @@
   "year_start": 1990,
   "year_end": 2023,
   "coverage_note": "UNHCR refugee stock data by country of origin covers ~185 countries from 1990; denominator (population) from WB; countries with near-zero refugee outflows will show 0 rather than missing, so effective coverage is high.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "civil_war_and_insurgency",
@@ -1285,7 +1243,7 @@
   "year_start": 2000,
   "year_end": 2024,
   "coverage_note": "V-Dem; global coverage but v2sm* social media items are only meaningful post-2000; reliable signal from ~2010 onward as social media penetration expanded globally.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_violence",
@@ -1333,7 +1291,7 @@
   "year_start": 1990,
   "year_end": 2022,
   "coverage_note": "Highly uneven: ILO administrative data depends on national labour ministries; many low-income countries lack consistent reporting; coverage effectively ~90 countries with usable series but sparse for sub-Saharan Africa and parts of Asia.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "labor_action",
@@ -1381,7 +1339,7 @@
   "year_start": 2000,
   "year_end": 2023,
   "coverage_note": "ILOSTAT low-pay data requires labour force survey microdata; coverage skewed toward OECD/upper-middle income countries (~90); developing-country observations sparse and irregular, limiting ML utility for fragile-state Trends.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "labor_action",
@@ -1417,7 +1375,7 @@
   "year_start": 2009,
   "year_end": 2009,
   "coverage_note": "Single fixed value per country (1990-2009 average from EM-DAT); treat as static covariate — year values reflect the measurement window, not an annual time series.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "natural_disaster",
@@ -1465,7 +1423,7 @@
   "year_start": 1970,
   "year_end": 2023,
   "coverage_note": "Good coverage for developing-economy borrowers; OECD high-income countries with bond-financed debt are patchier; early 1970s thin for many countries.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "currency_crisis",
@@ -1513,7 +1471,7 @@
   "year_start": 1990,
   "year_end": 2023,
   "coverage_note": "Good coverage for OECD and most emerging markets; patchy for sub-Saharan Africa and fragile states pre-2000; some definitional inconsistencies across IMF/WB compilations.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "fiscal_policy_change",
@@ -1555,7 +1513,7 @@
   "year_start": 1980,
   "year_end": 2023,
   "coverage_note": "Near-universal WB WDI coverage from ~1980; small island states and post-Soviet countries join from 1990/1992; absolute USD series can be noisy for dollarised economies.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "currency_crisis",
@@ -1603,7 +1561,7 @@
   "year_start": 1990,
   "year_end": 2023,
   "coverage_note": "WB WDI series; good coverage from 1995 onward; early 1990s sparse for post-Soviet and small-island states; informal flows systematically undercounted in high-remittance countries.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "currency_crisis",
@@ -1645,7 +1603,7 @@
   "year_start": 1980,
   "year_end": 2023,
   "coverage_note": "WB WDI coverage is patchier than broader macroeconomic indicators — many low-income and transition economies lack T-bill markets; coverage strongest for middle-income and emerging market countries post-1990.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "banking_and_financial_crisis",
@@ -1687,7 +1645,7 @@
   "year_start": 1960,
   "year_end": 2023,
   "coverage_note": "WB WDI standard; data sparse for some small states and conflict-affected countries in early decades; post-1980 coverage is broad.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "economic_recession",
@@ -1735,7 +1693,7 @@
   "year_start": 1990,
   "year_end": 2023,
   "coverage_note": "WB WDI coverage from ~1990; some small states and resource-rich countries have gaps where depletion estimates are uncertain.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "economic_recession",
@@ -1783,7 +1741,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem covers virtually all countries from 1900; pre-1945 estimates carry higher coding uncertainty.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "executive_power_consolidation",
@@ -1825,7 +1783,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem covers ~180 countries from 1900; quality of expert codings is high for post-1945 but thinner for pre-1945 and some smaller states; recent years (2023-2024) may have preliminary scores.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "executive_power_consolidation",
@@ -1873,7 +1831,7 @@
   "year_start": 1989,
   "year_end": 2023,
   "coverage_note": "UCDP; covers all states globally but non-zero values only for ~60-80 conflict-affected countries per year; zero-inflated distribution; complete coverage for active-conflict countries.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "civil_war_and_insurgency",
@@ -1908,54 +1866,6 @@
   ]
  },
  {
-  "code": "UCDP_SB_EXT_SUPPORT",
-  "name": "External Support to Conflict Parties (binary, from ESD dataset)",
-  "provider": "UCDP",
-  "category": "Other",
-  "votes": 7,
-  "note": "Binary: at least one warring party receiving external state support; internationalization and proxy-war signal",
-  "license": "CC BY 4.0",
-  "why": "External state support to conflict parties converts internal conflicts into proxy wars, dramatically prolonging duration, raising lethality, and triggering foreign intervention — the presence of this binary flag distinguishes internationalised conflicts from purely domestic ones and is a strong predictor of escalation cascades. It captures the geopolitical dimension that purely domestic indicators miss.",
-  "country_coverage": 150,
-  "coverage_confidence": "high",
-  "year_start": 1975,
-  "year_end": 2022,
-  "coverage_note": "Coverage conditional on conflict occurring; for non-conflict country-years the flag is 0 (informative absence); ESD dataset extends back to 1975 for relevant dyads but not all UCDP SB conflicts have coded external support.",
-  "replaces_signal": null,
-  "trends": [
-   {
-    "trend_id": "foreign_intervention",
-    "lift_bucket": "High",
-    "lift_pct": "+8-15%",
-    "reason": "External support is mechanistically upstream of foreign intervention escalation; this is the most direct available signal for this Trend and almost certain to be a top-5 feature."
-   },
-   {
-    "trend_id": "civil_war_and_insurgency",
-    "lift_bucket": "High",
-    "lift_pct": "+6-12%",
-    "reason": "Proxy-war dynamics sustain insurgencies that would otherwise collapse; external support is a strong duration and intensity predictor."
-   },
-   {
-    "trend_id": "interstate_war",
-    "lift_bucket": "High",
-    "lift_pct": "+5-10%",
-    "reason": "External support to conflict parties is a direct precursor path to interstate escalation when the supporting state becomes directly involved."
-   },
-   {
-    "trend_id": "sanctions_and_arms_embargo",
-    "lift_bucket": "Medium",
-    "lift_pct": "+3-7%",
-    "reason": "Internationalised conflicts with external sponsors frequently attract UN sanctions and arms embargoes against the supporting party or recipient."
-   },
-   {
-    "trend_id": "territorial_disputes",
-    "lift_bucket": "Medium",
-    "lift_pct": "+3-5%",
-    "reason": "External support often correlates with territorial-autonomy conflicts where a neighbouring state backs separatist rebels."
-   }
-  ]
- },
- {
   "code": "UNHCR_REF_COA",
   "name": "Refugees by Country of Asylum (total stock, end-year)",
   "provider": "UNHCR",
@@ -1969,7 +1879,7 @@
   "year_start": 1951,
   "year_end": 2024,
   "coverage_note": "UNHCR population statistics are near-universal; early decades (1951-1980) cover mainly Cold-War displacement cases; modern coverage from ~1990 is comprehensive with consistent methodology.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "migration_and_refugees",
@@ -2011,7 +1921,7 @@
   "year_start": 1990,
   "year_end": 2024,
   "coverage_note": "UNHCR POPSTATS near-universal; some micro-states and closed autocracies have structural underreporting, but coverage is very broad.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "migration_and_refugees",
@@ -2059,7 +1969,7 @@
   "year_start": 2000,
   "year_end": 2023,
   "coverage_note": "Reliable derivation requires both pending stock and decisions data; coverage limited to ~85 receiving states with functioning asylum systems; thin pre-2000; derived field needs construction from raw UNHCR tables.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "migration_and_refugees",
@@ -2095,7 +2005,7 @@
   "year_start": 1990,
   "year_end": 2022,
   "coverage_note": "Coverage is sparse and uneven; many countries do not report consistently; series has long gaps especially in Africa and MENA; only ~80-100 countries have usable multi-year series.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "labor_action",
@@ -2137,7 +2047,7 @@
   "year_start": 1995,
   "year_end": 2023,
   "coverage_note": "ILOSTAT administrative and survey data; sparse for informal-economy-heavy sub-Saharan and South Asian countries; reporting gaps create uneven time series.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "labor_action",
@@ -2179,7 +2089,7 @@
   "year_start": 2010,
   "year_end": 2022,
   "coverage_note": "Coverage limited to low- and lower-middle-income countries where household surveys exist; high-income OECD countries absent; irregular survey rounds mean time series has gaps (often 3-5 year intervals, not annual).",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "poverty_and_inequality_crisis",
@@ -2227,7 +2137,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem near-universal coverage; pre-WWII estimates rely on thin expert codings; post-1990 series most reliable for ML training.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -2275,7 +2185,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem coverage from 1900; broad cross-national coverage; the ambiguous-case coding is conceptually sparse in years with clear regime types but precisely targeted when it fires.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "democratic_transition",
@@ -2323,7 +2233,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-coded; standard global coverage; reliability improves post-1950 as expert pools densify.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "executive_power_consolidation",
@@ -2371,7 +2281,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-scored; global coverage with higher score uncertainty in early decades and micro-states.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "executive_power_consolidation",
@@ -2413,7 +2323,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem full panel; coverage strongest post-1945; pre-1945 labour context harder to code for some regions.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "labor_action",
@@ -2455,7 +2365,7 @@
   "year_start": 1989,
   "year_end": 2023,
   "coverage_note": "UCDP GED/OS covers ~150 conflict-affected countries from 1989; countries with zero one-sided violence have missing or zero records — coverage is event-conditional, not universal; peaceful high-income countries will show zeros/NAs.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -2503,7 +2413,7 @@
   "year_start": 1989,
   "year_end": 2023,
   "coverage_note": "UCDP/PRIO-ACD; same coverage as SB conflict series; binary variable so zero-inflated; all active-conflict countries captured with consistent threshold coding.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "civil_war_and_insurgency",
@@ -2538,54 +2448,6 @@
   ]
  },
  {
-  "code": "OWID_STATECAP_COERCE",
-  "name": "Coercive State Capacity (Hanson & Sigman)",
-  "provider": "OWID",
-  "category": "Military",
-  "votes": 7,
-  "note": "Sub-dimension: government control of territory and monopoly on legitimate force; 177 countries 1960-2015",
-  "license": "CC BY 4.0",
-  "why": "The Hanson-Sigman coercive state capacity sub-dimension measures a government's control over territory and monopoly on the legitimate use of force — the foundational prerequisite for conflict suppression and public order. It captures state fragility specifically on the coercion axis, distinct from extractive or administrative capacity, providing unique predictive value for conflict-related Trends.",
-  "country_coverage": 177,
-  "coverage_confidence": "medium",
-  "year_start": 1960,
-  "year_end": 2015,
-  "coverage_note": "Hanson-Sigman dataset ends 2015; no updates planned — treat as a structural slow-moving baseline covariate; increasingly stale for post-2015 windows.",
-  "replaces_signal": null,
-  "trends": [
-   {
-    "trend_id": "civil_war_and_insurgency",
-    "lift_bucket": "High",
-    "lift_pct": "+10-18%",
-    "reason": "Coercive capacity directly governs whether the state can suppress insurgencies; low scores are a well-validated conflict onset predictor."
-   },
-   {
-    "trend_id": "military_coup",
-    "lift_bucket": "High",
-    "lift_pct": "+8-15%",
-    "reason": "Coercive capacity fragmentation (competing armed actors) is a structural coup prerequisite; this dimension captures that fragmentation."
-   },
-   {
-    "trend_id": "political_repression",
-    "lift_bucket": "Medium",
-    "lift_pct": "+5-10%",
-    "reason": "Both very low (state too weak to repress) and moderate (state resorting to force) scores correlate with repression events through different mechanisms."
-   },
-   {
-    "trend_id": "ethnic_and_communal_conflict",
-    "lift_bucket": "Medium",
-    "lift_pct": "+6-11%",
-    "reason": "Weak territorial control enables communal militias to operate; coercive capacity is a plausible structural discriminator."
-   },
-   {
-    "trend_id": "territorial_disputes",
-    "lift_bucket": "Medium",
-    "lift_pct": "+5-9%",
-    "reason": "Inability to control territory correlates with disputed zones being actively contested; the sub-dimension is a proximate structural measure."
-   }
-  ]
- },
- {
   "code": "ET-001",
   "name": "Mean surface temperature change on land (degrees C vs 1951-1980 baseline)",
   "provider": "FAOSTAT",
@@ -2599,7 +2461,7 @@
   "year_start": 1961,
   "year_end": 2025,
   "coverage_note": "FAOSTAT temperature-change series covers virtually all countries from 1961 with annual updates; baseline period 1951-1980; small island states occasionally missing.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "drought_and_famine",
@@ -2647,7 +2509,7 @@
   "year_start": 2001,
   "year_end": 2023,
   "coverage_note": "Annual estimates from 2001; pre-2001 data are available for some countries as 3-year averages but are less comparable; FAOSTAT reports 3-year rolling averages which smooth year-to-year variance.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "drought_and_famine",
@@ -2695,7 +2557,7 @@
   "year_start": 2014,
   "year_end": 2023,
   "coverage_note": "FIES survey data from 2014; shorter time series than PoU; coverage broadened post-2016 via Gallup World Poll integration; pre-2014 imputed values available but modelled.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "drought_and_famine",
@@ -2743,7 +2605,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem near-universal; pre-1945 codings estimated from historical sources with wider uncertainty; post-1989 most reliable for conflict-focused Trends.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "civil_war_and_insurgency",
@@ -2791,7 +2653,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert survey; good coverage from 1945 onward; colonial-era coding less reliable for very small or administered territories.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "foreign_intervention",
@@ -2839,7 +2701,7 @@
   "year_start": 1988,
   "year_end": 2023,
   "coverage_note": "WB WDI from 1988 (SIPRI-sourced); some states have multi-year gaps due to unreported or classified budgets.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "military_coup",
@@ -2868,48 +2730,6 @@
   ]
  },
  {
-  "code": "OWID_STATECAP_EXTRACT",
-  "name": "Extractive State Capacity (Hanson & Sigman)",
-  "provider": "OWID",
-  "category": "Governance",
-  "votes": 8,
-  "note": "Sub-dimension: government ability to raise sustainable revenues (tax+non-tax); 177 countries 1960-2015",
-  "license": "CC BY 4.0",
-  "why": "Extractive state capacity — the government's ability to raise sustained revenues — is a foundational determinant of fiscal resilience, public goods provision, and regime stability; states that cannot tax reliably are far more vulnerable to fiscal crises, foreign-debt spirals, and popular delegitimisation. It is theoretically distinct from administrative or coercive capacity and adds non-redundant signal.",
-  "country_coverage": 177,
-  "coverage_confidence": "medium",
-  "year_start": 1960,
-  "year_end": 2015,
-  "coverage_note": "Hanson & Sigman dataset ends at 2015; post-2015 gap limits near-term predictive window unless complemented by WB tax-revenue indicators.",
-  "replaces_signal": null,
-  "trends": [
-   {
-    "trend_id": "fiscal_policy_change",
-    "lift_bucket": "High",
-    "lift_pct": "+7-13%",
-    "reason": "Revenue-raising capacity sets the structural ceiling for fiscal policy; low extractive capacity predicts austerity-forced policy shifts."
-   },
-   {
-    "trend_id": "banking_and_financial_crisis",
-    "lift_bucket": "Medium",
-    "lift_pct": "+5-9%",
-    "reason": "Governments with weak extractive capacity cannot backstop financial systems, raising sovereign-bank nexus vulnerability."
-   },
-   {
-    "trend_id": "economic_recession",
-    "lift_bucket": "Medium",
-    "lift_pct": "+4-8%",
-    "reason": "Low fiscal capacity limits counter-cyclical response, deepening and lengthening recessions."
-   },
-   {
-    "trend_id": "political_repression",
-    "lift_bucket": "Low",
-    "lift_pct": "+2-5%",
-    "reason": "Revenue-starved states sometimes resort to coercive rent extraction in lieu of legitimate taxation."
-   }
-  ]
- },
- {
   "code": "v2x_pubcorr",
   "name": "Public Sector Corruption Index",
   "provider": "V-Dem",
@@ -2923,7 +2743,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem standard coverage; near-universal for post-1945; pre-1945 estimates have wider confidence intervals. For QGI the effective window is 1970-2024 given recipe length requirements.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_corruption",
@@ -2971,7 +2791,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-coded; very broad coverage; note this index captures regime-level corruption specifically, not general public sector corruption (covered separately by v2x_pubcorr).",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_corruption",
@@ -3013,7 +2833,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem near-universal coverage from 1900; expert-coded with good developing-country representation; modern period (post-1970) most reliable.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_corruption",
@@ -3061,7 +2881,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "Full V-Dem coverage from 1900; regime-end and restart dates validated by expert coders; near-complete for all sovereign states.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "military_coup",
@@ -3103,7 +2923,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "Coverage follows V-Dem country-year scope (~180 countries from 1900); ERT episodes are well-validated from ~1974 onward (Third Wave democracies); pre-1974 episode coding is thinner.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "executive_power_consolidation",
@@ -3151,7 +2971,7 @@
   "year_start": 1989,
   "year_end": 2023,
   "coverage_note": "UCDP OSV dataset covers all conflict-affected contexts ≥25 deaths/year threshold; zero-coded for non-atrocity country-years; reliable from 1989.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -3199,7 +3019,7 @@
   "year_start": 1993,
   "year_end": 2024,
   "coverage_note": "UNHCR IDP stock is limited to countries where UNHCR has operational presence and a mandate; coverage far narrower than IDMC (~80 countries vs 150+); significantly correlated with IDMC_CONF_STOCK_POP so feature collinearity is a concern.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "civil_war_and_insurgency",
@@ -3247,7 +3067,7 @@
   "year_start": 1990,
   "year_end": 2024,
   "coverage_note": "UNHCR annual data; pre-2000 IDP estimates less systematic; derived composite requires consistent sub-series availability; small-island states may have near-zero values creating structural zeros.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "humanitarian_crisis",
@@ -3295,7 +3115,7 @@
   "year_start": 2014,
   "year_end": 2023,
   "coverage_note": "FIES suite only available from 2014 when FAO began the global rollout; coverage improving annually but short time series limits historical backfill; partial coverage in high-income countries (low relevance).",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "drought_and_famine",
@@ -3343,7 +3163,7 @@
   "year_start": 1998,
   "year_end": 2023,
   "coverage_note": "WB WDI; coverage improves markedly after 2000; sparse for low-income and fragile states; some gaps in early 2000s for transition economies.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "banking_and_financial_crisis",
@@ -3391,7 +3211,7 @@
   "year_start": 1970,
   "year_end": 2022,
   "coverage_note": "WB WDI back to 1970 for most producers; non-oil countries report zero (which is valid), so effective signal coverage is narrower (~60-70 countries with non-trivial values).",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "oil_and_gas",
@@ -3439,7 +3259,7 @@
   "year_start": 1970,
   "year_end": 2022,
   "coverage_note": "WB WDI broad coverage from 1970; some micro-states and recent entrants have gaps; rents methodology revised several times so early series may not be fully comparable.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "resource_conflict",
@@ -3481,7 +3301,7 @@
   "year_start": 1995,
   "year_end": 2023,
   "coverage_note": "ILO modelled estimates extend coverage to ~190 countries but rely on imputation for many developing economies; direct survey-based estimates are available for ~100 countries; modelled values for low-data countries carry higher uncertainty.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "mass_protest",
@@ -3529,7 +3349,7 @@
   "year_start": 2010,
   "year_end": 2023,
   "coverage_note": "FAOSTAT SDG 2.c.1; coverage limited to countries with sufficient price series data; shorter time series (~2010+) constrains recipe training on early history; benchmark-year or sparse collection in some countries.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "mass_protest",
@@ -3564,54 +3384,6 @@
   ]
  },
  {
-  "code": "CAHD-002",
-  "name": "Prevalence of population unable to afford a healthy diet (% population)",
-  "provider": "FAOSTAT",
-  "category": "Social",
-  "votes": 8,
-  "note": "Share unable to afford CoHD; demand-side food access gap with income distribution component.",
-  "license": "CC BY 4.0",
-  "why": "The prevalence of inability to afford a healthy diet combines food price levels with household income distributions, making it a demand-side food security indicator that is sensitive to both commodity price shocks and welfare inequality — it directly precedes food-related grievances and can escalate rapidly when prices spike. Unlike production-side metrics, it captures whether populations can actually access adequate food.",
-  "country_coverage": 150,
-  "coverage_confidence": "medium",
-  "year_start": 2017,
-  "year_end": 2022,
-  "coverage_note": "FAO Cost of Healthy Diet methodology only became available from 2017; short time series limits recipe walk depth — this is a significant caveat for XGBoost walks requiring multi-year movement shapes. Coverage ~150 countries.",
-  "replaces_signal": null,
-  "trends": [
-   {
-    "trend_id": "drought_and_famine",
-    "lift_bucket": "High",
-    "lift_pct": "+6-12%",
-    "reason": "Unaffordability of healthy diet is the closest available proxy to famine access-failure; it directly measures the demand-side food security collapse that characterises famine onset."
-   },
-   {
-    "trend_id": "mass_protest",
-    "lift_bucket": "High",
-    "lift_pct": "+5-10%",
-    "reason": "Food price grievances are among the strongest empirical predictors of protest onset; unaffordable healthy diet captures the income-price interaction that triggers mobilisation."
-   },
-   {
-    "trend_id": "poverty_and_inequality_crisis",
-    "lift_bucket": "High",
-    "lift_pct": "+5-9%",
-    "reason": "Diet unaffordability is a direct outcome measure of poverty and inequality; strongly correlated with income distribution and purchasing power."
-   },
-   {
-    "trend_id": "humanitarian_crisis",
-    "lift_bucket": "Medium",
-    "lift_pct": "+3-7%",
-    "reason": "Food insecurity at scale is a defining component of humanitarian crises; this indicator contributes a demand-side dimension absent from supply metrics."
-   },
-   {
-    "trend_id": "economic_recession",
-    "lift_bucket": "Low",
-    "lift_pct": "+1-3%",
-    "reason": "Short time series (2017+) and indirect link make this a marginal feature for economic recession; likely below top-40 threshold for this Trend given competition from macro indicators."
-   }
-  ]
- },
- {
   "code": "OWID_SLUM_SHARE",
   "name": "Urban Slum Population Share (%)",
   "provider": "OWID",
@@ -3625,7 +3397,7 @@
   "year_start": 1990,
   "year_end": 2020,
   "coverage_note": "UN-HABITAT via OWID; coverage strongest for developing-country cities; high-income OECD countries often excluded or near-zero; temporal frequency sparse (census-linked, ~5-year updates); interpolation needed for annual ML features.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "mass_protest",
@@ -3667,7 +3439,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem full coverage ~180 countries from 1900; expert-coded so no data gaps, but coding quality for authoritarian states with limited observer access may carry higher uncertainty.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_corruption",
@@ -3715,7 +3487,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem near-universal country coverage from 1900; expert-coded with measurement uncertainty intervals; reliable post-1970 for most countries.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "executive_power_consolidation",
@@ -3763,7 +3535,7 @@
   "year_start": 1990,
   "year_end": 2022,
   "coverage_note": "UNDP HDR coverage ~150 countries but survey-dependent — high-income and conflict countries have gaps; annual interpolation used between survey rounds, reducing temporal precision; distinct from GINI so not redundant with WB series.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "poverty_and_inequality_crisis",
@@ -3811,7 +3583,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem near-universal; pre-WWII estimates carry wider uncertainty; most reliable and most relevant for post-1945 democratic contexts.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "executive_power_consolidation",
@@ -3859,7 +3631,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert survey; strong historical coverage; the indicator is most meaningful in competitive political systems — coding exists but has less discriminating power in fully closed autocracies.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "elections_and_voting",
@@ -3907,7 +3679,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem standard global coverage; expert-coded composite; more reliable post-1950 as organizational data improves.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "democratic_transition",
@@ -3955,7 +3727,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-coded; full country-year panel back to 1900 with typical uncertainty caveats for early decades.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "executive_power_consolidation",
@@ -3997,7 +3769,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem full panel; single-party or zero-legislature periods coded at floor values; coding reliability strongest post-1950.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "executive_power_consolidation",
@@ -4039,7 +3811,7 @@
   "year_start": 2000,
   "year_end": 2024,
   "coverage_note": "V-Dem covers ~180 countries; internet censorship coding starts meaningfully around 2000 when internet penetration became geopolitically relevant; pre-2000 data exists but has low variance and limited signal; expert codings are most reliable post-2010.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -4087,7 +3859,7 @@
   "year_start": 2000,
   "year_end": 2024,
   "coverage_note": "V-Dem; global coverage but reliable only post-2000 for v2sm* items; expert-survey based so may lag fast-moving information environments by 1-2 years; pre-2008 values near-zero for most countries.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "foreign_intervention",
@@ -4135,7 +3907,7 @@
   "year_start": 2000,
   "year_end": 2024,
   "coverage_note": "V-Dem standard coverage; this item was only added once internet/social media became relevant, so reliable data effectively starts around 2000-2005; pre-2000 data should not be used.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "mass_protest",
@@ -4183,7 +3955,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-coded binary/ordinal; coverage near-universal; anti-system movement coding requires expert judgement so inter-coder reliability varies more than structural indicators.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "mass_protest",
@@ -4225,7 +3997,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-coded; near-universal coverage from 1900; annual cadence with good developing-country expert networks.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "mass_protest",
@@ -4273,7 +4045,7 @@
   "year_start": 1900,
   "year_end": 2025,
   "coverage_note": "Full V-Dem RoW coverage from 1900; OWID-hosted for easy access; treated as ordered categorical or one-hot encoded for XGBoost; essentially complete contemporary coverage.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "military_coup",
@@ -4321,7 +4093,7 @@
   "year_start": 1960,
   "year_end": 2015,
   "coverage_note": "Series ends at 2015 — a meaningful recency gap; recent events (2016-2024) will be unrepresented, limiting leading-signal utility for current-window predictions. No planned update known.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "civil_war_and_insurgency",
@@ -4356,96 +4128,6 @@
   ]
  },
  {
-  "code": "UCDP_DECO_ELECTORAL_VIOLENCE",
-  "name": "Deadly Electoral Violence Events (count, country-year, from DECO)",
-  "provider": "UCDP",
-  "category": "Governance",
-  "votes": 8,
-  "note": "Count of georeferenced lethal electoral violence events; election-period instability signal distinct from armed conflict",
-  "license": "CC BY 4.0",
-  "why": "Georeferenced lethal electoral violence event counts capture the specific political-competition violence that clusters around electoral cycles — distinct from armed conflict, it signals contested political environments where candidates, parties, and voters face physical coercion, which is a leading indicator of disputed elections, regime delegitimisation, and post-election crisis escalation.",
-  "country_coverage": 100,
-  "coverage_confidence": "medium",
-  "year_start": 1990,
-  "year_end": 2022,
-  "coverage_note": "UCDP DECO covers electoral events with documented deaths; many country-years are zeros (non-occurrences); coverage limited to countries with documented electoral violence; ends ~2022 in current release.",
-  "replaces_signal": null,
-  "trends": [
-   {
-    "trend_id": "elections_and_voting",
-    "lift_bucket": "High",
-    "lift_pct": "+9-18%",
-    "reason": "Electoral violence directly shapes and precedes contested election events — the count is the most precise leading signal for high-risk electoral periods."
-   },
-   {
-    "trend_id": "political_violence",
-    "lift_bucket": "High",
-    "lift_pct": "+7-14%",
-    "reason": "Lethal electoral violence is a specific sub-type of political violence with documented periodicity around electoral cycles."
-   },
-   {
-    "trend_id": "political_repression",
-    "lift_bucket": "Medium",
-    "lift_pct": "+4-8%",
-    "reason": "Electoral violence by incumbents is often a manifestation of broader repression of political competition."
-   },
-   {
-    "trend_id": "government_formation",
-    "lift_bucket": "Medium",
-    "lift_pct": "+3-7%",
-    "reason": "Electoral violence signals disputed legitimacy that complicates post-election government formation and coalition building."
-   }
-  ]
- },
- {
-  "code": "UCDP_VIOL_PROTEST_DEATHS",
-  "name": "Violent Political Protest Deaths (country-year aggregate)",
-  "provider": "UCDP",
-  "category": "Governance",
-  "votes": 8,
-  "note": "Fatalities from violent political protests (below armed conflict threshold); protest repression and political volatility signal",
-  "license": "CC BY 4.0",
-  "why": "Deaths from violent political protests sit below the armed-conflict threshold but above routine demonstrations, marking the inflection zone where state-civilian tension escalates — this sub-conflict violence level is a leading indicator of full conflict onset and political regime instability.",
-  "country_coverage": 145,
-  "coverage_confidence": "high",
-  "year_start": 1989,
-  "year_end": 2023,
-  "coverage_note": "Derived from UCDP GED events classified as political protests with lethal outcomes; available wherever GED has coverage (~145 countries); zero-inflated — peaceful countries will record zero for most years.",
-  "replaces_signal": null,
-  "trends": [
-   {
-    "trend_id": "mass_protest",
-    "lift_bucket": "High",
-    "lift_pct": "+7-13%",
-    "reason": "Lethal protest events are the direct quantitative measure of violent mobilization defining this Trend; high specificity."
-   },
-   {
-    "trend_id": "political_repression",
-    "lift_bucket": "High",
-    "lift_pct": "+6-11%",
-    "reason": "Protest fatalities frequently arise from state repression of demonstrators; strong bidirectional signal."
-   },
-   {
-    "trend_id": "political_violence",
-    "lift_bucket": "High",
-    "lift_pct": "+6-10%",
-    "reason": "Sub-conflict lethal protest deaths are a primary component of political violence Trend; near-definitional link."
-   },
-   {
-    "trend_id": "democratic_transition",
-    "lift_bucket": "Medium",
-    "lift_pct": "+3-6%",
-    "reason": "Protest-driven violence often precedes or accompanies democratization episodes; useful leading signal."
-   },
-   {
-    "trend_id": "civil_war_and_insurgency",
-    "lift_bucket": "Medium",
-    "lift_pct": "+3-6%",
-    "reason": "Escalating protest violence is a recognized early-stage conflict escalation signal; moderate predictive value."
-   }
-  ]
- },
- {
   "code": "UCDP_GED_TOTAL_DEATHS",
   "name": "GED Total Deaths Best Estimate (all types combined, country-year)",
   "provider": "UCDP",
@@ -4459,7 +4141,7 @@
   "year_start": 1989,
   "year_end": 2023,
   "coverage_note": "UCDP GED covers conflict-affected countries only; zero-violence countries absent or coded zero from 1989; pre-1989 not available; data most complete for Africa, Middle East, Asia.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "civil_war_and_insurgency",
@@ -4507,7 +4189,7 @@
   "year_start": 1989,
   "year_end": 2023,
   "coverage_note": "UCDP conflict-affected countries only; countries with no conflict history have zero variance — the indicator adds value in the relevant risk-exposed pool; binary, so no scaling issues.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "civil_war_and_insurgency",
@@ -4555,7 +4237,7 @@
   "year_start": 1989,
   "year_end": 2023,
   "coverage_note": "Derived from UCDP GED/PRIO-ACD; only covers countries with at least one observed conflict episode; conflict-naive countries require a zero/null treatment convention.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "civil_war_and_insurgency",
@@ -4590,48 +4272,6 @@
   ]
  },
  {
-  "code": "UCDP_PEACE_AGREE_SIGNED",
-  "name": "Peace Agreement Signed (binary, country-year, from UCDP PAD)",
-  "provider": "UCDP",
-  "category": "Governance",
-  "votes": 8,
-  "note": "Binary: at least one peace agreement signed in country-year; peace process milestone signal from UCDP Peace Agreement Dataset",
-  "license": "CC BY 4.0",
-  "why": "A binary flag for peace agreement signings captures a discrete institutional milestone in conflict resolution that reshapes the political landscape — creating both opportunities for sustained peace and risks of implementation failure and spoiler violence. As a leading-to-lagging marker it is useful on both sides: post-conflict Trends can be anchored to the agreement date, and the absence of agreements despite prolonged conflict is itself informative.",
-  "country_coverage": 100,
-  "coverage_confidence": "medium",
-  "year_start": 1989,
-  "year_end": 2023,
-  "coverage_note": "UCDP PAD covers only conflict-affected countries (by definition); most country-years are zero, which is valid but sparse — effectively a conditional indicator.",
-  "replaces_signal": null,
-  "trends": [
-   {
-    "trend_id": "peacekeeping_and_peace_process",
-    "lift_bucket": "High",
-    "lift_pct": "+10-18%",
-    "reason": "Direct measurement of the defining event in this Trend category; agreement signing is the canonical terminating event for armed conflict phases."
-   },
-   {
-    "trend_id": "civil_war_and_insurgency",
-    "lift_bucket": "High",
-    "lift_pct": "+6-12%",
-    "reason": "Agreement signings follow civil war phases and predict short-term conflict intensity drops; the lead-lag relationship is strong and bidirectional in time-series."
-   },
-   {
-    "trend_id": "transitional_justice",
-    "lift_bucket": "Medium",
-    "lift_pct": "+4-8%",
-    "reason": "Peace agreements often include transitional justice provisions; signing year is a temporal anchor for accountability-process events."
-   },
-   {
-    "trend_id": "political_repression",
-    "lift_bucket": "Low",
-    "lift_pct": "+2-4%",
-    "reason": "Failed or stalled agreements can coincide with renewed repression of civil society; marginal signal through the implementation-failure pathway."
-   }
-  ]
- },
- {
   "code": "UNHCR_REF_COO",
   "name": "Refugees by Country of Origin (total stock, end-year)",
   "provider": "UNHCR",
@@ -4645,7 +4285,7 @@
   "year_start": 1951,
   "year_end": 2024,
   "coverage_note": "UNHCR; near-universal coverage; pre-1990 series sparse for many countries; consistent annual data broadly available from ~1990 onward; near-zero values for stable countries still present in series.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "migration_and_refugees",
@@ -4693,7 +4333,7 @@
   "year_start": 1990,
   "year_end": 2023,
   "coverage_note": "UNHCR stateless data is highly uneven — it depends on countries actively reporting stateless populations, which many do not; actual global stateless population is estimated at 4M+ but recorded total is ~3.9M across ~90 reporting countries; undercount is severe for Asia (especially South/Southeast Asia) where statelessness is most prevalent.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "ethnic_and_communal_conflict",
@@ -4741,7 +4381,7 @@
   "year_start": 1995,
   "year_end": 2024,
   "coverage_note": "ILOSTAT modelled estimates extend coverage to ~165 countries from the 2000s; raw survey data sparser for LICs pre-2005; SDG 8.6.1 custodian series with improving annual updates; sex disaggregation adds optional feature dimension.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "mass_protest",
@@ -4789,7 +4429,7 @@
   "year_start": 1990,
   "year_end": 2023,
   "coverage_note": "Coverage is good for countries with IMF/GFS reporting; many low-income and conflict-affected states have inconsistent or missing series; pre-1995 data are sparse for most developing countries.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "fiscal_policy_change",
@@ -4837,7 +4477,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem near-universal coverage with expert-coded measurement; especially reliable post-1970; the composite aggregation smooths individual component noise.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -4885,7 +4525,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem near-universal coverage from 1900; reliable from ~1945 onwards for most countries; microstates and island nations may have thinner expert coverage pre-1990.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -4933,7 +4573,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem near-universal; pre-1945 coding sparse and expert-estimated; contemporary series (post-1990) most informative for political Trends.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -4981,7 +4621,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert survey; global coverage; indicator fires episodically so country-years with attacks are a minority — but the signal is highly discriminating when it does fire.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -5029,7 +4669,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-coded; standard global coverage; more reliable in modern era where media environments are better observed.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -5077,7 +4717,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-coded; globally consistent panel; individual event-level accuracy in autocracies may be understated due to hidden repression.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -5119,7 +4759,7 @@
   "year_start": 1990,
   "year_end": 2024,
   "coverage_note": "V-Dem social media indicators coded from 1990; pre-social-media years reflect offline propaganda proxies so early values require interpretation caution.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "executive_power_consolidation",
@@ -5161,7 +4801,7 @@
   "year_start": 2000,
   "year_end": 2024,
   "coverage_note": "V-Dem expert codings cover ~180 countries; online arrest variable is most reliable post-2010 as social media became politically relevant; pre-2010 values reflect early internet-era blogger arrests and have lower cross-expert agreement; signal is sparse for very closed states where arrests may be underreported to outside experts.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -5209,7 +4849,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem; global coverage from 1900; expert-survey methodology provides consistent coding across regime types; high confidence for post-1990 data across all regions.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "mass_protest",
@@ -5257,7 +4897,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem standard coverage; reliable for post-1945; effective QGI window ~1970-2024. Binary nature means the variable is sparse in stable periods, which is informative but may limit predictive utility in non-crisis baselines.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -5305,7 +4945,7 @@
   "year_start": 1989,
   "year_end": 2023,
   "coverage_note": "UCDP GED/PRIO-ACD covers all country-years with active state-based conflict from 1989; non-conflict countries are coded zero; coverage is comprehensive for conflict cases but the series is sparse before 1989.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "civil_war_and_insurgency",
@@ -5353,7 +4993,7 @@
   "year_start": 1989,
   "year_end": 2023,
   "coverage_note": "UCDP GED covers conflict-affected countries 1989-2023; zero-inflated but informative zeros for peaceful countries; sparse for low-violence years in otherwise active regions.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "human_rights_violation",
@@ -5401,7 +5041,7 @@
   "year_start": 1989,
   "year_end": 2023,
   "coverage_note": "UCDP GED non-state coverage from 1989; limited to countries with recorded non-state events; zero-event countries implicitly 0 but require explicit coding in feature construction; Africa and Asia best covered.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "ethnic_and_communal_conflict",
@@ -5449,7 +5089,7 @@
   "year_start": 1990,
   "year_end": 2023,
   "coverage_note": "UNODC data via WB; good global coverage post-2000; some fragile/conflict states have estimated rather than reported rates; early 1990s are thin for former Soviet and sub-Saharan Africa.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_violence",
@@ -5497,7 +5137,7 @@
   "year_start": 1960,
   "year_end": 2023,
   "coverage_note": "WB WDI sourced from UN WPP; near-universal coverage from 1960; some interpolation for small states and conflict countries in early years.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "mass_protest",
@@ -5545,7 +5185,7 @@
   "year_start": 2000,
   "year_end": 2023,
   "coverage_note": "ILOSTAT modelled estimates cover ~180 countries but many data-poor countries rely on imputed ILO models rather than survey data; early years (pre-2005) have wider confidence intervals; sex-disaggregated breakdowns available for a subset.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "poverty_and_inequality_crisis",
@@ -5593,7 +5233,7 @@
   "year_start": 1990,
   "year_end": 2022,
   "coverage_note": "UNDP HDR; coverage good for 160+ countries from 1995; small-island and micro-state gaps; GII computation requires multiple sub-indicators so countries missing any sub-component are excluded from that year.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "poverty_and_inequality_crisis",
@@ -5641,7 +5281,7 @@
   "year_start": 1990,
   "year_end": 2022,
   "coverage_note": "UNDP HDR coverage; requires distributional data for all three HDI components — a few small or data-sparse countries are excluded; reported every 1-2 years with interpolated values.",
-  "replaces_signal": null,
+  "replaces": null,
   "trends": [
    {
     "trend_id": "poverty_and_inequality_crisis",
@@ -5676,54 +5316,6 @@
   ]
  },
  {
-  "code": "OWID_STATECAP_ADMIN",
-  "name": "Administrative State Capacity (Hanson & Sigman)",
-  "provider": "OWID",
-  "category": "Governance",
-  "votes": 8,
-  "note": "Sub-dimension: bureaucratic quality, skilled/impartial public servants; 177 countries 1960-2015",
-  "license": "CC BY 4.0",
-  "why": "Administrative state capacity measures government ability to deliver services through skilled, impartial bureaucracies — a foundational pillar of stability that determines whether fiscal resources translate into public goods or patronage, and whether formal policies are actually implemented. It captures the bureaucratic implementation gap that distinguishes fragile from resilient states independent of resource levels.",
-  "country_coverage": 177,
-  "coverage_confidence": "medium",
-  "year_start": 1960,
-  "year_end": 2015,
-  "coverage_note": "Hanson & Sigman Bayesian latent variable model; series ends at 2015 — significant staleness for recent regime changes; no updates planned, limiting utility for post-2015 events.",
-  "replaces_signal": null,
-  "trends": [
-   {
-    "trend_id": "humanitarian_crisis",
-    "lift_bucket": "High",
-    "lift_pct": "+5-10%",
-    "reason": "Low administrative capacity is the primary determinant of humanitarian crisis response failure; strong structural predictor."
-   },
-   {
-    "trend_id": "poverty_and_inequality_crisis",
-    "lift_bucket": "High",
-    "lift_pct": "+5-9%",
-    "reason": "Bureaucratic failure to deliver services and enforce redistribution drives persistent poverty; orthogonal to income-level signals."
-   },
-   {
-    "trend_id": "fiscal_policy_change",
-    "lift_bucket": "Medium",
-    "lift_pct": "+3-7%",
-    "reason": "Fiscal reforms succeed or fail based on administrative implementation capacity; adds state-effectiveness signal."
-   },
-   {
-    "trend_id": "democratic_transition",
-    "lift_bucket": "Medium",
-    "lift_pct": "+3-6%",
-    "reason": "Administrative capacity underpins election administration quality and post-transition institutional consolidation."
-   },
-   {
-    "trend_id": "economic_liberalization",
-    "lift_bucket": "Low",
-    "lift_pct": "+2-4%",
-    "reason": "Liberalization reforms require administrative capacity to implement; marginal orthogonal signal alongside governance composites."
-   }
-  ]
- },
- {
   "code": "UNHCR_IDP",
   "name": "Internally Displaced Persons (UNHCR-reported, end-year stock)",
   "provider": "UNHCR",
@@ -5737,7 +5329,7 @@
   "year_start": 1993,
   "year_end": 2024,
   "coverage_note": "UNHCR operational mandate covers ~100 countries; IDP data sparse pre-1993 and absent for low-displacement stable states.",
-  "replaces_signal": "displacement",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "civil_war_and_insurgency",
@@ -5785,7 +5377,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem covers ~180 countries from 1900; coverage is expert-coded and reliable from ~1945 onward.",
-  "replaces_signal": "rule-of-law/corruption",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_corruption",
@@ -5833,7 +5425,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem full-panel expert survey; reliable coverage from ~1945; thin for very small states pre-1990.",
-  "replaces_signal": "press-freedom",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -5875,7 +5467,7 @@
   "year_start": 1994,
   "year_end": 2024,
   "coverage_note": "Derived from UNHCR_IDP stock; requires two consecutive years of data, so effective start is 1994; same mandate coverage gaps apply.",
-  "replaces_signal": "displacement",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "civil_war_and_insurgency",
@@ -5917,7 +5509,7 @@
   "year_start": 1989,
   "year_end": 2023,
   "coverage_note": "UCDP GED covers all countries with at least one qualifying event; zero-event countries excluded, so effective coverage is conflict-affected states only (~150).",
-  "replaces_signal": "terrorism/violence",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "terrorist_attack",
@@ -5965,7 +5557,7 @@
   "year_start": 1960,
   "year_end": 2023,
   "coverage_note": "World Bank / SIPRI data via WB API; ~170 countries from 1960 with some gaps for small states and centrally planned economies pre-1990.",
-  "replaces_signal": "military-spending",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "military_coup",
@@ -6013,7 +5605,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem full-panel; reliable from ~1945; small-state coverage thins before 1970.",
-  "replaces_signal": "rule-of-law",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_corruption",
@@ -6055,7 +5647,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-coded panel; reliable from ~1945; coding thins for micro-states pre-1980.",
-  "replaces_signal": "press-freedom",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -6097,7 +5689,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-coded panel; reliable from ~1945; thin for micro-states and some conflict-affected states pre-1970.",
-  "replaces_signal": "press-freedom",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_repression",
@@ -6145,7 +5737,7 @@
   "year_start": 1989,
   "year_end": 2023,
   "coverage_note": "UCDP GED non-state dataset; coverage limited to countries with at least one qualifying event; zero-event peaceful states excluded.",
-  "replaces_signal": "terrorism/violence",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "ethnic_and_communal_conflict",
@@ -6193,7 +5785,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-coded panel; reliable from ~1945 for most regions; thin for micro-states and some Pacific island states.",
-  "replaces_signal": "rule-of-law/order-security",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_corruption",
@@ -6235,7 +5827,7 @@
   "year_start": 1989,
   "year_end": 2023,
   "coverage_note": "Derived from UCDP GED with ADM1 geocoding; coverage matches GED conflict-affected country set; ADM1 attribution quality improved post-2000.",
-  "replaces_signal": "terrorism/violence",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "civil_war_and_insurgency",
@@ -6283,7 +5875,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-coded panel; reliable from ~1945; thin for micro-states and some conflict-affected states.",
-  "replaces_signal": "rule-of-law/judicial",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_corruption",
@@ -6325,7 +5917,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-coded panel; reliable from ~1945; some thin coverage for micro-states and failed states where courts are non-functional.",
-  "replaces_signal": "rule-of-law/judicial",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "executive_power_consolidation",
@@ -6373,7 +5965,7 @@
   "year_start": 1989,
   "year_end": 2023,
   "coverage_note": "Coverage limited to countries with at least one OS violence event; actor attribution quality is high from UCDP but country-year counts are sparse for low-violence contexts; ~130 countries with at least one observation.",
-  "replaces_signal": "terrorism/violence",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "civil_war_and_insurgency",
@@ -6421,7 +6013,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-coded panel; reliable from ~1945; thin for micro-states and some Pacific island nations.",
-  "replaces_signal": "rule-of-law/corruption",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_corruption",
@@ -6469,7 +6061,7 @@
   "year_start": 1900,
   "year_end": 2024,
   "coverage_note": "V-Dem expert-coded panel; reliable from ~1945; thin for micro-states and failed-state contexts where judicial institutions are absent.",
-  "replaces_signal": "rule-of-law/judicial-accountability",
+  "replaces": null,
   "trends": [
    {
     "trend_id": "political_corruption",
@@ -6500,6 +6092,402 @@
     "lift_bucket": "Low",
     "lift_pct": "+3-5%",
     "reason": "Judicial accountability mechanisms are a key reform component in post-conflict transitional justice frameworks."
+   }
+  ]
+ },
+ {
+  "code": "UCDP_SB_INTRA_INTERNATIONALISED",
+  "name": "Internationalized intrastate conflict (active)",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": null,
+  "note": "ACD type_of_conflict=4: foreign-state involvement in internal conflict",
+  "license": "CC BY 4.0",
+  "why": "Flags whether a country hosts an intrastate conflict with direct foreign-state military involvement (ACD type_of_conflict=4), capturing the qualitative escalation from domestic civil war to internationalised proxy war — a dynamic associated with conflict prolongation, greater lethality, and reduced prospects for negotiated settlement. Foreign participation fundamentally reshapes the conflict's strategic landscape and is a strong signal for continued armed hostilities and intervention Trends.",
+  "country_coverage": 48,
+  "coverage_confidence": "high",
+  "year_start": 1946,
+  "year_end": 2025,
+  "coverage_note": "Covers only countries with at least one active intrastate conflict involving a foreign state; sparse by design — most country-years are zero, valid null signal for non-conflict states.",
+  "replaces": "UCDP_SB_EXT_SUPPORT",
+  "trends": [
+   {
+    "trend_id": "foreign_intervention",
+    "lift_bucket": "High",
+    "lift_pct": "+10-18%",
+    "reason": "Direct measurement of foreign-state military presence in an internal conflict; the indicator is definitionally aligned with this Trend and should be a top-5 feature."
+   },
+   {
+    "trend_id": "civil_war_and_insurgency",
+    "lift_bucket": "High",
+    "lift_pct": "+7-13%",
+    "reason": "Internationalisation of intrastate conflicts is strongly associated with conflict duration and intensity; the flag captures the escalation phase that precedes major insurgency milestones."
+   },
+   {
+    "trend_id": "peacekeeping_and_peace_process",
+    "lift_bucket": "Medium",
+    "lift_pct": "+4-8%",
+    "reason": "Internationalised conflicts generate stronger multilateral peacekeeping responses and mediation efforts; the presence of foreign states creates both complication and diplomatic leverage."
+   },
+   {
+    "trend_id": "interstate_war",
+    "lift_bucket": "Medium",
+    "lift_pct": "+3-7%",
+    "reason": "Internationalised intrastate conflicts sit on the boundary with interstate war; the indicator captures escalation risk where foreign involvement could widen into direct inter-state confrontation."
+   }
+  ]
+ },
+ {
+  "code": "UCDP_CONFLICT_TERMINATED",
+  "name": "Conflict episode terminated",
+  "provider": "UCDP",
+  "category": "Governance",
+  "votes": null,
+  "note": "ACD ep_end=1: conflict de-escalation/resolution flag",
+  "license": "CC BY 4.0",
+  "why": "Encodes the year in which an active conflict episode ended (ACD ep_end=1), providing a discrete de-escalation milestone that marks the transition from active hostilities to post-conflict recovery — a temporal anchor for peacekeeping, transitional justice, and political reconstruction Trends. Conflict termination events are strongly associated with power-sharing arrangements, ceasefires, and subsequent elections, making this a leading indicator for a cluster of political transition Trends.",
+  "country_coverage": 104,
+  "coverage_confidence": "high",
+  "year_start": 1946,
+  "year_end": 2024,
+  "coverage_note": "Covers all countries with at least one concluded UCDP conflict episode; conflict-affected country universe only — zero for non-conflict states is a valid negative signal.",
+  "replaces": "UCDP_PEACE_AGREE_SIGNED",
+  "trends": [
+   {
+    "trend_id": "peacekeeping_and_peace_process",
+    "lift_bucket": "High",
+    "lift_pct": "+9-16%",
+    "reason": "Conflict termination is the defining event in the peace process lifecycle; termination year and its proximity are among the strongest features for subsequent peace-process activity."
+   },
+   {
+    "trend_id": "civil_war_and_insurgency",
+    "lift_bucket": "High",
+    "lift_pct": "+7-12%",
+    "reason": "Termination events directly bound civil conflict episodes; the indicator captures the transition out of the event category, providing a leading negative signal for ongoing conflict."
+   },
+   {
+    "trend_id": "democratic_transition",
+    "lift_bucket": "Medium",
+    "lift_pct": "+4-8%",
+    "reason": "Post-conflict terminations frequently precede democratisation windows; the timing of conflict end is a well-established structural predictor for transition onset."
+   },
+   {
+    "trend_id": "transitional_justice",
+    "lift_bucket": "Medium",
+    "lift_pct": "+4-7%",
+    "reason": "Transitional justice mechanisms are activated in the years following conflict termination; the termination flag is the temporal trigger for accountability-process events."
+   },
+   {
+    "trend_id": "elections_and_voting",
+    "lift_bucket": "Low",
+    "lift_pct": "+2-4%",
+    "reason": "Post-conflict elections commonly follow termination within 2-4 years; weak but real leading signal through the peace-settlement pathway."
+   }
+  ]
+ },
+ {
+  "code": "UCDP_SB_INCOMPAT_TERR",
+  "name": "Territorial-incompatibility conflict (active)",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": null,
+  "note": "ACD incompatibility=2 (territory)",
+  "license": "CC BY 4.0",
+  "why": "Flags whether an active state-based conflict is fought over territorial control rather than governmental power (ACD incompatibility=2), identifying the subset of conflicts most associated with secessionism, border disputes, and minority-group territorial claims — dynamics linked to prolonged violence, partition risks, and regional spillovers. Territorial conflicts have distinct escalation and resolution pathways compared to governmental conflicts, and the distinction carries significant predictive value for diplomatic and peacekeeping Trends.",
+  "country_coverage": 89,
+  "coverage_confidence": "high",
+  "year_start": 1946,
+  "year_end": 2025,
+  "coverage_note": "Covers conflict-affected countries with territorial-incompatibility episodes only; sparse positive values by design — covers major secessionist and border-dispute theatres globally.",
+  "replaces": "UCDP_CONFLICT_ISSUES_TERR",
+  "trends": [
+   {
+    "trend_id": "territorial_disputes",
+    "lift_bucket": "High",
+    "lift_pct": "+10-17%",
+    "reason": "Direct measurement of the conflict type this Trend captures; territorial incompatibility is the definitional input to disputed-territory event modelling."
+   },
+   {
+    "trend_id": "civil_war_and_insurgency",
+    "lift_bucket": "High",
+    "lift_pct": "+6-11%",
+    "reason": "Territorial conflicts disproportionately manifest as secessionist insurgencies; distinguishing incompatibility type adds precision beyond generic conflict-active flags."
+   },
+   {
+    "trend_id": "interstate_war",
+    "lift_bucket": "Medium",
+    "lift_pct": "+4-8%",
+    "reason": "Territorial conflicts are more likely to escalate into inter-state confrontations when neighbouring states back secessionist parties; the indicator captures this escalation pathway."
+   },
+   {
+    "trend_id": "foreign_intervention",
+    "lift_bucket": "Medium",
+    "lift_pct": "+3-6%",
+    "reason": "Territorial conflicts attract kin-state and great-power intervention more than governmental conflicts; the incompatibility type moderates intervention likelihood."
+   }
+  ]
+ },
+ {
+  "code": "v2elpeace",
+  "name": "Election other electoral violence",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": null,
+  "note": "Non-state electoral violence (V-Dem)",
+  "license": "free-for-any-use (V-Dem)",
+  "why": "Measures non-state actor violence specifically tied to electoral periods (V-Dem v2elpeace), capturing the intensity of election-linked intimidation, assassination, and mob violence that falls outside direct government perpetration — a distinct form of political violence that suppresses participation and signals democratic fragility without necessarily triggering a full UCDP conflict episode. Electoral violence is a strong contemporaneous and leading signal for both election-integrity failures and broader post-election instability.",
+  "country_coverage": 198,
+  "coverage_confidence": "high",
+  "year_start": 1789,
+  "year_end": 2025,
+  "coverage_note": "V-Dem near-universal coverage from 1900 onwards; pre-1900 data limited to countries with documented historical elections; expert-coded ordinal scale.",
+  "replaces": "UCDP_DECO_ELECTORAL_VIOLENCE",
+  "trends": [
+   {
+    "trend_id": "elections_and_voting",
+    "lift_bucket": "High",
+    "lift_pct": "+8-15%",
+    "reason": "Electoral violence directly indexes the quality and security of the electoral process; a contemporaneous signal for disputed or suppressed elections likely to crack the top-10 for this Trend."
+   },
+   {
+    "trend_id": "political_violence",
+    "lift_bucket": "High",
+    "lift_pct": "+6-12%",
+    "reason": "Electoral violence is a specific sub-type of political violence; the indicator captures organised intimidation and targeted killing that precedes broader political violence escalation."
+   },
+   {
+    "trend_id": "mass_protest",
+    "lift_bucket": "Medium",
+    "lift_pct": "+4-8%",
+    "reason": "Post-election violence and vote-rigging perceptions are primary triggers for mass protest; electoral violence score is a leading indicator for election-dispute protests."
+   },
+   {
+    "trend_id": "democratic_transition",
+    "lift_bucket": "Medium",
+    "lift_pct": "+3-7%",
+    "reason": "High electoral violence is strongly correlated with failed or reversed democratic transitions; the indicator captures the competitive-authoritarianism dynamic within transition trajectories."
+   },
+   {
+    "trend_id": "political_repression",
+    "lift_bucket": "Low",
+    "lift_pct": "+2-4%",
+    "reason": "Non-state electoral violence often operates with state tolerance or facilitation; marginal signal for state-directed repression through the complicity pathway."
+   }
+  ]
+ },
+ {
+  "code": "UCDP_GED_UNREST_EVENTS",
+  "name": "Non-state + one-sided violence event tempo",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": null,
+  "note": "GED event count, type_of_violence in {2,3}",
+  "license": "CC BY 4.0",
+  "why": "Counts georeferenced GED events of non-state and one-sided violence types (type_of_violence in {2,3}), capturing the frequency of communal clashes and civilian targeting incidents below the state-conflict threshold — a tempo measure of sub-state political violence that reflects the density of organised unrest rather than its lethality alone. High event tempo is a strong contemporaneous predictor of mass protest escalation, humanitarian deterioration, and state capacity stress.",
+  "country_coverage": 107,
+  "coverage_confidence": "high",
+  "year_start": 1989,
+  "year_end": 2024,
+  "coverage_note": "GED coverage starts 1989; restricted to countries with recorded GED events — zero is a valid negative signal but only meaningful where UCDP monitoring is active.",
+  "replaces": "UCDP_VIOL_PROTEST_DEATHS",
+  "trends": [
+   {
+    "trend_id": "political_violence",
+    "lift_bucket": "High",
+    "lift_pct": "+9-16%",
+    "reason": "Event tempo is a direct frequency measure of sub-state political violence; dense event counts signal sustained organised violence even when individual incidents fall below conflict thresholds."
+   },
+   {
+    "trend_id": "ethnic_and_communal_conflict",
+    "lift_bucket": "High",
+    "lift_pct": "+7-13%",
+    "reason": "Non-state violence events predominantly capture communal and militia clashes; event count is the primary intensity measure for this conflict type."
+   },
+   {
+    "trend_id": "humanitarian_crisis",
+    "lift_bucket": "Medium",
+    "lift_pct": "+4-8%",
+    "reason": "One-sided civilian targeting events (type 3) directly generate displacement and humanitarian needs; rising event counts precede IDP spikes and crisis declarations."
+   },
+   {
+    "trend_id": "mass_protest",
+    "lift_bucket": "Medium",
+    "lift_pct": "+3-6%",
+    "reason": "High unrest event tempo co-occurs with protest mobilisation in fragile states; captures the volatile security environment that raises protest escalation risk."
+   }
+  ]
+ },
+ {
+  "code": "v2strenarm",
+  "name": "Remuneration in the armed forces",
+  "provider": "V-Dem",
+  "category": "Government",
+  "votes": null,
+  "note": "Coercive-capacity proxy: military professionalization (V-Dem)",
+  "license": "free-for-any-use (V-Dem)",
+  "why": "Measures the quality of remuneration in the armed forces as a proxy for military professionalism and coercive state capacity (V-Dem v2strenarm) — countries that pay soldiers adequately maintain more coherent, apolitical militaries less prone to defection, mutiny, or predatory behaviour toward civilians. Low remuneration signals state resource stress that degrades the military as an institution, which is associated with coup risk, warlordism, and the proliferation of armed non-state actors.",
+  "country_coverage": 197,
+  "coverage_confidence": "high",
+  "year_start": 1789,
+  "year_end": 2025,
+  "coverage_note": "V-Dem near-universal coverage from 1900; pre-1900 limited to states with documented military institutions; expert-coded ordinal scale with higher uncertainty in autocracies.",
+  "replaces": "OWID_STATECAP_COERCE",
+  "trends": [
+   {
+    "trend_id": "military_coup",
+    "lift_bucket": "High",
+    "lift_pct": "+6-12%",
+    "reason": "Under-paid soldiers with grievances over wages and conditions are a documented coup risk factor; remuneration captures the material basis of civil-military tension that precedes coups."
+   },
+   {
+    "trend_id": "military_policy_and_reform",
+    "lift_bucket": "High",
+    "lift_pct": "+5-10%",
+    "reason": "Military pay reform is itself a policy event; the indicator tracks both the baseline and changes that signal institutional restructuring events."
+   },
+   {
+    "trend_id": "civil_war_and_insurgency",
+    "lift_bucket": "Medium",
+    "lift_pct": "+4-8%",
+    "reason": "Poor military remuneration drives defections to armed groups and reduces counter-insurgency effectiveness; the state-capacity channel is well-established in fragile-state research."
+   },
+   {
+    "trend_id": "political_repression",
+    "lift_bucket": "Low",
+    "lift_pct": "+2-4%",
+    "reason": "Marginally: well-paid militaries are more effective instruments of repression when ordered to suppress dissent; the remuneration-capacity link adds a partial repression signal."
+   }
+  ]
+ },
+ {
+  "code": "GC.TAX.TOTL.GD.ZS",
+  "name": "Tax revenue (% of GDP)",
+  "provider": "WB",
+  "category": "Finance",
+  "votes": null,
+  "note": "Extractive/fiscal state capacity",
+  "license": "CC BY 4.0",
+  "why": "Tax revenue as a share of GDP measures the extractive dimension of state capacity — the government's ability to mobilise domestic resources through the fiscal system — with low tax ratios signalling weak institutional reach, high informal-economy share, and dependence on aid or natural-resource rents that are inherently volatile. Fiscal capacity is a structural determinant of state resilience: governments unable to tax lack the revenue to fund security forces, social transfers, or post-crisis recovery.",
+  "country_coverage": 101,
+  "coverage_confidence": "medium",
+  "year_start": 2010,
+  "year_end": 2023,
+  "coverage_note": "WB WDI; coverage moderate and skewed toward middle-income countries — many fragile and low-income states have gaps or very short series; coverage confidence downgraded to medium given sparse data in the highest-risk countries.",
+  "replaces": "OWID_STATECAP_EXTRACT",
+  "trends": [
+   {
+    "trend_id": "fiscal_policy_change",
+    "lift_bucket": "High",
+    "lift_pct": "+6-11%",
+    "reason": "Tax revenue ratio is the central metric for evaluating fiscal reform events; both level and change signal austerity pressures, tax reform milestones, and debt sustainability shifts."
+   },
+   {
+    "trend_id": "economic_recession",
+    "lift_bucket": "Medium",
+    "lift_pct": "+4-8%",
+    "reason": "Tax ratio contraction during downturns signals revenue collapse that constrains fiscal stimulus; low baseline ratios amplify recession depth in fragile states."
+   },
+   {
+    "trend_id": "mass_protest",
+    "lift_bucket": "Medium",
+    "lift_pct": "+3-7%",
+    "reason": "Tax increases to close fiscal gaps are a common protest trigger; the level and direction of the ratio captures the distributional pressure that drives social mobilisation."
+   },
+   {
+    "trend_id": "political_repression",
+    "lift_bucket": "Low",
+    "lift_pct": "+2-4%",
+    "reason": "States with very low fiscal capacity often substitute repression for social spending; marginal signal through the state-fragility pathway."
+   }
+  ]
+ },
+ {
+  "code": "IQ.CPA.PADM.XQ",
+  "name": "CPIA quality of public administration",
+  "provider": "WB",
+  "category": "Government",
+  "votes": null,
+  "note": "Administrative state capacity",
+  "license": "CC BY 4.0",
+  "why": "The CPIA quality of public administration cluster measures the administrative dimension of state capacity — civil service professionalism, merit-based recruitment, and policy implementation effectiveness — capturing the bureaucratic infrastructure that determines whether government decisions translate into outcomes. Weak public administration is a structural brake on state resilience, correlating with service-delivery failures, corruption, and inability to manage crises that trigger social and political instability.",
+  "country_coverage": 127,
+  "coverage_confidence": "medium",
+  "year_start": 2005,
+  "year_end": 2024,
+  "coverage_note": "IDA-eligible countries only (low- and lower-middle-income); coverage is by definition restricted to the fragile-state universe most relevant to conflict Trends, but excludes upper-middle and high-income countries.",
+  "replaces": "OWID_STATECAP_ADMIN",
+  "trends": [
+   {
+    "trend_id": "poverty_and_inequality_crisis",
+    "lift_bucket": "High",
+    "lift_pct": "+6-11%",
+    "reason": "Public administration quality directly determines effective delivery of anti-poverty programmes; weak administration is a structural predictor of chronic poverty crisis in IDA countries."
+   },
+   {
+    "trend_id": "political_corruption",
+    "lift_bucket": "High",
+    "lift_pct": "+5-10%",
+    "reason": "Merit-based civil service is the primary institutional barrier to corruption; CPIA public administration captures the organisational environment that enables or constrains corrupt behaviour."
+   },
+   {
+    "trend_id": "humanitarian_crisis",
+    "lift_bucket": "Medium",
+    "lift_pct": "+4-8%",
+    "reason": "Administrative capacity determines disaster-response effectiveness; low-scoring states convert natural or conflict shocks into humanitarian crises through implementation failure."
+   },
+   {
+    "trend_id": "economic_recession",
+    "lift_bucket": "Medium",
+    "lift_pct": "+3-6%",
+    "reason": "Weak public administration amplifies recession depth by impairing fiscal adjustment and public investment delivery; indirect but structurally important channel."
+   }
+  ]
+ },
+ {
+  "code": "FS-007",
+  "name": "Dietary energy from cereals/roots/tubers (%)",
+  "provider": "FAOSTAT",
+  "category": "Social",
+  "votes": null,
+  "note": "Diet quality/affordability proxy (FAOSTAT FS item 21012)",
+  "license": "CC BY 4.0",
+  "why": "The share of dietary energy derived from cereals, roots, and tubers (FAOSTAT item 21012) is an inverse proxy for diet quality and food system diversification — high values indicate populations dependent on cheap starchy staples due to poverty or food insecurity, making them highly exposed to cereal price shocks and harvest failures. As a structural food-vulnerability measure it complements acute food-insecurity indicators by capturing the chronic dietary baseline that determines how rapidly communities deteriorate when food supply shocks occur.",
+  "country_coverage": 236,
+  "coverage_confidence": "high",
+  "year_start": 2002,
+  "year_end": 2022,
+  "coverage_note": "FAOSTAT food balance sheet series; near-universal country coverage (~236c); series ends at 2022 pending latest FAO release cycle.",
+  "replaces": "CAHD-002",
+  "trends": [
+   {
+    "trend_id": "drought_and_famine",
+    "lift_bucket": "High",
+    "lift_pct": "+7-13%",
+    "reason": "Populations with high cereal-diet dependence face acute famine risk from any disruption to staple crop supply; the indicator captures the structural vulnerability that converts drought shocks into famines."
+   },
+   {
+    "trend_id": "humanitarian_crisis",
+    "lift_bucket": "High",
+    "lift_pct": "+5-10%",
+    "reason": "Starchy-diet dependence is a chronic food-fragility signal; high values predict rapid humanitarian deterioration when conflict or climate disrupts supply chains."
+   },
+   {
+    "trend_id": "poverty_and_inequality_crisis",
+    "lift_bucket": "Medium",
+    "lift_pct": "+4-8%",
+    "reason": "Dietary energy concentration in cheap starches is a strong marker of deep poverty; the indicator captures structural deprivation that intersects with inequality crisis dynamics."
+   },
+   {
+    "trend_id": "mass_protest",
+    "lift_bucket": "Medium",
+    "lift_pct": "+3-7%",
+    "reason": "Cereal-price spikes hit starchy-diet-dependent populations disproportionately hard; high baseline values amplify the protest-triggering potential of food price anomalies."
+   },
+   {
+    "trend_id": "migration_and_refugees",
+    "lift_bucket": "Low",
+    "lift_pct": "+2-4%",
+    "reason": "Structural food vulnerability drives climate-migration and conflict-related displacement in low-income countries; marginal signal through the food-insecurity-to-migration pathway."
    }
   ]
  }
