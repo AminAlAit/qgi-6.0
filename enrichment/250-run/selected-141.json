@@ -162,15 +162,6 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "UCDP_CONFLICT_ISSUES_TERR",
-  "provider": "UCDP",
-  "category": "Other",
-  "votes": 6,
-  "name": "Rebel Group Territorial Demands Active (binary, country-year)",
-  "note": "Binary: rebel groups with stated territorial/autonomy demands active; from UCDP Conflict Issues Dataset, secessionism signal",
-  "license": "CC BY 4.0"
- },
- {
   "code": "DT.INT.DECT.GN.ZS",
   "provider": "WB",
   "category": "Government",
@@ -378,15 +369,6 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "UCDP_SB_EXT_SUPPORT",
-  "provider": "UCDP",
-  "category": "Other",
-  "votes": 7,
-  "name": "External Support to Conflict Parties (binary, from ESD dataset)",
-  "note": "Binary: at least one warring party receiving external state support; internationalization and proxy-war signal",
-  "license": "CC BY 4.0"
- },
- {
   "code": "UNHCR_REF_COA",
   "provider": "UNHCR",
   "category": "Social",
@@ -504,15 +486,6 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "OWID_STATECAP_COERCE",
-  "provider": "OWID",
-  "category": "Military",
-  "votes": 7,
-  "name": "Coercive State Capacity (Hanson & Sigman)",
-  "note": "Sub-dimension: government control of territory and monopoly on legitimate force; 177 countries 1960-2015",
-  "license": "CC BY 4.0"
- },
- {
   "code": "ET-001",
   "provider": "FAOSTAT",
   "category": "Environment",
@@ -564,15 +537,6 @@
   "votes": 8,
   "name": "Military expenditure (% of central government expenditure)",
   "note": "Military share of govt spending; resource allocation",
-  "license": "CC BY 4.0"
- },
- {
-  "code": "OWID_STATECAP_EXTRACT",
-  "provider": "OWID",
-  "category": "Governance",
-  "votes": 8,
-  "name": "Extractive State Capacity (Hanson & Sigman)",
-  "note": "Sub-dimension: government ability to raise sustainable revenues (tax+non-tax); 177 countries 1960-2015",
   "license": "CC BY 4.0"
  },
  {
@@ -699,15 +663,6 @@
   "votes": 8,
   "name": "SDG 2.c.1 Indicator of food price anomalies (IFPA)",
   "note": "Food price volatility anomaly indicator; early warning for food price spikes and political instability.",
-  "license": "CC BY 4.0"
- },
- {
-  "code": "CAHD-002",
-  "provider": "FAOSTAT",
-  "category": "Social",
-  "votes": 8,
-  "name": "Prevalence of population unable to afford a healthy diet (% population)",
-  "note": "Share unable to afford CoHD; demand-side food access gap with income distribution component.",
   "license": "CC BY 4.0"
  },
  {
@@ -855,24 +810,6 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "UCDP_DECO_ELECTORAL_VIOLENCE",
-  "provider": "UCDP",
-  "category": "Governance",
-  "votes": 8,
-  "name": "Deadly Electoral Violence Events (count, country-year, from DECO)",
-  "note": "Count of georeferenced lethal electoral violence events; election-period instability signal distinct from armed conflict",
-  "license": "CC BY 4.0"
- },
- {
-  "code": "UCDP_VIOL_PROTEST_DEATHS",
-  "provider": "UCDP",
-  "category": "Governance",
-  "votes": 8,
-  "name": "Violent Political Protest Deaths (country-year aggregate)",
-  "note": "Fatalities from violent political protests (below armed conflict threshold); protest repression and political volatility signal",
-  "license": "CC BY 4.0"
- },
- {
   "code": "UCDP_GED_TOTAL_DEATHS",
   "provider": "UCDP",
   "category": "Other",
@@ -897,15 +834,6 @@
   "votes": 8,
   "name": "Years Since Last Active Conflict (country-year, derived)",
   "note": "Years elapsed since last UCDP-recorded organized violence above threshold; post-conflict stability duration, recurrence risk proxy",
-  "license": "CC BY 4.0"
- },
- {
-  "code": "UCDP_PEACE_AGREE_SIGNED",
-  "provider": "UCDP",
-  "category": "Governance",
-  "votes": 8,
-  "name": "Peace Agreement Signed (binary, country-year, from UCDP PAD)",
-  "note": "Binary: at least one peace agreement signed in country-year; peace process milestone signal from UCDP Peace Agreement Dataset",
   "license": "CC BY 4.0"
  },
  {
@@ -1107,15 +1035,6 @@
   "license": "CC BY 3.0 IGO"
  },
  {
-  "code": "OWID_STATECAP_ADMIN",
-  "provider": "OWID",
-  "category": "Governance",
-  "votes": 8,
-  "name": "Administrative State Capacity (Hanson & Sigman)",
-  "note": "Sub-dimension: bureaucratic quality, skilled/impartial public servants; 177 countries 1960-2015",
-  "license": "CC BY 4.0"
- },
- {
   "code": "UNHCR_IDP",
   "provider": "UNHCR",
   "category": "Social",
@@ -1284,5 +1203,95 @@
   "note": "Mechanisms for holding judiciary accountable",
   "license": "CC BY 4.0",
   "replaces_signal": "rule-of-law/judicial-accountability"
+ },
+ {
+  "code": "UCDP_SB_INTRA_INTERNATIONALISED",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": null,
+  "name": "Internationalized intrastate conflict (active)",
+  "note": "ACD type_of_conflict=4: foreign-state involvement in internal conflict",
+  "license": "CC BY 4.0",
+  "replaces": "UCDP_SB_EXT_SUPPORT"
+ },
+ {
+  "code": "UCDP_CONFLICT_TERMINATED",
+  "provider": "UCDP",
+  "category": "Governance",
+  "votes": null,
+  "name": "Conflict episode terminated",
+  "note": "ACD ep_end=1: conflict de-escalation/resolution flag",
+  "license": "CC BY 4.0",
+  "replaces": "UCDP_PEACE_AGREE_SIGNED"
+ },
+ {
+  "code": "UCDP_SB_INCOMPAT_TERR",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": null,
+  "name": "Territorial-incompatibility conflict (active)",
+  "note": "ACD incompatibility=2 (territory)",
+  "license": "CC BY 4.0",
+  "replaces": "UCDP_CONFLICT_ISSUES_TERR"
+ },
+ {
+  "code": "v2elpeace",
+  "provider": "V-Dem",
+  "category": "Governance",
+  "votes": null,
+  "name": "Election other electoral violence",
+  "note": "Non-state electoral violence (V-Dem)",
+  "license": "free-for-any-use (V-Dem)",
+  "replaces": "UCDP_DECO_ELECTORAL_VIOLENCE"
+ },
+ {
+  "code": "UCDP_GED_UNREST_EVENTS",
+  "provider": "UCDP",
+  "category": "Other",
+  "votes": null,
+  "name": "Non-state + one-sided violence event tempo",
+  "note": "GED event count, type_of_violence in {2,3}",
+  "license": "CC BY 4.0",
+  "replaces": "UCDP_VIOL_PROTEST_DEATHS"
+ },
+ {
+  "code": "v2strenarm",
+  "provider": "V-Dem",
+  "category": "Government",
+  "votes": null,
+  "name": "Remuneration in the armed forces",
+  "note": "Coercive-capacity proxy: military professionalization (V-Dem)",
+  "license": "free-for-any-use (V-Dem)",
+  "replaces": "OWID_STATECAP_COERCE"
+ },
+ {
+  "code": "GC.TAX.TOTL.GD.ZS",
+  "provider": "WB",
+  "category": "Finance",
+  "votes": null,
+  "name": "Tax revenue (% of GDP)",
+  "note": "Extractive/fiscal state capacity",
+  "license": "CC BY 4.0",
+  "replaces": "OWID_STATECAP_EXTRACT"
+ },
+ {
+  "code": "IQ.CPA.PADM.XQ",
+  "provider": "WB",
+  "category": "Government",
+  "votes": null,
+  "name": "CPIA quality of public administration",
+  "note": "Administrative state capacity",
+  "license": "CC BY 4.0",
+  "replaces": "OWID_STATECAP_ADMIN"
+ },
+ {
+  "code": "FS-007",
+  "provider": "FAOSTAT",
+  "category": "Social",
+  "votes": null,
+  "name": "Dietary energy from cereals/roots/tubers (%)",
+  "note": "Diet quality/affordability proxy (FAOSTAT FS item 21012)",
+  "license": "CC BY 4.0",
+  "replaces": "CAHD-002"
  }
 ]
