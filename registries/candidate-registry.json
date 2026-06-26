@@ -1288,7 +1288,12 @@
       "status": "vetted",
       "category": "Demographic",
       "description": "A high share of 15-24 year-olds creates a large pool of economically marginalized, politically activated youth — a robust cross-national predictor of mass mobilization and insurgency onset. It captures the structural demographic pressure that precedes protest waves, labor unrest, and recruitment into armed groups.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "UN World Population Prospects (UN WPP), UN DESA Population Division",
+        "source_license": "CC BY 3.0 IGO",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
@@ -2076,7 +2081,12 @@
       "status": "vetted",
       "category": "Military",
       "description": "The Hanson-Sigman coercive state capacity sub-dimension measures a government's control over territory and monopoly on the legitimate use of force — the foundational prerequisite for conflict suppression and public order. It captures state fragility specifically on the coercion axis, distinct from extractive or administrative capacity, providing unique predictive value for conflict-related Trends.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "Hanson & Sigman (2021), 'Leviathan's Latent Dimensions', Journal of Politics — replication data on Harvard Dataverse DOI:10.7910/DVN/IFZXQX",
+        "source_license": "CC0 1.0 (Harvard Dataverse default for JoP replication data — unconfirmed, needs direct dataset-page check)",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
@@ -2235,7 +2245,12 @@
       "status": "vetted",
       "category": "Governance",
       "description": "Extractive state capacity — the government's ability to raise sustained revenues — is a foundational determinant of fiscal resilience, public goods provision, and regime stability; states that cannot tax reliably are far more vulnerable to fiscal crises, foreign-debt spirals, and popular delegitimisation. It is theoretically distinct from administrative or coercive capacity and adds non-redundant signal.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "Hanson & Sigman (2021), 'Leviathan's Latent Dimensions', Journal of Politics — replication data on Harvard Dataverse DOI:10.7910/DVN/IFZXQX",
+        "source_license": "CC0 1.0 (Harvard Dataverse default for JoP replication data — unconfirmed, needs direct dataset-page check)",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
@@ -2362,7 +2377,12 @@
       "status": "vetted",
       "category": "Governance",
       "description": "The V-Dem ERT Autocratization Episode binary flag directly identifies countries in active processes of democratic erosion, making it one of the most theory-aligned predictors of executive power consolidation, political repression, and eventual regime change. As a binary state variable it provides a crisp switching signal that complements continuous V-Dem indices.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "V-Dem (Episodes of Regime Transformation — ERT dataset)",
+        "source_license": "CC BY 4.0",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
@@ -2589,7 +2609,12 @@
       "status": "vetted",
       "category": "Social",
       "description": "Urban slum population share measures the concentration of economically marginalised, spatially segregated populations within cities — a well-documented structural precondition for urban unrest, political radicalisation, and grievance-based mass protest, especially where urbanisation outpaces formal employment and service delivery. It also serves as a slow-moving inequality proxy distinct from income-distribution measures.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "UN-HABITAT Urban Indicators Database",
+        "source_license": "CC BY 4.0",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
@@ -2851,7 +2876,12 @@
       "status": "vetted",
       "category": "Governance",
       "description": "The V-Dem Regimes of the World 4-category typology (closed autocracy → liberal democracy) encodes regime-type as a categorical structural variable that conditions almost every political risk mechanism — coup risk, protest dynamics, conflict recurrence, and repression intensity all differ fundamentally across these categories, making regime type one of the most powerful stratifying features in any political-risk model.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "V-Dem Regimes of the World (RoW) classification",
+        "source_license": "CC BY 4.0",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
@@ -2868,7 +2898,12 @@
       "status": "vetted",
       "category": "Governance",
       "description": "The Hanson & Sigman composite State Capacity Index aggregates coercive, extractive, and administrative sub-dimensions into a single latent variable, capturing the government's ability to govern, tax, and control territory simultaneously. Low state capacity is the structural precondition underlying civil war, coup risk, and governance collapse across multiple Trends.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "Hanson & Sigman (2021) State Capacity Index — 'Leviathan's Latent Dimensions', Journal of Politics 83(4)",
+        "source_license": "CC BY 4.0",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
@@ -3417,7 +3452,12 @@
       "status": "vetted",
       "category": "Governance",
       "description": "Administrative state capacity measures government ability to deliver services through skilled, impartial bureaucracies — a foundational pillar of stability that determines whether fiscal resources translate into public goods or patronage, and whether formal policies are actually implemented. It captures the bureaucratic implementation gap that distinguishes fragile from resilient states independent of resource levels.",
-      "provider_meta": {},
+      "provider_meta": {
+        "underlying_source": "Hanson & Sigman (2021), 'Leviathan's Latent Dimensions', Journal of Politics — replication data on Harvard Dataverse DOI:10.7910/DVN/IFZXQX",
+        "source_license": "CC0 1.0 (Harvard Dataverse default for JoP replication data — unconfirmed, needs direct dataset-page check)",
+        "commercial_ok": true,
+        "license_audited": "2026-06-26"
+      },
       "lifecycle": {
         "added": "2026-06-26",
         "vetted": "2026-06-26",
