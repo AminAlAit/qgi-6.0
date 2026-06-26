@@ -28,10 +28,26 @@ import type { HfCountryDetail, HfTopicSeries } from "@/lib/hf/pulse-detail";
 
 const ReactECharts = dynamic(() => import("echarts-for-react"), { ssr: false });
 
+// Canonical series colors for the pulse chart (FIX 3: amber = news pulse,
+// teal = structural — matches the X-card grammar).
+// Teal (#2dd4bf) is theme-invariant; the structural line is always dashed so
+// the hue alone suffices for light/dark. Amber is resolved from ECharts tokens
+// so it darkens on light mode for small-text contrast.
+const STRUCTURAL_TEAL = "#2dd4bf";
+
+/** Short labels used inside the theme-chip buttons (compact form, not renamed). */
 const VERDICT_LABEL: Record<HfVerdict, string> = {
   ACTIVE: "Active",
   SIGNAL: "Signal",
   LATENT: "Latent",
+  QUIET: "Quiet",
+};
+
+/** Canonical zone names used in the panel legend (FIX 4). */
+const VERDICT_ZONE_LABEL: Record<HfVerdict, string> = {
+  ACTIVE: "Both Firing",
+  SIGNAL: "News-Only",
+  LATENT: "Silent Alarm",
   QUIET: "Quiet",
 };
 
@@ -232,7 +248,8 @@ export function NewsSignalsPanel({ detail }: { detail: HfCountryDetail }) {
                 background: verdictColor(v),
               }}
             />
-            {VERDICT_LABEL[v]}
+            {/* Zone name per FIX 4 canonical vocabulary */}
+            {VERDICT_ZONE_LABEL[v]}
             <InfoTooltip text={detail.verdicts[v]} />
           </span>
         ))}
@@ -313,7 +330,19 @@ function PulseEventsChart({
       top: 2,
       right: 6,
       textStyle: { color: t.textMuted, fontSize: 10 },
-      data: ["News pulse", "Structural"],
+      // News pulse (amber) first, then Structural (teal) — matches X-card grammar.
+      data: [
+        {
+          name: "News pulse",
+          itemStyle: { color: t.amber },
+          lineStyle: { color: t.amber },
+        },
+        {
+          name: "Structural",
+          itemStyle: { color: STRUCTURAL_TEAL },
+          lineStyle: { color: STRUCTURAL_TEAL, type: "dashed" },
+        },
+      ],
     },
     grid: { left: 42, right: 16, top: 28, bottom: 26 },
     xAxis: {
@@ -352,15 +381,19 @@ function PulseEventsChart({
     ],
     series: [
       {
+        // News pulse = AMBER (#F59E0B / t.amber) — canonical X-card grammar (FIX 3).
         name: "News pulse",
         type: "line",
         data: series.pulse,
         symbol: "none",
-        lineStyle: { width: 1.8, color: t.accent },
-        areaStyle: { color: `${t.accent}22` },
+        color: t.amber,
+        itemStyle: { color: t.amber },
+        lineStyle: { width: 1.8, color: t.amber },
+        areaStyle: { color: `${t.amber}22` },
         markPoint: {
           symbol: "pin",
           symbolSize: 20,
+          // Pin border stays amber so it belongs visually to the news-pulse series.
           itemStyle: { color: t.surface2, borderColor: t.amber, borderWidth: 1.5 },
           label: { show: false },
           // No emphasis label: the axis tooltip names the event on a pinned
@@ -371,11 +404,12 @@ function PulseEventsChart({
         markLine: {
           silent: true,
           symbol: "none",
-          lineStyle: { color: t.textDim, type: "dashed", width: 1 },
+          // Threshold line is tinted amber so it visually belongs to the news-pulse series.
+          lineStyle: { color: t.amber, type: "dashed", width: 1, opacity: 0.6 },
           label: {
             show: true,
             position: "insideEndTop" as const,
-            color: t.textDim,
+            color: t.amber,
             fontSize: 10,
             formatter: "elevated 60",
           },
@@ -383,15 +417,14 @@ function PulseEventsChart({
         },
       },
       {
+        // Structural = TEAL (#2dd4bf) dashed — canonical X-card grammar (FIX 3).
         name: "Structural",
         type: "line",
         data: series.months.map(() => struct),
         symbol: "none",
-        // Series-level color so the legend swatch matches the line (without
-        // it ECharts paints the key from its default palette).
-        color: t.amber,
-        itemStyle: { color: t.amber },
-        lineStyle: { width: 1.6, type: "dashed", color: t.amber, opacity: 0.8 },
+        color: STRUCTURAL_TEAL,
+        itemStyle: { color: STRUCTURAL_TEAL },
+        lineStyle: { width: 1.6, type: "dashed", color: STRUCTURAL_TEAL, opacity: 0.85 },
       },
     ],
   };
