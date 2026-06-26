@@ -1,0 +1,37 @@
+# 250-Indicator Run — Selection Record
+
+**Goal:** grow the Trajectory-Engine indicator pool **109 → 250** by selecting **141** new indicators. Reusable for the later 250 → 500 step.
+
+**Date:** 2026-06-25/26 · **Branch:** `enrichment/250-run-catalog`
+
+## Method (fully reproducible)
+
+1. **Enumerate every reachable CC-BY indicator** across all 10 providers, excluding the 109 we already have. Six parallel sourcing agents pulled live provider catalogs/APIs → **1,725 candidate indicators** (`reachable-pool.json`; per-provider provenance in `enumeration/`). Exclude-set in `enumeration/existing-109-excluded.txt`.
+2. **8-persona QGI panel selection.** Eight Sonnet agents, each a distinct expert lens (macro-fragility · V-Dem/governance · conflict-security · social-unrest/demography · ML-fit purist · coverage/quality skeptic · Trends-portfolio strategist · orthogonality economist), each grounded in exactly how a QGI Trend works (per-recipe top-40 univariate screen → greedy XGBoost → cosine-similarity scoring; coverage gate; n_pos≥60).
+   - **Round 1:** each independently picked 141 from the full pool → **607 distinct** indicators considered.
+   - **Round 2:** each saw the group vote tally and converged (keep the ≥5/8 consensus core, resolve the contested middle).
+   - **Chair:** reconciled the converged votes into the final 141, balanced across providers / categories / Trend families.
+
+## Result — the 141 (`selected-141.json`)
+
+**Agreement (genuine consensus):** 77 unanimous (8/8) · 28 at 7/8 · 19 at 6/8 · 10 at 5/8 · 7 at 4/8. **124 of 141 (88%) carry ≥6-of-8 agreement.**
+
+**Providers:** V-Dem 45 · WB 26 · UCDP 16 · OWID 15 · IDMC 10 · UNHCR 9 · FAOSTAT 8 · ILOSTAT 8 · UNDP 4. **OECD 0** — panel deliberately excluded it (≈38-country coverage fails the global coverage gate; WB/OWID surrogates cover the same signals with full panels).
+
+**Categories:** Governance 56 · Social 31 · conflict-deaths (“Other”) 14 · Economic 12 · Government 8 · Environment 6 · Military 4 · Finance 4 · Trade 3 · Demographic 2 · Health 1.
+
+**Known tilt:** governance/V-Dem-heavy. This reflects QGI's political-risk core, and the **per-recipe top-40 prefilter prunes collinear V-Dem indices automatically at walk time**, so the redundancy self-corrects. Founder may opt to rebalance toward economic/social/conflict before activation.
+
+## Files
+
+| File | What |
+|------|------|
+| `reachable-pool.json` | 1,725 reachable CC-BY candidates (minus 109) — the universe the panel chose from |
+| `selected-141.json` | the chosen 141 (code · provider · category · votes · name · note · license) |
+| `enumeration/enum-*.json` | per-provider raw enumerations (provenance) |
+| `enumeration/existing-109-excluded.txt` | the 109 we already had (exclude-set) |
+| `catalog/` | interactive review catalog (trends-ref + enriched data + localhost page) |
+
+## Next
+
+Founder decision on the 141 (accept / rebalance / review via the `catalog/` page) → load into `qgi-data/registries/candidate-registry.json` (held-WB flip `hold→process`; new picks add as `vetted`) → push 7 fetcher images → fetch → vet + challenger-gate → te-fleet-run-3 → Majles top-40 prefilter ruling.

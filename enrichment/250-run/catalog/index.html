@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>QGI 250-Run · The 141 New Indicators</title>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2330; --line:#2a323d;
+    --ink:#e6edf3; --muted:#9aa7b4; --faint:#6b7886;
+    --accent:#4ea1ff; --good:#3fb950; --mid:#d29922; --low:#6b7886;
+    --chip:#222b36;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Century Gothic","Questrial",ui-sans-serif,system-ui,Segoe UI,Roboto,sans-serif;
+    font-size:14px;line-height:1.45}
+  a{color:var(--accent)}
+  header{padding:22px 26px 14px;border-bottom:1px solid var(--line);position:sticky;top:0;background:linear-gradient(180deg,#0d1117,#0d1117f2);backdrop-filter:blur(6px);z-index:20}
+  h1{margin:0 0 4px;font-size:20px;letter-spacing:.3px}
+  .sub{color:var(--muted);font-size:13px}
+  .stats{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:7px 12px}
+  .stat b{font-size:16px} .stat span{color:var(--faint);font-size:11px;display:block;text-transform:uppercase;letter-spacing:.6px}
+  .controls{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:12px 26px;border-bottom:1px solid var(--line);position:sticky;top:118px;background:#0d1117f2;backdrop-filter:blur(6px);z-index:19}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .seg button{background:var(--panel);color:var(--muted);border:0;padding:7px 12px;cursor:pointer;font:inherit;font-size:12.5px}
+  .seg button.on{background:var(--accent);color:#06121f;font-weight:600}
+  input[type=search]{background:var(--panel);border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:8px 12px;min-width:230px;font:inherit}
+  .legend{display:flex;gap:14px;align-items:center;color:var(--faint);font-size:11.5px;margin-left:auto;flex-wrap:wrap}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+  main{padding:18px 26px 80px}
+  .group{margin:22px 0 10px}
+  .grouphd{display:flex;align-items:baseline;gap:10px;margin:26px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+  .grouphd h2{margin:0;font-size:15px;letter-spacing:.4px}
+  .grouphd .ct{color:var(--faint);font-size:12px}
+  .subhd{color:var(--muted);font-size:12.5px;font-weight:600;margin:16px 0 8px;text-transform:uppercase;letter-spacing:.7px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:14px 15px;display:flex;flex-direction:column;gap:9px}
+  .card:hover{border-color:#3a4655}
+  .ctop{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+  .nm{font-weight:600;font-size:14.5px}
+  .code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--faint)}
+  .badges{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  .b{font-size:10.5px;padding:2px 7px;border-radius:20px;border:1px solid var(--line);background:var(--chip);color:var(--muted);white-space:nowrap}
+  .b.prov{color:#cdd9e5}
+  .votes{font-size:10.5px;padding:2px 8px;border-radius:20px;font-weight:600;white-space:nowrap}
+  .why{color:#c9d4df;font-size:13px}
+  .cov{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);align-items:center}
+  .cov .k{color:var(--faint);font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;margin-right:5px}
+  .bar{display:inline-block;height:6px;border-radius:4px;background:var(--panel2);vertical-align:middle;width:90px;position:relative;overflow:hidden}
+  .bar>i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:4px;display:block}
+  .yr>i{background:#7c5cff}
+  .trends{display:flex;gap:7px;flex-wrap:wrap;margin-top:2px}
+  .tlab{font-size:10.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.6px;width:100%;margin-bottom:1px}
+  .tchip{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:4px 9px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);cursor:default}
+  .tchip svg{width:14px;height:14px}
+  .tchip .lp{font-size:10px;font-weight:700;padding:0 5px;border-radius:10px}
+  .tchip.High{border-color:#2f5e3a}.tchip.High .lp{background:#13351c;color:var(--good)}
+  .tchip.Medium{border-color:#5e4f23}.tchip.Medium .lp{background:#332b12;color:var(--mid)}
+  .tchip.Low .lp{background:#262d36;color:var(--low)}
+  .empty{color:var(--faint);padding:40px;text-align:center}
+  .err{margin:40px 26px;padding:18px;border:1px solid #5e2a2a;background:#2a1414;border-radius:10px;color:#f0b3b3}
+  code.cmd{background:#000;padding:2px 7px;border-radius:5px;color:#9fe7a0}
+</style>
+</head>
+<body>
+<header>
+  <h1>QGI 250-Run · The 141 New Indicators</h1>
+  <div class="sub">Selected by an 8-persona QGI panel from <b id="poolN">1,725</b> reachable CC-BY candidates · grow the Trajectory-Engine pool 109 → 250</div>
+  <div class="stats" id="stats"></div>
+</header>
+<div class="controls">
+  <div class="seg" id="groupseg">
+    <button data-g="provider" class="on">Group: Provider</button>
+    <button data-g="category">Sector</button>
+    <button data-g="both">Provider → Sector</button>
+    <button data-g="none">Flat</button>
+  </div>
+  <input type="search" id="q" placeholder="Search code, name, or trend…" />
+  <div class="legend" id="legend">
+    <span><span class="dot" style="background:var(--good)"></span>High lift</span>
+    <span><span class="dot" style="background:var(--mid)"></span>Medium</span>
+    <span><span class="dot" style="background:var(--low)"></span>Low</span>
+    <span style="opacity:.5">|</span>
+    <span><span class="dot" style="background:#7ee787"></span>8/8 unanimous</span>
+    <span><span class="dot" style="background:#d29922"></span>5–7/8</span>
+    <span><span class="dot" style="background:#6b7886"></span>4/8</span>
+  </div>
+</div>
+<main id="main"><div class="empty">Loading…</div></main>
+
+<script>
+const VOTE_COL = v => v>=8 ? {bg:'#10301a',fg:'#7ee787'} : v>=5 ? {bg:'#332b12',fg:'#e3b341'} : {bg:'#222b36',fg:'#9aa7b4'};
+let DATA=[], TRENDS={}, groupBy='provider', query='';
+
+async function load(){
+  try{
+    const [a,b] = await Promise.all([
+      fetch('./enriched-141.json').then(r=>{if(!r.ok)throw new Error('enriched-141.json '+r.status);return r.json()}),
+      fetch('./trends-ref.json').then(r=>r.ok?r.json():{})
+    ]);
+    DATA=a; TRENDS=b; render(); buildStats();
+  }catch(e){
+    document.getElementById('main').innerHTML =
+      '<div class="err"><b>Could not load data.</b><br>Open this over a local server, not file://. From <code class="cmd">enrichment/250-run/catalog/</code> run:<br><br><code class="cmd">python -m http.server 8765</code><br><br>then open <a href="http://localhost:8765/">http://localhost:8765/</a>.<br><br><span style="color:#9aa7b4">('+e.message+')</span></div>';
+  }
+}
+function buildStats(){
+  const provs=new Set(DATA.map(d=>d.provider)), cats=new Set(DATA.map(d=>d.category));
+  const unan=DATA.filter(d=>d.votes>=8).length;
+  const s=[['141','indicators'],[provs.size,'providers'],[cats.size,'sectors'],[unan,'unanimous (8/8)'],['88%','≥6-of-8 agreed']];
+  document.getElementById('stats').innerHTML = s.map(([a,b])=>`<div class="stat"><b>${a}</b><span>${b}</span></div>`).join('');
+}
+const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function card(d){
+  const vc=VOTE_COL(d.votes||0);
+  const covMax=200, cw=Math.min(100,Math.round(100*(d.country_coverage||0)/covMax));
+  const ys=d.year_start||1960, ye=d.year_end||2024, span=Math.round(100*(ye-ys)/(2024-1960));
+  const trends=(d.trends||[]).map(t=>{
+    const m=TRENDS[t.trend_id]||{name:t.trend_id,icon:'circle-question-mark'};
+    return `<span class="tchip ${t.lift_bucket||'Low'}" title="${esc(t.reason||'')}">
+      <i data-lucide="${m.icon}"></i>${esc(m.name)} <span class="lp">${esc(t.lift_pct||t.lift_bucket||'')}</span></span>`;
+  }).join('');
+  return `<div class="card">
+    <div class="ctop">
+      <div><div class="nm">${esc(d.name||d.code)}</div><div class="code">${esc(d.code)}</div></div>
+      <span class="votes" style="background:${vc.bg};color:${vc.fg}">${d.votes||'?'}/8</span>
+    </div>
+    <div class="badges">
+      <span class="b prov">${esc(d.provider)}</span>
+      <span class="b">${esc(d.category)}</span>
+      <span class="b" style="color:#6b7886">${esc(d.license||'CC BY')}</span>
+    </div>
+    <div class="why">${esc(d.why||d.note||'')}</div>
+    <div class="cov">
+      <span><span class="k">Countries</span><b>${d.country_coverage||'—'}</b> <span class="bar"><i style="width:${cw}%"></i></span></span>
+      <span><span class="k">Years</span><b>${ys}→${ye}</b> <span class="bar yr"><i style="width:${span}%"></i></span></span>
+    </div>
+    <div class="trends"><span class="tlab">Strengthens</span>${trends||'<span style="color:#6b7886">—</span>'}</div>
+  </div>`;
+}
+function filtered(){
+  if(!query) return DATA;
+  const q=query.toLowerCase();
+  return DATA.filter(d=>(d.code+' '+d.name+' '+(d.why||'')+' '+(d.trends||[]).map(t=>t.trend_id).join(' ')).toLowerCase().includes(q));
+}
+function groupRows(rows,key){
+  const m={}; rows.forEach(r=>{(m[r[key]]=m[r[key]]||[]).push(r)});
+  return Object.entries(m).sort((a,b)=>b[1].length-a[1].length);
+}
+function render(){
+  const rows=filtered(), main=document.getElementById('main');
+  if(!rows.length){main.innerHTML='<div class="empty">No matches.</div>';return;}
+  let html='';
+  if(groupBy==='none'){
+    html=`<div class="grid">${rows.map(card).join('')}</div>`;
+  }else if(groupBy==='both'){
+    for(const [prov,pr] of groupRows(rows,'provider')){
+      html+=`<div class="grouphd"><h2>${esc(prov)}</h2><span class="ct">${pr.length}</span></div>`;
+      for(const [cat,cr] of groupRows(pr,'category'))
+        html+=`<div class="subhd">${esc(cat)} · ${cr.length}</div><div class="grid">${cr.map(card).join('')}</div>`;
+    }
+  }else{
+    for(const [g,gr] of groupRows(rows,groupBy))
+      html+=`<div class="grouphd"><h2>${esc(g)}</h2><span class="ct">${gr.length}</span></div><div class="grid">${gr.map(card).join('')}</div>`;
+  }
+  main.innerHTML=html;
+  if(window.lucide) lucide.createIcons();
+}
+document.getElementById('groupseg').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  groupBy=b.dataset.g;
+  [...e.currentTarget.children].forEach(x=>x.classList.toggle('on',x===b));
+  render();
+});
+document.getElementById('q').addEventListener('input',e=>{query=e.target.value;render();});
+load();
+</script>
+</body>
+</html>

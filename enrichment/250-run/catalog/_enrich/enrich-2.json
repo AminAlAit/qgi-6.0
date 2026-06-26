@@ -1,0 +1,412 @@
+[
+  {
+    "code": "NY.GDP.MINR.RT.ZS",
+    "why": "Mineral resource rents as a share of GDP captures extractive-sector dependency, which correlates with Dutch disease dynamics, elite capture, and boom-bust fiscal cycles that precede regime instability and conflict. Countries with high mineral rents but weak institutions are particularly prone to resource-curse trajectories that QGI Trends in political violence, coup, and economic crisis should detect.",
+    "country_coverage": 190,
+    "coverage_confidence": "high",
+    "year_start": 1970,
+    "year_end": 2022,
+    "coverage_note": "Good global coverage via WB WDI; mineral-poor countries report near-zero rather than missing, so effective coverage is high; some small island states and microstates may be absent.",
+    "trends": [
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Resource wealth concentrated in state hands creates coup incentives; literature strongly links mineral rents to coup risk, especially in sub-Saharan Africa and MENA."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Greed-grievance models (Collier-Hoeffler) use mineral rents as a primary predictor; lootable resources fund insurgencies and prolong conflict."
+      },
+      {
+        "trend_id": "resource_conflict",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Direct theoretical link — resource conflict Trend is almost definitionally tied to mineral rent levels; likely a top-feature candidate."
+      },
+      {
+        "trend_id": "economic_nationalization",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "High mineral rents attract nationalization episodes as governments seek to capture resource revenue; Angola, Venezuela, Bolivia case patterns."
+      },
+      {
+        "trend_id": "sanctions_and_arms_embargo",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Mineral-dependent states facing governance crises are sanction targets (e.g., DRC, Zimbabwe), but the link is indirect and mediated by governance variables already in pool."
+      }
+    ]
+  },
+  {
+    "code": "SDGB-012",
+    "why": "Water stress (freshwater withdrawal as % of available freshwater) is a structural scarcity signal that drives agricultural failure, resource competition between communities, and regime-destabilizing food insecurity; it is particularly predictive in arid and semi-arid regions where marginal scarcity translates rapidly into political pressure. As a slowly-evolving structural variable it captures multi-year run-up shapes that QGI Trends in drought, humanitarian crisis, and resource conflict should detect.",
+    "country_coverage": 170,
+    "coverage_confidence": "medium",
+    "year_start": 2000,
+    "year_end": 2020,
+    "coverage_note": "FAOSTAT SDG 6.4.2 coverage is uneven: ~170 countries reported but many only have data for benchmark years (2015, 2017, 2020) rather than annual series; interpolation common; small island states and microstates often absent.",
+    "trends": [
+      {
+        "trend_id": "drought_and_famine",
+        "lift_bucket": "High",
+        "lift_pct": "+7-14%",
+        "reason": "Water stress is the structural precondition for drought vulnerability; high baseline stress amplifies the impact of rainfall anomalies into famine trajectories."
+      },
+      {
+        "trend_id": "water_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Near-definitional link — water crisis Trend is directly indexed to withdrawal-vs-availability ratios; almost certain top-feature candidate for this Trend."
+      },
+      {
+        "trend_id": "resource_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Inter-community and inter-state resource conflicts frequently center on water; Nile, Tigris-Euphrates, Indus basin disputes fit this Trend's pattern."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Chronic water stress feeds into humanitarian deterioration by undermining food production and displacing populations; useful structural covariate."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Water scarcity is a recognized environmental migration driver but the signal is slow-moving and heavily mediated by agricultural and economic channels already captured elsewhere."
+      }
+    ]
+  },
+  {
+    "code": "UNHCR_REF_RATIO_POP",
+    "why": "Refugees as a share of origin country population is a population-normalized signal of the severity of push factors — persecution, conflict, or collapse — driving people to flee; it strips out country-size confounding and makes the underlying risk intensity comparable across all countries for ML feature engineering. Sustained increases in this ratio precede and accompany QGI Trends in political repression, civil war, and humanitarian crisis.",
+    "country_coverage": 185,
+    "coverage_confidence": "high",
+    "year_start": 1990,
+    "year_end": 2023,
+    "coverage_note": "UNHCR refugee stock data by country of origin covers ~185 countries from 1990; denominator (population) from WB; countries with near-zero refugee outflows will show 0 rather than missing, so effective coverage is high.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Refugee outflow ratio is one of the strongest contemporaneous and lagged signals of civil war severity; Syria, Afghanistan, South Sudan exemplify the canonical pattern."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Persecution-driven flight is the direct causal chain behind refugee status recognition; high ratio strongly signals systematic repression against specific groups."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Mass refugee generation is both a consequence and reinforcer of humanitarian crises; normalized ratio captures crisis magnitude independent of country size."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Near-definitional top feature for this Trend; normalizing by population makes it the best cross-country comparator in the UNHCR family."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Refugee ratio captures systematic human rights failures that cause flight even when direct violence metrics are noisy or underreported."
+      }
+    ]
+  },
+  {
+    "code": "v2x_accountability",
+    "why": "V-Dem's Accountability Index aggregates vertical, horizontal, and diagonal accountability mechanisms, providing a comprehensive measure of whether state power faces institutional checks; declining accountability trajectories are a well-established precursor to executive power consolidation, democratic backsliding, and the removal of constraints that ultimately enable political repression and corruption. Its composite nature gives it broad coverage across many Trends compared to narrower sub-indices.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem covers ~180 countries from 1900; quality of expert codings is high for post-1945 but thinner for pre-1945 and some smaller states; recent years (2023-2024) may have preliminary scores.",
+    "trends": [
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Accountability erosion is the definitional mechanism of power consolidation; this index directly measures the institutional constraints being dismantled."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Transitions to and from democracy hinge on accountability rebuilding or collapse; the aggregate index captures multi-channel change that single-dimension measures miss."
+      },
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Weak accountability is the structural enabler of corruption; the diagonal and horizontal sub-components (media, judiciary, legislature) are the watchdog mechanisms corruption erodes."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Repression typically follows accountability collapse; useful precursor signal especially in regimes transitioning from partial to closed autocracy."
+      },
+      {
+        "trend_id": "constitutional_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Constitutional changes that weaken oversight bodies drive accountability scores down; the index tracks the institutional consequences of constitutional manipulation."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_OS_DEATHS_BEST",
+    "why": "One-sided violence deaths aggregate civilian fatalities from deliberate targeting by organized actors (governments and non-state groups alike), capturing state atrocity and militia killing that battlefield metrics miss; this directly measures the severity of political violence against unarmed populations, a key signal for Trends in repression, humanitarian crisis, and civil conflict escalation. Its country-year aggregation makes it ready for QGI's feature pipeline without further transformation.",
+    "country_coverage": 150,
+    "coverage_confidence": "high",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "UCDP GED/OS covers ~150 conflict-affected countries from 1989; countries with zero one-sided violence have missing or zero records — coverage is event-conditional, not universal; peaceful high-income countries will show zeros/NAs.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Government one-sided violence is the most direct empirical proxy for state repression intensity; targets civilian populations precisely to suppress political opposition."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "OS deaths co-occur with and escalate during insurgencies; civilian targeting often intensifies as counter-insurgency strategies shift to attrition."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "High",
+        "lift_pct": "+7-14%",
+        "reason": "Mass civilian killing is among the most severe human rights violations; this metric captures the lethal extreme of the rights-abuse spectrum."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "One-sided violence triggers displacement and aid access denial, escalating humanitarian deterioration; useful severity signal alongside displacement metrics."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Non-state one-sided violence frequently occurs along ethnic/communal lines (e.g., militias targeting minorities); aggregating both actor types captures this pattern."
+      }
+    ]
+  },
+  {
+    "code": "OWID_WJPRULEOFLAW_CORR",
+    "why": "The WJP Rule of Law Absence of Corruption sub-index provides a cross-institutionally validated annual measure of corruption across executive, judiciary, police, and military — the four channels through which systemic corruption erodes state legitimacy and precipitates political crises. Unlike perception-based composite indices, it is grounded in population surveys and expert assessments, giving it higher construct validity for QGI's rule-of-law and governance Trends.",
+    "country_coverage": 140,
+    "coverage_confidence": "medium",
+    "year_start": 2012,
+    "year_end": 2023,
+    "coverage_note": "WJP Rule of Law Index started in 2012; covers ~140 countries as of 2023 (expanding over time); notable gaps in very small states, several Pacific island nations, and some Central Asian countries; annual frequency but coverage grew from ~97 countries in early waves.",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+9-16%",
+        "reason": "Near-definitional fit — corruption absence is the direct construct this Trend is modeling; WJP's multi-sector measurement captures systemic patterns better than single-agency proxies."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Corruption in security apparatus (police/military sub-components) enables repressive practices by insulating perpetrators from accountability."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Anti-corruption is a recurring demand in democratization movements; rising corruption scores precede democratic backsliding and declining scores often accompany reform waves."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Executive corruption capture is often an enabling mechanism for power consolidation — the WJP executive sub-component captures this channel directly."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Systemic corruption distorts investment and resource allocation, contributing to economic deterioration; effect is real but distal and mediated by many economic variables already in the pool."
+      }
+    ]
+  },
+  {
+    "code": "LAP_2GDP_NOC_RT",
+    "why": "Labour income share as a percent of GDP (ILO modelled) directly measures how national income is distributed between labour and capital; declining labour share signals rising structural inequality, wage repression, and eroding household purchasing power — conditions that build social grievance and fuel mass mobilisation events such as protests, labour actions, and poverty crises. It is the SDG 10.4.1 primary input and provides a distributional lens that GDP-level metrics lack.",
+    "country_coverage": 190,
+    "coverage_confidence": "medium",
+    "year_start": 1995,
+    "year_end": 2023,
+    "coverage_note": "ILO modelled estimates extend coverage to ~190 countries but rely on imputation for many developing economies; direct survey-based estimates are available for ~100 countries; modelled values for low-data countries carry higher uncertainty.",
+    "trends": [
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Declining labour share is a structural grievance driver; prolonged wage stagnation relative to profit growth historically precedes broad-based protest waves (Arab Spring, Latin American cycles)."
+      },
+      {
+        "trend_id": "labor_action",
+        "lift_bucket": "High",
+        "lift_pct": "+7-14%",
+        "reason": "Labour share is the distributional measure most directly tied to wage bargaining outcomes; falling share motivates strike and collective action mobilisation."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Labour income share is the primary SDG 10.4 inequality signal; sustained compression of labour share translates directly into poverty and inequality crisis conditions."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Rapid drops in labour share during downturns amplify recessionary consumer demand weakness; useful co-movement signal for economic stress Trends."
+      },
+      {
+        "trend_id": "social_policy_reform",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Very low labour shares sometimes trigger social policy responses (minimum wage reforms, social transfers); the link is real but episodic and policy-mediated."
+      }
+    ]
+  },
+  {
+    "code": "v2mecenefi",
+    "why": "V-Dem's Internet Censorship Effort measures the degree to which governments actively restrict online information access, a leading indicator of regime efforts to suppress dissent and control political narratives before and during periods of political repression, protests, and democratic backsliding. Spikes in censorship effort often precede or accompany executive crackdowns, making it a valuable early-warning signal across governance and social mobilisation Trends.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 2000,
+    "year_end": 2024,
+    "coverage_note": "V-Dem covers ~180 countries; internet censorship coding starts meaningfully around 2000 when internet penetration became geopolitically relevant; pre-2000 data exists but has low variance and limited signal; expert codings are most reliable post-2010.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Internet censorship is a modern tool of political repression; crackdowns on online speech systematically precede or accompany broader repressive campaigns against civil society."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Autocratizing governments consistently escalate internet controls as they consolidate power; censorship effort rises measurably in the run-up to competitive authoritarianism episodes."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Censorship escalation around protest periods (internet shutdowns, social media blocks) is a documented government response; the variable captures both pre-protest suppression attempts and reactive crackdowns."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Censorship rollback is a common early reform signal in democratic transitions; sustained high censorship distinguishes consolidating autocracies from transitioning states."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Digital rights violations are now formally part of international human rights frameworks; censorship effort captures a systematic rights-denial dimension not covered by physical violence metrics."
+      }
+    ]
+  },
+  {
+    "code": "IDMC_TOTAL_NEW_DISP",
+    "why": "Total new displacements (conflict plus disaster combined) is a high-frequency, high-sensitivity aggregate shock signal that captures acute population mobility across both violence-driven and climate-driven crises in a single annual metric; its composite nature makes it valuable for Trends where the displacement trigger is mixed (e.g., conflict in drought-stricken regions) and it avoids the artificial separation that disaggregated series impose on compound crises. Rapid increases signal acute deterioration before fatality counts fully materialise.",
+    "country_coverage": 155,
+    "coverage_confidence": "high",
+    "year_start": 2008,
+    "year_end": 2023,
+    "coverage_note": "IDMC disaster displacement starts 2008, conflict displacement 2009; coverage ~155 countries with events; peaceful countries with zero displacement are absent rather than zero-coded, requiring care in feature construction; coverage is near-complete for countries with any significant displacement events.",
+    "trends": [
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+7-14%",
+        "reason": "Mass displacement is both a defining feature and a severity metric for humanitarian crises; the total (not disaggregated) signal captures compound crises where both conflict and disaster drive simultaneous displacement."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Internal displacement is the immediate precursor to cross-border refugee movement; total new displacements captures the mobilisation shock that later shows up in UNHCR refugee statistics."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Conflict-driven displacement is a core output of civil war; the combined series avoids missing compound crises where disaster displacement co-occurs with conflict-induced instability."
+      },
+      {
+        "trend_id": "natural_disaster",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Disaster displacement is a large component of total new displacements in disaster-prone countries; captures shock magnitude for natural disaster Trends better than economic damage metrics alone."
+      },
+      {
+        "trend_id": "drought_and_famine",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Drought-driven displacement is included in the disaster component; total displacement rises ahead of famine declarations as population stress mounts."
+      }
+    ]
+  },
+  {
+    "code": "v2smarrest",
+    "why": "V-Dem's Arrests for Online Political Content measures government use of detention and arrest specifically targeting individuals for online speech, capturing an intensifying form of digital repression that directly chills civil society mobilisation and political dissent; it is a leading rather than lagging indicator because arrests for speech typically precede broader crackdowns, making it particularly valuable for run-up detection in repression, protest, and autocratization Trends.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 2000,
+    "year_end": 2024,
+    "coverage_note": "V-Dem expert codings cover ~180 countries; online arrest variable is most reliable post-2010 as social media became politically relevant; pre-2010 values reflect early internet-era blogger arrests and have lower cross-expert agreement; signal is sparse for very closed states where arrests may be underreported to outside experts.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Online political arrests are a direct and systematic repression tactic; escalation of this variable is a documented precursor to broader physical crackdowns on civil society and opposition."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Autocratizing regimes systematically escalate digital repression as part of power consolidation; the variable captures the information-control dimension of authoritarian deepening."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Arrests of online organisers ahead of protest mobilisation are a documented suppression pattern; the variable captures both pre-emptive repression and reactive crackdowns on protest coordination."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Detention for speech is a core civil liberties violation; the variable adds a digital-rights dimension to the human rights violation Trend that physical violence metrics underweight."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Declining arrest rates for online content is a modest liberalisation signal in democratic transition contexts, but the variable's primary utility is in detecting autocratization rather than transition."
+      }
+    ]
+  }
+]

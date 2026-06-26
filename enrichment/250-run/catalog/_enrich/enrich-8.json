@@ -1,0 +1,406 @@
+[
+  {
+    "code": "FR.INR.RINR",
+    "why": "Real interest rate captures the actual cost of capital after inflation, signalling investment incentive collapse or financial repression that often precedes capital flight, banking stress, and currency pressure. Sharp negative swings distinguish deliberate monetary loosening from inflation-driven erosion, both of which load onto economic instability Trends.",
+    "country_coverage": 160,
+    "coverage_confidence": "medium",
+    "year_start": 1980,
+    "year_end": 2023,
+    "coverage_note": "Coverage improves post-1990; many low-income countries lack consistent series; volatile outlier years (hyperinflation episodes) may need capping before use.",
+    "trends": [
+      {
+        "trend_id": "currency_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Real interest rate collapses or extreme spikes are canonical precursors to exchange-rate crises; directly maps to the canonical movement shape."
+      },
+      {
+        "trend_id": "banking_and_financial_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Negative real rates erode bank margins and fuel credit bubbles; this series is a primary banking-fragility leading indicator."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Tight real rates choke investment; the pre-recession tightening trajectory is a well-established signal."
+      },
+      {
+        "trend_id": "monetary_policy_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "The series is the direct output of central bank policy; shifts cleanly encode both tightening and easing episodes."
+      },
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "Low",
+        "lift_pct": "+1-4%",
+        "reason": "Interest rate environment shapes borrowing cost for governments, providing marginal orthogonal context to fiscal events."
+      }
+    ]
+  },
+  {
+    "code": "DT.INT.DECT.GN.ZS",
+    "why": "Interest payments on external debt as a share of GNI measure the fiscal burden of servicing foreign obligations, a leading signal of debt distress that typically precedes austerity, default risk, and the social unrest those trigger. It captures debt-service squeeze independently of stock levels, making it complementary to stock-based ratios.",
+    "country_coverage": 155,
+    "coverage_confidence": "medium",
+    "year_start": 1970,
+    "year_end": 2023,
+    "coverage_note": "Strongest coverage for developing economies with World Bank reporting obligations; rich OECD countries with market-financed debt may have gaps in early decades.",
+    "trends": [
+      {
+        "trend_id": "currency_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Rising debt-service burden is a classic precursor to currency crises as reserves are drained to service foreign obligations."
+      },
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Debt-service crowding out of discretionary spending is the primary driver of austerity-type fiscal reforms; this series directly measures that pressure."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "High interest payments reduce fiscal space for counter-cyclical spending, amplifying recession depth and duration."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Austerity triggered by debt-service pressure is a recurrent mobilising grievance; this series provides the upstream structural signal."
+      },
+      {
+        "trend_id": "banking_and_financial_crisis",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Sovereign debt stress often co-occurs with banking fragility, providing marginal complementary signal."
+      }
+    ]
+  },
+  {
+    "code": "DT.DOD.DECT.EX.ZS",
+    "why": "External debt stock relative to export earnings is the canonical debt-sustainability ratio used by IMF/World Bank early-warning frameworks; it directly measures whether a country's capacity to generate foreign exchange can cover its foreign obligations. Trajectory shifts in this series reliably precede currency crises and sovereign restructuring events.",
+    "country_coverage": 155,
+    "coverage_confidence": "medium",
+    "year_start": 1970,
+    "year_end": 2023,
+    "coverage_note": "Good coverage for developing-economy borrowers; OECD high-income countries with bond-financed debt are patchier; early 1970s thin for many countries.",
+    "trends": [
+      {
+        "trend_id": "currency_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "This ratio is the standard IMF debt-sustainability tripwire; crossing critical thresholds is among the strongest currency-crisis leading indicators in the empirical literature."
+      },
+      {
+        "trend_id": "banking_and_financial_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Sovereign over-indebtedness regularly triggers banking crises when debt is rolled through domestic banks; debt-to-exports deterioration leads both events."
+      },
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "IMF conditionality and creditor pressure triggered by high debt ratios typically force structural fiscal adjustment."
+      },
+      {
+        "trend_id": "sanctions_and_arms_embargo",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Heavily indebted countries under sanctions face compounded export contraction that worsens the ratio, providing marginal context."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Debt overhang suppresses investment and consumption, lengthening and deepening recessions."
+      }
+    ]
+  },
+  {
+    "code": "STR_DAYS_NOC_NB",
+    "why": "Working days lost through strikes measures the intensity and breadth of industrial action beyond simple strike counts, capturing the cumulative economic disruption of labour conflict and signalling deteriorating government-labour relations that precede broader social mobilisation. It is a lagging confirmatory signal of economic stress translating into organised collective action.",
+    "country_coverage": 115,
+    "coverage_confidence": "low",
+    "year_start": 1990,
+    "year_end": 2022,
+    "coverage_note": "Coverage is sparse and uneven; many countries do not report consistently; series has long gaps especially in Africa and MENA; only ~80-100 countries have usable multi-year series.",
+    "trends": [
+      {
+        "trend_id": "labor_action",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Days lost is the primary quantitative measure of strike magnitude and is near-definitionally the target variable for the labor_action Trend."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Large-scale strike waves frequently escalate into or accompany mass protest movements; this series captures the organised labour precursor."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Strike intensity spikes during recessions as workers resist wage cuts and layoffs, providing a social-response signal correlated with economic downturns."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Governments that crack down on strikes suppress this series, making sharp declines after elevated periods a potential repression signal."
+      }
+    ]
+  },
+  {
+    "code": "FS-001",
+    "why": "Prevalence of undernourishment (PoU) is the SDG 2.1.1 anchor indicator measuring the share of the population with chronic dietary energy deficit, providing the most direct quantitative signal of food security failure that underlies political instability, mass protest, and humanitarian crises. Rising PoU reliably precedes food-driven unrest and increases vulnerability to drought-famine events.",
+    "country_coverage": 190,
+    "coverage_confidence": "high",
+    "year_start": 2001,
+    "year_end": 2023,
+    "coverage_note": "Annual estimates from 2001; pre-2001 data are available for some countries as 3-year averages but are less comparable; FAOSTAT reports 3-year rolling averages which smooth year-to-year variance.",
+    "trends": [
+      {
+        "trend_id": "drought_and_famine",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "PoU is the primary chronic food insecurity signal; elevated baseline or rising trend directly precedes famine events and is the canonical ingredient of drought-famine Trend models."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Undernourishment is a core component of humanitarian crisis severity; the series captures deteriorating food access independently of acute shock triggers."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Food price shocks combined with high baseline undernourishment are a well-documented driver of protest mobilisation; PoU captures structural vulnerability to food-price grievances."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-7%",
+        "reason": "Chronic undernourishment is one of the strongest single indicators of extreme poverty; co-movement with the poverty-inequality crisis Trend is high."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Food insecurity is a significant push factor for migration; provides marginal displacement-prediction signal alongside conflict indicators."
+      }
+    ]
+  },
+  {
+    "code": "OWID_AUTOCRATIZATION",
+    "why": "The V-Dem ERT Autocratization Episode binary flag directly identifies countries in active processes of democratic erosion, making it one of the most theory-aligned predictors of executive power consolidation, political repression, and eventual regime change. As a binary state variable it provides a crisp switching signal that complements continuous V-Dem indices.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "Coverage follows V-Dem country-year scope (~180 countries from 1900); ERT episodes are well-validated from ~1974 onward (Third Wave democracies); pre-1974 episode coding is thinner.",
+    "trends": [
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+10-18%",
+        "reason": "Autocratization episodes are near-definitionally the process by which executives consolidate power; this binary flag is the most direct predictor of this Trend."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+8-14%",
+        "reason": "Autocratization episodes often terminate in either full authoritarian consolidation or regime collapse and democratisation; the flag marks the transition risk window."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Repression of civil society, media, and opposition is the primary mechanism through which autocratization progresses; the episode flag correlates strongly with repression events."
+      },
+      {
+        "trend_id": "constitutional_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Autocratization frequently proceeds through constitutional manipulation; the episode flag predicts constitution-altering events within the episode window."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Failed or incomplete autocratization can trigger military intervention; the flag captures elevated coup risk during democratic backsliding."
+      }
+    ]
+  },
+  {
+    "code": "v2x_execorr",
+    "why": "V-Dem's Executive Corruption Index aggregates expert assessments of executive bribery, embezzlement, and cronyism into a continuous country-year measure, capturing the degree to which executive authority is exercised for private gain rather than public ends. High executive corruption erodes regime legitimacy, distorts resource allocation, and raises the probability of protest, coup, and governance breakdown.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem full coverage ~180 countries from 1900; expert-coded so no data gaps, but coding quality for authoritarian states with limited observer access may carry higher uncertainty.",
+    "trends": [
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+9-16%",
+        "reason": "Executive Corruption Index is the most direct V-Dem measure of the phenomenon this Trend models; expected to be a top-greedy-selection feature."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Corruption-driven grievances are a leading mobilisation driver; anti-corruption protests are the largest protest category globally across the event dataset."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Corrupt executives typically repress accountability mechanisms; executive corruption and repression are mechanically linked."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Military coups are frequently justified by coup leaders on anti-corruption grounds and occur at elevated rates in high-corruption environments."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Corrupt executives may leverage corruption networks for power consolidation; provides marginal context alongside autocratization indicators."
+      }
+    ]
+  },
+  {
+    "code": "OWID_STATECAP",
+    "why": "The Hanson & Sigman composite State Capacity Index aggregates coercive, extractive, and administrative sub-dimensions into a single latent variable, capturing the government's ability to govern, tax, and control territory simultaneously. Low state capacity is the structural precondition underlying civil war, coup risk, and governance collapse across multiple Trends.",
+    "country_coverage": 177,
+    "coverage_confidence": "high",
+    "year_start": 1960,
+    "year_end": 2015,
+    "coverage_note": "Series ends at 2015 — a meaningful recency gap; recent events (2016-2024) will be unrepresented, limiting leading-signal utility for current-window predictions. No planned update known.",
+    "trends": [
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+7-13%",
+        "reason": "Low state capacity is the foundational structural precondition for insurgency; the composite index captures the multi-dimensional fragility that enables armed challengers."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Weak administrative and extractive capacity makes civilian governments vulnerable to military displacement; state capacity is among the strongest coup-risk predictors."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Low-capacity states often substitute targeted repression for institutional governance; inverse relationship between capacity and repression intensity."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "State capacity directly determines crisis response effectiveness; low-capacity states experience higher humanitarian impact from the same shock magnitude."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "State incapacity to mediate inter-group disputes raises communal conflict risk; provides marginal upstream signal."
+      }
+    ]
+  },
+  {
+    "code": "GC.BAL.CASH.GD.ZS",
+    "why": "The cash surplus/deficit as a share of GDP measures the government's actual realized fiscal position based on cash flows rather than accrual accounting, providing a more timely indicator of fiscal stress and public finance deterioration. Widening deficits signal reduced fiscal space, increasing government dependence on borrowing that can cascade into currency pressure and austerity-triggered unrest.",
+    "country_coverage": 140,
+    "coverage_confidence": "medium",
+    "year_start": 1990,
+    "year_end": 2023,
+    "coverage_note": "Coverage is good for countries with IMF/GFS reporting; many low-income and conflict-affected states have inconsistent or missing series; pre-1995 data are sparse for most developing countries.",
+    "trends": [
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Cash fiscal balance is the most direct short-term indicator of fiscal health; sharp deterioration is the primary trigger for fiscal consolidation events."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "High",
+        "lift_pct": "+5-9%",
+        "reason": "Fiscal deficits widen automatically in recessions; conversely, austerity-driven deficit cuts deepen downturns; the series captures both the cause and consequence side of recession dynamics."
+      },
+      {
+        "trend_id": "currency_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Persistent deficits requiring monetary financing are a canonical trigger of exchange-rate pressure and currency crises."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Fiscal retrenchment imposed by deficit crises (spending cuts, tax hikes) is a recurring protest mobilization trigger; the fiscal balance trajectory signals the upstream pressure."
+      },
+      {
+        "trend_id": "banking_and_financial_crisis",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Deficit-financing through bank channels raises sovereign-bank feedback risk; provides marginal complementary signal."
+      }
+    ]
+  },
+  {
+    "code": "VC.IHR.PSRC.P5",
+    "why": "Intentional homicide rate captures the baseline level of lethal interpersonal violence in a country, serving as a composite proxy for state coercive capacity, organized crime penetration, and the normalisation of violence that facilitates political conflict escalation. Countries with high homicide rates have systematically elevated risk for political violence, communal conflict, and civil war onset.",
+    "country_coverage": 190,
+    "coverage_confidence": "high",
+    "year_start": 1990,
+    "year_end": 2023,
+    "coverage_note": "UNODC data via WB; good global coverage post-2000; some fragile/conflict states have estimated rather than reported rates; early 1990s are thin for former Soviet and sub-Saharan Africa.",
+    "trends": [
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Homicide rate is the broadest available measure of normalised lethal violence; high baselines are strongly predictive of political violence escalation thresholds being crossed."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "High homicide environments reflect weak state monopoly on violence and criminal-insurgent blurring, which are structural preconditions for civil war."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Communal violence often contributes to overall homicide rates; the series captures the aggregate violence environment in which communal conflicts emerge."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "State-sanctioned lethal repression inflates homicide statistics; high rates can signal both criminal governance failure and direct state violence."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Protest movements in high-violence contexts face elevated escalation risk; the homicide baseline provides marginal contextual signal for protest-to-violence transitions."
+      }
+    ]
+  }
+]

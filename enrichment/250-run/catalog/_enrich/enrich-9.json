@@ -1,0 +1,382 @@
+[
+  {
+    "code": "IQ.CPA.IRAI.XQ",
+    "why": "The IDA CPIA composite captures policy and institutional quality across 16 dimensions — fiscal management, debt policy, governance, social inclusion — making it a strong lagging signal of state fragility and the structural conditions that precede fiscal crises, political repression, and coups. Countries with deteriorating CPIA scores systematically exhibit governance erosion trajectories that precede destabilisation events by 1-3 years.",
+    "country_coverage": 75,
+    "coverage_confidence": "high",
+    "year_start": 2005,
+    "year_end": 2023,
+    "coverage_note": "IDA-eligible countries only (~75); excludes IBRD-only and high-income states; scores available annually from 2005.",
+    "trends": [
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "CPIA governance cluster tracks accountability and rule-of-law erosion that structurally precedes executive consolidation episodes."
+      },
+      {
+        "trend_id": "political_corruption",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "CPIA public-sector cluster directly scores transparency and anti-corruption frameworks — low scores indicate environments where corruption events cluster."
+      },
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Fiscal management sub-score within CPIA anticipates disruptive fiscal policy shifts in fragile states."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Social protection and equity sub-scores capture structural under-investment that drives inequality crises."
+      }
+    ]
+  },
+  {
+    "code": "GC.XPN.INTP.RV.ZS",
+    "why": "Interest payments as a share of government revenue directly measures fiscal distress: when debt service crowds out discretionary spending, governments face stark trade-offs between servicing creditors and funding services, creating the fiscal-social stress that precedes currency crises, austerity-driven protests, and regime-threatening fiscal collapses. This ratio is a core early-warning metric in sovereign debt analysis.",
+    "country_coverage": 130,
+    "coverage_confidence": "medium",
+    "year_start": 1990,
+    "year_end": 2023,
+    "coverage_note": "Coverage strong for emerging markets from 1995; sparser for low-income states pre-2000 and some small islands throughout.",
+    "trends": [
+      {
+        "trend_id": "currency_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+7-14%",
+        "reason": "High debt-service-to-revenue ratio is a canonical leading indicator of currency crises and IMF interventions."
+      },
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "High",
+        "lift_pct": "+6-11%",
+        "reason": "Spiralling interest burden directly triggers austerity packages and emergency fiscal policy changes."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Fiscal squeeze from debt service compresses social spending, fuelling austerity protest movements."
+      },
+      {
+        "trend_id": "banking_and_financial_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Sovereign fiscal stress propagates to domestic banking systems via bond holdings and contingent liabilities."
+      }
+    ]
+  },
+  {
+    "code": "GC.NFN.TOTL.GD.ZS",
+    "why": "Net lending/borrowing (fiscal balance) as a share of GDP is the primary measure of the government's fiscal stance — a structural deficit trajectory signals accumulating debt burden and reduced capacity to absorb shocks, while sudden swings indicate policy-driven austerity or stimulus that reshapes the political economy. It is a near-universal leading macro variable in fragility frameworks.",
+    "country_coverage": 150,
+    "coverage_confidence": "medium",
+    "year_start": 1990,
+    "year_end": 2023,
+    "coverage_note": "Good coverage for OECD and most emerging markets; patchy for sub-Saharan Africa and fragile states pre-2000; some definitional inconsistencies across IMF/WB compilations.",
+    "trends": [
+      {
+        "trend_id": "fiscal_policy_change",
+        "lift_bucket": "High",
+        "lift_pct": "+8-15%",
+        "reason": "Fiscal balance is the direct measure of the fiscal stance shift that defines fiscal policy change events."
+      },
+      {
+        "trend_id": "currency_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Persistent deficits monetised by central banks are the textbook precursor to currency crises."
+      },
+      {
+        "trend_id": "economic_recession",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Collapsing revenue-driven deficit widening co-moves with recession onset and amplifies contractionary dynamics."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Austerity-driven deficit reduction programmes are a well-documented trigger of social unrest and protest mobilisation."
+      }
+    ]
+  },
+  {
+    "code": "ILR_TUMT_NOC_RT",
+    "why": "Trade union density captures the organised bargaining power of workers: high and rising density gives labour movements the structural capacity to mount sustained collective action, while sharp declines can signal repression of worker rights or deindustrialisation shocks that redirect grievances into broader political mobilisation. It is a direct leading indicator of labour-action events and an upstream variable for mass protest.",
+    "country_coverage": 115,
+    "coverage_confidence": "medium",
+    "year_start": 1995,
+    "year_end": 2023,
+    "coverage_note": "ILOSTAT administrative and survey data; sparse for informal-economy-heavy sub-Saharan and South Asian countries; reporting gaps create uneven time series.",
+    "trends": [
+      {
+        "trend_id": "labor_action",
+        "lift_bucket": "High",
+        "lift_pct": "+8-16%",
+        "reason": "Union density is the most direct structural predictor of strike capacity — high density enables the sustained mobilisation that produces labor action events."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Strong union networks provide organisational infrastructure for mass protest movements beyond narrow labour demands."
+      },
+      {
+        "trend_id": "social_policy_reform",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Union density shapes the political economy of welfare-state reform — high density countries face stronger resistance to retrenchment."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Suppression of union rights often accompanies broader political repression; declining density under autocratisation is a marginal signal."
+      }
+    ]
+  },
+  {
+    "code": "FS-004",
+    "why": "The FIES severe food insecurity rate (% unable to eat for a day or more due to lack of resources) captures the most acute end of household food deprivation — the direct material deprivation channel linking food system failures to political instability, since populations facing starvation-level food access become highly sensitised to price shocks and government failures that trigger protests and violence.",
+    "country_coverage": 140,
+    "coverage_confidence": "high",
+    "year_start": 2014,
+    "year_end": 2023,
+    "coverage_note": "FIES survey data from 2014; shorter time series than PoU; coverage broadened post-2016 via Gallup World Poll integration; pre-2014 imputed values available but modelled.",
+    "trends": [
+      {
+        "trend_id": "drought_and_famine",
+        "lift_bucket": "High",
+        "lift_pct": "+9-18%",
+        "reason": "Severe FIES rate directly measures the acute food deprivation that defines famine conditions and precedes famine event declarations."
+      },
+      {
+        "trend_id": "humanitarian_crisis",
+        "lift_bucket": "High",
+        "lift_pct": "+7-14%",
+        "reason": "Acute food insecurity is a core trigger and indicator of humanitarian crises requiring international response."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Severe food insecurity historically correlates with food-price protest mobilisation; the 2008 and 2011 food crisis protest waves are canonical examples."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Severe food insecurity is a headline deprivation outcome that defines poverty crises in low-income settings."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Acute food insecurity is a documented driver of distress migration and refugee flows, especially when combined with conflict."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_OS_DEATHS_GOVT",
+    "why": "Government-perpetrated one-sided civilian killings measure the intensity of state atrocity — a qualitatively distinct signal from battlefield deaths that indicates a regime is targeting its own population, which systematically precedes mass refugee flows, foreign intervention triggers, and international sanctions. Magnitude of state killing is a strong discriminator between ordinary repression and catastrophic violence trajectories.",
+    "country_coverage": 120,
+    "coverage_confidence": "high",
+    "year_start": 1989,
+    "year_end": 2023,
+    "coverage_note": "UCDP OSV dataset covers all conflict-affected contexts ≥25 deaths/year threshold; zero-coded for non-atrocity country-years; reliable from 1989.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+10-20%",
+        "reason": "Government civilian killings are the highest-intensity manifestation of political repression and directly define this trend's most predictable precursor."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "High",
+        "lift_pct": "+8-16%",
+        "reason": "State atrocity deaths are the most severe human rights violations measurable quantitatively at country-year level."
+      },
+      {
+        "trend_id": "foreign_intervention",
+        "lift_bucket": "High",
+        "lift_pct": "+6-13%",
+        "reason": "Mass government atrocity is a primary trigger for R2P-framed foreign military interventions."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Medium",
+        "lift_pct": "+5-10%",
+        "reason": "State killing campaigns drive displacement flows as targeted populations flee; correlated with refugee stock build-ups."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-9%",
+        "reason": "One-sided government violence often co-occurs with or escalates into full civil war; the atrocity signal leads insurgency intensification."
+      }
+    ]
+  },
+  {
+    "code": "v2exrescon",
+    "why": "V-Dem's executive respects constitution indicator measures whether the head of government abides by constitutional limits and judicial rulings — its decline is the definitional marker of executive power consolidation and the erosion of horizontal accountability that precedes democratic backsliding, institutional purges, and eventually coup or regime change.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem near-universal country coverage from 1900; expert-coded with measurement uncertainty intervals; reliable post-1970 for most countries.",
+    "trends": [
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "High",
+        "lift_pct": "+10-20%",
+        "reason": "This indicator is the direct operational measurement of the executive constitutionalism erosion that defines power consolidation events."
+      },
+      {
+        "trend_id": "constitutional_change",
+        "lift_bucket": "High",
+        "lift_pct": "+8-16%",
+        "reason": "Executives who disrespect existing constitutional constraints are the primary agents of constitutional change events, whether by overreach or forced revision."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+7-14%",
+        "reason": "Sustained decline in executive constitution-respect is the canonical early indicator of democratic backsliding — a reversal can also signal positive transition."
+      },
+      {
+        "trend_id": "military_coup",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-9%",
+        "reason": "Constitutional violations by executives sometimes invite counter-coups from institutional actors defending the constitutional order."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Executives who override constitutional constraints typically expand repressive powers beyond legal limits, linking to repression events."
+      }
+    ]
+  },
+  {
+    "code": "UCDP_DECO_ELECTORAL_VIOLENCE",
+    "why": "Georeferenced lethal electoral violence event counts capture the specific political-competition violence that clusters around electoral cycles — distinct from armed conflict, it signals contested political environments where candidates, parties, and voters face physical coercion, which is a leading indicator of disputed elections, regime delegitimisation, and post-election crisis escalation.",
+    "country_coverage": 100,
+    "coverage_confidence": "medium",
+    "year_start": 1990,
+    "year_end": 2022,
+    "coverage_note": "UCDP DECO covers electoral events with documented deaths; many country-years are zeros (non-occurrences); coverage limited to countries with documented electoral violence; ends ~2022 in current release.",
+    "trends": [
+      {
+        "trend_id": "elections_and_voting",
+        "lift_bucket": "High",
+        "lift_pct": "+9-18%",
+        "reason": "Electoral violence directly shapes and precedes contested election events — the count is the most precise leading signal for high-risk electoral periods."
+      },
+      {
+        "trend_id": "political_violence",
+        "lift_bucket": "High",
+        "lift_pct": "+7-14%",
+        "reason": "Lethal electoral violence is a specific sub-type of political violence with documented periodicity around electoral cycles."
+      },
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Electoral violence by incumbents is often a manifestation of broader repression of political competition."
+      },
+      {
+        "trend_id": "government_formation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "Electoral violence signals disputed legitimacy that complicates post-election government formation and coalition building."
+      }
+    ]
+  },
+  {
+    "code": "v2x_civlib",
+    "why": "The V-Dem Civil Liberties Index aggregates freedom of movement, religion, expression, association, and personal integrity — its sustained decline traces the broad-front erosion of rights that defines autocratisation trajectories and precedes repression events, protest mobilisation, and eventually regime-changing opposition, making it a high-signal composite for political-risk models.",
+    "country_coverage": 180,
+    "coverage_confidence": "high",
+    "year_start": 1900,
+    "year_end": 2024,
+    "coverage_note": "V-Dem near-universal coverage with expert-coded measurement; especially reliable post-1970; the composite aggregation smooths individual component noise.",
+    "trends": [
+      {
+        "trend_id": "political_repression",
+        "lift_bucket": "High",
+        "lift_pct": "+8-16%",
+        "reason": "Civil liberties decline is the broad-spectrum signal of repression — the index covers all key dimensions that define repressive political environments."
+      },
+      {
+        "trend_id": "democratic_transition",
+        "lift_bucket": "High",
+        "lift_pct": "+7-14%",
+        "reason": "Civil liberties trajectory is the canonical measure of democratisation and backsliding; used as a definitional component in most transition datasets."
+      },
+      {
+        "trend_id": "human_rights_violation",
+        "lift_bucket": "High",
+        "lift_pct": "+6-12%",
+        "reason": "Civil liberties restriction directly indexes the rights violations that define human rights violation events."
+      },
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Civil liberties erosion both mobilises protest responses and simultaneously constrains protest capacity — the tension creates volatile protest dynamics."
+      },
+      {
+        "trend_id": "executive_power_consolidation",
+        "lift_bucket": "Medium",
+        "lift_pct": "+4-8%",
+        "reason": "Executive consolidation of power systematically dismantles civil liberties; the index captures the downstream effects of concentration of authority."
+      }
+    ]
+  },
+  {
+    "code": "SP.POP.0014.TO.ZS",
+    "why": "The under-14 population share is a structural demographic pressure indicator: high shares signal a coming youth-bulge cohort that, if unabsorbed by labour markets and institutions, produces the frustrated youth population that drives protest mobilisation, insurgent recruitment, and political instability — the 'youth-bulge hypothesis' is empirically supported across multiple conflict onset studies.",
+    "country_coverage": 217,
+    "coverage_confidence": "high",
+    "year_start": 1960,
+    "year_end": 2023,
+    "coverage_note": "WB WDI sourced from UN WPP; near-universal coverage from 1960; some interpolation for small states and conflict countries in early years.",
+    "trends": [
+      {
+        "trend_id": "mass_protest",
+        "lift_bucket": "High",
+        "lift_pct": "+5-10%",
+        "reason": "Youth bulge is one of the most replicated structural predictors of protest mobilisation — large young cohorts with unmet expectations produce protest-prone populations."
+      },
+      {
+        "trend_id": "civil_war_and_insurgency",
+        "lift_bucket": "High",
+        "lift_pct": "+5-11%",
+        "reason": "Youth bulge increases the recruitment pool for armed groups; demographic pressure is a well-documented structural risk factor for civil conflict onset."
+      },
+      {
+        "trend_id": "poverty_and_inequality_crisis",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-7%",
+        "reason": "High child-dependency ratios strain household and public resources, exacerbating poverty and inequality outcomes."
+      },
+      {
+        "trend_id": "ethnic_and_communal_conflict",
+        "lift_bucket": "Medium",
+        "lift_pct": "+3-6%",
+        "reason": "Demographic pressure amplifies competition for resources along ethnic lines, increasing communal conflict risk in diverse societies."
+      },
+      {
+        "trend_id": "migration_and_refugees",
+        "lift_bucket": "Low",
+        "lift_pct": "+2-4%",
+        "reason": "Large youth cohorts facing limited opportunities are a secondary driver of economic migration, particularly in high-fertility fragile states."
+      }
+    ]
+  }
+]
