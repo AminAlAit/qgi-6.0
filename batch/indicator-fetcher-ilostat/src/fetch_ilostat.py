@@ -206,7 +206,6 @@ def compute_derived(spec: dict[str, Any], iso3_map: dict[str, str]) -> pd.DataFr
     Supported types:
       ratio         : numerator / denominator * 100  (percentage ratio)
       annual_change : year-on-year diff of the base series
-      per1000       : base series / population * 1000  (uses WB SP.POP.TOTL via base)
       binary        : 1 if base > 0 else 0
     """
     derivation = spec.get("derivation") or {}
@@ -242,25 +241,6 @@ def compute_derived(spec: dict[str, Any], iso3_map: dict[str, str]) -> pd.DataFr
         base_df = base_df.dropna(subset=["value"])
         return base_df[["country", "year", "value"]].reset_index(drop=True)
 
-    elif deriv_type == "per1000":
-        # Requires population denominator; pull from WB SP.POP.TOTL via base helper.
-        base_df = _fetch_and_parse(
-            spec["dataflow_base"], spec["key_base"], iso3_map
-        )
-        if base_df.empty:
-            return pd.DataFrame(columns=["country", "year", "value"])
-        try:
-            pop_df = base.fetch_wb_series("SP.POP.TOTL", iso3_map)  # type: ignore[attr-defined]
-        except AttributeError:
-            base.logger.warning(
-                f"{code}: base.fetch_wb_series not available; cannot compute per1000"
-            )
-            return pd.DataFrame(columns=["country", "year", "value"])
-        merged = base_df.merge(pop_df, on=["country", "year"], suffixes=("_base", "_pop"))
-        merged = merged[merged["value_pop"] > 0].copy()
-        merged["value"] = merged["value_base"] / merged["value_pop"] * 1000.0
-        return merged[["country", "year", "value"]].reset_index(drop=True)
-
     elif deriv_type == "binary":
         base_df = _fetch_and_parse(
             spec["dataflow_base"], spec["key_base"], iso3_map
@@ -274,7 +254,7 @@ def compute_derived(spec: dict[str, Any], iso3_map: dict[str, str]) -> pd.DataFr
     else:
         raise ValueError(
             f"{code}: unknown derivation type {deriv_type!r}. "
-            "Supported: ratio, annual_change, per1000, binary"
+            "Supported: ratio, annual_change, binary"
         )
 
 

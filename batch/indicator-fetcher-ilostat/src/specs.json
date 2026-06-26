@@ -106,10 +106,10 @@
   },
   {
     "code": "IL-16",
-    "dataflow": "EIP_NEET_SEX_AGE_RT",
-    "key": ".A..SEX_T.AGE_5YRBANDS_YGE15",
+    "dataflow": "SDG_0861_SEX_RT",
+    "key": ".A..SEX_T",
     "is_derived": false,
-    "notes": "Youth NEET rate survey-based (%). 15+ age band, total sex. SDG 8.6.1 custodian. DSD: REF_AREA.FREQ.MEASURE.SEX.AGE. Complement to IL-11."
+    "notes": "Youth (15-24) NEET rate % — SDG 8.6.1 official indicator. ILO custodian; distinct from IL-11 (15+ aggregate). DSD: REF_AREA.FREQ.MEASURE.SEX. 2,493 obs / 268 countries confirmed 2026-06-27."
   },
   {
     "code": "IL-17",

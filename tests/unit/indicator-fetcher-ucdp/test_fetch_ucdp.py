@@ -538,9 +538,12 @@ class TestFetchOneDispatch:
         ])
 
     def _stub_onesided_df(self):
+        # Column names match the live UCDP One-sided v24.1 CSV:
+        # gwno_location (not gwno_where), best_fatality_estimate (not deaths_best),
+        # is_government_actor (1/0 integer flag present in v24.1+)
         return pd.DataFrame([
-            {"gwno_where": "700", "year": 2020, "side_a": "Government of Afghanistan",
-             "deaths_best": 100, "actor_id": "A1"},
+            {"gwno_location": "700", "year": 2020, "is_government_actor": 1,
+             "best_fatality_estimate": 100, "actor_id": "A1"},
         ])
 
     def _stub_acd_df(self):
@@ -554,10 +557,13 @@ class TestFetchOneDispatch:
         ])
 
     def _stub_ov_df(self):
+        # Dataset v26.1 (organizedviolencecy-261) uses a name-based 'country'
+        # column (no gwno_loc); canonical mapping goes via name_map.
+        # NAME_MAP maps "Afghanistan" -> "Afghanistan" directly.
         return pd.DataFrame([
-            {"gwno_loc": "700", "year": 2019, "sb_exist": "1",
+            {"country": "Afghanistan", "year": 2019, "sb_exist": "1",
              "ns_exist": "0", "os_exist": "0"},
-            {"gwno_loc": "700", "year": 2020, "sb_exist": "0",
+            {"country": "Afghanistan", "year": 2020, "sb_exist": "0",
              "ns_exist": "0", "os_exist": "0"},
         ])
 
@@ -631,8 +637,12 @@ class TestFetchOneDispatch:
     def test_fetch_one_years_since_last_conflict(self):
         nm, iso3 = self._mock_base_helpers()
         f._gw_to_canonical_cache = None
+        # ov_bulk path calls base.load_name_alias_map() to build the name map
+        # (OV v26.1 uses a name-based 'country' column).  Patch it alongside
+        # load_iso3_country_map so the test never touches S3.
         with patch.object(f, "_load_bulk", return_value=self._stub_ov_df()), \
-             patch.object(base, "load_iso3_country_map", return_value=iso3):
+             patch.object(base, "load_iso3_country_map", return_value=iso3), \
+             patch.object(base, "load_name_alias_map", return_value=nm):
             out = f.fetch_one({"id_string": "UCDP_YEARS_SINCE_LAST_CONFLICT"})
         recs = {(r["country"], r["year"]): r["value"] for r in out.to_dict("records")}
         assert recs[("Afghanistan", 2019)] == 0.0  # active
