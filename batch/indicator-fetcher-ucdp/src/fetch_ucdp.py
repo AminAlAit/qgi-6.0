@@ -3,11 +3,17 @@
 Replaces the old paginated REST API approach (which requires a token since 2025)
 with UCDP's open bulk CSV downloads:
 
-  GED     https://ucdp.uu.se/downloads/ged/ged251-csv.zip
+  GED       https://ucdp.uu.se/downloads/ged/ged251-csv.zip
   one-sided https://ucdp.uu.se/downloads/nsos/ucdp-onesided-241-csv.zip
-  ACD     https://ucdp.uu.se/downloads/ucdpprio/ucdp-prio-acd-241.csv.zip
-  OV CY   https://ucdp.uu.se/downloads/ov/ucdp-ov-241.csv.zip
-  Onset   https://ucdp.uu.se/downloads/onset/ucdp-onset-251.csv
+  ACD       https://ucdp.uu.se/downloads/ucdpprio/ucdp-prio-acd-261-csv.zip
+  OV CY     https://ucdp.uu.se/downloads/organizedviolencecy/organizedviolencecy-261-csv.zip
+  Onset     https://ucdp.uu.se/downloads/onset/ucdp-intrastate-country-onset-251.csv
+
+NOTE: UCDP bulk URLs are version/date-stamped (the numeric suffix encodes the
+dataset version, e.g., 251 = v25.1, 241 = v24.1, 261 = v26.1).  When a new
+annual release is published (~June each year), update the bulk_url values in
+specs.json accordingly.  Column names can also change across versions — always
+verify against the codebook PDF bundled inside each zip.
 
 Each zip is downloaded once and cached in-process across all indicators that
 share the same source so repeated task invocations within one Batch job never

@@ -250,9 +250,11 @@ class TestSpecs:
         assert "SEX_T" in cfg["key"]
 
     def test_il16_neet_survey_based(self):
-        """IL-16 uses EIP_NEET_SEX_AGE_RT (survey-based NEET, distinct from IL-11)."""
+        """IL-16 uses SDG_0861_SEX_RT (SDG 8.6.1 youth 15-24 NEET), distinct from IL-11."""
         cfg = f.SPECS["IL-16"]
-        assert cfg["dataflow"] == "EIP_NEET_SEX_AGE_RT"
+        assert cfg["dataflow"] == "SDG_0861_SEX_RT", (
+            f"IL-16 must use SDG_0861_SEX_RT (SDG 8.6.1 youth NEET 15-24), got {cfg['dataflow']!r}"
+        )
         assert cfg["dataflow"] != f.SPECS["IL-11"]["dataflow"], (
             "IL-16 and IL-11 must use different NEET dataflows"
         )
