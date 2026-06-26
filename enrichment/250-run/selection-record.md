@@ -16,7 +16,7 @@
 
 **Agreement (genuine consensus):** 77 unanimous (8/8) · 28 at 7/8 · 19 at 6/8 · 10 at 5/8 · 7 at 4/8. **124 of 141 (88%) carry ≥6-of-8 agreement.**
 
-**Providers:** V-Dem 45 · WB 26 · UCDP 16 · OWID 15 · IDMC 10 · UNHCR 9 · FAOSTAT 8 · ILOSTAT 8 · UNDP 4. **OECD 0** — panel deliberately excluded it (≈38-country coverage fails the global coverage gate; WB/OWID surrogates cover the same signals with full panels).
+**Providers (original pre-audit selection):** V-Dem 45 · WB 26 · UCDP 16 · OWID 15 · IDMC 10 · UNHCR 9 · FAOSTAT 8 · ILOSTAT 8 · UNDP 4. **OECD 0** — panel deliberately excluded it (≈38-country coverage fails the global coverage gate). **→ After the 2026-06-26 license audit (see addendum), the live 141 is: V-Dem 55 · WB 27 · UCDP 20 · UNHCR 11 · FAOSTAT 8 · OWID 8 · ILOSTAT 8 · UNDP 4 · IDMC 0.**
 
 **Categories:** Governance 56 · Social 31 · conflict-deaths (“Other”) 14 · Economic 12 · Government 8 · Environment 6 · Military 4 · Finance 4 · Trade 3 · Demographic 2 · Health 1.
 
