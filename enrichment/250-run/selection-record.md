@@ -45,3 +45,10 @@ A post-selection COMMERCIAL-license audit (QGI is sold commercially) found the o
 - **BACKFILLED 17** via the same 8-persona panel from a license-clean pool (1,370 candidates; WB/V-Dem/FAOSTAT/ILOSTAT/UCDP/UNHCR/UNDP only), covering every lost signal: displacement -> UNHCR x2; rule-of-law/corruption -> V-Dem x7; press freedom -> V-Dem x3; terrorism/violence -> UCDP x4; military spend -> WB x1. 12 of 17 unanimous.
 
 Net count still 141, now all commercial-license-clean. Registry: the 17 dropped -> `quarantined` (reason: license); the 17 backfill -> `vetted`. Sources: V-Dem FAQ, FAOSTAT db-terms-of-use, IDMC API #copyright.
+
+
+## Final composition (post license-audit + fetchability swap, 2026-06-27)
+The historical Result/Provider/Category counts above are the ORIGINAL pre-audit selection. The LIVE, fully-fetchable + commercial-license-clean 141 is:
+- **Providers:** V-Dem 57 · WB 29 · UCDP 19 · UNHCR 11 · FAOSTAT 8 · ILOSTAT 8 · OWID 5 · UNDP HDR 4
+- **Categories:** Governance 59 · Social 27 · Other 16 · Economic 11 · Government 10 · Finance 5 · Environment 4 · Military 3 · Trade 3 · Demographic 2 · Health 1
+- The 9 fetchability-swap replacements carry `votes: null` (selected by panel + live-verify, not a new 8/8 scoring round) — exclude them when citing the 8/8 agreement stats (those describe the 132 scored picks).
