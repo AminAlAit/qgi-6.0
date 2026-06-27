@@ -114,15 +114,30 @@ FAO_BULK_URL_TEMPLATE = os.environ.get(
 # FAOSTAT bulk-download URL. Start small; extend as more FAO domains
 # land in the catalog. Extracted from the FAOSTAT bulk-downloads page.
 _FAO_DOMAIN_FULL_NAMES = {
-    "FS":       "Food_Security_Data",       # Suite of Food Security Indicators
-    # Future (verify at https://www.fao.org/faostat/en/#data before use):
+    "FS":       "Food_Security_Data",          # Suite of Food Security Indicators
+    "TCL":      "Trade_CropsLivestock",        # Trade: Crops & Livestock (TC-002 cereal imports)
+    "SDGB":     "SDG_BulkDownloads",           # SDG Bulk Downloads (SDGB-009 IFPA, SDGB-012 water stress)
+    "ET":       "Environment_Temperature_change", # Temperature Change (ET-001 mean surface temp)
+    # Future (verify at https://bulks-faostat.fao.org/production/ before use):
     # "RL":     "Inputs_LandUse",
-    # "RFB":    "FertilizersProduct",        # or Inputs_FertilizersArchive
+    # "RFB":    "FertilizersProduct",
     # "TM":     "Trade_DetailedTradeMatrix",
     # "PP":     "Prices",
     # "QCL":    "Production_Crops_Livestock",
     # "GT":     "Emissions_Totals",
     # "Forestry":"Forestry",
+}
+
+# Some FAOSTAT domains use a non-standard column as the item identifier.
+# The default ("Item Code") works for most domains; exceptions are listed
+# here. When present, this column is used instead of "Item Code" for the
+# row-filter in extract_indicator().
+#
+# ET (Environment_Temperature_change): items are months/annual periods —
+# the identifying column is "Months Code" (e.g. 7020 = "Meteorological year"),
+# not "Item Code". Using "Item Code" gives 0 rows on this domain.
+_FAO_DOMAIN_ITEM_COLUMN: dict[str, str] = {
+    "ET": "Months Code",
 }
 
 # Browser-like User-Agent — some FAOSTAT CDNs (and many other bulk hosts)
@@ -317,18 +332,53 @@ def extract_indicator(
     dispatcher pass-through preserves the XLSX column names verbatim,
     so the long form is what arrives in practice. The short form is
     retained for hand-authored smoke tests and legacy payloads.
+
+    ``indicator_spec`` may also carry ``fao_domain_code`` so the
+    function can look up ``_FAO_DOMAIN_ITEM_COLUMN`` for domains that
+    use a non-standard identifier column (e.g. ET uses "Months Code"
+    not "Item Code").
     """
-    def _coerce(spec: dict, *candidates: str) -> int:
+    def _coerce_item(spec: dict, *candidates: str) -> str:
+        """Return item code as a string. FAOSTAT item codes may be
+        alphanumeric (e.g. "24027-_T") so we never coerce to int."""
         for key in candidates:
             if key in spec and spec[key] is not None:
-                return int(spec[key])
+                return str(spec[key])
         raise KeyError(
             f"Indicator {spec.get('id_string','?')!r} missing required "
-            f"FAOSTAT code: tried {candidates}. Keys present: {list(spec)}"
+            f"FAOSTAT item code: tried {candidates}. Keys present: {list(spec)}"
         )
 
-    item_code = _coerce(indicator_spec, "item_code", "fao_item_code")
-    element_code = _coerce(indicator_spec, "element_code", "fao_element_code")
+    def _coerce_element(spec: dict, *candidates: str) -> str:
+        """Return element code as a string."""
+        for key in candidates:
+            if key in spec and spec[key] is not None:
+                return str(int(spec[key]))  # element codes are always numeric; normalize to clean str
+        raise KeyError(
+            f"Indicator {spec.get('id_string','?')!r} missing required "
+            f"FAOSTAT element code: tried {candidates}. Keys present: {list(spec)}"
+        )
+
+    # item_code may be alphanumeric (e.g. "24027-_T" in SDGB domain); keep as str.
+    item_code = _coerce_item(indicator_spec, "item_code", "fao_item_code")
+    element_code = _coerce_element(indicator_spec, "element_code", "fao_element_code")
+
+    # Resolve item column: most domains use "Item Code" but some (e.g. ET)
+    # use a different column. Check _FAO_DOMAIN_ITEM_COLUMN first, then
+    # honour an explicit ``item_column`` key in the spec (for future
+    # per-indicator overrides), then fall back to "Item Code".
+    domain_code_for_spec = indicator_spec.get("fao_domain_code", DOMAIN_CODE)
+    _item_col_default = _FAO_DOMAIN_ITEM_COLUMN.get(domain_code_for_spec, "Item Code")
+    item_col = indicator_spec.get("item_column", _item_col_default)
+    if item_col not in df_domain.columns:
+        # Graceful fallback: warn and try "Item Code" so existing FS/TCL/SDGB
+        # jobs do not break if the spec carries a stale column name.
+        logger.warning(
+            f"  Column {item_col!r} not found in domain CSV "
+            f"(available: {df_domain.columns.tolist()[:10]}). "
+            f"Falling back to 'Item Code'."
+        )
+        item_col = "Item Code"
 
     # Compare as strings. FAOSTAT item codes are a mix of pure ints
     # ("21010") and int-with-letter-suffix ("210401M", "210400TSUB"),
@@ -340,8 +390,12 @@ def extract_indicator(
     # indicators in the catalog.
     item_code_s = str(item_code)
     element_code_s = str(element_code)
+    logger.info(
+        f"  Filtering domain CSV on {item_col}={item_code_s!r}, "
+        f"Element Code={element_code_s!r}"
+    )
     subset = df_domain[
-        (df_domain["Item Code"].astype(str) == item_code_s)
+        (df_domain[item_col].astype(str) == item_code_s)
         & (df_domain["Element Code"].astype(str) == element_code_s)
     ].copy()
 
