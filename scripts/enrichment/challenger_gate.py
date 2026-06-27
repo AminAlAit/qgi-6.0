@@ -39,10 +39,12 @@ import argparse
 import json
 import math
 import sys
+from concurrent.futures import ProcessPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import numpy as np
 import pandas as pd
 
 # Import the walk driver verbatim (mirrors compute_recipe_country_similarity.py).
@@ -157,6 +159,55 @@ def classify_crack(candidate_auc: Any, cutoff_auc: float, coverage_fail: bool) -
     return float(candidate_auc) > cutoff_auc
 
 
+def _screen_chunk(args):
+    """Process-pool worker: screen ONE chunk of indicators. Calls the walk's
+    ``univariate_loco_screen`` verbatim (LR stays n_jobs=1 inside), so each
+    indicator's AUC is bit-identical to the serial path — only the indicator
+    loop is split across processes. Top-level (picklable) for spawn workers."""
+    samples, ids, panels, default_window = args
+    _, scores = drv.univariate_loco_screen(
+        samples, ids, panels, default_window=default_window, top_n=len(ids)
+    )
+    return scores
+
+
+def _screen(
+    samples: pd.DataFrame,
+    candidates: list[str],
+    panels: dict[str, pd.DataFrame],
+    *,
+    top_n: int,
+    default_window: int = 10,
+    executor: ProcessPoolExecutor | None = None,
+    jobs: int = 1,
+) -> tuple[list[str], dict[str, dict]]:
+    """``univariate_loco_screen``, optionally parallelized ACROSS indicators via
+    ``jobs`` processes. Bit-identical to the serial screen: each indicator is
+    scored by the identical code path (separate processes → independent BLAS
+    state, LR stays n_jobs=1), and the final ranking replicates the screen's
+    exact sort over the original ``candidates`` order. With executor=None /
+    jobs<=1 it delegates straight to the serial screen (unchanged default)."""
+    if executor is None or jobs <= 1 or len(candidates) <= 1:
+        return drv.univariate_loco_screen(
+            samples, candidates, panels, default_window=default_window, top_n=top_n
+        )
+    chunks = [candidates[k::jobs] for k in range(jobs)]
+    tasks = [(samples, ch, {i: panels[i] for i in ch}, default_window)
+             for ch in chunks if ch]
+    scores: dict[str, dict] = {}
+    for sc in executor.map(_screen_chunk, tasks):
+        scores.update(sc)
+    # Replicate univariate_loco_screen's exact ranking (run_f_ml_1_poc ~l.839):
+    # np.isnan (not math.isnan) verbatim, so a stray np.float64 can never diverge.
+    ranked = sorted(
+        candidates,
+        key=lambda i: (scores[i]["univariate_loco_auc"]
+                       if not np.isnan(scores[i]["univariate_loco_auc"]) else -1.0),
+        reverse=True,
+    )
+    return ranked[:top_n], scores
+
+
 def evaluate_recipe(
     recipe_id: str,
     candidate_ids: list[str],
@@ -167,6 +218,8 @@ def evaluate_recipe(
     seed: int = DEFAULT_SEED,
     negatives_per_positive: int = 3,
     top_n: int = drv.TOP_N_PREFILTER,
+    executor: ProcessPoolExecutor | None = None,
+    jobs: int = 1,
 ) -> dict[str, Any]:
     """Core, in-memory gate for one recipe (no filesystem - directly testable).
 
@@ -181,16 +234,18 @@ def evaluate_recipe(
     # Current pool cutoff. top_n=len(pool) forces univariate_loco_screen to return
     # the FULL ranking (it otherwise truncates to its own top_n) so compute_cutoff
     # can pick the exact Nth-best.
-    ranked_pool, scores_pool = drv.univariate_loco_screen(
-        samples, current_pool_ids, panels, top_n=len(current_pool_ids)
+    ranked_pool, scores_pool = _screen(
+        samples, current_pool_ids, panels, top_n=len(current_pool_ids),
+        executor=executor, jobs=jobs,
     )
     assert len(ranked_pool) == len(current_pool_ids), (
         "univariate_loco_screen must return the full pool ranking for an exact cutoff")
     cutoff_auc, cutoff_id, n_valid_pool = compute_cutoff(ranked_pool, scores_pool, top_n=top_n)
 
     # Candidate screen on the identical samples (same coverage gate + LR LOCO).
-    _, scores_cand = drv.univariate_loco_screen(
-        samples, candidate_ids, panels, top_n=len(candidate_ids)
+    _, scores_cand = _screen(
+        samples, candidate_ids, panels, top_n=len(candidate_ids),
+        executor=executor, jobs=jobs,
     )
 
     per_candidate = []
@@ -248,8 +303,14 @@ def run_gate(
     seed: int = DEFAULT_SEED,
     negatives_per_positive: int = 3,
     top_n: int = drv.TOP_N_PREFILTER,
+    jobs: int = 1,
 ) -> dict[str, Any]:
     """Full gate over all recipes. Loads panels once, evaluates each recipe.
+
+    ``jobs`` > 1 parallelizes each recipe's univariate screen across that many
+    processes (bit-identical; see ``_screen``). One pool is created and reused
+    across all recipes + both screens so the heavy walk-driver import is paid
+    once per worker.
 
     Loads the whole pool into memory once (fine at the 109/250 scale; revisit a
     lazy/streamed load at the 500 scale). Current pool = every panel in
@@ -264,20 +325,28 @@ def run_gate(
     panels = load_panels(pool_ids, panel_dir)
     panels.update(load_panels(candidate_ids, candidate_panel_dir))
 
-    per_recipe = []
-    for rec in recipes:
-        rid = rec["recipe_id"]
-        try:
-            positives = load_positives(rid, shape_dir)
-        except FileNotFoundError:
-            per_recipe.append({"recipe_id": rid, "error": "positives.csv not found", "flagged": False})
-            continue
-        result = evaluate_recipe(
-            rid, candidate_ids, pool_ids, panels, positives,
-            seed=seed, negatives_per_positive=negatives_per_positive, top_n=top_n,
-        )
-        result["status"] = rec.get("status")
-        per_recipe.append(result)
+    executor = ProcessPoolExecutor(max_workers=jobs) if jobs > 1 else None
+    try:
+        per_recipe = []
+        for rec in recipes:
+            rid = rec["recipe_id"]
+            try:
+                positives = load_positives(rid, shape_dir)
+            except FileNotFoundError:
+                per_recipe.append({"recipe_id": rid, "error": "positives.csv not found", "flagged": False})
+                continue
+            result = evaluate_recipe(
+                rid, candidate_ids, pool_ids, panels, positives,
+                seed=seed, negatives_per_positive=negatives_per_positive, top_n=top_n,
+                executor=executor, jobs=jobs,
+            )
+            result["status"] = rec.get("status")
+            per_recipe.append(result)
+    finally:
+        if executor is not None:
+            # cancel_futures=True so a worker error propagates immediately instead of
+            # blocking on the rest of the already-submitted screen batch.
+            executor.shutdown(wait=True, cancel_futures=True)
 
     flagged = [r["recipe_id"] for r in per_recipe if r.get("flagged")]
     unflagged = [r["recipe_id"] for r in per_recipe if not r.get("flagged") and "error" not in r]
@@ -346,6 +415,10 @@ def main(argv: list[str] | None = None) -> int:
                     help="Negative-sampling seed; match the target walk's --seed for an exact cutoff "
                          f"(default {DEFAULT_SEED}, the fleet production default)")
     ap.add_argument("--negatives-per-positive", type=int, default=3)
+    ap.add_argument("--jobs", type=int, default=1,
+                    help="Processes to parallelize each recipe's univariate screen "
+                         "across (bit-identical; separate processes keep LR n_jobs=1). "
+                         "Default 1 (serial).")
     ap.add_argument("--top-n", type=int, default=drv.TOP_N_PREFILTER,
                     help=f"Prefilter cutoff rank (default {drv.TOP_N_PREFILTER}, the walk's TOP_N_PREFILTER)")
     ap.add_argument("--output", type=Path, default=None, help="Write manifest JSON here")
@@ -354,6 +427,8 @@ def main(argv: list[str] | None = None) -> int:
     candidate_ids = _parse_candidates(args)
     if not candidate_ids:
         ap.error("no candidates provided")
+    if args.jobs < 1:
+        ap.error("--jobs must be >= 1")
 
     if args.recipe_ids:
         recipes = [{"recipe_id": r, "status": "override"} for r in args.recipe_ids]
@@ -369,6 +444,7 @@ def main(argv: list[str] | None = None) -> int:
         seed=args.seed,
         negatives_per_positive=args.negatives_per_positive,
         top_n=args.top_n,
+        jobs=args.jobs,
     )
 
     out = json.dumps(manifest, indent=2)

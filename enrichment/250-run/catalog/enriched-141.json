@@ -822,8 +822,8 @@
   ]
  },
  {
-  "code": "DT.INT.DECT.GN.ZS",
-  "name": "Interest payments on external debt (% of GNI)",
+  "code": "DT.TDS.DECT.GN.ZS",
+  "name": "Total debt service (% of GNI)",
   "provider": "WB",
   "category": "Government",
   "votes": 6,
@@ -1410,8 +1410,8 @@
   ]
  },
  {
-  "code": "DT.DOD.DECT.EX.ZS",
-  "name": "External debt stocks (% of exports of goods, services and primary income)",
+  "code": "DT.DOD.DECT.CD",
+  "name": "External debt stocks, total (current US$)",
   "provider": "WB",
   "category": "Government",
   "votes": 7,
@@ -3150,8 +3150,8 @@
   ]
  },
  {
-  "code": "FB.BNK.NPLS.ZS",
-  "name": "Bank nonperforming loans to total gross loans (%)",
+  "code": "FB.BNK.CAPA.ZS",
+  "name": "Bank capital to assets ratio (%)",
   "provider": "WB",
   "category": "Finance",
   "votes": 8,
@@ -3198,7 +3198,7 @@
   ]
  },
  {
-  "code": "NY.GDP.OIL.RT.ZS",
+  "code": "NY.GDP.PETR.RT.ZS",
   "name": "Oil rents (% of GDP)",
   "provider": "WB",
   "category": "Economic",
@@ -4416,8 +4416,8 @@
   ]
  },
  {
-  "code": "GC.BAL.CASH.GD.ZS",
-  "name": "Cash surplus/deficit (% of GDP)",
+  "code": "GC.NLD.TOTL.GD.ZS",
+  "name": "Net lending(+)/borrowing(-) (% of GDP)",
   "provider": "WB",
   "category": "Government",
   "votes": 8,
@@ -4560,8 +4560,8 @@
   ]
  },
  {
-  "code": "v2x_frassoc",
-  "name": "Freedom of Association Index",
+  "code": "v2x_frassoc_thick",
+  "name": "Freedom of association (thick)",
   "provider": "V-Dem",
   "category": "Governance",
   "votes": 8,
@@ -4884,8 +4884,8 @@
   ]
  },
  {
-  "code": "v2casoe",
-  "name": "State of Emergency Declared",
+  "code": "v2cseeorgs",
+  "name": "CSO entry and exit",
   "provider": "V-Dem",
   "category": "Social",
   "votes": 8,
@@ -5862,8 +5862,8 @@
   ]
  },
  {
-  "code": "v2jucnind",
-  "name": "Lower Court Independence",
+  "code": "v2juncind",
+  "name": "Lower court independence",
   "provider": "V-Dem",
   "category": "Governance",
   "votes": 7,
