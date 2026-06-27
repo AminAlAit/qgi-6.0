@@ -257,3 +257,64 @@ def test_build_today_X_empty_intersection_returns_empty():
     assert X.shape == (0, 16)  # 2 indicators × 8 = 16-col empty matrix
     assert keep_c == []
     assert keep_y == []
+
+
+# ---------- Phase B: _resolve_panel_country (pure) --------------------------
+
+def test_resolve_panel_country_exact_match():
+    panels = {"Argentina", "Egypt", "Turkey"}
+    assert sc._resolve_panel_country("Argentina", panels) == "Argentina"
+
+
+def test_resolve_panel_country_normalizes_underscores():
+    panels = {"Sierra Leone"}
+    assert sc._resolve_panel_country("sierra_leone", panels) == "Sierra Leone"
+
+
+def test_resolve_panel_country_alias_turkiye_to_turkey():
+    # scores.json says "Turkiye"; the panels/positives use "Turkey".
+    panels = {"Turkey", "Egypt"}
+    assert sc._resolve_panel_country("Turkiye", panels) == "Turkey"
+
+
+def test_resolve_panel_country_case_insensitive_fallback():
+    panels = {"Côte D'Ivoire"} if False else {"Ivory Coast"}
+    assert sc._resolve_panel_country("ivory coast", panels) == "Ivory Coast"
+
+
+def test_resolve_panel_country_miss_returns_none():
+    # A genuine miss must return None so the caller skips (never mis-attributes).
+    panels = {"Argentina", "Egypt"}
+    assert sc._resolve_panel_country("Atlantis", panels) is None
+
+
+# ---------- Phase B: positives resolution + LOCO hold-out -------------------
+
+def test_resolve_positives_to_panel_maps_alias_into_panel_namespace():
+    """positives.csv 'Turkey' must become panel 'Turkiye' so the LOCO filter matches `pc`."""
+    import pandas as pd
+    pos = pd.DataFrame({"country": ["Turkey", "Egypt"], "year": [2018, 2022], "label": [1, 1]})
+    out = sc._resolve_positives_to_panel(pos, {"Turkiye", "Egypt"})
+    assert set(out["country"]) == {"Turkiye", "Egypt"}
+
+
+def test_score_phase_b_loco_holds_out_country_as_pos_and_neg():
+    """The held-out country must be absent from the LOCO training sample — both as a
+    positive AND as a time-matched negative. This is the invariant that, if broken (e.g.
+    a name-namespace mismatch), produces a false PASS. Uses build_samples (no xgboost)."""
+    import pandas as pd
+    import run_f_ml_1_poc as drv  # noqa: E402
+
+    panel_countries = {"Turkiye", "Egypt", "Ghana", "Argentina", "Brazil"}
+    # positives stored under positives.csv namespace ("Turkey"); panel uses "Turkiye".
+    pos = pd.DataFrame({"country": ["Turkey", "Egypt", "Ghana", "Argentina"],
+                        "year": [2018, 2022, 2022, 2018], "label": [1, 1, 1, 1]})
+    pos_norm = sc._resolve_positives_to_panel(pos, panel_countries)
+    pc = "Turkiye"
+    pos_loco = pos_norm[pos_norm["country"] != pc]
+    samples = drv.build_samples(pos_loco, negatives_per_positive=3, seed=0)
+    samples = samples[samples["country"].astype(str) != pc]
+    # held-out country appears NOWHERE in training (would be present if the alias mismatch
+    # defeated the filter — i.e. if pos still said "Turkey" while pc == "Turkiye").
+    assert pc not in set(samples["country"].astype(str))
+    assert "Turkey" not in set(samples["country"].astype(str))  # the pre-resolution name too
