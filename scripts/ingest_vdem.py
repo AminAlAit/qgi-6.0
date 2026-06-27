@@ -183,7 +183,15 @@ def load_vdem_csv(path: Path, indicators: list[str]) -> pd.DataFrame:
     """
     needed_cols = ["country_text_id", "year", "country_name"] + indicators
     print(f"[load] reading V-Dem CSV: {path}")
-    df = pd.read_csv(path, usecols=needed_cols, low_memory=False)
+    # Tolerate indicator ids that aren't columns in this V-Dem vintage: skip+log
+    # them instead of a hard pandas usecols crash (a single bad code otherwise
+    # kills the whole ingest). The control surface should be correct, but a code
+    # typo / vintage change must not take down all indicators.
+    _avail = set(pd.read_csv(path, nrows=0).columns)
+    _miss = [c for c in needed_cols if c not in _avail]
+    if _miss:
+        print(f"[load] WARNING: skipping {len(_miss)} missing V-Dem cols: {_miss}")
+    df = pd.read_csv(path, usecols=[c for c in needed_cols if c in _avail], low_memory=False)
     print(f"[load] {len(df):,} rows × {len(df.columns)} columns")
     print(f"[load] year range: {int(df['year'].min())}..{int(df['year'].max())}")
     print(f"[load] distinct countries: {df['country_text_id'].nunique()}")
