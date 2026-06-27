@@ -504,7 +504,8 @@ def _build_zip(csv_bytes: bytes, inner_filename: str) -> bytes:
 def test_fetch_domain_csv_extracts_main_csv_skipping_flags_file():
     """ZIP may contain a flags CSV alongside the main data; picker
     must select the main file (identified by absence of '_flag' in
-    its name)."""
+    its name).  fetch_domain_csv now returns a path, not bytes."""
+    import os
     mod, _, _, _ = _load_fetcher()
     buf = io.BytesIO()
     with zipfile.ZipFile(buf, "w") as zf:
@@ -512,16 +513,25 @@ def test_fetch_domain_csv_extracts_main_csv_skipping_flags_file():
         zf.writestr("Food_Security_Data_E_All_Data_(Normalized).csv", _FAOSTAT_CSV_SAMPLE.encode())
     fake = MagicMock(content=buf.getvalue())
     fake.raise_for_status = MagicMock()
-    with patch.object(mod, "requests") as mock_req:
-        mock_req.get = MagicMock(return_value=fake)
-        out = mod.fetch_domain_csv("FS")
-    # Returned bytes = the non-flags CSV
-    assert b"Afghanistan" in out
-    assert b"flag_meaning" not in out
+    csv_path = None
+    try:
+        with patch.object(mod, "requests") as mock_req:
+            mock_req.get = MagicMock(return_value=fake)
+            csv_path = mod.fetch_domain_csv("FS")
+        # Returned value is a path to the extracted (non-flags) CSV
+        assert isinstance(csv_path, str)
+        assert os.path.isfile(csv_path)
+        content = open(csv_path, "rb").read()
+        assert b"Afghanistan" in content
+        assert b"flag_meaning" not in content
+    finally:
+        if csv_path and os.path.isfile(csv_path):
+            os.unlink(csv_path)
 
 
 def test_fetch_domain_csv_retries_on_network_error():
     """HTTP failure retries (up to MAX_FETCH_ATTEMPTS) before giving up."""
+    import os
     mod, _, _, _ = _load_fetcher()
     good_zip = _build_zip(_FAOSTAT_CSV_SAMPLE.encode(),
                           "Food_Security_Data_E_All_Data_(Normalized).csv")
@@ -531,12 +541,19 @@ def test_fetch_domain_csv_retries_on_network_error():
     bad = MagicMock()
     bad.raise_for_status.side_effect = Exception("HTTP 500")
 
-    with patch.object(mod, "requests") as mock_req:
-        mock_req.get = MagicMock(side_effect=[bad, ok])
-        with patch.object(mod.time, "sleep"):  # skip real sleep
-            out = mod.fetch_domain_csv("FS")
-    assert b"Afghanistan" in out
-    assert mock_req.get.call_count == 2
+    csv_path = None
+    try:
+        with patch.object(mod, "requests") as mock_req:
+            mock_req.get = MagicMock(side_effect=[bad, ok])
+            with patch.object(mod.time, "sleep"):  # skip real sleep
+                csv_path = mod.fetch_domain_csv("FS")
+        assert isinstance(csv_path, str)
+        assert os.path.isfile(csv_path)
+        assert b"Afghanistan" in open(csv_path, "rb").read()
+        assert mock_req.get.call_count == 2
+    finally:
+        if csv_path and os.path.isfile(csv_path):
+            os.unlink(csv_path)
 
 
 def test_fetch_domain_csv_raises_unknown_domain():
@@ -655,3 +672,76 @@ def test_chunked_read_equals_wholefile_read():
     chunked = _run(2)       # multiple chunks + concat + item pre-filter
     assert not whole.empty
     assert whole.equals(chunked)
+
+
+def test_fetch_domain_csv_returns_path_not_bytes():
+    """fetch_domain_csv must return a file-system path (str), NOT bytes.
+    This is the contract enforced after the TCL OOM fix: the caller reads
+    from disk in chunks so the full 2.45 GB uncompressed CSV is never held
+    in RAM."""
+    import os
+    mod, _, _, _ = _load_fetcher()
+    good_zip = _build_zip(_FAOSTAT_CSV_SAMPLE.encode(),
+                          "Food_Security_Data_E_All_Data_(Normalized).csv")
+    ok = MagicMock(content=good_zip)
+    ok.raise_for_status = MagicMock()
+    csv_path = None
+    try:
+        with patch.object(mod, "requests") as mock_req:
+            mock_req.get = MagicMock(return_value=ok)
+            csv_path = mod.fetch_domain_csv("FS")
+        assert isinstance(csv_path, str), (
+            f"fetch_domain_csv must return str path, got {type(csv_path)}"
+        )
+        assert os.path.isfile(csv_path), f"temp file not found at {csv_path}"
+        # File must be a readable CSV (not a zip or empty)
+        df = pd.read_csv(csv_path, encoding="latin-1", nrows=3)
+        assert len(df) > 0
+    finally:
+        if csv_path and os.path.isfile(csv_path):
+            os.unlink(csv_path)
+
+
+def test_element_code_prefilter_drops_non_matching_elements():
+    """main() must filter by BOTH item_code AND element_code per chunk so
+    that a large domain with many elements per item (e.g. TCL item 1944 has
+    hundreds of elements) is reduced to only the needed rows in memory.
+    A CSV with matching item but wrong element must produce 0 rows in
+    df_domain after filtering, so extract_indicator returns empty and no
+    parquet is written — NOT a false match on item alone."""
+    # Build a CSV that has the right item code (21010) but wrong element (9999)
+    wrong_element_csv = (
+        '"Area Code","Area","Item Code","Item","Element Code","Element","Year Code","Year","Value","Unit","Flag","Note"\n'
+        '2,"Afghanistan",21010,"ADER",9999,"WrongElement",20002002,"2000-2002",50.0,"%","E",\n'
+        '21,"Brazil",21010,"ADER",9999,"WrongElement",20002002,"2000-2002",60.0,"%","E",\n'
+    )
+    mod, s3_client, _, tracker_table = _load_fetcher()
+    mod._CSV_CHUNK_ROWS = 1  # force per-row chunking to stress the filter
+
+    good_zip = _build_zip(wrong_element_csv.encode(),
+                          "Food_Security_Data_E_All_Data_(Normalized).csv")
+    ok = MagicMock(content=good_zip)
+    ok.raise_for_status = MagicMock()
+
+    with patch.object(mod, "requests") as mock_req:
+        mock_req.get = MagicMock(return_value=ok)
+        with patch.object(mod.time, "sleep"):
+            rc = mod.main()
+
+    assert rc == 0
+    # No parquet should be written (element filtered → 0 rows → EMPTY)
+    parquet_calls = [
+        c for c in s3_client.put_object.call_args_list
+        if "parquet-completed" in c.kwargs.get("Key", "")
+    ]
+    assert parquet_calls == [], (
+        "Expected no parquet for wrong-element CSV, but got some"
+    )
+    # Tracker should record EMPTY (not SUCCESS or FAILED)
+    tracker_statuses = [
+        c.kwargs["Item"].get("status")
+        for c in tracker_table.put_item.call_args_list
+    ]
+    assert any(s in ("EMPTY", "SUCCESS") for s in tracker_statuses), (
+        f"Unexpected tracker statuses: {tracker_statuses}"
+    )

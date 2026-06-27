@@ -255,14 +255,24 @@ def _jitter_sleep() -> None:
     time.sleep(jitter)
 
 
-def fetch_domain_csv(domain_code: str) -> bytes:
-    """Download the FAOSTAT domain ZIP and return the extracted CSV bytes.
+def fetch_domain_csv(domain_code: str) -> str:
+    """Download the FAOSTAT domain ZIP and stream the extracted CSV to a
+    temporary file on disk.  Returns the **path** to that temp file.
 
     FAOSTAT bulk ZIPs contain at least one main CSV (we select the first
     non-flags .csv in the ZIP via a heuristic — the filename prefix
-    matches the full domain name, not the short code). Returns the raw
-    CSV bytes (may be large — 50-200MB).
+    matches the full domain name, not the short code).
+
+    Streaming to disk rather than returning bytes avoids materialising
+    the full uncompressed CSV in RAM.  For domain TCL the uncompressed
+    CSV is ~2.45 GB, which OOMs a 2 GB Batch job if held in memory.
+    Fargate has ~20 GB ephemeral disk so a temporary file is safe.
+
+    The caller is responsible for deleting the temp file when done.
     """
+    import shutil
+    import tempfile
+
     domain_full = _FAO_DOMAIN_FULL_NAMES.get(domain_code)
     if domain_full is None:
         raise RuntimeError(
@@ -299,8 +309,20 @@ def fetch_domain_csv(domain_code: str) -> bytes:
                         f"Contents: {zf.namelist()}"
                     )
                 csv_name = csv_names[0]
-                logger.info(f"Extracting {csv_name} from ZIP")
-                return zf.read(csv_name)
+                logger.info(f"Streaming {csv_name} from ZIP to temp file")
+                # NamedTemporaryFile with delete=False so the caller can
+                # open it by path after this function returns.
+                tmp = tempfile.NamedTemporaryFile(
+                    suffix=".csv", prefix=f"fao_{domain_code}_", delete=False
+                )
+                try:
+                    with zf.open(csv_name) as src:
+                        shutil.copyfileobj(src, tmp)
+                    tmp_path = tmp.name
+                finally:
+                    tmp.close()
+                logger.info(f"Temp CSV written to {tmp_path}")
+                return tmp_path
         except Exception as exc:  # noqa: BLE001
             last_exc = exc
             backoff = min(60, 2 ** attempt)
@@ -788,8 +810,9 @@ def main() -> int:
 
     _jitter_sleep()
 
+    csv_path: str | None = None
     try:
-        csv_bytes = fetch_domain_csv(DOMAIN_CODE)
+        csv_path = fetch_domain_csv(DOMAIN_CODE)
     except Exception as exc:  # noqa: BLE001
         # Download failed after all retries. Write FAILED rows for every
         # indicator in this batch + decrement counter by their count so
@@ -800,27 +823,35 @@ def main() -> int:
         decrement_counter(by=len(indicators))
         return 1
 
-    # Parse the CSV in CHUNKS and keep only rows whose item code is needed by
-    # this batch, so a large domain (e.g. TCL ~278MB) does not OOM the 2GB job
-    # by materializing the whole DataFrame. This is a SUPERSET pre-filter on the
-    # item column only — extract_indicator() still does the exact item+element
-    # filter downstream on the small accumulated frame, so results are identical
-    # to the old whole-file read. FAOSTAT files use latin-1 for some historical
-    # entries (e.g. São Tomé e Príncipe).
+    # Parse the CSV in CHUNKS from the on-disk temp file.  We pre-filter per
+    # chunk to (item_code, element_code) pairs needed by this batch — both
+    # axes — so even enormous domains like TCL (2.45 GB uncompressed, item
+    # "1944" with hundreds of elements) reduce to a tiny in-memory frame.
+    # extract_indicator() still applies the exact same filter downstream on
+    # the accumulated frame, so results are bit-identical to a whole-file read.
+    # FAOSTAT files use latin-1 for some historical entries (São Tomé etc.).
     needed_items: set[str] | None = set()
+    needed_elements: set[str] | None = set()
     for ind in indicators:
-        v = ind.get("item_code", ind.get("fao_item_code"))
-        if v is None:
-            needed_items = None  # a spec without an item code → cannot pre-filter; read all
-            break
-        needed_items.add(str(v))
+        iv = ind.get("item_code", ind.get("fao_item_code"))
+        ev = ind.get("element_code", ind.get("fao_element_code"))
+        if iv is None:
+            needed_items = None  # cannot pre-filter by item; read all
+        if ev is None:
+            needed_elements = None  # cannot pre-filter by element; read all
+        if needed_items is not None:
+            needed_items.add(str(iv))
+        if needed_elements is not None:
+            needed_elements.add(str(ev))
     item_col_filter = _FAO_DOMAIN_ITEM_COLUMN.get(DOMAIN_CODE, "Item Code")
     try:
         parts = []
-        for chunk in pd.read_csv(BytesIO(csv_bytes), encoding="latin-1",
+        for chunk in pd.read_csv(csv_path, encoding="latin-1",
                                  chunksize=_CSV_CHUNK_ROWS, low_memory=False):
             if needed_items is not None and item_col_filter in chunk.columns:
                 chunk = chunk[chunk[item_col_filter].astype(str).isin(needed_items)]
+            if needed_elements is not None and "Element Code" in chunk.columns:
+                chunk = chunk[chunk["Element Code"].astype(str).isin(needed_elements)]
             parts.append(chunk)
         df_domain = pd.concat(parts, ignore_index=True) if parts else pd.DataFrame()
         del parts
@@ -830,6 +861,15 @@ def main() -> int:
             write_tracker_row(ind["id_string"], "FAILED", error=str(exc)[:500])
         decrement_counter(by=len(indicators))
         return 1
+    finally:
+        # Always clean up the temp file, even on parse failure.
+        if csv_path is not None:
+            import os as _os
+            try:
+                _os.unlink(csv_path)
+                logger.info(f"Deleted temp CSV {csv_path}")
+            except OSError:
+                pass  # best-effort
 
     country_map = load_country_map()
     canonical_names = load_canonical_country_names()
