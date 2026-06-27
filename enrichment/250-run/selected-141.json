@@ -162,11 +162,11 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "DT.INT.DECT.GN.ZS",
+  "code": "DT.TDS.DECT.GN.ZS",
   "provider": "WB",
   "category": "Government",
   "votes": 6,
-  "name": "Interest payments on external debt (% of GNI)",
+  "name": "Total debt service (% of GNI)",
   "note": "Interest payments relative to GNI",
   "license": "CC BY 4.0"
  },
@@ -279,11 +279,11 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "DT.DOD.DECT.EX.ZS",
+  "code": "DT.DOD.DECT.CD",
   "provider": "WB",
   "category": "Government",
   "votes": 7,
-  "name": "External debt stocks (% of exports of goods, services and primary income)",
+  "name": "External debt stocks, total (current US$)",
   "note": "External debt vs export capacity; debt sustainability",
   "license": "CC BY 4.0"
  },
@@ -621,16 +621,16 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "FB.BNK.NPLS.ZS",
+  "code": "FB.BNK.CAPA.ZS",
   "provider": "WB",
   "category": "Finance",
   "votes": 8,
-  "name": "Bank nonperforming loans to total gross loans (%)",
+  "name": "Bank capital to assets ratio (%)",
   "note": "Banking sector health; credit risk indicator",
   "license": "CC BY 4.0"
  },
  {
-  "code": "NY.GDP.OIL.RT.ZS",
+  "code": "NY.GDP.PETR.RT.ZS",
   "provider": "WB",
   "category": "Economic",
   "votes": 8,
@@ -864,11 +864,11 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "GC.BAL.CASH.GD.ZS",
+  "code": "GC.NLD.TOTL.GD.ZS",
   "provider": "WB",
   "category": "Government",
   "votes": 8,
-  "name": "Cash surplus/deficit (% of GDP)",
+  "name": "Net lending(+)/borrowing(-) (% of GDP)",
   "note": "Fiscal cash balance; short-term fiscal health",
   "license": "CC BY 4.0"
  },
@@ -891,11 +891,11 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "v2x_frassoc",
+  "code": "v2x_frassoc_thick",
   "provider": "V-Dem",
   "category": "Governance",
   "votes": 8,
-  "name": "Freedom of Association Index",
+  "name": "Freedom of association (thick)",
   "note": "V-Dem v2x_frassoc — country-year political indicator",
   "license": "CC BY 4.0"
  },
@@ -954,11 +954,11 @@
   "license": "CC BY 4.0"
  },
  {
-  "code": "v2casoe",
+  "code": "v2cseeorgs",
   "provider": "V-Dem",
   "category": "Social",
   "votes": 8,
-  "name": "State of Emergency Declared",
+  "name": "CSO entry and exit",
   "note": "State of emergency declared restricting civil liberties",
   "license": "CC BY 4.0"
  },
@@ -1155,11 +1155,11 @@
   "replaces_signal": "terrorism/violence"
  },
  {
-  "code": "v2jucnind",
+  "code": "v2juncind",
   "provider": "V-Dem",
   "category": "Governance",
   "votes": 7,
-  "name": "Lower Court Independence",
+  "name": "Lower court independence",
   "note": "V-Dem v2jucnind — country-year political indicator",
   "license": "CC BY 4.0",
   "replaces_signal": "rule-of-law/judicial"

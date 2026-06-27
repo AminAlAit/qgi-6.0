@@ -181,6 +181,54 @@ def test_evaluate_recipe_separates_signal_from_noise():
     assert result["flagged"] is True
 
 
+@pytest.mark.skipif(not _HAS_SKLEARN, reason="scikit-learn required for LR-LOCO")
+def test_parallel_screen_bit_identical_to_serial():
+    # The --jobs process-pool path must produce EXACTLY the same cutoff + per-candidate
+    # AUCs as the serial screen (separate processes keep LR n_jobs=1 → bit-identical;
+    # only the indicator loop is split). Pool of 3 + 2 candidates with jobs=2 forces
+    # multi-chunk splitting in both screens.
+    from concurrent.futures import ProcessPoolExecutor
+
+    countries = [f"C{i:02d}" for i in range(15)]
+    years = list(range(1980, 2021))
+
+    def cidx(c):
+        return int(c[1:])
+
+    events = {c: sorted({1997 + cidx(c) % 5, 2004 + cidx(c) % 6, 2012 + cidx(c) % 5})
+              for c in countries}
+    positives = pd.DataFrame(
+        [{"country": c, "year": y, "label": 1} for c, ys in events.items() for y in ys])
+
+    def is_pre(c, y):
+        return any(1 <= (ye - y) <= 10 for ye in events[c])
+
+    def jit(c, y, s=0):
+        return ((cidx(c) * 97 + (y - 1980 + s) * 31) % 1000) / 1000.0
+
+    panels = {"good": _synthetic_panel(countries, years,
+                                       lambda c, y: 1.0 if is_pre(c, y) else 0.0)}
+    for k in range(5):
+        panels[f"noise{k}"] = _synthetic_panel(countries, years,
+                                               lambda c, y, k=k: jit(c, y, k))
+
+    # top_n=2 (< pool size 3) forces a REAL finite cutoff = the 2nd-best pool AUC,
+    # so the ranking actually matters — a divergent parallel sort would change the
+    # cutoff id and break the assertions below (guards against trivial -inf pass).
+    common = dict(recipe_id="test_recipe", candidate_ids=["good", "noise4"],
+                  current_pool_ids=["noise0", "noise1", "noise2"],
+                  panels=panels, positives=positives, seed=0, top_n=2)
+    serial = cg.evaluate_recipe(**common)
+    with ProcessPoolExecutor(max_workers=2) as ex:
+        parallel = cg.evaluate_recipe(**common, executor=ex, jobs=2)
+
+    assert math.isfinite(serial["cutoff_auc"])                       # real cutoff, not -inf
+    assert serial["cutoff_auc"] == parallel["cutoff_auc"]
+    assert serial["cutoff_indicator_id"] == parallel["cutoff_indicator_id"]  # ranking identical
+    assert serial["n_valid_current_pool"] == parallel["n_valid_current_pool"]
+    assert serial["per_candidate"] == parallel["per_candidate"]      # bit-identical
+
+
 def test_run_gate_handles_missing_positives(tmp_path):
     # A recipe whose positives.csv is absent must surface as an error row, not crash,
     # and must not appear in flagged/unflagged. (No sklearn needed: the recipe errors
