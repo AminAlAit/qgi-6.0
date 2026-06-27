@@ -257,3 +257,32 @@ def test_build_today_X_empty_intersection_returns_empty():
     assert X.shape == (0, 16)  # 2 indicators × 8 = 16-col empty matrix
     assert keep_c == []
     assert keep_y == []
+
+
+# ---------- Phase B: _resolve_panel_country (pure) --------------------------
+
+def test_resolve_panel_country_exact_match():
+    panels = {"Argentina", "Egypt", "Turkey"}
+    assert sc._resolve_panel_country("Argentina", panels) == "Argentina"
+
+
+def test_resolve_panel_country_normalizes_underscores():
+    panels = {"Sierra Leone"}
+    assert sc._resolve_panel_country("sierra_leone", panels) == "Sierra Leone"
+
+
+def test_resolve_panel_country_alias_turkiye_to_turkey():
+    # scores.json says "Turkiye"; the panels/positives use "Turkey".
+    panels = {"Turkey", "Egypt"}
+    assert sc._resolve_panel_country("Turkiye", panels) == "Turkey"
+
+
+def test_resolve_panel_country_case_insensitive_fallback():
+    panels = {"Côte D'Ivoire"} if False else {"Ivory Coast"}
+    assert sc._resolve_panel_country("ivory coast", panels) == "Ivory Coast"
+
+
+def test_resolve_panel_country_miss_returns_none():
+    # A genuine miss must return None so the caller skips (never mis-attributes).
+    panels = {"Argentina", "Egypt"}
+    assert sc._resolve_panel_country("Atlantis", panels) is None
