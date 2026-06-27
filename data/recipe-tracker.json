@@ -6,8 +6,8 @@
   "status_counts": {
     "graduated": 0,
     "in_progress": 0,
-    "live_legacy": 3,
-    "walked_no_graduation": 39,
+    "live_legacy": 0,
+    "walked_no_graduation": 42,
     "queued": 27
   },
   "tier_counts": {
@@ -349,7 +349,7 @@
       "l1_label": "Conflict & Violence",
       "l1_color": "#E64545",
       "l2_label": "Civil War & Insurgency",
-      "status": "live_legacy",
+      "status": "walked_no_graduation",
       "tier": "experimental",
       "audience": "prior_version",
       "description_compelling": "An organized armed group challenges the state for territory or control, producing sustained combat and mass displacement. Years out, you see regulatory-quality scores, ethnic-power-balance measures, and per-capita-growth metrics drift downward together. Recurrent in weak-state belts: the Sahel, the Horn, parts of South and Southeast Asia.",
@@ -1291,7 +1291,7 @@
       "l1_label": "Diplomacy & Geopolitics",
       "l1_color": "#9F7AEA",
       "l2_label": "Bilateral Treaties",
-      "status": "live_legacy",
+      "status": "walked_no_graduation",
       "tier": "experimental",
       "audience": "prior_version",
       "description_compelling": "Two states sign a formal bilateral pact — investment treaty, defense agreement, visa regime, status-of-forces document — recording a new institutional relationship. Trade openness, FDI flows, and rule-of-law metrics frame the diplomatic ground. Common between major economies and their second-tier partners, and across former-colonial-power relationships being repositioned.",
@@ -1325,7 +1325,7 @@
       "l1_label": "Diplomacy & Geopolitics",
       "l1_color": "#9F7AEA",
       "l2_label": "Multilateral Agreements",
-      "status": "live_legacy",
+      "status": "walked_no_graduation",
       "tier": "experimental",
       "audience": "prior_version",
       "description_compelling": "Three or more states ratify a shared framework — climate accord, regional trade bloc, security architecture, transparency convention. Democracy indices, transparency-of-law scores, and trade-openness trajectories tend to climb in the lead-up. Strongest among consolidating regional blocs (EU, ASEAN, Mercosur) and stable middle-income democracies.",
@@ -1492,6 +1492,8 @@
     },
     {
       "recipe_id": "natural_disaster",
+      "deactivated": true,
+      "deactivation_reason": "Deactivated 2026-06-20: exogenous-shock methodology category error (founder authorization).",
       "label": "Natural Disaster",
       "l1_id": "G",
       "l1_label": "Humanitarian Crisis",
@@ -1540,6 +1542,8 @@
     },
     {
       "recipe_id": "epidemic_and_pandemic",
+      "deactivated": true,
+      "deactivation_reason": "Deactivated 2026-06-20: exogenous-shock methodology category error (founder authorization).",
       "label": "Epidemic & Pandemic",
       "l1_id": "G",
       "l1_label": "Humanitarian Crisis",
