@@ -445,6 +445,19 @@ def _resolve_panel_country(name: str, panel_countries: set[str]) -> str | None:
     return low.get(n.lower())
 
 
+def _resolve_positives_to_panel(positives_df: pd.DataFrame,
+                                 panel_countries: set[str]) -> pd.DataFrame:
+    """Map the positives' country names into the PANEL namespace, so leave-country-out
+    filtering and the in_evidence_base flag operate in the SAME namespace as the resolved
+    candidate `pc`. Without this, positives.csv "Turkey" vs panel "Turkiye" would defeat the
+    `country != pc` LOCO filter and silently leave the held-out country in training (leakage
+    on exactly the alias-mapped countries). Unresolvable names are left as-is."""
+    df = positives_df.copy()
+    df["country"] = df["country"].apply(
+        lambda c: _resolve_panel_country(c, panel_countries) or normalize_country_id(str(c)))
+    return df
+
+
 def score_phase_b(*, summary: dict, positives_df: pd.DataFrame,
                    panels: dict[str, pd.DataFrame],
                    candidates: list[dict], years_back: int = 4, seed: int = 0
@@ -459,7 +472,10 @@ def score_phase_b(*, summary: dict, positives_df: pd.DataFrame,
     selected = summary["greedy_outer_loop"]["selected_indicators"]
     window = int(summary["greedy_outer_loop"]["chosen_window"])
     panel_countries = set.intersection(*[set(p["country"].unique()) for p in panels.values()])
-    pos_country_set = set(positives_df["country"].tolist())
+    # Resolve positives into the panel namespace ONCE — so the LOCO filter and the
+    # in_evidence_base flag below use the same names as the resolved candidate `pc`.
+    pos_df_norm = _resolve_positives_to_panel(positives_df, panel_countries)
+    pos_country_set = set(pos_df_norm["country"].tolist())
 
     # group candidate event-years by resolved panel country (one LOCO fit per country)
     by_country: dict[str, list[int]] = {}
@@ -472,8 +488,9 @@ def score_phase_b(*, summary: dict, positives_df: pd.DataFrame,
 
     rows: list[dict[str, Any]] = []
     for pc, eyears in sorted(by_country.items()):
-        # Leave-country-out: drop ALL of pc's rows (as positive AND as time-matched negative).
-        pos_loco = positives_df[positives_df["country"] != pc]
+        # Leave-country-out: drop ALL of pc's rows (as positive AND as time-matched negative),
+        # both now in the panel namespace so an alias-mapped country is genuinely held out.
+        pos_loco = pos_df_norm[pos_df_norm["country"] != pc]
         samples = drv.build_samples(pos_loco, negatives_per_positive=3, seed=seed)
         samples = samples[samples["country"].astype(str) != pc]
         X_tr, y_tr, _, _ = drv.build_X_y(samples, selected, window, panels)
@@ -483,6 +500,7 @@ def score_phase_b(*, summary: dict, positives_df: pd.DataFrame,
         X_tr = np.where(np.isfinite(X_tr), X_tr, 0.0)
         clf = fit_xgb(X_tr, y_tr, seed=seed)
         in_evb = pc in pos_country_set
+        model_scope = f"loco_{pc}"  # so the harness never aggregates raw probs across LOCO models
         years = sorted({y for ey in eyears for y in range(ey - years_back, ey + 1)})
         for y in years:
             parts: list[np.ndarray] = []
@@ -493,18 +511,16 @@ def score_phase_b(*, summary: dict, positives_df: pd.DataFrame,
                     ok = False
                     break
                 parts.append(f)
+            base = {"country": pc, "year": y,
+                    "event_years": ",".join(map(str, sorted(set(eyears)))),
+                    "in_evidence_base": in_evb, "model_scope": model_scope,
+                    "n_train_rows": int(len(X_tr))}
             if not ok:
-                rows.append({"country": pc, "year": y, "predicted_probability": None,
-                             "event_years": ",".join(map(str, sorted(set(eyears)))),
-                             "in_evidence_base": in_evb, "n_train_rows": int(len(X_tr)),
-                             "note": "insufficient_history"})
+                rows.append({**base, "predicted_probability": None, "note": "insufficient_history"})
                 continue
             vec = np.where(np.isfinite(np.concatenate(parts)), np.concatenate(parts), 0.0)
             prob = float(clf.predict_proba(vec.reshape(1, -1))[0, 1])
-            rows.append({"country": pc, "year": y, "predicted_probability": round(prob, 6),
-                         "event_years": ",".join(map(str, sorted(set(eyears)))),
-                         "in_evidence_base": in_evb, "n_train_rows": int(len(X_tr)),
-                         "note": ""})
+            rows.append({**base, "predicted_probability": round(prob, 6), "note": ""})
     return pd.DataFrame(rows)
 
 
