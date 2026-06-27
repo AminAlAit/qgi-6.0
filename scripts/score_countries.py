@@ -413,6 +413,118 @@ def score_recipe(*, summary: dict, positives_df: pd.DataFrame,
 
 
 # ---------------------------------------------------------------------------
+# Phase B — per-(country, year) leave-country-out trajectory scoring (#per-trend-news)
+#
+# For the lead-lag test (does structure lead the news?). For each candidate country C
+# with event_year Y, refit XGBoost with C HELD OUT of training (leave-country-out =
+# no memorization), then score C at each year in [Y - years_back, Y]. Because
+# extract_features_for_indicator(panel, C, y, window) reads ONLY data in [y-window, y-1]
+# (verified), each per-year score is temporally leakage-free too. Emits a tidy CSV the
+# alignment harness joins against hf-trend-pulse.json. Opt-in; does not touch score_recipe.
+# ---------------------------------------------------------------------------
+
+# scores.json names vs panel/positives names that differ. Extend as needed at runtime
+# (a miss logs a warning and the candidate is skipped, never silently mis-scored).
+PHASE_B_ALIASES = {
+    "Turkiye": "Turkey", "Turkey": "Turkiye",
+    "Czechia": "Czech Republic", "Cote D'Ivoire": "Ivory Coast", "Cote D'ivoire": "Ivory Coast",
+}
+
+
+def _resolve_panel_country(name: str, panel_countries: set[str]) -> str | None:
+    """Resolve a candidate country name to the exact string the panels use. Tries
+    normalized form, then the alias map, then case-insensitive. Returns None on a miss
+    (caller warns + skips — fail loud, never mis-attribute)."""
+    n = normalize_country_id(str(name))
+    if n in panel_countries:
+        return n
+    a = PHASE_B_ALIASES.get(n)
+    if a and a in panel_countries:
+        return a
+    low = {c.lower(): c for c in panel_countries}
+    return low.get(n.lower())
+
+
+def _resolve_positives_to_panel(positives_df: pd.DataFrame,
+                                 panel_countries: set[str]) -> pd.DataFrame:
+    """Map the positives' country names into the PANEL namespace, so leave-country-out
+    filtering and the in_evidence_base flag operate in the SAME namespace as the resolved
+    candidate `pc`. Without this, positives.csv "Turkey" vs panel "Turkiye" would defeat the
+    `country != pc` LOCO filter and silently leave the held-out country in training (leakage
+    on exactly the alias-mapped countries). Unresolvable names are left as-is."""
+    df = positives_df.copy()
+    df["country"] = df["country"].apply(
+        lambda c: _resolve_panel_country(c, panel_countries) or normalize_country_id(str(c)))
+    return df
+
+
+def score_phase_b(*, summary: dict, positives_df: pd.DataFrame,
+                   panels: dict[str, pd.DataFrame],
+                   candidates: list[dict], years_back: int = 4, seed: int = 0
+                   ) -> pd.DataFrame:
+    """Per-(country, year) leave-country-out trajectory scores for the candidate set.
+
+    candidates: list of {"name": <country>, "event_year": <int>, ...} (multiple event_years
+    per country are merged into one LOCO fit, scored across the union of year-windows).
+    Returns a DataFrame: country, year, predicted_probability, event_year(s), in_evidence_base,
+    n_train_rows, note.  predicted_probability is the raw LOCO-model probability (the WITHIN-country
+    trajectory shape/timing is what the lead-lag test reads — not absolute calibration)."""
+    selected = summary["greedy_outer_loop"]["selected_indicators"]
+    window = int(summary["greedy_outer_loop"]["chosen_window"])
+    panel_countries = set.intersection(*[set(p["country"].unique()) for p in panels.values()])
+    # Resolve positives into the panel namespace ONCE — so the LOCO filter and the
+    # in_evidence_base flag below use the same names as the resolved candidate `pc`.
+    pos_df_norm = _resolve_positives_to_panel(positives_df, panel_countries)
+    pos_country_set = set(pos_df_norm["country"].tolist())
+
+    # group candidate event-years by resolved panel country (one LOCO fit per country)
+    by_country: dict[str, list[int]] = {}
+    for cand in candidates:
+        pc = _resolve_panel_country(cand.get("name", ""), panel_countries)
+        if pc is None:
+            LOG.warning("phase-b: candidate %r not found in panels — SKIPPED", cand.get("name"))
+            continue
+        by_country.setdefault(pc, []).append(int(cand["event_year"]))
+
+    rows: list[dict[str, Any]] = []
+    for pc, eyears in sorted(by_country.items()):
+        # Leave-country-out: drop ALL of pc's rows (as positive AND as time-matched negative),
+        # both now in the panel namespace so an alias-mapped country is genuinely held out.
+        pos_loco = pos_df_norm[pos_df_norm["country"] != pc]
+        samples = drv.build_samples(pos_loco, negatives_per_positive=3, seed=seed)
+        samples = samples[samples["country"].astype(str) != pc]
+        X_tr, y_tr, _, _ = drv.build_X_y(samples, selected, window, panels)
+        if len(X_tr) == 0:
+            LOG.warning("phase-b: %s — LOCO train set empty; SKIPPED", pc)
+            continue
+        X_tr = np.where(np.isfinite(X_tr), X_tr, 0.0)
+        clf = fit_xgb(X_tr, y_tr, seed=seed)
+        in_evb = pc in pos_country_set
+        model_scope = f"loco_{pc}"  # so the harness never aggregates raw probs across LOCO models
+        years = sorted({y for ey in eyears for y in range(ey - years_back, ey + 1)})
+        for y in years:
+            parts: list[np.ndarray] = []
+            ok = True
+            for ind in selected:
+                f = drv.extract_features_for_indicator(panels[ind], pc, y, window)
+                if f is None:
+                    ok = False
+                    break
+                parts.append(f)
+            base = {"country": pc, "year": y,
+                    "event_years": ",".join(map(str, sorted(set(eyears)))),
+                    "in_evidence_base": in_evb, "model_scope": model_scope,
+                    "n_train_rows": int(len(X_tr))}
+            if not ok:
+                rows.append({**base, "predicted_probability": None, "note": "insufficient_history"})
+                continue
+            vec = np.where(np.isfinite(np.concatenate(parts)), np.concatenate(parts), 0.0)
+            prob = float(clf.predict_proba(vec.reshape(1, -1))[0, 1])
+            rows.append({**base, "predicted_probability": round(prob, 6), "note": ""})
+    return pd.DataFrame(rows)
+
+
+# ---------------------------------------------------------------------------
 # CLI entrypoint
 # ---------------------------------------------------------------------------
 
@@ -427,6 +539,14 @@ def _main(argv: list[str] | None = None) -> int:
     ap.add_argument("--positives-csv", required=True, type=Path)
     ap.add_argument("--output-dir", required=True, type=Path)
     ap.add_argument("--seed", type=int, default=0)
+    # Phase B (opt-in): produce per-(country,year) leave-country-out trajectory CSV instead
+    # of the standard country-scores.json.
+    ap.add_argument("--phase-b-candidates", type=Path, default=None,
+                     help="JSON list of {name, event_year} candidates. Switches to Phase B mode.")
+    ap.add_argument("--phase-b-out", type=Path, default=None,
+                     help="Output CSV for Phase B per-(country,year) predictions.")
+    ap.add_argument("--years-back", type=int, default=4,
+                     help="Phase B: years before each event_year to score (default 4).")
     args = ap.parse_args(argv)
 
     summary = json.loads(args.summary_path.read_text(encoding="utf-8"))
@@ -447,6 +567,29 @@ def _main(argv: list[str] | None = None) -> int:
         "year":    raw_pos["event_year"].astype(int),
         "label":   1,
     })
+
+    if args.phase_b_candidates is not None:
+        if args.phase_b_out is None:
+            LOG.error("--phase-b-candidates requires --phase-b-out")
+            return 2
+        cand_doc = json.loads(args.phase_b_candidates.read_text(encoding="utf-8"))
+        # accept either a bare list or the phase_b_candidates.json shape (per-trend keys)
+        if isinstance(cand_doc, dict):
+            key = f"{args.recipe_id}_testable"
+            candidates = cand_doc.get(key) or cand_doc.get(args.recipe_id) or []
+        else:
+            candidates = cand_doc
+        if not candidates:
+            LOG.error("no candidates for recipe %s in %s", args.recipe_id, args.phase_b_candidates)
+            return 2
+        df = score_phase_b(summary=summary, positives_df=pos_df, panels=panels,
+                            candidates=candidates, years_back=args.years_back, seed=args.seed)
+        args.phase_b_out.parent.mkdir(parents=True, exist_ok=True)
+        df.to_csv(args.phase_b_out, index=False)
+        n_ok = int(df["predicted_probability"].notna().sum()) if len(df) else 0
+        LOG.info("phase-b: wrote %s (%d rows, %d scored, %d countries)",
+                  args.phase_b_out, len(df), n_ok, df["country"].nunique() if len(df) else 0)
+        return 0
 
     out_doc = score_recipe(summary=summary, positives_df=pos_df, panels=panels,
                               seed=args.seed)
