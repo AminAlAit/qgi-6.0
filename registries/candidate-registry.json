@@ -1642,13 +1642,13 @@
       "vet": null
     },
     {
-      "indicator_id": "DT.DOD.DECT.EX.ZS",
+      "indicator_id": "DT.DOD.DECT.CD",
       "provider": "WB_EXT",
       "numeric_id": 1409,
-      "name": "External debt stocks (% of exports of goods, services and primary income)",
+      "name": "External debt stocks, total (current US$)",
       "status": "vetted",
       "category": "Government",
-      "description": "External debt stock relative to export earnings is the canonical debt-sustainability ratio used by IMF/World Bank early-warning frameworks; it directly measures whether a country's capacity to generate foreign exchange can cover its foreign obligations. Trajectory shifts in this series reliably precede currency crises and sovereign restructuring events.",
+      "description": "External debt stocks, total (current US$)",
       "provider_meta": {
         "base_provider": "WB"
       },
@@ -2460,13 +2460,13 @@
       "vet": null
     },
     {
-      "indicator_id": "FB.BNK.NPLS.ZS",
+      "indicator_id": "FB.BNK.CAPA.ZS",
       "provider": "WB_EXT",
       "numeric_id": 1415,
-      "name": "Bank nonperforming loans to total gross loans (%)",
+      "name": "Bank capital to assets ratio (%)",
       "status": "vetted",
       "category": "Finance",
-      "description": "Non-performing loan ratios signal latent insolvency stress within the banking system before it erupts into open crisis — high NPLs constrain credit supply, amplify recessions, and can trigger depositor panic and government bailout demands. It provides the balance-sheet deterioration signal that precedes banking crises in the QGI event catalog.",
+      "description": "Bank capital to assets ratio (%)",
       "provider_meta": {
         "base_provider": "WB"
       },
@@ -2479,13 +2479,13 @@
       "vet": null
     },
     {
-      "indicator_id": "NY.GDP.OIL.RT.ZS",
+      "indicator_id": "NY.GDP.PETR.RT.ZS",
       "provider": "WB_EXT",
       "numeric_id": 1416,
       "name": "Oil rents (% of GDP)",
       "status": "vetted",
       "category": "Economic",
-      "description": "Oil rents as a share of GDP directly quantifies petro-state dependency and the associated vulnerability to commodity price shocks that can trigger fiscal crises, subsidy cuts, and popular unrest when oil revenues collapse. It is a structurally important indicator because it shapes the distribution of political economy incentives — patronage systems, ruling coalition survival, and the rentier bargain.",
+      "description": "Oil rents (% of GDP)",
       "provider_meta": {
         "base_provider": "WB"
       },
@@ -3134,13 +3134,13 @@
       "vet": null
     },
     {
-      "indicator_id": "GC.BAL.CASH.GD.ZS",
+      "indicator_id": "GC.NLD.TOTL.GD.ZS",
       "provider": "WB_EXT",
       "numeric_id": 1418,
-      "name": "Cash surplus/deficit (% of GDP)",
+      "name": "Net lending(+)/borrowing(-) (% of GDP)",
       "status": "vetted",
       "category": "Government",
-      "description": "The cash surplus/deficit as a share of GDP measures the government's actual realized fiscal position based on cash flows rather than accrual accounting, providing a more timely indicator of fiscal stress and public finance deterioration. Widening deficits signal reduced fiscal space, increasing government dependence on borrowing that can cascade into currency pressure and austerity-triggered unrest.",
+      "description": "Net lending(+)/borrowing(-) (% of GDP)",
       "provider_meta": {
         "base_provider": "WB"
       },
@@ -3191,13 +3191,13 @@
       "vet": null
     },
     {
-      "indicator_id": "v2x_frassoc",
+      "indicator_id": "v2x_frassoc_thick",
       "provider": "VDEM_EXT",
       "numeric_id": 937,
-      "name": "Freedom of Association Index",
+      "name": "Freedom of association (thick)",
       "status": "vetted",
       "category": "Governance",
-      "description": "Freedom of association — covering rights to form parties, civil society organisations, and trade unions — captures the civic space contraction that precedes and accompanies political repression and executive consolidation; its decline is a more targeted signal than broad civil liberties indices for mobilisation-blocking dynamics.",
+      "description": "Freedom of association (thick)",
       "provider_meta": {
         "base_provider": "VDEM"
       },
@@ -3324,13 +3324,13 @@
       "vet": null
     },
     {
-      "indicator_id": "v2casoe",
+      "indicator_id": "v2cseeorgs",
       "provider": "VDEM_EXT",
       "numeric_id": 944,
-      "name": "State of Emergency Declared",
+      "name": "CSO entry and exit",
       "status": "vetted",
       "category": "Social",
-      "description": "Declaration of a state of emergency represents an executive's formal invocation of emergency powers that suspend normal constitutional constraints — it is both a symptom of acute political crisis and a tool of repression that can escalate instability. As an event-coded V-Dem variable it captures a discrete legal threshold-crossing that is rare enough to have strong signal value.",
+      "description": "CSO entry and exit",
       "provider_meta": {
         "base_provider": "VDEM"
       },
@@ -3702,13 +3702,13 @@
       "vet": null
     },
     {
-      "indicator_id": "v2jucnind",
+      "indicator_id": "v2juncind",
       "provider": "VDEM_EXT",
       "numeric_id": 951,
-      "name": "Lower Court Independence",
+      "name": "Lower court independence",
       "status": "vetted",
       "category": "Governance",
-      "description": "V-Dem v2jucnind — country-year political indicator",
+      "description": "Lower court independence",
       "provider_meta": {
         "base_provider": "VDEM"
       },
