@@ -140,6 +140,11 @@ _FAO_DOMAIN_ITEM_COLUMN: dict[str, str] = {
     "ET": "Months Code",
 }
 
+# Rows per chunk when streaming a domain CSV (keeps a large domain like TCL
+# ~278MB from OOMing a 2GB job). Module-level so tests can shrink it to force
+# the multi-chunk path on a tiny fixture.
+_CSV_CHUNK_ROWS = 200_000
+
 # Browser-like User-Agent — some FAOSTAT CDNs (and many other bulk hosts)
 # block the default ``python-requests/X.Y.Z`` UA.
 _HTTP_HEADERS = {
@@ -795,11 +800,30 @@ def main() -> int:
         decrement_counter(by=len(indicators))
         return 1
 
-    # Parse the CSV once and reuse across indicators in this domain.
-    # FAOSTAT files use latin-1 encoding for some historical entries
-    # (e.g., São Tomé e Príncipe).
+    # Parse the CSV in CHUNKS and keep only rows whose item code is needed by
+    # this batch, so a large domain (e.g. TCL ~278MB) does not OOM the 2GB job
+    # by materializing the whole DataFrame. This is a SUPERSET pre-filter on the
+    # item column only — extract_indicator() still does the exact item+element
+    # filter downstream on the small accumulated frame, so results are identical
+    # to the old whole-file read. FAOSTAT files use latin-1 for some historical
+    # entries (e.g. São Tomé e Príncipe).
+    needed_items: set[str] | None = set()
+    for ind in indicators:
+        v = ind.get("item_code", ind.get("fao_item_code"))
+        if v is None:
+            needed_items = None  # a spec without an item code → cannot pre-filter; read all
+            break
+        needed_items.add(str(v))
+    item_col_filter = _FAO_DOMAIN_ITEM_COLUMN.get(DOMAIN_CODE, "Item Code")
     try:
-        df_domain = pd.read_csv(StringIO(csv_bytes.decode("latin-1")))
+        parts = []
+        for chunk in pd.read_csv(BytesIO(csv_bytes), encoding="latin-1",
+                                 chunksize=_CSV_CHUNK_ROWS, low_memory=False):
+            if needed_items is not None and item_col_filter in chunk.columns:
+                chunk = chunk[chunk[item_col_filter].astype(str).isin(needed_items)]
+            parts.append(chunk)
+        df_domain = pd.concat(parts, ignore_index=True) if parts else pd.DataFrame()
+        del parts
     except Exception as exc:  # noqa: BLE001
         logger.error(f"CSV parse failed: {exc}")
         for ind in indicators:
