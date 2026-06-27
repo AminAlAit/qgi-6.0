@@ -626,3 +626,32 @@ def test_main_with_multiple_indicators_writes_one_row_per_indicator(monkeypatch)
     ]
     assert "FA-01" in tracker_ids
     assert "FA-02" in tracker_ids
+
+
+def test_chunked_read_equals_wholefile_read():
+    """The chunked, item-filtered domain read (the TCL ~278MB OOM fix) must produce
+    the SAME written parquet as a single-chunk whole-file read — proving chunking +
+    the item pre-filter change nothing about the result. _CSV_CHUNK_ROWS=2 forces
+    the multi-chunk + concat path on the tiny fixture (which also carries a
+    non-matching item to exercise the pre-filter)."""
+    def _run(chunk_rows):
+        mod, s3_client, _, _ = _load_fetcher()
+        mod._CSV_CHUNK_ROWS = chunk_rows
+        good_zip = _build_zip(_FAOSTAT_CSV_SAMPLE.encode(),
+                              "Food_Security_Data_E_All_Data_(Normalized).csv")
+        ok = MagicMock(content=good_zip)
+        ok.raise_for_status = MagicMock()
+        with patch.object(mod, "requests") as mock_req:
+            mock_req.get = MagicMock(return_value=ok)
+            with patch.object(mod.time, "sleep"):
+                rc = mod.main()
+        assert rc == 0
+        bodies = [c.kwargs["Body"] for c in s3_client.put_object.call_args_list
+                  if "parquet-completed" in c.kwargs.get("Key", "")]
+        assert bodies, "no parquet written"
+        return pd.read_parquet(io.BytesIO(bodies[0]))
+
+    whole = _run(200_000)   # single chunk
+    chunked = _run(2)       # multiple chunks + concat + item pre-filter
+    assert not whole.empty
+    assert whole.equals(chunked)
