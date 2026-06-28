@@ -76,6 +76,24 @@ if (-not (Test-Path "$QgiMlRoot\scripts\run_f_ml_1_poc.py")) {
     throw "qgi-ml walk driver not found at $QgiMlRoot\scripts\run_f_ml_1_poc.py -- wrong QgiMlRoot?"
 }
 
+# ─── Freshness guard (perma-fix, 2026-06-28) ──────────────────────────────
+# The 2026-06-01 stale image shipped a bake script predating --ml-results-prefix;
+# the SFN passes that arg, so run-3's fan-out walked fine then died at the bake
+# step (argparse: unrecognized arguments: --ml-results-prefix). Root cause: this
+# wrapper defaulted -QgiMlRoot to a qgi-ml worktree on a feature branch lacking
+# the fix. Fail LOUD here, before the build, instead of in production.
+$bakeScript = "$QgiMlRoot\scripts\bake_te_fleet_run_1.py"
+if (-not (Test-Path $bakeScript)) {
+    throw "bake script not found at $bakeScript -- wrong QgiMlRoot?"
+}
+if (-not (Select-String -Path $bakeScript -Pattern '--ml-results-prefix' -Quiet)) {
+    throw "REFUSING TO BUILD: $bakeScript has no '--ml-results-prefix' argument. The SFN passes it, so this image would fail at the bake step (the 2026-06-01 stale-image bug). Point -QgiMlRoot at a qgi-ml checkout on 'main' (>= 84a577e) that contains the fix."
+}
+$mlBranch = (git -C $QgiMlRoot rev-parse --abbrev-ref HEAD 2>$null)
+if ($mlBranch -ne "main" -and -not $SkipDirtyCheck) {
+    Write-Host "[guard] WARNING: qgi-ml is on '$mlBranch', not 'main'. Production images should build from main; re-run with -SkipDirtyCheck only after verifying this branch's scripts are correct." -ForegroundColor Yellow
+}
+
 # ─── 1. Pre-flight: Docker + AWS CLI + SSO session ────────────────────────
 Write-Host "`n[preflight] Checking Docker Desktop..." -ForegroundColor Cyan
 $null = docker info --format '{{.ServerVersion}}' 2>&1
