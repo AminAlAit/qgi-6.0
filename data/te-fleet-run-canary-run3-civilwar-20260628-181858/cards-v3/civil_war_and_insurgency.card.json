@@ -1,0 +1,5624 @@
+{
+  "recipe_id": "civil_war_and_insurgency",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "prior_version",
+  "family_label": "Economic Stress",
+  "description_compelling": "An organized armed group challenges the state for territory or control, producing sustained combat and mass displacement. Years out, you see regulatory-quality scores, ethnic-power-balance measures, and per-capita-growth metrics drift downward together. Recurrent in weak-state belts: the Sahel, the Horn, parts of South and Southeast Asia.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6762700753851196,
+    "ci95_lo": 0.6414528907654738,
+    "ci95_hi": 0.7071225789932527,
+    "ci80_lo": 0.6543551083798096,
+    "ci80_hi": 0.6958623522711017,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2x_clpriv",
+      "v2jupurge",
+      "SP.POP.0014.TO.ZS"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2x_clpriv",
+        "name": "Private Civil Liberties Index (0-1)"
+      },
+      {
+        "code": "v2jupurge",
+        "name": null
+      },
+      {
+        "code": "SP.POP.0014.TO.ZS",
+        "name": null
+      }
+    ],
+    "chosen_window": 12,
+    "final_global_auc": 0.6762700753851196,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2x_clpriv",
+        "window": 25,
+        "auc": 0.6263417297504685,
+        "lift_over_previous": 0.12634172975046853,
+        "selected_after": [
+          "v2x_clpriv"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2jupurge",
+        "window": 12,
+        "auc": 0.6468506020907767,
+        "lift_over_previous": 0.020508872340308182,
+        "selected_after": [
+          "v2x_clpriv",
+          "v2jupurge"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "SP.POP.0014.TO.ZS",
+        "window": 12,
+        "auc": 0.6762700753851196,
+        "lift_over_previous": 0.029419473294342913,
+        "selected_after": [
+          "v2x_clpriv",
+          "v2jupurge",
+          "SP.POP.0014.TO.ZS"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2svstterr",
+        "window": 10,
+        "auc": 0.6812267744332962,
+        "lift_over_previous": 0.004956699048176527,
+        "selected_after": [
+          "v2x_clpriv",
+          "v2jupurge",
+          "SP.POP.0014.TO.ZS",
+          "v2svstterr"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 511,
+    "n_pos_survive": 405,
+    "n_neg_total": 1533,
+    "n_neg_survive": 1130,
+    "pos_coverage": 0.7925636007827789,
+    "neg_coverage": 0.7371167645140247,
+    "n_countries_survive": 85,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 980,
+      "loco_auc": 0.6669196211753279,
+      "ece": 0.118575000452657,
+      "ece_ci95_lo": 0.100503223769008,
+      "ece_ci95_hi": 0.15027485079586989,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 151,
+          "mean_predicted": 0.056676162927972756,
+          "mean_actual": 0.1390728476821192
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 175,
+          "mean_predicted": 0.15075262972286768,
+          "mean_actual": 0.15428571428571428
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 128,
+          "mean_predicted": 0.25222961127292365,
+          "mean_actual": 0.2734375
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 105,
+          "mean_predicted": 0.352830088422412,
+          "mean_actual": 0.23809523809523808
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 108,
+          "mean_predicted": 0.4459192708686546,
+          "mean_actual": 0.3888888888888889
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 93,
+          "mean_predicted": 0.5476298979533616,
+          "mean_actual": 0.34408602150537637
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 87,
+          "mean_predicted": 0.6465375957817867,
+          "mean_actual": 0.40229885057471265
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 52,
+          "mean_predicted": 0.7517750572699767,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 61,
+          "mean_predicted": 0.8432908683526711,
+          "mean_actual": 0.47540983606557374
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 20,
+          "mean_predicted": 0.9255431830883026,
+          "mean_actual": 0.6
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6313450653896604,
+      "loco_auc_ci95_hi": 0.7037079202046873
+    },
+    "mid-tier": {
+      "n": 312,
+      "loco_auc": 0.6481229966860433,
+      "ece": 0.08164844812395482,
+      "ece_ci95_lo": 0.06849315651029778,
+      "ece_ci95_hi": 0.14508413911038914,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 77,
+          "mean_predicted": 0.058268698585497866,
+          "mean_actual": 0.19480519480519481
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 84,
+          "mean_predicted": 0.1535846155491613,
+          "mean_actual": 0.15476190476190477
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 48,
+          "mean_predicted": 0.25064806174486876,
+          "mean_actual": 0.125
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 35,
+          "mean_predicted": 0.34715252348354886,
+          "mean_actual": 0.37142857142857144
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 28,
+          "mean_predicted": 0.4473218758191381,
+          "mean_actual": 0.35714285714285715
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 16,
+          "mean_predicted": 0.546829104423523,
+          "mean_actual": 0.5625
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 9,
+          "mean_predicted": 0.6401967936091952,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 9,
+          "mean_predicted": 0.7493449846903483,
+          "mean_actual": 0.5555555555555556
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 3,
+          "mean_predicted": 0.8266381621360779,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 3,
+          "mean_predicted": 0.9267308910687765,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5716813090468856,
+      "loco_auc_ci95_hi": 0.7272060336767209
+    },
+    "stable-democracy": {
+      "n": 221,
+      "loco_auc": 0.6174872665534805,
+      "ece": 0.083028887513376,
+      "ece_ci95_lo": 0.057975871326155295,
+      "ece_ci95_hi": 0.13643318046454858,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 106,
+          "mean_predicted": 0.04668024860383978,
+          "mean_actual": 0.09433962264150944
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 39,
+          "mean_predicted": 0.14579390868162498,
+          "mean_actual": 0.15384615384615385
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 33,
+          "mean_predicted": 0.2379304924697587,
+          "mean_actual": 0.15151515151515152
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 17,
+          "mean_predicted": 0.3394113516106325,
+          "mean_actual": 0.23529411764705882
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 11,
+          "mean_predicted": 0.43860147216103296,
+          "mean_actual": 0.09090909090909091
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 8,
+          "mean_predicted": 0.5347524210810661,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.6074405312538147,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 1,
+          "mean_predicted": 0.8653650879859924,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.9127194285392761,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.4924798455911728,
+      "loco_auc_ci95_hi": 0.7221163828647857
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-28T19:57:39.800579+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.4982,
+  "stability_diagnostic": {
+    "fold_variance": 0.052395440348923204,
+    "fold_auc_mean": 0.5576863133232836,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Afghanistan": 0.5652173913043478,
+      "Angola": 0.47619047619047616,
+      "Argentina": 0.19444444444444445,
+      "Brazil": 0.9333333333333333,
+      "Burkina Faso": 0.9444444444444444,
+      "Burundi": 0.4722222222222222,
+      "Cameroon": 0.4666666666666667,
+      "Chad": 0.5882352941176471,
+      "China": 0.8061224489795918,
+      "Colombia": 0.22058823529411764,
+      "Ecuador": 0.5,
+      "Egypt": 0.7976190476190477,
+      "El Salvador": 0.8125,
+      "Eritrea": 0.4407894736842105,
+      "Ethiopia": 0.49666666666666665,
+      "Greece": 0.26666666666666666,
+      "India": 0.5873015873015873,
+      "Indonesia": 0.4,
+      "Iran": 0.7070707070707071,
+      "Iraq": 0.4,
+      "Ireland": 0.6363636363636364,
+      "Israel": 0.49038461538461536,
+      "Ivory Coast": 0.5454545454545454,
+      "Jordan": 0.9529411764705882,
+      "Kuwait": 0.65625,
+      "Laos": 0.18181818181818182,
+      "Lebanon": 0.6481481481481481,
+      "Liberia": 0.38571428571428573,
+      "Libya": 0.8839285714285714,
+      "Malaysia": 0.3076923076923077,
+      "Mali": 0.8478260869565217,
+      "Mexico": 0.4375,
+      "Morocco": 0.2549019607843137,
+      "Mozambique": 0.45588235294117646,
+      "Myanmar": 0.6625,
+      "Namibia": 0.4166666666666667,
+      "Nepal": 0.1875,
+      "Nicaragua": 0.375,
+      "Niger": 0.8431372549019608,
+      "Nigeria": 0.4375,
+      "North Macedonia": 0.5714285714285714,
+      "Oman": 0.8541666666666666,
+      "Pakistan": 0.42857142857142855,
+      "Palestine": 0.5,
+      "Papua New Guinea": 0.3,
+      "Peru": 0.6666666666666666,
+      "Philippines": 0.45454545454545453,
+      "Portugal": 1.0,
+      "Russia": 0.6025641025641025,
+      "Rwanda": 0.4074074074074074,
+      "Saudi Arabia": 0.3235294117647059,
+      "Senegal": 0.5,
+      "Serbia": 0.7435897435897436,
+      "Sierra Leone": 0.8181818181818182,
+      "Somalia": 0.58,
+      "South Africa": 0.8461538461538461,
+      "South Sudan": 1.0,
+      "Sri Lanka": 0.4222222222222222,
+      "Sudan": 0.08571428571428572,
+      "Suriname": 0.2222222222222222,
+      "Syria": 0.45588235294117646,
+      "Tajikistan": 0.18181818181818182,
+      "Thailand": 0.375,
+      "The Democratic Republic of the Congo": 0.5206611570247934,
+      "Timor-Leste": 0.75,
+      "Togo": 0.7272727272727273,
+      "Tunisia": 0.2222222222222222,
+      "Turkiye": 0.7,
+      "Uganda": 0.7291666666666666,
+      "Ukraine": 0.5,
+      "United Arab Emirates": 0.8461538461538461,
+      "United Kingdom": 0.6222222222222222,
+      "Uruguay": 0.45,
+      "Uzbekistan": 0.9393939393939394,
+      "Vietnam": 1.0,
+      "Yemen": 0.46745562130177515,
+      "Zimbabwe": 0.4444444444444444
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7199,
+    "cohort_loco_floor": 0.6599,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 511,
+  "n_negatives": 1533,
+  "walked_at_utc": "2026-06-28T20:06:33.937915+00:00",
+  "elapsed_seconds": 13488.877476215363,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/civil_war_and_insurgency/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Finland",
+          "Namibia",
+          "Senegal",
+          "Malta",
+          "Ireland",
+          "Barbados",
+          "Iceland",
+          "New Zealand"
+        ],
+        "country_isos": [
+          "fi",
+          "na",
+          "sn",
+          "mt",
+          "ie",
+          "bb",
+          "is",
+          "nz"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Spain",
+          "Belarus",
+          "Portugal",
+          "South Korea",
+          "Vanuatu",
+          "Sweden",
+          "Estonia",
+          "Luxembourg",
+          "Timor-Leste"
+        ],
+        "country_isos": [
+          "es",
+          "by",
+          "pt",
+          "kr",
+          "vu",
+          "se",
+          "ee",
+          "lu",
+          "tl"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Georgia",
+          "Ecuador",
+          "Solomon Islands",
+          "Nigeria",
+          "Norway",
+          "Dominican Republic",
+          "Romania",
+          "Jamaica",
+          "Belgium"
+        ],
+        "country_isos": [
+          "ge",
+          "ec",
+          "sb",
+          "ng",
+          "no",
+          "do",
+          "ro",
+          "jm",
+          "be"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Albania",
+          "Singapore",
+          "Syria",
+          "Maldives",
+          "Kenya",
+          "Cuba",
+          "Lithuania",
+          "Cyprus"
+        ],
+        "country_isos": [
+          "al",
+          "sg",
+          "sy",
+          "mv",
+          "ke",
+          "cu",
+          "lt",
+          "cy"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Hungary",
+          "Austria",
+          "Costa Rica",
+          "United Kingdom",
+          "Czechia",
+          "Italy",
+          "Moldova",
+          "Suriname",
+          "Mauritius"
+        ],
+        "country_isos": [
+          "hu",
+          "at",
+          "cr",
+          "gb",
+          "cz",
+          "it",
+          "md",
+          "sr",
+          "mu"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Greece",
+          "Bolivia",
+          "Israel",
+          "Zambia",
+          "Chile",
+          "North Macedonia",
+          "The Gambia",
+          "Bosnia and Herzegovina",
+          "India"
+        ],
+        "country_isos": [
+          "gr",
+          "bo",
+          "il",
+          "zm",
+          "cl",
+          "mk",
+          "gm",
+          "ba",
+          "in"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 8,
+        "countries": [
+          "Bulgaria",
+          "Uruguay",
+          "Palestine",
+          "United States",
+          "France",
+          "Madagascar",
+          "Slovakia",
+          "Latvia"
+        ],
+        "country_isos": [
+          "bg",
+          "uy",
+          "ps",
+          "us",
+          "fr",
+          "mg",
+          "sk",
+          "lv"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 9,
+        "countries": [
+          "Central African Republic",
+          "Croatia",
+          "Honduras",
+          "Botswana",
+          "Republic of the Congo",
+          "Malaysia",
+          "Australia",
+          "Poland",
+          "Guatemala"
+        ],
+        "country_isos": [
+          "cf",
+          "hr",
+          "hn",
+          "bw",
+          "cg",
+          "my",
+          "au",
+          "pl",
+          "gt"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Mexico",
+          "Japan",
+          "Denmark",
+          "Armenia",
+          "Thailand",
+          "Serbia",
+          "Gabon",
+          "Kuwait",
+          "Bahrain"
+        ],
+        "country_isos": [
+          "mx",
+          "jp",
+          "dk",
+          "am",
+          "th",
+          "rs",
+          "ga",
+          "kw",
+          "bh"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 8,
+        "countries": [
+          "Switzerland",
+          "Montenegro",
+          "Guinea",
+          "Trinidad and Tobago",
+          "Colombia",
+          "Peru",
+          "United Arab Emirates",
+          "Bangladesh"
+        ],
+        "country_isos": [
+          "ch",
+          "me",
+          "gn",
+          "tt",
+          "co",
+          "pe",
+          "ae",
+          "bd"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Eswatini",
+          "Seychelles",
+          "Lesotho",
+          "Netherlands",
+          "Guinea-Bissau",
+          "Germany",
+          "Russia",
+          "The Democratic Republic of the Congo",
+          "Laos"
+        ],
+        "country_isos": [
+          "sz",
+          "sc",
+          "ls",
+          "nl",
+          "gw",
+          "de",
+          "ru",
+          "cd",
+          "la"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 9,
+        "countries": [
+          "Mozambique",
+          "Sri Lanka",
+          "Mali",
+          "Guyana",
+          "Libya",
+          "Liberia",
+          "Sao Tome and Principe",
+          "Saudi Arabia",
+          "Brazil"
+        ],
+        "country_isos": [
+          "mz",
+          "lk",
+          "ml",
+          "gy",
+          "ly",
+          "lr",
+          "st",
+          "sa",
+          "br"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Lebanon",
+          "Malawi",
+          "Egypt",
+          "Azerbaijan",
+          "Canada",
+          "Cabo Verde",
+          "Philippines",
+          "Argentina",
+          "Eritrea"
+        ],
+        "country_isos": [
+          "lb",
+          "mw",
+          "eg",
+          "az",
+          "ca",
+          "cv",
+          "ph",
+          "ar",
+          "er"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 8,
+        "countries": [
+          "Kazakhstan",
+          "Nepal",
+          "Mauritania",
+          "Oman",
+          "Niger",
+          "Mongolia",
+          "Iran",
+          "Slovenia"
+        ],
+        "country_isos": [
+          "kz",
+          "np",
+          "mr",
+          "om",
+          "ne",
+          "mn",
+          "ir",
+          "si"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Morocco",
+          "Haiti",
+          "Ghana",
+          "Panama",
+          "Burundi",
+          "Kyrgyzstan",
+          "Papua New Guinea",
+          "Zimbabwe",
+          "Tanzania"
+        ],
+        "country_isos": [
+          "ma",
+          "ht",
+          "gh",
+          "pa",
+          "bi",
+          "kg",
+          "pg",
+          "zw",
+          "tz"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 9,
+        "countries": [
+          "Venezuela",
+          "Algeria",
+          "Tunisia",
+          "Sierra Leone",
+          "Iraq",
+          "Indonesia",
+          "Somalia",
+          "Togo",
+          "Myanmar"
+        ],
+        "country_isos": [
+          "ve",
+          "dz",
+          "tn",
+          "sl",
+          "iq",
+          "id",
+          "so",
+          "tg",
+          "mm"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 8,
+        "countries": [
+          "Bhutan",
+          "Fiji",
+          "Tajikistan",
+          "Uzbekistan",
+          "Jordan",
+          "Djibouti",
+          "Pakistan",
+          "Hong Kong"
+        ],
+        "country_isos": [
+          "bt",
+          "fj",
+          "tj",
+          "uz",
+          "jo",
+          "dj",
+          "pk",
+          "hk"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "South Sudan",
+          "Vietnam",
+          "Equatorial Guinea",
+          "Comoros",
+          "Sudan",
+          "Ukraine",
+          "Benin",
+          "Ivory Coast",
+          "Burkina Faso"
+        ],
+        "country_isos": [
+          "ss",
+          "vn",
+          "gq",
+          "km",
+          "sd",
+          "ua",
+          "bj",
+          "ci",
+          "bf"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Paraguay",
+          "Turkmenistan",
+          "China",
+          "Ethiopia",
+          "Uganda",
+          "Rwanda",
+          "El Salvador",
+          "South Africa",
+          "Cambodia"
+        ],
+        "country_isos": [
+          "py",
+          "tm",
+          "cn",
+          "et",
+          "ug",
+          "rw",
+          "sv",
+          "za",
+          "kh"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Afghanistan",
+          "Qatar",
+          "Cameroon",
+          "Yemen",
+          "Nicaragua",
+          "Turkiye",
+          "North Korea",
+          "Chad",
+          "Angola"
+        ],
+        "country_isos": [
+          "af",
+          "qa",
+          "cm",
+          "ye",
+          "ni",
+          "tr",
+          "kp",
+          "td",
+          "ao"
+        ]
+      }
+    ],
+    "median": 50.6,
+    "p90": 90.2,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 174,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.0494,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.6396037008804866,
+      "b": 0.0,
+      "c": -0.15462020754225828,
+      "n_fit": 1535,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 133,
+        "observed_rate": 0.12781954887218044
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 335,
+        "observed_rate": 0.16119402985074627
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 428,
+        "observed_rate": 0.1985981308411215
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 458,
+        "observed_rate": 0.34279475982532753
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 181,
+        "observed_rate": 0.5082872928176796
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.031136832617875587,
+    "n_predictions": 1535,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.118575000452657,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 151,
+            "mean_predicted": 0.056676162927972756,
+            "mean_actual": 0.1390728476821192
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 175,
+            "mean_predicted": 0.15075262972286768,
+            "mean_actual": 0.15428571428571428
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 128,
+            "mean_predicted": 0.25222961127292365,
+            "mean_actual": 0.2734375
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 105,
+            "mean_predicted": 0.352830088422412,
+            "mean_actual": 0.23809523809523808
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 108,
+            "mean_predicted": 0.4459192708686546,
+            "mean_actual": 0.3888888888888889
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 93,
+            "mean_predicted": 0.5476298979533616,
+            "mean_actual": 0.34408602150537637
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 87,
+            "mean_predicted": 0.6465375957817867,
+            "mean_actual": 0.40229885057471265
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 52,
+            "mean_predicted": 0.7517750572699767,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 61,
+            "mean_predicted": 0.8432908683526711,
+            "mean_actual": 0.47540983606557374
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 20,
+            "mean_predicted": 0.9255431830883026,
+            "mean_actual": 0.6
+          }
+        ],
+        "n": 980,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.08164844812395482,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 77,
+            "mean_predicted": 0.058268698585497866,
+            "mean_actual": 0.19480519480519481
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 84,
+            "mean_predicted": 0.1535846155491613,
+            "mean_actual": 0.15476190476190477
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 48,
+            "mean_predicted": 0.25064806174486876,
+            "mean_actual": 0.125
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 35,
+            "mean_predicted": 0.34715252348354886,
+            "mean_actual": 0.37142857142857144
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 28,
+            "mean_predicted": 0.4473218758191381,
+            "mean_actual": 0.35714285714285715
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 16,
+            "mean_predicted": 0.546829104423523,
+            "mean_actual": 0.5625
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 9,
+            "mean_predicted": 0.6401967936091952,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 9,
+            "mean_predicted": 0.7493449846903483,
+            "mean_actual": 0.5555555555555556
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 3,
+            "mean_predicted": 0.8266381621360779,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 3,
+            "mean_predicted": 0.9267308910687765,
+            "mean_actual": 1.0
+          }
+        ],
+        "n": 312,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.083028887513376,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 106,
+            "mean_predicted": 0.04668024860383978,
+            "mean_actual": 0.09433962264150944
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 39,
+            "mean_predicted": 0.14579390868162498,
+            "mean_actual": 0.15384615384615385
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 33,
+            "mean_predicted": 0.2379304924697587,
+            "mean_actual": 0.15151515151515152
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 17,
+            "mean_predicted": 0.3394113516106325,
+            "mean_actual": 0.23529411764705882
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 11,
+            "mean_predicted": 0.43860147216103296,
+            "mean_actual": 0.09090909090909091
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 8,
+            "mean_predicted": 0.5347524210810661,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 5,
+            "mean_predicted": 0.6074405312538147,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 1,
+            "mean_predicted": 0.8653650879859924,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.9127194285392761,
+            "mean_actual": 1.0
+          }
+        ],
+        "n": 221,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/civil_war_and_insurgency.scores.json",
+  "shape_points": [
+    -0.07431909780934788,
+    -0.04536297412237848,
+    -0.01640685043540912,
+    0.012549273251560274,
+    0.041505396938529664,
+    0.07046152062549906,
+    0.09941764431246843,
+    0.1283737679994378,
+    0.1573298916864072,
+    0.18628601537337658,
+    0.21524213906034595,
+    0.24419826274731538
+  ],
+  "shap_importance_raw": {
+    "v2x_clpriv": 1.1758557558059692,
+    "v2jupurge": 0.9008955359458923,
+    "SP.POP.0014.TO.ZS": 1.5375244617462158
+  },
+  "shap_importance_normalized": {
+    "v2x_clpriv": 0.3253364812211456,
+    "v2jupurge": 0.24926032140020318,
+    "SP.POP.0014.TO.ZS": 0.4254031973786512
+  },
+  "shap_direction_signs": {
+    "v2x_clpriv": -1,
+    "v2jupurge": -1,
+    "SP.POP.0014.TO.ZS": -1
+  },
+  "per_feature_breakdown": {
+    "v2x_clpriv": {
+      "last_z": 0.1417483687400818,
+      "mean_z": 0.1019408106803894,
+      "std_z": 0.1573241651058197,
+      "slope": 0.3698151409626007,
+      "accel": 0.09233447164297104,
+      "tertile1_mean": 0.1377745419740677,
+      "tertile2_mean": 0.07170894742012024,
+      "tertile3_mean": 0.10320933908224106
+    },
+    "v2jupurge": {
+      "last_z": 0.21778559684753418,
+      "mean_z": 0.09356282651424408,
+      "std_z": 0.07340895384550095,
+      "slope": 0.0935158059000969,
+      "accel": 0.08919227868318558,
+      "tertile1_mean": 0.0813024491071701,
+      "tertile2_mean": 0.160401850938797,
+      "tertile3_mean": 0.09172572195529938
+    },
+    "SP.POP.0014.TO.ZS": {
+      "last_z": 0.15458272397518158,
+      "mean_z": 0.06688482314348221,
+      "std_z": 0.25252455472946167,
+      "slope": 0.4791909158229828,
+      "accel": 0.16617605090141296,
+      "tertile1_mean": 0.25862917304039,
+      "tertile2_mean": 0.0981409028172493,
+      "tertile3_mean": 0.06139524281024933
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 12,
+    "indicators": [
+      {
+        "code": "v2x_clpriv",
+        "name": "Private Civil Liberties Index (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 496,
+        "shape": {
+          "mean": [
+            0.0822,
+            0.0671,
+            0.0886,
+            0.0826,
+            0.1108,
+            0.1698,
+            0.1633,
+            0.1608,
+            0.1068,
+            0.1084,
+            0.0855,
+            0.0531
+          ],
+          "p25": [
+            -0.4819,
+            -0.5184,
+            -0.4899,
+            -0.4969,
+            -0.4997,
+            -0.4887,
+            -0.5469,
+            -0.6467,
+            -0.7745,
+            -0.8892,
+            -1.0051,
+            -1.0755
+          ],
+          "p75": [
+            0.6403,
+            0.66,
+            0.7086,
+            0.7338,
+            0.7686,
+            0.8499,
+            0.8996,
+            0.9398,
+            0.9952,
+            1.0544,
+            1.147,
+            1.2152
+          ]
+        }
+      },
+      {
+        "code": "v2jupurge",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 495,
+        "shape": {
+          "mean": [
+            -0.038,
+            0.0171,
+            0.0163,
+            0.0024,
+            -0.0211,
+            -0.0626,
+            -0.0335,
+            -0.0493,
+            -0.052,
+            -0.0576,
+            -0.0778,
+            -0.1265
+          ],
+          "p25": [
+            -0.5291,
+            -0.5173,
+            -0.5185,
+            -0.5717,
+            -0.5783,
+            -0.7276,
+            -0.7108,
+            -0.7619,
+            -0.7798,
+            -0.8592,
+            -0.9798,
+            -1.015
+          ],
+          "p75": [
+            0.5506,
+            0.5595,
+            0.5588,
+            0.5888,
+            0.5925,
+            0.5881,
+            0.6122,
+            0.6476,
+            0.704,
+            0.6753,
+            0.8,
+            0.815
+          ]
+        }
+      },
+      {
+        "code": "SP.POP.0014.TO.ZS",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 420,
+        "shape": {
+          "mean": [
+            -0.0436,
+            -0.071,
+            -0.0914,
+            -0.093,
+            -0.1236,
+            -0.1275,
+            -0.1536,
+            -0.1909,
+            -0.2084,
+            -0.2534,
+            -0.2722,
+            -0.279
+          ],
+          "p25": [
+            -0.4547,
+            -0.4995,
+            -0.5565,
+            -0.6357,
+            -0.7344,
+            -0.8378,
+            -0.9296,
+            -1.0479,
+            -1.1406,
+            -1.2665,
+            -1.4227,
+            -1.5984
+          ],
+          "p75": [
+            0.4182,
+            0.4144,
+            0.4782,
+            0.559,
+            0.6254,
+            0.6755,
+            0.6953,
+            0.751,
+            0.8406,
+            0.8609,
+            0.963,
+            1.2063
+          ]
+        }
+      }
+    ],
+    "samples_used": 496,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2025,
+        "label": "India launches Operation Sindoor \u2014 strikes on Pakistan",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 2025,
+        "label": "Papua conflict intensification \u2014 KKB attacks increase",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 2025,
+        "label": "Myanmar Civil War Enters Fifth Year with No Settlement in Sight",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2025,
+        "label": "Sudan War Enters Third Year \u2014 International Accountability Efforts",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2024,
+        "label": "Spiraling Insecurity \u2014 Over 60 Percent of Territory Beyond State Control",
+        "in_training_set": false
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2024,
+        "label": "M23 and Rwanda Capture Goma",
+        "in_training_set": false
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2024,
+        "label": "Bukavu Falls to M23",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 2024,
+        "label": "TC Televisi\u00f3n Siege; Noboa Declares Internal Armed Conflict",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2024,
+        "label": "Conflict in Amhara region continues with no resolution",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2024,
+        "label": "Oromia security crisis: OLA confrontations with federal forces",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2024,
+        "label": "Naxalite movement sees significant decline",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2024,
+        "label": "Israel Expands Gaza Campaign \u2014 Rafah Controversy",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2024,
+        "label": "Hezbollah Escalation and Northern Front Opens",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2024,
+        "label": "Iran Attacks Israel Directly for First Time",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2024,
+        "label": "Jordan Intercepts Iranian Drones Targeting Israel",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 2024,
+        "label": "Israel-Hezbollah War: Leadership Decimated; Ceasefire Reached",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 2024,
+        "label": "Arakan Army Captures Most of Rakhine State Including Bangladesh Border",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2024,
+        "label": "Russia captures Avdiivka after months of attritional fighting",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2024,
+        "label": "North Korea sends troops to support Russia in Ukraine",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2024,
+        "label": "Ukrainian forces cross into Kursk Oblast",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2024,
+        "label": "Russia fires Oreshnik ballistic missile at Ukraine",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2024,
+        "label": "Violence in Upper Nile and Warrap \u2014 Peace Fragility Exposed",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2024,
+        "label": "HTS Launches Lightning Offensive, Capturing Aleppo in Days",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2024,
+        "label": "Israeli Forces Seize Buffer Zone and Advance Into Syrian Territory",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2024,
+        "label": "Avdiivka Falls to Russian Forces",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2024,
+        "label": "Ukraine Launches Kursk Incursion into Russian Territory",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2024,
+        "label": "Houthi Red Sea Attacks \u2014 Disrupting Global Shipping",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2023,
+        "label": "Burundian rebels RED-Tabara attack from DRC \u2014 army operations escalate",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cm",
+        "country_name": "Cameroon",
+        "year": 2023,
+        "label": "Separatist Factions Fragment in Anglophone Regions",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2023,
+        "label": "Chinese spy balloon shot down over US",
+        "in_training_set": false
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2023,
+        "label": "Wazalendo Militias Rise as Pro-Government Forces",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2023,
+        "label": "Amhara region conflict escalates: Fano militias confront federal forces",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2023,
+        "label": "TTP Insurgency Escalates in Former FATA Regions",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 2023,
+        "label": "EPP Activity Continues in Northern Paraguay",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2023,
+        "label": "Drone attacks reach Moscow for first time in war",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2023,
+        "label": "Ukraine summer counteroffensive partially repulsed",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 2023,
+        "label": "Banjska Incident \u2014 Serbian Armed Group Attacks Kosovo Police",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2023,
+        "label": "RSF-SAF Civil War Erupts \u2014 April 15",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2023,
+        "label": "2023 Counteroffensive Falls Short of Strategic Objectives",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2022,
+        "label": "Nancy Pelosi visits Taiwan \u2014 PLA military exercises encircle island",
+        "in_training_set": false
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2022,
+        "label": "M23 Resurgence \u2014 Rwanda Again Backs Rebels",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2022,
+        "label": "Eritrean Forces Slow to Withdraw from Tigray",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2022,
+        "label": "Tigray ceasefire agreement signed in Pretoria",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2022,
+        "label": "TPLF advances to within 200 km of Addis Ababa before reversal",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2022,
+        "label": "Kyiv offensive fails \u2014 Russian forces withdraw from north",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2022,
+        "label": "Flagship Moskva sunk by Ukrainian missiles in Black Sea",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2022,
+        "label": "Kherson liberated by Ukrainian forces",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2022,
+        "label": "M23 resurgence and renewed DRC tensions",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 2022,
+        "label": "Total War Declared Against Al-Shabaab",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2022,
+        "label": "Mariupol Falls After Azovstal Siege",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2022,
+        "label": "Kharkiv Counteroffensive: Ukraine Recaptures 12,000 km\u00b2",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2022,
+        "label": "Crimean Bridge Attacked, Partially Destroyed",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2022,
+        "label": "Abu Dhabi Houthi Drone Attack",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2021,
+        "label": "Taliban launches rapid military offensive capturing all provincial capitals",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2021,
+        "label": "Inata Gendarmerie Massacre \u2014 57 Security Forces Killed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cm",
+        "country_name": "Cameroon",
+        "year": 2021,
+        "label": "School Attacks Escalate in Anglophone Regions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "td",
+        "country_name": "Chad",
+        "year": 2021,
+        "label": "FACT Rebel Column Invades from Southern Libya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2021,
+        "label": "DRC-Rwanda Tensions Escalate Over M23 Resurgence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2021,
+        "label": "Eritrean Forces Remain in Tigray Despite Calls to Withdraw",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2021,
+        "label": "TPLF launches massive counteroffensive, recaptures Tigray",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2021,
+        "label": "Operation Guardian of the Walls \u2014 Gaza Conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 2021,
+        "label": "People's Defence Force and National Unity Government Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2021,
+        "label": "IPOB and Southeast Security Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2021,
+        "label": "Ongoing Intercommunal Violence in Jonglei and Greater Pibor",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2021,
+        "label": "Marib Offensive \u2014 Houthis Advance on Last Northern Government Stronghold",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2020,
+        "label": "Galwan Valley clash with India \u2014 first deadly border clash since 1975",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2020,
+        "label": "Egypt Deploys Military to Libya Border",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2020,
+        "label": "Eritrean Forces Enter Tigray Conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2020,
+        "label": "Tigray War begins: TPLF attacks federal forces",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2020,
+        "label": "Galwan Valley clash with China \u2014 20 soldiers killed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 2020,
+        "label": "Qasem Soleimani Killed in US Drone Strike",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 2020,
+        "label": "Ukraine International Airlines Flight PS752 Shot Down",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2020,
+        "label": "Idlib Offensive Triggers Humanitarian Catastrophe and Turkey-Russia Clash",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2019,
+        "label": "Church and School Massacres \u2014 Sectarian Violence Escalates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2019,
+        "label": "Inata and Arbinda Attacks \u2014 Dozens of Soldiers Killed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cm",
+        "country_name": "Cameroon",
+        "year": 2019,
+        "label": "Capture of Ambazonian Leaders in Nigeria",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2019,
+        "label": "Pulwama attack and Balakot airstrikes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 2019,
+        "label": "Attacks on Gulf Tankers and Saudi Aramco Facilities Attributed to Iran",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2019,
+        "label": "Haftar Launches Offensive on Tripoli",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2019,
+        "label": "Islamic State Greater Sahara Escalates Attacks in Tillaberi",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2019,
+        "label": "Pulwama Attack and Balakot Airstrikes \u2014 First Air Combat Between Nuclear States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2019,
+        "label": "Abqaiq-Khurais Drone and Missile Attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2019,
+        "label": "ISIS Territorial Caliphate Ends at Baghouz",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2019,
+        "label": "Operation Peace Spring: Turkey Invades Northeastern Syria on 9 October",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2019,
+        "label": "Southern Transitional Council Seizes Aden",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cm",
+        "country_name": "Cameroon",
+        "year": 2018,
+        "label": "Anglophone Armed Conflict Intensifies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 2018,
+        "label": "Iv\u00e1n Duque Elected; Dissident FARC Factions Return to Arms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 2018,
+        "label": "Three Journalists Kidnapped and Killed Near Colombian Border",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2018,
+        "label": "Eastern Ghouta Falls After Devastating Bombing Campaign",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2018,
+        "label": "Operation Olive Branch in Afrin: Turkey Captures Kurdish Canton",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2018,
+        "label": "Battle of Hudaydah",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2017,
+        "label": "Taliban controls or contests 44% of Afghan territory",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2017,
+        "label": "Jihadist Violence Spreads from North \u2014 Sahel Region Deteriorates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cm",
+        "country_name": "Cameroon",
+        "year": 2017,
+        "label": "Ambazonia Separatists Declare Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2017,
+        "label": "Battle of Mosul \u2014 ISIS Territorial Defeat Declared",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 2017,
+        "label": "Lebanese Army Defeats ISIS on Syrian Border",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2017,
+        "label": "Haftar's LNA Consolidates Eastern Libya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2017,
+        "label": "ISIS Loses Raqqa to US-Backed Kurdish-Led Forces",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2016,
+        "label": "US kills Taliban leader Mullah Akhtar Mansour in drone strike in Pakistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2016,
+        "label": "Ansarul Islam Founded \u2014 Local Jihadist Movement Emerges",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2016,
+        "label": "Armed opposition groups launch cross-border attacks from DRC",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2016,
+        "label": "Kasai Conflict \u2014 Kamuina Nsapu Uprising",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2016,
+        "label": "Uri attack and surgical strikes across LoC",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2016,
+        "label": "Battle of Fallujah and PMF Institutionalization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2016,
+        "label": "ISIS Defeated in Sirte",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 2016,
+        "label": "ARSA Attacks on Border Posts Trigger Military Crackdown in Rakhine",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2016,
+        "label": "Niger Delta Avengers Cut Oil Production to 20-Year Low",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2016,
+        "label": "Aleppo falls to Assad forces with Russian air support",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2016,
+        "label": "July 2016 Juba Fighting \u2014 ARCSS Collapses, Machar Flees",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2016,
+        "label": "Battle of Aleppo: Regime Recaptures Syria's Second City",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2015,
+        "label": "Taliban briefly captures Kunduz city in northern Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2015,
+        "label": "Egypt Joins Saudi-Led Military Intervention in Yemen",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2015,
+        "label": "Counter-ISIS Campaign \u2014 Tikrit Retaken; ISIS at Peak Territorial Control",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 2015,
+        "label": "Nationwide Ceasefire Agreement Signed with Eight Ethnic Groups",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2015,
+        "label": "Yemen War Begins \u2014 Saudi Military Coalition Intervenes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2015,
+        "label": "PKK Ceasefire Collapses; Urban Warfare Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2015,
+        "label": "PKK Ceasefire Collapses; Urban Counter-Insurgency Operations Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2014,
+        "label": "Sahel Region Violence Begins \u2014 First Jihadist Attacks in North",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2014,
+        "label": "Operation Protective Edge \u2014 Gaza War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2014,
+        "label": "Libya Descends into Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2014,
+        "label": "Khalifa Haftar Launches Operation Dignity",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2014,
+        "label": "Operation Zarb-e-Azb Launched in North Waziristan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2014,
+        "label": "Siege of Kobani: Kurds Resist ISIS with US Air Support",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2014,
+        "label": "Donbas War Begins: Russia-Backed Separatists Seize Eastern Ukraine",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2014,
+        "label": "MH17 Shot Down Over Donbas, 298 Killed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2013,
+        "label": "Sinai Insurgency Intensifies Under Ansar Bayt al-Maqdis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 2013,
+        "label": "Hezbollah Openly Joins Syrian War; Car Bombs Strike Beirut",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "my",
+        "country_name": "Malaysia",
+        "year": 2013,
+        "label": "Lahad Datu Standoff \u2014 Sulu Armed Incursion in Sabah",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2013,
+        "label": "Zamboanga City Siege",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2013,
+        "label": "Civil War Erupts \u2014 Juba Massacres Mark Dinka-Nuer Conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2012,
+        "label": "M23 Rebellion \u2014 CNDP Officers Mutiny",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2012,
+        "label": "M23 Captures Goma",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2012,
+        "label": "Eritrea Attacks Ethiopian Base in Afar",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2012,
+        "label": "Operation Pillar of Defense \u2014 Gaza",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 2012,
+        "label": "Syrian War Spills into Tripoli and Border Areas",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2012,
+        "label": "M23 rebel movement emerges in eastern DRC with alleged Rwandan backing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2012,
+        "label": "Syrian Civil War Becomes Full-Scale Conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 2011,
+        "label": "Kachin War Resumes After 17-Year Ceasefire",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2011,
+        "label": "Salala Attack Kills 24 Pakistani Soldiers \u2014 NATO Supply Route Closed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2011,
+        "label": "Free Syrian Army Formed from Military Defectors",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2010,
+        "label": "Operation Moshtarak NATO offensive in Helmand Province",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cm",
+        "country_name": "Cameroon",
+        "year": 2009,
+        "label": "Boko Haram Emerges as Cross-Border Threat",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2009,
+        "label": "Swat Valley Falls to Taliban \u2014 Then Retaken",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2009,
+        "label": "Second Chechen War formally declared over",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2009,
+        "label": "Houthi Conflict Begins on Saudi Border",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 2009,
+        "label": "LTTE defeated; 26-year civil war ends in military victory",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2009,
+        "label": "Sixth Houthi War and Saudi Military Intervention",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2008,
+        "label": "Kandahar prison break frees 1,200 Taliban prisoners",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "td",
+        "country_name": "Chad",
+        "year": 2008,
+        "label": "Second Major Rebel Assault on N'Djamena",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2008,
+        "label": "Goma Peace Conference and Nkunda Offensive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2008,
+        "label": "Ethiopia withdraws from Somalia under international pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2008,
+        "label": "Battle of Basra and US-Iraq Status of Forces Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2008,
+        "label": "Russia invades Georgia in Five-Day War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2007,
+        "label": "Surge in Taliban attacks kills thousands across Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2007,
+        "label": "CNDP Founded \u2014 Nkunda's North Kivu Insurgency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2007,
+        "label": "Ethiopian forces in Somalia face growing insurgency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2007,
+        "label": "Air Strike on Syrian Nuclear Reactor",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2007,
+        "label": "Vang Pao Arrested in United States for Alleged Coup Plot",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2007,
+        "label": "Second Tuareg Rebellion Led by MNJ",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ps",
+        "country_name": "Palestine",
+        "year": 2007,
+        "label": "Hamas Seizes Control of Gaza Strip",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 2007,
+        "label": "Al-Shabaab Emerges as Major Islamist Insurgency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2006,
+        "label": "Taliban surge in southern Afghanistan largest since 2001",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2006,
+        "label": "Ethiopia invades Somalia to oust Islamic Courts Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2006,
+        "label": "Taliban Insurgency Strengthens in Afghanistan and Pakistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2006,
+        "label": "Bugti Killing Sparks Baloch Insurgency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 2006,
+        "label": "Islamic Courts Union Captures Mogadishu",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2006,
+        "label": "Dili erupts in violence, displacing 150,000",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2005,
+        "label": "Insurgent attacks increase dramatically across southern Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2005,
+        "label": "MEND Attacks Escalate \u2014 Oil Production Cut",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2004,
+        "label": "Bukavu Crisis \u2014 Nkunda Forces Seize City",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2004,
+        "label": "Battles of Fallujah and Sovereignty Transfer",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2004,
+        "label": "Pakistan Army Enters FATA \u2014 South Waziristan Operation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2004,
+        "label": "Ongoing Al-Qaeda Insurgency in Saudi Arabia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 2004,
+        "label": "Karuna faction splits from LTTE, weakening eastern wing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 2004,
+        "label": "Barlonyo Massacre by LRA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2004,
+        "label": "Houthi Rebellion Begins in Sa'ada",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2003,
+        "label": "Taliban insurgency significantly intensifies in southern Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 2003,
+        "label": "Aceh martial law and major military offensive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2003,
+        "label": "Saddam Hussein Captured",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2002,
+        "label": "Taliban insurgency begins reforming in Pakistani sanctuaries",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2002,
+        "label": "Operation Anaconda targets al-Qaeda remnants in Shah-i-Kot Valley",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2002,
+        "label": "Operation Defensive Shield \u2014 West Bank Reoccupation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 2002,
+        "label": "Forces Nouvelles Unified Rebel Coalition Controls North",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2002,
+        "label": "Chechen guerrilla war continues despite Grozny recapture",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2001,
+        "label": "Northern Alliance captures Kabul with US air support",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2001,
+        "label": "Battle of Tora Bora: bin Laden escapes into Pakistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2001,
+        "label": "Operation Parakram \u2014 India-Pakistan military standoff",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 2001,
+        "label": "Peace Talks Collapse \u2014 Nepal Army Deployed Against Maoists",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mk",
+        "country_name": "North Macedonia",
+        "year": 2001,
+        "label": "Albanian Insurgency Erupts in Western Macedonia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2001,
+        "label": "IMU Loses Afghan Sanctuary as Taliban Regime Falls",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2000,
+        "label": "Ethiopian Offensive Breaks Eritrean Lines",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2000,
+        "label": "Ethiopia-Eritrea War ends with Algiers Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2000,
+        "label": "Israeli Withdrawal from Lebanon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2000,
+        "label": "Camp David Summit Failure and Second Intifada",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 2000,
+        "label": "Israel Withdraws from South Lebanon; Hezbollah Claims Victory",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2000,
+        "label": "Grozny recaptured by Russian forces",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2000,
+        "label": "Foday Sankoh Arrested",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2000,
+        "label": "Second IMU Incursion into Uzbekistan and Kyrgyzstan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1999,
+        "label": "Eritrea-Ethiopia War Intensifies \u2014 Tsorona Battle",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1999,
+        "label": "Ethiopian forces retake Badme from Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1999,
+        "label": "Kargil War \u2014 India recaptures Pakistani-occupied heights",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 1999,
+        "label": "LURD Rebel Movement Launches Second Civil War from Guinea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 1999,
+        "label": "Caprivi Attacks \u2014 Failed Armed Uprising",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1999,
+        "label": "Kargil War \u2014 Pakistan Infiltrates Indian-Controlled Territory",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1999,
+        "label": "All-Out War Against MILF",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1999,
+        "label": "Second Chechen War begins after apartment bombings",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1999,
+        "label": "RUF January Offensive \u2014 Operation No Living Thing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 1999,
+        "label": "IMU Launches Armed Incursion into Southern Kyrgyzstan and Uzbekistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "td",
+        "country_name": "Chad",
+        "year": 1998,
+        "label": "MDJT Rebellion Erupts in Tibesti Mountains",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1998,
+        "label": "Military Catastrophes at El Billar Force Strategic Rethink",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1998,
+        "label": "Second Congo War Begins \u2014 Africa's World War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1998,
+        "label": "Eritrea-Ethiopia War Begins at Badme",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1998,
+        "label": "Ethiopian Air Strikes on Asmara",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1998,
+        "label": "Ethiopia-Eritrea War begins over Badme border dispute",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1998,
+        "label": "Operation Desert Fox \u2014 US-UK Air Strikes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 1998,
+        "label": "Caprivi Secessionist Insurgency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 1998,
+        "label": "Casamance Conflict Intensifies with Cross-Border Guinea-Bissau Dimension",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1998,
+        "label": "Kosovo War Begins \u2014 UCK Insurgency and Serbian Security Forces Clash",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1997,
+        "label": "AUC Paramilitary Federation Formally Constituted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 1997,
+        "label": "Albanian State Collapse Floods Kosovo with Weapons",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1997,
+        "label": "Ansariyya Ambush Kills Twelve Israeli Commandos",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1997,
+        "label": "Niger Delta Crisis Deepens \u2014 Ijaw Militancy Grows",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 1997,
+        "label": "Colonel Khudoberdiev Launches Armed Rebellion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1996,
+        "label": "Northern Alliance formed against Taliban",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1996,
+        "label": "First Congo War Begins \u2014 AFDL and Rwanda Invade",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1996,
+        "label": "Operation Grapes of Wrath \u2014 Lebanon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 1996,
+        "label": "Kosovo Liberation Army (KLA) Emerges with First Attacks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1996,
+        "label": "Israel Launches Operation Grapes of Wrath, Qana Massacre",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 1996,
+        "label": "April 6 War \u2014 Final Major Urban Battle Devastates Monrovia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 1996,
+        "label": "Maoist Insurgency Begins \u2014 People's War Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1995,
+        "label": "Srebrenica Genocide \u2014 8,000 Bosniak Men and Boys Executed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1995,
+        "label": "Civil war escalates \u2014 FDD and PALIPEHUTU insurgency intensifies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1995,
+        "label": "Third Taiwan Strait Crisis \u2014 China fires missiles near Taiwan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1995,
+        "label": "Cenepa War with Peru",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1995,
+        "label": "Fall of Karen HQ Manerplaw to Burmese Army",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1995,
+        "label": "Military captures Jaffna city from LTTE in Operation Riviresa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1994,
+        "label": "Taliban captures Kandahar city from mujahideen factions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1994,
+        "label": "Markale Marketplace Massacre Triggers NATO Ultimatum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1994,
+        "label": "Intra-Kurdish Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1994,
+        "label": "Iraq Amasses Troops on Kuwaiti Border Again",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 1994,
+        "label": "Proliferation of Armed Factions \u2014 Seven Groups Fighting Simultaneously",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1994,
+        "label": "Zapatista Uprising in Chiapas \u2014 EZLN Declares War on NAFTA Day",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1994,
+        "label": "Moro Islamic Liberation Front Emerges as Dominant Force",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1994,
+        "label": "First Chechen War begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1994,
+        "label": "Battle of Grozny \u2014 Russian forces suffer heavy losses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1994,
+        "label": "RPF captures Kigali and ends the genocide",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1994,
+        "label": "IRA Declares Complete Ceasefire After Secret Negotiations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1994,
+        "label": "1994 Civil War \u2014 Southern Secession Attempt and Northern Consolidation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1993,
+        "label": "Civil war between mujahideen factions devastates Kabul",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1993,
+        "label": "Croat-Muslim War Erupts \u2014 Stari Most Bridge Destroyed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1993,
+        "label": "Post-assassination ethnic massacres begin civil war",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1993,
+        "label": "Israel Launches Operation Accountability Against Hezbollah",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1993,
+        "label": "South Lebanon Army Maintains Israeli-Backed Border Strip",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1993,
+        "label": "Ceasefire Agreements with Ethnic Armed Groups",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1992,
+        "label": "Gulbuddin Hekmatyar begins rocket attacks on Kabul",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1992,
+        "label": "Bosnian War Begins \u2014 Siege of Sarajevo and Ethnic Cleansing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1992,
+        "label": "Civil war continues in some regions despite Derg collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 1992,
+        "label": "Operation Octopus \u2014 Taylor Attacks Monrovia, ECOMOG Repulses Assault",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1992,
+        "label": "Bosnian War \u2014 Serbia-Backed Bosnian Serb Forces Conduct Ethnic Cleansing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1992,
+        "label": "Government Offensive Retakes South Amid SPLA Split; Terrorism Designation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 1992,
+        "label": "Tajik Civil War Begins as Political Confrontation Turns Violent",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1991,
+        "label": "Violent Islamist Campaign Escalates in Upper Egypt",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1991,
+        "label": "Yugoslavia begins dissolving, creating complex Balkan challenges for Greece",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1991,
+        "label": "Gulf War \u2014 Operation Desert Storm",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1991,
+        "label": "Gulf War: Coalition Forces Liberate Kuwait",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1991,
+        "label": "Gulf War Victory and Aftermath",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1991,
+        "label": "Yugoslavia Begins to Dissolve \u2014 Slovenia and Croatia Declare Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1991,
+        "label": "RUF Civil War Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 1991,
+        "label": "State Collapse: Siad Barre Flees and Civil War Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 1991,
+        "label": "SPLA Split: Nasir Declaration and Bor Massacre",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1991,
+        "label": "Syrian Forces Crush Lebanese Christian Militia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 1991,
+        "label": "PKK Conflict Intensifies with Mass Village Evacuations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 1991,
+        "label": "PKK Conflict Intensifies; Mass Forced Displacement of Kurds",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1990,
+        "label": "Serb Rebellion in Krajina \u2014 Log Revolution Begins Armed Conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1990,
+        "label": "EPLF Advances South \u2014 Keren and Decamhare Fall",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1990,
+        "label": "EPRDF forces advance toward Addis Ababa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1990,
+        "label": "Derg soldiers surrender in mass to EPRDF forces",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1990,
+        "label": "Iraq Invades and Annexes Kuwait",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1990,
+        "label": "Aoun Defeated; Lebanese Civil War Formally Ends",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 1990,
+        "label": "First Tuareg Insurgency Begins in Northern Niger",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 1990,
+        "label": "BRA Declares Bougainville Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1990,
+        "label": "RPF invasion begins the Rwandan Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1989,
+        "label": "Mujahideen fail to capture Jalalabad in costly frontal assault",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1989,
+        "label": "TPLF launches major offensive, captures key Tigrayan towns",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1989,
+        "label": "Kashmir insurgency begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 1989,
+        "label": "First Civil War Begins \u2014 NPFL Invades from Ivory Coast",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1989,
+        "label": "Communist Party of Burma Collapses, UWSA Emerges",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1989,
+        "label": "Kashmir Insurgency Erupts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 1989,
+        "label": "State of Emergency Declared on Bougainville",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1989,
+        "label": "Last Soviet troops withdraw from Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1988,
+        "label": "Battle of Afabet \u2014 Decisive EPLF Victory",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1988,
+        "label": "Ethiopia Withdraws from Rural Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1988,
+        "label": "Battle of Afabet: major Ethiopian military defeat",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1988,
+        "label": "Soviet aid to Ethiopia begins to wind down",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1988,
+        "label": "US Navy Shoots Down Iranian Civilian Airliner",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1988,
+        "label": "Soviet withdrawal from Afghanistan announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 1988,
+        "label": "SNM Offensive and Aerial Destruction of Hargeisa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1988,
+        "label": "Second JVP insurrection terrorises southern Sri Lanka",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1987,
+        "label": "EPLF and TPLF Coordinate Military Strategy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1987,
+        "label": "TPLF extends control across most of Tigray",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1987,
+        "label": "US Navy Engages Iran in Persian Gulf",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1987,
+        "label": "First Intifada Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1987,
+        "label": "Chad Defeats Libyan Forces in Toyota War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1987,
+        "label": "Lord's Resistance Army Founded by Joseph Kony",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1986,
+        "label": "EPLF captures Barentu in major Eritrean offensive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1986,
+        "label": "Faw Peninsula Captured by Iran",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1986,
+        "label": "Iran Captures Faw Peninsula",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1986,
+        "label": "US Bombing of Libya: Operation El Dorado Canyon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 1986,
+        "label": "Interior War Begins \u2014 Ronnie Brunswijk's Jungle Commando",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1986,
+        "label": "Northern Uganda Insurgency Erupts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1986,
+        "label": "South Yemen Civil War \u2014 January 13 Massacre",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1985,
+        "label": "TPLF-EPLF military cooperation deepens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1985,
+        "label": "Iran Launches Human Wave Offensives with Child Soldiers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1985,
+        "label": "War of the Cities \u2014 Missile Strikes on Civilian Populations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1985,
+        "label": "Israeli Withdrawal from Most of Lebanon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1985,
+        "label": "Israeli Partial Withdrawal Creates Security Zone, War of the Camps Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1985,
+        "label": "Hezbollah Consolidates as Political-Military Organization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 1985,
+        "label": "Casamance Peace Negotiations Collapse, Violence Escalates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1985,
+        "label": "Israel Bombs PLO Headquarters in Tunis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1984,
+        "label": "War of the Cities and Tanker War Intensify",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1984,
+        "label": "Iraq Uses Chemical Weapons Against Iranian Forces",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1984,
+        "label": "Tanker War in the Persian Gulf",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1984,
+        "label": "West Beirut Falls to Amal and PSP Militias",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1984,
+        "label": "Afghanistan war intensifies with systematic village destruction",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1983,
+        "label": "Landmine contamination becomes major civilian casualty issue",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1983,
+        "label": "Saharan Sand Wall Completed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1983,
+        "label": "MRTA Founded as Second Guerrilla Organization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1983,
+        "label": "Soviet Union shoots down Korean Air Lines Flight 007",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 1983,
+        "label": "SPLA Founded by John Garang Following Bor Mutiny",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1983,
+        "label": "Civil war begins; LTTE emerges as dominant Tamil armed group",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1983,
+        "label": "SPLA Founded \u2014 Second Civil War Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1982,
+        "label": "Falklands War \u2014 British Recapture of Islands",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1982,
+        "label": "Ethiopia launches 'Red Star' military campaign in Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1982,
+        "label": "Iran Recaptures Khorramshahr; War Turns",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 1982,
+        "label": "Contra War Escalates, Sandinistas Declare State of Emergency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1982,
+        "label": "NPA Insurgency Expands Nationwide",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1981,
+        "label": "Ahmad Shah Massoud repels Soviet offensives in Panjshir",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1981,
+        "label": "EPLF launches major offensive from Sahel strongholds",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1981,
+        "label": "Israel Destroys Iraq's Osirak Nuclear Reactor",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1981,
+        "label": "Israeli Air Strike on Iraqi Nuclear Reactor",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1981,
+        "label": "Syrian Missile Crisis and Israeli-Syrian Confrontation in Lebanon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1981,
+        "label": "Gulf of Sidra Confrontation with US Navy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 1981,
+        "label": "Somali National Movement Founded by Isaaq Clan Leaders",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1981,
+        "label": "South Africa Destabilizes Neighboring States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1981,
+        "label": "Syrian-Israeli Air Battle Over Lebanon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 1981,
+        "label": "Xanana Gusm\u00e3o takes command of Falintil resistance",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1981,
+        "label": "Bush War Begins \u2014 Museveni's NRA Insurgency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1981,
+        "label": "Bobby Sands Hunger Strike Death Galvanises IRA Support",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1980,
+        "label": "Mujahideen resistance coalitions form in Pakistan and Iran",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 1980,
+        "label": "FMLN Formed from Five Guerrilla Organizations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1980,
+        "label": "TPLF expands guerrilla operations in Tigray",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1980,
+        "label": "Ethiopian-Somali border tensions continue",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1980,
+        "label": "Failed US Hostage Rescue Mission \u2014 Operation Eagle Claw",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1980,
+        "label": "Kataeb Destroys Tigers Militia, Consolidates Christian Military",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 1980,
+        "label": "South Africa Takes Over RENAMO Sponsorship",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1980,
+        "label": "Sendero Luminoso Launches Armed Campaign",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1980,
+        "label": "Mujahideen resistance to Soviet occupation begins in earnest",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1980,
+        "label": "Iran-Iraq War and Saudi Support for Iraq",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1980,
+        "label": "ANC Sabotage Campaign Intensifies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1980,
+        "label": "Muslim Brotherhood Uprising Spreads Across Northern Syria",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1980,
+        "label": "CPT Insurgency Collapses Under Amnesty Policy and Chinese Withdrawal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 1980,
+        "label": "Iran-Iraq War Threatens Gulf Shipping and UAE Oil Exports",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1979,
+        "label": "Herat uprising against communist government killed thousands",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1979,
+        "label": "Ethiopia Launches First Nakfa Offensive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1979,
+        "label": "EPLF reorganizes after strategic withdrawal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1979,
+        "label": "Polisario Attacks Accelerate Mauritanian Withdrawal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1979,
+        "label": "Soviet Union invades Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1979,
+        "label": "Second Yemen War \u2014 YAR-PDRY Border Conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1978,
+        "label": "Rural uprising against communist government begins in Nuristan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1978,
+        "label": "Second Shaba Invasion and Kolwezi Massacre",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1978,
+        "label": "Ethiopian Counteroffensive Recaptures Keren",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1978,
+        "label": "EPLF Strategic Withdrawal to Nakfa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1978,
+        "label": "Ogaden War ends: Cuban-Soviet counteroffensive defeats Somalia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1978,
+        "label": "Ethiopian forces launch major Eritrean offensive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1978,
+        "label": "Israeli Operation Litani Invades South Lebanon and UNIFIL Deployed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1978,
+        "label": "Muslim Brotherhood Insurgency Intensifies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1977,
+        "label": "First Shaba Invasion (Katanga Gendarmes)",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1977,
+        "label": "EPLF Controls Most of Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 1977,
+        "label": "RENAMO Founded With Rhodesian Intelligence Support",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1976,
+        "label": "Soviet Union begins military assistance to Ethiopia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1976,
+        "label": "Polisario Front Declares Sahrawi Arab Democratic Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1975,
+        "label": "Islamist insurgency attempt suppressed across eastern provinces",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1975,
+        "label": "EPLF and ELF Make Major Military Gains",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1975,
+        "label": "Asmara Siege and Street Fighting",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1975,
+        "label": "Lebanese Civil War Begins \u2014 Ain al-Rummaneh Massacre",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1975,
+        "label": "National Democratic Front Formed by Ethnic Armed Organizations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1975,
+        "label": "Dhofar Rebellion Suppressed, Oman Declares Victory",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1975,
+        "label": "National Awami Party Banned and Balochistan Crackdown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1975,
+        "label": "South African Military Intervention in Angola",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1975,
+        "label": "Fall of Saigon \u2014 Vietnam War Ends",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1975,
+        "label": "PDRY Defeats Dhofar Rebellion with Soviet Help",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1975,
+        "label": "Mozambican Independence Transforms the War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1974,
+        "label": "ELF and EPLF Coordinate Against Ethiopia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1974,
+        "label": "Kurdish Autonomy Agreement Collapses \u2014 War Resumes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1974,
+        "label": "Mindanao War Intensifies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1973,
+        "label": "October War: Egypt Crosses Suez Canal and Regains Leverage",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1973,
+        "label": "Military mutinies begin in provincial garrisons",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1973,
+        "label": "Yom Kippur War \u2014 Egyptian and Syrian Surprise Attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1973,
+        "label": "Israeli Commando Raid Kills PLO Leaders in Beirut",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1973,
+        "label": "Sendero Luminoso Consolidates in Ayacucho",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1973,
+        "label": "October War: Syria Attacks Israel to Retake Golan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 1972,
+        "label": "FPL Armed Organization Founded and University Occupied",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1972,
+        "label": "EPLF Wins Converts Among Urban Educated Eritreans",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1972,
+        "label": "Liga Comunista 23 de Septiembre Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1972,
+        "label": "Military Counter-Insurgency Defeats Tupamaros",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1972,
+        "label": "Easter Offensive; Nixon Opens China and USSR; Christmas Bombing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1972,
+        "label": "First Yemen War \u2014 YAR-PDRY Border Conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1972,
+        "label": "ZANLA Launches Northeast Offensive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1971,
+        "label": "Araguaia Guerrilla Movement Emerges in Amazon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1971,
+        "label": "Bangladesh Liberation War \u2014 China backs Pakistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1971,
+        "label": "Intercommunal fighting erupts between ELF and EPLF",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1971,
+        "label": "India-Pakistan War \u2014 Bangladesh Liberation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1971,
+        "label": "Palestinian Fedayeen Establish Control Over South Lebanon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1971,
+        "label": "Lucio Caba\u00f1as' Guerrilla Campaign Escalates in Guerrero",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1971,
+        "label": "India-Pakistan War and Loss of East Pakistan \u2014 Bangladesh Created",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 1971,
+        "label": "Joseph Lagu Unifies Anyanya into SSLM",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1971,
+        "label": "First JVP insurrection \u2014 Marxist youth uprising suppressed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1971,
+        "label": "ARVN Lam Son 719 Fails in Laos; Pentagon Papers Published",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1970,
+        "label": "Montoneros Kidnap and Kill Ex-President Aramburu",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1970,
+        "label": "Fadayan-e Khalq Guerrilla Group Formed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1970,
+        "label": "Black September Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 1970,
+        "label": "Operation Gordian Knot Fails to Crush FRELIMO",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1970,
+        "label": "Moro National Liberation Front Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1970,
+        "label": "Assad Refuses to Send Air Cover During Jordanian Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1969,
+        "label": "ERP and Montoneros Armed Organizations Emerge",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1969,
+        "label": "Urban Guerrillas Kidnap US Ambassador Burke Elbrick",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1969,
+        "label": "Sino-Soviet border conflict \u2014 Zhenbao Island clashes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1969,
+        "label": "War of Attrition Along Suez Canal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1969,
+        "label": "Tripartite ELF Reorganization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1969,
+        "label": "ELF conducts major offensive in Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1969,
+        "label": "Northern Ireland Troubles Erupt with Widespread Violence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1969,
+        "label": "War of Attrition with Egypt",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1969,
+        "label": "New People's Army Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1969,
+        "label": "The Troubles Begin: British Troops Deploy to Northern Ireland",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1969,
+        "label": "Tupamaros Escalate Urban Guerrilla Operations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1968,
+        "label": "Formation of Mojahedin-e Khalq (MKO/MEK)",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1968,
+        "label": "Battle of Karameh",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1968,
+        "label": "Israeli Commando Raid on Beirut Airport",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1968,
+        "label": "Communist Party of Burma Launches Chinese-Backed Northern Offensive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1968,
+        "label": "Biafran Civil War \u2014 Mass Starvation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1968,
+        "label": "Dhofar Liberation Front Becomes Marxist PFLOAG",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1968,
+        "label": "Communist Party of the Philippines Refounded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1968,
+        "label": "Parliamentary Instability and Anyanya Military Consolidation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1968,
+        "label": "Tet Offensive \u2014 Strategic Turning Point",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1968,
+        "label": "Royalist Siege of Sanaa Fails",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1967,
+        "label": "China conducts first hydrogen bomb test",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1967,
+        "label": "Six-Day War: Egypt Suffers Catastrophic Defeat, Sinai Occupied",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1967,
+        "label": "Ethiopian Air Force Attacks Eritrean Villages",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1967,
+        "label": "ELF Splits Along Factional Lines",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1967,
+        "label": "Naxalite uprising begins in Naxalbari",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1967,
+        "label": "Iraq in the Six-Day War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1967,
+        "label": "Six-Day War \u2014 Israel Captures West Bank, Gaza, Sinai, Golan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1967,
+        "label": "Six-Day War and Loss of the West Bank",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1967,
+        "label": "Biafra Declares Independence \u2014 Civil War Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1967,
+        "label": "South African Defence Force Counterinsurgency Operations Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1967,
+        "label": "Six-Day War: Israel Captures the Golan Heights",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 1966,
+        "label": "UNITA Founded by Jonas Savimbi",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1966,
+        "label": "ELF Begins Urban Resistance Operations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1966,
+        "label": "Eritrean Highlands Increasingly Drawn into Conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1966,
+        "label": "Israeli Reprisal Raid on Samu Village",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 1966,
+        "label": "UN Revokes South Africa's Mandate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1966,
+        "label": "Sadiq al-Mahdi Government and Anyanya External Support",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1966,
+        "label": "Syria-Israel Border Clashes Intensify Over Water",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1966,
+        "label": "Egyptian Forces Struggle Against Royalist Guerrillas",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1966,
+        "label": "Battle of Sinoia \u2014 First ZANU Guerrilla Attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1965,
+        "label": "China deploys troops to support Vietnam War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1965,
+        "label": "ELF Internal Divisions Deepen",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1965,
+        "label": "Indo-Pakistani War over Kashmir",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1965,
+        "label": "Fatah Launches Armed Struggle from Jordanian Territory",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1965,
+        "label": "Fatah Launches First Armed Operations from Lebanese Territory",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1965,
+        "label": "Chihuahua Guerrilla Attack on Military Barracks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1965,
+        "label": "Second Kashmir War with India",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1965,
+        "label": "MIR and ELN Guerrilla Insurgencies Suppressed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1965,
+        "label": "Parliamentary Elections Restored and Juba and Wau Massacres",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1965,
+        "label": "Palestinian Fedayeen Operations Launched from Syrian Territory",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1965,
+        "label": "First U.S. Combat Troops Land; Operation Rolling Thunder Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1965,
+        "label": "Battle of Ia Drang Valley",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1964,
+        "label": "China's first nuclear weapon test",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1964,
+        "label": "FARC Founded After Operation Marquetalia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1964,
+        "label": "ELN Founded by Cuban-Inspired Students",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1964,
+        "label": "Simba and Mulele Rebellions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1964,
+        "label": "Ogaden conflict with Somalia intensifies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1964,
+        "label": "Ethiopian military expands counterinsurgency in Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1964,
+        "label": "Failed Peace Talks with Ethnic Armed Groups",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1964,
+        "label": "Dhofar Liberation Front Founded, Insurgency Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1964,
+        "label": "Mozambique War of Independence Opens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1964,
+        "label": "Radfan Campaign \u2014 British Counterinsurgency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1963,
+        "label": "End of Katanga Secession",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1963,
+        "label": "ELF Zonal Structure Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1963,
+        "label": "Konfrontasi against Malaysia declared",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "my",
+        "country_name": "Malaysia",
+        "year": 1963,
+        "label": "Konfrontasi \u2014 Indonesia Launches Armed Confrontation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 1963,
+        "label": "Anyanya Insurgency Escalates into Sustained Guerrilla War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1963,
+        "label": "Sudan Armed Forces Escalate Southern Campaign and SSANU Founded in Exile",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1963,
+        "label": "Royalist-Republican Civil War Escalates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1963,
+        "label": "ZANU Splits from ZAPU",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 1962,
+        "label": "Brunei Revolt Crushed by British Forces; Emergency Declared",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1962,
+        "label": "Sino-Indian War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1962,
+        "label": "Egypt Intervenes in Yemen Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1962,
+        "label": "ELF Expands Military Operations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1962,
+        "label": "Sino-Indian War \u2014 China defeats India",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 1962,
+        "label": "First Tuareg Rebellion Against the Malian State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1962,
+        "label": "Guerrilla Activity Emerges in Guerrero",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1962,
+        "label": "Yemen Civil War \u2014 Saudi Intervention",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 1962,
+        "label": "Shifta War Begins in Kenya's Northern Frontier District",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1962,
+        "label": "Tupamaro Movement Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 1961,
+        "label": "Luanda Prison Attack and Bakongo Uprising Launch Armed Struggle",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1961,
+        "label": "ELF Establishes Guerrilla Zones",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1961,
+        "label": "Ethiopian Counterinsurgency Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1961,
+        "label": "Armed Eritrean insurgency intensifies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1961,
+        "label": "Liberation of Goa from Portuguese rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1961,
+        "label": "Kurdish Revolt Begins under Mustafa Barzani",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1961,
+        "label": "Angola War of Independence Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1961,
+        "label": "Umkhonto we Sizwe Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1961,
+        "label": "Communist Party of Thailand Launches Armed Insurgency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1961,
+        "label": "Bizerte Crisis \u2014 Tunisian Forces Attack French Base",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1961,
+        "label": "ZAPU Founded by Joshua Nkomo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1960,
+        "label": "Katanga Secession Under Tshombe",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1960,
+        "label": "South Kasai Secession and Diamond Conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1960,
+        "label": "Eritrean Liberation Front Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1960,
+        "label": "Failed Military Coup Sparks 36-Year Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1960,
+        "label": "West Irian military confrontation \u2014 Konfrontasi with the Netherlands",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "my",
+        "country_name": "Malaysia",
+        "year": 1960,
+        "label": "Malayan Emergency Officially Ended",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1960,
+        "label": "Growing Communist Party Underground",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1960,
+        "label": "Anyanya Rebellion Consolidates in Southern Sudan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1960,
+        "label": "Southern Malay-Muslim Insurgency Begins in Border Provinces",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1960,
+        "label": "National Liberation Front Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1959,
+        "label": "Challe Offensive pushes FLN internal forces onto defensive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1959,
+        "label": "ETA Founded as Basque Separatist Organisation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1959,
+        "label": "Hanoi Authorizes Armed Struggle; Ho Chi Minh Trail Construction Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1958,
+        "label": "French bombing of Sakiet Sidi Youssef in Tunisia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1958,
+        "label": "Second Taiwan Strait Crisis \u2014 Quemoy bombardment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1958,
+        "label": "Naga insurgency intensifies in Northeast",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1958,
+        "label": "PRRI-Permesta regional rebellions erupt \u2014 CIA covert support exposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1958,
+        "label": "Lebanese Civil Conflict and US Marine Intervention",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1957,
+        "label": "Battle of Algiers \u2014 urban insurgency and systematic torture",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1957,
+        "label": "Morice Line constructed along Tunisian border",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1957,
+        "label": "Ethiopian Military Presence Grows in Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1957,
+        "label": "Ethiopian ground forces modernized with US equipment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1957,
+        "label": "Jebel Akhdar War Begins as Imamate Forces Return",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1957,
+        "label": "Parliamentary Instability and First Civil War Intensifies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1957,
+        "label": "Turkey Masses Troops on Syrian Border in Cold War Standoff",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1956,
+        "label": "France extends conscription to Algeria, escalating military presence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 1956,
+        "label": "MPLA Founded in Luanda",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1956,
+        "label": "Granma Landing Begins Cuban Guerrilla War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1956,
+        "label": "Early Resistance Networks Form",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1956,
+        "label": "Sinai Campaign \u2014 Operation Kadesh",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1956,
+        "label": "Dedan Kimathi Captured and Executed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1955,
+        "label": "Philippeville massacre and French reprisals escalate the war",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1955,
+        "label": "Gaza Raid by Israel Escalates Border Tensions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1955,
+        "label": "EOKA armed insurgency begins in Cyprus against British colonial rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1955,
+        "label": "Gaza Raid and Escalation with Egypt",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1955,
+        "label": "Palestinian Fedayeen Cross-Border Raids",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "my",
+        "country_name": "Malaysia",
+        "year": 1955,
+        "label": "Baling Peace Talks with MCP Fail",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1955,
+        "label": "Sultan Said bin Taimur and Britain Suppress Interior Imamate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 1955,
+        "label": "Torit Mutiny Launches First Sudanese Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1955,
+        "label": "Torit Mutiny and Southern Discontent \u2014 First Civil War Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1954,
+        "label": "Algerian War of Independence begins \u2014 Toussaint Rouge",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 1954,
+        "label": "Algerian War of Independence Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1954,
+        "label": "Army of Liberation Escalates Operations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1954,
+        "label": "Luis Taruc Surrenders",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1954,
+        "label": "Battle of Dien Bien Phu",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1953,
+        "label": "Moncada Barracks Attack Launches Castro's Revolutionary Movement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1953,
+        "label": "Ethiopia-US Mutual Defense Assistance Agreement signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1953,
+        "label": "Kibya Massacre and Reprisal Policy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1953,
+        "label": "Lari Massacre and British Counter-Atrocities",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1953,
+        "label": "Guerrilla Resistance Begins Against French Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1953,
+        "label": "Huk Rebellion Effectively Suppressed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1953,
+        "label": "Viet Minh Enters Laos; Navarre Plan Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1952,
+        "label": "Darul Islam insurgency intensifies in West Java",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1952,
+        "label": "Collapse of Huk Central Committee",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1952,
+        "label": "Armed Resistance Groups Emerge in Rural Areas",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1951,
+        "label": "Guerrilla Campaign Against British Forces in Canal Zone",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 1951,
+        "label": "France Deepens Military Commitment in Indochina",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "my",
+        "country_name": "Malaysia",
+        "year": 1951,
+        "label": "Assassination of High Commissioner Henry Gurney",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1951,
+        "label": "French Repel Viet Minh at Vinh Yen and De Lattre Line",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1950,
+        "label": "China enters Korean War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1950,
+        "label": "Laureano G\u00f3mez Authoritarian Government Deepens La Violencia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1950,
+        "label": "Mau Mau Movement Gains Momentum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "my",
+        "country_name": "Malaysia",
+        "year": 1950,
+        "label": "Briggs Plan Launched to Defeat Communist Insurgency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1950,
+        "label": "Huk Rebellion at Its Peak",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1950,
+        "label": "Soviet MiG-15 jets deployed in Korean airspace",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1950,
+        "label": "Battle of Route Coloniale 4",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 582
+  }
+}

@@ -1,0 +1,3300 @@
+{
+  "recipe_id": "terrorist_attack",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Economic Stress",
+  "description_compelling": "A non-state armed actor strikes a civilian or symbolic target \u2014 a bombing, a hostage taking, a coordinated raid \u2014 to coerce policy or signal capacity. Watch civil-liberty restrictions, political-violence indices, and refugee-origin numbers for the multi-year build-up. The signal lights up most around active insurgencies, border-spillover zones, and states with deeply uneven security coverage.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6444293846570887,
+    "ci95_lo": 0.5945049278277049,
+    "ci95_hi": 0.6907780895550193,
+    "ci80_lo": 0.6114386457991832,
+    "ci80_hi": 0.6759232245502339,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "FI.RES.TOTL.MO",
+      "SP.POP.TOTL",
+      "NY.GDP.MKTP.KD"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "FI.RES.TOTL.MO",
+        "name": null
+      },
+      {
+        "code": "SP.POP.TOTL",
+        "name": null
+      },
+      {
+        "code": "NY.GDP.MKTP.KD",
+        "name": null
+      }
+    ],
+    "chosen_window": 21,
+    "final_global_auc": 0.6444293846570887,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "FI.RES.TOTL.MO",
+        "window": 18,
+        "auc": 0.6024045152311737,
+        "lift_over_previous": 0.10240451523117367,
+        "selected_after": [
+          "FI.RES.TOTL.MO"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "SP.POP.TOTL",
+        "window": 7,
+        "auc": 0.6313281022958442,
+        "lift_over_previous": 0.028923587064670575,
+        "selected_after": [
+          "FI.RES.TOTL.MO",
+          "SP.POP.TOTL"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "NY.GDP.MKTP.KD",
+        "window": 21,
+        "auc": 0.6444293846570887,
+        "lift_over_previous": 0.013101282361244415,
+        "selected_after": [
+          "FI.RES.TOTL.MO",
+          "SP.POP.TOTL",
+          "NY.GDP.MKTP.KD"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2excrptps",
+        "window": 21,
+        "auc": 0.6492003252914069,
+        "lift_over_previous": 0.004770940634318266,
+        "selected_after": [
+          "FI.RES.TOTL.MO",
+          "SP.POP.TOTL",
+          "NY.GDP.MKTP.KD",
+          "v2excrptps"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 238,
+    "n_pos_survive": 170,
+    "n_neg_total": 714,
+    "n_neg_survive": 434,
+    "pos_coverage": 0.7142857142857143,
+    "neg_coverage": 0.6078431372549019,
+    "n_countries_survive": 61,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 219,
+      "loco_auc": 0.5917986952469712,
+      "ece": 0.1541396886722682,
+      "ece_ci95_lo": 0.11260613846001491,
+      "ece_ci95_hi": 0.22571577618778874,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 38,
+          "mean_predicted": 0.06155799329280853,
+          "mean_actual": 0.21052631578947367
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 30,
+          "mean_predicted": 0.14645685777068138,
+          "mean_actual": 0.3
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 30,
+          "mean_predicted": 0.253089635570844,
+          "mean_actual": 0.26666666666666666
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 22,
+          "mean_predicted": 0.33751237798820843,
+          "mean_actual": 0.45454545454545453
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 34,
+          "mean_predicted": 0.4536370284417096,
+          "mean_actual": 0.35294117647058826
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 19,
+          "mean_predicted": 0.5439991417684054,
+          "mean_actual": 0.3684210526315789
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 23,
+          "mean_predicted": 0.6500938560651697,
+          "mean_actual": 0.4782608695652174
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 8,
+          "mean_predicted": 0.7427438423037529,
+          "mean_actual": 0.625
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 12,
+          "mean_predicted": 0.8429787307977676,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 3,
+          "mean_predicted": 0.9126552740732828,
+          "mean_actual": 0.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5128671711089555,
+      "loco_auc_ci95_hi": 0.6653909743332194
+    },
+    "mid-tier": {
+      "n": 140,
+      "loco_auc": 0.7073170731707317,
+      "ece": 0.124115703055369,
+      "ece_ci95_lo": 0.09079413815368233,
+      "ece_ci95_hi": 0.20557655083847093,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 29,
+          "mean_predicted": 0.05887903831899166,
+          "mean_actual": 0.13793103448275862
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 16,
+          "mean_predicted": 0.14376324228942394,
+          "mean_actual": 0.1875
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 25,
+          "mean_predicted": 0.250112481713295,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 18,
+          "mean_predicted": 0.35403531127505833,
+          "mean_actual": 0.2777777777777778
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 15,
+          "mean_predicted": 0.4422199666500092,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 9,
+          "mean_predicted": 0.5455413195821974,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 8,
+          "mean_predicted": 0.6463963910937309,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 10,
+          "mean_predicted": 0.7512664437294007,
+          "mean_actual": 0.3
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 9,
+          "mean_predicted": 0.8377130428949991,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.9291347861289978,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6022699512304656,
+      "loco_auc_ci95_hi": 0.7951485057552495
+    },
+    "stable-democracy": {
+      "n": 242,
+      "loco_auc": 0.6378053585500394,
+      "ece": 0.11228299499219976,
+      "ece_ci95_lo": 0.08841833978591195,
+      "ece_ci95_hi": 0.1795124215027702,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 41,
+          "mean_predicted": 0.05848868511526323,
+          "mean_actual": 0.14634146341463414
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 64,
+          "mean_predicted": 0.14723680075258017,
+          "mean_actual": 0.15625
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 40,
+          "mean_predicted": 0.2520731322467327,
+          "mean_actual": 0.125
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 31,
+          "mean_predicted": 0.34037597717777374,
+          "mean_actual": 0.3225806451612903
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 21,
+          "mean_predicted": 0.4587694505850474,
+          "mean_actual": 0.19047619047619047
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 13,
+          "mean_predicted": 0.5467770970784701,
+          "mean_actual": 0.46153846153846156
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 14,
+          "mean_predicted": 0.6564186385699681,
+          "mean_actual": 0.21428571428571427
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 10,
+          "mean_predicted": 0.7437845289707183,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 6,
+          "mean_predicted": 0.852031022310257,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 2,
+          "mean_predicted": 0.9384712278842926,
+          "mean_actual": 0.5
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5441555280079837,
+      "loco_auc_ci95_hi": 0.726723004947627
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-28T00:27:14.581349+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5248,
+  "stability_diagnostic": {
+    "fold_variance": 0.08570395408374161,
+    "fold_auc_mean": 0.6039469689792966,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Afghanistan": 0.25,
+      "Algeria": 0.6964285714285714,
+      "Argentina": 0.75,
+      "Australia": 0.6,
+      "Austria": 1.0,
+      "Bangladesh": 0.45454545454545453,
+      "Belgium": 1.0,
+      "Bulgaria": 1.0,
+      "Canada": 0.16666666666666666,
+      "Chile": 0.7272727272727273,
+      "Colombia": 0.7916666666666666,
+      "Denmark": 0.5714285714285714,
+      "Egypt": 0.5692307692307692,
+      "Ethiopia": 0.875,
+      "France": 0.6071428571428571,
+      "Germany": 0.6666666666666666,
+      "Greece": 0.5454545454545454,
+      "India": 0.9642857142857143,
+      "Indonesia": 0.8571428571428571,
+      "Iran": 0.0,
+      "Iraq": 1.0,
+      "Israel": 0.4666666666666667,
+      "Italy": 0.32,
+      "Jordan": 0.3333333333333333,
+      "Kenya": 0.3,
+      "Kuwait": 0.5238095238095238,
+      "Kyrgyzstan": 1.0,
+      "Lebanon": 1.0,
+      "Libya": 0.4,
+      "Maldives": 0.9375,
+      "Morocco": 0.4166666666666667,
+      "Mozambique": 0.0,
+      "Myanmar": 0.5454545454545454,
+      "Netherlands": 0.2,
+      "New Zealand": 1.0,
+      "Nigeria": 0.5833333333333334,
+      "Norway": 1.0,
+      "Pakistan": 0.640625,
+      "Peru": 0.7575757575757576,
+      "Philippines": 0.48484848484848486,
+      "Russia": 0.7142857142857143,
+      "Saudi Arabia": 0.42857142857142855,
+      "Singapore": 0.6666666666666666,
+      "South Korea": 0.5,
+      "Spain": 0.5333333333333333,
+      "Sri Lanka": 1.0,
+      "Sudan": 0.2692307692307692,
+      "Sweden": 0.95,
+      "Syria": 0.4909090909090909,
+      "Tanzania": 1.0,
+      "Thailand": 0.0,
+      "The Democratic Republic of the Congo": 1.0,
+      "Tunisia": 0.28,
+      "Turkiye": 0.2,
+      "Uganda": 0.25,
+      "United Kingdom": 0.425,
+      "United States": 0.8181818181818182,
+      "Yemen": 0.5
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 238,
+  "n_negatives": 714,
+  "walked_at_utc": "2026-06-28T00:31:19.154688+00:00",
+  "elapsed_seconds": 5910.8856999874115,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/terrorist_attack/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Indonesia",
+          "Suriname",
+          "Belize",
+          "Fiji",
+          "The Gambia",
+          "Grenada",
+          "Nicaragua",
+          "Albania"
+        ],
+        "country_isos": [
+          "id",
+          "sr",
+          "bz",
+          "fj",
+          "gm",
+          "gd",
+          "ni",
+          "al"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Jamaica",
+          "Djibouti",
+          "Haiti",
+          "Antigua and Barbuda",
+          "Republic of the Congo",
+          "Vanuatu",
+          "Gabon",
+          "Saint Lucia",
+          "Namibia"
+        ],
+        "country_isos": [
+          "jm",
+          "dj",
+          "ht",
+          "ag",
+          "cg",
+          "vu",
+          "ga",
+          "lc",
+          "na"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 8,
+        "countries": [
+          "Lesotho",
+          "Saint Vincent and the Grenadines",
+          "Tajikistan",
+          "United States",
+          "Mauritius",
+          "Bahamas",
+          "Moldova",
+          "Bahrain"
+        ],
+        "country_isos": [
+          "ls",
+          "vc",
+          "tj",
+          "us",
+          "mu",
+          "bs",
+          "md",
+          "bh"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 9,
+        "countries": [
+          "Croatia",
+          "Montenegro",
+          "Seychelles",
+          "Maldives",
+          "Singapore",
+          "Dominica",
+          "Malawi",
+          "Switzerland",
+          "Tonga"
+        ],
+        "country_isos": [
+          "hr",
+          "me",
+          "sc",
+          "mv",
+          "sg",
+          "dm",
+          "mw",
+          "ch",
+          "to"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 8,
+        "countries": [
+          "Hong Kong",
+          "Argentina",
+          "Malta",
+          "Brunei",
+          "Timor-Leste",
+          "Aruba",
+          "Lithuania",
+          "India"
+        ],
+        "country_isos": [
+          "hk",
+          "ar",
+          "mt",
+          "bn",
+          "tl",
+          "aw",
+          "lt",
+          "in"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Georgia",
+          "Samoa",
+          "Iceland",
+          "Liberia",
+          "Slovakia",
+          "Norway",
+          "North Macedonia",
+          "Uruguay",
+          "Kyrgyzstan"
+        ],
+        "country_isos": [
+          "ge",
+          "ws",
+          "is",
+          "lr",
+          "sk",
+          "no",
+          "mk",
+          "uy",
+          "kg"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 8,
+        "countries": [
+          "Myanmar",
+          "Panama",
+          "Eswatini",
+          "Saint Kitts and Nevis",
+          "Comoros",
+          "Cabo Verde",
+          "Mongolia",
+          "Denmark"
+        ],
+        "country_isos": [
+          "mm",
+          "pa",
+          "sz",
+          "kn",
+          "km",
+          "cv",
+          "mn",
+          "dk"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 9,
+        "countries": [
+          "Guyana",
+          "Sierra Leone",
+          "Russia",
+          "Barbados",
+          "Oman",
+          "Trinidad and Tobago",
+          "Laos",
+          "Ethiopia",
+          "Sao Tome and Principe"
+        ],
+        "country_isos": [
+          "gy",
+          "sl",
+          "ru",
+          "bb",
+          "om",
+          "tt",
+          "la",
+          "et",
+          "st"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 8,
+        "countries": [
+          "Brazil",
+          "Costa Rica",
+          "Solomon Islands",
+          "Mexico",
+          "Guinea",
+          "Bosnia and Herzegovina",
+          "Burundi",
+          "Slovenia"
+        ],
+        "country_isos": [
+          "br",
+          "cr",
+          "sb",
+          "mx",
+          "gn",
+          "ba",
+          "bi",
+          "si"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 9,
+        "countries": [
+          "Afghanistan",
+          "Finland",
+          "El Salvador",
+          "Equatorial Guinea",
+          "Pakistan",
+          "Philippines",
+          "Ukraine",
+          "Armenia",
+          "Sudan"
+        ],
+        "country_isos": [
+          "af",
+          "fi",
+          "sv",
+          "gq",
+          "pk",
+          "ph",
+          "ua",
+          "am",
+          "sd"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 8,
+        "countries": [
+          "Dominican Republic",
+          "Chile",
+          "Latvia",
+          "Mozambique",
+          "Guatemala",
+          "Saudi Arabia",
+          "Qatar",
+          "Chad"
+        ],
+        "country_isos": [
+          "do",
+          "cl",
+          "lv",
+          "mz",
+          "gt",
+          "sa",
+          "qa",
+          "td"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 9,
+        "countries": [
+          "Macao",
+          "Serbia",
+          "Yemen",
+          "Bhutan",
+          "Botswana",
+          "China",
+          "Venezuela",
+          "Cyprus",
+          "South Korea"
+        ],
+        "country_isos": [
+          "mo",
+          "rs",
+          "ye",
+          "bt",
+          "bw",
+          "cn",
+          "ve",
+          "cy",
+          "kr"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Ecuador",
+          "Libya",
+          "Central African Republic",
+          "Azerbaijan",
+          "Zambia",
+          "Ireland",
+          "Bangladesh",
+          "Poland",
+          "France"
+        ],
+        "country_isos": [
+          "ec",
+          "ly",
+          "cf",
+          "az",
+          "zm",
+          "ie",
+          "bd",
+          "pl",
+          "fr"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 8,
+        "countries": [
+          "Estonia",
+          "Bulgaria",
+          "Belgium",
+          "Czechia",
+          "Luxembourg",
+          "Mauritania",
+          "Palestine",
+          "Italy"
+        ],
+        "country_isos": [
+          "ee",
+          "bg",
+          "be",
+          "cz",
+          "lu",
+          "mr",
+          "ps",
+          "it"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Thailand",
+          "Spain",
+          "Vietnam",
+          "Kazakhstan",
+          "Morocco",
+          "Papua New Guinea",
+          "Canada",
+          "Madagascar",
+          "Australia"
+        ],
+        "country_isos": [
+          "th",
+          "es",
+          "vn",
+          "kz",
+          "ma",
+          "pg",
+          "ca",
+          "mg",
+          "au"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Japan",
+          "Zimbabwe",
+          "Paraguay",
+          "Malaysia",
+          "Tunisia",
+          "Rwanda",
+          "Syria",
+          "Sweden"
+        ],
+        "country_isos": [
+          "jp",
+          "zw",
+          "py",
+          "my",
+          "tn",
+          "rw",
+          "sy",
+          "se"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 9,
+        "countries": [
+          "Germany",
+          "United Kingdom",
+          "The Democratic Republic of the Congo",
+          "South Africa",
+          "Sri Lanka",
+          "Greece",
+          "Portugal",
+          "Belarus",
+          "Peru"
+        ],
+        "country_isos": [
+          "de",
+          "gb",
+          "cd",
+          "za",
+          "lk",
+          "gr",
+          "pt",
+          "by",
+          "pe"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 8,
+        "countries": [
+          "Kenya",
+          "Jordan",
+          "Uganda",
+          "Nigeria",
+          "Iraq",
+          "Netherlands",
+          "Honduras",
+          "Hungary"
+        ],
+        "country_isos": [
+          "ke",
+          "jo",
+          "ug",
+          "ng",
+          "iq",
+          "nl",
+          "hn",
+          "hu"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Tanzania",
+          "New Zealand",
+          "Bolivia",
+          "Lebanon",
+          "Israel",
+          "Egypt",
+          "Uzbekistan",
+          "Algeria",
+          "Kuwait"
+        ],
+        "country_isos": [
+          "tz",
+          "nz",
+          "bo",
+          "lb",
+          "il",
+          "eg",
+          "uz",
+          "dz",
+          "kw"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Cameroon",
+          "Austria",
+          "Romania",
+          "Nepal",
+          "Turkiye",
+          "Ghana",
+          "Angola",
+          "Colombia",
+          "Cambodia"
+        ],
+        "country_isos": [
+          "cm",
+          "at",
+          "ro",
+          "np",
+          "tr",
+          "gh",
+          "ao",
+          "co",
+          "kh"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.1,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 171,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.1155,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.5861192169661458,
+      "b": 0.0,
+      "c": -0.16892130228390156,
+      "n_fit": 604,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 23,
+        "observed_rate": 0.043478260869565216
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 119,
+        "observed_rate": 0.20168067226890757
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 193,
+        "observed_rate": 0.20725388601036268
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 193,
+        "observed_rate": 0.3626943005181347
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 76,
+        "observed_rate": 0.4605263157894737
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.03415954936123493,
+    "n_predictions": 604,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.1541396886722682,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 38,
+            "mean_predicted": 0.06155799329280853,
+            "mean_actual": 0.21052631578947367
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 30,
+            "mean_predicted": 0.14645685777068138,
+            "mean_actual": 0.3
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 30,
+            "mean_predicted": 0.253089635570844,
+            "mean_actual": 0.26666666666666666
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 22,
+            "mean_predicted": 0.33751237798820843,
+            "mean_actual": 0.45454545454545453
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 34,
+            "mean_predicted": 0.4536370284417096,
+            "mean_actual": 0.35294117647058826
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 19,
+            "mean_predicted": 0.5439991417684054,
+            "mean_actual": 0.3684210526315789
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 23,
+            "mean_predicted": 0.6500938560651697,
+            "mean_actual": 0.4782608695652174
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 8,
+            "mean_predicted": 0.7427438423037529,
+            "mean_actual": 0.625
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 12,
+            "mean_predicted": 0.8429787307977676,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 3,
+            "mean_predicted": 0.9126552740732828,
+            "mean_actual": 0.0
+          }
+        ],
+        "n": 219,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.124115703055369,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 29,
+            "mean_predicted": 0.05887903831899166,
+            "mean_actual": 0.13793103448275862
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 16,
+            "mean_predicted": 0.14376324228942394,
+            "mean_actual": 0.1875
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 25,
+            "mean_predicted": 0.250112481713295,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 18,
+            "mean_predicted": 0.35403531127505833,
+            "mean_actual": 0.2777777777777778
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 15,
+            "mean_predicted": 0.4422199666500092,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 9,
+            "mean_predicted": 0.5455413195821974,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 8,
+            "mean_predicted": 0.6463963910937309,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 10,
+            "mean_predicted": 0.7512664437294007,
+            "mean_actual": 0.3
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 9,
+            "mean_predicted": 0.8377130428949991,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.9291347861289978,
+            "mean_actual": 1.0
+          }
+        ],
+        "n": 140,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.11228299499219976,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 41,
+            "mean_predicted": 0.05848868511526323,
+            "mean_actual": 0.14634146341463414
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 64,
+            "mean_predicted": 0.14723680075258017,
+            "mean_actual": 0.15625
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 40,
+            "mean_predicted": 0.2520731322467327,
+            "mean_actual": 0.125
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 31,
+            "mean_predicted": 0.34037597717777374,
+            "mean_actual": 0.3225806451612903
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 21,
+            "mean_predicted": 0.4587694505850474,
+            "mean_actual": 0.19047619047619047
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 13,
+            "mean_predicted": 0.5467770970784701,
+            "mean_actual": 0.46153846153846156
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 14,
+            "mean_predicted": 0.6564186385699681,
+            "mean_actual": 0.21428571428571427
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 10,
+            "mean_predicted": 0.7437845289707183,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 6,
+            "mean_predicted": 0.852031022310257,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 2,
+            "mean_predicted": 0.9384712278842926,
+            "mean_actual": 0.5
+          }
+        ],
+        "n": 242,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/terrorist_attack.scores.json",
+  "shape_points": [
+    0.009712918576614661,
+    0.027960368932141173,
+    0.04620781928766768,
+    0.06445526964319419,
+    0.08270271999872071,
+    0.1009501703542472,
+    0.11919762070977372,
+    0.1374450710653002,
+    0.15569252142082673,
+    0.17393997177635323,
+    0.19218742213187973,
+    0.21043487248740625
+  ],
+  "shap_importance_raw": {
+    "FI.RES.TOTL.MO": 1.576501727104187,
+    "SP.POP.TOTL": 1.0844509601593018,
+    "NY.GDP.MKTP.KD": 0.7590504884719849
+  },
+  "shap_importance_normalized": {
+    "FI.RES.TOTL.MO": 0.4609649892401516,
+    "SP.POP.TOTL": 0.3170906295799243,
+    "NY.GDP.MKTP.KD": 0.2219443811799241
+  },
+  "shap_direction_signs": {
+    "FI.RES.TOTL.MO": -1,
+    "SP.POP.TOTL": -1,
+    "NY.GDP.MKTP.KD": -1
+  },
+  "per_feature_breakdown": {
+    "FI.RES.TOTL.MO": {
+      "last_z": 0.15498358011245728,
+      "mean_z": 0.17235544323921204,
+      "std_z": 0.2307826578617096,
+      "slope": 0.33428648114204407,
+      "accel": 0.2354332059621811,
+      "tertile1_mean": 0.16433961689472198,
+      "tertile2_mean": 0.15236923098564148,
+      "tertile3_mean": 0.13195157051086426
+    },
+    "SP.POP.TOTL": {
+      "last_z": 0.10087384283542633,
+      "mean_z": 0.04366623982787132,
+      "std_z": 0.2651209235191345,
+      "slope": 0.10067460685968399,
+      "accel": 0.2546747624874115,
+      "tertile1_mean": 0.16162629425525665,
+      "tertile2_mean": 0.02979450486600399,
+      "tertile3_mean": 0.128019779920578
+    },
+    "NY.GDP.MKTP.KD": {
+      "last_z": 0.05267077311873436,
+      "mean_z": 0.07559513300657272,
+      "std_z": 0.07002100348472595,
+      "slope": 0.1484699249267578,
+      "accel": 0.17473699152469635,
+      "tertile1_mean": 0.14608460664749146,
+      "tertile2_mean": 0.014963448978960514,
+      "tertile3_mean": 0.07650864124298096
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 21,
+    "indicators": [
+      {
+        "code": "FI.RES.TOTL.MO",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 196,
+        "shape": {
+          "mean": [
+            -0.1075,
+            -0.2877,
+            -0.2747,
+            -0.2126,
+            -0.229,
+            -0.2163,
+            -0.1581,
+            -0.0583,
+            -0.0365,
+            -0.0402,
+            -0.1707,
+            -0.1775,
+            -0.0838,
+            -0.0073,
+            0.05,
+            0.1964,
+            0.1925,
+            0.1542,
+            0.2105,
+            0.2872,
+            0.4213
+          ],
+          "p25": [
+            -0.9574,
+            -0.8752,
+            -0.9373,
+            -0.8835,
+            -0.8466,
+            -0.7987,
+            -0.668,
+            -0.6199,
+            -0.6871,
+            -0.6272,
+            -0.7449,
+            -0.7011,
+            -0.7374,
+            -0.6957,
+            -0.5578,
+            -0.5431,
+            -0.5754,
+            -0.7316,
+            -0.6898,
+            -0.4248,
+            -0.5257
+          ],
+          "p75": [
+            0.5275,
+            0.1095,
+            0.0546,
+            0.1416,
+            0.2173,
+            0.1742,
+            0.2916,
+            0.3072,
+            0.489,
+            0.451,
+            0.3636,
+            0.3624,
+            0.565,
+            0.5216,
+            0.5751,
+            0.9057,
+            0.8124,
+            0.8165,
+            0.9622,
+            1.1615,
+            1.1981
+          ]
+        }
+      },
+      {
+        "code": "SP.POP.TOTL",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 236,
+        "shape": {
+          "mean": [
+            -0.9895,
+            -0.8889,
+            -0.7749,
+            -0.6642,
+            -0.5555,
+            -0.454,
+            -0.337,
+            -0.2345,
+            -0.1158,
+            -0.0011,
+            0.1249,
+            0.2509,
+            0.3821,
+            0.5047,
+            0.6456,
+            0.786,
+            0.9293,
+            1.0856,
+            1.2372,
+            1.4057,
+            1.5812
+          ],
+          "p25": [
+            -1.1064,
+            -0.9795,
+            -0.8659,
+            -0.7482,
+            -0.642,
+            -0.5491,
+            -0.4305,
+            -0.3029,
+            -0.1705,
+            -0.0377,
+            0.0937,
+            0.2277,
+            0.3642,
+            0.5164,
+            0.684,
+            0.8212,
+            0.9627,
+            1.1294,
+            1.2598,
+            1.3936,
+            1.5187
+          ],
+          "p75": [
+            -1.0322,
+            -0.9166,
+            -0.7883,
+            -0.6626,
+            -0.5296,
+            -0.409,
+            -0.2732,
+            -0.1258,
+            0.0124,
+            0.1372,
+            0.2754,
+            0.4142,
+            0.5458,
+            0.6837,
+            0.8158,
+            0.9607,
+            1.1139,
+            1.2763,
+            1.4538,
+            1.6335,
+            1.8293
+          ]
+        }
+      },
+      {
+        "code": "NY.GDP.MKTP.KD",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 221,
+        "shape": {
+          "mean": [
+            -0.936,
+            -0.8461,
+            -0.7774,
+            -0.7029,
+            -0.622,
+            -0.5344,
+            -0.3998,
+            -0.3196,
+            -0.2095,
+            -0.101,
+            0.0292,
+            0.1472,
+            0.2909,
+            0.4131,
+            0.5532,
+            0.7053,
+            0.8965,
+            1.0385,
+            1.1931,
+            1.3906,
+            1.5694
+          ],
+          "p25": [
+            -1.1067,
+            -1.016,
+            -0.9111,
+            -0.8106,
+            -0.725,
+            -0.7197,
+            -0.5952,
+            -0.5214,
+            -0.4222,
+            -0.3,
+            -0.174,
+            -0.067,
+            0.1189,
+            0.2957,
+            0.4772,
+            0.6592,
+            0.823,
+            1.012,
+            1.1345,
+            1.2772,
+            1.4365
+          ],
+          "p75": [
+            -0.8997,
+            -0.7939,
+            -0.7066,
+            -0.6134,
+            -0.5164,
+            -0.3945,
+            -0.2298,
+            -0.1328,
+            0.0126,
+            0.1263,
+            0.2617,
+            0.3833,
+            0.5307,
+            0.6626,
+            0.8302,
+            0.9639,
+            1.1517,
+            1.3367,
+            1.5252,
+            1.7445,
+            1.9938
+          ]
+        }
+      }
+    ],
+    "samples_used": 236,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2025,
+        "label": "Pahalgam terrorist attack kills tourists",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2024,
+        "label": "ISKP conducts major attack on Moscow concert hall killing 145",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2024,
+        "label": "Ibar-Lepenac Canal Sabotage",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2024,
+        "label": "Crocus City Hall terrorist attack kills 145 in Moscow",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2023,
+        "label": "October 7 Hamas Attack \u2014 Worst Day Since Founding",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2023,
+        "label": "Banjska Monastery Attack Kills Kosovo Police Officer",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2022,
+        "label": "US kills al-Qaeda leader Ayman al-Zawahiri in Kabul drone strike",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2022,
+        "label": "ISKP launches major attacks on Taliban military and Shia civilians",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2022,
+        "label": "ISIS Resurrects Major Attack on Ghwayran Prison in Hasakah",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2021,
+        "label": "ISIS-K suicide bombing at Kabul airport kills 170 including 13 US troops",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2021,
+        "label": "Solhan Massacre \u2014 160 Civilians Killed in Village Attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 2021,
+        "label": "Nasheed survives assassination attempt by IED blast in Male",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 2021,
+        "label": "Palma Attack Forces Suspension of Total LNG Project",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 2020,
+        "label": "Vienna terrorist attack kills four people near synagogue",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2019,
+        "label": "Far-right terror escalates: Lubcke assassination and Halle synagogue attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 2019,
+        "label": "Nairobi DusitD2 Hotel Attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 2019,
+        "label": "Christchurch Mosque Attacks Kill 51 in Mass Shooting",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 2019,
+        "label": "Easter Sunday bombings kill 269 \u2014 worst attack since civil war",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2019,
+        "label": "ISIS Leader al-Baghdadi Killed in US Raid in Idlib",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2019,
+        "label": "Houthi Drone Attack on Saudi Oil Infrastructure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2018,
+        "label": "French Embassy and Military HQ Attacked in Ouagadougou",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2017,
+        "label": "Massive truck bomb in Kabul diplomatic quarter kills 150",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2017,
+        "label": "Palm Sunday Church Bombings Kill Dozens of Coptic Christians",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2017,
+        "label": "Al-Rawda Mosque Attack in Sinai Kills 311",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 2017,
+        "label": "Islamist Insurgency Emerges in Cabo Delgado",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2017,
+        "label": "Four US Special Forces Soldiers Killed in Tongo Tongo Ambush",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2017,
+        "label": "Marawi Siege \u2014 ISIS-Linked Forces Take City",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 2017,
+        "label": "Mogadishu Truck Bomb Kills Over 500 People",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 2017,
+        "label": "Barcelona La Rambla Attack Kills 13 in Spain's Worst Jihadist Strike",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2017,
+        "label": "Stockholm Truck Attack Kills Five in Terror Strike",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2017,
+        "label": "Manchester Arena Bombing and London Bridge Attack Kill 30",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2016,
+        "label": "Kabul suicide bombings kill hundreds in multiple mass casualty attacks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 2016,
+        "label": "Brussels Airport and Metro Bombings Kill 32 People",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2016,
+        "label": "Jihadist Attack on Splendid Hotel and Cappuccino Caf\u00e9 \u2014 Ouagadougou",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 2016,
+        "label": "Nice Truck Attack Kills 86 on Bastille Day",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2016,
+        "label": "Berlin Christmas market attack kills 12 people",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2016,
+        "label": "ISIS-Inspired Terrorism Concerns: Kyrgyz Fighters in Syria and Iraq",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2015,
+        "label": "Islamic State (ISIS-K) establishes presence in eastern Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 2015,
+        "label": "Molenbeek Linked to Paris Attacks Sparks Security Overhaul",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2015,
+        "label": "Copenhagen Terrorist Shootings at Cafe and Synagogue",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2015,
+        "label": "New Suez Canal Opened; Russian Plane Bombing Devastates Tourism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2015,
+        "label": "Wave of Lone-Wolf Stabbings \u2014 Knife Intifada",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2015,
+        "label": "Jordanian Pilot Muath al-Kasasbeh Burned Alive by ISIS",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 2015,
+        "label": "ISIS Mosque Bombing Kills Dozens in Kuwait City",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2015,
+        "label": "ISIS Establishes Presence in Libya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 2015,
+        "label": "Radisson Blu Hotel Attack Brings Jihad to Bamako",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2015,
+        "label": "Boko Haram Attacks Across Lake Chad Region",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2015,
+        "label": "Multinational Force Pushes Back Boko Haram",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2015,
+        "label": "Russian Metrojet Airbus bombed over Sinai",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 2015,
+        "label": "Erawan Shrine Bombing Kills 20 in Central Bangkok",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2015,
+        "label": "Sousse Beach Resort Massacre \u2014 38 Killed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 2014,
+        "label": "Lindt Cafe Siege in Sydney",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2014,
+        "label": "ADF Massacres in Beni Territory",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2014,
+        "label": "ISIS Captures Mosul and Declares Caliphate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2014,
+        "label": "ISIS Threat and Jordan's Military Response",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 2014,
+        "label": "Presidential Vacuum Begins; ISIS Seizes Arsal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2014,
+        "label": "Chibok Girls Abducted by Boko Haram",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2014,
+        "label": "Boko Haram Seizes Territory \u2014 Caliphate Declared",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2014,
+        "label": "APS School Massacre \u2014 Deadliest Terror Attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2014,
+        "label": "MH17 shot down over eastern Ukraine",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2014,
+        "label": "ISIS Rises \u2014 Saudi Arabia Joins Coalition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2014,
+        "label": "ISIS Declares Caliphate Spanning Syria and Iraq",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2013,
+        "label": "In Amenas gas plant hostage crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 2013,
+        "label": "Westgate Shopping Mall Attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2013,
+        "label": "Suicide Bombings Target Arlit Mine and Military Base",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 2013,
+        "label": "Al-Shabaab Westgate Mall Attack in Nairobi",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2013,
+        "label": "Jihadist Groups ISIS and Jabhat al-Nusra Emerge as Major Forces",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2012,
+        "label": "ISIS Exploits Syrian Civil War to Rebuild",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2012,
+        "label": "Benghazi US Consulate Attack Kills Ambassador",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2012,
+        "label": "Boko Haram Seizes Territory in Northeast",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2012,
+        "label": "US Embassy Attacked by Salafi Protesters",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2012,
+        "label": "AQAP Gains Territory in Abyan Province",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2011,
+        "label": "US Navy SEALs kill Osama bin Laden in Abbottabad Pakistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2011,
+        "label": "NSU neo-Nazi terror cell uncovered after decade of murders",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2011,
+        "label": "Boko Haram Attacks Intensify \u2014 UN Headquarters Bombed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2011,
+        "label": "Breivik Terror Attacks Kill 77 in Oslo and Utoya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2011,
+        "label": "Domodedovo airport bombing kills 37",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2010,
+        "label": "AQIM intensifies Sahara kidnapping operations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2010,
+        "label": "Alexandria Church Bombing Kills 23 Coptic Christians",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2010,
+        "label": "Abuja Bombings on Independence Day",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2010,
+        "label": "Moscow Metro bombings by female suicide bombers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 2010,
+        "label": "Al-Shabaab Kampala Bombings Mark First International Attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2010,
+        "label": "Stockholm Suicide Bombing: First Islamist Attack on Swedish Soil",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 2010,
+        "label": "Kampala Bombings by Al-Shabaab",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2009,
+        "label": "Boko Haram Uprising \u2014 Mohammed Yusuf Killed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2009,
+        "label": "Al-Qaeda in the Arabian Peninsula (AQAP) Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2008,
+        "label": "Suicide bombing of Indian embassy in Kabul kills 58",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2008,
+        "label": "Mumbai terrorist attacks \u2014 26/11",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2008,
+        "label": "Mumbai Terror Attacks Strain India-Pakistan Relations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2008,
+        "label": "Imad Mughniyeh Assassinated in Damascus",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2007,
+        "label": "AQIM bomb attacks in Algiers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 2007,
+        "label": "Nahr al-Bared Camp Destroyed in Siege Against Fatah al-Islam",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 2007,
+        "label": "AQIM Kidnappings and Ransom Operations Escalate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2007,
+        "label": "Red Mosque Siege in Islamabad",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2007,
+        "label": "Counterterrorism Operations in Tunis Suburbs",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2006,
+        "label": "Mumbai train bombings \u2014 200 killed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2006,
+        "label": "Samarra Shrine Bombing Triggers Sectarian Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2006,
+        "label": "Al-Qaeda in Yemen Jailbreak and Reorganization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2005,
+        "label": "GSPC affiliates with al-Qaeda network",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2005,
+        "label": "Jama'atul Mujahideen Bangladesh Bomb Wave",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2005,
+        "label": "Sharm el-Sheikh Bombings Kill 88",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2005,
+        "label": "Delhi bombings",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2005,
+        "label": "Amman Hotel Bombings",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2005,
+        "label": "London Bombings Linked to Pakistani Extremist Networks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2005,
+        "label": "Nalchik attack by Islamist militants",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2005,
+        "label": "7/7 London Bombings Kill 52 People in Coordinated Attacks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2004,
+        "label": "Taliban suicide bombing campaign begins targeting civilians",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2004,
+        "label": "Sinai Bombings Target Tourist Resorts; New Extremist Network Emerges",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2004,
+        "label": "Beslan school siege kills 334, mostly children",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 2004,
+        "label": "Madrid Train Bombings Kill 191 People Three Days Before Election",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2004,
+        "label": "Suicide Bombings in Tashkent and Bukhara Kill 47",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2003,
+        "label": "GSPC kidnaps European tourists in Sahara",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 2003,
+        "label": "El Nogal Club Bombing in Bogot\u00e1: 36 Killed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 2003,
+        "label": "GSPC Hostage Crisis Reveals Northern Mali as Jihadist Sanctuary",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2003,
+        "label": "Casablanca Bombings Kill 45 People",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2003,
+        "label": "A.Q. Khan Nuclear Proliferation Network Exposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2003,
+        "label": "Riyadh Compound Bombings",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2003,
+        "label": "Saudi Arabia Deradicalization Program Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 2002,
+        "label": "Bali Bombings Kill 88 Australians",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 2002,
+        "label": "17 November terrorist network dismantled after accidental bomb explosion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 2002,
+        "label": "Bali bombings \u2014 202 killed in Indonesia's deadliest terrorist attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 2002,
+        "label": "Red Brigades Resurface, Assassinating Labour Advisor Marco Biagi",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2002,
+        "label": "Moscow theater hostage crisis \u2014 132 killed by gas",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2002,
+        "label": "Djerba Synagogue Bombing by Al-Qaeda",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2001,
+        "label": "Ahmad Shah Massoud assassinated by al-Qaeda suicide bombers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2001,
+        "label": "September 11 attacks trigger US decision to invade Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2001,
+        "label": "Egypt Condemns September 11 Attacks But Faces Scrutiny",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2001,
+        "label": "Ethiopia begins anti-terrorism cooperation with US post-9/11",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2001,
+        "label": "Attack on Indian Parliament",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2001,
+        "label": "Dolphinarium Massacre and Wave of Bombings",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2001,
+        "label": "Indian Parliament Attack Brings Countries to Brink of War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2001,
+        "label": "Abu Sayyaf Kidnaps Foreign Tourists",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2001,
+        "label": "September 11 Attacks \u2014 Saudi Dimension",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2001,
+        "label": "Jemaah Islamiyah Plot to Attack Embassies Foiled",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 2001,
+        "label": "LTTE attacks Bandaranaike Airport \u2014 $350M economic damage",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2001,
+        "label": "September 11 Strengthens Ben Ali's Counter-Terror Credentials",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2001,
+        "label": "September 11 \u2014 UAE Connection and Counterterrorism Response",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 2001,
+        "label": "September 11 Terrorist Attacks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2000,
+        "label": "Al-Qaeda attack on USS Cole kills 17 US sailors",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2000,
+        "label": "USS Cole Bombing in Aden Harbor",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1999,
+        "label": "IC-814 hijacking \u2014 Kandahar crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 1999,
+        "label": "IMU Militants Invade Southern Kyrgyzstan from Tajikistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 1999,
+        "label": "Hostage Crisis in Batken: Japanese Geologists Seized by IMU",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 1999,
+        "label": "Tashkent Bombings Kill 16 in Assassination Attempt on Karimov",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1998,
+        "label": "Al-Qaeda bombs US embassies in Kenya and Tanzania",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1998,
+        "label": "Al-Qaeda Embassy Bombings Involve Egyptian Militants",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1998,
+        "label": "US Embassy Bombing Kills 213 in Nairobi",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1998,
+        "label": "Abu Sayyaf Kidnappings Intensify",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1998,
+        "label": "US Embassy Bombing in Dar es Salaam",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1998,
+        "label": "Aden-Abyan Islamic Army Kidnapping",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1997,
+        "label": "Luxor Massacre Kills 62 Tourists; Al-Gama'a Announces Ceasefire",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1997,
+        "label": "Japanese Embassy Rescue Operation Ends Hostage Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1996,
+        "label": "Osama bin Laden returns to Afghanistan under Taliban protection",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1996,
+        "label": "Egyptian Militants Massacre Greek Tourists in Cairo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1996,
+        "label": "Khobar Towers Bombing; Iran Suspected",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1996,
+        "label": "MRTA Seizes Japanese Embassy Hostages",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1996,
+        "label": "Khobar Towers Bombing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1996,
+        "label": "LTTE truck bomb destroys Central Bank \u2014 91 killed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1996,
+        "label": "Osama bin Laden Expelled from Sudan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 1995,
+        "label": "Oberwart pipe bomb kills four Roma in far-right attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1995,
+        "label": "Assassination Attempt on Mubarak in Addis Ababa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1995,
+        "label": "Assassination attempt on Egyptian President Mubarak in Addis Ababa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1995,
+        "label": "Aum Shinrikyo Sarin Attack on Tokyo Subway",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1995,
+        "label": "Chechen separatists seize Budennovsk hospital",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1995,
+        "label": "Riyadh Bombing of OPM-SANG",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1995,
+        "label": "Assassination Attempt on Mubarak \u2014 Sudan Faces Intensified International Pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1994,
+        "label": "Taliban movement emerges in Kandahar Province",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1994,
+        "label": "Air France Flight 8969 hijacked by GIA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1994,
+        "label": "AMIA Jewish Community Center Bombing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1994,
+        "label": "Marrakech Terrorist Attack and Atlas Asni Hotel Bombing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1994,
+        "label": "Osama bin Laden Stripped of Citizenship",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1994,
+        "label": "Turabi's Popular Arab Islamic Conference Makes Sudan Global Islamist Hub",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1993,
+        "label": "Armed Islamist groups begin targeting intellectuals and foreigners",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1993,
+        "label": "Assassination Attempts on Interior Minister and Prime Minister",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1993,
+        "label": "Bombay serial blasts \u2014 257 killed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1993,
+        "label": "Mafia Bombs Uffizi Gallery, Rome Basilicas, and Milan Street",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1992,
+        "label": "Israeli Embassy Bombing in Buenos Aires",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1992,
+        "label": "Mafia Assassinates Anti-Mafia Judges Falcone and Borsellino",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1992,
+        "label": "Operation Clean-Up in Karachi",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1991,
+        "label": "Sudan Hosts Al-Qaeda; SPLA Splits \u2014 Bor Massacre",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1989,
+        "label": "UTA Flight 772 Bombing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1988,
+        "label": "Osama bin Laden founds Al-Qaeda in Peshawar",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1988,
+        "label": "Hamas Founded in Gaza",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1988,
+        "label": "Lockerbie Bombing Destroys Pan Am Flight 103",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1988,
+        "label": "Lockerbie Bombing: 270 Killed in Deadliest UK Terror Attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1987,
+        "label": "KAL Flight 858 Bombing Kills 115",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1987,
+        "label": "ETA's Hipercor Supermarket Bombing Kills 21 Civilians",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1986,
+        "label": "FPMR Assassination Attempt on Pinochet Triggers State of Siege",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1986,
+        "label": "Islamist Violence Increases in Upper Egypt",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1986,
+        "label": "Western Hostage Crisis Peaks in Beirut",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1986,
+        "label": "Sectarian Violence Escalates Between Sunni and Shia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1986,
+        "label": "Syrian Intelligence Implicated in Hindawi Affair Bomb Plot",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1985,
+        "label": "Air India Bombing Kills 329 in Canada's Worst Terror Attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1985,
+        "label": "M-19 Storms the Palace of Justice: 100+ Killed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1985,
+        "label": "Achille Lauro Hijacking Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1985,
+        "label": "Air India Flight 182 bombed \u2014 Kanishka disaster",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1985,
+        "label": "Assassination Attempt on Emir Sheikh Jaber",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1985,
+        "label": "Rome and Vienna Airport Attacks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1985,
+        "label": "Saudi Arabia and Afghan Mujahideen \u2014 Osama bin Laden's Role",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1984,
+        "label": "Saudi-funded madrassas in refugee camps promote radical Islamist ideology",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1984,
+        "label": "Brighton Hotel Bombing: IRA Nearly Kills Thatcher and Cabinet",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 1983,
+        "label": "ASALA Paris Orly Airport Attack Kills Eight",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1983,
+        "label": "Bombing of French and US Embassies in Kuwait City",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1983,
+        "label": "US Embassy and Marine Barracks Bombings Force Western Withdrawal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1983,
+        "label": "North Korean Bombing of South Korean Officials in Rangoon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1983,
+        "label": "Rangoon Bombing Kills Four South Korean Ministers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 1983,
+        "label": "Rangoon Bombing Kills South Korean Cabinet Members",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1983,
+        "label": "Marine Barracks Bombing in Beirut",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1981,
+        "label": "International Islamic volunteer fighters begin arriving in Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1981,
+        "label": "Bombing of Islamic Republican Party Headquarters",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1981,
+        "label": "Maitatsine Sect Resurges in Northern Cities",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1981,
+        "label": "Pakistan International Airlines Hijacking by Al-Zulfikar",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1980,
+        "label": "M-19 Dominican Republic Embassy Hostage Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1980,
+        "label": "Islamist Militant Groups Emerge in Egypt",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1980,
+        "label": "Bologna Train Station Massacre Kills 85 in Deadliest Postwar Attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1980,
+        "label": "Maitatsine Riots \u2014 Kano Islamist Uprising",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1980,
+        "label": "Gafsa Raid \u2014 Libya-Backed Attack on Mining Town",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1979,
+        "label": "Prevention of Terrorism Act grants sweeping security powers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1979,
+        "label": "Aleppo Artillery School Massacre Shocks Syria",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1978,
+        "label": "M-19 Steals 5,000 Weapons from Military Arsenal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1978,
+        "label": "Aldo Moro Kidnapped and Murdered by Red Brigades",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1977,
+        "label": "German Autumn: RAF terrorism peaks with Schleyer kidnapping and Mogadishu",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1977,
+        "label": "Second Moluccan Train Hijacking Ends in Military Assault",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1976,
+        "label": "Cubana Airlines Bombing Kills 73 Over Barbados",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1976,
+        "label": "Entebbe Hostage Rescue",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 1976,
+        "label": "FSLN Founder Carlos Fonseca Killed in Ambush",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1976,
+        "label": "Entebbe Hostage Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 1975,
+        "label": "Carlos the Jackal's OPEC siege at Vienna headquarters",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1974,
+        "label": "Dublin and Monaghan Bombings Kill 33 Civilians",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1974,
+        "label": "Brescia Antifascist Rally Bombing Kills Eight in Strategy of Tension",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 1974,
+        "label": "FSLN Christmas Party Hostage Operation Forces Regime Concessions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1974,
+        "label": "Birmingham Pub Bombings Kill 21 in IRA's Deadliest UK Attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 1973,
+        "label": "Stockholm Syndrome: Bank Hostage Crisis Coins New Term",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1972,
+        "label": "Munich Olympic massacre: Palestinian terrorists kill 11 Israeli athletes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1972,
+        "label": "Munich Olympics Massacre",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1972,
+        "label": "Israel's Operation Wrath of God Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1971,
+        "label": "PDRY Supports Palestinian Militant Organizations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1969,
+        "label": "Piazza Fontana Bombing Inaugurates Italy's Years of Lead",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 1968,
+        "label": "North Korean Commando Raid on Blue House",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1963,
+        "label": "FLQ Bombings Launch Decade of Separatist Violence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1961,
+        "label": "OAS (Organisation de l'Arm\u00e9e Secr\u00e8te) founded by hardliners",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 1958,
+        "label": "Cuban Revolution Inspires Nicaraguan Armed Opposition",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 242
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "vintage": "fleet-run-1-2026-05-30",
+  "events": [
+    {
+      "kind": "walk_fired",
+      "fired_at": "2026-06-28T20:06:33.937915+00:00",
+      "recipe_id": "civil_war_and_insurgency",
+      "recipe_label": "Civil War & Insurgency",
+      "tier": "experimental",
+      "verdict": "HARD_FAIL",
+      "loco_auc": 0.6762700753851196,
+      "in_review_after": true,
+      "note": "Wave 3 \u2192 first vintage of this recipe under the trajectory engine."
+    },
+    {
+      "kind": "walk_fired",
+      "fired_at": "2026-06-28T05:12:45.500013+00:00",
+      "recipe_id": "energy_policy",
+      "recipe_label": "Energy Policy",
+      "tier": "experimental",
+      "verdict": "HARD_FAIL",
+      "loco_auc": 0.6965335416463236,
+      "in_review_after": true,
+      "note": "Wave 3 \u2192 first vintage of this recipe under the trajectory engine."
+    },
+    {
+      "kind": "walk_fired",
+      "fired_at": "2026-06-28T04:45:08.575120+00:00",
+      "recipe_id": "agricultural_policy",
+      "recipe_label": "Agricultural Policy",
+      "tier": "experimental",
+      "verdict": "HARD_FAIL",
+      "loco_auc": 0.678041958041958,
+      "in_review_after": true,
+      "note": "Wave 3 \u2192 first vintage of this recipe under the trajectory engine."
+    },
+    {
+      "kind": "walk_fired",
+      "fired_at": "2026-06-28T04:29:47.053454+00:00",
+      "recipe_id": "executive_power_consolidation",
+      "recipe_label": "Executive Power Consolidation",
+      "tier": "experimental",
+      "verdict": "HARD_FAIL",
+      "loco_auc": 0.6529225352112676,
+      "in_review_after": true,
+      "note": "Wave 3 \u2192 first vintage of this recipe under the trajectory engine."
+    },
+    {
+      "kind": "walk_fired",
+      "fired_at": "2026-06-28T03:52:44.659563+00:00",
+      "recipe_id": "trade_agreement",
+      "recipe_label": "Trade Agreement",
+      "tier": "experimental",
+      "verdict": "HARD_FAIL",
+      "loco_auc": 0.7220159515951595,
+      "in_review_after": true,
+      "note": "Wave 3 \u2192 first vintage of this recipe under the trajectory engine."
+    },
+    {
+      "kind": "walk_fired",
+      "fired_at": "2026-06-28T02:57:31.444964+00:00",
+      "recipe_id": "diplomatic_rupture",
+      "recipe_label": "Diplomatic Rupture",
+      "tier": "experimental",
+      "verdict": "HARD_FAIL",
+      "loco_auc": 0.749454040103236,
+      "in_review_after": true,
+      "note": "Wave 1+2 \u2192 first vintage of this recipe under the trajectory engine."
+    },
+    {
+      "kind": "walk_fired",
+      "fired_at": "2026-06-28T00:31:19.154688+00:00",
+      "recipe_id": "terrorist_attack",
+      "recipe_label": "Terrorist Attack",
+      "tier": "experimental",
+      "verdict": "HARD_FAIL",
+      "loco_auc": 0.6444293846570887,
+      "in_review_after": true,
+      "note": "Wave 1+2 \u2192 first vintage of this recipe under the trajectory engine."
+    },
+    {
+      "kind": "vacate",
+      "fired_at": "2026-05-25T19:00:00+00:00",
+      "recipe_id": "foreign_intervention",
+      "recipe_label": "Foreign Intervention",
+      "prior_status": "graduated",
+      "vacated_at": "2026-05-25T19:00:00+00:00",
+      "cause": "Sample-truncation leak: graduation LOCO 0.9147 was on 110/174 positives (~63% partial). Corrected full-corpus walk lands at 0.7227 (still above the 0.700 lock floor; not auto-graduating, not falsified).",
+      "note": "Public correction live since 2026-05-25; re-walk under fixed instrument completed 2026-05-29T21:02Z (verdict MARGINAL_PENDING_BETA_CALIBRATION)."
+    },
+    {
+      "kind": "methodology_amendment",
+      "fired_at": "2026-05-25T13:00:00+00:00",
+      "title": "Coverage- and chance-baseline gates added to F-ML-1 \u00a73.4/\u00a73.5",
+      "detail": "8/8 Majles RATIFY-WITH-RIDER (MR-14-A1 / MR-14-A2 / T20-R3 NON-AMENDABLE first-re-walk-non-FI firewall). Closes the truncation-leak failure class.",
+      "source": "qgi-docs/internal/decisions/artifacts/F-ML-1-coverage-chance-gate-amendment-2026-05-25.md"
+    }
+  ],
+  "notes": {
+    "first_vintage": "Walk_fired events are first-vintage signals; reliability tiles populate from the next quarterly run."
+  }
+}

@@ -1,0 +1,1980 @@
+{
+  "recipe_id": "agricultural_policy",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Institutional Reform",
+  "description_compelling": "Material change to a country's agricultural support \u2014 subsidy reform, land-reform legislation, export-ban regimes, irrigation overhauls, agricultural-trade liberalization. Trade openness, rural-employment shares, fiscal capacity, and government-effectiveness scores all shift first. Common in EU CAP rounds, India's recurring farm-law fights, and African green-revolution programs.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.678041958041958,
+    "ci95_lo": 0.5842636780975089,
+    "ci95_hi": 0.7540578483480757,
+    "ci80_lo": 0.6176977977530911,
+    "ci80_hi": 0.7289866694871827,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "SP.DYN.TFRT.IN"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "SP.DYN.TFRT.IN",
+        "name": null
+      }
+    ],
+    "chosen_window": 10,
+    "final_global_auc": 0.678041958041958,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "SP.DYN.TFRT.IN",
+        "window": 10,
+        "auc": 0.678041958041958,
+        "lift_over_previous": 0.178041958041958,
+        "selected_after": [
+          "SP.DYN.TFRT.IN"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "SP.DYN.LE00.IN",
+        "window": 3,
+        "auc": 0.6204195804195805,
+        "lift_over_previous": -0.05762237762237754,
+        "selected_after": [
+          "SP.DYN.TFRT.IN",
+          "SP.DYN.LE00.IN"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 79,
+    "n_pos_survive": 50,
+    "n_neg_total": 237,
+    "n_neg_survive": 143,
+    "pos_coverage": 0.6329113924050633,
+    "neg_coverage": 0.6033755274261603,
+    "n_countries_survive": 46,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 109,
+      "loco_auc": 0.5788923719958202,
+      "ece": 0.19815889508420723,
+      "ece_ci95_lo": 0.15390753185658487,
+      "ece_ci95_hi": 0.29428831884987794,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 32,
+          "mean_predicted": 0.040648145775776356,
+          "mean_actual": 0.15625
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 16,
+          "mean_predicted": 0.1432900750078261,
+          "mean_actual": 0.125
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 15,
+          "mean_predicted": 0.25616730749607086,
+          "mean_actual": 0.26666666666666666
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 8,
+          "mean_predicted": 0.3532680980861187,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 8,
+          "mean_predicted": 0.46770932152867317,
+          "mean_actual": 0.375
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.5421220779418945,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 9,
+          "mean_predicted": 0.6454794274436103,
+          "mean_actual": 0.2222222222222222
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 4,
+          "mean_predicted": 0.742349773645401,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 9,
+          "mean_predicted": 0.8471562465031942,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 3,
+          "mean_predicted": 0.922792911529541,
+          "mean_actual": 0.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.43407317248360316,
+      "loco_auc_ci95_hi": 0.7105956751517443
+    },
+    "mid-tier": {
+      "n": 46,
+      "loco_auc": 0.6480769230769231,
+      "ece": 0.19477172691941907,
+      "ece_ci95_lo": 0.14906224391990058,
+      "ece_ci95_hi": 0.3693377747266229,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 11,
+          "mean_predicted": 0.03520675570788709,
+          "mean_actual": 0.09090909090909091
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 2,
+          "mean_predicted": 0.13357272371649742,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 1,
+          "mean_predicted": 0.2332233190536499,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 7,
+          "mean_predicted": 0.33368720752852304,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 4,
+          "mean_predicted": 0.4564511701464653,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.5474269986152649,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.6570402781168619,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 7,
+          "mean_predicted": 0.7419226680483136,
+          "mean_actual": 0.7142857142857143
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 6,
+          "mean_predicted": 0.8592726687590281,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 4,
+          "mean_predicted": 0.9279410392045975,
+          "mean_actual": 0.25
+        }
+      ],
+      "loco_auc_ci95_lo": 0.45972081190186326,
+      "loco_auc_ci95_hi": 0.8050880833385945
+    },
+    "stable-democracy": {
+      "n": 34,
+      "loco_auc": 0.7788461538461539,
+      "ece": 0.13088495693826938,
+      "ece_ci95_lo": 0.09354912113254507,
+      "ece_ci95_hi": 0.27177850757006494,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 18,
+          "mean_predicted": 0.01994757781115671,
+          "mean_actual": 0.05555555555555555
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 3,
+          "mean_predicted": 0.13296640167633691,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 1,
+          "mean_predicted": 0.247828871011734,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 1,
+          "mean_predicted": 0.35995763540267944,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 3,
+          "mean_predicted": 0.44646912813186646,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.5348548690478007,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.6530065933863322,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 2,
+          "mean_predicted": 0.8323896527290344,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.3866706143763722,
+      "loco_auc_ci95_hi": 0.9381930423856087
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-28T04:44:30.114045+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5163,
+  "stability_diagnostic": {
+    "fold_variance": 0.1282467879730017,
+    "fold_auc_mean": 0.6441220238095238,
+    "label": "HIGH",
+    "per_country_loco_auc": {
+      "Albania": 1.0,
+      "Algeria": 0.3333333333333333,
+      "Argentina": 1.0,
+      "Bolivia": 1.0,
+      "Brazil": 0.42857142857142855,
+      "Chile": 0.5,
+      "China": 1.0,
+      "Colombia": 0.0,
+      "El Salvador": 1.0,
+      "Eritrea": 1.0,
+      "Ethiopia": 0.5,
+      "Guinea": 0.625,
+      "Honduras": 1.0,
+      "India": 1.0,
+      "Ivory Coast": 0.0,
+      "Malawi": 0.6666666666666666,
+      "Mexico": 1.0,
+      "Namibia": 1.0,
+      "Nepal": 1.0,
+      "Nicaragua": 0.6,
+      "Nigeria": 0.75,
+      "Paraguay": 0.3333333333333333,
+      "Peru": 0.6666666666666666,
+      "Philippines": 0.5,
+      "South Africa": 1.0,
+      "Sri Lanka": 0.5,
+      "Syria": 1.0,
+      "Tanzania": 0.0,
+      "Tunisia": 0.0,
+      "Uruguay": 0.0,
+      "Vietnam": 0.4583333333333333,
+      "Zimbabwe": 0.75
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7034,
+    "cohort_loco_floor": 0.6434,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 79,
+  "n_negatives": 237,
+  "walked_at_utc": "2026-06-28T04:45:08.575120+00:00",
+  "elapsed_seconds": 870.8964984416962,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/agricultural_policy/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 11,
+        "countries": [
+          "Singapore",
+          "Spain",
+          "Canada",
+          "Turks and Caicos Islands",
+          "Macao",
+          "Colombia",
+          "Sudan",
+          "Serbia",
+          "Mongolia",
+          "Ireland",
+          "San Marino"
+        ],
+        "country_isos": [
+          "sg",
+          "es",
+          "ca",
+          "tc",
+          "mo",
+          "co",
+          "sd",
+          "rs",
+          "mn",
+          "ie",
+          "sm"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Madagascar",
+          "Andorra",
+          "Dominica",
+          "Cyprus",
+          "Ukraine",
+          "Virgin Islands, British",
+          "Oman",
+          "Netherlands",
+          "Botswana"
+        ],
+        "country_isos": [
+          "mg",
+          "ad",
+          "dm",
+          "cy",
+          "ua",
+          "vg",
+          "om",
+          "nl",
+          "bw"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 11,
+        "countries": [
+          "Bahamas",
+          "Iran",
+          "Jamaica",
+          "Grenada",
+          "North Macedonia",
+          "Vanuatu",
+          "Trinidad and Tobago",
+          "Eritrea",
+          "Bulgaria",
+          "Lithuania",
+          "Sweden"
+        ],
+        "country_isos": [
+          "bs",
+          "ir",
+          "jm",
+          "gd",
+          "mk",
+          "vu",
+          "tt",
+          "er",
+          "bg",
+          "lt",
+          "se"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 11,
+        "countries": [
+          "Mauritius",
+          "Thailand",
+          "Bhutan",
+          "Sint Maarten (Dutch part)",
+          "Finland",
+          "Saint Lucia",
+          "Saint Kitts and Nevis",
+          "Cura\u00e7ao",
+          "Antigua and Barbuda",
+          "Albania",
+          "French Polynesia"
+        ],
+        "country_isos": [
+          "mu",
+          "th",
+          "bt",
+          "sx",
+          "fi",
+          "lc",
+          "kn",
+          "cw",
+          "ag",
+          "al",
+          "pf"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 11,
+        "countries": [
+          "Chile",
+          "Latvia",
+          "Estonia",
+          "Samoa",
+          "Nauru",
+          "Portugal",
+          "Tanzania",
+          "Italy",
+          "Russia",
+          "Isle of Man",
+          "Bermuda"
+        ],
+        "country_isos": [
+          "cl",
+          "lv",
+          "ee",
+          "ws",
+          "nr",
+          "pt",
+          "tz",
+          "it",
+          "ru",
+          "im",
+          "bm"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 10,
+        "countries": [
+          "United Arab Emirates",
+          "Puerto Rico",
+          "Denmark",
+          "Germany",
+          "Poland",
+          "Hungary",
+          "Rwanda",
+          "Comoros",
+          "Barbados",
+          "United States"
+        ],
+        "country_isos": [
+          "ae",
+          "pr",
+          "dk",
+          "de",
+          "pl",
+          "hu",
+          "rw",
+          "km",
+          "bb",
+          "us"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 12,
+        "countries": [
+          "South Korea",
+          "Bosnia and Herzegovina",
+          "Kenya",
+          "Sierra Leone",
+          "Armenia",
+          "Iraq",
+          "Croatia",
+          "Austria",
+          "Japan",
+          "Moldova",
+          "Malta",
+          "Norway"
+        ],
+        "country_isos": [
+          "kr",
+          "ba",
+          "ke",
+          "sl",
+          "am",
+          "iq",
+          "hr",
+          "at",
+          "jp",
+          "md",
+          "mt",
+          "no"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 10,
+        "countries": [
+          "United Kingdom",
+          "Malawi",
+          "Montenegro",
+          "Tunisia",
+          "Liechtenstein",
+          "Luxembourg",
+          "Cuba",
+          "Slovakia",
+          "Czechia",
+          "Mauritania"
+        ],
+        "country_isos": [
+          "gb",
+          "mw",
+          "me",
+          "tn",
+          "li",
+          "lu",
+          "cu",
+          "sk",
+          "cz",
+          "mr"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 11,
+        "countries": [
+          "Saint Martin (French part)",
+          "Liberia",
+          "Belgium",
+          "Greece",
+          "Hong Kong",
+          "Cabo Verde",
+          "China",
+          "Iceland",
+          "Cayman Islands",
+          "Romania",
+          "Timor-Leste"
+        ],
+        "country_isos": [
+          "mf",
+          "lr",
+          "be",
+          "gr",
+          "hk",
+          "cv",
+          "cn",
+          "is",
+          "ky",
+          "ro",
+          "tl"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 11,
+        "countries": [
+          "Eswatini",
+          "Myanmar",
+          "Djibouti",
+          "Switzerland",
+          "Ecuador",
+          "Belarus",
+          "South Sudan",
+          "New Zealand",
+          "Togo",
+          "Azerbaijan",
+          "Costa Rica"
+        ],
+        "country_isos": [
+          "sz",
+          "mm",
+          "dj",
+          "ch",
+          "ec",
+          "by",
+          "ss",
+          "nz",
+          "tg",
+          "az",
+          "cr"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 11,
+        "countries": [
+          "Afghanistan",
+          "Australia",
+          "Uzbekistan",
+          "Uganda",
+          "Aruba",
+          "Venezuela",
+          "Maldives",
+          "Bangladesh",
+          "Cameroon",
+          "Ghana",
+          "Uruguay"
+        ],
+        "country_isos": [
+          "af",
+          "au",
+          "uz",
+          "ug",
+          "aw",
+          "ve",
+          "mv",
+          "bd",
+          "cm",
+          "gh",
+          "uy"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 10,
+        "countries": [
+          "Kazakhstan",
+          "Ethiopia",
+          "Guinea",
+          "Brazil",
+          "Syria",
+          "Burundi",
+          "Mali",
+          "Slovenia",
+          "Qatar",
+          "Northern Mariana Islands"
+        ],
+        "country_isos": [
+          "kz",
+          "et",
+          "gn",
+          "br",
+          "sy",
+          "bi",
+          "ml",
+          "si",
+          "qa",
+          "mp"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 11,
+        "countries": [
+          "Dominican Republic",
+          "Gabon",
+          "Malaysia",
+          "Algeria",
+          "Micronesia",
+          "Zimbabwe",
+          "Namibia",
+          "Turkmenistan",
+          "Chad",
+          "Palestine",
+          "Egypt"
+        ],
+        "country_isos": [
+          "do",
+          "ga",
+          "my",
+          "dz",
+          "fm",
+          "zw",
+          "na",
+          "tm",
+          "td",
+          "ps",
+          "eg"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 11,
+        "countries": [
+          "Nepal",
+          "India",
+          "Central African Republic",
+          "Philippines",
+          "Indonesia",
+          "Morocco",
+          "Belize",
+          "South Africa",
+          "Benin",
+          "Guam",
+          "Bolivia"
+        ],
+        "country_isos": [
+          "np",
+          "in",
+          "cf",
+          "ph",
+          "id",
+          "ma",
+          "bz",
+          "za",
+          "bj",
+          "gu",
+          "bo"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 11,
+        "countries": [
+          "Niger",
+          "Senegal",
+          "Vietnam",
+          "Solomon Islands",
+          "Lebanon",
+          "Sri Lanka",
+          "Israel",
+          "Pakistan",
+          "Haiti",
+          "Guinea-Bissau",
+          "Peru"
+        ],
+        "country_isos": [
+          "ne",
+          "sn",
+          "vn",
+          "sb",
+          "lb",
+          "lk",
+          "il",
+          "pk",
+          "ht",
+          "gw",
+          "pe"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 10,
+        "countries": [
+          "Jordan",
+          "Honduras",
+          "Burkina Faso",
+          "Angola",
+          "Republic of the Congo",
+          "Sao Tome and Principe",
+          "Lesotho",
+          "Georgia",
+          "Somalia",
+          "Tuvalu"
+        ],
+        "country_isos": [
+          "jo",
+          "hn",
+          "bf",
+          "ao",
+          "cg",
+          "st",
+          "ls",
+          "ge",
+          "so",
+          "tv"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 11,
+        "countries": [
+          "Zambia",
+          "Mozambique",
+          "Palau",
+          "Suriname",
+          "Seychelles",
+          "Gibraltar",
+          "Cambodia",
+          "Libya",
+          "New Caledonia",
+          "Virgin Islands, U.S.",
+          "Nigeria"
+        ],
+        "country_isos": [
+          "zm",
+          "mz",
+          "pw",
+          "sr",
+          "sc",
+          "gi",
+          "kh",
+          "ly",
+          "nc",
+          "vi",
+          "ng"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 11,
+        "countries": [
+          "Bahrain",
+          "American Samoa",
+          "France",
+          "Paraguay",
+          "Marshall Islands",
+          "The Gambia",
+          "Tajikistan",
+          "Tonga",
+          "Nicaragua",
+          "Laos",
+          "Yemen"
+        ],
+        "country_isos": [
+          "bh",
+          "as",
+          "fr",
+          "py",
+          "mh",
+          "gm",
+          "tj",
+          "to",
+          "ni",
+          "la",
+          "ye"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 11,
+        "countries": [
+          "Papua New Guinea",
+          "Kiribati",
+          "El Salvador",
+          "Guyana",
+          "Kyrgyzstan",
+          "Saudi Arabia",
+          "The Democratic Republic of the Congo",
+          "Equatorial Guinea",
+          "Saint Vincent and the Grenadines",
+          "North Korea",
+          "Argentina"
+        ],
+        "country_isos": [
+          "pg",
+          "ki",
+          "sv",
+          "gy",
+          "kg",
+          "sa",
+          "cd",
+          "gq",
+          "vc",
+          "kp",
+          "ar"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 11,
+        "countries": [
+          "Kuwait",
+          "Turkiye",
+          "Panama",
+          "Mexico",
+          "Brunei",
+          "Faroe Islands",
+          "Greenland",
+          "Ivory Coast",
+          "Monaco",
+          "Fiji",
+          "Guatemala"
+        ],
+        "country_isos": [
+          "kw",
+          "tr",
+          "pa",
+          "mx",
+          "bn",
+          "fo",
+          "gl",
+          "ci",
+          "mc",
+          "fj",
+          "gt"
+        ]
+      }
+    ],
+    "median": 50.2,
+    "p90": 90.2,
+    "p99": 99.1,
+    "max": 100.0,
+    "n_countries_scored": 215,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.2,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.4716055044120571,
+      "b": 0.0,
+      "c": -0.30796537274364444,
+      "n_fit": 193,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 25,
+        "observed_rate": 0.12
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 40,
+        "observed_rate": 0.1
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 40,
+        "observed_rate": 0.25
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 67,
+        "observed_rate": 0.3880597014925373
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 21,
+        "observed_rate": 0.3333333333333333
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.033923876859332076,
+    "n_predictions": 193,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.19815889508420723,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 32,
+            "mean_predicted": 0.040648145775776356,
+            "mean_actual": 0.15625
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 16,
+            "mean_predicted": 0.1432900750078261,
+            "mean_actual": 0.125
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 15,
+            "mean_predicted": 0.25616730749607086,
+            "mean_actual": 0.26666666666666666
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 8,
+            "mean_predicted": 0.3532680980861187,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 8,
+            "mean_predicted": 0.46770932152867317,
+            "mean_actual": 0.375
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 5,
+            "mean_predicted": 0.5421220779418945,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 9,
+            "mean_predicted": 0.6454794274436103,
+            "mean_actual": 0.2222222222222222
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 4,
+            "mean_predicted": 0.742349773645401,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 9,
+            "mean_predicted": 0.8471562465031942,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 3,
+            "mean_predicted": 0.922792911529541,
+            "mean_actual": 0.0
+          }
+        ],
+        "n": 109,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.19477172691941907,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 11,
+            "mean_predicted": 0.03520675570788709,
+            "mean_actual": 0.09090909090909091
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 2,
+            "mean_predicted": 0.13357272371649742,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 1,
+            "mean_predicted": 0.2332233190536499,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 7,
+            "mean_predicted": 0.33368720752852304,
+            "mean_actual": 0.42857142857142855
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 4,
+            "mean_predicted": 0.4564511701464653,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.5474269986152649,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.6570402781168619,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 7,
+            "mean_predicted": 0.7419226680483136,
+            "mean_actual": 0.7142857142857143
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 6,
+            "mean_predicted": 0.8592726687590281,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 4,
+            "mean_predicted": 0.9279410392045975,
+            "mean_actual": 0.25
+          }
+        ],
+        "n": 46,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.13088495693826938,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 18,
+            "mean_predicted": 0.01994757781115671,
+            "mean_actual": 0.05555555555555555
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 3,
+            "mean_predicted": 0.13296640167633691,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 1,
+            "mean_predicted": 0.247828871011734,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 1,
+            "mean_predicted": 0.35995763540267944,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 3,
+            "mean_predicted": 0.44646912813186646,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.5348548690478007,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.6530065933863322,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 2,
+            "mean_predicted": 0.8323896527290344,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 34,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/agricultural_policy.scores.json",
+  "shape_points": [
+    0.051808768262465776,
+    0.08126701042056084,
+    0.11072525257865587,
+    0.1401834947367509,
+    0.16964173689484596,
+    0.199099979052941,
+    0.22855822121103606,
+    0.2580164633691311,
+    0.28747470552722615,
+    0.3169329476853212,
+    0.3463911898434162,
+    0.3758494320015113
+  ],
+  "shap_importance_raw": {
+    "SP.DYN.TFRT.IN": 4.519998073577881
+  },
+  "shap_importance_normalized": {
+    "SP.DYN.TFRT.IN": 1.0
+  },
+  "shap_direction_signs": {
+    "SP.DYN.TFRT.IN": -1
+  },
+  "per_feature_breakdown": {
+    "SP.DYN.TFRT.IN": {
+      "last_z": 0.35825303196907043,
+      "mean_z": 0.21382910013198853,
+      "std_z": 0.8260520100593567,
+      "slope": 0.3534989058971405,
+      "accel": 0.7034891843795776,
+      "tertile1_mean": 1.1250848770141602,
+      "tertile2_mean": 0.7882964611053467,
+      "tertile3_mean": 0.15149454772472382
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 10,
+    "indicators": [
+      {
+        "code": "SP.DYN.TFRT.IN",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 50,
+        "shape": {
+          "mean": [
+            -0.2488,
+            -0.2731,
+            -0.3895,
+            -0.4349,
+            -0.5242,
+            -0.6056,
+            -0.6705,
+            -0.6169,
+            -0.7142,
+            -0.9827
+          ],
+          "p25": [
+            -0.5321,
+            -0.611,
+            -0.7505,
+            -0.8966,
+            -1.0117,
+            -1.1624,
+            -1.2582,
+            -1.3529,
+            -1.5028,
+            -1.7109
+          ],
+          "p75": [
+            -0.2112,
+            -0.0467,
+            -0.0725,
+            -0.0418,
+            0.0645,
+            0.0364,
+            -0.3215,
+            0.207,
+            0.3495,
+            -1.064
+          ]
+        }
+      }
+    ],
+    "samples_used": 50,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2024,
+        "label": "Tobacco Reforms and Diversification Drive",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 2021,
+        "label": "Overnight organic farming ban causes agricultural collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2015,
+        "label": "Land Acquisition Bill controversy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2013,
+        "label": "Land Acquisition Act reformed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 2013,
+        "label": "Cocoa Sector Reform Guarantees Farmers 60 Percent of World Price",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2010,
+        "label": "Julius Malema Calls for Zimbabwe-Style Land Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2010,
+        "label": "Agricultural Crisis Drives Mass Rural-Urban Migration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 2009,
+        "label": "Lugo Land Reform Stalls Amid Colorado Opposition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2008,
+        "label": "Soy Export Tax Crisis \u2014 Agro-Business Conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 2008,
+        "label": "Daewoo Land Deal Triggers Mass Outrage, Fuels Political Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2008,
+        "label": "Record Maize Surplus and Food-Security Acclaim",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2006,
+        "label": "Farm Input Subsidy Programme Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 2002,
+        "label": "Land Reform \u2014 Commercial Farm Acquisitions Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2002,
+        "label": "Land Reform Progress Remains Slow",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2001,
+        "label": "Landless Workers March on Brasilia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 2001,
+        "label": "Foot-and-Mouth Disease Outbreak Devastates Livestock Sector",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2000,
+        "label": "Strategic Grain Reserve Sold Off",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2000,
+        "label": "Coffee Price Collapse Triggers Severe Rural Humanitarian Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 2000,
+        "label": "Fast-Track Land Reform \u2014 Farm Invasions Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 1998,
+        "label": "New Land Law Restricts Ownership to Citizens, Threatening Migrant Farmers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1996,
+        "label": "Landless Workers Movement (MST) Expands Protests",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1993,
+        "label": "Land Law Strengthens Agricultural Property Rights",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1992,
+        "label": "Article 27 Constitutional Reform \u2014 Ejido Land Sales Permitted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 1991,
+        "label": "Comprehensive Agrarian Reform Dismantles Collective Farms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1988,
+        "label": "Comprehensive Agrarian Reform Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1988,
+        "label": "Hacienda Luisita Controversy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1988,
+        "label": "Decollectivization of Agriculture; South China Sea Naval Clash",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1987,
+        "label": "Displaced Miners Flood Chapare; Coca Economy Expands",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1986,
+        "label": "Ethiopia's Villagization Program Affects Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1981,
+        "label": "Agricultural Contract System \u2014 Early Doi Moi Precursor",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1979,
+        "label": "Household Responsibility System piloted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1978,
+        "label": "Land Use Act Nationalizes Land",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1978,
+        "label": "Collectivization of Southern Agriculture",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 1976,
+        "label": "Elite Defeats Molina's Agrarian Transformation Proposal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 1976,
+        "label": "Forced Agricultural Cooperatives Cause Rice Production Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 1976,
+        "label": "Estate Agriculture Pivot \u2014 ADMARC Squeezes Smallholders",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 1975,
+        "label": "Agricultural Collectivization Causes Food Shortages",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1974,
+        "label": "Land reform decree abolishes feudal landholding",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1972,
+        "label": "Chicoral Pact Reverses Agrarian Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1971,
+        "label": "Agrarian Revolution formally launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1971,
+        "label": "Allende Accelerates Agrarian Reform and Urban Land Redistribution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1971,
+        "label": "Ujamaa Villagization Campaigns Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1969,
+        "label": "Sweeping Agrarian Reform Dismantles Hacienda System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1968,
+        "label": "Agrarian Revolution program announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1967,
+        "label": "Land Pressure Intensifies as Peasant Organizations Mobilize for Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1966,
+        "label": "Green Revolution begins in India",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1966,
+        "label": "Green Revolution Agricultural Programs",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1965,
+        "label": "Ethiopian student movement radicalized by land reform debates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 1964,
+        "label": "Land Reform Act Implemented",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1964,
+        "label": "Agricultural Collectivization Program Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1963,
+        "label": "First Agrarian Reform Law Passed Under Alessandri",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1963,
+        "label": "Agricultural Land Reform Code Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1962,
+        "label": "Land Reform Decree Issued",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 1962,
+        "label": "Caisse de Stabilisation (CAISTAB) Established for Cocoa and Coffee",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1962,
+        "label": "Million Acre Land Transfer Scheme Initiated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1962,
+        "label": "Land Reform Code of 1963 Drafted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1961,
+        "label": "Social Agrarian Reform Law Creates INCORA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1961,
+        "label": "Agricultural collectivization completed with 95 percent of farmland in cooperatives",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1959,
+        "label": "Eritrean Land Expropriations Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1959,
+        "label": "Agrarian Reform Revived Under L\u00f3pez Mateos",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1959,
+        "label": "Land Reform Ordinance Issued",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1959,
+        "label": "Mindanao Land Settlement and Ethnic Tensions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1959,
+        "label": "Syrian Land Reform Implemented Under UAR Rules",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1958,
+        "label": "Agrarian Reform Law Issued",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1955,
+        "label": "Agricultural collectivization drive accelerates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1955,
+        "label": "Land Reform and Agricultural Development",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kz",
+        "country_name": "Kazakhstan",
+        "year": 1954,
+        "label": "Virgin Lands Campaign Transforms Northern Kazakhstan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1954,
+        "label": "Virgin Lands Campaign launched by Khrushchev",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1953,
+        "label": "Agrarian Reform Decree Redistributes Land to Indigenous Peasants",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1953,
+        "label": "Forced Agricultural Collectivization Reversed in Yugoslavia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1952,
+        "label": "Land Reform Decree Redistributes Agricultural Land",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1952,
+        "label": "Decree 900 Land Reform Redistributes 1.5 Million Acres to Peasants",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1952,
+        "label": "Land Reform Efforts Under Quirino",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 1952,
+        "label": "Land Reform Transforms Rural Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 1951,
+        "label": "Cotton Boom Transforms Nicaraguan Pacific Lowlands",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1950,
+        "label": "Helmand Valley Authority irrigation project launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1950,
+        "label": "Forced Collectivization of Agriculture Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1950,
+        "label": "Land Reform Law enacted nationwide",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1950,
+        "label": "Sila and Stralcio Land Reform Laws Break Up Southern Latifundia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1950,
+        "label": "Forced Collectivization and Rural Resistance",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 80
+  }
+}
