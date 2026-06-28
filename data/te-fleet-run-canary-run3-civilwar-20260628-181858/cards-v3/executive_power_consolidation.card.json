@@ -1,0 +1,2098 @@
+{
+  "recipe_id": "executive_power_consolidation",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Governance Stress",
+  "description_compelling": "Power moves up \u2014 courts neutered, parliament sidelined, opposition jailed, term limits scrapped. Judicial and legislative-constraint indices fall in a coordinated arc over years. The pattern fits backsliding democracies and consolidating autocracies; it preceded the Hungarian, Turkish, and Venezuelan transformations.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6529225352112676,
+    "ci95_lo": 0.5851959886417422,
+    "ci95_hi": 0.7145375761017821,
+    "ci80_lo": 0.6099792312044208,
+    "ci80_hi": 0.6957197907143627,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2pepwrort"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2pepwrort",
+        "name": "Power Distributed by Sexual Orientation (0-4)"
+      }
+    ],
+    "chosen_window": 12,
+    "final_global_auc": 0.6529225352112676,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2pepwrort",
+        "window": 12,
+        "auc": 0.6529225352112676,
+        "lift_over_previous": 0.15292253521126764,
+        "selected_after": [
+          "v2pepwrort"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2csprtcpt",
+        "window": 12,
+        "auc": 0.6576760563380282,
+        "lift_over_previous": 0.004753521126760529,
+        "selected_after": [
+          "v2pepwrort",
+          "v2csprtcpt"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 105,
+    "n_pos_survive": 100,
+    "n_neg_total": 315,
+    "n_neg_survive": 284,
+    "pos_coverage": 0.9523809523809523,
+    "neg_coverage": 0.9015873015873016,
+    "n_countries_survive": 56,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 241,
+      "loco_auc": 0.6987932159165036,
+      "ece": 0.12497239804312708,
+      "ece_ci95_lo": 0.08938000998503232,
+      "ece_ci95_hi": 0.18563653654273968,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 73,
+          "mean_predicted": 0.05021922452987669,
+          "mean_actual": 0.1232876712328767
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 45,
+          "mean_predicted": 0.1467704365650813,
+          "mean_actual": 0.2222222222222222
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 28,
+          "mean_predicted": 0.2506216684622424,
+          "mean_actual": 0.35714285714285715
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 16,
+          "mean_predicted": 0.3492314536124468,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 8,
+          "mean_predicted": 0.4511415772140026,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 13,
+          "mean_predicted": 0.5375434481180631,
+          "mean_actual": 0.5384615384615384
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 13,
+          "mean_predicted": 0.6528512697953445,
+          "mean_actual": 0.5384615384615384
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 13,
+          "mean_predicted": 0.7431521736658536,
+          "mean_actual": 0.5384615384615384
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 20,
+          "mean_predicted": 0.8346297442913055,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 12,
+          "mean_predicted": 0.9464180817206701,
+          "mean_actual": 0.5833333333333334
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6168067965006656,
+      "loco_auc_ci95_hi": 0.7697889114350045
+    },
+    "mid-tier": {
+      "n": 78,
+      "loco_auc": 0.562037037037037,
+      "ece": 0.15601124443734687,
+      "ece_ci95_lo": 0.11114939969176285,
+      "ece_ci95_hi": 0.2669418525968631,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 29,
+          "mean_predicted": 0.052321377981068756,
+          "mean_actual": 0.1724137931034483
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 20,
+          "mean_predicted": 0.12599682211875915,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 9,
+          "mean_predicted": 0.24780554076035818,
+          "mean_actual": 0.2222222222222222
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 8,
+          "mean_predicted": 0.34796279668807983,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.5589361786842346,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.6770299275716146,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 3,
+          "mean_predicted": 0.7562906940778097,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 3,
+          "mean_predicted": 0.856342633565267,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.39204377661494666,
+      "loco_auc_ci95_hi": 0.6997539827434508
+    },
+    "stable-democracy": {
+      "n": 65,
+      "loco_auc": 0.46825396825396826,
+      "ece": 0.21737763161699364,
+      "ece_ci95_lo": 0.15208381346874655,
+      "ece_ci95_hi": 0.32902137730378084,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 25,
+          "mean_predicted": 0.04164365315809846,
+          "mean_actual": 0.16
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 5,
+          "mean_predicted": 0.1348734587430954,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 15,
+          "mean_predicted": 0.24222157994906107,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 4,
+          "mean_predicted": 0.3479682579636574,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 4,
+          "mean_predicted": 0.4667040929198265,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.5356939832369486,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.6546885967254639,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 2,
+          "mean_predicted": 0.7350669205188751,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 3,
+          "mean_predicted": 0.8764105637868246,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.9337437152862549,
+          "mean_actual": 0.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.25,
+      "loco_auc_ci95_hi": 0.6721311475409836
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-28T04:28:27.037068+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5011,
+  "stability_diagnostic": {
+    "fold_variance": 0.11949427954848162,
+    "fold_auc_mean": 0.6206796923314781,
+    "label": "HIGH",
+    "per_country_loco_auc": {
+      "Angola": 0.0,
+      "Belarus": 0.5,
+      "Bulgaria": 0.875,
+      "Burkina Faso": 1.0,
+      "China": 0.9166666666666666,
+      "Cuba": 0.5555555555555556,
+      "Czechia": 1.0,
+      "Dominican Republic": 1.0,
+      "El Salvador": 0.4,
+      "France": 0.5,
+      "Ghana": 1.0,
+      "Greece": 0.5714285714285714,
+      "Guatemala": 0.8333333333333334,
+      "Haiti": 0.8333333333333334,
+      "Hungary": 0.75,
+      "India": 0.2857142857142857,
+      "Italy": 0.0,
+      "Ivory Coast": 1.0,
+      "Kenya": 0.85,
+      "Kyrgyzstan": 0.0,
+      "Laos": 1.0,
+      "Liberia": 1.0,
+      "Madagascar": 0.6,
+      "Malawi": 0.2222222222222222,
+      "Maldives": 0.6666666666666666,
+      "Myanmar": 0.8181818181818182,
+      "Namibia": 0.0,
+      "Nicaragua": 0.42857142857142855,
+      "Niger": 0.5,
+      "Nigeria": 0.8,
+      "North Korea": 0.7916666666666666,
+      "Panama": 0.0,
+      "Papua New Guinea": 0.5,
+      "Paraguay": 0.5555555555555556,
+      "Peru": 0.4166666666666667,
+      "Portugal": 1.0,
+      "Romania": 0.3333333333333333,
+      "Russia": 0.3333333333333333,
+      "Rwanda": 1.0,
+      "Senegal": 0.16666666666666666,
+      "Serbia": 0.4375,
+      "Sierra Leone": 0.0,
+      "Slovakia": 1.0,
+      "Somalia": 1.0,
+      "South Korea": 0.5,
+      "Spain": 0.25,
+      "Sri Lanka": 0.7333333333333333,
+      "Tanzania": 1.0,
+      "Thailand": 1.0,
+      "Togo": 1.0,
+      "Turkmenistan": 0.0,
+      "Uganda": 1.0,
+      "United States": 0.3333333333333333,
+      "Uzbekistan": 0.5,
+      "Zambia": 1.0,
+      "Zimbabwe": 1.0
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7594,
+    "cohort_loco_floor": 0.6994,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 105,
+  "n_negatives": 315,
+  "walked_at_utc": "2026-06-28T04:29:47.053454+00:00",
+  "elapsed_seconds": 2143.5562460422516,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/executive_power_consolidation/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Cyprus",
+          "Vietnam",
+          "Moldova",
+          "Spain",
+          "Croatia",
+          "Chile",
+          "Montenegro",
+          "Slovenia"
+        ],
+        "country_isos": [
+          "cy",
+          "vn",
+          "md",
+          "es",
+          "hr",
+          "cl",
+          "me",
+          "si"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Australia",
+          "Costa Rica",
+          "Central African Republic",
+          "Mali",
+          "Latvia",
+          "South Africa",
+          "South Sudan",
+          "Lithuania",
+          "Bhutan"
+        ],
+        "country_isos": [
+          "au",
+          "cr",
+          "cf",
+          "ml",
+          "lv",
+          "za",
+          "ss",
+          "lt",
+          "bt"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Albania",
+          "Pakistan",
+          "Brazil",
+          "Jamaica",
+          "Kenya",
+          "Guatemala",
+          "Madagascar",
+          "Cameroon",
+          "Uzbekistan"
+        ],
+        "country_isos": [
+          "al",
+          "pk",
+          "br",
+          "jm",
+          "ke",
+          "gt",
+          "mg",
+          "cm",
+          "uz"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Estonia",
+          "Solomon Islands",
+          "Canada",
+          "Papua New Guinea",
+          "Laos",
+          "Israel",
+          "Switzerland",
+          "Kyrgyzstan"
+        ],
+        "country_isos": [
+          "ee",
+          "sb",
+          "ca",
+          "pg",
+          "la",
+          "il",
+          "ch",
+          "kg"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Armenia",
+          "Jordan",
+          "Japan",
+          "Peru",
+          "Philippines",
+          "Chad",
+          "Panama",
+          "Czechia",
+          "Botswana"
+        ],
+        "country_isos": [
+          "am",
+          "jo",
+          "jp",
+          "pe",
+          "ph",
+          "td",
+          "pa",
+          "cz",
+          "bw"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Burkina Faso",
+          "Germany",
+          "Venezuela",
+          "Eritrea",
+          "New Zealand",
+          "Ghana",
+          "Sri Lanka",
+          "The Democratic Republic of the Congo",
+          "Cambodia"
+        ],
+        "country_isos": [
+          "bf",
+          "de",
+          "ve",
+          "er",
+          "nz",
+          "gh",
+          "lk",
+          "cd",
+          "kh"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 9,
+        "countries": [
+          "Slovakia",
+          "Ukraine",
+          "Mongolia",
+          "Bolivia",
+          "Poland",
+          "Rwanda",
+          "Gabon",
+          "Haiti",
+          "Guinea-Bissau"
+        ],
+        "country_isos": [
+          "sk",
+          "ua",
+          "mn",
+          "bo",
+          "pl",
+          "rw",
+          "ga",
+          "ht",
+          "gw"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Honduras",
+          "Suriname",
+          "Finland",
+          "Greece",
+          "Austria",
+          "Ivory Coast",
+          "Algeria",
+          "Cabo Verde"
+        ],
+        "country_isos": [
+          "hn",
+          "sr",
+          "fi",
+          "gr",
+          "at",
+          "ci",
+          "dz",
+          "cv"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Luxembourg",
+          "Bulgaria",
+          "Malaysia",
+          "Zimbabwe",
+          "Taiwan",
+          "Denmark",
+          "Togo",
+          "Paraguay",
+          "Iran"
+        ],
+        "country_isos": [
+          "lu",
+          "bg",
+          "my",
+          "zw",
+          "tw",
+          "dk",
+          "tg",
+          "py",
+          "ir"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 9,
+        "countries": [
+          "United Kingdom",
+          "Sweden",
+          "Uruguay",
+          "Benin",
+          "United States",
+          "Cuba",
+          "Kazakhstan",
+          "Iceland",
+          "Italy"
+        ],
+        "country_isos": [
+          "gb",
+          "se",
+          "uy",
+          "bj",
+          "us",
+          "cu",
+          "kz",
+          "is",
+          "it"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "South Korea",
+          "Sierra Leone",
+          "Argentina",
+          "Thailand",
+          "Bahrain",
+          "Portugal",
+          "Singapore",
+          "Maldives",
+          "Saudi Arabia"
+        ],
+        "country_isos": [
+          "kr",
+          "sl",
+          "ar",
+          "th",
+          "bh",
+          "pt",
+          "sg",
+          "mv",
+          "sa"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Palestine",
+          "Bangladesh",
+          "Seychelles",
+          "Nepal",
+          "Trinidad and Tobago",
+          "France",
+          "Qatar",
+          "China"
+        ],
+        "country_isos": [
+          "ps",
+          "bd",
+          "sc",
+          "np",
+          "tt",
+          "fr",
+          "qa",
+          "cn"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Sudan",
+          "North Korea",
+          "Vanuatu",
+          "Lesotho",
+          "Yemen",
+          "Nicaragua",
+          "Sao Tome and Principe",
+          "Uganda",
+          "The Gambia"
+        ],
+        "country_isos": [
+          "sd",
+          "kp",
+          "vu",
+          "ls",
+          "ye",
+          "ni",
+          "st",
+          "ug",
+          "gm"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "Turkmenistan",
+          "Tunisia",
+          "Romania",
+          "Dominican Republic",
+          "Norway",
+          "Belgium",
+          "Mauritius",
+          "Mauritania",
+          "Nigeria"
+        ],
+        "country_isos": [
+          "tm",
+          "tn",
+          "ro",
+          "do",
+          "no",
+          "be",
+          "mu",
+          "mr",
+          "ng"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Iraq",
+          "Belarus",
+          "Tajikistan",
+          "Barbados",
+          "North Macedonia",
+          "Kuwait",
+          "Liberia",
+          "Eswatini",
+          "Equatorial Guinea"
+        ],
+        "country_isos": [
+          "iq",
+          "by",
+          "tj",
+          "bb",
+          "mk",
+          "kw",
+          "lr",
+          "sz",
+          "gq"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Timor-Leste",
+          "Guyana",
+          "Colombia",
+          "Ireland",
+          "Bosnia and Herzegovina",
+          "Mozambique",
+          "Malawi",
+          "Tanzania"
+        ],
+        "country_isos": [
+          "tl",
+          "gy",
+          "co",
+          "ie",
+          "ba",
+          "mz",
+          "mw",
+          "tz"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 9,
+        "countries": [
+          "Ecuador",
+          "United Arab Emirates",
+          "Serbia",
+          "Netherlands",
+          "Guinea",
+          "Georgia",
+          "Djibouti",
+          "Comoros",
+          "Russia"
+        ],
+        "country_isos": [
+          "ec",
+          "ae",
+          "rs",
+          "nl",
+          "gn",
+          "ge",
+          "dj",
+          "km",
+          "ru"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "Hungary",
+          "Niger",
+          "Mexico",
+          "Malta",
+          "Namibia",
+          "Hong Kong",
+          "Fiji",
+          "Libya",
+          "India"
+        ],
+        "country_isos": [
+          "hu",
+          "ne",
+          "mx",
+          "mt",
+          "na",
+          "hk",
+          "fj",
+          "ly",
+          "in"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Ethiopia",
+          "Angola",
+          "Burundi",
+          "Azerbaijan",
+          "El Salvador",
+          "Turkiye",
+          "Zambia",
+          "Myanmar",
+          "Lebanon"
+        ],
+        "country_isos": [
+          "et",
+          "ao",
+          "bi",
+          "az",
+          "sv",
+          "tr",
+          "zm",
+          "mm",
+          "lb"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Indonesia",
+          "Syria",
+          "Afghanistan",
+          "Oman",
+          "Egypt",
+          "Republic of the Congo",
+          "Morocco",
+          "Somalia",
+          "Senegal"
+        ],
+        "country_isos": [
+          "id",
+          "sy",
+          "af",
+          "om",
+          "eg",
+          "cg",
+          "ma",
+          "so",
+          "sn"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.3,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 175,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.2305,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.44025810532912013,
+      "b": 0.0,
+      "c": -0.3231183623033216,
+      "n_fit": 384,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 9,
+        "observed_rate": 0.3333333333333333
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 111,
+        "observed_rate": 0.12612612612612611
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 131,
+        "observed_rate": 0.24427480916030533
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 106,
+        "observed_rate": 0.36792452830188677
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 27,
+        "observed_rate": 0.4444444444444444
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.02251025101747058,
+    "n_predictions": 384,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.12497239804312708,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 73,
+            "mean_predicted": 0.05021922452987669,
+            "mean_actual": 0.1232876712328767
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 45,
+            "mean_predicted": 0.1467704365650813,
+            "mean_actual": 0.2222222222222222
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 28,
+            "mean_predicted": 0.2506216684622424,
+            "mean_actual": 0.35714285714285715
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 16,
+            "mean_predicted": 0.3492314536124468,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 8,
+            "mean_predicted": 0.4511415772140026,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 13,
+            "mean_predicted": 0.5375434481180631,
+            "mean_actual": 0.5384615384615384
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 13,
+            "mean_predicted": 0.6528512697953445,
+            "mean_actual": 0.5384615384615384
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 13,
+            "mean_predicted": 0.7431521736658536,
+            "mean_actual": 0.5384615384615384
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 20,
+            "mean_predicted": 0.8346297442913055,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 12,
+            "mean_predicted": 0.9464180817206701,
+            "mean_actual": 0.5833333333333334
+          }
+        ],
+        "n": 241,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.15601124443734687,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 29,
+            "mean_predicted": 0.052321377981068756,
+            "mean_actual": 0.1724137931034483
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 20,
+            "mean_predicted": 0.12599682211875915,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 9,
+            "mean_predicted": 0.24780554076035818,
+            "mean_actual": 0.2222222222222222
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 8,
+            "mean_predicted": 0.34796279668807983,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.5589361786842346,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.6770299275716146,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 3,
+            "mean_predicted": 0.7562906940778097,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 3,
+            "mean_predicted": 0.856342633565267,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 78,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.21737763161699364,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 25,
+            "mean_predicted": 0.04164365315809846,
+            "mean_actual": 0.16
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 5,
+            "mean_predicted": 0.1348734587430954,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 15,
+            "mean_predicted": 0.24222157994906107,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 4,
+            "mean_predicted": 0.3479682579636574,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 4,
+            "mean_predicted": 0.4667040929198265,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.5356939832369486,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.6546885967254639,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 2,
+            "mean_predicted": 0.7350669205188751,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 3,
+            "mean_predicted": 0.8764105637868246,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.9337437152862549,
+            "mean_actual": 0.0
+          }
+        ],
+        "n": 65,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/executive_power_consolidation.scores.json",
+  "shape_points": [
+    -0.053642710049947084,
+    0.012785911560058594,
+    0.0792145331700643,
+    0.14564315478007,
+    0.21207177639007568,
+    0.27850039800008136,
+    0.3449290196100871,
+    0.4113576412200928,
+    0.47778626283009845,
+    0.5442148844401041,
+    0.6106435060501099,
+    0.6770721276601155
+  ],
+  "shap_importance_raw": {
+    "v2pepwrort": 3.0814757347106934
+  },
+  "shap_importance_normalized": {
+    "v2pepwrort": 1.0
+  },
+  "shap_direction_signs": {
+    "v2pepwrort": -1
+  },
+  "per_feature_breakdown": {
+    "v2pepwrort": {
+      "last_z": 0.45463827252388,
+      "mean_z": 0.31171470880508423,
+      "std_z": 0.16733701527118683,
+      "slope": 0.7971434593200684,
+      "accel": 0.6153241395950317,
+      "tertile1_mean": 0.37192729115486145,
+      "tertile2_mean": 0.19433055818080902,
+      "tertile3_mean": 0.1690603643655777
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 12,
+    "indicators": [
+      {
+        "code": "v2pepwrort",
+        "name": "Power Distributed by Sexual Orientation (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 102,
+        "shape": {
+          "mean": [
+            0.0892,
+            0.1089,
+            0.0849,
+            0.1106,
+            0.0833,
+            0.1393,
+            0.2116,
+            0.2662,
+            0.214,
+            0.1921,
+            0.2113,
+            0.2698
+          ],
+          "p25": [
+            -0.3306,
+            -0.2,
+            -0.2868,
+            -0.2,
+            -0.243,
+            -0.1,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "p75": [
+            0.5713,
+            0.6053,
+            0.5941,
+            0.651,
+            0.5487,
+            0.7932,
+            0.8963,
+            0.9798,
+            0.9724,
+            0.9446,
+            0.9446,
+            0.9773
+          ]
+        }
+      }
+    ],
+    "samples_used": 102,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2025,
+        "label": "Nicaragua Ranked Among World's Most Authoritarian States",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2024,
+        "label": "Elections Postponed Indefinitely \u2014 Junta Entrenches Power",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2024,
+        "label": "Closure of Serbia-Run Parallel Institutions in Northern Kosovo",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 2024,
+        "label": "Sall Postpones Presidential Election by Decree",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 2023,
+        "label": "Attorney General Attempts to Annul Semilla Party and Block Inauguration",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2023,
+        "label": "Constitutional Referendum Resets Presidential Term Limits, Extends Mirziyoyev's Rule",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2022,
+        "label": "Damiba's MPSR Suspends Constitution and Governs by Decree",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 2022,
+        "label": "CECOT Mega-Prison Announced",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 2021,
+        "label": "Nuevas Ideas Wins Supermajority; Court and AG Removed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2021,
+        "label": "All Credible Opposition Presidential Candidates Arrested Before Election",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 2020,
+        "label": "Emergency powers law grants Orb\u00e1n indefinite rule by decree during COVID pandemic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 2018,
+        "label": "Yameen declares state of emergency and arrests Supreme Court justices",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2018,
+        "label": "National Dialogue Collapses, Systematic Authoritarian Consolidation Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 2018,
+        "label": "Constitutional crisis as president sacks PM illegally",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 2017,
+        "label": "Morales Attempts to Expel CICIG Commissioner \u2014 Constitutional Court Blocks It",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 2017,
+        "label": "Parliament Removes Presidential Age Limit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2016,
+        "label": "Ortega Wins Third Term, Installs Wife as Vice President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 2014,
+        "label": "FIDESZ wins third consecutive supermajority; Orb\u00e1n declares illiberal democracy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2014,
+        "label": "Constitution Amended to Allow Indefinite Presidential Re-election",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 2012,
+        "label": "Golden Dawn neo-Nazi party enters parliament amid economic crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 2011,
+        "label": "Berlusconi Resigns as Bond Yields Surge Past 7%; Monti Government Formed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2011,
+        "label": "Kim Jong-il Dies; Kim Jong-un Succeeds",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2011,
+        "label": "Constitutional Crisis as Parliament Replaces Somare with O'Neill",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 2011,
+        "label": "Wade Attempts to Run Son for Vice Presidency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2010,
+        "label": "Flag Change and Symbolic Re-engineering",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 2010,
+        "label": "18th Amendment removes presidential term limits",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2009,
+        "label": "Tandja Pushes Through Controversial Constitutional Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2007,
+        "label": "Constitutional Coup: Bakiyev Restores Presidential Powers via Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 2005,
+        "label": "Capital Relocated to Purpose-Built Naypyidaw",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2004,
+        "label": "Referendum removes presidential term limits",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 2004,
+        "label": "Khin Nyunt Purged, Military Intelligence Dissolved",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2002,
+        "label": "Referendum Extends Presidential Term to Seven Years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 2001,
+        "label": "Aristide's second term marked by chim\u00e8re gangs and authoritarian drift",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2000,
+        "label": "Akayev Re-Elected in Disputed Third Term",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 1999,
+        "label": "Lukashenko consolidates power as term legitimacy questioned",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 1999,
+        "label": "Nujoma Wins Controversial Third Term",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 1999,
+        "label": "Alem\u00e1n-Ortega Pact Cartelizes Nicaraguan Politics",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 1998,
+        "label": "Gayoom wins sixth presidential referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1997,
+        "label": "Deng Xiaoping dies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1997,
+        "label": "Milo\u0161evi\u0107 Becomes FRY President \u2014 Transfers Power as Federal Consolidation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 1997,
+        "label": "Meciar sabotages NATO and EU referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 1996,
+        "label": "Constitutional referendum extends Lukashenko's powers and term",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 1996,
+        "label": "President Zafy Impeached by National Assembly",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 1995,
+        "label": "Aidid Declares Himself President; Warlord Era Consolidates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 1995,
+        "label": "Referendum Extends Karimov's Term Without Election",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 1994,
+        "label": "Akayev Dissolves Parliament and Calls Referendum to Extend Powers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1994,
+        "label": "Kim Il-sung Dies; Kim Jong-il Assumes Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "az",
+        "country_name": "Azerbaijan",
+        "year": 1993,
+        "label": "Armenian Forces Capture Seven Districts, Heydar Aliyev Returns to Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 1993,
+        "label": "Gayoom wins fifth presidential term amid deepening authoritarian rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1992,
+        "label": "Autogolpe: Fujimori Dissolves Congress and Courts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 1991,
+        "label": "Kaysone Phomvihane Becomes First President Under New Constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 1990,
+        "label": "Kosovo Assembly Dissolved After Declaration of Sovereignty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1989,
+        "label": "Milo\u0161evi\u0107 Gazimestan Speech \u2014 Nationalist Maximalism at Kosovo Battle Commemoration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1988,
+        "label": "Anti-Bureaucratic Revolution \u2014 Milo\u0161evi\u0107 Topples Provincial Leaderships",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1987,
+        "label": "Milo\u0161evi\u0107's Kosovo Polje Speech \u2014 Rise of Serbian Nationalist Populism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1987,
+        "label": "Mugabe Becomes Executive President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1987,
+        "label": "Unity Accord \u2014 ZANU-PF Absorbs ZAPU",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1983,
+        "label": "General Manuel Noriega Takes Control of National Defense Forces",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1982,
+        "label": "Kenya Formally Declared a One-Party State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 1980,
+        "label": "People's Redemption Council Suspends Constitution and Political Parties",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1980,
+        "label": "Kim Jong-il Publicly Designated Successor at Party Congress",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 1979,
+        "label": "Park Chung-hee Assassinated by KCIA Director",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1978,
+        "label": "One-Party State Constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1978,
+        "label": "New executive presidential constitution enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1977,
+        "label": "Deng Xiaoping rehabilitated \u2014 returns to power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 1976,
+        "label": "MPLA Establishes One-Party Marxist-Leninist State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1975,
+        "label": "19 States Created and Anti-Corruption Purge",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1975,
+        "label": "MRND single-party state formalized; Habyarimana consolidates control",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1974,
+        "label": "Kim Jong-il Secretly Designated as Heir",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 1974,
+        "label": "Ceau\u0219escu Becomes President \u2014 Cult of Personality Intensifies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1972,
+        "label": "Ceylon becomes Republic of Sri Lanka under new constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1972,
+        "label": "One-Party State Declared \u2014 UNIP Sole Legal Party",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 1971,
+        "label": "Banda Declared President for Life",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1970,
+        "label": "Death of Salazar \u2014 End of an Era",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "az",
+        "country_name": "Azerbaijan",
+        "year": 1969,
+        "label": "Heydar Aliyev Becomes First Secretary of Soviet Azerbaijan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 1969,
+        "label": "De Gaulle Resigns After Referendum Defeat",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1969,
+        "label": "Congress Party splits \u2014 Indira Gandhi expels Syndicate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1969,
+        "label": "Franco Designates Juan Carlos as Monarchical Successor",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1968,
+        "label": "Salazar Incapacitated \u2014 Caetano Becomes Prime Minister",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1966,
+        "label": "Limuru Conference Marginalizes Odinga",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 1966,
+        "label": "De Facto Single-Party State Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1966,
+        "label": "Obote Suspends Constitution and Attacks Kabaka's Palace",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1965,
+        "label": "Cuban Communist Party Formally Constituted as Sole Ruling Party",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1965,
+        "label": "One-Party State Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1964,
+        "label": "Ghana Declared a One-Party State with Nkrumah as Life President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 1964,
+        "label": "Cabinet Crisis \u2014 Banda Purges Reformist Ministers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 1963,
+        "label": "Duvalier declared President for Life by rubber-stamp National Assembly",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1962,
+        "label": "Zhivkov Combines Party and State Leadership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 1962,
+        "label": "Coup Attempt by Prime Minister Mamadou Dia Suppressed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 1960,
+        "label": "Yam\u00e9ogo Establishes Single-Party State Under UDV",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 1960,
+        "label": "Single-Party Constitutional Framework Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1959,
+        "label": "K\u00e1d\u00e1r announces pragmatic formula: who is not against us is with us",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1958,
+        "label": "Ne Win Caretaker Government Takes Power Amid AFPFL Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1957,
+        "label": "Anton\u00edn Novotn\u00fd Consolidates Power as Party Chief and President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 1957,
+        "label": "Fran\u00e7ois Duvalier elected president in military-manipulated vote",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1956,
+        "label": "August Faction Incident: Failed Coup Against Kim Il-sung",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1956,
+        "label": "De-Stalinization begins across Soviet institutions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 1955,
+        "label": "Colorado Party Purged; Stroessner Consolidates Control",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1954,
+        "label": "Todor Zhivkov Elected BCP First Secretary",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1954,
+        "label": "Castillo Armas Seizes Power and Reverses Agrarian Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1953,
+        "label": "Kim Il-sung Consolidates Absolute Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 1952,
+        "label": "Syngman Rhee Consolidates Authoritarian Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1951,
+        "label": "Truman Fires General MacArthur",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1948,
+        "label": "Ceylon gains independence from Britain",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 104
+  }
+}

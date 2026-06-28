@@ -1,0 +1,2882 @@
+{
+  "recipe_id": "energy_policy",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Institutional Reform",
+  "description_compelling": "A structural rewrite to electricity generation, transmission, fuel pricing, or energy-mix targets \u2014 net-zero legislation, subsidy reform, grid reorganization, nuclear restart. Regulatory quality, government effectiveness, and trade openness shift first. Common in OECD energy transitions and in subsidy-heavy emerging markets under fiscal pressure.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6965335416463236,
+    "ci95_lo": 0.6407197877839049,
+    "ci95_hi": 0.7472127020999746,
+    "ci80_lo": 0.6605553261481801,
+    "ci80_hi": 0.7313368855971435,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2clrspct",
+      "v2csantimv",
+      "v2jucorrdc",
+      "v2x_jucon",
+      "v2x_rule",
+      "v2xeg_eqprotec",
+      "v2x_horacc"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2clrspct",
+        "name": null
+      },
+      {
+        "code": "v2csantimv",
+        "name": null
+      },
+      {
+        "code": "v2jucorrdc",
+        "name": null
+      },
+      {
+        "code": "v2x_jucon",
+        "name": "Judicial Constraints on Executive (0-1)"
+      },
+      {
+        "code": "v2x_rule",
+        "name": "Rule of Law Index (0-1)"
+      },
+      {
+        "code": "v2xeg_eqprotec",
+        "name": "Equal Protection Index (0-1)"
+      },
+      {
+        "code": "v2x_horacc",
+        "name": null
+      }
+    ],
+    "chosen_window": 3,
+    "final_global_auc": 0.6965335416463236,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2clrspct",
+        "window": 25,
+        "auc": 0.5910656957168585,
+        "lift_over_previous": 0.09106569571685852,
+        "selected_after": [
+          "v2clrspct"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2csantimv",
+        "window": 3,
+        "auc": 0.5995703544575725,
+        "lift_over_previous": 0.008504658740713933,
+        "selected_after": [
+          "v2clrspct",
+          "v2csantimv"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2jucorrdc",
+        "window": 3,
+        "auc": 0.6341177619373108,
+        "lift_over_previous": 0.03454740747973839,
+        "selected_after": [
+          "v2clrspct",
+          "v2csantimv",
+          "v2jucorrdc"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2x_jucon",
+        "window": 3,
+        "auc": 0.6482179474660678,
+        "lift_over_previous": 0.014100185528756914,
+        "selected_after": [
+          "v2clrspct",
+          "v2csantimv",
+          "v2jucorrdc",
+          "v2x_jucon"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2x_rule",
+        "window": 3,
+        "auc": 0.6622790743091495,
+        "lift_over_previous": 0.014061126843081695,
+        "selected_after": [
+          "v2clrspct",
+          "v2csantimv",
+          "v2jucorrdc",
+          "v2x_jucon",
+          "v2x_rule"
+        ]
+      },
+      {
+        "step": 6,
+        "candidate": "v2xeg_eqprotec",
+        "window": 3,
+        "auc": 0.6684894053315106,
+        "lift_over_previous": 0.006210331022361126,
+        "selected_after": [
+          "v2clrspct",
+          "v2csantimv",
+          "v2jucorrdc",
+          "v2x_jucon",
+          "v2x_rule",
+          "v2xeg_eqprotec"
+        ]
+      },
+      {
+        "step": 7,
+        "candidate": "v2x_horacc",
+        "window": 3,
+        "auc": 0.6965335416463236,
+        "lift_over_previous": 0.028044136314813062,
+        "selected_after": [
+          "v2clrspct",
+          "v2csantimv",
+          "v2jucorrdc",
+          "v2x_jucon",
+          "v2x_rule",
+          "v2xeg_eqprotec",
+          "v2x_horacc"
+        ]
+      },
+      {
+        "step": 8,
+        "candidate": "v2exl_legitlead",
+        "window": 3,
+        "auc": 0.7011034078703252,
+        "lift_over_previous": 0.004569866224001573,
+        "selected_after": [
+          "v2clrspct",
+          "v2csantimv",
+          "v2jucorrdc",
+          "v2x_jucon",
+          "v2x_rule",
+          "v2xeg_eqprotec",
+          "v2x_horacc",
+          "v2exl_legitlead"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 136,
+    "n_pos_survive": 133,
+    "n_neg_total": 408,
+    "n_neg_survive": 385,
+    "pos_coverage": 0.9779411764705882,
+    "neg_coverage": 0.9436274509803921,
+    "n_countries_survive": 52,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 288,
+      "loco_auc": 0.6922127534528357,
+      "ece": 0.11813713194149184,
+      "ece_ci95_lo": 0.09185159149072004,
+      "ece_ci95_hi": 0.17688901640366467,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 75,
+          "mean_predicted": 0.03830081838493546,
+          "mean_actual": 0.14666666666666667
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 51,
+          "mean_predicted": 0.1470582676576633,
+          "mean_actual": 0.13725490196078433
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 39,
+          "mean_predicted": 0.24254993330209684,
+          "mean_actual": 0.28205128205128205
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 27,
+          "mean_predicted": 0.3455773338123604,
+          "mean_actual": 0.48148148148148145
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 21,
+          "mean_predicted": 0.44505380732672556,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 29,
+          "mean_predicted": 0.5495054228552456,
+          "mean_actual": 0.3793103448275862
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 14,
+          "mean_predicted": 0.6420754066535405,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 10,
+          "mean_predicted": 0.7556151747703552,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 13,
+          "mean_predicted": 0.841600986627432,
+          "mean_actual": 0.5384615384615384
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 9,
+          "mean_predicted": 0.9353679617245992,
+          "mean_actual": 0.4444444444444444
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6254245504621242,
+      "loco_auc_ci95_hi": 0.7554850723879816
+    },
+    "mid-tier": {
+      "n": 52,
+      "loco_auc": 0.8292682926829268,
+      "ece": 0.10320174738836403,
+      "ece_ci95_lo": 0.08852463761353506,
+      "ece_ci95_hi": 0.23358578690967982,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 24,
+          "mean_predicted": 0.038102331842916705,
+          "mean_actual": 0.041666666666666664
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 6,
+          "mean_predicted": 0.13969482108950615,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 2,
+          "mean_predicted": 0.2538940981030464,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 6,
+          "mean_predicted": 0.32963865001996356,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 3,
+          "mean_predicted": 0.4808972974618276,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.5608571767807007,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.632887214422226,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 2,
+          "mean_predicted": 0.7426893711090088,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 2,
+          "mean_predicted": 0.8488953113555908,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 4,
+          "mean_predicted": 0.9134905487298965,
+          "mean_actual": 0.5
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6124087995241413,
+      "loco_auc_ci95_hi": 0.9333333333333333
+    },
+    "stable-democracy": {
+      "n": 178,
+      "loco_auc": 0.6321711861280207,
+      "ece": 0.0998905346927683,
+      "ece_ci95_lo": 0.07134301197156571,
+      "ece_ci95_hi": 0.17182987521630136,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 75,
+          "mean_predicted": 0.05191145087281863,
+          "mean_actual": 0.16
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 47,
+          "mean_predicted": 0.1471982975589468,
+          "mean_actual": 0.19148936170212766
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 18,
+          "mean_predicted": 0.24347621450821558,
+          "mean_actual": 0.2222222222222222
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 13,
+          "mean_predicted": 0.34241638963039106,
+          "mean_actual": 0.23076923076923078
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 10,
+          "mean_predicted": 0.44679887890815734,
+          "mean_actual": 0.3
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.5384308298428854,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.6825730800628662,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 4,
+          "mean_predicted": 0.7249650359153748,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 4,
+          "mean_predicted": 0.8639837354421616,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 2,
+          "mean_predicted": 0.9077142477035522,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5151449314246724,
+      "loco_auc_ci95_hi": 0.7285791475114418
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-28T05:05:53.130985+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5005,
+  "stability_diagnostic": {
+    "fold_variance": 0.08137278311391635,
+    "fold_auc_mean": 0.7080870822436566,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Afghanistan": 1.0,
+      "Algeria": 0.9666666666666667,
+      "Argentina": 0.8333333333333334,
+      "Austria": 0.0,
+      "Belarus": 0.9333333333333333,
+      "Belgium": 0.9230769230769231,
+      "Brazil": 0.5357142857142857,
+      "Bulgaria": 0.6666666666666666,
+      "Canada": 0.0,
+      "China": 1.0,
+      "Cyprus": 0.42857142857142855,
+      "Czechia": 1.0,
+      "Dominican Republic": 1.0,
+      "Ecuador": 0.5,
+      "Egypt": 0.7777777777777778,
+      "France": 0.5,
+      "Germany": 0.48484848484848486,
+      "Ghana": 1.0,
+      "Hungary": 0.0,
+      "Iceland": 0.875,
+      "Indonesia": 1.0,
+      "Iran": 0.75,
+      "Iraq": 0.5,
+      "Italy": 0.9230769230769231,
+      "Japan": 0.18181818181818182,
+      "Jordan": 0.75,
+      "Kenya": 1.0,
+      "Kuwait": 0.6428571428571429,
+      "Laos": 0.4166666666666667,
+      "Libya": 0.42857142857142855,
+      "Lithuania": 0.25,
+      "Mexico": 0.8333333333333334,
+      "Morocco": 1.0,
+      "Mozambique": 0.8666666666666667,
+      "Netherlands": 0.42857142857142855,
+      "Niger": 0.8235294117647058,
+      "Nigeria": 0.8,
+      "Norway": 1.0,
+      "Oman": 0.7142857142857143,
+      "Qatar": 1.0,
+      "Russia": 0.65625,
+      "Saudi Arabia": 0.7,
+      "South Africa": 0.6190476190476191,
+      "Sudan": 1.0,
+      "Sweden": 0.375,
+      "Switzerland": 0.6666666666666666,
+      "Syria": 1.0,
+      "Ukraine": 0.8333333333333334,
+      "United Arab Emirates": 0.9166666666666666,
+      "Uzbekistan": 1.0,
+      "Yemen": 0.6111111111111112
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 136,
+  "n_negatives": 408,
+  "walked_at_utc": "2026-06-28T05:12:45.500013+00:00",
+  "elapsed_seconds": 15255.219702005386,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/energy_policy/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "New Zealand",
+          "Mozambique",
+          "South Korea",
+          "Republic of the Congo",
+          "Latvia",
+          "Cameroon",
+          "Madagascar",
+          "Montenegro"
+        ],
+        "country_isos": [
+          "nz",
+          "mz",
+          "kr",
+          "cg",
+          "lv",
+          "cm",
+          "mg",
+          "me"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Afghanistan",
+          "Guinea",
+          "Philippines",
+          "Hong Kong",
+          "Serbia",
+          "Bolivia",
+          "Kenya",
+          "Brazil",
+          "Jordan"
+        ],
+        "country_isos": [
+          "af",
+          "gn",
+          "ph",
+          "hk",
+          "rs",
+          "bo",
+          "ke",
+          "br",
+          "jo"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Spain",
+          "Venezuela",
+          "El Salvador",
+          "Mali",
+          "Bosnia and Herzegovina",
+          "Sao Tome and Principe",
+          "Guinea-Bissau",
+          "Chile",
+          "Taiwan"
+        ],
+        "country_isos": [
+          "es",
+          "ve",
+          "sv",
+          "ml",
+          "ba",
+          "st",
+          "gw",
+          "cl",
+          "tw"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Tunisia",
+          "Benin",
+          "Switzerland",
+          "Cuba",
+          "Malawi",
+          "Malta",
+          "South Sudan",
+          "Timor-Leste"
+        ],
+        "country_isos": [
+          "tn",
+          "bj",
+          "ch",
+          "cu",
+          "mw",
+          "mt",
+          "ss",
+          "tl"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Ivory Coast",
+          "Sudan",
+          "Thailand",
+          "Seychelles",
+          "Iceland",
+          "Trinidad and Tobago",
+          "Maldives",
+          "Angola",
+          "Slovenia"
+        ],
+        "country_isos": [
+          "ci",
+          "sd",
+          "th",
+          "sc",
+          "is",
+          "tt",
+          "mv",
+          "ao",
+          "si"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Japan",
+          "Romania",
+          "North Macedonia",
+          "Albania",
+          "Syria",
+          "Colombia",
+          "Poland",
+          "Germany",
+          "Zambia"
+        ],
+        "country_isos": [
+          "jp",
+          "ro",
+          "mk",
+          "al",
+          "sy",
+          "co",
+          "pl",
+          "de",
+          "zm"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 9,
+        "countries": [
+          "Georgia",
+          "Gabon",
+          "Belgium",
+          "Bhutan",
+          "Bulgaria",
+          "Sierra Leone",
+          "Fiji",
+          "Azerbaijan",
+          "Cyprus"
+        ],
+        "country_isos": [
+          "ge",
+          "ga",
+          "be",
+          "bt",
+          "bg",
+          "sl",
+          "fj",
+          "az",
+          "cy"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Moldova",
+          "Mauritania",
+          "Nigeria",
+          "Central African Republic",
+          "Kazakhstan",
+          "Palestine",
+          "Burundi",
+          "Togo"
+        ],
+        "country_isos": [
+          "md",
+          "mr",
+          "ng",
+          "cf",
+          "kz",
+          "ps",
+          "bi",
+          "tg"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Tanzania",
+          "Austria",
+          "Yemen",
+          "Portugal",
+          "Uruguay",
+          "Malaysia",
+          "Ghana",
+          "South Africa",
+          "Burkina Faso"
+        ],
+        "country_isos": [
+          "tz",
+          "at",
+          "ye",
+          "pt",
+          "uy",
+          "my",
+          "gh",
+          "za",
+          "bf"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 9,
+        "countries": [
+          "Chad",
+          "Estonia",
+          "Mexico",
+          "Eritrea",
+          "Sri Lanka",
+          "Namibia",
+          "Czechia",
+          "Mongolia",
+          "Lesotho"
+        ],
+        "country_isos": [
+          "td",
+          "ee",
+          "mx",
+          "er",
+          "lk",
+          "na",
+          "cz",
+          "mn",
+          "ls"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Bangladesh",
+          "Nicaragua",
+          "France",
+          "Kyrgyzstan",
+          "Egypt",
+          "Australia",
+          "Myanmar",
+          "Vietnam",
+          "Nepal"
+        ],
+        "country_isos": [
+          "bd",
+          "ni",
+          "fr",
+          "kg",
+          "eg",
+          "au",
+          "mm",
+          "vn",
+          "np"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Panama",
+          "Liberia",
+          "Dominican Republic",
+          "Costa Rica",
+          "Djibouti",
+          "Solomon Islands",
+          "United Kingdom",
+          "Tajikistan"
+        ],
+        "country_isos": [
+          "pa",
+          "lr",
+          "do",
+          "cr",
+          "dj",
+          "sb",
+          "gb",
+          "tj"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Guyana",
+          "United States",
+          "Argentina",
+          "Luxembourg",
+          "Sweden",
+          "Russia",
+          "Norway",
+          "Ukraine",
+          "Lebanon"
+        ],
+        "country_isos": [
+          "gy",
+          "us",
+          "ar",
+          "lu",
+          "se",
+          "ru",
+          "no",
+          "ua",
+          "lb"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "Ecuador",
+          "Italy",
+          "Ireland",
+          "Denmark",
+          "Morocco",
+          "Algeria",
+          "The Gambia",
+          "Singapore",
+          "Papua New Guinea"
+        ],
+        "country_isos": [
+          "ec",
+          "it",
+          "ie",
+          "dk",
+          "ma",
+          "dz",
+          "gm",
+          "sg",
+          "pg"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Guatemala",
+          "Lithuania",
+          "Peru",
+          "Turkmenistan",
+          "Honduras",
+          "United Arab Emirates",
+          "Suriname",
+          "Netherlands",
+          "Greece"
+        ],
+        "country_isos": [
+          "gt",
+          "lt",
+          "pe",
+          "tm",
+          "hn",
+          "ae",
+          "sr",
+          "nl",
+          "gr"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Vanuatu",
+          "Cambodia",
+          "Indonesia",
+          "India",
+          "Qatar",
+          "Eswatini",
+          "Bahrain",
+          "Haiti"
+        ],
+        "country_isos": [
+          "vu",
+          "kh",
+          "id",
+          "in",
+          "qa",
+          "sz",
+          "bh",
+          "ht"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 9,
+        "countries": [
+          "Canada",
+          "Senegal",
+          "Turkiye",
+          "Jamaica",
+          "China",
+          "Laos",
+          "Oman",
+          "Israel",
+          "Belarus"
+        ],
+        "country_isos": [
+          "ca",
+          "sn",
+          "tr",
+          "jm",
+          "cn",
+          "la",
+          "om",
+          "il",
+          "by"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "North Korea",
+          "Somalia",
+          "Zimbabwe",
+          "Paraguay",
+          "Ethiopia",
+          "Niger",
+          "Hungary",
+          "Equatorial Guinea",
+          "Botswana"
+        ],
+        "country_isos": [
+          "kp",
+          "so",
+          "zw",
+          "py",
+          "et",
+          "ne",
+          "hu",
+          "gq",
+          "bw"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Cabo Verde",
+          "Saudi Arabia",
+          "The Democratic Republic of the Congo",
+          "Finland",
+          "Iran",
+          "Barbados",
+          "Mauritius",
+          "Rwanda",
+          "Slovakia"
+        ],
+        "country_isos": [
+          "cv",
+          "sa",
+          "cd",
+          "fi",
+          "ir",
+          "bb",
+          "mu",
+          "rw",
+          "sk"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Iraq",
+          "Kuwait",
+          "Armenia",
+          "Libya",
+          "Uganda",
+          "Croatia",
+          "Pakistan",
+          "Comoros",
+          "Uzbekistan"
+        ],
+        "country_isos": [
+          "iq",
+          "kw",
+          "am",
+          "ly",
+          "ug",
+          "hr",
+          "pk",
+          "km",
+          "uz"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.3,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 175,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.1971,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.6277006027333564,
+      "b": 0.0,
+      "c": -0.014022702567312384,
+      "n_fit": 518,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 69,
+        "observed_rate": 0.08695652173913043
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 120,
+        "observed_rate": 0.18333333333333332
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 133,
+        "observed_rate": 0.17293233082706766
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 107,
+        "observed_rate": 0.34579439252336447
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 89,
+        "observed_rate": 0.5056179775280899
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.04048789118012134,
+    "n_predictions": 518,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.11813713194149184,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 75,
+            "mean_predicted": 0.03830081838493546,
+            "mean_actual": 0.14666666666666667
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 51,
+            "mean_predicted": 0.1470582676576633,
+            "mean_actual": 0.13725490196078433
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 39,
+            "mean_predicted": 0.24254993330209684,
+            "mean_actual": 0.28205128205128205
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 27,
+            "mean_predicted": 0.3455773338123604,
+            "mean_actual": 0.48148148148148145
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 21,
+            "mean_predicted": 0.44505380732672556,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 29,
+            "mean_predicted": 0.5495054228552456,
+            "mean_actual": 0.3793103448275862
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 14,
+            "mean_predicted": 0.6420754066535405,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 10,
+            "mean_predicted": 0.7556151747703552,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 13,
+            "mean_predicted": 0.841600986627432,
+            "mean_actual": 0.5384615384615384
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 9,
+            "mean_predicted": 0.9353679617245992,
+            "mean_actual": 0.4444444444444444
+          }
+        ],
+        "n": 288,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.10320174738836403,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 24,
+            "mean_predicted": 0.038102331842916705,
+            "mean_actual": 0.041666666666666664
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 6,
+            "mean_predicted": 0.13969482108950615,
+            "mean_actual": 0.16666666666666666
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 2,
+            "mean_predicted": 0.2538940981030464,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 6,
+            "mean_predicted": 0.32963865001996356,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 3,
+            "mean_predicted": 0.4808972974618276,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.5608571767807007,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.632887214422226,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 2,
+            "mean_predicted": 0.7426893711090088,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 2,
+            "mean_predicted": 0.8488953113555908,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 4,
+            "mean_predicted": 0.9134905487298965,
+            "mean_actual": 0.5
+          }
+        ],
+        "n": 52,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.0998905346927683,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 75,
+            "mean_predicted": 0.05191145087281863,
+            "mean_actual": 0.16
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 47,
+            "mean_predicted": 0.1471982975589468,
+            "mean_actual": 0.19148936170212766
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 18,
+            "mean_predicted": 0.24347621450821558,
+            "mean_actual": 0.2222222222222222
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 13,
+            "mean_predicted": 0.34241638963039106,
+            "mean_actual": 0.23076923076923078
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 10,
+            "mean_predicted": 0.44679887890815734,
+            "mean_actual": 0.3
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.5384308298428854,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.6825730800628662,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 4,
+            "mean_predicted": 0.7249650359153748,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 4,
+            "mean_predicted": 0.8639837354421616,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 2,
+            "mean_predicted": 0.9077142477035522,
+            "mean_actual": 1.0
+          }
+        ],
+        "n": 178,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/energy_policy.scores.json",
+  "shape_points": [
+    -0.024368540542224724,
+    -0.006536095005213597,
+    0.011296350531797537,
+    0.029128796068808666,
+    0.0469612416058198,
+    0.06479368714283093,
+    0.08262613267984206,
+    0.10045857821685321,
+    0.11829102375386434,
+    0.13612346929087546,
+    0.1539559148278866,
+    0.17178836036489775
+  ],
+  "shap_importance_raw": {
+    "v2clrspct": 0.6493716239929199,
+    "v2csantimv": 0.7292807102203369,
+    "v2jucorrdc": 1.0674333572387695,
+    "v2x_jucon": 0.6289048790931702,
+    "v2x_rule": 1.088776707649231,
+    "v2xeg_eqprotec": 0.7350960969924927,
+    "v2x_horacc": 0.7192611694335938
+  },
+  "shap_importance_normalized": {
+    "v2clrspct": 0.1155851243302729,
+    "v2csantimv": 0.1298085694662359,
+    "v2jucorrdc": 0.18999816553744114,
+    "v2x_jucon": 0.11194213907118904,
+    "v2x_rule": 0.19379718249424716,
+    "v2xeg_eqprotec": 0.1308436812238996,
+    "v2x_horacc": 0.12802513787671424
+  },
+  "shap_direction_signs": {
+    "v2clrspct": -1,
+    "v2csantimv": -1,
+    "v2jucorrdc": -1,
+    "v2x_jucon": -1,
+    "v2x_rule": -1,
+    "v2xeg_eqprotec": -1,
+    "v2x_horacc": -1
+  },
+  "per_feature_breakdown": {
+    "v2clrspct": {
+      "last_z": 0.06886664032936096,
+      "mean_z": 0.02776353619992733,
+      "std_z": 0.034662771970033646,
+      "slope": 0.28801432251930237,
+      "accel": 0.1308647096157074,
+      "tertile1_mean": 0.0814892128109932,
+      "tertile2_mean": 0.01771044358611107,
+      "tertile3_mean": 0.0
+    },
+    "v2csantimv": {
+      "last_z": 0.08512290567159653,
+      "mean_z": 0.05907237529754639,
+      "std_z": 0.07194314897060394,
+      "slope": 0.10292641073465347,
+      "accel": 0.2111654132604599,
+      "tertile1_mean": 0.1740320920944214,
+      "tertile2_mean": 0.025018345564603806,
+      "tertile3_mean": 0.0
+    },
+    "v2jucorrdc": {
+      "last_z": 0.20184771716594696,
+      "mean_z": 0.04911999776959419,
+      "std_z": 0.030002057552337646,
+      "slope": 0.496598482131958,
+      "accel": 0.18419744074344635,
+      "tertile1_mean": 0.10148440301418304,
+      "tertile2_mean": 0.004183250945061445,
+      "tertile3_mean": 0.0
+    },
+    "v2x_jucon": {
+      "last_z": 0.05473600700497627,
+      "mean_z": 0.014445961453020573,
+      "std_z": 0.19944033026695251,
+      "slope": 0.10283135622739792,
+      "accel": 0.09466502815485,
+      "tertile1_mean": 0.028116704896092415,
+      "tertile2_mean": 0.1346694678068161,
+      "tertile3_mean": 0.0
+    },
+    "v2x_rule": {
+      "last_z": 0.5136187672615051,
+      "mean_z": 0.1982094794511795,
+      "std_z": 0.04970749467611313,
+      "slope": 0.06301838904619217,
+      "accel": 0.19250965118408203,
+      "tertile1_mean": 0.02385050244629383,
+      "tertile2_mean": 0.04786248505115509,
+      "tertile3_mean": 0.0
+    },
+    "v2xeg_eqprotec": {
+      "last_z": 0.08709657192230225,
+      "mean_z": 0.04620331898331642,
+      "std_z": 0.07959040254354477,
+      "slope": 0.09104708582162857,
+      "accel": 0.20408134162425995,
+      "tertile1_mean": 0.17374062538146973,
+      "tertile2_mean": 0.05333676561713219,
+      "tertile3_mean": 0.0
+    },
+    "v2x_horacc": {
+      "last_z": 0.0457925982773304,
+      "mean_z": 0.05799708887934685,
+      "std_z": 0.14796042442321777,
+      "slope": 0.2917298972606659,
+      "accel": 0.08343040943145752,
+      "tertile1_mean": 0.037170033901929855,
+      "tertile2_mean": 0.05518067255616188,
+      "tertile3_mean": 0.0
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 3,
+    "indicators": [
+      {
+        "code": "v2clrspct",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 133,
+        "shape": {
+          "mean": [
+            0.1751,
+            0.0895,
+            0.2085
+          ],
+          "p25": [
+            -0.5506,
+            -0.8595,
+            -0.7127
+          ],
+          "p75": [
+            1.03,
+            1.0881,
+            1.2063
+          ]
+        }
+      },
+      {
+        "code": "v2csantimv",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 133,
+        "shape": {
+          "mean": [
+            -0.0297,
+            0.0555,
+            -0.0398
+          ],
+          "p25": [
+            -0.871,
+            -0.8231,
+            -0.884
+          ],
+          "p75": [
+            0.9281,
+            1.0374,
+            0.9281
+          ]
+        }
+      },
+      {
+        "code": "v2jucorrdc",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 133,
+        "shape": {
+          "mean": [
+            -0.0268,
+            0.0069,
+            0.0356
+          ],
+          "p25": [
+            -0.6664,
+            -0.6664,
+            -0.6998
+          ],
+          "p75": [
+            0.5902,
+            0.8054,
+            0.9275
+          ]
+        }
+      },
+      {
+        "code": "v2x_jucon",
+        "name": "Judicial Constraints on Executive (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 133,
+        "shape": {
+          "mean": [
+            0.1473,
+            0.1864,
+            0.1985
+          ],
+          "p25": [
+            -0.5644,
+            -0.5644,
+            -0.6713
+          ],
+          "p75": [
+            0.9798,
+            0.9811,
+            1.0384
+          ]
+        }
+      },
+      {
+        "code": "v2x_rule",
+        "name": "Rule of Law Index (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 133,
+        "shape": {
+          "mean": [
+            0.1878,
+            0.2514,
+            0.3283
+          ],
+          "p25": [
+            -0.6887,
+            -0.7525,
+            -0.7601
+          ],
+          "p75": [
+            1.0869,
+            1.1342,
+            1.182
+          ]
+        }
+      },
+      {
+        "code": "v2xeg_eqprotec",
+        "name": "Equal Protection Index (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 133,
+        "shape": {
+          "mean": [
+            0.2366,
+            0.358,
+            0.5298
+          ],
+          "p25": [
+            -0.5703,
+            -0.4814,
+            -0.4739
+          ],
+          "p75": [
+            1.0174,
+            1.1002,
+            1.2751
+          ]
+        }
+      },
+      {
+        "code": "v2x_horacc",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 133,
+        "shape": {
+          "mean": [
+            0.2671,
+            0.2893,
+            0.1825
+          ],
+          "p25": [
+            -0.5143,
+            -0.6254,
+            -0.8587
+          ],
+          "p75": [
+            1.02,
+            1.0907,
+            1.1314
+          ]
+        }
+      }
+    ],
+    "samples_used": 133,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 2025,
+        "label": "Belgium Reverses Nuclear Phase-Out With New Expansion Law",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2025,
+        "label": "Russian oil revenues resilient despite sanctions",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 2024,
+        "label": "Bhutan-India Hydropower Expansion Agreements",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 2024,
+        "label": "Cuba's National Electrical Grid Collapses Entirely, Island-Wide Blackouts",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 2024,
+        "label": "South Korea's KHNP Wins Dukovany Nuclear Expansion Contract",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kz",
+        "country_name": "Kazakhstan",
+        "year": 2024,
+        "label": "Nuclear Power Referendum: 71% Vote to Build First Nuclear Plant",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2024,
+        "label": "Lithuania Synchronizes Power Grid with Continental Europe",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2024,
+        "label": "Morocco Signs Green Hydrogen Agreement with Europe",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 2024,
+        "label": "Nepal's Hydropower Exports to India Accelerate",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2024,
+        "label": "Saudi Aramco Remains World's Most Profitable Company",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2024,
+        "label": "Eskom Load Shedding Ends \u2014 Temporary Grid Stabilization",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 2024,
+        "label": "Kariba Power Crisis Deepens",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 2023,
+        "label": "Historic Referendum Votes to Halt Yasuni Amazon Oil Drilling",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 2023,
+        "label": "Olkiluoto 3 Nuclear Reactor Begins Regular Operation",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2023,
+        "label": "Last nuclear power plants shut down, completing Germany's nuclear exit",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2023,
+        "label": "Kurdistan Oil Dispute \u2014 Turkey Halts Pipeline Exports",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 2023,
+        "label": "Namibia\u2013Angola\u2013Zimbabwe Power Interconnection Progress",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2023,
+        "label": "Load Shedding Reaches Record Duration \u2014 Electricity State of Disaster",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 2023,
+        "label": "Power Crisis from Kariba Drought \u2014 Extended Load-Shedding",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2022,
+        "label": "Algeria benefits from European energy crisis following Ukraine war",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 2022,
+        "label": "Austria faces energy price shock from Russian gas dependence after Ukraine invasion",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 2022,
+        "label": "Belgium Extends Two Nuclear Reactors Amid Energy Crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2022,
+        "label": "Petrobras Pre-Salt Output Reaches Record Levels",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 2022,
+        "label": "LNG Terminal at Krk Island Proves Strategic Value in Energy Crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 2022,
+        "label": "United States withdraws support for EastMed pipeline project",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 2022,
+        "label": "Energy Crisis and Inflation Surge After Russia Invades Ukraine",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2022,
+        "label": "Germany conducts crash program to phase out Russian gas after Ukraine invasion",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2022,
+        "label": "Energy Crisis and Jordan-Israel Gas Deal",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2022,
+        "label": "Noor Solar Complex Reaches Major Capacity Milestone",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 2022,
+        "label": "ENI Coral Sul FLNG Produces First Mozambican LNG Cargo",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 2022,
+        "label": "Baltic Pipe Opens \u2014 Poland Achieves Independence from Russian Gas",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2022,
+        "label": "Nord Stream pipelines sabotaged underwater",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2022,
+        "label": "OPEC+ Defies Biden Pressure on Production",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2022,
+        "label": "Load Shedding Reaches Stage 6 \u2014 Unprecedented Power Crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 2022,
+        "label": "Ukraine War Energy Crisis Drives Inflation to 40-Year High",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2022,
+        "label": "Russia Captures Zaporizhzhia Nuclear Plant",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2022,
+        "label": "Cost of Living Crisis: Energy Bills Soar After Ukraine Invasion",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2022,
+        "label": "Gas Supply Crisis Hits Uzbekistan Amid Cold Winter",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2021,
+        "label": "Algeria shuts gas pipeline to Spain through Morocco",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2021,
+        "label": "Saudi Arabia Accelerates Renewable Energy Investment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 2020,
+        "label": "Cyprus-Greece-Israel sign EastMed pipeline intergovernmental agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2020,
+        "label": "Don Sahong Dam Begins Operations Near Cambodian Border",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2020,
+        "label": "Oil Blockade Lifted After Eight Months",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2020,
+        "label": "Russia-Saudi Arabia oil price war erupts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2020,
+        "label": "Oil Price War with Russia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2019,
+        "label": "Russia cuts oil supplies in pipeline contamination crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2019,
+        "label": "Xayaburi Dam Begins Operations on Mekong Mainstream",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2019,
+        "label": "Energy Reform Reversal \u2014 AMLO Prioritizes PEMEX and CFE",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2019,
+        "label": "Qatar Withdraws from OPEC",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2019,
+        "label": "Eskom Debt Crisis and Load Shedding Intensifies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2018,
+        "label": "Belarus-Russia oil and gas disputes intensify",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 2018,
+        "label": "Groningen Gas Production Cuts as Earthquake Damage Mounts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2017,
+        "label": "Lithuania Completes Energy Bridge with Sweden and Poland",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2017,
+        "label": "Voters Approve Energy Strategy 2050 and Nuclear Phaseout",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2016,
+        "label": "OPEC+ Framework Established with Russia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 2015,
+        "label": "Dumsor Power Crisis Severely Disrupts Ghana's Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2014,
+        "label": "Vaca Muerta Shale Formation Development Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 2014,
+        "label": "Bulgaria Blocks South Stream Pipeline Under EU and US Pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2014,
+        "label": "China-Russia Power of Siberia gas deal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2014,
+        "label": "Lithuania Launches LNG Independence Terminal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2014,
+        "label": "Oil Price Collapse \u2014 Saudi Arabia Does Not Cut Production",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2013,
+        "label": "Oil Production Disruptions Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2013,
+        "label": "China-Uzbekistan Gas Pipeline Expands Exports to China",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2012,
+        "label": "Referendum Rejects New Nuclear Power Plant",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2012,
+        "label": "Noor Ouarzazate Solar Plant Construction Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2012,
+        "label": "Barakah Nuclear Power Plant Construction Advances",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2011,
+        "label": "Belo Monte Hydroelectric Dam Construction Approved",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 2011,
+        "label": "Lago Agrio Court Issues $9.5 Billion Judgment Against Chevron",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2011,
+        "label": "Fukushima triggers Germany's accelerated nuclear phase-out",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2011,
+        "label": "Fukushima Nuclear Crisis Disrupts Japan's Energy Policy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2011,
+        "label": "Switzerland Decides to Phase Out Nuclear Energy Post-Fukushima",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2010,
+        "label": "Belarus-Russia oil transit dispute; pipeline briefly disrupted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2010,
+        "label": "Nam Theun 2 Dam Begins Commercial Power Generation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2010,
+        "label": "Cantarell Oil Field Production Collapses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2010,
+        "label": "Solar Energy Megaproject Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 2010,
+        "label": "Rovuma Basin Confirmed as World-Class Gas Province",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2010,
+        "label": "Saudi Arabia Launches Nuclear Energy Program Planning",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2009,
+        "label": "Pre-Salt Oil Law Establishes Production Sharing Regime",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 2009,
+        "label": "Russia-Ukraine Gas Dispute Cuts Bulgarian Gas Supply for Two Weeks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2009,
+        "label": "Closure of Ignalina Nuclear Power Plant",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2009,
+        "label": "Russia-Ukraine gas crisis disrupts European heating",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2009,
+        "label": "Russia\u2013Ukraine Gas Crisis: 13-Day European Supply Halt",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2008,
+        "label": "Oil Prices Surge to $147 Per Barrel",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2007,
+        "label": "Petrobras Discovers Pre-Salt Oil Fields",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 2007,
+        "label": "Yasuni-ITT Initiative Proposed; Ecuador Joins ALBA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2007,
+        "label": "National Energy Strategy Targets Diversification",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2007,
+        "label": "High North Strategy Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2007,
+        "label": "Load Shedding Crisis Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2006,
+        "label": "Hydrocarbon law revised, boosting Sonatrach control",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2006,
+        "label": "Belarus-Russia gas price dispute causes brief supply cut",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2006,
+        "label": "Brazil Achieves Energy Self-Sufficiency in Oil",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 2006,
+        "label": "Mozambique Acquires 85% Stake in Cahora Bassa Dam",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2006,
+        "label": "Russia-Ukraine gas cutoff disrupts European supplies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2006,
+        "label": "Russia\u2013Ukraine Gas Dispute: First Supply Cutoff",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2004,
+        "label": "First Belarus-Russia gas dispute",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 2003,
+        "label": "Nuclear Phase-Out Law Enacted Banning New Reactors",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 2003,
+        "label": "Karahnjukar Hydropower Project Approved Despite Protests",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 2003,
+        "label": "Pande-Temane Gas Fields Begin Exports to South Africa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2003,
+        "label": "Eskom Warns of Future Electricity Shortages",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2003,
+        "label": "Tribal Politics and Oil Revenue Distribution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2001,
+        "label": "Electricity Rationing Crisis Hits Brazil",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 2001,
+        "label": "OCP Heavy Crude Pipeline Construction Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2000,
+        "label": "Egyptian Natural Gas Pipeline to Jordan Opens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2000,
+        "label": "Renewable Energy Sources Act launches the Energiewende",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 2000,
+        "label": "Drought Triggers Power Crisis and Blackouts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1999,
+        "label": "OPEC+ Production Cuts Stabilize Oil Markets",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1999,
+        "label": "Sudan Begins Oil Exports; Bashir-Turabi Split",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1995,
+        "label": "Oil Sector Rehabilitation Completed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1993,
+        "label": "China becomes net oil importer",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1991,
+        "label": "Texaco Lawsuit Filed in New York Courts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1991,
+        "label": "Gulf War Oil Windfall Dissipated Through Corruption",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 1989,
+        "label": "Metsamor Nuclear Plant Shut Down After Earthquake Pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "do",
+        "country_name": "Dominican Republic",
+        "year": 1988,
+        "label": "Chronic Electricity Crisis Becomes Defining Economic Constraint",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1987,
+        "label": "Nuclear Referendum Shuts Down All Italian Power Plants Post-Chernobyl",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1986,
+        "label": "Chernobyl disaster raises nuclear safety concerns about Hungary's Paks plant",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1985,
+        "label": "Dukovany Nuclear Power Plant Opens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1985,
+        "label": "Saudi Arabia Abandons Swing Producer Role",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1983,
+        "label": "Texaco Amazon Contamination Draws Domestic and International Attention",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1983,
+        "label": "Chevron Oil Operations Disrupted by SPLA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1982,
+        "label": "Egypt's Natural Gas Sector Begins Development",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1980,
+        "label": "National Energy Program Triggers Western Alienation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 1980,
+        "label": "Nuclear Power Referendum Produces Ambiguous Mandate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1979,
+        "label": "Nordeste Power Grid Interconnects Northeast Brazil",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 1978,
+        "label": "Referendum narrowly rejects nuclear power, blocking completed Zwentendorf plant",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1977,
+        "label": "NNPC Created \u2014 State Oil Company Consolidates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 1977,
+        "label": "ADNOC Restructuring Expands State Oil Control",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1975,
+        "label": "Ecuador Withdraws from OPEC; Failed Counter-Coup Against Rodr\u00edguez Lara",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1974,
+        "label": "Kozloduy Nuclear Plant Unit 1 Enters Commercial Operation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1974,
+        "label": "Major Oil Discoveries in Chiapas and Tabasco",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1973,
+        "label": "Oil crisis exposes West Germany's energy vulnerability",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1973,
+        "label": "OPEC oil price shock \u2014 Indonesia benefits from oil boom",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1973,
+        "label": "Iran Benefits from OPEC Oil Embargo and Price Shock",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1973,
+        "label": "Oil Price Shock \u2014 Revenue Windfall and Ba'ath Consolidation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1973,
+        "label": "Oil Crisis Exposes Kenya's Energy Vulnerability",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1973,
+        "label": "Arab Oil Embargo Following Yom Kippur War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1973,
+        "label": "Oil Embargo and Nationalization of Remaining Companies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1973,
+        "label": "OPEC Oil Embargo Triggers Dutch Energy Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1973,
+        "label": "OPEC Oil Embargo Windfall for Nigeria",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1973,
+        "label": "October War Oil Embargo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 1973,
+        "label": "Oil Embargo Dramatically Boosts UAE Revenues",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1972,
+        "label": "CEPE State Oil Company Created",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 1971,
+        "label": "Arlit Uranium Mine Opens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1970,
+        "label": "Tripoli Agreement on Oil Pricing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1970,
+        "label": "Oil Boom Begins \u2014 Production Surpasses 1 Million BPD",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1969,
+        "label": "Petroleum Decree Nationalizes Oil Sector",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1967,
+        "label": "Natural gas exports to Soviet Union begin from northern Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1967,
+        "label": "Sonatrach oil company established as national hydrocarbon giant",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1967,
+        "label": "Texaco-Gulf Confirms Major Amazon Oil Discovery",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1964,
+        "label": "Amazon Territory Opened for Oil Exploration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1963,
+        "label": "Illia Annuls Foreign Oil Contracts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1962,
+        "label": "First Oil Exploration Concession Granted to Shell Consortium",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1960,
+        "label": "Iran Becomes OPEC Founding Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1960,
+        "label": "OPEC Founded with Iraqi Participation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1960,
+        "label": "OPEC Founded with Kuwait as Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1960,
+        "label": "Oil Production Reaches 17,000 Barrels Per Day",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1960,
+        "label": "OPEC Founded with Saudi Participation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1959,
+        "label": "Galapagos Islands Declared National Park",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1959,
+        "label": "Major Oil Discovery at Zelten Field",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1958,
+        "label": "First Oil Export Shipment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1956,
+        "label": "Brazil Establishes National Nuclear Energy Commission",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1956,
+        "label": "First Commercial Oil Discovery at Oloibiri",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1955,
+        "label": "Libyan Petroleum Law Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1954,
+        "label": "Per\u00f3n Signs Oil Contracts with Standard Oil of California",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1954,
+        "label": "Oil Consortium Agreement Ends Nationalization in Practice",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1954,
+        "label": "Petroleum Exploration Concessions Granted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1954,
+        "label": "First Commercial Oil Exploration in Niger Delta",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1954,
+        "label": "Soviet Union opens world's first nuclear power plant",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1954,
+        "label": "Expansion of Aden Refinery",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1952,
+        "label": "Syrian Oil Pipeline Negotiations with Iraq Petroleum Company",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1951,
+        "label": "IPC Oil Royalties Renegotiated \u2014 50/50 Profit Sharing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 1951,
+        "label": "Early Oil Exploration Surveys in Abu Dhabi",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1950,
+        "label": "Iran Demands Greater Oil Revenue from Anglo-Iranian Oil Company",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1950,
+        "label": "Oil Revenue Surge Begins Transforming Economy",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 173
+  }
+}
