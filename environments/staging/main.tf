@@ -167,7 +167,7 @@ module "recipe_fleet" {
   # immutable digest), never ':latest'. This is the build carrying the #136/#137/#141
   # walk/score code + the bake fixes — the canary (re-run step 5) must confirm its CLOUD
   # output has shap_value/trajectory_window before any full re-run trusts it.
-  recipe_fleet_image_tag = "bake-panels-527004d"
+  recipe_fleet_image_tag = "bake-run3-fix-84a577e"
 
   # Reuse roles already created by the iam module — no new instance profiles
   # or execution roles needed.
