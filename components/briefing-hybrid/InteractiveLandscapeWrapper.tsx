@@ -5,6 +5,7 @@
  */
 import dynamic from "next/dynamic";
 import type { ScatterPoint } from "@/components/briefing-signal/QuadrantSection";
+import type { MappedTrend } from "@/lib/hf/news-scale";
 
 // Lazy-load the actual chart; ssr:false avoids ECharts SSR hydration issues.
 const InteractiveLandscape = dynamic(
@@ -20,6 +21,7 @@ interface Props {
   activeCount: number;
   inPlayCount: number;
   silentAlarmCount: number;
+  topicTrends?: Record<string, MappedTrend[]>;
 }
 
 export function InteractiveLandscapeWrapper(props: Props) {

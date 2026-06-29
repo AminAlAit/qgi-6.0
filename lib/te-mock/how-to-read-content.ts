@@ -181,8 +181,8 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
         body: "The pins on the chart mark events from the verified record. Hover a pinned month and the tooltip names what happened.",
       },
       {
-        title: "Some themes move ahead of events",
-        body: "For the Electoral and Economic themes, the news pulse has tended to move about two months ahead of related events on the verified record. Other themes are tracked while their validation runs.",
+        title: "How themes show up in the news",
+        body: "For the Electoral and Economic themes, the news pulse is recall-validated: it fires at known events on the verified record. Other themes are tracked while their validation runs.",
       },
     ],
   },

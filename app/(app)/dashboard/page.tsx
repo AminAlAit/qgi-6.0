@@ -52,6 +52,7 @@ import {
   buildWorldActivityRows,
 } from "@/lib/te-mock/dashboard-v4-1-data";
 import { getHfBoard } from "@/lib/hf/topics-data";
+import { topicTrendMapping } from "@/lib/hf/news-scale";
 import { getLivePulse } from "@/lib/hf/live-pulse";
 import { overlayCells } from "@/lib/hf/live-pulse-core";
 import { getBucketArticles } from "@/lib/hf/live-pulse-buckets";
@@ -107,6 +108,11 @@ export default async function BriefingHybridPage() {
 
   // ── HF board + live overlay ────────────────────────────────────────────────
   const hfBoard = getHfBoard();
+  // topicLabel -> mapped Trends (with per-Trend-pulse coverage flag), for the
+  // landscape's Topic→Trend crosswalk reveal.
+  const topicTrends = Object.fromEntries(
+    hfBoard.topics.map((t) => [t.label, topicTrendMapping(t.trends)])
+  );
   const live = await getLivePulse();
   const overlaid = overlayCells(hfBoard, live);
   const liveCells = overlaid.cells;
@@ -232,15 +238,15 @@ export default async function BriefingHybridPage() {
             label: "News Gap",
             value: `+${Math.round(topAlarm.gap)}`,
             unit: " pts",
-            sub: "ahead of news",
+            sub: "above the news pulse",
             accentColor: "var(--qgi-warning)",
             bgTint: "rgba(245,158,11,0.08)",
           },
         ],
-        headline: "Structure running ahead of news.",
+        headline: "Structural signal elevated, news quiet.",
         sentence:
-          "Structural pressure is pricing in risk the headlines haven't confirmed yet.",
-        verdictLabel: "Silent Alarm",
+          "Structural resemblance is elevated while this month's news coverage stays quiet — two timeframes in divergence.",
+        verdictLabel: "Divergence",
         verdictBg: "rgba(245,158,11,0.10)",
         verdictColor: "var(--qgi-amber)",
         verdictBorder: "rgba(245,158,11,0.30)",
@@ -597,6 +603,7 @@ export default async function BriefingHybridPage() {
               activeCount={activeCount}
               inPlayCount={inPlayCount}
               silentAlarmCount={insights.silentAlarms.length}
+              topicTrends={topicTrends}
             />
           </div>
 

@@ -50,7 +50,7 @@ export function AlarmsColumnFixed({ alarms }: Props) {
             fontFamily: "ui-monospace, monospace",
           }}
         >
-          Silent Alarm cells ranked by structure score
+          Elevated &amp; quiet cells ranked by structure score
         </div>
       </div>
 
