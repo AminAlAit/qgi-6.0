@@ -228,7 +228,7 @@ resource "aws_batch_compute_environment" "recipe_fleet_spot" {
     security_group_ids = [data.aws_security_group.default.id]
 
     ec2_configuration {
-      image_type = "ECS_AL2"
+      image_type = "ECS_AL2023"
     }
 
     tags = var.tags
