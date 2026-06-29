@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Sora } from "next/font/google";
 import "./globals.css";
+import { DevAdminButton } from "@/components/admin/DevAdminButton";
 
 // T16 #309 LOW fix: declare `display: "swap"` so text is visible during
 // webfont download instead of the default "block" FOIT period.
@@ -130,6 +131,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }}
         />
         {children}
+        <DevAdminButton />
       </body>
     </html>
   );
