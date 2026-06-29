@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Five Models, One Country: Pakistan's Structural Scan",
     description:
-      "Pakistan ranks top 8-20 across 5 independent structural models. Self-analogue: Pakistan 2011 (match 0.9712). Repression score 82.6, news pulse 25: most extreme silent alarm in QGI's full profile.",
+      "Pakistan ranks top 8-20 across 5 independent structural models. Self-analogue: Pakistan 2011 (match 0.9712). Repression score 82.6, news pulse 25: the widest structure-news divergence in QGI's full profile.",
   },
   robots: { index: true, follow: true },
 };
@@ -348,7 +348,7 @@ function RecipeTable() {
   );
 }
 
-// --- Silent Alarm table ------------------------------------------------------
+// --- Structure-news divergence table -----------------------------------------
 
 function SilentAlarmTable() {
   const rows = [
@@ -357,35 +357,35 @@ function SilentAlarmTable() {
       structural: 82.6,
       pulse: 25,
       status: "LATENT",
-      reading: "Most extreme silent alarm",
+      reading: "Widest divergence",
     },
     {
       topic: "Governance, Corruption and Reform",
       structural: 84.0,
       pulse: 42,
       status: "LATENT",
-      reading: "Silent alarm",
+      reading: "Wide divergence",
     },
     {
       topic: "Terrorism and Targeted Violence",
       structural: 82.9,
       pulse: 50,
       status: "LATENT",
-      reading: "Silent alarm",
+      reading: "Wide divergence",
     },
     {
       topic: "Economic Distress and Policy",
       structural: 83.6,
       pulse: 57,
       status: "LATENT",
-      reading: "Near-silent alarm",
+      reading: "Notable divergence",
     },
     {
       topic: "Protest, Unrest and Labor",
       structural: 80.2,
       pulse: 57,
       status: "LATENT",
-      reading: "Near-silent alarm",
+      reading: "Notable divergence",
     },
     {
       topic: "Electoral and Regime Change",
@@ -742,7 +742,7 @@ export default function PakistanProfileReportPage() {
           {/* --- Lead Signals --- */}
           <section id="lead-signals">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              2. The Lead Signal: What the Indicators Are Actually Saying
+              2. The Primary Driver: What the Indicators Are Actually Saying
             </h2>
 
             <h3 className="text-lg font-semibold mt-6 mb-2">
@@ -987,7 +987,7 @@ export default function PakistanProfileReportPage() {
           {/* --- News vs Structure --- */}
           <section id="news-vs-structure">
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-              4. The News-versus-Structure Picture: Five Silent Alarms
+              4. The News-versus-Structure Picture: Five Divergences
             </h2>
             <p>
               QGI&apos;s high-frequency news layer (hf-topics.json, built 2026-06-09)
@@ -1000,7 +1000,7 @@ export default function PakistanProfileReportPage() {
             <SilentAlarmTable />
 
             <p>
-              The calibration check is important before reading the silent alarms. Three
+              The calibration check is important before reading the divergences. Three
               topics (Trade, Sanctions and Investment at pulse 100; Diplomacy and
               Alignment at pulse 100; and Energy, Resources and Environment at pulse 99)
               are fully ACTIVE. These map precisely to what is actually dominating
@@ -1021,8 +1021,8 @@ export default function PakistanProfileReportPage() {
               institutional conditions that historically co-occur with state crackdowns on
               civil and political rights. The news pulse at 25 (roughly one-third of what
               would be expected given that structural backdrop) means international media
-              is running well below the coverage volume that the structural conditions
-              would predict.
+              is running well below the coverage volume that a structural backdrop this
+              elevated would typically accompany.
             </p>
             <p>
               This divergence is not primarily explained by the PTI crackdown being
@@ -1105,14 +1105,14 @@ export default function PakistanProfileReportPage() {
               current positions. Second: if Fiscal Capacity (v2stfisccap) improves as the
               IMF program builds structural state revenue capacity, the foreign
               intervention score should recede. Third, and most immediately: the
-              Repression and Human Rights silent alarm (structural score 82.6, news pulse
-              25) is the lead signal to watch. If repression intensifies and news coverage
-              begins catching up to the structural baseline, that configuration has
-              historically preceded the Uganda 2021 resolution. If instead the PTI ban is
-              lifted, Khan released, and the February 2024 election results are more fully
-              honoured, the democratic transition model should see its closest analogue
-              shift from Nigeria 1998 (Abacha&apos;s last year) toward Nigeria 1999
-              (Obasanjo&apos;s inauguration).
+              Repression and Human Rights divergence (structural score 82.6, news pulse
+              25) is the configuration to watch. If repression intensifies and news
+              coverage rises to match it, that combined configuration has historically
+              preceded the Uganda 2021 resolution. If instead the PTI ban is lifted, Khan
+              released, and the February 2024 election results are more fully honoured,
+              the democratic transition model should see its closest analogue shift from
+              Nigeria 1998 (Abacha&apos;s last year) toward Nigeria 1999 (Obasanjo&apos;s
+              inauguration).
             </p>
 
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">

@@ -25,6 +25,7 @@ import { useTheme } from "@/lib/hooks/useTheme";
 import { getEchartsTokens } from "@/lib/echarts-theme";
 import type { HfVerdict } from "@/lib/hf/topics-data";
 import type { HfCountryDetail, HfTopicSeries } from "@/lib/hf/pulse-detail";
+import { GLOBAL_PERCENTILE_NOTE } from "@/lib/hf/news-scale";
 
 const ReactECharts = dynamic(() => import("echarts-for-react"), { ssr: false });
 
@@ -75,10 +76,10 @@ export function NewsSignalsPanel({ detail }: { detail: HfCountryDetail }) {
     <PanelShell
       title="News signals"
       accent="var(--qgi-accent)"
-      tooltip="News pulse is a monthly index of how much of this country's news coverage is on a theme. 50 is the country's own long-run normal; 60 and above counts as elevated. The verdict combines that pulse with the structural resemblance behind the theme."
+      tooltip="News pulse is a monthly index of how much of a country's news coverage runs on a trend, drawn from GDELT and ranked across every covered country and month. 50 is the global median for that trend; 60 and above counts as elevated. The verdict combines that pulse with the trend's structural resemblance, where available."
       caption={
         <>
-          What the news is amplifying for {detail.name} right now. Select a theme to see
+          What the news is amplifying for {detail.name} right now. Select a trend to see
           its news pulse against the verified events.
         </>
       }
@@ -87,7 +88,7 @@ export function NewsSignalsPanel({ detail }: { detail: HfCountryDetail }) {
       {/* Theme chips */}
       <div
         role="group"
-        aria-label="News themes"
+        aria-label="News trends"
         style={{
           display: "flex",
           flexWrap: "wrap",
@@ -126,7 +127,6 @@ export function NewsSignalsPanel({ detail }: { detail: HfCountryDetail }) {
                   whiteSpace: "nowrap",
                 }}
               >
-                {s.topic.validated ? "▲ " : ""}
                 {s.topic.label}
               </span>
               <span
@@ -148,6 +148,18 @@ export function NewsSignalsPanel({ detail }: { detail: HfCountryDetail }) {
                   <span style={{ opacity: 0.55 }}>/100</span>
                 </span>
               </span>
+              {s.cell?.struct == null && (
+                <span
+                  style={{
+                    fontSize: "9px",
+                    color: "var(--qgi-text-dim)",
+                    letterSpacing: "0.4px",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  news only
+                </span>
+              )}
             </button>
           );
         })}
@@ -256,8 +268,7 @@ export function NewsSignalsPanel({ detail }: { detail: HfCountryDetail }) {
           letterSpacing: "0.3px",
         }}
       >
-        Themes marked ▲ carry a validated news lead of about two months. Event markers
-        come from the verified record.
+        {GLOBAL_PERCENTILE_NOTE} Event markers come from the verified record.
       </p>
     </PanelShell>
   );
@@ -313,7 +324,7 @@ function PulseEventsChart({
       top: 2,
       right: 6,
       textStyle: { color: t.textMuted, fontSize: 10 },
-      data: ["News pulse", "Structural"],
+      data: struct !== null ? ["News pulse", "Structural"] : ["News pulse"],
     },
     grid: { left: 42, right: 16, top: 28, bottom: 26 },
     xAxis: {
@@ -382,17 +393,28 @@ function PulseEventsChart({
           data: [{ yAxis: thresholds.pulse }],
         },
       },
-      {
-        name: "Structural",
-        type: "line",
-        data: series.months.map(() => struct),
-        symbol: "none",
-        // Series-level color so the legend swatch matches the line (without
-        // it ECharts paints the key from its default palette).
-        color: t.amber,
-        itemStyle: { color: t.amber },
-        lineStyle: { width: 1.6, type: "dashed", color: t.amber, opacity: 0.8 },
-      },
+      // News-only trends (labor, migration, corruption) have no structural
+      // resemblance to plot — the line is dropped entirely.
+      ...(struct !== null
+        ? [
+            {
+              name: "Structural",
+              type: "line" as const,
+              data: series.months.map(() => struct),
+              symbol: "none" as const,
+              // Series-level color so the legend swatch matches the line
+              // (without it ECharts paints the key from its default palette).
+              color: t.amber,
+              itemStyle: { color: t.amber },
+              lineStyle: {
+                width: 1.6,
+                type: "dashed" as const,
+                color: t.amber,
+                opacity: 0.8,
+              },
+            },
+          ]
+        : []),
     ],
   };
 
@@ -488,13 +510,13 @@ export function TopicDriftPanel({
 
   return (
     <PanelShell
-      title="Theme drift"
+      title="Trend drift"
       accent={accent}
-      tooltip="Each cell is one month's news pulse for one theme, against this country's own normal of 50. Bright cells are months the theme ran well above it; numbers appear from 60, the elevated mark."
+      tooltip="Each cell is one month's news pulse for one trend, ranked across every covered country and month. 50 is the global median for the trend; bright cells ran well above it, and numbers appear from 60, the elevated mark."
       caption={
         <>
           How {detail.name}&apos;s news profile has shifted across the last twelve months,
-          theme by theme.
+          trend by trend.
         </>
       }
       fullWidth

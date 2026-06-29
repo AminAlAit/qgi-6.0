@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const TOC_ENTRIES = [
   { id: "intro", label: "Introduction" },
   { id: "five-models", label: "Five Models, Five Rankings" },
-  { id: "lead-signals", label: "The Lead Signals" },
+  { id: "lead-signals", label: "The Primary Driver" },
   { id: "self-analogue", label: "The 2011 Self-Analogue" },
   { id: "news-vs-structure", label: "News vs Structure" },
   { id: "methodology-footnote", label: "Methodology" },

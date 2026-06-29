@@ -276,7 +276,7 @@ export default async function CountryRecipeMatchPage({ params }: Params) {
       {/* ── Body ── */}
       <div style={{ maxWidth: "1080px", margin: "0 auto", padding: "24px 24px 64px" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          {hasNewsRow && newsSignal && countryName && (
+          {hasNewsRow && newsSignal && !newsSignal.pulseOnly && countryName && (
             <TrendConfirmRejectPanel
               key={`cr-${slug}-${iso}`}
               slug={slug}

@@ -41,6 +41,7 @@ import { useTheme } from "@/lib/hooks/useTheme";
 import { useMediaQuery } from "@/lib/hooks/useMediaQuery";
 import { getEchartsTokens } from "@/lib/echarts-theme";
 import type { HfBoard, HfCell, HfTopic, HfVerdict } from "@/lib/hf/topics-data";
+import { WITHIN_COUNTRY_NOTE, topicTrendMappingText } from "@/lib/hf/news-scale";
 
 /* ── Verdict presentation ────────────────────────────────────────────── */
 
@@ -89,7 +90,7 @@ const LENS_META: Record<Lens, { label: string; lede: string }> = {
   },
   primed: {
     label: "Primed & quiet",
-    lede: "The Latent readings: structure elevated, news quiet. Where the conditions exist before the coverage arrives.",
+    lede: "The Latent readings: structure elevated, news quiet. The conditions are in place while coverage stays light.",
   },
 };
 
@@ -306,7 +307,8 @@ export function TopicBoard({ data }: Props) {
             lineHeight: 1.5,
           }}
         >
-          {LENS_META[lens].lede}
+          {LENS_META[lens].lede}{" "}
+          <span style={{ color: "var(--qgi-text-muted)" }}>{WITHIN_COUNTRY_NOTE}</span>
         </p>
       )}
 
@@ -569,23 +571,11 @@ function VerdictGrid({
               <InfoTooltip
                 text={`${t.name}. ${t.scope} ${
                   t.validated
-                    ? "Validated: its news pulse tends to move ahead of related events by about two months."
+                    ? "Validated against the historical event record."
                     : "Tracked and scored; validation against the event record is ongoing."
-                }`}
+                } ${topicTrendMappingText(t.trends)}`}
               />
             </span>
-            {t.validated && (
-              <div
-                style={{
-                  fontSize: "9.5px",
-                  color: "var(--qgi-success)",
-                  letterSpacing: "0.5px",
-                  marginTop: "2px",
-                }}
-              >
-                ▲ Leads ~2 mo
-              </div>
-            )}
           </div>
         ))}
         <div style={{ padding: "10px 6px", textAlign: "center" }}>
@@ -1046,7 +1036,6 @@ function QuadrantMap({
                 cursor: "pointer",
               }}
             >
-              {x.validated ? "▲ " : ""}
               {x.label}
             </button>
           );
@@ -1068,8 +1057,6 @@ function QuadrantMap({
         {" = structure without news · "}
         <span style={{ color: "var(--qgi-text-dim)" }}>Quiet</span>
         {" = neither."}
-        <br />
-        {"▲ Themes with a validated news lead of about two months."}
       </p>
       <ReactECharts
         option={option}

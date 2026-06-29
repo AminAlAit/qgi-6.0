@@ -26,6 +26,7 @@ import ReactECharts from "echarts-for-react";
 import { useTheme } from "@/lib/hooks/useTheme";
 import { getEchartsTokens } from "@/lib/echarts-theme";
 import type { ScatterPoint } from "@/components/briefing-signal/QuadrantSection";
+import { WITHIN_COUNTRY_NOTE, type MappedTrend } from "@/lib/hf/news-scale";
 
 const VERDICT_COLORS = {
   ACTIVE: "#E05C5C",
@@ -37,7 +38,7 @@ const VERDICT_COLORS = {
 // Verdict key entries shown in the controls row (human-readable label).
 const VERDICT_KEY: { verdict: keyof typeof VERDICT_COLORS; label: string }[] = [
   { verdict: "ACTIVE", label: "Both Firing" },
-  { verdict: "LATENT", label: "Silent Alarm" },
+  { verdict: "LATENT", label: "Elevated & Quiet" },
   { verdict: "SIGNAL", label: "News-Only" },
   { verdict: "QUIET", label: "Quiet" },
 ];
@@ -47,11 +48,13 @@ interface Props {
   activeCount: number;
   inPlayCount: number;
   silentAlarmCount: number;
+  /** topicLabel -> the Trends it crosswalks to (with per-Trend-pulse coverage flag). */
+  topicTrends?: Record<string, MappedTrend[]>;
 }
 
 const ALL = "All";
 
-export function InteractiveLandscape({ points }: Props) {
+export function InteractiveLandscape({ points, topicTrends }: Props) {
   const { isDark } = useTheme();
   const t = getEchartsTokens(isDark);
 
@@ -330,7 +333,7 @@ export function InteractiveLandscape({ points }: Props) {
         >
           One dot per country-topic. Further right = louder in the news right now, higher
           = structure more like past crises. Use the menus or the status keys to spotlight
-          what matters.
+          what matters. {WITHIN_COUNTRY_NOTE}
         </p>
       </div>
 
@@ -488,6 +491,39 @@ export function InteractiveLandscape({ points }: Props) {
         </div>
       </div>
 
+      {/* Topic → Trend crosswalk reveal: when a topic is selected, name the
+          Trends it maps to, flagged by whether each has a native per-Trend
+          news pulse (so the reveal never implies more coverage than exists). */}
+      {selectedTopic !== ALL && topicTrends?.[selectedTopic]?.length ? (
+        <p
+          style={{
+            fontSize: "11.5px",
+            color: "var(--qgi-text-dim)",
+            margin: "0 0 12px",
+            lineHeight: 1.5,
+          }}
+        >
+          <span style={{ color: "var(--qgi-text-muted)" }}>{selectedTopic}</span>
+          {" maps to "}
+          {topicTrends[selectedTopic].map((m, i) => (
+            <span key={m.slug}>
+              {i > 0 ? ", " : ""}
+              <span
+                style={{
+                  color: m.hasPulse ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
+                }}
+              >
+                {m.label}
+              </span>
+              <span style={{ opacity: 0.7 }}>
+                {m.hasPulse ? " (news pulse)" : " (no per-Trend pulse)"}
+              </span>
+            </span>
+          ))}
+          {"."}
+        </p>
+      ) : null}
+
       {/* The plot itself (header + controls above, quadrant guide below all
           share this same panel) */}
       <div
@@ -551,9 +587,9 @@ export function InteractiveLandscape({ points }: Props) {
           <QuadCard
             tint="rgba(91,126,153,0.07)"
             accent="#5B7E99"
-            title="Silent Alarm"
+            title="Elevated & Quiet"
             count={quadCounts.silentAlarm}
-            body="Structure high, news quiet. QGI flags it before the headlines do."
+            body="Structure high, news quiet — the two timeframes diverge."
           />
           <QuadCard
             tint="rgba(224,92,92,0.07)"

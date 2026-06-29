@@ -23,6 +23,7 @@ import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { flagFor } from "@/lib/te-mock/country-flags";
 import type { HfVerdict } from "@/lib/hf/topics-data";
 import type { TrendNewsSignal } from "@/lib/hf/trend-signal";
+import { GLOBAL_PERCENTILE_NOTE, WITHIN_COUNTRY_NOTE } from "@/lib/hf/news-scale";
 
 const VERDICT_LABEL: Record<HfVerdict, string> = {
   ACTIVE: "Active",
@@ -63,22 +64,42 @@ export function TrendNewsSignalPanel({
   trendLabel: string;
   signal: TrendNewsSignal;
 }) {
-  const { topic, rows } = signal;
+  const { topic, rows, pulseOnly, perTrend } = signal;
+
+  const newsNoun = perTrend
+    ? `${trendLabel.toLowerCase()} news pulse`
+    : `${topic.label} news pulse`;
+  const captionLead = pulseOnly
+    ? `Where the news is running with the ${trendLabel.toLowerCase()} trend this month. Each covered country's ${newsNoun}`
+    : `Where the news is running with the ${trendLabel.toLowerCase()} trend this month. Each covered country's trend score against the ${newsNoun}`;
+  const captionTail = pulseOnly
+    ? ", strongest news readings first. Open a row for the signal-by-signal view."
+    : ", strongest combined readings first. Open a row for the signal-by-signal view.";
+  // Per-Trend pulse is a global cross-country percentile (50 = global median);
+  // the legacy crosswalk pulse is a within-country index (50 = own normal).
+  const tipBasis = perTrend
+    ? "How much of the country's news coverage runs on this trend, ranked across every covered country and month. 50 is the global median for this trend; 60 and above counts as elevated."
+    : "How much of the country's news coverage runs on this trend, measured against its own history. 50 is the country's normal month; 60 and above counts as elevated.";
+  const tipComposite =
+    !perTrend && !pulseOnly
+      ? ` This panel reads each country's score on this specific trend; the Risk Board reads the broader ${topic.label} composite, so the two can differ.`
+      : "";
+  const panelTip = pulseOnly
+    ? "This trend's news pulse: how much of each country's coverage runs on the trend each month, ranked across every covered country and month (50 is the global median). This trend is shown news-only; the verdict reads the pulse alone, elevated from 60 upward."
+    : perTrend
+      ? "This trend's news pulse: how much of each country's coverage runs on the trend each month, ranked across every covered country and month (50 is the global median). The verdict pairs that pulse with the country's score on this trend; both count as elevated from 60 upward."
+      : `This trend's news comes through the ${topic.label} theme: how much of each country's news coverage runs on that theme each month, against the country's own normal of 50. The verdict pairs that pulse with the country's score on this trend; both count as elevated from 60 upward.`;
 
   return (
     <PanelShell
       title="News signal"
       accent="var(--qgi-accent)"
-      tooltip={`This trend's news comes through the ${topic.label} theme: how much of each country's news coverage runs on that theme each month, against the country's own normal of 50. The verdict pairs that pulse with the country's score on this trend; both count as elevated from 60 upward.`}
+      tooltip={panelTip}
       caption={
         <>
-          {`Where the news is running with the ${trendLabel.toLowerCase()} trend this month. Each covered country's trend score against the ${topic.label}${topic.validated ? " ▲" : ""} news pulse`}
-          <InfoTooltip
-            text={`How much of the country's news coverage is on this theme, measured against its own history. 50 is the country's normal month; 60 and above counts as elevated.${topic.validated ? " The ▲ marks a theme validated to lead its events by about two months." : ""} This panel reads each country's score on this specific trend; the Risk Board reads the broader ${topic.label} composite, so the two can differ.`}
-          />
-          {
-            ", strongest combined readings first. Open a row for the signal-by-signal view."
-          }
+          {captionLead}
+          <InfoTooltip text={`${tipBasis}${tipComposite}`} />
+          {captionTail}
         </>
       }
       fullWidth
@@ -121,14 +142,20 @@ export function TrendNewsSignalPanel({
               </span>
               <span
                 className="font-data"
-                title={`Trend score ${Math.round(r.struct)} · news pulse ${Math.round(r.pulse)}`}
+                title={
+                  r.struct == null
+                    ? `News pulse ${Math.round(r.pulse)} (news only — no structural axis)`
+                    : `Trend score ${Math.round(r.struct)} · news pulse ${Math.round(r.pulse)}`
+                }
                 style={{
                   fontSize: "11px",
                   color: "var(--qgi-text-muted)",
                   whiteSpace: "nowrap",
                 }}
               >
-                {Math.round(r.struct)} · {Math.round(r.pulse)}
+                {r.struct == null
+                  ? `news ${Math.round(r.pulse)}`
+                  : `${Math.round(r.struct)} · ${Math.round(r.pulse)}`}
               </span>
               <span
                 style={{
@@ -211,10 +238,11 @@ export function TrendNewsSignalPanel({
           letterSpacing: "0.3px",
         }}
       >
-        The numbers read trend score · news pulse, both 0 to 100.
-        {topic.validated
-          ? ` The ${topic.label} theme carries a validated news lead of about two months.`
-          : " Pulse updates monthly."}
+        {pulseOnly
+          ? "The number is the news pulse, 0 to 100 — this trend carries no structural axis."
+          : "The numbers read trend score · news pulse, both 0 to 100."}
+        {` ${perTrend ? GLOBAL_PERCENTILE_NOTE : WITHIN_COUNTRY_NOTE}`}
+        {" Pulse updates monthly."}
         {signal.notScored.length > 0 &&
           ` ${signal.notScored.join(" and ")} ${signal.notScored.length === 1 ? "is" : "are"} not scored on this trend (indicator coverage), so ${signal.notScored.length === 1 ? "it does" : "they do"} not appear here.`}
       </p>
