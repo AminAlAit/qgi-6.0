@@ -1,0 +1,2918 @@
+{
+  "recipe_id": "foreign_intervention",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "directional",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "in_play",
+  "family_label": "Economic Stress",
+  "description_compelling": "A foreign state deploys military force inside another sovereign territory \u2014 direct combat, contracted irregulars, or a coercive presence sustained over months. Regulatory quality, gender-distributed power, and fiscal-capacity scores drift downward across nearly two decades before the boots arrive. The countries that match best are weak states adjacent to great-power rivalries.",
+  "description": null,
+  "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+  "stats": {
+    "loco_auc": 0.7280625257095845,
+    "ci95_lo": 0.6785996544319536,
+    "ci95_hi": 0.7728148919659398,
+    "ci80_lo": 0.6948903454188794,
+    "ci80_hi": 0.7570462923614014,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2x_gender",
+      "SP.DYN.LE00.IN",
+      "SP.POP.0014.TO.ZS",
+      "v2xcl_rol",
+      "v2jucomp",
+      "v2svstterr"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2x_gender",
+        "name": "Women's Political Empowerment Index (0-1)"
+      },
+      {
+        "code": "SP.DYN.LE00.IN",
+        "name": null
+      },
+      {
+        "code": "SP.POP.0014.TO.ZS",
+        "name": null
+      },
+      {
+        "code": "v2xcl_rol",
+        "name": null
+      },
+      {
+        "code": "v2jucomp",
+        "name": null
+      },
+      {
+        "code": "v2svstterr",
+        "name": null
+      }
+    ],
+    "chosen_window": 7,
+    "final_global_auc": 0.7280625257095845,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2x_gender",
+        "window": 18,
+        "auc": 0.6588227974116476,
+        "lift_over_previous": 0.15882279741164762,
+        "selected_after": [
+          "v2x_gender"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "SP.DYN.LE00.IN",
+        "window": 7,
+        "auc": 0.6642765214193785,
+        "lift_over_previous": 0.00545372400773092,
+        "selected_after": [
+          "v2x_gender",
+          "SP.DYN.LE00.IN"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "SP.POP.0014.TO.ZS",
+        "window": 7,
+        "auc": 0.6834436477293621,
+        "lift_over_previous": 0.019167126309983518,
+        "selected_after": [
+          "v2x_gender",
+          "SP.DYN.LE00.IN",
+          "SP.POP.0014.TO.ZS"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2xcl_rol",
+        "window": 7,
+        "auc": 0.6985199485199485,
+        "lift_over_previous": 0.015076300790586417,
+        "selected_after": [
+          "v2x_gender",
+          "SP.DYN.LE00.IN",
+          "SP.POP.0014.TO.ZS",
+          "v2xcl_rol"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2jucomp",
+        "window": 7,
+        "auc": 0.7124446108718717,
+        "lift_over_previous": 0.013924662351923245,
+        "selected_after": [
+          "v2x_gender",
+          "SP.DYN.LE00.IN",
+          "SP.POP.0014.TO.ZS",
+          "v2xcl_rol",
+          "v2jucomp"
+        ]
+      },
+      {
+        "step": 6,
+        "candidate": "v2svstterr",
+        "window": 7,
+        "auc": 0.7280625257095845,
+        "lift_over_previous": 0.015617914837712799,
+        "selected_after": [
+          "v2x_gender",
+          "SP.DYN.LE00.IN",
+          "SP.POP.0014.TO.ZS",
+          "v2xcl_rol",
+          "v2jucomp",
+          "v2svstterr"
+        ]
+      },
+      {
+        "step": 7,
+        "candidate": "v2x_partip",
+        "window": 7,
+        "auc": 0.7187330316742081,
+        "lift_over_previous": -0.009329494035376418,
+        "selected_after": [
+          "v2x_gender",
+          "SP.DYN.LE00.IN",
+          "SP.POP.0014.TO.ZS",
+          "v2xcl_rol",
+          "v2jucomp",
+          "v2svstterr",
+          "v2x_partip"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 174,
+    "n_pos_survive": 143,
+    "n_neg_total": 522,
+    "n_neg_survive": 425,
+    "pos_coverage": 0.8218390804597702,
+    "neg_coverage": 0.814176245210728,
+    "n_countries_survive": 70,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 325,
+      "loco_auc": 0.6746453089244852,
+      "ece": 0.12324796509857364,
+      "ece_ci95_lo": 0.09091787232673512,
+      "ece_ci95_hi": 0.1747834291938119,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 109,
+          "mean_predicted": 0.05820371885570364,
+          "mean_actual": 0.1559633027522936
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 64,
+          "mean_predicted": 0.1506453005131334,
+          "mean_actual": 0.21875
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 36,
+          "mean_predicted": 0.23890882689091894,
+          "mean_actual": 0.3888888888888889
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 28,
+          "mean_predicted": 0.3442781077963965,
+          "mean_actual": 0.32142857142857145
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 26,
+          "mean_predicted": 0.46584541293290943,
+          "mean_actual": 0.34615384615384615
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 16,
+          "mean_predicted": 0.5473361387848854,
+          "mean_actual": 0.625
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 12,
+          "mean_predicted": 0.6463253200054169,
+          "mean_actual": 0.4166666666666667
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 12,
+          "mean_predicted": 0.7489813715219498,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 10,
+          "mean_predicted": 0.8443562626838684,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 12,
+          "mean_predicted": 0.9550148795048395,
+          "mean_actual": 0.5
+        }
+      ],
+      "loco_auc_ci95_lo": 0.609572383362836,
+      "loco_auc_ci95_hi": 0.7375982226614763
+    },
+    "mid-tier": {
+      "n": 125,
+      "loco_auc": 0.7244289970208541,
+      "ece": 0.08182139355316759,
+      "ece_ci95_lo": 0.051696105049923065,
+      "ece_ci95_hi": 0.144759031931404,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 62,
+          "mean_predicted": 0.04409332103997229,
+          "mean_actual": 0.08064516129032258
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 28,
+          "mean_predicted": 0.14241327132497514,
+          "mean_actual": 0.10714285714285714
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 12,
+          "mean_predicted": 0.2539292015135288,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 8,
+          "mean_predicted": 0.3361146114766598,
+          "mean_actual": 0.125
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 5,
+          "mean_predicted": 0.46244173049926757,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 4,
+          "mean_predicted": 0.5354084521532059,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.6658988893032074,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 3,
+          "mean_predicted": 0.7629515131314596,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.9212228059768677,
+          "mean_actual": 0.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5838530947611371,
+      "loco_auc_ci95_hi": 0.8266925432529767
+    },
+    "stable-democracy": {
+      "n": 114,
+      "loco_auc": 0.8295454545454546,
+      "ece": 0.073539718021557,
+      "ece_ci95_lo": 0.05311180376008626,
+      "ece_ci95_hi": 0.1608915687357933,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 64,
+          "mean_predicted": 0.04562887430074625,
+          "mean_actual": 0.078125
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 14,
+          "mean_predicted": 0.13326686780367578,
+          "mean_actual": 0.21428571428571427
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 12,
+          "mean_predicted": 0.2641422189772129,
+          "mean_actual": 0.4166666666666667
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 6,
+          "mean_predicted": 0.3439308355251948,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 2,
+          "mean_predicted": 0.4558469355106354,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 6,
+          "mean_predicted": 0.5489910244941711,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.6661190589269003,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 3,
+          "mean_predicted": 0.7748178044954935,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 3,
+          "mean_predicted": 0.8286562363306681,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.918683648109436,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.7258670947638125,
+      "loco_auc_ci95_hi": 0.8964189334843287
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-29T15:51:27.877867+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.492,
+  "stability_diagnostic": {
+    "fold_variance": 0.07761157704538506,
+    "fold_auc_mean": 0.7276468118775811,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Afghanistan": 0.875,
+      "Albania": 0.75,
+      "Algeria": 0.3333333333333333,
+      "Angola": 0.8125,
+      "Bahrain": 1.0,
+      "Bolivia": 0.9375,
+      "Botswana": 0.875,
+      "Bulgaria": 0.8571428571428571,
+      "Cambodia": 0.725,
+      "Chile": 1.0,
+      "Cuba": 0.5,
+      "Czechia": 0.5,
+      "Denmark": 0.8333333333333334,
+      "Dominican Republic": 1.0,
+      "El Salvador": 1.0,
+      "Eritrea": 0.0,
+      "France": 0.875,
+      "Greece": 1.0,
+      "Guatemala": 0.8333333333333334,
+      "Guinea": 1.0,
+      "Haiti": 1.0,
+      "Honduras": 0.8518518518518519,
+      "Hungary": 0.625,
+      "India": 1.0,
+      "Indonesia": 1.0,
+      "Iran": 0.4642857142857143,
+      "Iraq": 0.8,
+      "Italy": 0.7333333333333333,
+      "Ivory Coast": 0.8571428571428571,
+      "Kenya": 0.0,
+      "Kuwait": 0.7142857142857143,
+      "Kyrgyzstan": 0.0,
+      "Lebanon": 1.0,
+      "Liberia": 0.75,
+      "Libya": 0.5,
+      "Malawi": 0.8333333333333334,
+      "Mali": 0.9230769230769231,
+      "Morocco": 1.0,
+      "Mozambique": 0.3333333333333333,
+      "Namibia": 0.6666666666666666,
+      "Netherlands": 0.8333333333333334,
+      "Nigeria": 1.0,
+      "Norway": 1.0,
+      "Oman": 0.6111111111111112,
+      "Pakistan": 0.9375,
+      "Panama": 0.45454545454545453,
+      "Philippines": 0.4444444444444444,
+      "Qatar": 1.0,
+      "Russia": 0.7619047619047619,
+      "Rwanda": 0.7727272727272727,
+      "Saudi Arabia": 1.0,
+      "Senegal": 0.6,
+      "Serbia": 0.14285714285714285,
+      "Sierra Leone": 0.75,
+      "Somalia": 1.0,
+      "South Korea": 0.75,
+      "Spain": 1.0,
+      "Sri Lanka": 0.25,
+      "Syria": 0.5333333333333333,
+      "Thailand": 0.6666666666666666,
+      "The Democratic Republic of the Congo": 0.6666666666666666,
+      "Uganda": 0.0,
+      "United Kingdom": 0.8,
+      "Yemen": 0.8125,
+      "Zambia": 0.75
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 174,
+  "n_negatives": 522,
+  "walked_at_utc": "2026-06-29T15:58:49.538518+00:00",
+  "elapsed_seconds": 9337.147011041641,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/foreign_intervention/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Sri Lanka",
+          "Trinidad and Tobago",
+          "Cabo Verde",
+          "Dominican Republic",
+          "United States",
+          "Austria",
+          "Hungary",
+          "Uruguay"
+        ],
+        "country_isos": [
+          "lk",
+          "tt",
+          "cv",
+          "do",
+          "us",
+          "at",
+          "hu",
+          "uy"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Ireland",
+          "Seychelles",
+          "Iceland",
+          "Cameroon",
+          "Greece",
+          "The Gambia",
+          "Philippines",
+          "Fiji",
+          "Sao Tome and Principe"
+        ],
+        "country_isos": [
+          "ie",
+          "sc",
+          "is",
+          "cm",
+          "gr",
+          "gm",
+          "ph",
+          "fj",
+          "st"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 8,
+        "countries": [
+          "Barbados",
+          "Bhutan",
+          "France",
+          "Georgia",
+          "Japan",
+          "Malaysia",
+          "Solomon Islands",
+          "Albania"
+        ],
+        "country_isos": [
+          "bb",
+          "bt",
+          "fr",
+          "ge",
+          "jp",
+          "my",
+          "sb",
+          "al"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 9,
+        "countries": [
+          "Romania",
+          "Bosnia and Herzegovina",
+          "Zambia",
+          "United Kingdom",
+          "Netherlands",
+          "Nepal",
+          "Timor-Leste",
+          "Kenya",
+          "Thailand"
+        ],
+        "country_isos": [
+          "ro",
+          "ba",
+          "zm",
+          "gb",
+          "nl",
+          "np",
+          "tl",
+          "ke",
+          "th"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 8,
+        "countries": [
+          "Costa Rica",
+          "Peru",
+          "Italy",
+          "South Africa",
+          "Montenegro",
+          "Serbia",
+          "Sierra Leone",
+          "Argentina"
+        ],
+        "country_isos": [
+          "cr",
+          "pe",
+          "it",
+          "za",
+          "me",
+          "rs",
+          "sl",
+          "ar"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Lithuania",
+          "Cambodia",
+          "Spain",
+          "Kazakhstan",
+          "Morocco",
+          "Jamaica",
+          "Ghana",
+          "Pakistan",
+          "Jordan"
+        ],
+        "country_isos": [
+          "lt",
+          "kh",
+          "es",
+          "kz",
+          "ma",
+          "jm",
+          "gh",
+          "pk",
+          "jo"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 9,
+        "countries": [
+          "Mongolia",
+          "Norway",
+          "Indonesia",
+          "Brazil",
+          "Liberia",
+          "Canada",
+          "Guatemala",
+          "Ivory Coast",
+          "Israel"
+        ],
+        "country_isos": [
+          "mn",
+          "no",
+          "id",
+          "br",
+          "lr",
+          "ca",
+          "gt",
+          "ci",
+          "il"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Mexico",
+          "Bulgaria",
+          "Honduras",
+          "Sweden",
+          "Malta",
+          "South Korea",
+          "Colombia",
+          "Panama"
+        ],
+        "country_isos": [
+          "mx",
+          "bg",
+          "hn",
+          "se",
+          "mt",
+          "kr",
+          "co",
+          "pa"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Togo",
+          "Ecuador",
+          "Turkiye",
+          "Cyprus",
+          "Bolivia",
+          "Armenia",
+          "Tanzania",
+          "Nigeria",
+          "Venezuela"
+        ],
+        "country_isos": [
+          "tg",
+          "ec",
+          "tr",
+          "cy",
+          "bo",
+          "am",
+          "tz",
+          "ng",
+          "ve"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 8,
+        "countries": [
+          "Czechia",
+          "Botswana",
+          "Finland",
+          "Guyana",
+          "Malawi",
+          "Tunisia",
+          "Latvia",
+          "Kuwait"
+        ],
+        "country_isos": [
+          "cz",
+          "bw",
+          "fi",
+          "gy",
+          "mw",
+          "tn",
+          "lv",
+          "kw"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Suriname",
+          "Bangladesh",
+          "Madagascar",
+          "Paraguay",
+          "Croatia",
+          "Egypt",
+          "Switzerland",
+          "Republic of the Congo",
+          "Angola"
+        ],
+        "country_isos": [
+          "sr",
+          "bd",
+          "mg",
+          "py",
+          "hr",
+          "eg",
+          "ch",
+          "cg",
+          "ao"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 9,
+        "countries": [
+          "Guinea-Bissau",
+          "Namibia",
+          "Chile",
+          "Estonia",
+          "Saudi Arabia",
+          "Slovenia",
+          "Senegal",
+          "Lesotho",
+          "Kyrgyzstan"
+        ],
+        "country_isos": [
+          "gw",
+          "na",
+          "cl",
+          "ee",
+          "sa",
+          "si",
+          "sn",
+          "ls",
+          "kg"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 8,
+        "countries": [
+          "Uzbekistan",
+          "Portugal",
+          "North Macedonia",
+          "Belarus",
+          "New Zealand",
+          "United Arab Emirates",
+          "Slovakia",
+          "Benin"
+        ],
+        "country_isos": [
+          "uz",
+          "pt",
+          "mk",
+          "by",
+          "nz",
+          "ae",
+          "sk",
+          "bj"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "Vanuatu",
+          "Poland",
+          "El Salvador",
+          "Maldives",
+          "Vietnam",
+          "Bahrain",
+          "Azerbaijan",
+          "Rwanda",
+          "Equatorial Guinea"
+        ],
+        "country_isos": [
+          "vu",
+          "pl",
+          "sv",
+          "mv",
+          "vn",
+          "bh",
+          "az",
+          "rw",
+          "gq"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 8,
+        "countries": [
+          "The Democratic Republic of the Congo",
+          "Belgium",
+          "Luxembourg",
+          "Burundi",
+          "Zimbabwe",
+          "Mauritania",
+          "Australia",
+          "Mauritius"
+        ],
+        "country_isos": [
+          "cd",
+          "be",
+          "lu",
+          "bi",
+          "zw",
+          "mr",
+          "au",
+          "mu"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 9,
+        "countries": [
+          "Myanmar",
+          "Laos",
+          "Ukraine",
+          "Denmark",
+          "China",
+          "Turkmenistan",
+          "Cuba",
+          "Gabon",
+          "Haiti"
+        ],
+        "country_isos": [
+          "mm",
+          "la",
+          "ua",
+          "dk",
+          "cn",
+          "tm",
+          "cu",
+          "ga",
+          "ht"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 9,
+        "countries": [
+          "Guinea",
+          "Chad",
+          "Eritrea",
+          "Russia",
+          "Tajikistan",
+          "Lebanon",
+          "Ethiopia",
+          "South Sudan",
+          "Algeria"
+        ],
+        "country_isos": [
+          "gn",
+          "td",
+          "er",
+          "ru",
+          "tj",
+          "lb",
+          "et",
+          "ss",
+          "dz"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 8,
+        "countries": [
+          "Iran",
+          "Moldova",
+          "Uganda",
+          "Mozambique",
+          "Papua New Guinea",
+          "Nicaragua",
+          "Somalia",
+          "India"
+        ],
+        "country_isos": [
+          "ir",
+          "md",
+          "ug",
+          "mz",
+          "pg",
+          "ni",
+          "so",
+          "in"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Niger",
+          "Libya",
+          "Afghanistan",
+          "Oman",
+          "Singapore",
+          "Germany",
+          "North Korea",
+          "Comoros",
+          "Iraq"
+        ],
+        "country_isos": [
+          "ne",
+          "ly",
+          "af",
+          "om",
+          "sg",
+          "de",
+          "kp",
+          "km",
+          "iq"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Yemen",
+          "Sudan",
+          "Burkina Faso",
+          "Syria",
+          "Qatar",
+          "Eswatini",
+          "Central African Republic",
+          "Djibouti",
+          "Mali"
+        ],
+        "country_isos": [
+          "ye",
+          "sd",
+          "bf",
+          "sy",
+          "qa",
+          "sz",
+          "cf",
+          "dj",
+          "ml"
+        ]
+      }
+    ],
+    "median": 50.6,
+    "p90": 90.1,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 172,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.1549,
+    "v4_oot_recall_pct": null,
+    "verdict": "MARGINAL_PENDING_BETA_CALIBRATION"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.7912197265880955,
+      "b": 0.0,
+      "c": 0.2877350522102184,
+      "n_fit": 568,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 95,
+        "observed_rate": 0.05263157894736842
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 165,
+        "observed_rate": 0.16363636363636364
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 108,
+        "observed_rate": 0.24074074074074073
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 78,
+        "observed_rate": 0.3076923076923077
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 73,
+        "observed_rate": 0.4657534246575342
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 49,
+        "observed_rate": 0.5510204081632653
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.018337522910815827,
+    "n_predictions": 568,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.12324796509857364,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 109,
+            "mean_predicted": 0.05820371885570364,
+            "mean_actual": 0.1559633027522936
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 64,
+            "mean_predicted": 0.1506453005131334,
+            "mean_actual": 0.21875
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 36,
+            "mean_predicted": 0.23890882689091894,
+            "mean_actual": 0.3888888888888889
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 28,
+            "mean_predicted": 0.3442781077963965,
+            "mean_actual": 0.32142857142857145
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 26,
+            "mean_predicted": 0.46584541293290943,
+            "mean_actual": 0.34615384615384615
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 16,
+            "mean_predicted": 0.5473361387848854,
+            "mean_actual": 0.625
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 12,
+            "mean_predicted": 0.6463253200054169,
+            "mean_actual": 0.4166666666666667
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 12,
+            "mean_predicted": 0.7489813715219498,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 10,
+            "mean_predicted": 0.8443562626838684,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 12,
+            "mean_predicted": 0.9550148795048395,
+            "mean_actual": 0.5
+          }
+        ],
+        "n": 325,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.08182139355316759,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 62,
+            "mean_predicted": 0.04409332103997229,
+            "mean_actual": 0.08064516129032258
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 28,
+            "mean_predicted": 0.14241327132497514,
+            "mean_actual": 0.10714285714285714
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 12,
+            "mean_predicted": 0.2539292015135288,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 8,
+            "mean_predicted": 0.3361146114766598,
+            "mean_actual": 0.125
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 5,
+            "mean_predicted": 0.46244173049926757,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 4,
+            "mean_predicted": 0.5354084521532059,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.6658988893032074,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 3,
+            "mean_predicted": 0.7629515131314596,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.9212228059768677,
+            "mean_actual": 0.0
+          }
+        ],
+        "n": 125,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.073539718021557,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 64,
+            "mean_predicted": 0.04562887430074625,
+            "mean_actual": 0.078125
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 14,
+            "mean_predicted": 0.13326686780367578,
+            "mean_actual": 0.21428571428571427
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 12,
+            "mean_predicted": 0.2641422189772129,
+            "mean_actual": 0.4166666666666667
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 6,
+            "mean_predicted": 0.3439308355251948,
+            "mean_actual": 0.16666666666666666
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 2,
+            "mean_predicted": 0.4558469355106354,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 6,
+            "mean_predicted": 0.5489910244941711,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.6661190589269003,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 3,
+            "mean_predicted": 0.7748178044954935,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 3,
+            "mean_predicted": 0.8286562363306681,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.918683648109436,
+            "mean_actual": 1.0
+          }
+        ],
+        "n": 114,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/foreign_intervention.scores.json",
+  "shape_points": [
+    -0.045755252290861935,
+    -0.025505047580373374,
+    -0.005254842869884806,
+    0.014995361840603759,
+    0.03524556655109232,
+    0.05549577126158088,
+    0.07574597597206945,
+    0.09599618068255801,
+    0.11624638539304659,
+    0.13649659010353515,
+    0.1567467948140237,
+    0.17699699952451228
+  ],
+  "shap_importance_raw": {
+    "v2x_gender": 1.3023927211761475,
+    "SP.DYN.LE00.IN": 0.940717875957489,
+    "SP.POP.0014.TO.ZS": 0.8265386819839478,
+    "v2xcl_rol": 0.70770263671875,
+    "v2jucomp": 0.7587133646011353,
+    "v2svstterr": 1.0113317966461182
+  },
+  "shap_importance_normalized": {
+    "v2x_gender": 0.2347754637136683,
+    "SP.DYN.LE00.IN": 0.16957824775940666,
+    "SP.POP.0014.TO.ZS": 0.14899576693335984,
+    "v2xcl_rol": 0.12757382009704774,
+    "v2jucomp": 0.1367692548520451,
+    "v2svstterr": 0.18230744664447238
+  },
+  "shap_direction_signs": {
+    "v2x_gender": -1,
+    "SP.DYN.LE00.IN": -1,
+    "SP.POP.0014.TO.ZS": -1,
+    "v2xcl_rol": -1,
+    "v2jucomp": -1,
+    "v2svstterr": -1
+  },
+  "per_feature_breakdown": {
+    "v2x_gender": {
+      "last_z": 0.0806405171751976,
+      "mean_z": 0.022034386172890663,
+      "std_z": 0.36824968457221985,
+      "slope": 0.2858332395553589,
+      "accel": 0.07709018141031265,
+      "tertile1_mean": 0.03826098516583443,
+      "tertile2_mean": 0.39236101508140564,
+      "tertile3_mean": 0.03792272508144379
+    },
+    "SP.DYN.LE00.IN": {
+      "last_z": 0.2096327692270279,
+      "mean_z": 0.04825712740421295,
+      "std_z": 0.13879644870758057,
+      "slope": 0.17662587761878967,
+      "accel": 0.14540672302246094,
+      "tertile1_mean": 0.15336017310619354,
+      "tertile2_mean": 0.024124929681420326,
+      "tertile3_mean": 0.044513821601867676
+    },
+    "SP.POP.0014.TO.ZS": {
+      "last_z": 0.128282368183136,
+      "mean_z": 0.02485920861363411,
+      "std_z": 0.12435562163591385,
+      "slope": 0.3436405062675476,
+      "accel": 0.1452631950378418,
+      "tertile1_mean": 0.04166853800415993,
+      "tertile2_mean": 0.008359168656170368,
+      "tertile3_mean": 0.010110137984156609
+    },
+    "v2xcl_rol": {
+      "last_z": 0.15007781982421875,
+      "mean_z": 0.04473001882433891,
+      "std_z": 0.056669097393751144,
+      "slope": 0.16320453584194183,
+      "accel": 0.03649357333779335,
+      "tertile1_mean": 0.12373226881027222,
+      "tertile2_mean": 0.07020476460456848,
+      "tertile3_mean": 0.06259050965309143
+    },
+    "v2jucomp": {
+      "last_z": 0.06301508098840714,
+      "mean_z": 0.03765067830681801,
+      "std_z": 0.08663853257894516,
+      "slope": 0.3728345036506653,
+      "accel": 0.11123889684677124,
+      "tertile1_mean": 0.02117660641670227,
+      "tertile2_mean": 0.047178540378808975,
+      "tertile3_mean": 0.018980462104082108
+    },
+    "v2svstterr": {
+      "last_z": 0.053372565656900406,
+      "mean_z": 0.20681892335414886,
+      "std_z": 0.1837736964225769,
+      "slope": 0.12577661871910095,
+      "accel": 0.19130398333072662,
+      "tertile1_mean": 0.02799021452665329,
+      "tertile2_mean": 0.032891321927309036,
+      "tertile3_mean": 0.1894044131040573
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 7,
+    "indicators": [
+      {
+        "code": "v2x_gender",
+        "name": "Women's Political Empowerment Index (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 165,
+        "shape": {
+          "mean": [
+            0.3936,
+            0.4686,
+            0.5338,
+            0.6573,
+            0.7022,
+            0.7678,
+            0.8386
+          ],
+          "p25": [
+            -0.0479,
+            0.1101,
+            0.1353,
+            0.2803,
+            0.3003,
+            0.3537,
+            0.4179
+          ],
+          "p75": [
+            0.9247,
+            0.9594,
+            1.0695,
+            1.2474,
+            1.3408,
+            1.4621,
+            1.5818
+          ]
+        }
+      },
+      {
+        "code": "SP.DYN.LE00.IN",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 150,
+        "shape": {
+          "mean": [
+            0.4853,
+            0.5659,
+            0.7524,
+            0.865,
+            0.9261,
+            1.0677,
+            1.1162
+          ],
+          "p25": [
+            0.2386,
+            0.3754,
+            0.597,
+            0.7793,
+            0.8954,
+            1.0249,
+            1.1273
+          ],
+          "p75": [
+            0.8668,
+            0.979,
+            1.1199,
+            1.237,
+            1.3688,
+            1.5215,
+            1.647
+          ]
+        }
+      },
+      {
+        "code": "SP.POP.0014.TO.ZS",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 150,
+        "shape": {
+          "mean": [
+            0.0071,
+            -0.0136,
+            -0.086,
+            -0.1511,
+            -0.2046,
+            -0.2683,
+            -0.3281
+          ],
+          "p25": [
+            -0.7656,
+            -0.931,
+            -1.0006,
+            -1.1119,
+            -1.1709,
+            -1.3356,
+            -1.4847
+          ],
+          "p75": [
+            0.7883,
+            0.7463,
+            0.775,
+            0.834,
+            0.844,
+            0.8874,
+            0.8798
+          ]
+        }
+      },
+      {
+        "code": "v2xcl_rol",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 166,
+        "shape": {
+          "mean": [
+            0.1273,
+            0.1765,
+            0.1855,
+            0.2697,
+            0.2599,
+            0.2785,
+            0.1699
+          ],
+          "p25": [
+            -0.446,
+            -0.449,
+            -0.5366,
+            -0.7109,
+            -0.6985,
+            -0.7108,
+            -0.9061
+          ],
+          "p75": [
+            0.7712,
+            0.8442,
+            0.8905,
+            1.0471,
+            1.0917,
+            1.0996,
+            1.1622
+          ]
+        }
+      },
+      {
+        "code": "v2jucomp",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 165,
+        "shape": {
+          "mean": [
+            0.0448,
+            0.0037,
+            0.007,
+            -0.0447,
+            -0.0886,
+            -0.119,
+            -0.2677
+          ],
+          "p25": [
+            -0.5939,
+            -0.7348,
+            -0.75,
+            -0.8564,
+            -0.9573,
+            -0.9798,
+            -1.1735
+          ],
+          "p75": [
+            0.6263,
+            0.6088,
+            0.6758,
+            0.7602,
+            0.7799,
+            0.8,
+            0.8
+          ]
+        }
+      },
+      {
+        "code": "v2svstterr",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 158,
+        "shape": {
+          "mean": [
+            -0.0066,
+            -0.0182,
+            0.0193,
+            0.0073,
+            -0.0495,
+            -0.1144,
+            -0.2348
+          ],
+          "p25": [
+            -0.6707,
+            -0.7224,
+            -0.6938,
+            -0.8564,
+            -0.8919,
+            -0.9648,
+            -0.9798
+          ],
+          "p75": [
+            0.6215,
+            0.5787,
+            0.6213,
+            0.6647,
+            0.6703,
+            0.756,
+            0.7922
+          ]
+        }
+      }
+    ],
+    "samples_used": 166,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2024,
+        "label": "Russian Wagner Forces Arrive in Niger",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2024,
+        "label": "North Korean Troops Deployed to Russia for Combat",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2024,
+        "label": "US-UK Military Strikes on Houthi Infrastructure",
+        "in_training_set": false
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2023,
+        "label": "SADC Decides to Deploy Mission",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 2023,
+        "label": "UN Security Council authorizes Kenyan-led multinational security support mission",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 2023,
+        "label": "Kenya Commits to Lead UN-Mandated Haiti Mission",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 2023,
+        "label": "ATMIS Replaces AMISOM with Drawdown Mandate",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2022,
+        "label": "Belarus used as launchpad for Russia's invasion of Ukraine",
+        "in_training_set": false
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2022,
+        "label": "EAC Regional Force Deployed",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 2022,
+        "label": "Russia's Ukraine Invasion Reshapes Dutch Foreign Policy and Energy",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2021,
+        "label": "Biden administration announces complete US withdrawal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 2021,
+        "label": "Wagner Group Mercenaries Deployed in Mali",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 2021,
+        "label": "Rwanda Deploys Special Forces to Cabo Delgado",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2021,
+        "label": "Iran Deepens Economic and Military Footprint in Syria",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2020,
+        "label": "Turkish Military Intervention Reverses Haftar",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 2015,
+        "label": "Iran and Saudi Arabia Proxy War in Yemen Deepens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2015,
+        "label": "Qatar Joins Saudi-Led Coalition in Yemen War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2015,
+        "label": "Russia intervenes militarily in Syrian civil war",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2015,
+        "label": "Russia Directly Intervenes in Syrian Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2015,
+        "label": "Saudi-Led Coalition Intervention Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2014,
+        "label": "NATO combat mission in Afghanistan formally ends",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2014,
+        "label": "Denmark Joins Anti-ISIS Coalition with F-16 Strikes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 2014,
+        "label": "Iran Deepens Role in Iraq Amid ISIS Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2014,
+        "label": "International Military Response \u2014 US Deploys 3,000 Troops to Build Ebola Treatment Centers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2014,
+        "label": "Pro-Russian separatists seize eastern Ukraine \u2014 Donbas war begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2013,
+        "label": "MONUSCO Intervention Brigade Authorized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2013,
+        "label": "Hezbollah Openly Joins Assad Forces in Battle for Qusair",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2012,
+        "label": "Saudi Arabia and Syria Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bh",
+        "country_name": "Bahrain",
+        "year": 2011,
+        "label": "Saudi-Led GCC Peninsula Shield Force Enters Bahrain",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2011,
+        "label": "Danish F-16s Lead Bombing Campaign in Libya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 2011,
+        "label": "France Leads NATO Intervention in Libya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 2011,
+        "label": "Italy Participates in NATO Libya Air Campaign",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2011,
+        "label": "NATO Intervention and No-Fly Zone",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2011,
+        "label": "Norway Participates in NATO Intervention in Libya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2011,
+        "label": "US Navy SEALs Kill Osama bin Laden in Abbottabad",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2011,
+        "label": "Qatar Joins NATO Intervention in Libya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2011,
+        "label": "Qatar Backs Syrian Opposition Against Assad Regime",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2011,
+        "label": "Saudi Arabia Intervenes in Bahrain",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2011,
+        "label": "Britain Leads NATO Air Campaign That Topples Gaddafi in Libya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2009,
+        "label": "Obama announces 30,000 troop surge to Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2008,
+        "label": "US increases drone strikes in Pakistani tribal areas",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2007,
+        "label": "Israel Bombs Alleged Syrian Nuclear Reactor",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2006,
+        "label": "NATO expands to southern Afghanistan taking over from US forces",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2006,
+        "label": "Danish Forces Deploy to Helmand Province Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2006,
+        "label": "Eritrea Backs ICU in Somalia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 2006,
+        "label": "Ethiopian Military Invasion Defeats ICU",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2004,
+        "label": "EUFOR Operation Althea Replaces NATO SFOR in Bosnia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2003,
+        "label": "NATO assumes command of ISAF mission in Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2003,
+        "label": "US diverts military and intelligence resources to Iraq invasion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2003,
+        "label": "Denmark Joins US-Led Coalition Invasion of Iraq",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2003,
+        "label": "US-Led Invasion of Iraq \u2014 Operation Iraqi Freedom",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 2003,
+        "label": "Italy Deploys to Iraq; Nasiriyah Bombing Kills 19 Italian Troops",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 2003,
+        "label": "Kuwait Used as Primary Base for Iraq War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2003,
+        "label": "UNMIL Peacekeeping Mission Deployed \u2014 Largest UN Mission in Africa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 2003,
+        "label": "Netherlands Joins US-Led Coalition in Iraq War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 2003,
+        "label": "Spain Joins Iraq War Coalition Against Massive Public Opposition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2002,
+        "label": "International Security Assistance Force (ISAF) established in Kabul",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2002,
+        "label": "Paddy Ashdown Becomes High Representative, Pursues Aggressive Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2002,
+        "label": "Denmark Deploys Special Forces to Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2002,
+        "label": "US Special Forces Deployed to Fight Abu Sayyaf",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2002,
+        "label": "Yemen Drone Strike Kills Al-Qaeda Commander",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2001,
+        "label": "US-led Operation Enduring Freedom begins bombing Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2001,
+        "label": "Kyrgyzstan Hosts Anti-Taliban Coalition: Strategic Windfall",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2001,
+        "label": "Norway Joins NATO Operation in Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2000,
+        "label": "RUF Hostage Crisis and British Intervention",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1999,
+        "label": "MONUC Peacekeeping Mission Authorized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 1999,
+        "label": "Danish F-16s Participate in NATO Bombing of Yugoslavia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 1999,
+        "label": "NATO Operation Allied Force \u2014 78-Day Bombing Campaign",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1999,
+        "label": "NATO Bombing Campaign \u2014 78 Days of Air Strikes Force Serbian Withdrawal from Kosovo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1999,
+        "label": "Britain Leads NATO Humanitarian Intervention in Kosovo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1998,
+        "label": "US launches cruise missile strikes on Afghan al-Qaeda camps",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 1998,
+        "label": "Lesotho Intervention \u2014 SADC Military Operation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 1998,
+        "label": "Taylor Government Accused of Sponsoring Sierra Leone's RUF",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 1998,
+        "label": "Namibia Intervenes in DRC Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1998,
+        "label": "ECOMOG Restores Kabbah",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 1997,
+        "label": "UN-Authorized Operation Alba Restores Order",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1997,
+        "label": "Plan Dignidad: Militarized Forced Coca Eradication Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1997,
+        "label": "Bonn Powers Granted to High Representative",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1997,
+        "label": "Italy Leads Operation Alba Multinational Stabilisation Force in Albania",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1997,
+        "label": "Nigerian Troops Lead ECOMOG Intervention in Sierra Leone",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1997,
+        "label": "Uganda Intervenes in Congo's Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1995,
+        "label": "NATO Operation Deliberate Force Breaks Bosnian Serb Military Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1995,
+        "label": "Executive Outcomes Mercenaries Deployed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1994,
+        "label": "Pakistan and Saudi Arabia provide covert support to Taliban",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 1994,
+        "label": "U.S.-led Operation Uphold Democracy restores Aristide to power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1994,
+        "label": "Operation Turquoise \u2014 French military intervention in western Rwanda",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 1994,
+        "label": "United States and UN Withdraw from Somalia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1993,
+        "label": "ECOMOG Deploys to Sierra Leone",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 1993,
+        "label": "Operation Restore Hope and the Battle of Mogadishu",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1992,
+        "label": "UN Arms Embargo Imposed \u2014 Bosnian Government Disadvantaged",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1992,
+        "label": "UNTAC Deploys 15,000 Personnel to Administer Cambodia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 1991,
+        "label": "January Events: Soviet Military Crackdown in Vilnius",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1990,
+        "label": "Soviet troops begin withdrawal from Hungary after 47 years of occupation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 1990,
+        "label": "ECOMOG Intervention Force Deployed to Liberia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1990,
+        "label": "Oman Joins Gulf Coalition Against Iraq but Pursues Independent Diplomacy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 1990,
+        "label": "Qatar Joins Coalition Against Iraqi Invasion of Kuwait",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1990,
+        "label": "France and Belgium intervene militarily to back Habyarimana",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1989,
+        "label": "Vietnam Completes Military Withdrawal from Cambodia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1989,
+        "label": "Operation Just Cause: US Invades Panama and Removes Noriega",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1988,
+        "label": "Law 1008 Criminalizes Chapare Coca Production Under US Pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1988,
+        "label": "PRK Announces Timetable for Vietnamese Troop Withdrawal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1987,
+        "label": "IPKF deployed to Sri Lanka",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1987,
+        "label": "US Navy Escorts Reflagged Kuwaiti Tankers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1987,
+        "label": "Indo-Sri Lanka Accord and Indian peacekeeping force deployed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1986,
+        "label": "Operation Blast Furnace: US Military Enters Bolivia for Drug War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 1985,
+        "label": "Reagan Doctrine Formalizes US Military Aid to UNITA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 1985,
+        "label": "SADF Gaborone Raid \u2014 Twelve Killed in Apartheid Cross-Border Attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1983,
+        "label": "US Military Constructs Permanent Infrastructure for Contra Operations in Honduras",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1983,
+        "label": "France Intervenes in Chad Against Libya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1982,
+        "label": "Hezbollah Founded in Lebanon with Iranian Support",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 1981,
+        "label": "Reagan Administration Dramatically Escalates Military Aid",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1981,
+        "label": "Reagan Administration Restores Support for Guatemalan Military",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 1981,
+        "label": "Senegalese Military Intervenes to Restore Gambian Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1980,
+        "label": "Honduras Becomes Staging Ground for CIA-Backed Contra Forces",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1980,
+        "label": "Pakistan Becomes CIA Conduit for Afghan Mujahideen",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1979,
+        "label": "CIA begins covert arms supply to Afghan mujahideen",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1979,
+        "label": "Soviet Union invades Afghanistan with 80,000 troops",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1979,
+        "label": "Vietnamese Forces Capture Phnom Penh; PRK Installed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1979,
+        "label": "Sandinista Victory in Nicaragua Transforms Honduras's Cold War Strategic Position",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 1979,
+        "label": "Mozambican Civil War Spillover Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1978,
+        "label": "Vietnam Launches Full-Scale Invasion to End Khmer Rouge Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1978,
+        "label": "Libyan Intervention in Chad Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1978,
+        "label": "Vietnam Invades Cambodia, Creating Security Crisis on Thailand's Border",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 1977,
+        "label": "Rhodesian Forces Attack Francistown \u2014 Frontline State Costs",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1977,
+        "label": "Cuban and Soviet Intervention Changes War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1977,
+        "label": "Morocco Sends Troops to Zaire",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1976,
+        "label": "Tindouf refugee camps established for Sahrawi refugees",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1976,
+        "label": "Syria Intervenes in Lebanese Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1976,
+        "label": "Syria Intervenes in Lebanon's Civil War Backing Christians",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1976,
+        "label": "Zambia Hosts Frontline States Against Apartheid",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1975,
+        "label": "Cuba Sends Troops to Angola, Repels South African Invasion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1975,
+        "label": "East Timor invaded and annexed \u2014 estimated 100,000\u2013180,000 deaths",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 1975,
+        "label": "Angola's Independence Reshapes Regional War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1975,
+        "label": "Communist Indochina Victories Create Domino Alarm in Bangkok",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 1975,
+        "label": "Operasi Komodo \u2014 covert Indonesian destabilization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 1975,
+        "label": "Indonesian invasion \u2014 Operasi Seroja",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1974,
+        "label": "Junta-backed coup in Cyprus triggers Turkish invasion and regime collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1974,
+        "label": "British SAS Conducts Civil Action Campaign Alongside Dhofar Counter-Insurgency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1973,
+        "label": "Pakistan hosts Afghan Islamist militants in response to Pashtunistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1973,
+        "label": "US Congress Bans Further Military Operations in Cambodia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1973,
+        "label": "Iran Deploys Imperial Forces to Support Oman in Dhofar",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1973,
+        "label": "PDRY-Oman Border Conflict and Dhofar Rebellion Support",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1972,
+        "label": "U.S. Economic Blockade and National Truckers' Strike Destabilize Allende",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1972,
+        "label": "Iran Intervenes in Oman's Dhofar Rebellion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1970,
+        "label": "US and South Vietnamese Forces Invade Cambodia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 1970,
+        "label": "Portuguese-Backed Invasion Attempt Repelled",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1969,
+        "label": "Operation Menu: Secret US B-52 Bombing of Cambodia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1968,
+        "label": "Bulgaria Participates in Warsaw Pact Invasion of Czechoslovakia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1968,
+        "label": "Warsaw Pact Invasion Crushes Prague Spring",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1968,
+        "label": "Hungary participates in Warsaw Pact invasion of Czechoslovakia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1968,
+        "label": "Prague Spring crushed by Warsaw Pact invasion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1967,
+        "label": "Che Guevara Captured and Executed in Bolivia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1967,
+        "label": "Six-Day War Escalates Palestinian Armed Presence in Lebanon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1967,
+        "label": "Post-Six Day War Egyptian Withdrawal from Yemen",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1964,
+        "label": "Stanleyville Hostage Crisis and Belgian-US Intervention",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1964,
+        "label": "Arab States Support ELF",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1964,
+        "label": "PLO Founded, Lebanese Territory Central to Palestinian Strategy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 1964,
+        "label": "South Korean Troops Deployed to Vietnam",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1962,
+        "label": "Egyptian Military Intervention in North Yemen",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1961,
+        "label": "Bay of Pigs Invasion Fails Disastrously, Embarrassing the United States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1961,
+        "label": "Bay of Pigs Invasion Fails",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1961,
+        "label": "Kennedy Escalates U.S. Advisors; Strategic Hamlet Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1960,
+        "label": "UN ONUC Deployment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1959,
+        "label": "SAS Mountain Assault Ends Jebel Akhdar War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1956,
+        "label": "Tripartite Aggression: Britain, France, and Israel Repelled from Egypt",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1956,
+        "label": "Soviet tanks crush the Hungarian Revolution on November 4",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1956,
+        "label": "Hungarian Revolution crushed by Soviet military",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1954,
+        "label": "CIA Uses Honduras as Base for Operation PBSUCCESS Against Guatemala",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1953,
+        "label": "CIA Plans Operation PBSUCCESS to Overthrow \u00c1rbenz",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1953,
+        "label": "East German workers uprising suppressed by Soviet tanks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1953,
+        "label": "CIA Orchestrates Iranian Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1950,
+        "label": "KMT Remnants Occupy Shan State, Forcing UN Intervention",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 1950,
+        "label": "Korean War Saves Taiwan: US 7th Fleet Deployed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1941,
+        "label": "President Arias Ousted After Refusing US Bases",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1916,
+        "label": "Belgium occupies Ruanda-Urundi after defeating Germany",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 175
+  }
+}

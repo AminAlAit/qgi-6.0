@@ -1,0 +1,2561 @@
+{
+  "recipe_id": "regional_integration",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Social Movements",
+  "description_compelling": "A country deepens membership in a regional bloc \u2014 accession, customs-union deepening, monetary-union convergence, security-architecture pooling. Trade openness, transparency, regulatory-quality, and democracy scores rise together over a decade. Most common in EU candidate states, in ASEAN deepening, and across African continental integration efforts.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6739174587700056,
+    "ci95_lo": 0.6166019285400011,
+    "ci95_hi": 0.7272508857915585,
+    "ci80_lo": 0.6374068834401007,
+    "ci80_hi": 0.7100972162841164,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2cltort",
+      "v2xeg_eqprotec"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2cltort",
+        "name": "Freedom from Torture (0-4)"
+      },
+      {
+        "code": "v2xeg_eqprotec",
+        "name": "Equal Protection Index (0-1)"
+      }
+    ],
+    "chosen_window": 25,
+    "final_global_auc": 0.6739174587700056,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2cltort",
+        "window": 18,
+        "auc": 0.6606516290726817,
+        "lift_over_previous": 0.1606516290726817,
+        "selected_after": [
+          "v2cltort"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2xeg_eqprotec",
+        "window": 25,
+        "auc": 0.6739174587700056,
+        "lift_over_previous": 0.013265829697323928,
+        "selected_after": [
+          "v2cltort",
+          "v2xeg_eqprotec"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2csreprss",
+        "window": 7,
+        "auc": 0.6786160087377126,
+        "lift_over_previous": 0.004698549967706911,
+        "selected_after": [
+          "v2cltort",
+          "v2xeg_eqprotec",
+          "v2csreprss"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 138,
+    "n_pos_survive": 132,
+    "n_neg_total": 414,
+    "n_neg_survive": 373,
+    "pos_coverage": 0.9565217391304348,
+    "neg_coverage": 0.9009661835748792,
+    "n_countries_survive": 62,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 178,
+      "loco_auc": 0.5786036036036036,
+      "ece": 0.1262675172890003,
+      "ece_ci95_lo": 0.08754948942786021,
+      "ece_ci95_hi": 0.1836375294016475,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 87,
+          "mean_predicted": 0.048823289765880025,
+          "mean_actual": 0.14942528735632185
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 40,
+          "mean_predicted": 0.15319070015102626,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 22,
+          "mean_predicted": 0.2432550686326894,
+          "mean_actual": 0.045454545454545456
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 9,
+          "mean_predicted": 0.3445914950635698,
+          "mean_actual": 0.1111111111111111
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 4,
+          "mean_predicted": 0.4216257855296135,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.5543065547943116,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 6,
+          "mean_predicted": 0.6394119759400686,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 3,
+          "mean_predicted": 0.7300606369972229,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 1,
+          "mean_predicted": 0.8376604318618774,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.9244127869606018,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.4552542830701961,
+      "loco_auc_ci95_hi": 0.6887378412206575
+    },
+    "mid-tier": {
+      "n": 90,
+      "loco_auc": 0.682024659312135,
+      "ece": 0.14121356680989267,
+      "ece_ci95_lo": 0.10338188308187657,
+      "ece_ci95_hi": 0.2513828978159775,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 26,
+          "mean_predicted": 0.05132986863072102,
+          "mean_actual": 0.11538461538461539
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 17,
+          "mean_predicted": 0.14478735801051645,
+          "mean_actual": 0.23529411764705882
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 9,
+          "mean_predicted": 0.24031312929259407,
+          "mean_actual": 0.1111111111111111
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 5,
+          "mean_predicted": 0.3428738057613373,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 9,
+          "mean_predicted": 0.43520427412456936,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 4,
+          "mean_predicted": 0.5787345170974731,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 7,
+          "mean_predicted": 0.6375768951007298,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 7,
+          "mean_predicted": 0.7483141166823251,
+          "mean_actual": 0.5714285714285714
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 6,
+          "mean_predicted": 0.8539533217748007,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5403180123708101,
+      "loco_auc_ci95_hi": 0.8094176812060629
+    },
+    "stable-democracy": {
+      "n": 237,
+      "loco_auc": 0.6698445761897132,
+      "ece": 0.1451536446401087,
+      "ece_ci95_lo": 0.10574460161205397,
+      "ece_ci95_hi": 0.2114154828211316,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 51,
+          "mean_predicted": 0.05450243188762197,
+          "mean_actual": 0.19607843137254902
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 44,
+          "mean_predicted": 0.14672968418083407,
+          "mean_actual": 0.18181818181818182
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 26,
+          "mean_predicted": 0.2540096938610077,
+          "mean_actual": 0.2692307692307692
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 20,
+          "mean_predicted": 0.339868837594986,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 13,
+          "mean_predicted": 0.45667810623462385,
+          "mean_actual": 0.5384615384615384
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 22,
+          "mean_predicted": 0.5439760116013613,
+          "mean_actual": 0.18181818181818182
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 22,
+          "mean_predicted": 0.6585690893910148,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 16,
+          "mean_predicted": 0.7434043474495411,
+          "mean_actual": 0.375
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 20,
+          "mean_predicted": 0.843341988325119,
+          "mean_actual": 0.7
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 3,
+          "mean_predicted": 0.9194288452466329,
+          "mean_actual": 0.6666666666666666
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5899761622106738,
+      "loco_auc_ci95_hi": 0.7393020924230863
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-30T08:22:13.567585+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5103,
+  "stability_diagnostic": {
+    "fold_variance": 0.0826459618567949,
+    "fold_auc_mean": 0.644006734006734,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Albania": 0.65,
+      "Argentina": 0.7142857142857143,
+      "Austria": 0.5555555555555556,
+      "Bahrain": 0.0,
+      "Bolivia": 1.0,
+      "Botswana": 0.9090909090909091,
+      "Brazil": 0.3888888888888889,
+      "Bulgaria": 0.8333333333333334,
+      "Burundi": 0.42857142857142855,
+      "Colombia": 1.0,
+      "Croatia": 1.0,
+      "Cyprus": 0.5555555555555556,
+      "Czechia": 0.9375,
+      "Egypt": 0.6666666666666666,
+      "El Salvador": 0.2,
+      "Ethiopia": 0.9333333333333333,
+      "Finland": 0.875,
+      "Germany": 0.55,
+      "Greece": 0.5,
+      "Hungary": 0.8333333333333334,
+      "Iceland": 0.5625,
+      "Indonesia": 1.0,
+      "Ireland": 0.8571428571428571,
+      "Italy": 1.0,
+      "Jamaica": 0.625,
+      "Kenya": 0.75,
+      "Kuwait": 0.5,
+      "Kyrgyzstan": 0.1,
+      "Laos": 0.9,
+      "Latvia": 0.4666666666666667,
+      "Libya": 0.3333333333333333,
+      "Morocco": 0.0,
+      "Myanmar": 0.42857142857142855,
+      "Netherlands": 0.5,
+      "Norway": 0.8,
+      "Oman": 0.75,
+      "Paraguay": 1.0,
+      "Philippines": 0.4444444444444444,
+      "Poland": 1.0,
+      "Portugal": 0.875,
+      "Qatar": 1.0,
+      "Romania": 0.9090909090909091,
+      "Russia": 0.4444444444444444,
+      "Saudi Arabia": 0.4166666666666667,
+      "Senegal": 1.0,
+      "Serbia": 0.875,
+      "Sierra Leone": 0.5,
+      "Singapore": 0.6,
+      "Slovakia": 0.6666666666666666,
+      "Slovenia": 0.4,
+      "Spain": 0.42857142857142855,
+      "Sweden": 0.5555555555555556,
+      "Switzerland": 0.5,
+      "Syria": 0.6428571428571429,
+      "Tanzania": 1.0,
+      "Timor-Leste": 0.0,
+      "Turkiye": 0.7777777777777778,
+      "Turkmenistan": 0.0,
+      "Ukraine": 1.0,
+      "United Kingdom": 0.5
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.732,
+    "cohort_loco_floor": 0.672,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 138,
+  "n_negatives": 414,
+  "walked_at_utc": "2026-06-30T08:25:01.304524+00:00",
+  "elapsed_seconds": 2990.702407360077,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/regional_integration/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Nicaragua",
+          "India",
+          "Hungary",
+          "Indonesia",
+          "Djibouti",
+          "Turkiye",
+          "Venezuela",
+          "Oman"
+        ],
+        "country_isos": [
+          "ni",
+          "in",
+          "hu",
+          "id",
+          "dj",
+          "tr",
+          "ve",
+          "om"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Belgium",
+          "Bosnia and Herzegovina",
+          "Mali",
+          "Laos",
+          "El Salvador",
+          "Cameroon",
+          "Afghanistan",
+          "Mozambique",
+          "Kenya"
+        ],
+        "country_isos": [
+          "be",
+          "ba",
+          "ml",
+          "la",
+          "sv",
+          "cm",
+          "af",
+          "mz",
+          "ke"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Sudan",
+          "Vietnam",
+          "Pakistan",
+          "Australia",
+          "Equatorial Guinea",
+          "Lesotho",
+          "Yemen",
+          "Fiji",
+          "South Sudan"
+        ],
+        "country_isos": [
+          "sd",
+          "vn",
+          "pk",
+          "au",
+          "gq",
+          "ls",
+          "ye",
+          "fj",
+          "ss"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Libya",
+          "Cuba",
+          "Tunisia",
+          "Comoros",
+          "Montenegro",
+          "Kazakhstan",
+          "Belarus",
+          "Mexico"
+        ],
+        "country_isos": [
+          "ly",
+          "cu",
+          "tn",
+          "km",
+          "me",
+          "kz",
+          "by",
+          "mx"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Zambia",
+          "Tajikistan",
+          "Mauritania",
+          "Brazil",
+          "Ireland",
+          "Madagascar",
+          "Palestine",
+          "Ivory Coast",
+          "Namibia"
+        ],
+        "country_isos": [
+          "zm",
+          "tj",
+          "mr",
+          "br",
+          "ie",
+          "mg",
+          "ps",
+          "ci",
+          "na"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Somalia",
+          "Iraq",
+          "Syria",
+          "Mauritius",
+          "Myanmar",
+          "Bangladesh",
+          "Lebanon",
+          "North Macedonia",
+          "Germany"
+        ],
+        "country_isos": [
+          "so",
+          "iq",
+          "sy",
+          "mu",
+          "mm",
+          "bd",
+          "lb",
+          "mk",
+          "de"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 9,
+        "countries": [
+          "Denmark",
+          "Republic of the Congo",
+          "Switzerland",
+          "Philippines",
+          "Iran",
+          "Argentina",
+          "Angola",
+          "Cambodia",
+          "Haiti"
+        ],
+        "country_isos": [
+          "dk",
+          "cg",
+          "ch",
+          "ph",
+          "ir",
+          "ar",
+          "ao",
+          "kh",
+          "ht"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Timor-Leste",
+          "Botswana",
+          "Japan",
+          "Austria",
+          "Qatar",
+          "Bolivia",
+          "Algeria",
+          "Burundi"
+        ],
+        "country_isos": [
+          "tl",
+          "bw",
+          "jp",
+          "at",
+          "qa",
+          "bo",
+          "dz",
+          "bi"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Turkmenistan",
+          "Israel",
+          "Mongolia",
+          "Ethiopia",
+          "North Korea",
+          "Burkina Faso",
+          "Uruguay",
+          "Guatemala",
+          "Barbados"
+        ],
+        "country_isos": [
+          "tm",
+          "il",
+          "mn",
+          "et",
+          "kp",
+          "bf",
+          "uy",
+          "gt",
+          "bb"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 9,
+        "countries": [
+          "Honduras",
+          "Sierra Leone",
+          "Ukraine",
+          "Papua New Guinea",
+          "Lithuania",
+          "Canada",
+          "Eritrea",
+          "Egypt",
+          "Togo"
+        ],
+        "country_isos": [
+          "hn",
+          "sl",
+          "ua",
+          "pg",
+          "lt",
+          "ca",
+          "er",
+          "eg",
+          "tg"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Kuwait",
+          "South Korea",
+          "Cyprus",
+          "Zimbabwe",
+          "Benin",
+          "Bahrain",
+          "China",
+          "Moldova",
+          "Luxembourg"
+        ],
+        "country_isos": [
+          "kw",
+          "kr",
+          "cy",
+          "zw",
+          "bj",
+          "bh",
+          "cn",
+          "md",
+          "lu"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Liberia",
+          "Nigeria",
+          "Niger",
+          "Saudi Arabia",
+          "Rwanda",
+          "Netherlands",
+          "Kyrgyzstan",
+          "Slovakia"
+        ],
+        "country_isos": [
+          "lr",
+          "ng",
+          "ne",
+          "sa",
+          "rw",
+          "nl",
+          "kg",
+          "sk"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Bulgaria",
+          "Suriname",
+          "Chile",
+          "United Kingdom",
+          "Vanuatu",
+          "New Zealand",
+          "Russia",
+          "The Democratic Republic of the Congo",
+          "Ecuador"
+        ],
+        "country_isos": [
+          "bg",
+          "sr",
+          "cl",
+          "gb",
+          "vu",
+          "nz",
+          "ru",
+          "cd",
+          "ec"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "Slovenia",
+          "Iceland",
+          "Latvia",
+          "Estonia",
+          "Bhutan",
+          "Solomon Islands",
+          "Thailand",
+          "Spain",
+          "Morocco"
+        ],
+        "country_isos": [
+          "si",
+          "is",
+          "lv",
+          "ee",
+          "bt",
+          "sb",
+          "th",
+          "es",
+          "ma"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Costa Rica",
+          "Greece",
+          "Seychelles",
+          "Portugal",
+          "Azerbaijan",
+          "Romania",
+          "United Arab Emirates",
+          "Norway",
+          "Dominican Republic"
+        ],
+        "country_isos": [
+          "cr",
+          "gr",
+          "sc",
+          "pt",
+          "az",
+          "ro",
+          "ae",
+          "no",
+          "do"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "South Africa",
+          "Uzbekistan",
+          "Guinea-Bissau",
+          "Poland",
+          "Paraguay",
+          "United States",
+          "Senegal",
+          "Czechia"
+        ],
+        "country_isos": [
+          "za",
+          "uz",
+          "gw",
+          "pl",
+          "py",
+          "us",
+          "sn",
+          "cz"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 9,
+        "countries": [
+          "Finland",
+          "Eswatini",
+          "Croatia",
+          "Chad",
+          "Central African Republic",
+          "Jordan",
+          "Hong Kong",
+          "Guyana",
+          "Armenia"
+        ],
+        "country_isos": [
+          "fi",
+          "sz",
+          "hr",
+          "td",
+          "cf",
+          "jo",
+          "hk",
+          "gy",
+          "am"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "Guinea",
+          "Italy",
+          "Peru",
+          "Sweden",
+          "Sao Tome and Principe",
+          "Georgia",
+          "Trinidad and Tobago",
+          "Gabon",
+          "Panama"
+        ],
+        "country_isos": [
+          "gn",
+          "it",
+          "pe",
+          "se",
+          "st",
+          "ge",
+          "tt",
+          "ga",
+          "pa"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Singapore",
+          "Maldives",
+          "Cabo Verde",
+          "Ghana",
+          "Malawi",
+          "Albania",
+          "France",
+          "Sri Lanka",
+          "Serbia"
+        ],
+        "country_isos": [
+          "sg",
+          "mv",
+          "cv",
+          "gh",
+          "mw",
+          "al",
+          "fr",
+          "lk",
+          "rs"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Colombia",
+          "Nepal",
+          "Malaysia",
+          "Tanzania",
+          "Uganda",
+          "Malta",
+          "Taiwan",
+          "The Gambia",
+          "Jamaica"
+        ],
+        "country_isos": [
+          "co",
+          "np",
+          "my",
+          "tz",
+          "ug",
+          "mt",
+          "tw",
+          "gm",
+          "jm"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.3,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 175,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.1034,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.5464082950842534,
+      "b": 0.0,
+      "c": -0.16543964246439097,
+      "n_fit": 505,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 30,
+        "observed_rate": 0.16666666666666666
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 142,
+        "observed_rate": 0.1619718309859155
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 140,
+        "observed_rate": 0.19285714285714287
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 118,
+        "observed_rate": 0.2966101694915254
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 75,
+        "observed_rate": 0.56
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.056218707407999516,
+    "n_predictions": 505,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.1262675172890003,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 87,
+            "mean_predicted": 0.048823289765880025,
+            "mean_actual": 0.14942528735632185
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 40,
+            "mean_predicted": 0.15319070015102626,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 22,
+            "mean_predicted": 0.2432550686326894,
+            "mean_actual": 0.045454545454545456
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 9,
+            "mean_predicted": 0.3445914950635698,
+            "mean_actual": 0.1111111111111111
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 4,
+            "mean_predicted": 0.4216257855296135,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 5,
+            "mean_predicted": 0.5543065547943116,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 6,
+            "mean_predicted": 0.6394119759400686,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 3,
+            "mean_predicted": 0.7300606369972229,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 1,
+            "mean_predicted": 0.8376604318618774,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.9244127869606018,
+            "mean_actual": 1.0
+          }
+        ],
+        "n": 178,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.14121356680989267,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 26,
+            "mean_predicted": 0.05132986863072102,
+            "mean_actual": 0.11538461538461539
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 17,
+            "mean_predicted": 0.14478735801051645,
+            "mean_actual": 0.23529411764705882
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 9,
+            "mean_predicted": 0.24031312929259407,
+            "mean_actual": 0.1111111111111111
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 5,
+            "mean_predicted": 0.3428738057613373,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 9,
+            "mean_predicted": 0.43520427412456936,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 4,
+            "mean_predicted": 0.5787345170974731,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 7,
+            "mean_predicted": 0.6375768951007298,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 7,
+            "mean_predicted": 0.7483141166823251,
+            "mean_actual": 0.5714285714285714
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 6,
+            "mean_predicted": 0.8539533217748007,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 90,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.1451536446401087,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 51,
+            "mean_predicted": 0.05450243188762197,
+            "mean_actual": 0.19607843137254902
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 44,
+            "mean_predicted": 0.14672968418083407,
+            "mean_actual": 0.18181818181818182
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 26,
+            "mean_predicted": 0.2540096938610077,
+            "mean_actual": 0.2692307692307692
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 20,
+            "mean_predicted": 0.339868837594986,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 13,
+            "mean_predicted": 0.45667810623462385,
+            "mean_actual": 0.5384615384615384
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 22,
+            "mean_predicted": 0.5439760116013613,
+            "mean_actual": 0.18181818181818182
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 22,
+            "mean_predicted": 0.6585690893910148,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 16,
+            "mean_predicted": 0.7434043474495411,
+            "mean_actual": 0.375
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 20,
+            "mean_predicted": 0.843341988325119,
+            "mean_actual": 0.7
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 3,
+            "mean_predicted": 0.9194288452466329,
+            "mean_actual": 0.6666666666666666
+          }
+        ],
+        "n": 237,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/regional_integration.scores.json",
+  "shape_points": [
+    -0.009311730292478906,
+    0.014382574336332908,
+    0.03807687896514472,
+    0.061771183593956544,
+    0.08546548822276835,
+    0.10915979285158017,
+    0.13285409748039198,
+    0.1565484021092038,
+    0.1802427067380156,
+    0.2039370113668274,
+    0.22763131599563924,
+    0.2513256206244511
+  ],
+  "shap_importance_raw": {
+    "v2cltort": 2.1176390647888184,
+    "v2xeg_eqprotec": 1.7550432682037354
+  },
+  "shap_importance_normalized": {
+    "v2cltort": 0.54681455453963,
+    "v2xeg_eqprotec": 0.45318544546037
+  },
+  "shap_direction_signs": {
+    "v2cltort": -1,
+    "v2xeg_eqprotec": -1
+  },
+  "per_feature_breakdown": {
+    "v2cltort": {
+      "last_z": 0.4437451660633087,
+      "mean_z": 0.1576772779226303,
+      "std_z": 0.2528522312641144,
+      "slope": 0.35828742384910583,
+      "accel": 0.23196634650230408,
+      "tertile1_mean": 0.2620323896408081,
+      "tertile2_mean": 0.1445111185312271,
+      "tertile3_mean": 0.26656728982925415
+    },
+    "v2xeg_eqprotec": {
+      "last_z": 0.18814732134342194,
+      "mean_z": 0.0767604410648346,
+      "std_z": 0.16806113719940186,
+      "slope": 0.1950964629650116,
+      "accel": 0.5449782609939575,
+      "tertile1_mean": 0.2868505120277405,
+      "tertile2_mean": 0.15651077032089233,
+      "tertile3_mean": 0.13863837718963623
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 25,
+    "indicators": [
+      {
+        "code": "v2cltort",
+        "name": "Freedom from Torture (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 136,
+        "shape": {
+          "mean": [
+            -0.6013,
+            -0.6151,
+            -0.538,
+            -0.5607,
+            -0.5136,
+            -0.454,
+            -0.4422,
+            -0.3691,
+            -0.2556,
+            -0.1659,
+            -0.1011,
+            -0.0861,
+            -0.0058,
+            0.1026,
+            0.1458,
+            0.1171,
+            0.1253,
+            0.1992,
+            0.2626,
+            0.3105,
+            0.42,
+            0.521,
+            0.6338,
+            0.7271,
+            0.8194
+          ],
+          "p25": [
+            -1.4282,
+            -1.4283,
+            -1.1984,
+            -1.1627,
+            -1.1145,
+            -0.9948,
+            -0.9823,
+            -0.8812,
+            -0.7348,
+            -0.6762,
+            -0.6027,
+            -0.5835,
+            -0.5443,
+            -0.4175,
+            -0.3618,
+            -0.3849,
+            -0.3618,
+            -0.2889,
+            -0.2358,
+            -0.1515,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1769
+          ],
+          "p75": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.2662,
+            0.3388,
+            0.3875,
+            0.4456,
+            0.4984,
+            0.5012,
+            0.6147,
+            0.6721,
+            0.6721,
+            0.6611,
+            0.721,
+            0.8013,
+            0.848,
+            0.9466,
+            1.0331,
+            1.1273,
+            1.3064,
+            1.3919
+          ]
+        }
+      },
+      {
+        "code": "v2xeg_eqprotec",
+        "name": "Equal Protection Index (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 136,
+        "shape": {
+          "mean": [
+            -0.5879,
+            -0.532,
+            -0.5019,
+            -0.5966,
+            -0.5297,
+            -0.458,
+            -0.4225,
+            -0.3344,
+            -0.2105,
+            -0.213,
+            -0.1594,
+            -0.0666,
+            -0.0989,
+            -0.0912,
+            0.0459,
+            0.0629,
+            0.0886,
+            0.1991,
+            0.298,
+            0.4456,
+            0.4413,
+            0.5827,
+            0.7269,
+            0.74,
+            0.8434
+          ],
+          "p25": [
+            -1.3135,
+            -1.2734,
+            -1.2,
+            -1.2277,
+            -1.1506,
+            -0.9723,
+            -1.0167,
+            -0.8665,
+            -0.788,
+            -0.7444,
+            -0.6764,
+            -0.6768,
+            -0.6762,
+            -0.6288,
+            -0.5786,
+            -0.5778,
+            -0.5521,
+            -0.4965,
+            -0.4081,
+            -0.0713,
+            -0.0602,
+            0.0217,
+            0.2889,
+            0.3326,
+            0.4272
+          ],
+          "p75": [
+            0.0,
+            0.0,
+            0.0,
+            -0.1393,
+            -0.1478,
+            -0.0648,
+            0.1143,
+            0.2889,
+            0.4536,
+            0.444,
+            0.4878,
+            0.5786,
+            0.5282,
+            0.524,
+            0.6342,
+            0.6601,
+            0.6651,
+            0.7999,
+            0.8883,
+            1.0455,
+            1.0414,
+            1.1766,
+            1.3842,
+            1.4386,
+            1.4916
+          ]
+        }
+      }
+    ],
+    "samples_used": 136,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 2025,
+        "label": "Albania Opens Final EU Negotiating Cluster",
+        "in_training_set": false
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2025,
+        "label": "ASEAN full membership granted at Kuala Lumpur summit",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2025,
+        "label": "UK-EU Reset Pursues Closer Security and Trade Cooperation",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 2024,
+        "label": "Armenian Parliament Votes to Pursue EU Membership Dialogue",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 2024,
+        "label": "Mali Formally Withdraws from ECOWAS",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2024,
+        "label": "Niger Announces Withdrawal from ECOWAS",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2023,
+        "label": "Alliance des \u00c9tats du Sahel \u2014 Junta Bloc Formed with Mali and Niger",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2023,
+        "label": "Burundi engages EAC-led Congo peace process under Tshisekedi",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 2023,
+        "label": "Croatia Joins Schengen Area and Adopts the Euro Simultaneously",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 2023,
+        "label": "Romania Partially Joins Schengen Area After Decade of Exclusion",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2023,
+        "label": "Sweden Transfers EU Council Presidency Amid Migration Debate",
+        "in_training_set": false
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2023,
+        "label": "ASEAN observer seat formally taken",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 2022,
+        "label": "First EU Accession Conference Opens Formal Negotiations",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 2022,
+        "label": "Brunei Hosts ASEAN-China Special Summit",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2022,
+        "label": "Kosovo Formally Applies for EU Membership",
+        "in_training_set": false
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2022,
+        "label": "ASEAN agrees in principle to admit Timor-Leste",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2022,
+        "label": "EU Grants Ukraine Candidate Status",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bh",
+        "country_name": "Bahrain",
+        "year": 2021,
+        "label": "Qatar Blockade Ends with Al-Ula Declaration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2021,
+        "label": "Al Ula Declaration Ends Three-and-a-Half-Year Blockade",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 2020,
+        "label": "EU Decides to Open Accession Negotiations with Albania",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 2018,
+        "label": "Austria holds rotating EU Council Presidency and pushes migration agenda",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 2015,
+        "label": "EU Membership Application Effectively Withdrawn",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2015,
+        "label": "Kyrgyzstan Joins Eurasian Economic Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2015,
+        "label": "Latvia Holds EU Council Presidency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 2014,
+        "label": "Albania Granted EU Candidate Status",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2014,
+        "label": "EU\u2013Ukraine Association Agreement and DCFTA Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 2013,
+        "label": "Croatia Joins the European Union \u2014 28th Member State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 2013,
+        "label": "EU Accession Negotiations Suspended",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2013,
+        "label": "Kyrgyzstan Joins Russian-Led Customs Union Negotiations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2012,
+        "label": "Burundi joins EAC common market \u2014 trade integration deepens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 2012,
+        "label": "Cyprus assumes EU Council presidency amid deepening financial crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 2012,
+        "label": "MERCOSUR Suspends Paraguay; Venezuela Admitted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 2012,
+        "label": "Serbia Granted EU Candidate Status",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 2011,
+        "label": "EU Accession Treaty Signed \u2014 Croatia's European Integration Milestone",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2011,
+        "label": "Ethiopia hosts major AU summit on South Sudan crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2011,
+        "label": "Application for ASEAN membership submitted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 2009,
+        "label": "Albania Submits Formal Application for EU Membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 2009,
+        "label": "Czech EU Council Presidency Marred by Government Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 2009,
+        "label": "Iceland Applies for EU Membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 2009,
+        "label": "Serbia Applies for EU Membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2009,
+        "label": "Sweden Holds EU Council Presidency During Lisbon Treaty Entry into Force",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 2008,
+        "label": "EU-Serbia Stabilization and Association Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2008,
+        "label": "Switzerland Joins Schengen Area",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 2007,
+        "label": "Bulgaria Joins the European Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 2007,
+        "label": "Czech Republic Joins Schengen Area",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2007,
+        "label": "Germany holds EU presidency, advances Lisbon Treaty negotiations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 2007,
+        "label": "Hungary joins the Schengen Area, removing border controls with EU neighbors",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2007,
+        "label": "Latvia Joins the Schengen Area",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2007,
+        "label": "Lithuania Joins the Schengen Area",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 2007,
+        "label": "Romania Joins the European Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2007,
+        "label": "Singapore Chairs ASEAN and Oversees Charter Signing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 2007,
+        "label": "Slovakia enters the Schengen Area",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 2006,
+        "label": "Stabilisation and Association Agreement with EU Enters Force",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 2006,
+        "label": "Bolivia Joins ALBA Regional Bloc; Aligns with Venezuela and Cuba",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2006,
+        "label": "UNASUR South American Union Proposed by Brazil",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2006,
+        "label": "CARICOM Single Market Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 2005,
+        "label": "Serbia Applies for EU Stabilization and Association Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2005,
+        "label": "Voters Approve Schengen/Dublin Association in Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2005,
+        "label": "EU Accession Negotiations Formally Open on 3 October",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 2004,
+        "label": "Cyprus joins the European Union as a divided island",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 2004,
+        "label": "Czech Republic Joins European Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 2004,
+        "label": "Hungary joins the European Union on May 1 in historic enlargement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2004,
+        "label": "Latvia Joins the European Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2004,
+        "label": "Lithuania Joins the European Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 2004,
+        "label": "Poland Joins the European Union \u2014 Big Bang Enlargement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 2004,
+        "label": "Slovakia joins both NATO and the European Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2004,
+        "label": "EU Brussels Summit Approves Start of Accession Negotiations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 2003,
+        "label": "SAA Negotiations with EU Formally Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 2003,
+        "label": "Overwhelming referendum approves EU membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2002,
+        "label": "Jamaica Joins CARICOM Single Market and Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1999,
+        "label": "EU Accession Negotiations Formally Opened",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1999,
+        "label": "Peace negotiations begin under OAU mediation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 1999,
+        "label": "Finland Holds EU Council Presidency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1999,
+        "label": "Euro introduced; Deutsche Mark retired as Germany's monetary unit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 1999,
+        "label": "Lithuania Formally Applies for EU Membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 1999,
+        "label": "EU Grants Turkey Formal Candidate Status at Helsinki Summit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 1998,
+        "label": "EU formally opens accession negotiations with Cyprus",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 1997,
+        "label": "Laos Admitted as Full Member of ASEAN",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1997,
+        "label": "Myanmar Joins ASEAN Despite International Protest",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1996,
+        "label": "Croatia Joins Council of Europe",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 1996,
+        "label": "Latvia Submits Application for European Union Membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 1995,
+        "label": "Austria joins the European Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 1995,
+        "label": "Finland Joins the European Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 1995,
+        "label": "Sweden Joins the European Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1994,
+        "label": "Hungary submits formal European Union membership application",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 1994,
+        "label": "EEA Agreement Enters into Force",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 1993,
+        "label": "Belarus joins the Commonwealth of Independent States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 1993,
+        "label": "European Commission confirms Cyprus eligibility for EU membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1993,
+        "label": "Czech Republic Joins Council of Europe",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 1993,
+        "label": "Barents Euro-Arctic Region Council Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 1992,
+        "label": "SADC Established \u2014 Botswana Hosts Regional Secretariat",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1992,
+        "label": "Germany ratifies Maastricht Treaty, committing to European monetary union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1992,
+        "label": "Greece ratifies the Maastricht Treaty, committing to European monetary union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1992,
+        "label": "Maastricht Treaty Ratification Splits the Conservative Party",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1991,
+        "label": "Mercosur Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1991,
+        "label": "Mercosur Customs Union Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1991,
+        "label": "Commonwealth of Independent States founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 1990,
+        "label": "Republic of Cyprus formally applies for European Community membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 1989,
+        "label": "Austria applies for European Community membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1989,
+        "label": "Egypt Readmitted to Arab League",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1989,
+        "label": "Arab Maghreb Union Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1989,
+        "label": "Arab Maghreb Union Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1988,
+        "label": "Argentina-Brazil Integration Agreements",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 1986,
+        "label": "SADCC Summit Hosted \u2014 Botswana as Regional Coordination Hub",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1986,
+        "label": "Portugal Joins the European Economic Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1985,
+        "label": "West Germany signs the Schengen Agreement on free movement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1985,
+        "label": "Spain Signs EEC Accession Treaty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 1984,
+        "label": "Brunei Joins ASEAN as Sixth Member State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 1982,
+        "label": "Senegambia Confederation Established with The Gambia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1981,
+        "label": "Greece becomes the tenth member of the European Economic Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1981,
+        "label": "Gulf Cooperation Council Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1981,
+        "label": "Oman Becomes Founding Member of Gulf Cooperation Council",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1981,
+        "label": "Gulf Cooperation Council Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1979,
+        "label": "Greece signs Treaty of Accession to the European Economic Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1977,
+        "label": "East African Community Collapses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1977,
+        "label": "Portugal Applies for EEC Membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1977,
+        "label": "East African Community Collapses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1976,
+        "label": "Gulf Cooperation Council Precursor Consultations Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1975,
+        "label": "ECOWAS Founding Membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1975,
+        "label": "EEC Membership Confirmed in Britain's First National Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1973,
+        "label": "Ireland Joins the European Economic Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1973,
+        "label": "Britain Joins the European Economic Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1972,
+        "label": "Referendum Approves EEC Membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1971,
+        "label": "Gulf States Independence and New Security Architecture",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1969,
+        "label": "Cartagena Agreement: Andean Pact Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1967,
+        "label": "ASEAN founded \u2014 Indonesia as leading member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1967,
+        "label": "East African Community Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1967,
+        "label": "ASEAN Founded \u2014 Philippines as Charter Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1967,
+        "label": "East African Community Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1964,
+        "label": "OAU adopts principle of colonial-era border inviolability",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1963,
+        "label": "De Gaulle Vetoes UK's EEC Membership Application",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 1962,
+        "label": "Jamaica Joins the West Indies Federation Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1962,
+        "label": "EEC Rejects Spain's Membership Application on Democratic Grounds",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1961,
+        "label": "Syria Breaks Away from United Arab Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1961,
+        "label": "Athens Agreement grants Greece EEC associate membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1961,
+        "label": "Britain Applies to Join the European Economic Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 1960,
+        "label": "Central American Common Market Treaty Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1958,
+        "label": "United Arab Republic Formed with Syria",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1958,
+        "label": "Syria and Egypt Unite to Form the United Arab Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1957,
+        "label": "West Germany signs the Treaty of Rome, founding the EEC",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1957,
+        "label": "Italy Signs the Treaty of Rome, Co-Founding the EEC",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1957,
+        "label": "Treaty of Rome: Netherlands as EEC Co-founder",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 1952,
+        "label": "Nordic Council Founded with Sweden as Founding Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1951,
+        "label": "West Germany joins the European Coal and Steel Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1951,
+        "label": "Italy Joins the European Coal and Steel Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1951,
+        "label": "Netherlands Co-founds European Coal and Steel Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1950,
+        "label": "Syria Joins the Arab League Economic Council",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 147
+  }
+}

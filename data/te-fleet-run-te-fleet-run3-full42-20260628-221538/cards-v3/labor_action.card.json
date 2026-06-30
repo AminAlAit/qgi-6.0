@@ -1,0 +1,2024 @@
+{
+  "recipe_id": "labor_action",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Foreign Policy",
+  "description_compelling": "Organized work stoppage at scale \u2014 general strikes, sector-wide walkouts, coordinated industrial action with political consequence. Unemployment, civil-society freedom, and youth-precarity metrics typically trend ahead of the action. Frequent in unionized industrial democracies and in resource economies during commodity-price reversals.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.7210477941176471,
+    "ci95_lo": 0.6284866839868615,
+    "ci95_hi": 0.7962075892712164,
+    "ci80_lo": 0.6614698693767461,
+    "ci80_hi": 0.7715909090909091,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "AG.PRD.FOOD.XD",
+      "SP.DYN.TFRT.IN",
+      "SP.POP.TOTL",
+      "v2merange"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "AG.PRD.FOOD.XD",
+        "name": null
+      },
+      {
+        "code": "SP.DYN.TFRT.IN",
+        "name": null
+      },
+      {
+        "code": "SP.POP.TOTL",
+        "name": null
+      },
+      {
+        "code": "v2merange",
+        "name": null
+      }
+    ],
+    "chosen_window": 5,
+    "final_global_auc": 0.7210477941176471,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "AG.PRD.FOOD.XD",
+        "window": 12,
+        "auc": 0.6578520441271901,
+        "lift_over_previous": 0.15785204412719012,
+        "selected_after": [
+          "AG.PRD.FOOD.XD"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "SP.DYN.TFRT.IN",
+        "window": 3,
+        "auc": 0.6724452554744526,
+        "lift_over_previous": 0.014593211347262436,
+        "selected_after": [
+          "AG.PRD.FOOD.XD",
+          "SP.DYN.TFRT.IN"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "SP.POP.TOTL",
+        "window": 5,
+        "auc": 0.6835462287104623,
+        "lift_over_previous": 0.011100973236009781,
+        "selected_after": [
+          "AG.PRD.FOOD.XD",
+          "SP.DYN.TFRT.IN",
+          "SP.POP.TOTL"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2merange",
+        "window": 5,
+        "auc": 0.7210477941176471,
+        "lift_over_previous": 0.037501565407184745,
+        "selected_after": [
+          "AG.PRD.FOOD.XD",
+          "SP.DYN.TFRT.IN",
+          "SP.POP.TOTL",
+          "v2merange"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2catrauni",
+        "window": 5,
+        "auc": 0.7185968137254902,
+        "lift_over_previous": -0.002450980392156854,
+        "selected_after": [
+          "AG.PRD.FOOD.XD",
+          "SP.DYN.TFRT.IN",
+          "SP.POP.TOTL",
+          "v2merange",
+          "v2catrauni"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 74,
+    "n_pos_survive": 48,
+    "n_neg_total": 222,
+    "n_neg_survive": 136,
+    "pos_coverage": 0.6486486486486487,
+    "neg_coverage": 0.6126126126126126,
+    "n_countries_survive": 41,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 87,
+      "loco_auc": 0.70995670995671,
+      "ece": 0.1246317463777103,
+      "ece_ci95_lo": 0.08988614721215683,
+      "ece_ci95_hi": 0.2343547288707093,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 44,
+          "mean_predicted": 0.04057568520180543,
+          "mean_actual": 0.1590909090909091
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 12,
+          "mean_predicted": 0.1398000493645668,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 5,
+          "mean_predicted": 0.2358077883720398,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 4,
+          "mean_predicted": 0.3530612662434578,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 5,
+          "mean_predicted": 0.4493500113487244,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 6,
+          "mean_predicted": 0.5414239764213562,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.6606029272079468,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 5,
+          "mean_predicted": 0.763995885848999,
+          "mean_actual": 0.8
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 1,
+          "mean_predicted": 0.8375359773635864,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 2,
+          "mean_predicted": 0.947510689496994,
+          "mean_actual": 0.5
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5653302415811112,
+      "loco_auc_ci95_hi": 0.831695676823358
+    },
+    "mid-tier": {
+      "n": 35,
+      "loco_auc": 0.752,
+      "ece": 0.16081349588930605,
+      "ece_ci95_lo": 0.1080617647830929,
+      "ece_ci95_hi": 0.3159155440330505,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 12,
+          "mean_predicted": 0.04056024939442674,
+          "mean_actual": 0.08333333333333333
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 6,
+          "mean_predicted": 0.12329355378945668,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 5,
+          "mean_predicted": 0.25382857024669647,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 1,
+          "mean_predicted": 0.34139734506607056,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 4,
+          "mean_predicted": 0.45418480783700943,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.641903817653656,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 1,
+          "mean_predicted": 0.7254078388214111,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 2,
+          "mean_predicted": 0.8692261278629303,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 2,
+          "mean_predicted": 0.9258868396282196,
+          "mean_actual": 0.5
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5634974762430688,
+      "loco_auc_ci95_hi": 0.8890340971678564
+    },
+    "stable-democracy": {
+      "n": 62,
+      "loco_auc": 0.7359477124183007,
+      "ece": 0.13650421678058564,
+      "ece_ci95_lo": 0.09902155530158312,
+      "ece_ci95_hi": 0.25174800374605233,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 17,
+          "mean_predicted": 0.05380874477765139,
+          "mean_actual": 0.11764705882352941
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 8,
+          "mean_predicted": 0.13915677461773157,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 13,
+          "mean_predicted": 0.23887403080096611,
+          "mean_actual": 0.07692307692307693
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 8,
+          "mean_predicted": 0.3486364930868149,
+          "mean_actual": 0.375
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 1,
+          "mean_predicted": 0.4039386212825775,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.5860649049282074,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.6728368401527405,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 5,
+          "mean_predicted": 0.7635720014572144,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 6,
+          "mean_predicted": 0.8544565141201019,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.555826773038758,
+      "loco_auc_ci95_hi": 0.8764800746096568
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-29T20:37:13.695550+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.4751,
+  "stability_diagnostic": {
+    "fold_variance": 0.11341224106564395,
+    "fold_auc_mean": 0.732780612244898,
+    "label": "HIGH",
+    "per_country_loco_auc": {
+      "Argentina": 0.6666666666666666,
+      "Australia": 1.0,
+      "Bangladesh": 1.0,
+      "Belarus": 0.0,
+      "Belgium": 0.0,
+      "Bolivia": 1.0,
+      "Brazil": 0.3333333333333333,
+      "China": 1.0,
+      "Colombia": 0.0,
+      "Egypt": 1.0,
+      "France": 1.0,
+      "India": 1.0,
+      "Indonesia": 0.5714285714285714,
+      "Italy": 1.0,
+      "Mexico": 0.5714285714285714,
+      "Namibia": 1.0,
+      "Netherlands": 1.0,
+      "Nigeria": 0.625,
+      "Poland": 0.6,
+      "Romania": 0.6,
+      "South Africa": 0.4666666666666667,
+      "South Korea": 1.0,
+      "Spain": 1.0,
+      "Togo": 1.0,
+      "Tunisia": 0.3333333333333333,
+      "United Kingdom": 1.0,
+      "Uruguay": 1.0,
+      "Venezuela": 0.75
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7409,
+    "cohort_loco_floor": 0.6809,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 74,
+  "n_negatives": 222,
+  "walked_at_utc": "2026-06-29T20:38:36.225661+00:00",
+  "elapsed_seconds": 1289.6513559818268,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/labor_action/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Central African Republic",
+          "Kyrgyzstan",
+          "Bulgaria",
+          "Denmark",
+          "Togo",
+          "Niger",
+          "Tunisia",
+          "Equatorial Guinea"
+        ],
+        "country_isos": [
+          "cf",
+          "kg",
+          "bg",
+          "dk",
+          "tg",
+          "ne",
+          "tn",
+          "gq"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Ecuador",
+          "Dominican Republic",
+          "Cameroon",
+          "Guinea-Bissau",
+          "Palestine",
+          "Turkmenistan",
+          "Montenegro",
+          "El Salvador",
+          "Jordan"
+        ],
+        "country_isos": [
+          "ec",
+          "do",
+          "cm",
+          "gw",
+          "ps",
+          "tm",
+          "me",
+          "sv",
+          "jo"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Tajikistan",
+          "Malawi",
+          "Uruguay",
+          "Azerbaijan",
+          "Iran",
+          "Lithuania",
+          "Slovakia",
+          "Sierra Leone",
+          "North Korea"
+        ],
+        "country_isos": [
+          "tj",
+          "mw",
+          "uy",
+          "az",
+          "ir",
+          "lt",
+          "sk",
+          "sl",
+          "kp"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Guyana",
+          "Mongolia",
+          "Papua New Guinea",
+          "Iceland",
+          "Oman",
+          "Belarus",
+          "Cyprus",
+          "Guinea"
+        ],
+        "country_isos": [
+          "gy",
+          "mn",
+          "pg",
+          "is",
+          "om",
+          "by",
+          "cy",
+          "gn"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Chad",
+          "Ireland",
+          "Serbia",
+          "Sao Tome and Principe",
+          "Qatar",
+          "Fiji",
+          "Comoros",
+          "Luxembourg",
+          "Rwanda"
+        ],
+        "country_isos": [
+          "td",
+          "ie",
+          "rs",
+          "st",
+          "qa",
+          "fj",
+          "km",
+          "lu",
+          "rw"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Burkina Faso",
+          "Gabon",
+          "Romania",
+          "Lebanon",
+          "Zambia",
+          "Albania",
+          "Jamaica",
+          "Seychelles",
+          "Australia"
+        ],
+        "country_isos": [
+          "bf",
+          "ga",
+          "ro",
+          "lb",
+          "zm",
+          "al",
+          "jm",
+          "sc",
+          "au"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 8,
+        "countries": [
+          "Somalia",
+          "Mali",
+          "Bhutan",
+          "Malaysia",
+          "Solomon Islands",
+          "Bosnia and Herzegovina",
+          "Portugal",
+          "Chile"
+        ],
+        "country_isos": [
+          "so",
+          "ml",
+          "bt",
+          "my",
+          "sb",
+          "ba",
+          "pt",
+          "cl"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 9,
+        "countries": [
+          "Haiti",
+          "Mozambique",
+          "Djibouti",
+          "Argentina",
+          "Estonia",
+          "Belgium",
+          "Greece",
+          "Georgia",
+          "Kuwait"
+        ],
+        "country_isos": [
+          "ht",
+          "mz",
+          "dj",
+          "ar",
+          "ee",
+          "be",
+          "gr",
+          "ge",
+          "kw"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Slovenia",
+          "Honduras",
+          "Namibia",
+          "Republic of the Congo",
+          "Japan",
+          "New Zealand",
+          "Paraguay",
+          "Indonesia",
+          "Benin"
+        ],
+        "country_isos": [
+          "si",
+          "hn",
+          "na",
+          "cg",
+          "jp",
+          "nz",
+          "py",
+          "id",
+          "bj"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 8,
+        "countries": [
+          "Ivory Coast",
+          "Iraq",
+          "France",
+          "Hong Kong",
+          "Senegal",
+          "Austria",
+          "Myanmar",
+          "Saudi Arabia"
+        ],
+        "country_isos": [
+          "ci",
+          "iq",
+          "fr",
+          "hk",
+          "sn",
+          "at",
+          "mm",
+          "sa"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Madagascar",
+          "United Kingdom",
+          "Nepal",
+          "Botswana",
+          "Philippines",
+          "Mauritius",
+          "United Arab Emirates",
+          "Panama",
+          "Bahrain"
+        ],
+        "country_isos": [
+          "mg",
+          "gb",
+          "np",
+          "bw",
+          "ph",
+          "mu",
+          "ae",
+          "pa",
+          "bh"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 9,
+        "countries": [
+          "Germany",
+          "Zimbabwe",
+          "Angola",
+          "South Sudan",
+          "Sudan",
+          "Cambodia",
+          "Malta",
+          "Singapore",
+          "Canada"
+        ],
+        "country_isos": [
+          "de",
+          "zw",
+          "ao",
+          "ss",
+          "sd",
+          "kh",
+          "mt",
+          "sg",
+          "ca"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Ethiopia",
+          "Armenia",
+          "Mauritania",
+          "Bolivia",
+          "Maldives",
+          "Sweden",
+          "Libya",
+          "Burundi",
+          "Sri Lanka"
+        ],
+        "country_isos": [
+          "et",
+          "am",
+          "mr",
+          "bo",
+          "mv",
+          "se",
+          "ly",
+          "bi",
+          "lk"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 8,
+        "countries": [
+          "Morocco",
+          "Afghanistan",
+          "Kazakhstan",
+          "Latvia",
+          "Barbados",
+          "Netherlands",
+          "Israel",
+          "Peru"
+        ],
+        "country_isos": [
+          "ma",
+          "af",
+          "kz",
+          "lv",
+          "bb",
+          "nl",
+          "il",
+          "pe"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Nicaragua",
+          "The Gambia",
+          "Uganda",
+          "Eswatini",
+          "Norway",
+          "Cabo Verde",
+          "Guatemala",
+          "Lesotho",
+          "Croatia"
+        ],
+        "country_isos": [
+          "ni",
+          "gm",
+          "ug",
+          "sz",
+          "no",
+          "cv",
+          "gt",
+          "ls",
+          "hr"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 9,
+        "countries": [
+          "Hungary",
+          "Yemen",
+          "United States",
+          "Switzerland",
+          "Uzbekistan",
+          "Syria",
+          "Liberia",
+          "Costa Rica",
+          "North Macedonia"
+        ],
+        "country_isos": [
+          "hu",
+          "ye",
+          "us",
+          "ch",
+          "uz",
+          "sy",
+          "lr",
+          "cr",
+          "mk"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 8,
+        "countries": [
+          "Italy",
+          "Vietnam",
+          "Algeria",
+          "Moldova",
+          "Venezuela",
+          "Czechia",
+          "Finland",
+          "Tanzania"
+        ],
+        "country_isos": [
+          "it",
+          "vn",
+          "dz",
+          "md",
+          "ve",
+          "cz",
+          "fi",
+          "tz"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "Mexico",
+          "Spain",
+          "Thailand",
+          "Suriname",
+          "Cuba",
+          "Kenya",
+          "Ghana",
+          "Nigeria",
+          "Eritrea"
+        ],
+        "country_isos": [
+          "mx",
+          "es",
+          "th",
+          "sr",
+          "cu",
+          "ke",
+          "gh",
+          "ng",
+          "er"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "The Democratic Republic of the Congo",
+          "South Korea",
+          "Ukraine",
+          "Turkiye",
+          "Russia",
+          "Laos",
+          "Timor-Leste",
+          "Vanuatu",
+          "Trinidad and Tobago"
+        ],
+        "country_isos": [
+          "cd",
+          "kr",
+          "ua",
+          "tr",
+          "ru",
+          "la",
+          "tl",
+          "vu",
+          "tt"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "India",
+          "South Africa",
+          "Bangladesh",
+          "China",
+          "Pakistan",
+          "Colombia",
+          "Egypt",
+          "Brazil",
+          "Poland"
+        ],
+        "country_isos": [
+          "in",
+          "za",
+          "bd",
+          "cn",
+          "pk",
+          "co",
+          "eg",
+          "br",
+          "pl"
+        ]
+      }
+    ],
+    "median": 50.6,
+    "p90": 90.2,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 174,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.042,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.6810038742687441,
+      "b": 0.0,
+      "c": 0.12049890072355174,
+      "n_fit": 184,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 26,
+        "observed_rate": 0.07692307692307693
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 51,
+        "observed_rate": 0.1568627450980392
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 32,
+        "observed_rate": 0.21875
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 32,
+        "observed_rate": 0.21875
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 33,
+        "observed_rate": 0.5151515151515151
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 10,
+        "observed_rate": 0.7
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.052629092940942396,
+    "n_predictions": 184,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.1246317463777103,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 44,
+            "mean_predicted": 0.04057568520180543,
+            "mean_actual": 0.1590909090909091
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 12,
+            "mean_predicted": 0.1398000493645668,
+            "mean_actual": 0.16666666666666666
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 5,
+            "mean_predicted": 0.2358077883720398,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 4,
+            "mean_predicted": 0.3530612662434578,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 5,
+            "mean_predicted": 0.4493500113487244,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 6,
+            "mean_predicted": 0.5414239764213562,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.6606029272079468,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 5,
+            "mean_predicted": 0.763995885848999,
+            "mean_actual": 0.8
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 1,
+            "mean_predicted": 0.8375359773635864,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 2,
+            "mean_predicted": 0.947510689496994,
+            "mean_actual": 0.5
+          }
+        ],
+        "n": 87,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.16081349588930605,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 12,
+            "mean_predicted": 0.04056024939442674,
+            "mean_actual": 0.08333333333333333
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 6,
+            "mean_predicted": 0.12329355378945668,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 5,
+            "mean_predicted": 0.25382857024669647,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 1,
+            "mean_predicted": 0.34139734506607056,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 4,
+            "mean_predicted": 0.45418480783700943,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.641903817653656,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 1,
+            "mean_predicted": 0.7254078388214111,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 2,
+            "mean_predicted": 0.8692261278629303,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 2,
+            "mean_predicted": 0.9258868396282196,
+            "mean_actual": 0.5
+          }
+        ],
+        "n": 35,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.13650421678058564,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 17,
+            "mean_predicted": 0.05380874477765139,
+            "mean_actual": 0.11764705882352941
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 8,
+            "mean_predicted": 0.13915677461773157,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 13,
+            "mean_predicted": 0.23887403080096611,
+            "mean_actual": 0.07692307692307693
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 8,
+            "mean_predicted": 0.3486364930868149,
+            "mean_actual": 0.375
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 1,
+            "mean_predicted": 0.4039386212825775,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.5860649049282074,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.6728368401527405,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 5,
+            "mean_predicted": 0.7635720014572144,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 6,
+            "mean_predicted": 0.8544565141201019,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 62,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/labor_action.scores.json",
+  "shape_points": [
+    0.05882122675362174,
+    0.07915453660702644,
+    0.09948784646043113,
+    0.1198211563138358,
+    0.1401544661672405,
+    0.16048777602064518,
+    0.18082108587404985,
+    0.20115439572745455,
+    0.22148770558085926,
+    0.2418210154342639,
+    0.26215432528766863,
+    0.28248763514107333
+  ],
+  "shap_importance_raw": {
+    "AG.PRD.FOOD.XD": 1.9500555992126465,
+    "SP.DYN.TFRT.IN": 1.8763725757598877,
+    "SP.POP.TOTL": 1.1895830631256104,
+    "v2merange": 0.9048157930374146
+  },
+  "shap_importance_normalized": {
+    "AG.PRD.FOOD.XD": 0.32935527232225936,
+    "SP.DYN.TFRT.IN": 0.3169105542000637,
+    "SP.POP.TOTL": 0.20091501691740174,
+    "v2merange": 0.15281915656027523
+  },
+  "shap_direction_signs": {
+    "AG.PRD.FOOD.XD": -1,
+    "SP.DYN.TFRT.IN": -1,
+    "SP.POP.TOTL": -1,
+    "v2merange": -1
+  },
+  "per_feature_breakdown": {
+    "AG.PRD.FOOD.XD": {
+      "last_z": 0.39667046070098877,
+      "mean_z": 0.04260432347655296,
+      "std_z": 0.5330095291137695,
+      "slope": 0.4276617765426636,
+      "accel": 0.30685216188430786,
+      "tertile1_mean": 0.12876644730567932,
+      "tertile2_mean": 0.11449088901281357,
+      "tertile3_mean": 0.0
+    },
+    "SP.DYN.TFRT.IN": {
+      "last_z": 0.3234294354915619,
+      "mean_z": 0.08784358203411102,
+      "std_z": 0.41193220019340515,
+      "slope": 0.20879746973514557,
+      "accel": 0.27009138464927673,
+      "tertile1_mean": 0.3339376151561737,
+      "tertile2_mean": 0.24034084379673004,
+      "tertile3_mean": 0.0
+    },
+    "SP.POP.TOTL": {
+      "last_z": 0.10033071786165237,
+      "mean_z": 0.5683492422103882,
+      "std_z": 0.143769770860672,
+      "slope": 0.020125601440668106,
+      "accel": 0.20375756919384003,
+      "tertile1_mean": 0.08681424707174301,
+      "tertile2_mean": 0.06643591821193695,
+      "tertile3_mean": 0.0
+    },
+    "v2merange": {
+      "last_z": 0.2605995833873749,
+      "mean_z": 0.09549860656261444,
+      "std_z": 0.017232321202754974,
+      "slope": 0.2155057042837143,
+      "accel": 0.18594180047512054,
+      "tertile1_mean": 0.0158252976834774,
+      "tertile2_mean": 0.1142125129699707,
+      "tertile3_mean": 0.0
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 5,
+    "indicators": [
+      {
+        "code": "AG.PRD.FOOD.XD",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 48,
+        "shape": {
+          "mean": [
+            0.6692,
+            0.9361,
+            0.9037,
+            1.1954,
+            1.5061
+          ],
+          "p25": [
+            0.4351,
+            0.7308,
+            0.5763,
+            0.9301,
+            1.1078
+          ],
+          "p75": [
+            1.0349,
+            1.3219,
+            1.4799,
+            1.5927,
+            1.9103
+          ]
+        }
+      },
+      {
+        "code": "SP.DYN.TFRT.IN",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 50,
+        "shape": {
+          "mean": [
+            -0.4877,
+            -0.5423,
+            -0.7157,
+            -0.8735,
+            -1.0707
+          ],
+          "p25": [
+            -0.9875,
+            -1.1083,
+            -1.2593,
+            -1.4159,
+            -1.6495
+          ],
+          "p75": [
+            -0.2304,
+            -0.3664,
+            -0.6857,
+            -0.7095,
+            -0.817
+          ]
+        }
+      },
+      {
+        "code": "SP.POP.TOTL",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 50,
+        "shape": {
+          "mean": [
+            0.7973,
+            0.8889,
+            1.0451,
+            1.2595,
+            1.4768
+          ],
+          "p25": [
+            0.6858,
+            0.8169,
+            0.9854,
+            1.2455,
+            1.4333
+          ],
+          "p75": [
+            1.0927,
+            1.2298,
+            1.3658,
+            1.5043,
+            1.6554
+          ]
+        }
+      },
+      {
+        "code": "v2merange",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 74,
+        "shape": {
+          "mean": [
+            0.0406,
+            0.1788,
+            0.2916,
+            0.2951,
+            0.4313
+          ],
+          "p25": [
+            -0.3214,
+            -0.15,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "p75": [
+            0.5893,
+            0.6913,
+            0.8717,
+            0.9689,
+            0.9798
+          ]
+        }
+      }
+    ],
+    "samples_used": 74,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2024,
+        "label": "General Strike Against Milei Economic Program",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2023,
+        "label": "Youth unemployment surges \u2014 data suppressed",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2023,
+        "label": "Unprecedented NHS and Public Sector Strikes Over Pay",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2020,
+        "label": "Labor strikes at major state enterprises challenge regime",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 2020,
+        "label": "Omnibus Job Creation Law \u2014 sweeping labor and investment deregulation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2018,
+        "label": "Truckers Strike Paralyzes Brazil for Ten Days",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2014,
+        "label": "Platinum Miners Strike for Five Months",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2013,
+        "label": "Rana Plaza Building Collapse Kills 1,134",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2013,
+        "label": "Bangladesh Accord on Fire and Building Safety Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2012,
+        "label": "Tazreen Fashions Fire Kills 117 Garment Workers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2012,
+        "label": "Association of Mineworkers and Construction Union Rises",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 2011,
+        "label": "General Strike Against Austerity Pension Reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 2011,
+        "label": "Public Sector Strike \u2014 Labour Unrest Challenges BDP Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kz",
+        "country_name": "Kazakhstan",
+        "year": 2011,
+        "label": "Zhanaozen Massacre: Security Forces Open Fire on Striking Oil Workers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2007,
+        "label": "Mahalla Textile Workers Strike",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 2005,
+        "label": "WorkChoices Industrial Relations Reform Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ve",
+        "country_name": "Venezuela",
+        "year": 2002,
+        "label": "PDVSA General Strike Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1997,
+        "label": "State-owned enterprise restructuring \u2014 millions laid off",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1996,
+        "label": "General Strike Against Menem Economic Policies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 1995,
+        "label": "Female Garment Workers Gain Economic Agency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1995,
+        "label": "Evo Morales Elected Head of Chapare Coca Growers Federation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1994,
+        "label": "NUPENG and PENGASSAN Oil Workers Strike",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1989,
+        "label": "PEMEX Oil Workers' Union Boss Arrested",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1989,
+        "label": "Miners' strikes paralyze Siberia and Ukraine",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1988,
+        "label": "Strike Wave Forces Regime to the Negotiating Table",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1988,
+        "label": "General Strike Against PSOE Economic Policy Draws 8 Million Workers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1984,
+        "label": "Miners' Strike: Britain's Most Bitter Industrial Dispute",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1982,
+        "label": "Wassenaar Accord: Landmark Wage Restraint and Labour Deal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1980,
+        "label": "ABC Industrial Region Strikes Continue",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1980,
+        "label": "FIAT's March of 40,000 Breaks a Decade of Union Dominance",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1980,
+        "label": "Solidarity Trade Union Founded \u2014 Gdansk Accords",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1979,
+        "label": "Black Trade Unions Legalized \u2014 Wiehahn Commission Reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1978,
+        "label": "ABC Steel Workers Strike Defies Military Regime",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1978,
+        "label": "Winter of Discontent: Public Sector Strikes Paralyse Britain",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1977,
+        "label": "September 14 General Strike Shakes L\u00f3pez Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 1977,
+        "label": "Jiu Valley Miners Strike \u2014 Largest Labor Unrest Under Communism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1977,
+        "label": "National Pact Between Government and UGTT Breaks Down",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1976,
+        "label": "Radom and Ursus Protests \u2014 Workers and Intellectuals Unite",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1974,
+        "label": "Railway strike crushed by government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1973,
+        "label": "Durban Strikes \u2014 Black Workers Organize",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1973,
+        "label": "General Strike Against Coup Collapses After Two Weeks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1972,
+        "label": "Miners' Strike Forces State of Emergency and Heath Capitulates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 1971,
+        "label": "General Strike Paralyses Ovamboland",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1971,
+        "label": "Apartheid Migrant Labor System at Peak",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 1970,
+        "label": "Chun Tae-il Self-Immolation Galvanizes Labor Movement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1969,
+        "label": "Hot Autumn Mass Strikes Transform Italian Industrial Relations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1968,
+        "label": "CGT de los Argentinos Founded \u2014 Radical Labor Faction",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1964,
+        "label": "CGT Plan de Lucha \u2014 Mass Factory Occupations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1964,
+        "label": "General Strike Paralyzes Nigeria",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1963,
+        "label": "Rural Unions Legalized in Brazil",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1962,
+        "label": "General Strike Supports Presidential Powers Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1961,
+        "label": "Railway Workers Strike in Sekondi-Takoradi Suppressed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1961,
+        "label": "Teachers Strike and Education Protests",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1961,
+        "label": "Tamil Federal Party launches civil disobedience in the north",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1959,
+        "label": "Argentine Government Suppresses Labor Strikes with Military",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1958,
+        "label": "General Strike in Asmara",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1958,
+        "label": "Railroad Workers' Strike Crushed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1957,
+        "label": "CGT Labor Federation Reconstituted After Aramburu Crackdown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1957,
+        "label": "Constitutional Convention Adds Article 14bis \u2014 Labor Rights",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 1957,
+        "label": "Social Partnership institutionalized as Austria's economic governance model",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1957,
+        "label": "Teachers' Union Strike Challenges PRI Labor Control",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1956,
+        "label": "Aden Workers Strike During Suez Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1954,
+        "label": "General Strike Against Klein-Saks Austerity Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1954,
+        "label": "Great Banana Strike Paralyzes Honduras for 69 Days",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1953,
+        "label": "General Strike in Sao Paulo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1953,
+        "label": "Central \u00c3\u0161nica de Trabajadores (CUT) Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1953,
+        "label": "Plze\u0148 Workers' Uprising at \u0160koda Factory",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 1953,
+        "label": "General Strike Paralyzes French Public Services",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1953,
+        "label": "Aramco Workers Strike",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1953,
+        "label": "Hartal general strike paralyses Ceylon over rice subsidies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1952,
+        "label": "Labor Unions Active in Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1951,
+        "label": "Barcelona and Bilbao Tram Boycotts Turn into General Strike",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1951,
+        "label": "Labor Unrest in Aden Port",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 1950,
+        "label": "Communist-led general strike attempt suppressed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1950,
+        "label": "Nairobi General Strike",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 75
+  }
+}

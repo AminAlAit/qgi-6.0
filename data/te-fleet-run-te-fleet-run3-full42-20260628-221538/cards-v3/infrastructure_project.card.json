@@ -1,0 +1,2307 @@
+{
+  "recipe_id": "infrastructure_project",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Institutional Reform",
+  "description_compelling": "A large-scale capital project \u2014 a port, a high-speed-rail line, a hydropower scheme, a Belt-and-Road corridor \u2014 exceeding one percent of GDP or creating cross-border economic linkage. FDI flows, debt-stock changes, government-effectiveness scores, and corruption indices map the political-economic ground. Recurrent in fast-growing emerging markets and in states with active strategic-partner financing.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.7415151515151515,
+    "ci95_lo": 0.6544958793745662,
+    "ci95_hi": 0.8072990753469378,
+    "ci80_lo": 0.6865503604770895,
+    "ci80_hi": 0.7862153028450514,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "NE.CON.GOVT.ZS",
+      "v2lgotovst",
+      "v2jucomp",
+      "v2juncind"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "NE.CON.GOVT.ZS",
+        "name": null
+      },
+      {
+        "code": "v2lgotovst",
+        "name": null
+      },
+      {
+        "code": "v2jucomp",
+        "name": null
+      },
+      {
+        "code": "v2juncind",
+        "name": null
+      }
+    ],
+    "chosen_window": 12,
+    "final_global_auc": 0.7415151515151515,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "NE.CON.GOVT.ZS",
+        "window": 12,
+        "auc": 0.6842757936507936,
+        "lift_over_previous": 0.1842757936507936,
+        "selected_after": [
+          "NE.CON.GOVT.ZS"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2lgotovst",
+        "window": 12,
+        "auc": 0.7057070707070707,
+        "lift_over_previous": 0.02143127705627712,
+        "selected_after": [
+          "NE.CON.GOVT.ZS",
+          "v2lgotovst"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2jucomp",
+        "window": 12,
+        "auc": 0.7157070707070707,
+        "lift_over_previous": 0.010000000000000009,
+        "selected_after": [
+          "NE.CON.GOVT.ZS",
+          "v2lgotovst",
+          "v2jucomp"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2juncind",
+        "window": 12,
+        "auc": 0.7415151515151515,
+        "lift_over_previous": 0.025808080808080724,
+        "selected_after": [
+          "NE.CON.GOVT.ZS",
+          "v2lgotovst",
+          "v2jucomp",
+          "v2juncind"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2juhcind",
+        "window": 12,
+        "auc": 0.7416161616161616,
+        "lift_over_previous": 0.00010101010101015717,
+        "selected_after": [
+          "NE.CON.GOVT.ZS",
+          "v2lgotovst",
+          "v2jucomp",
+          "v2juncind",
+          "v2juhcind"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 100,
+    "n_pos_survive": 55,
+    "n_neg_total": 300,
+    "n_neg_survive": 180,
+    "pos_coverage": 0.55,
+    "neg_coverage": 0.6,
+    "n_countries_survive": 51,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 97,
+      "loco_auc": 0.7099391480730223,
+      "ece": 0.16889066860732654,
+      "ece_ci95_lo": 0.11370641860928503,
+      "ece_ci95_hi": 0.2630652443777059,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 34,
+          "mean_predicted": 0.04393375848474748,
+          "mean_actual": 0.14705882352941177
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 17,
+          "mean_predicted": 0.1464169021038448,
+          "mean_actual": 0.29411764705882354
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 8,
+          "mean_predicted": 0.2657721135765314,
+          "mean_actual": 0.125
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 10,
+          "mean_predicted": 0.3514315545558929,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 6,
+          "mean_predicted": 0.45257285237312317,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.5447074174880981,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 7,
+          "mean_predicted": 0.6611990758350917,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 8,
+          "mean_predicted": 0.7426153868436813,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 3,
+          "mean_predicted": 0.8341796199480692,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 2,
+          "mean_predicted": 0.9722545742988586,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5803009417895225,
+      "loco_auc_ci95_hi": 0.8221409380360659
+    },
+    "mid-tier": {
+      "n": 45,
+      "loco_auc": 0.7808641975308642,
+      "ece": 0.169514757146438,
+      "ece_ci95_lo": 0.10151523161601896,
+      "ece_ci95_hi": 0.28965127212228253,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 26,
+          "mean_predicted": 0.02795244022630728,
+          "mean_actual": 0.07692307692307693
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 2,
+          "mean_predicted": 0.12963442876935005,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 6,
+          "mean_predicted": 0.2560424904028575,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 2,
+          "mean_predicted": 0.3570307046175003,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 2,
+          "mean_predicted": 0.4380345195531845,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.5126752257347107,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.6229119300842285,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 1,
+          "mean_predicted": 0.7884589433670044,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 2,
+          "mean_predicted": 0.8319843411445618,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 2,
+          "mean_predicted": 0.9399265646934509,
+          "mean_actual": 0.5
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5777027027027027,
+      "loco_auc_ci95_hi": 0.9097304473960793
+    },
+    "stable-democracy": {
+      "n": 93,
+      "loco_auc": 0.7360681114551083,
+      "ece": 0.12444943658286527,
+      "ece_ci95_lo": 0.08202321775600574,
+      "ece_ci95_hi": 0.20439152761214782,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 55,
+          "mean_predicted": 0.024956682934002442,
+          "mean_actual": 0.07272727272727272
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 6,
+          "mean_predicted": 0.14674010748664537,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 10,
+          "mean_predicted": 0.23800903260707856,
+          "mean_actual": 0.1
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 6,
+          "mean_predicted": 0.3604542265335719,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 4,
+          "mean_predicted": 0.43260449916124344,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.5393274426460266,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 6,
+          "mean_predicted": 0.647686759630839,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 3,
+          "mean_predicted": 0.7192914485931396,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 2,
+          "mean_predicted": 0.8450770378112793,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.561372354977757,
+      "loco_auc_ci95_hi": 0.8599164666273167
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-29T20:13:18.915442+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5134,
+  "stability_diagnostic": {
+    "fold_variance": 0.10550132853190104,
+    "fold_auc_mean": 0.7263802083333334,
+    "label": "HIGH",
+    "per_country_loco_auc": {
+      "Argentina": 1.0,
+      "Bangladesh": 0.6666666666666666,
+      "Bhutan": 0.8333333333333334,
+      "Bolivia": 0.8,
+      "Brazil": 0.8333333333333334,
+      "Canada": 0.0,
+      "China": 0.2,
+      "Dominican Republic": 1.0,
+      "Egypt": 0.44,
+      "France": 1.0,
+      "Georgia": 1.0,
+      "India": 0.1875,
+      "Jordan": 0.5,
+      "Kenya": 1.0,
+      "Kyrgyzstan": 1.0,
+      "Laos": 0.3333333333333333,
+      "New Zealand": 0.75,
+      "Nicaragua": 0.16666666666666666,
+      "Panama": 1.0,
+      "Paraguay": 1.0,
+      "Saudi Arabia": 0.7333333333333333,
+      "Singapore": 0.8,
+      "South Korea": 1.0,
+      "Sweden": 1.0,
+      "Switzerland": 1.0,
+      "Syria": 0.0,
+      "Tajikistan": 1.0,
+      "Timor-Leste": 0.6666666666666666,
+      "Turkmenistan": 0.8333333333333334,
+      "United Arab Emirates": 0.5,
+      "United Kingdom": 1.0,
+      "Uruguay": 1.0
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7981,
+    "cohort_loco_floor": 0.7381,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 100,
+  "n_negatives": 300,
+  "walked_at_utc": "2026-06-29T20:15:29.239519+00:00",
+  "elapsed_seconds": 1622.2478549480438,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/infrastructure_project/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Colombia",
+          "South Africa",
+          "Greece",
+          "Netherlands",
+          "Bulgaria",
+          "Chile",
+          "Czechia",
+          "Slovenia"
+        ],
+        "country_isos": [
+          "co",
+          "za",
+          "gr",
+          "nl",
+          "bg",
+          "cl",
+          "cz",
+          "si"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 8,
+        "countries": [
+          "Malta",
+          "Italy",
+          "Austria",
+          "Peru",
+          "Belgium",
+          "Malaysia",
+          "Honduras",
+          "Argentina"
+        ],
+        "country_isos": [
+          "mt",
+          "it",
+          "at",
+          "pe",
+          "be",
+          "my",
+          "hn",
+          "ar"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 8,
+        "countries": [
+          "Spain",
+          "Japan",
+          "Guinea",
+          "Bolivia",
+          "Portugal",
+          "Croatia",
+          "Poland",
+          "Singapore"
+        ],
+        "country_isos": [
+          "es",
+          "jp",
+          "gn",
+          "bo",
+          "pt",
+          "hr",
+          "pl",
+          "sg"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Kenya",
+          "Jordan",
+          "Indonesia",
+          "Zambia",
+          "Mauritius",
+          "Moldova",
+          "Montenegro",
+          "Israel"
+        ],
+        "country_isos": [
+          "ke",
+          "jo",
+          "id",
+          "zm",
+          "mu",
+          "md",
+          "me",
+          "il"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 8,
+        "countries": [
+          "Vanuatu",
+          "Algeria",
+          "Papua New Guinea",
+          "Djibouti",
+          "Senegal",
+          "Canada",
+          "Maldives",
+          "Mongolia"
+        ],
+        "country_isos": [
+          "vu",
+          "dz",
+          "pg",
+          "dj",
+          "sn",
+          "ca",
+          "mv",
+          "mn"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 8,
+        "countries": [
+          "Burundi",
+          "Slovakia",
+          "Turkiye",
+          "Philippines",
+          "Seychelles",
+          "Sri Lanka",
+          "Latvia",
+          "Pakistan"
+        ],
+        "country_isos": [
+          "bi",
+          "sk",
+          "tr",
+          "ph",
+          "sc",
+          "lk",
+          "lv",
+          "pk"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 8,
+        "countries": [
+          "Cabo Verde",
+          "United Kingdom",
+          "Brazil",
+          "Mozambique",
+          "Georgia",
+          "New Zealand",
+          "Namibia",
+          "Republic of the Congo"
+        ],
+        "country_isos": [
+          "cv",
+          "gb",
+          "br",
+          "mz",
+          "ge",
+          "nz",
+          "na",
+          "cg"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 9,
+        "countries": [
+          "Switzerland",
+          "Albania",
+          "Estonia",
+          "China",
+          "Finland",
+          "Cyprus",
+          "Thailand",
+          "Morocco",
+          "Kuwait"
+        ],
+        "country_isos": [
+          "ch",
+          "al",
+          "ee",
+          "cn",
+          "fi",
+          "cy",
+          "th",
+          "ma",
+          "kw"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 8,
+        "countries": [
+          "Niger",
+          "Qatar",
+          "Hungary",
+          "Germany",
+          "Costa Rica",
+          "Mali",
+          "Tunisia",
+          "Sweden"
+        ],
+        "country_isos": [
+          "ne",
+          "qa",
+          "hu",
+          "de",
+          "cr",
+          "ml",
+          "tn",
+          "se"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 8,
+        "countries": [
+          "Nepal",
+          "Bhutan",
+          "Norway",
+          "Sudan",
+          "Ghana",
+          "Oman",
+          "Rwanda",
+          "Tanzania"
+        ],
+        "country_isos": [
+          "np",
+          "bt",
+          "no",
+          "sd",
+          "gh",
+          "om",
+          "rw",
+          "tz"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 8,
+        "countries": [
+          "Russia",
+          "India",
+          "Paraguay",
+          "Saudi Arabia",
+          "The Democratic Republic of the Congo",
+          "France",
+          "Romania",
+          "Ivory Coast"
+        ],
+        "country_isos": [
+          "ru",
+          "in",
+          "py",
+          "sa",
+          "cd",
+          "fr",
+          "ro",
+          "ci"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Malawi",
+          "Iran",
+          "Uzbekistan",
+          "Iceland",
+          "Eritrea",
+          "Venezuela",
+          "Australia",
+          "Ethiopia"
+        ],
+        "country_isos": [
+          "mw",
+          "ir",
+          "uz",
+          "is",
+          "er",
+          "ve",
+          "au",
+          "et"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 8,
+        "countries": [
+          "Solomon Islands",
+          "Sierra Leone",
+          "Timor-Leste",
+          "Somalia",
+          "Uganda",
+          "Suriname",
+          "Bahrain",
+          "Mauritania"
+        ],
+        "country_isos": [
+          "sb",
+          "sl",
+          "tl",
+          "so",
+          "ug",
+          "sr",
+          "bh",
+          "mr"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "Kyrgyzstan",
+          "Lithuania",
+          "Syria",
+          "Cameroon",
+          "Serbia",
+          "Azerbaijan",
+          "Vietnam",
+          "Botswana",
+          "Iraq"
+        ],
+        "country_isos": [
+          "kg",
+          "lt",
+          "sy",
+          "cm",
+          "rs",
+          "az",
+          "vn",
+          "bw",
+          "iq"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 8,
+        "countries": [
+          "Togo",
+          "Denmark",
+          "South Korea",
+          "United States",
+          "Hong Kong",
+          "Luxembourg",
+          "Ecuador",
+          "Dominican Republic"
+        ],
+        "country_isos": [
+          "tg",
+          "dk",
+          "kr",
+          "us",
+          "hk",
+          "lu",
+          "ec",
+          "do"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Turkmenistan",
+          "Angola",
+          "Tajikistan",
+          "Cuba",
+          "Equatorial Guinea",
+          "The Gambia",
+          "North Macedonia",
+          "Guinea-Bissau"
+        ],
+        "country_isos": [
+          "tm",
+          "ao",
+          "tj",
+          "cu",
+          "gq",
+          "gm",
+          "mk",
+          "gw"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 8,
+        "countries": [
+          "Panama",
+          "Nicaragua",
+          "Zimbabwe",
+          "Bangladesh",
+          "Eswatini",
+          "Libya",
+          "Guyana",
+          "Uruguay"
+        ],
+        "country_isos": [
+          "pa",
+          "ni",
+          "zw",
+          "bd",
+          "sz",
+          "ly",
+          "gy",
+          "uy"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 8,
+        "countries": [
+          "Palestine",
+          "Lesotho",
+          "Armenia",
+          "Madagascar",
+          "Haiti",
+          "Chad",
+          "Ireland",
+          "Belarus"
+        ],
+        "country_isos": [
+          "ps",
+          "ls",
+          "am",
+          "mg",
+          "ht",
+          "td",
+          "ie",
+          "by"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 8,
+        "countries": [
+          "Bosnia and Herzegovina",
+          "Kazakhstan",
+          "United Arab Emirates",
+          "Benin",
+          "El Salvador",
+          "Guatemala",
+          "Lebanon",
+          "Ukraine"
+        ],
+        "country_isos": [
+          "ba",
+          "kz",
+          "ae",
+          "bj",
+          "sv",
+          "gt",
+          "lb",
+          "ua"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Laos",
+          "Central African Republic",
+          "Comoros",
+          "Cambodia",
+          "Yemen",
+          "Egypt",
+          "Gabon",
+          "Mexico",
+          "Burkina Faso"
+        ],
+        "country_isos": [
+          "la",
+          "cf",
+          "km",
+          "kh",
+          "ye",
+          "eg",
+          "ga",
+          "mx",
+          "bf"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.2,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 163,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.0709,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.6224275037226388,
+      "b": 0.0,
+      "c": 0.05818233577052352,
+      "n_fit": 235,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 60,
+        "observed_rate": 0.08333333333333333
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 55,
+        "observed_rate": 0.10909090909090909
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 36,
+        "observed_rate": 0.25
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 41,
+        "observed_rate": 0.3170731707317073
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 39,
+        "observed_rate": 0.48717948717948717
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 4,
+        "observed_rate": 0.75
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.029971205910009256,
+    "n_predictions": 235,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.16889066860732654,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 34,
+            "mean_predicted": 0.04393375848474748,
+            "mean_actual": 0.14705882352941177
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 17,
+            "mean_predicted": 0.1464169021038448,
+            "mean_actual": 0.29411764705882354
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 8,
+            "mean_predicted": 0.2657721135765314,
+            "mean_actual": 0.125
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 10,
+            "mean_predicted": 0.3514315545558929,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 6,
+            "mean_predicted": 0.45257285237312317,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.5447074174880981,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 7,
+            "mean_predicted": 0.6611990758350917,
+            "mean_actual": 0.42857142857142855
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 8,
+            "mean_predicted": 0.7426153868436813,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 3,
+            "mean_predicted": 0.8341796199480692,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 2,
+            "mean_predicted": 0.9722545742988586,
+            "mean_actual": 1.0
+          }
+        ],
+        "n": 97,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.169514757146438,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 26,
+            "mean_predicted": 0.02795244022630728,
+            "mean_actual": 0.07692307692307693
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 2,
+            "mean_predicted": 0.12963442876935005,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 6,
+            "mean_predicted": 0.2560424904028575,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 2,
+            "mean_predicted": 0.3570307046175003,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 2,
+            "mean_predicted": 0.4380345195531845,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.5126752257347107,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.6229119300842285,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 1,
+            "mean_predicted": 0.7884589433670044,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 2,
+            "mean_predicted": 0.8319843411445618,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 2,
+            "mean_predicted": 0.9399265646934509,
+            "mean_actual": 0.5
+          }
+        ],
+        "n": 45,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.12444943658286527,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 55,
+            "mean_predicted": 0.024956682934002442,
+            "mean_actual": 0.07272727272727272
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 6,
+            "mean_predicted": 0.14674010748664537,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 10,
+            "mean_predicted": 0.23800903260707856,
+            "mean_actual": 0.1
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 6,
+            "mean_predicted": 0.3604542265335719,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 4,
+            "mean_predicted": 0.43260449916124344,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.5393274426460266,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 6,
+            "mean_predicted": 0.647686759630839,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 3,
+            "mean_predicted": 0.7192914485931396,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 2,
+            "mean_predicted": 0.8450770378112793,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 93,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/infrastructure_project.scores.json",
+  "shape_points": [
+    -0.013337594286494843,
+    0.003999845902099782,
+    0.021337286090694397,
+    0.03867472627928902,
+    0.056012166467883644,
+    0.07334960665647826,
+    0.09068704684507288,
+    0.10802448703366749,
+    0.12536192722226214,
+    0.14269936741085676,
+    0.16003680759945138,
+    0.177374247788046
+  ],
+  "shap_importance_raw": {
+    "NE.CON.GOVT.ZS": 1.7793810367584229,
+    "v2lgotovst": 1.029883861541748,
+    "v2jucomp": 1.9150978326797485,
+    "v2juncind": 1.1083625555038452
+  },
+  "shap_importance_normalized": {
+    "NE.CON.GOVT.ZS": 0.30506854846769504,
+    "v2lgotovst": 0.17656992417049175,
+    "v2jucomp": 0.3283367103054939,
+    "v2juncind": 0.19002481705631935
+  },
+  "shap_direction_signs": {
+    "NE.CON.GOVT.ZS": -1,
+    "v2lgotovst": -1,
+    "v2jucomp": -1,
+    "v2juncind": -1
+  },
+  "per_feature_breakdown": {
+    "NE.CON.GOVT.ZS": {
+      "last_z": 0.11457595229148865,
+      "mean_z": 0.07461798936128616,
+      "std_z": 0.5701011419296265,
+      "slope": 0.14324039220809937,
+      "accel": 0.39697563648223877,
+      "tertile1_mean": 0.1433400809764862,
+      "tertile2_mean": 0.2644830048084259,
+      "tertile3_mean": 0.07204679399728775
+    },
+    "v2lgotovst": {
+      "last_z": 0.10426229238510132,
+      "mean_z": 0.02860887534916401,
+      "std_z": 0.25635474920272827,
+      "slope": 0.0992191955447197,
+      "accel": 0.21108004450798035,
+      "tertile1_mean": 0.05359964445233345,
+      "tertile2_mean": 0.08345382660627365,
+      "tertile3_mean": 0.19330517947673798
+    },
+    "v2jucomp": {
+      "last_z": 0.7707091569900513,
+      "mean_z": 0.12444788217544556,
+      "std_z": 0.17589473724365234,
+      "slope": 0.17967556416988373,
+      "accel": 0.3059857189655304,
+      "tertile1_mean": 0.06221960112452507,
+      "tertile2_mean": 0.24881605803966522,
+      "tertile3_mean": 0.04734908789396286
+    },
+    "v2juncind": {
+      "last_z": 0.08019412308931351,
+      "mean_z": 0.07021424919366837,
+      "std_z": 0.044267069548368454,
+      "slope": 0.46224454045295715,
+      "accel": 0.30573830008506775,
+      "tertile1_mean": 0.08881530165672302,
+      "tertile2_mean": 0.012521980330348015,
+      "tertile3_mean": 0.04436697065830231
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 12,
+    "indicators": [
+      {
+        "code": "NE.CON.GOVT.ZS",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 58,
+        "shape": {
+          "mean": [
+            0.0148,
+            0.0581,
+            -0.1687,
+            -0.1946,
+            -0.1153,
+            -0.0562,
+            -0.04,
+            -0.0837,
+            -0.0407,
+            0.009,
+            -0.0704,
+            0.0151
+          ],
+          "p25": [
+            -0.6084,
+            -0.6311,
+            -0.7862,
+            -0.8818,
+            -0.8491,
+            -0.7019,
+            -0.5717,
+            -0.6133,
+            -0.6422,
+            -0.6257,
+            -0.8329,
+            -0.9206
+          ],
+          "p75": [
+            0.6565,
+            0.7086,
+            0.3686,
+            0.335,
+            0.365,
+            0.4939,
+            0.384,
+            0.3336,
+            0.6475,
+            0.5994,
+            0.7067,
+            1.01
+          ]
+        }
+      },
+      {
+        "code": "v2lgotovst",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 94,
+        "shape": {
+          "mean": [
+            0.0177,
+            0.1419,
+            0.0805,
+            0.1243,
+            0.2409,
+            0.2596,
+            0.2711,
+            0.2085,
+            0.2789,
+            0.3634,
+            0.2901,
+            0.2037
+          ],
+          "p25": [
+            -0.3262,
+            -0.2206,
+            -0.3165,
+            -0.1935,
+            -0.1318,
+            0.0,
+            0.0,
+            -0.1614,
+            -0.1175,
+            -0.0095,
+            -0.016,
+            -0.0356
+          ],
+          "p75": [
+            0.4593,
+            0.5085,
+            0.5701,
+            0.6608,
+            0.74,
+            0.7553,
+            0.8666,
+            0.8016,
+            0.9464,
+            0.9662,
+            0.951,
+            0.9798
+          ]
+        }
+      },
+      {
+        "code": "v2jucomp",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 95,
+        "shape": {
+          "mean": [
+            0.018,
+            0.0067,
+            0.1431,
+            0.0977,
+            0.0713,
+            0.107,
+            0.1344,
+            0.1322,
+            0.1011,
+            0.1214,
+            0.1523,
+            -0.0332
+          ],
+          "p25": [
+            -0.5487,
+            -0.5354,
+            -0.3583,
+            -0.4708,
+            -0.5394,
+            -0.5394,
+            -0.4789,
+            -0.3954,
+            -0.5455,
+            -0.5471,
+            -0.5471,
+            -0.8053
+          ],
+          "p75": [
+            0.4276,
+            0.4588,
+            0.6815,
+            0.5832,
+            0.6369,
+            0.7646,
+            0.83,
+            0.9265,
+            0.9478,
+            0.964,
+            0.9752,
+            0.9381
+          ]
+        }
+      },
+      {
+        "code": "v2juncind",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 95,
+        "shape": {
+          "mean": [
+            0.0687,
+            0.0523,
+            0.1058,
+            0.1212,
+            0.1221,
+            0.1675,
+            0.2189,
+            0.2291,
+            0.1931,
+            0.1594,
+            0.212,
+            -0.0073
+          ],
+          "p25": [
+            -0.45,
+            -0.4622,
+            -0.4309,
+            -0.4309,
+            -0.384,
+            -0.384,
+            -0.3842,
+            -0.3548,
+            -0.4082,
+            -0.487,
+            -0.487,
+            -0.889
+          ],
+          "p75": [
+            0.5498,
+            0.5394,
+            0.6228,
+            0.6532,
+            0.6678,
+            0.7674,
+            0.907,
+            0.9414,
+            0.9414,
+            0.9666,
+            0.9798,
+            0.9798
+          ]
+        }
+      }
+    ],
+    "samples_used": 95,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2025,
+        "label": "Vietnam Infrastructure Investment Accelerates Toward High-Income Status Goal",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 2024,
+        "label": "Gelephu Mindfulness City Special Administrative Region Established",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2024,
+        "label": "GERD begins commercial power generation",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2024,
+        "label": "Kyrgyzstan\u2013China Comprehensive Partnership Deepened",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2024,
+        "label": "Luang Prabang Mekong Dam Construction Accelerates",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2024,
+        "label": "Uzbekistan\u2013Kyrgyzstan\u2013China Railway Agreement Signed",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 2023,
+        "label": "Lobito Trans-African Corridor Project Launched with US-EU Backing",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 2023,
+        "label": "Balticconnector Gas Pipeline Damaged by Chinese Vessel",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 2023,
+        "label": "Tempi rail collision kills 57 in Greece's deadliest train disaster",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2022,
+        "label": "Padma Bridge Inaugurated",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2022,
+        "label": "Dhaka Metro Rail First Section Opens",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2022,
+        "label": "National Water Carrier Project Announced",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2021,
+        "label": "Ever Given Container Ship Blocks Suez Canal for Six Days",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2021,
+        "label": "Laos-China Railway Opens for Service",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 2021,
+        "label": "UPM 2 Railway and Infrastructure Construction Advances",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2019,
+        "label": "GERD filling begins, tensions with Egypt peak",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2018,
+        "label": "New Administrative Capital Construction Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2018,
+        "label": "Bishkek Heating Crisis: Chinese-Built Power Plant Fails in Winter",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2018,
+        "label": "NEOM Megacity Project Announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 2018,
+        "label": "Rogun Dam First Turbine Commissioned",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 2017,
+        "label": "China-Maldives Friendship Bridge opens connecting Male to Hulhumale",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2016,
+        "label": "Dhaka Metro Rail Project Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 2016,
+        "label": "Punatsangchhu-I Hydropower Project Faces Cost Overruns",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2016,
+        "label": "Addis Ababa light rail system opens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2016,
+        "label": "Laos-China Railway Construction Formally Launches",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 2016,
+        "label": "Panama Canal Expanded with New Third Set of Locks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2016,
+        "label": "Gotthard Base Tunnel Opens as World's Longest Railway Tunnel",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 2016,
+        "label": "Rogun Dam Construction Officially Relaunched with Italian Contractor",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2014,
+        "label": "New Suez Canal Expansion Project Announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 2014,
+        "label": "E-Residency Program Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2014,
+        "label": "GERD construction advances, first turbines installed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2013,
+        "label": "Xayaburi Dam Construction Proceeds Despite Regional Opposition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2012,
+        "label": "Sarmiento Train Accident in Buenos Aires \u2014 51 Dead",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2012,
+        "label": "Addis Ababa light rail project launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2012,
+        "label": "India's massive power grid failure \u2014 680 million affected",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2012,
+        "label": "Grand Canal Concession Granted to Chinese Company Without Bidding",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2012,
+        "label": "Saudi Arabia Launches King Abdullah Economic City",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2011,
+        "label": "Grand Ethiopian Renaissance Dam construction begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 2011,
+        "label": "Canterbury Earthquake Recovery Authority Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2010,
+        "label": "Strategic Development Plan 2011-2030 launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2010,
+        "label": "Burj Khalifa Opens as World's Tallest Building",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 2008,
+        "label": "Rogun Dam Construction Resumes After 15-Year Hiatus",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 2007,
+        "label": "Canal Expansion Construction Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2007,
+        "label": "Masdar City Project Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2006,
+        "label": "Second Thai-Lao Friendship Bridge Opens at Savannakhet",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 2006,
+        "label": "Panama Votes to Expand the Canal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 2005,
+        "label": "Zagreb-Split Motorway Completed \u2014 Croatia's Infrastructure Transformed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ge",
+        "country_name": "Georgia",
+        "year": 2005,
+        "label": "Baku-Tbilisi-Ceyhan Oil Pipeline Inaugurated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2005,
+        "label": "First Desalination Plant Opens as Fourth National Tap",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2005,
+        "label": "Atlantic LNG Train 4 Commissioned",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2004,
+        "label": "Stari Most Reopened \u2014 UNESCO World Heritage Symbol Restored",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 2003,
+        "label": "Post-War Reconstruction and Chinese Infrastructure Boom Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2003,
+        "label": "Golden Quadrilateral highway project accelerated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 2002,
+        "label": "National Digital ID Card System Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2000,
+        "label": "\u00d6resund Bridge Opens Linking Sweden and Denmark",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1999,
+        "label": "Stari Most Reconstruction Project Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 1999,
+        "label": "Atlantic LNG Train 1 Commences Operations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1997,
+        "label": "Addis Ababa master plan expansion begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1995,
+        "label": "Bolivia-Brazil Gas Pipeline Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 1994,
+        "label": "Estonia Sinks in Baltic Sea Ferry Disaster",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 1994,
+        "label": "First Thai-Lao Friendship Bridge Opens Over Mekong",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1994,
+        "label": "Channel Tunnel Opens Fixed Link Between Britain and France",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1992,
+        "label": "Three Gorges Dam approved",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1987,
+        "label": "Yemen Arab Republic Modernization Efforts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1980,
+        "label": "Aqaba Port Expansion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 1978,
+        "label": "Itaip\u00fa Dam Construction Nears Completion; Economic Boom",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1977,
+        "label": "Jubail and Yanbu Industrial Cities Construction",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 1976,
+        "label": "TGV High-Speed Rail Programme Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 1975,
+        "label": "Capital Relocated from Zomba to Lilongwe",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 1975,
+        "label": "Jebel Ali Port Planning Commences",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1975,
+        "label": "Local Development Associations Transform Rural North Yemen",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1975,
+        "label": "TAZARA Railway Opens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 1974,
+        "label": "Massive Infrastructure Investment Wave Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 1973,
+        "label": "POSCO Pohang Steel Mill Opens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 1973,
+        "label": "Ten Major Construction Projects Launch Industrial Scale-Up",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1972,
+        "label": "Rapid Modernization Drive Launches Schools, Roads, and Hospitals",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1972,
+        "label": "Tabqa Dam Construction Advances on the Euphrates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1971,
+        "label": "Amazon Highway Construction Program Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1970,
+        "label": "Aswan High Dam Completed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1967,
+        "label": "Marcos Infrastructure Development Push",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1966,
+        "label": "Salazar Bridge (Ponte 25 de Abril) Opens Over Tagus",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1965,
+        "label": "Delta Works Construction Programme Underway",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1964,
+        "label": "Salang Highway tunnel through Hindu Kush completed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1964,
+        "label": "Aswan High Dam First Stage Completed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1964,
+        "label": "National Water Carrier Completed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1964,
+        "label": "Tokaido Shinkansen Bullet Train Opens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1963,
+        "label": "OAU headquarters construction begins in Addis Ababa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1961,
+        "label": "Volta River Project Construction Begins with US and World Bank Financing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1960,
+        "label": "Inauguration of Brasilia as New Capital",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1960,
+        "label": "Limited Infrastructure Development Under Ahmad",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1959,
+        "label": "St. Lawrence Seaway Opens, Transforms Great Lakes Commerce",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1959,
+        "label": "First National Economic Development Plan Launched with World Bank",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1958,
+        "label": "Aswan High Dam Construction Begins with Soviet Assistance",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1957,
+        "label": "Road Network Expansion Drives Interior Integration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1956,
+        "label": "Soviet Union begins construction of Salang Highway tunnel",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1956,
+        "label": "Decision to Build Brasilia as New Capital",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1956,
+        "label": "Autostrada del Sole Construction Begins, Linking Milan to Naples",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1956,
+        "label": "Interstate Highway Act Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1954,
+        "label": "Baghdad Development Board's Five-Year Plan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1953,
+        "label": "First Desalination Plant Opens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 1952,
+        "label": "5 de Noviembre Hydroelectric Dam Construction Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1950,
+        "label": "Maracana Stadium Inaugurated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1950,
+        "label": "Cassa per il Mezzogiorno Development Fund Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1914,
+        "label": "Panama Canal Opens to Commercial Traffic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1908,
+        "label": "Miraflores and Pedro Miguel Locks Construction Advances",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1904,
+        "label": "US Canal Construction Begins under Colonel Gorgas",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 106
+  }
+}

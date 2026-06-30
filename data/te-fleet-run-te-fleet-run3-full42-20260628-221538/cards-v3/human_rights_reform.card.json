@@ -1,0 +1,2785 @@
+{
+  "recipe_id": "human_rights_reform",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Civil Conflict",
+  "description_compelling": "Civil and political liberties expand by statute or court ruling \u2014 same-sex marriage, abortion access, anti-discrimination protections, indigenous-rights recognition. Civil-liberty subscores and CSO-freedom indices typically rise across the prior decade. Common in post-transition democracies and in mature liberal states catching up to social change.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6535211267605634,
+    "ci95_lo": 0.5951733572153189,
+    "ci95_hi": 0.7040418346351719,
+    "ci80_lo": 0.6173985755540474,
+    "ci80_hi": 0.6880032183298067,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2pepwrort",
+      "NY.GDP.MKTP.KD",
+      "v2catrauni",
+      "v2x_clpriv"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2pepwrort",
+        "name": "Power Distributed by Sexual Orientation (0-4)"
+      },
+      {
+        "code": "NY.GDP.MKTP.KD",
+        "name": null
+      },
+      {
+        "code": "v2catrauni",
+        "name": null
+      },
+      {
+        "code": "v2x_clpriv",
+        "name": "Private Civil Liberties Index (0-1)"
+      }
+    ],
+    "chosen_window": 12,
+    "final_global_auc": 0.6535211267605634,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2pepwrort",
+        "window": 21,
+        "auc": 0.6154572819264762,
+        "lift_over_previous": 0.1154572819264762,
+        "selected_after": [
+          "v2pepwrort"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "NY.GDP.MKTP.KD",
+        "window": 12,
+        "auc": 0.6242579443603772,
+        "lift_over_previous": 0.008800662433900985,
+        "selected_after": [
+          "v2pepwrort",
+          "NY.GDP.MKTP.KD"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2catrauni",
+        "window": 12,
+        "auc": 0.6427230046948357,
+        "lift_over_previous": 0.018465060334458494,
+        "selected_after": [
+          "v2pepwrort",
+          "NY.GDP.MKTP.KD",
+          "v2catrauni"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2x_clpriv",
+        "window": 12,
+        "auc": 0.6535211267605634,
+        "lift_over_previous": 0.010798122065727722,
+        "selected_after": [
+          "v2pepwrort",
+          "NY.GDP.MKTP.KD",
+          "v2catrauni",
+          "v2x_clpriv"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2x_clpol",
+        "window": 12,
+        "auc": 0.6554694835680751,
+        "lift_over_previous": 0.0019483568075117086,
+        "selected_after": [
+          "v2pepwrort",
+          "NY.GDP.MKTP.KD",
+          "v2catrauni",
+          "v2x_clpriv",
+          "v2x_clpol"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 150,
+    "n_pos_survive": 120,
+    "n_neg_total": 450,
+    "n_neg_survive": 355,
+    "pos_coverage": 0.8,
+    "neg_coverage": 0.7888888888888889,
+    "n_countries_survive": 72,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 164,
+      "loco_auc": 0.653276955602537,
+      "ece": 0.15610395502526223,
+      "ece_ci95_lo": 0.11323962879818637,
+      "ece_ci95_hi": 0.22853137365238535,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 54,
+          "mean_predicted": 0.0437362535201289,
+          "mean_actual": 0.12962962962962962
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 22,
+          "mean_predicted": 0.1485863984985785,
+          "mean_actual": 0.22727272727272727
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 19,
+          "mean_predicted": 0.2532129185764413,
+          "mean_actual": 0.3157894736842105
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 21,
+          "mean_predicted": 0.34775251150131226,
+          "mean_actual": 0.19047619047619047
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 10,
+          "mean_predicted": 0.4628021389245987,
+          "mean_actual": 0.7
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 10,
+          "mean_predicted": 0.5479173183441162,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 12,
+          "mean_predicted": 0.6549647947152456,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 8,
+          "mean_predicted": 0.7503980547189713,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 5,
+          "mean_predicted": 0.8527131915092468,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 3,
+          "mean_predicted": 0.920823355515798,
+          "mean_actual": 0.3333333333333333
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5529570231406009,
+      "loco_auc_ci95_hi": 0.7405902123665332
+    },
+    "mid-tier": {
+      "n": 90,
+      "loco_auc": 0.5681818181818182,
+      "ece": 0.2171363399312314,
+      "ece_ci95_lo": 0.15589388021914702,
+      "ece_ci95_hi": 0.319549535879115,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 25,
+          "mean_predicted": 0.06006682692095637,
+          "mean_actual": 0.24
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 13,
+          "mean_predicted": 0.15704373155648893,
+          "mean_actual": 0.23076923076923078
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 12,
+          "mean_predicted": 0.2581331754724185,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 9,
+          "mean_predicted": 0.3424619966083103,
+          "mean_actual": 0.1111111111111111
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 6,
+          "mean_predicted": 0.4378361254930496,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 6,
+          "mean_predicted": 0.5484549303849539,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 9,
+          "mean_predicted": 0.6567315724160936,
+          "mean_actual": 0.1111111111111111
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 4,
+          "mean_predicted": 0.7401834428310394,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 5,
+          "mean_predicted": 0.8574074625968933,
+          "mean_actual": 0.6
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.9163143634796143,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.4047313776987993,
+      "loco_auc_ci95_hi": 0.7043653832790011
+    },
+    "stable-democracy": {
+      "n": 221,
+      "loco_auc": 0.6944140197152245,
+      "ece": 0.09607936755008153,
+      "ece_ci95_lo": 0.06430338384990256,
+      "ece_ci95_hi": 0.15697671108156422,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 81,
+          "mean_predicted": 0.04989907505381622,
+          "mean_actual": 0.1111111111111111
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 46,
+          "mean_predicted": 0.1513610219825869,
+          "mean_actual": 0.2608695652173913
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 22,
+          "mean_predicted": 0.24436093324964697,
+          "mean_actual": 0.2727272727272727
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 21,
+          "mean_predicted": 0.34742176106997896,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 23,
+          "mean_predicted": 0.4337547602860824,
+          "mean_actual": 0.21739130434782608
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 11,
+          "mean_predicted": 0.5446280403570696,
+          "mean_actual": 0.45454545454545453
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 9,
+          "mean_predicted": 0.6447736620903015,
+          "mean_actual": 0.5555555555555556
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 5,
+          "mean_predicted": 0.7371359467506409,
+          "mean_actual": 0.6
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 3,
+          "mean_predicted": 0.8179530700047811,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6189185009732536,
+      "loco_auc_ci95_hi": 0.7626634219276368
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-29T19:45:38.953312+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5069,
+  "stability_diagnostic": {
+    "fold_variance": 0.07243662419639714,
+    "fold_auc_mean": 0.6416036785084402,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Afghanistan": 0.0,
+      "Algeria": 0.8,
+      "Argentina": 0.8125,
+      "Australia": 0.4,
+      "Belgium": 0.75,
+      "Botswana": 0.7857142857142857,
+      "Brazil": 0.8333333333333334,
+      "Canada": 0.625,
+      "China": 0.2857142857142857,
+      "Colombia": 1.0,
+      "Cuba": 1.0,
+      "Czechia": 0.0,
+      "Ethiopia": 0.8333333333333334,
+      "France": 0.4166666666666667,
+      "Guatemala": 0.5,
+      "Honduras": 0.6666666666666666,
+      "Iceland": 0.0,
+      "India": 0.6,
+      "Ireland": 0.6666666666666666,
+      "Israel": 0.14285714285714285,
+      "Italy": 1.0,
+      "Jamaica": 1.0,
+      "Japan": 0.9375,
+      "Kazakhstan": 0.6666666666666666,
+      "Kuwait": 1.0,
+      "Laos": 0.5,
+      "Lebanon": 0.5,
+      "Malawi": 0.6666666666666666,
+      "Mauritius": 0.75,
+      "Mexico": 0.6666666666666666,
+      "Moldova": 0.8,
+      "Mongolia": 1.0,
+      "Morocco": 0.7333333333333333,
+      "Myanmar": 0.5,
+      "Netherlands": 1.0,
+      "New Zealand": 0.5,
+      "Nicaragua": 0.5,
+      "North Macedonia": 0.14285714285714285,
+      "Oman": 0.8333333333333334,
+      "Pakistan": 0.875,
+      "Papua New Guinea": 0.6,
+      "Philippines": 0.375,
+      "Poland": 0.25,
+      "Qatar": 0.75,
+      "Romania": 0.9047619047619048,
+      "Russia": 0.5,
+      "Rwanda": 0.6666666666666666,
+      "Saudi Arabia": 0.6388888888888888,
+      "Sierra Leone": 0.7142857142857143,
+      "Slovenia": 0.75,
+      "South Korea": 0.5714285714285714,
+      "Spain": 0.4,
+      "Sri Lanka": 1.0,
+      "Suriname": 0.8333333333333334,
+      "Switzerland": 0.2857142857142857,
+      "Tajikistan": 0.25,
+      "Timor-Leste": 1.0,
+      "Tunisia": 0.6666666666666666,
+      "Turkiye": 1.0,
+      "United Kingdom": 0.8571428571428571,
+      "United States": 0.55,
+      "Uruguay": 0.6666666666666666,
+      "Uzbekistan": 0.5
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 150,
+  "n_negatives": 450,
+  "walked_at_utc": "2026-06-29T19:50:37.397391+00:00",
+  "elapsed_seconds": 5211.5109622478485,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/human_rights_reform/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Pakistan",
+          "Suriname",
+          "Australia",
+          "Belgium",
+          "Eritrea",
+          "Algeria",
+          "Yemen",
+          "South Sudan"
+        ],
+        "country_isos": [
+          "pk",
+          "sr",
+          "au",
+          "be",
+          "er",
+          "dz",
+          "ye",
+          "ss"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Myanmar",
+          "Oman",
+          "Burundi",
+          "Papua New Guinea",
+          "Lebanon",
+          "Lesotho",
+          "France",
+          "Cuba",
+          "Sweden"
+        ],
+        "country_isos": [
+          "mm",
+          "om",
+          "bi",
+          "pg",
+          "lb",
+          "ls",
+          "fr",
+          "cu",
+          "se"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 8,
+        "countries": [
+          "Romania",
+          "Cabo Verde",
+          "Finland",
+          "United States",
+          "Paraguay",
+          "Italy",
+          "The Gambia",
+          "Vanuatu"
+        ],
+        "country_isos": [
+          "ro",
+          "cv",
+          "fi",
+          "us",
+          "py",
+          "it",
+          "gm",
+          "vu"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 9,
+        "countries": [
+          "Ecuador",
+          "Ukraine",
+          "Liberia",
+          "Sudan",
+          "Cameroon",
+          "Malaysia",
+          "Costa Rica",
+          "Eswatini",
+          "Central African Republic"
+        ],
+        "country_isos": [
+          "ec",
+          "ua",
+          "lr",
+          "sd",
+          "cm",
+          "my",
+          "cr",
+          "sz",
+          "cf"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Luxembourg",
+          "Switzerland",
+          "Senegal",
+          "Czechia",
+          "Denmark",
+          "Comoros",
+          "Fiji",
+          "Latvia",
+          "Peru"
+        ],
+        "country_isos": [
+          "lu",
+          "ch",
+          "sn",
+          "cz",
+          "dk",
+          "km",
+          "fj",
+          "lv",
+          "pe"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 8,
+        "countries": [
+          "Sao Tome and Principe",
+          "Croatia",
+          "Seychelles",
+          "Mauritania",
+          "Republic of the Congo",
+          "Namibia",
+          "Germany",
+          "Afghanistan"
+        ],
+        "country_isos": [
+          "st",
+          "hr",
+          "sc",
+          "mr",
+          "cg",
+          "na",
+          "de",
+          "af"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 9,
+        "countries": [
+          "Barbados",
+          "Timor-Leste",
+          "New Zealand",
+          "Iceland",
+          "Slovenia",
+          "Tanzania",
+          "Slovakia",
+          "Syria",
+          "Greece"
+        ],
+        "country_isos": [
+          "bb",
+          "tl",
+          "nz",
+          "is",
+          "si",
+          "tz",
+          "sk",
+          "sy",
+          "gr"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 9,
+        "countries": [
+          "Bhutan",
+          "Bahrain",
+          "Netherlands",
+          "Haiti",
+          "Sri Lanka",
+          "Somalia",
+          "Malawi",
+          "United Arab Emirates",
+          "Libya"
+        ],
+        "country_isos": [
+          "bt",
+          "bh",
+          "nl",
+          "ht",
+          "lk",
+          "so",
+          "mw",
+          "ae",
+          "ly"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 8,
+        "countries": [
+          "Iran",
+          "Guinea-Bissau",
+          "Ivory Coast",
+          "Ghana",
+          "Portugal",
+          "Estonia",
+          "Japan",
+          "Cambodia"
+        ],
+        "country_isos": [
+          "ir",
+          "gw",
+          "ci",
+          "gh",
+          "pt",
+          "ee",
+          "jp",
+          "kh"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 9,
+        "countries": [
+          "Malta",
+          "Poland",
+          "Cyprus",
+          "Ireland",
+          "The Democratic Republic of the Congo",
+          "Mexico",
+          "Hong Kong",
+          "Bulgaria",
+          "Uruguay"
+        ],
+        "country_isos": [
+          "mt",
+          "pl",
+          "cy",
+          "ie",
+          "cd",
+          "mx",
+          "hk",
+          "bg",
+          "uy"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Qatar",
+          "Equatorial Guinea",
+          "Venezuela",
+          "Honduras",
+          "Burkina Faso",
+          "Angola",
+          "Norway",
+          "Maldives",
+          "Austria"
+        ],
+        "country_isos": [
+          "qa",
+          "gq",
+          "ve",
+          "hn",
+          "bf",
+          "ao",
+          "no",
+          "mv",
+          "at"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Vietnam",
+          "South Korea",
+          "Rwanda",
+          "Tajikistan",
+          "Nigeria",
+          "Lithuania",
+          "Spain",
+          "Hungary"
+        ],
+        "country_isos": [
+          "vn",
+          "kr",
+          "rw",
+          "tj",
+          "ng",
+          "lt",
+          "es",
+          "hu"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Solomon Islands",
+          "Israel",
+          "Kazakhstan",
+          "Bosnia and Herzegovina",
+          "Jordan",
+          "Togo",
+          "Nepal",
+          "Argentina",
+          "Trinidad and Tobago"
+        ],
+        "country_isos": [
+          "sb",
+          "il",
+          "kz",
+          "ba",
+          "jo",
+          "tg",
+          "np",
+          "ar",
+          "tt"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "Russia",
+          "Singapore",
+          "El Salvador",
+          "Palestine",
+          "Mali",
+          "Sierra Leone",
+          "North Macedonia",
+          "Colombia",
+          "Bolivia"
+        ],
+        "country_isos": [
+          "ru",
+          "sg",
+          "sv",
+          "ps",
+          "ml",
+          "sl",
+          "mk",
+          "co",
+          "bo"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 8,
+        "countries": [
+          "Armenia",
+          "South Africa",
+          "Egypt",
+          "Bangladesh",
+          "Belarus",
+          "Djibouti",
+          "Montenegro",
+          "Niger"
+        ],
+        "country_isos": [
+          "am",
+          "za",
+          "eg",
+          "bd",
+          "by",
+          "dj",
+          "me",
+          "ne"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 9,
+        "countries": [
+          "Indonesia",
+          "Philippines",
+          "Dominican Republic",
+          "Zimbabwe",
+          "Mozambique",
+          "Albania",
+          "Thailand",
+          "Ethiopia",
+          "Zambia"
+        ],
+        "country_isos": [
+          "id",
+          "ph",
+          "do",
+          "zw",
+          "mz",
+          "al",
+          "th",
+          "et",
+          "zm"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 8,
+        "countries": [
+          "Azerbaijan",
+          "Laos",
+          "Guyana",
+          "Uganda",
+          "Iraq",
+          "Gabon",
+          "Serbia",
+          "Kyrgyzstan"
+        ],
+        "country_isos": [
+          "az",
+          "la",
+          "gy",
+          "ug",
+          "iq",
+          "ga",
+          "rs",
+          "kg"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "China",
+          "Kenya",
+          "Tunisia",
+          "Botswana",
+          "Benin",
+          "United Kingdom",
+          "Guinea",
+          "Mongolia",
+          "India"
+        ],
+        "country_isos": [
+          "cn",
+          "ke",
+          "tn",
+          "bw",
+          "bj",
+          "gb",
+          "gn",
+          "mn",
+          "in"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Turkiye",
+          "Nicaragua",
+          "Madagascar",
+          "Moldova",
+          "Mauritius",
+          "Panama",
+          "Canada",
+          "Kuwait",
+          "Chad"
+        ],
+        "country_isos": [
+          "tr",
+          "ni",
+          "mg",
+          "md",
+          "mu",
+          "pa",
+          "ca",
+          "kw",
+          "td"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Saudi Arabia",
+          "Brazil",
+          "Uzbekistan",
+          "Georgia",
+          "Jamaica",
+          "Turkmenistan",
+          "Chile",
+          "Guatemala",
+          "Morocco"
+        ],
+        "country_isos": [
+          "sa",
+          "br",
+          "uz",
+          "ge",
+          "jm",
+          "tm",
+          "cl",
+          "gt",
+          "ma"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.2,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 173,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.1262,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.5288528400305147,
+      "b": 0.0,
+      "c": -0.2166648877337205,
+      "n_fit": 475,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 32,
+        "observed_rate": 0.03125
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 136,
+        "observed_rate": 0.16176470588235295
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 128,
+        "observed_rate": 0.2578125
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 145,
+        "observed_rate": 0.3310344827586207
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 34,
+        "observed_rate": 0.47058823529411764
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.016674644960472215,
+    "n_predictions": 475,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.15610395502526223,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 54,
+            "mean_predicted": 0.0437362535201289,
+            "mean_actual": 0.12962962962962962
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 22,
+            "mean_predicted": 0.1485863984985785,
+            "mean_actual": 0.22727272727272727
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 19,
+            "mean_predicted": 0.2532129185764413,
+            "mean_actual": 0.3157894736842105
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 21,
+            "mean_predicted": 0.34775251150131226,
+            "mean_actual": 0.19047619047619047
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 10,
+            "mean_predicted": 0.4628021389245987,
+            "mean_actual": 0.7
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 10,
+            "mean_predicted": 0.5479173183441162,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 12,
+            "mean_predicted": 0.6549647947152456,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 8,
+            "mean_predicted": 0.7503980547189713,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 5,
+            "mean_predicted": 0.8527131915092468,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 3,
+            "mean_predicted": 0.920823355515798,
+            "mean_actual": 0.3333333333333333
+          }
+        ],
+        "n": 164,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.2171363399312314,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 25,
+            "mean_predicted": 0.06006682692095637,
+            "mean_actual": 0.24
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 13,
+            "mean_predicted": 0.15704373155648893,
+            "mean_actual": 0.23076923076923078
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 12,
+            "mean_predicted": 0.2581331754724185,
+            "mean_actual": 0.16666666666666666
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 9,
+            "mean_predicted": 0.3424619966083103,
+            "mean_actual": 0.1111111111111111
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 6,
+            "mean_predicted": 0.4378361254930496,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 6,
+            "mean_predicted": 0.5484549303849539,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 9,
+            "mean_predicted": 0.6567315724160936,
+            "mean_actual": 0.1111111111111111
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 4,
+            "mean_predicted": 0.7401834428310394,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 5,
+            "mean_predicted": 0.8574074625968933,
+            "mean_actual": 0.6
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.9163143634796143,
+            "mean_actual": 1.0
+          }
+        ],
+        "n": 90,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.09607936755008153,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 81,
+            "mean_predicted": 0.04989907505381622,
+            "mean_actual": 0.1111111111111111
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 46,
+            "mean_predicted": 0.1513610219825869,
+            "mean_actual": 0.2608695652173913
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 22,
+            "mean_predicted": 0.24436093324964697,
+            "mean_actual": 0.2727272727272727
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 21,
+            "mean_predicted": 0.34742176106997896,
+            "mean_actual": 0.42857142857142855
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 23,
+            "mean_predicted": 0.4337547602860824,
+            "mean_actual": 0.21739130434782608
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 11,
+            "mean_predicted": 0.5446280403570696,
+            "mean_actual": 0.45454545454545453
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 9,
+            "mean_predicted": 0.6447736620903015,
+            "mean_actual": 0.5555555555555556
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 5,
+            "mean_predicted": 0.7371359467506409,
+            "mean_actual": 0.6
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 3,
+            "mean_predicted": 0.8179530700047811,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 221,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/human_rights_reform.scores.json",
+  "shape_points": [
+    -0.018296387781395772,
+    -0.0012595490191147224,
+    0.015777289743166324,
+    0.03281412850544737,
+    0.04985096726772842,
+    0.06688780603000946,
+    0.08392464479229052,
+    0.10096148355457156,
+    0.11799832231685262,
+    0.13503516107913366,
+    0.1520719998414147,
+    0.16910883860369574
+  ],
+  "shap_importance_raw": {
+    "v2pepwrort": 1.1523714065551758,
+    "NY.GDP.MKTP.KD": 1.126428484916687,
+    "v2catrauni": 1.2944843769073486,
+    "v2x_clpriv": 1.0430328845977783
+  },
+  "shap_importance_normalized": {
+    "v2pepwrort": 0.2496300337189852,
+    "NY.GDP.MKTP.KD": 0.24401020284974811,
+    "v2catrauni": 0.2804149572072959,
+    "v2x_clpriv": 0.22594480622397076
+  },
+  "shap_direction_signs": {
+    "v2pepwrort": -1,
+    "NY.GDP.MKTP.KD": -1,
+    "v2catrauni": -1,
+    "v2x_clpriv": -1
+  },
+  "per_feature_breakdown": {
+    "v2pepwrort": {
+      "last_z": 0.07477090507745743,
+      "mean_z": 0.09128144383430481,
+      "std_z": 0.09823501110076904,
+      "slope": 0.2145739048719406,
+      "accel": 0.18114496767520905,
+      "tertile1_mean": 0.20485223829746246,
+      "tertile2_mean": 0.24215225875377655,
+      "tertile3_mean": 0.045360732823610306
+    },
+    "NY.GDP.MKTP.KD": {
+      "last_z": 0.09751098603010178,
+      "mean_z": 0.0466882698237896,
+      "std_z": 0.10254910588264465,
+      "slope": 0.27854686975479126,
+      "accel": 0.4166994094848633,
+      "tertile1_mean": 0.13320493698120117,
+      "tertile2_mean": 0.034682150930166245,
+      "tertile3_mean": 0.01654670760035515
+    },
+    "v2catrauni": {
+      "last_z": 0.2767031788825989,
+      "mean_z": 0.10617981851100922,
+      "std_z": 0.3126489222049713,
+      "slope": 0.11518567055463791,
+      "accel": 0.1830882430076599,
+      "tertile1_mean": 0.14469680190086365,
+      "tertile2_mean": 0.0609506219625473,
+      "tertile3_mean": 0.09503109008073807
+    },
+    "v2x_clpriv": {
+      "last_z": 0.04539775103330612,
+      "mean_z": 0.05068853870034218,
+      "std_z": 0.3496148884296417,
+      "slope": 0.22399236261844635,
+      "accel": 0.2548077404499054,
+      "tertile1_mean": 0.05465257912874222,
+      "tertile2_mean": 0.019405119121074677,
+      "tertile3_mean": 0.04447384923696518
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 12,
+    "indicators": [
+      {
+        "code": "v2pepwrort",
+        "name": "Power Distributed by Sexual Orientation (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 148,
+        "shape": {
+          "mean": [
+            0.0612,
+            0.072,
+            0.1226,
+            0.1936,
+            0.2446,
+            0.2646,
+            0.3006,
+            0.3765,
+            0.4756,
+            0.6119,
+            0.7175,
+            0.7165
+          ],
+          "p25": [
+            -0.3618,
+            -0.3546,
+            -0.1532,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "p75": [
+            0.4909,
+            0.5211,
+            0.5506,
+            0.6095,
+            0.6721,
+            0.8664,
+            0.9713,
+            0.9798,
+            1.0868,
+            1.343,
+            1.4314,
+            1.4834
+          ]
+        }
+      },
+      {
+        "code": "NY.GDP.MKTP.KD",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 122,
+        "shape": {
+          "mean": [
+            -0.053,
+            0.0544,
+            0.2201,
+            0.3335,
+            0.4176,
+            0.5841,
+            0.7151,
+            0.8831,
+            1.0601,
+            1.2764,
+            1.5258,
+            1.7192
+          ],
+          "p25": [
+            -0.1733,
+            -0.057,
+            0.0886,
+            0.2165,
+            0.3769,
+            0.5023,
+            0.6711,
+            0.8268,
+            1.0345,
+            1.1788,
+            1.3559,
+            1.4915
+          ],
+          "p75": [
+            0.1508,
+            0.2954,
+            0.441,
+            0.5643,
+            0.6643,
+            0.8446,
+            0.9573,
+            1.1731,
+            1.3407,
+            1.5649,
+            1.8044,
+            1.9599
+          ]
+        }
+      },
+      {
+        "code": "v2catrauni",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 144,
+        "shape": {
+          "mean": [
+            -0.0129,
+            0.0038,
+            0.0231,
+            0.0522,
+            0.1052,
+            0.1218,
+            0.1875,
+            0.1622,
+            0.1277,
+            0.1627,
+            0.2081,
+            0.1455
+          ],
+          "p25": [
+            -0.3755,
+            -0.4408,
+            -0.4408,
+            -0.3733,
+            -0.3557,
+            -0.3413,
+            -0.3557,
+            -0.3607,
+            -0.3618,
+            -0.4899,
+            -0.4579,
+            -0.6072
+          ],
+          "p75": [
+            0.3668,
+            0.3818,
+            0.4238,
+            0.4295,
+            0.531,
+            0.5882,
+            0.7404,
+            0.7465,
+            0.754,
+            0.9006,
+            0.9798,
+            1.064
+          ]
+        }
+      },
+      {
+        "code": "v2x_clpriv",
+        "name": "Private Civil Liberties Index (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 148,
+        "shape": {
+          "mean": [
+            0.0166,
+            0.0522,
+            0.1145,
+            0.1789,
+            0.2545,
+            0.4094,
+            0.4444,
+            0.4716,
+            0.4916,
+            0.5847,
+            0.6917,
+            0.6722
+          ],
+          "p25": [
+            -0.534,
+            -0.4697,
+            -0.378,
+            -0.3559,
+            -0.0674,
+            0.015,
+            0.0718,
+            0.0,
+            0.0,
+            0.0,
+            0.1993,
+            0.0
+          ],
+          "p75": [
+            0.4983,
+            0.5504,
+            0.5907,
+            0.7193,
+            0.7553,
+            0.8055,
+            1.0155,
+            1.0895,
+            1.1847,
+            1.2725,
+            1.4295,
+            1.5391
+          ]
+        }
+      }
+    ],
+    "samples_used": 148,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2025,
+        "label": "Taliban bans women from speaking in public and enforces full face veil",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ge",
+        "country_name": "Georgia",
+        "year": 2025,
+        "label": "Expanded Foreign Agents Law Introduces Criminal Penalties",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2024,
+        "label": "Taliban enacts Law on Promotion of Virtue and Prevention of Vice",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 2024,
+        "label": "Greece legalizes same-sex marriage, first Orthodox-majority country to do so",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 2024,
+        "label": "Bouterse Declared Fugitive \u2014 Enforcement Crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2023,
+        "label": "Taliban bans women from working for NGOs and UN agencies",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2023,
+        "label": "UN Special Rapporteur accuses Taliban of gender apartheid",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2023,
+        "label": "Yanomami Indigenous Health Crisis Declared",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2023,
+        "label": "Women's Reservation Bill passed \u2014 33% seats for women",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2023,
+        "label": "Anti-LGBTQ Legislation Mirrors Russian 'Gay Propaganda' Law",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 2023,
+        "label": "Constitutional Court Bans Shor Party for Threatening Statehood",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2022,
+        "label": "Taliban bans women from universities completing total educational exclusion",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2022,
+        "label": "Nobel Peace Prize awarded to imprisoned Ales Bialiatski",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2022,
+        "label": "Burundi partially re-engages with West \u2014 political prisoners released",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 2022,
+        "label": "Colombia Decriminalizes Abortion Up to 24 Weeks",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2022,
+        "label": "Eritrea Among World's Least Free Countries",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2022,
+        "label": "Over 1,500 NGOs, Universities, and Cultural Institutions Forcibly Closed",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2021,
+        "label": "Taliban bans women from secondary education and most employment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2021,
+        "label": "Continued States of Emergency \u2014 Anti-Crime Measures Renewed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2021,
+        "label": "Access to Information Act Operationalised",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 2021,
+        "label": "FATF Removes Mauritius from Grey List",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2021,
+        "label": "Navalny's Anti-Corruption Foundation designated extremist",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2021,
+        "label": "Forced Adult Labor in Cotton Abolished by ILO Monitors",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2020,
+        "label": "Abortion Legalized in Argentina",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2020,
+        "label": "Femicides Reach Record Levels During Pandemic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2020,
+        "label": "Legislative Package Criminalizes Free Expression and Civil Society",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2020,
+        "label": "Anti-Terror Law Passed \u2014 Civil Liberties Concerns",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 2020,
+        "label": "Constitutional Tribunal Bans Abortion for Fetal Defects",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2020,
+        "label": "Qatar Abolishes Kafala Exit Visa and Reforms Labor Laws",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 2019,
+        "label": "Homosexuality Decriminalised \u2014 Supreme Court Ruling",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 2019,
+        "label": "Sultan Pledges Moratorium on Death Penalty Under Sharia Code",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 2019,
+        "label": "Social Democrat Leader Dragnea Convicted and Imprisoned",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2019,
+        "label": "Gender-Based Violence State of Emergency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 2019,
+        "label": "Taiwan Legalizes Same-Sex Marriage",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2019,
+        "label": "Uzbekistan Abolishes Exit Visa Requirements",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2019,
+        "label": "Forced Child Labor Phased Out from Cotton Harvest",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2018,
+        "label": "Senate Rejects Abortion Legalization Bill",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2018,
+        "label": "Women appointed to 50% of cabinet positions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2018,
+        "label": "Supreme Court decriminalizes homosexuality",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 2018,
+        "label": "Chisinau Mayoral Election Invalidated Amid Democratic Backsliding",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mk",
+        "country_name": "North Macedonia",
+        "year": 2018,
+        "label": "Gruevski Flees to Hungary to Avoid Prison Sentence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 2018,
+        "label": "DNA Chief K\u00f6vesi Removed Amid Political Assault on Anticorruption Institutions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2018,
+        "label": "Women Allowed to Drive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 2018,
+        "label": "MeToo Movement Reshapes South Korean Public Life",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2018,
+        "label": "Political Prisoners Released in Mirziyoyev Amnesty Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2017,
+        "label": "Desaparici\u00f3n de Santiago Maldonado \u2014 Mapuche Protest",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cr",
+        "country_name": "Costa Rica",
+        "year": 2017,
+        "label": "Inter-American Court Orders Costa Rica to Legalize Same-Sex Marriage",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2017,
+        "label": "Entertainment Revolution \u2014 Cinemas, Concerts, Sports",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2016,
+        "label": "New constitution introduces Tamazight as official language",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 2016,
+        "label": "Constitutional Court Legalizes Same-Sex Marriage",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2016,
+        "label": "PNG Supreme Court Rules Manus Detention Unconstitutional",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 2016,
+        "label": "Constitutional Tribunal Crisis \u2014 Rule of Law Under Attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2016,
+        "label": "Religious Police Stripped of Arrest Powers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 2015,
+        "label": "Same-Sex Marriage Approved by Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2015,
+        "label": "Death Penalty Abolished Under New Criminal Code",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2015,
+        "label": "Morocco Passes Law Recognising Tamazight Language Rights",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 2015,
+        "label": "Islamic Renaissance Party Banned as Terrorist Organization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 2015,
+        "label": "Supreme Court Legalizes Same-Sex Marriage Nationally",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 2014,
+        "label": "Constitutional Court Nullifies Anti-Homosexuality Act",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 2013,
+        "label": "Same-Sex Marriage Legalized in France",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2013,
+        "label": "Supreme Court recriminalizes homosexuality",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 2013,
+        "label": "Marriage Equality Legislation Passed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2013,
+        "label": "Women Appointed to Shura Council",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2013,
+        "label": "Equal Marriage Act Passes Despite Fierce Opposition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 2013,
+        "label": "Same-Sex Marriage Legalized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 2012,
+        "label": "Idle No More Movement Asserts Indigenous Rights",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 2012,
+        "label": "Cuba Abolishes Exit Visa Requirement, Allows Citizens to Travel Freely",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2012,
+        "label": "Delhi gang rape case \u2014 Nirbhaya protests",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2012,
+        "label": "Laos Joins ASEAN Intergovernmental Human Rights Commission",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2012,
+        "label": "Cybercrime Prevention Act Passed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2012,
+        "label": "Anti-protest laws sharply increase fines",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2012,
+        "label": "Foreign Agents Law targets NGOs",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 2012,
+        "label": "Chief Justice impeached in assault on judicial independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 2012,
+        "label": "Abortion Legalized in First Trimester",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2011,
+        "label": "Saudi Women Given Right to Vote in Municipal Elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2010,
+        "label": "Argentina Legalizes Same-Sex Marriage",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 2010,
+        "label": "Same-Sex Marriage Legalized by Unanimous Vote",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2010,
+        "label": "Sledgehammer Trial: Mass Prosecution of Military Officers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2009,
+        "label": "Delhi High Court decriminalizes homosexuality",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 2009,
+        "label": "First Women Elected to National Assembly",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2009,
+        "label": "Sandinista-Aligned Court Clears Path for Ortega Re-election",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2008,
+        "label": "Ergenekon Investigation Targets Alleged Coup Plotters",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2007,
+        "label": "Rwanda abolishes the death penalty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 2007,
+        "label": "Same-Sex Civil Unions Legalized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 2006,
+        "label": "San Court Victory \u2014 CKGR Evictions Ruled Unlawful",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kz",
+        "country_name": "Kazakhstan",
+        "year": 2006,
+        "label": "Sarsenbayev Assassination Exposes Dangers Facing Political Opposition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 2005,
+        "label": "Civil Marriage Act Legalises Same-Sex Marriage Nationally",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 2005,
+        "label": "Women Granted Full Political Rights",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 2005,
+        "label": "DNA \u2014 National Anticorruption Directorate Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 2004,
+        "label": "Vlaams Blok Convicted of Racism and Forced to Dissolve",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cr",
+        "country_name": "Costa Rica",
+        "year": 2004,
+        "label": "Three Former Presidents Accused of Corruption",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2004,
+        "label": "Moudawwana Family Law Reformed \u2014 Major Women's Rights Advance",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 2004,
+        "label": "Inter-American Court Rules Against Suriname on Moiwana Massacre",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cr",
+        "country_name": "Costa Rica",
+        "year": 2003,
+        "label": "Supreme Court Overturns Presidential Reelection Ban",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2003,
+        "label": "Anti-Terrorism Law Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2003,
+        "label": "Anti-Terrorism Law Passed with Broad Definitions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2002,
+        "label": "Tamazight recognized as national language",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2002,
+        "label": "Bola\u00f1os Prosecutes Former President Alem\u00e1n for Embezzlement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 2001,
+        "label": "Kornet Shehwan Declaration Calls for Syrian Withdrawal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2001,
+        "label": "Fox-Zapatista Dialogue and Congressional Indigenous Rights Law",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 2001,
+        "label": "Netherlands Legalises Same-Sex Marriage",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 2000,
+        "label": "Czech Television Crisis Ends in Victory for Editorial Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2000,
+        "label": "One Million March in Casablanca Against Women's Rights Plan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1999,
+        "label": "Nunavut Territory Created as Inuit Homeland",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1999,
+        "label": "Emir Decree Grants Women Vote; National Assembly Rejects It",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 1999,
+        "label": "Qatar Grants Women Voting Rights in Municipal Elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 1997,
+        "label": "Bringing Them Home Report on Stolen Generations Released",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1997,
+        "label": "Women Granted Right to Vote and Stand in Consultative Council Elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1996,
+        "label": "Taliban bans women from work, education, and public life",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 1996,
+        "label": "Registered Partnerships Legalized for Same-Sex Couples",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 1996,
+        "label": "Belo and Ramos-Horta awarded Nobel Peace Prize",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1995,
+        "label": "San Andr\u00e9s Accords Negotiations with Zapatistas",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 1994,
+        "label": "Anti-Racism Law Adopted by Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 1993,
+        "label": "Native Title Act Gives Legislative Effect to Mabo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1993,
+        "label": "Homosexuality Decriminalized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1993,
+        "label": "Kono Statement Acknowledges Comfort Women System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1993,
+        "label": "First Women Elected to Moroccan Parliament",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1992,
+        "label": "Rigoberta Mench\u00fa Wins Nobel Peace Prize for Indigenous Rights",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1991,
+        "label": "Yanomami Indigenous Territory Officially Demarcated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1991,
+        "label": "Aung San Suu Kyi Awarded Nobel Peace Prize While Under House Arrest",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1990,
+        "label": "Saudi Women Driving Protest",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1990,
+        "label": "Americans with Disabilities Act Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kz",
+        "country_name": "Kazakhstan",
+        "year": 1989,
+        "label": "Nevada-Semipalatinsk Anti-Nuclear Movement Founded by Suleimenov",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 1989,
+        "label": "Press Law Revised, Newspapers Liberalized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1988,
+        "label": "Demarcation of Indigenous Territories Constitutionally Guaranteed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1988,
+        "label": "Inter-American Court Rules Against Honduras in Landmark Vel\u00e1squez Rodr\u00edguez Case",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1986,
+        "label": "Equal Employment Opportunity Law Opens Careers to Women",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1986,
+        "label": "Amnesty for Political Prisoners \u2014 Opposition Rebuilds",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1985,
+        "label": "Shah Bano case and Muslim Women Act controversy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1984,
+        "label": "Family Code restricts women's rights under Islamic law",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1983,
+        "label": "Walesa Awarded Nobel Peace Prize",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1982,
+        "label": "Eritrean Women's Role in Liberation Movement Grows",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1982,
+        "label": "Mafia Murders General Dalla Chiesa, State Responds with Anti-Mafia Law",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1981,
+        "label": "PDRY Women's Rights and Social Transformation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1979,
+        "label": "Hudood Ordinances Promulgated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1978,
+        "label": "Democracy Wall movement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1978,
+        "label": "Cuba-Exile Dialogue Produces Release of Over 3,000 Political Prisoners",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1978,
+        "label": "Havel Publishes 'The Power of the Powerless'",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1977,
+        "label": "Charter 77 Human Rights Manifesto Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1977,
+        "label": "Carter Administration Suspends Military Aid Over Human Rights Abuses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1975,
+        "label": "International Women's Year Conference in Mexico City",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1975,
+        "label": "Helsinki Final Act \u2014 Human Rights Lever Against Communism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1971,
+        "label": "Kosovo Albanians Gain Cultural Rights \u2014 Albanian-Language Education Expanded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1968,
+        "label": "Fair Housing Act Passed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1967,
+        "label": "Sexual Offences Act Partially Decriminalises Male Homosexuality",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1966,
+        "label": "Military Government over Arab Citizens Lifted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1966,
+        "label": "Fraga Press Law Replaces Pre-Publication Censorship",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1965,
+        "label": "Abolition of the Death Penalty in Britain",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1965,
+        "label": "Race Relations Act: Britain's First Racial Equality Legislation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1965,
+        "label": "Voting Rights Act Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1964,
+        "label": "Women gain voting rights and first contested parliamentary elections held",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1964,
+        "label": "Civil Rights Act of 1964 Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1962,
+        "label": "Women's Suffrage Piloted in Local Council Elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1961,
+        "label": "Muslim Family Laws Ordinance Reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1961,
+        "label": "Girls' Education Introduced Formally",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1960,
+        "label": "Status Indians Granted Federal Vote Without Treaty Waiver",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1959,
+        "label": "Daoud government introduces voluntary unveiling for women",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1957,
+        "label": "Eisenhower Deploys Troops to Enforce Little Rock Desegregation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1956,
+        "label": "Personal Status Code Enacted \u2014 Women's Rights Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1955,
+        "label": "Hindu Marriage and Succession Acts passed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1954,
+        "label": "Brown v. Board of Education Ruling",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1953,
+        "label": "Women's Suffrage Granted in Lebanon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1952,
+        "label": "Greek women gain full voting rights in national elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1951,
+        "label": "Preventive Detention Act enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1950,
+        "label": "Marriage Law abolishes feudal marriage system",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 1950,
+        "label": "Forced Cotton Cultivation Expands in Northern Mozambique",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1925,
+        "label": "Kuna Rebellion Establishes Indigenous Autonomy",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 167
+  }
+}

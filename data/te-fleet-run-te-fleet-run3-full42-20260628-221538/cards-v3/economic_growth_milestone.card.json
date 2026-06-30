@@ -1,0 +1,2130 @@
+{
+  "recipe_id": "economic_growth_milestone",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "International Tension",
+  "description_compelling": "A country crosses a threshold \u2014 middle-income status, top-20 GDP, an investment-grade rating, or a major-export-position rank. Compound-growth, institutional-quality, and capital-stock measures climb for a decade or more first. Recurrent across the Asian growth story; emerging in select Gulf, Central European, and Southeast Asian economies.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.7426807760141093,
+    "ci95_lo": 0.649193468919657,
+    "ci95_hi": 0.8164507994204842,
+    "ci80_lo": 0.6858215787581099,
+    "ci80_hi": 0.7938399828613274,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2elpeace",
+      "MS.MIL.XPND.GD.ZS",
+      "NY.GDP.DEFL.KD.ZG",
+      "v2lgotovst"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2elpeace",
+        "name": null
+      },
+      {
+        "code": "MS.MIL.XPND.GD.ZS",
+        "name": null
+      },
+      {
+        "code": "NY.GDP.DEFL.KD.ZG",
+        "name": null
+      },
+      {
+        "code": "v2lgotovst",
+        "name": null
+      }
+    ],
+    "chosen_window": 18,
+    "final_global_auc": 0.7426807760141093,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2elpeace",
+        "window": 18,
+        "auc": 0.6291096589748826,
+        "lift_over_previous": 0.12910965897488258,
+        "selected_after": [
+          "v2elpeace"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "MS.MIL.XPND.GD.ZS",
+        "window": 18,
+        "auc": 0.6851851851851852,
+        "lift_over_previous": 0.05607552621030265,
+        "selected_after": [
+          "v2elpeace",
+          "MS.MIL.XPND.GD.ZS"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "NY.GDP.DEFL.KD.ZG",
+        "window": 18,
+        "auc": 0.6978835978835979,
+        "lift_over_previous": 0.012698412698412653,
+        "selected_after": [
+          "v2elpeace",
+          "MS.MIL.XPND.GD.ZS",
+          "NY.GDP.DEFL.KD.ZG"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2lgotovst",
+        "window": 18,
+        "auc": 0.7426807760141093,
+        "lift_over_previous": 0.04479717813051143,
+        "selected_after": [
+          "v2elpeace",
+          "MS.MIL.XPND.GD.ZS",
+          "NY.GDP.DEFL.KD.ZG",
+          "v2lgotovst"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2xeg_eqprotec",
+        "window": 18,
+        "auc": 0.7402116402116402,
+        "lift_over_previous": -0.0024691358024691024,
+        "selected_after": [
+          "v2elpeace",
+          "MS.MIL.XPND.GD.ZS",
+          "NY.GDP.DEFL.KD.ZG",
+          "v2lgotovst",
+          "v2xeg_eqprotec"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 69,
+    "n_pos_survive": 45,
+    "n_neg_total": 207,
+    "n_neg_survive": 126,
+    "pos_coverage": 0.6521739130434783,
+    "neg_coverage": 0.6086956521739131,
+    "n_countries_survive": 37,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 67,
+      "loco_auc": 0.6545454545454545,
+      "ece": 0.19183795635046352,
+      "ece_ci95_lo": 0.12942582845562764,
+      "ece_ci95_hi": 0.31428340778046693,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 19,
+          "mean_predicted": 0.04792351775655621,
+          "mean_actual": 0.21052631578947367
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 10,
+          "mean_predicted": 0.14881711527705194,
+          "mean_actual": 0.3
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 7,
+          "mean_predicted": 0.2623537353106907,
+          "mean_actual": 0.14285714285714285
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 5,
+          "mean_predicted": 0.3536766588687897,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 9,
+          "mean_predicted": 0.4434412254227532,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 7,
+          "mean_predicted": 0.5418973990849086,
+          "mean_actual": 0.2857142857142857
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.6294922530651093,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 4,
+          "mean_predicted": 0.7635998725891113,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 2,
+          "mean_predicted": 0.8498381674289703,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 2,
+          "mean_predicted": 0.9158152639865875,
+          "mean_actual": 0.5
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5051300720833451,
+      "loco_auc_ci95_hi": 0.7782373186645438
+    },
+    "mid-tier": {
+      "n": 25,
+      "loco_auc": 0.94,
+      "ece": 0.14606283187866212,
+      "ece_ci95_lo": 0.10345141036063434,
+      "ece_ci95_hi": 0.2685816807970404,
+      "low_confidence": true,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 10,
+          "mean_predicted": 0.05854347497224808,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 5,
+          "mean_predicted": 0.1169830322265625,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 2,
+          "mean_predicted": 0.25952646881341934,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 3,
+          "mean_predicted": 0.3418186406294505,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 1,
+          "mean_predicted": 0.4961705803871155,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.6139894723892212,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 1,
+          "mean_predicted": 0.7303017377853394,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 2,
+          "mean_predicted": 0.8885869085788727,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ]
+    },
+    "stable-democracy": {
+      "n": 79,
+      "loco_auc": 0.7540983606557377,
+      "ece": 0.12603534804657102,
+      "ece_ci95_lo": 0.07806225917434696,
+      "ece_ci95_hi": 0.22302970684994056,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 46,
+          "mean_predicted": 0.04407280911286564,
+          "mean_actual": 0.13043478260869565
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 15,
+          "mean_predicted": 0.13627070933580399,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 5,
+          "mean_predicted": 0.2508414387702942,
+          "mean_actual": 0.6
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 1,
+          "mean_predicted": 0.31603386998176575,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 3,
+          "mean_predicted": 0.4302152295907338,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.5755906899770101,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.603428304195404,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 1,
+          "mean_predicted": 0.7795268297195435,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 1,
+          "mean_predicted": 0.8524031043052673,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 2,
+          "mean_predicted": 0.9137876927852631,
+          "mean_actual": 0.5
+        }
+      ],
+      "loco_auc_ci95_lo": 0.616526106413497,
+      "loco_auc_ci95_hi": 0.8662312493307651
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-29T03:51:13.273937+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5464,
+  "stability_diagnostic": {
+    "fold_variance": 0.08982829160216645,
+    "fold_auc_mean": 0.7740005878894768,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Botswana": 1.0,
+      "Brazil": 1.0,
+      "Cameroon": 0.875,
+      "Chad": 0.5,
+      "Dominican Republic": 0.8333333333333334,
+      "El Salvador": 0.0,
+      "Ethiopia": 1.0,
+      "Iran": 1.0,
+      "Ireland": 0.42857142857142855,
+      "Israel": 1.0,
+      "Japan": 0.4444444444444444,
+      "Kenya": 1.0,
+      "Madagascar": 1.0,
+      "Mauritania": 0.6666666666666666,
+      "Mauritius": 1.0,
+      "Mongolia": 0.7333333333333333,
+      "Norway": 1.0,
+      "Panama": 0.75,
+      "Paraguay": 1.0,
+      "Peru": 0.6666666666666666,
+      "Philippines": 0.6,
+      "Rwanda": 1.0,
+      "Spain": 1.0,
+      "Sudan": 0.4,
+      "Thailand": 1.0,
+      "Togo": 0.0,
+      "Vietnam": 1.0
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7489,
+    "cohort_loco_floor": 0.6889,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 69,
+  "n_negatives": 207,
+  "walked_at_utc": "2026-06-29T03:52:20.464583+00:00",
+  "elapsed_seconds": 1241.3334746360779,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/economic_growth_milestone/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 7,
+        "countries": [
+          "Botswana",
+          "Tunisia",
+          "Peru",
+          "Fiji",
+          "Vietnam",
+          "Burkina Faso",
+          "Singapore"
+        ],
+        "country_isos": [
+          "bw",
+          "tn",
+          "pe",
+          "fj",
+          "vn",
+          "bf",
+          "sg"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 8,
+        "countries": [
+          "Malaysia",
+          "Togo",
+          "Myanmar",
+          "Malta",
+          "India",
+          "Sudan",
+          "United Kingdom",
+          "The Gambia"
+        ],
+        "country_isos": [
+          "my",
+          "tg",
+          "mm",
+          "mt",
+          "in",
+          "sd",
+          "gb",
+          "gm"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 8,
+        "countries": [
+          "Egypt",
+          "Pakistan",
+          "Armenia",
+          "Nepal",
+          "Dominican Republic",
+          "Uganda",
+          "Eswatini",
+          "Jordan"
+        ],
+        "country_isos": [
+          "eg",
+          "pk",
+          "am",
+          "np",
+          "do",
+          "ug",
+          "sz",
+          "jo"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 7,
+        "countries": [
+          "South Korea",
+          "Ukraine",
+          "Seychelles",
+          "Morocco",
+          "Greece",
+          "Ecuador",
+          "Ireland"
+        ],
+        "country_isos": [
+          "kr",
+          "ua",
+          "sc",
+          "ma",
+          "gr",
+          "ec",
+          "ie"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 8,
+        "countries": [
+          "Haiti",
+          "Philippines",
+          "Lithuania",
+          "Mexico",
+          "Algeria",
+          "Portugal",
+          "Italy",
+          "Republic of the Congo"
+        ],
+        "country_isos": [
+          "ht",
+          "ph",
+          "lt",
+          "mx",
+          "dz",
+          "pt",
+          "it",
+          "cg"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 8,
+        "countries": [
+          "France",
+          "Honduras",
+          "Malawi",
+          "Denmark",
+          "Estonia",
+          "Russia",
+          "Libya",
+          "Czechia"
+        ],
+        "country_isos": [
+          "fr",
+          "hn",
+          "mw",
+          "dk",
+          "ee",
+          "ru",
+          "ly",
+          "cz"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 7,
+        "countries": [
+          "Cyprus",
+          "Moldova",
+          "El Salvador",
+          "Thailand",
+          "Mozambique",
+          "Sri Lanka",
+          "United Arab Emirates"
+        ],
+        "country_isos": [
+          "cy",
+          "md",
+          "sv",
+          "th",
+          "mz",
+          "lk",
+          "ae"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Brazil",
+          "Bulgaria",
+          "Namibia",
+          "Sierra Leone",
+          "Sweden",
+          "Latvia",
+          "Uruguay",
+          "Belgium"
+        ],
+        "country_isos": [
+          "br",
+          "bg",
+          "na",
+          "sl",
+          "se",
+          "lv",
+          "uy",
+          "be"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 8,
+        "countries": [
+          "Kyrgyzstan",
+          "Canada",
+          "Oman",
+          "Croatia",
+          "Chile",
+          "Slovakia",
+          "Kuwait",
+          "Germany"
+        ],
+        "country_isos": [
+          "kg",
+          "ca",
+          "om",
+          "hr",
+          "cl",
+          "sk",
+          "kw",
+          "de"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 7,
+        "countries": [
+          "Liberia",
+          "Zambia",
+          "Mauritius",
+          "Tanzania",
+          "Montenegro",
+          "North Macedonia",
+          "Equatorial Guinea"
+        ],
+        "country_isos": [
+          "lr",
+          "zm",
+          "mu",
+          "tz",
+          "me",
+          "mk",
+          "gq"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 8,
+        "countries": [
+          "Mali",
+          "Kenya",
+          "Mauritania",
+          "Benin",
+          "Guyana",
+          "Netherlands",
+          "Guatemala",
+          "Israel"
+        ],
+        "country_isos": [
+          "ml",
+          "ke",
+          "mr",
+          "bj",
+          "gy",
+          "nl",
+          "gt",
+          "il"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Lesotho",
+          "Iran",
+          "Ivory Coast",
+          "Zimbabwe",
+          "Panama",
+          "Poland",
+          "Japan",
+          "Central African Republic"
+        ],
+        "country_isos": [
+          "ls",
+          "ir",
+          "ci",
+          "zw",
+          "pa",
+          "pl",
+          "jp",
+          "cf"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 8,
+        "countries": [
+          "Hungary",
+          "Mongolia",
+          "Finland",
+          "Serbia",
+          "Colombia",
+          "South Africa",
+          "Bangladesh",
+          "Paraguay"
+        ],
+        "country_isos": [
+          "hu",
+          "mn",
+          "fi",
+          "rs",
+          "co",
+          "za",
+          "bd",
+          "py"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 7,
+        "countries": [
+          "Jamaica",
+          "Madagascar",
+          "Papua New Guinea",
+          "Afghanistan",
+          "Nigeria",
+          "Switzerland",
+          "Romania"
+        ],
+        "country_isos": [
+          "jm",
+          "mg",
+          "pg",
+          "af",
+          "ng",
+          "ch",
+          "ro"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 8,
+        "countries": [
+          "Slovenia",
+          "Iraq",
+          "Senegal",
+          "Guinea-Bissau",
+          "Rwanda",
+          "The Democratic Republic of the Congo",
+          "United States",
+          "Australia"
+        ],
+        "country_isos": [
+          "si",
+          "iq",
+          "sn",
+          "gw",
+          "rw",
+          "cd",
+          "us",
+          "au"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Trinidad and Tobago",
+          "Bolivia",
+          "Burundi",
+          "Azerbaijan",
+          "Spain",
+          "Austria",
+          "Georgia",
+          "New Zealand"
+        ],
+        "country_isos": [
+          "tt",
+          "bo",
+          "bi",
+          "az",
+          "es",
+          "at",
+          "ge",
+          "nz"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 7,
+        "countries": [
+          "Yemen",
+          "Bahrain",
+          "Somalia",
+          "Albania",
+          "Laos",
+          "Ethiopia",
+          "Lebanon"
+        ],
+        "country_isos": [
+          "ye",
+          "bh",
+          "so",
+          "al",
+          "la",
+          "et",
+          "lb"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 8,
+        "countries": [
+          "Bosnia and Herzegovina",
+          "Turkiye",
+          "Cameroon",
+          "Uzbekistan",
+          "Indonesia",
+          "Argentina",
+          "Cabo Verde",
+          "Timor-Leste"
+        ],
+        "country_isos": [
+          "ba",
+          "tr",
+          "cm",
+          "uz",
+          "id",
+          "ar",
+          "cv",
+          "tl"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 8,
+        "countries": [
+          "Norway",
+          "Ghana",
+          "Luxembourg",
+          "Cambodia",
+          "Tajikistan",
+          "Cuba",
+          "Niger",
+          "Nicaragua"
+        ],
+        "country_isos": [
+          "no",
+          "gh",
+          "lu",
+          "kh",
+          "tj",
+          "cu",
+          "ne",
+          "ni"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 8,
+        "countries": [
+          "Syria",
+          "Chad",
+          "Guinea",
+          "Belarus",
+          "Gabon",
+          "Angola",
+          "Venezuela",
+          "Kazakhstan"
+        ],
+        "country_isos": [
+          "sy",
+          "td",
+          "gn",
+          "by",
+          "ga",
+          "ao",
+          "ve",
+          "kz"
+        ]
+      }
+    ],
+    "median": 50.6,
+    "p90": 90.3,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 154,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.2855,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.8118347825303459,
+      "b": 0.022013395510221172,
+      "c": 0.43966743198217634,
+      "n_fit": 171,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 35,
+        "observed_rate": 0.02857142857142857
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 44,
+        "observed_rate": 0.20454545454545456
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 26,
+        "observed_rate": 0.23076923076923078
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 19,
+        "observed_rate": 0.3157894736842105
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 27,
+        "observed_rate": 0.4444444444444444
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 20,
+        "observed_rate": 0.55
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.026485813693261608,
+    "n_predictions": 171,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.19183795635046352,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 19,
+            "mean_predicted": 0.04792351775655621,
+            "mean_actual": 0.21052631578947367
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 10,
+            "mean_predicted": 0.14881711527705194,
+            "mean_actual": 0.3
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 7,
+            "mean_predicted": 0.2623537353106907,
+            "mean_actual": 0.14285714285714285
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 5,
+            "mean_predicted": 0.3536766588687897,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 9,
+            "mean_predicted": 0.4434412254227532,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 7,
+            "mean_predicted": 0.5418973990849086,
+            "mean_actual": 0.2857142857142857
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.6294922530651093,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 4,
+            "mean_predicted": 0.7635998725891113,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 2,
+            "mean_predicted": 0.8498381674289703,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 2,
+            "mean_predicted": 0.9158152639865875,
+            "mean_actual": 0.5
+          }
+        ],
+        "n": 67,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.14606283187866212,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 10,
+            "mean_predicted": 0.05854347497224808,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 5,
+            "mean_predicted": 0.1169830322265625,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 2,
+            "mean_predicted": 0.25952646881341934,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 3,
+            "mean_predicted": 0.3418186406294505,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 1,
+            "mean_predicted": 0.4961705803871155,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.6139894723892212,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 1,
+            "mean_predicted": 0.7303017377853394,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 2,
+            "mean_predicted": 0.8885869085788727,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 25,
+        "low_confidence": true
+      },
+      "stable-democracy": {
+        "ece": 0.12603534804657102,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 46,
+            "mean_predicted": 0.04407280911286564,
+            "mean_actual": 0.13043478260869565
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 15,
+            "mean_predicted": 0.13627070933580399,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 5,
+            "mean_predicted": 0.2508414387702942,
+            "mean_actual": 0.6
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 1,
+            "mean_predicted": 0.31603386998176575,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 3,
+            "mean_predicted": 0.4302152295907338,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.5755906899770101,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.603428304195404,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 1,
+            "mean_predicted": 0.7795268297195435,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 1,
+            "mean_predicted": 0.8524031043052673,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 2,
+            "mean_predicted": 0.9137876927852631,
+            "mean_actual": 0.5
+          }
+        ],
+        "n": 79,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/economic_growth_milestone.scores.json",
+  "shape_points": [
+    -0.08307361272314365,
+    -0.059823393065280936,
+    -0.036573173407418204,
+    -0.01332295374955549,
+    0.009927265908307226,
+    0.03317748556616995,
+    0.05642770522403266,
+    0.07967792488189539,
+    0.1029281445397581,
+    0.12617836419762082,
+    0.14942858385548355,
+    0.17267880351334625
+  ],
+  "shap_importance_raw": {
+    "v2elpeace": 1.0074418783187866,
+    "MS.MIL.XPND.GD.ZS": 1.31330144405365,
+    "NY.GDP.DEFL.KD.ZG": 2.381758689880371,
+    "v2lgotovst": 1.0421857833862305
+  },
+  "shap_importance_normalized": {
+    "v2elpeace": 0.17536930015301536,
+    "MS.MIL.XPND.GD.ZS": 0.22861145649213796,
+    "NY.GDP.DEFL.KD.ZG": 0.4146019374087543,
+    "v2lgotovst": 0.1814173059460924
+  },
+  "shap_direction_signs": {
+    "v2elpeace": -1,
+    "MS.MIL.XPND.GD.ZS": -1,
+    "NY.GDP.DEFL.KD.ZG": -1,
+    "v2lgotovst": -1
+  },
+  "per_feature_breakdown": {
+    "v2elpeace": {
+      "last_z": 0.09097073972225189,
+      "mean_z": 0.025689750909805298,
+      "std_z": 0.1003686711192131,
+      "slope": 0.35726428031921387,
+      "accel": 0.22271236777305603,
+      "tertile1_mean": 0.03533165156841278,
+      "tertile2_mean": 0.021713415160775185,
+      "tertile3_mean": 0.1533910036087036
+    },
+    "MS.MIL.XPND.GD.ZS": {
+      "last_z": 0.20570828020572662,
+      "mean_z": 0.029535138979554176,
+      "std_z": 0.18892702460289001,
+      "slope": 0.43326833844184875,
+      "accel": 0.17253762483596802,
+      "tertile1_mean": 0.1408296674489975,
+      "tertile2_mean": 0.05204404518008232,
+      "tertile3_mean": 0.09045130759477615
+    },
+    "NY.GDP.DEFL.KD.ZG": {
+      "last_z": 0.203812375664711,
+      "mean_z": 0.051474202424287796,
+      "std_z": 1.0718789100646973,
+      "slope": 0.2380288988351822,
+      "accel": 0.3976799249649048,
+      "tertile1_mean": 0.0549113005399704,
+      "tertile2_mean": 0.12747962772846222,
+      "tertile3_mean": 0.23649358749389648
+    },
+    "v2lgotovst": {
+      "last_z": 0.29019954800605774,
+      "mean_z": 0.06727046519517899,
+      "std_z": 0.08794191479682922,
+      "slope": 0.10259275138378143,
+      "accel": 0.11566130071878433,
+      "tertile1_mean": 0.11427206546068192,
+      "tertile2_mean": 0.1606079638004303,
+      "tertile3_mean": 0.10363977402448654
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 18,
+    "indicators": [
+      {
+        "code": "v2elpeace",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 60,
+        "shape": {
+          "mean": [
+            -0.0361,
+            -0.0274,
+            0.0833,
+            -0.0494,
+            -0.0839,
+            -0.1255,
+            -0.0587,
+            0.0947,
+            0.1054,
+            -0.0522,
+            0.0569,
+            0.1713,
+            -0.01,
+            -0.0923,
+            0.0037,
+            -0.1517,
+            0.0102,
+            0.1142
+          ],
+          "p25": [
+            -0.6185,
+            -0.6296,
+            -0.5791,
+            -0.6319,
+            -0.6297,
+            -0.6614,
+            -0.7099,
+            -0.5509,
+            -0.4939,
+            -0.8597,
+            -0.7213,
+            -0.5191,
+            -0.8326,
+            -0.8326,
+            -0.8468,
+            -1.1441,
+            -1.1408,
+            -0.8046
+          ],
+          "p75": [
+            0.6615,
+            0.6838,
+            0.6971,
+            0.5507,
+            0.5166,
+            0.4906,
+            0.5746,
+            0.6734,
+            0.6396,
+            0.6037,
+            0.6485,
+            0.6655,
+            0.6118,
+            0.7023,
+            0.9818,
+            0.9818,
+            1.0877,
+            1.0614
+          ]
+        }
+      },
+      {
+        "code": "MS.MIL.XPND.GD.ZS",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 52,
+        "shape": {
+          "mean": [
+            0.2797,
+            0.453,
+            0.3525,
+            0.3466,
+            0.2122,
+            -0.0893,
+            -0.0402,
+            -0.1708,
+            -0.2337,
+            -0.2496,
+            -0.2336,
+            -0.2077,
+            -0.2784,
+            -0.3851,
+            -0.4008,
+            -0.4564,
+            -0.4717,
+            -0.5534
+          ],
+          "p25": [
+            -0.352,
+            -0.2688,
+            -0.254,
+            -0.2928,
+            -0.3438,
+            -0.5275,
+            -0.5654,
+            -0.6438,
+            -0.7364,
+            -0.7217,
+            -0.8143,
+            -0.7864,
+            -0.8301,
+            -0.9583,
+            -0.9495,
+            -0.9494,
+            -0.9635,
+            -1.0949
+          ],
+          "p75": [
+            0.9259,
+            0.9945,
+            1.0223,
+            1.0045,
+            0.736,
+            0.2439,
+            0.4724,
+            0.3629,
+            0.1787,
+            0.0075,
+            0.2617,
+            0.1723,
+            0.0658,
+            0.0346,
+            -0.0239,
+            -0.074,
+            -0.0522,
+            -0.2394
+          ]
+        }
+      },
+      {
+        "code": "NY.GDP.DEFL.KD.ZG",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 57,
+        "shape": {
+          "mean": [
+            0.1095,
+            -0.1363,
+            -0.263,
+            -0.0465,
+            -0.0723,
+            0.0968,
+            -0.0987,
+            -0.0402,
+            -0.0094,
+            0.0285,
+            0.0074,
+            0.1155,
+            -0.0673,
+            -0.0815,
+            -0.1099,
+            -0.0201,
+            0.0792,
+            -0.0669
+          ],
+          "p25": [
+            -0.5403,
+            -0.5963,
+            -0.6015,
+            -0.5133,
+            -0.5589,
+            -0.5309,
+            -0.5084,
+            -0.6034,
+            -0.5707,
+            -0.5702,
+            -0.5471,
+            -0.3831,
+            -0.5813,
+            -0.5598,
+            -0.5925,
+            -0.6329,
+            -0.5758,
+            -0.6255
+          ],
+          "p75": [
+            0.4997,
+            0.2233,
+            0.0839,
+            0.3454,
+            0.1856,
+            0.2507,
+            0.2014,
+            0.2767,
+            0.2471,
+            0.2339,
+            0.3329,
+            0.5624,
+            0.1685,
+            0.0686,
+            0.1988,
+            0.2957,
+            0.5598,
+            0.1453
+          ]
+        }
+      },
+      {
+        "code": "v2lgotovst",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 69,
+        "shape": {
+          "mean": [
+            -0.1563,
+            -0.1381,
+            -0.1491,
+            -0.0619,
+            -0.0538,
+            0.1233,
+            0.1479,
+            0.2338,
+            0.2075,
+            0.2565,
+            0.2595,
+            0.248,
+            0.3111,
+            0.3638,
+            0.4761,
+            0.529,
+            0.416,
+            0.2511
+          ],
+          "p25": [
+            -0.7321,
+            -0.7321,
+            -0.717,
+            -0.5051,
+            -0.4613,
+            -0.4276,
+            -0.3486,
+            -0.2627,
+            -0.1782,
+            -0.0005,
+            -0.0585,
+            -0.127,
+            -0.0005,
+            -0.0296,
+            0.0,
+            0.0,
+            0.0,
+            -0.2429
+          ],
+          "p75": [
+            0.3254,
+            0.3857,
+            0.4097,
+            0.4289,
+            0.4276,
+            0.5506,
+            0.6127,
+            0.5965,
+            0.6642,
+            0.7728,
+            0.7391,
+            0.7728,
+            0.8341,
+            0.9414,
+            1.0103,
+            1.0442,
+            1.0407,
+            0.9798
+          ]
+        }
+      }
+    ],
+    "samples_used": 69,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2025,
+        "label": "Diaspora Remittances Reach Record Share of GDP",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2025,
+        "label": "Pension Fund Surpasses $1.7 Trillion in Assets",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 2024,
+        "label": "Cocoa Prices Hit Historic High Above $10,000 Per Tonne",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2024,
+        "label": "Economic Modernization Vision 2033",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2024,
+        "label": "Vision 2030 Midpoint Assessment",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 2024,
+        "label": "Tanzania Economic Growth \u2014 Regional Hub Ambitions",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2024,
+        "label": "Vietnam Semiconductor Ambitions; GDP Growth Tops ASEAN",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cr",
+        "country_name": "Costa Rica",
+        "year": 2023,
+        "label": "Eco-Tourism Sector Recovers to Record Visitor Numbers",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2023,
+        "label": "Oyu Tolgoi Underground Mine Begins Production",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 2023,
+        "label": "UPM 2 Pulp Mill Opens; Economy Buoyed by Exports",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2022,
+        "label": "India becomes fifth-largest economy globally",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 2017,
+        "label": "Tourism Surpasses Two Million Annual Visitors",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2017,
+        "label": "Israeli Economy Reaches OECD Top Tier",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2017,
+        "label": "Government Pension Fund Global Surpasses One Trillion Dollars",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2015,
+        "label": "Rwanda's Vision 2020 progress \u2014 middle-income aspirations near",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2014,
+        "label": "Ethiopia becomes Africa's second largest economy by PPP",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 2014,
+        "label": "Soy and Beef Boom Drives Economic Growth",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2013,
+        "label": "Ethiopia Growth and Transformation Plan progress reviewed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 2013,
+        "label": "Ambatovy Nickel Mine Begins Commercial Production",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2013,
+        "label": "Oyu Tolgoi Ships First Copper Concentrate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2012,
+        "label": "Brazil Surpasses UK as 6th Largest Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2011,
+        "label": "Mining Boom Drives 17.3 Percent GDP Growth",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 2011,
+        "label": "Panama among Fastest Growing Economies in Latin America",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2010,
+        "label": "Ethiopia's economy grows at 10.4% for fifth consecutive year",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 2008,
+        "label": "Peru Economy Grows 9.8% Amid Commodity Boom",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2008,
+        "label": "Rwanda's economy achieves sustained high growth",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2007,
+        "label": "Afghanistan opium production reaches all-time record",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2007,
+        "label": "PAC Growth Acceleration Program Announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 2007,
+        "label": "Spanish Housing Bubble Reaches Its Peak",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2006,
+        "label": "Ethiopia's GDP growth reaches 10% amid infrastructure boom",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2006,
+        "label": "Latvian Economy Grows Over 12% in Overheating Boom",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2006,
+        "label": "Dubai Property Prices Double \u2014 Speculative Boom",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2004,
+        "label": "Ethiopia launches Growth and Transformation Plan precursor programs",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cm",
+        "country_name": "Cameroon",
+        "year": 2003,
+        "label": "Chad-Cameroon Petroleum Pipeline Opens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "td",
+        "country_name": "Chad",
+        "year": 2003,
+        "label": "First Crude Oil Exported via Chad-Cameroon Pipeline",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 2002,
+        "label": "Remittances Exceed $2 Billion, Surpassing All Exports",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2002,
+        "label": "UAE Real Estate Opens to Foreign Ownership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2001,
+        "label": "Oyu Tolgoi Copper-Gold Deposit Resource Estimated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 2000,
+        "label": "Celtic Tiger Peak \u2014 GDP Growth Exceeds 10%",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2000,
+        "label": "Oil Revenue Transforms Khartoum While Deepening Regional Inequalities",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2000,
+        "label": "Dubai 2010 Vision Unveiled",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1999,
+        "label": "New Enterprise Law Spurs Private Sector Growth",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cm",
+        "country_name": "Cameroon",
+        "year": 1998,
+        "label": "Cameroon Begins Oil Production Expansion at Kribi",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1996,
+        "label": "Agricultural development-led industrialization strategy adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 1996,
+        "label": "Rapid Economic Growth Returns After War Destruction",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1995,
+        "label": "Czech Republic Joins OECD as First Post-Communist Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1995,
+        "label": "Rapid Economic Growth in Early Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 1995,
+        "label": "Tourism sector surpasses fishing as dominant GDP contributor",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1994,
+        "label": "Economic Boom Driven by Mining Privatization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1988,
+        "label": "Economic Boom Reaches Tiger Economy Levels",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 1987,
+        "label": "Botswana Achieves Middle-Income Status",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1987,
+        "label": "Bubble Economy Inflates: Asset Prices Soar",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 1987,
+        "label": "Economic Take-Off \u2014 GDP Growth Above 6 Percent",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1986,
+        "label": "Doi Moi Reforms Launched at Sixth Party Congress",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1983,
+        "label": "Economic reforms expand to urban industry",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 1982,
+        "label": "Jwaneng Diamond Mine Opens \u2014 Peak Diamond Revenue Era",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1980,
+        "label": "Japan Becomes World's Largest Automobile Producer",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1974,
+        "label": "Iran's GDP Growth Surges on Oil Windfall",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1973,
+        "label": "Marcos New Society Development Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1973,
+        "label": "Yemeni Worker Remittances Transform Rural Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 1971,
+        "label": "Orapa Diamond Mine Opens \u2014 Diamond Era Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1970,
+        "label": "Brazilian Economic Miracle Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1970,
+        "label": "Coffee and Tea Export Boom Funds Development Decade",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1968,
+        "label": "Japan Becomes World's Second-Largest Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1966,
+        "label": "Oil Revenue Boom Funds Rapid Modernization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 1965,
+        "label": "US Economic Aid Program Ends: Taiwan Graduates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1960,
+        "label": "Greece records over 8% annual GDP growth, joining the European economic miracle",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1960,
+        "label": "Dutch Post-War Economic Miracle and Welfare State Expansion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1958,
+        "label": "Italy's Economic Miracle: GDP Growth Reaches 6-7% Annually",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1958,
+        "label": "Filipino First Policy Implemented",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1953,
+        "label": "First Five-Year Plan launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1952,
+        "label": "Peru Anchovy Fisheries Boom Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 1951,
+        "label": "Firestone Rubber Plantation Dominates Liberian Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1950,
+        "label": "Mexican Miracle Begins \u2014 Sustained GDP Growth",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 74
+  }
+}

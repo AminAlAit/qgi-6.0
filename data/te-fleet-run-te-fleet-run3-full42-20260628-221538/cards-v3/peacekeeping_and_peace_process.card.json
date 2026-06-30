@@ -1,0 +1,3632 @@
+{
+  "recipe_id": "peacekeeping_and_peace_process",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Governance Stress",
+  "description_compelling": "An active armed conflict moves toward formal settlement \u2014 ceasefires hold, mediators arrive, foreign troops monitor, a power-sharing draft circulates. Battle-deaths, refugee-flow, and political-stability scores ease for a year or two before the deal is signed. Typical of long-running civil conflicts where both sides have hit a hurting stalemate.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6880604742673708,
+    "ci95_lo": 0.6431048258438133,
+    "ci95_hi": 0.7298020152193984,
+    "ci80_lo": 0.6581346959205245,
+    "ci80_hi": 0.7151794074870402,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2csantimv",
+      "v2pepwrsoc",
+      "SP.DYN.TFRT.IN",
+      "UNHCR_IDP",
+      "v2svstterr"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2csantimv",
+        "name": null
+      },
+      {
+        "code": "v2pepwrsoc",
+        "name": "Power Distributed by Socioeconomic Position (0-4)"
+      },
+      {
+        "code": "SP.DYN.TFRT.IN",
+        "name": null
+      },
+      {
+        "code": "UNHCR_IDP",
+        "name": null
+      },
+      {
+        "code": "v2svstterr",
+        "name": null
+      }
+    ],
+    "chosen_window": 12,
+    "final_global_auc": 0.6880604742673708,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2csantimv",
+        "window": 3,
+        "auc": 0.6058210218528778,
+        "lift_over_previous": 0.10582102185287778,
+        "selected_after": [
+          "v2csantimv"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2pepwrsoc",
+        "window": 12,
+        "auc": 0.65613880742913,
+        "lift_over_previous": 0.050317785576252216,
+        "selected_after": [
+          "v2csantimv",
+          "v2pepwrsoc"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "SP.DYN.TFRT.IN",
+        "window": 12,
+        "auc": 0.6695275945656464,
+        "lift_over_previous": 0.013388787136516367,
+        "selected_after": [
+          "v2csantimv",
+          "v2pepwrsoc",
+          "SP.DYN.TFRT.IN"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "UNHCR_IDP",
+        "window": 12,
+        "auc": 0.68200269234752,
+        "lift_over_previous": 0.012475097781873612,
+        "selected_after": [
+          "v2csantimv",
+          "v2pepwrsoc",
+          "SP.DYN.TFRT.IN",
+          "UNHCR_IDP"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2svstterr",
+        "window": 12,
+        "auc": 0.6880604742673708,
+        "lift_over_previous": 0.0060577819198508465,
+        "selected_after": [
+          "v2csantimv",
+          "v2pepwrsoc",
+          "SP.DYN.TFRT.IN",
+          "UNHCR_IDP",
+          "v2svstterr"
+        ]
+      },
+      {
+        "step": 6,
+        "candidate": "SP.POP.0014.TO.ZS",
+        "window": 12,
+        "auc": 0.6910738324531428,
+        "lift_over_previous": 0.003013358185771975,
+        "selected_after": [
+          "v2csantimv",
+          "v2pepwrsoc",
+          "SP.DYN.TFRT.IN",
+          "UNHCR_IDP",
+          "v2svstterr",
+          "SP.POP.0014.TO.ZS"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 244,
+    "n_pos_survive": 174,
+    "n_neg_total": 732,
+    "n_neg_survive": 555,
+    "pos_coverage": 0.7131147540983607,
+    "neg_coverage": 0.7581967213114754,
+    "n_countries_survive": 81,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 303,
+      "loco_auc": 0.6860350492880614,
+      "ece": 0.12807285971939564,
+      "ece_ci95_lo": 0.0912287232694262,
+      "ece_ci95_hi": 0.18045511354043736,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 95,
+          "mean_predicted": 0.05055968708505756,
+          "mean_actual": 0.14736842105263157
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 60,
+          "mean_predicted": 0.1459327733765046,
+          "mean_actual": 0.21666666666666667
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 28,
+          "mean_predicted": 0.2549359282212598,
+          "mean_actual": 0.14285714285714285
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 28,
+          "mean_predicted": 0.35129143510546,
+          "mean_actual": 0.39285714285714285
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 14,
+          "mean_predicted": 0.4319703387362616,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 21,
+          "mean_predicted": 0.5505841885294233,
+          "mean_actual": 0.38095238095238093
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 16,
+          "mean_predicted": 0.6423879489302635,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 17,
+          "mean_predicted": 0.7514050357482013,
+          "mean_actual": 0.35294117647058826
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 14,
+          "mean_predicted": 0.8566956732954297,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 10,
+          "mean_predicted": 0.9407482445240021,
+          "mean_actual": 0.6
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6123468049796839,
+      "loco_auc_ci95_hi": 0.7478568912548088
+    },
+    "mid-tier": {
+      "n": 238,
+      "loco_auc": 0.6656367041198502,
+      "ece": 0.10666318479221033,
+      "ece_ci95_lo": 0.0884096161418344,
+      "ece_ci95_hi": 0.17624718795350494,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 82,
+          "mean_predicted": 0.04810833157517198,
+          "mean_actual": 0.14634146341463414
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 54,
+          "mean_predicted": 0.14432810936813,
+          "mean_actual": 0.2037037037037037
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 25,
+          "mean_predicted": 0.24875117361545562,
+          "mean_actual": 0.24
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 17,
+          "mean_predicted": 0.3434686187435599,
+          "mean_actual": 0.35294117647058826
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 18,
+          "mean_predicted": 0.43295620050695205,
+          "mean_actual": 0.4444444444444444
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 7,
+          "mean_predicted": 0.5613281556538173,
+          "mean_actual": 0.5714285714285714
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 15,
+          "mean_predicted": 0.647066076596578,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 8,
+          "mean_predicted": 0.7634542211890221,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 7,
+          "mean_predicted": 0.8604616182191032,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 5,
+          "mean_predicted": 0.9260557413101196,
+          "mean_actual": 0.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5807199334545762,
+      "loco_auc_ci95_hi": 0.7373354795947353
+    },
+    "stable-democracy": {
+      "n": 176,
+      "loco_auc": 0.6711409395973155,
+      "ece": 0.0879736394536766,
+      "ece_ci95_lo": 0.06150093867565209,
+      "ece_ci95_hi": 0.15398820764027982,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 92,
+          "mean_predicted": 0.034291614008986435,
+          "mean_actual": 0.09782608695652174
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 37,
+          "mean_predicted": 0.13738737315744967,
+          "mean_actual": 0.10810810810810811
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 17,
+          "mean_predicted": 0.24126967524780946,
+          "mean_actual": 0.23529411764705882
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 8,
+          "mean_predicted": 0.34314441308379173,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 5,
+          "mean_predicted": 0.4372950494289398,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 6,
+          "mean_predicted": 0.5406459271907806,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 7,
+          "mean_predicted": 0.6567986607551575,
+          "mean_actual": 0.2857142857142857
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 3,
+          "mean_predicted": 0.7578105926513672,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 1,
+          "mean_predicted": 0.8970538377761841,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5541354673776796,
+      "loco_auc_ci95_hi": 0.7683769436039841
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-30T03:32:39.016907+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.4965,
+  "stability_diagnostic": {
+    "fold_variance": 0.07911708042888246,
+    "fold_auc_mean": 0.6457490731335269,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Afghanistan": 0.7777777777777778,
+      "Algeria": 0.5714285714285714,
+      "Argentina": 1.0,
+      "Armenia": 0.14285714285714285,
+      "Australia": 0.0,
+      "Bahrain": 0.42857142857142855,
+      "Bangladesh": 0.8571428571428571,
+      "Belarus": 0.8888888888888888,
+      "Belgium": 0.9,
+      "Burkina Faso": 0.6666666666666666,
+      "Burundi": 0.45,
+      "Croatia": 0.8,
+      "Cyprus": 0.5,
+      "Denmark": 1.0,
+      "Egypt": 0.5510204081632653,
+      "El Salvador": 0.8571428571428571,
+      "Eritrea": 0.42857142857142855,
+      "Ethiopia": 0.75,
+      "Georgia": 0.0,
+      "Greece": 0.7777777777777778,
+      "Guatemala": 0.52,
+      "Haiti": 1.0,
+      "Honduras": 1.0,
+      "India": 0.7857142857142857,
+      "Indonesia": 0.75,
+      "Iran": 0.8333333333333334,
+      "Iraq": 0.5555555555555556,
+      "Ireland": 0.6071428571428571,
+      "Ivory Coast": 0.8,
+      "Jordan": 0.5555555555555556,
+      "Lebanon": 1.0,
+      "Liberia": 0.65,
+      "Libya": 0.7,
+      "Madagascar": 0.4,
+      "Mali": 0.53125,
+      "Moldova": 1.0,
+      "Mongolia": 1.0,
+      "Morocco": 0.5,
+      "Mozambique": 1.0,
+      "Nepal": 0.3392857142857143,
+      "Nicaragua": 1.0,
+      "Niger": 0.3333333333333333,
+      "North Macedonia": 0.7,
+      "Norway": 1.0,
+      "Pakistan": 0.0,
+      "Papua New Guinea": 0.4166666666666667,
+      "Philippines": 1.0,
+      "Portugal": 0.0,
+      "Qatar": 0.19444444444444445,
+      "Russia": 0.8888888888888888,
+      "Rwanda": 0.6666666666666666,
+      "Senegal": 0.8333333333333334,
+      "Serbia": 0.8888888888888888,
+      "Sierra Leone": 0.775,
+      "Spain": 0.5384615384615384,
+      "Sudan": 0.6296296296296297,
+      "Syria": 0.5,
+      "Tajikistan": 0.3333333333333333,
+      "Tanzania": 0.5,
+      "The Democratic Republic of the Congo": 0.65625,
+      "Timor-Leste": 1.0,
+      "Togo": 0.6875,
+      "Tunisia": 0.25,
+      "Turkiye": 0.26666666666666666,
+      "Uganda": 0.42857142857142855,
+      "Ukraine": 0.7857142857142857,
+      "United States": 0.7619047619047619,
+      "Yemen": 1.0
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 244,
+  "n_negatives": 732,
+  "walked_at_utc": "2026-06-30T03:40:38.924210+00:00",
+  "elapsed_seconds": 9351.587443828583,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/peacekeeping_and_peace_process/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Venezuela",
+          "Sri Lanka",
+          "Lebanon",
+          "Latvia",
+          "Nicaragua",
+          "Burundi",
+          "Zimbabwe",
+          "Guyana"
+        ],
+        "country_isos": [
+          "ve",
+          "lk",
+          "lb",
+          "lv",
+          "ni",
+          "bi",
+          "zw",
+          "gy"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 8,
+        "countries": [
+          "South Africa",
+          "Morocco",
+          "Barbados",
+          "North Macedonia",
+          "Italy",
+          "Bulgaria",
+          "Mauritius",
+          "Cambodia"
+        ],
+        "country_isos": [
+          "za",
+          "ma",
+          "bb",
+          "mk",
+          "it",
+          "bg",
+          "mu",
+          "kh"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 8,
+        "countries": [
+          "Dominican Republic",
+          "Lithuania",
+          "Slovakia",
+          "Denmark",
+          "Fiji",
+          "United Kingdom",
+          "Algeria",
+          "Honduras"
+        ],
+        "country_isos": [
+          "do",
+          "lt",
+          "sk",
+          "dk",
+          "fj",
+          "gb",
+          "dz",
+          "hn"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Portugal",
+          "Singapore",
+          "Netherlands",
+          "Iceland",
+          "Ghana",
+          "United States",
+          "Cuba",
+          "Spain"
+        ],
+        "country_isos": [
+          "pt",
+          "sg",
+          "nl",
+          "is",
+          "gh",
+          "us",
+          "cu",
+          "es"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 8,
+        "countries": [
+          "Paraguay",
+          "Slovenia",
+          "Malta",
+          "Austria",
+          "Egypt",
+          "Indonesia",
+          "Luxembourg",
+          "Zambia"
+        ],
+        "country_isos": [
+          "py",
+          "si",
+          "mt",
+          "at",
+          "eg",
+          "id",
+          "lu",
+          "zm"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Malawi",
+          "Tajikistan",
+          "Uruguay",
+          "Poland",
+          "Australia",
+          "Saudi Arabia",
+          "Ivory Coast",
+          "Belgium",
+          "Mongolia"
+        ],
+        "country_isos": [
+          "mw",
+          "tj",
+          "uy",
+          "pl",
+          "au",
+          "sa",
+          "ci",
+          "be",
+          "mn"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 8,
+        "countries": [
+          "Uganda",
+          "Russia",
+          "Switzerland",
+          "India",
+          "Vietnam",
+          "The Gambia",
+          "Croatia",
+          "Cabo Verde"
+        ],
+        "country_isos": [
+          "ug",
+          "ru",
+          "ch",
+          "in",
+          "vn",
+          "gm",
+          "hr",
+          "cv"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Tunisia",
+          "Somalia",
+          "Bahrain",
+          "Namibia",
+          "France",
+          "Chad",
+          "Trinidad and Tobago",
+          "Peru"
+        ],
+        "country_isos": [
+          "tn",
+          "so",
+          "bh",
+          "na",
+          "fr",
+          "td",
+          "tt",
+          "pe"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 8,
+        "countries": [
+          "Colombia",
+          "Israel",
+          "Moldova",
+          "Sierra Leone",
+          "Pakistan",
+          "El Salvador",
+          "Timor-Leste",
+          "Uzbekistan"
+        ],
+        "country_isos": [
+          "co",
+          "il",
+          "md",
+          "sl",
+          "pk",
+          "sv",
+          "tl",
+          "uz"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 8,
+        "countries": [
+          "Benin",
+          "Canada",
+          "Mexico",
+          "Estonia",
+          "Kyrgyzstan",
+          "Armenia",
+          "Botswana",
+          "Germany"
+        ],
+        "country_isos": [
+          "bj",
+          "ca",
+          "mx",
+          "ee",
+          "kg",
+          "am",
+          "bw",
+          "de"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Afghanistan",
+          "New Zealand",
+          "Azerbaijan",
+          "Romania",
+          "Rwanda",
+          "Hungary",
+          "Iraq",
+          "Jordan",
+          "Guinea-Bissau"
+        ],
+        "country_isos": [
+          "af",
+          "nz",
+          "az",
+          "ro",
+          "rw",
+          "hu",
+          "iq",
+          "jo",
+          "gw"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Thailand",
+          "Bangladesh",
+          "Bolivia",
+          "Turkiye",
+          "Japan",
+          "Costa Rica",
+          "Sweden",
+          "Djibouti"
+        ],
+        "country_isos": [
+          "th",
+          "bd",
+          "bo",
+          "tr",
+          "jp",
+          "cr",
+          "se",
+          "dj"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 8,
+        "countries": [
+          "Kazakhstan",
+          "Guatemala",
+          "Kuwait",
+          "China",
+          "Bosnia and Herzegovina",
+          "Eritrea",
+          "Montenegro",
+          "Lesotho"
+        ],
+        "country_isos": [
+          "kz",
+          "gt",
+          "kw",
+          "cn",
+          "ba",
+          "er",
+          "me",
+          "ls"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 8,
+        "countries": [
+          "Tanzania",
+          "Czechia",
+          "Serbia",
+          "Republic of the Congo",
+          "Argentina",
+          "Nepal",
+          "Ecuador",
+          "Nigeria"
+        ],
+        "country_isos": [
+          "tz",
+          "cz",
+          "rs",
+          "cg",
+          "ar",
+          "np",
+          "ec",
+          "ng"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 8,
+        "countries": [
+          "Panama",
+          "Togo",
+          "Albania",
+          "Senegal",
+          "South Sudan",
+          "Angola",
+          "Ethiopia",
+          "Brazil"
+        ],
+        "country_isos": [
+          "pa",
+          "tg",
+          "al",
+          "sn",
+          "ss",
+          "ao",
+          "et",
+          "br"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 9,
+        "countries": [
+          "Solomon Islands",
+          "Ireland",
+          "Belarus",
+          "Norway",
+          "Mauritania",
+          "Central African Republic",
+          "Haiti",
+          "Liberia",
+          "Suriname"
+        ],
+        "country_isos": [
+          "sb",
+          "ie",
+          "by",
+          "no",
+          "mr",
+          "cf",
+          "ht",
+          "lr",
+          "sr"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 8,
+        "countries": [
+          "Cameroon",
+          "Jamaica",
+          "Gabon",
+          "Laos",
+          "Guinea",
+          "Eswatini",
+          "Chile",
+          "Iran"
+        ],
+        "country_isos": [
+          "cm",
+          "jm",
+          "ga",
+          "la",
+          "gn",
+          "sz",
+          "cl",
+          "ir"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 8,
+        "countries": [
+          "Qatar",
+          "Malaysia",
+          "Papua New Guinea",
+          "Niger",
+          "Myanmar",
+          "South Korea",
+          "United Arab Emirates",
+          "Burkina Faso"
+        ],
+        "country_isos": [
+          "qa",
+          "my",
+          "pg",
+          "ne",
+          "mm",
+          "kr",
+          "ae",
+          "bf"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 8,
+        "countries": [
+          "Oman",
+          "Georgia",
+          "Syria",
+          "Ukraine",
+          "Finland",
+          "Kenya",
+          "Madagascar",
+          "Turkmenistan"
+        ],
+        "country_isos": [
+          "om",
+          "ge",
+          "sy",
+          "ua",
+          "fi",
+          "ke",
+          "mg",
+          "tm"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Mali",
+          "Yemen",
+          "Libya",
+          "The Democratic Republic of the Congo",
+          "Philippines",
+          "Sudan",
+          "Cyprus",
+          "Greece",
+          "Mozambique"
+        ],
+        "country_isos": [
+          "ml",
+          "ye",
+          "ly",
+          "cd",
+          "ph",
+          "sd",
+          "cy",
+          "gr",
+          "mz"
+        ]
+      }
+    ],
+    "median": 50.6,
+    "p90": 90.2,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 164,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.0204,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.6023675941665597,
+      "b": 0.018573382890150023,
+      "c": -0.09610169902942628,
+      "n_fit": 729,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 101,
+        "observed_rate": 0.06930693069306931
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 213,
+        "observed_rate": 0.14084507042253522
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 180,
+        "observed_rate": 0.22777777777777777
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 138,
+        "observed_rate": 0.4057971014492754
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 97,
+        "observed_rate": 0.41237113402061853
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.0209433692782026,
+    "n_predictions": 729,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.12807285971939564,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 95,
+            "mean_predicted": 0.05055968708505756,
+            "mean_actual": 0.14736842105263157
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 60,
+            "mean_predicted": 0.1459327733765046,
+            "mean_actual": 0.21666666666666667
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 28,
+            "mean_predicted": 0.2549359282212598,
+            "mean_actual": 0.14285714285714285
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 28,
+            "mean_predicted": 0.35129143510546,
+            "mean_actual": 0.39285714285714285
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 14,
+            "mean_predicted": 0.4319703387362616,
+            "mean_actual": 0.42857142857142855
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 21,
+            "mean_predicted": 0.5505841885294233,
+            "mean_actual": 0.38095238095238093
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 16,
+            "mean_predicted": 0.6423879489302635,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 17,
+            "mean_predicted": 0.7514050357482013,
+            "mean_actual": 0.35294117647058826
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 14,
+            "mean_predicted": 0.8566956732954297,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 10,
+            "mean_predicted": 0.9407482445240021,
+            "mean_actual": 0.6
+          }
+        ],
+        "n": 303,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.10666318479221033,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 82,
+            "mean_predicted": 0.04810833157517198,
+            "mean_actual": 0.14634146341463414
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 54,
+            "mean_predicted": 0.14432810936813,
+            "mean_actual": 0.2037037037037037
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 25,
+            "mean_predicted": 0.24875117361545562,
+            "mean_actual": 0.24
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 17,
+            "mean_predicted": 0.3434686187435599,
+            "mean_actual": 0.35294117647058826
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 18,
+            "mean_predicted": 0.43295620050695205,
+            "mean_actual": 0.4444444444444444
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 7,
+            "mean_predicted": 0.5613281556538173,
+            "mean_actual": 0.5714285714285714
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 15,
+            "mean_predicted": 0.647066076596578,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 8,
+            "mean_predicted": 0.7634542211890221,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 7,
+            "mean_predicted": 0.8604616182191032,
+            "mean_actual": 0.42857142857142855
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 5,
+            "mean_predicted": 0.9260557413101196,
+            "mean_actual": 0.0
+          }
+        ],
+        "n": 238,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.0879736394536766,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 92,
+            "mean_predicted": 0.034291614008986435,
+            "mean_actual": 0.09782608695652174
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 37,
+            "mean_predicted": 0.13738737315744967,
+            "mean_actual": 0.10810810810810811
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 17,
+            "mean_predicted": 0.24126967524780946,
+            "mean_actual": 0.23529411764705882
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 8,
+            "mean_predicted": 0.34314441308379173,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 5,
+            "mean_predicted": 0.4372950494289398,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 6,
+            "mean_predicted": 0.5406459271907806,
+            "mean_actual": 0.16666666666666666
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 7,
+            "mean_predicted": 0.6567986607551575,
+            "mean_actual": 0.2857142857142857
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 3,
+            "mean_predicted": 0.7578105926513672,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 1,
+            "mean_predicted": 0.8970538377761841,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 176,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/peacekeeping_and_peace_process.scores.json",
+  "shape_points": [
+    -0.01826604764887017,
+    -0.006184074086272072,
+    0.0058978994763260306,
+    0.017979873038924128,
+    0.03006184660152223,
+    0.042143820164120334,
+    0.05422579372671844,
+    0.06630776728931653,
+    0.07838974085191464,
+    0.09047171441451274,
+    0.10255368797711083,
+    0.11463566153970893
+  ],
+  "shap_importance_raw": {
+    "v2csantimv": 1.4162917137145996,
+    "v2pepwrsoc": 1.1503020524978638,
+    "SP.DYN.TFRT.IN": 1.0359277725219727,
+    "UNHCR_IDP": 0.49642467498779297,
+    "v2svstterr": 0.801880955696106
+  },
+  "shap_importance_normalized": {
+    "v2csantimv": 0.2889903407637807,
+    "v2pepwrsoc": 0.23471589850706565,
+    "SP.DYN.TFRT.IN": 0.21137814836366162,
+    "UNHCR_IDP": 0.10129405870207665,
+    "v2svstterr": 0.16362155366341533
+  },
+  "shap_direction_signs": {
+    "v2csantimv": -1,
+    "v2pepwrsoc": -1,
+    "SP.DYN.TFRT.IN": -1,
+    "UNHCR_IDP": -1,
+    "v2svstterr": -1
+  },
+  "per_feature_breakdown": {
+    "v2csantimv": {
+      "last_z": 0.3489008843898773,
+      "mean_z": 0.0424371175467968,
+      "std_z": 0.24938827753067017,
+      "slope": 0.17374049127101898,
+      "accel": 0.288158118724823,
+      "tertile1_mean": 0.11747638881206512,
+      "tertile2_mean": 0.13305436074733734,
+      "tertile3_mean": 0.06313596665859222
+    },
+    "v2pepwrsoc": {
+      "last_z": 0.05830533057451248,
+      "mean_z": 0.0700753703713417,
+      "std_z": 0.27186715602874756,
+      "slope": 0.11366335302591324,
+      "accel": 0.2608100473880768,
+      "tertile1_mean": 0.13970337808132172,
+      "tertile2_mean": 0.09220995754003525,
+      "tertile3_mean": 0.14366748929023743
+    },
+    "SP.DYN.TFRT.IN": {
+      "last_z": 0.12415469437837601,
+      "mean_z": 0.030250385403633118,
+      "std_z": 0.41230908036231995,
+      "slope": 0.10637226700782776,
+      "accel": 0.07486394047737122,
+      "tertile1_mean": 0.132793128490448,
+      "tertile2_mean": 0.03274114802479744,
+      "tertile3_mean": 0.12244316935539246
+    },
+    "UNHCR_IDP": {
+      "last_z": 0.05319098383188248,
+      "mean_z": 0.015310334973037243,
+      "std_z": 0.0325661338865757,
+      "slope": 0.19909527897834778,
+      "accel": 0.06415246427059174,
+      "tertile1_mean": 0.05111357569694519,
+      "tertile2_mean": 0.018903588876128197,
+      "tertile3_mean": 0.06209233030676842
+    },
+    "v2svstterr": {
+      "last_z": 0.1418563574552536,
+      "mean_z": 0.07045508176088333,
+      "std_z": 0.10604094713926315,
+      "slope": 0.15550409257411957,
+      "accel": 0.09291630983352661,
+      "tertile1_mean": 0.04044680297374725,
+      "tertile2_mean": 0.05604001134634018,
+      "tertile3_mean": 0.13862137496471405
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 12,
+    "indicators": [
+      {
+        "code": "v2csantimv",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 228,
+        "shape": {
+          "mean": [
+            0.0249,
+            0.06,
+            0.1231,
+            0.1009,
+            0.144,
+            0.1293,
+            0.1068,
+            0.1303,
+            0.0732,
+            0.0849,
+            0.0867,
+            0.0559
+          ],
+          "p25": [
+            -0.5308,
+            -0.5308,
+            -0.5306,
+            -0.545,
+            -0.5675,
+            -0.5953,
+            -0.6217,
+            -0.6286,
+            -0.7058,
+            -0.7175,
+            -0.8503,
+            -0.9284
+          ],
+          "p75": [
+            0.6101,
+            0.6238,
+            0.7381,
+            0.798,
+            0.8225,
+            0.88,
+            0.9345,
+            0.9584,
+            0.9651,
+            0.9798,
+            0.9798,
+            1.0744
+          ]
+        }
+      },
+      {
+        "code": "v2pepwrsoc",
+        "name": "Power Distributed by Socioeconomic Position (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 228,
+        "shape": {
+          "mean": [
+            0.0761,
+            0.1114,
+            0.1213,
+            0.1669,
+            0.1922,
+            0.2593,
+            0.2486,
+            0.2693,
+            0.3625,
+            0.3838,
+            0.4011,
+            0.5483
+          ],
+          "p25": [
+            -0.5328,
+            -0.4885,
+            -0.4373,
+            -0.3573,
+            -0.3374,
+            -0.2859,
+            -0.2859,
+            -0.2889,
+            -0.2781,
+            -0.2796,
+            -0.2402,
+            -0.3602
+          ],
+          "p75": [
+            0.6547,
+            0.6721,
+            0.6721,
+            0.7699,
+            0.8,
+            0.928,
+            0.959,
+            0.9798,
+            1.1035,
+            1.1054,
+            1.2114,
+            1.3824
+          ]
+        }
+      },
+      {
+        "code": "SP.DYN.TFRT.IN",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 228,
+        "shape": {
+          "mean": [
+            0.0061,
+            -0.0577,
+            -0.1451,
+            -0.2459,
+            -0.3354,
+            -0.4498,
+            -0.5568,
+            -0.6947,
+            -0.8379,
+            -0.9713,
+            -1.1304,
+            -1.3066
+          ],
+          "p25": [
+            -0.2778,
+            -0.3956,
+            -0.5325,
+            -0.6392,
+            -0.7397,
+            -0.8537,
+            -0.9551,
+            -1.1103,
+            -1.2757,
+            -1.4715,
+            -1.6944,
+            -1.963
+          ],
+          "p75": [
+            0.3649,
+            0.2602,
+            0.1063,
+            0.0143,
+            -0.103,
+            -0.2102,
+            -0.361,
+            -0.4502,
+            -0.6117,
+            -0.8543,
+            -0.9398,
+            -1.1094
+          ]
+        }
+      },
+      {
+        "code": "UNHCR_IDP",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 179,
+        "shape": {
+          "mean": [
+            -0.0698,
+            -0.0873,
+            -0.0693,
+            -0.0455,
+            -0.0311,
+            0.0008,
+            -0.0105,
+            0.0814,
+            0.0908,
+            0.1301,
+            0.2854,
+            0.6079
+          ],
+          "p25": [
+            -0.2781,
+            -0.2874,
+            -0.2843,
+            -0.2236,
+            -0.2196,
+            -0.2,
+            -0.2,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "p75": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.2243
+          ]
+        }
+      },
+      {
+        "code": "v2svstterr",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 215,
+        "shape": {
+          "mean": [
+            0.1088,
+            0.0812,
+            0.0352,
+            0.0493,
+            0.0324,
+            0.0212,
+            -0.007,
+            -0.0373,
+            0.0023,
+            -0.0426,
+            -0.0137,
+            -0.1125
+          ],
+          "p25": [
+            -0.4276,
+            -0.4329,
+            -0.4843,
+            -0.4506,
+            -0.4962,
+            -0.5464,
+            -0.6383,
+            -0.6837,
+            -0.7318,
+            -0.8584,
+            -0.9695,
+            -1.1275
+          ],
+          "p75": [
+            0.6363,
+            0.629,
+            0.6063,
+            0.6253,
+            0.5604,
+            0.5639,
+            0.6244,
+            0.6287,
+            0.8118,
+            0.9247,
+            0.9798,
+            0.9798
+          ]
+        }
+      }
+    ],
+    "samples_used": 228,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 2025,
+        "label": "Geneva informal meeting produces confidence-building agreement",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2025,
+        "label": "India-Pakistan ceasefire brokered",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2025,
+        "label": "Gaza Ceasefire Agreement and Hostage Deal",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ps",
+        "country_name": "Palestine",
+        "year": 2025,
+        "label": "Gaza Ceasefire Negotiations Continue Amid Ongoing Operations",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2025,
+        "label": "Bougainville Independence Negotiations Approach 2027 Deadline",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2025,
+        "label": "Qatar Brokers Gaza Ceasefire Agreement",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2025,
+        "label": "Reconstruction Challenge: Syria Faces Decades of Rebuilding",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 2024,
+        "label": "Guterres hosts Christodoulides-Tatar dinner in New York",
+        "in_training_set": false
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2024,
+        "label": "Ceasefire Attempts and Nairobi-Luanda Process",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2024,
+        "label": "Egypt Deepens Mediation Role in Gaza Conflict",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 2024,
+        "label": "Kenyan-led multinational security mission begins deploying with 400 police",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 2024,
+        "label": "Oman Continues Houthi Mediation Amid Red Sea Crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2024,
+        "label": "Qatar Continues Gaza Ceasefire Shuttle Diplomacy",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2024,
+        "label": "Burgenstock Summit on Ukraine Peace Hosted by Switzerland",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2023,
+        "label": "Earthquake Reconstruction Programme Launched",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 2023,
+        "label": "Oman Hosts Saudi-Houthi Peace Negotiations",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2023,
+        "label": "Qatar Mediates Israel-Hamas Hostage Negotiations",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2023,
+        "label": "EAC and SADC regional force deployed to eastern Congo amid M23 crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2023,
+        "label": "National Dialogue Commission Established",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 2022,
+        "label": "EU Civilian Monitoring Mission Deployed to Armenian Borders",
+        "in_training_set": false
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2022,
+        "label": "Luanda Peace Process \u2014 Angola Mediates",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2022,
+        "label": "Cessation of Hostilities Agreement in Tigray",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 2022,
+        "label": "Oman Mediates US-Iran Prisoner Swap",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2022,
+        "label": "UN-Brokered Truce \u2014 First Significant Ceasefire",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 2021,
+        "label": "Informal Cyprus talks in Geneva fail to find common ground",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2021,
+        "label": "Egypt Mediates Gaza-Israel Ceasefire",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 2021,
+        "label": "Gbagbo Returns to Ivory Coast After a Decade Abroad",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2020,
+        "label": "US-Taliban Doha Agreement signed for phased withdrawal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2020,
+        "label": "Intra-Afghan peace talks open in Doha",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 2020,
+        "label": "November 2020 Ceasefire Cedes Karabakh Territory to Azerbaijan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2020,
+        "label": "Berlin Conference on Libya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2020,
+        "label": "October Ceasefire Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2020,
+        "label": "US-Taliban Peace Agreement Signed in Doha",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2020,
+        "label": "Abraham Accords Normalization with Israel; Juba Peace Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2019,
+        "label": "Bangsamoro Autonomous Region Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2018,
+        "label": "US-Taliban direct peace negotiations begin in Doha",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2018,
+        "label": "Ethiopia Accepts EEBC Ruling \u2014 Peace Breakthrough",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2018,
+        "label": "Eritrea-Ethiopia Peace Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2018,
+        "label": "Eritrea-Ethiopia Border Opens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2018,
+        "label": "Ethiopia-Eritrea peace agreement signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 2018,
+        "label": "Prespa Agreement resolves 27-year Macedonia name dispute with North Macedonia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2018,
+        "label": "Post-ISIS Reconstruction Crisis and Displacement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2018,
+        "label": "Bangsamoro Organic Law Passed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2018,
+        "label": "Revitalized ARCSS (R-ARCSS) Signed in Addis Ababa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 2017,
+        "label": "Crans-Montana reunification conference collapses over security guarantees",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 2017,
+        "label": "MINUSTAH closes after 13 years with deeply ambiguous legacy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2016,
+        "label": "UNMIL Peacekeeping Mission Begins Drawdown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2016,
+        "label": "Ceasefire Agreements Establish De-Escalation Zones",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2016,
+        "label": "Peace Talks Fail \u2014 War Continues",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2015,
+        "label": "Algiers Peace Agreement for Mali signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2015,
+        "label": "Minsk II ceasefire agreement signed; Belarus hosts summit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2015,
+        "label": "Libyan Political Agreement and Government of National Accord",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 2015,
+        "label": "Algiers Peace Agreement Signed with Northern Armed Groups",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mk",
+        "country_name": "North Macedonia",
+        "year": 2015,
+        "label": "EU-Brokered Przino Agreement Sets Path for Early Elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2015,
+        "label": "Mamasapano Massacre Sets Back Bangsamoro Peace",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2015,
+        "label": "Minsk II agreement signed to end Donbas conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2015,
+        "label": "ARCSS Peace Agreement Signed Under Pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2015,
+        "label": "National Dialogue Quartet Wins Nobel Peace Prize",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2015,
+        "label": "Minsk II Agreement Signed Under German\u2013French Mediation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2014,
+        "label": "Minsk I ceasefire agreement brokered by Belarus",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2014,
+        "label": "Comprehensive Agreement on the Bangsamoro Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2014,
+        "label": "Minsk Protocol ceasefire agreement signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2014,
+        "label": "IGAD Ceasefire Agreements Repeatedly Violated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2014,
+        "label": "Geneva II Peace Talks Collapse Without Result",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2014,
+        "label": "Minsk I Ceasefire Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2014,
+        "label": "Peace and National Partnership Agreement Fails",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bh",
+        "country_name": "Bahrain",
+        "year": 2013,
+        "label": "Opposition Dialogues Collapse; Street Protests Continue",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2013,
+        "label": "Peace, Security and Cooperation Framework Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 2013,
+        "label": "MINUSMA UN Peacekeeping Mission Deployed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 2013,
+        "label": "Oman Hosts Secret US-Iran Nuclear Talks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ps",
+        "country_name": "Palestine",
+        "year": 2013,
+        "label": "Kerry-Led Peace Negotiations Resume",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2013,
+        "label": "Framework Agreement on the Bangsamoro",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2013,
+        "label": "Taliban Opens Political Office in Doha",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2013,
+        "label": "M23 defeated; Rwanda-DRC relations slowly normalize",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2013,
+        "label": "National Dialogue Quartet Saves Democratic Transition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 2012,
+        "label": "Government-Brokered Gang Truce Cuts Homicides Dramatically",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2012,
+        "label": "Kofi Annan Peace Plan Fails: Six-Point Ceasefire Collapses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2012,
+        "label": "PKK-Government Peace Process Begins via Ocalan Talks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2011,
+        "label": "Ethiopia deploys troops to AMISOM in Somalia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 2011,
+        "label": "SADC Roadmap Agreement Charts Path Back to Constitutional Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 2011,
+        "label": "Maoist Combatant Integration Partially Resolved",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ps",
+        "country_name": "Palestine",
+        "year": 2011,
+        "label": "Fatah-Hamas Reconciliation Agreement Signed in Cairo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2011,
+        "label": "Bangsamoro Framework Agreement Progress",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2011,
+        "label": "Doha Document for Peace in Darfur Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 2011,
+        "label": "ETA Announces Permanent Cessation of Armed Activity",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2009,
+        "label": "Nkunda Arrested \u2014 CNDP Integrated into Army",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2009,
+        "label": "Mongolia Deploys Troops to Afghanistan Under ISAF",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 2009,
+        "label": "Qaboos Secretly Mediates US-Iran Back-Channel Contact",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2009,
+        "label": "Kurdish Opening Initiative Launched by AKP Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ge",
+        "country_name": "Georgia",
+        "year": 2008,
+        "label": "Sarkozy-Brokered Six-Point Ceasefire Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2008,
+        "label": "EULEX Rule of Law Mission Deployed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2008,
+        "label": "MOA-AD Controversy \u2014 Failed MILF Peace Deal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2008,
+        "label": "Qatar Brokers the Doha Agreement Ending Lebanon Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2008,
+        "label": "Qatar Mandated to Mediate Darfur Peace Process",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2007,
+        "label": "ECOWAS Mediator Role \u2014 Compaor\u00e9 Brokers Regional Peace Deals",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 2007,
+        "label": "Ouagadougou Political Agreement Opens Path to Elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2007,
+        "label": "Ahtisaari Plan Proposes Supervised Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2006,
+        "label": "FNL ceasefire signed \u2014 last rebel group ends armed operations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 2006,
+        "label": "CICIG Anti-Corruption Commission Established by Guatemala and UN",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 2006,
+        "label": "Comprehensive Peace Agreement Signed \u2014 Civil War Ends",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2006,
+        "label": "Darfur Peace Agreement Rejected; Sudan Blocks UN Peacekeeping Force",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2006,
+        "label": "UNMIT mission deployed to restore order",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 2006,
+        "label": "Juba Peace Talks with LRA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 2005,
+        "label": "Helsinki peace agreement ends Aceh conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 2005,
+        "label": "IRA Formally Ends Armed Campaign and Decommissions Weapons",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2005,
+        "label": "Kai Eide Report and Launch of Final Status Talks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 2005,
+        "label": "12-Point Agreement Between Parties and Maoists",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2005,
+        "label": "Comprehensive Peace Agreement Signed \u2014 Path to Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2005,
+        "label": "Comprehensive Peace Agreement Ends Second Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2004,
+        "label": "Charter for Peace and National Reconciliation drafted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 2004,
+        "label": "MINUSTAH UN stabilization mission deploys under Brazilian command",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 2004,
+        "label": "UN ONUCI Peacekeeping Mission Deployed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 2004,
+        "label": "Casamance Peace Agreement Signed in Ziguinchor",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2003,
+        "label": "FDD signs ceasefire \u2014 major rebel group joins peace process",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 2003,
+        "label": "Green Line opens for first time allowing cross-border movement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 2003,
+        "label": "Linas-Marcoussis Peace Agreement Signed Under French Pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2003,
+        "label": "Accra Comprehensive Peace Agreement \u2014 Taylor Exiled to Nigeria",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 2003,
+        "label": "Rejection of Russian Kozak Memorandum on Transnistria",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2003,
+        "label": "Mongolia Deploys Troops to Iraq Coalition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 2003,
+        "label": "Second Ceasefire Collapses \u2014 Human Rights Crisis Deepens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2003,
+        "label": "Ceasefire Agreement with India on Line of Control",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ps",
+        "country_name": "Palestine",
+        "year": 2003,
+        "label": "Road Map for Peace Launched by the Quartet",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 2002,
+        "label": "UN Secretary-General Annan presents reunification plan for Cyprus",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2002,
+        "label": "Pretoria Accords \u2014 Rwanda and Uganda Withdrawal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2002,
+        "label": "Sun City Peace Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2002,
+        "label": "Civil War Officially Ends",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2002,
+        "label": "Machakos Protocol \u2014 Self-Determination Agreed in Principle",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 2002,
+        "label": "Norway-facilitated Ceasefire Agreement signed with LTTE",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2002,
+        "label": "Machakos Protocol \u2014 Southern Self-Determination Framework Agreed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2001,
+        "label": "Bonn Agreement establishes Afghan Interim Authority",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 2001,
+        "label": "National Reconciliation Forum Fails to Resolve Core Disputes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mk",
+        "country_name": "North Macedonia",
+        "year": 2001,
+        "label": "Ohrid Framework Agreement Ends Armed Conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mk",
+        "country_name": "North Macedonia",
+        "year": 2001,
+        "label": "NATO Operation Essential Harvest Disarms NLA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ps",
+        "country_name": "Palestine",
+        "year": 2001,
+        "label": "Taba Negotiations Reach Closest Agreement Before Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2001,
+        "label": "Bougainville Peace Agreement Signed at Arawa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2001,
+        "label": "Disarmament Process Completed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 2001,
+        "label": "Muafaka Accord \u2014 Zanzibar Power-Sharing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2000,
+        "label": "Algiers Peace Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2000,
+        "label": "UNMEE peacekeeping mission deployed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ps",
+        "country_name": "Palestine",
+        "year": 2000,
+        "label": "Camp David Summit Fails to Reach Final Status Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1999,
+        "label": "Civil Concord law offers amnesty to armed Islamists",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 1999,
+        "label": "Australia Leads INTERFET Peacekeeping Force in East Timor",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1999,
+        "label": "Lusaka Ceasefire Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 1999,
+        "label": "Rambouillet Talks Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 1999,
+        "label": "Kumanovo Agreement and UNSC Resolution 1244",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 1999,
+        "label": "UNMIK and KFOR Deploy to Kosovo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1999,
+        "label": "East Timor Votes for Independence \u2014 Portugal's Diplomatic Win",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1999,
+        "label": "Lusaka Ceasefire Agreement signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1999,
+        "label": "Lom\u00e9 Peace Accord",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 1999,
+        "label": "Habibie offers special autonomy or independence referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 1999,
+        "label": "INTERFET deployed under Australian command",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 1999,
+        "label": "UNTAET transitional administration established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 1999,
+        "label": "Ocalan Captured; PKK Declares Ceasefire",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1998,
+        "label": "AIS (FIS armed wing) declares unilateral ceasefire",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1998,
+        "label": "Nelson Mandela takes over Arusha mediation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1998,
+        "label": "Eastern Slavonia Peacefully Reintegrated \u2014 UN Mission Succeeds",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1998,
+        "label": "Good Friday Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1998,
+        "label": "Wye River Memorandum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 1998,
+        "label": "Holbrooke-Milo\u0161evi\u0107 Agreement and OSCE Verification Mission",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ps",
+        "country_name": "Palestine",
+        "year": 1998,
+        "label": "Wye River Memorandum on Further Israeli Withdrawals",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 1998,
+        "label": "Lincoln Agreement and Burnham Truce End Bougainville Fighting",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 1997,
+        "label": "Chittagong Hill Tracts Peace Accord",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1997,
+        "label": "Arusha peace talks begin under Julius Nyerere",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 1997,
+        "label": "Moscow Memorandum on Transnistria Normalization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1997,
+        "label": "Chechnya peace treaty signed with Maskhadov",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 1997,
+        "label": "Khartoum Peace Agreement with SPLA Factions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 1997,
+        "label": "General Peace Agreement Signed in Moscow Ending Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1996,
+        "label": "Comprehensive Peace Accords Signed, Ending 36-Year Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 1996,
+        "label": "Flame of Peace Ceremony Ends Second Tuareg Rebellion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1996,
+        "label": "MNLF Peace Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1996,
+        "label": "Khasavyurt Accord ends First Chechen War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1996,
+        "label": "Abidjan Peace Accord",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1995,
+        "label": "Dayton Peace Agreement Ends Bosnian War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1995,
+        "label": "Dayton Agreement Ends Bosnian War \u2014 Croatian Territorial Integrity Restored",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 1995,
+        "label": "Denmark Deploys Peacekeepers to Bosnia Under UNPROFOR",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 1995,
+        "label": "Kosovo Excluded from Dayton Peace Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 1995,
+        "label": "Abuja Peace Agreement Provides New Framework for Transition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 1995,
+        "label": "Tuareg Peace Accord Signed in Ouagadougou",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 1995,
+        "label": "Bougainville Transitional Government Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1995,
+        "label": "Dayton Accords Signed \u2014 Milo\u0161evi\u0107 Trades Bosnian Serb Interests for Sanctions Relief",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1995,
+        "label": "Dayton Accords End Bosnian War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 1994,
+        "label": "Bishkek Protocol Ceasefire Ends First Nagorno-Karabakh War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 1994,
+        "label": "Ten Belgian Peacekeepers Killed in Rwanda Genocide",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1994,
+        "label": "Washington Agreement Ends Croat-Muslim War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1994,
+        "label": "Convention of Government power-sharing deal signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1994,
+        "label": "Washington Agreement Ends Croatian-Bosniak Conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ge",
+        "country_name": "Georgia",
+        "year": 1994,
+        "label": "Ceasefire Agreement Freezes Abkhazia Conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1994,
+        "label": "Comprehensive Human Rights Accord Signed with UN Verification",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1994,
+        "label": "IRA Announces Complete Cessation of Military Operations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1994,
+        "label": "Israel-Jordan Peace Treaty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1994,
+        "label": "Oslo II \u2014 Palestinian Authority Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1994,
+        "label": "Wadi Araba Peace Treaty with Israel",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1994,
+        "label": "MNLF Peace Negotiations Progress",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 1994,
+        "label": "UN-Brokered Inter-Tajik Peace Talks Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1993,
+        "label": "Downing Street Declaration Opens Path to Peace",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1993,
+        "label": "Oslo Accords Signed \u2014 Rabin and Arafat Handshake",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1993,
+        "label": "Oslo Accords Change Regional Dynamics",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 1993,
+        "label": "Cotonou Peace Agreement Signed \u2014 First Major Peace Deal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 1993,
+        "label": "ONUMOZ UN Peacekeeping Mission Manages Demobilization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 1993,
+        "label": "Oslo Accords Brokered Between Israel and PLO",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ps",
+        "country_name": "Palestine",
+        "year": 1993,
+        "label": "Oslo I Accord Signed Between PLO and Israel",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1993,
+        "label": "Peace Talks with CPP-NPA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1993,
+        "label": "Arusha Accords signed between Habyarimana and RPF",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1993,
+        "label": "Milo\u0161evi\u0107 Imposes Blockade on Bosnian Serbs \u2014 Diplomatic Positioning",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 1993,
+        "label": "CIS Peacekeeping Force Deployed to Tajikistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1992,
+        "label": "Peshawar Accords create mujahideen transitional government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1992,
+        "label": "Argentine Troops Join UN Peacekeeping Missions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 1992,
+        "label": "OSCE Minsk Group Established for Nagorno-Karabakh Mediation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 1992,
+        "label": "UN Secretary-General presents Set of Ideas framework for settlement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 1992,
+        "label": "UN proposes confidence-building measures including Varosha handover",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 1992,
+        "label": "Chapultepec Peace Accords End Twelve-Year Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1992,
+        "label": "Eritrean Infrastructure Reconstruction Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1992,
+        "label": "First Post-War Parliamentary Elections and Hariri Reconstruction Era",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 1992,
+        "label": "National Pact Ends Second Tuareg Rebellion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 1992,
+        "label": "Russian 14th Army Intervenes in Transnistria Conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 1992,
+        "label": "General Peace Agreement Ends 16-Year Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 1992,
+        "label": "Peace Accord Ends Interior War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1991,
+        "label": "Madrid Peace Conference",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1991,
+        "label": "UN-Brokered Ceasefire in Western Sahara",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ps",
+        "country_name": "Palestine",
+        "year": 1991,
+        "label": "Palestinians Participate in Madrid Peace Conference",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 1991,
+        "label": "Honiara Declaration Attempts Bougainville Mediation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 1991,
+        "label": "Casamance Ceasefire Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 1990,
+        "label": "UN-Mediated Peace Talks Begin in Geneva",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1990,
+        "label": "Peace Talks Begin Between Government and URNG in Oslo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1990,
+        "label": "Contra Forces Demobilize as Central American Peace Process Concludes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 1990,
+        "label": "Contra Demobilization Leaves Legacy of Armed Instability",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1989,
+        "label": "General Aoun's War of Liberation and Taif Accord",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 1989,
+        "label": "UNTAG Deploys and Independence Process Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 1989,
+        "label": "Kourou Peace Accord with Jungle Commando",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1989,
+        "label": "Taif Accord Ends Lebanon Civil War, Formalizes Syrian Dominance",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1988,
+        "label": "Geneva Accords signed for Soviet withdrawal from Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1988,
+        "label": "Ethiopia and Somalia sign peace agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1988,
+        "label": "Iran Accepts UN Ceasefire; Khomeini Drinks 'Poison Chalice'",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1988,
+        "label": "Iran-Iraq War Ends with UN Ceasefire",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 1988,
+        "label": "Sapoa Ceasefire Halts Large-Scale Contra Hostilities",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1988,
+        "label": "DUP-SPLA Peace Initiative Blocked",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 1987,
+        "label": "Arias Peace Plan: Esquipulas II Accords Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1987,
+        "label": "Esquipulas II Peace Framework Signed by Central American Presidents",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1987,
+        "label": "Central American Peace Plan (Esquipulas II) Creates Framework for Ending Regional Conflicts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1987,
+        "label": "Mizoram becomes a state under peace accord",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 1987,
+        "label": "Arias Peace Plan Creates Framework for Regional Settlement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1986,
+        "label": "Najibullah launches National Reconciliation policy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 1986,
+        "label": "Koka Dam Declaration \u2014 Peace Talks Stall",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1981,
+        "label": "Morocco Agrees to Western Sahara Referendum in Principle",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1979,
+        "label": "Egypt-Israel Peace Treaty Signed; Egypt Expelled from Arab League",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1979,
+        "label": "Egypt-Israel Peace Treaty Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1979,
+        "label": "Lancaster House Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1978,
+        "label": "Camp David Accords Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1978,
+        "label": "Camp David Accords \u2014 Egypt-Israel Framework",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1978,
+        "label": "Camp David Accords Broker Israeli-Egyptian Peace",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1977,
+        "label": "Sadat's Historic Visit to Jerusalem Opens Peace Negotiations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1976,
+        "label": "Geneva Conference on Rhodesia Fails",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1975,
+        "label": "Sinai II Disengagement Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1975,
+        "label": "Tripoli Agreement with MNLF",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1975,
+        "label": "Angola and Mozambique Independence \u2014 Chaotic Decolonization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1974,
+        "label": "Sinai I Disengagement Agreement and Infitah Economic Opening",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1974,
+        "label": "Separation of Forces Agreements",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1974,
+        "label": "Lusaka Accord and Detente",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1973,
+        "label": "Egypt-Israel Kilometer 101 Disengagement Talks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1973,
+        "label": "Vietnam Peace Accords Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1973,
+        "label": "Paris Peace Accords; U.S. Forces Withdraw",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 1972,
+        "label": "Addis Ababa Agreement Ends First Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1972,
+        "label": "Addis Ababa Agreement Ends First Civil War \u2014 Southern Autonomy Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1972,
+        "label": "Post-War Reconstruction in Southern Sudan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1970,
+        "label": "March 1970 Manifesto \u2014 Kurdish Autonomy Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1970,
+        "label": "Biafran Civil War Ends \u2014 Federal Victory",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1970,
+        "label": "Yemen Arab Republic Consolidates After Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1969,
+        "label": "National Reconciliation Agreement Ends YAR Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1967,
+        "label": "UN Resolution 242 \u2014 Land for Peace Framework",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1967,
+        "label": "UN Security Council Resolution 242",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1964,
+        "label": "Haradh Conference Fails to End Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1959,
+        "label": "Zurich and London Agreements establish the Republic of Cyprus",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1957,
+        "label": "Bandaranaike-Chelvanayakam Pact signed then abrogated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1956,
+        "label": "Pearson's Suez Proposal Creates Modern UN Peacekeeping",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1953,
+        "label": "Korean War armistice signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1953,
+        "label": "Korean War Armistice Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1952,
+        "label": "Equalization of Burdens Act compensates war-displaced Germans",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1950,
+        "label": "Post-War Economic Reconstruction",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 278
+  }
+}

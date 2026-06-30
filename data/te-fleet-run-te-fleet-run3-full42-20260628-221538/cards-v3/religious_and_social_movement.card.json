@@ -1,0 +1,2005 @@
+{
+  "recipe_id": "religious_and_social_movement",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Foreign Policy",
+  "description_compelling": "A non-electoral social mobilization with durable identity claims \u2014 a religious revival shaping policy, a moral-traditionalist movement reorienting parties, a transnational solidarity wave changing public discourse. Civil-society participation, private-liberty indices, and ethnic-power balance reorient first. Common in mature democracies, in post-secular transitions, and across diaspora-linked political fields.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.7411869701026328,
+    "ci95_lo": 0.6511374164172258,
+    "ci95_hi": 0.8169989772296326,
+    "ci80_lo": 0.6810899596982956,
+    "ci80_hi": 0.7911550318021121,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2merange",
+      "v2cltort",
+      "v2caassemb",
+      "v2lgoppart"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2merange",
+        "name": null
+      },
+      {
+        "code": "v2cltort",
+        "name": "Freedom from Torture (0-4)"
+      },
+      {
+        "code": "v2caassemb",
+        "name": null
+      },
+      {
+        "code": "v2lgoppart",
+        "name": null
+      }
+    ],
+    "chosen_window": 7,
+    "final_global_auc": 0.7411869701026328,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2merange",
+        "window": 7,
+        "auc": 0.654040640509411,
+        "lift_over_previous": 0.15404064050941102,
+        "selected_after": [
+          "v2merange"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2cltort",
+        "window": 7,
+        "auc": 0.6778724599681618,
+        "lift_over_previous": 0.02383181945875079,
+        "selected_after": [
+          "v2merange",
+          "v2cltort"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2caassemb",
+        "window": 7,
+        "auc": 0.7211519938354845,
+        "lift_over_previous": 0.04327953386732264,
+        "selected_after": [
+          "v2merange",
+          "v2cltort",
+          "v2caassemb"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2lgoppart",
+        "window": 7,
+        "auc": 0.7411869701026328,
+        "lift_over_previous": 0.02003497626714834,
+        "selected_after": [
+          "v2merange",
+          "v2cltort",
+          "v2caassemb",
+          "v2lgoppart"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2strenarm",
+        "window": 7,
+        "auc": 0.739454094292804,
+        "lift_over_previous": -0.0017328758098288377,
+        "selected_after": [
+          "v2merange",
+          "v2cltort",
+          "v2caassemb",
+          "v2lgoppart",
+          "v2strenarm"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 62,
+    "n_pos_survive": 54,
+    "n_neg_total": 186,
+    "n_neg_survive": 166,
+    "pos_coverage": 0.8709677419354839,
+    "neg_coverage": 0.8924731182795699,
+    "n_countries_survive": 29,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 132,
+      "loco_auc": 0.7959126539753639,
+      "ece": 0.06905074362205625,
+      "ece_ci95_lo": 0.05867779122049934,
+      "ece_ci95_hi": 0.15556047565257883,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 48,
+          "mean_predicted": 0.044755568698747084,
+          "mean_actual": 0.10416666666666667
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 24,
+          "mean_predicted": 0.14400276665886244,
+          "mean_actual": 0.125
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 8,
+          "mean_predicted": 0.2551141958683729,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 13,
+          "mean_predicted": 0.3402471886231349,
+          "mean_actual": 0.3076923076923077
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 9,
+          "mean_predicted": 0.4498230318228404,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 7,
+          "mean_predicted": 0.5312321015766689,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.6573504328727722,
+          "mean_actual": 0.8
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 7,
+          "mean_predicted": 0.7422737904957363,
+          "mean_actual": 0.8571428571428571
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 5,
+          "mean_predicted": 0.8657036066055298,
+          "mean_actual": 0.6
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 6,
+          "mean_predicted": 0.954981784025828,
+          "mean_actual": 0.8333333333333334
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6748224701894534,
+      "loco_auc_ci95_hi": 0.8712268466400546
+    },
+    "mid-tier": {
+      "n": 43,
+      "loco_auc": 0.5753968253968254,
+      "ece": 0.23475100049142575,
+      "ece_ci95_lo": 0.139558990080137,
+      "ece_ci95_hi": 0.3518834950765161,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 25,
+          "mean_predicted": 0.03454329876229167,
+          "mean_actual": 0.16
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 1,
+          "mean_predicted": 0.16131798923015594,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 5,
+          "mean_predicted": 0.23365975320339202,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 4,
+          "mean_predicted": 0.3636012375354767,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 1,
+          "mean_predicted": 0.41227221488952637,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 4,
+          "mean_predicted": 0.5713085234165192,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.6840773224830627,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 2,
+          "mean_predicted": 0.7415303885936737,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.3736842105263158,
+      "loco_auc_ci95_hi": 0.7855403358077507
+    },
+    "stable-democracy": {
+      "n": 45,
+      "loco_auc": 0.6234567901234568,
+      "ece": 0.13493113249229888,
+      "ece_ci95_lo": 0.067237162158126,
+      "ece_ci95_hi": 0.24348010196001263,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 28,
+          "mean_predicted": 0.03715916968316638,
+          "mean_actual": 0.14285714285714285
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 4,
+          "mean_predicted": 0.15678810887038708,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 8,
+          "mean_predicted": 0.2559019438922405,
+          "mean_actual": 0.125
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 2,
+          "mean_predicted": 0.48225146532058716,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.6717926859855652,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 1,
+          "mean_predicted": 0.7979687452316284,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 1,
+          "mean_predicted": 0.8024469017982483,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.3404444481989716,
+      "loco_auc_ci95_hi": 0.8580790302633438
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-30T08:51:46.247438+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.4708,
+  "stability_diagnostic": {
+    "fold_variance": 0.05123965699758241,
+    "fold_auc_mean": 0.7955783105783105,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Argentina": 0.9,
+      "Cambodia": 0.7833333333333333,
+      "Egypt": 1.0,
+      "El Salvador": 1.0,
+      "Ethiopia": 1.0,
+      "Greece": 1.0,
+      "Haiti": 0.5555555555555556,
+      "India": 0.675,
+      "Indonesia": 0.7142857142857143,
+      "Iran": 0.875,
+      "Lebanon": 0.3333333333333333,
+      "Malawi": 1.0,
+      "Morocco": 0.8333333333333334,
+      "Netherlands": 0.8181818181818182,
+      "Nicaragua": 1.0,
+      "Nigeria": 0.9166666666666666,
+      "Pakistan": 0.6923076923076923,
+      "Philippines": 0.8888888888888888,
+      "Poland": 0.9428571428571428,
+      "Saudi Arabia": 0.875,
+      "Sudan": 0.8,
+      "Switzerland": 0.2857142857142857,
+      "Tanzania": 0.2,
+      "Tunisia": 1.0,
+      "Uganda": 0.8
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7063,
+    "cohort_loco_floor": 0.6463,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 62,
+  "n_negatives": 186,
+  "walked_at_utc": "2026-06-30T08:53:10.632441+00:00",
+  "elapsed_seconds": 1612.7451133728027,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/religious_and_social_movement/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Cuba",
+          "The Democratic Republic of the Congo",
+          "Turkiye",
+          "Guinea-Bissau",
+          "Poland",
+          "Myanmar",
+          "Maldives",
+          "Liberia"
+        ],
+        "country_isos": [
+          "cu",
+          "cd",
+          "tr",
+          "gw",
+          "pl",
+          "mm",
+          "mv",
+          "lr"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Portugal",
+          "Cyprus",
+          "Jamaica",
+          "Georgia",
+          "The Gambia",
+          "Argentina",
+          "Guyana",
+          "Malawi",
+          "Brazil"
+        ],
+        "country_isos": [
+          "pt",
+          "cy",
+          "jm",
+          "ge",
+          "gm",
+          "ar",
+          "gy",
+          "mw",
+          "br"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Israel",
+          "Bosnia and Herzegovina",
+          "South Sudan",
+          "Slovenia",
+          "Czechia",
+          "Ivory Coast",
+          "Fiji",
+          "France",
+          "South Korea"
+        ],
+        "country_isos": [
+          "il",
+          "ba",
+          "ss",
+          "si",
+          "cz",
+          "ci",
+          "fj",
+          "fr",
+          "kr"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Burundi",
+          "Italy",
+          "Uruguay",
+          "Botswana",
+          "Kazakhstan",
+          "Yemen",
+          "Cabo Verde",
+          "Tanzania"
+        ],
+        "country_isos": [
+          "bi",
+          "it",
+          "uy",
+          "bw",
+          "kz",
+          "ye",
+          "cv",
+          "tz"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Trinidad and Tobago",
+          "Nepal",
+          "Seychelles",
+          "Slovakia",
+          "Iraq",
+          "Central African Republic",
+          "Bulgaria",
+          "Canada",
+          "Russia"
+        ],
+        "country_isos": [
+          "tt",
+          "np",
+          "sc",
+          "sk",
+          "iq",
+          "cf",
+          "bg",
+          "ca",
+          "ru"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Papua New Guinea",
+          "Singapore",
+          "Somalia",
+          "Moldova",
+          "Taiwan",
+          "Costa Rica",
+          "Pakistan",
+          "Albania",
+          "Laos"
+        ],
+        "country_isos": [
+          "pg",
+          "sg",
+          "so",
+          "md",
+          "tw",
+          "cr",
+          "pk",
+          "al",
+          "la"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 9,
+        "countries": [
+          "Venezuela",
+          "Syria",
+          "Azerbaijan",
+          "Gabon",
+          "Zambia",
+          "Saudi Arabia",
+          "Chile",
+          "Ethiopia",
+          "Lithuania"
+        ],
+        "country_isos": [
+          "ve",
+          "sy",
+          "az",
+          "ga",
+          "zm",
+          "sa",
+          "cl",
+          "et",
+          "lt"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Australia",
+          "Iceland",
+          "Afghanistan",
+          "Greece",
+          "Kuwait",
+          "Vanuatu",
+          "Zimbabwe",
+          "Romania"
+        ],
+        "country_isos": [
+          "au",
+          "is",
+          "af",
+          "gr",
+          "kw",
+          "vu",
+          "zw",
+          "ro"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "China",
+          "Oman",
+          "Solomon Islands",
+          "United States",
+          "Barbados",
+          "Ghana",
+          "Montenegro",
+          "Egypt",
+          "Mauritania"
+        ],
+        "country_isos": [
+          "cn",
+          "om",
+          "sb",
+          "us",
+          "bb",
+          "gh",
+          "me",
+          "eg",
+          "mr"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 9,
+        "countries": [
+          "Hungary",
+          "Namibia",
+          "Paraguay",
+          "Benin",
+          "Thailand",
+          "Cambodia",
+          "Eswatini",
+          "Iran",
+          "Bolivia"
+        ],
+        "country_isos": [
+          "hu",
+          "na",
+          "py",
+          "bj",
+          "th",
+          "kh",
+          "sz",
+          "ir",
+          "bo"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Austria",
+          "Netherlands",
+          "Mozambique",
+          "Niger",
+          "Denmark",
+          "Qatar",
+          "Estonia",
+          "North Korea",
+          "Cameroon"
+        ],
+        "country_isos": [
+          "at",
+          "nl",
+          "mz",
+          "ne",
+          "dk",
+          "qa",
+          "ee",
+          "kp",
+          "cm"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Uzbekistan",
+          "Serbia",
+          "United Kingdom",
+          "Peru",
+          "Bahrain",
+          "Sudan",
+          "South Africa",
+          "Turkmenistan"
+        ],
+        "country_isos": [
+          "uz",
+          "rs",
+          "gb",
+          "pe",
+          "bh",
+          "sd",
+          "za",
+          "tm"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Bhutan",
+          "New Zealand",
+          "Sao Tome and Principe",
+          "Djibouti",
+          "Honduras",
+          "Germany",
+          "Bangladesh",
+          "Switzerland",
+          "Dominican Republic"
+        ],
+        "country_isos": [
+          "bt",
+          "nz",
+          "st",
+          "dj",
+          "hn",
+          "de",
+          "bd",
+          "ch",
+          "do"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "Mexico",
+          "Morocco",
+          "Croatia",
+          "United Arab Emirates",
+          "Malta",
+          "Kyrgyzstan",
+          "Panama",
+          "Sri Lanka",
+          "Ireland"
+        ],
+        "country_isos": [
+          "mx",
+          "ma",
+          "hr",
+          "ae",
+          "mt",
+          "kg",
+          "pa",
+          "lk",
+          "ie"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Ecuador",
+          "Sweden",
+          "Libya",
+          "Haiti",
+          "Comoros",
+          "Algeria",
+          "Equatorial Guinea",
+          "Timor-Leste",
+          "Nigeria"
+        ],
+        "country_isos": [
+          "ec",
+          "se",
+          "ly",
+          "ht",
+          "km",
+          "dz",
+          "gq",
+          "tl",
+          "ng"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Burkina Faso",
+          "Palestine",
+          "Philippines",
+          "Republic of the Congo",
+          "Norway",
+          "Lesotho",
+          "North Macedonia",
+          "Rwanda"
+        ],
+        "country_isos": [
+          "bf",
+          "ps",
+          "ph",
+          "cg",
+          "no",
+          "ls",
+          "mk",
+          "rw"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 9,
+        "countries": [
+          "Colombia",
+          "Uganda",
+          "Togo",
+          "Finland",
+          "Chad",
+          "Japan",
+          "Jordan",
+          "Suriname",
+          "Kenya"
+        ],
+        "country_isos": [
+          "co",
+          "ug",
+          "tg",
+          "fi",
+          "td",
+          "jp",
+          "jo",
+          "sr",
+          "ke"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "Senegal",
+          "Tunisia",
+          "Luxembourg",
+          "Hong Kong",
+          "Malaysia",
+          "Armenia",
+          "Indonesia",
+          "Belgium",
+          "India"
+        ],
+        "country_isos": [
+          "sn",
+          "tn",
+          "lu",
+          "hk",
+          "my",
+          "am",
+          "id",
+          "be",
+          "in"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Sierra Leone",
+          "Mauritius",
+          "Ukraine",
+          "Guinea",
+          "Vietnam",
+          "Latvia",
+          "Guatemala",
+          "Tajikistan",
+          "Spain"
+        ],
+        "country_isos": [
+          "sl",
+          "mu",
+          "ua",
+          "gn",
+          "vn",
+          "lv",
+          "gt",
+          "tj",
+          "es"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Eritrea",
+          "Angola",
+          "El Salvador",
+          "Lebanon",
+          "Mali",
+          "Madagascar",
+          "Mongolia",
+          "Nicaragua",
+          "Belarus"
+        ],
+        "country_isos": [
+          "er",
+          "ao",
+          "sv",
+          "lb",
+          "ml",
+          "mg",
+          "mn",
+          "ni",
+          "by"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.3,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 175,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.2205,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.6857229346207039,
+      "b": 0.0,
+      "c": 0.14633230466343625,
+      "n_fit": 220,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 49,
+        "observed_rate": 0.10204081632653061
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 54,
+        "observed_rate": 0.16666666666666666
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 31,
+        "observed_rate": 0.12903225806451613
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 39,
+        "observed_rate": 0.2564102564102564
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 37,
+        "observed_rate": 0.5135135135135135
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 10,
+        "observed_rate": 0.7
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.0633228219899876,
+    "n_predictions": 220,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.06905074362205625,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 48,
+            "mean_predicted": 0.044755568698747084,
+            "mean_actual": 0.10416666666666667
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 24,
+            "mean_predicted": 0.14400276665886244,
+            "mean_actual": 0.125
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 8,
+            "mean_predicted": 0.2551141958683729,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 13,
+            "mean_predicted": 0.3402471886231349,
+            "mean_actual": 0.3076923076923077
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 9,
+            "mean_predicted": 0.4498230318228404,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 7,
+            "mean_predicted": 0.5312321015766689,
+            "mean_actual": 0.42857142857142855
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 5,
+            "mean_predicted": 0.6573504328727722,
+            "mean_actual": 0.8
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 7,
+            "mean_predicted": 0.7422737904957363,
+            "mean_actual": 0.8571428571428571
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 5,
+            "mean_predicted": 0.8657036066055298,
+            "mean_actual": 0.6
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 6,
+            "mean_predicted": 0.954981784025828,
+            "mean_actual": 0.8333333333333334
+          }
+        ],
+        "n": 132,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.23475100049142575,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 25,
+            "mean_predicted": 0.03454329876229167,
+            "mean_actual": 0.16
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 1,
+            "mean_predicted": 0.16131798923015594,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 5,
+            "mean_predicted": 0.23365975320339202,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 4,
+            "mean_predicted": 0.3636012375354767,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 1,
+            "mean_predicted": 0.41227221488952637,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 4,
+            "mean_predicted": 0.5713085234165192,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.6840773224830627,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 2,
+            "mean_predicted": 0.7415303885936737,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 43,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.13493113249229888,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 28,
+            "mean_predicted": 0.03715916968316638,
+            "mean_actual": 0.14285714285714285
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 4,
+            "mean_predicted": 0.15678810887038708,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 8,
+            "mean_predicted": 0.2559019438922405,
+            "mean_actual": 0.125
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 2,
+            "mean_predicted": 0.48225146532058716,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.6717926859855652,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 1,
+            "mean_predicted": 0.7979687452316284,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 1,
+            "mean_predicted": 0.8024469017982483,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 45,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/religious_and_social_movement.scores.json",
+  "shape_points": [
+    -0.08622420855513296,
+    -0.05062563816676031,
+    -0.01502706777838768,
+    0.020571502609984946,
+    0.05617007299835758,
+    0.09176864338673021,
+    0.12736721377510285,
+    0.16296578416347546,
+    0.1985643545518481,
+    0.23416292494022073,
+    0.26976149532859334,
+    0.305360065716966
+  ],
+  "shap_importance_raw": {
+    "v2merange": 1.5972837209701538,
+    "v2cltort": 1.7128167152404785,
+    "v2caassemb": 1.3076622486114502,
+    "v2lgoppart": 0.9495056867599487
+  },
+  "shap_importance_normalized": {
+    "v2merange": 0.2869061834926882,
+    "v2cltort": 0.30765837048264183,
+    "v2caassemb": 0.23488399720163955,
+    "v2lgoppart": 0.17055144882303042
+  },
+  "shap_direction_signs": {
+    "v2merange": -1,
+    "v2cltort": -1,
+    "v2caassemb": -1,
+    "v2lgoppart": -1
+  },
+  "per_feature_breakdown": {
+    "v2merange": {
+      "last_z": 0.17798441648483276,
+      "mean_z": 0.054513897746801376,
+      "std_z": 0.15050774812698364,
+      "slope": 0.7336745262145996,
+      "accel": 0.3589283227920532,
+      "tertile1_mean": 0.0619291253387928,
+      "tertile2_mean": 0.016575397923588753,
+      "tertile3_mean": 0.04317021369934082
+    },
+    "v2cltort": {
+      "last_z": 0.3772180378437042,
+      "mean_z": 0.10873766243457794,
+      "std_z": 0.5127087235450745,
+      "slope": 0.2399722933769226,
+      "accel": 0.1699967235326767,
+      "tertile1_mean": 0.1948326677083969,
+      "tertile2_mean": 0.051292818039655685,
+      "tertile3_mean": 0.058057840913534164
+    },
+    "v2caassemb": {
+      "last_z": 0.04746989905834198,
+      "mean_z": 0.19381125271320343,
+      "std_z": 0.12666431069374084,
+      "slope": 0.37678760290145874,
+      "accel": 0.18996331095695496,
+      "tertile1_mean": 0.2838286757469177,
+      "tertile2_mean": 0.08252611011266708,
+      "tertile3_mean": 0.006611051503568888
+    },
+    "v2lgoppart": {
+      "last_z": 0.03684839978814125,
+      "mean_z": 0.0876588299870491,
+      "std_z": 0.1514977514743805,
+      "slope": 0.3187086582183838,
+      "accel": 0.24340234696865082,
+      "tertile1_mean": 0.0153081975877285,
+      "tertile2_mean": 0.04144991934299469,
+      "tertile3_mean": 0.05463157594203949
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 7,
+    "indicators": [
+      {
+        "code": "v2merange",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 59,
+        "shape": {
+          "mean": [
+            0.1531,
+            0.1949,
+            0.148,
+            0.2441,
+            0.1763,
+            0.0843,
+            -0.0555
+          ],
+          "p25": [
+            -0.1966,
+            -0.1409,
+            -0.2585,
+            -0.2403,
+            -0.3059,
+            -0.3884,
+            -0.5514
+          ],
+          "p75": [
+            0.5893,
+            0.6538,
+            0.7066,
+            0.9132,
+            0.9132,
+            0.7838,
+            0.6582
+          ]
+        }
+      },
+      {
+        "code": "v2cltort",
+        "name": "Freedom from Torture (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 59,
+        "shape": {
+          "mean": [
+            0.0457,
+            0.2089,
+            0.2177,
+            0.2242,
+            0.016,
+            -0.0086,
+            0.0309
+          ],
+          "p25": [
+            -0.604,
+            -0.3751,
+            -0.5498,
+            -0.6271,
+            -0.7847,
+            -0.867,
+            -0.8921
+          ],
+          "p75": [
+            0.6472,
+            0.7581,
+            0.8892,
+            0.9598,
+            0.8126,
+            0.8126,
+            0.9413
+          ]
+        }
+      },
+      {
+        "code": "v2caassemb",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 58,
+        "shape": {
+          "mean": [
+            0.1985,
+            0.2871,
+            0.2526,
+            0.123,
+            0.0317,
+            -0.1031,
+            -0.0788
+          ],
+          "p25": [
+            -0.2655,
+            -0.1308,
+            -0.406,
+            -0.4403,
+            -0.729,
+            -0.7659,
+            -0.7441
+          ],
+          "p75": [
+            0.6463,
+            0.728,
+            0.8091,
+            0.728,
+            0.6654,
+            0.5225,
+            0.5453
+          ]
+        }
+      },
+      {
+        "code": "v2lgoppart",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 55,
+        "shape": {
+          "mean": [
+            0.1447,
+            0.1904,
+            0.2511,
+            0.1718,
+            -0.0114,
+            -0.0926,
+            0.0099
+          ],
+          "p25": [
+            -0.3869,
+            -0.2943,
+            -0.2737,
+            -0.4797,
+            -0.611,
+            -0.5848,
+            -0.5696
+          ],
+          "p75": [
+            0.5358,
+            0.6415,
+            0.6831,
+            0.9798,
+            0.7142,
+            0.7207,
+            0.7526
+          ]
+        }
+      }
+    ],
+    "samples_used": 59,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2024,
+        "label": "Ram temple consecrated in Ayodhya",
+        "in_training_set": false
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2024,
+        "label": "Pope Francis visits Dili \u2014 largest gathering since independence",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 2022,
+        "label": "Scam Compound Industry Exposed: Trafficking on Industrial Scale",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2022,
+        "label": "Hijab ban controversy in Karnataka",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2022,
+        "label": "Bishop \u00c1lvarez Imprisoned, Church Broadcasts Suspended",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2022,
+        "label": "Quran Burnings by Paludan Trigger Riots and Diplomatic Crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2021,
+        "label": "TLP Protests Force Government Capitulation Again",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2021,
+        "label": "Burka Ban Narrowly Approved in National Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2019,
+        "label": "Ayodhya Supreme Court verdict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2019,
+        "label": "Morocco Hosts Interreligious Summit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2017,
+        "label": "Faizabad Dharna \u2014 TLP Besieges Islamabad",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 2016,
+        "label": "Ahok blasphemy case and Islamist mass mobilizations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 2014,
+        "label": "Security Forces Kill Garment Workers in Strike Crackdown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2013,
+        "label": "Pope Francis \u2014 First Argentine Pope Elected",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 2013,
+        "label": "Sultan Announces Sharia Penal Code Implementation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 2012,
+        "label": "Sectarian Violence in Zanzibar",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 2011,
+        "label": "Land Grabbing Crisis Displaces Tens of Thousands",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 2011,
+        "label": "Indignant Citizens Movement occupies Syntagma Square against austerity",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2010,
+        "label": "Ayodhya verdict \u2014 Allahabad High Court",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2009,
+        "label": "Minaret Ban Approved in National Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2005,
+        "label": "Catholic Church protests over religion in schools",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 2003,
+        "label": "Anti-Thai Riots Destroy Thai Embassy and Trigger Diplomatic Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2002,
+        "label": "Religious Crackdown \u2014 Only Four Faiths Recognized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2002,
+        "label": "Miss World Riots \u2014 Kaduna",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2000,
+        "label": "Kaduna Sharia Riots \u2014 Thousands Killed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 2000,
+        "label": "Movement for the Restoration of the Ten Commandments Massacre",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1999,
+        "label": "Sharia Crisis \u2014 Northern States Adopt Islamic Law",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1994,
+        "label": "Egypt Tightens State Control Over Mosque Preachers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 1992,
+        "label": "Catholic Bishops' Lenten Letter Breaks the Silence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 1991,
+        "label": "Import Ban on Alcohol Enacted Under Islamic Reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 1990,
+        "label": "Melayu Islam Beraja Officially Codified as State Ideology",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1990,
+        "label": "L.K. Advani's Rath Yatra \u2014 BJP's Hindu nationalist surge",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 1989,
+        "label": "Pope John Paul II visits Dili",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1987,
+        "label": "Kaduna Religious Riots",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1987,
+        "label": "Mecca Pilgrimage Riot \u2014 Iran Confrontation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1986,
+        "label": "Babri Mosque locks opened \u2014 Ramjanmabhoomi movement begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1986,
+        "label": "Nigeria Joins Islamic Conference Organisation \u2014 Controversy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 1983,
+        "label": "Pope John Paul II visits Haiti and declares 'Things must change here'",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1981,
+        "label": "Muslim Brotherhood Expands Political Role",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1981,
+        "label": "Pope John Paul II Visits Philippines",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1981,
+        "label": "Islamic Tendency Movement Founded Formally",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1980,
+        "label": "Mass Refugee Crisis Develops Along Thai-Cambodian Border",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1980,
+        "label": "Hassan II Promotes Islamic Legitimacy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1979,
+        "label": "Islamic Revolution in Iran Inspires Lebanese Shia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1979,
+        "label": "Pope John Paul II's First Visit \u2014 'Do Not Be Afraid'",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1979,
+        "label": "Grand Mosque Seizure in Mecca",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1978,
+        "label": "Islamization Program Begins Under Zia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1978,
+        "label": "Karol Wojtyla Elected Pope John Paul II",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 1977,
+        "label": "Archbishop Romero Appointed Amid Escalating Repression",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1977,
+        "label": "Nimeiry Embraces Islamist Movement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1976,
+        "label": "Iran Changes Its Calendar to Imperial Calendar",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1976,
+        "label": "Islamist Movement Begins Organizing on Campuses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1974,
+        "label": "Ahmadiyya Declared Non-Muslims by Parliament",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1969,
+        "label": "Khomeini Delivers Velayat-e Faqih Lectures in Najaf",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1968,
+        "label": "Student and Cultural Revolution Reshapes Dutch Society",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 1968,
+        "label": "Liberation Theology Fractures Church Support for Somoza",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1967,
+        "label": "Samlaut Peasant Uprising Signals Growing Rural Discontent",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1966,
+        "label": "Islamist student movement emerges at Kabul University",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 1966,
+        "label": "Vatican reconciliation gives Duvalier control over Haitian Church appointments",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1964,
+        "label": "Letter of 34 \u2014 Intellectuals Defy Censorship",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1961,
+        "label": "Anti-Religious Campaign \u2014 Crucifixes Removed from Schools",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 1960,
+        "label": "Duvalier expels Catholic bishops, triggering Vatican excommunication",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1959,
+        "label": "Ethiopian Orthodox Church elects first native Patriarch",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1956,
+        "label": "B.R. Ambedkar leads mass conversion to Buddhism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1955,
+        "label": "Anti-Baha'i Pogroms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1954,
+        "label": "Per\u00f3n in Conflict with Catholic Church",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1954,
+        "label": "Legalization of Divorce and Anti-Clerical Legislation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1953,
+        "label": "Anti-Ahmadiyya Riots and Martial Law in Lahore",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1953,
+        "label": "Cardinal Wyszynski Arrested \u2014 Church-State Confrontation",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 69
+  }
+}

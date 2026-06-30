@@ -1,0 +1,4286 @@
+{
+  "recipe_id": "democratic_transition",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Governance Stress",
+  "description_compelling": "An authoritarian or hybrid regime opens up \u2014 competitive elections return, civil liberties rebound, the press relaxes. Electoral democracy indices and free-and-fair-election scores climb steadily across a half-decade or more. Look for it in post-revolutionary states, post-junta openings, and elite-pact transitions.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6681921711955082,
+    "ci95_lo": 0.6343751204845387,
+    "ci95_hi": 0.7023410857996377,
+    "ci80_lo": 0.6453246626631747,
+    "ci80_hi": 0.6902631772157749,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2xcl_rol",
+      "v2juhccomp",
+      "v2x_regime"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2xcl_rol",
+        "name": null
+      },
+      {
+        "code": "v2juhccomp",
+        "name": null
+      },
+      {
+        "code": "v2x_regime",
+        "name": "Regime Type (0-3 categorical)"
+      }
+    ],
+    "chosen_window": 21,
+    "final_global_auc": 0.6681921711955082,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2xcl_rol",
+        "window": 18,
+        "auc": 0.6266329881283152,
+        "lift_over_previous": 0.12663298812831525,
+        "selected_after": [
+          "v2xcl_rol"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2juhccomp",
+        "window": 21,
+        "auc": 0.6465514507689868,
+        "lift_over_previous": 0.01991846264067154,
+        "selected_after": [
+          "v2xcl_rol",
+          "v2juhccomp"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2x_regime",
+        "window": 21,
+        "auc": 0.6681921711955082,
+        "lift_over_previous": 0.02164072042652143,
+        "selected_after": [
+          "v2xcl_rol",
+          "v2juhccomp",
+          "v2x_regime"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2x_jucon",
+        "window": 21,
+        "auc": 0.6658438829740276,
+        "lift_over_previous": -0.002348288221480588,
+        "selected_after": [
+          "v2xcl_rol",
+          "v2juhccomp",
+          "v2x_regime",
+          "v2x_jucon"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 354,
+    "n_pos_survive": 315,
+    "n_neg_total": 1062,
+    "n_neg_survive": 899,
+    "pos_coverage": 0.8898305084745762,
+    "neg_coverage": 0.8465160075329566,
+    "n_countries_survive": 107,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 822,
+      "loco_auc": 0.652799255441008,
+      "ece": 0.11972918124289372,
+      "ece_ci95_lo": 0.09162953747665836,
+      "ece_ci95_hi": 0.15118351581774384,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 130,
+          "mean_predicted": 0.05789667279817737,
+          "mean_actual": 0.13076923076923078
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 136,
+          "mean_predicted": 0.15094695793574348,
+          "mean_actual": 0.22058823529411764
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 115,
+          "mean_predicted": 0.24889978235182555,
+          "mean_actual": 0.23478260869565218
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 120,
+          "mean_predicted": 0.3503104296823343,
+          "mean_actual": 0.2916666666666667
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 84,
+          "mean_predicted": 0.44838265968220575,
+          "mean_actual": 0.30952380952380953
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 77,
+          "mean_predicted": 0.5518004112429433,
+          "mean_actual": 0.4155844155844156
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 58,
+          "mean_predicted": 0.6481672340425951,
+          "mean_actual": 0.3620689655172414
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 42,
+          "mean_predicted": 0.7448757446947551,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 39,
+          "mean_predicted": 0.8468873164592645,
+          "mean_actual": 0.5641025641025641
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 21,
+          "mean_predicted": 0.9405787104652041,
+          "mean_actual": 0.5714285714285714
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6106380961932656,
+      "loco_auc_ci95_hi": 0.691800256614395
+    },
+    "mid-tier": {
+      "n": 198,
+      "loco_auc": 0.6724763979665941,
+      "ece": 0.06941443101286586,
+      "ece_ci95_lo": 0.04638655322011222,
+      "ece_ci95_hi": 0.140699616053866,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 73,
+          "mean_predicted": 0.05571587723105738,
+          "mean_actual": 0.1232876712328767
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 47,
+          "mean_predicted": 0.14737111979976614,
+          "mean_actual": 0.23404255319148937
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 30,
+          "mean_predicted": 0.23837418605883917,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 24,
+          "mean_predicted": 0.35318263495961827,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 11,
+          "mean_predicted": 0.4499763981862502,
+          "mean_actual": 0.36363636363636365
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.5549790620803833,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 4,
+          "mean_predicted": 0.6296103000640869,
+          "mean_actual": 0.75
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 4,
+          "mean_predicted": 0.7259889245033264,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5755872688152078,
+      "loco_auc_ci95_hi": 0.7579657864684273
+    },
+    "stable-democracy": {
+      "n": 176,
+      "loco_auc": 0.5433112582781457,
+      "ece": 0.09303111333230679,
+      "ece_ci95_lo": 0.05919831719908293,
+      "ece_ci95_hi": 0.15234200566390593,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 107,
+          "mean_predicted": 0.046884134202917045,
+          "mean_actual": 0.1308411214953271
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 30,
+          "mean_predicted": 0.14225070675214133,
+          "mean_actual": 0.1
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 22,
+          "mean_predicted": 0.24310432239012283,
+          "mean_actual": 0.22727272727272727
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 7,
+          "mean_predicted": 0.3354362334523882,
+          "mean_actual": 0.2857142857142857
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 1,
+          "mean_predicted": 0.4587182402610779,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.550990629196167,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.6557480096817017,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 2,
+          "mean_predicted": 0.7585594058036804,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.9603298306465149,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.4023816914394853,
+      "loco_auc_ci95_hi": 0.6638910495284803
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-29T03:20:44.001714+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.4954,
+  "stability_diagnostic": {
+    "fold_variance": 0.05670436025514901,
+    "fold_auc_mean": 0.6522363419986943,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Afghanistan": 0.7285714285714285,
+      "Albania": 0.4444444444444444,
+      "Algeria": 0.6666666666666666,
+      "Angola": 0.75,
+      "Argentina": 0.8125,
+      "Armenia": 0.5,
+      "Bangladesh": 0.3333333333333333,
+      "Bhutan": 0.9,
+      "Bolivia": 0.8,
+      "Botswana": 1.0,
+      "Brazil": 0.8541666666666666,
+      "Bulgaria": 0.7083333333333334,
+      "Burkina Faso": 0.6296296296296297,
+      "Burundi": 0.36363636363636365,
+      "Cambodia": 0.4934210526315789,
+      "Canada": 0.0,
+      "Chile": 0.9333333333333333,
+      "China": 0.6944444444444444,
+      "Colombia": 0.2692307692307692,
+      "Croatia": 0.5,
+      "Cuba": 0.4166666666666667,
+      "Czechia": 0.8636363636363636,
+      "Dominican Republic": 0.7142857142857143,
+      "Egypt": 0.7962962962962963,
+      "El Salvador": 0.5714285714285714,
+      "Eritrea": 0.7142857142857143,
+      "Ethiopia": 0.575,
+      "France": 0.3333333333333333,
+      "Ghana": 0.5357142857142857,
+      "Greece": 1.0,
+      "Guatemala": 0.16666666666666666,
+      "Guinea": 0.7857142857142857,
+      "Haiti": 1.0,
+      "Honduras": 0.6666666666666666,
+      "Hungary": 0.6666666666666666,
+      "India": 0.6296296296296297,
+      "Indonesia": 0.675,
+      "Iran": 1.0,
+      "Iraq": 1.0,
+      "Italy": 0.8571428571428571,
+      "Ivory Coast": 0.625,
+      "Jamaica": 0.42857142857142855,
+      "Japan": 0.3,
+      "Jordan": 0.16666666666666666,
+      "Kenya": 0.775,
+      "Kuwait": 0.47619047619047616,
+      "Kyrgyzstan": 1.0,
+      "Liberia": 0.6296296296296297,
+      "Libya": 1.0,
+      "Madagascar": 1.0,
+      "Malawi": 0.9090909090909091,
+      "Maldives": 0.85,
+      "Mali": 0.6666666666666666,
+      "Mauritius": 0.9090909090909091,
+      "Mexico": 0.5757575757575758,
+      "Morocco": 0.3,
+      "Mozambique": 0.5833333333333334,
+      "Myanmar": 0.6904761904761905,
+      "Namibia": 0.4666666666666667,
+      "Nepal": 0.5,
+      "Netherlands": 0.5555555555555556,
+      "Nicaragua": 0.9090909090909091,
+      "Niger": 0.6,
+      "Nigeria": 0.2,
+      "Pakistan": 0.6875,
+      "Panama": 0.1875,
+      "Papua New Guinea": 0.65,
+      "Paraguay": 1.0,
+      "Philippines": 0.7307692307692307,
+      "Poland": 0.7857142857142857,
+      "Portugal": 0.6944444444444444,
+      "Romania": 1.0,
+      "Russia": 0.7777777777777778,
+      "Rwanda": 0.4,
+      "Saudi Arabia": 0.6666666666666666,
+      "Senegal": 0.5416666666666666,
+      "Serbia": 0.0,
+      "Sierra Leone": 0.6363636363636364,
+      "Somalia": 0.6666666666666666,
+      "South Africa": 0.9111111111111111,
+      "South Korea": 0.36363636363636365,
+      "Spain": 0.5897435897435898,
+      "Sudan": 0.96875,
+      "Suriname": 0.8333333333333334,
+      "Syria": 0.7777777777777778,
+      "Taiwan": 0.35,
+      "Tanzania": 0.71875,
+      "The Democratic Republic of the Congo": 0.75,
+      "Togo": 0.5714285714285714,
+      "Tunisia": 0.5,
+      "Turkiye": 0.5,
+      "Uganda": 0.9,
+      "Ukraine": 1.0,
+      "Uruguay": 1.0,
+      "Vietnam": 0.5,
+      "Yemen": 0.5555555555555556,
+      "Zambia": 0.6818181818181818,
+      "Zimbabwe": 0.5555555555555556
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 354,
+  "n_negatives": 1062,
+  "walked_at_utc": "2026-06-29T03:29:19.475763+00:00",
+  "elapsed_seconds": 6523.258158922195,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/democratic_transition/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Nigeria",
+          "Madagascar",
+          "Moldova",
+          "Cabo Verde",
+          "Uruguay",
+          "Bulgaria",
+          "The Gambia",
+          "Maldives"
+        ],
+        "country_isos": [
+          "ng",
+          "mg",
+          "md",
+          "cv",
+          "uy",
+          "bg",
+          "gm",
+          "mv"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Bangladesh",
+          "United Arab Emirates",
+          "Philippines",
+          "Mozambique",
+          "Austria",
+          "Sao Tome and Principe",
+          "Suriname",
+          "Montenegro",
+          "Bhutan"
+        ],
+        "country_isos": [
+          "bd",
+          "ae",
+          "ph",
+          "mz",
+          "at",
+          "st",
+          "sr",
+          "me",
+          "bt"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Brazil",
+          "North Macedonia",
+          "Cyprus",
+          "Lithuania",
+          "South Africa",
+          "Comoros",
+          "Botswana",
+          "United States",
+          "Seychelles"
+        ],
+        "country_isos": [
+          "br",
+          "mk",
+          "cy",
+          "lt",
+          "za",
+          "km",
+          "bw",
+          "us",
+          "sc"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Haiti",
+          "Zambia",
+          "Spain",
+          "Slovenia",
+          "Egypt",
+          "Guinea-Bissau",
+          "Senegal",
+          "Russia"
+        ],
+        "country_isos": [
+          "ht",
+          "zm",
+          "es",
+          "si",
+          "eg",
+          "gw",
+          "sn",
+          "ru"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Guatemala",
+          "Canada",
+          "Peru",
+          "Romania",
+          "Mauritius",
+          "El Salvador",
+          "Croatia",
+          "Ivory Coast",
+          "Vanuatu"
+        ],
+        "country_isos": [
+          "gt",
+          "ca",
+          "pe",
+          "ro",
+          "mu",
+          "sv",
+          "hr",
+          "ci",
+          "vu"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Norway",
+          "Israel",
+          "Colombia",
+          "Malta",
+          "Malawi",
+          "Central African Republic",
+          "Kenya",
+          "Palestine",
+          "Paraguay"
+        ],
+        "country_isos": [
+          "no",
+          "il",
+          "co",
+          "mt",
+          "mw",
+          "cf",
+          "ke",
+          "ps",
+          "py"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 9,
+        "countries": [
+          "Chile",
+          "Nepal",
+          "Australia",
+          "Estonia",
+          "Portugal",
+          "Liberia",
+          "Honduras",
+          "Greece",
+          "Serbia"
+        ],
+        "country_isos": [
+          "cl",
+          "np",
+          "au",
+          "ee",
+          "pt",
+          "lr",
+          "hn",
+          "gr",
+          "rs"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Panama",
+          "Namibia",
+          "Ghana",
+          "Algeria",
+          "Myanmar",
+          "Qatar",
+          "Slovakia",
+          "Dominican Republic"
+        ],
+        "country_isos": [
+          "pa",
+          "na",
+          "gh",
+          "dz",
+          "mm",
+          "qa",
+          "sk",
+          "do"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Sweden",
+          "Georgia",
+          "Tunisia",
+          "Guyana",
+          "Turkmenistan",
+          "France",
+          "United Kingdom",
+          "Afghanistan",
+          "Latvia"
+        ],
+        "country_isos": [
+          "se",
+          "ge",
+          "tn",
+          "gy",
+          "tm",
+          "fr",
+          "gb",
+          "af",
+          "lv"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 9,
+        "countries": [
+          "Equatorial Guinea",
+          "Sri Lanka",
+          "Ecuador",
+          "Bosnia and Herzegovina",
+          "Iceland",
+          "Trinidad and Tobago",
+          "Uzbekistan",
+          "Tajikistan",
+          "North Korea"
+        ],
+        "country_isos": [
+          "gq",
+          "lk",
+          "ec",
+          "ba",
+          "is",
+          "tt",
+          "uz",
+          "tj",
+          "kp"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "India",
+          "Timor-Leste",
+          "Kuwait",
+          "Finland",
+          "Thailand",
+          "Armenia",
+          "Denmark",
+          "Barbados",
+          "Belarus"
+        ],
+        "country_isos": [
+          "in",
+          "tl",
+          "kw",
+          "fi",
+          "th",
+          "am",
+          "dk",
+          "bb",
+          "by"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Tanzania",
+          "Poland",
+          "Fiji",
+          "Lesotho",
+          "Hungary",
+          "Zimbabwe",
+          "Somalia",
+          "New Zealand"
+        ],
+        "country_isos": [
+          "tz",
+          "pl",
+          "fj",
+          "ls",
+          "hu",
+          "zw",
+          "so",
+          "nz"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Albania",
+          "Mongolia",
+          "Burundi",
+          "Argentina",
+          "Republic of the Congo",
+          "Switzerland",
+          "Mauritania",
+          "Ukraine",
+          "Ireland"
+        ],
+        "country_isos": [
+          "al",
+          "mn",
+          "bi",
+          "ar",
+          "cg",
+          "ch",
+          "mr",
+          "ua",
+          "ie"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "Benin",
+          "Pakistan",
+          "Turkiye",
+          "Mexico",
+          "Solomon Islands",
+          "Kyrgyzstan",
+          "Netherlands",
+          "Costa Rica",
+          "The Democratic Republic of the Congo"
+        ],
+        "country_isos": [
+          "bj",
+          "pk",
+          "tr",
+          "mx",
+          "sb",
+          "kg",
+          "nl",
+          "cr",
+          "cd"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Hong Kong",
+          "Taiwan",
+          "Indonesia",
+          "South Korea",
+          "Bolivia",
+          "Papua New Guinea",
+          "Burkina Faso",
+          "Uganda",
+          "Iran"
+        ],
+        "country_isos": [
+          "hk",
+          "tw",
+          "id",
+          "kr",
+          "bo",
+          "pg",
+          "bf",
+          "ug",
+          "ir"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Czechia",
+          "Malaysia",
+          "Djibouti",
+          "Bahrain",
+          "Chad",
+          "Gabon",
+          "Angola",
+          "Sierra Leone"
+        ],
+        "country_isos": [
+          "cz",
+          "my",
+          "dj",
+          "bh",
+          "td",
+          "ga",
+          "ao",
+          "sl"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 9,
+        "countries": [
+          "Mali",
+          "Saudi Arabia",
+          "Jamaica",
+          "Nicaragua",
+          "Singapore",
+          "Germany",
+          "Niger",
+          "China",
+          "Rwanda"
+        ],
+        "country_isos": [
+          "ml",
+          "sa",
+          "jm",
+          "ni",
+          "sg",
+          "de",
+          "ne",
+          "cn",
+          "rw"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "Libya",
+          "Lebanon",
+          "Ethiopia",
+          "Luxembourg",
+          "Italy",
+          "Morocco",
+          "Iraq",
+          "Cameroon",
+          "Togo"
+        ],
+        "country_isos": [
+          "ly",
+          "lb",
+          "et",
+          "lu",
+          "it",
+          "ma",
+          "iq",
+          "cm",
+          "tg"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Laos",
+          "Eswatini",
+          "Guinea",
+          "Azerbaijan",
+          "Oman",
+          "Belgium",
+          "Venezuela",
+          "Yemen",
+          "South Sudan"
+        ],
+        "country_isos": [
+          "la",
+          "sz",
+          "gn",
+          "az",
+          "om",
+          "be",
+          "ve",
+          "ye",
+          "ss"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Cuba",
+          "Eritrea",
+          "Syria",
+          "Japan",
+          "Vietnam",
+          "Sudan",
+          "Cambodia",
+          "Kazakhstan",
+          "Jordan"
+        ],
+        "country_isos": [
+          "cu",
+          "er",
+          "sy",
+          "jp",
+          "vn",
+          "sd",
+          "kh",
+          "kz",
+          "jo"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.3,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 175,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.1292,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.6186997072618535,
+      "b": 0.0,
+      "c": -0.14968519879725695,
+      "n_fit": 1214,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 96,
+        "observed_rate": 0.14583333333333334
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 301,
+        "observed_rate": 0.12292358803986711
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 334,
+        "observed_rate": 0.23652694610778444
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 349,
+        "observed_rate": 0.3495702005730659
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 134,
+        "observed_rate": 0.4701492537313433
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.021844815879691996,
+    "n_predictions": 1214,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.11972918124289372,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 130,
+            "mean_predicted": 0.05789667279817737,
+            "mean_actual": 0.13076923076923078
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 136,
+            "mean_predicted": 0.15094695793574348,
+            "mean_actual": 0.22058823529411764
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 115,
+            "mean_predicted": 0.24889978235182555,
+            "mean_actual": 0.23478260869565218
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 120,
+            "mean_predicted": 0.3503104296823343,
+            "mean_actual": 0.2916666666666667
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 84,
+            "mean_predicted": 0.44838265968220575,
+            "mean_actual": 0.30952380952380953
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 77,
+            "mean_predicted": 0.5518004112429433,
+            "mean_actual": 0.4155844155844156
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 58,
+            "mean_predicted": 0.6481672340425951,
+            "mean_actual": 0.3620689655172414
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 42,
+            "mean_predicted": 0.7448757446947551,
+            "mean_actual": 0.42857142857142855
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 39,
+            "mean_predicted": 0.8468873164592645,
+            "mean_actual": 0.5641025641025641
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 21,
+            "mean_predicted": 0.9405787104652041,
+            "mean_actual": 0.5714285714285714
+          }
+        ],
+        "n": 822,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.06941443101286586,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 73,
+            "mean_predicted": 0.05571587723105738,
+            "mean_actual": 0.1232876712328767
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 47,
+            "mean_predicted": 0.14737111979976614,
+            "mean_actual": 0.23404255319148937
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 30,
+            "mean_predicted": 0.23837418605883917,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 24,
+            "mean_predicted": 0.35318263495961827,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 11,
+            "mean_predicted": 0.4499763981862502,
+            "mean_actual": 0.36363636363636365
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 5,
+            "mean_predicted": 0.5549790620803833,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 4,
+            "mean_predicted": 0.6296103000640869,
+            "mean_actual": 0.75
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 4,
+            "mean_predicted": 0.7259889245033264,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 198,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.09303111333230679,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 107,
+            "mean_predicted": 0.046884134202917045,
+            "mean_actual": 0.1308411214953271
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 30,
+            "mean_predicted": 0.14225070675214133,
+            "mean_actual": 0.1
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 22,
+            "mean_predicted": 0.24310432239012283,
+            "mean_actual": 0.22727272727272727
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 7,
+            "mean_predicted": 0.3354362334523882,
+            "mean_actual": 0.2857142857142857
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 1,
+            "mean_predicted": 0.4587182402610779,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 5,
+            "mean_predicted": 0.550990629196167,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.6557480096817017,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 2,
+            "mean_predicted": 0.7585594058036804,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.9603298306465149,
+            "mean_actual": 1.0
+          }
+        ],
+        "n": 176,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/democratic_transition.scores.json",
+  "shape_points": [
+    0.10210246770741295,
+    0.11316549035330306,
+    0.12422851299919316,
+    0.13529153564508326,
+    0.14635455829097338,
+    0.15741758093686348,
+    0.16848060358275357,
+    0.17954362622864367,
+    0.19060664887453377,
+    0.20166967152042387,
+    0.21273269416631396,
+    0.22379571681220406
+  ],
+  "shap_importance_raw": {
+    "v2xcl_rol": 1.2351069450378418,
+    "v2juhccomp": 1.1165021657943726,
+    "v2x_regime": 2.178755521774292
+  },
+  "shap_importance_normalized": {
+    "v2xcl_rol": 0.2726285950910829,
+    "v2juhccomp": 0.24644863191773653,
+    "v2x_regime": 0.4809227729911806
+  },
+  "shap_direction_signs": {
+    "v2xcl_rol": -1,
+    "v2juhccomp": -1,
+    "v2x_regime": -1
+  },
+  "per_feature_breakdown": {
+    "v2xcl_rol": {
+      "last_z": 0.08773566037416458,
+      "mean_z": 0.13329817354679108,
+      "std_z": 0.20754417777061462,
+      "slope": 0.12762495875358582,
+      "accel": 0.24778051674365997,
+      "tertile1_mean": 0.15608152747154236,
+      "tertile2_mean": 0.10636693239212036,
+      "tertile3_mean": 0.1686749905347824
+    },
+    "v2juhccomp": {
+      "last_z": 0.11490853875875473,
+      "mean_z": 0.0736754909157753,
+      "std_z": 0.31362733244895935,
+      "slope": 0.23485486209392548,
+      "accel": 0.19035857915878296,
+      "tertile1_mean": 0.10459298640489578,
+      "tertile2_mean": 0.02273830771446228,
+      "tertile3_mean": 0.061746109277009964
+    },
+    "v2x_regime": {
+      "last_z": 0.6691098809242249,
+      "mean_z": 0.2255060076713562,
+      "std_z": 0.20921514928340912,
+      "slope": 0.08334477245807648,
+      "accel": 0.12705442309379578,
+      "tertile1_mean": 0.4941704571247101,
+      "tertile2_mean": 0.24086810648441315,
+      "tertile3_mean": 0.12948676943778992
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 21,
+    "indicators": [
+      {
+        "code": "v2xcl_rol",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 321,
+        "shape": {
+          "mean": [
+            -0.2596,
+            -0.2091,
+            -0.1479,
+            -0.1329,
+            -0.1091,
+            -0.1229,
+            -0.0755,
+            -0.0812,
+            -0.0682,
+            -0.0611,
+            -0.0378,
+            0.0397,
+            0.0599,
+            0.0252,
+            0.0604,
+            0.1152,
+            0.1896,
+            0.2994,
+            0.3725,
+            0.5035,
+            0.7525
+          ],
+          "p25": [
+            -0.9641,
+            -0.8719,
+            -0.8,
+            -0.7691,
+            -0.7125,
+            -0.6299,
+            -0.5882,
+            -0.5729,
+            -0.5483,
+            -0.5407,
+            -0.524,
+            -0.473,
+            -0.4921,
+            -0.5498,
+            -0.5568,
+            -0.5847,
+            -0.5785,
+            -0.5935,
+            -0.5969,
+            -0.6538,
+            -0.5373
+          ],
+          "p75": [
+            0.4434,
+            0.4929,
+            0.5421,
+            0.5288,
+            0.4988,
+            0.4276,
+            0.4519,
+            0.5017,
+            0.4825,
+            0.4954,
+            0.5281,
+            0.6031,
+            0.6751,
+            0.6522,
+            0.7739,
+            0.8307,
+            0.9521,
+            1.1223,
+            1.2523,
+            1.535,
+            1.801
+          ]
+        }
+      },
+      {
+        "code": "v2juhccomp",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 317,
+        "shape": {
+          "mean": [
+            -0.0411,
+            0.0041,
+            0.0422,
+            0.0612,
+            0.0448,
+            -0.0051,
+            0.0144,
+            0.0541,
+            0.0487,
+            0.04,
+            0.017,
+            0.0327,
+            0.0048,
+            -0.0178,
+            -0.0142,
+            0.0232,
+            0.0464,
+            0.0816,
+            0.1499,
+            0.2375,
+            0.3179
+          ],
+          "p25": [
+            -0.4412,
+            -0.3618,
+            -0.3417,
+            -0.2889,
+            -0.3298,
+            -0.3618,
+            -0.3566,
+            -0.2889,
+            -0.3342,
+            -0.3329,
+            -0.3618,
+            -0.3417,
+            -0.3618,
+            -0.4179,
+            -0.4282,
+            -0.3618,
+            -0.3467,
+            -0.2889,
+            -0.2082,
+            -0.2,
+            -0.0658
+          ],
+          "p75": [
+            0.422,
+            0.4899,
+            0.5506,
+            0.5481,
+            0.4987,
+            0.4276,
+            0.4276,
+            0.4899,
+            0.4899,
+            0.482,
+            0.469,
+            0.4717,
+            0.4579,
+            0.3614,
+            0.4276,
+            0.4899,
+            0.549,
+            0.6255,
+            0.8704,
+            0.9655,
+            0.9798
+          ]
+        }
+      },
+      {
+        "code": "v2x_regime",
+        "name": "Regime Type (0-3 categorical)",
+        "provider": "V-Dem",
+        "n_samples": 321,
+        "shape": {
+          "mean": [
+            -0.0905,
+            -0.0593,
+            -0.0164,
+            -0.0351,
+            -0.0302,
+            -0.0022,
+            0.0037,
+            -0.0194,
+            -0.015,
+            -0.0342,
+            -0.0053,
+            0.0419,
+            0.0529,
+            0.0701,
+            0.0347,
+            0.0192,
+            0.0442,
+            0.0698,
+            0.0857,
+            0.1045,
+            0.2202
+          ],
+          "p25": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "p75": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    ],
+    "samples_used": 321,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2025,
+        "label": "Dodik Sentenced to One Year in Prison for Defying High Representative",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 2025,
+        "label": "Ar\u00e9valo Government Pursues Anti-Corruption Reforms Amid Continued Obstruction",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 2024,
+        "label": "Duma Boko Inaugurated \u2014 Peaceful Transfer of Power After 58 Years",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 2024,
+        "label": "Gang coalition seizes airport and prisons; Prime Minister Henry resigns",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 2024,
+        "label": "Sonko Released from Prison, Faye Wins Landslide Victory",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 2024,
+        "label": "Move Forward Dissolved; Paetongtarn Shinawatra Becomes PM",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 2024,
+        "label": "Uruguay Celebrates 40 Years of Continuous Democracy",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 2023,
+        "label": "Hun Manet Succeeds Father Hun Sen as Prime Minister",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 2023,
+        "label": "Kem Sokha Convicted of Treason, Sentenced to 27 Years",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2023,
+        "label": "Joseph Boakai Defeats Weah in Presidential Runoff \u2014 Second Peaceful Transfer of Power",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2023,
+        "label": "Post-Election APC Boycott and Political Crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2022,
+        "label": "General Elections \u2014 Be\u0107irovi\u0107 Defeats Dodik for Bosniak Presidency Seat",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2022,
+        "label": "Hamdok Resigns; Political Deadlock and Human Rights Crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 2022,
+        "label": "Hassan Opens Political Space \u2014 Opposition Rallies Permitted",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2019,
+        "label": "Reiwa Era Begins as Emperor Naruhito Ascends Throne",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2019,
+        "label": "Bougainville Independence Referendum Returns 97.7 Percent Yes Vote",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2019,
+        "label": "Sudan Revolution \u2014 Bashir Overthrown After 30 Years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 2018,
+        "label": "Velvet Revolution Forces Sargsyan Resignation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 2018,
+        "label": "CPP Wins All 125 Parliamentary Seats; EU Initiates EBA Withdrawal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 2018,
+        "label": "RENAMO Leader Afonso Dhlakama Dies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 2017,
+        "label": "Supreme Court Dissolves Main Opposition Party CNRP",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2017,
+        "label": "Nineteenth Party Congress \u2014 Xi Thought enshrined in constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2017,
+        "label": "First Peaceful Electoral Transfer of Power: Jeenbekov Succeeds Atambayev",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2017,
+        "label": "Kyrgyzstan Becomes Leading Central Asian Democracy by OSCE Standards",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2017,
+        "label": "George Weah Wins Presidential Election \u2014 Peaceful Transfer of Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2014,
+        "label": "Transitional Military Government Quickly Yields to Civilian Council",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 2014,
+        "label": "ECCC Convicts Nuon Chea and Khieu Samphan of Crimes Against Humanity",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 2013,
+        "label": "Disputed Elections Trigger Largest Opposition Protests in Years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2013,
+        "label": "First Democratic Transfer of Power in Pakistan's History",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2012,
+        "label": "End of Supervised Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 2012,
+        "label": "Lugo Impeached in 'Parliamentary Coup'",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 2012,
+        "label": "Macky Sall Defeats Wade in Presidential Runoff",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 2012,
+        "label": "Federal Government of Somalia Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2011,
+        "label": "January 25 Revolution Overthrows Mubarak",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2011,
+        "label": "Ellen Johnson Sirleaf Awarded Nobel Peace Prize",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 2011,
+        "label": "Thein Sein Launches Genuine Reform Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2011,
+        "label": "South Sudan Independence Declared \u2014 World's Newest Nation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2011,
+        "label": "South Sudan Independence Referendum \u2014 98.8% Vote Yes; Republic of South Sudan Proclaimed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2011,
+        "label": "Ben Ali Flees \u2014 Revolution Succeeds",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2011,
+        "label": "Ennahda Returns from Exile \u2014 Ghannouchi Welcomed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2011,
+        "label": "GCC Transition Agreement Transfers Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2010,
+        "label": "Post-Election Government Formation Crisis \u2014 15 Months Without Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 2010,
+        "label": "Duch Convicted of Crimes Against Humanity by ECCC",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 2010,
+        "label": "Senegal Joins African Peer Review Mechanism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2009,
+        "label": "FNL disarms, registers as political party",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 2009,
+        "label": "FMLN's Mauricio Funes Wins Presidency, Ending ARENA Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2009,
+        "label": "Democratic Party of Japan Ends LDP Dominance",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2009,
+        "label": "Kurdish Opening Initiative Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2008,
+        "label": "Kosovo Declares Independence \u2014 February 17",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 2008,
+        "label": "240-Year Shah Monarchy Abolished \u2014 Republic Declared",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2008,
+        "label": "Elections End Musharraf Era \u2014 PPP and PML-N Win",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 2006,
+        "label": "King Jigme Singye Wangchuck Abdicates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 2005,
+        "label": "Draft Constitution Published for National Consultation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2005,
+        "label": "Koizumi Wins Postal Privatization Landslide Election",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2005,
+        "label": "Tulip Revolution Topples Akayev After Disputed Parliamentary Elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2005,
+        "label": "Roza Otunbayeva Becomes Key Revolution Leader and Later First Female Head of State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2005,
+        "label": "Ellen Johnson Sirleaf Elected \u2014 First Female Head of State in Africa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 2004,
+        "label": "King Sihanouk Abdicates; Norodom Sihamoni Becomes King",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 2004,
+        "label": "Gayoom permits multi-party system under domestic and international pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 2004,
+        "label": "Nujoma Does Not Seek Fourth Term \u2014 Pohamba Nominated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2004,
+        "label": "Orange Revolution: Fraudulent Election Overturned",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2003,
+        "label": "Transitional Government Installed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 2003,
+        "label": "Maldivian Democratic Party founded in exile",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2002,
+        "label": "Emergency Loya Jirga selects transitional government under Karzai",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2002,
+        "label": "Independence restored \u2014 Timor-Leste becomes sovereign state",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 2001,
+        "label": "Khmer Rouge Tribunal Law Passed; ECCC Framework Created",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2001,
+        "label": "People Power II \u2014 Estrada Ousted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 2000,
+        "label": "Democratic Transition \u2014 Opposition Wins, Mesi\u0107 Elected President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2000,
+        "label": "Vicente Fox Wins Presidency \u2014 PRI's Seventy-One-Year Rule Ends",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 2000,
+        "label": "Abdoulaye Wade Defeats Diouf in Historic Democratic Transition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 2000,
+        "label": "Bulldozer Revolution \u2014 Milo\u0161evi\u0107 Ousted After Disputed Election",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2000,
+        "label": "Damascus Spring: Brief Political Liberalization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1999,
+        "label": "Macau handover to China",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1999,
+        "label": "President Tu\u0111man Dies \u2014 Democratic Transition Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1999,
+        "label": "East Timor independence referendum and post-ballot militia violence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1999,
+        "label": "Nigeria Returns to Civilian Democracy \u2014 Obasanjo Elected President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1999,
+        "label": "US Forces Depart; Former Canal Zone Redeveloped",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1999,
+        "label": "MDC Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1998,
+        "label": "Reformasi \u2014 democratic transition begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1998,
+        "label": "Abacha Dies \u2014 Abdulsalami Initiates Genuine Transition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 1998,
+        "label": "Suharto's fall opens window for self-determination",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1997,
+        "label": "Hun Sen's Violent Coup Ends Power-Sharing with FUNCINPEC",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1997,
+        "label": "Hong Kong handover to China",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1997,
+        "label": "Fall of Mobutu \u2014 AFDL Takes Kinshasa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1997,
+        "label": "Alternance \u2014 Opposition Leader Becomes Prime Minister",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1997,
+        "label": "New Democratic Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1996,
+        "label": "First Post-War Elections Institutionalize Ethnic Divisions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1996,
+        "label": "Senior Khmer Rouge Leader Ieng Sary Defects with 10,000 Troops",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bh",
+        "country_name": "Bahrain",
+        "year": 1994,
+        "label": "Popular Petition Demands Restoration of 1973 Parliament",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1994,
+        "label": "EPLF Transforms into PFDJ",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1994,
+        "label": "Ernesto Perez Balladares Elected; Military Abolition Enshrined",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1994,
+        "label": "Nelson Mandela Inaugurated as President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1993,
+        "label": "UNTAC Elections Produce FUNCINPEC Victory; Monarchy Restored",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1993,
+        "label": "Eritrean Independence Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1993,
+        "label": "State of Eritrea Proclaimed \u2014 May 24",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1993,
+        "label": "Reina Wins Presidency on Anti-Corruption and Human Rights Platform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1993,
+        "label": "LDP's 38-Year Rule Ends: Coalition Government Forms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1992,
+        "label": "Bosnian Independence Referendum and Declaration of Sovereignty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1992,
+        "label": "Kurdish Regional Government Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1992,
+        "label": "Political Parties Legalized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1992,
+        "label": "White Referendum Endorses Negotiations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1991,
+        "label": "Soviet Union collapses ending USSR support for Najibullah",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 1991,
+        "label": "Armenia Declares Independence; 99% Vote Yes in Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "az",
+        "country_name": "Azerbaijan",
+        "year": 1991,
+        "label": "Azerbaijan Declares Independence Following Soviet Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 1991,
+        "label": "Belarus declares independence from the Soviet Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1991,
+        "label": "Sihanouk Returns to Cambodia After 13 Years of Exile",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1991,
+        "label": "Sovereign National Conference and Tshisekedi Premier",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1991,
+        "label": "EPLF Liberates Asmara",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1991,
+        "label": "National Charter Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 1991,
+        "label": "Kyrgyzstan Declares Independence from the Soviet Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 1991,
+        "label": "Latvia Restores Full Independence After August Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 1991,
+        "label": "National Conference Charts Path to Multi-Party Democracy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 1991,
+        "label": "Sovereign National Conference Opens Multiparty Transition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1991,
+        "label": "Boris Yeltsin elected President of Russia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1991,
+        "label": "Communist Party of Soviet Union suspended",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1991,
+        "label": "Baltic states recognized as independent by USSR",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1991,
+        "label": "Soviet Union formally dissolves",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1991,
+        "label": "Letter of Demands \u2014 Reform Petitions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1991,
+        "label": "CODESA Negotiations Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 1991,
+        "label": "Ukraine Declares Independence from the Soviet Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 1991,
+        "label": "Uzbekistan Declares Independence from the Soviet Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 1990,
+        "label": "Student Protests Trigger End of One-Party Communist Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 1990,
+        "label": "MPLA Abandons Marxism-Leninism and Begins Peace Talks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 1990,
+        "label": "Mass Uprising Ousts General Ershad",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 1990,
+        "label": "Belarus declares sovereignty within the USSR",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1990,
+        "label": "Bosnia Holds First Multi-Party Elections \u2014 Ethnic Parties Dominate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1990,
+        "label": "Roundtable Talks Produce Agreement on Free Elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1990,
+        "label": "Mobutu Announces Multi-Party Transition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1990,
+        "label": "National Commission for Democracy Consultations Open Path to Multiparty Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 1990,
+        "label": "Multi-Party Democracy Legalized After Three Decades of Single-Party Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 1990,
+        "label": "Latvian Supreme Soviet Declares Transition to Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 1990,
+        "label": "Lithuania Declares Independence from the Soviet Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 1990,
+        "label": "New Constitution Establishes Multiparty Democracy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 1990,
+        "label": "Namibia Achieves Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 1990,
+        "label": "King Birendra Restores Democracy and Lifts Party Ban",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1990,
+        "label": "Walesa Elected President \u2014 Solidarity Era Peaks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1990,
+        "label": "Russian SFSR declares sovereignty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1990,
+        "label": "Lithuania declares independence from Soviet Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 1990,
+        "label": "Public Against Violence movement wins first free elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1990,
+        "label": "Mandela Released \u2014 ANC and PAC Unbanned",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1990,
+        "label": "Nyerere Calls for Multiparty Democracy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1990,
+        "label": "Pro-Democracy Movement Forces Multi-Party Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1990,
+        "label": "One-Party State Attempt Abandoned",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1989,
+        "label": "Zhivkov Removed from Power After 35-Year Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1989,
+        "label": "PRK Renames Itself State of Cambodia, Abandons Marxism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1989,
+        "label": "Patricio Aylwin Wins Election Ending Military Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1989,
+        "label": "Croatian Democratic Union Founded by Franjo Tu\u0111man",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1989,
+        "label": "Velvet Revolution: Communist Regime Peacefully Collapses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1989,
+        "label": "Worker's Party of Ethiopia dissolved as Soviet bloc collapses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1989,
+        "label": "Imre Nagy reburied in state ceremony; Hungary opens border with Austria",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1989,
+        "label": "National Roundtable negotiations produce peaceful democratic transition framework",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1989,
+        "label": "PCI Dissolves and Reinvents as Democratic Left After Berlin Wall Falls",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1989,
+        "label": "Emperor Hirohito Dies, Heisei Era Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 1989,
+        "label": "FRELIMO Abandons Marxism-Leninism at Fifth Congress",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 1989,
+        "label": "Rodr\u00edguez Wins Transitional Election; ABC Color Reopens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1989,
+        "label": "Round Table Agreement and June 1989 Elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1989,
+        "label": "Baltic states begin independence movements",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1989,
+        "label": "Fall of Berlin Wall \u2014 Eastern Bloc collapse begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1989,
+        "label": "Yemen Socialist Party Adopts Reform Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 1988,
+        "label": "Belarusian Popular Front founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1988,
+        "label": "Rigged Elections and Judicial Independence Destroyed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1988,
+        "label": "Cuauht\u00e9moc C\u00e1rdenas Forms the PRD",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1988,
+        "label": "Aung San Suu Kyi Emerges as Opposition Leader",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1988,
+        "label": "Two-Party Transition System Imposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 1988,
+        "label": "Shankar Civilian Government Inaugurated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1988,
+        "label": "Ben Ali's National Pact and Ennahda's Legalization Bid",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1987,
+        "label": "Pope John Paul II Visits Chile; Political Parties Re-Legalized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1987,
+        "label": "Gorbachev Visits Prague, Refuses to Back Czech Hardliners",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1987,
+        "label": "Lakitelek meeting founds Hungarian Democratic Forum as first independent party",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1987,
+        "label": "Cuauht\u00e9moc C\u00e1rdenas Breaks with the PRI \u2014 Democratic Current",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1987,
+        "label": "Boris Yeltsin dismissed from Politburo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 1987,
+        "label": "June Democracy Movement Restores Direct Presidential Elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 1987,
+        "label": "Martial Law Lifted After 38 Years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1986,
+        "label": "Babrak Karmal replaced by Mohammad Najibullah as Afghan leader",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1986,
+        "label": "Serbian Academy Memorandum Alarms Bosnian Leadership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 1986,
+        "label": "Jean-Claude Duvalier flees Haiti, ending 29-year family dictatorship",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1986,
+        "label": "Benazir Bhutto Returns from Exile",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1986,
+        "label": "People Power Revolution Ousts Marcos",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1986,
+        "label": "Corazon Aquino Becomes President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 1986,
+        "label": "Democratic Progressive Party Founded Illegally",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 1985,
+        "label": "Gorbachev's Glasnost and Perestroika Reach Soviet Armenia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1985,
+        "label": "Tancredo Neves Wins Indirect Election, Dies Before Inauguration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 1985,
+        "label": "Brunei National Democratic Party Legalized as First Political Party",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1985,
+        "label": "Hun Sen Consolidates Sole Control as Prime Minister",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1985,
+        "label": "National Accord for Transition to Democracy Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1985,
+        "label": "Gorbachev's Reforms Watched Anxiously in Prague",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1985,
+        "label": "New Democratic Constitution Enacted and Civilian Elections Held",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1985,
+        "label": "Non-Party Elections and Controlled Return to Civilian Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1985,
+        "label": "Mikhail Gorbachev becomes General Secretary",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1985,
+        "label": "Nyerere Voluntarily Hands Over Power to Mwinyi",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1985,
+        "label": "Democracy Restored; Political Prisoners Released",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 1984,
+        "label": "Brunei Achieves Full Independence from Britain",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1984,
+        "label": "Ethiopia hosts Workers' Party founding congress",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1984,
+        "label": "Parliament Reconvened After Eight Years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1984,
+        "label": "Andropov dies, Chernenko becomes General Secretary",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1984,
+        "label": "Naval Club Pact Negotiates Transition Terms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1983,
+        "label": "Return to Democracy \u2014 Ra\u00fal Alfons\u00edn Elected President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1982,
+        "label": "Democratic Restoration: Siles Zuazo Ends Military Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1982,
+        "label": "Leonid Brezhnev dies after 18 years in power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1982,
+        "label": "Yuri Andropov becomes General Secretary",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1982,
+        "label": "Internal Party Elections Mark Opening of Transition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1981,
+        "label": "Resolution on CCP History \u2014 Mao assessed as '70% correct'",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1981,
+        "label": "Honduras Returns to Civilian Rule as Suazo C\u00f3rdova Wins Elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1981,
+        "label": "National Assembly Restored",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1980,
+        "label": "Tito Dies \u2014 Bosnia Enters Collective Presidency Era",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1980,
+        "label": "Alexei Kosygin resigns as Soviet Prime Minister",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 1980,
+        "label": "Senghor Voluntarily Transfers Power to Diouf",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1980,
+        "label": "Zimbabwe Independence \u2014 Mugabe Becomes Prime Minister",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1979,
+        "label": "Babrak Karmal installed as Afghan leader by Soviets",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1979,
+        "label": "Multi-Party System Restored",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1979,
+        "label": "Shah Leaves Iran; Islamic Revolution Triumphs",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 1979,
+        "label": "Sandinista Revolution Overthrows Somoza Dynasty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1979,
+        "label": "Second Republic Elections \u2014 Shagari Becomes President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1979,
+        "label": "Abd al-Fattah Ismail Becomes PDRY President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1978,
+        "label": "Democratic Republic of Afghanistan declared under Taraki",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1978,
+        "label": "PDPA launches radical land reform and bans religion in public life",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1978,
+        "label": "Parcham faction purged; Afghan-Soviet Friendship Treaty signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1978,
+        "label": "AI-5 Revoked as Geisel Continues Liberalization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1978,
+        "label": "Worker's Party of Ethiopia precursor organizations form",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1977,
+        "label": "Janata Party wins \u2014 first non-Congress government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1977,
+        "label": "Communist Party Legalised, Completing Democratic Opening",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1976,
+        "label": "PDPA Khalq and Parcham factions reconcile under Soviet pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1976,
+        "label": "Democratic Kampuchea Established; Year Zero Policy Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1976,
+        "label": "Mao Zedong dies and Gang of Four arrested",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1976,
+        "label": "Egyptian Political Parties Reestablished",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1976,
+        "label": "Brezhnev becomes Soviet head of state",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1976,
+        "label": "Law for Political Reform Dismantles Francoist Cortes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1976,
+        "label": "Socialist Republic of Vietnam Formally Proclaimed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 1975,
+        "label": "Angola Declares Independence Under MPLA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1975,
+        "label": "Khmer Rouge Captures Phnom Penh and Orders Mass Evacuation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1975,
+        "label": "Ethiopia's Derg Declares Socialism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1975,
+        "label": "Suriname Gains Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 1975,
+        "label": "Papua New Guinea Gains Independence from Australia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1975,
+        "label": "Franco Dies, Ending 36 Years of Dictatorship",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 1975,
+        "label": "Independence from the Netherlands",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 1975,
+        "label": "Fretilin unilateral declaration of independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 1974,
+        "label": "Carnation Revolution Triggers Angolan Decolonization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1974,
+        "label": "General Geisel Begins Political Liberalization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1974,
+        "label": "End of National Front Power-Sharing Arrangement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1974,
+        "label": "Ethiopia declares socialism: 'Ethiopia Tikdem'",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1974,
+        "label": "Metapolitefsi: Greece transitions to democracy under returning Karamanlis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 1974,
+        "label": "Portugal's Carnation Revolution Ends Colonial Wars",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1974,
+        "label": "Carnation Revolution \u2014 April 25 Ends Dictatorship",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 1974,
+        "label": "Controlled Multiparty System Introduced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1974,
+        "label": "Portuguese Colonial Collapse Changes Regional Balance",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 1974,
+        "label": "Portuguese Carnation Revolution opens path to decolonization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1973,
+        "label": "PAIGC Declares Guinea-Bissau Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1972,
+        "label": "Lon Nol Proclaims Khmer Republic with Sweeping Powers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1971,
+        "label": "General Lanusse Announces Transition to Democracy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1971,
+        "label": "Lin Biao incident \u2014 designated successor dies fleeing China",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 1971,
+        "label": "United Arab Emirates Established \u2014 December 2",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1970,
+        "label": "Lon Nol Coup Overthrows Sihanouk; Civil War Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1970,
+        "label": "Sihanouk Forms Government-in-Exile Allied with Khmer Rouge",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1970,
+        "label": "People's Democratic Republic of Yemen Proclaimed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 1969,
+        "label": "Lamizana Restores Partial Civilian Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1969,
+        "label": "Ethiopian student movement adopts Marxist ideology",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1968,
+        "label": "Bosnian Muslims Formally Recognized as a Distinct Nation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1968,
+        "label": "Prague Spring: Dub\u010dek Launches 'Socialism with a Human Face'",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 1968,
+        "label": "Independence from Britain Under Seewoosagur Ramgoolam",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1968,
+        "label": "Power Struggles in NLF Leadership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1967,
+        "label": "British Withdrawal from Aden \u2014 Independence of South Yemen",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1966,
+        "label": "Removal of Rankovi\u0107 Opens Space for Bosnian Muslims",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 1966,
+        "label": "Botswana Independence \u2014 Seretse Khama Becomes First President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1966,
+        "label": "Cultural Revolution officially launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1966,
+        "label": "Twenty-Third Party Congress restores conservative norms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1966,
+        "label": "Britain Announces Withdrawal from Aden by 1968",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1965,
+        "label": "PDPA splits into Khalq and Parcham factions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1965,
+        "label": "Cultural Revolution ideological preparations begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 1964,
+        "label": "Malawi Independence \u2014 Banda Becomes Prime Minister",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1964,
+        "label": "Khrushchev ousted in Politburo coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1964,
+        "label": "Brezhnev becomes Communist Party General Secretary",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1964,
+        "label": "Zambia Independence \u2014 Kaunda Becomes First President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1963,
+        "label": "Kenya Achieves Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1963,
+        "label": "Zanzibar Achieves Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1963,
+        "label": "Central African Federation Dissolved",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1962,
+        "label": "Algerian independence referendum \u2014 99.7% vote yes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1962,
+        "label": "Burundi independence from Belgium",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1962,
+        "label": "Full Annexation of Eritrea Completed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1962,
+        "label": "New York Agreement transfers West Irian to Indonesia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 1962,
+        "label": "Jamaica Achieves Independence from Britain",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 1962,
+        "label": "FRELIMO Founded in Dar es Salaam",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1962,
+        "label": "Rwanda achieves independence from Belgium",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 1962,
+        "label": "Independence from Britain",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1962,
+        "label": "Uganda Independence from Britain",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1961,
+        "label": "Ali Amini Appointed Prime Minister; Pressure for Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1961,
+        "label": "Kenyatta Released from Detention",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1961,
+        "label": "Independence from Britain Declared",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 1961,
+        "label": "Panchayat System of Governance Introduced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1961,
+        "label": "Stalin's body removed from Lenin-Stalin Mausoleum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1961,
+        "label": "Rwandan monarchy abolished; republic proclaimed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1961,
+        "label": "Sierra Leone Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1961,
+        "label": "Syria Returns to Parliamentary Government After Secession",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1961,
+        "label": "Tanganyika Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1961,
+        "label": "Aden Joins Federation of South Arabia Negotiations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 1960,
+        "label": "Upper Volta Gains Independence from France",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1960,
+        "label": "Quiet Revolution Transforms Quebec Society",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1960,
+        "label": "Independence from Belgium",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 1960,
+        "label": "Madagascar Achieves Full Independence from France",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 1960,
+        "label": "SWAPO Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 1960,
+        "label": "Niger Independence and Hamani Diori Presidency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1960,
+        "label": "Nigerian Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 1960,
+        "label": "Independence from France and Mali Federation Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 1960,
+        "label": "Independence of the Somali Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1959,
+        "label": "De Gaulle offers self-determination to Algeria",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1959,
+        "label": "National Union of Popular Forces Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1959,
+        "label": "Federation of Arab Emirates of the South Formally Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1958,
+        "label": "Fall of the French Fourth Republic; de Gaulle returns to power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1958,
+        "label": "FLN establishes Gouvernement Provisoire de la R\u00e9publique Alg\u00e9rienne (GPRA)",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1958,
+        "label": "Great Leap Forward launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1958,
+        "label": "National Front Inaugurated: End of La Violencia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 1958,
+        "label": "Guinea Votes NO \u2014 Sekou Toure Rejects de Gaulle's French Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 1958,
+        "label": "Madagascar Votes to Join French Community as Autonomous Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1958,
+        "label": "Istiqlal Party Splits",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1958,
+        "label": "Khrushchev becomes Soviet Premier",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1957,
+        "label": "Ghana Declares Independence as Africa's First Sub-Saharan Free Nation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1957,
+        "label": "Anti-Party Group plot against Khrushchev defeated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1957,
+        "label": "Federation of South Arabia Takes Shape",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1956,
+        "label": "Soummam Congress shapes FLN political-military structure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1956,
+        "label": "Khrushchev's Secret Speech Accelerates Bulgarian De-Stalinization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1956,
+        "label": "British Troops Withdraw from Suez Canal Zone",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1956,
+        "label": "Suez Crisis Accelerates Kuwait's Push for Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 1956,
+        "label": "Loi Cadre Grants French Sudan Internal Self-Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1956,
+        "label": "Morocco Gains Independence from France",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1956,
+        "label": "Spain Relinquishes Northern Protectorate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1956,
+        "label": "Polish October \u2014 Gomulka Returns, Soviet Confrontation Averted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1956,
+        "label": "Khrushchev delivers Secret Speech denouncing Stalin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 1956,
+        "label": "Sudan Independence \u2014 South Excluded from Power-Sharing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1956,
+        "label": "Sudanese Independence Proclaimed and Foreign Policy Alignment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1956,
+        "label": "Tunisia Gains Full Independence from France",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1955,
+        "label": "Sihanouk Abdicates Throne to Enter Politics via Sangkum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1955,
+        "label": "Goa liberation movement intensifies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1955,
+        "label": "Liberal Democratic Party Founded, Begins 38-Year Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1955,
+        "label": "Mohammed V Returns from Exile",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1955,
+        "label": "Khrushchev consolidates power, Malenkov ousted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1955,
+        "label": "Franco-Tunisian Convention Grants Internal Autonomy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1955,
+        "label": "Federation of Arab Amirates of the South Proposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1954,
+        "label": "Front de Lib\u00e9ration Nationale (FLN) founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1954,
+        "label": "Anglo-Egyptian Agreement on Suez Canal Withdrawal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1954,
+        "label": "France cedes Pondicherry to India",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1954,
+        "label": "Al-Azhari Government and Sudanization of Civil Service",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1954,
+        "label": "Pierre Mendes France Promises Internal Autonomy to Tunisia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1954,
+        "label": "Bourguiba Released from Exile to Lead Negotiations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1954,
+        "label": "Geneva Accords Partition Vietnam at 17th Parallel",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 1953,
+        "label": "Death of Stalin and Political Thaw in Soviet Armenia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1953,
+        "label": "Cambodia Achieves Full Independence from France",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1953,
+        "label": "Stalin's death triggers political thaw; Imre Nagy appointed Prime Minister",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1953,
+        "label": "Sultan Mohammed V Deposed and Exiled to Madagascar",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1953,
+        "label": "Joseph Stalin dies in Moscow",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1953,
+        "label": "Lavrentiy Beria arrested and executed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1953,
+        "label": "Doctors' Plot charges dropped after Stalin's death",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1953,
+        "label": "Anglo-Egyptian Agreement on Sudanese Self-Governance Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1953,
+        "label": "Aden Federal Proposals Introduced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1953,
+        "label": "Federation of Rhodesia and Nyasaland Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1952,
+        "label": "Ferhat Abbas advocates for autonomous Algeria within French union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1952,
+        "label": "Bolivian National Revolution of April 1952",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1952,
+        "label": "Federation with Ethiopia Formally Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1952,
+        "label": "Nineteenth Congress of Soviet Communist Party",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1952,
+        "label": "Egyptian Revolution Opens Path to Sudanese Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1951,
+        "label": "Egypt Abrogates 1936 Anglo-Egyptian Treaty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1951,
+        "label": "Libyan Independence Proclaimed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1951,
+        "label": "French Pressure Forces Sultan to Condemn Nationalism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 1951,
+        "label": "Mozambique Reclassified as Overseas Province",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 1951,
+        "label": "End of Rana Oligarchy and Return of Democracy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1951,
+        "label": "Egypt Abrogates 1899 Condominium Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1951,
+        "label": "Viet Minh Refounds as Vietnamese Workers' Party",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1950,
+        "label": "Egypt Demands British Withdrawal from Suez Canal Zone",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1950,
+        "label": "UN Federal Resolution on Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1950,
+        "label": "British Administration Winds Down",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1950,
+        "label": "Republic of Indonesia formally proclaimed as unitary state",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1950,
+        "label": "Parliamentary democracy experiment begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1950,
+        "label": "Istiqlal Party Intensifies Independence Campaign",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 1950,
+        "label": "Somali Youth League Dominates Pre-Independence Politics",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1950,
+        "label": "Anglo-Egyptian Condominium Governance and Nationalist Movements",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1950,
+        "label": "British Aden Protectorate Administration Expands",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1949,
+        "label": "Indonesia Independence Recognised Under Dutch Pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1903,
+        "label": "Panama Separates from Colombia with US Backing",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 376
+  }
+}

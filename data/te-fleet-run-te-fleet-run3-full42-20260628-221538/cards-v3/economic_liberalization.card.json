@@ -1,0 +1,2089 @@
+{
+  "recipe_id": "economic_liberalization",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "International Tension",
+  "description_compelling": "A government opens markets \u2014 privatizations, deregulation, capital-account liberalization, tariff cuts \u2014 usually as a coherent policy program with foreign backing or aspiration. Trade openness, FDI inflows, and regulatory-quality scores climb steadily. Frequent in post-socialist transitions, in IMF-program countries, and in middle-income states pivoting toward integration.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6798312434079457,
+    "ci95_lo": 0.5940469362978328,
+    "ci95_hi": 0.7622567666687257,
+    "ci80_lo": 0.625,
+    "ci80_hi": 0.7339312588341731,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "FI.RES.TOTL.CD",
+      "v2x_civlib"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "FI.RES.TOTL.CD",
+        "name": null
+      },
+      {
+        "code": "v2x_civlib",
+        "name": null
+      }
+    ],
+    "chosen_window": 21,
+    "final_global_auc": 0.6798312434079457,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "FI.RES.TOTL.CD",
+        "window": 21,
+        "auc": 0.6557482714168522,
+        "lift_over_previous": 0.1557482714168522,
+        "selected_after": [
+          "FI.RES.TOTL.CD"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2x_civlib",
+        "window": 21,
+        "auc": 0.6798312434079457,
+        "lift_over_previous": 0.024082971991093438,
+        "selected_after": [
+          "FI.RES.TOTL.CD",
+          "v2x_civlib"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2x_partip",
+        "window": 7,
+        "auc": 0.6812264658418504,
+        "lift_over_previous": 0.0013952224339047747,
+        "selected_after": [
+          "FI.RES.TOTL.CD",
+          "v2x_civlib",
+          "v2x_partip"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 88,
+    "n_pos_survive": 53,
+    "n_neg_total": 264,
+    "n_neg_survive": 161,
+    "pos_coverage": 0.6022727272727273,
+    "neg_coverage": 0.6098484848484849,
+    "n_countries_survive": 47,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 76,
+      "loco_auc": 0.6750841750841751,
+      "ece": 0.17315762162539422,
+      "ece_ci95_lo": 0.12285822967310912,
+      "ece_ci95_hi": 0.2838902061147995,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 23,
+          "mean_predicted": 0.034035568783545626,
+          "mean_actual": 0.13043478260869565
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 16,
+          "mean_predicted": 0.14460727525874972,
+          "mean_actual": 0.1875
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 9,
+          "mean_predicted": 0.24988146126270294,
+          "mean_actual": 0.2222222222222222
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 4,
+          "mean_predicted": 0.3486717864871025,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 5,
+          "mean_predicted": 0.4512860834598541,
+          "mean_actual": 0.8
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.5474810361862182,
+          "mean_actual": 0.8
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 7,
+          "mean_predicted": 0.6643216609954834,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 4,
+          "mean_predicted": 0.7770682573318481,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 2,
+          "mean_predicted": 0.8560835421085358,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.925411581993103,
+          "mean_actual": 0.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5123282337040163,
+      "loco_auc_ci95_hi": 0.7935132918859027
+    },
+    "mid-tier": {
+      "n": 40,
+      "loco_auc": 0.6344086021505376,
+      "ece": 0.22053148280829193,
+      "ece_ci95_lo": 0.11858638859819622,
+      "ece_ci95_hi": 0.3457166329422034,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 17,
+          "mean_predicted": 0.051307691809009105,
+          "mean_actual": 0.17647058823529413
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 9,
+          "mean_predicted": 0.144872291220559,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 3,
+          "mean_predicted": 0.2495296448469162,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 7,
+          "mean_predicted": 0.3389342129230499,
+          "mean_actual": 0.5714285714285714
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 2,
+          "mean_predicted": 0.46378734707832336,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 1,
+          "mean_predicted": 0.7475206255912781,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 1,
+          "mean_predicted": 0.8356725573539734,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.390625,
+      "loco_auc_ci95_hi": 0.8439169735030669
+    },
+    "stable-democracy": {
+      "n": 98,
+      "loco_auc": 0.6782296650717703,
+      "ece": 0.15649591571632393,
+      "ece_ci95_lo": 0.0985192727128861,
+      "ece_ci95_hi": 0.23748804581023716,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 49,
+          "mean_predicted": 0.04414605191547652,
+          "mean_actual": 0.14285714285714285
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 16,
+          "mean_predicted": 0.1518720011226833,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 12,
+          "mean_predicted": 0.2425442561507225,
+          "mean_actual": 0.08333333333333333
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 4,
+          "mean_predicted": 0.36161287128925323,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 6,
+          "mean_predicted": 0.43973590433597565,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.6508250534534454,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 2,
+          "mean_predicted": 0.7291605472564697,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 5,
+          "mean_predicted": 0.8470987677574158,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 2,
+          "mean_predicted": 0.909488171339035,
+          "mean_actual": 0.5
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5262964444908409,
+      "loco_auc_ci95_hi": 0.8011332644965216
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-29T03:54:03.671470+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5404,
+  "stability_diagnostic": {
+    "fold_variance": 0.13279764912767827,
+    "fold_auc_mean": 0.6441496598639456,
+    "label": "HIGH",
+    "per_country_loco_auc": {
+      "Argentina": 0.8,
+      "Bahrain": 0.75,
+      "Bolivia": 0.6666666666666666,
+      "Brazil": 1.0,
+      "Chile": 1.0,
+      "Colombia": 1.0,
+      "Egypt": 0.0,
+      "Ethiopia": 1.0,
+      "Ghana": 0.6666666666666666,
+      "Honduras": 0.6666666666666666,
+      "Hungary": 0.0,
+      "Iceland": 0.16666666666666666,
+      "Iran": 0.0,
+      "Jamaica": 0.75,
+      "Japan": 0.7142857142857143,
+      "Kenya": 1.0,
+      "Madagascar": 0.75,
+      "Mauritius": 0.9166666666666666,
+      "Morocco": 0.8333333333333334,
+      "New Zealand": 0.75,
+      "Nicaragua": 0.25,
+      "Peru": 0.0,
+      "Philippines": 0.75,
+      "Qatar": 0.7,
+      "Saudi Arabia": 1.0,
+      "Singapore": 1.0,
+      "South Korea": 0.5,
+      "Sweden": 0.8571428571428571,
+      "Switzerland": 1.0,
+      "Tanzania": 1.0,
+      "Uganda": 0.0,
+      "United Kingdom": 0.0,
+      "United States": 0.8571428571428571,
+      "Uruguay": 1.0,
+      "Zambia": 0.2
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7419,
+    "cohort_loco_floor": 0.6819,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 88,
+  "n_negatives": 264,
+  "walked_at_utc": "2026-06-29T03:55:16.490297+00:00",
+  "elapsed_seconds": 1414.176062822342,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/economic_liberalization/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Philippines",
+          "Belgium",
+          "Sweden",
+          "Egypt",
+          "Kazakhstan",
+          "Bangladesh",
+          "Iraq",
+          "Kuwait"
+        ],
+        "country_isos": [
+          "ph",
+          "be",
+          "se",
+          "eg",
+          "kz",
+          "bd",
+          "iq",
+          "kw"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 8,
+        "countries": [
+          "Uzbekistan",
+          "Denmark",
+          "The Democratic Republic of the Congo",
+          "Oman",
+          "Afghanistan",
+          "Venezuela",
+          "Nigeria",
+          "Spain"
+        ],
+        "country_isos": [
+          "uz",
+          "dk",
+          "cd",
+          "om",
+          "af",
+          "ve",
+          "ng",
+          "es"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 8,
+        "countries": [
+          "Qatar",
+          "Peru",
+          "Bulgaria",
+          "Belarus",
+          "Hungary",
+          "Angola",
+          "Norway",
+          "Malaysia"
+        ],
+        "country_isos": [
+          "qa",
+          "pe",
+          "bg",
+          "by",
+          "hu",
+          "ao",
+          "no",
+          "my"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Chile",
+          "Lebanon",
+          "Tunisia",
+          "Netherlands",
+          "Colombia",
+          "South Africa",
+          "Argentina",
+          "Vietnam"
+        ],
+        "country_isos": [
+          "cl",
+          "lb",
+          "tn",
+          "nl",
+          "co",
+          "za",
+          "ar",
+          "vn"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 8,
+        "countries": [
+          "Canada",
+          "Iran",
+          "Pakistan",
+          "Romania",
+          "New Zealand",
+          "Uganda",
+          "Thailand",
+          "Libya"
+        ],
+        "country_isos": [
+          "ca",
+          "ir",
+          "pk",
+          "ro",
+          "nz",
+          "ug",
+          "th",
+          "ly"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 8,
+        "countries": [
+          "El Salvador",
+          "Mexico",
+          "Luxembourg",
+          "Sri Lanka",
+          "Turkiye",
+          "Ethiopia",
+          "Australia",
+          "Morocco"
+        ],
+        "country_isos": [
+          "sv",
+          "mx",
+          "lu",
+          "lk",
+          "tr",
+          "et",
+          "au",
+          "ma"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 8,
+        "countries": [
+          "Cameroon",
+          "Guinea",
+          "Czechia",
+          "Papua New Guinea",
+          "Azerbaijan",
+          "Syria",
+          "Djibouti",
+          "Myanmar"
+        ],
+        "country_isos": [
+          "cm",
+          "gn",
+          "cz",
+          "pg",
+          "az",
+          "sy",
+          "dj",
+          "mm"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 9,
+        "countries": [
+          "Switzerland",
+          "Armenia",
+          "Bhutan",
+          "Finland",
+          "Montenegro",
+          "Cabo Verde",
+          "Estonia",
+          "Ireland",
+          "Bahrain"
+        ],
+        "country_isos": [
+          "ch",
+          "am",
+          "bt",
+          "fi",
+          "me",
+          "cv",
+          "ee",
+          "ie",
+          "bh"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 8,
+        "countries": [
+          "Mozambique",
+          "Dominican Republic",
+          "Namibia",
+          "Mauritania",
+          "Kenya",
+          "Nepal",
+          "Saudi Arabia",
+          "Israel"
+        ],
+        "country_isos": [
+          "mz",
+          "do",
+          "na",
+          "mr",
+          "ke",
+          "np",
+          "sa",
+          "il"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 8,
+        "countries": [
+          "Iceland",
+          "Burundi",
+          "Madagascar",
+          "Zambia",
+          "Vanuatu",
+          "Liberia",
+          "Suriname",
+          "South Korea"
+        ],
+        "country_isos": [
+          "is",
+          "bi",
+          "mg",
+          "zm",
+          "vu",
+          "lr",
+          "sr",
+          "kr"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 8,
+        "countries": [
+          "Comoros",
+          "Tanzania",
+          "Singapore",
+          "Maldives",
+          "United Arab Emirates",
+          "Haiti",
+          "Indonesia",
+          "Lesotho"
+        ],
+        "country_isos": [
+          "km",
+          "tz",
+          "sg",
+          "mv",
+          "ae",
+          "ht",
+          "id",
+          "ls"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Jamaica",
+          "Sudan",
+          "Germany",
+          "Croatia",
+          "Gabon",
+          "Nicaragua",
+          "Tajikistan",
+          "North Macedonia"
+        ],
+        "country_isos": [
+          "jm",
+          "sd",
+          "de",
+          "hr",
+          "ga",
+          "ni",
+          "tj",
+          "mk"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 8,
+        "countries": [
+          "Malta",
+          "Barbados",
+          "Slovakia",
+          "Yemen",
+          "Solomon Islands",
+          "Poland",
+          "Ukraine",
+          "Kyrgyzstan"
+        ],
+        "country_isos": [
+          "mt",
+          "bb",
+          "sk",
+          "ye",
+          "sb",
+          "pl",
+          "ua",
+          "kg"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "Somalia",
+          "Honduras",
+          "Bolivia",
+          "China",
+          "Sierra Leone",
+          "Zimbabwe",
+          "Bosnia and Herzegovina",
+          "Central African Republic",
+          "Austria"
+        ],
+        "country_isos": [
+          "so",
+          "hn",
+          "bo",
+          "cn",
+          "sl",
+          "zw",
+          "ba",
+          "cf",
+          "at"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 8,
+        "countries": [
+          "Palestine",
+          "Slovenia",
+          "The Gambia",
+          "Greece",
+          "Hong Kong",
+          "Chad",
+          "Moldova",
+          "Portugal"
+        ],
+        "country_isos": [
+          "ps",
+          "si",
+          "gm",
+          "gr",
+          "hk",
+          "td",
+          "md",
+          "pt"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Mauritius",
+          "Seychelles",
+          "Timor-Leste",
+          "Eritrea",
+          "Paraguay",
+          "South Sudan",
+          "Eswatini",
+          "Georgia"
+        ],
+        "country_isos": [
+          "mu",
+          "sc",
+          "tl",
+          "er",
+          "py",
+          "ss",
+          "sz",
+          "ge"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 8,
+        "countries": [
+          "Cyprus",
+          "Italy",
+          "Sao Tome and Principe",
+          "Ghana",
+          "Rwanda",
+          "Laos",
+          "India",
+          "Jordan"
+        ],
+        "country_isos": [
+          "cy",
+          "it",
+          "st",
+          "gh",
+          "rw",
+          "la",
+          "in",
+          "jo"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 8,
+        "countries": [
+          "France",
+          "Latvia",
+          "Russia",
+          "Trinidad and Tobago",
+          "Lithuania",
+          "Algeria",
+          "Albania",
+          "Ecuador"
+        ],
+        "country_isos": [
+          "fr",
+          "lv",
+          "ru",
+          "tt",
+          "lt",
+          "dz",
+          "al",
+          "ec"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 8,
+        "countries": [
+          "Botswana",
+          "Costa Rica",
+          "Fiji",
+          "Guyana",
+          "Republic of the Congo",
+          "Mongolia",
+          "Malawi",
+          "United Kingdom"
+        ],
+        "country_isos": [
+          "bw",
+          "cr",
+          "fj",
+          "gy",
+          "cg",
+          "mn",
+          "mw",
+          "gb"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Cambodia",
+          "United States",
+          "Guatemala",
+          "Japan",
+          "Serbia",
+          "Brazil",
+          "Panama",
+          "Uruguay",
+          "Equatorial Guinea"
+        ],
+        "country_isos": [
+          "kh",
+          "us",
+          "gt",
+          "jp",
+          "rs",
+          "br",
+          "pa",
+          "uy",
+          "gq"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.2,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 163,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.0438,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.7174390804847832,
+      "b": 0.4876000034296579,
+      "c": 0.44242822736104,
+      "n_fit": 214,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 35,
+        "observed_rate": 0.08571428571428572
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 45,
+        "observed_rate": 0.2
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 49,
+        "observed_rate": 0.14285714285714285
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 67,
+        "observed_rate": 0.34328358208955223
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 18,
+        "observed_rate": 0.6111111111111112
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.05862855047996669,
+    "n_predictions": 214,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.17315762162539422,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 23,
+            "mean_predicted": 0.034035568783545626,
+            "mean_actual": 0.13043478260869565
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 16,
+            "mean_predicted": 0.14460727525874972,
+            "mean_actual": 0.1875
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 9,
+            "mean_predicted": 0.24988146126270294,
+            "mean_actual": 0.2222222222222222
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 4,
+            "mean_predicted": 0.3486717864871025,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 5,
+            "mean_predicted": 0.4512860834598541,
+            "mean_actual": 0.8
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 5,
+            "mean_predicted": 0.5474810361862182,
+            "mean_actual": 0.8
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 7,
+            "mean_predicted": 0.6643216609954834,
+            "mean_actual": 0.42857142857142855
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 4,
+            "mean_predicted": 0.7770682573318481,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 2,
+            "mean_predicted": 0.8560835421085358,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.925411581993103,
+            "mean_actual": 0.0
+          }
+        ],
+        "n": 76,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.22053148280829193,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 17,
+            "mean_predicted": 0.051307691809009105,
+            "mean_actual": 0.17647058823529413
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 9,
+            "mean_predicted": 0.144872291220559,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 3,
+            "mean_predicted": 0.2495296448469162,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 7,
+            "mean_predicted": 0.3389342129230499,
+            "mean_actual": 0.5714285714285714
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 2,
+            "mean_predicted": 0.46378734707832336,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 1,
+            "mean_predicted": 0.7475206255912781,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 1,
+            "mean_predicted": 0.8356725573539734,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 40,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.15649591571632393,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 49,
+            "mean_predicted": 0.04414605191547652,
+            "mean_actual": 0.14285714285714285
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 16,
+            "mean_predicted": 0.1518720011226833,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 12,
+            "mean_predicted": 0.2425442561507225,
+            "mean_actual": 0.08333333333333333
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 4,
+            "mean_predicted": 0.36161287128925323,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 6,
+            "mean_predicted": 0.43973590433597565,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.6508250534534454,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 2,
+            "mean_predicted": 0.7291605472564697,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 5,
+            "mean_predicted": 0.8470987677574158,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 2,
+            "mean_predicted": 0.909488171339035,
+            "mean_actual": 0.5
+          }
+        ],
+        "n": 98,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/economic_liberalization.scores.json",
+  "shape_points": [
+    0.2938516780378241,
+    0.31089517536652694,
+    0.32793867269522975,
+    0.3449821700239326,
+    0.3620256673526354,
+    0.3790691646813383,
+    0.3961126620100411,
+    0.41315615933874394,
+    0.4301996566674467,
+    0.4472431539961496,
+    0.4642866513248525,
+    0.4813301486535552
+  ],
+  "shap_importance_raw": {
+    "FI.RES.TOTL.CD": 3.5137906074523926,
+    "v2x_civlib": 1.5900979042053223
+  },
+  "shap_importance_normalized": {
+    "FI.RES.TOTL.CD": 0.688453636756876,
+    "v2x_civlib": 0.31154636324312407
+  },
+  "shap_direction_signs": {
+    "FI.RES.TOTL.CD": -1,
+    "v2x_civlib": -1
+  },
+  "per_feature_breakdown": {
+    "FI.RES.TOTL.CD": {
+      "last_z": 0.42344802618026733,
+      "mean_z": 0.5140854716300964,
+      "std_z": 0.5216448307037354,
+      "slope": 0.23206019401550293,
+      "accel": 0.4213807284832001,
+      "tertile1_mean": 0.5876107811927795,
+      "tertile2_mean": 0.16360673308372498,
+      "tertile3_mean": 0.6499537229537964
+    },
+    "v2x_civlib": {
+      "last_z": 0.1923867166042328,
+      "mean_z": 0.10806385427713394,
+      "std_z": 0.3283871114253998,
+      "slope": 0.14366813004016876,
+      "accel": 0.2991752326488495,
+      "tertile1_mean": 0.31976690888404846,
+      "tertile2_mean": 0.04665212705731392,
+      "tertile3_mean": 0.15199774503707886
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 21,
+    "indicators": [
+      {
+        "code": "FI.RES.TOTL.CD",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 55,
+        "shape": {
+          "mean": [
+            -0.6453,
+            -0.511,
+            -0.446,
+            -0.4294,
+            -0.3444,
+            -0.2863,
+            -0.2741,
+            -0.1064,
+            -0.0037,
+            0.0599,
+            0.1589,
+            0.1671,
+            0.1486,
+            0.0686,
+            0.3008,
+            0.386,
+            0.4781,
+            0.5515,
+            0.5425,
+            0.8527,
+            1.332
+          ],
+          "p25": [
+            -1.0231,
+            -0.852,
+            -0.7806,
+            -0.8037,
+            -0.7133,
+            -0.6789,
+            -0.6332,
+            -0.5935,
+            -0.5206,
+            -0.4524,
+            -0.4638,
+            -0.4315,
+            -0.4374,
+            -0.3357,
+            -0.2858,
+            -0.1069,
+            -0.0999,
+            -0.021,
+            0.1127,
+            0.1296,
+            0.2808
+          ],
+          "p75": [
+            -0.486,
+            -0.4322,
+            -0.2751,
+            -0.2039,
+            -0.1242,
+            -0.0834,
+            0.0674,
+            0.26,
+            0.303,
+            0.5544,
+            0.5736,
+            0.652,
+            0.7667,
+            0.5428,
+            0.8404,
+            0.9256,
+            1.2012,
+            1.1701,
+            1.2916,
+            1.7782,
+            2.6215
+          ]
+        }
+      },
+      {
+        "code": "v2x_civlib",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 84,
+        "shape": {
+          "mean": [
+            -0.2935,
+            -0.2523,
+            -0.2936,
+            -0.2717,
+            -0.2396,
+            -0.1982,
+            -0.2059,
+            -0.1438,
+            -0.1366,
+            -0.0249,
+            0.0489,
+            0.089,
+            0.0411,
+            0.1386,
+            0.1954,
+            0.2439,
+            0.3177,
+            0.3488,
+            0.4709,
+            0.5502,
+            0.7621
+          ],
+          "p25": [
+            -1.0911,
+            -0.9869,
+            -0.8905,
+            -0.7888,
+            -0.7527,
+            -0.6638,
+            -0.6632,
+            -0.7389,
+            -0.724,
+            -0.6235,
+            -0.6235,
+            -0.6183,
+            -0.6651,
+            -0.4982,
+            -0.4648,
+            -0.4511,
+            -0.4546,
+            -0.3215,
+            -0.1779,
+            0.0181,
+            0.0089
+          ],
+          "p75": [
+            0.521,
+            0.5141,
+            0.3123,
+            0.1897,
+            0.2708,
+            0.3472,
+            0.3886,
+            0.4764,
+            0.5155,
+            0.5577,
+            0.6237,
+            0.6548,
+            0.7216,
+            0.7407,
+            0.8314,
+            0.9521,
+            1.0509,
+            1.1021,
+            1.2545,
+            1.2428,
+            1.4321
+          ]
+        }
+      }
+    ],
+    "samples_used": 84,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2025,
+        "label": "Non-oil economic diversification push intensifies",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 2024,
+        "label": "Cambodia Breaks Ground on Funan Techo Canal",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 2022,
+        "label": "Tourism Sector Reopens with Doubled Daily Levy",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 2020,
+        "label": "EU Partially Withdraws EBA Trade Preferences from Cambodia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2016,
+        "label": "Venezuelan Oil Revenue Collapse Forces Fiscal Adjustment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2013,
+        "label": "Minder Initiative Limits Executive Pay via Shareholder Votes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 2010,
+        "label": "Cuba Announces Mass State Worker Layoffs and Self-Employment Expansion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2008,
+        "label": "Qatar National Vision 2030 Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 2006,
+        "label": "Business Facilitation Act and 'Doing Business' Reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2005,
+        "label": "Qatar Investment Authority Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2005,
+        "label": "Yukos bankruptcy \u2014 assets sold to Rosneft",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2005,
+        "label": "Cabinet Approves Two Integrated Resorts with Casinos",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 2002,
+        "label": "Dzurinda wins second term and launches radical reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2001,
+        "label": "Koizumi Transforms LDP with Reformist Agenda",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 2001,
+        "label": "Economic Stabilization and IMF Program \u2014 Post-Milo\u0161evi\u0107 Reform Push",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2000,
+        "label": "Privatization Wave Accelerates Under Persson Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1999,
+        "label": "Gramm-Leach-Bliley Repeals Glass-Steagall",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 1998,
+        "label": "Banking Sector Privatization Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1997,
+        "label": "Telecom Privatization Transforms Communication Sector",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1997,
+        "label": "Saudi Arabia Opens Stock Market to Investment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1995,
+        "label": "FHC Inaugurated, Begins Privatization Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1995,
+        "label": "Cuba Opens Economy to Foreign Investment with New Law",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1995,
+        "label": "Ethiopia's economy begins market-oriented reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1995,
+        "label": "Philippine Economic Growth Peaks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1995,
+        "label": "Oligarchs emerge from loans-for-shares privatization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1994,
+        "label": "Capitalization Reform Privatizes State Enterprises",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1994,
+        "label": "ZCCM Privatisation Negotiations Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bh",
+        "country_name": "Bahrain",
+        "year": 1993,
+        "label": "Bahrain Emerges as Regional Financial Hub",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1993,
+        "label": "Cuba Legalizes Dollar Possession and Expands Self-Employment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1993,
+        "label": "Egypt Privatization Program Expands Under ERSAP",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1993,
+        "label": "Economic Liberalization Under Donor Pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1993,
+        "label": "Economic Liberalization Under Ramos",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 1993,
+        "label": "Slovakia begins controversial voucher privatization program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 1992,
+        "label": "Shock Therapy Economic Reforms and Mass Privatization Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 1992,
+        "label": "Mass price liberalization and economic shock",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1992,
+        "label": "Privatization program transfers state enterprises to domestic and foreign buyers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 1992,
+        "label": "Shock Liberalization and Price Liberalization Trigger Economic Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 1992,
+        "label": "Offshore Financial Sector Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1992,
+        "label": "Shock therapy economic reforms launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1992,
+        "label": "Voucher privatization program begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1992,
+        "label": "Privatization Referendum Reverses Lacalle's Economic Reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1992,
+        "label": "Chiluba Government Launches Economic Liberalisation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1991,
+        "label": "Economic Apertura: Market Liberalization Reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1991,
+        "label": "Voucher Privatization Plan Announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 1991,
+        "label": "Foreign Exchange Liberalization \u2014 Exchange Rate Freed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 1991,
+        "label": "Employment Contracts Act Transforms Labour Relations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 1991,
+        "label": "IMF Structural Adjustment Tackles Hyperinflation but Deepens Poverty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1990,
+        "label": "Menem Begins Privatization Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1990,
+        "label": "Mengistu abandons Marxism, announces economic liberalization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1990,
+        "label": "Callejas Implements Structural Adjustment Program, Privatizing State Enterprises",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 1990,
+        "label": "Individual Transferable Quota System Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1990,
+        "label": "Fujishock: Economic Shock Therapy Ends Hyperinflation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 1988,
+        "label": "Compaor\u00e9's 'Rectification' \u2014 Revolution Reversed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 1988,
+        "label": "Stock Exchange of Mauritius Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1988,
+        "label": "Economic Liberalization Under IMF Structural Adjustment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mz",
+        "country_name": "Mozambique",
+        "year": 1987,
+        "label": "Economic Rehabilitation Program Launched Under IMF",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1987,
+        "label": "PDRY Economic Liberalization Experiments",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1986,
+        "label": "Structural Adjustment Agreement with IMF",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1986,
+        "label": "Big Bang Deregulation Transforms the City of London",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1985,
+        "label": "Forced collectivization accelerates in non-famine areas",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 1985,
+        "label": "Economic Liberalization \u2014 IMF Structural Adjustment Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 1985,
+        "label": "Export Processing Zone Takes Off \u2014 Textile Boom Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 1984,
+        "label": "IMF Structural Adjustment Agreement Imposes Austerity",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 1984,
+        "label": "Export Processing Zone Legislation Attracts Garment Investors",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1984,
+        "label": "Economic Reform Program Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1984,
+        "label": "BT Privatisation Launches Unprecedented Wave of Asset Sales",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1983,
+        "label": "Economic Recovery Program Marks Shift to IMF-Backed Structural Adjustment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1983,
+        "label": "Enterprise law allows formation of small private companies alongside state sector",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 1983,
+        "label": "IMF Structural Adjustment Reforms Implemented",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1981,
+        "label": "Collectivization drive accelerates in rural Ethiopia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 1979,
+        "label": "First IMF Structural Adjustment Program Forces Liberalization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 1974,
+        "label": "Tourism Sector Opened with High-Value Policy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1974,
+        "label": "Chicago Boys Install Radical Neoliberal Economic Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1973,
+        "label": "Iran Assumes Full Control of Oil Industry from Consortium",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1973,
+        "label": "Moroccanisation Policy Launches",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1972,
+        "label": "Hardline Communist Party faction rolls back NEM economic reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1968,
+        "label": "New Economic Mechanism launched, introducing market elements into Hungarian socialism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1966,
+        "label": "Preparation of New Economic Mechanism begins under reform economists",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1965,
+        "label": "Major Yugoslav Economic Reforms Liberalize Croatian Enterprises",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1965,
+        "label": "Yugoslav Economic Reform Introduces Market Mechanisms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1963,
+        "label": "Autogestion (workers' self-management) policy introduced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1959,
+        "label": "Stabilisation Plan Ends Autarky and Opens Spanish Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1958,
+        "label": "First Programme for Economic Expansion Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1957,
+        "label": "Egyptianization Laws Transfer Foreign Businesses to Egyptian Ownership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1956,
+        "label": "Socialist transformation of industry completed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1953,
+        "label": "Petrobras State Oil Company Created",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1950,
+        "label": "Workers' Self-Management Law Introduced in Yugoslavia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1950,
+        "label": "ARAMCO Oil Revenue Sharing Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1950,
+        "label": "Workers' Self-Management Law Enacted \u2014 Yugoslavia Diverges from Soviet Model",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 1944,
+        "label": "Open Door Investment Policy Launched",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 90
+  }
+}

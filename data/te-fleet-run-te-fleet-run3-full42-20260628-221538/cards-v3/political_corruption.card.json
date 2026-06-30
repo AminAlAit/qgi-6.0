@@ -1,0 +1,2888 @@
+{
+  "recipe_id": "political_corruption",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Civil Conflict",
+  "description_compelling": "Office is converted into income \u2014 kickbacks, no-bid contracts, ghost employees, capital flight by senior officials \u2014 at a scale that distorts the public budget. Executive-corruption indices, control-of-corruption scores, and neopatrimonialism measures climb together over many years. Concentrated in resource-rich autocracies and weak-institution democracies.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6870257611241217,
+    "ci95_lo": 0.6336544908627081,
+    "ci95_hi": 0.7339446779043499,
+    "ci80_lo": 0.6521206295602165,
+    "ci80_hi": 0.7173613416385998,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2stfisccap",
+      "v2x_libdem",
+      "v2svdomaut",
+      "NY.GDP.DEFL.KD.ZG"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2stfisccap",
+        "name": "Fiscal Capacity (0-1)"
+      },
+      {
+        "code": "v2x_libdem",
+        "name": "Liberal Democracy Index (0-1)"
+      },
+      {
+        "code": "v2svdomaut",
+        "name": "Domestic Autonomy / Sovereignty (0-1)"
+      },
+      {
+        "code": "NY.GDP.DEFL.KD.ZG",
+        "name": null
+      }
+    ],
+    "chosen_window": 15,
+    "final_global_auc": 0.6870257611241217,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2stfisccap",
+        "window": 15,
+        "auc": 0.6445077821555313,
+        "lift_over_previous": 0.14450778215553128,
+        "selected_after": [
+          "v2stfisccap"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2x_libdem",
+        "window": 15,
+        "auc": 0.6496390658174097,
+        "lift_over_previous": 0.0051312836618784274,
+        "selected_after": [
+          "v2stfisccap",
+          "v2x_libdem"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2svdomaut",
+        "window": 15,
+        "auc": 0.6726822363765039,
+        "lift_over_previous": 0.023043170559094217,
+        "selected_after": [
+          "v2stfisccap",
+          "v2x_libdem",
+          "v2svdomaut"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "NY.GDP.DEFL.KD.ZG",
+        "window": 15,
+        "auc": 0.6870257611241217,
+        "lift_over_previous": 0.014343524747617797,
+        "selected_after": [
+          "v2stfisccap",
+          "v2x_libdem",
+          "v2svdomaut",
+          "NY.GDP.DEFL.KD.ZG"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2exl_legitlead",
+        "window": 15,
+        "auc": 0.6848087431693989,
+        "lift_over_previous": -0.002217017954722844,
+        "selected_after": [
+          "v2stfisccap",
+          "v2x_libdem",
+          "v2svdomaut",
+          "NY.GDP.DEFL.KD.ZG",
+          "v2exl_legitlead"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 165,
+    "n_pos_survive": 150,
+    "n_neg_total": 495,
+    "n_neg_survive": 427,
+    "pos_coverage": 0.9090909090909091,
+    "neg_coverage": 0.8626262626262626,
+    "n_countries_survive": 75,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 170,
+      "loco_auc": 0.6244496244496245,
+      "ece": 0.11584410181488185,
+      "ece_ci95_lo": 0.0833772829555742,
+      "ece_ci95_hi": 0.17693509889917228,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 82,
+          "mean_predicted": 0.03919547667908596,
+          "mean_actual": 0.10975609756097561
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 25,
+          "mean_predicted": 0.14034712225198745,
+          "mean_actual": 0.16
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 16,
+          "mean_predicted": 0.2440737597644329,
+          "mean_actual": 0.1875
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 13,
+          "mean_predicted": 0.34942020361240095,
+          "mean_actual": 0.3076923076923077
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 14,
+          "mean_predicted": 0.4469729108469827,
+          "mean_actual": 0.14285714285714285
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 13,
+          "mean_predicted": 0.5566430183557364,
+          "mean_actual": 0.15384615384615385
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 4,
+          "mean_predicted": 0.6460254490375519,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 1,
+          "mean_predicted": 0.7240153551101685,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 1,
+          "mean_predicted": 0.8920682072639465,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.94146728515625,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5096455573505619,
+      "loco_auc_ci95_hi": 0.736504097844793
+    },
+    "mid-tier": {
+      "n": 163,
+      "loco_auc": 0.6781894576012223,
+      "ece": 0.1330321609025444,
+      "ece_ci95_lo": 0.0870239293632709,
+      "ece_ci95_hi": 0.20504213673722535,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 56,
+          "mean_predicted": 0.051764847561051805,
+          "mean_actual": 0.14285714285714285
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 39,
+          "mean_predicted": 0.1530480935023381,
+          "mean_actual": 0.20512820512820512
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 14,
+          "mean_predicted": 0.23873321818453924,
+          "mean_actual": 0.35714285714285715
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 7,
+          "mean_predicted": 0.3275038983140673,
+          "mean_actual": 0.14285714285714285
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 8,
+          "mean_predicted": 0.4391680546104908,
+          "mean_actual": 0.625
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 11,
+          "mean_predicted": 0.5541413859887556,
+          "mean_actual": 0.18181818181818182
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 13,
+          "mean_predicted": 0.6594566427744352,
+          "mean_actual": 0.46153846153846156
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 12,
+          "mean_predicted": 0.7470963100592295,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 3,
+          "mean_predicted": 0.839538594086965,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5754274169672086,
+      "loco_auc_ci95_hi": 0.7659279972091257
+    },
+    "stable-democracy": {
+      "n": 244,
+      "loco_auc": 0.6782508630609897,
+      "ece": 0.1142541291001329,
+      "ece_ci95_lo": 0.08273490154743575,
+      "ece_ci95_hi": 0.18105401258226705,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 51,
+          "mean_predicted": 0.05884596780307737,
+          "mean_actual": 0.1568627450980392
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 39,
+          "mean_predicted": 0.14542531260313132,
+          "mean_actual": 0.1794871794871795
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 35,
+          "mean_predicted": 0.24808043582098824,
+          "mean_actual": 0.37142857142857144
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 31,
+          "mean_predicted": 0.3531555648772947,
+          "mean_actual": 0.3225806451612903
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 24,
+          "mean_predicted": 0.443980132540067,
+          "mean_actual": 0.4166666666666667
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 17,
+          "mean_predicted": 0.5599350859137142,
+          "mean_actual": 0.4117647058823529
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 13,
+          "mean_predicted": 0.6502385368713965,
+          "mean_actual": 0.3076923076923077
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 13,
+          "mean_predicted": 0.7488209421818073,
+          "mean_actual": 0.46153846153846156
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 16,
+          "mean_predicted": 0.8465064615011215,
+          "mean_actual": 0.5625
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 5,
+          "mean_predicted": 0.9241128921508789,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.60846406183023,
+      "loco_auc_ci95_hi": 0.7461106688065293
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-30T04:53:49.696223+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5012,
+  "stability_diagnostic": {
+    "fold_variance": 0.068202743391927,
+    "fold_auc_mean": 0.6563864141762692,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Afghanistan": 0.5,
+      "Albania": 0.6666666666666666,
+      "Algeria": 0.7142857142857143,
+      "Angola": 0.5714285714285714,
+      "Argentina": 0.4,
+      "Austria": 0.9444444444444444,
+      "Azerbaijan": 0.5,
+      "Belgium": 0.6,
+      "Brazil": 0.5925925925925926,
+      "Bulgaria": 1.0,
+      "Chile": 1.0,
+      "China": 0.4166666666666667,
+      "Colombia": 0.9285714285714286,
+      "Cuba": 0.5,
+      "Cyprus": 0.9,
+      "Czechia": 0.2,
+      "Denmark": 0.0,
+      "Dominican Republic": 0.6,
+      "El Salvador": 0.6,
+      "France": 1.0,
+      "Greece": 0.8888888888888888,
+      "Guatemala": 1.0,
+      "Haiti": 1.0,
+      "Honduras": 0.4,
+      "Hungary": 0.7272727272727273,
+      "Iceland": 1.0,
+      "India": 0.8571428571428571,
+      "Indonesia": 1.0,
+      "Iraq": 0.8333333333333334,
+      "Israel": 0.75,
+      "Italy": 0.5625,
+      "Jamaica": 0.4666666666666667,
+      "Kenya": 1.0,
+      "Kuwait": 0.8,
+      "Kyrgyzstan": 0.8666666666666667,
+      "Latvia": 0.75,
+      "Liberia": 1.0,
+      "Malawi": 0.5555555555555556,
+      "Maldives": 0.7142857142857143,
+      "Mauritius": 0.4583333333333333,
+      "Mexico": 0.7083333333333334,
+      "Morocco": 0.75,
+      "Mozambique": 0.25,
+      "Namibia": 0.42857142857142855,
+      "Netherlands": 0.6,
+      "Nicaragua": 0.5,
+      "Nigeria": 0.6666666666666666,
+      "Pakistan": 0.7777777777777778,
+      "Panama": 0.4444444444444444,
+      "Paraguay": 1.0,
+      "Peru": 0.8333333333333334,
+      "Philippines": 0.7424242424242424,
+      "Saudi Arabia": 0.8571428571428571,
+      "Senegal": 0.7,
+      "Singapore": 0.7777777777777778,
+      "Slovakia": 0.5,
+      "Slovenia": 0.4,
+      "South Africa": 0.875,
+      "South Korea": 0.5,
+      "Spain": 0.6,
+      "Sweden": 0.0,
+      "Tanzania": 1.0,
+      "Turkiye": 0.25,
+      "United Kingdom": 0.0,
+      "United States": 0.4444444444444444,
+      "Uzbekistan": 0.875,
+      "Vietnam": 0.16666666666666666,
+      "Zambia": 0.6,
+      "Zimbabwe": 0.7777777777777778
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 165,
+  "n_negatives": 495,
+  "walked_at_utc": "2026-06-30T04:59:51.970888+00:00",
+  "elapsed_seconds": 6631.980718612671,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/political_corruption/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Ivory Coast",
+          "Panama",
+          "Senegal",
+          "Mali",
+          "Saudi Arabia",
+          "Somalia",
+          "Central African Republic",
+          "Iraq"
+        ],
+        "country_isos": [
+          "ci",
+          "pa",
+          "sn",
+          "ml",
+          "sa",
+          "so",
+          "cf",
+          "iq"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Lebanon",
+          "Guinea-Bissau",
+          "Nicaragua",
+          "Turkmenistan",
+          "Guatemala",
+          "Eswatini",
+          "Afghanistan",
+          "Cameroon",
+          "Comoros"
+        ],
+        "country_isos": [
+          "lb",
+          "gw",
+          "ni",
+          "tm",
+          "gt",
+          "sz",
+          "af",
+          "cm",
+          "km"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 8,
+        "countries": [
+          "Malaysia",
+          "Oman",
+          "Tanzania",
+          "Jamaica",
+          "Cyprus",
+          "Morocco",
+          "Guinea",
+          "Jordan"
+        ],
+        "country_isos": [
+          "my",
+          "om",
+          "tz",
+          "jm",
+          "cy",
+          "ma",
+          "gn",
+          "jo"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 9,
+        "countries": [
+          "Ethiopia",
+          "Nepal",
+          "Bahrain",
+          "Djibouti",
+          "Chad",
+          "Lesotho",
+          "Greece",
+          "Bhutan",
+          "Mauritania"
+        ],
+        "country_isos": [
+          "et",
+          "np",
+          "bh",
+          "dj",
+          "td",
+          "ls",
+          "gr",
+          "bt",
+          "mr"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 8,
+        "countries": [
+          "Barbados",
+          "Bosnia and Herzegovina",
+          "Armenia",
+          "Azerbaijan",
+          "Vietnam",
+          "Luxembourg",
+          "Gabon",
+          "Uganda"
+        ],
+        "country_isos": [
+          "bb",
+          "ba",
+          "am",
+          "az",
+          "vn",
+          "lu",
+          "ga",
+          "ug"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Rwanda",
+          "Guyana",
+          "Algeria",
+          "Kazakhstan",
+          "Syria",
+          "The Gambia",
+          "Serbia",
+          "Cambodia",
+          "Palestine"
+        ],
+        "country_isos": [
+          "rw",
+          "gy",
+          "dz",
+          "kz",
+          "sy",
+          "gm",
+          "rs",
+          "kh",
+          "ps"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 9,
+        "countries": [
+          "Tajikistan",
+          "Burkina Faso",
+          "Tunisia",
+          "Maldives",
+          "Togo",
+          "Papua New Guinea",
+          "Qatar",
+          "Laos",
+          "Trinidad and Tobago"
+        ],
+        "country_isos": [
+          "tj",
+          "bf",
+          "tn",
+          "mv",
+          "tg",
+          "pg",
+          "qa",
+          "la",
+          "tt"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Eritrea",
+          "Uzbekistan",
+          "Egypt",
+          "Fiji",
+          "Solomon Islands",
+          "United Arab Emirates",
+          "Cabo Verde",
+          "Hungary"
+        ],
+        "country_isos": [
+          "er",
+          "uz",
+          "eg",
+          "fj",
+          "sb",
+          "ae",
+          "cv",
+          "hu"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Yemen",
+          "Indonesia",
+          "Pakistan",
+          "Myanmar",
+          "Montenegro",
+          "France",
+          "Albania",
+          "Equatorial Guinea",
+          "Thailand"
+        ],
+        "country_isos": [
+          "ye",
+          "id",
+          "pk",
+          "mm",
+          "me",
+          "fr",
+          "al",
+          "gq",
+          "th"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 8,
+        "countries": [
+          "Norway",
+          "United Kingdom",
+          "Zimbabwe",
+          "Poland",
+          "Liberia",
+          "Libya",
+          "Georgia",
+          "Namibia"
+        ],
+        "country_isos": [
+          "no",
+          "gb",
+          "zw",
+          "pl",
+          "lr",
+          "ly",
+          "ge",
+          "na"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Bangladesh",
+          "India",
+          "Ireland",
+          "Mongolia",
+          "Croatia",
+          "Kuwait",
+          "Czechia",
+          "Israel",
+          "Haiti"
+        ],
+        "country_isos": [
+          "bd",
+          "in",
+          "ie",
+          "mn",
+          "hr",
+          "kw",
+          "cz",
+          "il",
+          "ht"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 9,
+        "countries": [
+          "Hong Kong",
+          "Sierra Leone",
+          "Iran",
+          "Burundi",
+          "New Zealand",
+          "Niger",
+          "Paraguay",
+          "Slovenia",
+          "Nigeria"
+        ],
+        "country_isos": [
+          "hk",
+          "sl",
+          "ir",
+          "bi",
+          "nz",
+          "ne",
+          "py",
+          "si",
+          "ng"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 8,
+        "countries": [
+          "Belarus",
+          "Timor-Leste",
+          "Benin",
+          "Philippines",
+          "Botswana",
+          "Kenya",
+          "Russia",
+          "China"
+        ],
+        "country_isos": [
+          "by",
+          "tl",
+          "bj",
+          "ph",
+          "bw",
+          "ke",
+          "ru",
+          "cn"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "Moldova",
+          "El Salvador",
+          "Madagascar",
+          "Latvia",
+          "Dominican Republic",
+          "Zambia",
+          "Belgium",
+          "Chile",
+          "Mozambique"
+        ],
+        "country_isos": [
+          "md",
+          "sv",
+          "mg",
+          "lv",
+          "do",
+          "zm",
+          "be",
+          "cl",
+          "mz"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 8,
+        "countries": [
+          "Bolivia",
+          "Canada",
+          "Vanuatu",
+          "Bulgaria",
+          "Peru",
+          "Malawi",
+          "Cuba",
+          "Japan"
+        ],
+        "country_isos": [
+          "bo",
+          "ca",
+          "vu",
+          "bg",
+          "pe",
+          "mw",
+          "cu",
+          "jp"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 9,
+        "countries": [
+          "Ecuador",
+          "Singapore",
+          "Sweden",
+          "Denmark",
+          "Brazil",
+          "Venezuela",
+          "Ukraine",
+          "Mauritius",
+          "South Africa"
+        ],
+        "country_isos": [
+          "ec",
+          "sg",
+          "se",
+          "dk",
+          "br",
+          "ve",
+          "ua",
+          "mu",
+          "za"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 9,
+        "countries": [
+          "Republic of the Congo",
+          "Romania",
+          "Mexico",
+          "The Democratic Republic of the Congo",
+          "Sao Tome and Principe",
+          "Turkiye",
+          "Italy",
+          "Sri Lanka",
+          "Malta"
+        ],
+        "country_isos": [
+          "cg",
+          "ro",
+          "mx",
+          "cd",
+          "st",
+          "tr",
+          "it",
+          "lk",
+          "mt"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 8,
+        "countries": [
+          "Kyrgyzstan",
+          "Costa Rica",
+          "Sudan",
+          "Colombia",
+          "Netherlands",
+          "Switzerland",
+          "Slovakia",
+          "Uruguay"
+        ],
+        "country_isos": [
+          "kg",
+          "cr",
+          "sd",
+          "co",
+          "nl",
+          "ch",
+          "sk",
+          "uy"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Germany",
+          "North Macedonia",
+          "Argentina",
+          "Spain",
+          "Honduras",
+          "Australia",
+          "Lithuania",
+          "Angola",
+          "Seychelles"
+        ],
+        "country_isos": [
+          "de",
+          "mk",
+          "ar",
+          "es",
+          "hn",
+          "au",
+          "lt",
+          "ao",
+          "sc"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "United States",
+          "Suriname",
+          "Ghana",
+          "Finland",
+          "Austria",
+          "Estonia",
+          "Portugal",
+          "South Korea",
+          "Iceland"
+        ],
+        "country_isos": [
+          "us",
+          "sr",
+          "gh",
+          "fi",
+          "at",
+          "ee",
+          "pt",
+          "kr",
+          "is"
+        ]
+      }
+    ],
+    "median": 50.6,
+    "p90": 90.1,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 172,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.0538,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.6318438364268505,
+      "b": 0.0,
+      "c": -0.0380308149600195,
+      "n_fit": 577,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 66,
+        "observed_rate": 0.09090909090909091
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 140,
+        "observed_rate": 0.16428571428571428
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 140,
+        "observed_rate": 0.22857142857142856
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 130,
+        "observed_rate": 0.3153846153846154
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 101,
+        "observed_rate": 0.4752475247524752
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.0253097872511035,
+    "n_predictions": 577,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.11584410181488185,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 82,
+            "mean_predicted": 0.03919547667908596,
+            "mean_actual": 0.10975609756097561
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 25,
+            "mean_predicted": 0.14034712225198745,
+            "mean_actual": 0.16
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 16,
+            "mean_predicted": 0.2440737597644329,
+            "mean_actual": 0.1875
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 13,
+            "mean_predicted": 0.34942020361240095,
+            "mean_actual": 0.3076923076923077
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 14,
+            "mean_predicted": 0.4469729108469827,
+            "mean_actual": 0.14285714285714285
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 13,
+            "mean_predicted": 0.5566430183557364,
+            "mean_actual": 0.15384615384615385
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 4,
+            "mean_predicted": 0.6460254490375519,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 1,
+            "mean_predicted": 0.7240153551101685,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 1,
+            "mean_predicted": 0.8920682072639465,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.94146728515625,
+            "mean_actual": 1.0
+          }
+        ],
+        "n": 170,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.1330321609025444,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 56,
+            "mean_predicted": 0.051764847561051805,
+            "mean_actual": 0.14285714285714285
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 39,
+            "mean_predicted": 0.1530480935023381,
+            "mean_actual": 0.20512820512820512
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 14,
+            "mean_predicted": 0.23873321818453924,
+            "mean_actual": 0.35714285714285715
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 7,
+            "mean_predicted": 0.3275038983140673,
+            "mean_actual": 0.14285714285714285
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 8,
+            "mean_predicted": 0.4391680546104908,
+            "mean_actual": 0.625
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 11,
+            "mean_predicted": 0.5541413859887556,
+            "mean_actual": 0.18181818181818182
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 13,
+            "mean_predicted": 0.6594566427744352,
+            "mean_actual": 0.46153846153846156
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 12,
+            "mean_predicted": 0.7470963100592295,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 3,
+            "mean_predicted": 0.839538594086965,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 163,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.1142541291001329,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 51,
+            "mean_predicted": 0.05884596780307737,
+            "mean_actual": 0.1568627450980392
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 39,
+            "mean_predicted": 0.14542531260313132,
+            "mean_actual": 0.1794871794871795
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 35,
+            "mean_predicted": 0.24808043582098824,
+            "mean_actual": 0.37142857142857144
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 31,
+            "mean_predicted": 0.3531555648772947,
+            "mean_actual": 0.3225806451612903
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 24,
+            "mean_predicted": 0.443980132540067,
+            "mean_actual": 0.4166666666666667
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 17,
+            "mean_predicted": 0.5599350859137142,
+            "mean_actual": 0.4117647058823529
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 13,
+            "mean_predicted": 0.6502385368713965,
+            "mean_actual": 0.3076923076923077
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 13,
+            "mean_predicted": 0.7488209421818073,
+            "mean_actual": 0.46153846153846156
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 16,
+            "mean_predicted": 0.8465064615011215,
+            "mean_actual": 0.5625
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 5,
+            "mean_predicted": 0.9241128921508789,
+            "mean_actual": 1.0
+          }
+        ],
+        "n": 244,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/political_corruption.scores.json",
+  "shape_points": [
+    0.05436392718157751,
+    0.07135546713235282,
+    0.08834700708312809,
+    0.10533854703390338,
+    0.12233008698467868,
+    0.13932162693545397,
+    0.15631316688622926,
+    0.17330470683700455,
+    0.19029624678777984,
+    0.20728778673855514,
+    0.22427932668933043,
+    0.24127086664010572
+  ],
+  "shap_importance_raw": {
+    "v2stfisccap": 1.1324025392532349,
+    "v2x_libdem": 1.5270708799362183,
+    "v2svdomaut": 1.066288709640503,
+    "NY.GDP.DEFL.KD.ZG": 1.3802635669708252
+  },
+  "shap_importance_normalized": {
+    "v2stfisccap": 0.22177768125697603,
+    "v2x_libdem": 0.2990723061170821,
+    "v2svdomaut": 0.20882948366621493,
+    "NY.GDP.DEFL.KD.ZG": 0.27032052895972697
+  },
+  "shap_direction_signs": {
+    "v2stfisccap": -1,
+    "v2x_libdem": -1,
+    "v2svdomaut": -1,
+    "NY.GDP.DEFL.KD.ZG": -1
+  },
+  "per_feature_breakdown": {
+    "v2stfisccap": {
+      "last_z": 0.08386444300413132,
+      "mean_z": 0.08401615172624588,
+      "std_z": 0.24357479810714722,
+      "slope": 0.22460737824440002,
+      "accel": 0.14416365325450897,
+      "tertile1_mean": 0.07264808565378189,
+      "tertile2_mean": 0.13845039904117584,
+      "tertile3_mean": 0.14107760787010193
+    },
+    "v2x_libdem": {
+      "last_z": 0.06148738041520119,
+      "mean_z": 0.3142299950122833,
+      "std_z": 0.21062199771404266,
+      "slope": 0.28919485211372375,
+      "accel": 0.16408762335777283,
+      "tertile1_mean": 0.11883736401796341,
+      "tertile2_mean": 0.14310723543167114,
+      "tertile3_mean": 0.22550445795059204
+    },
+    "v2svdomaut": {
+      "last_z": 0.23073238134384155,
+      "mean_z": 0.0466553270816803,
+      "std_z": 0.06909219175577164,
+      "slope": 0.23562844097614288,
+      "accel": 0.10071320086717606,
+      "tertile1_mean": 0.2821924388408661,
+      "tertile2_mean": 0.032380856573581696,
+      "tertile3_mean": 0.06889384984970093
+    },
+    "NY.GDP.DEFL.KD.ZG": {
+      "last_z": 0.4288163483142853,
+      "mean_z": 0.09419925510883331,
+      "std_z": 0.1715698391199112,
+      "slope": 0.06802753359079361,
+      "accel": 0.15223105251789093,
+      "tertile1_mean": 0.17198622226715088,
+      "tertile2_mean": 0.16313043236732483,
+      "tertile3_mean": 0.1303028017282486
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 15,
+    "indicators": [
+      {
+        "code": "v2stfisccap",
+        "name": "Fiscal Capacity (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 158,
+        "shape": {
+          "mean": [
+            -0.1086,
+            -0.0932,
+            -0.0435,
+            -0.0257,
+            -0.0196,
+            -0.0298,
+            -0.0049,
+            0.0384,
+            -0.0087,
+            0.0543,
+            0.0554,
+            0.0609,
+            0.1228,
+            0.1778,
+            0.2924
+          ],
+          "p25": [
+            -0.2917,
+            -0.2889,
+            -0.2322,
+            -0.2,
+            -0.2,
+            -0.2,
+            -0.2,
+            0.0,
+            -0.15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "p75": [
+            0.0,
+            0.0,
+            0.172,
+            0.1877,
+            0.1754,
+            0.2,
+            0.2648,
+            0.3523,
+            0.342,
+            0.3618,
+            0.3866,
+            0.4648,
+            0.5276,
+            0.611,
+            0.6676
+          ]
+        }
+      },
+      {
+        "code": "v2x_libdem",
+        "name": "Liberal Democracy Index (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 161,
+        "shape": {
+          "mean": [
+            -0.0354,
+            0.0425,
+            0.0878,
+            0.1663,
+            0.2813,
+            0.3527,
+            0.389,
+            0.449,
+            0.4887,
+            0.5515,
+            0.5595,
+            0.6069,
+            0.6334,
+            0.6739,
+            0.6753
+          ],
+          "p25": [
+            -0.5087,
+            -0.4672,
+            -0.3791,
+            -0.3521,
+            -0.2188,
+            -0.1137,
+            -0.0933,
+            0.0927,
+            0.1495,
+            0.3004,
+            0.2045,
+            0.3464,
+            0.3593,
+            0.2366,
+            0.1175
+          ],
+          "p75": [
+            0.4834,
+            0.5219,
+            0.5687,
+            0.6395,
+            0.7397,
+            0.7585,
+            0.7902,
+            0.8792,
+            0.9271,
+            1.0188,
+            1.0728,
+            1.2172,
+            1.3001,
+            1.3687,
+            1.4584
+          ]
+        }
+      },
+      {
+        "code": "v2svdomaut",
+        "name": "Domestic Autonomy / Sovereignty (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 161,
+        "shape": {
+          "mean": [
+            0.0224,
+            -0.0032,
+            0.0365,
+            0.0689,
+            0.0622,
+            0.0346,
+            0.0889,
+            0.1278,
+            0.1351,
+            0.0332,
+            0.1306,
+            0.1233,
+            0.0643,
+            0.0454,
+            0.0748
+          ],
+          "p25": [
+            -0.0748,
+            -0.3618,
+            -0.1333,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "p75": [
+            0.4465,
+            0.4305,
+            0.4682,
+            0.4899,
+            0.4899,
+            0.4899,
+            0.5059,
+            0.524,
+            0.5506,
+            0.5571,
+            0.611,
+            0.611,
+            0.6991,
+            0.6991,
+            0.7348
+          ]
+        }
+      },
+      {
+        "code": "NY.GDP.DEFL.KD.ZG",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 156,
+        "shape": {
+          "mean": [
+            0.071,
+            -0.1111,
+            -0.091,
+            -0.0415,
+            0.0197,
+            -0.0898,
+            -0.186,
+            -0.0322,
+            -0.0784,
+            -0.1402,
+            -0.0724,
+            -0.2214,
+            -0.1863,
+            -0.1719,
+            -0.1423
+          ],
+          "p25": [
+            -0.418,
+            -0.5669,
+            -0.4566,
+            -0.4928,
+            -0.5187,
+            -0.5504,
+            -0.573,
+            -0.4877,
+            -0.5401,
+            -0.5781,
+            -0.5551,
+            -0.702,
+            -0.6875,
+            -0.7495,
+            -0.6718
+          ],
+          "p75": [
+            0.4081,
+            0.2477,
+            0.2309,
+            0.3744,
+            0.3856,
+            0.1488,
+            0.0979,
+            0.3221,
+            0.1321,
+            0.2018,
+            0.3111,
+            0.1324,
+            0.0566,
+            0.1709,
+            0.202
+          ]
+        }
+      }
+    ],
+    "samples_used": 161,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 2024,
+        "label": "Ar\u00e9valo Government Faces Systematic Institutional Blockades from Prosecutors",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 2024,
+        "label": "Phone-Tapping Scandal \u2014 'Missie Moustass' Recordings",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 2024,
+        "label": "Fico government dismantles anti-corruption institutions",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2023,
+        "label": "Senior officials purged \u2014 Qin Gang and Rocket Force generals",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2023,
+        "label": "LDP Political Fundraising Scandal Erupts",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 2023,
+        "label": "Martinelli Convicted of Money Laundering",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 2023,
+        "label": "Costa Resigns Amid Corruption Investigation",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2023,
+        "label": "Jacob Zuma Faces Criminal Trial \u2014 Arms Deal Charges",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2023,
+        "label": "Syrian Drug Trade: Captagon Becomes Major Regime Revenue Source",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 2023,
+        "label": "Thaksin Returns from Exile After 15 Years, Begins Prison Term",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2023,
+        "label": "Senior Leadership Purge Through Anti-Corruption Campaign",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2022,
+        "label": "Cristina Kirchner Convicted of Corruption \u2014 Sentenced to 6 Years",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2022,
+        "label": "Vice-President Chilima Charged in Bribery Case",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 2022,
+        "label": "Yameen sentenced to 11 years for resort island bribery and embezzlement",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2022,
+        "label": "Phala Phala Scandal Threatens Ramaphosa Presidency",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2022,
+        "label": "Anti-Corruption Prosecutions Intensify; Record FDI; Post-COVID Recovery",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 2021,
+        "label": "US Designates Berisha as Persona Non Grata for Corruption",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2021,
+        "label": "Vacunatorio VIP Scandal \u2014 Vaccines Given to Political Allies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 2021,
+        "label": "Sebastian Kurz resigns amid corruption investigation; succeeded by Schallenberg then Nehammer",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2021,
+        "label": "Senate Inquiry Into Bolsonaro's Pandemic Response",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 2021,
+        "label": "Child Benefits Scandal (Toeslagenaffaire) Topples Rutte III Cabinet",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2021,
+        "label": "Zondo Commission Reports \u2014 Scope of State Capture Revealed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 2020,
+        "label": "Luanda Leaks Expose Isabel dos Santos's $2 Billion Asset Extraction",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 2020,
+        "label": "Cyprus citizenship-by-investment scheme suspended amid corruption scandal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2020,
+        "label": "PPE Procurement Corruption \u2014 Pandemic Feeding Frenzy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2019,
+        "label": "Mass arrests of business oligarchs linked to Bouteflika",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 2019,
+        "label": "Ibiza Affair video destroys FPO coalition, triggers snap elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 2019,
+        "label": "CICIG Formally Closes After 12 Years of Anti-Corruption Work",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 2019,
+        "label": "US Federal Prosecutors Name Hern\u00e1ndez as Drug Trafficking Co-Conspirator",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2019,
+        "label": "Netanyahu Indicted \u2014 Political Paralysis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2019,
+        "label": "Bishkek Thermal Power Plant Corruption Prosecutions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2019,
+        "label": "Central Bank Governor Arrested on Corruption Charges",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 2019,
+        "label": "Yameen convicted of money laundering and sentenced to five years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 2019,
+        "label": "Fishrot Scandal \u2014 Corruption in Fishing Quota Allocation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 2019,
+        "label": "Odebrecht Bribery Scandal Implicates Panamanian Officials",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 2019,
+        "label": "Itaip\u00fa Energy Deal Scandal and Near-Impeachment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 2019,
+        "label": "Former Presidents Prosecuted in Odebrecht Cases",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 2018,
+        "label": "Anti-Corruption Campaign: Isabel dos Santos Removed from Sonangol",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2018,
+        "label": "Nirav Modi bank fraud scandal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2018,
+        "label": "PetroCaribe Scandal \u2014 Revelations of Oil Fund Mismanagement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2018,
+        "label": "Atambayev\u2013Jeenbekov Feud Destabilizes Politics",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2018,
+        "label": "L$16 Billion Missing Cash Scandal Rocks Weah Administration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 2018,
+        "label": "Kuczynski Pardons Fujimori Then Resigns Amid Corruption",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2018,
+        "label": "Zondo Commission of Inquiry into State Capture Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2018,
+        "label": "CPTPP Signed; Anti-Corruption Campaign Claims Politburo Member; Cybersecurity Law",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 2017,
+        "label": "Constitutional Court Becomes Non-Functional Due to Vetting Dismissals",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "az",
+        "country_name": "Azerbaijan",
+        "year": 2017,
+        "label": "Azerbaijani Laundromat Investigation Exposes $2.9bn Corruption Scheme",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2017,
+        "label": "Michel Temer Corruption Charges in Wiretap Scandal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2017,
+        "label": "Lula Convicted of Corruption by Judge Sergio Moro",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2017,
+        "label": "Odebrecht Signs Largest Corporate Plea Deal in History",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2017,
+        "label": "Corruption Scandals Force Resignation of Multiple Ministers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 2017,
+        "label": "Babi\u0161 Wins Elections While Charged with EU Subsidy Fraud",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2017,
+        "label": "Maizegate Procurement Scandal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2017,
+        "label": "Nawaz Sharif Disqualified by Supreme Court",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2017,
+        "label": "Ritz-Carlton Anti-Corruption Crackdown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2017,
+        "label": "Lee Family Feud Over Oxley Road House Becomes Public",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2017,
+        "label": "GuptaLeaks \u2014 State Capture Documented",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2016,
+        "label": "Lula Charged in Lava Jato Corruption Investigation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2016,
+        "label": "Lava Jato Expands to Arrest Major Construction Company Executives",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 2016,
+        "label": "Former President Tony Saca Arrested for Embezzlement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 2016,
+        "label": "Panama Papers Force Prime Minister's Resignation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2016,
+        "label": "Benjamin Netanyahu's Corruption Investigations Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2016,
+        "label": "Panama Papers Implicate Nawaz Sharif's Family",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 2016,
+        "label": "Panama Papers Expose Global Offshore Financial System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2016,
+        "label": "Gupta Family and State Capture Exposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 2016,
+        "label": "Candlelight Protests and Park Geun-hye Impeachment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 2016,
+        "label": "Magufuli Launches Sweeping Anti-Corruption Drive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2016,
+        "label": "Twelfth Party Congress; Anti-Corruption Drive; Obama Lifts Arms Embargo; Formosa Environmental Disaster",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2015,
+        "label": "Death of Prosecutor Nisman \u2014 Investigation into AMIA Bombing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 2015,
+        "label": "Copper Price Collapse and Caval Corruption Scandal Weaken Bachelet",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 2015,
+        "label": "La L\u00ednea Scandal Topples President P\u00e9rez Molina After Mass Protests",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 2015,
+        "label": "IHSS Corruption Scandal Implicates Ruling Party, Triggering Mass Protests",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 2015,
+        "label": "Navin Ramgoolam Arrested in Safe-Box Cash Scandal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2015,
+        "label": "Casa Blanca Scandal Rocks Pe\u00f1a Nieto Administration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2014,
+        "label": "Operation Car Wash (Lava Jato) Corruption Investigation Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2014,
+        "label": "Zhou Yongkang arrested \u2014 unprecedented Politburo Standing Committee case",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 2014,
+        "label": "Odebrecht Corruption Begins to Surface in Peru",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2014,
+        "label": "Gulnara Karimova Falls from Grace Amid Corruption Scandals",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 2014,
+        "label": "Grace Mugabe Rises to Power \u2014 Joice Mujuru Purged",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2013,
+        "label": "Anti-corruption campaign launched under Xi",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2013,
+        "label": "Aam Aadmi Party formed by Arvind Kejriwal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 2013,
+        "label": "Berlusconi Definitively Convicted and Expelled from Parliament",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2013,
+        "label": "Cashgate Scandal \u2014 Donor Freeze",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 2013,
+        "label": "Karim Wade Arrested on Enrichment Charges",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2012,
+        "label": "Bo Xilai scandal \u2014 elite political crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2012,
+        "label": "Coal scam \u2014 CAG report on Coalgate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 2012,
+        "label": "Martinelli Surveillance Scandal Revealed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 2012,
+        "label": "Gorilla corruption scandal triggers mass street protests",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2012,
+        "label": "Section 34 Scandal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 2011,
+        "label": "Prime Minister Faces Parliamentary Censure; Resigns",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 2011,
+        "label": "MedPoint Clinic Affair \u2014 Corruption Allegations Against Jugnauth Family",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2010,
+        "label": "Kabul Bank scandal exposes massive financial fraud",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2010,
+        "label": "2G spectrum scam exposed \u2014 Rs 1.76 lakh crore loss",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2010,
+        "label": "Golding Admits Lobbying for Dudus \u2014 Constitutional Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2010,
+        "label": "WikiLeaks Cables Reveal Royal Family Business Interests",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2009,
+        "label": "Maliki Consolidates Sectarian Governance",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2009,
+        "label": "Golding Government Initially Refuses Dudus Extradition Request",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2009,
+        "label": "Bakiyev Installs Family Members Across State and Business Positions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2009,
+        "label": "MPs' Expenses Scandal Causes Collapse in Parliamentary Trust",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 2008,
+        "label": "Drug Trafficking Cartels Expand Presence in Honduras as Key Cocaine Transit Country",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2008,
+        "label": "Olmert Indicted \u2014 Netanyahu Returns",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2007,
+        "label": "Inflation Data Manipulation \u2014 INDEC Statistics Scandal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 2007,
+        "label": "Prince Jefri Returns to Court Over Asset Recovery",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 2007,
+        "label": "EU Cooperation and Verification Mechanism Imposed on Bulgaria",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 2007,
+        "label": "Corruption Eradication Commission (KPK) gains momentum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2007,
+        "label": "King Abdullah's Anti-Corruption Drive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bh",
+        "country_name": "Bahrain",
+        "year": 2006,
+        "label": "Bandargate Scandal Exposes Alleged Government Sectarian Plot",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 2006,
+        "label": "Para-Politics Scandal Exposes Paramilitary-Congress Pacts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 2006,
+        "label": "Gyurcs\u00e1ny speech leak triggers riots as PM admits lying to win election",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 2006,
+        "label": "Chen Shui-bian Corruption Scandal Paralyzes Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2005,
+        "label": "Mensalao Vote-Buying Scandal Rocks Lula Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2005,
+        "label": "Anti-Corruption Drive Splits UDF",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2005,
+        "label": "Hello Garci Scandal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2005,
+        "label": "Jacob Zuma Fired as Deputy President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2004,
+        "label": "Croma\u00f1on Nightclub Fire Kills 194",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2004,
+        "label": "Right to Information Act passed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2003,
+        "label": "Piarco Airport Corruption Investigation Expands",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 2002,
+        "label": "Mwanawasa Lifts Chiluba's Immunity \u2014 Anti-Corruption Drive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2000,
+        "label": "Bribery Scandal in Senate \u2014 FREPASO Coalition Collapses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 2000,
+        "label": "Prince Jefri Scandal Reveals 14.8 Billion BIA Misappropriation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 2000,
+        "label": "Prince Jefri Settlement Returns Disputed Assets to State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 2000,
+        "label": "Vladivideo Scandal Brings Down Fujimori Regime",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2000,
+        "label": "Impeachment of Estrada Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 1998,
+        "label": "Dutroux Escape Triggers Government Minister Resignations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1998,
+        "label": "Arms Deal Corruption Scandal Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1998,
+        "label": "Clinton Impeached by House of Representatives",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1997,
+        "label": "Klaus Government Falls Over Party Financing Scandal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1997,
+        "label": "Drug Cartel General Arrested \u2014 Military Corruption Exposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 1996,
+        "label": "Dutroux Affair Exposed Systemic Police and Judicial Failures",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 1996,
+        "label": "Alem\u00e1n Wins Presidency, Inaugurating Era of Systematic Corruption",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1996,
+        "label": "Abacha Loot \u2014 Billions Siphoned Abroad",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 1996,
+        "label": "Susurluk Scandal Exposes Deep State Connections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1995,
+        "label": "Cali Cartel Leaders Captured",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1995,
+        "label": "Benazir's Government Faces Mounting Corruption Allegations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 1995,
+        "label": "Former Presidents Chun and Roh Arrested for Treason and Corruption",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1994,
+        "label": "Samper Elected President Amid Narco-Funding Scandal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1994,
+        "label": "GAL State Terrorism Scandal Implicates Senior Government Officials",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1993,
+        "label": "Pablo Escobar Killed; Medell\u00edn Cartel Dismantled",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 1993,
+        "label": "Tamilgate Scandal Forces Prime Minister Resignation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1993,
+        "label": "Tangentopoli Topples the First Republic: Christian Democrats Dissolve",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1992,
+        "label": "President Collor Impeached Amid Corruption Scandal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1992,
+        "label": "Harshad Mehta stock market scam exposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1992,
+        "label": "Mani Pulite Investigation Launches, Exposing Tangentopoli System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1991,
+        "label": "Pablo Escobar Surrenders to Luxury Private Prison",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1991,
+        "label": "Inkathagate Scandal \u2014 Security Forces Fund Inkatha",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1989,
+        "label": "Presidential Candidate Luis Carlos Gal\u00e1n Assassinated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1989,
+        "label": "General Ochoa Executed for Drug Trafficking in High-Profile Trial",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1988,
+        "label": "Koskotas banking scandal reveals corruption at the heart of PASOK government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 1988,
+        "label": "Ingvar Carlsson Government Survives Bofors Arms Scandal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1987,
+        "label": "Bofors scandal erupts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1986,
+        "label": "Iran-Contra Scandal Exposes Extent of US Covert Operations Run Through Honduras",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 1986,
+        "label": "Iran-Contra Affair Exposes Illegal Funding of Contra War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1986,
+        "label": "Marcos Goes Into Exile in Hawaii",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1986,
+        "label": "Iran-Contra Affair Exposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 1985,
+        "label": "Rainbow Warrior Bombing by French Intelligence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 1985,
+        "label": "Air Mauritius Heroin Trafficking Scandal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1984,
+        "label": "Justice Minister Rodrigo Lara Bonilla Assassinated by Cartel",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1983,
+        "label": "Kahan Commission and Sharon's Dismissal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1982,
+        "label": "Andropov initiates anti-corruption campaign",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1981,
+        "label": "P2 Masonic Lodge Scandal Reveals Parallel State Within Institutions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 1980,
+        "label": "Baby Doc's $3 million wedding and crackdown on journalists signal kleptocracy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1979,
+        "label": "Bataan Nuclear Power Plant Controversy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1976,
+        "label": "Lockheed Scandal Triggers Political Corruption Reckoning",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1976,
+        "label": "Lockheed Bribery Scandal Implicates Prince Bernhard",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1976,
+        "label": "Al-Hamdi Balances Tribes and Modernization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1975,
+        "label": "Crony Capitalism Entrenchment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1974,
+        "label": "Bananagate Scandal: United Brands Paid $1.25 Million Bribe to Honduran Officials",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1974,
+        "label": "Nixon Resigns Presidency Over Watergate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1972,
+        "label": "Watergate Break-in Begins Constitutional Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1971,
+        "label": "Constitutional Convention Controversy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1971,
+        "label": "Pentagon Papers Published",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1965,
+        "label": "Imelda Marcos as Political Force",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1965,
+        "label": "Gold Smuggling Scandal Rocks Obote Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1963,
+        "label": "Profumo Affair Causes Security and Political Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1961,
+        "label": "Lavon Affair Resurfaces \u2014 Political Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1952,
+        "label": "Rose Water Revolution: President Khoury Forced to Resign",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 176
+  }
+}
