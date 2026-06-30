@@ -1,0 +1,3174 @@
+{
+  "recipe_id": "economic_recession",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "International Tension",
+  "description_compelling": "Two or more quarters of negative real growth, typically with rising unemployment, falling investment, and tightening credit. Investment, unemployment, and trade-balance trajectories drift for a year or two beforehand. Frequent in commodity exporters during price slumps, in financialized economies during credit-cycle tops, and across rich economies during exogenous shocks.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6888578088578089,
+    "ci95_lo": 0.636468232153768,
+    "ci95_hi": 0.7370536901241128,
+    "ci80_lo": 0.655259990386536,
+    "ci80_hi": 0.7192755575937282,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "SH.DYN.MORT",
+      "v2stcritapparm",
+      "v2jucomp",
+      "FP.CPI.TOTL.ZG",
+      "v2xnp_regcorr"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "SH.DYN.MORT",
+        "name": null
+      },
+      {
+        "code": "v2stcritapparm",
+        "name": null
+      },
+      {
+        "code": "v2jucomp",
+        "name": null
+      },
+      {
+        "code": "FP.CPI.TOTL.ZG",
+        "name": null
+      },
+      {
+        "code": "v2xnp_regcorr",
+        "name": null
+      }
+    ],
+    "chosen_window": 3,
+    "final_global_auc": 0.6888578088578089,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "SH.DYN.MORT",
+        "window": 7,
+        "auc": 0.5866174265658012,
+        "lift_over_previous": 0.08661742656580118,
+        "selected_after": [
+          "SH.DYN.MORT"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2stcritapparm",
+        "window": 3,
+        "auc": 0.6110184827474024,
+        "lift_over_previous": 0.024401056181601266,
+        "selected_after": [
+          "SH.DYN.MORT",
+          "v2stcritapparm"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2jucomp",
+        "window": 3,
+        "auc": 0.6255159512819991,
+        "lift_over_previous": 0.014497468534596658,
+        "selected_after": [
+          "SH.DYN.MORT",
+          "v2stcritapparm",
+          "v2jucomp"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "FP.CPI.TOTL.ZG",
+        "window": 3,
+        "auc": 0.6564257964257965,
+        "lift_over_previous": 0.030909845143797354,
+        "selected_after": [
+          "SH.DYN.MORT",
+          "v2stcritapparm",
+          "v2jucomp",
+          "FP.CPI.TOTL.ZG"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2xnp_regcorr",
+        "window": 3,
+        "auc": 0.6888578088578089,
+        "lift_over_previous": 0.032432012432012436,
+        "selected_after": [
+          "SH.DYN.MORT",
+          "v2stcritapparm",
+          "v2jucomp",
+          "FP.CPI.TOTL.ZG",
+          "v2xnp_regcorr"
+        ]
+      },
+      {
+        "step": 6,
+        "candidate": "v2x_rule",
+        "window": 3,
+        "auc": 0.6725718725718726,
+        "lift_over_previous": -0.01628593628593633,
+        "selected_after": [
+          "SH.DYN.MORT",
+          "v2stcritapparm",
+          "v2jucomp",
+          "FP.CPI.TOTL.ZG",
+          "v2xnp_regcorr",
+          "v2x_rule"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 215,
+    "n_pos_survive": 150,
+    "n_neg_total": 645,
+    "n_neg_survive": 429,
+    "pos_coverage": 0.6976744186046512,
+    "neg_coverage": 0.6651162790697674,
+    "n_countries_survive": 92,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 231,
+      "loco_auc": 0.6702766654532217,
+      "ece": 0.1177633126504171,
+      "ece_ci95_lo": 0.09031182599205571,
+      "ece_ci95_hi": 0.18586581143085917,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 67,
+          "mean_predicted": 0.05217021477144601,
+          "mean_actual": 0.16417910447761194
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 50,
+          "mean_predicted": 0.15060149416327476,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 19,
+          "mean_predicted": 0.24437742013680308,
+          "mean_actual": 0.3157894736842105
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 20,
+          "mean_predicted": 0.3614630579948425,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 20,
+          "mean_predicted": 0.4571903616189957,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 16,
+          "mean_predicted": 0.5554697290062904,
+          "mean_actual": 0.5625
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 19,
+          "mean_predicted": 0.6485055308592947,
+          "mean_actual": 0.5263157894736842
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 11,
+          "mean_predicted": 0.7517231594432484,
+          "mean_actual": 0.2727272727272727
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 6,
+          "mean_predicted": 0.8431626260280609,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 3,
+          "mean_predicted": 0.9348635673522949,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.588148727197537,
+      "loco_auc_ci95_hi": 0.7444893860575664
+    },
+    "mid-tier": {
+      "n": 147,
+      "loco_auc": 0.7388586956521739,
+      "ece": 0.13189691257327288,
+      "ece_ci95_lo": 0.0998464899341937,
+      "ece_ci95_hi": 0.19863056327171977,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 54,
+          "mean_predicted": 0.045638355038439236,
+          "mean_actual": 0.1111111111111111
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 20,
+          "mean_predicted": 0.13826190903782845,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 22,
+          "mean_predicted": 0.24596076594157654,
+          "mean_actual": 0.22727272727272727
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 13,
+          "mean_predicted": 0.3377543802444751,
+          "mean_actual": 0.5384615384615384
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 8,
+          "mean_predicted": 0.44592996314167976,
+          "mean_actual": 0.125
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 12,
+          "mean_predicted": 0.5495904336373011,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 6,
+          "mean_predicted": 0.6427748103936514,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 4,
+          "mean_predicted": 0.7439765781164169,
+          "mean_actual": 0.75
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 7,
+          "mean_predicted": 0.8490577169827053,
+          "mean_actual": 0.5714285714285714
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.9189222455024719,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.624525674582298,
+      "loco_auc_ci95_hi": 0.82639871815351
+    },
+    "stable-democracy": {
+      "n": 196,
+      "loco_auc": 0.6692004504504504,
+      "ece": 0.1028334392491272,
+      "ece_ci95_lo": 0.07650190182636037,
+      "ece_ci95_hi": 0.17735620302727864,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 86,
+          "mean_predicted": 0.04870177784848005,
+          "mean_actual": 0.1744186046511628
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 31,
+          "mean_predicted": 0.1482366210510654,
+          "mean_actual": 0.1935483870967742
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 26,
+          "mean_predicted": 0.25033211822693163,
+          "mean_actual": 0.23076923076923078
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 19,
+          "mean_predicted": 0.3468702623718663,
+          "mean_actual": 0.3157894736842105
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 11,
+          "mean_predicted": 0.442458759654652,
+          "mean_actual": 0.2727272727272727
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.5723873376846313,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 9,
+          "mean_predicted": 0.6474893159336514,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 6,
+          "mean_predicted": 0.762988418340683,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 3,
+          "mean_predicted": 0.8571176131566366,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 3,
+          "mean_predicted": 0.9504546523094177,
+          "mean_actual": 0.6666666666666666
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5820074906820589,
+      "loco_auc_ci95_hi": 0.7550513551013155
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-29T06:25:01.134443+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5074,
+  "stability_diagnostic": {
+    "fold_variance": 0.10028045256280997,
+    "fold_auc_mean": 0.6519195098882599,
+    "label": "HIGH",
+    "per_country_loco_auc": {
+      "Algeria": 0.8333333333333334,
+      "Angola": 0.3333333333333333,
+      "Armenia": 0.0,
+      "Belarus": 1.0,
+      "Bhutan": 0.0,
+      "Bolivia": 0.2222222222222222,
+      "Botswana": 0.8,
+      "Brazil": 0.65,
+      "Burundi": 1.0,
+      "Cameroon": 1.0,
+      "Chad": 0.625,
+      "Chile": 0.3333333333333333,
+      "China": 0.5,
+      "Colombia": 0.5,
+      "Costa Rica": 0.3333333333333333,
+      "Croatia": 0.0,
+      "Dominican Republic": 1.0,
+      "Ecuador": 0.7291666666666666,
+      "Egypt": 0.7,
+      "Estonia": 1.0,
+      "Ethiopia": 0.6666666666666666,
+      "Finland": 0.21428571428571427,
+      "Germany": 0.7,
+      "Ghana": 0.0,
+      "Greece": 0.5714285714285714,
+      "Hungary": 0.2857142857142857,
+      "Iceland": 1.0,
+      "India": 1.0,
+      "Indonesia": 0.6666666666666666,
+      "Iran": 0.6666666666666666,
+      "Israel": 0.8,
+      "Ivory Coast": 0.875,
+      "Jamaica": 0.9,
+      "Jordan": 0.8333333333333334,
+      "Kuwait": 0.8,
+      "Kyrgyzstan": 1.0,
+      "Lebanon": 1.0,
+      "Liberia": 1.0,
+      "Lithuania": 0.6666666666666666,
+      "Madagascar": 0.8518518518518519,
+      "Malaysia": 0.5357142857142857,
+      "Mauritania": 1.0,
+      "Mexico": 0.6666666666666666,
+      "Moldova": 0.0,
+      "Mongolia": 0.8888888888888888,
+      "Morocco": 0.9090909090909091,
+      "Namibia": 1.0,
+      "Netherlands": 0.5555555555555556,
+      "Niger": 1.0,
+      "Nigeria": 0.26666666666666666,
+      "Norway": 0.3,
+      "Oman": 0.5,
+      "Pakistan": 0.7222222222222222,
+      "Palestine": 1.0,
+      "Panama": 0.8571428571428571,
+      "Paraguay": 1.0,
+      "Philippines": 0.717948717948718,
+      "Poland": 0.3333333333333333,
+      "Portugal": 0.25,
+      "Romania": 0.0,
+      "Russia": 0.75,
+      "Saudi Arabia": 0.8095238095238095,
+      "Sierra Leone": 1.0,
+      "Singapore": 1.0,
+      "Slovakia": 0.0,
+      "South Africa": 0.4,
+      "South Korea": 0.7777777777777778,
+      "Spain": 1.0,
+      "Sudan": 0.16666666666666666,
+      "Suriname": 0.7407407407407407,
+      "Syria": 0.5,
+      "Thailand": 0.8333333333333334,
+      "The Democratic Republic of the Congo": 0.6666666666666666,
+      "Togo": 0.2222222222222222,
+      "Tunisia": 0.4444444444444444,
+      "Turkiye": 0.6666666666666666,
+      "United Kingdom": 0.7142857142857143,
+      "Vietnam": 1.0,
+      "Yemen": 0.9,
+      "Zambia": 1.0
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 215,
+  "n_negatives": 645,
+  "walked_at_utc": "2026-06-29T06:33:35.098087+00:00",
+  "elapsed_seconds": 6685.720303297043,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/economic_recession/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Gabon",
+          "Central African Republic",
+          "Bhutan",
+          "Bosnia and Herzegovina",
+          "Estonia",
+          "El Salvador",
+          "Afghanistan",
+          "Republic of the Congo"
+        ],
+        "country_isos": [
+          "ga",
+          "cf",
+          "bt",
+          "ba",
+          "ee",
+          "sv",
+          "af",
+          "cg"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 8,
+        "countries": [
+          "Hungary",
+          "Ivory Coast",
+          "Jordan",
+          "Israel",
+          "India",
+          "Papua New Guinea",
+          "Bolivia",
+          "Lithuania"
+        ],
+        "country_isos": [
+          "hu",
+          "ci",
+          "jo",
+          "il",
+          "in",
+          "pg",
+          "bo",
+          "lt"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Finland",
+          "Norway",
+          "Philippines",
+          "Luxembourg",
+          "Greece",
+          "South Korea",
+          "Singapore",
+          "Cabo Verde",
+          "Guinea-Bissau"
+        ],
+        "country_isos": [
+          "fi",
+          "no",
+          "ph",
+          "lu",
+          "gr",
+          "kr",
+          "sg",
+          "cv",
+          "gw"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Algeria",
+          "Guatemala",
+          "Indonesia",
+          "Burkina Faso",
+          "Portugal",
+          "Eswatini",
+          "Morocco",
+          "Maldives"
+        ],
+        "country_isos": [
+          "dz",
+          "gt",
+          "id",
+          "bf",
+          "pt",
+          "sz",
+          "ma",
+          "mv"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 8,
+        "countries": [
+          "Georgia",
+          "Djibouti",
+          "Solomon Islands",
+          "Malta",
+          "Mexico",
+          "Ukraine",
+          "Japan",
+          "Ireland"
+        ],
+        "country_isos": [
+          "ge",
+          "dj",
+          "sb",
+          "mt",
+          "mx",
+          "ua",
+          "jp",
+          "ie"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Sweden",
+          "Montenegro",
+          "Honduras",
+          "Kuwait",
+          "Benin",
+          "Netherlands",
+          "Albania",
+          "Guyana",
+          "Canada"
+        ],
+        "country_isos": [
+          "se",
+          "me",
+          "hn",
+          "kw",
+          "bj",
+          "nl",
+          "al",
+          "gy",
+          "ca"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 8,
+        "countries": [
+          "Qatar",
+          "Belgium",
+          "Trinidad and Tobago",
+          "Mauritania",
+          "Armenia",
+          "Liberia",
+          "Spain",
+          "Namibia"
+        ],
+        "country_isos": [
+          "qa",
+          "be",
+          "tt",
+          "mr",
+          "am",
+          "lr",
+          "es",
+          "na"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 9,
+        "countries": [
+          "Uganda",
+          "Mongolia",
+          "Bulgaria",
+          "Chad",
+          "Libya",
+          "Niger",
+          "Barbados",
+          "Palestine",
+          "Czechia"
+        ],
+        "country_isos": [
+          "ug",
+          "mn",
+          "bg",
+          "td",
+          "ly",
+          "ne",
+          "bb",
+          "ps",
+          "cz"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 8,
+        "countries": [
+          "Saudi Arabia",
+          "Myanmar",
+          "Jamaica",
+          "United Kingdom",
+          "China",
+          "Senegal",
+          "Turkiye",
+          "Peru"
+        ],
+        "country_isos": [
+          "sa",
+          "mm",
+          "jm",
+          "gb",
+          "cn",
+          "sn",
+          "tr",
+          "pe"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 8,
+        "countries": [
+          "Comoros",
+          "Germany",
+          "Malaysia",
+          "Colombia",
+          "Angola",
+          "Kazakhstan",
+          "Mali",
+          "Fiji"
+        ],
+        "country_isos": [
+          "km",
+          "de",
+          "my",
+          "co",
+          "ao",
+          "kz",
+          "ml",
+          "fj"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Mozambique",
+          "Mauritius",
+          "Yemen",
+          "Bahrain",
+          "Brazil",
+          "Poland",
+          "Belarus",
+          "United Arab Emirates",
+          "Iceland"
+        ],
+        "country_isos": [
+          "mz",
+          "mu",
+          "ye",
+          "bh",
+          "br",
+          "pl",
+          "by",
+          "ae",
+          "is"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Uzbekistan",
+          "Cameroon",
+          "Dominican Republic",
+          "Nepal",
+          "Ecuador",
+          "United States",
+          "Lesotho",
+          "Denmark"
+        ],
+        "country_isos": [
+          "uz",
+          "cm",
+          "do",
+          "np",
+          "ec",
+          "us",
+          "ls",
+          "dk"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Sri Lanka",
+          "Equatorial Guinea",
+          "Switzerland",
+          "South Africa",
+          "Haiti",
+          "Botswana",
+          "Zambia",
+          "Bangladesh",
+          "Madagascar"
+        ],
+        "country_isos": [
+          "lk",
+          "gq",
+          "ch",
+          "za",
+          "ht",
+          "bw",
+          "zm",
+          "bd",
+          "mg"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 8,
+        "countries": [
+          "Pakistan",
+          "Latvia",
+          "New Zealand",
+          "France",
+          "Oman",
+          "Tunisia",
+          "Kyrgyzstan",
+          "Slovakia"
+        ],
+        "country_isos": [
+          "pk",
+          "lv",
+          "nz",
+          "fr",
+          "om",
+          "tn",
+          "kg",
+          "sk"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 8,
+        "countries": [
+          "Sao Tome and Principe",
+          "Australia",
+          "Malawi",
+          "Slovenia",
+          "Vanuatu",
+          "Kenya",
+          "Serbia",
+          "Ethiopia"
+        ],
+        "country_isos": [
+          "st",
+          "au",
+          "mw",
+          "si",
+          "vu",
+          "ke",
+          "rs",
+          "et"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 9,
+        "countries": [
+          "Laos",
+          "North Macedonia",
+          "Zimbabwe",
+          "Russia",
+          "Argentina",
+          "Sierra Leone",
+          "Togo",
+          "Tanzania",
+          "Romania"
+        ],
+        "country_isos": [
+          "la",
+          "mk",
+          "zw",
+          "ru",
+          "ar",
+          "sl",
+          "tg",
+          "tz",
+          "ro"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 8,
+        "countries": [
+          "Iraq",
+          "Uruguay",
+          "Moldova",
+          "Italy",
+          "Thailand",
+          "Seychelles",
+          "Costa Rica",
+          "Sudan"
+        ],
+        "country_isos": [
+          "iq",
+          "uy",
+          "md",
+          "it",
+          "th",
+          "sc",
+          "cr",
+          "sd"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "Rwanda",
+          "Vietnam",
+          "Nicaragua",
+          "Egypt",
+          "The Gambia",
+          "Ghana",
+          "Azerbaijan",
+          "Chile",
+          "Austria"
+        ],
+        "country_isos": [
+          "rw",
+          "vn",
+          "ni",
+          "eg",
+          "gm",
+          "gh",
+          "az",
+          "cl",
+          "at"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 8,
+        "countries": [
+          "Burundi",
+          "Syria",
+          "Cambodia",
+          "Tajikistan",
+          "Croatia",
+          "Guinea",
+          "Suriname",
+          "Paraguay"
+        ],
+        "country_isos": [
+          "bi",
+          "sy",
+          "kh",
+          "tj",
+          "hr",
+          "gn",
+          "sr",
+          "py"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Nigeria",
+          "Iran",
+          "Venezuela",
+          "Panama",
+          "Lebanon",
+          "South Sudan",
+          "The Democratic Republic of the Congo",
+          "Timor-Leste",
+          "Cyprus"
+        ],
+        "country_isos": [
+          "ng",
+          "ir",
+          "ve",
+          "pa",
+          "lb",
+          "ss",
+          "cd",
+          "tl",
+          "cy"
+        ]
+      }
+    ],
+    "median": 50.6,
+    "p90": 90.5,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 168,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.0697,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.6162898838802116,
+      "b": 0.0,
+      "c": -0.023403933800046017,
+      "n_fit": 579,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 60,
+        "observed_rate": 0.08333333333333333
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 156,
+        "observed_rate": 0.17307692307692307
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 138,
+        "observed_rate": 0.2028985507246377
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 121,
+        "observed_rate": 0.2975206611570248
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 104,
+        "observed_rate": 0.5192307692307693
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.04328562960988282,
+    "n_predictions": 579,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.1177633126504171,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 67,
+            "mean_predicted": 0.05217021477144601,
+            "mean_actual": 0.16417910447761194
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 50,
+            "mean_predicted": 0.15060149416327476,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 19,
+            "mean_predicted": 0.24437742013680308,
+            "mean_actual": 0.3157894736842105
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 20,
+            "mean_predicted": 0.3614630579948425,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 20,
+            "mean_predicted": 0.4571903616189957,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 16,
+            "mean_predicted": 0.5554697290062904,
+            "mean_actual": 0.5625
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 19,
+            "mean_predicted": 0.6485055308592947,
+            "mean_actual": 0.5263157894736842
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 11,
+            "mean_predicted": 0.7517231594432484,
+            "mean_actual": 0.2727272727272727
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 6,
+            "mean_predicted": 0.8431626260280609,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 3,
+            "mean_predicted": 0.9348635673522949,
+            "mean_actual": 1.0
+          }
+        ],
+        "n": 231,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.13189691257327288,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 54,
+            "mean_predicted": 0.045638355038439236,
+            "mean_actual": 0.1111111111111111
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 20,
+            "mean_predicted": 0.13826190903782845,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 22,
+            "mean_predicted": 0.24596076594157654,
+            "mean_actual": 0.22727272727272727
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 13,
+            "mean_predicted": 0.3377543802444751,
+            "mean_actual": 0.5384615384615384
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 8,
+            "mean_predicted": 0.44592996314167976,
+            "mean_actual": 0.125
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 12,
+            "mean_predicted": 0.5495904336373011,
+            "mean_actual": 0.16666666666666666
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 6,
+            "mean_predicted": 0.6427748103936514,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 4,
+            "mean_predicted": 0.7439765781164169,
+            "mean_actual": 0.75
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 7,
+            "mean_predicted": 0.8490577169827053,
+            "mean_actual": 0.5714285714285714
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.9189222455024719,
+            "mean_actual": 1.0
+          }
+        ],
+        "n": 147,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.1028334392491272,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 86,
+            "mean_predicted": 0.04870177784848005,
+            "mean_actual": 0.1744186046511628
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 31,
+            "mean_predicted": 0.1482366210510654,
+            "mean_actual": 0.1935483870967742
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 26,
+            "mean_predicted": 0.25033211822693163,
+            "mean_actual": 0.23076923076923078
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 19,
+            "mean_predicted": 0.3468702623718663,
+            "mean_actual": 0.3157894736842105
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 11,
+            "mean_predicted": 0.442458759654652,
+            "mean_actual": 0.2727272727272727
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.5723873376846313,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 9,
+            "mean_predicted": 0.6474893159336514,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 6,
+            "mean_predicted": 0.762988418340683,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 3,
+            "mean_predicted": 0.8571176131566366,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 3,
+            "mean_predicted": 0.9504546523094177,
+            "mean_actual": 0.6666666666666666
+          }
+        ],
+        "n": 196,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/economic_recession.scores.json",
+  "shape_points": [
+    -0.05988075174788671,
+    -0.041928564329386575,
+    -0.02397637691088644,
+    -0.006024189492386302,
+    0.01192799792611383,
+    0.029880185344613966,
+    0.0478323727631141,
+    0.06578456018161423,
+    0.08373674760011436,
+    0.1016889350186145,
+    0.11964112243711464,
+    0.13759330985561477
+  ],
+  "shap_importance_raw": {
+    "SH.DYN.MORT": 1.0040309429168701,
+    "v2stcritapparm": 1.0401945114135742,
+    "v2jucomp": 0.9355251789093018,
+    "FP.CPI.TOTL.ZG": 1.3368736505508423,
+    "v2xnp_regcorr": 0.9345531463623047
+  },
+  "shap_importance_normalized": {
+    "SH.DYN.MORT": 0.19120110799372414,
+    "v2stcritapparm": 0.19808786224602737,
+    "v2jucomp": 0.17815531685092253,
+    "FP.CPI.TOTL.ZG": 0.25458550360045973,
+    "v2xnp_regcorr": 0.17797020930886623
+  },
+  "shap_direction_signs": {
+    "SH.DYN.MORT": -1,
+    "v2stcritapparm": -1,
+    "v2jucomp": -1,
+    "FP.CPI.TOTL.ZG": -1,
+    "v2xnp_regcorr": -1
+  },
+  "per_feature_breakdown": {
+    "SH.DYN.MORT": {
+      "last_z": 0.12856633961200714,
+      "mean_z": 0.05920159071683884,
+      "std_z": 0.2339574247598648,
+      "slope": 0.19346341490745544,
+      "accel": 0.33724671602249146,
+      "tertile1_mean": 0.04393523186445236,
+      "tertile2_mean": 0.007660203613340855,
+      "tertile3_mean": 0.0
+    },
+    "v2stcritapparm": {
+      "last_z": 0.15892785787582397,
+      "mean_z": 0.027005501091480255,
+      "std_z": 0.03809428587555885,
+      "slope": 0.37304165959358215,
+      "accel": 0.2587769627571106,
+      "tertile1_mean": 0.07994943112134933,
+      "tertile2_mean": 0.10439889878034592,
+      "tertile3_mean": 0.0
+    },
+    "v2jucomp": {
+      "last_z": 0.06799045950174332,
+      "mean_z": 0.017098737880587578,
+      "std_z": 0.18498028814792633,
+      "slope": 0.2490912675857544,
+      "accel": 0.3575167953968048,
+      "tertile1_mean": 0.037142202258110046,
+      "tertile2_mean": 0.02170543186366558,
+      "tertile3_mean": 0.0
+    },
+    "FP.CPI.TOTL.ZG": {
+      "last_z": 0.34566375613212585,
+      "mean_z": 0.04400172829627991,
+      "std_z": 0.14979252219200134,
+      "slope": 0.09515850245952606,
+      "accel": 0.22518804669380188,
+      "tertile1_mean": 0.15548865497112274,
+      "tertile2_mean": 0.3215804994106293,
+      "tertile3_mean": 0.0
+    },
+    "v2xnp_regcorr": {
+      "last_z": 0.23835285007953644,
+      "mean_z": 0.04460844397544861,
+      "std_z": 0.1241336539387703,
+      "slope": 0.20193208754062653,
+      "accel": 0.1108943298459053,
+      "tertile1_mean": 0.12773960828781128,
+      "tertile2_mean": 0.08689220994710922,
+      "tertile3_mean": 0.0
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 3,
+    "indicators": [
+      {
+        "code": "SH.DYN.MORT",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 201,
+        "shape": {
+          "mean": [
+            -1.097,
+            -1.2011,
+            -1.3082
+          ],
+          "p25": [
+            -1.2715,
+            -1.3687,
+            -1.5102
+          ],
+          "p75": [
+            -1.0332,
+            -1.1282,
+            -1.1724
+          ]
+        }
+      },
+      {
+        "code": "v2stcritapparm",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 196,
+        "shape": {
+          "mean": [
+            -0.0426,
+            -0.0494,
+            0.1046
+          ],
+          "p25": [
+            -0.4432,
+            -0.4924,
+            -0.5506
+          ],
+          "p75": [
+            0.053,
+            0.0089,
+            0.4899
+          ]
+        }
+      },
+      {
+        "code": "v2jucomp",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 207,
+        "shape": {
+          "mean": [
+            0.0439,
+            0.0149,
+            -0.0903
+          ],
+          "p25": [
+            -0.7995,
+            -0.8202,
+            -0.9798
+          ],
+          "p75": [
+            0.8522,
+            0.8522,
+            0.8522
+          ]
+        }
+      },
+      {
+        "code": "FP.CPI.TOTL.ZG",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 162,
+        "shape": {
+          "mean": [
+            -0.0077,
+            -0.027,
+            0.1701
+          ],
+          "p25": [
+            -0.6225,
+            -0.6189,
+            -0.6512
+          ],
+          "p75": [
+            0.3567,
+            0.5006,
+            0.9267
+          ]
+        }
+      },
+      {
+        "code": "v2xnp_regcorr",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 207,
+        "shape": {
+          "mean": [
+            0.214,
+            0.2621,
+            0.1808
+          ],
+          "p25": [
+            -0.6144,
+            -0.6085,
+            -0.7701
+          ],
+          "p75": [
+            0.9798,
+            1.0382,
+            1.0905
+          ]
+        }
+      }
+    ],
+    "samples_used": 207,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 2025,
+        "label": "Gazprom Cuts Off All Gas Supplies to Moldova",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2024,
+        "label": "Central Bank Governor Crisis and Fuel Shortages",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "my",
+        "country_name": "Malaysia",
+        "year": 2024,
+        "label": "Semiconductor and Data Centre Investment Boom",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2023,
+        "label": "IMF $4.7 Billion Loan Approved amid Macroeconomic Stress",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2023,
+        "label": "Belarusian economy contracts under cumulative sanctions pressure",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 2023,
+        "label": "Diamond Revenue Crisis \u2014 Lab-Grown Diamonds Depress Prices",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2023,
+        "label": "Ethiopia defaults on Eurobond, seeks debt restructuring",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2023,
+        "label": "Electricity Export Revenue Falls Short of Debt Service Needs",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 2023,
+        "label": "IMF Negotiations Stall; Depositor Protests Target Banks",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2023,
+        "label": "Economic Crisis \u2014 Pakistan Near Default",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2023,
+        "label": "South Sudan Oil Revenue Crisis Deepens Amid Sudan Conflict",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2023,
+        "label": "IMF Deal Remains Elusive \u2014 Subsidy Reform Rejected",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2022,
+        "label": "Afghan economy contracts by 20-30% since Taliban takeover",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2022,
+        "label": "Inflation Reaches 95% \u2014 Economic Crisis Deepens",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2022,
+        "label": "Foreign Exchange Reserve Crisis and IMF Bailout Talks",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2022,
+        "label": "Russia-Ukraine War Worsens Egypt's Food Crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2022,
+        "label": "Russia-Ukraine War \u2014 Jamaica Faces Commodity Price Shock",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 2022,
+        "label": "Economic Hardship and Cost-of-Living Crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 2022,
+        "label": "Myanmar Economy Collapses Under Junta Rule",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2022,
+        "label": "Economic Crisis \u2014 IMF Negotiations for Bailout",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2021,
+        "label": "Evergrande crisis \u2014 real estate debt implosion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 2021,
+        "label": "State Infrastructure Collapses: Electricity, Fuel, and Judiciary",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 2021,
+        "label": "Gazprom Energy Crisis Forces Emergency Gas Negotiations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2021,
+        "label": "International Aid Withheld Over Democratic Backsliding",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2020,
+        "label": "Argentina Defaults for Third Time \u2014 Debt Restructuring",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 2020,
+        "label": "COVID-19 Collapses Tourism Revenue",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2020,
+        "label": "Economy Contracts 4.1% Due to COVID-19",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cr",
+        "country_name": "Costa Rica",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Devastates Tourism Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2020,
+        "label": "COVID-19 Border Closures Halt Coal Exports to China",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 2020,
+        "label": "Triple Shock: COVID-19, Oil Price Crash, and Fiscal Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 2020,
+        "label": "Tourism Collapse \u2014 GDP Contracts 8.4%",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2020,
+        "label": "Syrian Pound Collapses Amid Multiple Economic Crises",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2019,
+        "label": "India's GDP growth slows to 5 percent",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2018,
+        "label": "Weah Government Inherits Severe Economic Challenges",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2018,
+        "label": "Pakistan Faces IMF Bailout as Economy Deteriorates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2018,
+        "label": "South Africa's Economy in Recession \u2014 Land Expropriation Debate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2018,
+        "label": "Lira Crisis: 45 Percent Depreciation in One Year",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "td",
+        "country_name": "Chad",
+        "year": 2017,
+        "label": "Severe Austerity Amid Oil Price Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 2017,
+        "label": "Cocoa Price Crash of 30 Percent Damages Farmer Incomes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2017,
+        "label": "IMF Approves $5.5 Billion Bailout Package",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2016,
+        "label": "Eritrean Economy Continues to Stagnate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 2016,
+        "label": "Namibia's Debt Crisis \u2014 \"Fishrot\" Prelude and Fiscal Squeeze",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2016,
+        "label": "Nigeria Enters Recession \u2014 Oil Price Crash",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2016,
+        "label": "Naira Crashes \u2014 Foreign Exchange Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 2016,
+        "label": "Oil Price Slump Triggers Fiscal Crisis and Subsidy Cuts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2016,
+        "label": "Sudan's Economy Continues Deterioration Amid Ongoing Peripheral Conflicts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2016,
+        "label": "Recession Deepens and Foreign Exchange Shortage",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2016,
+        "label": "Economic Stagnation Deepens \u2014 Youth Unemployment Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2015,
+        "label": "Brazil Falls into Recession as Economy Contracts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 2015,
+        "label": "Oil Price Collapse Triggers First Recession in Decades",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2015,
+        "label": "China's stock market crash \u2014 $5 trillion wiped out",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 2015,
+        "label": "Economic Crisis as Commodity Prices Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 2015,
+        "label": "Remittance Crisis as Russian Ruble Collapse Halves Transfers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2015,
+        "label": "Oil and Gas Price Crash Triggers Fiscal Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2014,
+        "label": "Oil price collapse begins squeezing public finances",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 2014,
+        "label": "Oil Price Crash Triggers Severe Fiscal Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2014,
+        "label": "Argentina Defaults Again on Restructured Bonds",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 2014,
+        "label": "Oil Price Decline Begins; China Financing Expands; Indigenous Mining Protests",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2014,
+        "label": "Egypt's Economy Under Severe Stress; Gulf Bailout",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 2014,
+        "label": "Billion-Dollar Banking Fraud Scandal Exposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2014,
+        "label": "Economic Slowdown as FDI Collapses and Commodity Prices Fall",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2014,
+        "label": "Oil Price Crash Exposes Norwegian Economic Vulnerability",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2014,
+        "label": "Iron Ore Sector Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2013,
+        "label": "Jordan's Debt-to-GDP Reaches Concerning Levels",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 2013,
+        "label": "Unemployment Peaks at 17.5% \u2014 Mass Emigration Wave",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2013,
+        "label": "Severe Economic Crisis and September Protests Violently Suppressed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 2012,
+        "label": "Crippling Oil Sanctions; Rial Collapses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2012,
+        "label": "Oil Shutdown \u2014 South Sudan Halts Production in Revenue Dispute",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 2012,
+        "label": "Bauxite Industry Decline \u2014 Suralco Closes Refinery",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 2011,
+        "label": "Eurozone Crisis: Dutch Austerity and Bailout Contributions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2010,
+        "label": "Germany leads European response to Greek sovereign debt crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 2010,
+        "label": "Greece receives 110 billion euro EU-IMF bailout, implementing severe austerity",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 2010,
+        "label": "Garment Sector Collapses After AGOA Withdrawal, 40,000 Jobs Lost",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 2009,
+        "label": "GDP Contracts 6.5 Percent in Post-Crisis Recession",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2009,
+        "label": "Global Financial Crisis Collapses Iron Ore and Rubber Revenues",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 2009,
+        "label": "Global recession causes deepest economic contraction since independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2009,
+        "label": "Syria's Economy Grows but Inequality Worsens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 2009,
+        "label": "Global Financial Crisis Contracts Thai Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 2008,
+        "label": "Global Financial Crisis Causes 14% GDP Contraction in 2009",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 2008,
+        "label": "Global Financial Crisis \u2014 Diamond Demand Collapses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2008,
+        "label": "Global Financial Crisis Has Limited Impact on Brazil",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 2008,
+        "label": "Global Financial Crisis Ends Croatian Economic Boom",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2008,
+        "label": "Global Food Price Crisis Hits Egypt Hard",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 2008,
+        "label": "Global Financial Crisis Hits Estonian Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2008,
+        "label": "Global food price crisis hits Ethiopia hard",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 2008,
+        "label": "Global Financial Crisis Ends Finland's Growth Boom",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2008,
+        "label": "Global financial crisis hits Germany; government launches bank bailouts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2008,
+        "label": "Global financial crisis impacts India",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 2008,
+        "label": "Global financial crisis \u2014 Indonesia maintains positive growth",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2008,
+        "label": "Global Financial Crisis Hits Jamaica \u2014 Tourism and Remittances Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2008,
+        "label": "Global Financial Crisis and Energy Price Shock Impact",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2008,
+        "label": "Global Financial Crisis and Russian Recession Cut Remittances Sharply",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2008,
+        "label": "Global Financial Crisis Hits Lithuanian Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2008,
+        "label": "Global Financial Crisis Hits Mexico Hard",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2008,
+        "label": "Global Financial Crisis \u2014 Banking Sector Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 2008,
+        "label": "Global Financial Crisis Slows Panama's Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 2008,
+        "label": "Poland Alone Among EU States Avoids 2008 Recession",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 2008,
+        "label": "Global Financial Crisis Triggers Severe Romanian Recession",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2008,
+        "label": "Global financial crisis hits Russian economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2008,
+        "label": "Global Financial Crisis Pushes Singapore into Recession",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2008,
+        "label": "Global Financial Crisis Hits Tunisian Exports",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2008,
+        "label": "UK Enters Deepest Recession Since the Second World War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2008,
+        "label": "Global Financial Crisis; Inflation Crisis; Bauxite Mining Controversy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2008,
+        "label": "Yemen Economy in Crisis as Oil Revenues Decline",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 2008,
+        "label": "Global Financial Crisis Hits Copper Revenues",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2006,
+        "label": "Eritrean Economy Contracts Sharply",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ps",
+        "country_name": "Palestine",
+        "year": 2006,
+        "label": "International Community Imposes Sanctions on Hamas Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2003,
+        "label": "Israeli Economy Faces Recession",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2002,
+        "label": "IMF suspends engagement with Belarus over reform failures",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2002,
+        "label": "IMF Emergency Loan of $30 Billion Agreed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 2002,
+        "label": "Political Crisis Causes 13% GDP Contraction",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2001,
+        "label": "Economic Crisis, Corralito, and Presidential Resignations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2001,
+        "label": "Argentina Declares Largest Sovereign Default in History",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2001,
+        "label": "Worst Economic Crisis: Lira Collapses 50 Percent",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 2000,
+        "label": "Military-Indigenous Coup Ousts Mahuad; Ecuador Adopts the US Dollar",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1999,
+        "label": "Colombia's Worst Economic Recession Since the 1930s",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1999,
+        "label": "Total Economic and Financial Collapse; Mass Emigration Wave",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1998,
+        "label": "Banking Crisis Erupts; 1998 Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1998,
+        "label": "Egyptian Economic Growth Slows Following Asian Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 1998,
+        "label": "Russian Financial Crisis Devastates Moldovan Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1998,
+        "label": "Oil Price Crash \u2014 Below $10 Per Barrel",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ve",
+        "country_name": "Venezuela",
+        "year": 1998,
+        "label": "Oil Price Collapse and Economic Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1998,
+        "label": "Copper Price Collapse Triggers ZCCM Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1997,
+        "label": "Asian Financial Crisis Hits Copper Prices; Pinochet Becomes Senator-for-Life",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1997,
+        "label": "Economic Crisis and IMF Bailout",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1997,
+        "label": "Asian Financial Crisis; Phan Van Khai Becomes Prime Minister",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "my",
+        "country_name": "Malaysia",
+        "year": 1996,
+        "label": "Multimedia Super Corridor Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1996,
+        "label": "Russian economy contracts for sixth consecutive year",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1996,
+        "label": "Yemen Economy Dependent on Declining Oil Production",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1995,
+        "label": "Hariri's Economic Strategy Deepens Public Debt",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cm",
+        "country_name": "Cameroon",
+        "year": 1994,
+        "label": "CFA Franc Devaluation Hits Cameroon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "td",
+        "country_name": "Chad",
+        "year": 1994,
+        "label": "CFA Franc Devaluation Doubles Import Costs",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ge",
+        "country_name": "Georgia",
+        "year": 1994,
+        "label": "Hyperinflation Peaks at Over 15,000%",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mk",
+        "country_name": "North Macedonia",
+        "year": 1994,
+        "label": "Greece Imposes Trade Embargo Over Name Dispute",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1994,
+        "label": "Saudi Arabia Implements Austerity Measures",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 1994,
+        "label": "Currency Crisis: Lira Loses 60 Percent Value",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1993,
+        "label": "Croatian War Economy \u2014 GDP Falls 40% from 1989 Peak",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1993,
+        "label": "Hyperinflation and New Zaire Currency Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1993,
+        "label": "Dur\u00e1n Ball\u00e9n Privatization Program and Financial Liberalization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 1993,
+        "label": "Severe Economic Crisis and Hyperinflation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 1992,
+        "label": "Economic Collapse: Industrial Output Falls 50% in Two Years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 1992,
+        "label": "Hyperinflation Crisis Peaks at 325 Percent",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1991,
+        "label": "Soviet Union Dissolution Eliminates Cuba's Primary Economic Patron",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1991,
+        "label": "Kinshasa Pillaging \u2014 Military Looting Spree",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1991,
+        "label": "Economic transition shock produces sharp GDP decline and mass unemployment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1991,
+        "label": "Economic crisis \u2014 India near sovereign default",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1991,
+        "label": "Soviet Collapse Triggers Severe DPRK Economic Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1991,
+        "label": "Economic Crisis Following Gulf War Expulsions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1990,
+        "label": "Coffee price collapse devastates Burundian economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1990,
+        "label": "Cuba Declares 'Special Period' as Soviet Subsidies Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 1990,
+        "label": "Soviet Trade Collapse Triggers Deep Economic Depression",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1989,
+        "label": "Debt Crisis and IMF Structural Adjustment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1989,
+        "label": "Post-War Economic Crisis and Kuwait Tensions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1989,
+        "label": "Debt Crisis and Paris Club Negotiations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1988,
+        "label": "Price reform triggers 'price storming' inflation crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1988,
+        "label": "Egyptian Foreign Debt Reaches Peak Levels",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1988,
+        "label": "Economic Crisis and IMF Structural Adjustment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1988,
+        "label": "Syrian Economy Stagnates Amid Oil Revenue Decline",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1988,
+        "label": "PDRY Approaches Economic and Political Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1987,
+        "label": "Agrokomerc Financial Scandal Devastates Bosnian Muslim Leadership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1987,
+        "label": "Brazil Declares Moratorium on Foreign Debt",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1987,
+        "label": "Ethiopia's Economy Collapses Under War Costs",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1987,
+        "label": "Economic Emergency Declared",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1986,
+        "label": "Oil price collapse triggers severe economic crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1986,
+        "label": "Oil Price Collapse Devastates Ecuador's Economy; President Briefly Kidnapped",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1986,
+        "label": "Egypt's External Debt Crisis Deepens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1986,
+        "label": "Oil Price Collapse Devastates Budget",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1986,
+        "label": "Oil Price Crash Forces First Fiscal Austerity Measures",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1986,
+        "label": "Oil Price Crash and Budget Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 1986,
+        "label": "Oil Price Collapse Tests UAE Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1985,
+        "label": "International Tin Council Collapse Triggers Mass COMIBOL Layoffs",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1985,
+        "label": "Balance-of-payments crisis forces PASOK austerity stabilization program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "my",
+        "country_name": "Malaysia",
+        "year": 1985,
+        "label": "Bank Bumiputra Scandal and Economic Recession",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 1985,
+        "label": "Extreme Energy Rationing \u2014 Worst in Peacetime European History",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1985,
+        "label": "Rubicon Speech \u2014 Botha Refuses Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1985,
+        "label": "PDRY Marks Independence Anniversary Amid Economic Stress",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1983,
+        "label": "Austerity Program Shrinks Mexican Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 1983,
+        "label": "Uranium Price Collapse Triggers Economic Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1982,
+        "label": "Debt Crisis Forces IMF Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1982,
+        "label": "Latin American Debt Crisis and IMF Structural Adjustment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1982,
+        "label": "Souk Al-Manakh Stock Market Crash",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "my",
+        "country_name": "Malaysia",
+        "year": 1982,
+        "label": "Look East Policy \u2014 Emulating Japan and South Korea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1982,
+        "label": "Mexico Debt Crisis \u2014 Default Announcement Shocks Global Finance",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1982,
+        "label": "Economic Emergency and Import Restrictions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 1982,
+        "label": "Post-Itaip\u00fa Economic Recession Sets In",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1982,
+        "label": "Economic Crisis Deepens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 1982,
+        "label": "Food Rationing Introduced as Austerity Devastates Living Standards",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1982,
+        "label": "Soviet economy enters period of stagnation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1982,
+        "label": "Economic Decline Accelerates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 1982,
+        "label": "Oil Price Collapse Triggers Recession",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1982,
+        "label": "PDRY Economic Crisis Deepens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1981,
+        "label": "Brazil's External Debt Crisis Deepens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 1981,
+        "label": "Romania Faces Foreign Debt Crisis and IMF Rescheduling",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 1980,
+        "label": "Cocoa Price Collapse Ends 'Ivorian Miracle' Growth",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 1980,
+        "label": "Socialist Economic Model Collapses, GDP Contracts Sharply",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1980,
+        "label": "Philippine Debt Crisis Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 1979,
+        "label": "Jamaica Breaks with IMF \u2014 Debt Crisis Escalates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1979,
+        "label": "Second Oil Shock Tests Japan's Resilience",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1979,
+        "label": "Economic Crisis as Phosphate Prices Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1979,
+        "label": "Tanzania-Uganda War Causes Economic Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1978,
+        "label": "Oil Revenues Peak \u2014 Dutch Disease Symptoms Emerge",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1976,
+        "label": "IMF Stabilization Program Imposes Austerity",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1975,
+        "label": "Rodrigazo \u2014 Economic Crisis and Mass Strike",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1975,
+        "label": "Ghana's Economy Collapses with Triple-Digit Inflation and Shortages",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1975,
+        "label": "Pertamina crisis \u2014 state oil company defaults on $10 billion debt",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "my",
+        "country_name": "Malaysia",
+        "year": 1974,
+        "label": "PETRONAS Founded \u2014 Petroleum Development Act Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1974,
+        "label": "Oil Crisis Impact on Philippine Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1973,
+        "label": "Oil Shock Undermines Brazilian Economic Miracle",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "do",
+        "country_name": "Dominican Republic",
+        "year": 1973,
+        "label": "Oil Price Shock Exposes Vulnerability of Dominican Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1973,
+        "label": "Oil Price Shock Fuels State Expansion and Debt Accumulation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1973,
+        "label": "Ethiopia's economic crisis deepens with global oil shock",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 1973,
+        "label": "Oil Shock Hits Import-Dependent Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1973,
+        "label": "First Oil Shock Ends Japan's High-Growth Era",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1973,
+        "label": "Arab Oil Embargo Ends Spain's Economic Miracle Decade",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1973,
+        "label": "Global Oil Crisis Compounds Copper Price Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1972,
+        "label": "Hyperinflation and Shortages Grip Chile Under Allende",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1971,
+        "label": "Nixon Shock Disrupts Japan's Dollar-Linked Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1970,
+        "label": "Ten-Million-Ton Sugar Harvest Fails, Castro Admits Economic Defeat",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1970,
+        "label": "Eritrean Economy Stagnates Under Ethiopian Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1966,
+        "label": "Intra Bank Collapse and Banking Sector Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1962,
+        "label": "Afghan-Pakistani trade embargo causes severe economic hardship",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1962,
+        "label": "Economic Crisis Forces Planning Revision Under Ota \u0160ik",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1961,
+        "label": "Afghan economy strained by Pakistan border closure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1960,
+        "label": "Syrian Economic Discontent with Cairo Deepens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1959,
+        "label": "Inflation Crisis Strains Kubitschek Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1954,
+        "label": "Economic Stagnation Begins Amid Global Commodity Decline",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1952,
+        "label": "Argentina Faces Severe Economic Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1952,
+        "label": "Economic Difficulties and Cotton Export Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1950,
+        "label": "Ecuador's Banana Export Boom Begins",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 229
+  }
+}

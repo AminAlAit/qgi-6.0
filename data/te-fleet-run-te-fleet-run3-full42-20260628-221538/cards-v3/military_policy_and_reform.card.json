@@ -1,0 +1,3035 @@
+{
+  "recipe_id": "military_policy_and_reform",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Civil Conflict",
+  "description_compelling": "Material change to how a country recruits, deploys, or controls its armed forces \u2014 conscription reform, defense-spending shifts, command restructuring, civil-military rebalancing. Government-effectiveness scores, judicial-constraint measures, and political-stability indices typically reposition first. Frequent in states with assertive militaries renegotiating their political role.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6877069402064533,
+    "ci95_lo": 0.6437852059144445,
+    "ci95_hi": 0.7364493921158608,
+    "ci80_lo": 0.6600404755837478,
+    "ci80_hi": 0.7223398155650754,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2cseeorgs",
+      "v2exl_legitlead",
+      "v2xca_academ",
+      "v2cltort"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2cseeorgs",
+        "name": "CSO Entry/Exit Freedom (0-4)"
+      },
+      {
+        "code": "v2exl_legitlead",
+        "name": "Legitimacy of Political Leadership (0-3)"
+      },
+      {
+        "code": "v2xca_academ",
+        "name": null
+      },
+      {
+        "code": "v2cltort",
+        "name": "Freedom from Torture (0-4)"
+      }
+    ],
+    "chosen_window": 18,
+    "final_global_auc": 0.6877069402064533,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2cseeorgs",
+        "window": 21,
+        "auc": 0.6390063268684958,
+        "lift_over_previous": 0.1390063268684958,
+        "selected_after": [
+          "v2cseeorgs"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2exl_legitlead",
+        "window": 15,
+        "auc": 0.6499049542592372,
+        "lift_over_previous": 0.010898627390741433,
+        "selected_after": [
+          "v2cseeorgs",
+          "v2exl_legitlead"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2xca_academ",
+        "window": 12,
+        "auc": 0.674141656662665,
+        "lift_over_previous": 0.02423670240342779,
+        "selected_after": [
+          "v2cseeorgs",
+          "v2exl_legitlead",
+          "v2xca_academ"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2cltort",
+        "window": 18,
+        "auc": 0.6877069402064533,
+        "lift_over_previous": 0.013565283543788276,
+        "selected_after": [
+          "v2cseeorgs",
+          "v2exl_legitlead",
+          "v2xca_academ",
+          "v2cltort"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2mecenefm",
+        "window": 15,
+        "auc": 0.6800368312225381,
+        "lift_over_previous": -0.00767010898391518,
+        "selected_after": [
+          "v2cseeorgs",
+          "v2exl_legitlead",
+          "v2xca_academ",
+          "v2cltort",
+          "v2mecenefm"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 161,
+    "n_pos_survive": 146,
+    "n_neg_total": 483,
+    "n_neg_survive": 422,
+    "pos_coverage": 0.906832298136646,
+    "neg_coverage": 0.8737060041407867,
+    "n_countries_survive": 67,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 229,
+      "loco_auc": 0.6949275362318841,
+      "ece": 0.14569962391930766,
+      "ece_ci95_lo": 0.11343679131139843,
+      "ece_ci95_hi": 0.20808311603133722,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 71,
+          "mean_predicted": 0.04087425811662221,
+          "mean_actual": 0.09859154929577464
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 40,
+          "mean_predicted": 0.14344653505831956,
+          "mean_actual": 0.3
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 23,
+          "mean_predicted": 0.24489818966907004,
+          "mean_actual": 0.2608695652173913
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 13,
+          "mean_predicted": 0.3525875531710111,
+          "mean_actual": 0.5384615384615384
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 20,
+          "mean_predicted": 0.4410116657614708,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 12,
+          "mean_predicted": 0.5483050694068273,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 12,
+          "mean_predicted": 0.6414489150047302,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 16,
+          "mean_predicted": 0.7497273869812489,
+          "mean_actual": 0.1875
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 17,
+          "mean_predicted": 0.8545441522317774,
+          "mean_actual": 0.5882352941176471
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 5,
+          "mean_predicted": 0.9273029685020446,
+          "mean_actual": 0.6
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6235062927644119,
+      "loco_auc_ci95_hi": 0.7652907571039951
+    },
+    "mid-tier": {
+      "n": 96,
+      "loco_auc": 0.6236619718309859,
+      "ece": 0.13699153267468014,
+      "ece_ci95_lo": 0.10453480954117064,
+      "ece_ci95_hi": 0.24634073822914307,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 30,
+          "mean_predicted": 0.05381507972876231,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 17,
+          "mean_predicted": 0.1480273262542837,
+          "mean_actual": 0.23529411764705882
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 14,
+          "mean_predicted": 0.24435739432062423,
+          "mean_actual": 0.21428571428571427
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 7,
+          "mean_predicted": 0.35896712115832735,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 9,
+          "mean_predicted": 0.43981869022051495,
+          "mean_actual": 0.4444444444444444
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 7,
+          "mean_predicted": 0.5568213633128575,
+          "mean_actual": 0.2857142857142857
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 4,
+          "mean_predicted": 0.6373362690210342,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 2,
+          "mean_predicted": 0.7657376527786255,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 3,
+          "mean_predicted": 0.8443004886309305,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 3,
+          "mean_predicted": 0.9402557412783304,
+          "mean_actual": 0.6666666666666666
+        }
+      ],
+      "loco_auc_ci95_lo": 0.4853062344556676,
+      "loco_auc_ci95_hi": 0.7418812586522907
+    },
+    "stable-democracy": {
+      "n": 231,
+      "loco_auc": 0.6897237569060773,
+      "ece": 0.11379128322005272,
+      "ece_ci95_lo": 0.07169412900088959,
+      "ece_ci95_hi": 0.1685285502367399,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 96,
+          "mean_predicted": 0.04950298729818314,
+          "mean_actual": 0.09375
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 48,
+          "mean_predicted": 0.13420275428021947,
+          "mean_actual": 0.20833333333333334
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 28,
+          "mean_predicted": 0.23879983489002501,
+          "mean_actual": 0.39285714285714285
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 20,
+          "mean_predicted": 0.35078213214874265,
+          "mean_actual": 0.45
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 11,
+          "mean_predicted": 0.4423608590256084,
+          "mean_actual": 0.2727272727272727
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 13,
+          "mean_predicted": 0.5529121298056382,
+          "mean_actual": 0.38461538461538464
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.6601128339767456,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 7,
+          "mean_predicted": 0.7445487635476249,
+          "mean_actual": 0.14285714285714285
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 3,
+          "mean_predicted": 0.8718702594439188,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6111983719716985,
+      "loco_auc_ci95_hi": 0.760941081356652
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-30T00:22:17.442786+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.4978,
+  "stability_diagnostic": {
+    "fold_variance": 0.07505008544934536,
+    "fold_auc_mean": 0.6729984248129409,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Afghanistan": 1.0,
+      "Albania": 1.0,
+      "Algeria": 1.0,
+      "Argentina": 0.6388888888888888,
+      "Australia": 1.0,
+      "Azerbaijan": 0.8,
+      "Bangladesh": 0.2,
+      "Belarus": 0.3333333333333333,
+      "Belgium": 0.8181818181818182,
+      "Brazil": 0.6,
+      "Burkina Faso": 0.8,
+      "Chile": 0.0,
+      "China": 0.5,
+      "Colombia": 0.1111111111111111,
+      "Croatia": 1.0,
+      "Cyprus": 0.3333333333333333,
+      "Czechia": 1.0,
+      "Denmark": 0.7142857142857143,
+      "Eritrea": 0.8571428571428571,
+      "Estonia": 0.5,
+      "Finland": 0.6363636363636364,
+      "France": 0.5777777777777777,
+      "Georgia": 0.5,
+      "Germany": 0.7222222222222222,
+      "Iceland": 0.6428571428571429,
+      "India": 0.30357142857142855,
+      "Indonesia": 0.16666666666666666,
+      "Iraq": 0.5833333333333334,
+      "Israel": 1.0,
+      "Ivory Coast": 1.0,
+      "Japan": 0.875,
+      "Jordan": 1.0,
+      "Latvia": 0.75,
+      "Lebanon": 1.0,
+      "Lithuania": 1.0,
+      "Mongolia": 0.7272727272727273,
+      "Morocco": 0.5,
+      "Netherlands": 0.2,
+      "New Zealand": 0.2857142857142857,
+      "Niger": 1.0,
+      "North Korea": 0.46153846153846156,
+      "Norway": 1.0,
+      "Pakistan": 0.6222222222222222,
+      "Panama": 1.0,
+      "Papua New Guinea": 0.8,
+      "Philippines": 0.4,
+      "Portugal": 0.5714285714285714,
+      "Russia": 0.8818181818181818,
+      "Rwanda": 0.625,
+      "Saudi Arabia": 0.3333333333333333,
+      "Somalia": 0.875,
+      "South Korea": 1.0,
+      "Sudan": 1.0,
+      "Sweden": 0.5,
+      "Syria": 0.4375,
+      "Taiwan": 0.8095238095238095,
+      "Tajikistan": 0.5,
+      "The Democratic Republic of the Congo": 0.5833333333333334,
+      "Timor-Leste": 0.6666666666666666,
+      "Uganda": 0.5,
+      "United Kingdom": 1.0,
+      "United States": 0.48148148148148145
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 161,
+  "n_negatives": 483,
+  "walked_at_utc": "2026-06-30T00:27:38.513516+00:00",
+  "elapsed_seconds": 5999.968905687332,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/military_policy_and_reform/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Sierra Leone",
+          "Slovenia",
+          "Botswana",
+          "Malaysia",
+          "Jordan",
+          "Kuwait",
+          "Luxembourg",
+          "Niger"
+        ],
+        "country_isos": [
+          "sl",
+          "si",
+          "bw",
+          "my",
+          "jo",
+          "kw",
+          "lu",
+          "ne"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Romania",
+          "Nicaragua",
+          "Djibouti",
+          "Dominican Republic",
+          "Bhutan",
+          "Qatar",
+          "Czechia",
+          "France",
+          "Kazakhstan"
+        ],
+        "country_isos": [
+          "ro",
+          "ni",
+          "dj",
+          "do",
+          "bt",
+          "qa",
+          "cz",
+          "fr",
+          "kz"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Sweden",
+          "South Korea",
+          "Mauritius",
+          "Syria",
+          "Morocco",
+          "Liberia",
+          "Gabon",
+          "Serbia",
+          "Bulgaria"
+        ],
+        "country_isos": [
+          "se",
+          "kr",
+          "mu",
+          "sy",
+          "ma",
+          "lr",
+          "ga",
+          "rs",
+          "bg"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Mali",
+          "Slovakia",
+          "Algeria",
+          "Benin",
+          "Comoros",
+          "Myanmar",
+          "Ethiopia",
+          "Oman"
+        ],
+        "country_isos": [
+          "ml",
+          "sk",
+          "dz",
+          "bj",
+          "km",
+          "mm",
+          "et",
+          "om"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Togo",
+          "Lithuania",
+          "Mongolia",
+          "Seychelles",
+          "Jamaica",
+          "North Macedonia",
+          "Panama",
+          "Namibia",
+          "Zambia"
+        ],
+        "country_isos": [
+          "tg",
+          "lt",
+          "mn",
+          "sc",
+          "jm",
+          "mk",
+          "pa",
+          "na",
+          "zm"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Albania",
+          "Mexico",
+          "Portugal",
+          "Chile",
+          "Singapore",
+          "Belgium",
+          "Suriname",
+          "Bolivia",
+          "Fiji"
+        ],
+        "country_isos": [
+          "al",
+          "mx",
+          "pt",
+          "cl",
+          "sg",
+          "be",
+          "sr",
+          "bo",
+          "fj"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 9,
+        "countries": [
+          "El Salvador",
+          "Croatia",
+          "United Arab Emirates",
+          "Austria",
+          "Madagascar",
+          "Pakistan",
+          "Argentina",
+          "Paraguay",
+          "Maldives"
+        ],
+        "country_isos": [
+          "sv",
+          "hr",
+          "ae",
+          "at",
+          "mg",
+          "pk",
+          "ar",
+          "py",
+          "mv"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Hong Kong",
+          "Nigeria",
+          "United States",
+          "Latvia",
+          "Haiti",
+          "Guatemala",
+          "Hungary",
+          "Spain"
+        ],
+        "country_isos": [
+          "hk",
+          "ng",
+          "us",
+          "lv",
+          "ht",
+          "gt",
+          "hu",
+          "es"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Somalia",
+          "Armenia",
+          "Thailand",
+          "Israel",
+          "Sao Tome and Principe",
+          "Turkiye",
+          "Uruguay",
+          "Libya",
+          "Brazil"
+        ],
+        "country_isos": [
+          "so",
+          "am",
+          "th",
+          "il",
+          "st",
+          "tr",
+          "uy",
+          "ly",
+          "br"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 9,
+        "countries": [
+          "Ecuador",
+          "Finland",
+          "Cuba",
+          "Estonia",
+          "Barbados",
+          "New Zealand",
+          "Eswatini",
+          "Netherlands",
+          "South Africa"
+        ],
+        "country_isos": [
+          "ec",
+          "fi",
+          "cu",
+          "ee",
+          "bb",
+          "nz",
+          "sz",
+          "nl",
+          "za"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Costa Rica",
+          "Guinea",
+          "Tanzania",
+          "Uzbekistan",
+          "The Democratic Republic of the Congo",
+          "Uganda",
+          "India",
+          "United Kingdom",
+          "Philippines"
+        ],
+        "country_isos": [
+          "cr",
+          "gn",
+          "tz",
+          "uz",
+          "cd",
+          "ug",
+          "in",
+          "gb",
+          "ph"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Poland",
+          "Italy",
+          "Ivory Coast",
+          "Colombia",
+          "Guinea-Bissau",
+          "Moldova",
+          "Central African Republic",
+          "Norway"
+        ],
+        "country_isos": [
+          "pl",
+          "it",
+          "ci",
+          "co",
+          "gw",
+          "md",
+          "cf",
+          "no"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "South Sudan",
+          "Cyprus",
+          "Denmark",
+          "Switzerland",
+          "Germany",
+          "Ghana",
+          "Tunisia",
+          "Malta",
+          "Bahrain"
+        ],
+        "country_isos": [
+          "ss",
+          "cy",
+          "dk",
+          "ch",
+          "de",
+          "gh",
+          "tn",
+          "mt",
+          "bh"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "The Gambia",
+          "Ukraine",
+          "Taiwan",
+          "Mozambique",
+          "Ireland",
+          "Cambodia",
+          "Timor-Leste",
+          "Bosnia and Herzegovina",
+          "Lesotho"
+        ],
+        "country_isos": [
+          "gm",
+          "ua",
+          "tw",
+          "mz",
+          "ie",
+          "kh",
+          "tl",
+          "ba",
+          "ls"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Republic of the Congo",
+          "Sri Lanka",
+          "Tajikistan",
+          "Kyrgyzstan",
+          "Senegal",
+          "Malawi",
+          "Mauritania",
+          "Belarus",
+          "Nepal"
+        ],
+        "country_isos": [
+          "cg",
+          "lk",
+          "tj",
+          "kg",
+          "sn",
+          "mw",
+          "mr",
+          "by",
+          "np"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Cabo Verde",
+          "Indonesia",
+          "Burkina Faso",
+          "Lebanon",
+          "Greece",
+          "Iran",
+          "Japan",
+          "Palestine"
+        ],
+        "country_isos": [
+          "cv",
+          "id",
+          "bf",
+          "lb",
+          "gr",
+          "ir",
+          "jp",
+          "ps"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 9,
+        "countries": [
+          "Sudan",
+          "China",
+          "Montenegro",
+          "Russia",
+          "Vietnam",
+          "Guyana",
+          "Eritrea",
+          "Chad",
+          "Trinidad and Tobago"
+        ],
+        "country_isos": [
+          "sd",
+          "cn",
+          "me",
+          "ru",
+          "vn",
+          "gy",
+          "er",
+          "td",
+          "tt"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "Australia",
+          "Zimbabwe",
+          "Yemen",
+          "Saudi Arabia",
+          "Solomon Islands",
+          "Papua New Guinea",
+          "Angola",
+          "Turkmenistan",
+          "Cameroon"
+        ],
+        "country_isos": [
+          "au",
+          "zw",
+          "ye",
+          "sa",
+          "sb",
+          "pg",
+          "ao",
+          "tm",
+          "cm"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Laos",
+          "Peru",
+          "Egypt",
+          "Bangladesh",
+          "Honduras",
+          "Azerbaijan",
+          "Venezuela",
+          "Afghanistan",
+          "Iceland"
+        ],
+        "country_isos": [
+          "la",
+          "pe",
+          "eg",
+          "bd",
+          "hn",
+          "az",
+          "ve",
+          "af",
+          "is"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Canada",
+          "Kenya",
+          "North Korea",
+          "Equatorial Guinea",
+          "Iraq",
+          "Burundi",
+          "Rwanda",
+          "Georgia",
+          "Vanuatu"
+        ],
+        "country_isos": [
+          "ca",
+          "ke",
+          "kp",
+          "gq",
+          "iq",
+          "bi",
+          "rw",
+          "ge",
+          "vu"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.3,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 175,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.0713,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.7299823282871186,
+      "b": 0.24081352795675873,
+      "c": 0.2814243387309895,
+      "n_fit": 568,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 81,
+        "observed_rate": 0.06172839506172839
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 128,
+        "observed_rate": 0.140625
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 130,
+        "observed_rate": 0.24615384615384617
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 122,
+        "observed_rate": 0.4262295081967213
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 107,
+        "observed_rate": 0.3644859813084112
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.03022985685915771,
+    "n_predictions": 568,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.14569962391930766,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 71,
+            "mean_predicted": 0.04087425811662221,
+            "mean_actual": 0.09859154929577464
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 40,
+            "mean_predicted": 0.14344653505831956,
+            "mean_actual": 0.3
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 23,
+            "mean_predicted": 0.24489818966907004,
+            "mean_actual": 0.2608695652173913
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 13,
+            "mean_predicted": 0.3525875531710111,
+            "mean_actual": 0.5384615384615384
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 20,
+            "mean_predicted": 0.4410116657614708,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 12,
+            "mean_predicted": 0.5483050694068273,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 12,
+            "mean_predicted": 0.6414489150047302,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 16,
+            "mean_predicted": 0.7497273869812489,
+            "mean_actual": 0.1875
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 17,
+            "mean_predicted": 0.8545441522317774,
+            "mean_actual": 0.5882352941176471
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 5,
+            "mean_predicted": 0.9273029685020446,
+            "mean_actual": 0.6
+          }
+        ],
+        "n": 229,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.13699153267468014,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 30,
+            "mean_predicted": 0.05381507972876231,
+            "mean_actual": 0.16666666666666666
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 17,
+            "mean_predicted": 0.1480273262542837,
+            "mean_actual": 0.23529411764705882
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 14,
+            "mean_predicted": 0.24435739432062423,
+            "mean_actual": 0.21428571428571427
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 7,
+            "mean_predicted": 0.35896712115832735,
+            "mean_actual": 0.42857142857142855
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 9,
+            "mean_predicted": 0.43981869022051495,
+            "mean_actual": 0.4444444444444444
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 7,
+            "mean_predicted": 0.5568213633128575,
+            "mean_actual": 0.2857142857142857
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 4,
+            "mean_predicted": 0.6373362690210342,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 2,
+            "mean_predicted": 0.7657376527786255,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 3,
+            "mean_predicted": 0.8443004886309305,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 3,
+            "mean_predicted": 0.9402557412783304,
+            "mean_actual": 0.6666666666666666
+          }
+        ],
+        "n": 96,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.11379128322005272,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 96,
+            "mean_predicted": 0.04950298729818314,
+            "mean_actual": 0.09375
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 48,
+            "mean_predicted": 0.13420275428021947,
+            "mean_actual": 0.20833333333333334
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 28,
+            "mean_predicted": 0.23879983489002501,
+            "mean_actual": 0.39285714285714285
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 20,
+            "mean_predicted": 0.35078213214874265,
+            "mean_actual": 0.45
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 11,
+            "mean_predicted": 0.4423608590256084,
+            "mean_actual": 0.2727272727272727
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 13,
+            "mean_predicted": 0.5529121298056382,
+            "mean_actual": 0.38461538461538464
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 5,
+            "mean_predicted": 0.6601128339767456,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 7,
+            "mean_predicted": 0.7445487635476249,
+            "mean_actual": 0.14285714285714285
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 3,
+            "mean_predicted": 0.8718702594439188,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 231,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/military_policy_and_reform.scores.json",
+  "shape_points": [
+    0.014534805804630103,
+    0.029250947558893063,
+    0.04396708931315601,
+    0.05868323106741896,
+    0.07339937282168192,
+    0.08811551457594488,
+    0.10283165633020783,
+    0.11754779808447079,
+    0.13226393983873375,
+    0.1469800815929967,
+    0.16169622334725967,
+    0.1764123651015226
+  ],
+  "shap_importance_raw": {
+    "v2cseeorgs": 1.3197742700576782,
+    "v2exl_legitlead": 1.3065805435180664,
+    "v2xca_academ": 0.6530227661132812,
+    "v2cltort": 1.1415867805480957
+  },
+  "shap_importance_normalized": {
+    "v2cseeorgs": 0.2985263310258604,
+    "v2exl_legitlead": 0.2955419761511009,
+    "v2xca_academ": 0.14771047963803444,
+    "v2cltort": 0.25822121318500424
+  },
+  "shap_direction_signs": {
+    "v2cseeorgs": -1,
+    "v2exl_legitlead": -1,
+    "v2xca_academ": -1,
+    "v2cltort": -1
+  },
+  "per_feature_breakdown": {
+    "v2cseeorgs": {
+      "last_z": 0.37945762276649475,
+      "mean_z": 0.09381861239671707,
+      "std_z": 0.1366063803434372,
+      "slope": 0.1563856154680252,
+      "accel": 0.25831544399261475,
+      "tertile1_mean": 0.1679692566394806,
+      "tertile2_mean": 0.08066877722740173,
+      "tertile3_mean": 0.04655251279473305
+    },
+    "v2exl_legitlead": {
+      "last_z": 0.2594775855541229,
+      "mean_z": 0.15529586374759674,
+      "std_z": 0.13173963129520416,
+      "slope": 0.2551269233226776,
+      "accel": 0.17056140303611755,
+      "tertile1_mean": 0.0993885025382042,
+      "tertile2_mean": 0.08754374086856842,
+      "tertile3_mean": 0.1474468857049942
+    },
+    "v2xca_academ": {
+      "last_z": 0.04279470443725586,
+      "mean_z": 0.04476698487997055,
+      "std_z": 0.15003585815429688,
+      "slope": 0.15569335222244263,
+      "accel": 0.10365937650203705,
+      "tertile1_mean": 0.08233091980218887,
+      "tertile2_mean": 0.05217144638299942,
+      "tertile3_mean": 0.02157011441886425
+    },
+    "v2cltort": {
+      "last_z": 0.08781763911247253,
+      "mean_z": 0.05792421102523804,
+      "std_z": 0.12199964374303818,
+      "slope": 0.12202801555395126,
+      "accel": 0.3260066509246826,
+      "tertile1_mean": 0.22274476289749146,
+      "tertile2_mean": 0.03025790862739086,
+      "tertile3_mean": 0.17280787229537964
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 18,
+    "indicators": [
+      {
+        "code": "v2cseeorgs",
+        "name": "CSO Entry/Exit Freedom (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 154,
+        "shape": {
+          "mean": [
+            -0.1202,
+            -0.0999,
+            -0.1233,
+            -0.0625,
+            -0.1183,
+            -0.1604,
+            -0.1534,
+            -0.1429,
+            -0.0704,
+            -0.0337,
+            0.0081,
+            0.1077,
+            0.1082,
+            0.1364,
+            0.1287,
+            0.1813,
+            0.1961,
+            0.2877
+          ],
+          "p25": [
+            -0.6664,
+            -0.6565,
+            -0.6414,
+            -0.6154,
+            -0.6245,
+            -0.6504,
+            -0.6485,
+            -0.6523,
+            -0.6085,
+            -0.6085,
+            -0.6085,
+            -0.4891,
+            -0.4884,
+            -0.5536,
+            -0.7237,
+            -0.8164,
+            -0.8891,
+            -0.9559
+          ],
+          "p75": [
+            0.387,
+            0.3596,
+            0.3717,
+            0.3895,
+            0.3819,
+            0.3577,
+            0.358,
+            0.3673,
+            0.5145,
+            0.5491,
+            0.6615,
+            0.7579,
+            0.8328,
+            0.8817,
+            0.9957,
+            1.0467,
+            1.0932,
+            1.172
+          ]
+        }
+      },
+      {
+        "code": "v2exl_legitlead",
+        "name": "Legitimacy of Political Leadership (0-3)",
+        "provider": "V-Dem",
+        "n_samples": 154,
+        "shape": {
+          "mean": [
+            0.0266,
+            0.0531,
+            0.1064,
+            0.1392,
+            0.1644,
+            0.2002,
+            0.1286,
+            0.0784,
+            0.0294,
+            0.0277,
+            0.0003,
+            -0.0617,
+            -0.1625,
+            -0.1696,
+            -0.1489,
+            -0.1418,
+            -0.0829,
+            -0.0328
+          ],
+          "p25": [
+            -0.5011,
+            -0.4578,
+            -0.3618,
+            -0.3063,
+            -0.2922,
+            -0.2889,
+            -0.3274,
+            -0.3527,
+            -0.5094,
+            -0.5396,
+            -0.5662,
+            -0.7388,
+            -0.8005,
+            -0.8383,
+            -0.857,
+            -0.8638,
+            -0.8977,
+            -1.0229
+          ],
+          "p75": [
+            0.6111,
+            0.6248,
+            0.641,
+            0.6371,
+            0.694,
+            0.7022,
+            0.611,
+            0.5965,
+            0.5654,
+            0.5878,
+            0.5193,
+            0.4372,
+            0.3225,
+            0.3277,
+            0.4487,
+            0.6538,
+            0.6766,
+            0.7982
+          ]
+        }
+      },
+      {
+        "code": "v2xca_academ",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 149,
+        "shape": {
+          "mean": [
+            -0.1344,
+            -0.1018,
+            -0.0589,
+            -0.0488,
+            -0.0757,
+            -0.0482,
+            -0.0382,
+            -0.0255,
+            -0.0036,
+            0.0331,
+            0.0063,
+            0.0362,
+            0.0809,
+            0.1479,
+            0.2412,
+            0.3068,
+            0.3587,
+            0.4224
+          ],
+          "p25": [
+            -0.6963,
+            -0.6197,
+            -0.6142,
+            -0.5858,
+            -0.6569,
+            -0.5506,
+            -0.5639,
+            -0.5506,
+            -0.537,
+            -0.537,
+            -0.537,
+            -0.5493,
+            -0.5486,
+            -0.6396,
+            -0.5202,
+            -0.5801,
+            -0.6637,
+            -0.5801
+          ],
+          "p75": [
+            0.5137,
+            0.4569,
+            0.4558,
+            0.4852,
+            0.4894,
+            0.5313,
+            0.5419,
+            0.5553,
+            0.556,
+            0.6202,
+            0.6733,
+            0.7157,
+            0.8263,
+            0.9499,
+            1.0312,
+            1.1425,
+            1.2799,
+            1.4627
+          ]
+        }
+      },
+      {
+        "code": "v2cltort",
+        "name": "Freedom from Torture (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 154,
+        "shape": {
+          "mean": [
+            -0.1501,
+            -0.1202,
+            -0.0872,
+            -0.0556,
+            -0.105,
+            -0.099,
+            -0.0357,
+            0.0526,
+            0.0715,
+            0.1286,
+            0.1229,
+            0.1962,
+            0.193,
+            0.1932,
+            0.2791,
+            0.2678,
+            0.3179,
+            0.4374
+          ],
+          "p25": [
+            -0.6634,
+            -0.6496,
+            -0.6122,
+            -0.5603,
+            -0.6114,
+            -0.6443,
+            -0.4899,
+            -0.4572,
+            -0.3778,
+            -0.3239,
+            -0.4209,
+            -0.2135,
+            -0.2673,
+            -0.2434,
+            -0.2034,
+            -0.3571,
+            -0.1506,
+            0.0
+          ],
+          "p75": [
+            0.3606,
+            0.4011,
+            0.411,
+            0.4379,
+            0.4055,
+            0.4148,
+            0.4276,
+            0.5506,
+            0.6207,
+            0.6359,
+            0.7287,
+            0.8311,
+            0.9204,
+            0.948,
+            1.0193,
+            1.0496,
+            1.1962,
+            1.3064
+          ]
+        }
+      }
+    ],
+    "samples_used": 154,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2025,
+        "label": "Denmark Announces Billions in Arctic Defense Spending",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2025,
+        "label": "Japan's Defense Transformation Accelerates with Record Budgets",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2025,
+        "label": "Neutrality Debate Intensifies Over Arms Re-Export Policy",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2024,
+        "label": "Belarus deepens formal military integration with Russia",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2024,
+        "label": "India conducts Agni-V MIRV test \u2014 Mission Divyastra",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2024,
+        "label": "NATO Upgrades Latvia Battlegroup to Brigade-Level Presence",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 2023,
+        "label": "AUKUS Submarine Pathway Details Announced",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2023,
+        "label": "Wagner Group relocates to Belarus after Prigozhin mutiny",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2023,
+        "label": "Russia announces deployment of tactical nuclear weapons to Belarus",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2023,
+        "label": "VDP Volunteer Defense Forces Mobilized \u2014 Civilian Armed Auxiliaries",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2023,
+        "label": "Denmark Pledges All Artillery and Remaining Tanks to Ukraine",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2023,
+        "label": "First Military Reconnaissance Satellite Successfully Launched",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2023,
+        "label": "Government Announces Major Arctic Defense Investment",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 2023,
+        "label": "Taiwan Defense Budget Hits Record as Military Threat Grows",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 2022,
+        "label": "Austria maintains neutrality stance amid Ukrainian pressure to join sanctions",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2022,
+        "label": "Belarusian military declines to directly enter Ukraine war",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 2022,
+        "label": "Finland Applies for NATO Membership After Russia Invades Ukraine",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 2022,
+        "label": "Finland Sends Military Aid to Ukraine",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2022,
+        "label": "Russia invades Ukraine: Germany announces Zeitenwende defense policy shift",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2022,
+        "label": "Agnipath military short-term recruitment scheme",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2022,
+        "label": "Russia's Ukraine Invasion Accelerates Japan's Defense Buildup",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2022,
+        "label": "Latvia Raises Defense Spending to 2.5% of GDP Target",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2022,
+        "label": "Record 90 Missile Launches; ICBM Moratorium Broken",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2022,
+        "label": "Military Heightened Alert After Nord Stream Sabotage",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 2022,
+        "label": "Russia's Invasion of Ukraine Transforms Romania's Security Posture",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2022,
+        "label": "Partial mobilization of 300,000 reservists announced",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 2022,
+        "label": "Pelosi Visit Triggers Unprecedented PLA Encirclement Drills",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2022,
+        "label": "Ukraine Declares General Mobilization",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2021,
+        "label": "Denmark Withdraws from Afghanistan After Twenty Years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2021,
+        "label": "Party Congress Admits Economic Failures; New Weapons Goals Set",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2021,
+        "label": "Russia builds up troops on Ukraine border",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2021,
+        "label": "Rwanda deploys troops to Mozambique to fight Islamist insurgency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 2021,
+        "label": "PLA Conducts Record Air Incursions into Taiwan ADIZ",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 2021,
+        "label": "Taliban Takeover of Afghanistan Triggers Border Security Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2021,
+        "label": "Afghanistan's Taliban Takeover Creates Security Anxiety in Tashkent",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2019,
+        "label": "India reaffirms nuclear no-first-use policy with caveats",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 2019,
+        "label": "Assault Weapons Banned Within Weeks of Mosque Attack",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 2018,
+        "label": "Foreign Interference Laws Target Covert Influence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2018,
+        "label": "Nuclear Testing Moratorium Declared; Punggye-ri Site Closed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2018,
+        "label": "NATO Trident Juncture Exercise Held in Norway",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2018,
+        "label": "Lombrum Naval Base Joint Development Announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2018,
+        "label": "Russia announces new hypersonic weapons \u2014 Avangard and Kinzhal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 2018,
+        "label": "PLA Air Force Begins Regular Median Line Crossings",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2017,
+        "label": "Zapad-2017 military exercises raise NATO alarm",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2017,
+        "label": "China establishes first overseas military base in Djibouti",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 2017,
+        "label": "NATO Enhanced Forward Presence Battalion Deployed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 2017,
+        "label": "Tallinn Manual 2.0 Published",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2017,
+        "label": "NATO Enhanced Forward Presence Battlegroup Deployed to Latvia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2017,
+        "label": "ICBM Tests Demonstrate US Mainland Range",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2017,
+        "label": "Parliament Approves Major Defense Spending Increase",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 2016,
+        "label": "US Announces Keflavik Facility Reactivation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2015,
+        "label": "RSP Dissolved \u2014 Presidential Guard Dismantled",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2015,
+        "label": "Security Legislation Expands Self-Defense Forces' Overseas Role",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2015,
+        "label": "Lithuania Reintroduces Military Conscription",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2015,
+        "label": "Bashir Wins Boycotted Election; RSF Formally Created from Janjaweed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 2014,
+        "label": "NATO Wales Summit Increases Belgian Defense Commitments",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2014,
+        "label": "South China Sea island-building \u2014 artificial islands with military installations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 2014,
+        "label": "Crimea Annexation Triggers Major Finnish Defense Review",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2014,
+        "label": "Collective Self-Defense Reinterpretation Expands Military Options",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2014,
+        "label": "Latvia Increases Defense Spending After Russia Annexes Crimea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 2014,
+        "label": "Al-Shabaab Leader Godane Killed in US Airstrike",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2013,
+        "label": "Afghan forces assume primary security responsibility nationwide",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2013,
+        "label": "M23 Defeated \u2014 Rwanda Withdraws Support",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 2013,
+        "label": "Tallinn Manual on Cyber Warfare Published",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2013,
+        "label": "Iron Dome Proven in Combat",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2013,
+        "label": "Third Nuclear Test Claims Miniaturized Device",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2012,
+        "label": "China's first aircraft carrier commissioned",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2012,
+        "label": "Chemical Weapons Use Becomes a 'Red Line' Issue",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2011,
+        "label": "NATO begins transferring security responsibility to Afghan forces",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "az",
+        "country_name": "Azerbaijan",
+        "year": 2011,
+        "label": "Arab Spring Protests Swiftly Suppressed, Military Spending Surges",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 2011,
+        "label": "Osama bin Laden Killed in Pakistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2010,
+        "label": "Modern Uranium Enrichment Facility Revealed at Yongbyon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2010,
+        "label": "Saudi Arabia Largest Arms Purchase in U.S. History",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2009,
+        "label": "Bangladesh Rifles Mutiny and Pilkhana Massacre",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2009,
+        "label": "Kimia II Operation \u2014 Anti-FDLR Offensive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 2009,
+        "label": "France Fully Rejoins NATO Integrated Military Command",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2009,
+        "label": "India launches nuclear submarine INS Arihant",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2009,
+        "label": "Second Nuclear Test; Withdrawal from Six-Party Talks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 2008,
+        "label": "Operation Jaque Rescues Ingrid Betancourt and 14 Others",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 2008,
+        "label": "Croatia Invited to Join NATO at Bucharest Summit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 2008,
+        "label": "NATO Cooperative Cyber Defence Centre Established in Tallinn",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 2008,
+        "label": "Russia-Georgia War Raises Finnish Security Concerns",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2007,
+        "label": "China's ASAT missile test destroys own satellite",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2007,
+        "label": "US Troop Surge and Sunni Awakening",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 2007,
+        "label": "Iraq Surge Strategy Announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 2006,
+        "label": "US Forces Withdraw from Keflavik Naval Air Station",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2006,
+        "label": "First North Korean Nuclear Test",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 2006,
+        "label": "North Korea Conducts First Nuclear Weapons Test",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2006,
+        "label": "F-FDTL crisis \u2014 petitioners' protest and military fracture",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2005,
+        "label": "PROSUB Nuclear Submarine Program Initiated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 2005,
+        "label": "Tajikistan Assumes Full Control of Afghan Border from Russia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ge",
+        "country_name": "Georgia",
+        "year": 2004,
+        "label": "Sweeping Anti-Corruption and Police Reform Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 2003,
+        "label": "Operation All Clear: Bhutan Expels Indian Militants",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2003,
+        "label": "De-Ba'athification and Army Dissolution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2002,
+        "label": "Peacekeeping Law Enables International Military Deployments",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2002,
+        "label": "Military Mutinies in Niamey and Diffa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 2002,
+        "label": "Operation Iron Fist Against LRA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ge",
+        "country_name": "Georgia",
+        "year": 2001,
+        "label": "Pankisi Gorge Crisis Escalates Tensions with Russia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2001,
+        "label": "Uzbekistan Grants US Military Base Access After 9/11",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 1999,
+        "label": "Albania Provides Logistical Support for NATO Kosovo Operations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1999,
+        "label": "Czech Republic Formally Joins NATO",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1999,
+        "label": "Germany participates in NATO bombing of Yugoslavia over Kosovo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1998,
+        "label": "Pokhran-II nuclear tests \u2014 India declared nuclear state",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1998,
+        "label": "Pakistan conducts retaliatory nuclear tests",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1998,
+        "label": "Taepodong Missile Launched Over Japan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1998,
+        "label": "Pakistan Conducts Nuclear Tests \u2014 Becomes Declared Nuclear State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 1997,
+        "label": "S-300 missile crisis triggers standoff with Turkey",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1997,
+        "label": "NATO Formally Invites Czech Republic at Madrid Summit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1996,
+        "label": "U.S. Forces Relocate to Prince Sultan Air Base",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 1996,
+        "label": "US Carrier Groups Deter PRC During Strait Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 1995,
+        "label": "France Resumes Nuclear Testing at Mururoa Atoll",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1995,
+        "label": "UNSCOM Discovers Full Extent of Biological Weapons Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1994,
+        "label": "Eritrea Introduces National Service",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kz",
+        "country_name": "Kazakhstan",
+        "year": 1994,
+        "label": "Budapest Memorandum: Security Assurances Seal Nuclear Disarmament",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 1993,
+        "label": "Last Russian Troops Withdraw from Lithuania",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 1992,
+        "label": "Belarus transfers Soviet nuclear weapons to Russia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kz",
+        "country_name": "Kazakhstan",
+        "year": 1992,
+        "label": "Lisbon Protocol: Kazakhstan Commits to Nuclear Non-Proliferation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1992,
+        "label": "Russia inherits Soviet nuclear arsenal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kz",
+        "country_name": "Kazakhstan",
+        "year": 1991,
+        "label": "Semipalatinsk Nuclear Test Site Closed by Nazarbayev Decree",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kz",
+        "country_name": "Kazakhstan",
+        "year": 1991,
+        "label": "Kazakhstan Inherits World's Fourth-Largest Nuclear Arsenal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1991,
+        "label": "Lebanese Militias Disarmed \u2014 Except Hezbollah",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1990,
+        "label": "Final Carapintada Uprising Suppressed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 1990,
+        "label": "Belarusian Popular Front demands nuclear-free status",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1990,
+        "label": "Nuclear Standoff During Gulf War Period",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1990,
+        "label": "Endara Government Inaugurated; Panama Abolishes Military",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1988,
+        "label": "Additional Carapintada Rebellions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1988,
+        "label": "CSS-2 Ballistic Missile Purchase from China",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1987,
+        "label": "Semana Santa Military Rebellion \u2014 Carapintadas",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1987,
+        "label": "Mathias Rust lands on Red Square \u2014 air defense embarrassment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1985,
+        "label": "PLA reduced by one million troops",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1985,
+        "label": "Nuclear Program Reaches Advanced Stage",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1983,
+        "label": "US Pershing II missiles deployed in West Germany; Greens enter Bundestag",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1982,
+        "label": "EPLF Mobile Forces Expand",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1981,
+        "label": "General Viola Replaces Videla \u2014 Internal Military Shifts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1981,
+        "label": "EPLF Develops Indigenous Arms Production",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1981,
+        "label": "Soviet military buildup reaches historic peak",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1981,
+        "label": "Zapad-81 \u2014 largest Soviet military exercise since World War II",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1981,
+        "label": "AWACS Sale to Saudi Arabia Approved",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 1981,
+        "label": "Soviet Submarine U-137 Runs Aground Near Naval Base",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1979,
+        "label": "Neutron Bomb Controversy and Dutch NATO Tensions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1976,
+        "label": "Axe Murder Incident at Panmunjom",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1976,
+        "label": "A.Q. Khan Leads Uranium Enrichment Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 1976,
+        "label": "UAE Armed Forces Unified",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1974,
+        "label": "Smiling Buddha \u2014 India's first nuclear test",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1974,
+        "label": "Invasion Tunnels Discovered Beneath the DMZ",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1973,
+        "label": "October War \u2014 Jordan's Limited Involvement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1973,
+        "label": "Nuclear Weapons Program Initiated After 1971 Defeat",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1973,
+        "label": "MFA Formally Organized \u2014 Coup Planning Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1973,
+        "label": "Ibrahim al-Hamdi Rises in Military",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1971,
+        "label": "Israel Receives F-4 Phantom Jets from US",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1970,
+        "label": "General Levingston Replaces Ongan\u00eda as Military President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1969,
+        "label": "'Tacnazo' Military Uprising Reveals Armed Forces Discontent",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1968,
+        "label": "India refuses to sign Nuclear Non-Proliferation Treaty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1967,
+        "label": "DMZ Conflict Escalates: Second Korean War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1967,
+        "label": "Syrian Army's Poor Performance in 1967 War Shocks Nation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 1966,
+        "label": "France Withdraws from NATO Integrated Military Command",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1964,
+        "label": "India advances nuclear weapons research under Bhabha",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1964,
+        "label": "Mutiny of Ugandan Army Over Pay",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1963,
+        "label": "Sergeants Revolt in Brasilia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kz",
+        "country_name": "Kazakhstan",
+        "year": 1963,
+        "label": "Partial Test Ban Treaty Shifts Semipalatinsk to Underground Testing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1963,
+        "label": "Military Conscription Dramatically Expanded for Colonial Wars",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1963,
+        "label": "Ba'ath Party Begins Purge of Non-Ba'athist Officers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1962,
+        "label": "Inter-Military Conflict \u2014 Azules vs Colorados",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1962,
+        "label": "Jordanian Army Modernization Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1962,
+        "label": "Byungjin Parallel Development Policy Announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1961,
+        "label": "Tsar Bomba \u2014 largest nuclear explosion in history",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1961,
+        "label": "Soviet nuclear testing resumes breaking moratorium",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1960,
+        "label": "France conducts first nuclear test in Algerian Sahara",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1960,
+        "label": "China launches independent nuclear weapons program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1960,
+        "label": "Dimona Nuclear Reactor Revealed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1958,
+        "label": "Armed Forces Special Powers Act enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1957,
+        "label": "R-7 ICBM successfully tested \u2014 first intercontinental missile",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1957,
+        "label": "Marshal Zhukov removed from Defense Ministry",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1957,
+        "label": "Yemeni Free Officers Movement Emerges",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1956,
+        "label": "Dismissal of Glubb Pasha",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1956,
+        "label": "Royal Armed Forces Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1955,
+        "label": "West Germany joins NATO and establishes the Bundeswehr",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1955,
+        "label": "Soviet ICBM development program accelerates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1955,
+        "label": "Czech Arms Deal Inspires Syrian Military Modernization Requests",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 1954,
+        "label": "French National Assembly Rejects European Defence Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1953,
+        "label": "Soviet Union detonates deliverable hydrogen bomb",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1952,
+        "label": "Army internal conflict \u2014 October 17 Affair",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1952,
+        "label": "Britain Tests Its First Atomic Bomb at Monte Bello",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1951,
+        "label": "US-Japan Security Treaty Establishes Alliance Framework",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1951,
+        "label": "Magsaysay's Military Reforms Against Huks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1951,
+        "label": "Soviet atomic bomb tests continue at Semipalatinsk",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 1951,
+        "label": "Trucial Oman Scouts Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1950,
+        "label": "Ramon Magsaysay Appointed Defense Secretary",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1950,
+        "label": "Soviet nuclear weapons program accelerates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1950,
+        "label": "Truman Orders Hydrogen Bomb Development",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kz",
+        "country_name": "Kazakhstan",
+        "year": 1949,
+        "label": "Semipalatinsk Nuclear Test Site Opens: First Soviet Atomic Bomb",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 1949,
+        "label": "Sweden Declines NATO Membership, Chooses Armed Neutrality",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 192
+  }
+}

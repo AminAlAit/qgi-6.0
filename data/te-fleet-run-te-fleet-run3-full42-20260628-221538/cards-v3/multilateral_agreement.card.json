@@ -1,0 +1,3831 @@
+{
+  "recipe_id": "multilateral_agreement",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "prior_version",
+  "family_label": "Social Movements",
+  "description_compelling": "Three or more states ratify a shared framework \u2014 climate accord, regional trade bloc, security architecture, transparency convention. Democracy indices, transparency-of-law scores, and trade-openness trajectories tend to climb in the lead-up. Strongest among consolidating regional blocs (EU, ASEAN, Mercosur) and stable middle-income democracies.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6641506638217165,
+    "ci95_lo": 0.6269778924954215,
+    "ci95_hi": 0.7016954570534498,
+    "ci80_lo": 0.6394316446630393,
+    "ci80_hi": 0.6891805041958516,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2x_freexp",
+      "v2caassemb",
+      "v2x_polyarchy"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2x_freexp",
+        "name": null
+      },
+      {
+        "code": "v2caassemb",
+        "name": null
+      },
+      {
+        "code": "v2x_polyarchy",
+        "name": "Electoral Democracy Index (0-1)"
+      }
+    ],
+    "chosen_window": 25,
+    "final_global_auc": 0.6641506638217165,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2x_freexp",
+        "window": 21,
+        "auc": 0.5993893909581106,
+        "lift_over_previous": 0.09938939095811061,
+        "selected_after": [
+          "v2x_freexp"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2caassemb",
+        "window": 25,
+        "auc": 0.6269559032716927,
+        "lift_over_previous": 0.027566512313582092,
+        "selected_after": [
+          "v2x_freexp",
+          "v2caassemb"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2x_polyarchy",
+        "window": 25,
+        "auc": 0.6641506638217165,
+        "lift_over_previous": 0.0371947605500238,
+        "selected_after": [
+          "v2x_freexp",
+          "v2caassemb",
+          "v2x_polyarchy"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2x_freexp_altinf",
+        "window": 25,
+        "auc": 0.6592460881934566,
+        "lift_over_previous": -0.004904575628259855,
+        "selected_after": [
+          "v2x_freexp",
+          "v2caassemb",
+          "v2x_polyarchy",
+          "v2x_freexp_altinf"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 271,
+    "n_pos_survive": 240,
+    "n_neg_total": 813,
+    "n_neg_survive": 703,
+    "pos_coverage": 0.8856088560885609,
+    "neg_coverage": 0.8646986469864698,
+    "n_countries_survive": 94,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 500,
+      "loco_auc": 0.6474643908413836,
+      "ece": 0.10440908781811595,
+      "ece_ci95_lo": 0.08075697523206474,
+      "ece_ci95_hi": 0.14726055407980457,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 65,
+          "mean_predicted": 0.06150467478885101,
+          "mean_actual": 0.12307692307692308
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 85,
+          "mean_predicted": 0.1548086776452906,
+          "mean_actual": 0.15294117647058825
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 72,
+          "mean_predicted": 0.24702268776794276,
+          "mean_actual": 0.2777777777777778
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 74,
+          "mean_predicted": 0.34975458077482274,
+          "mean_actual": 0.3108108108108108
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 68,
+          "mean_predicted": 0.4415881857275963,
+          "mean_actual": 0.27941176470588236
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 55,
+          "mean_predicted": 0.5454382863911715,
+          "mean_actual": 0.41818181818181815
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 33,
+          "mean_predicted": 0.6469847361246744,
+          "mean_actual": 0.45454545454545453
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 28,
+          "mean_predicted": 0.7444183932883399,
+          "mean_actual": 0.39285714285714285
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 14,
+          "mean_predicted": 0.8657006451061794,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 6,
+          "mean_predicted": 0.9343803326288859,
+          "mean_actual": 0.3333333333333333
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5948020703119884,
+      "loco_auc_ci95_hi": 0.6996653155505984
+    },
+    "mid-tier": {
+      "n": 162,
+      "loco_auc": 0.7149606299212599,
+      "ece": 0.07785347426586128,
+      "ece_ci95_lo": 0.06704138330181049,
+      "ece_ci95_hi": 0.15403627527771335,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 45,
+          "mean_predicted": 0.05368913244456053,
+          "mean_actual": 0.08888888888888889
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 36,
+          "mean_predicted": 0.14884386873907512,
+          "mean_actual": 0.1388888888888889
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 37,
+          "mean_predicted": 0.24862501669574427,
+          "mean_actual": 0.21621621621621623
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 17,
+          "mean_predicted": 0.34905091454001036,
+          "mean_actual": 0.35294117647058826
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 9,
+          "mean_predicted": 0.45231114824612934,
+          "mean_actual": 0.5555555555555556
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 6,
+          "mean_predicted": 0.5380689402421316,
+          "mean_actual": 0.8333333333333334
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 7,
+          "mean_predicted": 0.644284691129412,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 4,
+          "mean_predicted": 0.7680625021457672,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 1,
+          "mean_predicted": 0.8783944249153137,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6075823792623481,
+      "loco_auc_ci95_hi": 0.8035900556921713
+    },
+    "stable-democracy": {
+      "n": 279,
+      "loco_auc": 0.6542877906976744,
+      "ece": 0.0976756530560179,
+      "ece_ci95_lo": 0.07243928639289146,
+      "ece_ci95_hi": 0.1558356827342762,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 71,
+          "mean_predicted": 0.05513372216504854,
+          "mean_actual": 0.08450704225352113
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 58,
+          "mean_predicted": 0.1467436864201365,
+          "mean_actual": 0.20689655172413793
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 43,
+          "mean_predicted": 0.25445524412532183,
+          "mean_actual": 0.23255813953488372
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 32,
+          "mean_predicted": 0.3441691491752863,
+          "mean_actual": 0.3125
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 19,
+          "mean_predicted": 0.4572738173760866,
+          "mean_actual": 0.3684210526315789
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 20,
+          "mean_predicted": 0.5387865215539932,
+          "mean_actual": 0.3
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 18,
+          "mean_predicted": 0.6507095926337771,
+          "mean_actual": 0.4444444444444444
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 8,
+          "mean_predicted": 0.7495177313685417,
+          "mean_actual": 0.375
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 9,
+          "mean_predicted": 0.8482768204477098,
+          "mean_actual": 0.2222222222222222
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.9148081541061401,
+          "mean_actual": 0.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5705220015000911,
+      "loco_auc_ci95_hi": 0.7228199448964276
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-30T03:00:24.055160+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.4881,
+  "stability_diagnostic": {
+    "fold_variance": 0.05952878549740022,
+    "fold_auc_mean": 0.652193469082358,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Afghanistan": 0.0,
+      "Albania": 0.3,
+      "Algeria": 0.71875,
+      "Angola": 0.6388888888888888,
+      "Argentina": 0.5,
+      "Australia": 0.8571428571428571,
+      "Austria": 1.0,
+      "Bahrain": 0.36363636363636365,
+      "Bangladesh": 0.125,
+      "Belgium": 0.5,
+      "Bhutan": 0.625,
+      "Brazil": 0.5571428571428572,
+      "Bulgaria": 0.8,
+      "Burkina Faso": 0.6,
+      "Burundi": 0.25,
+      "Chile": 1.0,
+      "China": 0.825,
+      "Colombia": 0.4722222222222222,
+      "Cuba": 0.7142857142857143,
+      "Czechia": 0.6296296296296297,
+      "Denmark": 0.75,
+      "Egypt": 0.4,
+      "Eritrea": 0.4666666666666667,
+      "Ethiopia": 0.8888888888888888,
+      "Finland": 0.3,
+      "France": 0.7142857142857143,
+      "Germany": 0.5,
+      "Ghana": 0.5,
+      "Greece": 0.7142857142857143,
+      "Hungary": 0.8166666666666667,
+      "India": 0.5555555555555556,
+      "Iran": 0.8518518518518519,
+      "Iraq": 0.7666666666666667,
+      "Ireland": 0.2,
+      "Israel": 0.8095238095238095,
+      "Italy": 1.0,
+      "Jordan": 0.7222222222222222,
+      "Kuwait": 0.125,
+      "Latvia": 0.8333333333333334,
+      "Lebanon": 0.9166666666666666,
+      "Libya": 0.65625,
+      "Lithuania": 0.375,
+      "Mali": 0.45454545454545453,
+      "Moldova": 1.0,
+      "Morocco": 0.4666666666666667,
+      "Namibia": 0.7916666666666666,
+      "Nepal": 1.0,
+      "Netherlands": 0.8571428571428571,
+      "New Zealand": 0.5,
+      "Nicaragua": 0.5333333333333333,
+      "Niger": 0.7777777777777778,
+      "Nigeria": 1.0,
+      "North Korea": 0.95,
+      "Norway": 0.5,
+      "Oman": 0.9090909090909091,
+      "Pakistan": 0.5555555555555556,
+      "Panama": 0.5714285714285714,
+      "Papua New Guinea": 0.4444444444444444,
+      "Philippines": 0.5,
+      "Poland": 0.55,
+      "Portugal": 0.35714285714285715,
+      "Romania": 0.7083333333333334,
+      "Russia": 0.43,
+      "Rwanda": 0.4,
+      "Saudi Arabia": 0.39285714285714285,
+      "Senegal": 0.5714285714285714,
+      "Serbia": 0.8571428571428571,
+      "Sierra Leone": 0.45,
+      "Singapore": 0.6,
+      "Slovakia": 1.0,
+      "Slovenia": 1.0,
+      "Somalia": 0.7222222222222222,
+      "South Korea": 0.8888888888888888,
+      "Spain": 1.0,
+      "Sudan": 0.8571428571428571,
+      "Sweden": 1.0,
+      "Switzerland": 0.7142857142857143,
+      "Syria": 0.6,
+      "Thailand": 1.0,
+      "Timor-Leste": 0.6428571428571429,
+      "Tunisia": 1.0,
+      "Turkiye": 1.0,
+      "Turkmenistan": 0.3333333333333333,
+      "Uganda": 0.2,
+      "Ukraine": 0.6666666666666666,
+      "United Arab Emirates": 0.5,
+      "United States": 0.9090909090909091,
+      "Uzbekistan": 0.6,
+      "Vietnam": 0.9090909090909091,
+      "Yemen": 0.6857142857142857
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 271,
+  "n_negatives": 813,
+  "walked_at_utc": "2026-06-30T03:07:11.604268+00:00",
+  "elapsed_seconds": 3600.4891805648804,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/multilateral_agreement/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Maldives",
+          "Cabo Verde",
+          "Oman",
+          "Serbia",
+          "Sudan",
+          "United States",
+          "Thailand",
+          "Burundi"
+        ],
+        "country_isos": [
+          "mv",
+          "cv",
+          "om",
+          "rs",
+          "sd",
+          "us",
+          "th",
+          "bi"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Nepal",
+          "Yemen",
+          "Italy",
+          "Slovenia",
+          "Poland",
+          "Central African Republic",
+          "Venezuela",
+          "Peru",
+          "Malta"
+        ],
+        "country_isos": [
+          "np",
+          "ye",
+          "it",
+          "si",
+          "pl",
+          "cf",
+          "ve",
+          "pe",
+          "mt"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Haiti",
+          "Georgia",
+          "Benin",
+          "Eswatini",
+          "Bhutan",
+          "Mali",
+          "Sierra Leone",
+          "Lithuania",
+          "Bahrain"
+        ],
+        "country_isos": [
+          "ht",
+          "ge",
+          "bj",
+          "sz",
+          "bt",
+          "ml",
+          "sl",
+          "lt",
+          "bh"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Kuwait",
+          "Brazil",
+          "Uganda",
+          "Greece",
+          "Hungary",
+          "Chad",
+          "Burkina Faso",
+          "Palestine"
+        ],
+        "country_isos": [
+          "kw",
+          "br",
+          "ug",
+          "gr",
+          "hu",
+          "td",
+          "bf",
+          "ps"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Niger",
+          "Mongolia",
+          "Mauritius",
+          "Panama",
+          "Guinea",
+          "Czechia",
+          "The Democratic Republic of the Congo",
+          "Netherlands",
+          "Cambodia"
+        ],
+        "country_isos": [
+          "ne",
+          "mn",
+          "mu",
+          "pa",
+          "gn",
+          "cz",
+          "cd",
+          "nl",
+          "kh"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Timor-Leste",
+          "Japan",
+          "Equatorial Guinea",
+          "Qatar",
+          "China",
+          "Romania",
+          "Tunisia",
+          "Chile",
+          "Belgium"
+        ],
+        "country_isos": [
+          "tl",
+          "jp",
+          "gq",
+          "qa",
+          "cn",
+          "ro",
+          "tn",
+          "cl",
+          "be"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 9,
+        "countries": [
+          "Guyana",
+          "North Korea",
+          "Austria",
+          "United Kingdom",
+          "Iceland",
+          "Tajikistan",
+          "Kyrgyzstan",
+          "Gabon",
+          "Colombia"
+        ],
+        "country_isos": [
+          "gy",
+          "kp",
+          "at",
+          "gb",
+          "is",
+          "tj",
+          "kg",
+          "ga",
+          "co"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "South Sudan",
+          "Spain",
+          "Portugal",
+          "Kenya",
+          "Australia",
+          "Switzerland",
+          "Finland",
+          "Canada"
+        ],
+        "country_isos": [
+          "ss",
+          "es",
+          "pt",
+          "ke",
+          "au",
+          "ch",
+          "fi",
+          "ca"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Vietnam",
+          "Comoros",
+          "Egypt",
+          "Costa Rica",
+          "Fiji",
+          "Ireland",
+          "Saudi Arabia",
+          "Pakistan",
+          "Slovakia"
+        ],
+        "country_isos": [
+          "vn",
+          "km",
+          "eg",
+          "cr",
+          "fj",
+          "ie",
+          "sa",
+          "pk",
+          "sk"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 9,
+        "countries": [
+          "Denmark",
+          "Angola",
+          "Taiwan",
+          "South Africa",
+          "Albania",
+          "North Macedonia",
+          "Iraq",
+          "New Zealand",
+          "Honduras"
+        ],
+        "country_isos": [
+          "dk",
+          "ao",
+          "tw",
+          "za",
+          "al",
+          "mk",
+          "iq",
+          "nz",
+          "hn"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Hong Kong",
+          "Israel",
+          "Trinidad and Tobago",
+          "Uruguay",
+          "France",
+          "Cuba",
+          "Malaysia",
+          "Seychelles",
+          "Eritrea"
+        ],
+        "country_isos": [
+          "hk",
+          "il",
+          "tt",
+          "uy",
+          "fr",
+          "cu",
+          "my",
+          "sc",
+          "er"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Ecuador",
+          "Dominican Republic",
+          "Nigeria",
+          "Senegal",
+          "Turkmenistan",
+          "Norway",
+          "Somalia",
+          "Azerbaijan"
+        ],
+        "country_isos": [
+          "ec",
+          "do",
+          "ng",
+          "sn",
+          "tm",
+          "no",
+          "so",
+          "az"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Myanmar",
+          "Paraguay",
+          "Indonesia",
+          "Papua New Guinea",
+          "Afghanistan",
+          "The Gambia",
+          "Sri Lanka",
+          "Belarus",
+          "Kazakhstan"
+        ],
+        "country_isos": [
+          "mm",
+          "py",
+          "id",
+          "pg",
+          "af",
+          "gm",
+          "lk",
+          "by",
+          "kz"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "Luxembourg",
+          "Germany",
+          "Armenia",
+          "El Salvador",
+          "Montenegro",
+          "Ghana",
+          "Philippines",
+          "Iran",
+          "Liberia"
+        ],
+        "country_isos": [
+          "lu",
+          "de",
+          "am",
+          "sv",
+          "me",
+          "gh",
+          "ph",
+          "ir",
+          "lr"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Togo",
+          "Mauritania",
+          "Bolivia",
+          "Morocco",
+          "South Korea",
+          "Libya",
+          "Singapore",
+          "Cyprus",
+          "Republic of the Congo"
+        ],
+        "country_isos": [
+          "tg",
+          "mr",
+          "bo",
+          "ma",
+          "kr",
+          "ly",
+          "sg",
+          "cy",
+          "cg"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Lebanon",
+          "Guinea-Bissau",
+          "Argentina",
+          "Estonia",
+          "Russia",
+          "Namibia",
+          "Lesotho",
+          "Algeria"
+        ],
+        "country_isos": [
+          "lb",
+          "gw",
+          "ar",
+          "ee",
+          "ru",
+          "na",
+          "ls",
+          "dz"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 9,
+        "countries": [
+          "Latvia",
+          "Guatemala",
+          "Bangladesh",
+          "Ukraine",
+          "Djibouti",
+          "Ethiopia",
+          "Botswana",
+          "Jordan",
+          "Solomon Islands"
+        ],
+        "country_isos": [
+          "lv",
+          "gt",
+          "bd",
+          "ua",
+          "dj",
+          "et",
+          "bw",
+          "jo",
+          "sb"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "Sweden",
+          "Turkiye",
+          "Mexico",
+          "Bulgaria",
+          "Ivory Coast",
+          "Laos",
+          "Zambia",
+          "Moldova",
+          "Malawi"
+        ],
+        "country_isos": [
+          "se",
+          "tr",
+          "mx",
+          "bg",
+          "ci",
+          "la",
+          "zm",
+          "md",
+          "mw"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Vanuatu",
+          "Barbados",
+          "Jamaica",
+          "Croatia",
+          "Madagascar",
+          "Sao Tome and Principe",
+          "Suriname",
+          "Cameroon",
+          "Rwanda"
+        ],
+        "country_isos": [
+          "vu",
+          "bb",
+          "jm",
+          "hr",
+          "mg",
+          "st",
+          "sr",
+          "cm",
+          "rw"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Uzbekistan",
+          "Syria",
+          "Zimbabwe",
+          "India",
+          "United Arab Emirates",
+          "Mozambique",
+          "Nicaragua",
+          "Bosnia and Herzegovina",
+          "Tanzania"
+        ],
+        "country_isos": [
+          "uz",
+          "sy",
+          "zw",
+          "in",
+          "ae",
+          "mz",
+          "ni",
+          "ba",
+          "tz"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.3,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 175,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.0675,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.7956505057234916,
+      "b": 0.16934575992290835,
+      "c": 0.07287726893382217,
+      "n_fit": 943,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 83,
+        "observed_rate": 0.0963855421686747
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 221,
+        "observed_rate": 0.14027149321266968
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 262,
+        "observed_rate": 0.24427480916030533
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 320,
+        "observed_rate": 0.3625
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 57,
+        "observed_rate": 0.3684210526315789
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.013274827016206936,
+    "n_predictions": 943,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.10440908781811595,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 65,
+            "mean_predicted": 0.06150467478885101,
+            "mean_actual": 0.12307692307692308
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 85,
+            "mean_predicted": 0.1548086776452906,
+            "mean_actual": 0.15294117647058825
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 72,
+            "mean_predicted": 0.24702268776794276,
+            "mean_actual": 0.2777777777777778
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 74,
+            "mean_predicted": 0.34975458077482274,
+            "mean_actual": 0.3108108108108108
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 68,
+            "mean_predicted": 0.4415881857275963,
+            "mean_actual": 0.27941176470588236
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 55,
+            "mean_predicted": 0.5454382863911715,
+            "mean_actual": 0.41818181818181815
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 33,
+            "mean_predicted": 0.6469847361246744,
+            "mean_actual": 0.45454545454545453
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 28,
+            "mean_predicted": 0.7444183932883399,
+            "mean_actual": 0.39285714285714285
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 14,
+            "mean_predicted": 0.8657006451061794,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 6,
+            "mean_predicted": 0.9343803326288859,
+            "mean_actual": 0.3333333333333333
+          }
+        ],
+        "n": 500,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.07785347426586128,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 45,
+            "mean_predicted": 0.05368913244456053,
+            "mean_actual": 0.08888888888888889
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 36,
+            "mean_predicted": 0.14884386873907512,
+            "mean_actual": 0.1388888888888889
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 37,
+            "mean_predicted": 0.24862501669574427,
+            "mean_actual": 0.21621621621621623
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 17,
+            "mean_predicted": 0.34905091454001036,
+            "mean_actual": 0.35294117647058826
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 9,
+            "mean_predicted": 0.45231114824612934,
+            "mean_actual": 0.5555555555555556
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 6,
+            "mean_predicted": 0.5380689402421316,
+            "mean_actual": 0.8333333333333334
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 7,
+            "mean_predicted": 0.644284691129412,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 4,
+            "mean_predicted": 0.7680625021457672,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 1,
+            "mean_predicted": 0.8783944249153137,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 162,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.0976756530560179,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 71,
+            "mean_predicted": 0.05513372216504854,
+            "mean_actual": 0.08450704225352113
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 58,
+            "mean_predicted": 0.1467436864201365,
+            "mean_actual": 0.20689655172413793
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 43,
+            "mean_predicted": 0.25445524412532183,
+            "mean_actual": 0.23255813953488372
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 32,
+            "mean_predicted": 0.3441691491752863,
+            "mean_actual": 0.3125
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 19,
+            "mean_predicted": 0.4572738173760866,
+            "mean_actual": 0.3684210526315789
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 20,
+            "mean_predicted": 0.5387865215539932,
+            "mean_actual": 0.3
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 18,
+            "mean_predicted": 0.6507095926337771,
+            "mean_actual": 0.4444444444444444
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 8,
+            "mean_predicted": 0.7495177313685417,
+            "mean_actual": 0.375
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 9,
+            "mean_predicted": 0.8482768204477098,
+            "mean_actual": 0.2222222222222222
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.9148081541061401,
+            "mean_actual": 0.0
+          }
+        ],
+        "n": 279,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/multilateral_agreement.scores.json",
+  "shape_points": [
+    0.002352179637031984,
+    0.016144896803303888,
+    0.0299376139695758,
+    0.043730331135847705,
+    0.057523048302119614,
+    0.07131576546839152,
+    0.08510848263466345,
+    0.09890119980093534,
+    0.11269391696720725,
+    0.12648663413347916,
+    0.14027935129975105,
+    0.15407206846602298
+  ],
+  "shap_importance_raw": {
+    "v2x_freexp": 1.3311100006103516,
+    "v2caassemb": 1.1110453605651855,
+    "v2x_polyarchy": 1.2189017534255981
+  },
+  "shap_importance_normalized": {
+    "v2x_freexp": 0.3635862427006614,
+    "v2caassemb": 0.3034766532688283,
+    "v2x_polyarchy": 0.33293710403051036
+  },
+  "shap_direction_signs": {
+    "v2x_freexp": -1,
+    "v2caassemb": -1,
+    "v2x_polyarchy": -1
+  },
+  "per_feature_breakdown": {
+    "v2x_freexp": {
+      "last_z": 0.27122870087623596,
+      "mean_z": 0.06940113753080368,
+      "std_z": 0.19526199996471405,
+      "slope": 0.14144167304039001,
+      "accel": 0.22888396680355072,
+      "tertile1_mean": 0.1763652265071869,
+      "tertile2_mean": 0.14527317881584167,
+      "tertile3_mean": 0.10325414687395096
+    },
+    "v2caassemb": {
+      "last_z": 0.07068793475627899,
+      "mean_z": 0.11781778931617737,
+      "std_z": 0.14479924738407135,
+      "slope": 0.19357988238334656,
+      "accel": 0.22355207800865173,
+      "tertile1_mean": 0.10937768220901489,
+      "tertile2_mean": 0.15794037282466888,
+      "tertile3_mean": 0.09329041838645935
+    },
+    "v2x_polyarchy": {
+      "last_z": 0.1991558074951172,
+      "mean_z": 0.05173312500119209,
+      "std_z": 0.19669345021247864,
+      "slope": 0.16621573269367218,
+      "accel": 0.15077266097068787,
+      "tertile1_mean": 0.17254817485809326,
+      "tertile2_mean": 0.20294919610023499,
+      "tertile3_mean": 0.07883362472057343
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 25,
+    "indicators": [
+      {
+        "code": "v2x_freexp",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 249,
+        "shape": {
+          "mean": [
+            -0.3962,
+            -0.2778,
+            -0.2456,
+            -0.2426,
+            -0.2776,
+            -0.2778,
+            -0.2968,
+            -0.2354,
+            -0.233,
+            -0.1764,
+            -0.1788,
+            -0.1503,
+            -0.1137,
+            -0.0526,
+            -0.0302,
+            0.0152,
+            0.0726,
+            0.1204,
+            0.1735,
+            0.1845,
+            0.288,
+            0.3341,
+            0.4217,
+            0.5097,
+            0.6433
+          ],
+          "p25": [
+            -1.0915,
+            -1.0471,
+            -0.9875,
+            -0.9337,
+            -0.9154,
+            -0.8694,
+            -0.8614,
+            -0.8004,
+            -0.7821,
+            -0.7465,
+            -0.6945,
+            -0.65,
+            -0.5881,
+            -0.5541,
+            -0.5506,
+            -0.4537,
+            -0.4696,
+            -0.4696,
+            -0.4817,
+            -0.469,
+            -0.4311,
+            -0.4464,
+            -0.4523,
+            -0.469,
+            -0.4172
+          ],
+          "p75": [
+            0.497,
+            0.5039,
+            0.5146,
+            0.4251,
+            0.3089,
+            0.2984,
+            0.2,
+            0.3229,
+            0.3276,
+            0.3431,
+            0.3614,
+            0.4156,
+            0.4636,
+            0.54,
+            0.5512,
+            0.5601,
+            0.6799,
+            0.7146,
+            0.8102,
+            0.8663,
+            0.9975,
+            1.1114,
+            1.2435,
+            1.3231,
+            1.4964
+          ]
+        }
+      },
+      {
+        "code": "v2caassemb",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 248,
+        "shape": {
+          "mean": [
+            -0.2917,
+            -0.2215,
+            -0.1272,
+            -0.1438,
+            -0.1177,
+            -0.1465,
+            -0.1152,
+            -0.1023,
+            -0.0731,
+            -0.0405,
+            -0.0639,
+            -0.0754,
+            0.0022,
+            0.0381,
+            0.0606,
+            0.0623,
+            0.0513,
+            0.0687,
+            0.1066,
+            0.1229,
+            0.1521,
+            0.1197,
+            0.1902,
+            0.2133,
+            0.3302
+          ],
+          "p25": [
+            -1.0152,
+            -0.9974,
+            -0.9444,
+            -0.9712,
+            -0.8937,
+            -0.8754,
+            -0.8253,
+            -0.7119,
+            -0.6834,
+            -0.6765,
+            -0.6763,
+            -0.5585,
+            -0.5159,
+            -0.4399,
+            -0.4522,
+            -0.4464,
+            -0.4909,
+            -0.5098,
+            -0.5123,
+            -0.5051,
+            -0.5033,
+            -0.541,
+            -0.5295,
+            -0.5636,
+            -0.7405
+          ],
+          "p75": [
+            0.6313,
+            0.6294,
+            0.6375,
+            0.5794,
+            0.515,
+            0.4677,
+            0.4973,
+            0.5027,
+            0.4995,
+            0.5027,
+            0.5077,
+            0.5218,
+            0.597,
+            0.6183,
+            0.6684,
+            0.6659,
+            0.6851,
+            0.7405,
+            0.76,
+            0.7769,
+            0.8496,
+            0.9195,
+            0.9798,
+            0.9906,
+            1.0711
+          ]
+        }
+      },
+      {
+        "code": "v2x_polyarchy",
+        "name": "Electoral Democracy Index (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 249,
+        "shape": {
+          "mean": [
+            -0.6302,
+            -0.4441,
+            -0.423,
+            -0.3618,
+            -0.3325,
+            -0.3347,
+            -0.333,
+            -0.2594,
+            -0.2468,
+            -0.2417,
+            -0.2538,
+            -0.2014,
+            -0.1517,
+            -0.0447,
+            0.0291,
+            0.0967,
+            0.1309,
+            0.1965,
+            0.2848,
+            0.344,
+            0.4296,
+            0.4476,
+            0.5197,
+            0.6702,
+            0.8181
+          ],
+          "p25": [
+            -1.3214,
+            -1.1821,
+            -1.0835,
+            -1.0153,
+            -0.9569,
+            -0.8731,
+            -0.8587,
+            -0.7758,
+            -0.7553,
+            -0.7618,
+            -0.7579,
+            -0.6721,
+            -0.6259,
+            -0.5056,
+            -0.4873,
+            -0.4622,
+            -0.4053,
+            -0.3679,
+            -0.3506,
+            -0.3401,
+            -0.2446,
+            -0.2338,
+            -0.1499,
+            -0.0062,
+            -0.0401
+          ],
+          "p75": [
+            0.015,
+            0.2908,
+            0.1046,
+            0.0923,
+            0.086,
+            0.1747,
+            0.1828,
+            0.274,
+            0.2028,
+            0.2028,
+            0.2595,
+            0.3285,
+            0.4086,
+            0.5857,
+            0.6218,
+            0.6747,
+            0.7814,
+            0.8388,
+            0.8967,
+            0.9401,
+            1.1176,
+            1.1592,
+            1.2138,
+            1.3511,
+            1.4901
+          ]
+        }
+      }
+    ],
+    "samples_used": 249,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2025,
+        "label": "India suspends Indus Waters Treaty with Pakistan",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 2025,
+        "label": "Iran Deepens Strategic Partnership with Russia and China",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2024,
+        "label": "Milei Withdraws Argentina from UN Migration Pact and Multilateral Realignment",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2024,
+        "label": "EU Opens Formal Accession Negotiations with Bosnia",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2024,
+        "label": "UN General Assembly Adopts Srebrenica Genocide Commemoration Resolution",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2024,
+        "label": "Brazil Hosts COP30 Preparation Begins in Belem",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2024,
+        "label": "Brazil Proposes Global Wealth Tax at G20",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 2024,
+        "label": "Italy Hosts G7 Summit in Puglia Under Meloni's Presidency",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2024,
+        "label": "AES States Sign Confederation Treaty",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2024,
+        "label": "Mark Rutte Succeeds Stoltenberg as NATO Secretary General",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2024,
+        "label": "Philippines-US-Japan Defense Cooperation Deepens",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2024,
+        "label": "Sweden Formally Joins NATO as 32nd Member",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2024,
+        "label": "Turkey Ratifies Sweden's NATO Membership; F-16 Upgrade Deal Linked",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 2023,
+        "label": "Finland Officially Joins NATO as 31st Member",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 2023,
+        "label": "ECOWAS Extends Deadlines \u2014 Transition Negotiations Stall",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2023,
+        "label": "Council of Europe Parliamentary Assembly Recommends Kosovo Membership",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2023,
+        "label": "Fentanyl Crisis Strains US-Mexico Relations",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 2023,
+        "label": "Namibia Joins ICJ South Africa Genocide Case as Third Party",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2023,
+        "label": "Niger, Mali, and Burkina Faso Form Alliance of Sahel States",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2023,
+        "label": "Stoltenberg's NATO Tenure Extended Through Transition Period",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2023,
+        "label": "Enhanced Defense Cooperation Agreement Expanded",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2023,
+        "label": "Russia suspends New START Treaty participation",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2023,
+        "label": "UNMISS Mandate Extended \u2014 Security Sector Reform Stalled",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2023,
+        "label": "Turkey Drops NATO Veto After Swedish Concessions",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 2023,
+        "label": "G20 Common Framework Creditor Agreement Signed",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 2023,
+        "label": "Zambia Hosts Broader African Debt Crisis Debate",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 2022,
+        "label": "Tirana Hosts EU-Western Balkans Summit",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2022,
+        "label": "Bosnia Granted EU Candidate Status",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2022,
+        "label": "Xi-Putin 'no limits' partnership \u2014 Russia invades Ukraine",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2022,
+        "label": "Russia-Ukraine war \u2014 India's strategic autonomy tested",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 2022,
+        "label": "Russia Invades Ukraine \u2014 Poland Becomes NATO's Logistics Hub",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2022,
+        "label": "Finland and Sweden apply to join NATO",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2022,
+        "label": "South Africa Abstains on Russia-Ukraine UN Vote",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2022,
+        "label": "Sweden and Finland Apply for NATO Membership",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2022,
+        "label": "Switzerland Wins Non-Permanent UN Security Council Seat",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2022,
+        "label": "Arab League Moves to Readmit Syria as Regional Normalization Advances",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2022,
+        "label": "Turkey Extracts Concessions on Sweden-Finland NATO Bids; Trilateral Memorandum Signed",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2022,
+        "label": "Ukraine Formally Applies for NATO Membership",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2021,
+        "label": "Ethiopia suspends US aid and expels UN officials",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 2021,
+        "label": "AUKUS Pact Announced Without New Zealand Inclusion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2021,
+        "label": "Qatar Blockade Ends \u2014 Al-Ula Declaration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2021,
+        "label": "Singapore Welcomes AUKUS as Contribution to Regional Stability",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2021,
+        "label": "GCC Qatar Blockade Ends",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 2020,
+        "label": "Colombia Joins OECD as Full Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2020,
+        "label": "International Community Demands Eritrean Withdrawal from Tigray",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2020,
+        "label": "Abraham Accords \u2014 Normalization with Gulf States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2020,
+        "label": "VFA Termination Notice Reversed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2020,
+        "label": "New START Treaty extended for five years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bh",
+        "country_name": "Bahrain",
+        "year": 2019,
+        "label": "Bahrain Hosts Workshop for U.S. Middle East Peace Plan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2019,
+        "label": "Turkey-Libya Maritime and Military Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2019,
+        "label": "US withdraws from INF Treaty citing Russian violations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2019,
+        "label": "Tashkent International Forum on Central Asian Connectivity Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2018,
+        "label": "Argentina Hosts G20 Leaders' Summit in Buenos Aires",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2018,
+        "label": "NATO Activates Membership Action Plan for Bosnia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2018,
+        "label": "PNG Hosts APEC Leaders Summit in Port Moresby",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2017,
+        "label": "Ratko Mladi\u0107 Convicted of Genocide and Sentenced to Life",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2017,
+        "label": "G5 Sahel Joint Force Launched \u2014 Regional Security Alliance",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2017,
+        "label": "Jerusalem Crisis \u2014 King Abdullah's Custodianship Role",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2016,
+        "label": "Karad\u017ei\u0107 Convicted of Genocide, Sentenced to 40 Years (Later Life)",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2016,
+        "label": "Bosnia Submits Formal EU Membership Application",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 2016,
+        "label": "Cuba Hosts Colombia-FARC Peace Agreement after Four Years of Talks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2016,
+        "label": "Latvia Joins OECD",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2016,
+        "label": "NATO Deploys Enhanced Forward Presence Battalion in Lithuania",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2016,
+        "label": "Morocco Rejoins African Union After 33 Years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2016,
+        "label": "Rwanda assumes AU peacekeeping leadership role",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 2016,
+        "label": "Slovakia holds rotating EU Council presidency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2015,
+        "label": "Russia Vetoes UN Srebrenica Genocide Resolution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2015,
+        "label": "Switzerland Elected to UN Security Council Consideration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 2015,
+        "label": "Iran Nuclear Deal Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2014,
+        "label": "Germany leads European diplomatic response to Russian annexation of Crimea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2014,
+        "label": "Niger Joins G5 Sahel Security Framework",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2014,
+        "label": "Stoltenberg Appointed NATO Secretary General",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2013,
+        "label": "Brazil Awarded BRICS New Development Bank Presidency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2013,
+        "label": "Russia vetoes UN Syria resolutions protecting Assad",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2013,
+        "label": "Saudi Arabia Rejects UN Security Council Seat",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2013,
+        "label": "Dubai Wins Expo 2020 Bid",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2012,
+        "label": "Taliban open political office in Doha Qatar",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2012,
+        "label": "Rio+20 UN Sustainable Development Conference",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2012,
+        "label": "Addis Ababa Economic Cooperation Agreements Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2011,
+        "label": "Ratko Mladi\u0107 Arrested in Serbia After 16 Years as Fugitive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2011,
+        "label": "South Sudan Joins United Nations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2010,
+        "label": "ICJ Advisory Opinion on Independence Declaration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2010,
+        "label": "New START Treaty signed limiting nuclear arsenals",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 2009,
+        "label": "Albania Joins NATO as Full Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2009,
+        "label": "Rasmussen Appointed NATO Secretary General",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2009,
+        "label": "Fifth Summit of the Americas Hosted in Port of Spain",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2008,
+        "label": "Radovan Karad\u017ei\u0107 Arrested After 13 Years in Hiding",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2008,
+        "label": "BRICS First Leaders Summit Discussions Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2008,
+        "label": "UN peacekeeping mission ONUB departs \u2014 Burundi takes security control",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2008,
+        "label": "India-US nuclear deal finalized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2008,
+        "label": "Advanced Status Agreement with European Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2008,
+        "label": "Rwanda joins the Commonwealth",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2008,
+        "label": "Bucharest NATO Summit: Ukraine Denied MAP but Promised Future Membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2007,
+        "label": "ICJ Rules Serbia Failed to Prevent Srebrenica Genocide",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2007,
+        "label": "February 13 Agreement Temporarily Shuts Yongbyon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 2007,
+        "label": "Lisbon Treaty Signed at EU Summit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2007,
+        "label": "Russia suspends CFE Treaty participation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2006,
+        "label": "Bosnia Joins NATO Partnership for Peace",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2006,
+        "label": "North Korea's first nuclear test \u2014 China condemns",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2006,
+        "label": "Uzbekistan Joins the CSTO and Deepens Russia Alignment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 2005,
+        "label": "Ahmadinejad Calls for Israel to Be 'Wiped Off the Map'",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2005,
+        "label": "Six-Party Talks September 19 Joint Statement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2005,
+        "label": "Hariri Assassination Triggers Cedar Revolution and Syrian Withdrawal from Lebanon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2004,
+        "label": "Brazil Leads UN Peacekeeping Mission in Haiti (MINUSTAH)",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2004,
+        "label": "IBSA Dialogue Forum Founded by Brazil, India, South Africa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 2004,
+        "label": "Bulgaria Joins NATO",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2004,
+        "label": "Latvia Becomes a NATO Member State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2004,
+        "label": "Lithuania Joins NATO",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 2004,
+        "label": "Romania Joins NATO as Full Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2003,
+        "label": "Bosnia Launches EU Stabilization and Association Process",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2003,
+        "label": "African Union peacekeeping mission deployed \u2014 AMIB",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 2003,
+        "label": "Chile Refuses Iraq War Authorization; Valech Torture Commission Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 2003,
+        "label": "Iran Signs Additional Protocol; Nuclear Negotiations Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 2003,
+        "label": "New Zealand Refuses to Join Iraq War Coalition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2003,
+        "label": "Russia opposes US invasion of Iraq at UN",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 2003,
+        "label": "Senegal Deploys Troops to UN Peacekeeping Missions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 2002,
+        "label": "Belgium Hosts NATO-EU Berlin Plus Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 2002,
+        "label": "Joint Declaration on Conduct in South China Sea Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2002,
+        "label": "Schroeder wins reelection by opposing Iraq War, straining US relations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2002,
+        "label": "UN Weapons Inspectors Return \u2014 UNMOVIC",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2002,
+        "label": "Latvia Invited to Join NATO at Prague Summit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 2002,
+        "label": "Romania Invited to Join NATO at Prague Summit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2002,
+        "label": "NATO-Russia Council established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 2002,
+        "label": "IGAD Peace Talks Begin in Kenya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2002,
+        "label": "Switzerland Joins the United Nations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2002,
+        "label": "Timor-Leste joins United Nations as 191st member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2001,
+        "label": "Shanghai Cooperation Organisation established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 2001,
+        "label": "Poland Joins US Coalition in Afghanistan Post-9/11",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2001,
+        "label": "Shanghai Cooperation Organisation founded with China",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2001,
+        "label": "US Envoy Danforth Appointed \u2014 Diplomatic Momentum Builds",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2001,
+        "label": "Syria Elected to UN Security Council Despite US Opposition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2000,
+        "label": "Arusha Peace and Reconciliation Agreement signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2000,
+        "label": "Singapore Elected to UN Security Council for First Time",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 2000,
+        "label": "Slovakia joins OECD after sweeping economic reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2000,
+        "label": "Stockholm International Forum on the Holocaust Launches",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2000,
+        "label": "Saudi-Yemen Border Treaty Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1999,
+        "label": "NATO bombing of Chinese embassy in Belgrade",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1999,
+        "label": "Hungary joins NATO on its 50th anniversary along with Poland and Czech Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1999,
+        "label": "Lockerbie Suspects Surrendered for Trial",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 1999,
+        "label": "OSCE Istanbul Summit Commits Russia to Withdraw from Moldova",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1999,
+        "label": "Visiting Forces Agreement with United States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1999,
+        "label": "Poland Joins NATO \u2014 Historic Security Guarantee",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1999,
+        "label": "Russian troops seize Pristina airport in Kosovo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1999,
+        "label": "UNAMSIL Peacekeeping Mission Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 1998,
+        "label": "UN Security Council Resolution 1199 Demands Ceasefire",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 1998,
+        "label": "Nobel Peace Prize to Hume and Trimble for Northern Ireland",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1997,
+        "label": "NATO invites Hungary to begin accession negotiations at Madrid Summit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1997,
+        "label": "Khatami Proposes Dialogue Among Civilizations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1997,
+        "label": "Israeli-Jordanian Diplomatic Crisis \u2014 Meshaal Poisoning Attempt",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1997,
+        "label": "Russia joins G8 economic summit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1997,
+        "label": "Russia-NATO Founding Act signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 1996,
+        "label": "Ganges Water-Sharing Treaty with India",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1996,
+        "label": "China-Russia strategic partnership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 1996,
+        "label": "Kyrgyzstan Joins Shanghai Cooperation Organisation Predecessors",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1996,
+        "label": "Hezbollah-Israel Confrontation Tests Syrian Nerve",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 1995,
+        "label": "APEC Summit in Osaka Advances Australia-Asia Integration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 1995,
+        "label": "Belarus joins NATO Partnership for Peace",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 1995,
+        "label": "Singapore Joins the World Trade Organization as Founding Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 1994,
+        "label": "Albania Joins NATO Partnership for Peace Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1994,
+        "label": "Egypt Hosts Cairo Population Conference",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 1994,
+        "label": "Finland Joins NATO Partnership for Peace Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 1994,
+        "label": "Lithuania Joins NATO Partnership for Peace",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1994,
+        "label": "Taliban Movement Emerges in Afghanistan with Pakistani Support",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1994,
+        "label": "UN Security Council reduces UNAMIR force amid genocide",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1993,
+        "label": "Eritrea Joins United Nations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1993,
+        "label": "US-Kuwait Defense Cooperation Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1993,
+        "label": "Russian Troops Withdraw \u2014 Full Sovereignty Regained",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1993,
+        "label": "START II Treaty signed banning multiple-warhead land missiles",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1993,
+        "label": "UNAMIR peacekeeping mission deployed to Rwanda",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 1993,
+        "label": "IGAD Peace Process Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 1993,
+        "label": "Uzbekistan Joins the Commonwealth of Independent States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 1992,
+        "label": "Maastricht Treaty Signed with Belgium as EU Founding Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1992,
+        "label": "Rio Earth Summit Hosted by Brazil",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1992,
+        "label": "International Recognition \u2014 Germany Leads, UN Membership Secured",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 1992,
+        "label": "Edinburgh Agreement Grants Denmark Four EU Opt-Outs",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 1991,
+        "label": "Bicesse Accords End First Phase of Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1991,
+        "label": "Brazil Renounces Nuclear Weapons Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1991,
+        "label": "Czechoslovakia Leaves Warsaw Pact and Joins Visegr\u00e1d Group",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1991,
+        "label": "Syria Signs Brotherhood and Cooperation Treaty with Lebanon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1991,
+        "label": "Maastricht Treaty Negotiated on Dutch Soil",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1991,
+        "label": "Both Koreas Admitted to the United Nations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1991,
+        "label": "Warsaw Pact Dissolved \u2014 Poland Seeks NATO",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1991,
+        "label": "START I Treaty signed reducing strategic nuclear arsenals",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 1991,
+        "label": "Both Koreas Join United Nations Simultaneously",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1991,
+        "label": "Madrid Peace Conference: Syria Engages in Talks with Israel",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 1990,
+        "label": "Switzerland Applies for IMF and World Bank Membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 1990,
+        "label": "Turkey Supports Gulf War Coalition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1990,
+        "label": "Gulf War Crisis Tests New Yemeni Unity",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1989,
+        "label": "Vietnamese Troops Withdraw from Cambodia; Vietnam Becomes Third-Largest Rice Exporter",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1988,
+        "label": "New York Accords Settle Angola Conflict, Cuba Withdraws Troops",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1988,
+        "label": "PLO Declares Palestinian State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 1988,
+        "label": "Tripartite Accord \u2014 The Road to Namibian Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1987,
+        "label": "INF Treaty signed eliminating intermediate-range missiles",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 1986,
+        "label": "ICJ Rules United States Violated International Law in Nicaragua",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1985,
+        "label": "North Korea Signs the Nuclear Non-Proliferation Treaty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1984,
+        "label": "Sarajevo Hosts XIV Winter Olympic Games",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 1984,
+        "label": "Brunei Admitted to United Nations and Commonwealth",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1984,
+        "label": "Operation Moses \u2014 Covert Ethiopian Jewish Airlift through Sudan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1984,
+        "label": "Syrian-Hezbollah Alliance Forged in Lebanon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1984,
+        "label": "PDRY Signs Additional Soviet Military Agreements",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1982,
+        "label": "UN-mediated Geneva Talks on Afghanistan begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1981,
+        "label": "Hungary applies for IMF and World Bank membership to address debt crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1980,
+        "label": "Greece rejoins NATO's military command structure after six-year absence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1980,
+        "label": "OAU Summit in Freetown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1979,
+        "label": "Algeria mediates Iranian hostage crisis negotiations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1979,
+        "label": "SALT II Treaty signed but not ratified",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1978,
+        "label": "Sino-Japanese Treaty of Peace and Friendship signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 1978,
+        "label": "UN Security Council Resolution 435 \u2014 Blueprint for Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1978,
+        "label": "Camp David Accords and Saudi Opposition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1978,
+        "label": "Camp David Accords Isolate Syria in Arab World",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1977,
+        "label": "Anwar Sadat Visits Jerusalem",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1977,
+        "label": "Moncloa Pacts: Cross-Party Economic and Political Stabilisation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1977,
+        "label": "Vietnam Joins the United Nations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1977,
+        "label": "PDRY Increases Soviet Military Presence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1975,
+        "label": "Brazil Signs Nuclear Technology Agreement with West Germany",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 1975,
+        "label": "UN Resolution Calls for Self-Determination and Free Elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1975,
+        "label": "Bulgaria Signs Helsinki Final Act",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1975,
+        "label": "Helsinki Final Act Signed, Providing Framework for Dissent",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1975,
+        "label": "West Germany signs the Helsinki Final Act",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1975,
+        "label": "Hungary signs Helsinki Accords, accepting human rights commitments",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 1975,
+        "label": "UN Security Council Resolution 384 condemns invasion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 1974,
+        "label": "Somalia Joins the Arab League",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1974,
+        "label": "Golan Heights Disengagement Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1973,
+        "label": "Itaipu Hydroelectric Dam Treaty with Paraguay",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 1973,
+        "label": "UN Recognises SWAPO as Sole Legitimate Representative",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1972,
+        "label": "Japan normalizes relations with China",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1972,
+        "label": "Cuba Formally Joins Soviet COMECON Economic Bloc",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1972,
+        "label": "Iraqi-Soviet Friendship Treaty Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1972,
+        "label": "Nixon visits Moscow \u2014 SALT I d\u00e9tente summit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1972,
+        "label": "SALT I Agreement signed limiting nuclear arsenals",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1972,
+        "label": "Anti-Ballistic Missile Treaty signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 1971,
+        "label": "Bhutan Admitted to the United Nations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1971,
+        "label": "China admitted to the United Nations, Taiwan expelled",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1971,
+        "label": "Nigeria Joins OPEC",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1971,
+        "label": "Oman Joins United Nations and Arab League",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 1971,
+        "label": "UAE Joins Arab League and United Nations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1970,
+        "label": "West Germany signs Moscow Treaty with USSR",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1968,
+        "label": "Iran Signs Nuclear Non-Proliferation Treaty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 1968,
+        "label": "UN Renames Territory Namibia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1968,
+        "label": "Nuclear Non-Proliferation Treaty signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1968,
+        "label": "Syria Rejects UN Security Council Resolution 242",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1967,
+        "label": "Treaty of Tlatelolco Creates Latin American Nuclear-Free Zone",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1967,
+        "label": "Outer Space Treaty signed by Soviet Union and US",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1967,
+        "label": "Bangkok Declaration Establishes ASEAN with Thailand as Co-Founder",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1966,
+        "label": "Egypt-Syria Defense Pact Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1964,
+        "label": "PLO Founded in Cairo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1964,
+        "label": "Panama Brings Canal Sovereignty Dispute to OAS",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1963,
+        "label": "Organization of African Unity founded in Addis Ababa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1963,
+        "label": "\u00c9lys\u00e9e Treaty seals Franco-German friendship",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1963,
+        "label": "Ghana Joins OAU as Founding Member at Addis Ababa Summit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1963,
+        "label": "Israel-US Special Relationship Develops",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1963,
+        "label": "Partial Nuclear Test Ban Treaty signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1963,
+        "label": "Uganda Joins the Commonwealth and UN",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1963,
+        "label": "Limited Nuclear Test Ban Treaty Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1961,
+        "label": "Kuwait Joins Arab League",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1961,
+        "label": "Belgrade Conference Launches Non-Aligned Movement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1960,
+        "label": "First Evian preliminary talks between France and FLN",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1960,
+        "label": "Argentina-Israel Diplomatic Crisis Over Eichmann",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1960,
+        "label": "Indus Waters Treaty signed with Pakistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1960,
+        "label": "Indus Waters Treaty Signed with India",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1959,
+        "label": "Iran Signs Bilateral Security Agreement with the United States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 1959,
+        "label": "Mali Federation Formed Between French Sudan and Senegal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 1959,
+        "label": "Mali Federation Formed with French Sudan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1958,
+        "label": "UN Economic Commission for Africa headquartered in Addis Ababa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1958,
+        "label": "Ghana Hosts All-African Peoples' Conference, Cementing Pan-African Role",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1958,
+        "label": "Jordan-Iraq Arab Federation Collapses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1958,
+        "label": "Yemen Joins United Arab States with UAR",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1957,
+        "label": "UN General Assembly debates Algerian question",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1957,
+        "label": "Eritrean Exiles Organize in Cairo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1957,
+        "label": "US-Iran Bilateral Defense Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1957,
+        "label": "Israeli Withdrawal from Sinai and Gaza",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1956,
+        "label": "Abduction of FLN leaders' aircraft by France",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 1956,
+        "label": "Austria joins the Council of Europe",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1956,
+        "label": "Iran Expands Ties with Israel Despite Arab Opposition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 1955,
+        "label": "Austrian State Treaty restores sovereignty after ten years of occupation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 1955,
+        "label": "Austria admitted to the United Nations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1955,
+        "label": "Bulgaria Admitted to the United Nations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1955,
+        "label": "Bulgaria Joins the Warsaw Pact",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1955,
+        "label": "Czechoslovakia Joins Warsaw Pact",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1955,
+        "label": "Hungary joins the Warsaw Pact as a founding member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1955,
+        "label": "Iran Joins Baghdad Pact (CENTO)",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1955,
+        "label": "Iraq Joins the Baghdad Pact",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1955,
+        "label": "Ireland Admitted to the United Nations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1955,
+        "label": "Italy Admitted to the United Nations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 1955,
+        "label": "Nepal Joins the United Nations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1955,
+        "label": "Poland Joins Warsaw Pact",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1955,
+        "label": "Portugal Joins the United Nations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 1955,
+        "label": "Romania Joins the Warsaw Pact",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1955,
+        "label": "Warsaw Pact founded as Soviet military alliance",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1955,
+        "label": "Austria State Treaty and Soviet troop withdrawal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1955,
+        "label": "Spain Admitted to the United Nations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1955,
+        "label": "Syrian-Egyptian Mutual Defense Pact Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1954,
+        "label": "International Pressure Mounts on France Over Morocco",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1954,
+        "label": "Pakistan Joins SEATO Defense Pact",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1954,
+        "label": "SEATO Founding \u2014 Philippines as Charter Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1954,
+        "label": "Thailand Signs Manila Pact, Joins SEATO as Founding Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1953,
+        "label": "Franco-Tunisian Negotiations Begin Under International Pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1952,
+        "label": "Brazil Joins International Monetary Fund Operations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1952,
+        "label": "NATO Headquarters Established: Netherlands as Founding Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 1951,
+        "label": "Treaty of Paris Establishes European Coal and Steel Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1951,
+        "label": "International Court of Justice Dispute Over Oil Nationalization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1951,
+        "label": "Mutual Defense Treaty with the United States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1950,
+        "label": "Sino-Soviet Treaty of Friendship signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1950,
+        "label": "Colombia Deploys Combat Troops to Korean War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 1950,
+        "label": "Schuman Declaration Proposes European Coal and Steel Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1950,
+        "label": "West Germany joins the Council of Europe",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1950,
+        "label": "Construction of Dhahran Air Base Expansion",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 307
+  }
+}

@@ -1,0 +1,2270 @@
+{
+  "recipe_id": "trade_agreement",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "International Tension",
+  "description_compelling": "Two or more states sign a deal cutting tariff or non-tariff barriers \u2014 bilateral FTAs, accession to regional blocs, sector-specific pacts. Trade openness, FDI flows, and regulatory-quality scores usually trend up first. Frequent in middle-income exporters anchoring credibility, and in regional integration projects deepening over time.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.7220159515951595,
+    "ci95_lo": 0.6546295485329947,
+    "ci95_hi": 0.7845951799359115,
+    "ci80_lo": 0.6789091658687956,
+    "ci80_hi": 0.7642407695596023,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2pepwrses",
+      "MS.MIL.XPND.ZS",
+      "v2csprtcpt"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2pepwrses",
+        "name": "Power Distributed by Social Group (Ethnic) (0-4)"
+      },
+      {
+        "code": "MS.MIL.XPND.ZS",
+        "name": null
+      },
+      {
+        "code": "v2csprtcpt",
+        "name": "Civil Society Participatory Environment (0-4)"
+      }
+    ],
+    "chosen_window": 5,
+    "final_global_auc": 0.7220159515951595,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2pepwrses",
+        "window": 10,
+        "auc": 0.6281253792936036,
+        "lift_over_previous": 0.12812537929360357,
+        "selected_after": [
+          "v2pepwrses"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "MS.MIL.XPND.ZS",
+        "window": 10,
+        "auc": 0.6882564170767389,
+        "lift_over_previous": 0.06013103778313533,
+        "selected_after": [
+          "v2pepwrses",
+          "MS.MIL.XPND.ZS"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2csprtcpt",
+        "window": 5,
+        "auc": 0.7220159515951595,
+        "lift_over_previous": 0.03375953451842062,
+        "selected_after": [
+          "v2pepwrses",
+          "MS.MIL.XPND.ZS",
+          "v2csprtcpt"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2x_regime_amb",
+        "window": 5,
+        "auc": 0.7178905390539054,
+        "lift_over_previous": -0.004125412541254092,
+        "selected_after": [
+          "v2pepwrses",
+          "MS.MIL.XPND.ZS",
+          "v2csprtcpt",
+          "v2x_regime_amb"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 108,
+    "n_pos_survive": 72,
+    "n_neg_total": 324,
+    "n_neg_survive": 202,
+    "pos_coverage": 0.6666666666666666,
+    "neg_coverage": 0.6234567901234568,
+    "n_countries_survive": 49,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 96,
+      "loco_auc": 0.6332552693208431,
+      "ece": 0.20698346912589238,
+      "ece_ci95_lo": 0.13437969151224632,
+      "ece_ci95_hi": 0.3097706708441062,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 24,
+          "mean_predicted": 0.057552625075913966,
+          "mean_actual": 0.20833333333333334
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 17,
+          "mean_predicted": 0.1536501935299705,
+          "mean_actual": 0.35294117647058826
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 10,
+          "mean_predicted": 0.2585332542657852,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 9,
+          "mean_predicted": 0.34716351495848763,
+          "mean_actual": 0.5555555555555556
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 7,
+          "mean_predicted": 0.43451548899923054,
+          "mean_actual": 0.14285714285714285
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 4,
+          "mean_predicted": 0.5552754998207092,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 7,
+          "mean_predicted": 0.6542539085660662,
+          "mean_actual": 0.2857142857142857
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 7,
+          "mean_predicted": 0.745306738785335,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 9,
+          "mean_predicted": 0.853136784500546,
+          "mean_actual": 0.7777777777777778
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 2,
+          "mean_predicted": 0.9178337454795837,
+          "mean_actual": 0.5
+        }
+      ],
+      "loco_auc_ci95_lo": 0.4954532835088498,
+      "loco_auc_ci95_hi": 0.7398148148148148
+    },
+    "mid-tier": {
+      "n": 48,
+      "loco_auc": 0.6560196560196561,
+      "ece": 0.18182405687790984,
+      "ece_ci95_lo": 0.13288961141564262,
+      "ece_ci95_hi": 0.333859397394311,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 22,
+          "mean_predicted": 0.03599751372398301,
+          "mean_actual": 0.13636363636363635
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 4,
+          "mean_predicted": 0.14696460217237473,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 3,
+          "mean_predicted": 0.22005481024583182,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 2,
+          "mean_predicted": 0.3348993808031082,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 3,
+          "mean_predicted": 0.4488568603992462,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 6,
+          "mean_predicted": 0.5296631256739298,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.6006384491920471,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 3,
+          "mean_predicted": 0.7466226021448771,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 1,
+          "mean_predicted": 0.8952882885932922,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 3,
+          "mean_predicted": 0.9457934101422628,
+          "mean_actual": 0.3333333333333333
+        }
+      ],
+      "loco_auc_ci95_lo": 0.4348894348894349,
+      "loco_auc_ci95_hi": 0.832967032967033
+    },
+    "stable-democracy": {
+      "n": 130,
+      "loco_auc": 0.7958579881656804,
+      "ece": 0.0649301331024617,
+      "ece_ci95_lo": 0.05364437458347172,
+      "ece_ci95_hi": 0.14802819805067532,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 66,
+          "mean_predicted": 0.04156178160514118,
+          "mean_actual": 0.06060606060606061
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 19,
+          "mean_predicted": 0.12977019815068497,
+          "mean_actual": 0.15789473684210525
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 10,
+          "mean_predicted": 0.24747915416955948,
+          "mean_actual": 0.3
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 8,
+          "mean_predicted": 0.3358713798224926,
+          "mean_actual": 0.375
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 2,
+          "mean_predicted": 0.4675431251525879,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.5492693305015564,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 9,
+          "mean_predicted": 0.6482185324033102,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 3,
+          "mean_predicted": 0.7347650527954102,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 5,
+          "mean_predicted": 0.8300416350364686,
+          "mean_actual": 0.6
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 3,
+          "mean_predicted": 0.9372202356656393,
+          "mean_actual": 0.6666666666666666
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6914429000210357,
+      "loco_auc_ci95_hi": 0.8751935775378406
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-28T03:50:46.500034+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5368,
+  "stability_diagnostic": {
+    "fold_variance": 0.07706406982066971,
+    "fold_auc_mean": 0.7272682445759369,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Australia": 0.8,
+      "Bahrain": 0.0,
+      "Bangladesh": 0.625,
+      "Botswana": 0.75,
+      "Brazil": 0.6666666666666666,
+      "Canada": 1.0,
+      "Chile": 0.8,
+      "China": 1.0,
+      "Colombia": 1.0,
+      "Cyprus": 0.3333333333333333,
+      "Egypt": 1.0,
+      "El Salvador": 1.0,
+      "Eritrea": 1.0,
+      "Ethiopia": 0.7916666666666666,
+      "Ghana": 1.0,
+      "Guatemala": 0.6666666666666666,
+      "Honduras": 0.5,
+      "India": 1.0,
+      "Jordan": 0.9,
+      "Kenya": 0.375,
+      "Kyrgyzstan": 0.5,
+      "Laos": 0.25,
+      "Lithuania": 1.0,
+      "Mauritius": 0.5384615384615384,
+      "Mexico": 0.5,
+      "Moldova": 0.75,
+      "Mongolia": 1.0,
+      "Morocco": 0.9166666666666666,
+      "New Zealand": 0.9333333333333333,
+      "Norway": 0.375,
+      "Oman": 0.5,
+      "Portugal": 1.0,
+      "Saudi Arabia": 0.9166666666666666,
+      "Singapore": 1.0,
+      "Switzerland": 0.875,
+      "Tajikistan": 0.2,
+      "Tunisia": 0.5,
+      "United Arab Emirates": 1.0,
+      "Vietnam": 0.4
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 108,
+  "n_negatives": 324,
+  "walked_at_utc": "2026-06-28T03:52:44.659563+00:00",
+  "elapsed_seconds": 2792.8536088466644,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/trade_agreement/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 7,
+        "countries": [
+          "Switzerland",
+          "Argentina",
+          "Papua New Guinea",
+          "Montenegro",
+          "Belgium",
+          "Bosnia and Herzegovina",
+          "Armenia"
+        ],
+        "country_isos": [
+          "ch",
+          "ar",
+          "pg",
+          "me",
+          "be",
+          "ba",
+          "am"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 8,
+        "countries": [
+          "France",
+          "Mozambique",
+          "Burundi",
+          "Poland",
+          "Malta",
+          "Burkina Faso",
+          "Trinidad and Tobago",
+          "Norway"
+        ],
+        "country_isos": [
+          "fr",
+          "mz",
+          "bi",
+          "pl",
+          "mt",
+          "bf",
+          "tt",
+          "no"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 8,
+        "countries": [
+          "Kyrgyzstan",
+          "Lithuania",
+          "Cameroon",
+          "Ireland",
+          "Netherlands",
+          "Kuwait",
+          "Moldova",
+          "Australia"
+        ],
+        "country_isos": [
+          "kg",
+          "lt",
+          "cm",
+          "ie",
+          "nl",
+          "kw",
+          "md",
+          "au"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 7,
+        "countries": [
+          "Senegal",
+          "Eritrea",
+          "Algeria",
+          "Nigeria",
+          "Serbia",
+          "Austria",
+          "Slovakia"
+        ],
+        "country_isos": [
+          "sn",
+          "er",
+          "dz",
+          "ng",
+          "rs",
+          "at",
+          "sk"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 8,
+        "countries": [
+          "Cyprus",
+          "Mali",
+          "Iran",
+          "Kenya",
+          "Latvia",
+          "Somalia",
+          "Fiji",
+          "Finland"
+        ],
+        "country_isos": [
+          "cy",
+          "ml",
+          "ir",
+          "ke",
+          "lv",
+          "so",
+          "fj",
+          "fi"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 8,
+        "countries": [
+          "Singapore",
+          "Sweden",
+          "Zambia",
+          "Ukraine",
+          "North Macedonia",
+          "Niger",
+          "Tunisia",
+          "Guinea"
+        ],
+        "country_isos": [
+          "sg",
+          "se",
+          "zm",
+          "ua",
+          "mk",
+          "ne",
+          "tn",
+          "gn"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 7,
+        "countries": [
+          "Sudan",
+          "Luxembourg",
+          "Guatemala",
+          "Czechia",
+          "Morocco",
+          "Cabo Verde",
+          "Uganda"
+        ],
+        "country_isos": [
+          "sd",
+          "lu",
+          "gt",
+          "cz",
+          "ma",
+          "cv",
+          "ug"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Bulgaria",
+          "Slovenia",
+          "Spain",
+          "Indonesia",
+          "Iraq",
+          "Cambodia",
+          "Bolivia",
+          "Pakistan"
+        ],
+        "country_isos": [
+          "bg",
+          "si",
+          "es",
+          "id",
+          "iq",
+          "kh",
+          "bo",
+          "pk"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 8,
+        "countries": [
+          "Ghana",
+          "Israel",
+          "Estonia",
+          "Yemen",
+          "Japan",
+          "Timor-Leste",
+          "Albania",
+          "Honduras"
+        ],
+        "country_isos": [
+          "gh",
+          "il",
+          "ee",
+          "ye",
+          "jp",
+          "tl",
+          "al",
+          "hn"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 7,
+        "countries": [
+          "Ethiopia",
+          "Greece",
+          "Italy",
+          "Nepal",
+          "Germany",
+          "Bahrain",
+          "The Democratic Republic of the Congo"
+        ],
+        "country_isos": [
+          "et",
+          "gr",
+          "it",
+          "np",
+          "de",
+          "bh",
+          "cd"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 8,
+        "countries": [
+          "Lesotho",
+          "Denmark",
+          "Dominican Republic",
+          "Liberia",
+          "Mauritius",
+          "Colombia",
+          "Botswana",
+          "United Kingdom"
+        ],
+        "country_isos": [
+          "ls",
+          "dk",
+          "do",
+          "lr",
+          "mu",
+          "co",
+          "bw",
+          "gb"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Myanmar",
+          "Seychelles",
+          "El Salvador",
+          "The Gambia",
+          "Sierra Leone",
+          "Gabon",
+          "Croatia",
+          "India"
+        ],
+        "country_isos": [
+          "mm",
+          "sc",
+          "sv",
+          "gm",
+          "sl",
+          "ga",
+          "hr",
+          "in"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 8,
+        "countries": [
+          "Nicaragua",
+          "Tanzania",
+          "United Arab Emirates",
+          "Malawi",
+          "Oman",
+          "Malaysia",
+          "Guyana",
+          "Jamaica"
+        ],
+        "country_isos": [
+          "ni",
+          "tz",
+          "ae",
+          "mw",
+          "om",
+          "my",
+          "gy",
+          "jm"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 7,
+        "countries": [
+          "China",
+          "Azerbaijan",
+          "Mauritania",
+          "Guinea-Bissau",
+          "Vietnam",
+          "South Sudan",
+          "Russia"
+        ],
+        "country_isos": [
+          "cn",
+          "az",
+          "mr",
+          "gw",
+          "vn",
+          "ss",
+          "ru"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 8,
+        "countries": [
+          "Central African Republic",
+          "Philippines",
+          "Ecuador",
+          "South Africa",
+          "Canada",
+          "Jordan",
+          "New Zealand",
+          "Tajikistan"
+        ],
+        "country_isos": [
+          "cf",
+          "ph",
+          "ec",
+          "za",
+          "ca",
+          "jo",
+          "nz",
+          "tj"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Panama",
+          "Equatorial Guinea",
+          "Chad",
+          "Saudi Arabia",
+          "Kazakhstan",
+          "United States",
+          "Lebanon",
+          "Haiti"
+        ],
+        "country_isos": [
+          "pa",
+          "gq",
+          "td",
+          "sa",
+          "kz",
+          "us",
+          "lb",
+          "ht"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 7,
+        "countries": [
+          "Zimbabwe",
+          "Ivory Coast",
+          "Brazil",
+          "Republic of the Congo",
+          "Thailand",
+          "Rwanda",
+          "Djibouti"
+        ],
+        "country_isos": [
+          "zw",
+          "ci",
+          "br",
+          "cg",
+          "th",
+          "rw",
+          "dj"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 8,
+        "countries": [
+          "Portugal",
+          "Paraguay",
+          "Bangladesh",
+          "Syria",
+          "South Korea",
+          "Georgia",
+          "Hungary",
+          "Uruguay"
+        ],
+        "country_isos": [
+          "pt",
+          "py",
+          "bd",
+          "sy",
+          "kr",
+          "ge",
+          "hu",
+          "uy"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 8,
+        "countries": [
+          "Romania",
+          "Eswatini",
+          "Togo",
+          "Egypt",
+          "Belarus",
+          "Afghanistan",
+          "Madagascar",
+          "Chile"
+        ],
+        "country_isos": [
+          "ro",
+          "sz",
+          "tg",
+          "eg",
+          "by",
+          "af",
+          "mg",
+          "cl"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 8,
+        "countries": [
+          "Mexico",
+          "Mongolia",
+          "Angola",
+          "Sri Lanka",
+          "Namibia",
+          "Peru",
+          "Laos",
+          "Benin"
+        ],
+        "country_isos": [
+          "mx",
+          "mn",
+          "ao",
+          "lk",
+          "na",
+          "pe",
+          "la",
+          "bj"
+        ]
+      }
+    ],
+    "median": 50.6,
+    "p90": 90.3,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 154,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.1626,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.654616883683597,
+      "b": 0.0,
+      "c": 0.08397797706685962,
+      "n_fit": 274,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 44,
+        "observed_rate": 0.09090909090909091
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 74,
+        "observed_rate": 0.12162162162162163
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 44,
+        "observed_rate": 0.29545454545454547
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 43,
+        "observed_rate": 0.32558139534883723
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 56,
+        "observed_rate": 0.42857142857142855
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 13,
+        "observed_rate": 0.6153846153846154
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.03408320084617933,
+    "n_predictions": 274,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.20698346912589238,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 24,
+            "mean_predicted": 0.057552625075913966,
+            "mean_actual": 0.20833333333333334
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 17,
+            "mean_predicted": 0.1536501935299705,
+            "mean_actual": 0.35294117647058826
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 10,
+            "mean_predicted": 0.2585332542657852,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 9,
+            "mean_predicted": 0.34716351495848763,
+            "mean_actual": 0.5555555555555556
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 7,
+            "mean_predicted": 0.43451548899923054,
+            "mean_actual": 0.14285714285714285
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 4,
+            "mean_predicted": 0.5552754998207092,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 7,
+            "mean_predicted": 0.6542539085660662,
+            "mean_actual": 0.2857142857142857
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 7,
+            "mean_predicted": 0.745306738785335,
+            "mean_actual": 0.42857142857142855
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 9,
+            "mean_predicted": 0.853136784500546,
+            "mean_actual": 0.7777777777777778
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 2,
+            "mean_predicted": 0.9178337454795837,
+            "mean_actual": 0.5
+          }
+        ],
+        "n": 96,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.18182405687790984,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 22,
+            "mean_predicted": 0.03599751372398301,
+            "mean_actual": 0.13636363636363635
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 4,
+            "mean_predicted": 0.14696460217237473,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 3,
+            "mean_predicted": 0.22005481024583182,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 2,
+            "mean_predicted": 0.3348993808031082,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 3,
+            "mean_predicted": 0.4488568603992462,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 6,
+            "mean_predicted": 0.5296631256739298,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.6006384491920471,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 3,
+            "mean_predicted": 0.7466226021448771,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 1,
+            "mean_predicted": 0.8952882885932922,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 3,
+            "mean_predicted": 0.9457934101422628,
+            "mean_actual": 0.3333333333333333
+          }
+        ],
+        "n": 48,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.0649301331024617,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 66,
+            "mean_predicted": 0.04156178160514118,
+            "mean_actual": 0.06060606060606061
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 19,
+            "mean_predicted": 0.12977019815068497,
+            "mean_actual": 0.15789473684210525
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 10,
+            "mean_predicted": 0.24747915416955948,
+            "mean_actual": 0.3
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 8,
+            "mean_predicted": 0.3358713798224926,
+            "mean_actual": 0.375
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 2,
+            "mean_predicted": 0.4675431251525879,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 5,
+            "mean_predicted": 0.5492693305015564,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 9,
+            "mean_predicted": 0.6482185324033102,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 3,
+            "mean_predicted": 0.7347650527954102,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 5,
+            "mean_predicted": 0.8300416350364686,
+            "mean_actual": 0.6
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 3,
+            "mean_predicted": 0.9372202356656393,
+            "mean_actual": 0.6666666666666666
+          }
+        ],
+        "n": 130,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/trade_agreement.scores.json",
+  "shape_points": [
+    0.02165492553340731,
+    0.0501017645755539,
+    0.07854860361770048,
+    0.10699544265984708,
+    0.13544228170199366,
+    0.16388912074414025,
+    0.19233595978628681,
+    0.22078279882843338,
+    0.24922963787058,
+    0.27767647691272657,
+    0.30612331595487313,
+    0.3345701549970197
+  ],
+  "shap_importance_raw": {
+    "v2pepwrses": 1.7310583591461182,
+    "MS.MIL.XPND.ZS": 1.6645772457122803,
+    "v2csprtcpt": 1.727203369140625
+  },
+  "shap_importance_normalized": {
+    "v2pepwrses": 0.33790996904882376,
+    "MS.MIL.XPND.ZS": 0.3249325723804407,
+    "v2csprtcpt": 0.33715745857073554
+  },
+  "shap_direction_signs": {
+    "v2pepwrses": -1,
+    "MS.MIL.XPND.ZS": -1,
+    "v2csprtcpt": -1
+  },
+  "per_feature_breakdown": {
+    "v2pepwrses": {
+      "last_z": 0.37438029050827026,
+      "mean_z": 0.20255441963672638,
+      "std_z": 0.1842673271894455,
+      "slope": 0.44466644525527954,
+      "accel": 0.17733536660671234,
+      "tertile1_mean": 0.3325067162513733,
+      "tertile2_mean": 0.015347818844020367,
+      "tertile3_mean": 0.0
+    },
+    "MS.MIL.XPND.ZS": {
+      "last_z": 0.22374463081359863,
+      "mean_z": 0.03432703763246536,
+      "std_z": 0.20598314702510834,
+      "slope": 0.5057582259178162,
+      "accel": 0.45383647084236145,
+      "tertile1_mean": 0.11569736897945404,
+      "tertile2_mean": 0.12523040175437927,
+      "tertile3_mean": 0.0
+    },
+    "v2csprtcpt": {
+      "last_z": 0.541344940662384,
+      "mean_z": 0.2921881377696991,
+      "std_z": 0.05251773074269295,
+      "slope": 0.07939175516366959,
+      "accel": 0.4336000382900238,
+      "tertile1_mean": 0.29653623700141907,
+      "tertile2_mean": 0.031624581664800644,
+      "tertile3_mean": 0.0
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 5,
+    "indicators": [
+      {
+        "code": "v2pepwrses",
+        "name": "Power Distributed by Social Group (Ethnic) (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 107,
+        "shape": {
+          "mean": [
+            0.0288,
+            0.0388,
+            -0.0677,
+            -0.1999,
+            -0.3019
+          ],
+          "p25": [
+            -0.6556,
+            -0.6873,
+            -0.823,
+            -0.9535,
+            -1.1926
+          ],
+          "p75": [
+            0.6601,
+            0.7063,
+            0.7015,
+            0.6998,
+            0.6998
+          ]
+        }
+      },
+      {
+        "code": "MS.MIL.XPND.ZS",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 73,
+        "shape": {
+          "mean": [
+            -0.4739,
+            -0.3052,
+            -0.3816,
+            -0.5254,
+            -0.5613
+          ],
+          "p25": [
+            -0.83,
+            -0.9516,
+            -0.9232,
+            -1.1425,
+            -1.3457
+          ],
+          "p75": [
+            -0.1132,
+            0.2252,
+            0.1479,
+            0.032,
+            0.227
+          ]
+        }
+      },
+      {
+        "code": "v2csprtcpt",
+        "name": "Civil Society Participatory Environment (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 107,
+        "shape": {
+          "mean": [
+            0.2034,
+            0.2507,
+            0.3507,
+            0.3021,
+            0.259
+          ],
+          "p25": [
+            -0.4227,
+            -0.3618,
+            -0.2678,
+            -0.2709,
+            -0.3339
+          ],
+          "p75": [
+            0.8935,
+            0.9377,
+            1.0104,
+            1.0628,
+            1.0953
+          ]
+        }
+      }
+    ],
+    "samples_used": 107,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2026,
+        "label": "LDC Graduation Scheduled: Bangladesh to Exit Least Developed Country Status",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2025,
+        "label": "Trump tariffs escalate to 145% \u2014 US-China trade war and truce",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2025,
+        "label": "BYD overtakes global automakers in EV sales",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2025,
+        "label": "India-US tariff negotiations under Trump administration",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2025,
+        "label": "USMCA Review Scheduled for 2026 Creates Trade Uncertainty",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2025,
+        "label": "Mongolia Demands Renegotiation of Oyu Tolgoi Revenue Terms",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2024,
+        "label": "EU imposes tariffs on Chinese electric vehicles",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 2023,
+        "label": "Botswana-De Beers CETA Renewal Agreed \u2014 Expanded State Stake",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2023,
+        "label": "Ethiopia launches new telecom operator, ending monopoly",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2023,
+        "label": "Russia withdraws from Black Sea Grain Initiative",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2023,
+        "label": "Trans-Caspian Trade Route Gains Momentum as Russia Bypass",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2023,
+        "label": "Uzbekistan Joins WTO Accession Negotiations in Earnest",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 2022,
+        "label": "RCEP Enters Into Force, Expanding Trade Architecture",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2022,
+        "label": "Ethiopia joins African Continental Free Trade Area",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 2022,
+        "label": "Tanzania Rejoins EAC Economic Partnership Talks",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2022,
+        "label": "Black Sea Grain Initiative Signed, Unblocking Ukrainian Exports",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2022,
+        "label": "UAE Comprehensive Economic Partnership Agreements",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2020,
+        "label": "RCEP Trade Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 2019,
+        "label": "Kenya Joins African Continental Free Trade Area",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2019,
+        "label": "Trade War Diversion Boosts Vietnam; EU-Vietnam FTA Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 2018,
+        "label": "USMCA Renegotiation Preserves Core NAFTA Architecture",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2018,
+        "label": "US-China trade war begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 2018,
+        "label": "Ghana Among First Signatories of African Continental Free Trade Area",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2018,
+        "label": "USMCA Signed \u2014 NAFTA Replaced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2018,
+        "label": "Singapore Ratifies the CPTPP Trade Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2017,
+        "label": "Garment Sector Surpasses $28 Billion in Exports",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2017,
+        "label": "NAFTA Renegotiation Begins Under Trump Pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2017,
+        "label": "Vietnam Hosts APEC; Becomes Global Manufacturing Hub",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 2016,
+        "label": "Taiwan Launches New Southbound Policy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 2015,
+        "label": "China-Australia Free Trade Agreement Enters Force",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2015,
+        "label": "Renminbi added to IMF Special Drawing Rights basket",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 2015,
+        "label": "China-Maldives free trade agreement negotiations launched under Yameen",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2015,
+        "label": "TPP Concluded; ASEAN Economic Community Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2013,
+        "label": "Ethiopian Airlines becomes Africa's largest carrier by revenue",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2013,
+        "label": "Laos Accedes to the World Trade Organization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2013,
+        "label": "Oyu Tolgoi Dispute: Government Challenges Rio Tinto on Costs",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 2013,
+        "label": "Cross-Strait Services Trade Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 2013,
+        "label": "Tajikistan Joins World Trade Organization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 2012,
+        "label": "Botswana African Diamond Beneficiation Agreement with De Beers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2012,
+        "label": "Ethiopia's mobile phone subscriptions reach 20 million",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2012,
+        "label": "Strategic Entities Foreign Investment Law Restricts FDI",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 2011,
+        "label": "US-Colombia Free Trade Agreement Ratified",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2011,
+        "label": "Tavan Tolgoi Coal Mine Begins Exports to China",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2010,
+        "label": "Jordan-EU Association Agreement Upgraded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 2010,
+        "label": "Moldova Receives EU Autonomous Trade Preferences",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 2010,
+        "label": "ECFA Signed: Landmark Cross-Strait Trade Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2009,
+        "label": "Ethiopia's telecom sector remains state monopoly",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2009,
+        "label": "Oyu Tolgoi Investment Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 2009,
+        "label": "Cross-Strait Economic Cooperation Framework Agreement Negotiations Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 2009,
+        "label": "Uzbekistan Imposes Rail Blockade Over Rogun Dam Dispute",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cr",
+        "country_name": "Costa Rica",
+        "year": 2008,
+        "label": "CAFTA Implementation Legislation Package Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 2008,
+        "label": "NZ-China Free Trade Agreement First for a Developed Nation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cr",
+        "country_name": "Costa Rica",
+        "year": 2007,
+        "label": "CAFTA Approved in First-Ever National Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2007,
+        "label": "US-Morocco Free Trade Agreement Deepens Trade Ties",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2007,
+        "label": "Vietnam Joins World Trade Organization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2006,
+        "label": "Ethiopian Airlines launches Boeing 777 service",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2006,
+        "label": "Dordoi Bazaar\u2014Central Asia's Largest Wholesale Market\u2014Faces EEU Threat",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 2006,
+        "label": "Sugar Protocol Ends \u2014 EU Phases Out Preferential Prices",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 2006,
+        "label": "Russia Imposes Wine Embargo on Moldova",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 2006,
+        "label": "US-Oman Free Trade Agreement Enters Into Force",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2006,
+        "label": "Dubai Ports World Acquires P&O \u2014 US Political Controversy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2005,
+        "label": "Brazil Achieves Record Agricultural Exports",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 2005,
+        "label": "Trans-Pacific Strategic Economic Partnership Founding Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 2005,
+        "label": "CAFTA Free Trade Agreement Ratified with United States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 2005,
+        "label": "New Zealand Signs Closer Economic Partnership with China",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2005,
+        "label": "Saudi Arabia Joins WTO",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bh",
+        "country_name": "Bahrain",
+        "year": 2004,
+        "label": "Bahrain Signs Free Trade Agreement with United States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 2004,
+        "label": "EU adopts Green Line Regulation for trade across the buffer zone",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "do",
+        "country_name": "Dominican Republic",
+        "year": 2004,
+        "label": "DR-CAFTA Free Trade Agreement Signed with United States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2004,
+        "label": "Egypt-EU Association Agreement Enters Into Force",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 2004,
+        "label": "CAFTA-DR Free Trade Agreement Signed with United States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 2004,
+        "label": "Honduras Signs CAFTA-DR Free Trade Agreement with the United States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2004,
+        "label": "Laos Granted Normal Trade Relations Status by United States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2003,
+        "label": "Brazil Participates in WTO Agriculture Dispute Resolution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2003,
+        "label": "US-Singapore Free Trade Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 2002,
+        "label": "Chile-U.S. Free Trade Agreement Signed; Pinochet Faces Multiple Indictments",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2002,
+        "label": "Qualifying Industrial Zone Employment Growth",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2001,
+        "label": "China joins the World Trade Organization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2001,
+        "label": "U.S.-Jordan Free Trade Agreement Implemented",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2001,
+        "label": "Lithuania Joins the World Trade Organization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 2001,
+        "label": "Moldova Becomes First Post-Soviet WTO Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2000,
+        "label": "Brazil Emerges as Major Soybean Exporter",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2000,
+        "label": "Jordan Joins World Trade Organization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 2000,
+        "label": "Oman Joins World Trade Organization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2000,
+        "label": "Saudi Arabia Joins WTO Negotiations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2000,
+        "label": "Bilateral Agreements I with EU Approved by 67% of Voters",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2000,
+        "label": "U.S.-Vietnam Bilateral Trade Agreement Signed; Stock Exchange Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 1999,
+        "label": "Export Processing Zone Expansion and RMG Growth",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 1999,
+        "label": "Latvia Joins the World Trade Organization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 1998,
+        "label": "Kyrgyzstan Joins WTO as First CIS State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1997,
+        "label": "Eritrea-Ethiopia Trade Dispute over Nakfa Currency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1997,
+        "label": "Eritrea introduces new currency, triggering trade dispute",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 1997,
+        "label": "Mongolia Joins World Trade Organization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1996,
+        "label": "Egypt Joins World Trade Organization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1996,
+        "label": "Ethiopia imposes trade sanctions on Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1996,
+        "label": "Ethiopian Airlines expands African network",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1995,
+        "label": "Morocco Joins World Trade Organisation at Founding",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1995,
+        "label": "Tunisia Signs Association Agreement with European Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 1995,
+        "label": "EU-Turkey Customs Union Enters Into Force",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 1994,
+        "label": "Post-Apartheid Normalisation \u2014 Economic Integration with South Africa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1994,
+        "label": "India signs WTO agreements at Uruguay Round",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1994,
+        "label": "U.S. Lifts Trade Embargo Against Vietnam",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1993,
+        "label": "NAFTA Passed by Congress",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1992,
+        "label": "NAFTA Framework Agreed Between Canada, US, and Mexico",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1992,
+        "label": "Chile Expands Free Trade Network and Restores Municipal Democracy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 1992,
+        "label": "Sealord Fisheries Deal Advances Maori Economic Rights",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 1992,
+        "label": "EEA Agreement Signed with European Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1992,
+        "label": "EU Single Market Completed \u2014 Full Integration for Portugal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1990,
+        "label": "Brazil Opens Economy to Foreign Trade",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1990,
+        "label": "NAFTA Negotiations Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1988,
+        "label": "Free Trade Election Gives Mulroney Mandate for FTA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1986,
+        "label": "Mexico Joins GATT \u2014 Trade Liberalization Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 1972,
+        "label": "Austria signs free trade agreement with European Economic Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1972,
+        "label": "Record Coffee Export Earnings Boost Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1972,
+        "label": "Great Grain Robbery \u2014 secret Soviet grain purchases from US",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1969,
+        "label": "Ecuador Joins the Andean Pact (Cartagena Agreement)",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1965,
+        "label": "Canada-US Auto Pact Integrates North American Industry",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1965,
+        "label": "Anglo-Irish Free Trade Agreement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1964,
+        "label": "Morocco Signs Association Agreement with EEC",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1957,
+        "label": "Coffee exports drive Ethiopian economic growth",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1955,
+        "label": "Ecuador Solidifies Position as World's Largest Banana Exporter",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1954,
+        "label": "Ceylon signs rubber-rice barter agreement with China",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1951,
+        "label": "Egyptian Cotton Exports Reach Record Levels",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 123
+  }
+}

@@ -1,0 +1,4584 @@
+{
+  "recipe_id": "constitutional_change",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Governance Stress",
+  "description_compelling": "A formal rewrite or significant amendment to a country's foundational law \u2014 term limits redrawn, presidential powers expanded, or a new constitution adopted wholesale. Judicial constraints, legislative independence, and executive-power indices typically drift for years before the legal change. Frequent in young democracies and in mature autocracies looking to extend incumbency.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.622215660345868,
+    "ci95_lo": 0.5891388365107645,
+    "ci95_hi": 0.6557049044344975,
+    "ci80_lo": 0.6016462751793089,
+    "ci80_hi": 0.6444479328957557,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2x_neopat",
+      "v2svinlaut",
+      "v2juhccomp"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2x_neopat",
+        "name": "Neopatrimonialism Index (0-1)"
+      },
+      {
+        "code": "v2svinlaut",
+        "name": null
+      },
+      {
+        "code": "v2juhccomp",
+        "name": null
+      }
+    ],
+    "chosen_window": 12,
+    "final_global_auc": 0.622215660345868,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2x_neopat",
+        "window": 18,
+        "auc": 0.5767302910176775,
+        "lift_over_previous": 0.07673029101767748,
+        "selected_after": [
+          "v2x_neopat"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2svinlaut",
+        "window": 12,
+        "auc": 0.5938120934113882,
+        "lift_over_previous": 0.01708180239371071,
+        "selected_after": [
+          "v2x_neopat",
+          "v2svinlaut"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2juhccomp",
+        "window": 12,
+        "auc": 0.622215660345868,
+        "lift_over_previous": 0.028403566934479763,
+        "selected_after": [
+          "v2x_neopat",
+          "v2svinlaut",
+          "v2juhccomp"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2x_clphy",
+        "window": 12,
+        "auc": 0.627109678910272,
+        "lift_over_previous": 0.004894018564404079,
+        "selected_after": [
+          "v2x_neopat",
+          "v2svinlaut",
+          "v2juhccomp",
+          "v2x_clphy"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 402,
+    "n_pos_survive": 365,
+    "n_neg_total": 1206,
+    "n_neg_survive": 1067,
+    "pos_coverage": 0.9079601990049752,
+    "neg_coverage": 0.884742951907131,
+    "n_countries_survive": 130,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 716,
+      "loco_auc": 0.6118068321078431,
+      "ece": 0.11093013811409054,
+      "ece_ci95_lo": 0.08917905288096778,
+      "ece_ci95_hi": 0.14799936006519446,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 70,
+          "mean_predicted": 0.06801621437604938,
+          "mean_actual": 0.14285714285714285
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 118,
+          "mean_predicted": 0.15724701560654883,
+          "mean_actual": 0.13559322033898305
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 131,
+          "mean_predicted": 0.24933500440066098,
+          "mean_actual": 0.2900763358778626
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 94,
+          "mean_predicted": 0.3474211699150978,
+          "mean_actual": 0.3404255319148936
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 109,
+          "mean_predicted": 0.4531018195349142,
+          "mean_actual": 0.3761467889908257
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 83,
+          "mean_predicted": 0.5488291720309889,
+          "mean_actual": 0.3493975903614458
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 59,
+          "mean_predicted": 0.6489252771361399,
+          "mean_actual": 0.3050847457627119
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 35,
+          "mean_predicted": 0.7488015191895622,
+          "mean_actual": 0.45714285714285713
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 17,
+          "mean_predicted": 0.8353939722566044,
+          "mean_actual": 0.23529411764705882
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5688371597165893,
+      "loco_auc_ci95_hi": 0.6568905027514944
+    },
+    "mid-tier": {
+      "n": 308,
+      "loco_auc": 0.5768674698795181,
+      "ece": 0.16072544863133073,
+      "ece_ci95_lo": 0.12258082174351319,
+      "ece_ci95_hi": 0.21371299752227768,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 21,
+          "mean_predicted": 0.05105304061656907,
+          "mean_actual": 0.23809523809523808
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 42,
+          "mean_predicted": 0.15191972042833055,
+          "mean_actual": 0.19047619047619047
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 49,
+          "mean_predicted": 0.2459341138601303,
+          "mean_actual": 0.1836734693877551
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 47,
+          "mean_predicted": 0.34446944708519794,
+          "mean_actual": 0.2978723404255319
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 46,
+          "mean_predicted": 0.4449928111356238,
+          "mean_actual": 0.2391304347826087
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 44,
+          "mean_predicted": 0.5465335547924042,
+          "mean_actual": 0.4318181818181818
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 36,
+          "mean_predicted": 0.6470202836725447,
+          "mean_actual": 0.3055555555555556
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 17,
+          "mean_predicted": 0.7505033507066614,
+          "mean_actual": 0.17647058823529413
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 5,
+          "mean_predicted": 0.8482998967170715,
+          "mean_actual": 0.6
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.9054123163223267,
+          "mean_actual": 0.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.49828682433351734,
+      "loco_auc_ci95_hi": 0.6431735560068147
+    },
+    "stable-democracy": {
+      "n": 396,
+      "loco_auc": 0.6370065789473685,
+      "ece": 0.09148383275558701,
+      "ece_ci95_lo": 0.06822164948850945,
+      "ece_ci95_hi": 0.1368345150259568,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 94,
+          "mean_predicted": 0.06449698682557395,
+          "mean_actual": 0.13829787234042554
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 110,
+          "mean_predicted": 0.14546935375441206,
+          "mean_actual": 0.09090909090909091
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 65,
+          "mean_predicted": 0.24168079266181358,
+          "mean_actual": 0.18461538461538463
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 48,
+          "mean_predicted": 0.35262681916356087,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 28,
+          "mean_predicted": 0.4454469553061894,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 29,
+          "mean_predicted": 0.5467961841616137,
+          "mean_actual": 0.27586206896551724
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 13,
+          "mean_predicted": 0.6284282069939834,
+          "mean_actual": 0.15384615384615385
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 6,
+          "mean_predicted": 0.7448456784089407,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 2,
+          "mean_predicted": 0.8758690059185028,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.9333639144897461,
+          "mean_actual": 0.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5672972773657129,
+      "loco_auc_ci95_hi": 0.7043244145778312
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-29T00:54:32.823329+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5004,
+  "stability_diagnostic": {
+    "fold_variance": 0.047944979099940103,
+    "fold_auc_mean": 0.6027355066921998,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Afghanistan": 0.5,
+      "Albania": 0.7142857142857143,
+      "Algeria": 0.5208333333333334,
+      "Angola": 0.9166666666666666,
+      "Argentina": 0.5666666666666667,
+      "Armenia": 0.9166666666666666,
+      "Australia": 0.5555555555555556,
+      "Austria": 0.6363636363636364,
+      "Azerbaijan": 0.7619047619047619,
+      "Bangladesh": 0.6666666666666666,
+      "Belarus": 0.5,
+      "Belgium": 0.5555555555555556,
+      "Bhutan": 0.8,
+      "Bolivia": 0.6,
+      "Botswana": 0.2,
+      "Brazil": 0.75,
+      "Bulgaria": 0.875,
+      "Burkina Faso": 0.6666666666666666,
+      "Burundi": 0.8214285714285714,
+      "Cameroon": 0.4166666666666667,
+      "Canada": 0.6857142857142857,
+      "Chad": 0.4166666666666667,
+      "Chile": 0.6153846153846154,
+      "China": 0.7083333333333334,
+      "Colombia": 0.6,
+      "Costa Rica": 0.4166666666666667,
+      "Cuba": 0.6111111111111112,
+      "Cyprus": 0.7272727272727273,
+      "Czechia": 0.3333333333333333,
+      "Dominican Republic": 0.7,
+      "Egypt": 0.4603174603174603,
+      "El Salvador": 0.4,
+      "Eritrea": 0.4,
+      "Estonia": 0.6666666666666666,
+      "Ethiopia": 0.2857142857142857,
+      "France": 1.0,
+      "Georgia": 0.0,
+      "Germany": 1.0,
+      "Ghana": 0.8,
+      "Greece": 0.875,
+      "Guatemala": 0.46153846153846156,
+      "Guinea": 0.6875,
+      "Haiti": 0.7857142857142857,
+      "Honduras": 0.375,
+      "Hungary": 0.25,
+      "Iceland": 0.5555555555555556,
+      "India": 0.7916666666666666,
+      "Indonesia": 0.8,
+      "Iran": 0.75,
+      "Ireland": 0.9166666666666666,
+      "Israel": 0.6666666666666666,
+      "Italy": 0.4,
+      "Ivory Coast": 0.7916666666666666,
+      "Jordan": 0.75,
+      "Kenya": 0.5833333333333334,
+      "Kuwait": 0.625,
+      "Kyrgyzstan": 0.36,
+      "Laos": 0.7916666666666666,
+      "Latvia": 0.375,
+      "Lebanon": 0.3,
+      "Liberia": 0.5714285714285714,
+      "Libya": 1.0,
+      "Lithuania": 0.0,
+      "Madagascar": 0.9285714285714286,
+      "Malawi": 0.5714285714285714,
+      "Maldives": 0.5833333333333334,
+      "Mali": 1.0,
+      "Mauritania": 0.625,
+      "Mauritius": 0.9,
+      "Moldova": 0.6111111111111112,
+      "Mongolia": 0.46153846153846156,
+      "Morocco": 0.45,
+      "Myanmar": 0.18181818181818182,
+      "Namibia": 0.5,
+      "Nepal": 0.5714285714285714,
+      "Netherlands": 0.4,
+      "New Zealand": 0.7916666666666666,
+      "Niger": 0.7916666666666666,
+      "Nigeria": 0.6574074074074074,
+      "North Korea": 0.7083333333333334,
+      "North Macedonia": 0.3333333333333333,
+      "Oman": 0.75,
+      "Pakistan": 0.5571428571428572,
+      "Palestine": 1.0,
+      "Panama": 0.35,
+      "Papua New Guinea": 0.6666666666666666,
+      "Paraguay": 0.6590909090909091,
+      "Peru": 0.4666666666666667,
+      "Philippines": 0.75,
+      "Portugal": 0.6153846153846154,
+      "Qatar": 0.7777777777777778,
+      "Romania": 0.6428571428571429,
+      "Russia": 0.6,
+      "Rwanda": 0.4444444444444444,
+      "Saudi Arabia": 0.5,
+      "Senegal": 0.4583333333333333,
+      "Serbia": 0.5,
+      "Sierra Leone": 0.4444444444444444,
+      "Singapore": 0.75,
+      "Slovakia": 0.25,
+      "Slovenia": 1.0,
+      "Somalia": 0.6,
+      "South Africa": 0.45,
+      "South Korea": 1.0,
+      "Sudan": 0.375,
+      "Suriname": 0.25,
+      "Sweden": 1.0,
+      "Switzerland": 0.08333333333333333,
+      "Syria": 0.3333333333333333,
+      "Taiwan": 0.8333333333333334,
+      "Tajikistan": 0.75,
+      "Tanzania": 0.47619047619047616,
+      "Thailand": 0.5666666666666667,
+      "The Democratic Republic of the Congo": 0.625,
+      "Togo": 0.625,
+      "Tunisia": 0.5208333333333334,
+      "Turkiye": 0.5,
+      "Turkmenistan": 1.0,
+      "Uganda": 0.3142857142857143,
+      "Ukraine": 0.6666666666666666,
+      "United Kingdom": 0.5,
+      "Uruguay": 0.8571428571428571,
+      "Venezuela": 0.6346153846153846,
+      "Vietnam": 0.7272727272727273,
+      "Yemen": 0.2777777777777778,
+      "Zambia": 0.43333333333333335,
+      "Zimbabwe": 0.6666666666666666
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7191,
+    "cohort_loco_floor": 0.6591,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 402,
+  "n_negatives": 1206,
+  "walked_at_utc": "2026-06-29T01:05:38.564913+00:00",
+  "elapsed_seconds": 8213.121552705765,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run3/constitutional_change/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Nepal",
+          "Chile",
+          "The Gambia",
+          "Germany",
+          "Armenia",
+          "Czechia",
+          "Moldova",
+          "North Korea"
+        ],
+        "country_isos": [
+          "np",
+          "cl",
+          "gm",
+          "de",
+          "am",
+          "cz",
+          "md",
+          "kp"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Denmark",
+          "Slovenia",
+          "Vanuatu",
+          "Turkmenistan",
+          "Estonia",
+          "Brazil",
+          "Ghana",
+          "Comoros",
+          "Bulgaria"
+        ],
+        "country_isos": [
+          "dk",
+          "si",
+          "vu",
+          "tm",
+          "ee",
+          "br",
+          "gh",
+          "km",
+          "bg"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Slovakia",
+          "Iceland",
+          "Lesotho",
+          "Bhutan",
+          "Malaysia",
+          "Australia",
+          "Cabo Verde",
+          "Senegal",
+          "Libya"
+        ],
+        "country_isos": [
+          "sk",
+          "is",
+          "ls",
+          "bt",
+          "my",
+          "au",
+          "cv",
+          "sn",
+          "ly"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Iran",
+          "Barbados",
+          "Sierra Leone",
+          "Portugal",
+          "Guatemala",
+          "Iraq",
+          "Syria",
+          "South Africa"
+        ],
+        "country_isos": [
+          "ir",
+          "bb",
+          "sl",
+          "pt",
+          "gt",
+          "iq",
+          "sy",
+          "za"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Cyprus",
+          "Sri Lanka",
+          "United Kingdom",
+          "El Salvador",
+          "Hong Kong",
+          "Uruguay",
+          "Montenegro",
+          "Austria",
+          "Belarus"
+        ],
+        "country_isos": [
+          "cy",
+          "lk",
+          "gb",
+          "sv",
+          "hk",
+          "uy",
+          "me",
+          "at",
+          "by"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Zimbabwe",
+          "Vietnam",
+          "Oman",
+          "Rwanda",
+          "Namibia",
+          "United States",
+          "Tunisia",
+          "Maldives",
+          "Georgia"
+        ],
+        "country_isos": [
+          "zw",
+          "vn",
+          "om",
+          "rw",
+          "na",
+          "us",
+          "tn",
+          "mv",
+          "ge"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 9,
+        "countries": [
+          "Jamaica",
+          "New Zealand",
+          "Mongolia",
+          "France",
+          "Colombia",
+          "Trinidad and Tobago",
+          "Norway",
+          "Qatar",
+          "Algeria"
+        ],
+        "country_isos": [
+          "jm",
+          "nz",
+          "mn",
+          "fr",
+          "co",
+          "tt",
+          "no",
+          "qa",
+          "dz"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Ireland",
+          "Greece",
+          "Timor-Leste",
+          "Jordan",
+          "Latvia",
+          "Pakistan",
+          "Costa Rica",
+          "Serbia"
+        ],
+        "country_isos": [
+          "ie",
+          "gr",
+          "tl",
+          "jo",
+          "lv",
+          "pk",
+          "cr",
+          "rs"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Lithuania",
+          "Guyana",
+          "Yemen",
+          "India",
+          "Croatia",
+          "Togo",
+          "The Democratic Republic of the Congo",
+          "Taiwan",
+          "Honduras"
+        ],
+        "country_isos": [
+          "lt",
+          "gy",
+          "ye",
+          "in",
+          "hr",
+          "tg",
+          "cd",
+          "tw",
+          "hn"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 9,
+        "countries": [
+          "Haiti",
+          "Gabon",
+          "Kyrgyzstan",
+          "Canada",
+          "Cameroon",
+          "Botswana",
+          "Mauritius",
+          "Thailand",
+          "Ukraine"
+        ],
+        "country_isos": [
+          "ht",
+          "ga",
+          "kg",
+          "ca",
+          "cm",
+          "bw",
+          "mu",
+          "th",
+          "ua"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Suriname",
+          "Palestine",
+          "Nigeria",
+          "Cambodia",
+          "Central African Republic",
+          "Liberia",
+          "Guinea",
+          "Myanmar",
+          "Madagascar"
+        ],
+        "country_isos": [
+          "sr",
+          "ps",
+          "ng",
+          "kh",
+          "cf",
+          "lr",
+          "gn",
+          "mm",
+          "mg"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "United Arab Emirates",
+          "Philippines",
+          "Italy",
+          "Sao Tome and Principe",
+          "Finland",
+          "Djibouti",
+          "Kuwait",
+          "Sweden"
+        ],
+        "country_isos": [
+          "ae",
+          "ph",
+          "it",
+          "st",
+          "fi",
+          "dj",
+          "kw",
+          "se"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Uganda",
+          "Ethiopia",
+          "Solomon Islands",
+          "South Korea",
+          "Malawi",
+          "China",
+          "Israel",
+          "Bangladesh",
+          "Sudan"
+        ],
+        "country_isos": [
+          "ug",
+          "et",
+          "sb",
+          "kr",
+          "mw",
+          "cn",
+          "il",
+          "bd",
+          "sd"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "Singapore",
+          "Paraguay",
+          "Benin",
+          "Japan",
+          "Switzerland",
+          "Mozambique",
+          "Niger",
+          "Bosnia and Herzegovina",
+          "Kazakhstan"
+        ],
+        "country_isos": [
+          "sg",
+          "py",
+          "bj",
+          "jp",
+          "ch",
+          "mz",
+          "ne",
+          "ba",
+          "kz"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Eswatini",
+          "Afghanistan",
+          "Dominican Republic",
+          "Albania",
+          "Cuba",
+          "Mexico",
+          "Morocco",
+          "Peru",
+          "Belgium"
+        ],
+        "country_isos": [
+          "sz",
+          "af",
+          "do",
+          "al",
+          "cu",
+          "mx",
+          "ma",
+          "pe",
+          "be"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Eritrea",
+          "Russia",
+          "Netherlands",
+          "Mali",
+          "Bahrain",
+          "Angola",
+          "Papua New Guinea",
+          "Luxembourg"
+        ],
+        "country_isos": [
+          "er",
+          "ru",
+          "nl",
+          "ml",
+          "bh",
+          "ao",
+          "pg",
+          "lu"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 9,
+        "countries": [
+          "Republic of the Congo",
+          "Turkiye",
+          "Azerbaijan",
+          "Fiji",
+          "Ecuador",
+          "Argentina",
+          "Indonesia",
+          "Mauritania",
+          "Seychelles"
+        ],
+        "country_isos": [
+          "cg",
+          "tr",
+          "az",
+          "fj",
+          "ec",
+          "ar",
+          "id",
+          "mr",
+          "sc"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "North Macedonia",
+          "Bolivia",
+          "Panama",
+          "Malta",
+          "Tajikistan",
+          "Ivory Coast",
+          "Tanzania",
+          "Uzbekistan",
+          "Guinea-Bissau"
+        ],
+        "country_isos": [
+          "mk",
+          "bo",
+          "pa",
+          "mt",
+          "tj",
+          "ci",
+          "tz",
+          "uz",
+          "gw"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Egypt",
+          "Nicaragua",
+          "Zambia",
+          "Hungary",
+          "Spain",
+          "Lebanon",
+          "Laos",
+          "Poland",
+          "South Sudan"
+        ],
+        "country_isos": [
+          "eg",
+          "ni",
+          "zm",
+          "hu",
+          "es",
+          "lb",
+          "la",
+          "pl",
+          "ss"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Romania",
+          "Burkina Faso",
+          "Burundi",
+          "Equatorial Guinea",
+          "Somalia",
+          "Chad",
+          "Venezuela",
+          "Saudi Arabia",
+          "Kenya"
+        ],
+        "country_isos": [
+          "ro",
+          "bf",
+          "bi",
+          "gq",
+          "so",
+          "td",
+          "ve",
+          "sa",
+          "ke"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.3,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 175,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.0601,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.7611243335140668,
+      "b": 0.3185047313319592,
+      "c": 0.033943359084055554,
+      "n_fit": 1432,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 73,
+        "observed_rate": 0.0958904109589041
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 297,
+        "observed_rate": 0.1414141414141414
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 512,
+        "observed_rate": 0.2421875
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 550,
+        "observed_rate": 0.3490909090909091
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.014690617451696602,
+    "n_predictions": 1432,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.11093013811409054,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 70,
+            "mean_predicted": 0.06801621437604938,
+            "mean_actual": 0.14285714285714285
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 118,
+            "mean_predicted": 0.15724701560654883,
+            "mean_actual": 0.13559322033898305
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 131,
+            "mean_predicted": 0.24933500440066098,
+            "mean_actual": 0.2900763358778626
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 94,
+            "mean_predicted": 0.3474211699150978,
+            "mean_actual": 0.3404255319148936
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 109,
+            "mean_predicted": 0.4531018195349142,
+            "mean_actual": 0.3761467889908257
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 83,
+            "mean_predicted": 0.5488291720309889,
+            "mean_actual": 0.3493975903614458
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 59,
+            "mean_predicted": 0.6489252771361399,
+            "mean_actual": 0.3050847457627119
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 35,
+            "mean_predicted": 0.7488015191895622,
+            "mean_actual": 0.45714285714285713
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 17,
+            "mean_predicted": 0.8353939722566044,
+            "mean_actual": 0.23529411764705882
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 716,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.16072544863133073,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 21,
+            "mean_predicted": 0.05105304061656907,
+            "mean_actual": 0.23809523809523808
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 42,
+            "mean_predicted": 0.15191972042833055,
+            "mean_actual": 0.19047619047619047
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 49,
+            "mean_predicted": 0.2459341138601303,
+            "mean_actual": 0.1836734693877551
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 47,
+            "mean_predicted": 0.34446944708519794,
+            "mean_actual": 0.2978723404255319
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 46,
+            "mean_predicted": 0.4449928111356238,
+            "mean_actual": 0.2391304347826087
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 44,
+            "mean_predicted": 0.5465335547924042,
+            "mean_actual": 0.4318181818181818
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 36,
+            "mean_predicted": 0.6470202836725447,
+            "mean_actual": 0.3055555555555556
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 17,
+            "mean_predicted": 0.7505033507066614,
+            "mean_actual": 0.17647058823529413
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 5,
+            "mean_predicted": 0.8482998967170715,
+            "mean_actual": 0.6
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.9054123163223267,
+            "mean_actual": 0.0
+          }
+        ],
+        "n": 308,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.09148383275558701,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 94,
+            "mean_predicted": 0.06449698682557395,
+            "mean_actual": 0.13829787234042554
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 110,
+            "mean_predicted": 0.14546935375441206,
+            "mean_actual": 0.09090909090909091
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 65,
+            "mean_predicted": 0.24168079266181358,
+            "mean_actual": 0.18461538461538463
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 48,
+            "mean_predicted": 0.35262681916356087,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 28,
+            "mean_predicted": 0.4454469553061894,
+            "mean_actual": 0.42857142857142855
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 29,
+            "mean_predicted": 0.5467961841616137,
+            "mean_actual": 0.27586206896551724
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 13,
+            "mean_predicted": 0.6284282069939834,
+            "mean_actual": 0.15384615384615385
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 6,
+            "mean_predicted": 0.7448456784089407,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 2,
+            "mean_predicted": 0.8758690059185028,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.9333639144897461,
+            "mean_actual": 0.0
+          }
+        ],
+        "n": 396,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/constitutional_change.scores.json",
+  "shape_points": [
+    0.032165025539609496,
+    0.043217116107695894,
+    0.054269206675782285,
+    0.06532129724386868,
+    0.07637338781195509,
+    0.08742547838004147,
+    0.09847756894812787,
+    0.10952965951621427,
+    0.12058175008430067,
+    0.13163384065238706,
+    0.14268593122047346,
+    0.15373802178855983
+  ],
+  "shap_importance_raw": {
+    "v2x_neopat": 0.9784585237503052,
+    "v2svinlaut": 1.1485800743103027,
+    "v2juhccomp": 1.1008546352386475
+  },
+  "shap_importance_normalized": {
+    "v2x_neopat": 0.30312604941713484,
+    "v2svinlaut": 0.3558296360181436,
+    "v2juhccomp": 0.34104431456472156
+  },
+  "shap_direction_signs": {
+    "v2x_neopat": -1,
+    "v2svinlaut": -1,
+    "v2juhccomp": -1
+  },
+  "per_feature_breakdown": {
+    "v2x_neopat": {
+      "last_z": 0.13882774114608765,
+      "mean_z": 0.06728807836771011,
+      "std_z": 0.15430425107479095,
+      "slope": 0.1149376705288887,
+      "accel": 0.14894145727157593,
+      "tertile1_mean": 0.09731671959161758,
+      "tertile2_mean": 0.08050675690174103,
+      "tertile3_mean": 0.176335871219635
+    },
+    "v2svinlaut": {
+      "last_z": 0.2766629457473755,
+      "mean_z": 0.10131671279668808,
+      "std_z": 0.1213105246424675,
+      "slope": 0.1616593897342682,
+      "accel": 0.22460509836673737,
+      "tertile1_mean": 0.09639447927474976,
+      "tertile2_mean": 0.09469287842512131,
+      "tertile3_mean": 0.07193798571825027
+    },
+    "v2juhccomp": {
+      "last_z": 0.1645616888999939,
+      "mean_z": 0.10703378915786743,
+      "std_z": 0.10295674204826355,
+      "slope": 0.11805293709039688,
+      "accel": 0.15704433619976044,
+      "tertile1_mean": 0.06936312466859818,
+      "tertile2_mean": 0.20752498507499695,
+      "tertile3_mean": 0.17431704699993134
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 12,
+    "indicators": [
+      {
+        "code": "v2x_neopat",
+        "name": "Neopatrimonialism Index (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 370,
+        "shape": {
+          "mean": [
+            0.0334,
+            0.0036,
+            -0.0335,
+            -0.0429,
+            -0.1196,
+            -0.1157,
+            -0.1354,
+            -0.136,
+            -0.0864,
+            -0.1385,
+            -0.2192,
+            -0.3239
+          ],
+          "p25": [
+            -0.5369,
+            -0.5732,
+            -0.6162,
+            -0.6686,
+            -0.7825,
+            -0.8212,
+            -0.8769,
+            -0.9368,
+            -0.9405,
+            -1.031,
+            -1.2027,
+            -1.3828
+          ],
+          "p75": [
+            0.5647,
+            0.5384,
+            0.5368,
+            0.579,
+            0.5706,
+            0.5718,
+            0.5959,
+            0.5959,
+            0.7022,
+            0.7383,
+            0.7889,
+            0.896
+          ]
+        }
+      },
+      {
+        "code": "v2svinlaut",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 370,
+        "shape": {
+          "mean": [
+            -0.0305,
+            -0.0135,
+            0.0116,
+            0.0685,
+            0.1059,
+            0.135,
+            0.136,
+            0.1603,
+            0.1988,
+            0.2819,
+            0.3386,
+            0.4341
+          ],
+          "p25": [
+            -0.3853,
+            -0.3618,
+            -0.345,
+            -0.2865,
+            -0.2387,
+            -0.2,
+            -0.2,
+            -0.1841,
+            -0.0172,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "p75": [
+            0.3618,
+            0.3618,
+            0.4137,
+            0.4859,
+            0.4899,
+            0.5506,
+            0.5506,
+            0.6087,
+            0.6939,
+            0.8789,
+            0.9798,
+            0.9798
+          ]
+        }
+      },
+      {
+        "code": "v2juhccomp",
+        "name": null,
+        "provider": "V-Dem",
+        "n_samples": 368,
+        "shape": {
+          "mean": [
+            -0.0167,
+            0.0289,
+            0.0238,
+            0.0205,
+            0.0797,
+            0.0722,
+            0.0785,
+            0.1372,
+            0.122,
+            0.1023,
+            0.1769,
+            0.208
+          ],
+          "p25": [
+            -0.4826,
+            -0.4276,
+            -0.4276,
+            -0.4276,
+            -0.405,
+            -0.4146,
+            -0.3716,
+            -0.3618,
+            -0.3618,
+            -0.4904,
+            -0.5467,
+            -0.8582
+          ],
+          "p75": [
+            0.4899,
+            0.5064,
+            0.5183,
+            0.5062,
+            0.6288,
+            0.6721,
+            0.7355,
+            0.8041,
+            0.8,
+            0.9273,
+            0.9798,
+            0.9798
+          ]
+        }
+      }
+    ],
+    "samples_used": 370,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 2025,
+        "label": "Parliament Revokes Local Voting Rights for Non-Citizens",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2025,
+        "label": "Government Restructuring and Constitutional Amendments Approved",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2025,
+        "label": "Kurdish Autonomous Authority Negotiates Future Status",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2024,
+        "label": "Omnibus Law Battle in Congress",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2024,
+        "label": "King Frederik X Ascends Danish Throne",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ge",
+        "country_name": "Georgia",
+        "year": 2024,
+        "label": "Foreign Agents Law Enacted Despite Massive Protests",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 2024,
+        "label": "New Transition Charter \u2014 Elections Postponed to 2025",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 2024,
+        "label": "Emir Sheikh Mishal Dissolves Parliament and Suspends Constitution",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2024,
+        "label": "Judicial Reform \u2014 Elected Judges Replace Appointed Judiciary",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 2024,
+        "label": "Constitutional Referendum Enshrines EU Integration Goal",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2024,
+        "label": "DPRK Declares South Korea Principal Enemy; Abandons Reunification",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2024,
+        "label": "Constitutional Amendment Permanently Enshrines Nuclear Status",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2024,
+        "label": "26th Constitutional Amendment Restructures Judiciary",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 2024,
+        "label": "Constitutional Council Orders Election to Proceed",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2024,
+        "label": "Zuma Barred from Parliament \u2014 MK Party Legal Battle",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 2024,
+        "label": "National Assembly Impeaches President Yoon Suk-yeol",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 2024,
+        "label": "Supreme Court Rules Trump Has Presidential Immunity",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 2023,
+        "label": "Voice to Parliament Referendum Defeated",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cr",
+        "country_name": "Costa Rica",
+        "year": 2023,
+        "label": "Chaves Jaguar Plan Clashes with Legislature and Comptroller",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2023,
+        "label": "Constitutional Court strikes down budget reallocation, triggering fiscal crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2023,
+        "label": "Judicial Reform Crisis \u2014 Massive Protests",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2023,
+        "label": "Latvia Strips Russian Language of Special Status in Law",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2023,
+        "label": "Constitutional Reform Expands Parliament to 126 Seats",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 2023,
+        "label": "Constitutional Review Process Launched",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2022,
+        "label": "Belarus referendum embeds NATO and EU membership prohibition",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "td",
+        "country_name": "Chad",
+        "year": 2022,
+        "label": "National Dialogue Boycotted by Key Opposition Groups",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 2022,
+        "label": "New Constitution Rejected by 62%; Inflation Surges; Mapuche Conflict Intensifies",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 2022,
+        "label": "Transition Charter and 36-Month Timeline Announced",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2022,
+        "label": "Jamaica Considers Republic Status \u2014 Constitutional Reform Debate",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2022,
+        "label": "Nuclear Doctrine Law Codifies First-Use Posture",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 2022,
+        "label": "Castillo Faces Multiple Impeachment Attempts",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2022,
+        "label": "New Constitution Adopted \u2014 Presidential Republic Restored",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2022,
+        "label": "Death of Queen Elizabeth II After 70-Year Reign; Charles III Accedes",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 2022,
+        "label": "LUC Referendum Confirms Key Security Provisions",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2021,
+        "label": "Constitutional referendum redesigned to allow post-Lukashenko transition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 2021,
+        "label": "Supreme Court Strikes Down Building Bridges Initiative",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2021,
+        "label": "Japarov Wins Presidential Election; Constitutional Referendum Restores Presidential System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mk",
+        "country_name": "North Macedonia",
+        "year": 2021,
+        "label": "Census Conducted After 19-Year Gap",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 2021,
+        "label": "Constitutional Crisis: Farmaajo Extends Term Unconstitutionally",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2020,
+        "label": "New constitution approved in low-turnout referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 2020,
+        "label": "78% Vote for New Constitution in Historic Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cr",
+        "country_name": "Costa Rica",
+        "year": 2020,
+        "label": "Same-Sex Marriage Legalized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2020,
+        "label": "Sidama region becomes Ethiopia's 10th regional state",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 2020,
+        "label": "Constitutional Referendum \u2014 Conde Resets Term Clock",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 2020,
+        "label": "Peru Cycles Through Three Presidents in One Week",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2020,
+        "label": "Constitutional amendments approved extending Putin's rule to 2036",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2020,
+        "label": "Hagia Sophia Reconverted from Museum to Mosque",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 2019,
+        "label": "New Cuban Constitution Ratified, Acknowledges Market Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2019,
+        "label": "Constitutional Amendments Extend Sisi's Rule to 2030",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2019,
+        "label": "Article 370 revoked \u2014 Jammu & Kashmir bifurcated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2019,
+        "label": "Constitutional Amendments Strengthen Prime Minister's Powers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mk",
+        "country_name": "North Macedonia",
+        "year": 2019,
+        "label": "Constitutional Amendments Formally Change Country Name",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 2019,
+        "label": "Vizcarra Dissolves Congress in Constitutional Standoff",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2018,
+        "label": "Constitutional referendum extends Nkurunziza's potential tenure to 2034",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "td",
+        "country_name": "Chad",
+        "year": 2018,
+        "label": "New Constitution Establishes Fourth Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2018,
+        "label": "Presidential term limits abolished \u2014 Xi can rule indefinitely",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2018,
+        "label": "Nation-State Law Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2018,
+        "label": "Self-Determination Initiative Rejected by 66% of Voters",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 2017,
+        "label": "Dual Citizenship Crisis Disqualifies Multiple Parliamentarians",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ge",
+        "country_name": "Georgia",
+        "year": 2017,
+        "label": "Constitutional Amendments Transition to Fully Parliamentary System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ps",
+        "country_name": "Palestine",
+        "year": 2017,
+        "label": "Hamas Accepts New Political Document",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 2017,
+        "label": "Reelection Amendment Ultimately Blocked",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2017,
+        "label": "Reserved Presidential Election Installs Halimah Yacob Uncontested",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 2017,
+        "label": "King Vajiralongkorn Proclaimed Rama X, Amends Constitution for Royal Powers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2017,
+        "label": "Referendum Adopts Executive Presidential System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2017,
+        "label": "Constitutional Referendum Adopts Presidential System; 51.4 Percent Yes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 2016,
+        "label": "Landmark Justice Reform Amends 46 Constitutional Articles",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "az",
+        "country_name": "Azerbaijan",
+        "year": 2016,
+        "label": "Constitutional Referendum Extends Presidential Term to Seven Years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 2016,
+        "label": "Revised Peace Accord Ratified by Congress",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 2016,
+        "label": "Constitutional Referendum Defeat Topples Renzi; Amatrice Earthquakes Kill 299",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 2016,
+        "label": "New Constitution Establishes Third Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2016,
+        "label": "Constitutional Referendum Passed Amid Opposition Accusations of Land Consolidation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 2016,
+        "label": "Advisory Referendum Rejects Ukraine\u2013EU Association Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 2016,
+        "label": "Constitutional Referendum Reduces Presidential Term to Five Years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 2016,
+        "label": "Referendum Names Rahmon 'Leader of the Nation' and Removes Term Limits",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 2016,
+        "label": "Military Charter Approved in Restricted Referendum with Appointed Senate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2016,
+        "label": "Brexit: Britain Votes 52-48 to Leave the European Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 2015,
+        "label": "Constitutional Referendum Shifts Armenia to Parliamentary System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 2015,
+        "label": "Supreme Electoral Tribunal Removes Constitutional Bar on Presidential Re-election",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2015,
+        "label": "Constitution Revised to Modernize Governance Framework",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 2015,
+        "label": "New Constitution Promulgated \u2014 Federal Democratic Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2015,
+        "label": "Constitutional referendum removes presidential term limits",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2014,
+        "label": "Constitutional Amendment Bill Provokes Backlash",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2014,
+        "label": "New Constitution Adopted \u2014 Most Progressive in Arab World",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2013,
+        "label": "New Constitution Adopted; TPP Negotiations Active",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 2013,
+        "label": "New Constitution Adopted by Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2012,
+        "label": "Morsi Issues Constitutional Declaration Placing Himself Above Courts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2012,
+        "label": "Egypt's New Islamist-Drafted Constitution Approved in Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 2012,
+        "label": "Constitutional Referendum Approves Crowdsourced Draft",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 2012,
+        "label": "Third-Term Controversy and Constitutional Court Ruling",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2012,
+        "label": "Constitutional Drafting Process Begins \u2014 Article 1 Debate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2011,
+        "label": "Fifteenth Amendment Abolishes Caretaker Government System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 2011,
+        "label": "Hungary adopts new Fundamental Law replacing 1949 communist-era constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2011,
+        "label": "Constitutional Amendments Following Arab Spring",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2011,
+        "label": "President Zatlers Dissolves Parliament Over Oligarch Influence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2011,
+        "label": "Mohammed VI Announces Constitutional Reform in Response to Protests",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2011,
+        "label": "New Constitution Approved by Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 2011,
+        "label": "Qaboos Grants Consultative Council Legislative Powers in Reform Package",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "do",
+        "country_name": "Dominican Republic",
+        "year": 2010,
+        "label": "New Constitution Strips Citizenship Rights from Children of Immigrants",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ge",
+        "country_name": "Georgia",
+        "year": 2010,
+        "label": "Constitutional Reform Shifts to Parliamentary System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 2010,
+        "label": "Crowdsourced Constitutional Reform Process Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 2010,
+        "label": "New Constitution Adopted by Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2010,
+        "label": "Constitutional Referendum Creates Parliamentary Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 2010,
+        "label": "Constitutional Referendum on Presidential Election Method Fails",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2010,
+        "label": "Eighteenth Constitutional Amendment Devolves Powers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2010,
+        "label": "Maladina Amendments Constitutional Crisis Brewing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2010,
+        "label": "Constitutional Referendum Restructures Judiciary",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 2009,
+        "label": "New Constitution Centralizes Power in the Presidency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "az",
+        "country_name": "Azerbaijan",
+        "year": 2009,
+        "label": "Constitutional Referendum Removes Presidential Term Limits",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 2009,
+        "label": "New Plurinational Constitution Approved by 61% of Voters",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2009,
+        "label": "Sejdi\u0107-Finci Ruling \u2014 European Court Finds Bosnia Constitution Discriminatory",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2009,
+        "label": "Yar'Adua's Illness Creates Constitutional Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ve",
+        "country_name": "Venezuela",
+        "year": 2009,
+        "label": "Constitutional Referendum Abolishes Presidential Term Limits",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2008,
+        "label": "Constitutional amendment lifting presidential term limits",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 2008,
+        "label": "Constitution of Bhutan Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cm",
+        "country_name": "Cameroon",
+        "year": 2008,
+        "label": "Constitutional Amendment Removes Presidential Term Limits",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2008,
+        "label": "Kosovo Constitution Enters into Force",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 2008,
+        "label": "New democratic constitution ratified with bill of rights",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 2008,
+        "label": "2008 Constitution Approved, Institutionalizes Military Veto",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2007,
+        "label": "Constitutional Amendments Weaken Opposition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 2007,
+        "label": "Constitutional referendum approves presidential system",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 2007,
+        "label": "Interim Constitution Declares Secular Federal Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 2007,
+        "label": "Duarte Frutos Reelection Bid Blocked; Term Limit Upheld",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 2007,
+        "label": "Military-Drafted Constitution Approved in Restricted Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ve",
+        "country_name": "Venezuela",
+        "year": 2007,
+        "label": "Constitutional Reform Referendum Defeated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 2006,
+        "label": "Montenegro Votes for Independence \u2014 Serbia Loses Sea Access",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 2006,
+        "label": "Serbia Adopts New Constitution \u2014 Kosovo Referenced as Serbian Territory",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2005,
+        "label": "Defense Law Creates Unified Armed Forces of Bosnia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2005,
+        "label": "New constitution adopted \u2014 ethnic power-sharing enshrined",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "td",
+        "country_name": "Chad",
+        "year": 2005,
+        "label": "Constitutional Referendum Abolishes Presidential Term Limits",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 2005,
+        "label": "Major Constitutional Reform Signed by Lagos; Michelle Bachelet Elected First Female President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2005,
+        "label": "Constitutional Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 2005,
+        "label": "French Voters Reject European Constitutional Treaty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 2005,
+        "label": "Constitutional Referendum Rejected",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 2005,
+        "label": "People's Majlis votes to allow multi-party elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 2005,
+        "label": "Dutch Voters Reject EU Constitutional Treaty in Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2005,
+        "label": "Obasanjo Third-Term Bid Defeated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 2005,
+        "label": "Multiparty System Restored by Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2004,
+        "label": "New Afghan constitution adopted establishing Islamic Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 2004,
+        "label": "Legislative Council Reconvened After Two Decade Suspension",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2004,
+        "label": "Constitution amended to protect private property",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 2004,
+        "label": "Greek Cypriots reject Annan Plan in simultaneous referendums",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2004,
+        "label": "Impeachment of President Rolandas Paksas",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2004,
+        "label": "Bougainville Constitution Drafted Under Autonomy Process",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2003,
+        "label": "Constitutional Referendum Further Concentrates Presidential Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2003,
+        "label": "Open Terms Bid Defeated in Parliament",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 2003,
+        "label": "Seven-Step Roadmap to Discipline-Flourishing Democracy Announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 2003,
+        "label": "Supreme Court Established, Privy Council Jurisdiction Ends",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2003,
+        "label": "New Constitution Approved by Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2003,
+        "label": "New constitution adopted by referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 2003,
+        "label": "Serbia-Montenegro State Union Replaces FRY",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 2003,
+        "label": "Constitutional Referendum Allows Rahmon Two More Terms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bh",
+        "country_name": "Bahrain",
+        "year": 2002,
+        "label": "New Constitution Promulgated; Bahrain Becomes Kingdom",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mk",
+        "country_name": "North Macedonia",
+        "year": 2002,
+        "label": "Constitutional Amendments Implement Ohrid Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2002,
+        "label": "Constitution adopted establishing semi-presidential republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2002,
+        "label": "Constitutional Referendum Removes Presidential Age Limit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bh",
+        "country_name": "Bahrain",
+        "year": 2001,
+        "label": "National Action Charter Approved in Landmark Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 2001,
+        "label": "Constitution Drafting Process Initiated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 2001,
+        "label": "State-Level Court of Bosnia and Herzegovina Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2001,
+        "label": "G-15 Reformers Publish Open Letter",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2001,
+        "label": "Constitutional Framework for Provisional Self-Government Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 2001,
+        "label": "New Constitution Approved by Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2001,
+        "label": "Constitutional Crisis and 18-18 Tie",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2000,
+        "label": "Constitutional Amendments Impose Presidential Term Limits",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 2000,
+        "label": "Internet Voting Legislation Introduced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2000,
+        "label": "Jharkhand, Chhattisgarh, and Uttarakhand created",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 2000,
+        "label": "Constitutional Review Commission Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 2000,
+        "label": "Constitutional Amendment Shifts to Parliamentary Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 2000,
+        "label": "Referendum Extends Movement-Only System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 2000,
+        "label": "Constitutional Referendum Defeat",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 1999,
+        "label": "Republic Referendum Defeated Despite Majority Support",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1999,
+        "label": "Constitutional Referendum on Peace Accord Reforms Fails",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1999,
+        "label": "New Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 1999,
+        "label": "Rudolf Schuster wins first direct presidential election",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 1999,
+        "label": "Constitutional Referendum Extends Presidential Term to Seven Years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1999,
+        "label": "House of Lords Reform Removes Hereditary Peers' Automatic Right to Vote",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ve",
+        "country_name": "Venezuela",
+        "year": 1999,
+        "label": "New Bolivarian Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 1998,
+        "label": "New Constitution Adopted by Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 1998,
+        "label": "Wik Legislation Amends Native Title Framework",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 1998,
+        "label": "Citizenship Referendum Eases Naturalization Requirements",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 1998,
+        "label": "Constitutional Referendum Strengthens Presidential Powers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1998,
+        "label": "Revised Constitution Establishes Military-First Governance",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1998,
+        "label": "New Constitution; Bashir-Turabi Conflict Emerges",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1998,
+        "label": "Ben Ali Changes Constitution to Allow Third Term",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 1997,
+        "label": "Constitutional Amendment \u2014 Presidential Term Limits Introduced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1997,
+        "label": "Constitutional Amendment Allows Presidential Re-election",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1997,
+        "label": "Eritrean Constitution Ratified",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1997,
+        "label": "Nawaz Sharif Wins Landslide and Strips Presidential Powers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1996,
+        "label": "New constitution approved strengthening presidential power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 1996,
+        "label": "Thirteenth Amendment Enshrines Caretaker Government System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cm",
+        "country_name": "Cameroon",
+        "year": 1996,
+        "label": "Constitutional Revision Extends Presidential Term",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "td",
+        "country_name": "Chad",
+        "year": 1996,
+        "label": "New Constitution Approved by Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 1996,
+        "label": "Constitutional Referendum Strengthens Presidential Powers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1996,
+        "label": "Constitutional Reform Creates Bicameral Parliament",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1996,
+        "label": "Basic Statute of the State Promulgated \u2014 Oman's Constitution Equivalent",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1996,
+        "label": "Final Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 1996,
+        "label": "Ukraine Adopts First Post-Soviet Constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1996,
+        "label": "Constitutional Reform Introduces Presidential Runoff",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1996,
+        "label": "Chiluba Bars Kaunda from Elections \u2014 Constitutional Manipulation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 1995,
+        "label": "Armenian Constitution Adopted; Semi-Presidential Republic Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "az",
+        "country_name": "Azerbaijan",
+        "year": 1995,
+        "label": "Constitutional Referendum Establishes Strong Presidential System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 1995,
+        "label": "Referendum restores Soviet symbols and Russian co-official status",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1995,
+        "label": "Federal Democratic Republic of Ethiopia proclaimed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1995,
+        "label": "First multiparty elections held under new constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ge",
+        "country_name": "Georgia",
+        "year": 1995,
+        "label": "New Constitution Adopted Establishing Presidential Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1995,
+        "label": "Constitutional Amendment Extends President's Term Under Syrian Pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1995,
+        "label": "New Constitution Enacted \u2014 Movement System Retained",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 1994,
+        "label": "Constitutional Referendum Rejected by Voters",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1994,
+        "label": "New Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1994,
+        "label": "Constitutional Commission Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1994,
+        "label": "Ethiopia's new constitution drafted and adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 1994,
+        "label": "New Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 1994,
+        "label": "Adoption of New Constitution Establishing Parliamentary Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 1994,
+        "label": "Gagauzia Granted Autonomous Status Within Moldova",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 1994,
+        "label": "Rahmon Wins Presidential Election and New Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1993,
+        "label": "Menem Re-election Constitutional Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 1993,
+        "label": "Belgium Formally Becomes a Federal State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 1993,
+        "label": "Death of King Baudouin After 42-Year Reign",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "td",
+        "country_name": "Chad",
+        "year": 1993,
+        "label": "Sovereign National Conference Convened",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1993,
+        "label": "Velvet Divorce: Czech Republic Established as Independent State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1993,
+        "label": "Transitional period governance established by EPRDF",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1993,
+        "label": "Serrano's Self-Coup Fails \u2014 Constitutional Crisis Resolved by Civil Society",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1993,
+        "label": "New Majoritarian Electoral Law Replaces Pure Proportional Representation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 1993,
+        "label": "New Constitution Adopted Establishing Parliamentary-Presidential Hybrid",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 1993,
+        "label": "MMP Electoral System Adopted by Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1993,
+        "label": "Fujimori's New Constitution Entrenches Presidential Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1993,
+        "label": "Constitutional crisis: Yeltsin dissolves parliament",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1993,
+        "label": "New Russian Constitution approved creating presidential republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 1993,
+        "label": "Velvet Divorce creates independent Slovak Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1993,
+        "label": "Interim Constitution Adopted and Election Date Set",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1993,
+        "label": "Traditional Kingdoms Restored",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 1992,
+        "label": "Mabo Decision Overturns Terra Nullius Doctrine",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1992,
+        "label": "Multiparty constitution adopted by referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1992,
+        "label": "Charlottetown Accord Rejected in National Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 1992,
+        "label": "New Constitution Adopted by Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1992,
+        "label": "Ethiopia adopts ethnic federalism framework",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1992,
+        "label": "Fourth Republic Constitution Approved by Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 1992,
+        "label": "Adoption of the Constitution of Lithuania",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 1992,
+        "label": "New Democratic Constitution Adopted, Third Republic Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 1992,
+        "label": "Mauritius Becomes a Republic; Cassam Uteem First President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 1992,
+        "label": "New Democratic Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1992,
+        "label": "New Constitution Approved with Rights Provisions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 1992,
+        "label": "New Multiparty Constitution Approved",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 1992,
+        "label": "New Democratic Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1992,
+        "label": "Basic Law of Governance Promulgated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1992,
+        "label": "Multiparty Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1992,
+        "label": "Constitutional Changes Consolidate Ben Ali's Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 1992,
+        "label": "New Constitution Adopted, Consolidating Presidential Powers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1992,
+        "label": "New Constitution Recognizes Market Economy; Foreign Investment Surge Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 1991,
+        "label": "Twelfth Constitutional Amendment Restores Parliamentary System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1991,
+        "label": "New Democratic Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 1991,
+        "label": "Multiparty Constitution Approved \u2014 Compaor\u00e9 Civilianizes Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1991,
+        "label": "New Constitution Adopted: Rights, Tutela, and Pluralism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1991,
+        "label": "Croatia Declares Independence \u2014 June 25, 1991",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 1991,
+        "label": "Estonia Restores Independence During Moscow Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 1991,
+        "label": "Althing Merged into Unicameral Parliament",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 1991,
+        "label": "First Constitution Adopted Since 1975 Revolution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 1991,
+        "label": "Latvia Adopts Citizenship Law Excluding Soviet-Era Settlers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1991,
+        "label": "More States Created \u2014 Nigeria Now Has 30 States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mk",
+        "country_name": "North Macedonia",
+        "year": 1991,
+        "label": "Independence Referendum Approves Sovereignty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mk",
+        "country_name": "North Macedonia",
+        "year": 1991,
+        "label": "New Constitution Adopted by Parliament",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 1991,
+        "label": "New Democratic Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1991,
+        "label": "Rwandan constitution amended to allow multi-party politics",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1991,
+        "label": "Multi-Party Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 1991,
+        "label": "Constitutional Amendment Introduces Elected Presidency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 1991,
+        "label": "ROC Formally Ends State of War with PRC",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1991,
+        "label": "New Multi-Party Constitution Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "az",
+        "country_name": "Azerbaijan",
+        "year": 1990,
+        "label": "Azerbaijan Declares State Sovereignty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 1990,
+        "label": "King Baudouin Temporarily Removed Over Abortion Law Refusal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cm",
+        "country_name": "Cameroon",
+        "year": 1990,
+        "label": "Legalization of Multiparty Politics",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1990,
+        "label": "Student 'S\u00e9ptima Papeleta' Movement Launches Constitutional Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 1990,
+        "label": "Supreme Soviet Declares Transitional Period to Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ge",
+        "country_name": "Georgia",
+        "year": 1990,
+        "label": "Georgia Declares State Sovereignty from the Soviet Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1990,
+        "label": "German reunification completed on October 3, 1990",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 1990,
+        "label": "New Constitution and Multiparty Framework Announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 1990,
+        "label": "Constitution Amended to Legalize Opposition Parties",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 1990,
+        "label": "New Democratic Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1990,
+        "label": "Communist Party monopoly on power abolished",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1990,
+        "label": "Yemeni Unification \u2014 Republic of Yemen Proclaimed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1989,
+        "label": "New constitution opens Algeria to multi-party politics",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 1989,
+        "label": "Armenian SSR Declares Sovereignty over Soviet Law",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1989,
+        "label": "EPRDF coalition expands across multiple ethnic groups",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 1989,
+        "label": "Milo\u0161evi\u0107 Revokes Kosovo's Autonomy \u2014 March Constitutional Amendments",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 1989,
+        "label": "New Constitution Approved Under Saibou",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1989,
+        "label": "Kosovo Autonomy Revoked \u2014 Province Placed Under Serbian Direct Control",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1988,
+        "label": "New Democratic Constitution Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1987,
+        "label": "Constituent Assembly Begins Drafting New Constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1987,
+        "label": "Meech Lake Accord Attempts Quebec Constitutional Integration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 1987,
+        "label": "Democratic constitution approved by overwhelming popular referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1987,
+        "label": "New Philippine Constitution Ratified",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 1987,
+        "label": "New Constitution and Return to Multi-Party Democracy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1986,
+        "label": "Anti-Defection Law enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1984,
+        "label": "Diretas Ja Amendment Defeated in Congress",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 1984,
+        "label": "New Constitution Approved by Referendum \u2014 Return to Civilian Rule Promised",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1983,
+        "label": "New Constitution \u2014 Tricameral Parliament Created",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1983,
+        "label": "September Laws \u2014 Imposition of Sharia Across Sudan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1982,
+        "label": "New Chinese Constitution adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1982,
+        "label": "Council of Revolution Abolished \u2014 Military Removed from Politics",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1981,
+        "label": "New constitution adopted, single-party UPRONA rule formalized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1980,
+        "label": "1980 Constitution Approved in Fraudulent Plebiscite",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1980,
+        "label": "Military's Constitutional Referendum Defeated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1979,
+        "label": "Islamic Republic Referendum and New Constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1978,
+        "label": "Panama Ratifies Canal Treaties in National Plebiscite",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1978,
+        "label": "Constituent Assembly Grants Universal Suffrage",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1977,
+        "label": "Bill 101 Makes French Sole Official Language of Quebec",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1977,
+        "label": "Jamahiriya Formally Proclaimed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1977,
+        "label": "Constituent Assembly Debates New Constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1977,
+        "label": "New Soviet Constitution adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1976,
+        "label": "New constitution adopted establishing People's Democratic Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1976,
+        "label": "Cuba Adopts New Socialist Constitution by National Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1976,
+        "label": "Constitution of 1976 Adopted \u2014 Democratic Republic Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 1976,
+        "label": "Republic Established and Ellis Clarke Becomes First President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1975,
+        "label": "National Charter reinforces socialist one-party state",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 1975,
+        "label": "Turnhalle Constitutional Conference Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 1975,
+        "label": "Constitution of Papua New Guinea Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1974,
+        "label": "Yugoslav Constitution of 1974 Grants Bosnia Near-Sovereign Powers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1974,
+        "label": "New Yugoslav Constitution Grants Croatia Near-State Sovereignty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1974,
+        "label": "Referendum abolishes the Greek monarchy, establishing a republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 1974,
+        "label": "New Constitution Formalizes One-Party Rule Under UDPM",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1974,
+        "label": "Socialist Constitution Enacted Amid Worker Strikes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1974,
+        "label": "Yugoslavia's 1974 Constitution Grants Kosovo and Vojvodina Near-Republican Status",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 1974,
+        "label": "New Constitution Strips King of Executive Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1974,
+        "label": "Bourguiba Declared President for Life",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1973,
+        "label": "Kesavananda Bharati case \u2014 Basic Structure doctrine",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1973,
+        "label": "New Constitution Establishes Parliamentary Democracy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1973,
+        "label": "New Constitution Ratified Under Martial Law",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1973,
+        "label": "Sudan Permanent Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1973,
+        "label": "New Syrian Constitution Enshrines Ba'ath Party Supremacy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1973,
+        "label": "New Constitution Entrenches One-Party Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1972,
+        "label": "Socialist Constitution Adopted, Kim Il-sung Becomes President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1972,
+        "label": "New Constitution Formalizes Torrijos's Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 1972,
+        "label": "Yushin Constitution Establishes Authoritarian System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1971,
+        "label": "New Socialist Constitution Makes Zhivkov Head of State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1971,
+        "label": "New Egyptian Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1971,
+        "label": "Sierra Leone Declared a Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1971,
+        "label": "YAR Constitutional Assembly Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1970,
+        "label": "Privy purses of former royals abolished",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1970,
+        "label": "New Constitution Restores Formal Parliamentary System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1969,
+        "label": "Official Languages Act Enshrines French-English Bilingualism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1969,
+        "label": "One Unit Scheme Abolished",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1968,
+        "label": "New Constitution Restores Partial Civilian Government Under Thanom",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1967,
+        "label": "New Constitution and One-Party Framework",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1967,
+        "label": "Nigeria Divided into 12 States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 1967,
+        "label": "New Stroessner Constitution Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1967,
+        "label": "Pigeon-Hole Constitution Centralizes Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1966,
+        "label": "New Constitution Formalizes Military Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1966,
+        "label": "Punjab bifurcated \u2014 Haryana and Himachal created",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 1966,
+        "label": "Republic Declared, Banda Becomes President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1966,
+        "label": "New Constitution Restores Strong Presidential System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 1965,
+        "label": "Royal Advisory Council Created",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1965,
+        "label": "ASPIDA affair and royal intrigue produce the 'Apostasia' constitutional crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1965,
+        "label": "Ian Smith's Unilateral Declaration of Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1964,
+        "label": "New Afghan constitution promulgated establishing constitutional monarchy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1964,
+        "label": "Kenya Becomes a Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1964,
+        "label": "Tanganyika and Zanzibar Unite to Form Tanzania",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1963,
+        "label": "SFRY Constitution Enshrines Bosnia as Equal Federal Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1963,
+        "label": "Referendum Restores Full Presidential Powers to Goulart",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1963,
+        "label": "New Yugoslav Constitution Strengthens Republican Autonomy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1963,
+        "label": "Nagaland becomes India's 16th state",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1963,
+        "label": "Federal System Abolished, Unitary State Created",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1963,
+        "label": "Nigeria Declared a Federal Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1963,
+        "label": "Midwest Region Created",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 1963,
+        "label": "New Constitution Establishes Presidential System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1963,
+        "label": "New SFRY Constitution Proclaims Socialist Federal Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1962,
+        "label": "Arab Socialist Union Founded as Egypt's Single Party",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 1962,
+        "label": "Direct Presidential Election Referendum Approved",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1962,
+        "label": "Kuwait Constitution Promulgated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1962,
+        "label": "First Constitution Approved by Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1962,
+        "label": "New Constitution Introduces Presidential System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1962,
+        "label": "Tanganyika Becomes a Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1961,
+        "label": "Parliamentarism Compromise Allows Goulart to Take Office",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1961,
+        "label": "Buddhism Declared State Religion, Alarming Ethnic Minorities",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1960,
+        "label": "New Socialist Constitution Renames Country Czechoslovak Socialist Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1960,
+        "label": "Ghana Becomes a Republic with Nkrumah as First President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1960,
+        "label": "Maharashtra and Gujarat created from Bombay State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1960,
+        "label": "Republic Referendum and Commonwealth Exit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 1959,
+        "label": "First Written Constitution Promulgated Under British Protection",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1959,
+        "label": "1945 Constitution restored by presidential decree \u2014 Guided Democracy formalized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1959,
+        "label": "Lancaster House Negotiations Open Kenya's Path to Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1959,
+        "label": "Tunisia's First Republican Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1958,
+        "label": "Ethiopian Constitution Extended to Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 1958,
+        "label": "Niger Votes Yes in French Constitutional Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1957,
+        "label": "National Front Plebiscite Approved by Colombian Voters",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1957,
+        "label": "New Constitution Adopted, Villeda Morales Wins Presidency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1957,
+        "label": "All-Nigeria Constitutional Conference",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1957,
+        "label": "Bey Deposed \u2014 Tunisia Declared a Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1956,
+        "label": "Constitutional Convention Restores 1853 Constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1956,
+        "label": "Egypt Adopts New Constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1956,
+        "label": "States Reorganisation Act passed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1956,
+        "label": "Pakistan Declares Itself an Islamic Republic \u2014 First Constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 1955,
+        "label": "Austria declares permanent neutrality",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1955,
+        "label": "Revised Ethiopian Constitution promulgated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1955,
+        "label": "First parliamentary elections held under new constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1955,
+        "label": "Juche Self-Reliance Ideology Introduced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1955,
+        "label": "Women Gain Voting Rights in Peru",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1955,
+        "label": "Senate Act Enlargement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1954,
+        "label": "First Constitution of the PRC adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1954,
+        "label": "Colombian Women Gain the Right to Vote",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1954,
+        "label": "New Gold Coast Constitution Creates All-African Legislature",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1954,
+        "label": "Charter for the Kingdom of the Netherlands Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1954,
+        "label": "Lyttelton Constitution Introduces Full Federalism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1954,
+        "label": "One Unit Scheme Merges West Pakistan Provinces",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 1953,
+        "label": "National Assembly Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ba",
+        "country_name": "Bosnia and Herzegovina",
+        "year": 1953,
+        "label": "Yugoslav Constitutional Reform Expands Bosnia's Powers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1953,
+        "label": "Egypt Declared a Republic; Political Parties Dissolved",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1953,
+        "label": "States Reorganisation Commission formed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1953,
+        "label": "Andhra Pradesh formed as first linguistic state",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1953,
+        "label": "London Constitutional Conference",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1953,
+        "label": "New Yugoslav Constitutional Law Strengthens Republican Structures",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1952,
+        "label": "Universal Suffrage Extended to Bolivia's Indigenous Majority",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1952,
+        "label": "Women Vote in First Chilean Presidential Election",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1952,
+        "label": "New Jordanian Constitution Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1952,
+        "label": "Shishakli Proclaims New Constitution and One-Party State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1951,
+        "label": "Eritrean Constitution Drafted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1951,
+        "label": "First Amendment to Constitution passed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1951,
+        "label": "Constitution of the United Kingdom of Libya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1951,
+        "label": "Macpherson Constitution Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1951,
+        "label": "Salazar Reclassifies Colonies as 'Overseas Provinces'",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1951,
+        "label": "Constitutional Reform Replaces Presidential System with Collegial Council",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 1950,
+        "label": "New Constitution and Reformist Military Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1950,
+        "label": "India becomes a Republic and Constitution adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1950,
+        "label": "Macpherson Constitution Consultations Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1950,
+        "label": "Syrian Constitutional Assembly Drafts Republic Constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1948,
+        "label": "Republic of Ireland Act Severs Final Links with Crown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1937,
+        "label": "New Irish Constitution (Bunreacht na hEireann) Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1904,
+        "label": "Panama's First Constitution Establishes Republic",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 426
+  }
+}

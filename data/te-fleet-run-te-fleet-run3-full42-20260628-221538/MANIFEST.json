@@ -1,0 +1,39 @@
+{
+  "vintage": "fleet-run-1-2026-05-30",
+  "run_index": 1,
+  "produced_at_utc": "2026-06-30T10:30:52.195602+00:00",
+  "engine": "F-ML-1 / Trajectory Engine (ML2)",
+  "n_recipes": 42,
+  "n_scores_files": 42,
+  "n_countries_indexed": 216,
+  "indicator_catalog_size": 63,
+  "indicator_corpus_breakdown": {
+    "World Bank": 24,
+    "V-Dem": 60
+  },
+  "contract_version": "v3-2026-05-30",
+  "image_digest": "sha256:b95ece033fb5f5ff6b4dcca7011f7a7a52747d864fbcac5cb7900ecd5f91c6f8",
+  "image_tag": "43f9d9bd",
+  "qgi_ml_sha": "9e764464c9074d0e5c351cd31603456b5b8ff434",
+  "bucket_a_enrichments_applied": [
+    "iso2/iso3/flag_emoji on scores + analogs",
+    "region on country-index",
+    "indicator name on every shap_attribution + indicator_sensitivity entry",
+    "description_compelling from recipe-tracker.json",
+    "family_label from recipe-tracker.json (letter glyph dropped)",
+    "recipe_status_audience derived from pipeline verdict",
+    "histogram[].countries[] on score_distribution",
+    "score_pp + n_countries_scored on scores file",
+    "compound_score_v2_per_country on country-index",
+    "engine: trajectory-engine-v1 on every card",
+    "coverage_density_per_region on country-index"
+  ],
+  "verdict_counts": {
+    "HARD_FAIL": 37,
+    "MARGINAL_PENDING_BETA_CALIBRATION": 5
+  },
+  "tier_counts": {
+    "experimental": 37,
+    "directional": 5
+  }
+}
