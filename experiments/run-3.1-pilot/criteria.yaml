@@ -1,0 +1,74 @@
+# Run-3.1 pilot — machine-readable pass/fail criteria (locked; consumed by score_pilot.py)
+# Do not edit after the first pilot walk runs. See PRE-REGISTRATION.md for rationale.
+
+meta:
+  baseline: run-2            # compare against run-2, never run-3
+  b_eval: 1000              # post-hoc paired bootstrap over OOF predictions (no retrain)
+  fdr:
+    method: BH
+    q: 0.10
+    scope: joint_across_5_recipe_tests
+  paired: true               # paired on identical country folds
+
+method:
+  dedup:
+    abs_r_threshold: 0.85
+    keep: best_univariate_loco_representative_per_cluster
+  stability:
+    resample: complementary_pairs_country_bootstrap   # N/2 countries, both halves; never rows
+    seed_base: 12345                                   # per-resample seed = 12345 + index
+    pi_keep_threshold: 0.60                            # stable core = pi_j >= 0.60
+    b_schedule: [50, 75, 100, 125, 150, 175, 200]
+    stop_rule:                                         # stop when BOTH hold for 2 consecutive checkpoints
+      max_abs_delta_pi_lt: 0.05
+      keepset_jaccard_between_checkpoints_ge: 0.90
+    b_ceiling: 200
+
+recipes:
+  civil_war_and_insurgency:
+    role: control_veto
+    mandatory: true
+    evaluated_first: true
+    checks:
+      delta_auc_ci_contains_zero: true
+      abs_point_estimate_le: 0.02
+      selected_set_jaccard_vs_run2_ge: 0.60
+    on_fail: invalidate_entire_pilot
+
+  executive_power_consolidation:
+    role: patient
+    checks:
+      pi_ge_0.60_on_frac_of_set_ge: 0.60
+      split_half_pi_jaccard_reliability_ge: 0.70
+      indicator_count_within_of_run2: 3
+      loco_auc_ci_lower_ge_run2_minus: 0.02
+
+  military_coup:
+    role: patient
+    checks:
+      pi_ge_0.60_on_frac_of_set_ge: 0.60
+      split_half_pi_jaccard_reliability_ge: 0.70
+      indicator_count_within_of_run2: 3
+      loco_auc_ci_lower_ge_run2_minus: 0.02
+
+  banking_and_financial_crisis:
+    role: gain_is_real
+    checks:
+      paired_delta_auc_ci_lower_gt: 0.0
+      paired_delta_auc_ci_lower_ge: 0.03
+
+  territorial_disputes:
+    role: loss_resolve_decisively
+    checks:
+      # PASS if EITHER: CI recovers to include run-2 (~0.71), OR CI stays tightly below.
+      pass_if_any:
+        - ci_includes_run2_point: true
+        - ci_upper_lt_run2_and_ci_width_le: 0.08   # tight, unambiguous "real decline"
+      fail_if:
+        ambiguous_wide_ci_straddling: true
+
+overall_aws_funding_gate:
+  control_must_pass: true
+  min_other_recipes_passing_post_fdr: 3            # of the remaining 4
+  mean_pi_across_all_5_ge: 0.60
+  mean_pairwise_jaccard_stability_improvement_over_run3_ge: 0.30
