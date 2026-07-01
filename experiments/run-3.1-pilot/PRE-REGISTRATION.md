@@ -6,6 +6,11 @@
 
 **Governing rules:** LOCO leakage firewall is sacred; determinism (seed 12345 base); run-separation vintages; resemblance-not-forecast; laptop-default cost rule (this whole pilot is local/offline, ~$0; the only paid step is a later ~$8–14 AWS walk, gated on a PASS).
 
+> ### AMENDMENT 1 (pre-run, founder-ratified) — B schedule 50 → 24
+> **What changed:** the offline pilot runs `--b-schedule 12,24` (ceiling **B=24 walks = 12 complementary-pairs resamples**) instead of the original `[50,75,…,200]`.
+> **Why:** empirical measurement (not available when §2/§5 were written) showed a single walk is **~30–40 min** — the greedy runs up to **12** steps for event-rich recipes (n_pos ≥ 60), not the assumed ~5, each sweeping 40 candidates × 9 windows × leave-one-country-out. A faithful B=50 × 5 recipes × 2 arms is **~1.2 days** of laptop compute; B=24 is a ~14–16h overnight run that still yields a clear selection-stability signal (12 resamples → 24 selected sets per recipe-arm for the π estimate).
+> **Legitimacy:** amended **before any scored pilot walk ran** (only throwaway B=2 calibration/validation had executed), so the pre-reg lock ("may not change after the first pilot walk runs") is not violated. All thresholds in §5 are UNCHANGED — only the resample count changed. If the B=24 result is borderline, the pre-registered path is to raise B (toward the original 50) and re-run, not to re-tune the bar.
+
 ---
 
 ## 1. The question

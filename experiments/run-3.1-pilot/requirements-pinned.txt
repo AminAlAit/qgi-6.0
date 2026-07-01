@@ -1,0 +1,44 @@
+# run-3.1 pilot — pinned Python 3.13 runtime.
+#
+# Backs BOTH the walk (qgi-ml/scripts/run_f_ml_1_poc.py, imported not copied)
+# and the pilot harness (stability_select.py / baseline.py / score_pilot.py).
+#
+# ONE pinned image runs the local ~$0 pilot AND any future gated AWS run-3.1
+# walk — PRE-REGISTRATION.md §4: "one pinned Docker image ... the tie-break
+# -drift guard." Do NOT maintain a separate local Python env.
+#
+# Python: 3.13.x (the walk's runtime — INTEGRATION-SPEC §0). The fleet's
+# Bayes/shape lockfiles (requirements-shape.lock.txt / -path-b.lock.txt) are a
+# DIFFERENT stack: Python 3.12, pinned around pymc/pytensor/jax (no py3.13
+# wheels). They are NOT reused here. Where a package overlaps that stack its
+# version is held IDENTICAL to avoid drift (annotated "== fleet shape lock").
+#
+# The ONE forced change vs the fleet is numpy: the shape lock pins
+# numpy==1.26.4, which has NO cp313 wheels. The pilot therefore uses the
+# numpy-2 series (cp313 wheels). The numpy/scipy cp313 wheels bundle
+# scipy-openblas, so pinning numpy + scipy EXACTLY also freezes the BLAS —
+# satisfying PRE-REG §4 "XGBoost / numpy / BLAS versions pinned."
+#
+# Determinism: these exact pins + OMP_NUM_THREADS=1 / OPENBLAS_NUM_THREADS=1
+# (Dockerfile) + the walk's n_jobs=1 + random_state=12345 give a bit-stable
+# XGBoost LOCO regardless of host core count (walk lines 72-74). Seed base 12345.
+#
+# Direct/required deps only. For a fully hash-locked manifest (PRE-REG §4.2
+# "signed lockfile manifest"), run `pip freeze` after the first image build to
+# capture transitive pins; this file is the human-curated source of those pins.
+
+# --- ML / numerics stack (walk imports: numpy, pandas, joblib, scipy, sklearn, xgboost) ---
+numpy==2.3.2            # FORCED bump vs fleet 1.26.4 (no cp313 wheels); numpy-2 cp313 + bundled OpenBLAS
+scipy==1.17.1          # == fleet shape lock (beta_calibration: optimize.minimize; bca CI: stats.norm)
+pandas==3.0.3          # == fleet shape lock (panels + build_samples)
+scikit-learn==1.8.0    # == fleet shape lock (StandardScaler + LogisticRegression univariate screen)
+joblib==1.5.3          # == fleet shape lock (greedy candidate x window grid: Parallel/delayed)
+threadpoolctl==3.6.0   # == fleet shape lock (walk pins BLAS threads to 1 around each fit; optional dep)
+xgboost==2.1.4         # binding architecture for n_pos>=60 (all 5 pilot recipes >= 60); cp313 wheels,
+                       # hist tree_method + single-thread + fixed seed => deterministic LOCO
+
+# --- Parquet I/O (pd.read_parquet default engine; walk load_panel) ---
+pyarrow==24.0.0        # == fleet shape lock
+
+# --- Pilot harness config parsing (score_pilot reads criteria.yaml) ---
+PyYAML==6.0.2
