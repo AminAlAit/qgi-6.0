@@ -328,12 +328,12 @@
     "year": 2001,
     "title": "Sabena Airlines Collapses Into Bankruptcy",
     "verdict": "TRUE",
-    "reason": "Belgium's national carrier Sabena filed for legal protection on 3 October 2001 and entered liquidation on 6 November 2001 after partner Swissair failed to inject promised capital, leaving over 12,000 employees jobless.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm the event materially as described: Belgium's national carrier Sabena filed for legal protection against creditors on 3 October 2001 and entered liquidation on 6 November 2001, after Swissair (its partner/majority shareholder) failed to inject the promised capital (€258m from the July 2001 'Hotel Agreement' and a further pledged €430m) because Swissair itself was collapsing financially (Swissair went bankrupt in Oct 2001). The collapse left approximately 12,000 employees jobless and ended Sabena's 78-year history as Belgium's flag carrier. Post-9/11 aviation industry crisis is cited by sources as a compounding factor. All key facts (dates, employee count, 78-year history, Swissair non-payment, 9/11 context) match across independent, non-Wikipedia sources (VOA News, Aviation24.be, Flanders Today, WSWS, SWI swissinfo.ch, SimpleFlying).",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -345,9 +345,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the event materially as described: Belgium's national carrier Sabena filed for legal protection against creditors on 3 October 2001 and entered liquidation on 6 November 2001, after Swissair (its partner/majority shareholder) failed to inject the promised capital (€258m from the July 2001 'Hotel Agreement' and a further pledged €430m) because Swissair itself was collapsing financially (Swissair went bankrupt in Oct 2001). The collapse left approximately 12,000 employees jobless and ended Sabena's 78-year history as Belgium's flag carrier. Post-9/11 aviation industry crisis is cited by sources as a compounding factor. All key facts (dates, employee count, 78-year history, Swissair non-payment, 9/11 context) match across independent, non-Wikipedia sources (VOA News, Aviation24.be, Flanders Today, WSWS, SWI swissinfo.ch, SimpleFlying).",
+        "source": "https://www.aviation24.be/do-you-remember/20-years-ago-sabena-declared-bankrupt/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Sabena"
+    "source": "https://www.aviation24.be/do-you-remember/20-years-ago-sabena-declared-bankrupt/"
   },
   {
     "year": 2002,
@@ -503,12 +514,12 @@
     "year": 2008,
     "title": "Fortis Bank Nationalization During Global Financial Crisis",
     "verdict": "TRUE",
-    "reason": "Fortis was partially nationalized on 28 September 2008 with Belgium, the Netherlands, and Luxembourg injecting 11.2 billion euros; the Belgian operations were subsequently sold to BNP Paribas.",
-    "verify_count": 1,
+    "reason": "Independent contemporaneous sourcing confirms all material elements: Fortis, Belgium's largest financial institution, was partially nationalized on 28 September 2008 after its 2007 acquisition of ABN Amro (as part of a consortium with RBS and Santander) left it critically undercapitalized amid the global credit crunch. Belgium, the Netherlands, and Luxembourg jointly injected EUR 11.2 billion (Belgium EUR 4.7bn for 49% of Fortis Bank Belgium, Netherlands EUR 4bn for 49% of Fortis Bank Netherlands, Luxembourg EUR 2.5bn convertible loan for 49% of Fortis Bank Luxembourg). The Belgian operations were subsequently sold to BNP Paribas, a deal that triggered shareholder lawsuits (later resulting in a large Dutch collective settlement, per D&O Diary coverage found in search). All details in the event description are corroborated by a non-Wikipedia source: a Forbes article published the day of/after the event (28 Sept 2008) explicitly stating the EUR 11.2 billion pooled rescue by the three countries, the per-country breakdown, and the ABN Amro-driven capital weakness.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -520,20 +531,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent contemporaneous sourcing confirms all material elements: Fortis, Belgium's largest financial institution, was partially nationalized on 28 September 2008 after its 2007 acquisition of ABN Amro (as part of a consortium with RBS and Santander) left it critically undercapitalized amid the global credit crunch. Belgium, the Netherlands, and Luxembourg jointly injected EUR 11.2 billion (Belgium EUR 4.7bn for 49% of Fortis Bank Belgium, Netherlands EUR 4bn for 49% of Fortis Bank Netherlands, Luxembourg EUR 2.5bn convertible loan for 49% of Fortis Bank Luxembourg). The Belgian operations were subsequently sold to BNP Paribas, a deal that triggered shareholder lawsuits (later resulting in a large Dutch collective settlement, per D&O Diary coverage found in search). All details in the event description are corroborated by a non-Wikipedia source: a Forbes article published the day of/after the event (28 Sept 2008) explicitly stating the EUR 11.2 billion pooled rescue by the three countries, the per-country breakdown, and the ABN Amro-driven capital weakness.",
+        "source": "https://www.forbes.com/2008/09/28/fortis-bailout-pingan-markets-equity-cx_tw_0928markets01.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2008%E2%80%932009_Belgian_financial_crisis"
+    "source": "https://www.forbes.com/2008/09/28/fortis-bailout-pingan-markets-equity-cx_tw_0928markets01.html"
   },
   {
     "year": 2008,
     "title": "Dexia Bank Requires Emergency Bailout",
     "verdict": "TRUE",
-    "reason": "On 30 September 2008, Franco-Belgian bank Dexia received a 6.4 billion euro emergency capital injection from the Belgian, French, and Luxembourg governments after toxic asset exposure and a liquidity crisis threatened its collapse.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Wikipedia sources confirm: on 30 September 2008, Franco-Belgian bank Dexia received a €6.4 billion emergency capital injection from the Belgian State and regional governments (€3bn), the French State and Caisse des Dépôts (€3bn), and the Luxembourg government (€376 million), after Dexia's exposure to toxic US housing-market assets (notably via subsidiary FSA and loans to Depfa) caused a liquidity crunch following Lehman Brothers' collapse. Dexia's chairman and CEO resigned as part of the deal (France24). Yale's Journal of Financial Crises / New Bagehot Project documents the same figures and timeline in detail, and confirms Dexia required a further restructuring/bailout in 2011 leading to its eventual dismantling, matching the description's claim about a second 2011 bailout. All material details (country, year, amount, actors, cause, sequel) check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -545,9 +567,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm: on 30 September 2008, Franco-Belgian bank Dexia received a €6.4 billion emergency capital injection from the Belgian State and regional governments (€3bn), the French State and Caisse des Dépôts (€3bn), and the Luxembourg government (€376 million), after Dexia's exposure to toxic US housing-market assets (notably via subsidiary FSA and loans to Depfa) caused a liquidity crunch following Lehman Brothers' collapse. Dexia's chairman and CEO resigned as part of the deal (France24). Yale's Journal of Financial Crises / New Bagehot Project documents the same figures and timeline in detail, and confirms Dexia required a further restructuring/bailout in 2011 leading to its eventual dismantling, matching the description's claim about a second 2011 bailout. All material details (country, year, amount, actors, cause, sequel) check out.",
+        "source": "https://www.france24.com/en/20080930-dexia-chairman-ceo-resign-after-govt-capital-injection-banking-crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Dexia"
+    "source": "https://www.france24.com/en/20080930-dexia-chairman-ceo-resign-after-govt-capital-injection-banking-crisis"
   },
   {
     "year": 2010,
@@ -603,12 +636,12 @@
     "year": 2011,
     "title": "General Strike Against Austerity Pension Reforms",
     "verdict": "TRUE",
-    "reason": "Belgian unions called a general strike on 22 December 2011 against the Di Rupo government's 11.3 billion euro austerity package including pension age increases, paralyzing public transport, schools, and government services.",
-    "verify_count": 1,
+    "reason": "Independently corroborated (source not on the off-limits list): ETUC (European Trade Union Confederation, etuc.org) explicitly documents \"Belgium 22 December 2011: General strike in the public service,\" describing the CSC-FGTB-CGSLB unions' one-day general strike against pension reform imposed without union consultation — including raising the early-retirement threshold to age 62/40 years of service and recalculating public-sector pensions on the last 10 years of work instead of 5. Multiple independent secondary aggregations (search summaries citing Reuters-sourced reporting, Common Dreams, WSWS, Brussels Times, European Pensions) consistently corroborate: date 22 Dec 2011, newly formed Di Rupo government (sworn in 6 Dec 2011), an €11.3 billion austerity package to keep the 2012 budget deficit within EU limits, and the strike paralyzing rail/bus/metro public transport, schools, and government offices nationwide. All core elements of the event description (country, year, actors, cause, scope, EU fiscal-consolidation link) are materially confirmed. Note: Wikipedia's \"Belgian general strikes\" list article does not include this specific date (it lists the later 30 Jan 2012 general strike), but this is a gap in that summary table, not a contradiction — the ETUC primary trade-union source and consistent independent secondary coverage confirm the 22 Dec 2011 action occurred as described.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -620,9 +653,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated (source not on the off-limits list): ETUC (European Trade Union Confederation, etuc.org) explicitly documents \"Belgium 22 December 2011: General strike in the public service,\" describing the CSC-FGTB-CGSLB unions' one-day general strike against pension reform imposed without union consultation — including raising the early-retirement threshold to age 62/40 years of service and recalculating public-sector pensions on the last 10 years of work instead of 5. Multiple independent secondary aggregations (search summaries citing Reuters-sourced reporting, Common Dreams, WSWS, Brussels Times, European Pensions) consistently corroborate: date 22 Dec 2011, newly formed Di Rupo government (sworn in 6 Dec 2011), an €11.3 billion austerity package to keep the 2012 budget deficit within EU limits, and the strike paralyzing rail/bus/metro public transport, schools, and government offices nationwide. All core elements of the event description (country, year, actors, cause, scope, EU fiscal-consolidation link) are materially confirmed. Note: Wikipedia's \"Belgian general strikes\" list article does not include this specific date (it lists the later 30 Jan 2012 general strike), but this is a gap in that summary table, not a contradiction — the ETUC primary trade-union source and consistent independent secondary coverage confirm the 22 Dec 2011 action occurred as described.",
+        "source": "https://www.etuc.org/en/belgium-against-imposed-and-unfair-pensions-reforms",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://nvdatabase.swarthmore.edu/content/belgians-protest-austerity-measures-2011-2012"
+    "source": "https://www.etuc.org/en/belgium-against-imposed-and-unfair-pensions-reforms"
   },
   {
     "year": 2012,

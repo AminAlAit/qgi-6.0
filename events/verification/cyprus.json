@@ -153,12 +153,12 @@
     "year": 1996,
     "title": "Buffer zone killings escalate tensions between communities",
     "verdict": "TRUE",
-    "reason": "Tassos Isaac was beaten to death by Grey Wolves in the UN buffer zone on 11 August 1996 during anti-occupation protests; three days later Solomos Solomou was shot dead while attempting to remove a Turkish flag from the buffer zone. Both killings drew international condemnation.",
-    "verify_count": 1,
+    "reason": "Independently confirmed by multiple non-Wikipedia sources (Cyprus Mail, GreekReporter, ToVima, GreekCityTimes, ProtoThema): Greek Cypriot Tassos Isaac was beaten to death by Grey Wolves/Turkish Cypriots on Aug 11, 1996, after being trapped/entangled at the UN buffer zone near Dherynia during protests against the Turkish occupation; his cousin Solomos Solomou was shot dead on Aug 14, 1996, three days later, while trying to climb a flagpole in the buffer zone to remove a Turkish flag. Both incidents occurred amid Greek Cypriot demonstrations (including a motorcycle protest rally) against the Turkish occupation, provoked international condemnation, and are widely described as the worst intercommunal violence in Cyprus since 1974 (2008 ECHR ruling found Turkey violated Article 2 in both deaths). All material details in the event description (country, year, both named victims, cause/context, severity characterization) match.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -170,9 +170,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed by multiple non-Wikipedia sources (Cyprus Mail, GreekReporter, ToVima, GreekCityTimes, ProtoThema): Greek Cypriot Tassos Isaac was beaten to death by Grey Wolves/Turkish Cypriots on Aug 11, 1996, after being trapped/entangled at the UN buffer zone near Dherynia during protests against the Turkish occupation; his cousin Solomos Solomou was shot dead on Aug 14, 1996, three days later, while trying to climb a flagpole in the buffer zone to remove a Turkish flag. Both incidents occurred amid Greek Cypriot demonstrations (including a motorcycle protest rally) against the Turkish occupation, provoked international condemnation, and are widely described as the worst intercommunal violence in Cyprus since 1974 (2008 ECHR ruling found Turkey violated Article 2 in both deaths). All material details in the event description (country, year, both named victims, cause/context, severity characterization) match.",
+        "source": "https://cyprus-mail.com/2025/08/10/statues-unveiled-to-mark-anniversary-of-isaac-and-solomou-deaths",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Death_of_Solomos_Solomou"
+    "source": "https://cyprus-mail.com/2025/08/10/statues-unveiled-to-mark-anniversary-of-isaac-and-solomou-deaths"
   },
   {
     "year": 1997,
@@ -428,12 +439,12 @@
     "year": 2008,
     "title": "Cyprus adopts the euro as its official currency",
     "verdict": "TRUE",
-    "reason": "Cyprus replaced the Cypriot pound with the euro on 1 January 2008 alongside Malta, under a 'big bang' changeover with one month dual circulation; the conversion rate was 0.585274 Cypriot pounds per euro.",
-    "verify_count": 1,
+    "reason": "Independent corroboration (Wikipedia, English) confirms Cyprus replaced the Cypriot pound with the euro on 1 January 2008 at the fixed rate £C0.585274 = €1.00, via a 'big bang' changeover with a one-month dual circulation period (pound notes/coins remained legal tender for cash payments until 31 January 2008), and that Malta joined the eurozone simultaneously. All material details in the event description (date, big-bang method, one-month dual circulation, joining alongside Malta, eurozone integration) match.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -445,9 +456,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent corroboration (Wikipedia, English) confirms Cyprus replaced the Cypriot pound with the euro on 1 January 2008 at the fixed rate £C0.585274 = €1.00, via a 'big bang' changeover with a one-month dual circulation period (pound notes/coins remained legal tender for cash payments until 31 January 2008), and that Malta joined the eurozone simultaneously. All material details in the event description (date, big-bang method, one-month dual circulation, joining alongside Malta, eurozone integration) match.",
+        "source": "https://en.wikipedia.org/wiki/Cypriot_pound",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://ec.europa.eu/economy_finance/articles/euro/change_over_cyprus_and_malta_en.htm"
+    "source": "https://en.wikipedia.org/wiki/Cypriot_pound"
   },
   {
     "year": 2008,
@@ -628,12 +650,12 @@
     "year": 2013,
     "title": "EU imposes unprecedented bail-in during Cyprus banking crisis",
     "verdict": "TRUE",
-    "reason": "The March 2013 Eurogroup bailout (€10B) required closing Cyprus Popular Bank (Laiki) and imposing a haircut of up to 47.5% on uninsured deposits above €100K at Bank of Cyprus — the first EU bail-in to directly hit depositors — wiping out approximately €8 billion in savings.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Wikipedia sources confirm: on 25 March 2013 the Eurogroup/EC/ECB/IMF agreed a EUR10 billion bailout for Cyprus that required winding down Cyprus Popular Bank (Laiki) and imposing a 47.5% haircut (converted to equity) on uninsured deposits (over EUR100,000) at Bank of Cyprus, while Laiki's uninsured deposits were effectively wiped out. This is widely described as the first bail-in in EU/eurozone history to directly hit bank depositors. The \"up to 48%\" figure in the event description closely matches the widely-reported 47.5% figure and the ESM's own account of \"seizing possibly around 48%\" of uninsured Bank of Cyprus deposits. All material details (country, year, amount, mechanism, \"first EU bail-in hitting depositors\" framing) are corroborated by the European Stability Mechanism (official EU body), CEPR/VoxEU, and Cyprus Mail reporting.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -645,20 +667,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm: on 25 March 2013 the Eurogroup/EC/ECB/IMF agreed a EUR10 billion bailout for Cyprus that required winding down Cyprus Popular Bank (Laiki) and imposing a 47.5% haircut (converted to equity) on uninsured deposits (over EUR100,000) at Bank of Cyprus, while Laiki's uninsured deposits were effectively wiped out. This is widely described as the first bail-in in EU/eurozone history to directly hit bank depositors. The \"up to 48%\" figure in the event description closely matches the widely-reported 47.5% figure and the ESM's own account of \"seizing possibly around 48%\" of uninsured Bank of Cyprus deposits. All material details (country, year, amount, mechanism, \"first EU bail-in hitting depositors\" framing) are corroborated by the European Stability Mechanism (official EU body), CEPR/VoxEU, and Cyprus Mail reporting.",
+        "source": "https://www.esm.europa.eu/publications/safeguarding-euro/crisis-cyprus-no-negotiating-power-no-credibility",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2012%E2%80%932013_Cypriot_financial_crisis"
+    "source": "https://www.esm.europa.eu/publications/safeguarding-euro/crisis-cyprus-no-negotiating-power-no-credibility"
   },
   {
     "year": 2013,
     "title": "Cyprus imposes capital controls for first time in eurozone history",
     "verdict": "TRUE",
-    "reason": "Following the bailout agreement in March 2013, Cyprus became the first eurozone country to impose capital controls, restricting daily cash withdrawals to €300, wire transfers, and cross-border payments. The controls were revised 11 times and lifted in April 2015.",
-    "verify_count": 1,
+    "reason": "Confirmed via multiple independent sources. Cyprus became the first eurozone country to impose capital controls, effective 28 March 2013 (banks reopened with restrictions), following the EUR 10 billion Eurogroup/EC/ECB/IMF bailout agreed 15-16 March 2013 (announced 25 March). Controls included a EUR 300 daily withdrawal limit, restrictions on wire transfers/cross-border payments, and a ban on cashing checks/opening new accounts. Initially expected to be brief (7 days), they were extended 11+ times: cash withdrawal restrictions lifted March 2014, other restrictions remained until April 2015 — matching the description's 'over two years' duration claim materially. Year, country, and core facts (first-in-eurozone, capital controls, restricting withdrawals/transfers/cross-border payments, long duration) all confirmed.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -670,9 +703,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources. Cyprus became the first eurozone country to impose capital controls, effective 28 March 2013 (banks reopened with restrictions), following the EUR 10 billion Eurogroup/EC/ECB/IMF bailout agreed 15-16 March 2013 (announced 25 March). Controls included a EUR 300 daily withdrawal limit, restrictions on wire transfers/cross-border payments, and a ban on cashing checks/opening new accounts. Initially expected to be brief (7 days), they were extended 11+ times: cash withdrawal restrictions lifted March 2014, other restrictions remained until April 2015 — matching the description's 'over two years' duration claim materially. Year, country, and core facts (first-in-eurozone, capital controls, restricting withdrawals/transfers/cross-border payments, long duration) all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2012%E2%80%932013_Cypriot_financial_crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.step.org/industry-news/cyprus-imposes-capital-controls"
+    "source": "https://en.wikipedia.org/wiki/2012%E2%80%932013_Cypriot_financial_crisis"
   },
   {
     "year": 2015,

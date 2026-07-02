@@ -103,12 +103,12 @@
     "year": 1972,
     "title": "Selective Genocide — Hutu massacres kill 150,000-300,000",
     "verdict": "TRUE",
-    "reason": "Ikiza (1972) confirmed. Conservative estimates 100,000-150,000; upper estimates reach 300,000. Burundi's CVR declared it genocide in 2021. Uprising in April 1972 preceded government campaign confirmed. Description broadly accurate.",
-    "verify_count": 1,
+    "reason": "Independent academic corroboration (Sciences Po Mass Violence and Resistance Research Network, and EBSCO Research Starters) confirms all material elements: a Hutu-led uprising in late April 1972 was followed by a systematic campaign by Micombero's Tutsi-dominated government targeting educated/elite Hutu (teachers, civil servants, clergy, students), with death toll estimates of 150,000-300,000, widely termed the 'selective genocide' or Ikiza ('the Calamity'). Year, country, actors, scope, and terminology all match the event description.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -120,9 +120,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent academic corroboration (Sciences Po Mass Violence and Resistance Research Network, and EBSCO Research Starters) confirms all material elements: a Hutu-led uprising in late April 1972 was followed by a systematic campaign by Micombero's Tutsi-dominated government targeting educated/elite Hutu (teachers, civil servants, clergy, students), with death toll estimates of 150,000-300,000, widely termed the 'selective genocide' or Ikiza ('the Calamity'). Year, country, actors, scope, and terminology all match the event description.",
+        "source": "https://www.sciencespo.fr/mass-violence-war-massacre-resistance/en/document/burundi-killings-1972.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Ikiza"
+    "source": "https://www.sciencespo.fr/mass-violence-war-massacre-resistance/en/document/burundi-killings-1972.html"
   },
   {
     "year": 1972,
@@ -177,13 +188,13 @@
   {
     "year": 1977,
     "title": "Burundi nationalizes coffee sector",
-    "verdict": "TRUE",
-    "reason": "Bagaza government coffee sector reforms and state control confirmed via multiple sources. OCIBU as state marketing board is a known historical fact for Burundi's coffee industry.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Bagaza government coffee sector reforms and state control confirmed via multiple sources. OCIBU as state marketing board is a known historical fact for Burundi's coffee industry.; Pass 2 FALSE: The core event (state nationalization of Burundi's coffee sector, private factories placed under OCIBU's management, ending private coffee marketing) is real and well documented, but every independent source found dates it to 1976, not 1977. A 2007 International Alert/USAID-funded report on Burundi's coffee sector states explicitly and repeats twice: 'In 1976, the private coffee factories (Ceduca, Indurundi) were nationalized and all activities related to export were placed under OCIBU's management, thereby making the industry completely state-controlled,' and later refers to 'those factories nationalized in 1976 (Ceduca, Unicafé, UCB)... currently managed by OCIBU.' This is corroborated by greenplantation.com ('In 1976, the state took control of all coffee fields and production, and both quality and quantity plummeted') and other coffee-trade histories that place the nationalization in 1976. This timing also aligns with Bagaza's coup of November 1976. I found no independent source placing the nationalization in 1977. Additionally, OCIBU appears to have already existed as the export-management body at the time of the 1976 nationalization (other sources trace an earlier origin for the office) rather than being newly 'created' by this act, though the year discrepancy is the decisive, well-corroborated issue. Because the year is wrong by my best independent evidence, this is FALSE with corrected_year=1976; country and the substance of the nationalization event otherwise check out.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -195,9 +206,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The core event (state nationalization of Burundi's coffee sector, private factories placed under OCIBU's management, ending private coffee marketing) is real and well documented, but every independent source found dates it to 1976, not 1977. A 2007 International Alert/USAID-funded report on Burundi's coffee sector states explicitly and repeats twice: 'In 1976, the private coffee factories (Ceduca, Indurundi) were nationalized and all activities related to export were placed under OCIBU's management, thereby making the industry completely state-controlled,' and later refers to 'those factories nationalized in 1976 (Ceduca, Unicafé, UCB)... currently managed by OCIBU.' This is corroborated by greenplantation.com ('In 1976, the state took control of all coffee fields and production, and both quality and quantity plummeted') and other coffee-trade histories that place the nationalization in 1976. This timing also aligns with Bagaza's coup of November 1976. I found no independent source placing the nationalization in 1977. Additionally, OCIBU appears to have already existed as the export-management body at the time of the 1976 nationalization (other sources trace an earlier origin for the office) rather than being newly 'created' by this act, though the year discrepancy is the decisive, well-corroborated issue. Because the year is wrong by my best independent evidence, this is FALSE with corrected_year=1976; country and the substance of the nationalization event otherwise check out.",
+        "source": "https://www.international-alert.org/app/uploads/2021/09/Burundi-Coffee-Sector-Reform-EN-2007.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1976
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Jean-Baptiste_Bagaza"
+    ]
   },
   {
     "year": 1981,
@@ -278,12 +300,12 @@
     "year": 1988,
     "title": "Ntega-Marangara massacres — ethnic violence kills thousands",
     "verdict": "TRUE",
-    "reason": "August 1988 massacres in Ntega and Marangara confirmed. Death toll estimates range 15,000-50,000 (Hutu majority). Event description cites 5,000-20,000 which is within the lower range. International pressure on Buyoya to democratize confirmed.",
-    "verify_count": 1,
+    "reason": "Independent, non-Wikipedia sources corroborate all material elements. IWACU (Burundian independent news outlet) confirms the \"Ntega-Marangara mass murder\" of August 1988 as ethnic violence between Hutu and Tutsi in the communes of Kirundo/Ngozi provinces. Genocide Watch's Burundi country report confirms Hutu were massacred in Ntega and Marangara communes in August 1988 and that the international community (Prof. Gregory Stanton) pressed President Buyoya to appoint a broad, ethnically balanced government afterward. General web search results (onwar.com and other outlets) corroborate the sequence: Hutu peasants killed local Tutsi over roughly two days, after which the Tutsi-dominated army retaliated with indiscriminate mass killing of Hutu civilians, with death toll estimates commonly cited in the 15,000-20,000 range (some sources go higher, to 25,000-50,000; the official government figure was 5,000) — the description's \"5,000 to 20,000\" range sits squarely within the commonly cited estimates. The international outcry (Belgian/Canadian foreign ministers demanding investigation, heavy Western press coverage) is corroborated. The political aftermath is also confirmed: Buyoya appointed Adrien Sibomana, an ethnic Hutu, as prime minister on 19 October 1988 — described in search results as \"the first Hutu prime minister since 1973\" — as part of a power-sharing/ethnic-balancing gesture, matching the event description's claim of \"appointing the first Hutu prime minister.\" All core facts (country, year, location, ethnic dynamic, army massacre, magnitude, political aftermath) are materially confirmed by sources independent of Wikipedia.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -295,9 +317,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent, non-Wikipedia sources corroborate all material elements. IWACU (Burundian independent news outlet) confirms the \"Ntega-Marangara mass murder\" of August 1988 as ethnic violence between Hutu and Tutsi in the communes of Kirundo/Ngozi provinces. Genocide Watch's Burundi country report confirms Hutu were massacred in Ntega and Marangara communes in August 1988 and that the international community (Prof. Gregory Stanton) pressed President Buyoya to appoint a broad, ethnically balanced government afterward. General web search results (onwar.com and other outlets) corroborate the sequence: Hutu peasants killed local Tutsi over roughly two days, after which the Tutsi-dominated army retaliated with indiscriminate mass killing of Hutu civilians, with death toll estimates commonly cited in the 15,000-20,000 range (some sources go higher, to 25,000-50,000; the official government figure was 5,000) — the description's \"5,000 to 20,000\" range sits squarely within the commonly cited estimates. The international outcry (Belgian/Canadian foreign ministers demanding investigation, heavy Western press coverage) is corroborated. The political aftermath is also confirmed: Buyoya appointed Adrien Sibomana, an ethnic Hutu, as prime minister on 19 October 1988 — described in search results as \"the first Hutu prime minister since 1973\" — as part of a power-sharing/ethnic-balancing gesture, matching the event description's claim of \"appointing the first Hutu prime minister.\" All core facts (country, year, location, ethnic dynamic, army massacre, magnitude, political aftermath) are materially confirmed by sources independent of Wikipedia.",
+        "source": "https://www.iwacu-burundi.org/englishnews/light-on-ntega-marangara-mass-murder-can-be-lesson-for-future-generations-2/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1988_ethnic_violence_in_Burundi"
+    "source": "https://www.iwacu-burundi.org/englishnews/light-on-ntega-marangara-mass-murder-can-be-lesson-for-future-generations-2/"
   },
   {
     "year": 1989,

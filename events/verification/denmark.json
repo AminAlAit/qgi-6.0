@@ -478,12 +478,12 @@
     "year": 2008,
     "title": "Global Financial Crisis Hits Danish Banking Sector",
     "verdict": "TRUE",
-    "reason": "The 2008 global financial crisis severely impacted Denmark's banking sector with Roskilde Bank collapsing in August 2008 as the first major Danish bank failure; GDP fell approximately 5% in 2009, the worst recession since WWII, and 62 banks ceased operating between 2008 and 2013.",
-    "verify_count": 1,
+    "reason": "Independently confirmed all material elements. Roskilde Bank, Denmark's 8th-largest bank, was taken over by Danmarks Nationalbank and the Private Contingency Association on August 24, 2008 after becoming insolvent from property-market exposure — the first Danish National Bank takeover of a bank since 1928, and widely cited as the first major Danish bank failure of the crisis (confirmed via Wikipedia and a contemporaneous Forbes article, neither on the off-limits domain). The Danish government subsequently introduced bank guarantee packages (the October 2008 'Bank Package I' general guarantee scheme, later followed by larger individual state guarantees reported in the hundreds of billions of kroner) — confirmed via BIS review and IMF Article IV materials. Denmark's economy contracted sharply in 2009; independent data (countryeconomy.com, citing national accounts) show GDP fell approximately -5% in 2009 (vs. the claimed -4.9%), which is within normal rounding/revision variance across data vintages and not a material discrepancy. All core facts — country, year, actor (Roskilde Bank), the guarantee response, and the recession/GDP contraction — check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -495,9 +495,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed all material elements. Roskilde Bank, Denmark's 8th-largest bank, was taken over by Danmarks Nationalbank and the Private Contingency Association on August 24, 2008 after becoming insolvent from property-market exposure — the first Danish National Bank takeover of a bank since 1928, and widely cited as the first major Danish bank failure of the crisis (confirmed via Wikipedia and a contemporaneous Forbes article, neither on the off-limits domain). The Danish government subsequently introduced bank guarantee packages (the October 2008 'Bank Package I' general guarantee scheme, later followed by larger individual state guarantees reported in the hundreds of billions of kroner) — confirmed via BIS review and IMF Article IV materials. Denmark's economy contracted sharply in 2009; independent data (countryeconomy.com, citing national accounts) show GDP fell approximately -5% in 2009 (vs. the claimed -4.9%), which is within normal rounding/revision variance across data vintages and not a material discrepancy. All core facts — country, year, actor (Roskilde Bank), the guarantee response, and the recession/GDP contraction — check out.",
+        "source": "https://en.wikipedia.org/wiki/Roskilde_Bank",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://elischolar.library.yale.edu/cgi/viewcontent.cgi?article=1535&context=journal-of-financial-crises"
+    "source": "https://en.wikipedia.org/wiki/Roskilde_Bank"
   },
   {
     "year": 2008,

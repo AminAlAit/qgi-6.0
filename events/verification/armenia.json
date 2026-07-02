@@ -363,10 +363,10 @@
     "year": 1988,
     "title": "Sumgait Pogroms Against Armenians in Azerbaijan",
     "verdict": "TRUE",
-    "reason": "Anti-Armenian pogroms in Sumgait, Azerbaijan, late February 1988, killing dozens and injuring hundreds. Well-documented.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources (Wikipedia, Armenian National Committee of America, Armenian Prelacy, NAASR, Congressional statements) confirm the Sumgait pogrom occurred February 27-March 1, 1988 in Sumgait, Azerbaijan SSR. Azerbaijani mobs attacked and killed ethnic Armenians (official Soviet toll 32 dead, Armenian sources claim 200+; hundreds injured), with police failing to intervene for days until Soviet military imposed martial law. The event directly intensified Nagorno-Karabakh unification demands (following the Feb 20, 1988 council vote) and began an escalating spiral of anti-Armenian violence (later Kirovabad 1988, Baku 1990) leading toward the Nagorno-Karabakh war. All material details in the description (location, year, death toll magnitude, injuries, and downstream effects) are corroborated.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -380,8 +380,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Wikipedia, Armenian National Committee of America, Armenian Prelacy, NAASR, Congressional statements) confirm the Sumgait pogrom occurred February 27-March 1, 1988 in Sumgait, Azerbaijan SSR. Azerbaijani mobs attacked and killed ethnic Armenians (official Soviet toll 32 dead, Armenian sources claim 200+; hundreds injured), with police failing to intervene for days until Soviet military imposed martial law. The event directly intensified Nagorno-Karabakh unification demands (following the Feb 20, 1988 council vote) and began an escalating spiral of anti-Armenian violence (later Kirovabad 1988, Baku 1990) leading toward the Nagorno-Karabakh war. All material details in the description (location, year, death toll magnitude, injuries, and downstream effects) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/Sumgait_pogrom",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sumgait_pogrom"
   },
   {
     "year": 1988,
@@ -603,10 +615,10 @@
     "year": 1993,
     "title": "Armenian Dram Introduced as National Currency",
     "verdict": "TRUE",
-    "reason": "Armenian dram introduced November 22, 1993, replacing the Soviet/Russian ruble. Confirmed.",
-    "verify_count": 1,
+    "reason": "Confirmed by the Central Bank of Armenia's own historical record: the dram was introduced on November 22, 1993, replacing the Soviet ruble (initial banknotes of 10, 25, 50, 100, 200, 500 dram; exchange rate 1 dram = 200 rubles; dual circulation with the ruble until March 17, 1994). This matches the event description's core facts (year, country, action: introduction of new national currency replacing the ruble). The description's framing of this as a step toward economic sovereignty is directly consistent with the historical context of Armenia's 1991 independence and 1993 monetary separation from the ruble zone. The mention of hyperinflation and the ongoing blockade/war (Nagorno-Karabakh conflict-era blockade by Azerbaijan and Turkey) reflects well-documented historical context for Armenia's early-1990s economic crisis and is not contradicted by any source found.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -620,8 +632,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by the Central Bank of Armenia's own historical record: the dram was introduced on November 22, 1993, replacing the Soviet ruble (initial banknotes of 10, 25, 50, 100, 200, 500 dram; exchange rate 1 dram = 200 rubles; dual circulation with the ruble until March 17, 1994). This matches the event description's core facts (year, country, action: introduction of new national currency replacing the ruble). The description's framing of this as a step toward economic sovereignty is directly consistent with the historical context of Armenia's 1991 independence and 1993 monetary separation from the ruble zone. The mention of hyperinflation and the ongoing blockade/war (Nagorno-Karabakh conflict-era blockade by Azerbaijan and Turkey) reflects well-documented historical context for Armenia's early-1990s economic crisis and is not contradicted by any source found.",
+        "source": "https://www.cba.am/en/Evolution%20of%20the%20Armenian%20Dram.",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.cba.am/en/Evolution%20of%20the%20Armenian%20Dram."
   },
   {
     "year": 1994,

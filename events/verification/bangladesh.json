@@ -603,12 +603,12 @@
     "year": 2012,
     "title": "Tazreen Fashions Fire Kills 117 Garment Workers",
     "verdict": "TRUE",
-    "reason": "24 November 2012, at least 117 killed, 200+ injured, Ashulia. Confirmed.",
-    "verify_count": 1,
+    "reason": "Independently corroborated by Human Rights Watch (hrw.org, not an off-limits domain): a fire broke out on 24 November 2012 at the Tazreen Fashions garment factory on the outskirts of Dhaka, Bangladesh, killing \"at least 112\" workers (other credible outlets, e.g. Dhaka Tribune/Business Standard/Daily Star anniversary pieces surfaced via search, cite 117 — a normal range of variance for a mass-casualty death toll, not a material discrepancy). HRW's reporting confirms the core facts matching the description: management/supervisors locked exits, trapping workers (\"the gate to the stairs was locked... forcing workers to break windows and jump to adjacent roofs to escape\"), the factory was operating illegally beyond its authorized height, and fire-safety violations (blocked exit routes, insufficient firefighting equipment) were found by investigators. Multiple additional non-Wikipedia outlets (NPR, VOA News, Human Rights Watch, Clean Clothes Campaign, Dhaka Tribune, The Business Standard, The Daily Star, New Age BD) independently corroborate the event, location, year, and locked-exit detail. Country (Bangladesh), year (2012), and material description (deadliest factory fire in Bangladesh's history to that point, ~117 dead, 200+ injured, locked exits, intensified global scrutiny of RMG labor safety) all hold.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -620,9 +620,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated by Human Rights Watch (hrw.org, not an off-limits domain): a fire broke out on 24 November 2012 at the Tazreen Fashions garment factory on the outskirts of Dhaka, Bangladesh, killing \"at least 112\" workers (other credible outlets, e.g. Dhaka Tribune/Business Standard/Daily Star anniversary pieces surfaced via search, cite 117 — a normal range of variance for a mass-casualty death toll, not a material discrepancy). HRW's reporting confirms the core facts matching the description: management/supervisors locked exits, trapping workers (\"the gate to the stairs was locked... forcing workers to break windows and jump to adjacent roofs to escape\"), the factory was operating illegally beyond its authorized height, and fire-safety violations (blocked exit routes, insufficient firefighting equipment) were found by investigators. Multiple additional non-Wikipedia outlets (NPR, VOA News, Human Rights Watch, Clean Clothes Campaign, Dhaka Tribune, The Business Standard, The Daily Star, New Age BD) independently corroborate the event, location, year, and locked-exit detail. Country (Bangladesh), year (2012), and material description (deadliest factory fire in Bangladesh's history to that point, ~117 dead, 200+ injured, locked exits, intensified global scrutiny of RMG labor safety) all hold.",
+        "source": "https://www.hrw.org/news/2013/12/15/bangladesh-companies-fail-compensate-fire-victims",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2012_Dhaka_garment_factory_fire"
+    "source": "https://www.hrw.org/news/2013/12/15/bangladesh-companies-fail-compensate-fire-victims"
   },
   {
     "year": 2013,
@@ -653,12 +664,12 @@
     "year": 2013,
     "title": "Rana Plaza Building Collapse Kills 1,134",
     "verdict": "TRUE",
-    "reason": "24 April 2013, official toll 1,132-1,134 (sources vary slightly). Event states 1,134 — within accepted range. 2,500 injured. Confirmed.",
-    "verify_count": 1,
+    "reason": "Independent, non-Wikipedia sources confirm every material detail: on 24 April 2013 the eight-storey Rana Plaza garment complex in Savar, Bangladesh collapsed, killing 1,134 and injuring nearly 2,600 workers. Structural cracks were found the day before (23 April) and the building was evacuated, but over 3,600 workers were ordered back in the next morning before the collapse. The disaster directly led to the creation of the Accord on Fire and Building Safety in Bangladesh (May 2013), signed by 200+ global brands. All figures (death toll, injury count, floor count, timeline, causal chain to the Accord) match the event description exactly.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -670,9 +681,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent, non-Wikipedia sources confirm every material detail: on 24 April 2013 the eight-storey Rana Plaza garment complex in Savar, Bangladesh collapsed, killing 1,134 and injuring nearly 2,600 workers. Structural cracks were found the day before (23 April) and the building was evacuated, but over 3,600 workers were ordered back in the next morning before the collapse. The disaster directly led to the creation of the Accord on Fire and Building Safety in Bangladesh (May 2013), signed by 200+ global brands. All figures (death toll, injury count, floor count, timeline, causal chain to the Accord) match the event description exactly.",
+        "source": "https://www.business-humanrights.org/en/latest-news/rana-plaza-building-collapse-april-2013/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Rana_Plaza_collapse"
+    "source": "https://www.business-humanrights.org/en/latest-news/rana-plaza-building-collapse-april-2013/"
   },
   {
     "year": 2013,
@@ -703,12 +725,12 @@
     "year": 2013,
     "title": "Bangladesh Accord on Fire and Building Safety Signed",
     "verdict": "TRUE",
-    "reason": "May 2013 following Rana Plaza, 200+ brands signed. Covered 1,600+ factories by 2015. Confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-ILO sources confirm the Accord on Fire and Building Safety in Bangladesh was signed 15 May 2013, directly following the Rana Plaza collapse (24 April 2013). It began with 43 corporate signatories and grew to over 200/220 international brands and retailers; it was legally binding, required independent factory inspections and brand-funded remediation, and by 2015 its inspections covered over 1,600 factories. All material claims in the description (year, country, actor scale, mechanism, scope) are corroborated.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -720,9 +742,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-ILO sources confirm the Accord on Fire and Building Safety in Bangladesh was signed 15 May 2013, directly following the Rana Plaza collapse (24 April 2013). It began with 43 corporate signatories and grew to over 200/220 international brands and retailers; it was legally binding, required independent factory inspections and brand-funded remediation, and by 2015 its inspections covered over 1,600 factories. All material claims in the description (year, country, actor scale, mechanism, scope) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/Accord_on_Fire_and_Building_Safety_in_Bangladesh",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.ilo.org/infostories/en-GB/Stories/Country-Focus/rana-plaza"
+    "source": "https://en.wikipedia.org/wiki/Accord_on_Fire_and_Building_Safety_in_Bangladesh"
   },
   {
     "year": 2014,
@@ -1227,13 +1260,13 @@
   {
     "year": 1995,
     "title": "Female Garment Workers Gain Economic Agency",
-    "verdict": "TRUE",
-    "reason": "By mid-1990s ~2 million women in garment factories, highest female industrial employment in South Asia. Documented empowerment effects. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "The core phenomenon is real and well documented: Bangladesh's export garment industry became overwhelmingly female-staffed and is one of the most cited case studies in development economics for export-led female empowerment (delayed marriage/childbirth, schooling gains, household bargaining power — see Kabeer & Mahmud 2004; Heath & Mobarak 2015, J. Dev. Econ.). However, the headline magnitude in the event ('approximately two million women employed... by the mid-1990s') is materially overstated. Primary BGMEA data reproduced in Kabeer & Mahmud's peer-reviewed chapter show female RMG employment of only ~1.08 million in 1994-95, ~1.17 million in 1995-96, and ~1.26 million in 1996-97 (total sector employment 1.2-1.4 million, ~90% female) — roughly 40-45% below the claimed 'two million.' Female employment did not approach ~2 million until roughly a decade later (total sector employment was still only ~1.8 million as late as 2000-01). So the qualitative story (country, year window, and the empowerment narrative) holds, but the quantitative headline is off by a wide margin — a wrong-magnitude PARTIAL rather than TRUE. The comparative claim ('highest share of female industrial employment in South Asia') is plausible given the ~85-90% female share but was not independently corroborated with a South-Asia-wide comparison.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1245,9 +1278,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The core phenomenon is real and well documented: Bangladesh's export garment industry became overwhelmingly female-staffed and is one of the most cited case studies in development economics for export-led female empowerment (delayed marriage/childbirth, schooling gains, household bargaining power — see Kabeer & Mahmud 2004; Heath & Mobarak 2015, J. Dev. Econ.). However, the headline magnitude in the event ('approximately two million women employed... by the mid-1990s') is materially overstated. Primary BGMEA data reproduced in Kabeer & Mahmud's peer-reviewed chapter show female RMG employment of only ~1.08 million in 1994-95, ~1.17 million in 1995-96, and ~1.26 million in 1996-97 (total sector employment 1.2-1.4 million, ~90% female) — roughly 40-45% below the claimed 'two million.' Female employment did not approach ~2 million until roughly a decade later (total sector employment was still only ~1.8 million as late as 2000-01). So the qualitative story (country, year window, and the empowerment narrative) holds, but the quantitative headline is off by a wide margin — a wrong-magnitude PARTIAL rather than TRUE. The comparative claim ('highest share of female industrial employment in South Asia') is plausible given the ~85-90% female share but was not independently corroborated with a South-Asia-wide comparison.",
+        "source": "https://www.wiego.org/wp-content/uploads/2019/09/Kabeer-Mahmud-Export-Oriented-Garment-Bangladesh.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Economy_of_Bangladesh"
+    "source": "https://www.wiego.org/wp-content/uploads/2019/09/Kabeer-Mahmud-Export-Oriented-Garment-Bangladesh.pdf"
   },
   {
     "year": 2003,

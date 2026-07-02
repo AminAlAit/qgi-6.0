@@ -402,13 +402,13 @@
   {
     "year": 1990,
     "title": "Melayu Islam Beraja Officially Codified as State Ideology",
-    "verdict": "TRUE",
-    "reason": "The government institutionalized MIB around 1990, establishing the Academy of Brunei Studies to host the MIB Supreme Council's secretariat. MIB had been proclaimed at independence in 1984 but its formal codification and educational implementation solidified in 1990–1991.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: The government institutionalized MIB around 1990, establishing the Academy of Brunei Studies to host the MIB Supreme Council's secretariat. MIB had been proclaimed at independence in 1984 but its formal codification and educational implementation solidified in 1990–1991.; Pass 2 FALSE: Melayu Islam Beraja (MIB) was officially proclaimed as Brunei's national philosophy/ideology on 1 January 1984, the day Brunei achieved full independence from Britain, by Sultan Hassanal Bolkiah — not 1990. Multiple independent, non-Wikipedia sources converge on this: a UKEssays history essay states 'His Majesty Sultan Haji Hassanal Bolkiah... officially proclaimed the MIB philosophy on 1st January 1984, the day of Brunei's independence'; tripwordwide.com states 'When Brunei regained its full independence from British protection in 1984, His Majesty Sultan Hassanal Bolkiah formally declared MIB as the national philosophy... Since its official declaration in 1984, MIB has served as the foundation of Brunei's modern statehood.' A separate academic source (Kyoto Review of Southeast Asia) describes a gradual institutionalization process — an MIB Concept Committee formed in 1986 (later becoming the MIB Supreme Council) and the Academy of Brunei Studies established in 1990 to promote MIB — but this is institutional elaboration, not the original 'official codification' of MIB as state ideology, which is consistently dated to 1984. One source noted the Sultan 'formally enunciated'/reaffirmed MIB again during his 44th birthday on 15 July 1990, and MIB became a core school subject in the early 1990s, which likely explains the 1990 conflation in the event description, but the actual proclamation/codification event is 1984. Additionally, the claim that MIB 'justif[ied] the suspension of elections' is itself chronologically backwards independent of the year error: Brunei's Legislative Council elections and constitutional provisions were suspended in 1962 under a state of emergency declared by Sultan Omar Ali Saifuddien III after the Brunei Revolt — 22 years before MIB existed — so MIB could only have been used to retroactively justify continuing an already-existing suspension, not to originally justify it. Given the year itself is materially wrong (off by 6 years, tied to the well-documented independence-day proclamation), this is a FALSE verdict with corrected_year 1984, not a PARTIAL.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -420,20 +420,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Melayu Islam Beraja (MIB) was officially proclaimed as Brunei's national philosophy/ideology on 1 January 1984, the day Brunei achieved full independence from Britain, by Sultan Hassanal Bolkiah — not 1990. Multiple independent, non-Wikipedia sources converge on this: a UKEssays history essay states 'His Majesty Sultan Haji Hassanal Bolkiah... officially proclaimed the MIB philosophy on 1st January 1984, the day of Brunei's independence'; tripwordwide.com states 'When Brunei regained its full independence from British protection in 1984, His Majesty Sultan Hassanal Bolkiah formally declared MIB as the national philosophy... Since its official declaration in 1984, MIB has served as the foundation of Brunei's modern statehood.' A separate academic source (Kyoto Review of Southeast Asia) describes a gradual institutionalization process — an MIB Concept Committee formed in 1986 (later becoming the MIB Supreme Council) and the Academy of Brunei Studies established in 1990 to promote MIB — but this is institutional elaboration, not the original 'official codification' of MIB as state ideology, which is consistently dated to 1984. One source noted the Sultan 'formally enunciated'/reaffirmed MIB again during his 44th birthday on 15 July 1990, and MIB became a core school subject in the early 1990s, which likely explains the 1990 conflation in the event description, but the actual proclamation/codification event is 1984. Additionally, the claim that MIB 'justif[ied] the suspension of elections' is itself chronologically backwards independent of the year error: Brunei's Legislative Council elections and constitutional provisions were suspended in 1962 under a state of emergency declared by Sultan Omar Ali Saifuddien III after the Brunei Revolt — 22 years before MIB existed — so MIB could only have been used to retroactively justify continuing an already-existing suspension, not to originally justify it. Given the year itself is materially wrong (off by 6 years, tied to the well-documented independence-day proclamation), this is a FALSE verdict with corrected_year 1984, not a PARTIAL.",
+        "source": "https://www.ukessays.com/essays/history/importance-of-upholding-the-malay-islamic-monarchy-philosophy-history-essay.php",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1984
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Melayu_Islam_Beraja"
+    ]
   },
   {
     "year": 1991,
     "title": "Import Ban on Alcohol Enacted Under Islamic Reforms",
     "verdict": "TRUE",
-    "reason": "Importation of alcoholic beverages has been prohibited since 1991, with minor personal allowances for non-Muslims. This is consistently documented across trade and travel sources as a 1991 measure aligned with Islamic reforms.",
-    "verify_count": 1,
+    "reason": "Independent academic source (Kyoto Review of Southeast Asia, \"Islamic Authority and the State in Brunei Darussalam\") confirms: \"In 1991 and 1992, the sale of alcohol and pork were banned\" in Brunei as part of a broader Islamization drive (a working group begun in 1990 reviewing laws to bring them \"in line with Islam\"), matching the event's framing of alcohol restrictions under Melayu Islam Beraja-driven Islamic reform. This corroboration is independent of trade.gov (off-limits). Multiple other secondary/travel sources (some ultimately traceable to trade.gov-style government commercial guides) consistently state importation/sale of alcohol has been restricted for non-Muslims \"since 1991,\" aligning with the event's detail about limited personal allowances for non-Muslims. Year, country, and substance of the event (alcohol import/sale ban tied to Islamic reform, with non-Muslim carve-outs) are all corroborated.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -445,9 +456,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent academic source (Kyoto Review of Southeast Asia, \"Islamic Authority and the State in Brunei Darussalam\") confirms: \"In 1991 and 1992, the sale of alcohol and pork were banned\" in Brunei as part of a broader Islamization drive (a working group begun in 1990 reviewing laws to bring them \"in line with Islam\"), matching the event's framing of alcohol restrictions under Melayu Islam Beraja-driven Islamic reform. This corroboration is independent of trade.gov (off-limits). Multiple other secondary/travel sources (some ultimately traceable to trade.gov-style government commercial guides) consistently state importation/sale of alcohol has been restricted for non-Muslims \"since 1991,\" aligning with the event's detail about limited personal allowances for non-Muslims. Year, country, and substance of the event (alcohol import/sale ban tied to Islamic reform, with non-Muslim carve-outs) are all corroborated.",
+        "source": "https://kyotoreview.org/issue-23/islamic-authority-and-the-state-in-brunei-darussalam/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.trade.gov/country-commercial-guides/brunei-prohibited-and-restricted-imports"
+    "source": "https://kyotoreview.org/issue-23/islamic-authority-and-the-state-in-brunei-darussalam/"
   },
   {
     "year": 1992,
@@ -502,11 +524,11 @@
   {
     "year": 1997,
     "title": "Asian Financial Crisis Triggers Asset Repatriation",
-    "verdict": "TRUE",
-    "reason": "The 1997 Asian Financial Crisis began in Thailand in July 1997. Brunei was relatively insulated due to its currency board arrangement with Singapore (1:1 peg), but the BIA did face regional equity writedowns. The broad framing is accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "UNCERTAIN",
+    "reason": "The broad macro backdrop is well corroborated by independent, non-Wikipedia sources: Brunei's dollarized currency board tied to the Singapore dollar (BDCB monetary policy pages, historyrise.com, dollarsandsense.sg) and heavy hydrocarbon-export reliance genuinely insulated it from the currency/banking contagion that hit Thailand, Indonesia, South Korea etc. in 1997, and IMF/ADB-linked sources confirm Brunei felt only indirect effects (regional demand loss, later a 1998 mild recession driven mainly by falling oil prices and the domestic Amedeo Development Corporation collapse/Prince Jefri scandal, not by a banking crisis of its own). However, the event's specific, load-bearing claim — that falling regional asset values 'prompted the BIA to write down portions of its Asian equity exposure' — could not be confirmed by any source. The Brunei Investment Agency is one of the world's least transparent sovereign wealth funds (never publishes reports or performance figures), and extensive targeted searches (news-archive style queries, SWF profile sites, academic papers on Brunei's 1997-98 crisis experience) turned up no mention of a 1997 Asian-equity write-down by BIA. The one substantive account of BIA capital losses in this period (via search-engine synthesis of secondary sources) attributes them primarily to the unrelated Amedeo Development Corporation collapse/embezzlement scandal, not to mark-to-market write-downs of regional equity holdings. Given BIA's secrecy, absence of confirmation is not proof of absence, but I cannot verify this specific, central claim from any acceptable (non-Wikipedia) source despite substantial effort, so I cannot return TRUE or PARTIAL per the sourcing rule.",
+    "verify_count": 2,
+    "consensus_verdict": "UNCERTAIN",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -520,9 +542,19 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "UNCERTAIN",
+        "reason": "The broad macro backdrop is well corroborated by independent, non-Wikipedia sources: Brunei's dollarized currency board tied to the Singapore dollar (BDCB monetary policy pages, historyrise.com, dollarsandsense.sg) and heavy hydrocarbon-export reliance genuinely insulated it from the currency/banking contagion that hit Thailand, Indonesia, South Korea etc. in 1997, and IMF/ADB-linked sources confirm Brunei felt only indirect effects (regional demand loss, later a 1998 mild recession driven mainly by falling oil prices and the domestic Amedeo Development Corporation collapse/Prince Jefri scandal, not by a banking crisis of its own). However, the event's specific, load-bearing claim — that falling regional asset values 'prompted the BIA to write down portions of its Asian equity exposure' — could not be confirmed by any source. The Brunei Investment Agency is one of the world's least transparent sovereign wealth funds (never publishes reports or performance figures), and extensive targeted searches (news-archive style queries, SWF profile sites, academic papers on Brunei's 1997-98 crisis experience) turned up no mention of a 1997 Asian-equity write-down by BIA. The one substantive account of BIA capital losses in this period (via search-engine synthesis of secondary sources) attributes them primarily to the unrelated Amedeo Development Corporation collapse/embezzlement scandal, not to mark-to-market write-downs of regional equity holdings. Given BIA's secrecy, absence of confirmation is not proof of absence, but I cannot verify this specific, central claim from any acceptable (non-Wikipedia) source despite substantial effort, so I cannot return TRUE or PARTIAL per the sourcing rule.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis"
+    ]
   },
   {
     "year": 1998,
@@ -803,12 +835,12 @@
     "year": 2013,
     "title": "Sultan Announces Sharia Penal Code Implementation",
     "verdict": "TRUE",
-    "reason": "Sultan Hassanal Bolkiah formally announced in October 2013 that Brunei would implement the Syariah Penal Code Order in three phases, with Phase One to begin 1 May 2014. The announcement included hudud punishments such as amputation, flogging, and stoning.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-off-limits sources confirm: Sultan Hassanal Bolkiah announced on October 22, 2013 that Brunei would implement a new Syariah/Sharia Penal Code, to be phased in (announced as coming into force in six months, with the harshest hudud punishments in a later phase), including stoning to death for adultery, amputation for theft, and flogging for alcohol consumption. NPR (Oct 22, 2013) reports the Sultan's own framing that the law's purpose was to 'fulfill Allah's commandments,' consistent with the described religious-duty framing under Melayu Islam Beraja ideology. The announcement caused significant international shock/criticism (Human Rights Watch called it 'abhorrent'; CNN, Time also covered international outcry). Year, country, and core substance of the event description all match. Minor nuance: full hudud implementation (Phase 3) did not occur until 2019, but the 2013 event was specifically the Sultan's announcement of the three-phase plan, which is exactly what the event describes.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -820,9 +852,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-off-limits sources confirm: Sultan Hassanal Bolkiah announced on October 22, 2013 that Brunei would implement a new Syariah/Sharia Penal Code, to be phased in (announced as coming into force in six months, with the harshest hudud punishments in a later phase), including stoning to death for adultery, amputation for theft, and flogging for alcohol consumption. NPR (Oct 22, 2013) reports the Sultan's own framing that the law's purpose was to 'fulfill Allah's commandments,' consistent with the described religious-duty framing under Melayu Islam Beraja ideology. The announcement caused significant international shock/criticism (Human Rights Watch called it 'abhorrent'; CNN, Time also covered international outcry). Year, country, and core substance of the event description all match. Minor nuance: full hudud implementation (Phase 3) did not occur until 2019, but the 2013 event was specifically the Sultan's announcement of the three-phase plan, which is exactly what the event describes.",
+        "source": "https://www.npr.org/sections/thetwo-way/2013/10/22/240012174/sultan-of-brunei-introduces-sharia-law",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.uscirf.gov/sites/default/files/2020%20Factsheet%20-%20Brunei.pdf"
+    "source": "https://www.npr.org/sections/thetwo-way/2013/10/22/240012174/sultan-of-brunei-introduces-sharia-law"
   },
   {
     "year": 2014,

@@ -2,13 +2,13 @@
   {
     "year": 1951,
     "title": "Berber cultural identity movement suppressed",
-    "verdict": "TRUE",
-    "reason": "Berberist crisis of 1949-1951 and FLN divisions are well-documented; French suppression of Kabyle activism confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Berberist crisis of 1949-1951 and FLN divisions are well-documented; French suppression of Kabyle activism confirmed.; Pass 2 FALSE: Multiple independent (non-Wikipedia) sources on the 'crise berbériste' consistently describe it as an internal purge carried out BY the Algerian nationalist party (PPA-MTLD) itself, under Messali Hadj's leadership, against Kabyle/Berberist-leaning militants within its own ranks — not a crackdown by French colonial authorities on an external Berber cultural/political movement. WebFetch of algeriepatriotique.com explicitly states 'the MTLD/PPA party itself' repressed the activists, describing it as a power struggle over strategy (legalism vs. armed uprising) rather than French colonial repression of Berber identity. The core crisis also dates to 1949 (originating March/June 1949, with the party's federal conference proclaiming resolution in December 1950), not 1951 as stated in the event. No source found documents a distinct 1951 French-authorities crackdown on a Berber cultural/political movement. The described actor (French authorities) is materially wrong and the year is materially off, so this does not hold as TRUE or PARTIAL.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -20,9 +20,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent (non-Wikipedia) sources on the 'crise berbériste' consistently describe it as an internal purge carried out BY the Algerian nationalist party (PPA-MTLD) itself, under Messali Hadj's leadership, against Kabyle/Berberist-leaning militants within its own ranks — not a crackdown by French colonial authorities on an external Berber cultural/political movement. WebFetch of algeriepatriotique.com explicitly states 'the MTLD/PPA party itself' repressed the activists, describing it as a power struggle over strategy (legalism vs. armed uprising) rather than French colonial repression of Berber identity. The core crisis also dates to 1949 (originating March/June 1949, with the party's federal conference proclaiming resolution in December 1950), not 1951 as stated in the event. No source found documents a distinct 1951 French-authorities crackdown on a Berber cultural/political movement. The described actor (French authorities) is materially wrong and the year is materially off, so this does not hold as TRUE or PARTIAL.",
+        "source": "https://algeriepatriotique.com/2022/07/13/demystification-de-la-pretendue-crise-berberiste-de-1949/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1949
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/National_Liberation_Front_(Algeria)"
+    ]
   },
   {
     "year": 1952,
@@ -902,13 +913,13 @@
   {
     "year": 1965,
     "title": "Nationalization of French mining interests begins",
-    "verdict": "TRUE",
-    "reason": "Progressive nationalizations of French/foreign mining and industrial interests under Boumediene confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Progressive nationalizations of French/foreign mining and industrial interests under Boumediene confirmed.; Pass 2 FALSE: Multiple independent sources (Algerian state press agency APS, El Watan, TransactionDAlgerie) confirm the mining nationalization decree — targeting 11 major mines including El Ouenza, Hammam N'baïls, Boukaïd, Sidi Kamber, and Miliana, and creating BAREM (later SONAREM) — was announced by Boumediene on 6 May 1966, not 1965. Boumediene only seized power in a coup on 19 June 1965, leaving no realistic window for a mining nationalization program to have 'begun' within calendar year 1965; sources describing 1965 events characterize that year's oil-sector move as a 51% state-participation agreement with French companies (short of nationalization), not a mining nationalization. The event as described (progressive nationalization of French/foreign mining interests as part of economic sovereignty) is real and materially accurate, but it began in 1966, one year later than stated. Wikipedia was excluded per source-independence rule; the finding rests on aps.dz (Algeria's official press agency), elwatan.dz, and transactiondalgerie.com.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -920,9 +931,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Algerian state press agency APS, El Watan, TransactionDAlgerie) confirm the mining nationalization decree — targeting 11 major mines including El Ouenza, Hammam N'baïls, Boukaïd, Sidi Kamber, and Miliana, and creating BAREM (later SONAREM) — was announced by Boumediene on 6 May 1966, not 1965. Boumediene only seized power in a coup on 19 June 1965, leaving no realistic window for a mining nationalization program to have 'begun' within calendar year 1965; sources describing 1965 events characterize that year's oil-sector move as a 51% state-participation agreement with French companies (short of nationalization), not a mining nationalization. The event as described (progressive nationalization of French/foreign mining interests as part of economic sovereignty) is real and materially accurate, but it began in 1966, one year later than stated. Wikipedia was excluded per source-independence rule; the finding rests on aps.dz (Algeria's official press agency), elwatan.dz, and transactiondalgerie.com.",
+        "source": "https://www.aps.dz/economie/186294-nationalisation-des-mines-de-l-exploitation-coloniale-a-la-souverainete-miniere-et-la-redirection-du-sort-des-ressources-souterraines",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1966
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Nationalization_of_oil_in_Algeria"
+    ]
   },
   {
     "year": 1966,
@@ -1002,13 +1024,13 @@
   {
     "year": 1968,
     "title": "Agrarian Revolution program announced",
-    "verdict": "TRUE",
-    "reason": "Boumediene announced Agrarian Revolution plans; implemented from 1971. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Boumediene announced Agrarian Revolution plans; implemented from 1971. Confirmed.; Pass 2 FALSE: Multiple independent academic and journalistic sources (Persée/CNRS academic journals, Cairn.info, ElWatan, Cato Institute, Jacobin) consistently date Boumediene's announcement and promulgation of the Agrarian Revolution to November 1971 (Ordinance 71-73, 'Charter of the Agrarian Revolution' promulgated 8 Nov 1971, with a seminar 10-13 Nov 1971 where Boumediene outlined the reform's philosophy) — not 1968. No independent, non-Wikipedia source was found corroborating a distinct 1968 announcement of these plans. The description's own claim that the program was 'implemented from 1971 onwards' aligns with when the reform was both announced AND launched in reality, indicating the input year of 1968 is a factual error rather than a legitimate 'announcement precedes implementation' gap.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1020,20 +1042,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent academic and journalistic sources (Persée/CNRS academic journals, Cairn.info, ElWatan, Cato Institute, Jacobin) consistently date Boumediene's announcement and promulgation of the Agrarian Revolution to November 1971 (Ordinance 71-73, 'Charter of the Agrarian Revolution' promulgated 8 Nov 1971, with a seminar 10-13 Nov 1971 where Boumediene outlined the reform's philosophy) — not 1968. No independent, non-Wikipedia source was found corroborating a distinct 1968 announcement of these plans. The description's own claim that the program was 'implemented from 1971 onwards' aligns with when the reform was both announced AND launched in reality, indicating the input year of 1968 is a factual error rather than a legitimate 'announcement precedes implementation' gap.",
+        "source": "https://www.persee.fr/doc/rfsp_0035-2950_1980_num_30_1_393880",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1971
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne"
+    ]
   },
   {
     "year": 1969,
     "title": "Algeria nationalizes majority stake in French oil companies",
-    "verdict": "TRUE",
-    "reason": "Algeria's 51% controlling stake in French oil company operations confirmed as step toward 1971 full nationalization.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Algeria's 51% controlling stake in French oil company operations confirmed as step toward 1971 full nationalization.; Pass 2 FALSE: The 51% nationalization of French oil company assets (CFP and ERAP/Elf-Erap) in Algeria did not happen in 1969. Multiple independent sources place this action in February 1971: the US State Department's Office of the Historian documents state 'in February 1971, the Algerian Government unilaterally nationalized enough of the French companies' assets to raise its participation in them to 51 percent,' with President Boumediene's formal announcement on February 24, 1971 (also seizing 100% of gas infrastructure). In 1969, the relevant developments were Algeria joining OPEC and disputes over oil taxation revision with France, not a 51% equity seizure. The description's substance (51% stake, France oil sovereignty step) is real, but the year is wrong by two years, so this cannot be TRUE or PARTIAL for 1969 — it is FALSE with corrected_year 1971.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1045,20 +1078,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The 51% nationalization of French oil company assets (CFP and ERAP/Elf-Erap) in Algeria did not happen in 1969. Multiple independent sources place this action in February 1971: the US State Department's Office of the Historian documents state 'in February 1971, the Algerian Government unilaterally nationalized enough of the French companies' assets to raise its participation in them to 51 percent,' with President Boumediene's formal announcement on February 24, 1971 (also seizing 100% of gas infrastructure). In 1969, the relevant developments were Algeria joining OPEC and disputes over oil taxation revision with France, not a 51% equity seizure. The description's substance (51% stake, France oil sovereignty step) is real, but the year is wrong by two years, so this cannot be TRUE or PARTIAL for 1969 — it is FALSE with corrected_year 1971.",
+        "source": "https://history.state.gov/historicaldocuments/frus1969-76ve05p2/d27",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1971
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Nationalization_of_oil_in_Algeria"
+    ]
   },
   {
     "year": 1971,
     "title": "Complete nationalization of French oil and gas industry",
-    "verdict": "TRUE",
-    "reason": "24 February 1971 Boumediene announced full nationalization; French companies withdrew; confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "Country, year, exact date (24 Feb 1971), and actor (President Boumediene) all confirmed by independent sources (US State Dept FRUS historical documents, Encyclopedia.com). France's oil/gas interests were seized and Sonatrach's control expanded, funding industrialization as oil prices rose, and other oil-producing states did draw inspiration from it — matching most of the description. However, the magnitude claim \"complete nationalization... of French oil and gas industry\" overstates the oil side specifically: multiple independent sources agree Algeria nationalized 100% of natural gas fields/pipelines but only 51% (a majority stake, not complete expropriation) of French oil company assets (Elf-Erap, CFP). Since the event conflates gas (fully nationalized) and oil (majority-nationalized to 51%) under one 'complete' label, this is a material magnitude/scope overstatement for the oil component while country/year/core narrative hold — hence PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1070,20 +1114,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Country, year, exact date (24 Feb 1971), and actor (President Boumediene) all confirmed by independent sources (US State Dept FRUS historical documents, Encyclopedia.com). France's oil/gas interests were seized and Sonatrach's control expanded, funding industrialization as oil prices rose, and other oil-producing states did draw inspiration from it — matching most of the description. However, the magnitude claim \"complete nationalization... of French oil and gas industry\" overstates the oil side specifically: multiple independent sources agree Algeria nationalized 100% of natural gas fields/pipelines but only 51% (a majority stake, not complete expropriation) of French oil company assets (Elf-Erap, CFP). Since the event conflates gas (fully nationalized) and oil (majority-nationalized to 51%) under one 'complete' label, this is a material magnitude/scope overstatement for the oil component while country/year/core narrative hold — hence PARTIAL rather than TRUE.",
+        "source": "https://history.state.gov/historicaldocuments/frus1969-76ve05p2/d27",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Nationalization_of_oil_in_Algeria"
+    "source": "https://history.state.gov/historicaldocuments/frus1969-76ve05p2/d27"
   },
   {
     "year": 1971,
     "title": "Agrarian Revolution formally launched",
     "verdict": "TRUE",
-    "reason": "1971 Agrarian Revolution land redistribution to peasant cooperatives; 1.4M hectares figure plausible.",
-    "verify_count": 1,
+    "reason": "Multiple independent (non-Wikipedia) sources confirm Algeria's Agrarian Revolution (Révolution Agraire) was formally launched in 1971 under Boumediene, redistributing land from large estates and absentee landlords to landless peasants organized into cooperative \"socialist villages\" (villages socialistes). Assafirarabi.com reports ~1.1 million hectares redistributed by 1973 (with a second phase in 1973 targeting absentee landowners and large estates), and 200 socialist villages built (out of a planned 1,000). MERIP's review of Pfeifer's \"Agrarian Reform Under State Capitalism in Algeria\" independently corroborates the 1970s agrarian reform program's structure, its cooperative mechanism, and that it fell short of its socialist/productivity goals -- matching the description's claim that the program 'falls short of its productivity goals.' The 1.4 million hectare figure in the source description is within the plausible range reported across sources (1.0-1.4M hectares by 1973), a minor magnitude variance not material enough to downgrade to PARTIAL given the core facts (country, year, program name, mechanism, cooperative villages, shortfall) are all confirmed.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1095,9 +1150,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent (non-Wikipedia) sources confirm Algeria's Agrarian Revolution (Révolution Agraire) was formally launched in 1971 under Boumediene, redistributing land from large estates and absentee landlords to landless peasants organized into cooperative \"socialist villages\" (villages socialistes). Assafirarabi.com reports ~1.1 million hectares redistributed by 1973 (with a second phase in 1973 targeting absentee landowners and large estates), and 200 socialist villages built (out of a planned 1,000). MERIP's review of Pfeifer's \"Agrarian Reform Under State Capitalism in Algeria\" independently corroborates the 1970s agrarian reform program's structure, its cooperative mechanism, and that it fell short of its socialist/productivity goals -- matching the description's claim that the program 'falls short of its productivity goals.' The 1.4 million hectare figure in the source description is within the plausible range reported across sources (1.0-1.4M hectares by 1973), a minor magnitude variance not material enough to downgrade to PARTIAL given the core facts (country, year, program name, mechanism, cooperative villages, shortfall) are all confirmed.",
+        "source": "https://assafirarabi.com/en/47248/2022/09/02/the-land-issue-in-algeria-between-equity-and-efficiency/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne"
+    "source": "https://assafirarabi.com/en/47248/2022/09/02/the-land-issue-in-algeria-between-equity-and-efficiency/"
   },
   {
     "year": 1971,
@@ -1778,12 +1844,12 @@
     "year": 1993,
     "title": "IMF negotiations begin as Algeria's debt crisis deepens",
     "verdict": "TRUE",
-    "reason": "Algeria's debt servicing over 75% of export revenues; IMF structural adjustment negotiations from 1993. Confirmed.",
-    "verify_count": 1,
+    "reason": "Independent sourcing confirms the core facts: Algeria's external debt crisis deepened through 1993 amid the oil price slump, civil war, and capital flight, with debt service consuming a very high share of export revenues (state.gov trade reports cite 82% in 1993, close to the '75%+' figure in the event, and other sources cite ~70-80% for 1989-93). A balance-of-payments/foreign-exchange crisis hit at end of 1993 (reserves fell below $1.5bn), which is when negotiations with the IMF and creditors intensified (per Middle East Forum/Middle East Quarterly article: 'Zeroual continued negotiations with the International Monetary Fund (IMF) for a debt-restructuring agreement'). This culminated in a 12-month IMF Stand-By Arrangement signed in April/May 1994 (some sources say April, MEF says May 27, 1994) with a ~40% dinar devaluation, subsidy cuts, and debt rescheduling with Paris/London Club creditors -- followed by a 3-year EFF/structural-adjustment program in 1995. This matches the event description ('Algeria eventually agrees to an IMF structural adjustment program in 1994 involving currency devaluation, subsidy cuts, and privatization') almost exactly, with negotiations beginning/deepening in 1993 as reserves collapsed and the 1994 agreement being the direct outcome. Minor nuance: some accounts place the formal Stand-By signing in April 1994 vs. the MEF source's May 27, 1994, but this does not affect the 1993 'negotiations begin/deepen' framing of the event, which is corroborated.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1795,9 +1861,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sourcing confirms the core facts: Algeria's external debt crisis deepened through 1993 amid the oil price slump, civil war, and capital flight, with debt service consuming a very high share of export revenues (state.gov trade reports cite 82% in 1993, close to the '75%+' figure in the event, and other sources cite ~70-80% for 1989-93). A balance-of-payments/foreign-exchange crisis hit at end of 1993 (reserves fell below $1.5bn), which is when negotiations with the IMF and creditors intensified (per Middle East Forum/Middle East Quarterly article: 'Zeroual continued negotiations with the International Monetary Fund (IMF) for a debt-restructuring agreement'). This culminated in a 12-month IMF Stand-By Arrangement signed in April/May 1994 (some sources say April, MEF says May 27, 1994) with a ~40% dinar devaluation, subsidy cuts, and debt rescheduling with Paris/London Club creditors -- followed by a 3-year EFF/structural-adjustment program in 1995. This matches the event description ('Algeria eventually agrees to an IMF structural adjustment program in 1994 involving currency devaluation, subsidy cuts, and privatization') almost exactly, with negotiations beginning/deepening in 1993 as reserves collapsed and the 1994 agreement being the direct outcome. Minor nuance: some accounts place the formal Stand-By signing in April 1994 vs. the MEF source's May 27, 1994, but this does not affect the 1993 'negotiations begin/deepen' framing of the event, which is corroborated.",
+        "source": "https://www.meforum.org/middle-east-quarterly/algerian-crisis-western-choices",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War"
+    "source": "https://www.meforum.org/middle-east-quarterly/algerian-crisis-western-choices"
   },
   {
     "year": 1994,

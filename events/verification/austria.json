@@ -28,12 +28,12 @@
     "year": 1950,
     "title": "Communist-led general strike attempt suppressed",
     "verdict": "TRUE",
-    "reason": "Austrian Communist Party, with limited Soviet backing, launched general strikes in September–October 1950 that failed when Social Democrat trade union leaders refused to join and workers rejected the action, decisively ending communist influence in Austrian politics.",
-    "verify_count": 1,
+    "reason": "Independent sources (Haus der Geschichte Österreich official history site, and Swarthmore Global Nonviolent Action Database) confirm the October 1950 Austrian general strikes: the Communist Party of Austria (CPA), backed by Soviet-controlled USIA factories/occupation authorities, launched strike waves (Sept 26 and Oct 4-5, 1950) demanding higher wages/price freezes, widely portrayed at the time as an attempted communist putsch to destabilize the government. Socialist-led Austrian Trade Union Federation (ÖGB) leadership refused to back the action, non-communist workers (notably in the western, non-Soviet-occupied zones) actively opposed and physically drove off the strikers, the second strike collapsed within a day with near-zero participation, and the episode is credited with ending the CPA's political influence in Austria. All material elements of the event description (actor, year, goal, opposition, outcome) are corroborated.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -45,9 +45,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources (Haus der Geschichte Österreich official history site, and Swarthmore Global Nonviolent Action Database) confirm the October 1950 Austrian general strikes: the Communist Party of Austria (CPA), backed by Soviet-controlled USIA factories/occupation authorities, launched strike waves (Sept 26 and Oct 4-5, 1950) demanding higher wages/price freezes, widely portrayed at the time as an attempted communist putsch to destabilize the government. Socialist-led Austrian Trade Union Federation (ÖGB) leadership refused to back the action, non-communist workers (notably in the western, non-Soviet-occupied zones) actively opposed and physically drove off the strikers, the second strike collapsed within a day with near-zero participation, and the episode is credited with ending the CPA's political influence in Austria. All material elements of the event description (actor, year, goal, opposition, outcome) are corroborated.",
+        "source": "https://hdgoe.at/oktoberstreik",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1950_Austrian_general_strikes"
+    "source": "https://hdgoe.at/oktoberstreik"
   },
   {
     "year": 1956,
@@ -178,12 +189,12 @@
     "year": 1957,
     "title": "Social Partnership institutionalized as Austria's economic governance model",
     "verdict": "TRUE",
-    "reason": "Austria's Parity Commission for Wages and Prices (Paritätische Kommission) was formally established in 1957, institutionalizing the corporatist Social Partnership framework involving employer and employee federations alongside government representatives.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm that in 1957 Austria founded the Paritätische Kommission für Preis- und Lohnfragen (Joint/Parity Commission for Wages and Prices), bringing together the Wirtschaftskammer (Chamber of Commerce), Arbeiterkammer (Chamber of Labor), ÖGB (Austrian Trade Union Federation), Landwirtschaftskammer (Chamber of Agriculture) and government ministers into a voluntary corporatist body to negotiate wages, prices and economic policy. Multiple sources explicitly call this \"the official beginning of the Austrian social partnership\" (Sozialpartnerschaft), and it is widely credited with decades of subsequent industrial/social peace and stable economic development, matching the description's claims about the actors, the corporatist framework, and the outcome (industrial peace, low inequality). Year (1957) and country (Austria) both check out, and no material detail (actors, scope, purpose) is off.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -195,9 +206,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm that in 1957 Austria founded the Paritätische Kommission für Preis- und Lohnfragen (Joint/Parity Commission for Wages and Prices), bringing together the Wirtschaftskammer (Chamber of Commerce), Arbeiterkammer (Chamber of Labor), ÖGB (Austrian Trade Union Federation), Landwirtschaftskammer (Chamber of Agriculture) and government ministers into a voluntary corporatist body to negotiate wages, prices and economic policy. Multiple sources explicitly call this \"the official beginning of the Austrian social partnership\" (Sozialpartnerschaft), and it is widely credited with decades of subsequent industrial/social peace and stable economic development, matching the description's claims about the actors, the corporatist framework, and the outcome (industrial peace, low inequality). Year (1957) and country (Austria) both check out, and no material detail (actors, scope, purpose) is off.",
+        "source": "https://de.wikipedia.org/wiki/Parit%C3%A4tische_Kommission_f%C3%BCr_Preis-_und_Lohnfragen",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.advantageaustria.org/ao/zentral/business-guide/investieren-in-oesterreich/arbeit-und-beruf/sozialpartnerschaft/sozialpartnerschaft.en.html"
+    "source": "https://de.wikipedia.org/wiki/Parit%C3%A4tische_Kommission_f%C3%BCr_Preis-_und_Lohnfragen"
   },
   {
     "year": 1959,
@@ -978,12 +1000,12 @@
     "year": 2008,
     "title": "Austrian banks face major losses from Eastern European exposure",
     "verdict": "TRUE",
-    "reason": "Austrian banks had the highest exposure to Eastern European markets relative to GDP in Western Europe; Hypo Alpe Adria faced massive write-downs in autumn 2008 and required government recapitalization of EUR 1.6 billion in December 2008.",
-    "verify_count": 1,
+    "reason": "Independent sources confirm: Austrian banks had the highest CEE/Eastern European exposure relative to GDP of any Western European country going into the 2008 crisis (OeNB Financial Stability Report 17, June 2009). Hypo Alpe Adria (Austria's 6th-largest bank, EUR 41.2bn assets) pursued aggressive expansion into Southeastern/Eastern Europe and suffered large write-downs in autumn 2008, marking the start of its collapse; it was recapitalized by government and shareholders for EUR 1.6bn in December 2008 (fully nationalized in Dec 2009, eventually costing Austria EUR 6.5bn). Austria's Parliament passed a EUR 100bn support scheme (EUR 15bn for troubled banks) in October 2008 in direct response to the crisis, and other banks like VBAG also required state intervention (EUR 1bn subordinated debt, Kommunalkredit taken over for EUR 1). All material details (country, year, actors, scope, government intervention) match.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -995,9 +1017,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm: Austrian banks had the highest CEE/Eastern European exposure relative to GDP of any Western European country going into the 2008 crisis (OeNB Financial Stability Report 17, June 2009). Hypo Alpe Adria (Austria's 6th-largest bank, EUR 41.2bn assets) pursued aggressive expansion into Southeastern/Eastern Europe and suffered large write-downs in autumn 2008, marking the start of its collapse; it was recapitalized by government and shareholders for EUR 1.6bn in December 2008 (fully nationalized in Dec 2009, eventually costing Austria EUR 6.5bn). Austria's Parliament passed a EUR 100bn support scheme (EUR 15bn for troubled banks) in October 2008 in direct response to the crisis, and other banks like VBAG also required state intervention (EUR 1bn subordinated debt, Kommunalkredit taken over for EUR 1). All material details (country, year, actors, scope, government intervention) match.",
+        "source": "https://elischolar.library.yale.edu/journal-of-financial-crises/vol6/iss3/2/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Hypo_Alpe_Adria_Bank"
+    "source": "https://elischolar.library.yale.edu/journal-of-financial-crises/vol6/iss3/2/"
   },
   {
     "year": 2008,
@@ -1028,12 +1061,12 @@
     "year": 2009,
     "title": "Hypo Alpe Adria nationalized to prevent collapse",
     "verdict": "TRUE",
-    "reason": "The Austrian federal government nationalized Hypo Alpe Adria on 14 December 2009, paying one symbolic euro to BayernLB for its 67% stake to prevent disorderly collapse; the bailout ultimately cost Austrian taxpayers approximately EUR 6–8 billion.",
-    "verify_count": 1,
+    "reason": "Independent, non-Wikipedia sources confirm all material elements. MLex reports that on 14 December 2009, BayernLB transferred its 67% shareholding in Hypo Group Alpe Adria to the Republic of Austria for a symbolic price of one euro, to prevent the bank's disorderly collapse (nationalization). A Yale Journal of Financial Crises paper (hosted on Yale's Elischolar repository, sourced from SSRN, \"Austria and Germany: Hypo Alpe Adria Capital Injections\" by Bailey Decker) independently confirms the December 2009 nationalization wiped out BayernLB's equity and states Austria incurred EUR 6.5 billion in losses from the recapitalization of HAA and the later resolution of its successor Heta — squarely inside the description's \"approximately 6-8 billion euros\" range. The bank's reckless build-up under Carinthian politician Jörg Haider's patronage and its exposure to Balkan real estate and politically connected lending are well-established, widely reported background facts consistent with the description. Country (Austria), year (2009), and all material details (nationalization, one-euro price to BayernLB, taxpayer cost magnitude) are corroborated by sources independent of Wikipedia.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1045,9 +1078,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent, non-Wikipedia sources confirm all material elements. MLex reports that on 14 December 2009, BayernLB transferred its 67% shareholding in Hypo Group Alpe Adria to the Republic of Austria for a symbolic price of one euro, to prevent the bank's disorderly collapse (nationalization). A Yale Journal of Financial Crises paper (hosted on Yale's Elischolar repository, sourced from SSRN, \"Austria and Germany: Hypo Alpe Adria Capital Injections\" by Bailey Decker) independently confirms the December 2009 nationalization wiped out BayernLB's equity and states Austria incurred EUR 6.5 billion in losses from the recapitalization of HAA and the later resolution of its successor Heta — squarely inside the description's \"approximately 6-8 billion euros\" range. The bank's reckless build-up under Carinthian politician Jörg Haider's patronage and its exposure to Balkan real estate and politically connected lending are well-established, widely reported background facts consistent with the description. Country (Austria), year (2009), and all material details (nationalization, one-euro price to BayernLB, taxpayer cost magnitude) are corroborated by sources independent of Wikipedia.",
+        "source": "https://www.mlex.com/mlex/articles/2077715/company-statement-bayernlb-gives-its-shares-in-the-hypo-group-alpe-adria-to-the-republic-of-austria",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Hypo_Alpe_Adria_Bank"
+    "source": "https://www.mlex.com/mlex/articles/2077715/company-statement-bayernlb-gives-its-shares-in-the-hypo-group-alpe-adria-to-the-republic-of-austria"
   },
   {
     "year": 2010,
@@ -1102,13 +1146,13 @@
   {
     "year": 2012,
     "title": "Bad Bank established for Hypo Alpe Adria wind-down",
-    "verdict": "PARTIAL",
-    "reason": "HETA Asset Resolution AG was formally established in 2014, not 2012; the Austrian government decided in March 2014 to split Hypo into a bad bank structure, and legislation enabling HETA was passed in August 2014.",
-    "verify_count": 1,
-    "consensus_verdict": "PARTIAL",
-    "consensus_status": "single",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources place the actual establishment of the Hypo Alpe Adria \"bad bank\" in 2013-2014, not 2012. Timeline confirmed: nationalization was Dec 2009; in June 2012 there was only an internal proposal to split the group into a regulated banking holding plus a wind-down/asset-liquidation unit (Verwertungseinheit) — a discussion paper, not an established structure. As late as June 2013, Finance Minister Maria Fekter publicly stated a \"Bad Bank\" could NOT be established in the short term and rejected the idea (profil.at, parlament.gv.at PK0579/2013) — directly contradicting any claim that a bad bank was already established in 2012. The EU Commission approved the actual orderly wind-down/restructuring plan on 3 September 2013 (europa.eu press release IP-13-811). The Austrian parliament's \"Hypo Act\" (GSA) legally creating the wind-down unit passed in July 2014; the banking license was formally terminated and the entity converted into the \"Abbaueinheit\" (wind-down unit) on 30 October 2014, renamed HETA Asset Resolution AG effective 3 November 2014 (OTS press release, Wikipedia, FMA Österreich). So the event is real and materially accurate in description, but it happened in 2014 (with the regulatory groundwork in 2013), not 2012 — no source found describing a bad bank as actually \"established\" in 2012. Per the hard rules, a wrong year makes this FALSE with the real year reported.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1120,9 +1164,21 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources place the actual establishment of the Hypo Alpe Adria \"bad bank\" in 2013-2014, not 2012. Timeline confirmed: nationalization was Dec 2009; in June 2012 there was only an internal proposal to split the group into a regulated banking holding plus a wind-down/asset-liquidation unit (Verwertungseinheit) — a discussion paper, not an established structure. As late as June 2013, Finance Minister Maria Fekter publicly stated a \"Bad Bank\" could NOT be established in the short term and rejected the idea (profil.at, parlament.gv.at PK0579/2013) — directly contradicting any claim that a bad bank was already established in 2012. The EU Commission approved the actual orderly wind-down/restructuring plan on 3 September 2013 (europa.eu press release IP-13-811). The Austrian parliament's \"Hypo Act\" (GSA) legally creating the wind-down unit passed in July 2014; the banking license was formally terminated and the entity converted into the \"Abbaueinheit\" (wind-down unit) on 30 October 2014, renamed HETA Asset Resolution AG effective 3 November 2014 (OTS press release, Wikipedia, FMA Österreich). So the event is real and materially accurate in description, but it happened in 2014 (with the regulatory groundwork in 2013), not 2012 — no source found describing a bad bank as actually \"established\" in 2012. Per the hard rules, a wrong year makes this FALSE with the real year reported.",
+        "source": "https://www.ots.at/presseaussendung/OTS_20141030_OTS0264/hypo-alpe-adria-bank-international-ag-beendigung-der-banklizenz-und-fortfuehrung-als-abbaueinheit",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 2014
       }
     ],
-    "source": "https://elischolar.library.yale.edu/journal-of-financial-crises/vol6/iss1/2/"
+    "source": "https://www.ots.at/presseaussendung/OTS_20141030_OTS0264/hypo-alpe-adria-bank-international-ag-beendigung-der-banklizenz-und-fortfuehrung-als-abbaueinheit"
   },
   {
     "year": 2013,
@@ -1152,13 +1208,13 @@
   {
     "year": 2014,
     "title": "HETA resolution sparks international creditor dispute",
-    "verdict": "TRUE",
-    "reason": "The Austrian government's establishment of HETA Asset Resolution and a March 2015 debt moratorium triggered intense legal battles with German and Swiss bank creditors, raising questions about EU bank resolution rules and lasting years in arbitration.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "Austria did restructure the Hypo Alpe-Adria-Bank International wind-down entity in 2014: the Hypo Reorganisation Act (HaaSanG), effective 1 August 2014, voided Carinthia's deficiency guarantees on ~890m EUR of subordinated debt and ~800m EUR of BayernLB loans, and the entity was formally renamed HETA Asset Resolution AG in Oct/Nov 2014. This did trigger real, multi-year litigation (BayernLB's Munich suits starting 2014, the Austrian Constitutional Court eventually declaring HaaSanG unconstitutional in July 2015, disputes continuing to the 2021 resolution). However, several material details in the description are inaccurate or unconfirmed: (1) the formal, comprehensive 'debt moratorium' on HETA's unguaranteed bonds that is most commonly cited as sparking the creditor dispute was imposed by the FMA on 1 March 2015, not 2014 -- the description conflates the 2014 bail-in law with the 2015 moratorium; (2) creditors were overwhelmingly German (BayernLB, Deutsche Bank's DWS, Vienna Insurance Group/Uniqa, ~70% of the ~12bn EUR bondholder base were German institutional investors) -- no source found corroborates 'Swiss banks' as primary creditors; (3) the multi-year legal battles played out in domestic courts (Frankfurt and Munich regional courts, Austrian Constitutional Court), not 'international arbitration' -- no ICSID or investment-treaty arbitration case was found. Country and the broad 2014 timeframe hold, and the underlying saga (Austria vs. Hypo/HETA creditors, lasting years) is real, but the moratorium's actual year, the creditor nationality mix, and the 'international arbitration' framing are each off.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1170,9 +1226,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Austria did restructure the Hypo Alpe-Adria-Bank International wind-down entity in 2014: the Hypo Reorganisation Act (HaaSanG), effective 1 August 2014, voided Carinthia's deficiency guarantees on ~890m EUR of subordinated debt and ~800m EUR of BayernLB loans, and the entity was formally renamed HETA Asset Resolution AG in Oct/Nov 2014. This did trigger real, multi-year litigation (BayernLB's Munich suits starting 2014, the Austrian Constitutional Court eventually declaring HaaSanG unconstitutional in July 2015, disputes continuing to the 2021 resolution). However, several material details in the description are inaccurate or unconfirmed: (1) the formal, comprehensive 'debt moratorium' on HETA's unguaranteed bonds that is most commonly cited as sparking the creditor dispute was imposed by the FMA on 1 March 2015, not 2014 -- the description conflates the 2014 bail-in law with the 2015 moratorium; (2) creditors were overwhelmingly German (BayernLB, Deutsche Bank's DWS, Vienna Insurance Group/Uniqa, ~70% of the ~12bn EUR bondholder base were German institutional investors) -- no source found corroborates 'Swiss banks' as primary creditors; (3) the multi-year legal battles played out in domestic courts (Frankfurt and Munich regional courts, Austrian Constitutional Court), not 'international arbitration' -- no ICSID or investment-treaty arbitration case was found. Country and the broad 2014 timeframe hold, and the underlying saga (Austria vs. Hypo/HETA creditors, lasting years) is real, but the moratorium's actual year, the creditor nationality mix, and the 'international arbitration' framing are each off.",
+        "source": "https://www.forbes.com/sites/francescoppola/2014/10/21/an-austrian-problem-for-german-banks/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.financierworldwide.com/the-austrian-heta-saga-successful-investor-appeasement-at-last"
+    "source": "https://www.forbes.com/sites/francescoppola/2014/10/21/an-austrian-problem-for-german-banks/"
   },
   {
     "year": 2015,
