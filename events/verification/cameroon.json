@@ -277,12 +277,12 @@
   {
     "year": 1998,
     "title": "Cameroon Begins Oil Production Expansion at Kribi",
-    "verdict": "TRUE",
-    "reason": "The World Bank appraised the Chad-Cameroon Petroleum Development and Pipeline Project in June 1999 (feasibility work underway from 1998); the project positions Cameroon as transit country with a marine terminal at Kribi, matching the event description within the ±2-year tolerance.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: The World Bank appraised the Chad-Cameroon Petroleum Development and Pipeline Project in June 1999 (feasibility work underway from 1998); the project positions Cameroon as transit country with a marine terminal at Kribi, matching the event description within the ±2-year tolerance.; Pass 2 FALSE: No World Bank approval of feasibility studies for the Chad-Cameroon pipeline occurred in 1998. Feasibility studies were conducted 1993–early 1996; the Chad-Cameroon bilateral treaty was signed Feb 1996; the consortium-government agreement was reached Sept 1997; the World Bank appraised the project in June 1999; and the World Bank Board formally approved financing on June 6, 2000. Construction of the pipeline/Kribi terminal began October 2000, with first oil not flowing until October 2003. Nothing distinctive matching this description (World Bank approval, transit-revenue positioning, Kribi terminal development) is documented for 1998 specifically — the year and the core claimed action do not match the historical record.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
     "source_independence": "n/a",
     "verifications": [
       {
@@ -295,9 +295,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "No World Bank approval of feasibility studies for the Chad-Cameroon pipeline occurred in 1998. Feasibility studies were conducted 1993–early 1996; the Chad-Cameroon bilateral treaty was signed Feb 1996; the consortium-government agreement was reached Sept 1997; the World Bank appraised the project in June 1999; and the World Bank Board formally approved financing on June 6, 2000. Construction of the pipeline/Kribi terminal began October 2000, with first oil not flowing until October 2003. Nothing distinctive matching this description (World Bank approval, transit-revenue positioning, Kribi terminal development) is documented for 1998 specifically — the year and the core claimed action do not match the historical record.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 2000
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Chad%E2%80%93Cameroon_Petroleum_Development_and_Pipeline_Project"
+    ]
   },
   {
     "year": 1999,
@@ -378,12 +389,12 @@
     "year": 2003,
     "title": "Chad-Cameroon Petroleum Pipeline Opens",
     "verdict": "TRUE",
-    "reason": "The 1,070-km Chad-Cameroon pipeline became operational in July 2003 when ExxonMobil began pipeline fill operations, with an inauguration ceremony in October 2003; Cameroon receives transit fees via the Kribi offshore terminal.",
-    "verify_count": 1,
+    "reason": "Independent, non-Wikipedia sources corroborate all material elements: the Chad-Cameroon pipeline (1,070-1,075 km) began operating in 2003, with first crude oil shipment departing the Kribi, Cameroon marine terminal on 3-10 October 2003 (official inauguration mid/late October 2003). Al Jazeera (2003-10-10) confirms length, Kribi terminal location, and that the project was projected to bring hundreds of millions of dollars in revenue to Cameroon over the pipeline's operational life (consistent with 'transit fees'). Other independent sources (American Diplomacy/UNC academic journal, Global Energy Monitor, Offshore Technology, Pipeline Technology Journal, World Bank project documents, CIEL) corroborate the pipeline's opening, route, capacity, consortium (ExxonMobil/Petronas/Chevron with Chad/Cameroon govt stakes), and the well-documented environmental and displacement controversies surrounding the project. All core details (country=Cameroon as transit/terminal state, year=2003, pipeline opening, transit fees, temporary employment, environmental/displacement concerns) match materially.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -395,9 +406,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent, non-Wikipedia sources corroborate all material elements: the Chad-Cameroon pipeline (1,070-1,075 km) began operating in 2003, with first crude oil shipment departing the Kribi, Cameroon marine terminal on 3-10 October 2003 (official inauguration mid/late October 2003). Al Jazeera (2003-10-10) confirms length, Kribi terminal location, and that the project was projected to bring hundreds of millions of dollars in revenue to Cameroon over the pipeline's operational life (consistent with 'transit fees'). Other independent sources (American Diplomacy/UNC academic journal, Global Energy Monitor, Offshore Technology, Pipeline Technology Journal, World Bank project documents, CIEL) corroborate the pipeline's opening, route, capacity, consortium (ExxonMobil/Petronas/Chevron with Chad/Cameroon govt stakes), and the well-documented environmental and displacement controversies surrounding the project. All core details (country=Cameroon as transit/terminal state, year=2003, pipeline opening, transit fees, temporary employment, environmental/displacement concerns) match materially.",
+        "source": "https://www.aljazeera.com/news/2003/10/10/chad-cameroon-oil-pipeline-opens",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Chad%E2%80%93Cameroon_Petroleum_Development_and_Pipeline_Project"
+    "source": "https://www.aljazeera.com/news/2003/10/10/chad-cameroon-oil-pipeline-opens"
   },
   {
     "year": 2004,

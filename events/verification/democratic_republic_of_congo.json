@@ -702,13 +702,13 @@
   {
     "year": 1993,
     "title": "Ethnic Violence in North Kivu — Banyarwanda Expulsions",
-    "verdict": "TRUE",
-    "reason": "1993 North Kivu ethnic violence between indigenous communities and Banyarwanda, link to 1994 genocide dynamics confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "Multiple independent, non-Wikipedia sources (Minority Rights Group, Refworld/HRW, ReliefWeb, CS Monitor citing a UN mapping report and MSF) confirm that ethnic violence erupted in North Kivu starting March 1993 between indigenous communities (Hunde, Nande, Nyanga militias, i.e. Mai-Mai/Bangirima) and Banyarwanda (Hutu and Tutsi) populations whose citizenship and land rights were disputed, that it displaced roughly 250,000-300,000 people, and that it is well recognized as entangled with the regional Great Lakes dynamics preceding the 1994 Rwandan genocide — all matching the event description. However, the death toll cited by essentially every credible independent source (government figures, MSF, Oxfam/Caritas estimates cited via CS Monitor/UN mapping report) clusters at roughly 6,000-15,000 killed in 1993, described consistently as 'thousands,' not the 'tens of thousands' claimed in the event description. This is a real, repeatedly-corroborated magnitude overstatement, so I'm marking this PARTIAL rather than TRUE: year and country hold and the core event is real and well-documented, but the casualty magnitude is materially inflated relative to every source I could find.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -720,9 +720,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Multiple independent, non-Wikipedia sources (Minority Rights Group, Refworld/HRW, ReliefWeb, CS Monitor citing a UN mapping report and MSF) confirm that ethnic violence erupted in North Kivu starting March 1993 between indigenous communities (Hunde, Nande, Nyanga militias, i.e. Mai-Mai/Bangirima) and Banyarwanda (Hutu and Tutsi) populations whose citizenship and land rights were disputed, that it displaced roughly 250,000-300,000 people, and that it is well recognized as entangled with the regional Great Lakes dynamics preceding the 1994 Rwandan genocide — all matching the event description. However, the death toll cited by essentially every credible independent source (government figures, MSF, Oxfam/Caritas estimates cited via CS Monitor/UN mapping report) clusters at roughly 6,000-15,000 killed in 1993, described consistently as 'thousands,' not the 'tens of thousands' claimed in the event description. This is a real, repeatedly-corroborated magnitude overstatement, so I'm marking this PARTIAL rather than TRUE: year and country hold and the core event is real and well-documented, but the casualty magnitude is materially inflated relative to every source I could find.",
+        "source": "https://minorityrights.org/communities/banyarwanda/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Banyarwanda"
+    "source": "https://minorityrights.org/communities/banyarwanda/"
   },
   {
     "year": 1994,
@@ -1103,12 +1114,12 @@
     "year": 2003,
     "title": "Ituri Massacres and French-Led Artemis Operation",
     "verdict": "TRUE",
-    "reason": "Lendu-Hema violence, Operation Artemis stabilising Bunia, Ugandan commander gold exploitation confirmed.",
-    "verify_count": 1,
+    "reason": "Independent (non-Wikipedia) sources confirm all material elements: Lendu-Hema ethnic massacres in Ituri district, DRC reached crisis levels in 2003 (e.g., Bogoro massacre Feb 2003, documented by HRW's 'UPC Crimes in Ituri 2002-2003' and Amnesty International AFR 62/006/2003); UN Security Council Resolution 1484 (30 May 2003) authorized a French-led Interim Multinational Emergency Force/Operation Artemis (12 June-1 Sept 2003, ~1,800-2,200 troops, 17 nations, French command) to stabilize Bunia after Congolese police fled and Ugandan troops withdrew, per International Crisis Group's contemporaneous report and EU's own EEAS archive/The New Humanitarian coverage. The gold-resource/Ugandan-commander exploitation angle is separately corroborated by HRW and Crisis Group analyses of UPDF control over Ituri's gold-mining areas. Year, country, and all key actors/events match the description with no material discrepancy.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1120,9 +1131,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent (non-Wikipedia) sources confirm all material elements: Lendu-Hema ethnic massacres in Ituri district, DRC reached crisis levels in 2003 (e.g., Bogoro massacre Feb 2003, documented by HRW's 'UPC Crimes in Ituri 2002-2003' and Amnesty International AFR 62/006/2003); UN Security Council Resolution 1484 (30 May 2003) authorized a French-led Interim Multinational Emergency Force/Operation Artemis (12 June-1 Sept 2003, ~1,800-2,200 troops, 17 nations, French command) to stabilize Bunia after Congolese police fled and Ugandan troops withdrew, per International Crisis Group's contemporaneous report and EU's own EEAS archive/The New Humanitarian coverage. The gold-resource/Ugandan-commander exploitation angle is separately corroborated by HRW and Crisis Group analyses of UPDF control over Ituri's gold-mining areas. Year, country, and all key actors/events match the description with no material discrepancy.",
+        "source": "https://www.crisisgroup.org/sites/default/files/64-congo-crisis-military-intervention-in-ituri.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Operation_Artemis"
+    "source": "https://www.crisisgroup.org/sites/default/files/64-congo-crisis-military-intervention-in-ituri.pdf"
   },
   {
     "year": 2004,

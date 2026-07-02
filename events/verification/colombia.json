@@ -228,12 +228,12 @@
     "year": 1961,
     "title": "Social Agrarian Reform Law Creates INCORA",
     "verdict": "TRUE",
-    "reason": "Law 135 1961 and INCORA creation confirmed; limited implementation confirmed.",
-    "verify_count": 1,
+    "reason": "Independent, non-Wikipedia sources confirm all material elements: Colombia's Law 135 of 1961 (Social Agrarian Reform Law) created INCORA (Colombian Institute for Agrarian Reform) to redistribute unused/poorly used land to peasants. Encyclopedia.com confirms the 1961/Law 135/INCORA creation and states implementation was severely limited by elite political influence (Society of Agriculturalists SAC, coffee growers federation FEDECAFE) blocking meaningful land redistribution. Duke University Press (Hispanic American Historical Review) and other academic sources corroborate the Alliance for Progress context and the slow, obstructed implementation, consistent with the description's claim that unaddressed rural grievances fueled later peasant insurgency. Year, country, actor, and outcome all hold.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -245,9 +245,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent, non-Wikipedia sources confirm all material elements: Colombia's Law 135 of 1961 (Social Agrarian Reform Law) created INCORA (Colombian Institute for Agrarian Reform) to redistribute unused/poorly used land to peasants. Encyclopedia.com confirms the 1961/Law 135/INCORA creation and states implementation was severely limited by elite political influence (Society of Agriculturalists SAC, coffee growers federation FEDECAFE) blocking meaningful land redistribution. Duke University Press (Hispanic American Historical Review) and other academic sources corroborate the Alliance for Progress context and the slow, obstructed implementation, consistent with the description's claim that unaddressed rural grievances fueled later peasant insurgency. Year, country, actor, and outcome all hold.",
+        "source": "https://www.encyclopedia.com/humanities/encyclopedias-almanacs-transcripts-and-maps/colombian-institute-agrarian-reform-incora",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Colombian_agrarian_reform"
+    "source": "https://www.encyclopedia.com/humanities/encyclopedias-almanacs-transcripts-and-maps/colombian-institute-agrarian-reform-incora"
   },
   {
     "year": 1961,
@@ -378,12 +389,12 @@
     "year": 1972,
     "title": "Chicoral Pact Reverses Agrarian Reform",
     "verdict": "TRUE",
-    "reason": "1972 pact confirmed; weakened INCORA and raised expropriation threshold confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent non-Wikipedia sources confirm the Chicoral Pact was signed January 9, 1972 in Chicoral (Tolima), an agreement between landowners/latifundistas and Liberal and Conservative party congressmen under the Pastrana government. Colombia's official Truth Commission (comisiondelaverdad.co) confirms it \"eliminated the expropriation of unproductive large estates and prioritized business-style exploitation over peasant development,\" reversing the 1961 agrarian reform law and dealing \"a decisive blow to redistributive land reform efforts.\" It describes the pact weakening INCORA's mandate and provoking major peasant land occupations (16,000 families seizing 300+ farms in 1971, followed by further occupations), matching the description's claims about landlessness, rural exodus, and deepened rural grievances. Dejusticia, Señal Memoria, and Revista RAYA (all independent Colombian outlets, none Wikipedia) corroborate the same narrative: landowners lobbying to raise productivity thresholds for expropriation, weakening INCORA, and the pact's role in entrenching land inequality that fed later rural conflict/insurgency. Year, country, and material description all check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -395,9 +406,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent non-Wikipedia sources confirm the Chicoral Pact was signed January 9, 1972 in Chicoral (Tolima), an agreement between landowners/latifundistas and Liberal and Conservative party congressmen under the Pastrana government. Colombia's official Truth Commission (comisiondelaverdad.co) confirms it \"eliminated the expropriation of unproductive large estates and prioritized business-style exploitation over peasant development,\" reversing the 1961 agrarian reform law and dealing \"a decisive blow to redistributive land reform efforts.\" It describes the pact weakening INCORA's mandate and provoking major peasant land occupations (16,000 families seizing 300+ farms in 1971, followed by further occupations), matching the description's claims about landlessness, rural exodus, and deepened rural grievances. Dejusticia, Señal Memoria, and Revista RAYA (all independent Colombian outlets, none Wikipedia) corroborate the same narrative: landowners lobbying to raise productivity thresholds for expropriation, weakening INCORA, and the pact's role in entrenching land inequality that fed later rural conflict/insurgency. Year, country, and material description all check out.",
+        "source": "https://www.comisiondelaverdad.co/el-pacto-de-chicoral-la-contrarreforma",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Chicoral_Pact"
+    "source": "https://www.comisiondelaverdad.co/el-pacto-de-chicoral-la-contrarreforma"
   },
   {
     "year": 1974,
@@ -428,12 +450,12 @@
     "year": 1977,
     "title": "September 14 General Strike Shakes López Government",
     "verdict": "TRUE",
-    "reason": "September 14 1977 four-confederation strike confirmed; state of siege response confirmed.",
-    "verify_count": 1,
+    "reason": "Independent, non-Wikipedia sources (NACLA, Peoples Dispatch, Centro de Memoria Histórica, and a Redalyc/Scielo academic article) confirm that on September 14, 1977, Colombia's four major labor confederations (UTC, CTC, CSTC, CGT) organized a national general strike against President Alfonso López Michelsen, driven by high inflation, austerity measures, and declining real wages; it shut down most economic activity and is described as the biggest/most significant social mobilization since the 1948 Bogotazo (i.e., largest labor action in Colombian history to that point). The government declared a state of siege/martial law, suspending the right to strike and deploying military/police, resulting in at least 18 deaths and thousands detained. All material details (country, year, actors, cause, scale, government response) match the event description.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -445,9 +467,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent, non-Wikipedia sources (NACLA, Peoples Dispatch, Centro de Memoria Histórica, and a Redalyc/Scielo academic article) confirm that on September 14, 1977, Colombia's four major labor confederations (UTC, CTC, CSTC, CGT) organized a national general strike against President Alfonso López Michelsen, driven by high inflation, austerity measures, and declining real wages; it shut down most economic activity and is described as the biggest/most significant social mobilization since the 1948 Bogotazo (i.e., largest labor action in Colombian history to that point). The government declared a state of siege/martial law, suspending the right to strike and deploying military/police, resulting in at least 18 deaths and thousands detained. All material details (country, year, actors, cause, scale, government response) match the event description.",
+        "source": "https://nacla.org/colombia-general-strike/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Trade_unions_in_Colombia"
+    "source": "https://nacla.org/colombia-general-strike/"
   },
   {
     "year": 1978,

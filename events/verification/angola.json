@@ -327,13 +327,13 @@
   {
     "year": 1977,
     "title": "Nationalization of Banks and Major Industries",
-    "verdict": "TRUE",
-    "reason": "MPLA nationalizations of banks and industries in the socialist period are well documented; timing consistent with 1975-1977 socialist consolidation.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: MPLA nationalizations of banks and industries in the socialist period are well documented; timing consistent with 1975-1977 socialist consolidation.; Pass 2 FALSE: The content described (MPLA nationalizing banks, insurance companies, major industries and agricultural estates, causing economic collapse amid the exodus of Portuguese settlers) is real for Angola, but multiple independent, non-Wikipedia sources converge that the core legal nationalization wave happened in 1976, not 1977. Specifically: the March 1976 'Law on State Intervention' (also referenced as the 'Nationalizations and Expropriation Law of 1976') nationalized abandoned businesses including a steel works, cement plant, textile and sugar mills, agricultural complexes, the central bank and all commercial banks, and the insurance industry; Banco de Angola was reconstituted as Banco Nacional de Angola via Decree-Law 69/76 (Official Gazette, 10 Nov 1976); the state oil company (precursor to Sonangol) was created via Decree 52 of 1976. Insurance was later further consolidated into the state monopoly ENSA in February 1978. No source found ties a comparable major nationalization act specifically to 1977 — the defining 1977 events in Angola are the Nito Alves coup attempt (May 1977) and the MPLA's First Congress declaring itself Marxist-Leninist (December 1977), neither of which is the nationalization act itself. Since the year is a hard join key and does not hold, this is FALSE with corrected_year=1976 rather than PARTIAL.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -345,9 +345,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The content described (MPLA nationalizing banks, insurance companies, major industries and agricultural estates, causing economic collapse amid the exodus of Portuguese settlers) is real for Angola, but multiple independent, non-Wikipedia sources converge that the core legal nationalization wave happened in 1976, not 1977. Specifically: the March 1976 'Law on State Intervention' (also referenced as the 'Nationalizations and Expropriation Law of 1976') nationalized abandoned businesses including a steel works, cement plant, textile and sugar mills, agricultural complexes, the central bank and all commercial banks, and the insurance industry; Banco de Angola was reconstituted as Banco Nacional de Angola via Decree-Law 69/76 (Official Gazette, 10 Nov 1976); the state oil company (precursor to Sonangol) was created via Decree 52 of 1976. Insurance was later further consolidated into the state monopoly ENSA in February 1978. No source found ties a comparable major nationalization act specifically to 1977 — the defining 1977 events in Angola are the Nito Alves coup attempt (May 1977) and the MPLA's First Congress declaring itself Marxist-Leninist (December 1977), neither of which is the nationalization act itself. Since the year is a hard join key and does not hold, this is FALSE with corrected_year=1976 rather than PARTIAL.",
+        "source": "https://communistcrimes.org/en/countries/angola",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1976
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Angola"
+    ]
   },
   {
     "year": 1979,
@@ -1028,12 +1039,12 @@
     "year": 2020,
     "title": "Angola Restructures Chinese Debt Amid COVID-19 Crisis",
     "verdict": "TRUE",
-    "reason": "Three-year moratorium on principal payments (May 2020–May 2023) confirmed; G20 DSSI participation confirmed; COVID-19 lockdown confirmed.",
-    "verify_count": 1,
+    "reason": "Independently corroborated across multiple non-off-limits sources: in June 2020 Angola secured a three-year moratorium/freeze on principal payments (~US$4.9B, running to Q2 2023) from Chinese lenders China Development Bank and ICBC, explicitly tied to the COVID-19-driven collapse in oil prices (Brent fell below $30/barrel in early 2020) compounding Angola's pre-existing oil-price recession (2016-2020). Angola's heavy exposure to Chinese creditors from post-civil-war infrastructure lending (~$42.6B borrowed 2000-2020, largest African borrower from China) is well documented by AidData/China Africa Research Initiative. Angola also implemented a strict COVID-19 lockdown in 2020 (national state of emergency declared March 27, 2020, with a national lockdown, closure of non-essential businesses, suspended public transport) that hit its already fragile, oil-dependent economy (GDP projected to shrink ~4.5% in 2020). All material details in the description (actors, timing, mechanism, causal link, lockdown) check out. Source used (SCMP) is independent and not on the off-limits list (only chathamhouse.org is excluded).",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1045,9 +1056,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across multiple non-off-limits sources: in June 2020 Angola secured a three-year moratorium/freeze on principal payments (~US$4.9B, running to Q2 2023) from Chinese lenders China Development Bank and ICBC, explicitly tied to the COVID-19-driven collapse in oil prices (Brent fell below $30/barrel in early 2020) compounding Angola's pre-existing oil-price recession (2016-2020). Angola's heavy exposure to Chinese creditors from post-civil-war infrastructure lending (~$42.6B borrowed 2000-2020, largest African borrower from China) is well documented by AidData/China Africa Research Initiative. Angola also implemented a strict COVID-19 lockdown in 2020 (national state of emergency declared March 27, 2020, with a national lockdown, closure of non-essential businesses, suspended public transport) that hit its already fragile, oil-dependent economy (GDP projected to shrink ~4.5% in 2020). All material details in the description (actors, timing, mechanism, causal link, lockdown) check out. Source used (SCMP) is independent and not on the off-limits list (only chathamhouse.org is excluded).",
+        "source": "https://www.scmp.com/news/china/diplomacy/article/3183084/higher-oil-prices-help-angola-pay-debts-chinese-banks",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.chathamhouse.org/2022/12/response-debt-distress-africa-and-role-china/02-case-studies-chinese-lending-africa"
+    "source": "https://www.scmp.com/news/china/diplomacy/article/3183084/higher-oil-prices-help-angola-pay-debts-chinese-banks"
   },
   {
     "year": 2021,

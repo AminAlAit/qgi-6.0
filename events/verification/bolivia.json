@@ -53,12 +53,12 @@
     "year": 1952,
     "title": "Tin Mines Nationalized; COMIBOL Created",
     "verdict": "TRUE",
-    "reason": "COMIBOL created October 2, nationalization of Patino/Hochschild/Aramayo on October 31 confirmed.",
-    "verify_count": 1,
+    "reason": "Independent, non-Wikipedia sources confirm the event materially as described. A US State Department historical document (FRUS 1952-54, Vol. IV, doc 142 — a contemporaneous diplomatic telegram from Ambassador Sparks) confirms President Paz Estenssoro's government moved to nationalize the \"Big Three\" mining companies — Patiño, Hochschild, and Aramayo — in October 1952, framing it as politically inevitable for the revolutionary government. A secondary source (LegalClarity.org) independently confirms the October 31, 1952 decree nationalizing the three firms (which controlled ~80% of Bolivia's mineral production) and the creation of the state corporation COMIBOL (Corporación Minera de Bolivia) in October 1952 to run the seized operations. This matches the country (Bolivia), year (1952), and all material details in the event description: the three companies named, the state corporation created, the elite-wealth-vs-worker-poverty framing, and its status as the economic cornerstone of the 1952 revolution.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -70,20 +70,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent, non-Wikipedia sources confirm the event materially as described. A US State Department historical document (FRUS 1952-54, Vol. IV, doc 142 — a contemporaneous diplomatic telegram from Ambassador Sparks) confirms President Paz Estenssoro's government moved to nationalize the \"Big Three\" mining companies — Patiño, Hochschild, and Aramayo — in October 1952, framing it as politically inevitable for the revolutionary government. A secondary source (LegalClarity.org) independently confirms the October 31, 1952 decree nationalizing the three firms (which controlled ~80% of Bolivia's mineral production) and the creation of the state corporation COMIBOL (Corporación Minera de Bolivia) in October 1952 to run the seized operations. This matches the country (Bolivia), year (1952), and all material details in the event description: the three companies named, the state corporation created, the elite-wealth-vs-worker-poverty framing, and its status as the economic cornerstone of the 1952 revolution.",
+        "source": "https://legalclarity.org/the-bolivian-revolution-nationalization-and-reforms/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Corporaci%C3%B3n_Minera_de_Bolivia"
+    "source": "https://legalclarity.org/the-bolivian-revolution-nationalization-and-reforms/"
   },
   {
     "year": 1953,
     "title": "Agrarian Reform Decree Redistributes Land to Indigenous Peasants",
     "verdict": "TRUE",
-    "reason": "Decree signed August 2, 1953 at Ucureña; pongueaje abolition confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Wikipedia sources confirm that on August 2, 1953, Bolivia's MNR government under President Víctor Paz Estenssoro decreed the Agrarian Reform Law (Decreto-Ley 3464), which expropriated large haciendas/latifundios and redistributed land to Indigenous peasant communities, and abolished forced servile labor systems including pongueaje that bound Indigenous workers to landowners. Encyclopedia.com's Bolivia agrarian reform article confirms the 1953 reform ended unpaid services and redistributed land from large estate holders to former estate workers/peasant communities. The Hispanic American Historical Review (Duke University Press) article title itself frames the period as culminating on August 2, 1953, corroborating the exact decree date. Oxford Research Encyclopedia of Latin American History also covers this as a major 20th-century agrarian reform. All material details in the event description (actor: Paz Estenssoro; date: August 2, 1953; action: breaking up haciendas, redistributing land to Indigenous peasants, abolishing pongueaje) are corroborated by sources independent of Wikipedia.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -95,9 +106,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm that on August 2, 1953, Bolivia's MNR government under President Víctor Paz Estenssoro decreed the Agrarian Reform Law (Decreto-Ley 3464), which expropriated large haciendas/latifundios and redistributed land to Indigenous peasant communities, and abolished forced servile labor systems including pongueaje that bound Indigenous workers to landowners. Encyclopedia.com's Bolivia agrarian reform article confirms the 1953 reform ended unpaid services and redistributed land from large estate holders to former estate workers/peasant communities. The Hispanic American Historical Review (Duke University Press) article title itself frames the period as culminating on August 2, 1953, corroborating the exact decree date. Oxford Research Encyclopedia of Latin American History also covers this as a major 20th-century agrarian reform. All material details in the event description (actor: Paz Estenssoro; date: August 2, 1953; action: breaking up haciendas, redistributing land to Indigenous peasants, abolishing pongueaje) are corroborated by sources independent of Wikipedia.",
+        "source": "https://www.encyclopedia.com/humanities/encyclopedias-almanacs-transcripts-and-maps/bolivia-agrarian-reform",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Land_reform_in_Bolivia"
+    "source": "https://www.encyclopedia.com/humanities/encyclopedias-almanacs-transcripts-and-maps/bolivia-agrarian-reform"
   },
   {
     "year": 1953,
@@ -153,12 +175,12 @@
     "year": 1956,
     "title": "IMF Stabilization Plan Curbs Hyperinflation",
     "verdict": "TRUE",
-    "reason": "1956 IMF stabilization plan confirmed; ended the post-revolutionary inflationary spiral.",
-    "verify_count": 1,
+    "reason": "Multiple independent non-Britannica sources (U.S. State Dept Office of the Historian FRUS 1955-57 vol 7; NBER working papers on Bolivia's monetary history; Bolivian historical archive historia.com.bo) confirm that on December 15, 1956, Bolivia's government under Hernán Siles Zuazo announced a stabilization decree package (the 'Eder Plan', drafted with U.S./IMF technical assistance from George Jackson Eder) that devalued and unified the exchange rate for the boliviano, cut subsidies, and froze wages. The IMF backed it with a one-year standby arrangement (~US$7.5M). This curbed hyperinflation from ~178.8% in 1956 down to ~11.5% by 1960, and came as a deliberate shift away from the statist economic policies of the 1952 National Revolution. All material elements of the description (subsidy cuts, wage freeze, currency devaluation, IMF involvement, curbing hyperinflation, hardship for workers, shift from statist economics) are corroborated by independent sources.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -170,9 +192,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent non-Britannica sources (U.S. State Dept Office of the Historian FRUS 1955-57 vol 7; NBER working papers on Bolivia's monetary history; Bolivian historical archive historia.com.bo) confirm that on December 15, 1956, Bolivia's government under Hernán Siles Zuazo announced a stabilization decree package (the 'Eder Plan', drafted with U.S./IMF technical assistance from George Jackson Eder) that devalued and unified the exchange rate for the boliviano, cut subsidies, and froze wages. The IMF backed it with a one-year standby arrangement (~US$7.5M). This curbed hyperinflation from ~178.8% in 1956 down to ~11.5% by 1960, and came as a deliberate shift away from the statist economic policies of the 1952 National Revolution. All material elements of the description (subsidy cuts, wage freeze, currency devaluation, IMF involvement, curbing hyperinflation, hardship for workers, shift from statist economics) are corroborated by independent sources.",
+        "source": "https://history.state.gov/historicaldocuments/frus1955-57v07/d279",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.britannica.com/place/Bolivia/Post-1952-regimes"
+    "source": "https://history.state.gov/historicaldocuments/frus1955-57v07/d279"
   },
   {
     "year": 1960,
@@ -328,12 +361,12 @@
     "year": 1969,
     "title": "General Ovando Nationalizes Gulf Oil Assets",
     "verdict": "TRUE",
-    "reason": "Coup September 26; Gulf Oil nationalization decree October 17, 1969 confirmed.",
-    "verify_count": 1,
+    "reason": "Independently corroborated: General Alfredo Ovando Candía seized power in a coup on September 26, 1969, deposing President Siles Salinas. His government then issued Supreme Decree 08956 on October 17, 1969, revoking Gulf Oil Company's concessions and nationalizing its Bolivian assets, transferring control to state company YPFB (Yacimientos Petrolíferos Fiscales Bolivianos). This was proclaimed \"Day of National Dignity\" and framed as a nationalist/anti-imperialist act, matching the description. Confirmed via a US State Department historical document (FRUS) and an independent Bolivian news source (correodelsur.com), neither of which is Wikipedia.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -345,9 +378,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated: General Alfredo Ovando Candía seized power in a coup on September 26, 1969, deposing President Siles Salinas. His government then issued Supreme Decree 08956 on October 17, 1969, revoking Gulf Oil Company's concessions and nationalizing its Bolivian assets, transferring control to state company YPFB (Yacimientos Petrolíferos Fiscales Bolivianos). This was proclaimed \"Day of National Dignity\" and framed as a nationalist/anti-imperialist act, matching the description. Confirmed via a US State Department historical document (FRUS) and an independent Bolivian news source (correodelsur.com), neither of which is Wikipedia.",
+        "source": "https://correodelsur.com/ecos/20191027/a-50-anos-de-la-nacionalizacion-de-la-gulf-oil-co.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1969_Bolivian_coup_d'%C3%A9tat"
+    "source": "https://correodelsur.com/ecos/20191027/a-50-anos-de-la-nacionalizacion-de-la-gulf-oil-co.html"
   },
   {
     "year": 1971,
@@ -603,12 +647,12 @@
     "year": 1984,
     "title": "Hyperinflation Accelerates Beyond 20,000 Percent",
     "verdict": "TRUE",
-    "reason": "Inflation exceeded 20,000% confirmed; some sources cite peak at ~26,000% annualized in 1985, so 20,000% by mid-1985 is accurate.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Wikipedia sources confirm Bolivia's 1984-1985 hyperinflation episode as described. Christian Science Monitor (1987) quotes the Bolivian government as having 'stopped cold a 24,000 percent inflation rate, the seventh highest recorded in world history.' Encyclopedia of Money confirms 'annual rates of 24,000 percent during the peak years of 1984 and 1985.' Economist Roger Mario López Justiniano's blog states 1985 monthly inflation reached nearly 60%, equating to an annualized rate of ~26,000%, with hyperinflation (defined as 50%+ monthly) running May 1982-August 1985. World Bank-sourced data (via worlddata.info) shows annual average CPI inflation of 1,281% in 1984 and 11,750% in 1985 (average-annual measure, naturally lower than peak monthly-annualized figures since inflation accelerated through the year). All sources agree on: country=Bolivia, years=1984-1985, driven by fiscal deficit monetization, magnitude in the thousands-to-tens-of-thousands of percent range, ranked among the worst hyperinflations in 20th-century history, ended by President Paz Estenssoro's August 1985 stabilization (D.S. 21060). The event's 'approximately 20,000% by mid-1985' figure falls squarely within the range reported by independent sources (11,750%-26,000% depending on methodology), and 'exceeded 2,000% in 1984' is consistent with year-over-year/point-in-time measures cited elsewhere even though the World Bank average-annual figure for 1984 (1,281%) is somewhat lower — a normal artifact of averaging vs. year-end/peak measures during a rapidly accelerating hyperinflation. Country, year, and core narrative all hold materially.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -620,9 +664,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm Bolivia's 1984-1985 hyperinflation episode as described. Christian Science Monitor (1987) quotes the Bolivian government as having 'stopped cold a 24,000 percent inflation rate, the seventh highest recorded in world history.' Encyclopedia of Money confirms 'annual rates of 24,000 percent during the peak years of 1984 and 1985.' Economist Roger Mario López Justiniano's blog states 1985 monthly inflation reached nearly 60%, equating to an annualized rate of ~26,000%, with hyperinflation (defined as 50%+ monthly) running May 1982-August 1985. World Bank-sourced data (via worlddata.info) shows annual average CPI inflation of 1,281% in 1984 and 11,750% in 1985 (average-annual measure, naturally lower than peak monthly-annualized figures since inflation accelerated through the year). All sources agree on: country=Bolivia, years=1984-1985, driven by fiscal deficit monetization, magnitude in the thousands-to-tens-of-thousands of percent range, ranked among the worst hyperinflations in 20th-century history, ended by President Paz Estenssoro's August 1985 stabilization (D.S. 21060). The event's 'approximately 20,000% by mid-1985' figure falls squarely within the range reported by independent sources (11,750%-26,000% depending on methodology), and 'exceeded 2,000% in 1984' is consistent with year-over-year/point-in-time measures cited elsewhere even though the World Bank average-annual figure for 1984 (1,281%) is somewhat lower — a normal artifact of averaging vs. year-end/peak measures during a rapidly accelerating hyperinflation. Country, year, and core narrative all hold materially.",
+        "source": "https://www.csmonitor.com/1987/0806/fbol.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Bolivian_economic_crisis_(1985)"
+    "source": "https://www.csmonitor.com/1987/0806/fbol.html"
   },
   {
     "year": 1985,
@@ -728,12 +783,12 @@
     "year": 1987,
     "title": "Displaced Miners Flood Chapare; Coca Economy Expands",
     "verdict": "TRUE",
-    "reason": "Post-1985 miner migration to Chapare and coca expansion confirmed; Evo Morales connection confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm the core narrative. Following the October 1985 tin market collapse and Supreme Decree 21060 (Aug 1985), roughly 23,000-26,000 of COMIBOL's ~30,000 miners were laid off; large numbers of these \"relocalizados\" and their families migrated to the Chapare region of Cochabamba throughout the mid-to-late 1980s (waves continued past the initial Sept 1985-Aug 1986 tranche) and took up coca cultivation as their main livelihood, since tin jobs had vanished. Econlib.org (citing on-the-ground reporting) states coca cultivation already employed \"more than 60,000 people, mostly laid-off miners' relatives\" by 1985, and a contemporaneous 1986 Christian Science Monitor piece documents ~100,000 coca farmers on ~50,000 hectares in the Chapare, confirming the transformation was in full swing through this period. A Bolivian government estimate specifically pegs national coca output at a minimum of 45 million kg over at least 48,000 hectares in 1987, i.e., a real, dated 1987 expansion milestone (widely cited, though the citation trail runs through Wikipedia's \"Narcotics in Bolivia\" page, which is off-limits here as sole corroboration -- I did not rely on it alone). Encyclopedia.com's Chapare entry independently confirms migrants \"displaced by the collapse of tin mining... began large-scale coca cultivation\" and that this became the political base for the cocalero unions and Evo Morales/MAS. Search results also note that violent conflict between drug police/military and the cocalero movement over US-backed eradication \"occurred episodically between 1987 and 2003,\" anchoring the social-conflict clause specifically to 1987 onward. Evo Morales was already a rising union figure in this period (elected local union general secretary in 1985; executive secretary of a six-union federation in 1988), consistent with \"unions that would eventually produce\" him. Since the underlying phenomenon is a multi-year process (1985-1988) rather than a single dated incident, and 1987 sits squarely within -- and is independently documented as a milestone year within -- that process (both for coca-output statistics and for the onset of cocalero/drug-police conflict), I judge the year and all material details to hold.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -745,9 +800,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the core narrative. Following the October 1985 tin market collapse and Supreme Decree 21060 (Aug 1985), roughly 23,000-26,000 of COMIBOL's ~30,000 miners were laid off; large numbers of these \"relocalizados\" and their families migrated to the Chapare region of Cochabamba throughout the mid-to-late 1980s (waves continued past the initial Sept 1985-Aug 1986 tranche) and took up coca cultivation as their main livelihood, since tin jobs had vanished. Econlib.org (citing on-the-ground reporting) states coca cultivation already employed \"more than 60,000 people, mostly laid-off miners' relatives\" by 1985, and a contemporaneous 1986 Christian Science Monitor piece documents ~100,000 coca farmers on ~50,000 hectares in the Chapare, confirming the transformation was in full swing through this period. A Bolivian government estimate specifically pegs national coca output at a minimum of 45 million kg over at least 48,000 hectares in 1987, i.e., a real, dated 1987 expansion milestone (widely cited, though the citation trail runs through Wikipedia's \"Narcotics in Bolivia\" page, which is off-limits here as sole corroboration -- I did not rely on it alone). Encyclopedia.com's Chapare entry independently confirms migrants \"displaced by the collapse of tin mining... began large-scale coca cultivation\" and that this became the political base for the cocalero unions and Evo Morales/MAS. Search results also note that violent conflict between drug police/military and the cocalero movement over US-backed eradication \"occurred episodically between 1987 and 2003,\" anchoring the social-conflict clause specifically to 1987 onward. Evo Morales was already a rising union figure in this period (elected local union general secretary in 1985; executive secretary of a six-union federation in 1988), consistent with \"unions that would eventually produce\" him. Since the underlying phenomenon is a multi-year process (1985-1988) rather than a single dated incident, and 1987 sits squarely within -- and is independently documented as a milestone year within -- that process (both for coca-output statistics and for the onset of cocalero/drug-police conflict), I judge the year and all material details to hold.",
+        "source": "https://www.econlib.org/library/Columns/y2006/Martinezcoca.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Chapare_Province"
+    "source": "https://www.econlib.org/library/Columns/y2006/Martinezcoca.html"
   },
   {
     "year": 1988,
@@ -902,13 +968,13 @@
   {
     "year": 1995,
     "title": "Evo Morales Elected Head of Chapare Coca Growers Federation",
-    "verdict": "TRUE",
-    "reason": "Morales elected executive secretary of the Six Federations of Cochabamba Tropics mid-1990s confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Morales elected executive secretary of the Six Federations of Cochabamba Tropics mid-1990s confirmed.; Pass 2 FALSE: Multiple independent, non-Wikipedia sources (Encyclopedia.com/Newsmakers, NotableBiographies.com, Columbia World Leaders Forum bio) converge on a different timeline: Morales was elected executive secretary/head of the (single) Tropics Federation of Cochabamba in 1988, and became president of the Coordinating Committee of the Six Federations of the Tropics of Cochabamba in 1996 — a position he held until 2006. No source found supports a 1995 election to head the Six Federations. The event as described (Six Federations, executive secretary role) matches the well-documented 1996 milestone, not 1995. Year is therefore wrong; corrected_year=1996.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -920,9 +986,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent, non-Wikipedia sources (Encyclopedia.com/Newsmakers, NotableBiographies.com, Columbia World Leaders Forum bio) converge on a different timeline: Morales was elected executive secretary/head of the (single) Tropics Federation of Cochabamba in 1988, and became president of the Coordinating Committee of the Six Federations of the Tropics of Cochabamba in 1996 — a position he held until 2006. No source found supports a 1995 election to head the Six Federations. The event as described (Six Federations, executive secretary role) matches the well-documented 1996 milestone, not 1995. Year is therefore wrong; corrected_year=1996.",
+        "source": "https://www.encyclopedia.com/journals/culture-magazines/morales-evo",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1996
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Evo_Morales"
+    ]
   },
   {
     "year": 1997,
@@ -1078,12 +1155,12 @@
     "year": 2006,
     "title": "Morales Issues Decree 28701 Nationalizing Hydrocarbons on May Day",
     "verdict": "TRUE",
-    "reason": "May 1, 2006, Decree 28701, 56 installations occupied, 82% revenue share for large fields — all confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent non-Wikipedia sources confirm all material details: President Evo Morales issued Supreme Decree 28701 ('Héroes del Chaco') on May 1, 2006, nationalizing Bolivia's hydrocarbons sector; the military simultaneously occupied 56 gas installations nationwide; foreign companies were given a 180-day (six-month) window to renegotiate contracts giving YPFB majority control and up to 82% of revenue from the largest fields (San Alberto, San Antonio). CFR, CounterPunch, International Viewpoint, IPS News, Upside Down World, and academic/legal sources (JSTOR, Cambridge Core) all corroborate.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1095,9 +1172,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent non-Wikipedia sources confirm all material details: President Evo Morales issued Supreme Decree 28701 ('Héroes del Chaco') on May 1, 2006, nationalizing Bolivia's hydrocarbons sector; the military simultaneously occupied 56 gas installations nationwide; foreign companies were given a 180-day (six-month) window to renegotiate contracts giving YPFB majority control and up to 82% of revenue from the largest fields (San Alberto, San Antonio). CFR, CounterPunch, International Viewpoint, IPS News, Upside Down World, and academic/legal sources (JSTOR, Cambridge Core) all corroborate.",
+        "source": "https://www.cfr.org/backgrounders/bolivias-nationalization-oil-and-gas",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2006_Bolivian_gas_nationalization"
+    "source": "https://www.cfr.org/backgrounders/bolivias-nationalization-oil-and-gas"
   },
   {
     "year": 2006,
@@ -1503,12 +1591,12 @@
     "year": 2024,
     "title": "Severe Economic Crisis: Dollar and Fuel Shortages Deepen",
     "verdict": "TRUE",
-    "reason": "2024 fuel/dollar shortages and declining reserves confirmed by Cornell Business analysis.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Cornell sources corroborate every material element. Foreign currency reserves collapsed in 2024: Central Bank reserves fell from $1.7B (Dec 2023) to $153.1M (Aug 2024) and to $284.5M by late 2024 (CEIC, batimes.com.ar). Chronic diesel/gasoline shortages caused long queues nationwide, with Bolivia spending ~$56M/week importing fuel from Argentina, Paraguay and Russia (batimes.com.ar, VOA). The boliviano faced informal/parallel-market devaluation pressure, with parallel dollar rates at least 20% above the official peg (CEIC). The government struggled to fund fuel imports and subsidies -- more than half of Bolivia's 2024 fiscal deficit stemmed from fuel subsidies alone (CEIC). Declining gas production and export revenue (down to $1.6B in 2024 from higher prior years, driven by falling demand from Brazil/Argentina and depleting reserves) showed no near-term reversal, consistent with balance-of-payments crisis warnings (Economics Observatory, US State Dept Investment Climate Statement). All key facts -- year, country, dollar shortage, fuel shortage, boliviano pressure, fiscal strain, declining gas revenue -- align with the event description.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1520,8 +1608,19 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Cornell sources corroborate every material element. Foreign currency reserves collapsed in 2024: Central Bank reserves fell from $1.7B (Dec 2023) to $153.1M (Aug 2024) and to $284.5M by late 2024 (CEIC, batimes.com.ar). Chronic diesel/gasoline shortages caused long queues nationwide, with Bolivia spending ~$56M/week importing fuel from Argentina, Paraguay and Russia (batimes.com.ar, VOA). The boliviano faced informal/parallel-market devaluation pressure, with parallel dollar rates at least 20% above the official peg (CEIC). The government struggled to fund fuel imports and subsidies -- more than half of Bolivia's 2024 fiscal deficit stemmed from fuel subsidies alone (CEIC). Declining gas production and export revenue (down to $1.6B in 2024 from higher prior years, driven by falling demand from Brazil/Argentina and depleting reserves) showed no near-term reversal, consistent with balance-of-payments crisis warnings (Economics Observatory, US State Dept Investment Climate Statement). All key facts -- year, country, dollar shortage, fuel shortage, boliviano pressure, fiscal strain, declining gas revenue -- align with the event description.",
+        "source": "https://info.ceicdata.com/bolivias-crisis-a-dollar-shortage-surging-inflation-and-sinking-gas-exports",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://business.cornell.edu/article/2026/01/the-rise-and-fall-of-bolivias-state-led-growth-model/"
+    "source": "https://info.ceicdata.com/bolivias-crisis-a-dollar-shortage-surging-inflation-and-sinking-gas-exports"
   }
 ]

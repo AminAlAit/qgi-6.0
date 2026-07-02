@@ -78,12 +78,12 @@
     "year": 1991,
     "title": "Comprehensive Agrarian Reform Dismantles Collective Farms",
     "verdict": "TRUE",
-    "reason": "Land reform distributing collective farmland in 1991 is documented. Fragmentation of holdings confirmed.",
-    "verify_count": 1,
+    "reason": "Albania's \"Land Law\" (Law No. 7501), enacted 19 July 1991, dismantled the ~160 state farms and 492 agricultural cooperatives, distributing roughly 575,000-670,000 hectares of collective farmland to hundreds of thousands of rural households on an egalitarian per-capita basis. This created highly fragmented smallholdings (average ~1-1.3 ha split into 1.8-1.9 million separate plots), which is widely documented in the literature as undermining short-term productivity and mechanization while ending the state monopoly on land ownership. This matches the event description on country, year, and substance (legislation, dismantling collectives, fragmentation, productivity tradeoff, end of state land monopoly).",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -95,9 +95,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Albania's \"Land Law\" (Law No. 7501), enacted 19 July 1991, dismantled the ~160 state farms and 492 agricultural cooperatives, distributing roughly 575,000-670,000 hectares of collective farmland to hundreds of thousands of rural households on an egalitarian per-capita basis. This created highly fragmented smallholdings (average ~1-1.3 ha split into 1.8-1.9 million separate plots), which is widely documented in the literature as undermining short-term productivity and mechanization while ending the state monopoly on land ownership. This matches the event description on country, year, and substance (legislation, dismantling collectives, fragmentation, productivity tradeoff, end of state land monopoly).",
+        "source": "https://www.agter.org/bdf/en/corpus_chemin/fiche-chemin-75.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Agriculture_in_Albania"
+    "source": "https://www.agter.org/bdf/en/corpus_chemin/fiche-chemin-75.html"
   },
   {
     "year": 1992,
@@ -228,12 +239,12 @@
     "year": 1997,
     "title": "Pyramid Scheme Collapse Triggers Nationwide Civil Unrest",
     "verdict": "TRUE",
-    "reason": "Collapse started January 1997 confirmed. $1.2 billion face value of liabilities confirmed. Two-thirds of population as investors confirmed. Over 2,000 deaths confirmed. Event says 'January 1997' for collapse trigger — accurate.",
-    "verify_count": 1,
+    "reason": "Independent, non-Wikipedia sources confirm every material element of the description. EBSCO Research Starters confirms: pyramid schemes declared bankruptcy in January 1997; liabilities/losses of $1.2 billion; almost 70% (roughly two-thirds) of the population held stock in the fraudulent companies; rioting killed about 2,000 people; and by spring 1997 the government lost control of the country with anarchy ruling most of the nation. Separate independent sources (globalsecurity.org, onwar.com, US State Dept 1997 human rights report) corroborate that the armed uprising was centered in and began in southern Albania (Vlorë, then Gjirokastër), with citizens storming and looting military armories/depots (over 650,000 small arms looted nationwide), and the entire south falling out of government control. All core facts (country=Albania, year=1997, magnitude=$1.2B/two-thirds population, ~2,000 deaths, southern armed revolt on military depots, near-total state breakdown) match the event description.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -245,9 +256,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent, non-Wikipedia sources confirm every material element of the description. EBSCO Research Starters confirms: pyramid schemes declared bankruptcy in January 1997; liabilities/losses of $1.2 billion; almost 70% (roughly two-thirds) of the population held stock in the fraudulent companies; rioting killed about 2,000 people; and by spring 1997 the government lost control of the country with anarchy ruling most of the nation. Separate independent sources (globalsecurity.org, onwar.com, US State Dept 1997 human rights report) corroborate that the armed uprising was centered in and began in southern Albania (Vlorë, then Gjirokastër), with citizens storming and looting military armories/depots (over 650,000 small arms looted nationwide), and the entire south falling out of government control. All core facts (country=Albania, year=1997, magnitude=$1.2B/two-thirds population, ~2,000 deaths, southern armed revolt on military depots, near-total state breakdown) match the event description.",
+        "source": "https://www.ebsco.com/research-starters/politics-and-government/pyramid-investment-schemes-cause-albanian-government-fall",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Pyramid_schemes_in_Albania"
+    "source": "https://www.ebsco.com/research-starters/politics-and-government/pyramid-investment-schemes-cause-albanian-government-fall"
   },
   {
     "year": 1997,

@@ -28,12 +28,12 @@
     "year": 1953,
     "title": "Central Ãšnica de Trabajadores (CUT) Founded",
     "verdict": "TRUE",
-    "reason": "Founded February 12, 1953 under Clotario Blest. Confirmed.",
-    "verify_count": 1,
+    "reason": "Two independent, non-Wikipedia sources confirm the CUT (Central Única de Trabajadores) was founded in Chile on February 12, 1953, under Clotario Blest, unifying previously fragmented labor organizations (both factions of the CTCH, the anarcho-syndicalist MUNT, the public employees' Junta Nacional de Empleados, and other sectoral bodies) into a single federation. Memoria Chilena (Chile's National Library) confirms it unified public sector, education, and industrial workers and operated as the primary organized-labor voice until being dissolved after the 1973 coup — materially matching the description's claim of unifying fragmented unions and playing a central labor/political role for roughly two decades. No material detail (year, country, actors, scope) is off.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -45,20 +45,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Two independent, non-Wikipedia sources confirm the CUT (Central Única de Trabajadores) was founded in Chile on February 12, 1953, under Clotario Blest, unifying previously fragmented labor organizations (both factions of the CTCH, the anarcho-syndicalist MUNT, the public employees' Junta Nacional de Empleados, and other sectoral bodies) into a single federation. Memoria Chilena (Chile's National Library) confirms it unified public sector, education, and industrial workers and operated as the primary organized-labor voice until being dissolved after the 1973 coup — materially matching the description's claim of unifying fragmented unions and playing a central labor/political role for roughly two decades. No material detail (year, country, actors, scope) is off.",
+        "source": "https://www.memoriachilena.gob.cl/602/w3-article-96204.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Workers'_United_Center_of_Chile"
+    "source": "https://www.memoriachilena.gob.cl/602/w3-article-96204.html"
   },
   {
     "year": 1954,
     "title": "General Strike Against Klein-Saks Austerity Program",
-    "verdict": "TRUE",
-    "reason": "Klein-Saks Mission was hired in 1955 (not 1954). However, the strike described may have occurred in 1955-56 when the stabilization plan was implemented. The event year of 1954 appears slightly off — the Klein-Saks Mission arrived in 1955. Minor discrepancy but the broader context of labor resistance to austerity is confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Klein-Saks Mission was hired in 1955 (not 1954). However, the strike described may have occurred in 1955-56 when the stabilization plan was implemented. The event year of 1954 appears slightly off — the Klein-Saks Mission arrived in 1955. Minor discrepancy but the broader context of labor resistance to austerity is confirmed.; Pass 2 FALSE: Convergent evidence from multiple independent sources (Memoria Chilena/Biblioteca Nacional de Chile, Wikipedia's Misión Klein-Saks article, ResearchGate/SciELO academic paper on the mission's hiring, and general historiography of Ibáñez's second term) establishes that the Klein-Saks Mission was not invited/contracted until 1955 (contract signed and mission arrived in Chile on July 3, 1955; it began substantive work in September 1955; the stabilization/austerity program with wage freezes was adopted in December 1955). It therefore could not have been the target of a strike in 1954 — the program simply did not exist yet. Chile did see a real CUT-organized general strike in 1954 (led by Clotario Blest, around May Day), but it protested Ibáñez's general inflation/economic policy broadly, not the Klein-Saks plan, which is the specific causal driver named in this event's description ('wage freezes...imposed under the Klein-Saks stabilization plan invited by President Ibáñez'). The strike that actually matches the description — CUT mobilizing specifically against Klein-Saks-driven wage freezes/austerity — was called for January 9, 1956, and multiple sources describe it as a failure (workers' strike capacity exhausted, leading to disorganization of the labor movement), which also contradicts this event's claim of a successful mass mobilization of 'hundreds of thousands.' Given both the year and the outcome/magnitude are off, this is a material mismatch, not a minor detail — hence FALSE rather than PARTIAL, with the real underlying event most plausibly dated to 1956.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -70,20 +81,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Convergent evidence from multiple independent sources (Memoria Chilena/Biblioteca Nacional de Chile, Wikipedia's Misión Klein-Saks article, ResearchGate/SciELO academic paper on the mission's hiring, and general historiography of Ibáñez's second term) establishes that the Klein-Saks Mission was not invited/contracted until 1955 (contract signed and mission arrived in Chile on July 3, 1955; it began substantive work in September 1955; the stabilization/austerity program with wage freezes was adopted in December 1955). It therefore could not have been the target of a strike in 1954 — the program simply did not exist yet. Chile did see a real CUT-organized general strike in 1954 (led by Clotario Blest, around May Day), but it protested Ibáñez's general inflation/economic policy broadly, not the Klein-Saks plan, which is the specific causal driver named in this event's description ('wage freezes...imposed under the Klein-Saks stabilization plan invited by President Ibáñez'). The strike that actually matches the description — CUT mobilizing specifically against Klein-Saks-driven wage freezes/austerity — was called for January 9, 1956, and multiple sources describe it as a failure (workers' strike capacity exhausted, leading to disorganization of the labor movement), which also contradicts this event's claim of a successful mass mobilization of 'hundreds of thousands.' Given both the year and the outcome/magnitude are off, this is a material mismatch, not a minor detail — hence FALSE rather than PARTIAL, with the real underlying event most plausibly dated to 1956.",
+        "source": "https://www.memoriachilena.gob.cl/602/w3-article-93004.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1956
       }
-    ],
-    "source": "https://en.sperohope.com/misi-n-klein-saks-antecedentes"
+    ]
   },
   {
     "year": 1955,
     "title": "Nuevo Trato Copper Law Passed",
     "verdict": "TRUE",
-    "reason": "Confirmed: 'Nuevo Trato' (New Treatment) copper law enacted in 1955, aimed at Anaconda and Kennecott. Description of tax incentives vs nationalist criticism is accurate.",
-    "verify_count": 1,
+    "reason": "Independent (non-Wikipedia) sourcing confirms Chile enacted the \"Nuevo Trato del Cobre\" (New Deal copper law) in 1955 under President Carlos Ibáñez del Campo (Law 11,828, May 5, 1955), which reduced/restructured effective tax rates and offered commercial, accounting and exchange-control benefits to the major foreign copper producers to stimulate investment and production. A separate independent search confirms Anaconda owned Chuquicamata and El Salvador, and Kennecott owned El Teniente — the two companies named in the event description as the intended beneficiaries — and that 1955 is used as the baseline year for measuring their subsequent investment/profit performance under this regime, consistent with the law's 1955 enactment. The description's framing (tax incentives to Anaconda/Kennecott in exchange for production/investment increases, and the law fueling nationalist debate over foreign ownership of copper, later culminating in \"Chileanization\" and full nationalization) matches the historical record found. One minor caveat: EBSCO's account emphasizes the law failed to attract the hoped-for increase in investment from the companies, so \"increased copper output\" is a modest overstatement of otherwise-disappointing investment results, but this is not material enough to change the year/country/core-mechanism match, so I rate this TRUE rather than PARTIAL.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -95,9 +117,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent (non-Wikipedia) sourcing confirms Chile enacted the \"Nuevo Trato del Cobre\" (New Deal copper law) in 1955 under President Carlos Ibáñez del Campo (Law 11,828, May 5, 1955), which reduced/restructured effective tax rates and offered commercial, accounting and exchange-control benefits to the major foreign copper producers to stimulate investment and production. A separate independent search confirms Anaconda owned Chuquicamata and El Salvador, and Kennecott owned El Teniente — the two companies named in the event description as the intended beneficiaries — and that 1955 is used as the baseline year for measuring their subsequent investment/profit performance under this regime, consistent with the law's 1955 enactment. The description's framing (tax incentives to Anaconda/Kennecott in exchange for production/investment increases, and the law fueling nationalist debate over foreign ownership of copper, later culminating in \"Chileanization\" and full nationalization) matches the historical record found. One minor caveat: EBSCO's account emphasizes the law failed to attract the hoped-for increase in investment from the companies, so \"increased copper output\" is a modest overstatement of otherwise-disappointing investment results, but this is not material enough to change the year/country/core-mechanism match, so I rate this TRUE rather than PARTIAL.",
+        "source": "https://www.ebsco.com/research-starters/politics-and-government/frei-chileanizes-chiles-copper-industry",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Chilean_nationalization_of_copper"
+    "source": "https://www.ebsco.com/research-starters/politics-and-government/frei-chileanizes-chiles-copper-industry"
   },
   {
     "year": 1956,
@@ -227,13 +260,13 @@
   {
     "year": 1963,
     "title": "First Agrarian Reform Law Passed Under Alessandri",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Alessandri enacted a limited agrarian reform law in 1963, known as the 'Reforma del Macetero' for its limited scope. CORA created. Accurate description.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Confirmed: Alessandri enacted a limited agrarian reform law in 1963, known as the 'Reforma del Macetero' for its limited scope. CORA created. Accurate description.; Pass 2 FALSE: The event as described (Alessandri's first agrarian reform law, Law No. 15.020, allowing expropriation of abandoned/poorly-managed land, under Alliance for Progress pressure, criticized by left and right as inadequate/the \"Ley Maceta\" or \"flowerpot reform,\" and setting precedent for Frei's and Allende's more sweeping reforms) is real and materially accurate in every respect except the year. Multiple independent sources (Memoria Chilena/Biblioteca Nacional de Chile; a Universidad de Chile thesis repository; SciELO Chile) converge that Law 15.020 was promulgated on November 15, 1962, not 1963. A related 1963 measure (constitutional amendment Law 15.295, enabling expropriation of land voluntarily offered for sale) is a distinct, secondary legal instrument, not \"the first agrarian reform law.\" Since the year is a join key and is materially wrong by a full year, this is a FALSE verdict with corrected_year 1962, per the hard rule that year errors are reported as FALSE.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -245,9 +278,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event as described (Alessandri's first agrarian reform law, Law No. 15.020, allowing expropriation of abandoned/poorly-managed land, under Alliance for Progress pressure, criticized by left and right as inadequate/the \"Ley Maceta\" or \"flowerpot reform,\" and setting precedent for Frei's and Allende's more sweeping reforms) is real and materially accurate in every respect except the year. Multiple independent sources (Memoria Chilena/Biblioteca Nacional de Chile; a Universidad de Chile thesis repository; SciELO Chile) converge that Law 15.020 was promulgated on November 15, 1962, not 1963. A related 1963 measure (constitutional amendment Law 15.295, enabling expropriation of land voluntarily offered for sale) is a distinct, secondary legal instrument, not \"the first agrarian reform law.\" Since the year is a join key and is materially wrong by a full year, this is a FALSE verdict with corrected_year 1962, per the hard rule that year errors are reported as FALSE.",
+        "source": "https://www.memoriachilena.gob.cl/602/w3-article-3536.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1962
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Chilean_land_reform"
+    ]
   },
   {
     "year": 1964,
@@ -277,13 +321,13 @@
   {
     "year": 1965,
     "title": "Chileanization of Copper and Comprehensive Agrarian Reform",
-    "verdict": "TRUE",
-    "reason": "Confirmed: In 1965 Chile purchased 51% of El Teniente from Kennecott. Agrarian Reform Law also enacted. Consistent with sources.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Confirmed: In 1965 Chile purchased 51% of El Teniente from Kennecott. Agrarian Reform Law also enacted. Consistent with sources.; Pass 2 FALSE: Both reforms described are real but neither was enacted in 1965, and the \"51% Anaconda\" detail is also wrong. (1) Frei's initial Chileanization framework agreements date to December 1964, giving Chile 51% of Kennecott's Braden/El Teniente subsidiary but only 25% of a new Anaconda mine (Exotica) — not 51% of Anaconda. The enabling Chileanization Law 16.425 was published January 25, 1966, and the El Teniente mixed company (SMETSA, 51% state) was formed in 1967. Chile did not get to 51% of Anaconda's main mines until the separate June 1969 \"negotiated nationalization\" agreement. (2) The comprehensive Agrarian Reform Law (16.640) was submitted to Congress by Frei on November 22, 1965, but was held up and not passed/enacted until July 16, 1967 — three years into his term, not simultaneously with a 1965 copper deal. So while \"Chileanization\" and the agrarian reform are both genuine, historically significant Frei-era reforms, they were not co-enacted in 1965 as described; the year is wrong and the 51%-Anaconda detail is materially inaccurate. Closest defensible single year for the described package of concrete enactments (agrarian law passage + El Teniente 51% mixed company) is 1967.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -295,9 +339,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Both reforms described are real but neither was enacted in 1965, and the \"51% Anaconda\" detail is also wrong. (1) Frei's initial Chileanization framework agreements date to December 1964, giving Chile 51% of Kennecott's Braden/El Teniente subsidiary but only 25% of a new Anaconda mine (Exotica) — not 51% of Anaconda. The enabling Chileanization Law 16.425 was published January 25, 1966, and the El Teniente mixed company (SMETSA, 51% state) was formed in 1967. Chile did not get to 51% of Anaconda's main mines until the separate June 1969 \"negotiated nationalization\" agreement. (2) The comprehensive Agrarian Reform Law (16.640) was submitted to Congress by Frei on November 22, 1965, but was held up and not passed/enacted until July 16, 1967 — three years into his term, not simultaneously with a 1965 copper deal. So while \"Chileanization\" and the agrarian reform are both genuine, historically significant Frei-era reforms, they were not co-enacted in 1965 as described; the year is wrong and the 51%-Anaconda detail is materially inaccurate. Closest defensible single year for the described package of concrete enactments (agrarian law passage + El Teniente 51% mixed company) is 1967.",
+        "source": "https://alertaley.cl/25-de-enero-de-1966-se-publico-la-ley-16-425-de-chilenizacion-del-cobre/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1967
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Chilean_nationalization_of_copper"
+    ]
   },
   {
     "year": 1966,
@@ -403,12 +458,12 @@
     "year": 1971,
     "title": "Unanimous Congressional Nationalization of Copper Mines",
     "verdict": "TRUE",
-    "reason": "July 11, 1971 — unanimous vote confirmed. CODELCO formally created. Confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent (non-Wikipedia) sources confirm the core facts: on July 11, 1971, the Chilean Congress passed a constitutional amendment nationalizing the large-scale copper industry. Jacobin (2023) explicitly states: \"on July 11, 1971, the Chilean Congress unanimously approved the nationalization of all large-scale copper mines,\" confirming the unanimous vote detail. The U.S. State Department Office of the Historian corroborates the date: \"The Chilean Congress passed the nationalization amendment on July 11, 1971, and it became law five days later\" (as Law 17.450, effective July 16, 1971). Additional search results (NBER working paper, Springer Mineral Economics article) confirm the nationalized mines included Chuquicamata and El Teniente (previously Anaconda- and Kennecott-owned) and that the resulting state entity became the Chilean Copper Corporation, precursor to CODELCO. The only detail I could not independently corroborate off Wikipedia was the specific phrase \"second independence,\" but this is a minor rhetorical/framing detail, not a material fact about what happened, when, or who was involved — year, country, actor (Congress), unanimity, and scope (major copper mines nationalized into state ownership) all check out against independent sources.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -420,20 +475,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent (non-Wikipedia) sources confirm the core facts: on July 11, 1971, the Chilean Congress passed a constitutional amendment nationalizing the large-scale copper industry. Jacobin (2023) explicitly states: \"on July 11, 1971, the Chilean Congress unanimously approved the nationalization of all large-scale copper mines,\" confirming the unanimous vote detail. The U.S. State Department Office of the Historian corroborates the date: \"The Chilean Congress passed the nationalization amendment on July 11, 1971, and it became law five days later\" (as Law 17.450, effective July 16, 1971). Additional search results (NBER working paper, Springer Mineral Economics article) confirm the nationalized mines included Chuquicamata and El Teniente (previously Anaconda- and Kennecott-owned) and that the resulting state entity became the Chilean Copper Corporation, precursor to CODELCO. The only detail I could not independently corroborate off Wikipedia was the specific phrase \"second independence,\" but this is a minor rhetorical/framing detail, not a material fact about what happened, when, or who was involved — year, country, actor (Congress), unanimity, and scope (major copper mines nationalized into state ownership) all check out against independent sources.",
+        "source": "https://jacobin.com/2023/09/chile-coup-salvador-allende-copper-industry-pollution-environmental-policy",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Chilean_nationalization_of_copper"
+    "source": "https://jacobin.com/2023/09/chile-coup-salvador-allende-copper-industry-pollution-environmental-policy"
   },
   {
     "year": 1971,
     "title": "Allende Accelerates Agrarian Reform and Urban Land Redistribution",
     "verdict": "TRUE",
-    "reason": "Confirmed: Allende dramatically accelerated land reform in first year, exceeding all Frei-era expropriations. Tomas (land occupations) documented.",
-    "verify_count": 1,
+    "reason": "Independent sources confirm both halves of the event. (1) Agrarian acceleration: a declassified CIA Intelligence Memorandum (hosted on Wikisource, a domain distinct from the off-limits wikipedia.org) gives hard numbers: Allende's government expropriated 3,281 farms totaling 13.0 million acres (25% of farmland, 34% of irrigated land) between Nov 1970 and Sept 1972, versus 1,408 farms / 8.8 million acres (19%/25%) expropriated by Frei over his full six-year term (Nov 1964-Nov 1970) — explicitly noting 'the pace of expropriation speeded up markedly' and that Allende targeted the most productive farms. NACLA (nacla.org, independent) corroborates: 'During Allende's first two years, nearly all the remaining large estates were expropriated.' Other reporting puts cumulative Allende redistribution at ~2.4M hectares by end of 1971 alone (vs Frei's 3.5M-ha six-year total), and academic work (Bellisario, Journal of Agrarian Change/Wiley) confirms expropriated fundos were converted into asentamientos/cooperatives, with a shift to CERA state-farm structures 'from mid-1971 onward.' The precise 'more than the entire Frei period' threshold, by strict calendar-year-end-1971 hectare counts, appears to be reached slightly after 1971 (by ~18-22 months in), which is a minor timing nuance rather than a substantive error — the 'dramatic acceleration' and rough parity/surpassing of Frei's whole-term total within Allende's first year(s) is solidly supported. (2) Urban land occupations: an independent academic source (redalyc.org, Chilean sociology journal, not wikipedia.org) confirms that under Unidad Popular, urban 'tomas de terrenos' were state-supported — 'at least 344 successful urban land takeovers were registered in Santiago' between 1970-1973, with the government creating a National Office of Settlers and a Unified Central of Poblador to formalize support, and pobladores 'granted a protagonist role' — matching the description's claim of organized mass land occupations with tacit government support. Both the rural and urban components of the event are corroborated by non-Wikipedia sources with concrete figures; only the exact 'exceeds Frei's whole term' magnitude for 1971 specifically has minor imprecision.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -445,9 +511,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm both halves of the event. (1) Agrarian acceleration: a declassified CIA Intelligence Memorandum (hosted on Wikisource, a domain distinct from the off-limits wikipedia.org) gives hard numbers: Allende's government expropriated 3,281 farms totaling 13.0 million acres (25% of farmland, 34% of irrigated land) between Nov 1970 and Sept 1972, versus 1,408 farms / 8.8 million acres (19%/25%) expropriated by Frei over his full six-year term (Nov 1964-Nov 1970) — explicitly noting 'the pace of expropriation speeded up markedly' and that Allende targeted the most productive farms. NACLA (nacla.org, independent) corroborates: 'During Allende's first two years, nearly all the remaining large estates were expropriated.' Other reporting puts cumulative Allende redistribution at ~2.4M hectares by end of 1971 alone (vs Frei's 3.5M-ha six-year total), and academic work (Bellisario, Journal of Agrarian Change/Wiley) confirms expropriated fundos were converted into asentamientos/cooperatives, with a shift to CERA state-farm structures 'from mid-1971 onward.' The precise 'more than the entire Frei period' threshold, by strict calendar-year-end-1971 hectare counts, appears to be reached slightly after 1971 (by ~18-22 months in), which is a minor timing nuance rather than a substantive error — the 'dramatic acceleration' and rough parity/surpassing of Frei's whole-term total within Allende's first year(s) is solidly supported. (2) Urban land occupations: an independent academic source (redalyc.org, Chilean sociology journal, not wikipedia.org) confirms that under Unidad Popular, urban 'tomas de terrenos' were state-supported — 'at least 344 successful urban land takeovers were registered in Santiago' between 1970-1973, with the government creating a National Office of Settlers and a Unified Central of Poblador to formalize support, and pobladores 'granted a protagonist role' — matching the description's claim of organized mass land occupations with tacit government support. Both the rural and urban components of the event are corroborated by non-Wikipedia sources with concrete figures; only the exact 'exceeds Frei's whole term' magnitude for 1971 specifically has minor imprecision.",
+        "source": "https://en.wikisource.org/wiki/Intelligence_Memorandum:_Allende%27s_Chile:_The_Widening_Supply-Demand_Gap",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Agrarian_reform_in_Chile"
+    "source": "https://en.wikisource.org/wiki/Intelligence_Memorandum:_Allende%27s_Chile:_The_Widening_Supply-Demand_Gap"
   },
   {
     "year": 1972,
@@ -728,12 +805,12 @@
     "year": 1982,
     "title": "Banking System Collapse and Worst Economic Crisis Since the 1930s",
     "verdict": "TRUE",
-    "reason": "GDP fell 14.3% (event says 14%) — minor discrepancy. Unemployment reached ~22-24% (event says 30% — slightly high). Banking system collapsed, government nationalized banks. All confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Wikipedia sources confirm the core facts. The ILO (ilo.org) states Chile's 1982-83 crisis was its worst since the 1930s, with real output collapsing ~15% and unemployment (including emergency employment programs PEM/POJH) pushed to over 30% by 1983 — closely matching the described 14% GDP contraction and 30% unemployment. countrystudies.us confirms the 1982 debt crisis hit Chile 'with particular severity' as foreign loans dried up, unemployment 'remained extraordinarily high,' major conglomerates collapsed, and 'in early 1983 the financial sector was nationalized as a way to avoid a major banking crisis' — directly corroborating the banking-system nationalization described. Additional corroborating academic/institutional sources located (not fetched in full due to PDF encoding issues, but titles/abstracts confirm scope): IMF eLibrary chapter 'Liberalization, Crisis, Intervention: The Chilean Financial System, 1975-85' (in the IMF's Banking Crises volume), Central Bank of Chile working paper 'Origins and Resolution of a Banking Crisis: Chile 1982-86' (bcentral.cl), and a Springer Nature chapter titled 'Chilean Economic Crisis (82-86): Twin Crisis-Finance/Banking Crisis.' These consistently attribute the crisis to financial deregulation that let banks borrow abroad/lend in dollars, creating currency and debt mismatches, followed by peso devaluation and a wave of bank interventions/nationalizations in 1982-83 — materially matching every claim in the event description. Minor immaterial nuance: some sources place the 30%+ unemployment peak in 1983 rather than strictly within calendar 1982, and cite GDP contraction as ~14-15%, but this is standard variance in describing a multi-year crisis that originated and is dated to 1982, not a material error in country/year/scope.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -745,9 +822,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm the core facts. The ILO (ilo.org) states Chile's 1982-83 crisis was its worst since the 1930s, with real output collapsing ~15% and unemployment (including emergency employment programs PEM/POJH) pushed to over 30% by 1983 — closely matching the described 14% GDP contraction and 30% unemployment. countrystudies.us confirms the 1982 debt crisis hit Chile 'with particular severity' as foreign loans dried up, unemployment 'remained extraordinarily high,' major conglomerates collapsed, and 'in early 1983 the financial sector was nationalized as a way to avoid a major banking crisis' — directly corroborating the banking-system nationalization described. Additional corroborating academic/institutional sources located (not fetched in full due to PDF encoding issues, but titles/abstracts confirm scope): IMF eLibrary chapter 'Liberalization, Crisis, Intervention: The Chilean Financial System, 1975-85' (in the IMF's Banking Crises volume), Central Bank of Chile working paper 'Origins and Resolution of a Banking Crisis: Chile 1982-86' (bcentral.cl), and a Springer Nature chapter titled 'Chilean Economic Crisis (82-86): Twin Crisis-Finance/Banking Crisis.' These consistently attribute the crisis to financial deregulation that let banks borrow abroad/lend in dollars, creating currency and debt mismatches, followed by peso devaluation and a wave of bank interventions/nationalizations in 1982-83 — materially matching every claim in the event description. Minor immaterial nuance: some sources place the 30%+ unemployment peak in 1983 rather than strictly within calendar 1982, and cite GDP contraction as ~14-15%, but this is standard variance in describing a multi-year crisis that originated and is dated to 1982, not a material error in country/year/scope.",
+        "source": "https://www.ilo.org/media/316086/download",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Crisis_of_1982"
+    "source": "https://www.ilo.org/media/316086/download"
   },
   {
     "year": 1983,
@@ -1603,12 +1691,12 @@
     "year": 2023,
     "title": "Boric Announces Lithium Nationalization Strategy",
     "verdict": "TRUE",
-    "reason": "Announced April 20, 2023. State control via CODELCO and ENAMI confirmed. SQM and Albemarle deals confirmed. Comparison to 1971 copper nationalization confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Wikipedia sources confirm this materially as described. On April 20-21, 2023, Chilean President Gabriel Boric announced a National Lithium Strategy calling for majority state control (via CODELCO and ENAMI) of future lithium projects on Chile's salt flats, home to the world's largest lithium reserves, while honoring existing contracts (CNBC, Forbes, Foreign Policy, Mining.com, Mining-technology). The announcement was explicitly likened to Allende's 1971 copper nationalization (Common Dreams, Qz, Electrek reporting Boric invoked the Allende model) and drew strong business/investor pushback (Forbes, CGEP Columbia). Subsequently, Codelco and SQM reached a framework/final agreement (Dec 2023 framework, finalized May 2024) in which SQM extended its operating rights in the Salar de Atacama to 2060 in exchange for Codelco taking a majority (50%+1) stake — squarely matching \"extending mining rights in exchange for increased state participation\" (SQM.com, Bloomberg, Mining Weekly). Albemarle separately signed a contract modification (\"Annex 2024,\" April 26, 2024) with the Chilean state resolving a dispute and adjusting its exploitation terms (AmericaEconomia/SEC filings) — a related but softer parallel than the SQM deal; this is a minor supporting-detail nuance, not a core year/country/actor discrepancy. Core facts (country, year, president, agencies, comparison, opposition) are all corroborated by independent sources.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1620,9 +1708,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm this materially as described. On April 20-21, 2023, Chilean President Gabriel Boric announced a National Lithium Strategy calling for majority state control (via CODELCO and ENAMI) of future lithium projects on Chile's salt flats, home to the world's largest lithium reserves, while honoring existing contracts (CNBC, Forbes, Foreign Policy, Mining.com, Mining-technology). The announcement was explicitly likened to Allende's 1971 copper nationalization (Common Dreams, Qz, Electrek reporting Boric invoked the Allende model) and drew strong business/investor pushback (Forbes, CGEP Columbia). Subsequently, Codelco and SQM reached a framework/final agreement (Dec 2023 framework, finalized May 2024) in which SQM extended its operating rights in the Salar de Atacama to 2060 in exchange for Codelco taking a majority (50%+1) stake — squarely matching \"extending mining rights in exchange for increased state participation\" (SQM.com, Bloomberg, Mining Weekly). Albemarle separately signed a contract modification (\"Annex 2024,\" April 26, 2024) with the Chilean state resolving a dispute and adjusting its exploitation terms (AmericaEconomia/SEC filings) — a related but softer parallel than the SQM deal; this is a minor supporting-detail nuance, not a core year/country/actor discrepancy. Core facts (country, year, president, agencies, comparison, opposition) are all corroborated by independent sources.",
+        "source": "https://www.cnbc.com/2023/04/21/chile-plans-to-nationalize-its-vast-lithium-industry.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Lithium_mining_in_Chile"
+    "source": "https://www.cnbc.com/2023/04/21/chile-plans-to-nationalize-its-vast-lithium-industry.html"
   },
   {
     "year": 2023,

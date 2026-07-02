@@ -2,13 +2,13 @@
   {
     "year": 1950,
     "title": "Helmand Valley Authority irrigation project launched",
-    "verdict": "TRUE",
-    "reason": "Morrison-Knudsen contracted from 1946; HAVA formally established 1952. Year given (1950) is approximate start of major work — accurate in spirit, project began mid-1940s.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Morrison-Knudsen contracted from 1946; HAVA formally established 1952. Year given (1950) is approximate start of major work — accurate in spirit, project began mid-1940s.; Pass 2 FALSE: The core event is real — Afghanistan did partner with the American firm Morrison-Knudsen to develop the Helmand River Valley irrigation scheme (dams, canals, agricultural development in arid southern Afghanistan) — but the year 1950 is wrong. Multiple independent, non-Wikipedia sources (NPR, Washington Post 'Little America' retrospective, a DTIC/US military archived report titled 'The Helmand Valley Project in Afghanistan', a 1951 State Department FRUS cable, and an engineering-history summary) converge on 1946 as when King Zahir Shah's government contracted Morrison-Knudsen and launched the irrigation/dam-building program (with an initial ~$17M appropriation). The formal 'Helmand Valley Authority' (HVA) named in the title was not established as an Afghan government agency until December 4, 1952 (later expanded/renamed HAVA in 1965). 1950 corresponds only to a narrower engineering milestone (a preliminary dam design phase for Kajaki), not to the government's partnership launch or the Authority's founding. A 1951 State Department FRUS document I fetched directly confirms the Export-Import Bank loan and construction contract with a US firm were already in progress by February 1951, consistent with an earlier (1946-1949) start rather than a 1950 launch. Because the year is materially off (by 4-6 years) rather than just a minor detail, this does not qualify as PARTIAL (which requires year+country to hold) and is scored FALSE with corrected_year 1946, the best-supported date for the actual government-Morrison Knudsen partnership described.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -20,9 +20,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The core event is real — Afghanistan did partner with the American firm Morrison-Knudsen to develop the Helmand River Valley irrigation scheme (dams, canals, agricultural development in arid southern Afghanistan) — but the year 1950 is wrong. Multiple independent, non-Wikipedia sources (NPR, Washington Post 'Little America' retrospective, a DTIC/US military archived report titled 'The Helmand Valley Project in Afghanistan', a 1951 State Department FRUS cable, and an engineering-history summary) converge on 1946 as when King Zahir Shah's government contracted Morrison-Knudsen and launched the irrigation/dam-building program (with an initial ~$17M appropriation). The formal 'Helmand Valley Authority' (HVA) named in the title was not established as an Afghan government agency until December 4, 1952 (later expanded/renamed HAVA in 1965). 1950 corresponds only to a narrower engineering milestone (a preliminary dam design phase for Kajaki), not to the government's partnership launch or the Authority's founding. A 1951 State Department FRUS document I fetched directly confirms the Export-Import Bank loan and construction contract with a US firm were already in progress by February 1951, consistent with an earlier (1946-1949) start rather than a 1950 launch. Because the year is materially off (by 4-6 years) rather than just a minor detail, this does not qualify as PARTIAL (which requires year+country to hold) and is scored FALSE with corrected_year 1946, the best-supported date for the actual government-Morrison Knudsen partnership described.",
+        "source": "https://history.state.gov/historicaldocuments/frus1951v06p2/d372",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1946
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Helmand_and_Arghandab_Valley_Authority"
+    ]
   },
   {
     "year": 1950,
@@ -727,13 +738,13 @@
   {
     "year": 1966,
     "title": "Islamist student movement emerges at Kabul University",
-    "verdict": "TRUE",
-    "reason": "Islamist movement at Kabul University in mid-1960s with Rabbani, Hekmatyar is confirmed in multiple historical sources.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Islamist movement at Kabul University in mid-1960s with Rabbani, Hekmatyar is confirmed in multiple historical sources.; Pass 2 FALSE: The general phenomenon (Islamist students/faculty at Kabul University organizing against leftist dominance, inspired by the Egyptian Muslim Brotherhood, with Rabbani and Hekmatyar as later leaders) is real, but 1966 is the wrong year and Hekmatyar could not have been 'active' in it then. Independent (non-Wikipedia) sources converge on: (1) the earliest documented organizing by professors (Niazi, Rabbani et al.) producing the 'Jihad' shabnama program dates to 1965, not 1966; in 1966 Rabbani actually left Kabul for Al-Azhar University in Cairo (returning only in 1968), so he wasn't organizing on campus that year either. (2) Hekmatyar was not even at Kabul University in 1966 — per Jamestown and other biographical sources he graduated high school in Kunduz in 1968, briefly attended a military academy in 1968, and only enrolled at Kabul University's engineering faculty from 1970-1972, where he then joined the Muslim Youth movement. So the description's framing of both Rabbani AND Hekmatyar as 'key figures active in this movement' is materially anachronistic for 1966 — Hekmatyar had no connection to any Kabul University movement for at least another 3-4 years. The organized movement with both men as recognized leaders (Rabbani as chairman, Hekmatyar named political director) is the Muslim Youth organization (Sazman-e Jawanan-e Musulman), most commonly dated to 1969, formalized as Jamiat-e-Islami in 1972 (the latter corroborated independently by Hudson Institute). Given the compound error (wrong year AND an actor who was not yet involved), this is a FALSE rather than PARTIAL verdict; the best-supported corrected year for the described network with both named figures active is 1969.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -745,9 +756,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The general phenomenon (Islamist students/faculty at Kabul University organizing against leftist dominance, inspired by the Egyptian Muslim Brotherhood, with Rabbani and Hekmatyar as later leaders) is real, but 1966 is the wrong year and Hekmatyar could not have been 'active' in it then. Independent (non-Wikipedia) sources converge on: (1) the earliest documented organizing by professors (Niazi, Rabbani et al.) producing the 'Jihad' shabnama program dates to 1965, not 1966; in 1966 Rabbani actually left Kabul for Al-Azhar University in Cairo (returning only in 1968), so he wasn't organizing on campus that year either. (2) Hekmatyar was not even at Kabul University in 1966 — per Jamestown and other biographical sources he graduated high school in Kunduz in 1968, briefly attended a military academy in 1968, and only enrolled at Kabul University's engineering faculty from 1970-1972, where he then joined the Muslim Youth movement. So the description's framing of both Rabbani AND Hekmatyar as 'key figures active in this movement' is materially anachronistic for 1966 — Hekmatyar had no connection to any Kabul University movement for at least another 3-4 years. The organized movement with both men as recognized leaders (Rabbani as chairman, Hekmatyar named political director) is the Muslim Youth organization (Sazman-e Jawanan-e Musulman), most commonly dated to 1969, formalized as Jamiat-e-Islami in 1972 (the latter corroborated independently by Hudson Institute). Given the compound error (wrong year AND an actor who was not yet involved), this is a FALSE rather than PARTIAL verdict; the best-supported corrected year for the described network with both named figures active is 1969.",
+        "source": "https://hudson.org/research/9772-afghanistan-s-islamist-groups",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1969
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Ahmad_Shah_Massoud"
+    ]
   },
   {
     "year": 1967,
@@ -3153,12 +3175,12 @@
     "year": 2007,
     "title": "Afghanistan opium production reaches all-time record",
     "verdict": "TRUE",
-    "reason": "2007 record 8,200 metric tons / 93% world supply confirmed by UNODC.",
-    "verify_count": 1,
+    "reason": "Independent corroboration (World Socialist Web Site, quoting UNODC's 2007 Afghanistan Opium Survey) confirms Afghanistan produced 8,200 metric tons of opium in 2007, a 34% increase over 2006, representing 93% of the global opiates market — matching the event's figures exactly. This record production and its role in enriching Taliban commanders, corrupt officials, and warlords while undermining state-building is well documented in UNODC and academic literature on the period. Year and country both hold; magnitude and scope match.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -3170,9 +3192,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent corroboration (World Socialist Web Site, quoting UNODC's 2007 Afghanistan Opium Survey) confirms Afghanistan produced 8,200 metric tons of opium in 2007, a 34% increase over 2006, representing 93% of the global opiates market — matching the event's figures exactly. This record production and its role in enriching Taliban commanders, corrupt officials, and warlords while undermining state-building is well documented in UNODC and academic literature on the period. Year and country both hold; magnitude and scope match.",
+        "source": "https://www.wsws.org/en/articles/2007/10/afgh-o08.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Opium_production_in_Afghanistan"
+    "source": "https://www.wsws.org/en/articles/2007/10/afgh-o08.html"
   },
   {
     "year": 2008,

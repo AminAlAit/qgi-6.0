@@ -128,12 +128,12 @@
     "year": 1959,
     "title": "First Agrarian Reform Law Redistributes Cuban Landholdings",
     "verdict": "TRUE",
-    "reason": "Promulgated May 17, 1959. 1,000-acre (402 hectare) limit confirmed. Redistribution to tenant farmers and cooperatives confirmed.",
-    "verify_count": 1,
+    "reason": "Independently corroborated: Cuba's First Agrarian Reform Law was promulgated May 17, 1959 (effective June 3, 1959) by the revolutionary government, capping landholdings at roughly 30 caballerías (~1,000 acres) and authorizing expropriation and redistribution of excess estates to landless tenant farmers and cooperatives/state farms. The U.S. State Department's own historical archive (FRUS document) records a contemporaneous American landowner (Kleberg) complaining the law would strip American-owned sugar companies of land, confirming the direct impact on American corporations holding sugar/cattle estates. EBSCO Research Starters independently confirms the same limit (~30 caballerías/~990 acres), the June 3, 1959 effective date, redistribution to landless Cubans, and specific targeting of foreign (American) sugar and cattle operations. All core details in the event description (year, country, ~1,000-acre limit, redistribution to tenant farmers/cooperatives, impact on Cuban landowners and American corporations) match across independent, non-Wikipedia sources.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -145,20 +145,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated: Cuba's First Agrarian Reform Law was promulgated May 17, 1959 (effective June 3, 1959) by the revolutionary government, capping landholdings at roughly 30 caballerías (~1,000 acres) and authorizing expropriation and redistribution of excess estates to landless tenant farmers and cooperatives/state farms. The U.S. State Department's own historical archive (FRUS document) records a contemporaneous American landowner (Kleberg) complaining the law would strip American-owned sugar companies of land, confirming the direct impact on American corporations holding sugar/cattle estates. EBSCO Research Starters independently confirms the same limit (~30 caballerías/~990 acres), the June 3, 1959 effective date, redistribution to landless Cubans, and specific targeting of foreign (American) sugar and cattle operations. All core details in the event description (year, country, ~1,000-acre limit, redistribution to tenant farmers/cooperatives, impact on Cuban landowners and American corporations) match across independent, non-Wikipedia sources.",
+        "source": "https://history.state.gov/historicaldocuments/frus1958-60v06/d324",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Agrarian_reforms_in_Cuba"
+    "source": "https://history.state.gov/historicaldocuments/frus1958-60v06/d324"
   },
   {
     "year": 1960,
     "title": "Cuba Nationalizes US Oil Refineries and Major Businesses",
     "verdict": "TRUE",
-    "reason": "Texaco seized June 29, Esso and Shell July 1, 1960. Nationalization of broader US assets confirmed. '$1 billion+' figure is approximate; sources cite ~$1.7B in oil assets alone.",
-    "verify_count": 1,
+    "reason": "Independently corroborated (non-Granma sources): Cuba seized Texaco (June 29, 1960) and Esso/Shell (July 1, 1960) refineries after they refused, at Eisenhower's urging, to refine Soviet crude delivered starting May 1960. This was followed by Joint Resolutions in Aug-Oct 1960 nationalizing 36 sugar mills, the telephone and electricity utilities, banks, and eventually all major US businesses on the island (166 remaining properties seized by Oct 24, 1960). Eisenhower retaliated by slashing (July 6) and eventually zeroing out (Proclamation 3383) Cuba's sugar quota. Certified US claims for nationalized Cuban property totaled roughly $1.8-1.9 billion at the time, consistent with the description's 'over $1 billion.' This is widely described as the largest uncompensated taking of American property by a foreign government in history, and it directly precipitated the US trade embargo. All material details (country, year, actors, sequence, causal chain, US response) match across Wikipedia, CounterPunch, FIU Institute for Cuban Studies chronology, and US State Department Foreign Relations documents — none of which are on the off-limits granma.cu domain.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -170,9 +181,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated (non-Granma sources): Cuba seized Texaco (June 29, 1960) and Esso/Shell (July 1, 1960) refineries after they refused, at Eisenhower's urging, to refine Soviet crude delivered starting May 1960. This was followed by Joint Resolutions in Aug-Oct 1960 nationalizing 36 sugar mills, the telephone and electricity utilities, banks, and eventually all major US businesses on the island (166 remaining properties seized by Oct 24, 1960). Eisenhower retaliated by slashing (July 6) and eventually zeroing out (Proclamation 3383) Cuba's sugar quota. Certified US claims for nationalized Cuban property totaled roughly $1.8-1.9 billion at the time, consistent with the description's 'over $1 billion.' This is widely described as the largest uncompensated taking of American property by a foreign government in history, and it directly precipitated the US trade embargo. All material details (country, year, actors, sequence, causal chain, US response) match across Wikipedia, CounterPunch, FIU Institute for Cuban Studies chronology, and US State Department Foreign Relations documents — none of which are on the off-limits granma.cu domain.",
+        "source": "https://www.counterpunch.org/2019/03/29/the-cuban-nationalization-of-us-property-in-1960-the-historical-and-global-context/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.granma.cu/cuba/2015-08-10/cuba-nationalizes-us-companies"
+    "source": "https://www.counterpunch.org/2019/03/29/the-cuban-nationalization-of-us-property-in-1960-the-historical-and-global-context/"
   },
   {
     "year": 1960,
@@ -603,12 +625,12 @@
     "year": 1982,
     "title": "Cuba Defaults on Western Hard-Currency Debt",
     "verdict": "TRUE",
-    "reason": "1982 debt suspension confirmed in context of falling sugar prices and Latin American debt crisis. $3.5B figure is consistent with historical accounts.",
-    "verify_count": 1,
+    "reason": "Independent scholarly sources confirm Cuba suspended hard-currency debt service to Western creditors in 1982. Richard Turits' peer-reviewed article 'Trade, debt, and the Cuban economy' (World Development, 1987) states that by 1982 Cuba's debt obligations to the West were estimated at $3 billion, and in August 1982 the Banco Nacional de Cuba announced its inability to meet debt repayment obligations and called for a debt rescheduling -- directly matching the described suspension of payments amid falling sugar prices and a broader liquidity crisis (short-term loans suddenly withdrawn) that put Cuba in company with other Latin American debtors that year (Mexico's own August 1982 moratorium marks the start of the broader LDC debt crisis). Separately, Lorenzo Pérez's ASCE paper 'Cuba: Access to Capital Markets, External Debt Burden, and Possible Avenues for Debt Relief' (2008), which I fetched and read directly, corroborates that Cuba began renegotiating outstanding debt with bilateral creditors from the early 1980s, and documents an exchange between Cuban officials and Paris Club representatives referencing 'apparently existing rescheduling of the obligations falling due in 1982.' The $3 billion figure from Turits is close to (though not identical to) the $3.5 billion cited in the event description -- a minor, non-material variance typical of differing contemporary estimates, not a magnitude error. Note: the more comprehensive, formally declared multilateral default (to the Paris Club, ~$10.9 billion) came later in 1986; but the specific 1982 action described here (suspension of payments / inability to meet obligations, prompting rescheduling talks) is independently confirmed as a real, dated event. No off-limits domain (imf.org) was needed or used for corroboration.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -620,9 +642,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent scholarly sources confirm Cuba suspended hard-currency debt service to Western creditors in 1982. Richard Turits' peer-reviewed article 'Trade, debt, and the Cuban economy' (World Development, 1987) states that by 1982 Cuba's debt obligations to the West were estimated at $3 billion, and in August 1982 the Banco Nacional de Cuba announced its inability to meet debt repayment obligations and called for a debt rescheduling -- directly matching the described suspension of payments amid falling sugar prices and a broader liquidity crisis (short-term loans suddenly withdrawn) that put Cuba in company with other Latin American debtors that year (Mexico's own August 1982 moratorium marks the start of the broader LDC debt crisis). Separately, Lorenzo Pérez's ASCE paper 'Cuba: Access to Capital Markets, External Debt Burden, and Possible Avenues for Debt Relief' (2008), which I fetched and read directly, corroborates that Cuba began renegotiating outstanding debt with bilateral creditors from the early 1980s, and documents an exchange between Cuban officials and Paris Club representatives referencing 'apparently existing rescheduling of the obligations falling due in 1982.' The $3 billion figure from Turits is close to (though not identical to) the $3.5 billion cited in the event description -- a minor, non-material variance typical of differing contemporary estimates, not a magnitude error. Note: the more comprehensive, formally declared multilateral default (to the Paris Club, ~$10.9 billion) came later in 1986; but the specific 1982 action described here (suspension of payments / inability to meet obligations, prompting rescheduling talks) is independently confirmed as a real, dated event. No off-limits domain (imf.org) was needed or used for corroboration.",
+        "source": "https://www.ascecubadatabase.org/wp-content/uploads/2014/09/v18-perez.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.imf.org/external/pubs/ft/wp/2000/wp0040.pdf"
+    "source": "https://www.ascecubadatabase.org/wp-content/uploads/2014/09/v18-perez.pdf"
   },
   {
     "year": 1987,
@@ -1428,12 +1461,12 @@
     "year": 2020,
     "title": "Cuba Unifies Dual Currency System â€” CUC Eliminated",
     "verdict": "TRUE",
-    "reason": "Announced December 2020, implemented January 1, 2021 confirmed. Severe inflation (70%+) in 2021 confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent non-Wikipedia sources confirm all material elements: Cuba's government (under Díaz-Canel) announced the long-planned \"Tarea Ordenamiento\" unification of its dual currency system in October 2020, eliminating the Convertible Peso (CUC) and moving to the Cuban Peso (CUP) alone, effective January 1, 2021, with the CUP devalued to a new official rate of 24:1 against the USD. Detailed implementation measures (wage/price restructuring) were unveiled in a Dec 10, 2020 speech, but the initial unification announcement and central bank confirmation date to October 2020, matching the event description. Post-implementation inflation in 2021 is confirmed severe: official CPI came in at 77.3% (exceeding the 70% cited in the description), with independent researcher estimates ranging far higher (174%-700%) due to acknowledged undercounting in official statistics. All core facts — country, year of announcement, elimination of CUC, January 2021 effective date, and >70% 2021 inflation — check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1445,9 +1478,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent non-Wikipedia sources confirm all material elements: Cuba's government (under Díaz-Canel) announced the long-planned \"Tarea Ordenamiento\" unification of its dual currency system in October 2020, eliminating the Convertible Peso (CUC) and moving to the Cuban Peso (CUP) alone, effective January 1, 2021, with the CUP devalued to a new official rate of 24:1 against the USD. Detailed implementation measures (wage/price restructuring) were unveiled in a Dec 10, 2020 speech, but the initial unification announcement and central bank confirmation date to October 2020, matching the event description. Post-implementation inflation in 2021 is confirmed severe: official CPI came in at 77.3% (exceeding the 70% cited in the description), with independent researcher estimates ranging far higher (174%-700%) due to acknowledged undercounting in official statistics. All core facts — country, year of announcement, elimination of CUC, January 2021 effective date, and >70% 2021 inflation — check out.",
+        "source": "https://www.cambridge.org/core/journals/latin-american-research-review/article/cubas-monetary-reform-and-tripledigit-inflation/1086A26D58D4B72FF84F21A57A2F2794",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Dual_economy_of_Cuba"
+    "source": "https://www.cambridge.org/core/journals/latin-american-research-review/article/cubas-monetary-reform-and-tripledigit-inflation/1086A26D58D4B72FF84F21A57A2F2794"
   },
   {
     "year": 2021,
