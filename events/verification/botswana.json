@@ -103,12 +103,12 @@
     "year": 1971,
     "title": "Orapa Diamond Mine Opens — Diamond Era Begins",
     "verdict": "TRUE",
-    "reason": "The Orapa mine commenced production in July 1971, was officially opened by President Seretse Khama, and became the world's second-largest diamond mine by volume. Its revenues funded rapid human-development gains.",
-    "verify_count": 1,
+    "reason": "Independent, non-Wikipedia sources confirm the core facts. Debswana (the mine's official operator, a De Beers/Botswana government partnership) states Orapa \"became fully operational in July 1971 following an official opening by the then President of Botswana, His Excellency Sir Seretse Khama.\" Mining-Technology.com independently corroborates \"Production of diamond at the Orapa mine commenced in July 1971\" and describes Orapa as standing \"second among the world's biggest diamond-generating kimberlite mines,\" matching the description's \"second-largest diamond mine by volume\" framing. Multiple independent outlets (ISS Africa, African Vibes, Natural Diamonds, African Business) corroborate the broader narrative that diamond revenues were channeled via Botswana's development-plan budgeting into schools, clinics, and roads, and that Botswana's post-1970s growth (the \"diamond miracle\") produced some of the fastest human-development gains on the continent over the following decades. All material elements — country (Botswana), year (1971), event (Orapa mine opening/start of production), and downstream effects (export earnings, funding roads/schools/clinics, rapid human development) — are corroborated by sources independent of Wikipedia.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -120,9 +120,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent, non-Wikipedia sources confirm the core facts. Debswana (the mine's official operator, a De Beers/Botswana government partnership) states Orapa \"became fully operational in July 1971 following an official opening by the then President of Botswana, His Excellency Sir Seretse Khama.\" Mining-Technology.com independently corroborates \"Production of diamond at the Orapa mine commenced in July 1971\" and describes Orapa as standing \"second among the world's biggest diamond-generating kimberlite mines,\" matching the description's \"second-largest diamond mine by volume\" framing. Multiple independent outlets (ISS Africa, African Vibes, Natural Diamonds, African Business) corroborate the broader narrative that diamond revenues were channeled via Botswana's development-plan budgeting into schools, clinics, and roads, and that Botswana's post-1970s growth (the \"diamond miracle\") produced some of the fastest human-development gains on the continent over the following decades. All material elements — country (Botswana), year (1971), event (Orapa mine opening/start of production), and downstream effects (export earnings, funding roads/schools/clinics, rapid human development) — are corroborated by sources independent of Wikipedia.",
+        "source": "https://www.mining-technology.com/projects/orapa-diamond-mine-botswana/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Orapa_diamond_mine"
+    "source": "https://www.mining-technology.com/projects/orapa-diamond-mine-botswana/"
   },
   {
     "year": 1974,
@@ -178,12 +189,12 @@
     "year": 1976,
     "title": "Pula Currency Introduced — Monetary Independence from South Africa",
     "verdict": "TRUE",
-    "reason": "Botswana withdrew from the Rand Monetary Area on 23 August 1976 ('Pula Day'), introducing the pula pegged to a basket of currencies. The decision to withdraw was announced in September 1974, and the currency launched on exactly the stated date in 1976.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm: Botswana introduced the pula on 23 August 1976 (\"Pula Day\"), replacing the South African rand that had circulated in the country (rand ceased legal tender 100 days later). This ended Botswana's monetary dependence on apartheid-era South Africa. The name 'pula' does mean 'rain'/'blessing' in Setswana. On the peg regime: initially pegged to the US dollar at launch, then floated briefly (1979), and from June 1980 onward pegged to a basket comprising the South African rand and IMF Special Drawing Rights — consistent with the description's \"pegged to a basket of currencies.\" The pula's reputation as one of Africa's more stable, conservatively managed currencies over subsequent decades is well documented (attributed to diamond-revenue-backed reserves and prudent central bank policy). One minor nuance: sources differ on whether Botswana had formally joined the 1974 Rand Monetary Area treaty or had simply used the rand under the older informal currency union before 1976 — but this does not change the material substance of the event (ending the rand-based monetary link to South Africa and launching an independent currency in 1976), which is corroborated by fully independent sources (Wikipedia, academic/JSTOR/Cambridge references), not just the off-limits bankofbotswana.bw domain.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -195,9 +206,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: Botswana introduced the pula on 23 August 1976 (\"Pula Day\"), replacing the South African rand that had circulated in the country (rand ceased legal tender 100 days later). This ended Botswana's monetary dependence on apartheid-era South Africa. The name 'pula' does mean 'rain'/'blessing' in Setswana. On the peg regime: initially pegged to the US dollar at launch, then floated briefly (1979), and from June 1980 onward pegged to a basket comprising the South African rand and IMF Special Drawing Rights — consistent with the description's \"pegged to a basket of currencies.\" The pula's reputation as one of Africa's more stable, conservatively managed currencies over subsequent decades is well documented (attributed to diamond-revenue-backed reserves and prudent central bank policy). One minor nuance: sources differ on whether Botswana had formally joined the 1974 Rand Monetary Area treaty or had simply used the rand under the older informal currency union before 1976 — but this does not change the material substance of the event (ending the rand-based monetary link to South Africa and launching an independent currency in 1976), which is corroborated by fully independent sources (Wikipedia, academic/JSTOR/Cambridge references), not just the off-limits bankofbotswana.bw domain.",
+        "source": "https://en.wikipedia.org/wiki/Botswana_pula",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.bankofbotswana.bw/content/history-botswana-currency"
+    "source": "https://en.wikipedia.org/wiki/Botswana_pula"
   },
   {
     "year": 1977,
@@ -278,12 +300,12 @@
     "year": 1982,
     "title": "Jwaneng Diamond Mine Opens — Peak Diamond Revenue Era",
     "verdict": "TRUE",
-    "reason": "The Jwaneng mine reached commercial production and was officially opened in August 1982 by President Quett Masire. Combined with Orapa and Letlhakane, diamonds contributed over 70% of export revenues, funding extraordinary expansion of public services.",
-    "verify_count": 1,
+    "reason": "Independent, non-Wikipedia sources confirm Jwaneng mine reached commercial/full production in 1982 (mid-1982 production start, officially opened August 1982 by President Ketumile Masire) — corroborated by Debswana's own corporate history page, mining-technology.com, an academic Jwaneng-discovery history article (scielo.org.za), and a mining-industry retrospective (shalev.co.uk). Multiple independent sources describe Jwaneng as becoming 'the world's richest diamond mine by value,' consistent with the claim that Botswana became the top diamond producer by value once Jwaneng joined Orapa and Letlhakane in production. The claim that diamonds came to supply roughly 70% of export revenue and around half of government revenue is corroborated by several independent sources (World Bank working paper on Botswana revenue volatility, general economic-history summaries) describing this as the steady-state contribution of the diamond sector (Jwaneng+Orapa+Letlhakane) from the 1980s onward, and the funding of major expansions in free education and healthcare that drove Botswana's HDI gains is corroborated by multiple independent development-history sources. No independent source contradicts the year, country, or the substance of the description; only Wikipedia (off-limits) gives the single most precise month-by-month account, but the core facts are corroborated elsewhere.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -295,9 +317,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent, non-Wikipedia sources confirm Jwaneng mine reached commercial/full production in 1982 (mid-1982 production start, officially opened August 1982 by President Ketumile Masire) — corroborated by Debswana's own corporate history page, mining-technology.com, an academic Jwaneng-discovery history article (scielo.org.za), and a mining-industry retrospective (shalev.co.uk). Multiple independent sources describe Jwaneng as becoming 'the world's richest diamond mine by value,' consistent with the claim that Botswana became the top diamond producer by value once Jwaneng joined Orapa and Letlhakane in production. The claim that diamonds came to supply roughly 70% of export revenue and around half of government revenue is corroborated by several independent sources (World Bank working paper on Botswana revenue volatility, general economic-history summaries) describing this as the steady-state contribution of the diamond sector (Jwaneng+Orapa+Letlhakane) from the 1980s onward, and the funding of major expansions in free education and healthcare that drove Botswana's HDI gains is corroborated by multiple independent development-history sources. No independent source contradicts the year, country, or the substance of the description; only Wikipedia (off-limits) gives the single most precise month-by-month account, but the core facts are corroborated elsewhere.",
+        "source": "https://www.debswana.com/our-history/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Jwaneng_diamond_mine"
+    "source": "https://www.debswana.com/our-history/"
   },
   {
     "year": 1986,
@@ -327,13 +360,13 @@
   {
     "year": 1987,
     "title": "Botswana Achieves Middle-Income Status",
-    "verdict": "TRUE",
-    "reason": "Botswana's average GDP growth of over 9% per year since 1966 produced one of the fastest sustained growth rates recorded globally, enabling World Bank reclassification to lower-middle-income status by the late 1980s. The country subsequently rose to upper-middle income.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Botswana's average GDP growth of over 9% per year since 1966 produced one of the fastest sustained growth rates recorded globally, enabling World Bank reclassification to lower-middle-income status by the late 1980s. The country subsequently rose to upper-middle income.; Pass 2 FALSE: The core narrative (Botswana grew from one of the world's poorest nations at independence in 1966 to a lower-middle-income economy, with extraordinary sustained GDP growth around/above 9% per year) is well corroborated by many independent sources (World Bank country page, ISS African Futures, Harvard International Review, LSE blog, UNRISD paper). However, the specific year \"1987\" for the World Bank reclassification is not supported and appears wrong. I obtained the World Bank's own World Development Report 1986 (published July 1986, official World Bank document, primary source) via documents.worldbank.org and confirmed via full-text extraction that Botswana was ALREADY listed in Table 2 ('Growth of production') under 'Middle-income economies > Lower middle-income' (entry #57, alongside Thailand, Dominican Rep., Peru, Mauritius) — a full year before the claimed 1987 date. The WDR1986 text explicitly states: 'Two new countries, Botswana and Mauritius, whose populations now exceed 1 million, are included in this year's tables' — meaning 1986 was the first year Botswana appeared in World Bank income tables at all (due to a population>1m threshold, not an income graduation), and it entered immediately in the lower-middle-income bracket (using 1984 GNP-per-capita data, threshold <$400=low-income). I cross-checked with the World Bank's own historical GNI-per-capita (Atlas method) API data, which shows Botswana's GNI/capita was already $1,020-$1,290 throughout 1984-1987 (essentially flat), well above contemporary low-income thresholds, meaning Botswana had likely been at 'middle income' levels for years before 1987, not newly crossing a threshold that year. I confirmed the WDR1987 report (published 1987) also lists Botswana under lower-middle-income, but this is a continuation, not a new event, since it was already there in 1986. Notably, the event's own text says Botswana grew 'from one of the world's poorest nations at independence just two decades earlier' — two decades after 1966 is 1986, which matches my corrected year better than 1987. Given a primary, independent (non-Wikipedia) World Bank document directly contradicts 1987 as the reclassification year and instead supports 1986 (or earlier), I return FALSE with corrected_year 1986. Note there is inherent fuzziness in pinning an exact 'reclassification year' since Botswana's income appears to have exceeded low-income thresholds even before 1986, but 1986 is the earliest year for which I have direct documentary evidence of the World Bank's own official lower-middle-income classification table including Botswana, so it is the best-supported corrected year.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -345,9 +378,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The core narrative (Botswana grew from one of the world's poorest nations at independence in 1966 to a lower-middle-income economy, with extraordinary sustained GDP growth around/above 9% per year) is well corroborated by many independent sources (World Bank country page, ISS African Futures, Harvard International Review, LSE blog, UNRISD paper). However, the specific year \"1987\" for the World Bank reclassification is not supported and appears wrong. I obtained the World Bank's own World Development Report 1986 (published July 1986, official World Bank document, primary source) via documents.worldbank.org and confirmed via full-text extraction that Botswana was ALREADY listed in Table 2 ('Growth of production') under 'Middle-income economies > Lower middle-income' (entry #57, alongside Thailand, Dominican Rep., Peru, Mauritius) — a full year before the claimed 1987 date. The WDR1986 text explicitly states: 'Two new countries, Botswana and Mauritius, whose populations now exceed 1 million, are included in this year's tables' — meaning 1986 was the first year Botswana appeared in World Bank income tables at all (due to a population>1m threshold, not an income graduation), and it entered immediately in the lower-middle-income bracket (using 1984 GNP-per-capita data, threshold <$400=low-income). I cross-checked with the World Bank's own historical GNI-per-capita (Atlas method) API data, which shows Botswana's GNI/capita was already $1,020-$1,290 throughout 1984-1987 (essentially flat), well above contemporary low-income thresholds, meaning Botswana had likely been at 'middle income' levels for years before 1987, not newly crossing a threshold that year. I confirmed the WDR1987 report (published 1987) also lists Botswana under lower-middle-income, but this is a continuation, not a new event, since it was already there in 1986. Notably, the event's own text says Botswana grew 'from one of the world's poorest nations at independence just two decades earlier' — two decades after 1966 is 1986, which matches my corrected year better than 1987. Given a primary, independent (non-Wikipedia) World Bank document directly contradicts 1987 as the reclassification year and instead supports 1986 (or earlier), I return FALSE with corrected_year 1986. Note there is inherent fuzziness in pinning an exact 'reclassification year' since Botswana's income appears to have exceeded low-income thresholds even before 1986, but 1986 is the earliest year for which I have direct documentary evidence of the World Bank's own official lower-middle-income classification table including Botswana, so it is the best-supported corrected year.",
+        "source": "http://documents.worldbank.org/curated/en/143091468331808738/pdf/PUB61340REPLACEMENT0WDR01986.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1986
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Economy_of_Botswana"
+    ]
   },
   {
     "year": 1989,
@@ -828,12 +872,12 @@
     "year": 2011,
     "title": "Public Sector Strike — Labour Unrest Challenges BDP Government",
     "verdict": "TRUE",
-    "reason": "Beginning on 18 April 2011, approximately 90,000-100,000 public sector workers launched Botswana's largest-ever strike over a wage dispute, demanding a 16% increase against the government's offer of 3-5%. The eight-week strike was met with threats of mass dismissal.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm: Botswana's public sector unions (BOFEPUSU) launched an eight-week strike starting April 18, 2011, involving close to 100,000 public servants, over a wage dispute (workers demanded 16% pay rise vs government's offer) with the Ian Khama (BDP) government. The government took a hard line, ultimately dismissing 2,802 striking employees (consistent with the described 'threat to fire all strikers'), and it is described as the longest/largest public service strike in Botswana's history, ending mid-June 2011. All material details (country, year, scale ~100k workers, actor Khama/BDP government, wage-dispute cause, weeks-long duration, government firing threat/action) check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -845,9 +889,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: Botswana's public sector unions (BOFEPUSU) launched an eight-week strike starting April 18, 2011, involving close to 100,000 public servants, over a wage dispute (workers demanded 16% pay rise vs government's offer) with the Ian Khama (BDP) government. The government took a hard line, ultimately dismissing 2,802 striking employees (consistent with the described 'threat to fire all strikers'), and it is described as the longest/largest public service strike in Botswana's history, ending mid-June 2011. All material details (country, year, scale ~100k workers, actor Khama/BDP government, wage-dispute cause, weeks-long duration, government firing threat/action) check out.",
+        "source": "https://reliefweb.int/report/botswana/public-sector-strike-hurts-poor",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "http://edition.cnn.com/2011/WORLD/africa/04/21/botswana.civil.servant.strike/index.html"
+    "source": "https://reliefweb.int/report/botswana/public-sector-strike-hurts-poor"
   },
   {
     "year": 2012,

@@ -128,12 +128,12 @@
     "year": 1961,
     "title": "Sihanouk Nationalizes Banks and Foreign Trade",
     "verdict": "FALSE",
-    "reason": "Nationalization of banks and foreign trade happened in 1963, not 1961. Multiple sources confirm the nationalization was announced in 1963 alongside the rejection of US aid. Year is off by 2 years.",
-    "verify_count": 1,
+    "reason": "The event is real and materially matches the description (Sihanouk nationalized banking, foreign trade, and insurance under his 'Buddhist socialism'/Sangkum program, aiming to reduce Chinese/Vietnamese commercial dominance and cutting US aid, contributing to economic decline), but it occurred in 1963, not 1961. Multiple independent sources (Wikipedia's Kingdom of Cambodia 1953-1970 article, Facts and Details, EBSCO, The Diplomat) all consistently date the nationalization to 1963. No source places this event in 1961.",
+    "verify_count": 2,
     "consensus_verdict": "FALSE",
-    "consensus_status": "single",
+    "consensus_status": "double_negative",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -145,9 +145,21 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially matches the description (Sihanouk nationalized banking, foreign trade, and insurance under his 'Buddhist socialism'/Sangkum program, aiming to reduce Chinese/Vietnamese commercial dominance and cutting US aid, contributing to economic decline), but it occurred in 1963, not 1961. Multiple independent sources (Wikipedia's Kingdom of Cambodia 1953-1970 article, Facts and Details, EBSCO, The Diplomat) all consistently date the nationalization to 1963. No source places this event in 1961.",
+        "source": "https://en.wikipedia.org/wiki/Kingdom_of_Cambodia_(1953%E2%80%931970)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1963
       }
     ],
-    "source": "https://newleftreview.org/issues/i25/articles/w-e-willmott-cambodia"
+    "source": "https://en.wikipedia.org/wiki/Kingdom_of_Cambodia_(1953%E2%80%931970)"
   },
   {
     "year": 1962,
@@ -228,12 +240,12 @@
     "year": 1967,
     "title": "Samlaut Peasant Uprising Signals Growing Rural Discontent",
     "verdict": "TRUE",
-    "reason": "Uprising began April 2, 1967 in Battambang Province triggered by forced rice collection. Violent military suppression confirmed; connection to Khmer Rouge mobilization confirmed.",
-    "verify_count": 1,
+    "reason": "The Samlaut Uprising is a well-documented historical event: a peasant rebellion broke out on 2 April 1967 near Samlaut, Battambang Province, Cambodia, triggered by the government's forced/low-price rice-collection system ('ramassage du paddy') enforced by troops — angry peasants attacked and killed soldiers collecting rice. The Royal Cambodian government (under Sihanouk/Lon Nol) responded with violent military suppression (army sweeps, air force strafing/bombing of villages), with a death toll reported in the hundreds and thousands of villagers fleeing into the forest. It is widely regarded by historians (notably Ben Kiernan, who devoted a two-volume scholarly monograph, 'The Samlaut Rebellion and Its Aftermath, 1967-70: The Origins of Cambodia's Liberation Movement,' Monash Univ., 1975, to this exact event) as a foundational mobilization of rural discontent that fed directly into the Khmer Rouge's formal launch of armed struggle later in 1967-68. Independent (non-Wikipedia) corroboration was found on khmerization.blogspot.com, which confirms the Samlaut location, the land/rice-related grievances against provincial officials, and the rebellion's role in escalating into the civil war that the Khmer Rouge exploited. Multiple other independent leads (Kiernan's monograph listings on Google Books/HathiTrust/Semantic Scholar/Amazon/Goodreads, a ResearchGate peer-reviewed paper on Khmer Rouge state formation in NW Cambodia) all corroborate the same year, location, cause, and historical significance, though those specific pages did not load full text via WebFetch. All material details in the event description (location, trigger, suppression, death toll, and downstream link to Khmer Rouge mobilization) match.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -245,9 +257,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "The Samlaut Uprising is a well-documented historical event: a peasant rebellion broke out on 2 April 1967 near Samlaut, Battambang Province, Cambodia, triggered by the government's forced/low-price rice-collection system ('ramassage du paddy') enforced by troops — angry peasants attacked and killed soldiers collecting rice. The Royal Cambodian government (under Sihanouk/Lon Nol) responded with violent military suppression (army sweeps, air force strafing/bombing of villages), with a death toll reported in the hundreds and thousands of villagers fleeing into the forest. It is widely regarded by historians (notably Ben Kiernan, who devoted a two-volume scholarly monograph, 'The Samlaut Rebellion and Its Aftermath, 1967-70: The Origins of Cambodia's Liberation Movement,' Monash Univ., 1975, to this exact event) as a foundational mobilization of rural discontent that fed directly into the Khmer Rouge's formal launch of armed struggle later in 1967-68. Independent (non-Wikipedia) corroboration was found on khmerization.blogspot.com, which confirms the Samlaut location, the land/rice-related grievances against provincial officials, and the rebellion's role in escalating into the civil war that the Khmer Rouge exploited. Multiple other independent leads (Kiernan's monograph listings on Google Books/HathiTrust/Semantic Scholar/Amazon/Goodreads, a ResearchGate peer-reviewed paper on Khmer Rouge state formation in NW Cambodia) all corroborate the same year, location, cause, and historical significance, though those specific pages did not load full text via WebFetch. All material details in the event description (location, trigger, suppression, death toll, and downstream link to Khmer Rouge mobilization) match.",
+        "source": "http://khmerization.blogspot.com/2011/06/samlaut-rebellion-deja-vu.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Samlaut_Uprising"
+    "source": "http://khmerization.blogspot.com/2011/06/samlaut-rebellion-deja-vu.html"
   },
   {
     "year": 1969,
@@ -553,12 +576,12 @@
     "year": 1980,
     "title": "Mass Refugee Crisis Develops Along Thai-Cambodian Border",
     "verdict": "TRUE",
-    "reason": "Hundreds of thousands of Cambodian refugees fled to Thai border camps from 1979-1980. UNHCR relief operations and border camps as resistance bases are confirmed.",
-    "verify_count": 1,
+    "reason": "Independent sources (Wikipedia: Sa Kaeo Refugee Camp, Khao-I-Dang, Cambodian humanitarian crisis) confirm that following Vietnam's Dec 1978 invasion of Cambodia, hundreds of thousands of Cambodians fled toward the Thai border. By late 1979 roughly 750,000 had reached the frontier zone, and the crisis fully developed/peaked through 1980: Khao-I-Dang holding center reached its peak population of ~160,000 in March 1980; Sa Kaeo camp operated until July 1980; the massive 'land bridge' relief operation (UNHCR/ICRC/NGOs) ran Dec 1979-Sept 1980 distributing ~150,000 metric tons of food. Border camps (Sa Kaeo, Khao-I-Dang, Nong Chan, etc.) simultaneously served as bases/shelter for Khmer Rouge remnants and non-communist resistance groups (e.g., KPNLF, formed Oct 1979), consistent with the description. The refugee/camp situation persisted for over a decade (camps did not fully close until the early-to-mid 1990s, e.g. Khao-I-Dang closed 1993), matching the 'lasted over a decade' claim. While the crisis technically originated in 1979, 1980 is accurately described as when the crisis 'developed' into its full-scale, internationally-managed form (peak camp populations, major relief operations, resistance basing) -- so year, country, and material facts all hold.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -570,9 +593,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources (Wikipedia: Sa Kaeo Refugee Camp, Khao-I-Dang, Cambodian humanitarian crisis) confirm that following Vietnam's Dec 1978 invasion of Cambodia, hundreds of thousands of Cambodians fled toward the Thai border. By late 1979 roughly 750,000 had reached the frontier zone, and the crisis fully developed/peaked through 1980: Khao-I-Dang holding center reached its peak population of ~160,000 in March 1980; Sa Kaeo camp operated until July 1980; the massive 'land bridge' relief operation (UNHCR/ICRC/NGOs) ran Dec 1979-Sept 1980 distributing ~150,000 metric tons of food. Border camps (Sa Kaeo, Khao-I-Dang, Nong Chan, etc.) simultaneously served as bases/shelter for Khmer Rouge remnants and non-communist resistance groups (e.g., KPNLF, formed Oct 1979), consistent with the description. The refugee/camp situation persisted for over a decade (camps did not fully close until the early-to-mid 1990s, e.g. Khao-I-Dang closed 1993), matching the 'lasted over a decade' claim. While the crisis technically originated in 1979, 1980 is accurately described as when the crisis 'developed' into its full-scale, internationally-managed form (peak camp populations, major relief operations, resistance basing) -- so year, country, and material facts all hold.",
+        "source": "https://en.wikipedia.org/wiki/Cambodian_humanitarian_crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.unhcr.org/history-of-unhcr/1975-1994"
+    "source": "https://en.wikipedia.org/wiki/Cambodian_humanitarian_crisis"
   },
   {
     "year": 1982,
@@ -1003,12 +1037,12 @@
     "year": 2003,
     "title": "Anti-Thai Riots Destroy Thai Embassy and Trigger Diplomatic Crisis",
     "verdict": "TRUE",
-    "reason": "Riots erupted January 29, 2003 after false tabloid report about Thai actress claiming Angkor Wat. Thai embassy burned, Thai businesses looted. Cambodia paid $6 million compensation. Core facts confirmed.",
-    "verify_count": 1,
+    "reason": "Independently corroborated (non-Wikipedia sources): on 29 January 2003, mobs in Phnom Penh stormed and burned the Thai embassy and looted/destroyed Thai-owned businesses (Thai Airways, Shinawatra/Shin Corp building, Royal Phnom Penh Hotel), triggered by a false tabloid report (Rasmei Angkor) that Thai actress Suvanant Kongying claimed Angkor Wat belonged to Thailand, amplified by PM Hun Sen. Damage estimates range from ~$12.5M (embassy alone, per Thai officials) up to $42-50M total, consistent with 'tens of millions of dollars.' Thailand recalled its ambassador, expelled Cambodia's envoy, closed the border and suspended aid — a genuine diplomatic rupture, resolved only after Cambodia paid $6M compensation and relations normalized around March-April 2003. All material details (country, year, actors, mechanism, scale, diplomatic fallout) match.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1020,9 +1054,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated (non-Wikipedia sources): on 29 January 2003, mobs in Phnom Penh stormed and burned the Thai embassy and looted/destroyed Thai-owned businesses (Thai Airways, Shinawatra/Shin Corp building, Royal Phnom Penh Hotel), triggered by a false tabloid report (Rasmei Angkor) that Thai actress Suvanant Kongying claimed Angkor Wat belonged to Thailand, amplified by PM Hun Sen. Damage estimates range from ~$12.5M (embassy alone, per Thai officials) up to $42-50M total, consistent with 'tens of millions of dollars.' Thailand recalled its ambassador, expelled Cambodia's envoy, closed the border and suspended aid — a genuine diplomatic rupture, resolved only after Cambodia paid $6M compensation and relations normalized around March-April 2003. All material details (country, year, actors, mechanism, scale, diplomatic fallout) match.",
+        "source": "https://yris.yira.org/global-issue/the-2003-phnom-penh-riots-how-thailand-employed-a-diplomacy-of-anger-toward-cambodia/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2003_Phnom_Penh_riots"
+    "source": "https://yris.yira.org/global-issue/the-2003-phnom-penh-riots-how-thailand-employed-a-diplomacy-of-anger-toward-cambodia/"
   },
   {
     "year": 2004,
@@ -1103,12 +1148,12 @@
     "year": 2011,
     "title": "Land Grabbing Crisis Displaces Tens of Thousands",
     "verdict": "TRUE",
-    "reason": "HRW documented hundreds of violent land disputes and forced evictions from economic land concessions, particularly prominent around 2011-2012. Core facts confirmed.",
-    "verify_count": 1,
+    "reason": "Independent (non-HRW) sources corroborate this materially as described. Al Jazeera's March 2011 feature \"Cambodia's growing dispossessed\" documents the Boeung Kak Lake eviction (~20,000 residents facing eviction, 12,389 families forcibly displaced in a single year per rights-group tallies cited), driven by economic land concessions to private developers, with residents denied title and facing threats when protesting. Facts and Details (citing multiple outlets) corroborates the broader scale: ~2 million hectares (11% of Cambodia's land) transferred from subsistence farmers to agribusiness/development companies by 2011, ~400,000 people displaced by land disputes since 2003, and documented violence/security-guard involvement in evictions. A separate search also surfaced that the World Bank halted funding to Cambodia in 2011 specifically over state security forces violently evicting Boeung Kak Lake families for a project tied to a Hun Sen associate — directly matching the description's claim of security forces backing company/developer claims and international criticism of the Hun Sen government. Year (2011) and country (Cambodia) both hold, and magnitude (\"tens of thousands displaced,\" \"hundreds of violent disputes,\" international criticism of Hun Sen) is consistent with independently reported figures.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1120,9 +1165,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent (non-HRW) sources corroborate this materially as described. Al Jazeera's March 2011 feature \"Cambodia's growing dispossessed\" documents the Boeung Kak Lake eviction (~20,000 residents facing eviction, 12,389 families forcibly displaced in a single year per rights-group tallies cited), driven by economic land concessions to private developers, with residents denied title and facing threats when protesting. Facts and Details (citing multiple outlets) corroborates the broader scale: ~2 million hectares (11% of Cambodia's land) transferred from subsistence farmers to agribusiness/development companies by 2011, ~400,000 people displaced by land disputes since 2003, and documented violence/security-guard involvement in evictions. A separate search also surfaced that the World Bank halted funding to Cambodia in 2011 specifically over state security forces violently evicting Boeung Kak Lake families for a project tied to a Hun Sen associate — directly matching the description's claim of security forces backing company/developer claims and international criticism of the Hun Sen government. Year (2011) and country (Cambodia) both hold, and magnitude (\"tens of thousands displaced,\" \"hundreds of violent disputes,\" international criticism of Hun Sen) is consistent with independently reported figures.",
+        "source": "https://www.aljazeera.com/features/2011/3/15/cambodias-growing-dispossessed",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.hrw.org/report/2012/09/12/beneath-lies/forced-evictions-land-grabbing-and-story-behind-cambodias-economic-growth"
+    "source": "https://www.aljazeera.com/features/2011/3/15/cambodias-growing-dispossessed"
   },
   {
     "year": 2013,
@@ -1153,12 +1209,12 @@
     "year": 2014,
     "title": "Security Forces Kill Garment Workers in Strike Crackdown",
     "verdict": "TRUE",
-    "reason": "Security forces fired on striking garment workers on January 3, 2014, killing at least 4 and wounding dozens. International condemnation followed. Core facts confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources (NPR, CNN, Al Jazeera, Global Voices, Phnom Penh Post, LICADHO, Business & Human Rights Resource Centre) confirm that on January 3, 2014, Cambodian military police/security forces opened fire on striking garment workers near Canadia Industrial Park on Veng Sreng Street, Phnom Penh, killing at least 4 people (Kim Phaleap, Sam Ravy, Yean Rithy, Pheng Kosal) and wounding dozens (LICADHO cites 38 injured). The strike was over minimum wage demands ($160 demanded vs. the government's raise to $95). The crackdown drew international condemnation from human rights groups, unions and was widely covered internationally (NPR, CNN, Al Jazeera). Government raised the minimum wage afterward but no authorities were held accountable — Global Voices' 2020 follow-up and LICADHO's 2024 'Ten Years Without Justice' piece confirm no serious prosecution occurred. All material details (country, year, actor, death toll, location, lack of accountability, international condemnation) match. Corroboration is independent of amnesty.org.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1170,9 +1226,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (NPR, CNN, Al Jazeera, Global Voices, Phnom Penh Post, LICADHO, Business & Human Rights Resource Centre) confirm that on January 3, 2014, Cambodian military police/security forces opened fire on striking garment workers near Canadia Industrial Park on Veng Sreng Street, Phnom Penh, killing at least 4 people (Kim Phaleap, Sam Ravy, Yean Rithy, Pheng Kosal) and wounding dozens (LICADHO cites 38 injured). The strike was over minimum wage demands ($160 demanded vs. the government's raise to $95). The crackdown drew international condemnation from human rights groups, unions and was widely covered internationally (NPR, CNN, Al Jazeera). Government raised the minimum wage afterward but no authorities were held accountable — Global Voices' 2020 follow-up and LICADHO's 2024 'Ten Years Without Justice' piece confirm no serious prosecution occurred. All material details (country, year, actor, death toll, location, lack of accountability, international condemnation) match. Corroboration is independent of amnesty.org.",
+        "source": "https://www.npr.org/sections/thetwo-way/2014/01/03/259389559/cambodian-police-fire-at-striking-garment-workers-4-dead",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.amnesty.org/en/documents/asa23/001/2014/en/"
+    "source": "https://www.npr.org/sections/thetwo-way/2014/01/03/259389559/cambodian-police-fire-at-striking-garment-workers-4-dead"
   },
   {
     "year": 2014,
@@ -1328,12 +1395,12 @@
     "year": 2022,
     "title": "Scam Compound Industry Exposed: Trafficking on Industrial Scale",
     "verdict": "TRUE",
-    "reason": "2022 international media investigations (ProPublica, France24, etc.) exposed massive online fraud operations run by Chinese criminal syndicates in Sihanoukville and Koh Kong with trafficking on an industrial scale. Core facts confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Wikipedia sources corroborate all material elements: Al Jazeera's Aug 2022 longform \"Meet Cambodia's cyber slaves\" (based on a documentary first broadcast 15 July 2022) documents thousands of foreign nationals trafficked into Cambodian scam compounds, forced into cryptocurrency and romance scams under threat of violence. France24 (Nov 2022), VOD English, CamboJA News, and a Global Initiative Against Transnational Organized Crime report (Sept 2022) confirm Sihanoukville and Koh Kong special economic zones as hubs, tied to Chinese organized crime groups, with a government crackdown announced Aug 2022 (2,000+ rescued, 95 detained) and September 2022 raids freeing 1,000+ foreigners from Sihanoukville compounds. International media exposure of this industry in 2022 substantially damaged Cambodia's global reputation, matching the event description closely. Country, year, actors, locations, methods (crypto scams, romance fraud), and scale (thousands/tens of thousands trafficked) all check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1345,9 +1412,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources corroborate all material elements: Al Jazeera's Aug 2022 longform \"Meet Cambodia's cyber slaves\" (based on a documentary first broadcast 15 July 2022) documents thousands of foreign nationals trafficked into Cambodian scam compounds, forced into cryptocurrency and romance scams under threat of violence. France24 (Nov 2022), VOD English, CamboJA News, and a Global Initiative Against Transnational Organized Crime report (Sept 2022) confirm Sihanoukville and Koh Kong special economic zones as hubs, tied to Chinese organized crime groups, with a government crackdown announced Aug 2022 (2,000+ rescued, 95 detained) and September 2022 raids freeing 1,000+ foreigners from Sihanoukville compounds. International media exposure of this industry in 2022 substantially damaged Cambodia's global reputation, matching the event description closely. Country, year, actors, locations, methods (crypto scams, romance fraud), and scale (thousands/tens of thousands trafficked) all check out.",
+        "source": "https://www.aljazeera.com/features/longform/2022/8/11/meet-cambodia-cyber-slaves",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Scam_centers_in_Cambodia"
+    "source": "https://www.aljazeera.com/features/longform/2022/8/11/meet-cambodia-cyber-slaves"
   },
   {
     "year": 2023,

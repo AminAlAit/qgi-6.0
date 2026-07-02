@@ -578,11 +578,11 @@
   {
     "year": 1987,
     "title": "Free Trade Zones Employ Over 100,000 â€” Export Manufacturing Surpasses Sugar",
-    "verdict": "TRUE",
-    "reason": "FTZ employment over 100,000 and zone exports surpassing sugar as top foreign exchange earner in late 1980s is well-documented in Dominican economic history.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "Country and year hold for the core narrative, but the employment magnitude looks premature. The U.S. Library of Congress Country Studies entry for the Dominican Republic (mirrored at countrystudies.us) explicitly confirms the export milestone: 'Free-zone exports swelled from the equivalent of 10 percent of total exports to 31 percent of total exports from 1981 to 1987, and in 1987 free-zone export revenues surpassed those derived from traditional agricultural exports for the first time' (dominican-republic/54.htm). That corroborates the 'surpassing sugar/traditional exports for the first time in 1987' half of the claim well (with the minor imprecision that the source says 'traditional agricultural exports' — sugar, coffee, cocoa, tobacco combined — rather than isolating sugar alone, though sugar was the dominant traditional export). However, the same Country Studies source's companion page on free-zone manufacturing (dominican-republic/49.htm) gives the only concrete employment data points I could find: employment was 36,000 in 1985 and had grown to 'nearly 100,000' only by 1989 ('From 1985 to 1989, the number of free zones had more than doubled, from six to fifteen; employment had jumped from 36,000 to nearly 100,000'). No source I found gives a specific 1987 figure, but interpolating from this authoritative trajectory, 1987 employment was very likely still well short of 100,000 (probably in the 60,000-85,000 range), with the 100,000-worker threshold reached around 1988-89, not 1987. Multiple secondary sources (DMK Abogados, CNZFE historical notes) corroborate that 1986-1988 was the peak installation boom but none independently confirm a 100,000+ headcount specifically in 1987. So: real event, correct country, correct year for the export-surpasses-traditional-exports milestone, but the '100,000 employed' figure appears to be a magnitude/timing overstatement by roughly two years — a material but not disqualifying detail.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -596,8 +596,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Country and year hold for the core narrative, but the employment magnitude looks premature. The U.S. Library of Congress Country Studies entry for the Dominican Republic (mirrored at countrystudies.us) explicitly confirms the export milestone: 'Free-zone exports swelled from the equivalent of 10 percent of total exports to 31 percent of total exports from 1981 to 1987, and in 1987 free-zone export revenues surpassed those derived from traditional agricultural exports for the first time' (dominican-republic/54.htm). That corroborates the 'surpassing sugar/traditional exports for the first time in 1987' half of the claim well (with the minor imprecision that the source says 'traditional agricultural exports' — sugar, coffee, cocoa, tobacco combined — rather than isolating sugar alone, though sugar was the dominant traditional export). However, the same Country Studies source's companion page on free-zone manufacturing (dominican-republic/49.htm) gives the only concrete employment data points I could find: employment was 36,000 in 1985 and had grown to 'nearly 100,000' only by 1989 ('From 1985 to 1989, the number of free zones had more than doubled, from six to fifteen; employment had jumped from 36,000 to nearly 100,000'). No source I found gives a specific 1987 figure, but interpolating from this authoritative trajectory, 1987 employment was very likely still well short of 100,000 (probably in the 60,000-85,000 range), with the 100,000-worker threshold reached around 1988-89, not 1987. Multiple secondary sources (DMK Abogados, CNZFE historical notes) corroborate that 1986-1988 was the peak installation boom but none independently confirm a 100,000+ headcount specifically in 1987. So: real event, correct country, correct year for the export-surpasses-traditional-exports milestone, but the '100,000 employed' figure appears to be a magnitude/timing overstatement by roughly two years — a material but not disqualifying detail.",
+        "source": "https://countrystudies.us/dominican-republic/54.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://countrystudies.us/dominican-republic/54.htm"
   },
   {
     "year": 1988,
@@ -770,11 +782,11 @@
   {
     "year": 2000,
     "title": "Tourism Arrivals Exceed Three Million â€” Caribbean's Top Destination",
-    "verdict": "TRUE",
-    "reason": "DR was Caribbean's top tourist destination by 2000 with arrivals exceeding 3 million. Tourism GDP contribution around 15% consistent with documented figures.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "Core claim confirmed: World Bank official tourist-arrival data (fetched directly from the public World Bank API, sourced from UNWTO) shows Dominican Republic arrivals rose from 2,932,000 in 1999 to 3,161,000 in 2000 — crossing 3 million for the first time that year, consistent with the monotonic rise from 1.81M (1995) through 2.70M (1998). An independent 2007 Harvard Business School academic paper (citing Caribbean Tourism Organization data) confirms the Dominican Republic held the largest share of Caribbean tourist expenditure already in 2000 (kept/slightly grew to 14.7% by 2004, ahead of Puerto Rico's 14% and Cuba's 9.8%), supporting the 'Caribbean's top destination' claim, and corroborates Punta Cana's central role in the all-inclusive resort model. The sugar-to-services structural transformation and tourism's status as the leading foreign-exchange sector (generating >50% of forex by 1997, per other sourced search results) are also well supported. However, the description's claim that tourism's GDP contribution was 'over 15%' appears to be a material magnitude overstatement: the same HBS paper cites a World Bank/Christie-sourced figure of only 7% of GDP for tourism in 2005, and a separate dataset (theglobaleconomy.com) puts international tourism revenue as % of GDP at an average of 9.74% (1995-2018) with a documented maximum of 14.61% in 2003 — never reaching 'over 15%' in the available data for that era. Because year and country hold and the central milestone/ranking claims are true, but a specific magnitude detail (GDP %) is likely inflated, this is a PARTIAL rather than a clean TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -788,17 +800,29 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core claim confirmed: World Bank official tourist-arrival data (fetched directly from the public World Bank API, sourced from UNWTO) shows Dominican Republic arrivals rose from 2,932,000 in 1999 to 3,161,000 in 2000 — crossing 3 million for the first time that year, consistent with the monotonic rise from 1.81M (1995) through 2.70M (1998). An independent 2007 Harvard Business School academic paper (citing Caribbean Tourism Organization data) confirms the Dominican Republic held the largest share of Caribbean tourist expenditure already in 2000 (kept/slightly grew to 14.7% by 2004, ahead of Puerto Rico's 14% and Cuba's 9.8%), supporting the 'Caribbean's top destination' claim, and corroborates Punta Cana's central role in the all-inclusive resort model. The sugar-to-services structural transformation and tourism's status as the leading foreign-exchange sector (generating >50% of forex by 1997, per other sourced search results) are also well supported. However, the description's claim that tourism's GDP contribution was 'over 15%' appears to be a material magnitude overstatement: the same HBS paper cites a World Bank/Christie-sourced figure of only 7% of GDP for tourism in 2005, and a separate dataset (theglobaleconomy.com) puts international tourism revenue as % of GDP at an average of 9.74% (1995-2018) with a documented maximum of 14.61% in 2003 — never reaching 'over 15%' in the available data for that era. Because year and country hold and the central milestone/ranking claims are true, but a specific magnitude detail (GDP %) is likely inflated, this is a PARTIAL rather than a clean TRUE.",
+        "source": "https://api.worldbank.org/v2/country/DO/indicator/ST.INT.ARVL?date=1995:2005&format=json (World Bank official tourist arrivals data); corroborated by https://www.isc.hbs.edu/Documents/resources/courses/moc-course-at-harvard/pdf/student-projects/DominicanRepublic_TourismCluster_2007.pdf (Harvard Business School academic paper citing Caribbean Tourism Organization and World Bank data)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://api.worldbank.org/v2/country/DO/indicator/ST.INT.ARVL?date=1995:2005&format=json (World Bank official tourist arrivals data); corroborated by https://www.isc.hbs.edu/Documents/resources/courses/moc-course-at-harvard/pdf/student-projects/DominicanRepublic_TourismCluster_2007.pdf (Harvard Business School academic paper citing Caribbean Tourism Organization and World Bank data)"
   },
   {
     "year": 2002,
     "title": "Baninter Banking Fraud â€” Largest Financial Crime in Latin American History",
     "verdict": "FALSE",
-    "reason": "Baninter collapse and fraud discovery occurred in 2003, not 2002. Government took control April 2003; arrests May 2003. Rumors began in fall 2002 but the fraud event itself is 2003. Year off by 1.",
-    "verify_count": 1,
+    "reason": "The event is real and materially matches the description (14-year double-bookkeeping fraud at Banco Intercontinental undetected by PwC auditors, ~$2.2-2.3 billion / RD$55 billion bailout cost, roughly 15-20% of Dominican GDP, triggered collapse of two other banks — Bancredito and Banco Mercantil), but the year is wrong. Multiple independent sources (Wikipedia, Yale Journal of Financial Crises abstract, Dominicanomics/Cato) consistently date the actual collapse and government takeover to 2003, not 2002: 'On April 7, 2003, the government took control of BANINTER'; it was 'declared bankrupt in May and dissolved in July [2003]'; and a 2023 retrospective states 'In 2003, three commercial banks... went bust in a spectacular fashion: Banco Intercontinental (Baninter), Banco de Credito (Bancredito), y Banco Mercantil.' Rumors of trouble circulated in fall 2002 and depositors began withdrawing then, but the collapse/bailout/crisis itself — the event as described — occurred in 2003.",
+    "verify_count": 2,
     "consensus_verdict": "FALSE",
-    "consensus_status": "single",
+    "consensus_status": "double_negative",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -812,17 +836,30 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially matches the description (14-year double-bookkeeping fraud at Banco Intercontinental undetected by PwC auditors, ~$2.2-2.3 billion / RD$55 billion bailout cost, roughly 15-20% of Dominican GDP, triggered collapse of two other banks — Bancredito and Banco Mercantil), but the year is wrong. Multiple independent sources (Wikipedia, Yale Journal of Financial Crises abstract, Dominicanomics/Cato) consistently date the actual collapse and government takeover to 2003, not 2002: 'On April 7, 2003, the government took control of BANINTER'; it was 'declared bankrupt in May and dissolved in July [2003]'; and a 2023 retrospective states 'In 2003, three commercial banks... went bust in a spectacular fashion: Banco Intercontinental (Baninter), Banco de Credito (Bancredito), y Banco Mercantil.' Rumors of trouble circulated in fall 2002 and depositors began withdrawing then, but the collapse/bailout/crisis itself — the event as described — occurred in 2003.",
+        "source": "https://en.wikipedia.org/wiki/Banco_Intercontinental",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 2003
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Banco_Intercontinental"
   },
   {
     "year": 2003,
     "title": "Peso Collapses 100%, Inflation Reaches 42% â€” Severe Economic Crisis",
     "verdict": "TRUE",
-    "reason": "Peso collapse, ~40% inflation, IMF emergency standby confirmed for 2003. Power cuts and economic crisis following Baninter bailout all corroborated.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm the 2003 Dominican Republic crisis materially as described. The Baninter banking fraud (discovered/collapsed May 2003, ~US$2.2-2.3bn fraud, ~two-thirds of the national budget) triggered a fiscal/monetary crisis: the government bailout of depositors drove fiscal deficits and monetary expansion, causing the peso to collapse and inflation to surge. Wikipedia's Banco Intercontinental article states verbatim: \"The subsequent fiscal shortfall resulted in massive inflation (42%) and the devaluation of the DOP by over 100%\" — matching both key numeric claims in the event description almost exactly. IMF sources (via elibrary/press releases) corroborate the mechanism and magnitude: peso fell 42% in just the first seven months of 2003 alone (implying full-year depreciation well over 100% is consistent with contemporaneous reporting of the peso roughly halving/more within the year and continuing to slide toward ~RD$50-60/USD into 2004 from a starting point near RD$17/USD), and 12-month inflation was already near 30% by July 2003 with IMF projecting ~35% for the year (year-end/cumulative figures of ~42% are consistent with subsequent literature). The IMF's August 29, 2003 approval of a two-year US$600 million Stand-By Arrangement with austerity conditions is independently confirmed via IMF press release PR03147. Three commercial banks (Baninter, Bancredito, Banco Mercantil) — a quarter of the banking system — failed in 2003, and an electricity crisis with chronic long-duration blackouts driven by the distribution companies' fuel-payment shortfalls is corroborated by multiple sources (Wikipedia's Electricity sector in the Dominican Republic; Global Nonviolent Action Database on the 2003-2004 national strikes, which explicitly lists \"stopping the blackouts\" and loss of \"electric energy\" as a driving grievance), though I could not independently verify the precise \"20 hours per day\" figure. All core elements (year, country, banking fraud cause, peso collapse >100%, inflation ~42%, IMF standby agreement with austerity, electricity crisis) check out; only the specific \"20 hours/day\" blackout duration is a minor unverified granular detail that does not undermine the overall TRUE verdict.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -836,8 +873,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the 2003 Dominican Republic crisis materially as described. The Baninter banking fraud (discovered/collapsed May 2003, ~US$2.2-2.3bn fraud, ~two-thirds of the national budget) triggered a fiscal/monetary crisis: the government bailout of depositors drove fiscal deficits and monetary expansion, causing the peso to collapse and inflation to surge. Wikipedia's Banco Intercontinental article states verbatim: \"The subsequent fiscal shortfall resulted in massive inflation (42%) and the devaluation of the DOP by over 100%\" — matching both key numeric claims in the event description almost exactly. IMF sources (via elibrary/press releases) corroborate the mechanism and magnitude: peso fell 42% in just the first seven months of 2003 alone (implying full-year depreciation well over 100% is consistent with contemporaneous reporting of the peso roughly halving/more within the year and continuing to slide toward ~RD$50-60/USD into 2004 from a starting point near RD$17/USD), and 12-month inflation was already near 30% by July 2003 with IMF projecting ~35% for the year (year-end/cumulative figures of ~42% are consistent with subsequent literature). The IMF's August 29, 2003 approval of a two-year US$600 million Stand-By Arrangement with austerity conditions is independently confirmed via IMF press release PR03147. Three commercial banks (Baninter, Bancredito, Banco Mercantil) — a quarter of the banking system — failed in 2003, and an electricity crisis with chronic long-duration blackouts driven by the distribution companies' fuel-payment shortfalls is corroborated by multiple sources (Wikipedia's Electricity sector in the Dominican Republic; Global Nonviolent Action Database on the 2003-2004 national strikes, which explicitly lists \"stopping the blackouts\" and loss of \"electric energy\" as a driving grievance), though I could not independently verify the precise \"20 hours per day\" figure. All core elements (year, country, banking fraud cause, peso collapse >100%, inflation ~42%, IMF standby agreement with austerity, electricity crisis) check out; only the specific \"20 hours/day\" blackout duration is a minor unverified granular detail that does not undermine the overall TRUE verdict.",
+        "source": "https://en.wikipedia.org/wiki/Banco_Intercontinental",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Banco_Intercontinental"
   },
   {
     "year": 2004,

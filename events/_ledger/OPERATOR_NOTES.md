@@ -49,3 +49,27 @@ what's been *learned*.
   TRUE→FALSE flip would de-list", "help add positives") — adversarial review confirmed the
   first drafts anchored verifiers toward TRUE. Keep both error directions explicitly
   equal-cost in every verifier-facing string.
+- **2026-07-02** — **Sync cadence (founder rule):** run the S3 sync only after every FIVE
+  merged batches, not per batch. Track batch count via mode_b_ledger.json `runs[]` + Mode A
+  cells; each batch report states "N of 5 since last sync". S3 sync = Claude-run now via the
+  `QGIClaudeData` SSO role (temp STS triplet; boto3 — aws CLI absent on this box).
+- **2026-07-02** — Workflow plans must not embed a full prompt per event (200-event plan blew
+  past Workflow args size limits). Pattern in use: verify template rides ONCE in the plan
+  (`plan.verifyPromptTemplate`), the Mode B workflow composes each per-event prompt via a
+  replacer-fn fill. Also: a script fed to Workflow-by-scriptPath must be LF-only — a stray
+  CRLF `\r` trips the harness "control characters" check on the approval dialog. Generate
+  batch workflow scripts by embedding the plan JSON into the committed workflow body, then
+  `.replace(/\r\n/g,'\n')`.
+- **2026-07-02** — **Session-limit recovery (BATCH 1 lived it):** a 5h usage-limit hit mid-run
+  killed 150/200 verifiers; consolidate-b had not run so files were UNTOUCHED. Recovery:
+  harvest completed WRAPPED results from the task `.output` file's `result.results`
+  (`{key,slug,year,title,pass}`) — NOT journal.jsonl (that holds raw agent output without the
+  wrapper); build a remainder plan of events whose `key` isn't covered; run it as a FRESH
+  workflow (do NOT `resumeFromRunId` — errored agents can cache as null); combine
+  harvested+remainder → full results → one consolidate-b. Idempotent by design: un-run events
+  stay at verify_count 1 and re-select, so nothing is ever lost to a limit.
+- **2026-07-02** — **Batch 1 result (Mode B, 200 tier-1 fragile-floor):** conservative policy
+  removed 52 unconfirmed TRUEs; `technology_breakthrough` 62→57 DE-LISTED (runnable→thin),
+  `religious_and_social_movement` held at exactly 60. Expected per B1 ratification — the fix
+  is Mode A backfill (both are Mode A priority categories). 26 events landed CONTESTED
+  (TRUE-vs-FALSE clash) → auto-selectable for a pass-3 tiebreak in a later Mode B batch.

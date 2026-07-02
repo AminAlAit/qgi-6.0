@@ -3,10 +3,10 @@
     "year": 1950,
     "title": "Forced Collectivization of Agriculture Launched",
     "verdict": "TRUE",
-    "reason": "TKZS system confirmed; rapid collectivization 1950-1958; resistance met with arrests/Belene deportations confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources corroborate: the Bulgarian Communist Party's collectivization drive shifted from gradual/voluntary to coercive/stricter in 1950, with collectivized arable land jumping from ~11-12% (1949) to 43% (end of 1950), accelerating under new premier Valko Chervenkov. Peasants were forced into TKZS cooperative farms via land seizures and punitive state-supply quotas. Resistance (including the Goryani underground and refusal to join collectives) was met with arrests, internment without trial, and deportation to labor camps (e.g., Belene, ~25,000 deported 1948-1953). The only minor imprecision is the '1957' completion date: independent sources put arable land in cooperatives at 86.5% by 1957 and the process 'declared complete' with ~90-92% by 1958 rather than 1957 — a small rounding/characterization gap ('virtually all' vs 86.5%) but not a material distortion of the core event, actor, or scope, so this does not warrant downgrading to PARTIAL.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -20,8 +20,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate: the Bulgarian Communist Party's collectivization drive shifted from gradual/voluntary to coercive/stricter in 1950, with collectivized arable land jumping from ~11-12% (1949) to 43% (end of 1950), accelerating under new premier Valko Chervenkov. Peasants were forced into TKZS cooperative farms via land seizures and punitive state-supply quotas. Resistance (including the Goryani underground and refusal to join collectives) was met with arrests, internment without trial, and deportation to labor camps (e.g., Belene, ~25,000 deported 1948-1953). The only minor imprecision is the '1957' completion date: independent sources put arable land in cooperatives at 86.5% by 1957 and the process 'declared complete' with ~90-92% by 1958 rather than 1957 — a small rounding/characterization gap ('virtually all' vs 86.5%) but not a material distortion of the core event, actor, or scope, so this does not warrant downgrading to PARTIAL.",
+        "source": "https://communistcrimes.org/en/countries/bulgaria",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://communistcrimes.org/en/countries/bulgaria"
   },
   {
     "year": 1950,
@@ -363,10 +375,10 @@
     "year": 1975,
     "title": "Pravets Personal Computer Production Begins",
     "verdict": "FALSE",
-    "reason": "Year is wrong. Pravets computer development began 1979; IMKO-1 prototype shown publicly 1981; mass production (Pravetz 82) started 1982. No production in 1975.",
-    "verify_count": 1,
+    "reason": "Bulgaria's Pravets/Pravetz computer program did not begin in 1975. The first Bulgarian personal computer, the IMKO-1 (an Apple II clone), was developed starting in 1979 at the Institute for Technical Cybernetics and Robotics, with initial production in 1980 (about 50 test units). The famous mass-produced model, Pravetz 82, began serial manufacturing in 1982, after which Bulgaria did become a major computer supplier within Comecon. A 1975 date is also technically implausible since the Pravetz line cloned the Apple II, which was not released until 1977. The core narrative (Bulgaria became a significant Comecon computing supplier, informally dubbed 'Silicon Valley of the Eastern Bloc', widely used in the 1980s) is factually real, but the year is off by 4-5 years.",
+    "verify_count": 2,
     "consensus_verdict": "FALSE",
-    "consensus_status": "single",
+    "consensus_status": "double_negative",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -380,8 +392,21 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Bulgaria's Pravets/Pravetz computer program did not begin in 1975. The first Bulgarian personal computer, the IMKO-1 (an Apple II clone), was developed starting in 1979 at the Institute for Technical Cybernetics and Robotics, with initial production in 1980 (about 50 test units). The famous mass-produced model, Pravetz 82, began serial manufacturing in 1982, after which Bulgaria did become a major computer supplier within Comecon. A 1975 date is also technically implausible since the Pravetz line cloned the Apple II, which was not released until 1977. The core narrative (Bulgaria became a significant Comecon computing supplier, informally dubbed 'Silicon Valley of the Eastern Bloc', widely used in the 1980s) is factually real, but the year is off by 4-5 years.",
+        "source": "https://en.wikipedia.org/wiki/IMKO-1",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1979
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/IMKO-1"
   },
   {
     "year": 1978,
@@ -603,10 +628,10 @@
     "year": 1990,
     "title": "Bulgaria Defaults on $11 Billion Foreign Debt",
     "verdict": "TRUE",
-    "reason": "March 1990 debt payments suspended by Lukanov government. ~$11B figure broadly consistent with sources (by 1992 debt was $12.2B). Confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm that in March 1990, Bulgaria's government (under new PM Andrey Lukanov) declared a moratorium on foreign debt servicing/repayments, ceasing interest payments without warning, amid the collapse of the command economy and the Comecon trade bloc after decades of Western borrowing in the 1980s. A contemporary Christian Science Monitor report (Oct 1990) cites the foreign debt at $10.2 billion and explicitly states 'No interest payments have been paid since last March, when the government declared a moratorium on its debt servicing.' Other retrospective sources (guidebg.com) cite 'over $10 billion,' and Bulgaria's debt is documented at $11.25 billion by 1991 and $12.2 billion by 1992 (Richmond scholarship paper via search snippet), placing the commonly-cited $11 billion figure squarely within the range of contemporaneous and near-contemporaneous estimates of Bulgaria's external debt at the time of default. Country, year, and material facts (default/moratorium on Western-accumulated debt amid transition-era collapse) all match; the $11B figure is a reasonable rounding within the documented $10.2B-$12.2B range, not a material misstatement.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -620,8 +645,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm that in March 1990, Bulgaria's government (under new PM Andrey Lukanov) declared a moratorium on foreign debt servicing/repayments, ceasing interest payments without warning, amid the collapse of the command economy and the Comecon trade bloc after decades of Western borrowing in the 1980s. A contemporary Christian Science Monitor report (Oct 1990) cites the foreign debt at $10.2 billion and explicitly states 'No interest payments have been paid since last March, when the government declared a moratorium on its debt servicing.' Other retrospective sources (guidebg.com) cite 'over $10 billion,' and Bulgaria's debt is documented at $11.25 billion by 1991 and $12.2 billion by 1992 (Richmond scholarship paper via search snippet), placing the commonly-cited $11 billion figure squarely within the range of contemporaneous and near-contemporaneous estimates of Bulgaria's external debt at the time of default. Country, year, and material facts (default/moratorium on Western-accumulated debt amid transition-era collapse) all match; the $11B figure is a reasonable rounding within the documented $10.2B-$12.2B range, not a material misstatement.",
+        "source": "https://www.csmonitor.com/1990/1004/fbul.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.csmonitor.com/1990/1004/fbul.html"
   },
   {
     "year": 1990,
@@ -746,11 +783,11 @@
   {
     "year": 1996,
     "title": "Banking Collapse and Hyperinflation Devastate Economy",
-    "verdict": "TRUE",
-    "reason": "Banking system collapse 1996; lev lost ~90% value; hyperinflation peaked at 242% monthly (February 1997, not 300% as stated — minor figure discrepancy but within same crisis period). Bread shortages confirmed. Broadly verified.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "Core facts confirm for 1996: bank runs that began in late 1995 accelerated through 1996, and roughly one-third of the banking sector (commonly cited as 14 banks) failed/entered bankruptcy proceedings in 1996 — this matches \"more than a dozen banks failing simultaneously.\" A mid-1996 grain shortage did produce bread/flour shortages and rationing, and 1996 is widely regarded as the worst crisis of post-communist Bulgaria. However, two magnitude/timing details are materially off: (1) the lev's collapse from ~70.7:1 to 350:1 (Jan-Nov 1996) is an ~80% loss within calendar 1996 — the currency didn't cross the ~90%+ mark until it passed 3000:1 right at the turn of 1996/1997, so the full \"90 percent\" loss is really a late-1996-into-early-1997 event, not one completed within 1996; (2) \"hyperinflation reached 300 percent monthly\" overstates 1996 itself — year-on-year (Dec/Dec) inflation for 1996 was ~311%, but true monthly hyperinflation (Cagan-threshold, >50%/month) only began in Jan-Feb 1997, peaking at ~242% in February 1997, not 300% and not within 1996. So the description conflates the annual 1996 inflation figure with a monthly rate that actually belongs to early 1997. Country and the core banking-collapse event hold for 1996, but the hyperinflation-magnitude and full currency-collapse figures are drawn from the crisis's 1997 continuation rather than calendar 1996 itself.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -764,8 +801,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core facts confirm for 1996: bank runs that began in late 1995 accelerated through 1996, and roughly one-third of the banking sector (commonly cited as 14 banks) failed/entered bankruptcy proceedings in 1996 — this matches \"more than a dozen banks failing simultaneously.\" A mid-1996 grain shortage did produce bread/flour shortages and rationing, and 1996 is widely regarded as the worst crisis of post-communist Bulgaria. However, two magnitude/timing details are materially off: (1) the lev's collapse from ~70.7:1 to 350:1 (Jan-Nov 1996) is an ~80% loss within calendar 1996 — the currency didn't cross the ~90%+ mark until it passed 3000:1 right at the turn of 1996/1997, so the full \"90 percent\" loss is really a late-1996-into-early-1997 event, not one completed within 1996; (2) \"hyperinflation reached 300 percent monthly\" overstates 1996 itself — year-on-year (Dec/Dec) inflation for 1996 was ~311%, but true monthly hyperinflation (Cagan-threshold, >50%/month) only began in Jan-Feb 1997, peaking at ~242% in February 1997, not 300% and not within 1996. So the description conflates the annual 1996 inflation figure with a monthly rate that actually belongs to early 1997. Country and the core banking-collapse event hold for 1996, but the hyperinflation-magnitude and full currency-collapse figures are drawn from the crisis's 1997 continuation rather than calendar 1996 itself.",
+        "source": "https://www.bnb.bg/bnbweb/groups/public/documents/bnb_publication/discussion_199907_en.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.bnb.bg/bnbweb/groups/public/documents/bnb_publication/discussion_199907_en.pdf"
   },
   {
     "year": 1997,
@@ -795,10 +844,10 @@
     "year": 1997,
     "title": "Currency Board Introduced â€” Lev Pegged to Deutsche Mark",
     "verdict": "TRUE",
-    "reason": "July 1, 1997; 1000:1 peg to Deutsche Mark; hyperinflation halted immediately. Re-pegged to euro January 4, 1999. Confirmed.",
-    "verify_count": 1,
+    "reason": "Confirmed: on July 1, 1997, Bulgaria introduced a currency board arrangement pegging the lev to the Deutsche Mark at a fixed rate of 1000 leva to 1 DEM, eliminating central bank discretion over monetary policy. This followed a hyperinflation crisis where monthly inflation peaked at 242% in February 1997 and annualized inflation exceeded 2,000%. The currency board halted the crisis, inflation and interest rates fell rapidly, and the arrangement remained in place (later re-pegged to the euro in 1999 at the same effective rate) as the cornerstone of Bulgarian monetary policy. All material details (country, year, mechanism, ratio, effect) match the description.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -812,8 +861,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed: on July 1, 1997, Bulgaria introduced a currency board arrangement pegging the lev to the Deutsche Mark at a fixed rate of 1000 leva to 1 DEM, eliminating central bank discretion over monetary policy. This followed a hyperinflation crisis where monthly inflation peaked at 242% in February 1997 and annualized inflation exceeded 2,000%. The currency board halted the crisis, inflation and interest rates fell rapidly, and the arrangement remained in place (later re-pegged to the euro in 1999 at the same effective rate) as the cornerstone of Bulgarian monetary policy. All material details (country, year, mechanism, ratio, effect) match the description.",
+        "source": "https://www.bta.bg/en/news/archives/921311-july-1-1997-currency-board-takes-effect-pegging-lev-to-deutsche-mark",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.bta.bg/en/news/archives/921311-july-1-1997-currency-board-takes-effect-pegging-lev-to-deutsche-mark"
   },
   {
     "year": 1998,
@@ -1107,10 +1168,10 @@
     "year": 2014,
     "title": "Corporate Commercial Bank Collapse Freezes 200,000 Depositors",
     "verdict": "TRUE",
-    "reason": "KTB (fourth largest bank) collapsed June 2014 after bank run; assets impaired by ~BGN 4.2B; thousands of depositors affected. ~200,000 figure consistent with sources. Confirmed.",
-    "verify_count": 1,
+    "reason": "Well-corroborated by multiple independent sources. Corporate Commercial Bank (KTB/Corpbank), confirmed as Bulgaria's fourth-largest bank by assets (end of Nov 2013), suffered a bank run in June 2014 triggered by allegations of massive fraud and related-party lending — Forbes and Bulgarian outlets detail that ~72% of its 5.2bn BGN loan portfolio (3.7bn BGN) went to shell companies controlled by owner Tsvetan Vasilev and politically connected figures (Delyan Peevski, Ahmed Dogan). The BNB placed the bank under special administration after the run and withdrew its license on 6 Nov 2014, freezing depositor access for ~6 months. On depositor count: sources give ~250,000-300,000 individuals plus ~6,000 businesses holding guaranteed deposits (up to 196,000 BGN each), with 111,981 actually claiming payouts by 2019 — the description's \"200,000 depositors\" is within the credible range reported (close to but slightly under the commonly cited 250,000 figure) and is materially accurate as an order-of-magnitude/scope claim. Cost to the state: guaranteed deposits totaled ~3.686-3.7 billion leva (matches description's \"3.7 billion leva\" almost exactly), funded via a ~2bn leva state loan to the underfunded Deposit Insurance Fund. All core facts (country=Bulgaria, year=2014, bank identity, fraud/related-party lending mechanism, deposit freeze, ~3.7bn leva resolution cost) check out via independent sources (Wikipedia, Forbes, Mediapool.bg, Capital.bg), none of which are on the off-limits list.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -1124,8 +1185,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Well-corroborated by multiple independent sources. Corporate Commercial Bank (KTB/Corpbank), confirmed as Bulgaria's fourth-largest bank by assets (end of Nov 2013), suffered a bank run in June 2014 triggered by allegations of massive fraud and related-party lending — Forbes and Bulgarian outlets detail that ~72% of its 5.2bn BGN loan portfolio (3.7bn BGN) went to shell companies controlled by owner Tsvetan Vasilev and politically connected figures (Delyan Peevski, Ahmed Dogan). The BNB placed the bank under special administration after the run and withdrew its license on 6 Nov 2014, freezing depositor access for ~6 months. On depositor count: sources give ~250,000-300,000 individuals plus ~6,000 businesses holding guaranteed deposits (up to 196,000 BGN each), with 111,981 actually claiming payouts by 2019 — the description's \"200,000 depositors\" is within the credible range reported (close to but slightly under the commonly cited 250,000 figure) and is materially accurate as an order-of-magnitude/scope claim. Cost to the state: guaranteed deposits totaled ~3.686-3.7 billion leva (matches description's \"3.7 billion leva\" almost exactly), funded via a ~2bn leva state loan to the underfunded Deposit Insurance Fund. All core facts (country=Bulgaria, year=2014, bank identity, fraud/related-party lending mechanism, deposit freeze, ~3.7bn leva resolution cost) check out via independent sources (Wikipedia, Forbes, Mediapool.bg, Capital.bg), none of which are on the off-limits list.",
+        "source": "https://www.mediapool.bg/krazhbata-na-veka-kakvo-se-sluchva-pet-godini-sled-sriva-na-ktb-news294713.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.mediapool.bg/krazhbata-na-veka-kakvo-se-sluchva-pet-godini-sled-sriva-na-ktb-news294713.html"
   },
   {
     "year": 2014,
@@ -1227,10 +1300,10 @@
     "year": 2020,
     "title": "Bulgaria Joins ERM II â€” Euro Adoption Process Begins",
     "verdict": "TRUE",
-    "reason": "July 10, 2020 ERM II accession; lev locked to euro at 1.95583. Confirmed.",
-    "verify_count": 1,
+    "reason": "Confirmed by multiple independent sources: Bulgaria (together with Croatia) formally joined the Exchange Rate Mechanism II (ERM II) on 10 July 2020, with the lev's central rate fixed at EUR 1 = BGN 1.95583 (the pre-existing currency board rate) within a standard ±15% fluctuation band. This is the official first step of the eurozone accession process. The description's claim that persistently elevated inflation delayed actual euro adoption beyond 2024 is also consistent with reporting — Bulgaria did not adopt the euro until it exited ERM II at end of 2025 to join on 1 January 2026, well beyond the originally hoped-for 2024 target. All material details (country, year, month, mechanism, institutional significance) check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -1244,8 +1317,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent sources: Bulgaria (together with Croatia) formally joined the Exchange Rate Mechanism II (ERM II) on 10 July 2020, with the lev's central rate fixed at EUR 1 = BGN 1.95583 (the pre-existing currency board rate) within a standard ±15% fluctuation band. This is the official first step of the eurozone accession process. The description's claim that persistently elevated inflation delayed actual euro adoption beyond 2024 is also consistent with reporting — Bulgaria did not adopt the euro until it exited ERM II at end of 2025 to join on 1 January 2026, well beyond the originally hoped-for 2024 target. All material details (country, year, month, mechanism, institutional significance) check out.",
+        "source": "https://www.consilium.europa.eu/en/press/press-releases/2020/07/10/communiques-by-the-erm-ii-parties-on-bulgaria-and-croatia/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.consilium.europa.eu/en/press/press-releases/2020/07/10/communiques-by-the-erm-ii-parties-on-bulgaria-and-croatia/"
   },
   {
     "year": 2020,

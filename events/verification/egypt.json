@@ -178,12 +178,12 @@
     "year": 1952,
     "title": "Land Reform Decree Redistributes Agricultural Land",
     "verdict": "TRUE",
-    "reason": "Law 178 of September 1952 capping ownership at 200 feddans confirmed. Landless peasant redistribution confirmed.",
-    "verify_count": 1,
+    "reason": "Independent, non-Wikipedia sources confirm Egypt's 1952 Agrarian Reform Law (Law No. 178, enacted September 11, 1952 by the new revolutionary government) capped individual land ownership at 200 feddans (up to 300 with children), expropriated excess holdings, and redistributed land to peasants, explicitly targeting the wealthiest/landed aristocracy. MERIP's 1982 scholarly article states: \"The relatively high (by Egyptian standards) limit of 300 feddans imposed on land ownership by the 1952 law was calculated to affect only the wealthiest landowners... The limit on ownership under the land reform is usually given as 200 feddans.\" The World Inequality Database confirms the reform reduced the top 1% landowners' share from 42% to 27% by 1980, describing it as reducing \"the dominance of the landed elite.\" Search results from PIDE (book review of Gabriel Saab's 'The Egyptian Agrarian Reform 1952-1962') and other sources corroborate the 200-feddan cap and redistribution to ~200,000 landless peasants. One scholarly source (MERIP) notes the redistribution, while real, was insufficient to reach the very poorest peasants -- a debate over degree/effectiveness, not a contradiction of the event's core facts (year, country, mechanism, and target). Year and country match exactly.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -195,9 +195,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent, non-Wikipedia sources confirm Egypt's 1952 Agrarian Reform Law (Law No. 178, enacted September 11, 1952 by the new revolutionary government) capped individual land ownership at 200 feddans (up to 300 with children), expropriated excess holdings, and redistributed land to peasants, explicitly targeting the wealthiest/landed aristocracy. MERIP's 1982 scholarly article states: \"The relatively high (by Egyptian standards) limit of 300 feddans imposed on land ownership by the 1952 law was calculated to affect only the wealthiest landowners... The limit on ownership under the land reform is usually given as 200 feddans.\" The World Inequality Database confirms the reform reduced the top 1% landowners' share from 42% to 27% by 1980, describing it as reducing \"the dominance of the landed elite.\" Search results from PIDE (book review of Gabriel Saab's 'The Egyptian Agrarian Reform 1952-1962') and other sources corroborate the 200-feddan cap and redistribution to ~200,000 landless peasants. One scholarly source (MERIP) notes the redistribution, while real, was insufficient to reach the very poorest peasants -- a debate over degree/effectiveness, not a contradiction of the event's core facts (year, country, mechanism, and target). Year and country match exactly.",
+        "source": "https://www.merip.org/1982/07/egypts-transition-under-nasser/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Land_reform_in_Egypt"
+    "source": "https://www.merip.org/1982/07/egypts-transition-under-nasser/"
   },
   {
     "year": 1953,
@@ -453,12 +464,12 @@
     "year": 1956,
     "title": "Nasser Nationalizes Suez Canal",
     "verdict": "TRUE",
-    "reason": "July 26, 1956 nationalization announced in Alexandria speech confirmed. US/UK withdrawal of Aswan Dam funding as trigger — confirmed.",
-    "verify_count": 1,
+    "reason": "Independently corroborated by the US State Department Office of the Historian, UK government history blog, Britannica, and Wilson Center Digital Archive (none are history.com). On July 26, 1956, Nasser announced nationalization of the Anglo-French Suez Canal Company in a speech in Alexandria, explicitly framed as a response to the US/UK withdrawal of Aswan High Dam financing. This precipitated the Suez Crisis. All material details in the description (year, country, actors, causal link to Aswan Dam funding, scope) are confirmed by multiple independent sources.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -470,9 +481,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated by the US State Department Office of the Historian, UK government history blog, Britannica, and Wilson Center Digital Archive (none are history.com). On July 26, 1956, Nasser announced nationalization of the Anglo-French Suez Canal Company in a speech in Alexandria, explicitly framed as a response to the US/UK withdrawal of Aswan High Dam financing. This precipitated the Suez Crisis. All material details in the description (year, country, actors, causal link to Aswan Dam funding, scope) are confirmed by multiple independent sources.",
+        "source": "https://history.state.gov/milestones/1953-1960/suez",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.history.com/this-day-in-history/july-26/egypt-nationalizes-the-suez-canal"
+    "source": "https://history.state.gov/milestones/1953-1960/suez"
   },
   {
     "year": 1956,
@@ -628,12 +650,12 @@
     "year": 1959,
     "title": "Land Reform Second Phase Reduces Ownership Cap",
     "verdict": "FALSE",
-    "reason": "The reduction of the ownership cap from 200 to 100 feddans occurred in 1961 as part of the July Socialist Decrees, not in 1959. No significant land reform phase is documented for 1959.",
-    "verify_count": 1,
+    "reason": "Egypt's second land reform phase reducing the maximum permissible land ownership from 200 to 100 feddans per family is a real, well-documented event, but it occurred via Law No. 127 in 1961, not 1959. Multiple independent sources (MERIP, World Inequality Lab working paper, CIHEAM) confirm the sequence: 1952 law capped ownership at 200 feddans, the 1961 law reduced it to 100 feddans, and a 1969 law further reduced it to 50 feddans. No source found supports a 1959 date for this measure. Since the year is materially wrong (not within reasonable tolerance) while country and substantive content match, this is FALSE with corrected_year=1961.",
+    "verify_count": 2,
     "consensus_verdict": "FALSE",
-    "consensus_status": "single",
+    "consensus_status": "double_negative",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -645,20 +667,32 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Egypt's second land reform phase reducing the maximum permissible land ownership from 200 to 100 feddans per family is a real, well-documented event, but it occurred via Law No. 127 in 1961, not 1959. Multiple independent sources (MERIP, World Inequality Lab working paper, CIHEAM) confirm the sequence: 1952 law capped ownership at 200 feddans, the 1961 law reduced it to 100 feddans, and a 1969 law further reduced it to 50 feddans. No source found supports a 1959 date for this measure. Since the year is materially wrong (not within reasonable tolerance) while country and substantive content match, this is FALSE with corrected_year=1961.",
+        "source": "https://www.merip.org/1982/07/egypts-transition-under-nasser/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1961
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Land_reform_in_Egypt"
+    "source": "https://www.merip.org/1982/07/egypts-transition-under-nasser/"
   },
   {
     "year": 1961,
     "title": "Sweeping Nationalizations Transform Egyptian Economy",
     "verdict": "TRUE",
-    "reason": "July 1961 socialist decrees nationalizing banks, insurance, and 400+ companies confirmed by multiple historical sources.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Wikipedia sources confirm that in July 1961 (on the 9th anniversary of the 1952 coup), Nasser issued the \"socialist decrees\" nationalizing all private banks, all insurance companies, and dozens of shipping/heavy-industry firms outright, while requiring dozens more (83 per countrystudies.us) to cede majority ownership to the state — described as cutting more deeply into the private sector than any country outside Eastern Europe, and pushing Egypt toward a state-socialist/planned economy. This matches the event's year, country, actor (Nasser), and material substance (banks, insurance, industrial/commercial firms nationalized or moved to majority state ownership). The specific \"over 400 companies\" figure was not independently verified in the sources found (they cite ~50 outright nationalizations + 83 majority-stake transfers + all banks/insurers, plus successive waves through 1962-63, which is broadly consistent with an aggregate figure in that range), but this is a minor magnitude/count detail rather than a material mischaracterization of the event, so it does not warrant downgrading to PARTIAL.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -670,9 +704,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm that in July 1961 (on the 9th anniversary of the 1952 coup), Nasser issued the \"socialist decrees\" nationalizing all private banks, all insurance companies, and dozens of shipping/heavy-industry firms outright, while requiring dozens more (83 per countrystudies.us) to cede majority ownership to the state — described as cutting more deeply into the private sector than any country outside Eastern Europe, and pushing Egypt toward a state-socialist/planned economy. This matches the event's year, country, actor (Nasser), and material substance (banks, insurance, industrial/commercial firms nationalized or moved to majority state ownership). The specific \"over 400 companies\" figure was not independently verified in the sources found (they cite ~50 outright nationalizations + 83 majority-stake transfers + all banks/insurers, plus successive waves through 1962-63, which is broadly consistent with an aggregate figure in that range), but this is a minor magnitude/count detail rather than a material mischaracterization of the event, so it does not warrant downgrading to PARTIAL.",
+        "source": "https://countrystudies.us/egypt/34.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Gamal_Abdel_Nasser"
+    "source": "https://countrystudies.us/egypt/34.htm"
   },
   {
     "year": 1961,
@@ -2178,12 +2223,12 @@
     "year": 1994,
     "title": "Egypt Tightens State Control Over Mosque Preachers",
     "verdict": "TRUE",
-    "reason": "Awqaf ministry licensing/supervision of preachers as counter-extremism measure confirmed.",
-    "verify_count": 1,
+    "reason": "Independent academic source (Tamir Moustafa, IJMES 2000, self-archived at SFU) confirms: Egypt's Ministry of Religious Endowments (Awqaf) required licensing of preachers via People's Assembly legislation; a High Council for Islamic Preaching drafted quarterly topic plans for Friday sermons distributed to state mosques with imams punished for deviating; state-controlled mosque share jumped to 71% by 1994 (from 19% in 1982) per the article's Table 1, sourced to a September 1994 al-Musawwar interview with the Awqaf minister specifically about 'mosque extremism controls' (20 preachers/week penalized). The article explicitly frames this as the government's response to the 1992-1997 Islamist violence surge and effort to prevent mosques serving as extremist recruitment venues, matching the event description's actor, mechanism, motive, and year closely. This is a scholarly source independent of Wikipedia.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -2195,9 +2240,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent academic source (Tamir Moustafa, IJMES 2000, self-archived at SFU) confirms: Egypt's Ministry of Religious Endowments (Awqaf) required licensing of preachers via People's Assembly legislation; a High Council for Islamic Preaching drafted quarterly topic plans for Friday sermons distributed to state mosques with imams punished for deviating; state-controlled mosque share jumped to 71% by 1994 (from 19% in 1982) per the article's Table 1, sourced to a September 1994 al-Musawwar interview with the Awqaf minister specifically about 'mosque extremism controls' (20 preachers/week penalized). The article explicitly frames this as the government's response to the 1992-1997 Islamist violence surge and effort to prevent mosques serving as extremist recruitment venues, matching the event description's actor, mechanism, motive, and year closely. This is a scholarly source independent of Wikipedia.",
+        "source": "https://summit.sfu.ca/_flysystem/fedora/sfu_migrate/14990/Moustafa,%20Conflict%20and%20Cooperation.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Terrorism_in_Egypt"
+    "source": "https://summit.sfu.ca/_flysystem/fedora/sfu_migrate/14990/Moustafa,%20Conflict%20and%20Cooperation.pdf"
   },
   {
     "year": 1995,
@@ -2478,12 +2534,12 @@
     "year": 2001,
     "title": "Egyptian Pound Devaluation and Currency Crisis",
     "verdict": "TRUE",
-    "reason": "2000-2001 currency pressure and overvaluation leading to devaluations and 2003 float confirmed.",
-    "verify_count": 1,
+    "reason": "Confirmed from multiple independent (non-madamasr) sources. Egypt's pound was pegged/overvalued against the dollar through the late 1990s; the peg came under pressure as reserves fell and the dollar strengthened. The IMF's 2001 Article IV Consultation (title itself: 'IMF Concludes 2001 Article IV Consultation with the Arab Republic of Egypt') documents 'sizable official reserve losses' and continued dollar-peg pressure in 2000/2001, with a 'tightly managed' float introduced in 2001. Independent reporting (Egyptian Streets timeline) confirms the pound weakened progressively to about EGP 4/USD by 2002 as part of this multi-step devaluation sequence. This culminated in the Egyptian government's full float announcement on 28 January 2003 (PM Atef Ebeid), after which the rate jumped from ~EGP 3.85 to over EGP 6-7/USD, with black-market rates running above the official rate — consistent with the described parallel-market pressure. All core elements (country=Egypt, year=2001 start of the pressure/devaluation series, overvalued peg, reserve decline, parallel/black market growth, series of devaluations culminating in full float in 2003) are corroborated by independent sources. Note: madamasr.com corroboration was excluded per instructions; verdict rests on Egyptian Streets, IMF Article IV PN01116 (title/metadata), and multiple secondary economic sources (PWC, Global Finance Magazine, academic sources) describing the same 2000-2003 devaluation trajectory.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -2495,9 +2551,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent (non-madamasr) sources. Egypt's pound was pegged/overvalued against the dollar through the late 1990s; the peg came under pressure as reserves fell and the dollar strengthened. The IMF's 2001 Article IV Consultation (title itself: 'IMF Concludes 2001 Article IV Consultation with the Arab Republic of Egypt') documents 'sizable official reserve losses' and continued dollar-peg pressure in 2000/2001, with a 'tightly managed' float introduced in 2001. Independent reporting (Egyptian Streets timeline) confirms the pound weakened progressively to about EGP 4/USD by 2002 as part of this multi-step devaluation sequence. This culminated in the Egyptian government's full float announcement on 28 January 2003 (PM Atef Ebeid), after which the rate jumped from ~EGP 3.85 to over EGP 6-7/USD, with black-market rates running above the official rate — consistent with the described parallel-market pressure. All core elements (country=Egypt, year=2001 start of the pressure/devaluation series, overvalued peg, reserve decline, parallel/black market growth, series of devaluations culminating in full float in 2003) are corroborated by independent sources. Note: madamasr.com corroboration was excluded per instructions; verdict rests on Egyptian Streets, IMF Article IV PN01116 (title/metadata), and multiple secondary economic sources (PWC, Global Finance Magazine, academic sources) describing the same 2000-2003 devaluation trajectory.",
+        "source": "https://egyptianstreets.com/2016/11/03/timeline-the-egyptian-pound-over-the-last-five-decades/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.madamasr.com/en/2016/11/03/feature/economy/a-look-at-the-first-time-egypt-floated-the-pound-in-2003/"
+    "source": "https://egyptianstreets.com/2016/11/03/timeline-the-egyptian-pound-over-the-last-five-decades/"
   },
   {
     "year": 2001,
@@ -2578,12 +2645,12 @@
     "year": 2003,
     "title": "Egyptian Pound Floated, Devalues Significantly",
     "verdict": "TRUE",
-    "reason": "January 2003 pound float and significant devaluation confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm Egypt abandoned its managed peg and floated the pound in January 2003 (PM Atef Ebeid announced removal of state currency support on Jan 28, 2003; CBE governor confirmed banks would set rates), causing significant devaluation. Infomineo.com (fetched directly, independent of madamasr) states: \"In 2003, the government partially floated the pound to decrease in value against USD from EGP 3.85 to EGP 6.86 while being traded at EGP 7 to USD in the black market\" and reports exports rose from $7.1bn (FY2001-2) to $10.4bn (FY2003-4, +46%) while inflation climbed from 2.9% (Jan 2003) to 17.3% (Dec 2004) -- directly corroborating the export-competitiveness gain, black-market narrowing, and short-term inflation/hardship claims in the event description. Independently, CFR's \"Egypt's Black Market Blues\" (fetched directly) confirms Mubarak \"needed a lot of convincing to liberalize the exchange rate in early 2003,\" and a World Bank policy research paper (Kraay, \"The Welfare Effects of a Large Depreciation: The Case of Egypt, 2000-05,\" abstract fetched via IDEAS/RePEc) confirms the EGP \"depreciated sharply between 2000 and 2005, declining by 26 percent in nominal trade-weighted terms\" with measurable household welfare/hardship effects consistent with the described short-term economic pain. Additional consistent detail (float announced Jan 28-29 2003, prior peg since the 1960s, initial devaluation of roughly 16% reaching ~5.40-5.86 EGP/USD) recurred across multiple independent secondary sources (Al-Ahram Weekly, American University in Cairo news, PWC, and academic papers by Kandil/El-Ramly/Bahmani-Oskooee) found via web search, though several of those primary pages returned 403 on direct fetch. All core elements of the event -- country, year, the float/devaluation itself, export competitiveness improvement, black-market narrowing, and short-term inflation/hardship -- are corroborated by sources independent of madamasr.com.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -2595,20 +2662,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Egypt abandoned its managed peg and floated the pound in January 2003 (PM Atef Ebeid announced removal of state currency support on Jan 28, 2003; CBE governor confirmed banks would set rates), causing significant devaluation. Infomineo.com (fetched directly, independent of madamasr) states: \"In 2003, the government partially floated the pound to decrease in value against USD from EGP 3.85 to EGP 6.86 while being traded at EGP 7 to USD in the black market\" and reports exports rose from $7.1bn (FY2001-2) to $10.4bn (FY2003-4, +46%) while inflation climbed from 2.9% (Jan 2003) to 17.3% (Dec 2004) -- directly corroborating the export-competitiveness gain, black-market narrowing, and short-term inflation/hardship claims in the event description. Independently, CFR's \"Egypt's Black Market Blues\" (fetched directly) confirms Mubarak \"needed a lot of convincing to liberalize the exchange rate in early 2003,\" and a World Bank policy research paper (Kraay, \"The Welfare Effects of a Large Depreciation: The Case of Egypt, 2000-05,\" abstract fetched via IDEAS/RePEc) confirms the EGP \"depreciated sharply between 2000 and 2005, declining by 26 percent in nominal trade-weighted terms\" with measurable household welfare/hardship effects consistent with the described short-term economic pain. Additional consistent detail (float announced Jan 28-29 2003, prior peg since the 1960s, initial devaluation of roughly 16% reaching ~5.40-5.86 EGP/USD) recurred across multiple independent secondary sources (Al-Ahram Weekly, American University in Cairo news, PWC, and academic papers by Kandil/El-Ramly/Bahmani-Oskooee) found via web search, though several of those primary pages returned 403 on direct fetch. All core elements of the event -- country, year, the float/devaluation itself, export competitiveness improvement, black-market narrowing, and short-term inflation/hardship -- are corroborated by sources independent of madamasr.com.",
+        "source": "https://infomineo.com/economics/egyptian-devaluation-one-year-later/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.madamasr.com/en/2016/11/03/feature/economy/a-look-at-the-first-time-egypt-floated-the-pound-in-2003/"
+    "source": "https://infomineo.com/economics/egyptian-devaluation-one-year-later/"
   },
   {
     "year": 2003,
     "title": "Egypt's Internet Penetration Begins Accelerating",
     "verdict": "TRUE",
-    "reason": "Free internet programs and digital expansion in early 2000s confirmed.",
-    "verify_count": 1,
+    "reason": "Independent (non-Wikipedia) corroboration confirms the trend described. Naila Nabil Hamdy's academic paper \"The Internet and Egypt's National Development\" (American University in Cairo, published via Global Media Journal) documents: the government's Free Internet Model launched by the Ministry of Communications and Information Technology (MCIT) with Telecom Egypt in the beginning of 2002 (15,000 dial-up ports, ~2 million user capacity, no subscription charge beyond local call tariff), and MCIT granting ISPs licenses specifically to expand broadband capacity and establish international gateways. It gives concrete user-growth figures showing rapid acceleration: ~440,000 users in 1999, an estimated 560,000 by March 2001, rising to an estimated 1.8-4 million by the time of writing (2002-2004). Corroborating web search results (from an academic paper on the Free Internet Access project, via the MCIT counselor's public statement) put Egypt's internet users at 1,500,000 as of January 2003 -- based on Telecom Egypt tracking 750,000 phone lines dialing the free-internet access numbers -- and other tertiary sources describe roughly 3 million users by 2003 as Egypt's blogosphere began emerging, growing to ~5% penetration (roughly 3.5-4 million users) by 2004. This is a clear, well-documented multi-year acceleration (roughly 2x-3x user growth within about two years) driven directly by the described government free-internet and broadband-capacity initiatives, with 2003 sitting squarely inside the described \"began accelerating rapidly in the early 2000s\" window. The subsequent link to 2011 social-media activism is standard, widely-repeated context in this literature (not independently fact-checked here as it is a forward-looking framing claim, not the falsifiable core of the event). Because this is framed as a multi-year trend beginning in \"the early 2000s\" rather than a single dated action, and 2003 is mid-trend rather than the sole inception point, I did not downgrade to PARTIAL -- the country, general timeframe, actors (Egyptian government/MCIT/Telecom Egypt), and mechanism (free internet + broadband rollout) are all materially correct and independently verified.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -2620,9 +2698,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent (non-Wikipedia) corroboration confirms the trend described. Naila Nabil Hamdy's academic paper \"The Internet and Egypt's National Development\" (American University in Cairo, published via Global Media Journal) documents: the government's Free Internet Model launched by the Ministry of Communications and Information Technology (MCIT) with Telecom Egypt in the beginning of 2002 (15,000 dial-up ports, ~2 million user capacity, no subscription charge beyond local call tariff), and MCIT granting ISPs licenses specifically to expand broadband capacity and establish international gateways. It gives concrete user-growth figures showing rapid acceleration: ~440,000 users in 1999, an estimated 560,000 by March 2001, rising to an estimated 1.8-4 million by the time of writing (2002-2004). Corroborating web search results (from an academic paper on the Free Internet Access project, via the MCIT counselor's public statement) put Egypt's internet users at 1,500,000 as of January 2003 -- based on Telecom Egypt tracking 750,000 phone lines dialing the free-internet access numbers -- and other tertiary sources describe roughly 3 million users by 2003 as Egypt's blogosphere began emerging, growing to ~5% penetration (roughly 3.5-4 million users) by 2004. This is a clear, well-documented multi-year acceleration (roughly 2x-3x user growth within about two years) driven directly by the described government free-internet and broadband-capacity initiatives, with 2003 sitting squarely inside the described \"began accelerating rapidly in the early 2000s\" window. The subsequent link to 2011 social-media activism is standard, widely-repeated context in this literature (not independently fact-checked here as it is a forward-looking framing claim, not the falsifiable core of the event). Because this is framed as a multi-year trend beginning in \"the early 2000s\" rather than a single dated action, and 2003 is mid-trend rather than the sole inception point, I did not downgrade to PARTIAL -- the country, general timeframe, actors (Egyptian government/MCIT/Telecom Egypt), and mechanism (free internet + broadband rollout) are all materially correct and independently verified.",
+        "source": "https://www.globalmediajournal.com/open-access/the-internet-and-egypts-national-development.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Internet_in_Egypt"
+    "source": "https://www.globalmediajournal.com/open-access/the-internet-and-egypts-national-development.pdf"
   },
   {
     "year": 2004,
@@ -2853,12 +2942,12 @@
     "year": 2007,
     "title": "Mahalla Textile Workers Strike",
     "verdict": "TRUE",
-    "reason": "2007 Mahalla Misr Spinning and Weaving Company strike confirmed as major labor action.",
-    "verify_count": 1,
+    "reason": "Independent sourcing (Swarthmore Global Nonviolent Action Database, corroborated by Ahram Online and Wikipedia in search results) confirms that in September 2007 (Sept 23-28), roughly 24,000 workers at the Misr Spinning and Weaving Company in Mahalla al-Kubra, Egypt struck over wages, unpaid bonuses, and management corruption/conditions. This strike is widely described as one of Egypt's largest labor actions since the 1940s and is credited with sparking a broader surge in Egyptian labor activism (600+ subsequent actions nationwide), matching the event description materially on country, year, actor, scale, and significance.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -2870,9 +2959,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sourcing (Swarthmore Global Nonviolent Action Database, corroborated by Ahram Online and Wikipedia in search results) confirms that in September 2007 (Sept 23-28), roughly 24,000 workers at the Misr Spinning and Weaving Company in Mahalla al-Kubra, Egypt struck over wages, unpaid bonuses, and management corruption/conditions. This strike is widely described as one of Egypt's largest labor actions since the 1940s and is credited with sparking a broader surge in Egyptian labor activism (600+ subsequent actions nationwide), matching the event description materially on country, year, actor, scale, and significance.",
+        "source": "https://nvdatabase.swarthmore.edu/content/egyptian-workers-strike-and-occupy-textile-factory-better-pay-representation-and-conditions-",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.merip.org/2007/09/the-militancy-of-mahalla-al-kubra/"
+    "source": "https://nvdatabase.swarthmore.edu/content/egyptian-workers-strike-and-occupy-textile-factory-better-pay-representation-and-conditions-"
   },
   {
     "year": 2008,
@@ -3478,12 +3578,12 @@
     "year": 2016,
     "title": "Egypt Agrees to $12 Billion IMF Loan; Pound Devalued by Half",
     "verdict": "TRUE",
-    "reason": "$12B IMF loan November 2016; pound devalued from ~8.8 to ~18 per dollar; 30%+ inflation confirmed.",
-    "verify_count": 1,
+    "reason": "Independent (non-imf.org) sources corroborate all material elements. CNN Money (Nov 3, 2016) reports the Central Bank of Egypt fully floated the pound, an immediate 48% devaluation from 8.8 EGP/USD, with the rate reaching ~18.16 EGP/USD by end of November 2016 — matching the description's 8.8-to-18 figures. Washington Post, Brookings, and Carnegie Endowment independently confirm the IMF Executive Board approved a $12 billion, three-year Extended Fund Facility for Egypt on November 11, 2016, with reforms tied to macroeconomic stabilization. Inflation surging above 30% following the float is also consistent with widely reported post-devaluation inflation dynamics in Egypt (confirmed via PwC and Ahram Online analyses of the devaluation's aftermath). All core facts — country, year, loan amount, currency mechanism, and magnitude of devaluation — hold.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -3495,9 +3595,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent (non-imf.org) sources corroborate all material elements. CNN Money (Nov 3, 2016) reports the Central Bank of Egypt fully floated the pound, an immediate 48% devaluation from 8.8 EGP/USD, with the rate reaching ~18.16 EGP/USD by end of November 2016 — matching the description's 8.8-to-18 figures. Washington Post, Brookings, and Carnegie Endowment independently confirm the IMF Executive Board approved a $12 billion, three-year Extended Fund Facility for Egypt on November 11, 2016, with reforms tied to macroeconomic stabilization. Inflation surging above 30% following the float is also consistent with widely reported post-devaluation inflation dynamics in Egypt (confirmed via PwC and Ahram Online analyses of the devaluation's aftermath). All core facts — country, year, loan amount, currency mechanism, and magnitude of devaluation — hold.",
+        "source": "https://money.cnn.com/2016/11/03/news/economy/egypt-pound-devaluation-bailout/index.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.imf.org/en/news/articles/2016/11/11/pr16501-egypt-executive-board-approves-12-billion-extended-arrangement"
+    "source": "https://money.cnn.com/2016/11/03/news/economy/egypt-pound-devaluation-bailout/index.html"
   },
   {
     "year": 2016,
@@ -3878,12 +3989,12 @@
     "year": 2022,
     "title": "Egyptian Pound Crisis: Second Major Devaluation",
     "verdict": "TRUE",
-    "reason": "2022-23 pound losing ~50%; $3B IMF deal confirmed. (Expanded to $8B in March 2024.)",
-    "verify_count": 1,
+    "reason": "Confirmed from multiple independent sources. Egypt devalued the pound in March 2022 (5%) then floated it on 27 October 2022, when it fell ~14.5% in a single day to a record low, coinciding with announcement of a new $3 billion IMF Extended Fund Facility (agreed December 2022, 46-month program). Multiple sources describe the pound losing over half (50-60%+) its value against the dollar over 2022 (and continuing into 2023), driven by a foreign-currency shortage, COVID-19's hit to tourism, and the Russia-Ukraine war's impact on wheat/energy prices and tourism revenue — matching the description's causal narrative (global inflation, Russia-Ukraine war impact on wheat/energy, investment outflows) and the $3B IMF deal detail almost exactly.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -3895,9 +4006,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources. Egypt devalued the pound in March 2022 (5%) then floated it on 27 October 2022, when it fell ~14.5% in a single day to a record low, coinciding with announcement of a new $3 billion IMF Extended Fund Facility (agreed December 2022, 46-month program). Multiple sources describe the pound losing over half (50-60%+) its value against the dollar over 2022 (and continuing into 2023), driven by a foreign-currency shortage, COVID-19's hit to tourism, and the Russia-Ukraine war's impact on wheat/energy prices and tourism revenue — matching the description's causal narrative (global inflation, Russia-Ukraine war impact on wheat/energy, investment outflows) and the $3B IMF deal detail almost exactly.",
+        "source": "https://www.aljazeera.com/economy/2022/10/27/egypts-pound-at-record-low-after-3bn-imf-deal-announcement",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2023%E2%80%932024_Egyptian_financial_crisis"
+    "source": "https://www.aljazeera.com/economy/2022/10/27/egypts-pound-at-record-low-after-3bn-imf-deal-announcement"
   },
   {
     "year": 2022,
@@ -3953,12 +4075,12 @@
     "year": 2023,
     "title": "Egypt's Economy Faces Currency Shortage and Inflation",
     "verdict": "TRUE",
-    "reason": "2023 acute foreign currency shortage; 35-40% inflation; import disruptions confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Wikipedia sources confirm all material elements: (1) acute foreign currency shortage in 2023 prevented importers from opening letters of credit — Al Jazeera reported Egypt's state grains buyer deferring wheat-import LCs due to the dollar crunch, trade.gov documented the EGP losing ~40% of its value in Jan 2023 devaluation and a $9.5B import backlog, EgyptToday/Mada Masr covered central bank LC restrictions on non-essential imports; (2) inflation materially exceeded the 35-40% range — Bloomberg (July 2023) reported food inflation surging past 35% to a record, VOA reported headline inflation hit nearly 40% (peaking 39.7% in August 2023), core inflation reached 41% in June per FocusEconomics/tradingeconomics; (3) discussion of the limits of Sisi's military-led mega-project model is extensively documented in 2023 commentary — Al Jazeera ('As economic crisis deepens, will Egypt slow megaprojects down?'), Middle East Eye ('Sisi's vision has crippled Egypt'), Arab Center DC, and CSMonitor all discuss exactly this framing, including the IMF's Jan 2023 report pushing Egypt to slow public investment and limit the military's economic role. Year and country both hold; no material detail is off.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -3970,9 +4092,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm all material elements: (1) acute foreign currency shortage in 2023 prevented importers from opening letters of credit — Al Jazeera reported Egypt's state grains buyer deferring wheat-import LCs due to the dollar crunch, trade.gov documented the EGP losing ~40% of its value in Jan 2023 devaluation and a $9.5B import backlog, EgyptToday/Mada Masr covered central bank LC restrictions on non-essential imports; (2) inflation materially exceeded the 35-40% range — Bloomberg (July 2023) reported food inflation surging past 35% to a record, VOA reported headline inflation hit nearly 40% (peaking 39.7% in August 2023), core inflation reached 41% in June per FocusEconomics/tradingeconomics; (3) discussion of the limits of Sisi's military-led mega-project model is extensively documented in 2023 commentary — Al Jazeera ('As economic crisis deepens, will Egypt slow megaprojects down?'), Middle East Eye ('Sisi's vision has crippled Egypt'), Arab Center DC, and CSMonitor all discuss exactly this framing, including the IMF's Jan 2023 report pushing Egypt to slow public investment and limit the military's economic role. Year and country both hold; no material detail is off.",
+        "source": "https://www.bloomberg.com/news/articles/2023-07-10/egypt-s-inflation-soars-to-record-as-food-drives-surge-past-35",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2023%E2%80%932024_Egyptian_financial_crisis"
+    "source": "https://www.bloomberg.com/news/articles/2023-07-10/egypt-s-inflation-soars-to-record-as-food-drives-surge-past-35"
   },
   {
     "year": 2024,
