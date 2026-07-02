@@ -19,7 +19,19 @@ A country is "ready for V1.5.3 pipeline" only when `curated >= 1` AND `verified 
 - Raw generated events: `data/events/batches/{country}.json`
 - Curated/verified output: `data/events/curated/{country}.json`
 
-**Counter updates:** when an agent finishes processing a country, edit this file and bump the corresponding counter.
+**Counter updates:** when an agent finishes processing a country, edit this file and bump the Generated/Curated counters. The **Verified column is machine-owned** — see below; never bump it by hand.
+
+**Verified counter — regenerated from truth (2026-07-02):** the `Verified` column of the
+Tracking table below is REGENERATED from the actual `events/verification/` files by
+`node workflows/events/_lib.mjs regen-tracking` (run automatically after every Mode A/B
+event batch). Semantics: `Verified` = the MODAL per-event `verify_count` across the
+country's verification entries (`0` = no verification file). Per-event counts live in
+each entry's `verify_count` field (v2 double-verify schema). Only the Tracking table
+directly below is regenerated; the dated session sections further down are frozen
+historical records. Note: countries whose historical sessions recorded 2–3 verification
+passes (iran, ukraine, venezuela, south_africa) read `1` here — those re-runs overwrote
+verdicts in place and left no per-event audit trail, so exactly one recorded pass per
+event survives on disk.
 
 ---
 
@@ -27,109 +39,204 @@ A country is "ready for V1.5.3 pipeline" only when `curated >= 1` AND `verified 
 
 | Country | Generated | Curated | Verified | Last updated | Notes |
 |---------|----------:|--------:|---------:|--------------|-------|
-| afghanistan | 1 | 1 | 0 | 2026-04-07 | curated 323→184 (Soviet war + 2001-21 US war + 2021 Taliban collapsed) |
-| albania | 1 | 0 | 0 | 2026-04-07 |  |
-| algeria | 1 | 1 | 0 | 2026-04-07 | curated 161→132 |
-| angola | 1 | 0 | 0 | 2026-04-07 |  |
-| argentina | 1 | 1 | 0 | 2026-04-07 | curated 193→180 (agent reported wrong input count; only 13 dropped, re-curation candidate) |
-| armenia | 1 | 0 | 0 | 2026-04-07 |  |
-| australia | 1 | 0 | 0 | 2026-04-07 |  |
-| austria | 1 | 0 | 0 | 2026-04-07 |  |
-| azerbaijan | 1 | 0 | 0 | 2026-04-07 |  |
-| belgium | 1 | 0 | 0 | 2026-04-07 |  |
-| bolivia | 1 | 0 | 0 | 2026-04-07 |  |
-| bosnia_and_herzegovina | 1 | 0 | 0 | 2026-04-07 |  |
-| brazil | 1 | 1 | 0 | 2026-04-07 | curated 241→239 (NEAR-ZERO dedup, agent only fixed 1 dup + typos — strong re-curation candidate) |
-| bulgaria | 1 | 0 | 0 | 2026-04-07 |  |
-| cambodia | 1 | 0 | 0 | 2026-04-07 |  |
-| cameroon | 1 | 0 | 0 | 2026-04-07 |  |
-| canada | 1 | 0 | 0 | 2026-04-07 |  |
+| afghanistan | 1 | 1 | 1 | 2026-07-02 | curated 323→184 (Soviet war + 2001-21 US war + 2021 Taliban collapsed) |
+| albania | 1 | 0 | 1 | 2026-07-02 |  |
+| algeria | 1 | 1 | 1 | 2026-07-02 | curated 161→132 |
+| angola | 1 | 0 | 1 | 2026-07-02 |  |
+| argentina | 1 | 1 | 1 | 2026-07-02 | curated 193→180 (agent reported wrong input count; only 13 dropped, re-curation candidate) |
+| armenia | 1 | 0 | 1 | 2026-07-02 |  |
+| australia | 1 | 0 | 1 | 2026-07-02 |  |
+| austria | 1 | 0 | 1 | 2026-07-02 |  |
+| azerbaijan | 1 | 0 | 1 | 2026-07-02 |  |
+| belgium | 1 | 0 | 1 | 2026-07-02 |  |
+| bolivia | 1 | 0 | 1 | 2026-07-02 |  |
+| bosnia_and_herzegovina | 1 | 0 | 1 | 2026-07-02 |  |
+| brazil | 1 | 1 | 1 | 2026-07-02 | curated 241→239 (NEAR-ZERO dedup, agent only fixed 1 dup + typos — strong re-curation candidate) |
+| bulgaria | 1 | 0 | 1 | 2026-07-02 |  |
+| cambodia | 1 | 0 | 1 | 2026-07-02 |  |
+| cameroon | 1 | 0 | 1 | 2026-07-02 |  |
+| canada | 1 | 0 | 1 | 2026-07-02 |  |
 | central_african_republic | 1 | 0 | 0 | 2026-04-07 |  |
-| chad | 1 | 0 | 0 | 2026-04-07 |  |
-| chile | 1 | 0 | 0 | 2026-04-07 |  |
-| china | 1 | 1 | 0 | 2026-04-07 | curated 349→177 (Cultural Revolution + Great Leap collapsed; first attempt asked for Bash, retry succeeded) |
-| colombia | 1 | 0 | 0 | 2026-04-07 |  |
-| costa_rica | 1 | 0 | 0 | 2026-04-07 |  |
-| croatia | 1 | 0 | 0 | 2026-04-07 |  |
-| cuba | 1 | 0 | 0 | 2026-04-07 |  |
-| czechia | 1 | 0 | 0 | 2026-04-07 |  |
-| denmark | 1 | 0 | 0 | 2026-04-07 |  |
-| dominican_republic | 1 | 0 | 0 | 2026-04-07 |  |
-| ecuador | 1 | 0 | 0 | 2026-04-07 |  |
-| egypt | 1 | 1 | 0 | 2026-04-07 | curated 342→163 (source had ~45 exact duplicate titles; heavy E5 cleanup) |
-| el_salvador | 1 | 0 | 0 | 2026-04-07 |  |
-| eritrea | 1 | 1 | 0 | 2026-04-07 | curated 232→191 |
-| estonia | 1 | 0 | 0 | 2026-04-07 |  |
-| ethiopia | 1 | 1 | 0 | 2026-04-07 | curated 324→280 |
-| finland | 1 | 0 | 0 | 2026-04-07 |  |
-| france | 1 | 0 | 0 | 2026-04-07 |  |
-| georgia | 1 | 0 | 0 | 2026-04-07 |  |
-| germany | 1 | 0 | 0 | 2026-04-07 |  |
-| ghana | 1 | 0 | 0 | 2026-04-07 |  |
-| greece | 1 | 0 | 0 | 2026-04-07 |  |
-| guatemala | 1 | 0 | 0 | 2026-04-07 |  |
-| haiti | 1 | 0 | 0 | 2026-04-07 |  |
-| honduras | 1 | 0 | 0 | 2026-04-07 |  |
-| hungary | 1 | 0 | 0 | 2026-04-07 |  |
-| india | 1 | 1 | 0 | 2026-04-07 | curated 316→226 (light dedup, candidate for re-curation) |
-| indonesia | 1 | 1 | 0 | 2026-04-07 | curated 155→71 (1965 cluster collapsed to single mass-atrocity event) |
-| iran | 1 | 1 | 0 | 2026-04-07 | curated 159→146 (LIGHT dedup, candidate for re-curation) |
-| iraq | 1 | 1 | 0 | 2026-04-07 | curated 167→94 (aggressive E5: Iran-Iraq, sanctions, ISIS clusters collapsed) |
-| ireland | 1 | 0 | 0 | 2026-04-07 |  |
-| israel | 1 | 1 | 0 | 2026-04-07 | curated 157→117 |
-| italy | 1 | 0 | 0 | 2026-04-07 |  |
-| ivory_coast | 1 | 0 | 0 | 2026-04-07 |  |
-| jamaica | 1 | 0 | 0 | 2026-04-07 |  |
-| japan | 1 | 0 | 0 | 2026-04-07 |  |
-| jordan | 1 | 1 | 0 | 2026-04-07 | curated 157→106; per-event verified flags in file are FAKE, ignore them |
-| kazakhstan | 1 | 0 | 0 | 2026-04-07 |  |
-| kenya | 1 | 0 | 0 | 2026-04-07 |  |
-| kuwait | 1 | 1 | 0 | 2026-04-07 | curated 168→60 |
-| kyrgyzstan | 1 | 0 | 0 | 2026-04-07 |  |
-| laos | 1 | 0 | 0 | 2026-04-07 |  |
-| lebanon | 1 | 1 | 0 | 2026-04-07 | curated 173→99 (Civil War cluster compressed hard) |
-| libya | 1 | 1 | 0 | 2026-04-07 | curated 231→82 (Gaddafi era + 2011 + 2014 civil war collapsed) |
-| madagascar | 1 | 0 | 0 | 2026-04-07 |  |
-| malaysia | 1 | 0 | 0 | 2026-04-07 |  |
-| mali | 1 | 0 | 0 | 2026-04-07 |  |
-| mexico | 1 | 1 | 0 | 2026-04-07 | curated 171→114 |
-| morocco | 1 | 1 | 0 | 2026-04-07 | curated 163→139 |
-| mozambique | 1 | 0 | 0 | 2026-04-07 |  |
-| myanmar | 1 | 0 | 0 | 2026-04-07 |  |
-| nepal | 1 | 0 | 0 | 2026-04-07 |  |
-| netherlands | 1 | 0 | 0 | 2026-04-07 |  |
-| nicaragua | 1 | 0 | 0 | 2026-04-07 |  |
-| nigeria | 1 | 1 | 0 | 2026-04-07 | curated 236→127 (Biafra, Boko Haram, transition clusters compressed) |
-| north_korea | 1 | 0 | 0 | 2026-04-07 |  |
-| norway | 1 | 0 | 0 | 2026-04-07 |  |
-| pakistan | 1 | 1 | 0 | 2026-04-07 | curated 130→134 (file count >= input — likely under-applied E5; candidate for re-curation) |
-| peru | 1 | 0 | 0 | 2026-04-07 |  |
-| philippines | 1 | 1 | 0 | 2026-04-07 | curated 155→155 (ZERO dedup, agent only did category remap — strong re-curation candidate) |
-| poland | 1 | 0 | 0 | 2026-04-07 |  |
-| portugal | 1 | 0 | 0 | 2026-04-07 |  |
-| romania | 1 | 0 | 0 | 2026-04-07 |  |
-| russia | 1 | 1 | 0 | 2026-04-07 | curated 368→304 (LIGHT dedup for a 75yr Cold War history, re-curate candidate) |
-| saudi_arabia | 1 | 1 | 0 | 2026-04-07 | curated 226→118 |
-| singapore | 1 | 0 | 0 | 2026-04-07 |  |
-| somalia | 1 | 0 | 0 | 2026-04-07 |  |
-| south_africa | 1 | 1 | 0 | 2026-04-07 | curated 155→154 (NEAR-ZERO dedup despite explicit ask, agent ignored E5 — strong re-curation candidate) |
-| south_korea | 1 | 0 | 0 | 2026-04-07 |  |
-| spain | 1 | 0 | 0 | 2026-04-07 |  |
-| sri_lanka | 1 | 0 | 0 | 2026-04-07 |  |
-| sudan | 1 | 1 | 0 | 2026-04-07 | curated 161→90 (civil wars + 2019/2023 clusters merged) |
-| sweden | 1 | 0 | 0 | 2026-04-07 |  |
-| switzerland | 1 | 0 | 0 | 2026-04-07 |  |
-| syria | 1 | 1 | 0 | 2026-04-07 | curated 183→173 (light dedup, may benefit from re-curation) |
-| thailand | 1 | 0 | 0 | 2026-04-07 |  |
-| tunisia | 1 | 1 | 0 | 2026-04-07 | curated 135→106 |
+| chad | 1 | 0 | 1 | 2026-07-02 |  |
+| chile | 1 | 0 | 1 | 2026-07-02 |  |
+| china | 1 | 1 | 1 | 2026-07-02 | curated 349→177 (Cultural Revolution + Great Leap collapsed; first attempt asked for Bash, retry succeeded) |
+| colombia | 1 | 0 | 1 | 2026-07-02 |  |
+| costa_rica | 1 | 0 | 1 | 2026-07-02 |  |
+| croatia | 1 | 0 | 1 | 2026-07-02 |  |
+| cuba | 1 | 0 | 1 | 2026-07-02 |  |
+| czechia | 1 | 0 | 1 | 2026-07-02 |  |
+| denmark | 1 | 0 | 1 | 2026-07-02 |  |
+| dominican_republic | 1 | 0 | 1 | 2026-07-02 |  |
+| ecuador | 1 | 0 | 1 | 2026-07-02 |  |
+| egypt | 1 | 1 | 1 | 2026-07-02 | curated 342→163 (source had ~45 exact duplicate titles; heavy E5 cleanup) |
+| el_salvador | 1 | 0 | 1 | 2026-07-02 |  |
+| eritrea | 1 | 1 | 1 | 2026-07-02 | curated 232→191 |
+| estonia | 1 | 0 | 1 | 2026-07-02 |  |
+| ethiopia | 1 | 1 | 1 | 2026-07-02 | curated 324→280 |
+| finland | 1 | 0 | 1 | 2026-07-02 |  |
+| france | 1 | 0 | 1 | 2026-07-02 |  |
+| georgia | 1 | 0 | 1 | 2026-07-02 |  |
+| germany | 1 | 0 | 1 | 2026-07-02 |  |
+| ghana | 1 | 0 | 1 | 2026-07-02 |  |
+| greece | 1 | 0 | 1 | 2026-07-02 |  |
+| guatemala | 1 | 0 | 1 | 2026-07-02 |  |
+| haiti | 1 | 0 | 1 | 2026-07-02 |  |
+| honduras | 1 | 0 | 1 | 2026-07-02 |  |
+| hungary | 1 | 0 | 1 | 2026-07-02 |  |
+| india | 1 | 1 | 1 | 2026-07-02 | curated 316→226 (light dedup, candidate for re-curation) |
+| indonesia | 1 | 1 | 1 | 2026-07-02 | curated 155→71 (1965 cluster collapsed to single mass-atrocity event) |
+| iran | 1 | 1 | 1 | 2026-07-02 | curated 159→146 (LIGHT dedup, candidate for re-curation) |
+| iraq | 1 | 1 | 1 | 2026-07-02 | curated 167→94 (aggressive E5: Iran-Iraq, sanctions, ISIS clusters collapsed) |
+| ireland | 1 | 0 | 1 | 2026-07-02 |  |
+| israel | 1 | 1 | 1 | 2026-07-02 | curated 157→117 |
+| italy | 1 | 0 | 1 | 2026-07-02 |  |
+| ivory_coast | 1 | 0 | 1 | 2026-07-02 |  |
+| jamaica | 1 | 0 | 1 | 2026-07-02 |  |
+| japan | 1 | 0 | 1 | 2026-07-02 |  |
+| jordan | 1 | 1 | 1 | 2026-07-02 | curated 157→106; per-event verified flags in file are FAKE, ignore them |
+| kazakhstan | 1 | 0 | 1 | 2026-07-02 |  |
+| kenya | 1 | 0 | 1 | 2026-07-02 |  |
+| kuwait | 1 | 1 | 1 | 2026-07-02 | curated 168→60 |
+| kyrgyzstan | 1 | 0 | 1 | 2026-07-02 |  |
+| laos | 1 | 0 | 1 | 2026-07-02 |  |
+| lebanon | 1 | 1 | 1 | 2026-07-02 | curated 173→99 (Civil War cluster compressed hard) |
+| libya | 1 | 1 | 1 | 2026-07-02 | curated 231→82 (Gaddafi era + 2011 + 2014 civil war collapsed) |
+| madagascar | 1 | 0 | 1 | 2026-07-02 |  |
+| malaysia | 1 | 0 | 1 | 2026-07-02 |  |
+| mali | 1 | 0 | 1 | 2026-07-02 |  |
+| mexico | 1 | 1 | 1 | 2026-07-02 | curated 171→114 |
+| morocco | 1 | 1 | 1 | 2026-07-02 | curated 163→139 |
+| mozambique | 1 | 0 | 1 | 2026-07-02 |  |
+| myanmar | 1 | 0 | 1 | 2026-07-02 |  |
+| nepal | 1 | 0 | 1 | 2026-07-02 |  |
+| netherlands | 1 | 0 | 1 | 2026-07-02 |  |
+| nicaragua | 1 | 0 | 1 | 2026-07-02 |  |
+| nigeria | 1 | 1 | 1 | 2026-07-02 | curated 236→127 (Biafra, Boko Haram, transition clusters compressed) |
+| north_korea | 1 | 0 | 1 | 2026-07-02 |  |
+| norway | 1 | 0 | 1 | 2026-07-02 |  |
+| pakistan | 1 | 1 | 1 | 2026-07-02 | curated 130→134 (file count >= input — likely under-applied E5; candidate for re-curation) |
+| peru | 1 | 0 | 1 | 2026-07-02 |  |
+| philippines | 1 | 1 | 1 | 2026-07-02 | curated 155→155 (ZERO dedup, agent only did category remap — strong re-curation candidate) |
+| poland | 1 | 0 | 1 | 2026-07-02 |  |
+| portugal | 1 | 0 | 1 | 2026-07-02 |  |
+| romania | 1 | 0 | 1 | 2026-07-02 |  |
+| russia | 1 | 1 | 1 | 2026-07-02 | curated 368→304 (LIGHT dedup for a 75yr Cold War history, re-curate candidate) |
+| saudi_arabia | 1 | 1 | 1 | 2026-07-02 | curated 226→118 |
+| singapore | 1 | 0 | 1 | 2026-07-02 |  |
+| somalia | 1 | 0 | 1 | 2026-07-02 |  |
+| south_africa | 1 | 1 | 1 | 2026-07-02 | curated 155→154 (NEAR-ZERO dedup despite explicit ask, agent ignored E5 — strong re-curation candidate) |
+| south_korea | 1 | 0 | 1 | 2026-07-02 |  |
+| spain | 1 | 0 | 1 | 2026-07-02 |  |
+| sri_lanka | 1 | 0 | 1 | 2026-07-02 |  |
+| sudan | 1 | 1 | 1 | 2026-07-02 | curated 161→90 (civil wars + 2019/2023 clusters merged) |
+| sweden | 1 | 0 | 1 | 2026-07-02 |  |
+| switzerland | 1 | 0 | 1 | 2026-07-02 |  |
+| syria | 1 | 1 | 1 | 2026-07-02 | curated 183→173 (light dedup, may benefit from re-curation) |
+| thailand | 1 | 0 | 1 | 2026-07-02 |  |
+| tunisia | 1 | 1 | 1 | 2026-07-02 | curated 135→106 |
 | turkey | 1 | 1 | 0 | 2026-04-07 | curated 147→97 |
 | turkmenistan | 1 | 1 | 1 | 2026-04-30 | curated 39 events; fully verified (39/39): 32 TRUE, 4 UNCERTAIN, 3 FALSE |
 | ukraine | 1 | 1 | 1 | 2026-04-07 | NO source batch — generated via Sonnet+WebSearch (43 events, real Wikipedia URLs). First country with verified=1 |
-| united_arab_emirates | 1 | 1 | 0 | 2026-04-07 | curated 163→105 |
-| united_kingdom | 1 | 0 | 0 | 2026-04-07 |  |
-| united_states | 1 | 0 | 0 | 2026-04-07 |  |
-| vietnam | 1 | 1 | 0 | 2026-04-07 | curated 220→79 (Vietnam War collapsed to phase markers) |
-| yemen | 1 | 1 | 0 | 2026-04-07 | curated 176→149 |
+| united_arab_emirates | 1 | 1 | 1 | 2026-07-02 | curated 163→105 |
+| united_kingdom | 1 | 0 | 1 | 2026-07-02 |  |
+| united_states | 1 | 0 | 1 | 2026-07-02 |  |
+| vietnam | 1 | 1 | 1 | 2026-07-02 | curated 220→79 (Vietnam War collapsed to phase markers) |
+| yemen | 1 | 1 | 1 | 2026-07-02 | curated 176→149 |
+| andorra | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| antigua_and_barbuda | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| bahamas | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| bahrain | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| bangladesh | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| barbados | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| belarus | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| belize | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| benin | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| bhutan | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| botswana | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| brunei | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| burkina_faso | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| burundi | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| cabo_verde | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| comoros | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| cyprus | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| democratic_republic_of_congo | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| djibouti | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| dominica | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| equatorial_guinea | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| eswatini | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| fiji | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| gabon | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| gambia | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| grenada | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| guinea | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| guinea_bissau | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| guyana | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| iceland | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| kiribati | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| kosovo | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| latvia | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| lesotho | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| liberia | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| liechtenstein | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| lithuania | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| luxembourg | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| malawi | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| maldives | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| malta | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| marshall_islands | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| mauritania | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| mauritius | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| micronesia | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| moldova | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| monaco | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| mongolia | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| montenegro | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| namibia | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| nauru | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| new_zealand | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| niger | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| north_macedonia | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| oman | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| palau | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| palestine | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| panama | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| papua_new_guinea | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| paraguay | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| qatar | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| republic_of_congo | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| rwanda | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| saint_kitts_and_nevis | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| saint_lucia | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| saint_vincent_and_the_grenadines | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| samoa | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| san_marino | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| sao_tome_and_principe | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| senegal | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| serbia | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| seychelles | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| sierra_leone | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| slovakia | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| slovenia | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| solomon_islands | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| south_sudan | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| suriname | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| taiwan | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| tajikistan | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| tanzania | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| timor_leste | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| togo | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| tonga | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| trinidad_and_tobago | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| turkiye | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| tuvalu | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| uganda | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| uruguay | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| uzbekistan | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| vanuatu | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| vatican_city | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| venezuela | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| zambia | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| zimbabwe | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 
 ### Added 2026-04-13 session (verification batch + extras)
 
