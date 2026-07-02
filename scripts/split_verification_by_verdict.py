@@ -190,6 +190,18 @@ def process_file(path: Path, curated_index: dict, curated_lists: dict) -> dict:
     if not events:
         return {"file": path.name, "error": "no events list found"}
 
+    # v2 double-verify guard (2026-07-02): once migrate_verification_to_v2.py has
+    # run, entries carry verifications[]/verify_count/consensus_* fields. This
+    # script rebuilds flat {year,title,verdict,reason,source} dicts and only knows
+    # TRUE/FALSE — running it on v2 data would strip the audit trail and silently
+    # drop every PARTIAL/UNCERTAIN/CONTESTED verdict. Refuse loudly.
+    if any(isinstance(e, dict) and "verifications" in e for e in events):
+        raise SystemExit(
+            f"REFUSING to process {path.name}: it contains v2 double-verify entries "
+            f"(verifications[]). This script predates the v2 schema and would destroy "
+            f"it. Use scripts/validate_verification.py + the Mode B workflow instead."
+        )
+
     n_before = len(events)
     kept = []
     dropped_unverified = 0

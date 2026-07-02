@@ -26,7 +26,7 @@ import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
 import {
-  CAPS, CATEGORIES_71, CATEGORY_SUBSTITUTIONS, CONSENSUS_POLICY, SHARDS,
+  CAPS, CATEGORY_SUBSTITUTIONS, CONSENSUS_POLICY, SHARDS,
   VERDICTS, YEAR_RANGE, normTitle, recomputeConsensus,
   RESEARCH_OUTPUT_SCHEMA, CURATE_OUTPUT_SCHEMA, VERIFY_OUTPUT_SCHEMA
 } from "./schemas.mjs";
@@ -91,16 +91,20 @@ export function registrableDomain(url) {
 }
 
 /** Cross-pass source diversity: "independent" | "same_domain" | "weak" | "n/a".
- * Computed by code (never by the agent) from verifications[].source. */
+ * Computed by code (never by the agent) from verifications[].source.
+ * Order-independent (same multiset of domains → same label): "independent" only
+ * when every sourced pass cites a distinct registrable domain; "weak" when they
+ * all share one domain; "same_domain" for any partial overlap. */
 export function sourceIndependence(passes) {
   if (!Array.isArray(passes) || passes.length < 2) return "n/a";
-  const domains = passes.map((p) => (p.source ? registrableDomain(p.source) : null));
-  const withSource = domains.filter(Boolean);
+  const withSource = passes
+    .map((p) => (p.source ? registrableDomain(p.source) : null))
+    .filter(Boolean);
   if (withSource.length < 2) return "n/a";        // fewer than two sourced passes — diversity unassessable
-  if (new Set(withSource).size === 1) return "weak"; // every sourced pass leans on one domain (e.g. only Wikipedia)
-  const last = domains[domains.length - 1];
-  if (last && domains.slice(0, -1).includes(last)) return "same_domain";
-  return "independent";
+  const uniq = new Set(withSource).size;
+  if (uniq === 1) return "weak";                   // every sourced pass leans on one domain (e.g. only Wikipedia)
+  if (uniq === withSource.length) return "independent";
+  return "same_domain";
 }
 
 // ─── v2 schema: migration + assembly ─────────────────────────────────────────
@@ -126,16 +130,19 @@ export function migrateEntry(e) {
   return out;
 }
 
-/** Derive the back-compat top-level reason/source from the passes + consensus. */
+/** Derive the back-compat top-level reason/source from the passes + consensus.
+ * For every non-CONTESTED consensus, recomputeConsensus returns a verdict that is
+ * present among the passes, so a confirming pass always exists — fail loudly if
+ * that invariant ever breaks rather than attaching a mismatched reason/source. */
 function deriveTopLevel(passes, cons) {
   if (cons.consensus_verdict === "CONTESTED") {
     const parts = passes.map((p) => `Pass ${p.pass_n} ${p.verdict}: ${p.reason ?? "(no reason)"}`);
     return { reason: `${parts.join("; ")}. Tiebreak required.`, source: null };
   }
-  const confirming = [...passes].reverse().find((p) => p.verdict === cons.consensus_verdict);
-  const anchor = confirming ?? passes[passes.length - 1];
+  const anchor = [...passes].reverse().find((p) => p.verdict === cons.consensus_verdict);
+  if (!anchor) throw new Error(`deriveTopLevel: no pass carries consensus ${cons.consensus_verdict}`);
   const sourced = [...passes].reverse().find(
-    (p) => p.source && (confirming ? p.verdict === cons.consensus_verdict : true));
+    (p) => p.source && p.verdict === cons.consensus_verdict);
   return { reason: anchor.reason ?? null, source: sourced?.source ?? null };
 }
 
@@ -210,23 +217,21 @@ export function curatedIndex(slug) {
   return idx;
 }
 
-/** Dedup newEvents against existing curated (by join key) and within the batch.
- * Returns { fresh, dupExisting, dupWithinBatch }. Never reorders `existing`. */
-export function mergeCurated(existing, newEvents) {
-  const seen = new Set(existing
-    .filter((e) => e && typeof e === "object" && e.year != null)
-    .map((e) => `${Number(e.year)}|${normTitle(e.title)}`));
-  const fresh = [], dupExisting = [], dupWithinBatch = [];
-  for (const ev of newEvents) {
-    const k = `${Number(ev.year)}|${normTitle(ev.title)}`;
-    if (seen.has(k)) {
-      (fresh.some((f) => `${Number(f.year)}|${normTitle(f.title)}` === k) ? dupWithinBatch : dupExisting).push(ev);
-      continue;
-    }
-    seen.add(k);
-    fresh.push({ year: ev.year, title: ev.title, description: ev.description, category: ev.category });
+/** Curated events carry EXACTLY these four keys — never verified/verification_source. */
+export function cleanCuratedEvent(ev) {
+  return { year: ev.year, title: ev.title, description: ev.description, category: ev.category };
+}
+
+/** Fill __PLACEHOLDER__ slots with literal text. String.prototype.replace treats
+ * $-sequences ($$, $&, $', $`) in a string replacement as substitution patterns —
+ * agent/web-derived text (titles, descriptions, money figures like "US$$2bn")
+ * would corrupt the prompt. A replacer FUNCTION inserts the value verbatim. */
+export function fillTemplate(template, replacements) {
+  let out = template;
+  for (const [placeholder, value] of Object.entries(replacements)) {
+    out = out.replace(placeholder, () => value);
   }
-  return { fresh, dupExisting, dupWithinBatch };
+  return out;
 }
 
 // ─── prompts ─────────────────────────────────────────────────────────────────
@@ -421,23 +426,20 @@ export function planA({ country = null } = {}) {
   const verifyWhy = `This event is a fresh candidate for ${slug}'s ground-truth event database. ` +
     `Your verdict — TRUE, FALSE, PARTIAL, or UNCERTAIN — is what makes it usable; ` +
     `a wrong TRUE ships label noise, a wrong FALSE discards real signal. Both errors are equally costly.`;
-  // MAX_NEW_CANDIDATES is a PER-RUN cap (spec §4.1 "Cap / run"), not a per-country
-  // lifetime cap — a re-run of a capped country gets a fresh budget.
-  const remainingCandidates = CAPS.MAX_NEW_CANDIDATES;
   return {
     mode: "A",
     country: slug,
     curatedCount: existing.length,
     policy: CONSENSUS_POLICY,
-    caps: { ...CAPS, remainingCandidates },
+    caps: CAPS, // MAX_NEW_CANDIDATES is a PER-RUN cap (spec §4.1 "Cap / run") — re-runs get a fresh budget
     shardsPending: shardsPending.map((shard) => ({
       id: shard.id,
       label: shard.label,
       categories: shard.categories,
       researchPrompt: buildResearchPrompt({ country: slug, shard, existingTitles: existingByShard(shard), why: researchWhy }),
-      curatePrompt: buildCuratePrompt({ country: slug, shard })
-        .replace("__EXISTING_TITLES__",
-          existingByShard(shard).map((t) => `- ${t}`).join("\n") || "(none yet)")
+      curatePrompt: fillTemplate(buildCuratePrompt({ country: slug, shard }), {
+        __EXISTING_TITLES__: existingByShard(shard).map((t) => `- ${t}`).join("\n") || "(none yet)"
+      })
     })),
     verifyPromptTemplate: verifyPromptTemplate(slug),
     verifyWhy,
@@ -449,6 +451,10 @@ export function planA({ country = null } = {}) {
 
 export function mergeA(plan, results) {
   const slug = plan.country;
+  if (results.country && results.country !== slug) {
+    throw new Error(`merge-a: results are for '${results.country}' but plan is for '${slug}' — ` +
+      `mismatched --plan/--results pair, refusing to merge`);
+  }
   const ledger = loadLedgerA();
   const cell = ledger.cells[slug] ?? { shards_done: [], candidates_added: 0 };
   const globalKeys = new Set(ledger.event_keys);
@@ -457,9 +463,18 @@ export function mergeA(plan, results) {
   const curated = fs.existsSync(curatedPath) ? loadJson(curatedPath) : [];
   const verification = fs.existsSync(verificationPath) ? loadJson(verificationPath) : [];
 
+  const joinKey = (year, title) => `${Number(year)}|${normTitle(title)}`;
+  const curatedByKey = new Map(curated
+    .filter((e) => e && typeof e === "object" && e.year != null)
+    .map((e) => [joinKey(e.year, e.title), e]));
+  const verifiedKeys = new Set(verification
+    .filter((e) => e && typeof e === "object" && e.year != null)
+    .map((e) => joinKey(e.year, e.title)));
+  const addedThisRun = new Set();
+
   const summary = {
     country: slug, shards_run: [], shards_done: [], shards_incomplete: [],
-    added: 0, dup_existing: 0, dup_within_batch: 0,
+    added: 0, attached_to_existing: 0, dup_existing: 0, dup_within_batch: 0,
     dup_ledger: 0, echo_mismatch: 0, capped: 0, unverified_skipped: 0,
     verdicts: { TRUE: 0, FALSE: 0, PARTIAL: 0, UNCERTAIN: 0, CONTESTED: 0 },
     independence: {}, added_events: [], dropped_events: []
@@ -467,6 +482,13 @@ export function mergeA(plan, results) {
 
   let budget = plan.caps.MAX_NEW_CANDIDATES; // per-run cap (spec §4.1); re-enforced here deterministically
   const newCurated = [], newVerification = [];
+  const record = (entry, ev, attached) => {
+    summary.verdicts[entry.consensus_verdict] = (summary.verdicts[entry.consensus_verdict] ?? 0) + 1;
+    summary.independence[entry.source_independence] =
+      (summary.independence[entry.source_independence] ?? 0) + 1;
+    summary.added_events.push({ year: entry.year, title: entry.title, category: ev.category,
+      consensus: entry.consensus_verdict, ...(attached ? { attached_to_existing: true } : {}) });
+  };
 
   for (const shard of results.shardResults ?? []) {
     if (!shard) continue;
@@ -488,6 +510,26 @@ export function mergeA(plan, results) {
         shardComplete = false;
         continue;
       }
+      const jk = joinKey(ev.year, ev.title);
+      if (addedThisRun.has(jk)) { summary.dup_within_batch++; continue; }
+
+      const existing = curatedByKey.get(jk);
+      if (existing) {
+        if (verifiedKeys.has(jk)) { summary.dup_existing++; continue; }
+        // the event is already curated but has NO verdict (the norm for the 43
+        // no-verification countries): the two completed blind passes are exactly
+        // the missing verification entry — attach them to the EXISTING event's
+        // exact join keys instead of discarding paid verifier work.
+        const passes = passesRaw.map((p, i) => passFromAgentResult(p, i + 1));
+        const entry = buildVerificationEntry(existing.year, existing.title, passes, plan.policy);
+        newVerification.push(entry);
+        verifiedKeys.add(jk);
+        globalKeys.add(dedupKey(slug, existing.year, existing.title));
+        summary.attached_to_existing++;
+        record(entry, existing, true);
+        continue;
+      }
+
       const key = dedupKey(slug, ev.year, ev.title);
       if (globalKeys.has(key)) { summary.dup_ledger++; continue; }
       if (budget <= 0) {
@@ -498,24 +540,16 @@ export function mergeA(plan, results) {
         continue;
       }
 
-      const { fresh, dupExisting, dupWithinBatch } =
-        mergeCurated([...curated, ...newCurated], [ev]);
-      summary.dup_existing += dupExisting.length;
-      summary.dup_within_batch += dupWithinBatch.length;
-      if (!fresh.length) continue;
-
       const passes = passesRaw.map((p, i) => passFromAgentResult(p, i + 1));
       const entry = buildVerificationEntry(ev.year, ev.title, passes, plan.policy);
-      newCurated.push(fresh[0]);
+      newCurated.push(cleanCuratedEvent(ev));
       newVerification.push(entry);
+      addedThisRun.add(jk);
+      verifiedKeys.add(jk);
       globalKeys.add(key);
       budget--;
       summary.added++;
-      summary.verdicts[entry.consensus_verdict] = (summary.verdicts[entry.consensus_verdict] ?? 0) + 1;
-      summary.independence[entry.source_independence] =
-        (summary.independence[entry.source_independence] ?? 0) + 1;
-      summary.added_events.push({ year: ev.year, title: ev.title, category: ev.category,
-        consensus: entry.consensus_verdict });
+      record(entry, ev, false);
     }
     (shardComplete ? summary.shards_done : summary.shards_incomplete).push(shard.shardId);
   }
@@ -544,6 +578,12 @@ function fileSha256(p) {
 
 // ─── plan-b ──────────────────────────────────────────────────────────────────
 
+/** Ledger-side "this event is settled" predicate (mirror of isDoubleVerified for
+ * mode_b_ledger records). */
+export function ledgerSettled(led) {
+  return Boolean(led && led.verify_count >= 2 && !led.needs_tiebreak);
+}
+
 export function planB({ country = null, batch = CAPS.EVENT_BATCH_SIZE, includeUnverified = false } = {}) {
   const ledgerB = loadLedgerB();
   const slugs = country ? [country] : listVerificationSlugsByPriority();
@@ -561,13 +601,10 @@ export function planB({ country = null, batch = CAPS.EVENT_BATCH_SIZE, includeUn
       verifiedKeys.add(jk);
       if (!("verifications" in entry)) continue; // malformed legacy verdict — manual review, not batchable
       if (isDoubleVerified(entry)) continue;
-      const key = dedupKey(slug, entry.year, entry.title);
-      const led = ledgerB.events[key];
-      if (led && led.verify_count >= 2 && !led.needs_tiebreak) continue;
+      if (ledgerSettled(ledgerB.events[dedupKey(slug, entry.year, entry.title)])) continue;
       const cur = cIdx.get(jk);
       if (!cur) { skippedOrphans.push({ slug, year: entry.year, title: entry.title }); continue; }
-      const tier = eventTier(slug, cur.category);
-      selected.push(makePlanBEvent({ slug, entry, cur, key, tier, passesNeeded: 1 }));
+      selected.push({ slug, entry, cur, tier: eventTier(slug, cur.category), passesNeeded: 1 });
     }
 
     // zero-verdict curated events (the 43-country lever, or a named country's gaps):
@@ -575,18 +612,17 @@ export function planB({ country = null, batch = CAPS.EVENT_BATCH_SIZE, includeUn
     if (includeUnverified || country) {
       for (const [jk, cur] of cIdx) {
         if (verifiedKeys.has(jk)) continue;
-        const key = dedupKey(slug, cur.year, cur.title);
-        const led = ledgerB.events[key];
-        if (led && led.verify_count >= 2 && !led.needs_tiebreak) continue;
-        const tier = eventTier(slug, cur.category);
-        selected.push(makePlanBEvent({ slug, entry: null, cur, key, tier, passesNeeded: 2 }));
+        if (ledgerSettled(ledgerB.events[dedupKey(slug, cur.year, cur.title)])) continue;
+        selected.push({ slug, entry: null, cur, tier: eventTier(slug, cur.category), passesNeeded: 2 });
       }
     }
   }
 
   selected.sort((a, b) => a.tier - b.tier || a.slug.localeCompare(b.slug) ||
-    a.year - b.year || a.title.localeCompare(b.title));
-  const batchEvents = selected.slice(0, batch);
+    a.cur.year - b.cur.year || a.cur.title.localeCompare(b.cur.title));
+  // render prompts ONLY for the sliced batch — right after migration ~11.7k events
+  // are selectable and building ~2.5KB prompts for all of them is pure waste
+  const batchEvents = selected.slice(0, batch).map(makePlanBEvent);
   return {
     mode: "B",
     policy: CONSENSUS_POLICY,
@@ -598,22 +634,23 @@ export function planB({ country = null, batch = CAPS.EVENT_BATCH_SIZE, includeUn
   };
 }
 
-function makePlanBEvent({ slug, entry, cur, key, tier, passesNeeded }) {
+function makePlanBEvent({ slug, entry, cur, tier, passesNeeded }) {
   const priorPasses = entry?.verifications ?? [];
   const priorDomains = [...new Set(priorPasses.map((p) => p.source && registrableDomain(p.source))
     .filter(Boolean))];
-  const why = tierWhy(tier, cur.category);
   const eventJson = JSON.stringify(
     { year: cur.year, title: cur.title, description: cur.description, category: cur.category },
     null, 2);
-  const prompt = verifyPromptTemplate(slug)
-    .replace("__EVENT_JSON__", eventJson)
-    .replace("__PRIOR_DOMAINS__", priorDomains.length ? priorDomains.join(", ") : "(none)")
-    .replace("__WHY__", why);
+  const prompt = fillTemplate(verifyPromptTemplate(slug), {
+    __EVENT_JSON__: eventJson,
+    __PRIOR_DOMAINS__: priorDomains.length ? priorDomains.join(", ") : "(none)",
+    __WHY__: tierWhy(tier, cur.category)
+  });
   return {
-    key, slug, year: cur.year, title: cur.title, category: cur.category, tier,
-    passesNeeded,
-    prompts: Array.from({ length: passesNeeded }, () => prompt)
+    key: dedupKey(slug, cur.year, cur.title),
+    slug, year: cur.year, title: cur.title, category: cur.category, tier,
+    passesNeeded, // the workflow spawns this many blind passes of the same prompt
+    prompt
   };
 }
 
@@ -630,7 +667,7 @@ export function consolidateB(plan, results) {
   const ledgerB = loadLedgerB();
   const summary = {
     events_updated: 0, echo_mismatch: 0, reentrancy_skipped: 0, replay_skipped: 0,
-    single_pass_new: 0,
+    single_pass_new: 0, legacy_entries_migrated: 0,
     consensus: {}, flips_true_to_nontrue: [], flips_nontrue_to_true: [],
     independence: {}, needs_tiebreak: [], countries_touched: new Set()
   };
@@ -645,7 +682,12 @@ export function consolidateB(plan, results) {
 
   for (const [slug, jobs] of bySlug) {
     const vPath = path.join(VERIFICATION_DIR, `${slug}.json`);
-    const entries = (fs.existsSync(vPath) ? loadJson(vPath) : []).map(migrateEntry);
+    const raw = fs.existsSync(vPath) ? loadJson(vPath) : [];
+    const entries = raw.map(migrateEntry);
+    // writing a touched file migrates ALL its legacy entries to v2 as a side effect
+    // (spec §4.3 phase 1: migrate in memory as you go; Mode B only runs after the
+    // B1/B2 founder gates) — count it so the PR review sees the migration explicitly
+    const migratedInFile = raw.reduce((n, e, i) => n + (entries[i] !== e ? 1 : 0), 0);
     const idx = new Map(entries.map((e, i) => [`${Number(e.year)}|${normTitle(e.title)}`, i]));
     let touched = false;
 
@@ -703,7 +745,10 @@ export function consolidateB(plan, results) {
       summary.countries_touched.add(slug);
     }
 
-    if (touched) saveJson(vPath, entries);
+    if (touched) {
+      saveJson(vPath, entries);
+      summary.legacy_entries_migrated += migratedInFile;
+    }
   }
 
   ledgerB.runs.push({
@@ -741,23 +786,46 @@ export function computeVerifiedCounters() {
   return out;
 }
 
-export function regenTracking() {
+export function regenTracking(counters = null) {
   if (!fs.existsSync(TRACKING_PATH)) return false;
-  const counters = computeVerifiedCounters();
+  counters = counters ?? computeVerifiedCounters();
   const today = todayISO();
   const text = fs.readFileSync(TRACKING_PATH, "utf8");
   const eol = text.includes("\r\n") ? "\r\n" : "\n"; // the file is CRLF today; preserve whatever it uses
   const lines = text.split(/\r?\n/);
-  const out = lines.map((line) => {
-    const m = line.match(/^\|\s*([a-z_]+)\s*\|(\s*[^|]*\|)(\s*[^|]*\|)\s*([^|]*)\|(\s*[^|]*\|)(.*)$/);
+  // Rewrite ONLY the live "## Tracking table" section. TRACKING.md also contains
+  // frozen historical per-session tables further down (### headings) with the same
+  // row shape — those are append-only records and must never be retro-stamped.
+  const start = lines.findIndex((l) => l.trim().startsWith("## Tracking table"));
+  if (start < 0) return false;
+  let end = lines.length;
+  for (let i = start + 1; i < lines.length; i++) {
+    if (lines[i].startsWith("#")) { end = i; break; } // any heading (## or ###) ends the live table
+  }
+  const ROW_RE = /^\|\s*([a-z_]+)\s*\|(\s*[^|]*\|)(\s*[^|]*\|)\s*([^|]*)\|(\s*[^|]*\|)(.*)$/;
+  const seenSlugs = new Set();
+  let lastRow = -1;
+  const out = lines.map((line, i) => {
+    if (i <= start || i >= end) return line;
+    const m = line.match(ROW_RE);
     if (!m) return line;
+    lastRow = i;
     const slug = m[1];
+    seenSlugs.add(slug);
     if (!(slug in counters)) return line;
     const oldVerified = m[4].trim();
     const newVerified = String(counters[slug]);
     if (oldVerified === newVerified) return line;
     return `| ${slug} |${m[2]}${m[3]} ${newVerified} | ${today} |${m[6]}`;
   });
+  if (lastRow < 0) return false;
+  // countries with data on disk but no row in the live table (they were only ever
+  // logged in the historical session sections) get appended so the live table is
+  // the complete current dashboard; Generated/Curated are unknown here — see logs.
+  const missing = Object.keys(counters).filter((s) => !seenSlugs.has(s)).sort();
+  const newRows = missing.map((s) =>
+    `| ${s} | - | - | ${counters[s]} | ${today} | row added by regen-tracking (Generated/Curated: see session logs below) |`);
+  out.splice(lastRow + 1, 0, ...newRows);
   fs.writeFileSync(TRACKING_PATH, out.join(eol), "utf8");
   return true;
 }
@@ -794,9 +862,11 @@ function main() {
     case "consolidate-b":
       emit(consolidateB(loadJson(cliArg(rest, "plan")), loadJson(cliArg(rest, "results"))));
       break;
-    case "regen-tracking":
-      emit({ updated: regenTracking(), counters: computeVerifiedCounters() });
+    case "regen-tracking": {
+      const counters = computeVerifiedCounters();
+      emit({ updated: regenTracking(counters), counters });
       break;
+    }
     case "next-a":
       emit({ next: nextModeACountry(loadLedgerA()) });
       break;

@@ -14,8 +14,8 @@ import { fileURLToPath } from "node:url";
 
 import { CATEGORIES_71, SHARDS, VERDICTS, normTitle, recomputeConsensus } from "./schemas.mjs";
 import {
-  buildVerificationEntry, dedupKey, eventTier, isDoubleVerified, mergeCurated,
-  migrateEntry, registrableDomain, sourceIndependence
+  buildVerificationEntry, cleanCuratedEvent, dedupKey, eventTier, fillTemplate,
+  isDoubleVerified, ledgerSettled, migrateEntry, registrableDomain, sourceIndependence
 } from "./_lib.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -26,6 +26,20 @@ test("CATEGORIES_71 has exactly 71 unique codes", () => {
   assert.equal(CATEGORIES_71.length, 71);
   assert.equal(new Set(CATEGORIES_71).size, 71);
   assert.equal(SHARDS.length, 8);
+});
+
+test("CATEGORIES_71 is set-equal to the live taxonomy's layer-3 codes", () => {
+  // schemas.mjs hand-mirrors events/taxonomy_hierarchy.json — a rename/addition
+  // there must fail here, not surface later as agent category_confab drops
+  const taxonomy = JSON.parse(fs.readFileSync(
+    path.resolve(HERE, "..", "..", "events", "taxonomy_hierarchy.json"), "utf8"));
+  const live = new Set();
+  for (const l1 of taxonomy.layer1) {
+    for (const l2 of l1.layer2) {
+      for (const l3 of l2.layer3) live.add(typeof l3 === "object" ? l3.code : l3);
+    }
+  }
+  assert.deepEqual([...new Set(CATEGORIES_71)].sort(), [...live].sort());
 });
 
 test("consensus vectors (shared with Python port)", () => {
@@ -67,7 +81,7 @@ test("registrableDomain strips subdomains, keeps two-part TLDs", () => {
   assert.equal(registrableDomain("not a url"), null);
 });
 
-test("sourceIndependence: independent / same_domain / weak / n-a", () => {
+test("sourceIndependence: independent / same_domain / weak / n-a, order-independent", () => {
   const p = (src) => ({ source: src });
   assert.equal(sourceIndependence([p("https://en.wikipedia.org/x")]), "n/a");
   assert.equal(sourceIndependence([p("https://en.wikipedia.org/x"), p(null)]), "n/a");
@@ -75,9 +89,13 @@ test("sourceIndependence: independent / same_domain / weak / n-a", () => {
     [p("https://en.wikipedia.org/x"), p("https://de.wikipedia.org/y")]), "weak");
   assert.equal(sourceIndependence(
     [p("https://en.wikipedia.org/x"), p("https://britannica.com/y")]), "independent");
+  // partial overlap is same_domain regardless of pass order (same multiset → same label)
   assert.equal(sourceIndependence(
     [p("https://en.wikipedia.org/x"), p("https://britannica.com/y"),
      p("https://fr.wikipedia.org/z")]), "same_domain");
+  assert.equal(sourceIndependence(
+    [p("https://en.wikipedia.org/x"), p("https://fr.wikipedia.org/z"),
+     p("https://britannica.com/y")]), "same_domain");
 });
 
 test("migrateEntry mirrors the Python migration", () => {
@@ -97,17 +115,24 @@ test("migrateEntry mirrors the Python migration", () => {
   assert.ok(!("source" in noSrc));
 });
 
-test("mergeCurated dedups against existing and within batch, emits 4 keys only", () => {
-  const existing = [{ year: 1970, title: "Fiji Independence", description: "d", category: "democratic_transition" }];
-  const { fresh, dupExisting, dupWithinBatch } = mergeCurated(existing, [
-    { year: 1970, title: "FIJI — Independence!", description: "dup of existing", category: "democratic_transition" },
-    { year: 1987, title: "First Rabuka Coup", description: "d", category: "military_coup", verified: true },
-    { year: 1987, title: "First  Rabuka  Coup", description: "dup in batch", category: "military_coup" },
-  ]);
-  assert.equal(fresh.length, 1);
-  assert.equal(dupExisting.length, 1);
-  assert.equal(dupWithinBatch.length, 1);
-  assert.deepEqual(Object.keys(fresh[0]), ["year", "title", "description", "category"]); // never verified/verification_source
+test("cleanCuratedEvent emits exactly the 4 canonical keys", () => {
+  const out = cleanCuratedEvent({ year: 1987, title: "T", description: "d",
+    category: "military_coup", verified: true, verification_source: "x" });
+  assert.deepEqual(Object.keys(out), ["year", "title", "description", "category"]);
+});
+
+test("fillTemplate inserts $-laden agent text verbatim (no substitution patterns)", () => {
+  const out = fillTemplate("Event: __EVENT_JSON__ end", {
+    __EVENT_JSON__: "aid worth US$$2bn and $& more and $' tail"
+  });
+  assert.equal(out, "Event: aid worth US$$2bn and $& more and $' tail end");
+});
+
+test("ledgerSettled mirrors the settled predicate", () => {
+  assert.equal(ledgerSettled(undefined), false);
+  assert.equal(ledgerSettled({ verify_count: 1, needs_tiebreak: false }), false);
+  assert.equal(ledgerSettled({ verify_count: 2, needs_tiebreak: true }), false);
+  assert.equal(ledgerSettled({ verify_count: 2, needs_tiebreak: false }), true);
 });
 
 test("buildVerificationEntry assembles v2 with consensus + independence", () => {

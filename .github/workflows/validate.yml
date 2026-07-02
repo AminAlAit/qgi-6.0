@@ -3,10 +3,10 @@ name: Validate
 on:
   push:
     branches: [main]
-    paths: ['events/**', 'registries/**', 'scripts/**', 'workflows/**']
+    paths: ['events/**', 'registries/**', 'scripts/**', 'workflows/**', 'tests/**', '.github/workflows/**']
   pull_request:
     branches: [main]
-    paths: ['events/**', 'registries/**', 'scripts/**', 'workflows/**']
+    paths: ['events/**', 'registries/**', 'scripts/**', 'workflows/**', 'tests/**', '.github/workflows/**']
 
 jobs:
   validate:

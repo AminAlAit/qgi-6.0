@@ -115,6 +115,18 @@ def test_underscore_files_skipped(tmp_path):
     assert ledgerish.read_bytes() == before
 
 
+def test_split_script_refuses_v2_files(tmp_path):
+    """split_verification_by_verdict.py predates v2 and would strip verifications[]
+    and drop PARTIAL/UNCERTAIN — its guard must refuse migrated files loudly."""
+    import pytest
+    from migrate_verification_to_v2 import migrate_entry
+    from split_verification_by_verdict import process_file
+    p = tmp_path / "azerbaijan.json"
+    p.write_text(json.dumps([migrate_entry(dict(LEGACY[0]))]), encoding="utf-8")
+    with pytest.raises(SystemExit, match="REFUSING"):
+        process_file(p, {}, {})
+
+
 def test_top_level_verdict_unchanged_for_all_legacy_shapes(tmp_path):
     """The linchpin (§3.0): migration must not move any top-level verdict —
     build_verified_positives.py / ingest_events.py read exactly that field."""

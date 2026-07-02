@@ -21,8 +21,19 @@ if (!plan || plan.mode !== 'A' || !Array.isArray(plan.shardsPending)) {
 
 // shared candidate budget across concurrent shard chains (single-threaded JS —
 // increments are race-free). merge-a re-enforces this cap deterministically.
-let budgetLeft = plan.caps.remainingCandidates ?? plan.caps.MAX_NEW_CANDIDATES
+let budgetLeft = plan.caps.MAX_NEW_CANDIDATES
 let cappedOut = 0
+
+// String.replace with a replacer FUNCTION: agent-generated text can contain
+// $-sequences ($$, $&, $') that a plain string replacement would expand,
+// corrupting the prompt (mirrors _lib.mjs fillTemplate — self-contained copy).
+const fill = (template, replacements) => {
+  let out = template
+  for (const [placeholder, value] of Object.entries(replacements)) {
+    out = out.replace(placeholder, () => value)
+  }
+  return out
+}
 
 async function mapLimit(items, limit, fn) {
   const results = new Array(items.length)
@@ -65,16 +76,20 @@ async function runShard(shard) {
     const eventJson = JSON.stringify(
       { year: ev.year, title: ev.title, description: ev.description, category: ev.category },
       null, 2)
-    const vPrompt = plan.verifyPromptTemplate
-      .replace('__EVENT_JSON__', eventJson)
-      .replace('__PRIOR_DOMAINS__', '(none — you are one of the first two passes; ' +
-        'still prefer the most authoritative source you can find)')
-      .replace('__WHY__', plan.verifyWhy)
+    const vPrompt = fill(plan.verifyPromptTemplate, {
+      __EVENT_JSON__: eventJson,
+      __PRIOR_DOMAINS__: '(none — you are one of the first blind passes; ' +
+        'still prefer the most authoritative source you can find)',
+      __WHY__: plan.verifyWhy,
+    })
 
-    // two blind verifiers in parallel; neither sees the other (or the researcher's source)
+    // N blind verifiers in parallel; none sees the others (or the researcher's source)
     const runVerifier = (n) => agent(vPrompt, { schema: plan.schemas.verify, model: 'sonnet',
       label: `verify${n}:${shard.id}:${ev.year}`, phase: 'Verify' })
-    let passes = (await parallel([() => runVerifier(1), () => runVerifier(2)])).filter(Boolean)
+    const nVerifiers = plan.caps.VERIFIER_CONCURRENCY_A ?? 2
+    let passes = (await parallel(
+      Array.from({ length: nVerifiers }, (_, i) => () => runVerifier(i + 1))
+    )).filter(Boolean)
     // retry once per missing pass — a transient agent error must not cost the event
     // its born-double-verified status (merge-a refuses events with <2 passes)
     for (let attempt = 0; passes.length < 2 && attempt < 2; attempt++) {
