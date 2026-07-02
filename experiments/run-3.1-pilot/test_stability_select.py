@@ -469,3 +469,185 @@ def test_run_single_walk_rejects_unknown_arm(monkeypatch):
 def test_run_arm_rejects_unknown_arm():
     with pytest.raises(ValueError):
         ss.run_arm("r", "nope", "pd", "pc")
+
+
+# ============================================================================================
+# (f) CRASH-RESILIENT CHECKPOINTING — a resumed arm must be byte-identical to an uninterrupted
+#     one, and a crash at ANY point must leave a valid resumable (or cleanly-ignored) state.
+# ============================================================================================
+_REAL_CKPT_WRITE = ss._ckpt_write  # captured at import, before any monkeypatch
+
+
+def _seed_greedy(samples, candidates_top_n, panels, architecture, **kw):
+    """Deterministic greedy whose pick depends ONLY on the seed (a pure function of
+    resample_index) — never a call counter. This is exactly the property a correct resume
+    relies on; a counter-based greedy would (correctly) fail these tests."""
+    s = int(kw["seed"])
+    return {"selected_indicators": ["core", f"rot{s % 5}"]}
+
+
+def _fake_seed_walk():
+    fake = _make_fake_walk(greedy_return=["core"])
+    fake.greedy_outer_loop = _seed_greedy
+    return fake
+
+
+def _const_greedy(samples, candidates_top_n, panels, architecture, **kw):
+    """Constant pick -> pi stabilizes -> should_stop_now fires (CONVERGED) at the 3rd checkpoint."""
+    return {"selected_indicators": ["core", "x"]}
+
+
+def _fake_const_walk():
+    fake = _make_fake_walk(greedy_return=["core", "x"])
+    fake.greedy_outer_loop = _const_greedy
+    return fake
+
+
+def _run_arm_fake(monkeypatch, out_dir, positives_csv, arm="run3method", git_commit="c0ffee",
+                  b_schedule=(4, 6, 8), crash_at=None, walk_factory=_fake_seed_walk):
+    """Drive run_arm with a deterministic fake walk. If crash_at=N, ss._ckpt_write raises on its
+    Nth call (simulating a host/daemon restart); the last committed checkpoint survives."""
+    monkeypatch.setattr(ss, "_WALK", walk_factory())
+    if crash_at is None:
+        monkeypatch.setattr(ss, "_ckpt_write", _REAL_CKPT_WRITE)  # ensure real writer (undo prior crash)
+    else:
+        calls = {"n": 0}
+
+        def crashing(*a, **k):
+            calls["n"] += 1
+            if calls["n"] == crash_at:
+                raise RuntimeError("simulated host restart")
+            return _REAL_CKPT_WRITE(*a, **k)
+
+        monkeypatch.setattr(ss, "_ckpt_write", crashing)
+    return ss.run_arm(
+        recipe_id="ckpt_recipe", arm=arm, panel_dir=out_dir.parent,
+        positives_csv=positives_csv, out_dir=out_dir,
+        b_schedule=list(b_schedule), git_commit=git_commit,
+    )
+
+
+# crash_at spans: before any snapshot (2), between reaching a boundary and recording its snapshot
+# (3), just after the first snapshot (4), and after the second snapshot (6).
+@pytest.mark.parametrize("arm", ["run3method", "run31"])
+@pytest.mark.parametrize("crash_at", [2, 3, 4, 6])
+def test_resume_is_byte_identical_to_uninterrupted(monkeypatch, tmp_path, positives_csv, arm, crash_at):
+    full_dir = tmp_path / "full"
+    ref = _run_arm_fake(monkeypatch, full_dir, positives_csv, arm=arm)
+    assert not (full_dir / f"ckpt_recipe.{arm}.ckpt.json").exists(), "ckpt must be removed on completion"
+
+    crash_dir = tmp_path / "crash"
+    with pytest.raises(RuntimeError):
+        _run_arm_fake(monkeypatch, crash_dir, positives_csv, arm=arm, crash_at=crash_at)
+    ckpt = crash_dir / f"ckpt_recipe.{arm}.ckpt.json"
+    assert ckpt.exists(), "a resumable checkpoint must survive the crash"
+    assert not (crash_dir / f"ckpt_recipe.{arm}.json").exists(), "arm must not be marked finished"
+    assert not ckpt.with_suffix(".tmp").exists(), "no stale temp file"
+
+    resumed = _run_arm_fake(monkeypatch, crash_dir, positives_csv, arm=arm)
+
+    assert json.dumps(resumed, sort_keys=True) == json.dumps(ref, sort_keys=True), \
+        "resumed result diverged from the uninterrupted run"
+    assert resumed["resample_selected_sets"] == ref["resample_selected_sets"]
+    assert resumed["per_checkpoint"] == ref["per_checkpoint"]
+    assert resumed["B_used"] == ref["B_used"] == 8
+    assert resumed["stop_reason"] == "b_ceiling_reached"
+    assert not ckpt.exists(), "ckpt must be removed after a successful resume"
+
+
+def test_resume_preserves_converged_stop_decision(monkeypatch, tmp_path, positives_csv):
+    # Constant greedy -> pi stable -> should_stop_now fires CONVERGED at target index 2 (B=8),
+    # BEFORE the last schedule target (10). Crash on the TERMINAL stop_reason write, so the
+    # persisted checkpoint carries the converging snapshots but stop_reason=None. On resume the
+    # run must STOP at B=8, not overshoot to B=10. (Regression for the HIGH resume-divergence bug.)
+    sched = (4, 6, 8, 10)
+    ref = _run_arm_fake(monkeypatch, tmp_path / "full", positives_csv,
+                        b_schedule=sched, walk_factory=_fake_const_walk)
+    assert ref["stop_reason"] == "converged_two_consecutive_checkpoints"
+    assert ref["B_used"] == 8
+
+    crash_dir = tmp_path / "crash"
+    with pytest.raises(RuntimeError):
+        _run_arm_fake(monkeypatch, crash_dir, positives_csv, b_schedule=sched,
+                      walk_factory=_fake_const_walk, crash_at=8)  # 8th write == the terminal write
+    # the checkpoint that survives has all 3 converging snapshots but stop_reason=None (the bug state)
+    ck = json.loads((crash_dir / "ckpt_recipe.run3method.ckpt.json").read_text(encoding="utf-8"))
+    assert ck["stop_reason"] is None
+    assert len(ck["per_checkpoint"]) == 3
+    assert len(ck["selected_sets"]) == 8
+
+    resumed = _run_arm_fake(monkeypatch, crash_dir, positives_csv, b_schedule=sched,
+                            walk_factory=_fake_const_walk)
+    assert resumed["stop_reason"] == "converged_two_consecutive_checkpoints"
+    assert resumed["B_used"] == 8   # honored the converged stop; did NOT run to 10
+    assert json.dumps(resumed, sort_keys=True) == json.dumps(ref, sort_keys=True)
+
+
+def test_double_crash_then_resume_still_identical(monkeypatch, tmp_path, positives_csv):
+    """Two successive crashes at different points, then a clean finish — still identical."""
+    ref = _run_arm_fake(monkeypatch, tmp_path / "full", positives_csv)
+    d = tmp_path / "crash"
+    with pytest.raises(RuntimeError):
+        _run_arm_fake(monkeypatch, d, positives_csv, crash_at=2)   # crash early
+    with pytest.raises(RuntimeError):
+        _run_arm_fake(monkeypatch, d, positives_csv, crash_at=2)   # resume then crash again
+    resumed = _run_arm_fake(monkeypatch, d, positives_csv)          # finally finish
+    assert json.dumps(resumed, sort_keys=True) == json.dumps(ref, sort_keys=True)
+
+
+def test_ckpt_guard_normalizes_b_schedule_tuple_vs_list():
+    # DEFAULT_B_SCHEDULE is a tuple; the CLI passes a list; JSON round-trips lists. All must match.
+    g_list = ss._ckpt_guard("r", "run31", 12345, [12, 24], "sha")
+    g_tuple = ss._ckpt_guard("r", "run31", 12345, (12, 24), "sha")
+    assert g_list == g_tuple
+    assert g_list["b_schedule"] == [12, 24]  # stored as list (JSON-stable)
+
+
+def test_ckpt_load_roundtrip_and_no_stale_tmp(tmp_path):
+    p = tmp_path / "x.ckpt.json"
+    g = ss._ckpt_guard("r", "run31", 12345, [12, 24], "sha")
+    ss._ckpt_write(p, g, [["a"], ["b"]], 1, [{"i": 1.0}], [{"B": 2}], None)
+    got = ss._ckpt_load(p, g)
+    assert got is not None
+    assert got["selected_sets"] == [["a"], ["b"]]
+    assert got["resample_index"] == 1
+    assert got["per_checkpoint"] == [{"B": 2}]
+    assert not p.with_suffix(".tmp").exists()
+
+
+def test_ckpt_load_rejects_guard_mismatch(tmp_path):
+    p = tmp_path / "x.ckpt.json"
+    g = ss._ckpt_guard("r", "run31", 12345, [12, 24], "sha")
+    ss._ckpt_write(p, g, [["a"], ["b"]], 1, [], [], None)
+    assert ss._ckpt_load(p, ss._ckpt_guard("r", "run31", 12345, [12, 24], "DIFFERENT")) is None
+    assert ss._ckpt_load(p, ss._ckpt_guard("r", "run31", 999, [12, 24], "sha")) is None
+    assert ss._ckpt_load(p, ss._ckpt_guard("r", "run31", 12345, [12, 24, 36], "sha")) is None
+
+
+def test_ckpt_load_rejects_inconsistent_cursor(tmp_path):
+    p = tmp_path / "x.ckpt.json"
+    g = ss._ckpt_guard("r", "run31", 12345, [12, 24], "sha")
+    # resample_index*2 (=4) != len(selected_sets) (=2): a torn/partial checkpoint -> reject.
+    ss._ckpt_write(p, g, [["a"], ["b"]], 2, [], [], None)
+    assert ss._ckpt_load(p, g) is None
+
+
+def test_ckpt_load_missing_or_corrupt_is_none_not_raise(tmp_path):
+    g = ss._ckpt_guard("r", "run31", 12345, [12, 24], "sha")
+    assert ss._ckpt_load(tmp_path / "nope.ckpt.json", g) is None
+    bad = tmp_path / "bad.ckpt.json"
+    bad.write_text("{ this is not json", encoding="utf-8")
+    assert ss._ckpt_load(bad, g) is None
+
+
+def test_stale_ckpt_from_different_commit_is_ignored_and_run_completes(monkeypatch, tmp_path, positives_csv):
+    d = tmp_path / "d"
+    with pytest.raises(RuntimeError):
+        _run_arm_fake(monkeypatch, d, positives_csv, git_commit="OLD", crash_at=4)
+    assert (d / "ckpt_recipe.run3method.ckpt.json").exists()
+    # rerun under a DIFFERENT commit: the stale checkpoint must be ignored, run must finish clean.
+    ref = _run_arm_fake(monkeypatch, tmp_path / "ref", positives_csv, git_commit="NEW")
+    got = _run_arm_fake(monkeypatch, d, positives_csv, git_commit="NEW")
+    assert got["git_commit"] == "NEW"
+    assert got["resample_selected_sets"] == ref["resample_selected_sets"]
+    assert not (d / "ckpt_recipe.run3method.ckpt.json").exists()

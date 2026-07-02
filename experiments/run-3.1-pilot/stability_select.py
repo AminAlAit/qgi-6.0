@@ -45,6 +45,7 @@ import json
 import math
 import os
 import sys
+import time
 from pathlib import Path
 from typing import Any
 
@@ -483,6 +484,129 @@ def _config_signature(
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
+# ============================================================================================
+# Crash-resilient checkpointing (resume a partially-completed arm after a host/daemon restart).
+# The ONLY persisted state is the accumulated per-walk selected sets, the resample cursor, and
+# the target-boundary snapshots. Every walk is a pure function of (arm, resample_index,
+# seed_base, data), so a RESUMED run reproduces byte-identical results to an uninterrupted one —
+# the checkpoint only skips recomputation, it never changes a computed value. Checkpoints are
+# written ONLY after a COMPLETE resample (both halves), so the invariant
+# ``resample_index == len(selected_sets)//2`` always holds and resume is exact.
+# ============================================================================================
+_CKPT_VERSION = 1
+
+
+def _ckpt_path(out_dir: Path, recipe_id: str, arm: str) -> Path:
+    return Path(out_dir) / f"{recipe_id}.{arm}.ckpt.json"
+
+
+_WALK_MODULE_SRC = Path(__file__).resolve().parents[2] / "scripts" / "run_f_ml_1_poc.py"
+
+
+def _source_fingerprint() -> str:
+    """sha256 over the bytes of THIS module + the walk module, so any code edit — even an
+    uncommitted one on the bind mount that leaves git HEAD unchanged — invalidates a checkpoint.
+    git_commit alone is insufficient (it defaults to 'UNKNOWN' and misses uncommitted edits)."""
+    h = hashlib.sha256()
+    for p in (Path(__file__), _WALK_MODULE_SRC):
+        try:
+            h.update(p.read_bytes())
+        except OSError:
+            h.update(b"__MISSING__")
+    return h.hexdigest()
+
+
+def _ckpt_guard(
+    recipe_id: str, arm: str, seed_base: int, b_schedule: list[int], git_commit: str,
+    pool_hash: str = "UNKNOWN",
+) -> dict[str, Any]:
+    """Identity a checkpoint must match to be safely resumed. Any config/code/DATA change =>
+    discard. Covers config knobs, the code fingerprint (source + git), and the data fingerprint
+    (pool_hash + negatives ratio + dedup params) so a resume can never mix incompatible walks."""
+    return {
+        "v": _CKPT_VERSION,
+        "recipe_id": recipe_id,
+        "arm": arm,
+        "seed_base": int(seed_base),
+        "b_schedule": list(b_schedule),
+        "abs_r_threshold": ABS_R_THRESHOLD,
+        "pi_keep_threshold": PI_KEEP_THRESHOLD,
+        "stop_max_abs_delta_pi": STOP_MAX_ABS_DELTA_PI,
+        "stop_keepset_jaccard": STOP_KEEPSET_JACCARD,
+        "negatives_per_positive": NEGATIVES_PER_POSITIVE,
+        "dedup_window": DEDUP_WINDOW,
+        "dedup_min_common": DEDUP_MIN_COMMON,
+        "pool_hash": pool_hash,
+        "git_commit": git_commit or "UNKNOWN",
+        "source_fingerprint": _source_fingerprint(),
+    }
+
+
+def _ckpt_write(
+    path: Path, guard: dict[str, Any], selected_sets: list[list[str]], resample_index: int,
+    pi_snapshots: list[dict[str, float]], per_checkpoint: list[dict[str, Any]],
+    stop_reason: str | None,
+) -> None:
+    """Durably + atomically persist loop state: fsync a temp file, then os.replace onto the target
+    (fsync the dir too). Bounded retry so a transient bind-mount rename hiccup (Windows/virtiofs)
+    does NOT abort the arm — on final failure we warn and continue; in-memory state is re-persisted
+    next resample, and the last committed checkpoint stays intact for resume."""
+    payload = {
+        "guard": guard,
+        "selected_sets": selected_sets,
+        "resample_index": resample_index,
+        "pi_snapshots": pi_snapshots,
+        "per_checkpoint": per_checkpoint,
+        "stop_reason": stop_reason,
+    }
+    blob = json.dumps(payload, ensure_ascii=False)
+    tmp = path.with_suffix(".tmp")
+    last_exc: Exception | None = None
+    for attempt in range(5):
+        try:
+            with open(tmp, "w", encoding="utf-8") as f:
+                f.write(blob)
+                f.flush()
+                os.fsync(f.fileno())
+            os.replace(tmp, path)
+            try:  # fsync the directory so the rename itself is durable across power loss
+                dfd = os.open(str(path.parent), os.O_RDONLY)
+                try:
+                    os.fsync(dfd)
+                finally:
+                    os.close(dfd)
+            except OSError:
+                pass  # some mounts/platforms don't support directory fds — best effort
+            return
+        except OSError as exc:
+            last_exc = exc
+            time.sleep(0.2 * (attempt + 1))
+    print(f"[ckpt] WARN could not persist checkpoint {path} after retries ({last_exc}) — "
+          f"continuing; state will be re-persisted next resample", file=sys.stderr, flush=True)
+
+
+def _ckpt_load(path: Path, guard: dict[str, Any]) -> dict[str, Any] | None:
+    """Return persisted state iff a checkpoint exists, its guard matches, and it is self-consistent;
+    otherwise None (start fresh). Never raises — a bad checkpoint degrades to a clean run."""
+    if not path.exists():
+        return None
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        print(f"[ckpt] unreadable checkpoint {path} ({exc}) — starting fresh", file=sys.stderr, flush=True)
+        return None
+    if data.get("guard") != guard:
+        print(f"[ckpt] guard mismatch at {path} — starting fresh", file=sys.stderr, flush=True)
+        return None
+    ss, ri = data.get("selected_sets"), data.get("resample_index")
+    if not isinstance(ss, list) or not isinstance(ri, int) or ri * 2 != len(ss):
+        n = len(ss) if isinstance(ss, list) else "?"
+        print(f"[ckpt] inconsistent checkpoint at {path} (ri={ri}, n_walks={n}) — starting fresh",
+              file=sys.stderr, flush=True)
+        return None
+    return data
+
+
 def _load_positives(positives_csv: Path) -> pd.DataFrame:
     """Load + normalize positives exactly as _main (lines 1528-1531)."""
     w = _walk()
@@ -529,6 +653,26 @@ def run_arm(
     b_schedule = list(b_schedule)
     w = _walk()
 
+    # --- provenance + idempotency (computed BEFORE any heavy work) -------------------------
+    resolved_commit = git_commit or os.environ.get("GIT_COMMIT", "UNKNOWN")
+    src_fp = _source_fingerprint()
+    pool_hash = w.panel_data_fingerprint(panel_dir, positives_csv)
+    config_signature = _config_signature(
+        recipe_id, arm, pool_hash, seed_base, b_schedule, ABS_R_THRESHOLD
+    )
+    out_path = out_dir / f"{recipe_id}.{arm}.json"
+    if out_path.exists():  # already completed under this exact data/config/code -> don't recompute
+        try:
+            prior = json.loads(out_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            prior = None
+        if (prior is not None and prior.get("config_signature") == config_signature
+                and prior.get("git_commit") == resolved_commit
+                and prior.get("source_fingerprint") == src_fp):
+            print(f"[ckpt] {recipe_id}.{arm} already complete (data/config/code match) — "
+                  f"skipping recompute", file=sys.stderr, flush=True)
+            return prior
+
     # --- canonical samples (seed_base => identical folds across arms/baseline) --------------
     pos = _load_positives(positives_csv)
     samples = w.build_samples(pos, negatives_per_positive=NEGATIVES_PER_POSITIVE, seed=seed_base)
@@ -536,7 +680,10 @@ def run_arm(
     all_candidates = w.list_candidate_indicators(panel_dir)
     panels = {ind: w.load_panel(ind, panel_dir) for ind in all_candidates}
 
-    # --- complementary-pairs country-bootstrap stability loop ------------------------------
+    # --- complementary-pairs country-bootstrap stability loop (crash-resilient) -------------
+    ckpt_path = _ckpt_path(out_dir, recipe_id, arm)
+    guard = _ckpt_guard(recipe_id, arm, seed_base, b_schedule, resolved_commit, pool_hash)
+
     selected_sets: list[list[str]] = []
     pi_snapshots: list[dict[str, float]] = []
     per_checkpoint: list[dict[str, Any]] = []
@@ -544,45 +691,85 @@ def run_arm(
     stop_reason: str | None = None
     b_ceiling = b_schedule[-1]
 
-    for target in b_schedule:
-        while len(selected_sets) < target:
-            sub_a, sub_b = resample_halves(samples, resample_index, seed_base)
-            resample_seed = seed_base + resample_index
-            for sub in (sub_a, sub_b):
-                selected_sets.append(
-                    run_single_walk(arm, sub, all_candidates, panels, resample_seed)
-                )
-            resample_index += 1
+    _resumed = _ckpt_load(ckpt_path, guard)
+    if _resumed is not None:
+        selected_sets = _resumed["selected_sets"]
+        resample_index = _resumed["resample_index"]
+        pi_snapshots = _resumed["pi_snapshots"]
+        per_checkpoint = _resumed["per_checkpoint"]
+        stop_reason = _resumed["stop_reason"]
+        print(
+            f"[ckpt] RESUMED {recipe_id}.{arm}: {len(selected_sets)} walks done "
+            f"(resample_index={resample_index}, {len(per_checkpoint)} checkpoint(s) recorded, "
+            f"stop_reason={stop_reason})",
+            file=sys.stderr, flush=True,
+        )
 
-        pi = compute_pi(selected_sets)
-        pi_snapshots.append(pi)
-        keep = sorted(keepset(pi, PI_KEEP_THRESHOLD))
-        cp: dict[str, Any] = {
-            "B": len(selected_sets),
-            "keepset": keep,
-            "pi_snapshot": {k: pi[k] for k in sorted(pi)},
-        }
-        if len(pi_snapshots) >= 2:
-            d = max_abs_delta_pi(pi_snapshots[-2], pi_snapshots[-1])
-            j = jaccard(keepset(pi_snapshots[-2]), keepset(pi_snapshots[-1]))
-            cp["max_abs_delta_pi_vs_prev"] = d
-            cp["keepset_jaccard_vs_prev"] = j
-            cp["stop_criteria_satisfied"] = bool(d < STOP_MAX_ABS_DELTA_PI and j >= STOP_KEEPSET_JACCARD)
-        else:
-            cp["max_abs_delta_pi_vs_prev"] = None
-            cp["keepset_jaccard_vs_prev"] = None
-            cp["stop_criteria_satisfied"] = False
-        per_checkpoint.append(cp)
-
+    # A crash between a boundary snapshot write and the terminal stop_reason write can leave a
+    # loaded stop_reason=None even though the restored (deterministic) snapshots ALREADY imply a
+    # stop. Re-derive it from pi_snapshots so a resume honors EXACTLY the decision the uninterrupted
+    # run made at that boundary and never overshoots it (should_stop_now is pure in pi_snapshots).
+    # Precedence matches the in-loop order: CONVERGED is checked before CEILING.
+    if stop_reason is None and per_checkpoint:
         if should_stop_now(pi_snapshots):
             stop_reason = _STOP_REASON_CONVERGED
-            break
-        if len(selected_sets) >= b_ceiling:
+        elif len(selected_sets) >= b_ceiling:
             stop_reason = _STOP_REASON_CEILING
-            break
 
-    if stop_reason is None:  # exhausted schedule without an explicit stop
-        stop_reason = _STOP_REASON_CEILING
+    if stop_reason is None:
+        # Targets whose boundary snapshot is already recorded are skipped; the while-loop resumes
+        # from resample_index. A missing snapshot is recomputed at its exact len==target boundary,
+        # so per_checkpoint / pi_snapshots are byte-identical to an uninterrupted run.
+        n_done_targets = len(per_checkpoint)
+        for ti, target in enumerate(b_schedule):
+            if ti < n_done_targets:
+                continue
+            while len(selected_sets) < target:
+                sub_a, sub_b = resample_halves(samples, resample_index, seed_base)
+                resample_seed = seed_base + resample_index
+                for sub in (sub_a, sub_b):
+                    selected_sets.append(
+                        run_single_walk(arm, sub, all_candidates, panels, resample_seed)
+                    )
+                resample_index += 1
+                _ckpt_write(ckpt_path, guard, selected_sets, resample_index,
+                            pi_snapshots, per_checkpoint, None)
+
+            pi = compute_pi(selected_sets)
+            pi_snapshots.append(pi)
+            keep = sorted(keepset(pi, PI_KEEP_THRESHOLD))
+            cp: dict[str, Any] = {
+                "B": len(selected_sets),
+                "keepset": keep,
+                "pi_snapshot": {k: pi[k] for k in sorted(pi)},
+            }
+            if len(pi_snapshots) >= 2:
+                d = max_abs_delta_pi(pi_snapshots[-2], pi_snapshots[-1])
+                j = jaccard(keepset(pi_snapshots[-2]), keepset(pi_snapshots[-1]))
+                cp["max_abs_delta_pi_vs_prev"] = d
+                cp["keepset_jaccard_vs_prev"] = j
+                cp["stop_criteria_satisfied"] = bool(d < STOP_MAX_ABS_DELTA_PI and j >= STOP_KEEPSET_JACCARD)
+            else:
+                cp["max_abs_delta_pi_vs_prev"] = None
+                cp["keepset_jaccard_vs_prev"] = None
+                cp["stop_criteria_satisfied"] = False
+            per_checkpoint.append(cp)
+            _ckpt_write(ckpt_path, guard, selected_sets, resample_index,
+                        pi_snapshots, per_checkpoint, None)
+
+            if should_stop_now(pi_snapshots):
+                stop_reason = _STOP_REASON_CONVERGED
+                break
+            if len(selected_sets) >= b_ceiling:
+                stop_reason = _STOP_REASON_CEILING
+                break
+
+        if stop_reason is None:  # exhausted schedule without an explicit stop
+            stop_reason = _STOP_REASON_CEILING
+        # persist the terminal stop_reason so a crash during the post-loop fit resumes past the walks
+        _ckpt_write(ckpt_path, guard, selected_sets, resample_index,
+                    pi_snapshots, per_checkpoint, stop_reason)
+
     b_used = len(selected_sets)
 
     # --- final pi / stable core ------------------------------------------------------------
@@ -609,13 +796,7 @@ def run_arm(
     # --- final full-sample fit on the stable core ------------------------------------------
     fit = _final_fit(stable_set, samples, panels, seed_base)
 
-    # --- provenance ------------------------------------------------------------------------
-    pool_hash = w.panel_data_fingerprint(panel_dir, positives_csv)
-    config_signature = _config_signature(
-        recipe_id, arm, pool_hash, seed_base, b_schedule, ABS_R_THRESHOLD
-    )
-    resolved_commit = git_commit or os.environ.get("GIT_COMMIT", "UNKNOWN")
-
+    # --- provenance (pool_hash / config_signature / src_fp computed up front) --------------
     result: dict[str, Any] = {
         "recipe_id": recipe_id,
         "arm": arm,
@@ -638,14 +819,23 @@ def run_arm(
         "pool_hash": pool_hash,
         "seed_base": seed_base,
         # non-contract provenance (extra keys are harmless to downstream readers)
+        "source_fingerprint": src_fp,
         "chosen_window": fit["chosen_window"],
         "b_schedule": b_schedule,
         "abs_r_threshold": ABS_R_THRESHOLD,
         "pi_keep_threshold": PI_KEEP_THRESHOLD,
     }
 
-    out_path = out_dir / f"{recipe_id}.{arm}.json"
-    out_path.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
+    # atomic write: a reader (or a crash mid-write) never observes a partial {recipe}.{arm}.json
+    tmp_out = out_path.parent / (out_path.name + ".tmp")
+    tmp_out.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
+    os.replace(tmp_out, out_path)
+    # arm complete — drop the resume checkpoint (+ any stale temp) so a fresh rerun starts clean
+    for stale in (ckpt_path, ckpt_path.with_suffix(".tmp")):
+        try:
+            stale.unlink()
+        except FileNotFoundError:
+            pass
     return result
 
 
