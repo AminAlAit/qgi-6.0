@@ -106,9 +106,10 @@ def _load_curated_keys(curated_dir: Path) -> dict[str, set[tuple[int, str]]]:
             continue  # curated corruption is validate_events.py's job to report
         if not isinstance(events, list):
             continue
-        keys[cf.stem] = {(int(e["year"]), _norm_title(e.get("title")))
+        # non-int years are validate_events.py's problem — don't let one crash this gate
+        keys[cf.stem] = {(e["year"], _norm_title(e.get("title")))
                          for e in events
-                         if isinstance(e, dict) and e.get("year") is not None}
+                         if isinstance(e, dict) and isinstance(e.get("year"), int)}
     return keys
 
 

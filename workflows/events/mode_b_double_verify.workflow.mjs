@@ -20,11 +20,11 @@ if (!plan || plan.mode !== 'B' || !Array.isArray(plan.batch)) {
 }
 
 phase('Verify')
-log(`verifying ${plan.batch.length} events (${plan.batch.reduce((n, e) => n + e.prompts.length, 0)} passes)`)
+log(`verifying ${plan.batch.length} events (${plan.batch.reduce((n, e) => n + e.passesNeeded, 0)} passes)`)
 
-// flatten: one job per needed pass (zero-verdict events carry two prompts)
+// flatten: one job per needed pass (zero-verdict events need two fresh blind passes)
 const jobs = plan.batch.flatMap((e) =>
-  e.prompts.map((prompt, i) => ({ e, prompt, passIdx: i + 1 })))
+  Array.from({ length: e.passesNeeded }, (_, i) => ({ e, prompt: e.prompt, passIdx: i + 1 })))
 
 async function mapLimit(items, limit, fn) {
   const results = new Array(items.length)
