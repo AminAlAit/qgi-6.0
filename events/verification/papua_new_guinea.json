@@ -4,6 +4,24 @@
     "title": "Papua New Guinea Gains Independence from Australia",
     "verdict": "TRUE",
     "reason": "PNG achieved independence on 16 September 1975, with Michael Somare becoming the first prime minister; confirmed by multiple government and academic sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PNG achieved independence on 16 September 1975, with Michael Somare becoming the first prime minister; confirmed by multiple government and academic sources.",
+        "source": "https://www.naa.gov.au/help-your-research/fact-sheets/independence-papua-new-guinea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.naa.gov.au/help-your-research/fact-sheets/independence-papua-new-guinea"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Bougainville Unilateral Declaration of Independence",
     "verdict": "PARTIAL",
     "reason": "The declaration occurred on 1 September 1975 (two weeks before PNG independence, as described), but the event record names 'Republic of the North Solomons' correctly while stating it was 'two weeks before'; the leader was John Momis/Leo Hannet, not solely Francis Ona (who led the 1990 declaration). The 1975 date and name are verified.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The declaration occurred on 1 September 1975 (two weeks before PNG independence, as described), but the event record names 'Republic of the North Solomons' correctly while stating it was 'two weeks before'; the leader was John Momis/Leo Hannet, not solely Francis Ona (who led the 1990 declaration). The 1975 date and name are verified.",
+        "source": "https://en.wikipedia.org/wiki/Republic_of_the_North_Solomons",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Republic_of_the_North_Solomons"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Constitution of Papua New Guinea Adopted",
     "verdict": "TRUE",
     "reason": "PNG's constitution was adopted at independence in 1975, establishing a Westminster-style unicameral parliament and embedding Melanesian values through National Goals and Directive Principles.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PNG's constitution was adopted at independence in 1975, establishing a Westminster-style unicameral parliament and embedding Melanesian values through National Goals and Directive Principles.",
+        "source": "https://www.constituteproject.org/constitution/Papua_New_Guinea_2016",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.constituteproject.org/constitution/Papua_New_Guinea_2016"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Bougainville Provincial Government Agreement",
     "verdict": "TRUE",
     "reason": "Somare and Momis signed the 1976 Bougainville Agreement creating the North Solomons Provincial Government with revenue-sharing from the Panguna mine, as confirmed by Conciliation Resources and Princeton sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Somare and Momis signed the 1976 Bougainville Agreement creating the North Solomons Provincial Government with revenue-sharing from the Panguna mine, as confirmed by Conciliation Resources and Princeton sources.",
+        "source": "https://www.c-r.org/accord/papua-new-guinea%E2%80%93bougainville/early-interventions",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.c-r.org/accord/papua-new-guinea%E2%80%93bougainville/early-interventions"
   },
   {
@@ -32,6 +104,24 @@
     "title": "First Post-Independence National Elections",
     "verdict": "TRUE",
     "reason": "Elections were held 18 June to 9 July 1977; Somare's Pangu Pati formed a coalition government with the People's Progress Party, with Somare re-elected prime minister.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Elections were held 18 June to 9 July 1977; Somare's Pangu Pati formed a coalition government with the People's Progress Party, with Somare re-elected prime minister.",
+        "source": "https://en.wikipedia.org/wiki/1977_Papua_New_Guinean_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1977_Papua_New_Guinean_general_election"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Julius Chan Replaces Somare as Prime Minister",
     "verdict": "TRUE",
     "reason": "Julius Chan became prime minister on 11 March 1980 after launching a successful no-confidence vote against Somare, as confirmed by Wikipedia and Lowy Institute sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Julius Chan became prime minister on 11 March 1980 after launching a successful no-confidence vote against Somare, as confirmed by Wikipedia and Lowy Institute sources.",
+        "source": "https://en.wikipedia.org/wiki/Julius_Chan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Julius_Chan"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Somare Returns as Prime Minister After Elections",
     "verdict": "TRUE",
     "reason": "Elections held June 1982 returned Somare to power; he defeated John Momis 66-40 in the parliamentary vote for prime minister, beginning his second term.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Elections held June 1982 returned Somare to power; he defeated John Momis 66-40 in the parliamentary vote for prime minister, beginning his second term.",
+        "source": "https://en.wikipedia.org/wiki/1982_Papua_New_Guinean_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1982_Papua_New_Guinean_general_election"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Paias Wingti Becomes Prime Minister via Vote of No Confidence",
     "verdict": "TRUE",
     "reason": "Somare lost a no-confidence vote on 21 November 1985 and Paias Wingti was elected prime minister at the head of a five-party coalition, becoming the first Highlander to hold the office.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Somare lost a no-confidence vote on 21 November 1985 and Paias Wingti was elected prime minister at the head of a five-party coalition, becoming the first Highlander to hold the office.",
+        "source": "https://www.britannica.com/biography/Paias-Wingti",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/biography/Paias-Wingti"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Bilateral Joint Declaration of Principles with Australia",
     "verdict": "PARTIAL",
     "reason": "The Joint Declaration of Principles was signed in December 1987 (not 1986 as listed); the content description about security cooperation and sovereign equality is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Joint Declaration of Principles was signed in December 1987 (not 1986 as listed); the content description about security cooperation and sovereign equality is accurate.",
+        "source": "https://www.dfat.gov.au/geo/papua-new-guinea/australia-papua-new-guinea-historic-documents/joint-declaration-of-principles-guiding-relations-between-australia-and-papua-new-guinea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.dfat.gov.au/geo/papua-new-guinea/australia-papua-new-guinea-historic-documents/joint-declaration-of-principles-guiding-relations-between-australia-and-papua-new-guinea"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Wingti Wins Narrow Election Victory",
     "verdict": "TRUE",
     "reason": "Wingti retained the prime ministership after the 1987 elections by defeating Somare 54 to 51 in the parliamentary vote, a margin of only three votes.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Wingti retained the prime ministership after the 1987 elections by defeating Somare 54 to 51 in the parliamentary vote, a margin of only three votes.",
+        "source": "https://en.wikipedia.org/wiki/1987_Papua_New_Guinean_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1987_Papua_New_Guinean_general_election"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Bougainville Crisis Erupts Over Panguna Mine",
     "verdict": "TRUE",
     "reason": "Francis Ona launched sabotage attacks against the Panguna mine in late 1988, establishing the BRA in November 1988 and triggering the decade-long civil war.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Francis Ona launched sabotage attacks against the Panguna mine in late 1988, establishing the BRA in November 1988 and triggering the decade-long civil war.",
+        "source": "https://en.wikipedia.org/wiki/Bougainville_conflict",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bougainville_conflict"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Rabbie Namaliu Becomes Prime Minister",
     "verdict": "TRUE",
     "reason": "Namaliu replaced Wingti as prime minister on 4 July 1988 after Wingti's government lost a no-confidence vote 58 to 50, forming a Pangu Pati coalition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Namaliu replaced Wingti as prime minister on 4 July 1988 after Wingti's government lost a no-confidence vote 58 to 50, forming a Pangu Pati coalition.",
+        "source": "https://en.wikipedia.org/wiki/Rabbie_Namaliu",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Rabbie_Namaliu"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Panguna Copper Mine Closes Indefinitely",
     "verdict": "TRUE",
     "reason": "The Panguna mine closed on 15 May 1989 following escalating sabotage by the BRA; this devastated PNG export earnings and triggered a state of emergency.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Panguna mine closed on 15 May 1989 following escalating sabotage by the BRA; this devastated PNG export earnings and triggered a state of emergency.",
+        "source": "https://en.wikipedia.org/wiki/Panguna_mine",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Panguna_mine"
   },
   {
@@ -95,6 +329,24 @@
     "title": "State of Emergency Declared on Bougainville",
     "verdict": "TRUE",
     "reason": "The Namaliu government declared a state of emergency and deployed the PNGDF against the BRA insurgency following the mine closure, beginning sustained military operations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Namaliu government declared a state of emergency and deployed the PNGDF against the BRA insurgency following the mine closure, beginning sustained military operations.",
+        "source": "https://en.wikipedia.org/wiki/Bougainville_conflict",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bougainville_conflict"
   },
   {
@@ -102,6 +354,24 @@
     "title": "PNG Imposes Blockade on Bougainville",
     "verdict": "TRUE",
     "reason": "After withdrawing the PNGDF in 1990, PNG imposed a comprehensive economic and medical blockade on Bougainville that lasted until the 1998 peace agreements, causing thousands of civilian deaths from preventable disease.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After withdrawing the PNGDF in 1990, PNG imposed a comprehensive economic and medical blockade on Bougainville that lasted until the 1998 peace agreements, causing thousands of civilian deaths from preventable disease.",
+        "source": "https://www.refworld.org/reference/countryrep/amnesty/1997/en/97208",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.refworld.org/reference/countryrep/amnesty/1997/en/97208"
   },
   {
@@ -109,6 +379,24 @@
     "title": "BRA Declares Bougainville Independence",
     "verdict": "TRUE",
     "reason": "On 17 May 1990 Francis Ona declared the Independent Republic of Bougainville (Me'ekamui) independent of PNG; the declaration was unrecognised internationally.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 17 May 1990 Francis Ona declared the Independent Republic of Bougainville (Me'ekamui) independent of PNG; the declaration was unrecognised internationally.",
+        "source": "https://en.wikipedia.org/wiki/Francis_Ona",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Francis_Ona"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Honiara Declaration Attempts Bougainville Mediation",
     "verdict": "TRUE",
     "reason": "The Honiara Declaration was signed on 23 January 1991 following talks hosted by Solomon Islands, calling for a ceasefire; it collapsed within months as described.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Honiara Declaration was signed on 23 January 1991 following talks hosted by Solomon Islands, calling for a ceasefire; it collapsed within months as described.",
+        "source": "https://www.c-r.org/accord/papua-new-guinea%E2%80%93bougainville/bougainville-interim-government-perspective-early-peace",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.c-r.org/accord/papua-new-guinea%E2%80%93bougainville/bougainville-interim-government-perspective-early-peace"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Wingti Returns to Power After Elections",
     "verdict": "TRUE",
     "reason": "Wingti's PDM formed a coalition after the 1992 elections and he defeated Namaliu by 55 to 54 in the parliamentary vote, returning as prime minister.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Wingti's PDM formed a coalition after the 1992 elections and he defeated Namaliu by 55 to 54 in the parliamentary vote, returning as prime minister.",
+        "source": "https://en.wikipedia.org/wiki/Paias_Wingti",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Paias_Wingti"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Constitutional Change Lengthens Grace Period for No-Confidence Votes",
     "verdict": "PARTIAL",
     "reason": "The 18-month grace period was enacted in 1991 under the Namaliu government, not 1993; the 1993 event was Wingti's controversial attempt to exploit the grace period by resigning and being re-elected, which the Supreme Court later voided.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The 18-month grace period was enacted in 1991 under the Namaliu government, not 1993; the 1993 event was Wingti's controversial attempt to exploit the grace period by resigning and being re-elected, which the Supreme Court later voided.",
+        "source": "https://www.linkedin.com/pulse/history-votes-confidence-against-prime-ministers-png-changes-lavari-ftlae",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.linkedin.com/pulse/history-votes-confidence-against-prime-ministers-png-changes-lavari-ftlae"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Sir Julius Chan Becomes Prime Minister Again",
     "verdict": "TRUE",
     "reason": "The PNG Supreme Court voided Wingti's re-election on 25 August 1994, and Julius Chan was elected prime minister on 30 August 1994, as confirmed by multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The PNG Supreme Court voided Wingti's re-election on 25 August 1994, and Julius Chan was elected prime minister on 30 August 1994, as confirmed by multiple sources.",
+        "source": "https://en.wikipedia.org/wiki/Julius_Chan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Julius_Chan"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Rabaul Volcanic Eruption Destroys East New Britain Capital",
     "verdict": "TRUE",
     "reason": "Tavurvur and Vulcan erupted simultaneously on 19 September 1994, destroying most of Rabaul; only five people died due to pre-eruption evacuation, and the provincial capital was relocated to Kokopo.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tavurvur and Vulcan erupted simultaneously on 19 September 1994, destroying most of Rabaul; only five people died due to pre-eruption evacuation, and the provincial capital was relocated to Kokopo.",
+        "source": "https://en.wikipedia.org/wiki/Rabaul",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Rabaul"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Bougainville Transitional Government Established",
     "verdict": "TRUE",
     "reason": "The Bougainville Transitional Government was established in April 1995 with Theodore Miriung as Premier, as a vehicle for negotiations under the Chan government strategy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Bougainville Transitional Government was established in April 1995 with Theodore Miriung as Premier, as a vehicle for negotiations under the Chan government strategy.",
+        "source": "https://en.wikipedia.org/wiki/Bougainville_conflict",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bougainville_conflict"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Organic Law on Provincial and Local Government Reform",
     "verdict": "TRUE",
     "reason": "The Organic Law on Provincial Governments and Local-Level Governments was enacted in 1995, abolishing elected provincial governments and creating a more centralised structure, as confirmed by PNG Treasury and academic sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Organic Law on Provincial Governments and Local-Level Governments was enacted in 1995, abolishing elected provincial governments and creating a more centralised structure, as confirmed by PNG Treasury and academic sources.",
+        "source": "https://www.pngnri.org/index.php/news-events/news/489-the-impact-of-the-1995-reforms-on-service-delivery-in-png",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.pngnri.org/index.php/news-events/news/489-the-impact-of-the-1995-reforms-on-service-delivery-in-png"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Sandline Mercenary Affair Triggers Constitutional Crisis",
     "verdict": "TRUE",
     "reason": "Chan contracted Sandline International; Brigadier Jerry Singirok expelled the mercenaries on 17 March 1997 and demanded Chan's resignation, triggering massive Port Moresby protests.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chan contracted Sandline International; Brigadier Jerry Singirok expelled the mercenaries on 17 March 1997 and demanded Chan's resignation, triggering massive Port Moresby protests.",
+        "source": "https://en.wikipedia.org/wiki/Sandline_affair",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sandline_affair"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Chan Steps Aside Following Sandline Crisis",
     "verdict": "TRUE",
     "reason": "Julius Chan stepped aside as prime minister under civilian and military pressure pending a commission of inquiry into the Sandline contract, with John Giheno serving briefly as acting PM.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Julius Chan stepped aside as prime minister under civilian and military pressure pending a commission of inquiry into the Sandline contract, with John Giheno serving briefly as acting PM.",
+        "source": "https://en.wikipedia.org/wiki/Sandline_affair",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sandline_affair"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Bill Skate Becomes Prime Minister After Elections",
     "verdict": "TRUE",
     "reason": "Bill Skate of the People's National Congress was elected prime minister on 22 July 1997 following the June 1997 elections, forming a broad coalition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bill Skate of the People's National Congress was elected prime minister on 22 July 1997 following the June 1997 elections, forming a broad coalition.",
+        "source": "https://en.wikipedia.org/wiki/Bill_Skate",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bill_Skate"
   },
   {
@@ -186,6 +654,24 @@
     "title": "PNG Highlands Drought and Frost Emergency",
     "verdict": "TRUE",
     "reason": "El Nino-driven drought and highland frosts in 1997 caused widespread crop failure threatening hundreds of thousands with famine; 1997 is confirmed as the worst such event in a 120-year record.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "El Nino-driven drought and highland frosts in 1997 caused widespread crop failure threatening hundreds of thousands with famine; 1997 is confirmed as the worst such event in a 120-year record.",
+        "source": "https://theconversation.com/as-papua-new-guinea-faces-worsening-drought-a-past-disaster-could-save-lives-46390",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://theconversation.com/as-papua-new-guinea-faces-worsening-drought-a-past-disaster-could-save-lives-46390"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Lincoln Agreement and Burnham Truce End Bougainville Fighting",
     "verdict": "TRUE",
     "reason": "The Lincoln Agreement was signed at Lincoln University, Christchurch on 23 January 1998, establishing a permanent ceasefire effective 30 April 1998, with a regional Peace Monitoring Group from Australia, New Zealand, Fiji and Vanuatu.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Lincoln Agreement was signed at Lincoln University, Christchurch on 23 January 1998, establishing a permanent ceasefire effective 30 April 1998, with a regional Peace Monitoring Group from Australia, New Zealand, Fiji and Vanuatu.",
+        "source": "https://en.wikipedia.org/wiki/Peace_Monitoring_Group",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Peace_Monitoring_Group"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Aitape Tsunami Devastates Sissano Lagoon",
     "verdict": "TRUE",
     "reason": "An earthquake-triggered tsunami struck Aitape on 17 July 1998, killing between 2,183 and 2,700 people around Sissano Lagoon, making it one of the deadliest tsunamis in modern Pacific history.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "An earthquake-triggered tsunami struck Aitape on 17 July 1998, killing between 2,183 and 2,700 people around Sissano Lagoon, making it one of the deadliest tsunamis in modern Pacific history.",
+        "source": "https://en.wikipedia.org/wiki/1998_Papua_New_Guinea_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1998_Papua_New_Guinea_earthquake"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Mekere Morauta Becomes Prime Minister Amid Fiscal Crisis",
     "verdict": "TRUE",
     "reason": "Morauta replaced Skate as prime minister in July 1999 after 99 of 105 MPs voted for him; he launched structural reforms and renewed IMF engagement to address the kina collapse.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Morauta replaced Skate as prime minister in July 1999 after 99 of 105 MPs voted for him; he launched structural reforms and renewed IMF engagement to address the kina collapse.",
+        "source": "https://en.wikipedia.org/wiki/Mekere_Morauta",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mekere_Morauta"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Kina Currency Crisis and Floating Exchange Rate",
     "verdict": "TRUE",
     "reason": "The kina lost roughly half its value through 1998-1999 amid Asian financial contagion and domestic instability; Morauta stabilised the currency and obtained IMF support.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The kina lost roughly half its value through 1998-1999 amid Asian financial contagion and domestic instability; Morauta stabilised the currency and obtained IMF support.",
+        "source": "https://devpolicy.org/kina-devaluation-revisited-20210914/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://devpolicy.org/kina-devaluation-revisited-20210914/"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Central Banking Act Establishes Bank of PNG Independence",
     "verdict": "TRUE",
     "reason": "The Central Banking Act 2000 under Morauta granted the Bank of Papua New Guinea formal operational independence, fixed governor tenure, and removed political appointment discretion over the board.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Central Banking Act 2000 under Morauta granted the Bank of Papua New Guinea formal operational independence, fixed governor tenure, and removed political appointment discretion over the board.",
+        "source": "https://devpolicy.org/revisiting-the-morauta-central-banking-reforms-part-one-20221027/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://devpolicy.org/revisiting-the-morauta-central-banking-reforms-part-one-20221027/"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Bougainville Peace Agreement Signed at Arawa",
     "verdict": "TRUE",
     "reason": "The comprehensive Bougainville Peace Agreement was signed on 30 August 2001 in Arawa, providing for autonomy, weapons disposal, and a future independence referendum.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The comprehensive Bougainville Peace Agreement was signed on 30 August 2001 in Arawa, providing for autonomy, weapons disposal, and a future independence referendum.",
+        "source": "https://peacemaker.un.org/en/node/9203",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://peacemaker.un.org/en/node/9203"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Sandline Compensation Settlement Approved",
     "verdict": "PARTIAL",
     "reason": "An arbitration award in favour of Sandline was upheld in 1998-1999 proceedings, and PNG was required to pay; the specific 2001 finalisation date could not be independently confirmed but the overall claim about the settlement straining the budget is consistent with documented facts.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "An arbitration award in favour of Sandline was upheld in 1998-1999 proceedings, and PNG was required to pay; the specific 2001 finalisation date could not be independently confirmed but the overall claim about the settlement straining the budget is consistent with documented facts.",
+        "source": "https://www.austlii.edu.au/au/journals/AUIntLawJl/1999/13.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.austlii.edu.au/au/journals/AUIntLawJl/1999/13.pdf"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Somare Returns to Power After Elections",
     "verdict": "PARTIAL",
     "reason": "Somare's National Alliance formed government after the 2002 elections as described, but the limited preferential voting system was enacted in 2002 and first used in 2007, not in the 2002 election itself.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Somare's National Alliance formed government after the 2002 elections as described, but the limited preferential voting system was enacted in 2002 and first used in 2007, not in the 2002 election itself.",
+        "source": "https://eastasiaforum.org/2011/05/18/sir-michael-somare-and-png-politics/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://eastasiaforum.org/2011/05/18/sir-michael-somare-and-png-politics/"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Enhanced Cooperation Programme with Australia",
     "verdict": "TRUE",
     "reason": "The ECP was agreed in December 2003 and the PNG Supreme Court struck down police immunity provisions as unconstitutional in May 2005, though development cooperation continued as described.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The ECP was agreed in December 2003 and the PNG Supreme Court struck down police immunity provisions as unconstitutional in May 2005, though development cooperation continued as described.",
+        "source": "https://www.wsws.org/en/articles/2005/06/png-j04.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.wsws.org/en/articles/2005/06/png-j04.html"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Bougainville Constitution Drafted Under Autonomy Process",
     "verdict": "TRUE",
     "reason": "Bougainville leaders adopted a constitution through the Bougainville Constitutional Commission in November 2004, gazetted by the PNG government in December 2004, setting the framework for self-government.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bougainville leaders adopted a constitution through the Bougainville Constitutional Commission in November 2004, gazetted by the PNG government in December 2004, setting the framework for self-government.",
+        "source": "https://www.paclii.org/pg/constitution-bougainville-2004.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.paclii.org/pg/constitution-bougainville-2004.html"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Autonomous Bougainville Government Formally Established",
     "verdict": "TRUE",
     "reason": "The Autonomous Bougainville Government was inaugurated on 15 June 2005 with Joseph Kabui sworn in as first president following elections held 20 May to 2 June 2005.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Autonomous Bougainville Government was inaugurated on 15 June 2005 with Joseph Kabui sworn in as first president following elections held 20 May to 2 June 2005.",
+        "source": "https://en.wikipedia.org/wiki/Autonomous_Bougainville_Government",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Autonomous_Bougainville_Government"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Julian Moti Affair Strains Australia Relations",
     "verdict": "TRUE",
     "reason": "In October 2006 PNG facilitated Moti's transit on a PNGDF aircraft back to Solomon Islands, triggering a serious diplomatic dispute with Australia and the eventual persona non grata declaration against the Australian High Commissioner to Solomon Islands.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In October 2006 PNG facilitated Moti's transit on a PNGDF aircraft back to Solomon Islands, triggering a serious diplomatic dispute with Australia and the eventual persona non grata declaration against the Australian High Commissioner to Solomon Islands.",
+        "source": "https://en.wikipedia.org/wiki/Julian_Moti",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Julian_Moti"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Somare Wins Second Consecutive Election",
     "verdict": "TRUE",
     "reason": "Somare's National Alliance retained government after the 2007 elections, the first time since independence that an incumbent government was re-elected to a full term.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Somare's National Alliance retained government after the 2007 elections, the first time since independence that an incumbent government was re-elected to a full term.",
+        "source": "https://en.wikipedia.org/wiki/National_Alliance_Party",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/National_Alliance_Party"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "PNG LNG Project Receives Final Investment Decision",
     "verdict": "TRUE",
     "reason": "ExxonMobil and partners committed to the US$19 billion PNG LNG project on 12 August 2008, the largest single private investment in PNG history.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ExxonMobil and partners committed to the US$19 billion PNG LNG project on 12 August 2008, the largest single private investment in PNG history.",
+        "source": "https://corporate.exxonmobil.com/locations/papua-new-guinea/operations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://corporate.exxonmobil.com/locations/papua-new-guinea/operations"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Sovereign Wealth Fund Conceived for LNG Revenues",
     "verdict": "PARTIAL",
     "reason": "PNG's sovereign wealth fund concept was developed through 2010-2011 public consultations and the Organic Law was enacted in 2012, not 2009; the 2009 date for the formal announcement is not independently verified though the general concept and Norwegian/Timorese model references are consistent.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "PNG's sovereign wealth fund concept was developed through 2010-2011 public consultations and the Organic Law was enacted in 2012, not 2009; the 2009 date for the formal announcement is not independently verified though the general concept and Norwegian/Timorese model references are consistent.",
+        "source": "https://devpolicy.org/what-has-happened-to-papua-new-guineas-sovereign-wealth-fund-20141028/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://devpolicy.org/what-has-happened-to-papua-new-guineas-sovereign-wealth-fund-20141028/"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Maladina Amendments Constitutional Crisis Brewing",
     "verdict": "TRUE",
     "reason": "Parliament passed constitutional amendments weakening the Ombudsman Commission's directive powers in March 2010 (sponsored by Moses Maladina), triggering civil society protests and constitutional challenges.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Parliament passed constitutional amendments weakening the Ombudsman Commission's directive powers in March 2010 (sponsored by Moses Maladina), triggering civil society protests and constitutional challenges.",
+        "source": "https://masalai.wordpress.com/2010/04/04/community-response-to-the-maladina-attack-on-the-png-ombudsmans-powers/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://masalai.wordpress.com/2010/04/04/community-response-to-the-maladina-attack-on-the-png-ombudsmans-powers/"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Constitutional Crisis as Parliament Replaces Somare with O'Neill",
     "verdict": "TRUE",
     "reason": "Parliament voted 70-24 to elect O'Neill on 2 August 2011 while Somare was hospitalised in Singapore; the Supreme Court later ruled this unconstitutional, producing months of rival governments.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Parliament voted 70-24 to elect O'Neill on 2 August 2011 while Somare was hospitalised in Singapore; the Supreme Court later ruled this unconstitutional, producing months of rival governments.",
+        "source": "https://en.wikipedia.org/wiki/2011%E2%80%932012_Papua_New_Guinean_constitutional_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2011%E2%80%932012_Papua_New_Guinean_constitutional_crisis"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Mutiny Attempt by Pro-Somare Soldiers",
     "verdict": "TRUE",
     "reason": "Retired Colonel Yaura Sasa briefly detained PNGDF Commander Francis Agwi on 26 January 2012 demanding Somare's reinstatement; the mutiny collapsed within hours.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Retired Colonel Yaura Sasa briefly detained PNGDF Commander Francis Agwi on 26 January 2012 demanding Somare's reinstatement; the mutiny collapsed within hours.",
+        "source": "https://en.wikipedia.org/wiki/2012_Papua_New_Guinea_Defence_Force_mutiny",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2012_Papua_New_Guinea_Defence_Force_mutiny"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Peter O'Neill Wins Decisive Election Victory",
     "verdict": "TRUE",
     "reason": "O'Neill's PNC won 27 seats and formed a broad coalition with 93 parliamentary supporters after the 2012 elections, ending the constitutional crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "O'Neill's PNC won 27 seats and formed a broad coalition with 93 parliamentary supporters after the 2012 elections, ending the constitutional crisis.",
+        "source": "https://en.wikipedia.org/wiki/Peter_O'Neill.",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Peter_O'Neill."
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Manus Island Detention Centre Reopens Under Australia Deal",
     "verdict": "PARTIAL",
     "reason": "The Manus centre reopened under the Gillard government in November 2012 (not 2013); the July 2013 Regional Resettlement Arrangement with the Rudd government deepened the arrangement. The 2013 year label applies to the expanded 'PNG Solution' deal but not the initial reopening.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Manus centre reopened under the Gillard government in November 2012 (not 2013); the July 2013 Regional Resettlement Arrangement with the Rudd government deepened the arrangement. The 2013 year label applies to the expanded 'PNG Solution' deal but not the initial reopening.",
+        "source": "https://en.wikipedia.org/wiki/Manus_Regional_Processing_Centre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Manus_Regional_Processing_Centre"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "PNG LNG First Cargo Shipped to Asia",
     "verdict": "TRUE",
     "reason": "ExxonMobil shipped the first PNG LNG cargo on 25 May 2014, ahead of schedule, bound for TEPCO in Japan.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ExxonMobil shipped the first PNG LNG cargo on 25 May 2014, ahead of schedule, bound for TEPCO in Japan.",
+        "source": "https://ir.exxonmobil.com/news-releases/news-release-details/exxonmobil-ships-first-cargo-png-lng-project",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://ir.exxonmobil.com/news-releases/news-release-details/exxonmobil-ships-first-cargo-png-lng-project"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Manus Detention Centre Riot Kills Asylum Seeker",
     "verdict": "TRUE",
     "reason": "Iranian asylum seeker Reza Barati was beaten to death on 17 February 2014 during violence at the Manus Regional Processing Centre; 77 others were injured.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Iranian asylum seeker Reza Barati was beaten to death on 17 February 2014 during violence at the Manus Regional Processing Centre; 77 others were injured.",
+        "source": "https://en.wikipedia.org/wiki/Reza_Barati",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Reza_Barati"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Pacific Games Hosted in Port Moresby",
     "verdict": "TRUE",
     "reason": "PNG hosted the XV Pacific Games in Port Moresby from 4 to 18 July 2015, with over 3,700 athletes from 24 associations; PNG topped the medal table.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PNG hosted the XV Pacific Games in Port Moresby from 4 to 18 July 2015, with over 3,700 athletes from 24 associations; PNG topped the medal table.",
+        "source": "https://en.wikipedia.org/wiki/2015_Pacific_Games",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2015_Pacific_Games"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "El Nino Drought Devastates Highlands Food Supply",
     "verdict": "TRUE",
     "reason": "The 2015-2016 El Nino drought and highland frosts left an estimated 2.7 million people food insecure across PNG, as confirmed by Oxfam, IOM, and FAO sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 2015-2016 El Nino drought and highland frosts left an estimated 2.7 million people food insecure across PNG, as confirmed by Oxfam, IOM, and FAO sources.",
+        "source": "https://www.oxfam.org/en/powerful-el-nino-brings-droughts-and-food-insecurity-millions-papua-new-guinea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.oxfam.org/en/powerful-el-nino-brings-droughts-and-food-insecurity-millions-papua-new-guinea"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "PNG Supreme Court Rules Manus Detention Unconstitutional",
     "verdict": "TRUE",
     "reason": "On 26 April 2016, the PNG Supreme Court ruled unanimously that detention of asylum seekers on Manus Island violated constitutional rights to personal liberty under Section 42 of the PNG Constitution.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 26 April 2016, the PNG Supreme Court ruled unanimously that detention of asylum seekers on Manus Island violated constitutional rights to personal liberty under Section 42 of the PNG Constitution.",
+        "source": "https://www.loc.gov/item/global-legal-monitor/2016-05-01/australiapapua-new-guinea-supreme-court-rules-asylum-seeker-detention-is-unconstitutional/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.loc.gov/item/global-legal-monitor/2016-05-01/australiapapua-new-guinea-supreme-court-rules-asylum-seeker-detention-is-unconstitutional/"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Student Protests Against O'Neill Met With Police Violence",
     "verdict": "TRUE",
     "reason": "On 8 June 2016, police opened fire on University of PNG students marching to parliament to demand O'Neill's resignation over alleged corruption, wounding at least 23 students.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 8 June 2016, police opened fire on University of PNG students marching to parliament to demand O'Neill's resignation over alleged corruption, wounding at least 23 students.",
+        "source": "https://www.hrw.org/news/2016/06/09/papua-new-guinea-police-shoot-student-protesters",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2016/06/09/papua-new-guinea-police-shoot-student-protesters"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "O'Neill Re-Elected in Contested 2017 Polls",
     "verdict": "TRUE",
     "reason": "O'Neill's PNC retained government after the contested 2017 elections marked by widespread irregularities, delayed declarations, and violence; O'Neill was re-elected PM by parliament 64-40.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "O'Neill's PNC retained government after the contested 2017 elections marked by widespread irregularities, delayed declarations, and violence; O'Neill was re-elected PM by parliament 64-40.",
+        "source": "https://en.wikipedia.org/wiki/2017_Papua_New_Guinean_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2017_Papua_New_Guinean_general_election"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Manus Regional Processing Centre Officially Closes",
     "verdict": "TRUE",
     "reason": "Australia formally closed the main Manus centre on 31 October 2017 following the 2016 PNG Supreme Court ruling; detainees were transferred to alternative accommodation amid protests.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Australia formally closed the main Manus centre on 31 October 2017 following the 2016 PNG Supreme Court ruling; detainees were transferred to alternative accommodation amid protests.",
+        "source": "https://en.wikipedia.org/wiki/Manus_Regional_Processing_Centre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Manus_Regional_Processing_Centre"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Magnitude 7.5 Highlands Earthquake Kills 160 Plus",
     "verdict": "TRUE",
     "reason": "A magnitude 7.5 earthquake struck Hela Province on 26 February 2018, killing more than 160 people (including aftershock deaths) and severely disrupting the PNG LNG project infrastructure.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A magnitude 7.5 earthquake struck Hela Province on 26 February 2018, killing more than 160 people (including aftershock deaths) and severely disrupting the PNG LNG project infrastructure.",
+        "source": "https://en.wikipedia.org/wiki/2018_Papua_New_Guinea_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2018_Papua_New_Guinea_earthquake"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "PNG Hosts APEC Leaders Summit in Port Moresby",
     "verdict": "TRUE",
     "reason": "PNG hosted the APEC leaders summit in November 2018, the first Pacific island nation to do so; it ended without a joint communique due to US-China trade tensions.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PNG hosted the APEC leaders summit in November 2018, the first Pacific island nation to do so; it ended without a joint communique due to US-China trade tensions.",
+        "source": "https://en.wikipedia.org/wiki/APEC_Papua_New_Guinea_2018",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/APEC_Papua_New_Guinea_2018"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "Lombrum Naval Base Joint Development Announced",
     "verdict": "TRUE",
     "reason": "At the APEC summit on 18 November 2018, the US joined Australia and PNG in announcing the joint redevelopment of Lombrum naval base on Manus Island as a strategic deterrent to Chinese influence.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "At the APEC summit on 18 November 2018, the US joined Australia and PNG in announcing the joint redevelopment of Lombrum naval base on Manus Island as a strategic deterrent to Chinese influence.",
+        "source": "https://news.usni.org/2018/11/23/australia-u-s-set-expand-papa-new-guinea-naval-base",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://news.usni.org/2018/11/23/australia-u-s-set-expand-papa-new-guinea-naval-base"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "James Marape Becomes Prime Minister",
     "verdict": "TRUE",
     "reason": "James Marape, a Hela Province MP and former finance minister, was elected prime minister on 30 May 2019 after O'Neill resigned having lost parliamentary majority; Marape pledged to renegotiate resource contracts.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "James Marape, a Hela Province MP and former finance minister, was elected prime minister on 30 May 2019 after O'Neill resigned having lost parliamentary majority; Marape pledged to renegotiate resource contracts.",
+        "source": "https://en.wikipedia.org/wiki/James_Marape",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/James_Marape"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "Bougainville Independence Referendum Returns 97.7 Percent Yes Vote",
     "verdict": "TRUE",
     "reason": "The referendum held 23 November to 7 December 2019 returned a 97.7 percent vote for independence on 87.4 percent turnout; results announced 11 December 2019.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The referendum held 23 November to 7 December 2019 returned a 97.7 percent vote for independence on 87.4 percent turnout; results announced 11 December 2019.",
+        "source": "https://en.wikipedia.org/wiki/2019_Bougainvillean_independence_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2019_Bougainvillean_independence_referendum"
   },
   {
@@ -424,6 +1504,24 @@
     "title": "Papua LNG Gas Agreement Signed with TotalEnergies",
     "verdict": "TRUE",
     "reason": "Total, ExxonMobil, and Oil Search signed the Papua LNG Gas Agreement with PNG on 9 April 2019; Marape subsequently pushed for renegotiation, delaying the final investment decision.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Total, ExxonMobil, and Oil Search signed the Papua LNG Gas Agreement with PNG on 9 April 2019; Marape subsequently pushed for renegotiation, delaying the final investment decision.",
+        "source": "https://totalenergies.com/media/news/press-releases/total-and-state-papua-new-guinea-sign-gas-agreement-papua-lng-project",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://totalenergies.com/media/news/press-releases/total-and-state-papua-new-guinea-sign-gas-agreement-papua-lng-project"
   },
   {
@@ -431,6 +1529,24 @@
     "title": "First COVID-19 Cases and State of Emergency Declared",
     "verdict": "TRUE",
     "reason": "PNG confirmed its first COVID-19 case on 20 March 2020 and the Governor-General declared a 14-day state of emergency on 23 March, closing borders and restricting movement.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PNG confirmed its first COVID-19 case on 20 March 2020 and the Governor-General declared a 14-day state of emergency on 23 March, closing borders and restricting movement.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Papua_New_Guinea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Papua_New_Guinea"
   },
   {
@@ -438,6 +1554,24 @@
     "title": "Porgera Gold Mine Special Mining Lease Not Renewed",
     "verdict": "TRUE",
     "reason": "The Marape government announced on 24 April 2020 it would not renew Barrick Niugini's special mining lease for Porgera, citing environmental concerns; a new joint venture was later formed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Marape government announced on 24 April 2020 it would not renew Barrick Niugini's special mining lease for Porgera, citing environmental concerns; a new joint venture was later formed.",
+        "source": "https://en.wikipedia.org/wiki/Porgera_Gold_Mine",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Porgera_Gold_Mine"
   },
   {
@@ -445,6 +1579,24 @@
     "title": "Marape Survives No-Confidence Challenge",
     "verdict": "TRUE",
     "reason": "Marape faced a parliamentary no-confidence challenge in late 2020 following mass cabinet defections but regained majority support before parliament was adjourned, avoiding a formal vote.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Marape faced a parliamentary no-confidence challenge in late 2020 following mass cabinet defections but regained majority support before parliament was adjourned, avoiding a formal vote.",
+        "source": "https://devpolicy.org/what-it-takes-to-change-a-prime-minister-in-png-20201211-2/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://devpolicy.org/what-it-takes-to-change-a-prime-minister-in-png-20201211-2/"
   },
   {
@@ -452,6 +1604,24 @@
     "title": "Severe COVID-19 Delta Wave Overwhelms Health System",
     "verdict": "TRUE",
     "reason": "A severe COVID-19 wave in 2021 overwhelmed PNG hospitals; Australia deployed AUSMAT medical teams and emergency supplies from March 2021, with New Zealand and UK medical teams also assisting.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A severe COVID-19 wave in 2021 overwhelmed PNG hospitals; Australia deployed AUSMAT medical teams and emergency supplies from March 2021, with New Zealand and UK medical teams also assisting.",
+        "source": "https://www.dfat.gov.au/crisis-hub/papua-new-guinea-covid-19-response",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.dfat.gov.au/crisis-hub/papua-new-guinea-covid-19-response"
   },
   {
@@ -459,6 +1629,24 @@
     "title": "Marape Re-Elected as Prime Minister After 2022 Polls",
     "verdict": "TRUE",
     "reason": "Marape's Pangu Pati won at least 36 of 118 seats in the violence-marred 2022 elections and he was re-elected prime minister leading a broad coalition government.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Marape's Pangu Pati won at least 36 of 118 seats in the violence-marred 2022 elections and he was re-elected prime minister leading a broad coalition government.",
+        "source": "https://en.wikipedia.org/wiki/2022_Papua_New_Guinean_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2022_Papua_New_Guinean_general_election"
   },
   {
@@ -466,6 +1654,24 @@
     "title": "Magnitude 7.6 Earthquake Strikes Morobe Province",
     "verdict": "TRUE",
     "reason": "A magnitude 7.6 earthquake struck near Morobe/Markham Valley on 11 September 2022, killing at least 21 people and triggering landslides across eastern provinces.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A magnitude 7.6 earthquake struck near Morobe/Markham Valley on 11 September 2022, killing at least 21 people and triggering landslides across eastern provinces.",
+        "source": "https://en.wikipedia.org/wiki/2022_Papua_New_Guinea_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2022_Papua_New_Guinea_earthquake"
   },
   {
@@ -473,6 +1679,24 @@
     "title": "PNG-United States Defence Cooperation Agreement Signed",
     "verdict": "TRUE",
     "reason": "The US and PNG signed a bilateral Defence Cooperation Agreement on 22 May 2023 granting US forces access to six PNG facilities for 15 years, deepening Indo-Pacific security ties.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The US and PNG signed a bilateral Defence Cooperation Agreement on 22 May 2023 granting US forces access to six PNG facilities for 15 years, deepening Indo-Pacific security ties.",
+        "source": "https://pg.usembassy.gov/the-united-states-and-papua-new-guinea-sign-new-defense-cooperation-agreement-and-shiprider/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://pg.usembassy.gov/the-united-states-and-papua-new-guinea-sign-new-defense-cooperation-agreement-and-shiprider/"
   },
   {
@@ -480,6 +1704,24 @@
     "title": "PNG-China Strategic Partnership Reaffirmed",
     "verdict": "TRUE",
     "reason": "Marape visited Beijing 16-19 October 2023 for the Belt and Road Forum, reaffirming the comprehensive strategic partnership and exploring a free trade agreement framework with China.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Marape visited Beijing 16-19 October 2023 for the Belt and Road Forum, reaffirming the comprehensive strategic partnership and exploring a free trade agreement framework with China.",
+        "source": "https://english.news.cn/20231017/8d76c89cfc604852af2203089b3a9124/c.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://english.news.cn/20231017/8d76c89cfc604852af2203089b3a9124/c.html"
   },
   {
@@ -487,6 +1729,24 @@
     "title": "Porgera Mine Reopens Under New Joint Venture",
     "verdict": "TRUE",
     "reason": "Porgera reopened on 22 December 2023 under New Porgera Limited, with PNG stakeholders (Kumul Minerals, landowners, Enga government) holding 51 percent and Barrick holding 49 percent.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Porgera reopened on 22 December 2023 under New Porgera Limited, with PNG stakeholders (Kumul Minerals, landowners, Enga government) holding 51 percent and Barrick holding 49 percent.",
+        "source": "https://pmnec.gov.pg/porgera-gold-mine-set-to-reopen-on-december-22-2023/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://pmnec.gov.pg/porgera-gold-mine-set-to-reopen-on-december-22-2023/"
   },
   {
@@ -494,6 +1754,24 @@
     "title": "Black Wednesday Riots in Port Moresby Over Pay Glitch",
     "verdict": "TRUE",
     "reason": "On 10 January 2024, riots and looting erupted in Port Moresby and Lae after a payroll error halved police and public servant pay; at least 22 people died and Marape declared a state of emergency.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 10 January 2024, riots and looting erupted in Port Moresby and Lae after a payroll error halved police and public servant pay; at least 22 people died and Marape declared a state of emergency.",
+        "source": "https://en.wikipedia.org/wiki/2024_Papua_New_Guinean_unrest",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2024_Papua_New_Guinean_unrest"
   },
   {
@@ -501,6 +1779,24 @@
     "title": "Enga Province Tribal Massacre Kills More Than 40",
     "verdict": "TRUE",
     "reason": "On 18 February 2024, at least 49 people were killed in a coordinated tribal attack in Wapenamanda district, Enga Province, using military-grade weapons including SLRs, M4s and AR-15s.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 18 February 2024, at least 49 people were killed in a coordinated tribal attack in Wapenamanda district, Enga Province, using military-grade weapons including SLRs, M4s and AR-15s.",
+        "source": "https://en.wikipedia.org/wiki/February_2024_Enga_Province_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/February_2024_Enga_Province_massacre"
   },
   {
@@ -508,6 +1804,24 @@
     "title": "Enga Landslide Buries Entire Village",
     "verdict": "TRUE",
     "reason": "A massive landslide struck Yambali village, Enga Province on 24 May 2024; the PNG government estimated over 2,000 buried, while IOM estimated at least 670 confirmed dead with access severely limited by terrain.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A massive landslide struck Yambali village, Enga Province on 24 May 2024; the PNG government estimated over 2,000 buried, while IOM estimated at least 670 confirmed dead with access severely limited by terrain.",
+        "source": "https://en.wikipedia.org/wiki/2024_Enga_landslide",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2024_Enga_landslide"
   },
   {
@@ -515,6 +1829,24 @@
     "title": "Marape Survives Vote of No Confidence",
     "verdict": "PARTIAL",
     "reason": "Marape survived the 12 September 2024 no-confidence vote by 75 votes to 32 (not 89 to 16 as described); the 89-16 figure may refer to a later or different parliamentary procedural vote. The overall narrative of consolidating grip on parliament is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Marape survived the 12 September 2024 no-confidence vote by 75 votes to 32 (not 89 to 16 as described); the 89-16 figure may refer to a later or different parliamentary procedural vote. The overall narrative of consolidating grip on parliament is accurate.",
+        "source": "https://islandsbusiness.com/news-break/png-pm-marape-survives-vote-of-no-confidence-motion/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://islandsbusiness.com/news-break/png-pm-marape-survives-vote-of-no-confidence-motion/"
   },
   {
@@ -522,6 +1854,24 @@
     "title": "PNG-Australia Bilateral Security Agreement",
     "verdict": "TRUE",
     "reason": "Australia and PNG signed the Bilateral Security Agreement on 7 December 2023; it entered into force on 12 December 2024 after ratification, deepening defence and policing ties as described.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Australia and PNG signed the Bilateral Security Agreement on 7 December 2023; it entered into force on 12 December 2024 after ratification, deepening defence and policing ties as described.",
+        "source": "https://www.dfat.gov.au/countries/papua-new-guinea/australia-papua-new-guinea-bilateral-security-agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.dfat.gov.au/countries/papua-new-guinea/australia-papua-new-guinea-bilateral-security-agreement"
   },
   {
@@ -529,6 +1879,24 @@
     "title": "Bougainville Independence Negotiations Approach 2027 Deadline",
     "verdict": "TRUE",
     "reason": "As of 2025, the Bougainville Leaders Forum recommended 1 September 2027 for independence; PNG parliament has not ratified the referendum result and Bougainville has threatened unilateral action, consistent with the description.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "As of 2025, the Bougainville Leaders Forum recommended 1 September 2027 for independence; PNG parliament has not ratified the referendum result and Bougainville has threatened unilateral action, consistent with the description.",
+        "source": "https://thediplomat.com/2025/03/bougainville-continues-its-struggle-for-independence/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://thediplomat.com/2025/03/bougainville-continues-its-struggle-for-independence/"
   },
   {
@@ -536,6 +1904,24 @@
     "title": "Highlands Tribal Violence Continues to Displace Thousands",
     "verdict": "TRUE",
     "reason": "Sustained tribal violence in Enga, Hela, and Southern Highlands continued through 2025 displacing tens of thousands annually, with high-powered automatic weapons documented in multiple ICRC, ACLED and UN reports.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sustained tribal violence in Enga, Hela, and Southern Highlands continued through 2025 displacing tens of thousands annually, with high-powered automatic weapons documented in multiple ICRC, ACLED and UN reports.",
+        "source": "https://www.icrc.org/en/Tribal-Violence-Papua-New-Guinea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.icrc.org/en/Tribal-Violence-Papua-New-Guinea"
   },
   {
@@ -543,6 +1929,24 @@
     "title": "Papua LNG Final Investment Decision Delayed Again",
     "verdict": "TRUE",
     "reason": "The Papua LNG FID has slipped repeatedly; as of early 2026 TotalEnergies targets FID in Q1 2026, confirming the project slipped again into 2026 amid cost escalation and fiscal terms negotiations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Papua LNG FID has slipped repeatedly; as of early 2026 TotalEnergies targets FID in Q1 2026, confirming the project slipped again into 2026 amid cost escalation and fiscal terms negotiations.",
+        "source": "https://devpolicy.org/papua-lng-why-so-delayed/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://devpolicy.org/papua-lng-why-so-delayed/"
   }
 ]

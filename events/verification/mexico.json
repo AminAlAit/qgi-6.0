@@ -4,6 +4,24 @@
     "title": "PRI Consolidates One-Party Dominance",
     "verdict": "TRUE",
     "reason": "Well-documented: PRI held every governorship and near-total congressional control through corporatist structures. Mario Vargas Llosa's 'perfect dictatorship' phrase confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Well-documented: PRI held every governorship and near-total congressional control through corporatist structures. Mario Vargas Llosa's 'perfect dictatorship' phrase confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Institutional_Revolutionary_Party",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Institutional_Revolutionary_Party"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Mexican Miracle Begins — Sustained GDP Growth",
     "verdict": "TRUE",
     "reason": "6–7% average annual GDP growth during the stabilizing development era confirmed by multiple economic sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "6–7% average annual GDP growth during the stabilizing development era confirmed by multiple economic sources.",
+        "source": "https://en.wikipedia.org/wiki/Mexican_miracle",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mexican_miracle"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Bracero Program Expands Mexican Labor Migration to the US",
     "verdict": "TRUE",
     "reason": "Program originally launched 1942, expanded through early 1950s, ended 1964 — all correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Program originally launched 1942, expanded through early 1950s, ended 1964 — all correct.",
+        "source": "https://en.wikipedia.org/wiki/Bracero_program",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bracero_program"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Adolfo Ruiz Cortines Elected — Women Granted Full Voting Rights",
     "verdict": "FALSE",
     "reason": "Year-off by 1: Ruiz Cortines was elected in 1952 but women's federal voting rights were constitutionally enacted on October 17, 1953 (amendment to Articles 34 and 115). First federal election with women voting was July 1955. The event should be dated 1953.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year-off by 1: Ruiz Cortines was elected in 1952 but women's federal voting rights were constitutionally enacted on October 17, 1953 (amendment to Articles 34 and 115). First federal election with women voting was July 1955. The event should be dated 1953.",
+        "source": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_Mexico",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_Mexico"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Henriquista Movement Suppressed",
     "verdict": "TRUE",
     "reason": "The main Alameda crackdown/massacre was July 1952; ongoing suppression through 1953–1954 (party registration cancelled 1954) is accurate. 1953 as the year of sustained suppression is defensible.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The main Alameda crackdown/massacre was July 1952; ongoing suppression through 1953–1954 (party registration cancelled 1954) is accurate. 1953 as the year of sustained suppression is defensible.",
+        "source": "https://www.cndh.org.mx/noticia/masacre-en-la-alameda-inicio-de-la-guerra-sucia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cndh.org.mx/noticia/masacre-en-la-alameda-inicio-de-la-guerra-sucia"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Peso Devaluation and Stabilizing Development Policy",
     "verdict": "TRUE",
     "reason": "Devaluation from 8.65 to 12.50 pesos per dollar in April 1954 confirmed. Ortiz Mena's stabilizing development framework confirmed. Minor: Ortiz Mena became Finance Minister under López Mateos (1958), not immediately in 1954 — rate was stabilized by the Ruiz Cortines government first.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Devaluation from 8.65 to 12.50 pesos per dollar in April 1954 confirmed. Ortiz Mena's stabilizing development framework confirmed. Minor: Ortiz Mena became Finance Minister under López Mateos (1958), not immediately in 1954 — rate was stabilized by the Ruiz Cortines government first.",
+        "source": "https://www.banxico.org.mx/markets/d/%7B397668FC-BB0B-5F0C-D4A6-241EBE9F0812%7D.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.banxico.org.mx/markets/d/%7B397668FC-BB0B-5F0C-D4A6-241EBE9F0812%7D.pdf"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Television Broadcasting Expands Nationally",
     "verdict": "TRUE",
     "reason": "Telesistema Mexicano (Televisa predecessor) expanded through mid-1950s. Government content control confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Telesistema Mexicano (Televisa predecessor) expanded through mid-1950s. Government content control confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Televisa",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Televisa"
   },
   {
@@ -53,6 +179,24 @@
     "title": "National Polytechnic Institute Student Protests",
     "verdict": "TRUE",
     "reason": "IPN student unrest in the 1950s is documented in Mexican political history as precursor to 1968 movement.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "IPN student unrest in the 1950s is documented in Mexican political history as precursor to 1968 movement.",
+        "source": "https://en.wikipedia.org/wiki/Instituto_Polit%C3%A9cnico_Nacional",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Instituto_Polit%C3%A9cnico_Nacional"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Teachers' Union Strike Challenges PRI Labor Control",
     "verdict": "TRUE",
     "reason": "MRM founded 1956–1958, challenging SNTE. Arrests and co-optation confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MRM founded 1956–1958, challenging SNTE. Arrests and co-optation confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Movimiento_Revolucionario_del_Magisterio",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Movimiento_Revolucionario_del_Magisterio"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Mexico City Earthquake",
     "verdict": "FALSE",
     "reason": "Magnitude stated as 7.9 but actual magnitude was 7.6–7.8 Mw. More critically, death toll 'at least two hundred' is materially wrong — confirmed sources report 54–160 deaths. Both the magnitude and death toll are substantially overstated.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Magnitude stated as 7.9 but actual magnitude was 7.6–7.8 Mw. More critically, death toll 'at least two hundred' is materially wrong — confirmed sources report 54–160 deaths. Both the magnitude and death toll are substantially overstated.",
+        "source": "https://en.wikipedia.org/wiki/1957_Guerrero_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1957_Guerrero_earthquake"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Railroad Workers' Strike Crushed",
     "verdict": "TRUE",
     "reason": "Strike began June 1958, crushed March 1959 under López Mateos. Vallejo arrested and imprisoned. Description is accurate; the decisive crackdown was 1959 but the strike began 1958.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Strike began June 1958, crushed March 1959 under López Mateos. Vallejo arrested and imprisoned. Description is accurate; the decisive crackdown was 1959 but the strike began 1958.",
+        "source": "https://en.wikipedia.org/wiki/Demetrio_Vallejo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Demetrio_Vallejo"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Adolfo López Mateos Elected President",
     "verdict": "TRUE",
     "reason": "Elected July 1958, took office December 1958. Center-left positioning and Cuba policy confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Elected July 1958, took office December 1958. Center-left positioning and Cuba policy confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Adolfo_L%C3%B3pez_Mateos",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Adolfo_L%C3%B3pez_Mateos"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Mexico Refuses to Expel Cuba from the OAS",
     "verdict": "TRUE",
     "reason": "Mexico's non-intervention policy and refusal to sever ties with Cuba is well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mexico's non-intervention policy and refusal to sever ties with Cuba is well-documented.",
+        "source": "https://en.wikipedia.org/wiki/Mexico%E2%80%93Cuba_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mexico%E2%80%93Cuba_relations"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Agrarian Reform Revived Under López Mateos",
     "verdict": "TRUE",
     "reason": "López Mateos distributed more land than any president since Cárdenas. 'Roughly thirty million acres' is within range of documented figures.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "López Mateos distributed more land than any president since Cárdenas. 'Roughly thirty million acres' is within range of documented figures.",
+        "source": "https://en.wikipedia.org/wiki/Adolfo_L%C3%B3pez_Mateos",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Adolfo_L%C3%B3pez_Mateos"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Population Reaches 35 Million",
     "verdict": "TRUE",
     "reason": "Minor discrepancy: 1960 census recorded ~36.72 million, not 35 million. The 35 million figure is a rounded approximation; not materially wrong enough to classify as FALSE.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Minor discrepancy: 1960 census recorded ~36.72 million, not 35 million. The 35 million figure is a rounded approximation; not materially wrong enough to classify as FALSE.",
+        "source": "https://en.www.inegi.org.mx/programas/ccpv/1960/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.www.inegi.org.mx/programas/ccpv/1960/"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Guerrilla Activity Emerges in Guerrero",
     "verdict": "TRUE",
     "reason": "Lucio Cabañas began organizing in Guerrero in the early 1960s; killed by security forces 1974. Dirty War disappearances confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Lucio Cabañas began organizing in Guerrero in the early 1960s; killed by security forces 1974. Dirty War disappearances confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Lucio_Caba%C3%B1as",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Lucio_Caba%C3%B1as"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Díaz Ordaz Becomes PRI Presidential Candidate",
     "verdict": "TRUE",
     "reason": "Díaz Ordaz was Interior Secretary and became PRI candidate in 1963 through the dedazo mechanism. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Díaz Ordaz was Interior Secretary and became PRI candidate in 1963 through the dedazo mechanism. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Gustavo_D%C3%ADaz_Ordaz",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Gustavo_D%C3%ADaz_Ordaz"
   },
   {
@@ -123,6 +429,24 @@
     "title": "National Museum of Anthropology Opens",
     "verdict": "TRUE",
     "reason": "Inaugurated September 17, 1964 by President López Mateos. Location in Chapultepec Park and Aztec Sun Stone confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Inaugurated September 17, 1964 by President López Mateos. Location in Chapultepec Park and Aztec Sun Stone confirmed.",
+        "source": "https://en.wikipedia.org/wiki/National_Museum_of_Anthropology_(Mexico)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/National_Museum_of_Anthropology_(Mexico)"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Maquiladora Program Established at the Border",
     "verdict": "TRUE",
     "reason": "Border Industrialization Program established May 20, 1965. Link to end of Bracero Program confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Border Industrialization Program established May 20, 1965. Link to end of Bracero Program confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Maquiladora",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Maquiladora"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Chihuahua Guerrilla Attack on Military Barracks",
     "verdict": "TRUE",
     "reason": "Arturo Gámiz attack on Cuartel Madera, Chihuahua, September 23, 1965. Confirmed as opening act of Mexico's Dirty War era.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Arturo Gámiz attack on Cuartel Madera, Chihuahua, September 23, 1965. Confirmed as opening act of Mexico's Dirty War era.",
+        "source": "https://en.wikipedia.org/wiki/Madera_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Madera_massacre"
   },
   {
@@ -144,6 +504,24 @@
     "title": "University Student Strikes Spread Across Mexico",
     "verdict": "TRUE",
     "reason": "Student protests at multiple universities in 1966 documented as precursor to 1968.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Student protests at multiple universities in 1966 documented as precursor to 1968.",
+        "source": "https://en.wikipedia.org/wiki/1968_student_movement_in_Mexico",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1968_student_movement_in_Mexico"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Tlatelolco Treaty — Latin American Nuclear-Free Zone",
     "verdict": "TRUE",
     "reason": "Signed February 14, 1967. García Robles confirmed as chief architect, won Nobel Peace Prize 1982 (shared with Alva Myrdal). First nuclear-weapons-free zone in a populated area confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed February 14, 1967. García Robles confirmed as chief architect, won Nobel Peace Prize 1982 (shared with Alva Myrdal). First nuclear-weapons-free zone in a populated area confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Treaty_of_Tlatelolco",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Treaty_of_Tlatelolco"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Tlatelolco Massacre",
     "verdict": "TRUE",
     "reason": "October 2, 1968, ten days before Olympics. Official figures underreported; credible estimates range into hundreds. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 2, 1968, ten days before Olympics. Official figures underreported; credible estimates range into hundreds. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Tlatelolco_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tlatelolco_massacre"
   },
   {
@@ -165,6 +579,24 @@
     "title": "1968 Student Movement and Mexico City Olympics",
     "verdict": "TRUE",
     "reason": "Smith and Carlos Black Power salute confirmed. Olympics in Mexico City confirmed. Student movement scale and legacy confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Smith and Carlos Black Power salute confirmed. Olympics in Mexico City confirmed. Student movement scale and legacy confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1968_Olympics_Black_Power_salute",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1968_Olympics_Black_Power_salute"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Dirty War Intensifies After Tlatelolco",
     "verdict": "TRUE",
     "reason": "Systematic disappearances post-1968 confirmed by CNDH and human rights documentation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Systematic disappearances post-1968 confirmed by CNDH and human rights documentation.",
+        "source": "https://en.wikipedia.org/wiki/Dirty_War_in_Mexico",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dirty_War_in_Mexico"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Luis Echeverría Takes Office — Populist Rhetoric Returns",
     "verdict": "TRUE",
     "reason": "Took office December 1, 1970. Apertura democrática strategy and contradictions confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Took office December 1, 1970. Apertura democrática strategy and contradictions confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Luis_Echeverr%C3%ADa",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Luis_Echeverr%C3%ADa"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Corpus Christi Massacre — Halcones Attack Students",
     "verdict": "TRUE",
     "reason": "June 10, 1971 confirmed. Death toll 'at least twenty-five' is conservative and within the credible range (official: 11; credible estimates: up to 120). Paramilitary Halcones with government links confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 10, 1971 confirmed. Death toll 'at least twenty-five' is conservative and within the credible range (official: 11; credible estimates: up to 120). Paramilitary Halcones with government links confirmed.",
+        "source": "https://en.wikipedia.org/wiki/El_Halconazo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/El_Halconazo"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Lucio Cabañas' Guerrilla Campaign Escalates in Guerrero",
     "verdict": "TRUE",
     "reason": "Partido de los Pobres confirmed. Cabañas killed in 1974 confirmed. Counter-insurgency abuses documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Partido de los Pobres confirmed. Cabañas killed in 1974 confirmed. Counter-insurgency abuses documented.",
+        "source": "https://en.wikipedia.org/wiki/Lucio_Caba%C3%B1as",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Lucio_Caba%C3%B1as"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Echeverría Expands State Role in the Economy",
     "verdict": "TRUE",
     "reason": "State expansion and deficit spending leading to 1976 crisis is well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "State expansion and deficit spending leading to 1976 crisis is well-documented.",
+        "source": "https://en.wikipedia.org/wiki/Luis_Echeverr%C3%ADa",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Luis_Echeverr%C3%ADa"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Liga Comunista 23 de Septiembre Founded",
     "verdict": "TRUE",
     "reason": "Founded 1973 (merged groups from 1972–1973). Bank robberies, kidnappings, and government destruction by late 1970s confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Founded 1973 (merged groups from 1972–1973). Bank robberies, kidnappings, and government destruction by late 1970s confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Liga_Comunista_23_de_Septiembre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Liga_Comunista_23_de_Septiembre"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Dirty War Disappearances Peak",
     "verdict": "TRUE",
     "reason": "CNDH confirmed at least 275 enforced disappearances. Early-to-mid 1970s as peak period confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "CNDH confirmed at least 275 enforced disappearances. Early-to-mid 1970s as peak period confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Dirty_War_in_Mexico",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dirty_War_in_Mexico"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Eugenio Garza Sada Kidnapped and Killed",
     "verdict": "FALSE",
     "reason": "Year-off by 1: Garza Sada was killed on September 17, 1973, not 1974. Multiple sources confirm the 1973 date definitively.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year-off by 1: Garza Sada was killed on September 17, 1973, not 1974. Multiple sources confirm the 1973 date definitively.",
+        "source": "https://en.wikipedia.org/wiki/Eugenio_Garza_Sada",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Eugenio_Garza_Sada"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Major Oil Discoveries in Chiapas and Tabasco",
     "verdict": "TRUE",
     "reason": "Large oil discoveries in southeastern Mexico confirmed in the early-to-mid 1970s. Cantarell discovery 1976; onshore Chiapas-Tabasco fields confirmed from mid-1970s.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Large oil discoveries in southeastern Mexico confirmed in the early-to-mid 1970s. Cantarell discovery 1976; onshore Chiapas-Tabasco fields confirmed from mid-1970s.",
+        "source": "https://en.wikipedia.org/wiki/Cantarell_Field",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cantarell_Field"
   },
   {
@@ -235,6 +829,24 @@
     "title": "International Women's Year Conference in Mexico City",
     "verdict": "TRUE",
     "reason": "First UN World Conference on Women, Mexico City, June 19 – July 2, 1975. 133 delegations confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "First UN World Conference on Women, Mexico City, June 19 – July 2, 1975. 133 delegations confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1975_World_Conference_on_Women",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1975_World_Conference_on_Women"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Peso Crisis and IMF Bailout",
     "verdict": "TRUE",
     "reason": "1976 devaluation from 12.5 to ~22 pesos per dollar confirmed. IMF austerity conditions confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1976 devaluation from 12.5 to ~22 pesos per dollar confirmed. IMF austerity conditions confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mexican_peso",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mexican_peso"
   },
   {
@@ -249,6 +879,24 @@
     "title": "López Portillo Takes Power — Oil Boom Era Begins",
     "verdict": "TRUE",
     "reason": "'Manage abundance' quote and oil-backed borrowing spree confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "'Manage abundance' quote and oil-backed borrowing spree confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Jos%C3%A9_L%C3%B3pez_Portillo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Jos%C3%A9_L%C3%B3pez_Portillo"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Political Reform — Opposition Parties Gain Legal Recognition",
     "verdict": "TRUE",
     "reason": "LOPPE political reform 1977, Reyes Heroles as Interior Secretary, PCM legalized — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "LOPPE political reform 1977, Reyes Heroles as Interior Secretary, PCM legalized — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ley_Federal_de_Organizaciones_Pol%C3%ADticas_y_Procesos_Electorales",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ley_Federal_de_Organizaciones_Pol%C3%ADticas_y_Procesos_Electorales"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Cantarell Oil Field Begins Major Production",
     "verdict": "FALSE",
     "reason": "Year-off by 2+: Cantarell production began June 1979, not 1977. Field was discovered 1976. Peak of ~2 million bpd came in the early 2000s, not 'within a few years' of 1977.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year-off by 2+: Cantarell production began June 1979, not 1977. Field was discovered 1976. Peak of ~2 million bpd came in the early 2000s, not 'within a few years' of 1977.",
+        "source": "https://en.wikipedia.org/wiki/Cantarell_Field",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cantarell_Field"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Population Reaches 67 Million — Urbanization Transforms Mexico",
     "verdict": "TRUE",
     "reason": "1980 census recorded ~66.8 million; 67 million is accurate rounding. Urbanization majority and Mexico City scale confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1980 census recorded ~66.8 million; 67 million is accurate rounding. Urbanization majority and Mexico City scale confirmed.",
+        "source": "https://en.www.inegi.org.mx/programas/ccpv/1980/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.www.inegi.org.mx/programas/ccpv/1980/"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Mexico Debt Crisis — Default Announcement Shocks Global Finance",
     "verdict": "TRUE",
     "reason": "Silva Herzog's August 12, 1982 announcement confirmed. Bank nationalization by López Portillo August 31, 1982 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Silva Herzog's August 12, 1982 announcement confirmed. Bank nationalization by López Portillo August 31, 1982 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Latin_American_debt_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Latin_American_debt_crisis"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Miguel de la Madrid Elected — Technocratic Turn Begins",
     "verdict": "TRUE",
     "reason": "Elected July 1982, took office December 1, 1982. US-educated technocrats and market liberalization shift confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Elected July 1982, took office December 1, 1982. US-educated technocrats and market liberalization shift confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Miguel_de_la_Madrid",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Miguel_de_la_Madrid"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Austerity Program Shrinks Mexican Economy",
     "verdict": "TRUE",
     "reason": "GDP contraction under IMF conditions in 1983 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "GDP contraction under IMF conditions in 1983 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Mexico",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Mexico"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "PAN Electoral Victories Signal Opposition Growth",
     "verdict": "TRUE",
     "reason": "PAN municipal wins in northern cities in 1983 confirmed. Often contested through fraud is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PAN municipal wins in northern cities in 1983 confirmed. Often contested through fraud is documented.",
+        "source": "https://en.wikipedia.org/wiki/National_Action_Party_(Mexico)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/National_Action_Party_(Mexico)"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Cross-Border Drug Trade Expands Rapidly",
     "verdict": "TRUE",
     "reason": "Guadalajara Cartel under Félix Gallardo expanding cocaine transshipment in mid-1980s confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Guadalajara Cartel under Félix Gallardo expanding cocaine transshipment in mid-1980s confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Guadalajara_Cartel",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Guadalajara_Cartel"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "1985 Mexico City Earthquakes — Civil Society Born",
     "verdict": "TRUE",
     "reason": "Minor discrepancy: first earthquake was 8.0–8.1 Mw (not definitively 8.1), second was ~7.5. Deaths '~10,000' is the commonly cited figure (range 5,000–45,000). Civil society catalyst narrative confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Minor discrepancy: first earthquake was 8.0–8.1 Mw (not definitively 8.1), second was ~7.5. Deaths '~10,000' is the commonly cited figure (range 5,000–45,000). Civil society catalyst narrative confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1985_Mexico_City_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1985_Mexico_City_earthquake"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "DEA Agent Kiki Camarena Murdered by Guadalajara Cartel",
     "verdict": "TRUE",
     "reason": "February 1985 kidnapping and murder confirmed. US border closure and diplomatic crisis confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 1985 kidnapping and murder confirmed. US border closure and diplomatic crisis confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kiki_Camarena",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kiki_Camarena"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Mexico Joins GATT — Trade Liberalization Begins",
     "verdict": "TRUE",
     "reason": "Mexico joined GATT in 1986 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mexico joined GATT in 1986 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/General_Agreement_on_Tariffs_and_Trade",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/General_Agreement_on_Tariffs_and_Trade"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "Oil Prices Collapse — Fiscal Crisis Deepens",
     "verdict": "TRUE",
     "reason": "Oil price collapse >50% in 1986 confirmed. Severe impact on Mexico's public finances confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Oil price collapse >50% in 1986 confirmed. Severe impact on Mexico's public finances confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1980s_oil_glut",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1980s_oil_glut"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Mexico Hosts FIFA World Cup",
     "verdict": "TRUE",
     "reason": "Mexico hosted, Argentina won, Maradona's Hand of God goal confirmed. Pablo Larios as Mexico goalkeeper confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mexico hosted, Argentina won, Maradona's Hand of God goal confirmed. Pablo Larios as Mexico goalkeeper confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Cuauhtémoc Cárdenas Breaks with the PRI — Democratic Current",
     "verdict": "TRUE",
     "reason": "Corriente Democrática and PRI split confirmed. Cárdenas was former governor of Michoacán, not just any PRI member.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Corriente Democrática and PRI split confirmed. Cárdenas was former governor of Michoacán, not just any PRI member.",
+        "source": "https://en.wikipedia.org/wiki/Cu%C3%A1uh%C3%BAtemoc_C%C3%A1rdenas",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cu%C3%A1uh%C3%BAtemoc_C%C3%A1rdenas"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "Presidential Election Fraud — 'Se Cayó el Sistema'",
     "verdict": "TRUE",
     "reason": "System crash narrative and Salinas declared winner with ~50% confirmed. Widespread credible belief Cárdenas won confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "System crash narrative and Salinas declared winner with ~50% confirmed. Widespread credible belief Cárdenas won confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1988_Mexican_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1988_Mexican_presidential_election"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "Cuauhtémoc Cárdenas Forms the PRD",
     "verdict": "TRUE",
     "reason": "PRD founded May 5, 1989 (formally; coalition formed late 1988). Broad left coalition confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PRD founded May 5, 1989 (formally; coalition formed late 1988). Broad left coalition confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Party_of_the_Democratic_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Party_of_the_Democratic_Revolution"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "First PRI Governor Defeated — Baja California",
     "verdict": "TRUE",
     "reason": "Ruffo Appel won Baja California governorship 1989, first PRI gubernatorial loss. Salinas concession confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ruffo Appel won Baja California governorship 1989, first PRI gubernatorial loss. Salinas concession confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ernesto_Ruffo_Appel",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ernesto_Ruffo_Appel"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "PEMEX Oil Workers' Union Boss Arrested",
     "verdict": "TRUE",
     "reason": "La Quina arrested January 10, 1989 in dawn army raid. PEMEX union control broken confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "La Quina arrested January 10, 1989 in dawn army raid. PEMEX union control broken confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Joaqu%C3%ADn_Hern%C3%A1ndez_Galicia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Joaqu%C3%ADn_Hern%C3%A1ndez_Galicia"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "NAFTA Negotiations Begin",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/North_American_Free_Trade_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/North_American_Free_Trade_Agreement"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Privatization Wave — Telmex and Banks Sold",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Telmex",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Telmex"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "Solidarity Program Targets Rural Poverty",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Solidaridad_(Mexico)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Solidaridad_(Mexico)"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "Article 27 Constitutional Reform — Ejido Land Sales Permitted",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Ejido",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ejido"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "Cardinal Posadas Ocampo Killed in Guadalajara Airport Shootout",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Juan_Jes%C3%BAs_Posadas_Ocampo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Juan_Jes%C3%BAs_Posadas_Ocampo"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "Zapatista Uprising in Chiapas — EZLN Declares War on NAFTA Day",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Zapatista_uprising",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zapatista_uprising"
   },
   {
@@ -424,6 +1504,24 @@
     "title": "Luis Donaldo Colosio Assassinated",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Luis_Donaldo_Colosio_Murrieta",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Luis_Donaldo_Colosio_Murrieta"
   },
   {
@@ -431,6 +1529,24 @@
     "title": "Tequila Crisis — Peso Devaluation Triggers Financial Meltdown",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Mexican_peso_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mexican_peso_crisis"
   },
   {
@@ -438,6 +1554,24 @@
     "title": "Economic Recession — GDP Contracts by 6 Percent",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Mexican_peso_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mexican_peso_crisis"
   },
   {
@@ -445,6 +1579,24 @@
     "title": "San Andrés Accords Negotiations with Zapatistas",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/San_Andr%C3%A9s_Accords",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/San_Andr%C3%A9s_Accords"
   },
   {
@@ -452,6 +1604,24 @@
     "title": "Electoral Reform Creates Independent IFE",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Instituto_Nacional_Electoral",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Instituto_Nacional_Electoral"
   },
   {
@@ -459,6 +1629,24 @@
     "title": "FOBAPROA Bank Bailout Controversy",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Fobaproa",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Fobaproa"
   },
   {
@@ -466,6 +1654,24 @@
     "title": "PRI Loses Congressional Majority — Cárdenas Wins Mexico City",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://www.britannica.com/biography/Cuauhtemoc-Cardenas-Solorzano",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/biography/Cuauhtemoc-Cardenas-Solorzano"
   },
   {
@@ -473,6 +1679,24 @@
     "title": "Acteal Massacre in Chiapas — 45 Tzotzil Killed",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Acteal_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Acteal_massacre"
   },
   {
@@ -480,6 +1704,24 @@
     "title": "Drug Cartel General Arrested — Military Corruption Exposed",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Jes%C3%BAs_Guti%C3%A9rrez_Rebollo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Jes%C3%BAs_Guti%C3%A9rrez_Rebollo"
   },
   {
@@ -487,6 +1729,24 @@
     "title": "UNAM Student Strike — Ten Months Paralysis",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/1999_UNAM_strike",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1999_UNAM_strike"
   },
   {
@@ -494,6 +1754,24 @@
     "title": "Vicente Fox Wins Presidency — PRI's Seventy-One-Year Rule Ends",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Vicente_Fox",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Vicente_Fox"
   },
   {
@@ -501,6 +1779,24 @@
     "title": "Fox-Zapatista Dialogue and Congressional Indigenous Rights Law",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Zapatista_Army_of_National_Liberation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zapatista_Army_of_National_Liberation"
   },
   {
@@ -508,6 +1804,24 @@
     "title": "US-Mexico Migration Talks Interrupted by 9/11",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Presidency_of_Vicente_Fox",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Presidency_of_Vicente_Fox"
   },
   {
@@ -515,6 +1829,24 @@
     "title": "Maquiladora Sector Contracts as China Joins WTO",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Maquiladora",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Maquiladora"
   },
   {
@@ -522,6 +1854,24 @@
     "title": "Feminicide Crisis in Ciudad Juárez Draws International Attention",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Female_homicides_in_Ciudad_Ju%C3%A1rez",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Female_homicides_in_Ciudad_Ju%C3%A1rez"
   },
   {
@@ -529,6 +1879,24 @@
     "title": "Mexico City Under AMLO — Social Programs Gain Popularity",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Andr%C3%A9s_Manuel_L%C3%B3pez_Obrador",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Andr%C3%A9s_Manuel_L%C3%B3pez_Obrador"
   },
   {
@@ -536,6 +1904,24 @@
     "title": "Desafuero Attempt Against AMLO Backfires on Fox",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Andr%C3%A9s_Manuel_L%C3%B3pez_Obrador",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Andr%C3%A9s_Manuel_L%C3%B3pez_Obrador"
   },
   {
@@ -543,6 +1929,24 @@
     "title": "Felipe Calderón Defeats AMLO in Disputed Presidential Election",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/2006_Mexican_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2006_Mexican_general_election"
   },
   {
@@ -550,6 +1954,24 @@
     "title": "Calderón Declares War on Drug Cartels",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Mexican_drug_war",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mexican_drug_war"
   },
   {
@@ -557,6 +1979,24 @@
     "title": "Oaxaca Teachers' Strike and Social Uprising",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/2006_Oaxaca_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2006_Oaxaca_protests"
   },
   {
@@ -564,6 +2004,24 @@
     "title": "Merida Initiative — US-Mexico Security Cooperation",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/M%C3%A9rida_Initiative",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/M%C3%A9rida_Initiative"
   },
   {
@@ -571,6 +2029,24 @@
     "title": "Cartel Violence Reaches Crisis Levels",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Mexican_drug_war",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mexican_drug_war"
   },
   {
@@ -578,6 +2054,24 @@
     "title": "Global Financial Crisis Hits Mexico Hard",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Mexico",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Mexico"
   },
   {
@@ -585,6 +2079,24 @@
     "title": "H1N1 Swine Flu Pandemic Originates in Mexico",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/2009_swine_flu_pandemic",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2009_swine_flu_pandemic"
   },
   {
@@ -592,6 +2104,24 @@
     "title": "Ciudad Juárez Becomes World's Most Violent City",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Mexican_drug_war",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mexican_drug_war"
   },
   {
@@ -599,6 +2129,24 @@
     "title": "Cantarell Oil Field Production Collapses",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Cantarell_Field",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cantarell_Field"
   },
   {
@@ -606,6 +2154,24 @@
     "title": "Anti-Violence March — 'No Más Sangre' Movement",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Javier_Sicilia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Javier_Sicilia"
   },
   {
@@ -613,6 +2179,24 @@
     "title": "Human Rights Abuses by Security Forces Documented",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://www.hrw.org/world-report/2012/country-chapters/mexico",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/world-report/2012/country-chapters/mexico"
   },
   {
@@ -620,6 +2204,24 @@
     "title": "Enrique Peña Nieto Elected — PRI Returns to Power",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/2012_Mexican_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2012_Mexican_general_election"
   },
   {
@@ -627,6 +2229,24 @@
     "title": "Pacto por México — Energy, Telecom, and Education Reforms",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Pact_for_Mexico",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Pact_for_Mexico"
   },
   {
@@ -634,6 +2254,24 @@
     "title": "43 Ayotzinapa Students Disappeared",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Iguala_mass_kidnapping",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Iguala_mass_kidnapping"
   },
   {
@@ -641,6 +2279,24 @@
     "title": "El Chapo Guzmán Arrested",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Joaqu%C3%ADn_%22El_Chapo%22_Guzm%C3%A1n",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Joaqu%C3%ADn_%22El_Chapo%22_Guzm%C3%A1n"
   },
   {
@@ -648,6 +2304,24 @@
     "title": "Casa Blanca Scandal Rocks Peña Nieto Administration",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Mexican_White_House_scandal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mexican_White_House_scandal"
   },
   {
@@ -655,6 +2329,24 @@
     "title": "Trump's Anti-Mexico Campaign Discourse Alarms Mexico",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Trump_wall",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Trump_wall"
   },
   {
@@ -662,6 +2354,24 @@
     "title": "September Earthquakes Kill Hundreds",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/2017_Puebla_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2017_Puebla_earthquake"
   },
   {
@@ -669,6 +2379,24 @@
     "title": "Journalists Murdered at Record Rates",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://cpj.org/americas/mexico/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://cpj.org/americas/mexico/"
   },
   {
@@ -676,6 +2404,24 @@
     "title": "NAFTA Renegotiation Begins Under Trump Pressure",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Mexico%E2%80%93Canada_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Mexico%E2%80%93Canada_Agreement"
   },
   {
@@ -683,6 +2429,24 @@
     "title": "AMLO Wins Presidential Election by Landslide",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/2018_Mexican_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2018_Mexican_general_election"
   },
   {
@@ -690,6 +2454,24 @@
     "title": "USMCA Signed — NAFTA Replaced",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Mexico%E2%80%93Canada_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Mexico%E2%80%93Canada_Agreement"
   },
   {
@@ -697,6 +2479,24 @@
     "title": "AMLO's 'Hugs Not Bullets' Security Strategy",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Andr%C3%A9s_Manuel_L%C3%B3pez_Obrador",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Andr%C3%A9s_Manuel_L%C3%B3pez_Obrador"
   },
   {
@@ -704,6 +2504,24 @@
     "title": "Energy Reform Reversal — AMLO Prioritizes PEMEX and CFE",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Dos_Bocas_Refinery",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dos_Bocas_Refinery"
   },
   {
@@ -711,6 +2529,24 @@
     "title": "COVID-19 Pandemic — Mexico Among World's Highest Excess Deaths",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Mexico",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Mexico"
   },
   {
@@ -718,6 +2554,24 @@
     "title": "Femicides Reach Record Levels During Pandemic",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Femicide_in_Mexico",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Femicide_in_Mexico"
   },
   {
@@ -725,6 +2579,24 @@
     "title": "Mexico Emerges as Major Nearshoring Destination",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Nearshoring",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Nearshoring"
   },
   {
@@ -732,6 +2604,24 @@
     "title": "AMLO Electoral Reform Proposals Blocked",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Instituto_Nacional_Electoral",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Instituto_Nacional_Electoral"
   },
   {
@@ -739,6 +2629,24 @@
     "title": "Record Migrant Flows Through Mexico to US Border",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/2021%E2%80%932024_United_States_border_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2021%E2%80%932024_United_States_border_crisis"
   },
   {
@@ -746,6 +2654,24 @@
     "title": "Claudia Sheinbaum Nominated as Morena Presidential Candidate",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Claudia_Sheinbaum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Claudia_Sheinbaum"
   },
   {
@@ -753,6 +2679,24 @@
     "title": "Fentanyl Crisis Strains US-Mexico Relations",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Fentanyl_trafficking_in_the_United_States",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Fentanyl_trafficking_in_the_United_States"
   },
   {
@@ -760,6 +2704,24 @@
     "title": "Claudia Sheinbaum Elected First Female President of Mexico",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/2024_Mexican_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2024_Mexican_general_election"
   },
   {
@@ -767,6 +2729,24 @@
     "title": "Judicial Reform — Elected Judges Replace Appointed Judiciary",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/2024_Mexican_judicial_reform",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2024_Mexican_judicial_reform"
   },
   {
@@ -774,6 +2754,24 @@
     "title": "Mexico Navigates US Tariff Threats Under Trump's Return",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Trump_tariffs",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Trump_tariffs"
   },
   {
@@ -781,6 +2779,24 @@
     "title": "USMCA Review Scheduled for 2026 Creates Trade Uncertainty",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Mexico%E2%80%93Canada_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Mexico%E2%80%93Canada_Agreement"
   },
   {
@@ -788,6 +2804,24 @@
     "title": "First Popular Judicial Elections Generate Controversy",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/2024_Mexican_judicial_reform",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2024_Mexican_judicial_reform"
   },
   {
@@ -795,6 +2829,24 @@
     "title": "Migration Policy — Mexico as US Buffer State",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Immigration_to_Mexico",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Immigration_to_Mexico"
   }
 ]

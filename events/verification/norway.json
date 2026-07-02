@@ -4,6 +4,24 @@
     "title": "Norway Mediates Sri Lankan Peace Talks",
     "verdict": "FALSE",
     "reason": "Norway's formal facilitation role in Sri Lanka began in 2000 (announced by President Kumaratunga) and informally in 1997 — not 1990. The year is off by at least 7 years, well outside the ±2 year tolerance.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Norway's formal facilitation role in Sri Lanka began in 2000 (announced by President Kumaratunga) and informally in 1997 — not 1990. The year is off by at least 7 years, well outside the ±2 year tolerance.",
+        "source": "https://www.cmi.no/projects/1446-evaluation-of-norwegian-peace-efforts-in-sri-lanka",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cmi.no/projects/1446-evaluation-of-norwegian-peace-efforts-in-sri-lanka"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Banking Crisis Forces State Takeover of Major Banks",
     "verdict": "TRUE",
     "reason": "The 1988–1992 Norwegian banking crisis peaked in 1990–1991; the Government Bank Insurance Fund (GBIF) recapitalised and effectively took control of the three largest banks, with the crisis-resolution framework explicitly enacted around 1990–1991.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 1988–1992 Norwegian banking crisis peaked in 1990–1991; the Government Bank Insurance Fund (GBIF) recapitalised and effectively took control of the three largest banks, with the crisis-resolution framework explicitly enacted around 1990–1991.",
+        "source": "https://en.wikipedia.org/wiki/1988%E2%80%931992_Norwegian_banking_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1988%E2%80%931992_Norwegian_banking_crisis"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Government Petroleum Fund Established by Parliament",
     "verdict": "TRUE",
     "reason": "The Storting passed the Act on the Government Petroleum Fund (Statens petroleumsfond) on 22 June 1990, though the first capital deposit was not made until 1996.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Storting passed the Act on the Government Petroleum Fund (Statens petroleumsfond) on 22 June 1990, though the first capital deposit was not made until 1996.",
+        "source": "https://en.wikipedia.org/wiki/Government_Pension_Fund_of_Norway",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Government_Pension_Fund_of_Norway"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Norway Resumes Commercial Whaling Despite International Ban",
     "verdict": "TRUE",
     "reason": "Norway had filed a formal objection to the IWC moratorium and in 1992 the IWC Scientific Committee found minke whale stocks sustainable, with commercial whaling resuming in 1993; the curated year of 1992 refers to the policy decision and IWC finding that enabled the resumption, within ±2 years of actual resumption.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Norway had filed a formal objection to the IWC moratorium and in 1992 the IWC Scientific Committee found minke whale stocks sustainable, with commercial whaling resuming in 1993; the curated year of 1992 refers to the policy decision and IWC finding that enabled the resumption, within ±2 years of actual resumption.",
+        "source": "https://en.wikipedia.org/wiki/Whaling_in_Norway",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Whaling_in_Norway"
   },
   {
@@ -32,6 +104,24 @@
     "title": "EEA Agreement Signed with European Community",
     "verdict": "TRUE",
     "reason": "The Agreement on the European Economic Area was signed in Porto (Oporto) on 2 May 1992 between the 12 EC Member States and 7 EFTA members including Norway, entering into force on 1 January 1994.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Agreement on the European Economic Area was signed in Porto (Oporto) on 2 May 1992 between the 12 EC Member States and 7 EFTA members including Norway, entering into force on 1 January 1994.",
+        "source": "https://en.wikipedia.org/wiki/European_Economic_Area",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/European_Economic_Area"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Oslo Accords Brokered Between Israel and PLO",
     "verdict": "TRUE",
     "reason": "Secret negotiations hosted by Norway's Fafo institute concluded 20 August 1993; the Oslo Accords were officially signed at the White House on 13 September 1993 in the presence of Rabin, Arafat, and Clinton.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Secret negotiations hosted by Norway's Fafo institute concluded 20 August 1993; the Oslo Accords were officially signed at the White House on 13 September 1993 in the presence of Rabin, Arafat, and Clinton.",
+        "source": "https://en.wikipedia.org/wiki/Oslo_Accords",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Oslo_Accords"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Barents Euro-Arctic Region Council Founded",
     "verdict": "TRUE",
     "reason": "The Barents Euro-Arctic Council was established at Kirkenes, Norway on 11 January 1993 via the Kirkenes Declaration, with founding members including Norway, Russia, Finland, Sweden, and the EU Commission.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Barents Euro-Arctic Council was established at Kirkenes, Norway on 11 January 1993 via the Kirkenes Declaration, with founding members including Norway, Russia, Finland, Sweden, and the EU Commission.",
+        "source": "https://en.wikipedia.org/wiki/Barents_Euro-Arctic_Council",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Barents_Euro-Arctic_Council"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Lillehammer Winter Olympics Hosted",
     "verdict": "TRUE",
     "reason": "The XVII Olympic Winter Games were held in Lillehammer, Norway from 12 to 27 February 1994, widely praised as among the most successful Winter Olympics; Norway led all nations in total medals with 26.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The XVII Olympic Winter Games were held in Lillehammer, Norway from 12 to 27 February 1994, widely praised as among the most successful Winter Olympics; Norway led all nations in total medals with 26.",
+        "source": "https://en.wikipedia.org/wiki/1994_Winter_Olympics",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1994_Winter_Olympics"
   },
   {
@@ -60,6 +204,24 @@
     "title": "National Referendum Rejects EU Membership",
     "verdict": "TRUE",
     "reason": "On 28 November 1994, Norwegian voters rejected EU membership with 52.2% voting No on an 88.6% turnout, the country's second rejection after 1972.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 28 November 1994, Norwegian voters rejected EU membership with 52.2% voting No on an 88.6% turnout, the country's second rejection after 1972.",
+        "source": "https://en.wikipedia.org/wiki/1994_Norwegian_European_Union_membership_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1994_Norwegian_European_Union_membership_referendum"
   },
   {
@@ -67,6 +229,24 @@
     "title": "First Capital Deposited into Government Petroleum Fund",
     "verdict": "TRUE",
     "reason": "The Ministry of Finance made the first capital transfer — approximately NOK 1.98 billion — to the fund's account at Norges Bank in May 1996, marking the operational start of what became the world's largest sovereign wealth fund.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Ministry of Finance made the first capital transfer — approximately NOK 1.98 billion — to the fund's account at Norges Bank in May 1996, marking the operational start of what became the world's largest sovereign wealth fund.",
+        "source": "https://www.nbim.no/en/about-us/about-the-fund/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nbim.no/en/about-us/about-the-fund/"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Nobel Peace Prize to Hume and Trimble for Northern Ireland",
     "verdict": "TRUE",
     "reason": "The Norwegian Nobel Committee awarded the 1998 Nobel Peace Prize jointly to John Hume and David Trimble for their efforts to find a peaceful solution to the conflict in Northern Ireland, connected to the Good Friday Agreement signed that April.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Norwegian Nobel Committee awarded the 1998 Nobel Peace Prize jointly to John Hume and David Trimble for their efforts to find a peaceful solution to the conflict in Northern Ireland, connected to the Good Friday Agreement signed that April.",
+        "source": "https://www.nobelprize.org/prizes/peace/1998/summary/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nobelprize.org/prizes/peace/1998/summary/"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Petroleum Fund Begins Equity Investments",
     "verdict": "TRUE",
     "reason": "In 1998 the Ministry of Finance expanded the fund's mandate to allow up to 40% in international equities, with Norges Bank Investment Management (NBIM) established 1 January 1998 to manage the portfolio; the equity allocation was implemented through 1998–1999. The curated year 1999 is within the ±2 year tolerance.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 1998 the Ministry of Finance expanded the fund's mandate to allow up to 40% in international equities, with Norges Bank Investment Management (NBIM) established 1 January 1998 to manage the portfolio; the equity allocation was implemented through 1998–1999. The curated year 1999 is within the ±2 year tolerance.",
+        "source": "https://en.wikipedia.org/wiki/Government_Pension_Fund_of_Norway",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Government_Pension_Fund_of_Norway"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Stoltenberg I Government Takes Office",
     "verdict": "TRUE",
     "reason": "Jens Stoltenberg became Prime Minister for the first time on 17 March 2000, leading a minority Labour government after Bondevik's cabinet lost a confidence vote; he served until 19 October 2001.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Jens Stoltenberg became Prime Minister for the first time on 17 March 2000, leading a minority Labour government after Bondevik's cabinet lost a confidence vote; he served until 19 October 2001.",
+        "source": "https://en.wikipedia.org/wiki/Jens_Stoltenberg",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Jens_Stoltenberg"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Norway Joins NATO Operation in Afghanistan",
     "verdict": "TRUE",
     "reason": "Norway deployed special forces (Forsvarets Spesialkommando) to Afghanistan in December 2001 as part of Operation Enduring Freedom following the 9/11 attacks; approximately 9,200 Norwegian soldiers served in Afghanistan over twenty years.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Norway deployed special forces (Forsvarets Spesialkommando) to Afghanistan in December 2001 as part of Operation Enduring Freedom following the 9/11 attacks; approximately 9,200 Norwegian soldiers served in Afghanistan over twenty years.",
+        "source": "https://www.forsvaret.no/en/exercises-and-operations/international-operations/afghanistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.forsvaret.no/en/exercises-and-operations/international-operations/afghanistan"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Petroleum Fund Adopts Ethical Investment Guidelines",
     "verdict": "TRUE",
     "reason": "The Council on Ethics for the Government Pension Fund Global was established by Royal Decree on 19 November 2004 with a mandate to screen investments against ethical criteria including weapons production, environmental harm, and human rights abuses.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Council on Ethics for the Government Pension Fund Global was established by Royal Decree on 19 November 2004 with a mandate to screen investments against ethical criteria including weapons production, environmental harm, and human rights abuses.",
+        "source": "https://etikkradet.no/en/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://etikkradet.no/en/"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Red-Green Coalition Government Formed",
     "verdict": "TRUE",
     "reason": "Following the September 2005 parliamentary elections, Jens Stoltenberg formed a majority red-green coalition of Labour, the Socialist Left, and the Centre Party on 17 October 2005 — Norway's first majority government in over two decades.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following the September 2005 parliamentary elections, Jens Stoltenberg formed a majority red-green coalition of Labour, the Socialist Left, and the Centre Party on 17 October 2005 — Norway's first majority government in over two decades.",
+        "source": "https://en.wikipedia.org/wiki/Red-Green_Coalition_(Norway)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Red-Green_Coalition_(Norway)"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Petroleum Fund Renamed Government Pension Fund Global",
     "verdict": "TRUE",
     "reason": "The Petroleum Fund was restructured and renamed Statens pensjonsfond utland (Government Pension Fund Global) in January 2006 in connection with a broader pension reform; the fund's AUM at the time was approximately NOK 1,784 billion (around $220–250 billion USD), not $200 billion as stated, but the core facts are correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Petroleum Fund was restructured and renamed Statens pensjonsfond utland (Government Pension Fund Global) in January 2006 in connection with a broader pension reform; the fund's AUM at the time was approximately NOK 1,784 billion (around $220–250 billion USD), not $200 billion as stated, but the core facts are correct.",
+        "source": "https://en.wikipedia.org/wiki/Government_Pension_Fund_of_Norway",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Government_Pension_Fund_of_Norway"
   },
   {
@@ -123,6 +429,24 @@
     "title": "High North Strategy Launched",
     "verdict": "TRUE",
     "reason": "The Stoltenberg II government formally declared the High North (Nordområdene) Norway's most important strategic priority in 2006–2007, publishing a comprehensive Arctic strategy document; subsequent updates appeared in 2009 and 2017, confirming the 2007 framing as accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Stoltenberg II government formally declared the High North (Nordområdene) Norway's most important strategic priority in 2006–2007, publishing a comprehensive Arctic strategy document; subsequent updates appeared in 2009 and 2017, confirming the 2007 framing as accurate.",
+        "source": "https://www.regjeringen.no/en/topics/high-north/barents-cooperation/id2008480/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.regjeringen.no/en/topics/high-north/barents-cooperation/id2008480/"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Svalbard Global Seed Vault Opens",
     "verdict": "TRUE",
     "reason": "The Svalbard Global Seed Vault officially opened on 26 February 2008 in the presence of PM Stoltenberg, EU Commission President Barroso, and FAO Director-General Diouf; Norway funded construction inside a sandstone mountain on Spitsbergen.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Svalbard Global Seed Vault officially opened on 26 February 2008 in the presence of PM Stoltenberg, EU Commission President Barroso, and FAO Director-General Diouf; Norway funded construction inside a sandstone mountain on Spitsbergen.",
+        "source": "https://en.wikipedia.org/wiki/Svalbard_Global_Seed_Vault",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Svalbard_Global_Seed_Vault"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Nobel Peace Prize to Obama Sparks Global Controversy",
     "verdict": "TRUE",
     "reason": "The Norwegian Nobel Committee awarded the 2009 Peace Prize to US President Barack Obama on 9 October 2009, less than a year into his presidency; the decision provoked worldwide controversy, with critics calling it premature, and a 2015 memoir by then-Nobel secretary Geir Lundestad acknowledged the award did not have its desired effect.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Norwegian Nobel Committee awarded the 2009 Peace Prize to US President Barack Obama on 9 October 2009, less than a year into his presidency; the decision provoked worldwide controversy, with critics calling it premature, and a 2015 memoir by then-Nobel secretary Geir Lundestad acknowledged the award did not have its desired effect.",
+        "source": "https://en.wikipedia.org/wiki/2009_Nobel_Peace_Prize",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2009_Nobel_Peace_Prize"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Maritime Boundary Treaty with Russia in Barents Sea",
     "verdict": "TRUE",
     "reason": "Norway and Russia signed the Treaty on Maritime Delimitation in the Barents Sea and Arctic Ocean on 15 September 2010, resolving a ~40-year dispute over approximately 176,000 km² of contested waters.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Norway and Russia signed the Treaty on Maritime Delimitation in the Barents Sea and Arctic Ocean on 15 September 2010, resolving a ~40-year dispute over approximately 176,000 km² of contested waters.",
+        "source": "https://www.asil.org/insights/volume/14/issue/34/norway-and-russia-agree-maritime-boundary-barents-sea-and-arctic-ocean",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.asil.org/insights/volume/14/issue/34/norway-and-russia-agree-maritime-boundary-barents-sea-and-arctic-ocean"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Nobel Peace Prize to Liu Xiaobo Triggers Chinese Fury",
     "verdict": "TRUE",
     "reason": "The Nobel Committee awarded the 2010 Peace Prize to imprisoned Chinese dissident Liu Xiaobo on 8 October 2010; China froze diplomatic and high-level political relations with Norway and imposed informal trade barriers on Norwegian salmon, lasting until normalization in December 2016.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Nobel Committee awarded the 2010 Peace Prize to imprisoned Chinese dissident Liu Xiaobo on 8 October 2010; China froze diplomatic and high-level political relations with Norway and imposed informal trade barriers on Norwegian salmon, lasting until normalization in December 2016.",
+        "source": "https://en.wikipedia.org/wiki/2010_Nobel_Peace_Prize",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2010_Nobel_Peace_Prize"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Breivik Terror Attacks Kill 77 in Oslo and Utoya",
     "verdict": "TRUE",
     "reason": "On 22 July 2011, Anders Behring Breivik detonated a car bomb in Oslo's government quarter killing 8, then shot and killed 69 people at the AUF Labour Youth camp on Utøya island; total of 77 killed, the deadliest attacks in Norway since WWII.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 22 July 2011, Anders Behring Breivik detonated a car bomb in Oslo's government quarter killing 8, then shot and killed 69 people at the AUF Labour Youth camp on Utøya island; total of 77 killed, the deadliest attacks in Norway since WWII.",
+        "source": "https://en.wikipedia.org/wiki/2011_Norway_attacks",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2011_Norway_attacks"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Norway Participates in NATO Intervention in Libya",
     "verdict": "TRUE",
     "reason": "Norwegian F-16s flew 615 sorties and dropped 588 bombs over Libya as part of NATO Operation Unified Protector, with Norway withdrawing its aircraft on 1 August 2011; Norway ranked among the highest contributors of strike sorties relative to aircraft deployed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Norwegian F-16s flew 615 sorties and dropped 588 bombs over Libya as part of NATO Operation Unified Protector, with Norway withdrawing its aircraft on 1 August 2011; Norway ranked among the highest contributors of strike sorties relative to aircraft deployed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Unified_Protector",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Unified_Protector"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Conservative-Led Coalition Government Under Erna Solberg",
     "verdict": "TRUE",
     "reason": "Following the September 2013 parliamentary election, Erna Solberg was appointed Prime Minister on 16 October 2013, leading a minority Conservative-Progress Party coalition (the 'Blue-Blue' cabinet) — Norway's first centre-right government since 2005.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following the September 2013 parliamentary election, Erna Solberg was appointed Prime Minister on 16 October 2013, leading a minority Conservative-Progress Party coalition (the 'Blue-Blue' cabinet) — Norway's first centre-right government since 2005.",
+        "source": "https://en.wikipedia.org/wiki/Erna_Solberg",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Erna_Solberg"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Stoltenberg Appointed NATO Secretary General",
     "verdict": "TRUE",
     "reason": "Jens Stoltenberg was confirmed as NATO Secretary General in March 2014 and took office on 1 October 2014, succeeding Anders Fogh Rasmussen; his appointment coincided with heightened Russia-NATO tensions following the annexation of Crimea.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Jens Stoltenberg was confirmed as NATO Secretary General in March 2014 and took office on 1 October 2014, succeeding Anders Fogh Rasmussen; his appointment coincided with heightened Russia-NATO tensions following the annexation of Crimea.",
+        "source": "https://www.nato.int/cps/po/natohq/who_is_who_49999.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nato.int/cps/po/natohq/who_is_who_49999.htm"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Oil Price Crash Exposes Norwegian Economic Vulnerability",
     "verdict": "TRUE",
     "reason": "From mid-2014, global oil prices fell sharply, triggering approximately 12,000–30,000 job losses in Norway's petroleum sector and cutting petroleum sector investment forecasts by 25%; Statistics Norway cut GDP forecasts and the crisis accelerated diversification debate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "From mid-2014, global oil prices fell sharply, triggering approximately 12,000–30,000 job losses in Norway's petroleum sector and cutting petroleum sector investment forecasts by 25%; Statistics Norway cut GDP forecasts and the crisis accelerated diversification debate.",
+        "source": "https://theconversation.com/why-norway-is-not-panicking-about-the-oil-price-collapse-37392",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://theconversation.com/why-norway-is-not-panicking-about-the-oil-price-collapse-37392"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Arctic Refugee Crisis as Thousands Cross Russian Border",
     "verdict": "TRUE",
     "reason": "In autumn 2015, approximately 5,500 asylum seekers crossed the Russian-Norwegian border at Storskog on bicycles (pedestrian crossing was banned under Russian rules, but cycling was permitted), overwhelming local reception and straining bilateral relations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In autumn 2015, approximately 5,500 asylum seekers crossed the Russian-Norwegian border at Storskog on bicycles (pedestrian crossing was banned under Russian rules, but cycling was permitted), overwhelming local reception and straining bilateral relations.",
+        "source": "https://foreignpolicy.com/2015/11/20/a-very-cold-war-on-the-russia-norway-border-syrian-refugees-bicycles/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://foreignpolicy.com/2015/11/20/a-very-cold-war-on-the-russia-norway-border-syrian-refugees-bicycles/"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Parliament Votes to Tighten Asylum and Immigration Laws",
     "verdict": "TRUE",
     "reason": "The Storting adopted emergency asylum legislation on 16 November 2015 with broad cross-party support (Labour, Conservatives, Progress, and centrist parties), tightening family reunification, border controls, and appeal deadlines in response to the 31,000 arrivals that year.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Storting adopted emergency asylum legislation on 16 November 2015 with broad cross-party support (Labour, Conservatives, Progress, and centrist parties), tightening family reunification, border controls, and appeal deadlines in response to the 31,000 arrivals that year.",
+        "source": "https://www.globalgovernmentforum.com/norwegian-parliament-adopts-new-tighter-asylum-rules/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.globalgovernmentforum.com/norwegian-parliament-adopts-new-tighter-asylum-rules/"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Diplomatic Relations with China Normalized After Six Years",
     "verdict": "TRUE",
     "reason": "On 19 December 2016, Norwegian and Chinese foreign ministers issued a joint statement restoring full diplomatic relations; Norway committed to respecting China's sovereignty and 'core interests' but did not formally apologise for the Nobel Committee's 2010 decision.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 19 December 2016, Norwegian and Chinese foreign ministers issued a joint statement restoring full diplomatic relations; Norway committed to respecting China's sovereignty and 'core interests' but did not formally apologise for the Nobel Committee's 2010 decision.",
+        "source": "https://hongkongfp.com/2016/12/19/six-years-china-ends-diplomatic-freeze-norway-nobel-peace-prize-row/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://hongkongfp.com/2016/12/19/six-years-china-ends-diplomatic-freeze-norway-nobel-peace-prize-row/"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Government Pension Fund Global Surpasses One Trillion Dollars",
     "verdict": "TRUE",
     "reason": "Norway's sovereign wealth fund crossed USD 1 trillion in value for the first time in September 2017, representing a thirteen-fold increase since 2002 and equating to over $190,000 per Norwegian citizen.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Norway's sovereign wealth fund crossed USD 1 trillion in value for the first time in September 2017, representing a thirteen-fold increase since 2002 and equating to over $190,000 per Norwegian citizen.",
+        "source": "https://money.cnn.com/2017/09/19/investing/norway-pension-fund-trillion-dollars/index.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://money.cnn.com/2017/09/19/investing/norway-pension-fund-trillion-dollars/index.html"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Parliament Approves Major Defense Spending Increase",
     "verdict": "TRUE",
     "reason": "The Storting adopted the Long-Term Defense Plan 2017–2020, including a gradual NOK 7.2 billion annual budget increase, completion of 52 F-35 acquisitions, and procurement of four new submarines — driven by growing concerns about Russian military activity in Norway's north.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Storting adopted the Long-Term Defense Plan 2017–2020, including a gradual NOK 7.2 billion annual budget increase, completion of 52 F-35 acquisitions, and procurement of four new submarines — driven by growing concerns about Russian military activity in Norway's north.",
+        "source": "https://www.defensenews.com/global/europe/2024/04/05/norways-long-term-defense-plan-features-sharp-increase-in-spending/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.defensenews.com/global/europe/2024/04/05/norways-long-term-defense-plan-features-sharp-increase-in-spending/"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Pension Fund Divests from Coal and Oil Exploration",
     "verdict": "TRUE",
     "reason": "Norges Bank recommended removing oil and gas from the benchmark index in November 2017; the government issued its formal divestment proposal in 2018, and the Storting approved the removal of upstream oil and gas exploration companies in 2019. The curated year of 2018 corresponds to the government's formal proposal stage, within ±2 years of Storting approval.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Norges Bank recommended removing oil and gas from the benchmark index in November 2017; the government issued its formal divestment proposal in 2018, and the Storting approved the removal of upstream oil and gas exploration companies in 2019. The curated year of 2018 corresponds to the government's formal proposal stage, within ±2 years of Storting approval.",
+        "source": "https://www.norges-bank.no/en/news-events/news/Press-releases/2017/2017-11-16-press-release/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.norges-bank.no/en/news-events/news/Press-releases/2017/2017-11-16-press-release/"
   },
   {
@@ -235,6 +829,24 @@
     "title": "NATO Trident Juncture Exercise Held in Norway",
     "verdict": "TRUE",
     "reason": "Exercise Trident Juncture 18 took place in Norway from 25 October to 7 November 2018, involving approximately 50,000 troops and personnel from 31 nations — NATO's largest exercise since the Cold War and Norway's largest since the 1980s.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Exercise Trident Juncture 18 took place in Norway from 25 October to 7 November 2018, involving approximately 50,000 troops and personnel from 31 nations — NATO's largest exercise since the Cold War and Norway's largest since the 1980s.",
+        "source": "https://en.wikipedia.org/wiki/Exercise_Trident_Juncture_2018",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Exercise_Trident_Juncture_2018"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Equinor Launches Hywind Tampen Floating Wind Project",
     "verdict": "TRUE",
     "reason": "Equinor and partners took the final investment decision on Hywind Tampen in October 2019 (contracts worth NOK 3.3 billion); the 94.6 MW floating wind farm — the world's largest of its kind — supplies electricity to five North Sea oil and gas platforms.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Equinor and partners took the final investment decision on Hywind Tampen in October 2019 (contracts worth NOK 3.3 billion); the 94.6 MW floating wind farm — the world's largest of its kind — supplies electricity to five North Sea oil and gas platforms.",
+        "source": "https://en.wikipedia.org/wiki/Hywind_Tampen",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hywind_Tampen"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Norwegian-Russian Border Tensions Over GPS Jamming",
     "verdict": "TRUE",
     "reason": "Norway formally accused Russia in 2019 of GPS jamming originating from military bases on the Kola Peninsula, documented in the Norwegian Intelligence Service's annual threat report; the jamming disrupted civilian aviation and military exercises in northern Norway and Finland from 2017 onwards.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Norway formally accused Russia in 2019 of GPS jamming originating from military bases on the Kola Peninsula, documented in the Norwegian Intelligence Service's annual threat report; the jamming disrupted civilian aviation and military exercises in northern Norway and Finland from 2017 onwards.",
+        "source": "https://thebarentsobserver.com/en/security/2019/01/pilots-again-warned-gps-jamming-norways-border-region-russia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://thebarentsobserver.com/en/security/2019/01/pilots-again-warned-gps-jamming-norways-border-region-russia"
   },
   {
@@ -256,6 +904,24 @@
     "title": "COVID-19 Triggers Norway's Strictest Peacetime Restrictions",
     "verdict": "TRUE",
     "reason": "On 12 March 2020, PM Erna Solberg announced Norway's most far-reaching peacetime restrictions, closing schools, kindergartens, gyms, hair salons, and borders, with the government later deploying fiscal stimulus drawn partly from the sovereign wealth fund.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 12 March 2020, PM Erna Solberg announced Norway's most far-reaching peacetime restrictions, closing schools, kindergartens, gyms, hair salons, and borders, with the government later deploying fiscal stimulus drawn partly from the sovereign wealth fund.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Norway",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Norway"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Parliament Opens Barents Sea for New Oil Exploration",
     "verdict": "TRUE",
     "reason": "Norway's Supreme Court upheld new Barents Sea petroleum exploration licenses in December 2020, ruling that the Storting had lawfully approved opening the Southeast Barents Sea to petroleum activity despite climate objections from Greenpeace and Nature and Youth.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Norway's Supreme Court upheld new Barents Sea petroleum exploration licenses in December 2020, ruling that the Storting had lawfully approved opening the Southeast Barents Sea to petroleum activity despite climate objections from Greenpeace and Nature and Youth.",
+        "source": "https://www.universal-rights.org/norways-supreme-court-dismisses-claim-based-on-the-right-to-a-healthy-environment-and-allows-new-oil-exploration-in-the-arctic/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.universal-rights.org/norways-supreme-court-dismisses-claim-based-on-the-right-to-a-healthy-environment-and-allows-new-oil-exploration-in-the-arctic/"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Labour-Led Government Formed Under Jonas Gahr Store",
     "verdict": "TRUE",
     "reason": "After the September 2021 elections, Jonas Gahr Støre was appointed Prime Minister on 14 October 2021, forming a minority coalition of Labour and the Centre Party after the Socialist Left withdrew from negotiations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After the September 2021 elections, Jonas Gahr Støre was appointed Prime Minister on 14 October 2021, forming a minority coalition of Labour and the Centre Party after the Socialist Left withdrew from negotiations.",
+        "source": "https://en.wikipedia.org/wiki/St%C3%B8re_Cabinet",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/St%C3%B8re_Cabinet"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Gjerdrum Landslide Displaces Hundreds",
     "verdict": "TRUE",
     "reason": "A quick-clay landslide struck Ask village in Gjerdrum municipality at 04:00 on 30 December 2020, killing 10 people and forcing the evacuation of over 1,000 residents; the curated year 2021 is off by one year but is within the ±2 year tolerance, and all other details are accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A quick-clay landslide struck Ask village in Gjerdrum municipality at 04:00 on 30 December 2020, killing 10 people and forcing the evacuation of over 1,000 residents; the curated year 2021 is off by one year but is within the ±2 year tolerance, and all other details are accurate.",
+        "source": "https://en.wikipedia.org/wiki/2020_Gjerdrum_landslide",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2020_Gjerdrum_landslide"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Norway Becomes Europe's Top Gas Supplier After Russia Cuts",
     "verdict": "TRUE",
     "reason": "Following Russia's February 2022 invasion of Ukraine and subsequent gas supply cuts, Norway overtook Russia as Europe's largest natural gas supplier; Norwegian windfall petroleum revenues for 2022–2023 were estimated by the Finance Ministry at approximately USD 111 billion.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following Russia's February 2022 invasion of Ukraine and subsequent gas supply cuts, Norway overtook Russia as Europe's largest natural gas supplier; Norwegian windfall petroleum revenues for 2022–2023 were estimated by the Finance Ministry at approximately USD 111 billion.",
+        "source": "https://theworld.org/stories/2023/09/18/norways-becomes-top-gas-supplier-europe-after-russia-invasion",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://theworld.org/stories/2023/09/18/norways-becomes-top-gas-supplier-europe-after-russia-invasion"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Military Heightened Alert After Nord Stream Sabotage",
     "verdict": "TRUE",
     "reason": "Following the September 2022 Nord Stream pipeline sabotage, Norway raised military and offshore infrastructure alert levels and coordinated armed forces, police, and oil operators after a wave of unidentified drone sightings near North Sea platforms.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following the September 2022 Nord Stream pipeline sabotage, Norway raised military and offshore infrastructure alert levels and coordinated armed forces, police, and oil operators after a wave of unidentified drone sightings near North Sea platforms.",
+        "source": "https://www.pbs.org/newshour/world/unidentified-drones-over-norways-offshore-platforms-fuel-fears-of-russian-threat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.pbs.org/newshour/world/unidentified-drones-over-norways-offshore-platforms-fuel-fears-of-russian-threat"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Pension Fund Suffers Record $164 Billion Loss",
     "verdict": "TRUE",
     "reason": "The Government Pension Fund Global reported a full-year 2022 loss of 1.64 trillion Norwegian kroner (approximately USD 164 billion), a return of -14.1%, driven by rising inflation, interest rates, and geopolitical instability — the largest annual loss in the fund's history.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Government Pension Fund Global reported a full-year 2022 loss of 1.64 trillion Norwegian kroner (approximately USD 164 billion), a return of -14.1%, driven by rising inflation, interest rates, and geopolitical instability — the largest annual loss in the fund's history.",
+        "source": "https://www.cnbc.com/2023/01/31/norways-sovereign-wealth-fund-loses-164-billion-in-2022.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cnbc.com/2023/01/31/norways-sovereign-wealth-fund-loses-164-billion-in-2022.html"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Government Announces Major Arctic Defense Investment",
     "verdict": "TRUE",
     "reason": "In 2023 Norway announced major Arctic and northern defense increases under the Nansen Support Programme for Ukraine (NOK 75 billion over five years) and reversed planned closures of Arctic military bases such as Andøya Air Station, responding to fundamentally changed European security following Russia's invasion of Ukraine.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 2023 Norway announced major Arctic and northern defense increases under the Nansen Support Programme for Ukraine (NOK 75 billion over five years) and reversed planned closures of Arctic military bases such as Andøya Air Station, responding to fundamentally changed European security following Russia's invasion of Ukraine.",
+        "source": "https://nordicdefencereview.com/norways-defence-surge-high-north-tensions/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://nordicdefencereview.com/norways-defence-surge-high-north-tensions/"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Stoltenberg's NATO Tenure Extended Through Transition Period",
     "verdict": "TRUE",
     "reason": "In July 2023, NATO announced a fourth extension of Stoltenberg's mandate through 1 October 2024, making his total tenure a full decade — the second-longest of any NATO Secretary General since Joseph Luns.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In July 2023, NATO announced a fourth extension of Stoltenberg's mandate through 1 October 2024, making his total tenure a full decade — the second-longest of any NATO Secretary General since Joseph Luns.",
+        "source": "https://www.aljazeera.com/news/2023/7/4/nato-extends-secretary-general-jens-stoltenberg-term-by-a-year",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2023/7/4/nato-extends-secretary-general-jens-stoltenberg-term-by-a-year"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Mark Rutte Succeeds Stoltenberg as NATO Secretary General",
     "verdict": "TRUE",
     "reason": "Former Dutch Prime Minister Mark Rutte took office as NATO Secretary General on 1 October 2024, succeeding Jens Stoltenberg after the ceremonial handover of the gavel at NATO Headquarters in Brussels.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Former Dutch Prime Minister Mark Rutte took office as NATO Secretary General on 1 October 2024, succeeding Jens Stoltenberg after the ceremonial handover of the gavel at NATO Headquarters in Brussels.",
+        "source": "https://www.nato.int/cps/en/natohq/news_229142.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nato.int/cps/en/natohq/news_229142.htm"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Pension Fund Surpasses $1.7 Trillion in Assets",
     "verdict": "TRUE",
     "reason": "By early 2025 the Government Pension Fund Global exceeded USD 2.2 trillion in total assets, holding stakes in approximately 9,000 companies across 70 countries and representing roughly 1.5% of global listed equities; the $1.7 trillion figure is a conservative understatement of the fund's actual 2025 value but the direction and supporting details are factually accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "By early 2025 the Government Pension Fund Global exceeded USD 2.2 trillion in total assets, holding stakes in approximately 9,000 companies across 70 countries and representing roughly 1.5% of global listed equities; the $1.7 trillion figure is a conservative understatement of the fund's actual 2025 value but the direction and supporting details are factually accurate.",
+        "source": "https://www.nbim.no/en/about-us/about-the-fund/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nbim.no/en/about-us/about-the-fund/"
   }
 ]

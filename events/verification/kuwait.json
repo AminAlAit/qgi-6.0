@@ -4,6 +4,24 @@
     "title": "Oil Revenue Surge Begins Transforming Economy",
     "verdict": "TRUE",
     "reason": "Kuwait's oil revenues surged dramatically in the early 1950s after Abdullah al-Salim al-Sabah took power in February 1950 following Sheikh Ahmad al-Jabir's death. The oil windfall directly funded rapid public infrastructure expansion, transforming Kuwait from a pearl-diving economy into one of the world's wealthiest states.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait's oil revenues surged dramatically in the early 1950s after Abdullah al-Salim al-Sabah took power in February 1950 following Sheikh Ahmad al-Jabir's death. The oil windfall directly funded rapid public infrastructure expansion, transforming Kuwait from a pearl-diving economy into one of the world's wealthiest states.",
+        "source": "https://books.google.com/books/about/Kuwait_1950_1965.html?id=sUavAAAAIAAJ",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://books.google.com/books/about/Kuwait_1950_1965.html?id=sUavAAAAIAAJ"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Sheikh Ahmad al-Jabir al-Sabah Dies; New Era Begins",
     "verdict": "TRUE",
     "reason": "Sheikh Ahmad al-Jabir al-Sabah, who had ruled since 1921 and presided over the discovery of oil, died and was succeeded by Sheikh Abdullah al-Salim al-Sabah on 25 February 1950. Abdullah al-Salim is widely remembered as the 'father of modern Kuwait' and launched an accelerated modernization program.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sheikh Ahmad al-Jabir al-Sabah, who had ruled since 1921 and presided over the discovery of oil, died and was succeeded by Sheikh Abdullah al-Salim al-Sabah on 25 February 1950. Abdullah al-Salim is widely remembered as the 'father of modern Kuwait' and launched an accelerated modernization program.",
+        "source": "https://www.encyclopedia.com/history/encyclopedias-almanacs-transcripts-and-maps/shaykh-abdullah-al-salim-al-sabah",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.encyclopedia.com/history/encyclopedias-almanacs-transcripts-and-maps/shaykh-abdullah-al-salim-al-sabah"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Free Education and Public Health Systems Established",
     "verdict": "TRUE",
     "reason": "Kuwait established comprehensive free public education and healthcare funded by oil revenues in the early 1950s, making it one of the earliest welfare-state initiatives in the Arab world. Education was free and included meals, books, uniforms, and transport; medical care was free for citizens.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait established comprehensive free public education and healthcare funded by oil revenues in the early 1950s, making it one of the earliest welfare-state initiatives in the Arab world. Education was free and included meals, books, uniforms, and transport; medical care was free for citizens.",
+        "source": "https://www.britannica.com/place/Kuwait/Health-and-welfare",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/place/Kuwait/Health-and-welfare"
   },
   {
@@ -25,6 +79,24 @@
     "title": "First Desalination Plant Opens",
     "verdict": "TRUE",
     "reason": "Kuwait commissioned its first large-scale desalination plant in 1953 (with some sources citing 1951-1953 for the Shuwaikh facility), with a capacity of one million gallons of fresh water per day. Kuwait is widely recognised as one of the first countries to install a modern-scale potable-water desalination plant.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait commissioned its first large-scale desalination plant in 1953 (with some sources citing 1951-1953 for the Shuwaikh facility), with a capacity of one million gallons of fresh water per day. Kuwait is widely recognised as one of the first countries to install a modern-scale potable-water desalination plant.",
+        "source": "https://kuwaittimes.com/article/30803/lifestyle/how-kuwait-quenched-its-thirst/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://kuwaittimes.com/article/30803/lifestyle/how-kuwait-quenched-its-thirst/"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Suez Crisis Accelerates Kuwait's Push for Independence",
     "verdict": "TRUE",
     "reason": "During the 1956 Suez Crisis, Sheikh Abdullah al-Salem maintained alliances with Arab nationalists while managing Kuwait's British protectorate status, sharpening Kuwait's desire for independence. The crisis emboldened Arab nationalists across British-controlled territories throughout the Middle East.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "During the 1956 Suez Crisis, Sheikh Abdullah al-Salem maintained alliances with Arab nationalists while managing Kuwait's British protectorate status, sharpening Kuwait's desire for independence. The crisis emboldened Arab nationalists across British-controlled territories throughout the Middle East.",
+        "source": "https://www.semanticscholar.org/paper/Kuwait,-1950-1965:-Britain,-the-al-Sabah,-and-Oil-Smith/eee9c1621b60d6889bebff56865dd86e51ef6e86",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.semanticscholar.org/paper/Kuwait,-1950-1965:-Britain,-the-al-Sabah,-and-Oil-Smith/eee9c1621b60d6889bebff56865dd86e51ef6e86"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Iraqi Revolution Raises Territorial Threat",
     "verdict": "TRUE",
     "reason": "The July 14, 1958 revolution in Iraq, led by General Abd al-Karim Qasim, overthrew the Hashemite monarchy. Qasim subsequently revived Iraqi territorial claims over Kuwait, establishing a pattern of Iraqi-Kuwaiti tension. When Kuwait became independent in 1961, Qasim immediately claimed Kuwait as an integral part of Iraq.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The July 14, 1958 revolution in Iraq, led by General Abd al-Karim Qasim, overthrew the Hashemite monarchy. Qasim subsequently revived Iraqi territorial claims over Kuwait, establishing a pattern of Iraqi-Kuwaiti tension. When Kuwait became independent in 1961, Qasim immediately claimed Kuwait as an integral part of Iraq.",
+        "source": "https://gulfif.org/60-years-after-iraqs-1958-july-14-revolution/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://gulfif.org/60-years-after-iraqs-1958-july-14-revolution/"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Kuwait Dinar Issued; Financial Sovereignty Begins",
     "verdict": "FALSE",
     "reason": "In 1959 the Indian rupee was replaced by the Gulf rupee — not the Kuwaiti dinar — in Kuwait and other British Gulf protectorates. The Kuwaiti dinar was only introduced in 1961 following Kuwait's independence, replacing the Gulf rupee. The curated title misidentifies the 1959 currency as the Kuwaiti dinar.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "In 1959 the Indian rupee was replaced by the Gulf rupee — not the Kuwaiti dinar — in Kuwait and other British Gulf protectorates. The Kuwaiti dinar was only introduced in 1961 following Kuwait's independence, replacing the Gulf rupee. The curated title misidentifies the 1959 currency as the Kuwaiti dinar.",
+        "source": "https://en.wikipedia.org/wiki/Gulf_rupee",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Gulf_rupee"
   },
   {
@@ -53,6 +179,24 @@
     "title": "OPEC Founded with Kuwait as Member",
     "verdict": "TRUE",
     "reason": "OPEC was founded on 14 September 1960 in Baghdad by five founding members: Iran, Iraq, Kuwait, Saudi Arabia, and Venezuela. The organisation aimed to coordinate oil production and counter Western oil company dominance in global energy markets.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "OPEC was founded on 14 September 1960 in Baghdad by five founding members: Iran, Iraq, Kuwait, Saudi Arabia, and Venezuela. The organisation aimed to coordinate oil production and counter Western oil company dominance in global energy markets.",
+        "source": "https://www.opec.org/opec_web/en/about_us/24.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.opec.org/opec_web/en/about_us/24.htm"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Independence from Britain Declared",
     "verdict": "TRUE",
     "reason": "Kuwait formally achieved independence from Britain on 19 June 1961, when Sheikh Abdullah al-Salim al-Sabah signed a treaty cancelling the 1899 protectorate agreement. Kuwait immediately applied for Arab League membership and the UN.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait formally achieved independence from Britain on 19 June 1961, when Sheikh Abdullah al-Salim al-Sabah signed a treaty cancelling the 1899 protectorate agreement. Kuwait immediately applied for Arab League membership and the UN.",
+        "source": "https://fanack.com/kuwait/history-of-kuwait/independence/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://fanack.com/kuwait/history-of-kuwait/independence/"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Iraqi Territorial Claim Triggers British Military Response",
     "verdict": "TRUE",
     "reason": "Days after Kuwait's independence, Iraqi President Qasim claimed Kuwait as 'an indivisible part of Iraq' on 25 June 1961. Britain deployed over 7,000 troops in response to Kuwait's request for protection; Arab League forces subsequently replaced the British, and Iraq ultimately did not attack.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Days after Kuwait's independence, Iraqi President Qasim claimed Kuwait as 'an indivisible part of Iraq' on 25 June 1961. Britain deployed over 7,000 troops in response to Kuwait's request for protection; Arab League forces subsequently replaced the British, and Iraq ultimately did not attack.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Vantage",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Vantage"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Kuwait Joins Arab League",
     "verdict": "TRUE",
     "reason": "Kuwait was admitted to the Arab League on 20 July 1961 despite Iraqi opposition and withdrawal from League deliberations. The Saudi-proposed resolution accepted Kuwait's membership and required Kuwait to seek withdrawal of British forces, with Arab states providing a replacement security contingent.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait was admitted to the Arab League on 20 July 1961 despite Iraqi opposition and withdrawal from League deliberations. The Saudi-proposed resolution accepted Kuwait's membership and required Kuwait to seek withdrawal of British forces, with Arab states providing a replacement security contingent.",
+        "source": "https://link.springer.com/chapter/10.1007/978-3-032-05257-5_8",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://link.springer.com/chapter/10.1007/978-3-032-05257-5_8"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Kuwait Constitution Promulgated",
     "verdict": "TRUE",
     "reason": "Kuwait's constitution was signed into law on 11 November 1962 by Emir Sheikh Abdullah al-Salim al-Sabah, establishing a hereditary constitutional monarchy with an elected National Assembly. It is one of the most liberal constitutions among Gulf Arab states.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait's constitution was signed into law on 11 November 1962 by Emir Sheikh Abdullah al-Salim al-Sabah, establishing a hereditary constitutional monarchy with an elected National Assembly. It is one of the most liberal constitutions among Gulf Arab states.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_Kuwait",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Constitution_of_Kuwait"
   },
   {
@@ -88,6 +304,24 @@
     "title": "First National Assembly Elections Held",
     "verdict": "TRUE",
     "reason": "Kuwait held its first parliamentary elections on 23 January 1963 (following constitution promulgation in November 1962) in which 205 candidates contested 50 seats. Elections in 1962 refer to the constituent assembly elections in December 1961 that drafted the constitution; the first National Assembly vote was January 1963 — within the ±2 year tolerance for the 1962 curated year.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait held its first parliamentary elections on 23 January 1963 (following constitution promulgation in November 1962) in which 205 candidates contested 50 seats. Elections in 1962 refer to the constituent assembly elections in December 1961 that drafted the constitution; the first National Assembly vote was January 1963 — within the ±2 year tolerance for the 1962 curated year.",
+        "source": "https://en.wikipedia.org/wiki/Kuwaiti_parliamentary_election,_1963",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kuwaiti_parliamentary_election,_1963"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Kuwait Fund for Arab Economic Development Established",
     "verdict": "FALSE",
     "reason": "The Kuwait Fund for Arab Economic Development was founded in December 1961, the same year as Kuwait's independence — not 1963. The curated year is off by two years, and multiple authoritative sources including the Fund's own records confirm the 1961 founding date.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Kuwait Fund for Arab Economic Development was founded in December 1961, the same year as Kuwait's independence — not 1963. The curated year is off by two years, and multiple authoritative sources including the Fund's own records confirm the 1961 founding date.",
+        "source": "https://en.wikipedia.org/wiki/Kuwait_Fund_for_Arab_Economic_Development",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kuwait_Fund_for_Arab_Economic_Development"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Kuwait Investment Office Established in London",
     "verdict": "TRUE",
     "reason": "The Kuwait Investment Office (KIO) was established in London in 1965 (some sources say 1966) when Kuwait adopted a policy of asset diversification, replacing the Kuwait Investment Board. The KIO actively managed Kuwait's sovereign assets from London and was the formal precursor to the Kuwait Investment Authority.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Kuwait Investment Office (KIO) was established in London in 1965 (some sources say 1966) when Kuwait adopted a policy of asset diversification, replacing the Kuwait Investment Board. The KIO actively managed Kuwait's sovereign assets from London and was the formal precursor to the Kuwait Investment Authority.",
+        "source": "https://en.wikipedia.org/wiki/Kuwait_Investment_Authority",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kuwait_Investment_Authority"
   },
   {
@@ -109,6 +379,24 @@
     "title": "University of Kuwait Founded",
     "verdict": "TRUE",
     "reason": "Kuwait University was established in October 1966 under Act No. 29/1966 and officially inaugurated on 27 November 1966 with four colleges. It is Kuwait's first public institution of higher education, growing from 418 students at founding to over 40,000.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait University was established in October 1966 under Act No. 29/1966 and officially inaugurated on 27 November 1966 with four colleges. It is Kuwait's first public institution of higher education, growing from 418 students at founding to over 40,000.",
+        "source": "https://en.wikipedia.org/wiki/Kuwait_University",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kuwait_University"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Kuwait Begins Nationalization of Kuwait Oil Company",
     "verdict": "TRUE",
     "reason": "In October 1972, Kuwait reached agreement for the government to acquire a 25% stake in Kuwait Oil Company from its British Petroleum and Gulf Oil owners, beginning a gradual nationalization process. This followed the General Participation Agreement framework championed by Saudi Arabia's oil minister.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In October 1972, Kuwait reached agreement for the government to acquire a 25% stake in Kuwait Oil Company from its British Petroleum and Gulf Oil owners, beginning a gradual nationalization process. This followed the General Participation Agreement framework championed by Saudi Arabia's oil minister.",
+        "source": "https://www.kockw.com/sites/EN/Pages/Profile/whoAreWe/KOC-History.aspx",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.kockw.com/sites/EN/Pages/Profile/whoAreWe/KOC-History.aspx"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Arab Oil Embargo Following Yom Kippur War",
     "verdict": "TRUE",
     "reason": "Following the October 1973 Yom Kippur War, Arab OPEC members — including Kuwait — meeting in Kuwait City agreed to an oil embargo against the United States and other countries supporting Israel. Oil prices quadrupled from roughly $3 to nearly $12 per barrel, triggering a global energy crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following the October 1973 Yom Kippur War, Arab OPEC members — including Kuwait — meeting in Kuwait City agreed to an oil embargo against the United States and other countries supporting Israel. Oil prices quadrupled from roughly $3 to nearly $12 per barrel, triggering a global energy crisis.",
+        "source": "https://en.wikipedia.org/wiki/1973_oil_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1973_oil_crisis"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Kuwait Oil Company Fully Nationalized",
     "verdict": "TRUE",
     "reason": "Kuwait completed full nationalization of the Kuwait Oil Company in 1975, buying out the remaining 40% stake held by British Petroleum and Gulf Oil. The government had progressively increased its share from 25% in 1972 to 60% in 1974 before completing 100% state ownership in 1975.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait completed full nationalization of the Kuwait Oil Company in 1975, buying out the remaining 40% stake held by British Petroleum and Gulf Oil. The government had progressively increased its share from 25% in 1972 to 60% in 1974 before completing 100% state ownership in 1975.",
+        "source": "https://en.wikipedia.org/wiki/Kuwait_Oil_Company",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kuwait_Oil_Company"
   },
   {
@@ -137,6 +479,24 @@
     "title": "National Assembly Suspended by Emir",
     "verdict": "TRUE",
     "reason": "The National Assembly was suspended in August 1976 (not 1975) by Emir Sabah al-Salim al-Sabah, citing political tension between the government and parliament. The curated year of 1975 is within ±2 years of the actual 1976 suspension; the event itself is real and well documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The National Assembly was suspended in August 1976 (not 1975) by Emir Sabah al-Salim al-Sabah, citing political tension between the government and parliament. The curated year of 1975 is within ±2 years of the actual 1976 suspension; the event itself is real and well documented.",
+        "source": "https://en.wikipedia.org/wiki/Sabah_Al-Salim_Al-Sabah",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sabah_Al-Salim_Al-Sabah"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Iran-Iraq War Begins: Kuwait Backs Iraq Financially",
     "verdict": "TRUE",
     "reason": "When Iraq invaded Iran in September 1980, Kuwait provided substantial financial assistance — estimated at $8–14 billion in loans and grants — to Saddam Hussein's war effort, fearing Iranian revolutionary influence. This debt later became a major trigger for Iraq's 1990 invasion of Kuwait.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "When Iraq invaded Iran in September 1980, Kuwait provided substantial financial assistance — estimated at $8–14 billion in loans and grants — to Saddam Hussein's war effort, fearing Iranian revolutionary influence. This debt later became a major trigger for Iraq's 1990 invasion of Kuwait.",
+        "source": "https://en.wikipedia.org/wiki/International_aid_to_combatants_in_the_Iran%E2%80%93Iraq_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/International_aid_to_combatants_in_the_Iran%E2%80%93Iraq_War"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Kuwait General Reserve Fund Formalized",
     "verdict": "TRUE",
     "reason": "Kuwait's General Reserve Fund has operated as the government's primary fiscal vehicle since the 1950s. In 1980 the Kuwait Petroleum Corporation was also formally constituted (January 1980), and the GRF continued to serve as the primary repository for oil revenues. The broader claim of formalised national wealth management around 1980 is substantively supported.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait's General Reserve Fund has operated as the government's primary fiscal vehicle since the 1950s. In 1980 the Kuwait Petroleum Corporation was also formally constituted (January 1980), and the GRF continued to serve as the primary repository for oil revenues. The broader claim of formalised national wealth management around 1980 is substantively supported.",
+        "source": "https://www.kia.gov.kw/about-kia/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.kia.gov.kw/about-kia/"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Gulf Cooperation Council Founded",
     "verdict": "TRUE",
     "reason": "The Gulf Cooperation Council was formally established on 25 May 1981 in Riyadh, with Kuwait as a founding member alongside Saudi Arabia, Bahrain, UAE, Qatar, and Oman. The GCC was created in response to the Iranian Revolution and the Iran-Iraq War, aiming to promote security and economic integration among Gulf monarchies.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Gulf Cooperation Council was formally established on 25 May 1981 in Riyadh, with Kuwait as a founding member alongside Saudi Arabia, Bahrain, UAE, Qatar, and Oman. The GCC was created in response to the Iranian Revolution and the Iran-Iraq War, aiming to promote security and economic integration among Gulf monarchies.",
+        "source": "https://en.wikipedia.org/wiki/Gulf_Cooperation_Council",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Gulf_Cooperation_Council"
   },
   {
@@ -165,6 +579,24 @@
     "title": "National Assembly Restored",
     "verdict": "TRUE",
     "reason": "The National Assembly was restored in 1981 after being suspended since August 1976. Emir Jaber al-Ahmad allowed the assembly to reconvene following sustained domestic pressure, and new elections took place with high voter participation and robust parliamentary debate thereafter.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The National Assembly was restored in 1981 after being suspended since August 1976. Emir Jaber al-Ahmad allowed the assembly to reconvene following sustained domestic pressure, and new elections took place with high voter participation and robust parliamentary debate thereafter.",
+        "source": "https://constitutionnet.org/country/kuwait",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://constitutionnet.org/country/kuwait"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Souk Al-Manakh Stock Market Crash",
     "verdict": "TRUE",
     "reason": "Kuwait's unofficial Souk Al-Manakh stock market collapsed in August 1982 when a post-dated check from a Passport Office employee bounced, triggering a cascade. The Ministry of Finance shut the market in September 1982 with outstanding worthless checks valued at roughly $94 billion, requiring a massive government bailout.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait's unofficial Souk Al-Manakh stock market collapsed in August 1982 when a post-dated check from a Passport Office employee bounced, triggering a cascade. The Ministry of Finance shut the market in September 1982 with outstanding worthless checks valued at roughly $94 billion, requiring a massive government bailout.",
+        "source": "https://en.wikipedia.org/wiki/Souk_Al-Manakh_stock_market_crash",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Souk_Al-Manakh_stock_market_crash"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Bombing of French and US Embassies in Kuwait City",
     "verdict": "TRUE",
     "reason": "On 12 December 1983, seven coordinated truck bomb attacks struck targets in Kuwait City including the US and French embassies, killing six and wounding nearly ninety. The attacks were carried out by Hezbollah-linked Iraqi Shia members of Dawa; seventeen perpetrators were convicted and imprisoned, becoming known as the 'Kuwait 17'.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 12 December 1983, seven coordinated truck bomb attacks struck targets in Kuwait City including the US and French embassies, killing six and wounding nearly ninety. The attacks were carried out by Hezbollah-linked Iraqi Shia members of Dawa; seventeen perpetrators were convicted and imprisoned, becoming known as the 'Kuwait 17'.",
+        "source": "https://en.wikipedia.org/wiki/1983%E2%80%931988_Kuwait_terror_attacks",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1983%E2%80%931988_Kuwait_terror_attacks"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Assassination Attempt on Emir Sheikh Jaber",
     "verdict": "TRUE",
     "reason": "On 25 May 1985, a car bomb was detonated as Emir Sheikh Jaber's motorcade traveled to Seif Palace in Kuwait City. The Emir survived with facial cuts and bruises; four others were killed. Islamic Jihad claimed responsibility, and the attack was linked to pro-Iranian militants protesting Kuwait's support for Iraq.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 25 May 1985, a car bomb was detonated as Emir Sheikh Jaber's motorcade traveled to Seif Palace in Kuwait City. The Emir survived with facial cuts and bruises; four others were killed. Islamic Jihad claimed responsibility, and the attack was linked to pro-Iranian militants protesting Kuwait's support for Iraq.",
+        "source": "https://www.upi.com/Archives/1985/05/25/Kuwaiti-leader-survives-assassination-attempt/7618485841600/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.upi.com/Archives/1985/05/25/Kuwaiti-leader-survives-assassination-attempt/7618485841600/"
   },
   {
@@ -193,6 +679,24 @@
     "title": "National Assembly Suspended Again",
     "verdict": "TRUE",
     "reason": "Emir Sheikh Jaber unconstitutionally dissolved the National Assembly on 3 July 1986 (the curated year of 1985 is within ±2 years of the actual July 1986 suspension). The dissolution followed a failed assassination attempt on the Emir and sustained parliamentary criticism over the Souk al-Manakh crash fallout and government policy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Emir Sheikh Jaber unconstitutionally dissolved the National Assembly on 3 July 1986 (the curated year of 1985 is within ±2 years of the actual July 1986 suspension). The dissolution followed a failed assassination attempt on the Emir and sustained parliamentary criticism over the Souk al-Manakh crash fallout and government policy.",
+        "source": "https://arabcenterdc.org/resource/the-supremacy-of-executive-power-in-kuwait/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://arabcenterdc.org/resource/the-supremacy-of-executive-power-in-kuwait/"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Oil Price Collapse Devastates Budget",
     "verdict": "TRUE",
     "reason": "Global oil prices fell from $27 to below $10 per barrel in 1986, with OPEC crude averaging $9.85 per barrel by July — a 58% drop from December 1985. Kuwait's oil revenues declined sharply, forcing heavy draws on sovereign reserves and exposing the fiscal vulnerability of a rentier economy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Global oil prices fell from $27 to below $10 per barrel in 1986, with OPEC crude averaging $9.85 per barrel by July — a 58% drop from December 1985. Kuwait's oil revenues declined sharply, forcing heavy draws on sovereign reserves and exposing the fiscal vulnerability of a rentier economy.",
+        "source": "https://www.brookings.edu/wp-content/uploads/1986/06/1986b_bpea_gately_adelman_griffin.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.brookings.edu/wp-content/uploads/1986/06/1986b_bpea_gately_adelman_griffin.pdf"
   },
   {
@@ -207,6 +729,24 @@
     "title": "US Navy Escorts Reflagged Kuwaiti Tankers",
     "verdict": "TRUE",
     "reason": "After Kuwait requested US protection in December 1986, the Reagan administration agreed in March 1987 to reflag Kuwaiti tankers. Operation Earnest Will began on 23 July 1987, becoming the largest US naval convoy operation since World War II, escorting reflagged Kuwaiti tankers from Iranian attack.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After Kuwait requested US protection in December 1986, the Reagan administration agreed in March 1987 to reflag Kuwaiti tankers. Operation Earnest Will began on 23 July 1987, becoming the largest US naval convoy operation since World War II, escorting reflagged Kuwaiti tankers from Iranian attack.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Earnest_Will",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Earnest_Will"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Kuwait Investment Authority Formally Established",
     "verdict": "FALSE",
     "reason": "The Kuwait Investment Authority was formally established in 1982 by Law No. 47 as an autonomous governmental body, not in 1988. The KIA's predecessor, the Kuwait Investment Office, was established in 1965. No significant reconstitution of the KIA occurred in 1988; the curated year is off by six years.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Kuwait Investment Authority was formally established in 1982 by Law No. 47 as an autonomous governmental body, not in 1988. The KIA's predecessor, the Kuwait Investment Office, was established in 1965. No significant reconstitution of the KIA occurred in 1988; the curated year is off by six years.",
+        "source": "https://en.wikipedia.org/wiki/Kuwait_Investment_Authority",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kuwait_Investment_Authority"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Iraqi-Kuwaiti Tensions Escalate Over Debt and Oil",
     "verdict": "TRUE",
     "reason": "In 1989, relations between Iraq and Kuwait deteriorated sharply as Saddam Hussein demanded Kuwait forgive its Gulf War debt (estimated at $14 billion) and accused Kuwait of over-producing oil and stealing from the shared Rumaila oilfield. Kuwait's production exceeded its OPEC quota by 700,000 barrels per day, intensifying the dispute.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 1989, relations between Iraq and Kuwait deteriorated sharply as Saddam Hussein demanded Kuwait forgive its Gulf War debt (estimated at $14 billion) and accused Kuwait of over-producing oil and stealing from the shared Rumaila oilfield. Kuwait's production exceeded its OPEC quota by 700,000 barrels per day, intensifying the dispute.",
+        "source": "https://adst.org/2016/09/sparking-iraqs-invasion-kuwait-loans-land-oil-access/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://adst.org/2016/09/sparking-iraqs-invasion-kuwait-loans-land-oil-access/"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Iraqi Invasion and Occupation of Kuwait",
     "verdict": "TRUE",
     "reason": "On 2 August 1990, Iraqi forces invaded and overran Kuwait in hours. Emir Sheikh Jaber fled to Saudi Arabia. Iraq declared Kuwait its 19th province on 28 August 1990, triggering the largest international crisis since the Cold War and the assembly of a 35-nation coalition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 2 August 1990, Iraqi forces invaded and overran Kuwait in hours. Emir Sheikh Jaber fled to Saudi Arabia. Iraq declared Kuwait its 19th province on 28 August 1990, triggering the largest international crisis since the Cold War and the assembly of a 35-nation coalition.",
+        "source": "https://en.wikipedia.org/wiki/Iraqi_invasion_of_Kuwait",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Iraqi_invasion_of_Kuwait"
   },
   {
@@ -235,6 +829,24 @@
     "title": "UN Security Council Authorizes Force Against Iraq",
     "verdict": "TRUE",
     "reason": "The UN Security Council passed Resolution 678 on 29 November 1990, authorising member states to use 'all necessary means' to expel Iraq from Kuwait if it did not comply by 15 January 1991. The resolution was adopted 12-2 (Cuba and Yemen opposing, China abstaining), providing the legal basis for Operation Desert Storm.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The UN Security Council passed Resolution 678 on 29 November 1990, authorising member states to use 'all necessary means' to expel Iraq from Kuwait if it did not comply by 15 January 1991. The resolution was adopted 12-2 (Cuba and Yemen opposing, China abstaining), providing the legal basis for Operation Desert Storm.",
+        "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_678",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_678"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Kuwaiti Resistance Movement Formed Under Occupation",
     "verdict": "TRUE",
     "reason": "Kuwaiti citizens organised an underground resistance movement from the first day of the August 1990 occupation, gathering intelligence, distributing pamphlets, smuggling satellite phones to communicate with the government-in-exile, and conducting limited sabotage. Iraqi crackdowns resulted in executions and torture of resistance members.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwaiti citizens organised an underground resistance movement from the first day of the August 1990 occupation, gathering intelligence, distributing pamphlets, smuggling satellite phones to communicate with the government-in-exile, and conducting limited sabotage. Iraqi crackdowns resulted in executions and torture of resistance members.",
+        "source": "https://www.meforum.org/middle-east-quarterly/the-kuwaiti-resistance",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.meforum.org/middle-east-quarterly/the-kuwaiti-resistance"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Iraqi Forces Commit Widespread Atrocities During Occupation",
     "verdict": "TRUE",
     "reason": "During the seven-month occupation, Iraqi forces killed approximately 1,000 Kuwaiti civilians, detained over 10,000 residents (many deported to Iraq), and systematically looted the country's assets including bank deposits, hospital equipment, and museum treasures. Human Rights Watch and Amnesty International documented extensive abuses.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "During the seven-month occupation, Iraqi forces killed approximately 1,000 Kuwaiti civilians, detained over 10,000 residents (many deported to Iraq), and systematically looted the country's assets including bank deposits, hospital equipment, and museum treasures. Human Rights Watch and Amnesty International documented extensive abuses.",
+        "source": "https://www.hrw.org/reports/1992/WR92/MEW1-02.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/reports/1992/WR92/MEW1-02.htm"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Gulf War: Coalition Forces Liberate Kuwait",
     "verdict": "TRUE",
     "reason": "Operation Desert Storm began with an air campaign on 17 January 1991, followed by a ground offensive on 24 February. Coalition forces decisively defeated Iraq in 100 hours, liberating Kuwait on 26 February 1991. Emir Sheikh Jaber returned on 14 March 1991.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Desert Storm began with an air campaign on 17 January 1991, followed by a ground offensive on 24 February. Coalition forces decisively defeated Iraq in 100 hours, liberating Kuwait on 26 February 1991. Emir Sheikh Jaber returned on 14 March 1991.",
+        "source": "https://en.wikipedia.org/wiki/Gulf_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Gulf_War"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Iraqi Forces Ignite Over 700 Oil Wells",
     "verdict": "TRUE",
     "reason": "Retreating Iraqi forces deliberately set fire to between 605 and 732 Kuwaiti oil wells beginning in January-February 1991. The fires burned for approximately 10 months; the last well was capped on 6 November 1991. The total estimated oil burned was approximately one billion barrels, constituting one of history's worst environmental disasters.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Retreating Iraqi forces deliberately set fire to between 605 and 732 Kuwaiti oil wells beginning in January-February 1991. The fires burned for approximately 10 months; the last well was capped on 6 November 1991. The total estimated oil burned was approximately one billion barrels, constituting one of history's worst environmental disasters.",
+        "source": "https://en.wikipedia.org/wiki/Kuwaiti_oil_fires",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kuwaiti_oil_fires"
   },
   {
@@ -270,6 +954,24 @@
     "title": "National Assembly Elections Restored Post-Liberation",
     "verdict": "TRUE",
     "reason": "Kuwait held National Assembly elections on 20 October 1992, fulfilling a promise made during the exile period. High turnout and strong showings by opposition groups — including Islamist and liberal candidates — marked the beginning of a more assertive post-liberation parliamentary culture.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait held National Assembly elections on 20 October 1992, fulfilling a promise made during the exile period. High turnout and strong showings by opposition groups — including Islamist and liberal candidates — marked the beginning of a more assertive post-liberation parliamentary culture.",
+        "source": "https://en.wikipedia.org/wiki/1992_Kuwaiti_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1992_Kuwaiti_general_election"
   },
   {
@@ -277,6 +979,24 @@
     "title": "US-Kuwait Defense Cooperation Agreement Signed",
     "verdict": "TRUE",
     "reason": "A formal bilateral Defense Cooperation Agreement between Kuwait and the United States was signed in September 1991 (within ±2 years of the curated 1993 date), providing for permanent US military access to Kuwaiti facilities, pre-positioning of equipment, and joint exercises — transforming the relationship from crisis-driven to standing strategic partnership.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A formal bilateral Defense Cooperation Agreement between Kuwait and the United States was signed in September 1991 (within ±2 years of the curated 1993 date), providing for permanent US military access to Kuwaiti facilities, pre-positioning of equipment, and joint exercises — transforming the relationship from crisis-driven to standing strategic partnership.",
+        "source": "https://en.wikipedia.org/wiki/Kuwait%E2%80%93United_States_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kuwait%E2%80%93United_States_relations"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Palestinian Workers Expelled Following Gulf War",
     "verdict": "TRUE",
     "reason": "Following the PLO's support for Iraq, Kuwait expelled the vast majority of its Palestinian population of roughly 400,000 during March-September 1991 (within ±2 years of the curated 1993 date) through bureaucratic dismissals, school expulsions, and economic pressure. The community was reduced from around 400,000 to fewer than 20,000.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following the PLO's support for Iraq, Kuwait expelled the vast majority of its Palestinian population of roughly 400,000 during March-September 1991 (within ±2 years of the curated 1993 date) through bureaucratic dismissals, school expulsions, and economic pressure. The community was reduced from around 400,000 to fewer than 20,000.",
+        "source": "https://en.wikipedia.org/wiki/Expulsion_of_Palestinians_from_Kuwait_(1990%E2%80%9391)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Expulsion_of_Palestinians_from_Kuwait_(1990%E2%80%9391)"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Iraq Amasses Troops on Kuwaiti Border Again",
     "verdict": "TRUE",
     "reason": "In October 1994, two Iraqi Republican Guard divisions moved toward the Kuwaiti border, triggering Operation Vigilant Warrior (8 October – 15 December 1994). The US rapidly reinforced approximately 13,000 troops already in the Gulf with additional assets, and Iraq backed down in late October.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In October 1994, two Iraqi Republican Guard divisions moved toward the Kuwaiti border, triggering Operation Vigilant Warrior (8 October – 15 December 1994). The US rapidly reinforced approximately 13,000 troops already in the Gulf with additional assets, and Iraq backed down in late October.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Vigilant_Warrior",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Vigilant_Warrior"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Oil Sector Rehabilitation Completed",
     "verdict": "TRUE",
     "reason": "Kuwait completed rehabilitation of its oil sector damaged during the Gulf War by the mid-1990s, restoring production to pre-invasion levels of approximately 1.9–2 million barrels per day. Bechtel and international contractors mobilised over 16,000 workers; the full restoration cost between $8–10 billion.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait completed rehabilitation of its oil sector damaged during the Gulf War by the mid-1990s, restoring production to pre-invasion levels of approximately 1.9–2 million barrels per day. Bechtel and international contractors mobilised over 16,000 workers; the full restoration cost between $8–10 billion.",
+        "source": "https://www.bechtel.com/projects/kuwait-oil-field-restoration/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.bechtel.com/projects/kuwait-oil-field-restoration/"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Emir Decree Grants Women Vote; National Assembly Rejects It",
     "verdict": "TRUE",
     "reason": "Emir Sheikh Jaber issued a decree in May 1999 granting Kuwaiti women the right to vote and run for office. The National Assembly rejected the decree on 23 November 1999 by a vote of 41 to 21, blocking women's suffrage for another six years until the 2005 law.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Emir Sheikh Jaber issued a decree in May 1999 granting Kuwaiti women the right to vote and run for office. The National Assembly rejected the decree on 23 November 1999 by a vote of 41 to 21, blocking women's suffrage for another six years until the 2005 law.",
+        "source": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_Kuwait",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_Kuwait"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Kuwait Used as Primary Base for Iraq War",
     "verdict": "TRUE",
     "reason": "Kuwait served as the primary staging ground for the 2003 US-led invasion of Iraq, with approximately 148,000 American troops plus British and other coalition forces massing before crossing into Iraq. Kuwaiti cooperation reflected strategic interest in permanently removing Saddam Hussein's regime.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait served as the primary staging ground for the 2003 US-led invasion of Iraq, with approximately 148,000 American troops plus British and other coalition forces massing before crossing into Iraq. Kuwaiti cooperation reflected strategic interest in permanently removing Saddam Hussein's regime.",
+        "source": "https://en.wikipedia.org/wiki/2003_invasion_of_Iraq",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2003_invasion_of_Iraq"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Women Granted Full Political Rights",
     "verdict": "TRUE",
     "reason": "The Kuwaiti National Assembly voted on 17 May 2005 to grant women full political rights — 37 votes for, 21 against — effective for subsequent elections. Kuwait was among the last GCC states to grant women's suffrage, following sustained advocacy and international pressure since at least the 1990s.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Kuwaiti National Assembly voted on 17 May 2005 to grant women full political rights — 37 votes for, 21 against — effective for subsequent elections. Kuwait was among the last GCC states to grant women's suffrage, following sustained advocacy and international pressure since at least the 1990s.",
+        "source": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_Kuwait",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_Kuwait"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Emir Sheikh Jaber Dies; Sheikh Sabah Becomes Emir",
     "verdict": "TRUE",
     "reason": "Emir Sheikh Jaber al-Ahmad died on 15 January 2006 (within ±2 years of the curated 2005 date). Crown Prince Sheikh Saad was incapacitated and unable to take the constitutional oath, so the National Assembly exercised its constitutional right and voted to install Sheikh Sabah al-Ahmad al-Jaber al-Sabah as Emir on 29 January 2006.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Emir Sheikh Jaber al-Ahmad died on 15 January 2006 (within ±2 years of the curated 2005 date). Crown Prince Sheikh Saad was incapacitated and unable to take the constitutional oath, so the National Assembly exercised its constitutional right and voted to install Sheikh Sabah al-Ahmad al-Jaber al-Sabah as Emir on 29 January 2006.",
+        "source": "https://en.wikipedia.org/wiki/Sabah_Al-Ahmad_Al-Jaber_Al-Sabah",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sabah_Al-Ahmad_Al-Jaber_Al-Sabah"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "First Women Vote in Kuwaiti Parliamentary Elections",
     "verdict": "TRUE",
     "reason": "On 29 June 2006, Kuwaiti women voted for the first time in parliamentary elections following the 2005 suffrage law. Women comprised 57% of the 340,000-strong electorate; 28 women candidates ran for the 50 seats. No women won seats in this first election despite high participation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 29 June 2006, Kuwaiti women voted for the first time in parliamentary elections following the 2005 suffrage law. Women comprised 57% of the 340,000-strong electorate; 28 women candidates ran for the 50 seats. No women won seats in this first election despite high participation.",
+        "source": "https://en.wikipedia.org/wiki/Kuwaiti_general_election,_2006",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kuwaiti_general_election,_2006"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "First Women Elected to National Assembly",
     "verdict": "TRUE",
     "reason": "In the 16 May 2009 parliamentary elections, four women were elected to the National Assembly for the first time in Kuwait's history: Aseel al-Awadhi, Rola Dashti, Massouma al-Mubarak, and Salwa al-Jassar. The result was celebrated as a breakthrough for women's political participation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In the 16 May 2009 parliamentary elections, four women were elected to the National Assembly for the first time in Kuwait's history: Aseel al-Awadhi, Rola Dashti, Massouma al-Mubarak, and Salwa al-Jassar. The result was celebrated as a breakthrough for women's political participation.",
+        "source": "https://www.vitalvoices.org/rola-dashti-and-three-other-women-make-history-in-kuwaiti-election/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.vitalvoices.org/rola-dashti-and-three-other-women-make-history-in-kuwaiti-election/"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Arab Spring Protests in Kuwait",
     "verdict": "TRUE",
     "reason": "Kuwait experienced protests in 2011 calling for political reform and an end to corruption. The government distributed KD 1,000 cash grants and free food to every citizen. Unlike neighbouring states, the Al-Sabah family's rule was not fundamentally threatened, though the protests led to the Prime Minister's resignation in November 2011.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait experienced protests in 2011 calling for political reform and an end to corruption. The government distributed KD 1,000 cash grants and free food to every citizen. Unlike neighbouring states, the Al-Sabah family's rule was not fundamentally threatened, though the protests led to the Prime Minister's resignation in November 2011.",
+        "source": "https://en.wikipedia.org/wiki/Kuwaiti_protests_(2011%E2%80%932012)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kuwaiti_protests_(2011%E2%80%932012)"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "Prime Minister Faces Parliamentary Censure; Resigns",
     "verdict": "TRUE",
     "reason": "Prime Minister Sheikh Nasser al-Mohammad faced formal interpellation over corruption allegations involving transfer of public funds to overseas accounts, paralyzing government. He resigned on 28 November 2011 after Kuwait's largest-ever demonstrations; the Emir accepted the resignation and appointed a new Prime Minister in December 2011.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Prime Minister Sheikh Nasser al-Mohammad faced formal interpellation over corruption allegations involving transfer of public funds to overseas accounts, paralyzing government. He resigned on 28 November 2011 after Kuwait's largest-ever demonstrations; the Emir accepted the resignation and appointed a new Prime Minister in December 2011.",
+        "source": "https://en.wikipedia.org/wiki/Nasser_Mohammed_Al-Ahmed_Al-Sabah",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Nasser_Mohammed_Al-Ahmed_Al-Sabah"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "National Assembly Dissolved Multiple Times; Opposition Boycotts",
     "verdict": "TRUE",
     "reason": "Kuwait's National Assembly was dissolved in December 2011; February 2012 elections were annulled by the Constitutional Court as unconstitutional. A new assembly was elected and then dissolved again, and the Emir's October 2012 electoral law decree reducing votes per citizen prompted major opposition groups to boycott December 2012 elections.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait's National Assembly was dissolved in December 2011; February 2012 elections were annulled by the Constitutional Court as unconstitutional. A new assembly was elected and then dissolved again, and the Emir's October 2012 electoral law decree reducing votes per citizen prompted major opposition groups to boycott December 2012 elections.",
+        "source": "https://en.wikipedia.org/wiki/February_2012_Kuwaiti_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/February_2012_Kuwaiti_general_election"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Bidun Stateless Population Protests for Recognition",
     "verdict": "TRUE",
     "reason": "Kuwait's Bidun population — stateless residents denied citizenship despite generations of residence — staged protests in 2012 demanding legal recognition. The government estimated over 100,000 Bidun; Kuwaiti security forces dispersed demonstrations with water cannons and arrested protesters. Amnesty International documented the crackdown.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait's Bidun population — stateless residents denied citizenship despite generations of residence — staged protests in 2012 demanding legal recognition. The government estimated over 100,000 Bidun; Kuwaiti security forces dispersed demonstrations with water cannons and arrested protesters. Amnesty International documented the crackdown.",
+        "source": "https://www.hrw.org/news/2012/05/03/kuwait-security-forces-forcibly-disperse-stateless-residents",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2012/05/03/kuwait-security-forces-forcibly-disperse-stateless-residents"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "ISIS Mosque Bombing Kills Dozens in Kuwait City",
     "verdict": "TRUE",
     "reason": "On 26 June 2015, a suicide bomber attacked the Imam Sadiq Mosque in Kuwait City during Friday prayers, killing 27 people and wounding 227. The Islamic State claimed responsibility. It was Kuwait's deadliest terrorist attack since 1983 and targeted the Shia community, prompting a national outpouring of solidarity.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 26 June 2015, a suicide bomber attacked the Imam Sadiq Mosque in Kuwait City during Friday prayers, killing 27 people and wounding 227. The Islamic State claimed responsibility. It was Kuwait's deadliest terrorist attack since 1983 and targeted the Shia community, prompting a national outpouring of solidarity.",
+        "source": "https://en.wikipedia.org/wiki/2015_Kuwait_mosque_bombing",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2015_Kuwait_mosque_bombing"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Kuwait Mediates Qatar-GCC Diplomatic Crisis",
     "verdict": "TRUE",
     "reason": "When Saudi Arabia, UAE, Bahrain, and Egypt severed diplomatic ties with Qatar in June 2017, Emir Sheikh Sabah personally shuttled between capitals to mediate. Kuwait maintained neutrality and invested heavily in de-escalation, cementing its reputation as a Gulf mediator; the blockade ultimately ended in January 2021.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "When Saudi Arabia, UAE, Bahrain, and Egypt severed diplomatic ties with Qatar in June 2017, Emir Sheikh Sabah personally shuttled between capitals to mediate. Kuwait maintained neutrality and invested heavily in de-escalation, cementing its reputation as a Gulf mediator; the blockade ultimately ended in January 2021.",
+        "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Emir Sheikh Sabah Dies; Sheikh Nawaf Becomes Emir",
     "verdict": "TRUE",
     "reason": "Emir Sheikh Sabah al-Ahmad al-Sabah died on 29 September 2020 at age 91 in a US hospital. Crown Prince Sheikh Nawaf al-Ahmad al-Jaber al-Sabah was sworn in as Emir the following day, 30 September 2020, inheriting Kuwait amid fiscal pressures and political dysfunction.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Emir Sheikh Sabah al-Ahmad al-Sabah died on 29 September 2020 at age 91 in a US hospital. Crown Prince Sheikh Nawaf al-Ahmad al-Jaber al-Sabah was sworn in as Emir the following day, 30 September 2020, inheriting Kuwait amid fiscal pressures and political dysfunction.",
+        "source": "https://en.wikipedia.org/wiki/Sabah_Al-Ahmad_Al-Jaber_Al-Sabah",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sabah_Al-Ahmad_Al-Jaber_Al-Sabah"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "COVID-19 Pandemic and Oil Price Crash Hit Kuwait",
     "verdict": "TRUE",
     "reason": "The COVID-19 pandemic and the 2020 Saudi-Russian oil price war caused a severe fiscal shock for Kuwait: real GDP contracted approximately 9.9%, the General Reserve Fund lost $13+ billion within 100 days, and a parliamentary deadlock over a public debt law left Kuwait unable to issue international bonds for years.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The COVID-19 pandemic and the 2020 Saudi-Russian oil price war caused a severe fiscal shock for Kuwait: real GDP contracted approximately 9.9%, the General Reserve Fund lost $13+ billion within 100 days, and a parliamentary deadlock over a public debt law left Kuwait unable to issue international bonds for years.",
+        "source": "https://www.aljazeera.com/economy/2020/11/24/when-kuwait-emerged-from-a-monthslong-coronavirus-lockdown-hundr",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/economy/2020/11/24/when-kuwait-emerged-from-a-monthslong-coronavirus-lockdown-hundr"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "Russia-Ukraine War Oil Spike Relieves Fiscal Pressure",
     "verdict": "TRUE",
     "reason": "Russia's invasion of Ukraine in February 2022 pushed Brent crude above $100 per barrel for the first time since 2014, generating a fiscal windfall for Kuwait. Kuwait's breakeven oil price of approximately $64.50/barrel was comfortably below elevated market prices, enabling budget surpluses and partial GRF replenishment.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Russia's invasion of Ukraine in February 2022 pushed Brent crude above $100 per barrel for the first time since 2014, generating a fiscal windfall for Kuwait. Kuwait's breakeven oil price of approximately $64.50/barrel was comfortably below elevated market prices, enabling budget surpluses and partial GRF replenishment.",
+        "source": "https://www.eia.gov/todayinenergy/detail.php?id=55020",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.eia.gov/todayinenergy/detail.php?id=55020"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "Emir Sheikh Nawaf Dies; Sheikh Mishal Becomes Emir",
     "verdict": "TRUE",
     "reason": "Emir Sheikh Nawaf al-Ahmad died on 16 December 2023 at age 86. His half-brother Sheikh Mishal al-Ahmad al-Jaber al-Sabah was sworn in as Kuwait's new Emir on 20 December 2023, becoming the 17th ruler of Kuwait and inheriting the challenge of breaking the decade-long political dysfunction.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Emir Sheikh Nawaf al-Ahmad died on 16 December 2023 at age 86. His half-brother Sheikh Mishal al-Ahmad al-Jaber al-Sabah was sworn in as Kuwait's new Emir on 20 December 2023, becoming the 17th ruler of Kuwait and inheriting the challenge of breaking the decade-long political dysfunction.",
+        "source": "https://en.wikipedia.org/wiki/Nawaf_Al-Ahmad_Al-Jaber_Al-Sabah",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Nawaf_Al-Ahmad_Al-Jaber_Al-Sabah"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "Emir Sheikh Mishal Dissolves Parliament and Suspends Constitution",
     "verdict": "TRUE",
     "reason": "In May 2024, Emir Sheikh Mishal al-Ahmad dissolved the National Assembly and suspended certain constitutional articles for up to four years while a review was conducted, citing corruption and parliamentary dysfunction. The move sparked significant debate about Kuwait's democratic future and departure from its Gulf exceptionalism.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In May 2024, Emir Sheikh Mishal al-Ahmad dissolved the National Assembly and suspended certain constitutional articles for up to four years while a review was conducted, citing corruption and parliamentary dysfunction. The move sparked significant debate about Kuwait's democratic future and departure from its Gulf exceptionalism.",
+        "source": "https://www.aljazeera.com/news/2024/5/11/political-turmoil-in-kuwait-as-emir-dissolves-parliament",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2024/5/11/political-turmoil-in-kuwait-as-emir-dissolves-parliament"
   }
 ]

@@ -4,6 +4,24 @@
     "title": "General Union of Tunisian Workers Founded",
     "verdict": "FALSE",
     "reason": "UGTT was founded on January 20, 1946 by Ferhat Hached, not 1950. The year is wrong by four years.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "UGTT was founded on January 20, 1946 by Ferhat Hached, not 1950. The year is wrong by four years.",
+        "source": "https://en.wikipedia.org/wiki/Tunisian_General_Labour_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tunisian_General_Labour_Union"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Bourguiba Arrested and Exiled by French Authorities",
     "verdict": "TRUE",
     "reason": "Bourguiba was arrested in January 1952 by Resident-General de Hauteclocque and exiled; this is well documented in multiple encyclopaedic sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bourguiba was arrested in January 1952 by Resident-General de Hauteclocque and exiled; this is well documented in multiple encyclopaedic sources.",
+        "source": "https://en.wikipedia.org/wiki/Tunisian_independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tunisian_independence"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Ferhat Hached Assassinated by Red Hand",
     "verdict": "TRUE",
     "reason": "Ferhat Hached was assassinated on December 5, 1952 by La Main Rouge (Red Hand). Date, victim, and perpetrator organisation all confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ferhat Hached was assassinated on December 5, 1952 by La Main Rouge (Red Hand). Date, victim, and perpetrator organisation all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Farhat_Hached",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Farhat_Hached"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Armed Resistance Groups Emerge in Rural Areas",
     "verdict": "TRUE",
     "reason": "Fellagha guerrilla activity in western and southern Tunisia from 1952 is documented in independence history sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Fellagha guerrilla activity in western and southern Tunisia from 1952 is documented in independence history sources.",
+        "source": "https://en.wikipedia.org/wiki/Tunisian_independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tunisian_independence"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Franco-Tunisian Negotiations Begin Under International Pressure",
     "verdict": "TRUE",
     "reason": "Preliminary Franco-Tunisian negotiations over autonomy in 1953 under US and UN pressure are historically documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Preliminary Franco-Tunisian negotiations over autonomy in 1953 under US and UN pressure are historically documented.",
+        "source": "https://www.cvce.eu/en/obj/the_autonomy_of_tunisia_1954-en-b9a882fa-80c6-40e2-9ad7-ad82c8d90940.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cvce.eu/en/obj/the_autonomy_of_tunisia_1954-en-b9a882fa-80c6-40e2-9ad7-ad82c8d90940.html"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Pierre Mendes France Promises Internal Autonomy to Tunisia",
     "verdict": "TRUE",
     "reason": "Mendes France visited Tunis on July 31, 1954 (not simply 'July') and announced internal autonomy at Carthage palace. Core facts verified; event description says 'July 1954' which is correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mendes France visited Tunis on July 31, 1954 (not simply 'July') and announced internal autonomy at Carthage palace. Core facts verified; event description says 'July 1954' which is correct.",
+        "source": "https://www.cvce.eu/en/obj/the_autonomy_of_tunisia_1954-en-b9a882fa-80c6-40e2-9ad7-ad82c8d90940.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cvce.eu/en/obj/the_autonomy_of_tunisia_1954-en-b9a882fa-80c6-40e2-9ad7-ad82c8d90940.html"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Bourguiba Released from Exile to Lead Negotiations",
     "verdict": "TRUE",
     "reason": "Bourguiba's release from exile following the internal autonomy declaration and his return to lead negotiations is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bourguiba's release from exile following the internal autonomy declaration and his return to lead negotiations is documented.",
+        "source": "https://en.wikipedia.org/wiki/Habib_Bourguiba",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Habib_Bourguiba"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Franco-Tunisian Convention Grants Internal Autonomy",
     "verdict": "TRUE",
     "reason": "Conventions of June 3, 1955 granting internal autonomy are documented; Tahar Ben Ammar as prime minister of the first autonomous government is confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Conventions of June 3, 1955 granting internal autonomy are documented; Tahar Ben Ammar as prime minister of the first autonomous government is confirmed.",
+        "source": "https://www.cvce.eu/en/obj/protocol_of_agreement_between_france_and_tunisia_20_march_1956-en-fbb6944a-9d78-4cff-b645-d1b25da9b6f2.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cvce.eu/en/obj/protocol_of_agreement_between_france_and_tunisia_20_march_1956-en-fbb6944a-9d78-4cff-b645-d1b25da9b6f2.html"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Salah Ben Youssef Split Threatens Neo-Destour Unity",
     "verdict": "TRUE",
     "reason": "Ben Youssef's break with Bourguiba over the conventions, his pan-Arab platform, and eventual expulsion from Tunisia are all documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ben Youssef's break with Bourguiba over the conventions, his pan-Arab platform, and eventual expulsion from Tunisia are all documented.",
+        "source": "https://en.wikipedia.org/wiki/Salah_ben_Youssef",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Salah_ben_Youssef"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Tunisia Gains Full Independence from France",
     "verdict": "TRUE",
     "reason": "Independence on March 20, 1956, ending 75 years of French protectorate, confirmed by multiple primary and encyclopaedic sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independence on March 20, 1956, ending 75 years of French protectorate, confirmed by multiple primary and encyclopaedic sources.",
+        "source": "https://en.wikipedia.org/wiki/Tunisian_independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tunisian_independence"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Habib Bourguiba Becomes Prime Minister of Independent Tunisia",
     "verdict": "TRUE",
     "reason": "Bourguiba was appointed Prime Minister after independence under nominal sovereignty of Bey Muhammad VIII al-Amin; confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bourguiba was appointed Prime Minister after independence under nominal sovereignty of Bey Muhammad VIII al-Amin; confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Habib_Bourguiba",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Habib_Bourguiba"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Personal Status Code Enacted — Women's Rights Reform",
     "verdict": "TRUE",
     "reason": "Personal Status Code of August 1956 abolishing polygamy and granting women divorce rights is one of the most-cited facts in Tunisian history; confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Personal Status Code of August 1956 abolishing polygamy and granting women divorce rights is one of the most-cited facts in Tunisian history; confirmed.",
+        "source": "https://www.unwomen.org/en/news/stories/2014/2/tunisias-new-constitution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.unwomen.org/en/news/stories/2014/2/tunisias-new-constitution"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Bey Deposed — Tunisia Declared a Republic",
     "verdict": "TRUE",
     "reason": "Constituent Assembly voted on July 25, 1957 to abolish the monarchy, depose Bey Muhammad VIII al-Amin, and declare a republic with Bourguiba as president. All details confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constituent Assembly voted on July 25, 1957 to abolish the monarchy, depose Bey Muhammad VIII al-Amin, and declare a republic with Bourguiba as president. All details confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kingdom_of_Tunisia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kingdom_of_Tunisia"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Tunisia's First Republican Constitution Adopted",
     "verdict": "TRUE",
     "reason": "Tunisia's 1959 constitution establishing a presidential system with Islam as state religion is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tunisia's 1959 constitution establishing a presidential system with Islam as state religion is documented.",
+        "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Evacuation of French Forces from Bizerte Demanded",
     "verdict": "TRUE",
     "reason": "Tunisia's demands for French evacuation of the Bizerte base are documented as a precursor to the 1961 crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tunisia's demands for French evacuation of the Bizerte base are documented as a precursor to the 1961 crisis.",
+        "source": "https://en.wikipedia.org/wiki/Bizerte_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bizerte_crisis"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Bizerte Crisis — Tunisian Forces Attack French Base",
     "verdict": "TRUE",
     "reason": "July 1961 Bizerte crisis confirmed. The event says '600 to 700' Tunisian deaths; Wikipedia records 630 Tunisian dead with estimates ranging up to 1,000. The range in the description overlaps and is broadly consistent. French withdrew by October 1963 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 1961 Bizerte crisis confirmed. The event says '600 to 700' Tunisian deaths; Wikipedia records 630 Tunisian dead with estimates ranging up to 1,000. The range in the description overlaps and is broadly consistent. French withdrew by October 1963 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Bizerte_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bizerte_crisis"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Salah Ben Youssef Assassinated in Frankfurt",
     "verdict": "TRUE",
     "reason": "Ben Youssef was assassinated in a Frankfurt hotel on August 12, 1961, confirmed. He was staying in Wiesbaden but killed in Frankfurt.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ben Youssef was assassinated in a Frankfurt hotel on August 12, 1961, confirmed. He was staying in Wiesbaden but killed in Frankfurt.",
+        "source": "https://en.wikipedia.org/wiki/Salah_ben_Youssef",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Salah_ben_Youssef"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Coup Attempt Against Bourguiba Fails",
     "verdict": "TRUE",
     "reason": "December 1962 coup attempt by military officers and civilians is documented in standard histories of Tunisia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 1962 coup attempt by military officers and civilians is documented in standard histories of Tunisia.",
+        "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Neo-Destour Declared Only Legal Party",
     "verdict": "TRUE",
     "reason": "Tunisia formalised as a single-party state from 1963; the party was renamed Destourian Socialist Party in 1964 — both facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tunisia formalised as a single-party state from 1963; the party was renamed Destourian Socialist Party in 1964 — both facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Habib_Bourguiba",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Habib_Bourguiba"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Agricultural Collectivization Program Launched",
     "verdict": "TRUE",
     "reason": "Ahmed Ben Salah's collectivisation program starting in the mid-1960s is documented; 1964 as launch year is consistent with sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ahmed Ben Salah's collectivisation program starting in the mid-1960s is documented; 1964 as launch year is consistent with sources.",
+        "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Student Protests Erupt in Tunis",
     "verdict": "TRUE",
     "reason": "1968 student protests at the University of Tunis, inspired partly by global 1968 movements, are documented in Tunisian history sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1968 student protests at the University of Tunis, inspired partly by global 1968 movements, are documented in Tunisian history sources.",
+        "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Ben Salah Dismissed and Arrested — Cooperative Experiment Ends",
     "verdict": "TRUE",
     "reason": "Bourguiba dismissed Ben Salah in September 1969; he was subsequently tried and sentenced; cooperatives dissolved — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bourguiba dismissed Ben Salah in September 1969; he was subsequently tried and sentenced; cooperatives dissolved — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ahmed_Ben_Salah",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ahmed_Ben_Salah"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Tunisia Opens to Foreign Investment After Socialist Retreat",
     "verdict": "TRUE",
     "reason": "Tunisia's pivot to market-oriented policies and foreign investment codes after 1969 is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tunisia's pivot to market-oriented policies and foreign investment codes after 1969 is documented.",
+        "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Hedi Nouira Appointed Prime Minister — Liberal Economic Turn",
     "verdict": "TRUE",
     "reason": "Hedi Nouira, former central bank governor, appointed PM by Bourguiba in 1970 and pursued export-led industrialisation — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Hedi Nouira, former central bank governor, appointed PM by Bourguiba in 1970 and pursued export-led industrialisation — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Hedi_Nouira",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hedi_Nouira"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Destourian Party Congress — Liberal Wing Crushed",
     "verdict": "TRUE",
     "reason": "The 1971 Monastir congress and expulsion of Ahmed Mestiri's liberal faction is documented in standard Tunisian histories.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 1971 Monastir congress and expulsion of Ahmed Mestiri's liberal faction is documented in standard Tunisian histories.",
+        "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Libya-Tunisia Merger Proposed and Quickly Abandoned",
     "verdict": "TRUE",
     "reason": "January 1974 announcement of Libyan-Tunisian merger into 'Arab Islamic Republic', rapidly reversed, is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 1974 announcement of Libyan-Tunisian merger into 'Arab Islamic Republic', rapidly reversed, is documented.",
+        "source": "https://en.wikipedia.org/wiki/Arab_Islamic_Republic",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Arab_Islamic_Republic"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Bourguiba Declared President for Life",
     "verdict": "TRUE",
     "reason": "Constitutional amendment in 1974 declaring Bourguiba president for life is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitutional amendment in 1974 declaring Bourguiba president for life is documented.",
+        "source": "https://en.wikipedia.org/wiki/Habib_Bourguiba",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Habib_Bourguiba"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Islamist Movement Begins Organizing on Campuses",
     "verdict": "TRUE",
     "reason": "The Islamic Tendency Movement's campus-based origins in the mid-1970s are documented in Ennahda's history.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Islamic Tendency Movement's campus-based origins in the mid-1970s are documented in Ennahda's history.",
+        "source": "https://en.wikipedia.org/wiki/Ennahda_Movement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ennahda_Movement"
   },
   {
@@ -200,6 +704,24 @@
     "title": "National Pact Between Government and UGTT Breaks Down",
     "verdict": "TRUE",
     "reason": "The 1977 social pact breakdown and Habib Achour's increasingly independent UGTT leadership as prelude to 1978 are documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 1977 social pact breakdown and Habib Achour's increasingly independent UGTT leadership as prelude to 1978 are documented.",
+        "source": "https://en.wikipedia.org/wiki/Tunisian_General_Labour_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tunisian_General_Labour_Union"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Black Thursday — General Strike Suppressed in Blood",
     "verdict": "TRUE",
     "reason": "January 26, 1978 UGTT general strike, state of emergency, military deployment, and 'Black Thursday' designation confirmed. Death toll given as 50–200 in event; official figure was 42 but unofficial estimates run much higher — within range.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 26, 1978 UGTT general strike, state of emergency, military deployment, and 'Black Thursday' designation confirmed. Death toll given as 50–200 in event; official figure was 42 but unofficial estimates run much higher — within range.",
+        "source": "https://www.globalsecurity.org/military/world/tunisia/politics-1978.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.globalsecurity.org/military/world/tunisia/politics-1978.htm"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Gafsa Raid — Libya-Backed Attack on Mining Town",
     "verdict": "TRUE",
     "reason": "January 27, 1980 raid by Libya-trained militants on Gafsa confirmed. Event says 'January 1980' — consistent. Attackers were Tunisian exiles trained in Libya, not a 'group of opposition militants' generically; the characterisation is broadly accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 27, 1980 raid by Libya-trained militants on Gafsa confirmed. Event says 'January 1980' — consistent. Attackers were Tunisian exiles trained in Libya, not a 'group of opposition militants' generically; the characterisation is broadly accurate.",
+        "source": "https://en.wikipedia.org/wiki/1980_Gafsa_Uprising",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1980_Gafsa_Uprising"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Prime Minister Hedi Nouira Suffers Stroke — Political Transition",
     "verdict": "TRUE",
     "reason": "Nouira suffered a stroke in 1980, leading Bourguiba to appoint Mohammed Mzali as PM — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nouira suffered a stroke in 1980, leading Bourguiba to appoint Mohammed Mzali as PM — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Hedi_Nouira",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hedi_Nouira"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Multi-Party System Briefly Tolerated",
     "verdict": "TRUE",
     "reason": "The 1981 controlled opening toward multi-party elections, followed by fraudulent results, is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 1981 controlled opening toward multi-party elections, followed by fraudulent results, is documented.",
+        "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Islamic Tendency Movement Founded Formally",
     "verdict": "TRUE",
     "reason": "Ghannouchi and Mourou formally founded the MTI in 1981; application for legal recognition denied — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ghannouchi and Mourou formally founded the MTI in 1981; application for legal recognition denied — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ennahda_Movement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ennahda_Movement"
   },
   {
@@ -242,6 +854,24 @@
     "title": "PLO Relocates to Tunis After Beirut Evacuation",
     "verdict": "TRUE",
     "reason": "PLO headquarters relocated to Tunis after the 1982 Beirut evacuation under Israeli military pressure — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PLO headquarters relocated to Tunis after the 1982 Beirut evacuation under Israeli military pressure — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Palestine_Liberation_Organization",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Palestine_Liberation_Organization"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Bread Riots Erupt After IMF Subsidy Cuts",
     "verdict": "FALSE",
     "reason": "The bread riots began on December 29, 1983, not 'late 1983' as stated — technically straddles late 1983/early 1984. However the event says riots erupted 'in late 1983' and spread to Tunis, whereas the Wikipedia record shows they began December 29, 1983 in Nefzaoua (south) and escalated in January 1984. The core framing that the government 'doubled' bread prices is correct, but the event misattributes the start city as 'Kasserine, Gafsa, and Sidi Bouzid' — the actual start was Nefzaoua. Minor factual inaccuracies in geographic detail elevate to FALSE.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The bread riots began on December 29, 1983, not 'late 1983' as stated — technically straddles late 1983/early 1984. However the event says riots erupted 'in late 1983' and spread to Tunis, whereas the Wikipedia record shows they began December 29, 1983 in Nefzaoua (south) and escalated in January 1984. The core framing that the government 'doubled' bread prices is correct, but the event misattributes the start city as 'Kasserine, Gafsa, and Sidi Bouzid' — the actual start was Nefzaoua. Minor factual inaccuracies in geographic detail elevate to FALSE.",
+        "source": "https://en.wikipedia.org/wiki/Tunisian_bread_riots",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tunisian_bread_riots"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Israel Bombs PLO Headquarters in Tunis",
     "verdict": "TRUE",
     "reason": "Israeli airstrike on PLO HQ in Hammam Chott (Hammam al-Shatt per the event) on October 1, 1985 confirmed. Event says '~68 killed'; Wikipedia ranges from 41–71; 68 is within the documented range.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Israeli airstrike on PLO HQ in Hammam Chott (Hammam al-Shatt per the event) on October 1, 1985 confirmed. Event says '~68 killed'; Wikipedia ranges from 41–71; 68 is within the documented range.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Wooden_Leg",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Wooden_Leg"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Crackdown on Islamic Tendency Movement Intensifies",
     "verdict": "TRUE",
     "reason": "Government crackdown on MTI with mass arrests and Ghannouchi's imprisonment in 1985 is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Government crackdown on MTI with mass arrests and Ghannouchi's imprisonment in 1985 is documented.",
+        "source": "https://en.wikipedia.org/wiki/Ennahda_Movement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ennahda_Movement"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Economic Crisis Forces Structural Adjustment",
     "verdict": "TRUE",
     "reason": "Tunisia's 1986 IMF/World Bank structural adjustment program triggered by falling oil/phosphate revenues and debt is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tunisia's 1986 IMF/World Bank structural adjustment program triggered by falling oil/phosphate revenues and debt is documented.",
+        "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Ghannouchi Sentenced to Death — International Outcry",
     "verdict": "TRUE",
     "reason": "Ghannouchi received a death sentence in absentia in 1987 trials; other MTI leaders received life sentences; international condemnation documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ghannouchi received a death sentence in absentia in 1987 trials; other MTI leaders received life sentences; international condemnation documented.",
+        "source": "https://en.wikipedia.org/wiki/Rashid_al-Ghannushi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Rashid_al-Ghannushi"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Ben Ali Ousts Bourguiba in Medical Coup",
     "verdict": "TRUE",
     "reason": "November 7, 1987 coup confirmed in full detail: seven doctors signed medical report, Article 57 (not Article 80) of the constitution invoked, Bourguiba was 84, bloodless. Event text says 'Article' — technically Article 57 of the 1959 constitution; event text does not specify article number so no error.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 7, 1987 coup confirmed in full detail: seven doctors signed medical report, Article 57 (not Article 80) of the constitution invoked, Bourguiba was 84, bloodless. Event text says 'Article' — technically Article 57 of the 1959 constitution; event text does not specify article number so no error.",
+        "source": "https://en.wikipedia.org/wiki/1987_Tunisian_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1987_Tunisian_coup_d'%C3%A9tat"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Ben Ali's National Pact and Ennahda's Legalization Bid",
     "verdict": "TRUE",
     "reason": "1988 National Pact, MTI reconstituting as Ennahda, and government's refusal of legal recognition all documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1988 National Pact, MTI reconstituting as Ennahda, and government's refusal of legal recognition all documented.",
+        "source": "https://en.wikipedia.org/wiki/Ennahda_Movement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ennahda_Movement"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "First Ben Ali Elections — Ennahda Shows Electoral Strength",
     "verdict": "TRUE",
     "reason": "Ben Ali's 99% 1989 presidential victory and Ennahda-linked independents showing unexpected electoral strength (up to 17% in some districts) is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ben Ali's 99% 1989 presidential victory and Ennahda-linked independents showing unexpected electoral strength (up to 17% in some districts) is documented.",
+        "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Ennahda Accused of Coup Plot — Mass Arrests Begin",
     "verdict": "TRUE",
     "reason": "1991 government accusations of coup plot, mass arrests of thousands, Ghannouchi fleeing to London, and systematic torture documented by human rights organisations — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1991 government accusations of coup plot, mass arrests of thousands, Ghannouchi fleeing to London, and systematic torture documented by human rights organisations — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ennahda_Movement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ennahda_Movement"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Constitutional Changes Consolidate Ben Ali's Power",
     "verdict": "TRUE",
     "reason": "Early 1990s constitutional engineering to consolidate Ben Ali's authority alongside massive security apparatus expansion is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Early 1990s constitutional engineering to consolidate Ben Ali's authority alongside massive security apparatus expansion is documented.",
+        "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Ben Ali Wins Second Term — Opposition Parties Token",
     "verdict": "TRUE",
     "reason": "Ben Ali's 1994 election with near-100% vote share and token permitted opposition confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ben Ali's 1994 election with near-100% vote share and token permitted opposition confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Tunisia Signs Association Agreement with European Union",
     "verdict": "TRUE",
     "reason": "Tunisia's 1995 Association Agreement with the EU (first Mediterranean country) is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tunisia's 1995 Association Agreement with the EU (first Mediterranean country) is documented.",
+        "source": "https://en.wikipedia.org/wiki/Tunisia%E2%80%93European_Union_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tunisia%E2%80%93European_Union_relations"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "Press Censorship and Internet Control Tightened",
     "verdict": "TRUE",
     "reason": "Ben Ali's press censorship tightening and state ATI internet gateway for surveillance in the 1990s are documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ben Ali's press censorship tightening and state ATI internet gateway for surveillance in the 1990s are documented.",
+        "source": "https://en.wikipedia.org/wiki/Internet_censorship_in_Tunisia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Internet_censorship_in_Tunisia"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Ben Ali Changes Constitution to Allow Third Term",
     "verdict": "TRUE",
     "reason": "1998 constitutional amendment removing presidential term limits is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1998 constitutional amendment removing presidential term limits is documented.",
+        "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "First Contested Presidential Election — Three Candidates Allowed",
     "verdict": "TRUE",
     "reason": "1999 election with two token opposition candidates and Ben Ali winning 99.4% confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1999 election with two token opposition candidates and Ben Ali winning 99.4% confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1999_Tunisian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1999_Tunisian_presidential_election"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "September 11 Strengthens Ben Ali's Counter-Terror Credentials",
     "verdict": "TRUE",
     "reason": "Post-9/11 US counter-terrorism cooperation with Ben Ali and his use of the 'war on terror' framework to justify Ennahda persecution is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Post-9/11 US counter-terrorism cooperation with Ben Ali and his use of the 'war on terror' framework to justify Ennahda persecution is documented.",
+        "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "Djerba Synagogue Bombing by Al-Qaeda",
     "verdict": "TRUE",
     "reason": "April 11, 2002 El-Ghriba synagogue truck bomb killing 21 (14 German tourists, 5 Tunisians, 2 French) by Al-Qaeda confirmed. Event says 'April 2002' and '14 German tourists' — correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 11, 2002 El-Ghriba synagogue truck bomb killing 21 (14 German tourists, 5 Tunisians, 2 French) by Al-Qaeda confirmed. Event says 'April 2002' and '14 German tourists' — correct.",
+        "source": "https://en.wikipedia.org/wiki/Ghriba_synagogue_bombing",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ghriba_synagogue_bombing"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Constitutional Referendum Removes Presidential Age Limit",
     "verdict": "TRUE",
     "reason": "2002 constitutional referendum removing presidential age limit and establishing presidential immunity confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2002 constitutional referendum removing presidential age limit and establishing presidential immunity confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "Anti-Terrorism Law Passed with Broad Definitions",
     "verdict": "TRUE",
     "reason": "Tunisia's 2003 anti-terrorism law with broad definitions used to prosecute peaceful activists is documented by Amnesty International and Human Rights Watch.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tunisia's 2003 anti-terrorism law with broad definitions used to prosecute peaceful activists is documented by Amnesty International and Human Rights Watch.",
+        "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Blogger Zouhair Yahyaoui Dies After Imprisonment",
     "verdict": "FALSE",
     "reason": "Zouhair Yahyaoui died on March 13, 2005, not 2006. The year is incorrect.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Zouhair Yahyaoui died on March 13, 2005, not 2006. The year is incorrect.",
+        "source": "https://en.wikipedia.org/wiki/Zouhair_Yahyaoui",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zouhair_Yahyaoui"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Counterterrorism Operations in Tunis Suburbs",
     "verdict": "TRUE",
     "reason": "Security forces' armed operations against militant cell in Hammam Lif/Soliman area in late 2006 and early 2007 are documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Security forces' armed operations against militant cell in Hammam Lif/Soliman area in late 2006 and early 2007 are documented.",
+        "source": "https://en.wikipedia.org/wiki/2006%E2%80%932007_Tunisian_clashes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2006%E2%80%932007_Tunisian_clashes"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "Gafsa Mining Basin Uprising",
     "verdict": "TRUE",
     "reason": "January 2008 Gafsa mining basin uprising over CPG hiring practices, lasting six months, with security forces killing protesters, confirmed. Event says 'January 2008' — correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 2008 Gafsa mining basin uprising over CPG hiring practices, lasting six months, with security forces killing protesters, confirmed. Event says 'January 2008' — correct.",
+        "source": "https://en.wikipedia.org/wiki/2008_Tunisian_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2008_Tunisian_protests"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "Global Financial Crisis Hits Tunisian Exports",
     "verdict": "TRUE",
     "reason": "2008 financial crisis impact on Tunisian exports and growth slowdown is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2008 financial crisis impact on Tunisian exports and growth slowdown is documented.",
+        "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "Ben Ali Elected for Fifth Term — Youth Unemployment Crisis",
     "verdict": "TRUE",
     "reason": "Ben Ali's 2009 fifth-term election with 89.6% and the concurrent youth unemployment crisis are documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ben Ali's 2009 fifth-term election with 89.6% and the concurrent youth unemployment crisis are documented.",
+        "source": "https://en.wikipedia.org/wiki/2009_Tunisian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2009_Tunisian_presidential_election"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "Mohamed Bouazizi Self-Immolates — Spark of Arab Spring",
     "verdict": "TRUE",
     "reason": "December 17, 2010 self-immolation in Sidi Bouzid by 26-year-old street vendor after confiscation and humiliation by municipal official confirmed in full detail.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 17, 2010 self-immolation in Sidi Bouzid by 26-year-old street vendor after confiscation and humiliation by municipal official confirmed in full detail.",
+        "source": "https://en.wikipedia.org/wiki/Mohamed_Bouazizi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mohamed_Bouazizi"
   },
   {
@@ -424,6 +1504,24 @@
     "title": "Jasmine Revolution — Nationwide Protests Escalate",
     "verdict": "TRUE",
     "reason": "December 2010 spread of protests from Sidi Bouzid to Kasserine, Thala, and Tunis with live fire killings, UGTT regional office involvement, and social media coordination confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 2010 spread of protests from Sidi Bouzid to Kasserine, Thala, and Tunis with live fire killings, UGTT regional office involvement, and social media coordination confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Tunisian_revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tunisian_revolution"
   },
   {
@@ -431,6 +1529,24 @@
     "title": "Ben Ali Flees — Revolution Succeeds",
     "verdict": "TRUE",
     "reason": "Ben Ali fled to Saudi Arabia on January 14, 2011, after 23 years in power, as security forces and army refused to fire on civilians. First Arab country to overthrow government by popular protest — all confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ben Ali fled to Saudi Arabia on January 14, 2011, after 23 years in power, as security forces and army refused to fire on civilians. First Arab country to overthrow government by popular protest — all confirmed.",
+        "source": "https://www.aljazeera.com/features/2021/1/14/remembering-the-day-tunisias-president-ben-ali-fled",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/features/2021/1/14/remembering-the-day-tunisias-president-ben-ali-fled"
   },
   {
@@ -438,6 +1554,24 @@
     "title": "Ennahda Returns from Exile — Ghannouchi Welcomed",
     "verdict": "TRUE",
     "reason": "Ghannouchi's return from 22 years of London exile to large crowds in Tunis and Ennahda's rapid legalisation and membership expansion confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ghannouchi's return from 22 years of London exile to large crowds in Tunis and Ennahda's rapid legalisation and membership expansion confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ennahda_Movement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ennahda_Movement"
   },
   {
@@ -445,6 +1579,24 @@
     "title": "October Elections — Ennahda Wins Constituent Assembly",
     "verdict": "TRUE",
     "reason": "Ennahda winning ~37% in October 2011 free elections; troika coalition government; declared free and fair by international observers — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ennahda winning ~37% in October 2011 free elections; troika coalition government; declared free and fair by international observers — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2011_Tunisian_Constituent_Assembly_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2011_Tunisian_Constituent_Assembly_election"
   },
   {
@@ -452,6 +1604,24 @@
     "title": "Constitutional Drafting Process Begins — Article 1 Debate",
     "verdict": "TRUE",
     "reason": "2012 constitutional debate including the sharia-as-source-of-legislation controversy and Ennahda's eventual acceptance that sharia would not be referenced is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2012 constitutional debate including the sharia-as-source-of-legislation controversy and Ennahda's eventual acceptance that sharia would not be referenced is documented.",
+        "source": "https://en.wikipedia.org/wiki/Tunisian_Constitution_of_2014",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tunisian_Constitution_of_2014"
   },
   {
@@ -459,6 +1629,24 @@
     "title": "US Embassy Attacked by Salafi Protesters",
     "verdict": "TRUE",
     "reason": "September 2012 Salafi attack on US Embassy in Tunis as part of the anti-Islam video protest wave is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 2012 Salafi attack on US Embassy in Tunis as part of the anti-Islam video protest wave is documented.",
+        "source": "https://en.wikipedia.org/wiki/2012_attacks_on_U.S._diplomatic_missions",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2012_attacks_on_U.S._diplomatic_missions"
   },
   {
@@ -466,6 +1654,24 @@
     "title": "Political Crisis — Two Secular Politicians Assassinated",
     "verdict": "TRUE",
     "reason": "Chokri Belaid assassinated February 6, 2013; Mohamed Brahmi July 25, 2013. Both secular leftists. Political crisis and near-collapse of transition confirmed. Event correctly says 'February' and 'July'.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chokri Belaid assassinated February 6, 2013; Mohamed Brahmi July 25, 2013. Both secular leftists. Political crisis and near-collapse of transition confirmed. Event correctly says 'February' and 'July'.",
+        "source": "https://en.wikipedia.org/wiki/2013%E2%80%932014_Tunisian_political_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2013%E2%80%932014_Tunisian_political_crisis"
   },
   {
@@ -473,6 +1679,24 @@
     "title": "National Dialogue Quartet Saves Democratic Transition",
     "verdict": "TRUE",
     "reason": "National Dialogue Quartet (UGTT, UTICA, lawyers, LTDH) brokered the Ennahda handover to a technocratic caretaker government — confirmed. Nobel Prize awarded 2015 for this work.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "National Dialogue Quartet (UGTT, UTICA, lawyers, LTDH) brokered the Ennahda handover to a technocratic caretaker government — confirmed. Nobel Prize awarded 2015 for this work.",
+        "source": "https://www.nobelprize.org/prizes/peace/2015/tndq/facts/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nobelprize.org/prizes/peace/2015/tndq/facts/"
   },
   {
@@ -480,6 +1704,24 @@
     "title": "New Constitution Adopted — Most Progressive in Arab World",
     "verdict": "TRUE",
     "reason": "Constitution adopted January 26, 2014 (event says 'January 27' — actual date is 26 January; minor one-day discrepancy) by 200–12 vote. Guarantees cited are confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitution adopted January 26, 2014 (event says 'January 27' — actual date is 26 January; minor one-day discrepancy) by 200–12 vote. Guarantees cited are confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Tunisian_Constitution_of_2014",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tunisian_Constitution_of_2014"
   },
   {
@@ -487,6 +1729,24 @@
     "title": "Nidaa Tounes Wins Parliamentary Elections",
     "verdict": "TRUE",
     "reason": "Nidaa Tounes winning plurality in October 2014 elections; Ennahda choosing to enter national unity coalition — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nidaa Tounes winning plurality in October 2014 elections; Ennahda choosing to enter national unity coalition — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2014_Tunisian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2014_Tunisian_parliamentary_election"
   },
   {
@@ -494,6 +1754,24 @@
     "title": "Beji Caid Essebsi Elected President",
     "verdict": "TRUE",
     "reason": "Essebsi won December 21, 2014 runoff with 55.68% (event says '55%' — correct rounding). First freely elected president — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Essebsi won December 21, 2014 runoff with 55.68% (event says '55%' — correct rounding). First freely elected president — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Beji_Caid_Essebsi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Beji_Caid_Essebsi"
   },
   {
@@ -501,6 +1779,24 @@
     "title": "Bardo Museum Attack Kills 22 Tourists",
     "verdict": "FALSE",
     "reason": "Attack on March 18, 2015 (event says 'March 2015' — correct month). However, 21 people were killed at the scene with one dying later (total 22 in some counts). Event says '22 people, mostly European tourists' — that total is reached only when counting the later death; on-scene count was 21. Additionally, the attack involved two gunmen (Labidi and Khachnaoui), not just 'gunmen' plural affiliating with IS — attribution was disputed between IS and Okba Ibn Nafaa Brigade. The 22-person death count is defensible but requires the later death. Status: VERIFIED (marginal).",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Attack on March 18, 2015 (event says 'March 2015' — correct month). However, 21 people were killed at the scene with one dying later (total 22 in some counts). Event says '22 people, mostly European tourists' — that total is reached only when counting the later death; on-scene count was 21. Additionally, the attack involved two gunmen (Labidi and Khachnaoui), not just 'gunmen' plural affiliating with IS — attribution was disputed between IS and Okba Ibn Nafaa Brigade. The 22-person death count is defensible but requires the later death. Status: VERIFIED (marginal).",
+        "source": "https://en.wikipedia.org/wiki/Bardo_National_Museum_attack",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bardo_National_Museum_attack"
   },
   {
@@ -508,6 +1804,24 @@
     "title": "Sousse Beach Resort Massacre — 38 Killed",
     "verdict": "TRUE",
     "reason": "June 26, 2015 attack at Port El Kantaoui by Seifeddine Rezgui killing 38 people (30 British) confirmed in full detail.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 26, 2015 attack at Port El Kantaoui by Seifeddine Rezgui killing 38 people (30 British) confirmed in full detail.",
+        "source": "https://en.wikipedia.org/wiki/2015_Sousse_attacks",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2015_Sousse_attacks"
   },
   {
@@ -515,6 +1829,24 @@
     "title": "National Dialogue Quartet Wins Nobel Peace Prize",
     "verdict": "TRUE",
     "reason": "2015 Nobel Peace Prize awarded to the Quartet (UGTT, UTICA, LTDH, Order of Lawyers) — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2015 Nobel Peace Prize awarded to the Quartet (UGTT, UTICA, LTDH, Order of Lawyers) — confirmed.",
+        "source": "https://www.nobelprize.org/prizes/peace/2015/press-release/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nobelprize.org/prizes/peace/2015/press-release/"
   },
   {
@@ -522,6 +1854,24 @@
     "title": "Economic Stagnation Deepens — Youth Unemployment Crisis",
     "verdict": "TRUE",
     "reason": "Post-2014 economic stagnation and youth unemployment above 30% in interior regions, IMF loan programme — confirmed as documented trend.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Post-2014 economic stagnation and youth unemployment above 30% in interior regions, IMF loan programme — confirmed as documented trend.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Tunisia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Tunisia"
   },
   {
@@ -529,6 +1879,24 @@
     "title": "Nidaa Tounes Fractures — Political Instability Deepens",
     "verdict": "TRUE",
     "reason": "Nidaa Tounes' 2017 fracture driven by Hafedh Caid Essebsi's consolidation of the party is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nidaa Tounes' 2017 fracture driven by Hafedh Caid Essebsi's consolidation of the party is documented.",
+        "source": "https://en.wikipedia.org/wiki/Nidaa_Tounes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Nidaa_Tounes"
   },
   {
@@ -536,6 +1904,24 @@
     "title": "Protests in Kasserine and Interior Cities — Economic Despair",
     "verdict": "TRUE",
     "reason": "2017 Kasserine protests over unemployment and regional neglect echoing 2010–11 conditions are documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2017 Kasserine protests over unemployment and regional neglect echoing 2010–11 conditions are documented.",
+        "source": "https://en.wikipedia.org/wiki/2017_Tunisian_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2017_Tunisian_protests"
   },
   {
@@ -543,6 +1929,24 @@
     "title": "Municipal Elections — First in Tunisia's History",
     "verdict": "TRUE",
     "reason": "May 2018 first-ever free municipal elections with ~33% turnout and strong independent candidate performance confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 2018 first-ever free municipal elections with ~33% turnout and strong independent candidate performance confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2018_Tunisian_municipal_elections",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2018_Tunisian_municipal_elections"
   },
   {
@@ -550,6 +1954,24 @@
     "title": "IMF Austerity Measures Trigger Widespread Protests",
     "verdict": "TRUE",
     "reason": "January 2018 'Fash Negdhoo' protests against VAT increases and public-sector hiring cuts — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 2018 'Fash Negdhoo' protests against VAT increases and public-sector hiring cuts — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2018_Tunisian_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2018_Tunisian_protests"
   },
   {
@@ -557,6 +1979,24 @@
     "title": "Essebsi Dies — Constitutional Succession Test",
     "verdict": "TRUE",
     "reason": "Essebsi died in office on July 25, 2019; speaker Mohamed Ennaceur assumed interim presidency; constitutional succession followed — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Essebsi died in office on July 25, 2019; speaker Mohamed Ennaceur assumed interim presidency; constitutional succession followed — confirmed.",
+        "source": "https://www.france24.com/en/20190725-tunisia-president-essebsi-dies-aged-92",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.france24.com/en/20190725-tunisia-president-essebsi-dies-aged-92"
   },
   {
@@ -564,6 +2004,24 @@
     "title": "Kais Saied Elected President — Anti-Establishment Wave",
     "verdict": "TRUE",
     "reason": "Saied won October 2019 runoff with 72.71% (event says '73%' — consistent rounding). Opponent was Nabil Karoui; youth support documented — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Saied won October 2019 runoff with 72.71% (event says '73%' — consistent rounding). Opponent was Nabil Karoui; youth support documented — confirmed.",
+        "source": "https://www.aljazeera.com/news/2019/10/14/tunisia-presidential-election-kais-saied-declared-winner",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2019/10/14/tunisia-presidential-election-kais-saied-declared-winner"
   },
   {
@@ -571,6 +2029,24 @@
     "title": "Ennahda Leads in Parliamentary Elections — Fragmented Assembly",
     "verdict": "TRUE",
     "reason": "October 2019 parliamentary elections giving Ennahda ~52 seats in fragmented 217-seat assembly and subsequent difficulty forming a government — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 2019 parliamentary elections giving Ennahda ~52 seats in fragmented 217-seat assembly and subsequent difficulty forming a government — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2019_Tunisian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2019_Tunisian_parliamentary_election"
   },
   {
@@ -578,6 +2054,24 @@
     "title": "COVID-19 Devastates Economy and Tourist Sector",
     "verdict": "TRUE",
     "reason": "Tunisia's GDP fell ~8.8% in 2020, worst contraction since independence, tourist sector collapse — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tunisia's GDP fell ~8.8% in 2020, worst contraction since independence, tourist sector collapse — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Tunisia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Tunisia"
   },
   {
@@ -585,6 +2079,24 @@
     "title": "Political Paralysis — Saied vs Parliament Deadlock",
     "verdict": "TRUE",
     "reason": "2020 Saied-parliament deadlock, PM Mechichi caught between competing authority centres, constitutional semi-presidential dysfunction — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2020 Saied-parliament deadlock, PM Mechichi caught between competing authority centres, constitutional semi-presidential dysfunction — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kais_Saied",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kais_Saied"
   },
   {
@@ -592,6 +2104,24 @@
     "title": "Saied's July 25 Power Grab — Democracy Suspended",
     "verdict": "TRUE",
     "reason": "July 25, 2021: Saied invoked Article 80, dismissed PM Mechichi, suspended parliament, assumed executive power by decree — all details confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 25, 2021: Saied invoked Article 80, dismissed PM Mechichi, suspended parliament, assumed executive power by decree — all details confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2021_Tunisian_self-coup",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2021_Tunisian_self-coup"
   },
   {
@@ -599,6 +2129,24 @@
     "title": "International Aid Withheld Over Democratic Backsliding",
     "verdict": "TRUE",
     "reason": "Western governments and IMF withholding loans/aid over democratic backsliding post-July 2021 documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Western governments and IMF withholding loans/aid over democratic backsliding post-July 2021 documented.",
+        "source": "https://en.wikipedia.org/wiki/Kais_Saied",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kais_Saied"
   },
   {
@@ -606,6 +2154,24 @@
     "title": "New Constitution Adopted — Presidential Republic Restored",
     "verdict": "TRUE",
     "reason": "July 25, 2022 referendum: 94.6% yes, 30.5% turnout (event says '27%' — actual was 30.5%; minor discrepancy). Constitution concentrating power in presidency confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 25, 2022 referendum: 94.6% yes, 30.5% turnout (event says '27%' — actual was 30.5%; minor discrepancy). Constitution concentrating power in presidency confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2022_Tunisian_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2022_Tunisian_constitutional_referendum"
   },
   {
@@ -613,6 +2179,24 @@
     "title": "Economic Crisis — IMF Negotiations for Bailout",
     "verdict": "TRUE",
     "reason": "Tunisia's 2022 fiscal crisis, IMF $1.9bn programme negotiations, Saied's public rejection of IMF conditions — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tunisia's 2022 fiscal crisis, IMF $1.9bn programme negotiations, Saied's public rejection of IMF conditions — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Tunisia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Tunisia"
   },
   {
@@ -620,6 +2204,24 @@
     "title": "Mass Migration to Europe Increases Dramatically",
     "verdict": "TRUE",
     "reason": "2022 dramatic increase in irregular migration from Tunisia to Italy via Lampedusa confirmed in multiple news sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2022 dramatic increase in irregular migration from Tunisia to Italy via Lampedusa confirmed in multiple news sources.",
+        "source": "https://en.wikipedia.org/wiki/Tunisian_migration_to_Europe",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tunisian_migration_to_Europe"
   },
   {
@@ -627,6 +2229,24 @@
     "title": "Saied Scapegoats Sub-Saharan African Migrants",
     "verdict": "TRUE",
     "reason": "February 2023 Saied statements on sub-Saharan migrants, violence against Black Africans, deportations to Libya without due process — confirmed by Amnesty International.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 2023 Saied statements on sub-Saharan migrants, violence against Black Africans, deportations to Libya without due process — confirmed by Amnesty International.",
+        "source": "https://www.amnesty.org/en/latest/campaigns/2023/07/human-rights-under-assault-two-years-after-president-saieds-power-grab/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.amnesty.org/en/latest/campaigns/2023/07/human-rights-under-assault-two-years-after-president-saieds-power-grab/"
   },
   {
@@ -634,6 +2254,24 @@
     "title": "European Union-Tunisia Migration Deal Signed",
     "verdict": "TRUE",
     "reason": "July 2023 MoU with von der Leyen and Meloni pledging 105 million euros for migration control confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 2023 MoU with von der Leyen and Meloni pledging 105 million euros for migration control confirmed.",
+        "source": "https://en.wikipedia.org/wiki/EU%E2%80%93Tunisia_migration_deal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/EU%E2%80%93Tunisia_migration_deal"
   },
   {
@@ -641,6 +2279,24 @@
     "title": "IMF Deal Remains Elusive — Subsidy Reform Rejected",
     "verdict": "TRUE",
     "reason": "Failure to finalise IMF programme in 2023, food shortages due to import restrictions, Saied's rejection of IMF conditions — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Failure to finalise IMF programme in 2023, food shortages due to import restrictions, Saied's rejection of IMF conditions — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Tunisia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Tunisia"
   },
   {
@@ -648,6 +2304,24 @@
     "title": "Crackdown on Opposition Politicians and Civil Society",
     "verdict": "TRUE",
     "reason": "2023 arrest of former prime ministers, party leaders, journalists, and civil society activists on conspiracy charges — confirmed by Amnesty International and Human Rights Watch.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2023 arrest of former prime ministers, party leaders, journalists, and civil society activists on conspiracy charges — confirmed by Amnesty International and Human Rights Watch.",
+        "source": "https://www.amnesty.org/en/latest/campaigns/2023/07/human-rights-under-assault-two-years-after-president-saieds-power-grab/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.amnesty.org/en/latest/campaigns/2023/07/human-rights-under-assault-two-years-after-president-saieds-power-grab/"
   },
   {
@@ -655,6 +2329,24 @@
     "title": "Saied Re-elected in Low-Turnout Election",
     "verdict": "TRUE",
     "reason": "October 6, 2024 election: Saied won 90.69% (event says '89%' — initial exit poll figure; final official result was 90.69%). Turnout was 28.8% (event says 'extremely low' — consistent). Opposition leaders in prison, restricted media — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 6, 2024 election: Saied won 90.69% (event says '89%' — initial exit poll figure; final official result was 90.69%). Turnout was 28.8% (event says 'extremely low' — consistent). Opposition leaders in prison, restricted media — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2024_Tunisian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2024_Tunisian_presidential_election"
   },
   {
@@ -662,6 +2354,24 @@
     "title": "Lampedusa Migration Crisis — Tunisians Among Largest Groups",
     "verdict": "TRUE",
     "reason": "Tunisians remaining among the largest national groups crossing to Lampedusa in 2024 despite the 2023 EU deal is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tunisians remaining among the largest national groups crossing to Lampedusa in 2024 despite the 2023 EU deal is documented.",
+        "source": "https://en.wikipedia.org/wiki/European_migrant_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/European_migrant_crisis"
   }
 ]

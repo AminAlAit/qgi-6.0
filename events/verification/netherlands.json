@@ -4,6 +4,24 @@
     "title": "Indonesia Independence Recognised Under Dutch Pressure",
     "verdict": "TRUE",
     "reason": "Queen Juliana formally signed the transfer of sovereignty to the Republic of the United States of Indonesia on 27 December 1949, following the Dutch-Indonesian Round Table Conference in The Hague. US and UN pressure on the Netherlands is well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Queen Juliana formally signed the transfer of sovereignty to the Republic of the United States of Indonesia on 27 December 1949, following the Dutch-Indonesian Round Table Conference in The Hague. US and UN pressure on the Netherlands is well-documented.",
+        "source": "https://en.wikipedia.org/wiki/Dutch%E2%80%93Indonesian_Round_Table_Conference",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dutch%E2%80%93Indonesian_Round_Table_Conference"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Marshall Plan Aid Accelerates Dutch Post-War Reconstruction",
     "verdict": "PARTIAL",
     "reason": "The Netherlands received approximately one billion dollars in Marshall Plan assistance, confirmed by multiple sources including the US Embassy in the Netherlands. The specific figure of $1.1 billion is broadly consistent with sources citing 8.15% of the total $13.3 billion disbursed, though the exact Dutch figure varies slightly by source.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Netherlands received approximately one billion dollars in Marshall Plan assistance, confirmed by multiple sources including the US Embassy in the Netherlands. The specific figure of $1.1 billion is broadly consistent with sources citing 8.15% of the total $13.3 billion disbursed, though the exact Dutch figure varies slightly by source.",
+        "source": "https://nl.usembassy.gov/marshall-plan-1947-2017/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://nl.usembassy.gov/marshall-plan-1947-2017/"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Netherlands Co-founds European Coal and Steel Community",
     "verdict": "TRUE",
     "reason": "The Netherlands was one of six founding members of the ECSC, signing the Treaty of Paris on 18 April 1951 alongside Belgium, Luxembourg, France, Italy, and West Germany. The treaty came into force on 23 July 1952.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Netherlands was one of six founding members of the ECSC, signing the Treaty of Paris on 18 April 1951 alongside Belgium, Luxembourg, France, Italy, and West Germany. The treaty came into force on 23 July 1952.",
+        "source": "https://en.wikipedia.org/wiki/European_Coal_and_Steel_Community",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/European_Coal_and_Steel_Community"
   },
   {
@@ -25,6 +79,24 @@
     "title": "NATO Headquarters Established: Netherlands as Founding Member",
     "verdict": "TRUE",
     "reason": "The Netherlands was one of 12 founding NATO members, signing the North Atlantic Treaty on 4 April 1949. Foreign Minister Dirk Stikker signed on behalf of the Netherlands. The event is correctly placed in this period though the signature was in 1949.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Netherlands was one of 12 founding NATO members, signing the North Atlantic Treaty on 4 April 1949. Foreign Minister Dirk Stikker signed on behalf of the Netherlands. The event is correctly placed in this period though the signature was in 1949.",
+        "source": "https://www.government.nl/topics/nato/the-netherlands-and-nato",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.government.nl/topics/nato/the-netherlands-and-nato"
   },
   {
@@ -32,6 +104,24 @@
     "title": "North Sea Flood Disaster Kills Nearly 1,900",
     "verdict": "TRUE",
     "reason": "The flood on the night of 31 January to 1 February 1953 killed 1,836 people in the Netherlands across Zeeland, South Holland, and North Brabant, flooding over 340,000 acres. The death toll figure of 1,836 is confirmed by Wikipedia and the Zeeuws Archief.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The flood on the night of 31 January to 1 February 1953 killed 1,836 people in the Netherlands across Zeeland, South Holland, and North Brabant, flooding over 340,000 acres. The death toll figure of 1,836 is confirmed by Wikipedia and the Zeeuws Archief.",
+        "source": "https://en.wikipedia.org/wiki/North_Sea_flood_of_1953",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/North_Sea_flood_of_1953"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Charter for the Kingdom of the Netherlands Established",
     "verdict": "TRUE",
     "reason": "The Charter for the Kingdom of the Netherlands was signed by Queen Juliana on 15 December 1954, coming into effect 29 December 1954, granting Suriname and the Netherlands Antilles autonomous equal status within the Kingdom.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Charter for the Kingdom of the Netherlands was signed by Queen Juliana on 15 December 1954, coming into effect 29 December 1954, granting Suriname and the Netherlands Antilles autonomous equal status within the Kingdom.",
+        "source": "https://en.wikipedia.org/wiki/Charter_for_the_Kingdom_of_the_Netherlands",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Charter_for_the_Kingdom_of_the_Netherlands"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Treaty of Rome: Netherlands as EEC Co-founder",
     "verdict": "TRUE",
     "reason": "The Netherlands signed the Treaty of Rome on 25 March 1957 as one of six founding members of the European Economic Community, which came into force on 1 January 1958.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Netherlands signed the Treaty of Rome on 25 March 1957 as one of six founding members of the European Economic Community, which came into force on 1 January 1958.",
+        "source": "https://en.wikipedia.org/wiki/Treaty_of_Rome",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Treaty_of_Rome"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Massive Natural Gas Discovery at Groningen",
     "verdict": "TRUE",
     "reason": "NAM discovered the Groningen gas field at Slochteren on 22 July 1959, which became one of the world's largest natural gas fields. Production began in 1963 and the field profoundly shaped the Dutch economy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "NAM discovered the Groningen gas field at Slochteren on 22 July 1959, which became one of the world's largest natural gas fields. Production began in 1963 and the field profoundly shaped the Dutch economy.",
+        "source": "https://en.wikipedia.org/wiki/Groningen_gas_field",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Groningen_gas_field"
   },
   {
@@ -60,6 +204,24 @@
     "title": "West New Guinea (Papua) Transferred to Indonesia",
     "verdict": "TRUE",
     "reason": "The New York Agreement was signed on 15 August 1962, with the Netherlands transferring West New Guinea to a UN Temporary Executive Authority (UNTEA) on 1 October 1962, which then ceded it to Indonesia on 1 May 1963. US diplomat Ellsworth Bunker mediated.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The New York Agreement was signed on 15 August 1962, with the Netherlands transferring West New Guinea to a UN Temporary Executive Authority (UNTEA) on 1 October 1962, which then ceded it to Indonesia on 1 May 1963. US diplomat Ellsworth Bunker mediated.",
+        "source": "https://en.wikipedia.org/wiki/New_York_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/New_York_Agreement"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Delta Works Construction Programme Underway",
     "verdict": "TRUE",
     "reason": "The Delta Works were constructed between 1954 and 1997, with the Maeslantkering completed in 1997 as the final major component. The Haringvliet dam and other structures were built through the 1960s as described. The project is listed among the seven wonders of the modern world.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Delta Works were constructed between 1954 and 1997, with the Maeslantkering completed in 1997 as the final major component. The Haringvliet dam and other structures were built through the 1960s as described. The project is listed among the seven wonders of the modern world.",
+        "source": "https://en.wikipedia.org/wiki/Delta_Works",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Delta_Works"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Provo Movement and Amsterdam Street Protests",
     "verdict": "TRUE",
     "reason": "The Provo movement disrupted Princess Beatrix's wedding procession on 10 March 1966 with smoke bombs, and further riots occurred in June 1966. The events led to the resignation of Amsterdam's police chief and mayor.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Provo movement disrupted Princess Beatrix's wedding procession on 10 March 1966 with smoke bombs, and further riots occurred in June 1966. The events led to the resignation of Amsterdam's police chief and mayor.",
+        "source": "https://www.rijksmuseum.nl/en/collection/NG-2009-81",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.rijksmuseum.nl/en/collection/NG-2009-81"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Student and Cultural Revolution Reshapes Dutch Society",
     "verdict": "TRUE",
     "reason": "The first student university occupation in the Netherlands occurred in Nijmegen in autumn 1968, with broader student unrest across universities. The pillarisation (verzuiling) system began its long decline from the 1960s onward as documented by academic sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The first student university occupation in the Netherlands occurred in Nijmegen in autumn 1968, with broader student unrest across universities. The pillarisation (verzuiling) system began its long decline from the 1960s onward as documented by academic sources.",
+        "source": "https://nvdatabase.swarthmore.edu/content/dutch-students-organize-university-reforms-1968-1971",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://nvdatabase.swarthmore.edu/content/dutch-students-organize-university-reforms-1968-1971"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Moluccan Community Tensions Rise Following Decolonisation",
     "verdict": "TRUE",
     "reason": "In 1970 the Dutch government admitted Moluccans were permanent residents, not temporary. The first violent incident occurred in 1970 at the Indonesian Ambassador's house in Wassenaar where a Dutch policeman was killed. The Moluccan community of approximately 12,500 soldiers and their families was brought to the Netherlands starting in 1950.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 1970 the Dutch government admitted Moluccans were permanent residents, not temporary. The first violent incident occurred in 1970 at the Indonesian Ambassador's house in Wassenaar where a Dutch policeman was killed. The Moluccan community of approximately 12,500 soldiers and their families was brought to the Netherlands starting in 1950.",
+        "source": "https://en.wikipedia.org/wiki/Moluccan_diaspora",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Moluccan_diaspora"
   },
   {
@@ -95,6 +329,24 @@
     "title": "OPEC Oil Embargo Triggers Dutch Energy Crisis",
     "verdict": "TRUE",
     "reason": "Arab OAPEC members imposed a total oil embargo on the Netherlands starting October 1973 due to Dutch support for Israel in the Yom Kippur War. The Netherlands was one of the countries specifically targeted with a complete embargo, causing severe fuel shortages including car-free Sundays.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Arab OAPEC members imposed a total oil embargo on the Netherlands starting October 1973 due to Dutch support for Israel in the Yom Kippur War. The Netherlands was one of the countries specifically targeted with a complete embargo, causing severe fuel shortages including car-free Sundays.",
+        "source": "https://en.wikipedia.org/wiki/1973_oil_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1973_oil_crisis"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Suriname Gains Independence",
     "verdict": "TRUE",
     "reason": "Suriname became independent on 25 November 1975 when Queen Juliana signed the declaration of independence, ending approximately 300 years of Dutch colonial rule. Princess Beatrix attended the independence celebrations in Paramaribo.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Suriname became independent on 25 November 1975 when Queen Juliana signed the declaration of independence, ending approximately 300 years of Dutch colonial rule. Princess Beatrix attended the independence celebrations in Paramaribo.",
+        "source": "https://en.wikipedia.org/wiki/Suriname",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Suriname"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Moluccan Train Hijacking at De Punt",
     "verdict": "PARTIAL",
     "reason": "The 1975 train hijacking occurred near Wijster (between Hoogeveen and Beilen), not at De Punt as the title states. De Punt was the location of the 1977 hijacking. The 1975 event lasted 12 days and ended without the hijackers' demands being met; three hostages were killed (not zero as described).",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The 1975 train hijacking occurred near Wijster (between Hoogeveen and Beilen), not at De Punt as the title states. De Punt was the location of the 1977 hijacking. The 1975 event lasted 12 days and ended without the hijackers' demands being met; three hostages were killed (not zero as described).",
+        "source": "https://en.wikipedia.org/wiki/1975_Dutch_train_hijacking",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1975_Dutch_train_hijacking"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Second Moluccan Train Hijacking Ends in Military Assault",
     "verdict": "TRUE",
     "reason": "South Moluccan activists hijacked a train at De Punt on 23 May 1977 and simultaneously seized a primary school in Bovensmilde. Dutch marines stormed both locations on 11 June 1977; six hijackers and two hostages died in the assault after 20 days.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "South Moluccan activists hijacked a train at De Punt on 23 May 1977 and simultaneously seized a primary school in Bovensmilde. Dutch marines stormed both locations on 11 June 1977; six hijackers and two hostages died in the assault after 20 days.",
+        "source": "https://en.wikipedia.org/wiki/1977_Dutch_train_hijacking",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1977_Dutch_train_hijacking"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Neutron Bomb Controversy and Dutch NATO Tensions",
     "verdict": "TRUE",
     "reason": "The Netherlands was a weak link in NATO's dual-track decision of December 1979, refusing to commit to neutron bomb deployment and deferring the decision by two years under intense domestic pressure. This caused friction with Washington and Bonn.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Netherlands was a weak link in NATO's dual-track decision of December 1979, refusing to commit to neutron bomb deployment and deferring the decision by two years under intense domestic pressure. This caused friction with Washington and Bonn.",
+        "source": "https://www.wilsoncenter.org/publication/explaining-dutch-reservations-about-natos-1979-dual-track-decision",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.wilsoncenter.org/publication/explaining-dutch-reservations-about-natos-1979-dual-track-decision"
   },
   {
@@ -130,6 +454,24 @@
     "title": "750,000 Protest NATO Nuclear Missiles in Amsterdam",
     "verdict": "PARTIAL",
     "reason": "A large peace demonstration took place on 29 October 1983 in The Hague (not Amsterdam), with 550,000 people attending that specific march; broader national counts reached over 600,000. The event description incorrectly places the main march in Amsterdam instead of The Hague.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "A large peace demonstration took place on 29 October 1983 in The Hague (not Amsterdam), with 550,000 people attending that specific march; broader national counts reached over 600,000. The event description incorrectly places the main march in Amsterdam instead of The Hague.",
+        "source": "https://en.wikipedia.org/wiki/Hollanditis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hollanditis"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Aruba Gains Separate Status within the Kingdom",
     "verdict": "TRUE",
     "reason": "Aruba achieved Status Aparte within the Kingdom of the Netherlands on 1 January 1986, separating from the Netherlands Antilles federation. The original plan for full independence in 1996 was shelved after Aruba decided in 1990 to postpone indefinitely.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Aruba achieved Status Aparte within the Kingdom of the Netherlands on 1 January 1986, separating from the Netherlands Antilles federation. The original plan for full independence in 1996 was shelved after Aruba decided in 1990 to postpone indefinitely.",
+        "source": "https://en.wikipedia.org/wiki/Status_aparte",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Status_aparte"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Bijlmer Disaster: Amsterdam's Housing Crisis Exposed",
     "verdict": "PARTIAL",
     "reason": "The Bijlmermeer housing crisis was real and ongoing from the late 1970s through the 1980s, with high crime, vacancy rates around 25%, and high unemployment. However, the event is misassigned to 1986; the crisis began developing from the early 1970s and the 1992 El Al crash is a separate event. No specific 1986 milestone is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Bijlmermeer housing crisis was real and ongoing from the late 1970s through the 1980s, with high crime, vacancy rates around 25%, and high unemployment. However, the event is misassigned to 1986; the crisis began developing from the early 1970s and the 1992 El Al crash is a separate event. No specific 1986 milestone is documented.",
+        "source": "https://en.wikipedia.org/wiki/Bijlmermeer",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bijlmermeer"
   },
   {
@@ -151,6 +529,24 @@
     "title": "ING and ABN-AMRO: Dutch Banking Consolidation Era Begins",
     "verdict": "PARTIAL",
     "reason": "The major Dutch banking consolidations occurred in 1990-1991: ABN and AMRO merged to form ABN AMRO in September 1991, and ING Group was formed in 1991 from NMB Postbank Groep and Nationale-Nederlanden. The year 1987 is not associated with these specific mergers; the consolidation era began in earnest in 1990-1991.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The major Dutch banking consolidations occurred in 1990-1991: ABN and AMRO merged to form ABN AMRO in September 1991, and ING Group was formed in 1991 from NMB Postbank Groep and Nationale-Nederlanden. The year 1987 is not associated with these specific mergers; the consolidation era began in earnest in 1990-1991.",
+        "source": "https://en.wikipedia.org/wiki/ABN_AMRO",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/ABN_AMRO"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Maastricht Treaty Negotiated on Dutch Soil",
     "verdict": "TRUE",
     "reason": "The Treaty on European Union was negotiated at a summit in Maastricht in December 1991 during the Dutch EU presidency, and signed on 7 February 1992. The Netherlands did play a central diplomatic role, though the controversial Dutch draft ('Black Monday') was indeed rejected.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Treaty on European Union was negotiated at a summit in Maastricht in December 1991 during the Dutch EU presidency, and signed on 7 February 1992. The Netherlands did play a central diplomatic role, though the controversial Dutch draft ('Black Monday') was indeed rejected.",
+        "source": "https://en.wikipedia.org/wiki/Maastricht_Treaty",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Maastricht_Treaty"
   },
   {
@@ -165,6 +579,24 @@
     "title": "El Al Cargo Plane Crashes into Bijlmermeer Flats",
     "verdict": "TRUE",
     "reason": "El Al Flight 1862 crashed into two apartment blocks in the Bijlmermeer district on 4 October 1992, killing at least 43 people on the ground plus all 4 aboard. A parliamentary inquiry revealed withheld information about cargo contents including depleted uranium.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "El Al Flight 1862 crashed into two apartment blocks in the Bijlmermeer district on 4 October 1992, killing at least 43 people on the ground plus all 4 aboard. A parliamentary inquiry revealed withheld information about cargo contents including depleted uranium.",
+        "source": "https://en.wikipedia.org/wiki/El_Al_Flight_1862",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/El_Al_Flight_1862"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Kok's Purple Coalition Ends 70 Years of Christian Democratic Rule",
     "verdict": "TRUE",
     "reason": "The first Kok cabinet (PvdA, VVD, D66) was formed on 22 August 1994, marking the first time in modern Dutch history that the CDA was excluded from government. The Purple coalition pursued social liberalisation including eventual legalisation of euthanasia and same-sex marriage.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The first Kok cabinet (PvdA, VVD, D66) was formed on 22 August 1994, marking the first time in modern Dutch history that the CDA was excluded from government. The Purple coalition pursued social liberalisation including eventual legalisation of euthanasia and same-sex marriage.",
+        "source": "https://en.wikipedia.org/wiki/Purple_coalition",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Purple_coalition"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Srebrenica Massacre: Dutch UN Peacekeepers Fail to Protect Civilians",
     "verdict": "TRUE",
     "reason": "In July 1995, the UN safe area of Srebrenica fell to Bosnian Serb forces while Dutch UN peacekeepers (Dutchbat) were present. Over 8,000 Bosniak Muslim men and boys were killed. The Dutch state was subsequently found to bear partial legal responsibility.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In July 1995, the UN safe area of Srebrenica fell to Bosnian Serb forces while Dutch UN peacekeepers (Dutchbat) were present. Over 8,000 Bosniak Muslim men and boys were killed. The Dutch state was subsequently found to bear partial legal responsibility.",
+        "source": "https://en.wikipedia.org/wiki/Srebrenica_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Srebrenica_massacre"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Netherlands Legalises Euthanasia (Termination of Life on Request)",
     "verdict": "PARTIAL",
     "reason": "The formal law (Termination of Life on Request and Assisted Suicide Act) was passed in April 2001 and took effect on 1 April 2002, making the Netherlands the first country to formally legalise euthanasia. The year 1998 in the entry is inaccurate; the 1998 period reflects prosecutorial tolerance practices, not formal legislation.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The formal law (Termination of Life on Request and Assisted Suicide Act) was passed in April 2001 and took effect on 1 April 2002, making the Netherlands the first country to formally legalise euthanasia. The year 1998 in the entry is inaccurate; the 1998 period reflects prosecutorial tolerance practices, not formal legislation.",
+        "source": "https://en.wikipedia.org/wiki/Euthanasia_in_the_Netherlands",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Euthanasia_in_the_Netherlands"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Netherlands Legalises Same-Sex Marriage",
     "verdict": "TRUE",
     "reason": "On 1 April 2001, the Netherlands became the first country in the world to legally recognise same-sex marriage. The law received royal assent from Queen Beatrix on 21 December 2000 and took effect on 1 April 2001.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 1 April 2001, the Netherlands became the first country in the world to legally recognise same-sex marriage. The law received royal assent from Queen Beatrix on 21 December 2000 and took effect on 1 April 2001.",
+        "source": "https://en.wikipedia.org/wiki/Same-sex_marriage_in_the_Netherlands",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Same-sex_marriage_in_the_Netherlands"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Srebrenica Report Triggers Kok Government Resignation",
     "verdict": "TRUE",
     "reason": "The NIOD Srebrenica report was released on 10 April 2002, and Prime Minister Wim Kok and his entire second cabinet resigned immediately. This was confirmed by multiple sources including CNN and RFE/RL.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The NIOD Srebrenica report was released on 10 April 2002, and Prime Minister Wim Kok and his entire second cabinet resigned immediately. This was confirmed by multiple sources including CNN and RFE/RL.",
+        "source": "https://edition.cnn.com/2002/WORLD/europe/04/16/netherlands.resign/index.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://edition.cnn.com/2002/WORLD/europe/04/16/netherlands.resign/index.html"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Pim Fortuyn Assassinated Nine Days Before Election",
     "verdict": "TRUE",
     "reason": "Pim Fortuyn was shot dead on 6 May 2002 in Hilversum, nine days before parliamentary elections, by environmental activist Volkert van der Graaf. His LPF party still won 26 seats. The description of this as the first political assassination since Johan de Witt in 1672 is widely cited.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pim Fortuyn was shot dead on 6 May 2002 in Hilversum, nine days before parliamentary elections, by environmental activist Volkert van der Graaf. His LPF party still won 26 seats. The description of this as the first political assassination since Johan de Witt in 1672 is widely cited.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Pim_Fortuyn",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Assassination_of_Pim_Fortuyn"
   },
   {
@@ -214,6 +754,24 @@
     "title": "LPF Collapse and Political Fragmentation",
     "verdict": "TRUE",
     "reason": "The first Balkenende cabinet (VVD-CDA-LPF) collapsed after exactly 87 days on 16 October 2002 due to internal LPF feuding and inexperience. LPF subsequently lost most of its 26 seats in the 2003 elections.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The first Balkenende cabinet (VVD-CDA-LPF) collapsed after exactly 87 days on 16 October 2002 due to internal LPF feuding and inexperience. LPF subsequently lost most of its 26 seats in the 2003 elections.",
+        "source": "https://en.wikipedia.org/wiki/First_Balkenende_cabinet",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/First_Balkenende_cabinet"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Theo van Gogh Murdered by Islamist Extremist",
     "verdict": "TRUE",
     "reason": "Filmmaker Theo van Gogh was shot and stabbed on 2 November 2004 on an Amsterdam street by Dutch-Moroccan Islamist Mohammed Bouyeri, in retaliation for van Gogh's film Submission co-written with Ayaan Hirsi Ali. Bouyeri was sentenced to life imprisonment.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Filmmaker Theo van Gogh was shot and stabbed on 2 November 2004 on an Amsterdam street by Dutch-Moroccan Islamist Mohammed Bouyeri, in retaliation for van Gogh's film Submission co-written with Ayaan Hirsi Ali. Bouyeri was sentenced to life imprisonment.",
+        "source": "https://en.wikipedia.org/wiki/Theo_van_Gogh_(film_director)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Theo_van_Gogh_(film_director)"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Dutch Voters Reject EU Constitutional Treaty in Referendum",
     "verdict": "TRUE",
     "reason": "On 1 June 2005, Dutch voters rejected the EU Constitutional Treaty by 61.6% to 38.2% on a 63.3% turnout. This was three days after France's No vote and dealt a fatal blow to the Constitutional Treaty.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 1 June 2005, Dutch voters rejected the EU Constitutional Treaty by 61.6% to 38.2% on a 63.3% turnout. This was three days after France's No vote and dealt a fatal blow to the Constitutional Treaty.",
+        "source": "https://en.wikipedia.org/wiki/2005_Dutch_European_Constitution_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2005_Dutch_European_Constitution_referendum"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Netherlands Antilles Dissolution Process Initiated",
     "verdict": "TRUE",
     "reason": "In 2006 the Dutch government and the remaining five islands agreed to dissolve the Netherlands Antilles, with the dissolution completed on 10 October 2010. Curaçao and Sint Maarten became autonomous countries, while Bonaire, Sint Eustatius, and Saba became special municipalities.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 2006 the Dutch government and the remaining five islands agreed to dissolve the Netherlands Antilles, with the dissolution completed on 10 October 2010. Curaçao and Sint Maarten became autonomous countries, while Bonaire, Sint Eustatius, and Saba became special municipalities.",
+        "source": "https://en.wikipedia.org/wiki/Dissolution_of_the_Netherlands_Antilles",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dissolution_of_the_Netherlands_Antilles"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Geert Wilders Founds PVV and Releases Fitna Film",
     "verdict": "PARTIAL",
     "reason": "Wilders founded the PVV in 2006 (not 2007 as the title implies), and Fitna was released on 27 March 2008 (not 2007). The entry year is 2007 but both key events occurred in different years (2006 and 2008 respectively). Content of the description is broadly accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Wilders founded the PVV in 2006 (not 2007 as the title implies), and Fitna was released on 27 March 2008 (not 2007). The entry year is 2007 but both key events occurred in different years (2006 and 2008 respectively). Content of the description is broadly accurate.",
+        "source": "https://en.wikipedia.org/wiki/Party_for_Freedom",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Party_for_Freedom"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Fortis and ABN AMRO Bailout During Global Financial Crisis",
     "verdict": "TRUE",
     "reason": "The Dutch government purchased the Dutch operations of Fortis for €16.8 billion on 3 October 2008, and ABN AMRO was nationalised at a total cost of approximately €21.7 billion. The bailouts are confirmed by multiple financial sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Dutch government purchased the Dutch operations of Fortis for €16.8 billion on 3 October 2008, and ABN AMRO was nationalised at a total cost of approximately €21.7 billion. The bailouts are confirmed by multiple financial sources.",
+        "source": "https://en.wikipedia.org/wiki/ABN_AMRO",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/ABN_AMRO"
   },
   {
@@ -256,6 +904,24 @@
     "title": "ING Receives €10 Billion State Bailout",
     "verdict": "PARTIAL",
     "reason": "ING received a €10 billion capital injection from the Dutch state in October 2008 (not 2009), followed by a guarantee on a portfolio of US mortgage assets. The year assigned in the corpus (2009) is one year off; the actual bailout occurred on 19 October 2008.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "ING received a €10 billion capital injection from the Dutch state in October 2008 (not 2009), followed by a guarantee on a portfolio of US mortgage assets. The year assigned in the corpus (2009) is one year off; the actual bailout occurred on 19 October 2008.",
+        "source": "https://www.ing.com/Newsroom/News/Features/Feature/State-aid-for-ING-the-facts-and-figures.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.ing.com/Newsroom/News/Features/Feature/State-aid-for-ING-the-facts-and-figures.htm"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Rutte I Cabinet: First VVD-Led Government in Decades",
     "verdict": "TRUE",
     "reason": "Mark Rutte became Prime Minister on 14 October 2010 leading a VVD-CDA minority cabinet with PVV confidence-and-supply support. This was the first VVD-led government since the party's founding in 1946 and the first government not led by Christian democrats or social democrats in 92 years.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mark Rutte became Prime Minister on 14 October 2010 leading a VVD-CDA minority cabinet with PVV confidence-and-supply support. This was the first VVD-led government since the party's founding in 1946 and the first government not led by Christian democrats or social democrats in 92 years.",
+        "source": "https://en.wikipedia.org/wiki/First_Rutte_cabinet",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/First_Rutte_cabinet"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Eurozone Crisis: Dutch Austerity and Bailout Contributions",
     "verdict": "TRUE",
     "reason": "In September 2011, the Rutte government cut €18 billion from the budget as part of Eurozone crisis austerity. The Netherlands was a key contributor to the European Stability Mechanism and a leading voice for austerity in the crisis period.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In September 2011, the Rutte government cut €18 billion from the budget as part of Eurozone crisis austerity. The Netherlands was a key contributor to the European Stability Mechanism and a leading voice for austerity in the crisis period.",
+        "source": "https://foreignpolicy.com/2012/08/09/the-netherlands-faces-the-politics-of-austerity/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://foreignpolicy.com/2012/08/09/the-netherlands-faces-the-politics-of-austerity/"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Wilders Withdraws Support, Rutte I Cabinet Falls",
     "verdict": "TRUE",
     "reason": "Wilders walked out of Catshuis austerity budget talks on 21 April 2012 and withdrew PVV support, causing the Rutte I cabinet to collapse. New elections produced Rutte II, a VVD-PvdA coalition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Wilders walked out of Catshuis austerity budget talks on 21 April 2012 and withdrew PVV support, causing the Rutte I cabinet to collapse. New elections produced Rutte II, a VVD-PvdA coalition.",
+        "source": "https://en.wikipedia.org/wiki/First_Rutte_cabinet",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/First_Rutte_cabinet"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Queen Beatrix Abdicates; Willem-Alexander Becomes King",
     "verdict": "TRUE",
     "reason": "Queen Beatrix abdicated on 30 April 2013 after a 33-year reign, and Willem-Alexander became the first Dutch king in 123 years (since Willem III who died in 1890). The CBS News headline explicitly confirms the 123-year milestone.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Queen Beatrix abdicated on 30 April 2013 after a 33-year reign, and Willem-Alexander became the first Dutch king in 123 years (since Willem III who died in 1890). The CBS News headline explicitly confirms the 123-year milestone.",
+        "source": "https://www.cbsnews.com/news/dutch-queen-beatrix-abdicates-making-son-willem-alexander-the-netherlands-1st-king-in-123-years/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cbsnews.com/news/dutch-queen-beatrix-abdicates-making-son-willem-alexander-the-netherlands-1st-king-in-123-years/"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "MH17 Shot Down Over Ukraine: 196 Dutch Citizens Killed",
     "verdict": "TRUE",
     "reason": "Malaysia Airlines Flight MH17 was shot down on 17 July 2014 over eastern Ukraine by a Russian-supplied BUK missile, killing all 298 aboard including 196 Dutch nationals. A Dutch court convicted three individuals in November 2022.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Malaysia Airlines Flight MH17 was shot down on 17 July 2014 over eastern Ukraine by a Russian-supplied BUK missile, killing all 298 aboard including 196 Dutch nationals. A Dutch court convicted three individuals in November 2022.",
+        "source": "https://en.wikipedia.org/wiki/Malaysia_Airlines_Flight_17",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Malaysia_Airlines_Flight_17"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "National Commemoration and Repatriation of MH17 Victims",
     "verdict": "TRUE",
     "reason": "The Dutch government organised the solemn repatriation of MH17 victims starting 23 July 2014, with military aircraft landing in Eindhoven and a 100-km motorcade of hearses to Hilversum. The Netherlands declared its first day of mourning in over 50 years.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Dutch government organised the solemn repatriation of MH17 victims starting 23 July 2014, with military aircraft landing in Eindhoven and a 100-km motorcade of hearses to Hilversum. The Netherlands declared its first day of mourning in over 50 years.",
+        "source": "https://www.npr.org/sections/thetwo-way/2014/07/23/334422148/dutch-day-of-mourning-as-remains-of-some-mh17-victims-come-home",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.npr.org/sections/thetwo-way/2014/07/23/334422148/dutch-day-of-mourning-as-remains-of-some-mh17-victims-come-home"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "European Refugee Crisis: Netherlands Faces Asylum Surge",
     "verdict": "PARTIAL",
     "reason": "The Netherlands experienced a record surge in asylum seekers in 2015, but the figure of 58,000 applications cited in the description is higher than sources report (over 40,000 is the documented figure). The political dynamics described are accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Netherlands experienced a record surge in asylum seekers in 2015, but the figure of 58,000 applications cited in the description is higher than sources report (over 40,000 is the documented figure). The political dynamics described are accurate.",
+        "source": "https://asylumineurope.org/reports/country/netherlands/statistics/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://asylumineurope.org/reports/country/netherlands/statistics/"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Advisory Referendum Rejects Ukraine–EU Association Agreement",
     "verdict": "TRUE",
     "reason": "Dutch voters rejected the EU-Ukraine Association Agreement on 6 April 2016 with 61% voting No on a 32.3% turnout. The description accurately notes the Eurosceptic and anti-establishment motivations and the subsequent diplomatic workaround.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Dutch voters rejected the EU-Ukraine Association Agreement on 6 April 2016 with 61% voting No on a 32.3% turnout. The description accurately notes the Eurosceptic and anti-establishment motivations and the subsequent diplomatic workaround.",
+        "source": "https://en.wikipedia.org/wiki/2016_Dutch_Ukraine%E2%80%93European_Union_Association_Agreement_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2016_Dutch_Ukraine%E2%80%93European_Union_Association_Agreement_referendum"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Rutte Defeats Wilders in 'Populism Test' Election",
     "verdict": "TRUE",
     "reason": "The March 2017 election, widely framed as a European populism test, saw VVD remain the largest party with 33 seats. The Rutte III cabinet (VVD, CDA, D66, ChristenUnie) was formed after a record 225-day formation process.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The March 2017 election, widely framed as a European populism test, saw VVD remain the largest party with 33 seats. The Rutte III cabinet (VVD, CDA, D66, ChristenUnie) was formed after a record 225-day formation process.",
+        "source": "https://en.wikipedia.org/wiki/2017_Dutch_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2017_Dutch_general_election"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Shell Dividend Tax Reversal Amid Corporate Lobbying Controversy",
     "verdict": "TRUE",
     "reason": "The Rutte III government abruptly reversed its plan to abolish the dividend withholding tax in October 2018 after Unilever decided not to consolidate its headquarters in the Netherlands. Shell had been a primary lobbying force for abolition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Rutte III government abruptly reversed its plan to abolish the dividend withholding tax in October 2018 after Unilever decided not to consolidate its headquarters in the Netherlands. Shell had been a primary lobbying force for abolition.",
+        "source": "https://www.bloomberg.com/news/articles/2018-10-15/dutch-drop-plan-to-end-dividend-tax-after-unilever-u-k-decision",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.bloomberg.com/news/articles/2018-10-15/dutch-drop-plan-to-end-dividend-tax-after-unilever-u-k-decision"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "Groningen Gas Production Cuts as Earthquake Damage Mounts",
     "verdict": "TRUE",
     "reason": "In 2018 the Dutch cabinet decided to phase out Groningen gas extraction as soon as possible, ultimately targeting complete cessation by 2023. The decision followed years of induced earthquakes causing damage to tens of thousands of homes, with the government committing €22 billion in compensation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 2018 the Dutch cabinet decided to phase out Groningen gas extraction as soon as possible, ultimately targeting complete cessation by 2023. The decision followed years of induced earthquakes causing damage to tens of thousands of homes, with the government committing €22 billion in compensation.",
+        "source": "https://en.wikipedia.org/wiki/Groningen_gas_field",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Groningen_gas_field"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Nitrogen Crisis: Council of State Strikes Down Permits Nationwide",
     "verdict": "TRUE",
     "reason": "On 29 May 2019, the Council of State ruled the Programmatic Approach to Nitrogen (PAS) violated EU habitat directives, invalidating thousands of construction and agricultural permits overnight and suspending an estimated 18,000 construction projects.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 29 May 2019, the Council of State ruled the Programmatic Approach to Nitrogen (PAS) violated EU habitat directives, invalidating thousands of construction and agricultural permits overnight and suspending an estimated 18,000 construction projects.",
+        "source": "https://en.wikipedia.org/wiki/Nitrogen_crisis_in_the_Netherlands",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Nitrogen_crisis_in_the_Netherlands"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Farmers' Protest Movement Erupts Over Nitrogen Regulations",
     "verdict": "TRUE",
     "reason": "Dutch farmers mobilised massively in October 2019, driving approximately 2,200 tractors to The Hague and causing the longest morning traffic jam in Dutch history. The BoerBurgerBeweging (BBB) was founded in 2019 as a result of these protests.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Dutch farmers mobilised massively in October 2019, driving approximately 2,200 tractors to The Hague and causing the longest morning traffic jam in Dutch history. The BoerBurgerBeweging (BBB) was founded in 2019 as a result of these protests.",
+        "source": "https://en.wikipedia.org/wiki/Dutch_farmers%27_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dutch_farmers%27_protests"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "COVID-19 Pandemic: Late Lockdown and Intelligence Failures Draw Criticism",
     "verdict": "TRUE",
     "reason": "Prime Minister Rutte announced a controlled-spread strategy in March 2020, with the Netherlands pivoting to a partial lockdown only as ICU capacity approached collapse. High excess mortality, delayed restrictions, and inadequate PPE procurement drew sustained criticism.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Prime Minister Rutte announced a controlled-spread strategy in March 2020, with the Netherlands pivoting to a partial lockdown only as ICU capacity approached collapse. High excess mortality, delayed restrictions, and inadequate PPE procurement drew sustained criticism.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7450952/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7450952/"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "Child Benefits Scandal (Toeslagenaffaire) Topples Rutte III Cabinet",
     "verdict": "TRUE",
     "reason": "The parliamentary inquiry findings prompted the resignation of the entire Rutte III cabinet on 15 January 2021. Approximately 26,000 families were wrongly labelled as fraudsters by the Tax Authority, driven into poverty, with disproportionate impact on dual-nationality families.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The parliamentary inquiry findings prompted the resignation of the entire Rutte III cabinet on 15 January 2021. Approximately 26,000 families were wrongly labelled as fraudsters by the Tax Authority, driven into poverty, with disproportionate impact on dual-nationality families.",
+        "source": "https://en.wikipedia.org/wiki/Dutch_childcare_benefits_scandal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dutch_childcare_benefits_scandal"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Rutte IV Cabinet Formed After Record 299-Day Formation",
     "verdict": "TRUE",
     "reason": "The fourth Rutte cabinet (VVD, D66, CDA, ChristenUnie) was sworn in on 10 January 2022 after a record 299-day formation following the March 2021 elections. The 'Rutte denies nothing' memo scandal complicated the process.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The fourth Rutte cabinet (VVD, D66, CDA, ChristenUnie) was sworn in on 10 January 2022 after a record 299-day formation following the March 2021 elections. The 'Rutte denies nothing' memo scandal complicated the process.",
+        "source": "https://en.wikipedia.org/wiki/2021%E2%80%932022_Dutch_cabinet_formation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2021%E2%80%932022_Dutch_cabinet_formation"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "Farmer-Citizen Movement (BBB) Emerges as Political Force",
     "verdict": "PARTIAL",
     "reason": "The BBB was founded in 2019 and emerged electorally in 2022-2023. The major electoral breakthrough came in the March 2023 provincial elections where BBB won the most seats in all 12 provinces and became the largest party in the Senate with 16 seats. Assigning the breakthrough to 2022 is one year early.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The BBB was founded in 2019 and emerged electorally in 2022-2023. The major electoral breakthrough came in the March 2023 provincial elections where BBB won the most seats in all 12 provinces and became the largest party in the Senate with 16 seats. Assigning the breakthrough to 2022 is one year early.",
+        "source": "https://en.wikipedia.org/wiki/Farmer%E2%80%93Citizen_Movement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Farmer%E2%80%93Citizen_Movement"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Russia's Ukraine Invasion Reshapes Dutch Foreign Policy and Energy",
     "verdict": "TRUE",
     "reason": "Russia's full-scale invasion of Ukraine in February 2022 intensified Dutch support for Ukraine (over €2.63 billion in military aid), accelerated the Groningen gas phase-out, and drove LNG import infrastructure development. The MH17 context gave Dutch responses particular emotional weight.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Russia's full-scale invasion of Ukraine in February 2022 intensified Dutch support for Ukraine (over €2.63 billion in military aid), accelerated the Groningen gas phase-out, and drove LNG import infrastructure development. The MH17 context gave Dutch responses particular emotional weight.",
+        "source": "https://www.government.nl/topics/russia-and-ukraine/news/2024/02/23/two-years-of-war-in-ukraine-the-netherlands-aid-efforts",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.government.nl/topics/russia-and-ukraine/news/2024/02/23/two-years-of-war-in-ukraine-the-netherlands-aid-efforts"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Mass Farmer Protests: Tractor Blockades and Highway Shutdowns",
     "verdict": "TRUE",
     "reason": "In June-July 2022, Dutch farmers escalated protests with tractor blockades at distribution centres (including Albert Heijn in Zwolle), highway shutdowns, and manure spray incidents, in response to nitrogen reduction targets of up to 70% in designated areas.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In June-July 2022, Dutch farmers escalated protests with tractor blockades at distribution centres (including Albert Heijn in Zwolle), highway shutdowns, and manure spray incidents, in response to nitrogen reduction targets of up to 70% in designated areas.",
+        "source": "https://www.aljazeera.com/news/2022/7/4/dutch-farmers-block-food-distribution-ports-over",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2022/7/4/dutch-farmers-block-food-distribution-ports-over"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "Rutte IV Cabinet Collapses Over Asylum Policy Disagreement",
     "verdict": "TRUE",
     "reason": "The Rutte IV coalition collapsed on 7 July 2023 when coalition partners could not agree on restricting family reunification for asylum seekers. Rutte subsequently announced he would not seek a fifth term and later became NATO Secretary-General.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Rutte IV coalition collapsed on 7 July 2023 when coalition partners could not agree on restricting family reunification for asylum seekers. Rutte subsequently announced he would not seek a fifth term and later became NATO Secretary-General.",
+        "source": "https://www.aljazeera.com/news/2023/7/8/dutch-govt-falls-over-failure-to-agree-on-asylum-seeker-policy",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2023/7/8/dutch-govt-falls-over-failure-to-agree-on-asylum-seeker-policy"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "Geert Wilders and PVV Win Historic Election Victory",
     "verdict": "TRUE",
     "reason": "In the snap election of 22 November 2023, Wilders' PVV won 37 of 150 seats, becoming the largest party by far in the biggest far-right surge in Dutch electoral history. After difficult negotiations, a four-party coalition was formed with Dick Schoof as a compromise Prime Minister.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In the snap election of 22 November 2023, Wilders' PVV won 37 of 150 seats, becoming the largest party by far in the biggest far-right surge in Dutch electoral history. After difficult negotiations, a four-party coalition was formed with Dick Schoof as a compromise Prime Minister.",
+        "source": "https://en.wikipedia.org/wiki/2023_Dutch_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2023_Dutch_general_election"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "Amsterdam Ajax Fan Violence Against Israeli Soccer Fans",
     "verdict": "PARTIAL",
     "reason": "The violence occurred in November 2024 (not November 2023 as the entry year states) following a Europa League match between Ajax and Maccabi Tel Aviv. The year assigned is incorrect by one year. The description of events is otherwise broadly accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The violence occurred in November 2024 (not November 2023 as the entry year states) following a Europa League match between Ajax and Maccabi Tel Aviv. The year assigned is incorrect by one year. The description of events is otherwise broadly accurate.",
+        "source": "https://en.wikipedia.org/wiki/November_2024_Amsterdam_riots",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/November_2024_Amsterdam_riots"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "ASML and Chip Export Restrictions: Technology Geopolitics",
     "verdict": "TRUE",
     "reason": "In 2024, the Dutch government required ASML to apply for export licences for its immersion DUV machines (1970i and 1980i) to China, and also restricted servicing of previously sold equipment. The Netherlands navigated US pressure while managing significant commercial interests.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 2024, the Dutch government required ASML to apply for export licences for its immersion DUV machines (1970i and 1980i) to China, and also restricted servicing of previously sold equipment. The Netherlands navigated US pressure while managing significant commercial interests.",
+        "source": "https://www.cnbc.com/2024/01/02/asml-blocked-from-exporting-some-critical-chipmaking-tools-to-china.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cnbc.com/2024/01/02/asml-blocked-from-exporting-some-critical-chipmaking-tools-to-china.html"
   },
   {
@@ -424,6 +1504,24 @@
     "title": "Dutch Post-War Economic Miracle and Welfare State Expansion",
     "verdict": "TRUE",
     "reason": "The Dutch Wederopbouw (reconstruction) produced industrial output 60% above pre-war levels by the mid-1950s and the 1960s saw unprecedented welfare state expansion. Economic growth averaged over 4% annually through the period, consistent with the description.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Dutch Wederopbouw (reconstruction) produced industrial output 60% above pre-war levels by the mid-1950s and the 1960s saw unprecedented welfare state expansion. Economic growth averaged over 4% annually through the period, consistent with the description.",
+        "source": "https://en.wikipedia.org/wiki/History_of_the_Netherlands_(1900%E2%80%93present)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/History_of_the_Netherlands_(1900%E2%80%93present)"
   },
   {
@@ -431,6 +1529,24 @@
     "title": "Lockheed Bribery Scandal Implicates Prince Bernhard",
     "verdict": "TRUE",
     "reason": "In August 1976, a report confirmed Prince Bernhard had accepted approximately $1.1 million from Lockheed Corporation to influence Dutch fighter jet procurement. He resigned all military posts but avoided criminal prosecution; he privately admitted accepting the money before his 2004 death.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In August 1976, a report confirmed Prince Bernhard had accepted approximately $1.1 million from Lockheed Corporation to influence Dutch fighter jet procurement. He resigned all military posts but avoided criminal prosecution; he privately admitted accepting the money before his 2004 death.",
+        "source": "https://en.wikipedia.org/wiki/Lockheed_bribery_scandals",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Lockheed_bribery_scandals"
   },
   {
@@ -438,6 +1554,24 @@
     "title": "Queen Juliana Abdicates; Beatrix Coronation Marred by Protests",
     "verdict": "TRUE",
     "reason": "Queen Juliana abdicated on 30 April 1980 and Beatrix's inauguration in Amsterdam was disrupted by major riots under the slogan 'Geen woning, geen kroning' (No housing, no coronation). Police, gendarmes, and military were deployed to restore order.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Queen Juliana abdicated on 30 April 1980 and Beatrix's inauguration in Amsterdam was disrupted by major riots under the slogan 'Geen woning, geen kroning' (No housing, no coronation). Police, gendarmes, and military were deployed to restore order.",
+        "source": "https://en.wikipedia.org/wiki/Amsterdam_coronation_riots",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Amsterdam_coronation_riots"
   },
   {
@@ -445,6 +1579,24 @@
     "title": "Dutch Disease Coined: Natural Gas Wealth Erodes Manufacturing",
     "verdict": "PARTIAL",
     "reason": "The term 'Dutch disease' was coined by The Economist in 1977 (not 1984 as implied by the event year). Dutch unemployment did reach approximately 12% in 1983. The Wassenaar Accord was signed in November 1982, not 1984. The year assigned to this event is inaccurate relative to the key milestones described.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The term 'Dutch disease' was coined by The Economist in 1977 (not 1984 as implied by the event year). Dutch unemployment did reach approximately 12% in 1983. The Wassenaar Accord was signed in November 1982, not 1984. The year assigned to this event is inaccurate relative to the key milestones described.",
+        "source": "https://en.wikipedia.org/wiki/Dutch_disease",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dutch_disease"
   },
   {
@@ -452,6 +1604,24 @@
     "title": "Wassenaar Accord: Landmark Wage Restraint and Labour Deal",
     "verdict": "TRUE",
     "reason": "Dutch employers and unions signed the Wassenaar Agreement in November 1982, with unions accepting wage restraint in exchange for shorter working hours. The accord ended stagflation, became an internationally cited model of corporatist consensus, and underpinned the Dutch economic recovery.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Dutch employers and unions signed the Wassenaar Agreement in November 1982, with unions accepting wage restraint in exchange for shorter working hours. The accord ended stagflation, became an internationally cited model of corporatist consensus, and underpinned the Dutch economic recovery.",
+        "source": "https://en.wikipedia.org/wiki/Wassenaar_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Wassenaar_Agreement"
   },
   {
@@ -459,6 +1629,24 @@
     "title": "Dutch Euthanasia Practice: Supreme Court Codifies Guidelines",
     "verdict": "PARTIAL",
     "reason": "The Dutch Supreme Court established guidelines in 1984 (not 1993 or 1994 as the description partially implies). In 1993 parliament passed a reporting requirement bill. The description accurately captures the gradual legal codification but the key Supreme Court ruling date is 1984, not matching the 1993 event year.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Dutch Supreme Court established guidelines in 1984 (not 1993 or 1994 as the description partially implies). In 1993 parliament passed a reporting requirement bill. The description accurately captures the gradual legal codification but the key Supreme Court ruling date is 1984, not matching the 1993 event year.",
+        "source": "https://en.wikipedia.org/wiki/Euthanasia_in_the_Netherlands",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Euthanasia_in_the_Netherlands"
   },
   {
@@ -466,6 +1654,24 @@
     "title": "ICC Established in The Hague: Netherlands Becomes International Justice Hub",
     "verdict": "PARTIAL",
     "reason": "The ICC was formally established under the Rome Statute in 2002 (not 1996), though the Statute was adopted in 1998. The ICJ has been in The Hague since 1946. The ICTY was established in 1993. The event year of 1996 does not correspond to any of the documented ICC milestones.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The ICC was formally established under the Rome Statute in 2002 (not 1996), though the Statute was adopted in 1998. The ICJ has been in The Hague since 1946. The ICTY was established in 1993. The event year of 1996 does not correspond to any of the documented ICC milestones.",
+        "source": "https://en.wikipedia.org/wiki/International_Criminal_Court",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/International_Criminal_Court"
   },
   {
@@ -473,6 +1679,24 @@
     "title": "Netherlands Joins US-Led Coalition in Iraq War",
     "verdict": "TRUE",
     "reason": "The Netherlands provided political support to the 2003 Iraq invasion and deployed approximately 1,350 troops to Al Muthanna province from July 2003 to March 2005. The Davids Commission in 2010 concluded the invasion had no sound mandate under international law.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Netherlands provided political support to the 2003 Iraq invasion and deployed approximately 1,350 troops to Al Muthanna province from July 2003 to March 2005. The Davids Commission in 2010 concluded the invasion had no sound mandate under international law.",
+        "source": "https://www.wsws.org/en/articles/2010/01/iraq-j22.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.wsws.org/en/articles/2010/01/iraq-j22.html"
   },
   {
@@ -480,6 +1704,24 @@
     "title": "Alphen aan den Rijn Mass Shooting Shocks Netherlands",
     "verdict": "PARTIAL",
     "reason": "The Alphen aan den Rijn shopping mall shooting occurred on 9 April 2011 (not 2009 as the event year states). The shooter killed six people (plus himself, seven total) and wounded 17 others. The event year is incorrect by two years.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Alphen aan den Rijn shopping mall shooting occurred on 9 April 2011 (not 2009 as the event year states). The shooter killed six people (plus himself, seven total) and wounded 17 others. The event year is incorrect by two years.",
+        "source": "https://en.wikipedia.org/wiki/Alphen_aan_den_Rijn_shopping_mall_shooting",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Alphen_aan_den_Rijn_shopping_mall_shooting"
   },
   {
@@ -487,6 +1729,24 @@
     "title": "Shell Ordered to Cut CO2 Emissions by Dutch Court",
     "verdict": "PARTIAL",
     "reason": "The Hague District Court ordered Shell to cut global CO2 emissions by 45% in May 2021 (not 2016 as the event year indicates). The year is incorrect by five years. The description of the ruling and its significance is accurate, though the ruling was subsequently overturned on appeal in November 2024.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Hague District Court ordered Shell to cut global CO2 emissions by 45% in May 2021 (not 2016 as the event year indicates). The year is incorrect by five years. The description of the ruling and its significance is accurate, though the ruling was subsequently overturned on appeal in November 2024.",
+        "source": "https://climatecasechart.com/non-us-case/milieudefensie-et-al-v-royal-dutch-shell-plc/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://climatecasechart.com/non-us-case/milieudefensie-et-al-v-royal-dutch-shell-plc/"
   },
   {
@@ -494,6 +1754,24 @@
     "title": "Groningen Gas Field Earthquake Crisis and Compensation Programme",
     "verdict": "TRUE",
     "reason": "The Groningen earthquake crisis produced damage to tens of thousands of homes from induced seismicity. The government committed to ending gas extraction (completed in October 2023) and established a multi-billion euro compensation programme, ultimately allocating €22 billion.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Groningen earthquake crisis produced damage to tens of thousands of homes from induced seismicity. The government committed to ending gas extraction (completed in October 2023) and established a multi-billion euro compensation programme, ultimately allocating €22 billion.",
+        "source": "https://en.wikipedia.org/wiki/Groningen_gas_field",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Groningen_gas_field"
   },
   {
@@ -501,6 +1779,24 @@
     "title": "Netherlands Antilles Dissolved: New Kingdom Structure Established",
     "verdict": "TRUE",
     "reason": "The Netherlands Antilles was formally dissolved on 10 October 2010 ('10/10/10'). Curaçao and Sint Maarten became autonomous countries within the Kingdom, while Bonaire, Sint Eustatius, and Saba became special municipalities (Caribbean Netherlands) of the Netherlands.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Netherlands Antilles was formally dissolved on 10 October 2010 ('10/10/10'). Curaçao and Sint Maarten became autonomous countries within the Kingdom, while Bonaire, Sint Eustatius, and Saba became special municipalities (Caribbean Netherlands) of the Netherlands.",
+        "source": "https://en.wikipedia.org/wiki/Dissolution_of_the_Netherlands_Antilles",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dissolution_of_the_Netherlands_Antilles"
   },
   {
@@ -508,6 +1804,24 @@
     "title": "ICTY Final Verdict: Srebrenica Legacy in Dutch Courts",
     "verdict": "PARTIAL",
     "reason": "The Dutch Supreme Court confirmed in July 2019 (not 2023) that the Netherlands bore 10% liability for approximately 350 Bosniak men handed over to Bosnian Serb forces. The ruling is confirmed but the event year is inaccurate. The entry also conflates ICTY verdicts with Dutch civil litigation.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Dutch Supreme Court confirmed in July 2019 (not 2023) that the Netherlands bore 10% liability for approximately 350 Bosniak men handed over to Bosnian Serb forces. The ruling is confirmed but the event year is inaccurate. The entry also conflates ICTY verdicts with Dutch civil litigation.",
+        "source": "https://www.npr.org/2019/07/19/743413444/dutch-troops-were-10-liable-in-srebrenica-massacre-supreme-court-says",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.npr.org/2019/07/19/743413444/dutch-troops-were-10-liable-in-srebrenica-massacre-supreme-court-says"
   }
 ]

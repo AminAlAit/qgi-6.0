@@ -4,6 +4,24 @@
     "title": "Launch of Social Democratic Front in Bamenda",
     "verdict": "TRUE",
     "reason": "The SDF was founded on 26 May 1990 in Bamenda by Ni John Fru Ndi. Security forces killed at least six protesters at the founding rally, a well-documented founding moment of multiparty opposition in Cameroon.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The SDF was founded on 26 May 1990 in Bamenda by Ni John Fru Ndi. Security forces killed at least six protesters at the founding rally, a well-documented founding moment of multiparty opposition in Cameroon.",
+        "source": "https://en.wikipedia.org/wiki/Social_Democratic_Front_(Cameroon)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Social_Democratic_Front_(Cameroon)"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Legalization of Multiparty Politics",
     "verdict": "TRUE",
     "reason": "On 6 December 1990, Cameroon's National Assembly approved a constitutional amendment providing for a multi-party system, ending nearly three decades of one-party CPDM rule; first opposition parties were recognised from early 1991.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 6 December 1990, Cameroon's National Assembly approved a constitutional amendment providing for a multi-party system, ending nearly three decades of one-party CPDM rule; first opposition parties were recognised from early 1991.",
+        "source": "https://en.wikipedia.org/wiki/Politics_of_Cameroon",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Politics_of_Cameroon"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Villes Mortes Ghost Town Campaign",
     "verdict": "TRUE",
     "reason": "Opposition parties launched the 'Villes Mortes' (Operation Ghost Town) civil disobedience campaign in mid-1991, shutting down commerce across major cities for months; the campaign is well-documented and did paralyze the economy, especially in Anglophone and western regions.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Opposition parties launched the 'Villes Mortes' (Operation Ghost Town) civil disobedience campaign in mid-1991, shutting down commerce across major cities for months; the campaign is well-documented and did paralyze the economy, especially in Anglophone and western regions.",
+        "source": "https://www.dibussi.com/2011/05/memory-lane-may-16-17-1991-opposition-parties-launch-operation-ghost-town.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.dibussi.com/2011/05/memory-lane-may-16-17-1991-opposition-parties-launch-operation-ghost-town.html"
   },
   {
@@ -25,6 +79,24 @@
     "title": "First Multiparty Presidential Election",
     "verdict": "TRUE",
     "reason": "Presidential elections were held on 11 October 1992, the first multiparty contest; Biya won officially with ~40% versus Fru Ndi's ~36% amid widely documented fraud allegations and Fru Ndi's subsequent house arrest.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Presidential elections were held on 11 October 1992, the first multiparty contest; Biya won officially with ~40% versus Fru Ndi's ~36% amid widely documented fraud allegations and Fru Ndi's subsequent house arrest.",
+        "source": "https://en.wikipedia.org/wiki/1992_Cameroonian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1992_Cameroonian_presidential_election"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Anglophone Cameroon Conference in Buea",
     "verdict": "TRUE",
     "reason": "The first All Anglophone Conference (AAC I) convened in Buea on 2-3 April 1993 and produced the Buea Declaration demanding a return to federalism; the document is preserved in the WorldCat catalogue and extensively cited in Anglophone Crisis histories.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The first All Anglophone Conference (AAC I) convened in Buea on 2-3 April 1993 and produced the Buea Declaration demanding a return to federalism; the document is preserved in the WorldCat catalogue and extensively cited in Anglophone Crisis histories.",
+        "source": "https://search.worldcat.org/title/buea-declaration-all-anglophone-conference-2nd-3rd-april-1993/oclc/31133525",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://search.worldcat.org/title/buea-declaration-all-anglophone-conference-2nd-3rd-april-1993/oclc/31133525"
   },
   {
@@ -39,6 +129,24 @@
     "title": "CFA Franc Devaluation Hits Cameroon",
     "verdict": "TRUE",
     "reason": "The CFA franc was devalued by 50% against the French franc on 12 January 1994, mandated by France and the IMF; Cameroon, as a CFA zone member, was directly affected by sharply higher import costs and inflation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The CFA franc was devalued by 50% against the French franc on 12 January 1994, mandated by France and the IMF; Cameroon, as a CFA zone member, was directly affected by sharply higher import costs and inflation.",
+        "source": "https://en.wikipedia.org/wiki/CFA_franc",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/CFA_franc"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Bakassi Peninsula Clashes with Nigeria Begin",
     "verdict": "TRUE",
     "reason": "Armed clashes between Cameroonian and Nigerian forces erupted in the Bakassi Peninsula from December 1993 into early 1994, with Nigerian forces occupying the peninsula on 12 December 1993 and further skirmishes in February 1994; this directly prompted Cameroon to file at the ICJ.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Armed clashes between Cameroonian and Nigerian forces erupted in the Bakassi Peninsula from December 1993 into early 1994, with Nigerian forces occupying the peninsula on 12 December 1993 and further skirmishes in February 1994; this directly prompted Cameroon to file at the ICJ.",
+        "source": "https://en.wikipedia.org/wiki/Bakassi_conflict",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bakassi_conflict"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Cameroon Files Bakassi Case at the ICJ",
     "verdict": "TRUE",
     "reason": "On 29 March 1994, Cameroon filed in the ICJ Registry an Application against Nigeria regarding sovereignty over the Bakassi Peninsula and the Lake Chad/maritime boundary, confirmed by the ICJ's own case record.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 29 March 1994, Cameroon filed in the ICJ Registry an Application against Nigeria regarding sovereignty over the Bakassi Peninsula and the Lake Chad/maritime boundary, confirmed by the ICJ's own case record.",
+        "source": "https://www.icj-cij.org/case/94",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.icj-cij.org/case/94"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Cameroon Joins the Commonwealth",
     "verdict": "TRUE",
     "reason": "Cameroon was admitted to the Commonwealth of Nations on 13 November 1995 at the CHOGM in Auckland as the 52nd member, becoming the first majority-Francophone country to join; the year and substance are correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cameroon was admitted to the Commonwealth of Nations on 13 November 1995 at the CHOGM in Auckland as the 52nd member, becoming the first majority-Francophone country to join; the year and substance are correct.",
+        "source": "https://en.wikipedia.org/wiki/Member_states_of_the_Commonwealth_of_Nations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Member_states_of_the_Commonwealth_of_Nations"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Constitutional Revision Extends Presidential Term",
     "verdict": "TRUE",
     "reason": "The Law No. 96/06 of 18 January 1996 revised the constitution, extending the presidential term to seven years with a two-term limit and establishing a Senate and decentralised regions, exactly as described.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Law No. 96/06 of 18 January 1996 revised the constitution, extending the presidential term to seven years with a two-term limit and establishing a Senate and decentralised regions, exactly as described.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_Cameroon",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Constitution_of_Cameroon"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Biya Re-elected in Boycotted Presidential Election",
     "verdict": "TRUE",
     "reason": "Biya won the October 1997 presidential election with 92.6% after the SDF, UNDP and CDU boycotted over the government's refusal to create an independent electoral commission; the low turnout and boycott are extensively documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Biya won the October 1997 presidential election with 92.6% after the SDF, UNDP and CDU boycotted over the government's refusal to create an independent electoral commission; the low turnout and boycott are extensively documented.",
+        "source": "https://en.wikipedia.org/wiki/1997_Cameroonian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1997_Cameroonian_presidential_election"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Cameroon Begins Oil Production Expansion at Kribi",
     "verdict": "TRUE",
     "reason": "The World Bank appraised the Chad-Cameroon Petroleum Development and Pipeline Project in June 1999 (feasibility work underway from 1998); the project positions Cameroon as transit country with a marine terminal at Kribi, matching the event description within the ±2-year tolerance.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The World Bank appraised the Chad-Cameroon Petroleum Development and Pipeline Project in June 1999 (feasibility work underway from 1998); the project positions Cameroon as transit country with a marine terminal at Kribi, matching the event description within the ±2-year tolerance.",
+        "source": "https://en.wikipedia.org/wiki/Chad%E2%80%93Cameroon_Petroleum_Development_and_Pipeline_Project",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Chad%E2%80%93Cameroon_Petroleum_Development_and_Pipeline_Project"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Southern Cameroons National Council Intensifies Activism",
     "verdict": "TRUE",
     "reason": "In 1999 the SCNC escalated activism including occupying CRTV offices in Buea to declare symbolic independence; a military tribunal sentenced SCNC members on 6 October 1999, and arrests were documented by Amnesty International and the IRB.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 1999 the SCNC escalated activism including occupying CRTV offices in Buea to declare symbolic independence; a military tribunal sentenced SCNC members on 6 October 1999, and arrests were documented by Amnesty International and the IRB.",
+        "source": "https://en.wikipedia.org/wiki/Southern_Cameroons_National_Council",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Southern_Cameroons_National_Council"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Heavily Indebted Poor Countries Debt Relief",
     "verdict": "TRUE",
     "reason": "Cameroon reached the HIPC decision point in October 2000, qualifying for approximately US$1.267 billion in debt relief in NPV terms; the timing and substance are confirmed by IMF and World Bank documents.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cameroon reached the HIPC decision point in October 2000, qualifying for approximately US$1.267 billion in debt relief in NPV terms; the timing and substance are confirmed by IMF and World Bank documents.",
+        "source": "https://www.imf.org/external/pubs/cat/longres.aspx?sk=19280",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.imf.org/external/pubs/cat/longres.aspx?sk=19280"
   },
   {
@@ -102,6 +354,24 @@
     "title": "ICJ Awards Bakassi Peninsula to Cameroon",
     "verdict": "TRUE",
     "reason": "The ICJ delivered judgment on 10 October 2002 awarding sovereignty over Bakassi to Cameroon based on the 1913 Anglo-German Agreement; Nigeria's initial non-compliance and delayed implementation are also well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The ICJ delivered judgment on 10 October 2002 awarding sovereignty over Bakassi to Cameroon based on the 1913 Anglo-German Agreement; Nigeria's initial non-compliance and delayed implementation are also well-documented.",
+        "source": "https://www.icj-cij.org/node/103905",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.icj-cij.org/node/103905"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Chad-Cameroon Petroleum Pipeline Opens",
     "verdict": "TRUE",
     "reason": "The 1,070-km Chad-Cameroon pipeline became operational in July 2003 when ExxonMobil began pipeline fill operations, with an inauguration ceremony in October 2003; Cameroon receives transit fees via the Kribi offshore terminal.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 1,070-km Chad-Cameroon pipeline became operational in July 2003 when ExxonMobil began pipeline fill operations, with an inauguration ceremony in October 2003; Cameroon receives transit fees via the Kribi offshore terminal.",
+        "source": "https://en.wikipedia.org/wiki/Chad%E2%80%93Cameroon_Petroleum_Development_and_Pipeline_Project",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Chad%E2%80%93Cameroon_Petroleum_Development_and_Pipeline_Project"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Biya Wins Third Term with Constitutional Term Change",
     "verdict": "TRUE",
     "reason": "Paul Biya won the 11 October 2004 presidential election with 70.92% of the vote; the low turnout and opposition fragmentation are documented, though calling it a 'third term' is contested since the 1996 constitution reset the count.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Paul Biya won the 11 October 2004 presidential election with 70.92% of the vote; the low turnout and opposition fragmentation are documented, though calling it a 'third term' is contested since the 1996 constitution reset the count.",
+        "source": "https://en.wikipedia.org/wiki/2004_Cameroonian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2004_Cameroonian_presidential_election"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Greentree Agreement on Bakassi Transfer",
     "verdict": "TRUE",
     "reason": "Cameroon and Nigeria signed the Greentree Agreement on 12 June 2006 at Manhasset, New York, under UN auspices, establishing the timeline and modalities for Nigerian military withdrawal from Bakassi.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cameroon and Nigeria signed the Greentree Agreement on 12 June 2006 at Manhasset, New York, under UN auspices, establishing the timeline and modalities for Nigerian military withdrawal from Bakassi.",
+        "source": "https://en.wikipedia.org/wiki/Greentree_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Greentree_Agreement"
   },
   {
@@ -130,6 +454,24 @@
     "title": "HIPC Completion Point and Full Debt Relief",
     "verdict": "TRUE",
     "reason": "Cameroon reached HIPC completion point on 1 May 2006 as the 15th AfDB regional member country, with total nominal debt-service relief of approximately $4.9 billion confirmed by IMF and AfDB records.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cameroon reached HIPC completion point on 1 May 2006 as the 15th AfDB regional member country, with total nominal debt-service relief of approximately $4.9 billion confirmed by IMF and AfDB records.",
+        "source": "https://www.imf.org/en/news/articles/2015/09/14/01/49/pr0685",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.imf.org/en/news/articles/2015/09/14/01/49/pr0685"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Constitutional Amendment Removes Presidential Term Limits",
     "verdict": "TRUE",
     "reason": "On 10 April 2008, the National Assembly voted 157-5 to remove the two-term presidential limit from the constitution, allowing Biya to run indefinitely; the vote followed February riots in which protesters explicitly opposed the proposed change.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 10 April 2008, the National Assembly voted 157-5 to remove the two-term presidential limit from the constitution, allowing Biya to run indefinitely; the vote followed February riots in which protesters explicitly opposed the proposed change.",
+        "source": "https://www.france24.com/en/20080411-cameroon-parliament-paul-biya-term-limit-extension",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.france24.com/en/20080411-cameroon-parliament-paul-biya-term-limit-extension"
   },
   {
@@ -144,6 +504,24 @@
     "title": "February 2008 Anti-Austerity Riots",
     "verdict": "TRUE",
     "reason": "Violent protests erupted 25-29 February 2008 across Cameroon's major cities over rising fuel and food prices; the government acknowledged 24 deaths while human rights groups reported over 40 killed, security forces used live ammunition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Violent protests erupted 25-29 February 2008 across Cameroon's major cities over rising fuel and food prices; the government acknowledged 24 deaths while human rights groups reported over 40 killed, security forces used live ammunition.",
+        "source": "https://en.wikipedia.org/wiki/2008_Cameroonian_anti-government_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2008_Cameroonian_anti-government_protests"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Nigeria Completes Bakassi Military Withdrawal",
     "verdict": "TRUE",
     "reason": "A formal ceremony on 14 August 2008 marked Nigeria's completion of military withdrawal from Bakassi, transferring sovereignty to Cameroon; the UN Secretary-General described it as a 'triumph for the rule of law'.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A formal ceremony on 14 August 2008 marked Nigeria's completion of military withdrawal from Bakassi, transferring sovereignty to Cameroon; the UN Secretary-General described it as a 'triumph for the rule of law'.",
+        "source": "https://press.un.org/en/2008/sgsm11745.doc.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://press.un.org/en/2008/sgsm11745.doc.htm"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Boko Haram Emerges as Cross-Border Threat",
     "verdict": "TRUE",
     "reason": "Following the violent crackdown on Boko Haram in Nigeria in 2009 that killed founder Mohammed Yusuf, survivors transited Cameroon's Far North; the group began establishing cells and using the region as a transit and safe-haven zone from 2009-2011, confirmed by ICG and HRW reporting.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following the violent crackdown on Boko Haram in Nigeria in 2009 that killed founder Mohammed Yusuf, survivors transited Cameroon's Far North; the group began establishing cells and using the region as a transit and safe-haven zone from 2009-2011, confirmed by ICG and HRW reporting.",
+        "source": "https://www.crisisgroup.org/rpt/africa/cameroon/241-cameroon-confronting-boko-haram",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.crisisgroup.org/rpt/africa/cameroon/241-cameroon-confronting-boko-haram"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Biya Wins Sixth Term in Contested Election",
     "verdict": "TRUE",
     "reason": "Presidential elections on 9 October 2011 returned Biya with 78% of the vote; international observers noted irregularities, and opposition candidates charged fraud, though AU observers called the process largely successful.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Presidential elections on 9 October 2011 returned Biya with 78% of the vote; international observers noted irregularities, and opposition candidates charged fraud, though AU observers called the process largely successful.",
+        "source": "https://en.wikipedia.org/wiki/2011_Cameroonian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2011_Cameroonian_presidential_election"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Mouvement pour la Renaissance du Cameroun Founded",
     "verdict": "TRUE",
     "reason": "Maurice Kamto established the Cameroon Renaissance Movement (MRC) in August 2012; the curated year of 2013 is within the ±2-year tolerance, and the party did contest the 2013 parliamentary elections, winning one seat.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Maurice Kamto established the Cameroon Renaissance Movement (MRC) in August 2012; the curated year of 2013 is within the ±2-year tolerance, and the party did contest the 2013 parliamentary elections, winning one seat.",
+        "source": "https://en.wikipedia.org/wiki/Cameroon_Renaissance_Movement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cameroon_Renaissance_Movement"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Boko Haram Kidnaps Moulin-Fournier Family",
     "verdict": "FALSE",
     "reason": "The Moulin-Fournier family of seven was kidnapped on 19 February 2013 at Waza National Park, not 2014; the event description itself states 'February 2013', making the year field wrong by more than one year and placing the event outside the curated year.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Moulin-Fournier family of seven was kidnapped on 19 February 2013 at Waza National Park, not 2014; the event description itself states 'February 2013', making the year field wrong by more than one year and placing the event outside the curated year.",
+        "source": "https://www.france24.com/en/20130423-french-family-kidnapped-hostages-cameroon-released-moulin-fournier",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.france24.com/en/20130423-french-family-kidnapped-hostages-cameroon-released-moulin-fournier"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Cameroon Launches War Against Boko Haram",
     "verdict": "TRUE",
     "reason": "Following an attack on a Chinese construction camp at Waza in May 2014, Cameroon formally declared war on Boko Haram and deployed the Rapid Intervention Brigade (BIR) in Operation Alpha; the year and military response are well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following an attack on a Chinese construction camp at Waza in May 2014, Cameroon formally declared war on Boko Haram and deployed the Rapid Intervention Brigade (BIR) in Operation Alpha; the year and military response are well-documented.",
+        "source": "https://en.wikipedia.org/wiki/Boko_Haram_insurgency_in_Cameroon",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Boko_Haram_insurgency_in_Cameroon"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Boko Haram Suicide Bombings in Maroua",
     "verdict": "TRUE",
     "reason": "Twin suicide bombings struck Maroua on 22 July 2015 killing at least 20-21 people and wounding 80-85, confirmed by Amnesty International, VOA, and France24; the description of a crowded market target and casualty range is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Twin suicide bombings struck Maroua on 22 July 2015 killing at least 20-21 people and wounding 80-85, confirmed by Amnesty International, VOA, and France24; the description of a crowded market target and casualty range is accurate.",
+        "source": "https://www.amnesty.org/en/latest/news/2015/07/cameroon-indiscriminate-attacks-mark-dangerous-turn-in-regional-conflict/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.amnesty.org/en/latest/news/2015/07/cameroon-indiscriminate-attacks-mark-dangerous-turn-in-regional-conflict/"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Cameroon Joins Multinational Joint Task Force",
     "verdict": "TRUE",
     "reason": "The revitalised MNJTF comprising Cameroon, Nigeria, Niger, Chad and Benin commenced operations on 30 July 2015 from N'Djamena HQ; Cameroon has been a troop-contributing country since the task force's restructuring in 2015.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The revitalised MNJTF comprising Cameroon, Nigeria, Niger, Chad and Benin commenced operations on 30 July 2015 from N'Djamena HQ; Cameroon has been a troop-contributing country since the task force's restructuring in 2015.",
+        "source": "https://en.wikipedia.org/wiki/Multinational_Joint_Task_Force",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Multinational_Joint_Task_Force"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Anglophone Lawyers Strike Over French in Courts",
     "verdict": "TRUE",
     "reason": "Anglophone lawyers began a sit-down strike on 6 October 2016 protesting the use of French in common-law courts in the Northwest and Southwest Regions; this is the universally recognised starting point of the Anglophone Crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Anglophone lawyers began a sit-down strike on 6 October 2016 protesting the use of French in common-law courts in the Northwest and Southwest Regions; this is the universally recognised starting point of the Anglophone Crisis.",
+        "source": "https://en.wikipedia.org/wiki/Anglophone_Crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Anglophone_Crisis"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Anglophone Teachers Join Protests Over Francophonization",
     "verdict": "TRUE",
     "reason": "Thousands of Anglophone teachers joined the lawyers' strike in November 2016 protesting the deployment of Francophone teachers and administrators to English-language schools; the teachers' participation and demands for federalism are confirmed by Al Jazeera and multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Thousands of Anglophone teachers joined the lawyers' strike in November 2016 protesting the deployment of Francophone teachers and administrators to English-language schools; the teachers' participation and demands for federalism are confirmed by Al Jazeera and multiple sources.",
+        "source": "https://www.aljazeera.com/news/2016/12/5/cameroon-teachers-lawyers-strike-in-battle-for-english",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2016/12/5/cameroon-teachers-lawyers-strike-in-battle-for-english"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Government Shuts Down Internet in Anglophone Regions",
     "verdict": "TRUE",
     "reason": "Cameroon cut internet access in the Northwest and Southwest Regions for exactly 93 days from January to 20 April 2017; Slate, Al Jazeera and Africanews all confirmed this was the longest internet shutdown in Africa at the time.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cameroon cut internet access in the Northwest and Southwest Regions for exactly 93 days from January to 20 April 2017; Slate, Al Jazeera and Africanews all confirmed this was the longest internet shutdown in Africa at the time.",
+        "source": "https://slate.com/technology/2017/08/the-damage-caused-by-cameroon-s-93-day-internet-blackout.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://slate.com/technology/2017/08/the-damage-caused-by-cameroon-s-93-day-internet-blackout.html"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Ambazonia Separatists Declare Independence",
     "verdict": "TRUE",
     "reason": "SCACUF symbolically declared the Federal Republic of Ambazonia independent on 1 October 2017; Cameroonian security forces fired on demonstrators on 2 October 2017, killing at least 17 people, escalating the crisis into armed conflict.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "SCACUF symbolically declared the Federal Republic of Ambazonia independent on 1 October 2017; Cameroonian security forces fired on demonstrators on 2 October 2017, killing at least 17 people, escalating the crisis into armed conflict.",
+        "source": "https://en.wikipedia.org/wiki/Ambazonia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ambazonia"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Anglophone Armed Conflict Intensifies",
     "verdict": "TRUE",
     "reason": "By late 2018 the Anglophone conflict had spread to most of Southern Cameroons with 437,500 IDPs in the NW/SW regions per OCHA estimates, multiple armed militias active in 12 divisions, and UN documentation of a full-scale humanitarian emergency.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "By late 2018 the Anglophone conflict had spread to most of Southern Cameroons with 437,500 IDPs in the NW/SW regions per OCHA estimates, multiple armed militias active in 12 divisions, and UN documentation of a full-scale humanitarian emergency.",
+        "source": "https://en.wikipedia.org/wiki/Anglophone_Crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Anglophone_Crisis"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Biya Wins Seventh Term Amid Crisis",
     "verdict": "TRUE",
     "reason": "Paul Biya officially won the 7 October 2018 presidential election with approximately 71% of the vote; Maurice Kamto claimed victory, disputed the results, and was subsequently arrested in January 2019 on insurrection charges.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Paul Biya officially won the 7 October 2018 presidential election with approximately 71% of the vote; Maurice Kamto claimed victory, disputed the results, and was subsequently arrested in January 2019 on insurrection charges.",
+        "source": "https://en.wikipedia.org/wiki/2018_Cameroonian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2018_Cameroonian_presidential_election"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Arrest of Opposition Leader Maurice Kamto",
     "verdict": "TRUE",
     "reason": "Cameroonian security forces arrested Kamto and over 200 MRC supporters on 28 January 2019 after 'white march' protests; he was charged with insurrection and hostility against the homeland and held until 5 October 2019.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cameroonian security forces arrested Kamto and over 200 MRC supporters on 28 January 2019 after 'white march' protests; he was charged with insurrection and hostility against the homeland and held until 5 October 2019.",
+        "source": "https://www.aljazeera.com/news/2019/2/1/cameroon-maurice-kamto-charged-with-sedition-insurrection",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2019/2/1/cameroon-maurice-kamto-charged-with-sedition-insurrection"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Capture of Ambazonian Leaders in Nigeria",
     "verdict": "TRUE",
     "reason": "Sisiku Ayuk Tabe and nine other Ambazonian leaders were arrested in Abuja in January 2018 and extrajudicially transferred to Cameroon; a military court sentenced them to life imprisonment on 20 August 2019, confirmed by HRW and Al Jazeera.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sisiku Ayuk Tabe and nine other Ambazonian leaders were arrested in Abuja in January 2018 and extrajudicially transferred to Cameroon; a military court sentenced them to life imprisonment on 20 August 2019, confirmed by HRW and Al Jazeera.",
+        "source": "https://en.wikipedia.org/wiki/Sisiku_Julius_Ayuk_Tabe",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sisiku_Julius_Ayuk_Tabe"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Grand National Dialogue on Anglophone Crisis",
     "verdict": "TRUE",
     "reason": "The Major National Dialogue (Grand Dialogue National) was convened 30 September to 4 October 2019; it recommended 'special status' for the two Anglophone regions, was boycotted by separatist leaders, and was widely criticised as cosmetic.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Major National Dialogue (Grand Dialogue National) was convened 30 September to 4 October 2019; it recommended 'special status' for the two Anglophone regions, was boycotted by separatist leaders, and was widely criticised as cosmetic.",
+        "source": "https://en.wikipedia.org/wiki/Major_National_Dialogue",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Major_National_Dialogue"
   },
   {
@@ -270,6 +954,24 @@
     "title": "First Regional Elections Held Under Decentralization",
     "verdict": "TRUE",
     "reason": "Cameroon held its first-ever regional council elections in December 2020; the CPDM won nine of ten regions (not all ten as stated — NUDP won one), and opposition parties denounced the process, but the event and timing are confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cameroon held its first-ever regional council elections in December 2020; the CPDM won nine of ten regions (not all ten as stated — NUDP won one), and opposition parties denounced the process, but the event and timing are confirmed.",
+        "source": "https://www.voanews.com/a/africa_cameroons-ruling-party-scores-landslide-victory-regional-elections/6199464.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.voanews.com/a/africa_cameroons-ruling-party-scores-landslide-victory-regional-elections/6199464.html"
   },
   {
@@ -277,6 +979,24 @@
     "title": "COVID-19 Pandemic Strains Economy and Health System",
     "verdict": "TRUE",
     "reason": "Cameroon's first COVID-19 case was confirmed on 6 March 2020; GDP growth fell from 4.03% to -1.2% per IMF projections, disrupting oil revenues and trade, with urban health systems overwhelmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cameroon's first COVID-19 case was confirmed on 6 March 2020; GDP growth fell from 4.03% to -1.2% per IMF projections, disrupting oil revenues and trade, with urban health systems overwhelmed.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Cameroon",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Cameroon"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Ngarbuh Massacre in Northwest Region",
     "verdict": "TRUE",
     "reason": "On 14 February 2020, Cameroonian soldiers and Fulani militia killed 21 civilians including 13 children in Ngarbuh; the government initially denied involvement but later acknowledged military responsibility after an official inquiry.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 14 February 2020, Cameroonian soldiers and Fulani militia killed 21 civilians including 13 children in Ngarbuh; the government initially denied involvement but later acknowledged military responsibility after an official inquiry.",
+        "source": "https://en.wikipedia.org/wiki/Ngarbuh_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ngarbuh_massacre"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "School Attacks Escalate in Anglophone Regions",
     "verdict": "TRUE",
     "reason": "The Kumba school massacre occurred on 24 October 2020 (within ±2-year tolerance), killing seven children; by 2021 the school boycott enforced by armed separatists kept over 700,000 children out of school per HRW, and attacks escalated throughout 2021.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Kumba school massacre occurred on 24 October 2020 (within ±2-year tolerance), killing seven children; by 2021 the school boycott enforced by armed separatists kept over 700,000 children out of school per HRW, and attacks escalated throughout 2021.",
+        "source": "https://en.wikipedia.org/wiki/Kumba_school_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kumba_school_massacre"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Far North Humanitarian Crisis Deepens",
     "verdict": "TRUE",
     "reason": "The Far North Region faced a compounding 2021 humanitarian crisis from Boko Haram violence, seasonal flooding, and food insecurity; UNHCR and UNOCHA reported over 322,000 Boko-Haram-related IDPs and broader multi-crisis displacement across the region.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Far North Region faced a compounding 2021 humanitarian crisis from Boko Haram violence, seasonal flooding, and food insecurity; UNHCR and UNOCHA reported over 322,000 Boko-Haram-related IDPs and broader multi-crisis displacement across the region.",
+        "source": "https://www.crisisgroup.org/africa/central-africa/cameroon/humanitarian-fallout-cameroons-struggle-against-boko-haram",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.crisisgroup.org/africa/central-africa/cameroon/humanitarian-fallout-cameroons-struggle-against-boko-haram"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Cameroon Hosts Africa Cup of Nations",
     "verdict": "TRUE",
     "reason": "Cameroon hosted the 2021 AFCON in January-February 2022; a fatal crowd crush at Olembe Stadium on 24 January 2022 killed at least eight people and injured 38, widely reported by Al Jazeera, NBC News and AFP.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cameroon hosted the 2021 AFCON in January-February 2022; a fatal crowd crush at Olembe Stadium on 24 January 2022 killed at least eight people and injured 38, widely reported by Al Jazeera, NBC News and AFP.",
+        "source": "https://en.wikipedia.org/wiki/Yaound%C3%A9_stadium_disaster",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Yaound%C3%A9_stadium_disaster"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Anglophone Crisis Displaces Over 700,000",
     "verdict": "TRUE",
     "reason": "By 2022 OCHA reported over 562,000 IDPs plus 85,000 refugees in Nigeria from the Anglophone Crisis; ICG estimated at least 6,000-6,500 killed since 2017; the 712,000 IDP figure and 6,000 deaths cited in the event fall within the range of documented estimates.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "By 2022 OCHA reported over 562,000 IDPs plus 85,000 refugees in Nigeria from the Anglophone Crisis; ICG estimated at least 6,000-6,500 killed since 2017; the 712,000 IDP figure and 6,000 deaths cited in the event fall within the range of documented estimates.",
+        "source": "https://reliefweb.int/report/cameroon/cameroon-north-west-and-south-west-crisis-displacement-tracking-matrix-monthly-dashboard-2-26-october-2022",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://reliefweb.int/report/cameroon/cameroon-north-west-and-south-west-crisis-displacement-tracking-matrix-monthly-dashboard-2-26-october-2022"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Biya's Prolonged Absences Spark Succession Debate",
     "verdict": "TRUE",
     "reason": "Biya's extended stays abroad and rare public appearances in 2023-2024 generated intense speculation about his health and succession; the government banned media discussion of his health; at 90+ he is Africa's oldest serving head of state and no successor had been designated.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Biya's extended stays abroad and rare public appearances in 2023-2024 generated intense speculation about his health and succession; the government banned media discussion of his health; at 90+ he is Africa's oldest serving head of state and no successor had been designated.",
+        "source": "https://www.theafricareport.com/364712/cameroon-where-is-paul-biya-rumours-swirl-over-presidents-health/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.theafricareport.com/364712/cameroon-where-is-paul-biya-rumours-swirl-over-presidents-health/"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Separatist Factions Fragment in Anglophone Regions",
     "verdict": "TRUE",
     "reason": "By 2023, Amnesty International, ICG and Africa Defense Forum documented a highly fragmented Ambazonian separatist movement with dozens of competing armed groups engaged in inter-militia violence, extortion and banditry, complicating peace prospects.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "By 2023, Amnesty International, ICG and Africa Defense Forum documented a highly fragmented Ambazonian separatist movement with dozens of competing armed groups engaged in inter-militia violence, extortion and banditry, complicating peace prospects.",
+        "source": "https://www.amnesty.org/en/documents/afr17/6838/2023/en/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.amnesty.org/en/documents/afr17/6838/2023/en/"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "Legislative and Municipal Elections Held",
     "verdict": "FALSE",
     "reason": "No parliamentary or municipal elections were held in Cameroon in February 2024; the most recent parliamentary elections were held in February 2020, the next were delayed to 2026, and President Biya actually postponed municipal elections scheduled for 2025 to 2026.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "No parliamentary or municipal elections were held in Cameroon in February 2024; the most recent parliamentary elections were held in February 2020, the next were delayed to 2026, and President Biya actually postponed municipal elections scheduled for 2025 to 2026.",
+        "source": "https://en.wikipedia.org/wiki/2026_Cameroonian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2026_Cameroonian_parliamentary_election"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Cholera Outbreak Strikes Multiple Regions",
     "verdict": "TRUE",
     "reason": "Cameroon was among 14 WHO African Region countries with cholera outbreaks in 2024; the Southwest and Littoral regions were the hardest hit, with inadequate water/sanitation and conflict-displacement accelerating transmission, confirmed by WHO Africa and BMC Public Health.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cameroon was among 14 WHO African Region countries with cholera outbreaks in 2024; the Southwest and Littoral regions were the hardest hit, with inadequate water/sanitation and conflict-displacement accelerating transmission, confirmed by WHO Africa and BMC Public Health.",
+        "source": "https://www.afro.who.int/publications/monthly-regional-cholera-bulletin-july-2024",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.afro.who.int/publications/monthly-regional-cholera-bulletin-july-2024"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Constitutional Council Certifies Biya for 2025 Election Cycle",
     "verdict": "TRUE",
     "reason": "The Constitutional Council allowed Biya's candidacy for the 12 October 2025 presidential election despite a petition to disqualify him; Biya won a declared 53.66% and was sworn in for an eighth term in November 2025.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Constitutional Council allowed Biya's candidacy for the 12 October 2025 presidential election despite a petition to disqualify him; Biya won a declared 53.66% and was sworn in for an eighth term in November 2025.",
+        "source": "https://en.wikipedia.org/wiki/2025_Cameroonian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2025_Cameroonian_presidential_election"
   }
 ]
