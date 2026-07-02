@@ -4,6 +4,24 @@
     "title": "Bahrain Signs Defense Cooperation Agreement with United States",
     "verdict": "TRUE",
     "reason": "Bahrain and the United States signed a Defense Cooperation Agreement on October 28, 1991, following the Gulf War, granting basing, access, and overflight privileges. This is well-documented by the US State Department and CRS reports.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bahrain and the United States signed a Defense Cooperation Agreement on October 28, 1991, following the Gulf War, granting basing, access, and overflight privileges. This is well-documented by the US State Department and CRS reports.",
+        "source": "https://en.wikipedia.org/wiki/Bahrain%E2%80%93United_States_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bahrain%E2%80%93United_States_relations"
   },
   {
@@ -11,6 +29,24 @@
     "title": "U.S. Fifth Fleet Headquarters Established in Manama",
     "verdict": "FALSE",
     "reason": "The U.S. Fifth Fleet was reactivated in 1995 (not 1992), replacing COMMIDEASTFOR after a 48-year hiatus. The headquarters at NSA Bahrain in Manama was established upon the fleet's 1995 reactivation, making the stated year 1992 inaccurate by 3 years, exceeding the ±2-year tolerance.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The U.S. Fifth Fleet was reactivated in 1995 (not 1992), replacing COMMIDEASTFOR after a 48-year hiatus. The headquarters at NSA Bahrain in Manama was established upon the fleet's 1995 reactivation, making the stated year 1992 inaccurate by 3 years, exceeding the ±2-year tolerance.",
+        "source": "https://en.wikipedia.org/wiki/United_States_Fifth_Fleet",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/United_States_Fifth_Fleet"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Bahrain Emerges as Regional Financial Hub",
     "verdict": "TRUE",
     "reason": "Bahrain's role as the Gulf's leading financial center is well-documented; by the 1990s the kingdom hosted over 180 offshore banking units and licensed institutions, a position built up from the 1970s after the Lebanese civil war redirected regional banking activity to Manama.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bahrain's role as the Gulf's leading financial center is well-documented; by the 1990s the kingdom hosted over 180 offshore banking units and licensed institutions, a position built up from the 1970s after the Lebanese civil war redirected regional banking activity to Manama.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Bahrain",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Bahrain"
   },
   {
@@ -25,6 +79,24 @@
     "title": "1990s Uprising Begins with Unemployed Workers' Protest",
     "verdict": "TRUE",
     "reason": "The 1990s uprising (also called the 'Uprising of Dignity') began in June 1994 with over 1,500 demonstrators organizing a sit-in outside the Ministry of Labour protesting unemployment reaching 15 percent, triggering a broader pro-democracy movement lasting until 1999.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 1990s uprising (also called the 'Uprising of Dignity') began in June 1994 with over 1,500 demonstrators organizing a sit-in outside the Ministry of Labour protesting unemployment reaching 15 percent, triggering a broader pro-democracy movement lasting until 1999.",
+        "source": "https://en.wikipedia.org/wiki/Uprising_of_dignity",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Uprising_of_dignity"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Popular Petition Demands Restoration of 1973 Parliament",
     "verdict": "TRUE",
     "reason": "In October 1994, approximately 25,000 Bahrainis signed a petition to the Amir demanding restoration of the National Assembly dissolved in 1975, women's suffrage, and release of political prisoners. The text of the petition is preserved on Wikisource and cited by Amnesty International and HRW.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In October 1994, approximately 25,000 Bahrainis signed a petition to the Amir demanding restoration of the National Assembly dissolved in 1975, women's suffrage, and release of political prisoners. The text of the petition is preserved on Wikisource and cited by Amnesty International and HRW.",
+        "source": "https://en.wikisource.org/wiki/1994_Popular_Petition_for_Reforms_to_Amir_of_Bahrain",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikisource.org/wiki/1994_Popular_Petition_for_Reforms_to_Amir_of_Bahrain"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Shia Uprising Intensifies with Village Protests and Arson",
     "verdict": "TRUE",
     "reason": "In 1995, anti-government protests spread to Shia villages with arson attacks on banks and commercial properties. The government responded with mass arrests including of women and children; the broader uprising resulted in around 40 civilian deaths over its 1994–1999 duration.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 1995, anti-government protests spread to Shia villages with arson attacks on banks and commercial properties. The government responded with mass arrests including of women and children; the broader uprising resulted in around 40 civilian deaths over its 1994–1999 duration.",
+        "source": "https://en.wikipedia.org/wiki/1990s_uprising_in_Bahrain",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1990s_uprising_in_Bahrain"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Government Cracks Down on Opposition; Hundreds Detained",
     "verdict": "TRUE",
     "reason": "The 1996 US State Department Human Rights Report documents sweeping arrests of Shia clerics and opposition activists under the 1974 State Security Law, which permitted detention without trial for up to three years. Several senior Shia clerics were arrested in January 1996 and held incommunicado.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 1996 US State Department Human Rights Report documents sweeping arrests of Shia clerics and opposition activists under the 1974 State Security Law, which permitted detention without trial for up to three years. Several senior Shia clerics were arrested in January 1996 and held incommunicado.",
+        "source": "https://1997-2001.state.gov/www/global/human_rights/1996_hrp_report/bahrain.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://1997-2001.state.gov/www/global/human_rights/1996_hrp_report/bahrain.html"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Sheikh Hamad Becomes Emir and Promises Political Reforms",
     "verdict": "TRUE",
     "reason": "Sheikh Hamad bin Isa Al Khalifa succeeded his father in March 1999 and initiated significant reforms: releasing over 320 political prisoners including Sheikh Abdul Ameer al-Jamri, allowing exiles to return, and abolishing the State Security Law and Court.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sheikh Hamad bin Isa Al Khalifa succeeded his father in March 1999 and initiated significant reforms: releasing over 320 political prisoners including Sheikh Abdul Ameer al-Jamri, allowing exiles to return, and abolishing the State Security Law and Court.",
+        "source": "https://en.wikipedia.org/wiki/Hamad_bin_Isa_Al_Khalifa",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hamad_bin_Isa_Al_Khalifa"
   },
   {
@@ -60,6 +204,24 @@
     "title": "National Action Charter Approved in Landmark Referendum",
     "verdict": "TRUE",
     "reason": "On February 14–15, 2001, Bahrainis voted 98.4 percent in favor of the National Action Charter in a referendum with 90.2 percent turnout, endorsing a constitutional monarchy with an elected parliament and independent judiciary.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On February 14–15, 2001, Bahrainis voted 98.4 percent in favor of the National Action Charter in a referendum with 90.2 percent turnout, endorsing a constitutional monarchy with an elected parliament and independent judiciary.",
+        "source": "https://en.wikipedia.org/wiki/National_Action_Charter_of_Bahrain",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/National_Action_Charter_of_Bahrain"
   },
   {
@@ -67,6 +229,24 @@
     "title": "New Constitution Promulgated; Bahrain Becomes Kingdom",
     "verdict": "TRUE",
     "reason": "On February 14, 2002, Emir (now King) Hamad unilaterally promulgated a new constitution without public consultation, transforming Bahrain into a kingdom and granting the appointed upper chamber equal legislative powers to the elected lower house, contradicting the 2001 charter's promises.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On February 14, 2002, Emir (now King) Hamad unilaterally promulgated a new constitution without public consultation, transforming Bahrain into a kingdom and granting the appointed upper chamber equal legislative powers to the elected lower house, contradicting the 2001 charter's promises.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_Bahrain",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Constitution_of_Bahrain"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Shia Opposition Boycotts First Parliamentary Elections",
     "verdict": "TRUE",
     "reason": "Al Wefaq and three other major political societies boycotted the October 2002 parliamentary elections, the first since 1973, citing the constitution's grant of equal power to the unelected upper chamber. The boycott resulted in a parliament dominated by Sunni Islamists and loyalists.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Al Wefaq and three other major political societies boycotted the October 2002 parliamentary elections, the first since 1973, citing the constitution's grant of equal power to the unelected upper chamber. The boycott resulted in a parliament dominated by Sunni Islamists and loyalists.",
+        "source": "https://en.wikipedia.org/wiki/Al-Wefaq",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Al-Wefaq"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Bahrain Signs Free Trade Agreement with United States",
     "verdict": "TRUE",
     "reason": "The US–Bahrain Free Trade Agreement was signed on September 14, 2004, making Bahrain the first GCC member and third Arab country to sign a bilateral FTA with the United States. It entered into force August 1, 2006.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The US–Bahrain Free Trade Agreement was signed on September 14, 2004, making Bahrain the first GCC member and third Arab country to sign a bilateral FTA with the United States. It entered into force August 1, 2006.",
+        "source": "https://ustr.gov/about-us/policy-offices/press-office/press-releases/archives/2004/september/united-states-and-bahrain-sign-free-tra",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://ustr.gov/about-us/policy-offices/press-office/press-releases/archives/2004/september/united-states-and-bahrain-sign-free-tra"
   },
   {
@@ -88,6 +304,24 @@
     "title": "First Formula 1 Grand Prix Held in the Middle East",
     "verdict": "TRUE",
     "reason": "The inaugural Bahrain Grand Prix took place on April 4, 2004 at the Bahrain International Circuit in Sakhir, the first Formula One Grand Prix held in the Middle East. The race was won by Michael Schumacher.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The inaugural Bahrain Grand Prix took place on April 4, 2004 at the Bahrain International Circuit in Sakhir, the first Formula One Grand Prix held in the Middle East. The race was won by Michael Schumacher.",
+        "source": "https://en.wikipedia.org/wiki/2004_Bahrain_Grand_Prix",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2004_Bahrain_Grand_Prix"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Massive Pro-Democracy Rallies Demand Constitutional Reforms",
     "verdict": "TRUE",
     "reason": "In March 2005, Bahrain saw the largest mass demonstration since the 1990s, with tens of thousands demanding a fully elected parliament. Multiple sources including Foreign Affairs and the Wilson Center document sustained opposition rallies in 2005 reflecting Shia disillusionment with the 2002 constitution.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In March 2005, Bahrain saw the largest mass demonstration since the 1990s, with tens of thousands demanding a fully elected parliament. Multiple sources including Foreign Affairs and the Wilson Center document sustained opposition rallies in 2005 reflecting Shia disillusionment with the 2002 constitution.",
+        "source": "https://www.foreignaffairs.com/articles/bahrain/2011-02-28/bahrains-re-reform-movement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.foreignaffairs.com/articles/bahrain/2011-02-28/bahrains-re-reform-movement"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Al Wefaq Enters Parliament After Ending Election Boycott",
     "verdict": "TRUE",
     "reason": "Al Wefaq reversed its 2002 boycott and contested the November 2006 parliamentary elections, winning 17 of 40 seats and becoming the largest bloc in the lower house — the first significant Shia parliamentary representation since the 2001 reforms.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Al Wefaq reversed its 2002 boycott and contested the November 2006 parliamentary elections, winning 17 of 40 seats and becoming the largest bloc in the lower house — the first significant Shia parliamentary representation since the 2001 reforms.",
+        "source": "https://en.wikipedia.org/wiki/Al-Wefaq",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Al-Wefaq"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Bandargate Scandal Exposes Alleged Government Sectarian Plot",
     "verdict": "TRUE",
     "reason": "In September 2006, adviser Salah Al-Bandar published a 240-page document detailing an alleged government-sponsored scheme to rig elections, spy on Shia communities, and manipulate demographics through mass naturalization of foreign Sunnis. Al-Bandar was arrested and deported to London.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In September 2006, adviser Salah Al-Bandar published a 240-page document detailing an alleged government-sponsored scheme to rig elections, spy on Shia communities, and manipulate demographics through mass naturalization of foreign Sunnis. Al-Bandar was arrested and deported to London.",
+        "source": "https://en.wikipedia.org/wiki/Salah_Al_Bandar",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Salah_Al_Bandar"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Global Financial Crisis Tests Bahrain's Banking Sector",
     "verdict": "TRUE",
     "reason": "The 2008 global financial crisis hit Bahrain's oversized banking sector: Gulf International Bank incurred ~$1.3 billion in losses from toxic mortgage-backed assets; other Bahraini banks posted significant losses. Real GDP growth fell from 6.3% in 2008 to negative territory in 2009.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 2008 global financial crisis hit Bahrain's oversized banking sector: Gulf International Bank incurred ~$1.3 billion in losses from toxic mortgage-backed assets; other Bahraini banks posted significant losses. Real GDP growth fell from 6.3% in 2008 to negative territory in 2009.",
+        "source": "https://www.bis.org/review/r081222d.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.bis.org/review/r081222d.pdf"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Pre-Election Crackdown on Opposition Activists",
     "verdict": "TRUE",
     "reason": "From August 2010, Bahraini authorities arrested 250–300 activists and bloggers before the October 2010 elections, charging them under the 2006 counterterrorism law with inciting overthrow of the government. HRW and Amnesty International documented the arrests extensively.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "From August 2010, Bahraini authorities arrested 250–300 activists and bloggers before the October 2010 elections, charging them under the 2006 counterterrorism law with inciting overthrow of the government. HRW and Amnesty International documented the arrests extensively.",
+        "source": "https://www.hrw.org/news/2010/10/20/bahrain-elections-take-place-amid-crackdown",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2010/10/20/bahrain-elections-take-place-amid-crackdown"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Arab Spring Protests Erupt at Pearl Roundabout",
     "verdict": "TRUE",
     "reason": "Protests began February 14, 2011, with demonstrators occupying the Pearl Roundabout in Manama. On February 25, an estimated 200,000 Bahrainis — approximately one-third of all citizens — joined a pro-democracy march, the largest mobilisation of any Arab Spring movement relative to population.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Protests began February 14, 2011, with demonstrators occupying the Pearl Roundabout in Manama. On February 25, an estimated 200,000 Bahrainis — approximately one-third of all citizens — joined a pro-democracy march, the largest mobilisation of any Arab Spring movement relative to population.",
+        "source": "https://en.wikipedia.org/wiki/2011_Bahraini_uprising",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2011_Bahraini_uprising"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Saudi-Led GCC Peninsula Shield Force Enters Bahrain",
     "verdict": "TRUE",
     "reason": "On March 14, 2011, approximately 1,000–1,200 Saudi troops and 500 UAE police entered Bahrain under the GCC Peninsula Shield Force framework at the king's invitation. This was the first GCC deployment to suppress an internal uprising in a member state.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On March 14, 2011, approximately 1,000–1,200 Saudi troops and 500 UAE police entered Bahrain under the GCC Peninsula Shield Force framework at the king's invitation. This was the first GCC deployment to suppress an internal uprising in a member state.",
+        "source": "https://en.wikipedia.org/wiki/Saudi-led_intervention_in_Bahrain",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Saudi-led_intervention_in_Bahrain"
   },
   {
@@ -144,6 +504,24 @@
     "title": "King Declares Martial Law and State of Emergency",
     "verdict": "TRUE",
     "reason": "King Hamad declared a three-month 'state of national safety' (martial law) on March 15, 2011, granting the military sweeping powers. Security forces, including GCC troops, forcibly cleared the Pearl Roundabout on March 16, killing several protesters and injuring hundreds.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "King Hamad declared a three-month 'state of national safety' (martial law) on March 15, 2011, granting the military sweeping powers. Security forces, including GCC troops, forcibly cleared the Pearl Roundabout on March 16, killing several protesters and injuring hundreds.",
+        "source": "https://www.hrw.org/news/2011/03/16/bahrain-martial-law-does-not-trump-basic-rights",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2011/03/16/bahrain-martial-law-does-not-trump-basic-rights"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Pearl Monument Demolished by Government Order",
     "verdict": "TRUE",
     "reason": "The iconic Pearl Monument was demolished on March 18, 2011, days after the roundabout encampment was cleared. The government cited traffic improvements, but the destruction was widely interpreted as an attempt to erase the symbol of the uprising.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The iconic Pearl Monument was demolished on March 18, 2011, days after the roundabout encampment was cleared. The government cited traffic improvements, but the destruction was widely interpreted as an attempt to erase the symbol of the uprising.",
+        "source": "https://en.wikipedia.org/wiki/Pearl_Roundabout",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Pearl_Roundabout"
   },
   {
@@ -158,6 +554,24 @@
     "title": "BICI Report Documents Systematic Torture and Abuse",
     "verdict": "TRUE",
     "reason": "The Bahrain Independent Commission of Inquiry, chaired by Prof. Cherif Bassiouni, released a 500-page report on November 23, 2011, documenting 46 deaths, 559 torture allegations, and 4,000+ dismissals. The report found systematic use of excessive force, torture, and forced confessions by security forces.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Bahrain Independent Commission of Inquiry, chaired by Prof. Cherif Bassiouni, released a 500-page report on November 23, 2011, documenting 46 deaths, 559 torture allegations, and 4,000+ dismissals. The report found systematic use of excessive force, torture, and forced confessions by security forces.",
+        "source": "https://en.wikipedia.org/wiki/Bahrain_Independent_Commission_of_Inquiry",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bahrain_Independent_Commission_of_Inquiry"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Mass Citizenship Revocations Target Opposition Activists",
     "verdict": "TRUE",
     "reason": "On November 7, 2012, Bahrain's Interior Ministry revoked the citizenship of 31 opposition members, former MPs, lawyers, activists, and clerics — the first use of post-uprising denationalization. Most were rendered stateless as only about 6 held other citizenship.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On November 7, 2012, Bahrain's Interior Ministry revoked the citizenship of 31 opposition members, former MPs, lawyers, activists, and clerics — the first use of post-uprising denationalization. Most were rendered stateless as only about 6 held other citizenship.",
+        "source": "https://www.hrw.org/news/2012/11/08/bahrain-dont-arbitrarily-revoke-citizenship",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2012/11/08/bahrain-dont-arbitrarily-revoke-citizenship"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Formula 1 Grand Prix Held Amid Deadly Protest Crackdown",
     "verdict": "TRUE",
     "reason": "The 2012 Bahrain Grand Prix proceeded on April 22 despite international calls for cancellation. Protester Salah Abbas Habib was killed by shotgun fire on the eve of the race; police blocked foreign media. Human rights organizations condemned the decision to hold the race.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 2012 Bahrain Grand Prix proceeded on April 22 despite international calls for cancellation. Protester Salah Abbas Habib was killed by shotgun fire on the eve of the race; police blocked foreign media. Human rights organizations condemned the decision to hold the race.",
+        "source": "https://en.wikipedia.org/wiki/2012_Bahrain_Grand_Prix_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2012_Bahrain_Grand_Prix_protests"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Opposition Dialogues Collapse; Street Protests Continue",
     "verdict": "TRUE",
     "reason": "Al Wefaq withdrew from national dialogue talks in September 2013 after a leading member was arrested, citing the government's continued repression. Weekly protests in Shia villages persisted; on March 9, 2012 over 100,000 attended one rally, with protests continuing through 2013.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Al Wefaq withdrew from national dialogue talks in September 2013 after a leading member was arrested, citing the government's continued repression. Weekly protests in Shia villages persisted; on March 9, 2012 over 100,000 attended one rally, with protests continuing through 2013.",
+        "source": "https://studies.aljazeera.net/en/reports/2013/10/2013101091036321935.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://studies.aljazeera.net/en/reports/2013/10/2013101091036321935.html"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Al Wefaq Boycotts Parliamentary Elections",
     "verdict": "TRUE",
     "reason": "Al Wefaq and other opposition groups boycotted the November 2014 parliamentary elections, citing repression and unfair electoral boundaries. The government reported 51.5% turnout; the opposition disputed this, claiming only 30%.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Al Wefaq and other opposition groups boycotted the November 2014 parliamentary elections, citing repression and unfair electoral boundaries. The government reported 51.5% turnout; the opposition disputed this, claiming only 30%.",
+        "source": "https://en.wikipedia.org/wiki/2014_Bahraini_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2014_Bahraini_general_election"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Sheikh Ali Salman Arrested and Sentenced to Four Years",
     "verdict": "TRUE",
     "reason": "Al Wefaq secretary-general Sheikh Ali Salman was arrested in December 2014 and sentenced to four years in June 2015 for inciting hatred and non-compliance with the law. The sentence was later increased to nine years on appeal, drawing wide international condemnation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Al Wefaq secretary-general Sheikh Ali Salman was arrested in December 2014 and sentenced to four years in June 2015 for inciting hatred and non-compliance with the law. The sentence was later increased to nine years on appeal, drawing wide international condemnation.",
+        "source": "https://en.wikipedia.org/wiki/Ali_Salman",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ali_Salman"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Sheikh Isa Qassim Stripped of Citizenship",
     "verdict": "TRUE",
     "reason": "Bahrain's Interior Ministry revoked the citizenship of Bahrain's most senior Shia cleric Sheikh Isa Qassim on June 20, 2016, accusing him of promoting sectarianism. The move triggered a sustained sit-in protest in the village of Duraz around his home.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bahrain's Interior Ministry revoked the citizenship of Bahrain's most senior Shia cleric Sheikh Isa Qassim on June 20, 2016, accusing him of promoting sectarianism. The move triggered a sustained sit-in protest in the village of Duraz around his home.",
+        "source": "https://www.aljazeera.com/news/2016/6/21/bahrain-strips-sheikh-isa-qassim-of-nationality",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2016/6/21/bahrain-strips-sheikh-isa-qassim-of-nationality"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Al Wefaq Dissolved by Court Order",
     "verdict": "TRUE",
     "reason": "A Bahraini court ordered the dissolution of Al Wefaq on July 17, 2016, on charges of 'harboring terrorism.' The dissolution eliminated organized Shia political participation and was condemned by UN Secretary-General Ban Ki-moon, the US, UK, and human rights organizations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A Bahraini court ordered the dissolution of Al Wefaq on July 17, 2016, on charges of 'harboring terrorism.' The dissolution eliminated organized Shia political participation and was condemned by UN Secretary-General Ban Ki-moon, the US, UK, and human rights organizations.",
+        "source": "https://www.aljazeera.com/news/2016/7/17/bahrain-dissolves-main-shia-opposition-al-wefaq-party",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2016/7/17/bahrain-dissolves-main-shia-opposition-al-wefaq-party"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Death Penalty Resumed After Seven-Year Moratorium",
     "verdict": "TRUE",
     "reason": "Bahrain executed Abbas AlSameea, Sami Mushaima, and Ali Alsingace in January 2017, ending a de facto moratorium since July 2010. Human rights organizations documented that confessions were extracted through torture including electrocution and physical abuse.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bahrain executed Abbas AlSameea, Sami Mushaima, and Ali Alsingace in January 2017, ending a de facto moratorium since July 2010. Human rights organizations documented that confessions were extracted through torture including electrocution and physical abuse.",
+        "source": "https://www.adhrb.org/2019/04/bahrain-and-the-death-penalty/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.adhrb.org/2019/04/bahrain-and-the-death-penalty/"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Security Forces Raid Duraz Sit-In; Five Killed",
     "verdict": "TRUE",
     "reason": "On May 23, 2017, Bahraini security forces raided the eleven-month sit-in outside Sheikh Isa Qassim's home in Duraz, killing five protesters and arresting at least 286 people. Tear gas and shotguns were used against the peaceful gathering.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On May 23, 2017, Bahraini security forces raided the eleven-month sit-in outside Sheikh Isa Qassim's home in Duraz, killing five protesters and arresting at least 286 people. Tear gas and shotguns were used against the peaceful gathering.",
+        "source": "https://www.adhrb.org/2017/05/12478/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.adhrb.org/2017/05/12478/"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Bahrain Joins Saudi-Led Blockade of Qatar",
     "verdict": "TRUE",
     "reason": "On June 5, 2017, Bahrain severed diplomatic relations with Qatar and joined Saudi Arabia, the UAE, and Egypt in imposing an air, sea, and land blockade. The crisis lasted until the Al-Ula Declaration in January 2021.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On June 5, 2017, Bahrain severed diplomatic relations with Qatar and joined Saudi Arabia, the UAE, and Egypt in imposing an air, sea, and land blockade. The crisis lasted until the Al-Ula Declaration in January 2021.",
+        "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Wa'ad Secular Opposition Society Banned",
     "verdict": "TRUE",
     "reason": "A Bahraini court dissolved the National Democratic Action Society (Wa'ad) on May 31, 2017, with the High Court of Appeals confirming the dissolution in October 2017. With Al Wefaq already dissolved, the ban eliminated all organized political opposition in Bahrain.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A Bahraini court dissolved the National Democratic Action Society (Wa'ad) on May 31, 2017, with the High Court of Appeals confirming the dissolution in October 2017. With Al Wefaq already dissolved, the ban eliminated all organized political opposition in Bahrain.",
+        "source": "https://www.adhrb.org/2017/05/bahrain-dissolves-last-major-opposition-society/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.adhrb.org/2017/05/bahrain-dissolves-last-major-opposition-society/"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Hundreds of Citizenships Revoked in Unprecedented Wave",
     "verdict": "TRUE",
     "reason": "According to the Bahrain Institute for Rights and Democracy, Bahraini authorities revoked the citizenship of at least 232 individuals in 2018 alone, bringing the total since 2012 to at least 738. The vast majority were Shia activists, clerics, and opposition figures.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "According to the Bahrain Institute for Rights and Democracy, Bahraini authorities revoked the citizenship of at least 232 individuals in 2018 alone, bringing the total since 2012 to at least 738. The vast majority were Shia activists, clerics, and opposition figures.",
+        "source": "https://www.hrw.org/news/2018/07/27/bahrain-hundreds-stripped-citizenship",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2018/07/27/bahrain-hundreds-stripped-citizenship"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Opposition-Free Elections Held Under Boycott Conditions",
     "verdict": "TRUE",
     "reason": "The November 2018 parliamentary elections were held after both Al Wefaq and Wa'ad were dissolved and a June 2018 law barred members of dissolved opposition societies from running. Critics called the elections a democratic facade; HRW issued a report titled 'Bahrain: No Free Elections in Current Environment.'",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The November 2018 parliamentary elections were held after both Al Wefaq and Wa'ad were dissolved and a June 2018 law barred members of dissolved opposition societies from running. Critics called the elections a democratic facade; HRW issued a report titled 'Bahrain: No Free Elections in Current Environment.'",
+        "source": "https://www.hrw.org/news/2018/11/20/bahrain-no-free-elections-current-environment",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2018/11/20/bahrain-no-free-elections-current-environment"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Three Men Executed Despite Torture Allegations",
     "verdict": "TRUE",
     "reason": "On July 27, 2019, Bahrain executed Ali al-Arab and Ahmed al-Malali (plus a Bangladeshi national), despite documented allegations that confessions were extracted under torture including electric shocks and extraction of toenails. Five UN human rights experts had called for a halt to the executions.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On July 27, 2019, Bahrain executed Ali al-Arab and Ahmed al-Malali (plus a Bangladeshi national), despite documented allegations that confessions were extracted under torture including electric shocks and extraction of toenails. Five UN human rights experts had called for a halt to the executions.",
+        "source": "https://www.ohchr.org/en/press-releases/2019/05/un-experts-call-bahrain-halt-executions-two-individuals-amid-torture",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.ohchr.org/en/press-releases/2019/05/un-experts-call-bahrain-halt-executions-two-individuals-amid-torture"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Bahrain Hosts Workshop for U.S. Middle East Peace Plan",
     "verdict": "TRUE",
     "reason": "Bahrain hosted the 'Peace to Prosperity' economic workshop on June 25–26, 2019, organized by Jared Kushner to present the economic component of the Trump administration's Middle East peace plan. Palestinian leaders boycotted the event, and Bahraini citizens protested against normalization with Israel.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bahrain hosted the 'Peace to Prosperity' economic workshop on June 25–26, 2019, organized by Jared Kushner to present the economic component of the Trump administration's Middle East peace plan. Palestinian leaders boycotted the event, and Bahraini citizens protested against normalization with Israel.",
+        "source": "https://www.fpri.org/article/2019/07/neither-peace-nor-prosperity-jared-kushners-middle-east-peace-plan-falls-flat-in-bahrain/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.fpri.org/article/2019/07/neither-peace-nor-prosperity-jared-kushners-middle-east-peace-plan-falls-flat-in-bahrain/"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Bahrain Signs Abraham Accords with Israel",
     "verdict": "TRUE",
     "reason": "Bahrain became the fourth Arab country to normalize relations with Israel, signing the Abraham Accords at the White House on September 15, 2020, establishing diplomatic, economic, and security ties including direct flights and cooperation on technology and healthcare.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bahrain became the fourth Arab country to normalize relations with Israel, signing the Abraham Accords at the White House on September 15, 2020, establishing diplomatic, economic, and security ties including direct flights and cooperation on technology and healthcare.",
+        "source": "https://en.wikipedia.org/wiki/Bahrain%E2%80%93Israel_normalization_agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bahrain%E2%80%93Israel_normalization_agreement"
   },
   {
@@ -277,6 +979,24 @@
     "title": "COVID-19 Outbreak Devastates Jau Prison Population",
     "verdict": "TRUE",
     "reason": "A severe COVID-19 outbreak spread through the overcrowded Jau Prison in 2020–2021, documented by Amnesty International (70+ cases in March–April 2020) and continuing into 2021. Note: the named detainee Husain Barakat died in June 2021, not June 2020, but the general event of a prison outbreak in the 2020 period is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A severe COVID-19 outbreak spread through the overcrowded Jau Prison in 2020–2021, documented by Amnesty International (70+ cases in March–April 2020) and continuing into 2021. Note: the named detainee Husain Barakat died in June 2021, not June 2020, but the general event of a prison outbreak in the 2020 period is accurate.",
+        "source": "https://www.amnesty.org.uk/press-releases/bahrain-more-70-new-covid-cases-major-outbreak-jaw-prison",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.amnesty.org.uk/press-releases/bahrain-more-70-new-covid-cases-major-outbreak-jaw-prison"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Qatar Blockade Ends with Al-Ula Declaration",
     "verdict": "TRUE",
     "reason": "Bahrain signed the Al-Ula Declaration at the 41st GCC Summit on January 5, 2021, formally ending the three-and-a-half-year blockade of Qatar and restoring diplomatic relations between Qatar and the boycotting quartet of Bahrain, Saudi Arabia, UAE, and Egypt.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bahrain signed the Al-Ula Declaration at the 41st GCC Summit on January 5, 2021, formally ending the three-and-a-half-year blockade of Qatar and restoring diplomatic relations between Qatar and the boycotting quartet of Bahrain, Saudi Arabia, UAE, and Egypt.",
+        "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Bahrain and Israel Sign First GCC-Israel Security Agreement",
     "verdict": "TRUE",
     "reason": "Israeli Defense Minister Benny Gantz and his Bahraini counterpart signed a memorandum of understanding on February 3, 2022, formalizing security cooperation covering intelligence sharing, military-to-military collaboration, and defense industry cooperation — the first such pact between Israel and a GCC member.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Israeli Defense Minister Benny Gantz and his Bahraini counterpart signed a memorandum of understanding on February 3, 2022, formalizing security cooperation covering intelligence sharing, military-to-military collaboration, and defense industry cooperation — the first such pact between Israel and a GCC member.",
+        "source": "https://www.aljazeera.com/news/2022/2/3/israel-bahrain-sign-security-cooperation-agreement-in-manama",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2022/2/3/israel-bahrain-sign-security-cooperation-agreement-in-manama"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Nabeel Rajab Released After Completing Six-Year Sentence",
     "verdict": "FALSE",
     "reason": "Nabeel Rajab was released from prison on June 9, 2020, not 2022 — a two-year discrepancy. Moreover, he served a five-year sentence (not six), imposed in 2018 for tweets about Yemen and prison torture. He was released under alternative sentencing, not after completing the full term.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Nabeel Rajab was released from prison on June 9, 2020, not 2022 — a two-year discrepancy. Moreover, he served a five-year sentence (not six), imposed in 2018 for tweets about Yemen and prison torture. He was released under alternative sentencing, not after completing the full term.",
+        "source": "https://www.hrw.org/news/2020/06/10/bahrain-prominent-activist-nabeel-rajab-freed-prison",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2020/06/10/bahrain-prominent-activist-nabeel-rajab-freed-prison"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "U.S.-Bahrain Comprehensive Security Integration Agreement",
     "verdict": "TRUE",
     "reason": "The United States and Bahrain signed the Comprehensive Security Integration and Prosperity Agreement (C-SIPA) on September 13, 2023, in Washington D.C., upgrading defense ties beyond the 1991 DCA. It was signed by Crown Prince Salman and Secretary of State Blinken and entered into force October 20, 2023.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The United States and Bahrain signed the Comprehensive Security Integration and Prosperity Agreement (C-SIPA) on September 13, 2023, in Washington D.C., upgrading defense ties beyond the 1991 DCA. It was signed by Crown Prince Salman and Secretary of State Blinken and entered into force October 20, 2023.",
+        "source": "https://bh.usembassy.gov/u-s-bahrain-comprehensive-security-integration-and-prosperity-agreement/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://bh.usembassy.gov/u-s-bahrain-comprehensive-security-integration-and-prosperity-agreement/"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Authorities Crack Down on Gaza Solidarity Protests",
     "verdict": "TRUE",
     "reason": "Following the October 2023 Gaza war outbreak, Bahraini authorities arrested at least 57 people, including 25 children, for participating in pro-Palestine solidarity demonstrations. Human rights organizations documented use of tear gas, stun grenades, and shotguns against peaceful protesters.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following the October 2023 Gaza war outbreak, Bahraini authorities arrested at least 57 people, including 25 children, for participating in pro-Palestine solidarity demonstrations. Human rights organizations documented use of tear gas, stun grenades, and shotguns against peaceful protesters.",
+        "source": "https://www.hrw.org/news/2023/12/22/bahrain-repression-pro-palestine-protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2023/12/22/bahrain-repression-pro-palestine-protests"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Bahrain Recalls Ambassador from Israel Over Gaza War",
     "verdict": "TRUE",
     "reason": "Bahrain recalled its ambassador from Israel amid domestic and regional pressure over the Gaza conflict; the parliament voted to recall the envoy in November 2023 and the ambassador's departure was formalized in 2024. Economic normalization provisions were frozen, though the Abraham Accords were not formally abrogated.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bahrain recalled its ambassador from Israel amid domestic and regional pressure over the Gaza conflict; the parliament voted to recall the envoy in November 2023 and the ambassador's departure was formalized in 2024. Economic normalization provisions were frozen, though the Abraham Accords were not formally abrogated.",
+        "source": "https://www.aljazeera.com/news/2023/11/2/bahrain-recalls-ambassador-from-israel-amid-escalating-assault-on-gaza",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2023/11/2/bahrain-recalls-ambassador-from-israel-amid-escalating-assault-on-gaza"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Sweeping Arrests Target Dissidents Amid Regional Tensions",
     "verdict": "TRUE",
     "reason": "In April 2025, Bahraini authorities conducted a wave of arrests targeting at least 22 activists and social media users, with 17 remaining in custody. HRW documented continued systematic repression in its World Report 2026, with an estimated 320 people arbitrarily detained for political reasons.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In April 2025, Bahraini authorities conducted a wave of arrests targeting at least 22 activists and social media users, with 17 remaining in custody. HRW documented continued systematic repression in its World Report 2026, with an estimated 320 people arbitrarily detained for political reasons.",
+        "source": "https://www.hrw.org/world-report/2026/country-chapters/bahrain",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/world-report/2026/country-chapters/bahrain"
   }
 ]

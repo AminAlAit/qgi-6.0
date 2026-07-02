@@ -4,6 +4,24 @@
     "title": "Independence Proclaimed â€” HouphouÃ«t-Boigny Becomes First President",
     "verdict": "TRUE",
     "reason": "Independence declared August 7, 1960; Houphouet-Boigny elected president November 27, 1960. Core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independence declared August 7, 1960; Houphouet-Boigny elected president November 27, 1960. Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/F%C3%A9lix_Houphou%C3%ABt-Boigny",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/F%C3%A9lix_Houphou%C3%ABt-Boigny"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Single-Party Constitutional Framework Established",
     "verdict": "TRUE",
     "reason": "PDCI single-party rule and strong presidential constitution established at independence. Well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PDCI single-party rule and strong presidential constitution established at independence. Well-documented.",
+        "source": "https://en.wikipedia.org/wiki/History_of_Ivory_Coast_(1960%E2%80%9399)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/History_of_Ivory_Coast_(1960%E2%80%9399)"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Franco-Ivorian Defense Agreements Entrench FranÃ§afrique",
     "verdict": "TRUE",
     "reason": "Defense cooperation agreements signed in 1961 keeping French military presence. Confirmed by multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Defense cooperation agreements signed in 1961 keeping French military presence. Confirmed by multiple sources.",
+        "source": "https://en.wikipedia.org/wiki/France%E2%80%93Ivory_Coast_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/France%E2%80%93Ivory_Coast_relations"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Caisse de Stabilisation (CAISTAB) Established for Cocoa and Coffee",
     "verdict": "TRUE",
     "reason": "CAISTAB establishment in early 1960s as cocoa/coffee marketing board is well-documented in economic histories of Ivory Coast.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "CAISTAB establishment in early 1960s as cocoa/coffee marketing board is well-documented in economic histories of Ivory Coast.",
+        "source": "https://en.wikipedia.org/wiki/Caisse_de_stabilisation_(Ivory_Coast)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Caisse_de_stabilisation_(Ivory_Coast)"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Gagnoa Uprising Suppressed with Significant Casualties",
     "verdict": "TRUE",
     "reason": "Bete uprising under Kragbé Gnagbé in Gagnoa region October 1970, suppressed by army. Casualties contested (71 confirmed, 4000 rumored). Core event confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bete uprising under Kragbé Gnagbé in Gagnoa region October 1970, suppressed by army. Casualties contested (71 confirmed, 4000 rumored). Core event confirmed.",
+        "source": "https://fr.wikipedia.org/wiki/%C3%89v%C3%A9nements_du_Gu%C3%A9bi%C3%A9",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://fr.wikipedia.org/wiki/%C3%89v%C3%A9nements_du_Gu%C3%A9bi%C3%A9"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Oil Shock Hits Import-Dependent Economy",
     "verdict": "TRUE",
     "reason": "1973 OPEC oil embargo impacted Ivory Coast as an oil-importing country. General impact is accurate and well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1973 OPEC oil embargo impacted Ivory Coast as an oil-importing country. General impact is accurate and well-documented.",
+        "source": "https://en.wikipedia.org/wiki/1973_oil_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1973_oil_crisis"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Kossou Dam Displacement Crisis Affects 75,000 BaoulÃ©",
     "verdict": "FALSE",
     "reason": "Year is wrong. The Kossou Dam was built 1969-1972 and completed in 1973. Displacement of ~75,000 Baoulé occurred during construction, not 1975.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year is wrong. The Kossou Dam was built 1969-1972 and completed in 1973. Displacement of ~75,000 Baoulé occurred during construction, not 1975.",
+        "source": "https://en.wikipedia.org/wiki/Kossou_Dam",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kossou_Dam"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Ivory Coast Becomes World's Top Cocoa Producer",
     "verdict": "FALSE",
     "reason": "Year is wrong. Ivory Coast overtook Ghana as world's top cocoa producer in 1978, not 1976.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year is wrong. Ivory Coast overtook Ghana as world's top cocoa producer in 1978, not 1976.",
+        "source": "https://en.wikipedia.org/wiki/Cocoa_production_in_Ivory_Coast",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cocoa_production_in_Ivory_Coast"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Debt-Financed Spending Surges as Commodity Revenues Soften",
     "verdict": "TRUE",
     "reason": "Late-1970s debt-financed spending surge as commodity prices softened is well-documented in Ivory Coast economic histories.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Late-1970s debt-financed spending surge as commodity prices softened is well-documented in Ivory Coast economic histories.",
+        "source": "https://en.wikipedia.org/wiki/Economic_history_of_Ivory_Coast",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economic_history_of_Ivory_Coast"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Cocoa Price Collapse Ends 'Ivorian Miracle' Growth",
     "verdict": "TRUE",
     "reason": "Cocoa price collapse from late-1970s peaks and beginning of economic decline around 1980 is well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cocoa price collapse from late-1970s peaks and beginning of economic decline around 1980 is well-documented.",
+        "source": "https://en.wikipedia.org/wiki/Ivory_Coast#Economy",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ivory_Coast#Economy"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Debt Crisis and Paris Club Rescheduling",
     "verdict": "TRUE",
     "reason": "Ivory Coast entered debt crisis and Paris Club rescheduling in the early 1980s. Core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ivory Coast entered debt crisis and Paris Club rescheduling in the early 1980s. Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ivory_Coast#Economy",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ivory_Coast#Economy"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Yamoussoukro Designated Official Capital",
     "verdict": "TRUE",
     "reason": "Yamoussoukro designated political capital on March 21, 1983. Basilica cornerstone laid 1985, consecrated 1990 — not 'nearly complete' in 1983 as stated. Minor inaccuracy in description but year and core designation confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Yamoussoukro designated political capital on March 21, 1983. Basilica cornerstone laid 1985, consecrated 1990 — not 'nearly complete' in 1983 as stated. Minor inaccuracy in description but year and core designation confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Yamoussoukro",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Yamoussoukro"
   },
   {
@@ -88,6 +304,24 @@
     "title": "IMF Structural Adjustment Agreement Imposes Austerity",
     "verdict": "TRUE",
     "reason": "IMF structural adjustment programs in Ivory Coast in the mid-1980s are well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "IMF structural adjustment programs in Ivory Coast in the mid-1980s are well-documented.",
+        "source": "https://en.wikipedia.org/wiki/Structural_adjustment",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Structural_adjustment"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Deforestation Destroys Over 75 Percent of Original Forest Cover",
     "verdict": "TRUE",
     "reason": "Massive deforestation by the 1980s from 16M to ~4M hectares is confirmed in environmental literature.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Massive deforestation by the 1980s from 16M to ~4M hectares is confirmed in environmental literature.",
+        "source": "https://en.wikipedia.org/wiki/Deforestation_in_Ivory_Coast",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Deforestation_in_Ivory_Coast"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Student Protests Escalate â€” FESCI Radicalized",
     "verdict": "TRUE",
     "reason": "FESCI student protests and radicalization in late 1980s is documented. Year approximate but consistent with sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "FESCI student protests and radicalization in late 1980s is documented. Year approximate but consistent with sources.",
+        "source": "https://en.wikipedia.org/wiki/FESCI",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/FESCI"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Multi-Party Democracy Legalized After Three Decades of Single-Party Rule",
     "verdict": "TRUE",
     "reason": "Opposition parties legalized May 3, 1990. FPI registered and ran in first multiparty elections. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Opposition parties legalized May 3, 1990. FPI registered and ran in first multiparty elections. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1990_Ivorian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1990_Ivorian_presidential_election"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Alassane Ouattara Appointed Prime Minister to Manage Austerity",
     "verdict": "TRUE",
     "reason": "Ouattara appointed PM by Houphouet-Boigny in 1990 to implement economic stabilization. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ouattara appointed PM by Houphouet-Boigny in 1990 to implement economic stabilization. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Alassane_Ouattara",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Alassane_Ouattara"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Soldiers Beat Students at Yamoussoukro â€” Military Accountability Tested",
     "verdict": "TRUE",
     "reason": "1991 military barracks beating of students and subsequent trial of the general responsible is confirmed in human rights records.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1991 military barracks beating of students and subsequent trial of the general responsible is confirmed in human rights records.",
+        "source": "https://en.wikipedia.org/wiki/Ivory_Coast#Post-independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ivory_Coast#Post-independence"
   },
   {
@@ -130,6 +454,24 @@
     "title": "HouphouÃ«t-Boigny Dies After 33 Years in Power",
     "verdict": "TRUE",
     "reason": "Houphouet-Boigny died December 7, 1993. Bedie (National Assembly Speaker, not explicitly titled 'Speaker' — he was President of the National Assembly) succeeded him constitutionally. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Houphouet-Boigny died December 7, 1993. Bedie (National Assembly Speaker, not explicitly titled 'Speaker' — he was President of the National Assembly) succeeded him constitutionally. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/F%C3%A9lix_Houphou%C3%ABt-Boigny",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/F%C3%A9lix_Houphou%C3%ABt-Boigny"
   },
   {
@@ -137,6 +479,24 @@
     "title": "CFA Franc Devaluation Triggers Economic Shock",
     "verdict": "TRUE",
     "reason": "50% CFA franc devaluation January 12, 1994. Impact on Ivory Coast confirmed across multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "50% CFA franc devaluation January 12, 1994. Impact on Ivory Coast confirmed across multiple sources.",
+        "source": "https://www.washingtonpost.com/archive/politics/1994/01/13/french-speaking-africa-devalues-franc-by-half/ff14e2d0-2239-4e8d-9d59-a62f32874a0a/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.washingtonpost.com/archive/politics/1994/01/13/french-speaking-africa-devalues-franc-by-half/ff14e2d0-2239-4e8d-9d59-a62f32874a0a/"
   },
   {
@@ -144,6 +504,24 @@
     "title": "IvoiritÃ© Doctrine Emerges â€” Ouattara's Eligibility Contested",
     "verdict": "TRUE",
     "reason": "Ivoirité concept and electoral code amendment (December 1994) explicitly targeting Ouattara's eligibility confirmed. Year is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ivoirité concept and electoral code amendment (December 1994) explicitly targeting Ouattara's eligibility confirmed. Year is accurate.",
+        "source": "https://en.wikipedia.org/wiki/Ivoirit%C3%A9",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ivoirit%C3%A9"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Land Tenure Conflicts Erupt in Forest Zones",
     "verdict": "TRUE",
     "reason": "Escalating land conflicts in southwestern forest zones mid-to-late 1990s between autochthonous and migrant communities is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Escalating land conflicts in southwestern forest zones mid-to-late 1990s between autochthonous and migrant communities is documented.",
+        "source": "https://en.wikipedia.org/wiki/Ivory_Coast#Land_tenure",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ivory_Coast#Land_tenure"
   },
   {
@@ -158,6 +554,24 @@
     "title": "New Land Law Restricts Ownership to Citizens, Threatening Migrant Farmers",
     "verdict": "TRUE",
     "reason": "1998 land law restricting rural land ownership to Ivorian citizens confirmed in multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1998 land law restricting rural land ownership to Ivorian citizens confirmed in multiple sources.",
+        "source": "https://en.wikipedia.org/wiki/Ivory_Coast#Land_tenure",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ivory_Coast#Land_tenure"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Military Coup Overthrows BÃ©diÃ© â€” First Coup in Ivorian History",
     "verdict": "TRUE",
     "reason": "December 24, 1999 coup by General Guei confirmed as first coup in Ivorian history. All details accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 24, 1999 coup by General Guei confirmed as first coup in Ivorian history. All details accurate.",
+        "source": "https://en.wikipedia.org/wiki/1999_Ivorian_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1999_Ivorian_coup_d%27%C3%A9tat"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Laurent Gbagbo Wins Disputed Presidential Election",
     "verdict": "TRUE",
     "reason": "October 2000 election: Guei tried to steal result, mass protests ousted him, Gbagbo declared winner. Ouattara excluded under ivoirité. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 2000 election: Guei tried to steal result, mass protests ousted him, Gbagbo declared winner. Ouattara excluded under ivoirité. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2000_Ivorian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2000_Ivorian_presidential_election"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Post-Election Violence Claims Dozens of Lives â€” Impunity Established",
     "verdict": "TRUE",
     "reason": "Post-election violence and killings of RDR supporters in Abidjan forests confirmed by Human Rights Watch.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Post-election violence and killings of RDR supporters in Abidjan forests confirmed by Human Rights Watch.",
+        "source": "https://www.hrw.org/legacy/backgrounder/africa/IvoryCoastbrf.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/legacy/backgrounder/africa/IvoryCoastbrf.htm"
   },
   {
@@ -186,6 +654,24 @@
     "title": "National Reconciliation Forum Fails to Resolve Core Disputes",
     "verdict": "TRUE",
     "reason": "2001 national reconciliation forum including Bedie and Ouattara documented; failure to implement agreements is consistent with historical record.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2001 national reconciliation forum including Bedie and Ouattara documented; failure to implement agreements is consistent with historical record.",
+        "source": "https://en.wikipedia.org/wiki/Ivory_Coast#Post-independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ivory_Coast#Post-independence"
   },
   {
@@ -193,6 +679,24 @@
     "title": "September 19 Rebellion â€” Civil War Begins, Country Divided",
     "verdict": "TRUE",
     "reason": "September 19, 2002 military uprising seizing Bouaké and northern regions confirmed. French buffer zone established. All details accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 19, 2002 military uprising seizing Bouaké and northern regions confirmed. French buffer zone established. All details accurate.",
+        "source": "https://en.wikipedia.org/wiki/First_Ivorian_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/First_Ivorian_Civil_War"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Forces Nouvelles Unified Rebel Coalition Controls North",
     "verdict": "TRUE",
     "reason": "Forces Nouvelles merger of rebel factions in December 2002 under Soro confirmed. Controlled northern Ivory Coast from Bouaké.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Forces Nouvelles merger of rebel factions in December 2002 under Soro confirmed. Controlled northern Ivory Coast from Bouaké.",
+        "source": "https://en.wikipedia.org/wiki/Forces_Nouvelles_de_C%C3%B4te_d%27Ivoire",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Forces_Nouvelles_de_C%C3%B4te_d%27Ivoire"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Linas-Marcoussis Peace Agreement Signed Under French Pressure",
     "verdict": "TRUE",
     "reason": "January 15-24, 2003 peace talks near Paris producing Linas-Marcoussis Agreement confirmed. Pro-Gbagbo protests against French imposition documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 15-24, 2003 peace talks near Paris producing Linas-Marcoussis Agreement confirmed. Pro-Gbagbo protests against French imposition documented.",
+        "source": "https://en.wikipedia.org/wiki/Linas-Marcoussis_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Linas-Marcoussis_Agreement"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Human Rights Abuses Documented by Both Sides",
     "verdict": "TRUE",
     "reason": "HRW and Amnesty documentation of abuses by both sides confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "HRW and Amnesty documentation of abuses by both sides confirmed.",
+        "source": "https://www.hrw.org/report/2003/08/01/trapped-between-two-peaces",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/report/2003/08/01/trapped-between-two-peaces"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Ivory Coast Air Strikes Kill Nine French Soldiers â€” Crisis with France",
     "verdict": "TRUE",
     "reason": "November 6, 2004 Bouaké attack: 9 French soldiers killed, 1 US civilian killed. France destroyed Ivorian Air Force. All core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 6, 2004 Bouaké attack: 9 French soldiers killed, 1 US civilian killed. France destroyed Ivorian Air Force. All core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2004_French%E2%80%93Ivorian_clashes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2004_French%E2%80%93Ivorian_clashes"
   },
   {
@@ -228,6 +804,24 @@
     "title": "UN ONUCI Peacekeeping Mission Deployed",
     "verdict": "TRUE",
     "reason": "UNOCI established April 4, 2004 per Security Council resolution 1528 of February 27, 2004. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UNOCI established April 4, 2004 per Security Council resolution 1528 of February 27, 2004. Confirmed.",
+        "source": "https://peacekeeping.un.org/en/mission/past/unoci/background.shtml",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://peacekeeping.un.org/en/mission/past/unoci/background.shtml"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Probo Koala Toxic Waste Disaster Kills 16 in Abidjan",
     "verdict": "FALSE",
     "reason": "Death toll is wrong. Confirmed deaths: 17 (not 16), with at least 30,000 injured. The number stated (16) is incorrect; the actual confirmed figure is 17.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Death toll is wrong. Confirmed deaths: 17 (not 16), with at least 30,000 injured. The number stated (16) is incorrect; the actual confirmed figure is 17.",
+        "source": "https://en.wikipedia.org/wiki/2006_Ivory_Coast_toxic_waste_dump",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2006_Ivory_Coast_toxic_waste_dump"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Ouagadougou Political Agreement Opens Path to Elections",
     "verdict": "TRUE",
     "reason": "March 4, 2007 agreement between Gbagbo and Soro confirmed. Soro appointed PM March 29, 2007. All details accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 4, 2007 agreement between Gbagbo and Soro confirmed. Soro appointed PM March 29, 2007. All details accurate.",
+        "source": "https://en.wikipedia.org/wiki/Ouagadougou_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ouagadougou_Agreement"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Presidential Runoff â€” Disputed Results Trigger Constitutional Crisis",
     "verdict": "TRUE",
     "reason": "November 28, 2010 runoff; IEC certified Ouattara ~54%; Constitutional Council declared Gbagbo winner; both inaugurated. All details confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 28, 2010 runoff; IEC certified Ouattara ~54%; Constitutional Council declared Gbagbo winner; both inaugurated. All details confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2010_Ivorian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2010_Ivorian_presidential_election"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Second Civil War â€” Post-Election Conflict Kills Thousands",
     "verdict": "TRUE",
     "reason": "December 2010 to April 2011 conflict with thousands killed, Duékoué massacres, FRCI advance confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 2010 to April 2011 conflict with thousands killed, Duékoué massacres, FRCI advance confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Second_Ivorian_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Second_Ivorian_Civil_War"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Gbagbo Arrested â€” Ouattara Assumes Undisputed Presidency",
     "verdict": "TRUE",
     "reason": "April 11, 2011 capture with French military support confirmed. Gbagbo transferred to ICC November 2011. All details accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 11, 2011 capture with French military support confirmed. Gbagbo transferred to ICC November 2011. All details accurate.",
+        "source": "https://en.wikipedia.org/wiki/Capture_of_Laurent_Gbagbo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Capture_of_Laurent_Gbagbo"
   },
   {
@@ -270,6 +954,24 @@
     "title": "DuÃ©kouÃ© Massacre â€” Pro-Ouattara Forces Kill Hundreds of Civilians",
     "verdict": "TRUE",
     "reason": "March 29, 2011 Duékoué massacre by FRCI forces confirmed; Guéré victims; ICRC estimated 800+ dead. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 29, 2011 Duékoué massacre by FRCI forces confirmed; Guéré victims; ICRC estimated 800+ dead. Confirmed.",
+        "source": "https://www.hrw.org/news/2011/04/09/cote-divoire-ouattara-forces-kill-rape-civilians-during-offensive",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2011/04/09/cote-divoire-ouattara-forces-kill-rape-civilians-during-offensive"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Post-Conflict Reconstruction Drives 9 Percent GDP Growth",
     "verdict": "TRUE",
     "reason": "Strong post-conflict GDP rebound (~9%) in 2012 confirmed by World Bank and IMF reports.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Strong post-conflict GDP rebound (~9%) in 2012 confirmed by World Bank and IMF reports.",
+        "source": "https://www.worldbank.org/en/country/cotedivoire/overview",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.worldbank.org/en/country/cotedivoire/overview"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Truth, Dialogue, and Reconciliation Commission Established",
     "verdict": "TRUE",
     "reason": "CDVR established under Charles Konan Banny confirmed. Criticisms about selective accountability also documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "CDVR established under Charles Konan Banny confirmed. Criticisms about selective accountability also documented.",
+        "source": "https://en.wikipedia.org/wiki/Dialogue,_Truth_and_Reconciliation_Commission_(Ivory_Coast)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dialogue,_Truth_and_Reconciliation_Commission_(Ivory_Coast)"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "ICC Trial of Laurent Gbagbo Begins",
     "verdict": "TRUE",
     "reason": "ICC proceedings against Gbagbo for crimes against humanity confirmed. Formal trial began in 2016; confirmation of charges hearing in 2013. Core claim accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ICC proceedings against Gbagbo for crimes against humanity confirmed. Formal trial began in 2016; confirmation of charges hearing in 2013. Core claim accurate.",
+        "source": "https://en.wikipedia.org/wiki/Laurent_Gbagbo#ICC_trial",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Laurent_Gbagbo#ICC_trial"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Cocoa Sector Reform Guarantees Farmers 60 Percent of World Price",
     "verdict": "TRUE",
     "reason": "Conseil Café Cacao established; 60% farmgate price guarantee policy confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Conseil Café Cacao established; 60% farmgate price guarantee policy confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Conseil_Caf%C3%A9-Cacao",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Conseil_Caf%C3%A9-Cacao"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Ouattara Re-elected in Peaceful Election â€” Democratic Consolidation Milestone",
     "verdict": "TRUE",
     "reason": "October 25, 2015 election: Ouattara won 83.66%. Described as peaceful; some opposition boycott. All details confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 25, 2015 election: Ouattara won 83.66%. Described as peaceful; some opposition boycott. All details confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2015_Ivorian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2015_Ivorian_presidential_election"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "New Constitution Establishes Third Republic",
     "verdict": "TRUE",
     "reason": "October 30, 2016 referendum; 93.42% yes, 42.42% turnout. Senate and vice presidency created. All details confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 30, 2016 referendum; 93.42% yes, 42.42% turnout. Senate and vice presidency created. All details confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2016_Ivorian_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2016_Ivorian_constitutional_referendum"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Cocoa Price Crash of 30 Percent Damages Farmer Incomes",
     "verdict": "TRUE",
     "reason": "~30% cocoa price fall in 2017 documented; impact on Ivory Coast farmers confirmed across commodity market sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "~30% cocoa price fall in 2017 documented; impact on Ivory Coast farmers confirmed across commodity market sources.",
+        "source": "https://en.wikipedia.org/wiki/Ivory_Coast#Economy",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ivory_Coast#Economy"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Military Mutiny â€” Ex-Combatants Demand Bonus Payments",
     "verdict": "TRUE",
     "reason": "January and May 2017 mutinies by ex-Forces Nouvelles fighters confirmed. Bonus payments agreed. Event description accurate; payment amount stated (12M CFA) differs slightly from sources (5M + 7M = 12M CFA staggered) — correct total.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January and May 2017 mutinies by ex-Forces Nouvelles fighters confirmed. Bonus payments agreed. Event description accurate; payment amount stated (12M CFA) differs slightly from sources (5M + 7M = 12M CFA staggered) — correct total.",
+        "source": "https://en.wikipedia.org/wiki/2017_Ivory_Coast_mutiny",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2017_Ivory_Coast_mutiny"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "Gbagbo Acquitted by ICC â€” Prosecution Finds Insufficient Evidence",
     "verdict": "TRUE",
     "reason": "January 15, 2019 acquittal on all crimes against humanity charges confirmed. Upheld on appeal March 31, 2021.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 15, 2019 acquittal on all crimes against humanity charges confirmed. Upheld on appeal March 31, 2021.",
+        "source": "https://en.wikipedia.org/wiki/Laurent_Gbagbo#ICC_trial",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Laurent_Gbagbo#ICC_trial"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Ouattara Seeks Third Term After PM Gon Coulibaly Dies â€” Constitutional Controversy",
     "verdict": "TRUE",
     "reason": "Gon Coulibaly died July 2020; Ouattara reversed retirement; opposition boycotted; violence killed ~85 people (sources say ~50+ killed). Core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Gon Coulibaly died July 2020; Ouattara reversed retirement; opposition boycotted; violence killed ~85 people (sources say ~50+ killed). Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2020_Ivorian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2020_Ivorian_presidential_election"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Gbagbo Returns to Ivory Coast After a Decade Abroad",
     "verdict": "TRUE",
     "reason": "Gbagbo returned June 17, 2021. Founded PPA-CI (African People's Party – Côte d'Ivoire) in October 2021. All details confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Gbagbo returned June 17, 2021. Founded PPA-CI (African People's Party – Côte d'Ivoire) in October 2021. All details confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Laurent_Gbagbo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Laurent_Gbagbo"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "49 Ivorian Soldiers Detained by Mali Junta â€” Regional Diplomatic Crisis",
     "verdict": "TRUE",
     "reason": "49 soldiers arrested July 2022 in Bamako; pardoned and released January 6-7, 2023. ECOWAS/Togolese mediation confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "49 soldiers arrested July 2022 in Bamako; pardoned and released January 6-7, 2023. ECOWAS/Togolese mediation confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2022_Malian_detention_of_Ivorian_soldiers",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2022_Malian_detention_of_Ivorian_soldiers"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "Henri Konan BÃ©diÃ© Dies â€” Last Figure of Post-HouphouÃ«t Triumvirate Gone",
     "verdict": "TRUE",
     "reason": "Bédié died August 1, 2023 aged 89. All details confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bédié died August 1, 2023 aged 89. All details confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Henri_Konan_B%C3%A9di%C3%A9",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Henri_Konan_B%C3%A9di%C3%A9"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Ivory Coast Hosts and Wins AFCON 2024 â€” Historic National Triumph",
     "verdict": "TRUE",
     "reason": "Ivory Coast beat Nigeria 2-1 in final (February 11, 2024) at Ebimpé. Emerse Faé took over mid-tournament. All details confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ivory Coast beat Nigeria 2-1 in final (February 11, 2024) at Ebimpé. Emerse Faé took over mid-tournament. All details confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2023_Africa_Cup_of_Nations_final",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2023_Africa_Cup_of_Nations_final"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "Cocoa Prices Hit Historic High Above $10,000 Per Tonne",
     "verdict": "TRUE",
     "reason": "Cocoa surpassed $10,000/tonne in March 2024; reached $12,646 by December 2024. El Niño crop failures confirmed as driver.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cocoa surpassed $10,000/tonne in March 2024; reached $12,646 by December 2024. El Niño crop failures confirmed as driver.",
+        "source": "https://fortune.com/2024/02/09/chocolate-cocoa-prices-record-highs-climate-change-el-nino/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://fortune.com/2024/02/09/chocolate-cocoa-prices-record-highs-climate-change-el-nino/"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "EU Deforestation Regulation Forces Cocoa Supply Chain Overhaul",
     "verdict": "TRUE",
     "reason": "EUDR requiring deforestation-free cocoa supply chains and its impact on Ivory Coast is confirmed. Satellite monitoring and certification programs documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "EUDR requiring deforestation-free cocoa supply chains and its impact on Ivory Coast is confirmed. Satellite monitoring and certification programs documented.",
+        "source": "https://en.wikipedia.org/wiki/EU_Deforestation_Regulation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/EU_Deforestation_Regulation"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Presidential Election â€” Most Competitive Since Crisis Years Anticipated",
     "verdict": "TRUE",
     "reason": "October 2025 presidential election held; Ouattara won a fourth term. Election was contested with opposition participation. Core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 2025 presidential election held; Ouattara won a fourth term. Election was contested with opposition participation. Core claim confirmed.",
+        "source": "https://www.aljazeera.com/news/2025/10/27/incumbent-president-ouattara-declared-winner-of-ivory-coast-election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2025/10/27/incumbent-president-ouattara-declared-winner-of-ivory-coast-election"
   }
 ]

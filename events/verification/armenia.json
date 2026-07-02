@@ -3,342 +3,1368 @@
     "year": 1950,
     "title": "Armenian Diaspora Repatriation Wave to Soviet Armenia",
     "verdict": "FALSE",
-    "reason": "The repatriation wave occurred 1946-1949, not 1950. Over 89,000 Armenians repatriated 1946-49 from Lebanon, Syria, France and other countries. The year 1950 is off by 1+ years from the core event."
+    "reason": "The repatriation wave occurred 1946-1949, not 1950. Over 89,000 Armenians repatriated 1946-49 from Lebanon, Syria, France and other countries. The year 1950 is off by 1+ years from the core event.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The repatriation wave occurred 1946-1949, not 1950. Over 89,000 Armenians repatriated 1946-49 from Lebanon, Syria, France and other countries. The year 1950 is off by 1+ years from the core event.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1952,
     "title": "Lake Sevan Water Level Reduction Begins Ecological Crisis",
     "verdict": "FALSE",
-    "reason": "The Sevan tunnel opened in 1949 and water level began dropping significantly from 1949 onward. By 1959 the level had dropped 13.7 m. The event year 1952 is plausible as a mid-crisis marker but the description says 'begins' — the reduction began 1949. Year is materially off."
+    "reason": "The Sevan tunnel opened in 1949 and water level began dropping significantly from 1949 onward. By 1959 the level had dropped 13.7 m. The event year 1952 is plausible as a mid-crisis marker but the description says 'begins' — the reduction began 1949. Year is materially off.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Sevan tunnel opened in 1949 and water level began dropping significantly from 1949 onward. By 1959 the level had dropped 13.7 m. The event year 1952 is plausible as a mid-crisis marker but the description says 'begins' — the reduction began 1949. Year is materially off.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1953,
     "title": "Death of Stalin and Political Thaw in Soviet Armenia",
     "verdict": "TRUE",
-    "reason": "Stalin died March 5, 1953. De-Stalinization and political thaw in Soviet republics including Armenia is well-documented."
+    "reason": "Stalin died March 5, 1953. De-Stalinization and political thaw in Soviet republics including Armenia is well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Stalin died March 5, 1953. De-Stalinization and political thaw in Soviet republics including Armenia is well-documented.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1955,
     "title": "Matenadaran Institute of Ancient Manuscripts Opens",
     "verdict": "FALSE",
-    "reason": "The Matenadaran purpose-built building was completed in 1957 and the institute officially established in 1959. Year 1955 is off by 2-4 years."
+    "reason": "The Matenadaran purpose-built building was completed in 1957 and the institute officially established in 1959. Year 1955 is off by 2-4 years.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Matenadaran purpose-built building was completed in 1957 and the institute officially established in 1959. Year 1955 is off by 2-4 years.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1957,
     "title": "Zvartnots International Airport Opens Near Yerevan",
     "verdict": "FALSE",
-    "reason": "Zvartnots Airport opened in 1961, not 1957. Year is off by 4 years."
+    "reason": "Zvartnots Airport opened in 1961, not 1957. Year is off by 4 years.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Zvartnots Airport opened in 1961, not 1957. Year is off by 4 years.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1962,
     "title": "Byurakan CETI Conference Brings Carl Sagan to Armenia",
     "verdict": "FALSE",
-    "reason": "The Byurakan CETI conference was held September 6-11, 1971, not 1962. Year is off by 9 years. There was a 1964 Byurakan SETI conference but Carl Sagan attended the 1971 CETI event."
+    "reason": "The Byurakan CETI conference was held September 6-11, 1971, not 1962. Year is off by 9 years. There was a 1964 Byurakan SETI conference but Carl Sagan attended the 1971 CETI event.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Byurakan CETI conference was held September 6-11, 1971, not 1962. Year is off by 9 years. There was a 1964 Byurakan SETI conference but Carl Sagan attended the 1971 CETI event.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1965,
     "title": "Mass Genocide Commemoration in Yerevan; First Public Protest",
     "verdict": "TRUE",
-    "reason": "April 24, 1965: approximately 100,000 protesters gathered at Yerevan Opera Theatre on the 50th anniversary of the Armenian Genocide. Well-documented as the first such mass demonstration in the USSR."
+    "reason": "April 24, 1965: approximately 100,000 protesters gathered at Yerevan Opera Theatre on the 50th anniversary of the Armenian Genocide. Well-documented as the first such mass demonstration in the USSR.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 24, 1965: approximately 100,000 protesters gathered at Yerevan Opera Theatre on the 50th anniversary of the Armenian Genocide. Well-documented as the first such mass demonstration in the USSR.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1967,
     "title": "Tsitsernakaberd Armenian Genocide Memorial Inaugurated",
     "verdict": "TRUE",
-    "reason": "The solemn opening ceremony took place November 29, 1967, during the 47th anniversary of Soviet Armenia. Confirmed by multiple sources."
+    "reason": "The solemn opening ceremony took place November 29, 1967, during the 47th anniversary of Soviet Armenia. Confirmed by multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The solemn opening ceremony took place November 29, 1967, during the 47th anniversary of Soviet Armenia. Confirmed by multiple sources.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1972,
     "title": "ASALA Armenian Secret Army Founded in Beirut",
     "verdict": "FALSE",
-    "reason": "ASALA was founded in 1975 in Beirut, not 1972. Year is off by 3 years. First acknowledged killing was October 1975."
+    "reason": "ASALA was founded in 1975 in Beirut, not 1972. Year is off by 3 years. First acknowledged killing was October 1975.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "ASALA was founded in 1975 in Beirut, not 1972. Year is off by 3 years. First acknowledged killing was October 1975.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1973,
     "title": "Sergei Parajanov Arrested by Soviet Authorities",
     "verdict": "TRUE",
-    "reason": "Parajanov was arrested in December 1973 in Kyiv on charges of homosexuality and speculation. Well-documented."
+    "reason": "Parajanov was arrested in December 1973 in Kyiv on charges of homosexuality and speculation. Well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Parajanov was arrested in December 1973 in Kyiv on charges of homosexuality and speculation. Well-documented.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1975,
     "title": "Metsamor Nuclear Power Plant Unit 1 Goes Online",
     "verdict": "FALSE",
-    "reason": "Unit 1 first generated electricity on December 22, 1976, not 1975. Year is off by 1 year."
+    "reason": "Unit 1 first generated electricity on December 22, 1976, not 1975. Year is off by 1 year.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Unit 1 first generated electricity on December 22, 1976, not 1975. Year is off by 1 year.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1983,
     "title": "ASALA Paris Orly Airport Attack Kills Eight",
     "verdict": "TRUE",
-    "reason": "July 15, 1983 bombing at Orly Airport Turkish Airlines desk killed 8 people and wounded 55. Confirmed by multiple sources."
+    "reason": "July 15, 1983 bombing at Orly Airport Turkish Airlines desk killed 8 people and wounded 55. Confirmed by multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 15, 1983 bombing at Orly Airport Turkish Airlines desk killed 8 people and wounded 55. Confirmed by multiple sources.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1985,
     "title": "Gorbachev's Glasnost and Perestroika Reach Soviet Armenia",
     "verdict": "TRUE",
-    "reason": "Gorbachev came to power in March 1985 and introduced glasnost/perestroika policies which reached all Soviet republics including Armenia. Well-documented."
+    "reason": "Gorbachev came to power in March 1985 and introduced glasnost/perestroika policies which reached all Soviet republics including Armenia. Well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Gorbachev came to power in March 1985 and introduced glasnost/perestroika policies which reached all Soviet republics including Armenia. Well-documented.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1986,
     "title": "Chernobyl Disaster Intensifies Anti-Nuclear Movement in Armenia",
     "verdict": "TRUE",
-    "reason": "Chernobyl disaster was April 1986 and did intensify anti-nuclear sentiment in Armenia regarding Metsamor. Mass protests against Metsamor are documented."
+    "reason": "Chernobyl disaster was April 1986 and did intensify anti-nuclear sentiment in Armenia regarding Metsamor. Mass protests against Metsamor are documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chernobyl disaster was April 1986 and did intensify anti-nuclear sentiment in Armenia regarding Metsamor. Mass protests against Metsamor are documented.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1988,
     "title": "Mass Karabakh Demonstrations; Over One Million in Yerevan",
     "verdict": "TRUE",
-    "reason": "Beginning February 1988, massive demonstrations in Yerevan over Nagorno-Karabakh unification. Wikipedia confirms over one million gathered at Opera Square."
+    "reason": "Beginning February 1988, massive demonstrations in Yerevan over Nagorno-Karabakh unification. Wikipedia confirms over one million gathered at Opera Square.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Beginning February 1988, massive demonstrations in Yerevan over Nagorno-Karabakh unification. Wikipedia confirms over one million gathered at Opera Square.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1988,
     "title": "Sumgait Pogroms Against Armenians in Azerbaijan",
     "verdict": "TRUE",
-    "reason": "Anti-Armenian pogroms in Sumgait, Azerbaijan, late February 1988, killing dozens and injuring hundreds. Well-documented."
+    "reason": "Anti-Armenian pogroms in Sumgait, Azerbaijan, late February 1988, killing dozens and injuring hundreds. Well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Anti-Armenian pogroms in Sumgait, Azerbaijan, late February 1988, killing dozens and injuring hundreds. Well-documented.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1988,
     "title": "Spitak Earthquake Kills Up to 50,000; Cities Destroyed",
     "verdict": "TRUE",
-    "reason": "December 7, 1988 magnitude 6.8 earthquake. Death toll 25,000-60,000 (upper bound is 50,000+ per many sources). Spitak and Leninakan/Gyumri severely damaged. Facts accurate."
+    "reason": "December 7, 1988 magnitude 6.8 earthquake. Death toll 25,000-60,000 (upper bound is 50,000+ per many sources). Spitak and Leninakan/Gyumri severely damaged. Facts accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 7, 1988 magnitude 6.8 earthquake. Death toll 25,000-60,000 (upper bound is 50,000+ per many sources). Spitak and Leninakan/Gyumri severely damaged. Facts accurate.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1989,
     "title": "Armenian SSR Declares Sovereignty over Soviet Law",
     "verdict": "TRUE",
-    "reason": "Armenian Supreme Soviet passed sovereignty declaration in 1989 asserting primacy of Armenian law. Confirmed."
+    "reason": "Armenian Supreme Soviet passed sovereignty declaration in 1989 asserting primacy of Armenian law. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Armenian Supreme Soviet passed sovereignty declaration in 1989 asserting primacy of Armenian law. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1989,
     "title": "Metsamor Nuclear Plant Shut Down After Earthquake Pressure",
     "verdict": "TRUE",
-    "reason": "Metsamor was shut down in early 1989 following the 1988 earthquake and public pressure. Confirmed by multiple sources."
+    "reason": "Metsamor was shut down in early 1989 following the 1988 earthquake and public pressure. Confirmed by multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Metsamor was shut down in early 1989 following the 1988 earthquake and public pressure. Confirmed by multiple sources.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1989,
     "title": "Ethnic Cleansing; Armenians Expelled from Azerbaijan",
     "verdict": "TRUE",
-    "reason": "Mass expulsions of Armenians from Azerbaijan and reciprocal expulsions of Azerbaijanis from Armenia documented for 1988-1989 period."
+    "reason": "Mass expulsions of Armenians from Azerbaijan and reciprocal expulsions of Azerbaijanis from Armenia documented for 1988-1989 period.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mass expulsions of Armenians from Azerbaijan and reciprocal expulsions of Azerbaijanis from Armenia documented for 1988-1989 period.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1990,
     "title": "Armenian National Movement Wins Soviet-Era Elections",
     "verdict": "TRUE",
-    "reason": "Armenian National Movement won May-June 1990 elections; Levon Ter-Petrosyan elected chairman of Supreme Soviet. Confirmed."
+    "reason": "Armenian National Movement won May-June 1990 elections; Levon Ter-Petrosyan elected chairman of Supreme Soviet. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Armenian National Movement won May-June 1990 elections; Levon Ter-Petrosyan elected chairman of Supreme Soviet. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1991,
     "title": "Armenia Declares Independence; 99% Vote Yes in Referendum",
     "verdict": "TRUE",
-    "reason": "Referendum September 21, 1991; 99.5% voted yes with 95% turnout. Ter-Petrosyan became first president. Confirmed."
+    "reason": "Referendum September 21, 1991; 99.5% voted yes with 95% turnout. Ter-Petrosyan became first president. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Referendum September 21, 1991; 99.5% voted yes with 95% turnout. Ter-Petrosyan became first president. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1992,
     "title": "Azerbaijan and Turkey Impose Energy Blockade on Armenia",
     "verdict": "TRUE",
-    "reason": "Azerbaijan and Turkey blockade of Armenia beginning 1992 is well-documented, cutting gas pipelines and rail."
+    "reason": "Azerbaijan and Turkey blockade of Armenia beginning 1992 is well-documented, cutting gas pipelines and rail.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Azerbaijan and Turkey blockade of Armenia beginning 1992 is well-documented, cutting gas pipelines and rail.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1992,
     "title": "OSCE Minsk Group Established for Nagorno-Karabakh Mediation",
     "verdict": "TRUE",
-    "reason": "OSCE Minsk Group created in 1992 by CSCE; co-chaired by Russia, France, and the United States from 1997. Confirmed."
+    "reason": "OSCE Minsk Group created in 1992 by CSCE; co-chaired by Russia, France, and the United States from 1997. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "OSCE Minsk Group created in 1992 by CSCE; co-chaired by Russia, France, and the United States from 1997. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1993,
     "title": "Armenian Forces Capture Surrounding Azerbaijani Districts",
     "verdict": "TRUE",
-    "reason": "Armenian/Karabakh forces captured Kelbajar, Agdam and other surrounding districts in 1993, controlling ~20% of Azerbaijan's territory. Confirmed."
+    "reason": "Armenian/Karabakh forces captured Kelbajar, Agdam and other surrounding districts in 1993, controlling ~20% of Azerbaijan's territory. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Armenian/Karabakh forces captured Kelbajar, Agdam and other surrounding districts in 1993, controlling ~20% of Azerbaijan's territory. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1993,
     "title": "Armenian Dram Introduced as National Currency",
     "verdict": "TRUE",
-    "reason": "Armenian dram introduced November 22, 1993, replacing the Soviet/Russian ruble. Confirmed."
+    "reason": "Armenian dram introduced November 22, 1993, replacing the Soviet/Russian ruble. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Armenian dram introduced November 22, 1993, replacing the Soviet/Russian ruble. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1994,
     "title": "Bishkek Protocol Ceasefire Ends First Nagorno-Karabakh War",
     "verdict": "TRUE",
-    "reason": "Bishkek Protocol signed May 5, 1994; ceasefire effective May 12, 1994. Russian-brokered. Confirmed."
+    "reason": "Bishkek Protocol signed May 5, 1994; ceasefire effective May 12, 1994. Russian-brokered. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bishkek Protocol signed May 5, 1994; ceasefire effective May 12, 1994. Russian-brokered. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1994,
     "title": "Armenia-Russia Treaty of Friendship and Military Basing",
     "verdict": "TRUE",
-    "reason": "Armenia-Russia Treaty of Friendship and Cooperation signed 1994, establishing Russian military base at Gyumri. Confirmed."
+    "reason": "Armenia-Russia Treaty of Friendship and Cooperation signed 1994, establishing Russian military base at Gyumri. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Armenia-Russia Treaty of Friendship and Cooperation signed 1994, establishing Russian military base at Gyumri. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1995,
     "title": "Armenian Constitution Adopted; Semi-Presidential Republic Established",
     "verdict": "TRUE",
-    "reason": "Constitutional referendum July 5, 1995; approved by 70.3% of voters; established semi-presidential republic. Confirmed."
+    "reason": "Constitutional referendum July 5, 1995; approved by 70.3% of voters; established semi-presidential republic. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitutional referendum July 5, 1995; approved by 70.3% of voters; established semi-presidential republic. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1997,
     "title": "Metsamor Nuclear Plant Controversially Restarted for Energy",
     "verdict": "FALSE",
-    "reason": "Unit 2 was restarted on November 5, 1995, not 1997. The event description says 'restarted in 1995 and by 1997 was providing ~40%' — the year label is 1997 but the restart year is 1995. The event year is off by 2 years for the restart itself."
+    "reason": "Unit 2 was restarted on November 5, 1995, not 1997. The event description says 'restarted in 1995 and by 1997 was providing ~40%' — the year label is 1997 but the restart year is 1995. The event year is off by 2 years for the restart itself.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Unit 2 was restarted on November 5, 1995, not 1997. The event description says 'restarted in 1995 and by 1997 was providing ~40%' — the year label is 1997 but the restart year is 1995. The event year is off by 2 years for the restart itself.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1998,
     "title": "Ter-Petrosyan Resigns; Kocharyan Assumes Presidency",
     "verdict": "TRUE",
-    "reason": "Ter-Petrosyan resigned February 3, 1998 under pressure over Karabakh peace compromise. Kocharyan elected president March 30, 1998. Confirmed."
+    "reason": "Ter-Petrosyan resigned February 3, 1998 under pressure over Karabakh peace compromise. Kocharyan elected president March 30, 1998. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ter-Petrosyan resigned February 3, 1998 under pressure over Karabakh peace compromise. Kocharyan elected president March 30, 1998. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1999,
     "title": "Parliamentary Shooting; Prime Minister Sargsyan and Speaker Killed",
     "verdict": "TRUE",
-    "reason": "October 27, 1999 attack killed PM Vazgen Sargsyan, Speaker Karen Demirchyan, and 6 others. Confirmed."
+    "reason": "October 27, 1999 attack killed PM Vazgen Sargsyan, Speaker Karen Demirchyan, and 6 others. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 27, 1999 attack killed PM Vazgen Sargsyan, Speaker Karen Demirchyan, and 6 others. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2001,
     "title": "Pope John Paul II Visits Armenia for 1700th Anniversary",
     "verdict": "TRUE",
-    "reason": "Pope visited Armenia September 25-27, 2001 for the 1700th anniversary of Armenian Christianity. Joint declaration with Catholicos Karekin II. Confirmed."
+    "reason": "Pope visited Armenia September 25-27, 2001 for the 1700th anniversary of Armenian Christianity. Joint declaration with Catholicos Karekin II. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pope visited Armenia September 25-27, 2001 for the 1700th anniversary of Armenian Christianity. Joint declaration with Catholicos Karekin II. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2003,
     "title": "Kocharyan Re-elected in Disputed Vote; Protests Follow",
     "verdict": "TRUE",
-    "reason": "Kocharyan re-elected in February 2003 elections criticized by international observers; opposition protests followed. Confirmed."
+    "reason": "Kocharyan re-elected in February 2003 elections criticized by international observers; opposition protests followed. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kocharyan re-elected in February 2003 elections criticized by international observers; opposition protests followed. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2004,
     "title": "Armenia Signs EU European Neighborhood Policy Action Plan",
     "verdict": "FALSE",
-    "reason": "The EU-Armenia ENP Action Plan was adopted November 14, 2006, not 2004. Year is off by 2 years."
+    "reason": "The EU-Armenia ENP Action Plan was adopted November 14, 2006, not 2004. Year is off by 2 years.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The EU-Armenia ENP Action Plan was adopted November 14, 2006, not 2004. Year is off by 2 years.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2007,
     "title": "Armenia-Turkey Football Diplomacy Opens Normalization Hope",
     "verdict": "FALSE",
-    "reason": "Football diplomacy began September 6, 2008, when Turkish President Gul attended the World Cup qualifying match in Yerevan — not 2007. The event year is off by 1 year."
+    "reason": "Football diplomacy began September 6, 2008, when Turkish President Gul attended the World Cup qualifying match in Yerevan — not 2007. The event year is off by 1 year.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Football diplomacy began September 6, 2008, when Turkish President Gul attended the World Cup qualifying match in Yerevan — not 2007. The event year is off by 1 year.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2008,
     "title": "Post-Election Violence Kills Ten in Yerevan; Crisis Year",
     "verdict": "TRUE",
-    "reason": "Presidential election February 19, 2008; March 1-2 crackdown killed 10 people (8 protesters, 2 police). Confirmed."
+    "reason": "Presidential election February 19, 2008; March 1-2 crackdown killed 10 people (8 protesters, 2 police). Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Presidential election February 19, 2008; March 1-2 crackdown killed 10 people (8 protesters, 2 police). Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2008,
     "title": "Global Financial Crisis Causes 14% GDP Contraction in 2009",
     "verdict": "TRUE",
-    "reason": "The financial crisis hit Armenia in 2008 with GDP contracting 14% in 2009. IMF data confirms ~14% contraction. Correct to attribute the cause to 2008 crisis."
+    "reason": "The financial crisis hit Armenia in 2008 with GDP contracting 14% in 2009. IMF data confirms ~14% contraction. Correct to attribute the cause to 2008 crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The financial crisis hit Armenia in 2008 with GDP contracting 14% in 2009. IMF data confirms ~14% contraction. Correct to attribute the cause to 2008 crisis.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2009,
     "title": "Zurich Protocols with Turkey Signed but Not Ratified",
     "verdict": "TRUE",
-    "reason": "Zurich Protocols signed October 10, 2009. Faced strong Azerbaijani opposition and were ultimately not ratified. Confirmed."
+    "reason": "Zurich Protocols signed October 10, 2009. Faced strong Azerbaijani opposition and were ultimately not ratified. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Zurich Protocols signed October 10, 2009. Faced strong Azerbaijani opposition and were ultimately not ratified. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2013,
     "title": "Sargsyan Abandons EU Association Agreement for Eurasian Union",
     "verdict": "TRUE",
-    "reason": "September 3, 2013: Sargsyan announced Armenia would join the Eurasian Customs Union, abandoning the nearly-completed EU Association Agreement. Confirmed."
+    "reason": "September 3, 2013: Sargsyan announced Armenia would join the Eurasian Customs Union, abandoning the nearly-completed EU Association Agreement. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 3, 2013: Sargsyan announced Armenia would join the Eurasian Customs Union, abandoning the nearly-completed EU Association Agreement. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2014,
     "title": "Electric Yerevan Protests Against Russian-Owned Utility",
     "verdict": "FALSE",
-    "reason": "The Electric Yerevan protests occurred in summer 2015, not 2014. Year is off by 1 year."
+    "reason": "The Electric Yerevan protests occurred in summer 2015, not 2014. Year is off by 1 year.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Electric Yerevan protests occurred in summer 2015, not 2014. Year is off by 1 year.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2015,
     "title": "Armenian Genocide Centennial; World Leaders Gather in Yerevan",
     "verdict": "TRUE",
-    "reason": "April 24, 2015, centennial commemorations; Putin, Hollande and other world leaders attended at Tsitsernakaberd. Confirmed."
+    "reason": "April 24, 2015, centennial commemorations; Putin, Hollande and other world leaders attended at Tsitsernakaberd. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 24, 2015, centennial commemorations; Putin, Hollande and other world leaders attended at Tsitsernakaberd. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2015,
     "title": "Constitutional Referendum Shifts Armenia to Parliamentary System",
     "verdict": "TRUE",
-    "reason": "December 6, 2015 referendum approved transition to parliamentary system with 63-66% support. Confirmed."
+    "reason": "December 6, 2015 referendum approved transition to parliamentary system with 63-66% support. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 6, 2015 referendum approved transition to parliamentary system with 63-66% support. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2016,
     "title": "Four-Day War in Nagorno-Karabakh; Azerbaijan Advances",
     "verdict": "TRUE",
-    "reason": "April 1-5, 2016 clashes; ceasefire April 5. Azerbaijan gained ~8-20 km2. Over 100 soldiers killed on both sides (88 Armenian + 31-92 Azerbaijani). Confirmed."
+    "reason": "April 1-5, 2016 clashes; ceasefire April 5. Azerbaijan gained ~8-20 km2. Over 100 soldiers killed on both sides (88 Armenian + 31-92 Azerbaijani). Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 1-5, 2016 clashes; ceasefire April 5. Azerbaijan gained ~8-20 km2. Over 100 soldiers killed on both sides (88 Armenian + 31-92 Azerbaijani). Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2018,
     "title": "Velvet Revolution Forces Sargsyan Resignation",
     "verdict": "TRUE",
-    "reason": "April 2018 protests led by Pashinyan; Sargsyan resigned April 23, 2018. Peaceful transition. Confirmed."
+    "reason": "April 2018 protests led by Pashinyan; Sargsyan resigned April 23, 2018. Peaceful transition. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 2018 protests led by Pashinyan; Sargsyan resigned April 23, 2018. Peaceful transition. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2018,
     "title": "Pashinyan's Anti-Corruption Campaign Arrests Former Officials",
     "verdict": "TRUE",
-    "reason": "Kocharyan arrested July 27, 2018 on charges related to the 2008 post-election violence crackdown. Confirmed."
+    "reason": "Kocharyan arrested July 27, 2018 on charges related to the 2008 post-election violence crackdown. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kocharyan arrested July 27, 2018 on charges related to the 2008 post-election violence crackdown. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2020,
     "title": "Second Nagorno-Karabakh War; Armenia Suffers Catastrophic Defeat",
     "verdict": "TRUE",
-    "reason": "September 27 - November 10, 2020: 44-day war; Azerbaijan recaptured surrounding districts and significant Karabakh territory; ceasefire signed November 9-10. Confirmed."
+    "reason": "September 27 - November 10, 2020: 44-day war; Azerbaijan recaptured surrounding districts and significant Karabakh territory; ceasefire signed November 9-10. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 27 - November 10, 2020: 44-day war; Azerbaijan recaptured surrounding districts and significant Karabakh territory; ceasefire signed November 9-10. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2020,
     "title": "November 2020 Ceasefire Cedes Karabakh Territory to Azerbaijan",
     "verdict": "TRUE",
-    "reason": "November 9-10, 2020 ceasefire required Armenia to cede all seven surrounding districts; Russian peacekeepers deployed. Confirmed."
+    "reason": "November 9-10, 2020 ceasefire required Armenia to cede all seven surrounding districts; Russian peacekeepers deployed. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 9-10, 2020 ceasefire required Armenia to cede all seven surrounding districts; Russian peacekeepers deployed. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2021,
     "title": "Pashinyan Re-elected Despite War Defeat Demands for Resignation",
     "verdict": "TRUE",
-    "reason": "June 20, 2021 snap parliamentary election; Pashinyan's Civil Contract won 54% and 71 seats. Confirmed."
+    "reason": "June 20, 2021 snap parliamentary election; Pashinyan's Civil Contract won 54% and 71 seats. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 20, 2021 snap parliamentary election; Pashinyan's Civil Contract won 54% and 71 seats. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2022,
     "title": "Azerbaijan Attacks Undisputed Armenian Territory; CSTO Fails to Respond",
     "verdict": "TRUE",
-    "reason": "September 12-14, 2022: Azerbaijan attacked Armenian sovereign territory; killed 207 Armenian soldiers; CSTO refused to provide military assistance, sending only a fact-finding mission. Confirmed."
+    "reason": "September 12-14, 2022: Azerbaijan attacked Armenian sovereign territory; killed 207 Armenian soldiers; CSTO refused to provide military assistance, sending only a fact-finding mission. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 12-14, 2022: Azerbaijan attacked Armenian sovereign territory; killed 207 Armenian soldiers; CSTO refused to provide military assistance, sending only a fact-finding mission. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2022,
     "title": "EU Civilian Monitoring Mission Deployed to Armenian Borders",
     "verdict": "TRUE",
-    "reason": "EU Monitoring Capacity (EUMCAP) established October 17, 2022; became operational October 20, 2022. A permanent civilian mission (EUMA) was established January 2023. Confirmed."
+    "reason": "EU Monitoring Capacity (EUMCAP) established October 17, 2022; became operational October 20, 2022. A permanent civilian mission (EUMA) was established January 2023. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "EU Monitoring Capacity (EUMCAP) established October 17, 2022; became operational October 20, 2022. A permanent civilian mission (EUMA) was established January 2023. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2023,
     "title": "Lachin Corridor Blockade Starves Karabakh Armenian Population",
     "verdict": "TRUE",
-    "reason": "Blockade began December 12, 2022; lasted through September 2023; caused acute shortages for ~120,000 ethnic Armenians. Confirmed."
+    "reason": "Blockade began December 12, 2022; lasted through September 2023; caused acute shortages for ~120,000 ethnic Armenians. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Blockade began December 12, 2022; lasted through September 2023; caused acute shortages for ~120,000 ethnic Armenians. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2023,
     "title": "Azerbaijani Offensive Ends Nagorno-Karabakh Republic",
     "verdict": "TRUE",
-    "reason": "September 19, 2023: 24-hour offensive; ceasefire accepted; republic dissolved January 1, 2024; over 100,000 ethnic Armenians fled. Confirmed."
+    "reason": "September 19, 2023: 24-hour offensive; ceasefire accepted; republic dissolved January 1, 2024; over 100,000 ethnic Armenians fled. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 19, 2023: 24-hour offensive; ceasefire accepted; republic dissolved January 1, 2024; over 100,000 ethnic Armenians fled. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2023,
     "title": "Armenia Formally Suspends CSTO Participation",
     "verdict": "FALSE",
-    "reason": "Armenia froze CSTO participation on February 23, 2024, not 2023. In 2023 Armenia downgraded relations but the formal freeze/suspension announcement came in February 2024. Year is off by 1 year."
+    "reason": "Armenia froze CSTO participation on February 23, 2024, not 2023. In 2023 Armenia downgraded relations but the formal freeze/suspension announcement came in February 2024. Year is off by 1 year.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Armenia froze CSTO participation on February 23, 2024, not 2023. In 2023 Armenia downgraded relations but the formal freeze/suspension announcement came in February 2024. Year is off by 1 year.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2024,
     "title": "Armenia Ratifies Rome Statute; Direct Challenge to Putin",
     "verdict": "FALSE",
-    "reason": "Armenian parliament ratified the Rome Statute on October 3, 2023, not 2024. It entered into force February 1, 2024. The ratification event year is off by 1 year."
+    "reason": "Armenian parliament ratified the Rome Statute on October 3, 2023, not 2024. It entered into force February 1, 2024. The ratification event year is off by 1 year.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Armenian parliament ratified the Rome Statute on October 3, 2023, not 2024. It entered into force February 1, 2024. The ratification event year is off by 1 year.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2024,
     "title": "Armenian Parliament Votes to Pursue EU Membership Dialogue",
     "verdict": "TRUE",
-    "reason": "European Parliament passed resolution March 12, 2024 supporting Armenian EU candidacy; Armenian PM confirmed EU membership on political agenda September 2024; EU Integration Act passed March 2025. The 2024 framing is accurate."
+    "reason": "European Parliament passed resolution March 12, 2024 supporting Armenian EU candidacy; Armenian PM confirmed EU membership on political agenda September 2024; EU Integration Act passed March 2025. The 2024 framing is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "European Parliament passed resolution March 12, 2024 supporting Armenian EU candidacy; Armenian PM confirmed EU membership on political agenda September 2024; EU Integration Act passed March 2025. The 2024 framing is accurate.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2024,
     "title": "Russia Withdraws Border Guards from Armenian Checkpoints",
     "verdict": "TRUE",
-    "reason": "Russia agreed in May 2024 to withdraw border guards; Zvartnots Airport departure July 2024; Armenia-Iran border checkpoint handed over December 30, 2024. Confirmed."
+    "reason": "Russia agreed in May 2024 to withdraw border guards; Zvartnots Airport departure July 2024; Armenia-Iran border checkpoint handed over December 30, 2024. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Russia agreed in May 2024 to withdraw border guards; Zvartnots Airport departure July 2024; Armenia-Iran border checkpoint handed over December 30, 2024. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   }
 ]

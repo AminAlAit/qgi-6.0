@@ -4,6 +4,24 @@
     "title": "Cambodia Achieves Full Independence from France",
     "verdict": "TRUE",
     "reason": "France transferred full sovereignty on November 9, 1953. Sihanouk's Royal Crusade secured independence. November 9 is Cambodia's Independence Day.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "France transferred full sovereignty on November 9, 1953. Sihanouk's Royal Crusade secured independence. November 9 is Cambodia's Independence Day.",
+        "source": "https://en.wikipedia.org/wiki/Independence_Day_of_Cambodia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Independence_Day_of_Cambodia"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Geneva Accords Confirm Cambodian Neutrality and Independence",
     "verdict": "TRUE",
     "reason": "The July 21, 1954 Geneva Conference confirmed Cambodia's independence, neutrality, and Viet Minh withdrawal. Cambodia was not partitioned, consistent with the event description.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The July 21, 1954 Geneva Conference confirmed Cambodia's independence, neutrality, and Viet Minh withdrawal. Cambodia was not partitioned, consistent with the event description.",
+        "source": "https://en.wikipedia.org/wiki/1954_Geneva_Conference",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1954_Geneva_Conference"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Sihanouk Abdicates Throne to Enter Politics via Sangkum",
     "verdict": "TRUE",
     "reason": "Sihanouk abdicated on March 2, 1955 in favor of his father Norodom Suramarit. Sangkum Reastr Niyum swept all National Assembly seats in September 1955 elections.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sihanouk abdicated on March 2, 1955 in favor of his father Norodom Suramarit. Sangkum Reastr Niyum swept all National Assembly seats in September 1955 elections.",
+        "source": "https://en.wikipedia.org/wiki/Norodom_Sihanouk",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Norodom_Sihanouk"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Cambodia Attends Bandung Non-Aligned Conference",
     "verdict": "TRUE",
     "reason": "Sihanouk attended the April 1955 Bandung Conference in Indonesia and declared Cambodia would remain neutral, embracing non-alignment.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sihanouk attended the April 1955 Bandung Conference in Indonesia and declared Cambodia would remain neutral, embracing non-alignment.",
+        "source": "https://en.wikipedia.org/wiki/Bandung_Conference",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bandung_Conference"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Border Dispute with Thailand over Preah Vihear Temple",
     "verdict": "FALSE",
     "reason": "Border tensions and failed Bangkok talks occurred in 1958, but Cambodia did NOT refer the case to the ICJ in 1958 — the ICJ application was filed on October 6, 1959. The claim that Sihanouk 'referred the dispute to the ICJ' in 1958 is a one-year error.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Border tensions and failed Bangkok talks occurred in 1958, but Cambodia did NOT refer the case to the ICJ in 1958 — the ICJ application was filed on October 6, 1959. The claim that Sihanouk 'referred the dispute to the ICJ' in 1958 is a one-year error.",
+        "source": "https://www.icj-cij.org/case/45",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.icj-cij.org/case/45"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Sihanouk Nationalizes Banks and Foreign Trade",
     "verdict": "FALSE",
     "reason": "Nationalization of banks and foreign trade happened in 1963, not 1961. Multiple sources confirm the nationalization was announced in 1963 alongside the rejection of US aid. Year is off by 2 years.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Nationalization of banks and foreign trade happened in 1963, not 1961. Multiple sources confirm the nationalization was announced in 1963 alongside the rejection of US aid. Year is off by 2 years.",
+        "source": "https://newleftreview.org/issues/i25/articles/w-e-willmott-cambodia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://newleftreview.org/issues/i25/articles/w-e-willmott-cambodia"
   },
   {
@@ -46,6 +154,24 @@
     "title": "ICJ Rules Preah Vihear Temple Belongs to Cambodia",
     "verdict": "TRUE",
     "reason": "ICJ ruled 9-3 in Cambodia's favor on June 15, 1962, ordering Thailand to withdraw forces. Core facts match the event description.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ICJ ruled 9-3 in Cambodia's favor on June 15, 1962, ordering Thailand to withdraw forces. Core facts match the event description.",
+        "source": "https://www.icj-cij.org/case/45",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.icj-cij.org/case/45"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Cambodia Rejects US Military Aid and Expels Advisory Mission",
     "verdict": "TRUE",
     "reason": "In 1963 Sihanouk cut off all US aid and ended the American military advisory presence, citing CIA interference and the Diem assassination. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 1963 Sihanouk cut off all US aid and ended the American military advisory presence, citing CIA interference and the Diem assassination. Core facts confirmed.",
+        "source": "https://history.state.gov/historicaldocuments/frus1961-63v23/d296",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://history.state.gov/historicaldocuments/frus1961-63v23/d296"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Cambodia Severs Diplomatic Relations with United States",
     "verdict": "TRUE",
     "reason": "Sihanouk severed diplomatic relations in May 1965 citing US support for border attacks and interference. Relations were restored in 1969.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sihanouk severed diplomatic relations in May 1965 citing US support for border attacks and interference. Relations were restored in 1969.",
+        "source": "https://en.wikipedia.org/wiki/Cambodia%E2%80%93United_States_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cambodia%E2%80%93United_States_relations"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Samlaut Peasant Uprising Signals Growing Rural Discontent",
     "verdict": "TRUE",
     "reason": "Uprising began April 2, 1967 in Battambang Province triggered by forced rice collection. Violent military suppression confirmed; connection to Khmer Rouge mobilization confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Uprising began April 2, 1967 in Battambang Province triggered by forced rice collection. Violent military suppression confirmed; connection to Khmer Rouge mobilization confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Samlaut_Uprising",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Samlaut_Uprising"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Operation Menu: Secret US B-52 Bombing of Cambodia",
     "verdict": "TRUE",
     "reason": "Operation Menu began March 18, 1969. Over 3,600 sorties dropping approximately 108,000-110,000 tons of ordnance confirmed. Congress and public were deceived through falsified records.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Menu began March 18, 1969. Over 3,600 sorties dropping approximately 108,000-110,000 tons of ordnance confirmed. Congress and public were deceived through falsified records.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Menu",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Menu"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Lon Nol Coup Overthrows Sihanouk; Civil War Begins",
     "verdict": "TRUE",
     "reason": "Lon Nol and Sirik Matak ousted Sihanouk on March 18, 1970 via National Assembly vote while Sihanouk was abroad. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Lon Nol and Sirik Matak ousted Sihanouk on March 18, 1970 via National Assembly vote while Sihanouk was abroad. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1970_Cambodian_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1970_Cambodian_coup_d'%C3%A9tat"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Sihanouk Forms Government-in-Exile Allied with Khmer Rouge",
     "verdict": "TRUE",
     "reason": "Sihanouk formed the FUNK from Beijing in 1970, allied with the Khmer Rouge. China and North Vietnam recognized his government-in-exile. This massively boosted Khmer Rouge recruitment.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sihanouk formed the FUNK from Beijing in 1970, allied with the Khmer Rouge. China and North Vietnam recognized his government-in-exile. This massively boosted Khmer Rouge recruitment.",
+        "source": "https://en.wikipedia.org/wiki/Norodom_Sihanouk",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Norodom_Sihanouk"
   },
   {
@@ -95,6 +329,24 @@
     "title": "US and South Vietnamese Forces Invade Cambodia",
     "verdict": "TRUE",
     "reason": "US and South Vietnamese ground forces invaded Cambodia in April-May 1970. The operation triggered Kent State shootings and anti-war protests. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "US and South Vietnamese ground forces invaded Cambodia in April-May 1970. The operation triggered Kent State shootings and anti-war protests. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cambodian_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cambodian_Civil_War"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Lon Nol Proclaims Khmer Republic with Sweeping Powers",
     "verdict": "TRUE",
     "reason": "Lon Nol formally proclaimed the Khmer Republic and assumed the presidency with executive powers in 1972. US B-52 bombing campaigns caused mass civilian casualties. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Lon Nol formally proclaimed the Khmer Republic and assumed the presidency with executive powers in 1972. US B-52 bombing campaigns caused mass civilian casualties. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kingdom_of_Cambodia_(1953%E2%80%931970)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kingdom_of_Cambodia_(1953%E2%80%931970)"
   },
   {
@@ -109,6 +379,24 @@
     "title": "US Congress Bans Further Military Operations in Cambodia",
     "verdict": "TRUE",
     "reason": "Congress enacted the Fulbright Proviso cutting off funding for military operations in Cambodia with effect August 15, 1973. All direct US military involvement ended on that date.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Congress enacted the Fulbright Proviso cutting off funding for military operations in Cambodia with effect August 15, 1973. All direct US military involvement ended on that date.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Freedom_Deal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Freedom_Deal"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Khmer Rouge Captures Phnom Penh and Orders Mass Evacuation",
     "verdict": "TRUE",
     "reason": "Khmer Rouge captured Phnom Penh on April 17, 1975. Mass evacuation of approximately 2 million people began the same day. Thousands died during the forced march.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Khmer Rouge captured Phnom Penh on April 17, 1975. Mass evacuation of approximately 2 million people began the same day. Thousands died during the forced march.",
+        "source": "https://en.wikipedia.org/wiki/Fall_of_Phnom_Penh",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Fall_of_Phnom_Penh"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Democratic Kampuchea Established; Year Zero Policy Enacted",
     "verdict": "TRUE",
     "reason": "Democratic Kampuchea constitution promulgated January 5, 1976. Pol Pot became Prime Minister in 1976. Year Zero ideology abolishing currency, markets and education confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Democratic Kampuchea constitution promulgated January 5, 1976. Pol Pot became Prime Minister in 1976. Year Zero ideology abolishing currency, markets and education confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Democratic_Kampuchea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Democratic_Kampuchea"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Khmer Rouge Purges Eastern Zone; Border War with Vietnam Escalates",
     "verdict": "TRUE",
     "reason": "Eastern Zone purges and cross-border attacks on Vietnamese civilians in 1977 confirmed. Hun Sen and other Eastern Zone commanders defected to Vietnam. Facts consistent with sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Eastern Zone purges and cross-border attacks on Vietnamese civilians in 1977 confirmed. Hun Sen and other Eastern Zone commanders defected to Vietnam. Facts consistent with sources.",
+        "source": "https://en.wikipedia.org/wiki/Cambodian%E2%80%93Vietnamese_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cambodian%E2%80%93Vietnamese_War"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Vietnam Launches Full-Scale Invasion to End Khmer Rouge Rule",
     "verdict": "TRUE",
     "reason": "Vietnam launched its invasion on December 25, 1978 with approximately 150,000 troops. Vietnamese forces rapidly overwhelmed Khmer Rouge. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Vietnam launched its invasion on December 25, 1978 with approximately 150,000 troops. Vietnamese forces rapidly overwhelmed Khmer Rouge. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cambodian%E2%80%93Vietnamese_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cambodian%E2%80%93Vietnamese_War"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Vietnamese Forces Capture Phnom Penh; PRK Installed",
     "verdict": "TRUE",
     "reason": "Vietnamese forces captured Phnom Penh on January 7, 1979. PRK installed under Heng Samrin with Hun Sen as Foreign Minister (not yet PM). Western nations backed the Khmer Rouge's UN seat. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Vietnamese forces captured Phnom Penh on January 7, 1979. PRK installed under Heng Samrin with Hun Sen as Foreign Minister (not yet PM). Western nations backed the Khmer Rouge's UN seat. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cambodian%E2%80%93Vietnamese_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cambodian%E2%80%93Vietnamese_War"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Famine and Humanitarian Crisis Following the Genocide",
     "verdict": "TRUE",
     "reason": "Catastrophic famine from destroyed agricultural infrastructure in 1979 is well-documented. International relief operations were complicated by political disputes over PRK recognition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Catastrophic famine from destroyed agricultural infrastructure in 1979 is well-documented. International relief operations were complicated by political disputes over PRK recognition.",
+        "source": "https://www.unhcr.org/history-of-unhcr/1975-1994",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.unhcr.org/history-of-unhcr/1975-1994"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Mass Refugee Crisis Develops Along Thai-Cambodian Border",
     "verdict": "TRUE",
     "reason": "Hundreds of thousands of Cambodian refugees fled to Thai border camps from 1979-1980. UNHCR relief operations and border camps as resistance bases are confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Hundreds of thousands of Cambodian refugees fled to Thai border camps from 1979-1980. UNHCR relief operations and border camps as resistance bases are confirmed.",
+        "source": "https://www.unhcr.org/history-of-unhcr/1975-1994",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.unhcr.org/history-of-unhcr/1975-1994"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Hun Sen Becomes Prime Minister of PRK at Age 30",
     "verdict": "FALSE",
     "reason": "In 1982 Hun Sen was serving as Foreign Minister and Deputy Prime Minister, not Prime Minister. He became sole Prime Minister in January 1985 at age 32. The year, title, and age are all materially wrong.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "In 1982 Hun Sen was serving as Foreign Minister and Deputy Prime Minister, not Prime Minister. He became sole Prime Minister in January 1985 at age 32. The year, title, and age are all materially wrong.",
+        "source": "https://en.wikipedia.org/wiki/Hun_Sen",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hun_Sen"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Hun Sen Consolidates Sole Control as Prime Minister",
     "verdict": "TRUE",
     "reason": "Hun Sen was appointed sole Prime Minister on January 14, 1985, succeeding Chan Sy who died in December 1984. Age 32 at appointment. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Hun Sen was appointed sole Prime Minister on January 14, 1985, succeeding Chan Sy who died in December 1984. Age 32 at appointment. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Hun_Sen",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hun_Sen"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Sihanouk and Hun Sen Hold First Direct Peace Talks in France",
     "verdict": "TRUE",
     "reason": "Sihanouk and Hun Sen met directly in France in 1987, marking the first such dialogue. Multiple rounds of subsequent talks built toward the Paris framework.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sihanouk and Hun Sen met directly in France in 1987, marking the first such dialogue. Multiple rounds of subsequent talks built toward the Paris framework.",
+        "source": "https://www.britannica.com/place/Cambodia/Peace-negotiations-and-the-UNTAC-period",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/place/Cambodia/Peace-negotiations-and-the-UNTAC-period"
   },
   {
@@ -186,6 +654,24 @@
     "title": "PRK Announces Timetable for Vietnamese Troop Withdrawal",
     "verdict": "TRUE",
     "reason": "PRK announced a timetable for Vietnamese withdrawal in 1988 under international pressure. Withdrawal was completed by September 1989. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PRK announced a timetable for Vietnamese withdrawal in 1988 under international pressure. Withdrawal was completed by September 1989. Core facts confirmed.",
+        "source": "https://www.britannica.com/place/Cambodia/Peace-negotiations-and-the-UNTAC-period",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/place/Cambodia/Peace-negotiations-and-the-UNTAC-period"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Vietnam Completes Military Withdrawal from Cambodia",
     "verdict": "TRUE",
     "reason": "Vietnam completed its military withdrawal in September 1989. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Vietnam completed its military withdrawal in September 1989. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cambodian%E2%80%93Vietnamese_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cambodian%E2%80%93Vietnamese_War"
   },
   {
@@ -200,6 +704,24 @@
     "title": "PRK Renames Itself State of Cambodia, Abandons Marxism",
     "verdict": "TRUE",
     "reason": "PRK renamed itself State of Cambodia in 1989, formally abandoned Marxism-Leninism, and restored Buddhism as state religion. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PRK renamed itself State of Cambodia in 1989, formally abandoned Marxism-Leninism, and restored Buddhism as state religion. Core facts confirmed.",
+        "source": "https://www.britannica.com/place/Cambodia/Peace-negotiations-and-the-UNTAC-period",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/place/Cambodia/Peace-negotiations-and-the-UNTAC-period"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Paris Peace Accords End Cambodian Civil War",
     "verdict": "TRUE",
     "reason": "Paris Peace Agreements signed October 23, 1991 by four Cambodian factions and 18-19 sponsoring nations. Established UNTAC. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Paris Peace Agreements signed October 23, 1991 by four Cambodian factions and 18-19 sponsoring nations. Established UNTAC. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1991_Paris_Peace_Agreements",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1991_Paris_Peace_Agreements"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Sihanouk Returns to Cambodia After 13 Years of Exile",
     "verdict": "TRUE",
     "reason": "Sihanouk returned to Phnom Penh in November 1991 after 13 years in exile, receiving an enormous popular welcome. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sihanouk returned to Phnom Penh in November 1991 after 13 years in exile, receiving an enormous popular welcome. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Norodom_Sihanouk",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Norodom_Sihanouk"
   },
   {
@@ -221,6 +779,24 @@
     "title": "UNTAC Deploys 15,000 Personnel to Administer Cambodia",
     "verdict": "TRUE",
     "reason": "UNTAC deployed approximately 15,000 military peacekeepers plus civilian police and administrators in 1992. Was the largest and most expensive UN operation at the time. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UNTAC deployed approximately 15,000 military peacekeepers plus civilian police and administrators in 1992. Was the largest and most expensive UN operation at the time. Core facts confirmed.",
+        "source": "https://peacekeeping.un.org/en/mission/past/untac.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://peacekeeping.un.org/en/mission/past/untac.htm"
   },
   {
@@ -228,6 +804,24 @@
     "title": "UNTAC Elections Produce FUNCINPEC Victory; Monarchy Restored",
     "verdict": "TRUE",
     "reason": "May 1993 elections: FUNCINPEC won 45.47%, CPP 38.23%, voter turnout ~89.56%. Ranariddh and Hun Sen became co-prime ministers. Sihanouk crowned king in September 1993 under new constitution. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 1993 elections: FUNCINPEC won 45.47%, CPP 38.23%, voter turnout ~89.56%. Ranariddh and Hun Sen became co-prime ministers. Sihanouk crowned king in September 1993 under new constitution. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1993_Cambodian_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1993_Cambodian_general_election"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Senior Khmer Rouge Leader Ieng Sary Defects with 10,000 Troops",
     "verdict": "TRUE",
     "reason": "Ieng Sary defected in 1996 with approximately 10,000 troops from Pailin. Sihanouk pardoned him for his genocide conviction. The defection was the most significant Khmer Rouge split. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ieng Sary defected in 1996 with approximately 10,000 troops from Pailin. Sihanouk pardoned him for his genocide conviction. The defection was the most significant Khmer Rouge split. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ieng_Sary",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ieng_Sary"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Hun Sen's Violent Coup Ends Power-Sharing with FUNCINPEC",
     "verdict": "TRUE",
     "reason": "CPP forces attacked FUNCINPEC on July 5-6, 1997. At least 32 killed with between 41-60 summary executions in custody. Ranariddh fled to Paris. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "CPP forces attacked FUNCINPEC on July 5-6, 1997. At least 32 killed with between 41-60 summary executions in custody. Ranariddh fled to Paris. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1997_Cambodian_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1997_Cambodian_coup_d'%C3%A9tat"
   },
   {
@@ -249,6 +879,24 @@
     "title": "ASEAN Delays Cambodia's Membership Following Coup",
     "verdict": "TRUE",
     "reason": "ASEAN postponed Cambodia's entry following the July 1997 coup. Cambodia was eventually admitted in April 1999. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ASEAN postponed Cambodia's entry following the July 1997 coup. Cambodia was eventually admitted in April 1999. Core facts confirmed.",
+        "source": "https://asean.org/member-states/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://asean.org/member-states/"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Pol Pot Dies; Final Khmer Rouge Remnants Surrender",
     "verdict": "TRUE",
     "reason": "Pol Pot died April 15, 1998 under arrest by Khmer Rouge colleagues near the Thai border. Final significant Khmer Rouge units surrendered by year's end. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pol Pot died April 15, 1998 under arrest by Khmer Rouge colleagues near the Thai border. Final significant Khmer Rouge units surrendered by year's end. Core facts confirmed.",
+        "source": "https://www.britannica.com/topic/Khmer-Rouge",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/topic/Khmer-Rouge"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Cambodia Admitted to ASEAN as Full Member",
     "verdict": "TRUE",
     "reason": "Cambodia admitted as ASEAN's 10th member on April 30, 1999 after the post-coup delay. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cambodia admitted as ASEAN's 10th member on April 30, 1999 after the post-coup delay. Core facts confirmed.",
+        "source": "https://asean.org/member-states/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://asean.org/member-states/"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Khmer Rouge Tribunal Law Passed; ECCC Framework Created",
     "verdict": "TRUE",
     "reason": "Cambodia's National Assembly passed the ECCC law in 2001. Further UN negotiations led to a formal agreement signed in 2004 and the court opened in 2006. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cambodia's National Assembly passed the ECCC law in 2001. Further UN negotiations led to a formal agreement signed in 2004 and the court opened in 2006. Core facts confirmed.",
+        "source": "https://www.eccc.gov.kh/en/about-eccc",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.eccc.gov.kh/en/about-eccc"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Cambodia Joins World Trade Organization",
     "verdict": "FALSE",
     "reason": "Cambodia joined the WTO on October 13, 2004, not 2002. Cambodia applied in December 1994; the protocol was approved in September 2003. Year is off by 2 years.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Cambodia joined the WTO on October 13, 2004, not 2002. Cambodia applied in December 1994; the protocol was approved in September 2003. Year is off by 2 years.",
+        "source": "https://www.wto.org/english/thewto_e/countries_e/cambodia_e.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.wto.org/english/thewto_e/countries_e/cambodia_e.htm"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Anti-Thai Riots Destroy Thai Embassy and Trigger Diplomatic Crisis",
     "verdict": "TRUE",
     "reason": "Riots erupted January 29, 2003 after false tabloid report about Thai actress claiming Angkor Wat. Thai embassy burned, Thai businesses looted. Cambodia paid $6 million compensation. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Riots erupted January 29, 2003 after false tabloid report about Thai actress claiming Angkor Wat. Thai embassy burned, Thai businesses looted. Cambodia paid $6 million compensation. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2003_Phnom_Penh_riots",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2003_Phnom_Penh_riots"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "King Sihanouk Abdicates; Norodom Sihamoni Becomes King",
     "verdict": "TRUE",
     "reason": "Sihanouk abdicated in October 2004; Royal Council selected Prince Norodom Sihamoni as new king. Sihamoni was a former ballet dancer based in Paris. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sihanouk abdicated in October 2004; Royal Council selected Prince Norodom Sihamoni as new king. Sihamoni was a former ballet dancer based in Paris. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Norodom_Sihamoni",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Norodom_Sihamoni"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Preah Vihear UNESCO Listing Triggers Military Clashes with Thailand",
     "verdict": "TRUE",
     "reason": "UNESCO listed Preah Vihear on July 7, 2008, triggering Thai nationalist troop deployments and military skirmishes from October 2008 through 2011. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UNESCO listed Preah Vihear on July 7, 2008, triggering Thai nationalist troop deployments and military skirmishes from October 2008 through 2011. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cambodian%E2%80%93Thai_border_dispute",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cambodian%E2%80%93Thai_border_dispute"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Duch Convicted of Crimes Against Humanity by ECCC",
     "verdict": "TRUE",
     "reason": "ECCC convicted Duch on July 26, 2010, initially sentencing him to 35 years (reduced to 19 years for time served). On appeal in 2011, sentence upgraded to life imprisonment. Trial Chamber verdict was in 2010. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ECCC convicted Duch on July 26, 2010, initially sentencing him to 35 years (reduced to 19 years for time served). On appeal in 2011, sentence upgraded to life imprisonment. Trial Chamber verdict was in 2010. Core facts confirmed.",
+        "source": "https://www.eccc.gov.kh/en/case/topic/1",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.eccc.gov.kh/en/case/topic/1"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Land Grabbing Crisis Displaces Tens of Thousands",
     "verdict": "TRUE",
     "reason": "HRW documented hundreds of violent land disputes and forced evictions from economic land concessions, particularly prominent around 2011-2012. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "HRW documented hundreds of violent land disputes and forced evictions from economic land concessions, particularly prominent around 2011-2012. Core facts confirmed.",
+        "source": "https://www.hrw.org/report/2012/09/12/beneath-lies/forced-evictions-land-grabbing-and-story-behind-cambodias-economic-growth",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/report/2012/09/12/beneath-lies/forced-evictions-land-grabbing-and-story-behind-cambodias-economic-growth"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Disputed Elections Trigger Largest Opposition Protests in Years",
     "verdict": "TRUE",
     "reason": "July 2013 elections with disputed CPP victory triggered large CNRP protests and garment worker strikes. Standoff lasted months before CNRP entered parliament. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 2013 elections with disputed CPP victory triggered large CNRP protests and garment worker strikes. Standoff lasted months before CNRP entered parliament. Core facts confirmed.",
+        "source": "https://www.hrw.org/report/2014/03/04/cambodia-events-2013",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/report/2014/03/04/cambodia-events-2013"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Security Forces Kill Garment Workers in Strike Crackdown",
     "verdict": "TRUE",
     "reason": "Security forces fired on striking garment workers on January 3, 2014, killing at least 4 and wounding dozens. International condemnation followed. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Security forces fired on striking garment workers on January 3, 2014, killing at least 4 and wounding dozens. International condemnation followed. Core facts confirmed.",
+        "source": "https://www.amnesty.org/en/documents/asa23/001/2014/en/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.amnesty.org/en/documents/asa23/001/2014/en/"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "ECCC Convicts Nuon Chea and Khieu Samphan of Crimes Against Humanity",
     "verdict": "TRUE",
     "reason": "ECCC Trial Chamber convicted both defendants on August 7, 2014 in Case 002/01 and sentenced them to life imprisonment. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ECCC Trial Chamber convicted both defendants on August 7, 2014 in Case 002/01 and sentenced them to life imprisonment. Core facts confirmed.",
+        "source": "https://www.eccc.gov.kh/en/case/topic/2",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.eccc.gov.kh/en/case/topic/2"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Supreme Court Dissolves Main Opposition Party CNRP",
     "verdict": "TRUE",
     "reason": "Supreme Court dissolved CNRP on November 16, 2017 and banned 118 senior officials from politics for 5 years. Kem Sokha arrested September 3, 2017. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Supreme Court dissolved CNRP on November 16, 2017 and banned 118 senior officials from politics for 5 years. Kem Sokha arrested September 3, 2017. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cambodia_National_Rescue_Party",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cambodia_National_Rescue_Party"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "CPP Wins All 125 Parliamentary Seats; EU Initiates EBA Withdrawal",
     "verdict": "TRUE",
     "reason": "CPP won all 125 seats in July 2018 elections. EU initiated formal EBA review and withdrawal process in 2018 following the election. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "CPP won all 125 seats in July 2018 elections. EU initiated formal EBA review and withdrawal process in 2018 following the election. Core facts confirmed.",
+        "source": "https://ec.europa.eu/commission/presscorner/detail/en/ip_20_1469",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://ec.europa.eu/commission/presscorner/detail/en/ip_20_1469"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "ECCC Convicts Nuon Chea and Khieu Samphan of Genocide",
     "verdict": "FALSE",
     "reason": "Case 002/02 genocide conviction was delivered on November 16, 2018, not 2019. Year is off by 1 year. The facts about the conviction (Cham and Vietnamese genocide, life sentences) are correct.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Case 002/02 genocide conviction was delivered on November 16, 2018, not 2019. Year is off by 1 year. The facts about the conviction (Cham and Vietnamese genocide, life sentences) are correct.",
+        "source": "https://legal.un.org/ola/media/info_from_lc/mss/speeches/MSS-Phnom-Penh-November-2018-ECCC-2-2-press-release.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://legal.un.org/ola/media/info_from_lc/mss/speeches/MSS-Phnom-Penh-November-2018-ECCC-2-2-press-release.pdf"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "EU Partially Withdraws EBA Trade Preferences from Cambodia",
     "verdict": "TRUE",
     "reason": "EU partial EBA withdrawal took effect August 12, 2020, removing duty-free access for garments, footwear, travel goods and sugar (~20% of exports). Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "EU partial EBA withdrawal took effect August 12, 2020, removing duty-free access for garments, footwear, travel goods and sugar (~20% of exports). Core facts confirmed.",
+        "source": "https://ec.europa.eu/commission/presscorner/detail/en/ip_20_1469",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://ec.europa.eu/commission/presscorner/detail/en/ip_20_1469"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "China Constructs Naval Facilities at Ream Naval Base",
     "verdict": "TRUE",
     "reason": "Chinese construction at Ream Naval Base raising US and regional concerns was well-documented from 2021 onward. Cambodia denied exclusive Chinese military access while acknowledging Chinese construction assistance. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chinese construction at Ream Naval Base raising US and regional concerns was well-documented from 2021 onward. Cambodia denied exclusive Chinese military access while acknowledging Chinese construction assistance. Core facts confirmed.",
+        "source": "https://amti.csis.org/changes-underway-at-cambodias-ream-naval-base/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://amti.csis.org/changes-underway-at-cambodias-ream-naval-base/"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "Scam Compound Industry Exposed: Trafficking on Industrial Scale",
     "verdict": "TRUE",
     "reason": "2022 international media investigations (ProPublica, France24, etc.) exposed massive online fraud operations run by Chinese criminal syndicates in Sihanoukville and Koh Kong with trafficking on an industrial scale. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2022 international media investigations (ProPublica, France24, etc.) exposed massive online fraud operations run by Chinese criminal syndicates in Sihanoukville and Koh Kong with trafficking on an industrial scale. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Scam_centers_in_Cambodia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Scam_centers_in_Cambodia"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Hun Manet Succeeds Father Hun Sen as Prime Minister",
     "verdict": "TRUE",
     "reason": "Hun Manet sworn in as PM on August 22, 2023. Candlelight Party disqualified from 2023 elections. Hun Sen became Senate President. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Hun Manet sworn in as PM on August 22, 2023. Candlelight Party disqualified from 2023 elections. Hun Sen became Senate President. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Hun_Manet",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hun_Manet"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Kem Sokha Convicted of Treason, Sentenced to 27 Years",
     "verdict": "TRUE",
     "reason": "Kem Sokha convicted March 3, 2023 and sentenced to 27 years with lifetime ban from politics. Widely condemned as politically motivated. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kem Sokha convicted March 3, 2023 and sentenced to 27 years with lifetime ban from politics. Widely condemned as politically motivated. Core facts confirmed.",
+        "source": "https://www.amnesty.org/en/latest/news/2023/03/cambodia-kem-sokha-conviction/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.amnesty.org/en/latest/news/2023/03/cambodia-kem-sokha-conviction/"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "Cambodia Breaks Ground on Funan Techo Canal",
     "verdict": "TRUE",
     "reason": "Groundbreaking ceremony held August 5, 2024 for the 180-kilometer Funan Techo Canal connecting Phnom Penh to Gulf of Thailand. Chinese financing involved; Vietnamese environmental concerns confirmed. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Groundbreaking ceremony held August 5, 2024 for the 180-kilometer Funan Techo Canal connecting Phnom Penh to Gulf of Thailand. Chinese financing involved; Vietnamese environmental concerns confirmed. Core facts confirmed.",
+        "source": "https://edition.cnn.com/2024/08/05/asia/cambodia-breaks-ground-on-china-funded-canal-intl-hnk",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://edition.cnn.com/2024/08/05/asia/cambodia-breaks-ground-on-china-funded-canal-intl-hnk"
   }
 ]

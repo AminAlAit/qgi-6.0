@@ -38,6 +38,12 @@ what's been *learned*.
   with "session limit" errors; the workflow returns partial results). Always read the
   failures block of a workflow result before trusting its coverage, and re-run lost
   lenses/batch slices after the limit resets rather than assuming they ran.
+- **2026-07-02** — **B1 + B2 RATIFIED by founder (in-session).** B1: `CONSENSUS_POLICY =
+  conservative_downgrade` — recorded in `consensus_policy.json` (this directory), asserted
+  by the `_lib.mjs` CLI and enforced by `validate_verification.py`. B2: the v2
+  double-verify schema is canonical; `migrate_verification_to_v2.py --apply` run on all
+  154 verification files. A future policy flip must update the policy file + schemas.mjs
+  + re-derive all entries from `verifications[]` in ONE commit.
 - **2026-07-02** — Blindness rule for why-context: anything injected into a verifier prompt
   (tierWhy, verifyWhy) must never imply the event's current verdict ("re-verify", "a
   TRUE→FALSE flip would de-list", "help add positives") — adversarial review confirmed the

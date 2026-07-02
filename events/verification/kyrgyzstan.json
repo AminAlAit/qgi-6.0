@@ -4,6 +4,24 @@
     "title": "Kyrgyzstan Declares Independence from the Soviet Union",
     "verdict": "TRUE",
     "reason": "Kyrgyzstan declared independence on August 31, 1991, following the failed August coup in Moscow. Akayev, who had been elected president by the Supreme Soviet in 1990, supported independence; formal dissolution of the USSR followed on December 25-26, 1991.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kyrgyzstan declared independence on August 31, 1991, following the failed August coup in Moscow. Akayev, who had been elected president by the Supreme Soviet in 1990, supported independence; formal dissolution of the USSR followed on December 25-26, 1991.",
+        "source": "https://en.wikipedia.org/wiki/History_of_Kyrgyzstan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/History_of_Kyrgyzstan"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Askar Akayev Elected First President of Independent Kyrgyzstan",
     "verdict": "TRUE",
     "reason": "Akayev ran unopposed in the October 12, 1991 popular presidential election and received 95% of the vote, confirming him as the first president of independent Kyrgyzstan. He had previously been elected by the Supreme Soviet in 1990.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Akayev ran unopposed in the October 12, 1991 popular presidential election and received 95% of the vote, confirming him as the first president of independent Kyrgyzstan. He had previously been elected by the Supreme Soviet in 1990.",
+        "source": "https://en.wikipedia.org/wiki/1991_Kyrgyz_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1991_Kyrgyz_presidential_election"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Shock Liberalization and Price Liberalization Trigger Economic Crisis",
     "verdict": "TRUE",
     "reason": "Kyrgyzstan implemented rapid price liberalization and privatization in 1992 under IMF guidance. Inflation peaked at roughly 1,000% annually in 1992-1993, industrial output collapsed, and unemployment soared, making the transition especially severe for this resource-poor republic.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kyrgyzstan implemented rapid price liberalization and privatization in 1992 under IMF guidance. Inflation peaked at roughly 1,000% annually in 1992-1993, industrial output collapsed, and unemployment soared, making the transition especially severe for this resource-poor republic.",
+        "source": "https://www.files.ethz.ch/isn/140198/28e.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.files.ethz.ch/isn/140198/28e.pdf"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Kyrgyzstan Becomes First CIS State to Introduce Its Own Currency (Som)",
     "verdict": "TRUE",
     "reason": "The Kyrgyz som was introduced on May 10, 1993, replacing the Russian ruble. Kyrgyzstan was the first CIS country apart from Russia to introduce its own national currency, breaking from the ruble zone with IMF support.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Kyrgyz som was introduced on May 10, 1993, replacing the Russian ruble. Kyrgyzstan was the first CIS country apart from Russia to introduce its own national currency, breaking from the ruble zone with IMF support.",
+        "source": "https://en.wikipedia.org/wiki/Kyrgyz_som",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kyrgyz_som"
   },
   {
@@ -32,6 +104,24 @@
     "title": "New Constitution Adopted Establishing Parliamentary-Presidential Hybrid",
     "verdict": "TRUE",
     "reason": "Kyrgyzstan adopted its first post-Soviet constitution on May 5, 1993, establishing a three-branch government structure. Though formally semi-presidential, in practice it concentrated power in the presidency, with Akayev subsequently using amendments to further strengthen executive authority.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kyrgyzstan adopted its first post-Soviet constitution on May 5, 1993, establishing a three-branch government structure. Though formally semi-presidential, in practice it concentrated power in the presidency, with Akayev subsequently using amendments to further strengthen executive authority.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_Kyrgyzstan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Constitution_of_Kyrgyzstan"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Akayev Dissolves Parliament and Calls Referendum to Extend Powers",
     "verdict": "TRUE",
     "reason": "A constitutional referendum was held on October 22, 1994, approved by ~90% of voters, establishing a new bicameral parliament with 35-seat upper and 70-seat lower houses. Akayev had dissolved the existing Supreme Soviet, circumventing legal amendment procedures to restructure the legislature.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A constitutional referendum was held on October 22, 1994, approved by ~90% of voters, establishing a new bicameral parliament with 35-seat upper and 70-seat lower houses. Akayev had dissolved the existing Supreme Soviet, circumventing legal amendment procedures to restructure the legislature.",
+        "source": "https://en.wikipedia.org/wiki/1994_Kyrgyz_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1994_Kyrgyz_constitutional_referendum"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Parliamentary and Presidential Elections Marred by Fraud Allegations",
     "verdict": "TRUE",
     "reason": "Parliamentary elections were held in February 1995 and Akayev won the December 24, 1995 presidential election with 71.6% of the vote. International observers documented irregularities in both votes, marking the start of managed democracy under Akayev.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Parliamentary elections were held in February 1995 and Akayev won the December 24, 1995 presidential election with 71.6% of the vote. International observers documented irregularities in both votes, marking the start of managed democracy under Akayev.",
+        "source": "https://en.wikipedia.org/wiki/Elections_in_Kyrgyzstan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Elections_in_Kyrgyzstan"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Constitutional Referendum Strengthens Presidential Powers",
     "verdict": "TRUE",
     "reason": "A constitutional referendum was held on February 10, 1996, approved by 99% of voters on a reported 97% turnout, expanding presidential powers over parliament and removing the requirement for directly elected MPs. The OSCE and Western donors expressed concern about the rushed process.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A constitutional referendum was held on February 10, 1996, approved by 99% of voters on a reported 97% turnout, expanding presidential powers over parliament and removing the requirement for directly elected MPs. The OSCE and Western donors expressed concern about the rushed process.",
+        "source": "https://en.wikipedia.org/wiki/1996_Kyrgyz_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1996_Kyrgyz_constitutional_referendum"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Kumtor Gold Mine Opens: Kyrgyzstan's Most Important Economic Asset",
     "verdict": "TRUE",
     "reason": "Commercial gold production at Kumtor began in May 1997 following a 1992 joint venture agreement with Canada's Cameco Corporation. Located at 4,000 meters in the Tian Shan, Kumtor became Kyrgyzstan's single largest enterprise, eventually contributing 10-12% of GDP.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Commercial gold production at Kumtor began in May 1997 following a 1992 joint venture agreement with Canada's Cameco Corporation. Located at 4,000 meters in the Tian Shan, Kumtor became Kyrgyzstan's single largest enterprise, eventually contributing 10-12% of GDP.",
+        "source": "https://en.wikipedia.org/wiki/Kumtor_Gold_Mine",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kumtor_Gold_Mine"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Kumtor Cyanide Spill Poisons Barskoon River",
     "verdict": "TRUE",
     "reason": "On May 20, 1998, a truck carrying approximately 1.7 tons of sodium cyanide for Kumtor gold operations overturned into the Barskoon River above the village of Barskoon, which feeds Lake Issyk-Kul. Over 2,000 patients sought medical care for suspected poisoning; compensation suits continued for decades.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On May 20, 1998, a truck carrying approximately 1.7 tons of sodium cyanide for Kumtor gold operations overturned into the Barskoon River above the village of Barskoon, which feeds Lake Issyk-Kul. Over 2,000 patients sought medical care for suspected poisoning; compensation suits continued for decades.",
+        "source": "https://www.rferl.org/a/qishloq-ovozi-kumtor-cyanide-spill-compensation-gold-mining/30797137.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.rferl.org/a/qishloq-ovozi-kumtor-cyanide-spill-compensation-gold-mining/30797137.html"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Kyrgyzstan Joins WTO as First CIS State",
     "verdict": "TRUE",
     "reason": "The Kyrgyz Republic became the 133rd WTO member on December 20, 1998, making it the first CIS country to accede to the WTO. Its accession negotiations took only about two years after applying in February 1996.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Kyrgyz Republic became the 133rd WTO member on December 20, 1998, making it the first CIS country to accede to the WTO. Its accession negotiations took only about two years after applying in February 1996.",
+        "source": "https://www.wto.org/english/thewto_e/countries_e/kyrgyz_republic_e.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.wto.org/english/thewto_e/countries_e/kyrgyz_republic_e.htm"
   },
   {
@@ -81,6 +279,24 @@
     "title": "IMU Militants Invade Southern Kyrgyzstan from Tajikistan",
     "verdict": "TRUE",
     "reason": "In August 1999, approximately 800 IMU militants under Juma Namangani crossed from Tajikistan into Kyrgyzstan's Batken region, seizing hostages including Japanese geologists and Kyrgyz soldiers. The Kyrgyz military required Russian and Uzbek assistance to repel the incursion, which lasted until October 1999.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In August 1999, approximately 800 IMU militants under Juma Namangani crossed from Tajikistan into Kyrgyzstan's Batken region, seizing hostages including Japanese geologists and Kyrgyz soldiers. The Kyrgyz military required Russian and Uzbek assistance to repel the incursion, which lasted until October 1999.",
+        "source": "https://en.wikipedia.org/wiki/Islamic_Movement_of_Uzbekistan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Islamic_Movement_of_Uzbekistan"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Second IMU Incursion into Batken; Opposition Leader Arrested",
     "verdict": "TRUE",
     "reason": "IMU militants again invaded Batken in summer 2000, and Felix Kulov was arrested on March 29, 2000 on charges of abuse of office widely seen as politically motivated, shortly after he announced his presidential candidacy. Kulov was convicted in January 2001 and sentenced to seven years; the UN later found civil rights violations in his detention.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "IMU militants again invaded Batken in summer 2000, and Felix Kulov was arrested on March 29, 2000 on charges of abuse of office widely seen as politically motivated, shortly after he announced his presidential candidacy. Kulov was convicted in January 2001 and sentenced to seven years; the UN later found civil rights violations in his detention.",
+        "source": "https://en.wikipedia.org/wiki/Felix_Kulov",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Felix_Kulov"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Akayev Re-Elected in Disputed Third Term",
     "verdict": "TRUE",
     "reason": "Akayev won the October 2000 presidential election with ~75% of the vote after the Constitutional Court ruled his first term predated the 1993 constitution. The OSCE declared the election failed to comply with democratic standards, citing candidate exclusions, language testing of candidates, and media bias.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Akayev won the October 2000 presidential election with ~75% of the vote after the Constitutional Court ruled his first term predated the 1993 constitution. The OSCE declared the election failed to comply with democratic standards, citing candidate exclusions, language testing of candidates, and media bias.",
+        "source": "https://www.hrw.org/news/2002/09/19/kyrgyzstans-president-askar-akaevs-rise-power",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2002/09/19/kyrgyzstans-president-askar-akaevs-rise-power"
   },
   {
@@ -102,6 +354,24 @@
     "title": "US Manas Airbase Established for Afghanistan War Operations",
     "verdict": "TRUE",
     "reason": "The US Transit Center at Manas International Airport was established on December 11, 2001, to support Operation Enduring Freedom following the September 11 attacks. The facility became a critical logistics hub handling millions of troops transiting to and from Afghanistan over its 13-year operation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The US Transit Center at Manas International Airport was established on December 11, 2001, to support Operation Enduring Freedom following the September 11 attacks. The facility became a critical logistics hub handling millions of troops transiting to and from Afghanistan over its 13-year operation.",
+        "source": "https://en.wikipedia.org/wiki/Transit_Center_at_Manas",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Transit_Center_at_Manas"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Aksy Massacre: Police Kill Protesters Demanding Release of Opposition MP",
     "verdict": "TRUE",
     "reason": "On March 17-18, 2002, police opened fire on protesters in the Aksy district of Jalal-Abad demanding release of imprisoned MP Azimbek Beknazarov, killing six people and wounding 29. The killings galvanized civil society opposition and directly foreshadowed the 2005 Tulip Revolution.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On March 17-18, 2002, police opened fire on protesters in the Aksy district of Jalal-Abad demanding release of imprisoned MP Azimbek Beknazarov, killing six people and wounding 29. The killings galvanized civil society opposition and directly foreshadowed the 2005 Tulip Revolution.",
+        "source": "https://www.hrw.org/news/2002/09/19/kyrgyzstan-under-president-akaev-sacrifices-fundamental-rights",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2002/09/19/kyrgyzstan-under-president-akaev-sacrifices-fundamental-rights"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Constitutional Referendum Further Concentrates Presidential Power",
     "verdict": "TRUE",
     "reason": "A double referendum held on February 2, 2003 approved constitutional amendments increasing presidential power, reducing the parliament to a unicameral 75-seat body, and confirming Akayev could remain in office until 2005. The OSCE/ODIHR issued a critical assessment of the vote.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A double referendum held on February 2, 2003 approved constitutional amendments increasing presidential power, reducing the parliament to a unicameral 75-seat body, and confirming Akayev could remain in office until 2005. The OSCE/ODIHR issued a critical assessment of the vote.",
+        "source": "https://en.wikipedia.org/wiki/2003_Kyrgyz_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2003_Kyrgyz_referendum"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Kyrgyzstan–China Border Demarcation Completed; China Gains Territory",
     "verdict": "FALSE",
     "reason": "The key Kyrgyz-China border agreements were signed in 1996 and 1999 (ceding ~90,000 ha to China); demarcation started in 2001 and the border was only finally finalized in 2009. No major completed demarcation milestone occurred in 2004 — this is a >5yr drift from the 2009 finalization.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The key Kyrgyz-China border agreements were signed in 1996 and 1999 (ceding ~90,000 ha to China); demarcation started in 2001 and the border was only finally finalized in 2009. No major completed demarcation milestone occurred in 2004 — this is a >5yr drift from the 2009 finalization.",
+        "source": "https://en.wikipedia.org/wiki/China%E2%80%93Kyrgyzstan_border",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/China%E2%80%93Kyrgyzstan_border"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Tulip Revolution Topples Akayev After Disputed Parliamentary Elections",
     "verdict": "TRUE",
     "reason": "Following disputed February-March 2005 parliamentary elections, mass protests swept Kyrgyzstan. On March 24, 2005, crowds stormed the White House in Bishkek; Akayev fled to Kazakhstan and then Russia, resigning by fax on April 4. The Tulip Revolution was the third post-Soviet color revolution after Georgia and Ukraine.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following disputed February-March 2005 parliamentary elections, mass protests swept Kyrgyzstan. On March 24, 2005, crowds stormed the White House in Bishkek; Akayev fled to Kazakhstan and then Russia, resigning by fax on April 4. The Tulip Revolution was the third post-Soviet color revolution after Georgia and Ukraine.",
+        "source": "https://en.wikipedia.org/wiki/Tulip_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tulip_Revolution"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Bakiyev Elected President in First Post-Revolution Vote",
     "verdict": "TRUE",
     "reason": "Kurmanbek Bakiyev won the July 10, 2005 presidential election with 89% of the vote. Felix Kulov, released from prison after the revolution, was confirmed as Prime Minister on September 1, 2005, in a power-sharing deal uniting northern and southern factions.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kurmanbek Bakiyev won the July 10, 2005 presidential election with 89% of the vote. Felix Kulov, released from prison after the revolution, was confirmed as Prime Minister on September 1, 2005, in a power-sharing deal uniting northern and southern factions.",
+        "source": "https://en.wikipedia.org/wiki/Kyrgyzstani_presidential_election,_2005",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kyrgyzstani_presidential_election,_2005"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Mass Protests Demand Constitutional Reform Under Bakiyev",
     "verdict": "TRUE",
     "reason": "Approximately 15,000 protesters gathered in Bishkek in November 2006 demanding Bakiyev fulfill power-sharing promises. Bakiyev signed a new constitution reducing presidential powers but maneuvered to reverse those changes within months through a 2007 referendum.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Approximately 15,000 protesters gathered in Bishkek in November 2006 demanding Bakiyev fulfill power-sharing promises. Bakiyev signed a new constitution reducing presidential powers but maneuvered to reverse those changes within months through a 2007 referendum.",
+        "source": "https://www.aljazeera.com/news/2006/11/6/protests-mount-in-kyrgyzstan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2006/11/6/protests-mount-in-kyrgyzstan"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Constitutional Coup: Bakiyev Restores Presidential Powers via Referendum",
     "verdict": "TRUE",
     "reason": "On October 21, 2007, Bakiyev held a referendum approving a new constitution with 76% support; Bakiyev immediately dissolved parliament and called snap elections for December. His Ak-Zhol party won 71 of 90 seats in elections OSCE observers called a 'missed opportunity' marred by serious irregularities.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On October 21, 2007, Bakiyev held a referendum approving a new constitution with 76% support; Bakiyev immediately dissolved parliament and called snap elections for December. His Ak-Zhol party won 71 of 90 seats in elections OSCE observers called a 'missed opportunity' marred by serious irregularities.",
+        "source": "https://en.wikipedia.org/wiki/2007_Kyrgyz_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2007_Kyrgyz_constitutional_referendum"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Russia Offers $2 Billion Loan to Close US Manas Airbase",
     "verdict": "TRUE",
     "reason": "On February 3, 2009, Bakiyev announced Manas would close after visiting Moscow and securing a $2.15 billion Russian financial package. Bakiyev later reversed course, renaming it a 'Transit Center' and tripling the US annual fee to $60 million, effectively leveraging both powers.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On February 3, 2009, Bakiyev announced Manas would close after visiting Moscow and securing a $2.15 billion Russian financial package. Bakiyev later reversed course, renaming it a 'Transit Center' and tripling the US annual fee to $60 million, effectively leveraging both powers.",
+        "source": "https://apps.dtic.mil/sti/tr/pdf/ADA501039.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://apps.dtic.mil/sti/tr/pdf/ADA501039.pdf"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Bakiyev Re-Elected in Vote Denounced by International Observers",
     "verdict": "TRUE",
     "reason": "Bakiyev won the July 23, 2009 presidential election with 76% of the vote. The OSCE concluded the incumbent gained an unfair advantage through misuse of administrative resources, media bias, and ballot box stuffing. Main rival Atambayev withdrew on election day citing extensive fraud.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bakiyev won the July 23, 2009 presidential election with 76% of the vote. The OSCE concluded the incumbent gained an unfair advantage through misuse of administrative resources, media bias, and ballot box stuffing. Main rival Atambayev withdrew on election day citing extensive fraud.",
+        "source": "https://en.wikipedia.org/wiki/2009_Kyrgyz_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2009_Kyrgyz_presidential_election"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Bakiyev Installs Family Members Across State and Business Positions",
     "verdict": "TRUE",
     "reason": "In October 2009, Bakiyev appointed his son Maxim Bakiyev to head the new Central Agency for Development, Innovation and Investment, granting him control over strategic economic sectors. Maxim was later convicted of embezzling over $130 million in state funds from this position.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In October 2009, Bakiyev appointed his son Maxim Bakiyev to head the new Central Agency for Development, Innovation and Investment, granting him control over strategic economic sectors. Maxim was later convicted of embezzling over $130 million in state funds from this position.",
+        "source": "https://en.wikipedia.org/wiki/Maxim_Bakiyev",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Maxim_Bakiyev"
   },
   {
@@ -179,6 +629,24 @@
     "title": "April Revolution: Bakiyev Overthrown After Security Forces Kill Protesters",
     "verdict": "TRUE",
     "reason": "On April 6-7, 2010, protests over utility price hikes and corruption escalated; security forces killed at least 84 people in Bishkek. Crowds overran the White House and Bakiyev fled south, eventually escaping to Kazakhstan and then Belarus. Roza Otunbayeva led the interim government.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On April 6-7, 2010, protests over utility price hikes and corruption escalated; security forces killed at least 84 people in Bishkek. Crowds overran the White House and Bakiyev fled south, eventually escaping to Kazakhstan and then Belarus. Roza Otunbayeva led the interim government.",
+        "source": "https://en.wikipedia.org/wiki/2010_Kyrgyz_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2010_Kyrgyz_Revolution"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Osh Ethnic Massacres Kill Hundreds as Kyrgyz and Uzbeks Clash",
     "verdict": "TRUE",
     "reason": "Violence between ethnic Kyrgyz and Uzbeks erupted on June 10-14, 2010 in Osh and Jalal-Abad. Official figures counted approximately 426 dead (276 Uzbeks, 105 Kyrgyz); unofficial estimates ranged to 2,000+. About 400,000 people were displaced; thousands of Uzbek-owned buildings were destroyed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Violence between ethnic Kyrgyz and Uzbeks erupted on June 10-14, 2010 in Osh and Jalal-Abad. Official figures counted approximately 426 dead (276 Uzbeks, 105 Kyrgyz); unofficial estimates ranged to 2,000+. About 400,000 people were displaced; thousands of Uzbek-owned buildings were destroyed.",
+        "source": "https://en.wikipedia.org/wiki/2010_South_Kyrgyzstan_ethnic_clashes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2010_South_Kyrgyzstan_ethnic_clashes"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Constitutional Referendum Creates Parliamentary Republic",
     "verdict": "TRUE",
     "reason": "A constitutional referendum was held on June 27, 2010, approved by 90.6% of voters on 72% turnout, transforming Kyrgyzstan into Central Asia's only parliamentary republic. The new constitution limited the president to a single six-year term and empowered a 120-seat proportionally elected parliament.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A constitutional referendum was held on June 27, 2010, approved by 90.6% of voters on 72% turnout, transforming Kyrgyzstan into Central Asia's only parliamentary republic. The new constitution limited the president to a single six-year term and empowered a 120-seat proportionally elected parliament.",
+        "source": "https://en.wikipedia.org/wiki/2010_Kyrgyz_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2010_Kyrgyz_constitutional_referendum"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Parliamentary Elections Held Under New Constitution; Atambayev's SDPK Leads",
     "verdict": "TRUE",
     "reason": "Parliamentary elections were held on October 10, 2010 under the new proportional representation system; five parties cleared the 5% threshold. SDPK received 26 of 120 seats (second to Ata-Jurt's 28), and Atambayev became Prime Minister after forming a coalition. The election was seen as broadly competitive.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Parliamentary elections were held on October 10, 2010 under the new proportional representation system; five parties cleared the 5% threshold. SDPK received 26 of 120 seats (second to Ata-Jurt's 28), and Atambayev became Prime Minister after forming a coalition. The election was seen as broadly competitive.",
+        "source": "https://en.wikipedia.org/wiki/2010_Kyrgyz_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2010_Kyrgyz_parliamentary_election"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Atambayev Wins Presidential Election in Competitive Vote",
     "verdict": "TRUE",
     "reason": "Atambayev won the October 30, 2011 presidential election with 63.2% in the first round, marking the first time a Kyrgyz president assumed power through a genuinely competitive vote. OSCE observers noted competitive conditions with minor violations; Atambayev was inaugurated on December 1, 2011.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Atambayev won the October 30, 2011 presidential election with 63.2% in the first round, marking the first time a Kyrgyz president assumed power through a genuinely competitive vote. OSCE observers noted competitive conditions with minor violations; Atambayev was inaugurated on December 1, 2011.",
+        "source": "https://en.wikipedia.org/wiki/2011_Kyrgyz_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2011_Kyrgyz_presidential_election"
   },
   {
@@ -214,6 +754,24 @@
     "title": "US Manas Transit Center Closure Announced; Base Closes in 2014",
     "verdict": "TRUE",
     "reason": "After his 2011 election, Atambayev assured Russia the base would close. The Kyrgyz parliament voted 94-5 on June 20, 2013 to order closure by July 2014; Atambayev signed it into law. The US Transit Center formally closed in June 2014 after 13 years, coinciding with Kyrgyzstan's deepening EEU integration.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After his 2011 election, Atambayev assured Russia the base would close. The Kyrgyz parliament voted 94-5 on June 20, 2013 to order closure by July 2014; Atambayev signed it into law. The US Transit Center formally closed in June 2014 after 13 years, coinciding with Kyrgyzstan's deepening EEU integration.",
+        "source": "https://en.wikipedia.org/wiki/Transit_Center_at_Manas",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Transit_Center_at_Manas"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Parliament Renationalizes Kumtor Mine Stake; Dispute with Centerra Begins",
     "verdict": "TRUE",
     "reason": "Parliamentary investigations in 2012 recommended raising environmental offset payments and fining Centerra for waste dumping on glaciers; a state commission found Centerra had operated without proper waste disposal permits. This launched the decade-long renegotiation and legal battle culminating in nationalization in 2021.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Parliamentary investigations in 2012 recommended raising environmental offset payments and fining Centerra for waste dumping on glaciers; a state commission found Centerra had operated without proper waste disposal permits. This launched the decade-long renegotiation and legal battle culminating in nationalization in 2021.",
+        "source": "https://bankwatch.org/project/kumtor-gold-mine-kyrgyzstan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://bankwatch.org/project/kumtor-gold-mine-kyrgyzstan"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Kyrgyzstan Joins Russian-Led Customs Union Negotiations",
     "verdict": "TRUE",
     "reason": "Kyrgyzstan formally began negotiations to join the Russian-led Customs Union/EEU in 2013, following a late-2012 public announcement of intent. An accession treaty was signed in December 2014 and took effect August 2015, with Russia providing $1.2 billion via the Kyrgyz-Russian Development Fund during negotiations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kyrgyzstan formally began negotiations to join the Russian-led Customs Union/EEU in 2013, following a late-2012 public announcement of intent. An accession treaty was signed in December 2014 and took effect August 2015, with Russia providing $1.2 billion via the Kyrgyz-Russian Development Fund during negotiations.",
+        "source": "https://en.wikipedia.org/wiki/Eurasian_Economic_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Eurasian_Economic_Union"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Remittance Economy at Peak: Over 30% of GDP from Russia",
     "verdict": "TRUE",
     "reason": "In 2014, remittances represented 31.5% of Kyrgyzstan's GDP per World Bank data, with approximately 94% coming from Russia. An estimated 553,675 Kyrgyz migrants were in Russia at peak, making this one of the highest remittance-to-GDP ratios globally.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 2014, remittances represented 31.5% of Kyrgyzstan's GDP per World Bank data, with approximately 94% coming from Russia. An estimated 553,675 Kyrgyz migrants were in Russia at peak, making this one of the highest remittance-to-GDP ratios globally.",
+        "source": "https://data.worldbank.org/indicator/BX.TRF.PWKR.DT.GD.ZS?locations=KG",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://data.worldbank.org/indicator/BX.TRF.PWKR.DT.GD.ZS?locations=KG"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Kyrgyzstan Joins Eurasian Economic Union",
     "verdict": "TRUE",
     "reason": "Kyrgyzstan formally acceded to the Eurasian Economic Union on August 6, 2015. EEU membership required tariff harmonization with Russia and Kazakhstan, which sharply raised import prices for Chinese goods and disrupted the Dordoi Bazaar trade model that had made Bishkek a major wholesale hub.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kyrgyzstan formally acceded to the Eurasian Economic Union on August 6, 2015. EEU membership required tariff harmonization with Russia and Kazakhstan, which sharply raised import prices for Chinese goods and disrupted the Dordoi Bazaar trade model that had made Bishkek a major wholesale hub.",
+        "source": "https://en.wikipedia.org/wiki/Eurasian_Economic_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Eurasian_Economic_Union"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Constitutional Referendum Passed Amid Opposition Accusations of Land Consolidation",
     "verdict": "TRUE",
     "reason": "A constitutional referendum on December 11, 2016, approved by ~80% of voters, amended the constitution through provisions pushed by Atambayev's SDPK. Critics said changes were designed to extend Atambayev's party influence and restrict future political activity of ex-presidents.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A constitutional referendum on December 11, 2016, approved by ~80% of voters, amended the constitution through provisions pushed by Atambayev's SDPK. Critics said changes were designed to extend Atambayev's party influence and restrict future political activity of ex-presidents.",
+        "source": "https://en.wikipedia.org/wiki/2016_Kyrgyz_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2016_Kyrgyz_constitutional_referendum"
   },
   {
@@ -256,6 +904,24 @@
     "title": "First Peaceful Electoral Transfer of Power: Jeenbekov Succeeds Atambayev",
     "verdict": "TRUE",
     "reason": "Sooronbay Jeenbekov won the October 15, 2017 presidential election with 54.74%, marking the first peaceful electoral transfer of power from one elected president to another in Central Asia since Soviet dissolution. Jeenbekov was inaugurated on November 24, 2017.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sooronbay Jeenbekov won the October 15, 2017 presidential election with 54.74%, marking the first peaceful electoral transfer of power from one elected president to another in Central Asia since Soviet dissolution. Jeenbekov was inaugurated on November 24, 2017.",
+        "source": "https://en.wikipedia.org/wiki/2017_Kyrgyz_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2017_Kyrgyz_presidential_election"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Atambayev–Jeenbekov Feud Destabilizes Politics",
     "verdict": "TRUE",
     "reason": "By early 2018 the Atambayev-Jeenbekov relationship had collapsed. Atambayev was elected SDPK chair in March 2018 and began criticizing his successor; Jeenbekov fired Atambayev-era officials in response. The SDPK eventually split, with a 'SDPK Without Atambayev' faction forming by 2019.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "By early 2018 the Atambayev-Jeenbekov relationship had collapsed. Atambayev was elected SDPK chair in March 2018 and began criticizing his successor; Jeenbekov fired Atambayev-era officials in response. The SDPK eventually split, with a 'SDPK Without Atambayev' faction forming by 2019.",
+        "source": "https://thediplomat.com/2018/11/kyrgyz-politics-simmering-over-atambayev-jeenbekov-feud/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://thediplomat.com/2018/11/kyrgyz-politics-simmering-over-atambayev-jeenbekov-feud/"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Atambayev Arrested After Armed Standoff at His Compound",
     "verdict": "TRUE",
     "reason": "On August 7-8, 2019, security forces attempted to arrest Atambayev at his compound in Koi-Tash village, triggering a two-day standoff in which one special forces officer was killed and over 100 were wounded. Atambayev was detained and tried on corruption charges relating to the 2013 release of organized crime boss Aziz Batukayev.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On August 7-8, 2019, security forces attempted to arrest Atambayev at his compound in Koi-Tash village, triggering a two-day standoff in which one special forces officer was killed and over 100 were wounded. Atambayev was detained and tried on corruption charges relating to the 2013 release of organized crime boss Aziz Batukayev.",
+        "source": "https://eurasianet.org/after-two-days-of-unrest-kyrgyzstans-ex-president-is-captured",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://eurasianet.org/after-two-days-of-unrest-kyrgyzstans-ex-president-is-captured"
   },
   {
@@ -277,6 +979,24 @@
     "title": "China's BRI Debt Burden Raises Sovereignty Concerns",
     "verdict": "TRUE",
     "reason": "By 2019, China's Export-Import Bank was Kyrgyzstan's single largest creditor at over 45% of total government debt (~$1.7 billion), primarily from loans including the $386 million Bishkek power plant renovation. Anti-Chinese sentiment intensified simultaneously over Kyrgyz detainees in Xinjiang internment camps.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "By 2019, China's Export-Import Bank was Kyrgyzstan's single largest creditor at over 45% of total government debt (~$1.7 billion), primarily from loans including the $386 million Bishkek power plant renovation. Anti-Chinese sentiment intensified simultaneously over Kyrgyz detainees in Xinjiang internment camps.",
+        "source": "https://www.internationalaffairs.org.au/australianoutlook/chinas-debt-trap-diplomacy-in-kyrgyzstan/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.internationalaffairs.org.au/australianoutlook/chinas-debt-trap-diplomacy-in-kyrgyzstan/"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Kyrgyz in Xinjiang: Ethnic Kin Camps Strain China Relations",
     "verdict": "TRUE",
     "reason": "Reports in 2018-2019 confirmed ethnic Kyrgyz from China were detained in Xinjiang alongside Uyghurs. Relatives in Kyrgyzstan protested at the Chinese embassy; President Jeenbekov in December 2018 stated Kyrgyzstan 'cannot interfere in the internal affairs of China,' reflecting the government's reluctance to challenge Beijing given economic dependency.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Reports in 2018-2019 confirmed ethnic Kyrgyz from China were detained in Xinjiang alongside Uyghurs. Relatives in Kyrgyzstan protested at the Chinese embassy; President Jeenbekov in December 2018 stated Kyrgyzstan 'cannot interfere in the internal affairs of China,' reflecting the government's reluctance to challenge Beijing given economic dependency.",
+        "source": "https://www.internationalaffairs.org.au/australianoutlook/chinas-debt-trap-diplomacy-in-kyrgyzstan/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.internationalaffairs.org.au/australianoutlook/chinas-debt-trap-diplomacy-in-kyrgyzstan/"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "COVID-19 Pandemic Hits Kyrgyzstan with Severe Healthcare Crisis",
     "verdict": "TRUE",
     "reason": "In July 2020, Kyrgyzstan experienced a severe COVID-19 first wave with excess deaths reaching 267% above expected levels during peak mortality (July 1-21). Half of ventilators were non-functional, hospitals were overwhelmed, and external analyses estimated actual COVID deaths were 5-12x official figures.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In July 2020, Kyrgyzstan experienced a severe COVID-19 first wave with excess deaths reaching 267% above expected levels during peak mortality (July 1-21). Half of ventilators were non-functional, hospitals were overwhelmed, and external analyses estimated actual COVID deaths were 5-12x official figures.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Kyrgyzstan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Kyrgyzstan"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Third Revolution: Japarov Rises from Prison as Parliamentary Election Results Annulled",
     "verdict": "TRUE",
     "reason": "After October 4, 2020 parliamentary elections were condemned as fraudulent, mass protests on October 5-6 seized the White House and freed prisoners including Sadyr Japarov. Election results were annulled October 6; Japarov rapidly rose from released prisoner to acting PM to acting president; Jeenbekov resigned October 15.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After October 4, 2020 parliamentary elections were condemned as fraudulent, mass protests on October 5-6 seized the White House and freed prisoners including Sadyr Japarov. Election results were annulled October 6; Japarov rapidly rose from released prisoner to acting PM to acting president; Jeenbekov resigned October 15.",
+        "source": "https://en.wikipedia.org/wiki/2020_Kyrgyz_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2020_Kyrgyz_Revolution"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Japarov Wins Presidential Election; Constitutional Referendum Restores Presidential System",
     "verdict": "TRUE",
     "reason": "Japarov won the January 10, 2021 presidential election with 79% of the vote. A concurrent referendum approved returning to a presidential system; a second referendum in April 2021 approved a new constitution significantly expanding executive power, reducing parliament from 120 to 90 seats, and allowing two five-year presidential terms.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Japarov won the January 10, 2021 presidential election with 79% of the vote. A concurrent referendum approved returning to a presidential system; a second referendum in April 2021 approved a new constitution significantly expanding executive power, reducing parliament from 120 to 90 seats, and allowing two five-year presidential terms.",
+        "source": "https://en.wikipedia.org/wiki/2021_Kyrgyz_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2021_Kyrgyz_presidential_election"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Kyrgyz-Tajik Border War: Deadliest Clash in Post-Soviet Central Asia",
     "verdict": "TRUE",
     "reason": "Armed conflict erupted on April 28-29, 2021 along the Kyrgyz-Tajik border near Batken after a dispute over a water distribution point escalated. Fighting killed approximately 55 people (Kyrgyz and Tajik combined) and displaced over 40,000 people in Kyrgyzstan. Both sides used artillery, drones, and armored vehicles.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Armed conflict erupted on April 28-29, 2021 along the Kyrgyz-Tajik border near Batken after a dispute over a water distribution point escalated. Fighting killed approximately 55 people (Kyrgyz and Tajik combined) and displaced over 40,000 people in Kyrgyzstan. Both sides used artillery, drones, and armored vehicles.",
+        "source": "https://en.wikipedia.org/wiki/2021_Kyrgyzstan%E2%80%93Tajikistan_clashes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2021_Kyrgyzstan%E2%80%93Tajikistan_clashes"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Kumtor Mine Nationalized After Japarov Seizes Management",
     "verdict": "TRUE",
     "reason": "President Japarov signed legislation on May 14, 2021, allowing government takeover of Kumtor; security forces physically seized the mine from Centerra Gold on May 17. Centerra launched international arbitration; a Global Arrangement Agreement was ultimately reached in which Centerra abandoned all claims in exchange for Kyrgyzstan's payment and Kumtor Gold Company filing for bankruptcy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "President Japarov signed legislation on May 14, 2021, allowing government takeover of Kumtor; security forces physically seized the mine from Centerra Gold on May 17. Centerra launched international arbitration; a Global Arrangement Agreement was ultimately reached in which Centerra abandoned all claims in exchange for Kyrgyzstan's payment and Kumtor Gold Company filing for bankruptcy.",
+        "source": "https://en.wikipedia.org/wiki/Kumtor_Gold_Mine",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kumtor_Gold_Mine"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Second Major Kyrgyz-Tajik Border Clash in Batken",
     "verdict": "TRUE",
     "reason": "On September 14-16, 2022, Tajik forces launched coordinated attacks using tanks, mortars, drones, and ground troops along ~110 km of the Kyrgyz-Tajik border in Batken. Approximately 51 civilians were killed, over 130,000 people were displaced; Human Rights Watch documented apparent war crimes by both sides.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On September 14-16, 2022, Tajik forces launched coordinated attacks using tanks, mortars, drones, and ground troops along ~110 km of the Kyrgyz-Tajik border in Batken. Approximately 51 civilians were killed, over 130,000 people were displaced; Human Rights Watch documented apparent war crimes by both sides.",
+        "source": "https://en.wikipedia.org/wiki/2022_Kyrgyzstan%E2%80%93Tajikistan_clashes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2022_Kyrgyzstan%E2%80%93Tajikistan_clashes"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "Ukraine War Sanctions Create Economic Windfall Then Complications",
     "verdict": "TRUE",
     "reason": "Following Russia's February 2022 invasion and Western sanctions, Kyrgyzstan's exports to Russia surged from $393 million in 2021 to $1.07 billion in 2022 as re-export trade boomed. Secondary sanctions risks emerged as the US Treasury subsequently warned Kyrgyz institutions and sanctioned companies facilitating Russian sanctions evasion.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following Russia's February 2022 invasion and Western sanctions, Kyrgyzstan's exports to Russia surged from $393 million in 2021 to $1.07 billion in 2022 as re-export trade boomed. Secondary sanctions risks emerged as the US Treasury subsequently warned Kyrgyz institutions and sanctioned companies facilitating Russian sanctions evasion.",
+        "source": "https://www.gisreportsonline.com/r/sanctions-evasion-kyrgyzstan/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.gisreportsonline.com/r/sanctions-evasion-kyrgyzstan/"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Russian Migration Wave: Tens of Thousands Flee to Kyrgyzstan Post-Mobilization",
     "verdict": "TRUE",
     "reason": "From January to September 2022, approximately 184,000 Russians arrived in Kyrgyzstan, first IT workers fleeing after the February invasion, then a more diverse wave after Putin's September partial mobilization. Bishkek became a major destination for Russian emigres, driving up housing prices and creating both economic opportunity and cultural friction.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "From January to September 2022, approximately 184,000 Russians arrived in Kyrgyzstan, first IT workers fleeing after the February invasion, then a more diverse wave after Putin's September partial mobilization. Bishkek became a major destination for Russian emigres, driving up housing prices and creating both economic opportunity and cultural friction.",
+        "source": "https://www.themoscowtimes.com/2022/11/13/kyrgyzstan-sees-struggles-opportunity-in-russian-emigration-wave-a79332",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.themoscowtimes.com/2022/11/13/kyrgyzstan-sees-struggles-opportunity-in-russian-emigration-wave-a79332"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Kyrgyzstan Settles Kumtor Dispute with Centerra; Receives $50 Million",
     "verdict": "FALSE",
     "reason": "The Kumtor settlement (Global Arrangement Agreement) occurred in late 2021-early 2022, not 2023. Under the GAA, Centerra abandoned all claims in exchange for ~$36 million paid to Kyrgyzaltyn and Kumtor Gold Company filing for bankruptcy; Kyrgyzstan did not pay Centerra $50 million. The described settlement terms and direction of payment are inverted.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Kumtor settlement (Global Arrangement Agreement) occurred in late 2021-early 2022, not 2023. Under the GAA, Centerra abandoned all claims in exchange for ~$36 million paid to Kyrgyzaltyn and Kumtor Gold Company filing for bankruptcy; Kyrgyzstan did not pay Centerra $50 million. The described settlement terms and direction of payment are inverted.",
+        "source": "https://www.mining.com/centerra-gold-hands-kumtor-mine-to-kyrgyzstan-ending-dispute/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.mining.com/centerra-gold-hands-kumtor-mine-to-kyrgyzstan-ending-dispute/"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "Parliamentary Elections Return Majority for Japarov-Aligned Parties",
     "verdict": "FALSE",
     "reason": "There were no parliamentary elections in Kyrgyzstan in November 2023. The previous parliamentary elections were held in November 2021; the next occurred in November 2025. No major Kyrgyz parliamentary election took place in 2023.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "There were no parliamentary elections in Kyrgyzstan in November 2023. The previous parliamentary elections were held in November 2021; the next occurred in November 2025. No major Kyrgyz parliamentary election took place in 2023.",
+        "source": "https://en.wikipedia.org/wiki/Elections_in_Kyrgyzstan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Elections_in_Kyrgyzstan"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "Media Crackdown: Journalists Arrested and Outlets Blocked",
     "verdict": "TRUE",
     "reason": "From 2022-2023, Kyrgyz authorities launched a sustained press freedom crackdown: Temirov Live founder Bolot Temirov was deported after drugs were allegedly planted on him in a 2022 raid; Kloop journalists were arrested. Reporters Without Borders and CPJ documented a significant deterioration in Kyrgyzstan's press freedom, reversing its prior Central Asian standout status.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "From 2022-2023, Kyrgyz authorities launched a sustained press freedom crackdown: Temirov Live founder Bolot Temirov was deported after drugs were allegedly planted on him in a 2022 raid; Kloop journalists were arrested. Reporters Without Borders and CPJ documented a significant deterioration in Kyrgyzstan's press freedom, reversing its prior Central Asian standout status.",
+        "source": "https://cpj.org/2025/10/kyrgyzstan-declares-investigative-outlets-kloop-and-temirov-live-extremist/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://cpj.org/2025/10/kyrgyzstan-declares-investigative-outlets-kloop-and-temirov-live-extremist/"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Russia Restricts Kyrgyz Labor Migrants; Remittance Dependence Exposed",
     "verdict": "TRUE",
     "reason": "Russia introduced stricter biometric and documentation requirements for Central Asian migrants and deported thousands of Kyrgyz nationals with documentation issues. Russia also introduced a 'controlled persons' list restricting remittance transfers to 30,000 rubles/month for blacklisted migrants, exposing Kyrgyzstan's structural vulnerability given remittances were still ~25-30% of GDP.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Russia introduced stricter biometric and documentation requirements for Central Asian migrants and deported thousands of Kyrgyz nationals with documentation issues. Russia also introduced a 'controlled persons' list restricting remittance transfers to 30,000 rubles/month for blacklisted migrants, exposing Kyrgyzstan's structural vulnerability given remittances were still ~25-30% of GDP.",
+        "source": "https://www.caspianpolicy.org/research/category/russias-tightening-grip-a-potential-turning-point-for-central-asian-migration",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.caspianpolicy.org/research/category/russias-tightening-grip-a-potential-turning-point-for-central-asian-migration"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "Kyrgyzstan–China Comprehensive Partnership Deepened",
     "verdict": "TRUE",
     "reason": "On June 6, 2024, the intergovernmental agreement for the China-Kyrgyzstan-Uzbekistan railway was signed in Beijing as part of deepened bilateral cooperation. Estimated at ~$4.7 billion with China providing ~$2.3 billion in concessional loans, a ceremonial construction start was held December 27, 2024.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On June 6, 2024, the intergovernmental agreement for the China-Kyrgyzstan-Uzbekistan railway was signed in Beijing as part of deepened bilateral cooperation. Estimated at ~$4.7 billion with China providing ~$2.3 billion in concessional loans, a ceremonial construction start was held December 27, 2024.",
+        "source": "https://en.wikipedia.org/wiki/China%E2%80%93Kyrgyzstan%E2%80%93Uzbekistan_railway",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/China%E2%80%93Kyrgyzstan%E2%80%93Uzbekistan_railway"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Secondary Sanctions Pressure: US Treasury Warns Kyrgyz Banks",
     "verdict": "TRUE",
     "reason": "In 2024, the US Treasury sanctioned Keremet Bank (a Kyrgyz financial institution) for coordinating with Russian officials and US-sanctioned Promsvyazbank to evade sanctions. South Korea's Kookmin Bank suspended US dollar SWIFT transfers for Kyrgyz banks; several major Kyrgyz banks curtailed Russian transactions under US pressure.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 2024, the US Treasury sanctioned Keremet Bank (a Kyrgyz financial institution) for coordinating with Russian officials and US-sanctioned Promsvyazbank to evade sanctions. South Korea's Kookmin Bank suspended US dollar SWIFT transfers for Kyrgyz banks; several major Kyrgyz banks curtailed Russian transactions under US pressure.",
+        "source": "https://home.treasury.gov/news/press-releases/jy2404",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://home.treasury.gov/news/press-releases/jy2404"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Osh Inter-Ethnic Violence of 1990 Shapes Early Independence Context",
     "verdict": "TRUE",
     "reason": "The June 1990 Osh riots between Kyrgyz and Uzbeks claimed hundreds of lives (official estimates 300-600+, unofficial up to 1,000) in the cities of Osh and Uzgen. The violence preceded independence and established the fragility of inter-ethnic relations in southern Kyrgyzstan that would recur in 2010.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The June 1990 Osh riots between Kyrgyz and Uzbeks claimed hundreds of lives (official estimates 300-600+, unofficial up to 1,000) in the cities of Osh and Uzgen. The violence preceded independence and established the fragility of inter-ethnic relations in southern Kyrgyzstan that would recur in 2010.",
+        "source": "https://en.wikipedia.org/wiki/1990_Osh_clashes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1990_Osh_clashes"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "Economic Collapse: Industrial Output Falls 50% in Two Years",
     "verdict": "TRUE",
     "reason": "Between 1991 and 1994, Kyrgyzstan's GDP per capita shrank by approximately 54%; industrial output fell by roughly 25% annually in 1992, 1993, and 1994 as Soviet-era supply chains collapsed and all-union markets disappeared. By the mid-1990s Kyrgyzstan had one of the lowest GDPs per capita of any post-Soviet state.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Between 1991 and 1994, Kyrgyzstan's GDP per capita shrank by approximately 54%; industrial output fell by roughly 25% annually in 1992, 1993, and 1994 as Soviet-era supply chains collapsed and all-union markets disappeared. By the mid-1990s Kyrgyzstan had one of the lowest GDPs per capita of any post-Soviet state.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Kyrgyzstan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Kyrgyzstan"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "IMF Structural Adjustment Program Imposed on Kyrgyzstan",
     "verdict": "TRUE",
     "reason": "Kyrgyzstan accepted an IMF stabilization and structural adjustment program in 1993 as a condition of emergency financial assistance, requiring rapid privatization, price liberalization, and deficit reduction. The social costs were severe; by 1995 more than 5,300 state enterprises had been privatized under IMF-mandated conditions.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kyrgyzstan accepted an IMF stabilization and structural adjustment program in 1993 as a condition of emergency financial assistance, requiring rapid privatization, price liberalization, and deficit reduction. The social costs were severe; by 1995 more than 5,300 state enterprises had been privatized under IMF-mandated conditions.",
+        "source": "https://www.imf.org/en/Countries/KGZ",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.imf.org/en/Countries/KGZ"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "Kyrgyzstan Joins Shanghai Cooperation Organisation Predecessors",
     "verdict": "TRUE",
     "reason": "Kyrgyzstan was one of five founding members of the Shanghai Five, established on April 26, 1996, when China, Kazakhstan, Kyrgyzstan, Russia and Tajikistan signed the Treaty on Deepening Military Trust in Border Regions in Shanghai. The grouping became the Shanghai Cooperation Organisation on June 15, 2001.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kyrgyzstan was one of five founding members of the Shanghai Five, established on April 26, 1996, when China, Kazakhstan, Kyrgyzstan, Russia and Tajikistan signed the Treaty on Deepening Military Trust in Border Regions in Shanghai. The grouping became the Shanghai Cooperation Organisation on June 15, 2001.",
+        "source": "https://en.wikipedia.org/wiki/Shanghai_Cooperation_Organisation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Shanghai_Cooperation_Organisation"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "Hostage Crisis in Batken: Japanese Geologists Seized by IMU",
     "verdict": "TRUE",
     "reason": "IMU militants seized four Japanese geologists and Kyrgyz military officers in the Batken region in August 1999. After approximately two months in the mountains, the hostages were released after Japan reportedly paid a $3 million ransom, as confirmed by a 2005 Japanese news report. The crisis exposed Kyrgyzstan's inadequate border security.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "IMU militants seized four Japanese geologists and Kyrgyz military officers in the Batken region in August 1999. After approximately two months in the mountains, the hostages were released after Japan reportedly paid a $3 million ransom, as confirmed by a 2005 Japanese news report. The crisis exposed Kyrgyzstan's inadequate border security.",
+        "source": "https://www.japantimes.co.jp/news/2005/04/10/national/japan-paid-3-million-in-99-kyrgyz-hostage-crisis/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.japantimes.co.jp/news/2005/04/10/national/japan-paid-3-million-in-99-kyrgyz-hostage-crisis/"
   },
   {
@@ -424,6 +1504,24 @@
     "title": "Kyrgyzstan Grants Russia Kant Air Base Rights",
     "verdict": "TRUE",
     "reason": "Russia established an air base at Kant near Bishkek under an agreement signed September 22, 2003; the official opening was October 23, 2003. Kant was the first new Russian military base abroad since 1991, established under the CSTO framework and hosting Su-25 and Su-27 aircraft. Simultaneously hosting US forces at Manas made Kyrgyzstan unique in hosting both powers.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Russia established an air base at Kant near Bishkek under an agreement signed September 22, 2003; the official opening was October 23, 2003. Kant was the first new Russian military base abroad since 1991, established under the CSTO framework and hosting Su-25 and Su-27 aircraft. Simultaneously hosting US forces at Manas made Kyrgyzstan unique in hosting both powers.",
+        "source": "https://en.wikipedia.org/wiki/Kant_(air_base)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kant_(air_base)"
   },
   {
@@ -431,6 +1529,24 @@
     "title": "Post-Revolution Chaos: Looting and Organized Crime Surge",
     "verdict": "TRUE",
     "reason": "In the days following the March 2005 Tulip Revolution, Bishkek experienced significant looting of shops and businesses. Three parliamentarians with criminal backgrounds were assassinated in autumn 2005, and organized crime networks that had operated underground under Akayev came into the open as criminal-political fusion deepened.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In the days following the March 2005 Tulip Revolution, Bishkek experienced significant looting of shops and businesses. Three parliamentarians with criminal backgrounds were assassinated in autumn 2005, and organized crime networks that had operated underground under Akayev came into the open as criminal-political fusion deepened.",
+        "source": "https://en.wikipedia.org/wiki/Tulip_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tulip_Revolution"
   },
   {
@@ -438,6 +1554,24 @@
     "title": "Dordoi Bazaar—Central Asia's Largest Wholesale Market—Faces EEU Threat",
     "verdict": "TRUE",
     "reason": "Dordoi Bazaar, established in 1992 and grown to ~30,000 container-shops employing 150,000+ people with ~$3 billion annual turnover, relied on cheap Chinese imports re-exported to Russia and Kazakhstan. EEU accession in 2015 doubled import tariffs overnight, directly threatening this business model — a concern well-established and discussed from 2006 onward.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Dordoi Bazaar, established in 1992 and grown to ~30,000 container-shops employing 150,000+ people with ~$3 billion annual turnover, relied on cheap Chinese imports re-exported to Russia and Kazakhstan. EEU accession in 2015 doubled import tariffs overnight, directly threatening this business model — a concern well-established and discussed from 2006 onward.",
+        "source": "https://en.wikipedia.org/wiki/Dordoy_Bazaar",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dordoy_Bazaar"
   },
   {
@@ -445,6 +1579,24 @@
     "title": "Global Financial Crisis and Russian Recession Cut Remittances Sharply",
     "verdict": "TRUE",
     "reason": "The 2008-2009 global financial crisis caused remittances to Kyrgyzstan to drop from $1.113 billion in 2008 to $862 million in 2009, as Russian-based Kyrgyz workers lost jobs or returned home. Southern rural regions, particularly Batken, Osh, and Jalal-Abad, were hardest hit — precisely the areas that drove the April 2010 revolution.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 2008-2009 global financial crisis caused remittances to Kyrgyzstan to drop from $1.113 billion in 2008 to $862 million in 2009, as Russian-based Kyrgyz workers lost jobs or returned home. Southern rural regions, particularly Batken, Osh, and Jalal-Abad, were hardest hit — precisely the areas that drove the April 2010 revolution.",
+        "source": "https://cabar.asia/en/the-impact-of-global-economic-recession-on-kyrgyz-labor-migrants-in-russia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://cabar.asia/en/the-impact-of-global-economic-recession-on-kyrgyz-labor-migrants-in-russia"
   },
   {
@@ -452,6 +1604,24 @@
     "title": "International Commission of Inquiry Finds Kyrgyz Forces Enabled Osh Violence",
     "verdict": "TRUE",
     "reason": "The Kyrgyzstan Inquiry Commission (KIC), chaired by Kimmo Kiljunen and established at interim President Otunbayeva's invitation, released its report on May 3, 2011, finding that Kyrgyz security forces stood by or actively assisted in attacks on Uzbek communities. The KIC found evidence of crimes against humanity; the Kyrgyz parliament subsequently barred Kiljunen from entering the country.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Kyrgyzstan Inquiry Commission (KIC), chaired by Kimmo Kiljunen and established at interim President Otunbayeva's invitation, released its report on May 3, 2011, finding that Kyrgyz security forces stood by or actively assisted in attacks on Uzbek communities. The KIC found evidence of crimes against humanity; the Kyrgyz parliament subsequently barred Kiljunen from entering the country.",
+        "source": "https://www.opensocietyfoundations.org/voices/findings-from-the-kyrgyzstan-inquiry-commission-report",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.opensocietyfoundations.org/voices/findings-from-the-kyrgyzstan-inquiry-commission-report"
   },
   {
@@ -459,6 +1629,24 @@
     "title": "Uzbek Community Leader Azimjon Askarov Sentenced to Life Imprisonment",
     "verdict": "TRUE",
     "reason": "Azimjon Askarov was sentenced to life imprisonment on September 15, 2010 (with appeal upheld December 2010) on charges of organizing mass disturbances and complicity in a police officer's death. The UN Human Rights Committee in 2016 found he had been arbitrarily detained and tortured; Amnesty International and the US State Department condemned the conviction. Askarov died in prison on July 25, 2020.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Azimjon Askarov was sentenced to life imprisonment on September 15, 2010 (with appeal upheld December 2010) on charges of organizing mass disturbances and complicity in a police officer's death. The UN Human Rights Committee in 2016 found he had been arbitrarily detained and tortured; Amnesty International and the US State Department condemned the conviction. Askarov died in prison on July 25, 2020.",
+        "source": "https://www.hrw.org/news/2020/07/30/kyrgyzstan-must-answer-death-activist-azimjon-askarov",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2020/07/30/kyrgyzstan-must-answer-death-activist-azimjon-askarov"
   },
   {
@@ -466,6 +1654,24 @@
     "title": "Bishkek Power Plant Corruption Scandal: China-Financed Renovation Collapses",
     "verdict": "FALSE",
     "reason": "The Bishkek power plant renovation contract with TBEA was signed in July 2013 (not 2012); the project ran 2014-2017; the catastrophic failure occurred in January 2018. The curated event is dated 2012, but no significant power plant scandal event occurred that year — this is a >5yr drift from the 2018 crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Bishkek power plant renovation contract with TBEA was signed in July 2013 (not 2012); the project ran 2014-2017; the catastrophic failure occurred in January 2018. The curated event is dated 2012, but no significant power plant scandal event occurred that year — this is a >5yr drift from the 2018 crisis.",
+        "source": "https://thediplomat.com/2018/01/bitter-cold-hits-bishkek-chinese-repaired-power-plant-breaks-down/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://thediplomat.com/2018/01/bitter-cold-hits-bishkek-chinese-repaired-power-plant-breaks-down/"
   },
   {
@@ -473,6 +1679,24 @@
     "title": "Kyrgyz Citizenship Given to Ethnic Kyrgyz in China and Afghanistan",
     "verdict": "TRUE",
     "reason": "The Kairylman (Returnee) repatriation program, in operation since 2006, provided pathways for ethnic Kyrgyz from abroad including China and Afghanistan to gain Kyrgyzstani citizenship. The program was active in 2013 and subsequent years; Kyrgyzstan established an embassy in Kabul in 2013, partly to facilitate engagement with Afghan Kyrgyz communities.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Kairylman (Returnee) repatriation program, in operation since 2006, provided pathways for ethnic Kyrgyz from abroad including China and Afghanistan to gain Kyrgyzstani citizenship. The program was active in 2013 and subsequent years; Kyrgyzstan established an embassy in Kabul in 2013, partly to facilitate engagement with Afghan Kyrgyz communities.",
+        "source": "https://akipress.com/news:756358:70,000_ethnic_Kyrgyz_returnees_obtained_Kyrgyzstani_citizenship_over_years_of_independence/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://akipress.com/news:756358:70,000_ethnic_Kyrgyz_returnees_obtained_Kyrgyzstani_citizenship_over_years_of_independence/"
   },
   {
@@ -480,6 +1704,24 @@
     "title": "Glacier Damage at Kumtor Declared Environmental Emergency",
     "verdict": "TRUE",
     "reason": "Parliamentary investigations and independent environmental assessments documented that Kumtor's open-pit operations had caused severe damage to the Davydov and Lysyi glaciers by dumping mining waste on them, violating Kyrgyzstan's Water Code. Studies confirmed mining was a larger factor than climate change in these glaciers' wastage, forming the core environmental argument for nationalization.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Parliamentary investigations and independent environmental assessments documented that Kumtor's open-pit operations had caused severe damage to the Davydov and Lysyi glaciers by dumping mining waste on them, violating Kyrgyzstan's Water Code. Studies confirmed mining was a larger factor than climate change in these glaciers' wastage, forming the core environmental argument for nationalization.",
+        "source": "https://thediplomat.com/2015/06/kyrgyzstan-between-a-glacier-and-a-gold-mine/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://thediplomat.com/2015/06/kyrgyzstan-between-a-glacier-and-a-gold-mine/"
   },
   {
@@ -487,6 +1729,24 @@
     "title": "Anti-China Protests Over Land Leasing Proposals",
     "verdict": "TRUE",
     "reason": "Proposals to lease agricultural land to Chinese farmers triggered anti-China protests across Kyrgyzstan in 2016, with demonstrators carrying nationalist banners opposing perceived land transfer to China. The government shelved the proposals under public pressure. Similar land-leasing proposals in Kazakhstan in 2016 also triggered major protests.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Proposals to lease agricultural land to Chinese farmers triggered anti-China protests across Kyrgyzstan in 2016, with demonstrators carrying nationalist banners opposing perceived land transfer to China. The government shelved the proposals under public pressure. Similar land-leasing proposals in Kazakhstan in 2016 also triggered major protests.",
+        "source": "https://www.cacianalyst.org/publications/analytical-articles/item/13568-protest-against-chinese-migrants-in-kyrgyzstan-sinophobia-or-demands-for-social-justice",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cacianalyst.org/publications/analytical-articles/item/13568-protest-against-chinese-migrants-in-kyrgyzstan-sinophobia-or-demands-for-social-justice"
   },
   {
@@ -494,6 +1754,24 @@
     "title": "Kyrgyzstan Becomes Leading Central Asian Democracy by OSCE Standards",
     "verdict": "TRUE",
     "reason": "After the competitive 2017 presidential election and first peaceful transfer of power, Kyrgyzstan held the highest democratic rating in Central Asia. However OSCE observers noted the misuse of administrative resources for Atambayev's preferred candidate, and the moment proved short-lived as subsequent Jeenbekov and Japarov-era policies reversed democratic gains.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After the competitive 2017 presidential election and first peaceful transfer of power, Kyrgyzstan held the highest democratic rating in Central Asia. However OSCE observers noted the misuse of administrative resources for Atambayev's preferred candidate, and the moment proved short-lived as subsequent Jeenbekov and Japarov-era policies reversed democratic gains.",
+        "source": "https://thediplomat.com/2017/11/a-new-kyrgyz-president-takes-over-in-bishkek/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://thediplomat.com/2017/11/a-new-kyrgyz-president-takes-over-in-bishkek/"
   },
   {
@@ -501,6 +1779,24 @@
     "title": "Bishkek Heating Crisis: Chinese-Built Power Plant Fails in Winter",
     "verdict": "TRUE",
     "reason": "In January 2018, Bishkek's renovated thermal power plant — refurbished by TBEA with a $386 million Chinese Exim Bank loan — failed during sub-zero temperatures, leaving approximately 200,000 homes without heat for several days. The crisis triggered resignation of the prime minister and multiple ministers, and investigations revealed an estimated $100 million had been siphoned off in kickbacks.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In January 2018, Bishkek's renovated thermal power plant — refurbished by TBEA with a $386 million Chinese Exim Bank loan — failed during sub-zero temperatures, leaving approximately 200,000 homes without heat for several days. The crisis triggered resignation of the prime minister and multiple ministers, and investigations revealed an estimated $100 million had been siphoned off in kickbacks.",
+        "source": "https://eurasianet.org/kyrgyzstan-freeze-turns-to-hot-fury-over-bishkeks-power-plant-failure",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://eurasianet.org/kyrgyzstan-freeze-turns-to-hot-fury-over-bishkeks-power-plant-failure"
   },
   {
@@ -508,6 +1804,24 @@
     "title": "Death of Human Rights Defender Azimjon Askarov in Prison",
     "verdict": "TRUE",
     "reason": "Azimjon Askarov died in prison on July 25, 2020, aged approximately 69, from COVID-19-related complications per official accounts, after being transferred to a prison hospital only the day before his death despite deteriorating health for 10 days. His death drew widespread international condemnation from the UN, US, and human rights organizations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Azimjon Askarov died in prison on July 25, 2020, aged approximately 69, from COVID-19-related complications per official accounts, after being transferred to a prison hospital only the day before his death despite deteriorating health for 10 days. His death drew widespread international condemnation from the UN, US, and human rights organizations.",
+        "source": "https://www.hrw.org/news/2020/07/25/kyrgyzstan-human-rights-defender-dies-prison",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2020/07/25/kyrgyzstan-human-rights-defender-dies-prison"
   },
   {
@@ -515,6 +1829,24 @@
     "title": "Batken Reconstruction After April 2021 Border War Remains Slow",
     "verdict": "TRUE",
     "reason": "After the April 2021 Kyrgyz-Tajik border conflict, over 40,000 people were displaced in Batken and Leilek districts. While 136 new houses were built by end-November 2021, reconstruction was underfunded and slow relative to need; many families remained in temporary shelters for extended periods, deepening grievances in the already-neglected Batken region.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After the April 2021 Kyrgyz-Tajik border conflict, over 40,000 people were displaced in Batken and Leilek districts. While 136 new houses were built by end-November 2021, reconstruction was underfunded and slow relative to need; many families remained in temporary shelters for extended periods, deepening grievances in the already-neglected Batken region.",
+        "source": "https://reliefweb.int/report/kyrgyzstan/kyrgyzstan-border-conflict-final-report-operation-n-mdrkg013",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://reliefweb.int/report/kyrgyzstan/kyrgyzstan-border-conflict-final-report-operation-n-mdrkg013"
   },
   {
@@ -522,6 +1854,24 @@
     "title": "Kyrgyzstan Declines to Recognize Russian Annexations of Ukrainian Territories",
     "verdict": "TRUE",
     "reason": "Kyrgyzstan abstained on the October 12, 2022 UN General Assembly resolution condemning Russia's annexation of four Ukrainian territories (143 for, 5 against, 35 abstaining). Kazakhstan, Kyrgyzstan, Tajikistan, and Uzbekistan all abstained, reflecting Central Asian states' balancing act between Russian alliance and Western economic ties.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kyrgyzstan abstained on the October 12, 2022 UN General Assembly resolution condemning Russia's annexation of four Ukrainian territories (143 for, 5 against, 35 abstaining). Kazakhstan, Kyrgyzstan, Tajikistan, and Uzbekistan all abstained, reflecting Central Asian states' balancing act between Russian alliance and Western economic ties.",
+        "source": "https://en.wikipedia.org/wiki/United_Nations_General_Assembly_Resolution_ES-11/4",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/United_Nations_General_Assembly_Resolution_ES-11/4"
   },
   {
@@ -529,6 +1879,24 @@
     "title": "Anti-LGBTQ Legislation Mirrors Russian 'Gay Propaganda' Law",
     "verdict": "TRUE",
     "reason": "Kyrgyzstan's parliament passed amendments on June 22, 2023 (signed into law August 14, 2023) criminalizing information that 'promotes non-traditional sexual relationships' as harmful to children, closely mirroring Russia's 2013 anti-LGBTQ propaganda law. Human rights organizations condemned the bill; criminal penalties of up to one year imprisonment were included in earlier drafts.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kyrgyzstan's parliament passed amendments on June 22, 2023 (signed into law August 14, 2023) criminalizing information that 'promotes non-traditional sexual relationships' as harmful to children, closely mirroring Russia's 2013 anti-LGBTQ propaganda law. Human rights organizations condemned the bill; criminal penalties of up to one year imprisonment were included in earlier drafts.",
+        "source": "https://en.wikipedia.org/wiki/Kyrgyz_anti-LGBT_bill",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kyrgyz_anti-LGBT_bill"
   },
   {
@@ -536,6 +1904,24 @@
     "title": "Japarov Consolidates Authoritarian Turn: NGO Law Mirrors Russian Foreign Agents Legislation",
     "verdict": "TRUE",
     "reason": "Kyrgyzstan's parliament passed an NGO law on March 14, 2024, requiring foreign-funded civil society organizations engaged in 'political activity' to register as 'foreign representatives'; Japarov signed it April 2, effective April 15. The law was condemned by the UN, EU, and 110 Kyrgyz NGOs; Amnesty International called for Japarov to veto the bill before signing.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kyrgyzstan's parliament passed an NGO law on March 14, 2024, requiring foreign-funded civil society organizations engaged in 'political activity' to register as 'foreign representatives'; Japarov signed it April 2, effective April 15. The law was condemned by the UN, EU, and 110 Kyrgyz NGOs; Amnesty International called for Japarov to veto the bill before signing.",
+        "source": "https://thediplomat.com/2024/04/kyrgyzstan-adopts-law-targeting-foreign-funded-ngos/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://thediplomat.com/2024/04/kyrgyzstan-adopts-law-targeting-foreign-funded-ngos/"
   },
   {
@@ -543,6 +1929,24 @@
     "title": "Kyrgyzstan Hosts Anti-Taliban Coalition: Strategic Windfall",
     "verdict": "TRUE",
     "reason": "The Transit Center at Manas was established December 11, 2001, providing Kyrgyzstan an annual income stream (initially $17 million, later raised substantially) at a time of severe fiscal stress. The base elevated Kyrgyzstan's strategic importance in Washington and brought infrastructure investment, though it also created domestic controversy from Russia-aligned and Islamist groups.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Transit Center at Manas was established December 11, 2001, providing Kyrgyzstan an annual income stream (initially $17 million, later raised substantially) at a time of severe fiscal stress. The base elevated Kyrgyzstan's strategic importance in Washington and brought infrastructure investment, though it also created domestic controversy from Russia-aligned and Islamist groups.",
+        "source": "https://en.wikipedia.org/wiki/Transit_Center_at_Manas",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Transit_Center_at_Manas"
   },
   {
@@ -550,6 +1954,24 @@
     "title": "Poverty Crisis: Half of Population Falls Below Poverty Line",
     "verdict": "TRUE",
     "reason": "World Bank data and research confirm that by the mid-1990s, Kyrgyzstan experienced one of the most severe poverty crises of any post-Soviet state, with GDP per capita shrinking by ~54% through the 1990s. World Bank documentation of 'Poverty in the 1990s in the Kyrgyz Republic' confirms extreme deprivation as Soviet-era supports collapsed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "World Bank data and research confirm that by the mid-1990s, Kyrgyzstan experienced one of the most severe poverty crises of any post-Soviet state, with GDP per capita shrinking by ~54% through the 1990s. World Bank documentation of 'Poverty in the 1990s in the Kyrgyz Republic' confirms extreme deprivation as Soviet-era supports collapsed.",
+        "source": "https://documents.worldbank.org/curated/en/209711468753276349/Kyrgyz-Republic-Poverty-in-the-1990s-in-the-Kyrgyz-Republic",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://documents.worldbank.org/curated/en/209711468753276349/Kyrgyz-Republic-Poverty-in-the-1990s-in-the-Kyrgyz-Republic"
   },
   {
@@ -557,6 +1979,24 @@
     "title": "Roza Otunbayeva Becomes Key Revolution Leader and Later First Female Head of State",
     "verdict": "TRUE",
     "reason": "Otunbayeva co-led the 2005 Tulip Revolution opposition, became acting head of state after the April 2010 revolution, and was inaugurated as interim president on July 3, 2010, becoming Central Asia's first female head of state. She served until December 1, 2011, and honored the constitution by declining to stand in the 2011 election.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Otunbayeva co-led the 2005 Tulip Revolution opposition, became acting head of state after the April 2010 revolution, and was inaugurated as interim president on July 3, 2010, becoming Central Asia's first female head of state. She served until December 1, 2011, and honored the constitution by declining to stand in the 2011 election.",
+        "source": "https://en.wikipedia.org/wiki/Roza_Otunbayeva",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Roza_Otunbayeva"
   },
   {
@@ -564,6 +2004,24 @@
     "title": "Organized Crime and Political Violence: High-Profile Assassinations",
     "verdict": "TRUE",
     "reason": "Kyrgyzstan in the mid-to-late 2000s experienced a series of high-profile political killings. In autumn 2005 three parliamentarians with criminal ties were assassinated; in 2006-2007, crime boss Rysbek Akmatbayev (whose parliamentarian brother was killed in a 2005 prison riot) wielded significant political power. The blurred line between political power and organized crime became a defining feature of Kyrgyz governance.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kyrgyzstan in the mid-to-late 2000s experienced a series of high-profile political killings. In autumn 2005 three parliamentarians with criminal ties were assassinated; in 2006-2007, crime boss Rysbek Akmatbayev (whose parliamentarian brother was killed in a 2005 prison riot) wielded significant political power. The blurred line between political power and organized crime became a defining feature of Kyrgyz governance.",
+        "source": "https://factsanddetails.com/central-asia/Kyrgyzstan/sub8_5d/entry-4787.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://factsanddetails.com/central-asia/Kyrgyzstan/sub8_5d/entry-4787.html"
   },
   {
@@ -571,6 +2029,24 @@
     "title": "Uzbek Minority Faces Ongoing Persecution After Osh Violence",
     "verdict": "TRUE",
     "reason": "After the June 2010 Osh violence, Human Rights Watch documented systematic harassment of ethnic Uzbeks by Kyrgyz security forces, mass arrests with torture and extortion, and closure of Uzbek-language institutions. Property was not compensated; thousands emigrated. As recently as 2025, HRW confirmed Uzbeks still face bias in Kyrgyzstan.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After the June 2010 Osh violence, Human Rights Watch documented systematic harassment of ethnic Uzbeks by Kyrgyz security forces, mass arrests with torture and extortion, and closure of Uzbek-language institutions. Property was not compensated; thousands emigrated. As recently as 2025, HRW confirmed Uzbeks still face bias in Kyrgyzstan.",
+        "source": "https://www.hrw.org/report/2010/08/16/where-justice/interethnic-violence-southern-kyrgyzstan-and-its-aftermath",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/report/2010/08/16/where-justice/interethnic-violence-southern-kyrgyzstan-and-its-aftermath"
   },
   {
@@ -578,6 +2054,24 @@
     "title": "ISIS-Inspired Terrorism Concerns: Kyrgyz Fighters in Syria and Iraq",
     "verdict": "TRUE",
     "reason": "Kyrgyzstan ranked first among Central Asian states in per-capita contributions of foreign fighters to ISIS; official estimates put the number at 600-764 Kyrgyz nationals who joined ISIS and related groups, with 77% from the predominantly Uzbek-populated south. Kyrgyz authorities documented 83 recruitment cases and launched counter-extremism programs.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kyrgyzstan ranked first among Central Asian states in per-capita contributions of foreign fighters to ISIS; official estimates put the number at 600-764 Kyrgyz nationals who joined ISIS and related groups, with 77% from the predominantly Uzbek-populated south. Kyrgyz authorities documented 83 recruitment cases and launched counter-extremism programs.",
+        "source": "https://www.counterextremism.com/countries/kyrgyz-republic-extremism-terrorism",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.counterextremism.com/countries/kyrgyz-republic-extremism-terrorism"
   },
   {
@@ -585,6 +2079,24 @@
     "title": "Bishkek Thermal Power Plant Corruption Prosecutions",
     "verdict": "TRUE",
     "reason": "Former Prime Minister Sapar Isakov was sentenced on December 6, 2019 to 15 years in prison for corruption related to the 2013 TBEA contract for the Bishkek power plant renovation. Combined with a second conviction in June 2020 (museum renovation), his total sentence reached 18 years — the highest-profile corruption prosecution in recent Kyrgyz history.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Former Prime Minister Sapar Isakov was sentenced on December 6, 2019 to 15 years in prison for corruption related to the 2013 TBEA contract for the Bishkek power plant renovation. Combined with a second conviction in June 2020 (museum renovation), his total sentence reached 18 years — the highest-profile corruption prosecution in recent Kyrgyz history.",
+        "source": "https://en.wikipedia.org/wiki/Sapar_Isakov",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sapar_Isakov"
   },
   {
@@ -592,6 +2104,24 @@
     "title": "Japarov Pardons Atambayev; Former President Released from Prison",
     "verdict": "FALSE",
     "reason": "Atambayev was NOT released in 2021 after Japarov's inauguration. He was actually released in February 2023 when the Supreme Court overturned his 11-year sentence; Japarov was involved in the decision but it was nearly two years after inauguration, not 'shortly after.' The event as described is factually inaccurate in timing and mechanism.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Atambayev was NOT released in 2021 after Japarov's inauguration. He was actually released in February 2023 when the Supreme Court overturned his 11-year sentence; Japarov was involved in the decision but it was nearly two years after inauguration, not 'shortly after.' The event as described is factually inaccurate in timing and mechanism.",
+        "source": "https://thediplomat.com/2023/02/former-kyrgyz-president-atambayev-released-from-jail-flies-to-spain/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://thediplomat.com/2023/02/former-kyrgyz-president-atambayev-released-from-jail-flies-to-spain/"
   }
 ]

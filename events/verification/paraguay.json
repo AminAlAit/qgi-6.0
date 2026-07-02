@@ -4,6 +4,24 @@
     "title": "Federico Chaves Assumes Presidency",
     "verdict": "PARTIAL",
     "reason": "Chaves assumed the presidency on September 10, 1949, which is confirmed, but he was not the Colorado Party's first choice and the event followed political instability as described. The year is correct but the specific date phrasing 'assumed presidency' slightly obscures that he was elevated after another president's resignation rather than a clean transition.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Chaves assumed the presidency on September 10, 1949, which is confirmed, but he was not the Colorado Party's first choice and the event followed political instability as described. The year is correct but the specific date phrasing 'assumed presidency' slightly obscures that he was elevated after another president's resignation rather than a clean transition.",
+        "source": "https://en.wikipedia.org/wiki/Federico_Chaves",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Federico_Chaves"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Stroessner Seizes Power in Military Coup",
     "verdict": "PARTIAL",
     "reason": "The coup occurred on May 4, 1954 (not May 8 as implied by the entry stating 'May 8'), led by Stroessner with Colorado Party backing. The description of the coup's significance and outcome is accurate, but the exact date stated in the description is incorrect.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The coup occurred on May 4, 1954 (not May 8 as implied by the entry stating 'May 8'), led by Stroessner with Colorado Party backing. The description of the coup's significance and outcome is accurate, but the exact date stated in the description is incorrect.",
+        "source": "https://en.wikipedia.org/wiki/1954_Paraguayan_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1954_Paraguayan_coup_d%27%C3%A9tat"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Stroessner Elected President in Controlled Vote",
     "verdict": "TRUE",
     "reason": "The election was held on July 11, 1954, with Stroessner as the sole candidate running under the Colorado Party banner; he was sworn in on August 15, 1954. He subsequently won seven more elections, ruling until 1989.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The election was held on July 11, 1954, with Stroessner as the sole candidate running under the Colorado Party banner; he was sworn in on August 15, 1954. He subsequently won seven more elections, ruling until 1989.",
+        "source": "https://en.wikipedia.org/wiki/1954_Paraguayan_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1954_Paraguayan_presidential_election"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Colorado Party Purged; Stroessner Consolidates Control",
     "verdict": "TRUE",
     "reason": "Stroessner systematically neutralised rival Colorado Party factions over the years following the 1954 coup, purging Méndez Fleitas and his supporters around 1955-1956, forcing them into exile. Colorado Party membership became a prerequisite for public employment under stronismo.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Stroessner systematically neutralised rival Colorado Party factions over the years following the 1954 coup, purging Méndez Fleitas and his supporters around 1955-1956, forcing them into exile. Colorado Party membership became a prerequisite for public employment under stronismo.",
+        "source": "https://en.wikipedia.org/wiki/Dictatorship_of_Alfredo_Stroessner",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dictatorship_of_Alfredo_Stroessner"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Political Opposition Crushed; Exiles Flee to Argentina",
     "verdict": "TRUE",
     "reason": "Stroessner's regime repressed Liberal Party politicians, trade unionists, and dissidents throughout the 1950s, with many exiles settling in Argentina. The Pyrague (informant network) is a documented feature of the regime, and the scale of exile (over 20,000 according to the Truth and Justice Commission) is confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Stroessner's regime repressed Liberal Party politicians, trade unionists, and dissidents throughout the 1950s, with many exiles settling in Argentina. The Pyrague (informant network) is a documented feature of the regime, and the scale of exile (over 20,000 according to the Truth and Justice Commission) is confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Dictatorship_of_Alfredo_Stroessner",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dictatorship_of_Alfredo_Stroessner"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Concepción Uprising Suppressed",
     "verdict": "PARTIAL",
     "reason": "Armed opposition groups sponsored by exiled Liberals and Febreristas, with Venezuelan and later Cuban support, did infiltrate from Argentina beginning around 1958-1959. However, the event is not consistently described as a specific 'Concepción uprising' in major sources, and the state of siege was actually briefly lifted in April 1959, suggesting the regime's response was more nuanced.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Armed opposition groups sponsored by exiled Liberals and Febreristas, with Venezuelan and later Cuban support, did infiltrate from Argentina beginning around 1958-1959. However, the event is not consistently described as a specific 'Concepción uprising' in major sources, and the state of siege was actually briefly lifted in April 1959, suggesting the regime's response was more nuanced.",
+        "source": "https://en.wikipedia.org/wiki/Dictatorship_of_Alfredo_Stroessner",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dictatorship_of_Alfredo_Stroessner"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Paraguay Joins Alliance for Progress",
     "verdict": "TRUE",
     "reason": "The Alliance for Progress was launched by President Kennedy in March 1961 and signed at an inter-American conference in August 1961, with Paraguay participating. Stroessner's anti-communism made him a Cold War partner despite authoritarianism, consistent with the description.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Alliance for Progress was launched by President Kennedy in March 1961 and signed at an inter-American conference in August 1961, with Paraguay participating. Stroessner's anti-communism made him a Cold War partner despite authoritarianism, consistent with the description.",
+        "source": "https://en.wikipedia.org/wiki/Alliance_for_Progress",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Alliance_for_Progress"
   },
   {
@@ -53,6 +179,24 @@
     "title": "State of Siege Normalized; Routine Renewals Begin",
     "verdict": "PARTIAL",
     "reason": "The state of siege was declared shortly after Stroessner took office in 1954, not 1962, and was renewed by Congress every 90 days continuously (with a brief interruption in 1959) until 1987. The description of the mechanism is accurate but the year 1962 as the start of normalization is not confirmed; it began in 1954.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The state of siege was declared shortly after Stroessner took office in 1954, not 1962, and was renewed by Congress every 90 days continuously (with a brief interruption in 1959) until 1987. The description of the mechanism is accurate but the year 1962 as the start of normalization is not confirmed; it began in 1954.",
+        "source": "https://en.wikipedia.org/wiki/Dictatorship_of_Alfredo_Stroessner",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dictatorship_of_Alfredo_Stroessner"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Itaipú Dam Negotiations Begin with Brazil",
     "verdict": "PARTIAL",
     "reason": "Paraguay offered a draft treaty to Argentina in late 1965 and negotiations were underway during the 1960s, but the formal bilateral milestone was the Iguaçu Act signed on July 22, 1966 by the foreign ministers of Brazil and Paraguay. The 1965 date for the start of formal discussions is approximately correct but the key formal step was 1966.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Paraguay offered a draft treaty to Argentina in late 1965 and negotiations were underway during the 1960s, but the formal bilateral milestone was the Iguaçu Act signed on July 22, 1966 by the foreign ministers of Brazil and Paraguay. The 1965 date for the start of formal discussions is approximately correct but the key formal step was 1966.",
+        "source": "https://en.wikipedia.org/wiki/Itaipu_Dam",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Itaipu_Dam"
   },
   {
@@ -67,6 +229,24 @@
     "title": "New Stroessner Constitution Enacted",
     "verdict": "TRUE",
     "reason": "Paraguay adopted a new constitution on August 25, 1967, which allowed Stroessner's re-election with a provision that only terms after 1968 would count toward the two-term limit, effectively extending his rule. A 1977 amendment later made re-election indefinitely possible.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Paraguay adopted a new constitution on August 25, 1967, which allowed Stroessner's re-election with a provision that only terms after 1968 would count toward the two-term limit, effectively extending his rule. A 1977 amendment later made re-election indefinitely possible.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_Paraguay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Constitution_of_Paraguay"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Operation Condor Precursor: Repression Networks with Argentina and Brazil",
     "verdict": "PARTIAL",
     "reason": "Paraguay's security cooperation with Argentina and Brazil for tracking leftists predated the formal Operation Condor network, and cross-border operations occurred during the Stroessner era. However, Operation Condor was formally established in November 1975, and calling 1970 a defined precursor event overstates the precision of the claim; intelligence-sharing arrangements were ongoing throughout the period.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Paraguay's security cooperation with Argentina and Brazil for tracking leftists predated the formal Operation Condor network, and cross-border operations occurred during the Stroessner era. However, Operation Condor was formally established in November 1975, and calling 1970 a defined precursor event overstates the precision of the claim; intelligence-sharing arrangements were ongoing throughout the period.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Condor",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Condor"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Treaty of Itaipú Signed with Brazil",
     "verdict": "TRUE",
     "reason": "Brazil and Paraguay signed the Treaty of Itaipú on April 26, 1973, establishing the framework for the binational hydroelectric dam. Critics have long noted the treaty's terms were favorable to Brazil, requiring Paraguay to sell its excess power exclusively to Brazil at predetermined low rates.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Brazil and Paraguay signed the Treaty of Itaipú on April 26, 1973, establishing the framework for the binational hydroelectric dam. Critics have long noted the treaty's terms were favorable to Brazil, requiring Paraguay to sell its excess power exclusively to Brazil at predetermined low rates.",
+        "source": "https://www.britannica.com/topic/Treaty-of-Itaipu",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/topic/Treaty-of-Itaipu"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Paraguay Joins Operation Condor",
     "verdict": "TRUE",
     "reason": "Operation Condor was formally created in November 1975 when Chilean intelligence chief Contreras invited intelligence officers from Argentina, Brazil, Bolivia, Chile, Paraguay, and Uruguay to Santiago. Paraguay was a founding and leading participant in the network.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Condor was formally created in November 1975 when Chilean intelligence chief Contreras invited intelligence officers from Argentina, Brazil, Bolivia, Chile, Paraguay, and Uruguay to Santiago. Paraguay was a founding and leading participant in the network.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Condor",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Condor"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Itaipú Dam Construction Nears Completion; Economic Boom",
     "verdict": "TRUE",
     "reason": "Itaipú construction drove Paraguay's GDP growth above 10% annually from 1976 to 1981, one of the fastest in Latin America. Ciudad del Este (then Puerto Presidente Stroessner) expanded rapidly during this construction boom period.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Itaipú construction drove Paraguay's GDP growth above 10% annually from 1976 to 1981, one of the fastest in Latin America. Ciudad del Este (then Puerto Presidente Stroessner) expanded rapidly during this construction boom period.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Paraguay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Paraguay"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Anastasio Somoza Takes Refuge in Paraguay",
     "verdict": "TRUE",
     "reason": "After being ousted by the Sandinistas in July 1979, Somoza was granted asylum by Stroessner and settled in Asunción. He was assassinated there on September 17, 1980, by members of the Argentine People's Revolutionary Army.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After being ousted by the Sandinistas in July 1979, Somoza was granted asylum by Stroessner and settled in Asunción. He was assassinated there on September 17, 1980, by members of the Argentine People's Revolutionary Army.",
+        "source": "https://en.wikipedia.org/wiki/Anastasio_Somoza_Debayle",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Anastasio_Somoza_Debayle"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Itaipú Dam Inaugurated",
     "verdict": "PARTIAL",
     "reason": "The entry year is 1981 but the description states it was inaugurated on October 25, 1982. The reservoir filling began in October 1982 when dam construction was completed, and the first generation unit started in May 1984. The year in the entry (1981) contradicts the description's own date (1982) and neither matches the operational start (1984).",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The entry year is 1981 but the description states it was inaugurated on October 25, 1982. The reservoir filling began in October 1982 when dam construction was completed, and the first generation unit started in May 1984. The year in the entry (1981) contradicts the description's own date (1982) and neither matches the operational start (1984).",
+        "source": "https://en.wikipedia.org/wiki/Itaipu_Dam",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Itaipu_Dam"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Post-Itaipú Economic Recession Sets In",
     "verdict": "TRUE",
     "reason": "Paraguay's economic boom ended in 1982 with the completion of Itaipú construction, leaving tens of thousands of workers unemployed. Lower commodity prices and a global recession compounded the contraction, creating fiscal deficits and dwindling reserves for the rest of the decade.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Paraguay's economic boom ended in 1982 with the completion of Itaipú construction, leaving tens of thousands of workers unemployed. Lower commodity prices and a global recession compounded the contraction, creating fiscal deficits and dwindling reserves for the rest of the decade.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Paraguay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Paraguay"
   },
   {
@@ -123,6 +429,24 @@
     "title": "ABC Color Newspaper Shut Down",
     "verdict": "TRUE",
     "reason": "ABC Color was forced to suspend publication on March 22, 1984, by the Stroessner regime due to its increasingly critical editorial stance. It remained closed until 1989 after Stroessner's fall.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ABC Color was forced to suspend publication on March 22, 1984, by the Stroessner regime due to its increasingly critical editorial stance. It remained closed until 1989 after Stroessner's fall.",
+        "source": "https://en.wikipedia.org/wiki/ABC_Color",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/ABC_Color"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Peasant Organizations and Land Conflicts Escalate",
     "verdict": "PARTIAL",
     "reason": "Land conflict between landless peasants and agribusinesses (including Brazilian-owned soy farms) was documented from the early 1980s onward, with displacement of tens of thousands confirmed. However, the specific organization cited (MCNOC) and the precise 1985 framing as a distinct escalation point could not be verified in major English-language sources; the broader agrarian tension is historically documented.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Land conflict between landless peasants and agribusinesses (including Brazilian-owned soy farms) was documented from the early 1980s onward, with displacement of tens of thousands confirmed. However, the specific organization cited (MCNOC) and the precise 1985 framing as a distinct escalation point could not be verified in major English-language sources; the broader agrarian tension is historically documented.",
+        "source": "https://en.wikipedia.org/wiki/Agriculture_in_Paraguay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Agriculture_in_Paraguay"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Catholic Church Increases Opposition to Stroessner",
     "verdict": "PARTIAL",
     "reason": "The Paraguayan Catholic Church's opposition to the Stroessner regime's human rights abuses and its use of radio stations as information channels is confirmed in general sources. The specific attribution to Bishop Aníbal Maricevich and the precise 1986 framing could not be verified in available sources, though Church opposition broadly in the 1980s is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Paraguayan Catholic Church's opposition to the Stroessner regime's human rights abuses and its use of radio stations as information channels is confirmed in general sources. The specific attribution to Bishop Aníbal Maricevich and the precise 1986 framing could not be verified in available sources, though Church opposition broadly in the 1980s is documented.",
+        "source": "https://www.britannica.com/place/Paraguay/The-Stroessner-regime",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/place/Paraguay/The-Stroessner-regime"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Stroessner Re-elected for Eighth Term Amid Splits",
     "verdict": "PARTIAL",
     "reason": "Stroessner won his eighth election in February 1988 (not 1987 as the entry year implies), with 89% of the vote amid evident fraud. Internal Colorado Party splits between 'militants' and 'traditionalists' in the late 1980s are documented. The entry year is off by one year from the actual election date.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Stroessner won his eighth election in February 1988 (not 1987 as the entry year implies), with 89% of the vote amid evident fraud. Internal Colorado Party splits between 'militants' and 'traditionalists' in the late 1980s are documented. The entry year is off by one year from the actual election date.",
+        "source": "https://en.wikipedia.org/wiki/1988_Paraguayan_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1988_Paraguayan_general_election"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Coup Ousts Stroessner; End of 35-Year Dictatorship",
     "verdict": "TRUE",
     "reason": "General Andrés Rodríguez launched the coup on the night of February 2-3, 1989, and Stroessner fled to Brazil where he died in 2006. The coup ended 34-35 years of dictatorship and initiated Paraguay's democratic transition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "General Andrés Rodríguez launched the coup on the night of February 2-3, 1989, and Stroessner fled to Brazil where he died in 2006. The coup ended 34-35 years of dictatorship and initiated Paraguay's democratic transition.",
+        "source": "https://en.wikipedia.org/wiki/1989_Paraguayan_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1989_Paraguayan_coup_d%27%C3%A9tat"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Rodríguez Wins Transitional Election; ABC Color Reopens",
     "verdict": "TRUE",
     "reason": "Rodríguez won the May 1, 1989 presidential election with 74% of the vote. He declared press freedom upon taking office, allowing ABC Color to reopen. International observers accepted the transition despite organizational shortcomings.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Rodríguez won the May 1, 1989 presidential election with 74% of the vote. He declared press freedom upon taking office, allowing ABC Color to reopen. International observers accepted the transition despite organizational shortcomings.",
+        "source": "https://en.wikipedia.org/wiki/1989_Paraguayan_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1989_Paraguayan_general_election"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Terror Archive (Archive of Terror) Located",
     "verdict": "PARTIAL",
     "reason": "The Archives of Terror were discovered in 1992 (not 1989 as the entry year states) by human rights activist Martín Almada in Lambaré, a suburb of Asunción. The description correctly states 1992 in the text but the entry year is listed as 1989, creating an internal inconsistency. The discovery's significance is accurately described.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Archives of Terror were discovered in 1992 (not 1989 as the entry year states) by human rights activist Martín Almada in Lambaré, a suburb of Asunción. The description correctly states 1992 in the text but the entry year is listed as 1989, creating an internal inconsistency. The discovery's significance is accurately described.",
+        "source": "https://en.wikipedia.org/wiki/Archives_of_Terror",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Archives_of_Terror"
   },
   {
@@ -172,6 +604,24 @@
     "title": "New Democratic Constitution Adopted",
     "verdict": "TRUE",
     "reason": "Paraguay adopted its democratic constitution on June 20, 1992, prohibiting presidential re-election, establishing judicial independence, and enshrining civil liberties. It replaced the Stroessner-era 1967 constitution and remains in force.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Paraguay adopted its democratic constitution on June 20, 1992, prohibiting presidential re-election, establishing judicial independence, and enshrining civil liberties. It replaced the Stroessner-era 1967 constitution and remains in force.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_Paraguay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Constitution_of_Paraguay"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Juan Carlos Wasmosy Wins First Free Presidential Election",
     "verdict": "PARTIAL",
     "reason": "Wasmosy won on May 9, 1993 with 41.8% of the vote, and this is confirmed as Paraguay's first genuinely free presidential election. However, the description states he defeated 'Domingo Laíno of the Liberal Party' — Laíno was in fact the Liberal candidate but the actual leading opposition vote-getter and vote share details differ slightly from sources listing multiple candidates.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Wasmosy won on May 9, 1993 with 41.8% of the vote, and this is confirmed as Paraguay's first genuinely free presidential election. However, the description states he defeated 'Domingo Laíno of the Liberal Party' — Laíno was in fact the Liberal candidate but the actual leading opposition vote-getter and vote share details differ slightly from sources listing multiple candidates.",
+        "source": "https://en.wikipedia.org/wiki/Juan_Carlos_Wasmosy",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Juan_Carlos_Wasmosy"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Paraguay Joins MERCOSUR",
     "verdict": "PARTIAL",
     "reason": "Paraguay was a founding member of MERCOSUR from the Treaty of Asunción in 1991, not a new member in 1994. The Protocol of Ouro Preto was signed in December 1994, establishing the bloc's current institutional structure with the customs union effective January 1, 1995. The description conflates founding membership with the 1994-1995 customs union milestone.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Paraguay was a founding member of MERCOSUR from the Treaty of Asunción in 1991, not a new member in 1994. The Protocol of Ouro Preto was signed in December 1994, establishing the bloc's current institutional structure with the customs union effective January 1, 1995. The description conflates founding membership with the 1994-1995 customs union milestone.",
+        "source": "https://en.wikipedia.org/wiki/Mercosur",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mercosur"
   },
   {
@@ -193,6 +679,24 @@
     "title": "General Oviedo Attempted Coup Against Wasmosy",
     "verdict": "TRUE",
     "reason": "The coup attempt occurred April 22-25, 1996, with Oviedo barricading himself in army barracks and demanding Wasmosy's resignation. Wasmosy resisted under strong US and regional pressure, and Oviedo was eventually removed and arrested.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The coup attempt occurred April 22-25, 1996, with Oviedo barricading himself in army barracks and demanding Wasmosy's resignation. Wasmosy resisted under strong US and regional pressure, and Oviedo was eventually removed and arrested.",
+        "source": "https://en.wikipedia.org/wiki/1996_Paraguayan_coup_attempt",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1996_Paraguayan_coup_attempt"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Cubas Grau Elected; Pardons Oviedo",
     "verdict": "TRUE",
     "reason": "Cubas won the 1998 election with 54% of the vote as Oviedo's proxy and immediately commuted Oviedo's sentence despite a Supreme Court order to uphold it, triggering an immediate constitutional crisis. The OAS condemned the pardon.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cubas won the 1998 election with 54% of the vote as Oviedo's proxy and immediately commuted Oviedo's sentence despite a Supreme Court order to uphold it, triggering an immediate constitutional crisis. The OAS condemned the pardon.",
+        "source": "https://en.wikipedia.org/wiki/Ra%C3%BAl_Cubas_Grau",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ra%C3%BAl_Cubas_Grau"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Vice President Argaña Assassinated; March Crisis",
     "verdict": "PARTIAL",
     "reason": "Argaña was assassinated on March 23, 1999, triggering the Marzo Paraguayo protests. Eight demonstrators were killed by snipers (some sources say seven died), and Cubas resigned on March 28 after fleeing to Brazil; Oviedo fled to Argentina, then Brazil. The core facts are confirmed but the death toll of demonstrators varies slightly by source.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Argaña was assassinated on March 23, 1999, triggering the Marzo Paraguayo protests. Eight demonstrators were killed by snipers (some sources say seven died), and Cubas resigned on March 28 after fleeing to Brazil; Oviedo fled to Argentina, then Brazil. The core facts are confirmed but the death toll of demonstrators varies slightly by source.",
+        "source": "https://en.wikipedia.org/wiki/Marzo_paraguayo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Marzo_paraguayo"
   },
   {
@@ -214,6 +754,24 @@
     "title": "González Macchi Assumes Presidency After Resignation Crisis",
     "verdict": "TRUE",
     "reason": "Senate president Luis González Macchi was constitutionally elevated to the presidency after Cubas's resignation in March 1999. His term was marked by corruption, economic mismanagement, and an impeachment attempt that failed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Senate president Luis González Macchi was constitutionally elevated to the presidency after Cubas's resignation in March 1999. His term was marked by corruption, economic mismanagement, and an impeachment attempt that failed.",
+        "source": "https://en.wikipedia.org/wiki/Luis_%C3%81ngel_Gonz%C3%A1lez_Macchi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Luis_%C3%81ngel_Gonz%C3%A1lez_Macchi"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Failed Coup Attempt by Oviedo Supporters",
     "verdict": "TRUE",
     "reason": "On May 18, 2000, soldiers loyal to exiled Oviedo launched a coup attempt, seizing army locations in Asunción before government forces restored control within hours. Paraguay requested Oviedo's extradition from Argentina following the incident.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On May 18, 2000, soldiers loyal to exiled Oviedo launched a coup attempt, seizing army locations in Asunción before government forces restored control within hours. Paraguay requested Oviedo's extradition from Argentina following the incident.",
+        "source": "https://en.wikipedia.org/wiki/2000_Paraguayan_coup_attempt",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2000_Paraguayan_coup_attempt"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Banking Crisis and Economic Collapse",
     "verdict": "TRUE",
     "reason": "Paraguay experienced a banking crisis in 2002 that followed earlier institutional failures, coinciding with Argentina's 2001-2002 collapse, causing foreign investment to drop from $84 million to $9 million and severe fiscal strain.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Paraguay experienced a banking crisis in 2002 that followed earlier institutional failures, coinciding with Argentina's 2001-2002 collapse, causing foreign investment to drop from $84 million to $9 million and severe fiscal strain.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Paraguay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Paraguay"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Mass Protests Against González Macchi Government",
     "verdict": "TRUE",
     "reason": "González Macchi faced widespread popular discontent over corruption and economic mismanagement during his term, with street protests documented. The Britannica source confirms he became increasingly unpopular as the economy deteriorated, and his administration faced sustained organized opposition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "González Macchi faced widespread popular discontent over corruption and economic mismanagement during his term, with street protests documented. The Britannica source confirms he became increasingly unpopular as the economy deteriorated, and his administration faced sustained organized opposition.",
+        "source": "https://www.britannica.com/biography/Luis-Gonzalez-Macchi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/biography/Luis-Gonzalez-Macchi"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Nicanor Duarte Frutos Elected President",
     "verdict": "TRUE",
     "reason": "Duarte Frutos won the April 27, 2003 election with approximately 37% of the vote, defeating divided opposition candidates from the Liberal, Patria Querida, and Oviedista parties. His term included IMF engagement and a moderate economic recovery from soy commodity prices.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Duarte Frutos won the April 27, 2003 election with approximately 37% of the vote, defeating divided opposition candidates from the Liberal, Patria Querida, and Oviedista parties. His term included IMF engagement and a moderate economic recovery from soy commodity prices.",
+        "source": "https://en.wikipedia.org/wiki/Nicanor_Duarte",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Nicanor_Duarte"
   },
   {
@@ -249,6 +879,24 @@
     "title": "EPP Guerrilla Group Emerges",
     "verdict": "PARTIAL",
     "reason": "The EPP's first major documented action was the 2004 kidnapping of Cecilia Cubas, daughter of former president Cubas Grau. The group is described as Marxist-Leninist (not specifically Maoist) in sources. It operates primarily in the Concepción department as described, and the insurgency is confirmed from around 2004-2005.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The EPP's first major documented action was the 2004 kidnapping of Cecilia Cubas, daughter of former president Cubas Grau. The group is described as Marxist-Leninist (not specifically Maoist) in sources. It operates primarily in the Concepción department as described, and the insurgency is confirmed from around 2004-2005.",
+        "source": "https://en.wikipedia.org/wiki/Paraguayan_People%27s_Army",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Paraguayan_People%27s_Army"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Paraguay Extradites Lino Oviedo; Trial Begins",
     "verdict": "PARTIAL",
     "reason": "Oviedo returned to Paraguay and was detained on June 28, 2004 (not 2005), after his period of exile. He faced trials for various offenses over several years. He died in a helicopter crash on February 2, 2013, as described, shortly after his release from prison.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Oviedo returned to Paraguay and was detained on June 28, 2004 (not 2005), after his period of exile. He faced trials for various offenses over several years. He died in a helicopter crash on February 2, 2013, as described, shortly after his release from prison.",
+        "source": "https://en.wikipedia.org/wiki/Lino_Oviedo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Lino_Oviedo"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Alfredo Stroessner Dies in Brazilian Exile",
     "verdict": "TRUE",
     "reason": "Stroessner died in Brasilia on August 16, 2006, at age 93 from a stroke following surgery, without ever facing trial. He had been in Brazilian exile since February 1989.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Stroessner died in Brasilia on August 16, 2006, at age 93 from a stroke following surgery, without ever facing trial. He had been in Brazilian exile since February 1989.",
+        "source": "https://en.wikipedia.org/wiki/Alfredo_Stroessner",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Alfredo_Stroessner"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Duarte Frutos Reelection Bid Blocked; Term Limit Upheld",
     "verdict": "TRUE",
     "reason": "Duarte Frutos's proposal to amend the constitution to allow his immediate re-election was blocked; sources confirm the Constitution barred him from running in 2008 and that his attempt was perceived as authoritarian overreach. The 1992 constitution's single-term limit was upheld.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Duarte Frutos's proposal to amend the constitution to allow his immediate re-election was blocked; sources confirm the Constitution barred him from running in 2008 and that his attempt was perceived as authoritarian overreach. The 1992 constitution's single-term limit was upheld.",
+        "source": "https://www.britannica.com/biography/Nicanor-Duarte-Frutos",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/biography/Nicanor-Duarte-Frutos"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Fernando Lugo Wins Presidential Election, Breaking 61 Years of Colorado Rule",
     "verdict": "TRUE",
     "reason": "Lugo won the April 20, 2008 election with 42.3% of the vote, ending 61 consecutive years of Colorado Party presidential control — the first peaceful transfer of power to an opposition party in Paraguayan history.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Lugo won the April 20, 2008 election with 42.3% of the vote, ending 61 consecutive years of Colorado Party presidential control — the first peaceful transfer of power to an opposition party in Paraguayan history.",
+        "source": "https://en.wikipedia.org/wiki/Fernando_Lugo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Fernando_Lugo"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Paraguay and Taiwan Relations Reaffirmed Under Lugo",
     "verdict": "TRUE",
     "reason": "Despite suggesting during the campaign he might switch recognition, Lugo confirmed after his August 2008 inauguration (attended by Taiwan's president) that Paraguay would maintain diplomatic recognition of Taiwan. Paraguay remained Taiwan's only South American ally.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Despite suggesting during the campaign he might switch recognition, Lugo confirmed after his August 2008 inauguration (attended by Taiwan's president) that Paraguay would maintain diplomatic recognition of Taiwan. Paraguay remained Taiwan's only South American ally.",
+        "source": "https://en.wikipedia.org/wiki/Paraguay%E2%80%93Taiwan_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Paraguay%E2%80%93Taiwan_relations"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Lugo Land Reform Stalls Amid Colorado Opposition",
     "verdict": "TRUE",
     "reason": "Lugo's land redistribution program was blocked by the Colorado-dominated legislature and powerful agricultural interests. Paraguay's land inequality — with roughly 2% of landowners controlling most agricultural land — is confirmed in multiple sources, and reform failure weakened Lugo's rural support base.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Lugo's land redistribution program was blocked by the Colorado-dominated legislature and powerful agricultural interests. Paraguay's land inequality — with roughly 2% of landowners controlling most agricultural land — is confirmed in multiple sources, and reform failure weakened Lugo's rural support base.",
+        "source": "https://en.wikipedia.org/wiki/Fernando_Lugo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Fernando_Lugo"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Ñacunday Land Conflict Intensifies",
     "verdict": "PARTIAL",
     "reason": "Land conflicts between Brazilian-owned soy farms and landless Paraguayan peasants in the Alto Paraná region are documented throughout the Lugo era and link to the broader agrarian crisis that culminated at Curuguaty in 2012. The specific Ñacunday district conflict and its precise 2010 intensification could not be independently confirmed in major reference sources.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Land conflicts between Brazilian-owned soy farms and landless Paraguayan peasants in the Alto Paraná region are documented throughout the Lugo era and link to the broader agrarian crisis that culminated at Curuguaty in 2012. The specific Ñacunday district conflict and its precise 2010 intensification could not be independently confirmed in major reference sources.",
+        "source": "https://en.wikipedia.org/wiki/Agriculture_in_Paraguay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Agriculture_in_Paraguay"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Paraguay Suspends from UNASUR Meeting Over EPP Crisis",
     "verdict": "PARTIAL",
     "reason": "The Lugo government declared states of emergency in northern departments and deployed military-police joint forces against the EPP on multiple occasions, with EPP kidnappings drawing international attention. However, the claim that Paraguay was 'suspended from a UNASUR meeting' over the EPP crisis could not be verified; that framing appears inaccurate based on available sources.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Lugo government declared states of emergency in northern departments and deployed military-police joint forces against the EPP on multiple occasions, with EPP kidnappings drawing international attention. However, the claim that Paraguay was 'suspended from a UNASUR meeting' over the EPP crisis could not be verified; that framing appears inaccurate based on available sources.",
+        "source": "https://en.wikipedia.org/wiki/Paraguayan_People%27s_Army",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Paraguayan_People%27s_Army"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Lugo Paternity Scandal and Political Weakening",
     "verdict": "PARTIAL",
     "reason": "The paternity scandal emerged in 2009 (not 2011 as the entry year implies), when Lugo acknowledged fathering a child while still a bishop. Multiple paternity claims followed. His political weakening from this scandal and the impeachment in 2012 are accurately described, but the primary scandal year was 2009.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The paternity scandal emerged in 2009 (not 2011 as the entry year implies), when Lugo acknowledged fathering a child while still a bishop. Multiple paternity claims followed. His political weakening from this scandal and the impeachment in 2012 are accurately described, but the primary scandal year was 2009.",
+        "source": "https://en.wikipedia.org/wiki/Fernando_Lugo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Fernando_Lugo"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Curuguaty Massacre: 17 Killed in Land Eviction",
     "verdict": "TRUE",
     "reason": "On June 15, 2012, a police eviction operation at the Marina Cue estate in Curuguaty resulted in 17 deaths (11 peasants and 6 police officers). The circumstances remained contested and the massacre was immediately used as grounds for Lugo's impeachment.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On June 15, 2012, a police eviction operation at the Marina Cue estate in Curuguaty resulted in 17 deaths (11 peasants and 6 police officers). The circumstances remained contested and the massacre was immediately used as grounds for Lugo's impeachment.",
+        "source": "https://en.wikipedia.org/wiki/Curuguaty",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Curuguaty"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Lugo Impeached in 'Parliamentary Coup'",
     "verdict": "TRUE",
     "reason": "The Chamber of Deputies voted 76-1 to impeach Lugo on June 21, and the Senate removed him on June 22, 2012, giving him less than 24 hours to prepare a defense. Vice President Federico Franco assumed the presidency; MERCOSUR and UNASUR suspended Paraguay.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Chamber of Deputies voted 76-1 to impeach Lugo on June 21, and the Senate removed him on June 22, 2012, giving him less than 24 hours to prepare a defense. Vice President Federico Franco assumed the presidency; MERCOSUR and UNASUR suspended Paraguay.",
+        "source": "https://en.wikipedia.org/wiki/Impeachment_of_Fernando_Lugo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Impeachment_of_Fernando_Lugo"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "MERCOSUR Suspends Paraguay; Venezuela Admitted",
     "verdict": "TRUE",
     "reason": "Following Lugo's impeachment, MERCOSUR suspended Paraguay under its democratic clause, and with Paraguay absent, the remaining members admitted Venezuela on July 31, 2012 — a move Paraguay had previously blocked. The suspension lasted until after the April 2013 elections.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following Lugo's impeachment, MERCOSUR suspended Paraguay under its democratic clause, and with Paraguay absent, the remaining members admitted Venezuela on July 31, 2012 — a move Paraguay had previously blocked. The suspension lasted until after the April 2013 elections.",
+        "source": "https://en.wikipedia.org/wiki/Mercosur",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mercosur"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Horacio Cartes Wins Presidential Election; Colorado Returns",
     "verdict": "TRUE",
     "reason": "Cartes won the April 21, 2013 election with approximately 45.8% of the vote, defeating Liberal candidate Efraín Alegre and returning the Colorado Party to power. Paraguay's MERCOSUR suspension was lifted after the democratic election.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cartes won the April 21, 2013 election with approximately 45.8% of the vote, defeating Liberal candidate Efraín Alegre and returning the Colorado Party to power. Paraguay's MERCOSUR suspension was lifted after the democratic election.",
+        "source": "https://en.wikipedia.org/wiki/Horacio_Cartes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Horacio_Cartes"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "General Lino Oviedo Killed in Helicopter Crash",
     "verdict": "TRUE",
     "reason": "Oviedo died in a helicopter crash on February 2, 2013, near Puerto Antequera in the Chaco, while returning from an electoral rally in Concepción. The crash was ruled accidental.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Oviedo died in a helicopter crash on February 2, 2013, near Puerto Antequera in the Chaco, while returning from an electoral rally in Concepción. The crash was ruled accidental.",
+        "source": "https://en.wikipedia.org/wiki/Lino_Oviedo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Lino_Oviedo"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "Soy and Beef Boom Drives Economic Growth",
     "verdict": "TRUE",
     "reason": "Paraguay experienced strong GDP growth in the early-to-mid 2010s driven by soy and beef exports, becoming one of the world's top soy exporters and a significant beef exporter. High commodity prices during this period are well-documented in economic sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Paraguay experienced strong GDP growth in the early-to-mid 2010s driven by soy and beef exports, becoming one of the world's top soy exporters and a significant beef exporter. High commodity prices during this period are well-documented in economic sources.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Paraguay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Paraguay"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "Deforestation Crisis: Atlantic Forest Critically Threatened",
     "verdict": "TRUE",
     "reason": "Paraguay's Upper Paraná Atlantic Forest has been severely degraded by soy expansion and cattle ranching; sources confirm less than 10% of original cover remains and the country has had some of the world's highest deforestation rates. The Zero Deforestation Law for the eastern region has been poorly enforced.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Paraguay's Upper Paraná Atlantic Forest has been severely degraded by soy expansion and cattle ranching; sources confirm less than 10% of original cover remains and the country has had some of the world's highest deforestation rates. The Zero Deforestation Law for the eastern region has been poorly enforced.",
+        "source": "https://en.wikipedia.org/wiki/Deforestation_in_Paraguay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Deforestation_in_Paraguay"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Senate Reelection Amendment Protests Turn Violent",
     "verdict": "TRUE",
     "reason": "In late March 2017, ruling legislators pushed through a constitutional amendment in the Senate allowing Cartes to seek re-election; protesters stormed and set fire to part of the Congress building. Police used live ammunition — one protester was killed by a shotgun blast.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In late March 2017, ruling legislators pushed through a constitutional amendment in the Senate allowing Cartes to seek re-election; protesters stormed and set fire to part of the Congress building. Police used live ammunition — one protester was killed by a shotgun blast.",
+        "source": "https://en.wikipedia.org/wiki/2017_Paraguayan_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2017_Paraguayan_crisis"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "Reelection Amendment Ultimately Blocked",
     "verdict": "TRUE",
     "reason": "Following violent protests and international condemnation, Cartes abandoned the reelection bid; the Chamber of Deputies rejected the constitutional amendment on April 26, 2017, and Cartes announced his withdrawal from any second-term candidacy on April 17.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following violent protests and international condemnation, Cartes abandoned the reelection bid; the Chamber of Deputies rejected the constitutional amendment on April 26, 2017, and Cartes announced his withdrawal from any second-term candidacy on April 17.",
+        "source": "https://en.wikipedia.org/wiki/2017_Paraguayan_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2017_Paraguayan_crisis"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Mario Abdo Benítez Elected President",
     "verdict": "TRUE",
     "reason": "Abdo Benítez won the April 2018 election with 46.46% of the vote, defeating Efraín Alegre. His father was indeed Stroessner's personal secretary, which raised concerns noted by commentators and sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Abdo Benítez won the April 2018 election with 46.46% of the vote, defeating Efraín Alegre. His father was indeed Stroessner's personal secretary, which raised concerns noted by commentators and sources.",
+        "source": "https://en.wikipedia.org/wiki/Mario_Abdo_Ben%C3%ADtez",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mario_Abdo_Ben%C3%ADtez"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Itaipú Energy Deal Scandal and Near-Impeachment",
     "verdict": "TRUE",
     "reason": "A secret energy agreement with Brazil over Itaipú terms was leaked in mid-2019, triggering impeachment proceedings in the Chamber of Deputies that Abdo narrowly survived. The affair is confirmed in multiple sources as a major political crisis of his administration.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A secret energy agreement with Brazil over Itaipú terms was leaked in mid-2019, triggering impeachment proceedings in the Chamber of Deputies that Abdo narrowly survived. The affair is confirmed in multiple sources as a major political crisis of his administration.",
+        "source": "https://en.wikipedia.org/wiki/Mario_Abdo_Ben%C3%ADtez",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mario_Abdo_Ben%C3%ADtez"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "Paraguay Breaks Diplomatic Ties with Venezuela",
     "verdict": "PARTIAL",
     "reason": "Paraguay did sever diplomatic relations with Venezuela under Abdo Benítez, citing the Maduro government's authoritarianism and recognizing Guaidó. However, this occurred in January 2019 (not August 2019 as the description implies), when Paraguay announced it would not recognize Maduro and withdrew diplomats.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Paraguay did sever diplomatic relations with Venezuela under Abdo Benítez, citing the Maduro government's authoritarianism and recognizing Guaidó. However, this occurred in January 2019 (not August 2019 as the description implies), when Paraguay announced it would not recognize Maduro and withdrew diplomats.",
+        "source": "https://en.wikipedia.org/wiki/Paraguay%E2%80%93Venezuela_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Paraguay%E2%80%93Venezuela_relations"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "COVID-19 Pandemic Hits Paraguay",
     "verdict": "TRUE",
     "reason": "Paraguay confirmed its first COVID-19 case on March 7, 2020, and imposed one of Latin America's earliest lockdowns with total quarantine declared by late March. The health system faced severe strain in subsequent waves.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Paraguay confirmed its first COVID-19 case on March 7, 2020, and imposed one of Latin America's earliest lockdowns with total quarantine declared by late March. The health system faced severe strain in subsequent waves.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Paraguay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Paraguay"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "COVID-19 Vaccine Protests; Health System Collapse Fears",
     "verdict": "TRUE",
     "reason": "Mass protests erupted across Paraguay in March 2021 over slow vaccine procurement and health system near-collapse, with ICU beds overwhelmed and emergency surgeries suspended. Health minister Julio Mazzoleni resigned and Abdo asked his entire cabinet to resign on March 6.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mass protests erupted across Paraguay in March 2021 over slow vaccine procurement and health system near-collapse, with ICU beds overwhelmed and emergency surgeries suspended. Health minister Julio Mazzoleni resigned and Abdo asked his entire cabinet to resign on March 6.",
+        "source": "https://en.wikipedia.org/wiki/2021_Paraguayan_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2021_Paraguayan_protests"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "US Treasury Sanctions Cartes and Friedmann for Corruption",
     "verdict": "TRUE",
     "reason": "The US Treasury sanctioned former President Horacio Cartes under the Global Magnitsky Act (Executive Order 13818) in 2022-2023 for significant corruption, bribery of legislators, and connections to designated entities. The State Department's separate designation for corruption was announced in July 2022.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The US Treasury sanctioned former President Horacio Cartes under the Global Magnitsky Act (Executive Order 13818) in 2022-2023 for significant corruption, bribery of legislators, and connections to designated entities. The State Department's separate designation for corruption was announced in July 2022.",
+        "source": "https://home.treasury.gov/news/press-releases/jy1221",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://home.treasury.gov/news/press-releases/jy1221"
   },
   {
@@ -424,6 +1504,24 @@
     "title": "Drought and Low Paraná River Levels Hit Economy",
     "verdict": "PARTIAL",
     "reason": "A severe drought affecting the Paraná River and Itaipú generation is documented for 2021 (77-year low) and 2023-2024; the specific framing of 2022 as the exceptional drought year could not be confirmed with precision in available sources, though drought impacts on Itaipú and shipping are recurring documented risks for Paraguay.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "A severe drought affecting the Paraná River and Itaipú generation is documented for 2021 (77-year low) and 2023-2024; the specific framing of 2022 as the exceptional drought year could not be confirmed with precision in available sources, though drought impacts on Itaipú and shipping are recurring documented risks for Paraguay.",
+        "source": "https://en.wikipedia.org/wiki/Itaipu_Dam",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Itaipu_Dam"
   },
   {
@@ -431,6 +1529,24 @@
     "title": "Santiago Peña Elected President; Cartes Faction Wins",
     "verdict": "TRUE",
     "reason": "Peña won the April 30, 2023 election with 43.9% of the vote, defeating Efraín Alegre by about 15 percentage points. He is closely associated with the Cartes faction and international observers noted US sanctions hanging over Cartes as a campaign concern.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Peña won the April 30, 2023 election with 43.9% of the vote, defeating Efraín Alegre by about 15 percentage points. He is closely associated with the Cartes faction and international observers noted US sanctions hanging over Cartes as a campaign concern.",
+        "source": "https://en.wikipedia.org/wiki/Santiago_Pe%C3%B1a",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Santiago_Pe%C3%B1a"
   },
   {
@@ -438,6 +1554,24 @@
     "title": "Paraguay Reaffirms Taiwan Recognition Under Peña",
     "verdict": "TRUE",
     "reason": "Peña pledged to maintain diplomatic relations with Taiwan, reassuring Taiwanese authorities after the 2023 election in which opposition candidate Alegre had campaigned on switching recognition to China. Paraguay remains the only South American country recognizing Taiwan.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Peña pledged to maintain diplomatic relations with Taiwan, reassuring Taiwanese authorities after the 2023 election in which opposition candidate Alegre had campaigned on switching recognition to China. Paraguay remains the only South American country recognizing Taiwan.",
+        "source": "https://en.wikipedia.org/wiki/Paraguay%E2%80%93Taiwan_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Paraguay%E2%80%93Taiwan_relations"
   },
   {
@@ -445,6 +1579,24 @@
     "title": "Itaipú Treaty Renegotiation Begins with Brazil",
     "verdict": "TRUE",
     "reason": "The Itaipú treaty's Annex C governing energy pricing terms was due for renegotiation as of 2023, and negotiations between Paraguay and Brazil on pricing for Paraguay's electricity share were a major political issue. The unfavorable original terms (~$2.81 per MWh) are confirmed in sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Itaipú treaty's Annex C governing energy pricing terms was due for renegotiation as of 2023, and negotiations between Paraguay and Brazil on pricing for Paraguay's electricity share were a major political issue. The unfavorable original terms (~$2.81 per MWh) are confirmed in sources.",
+        "source": "https://en.wikipedia.org/wiki/Itaipu_Dam",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Itaipu_Dam"
   },
   {
@@ -452,6 +1604,24 @@
     "title": "EPP Activity Continues in Northern Paraguay",
     "verdict": "TRUE",
     "reason": "The EPP continued operations in Concepción and neighboring departments through 2023, killing soldiers and police in ambushes, with the Fuerza de Tarea Conjunta maintaining a sustained counterinsurgency operation. Concerns about narco-trafficking intersecting with the EPP are documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The EPP continued operations in Concepción and neighboring departments through 2023, killing soldiers and police in ambushes, with the Fuerza de Tarea Conjunta maintaining a sustained counterinsurgency operation. Concerns about narco-trafficking intersecting with the EPP are documented.",
+        "source": "https://en.wikipedia.org/wiki/Paraguayan_People%27s_Army",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Paraguayan_People%27s_Army"
   },
   {
@@ -459,6 +1629,24 @@
     "title": "Itaipú Renegotiation Agreement Reached with Brazil",
     "verdict": "PARTIAL",
     "reason": "While renegotiation of Annex C was ongoing in 2024, available sources indicate that Peña actually suspended negotiations with Brazil in 2024 alleging digital espionage, and no confirmed landmark agreement was found in reference sources. A final comprehensive deal may not have been reached as described.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "While renegotiation of Annex C was ongoing in 2024, available sources indicate that Peña actually suspended negotiations with Brazil in 2024 alleging digital espionage, and no confirmed landmark agreement was found in reference sources. A final comprehensive deal may not have been reached as described.",
+        "source": "https://en.wikipedia.org/wiki/Santiago_Pe%C3%B1a",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Santiago_Pe%C3%B1a"
   },
   {
@@ -466,6 +1654,24 @@
     "title": "Anti-Corruption Prosecutors Persecuted; Rule-of-Law Concerns",
     "verdict": "PARTIAL",
     "reason": "Corruption and judicial independence concerns in Paraguay are well-documented (Transparency International ranked Paraguay 149th of 180 in 2024), and general harassment of anti-corruption prosecutors is part of documented systemic corruption. However, the specific 2024 IACHR/Transparency International report characterizing a systematic pattern of judicial harassment as described could not be verified in available sources.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Corruption and judicial independence concerns in Paraguay are well-documented (Transparency International ranked Paraguay 149th of 180 in 2024), and general harassment of anti-corruption prosecutors is part of documented systemic corruption. However, the specific 2024 IACHR/Transparency International report characterizing a systematic pattern of judicial harassment as described could not be verified in available sources.",
+        "source": "https://www.transparency.org/en/countries/paraguay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.transparency.org/en/countries/paraguay"
   },
   {
@@ -473,6 +1679,24 @@
     "title": "Deforestation in the Chaco Reaches Critical Levels",
     "verdict": "TRUE",
     "reason": "Satellite data confirms the Paraguayan Chaco has had among the world's highest deforestation rates driven by cattle ranching, with 1,119,096 hectares burned in 2023 alone according to INFONA. Global Forest Watch confirms Paraguay's top-five global ranking for deforestation by area in recent years.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Satellite data confirms the Paraguayan Chaco has had among the world's highest deforestation rates driven by cattle ranching, with 1,119,096 hectares burned in 2023 alone according to INFONA. Global Forest Watch confirms Paraguay's top-five global ranking for deforestation by area in recent years.",
+        "source": "https://en.wikipedia.org/wiki/Deforestation_in_Paraguay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Deforestation_in_Paraguay"
   }
 ]
