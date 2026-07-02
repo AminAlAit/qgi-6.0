@@ -22,9 +22,26 @@ if (!plan || plan.mode !== 'B' || !Array.isArray(plan.batch)) {
 phase('Verify')
 log(`verifying ${plan.batch.length} events (${plan.batch.reduce((n, e) => n + e.passesNeeded, 0)} passes)`)
 
+// compose each blind prompt from the single template + per-event fields.
+// Replacer FUNCTION, not string replacement: event text can contain $-sequences
+// ($$, $&, $') that a plain .replace would expand and corrupt the prompt.
+const fill = (template, replacements) => {
+  let out = template
+  for (const [placeholder, value] of Object.entries(replacements)) {
+    out = out.replace(placeholder, () => value)
+  }
+  return out
+}
+const promptFor = (e) => fill(plan.verifyPromptTemplate, {
+  __COUNTRY__: e.slug,
+  __EVENT_JSON__: e.eventJson,
+  __PRIOR_DOMAINS__: e.priorDomains,
+  __WHY__: e.why,
+})
+
 // flatten: one job per needed pass (zero-verdict events need two fresh blind passes)
 const jobs = plan.batch.flatMap((e) =>
-  Array.from({ length: e.passesNeeded }, (_, i) => ({ e, prompt: e.prompt, passIdx: i + 1 })))
+  Array.from({ length: e.passesNeeded }, (_, i) => ({ e, prompt: promptFor(e), passIdx: i + 1 })))
 
 async function mapLimit(items, limit, fn) {
   const results = new Array(items.length)
