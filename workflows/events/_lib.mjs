@@ -310,9 +310,11 @@ __EXISTING_TITLES__
 Set all_categories_valid=true only after re-checking every kept event's category.`;
 }
 
-/** Blind verifier prompt. Template placeholders: __EVENT_JSON__, __PRIOR_DOMAINS__, __WHY__.
+/** Blind verifier prompt. Template placeholders: __COUNTRY__, __EVENT_JSON__,
+ * __PRIOR_DOMAINS__, __WHY__ — filled by the workflow per event (the template rides
+ * in the plan ONCE; embedding a full prompt per event made 200-event plans too big).
  * The event JSON is ONLY {year,title,description,category} — never prior verdicts. */
-export function verifyPromptTemplate(country) {
+export function verifyPromptTemplate(country = "__COUNTRY__") {
   return `You are a blind, independent QGI event fact-checker (WebSearch/WebFetch).
 You have NO knowledge of any earlier verification of this event, and you must not
 assume one exists. Verify from scratch.
@@ -620,13 +622,16 @@ export function planB({ country = null, batch = CAPS.EVENT_BATCH_SIZE, includeUn
 
   selected.sort((a, b) => a.tier - b.tier || a.slug.localeCompare(b.slug) ||
     a.cur.year - b.cur.year || a.cur.title.localeCompare(b.cur.title));
-  // render prompts ONLY for the sliced batch — right after migration ~11.7k events
-  // are selectable and building ~2.5KB prompts for all of them is pure waste
+  // materialize per-event fields ONLY for the sliced batch — right after migration
+  // ~11.7k events are selectable and building payloads for all of them is pure waste
   const batchEvents = selected.slice(0, batch).map(makePlanBEvent);
   return {
     mode: "B",
     policy: CONSENSUS_POLICY,
     caps: CAPS,
+    // the workflow composes each blind prompt from this ONE template + the
+    // per-event fields below (fillTemplate semantics: replacer-fn, verbatim)
+    verifyPromptTemplate: verifyPromptTemplate(),
     batch: batchEvents,
     totalSelectable: selected.length,
     skippedOrphans,
@@ -638,19 +643,15 @@ function makePlanBEvent({ slug, entry, cur, tier, passesNeeded }) {
   const priorPasses = entry?.verifications ?? [];
   const priorDomains = [...new Set(priorPasses.map((p) => p.source && registrableDomain(p.source))
     .filter(Boolean))];
-  const eventJson = JSON.stringify(
-    { year: cur.year, title: cur.title, description: cur.description, category: cur.category },
-    null, 2);
-  const prompt = fillTemplate(verifyPromptTemplate(slug), {
-    __EVENT_JSON__: eventJson,
-    __PRIOR_DOMAINS__: priorDomains.length ? priorDomains.join(", ") : "(none)",
-    __WHY__: tierWhy(tier, cur.category)
-  });
   return {
     key: dedupKey(slug, cur.year, cur.title),
     slug, year: cur.year, title: cur.title, category: cur.category, tier,
     passesNeeded, // the workflow spawns this many blind passes of the same prompt
-    prompt
+    eventJson: JSON.stringify(
+      { year: cur.year, title: cur.title, description: cur.description, category: cur.category },
+      null, 2),
+    priorDomains: priorDomains.length ? priorDomains.join(", ") : "(none)",
+    why: tierWhy(tier, cur.category)
   };
 }
 
