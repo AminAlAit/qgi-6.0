@@ -4,6 +4,24 @@
     "title": "Briggs Plan Launched to Defeat Communist Insurgency",
     "verdict": "TRUE",
     "reason": "General Harold Briggs devised the counter-insurgency plan in 1950 that forcibly resettled approximately 500,000 rural Chinese into guarded New Villages to cut off MCP guerrillas from food and recruits. The description is accurate; the number of villages is slightly off (sources say ~450, not 423, though some sources cite 423 specifically).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "General Harold Briggs devised the counter-insurgency plan in 1950 that forcibly resettled approximately 500,000 rural Chinese into guarded New Villages to cut off MCP guerrillas from food and recruits. The description is accurate; the number of villages is slightly off (sources say ~450, not 423, though some sources cite 423 specifically).",
+        "source": "https://en.wikipedia.org/wiki/Briggs_Plan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Briggs_Plan"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Assassination of High Commissioner Henry Gurney",
     "verdict": "TRUE",
     "reason": "British High Commissioner Sir Henry Gurney was killed in an MCP ambush on 6 October 1951 on the road to Fraser's Hill; he stepped out of his car to draw guerrilla fire away from his wife, and the attack led to Gerald Templer's appointment with combined civil-military powers.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "British High Commissioner Sir Henry Gurney was killed in an MCP ambush on 6 October 1951 on the road to Fraser's Hill; he stepped out of his car to draw guerrilla fire away from his wife, and the attack led to Gerald Templer's appointment with combined civil-military powers.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Sir_Henry_Gurney",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Assassination_of_Sir_Henry_Gurney"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Kuala Lumpur Municipal Elections — Alliance Coalition Debut",
     "verdict": "PARTIAL",
     "reason": "The UMNO-MCA Alliance did debut in the 1952 Kuala Lumpur municipal elections and won decisively (9 of 12 seats), but not 'all seats'; the event was on 6 December 1952 and is well documented as the template for Alliance politics. The claim of winning 'decisively' is accurate but the description implies a sweep of all seats.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The UMNO-MCA Alliance did debut in the 1952 Kuala Lumpur municipal elections and won decisively (9 of 12 seats), but not 'all seats'; the event was on 6 December 1952 and is well documented as the template for Alliance politics. The claim of winning 'decisively' is accurate but the description implies a sweep of all seats.",
+        "source": "https://en.wikipedia.org/wiki/1952_Malayan_local_elections",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1952_Malayan_local_elections"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Tunku Abdul Rahman Leads Independence Negotiations in London",
     "verdict": "PARTIAL",
     "reason": "Tunku did travel to London in 1954 to press for elections and greater self-governance, but the definitive constitutional negotiations and Reid Commission appointment were in 1956, not 1954; the 1954 mission was rebuffed by the Colonial Secretary. The event is real but its significance and outcome are overstated for that year.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Tunku did travel to London in 1954 to press for elections and greater self-governance, but the definitive constitutional negotiations and Reid Commission appointment were in 1956, not 1954; the 1954 mission was rebuffed by the Colonial Secretary. The event is real but its significance and outcome are overstated for that year.",
+        "source": "https://en.wikipedia.org/wiki/Tunku_Abdul_Rahman",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tunku_Abdul_Rahman"
   },
   {
@@ -32,6 +104,24 @@
     "title": "First Federal Elections — Alliance Wins 51 of 52 Seats",
     "verdict": "TRUE",
     "reason": "The first Malayan Federal Legislative Council elections were held on 27 July 1955; the Alliance won 51 of 52 contested seats with approximately 80% of the vote, and Tunku Abdul Rahman became Chief Minister.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The first Malayan Federal Legislative Council elections were held on 27 July 1955; the Alliance won 51 of 52 contested seats with approximately 80% of the vote, and Tunku Abdul Rahman became Chief Minister.",
+        "source": "https://en.wikipedia.org/wiki/1955_Malayan_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1955_Malayan_general_election"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Baling Peace Talks with MCP Fail",
     "verdict": "TRUE",
     "reason": "The Baling Talks were held on 28-29 December 1955 at Baling, Kedah, between Tunku Abdul Rahman and MCP Secretary-General Chin Peng; talks collapsed because the MCP refused to disarm and disband, and Chin Peng subsequently withdrew to Thailand.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Baling Talks were held on 28-29 December 1955 at Baling, Kedah, between Tunku Abdul Rahman and MCP Secretary-General Chin Peng; talks collapsed because the MCP refused to disarm and disband, and Chin Peng subsequently withdrew to Thailand.",
+        "source": "https://en.wikipedia.org/wiki/Baling_Talks",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Baling_Talks"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Malayan Independence Proclaimed",
     "verdict": "TRUE",
     "reason": "Malaya achieved independence on 31 August 1957; Tunku Abdul Rahman proclaimed Merdeka at a ceremony at Merdeka Stadium where the Union Jack was lowered at midnight and the new flag raised, with the independence declaration read at the stadium in the morning.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Malaya achieved independence on 31 August 1957; Tunku Abdul Rahman proclaimed Merdeka at a ceremony at Merdeka Stadium where the Union Jack was lowered at midnight and the new flag raised, with the independence declaration read at the stadium in the morning.",
+        "source": "https://en.wikipedia.org/wiki/Malayan_Declaration_of_Independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Malayan_Declaration_of_Independence"
   },
   {
@@ -53,6 +179,24 @@
     "title": "First Five-Year Development Plan Launched",
     "verdict": "PARTIAL",
     "reason": "The First Malayan Five-Year Plan covered 1956-1960 and was launched before independence, not in 1958; RIDA was established in 1951, not as part of this plan. The plan's substance (infrastructure, rural development, agricultural diversification) is accurately described, but the year 1958 is incorrect for its launch.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The First Malayan Five-Year Plan covered 1956-1960 and was launched before independence, not in 1958; RIDA was established in 1951, not as part of this plan. The plan's substance (infrastructure, rural development, agricultural diversification) is accurately described, but the year 1958 is incorrect for its launch.",
+        "source": "https://en.wikipedia.org/wiki/First_Malayan_Five_Year_Plan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/First_Malayan_Five_Year_Plan"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Malayan Emergency Officially Ended",
     "verdict": "TRUE",
     "reason": "The Malayan Emergency was officially declared over on 31 July 1960 after twelve years of counter-insurgency operations; the Internal Security Act was maintained and the MCP remnants continued in southern Thailand until 1989.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Malayan Emergency was officially declared over on 31 July 1960 after twelve years of counter-insurgency operations; the Internal Security Act was maintained and the MCP remnants continued in southern Thailand until 1989.",
+        "source": "https://en.wikipedia.org/wiki/Malayan_Emergency",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Malayan_Emergency"
   },
   {
@@ -67,6 +229,24 @@
     "title": "FELDA Founded to Resettle Landless Malay Families",
     "verdict": "PARTIAL",
     "reason": "FELDA was founded in 1956 under the Land Development Ordinance, not 1960; however, 1960 was the year FELDA was given direct authority to open and develop land throughout Malaysia, representing a significant expansion. The description of FELDA's mission and scale is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "FELDA was founded in 1956 under the Land Development Ordinance, not 1960; however, 1960 was the year FELDA was given direct authority to open and develop land throughout Malaysia, representing a significant expansion. The description of FELDA's mission and scale is accurate.",
+        "source": "https://en.wikipedia.org/wiki/Federal_Land_Development_Authority",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Federal_Land_Development_Authority"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Tunku Proposes the Malaysia Federation",
     "verdict": "TRUE",
     "reason": "Tunku Abdul Rahman publicly proposed the broader Malaysian federation on 27 May 1961, suggesting a union incorporating Singapore, Sarawak, North Borneo, and Brunei alongside Malaya; Brunei eventually opted out before the federation was formed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tunku Abdul Rahman publicly proposed the broader Malaysian federation on 27 May 1961, suggesting a union incorporating Singapore, Sarawak, North Borneo, and Brunei alongside Malaya; Brunei eventually opted out before the federation was formed.",
+        "source": "https://www.nlb.gov.sg/main/article-detail?cmsuuid=42fcc50a-50aa-4ae3-a18c-823094b60be6",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nlb.gov.sg/main/article-detail?cmsuuid=42fcc50a-50aa-4ae3-a18c-823094b60be6"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Federation of Malaysia Formed",
     "verdict": "TRUE",
     "reason": "The Federation of Malaysia was officially formed on 16 September 1963, uniting Malaya, Singapore, Sabah, and Sarawak; Indonesia and the Philippines refused recognition, triggering the Konfrontasi crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Federation of Malaysia was officially formed on 16 September 1963, uniting Malaya, Singapore, Sabah, and Sarawak; Indonesia and the Philippines refused recognition, triggering the Konfrontasi crisis.",
+        "source": "https://en.wikipedia.org/wiki/Malaysia_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Malaysia_Agreement"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Konfrontasi — Indonesia Launches Armed Confrontation",
     "verdict": "TRUE",
     "reason": "President Sukarno announced Konfrontasi and launched guerrilla incursions into Sarawak and Sabah in 1963, refusing to recognise Malaysia as a neocolonial construct; Britain, Australia, and New Zealand deployed forces to defend Malaysia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "President Sukarno announced Konfrontasi and launched guerrilla incursions into Sarawak and Sabah in 1963, refusing to recognise Malaysia as a neocolonial construct; Britain, Australia, and New Zealand deployed forces to defend Malaysia.",
+        "source": "https://en.wikipedia.org/wiki/Indonesia%E2%80%93Malaysia_confrontation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Indonesia%E2%80%93Malaysia_confrontation"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Singapore Expelled from Malaysia",
     "verdict": "TRUE",
     "reason": "Singapore was separated from Malaysia on 9 August 1965 after political conflicts over race and governance; Lee Kuan Yew's emotional announcement and Tunku Abdul Rahman's role in initiating the separation are both confirmed by primary sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Singapore was separated from Malaysia on 9 August 1965 after political conflicts over race and governance; Lee Kuan Yew's emotional announcement and Tunku Abdul Rahman's role in initiating the separation are both confirmed by primary sources.",
+        "source": "https://www.nlb.gov.sg/main/article-detail?cmsuuid=9641f35d-3ae5-41d8-9fa6-7ca8b845ea53",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nlb.gov.sg/main/article-detail?cmsuuid=9641f35d-3ae5-41d8-9fa6-7ca8b845ea53"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Konfrontasi Ends — Bangkok Accord with Indonesia",
     "verdict": "TRUE",
     "reason": "The Konfrontasi ended following Suharto's displacement of Sukarno; peace talks were held in Bangkok on 29 May 1966 and a final agreement signed on 11 August 1966, with Indonesia formally recognising Malaysia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Konfrontasi ended following Suharto's displacement of Sukarno; peace talks were held in Bangkok on 29 May 1966 and a final agreement signed on 11 August 1966, with Indonesia formally recognising Malaysia.",
+        "source": "https://en.wikipedia.org/wiki/Indonesia%E2%80%93Malaysia_confrontation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Indonesia%E2%80%93Malaysia_confrontation"
   },
   {
@@ -109,6 +379,24 @@
     "title": "ASEAN Founded with Malaysia as Co-Founder",
     "verdict": "TRUE",
     "reason": "ASEAN was established on 8 August 1967 in Bangkok with Malaysia as one of five founding members; Malaysia's then-Deputy Prime Minister Tun Abdul Razak was one of the founding signatories of the ASEAN Declaration.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ASEAN was established on 8 August 1967 in Bangkok with Malaysia as one of five founding members; Malaysia's then-Deputy Prime Minister Tun Abdul Razak was one of the founding signatories of the ASEAN Declaration.",
+        "source": "https://en.wikipedia.org/wiki/ASEAN_Declaration",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/ASEAN_Declaration"
   },
   {
@@ -116,6 +404,24 @@
     "title": "National Language Act — Bahasa Malaysia Made Sole Official Language",
     "verdict": "TRUE",
     "reason": "The National Language Act 1963/67 mandated Bahasa Malaysia as the sole official language in government; it generated anxiety among Chinese and Indian communities about their languages and became a lasting social flashpoint.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The National Language Act 1963/67 mandated Bahasa Malaysia as the sole official language in government; it generated anxiety among Chinese and Indian communities about their languages and became a lasting social flashpoint.",
+        "source": "https://en.wikipedia.org/wiki/National_Language_Act_1963/67",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/National_Language_Act_1963/67"
   },
   {
@@ -123,6 +429,24 @@
     "title": "13 May Racial Riots — National Trauma Reshapes Malaysia",
     "verdict": "TRUE",
     "reason": "Inter-communal violence erupted in Kuala Lumpur on 13 May 1969 following the general election; official death toll was 196 though independent estimates are higher, with arson and killings devastating parts of the capital before the army restored order.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Inter-communal violence erupted in Kuala Lumpur on 13 May 1969 following the general election; official death toll was 196 though independent estimates are higher, with arson and killings devastating parts of the capital before the army restored order.",
+        "source": "https://en.wikipedia.org/wiki/13_May_incident",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/13_May_incident"
   },
   {
@@ -130,6 +454,24 @@
     "title": "State of Emergency — Parliament Suspended, NOC Takes Power",
     "verdict": "TRUE",
     "reason": "A state of emergency was declared after the May 13 riots; Parliament was suspended and the National Operations Council under Deputy PM Tun Abdul Razak governed by decree for approximately 21 months until February 1971.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A state of emergency was declared after the May 13 riots; Parliament was suspended and the National Operations Council under Deputy PM Tun Abdul Razak governed by decree for approximately 21 months until February 1971.",
+        "source": "https://en.wikipedia.org/wiki/National_Operations_Council",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/National_Operations_Council"
   },
   {
@@ -137,6 +479,24 @@
     "title": "New Economic Policy — Bumiputera Affirmative Action Framework",
     "verdict": "PARTIAL",
     "reason": "The NEP was announced in 1971 (when Parliament was restored), not 1970; it was formulated by the NOC in 1969-1970 and announced with the Second Malaysia Plan in 1971. The description of its goals (30% Bumiputera equity, eradicating poverty) is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The NEP was announced in 1971 (when Parliament was restored), not 1970; it was formulated by the NOC in 1969-1970 and announced with the Second Malaysia Plan in 1971. The description of its goals (30% Bumiputera equity, eradicating poverty) is accurate.",
+        "source": "https://en.wikipedia.org/wiki/Malaysian_New_Economic_Policy",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Malaysian_New_Economic_Policy"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Tun Abdul Razak Becomes Second Prime Minister",
     "verdict": "TRUE",
     "reason": "Tun Abdul Razak became Malaysia's second Prime Minister in September 1970 following Tunku's resignation; he was more technocratic, implemented the NEP, expanded the coalition into Barisan Nasional, and died from leukaemia in 1976.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tun Abdul Razak became Malaysia's second Prime Minister in September 1970 following Tunku's resignation; he was more technocratic, implemented the NEP, expanded the coalition into Barisan Nasional, and died from leukaemia in 1976.",
+        "source": "https://en.wikipedia.org/wiki/Abdul_Razak_Hussein",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Abdul_Razak_Hussein"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Parliament Restored with Sedition Act Restrictions",
     "verdict": "TRUE",
     "reason": "Parliament was restored in February 1971 after 21 months of emergency rule; Sedition Act amendments made it illegal to question Malay special rights, non-Malay citizenship, or the sovereignty of the Malay Rulers, and the Rukunegara national ideology was proclaimed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Parliament was restored in February 1971 after 21 months of emergency rule; Sedition Act amendments made it illegal to question Malay special rights, non-Malay citizenship, or the sovereignty of the Malay Rulers, and the Rukunegara national ideology was proclaimed.",
+        "source": "https://en.wikipedia.org/wiki/Rukunegara",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Rukunegara"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Malaysia First ASEAN State to Recognise People's Republic of China",
     "verdict": "FALSE",
     "reason": "Malaysia established diplomatic relations with the People's Republic of China in May 1974 (not 1972) when Tun Abdul Razak visited Beijing and signed a communique with Premier Zhou Enlai; Malaysia was the first ASEAN state to do so, but the year in the entry is wrong.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Malaysia established diplomatic relations with the People's Republic of China in May 1974 (not 1972) when Tun Abdul Razak visited Beijing and signed a communique with Premier Zhou Enlai; Malaysia was the first ASEAN state to do so, but the year in the entry is wrong.",
+        "source": "https://en.wikipedia.org/wiki/China%E2%80%93Malaysia_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/China%E2%80%93Malaysia_relations"
   },
   {
@@ -165,6 +579,24 @@
     "title": "PETRONAS Founded — Petroleum Development Act Enacted",
     "verdict": "TRUE",
     "reason": "PETRONAS was incorporated on 17 August 1974 under the Petroleum Development Act 1974, which vested ownership of all petroleum resources in the national oil company and established production sharing contracts with foreign partners.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PETRONAS was incorporated on 17 August 1974 under the Petroleum Development Act 1974, which vested ownership of all petroleum resources in the national oil company and established production sharing contracts with foreign partners.",
+        "source": "https://en.wikipedia.org/wiki/Petronas",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Petronas"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Islamic Resurgence Movement Sweeps Malay Society",
     "verdict": "TRUE",
     "reason": "A powerful dakwah movement swept through Malaysian Malay society in the late 1970s, driven partly by the Iranian Revolution and domestic frustrations; ABIM under Anwar Ibrahim was at peak influence during 1979-1981, challenging the secular development model.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A powerful dakwah movement swept through Malaysian Malay society in the late 1970s, driven partly by the Iranian Revolution and domestic frustrations; ABIM under Anwar Ibrahim was at peak influence during 1979-1981, challenging the secular development model.",
+        "source": "https://www.academia.edu/574354/The_Formative_Years_of_The_Dakwah_Movement_Origins_Causes_and_Manifestations_of_Islamic_Resurgence_in_Malaysia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.academia.edu/574354/The_Formative_Years_of_The_Dakwah_Movement_Origins_Causes_and_Manifestations_of_Islamic_Resurgence_in_Malaysia"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Oil Palm Surpasses Rubber as Leading Export Crop",
     "verdict": "PARTIAL",
     "reason": "Palm oil did surpass rubber as Malaysia's leading agricultural export, but the specific year 1980 is not definitively confirmed; sources indicate the transition occurred gradually through the late 1970s and 1980s, with the Malaysian government pivoting to palm oil in the early 1980s as rubber declined. The trend is accurate but the specific year requires more precision.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Palm oil did surpass rubber as Malaysia's leading agricultural export, but the specific year 1980 is not definitively confirmed; sources indicate the transition occurred gradually through the late 1970s and 1980s, with the Malaysian government pivoting to palm oil in the early 1980s as rubber declined. The trend is accurate but the specific year requires more precision.",
+        "source": "https://en.wikipedia.org/wiki/Palm_oil_production_in_Malaysia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Palm_oil_production_in_Malaysia"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Mahathir Mohamad Becomes Fourth Prime Minister",
     "verdict": "TRUE",
     "reason": "Mahathir Mohamad was sworn in as Malaysia's fourth Prime Minister on 16 July 1981, beginning a 22-year premiership that reshaped the country through Look East policy, heavy industrialisation, and Vision 2020.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mahathir Mohamad was sworn in as Malaysia's fourth Prime Minister on 16 July 1981, beginning a 22-year premiership that reshaped the country through Look East policy, heavy industrialisation, and Vision 2020.",
+        "source": "https://en.wikipedia.org/wiki/Mahathir_Mohamad",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mahathir_Mohamad"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Look East Policy — Emulating Japan and South Korea",
     "verdict": "TRUE",
     "reason": "Mahathir announced the Look East Policy in 1982, urging Malaysians to emulate Japanese and South Korean work ethics and industrial discipline; thousands of students were sent to Japan and Japanese manufacturing investment increased substantially.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mahathir announced the Look East Policy in 1982, urging Malaysians to emulate Japanese and South Korean work ethics and industrial discipline; thousands of students were sent to Japan and Japanese manufacturing investment increased substantially.",
+        "source": "https://en.wikipedia.org/wiki/Look_East_policy_(Malaysia)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Look_East_policy_(Malaysia)"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Constitutional Crisis — Mahathir Strips Royal Veto Power",
     "verdict": "TRUE",
     "reason": "Mahathir pushed through constitutional amendments in 1983 requiring royal assent within 15 days; the sultans initially refused, creating a prolonged standoff resolved through compromise in 1984 that shifted constitutional power toward the elected executive.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mahathir pushed through constitutional amendments in 1983 requiring royal assent within 15 days; the sultans initially refused, creating a prolonged standoff resolved through compromise in 1984 that shifted constitutional power toward the elected executive.",
+        "source": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/5DC7C2741930072E0125B10943EF6A2D/S0020589300044493a.pdf/malaysian_constitutional_crisis_of_1983.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/5DC7C2741930072E0125B10943EF6A2D/S0020589300044493a.pdf/malaysian_constitutional_crisis_of_1983.pdf"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Proton National Car Launched",
     "verdict": "PARTIAL",
     "reason": "The Proton Saga was launched on 9 July 1985, not 1984; the car was developed in partnership with Mitsubishi and was Malaysia's first domestically manufactured automobile. The description of its market dominance and policy context is accurate, but the year is one year off.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Proton Saga was launched on 9 July 1985, not 1984; the car was developed in partnership with Mitsubishi and was Malaysia's first domestically manufactured automobile. The description of its market dominance and policy context is accurate, but the year is one year off.",
+        "source": "https://en.wikipedia.org/wiki/Proton_Saga_(first_generation)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Proton_Saga_(first_generation)"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Bank Bumiputra Scandal and Economic Recession",
     "verdict": "TRUE",
     "reason": "Bank Bumiputra's Hong Kong subsidiary (BMF) lost over RM2 billion in fraudulent loans to the Carrian Group and others, requiring a costly government rescue; a simultaneous commodity-price recession forced liberalisation of foreign investment rules and more market-oriented policies.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bank Bumiputra's Hong Kong subsidiary (BMF) lost over RM2 billion in fraudulent loans to the Carrian Group and others, requiring a costly government rescue; a simultaneous commodity-price recession forced liberalisation of foreign investment rules and more market-oriented policies.",
+        "source": "https://www.upi.com/Archives/1985/01/20/Scandal-plagued-Malaysian-bank-trying-to-clean-house/9373475045200/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.upi.com/Archives/1985/01/20/Scandal-plagued-Malaysian-bank-trying-to-clean-house/9373475045200/"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Operation Lalang — Mass ISA Arrests and Press Crackdown",
     "verdict": "TRUE",
     "reason": "Operation Lalang on 27 October 1987 saw over 100 politicians, academics, activists, and others arrested under the Internal Security Act; publishing licences of The Star, Sin Chew Jit Poh, The Sunday Star, and Watan were simultaneously revoked.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Lalang on 27 October 1987 saw over 100 politicians, academics, activists, and others arrested under the Internal Security Act; publishing licences of The Star, Sin Chew Jit Poh, The Sunday Star, and Watan were simultaneously revoked.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Lalang",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Lalang"
   },
   {
@@ -228,6 +804,24 @@
     "title": "UMNO Leadership Crisis — Mahathir vs. Razaleigh",
     "verdict": "TRUE",
     "reason": "Tengku Razaleigh contested the UMNO Presidency in 1987, narrowly losing to Mahathir; a court ruling declared UMNO an illegal society requiring deregistration as UMNO Baru, and Razaleigh subsequently formed Semangat 46.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tengku Razaleigh contested the UMNO Presidency in 1987, narrowly losing to Mahathir; a court ruling declared UMNO an illegal society requiring deregistration as UMNO Baru, and Razaleigh subsequently formed Semangat 46.",
+        "source": "https://en.wikipedia.org/wiki/UMNO",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/UMNO"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Judiciary Crisis — Lord President and Judges Sacked",
     "verdict": "TRUE",
     "reason": "In 1988 Lord President Salleh Abbas was brought before a tribunal and dismissed, along with two other judges, following rulings unfavourable to the executive; five additional Supreme Court judges were suspended when they tried to intervene, devastating judicial independence.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 1988 Lord President Salleh Abbas was brought before a tribunal and dismissed, along with two other judges, following rulings unfavourable to the executive; five additional Supreme Court judges were suspended when they tried to intervene, devastating judicial independence.",
+        "source": "https://en.wikipedia.org/wiki/1988_Malaysian_constitutional_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1988_Malaysian_constitutional_crisis"
   },
   {
@@ -242,6 +854,24 @@
     "title": "MCP Formally Surrenders — Armed Insurgency Ends",
     "verdict": "PARTIAL",
     "reason": "The Malayan Communist Party signed peace agreements with Thai and Malaysian governments on 2 December 1989 at Hat Yai, Thailand, with Chin Peng and MCP members disarming; however, the MCP explicitly refused the word 'surrender' — the event is real but the framing as 'formal surrender' contradicts the documented terms.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Malayan Communist Party signed peace agreements with Thai and Malaysian governments on 2 December 1989 at Hat Yai, Thailand, with Chin Peng and MCP members disarming; however, the MCP explicitly refused the word 'surrender' — the event is real but the framing as 'formal surrender' contradicts the documented terms.",
+        "source": "https://en.wikipedia.org/wiki/Peace_Agreement_of_Hat_Yai_1989",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Peace_Agreement_of_Hat_Yai_1989"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Vision 2020 Announced — Developed Nation Blueprint",
     "verdict": "FALSE",
     "reason": "Vision 2020 (Wawasan 2020) was announced by Mahathir on 28 February 1991 during the tabling of the Sixth Malaysia Plan, not in 1990; the year cited in the entry is incorrect by one year.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Vision 2020 (Wawasan 2020) was announced by Mahathir on 28 February 1991 during the tabling of the Sixth Malaysia Plan, not in 1990; the year cited in the entry is incorrect by one year.",
+        "source": "https://en.wikipedia.org/wiki/Wawasan_2020",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Wawasan_2020"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Second Constitutional Crisis — Royal Criminal Immunity Removed",
     "verdict": "PARTIAL",
     "reason": "The trigger incident (Sultan of Johor assaulting hockey coach Douglas Gomez) occurred in December 1992, Parliament passed the condemnation resolution in December 1992, but the constitutional amendment removing royal immunity was only formally enacted and gazetted in March 1993. The event spans 1992-1993; dateing it solely to 1992 is partially correct.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The trigger incident (Sultan of Johor assaulting hockey coach Douglas Gomez) occurred in December 1992, Parliament passed the condemnation resolution in December 1992, but the constitutional amendment removing royal immunity was only formally enacted and gazetted in March 1993. The event spans 1992-1993; dateing it solely to 1992 is partially correct.",
+        "source": "https://en.wikipedia.org/wiki/1993_amendments_to_the_Constitution_of_Malaysia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1993_amendments_to_the_Constitution_of_Malaysia"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Petronas Twin Towers and Mega-Project Era",
     "verdict": "PARTIAL",
     "reason": "Construction of the Petronas Twin Towers superstructure began in April 1994 and the towers were completed in 1996 and officially opened in 1999; the description of the mega-project era is accurate, but the towers were not completed or opened in 1994. Assigning the entry to 1994 as the start of the mega-project era is defensible.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Construction of the Petronas Twin Towers superstructure began in April 1994 and the towers were completed in 1996 and officially opened in 1999; the description of the mega-project era is accurate, but the towers were not completed or opened in 1994. Assigning the entry to 1994 as the start of the mega-project era is defensible.",
+        "source": "https://en.wikipedia.org/wiki/Petronas_Towers",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Petronas_Towers"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Multimedia Super Corridor Launched",
     "verdict": "TRUE",
     "reason": "The Multimedia Super Corridor was inaugurated by Mahathir on 12 February 1996 as a 50-kilometre technology corridor with world-class fibre infrastructure and special tax incentives; Microsoft, Intel, and hundreds of multinationals established MSC-status operations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Multimedia Super Corridor was inaugurated by Mahathir on 12 February 1996 as a 50-kilometre technology corridor with world-class fibre infrastructure and special tax incentives; Microsoft, Intel, and hundreds of multinationals established MSC-status operations.",
+        "source": "https://en.wikipedia.org/wiki/MSC_Malaysia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/MSC_Malaysia"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Asian Financial Crisis — Ringgit Collapses 40 Percent",
     "verdict": "PARTIAL",
     "reason": "The Asian Financial Crisis did strike Malaysia in mid-1997 and the ringgit fell sharply; however, sources confirm the ringgit eventually lost approximately 50% of its value (from RM2.48 to RM4.88), not 40% as stated. The broader description of crisis impacts is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Asian Financial Crisis did strike Malaysia in mid-1997 and the ringgit fell sharply; however, sources confirm the ringgit eventually lost approximately 50% of its value (from RM2.48 to RM4.88), not 40% as stated. The broader description of crisis impacts is accurate.",
+        "source": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Capital Controls Imposed and Anwar Ibrahim Sacked and Arrested",
     "verdict": "TRUE",
     "reason": "Malaysia imposed capital controls in September 1998 pegging the ringgit at 3.80 to the US dollar, and Deputy PM Anwar Ibrahim was sacked hours after the peg announcement; Anwar was subsequently arrested, beaten in custody, and charged in trials widely condemned as political persecution, triggering the Reformasi movement.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Malaysia imposed capital controls in September 1998 pegging the ringgit at 3.80 to the US dollar, and Deputy PM Anwar Ibrahim was sacked hours after the peg announcement; Anwar was subsequently arrested, beaten in custody, and charged in trials widely condemned as political persecution, triggering the Reformasi movement.",
+        "source": "https://en.wikipedia.org/wiki/Anwar_Ibrahim",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Anwar_Ibrahim"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Reformasi — Keadilan Party Founded, Opposition Alliance Forms",
     "verdict": "TRUE",
     "reason": "Wan Azizah founded Parti Keadilan Nasional in April 1999, which joined DAP and PAS in the Barisan Alternatif; PAS won 27 parliamentary seats and Terengganu state government in the 1999 elections, representing a major fracture within the Malay electorate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Wan Azizah founded Parti Keadilan Nasional in April 1999, which joined DAP and PAS in the Barisan Alternatif; PAS won 27 parliamentary seats and Terengganu state government in the 1999 elections, representing a major fracture within the Malay electorate.",
+        "source": "https://en.wikipedia.org/wiki/1999_Malaysian_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1999_Malaysian_general_election"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "KMM Arrests — Counter-Terrorism Cooperation After 9/11",
     "verdict": "PARTIAL",
     "reason": "KMM arrests began in August 2001 before the September 11 attacks, though 9/11 accelerated and expanded the crackdown; the KMM was linked to Jemaah Islamiyah rather than directly to al-Qaeda, and over 80 alleged members were detained under the ISA. The event is real but slightly misattributes timing and terrorist linkages.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "KMM arrests began in August 2001 before the September 11 attacks, though 9/11 accelerated and expanded the crackdown; the KMM was linked to Jemaah Islamiyah rather than directly to al-Qaeda, and over 80 alleged members were detained under the ISA. The event is real but slightly misattributes timing and terrorist linkages.",
+        "source": "https://www.investigativeproject.org/profile/156/kumpulan-mujahedin-malaysia-kmm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.investigativeproject.org/profile/156/kumpulan-mujahedin-malaysia-kmm"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Mahathir Retires — Abdullah Ahmad Badawi Takes Over",
     "verdict": "TRUE",
     "reason": "Mahathir stepped down on 31 October 2003 after 22 years as Prime Minister; Abdullah Ahmad Badawi (Malaysia's fifth PM) succeeded him promising Islam Hadhari, clean government, and anti-corruption, generating genuine public enthusiasm.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mahathir stepped down on 31 October 2003 after 22 years as Prime Minister; Abdullah Ahmad Badawi (Malaysia's fifth PM) succeeded him promising Islam Hadhari, clean government, and anti-corruption, generating genuine public enthusiasm.",
+        "source": "https://en.wikipedia.org/wiki/Abdullah_Ahmad_Badawi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Abdullah_Ahmad_Badawi"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Abdullah Badawi Wins Landslide Election — 198 of 219 Seats",
     "verdict": "TRUE",
     "reason": "In the March 2004 election Barisan Nasional won 198 of 219 parliamentary seats; PAS was devastated, losing Terengganu and reduced to seven seats from 27. The landslide was indeed the high-water mark before BN's rapid decline.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In the March 2004 election Barisan Nasional won 198 of 219 parliamentary seats; PAS was devastated, losing Terengganu and reduced to seven seats from 27. The landslide was indeed the high-water mark before BN's rapid decline.",
+        "source": "https://en.wikipedia.org/wiki/2004_Malaysian_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2004_Malaysian_general_election"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Altantuya Murder Case — Scandal Implicates Defence Ministry",
     "verdict": "TRUE",
     "reason": "Mongolian national Altantuya Shaariibuu was murdered on 18 October 2006 by police officers linked to Najib Razak's political associate Abdul Razak Baginda; the case connected to submarine contracts signed under Najib's tenure as Defence Minister and became a lasting political scandal.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mongolian national Altantuya Shaariibuu was murdered on 18 October 2006 by police officers linked to Najib Razak's political associate Abdul Razak Baginda; the case connected to submarine contracts signed under Najib's tenure as Defence Minister and became a lasting political scandal.",
+        "source": "https://en.wikipedia.org/wiki/Murder_of_Shaariibuugiin_Altantuyaa",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Murder_of_Shaariibuugiin_Altantuyaa"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "HINDRAF Rally — Indian Minority Rights Protest",
     "verdict": "TRUE",
     "reason": "The HINDRAF rally was held on 25 November 2007 in Kuala Lumpur, drawing tens of thousands of ethnic Indians to protest marginalisation and temple demolitions; police deployed tear gas and water cannons and arrested 136 people.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The HINDRAF rally was held on 25 November 2007 in Kuala Lumpur, drawing tens of thousands of ethnic Indians to protest marginalisation and temple demolitions; police deployed tear gas and water cannons and arrested 136 people.",
+        "source": "https://en.wikipedia.org/wiki/2007_HINDRAF_rally",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2007_HINDRAF_rally"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "BERSIH First Rally for Electoral Reform",
     "verdict": "PARTIAL",
     "reason": "The first BERSIH rally was on 10 November 2007; attendance estimates range from 30,000 to 40,000 (not 'over 40,000' as stated). The police response with riot equipment is confirmed. The event's role in galvanising civil society and contributing to 2008 results is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The first BERSIH rally was on 10 November 2007; attendance estimates range from 30,000 to 40,000 (not 'over 40,000' as stated). The police response with riot equipment is confirmed. The event's role in galvanising civil society and contributing to 2008 results is accurate.",
+        "source": "https://en.wikipedia.org/wiki/2007_Bersih_rally",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2007_Bersih_rally"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Political Tsunami — BN Loses Two-Thirds Majority",
     "verdict": "TRUE",
     "reason": "The March 2008 general election saw BN lose its two-thirds parliamentary majority for the first time; Pakatan Rakyat won 82 seats and captured five state governments including Selangor and Penang, permanently transforming the political landscape.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The March 2008 general election saw BN lose its two-thirds parliamentary majority for the first time; Pakatan Rakyat won 82 seats and captured five state governments including Selangor and Penang, permanently transforming the political landscape.",
+        "source": "https://en.wikipedia.org/wiki/2008_Malaysian_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2008_Malaysian_general_election"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Najib Razak Becomes Sixth Prime Minister",
     "verdict": "TRUE",
     "reason": "Najib Razak was sworn in as Malaysia's sixth Prime Minister on 3 April 2009, launching the 1Malaysia concept and Government and Economic Transformation Programmes with specific KPIs.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Najib Razak was sworn in as Malaysia's sixth Prime Minister on 3 April 2009, launching the 1Malaysia concept and Government and Economic Transformation Programmes with specific KPIs.",
+        "source": "https://en.wikipedia.org/wiki/Najib_Razak",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Najib_Razak"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "BERSIH 2.0 Rally — 50,000 Demand Electoral Reform",
     "verdict": "TRUE",
     "reason": "The BERSIH 2.0 rally on 9 July 2011 saw attendance estimated at 10,000 to 50,000 despite a government ban; police deployed tear gas and water cannons and arrested over 1,600 protesters. The upper estimate of 50,000 is within the reported range.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The BERSIH 2.0 rally on 9 July 2011 saw attendance estimated at 10,000 to 50,000 despite a government ban; police deployed tear gas and water cannons and arrested over 1,600 protesters. The upper estimate of 50,000 is within the reported range.",
+        "source": "https://en.wikipedia.org/wiki/Bersih_2.0_rally",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bersih_2.0_rally"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "Najib Wins Narrowly Despite Losing Popular Vote",
     "verdict": "TRUE",
     "reason": "In the 2013 election BN won 133 seats with 47.4% of the popular vote while Pakatan won 89 seats with 50.9%; Najib blamed a 'Chinese tsunami' though analysts attributed losses to urban voters broadly. The rural constituency weighting advantage for BN is confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In the 2013 election BN won 133 seats with 47.4% of the popular vote while Pakatan won 89 seats with 50.9%; Najib blamed a 'Chinese tsunami' though analysts attributed losses to urban voters broadly. The rural constituency weighting advantage for BN is confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2013_Malaysian_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2013_Malaysian_general_election"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Lahad Datu Standoff — Sulu Armed Incursion in Sabah",
     "verdict": "TRUE",
     "reason": "In February 2013, 235 armed followers of the Sulu Sultanate's claimant landed in Lahad Datu, Sabah; the standoff ended with around 72 deaths (56 militants, 10 security personnel, 6 civilians) before Malaysian forces suppressed the incursion.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In February 2013, 235 armed followers of the Sulu Sultanate's claimant landed in Lahad Datu, Sabah; the standoff ended with around 72 deaths (56 militants, 10 security personnel, 6 civilians) before Malaysian forces suppressed the incursion.",
+        "source": "https://en.wikipedia.org/wiki/2013_Lahad_Datu_standoff",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2013_Lahad_Datu_standoff"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "MH370 Disappears and MH17 Shot Down — Aviation Disasters",
     "verdict": "PARTIAL",
     "reason": "MH370 disappeared on 8 March 2014 with 239 aboard (not 'with 239 aboard' — the entry says 239 which is correct: 227 passengers + 12 crew); MH17 was shot down on 17 July 2014 with 298 aboard (not 43 Malaysians — confirmed Malaysian victims were 43 as stated). The category listed as 'mass_protest' is an error in the source data, but factual content is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "MH370 disappeared on 8 March 2014 with 239 aboard (not 'with 239 aboard' — the entry says 239 which is correct: 227 passengers + 12 crew); MH17 was shot down on 17 July 2014 with 298 aboard (not 43 Malaysians — confirmed Malaysian victims were 43 as stated). The category listed as 'mass_protest' is an error in the source data, but factual content is accurate.",
+        "source": "https://en.wikipedia.org/wiki/Malaysia_Airlines_Flight_370",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Malaysia_Airlines_Flight_370"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "1MDB Scandal Explodes — $681 Million Found in Najib's Accounts",
     "verdict": "TRUE",
     "reason": "The Wall Street Journal reported in July 2015 that RM2.67 billion (approximately $681 million) was transferred into Najib's personal accounts from 1MDB-linked entities; Najib sacked the investigating Attorney General and the US, Switzerland, and Singapore opened formal investigations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Wall Street Journal reported in July 2015 that RM2.67 billion (approximately $681 million) was transferred into Najib's personal accounts from 1MDB-linked entities; Najib sacked the investigating Attorney General and the US, Switzerland, and Singapore opened formal investigations.",
+        "source": "https://en.wikipedia.org/wiki/1Malaysia_Development_Berhad_scandal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1Malaysia_Development_Berhad_scandal"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "BERSIH 4 — Record 200,000 March Demanding Najib's Resignation",
     "verdict": "PARTIAL",
     "reason": "The BERSIH 4 rally ran 28-29 August 2015 across Kuala Lumpur, Kuching, and Kota Kinabalu; Bersih itself claimed 200,000 participants but police estimated 25,000 and other sources reported at least 80,000. Whether it was the largest in Malaysian history at 200,000 is contested.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The BERSIH 4 rally ran 28-29 August 2015 across Kuala Lumpur, Kuching, and Kota Kinabalu; Bersih itself claimed 200,000 participants but police estimated 25,000 and other sources reported at least 80,000. Whether it was the largest in Malaysian history at 200,000 is contested.",
+        "source": "https://en.wikipedia.org/wiki/Bersih_4_rally",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bersih_4_rally"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "Mahathir Joins Opposition to Unseat Najib",
     "verdict": "TRUE",
     "reason": "Mahathir signed the Citizens' Declaration in March 2016, resigned from UMNO, and formed Parti Pribumi Bersatu Malaysia (PPBM/BERSATU) registered on 9 September 2016; his entry into the anti-Najib camp split UMNO and created a genuinely competitive challenge.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mahathir signed the Citizens' Declaration in March 2016, resigned from UMNO, and formed Parti Pribumi Bersatu Malaysia (PPBM/BERSATU) registered on 9 September 2016; his entry into the anti-Najib camp split UMNO and created a genuinely competitive challenge.",
+        "source": "https://en.wikipedia.org/wiki/Malaysian_Citizens'_Declaration",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Malaysian_Citizens'_Declaration"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "US Department of Justice Files $1 Billion 1MDB Civil Suits",
     "verdict": "TRUE",
     "reason": "The US DOJ filed civil forfeiture complaints in July 2016 seeking more than $1 billion in assets linked to 1MDB embezzlement, naming 'Malaysian Official 1'; the filing was the largest action under the Kleptocracy Asset Recovery Initiative and galvanised global investigations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The US DOJ filed civil forfeiture complaints in July 2016 seeking more than $1 billion in assets linked to 1MDB embezzlement, naming 'Malaysian Official 1'; the filing was the largest action under the Kleptocracy Asset Recovery Initiative and galvanised global investigations.",
+        "source": "https://www.justice.gov/archives/opa/pr/united-states-seeks-recover-more-1-billion-obtained-corruption-involving-malaysian-sovereign",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.justice.gov/archives/opa/pr/united-states-seeks-recover-more-1-billion-obtained-corruption-involving-malaysian-sovereign"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "Kim Jong-nam Assassinated with VX Nerve Agent at KLIA",
     "verdict": "TRUE",
     "reason": "Kim Jong-nam was assassinated at Kuala Lumpur International Airport on 13 February 2017 when two women smeared his face with the VX nerve agent; Malaysia and North Korea expelled each other's ambassadors and the incident raised serious questions about airport security.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kim Jong-nam was assassinated at Kuala Lumpur International Airport on 13 February 2017 when two women smeared his face with the VX nerve agent; Malaysia and North Korea expelled each other's ambassadors and the incident raised serious questions about airport security.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Kim_Jong-nam",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Assassination_of_Kim_Jong-nam"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "Historic Election — Pakatan Harapan Ends 61 Years of BN Rule",
     "verdict": "TRUE",
     "reason": "The May 2018 general election saw Pakatan Harapan (with partner Warisan) win 121 seats to BN's 79, ending 61 years of BN/Alliance rule; 92-year-old Mahathir was sworn in as the world's oldest elected prime minister on 10 May 2018.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The May 2018 general election saw Pakatan Harapan (with partner Warisan) win 121 seats to BN's 79, ending 61 years of BN/Alliance rule; 92-year-old Mahathir was sworn in as the world's oldest elected prime minister on 10 May 2018.",
+        "source": "https://en.wikipedia.org/wiki/2018_Malaysian_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2018_Malaysian_general_election"
   },
   {
@@ -424,6 +1504,24 @@
     "title": "Najib Razak Arrested — 1MDB Criminal Charges Filed",
     "verdict": "TRUE",
     "reason": "Najib was arrested in 2018 and charged with multiple counts of corruption, money laundering, and criminal breach of trust related to 1MDB and SRC International; Malaysia reached a $3.9 billion settlement with Goldman Sachs in 2020 for its role in the 1MDB bond issuances.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Najib was arrested in 2018 and charged with multiple counts of corruption, money laundering, and criminal breach of trust related to 1MDB and SRC International; Malaysia reached a $3.9 billion settlement with Goldman Sachs in 2020 for its role in the 1MDB bond issuances.",
+        "source": "https://en.wikipedia.org/wiki/1Malaysia_Development_Berhad_scandal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1Malaysia_Development_Berhad_scandal"
   },
   {
@@ -431,6 +1529,24 @@
     "title": "Sheraton Move Political Coup — Pakatan Harapan Government Falls",
     "verdict": "TRUE",
     "reason": "In February 2020, the Sheraton Move conspiracy engineered by Muhyiddin Yassin (PPBM), UMNO, and PAS brought down the Pakatan Harapan government through defections without an election; King Al-Sultan Abdullah appointed Muhyiddin as Prime Minister of the Perikatan Nasional coalition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In February 2020, the Sheraton Move conspiracy engineered by Muhyiddin Yassin (PPBM), UMNO, and PAS brought down the Pakatan Harapan government through defections without an election; King Al-Sultan Abdullah appointed Muhyiddin as Prime Minister of the Perikatan Nasional coalition.",
+        "source": "https://en.wikipedia.org/wiki/2020%E2%80%932022_Malaysian_political_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2020%E2%80%932022_Malaysian_political_crisis"
   },
   {
@@ -438,6 +1554,24 @@
     "title": "COVID-19 Pandemic — Movement Control Orders and RM300B Stimulus",
     "verdict": "TRUE",
     "reason": "Malaysia was hit by COVID-19 with a major cluster from the Sri Petaling tabligh gathering in late February 2020; the MCO was imposed in March, over RM300 billion in fiscal stimulus was deployed, EPF allowed early withdrawals, and Malaysia suffered over 36,000 deaths.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Malaysia was hit by COVID-19 with a major cluster from the Sri Petaling tabligh gathering in late February 2020; the MCO was imposed in March, over RM300 billion in fiscal stimulus was deployed, EPF allowed early withdrawals, and Malaysia suffered over 36,000 deaths.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Malaysia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Malaysia"
   },
   {
@@ -445,6 +1579,24 @@
     "title": "UNDI18 — Voting Age Lowered to 18, Automatic Registration",
     "verdict": "TRUE",
     "reason": "Malaysia lowered the voting age from 21 to 18 and introduced automatic voter registration via the Constitution (Amendment) Act 2019, implemented on 15 December 2021 after a court order; this added approximately 5.8 million new voters to the electoral roll.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Malaysia lowered the voting age from 21 to 18 and introduced automatic voter registration via the Constitution (Amendment) Act 2019, implemented on 15 December 2021 after a court order; this added approximately 5.8 million new voters to the electoral roll.",
+        "source": "https://en.wikipedia.org/wiki/UNDI18",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/UNDI18"
   },
   {
@@ -452,6 +1604,24 @@
     "title": "Hung Parliament — Anwar Ibrahim Appointed Prime Minister",
     "verdict": "TRUE",
     "reason": "The November 2022 general election produced Malaysia's first hung parliament, with Pakatan Harapan winning 82 seats; King Sultan Abdullah appointed Anwar Ibrahim as Prime Minister on 24 November 2022 heading a unity government including BN/UMNO and Gabungan Parti Sarawak.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The November 2022 general election produced Malaysia's first hung parliament, with Pakatan Harapan winning 82 seats; King Sultan Abdullah appointed Anwar Ibrahim as Prime Minister on 24 November 2022 heading a unity government including BN/UMNO and Gabungan Parti Sarawak.",
+        "source": "https://en.wikipedia.org/wiki/2022_Malaysian_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2022_Malaysian_general_election"
   },
   {
@@ -459,6 +1629,24 @@
     "title": "Najib Razak Begins 12-Year Prison Sentence",
     "verdict": "TRUE",
     "reason": "The Federal Court unanimously upheld Najib's SRC International conviction on 23 August 2022, and he arrived at Kajang Prison the same day; he is the first Malaysian Prime Minister imprisoned for corruption.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Federal Court unanimously upheld Najib's SRC International conviction on 23 August 2022, and he arrived at Kajang Prison the same day; he is the first Malaysian Prime Minister imprisoned for corruption.",
+        "source": "https://www.malaymail.com/news/malaysia/2022/08/23/najib-fails-in-final-src-international-appeal-as-federal-court-upholds-conviction-and-sentence/24290",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.malaymail.com/news/malaysia/2022/08/23/najib-fails-in-final-src-international-appeal-as-federal-court-upholds-conviction-and-sentence/24290"
   },
   {
@@ -466,6 +1654,24 @@
     "title": "State Elections Confirm Deep Political Polarisation",
     "verdict": "TRUE",
     "reason": "Six state elections on 12 August 2023 saw Pakatan Harapan-BN retain Selangor, Penang, and Negeri Sembilan while Perikatan Nasional consolidated Kedah, Kelantan, and Terengganu, confirming a deep geographical and communal divide in the Malaysian electorate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Six state elections on 12 August 2023 saw Pakatan Harapan-BN retain Selangor, Penang, and Negeri Sembilan while Perikatan Nasional consolidated Kedah, Kelantan, and Terengganu, confirming a deep geographical and communal divide in the Malaysian electorate.",
+        "source": "https://en.wikipedia.org/wiki/2023_Malaysian_state_elections",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2023_Malaysian_state_elections"
   },
   {
@@ -473,6 +1679,24 @@
     "title": "Najib House Arrest Voided — Rule of Law Test for Madani Government",
     "verdict": "PARTIAL",
     "reason": "The house arrest controversy and its voiding are confirmed, but the timeline is somewhat compressed: the King approved a house arrest arrangement in early 2024, and the Kuala Lumpur High Court ruled the house arrest order invalid in December 2025 (not 2024) finding no legal mechanism exists for house arrest. The overall narrative is accurate but the resolution occurred in 2025.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The house arrest controversy and its voiding are confirmed, but the timeline is somewhat compressed: the King approved a house arrest arrangement in early 2024, and the Kuala Lumpur High Court ruled the house arrest order invalid in December 2025 (not 2024) finding no legal mechanism exists for house arrest. The overall narrative is accurate but the resolution occurred in 2025.",
+        "source": "https://www.therakyatpost.com/news/2025/12/22/no-house-arrest-for-najib-court-orders-him-to-remain-in-kajang-prison/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.therakyatpost.com/news/2025/12/22/no-house-arrest-for-najib-court-orders-him-to-remain-in-kajang-prison/"
   },
   {
@@ -480,6 +1704,24 @@
     "title": "Semiconductor and Data Centre Investment Boom",
     "verdict": "TRUE",
     "reason": "In 2024 Malaysia attracted record semiconductor and data centre investment: Intel, Infineon, Microsoft, Google, Amazon, and Nvidia all made major commitments in Penang and Johor; the government unveiled a National Semiconductor Strategy to capture more value-chain share.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 2024 Malaysia attracted record semiconductor and data centre investment: Intel, Infineon, Microsoft, Google, Amazon, and Nvidia all made major commitments in Penang and Johor; the government unveiled a National Semiconductor Strategy to capture more value-chain share.",
+        "source": "https://www.cnbc.com/2024/04/04/malaysia-emerges-as-a-hotspot-for-chip-firms-amid-us-china-tech-war.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cnbc.com/2024/04/04/malaysia-emerges-as-a-hotspot-for-chip-firms-amid-us-china-tech-war.html"
   },
   {
@@ -487,6 +1729,24 @@
     "title": "Malaysia Chairs ASEAN — Regional Leadership Platform",
     "verdict": "TRUE",
     "reason": "Malaysia assumed the ASEAN Chairmanship in 2025 under Anwar Ibrahim with the theme 'Inclusivity and Sustainability', hosting over 300 meetings and prioritising digital economy, climate cooperation, and Myanmar's political crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Malaysia assumed the ASEAN Chairmanship in 2025 under Anwar Ibrahim with the theme 'Inclusivity and Sustainability', hosting over 300 meetings and prioritising digital economy, climate cooperation, and Myanmar's political crisis.",
+        "source": "https://www.orfonline.org/expert-speak/malaysia-s-2025-asean-chairmanship-advancing-inclusive-sustainable-partnerships",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.orfonline.org/expert-speak/malaysia-s-2025-asean-chairmanship-advancing-inclusive-sustainable-partnerships"
   },
   {
@@ -494,6 +1754,24 @@
     "title": "Malaysia Joins BRICS as Non-Resident Partner",
     "verdict": "TRUE",
     "reason": "Malaysia officially became a BRICS partner country in January 2025 (announced alongside 8 other nations), consistent with Anwar Ibrahim's multipolar foreign policy; Malaysia had applied for full membership in 2024, with full membership consideration deferred to 2026.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Malaysia officially became a BRICS partner country in January 2025 (announced alongside 8 other nations), consistent with Anwar Ibrahim's multipolar foreign policy; Malaysia had applied for full membership in 2024, with full membership consideration deferred to 2026.",
+        "source": "https://www.malaymail.com/news/malaysia/2024/10/26/malaysia-is-officially-a-brics-partner-country-now-why-and-what-does-this-mean/154779",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.malaymail.com/news/malaysia/2024/10/26/malaysia-is-officially-a-brics-partner-country-now-why-and-what-does-this-mean/154779"
   }
 ]

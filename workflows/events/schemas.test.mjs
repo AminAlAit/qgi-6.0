@@ -172,3 +172,10 @@ test("eventTier encodes §5.2 priority", () => {
 test("VERDICTS never contains CONTESTED (pass-level vocabulary)", () => {
   assert.ok(!VERDICTS.includes("CONTESTED"));
 });
+
+test("CONSENSUS_POLICY matches the ratified policy file (B1)", async () => {
+  const { CONSENSUS_POLICY } = await import("./schemas.mjs");
+  const p = path.resolve(HERE, "..", "..", "events", "_ledger", "consensus_policy.json");
+  const ratified = JSON.parse(fs.readFileSync(p, "utf8")).active_policy;
+  assert.equal(CONSENSUS_POLICY, ratified);
+});

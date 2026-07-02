@@ -4,6 +4,24 @@
     "title": "First Multiparty Elections Won by DEMOS Coalition",
     "verdict": "TRUE",
     "reason": "On 8-12 April 1990, the DEMOS coalition (Democratic Opposition of Slovenia) won 54% of the vote in Slovenia's first multiparty elections, with Lojze Peterle becoming prime minister. Milan Kucan, the reformed communist leader, was simultaneously elected president with a large margin. Both outcomes are well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 8-12 April 1990, the DEMOS coalition (Democratic Opposition of Slovenia) won 54% of the vote in Slovenia's first multiparty elections, with Lojze Peterle becoming prime minister. Milan Kucan, the reformed communist leader, was simultaneously elected president with a large margin. Both outcomes are well-documented.",
+        "source": "https://www.gov.si/en/news/2020-04-08-three-decades-since-the-first-multiparty-elections-in-slovenia/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.gov.si/en/news/2020-04-08-three-decades-since-the-first-multiparty-elections-in-slovenia/"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Independence Plebiscite Passes with 88% Support",
     "verdict": "TRUE",
     "reason": "The Slovenian independence plebiscite was held on 23 December 1990. Final results confirmed 88.5% of all registered voters (95.7% of those who voted) supported independence, on a 93.2% turnout. The result gave the government a clear democratic mandate to pursue independence from Yugoslavia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Slovenian independence plebiscite was held on 23 December 1990. Final results confirmed 88.5% of all registered voters (95.7% of those who voted) supported independence, on a 93.2% turnout. The result gave the government a clear democratic mandate to pursue independence from Yugoslavia.",
+        "source": "https://www.gov.si/en/news/2020-12-23-30-years-ago-slovenians-decided-on-an-independent-country-at-the-plebiscite/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.gov.si/en/news/2020-12-23-30-years-ago-slovenians-decided-on-an-independent-country-at-the-plebiscite/"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Declaration of Independence from Yugoslavia",
     "verdict": "TRUE",
     "reason": "Slovenia declared independence on 25 June 1991 via the Basic Constitutional Charter on Independence and Autonomy. This followed the December 1990 plebiscite and failed negotiations with Belgrade. Croatia issued its own declaration on the same day, triggering immediate military response from the Yugoslav federal government.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovenia declared independence on 25 June 1991 via the Basic Constitutional Charter on Independence and Autonomy. This followed the December 1990 plebiscite and failed negotiations with Belgrade. Croatia issued its own declaration on the same day, triggering immediate military response from the Yugoslav federal government.",
+        "source": "https://history.state.gov/milestones/1989-1992/breakup-yugoslavia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://history.state.gov/milestones/1989-1992/breakup-yugoslavia"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Ten-Day War Repels Yugoslav Army Intervention",
     "verdict": "TRUE",
     "reason": "The Yugoslav People's Army launched operations on 27 June 1991 to retake border crossings. Slovenian territorial defense forces resisted effectively. The conflict lasted 10 days (ending 6 July); confirmed deaths were 18-19 Slovenian and approximately 37-44 JNA soldiers, with some accounts reaching ~65 total including civilians. The JNA withdrew.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Yugoslav People's Army launched operations on 27 June 1991 to retake border crossings. Slovenian territorial defense forces resisted effectively. The conflict lasted 10 days (ending 6 July); confirmed deaths were 18-19 Slovenian and approximately 37-44 JNA soldiers, with some accounts reaching ~65 total including civilians. The JNA withdrew.",
+        "source": "https://en.wikipedia.org/wiki/Ten-Day_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ten-Day_War"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Brioni Agreement Secures Ceasefire and JNA Withdrawal",
     "verdict": "TRUE",
     "reason": "The Brioni Agreement was signed on 7 July 1991 on the Brijuni Islands, brokered by the European Community Troika. It mandated an immediate ceasefire, JNA withdrawal to barracks and then departure from Slovenia, and a three-month moratorium on independence implementation. The JNA had fully withdrawn within eleven days.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Brioni Agreement was signed on 7 July 1991 on the Brijuni Islands, brokered by the European Community Troika. It mandated an immediate ceasefire, JNA withdrawal to barracks and then departure from Slovenia, and a three-month moratorium on independence implementation. The JNA had fully withdrawn within eleven days.",
+        "source": "https://www.osce.org/node/58326",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.osce.org/node/58326"
   },
   {
@@ -39,6 +129,24 @@
     "title": "New Constitution Adopted Establishing Parliamentary Democracy",
     "verdict": "TRUE",
     "reason": "Slovenia's constitution was adopted by the National Assembly on 23 December 1991, establishing a parliamentary republic with a bicameral legislature (90-seat National Assembly and National Council), an independent judiciary, and comprehensive rights protections. The date and parliamentary structure are confirmed by ILO legislative database records.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovenia's constitution was adopted by the National Assembly on 23 December 1991, establishing a parliamentary republic with a bicameral legislature (90-seat National Assembly and National Council), an independent judiciary, and comprehensive rights protections. The date and parliamentary structure are confirmed by ILO legislative database records.",
+        "source": "https://natlex.ilo.org/dyn/natlex2/r/natlex/fe/details?p3_isn=34639",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://natlex.ilo.org/dyn/natlex2/r/natlex/fe/details?p3_isn=34639"
   },
   {
@@ -46,6 +154,24 @@
     "title": "International Recognition and UN Membership",
     "verdict": "TRUE",
     "reason": "European Community member states recognised Slovenia on 15 January 1992, the same day as Austria, Hungary, Canada and others. Russia followed on 14 February and the US on 7 April 1992. Slovenia was admitted as the 176th UN member on 22 May 1992. All dates are verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "European Community member states recognised Slovenia on 15 January 1992, the same day as Austria, Hungary, Canada and others. Russia followed on 14 February and the US on 7 April 1992. Slovenia was admitted as the 176th UN member on 22 May 1992. All dates are verified.",
+        "source": "https://sloveniatimes.com/29926/slovenia-recognised-by-european-community-thirty-years-ago",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://sloveniatimes.com/29926/slovenia-recognised-by-european-community-thirty-years-ago"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Mass Erasure of Non-Slovene Residents from Official Records",
     "verdict": "TRUE",
     "reason": "On 26 February 1992, 25,671 residents from other former Yugoslav republics were deleted from Slovenia's Register of Permanent Residents after failing to apply for citizenship within a narrow window. Those erased lost legal status, healthcare, employment rights, and in some cases were deported. The Constitutional Court twice ruled this illegal (1999, 2003).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 26 February 1992, 25,671 residents from other former Yugoslav republics were deleted from Slovenia's Register of Permanent Residents after failing to apply for citizenship within a narrow window. Those erased lost legal status, healthcare, employment rights, and in some cases were deported. The Constitutional Court twice ruled this illegal (1999, 2003).",
+        "source": "https://en.wikipedia.org/wiki/The_Erased",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/The_Erased"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Drnovsek Becomes Prime Minister After DEMOS Collapse",
     "verdict": "TRUE",
     "reason": "The DEMOS coalition officially dissolved in April 1992 following internal disagreements. Janez Drnovsek was then chosen as a compromise candidate and became Slovenia's second prime minister of the independent period, forming a broad bipartisan government supported by centrist and former communist-derived parties.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The DEMOS coalition officially dissolved in April 1992 following internal disagreements. Janez Drnovsek was then chosen as a compromise candidate and became Slovenia's second prime minister of the independent period, forming a broad bipartisan government supported by centrist and former communist-derived parties.",
+        "source": "https://en.wikipedia.org/wiki/Janez_Drnov%C5%A1ek",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Janez_Drnov%C5%A1ek"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Slovenia Joins the Council of Europe",
     "verdict": "TRUE",
     "reason": "Slovenia became a full member of the Council of Europe on 14 May 1993. The Parliamentary Assembly had recommended membership following monitoring of Slovenia's December 1992 parliamentary elections. This was an early milestone in Slovenia's European integration.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovenia became a full member of the Council of Europe on 14 May 1993. The Parliamentary Assembly had recommended membership following monitoring of Slovenia's December 1992 parliamentary elections. This was an early milestone in Slovenia's European integration.",
+        "source": "https://www.gov.si/en/topics/slovenia-and-the-council-of-europe/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.gov.si/en/topics/slovenia-and-the-council-of-europe/"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Partnership for Peace Agreement with NATO Signed",
     "verdict": "TRUE",
     "reason": "Slovenia was among the first countries to join NATO's Partnership for Peace on 30 March 1994, also becoming an associate partner in the North Atlantic Assembly that year. PfP began formal military cooperation and modernisation with NATO standards, setting the stage for full membership a decade later.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovenia was among the first countries to join NATO's Partnership for Peace on 30 March 1994, also becoming an associate partner in the North Atlantic Assembly that year. PfP began formal military cooperation and modernisation with NATO standards, setting the stage for full membership a decade later.",
+        "source": "https://www.gov.si/en/topics/slovenias-nato-membership/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.gov.si/en/topics/slovenias-nato-membership/"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Europe Agreement with the EU Signed",
     "verdict": "TRUE",
     "reason": "Slovenia signed the Europe Agreement (Association Agreement) with the EU on 10 June 1996 in Luxembourg, on the same day it formally submitted its EU membership application. The agreement established free trade, political dialogue and legal harmonisation. It was ratified by the Slovenian National Assembly on 15 July 1997 and entered into force on 1 February 1999.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovenia signed the Europe Agreement (Association Agreement) with the EU on 10 June 1996 in Luxembourg, on the same day it formally submitted its EU membership application. The agreement established free trade, political dialogue and legal harmonisation. It was ratified by the Slovenian National Assembly on 15 July 1997 and entered into force on 1 February 1999.",
+        "source": "https://ec.europa.eu/commission/presscorner/detail/en/pres_96_168",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://ec.europa.eu/commission/presscorner/detail/en/pres_96_168"
   },
   {
@@ -88,6 +304,24 @@
     "title": "EU Accession Negotiations Formally Opened",
     "verdict": "TRUE",
     "reason": "Slovenia was included in the 'Luxembourg group' — the first wave of six EU candidate countries — and formal accession negotiations were opened on 31 March 1998. This is confirmed by EU Commission records and Slovenia's GOV.SI integration timeline.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovenia was included in the 'Luxembourg group' — the first wave of six EU candidate countries — and formal accession negotiations were opened on 31 March 1998. This is confirmed by EU Commission records and Slovenia's GOV.SI integration timeline.",
+        "source": "https://www.gov.si/en/topics/slovenias-integration-into-the-european-union/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.gov.si/en/topics/slovenias-integration-into-the-european-union/"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Drnovsek Returns to Power in Coalition Government",
     "verdict": "TRUE",
     "reason": "After a brief Andrej Bajuk government (April-November 2000) formed following a successful constructive no-confidence vote, parliamentary elections on 15 October 2000 returned Janez Drnovsek's Liberal Democracy of Slovenia with 34 seats. Drnovsek formed his fourth coalition government, confirmed by the National Assembly in late November 2000.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After a brief Andrej Bajuk government (April-November 2000) formed following a successful constructive no-confidence vote, parliamentary elections on 15 October 2000 returned Janez Drnovsek's Liberal Democracy of Slovenia with 34 seats. Drnovsek formed his fourth coalition government, confirmed by the National Assembly in late November 2000.",
+        "source": "https://en.wikipedia.org/wiki/2000_Slovenian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2000_Slovenian_parliamentary_election"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Yugoslav Succession Agreement Signed in Vienna",
     "verdict": "TRUE",
     "reason": "The Agreement on Succession Issues of the former SFRY was signed in Vienna on 29 June 2001 by the five successor states: Slovenia, Croatia, Bosnia and Herzegovina, North Macedonia and the Federal Republic of Yugoslavia. It entered into force on 2 June 2004 upon ratification by all parties. The agreement addressed division of state property, archives, debts and pensions.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Agreement on Succession Issues of the former SFRY was signed in Vienna on 29 June 2001 by the five successor states: Slovenia, Croatia, Bosnia and Herzegovina, North Macedonia and the Federal Republic of Yugoslavia. It entered into force on 2 June 2004 upon ratification by all parties. The agreement addressed division of state property, archives, debts and pensions.",
+        "source": "https://en.wikipedia.org/wiki/Agreement_on_Succession_Issues_of_the_Former_Socialist_Federal_Republic_of_Yugoslavia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Agreement_on_Succession_Issues_of_the_Former_Socialist_Federal_Republic_of_Yugoslavia"
   },
   {
@@ -109,6 +379,24 @@
     "title": "EU and NATO Membership Referendums Pass Decisively",
     "verdict": "TRUE",
     "reason": "On 23 March 2003, Slovenian voters approved EU membership with 89.6% and NATO membership with 66.0% in twin referendums, on approximately 60% turnout. Slovenia was the only NATO candidate country in this wave to hold a NATO referendum. Both percentages match primary election records.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 23 March 2003, Slovenian voters approved EU membership with 89.6% and NATO membership with 66.0% in twin referendums, on approximately 60% turnout. Slovenia was the only NATO candidate country in this wave to hold a NATO referendum. Both percentages match primary election records.",
+        "source": "https://en.wikipedia.org/wiki/2003_Slovenian_European_Union_and_NATO_membership_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2003_Slovenian_European_Union_and_NATO_membership_referendum"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Slovenia Joins NATO as Part of the Largest Enlargement",
     "verdict": "TRUE",
     "reason": "Slovenia, together with Bulgaria, Estonia, Latvia, Lithuania, Romania and Slovakia, deposited instruments of accession on 29 March 2004 in Washington DC, making it a full NATO member. This was NATO's largest-ever single enlargement round, bringing the alliance to 26 members.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovenia, together with Bulgaria, Estonia, Latvia, Lithuania, Romania and Slovakia, deposited instruments of accession on 29 March 2004 in Washington DC, making it a full NATO member. This was NATO's largest-ever single enlargement round, bringing the alliance to 26 members.",
+        "source": "https://www.nato.int/cps/en/natohq/news_20926.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nato.int/cps/en/natohq/news_20926.htm"
   },
   {
@@ -123,6 +429,24 @@
     "title": "European Union Accession on 1 May",
     "verdict": "TRUE",
     "reason": "Slovenia joined the EU on 1 May 2004 alongside nine other states in the largest EU enlargement. Slovenia was the first former Yugoslav republic and the first post-socialist Slavic state to enter the EU. This is confirmed by official EU records and GOV.SI documentation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovenia joined the EU on 1 May 2004 alongside nine other states in the largest EU enlargement. Slovenia was the first former Yugoslav republic and the first post-socialist Slavic state to enter the EU. This is confirmed by official EU records and GOV.SI documentation.",
+        "source": "https://legallegacy.wordpress.com/2024/05/01/may-1-2004-slovenia-becomes-a-member-of-the-european-union/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://legallegacy.wordpress.com/2024/05/01/may-1-2004-slovenia-becomes-a-member-of-the-european-union/"
   },
   {
@@ -130,6 +454,24 @@
     "title": "First Post-2004 EU Member to Adopt the Euro",
     "verdict": "TRUE",
     "reason": "Slovenia adopted the euro on 1 January 2007, replacing the tolar at the irrevocably fixed rate of 239.640 SIT per euro. Slovenia was the first of the ten countries that joined the EU in 2004 to join the eurozone, confirmed by the European Central Bank and European Commission records.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovenia adopted the euro on 1 January 2007, replacing the tolar at the irrevocably fixed rate of 239.640 SIT per euro. Slovenia was the first of the ten countries that joined the EU in 2004 to join the eurozone, confirmed by the European Central Bank and European Commission records.",
+        "source": "https://www.ecb.europa.eu/euro/changeover/slovenia/html/index.en.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.ecb.europa.eu/euro/changeover/slovenia/html/index.en.html"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Schengen Area Entry Abolishes Internal Border Controls",
     "verdict": "TRUE",
     "reason": "Slovenia entered the Schengen Area on 21 December 2007, removing land and sea border controls with Austria, Italy and Hungary. Air border controls were lifted on 30 March 2008. This occurred simultaneously with eight other 2004-wave EU members joining Schengen.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovenia entered the Schengen Area on 21 December 2007, removing land and sea border controls with Austria, Italy and Hungary. Air border controls were lifted on 30 March 2008. This occurred simultaneously with eight other 2004-wave EU members joining Schengen.",
+        "source": "https://www.policija.si/eng/areas-of-work/state-border-control/slovenia-a-new-schengen-member",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.policija.si/eng/areas-of-work/state-border-control/slovenia-a-new-schengen-member"
   },
   {
@@ -144,6 +504,24 @@
     "title": "First EU Council Presidency for a Post-Communist State",
     "verdict": "TRUE",
     "reason": "Slovenia held the rotating Presidency of the Council of the EU from 1 January to 30 June 2008, becoming the first post-communist country to do so. The presidency covered 2,720 civil servants and over 8,000 events, with primary focus on Western Balkans integration and energy policy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovenia held the rotating Presidency of the Council of the EU from 1 January to 30 June 2008, becoming the first post-communist country to do so. The presidency covered 2,720 civil servants and over 8,000 events, with primary focus on Western Balkans integration and energy policy.",
+        "source": "http://www.eu2008.si/en/The_Council_Presidency/index.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "http://www.eu2008.si/en/The_Council_Presidency/index.html"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Borut Pahor Elected Prime Minister on Center-Left Platform",
     "verdict": "TRUE",
     "reason": "The Social Democrats led by Borut Pahor won the September 2008 parliamentary elections with 30.45% of the vote, defeating the incumbent SDS with 29.26%. Pahor formed a center-left coalition government and served as prime minister from 2008 to 2012. Timing aligns with the worsening global financial crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Social Democrats led by Borut Pahor won the September 2008 parliamentary elections with 30.45% of the vote, defeating the incumbent SDS with 29.26%. Pahor formed a center-left coalition government and served as prime minister from 2008 to 2012. Timing aligns with the worsening global financial crisis.",
+        "source": "https://en.wikipedia.org/wiki/Borut_Pahor",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Borut_Pahor"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Border Dispute with Croatia Blocks Croatian EU Accession",
     "verdict": "TRUE",
     "reason": "From September 2008, Slovenia blocked the opening of several EU accession negotiation chapters with Croatia over the Piran Bay maritime border dispute. At the December 2008 EU foreign ministers meeting, Croatia's accession timeline could not be confirmed. The blockade was resolved when PM Kosor and Pahor agreed to international arbitration in September 2009, formalised in Stockholm on 4 November 2009.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "From September 2008, Slovenia blocked the opening of several EU accession negotiation chapters with Croatia over the Piran Bay maritime border dispute. At the December 2008 EU foreign ministers meeting, Croatia's accession timeline could not be confirmed. The blockade was resolved when PM Kosor and Pahor agreed to international arbitration in September 2009, formalised in Stockholm on 4 November 2009.",
+        "source": "https://en.wikipedia.org/wiki/Croatia%E2%80%93Slovenia_border_disputes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Croatia%E2%80%93Slovenia_border_disputes"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Mass Anti-Austerity and Anti-Corruption Protests Erupt",
     "verdict": "TRUE",
     "reason": "Protests started in Maribor on 2 November 2012 over traffic enforcement cameras and Mayor Franc Kangler's conduct, then spread nationwide in late November 2012. Approximately 20,000 people gathered in Maribor at the peak. The protests targeted Jansa, Jankovic and Kangler on corruption grounds and were the largest since independence. The movement contributed to the government's fall.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Protests started in Maribor on 2 November 2012 over traffic enforcement cameras and Mayor Franc Kangler's conduct, then spread nationwide in late November 2012. Approximately 20,000 people gathered in Maribor at the peak. The protests targeted Jansa, Jankovic and Kangler on corruption grounds and were the largest since independence. The movement contributed to the government's fall.",
+        "source": "https://en.wikipedia.org/wiki/2012%E2%80%932013_Slovenian_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2012%E2%80%932013_Slovenian_protests"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Jansa Government Falls Over Corruption Scandal",
     "verdict": "TRUE",
     "reason": "On 27 February 2013, a parliamentary vote of no confidence (55-33) ousted Jansa's government following the Commission for the Prevention of Corruption's January 2013 report finding he had systematically failed to disclose over $260,000 in assets. Coalition partners withdrew support after Jansa refused to resign.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 27 February 2013, a parliamentary vote of no confidence (55-33) ousted Jansa's government following the Commission for the Prevention of Corruption's January 2013 report finding he had systematically failed to disclose over $260,000 in assets. Coalition partners withdrew support after Jansa refused to resign.",
+        "source": "https://www.occrp.org/en/news/slovenian-pm-ousted-after-corruption-allegations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.occrp.org/en/news/slovenian-pm-ousted-after-corruption-allegations"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Bratusek Becomes Slovenia's First Female Prime Minister",
     "verdict": "TRUE",
     "reason": "Alenka Bratusek was elected prime minister-designate on 27 February 2013 with 55 votes and her government was formally announced on 20 March 2013, making her the first woman to lead Slovenia. Her cabinet immediately confronted the escalating banking sector crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Alenka Bratusek was elected prime minister-designate on 27 February 2013 with 55 votes and her government was formally announced on 20 March 2013, making her the first woman to lead Slovenia. Her cabinet immediately confronted the escalating banking sector crisis.",
+        "source": "https://en.wikipedia.org/wiki/Alenka_Bratu%C5%A1ek",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Alenka_Bratu%C5%A1ek"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Banking Crisis Forces EUR 4.8 Billion State Recapitalization",
     "verdict": "TRUE",
     "reason": "Stress tests revealed Slovenian state-owned banks held approximately EUR 7-8 billion in bad loans. The state injected EUR 4.8 billion in sector-wide recapitalisation; EUR 3.3 billion in toxic assets were transferred from NLB and NKBM to the Bank Asset Management Company (DUTB). Public debt rose from 54% to nearly 70% of GDP, narrowly avoiding an EU-IMF bailout.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Stress tests revealed Slovenian state-owned banks held approximately EUR 7-8 billion in bad loans. The state injected EUR 4.8 billion in sector-wide recapitalisation; EUR 3.3 billion in toxic assets were transferred from NLB and NKBM to the Bank Asset Management Company (DUTB). Public debt rose from 54% to nearly 70% of GDP, narrowly avoiding an EU-IMF bailout.",
+        "source": "https://globalriskinsights.com/2013/12/slovenia-has-avoided-bailout-but-there-is-a-long-way-to-recovery/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://globalriskinsights.com/2013/12/slovenia-has-avoided-bailout-but-there-is-a-long-way-to-recovery/"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Jansa Convicted in Patria Bribery Case",
     "verdict": "TRUE",
     "reason": "On 5 June 2013, Ljubljana District Court sentenced Jansa to two years in prison for receiving bribes from Finnish defence company Patria in a 2006 armoured vehicle deal (the event is dated 2014 in the curated file but the conviction was June 2013; a higher court upheld it in April 2014). The Constitutional Court unanimously annulled the verdicts on 23 April 2015, ordering a retrial that was later statute-barred.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 5 June 2013, Ljubljana District Court sentenced Jansa to two years in prison for receiving bribes from Finnish defence company Patria in a 2006 armoured vehicle deal (the event is dated 2014 in the curated file but the conviction was June 2013; a higher court upheld it in April 2014). The Constitutional Court unanimously annulled the verdicts on 23 April 2015, ordering a retrial that was later statute-barred.",
+        "source": "https://en.wikipedia.org/wiki/Patria_case",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Patria_case"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Snap Elections Bring Cerar Government to Power",
     "verdict": "TRUE",
     "reason": "After Bratusek's resignation, snap elections were held on 13 July 2014. The newly formed Party of Miro Cerar (SMC) won with 34.5% of the vote and 36 seats — the highest for any single party since independence — and Cerar formed a centre-left coalition. The result is confirmed by multiple news sources and the IFES election guide.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After Bratusek's resignation, snap elections were held on 13 July 2014. The newly formed Party of Miro Cerar (SMC) won with 34.5% of the vote and 36 seats — the highest for any single party since independence — and Cerar formed a centre-left coalition. The result is confirmed by multiple news sources and the IFES election guide.",
+        "source": "https://en.wikipedia.org/wiki/2014_Slovenian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2014_Slovenian_parliamentary_election"
   },
   {
@@ -207,6 +729,24 @@
     "title": "European Court Orders Compensation for the Erased",
     "verdict": "TRUE",
     "reason": "The European Court of Human Rights issued its Grand Chamber pilot judgment on 26 June 2012 finding violations of Article 8 and ordering Slovenia to establish a compensation scheme within one year. The Act on Restitution of Damage for Persons Erased was adopted November 2013 and came into force 18 June 2014, beginning implementation of a compensation programme for the 25,671 erased.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The European Court of Human Rights issued its Grand Chamber pilot judgment on 26 June 2012 finding violations of Article 8 and ordering Slovenia to establish a compensation scheme within one year. The Act on Restitution of Damage for Persons Erased was adopted November 2013 and came into force 18 June 2014, beginning implementation of a compensation programme for the 25,671 erased.",
+        "source": "https://www.coe.int/en/web/impact-convention-human-rights/-/justice-for-thousands-of-erased-people-after-20-years-without-rights",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.coe.int/en/web/impact-convention-human-rights/-/justice-for-thousands-of-erased-people-after-20-years-without-rights"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Balkan Migration Route Brings 500,000 Refugees Through Slovenia",
     "verdict": "TRUE",
     "reason": "After Hungary sealed its border in September 2015, the Balkan route redirected through Slovenia. Between 18 September 2015 and January 2016, approximately 419,000-477,000 people transited Slovenia (sources vary slightly). October 2015 alone saw 66,353 crossings. Slovenia erected temporary fences and established a humanitarian corridor toward Austria. The 'nearly half a million' figure is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After Hungary sealed its border in September 2015, the Balkan route redirected through Slovenia. Between 18 September 2015 and January 2016, approximately 419,000-477,000 people transited Slovenia (sources vary slightly). October 2015 alone saw 66,353 crossings. Slovenia erected temporary fences and established a humanitarian corridor toward Austria. The 'nearly half a million' figure is accurate.",
+        "source": "https://en.wikipedia.org/wiki/Slovenian_border_barrier",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Slovenian_border_barrier"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Constitutional Amendment Enshrines Right to Drinking Water",
     "verdict": "TRUE",
     "reason": "On 17 November 2016, the Slovenian parliament adopted Article 70A to the constitution, approved by 64 votes with none opposing. The amendment declares water a public good managed by the state and prohibits its commercialisation. Slovenia became the first EU member state to include this specific constitutional protection for drinking water access.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 17 November 2016, the Slovenian parliament adopted Article 70A to the constitution, approved by 64 votes with none opposing. The amendment declares water a public good managed by the state and prohibits its commercialisation. Slovenia became the first EU member state to include this specific constitutional protection for drinking water access.",
+        "source": "https://e360.yale.edu/digest/slovenia_water_human_right_constitution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://e360.yale.edu/digest/slovenia_water_human_right_constitution"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Piran Bay Arbitration Tribunal Issues Final Award",
     "verdict": "TRUE",
     "reason": "The Permanent Court of Arbitration issued its final award on 29 June 2017, granting Slovenia three-quarters of Piran Bay and a 'junction' corridor to international waters through Croatian territorial seas. Croatia had previously withdrawn from proceedings after a 2015 scandal involving unauthorised contacts between a Slovenian arbitrator and the Slovenian government, and rejected the award as invalid.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Permanent Court of Arbitration issued its final award on 29 June 2017, granting Slovenia three-quarters of Piran Bay and a 'junction' corridor to international waters through Croatian territorial seas. Croatia had previously withdrawn from proceedings after a 2015 scandal involving unauthorised contacts between a Slovenian arbitrator and the Slovenian government, and rejected the award as invalid.",
+        "source": "https://www.acerislaw.com/final-award-pca-arbitration-slovenia-croatia/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.acerislaw.com/final-award-pca-arbitration-slovenia-croatia/"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Jansa's SDS Wins Election but Sarec Forms Government",
     "verdict": "TRUE",
     "reason": "In the 3 June 2018 parliamentary elections, Jansa's SDS won 25 seats (the most of any party) but all centre-left parties refused to govern with him. Marjan Sarec assembled a five-party minority government, confirmed by the parliament on 17 August 2018 with 55 votes. Sarec became Slovenia's youngest prime minister.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In the 3 June 2018 parliamentary elections, Jansa's SDS won 25 seats (the most of any party) but all centre-left parties refused to govern with him. Marjan Sarec assembled a five-party minority government, confirmed by the parliament on 17 August 2018 with 55 votes. Sarec became Slovenia's youngest prime minister.",
+        "source": "https://en.wikipedia.org/wiki/2018_Slovenian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2018_Slovenian_parliamentary_election"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Jansa Returns as PM After Sarec Resignation",
     "verdict": "TRUE",
     "reason": "PM Marjan Sarec resigned on 27 January 2020 citing inability to govern as a minority. Jansa was elected prime minister-designate on 3 March 2020 and sworn in on 13 March 2020 — the same day his government established a COVID-19 Crisis Management Staff, as the pandemic had reached Slovenia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PM Marjan Sarec resigned on 27 January 2020 citing inability to govern as a minority. Jansa was elected prime minister-designate on 3 March 2020 and sworn in on 13 March 2020 — the same day his government established a COVID-19 Crisis Management Staff, as the pandemic had reached Slovenia.",
+        "source": "https://en.wikipedia.org/wiki/Janez_Jan%C5%A1a",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Janez_Jan%C5%A1a"
   },
   {
@@ -249,6 +879,24 @@
     "title": "COVID-19 Lockdown and Emergency Powers Declared",
     "verdict": "TRUE",
     "reason": "Slovenia declared an epidemic emergency in March 2020, imposing strict lockdowns including school closures, movement restrictions, and bans on public gatherings. The Jansa government's use of emergency powers to limit civil society funding, attack journalists via official social media, and restrict opposition drew documented criticism from EU institutions, Freedom House, and press freedom organisations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovenia declared an epidemic emergency in March 2020, imposing strict lockdowns including school closures, movement restrictions, and bans on public gatherings. The Jansa government's use of emergency powers to limit civil society funding, attack journalists via official social media, and restrict opposition drew documented criticism from EU institutions, Freedom House, and press freedom organisations.",
+        "source": "https://balkaninsight.com/2020/09/02/jansa-is-eroding-press-freedom-in-slovenia-ipi-warns/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://balkaninsight.com/2020/09/02/jansa-is-eroding-press-freedom-in-slovenia-ipi-warns/"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Weekly Anti-Government Protests Begin in Ljubljana",
     "verdict": "TRUE",
     "reason": "Starting on 24 April 2020, weekly Friday protests (primarily by bicycle as outdoor recreational movement was permitted under COVID rules) began in Ljubljana against Jansa's government. The protests continued for 105 consecutive Fridays organised by the 'People's Protest Assembly' coalition, lasting until April 2022 elections. This is documented by Wikipedia and STA.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Starting on 24 April 2020, weekly Friday protests (primarily by bicycle as outdoor recreational movement was permitted under COVID rules) began in Ljubljana against Jansa's government. The protests continued for 105 consecutive Fridays organised by the 'People's Protest Assembly' coalition, lasting until April 2022 elections. This is documented by Wikipedia and STA.",
+        "source": "https://en.wikipedia.org/wiki/2020%E2%80%932022_Slovenian_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2020%E2%80%932022_Slovenian_protests"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Second EU Council Presidency Under Jansa Government",
     "verdict": "TRUE",
     "reason": "Slovenia held the EU Council Presidency from 1 July to 31 December 2021, its second time after 2008. The presidency was overshadowed by EU Commission President von der Leyen and MEPs publicly warning Jansa about rule-of-law failures, press freedom violations, and his combative social media posture toward journalists and EU institutions.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovenia held the EU Council Presidency from 1 July to 31 December 2021, its second time after 2008. The presidency was overshadowed by EU Commission President von der Leyen and MEPs publicly warning Jansa about rule-of-law failures, press freedom violations, and his combative social media posture toward journalists and EU institutions.",
+        "source": "https://en.wikipedia.org/wiki/2021_Slovenian_Presidency_of_the_Council_of_the_European_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2021_Slovenian_Presidency_of_the_Council_of_the_European_Union"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Robert Golob's Freedom Movement Wins Landslide Victory",
     "verdict": "TRUE",
     "reason": "In the 24 April 2022 parliamentary elections, the newly formed Freedom Movement led by energy executive Robert Golob won 34.5% of the vote and 41 seats — the highest for any single party since independence — defeating Jansa's SDS (23.6%, 27 seats). Golob formed a three-party coalition government committed to reversing Jansa-era policies.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In the 24 April 2022 parliamentary elections, the newly formed Freedom Movement led by energy executive Robert Golob won 34.5% of the vote and 41 seats — the highest for any single party since independence — defeating Jansa's SDS (23.6%, 27 seats). Golob formed a three-party coalition government committed to reversing Jansa-era policies.",
+        "source": "https://en.wikipedia.org/wiki/2022_Slovenian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2022_Slovenian_parliamentary_election"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Parliament Recognizes Palestinian Statehood",
     "verdict": "TRUE",
     "reason": "On 4 June 2024, the Slovenian parliament voted 52-0 (with remaining deputies absent) to recognise the State of Palestine on 1967 borders. This made Slovenia the fourth European country to do so, following Spain, Norway and Ireland. Prime Minister Golob described it as one of Slovenia's most significant foreign policy decisions.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 4 June 2024, the Slovenian parliament voted 52-0 (with remaining deputies absent) to recognise the State of Palestine on 1967 borders. This made Slovenia the fourth European country to do so, following Spain, Norway and Ireland. Prime Minister Golob described it as one of Slovenia's most significant foreign policy decisions.",
+        "source": "https://www.pbs.org/newshour/world/slovenia-becomes-4th-european-country-to-recognize-palestinian-state-after-parliamentary-vote",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.pbs.org/newshour/world/slovenia-becomes-4th-european-country-to-recognize-palestinian-state-after-parliamentary-vote"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Slovenia Begins UN Security Council Non-Permanent Seat",
     "verdict": "TRUE",
     "reason": "Slovenia was elected non-permanent member of the UN Security Council for the 2024-2025 term in June 2023 (receiving 153 votes). It took its seat on 1 January 2024, its second time on the Council (after 1998). Slovenia presided over the Security Council in September 2024 and December 2025, and proposed five resolutions, four related to Gaza.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovenia was elected non-permanent member of the UN Security Council for the 2024-2025 term in June 2023 (receiving 153 votes). It took its seat on 1 January 2024, its second time on the Council (after 1998). Slovenia presided over the Security Council in September 2024 and December 2025, and proposed five resolutions, four related to Gaza.",
+        "source": "https://buildingtrust.si/slovenia-elected-non-permanent-member-of-un-security-council/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://buildingtrust.si/slovenia-elected-non-permanent-member-of-un-security-council/"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "NLB Privatization Completed After Decade-Long Process",
     "verdict": "UNCERTAIN",
     "reason": "The Slovenian state has held 25% plus one share of NLB since the 2018-2019 IPO privatization process. As of 2025 search results, the state still holds approximately 25% and the European Commission commitment required reducing below 25% eventually, but no confirmed completion of full divestiture below 25% by end-2025 was found. The EBRD separately reduced its own stake in September 2025. The specific claim that privatization was 'finalized after the state reduced its stake below 25%' could not be verified.",
+    "verify_count": 1,
+    "consensus_verdict": "UNCERTAIN",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "UNCERTAIN",
+        "reason": "The Slovenian state has held 25% plus one share of NLB since the 2018-2019 IPO privatization process. As of 2025 search results, the state still holds approximately 25% and the European Commission commitment required reducing below 25% eventually, but no confirmed completion of full divestiture below 25% by end-2025 was found. The EBRD separately reduced its own stake in September 2025. The specific claim that privatization was 'finalized after the state reduced its stake below 25%' could not be verified.",
+        "source": "https://en.wikipedia.org/wiki/NLB_Group",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/NLB_Group"
   }
 ]

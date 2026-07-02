@@ -4,6 +4,24 @@
     "title": "West Germany joins the Council of Europe",
     "verdict": "TRUE",
     "reason": "West Germany (FRG) joined the Council of Europe on 13 July 1950 as an associate member alongside the Saarland, marking its first step back into Western international institutions; full membership followed in 1951.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "West Germany (FRG) joined the Council of Europe on 13 July 1950 as an associate member alongside the Saarland, marking its first step back into Western international institutions; full membership followed in 1951.",
+        "source": "https://70.coe.int/1950-federal-republic-of-germany-joins-the-council-of-europe-en.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://70.coe.int/1950-federal-republic-of-germany-joins-the-council-of-europe-en.html"
   },
   {
@@ -11,6 +29,24 @@
     "title": "West Germany joins the European Coal and Steel Community",
     "verdict": "TRUE",
     "reason": "The Treaty of Paris establishing the ECSC was signed on 18 April 1951 by six founding states including West Germany; the community formally entered into force in 1952.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Treaty of Paris establishing the ECSC was signed on 18 April 1951 by six founding states including West Germany; the community formally entered into force in 1952.",
+        "source": "https://en.wikipedia.org/wiki/European_Coal_and_Steel_Community",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/European_Coal_and_Steel_Community"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Luxembourg Agreement: West Germany agrees reparations to Israel",
     "verdict": "PARTIAL",
     "reason": "The agreement was signed on 10 September 1952 and committed West Germany to 3 billion DM to Israel and 450 million DM to the Claims Conference; however the repayment period was 14 years (not 12 as stated), and the 450 million DM went to the Claims Conference, not the World Jewish Congress directly.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The agreement was signed on 10 September 1952 and committed West Germany to 3 billion DM to Israel and 450 million DM to the Claims Conference; however the repayment period was 14 years (not 12 as stated), and the 450 million DM went to the Claims Conference, not the World Jewish Congress directly.",
+        "source": "https://en.wikipedia.org/wiki/Reparations_Agreement_between_Israel_and_the_Federal_Republic_of_Germany",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Reparations_Agreement_between_Israel_and_the_Federal_Republic_of_Germany"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Equalization of Burdens Act compensates war-displaced Germans",
     "verdict": "TRUE",
     "reason": "The Lastenausgleichsgesetz was passed on 14 August 1952 and came into force 1 September 1952, levying a 50% charge on remaining property to fund redistribution to expellees and war-loss sufferers, totalling over 110 billion DM by 1978.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Lastenausgleichsgesetz was passed on 14 August 1952 and came into force 1 September 1952, levying a 50% charge on remaining property to fund redistribution to expellees and war-loss sufferers, totalling over 110 billion DM by 1978.",
+        "source": "https://en.wikipedia.org/wiki/Lastenausgleich",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Lastenausgleich"
   },
   {
@@ -32,6 +104,24 @@
     "title": "London Debt Agreement halves West Germany's foreign debts",
     "verdict": "TRUE",
     "reason": "The London Agreement on German External Debts was signed 27 February 1953; creditors agreed to cancel approximately 50% of Germany's external debt (from ~30 billion DM to ~15 billion DM), providing crucial fiscal space for West Germany's recovery.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The London Agreement on German External Debts was signed 27 February 1953; creditors agreed to cancel approximately 50% of Germany's external debt (from ~30 billion DM to ~15 billion DM), providing crucial fiscal space for West Germany's recovery.",
+        "source": "https://en.wikipedia.org/wiki/London_Agreement_on_German_External_Debts",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/London_Agreement_on_German_External_Debts"
   },
   {
@@ -39,6 +129,24 @@
     "title": "West Germany wins 1954 Football World Cup — Miracle of Berne",
     "verdict": "TRUE",
     "reason": "West Germany defeated Hungary 3-2 in the 1954 FIFA World Cup final at Bern's Wankdorf Stadium on 4 July 1954, overcoming a team that had beaten them 8-3 earlier in the tournament, in what became known as the Wunder von Bern.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "West Germany defeated Hungary 3-2 in the 1954 FIFA World Cup final at Bern's Wankdorf Stadium on 4 July 1954, overcoming a team that had beaten them 8-3 earlier in the tournament, in what became known as the Wunder von Bern.",
+        "source": "https://en.wikipedia.org/wiki/1954_FIFA_World_Cup_final",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1954_FIFA_World_Cup_final"
   },
   {
@@ -46,6 +154,24 @@
     "title": "West Germany joins NATO and establishes the Bundeswehr",
     "verdict": "TRUE",
     "reason": "West Germany became NATO's 15th member on 6 May 1955 following the end of the Allied occupation on 5 May; the Bundeswehr was established simultaneously with a civilian-control ethos as a deliberate break from Wehrmacht tradition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "West Germany became NATO's 15th member on 6 May 1955 following the end of the Allied occupation on 5 May; the Bundeswehr was established simultaneously with a civilian-control ethos as a deliberate break from Wehrmacht tradition.",
+        "source": "https://www.bundeswehr.de/en/about-bundeswehr/history/establishment-of-the-bundeswehr",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.bundeswehr.de/en/about-bundeswehr/history/establishment-of-the-bundeswehr"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Communist Party of Germany banned by Constitutional Court",
     "verdict": "TRUE",
     "reason": "The Federal Constitutional Court issued its verdict banning the KPD on 17 August 1956, finding it unconstitutional under Article 21(2) of the Basic Law and ordering its dissolution and asset confiscation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Federal Constitutional Court issued its verdict banning the KPD on 17 August 1956, finding it unconstitutional under Article 21(2) of the Basic Law and ordering its dissolution and asset confiscation.",
+        "source": "https://www.bundesverfassungsgericht.de/SharedDocs/Entscheidungen/EN/1956/08/bs19560817_1bvb000251en.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.bundesverfassungsgericht.de/SharedDocs/Entscheidungen/EN/1956/08/bs19560817_1bvb000251en.html"
   },
   {
@@ -60,6 +204,24 @@
     "title": "West Germany signs the Treaty of Rome, founding the EEC",
     "verdict": "TRUE",
     "reason": "West Germany was one of six founding signatories of the Treaty of Rome on 25 March 1957, establishing the European Economic Community; the treaty came into force on 1 January 1958.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "West Germany was one of six founding signatories of the Treaty of Rome on 25 March 1957, establishing the European Economic Community; the treaty came into force on 1 January 1958.",
+        "source": "https://en.wikipedia.org/wiki/Treaty_of_Rome",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Treaty_of_Rome"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Wirtschaftswunder: West Germany becomes Europe's economic powerhouse",
     "verdict": "PARTIAL",
     "reason": "The Wirtschaftswunder is well-documented, with West German GNP growing at roughly 8% annually in the 1950s under Erhard's social market economy; however, dating the milestone to a single year (1957) is imprecise — the miracle was a decade-long phenomenon from the late 1940s through the early 1960s.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Wirtschaftswunder is well-documented, with West German GNP growing at roughly 8% annually in the 1950s under Erhard's social market economy; however, dating the milestone to a single year (1957) is imprecise — the miracle was a decade-long phenomenon from the late 1940s through the early 1960s.",
+        "source": "https://en.wikipedia.org/wiki/Wirtschaftswunder",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Wirtschaftswunder"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Gastarbeiter recruitment program expands across Southern Europe",
     "verdict": "PARTIAL",
     "reason": "The guest-worker recruitment program did expand across Southern Europe, but the bilateral agreements with Spain and Greece were signed in March and April 1960, not 1958; only Italy's agreement predates 1958 (signed November 1955). The year 1958 does not correspond to any significant milestone in the program.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The guest-worker recruitment program did expand across Southern Europe, but the bilateral agreements with Spain and Greece were signed in March and April 1960, not 1958; only Italy's agreement predates 1958 (signed November 1955). The year 1958 does not correspond to any significant milestone in the program.",
+        "source": "https://en.wikipedia.org/wiki/Gastarbeiter",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Gastarbeiter"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Spiegel Affair: Adenauer government prosecutes magazine for treason",
     "verdict": "TRUE",
     "reason": "On 26 October 1962 police raided Der Spiegel offices and arrested editor Rudolf Augstein on treason charges following an article about NATO exercise Fallex 62; the affair forced Defense Minister Strauss to resign after he was found to have lied to parliament.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 26 October 1962 police raided Der Spiegel offices and arrested editor Rudolf Augstein on treason charges following an article about NATO exercise Fallex 62; the affair forced Defense Minister Strauss to resign after he was found to have lied to parliament.",
+        "source": "https://en.wikipedia.org/wiki/Spiegel_affair",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Spiegel_affair"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Élysée Treaty seals Franco-German friendship",
     "verdict": "TRUE",
     "reason": "Chancellor Adenauer and President de Gaulle signed the Treaty of Friendship on 22 January 1963 at the Élysée Palace, institutionalising bilateral consultations and creating the Franco-German Youth Office — a landmark in ending centuries of enmity.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chancellor Adenauer and President de Gaulle signed the Treaty of Friendship on 22 January 1963 at the Élysée Palace, institutionalising bilateral consultations and creating the Franco-German Youth Office — a landmark in ending centuries of enmity.",
+        "source": "https://en.wikipedia.org/wiki/%C3%89lys%C3%A9e_Treaty",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/%C3%89lys%C3%A9e_Treaty"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Frankfurt Auschwitz trials confront Nazi crimes",
     "verdict": "TRUE",
     "reason": "The Frankfurt Auschwitz trials opened 20 December 1963 and ran until 1965 (with subsequent rounds to 1968); Attorney General Fritz Bauer prosecuted 22 defendants in the main trial, establishing a precedent for West Germany's accountability for Nazi crimes.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Frankfurt Auschwitz trials opened 20 December 1963 and ran until 1965 (with subsequent rounds to 1968); Attorney General Fritz Bauer prosecuted 22 defendants in the main trial, establishing a precedent for West Germany's accountability for Nazi crimes.",
+        "source": "https://en.wikipedia.org/wiki/Frankfurt_Auschwitz_trials",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Frankfurt_Auschwitz_trials"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Grand Coalition: CDU/CSU and SPD govern together for first time",
     "verdict": "TRUE",
     "reason": "Chancellor Kurt Georg Kiesinger (CDU) took office on 1 December 1966 leading the first CDU/CSU-SPD grand coalition, with Willy Brandt as Foreign Minister; the FDP alone held official opposition status, fuelling the extra-parliamentary opposition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chancellor Kurt Georg Kiesinger (CDU) took office on 1 December 1966 leading the first CDU/CSU-SPD grand coalition, with Willy Brandt as Foreign Minister; the FDP alone held official opposition status, fuelling the extra-parliamentary opposition.",
+        "source": "https://en.wikipedia.org/wiki/Grand_coalition_(Germany)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Grand_coalition_(Germany)"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Student protest movement erupts following Benno Ohnesorg shooting",
     "verdict": "TRUE",
     "reason": "Student Benno Ohnesorg was shot dead by West Berlin police officer Karl-Heinz Kurras on 2 June 1967 during protests against the Shah of Iran's visit; the killing radicalised the West German student movement and catalysed the broader 1968 protest wave.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Student Benno Ohnesorg was shot dead by West Berlin police officer Karl-Heinz Kurras on 2 June 1967 during protests against the Shah of Iran's visit; the killing radicalised the West German student movement and catalysed the broader 1968 protest wave.",
+        "source": "https://en.wikipedia.org/wiki/Killing_of_Benno_Ohnesorg",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Killing_of_Benno_Ohnesorg"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Willy Brandt becomes Chancellor; SPD wins power for first time",
     "verdict": "TRUE",
     "reason": "Willy Brandt was elected Chancellor on 21 October 1969 leading an SPD-FDP coalition — the first Social Democratic-led government in postwar West Germany — ending 20 years of CDU/CSU dominance.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Willy Brandt was elected Chancellor on 21 October 1969 leading an SPD-FDP coalition — the first Social Democratic-led government in postwar West Germany — ending 20 years of CDU/CSU dominance.",
+        "source": "https://en.wikipedia.org/wiki/1969_West_German_federal_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1969_West_German_federal_election"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Turkish Gastarbeiter become West Germany's largest immigrant community",
     "verdict": "PARTIAL",
     "reason": "The Turkish community grew significantly from 1961 and a notable milestone (the millionth guest worker from Southeast Europe) occurred in November 1969, but Turks only became the single largest foreign worker group in 1972-73 — not definitively by 1969 as stated.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The Turkish community grew significantly from 1961 and a notable milestone (the millionth guest worker from Southeast Europe) occurred in November 1969, but Turks only became the single largest foreign worker group in 1972-73 — not definitively by 1969 as stated.",
+        "source": "https://en.wikipedia.org/wiki/Gastarbeiter",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Gastarbeiter"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Brandt kneels at Warsaw Ghetto memorial in reconciliation gesture",
     "verdict": "TRUE",
     "reason": "On 7 December 1970 Chancellor Brandt spontaneously knelt at the Warsaw Ghetto Uprising memorial in Warsaw, in a gesture widely interpreted as an acknowledgment of German guilt for the Holocaust; the image became one of the most iconic photographs of postwar European reconciliation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 7 December 1970 Chancellor Brandt spontaneously knelt at the Warsaw Ghetto Uprising memorial in Warsaw, in a gesture widely interpreted as an acknowledgment of German guilt for the Holocaust; the image became one of the most iconic photographs of postwar European reconciliation.",
+        "source": "https://en.wikipedia.org/wiki/Kniefall_von_Warschau",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kniefall_von_Warschau"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Ostpolitik: West Germany signs Moscow and Warsaw Treaties",
     "verdict": "TRUE",
     "reason": "West Germany signed the Treaty of Moscow on 12 August 1970 and the Treaty of Warsaw on 7 December 1970, both renouncing the use of force and recognising postwar borders — the cornerstones of Brandt's Ostpolitik.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "West Germany signed the Treaty of Moscow on 12 August 1970 and the Treaty of Warsaw on 7 December 1970, both renouncing the use of force and recognising postwar borders — the cornerstones of Brandt's Ostpolitik.",
+        "source": "https://en.wikipedia.org/wiki/Ostpolitik",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ostpolitik"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Munich Olympic massacre: Palestinian terrorists kill 11 Israeli athletes",
     "verdict": "TRUE",
     "reason": "On 5 September 1972 eight Black September operatives took 11 Israeli athletes and coaches hostage at the Munich Olympics, killing two at the village and nine during the botched rescue at Fürstenfeldbruck airfield; the West German policeman also died, giving 12 total deaths.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 5 September 1972 eight Black September operatives took 11 Israeli athletes and coaches hostage at the Munich Olympics, killing two at the village and nine during the botched rescue at Fürstenfeldbruck airfield; the West German policeman also died, giving 12 total deaths.",
+        "source": "https://en.wikipedia.org/wiki/Munich_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Munich_massacre"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Oil crisis exposes West Germany's energy vulnerability",
     "verdict": "TRUE",
     "reason": "The OPEC embargo following the October 1973 Yom Kippur War severely impacted West Germany; the government imposed Sunday driving bans on four consecutive Sundays from late November and a 100 km/h Autobahn speed limit, accelerating investment in nuclear energy and efficiency.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The OPEC embargo following the October 1973 Yom Kippur War severely impacted West Germany; the government imposed Sunday driving bans on four consecutive Sundays from late November and a 100 km/h Autobahn speed limit, accelerating investment in nuclear energy and efficiency.",
+        "source": "https://germanhistorydocs.org/en/two-germanies-1961-1989/auto-free-sunday-november-1973",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://germanhistorydocs.org/en/two-germanies-1961-1989/auto-free-sunday-november-1973"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Guillaume spy scandal forces Brandt to resign",
     "verdict": "TRUE",
     "reason": "Brandt's aide Günter Guillaume was arrested on 24 April 1974 as an East German spy, and Brandt resigned as Chancellor on 6 May 1974 taking responsibility for the security lapse; Helmut Schmidt succeeded him.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Brandt's aide Günter Guillaume was arrested on 24 April 1974 as an East German spy, and Brandt resigned as Chancellor on 6 May 1974 taking responsibility for the security lapse; Helmut Schmidt succeeded him.",
+        "source": "https://en.wikipedia.org/wiki/Guillaume_affair",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Guillaume_affair"
   },
   {
@@ -165,6 +579,24 @@
     "title": "West Germany signs the Helsinki Final Act",
     "verdict": "TRUE",
     "reason": "Chancellor Helmut Schmidt signed the Helsinki Final Act on behalf of West Germany on 1 August 1975; the agreement established principles for East-West relations including territorial integrity and human rights, and formally accepted postwar borders.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chancellor Helmut Schmidt signed the Helsinki Final Act on behalf of West Germany on 1 August 1975; the agreement established principles for East-West relations including territorial integrity and human rights, and formally accepted postwar borders.",
+        "source": "https://en.wikipedia.org/wiki/Helsinki_Accords",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Helsinki_Accords"
   },
   {
@@ -172,6 +604,24 @@
     "title": "German Autumn: RAF terrorism peaks with Schleyer kidnapping and Mogadishu",
     "verdict": "TRUE",
     "reason": "Hanns Martin Schleyer was kidnapped by the RAF on 5 September 1977; Lufthansa Flight 181 was hijacked on 13 October and freed by GSG 9 in Mogadishu on 18 October; the RAF leaders were found dead in Stammheim and Schleyer was murdered — the most intense episode of domestic terrorism in postwar West Germany.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Hanns Martin Schleyer was kidnapped by the RAF on 5 September 1977; Lufthansa Flight 181 was hijacked on 13 October and freed by GSG 9 in Mogadishu on 18 October; the RAF leaders were found dead in Stammheim and Schleyer was murdered — the most intense episode of domestic terrorism in postwar West Germany.",
+        "source": "https://en.wikipedia.org/wiki/German_Autumn",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/German_Autumn"
   },
   {
@@ -179,6 +629,24 @@
     "title": "European Monetary System created with West German leadership",
     "verdict": "PARTIAL",
     "reason": "The EMS was agreed at the Brussels European Council on 5 December 1978, driven by Chancellor Schmidt and French President Giscard d'Estaing; however it did not formally enter into force until 13 March 1979, so the year 1978 applies only to the founding agreement, not its implementation.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The EMS was agreed at the Brussels European Council on 5 December 1978, driven by Chancellor Schmidt and French President Giscard d'Estaing; however it did not formally enter into force until 13 March 1979, so the year 1978 applies only to the founding agreement, not its implementation.",
+        "source": "https://en.wikipedia.org/wiki/European_Monetary_System",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/European_Monetary_System"
   },
   {
@@ -186,6 +654,24 @@
     "title": "NATO double-track decision triggers mass peace movement",
     "verdict": "TRUE",
     "reason": "NATO's dual-track decision was adopted on 12 December 1979, committing to deploy Pershing II and cruise missiles while pursuing negotiations; it immediately sparked a major West German peace movement that grew to 300,000+ demonstrators by 1981.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "NATO's dual-track decision was adopted on 12 December 1979, committing to deploy Pershing II and cruise missiles while pursuing negotiations; it immediately sparked a major West German peace movement that grew to 300,000+ demonstrators by 1981.",
+        "source": "https://en.wikipedia.org/wiki/NATO_Double-Track_Decision",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/NATO_Double-Track_Decision"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Helmut Kohl becomes Chancellor via constructive vote of no confidence",
     "verdict": "TRUE",
     "reason": "On 1 October 1982 the Bundestag passed the first successful constructive vote of no confidence in West German history (256-235), electing Kohl Chancellor after the FDP switched coalition partners from the SPD — the only time a chancellor has been deposed in this manner.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 1 October 1982 the Bundestag passed the first successful constructive vote of no confidence in West German history (256-235), electing Kohl Chancellor after the FDP switched coalition partners from the SPD — the only time a chancellor has been deposed in this manner.",
+        "source": "https://en.wikipedia.org/wiki/1982_vote_of_no_confidence_in_the_government_of_Helmut_Schmidt",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1982_vote_of_no_confidence_in_the_government_of_Helmut_Schmidt"
   },
   {
@@ -200,6 +704,24 @@
     "title": "US Pershing II missiles deployed in West Germany; Greens enter Bundestag",
     "verdict": "TRUE",
     "reason": "The first Pershing II missiles arrived in West Germany on 22 November 1983 after the Bundestag voted for deployment; the Green Party had entered the Bundestag in March 1983 with 5.6% of the vote — both events accurately described.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The first Pershing II missiles arrived in West Germany on 22 November 1983 after the Bundestag voted for deployment; the Green Party had entered the Bundestag in March 1983 with 5.6% of the vote — both events accurately described.",
+        "source": "https://en.wikipedia.org/wiki/NATO_Double-Track_Decision",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/NATO_Double-Track_Decision"
   },
   {
@@ -207,6 +729,24 @@
     "title": "West Germany signs the Schengen Agreement on free movement",
     "verdict": "TRUE",
     "reason": "West Germany was one of five founding signatories of the Schengen Agreement on 14 June 1985, along with France, Belgium, Luxembourg, and the Netherlands; the agreement came into practical effect in 1995.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "West Germany was one of five founding signatories of the Schengen Agreement on 14 June 1985, along with France, Belgium, Luxembourg, and the Netherlands; the agreement came into practical effect in 1995.",
+        "source": "https://en.wikipedia.org/wiki/Schengen_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Schengen_Agreement"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Chernobyl fuels anti-nuclear movement; West Germany becomes top exporter",
     "verdict": "PARTIAL",
     "reason": "Chernobyl's April 1986 disaster did dramatically strengthen West Germany's anti-nuclear movement; West Germany did become the world's largest goods exporter by value in 1986, though the US regained the lead in 1988-89 before West Germany reclaimed it again in 1990 — the claim is broadly correct for 1986.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Chernobyl's April 1986 disaster did dramatically strengthen West Germany's anti-nuclear movement; West Germany did become the world's largest goods exporter by value in 1986, though the US regained the lead in 1988-89 before West Germany reclaimed it again in 1990 — the claim is broadly correct for 1986.",
+        "source": "https://en.wikipedia.org/wiki/Anti-nuclear_movement_in_Germany",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Anti-nuclear_movement_in_Germany"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Berlin Wall falls on November 9, 1989",
     "verdict": "TRUE",
     "reason": "On the evening of 9 November 1989 border crossings were opened after Günter Schabowski's inadvertent live announcement; crowds from both sides converged at the Wall and began dismantling it — one of the defining events of the 20th century.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On the evening of 9 November 1989 border crossings were opened after Günter Schabowski's inadvertent live announcement; crowds from both sides converged at the Wall and began dismantling it — one of the defining events of the 20th century.",
+        "source": "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall"
   },
   {
@@ -228,6 +804,24 @@
     "title": "German Monetary Union introduces D-Mark in East Germany",
     "verdict": "PARTIAL",
     "reason": "The German Monetary, Economic and Social Union entered into force on 1 July 1990, introducing the Deutsche Mark in East Germany; however the exchange rate was not uniformly 1:1 — wages and savings up to M 4,000 were converted at 1:1 while larger amounts were at 2:1, making the description slightly inaccurate.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The German Monetary, Economic and Social Union entered into force on 1 July 1990, introducing the Deutsche Mark in East Germany; however the exchange rate was not uniformly 1:1 — wages and savings up to M 4,000 were converted at 1:1 while larger amounts were at 2:1, making the description slightly inaccurate.",
+        "source": "https://www.bundesbank.de/en/tasks/topics/german-monetary-union-historical-background-666890",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.bundesbank.de/en/tasks/topics/german-monetary-union-historical-background-666890"
   },
   {
@@ -235,6 +829,24 @@
     "title": "German reunification completed on October 3, 1990",
     "verdict": "TRUE",
     "reason": "German reunification was formally completed on 3 October 1990 when five East German states acceded to the Federal Republic under the Two Plus Four Treaty framework; October 3 became Germany's national Day of German Unity.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "German reunification was formally completed on 3 October 1990 when five East German states acceded to the Federal Republic under the Two Plus Four Treaty framework; October 3 became Germany's national Day of German Unity.",
+        "source": "https://en.wikipedia.org/wiki/German_reunification",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/German_reunification"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Bundestag votes to move capital from Bonn to Berlin",
     "verdict": "TRUE",
     "reason": "The Bundestag voted on 20 June 1991 to move the seat of government to Berlin by 338 votes to 320 — exactly the margin stated — with eastern German legislators providing the decisive margin; the government relocated in 1999.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Bundestag voted on 20 June 1991 to move the seat of government to Berlin by 338 votes to 320 — exactly the margin stated — with eastern German legislators providing the decisive margin; the government relocated in 1999.",
+        "source": "https://en.wikipedia.org/wiki/Decision_on_the_Capital_of_Germany",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Decision_on_the_Capital_of_Germany"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Rostock-Lichtenhagen: xenophobic mob attacks refugee housing",
     "verdict": "TRUE",
     "reason": "From 22-26 August 1992 up to 1,200 right-wing rioters attacked the asylum-seeker reception centre and Vietnamese workers' housing in Rostock-Lichtenhagen with Molotov cocktails and rocks, while bystanders applauded; the attacks shocked Germany and fed the asylum policy debate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "From 22-26 August 1992 up to 1,200 right-wing rioters attacked the asylum-seeker reception centre and Vietnamese workers' housing in Rostock-Lichtenhagen with Molotov cocktails and rocks, while bystanders applauded; the attacks shocked Germany and fed the asylum policy debate.",
+        "source": "https://en.wikipedia.org/wiki/Rostock-Lichtenhagen_riots",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Rostock-Lichtenhagen_riots"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Germany ratifies Maastricht Treaty, committing to European monetary union",
     "verdict": "TRUE",
     "reason": "The Bundestag ratified the Maastricht Treaty on 2 December 1992 with 543 of 562 votes, requiring Basic Law amendments for EU membership and monetary union; Kohl overrode Bundesbank resistance, viewing European integration as inseparable from German national interest.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Bundestag ratified the Maastricht Treaty on 2 December 1992 with 543 of 562 votes, requiring Basic Law amendments for EU membership and monetary union; Kohl overrode Bundesbank resistance, viewing European integration as inseparable from German national interest.",
+        "source": "https://en.wikipedia.org/wiki/Maastricht_Treaty",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Maastricht_Treaty"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Asylum compromise restricts Germany's refugee policy amid far-right violence",
     "verdict": "TRUE",
     "reason": "On 26 May 1993 the Bundestag amended Article 16 of the Basic Law to restrict asylum rights, three days before the Solingen arson that killed five Turks; combined with three killed in the Mölln arson (November 1992), the eight deaths are accurately counted across both attacks.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 26 May 1993 the Bundestag amended Article 16 of the Basic Law to restrict asylum rights, three days before the Solingen arson that killed five Turks; combined with three killed in the Mölln arson (November 1992), the eight deaths are accurately counted across both attacks.",
+        "source": "https://en.wikipedia.org/wiki/1993_Solingen_arson_attack",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1993_Solingen_arson_attack"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Bundeswehr deployed to Bosnia in first post-WWII combat zone engagement",
     "verdict": "PARTIAL",
     "reason": "Germany deployed up to 4,000 Bundeswehr troops to Bosnia in the NATO IFOR mission from December 1995 following the 1994 Constitutional Court ruling permitting out-of-area deployments; however the mission was primarily peacekeeping and logistics, not combat — Germany's first actual combat operations occurred during the 1999 Kosovo campaign.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Germany deployed up to 4,000 Bundeswehr troops to Bosnia in the NATO IFOR mission from December 1995 following the 1994 Constitutional Court ruling permitting out-of-area deployments; however the mission was primarily peacekeeping and logistics, not combat — Germany's first actual combat operations occurred during the 1999 Kosovo campaign.",
+        "source": "https://www.bundeswehr.de/en/about-bundeswehr/history/army-on-operations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.bundeswehr.de/en/about-bundeswehr/history/army-on-operations"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Gerhard Schroeder and SPD win federal election, ending Kohl era",
     "verdict": "TRUE",
     "reason": "The SPD under Schröder won the 27 September 1998 election with 40.9% (vs CDU/CSU's 35.2%), ending Kohl's 16-year chancellorship in the first time a sitting chancellor was voted out of office in modern Germany; a red-green coalition followed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The SPD under Schröder won the 27 September 1998 election with 40.9% (vs CDU/CSU's 35.2%), ending Kohl's 16-year chancellorship in the first time a sitting chancellor was voted out of office in modern Germany; a red-green coalition followed.",
+        "source": "https://en.wikipedia.org/wiki/1998_German_federal_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1998_German_federal_election"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Germany participates in NATO bombing of Yugoslavia over Kosovo",
     "verdict": "TRUE",
     "reason": "Germany participated in the March-June 1999 NATO air campaign against Yugoslavia — the Bundeswehr's first combat operations since World War II — with Foreign Minister Fischer of the Greens invoking the Auschwitz precedent to justify overriding the party's pacifist tradition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Germany participated in the March-June 1999 NATO air campaign against Yugoslavia — the Bundeswehr's first combat operations since World War II — with Foreign Minister Fischer of the Greens invoking the Auschwitz precedent to justify overriding the party's pacifist tradition.",
+        "source": "https://en.wikipedia.org/wiki/NATO_bombing_of_Yugoslavia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/NATO_bombing_of_Yugoslavia"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Euro introduced; Deutsche Mark retired as Germany's monetary unit",
     "verdict": "TRUE",
     "reason": "The euro was introduced as a non-cash accounting currency on 1 January 1999, with the Deutsche Mark irrevocably fixed at DM 1.95583 to €1; euro banknotes and coins entered circulation on 1 January 2002 with the DM ceasing legal tender on 31 December 2001.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The euro was introduced as a non-cash accounting currency on 1 January 1999, with the Deutsche Mark irrevocably fixed at DM 1.95583 to €1; euro banknotes and coins entered circulation on 1 January 2002 with the DM ceasing legal tender on 31 December 2001.",
+        "source": "https://en.wikipedia.org/wiki/German_adoption_of_the_euro",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/German_adoption_of_the_euro"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Renewable Energy Sources Act launches the Energiewende",
     "verdict": "TRUE",
     "reason": "The Erneuerbare-Energien-Gesetz (EEG) came into force on 1 April 2000, introducing 20-year guaranteed feed-in tariffs for renewable electricity and driving an eight-fold expansion of renewables in Germany's power mix over the following two decades.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Erneuerbare-Energien-Gesetz (EEG) came into force on 1 April 2000, introducing 20-year guaranteed feed-in tariffs for renewable electricity and driving an eight-fold expansion of renewables in Germany's power mix over the following two decades.",
+        "source": "https://en.wikipedia.org/wiki/German_Renewable_Energy_Sources_Act",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/German_Renewable_Energy_Sources_Act"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Schroeder wins reelection by opposing Iraq War, straining US relations",
     "verdict": "TRUE",
     "reason": "Schröder narrowly won the 22 September 2002 election partly by opposing any US-led invasion of Iraq; together with France, Germany blocked UN Security Council authorisation for the invasion, causing a serious rift in US-German relations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Schröder narrowly won the 22 September 2002 election partly by opposing any US-led invasion of Iraq; together with France, Germany blocked UN Security Council authorisation for the invasion, causing a serious rift in US-German relations.",
+        "source": "https://en.wikipedia.org/wiki/Gerhard_Schr%C3%B6der",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Gerhard_Schr%C3%B6der"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Agenda 2010: Schroeder launches major welfare state reform",
     "verdict": "TRUE",
     "reason": "Chancellor Schröder announced the Agenda 2010 reform package before the Bundestag on 14 March 2003, including the four-stage Hartz reforms that restructured unemployment benefits, tightened eligibility, and increased labour market flexibility.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chancellor Schröder announced the Agenda 2010 reform package before the Bundestag on 14 March 2003, including the four-stage Hartz reforms that restructured unemployment benefits, tightened eligibility, and increased labour market flexibility.",
+        "source": "https://en.wikipedia.org/wiki/Agenda_2010",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Agenda_2010"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Angela Merkel becomes Germany's first female Chancellor",
     "verdict": "TRUE",
     "reason": "Angela Merkel was elected Chancellor on 22 November 2005 — the first woman and first East German to hold the office — leading a CDU/CSU-SPD grand coalition after inconclusive September 2005 elections.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Angela Merkel was elected Chancellor on 22 November 2005 — the first woman and first East German to hold the office — leading a CDU/CSU-SPD grand coalition after inconclusive September 2005 elections.",
+        "source": "https://en.wikipedia.org/wiki/Angela_Merkel",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Angela_Merkel"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Germany holds EU presidency, advances Lisbon Treaty negotiations",
     "verdict": "TRUE",
     "reason": "Germany held the EU Council presidency in H1 2007; Chancellor Merkel chaired the June 2007 Brussels European Council that produced the 16-page mandate for the Lisbon Treaty, widely credited as saving the stalled European constitutional process.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Germany held the EU Council presidency in H1 2007; Chancellor Merkel chaired the June 2007 Brussels European Council that produced the 16-page mandate for the Lisbon Treaty, widely credited as saving the stalled European constitutional process.",
+        "source": "https://en.wikipedia.org/wiki/Treaty_of_Lisbon",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Treaty_of_Lisbon"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "Global financial crisis hits Germany; government launches bank bailouts",
     "verdict": "TRUE",
     "reason": "The 2008 financial crisis caused Germany's GDP to contract sharply (falling 7.9% year-on-year in Q2 2009); the government bailed out Hypo Real Estate with over €100 billion and created a €480 billion Financial Market Stabilization Fund in October 2008.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 2008 financial crisis caused Germany's GDP to contract sharply (falling 7.9% year-on-year in Q2 2009); the government bailed out Hypo Real Estate with over €100 billion and created a €480 billion Financial Market Stabilization Fund in October 2008.",
+        "source": "https://en.wikipedia.org/wiki/2008_financial_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2008_financial_crisis"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Germany leads European response to Greek sovereign debt crisis",
     "verdict": "TRUE",
     "reason": "Germany was the central player in the May 2010 €110 billion Greek bailout and subsequent eurozone crisis management; Chancellor Merkel and Finance Minister Schäuble insisted on strict austerity conditionality, shaping the European response.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Germany was the central player in the May 2010 €110 billion Greek bailout and subsequent eurozone crisis management; Chancellor Merkel and Finance Minister Schäuble insisted on strict austerity conditionality, shaping the European response.",
+        "source": "https://en.wikipedia.org/wiki/Greek_government-debt_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Greek_government-debt_crisis"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Fukushima triggers Germany's accelerated nuclear phase-out",
     "verdict": "TRUE",
     "reason": "Following the March 2011 Fukushima disaster Merkel reversed the 2010 lifetime extensions and the Bundestag voted 513-79 in late June 2011 to close all German nuclear plants by 2022, making the phase-out a cornerstone of the Energiewende.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following the March 2011 Fukushima disaster Merkel reversed the 2010 lifetime extensions and the Bundestag voted 513-79 in late June 2011 to close all German nuclear plants by 2022, making the phase-out a cornerstone of the Energiewende.",
+        "source": "https://en.wikipedia.org/wiki/Nuclear_power_in_Germany",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Nuclear_power_in_Germany"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "NSU neo-Nazi terror cell uncovered after decade of murders",
     "verdict": "TRUE",
     "reason": "The National Socialist Underground was exposed on 4 November 2011 when Mundlos and Böhnhardt died after a bank robbery; the cell was found responsible for ten murders, two bombings, and fifteen bank robberies committed between 1998 and 2011, shocking Germany with the intelligence failure.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The National Socialist Underground was exposed on 4 November 2011 when Mundlos and Böhnhardt died after a bank robbery; the cell was found responsible for ten murders, two bombings, and fifteen bank robberies committed between 1998 and 2011, shocking Germany with the intelligence failure.",
+        "source": "https://en.wikipedia.org/wiki/National_Socialist_Underground",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/National_Socialist_Underground"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "NSA surveillance scandal reveals mass spying on German citizens and Merkel",
     "verdict": "TRUE",
     "reason": "Snowden's 2013 disclosures revealed the NSA had tapped Merkel's personal mobile phone (reportedly since 2002) and conducted mass surveillance of German communications; Merkel declared 'spying among friends is not acceptable' and the affair caused a major diplomatic crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Snowden's 2013 disclosures revealed the NSA had tapped Merkel's personal mobile phone (reportedly since 2002) and conducted mass surveillance of German communications; Merkel declared 'spying among friends is not acceptable' and the affair caused a major diplomatic crisis.",
+        "source": "https://en.wikipedia.org/wiki/German_Parliamentary_Committee_investigation_of_the_NSA_spying_scandal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/German_Parliamentary_Committee_investigation_of_the_NSA_spying_scandal"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Merkel wins third term; Germany introduces statutory minimum wage",
     "verdict": "PARTIAL",
     "reason": "Merkel's CDU/CSU won 41.5% in the September 2013 election (not its best since 1994 — CDU/CSU got 35.2% in 2005 and the 1994 result was 41.4%, so 2013's 41.5% was close but not clearly the best); the €8.50 minimum wage was agreed as a coalition condition but did not take effect until 1 January 2015, not during 2013.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Merkel's CDU/CSU won 41.5% in the September 2013 election (not its best since 1994 — CDU/CSU got 35.2% in 2005 and the 1994 result was 41.4%, so 2013's 41.5% was close but not clearly the best); the €8.50 minimum wage was agreed as a coalition condition but did not take effect until 1 January 2015, not during 2013.",
+        "source": "https://en.wikipedia.org/wiki/Minimum_wage_in_Germany",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Minimum_wage_in_Germany"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "Germany leads European diplomatic response to Russian annexation of Crimea",
     "verdict": "TRUE",
     "reason": "Following Russia's March 2014 annexation of Crimea, Germany took a leading role in EU sanctions coordination and the Normandy Format (Germany, France, Russia, Ukraine) that produced the Minsk agreements, while maintaining diplomatic channels given its energy dependence on Russia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following Russia's March 2014 annexation of Crimea, Germany took a leading role in EU sanctions coordination and the Normandy Format (Germany, France, Russia, Ukraine) that produced the Minsk agreements, while maintaining diplomatic channels given its energy dependence on Russia.",
+        "source": "https://en.wikipedia.org/wiki/2014_Russian_annexation_of_Crimea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2014_Russian_annexation_of_Crimea"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Germany opens borders and welcomes over one million asylum seekers",
     "verdict": "TRUE",
     "reason": "In summer/autumn 2015 Merkel suspended the Dublin regulation and declared 'Wir schaffen das' on 31 August 2015; over 1.2 million people applied for asylum in Germany in 2015-16, primarily from Syria, Afghanistan, and Iraq — the largest refugee intake in modern German history.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In summer/autumn 2015 Merkel suspended the Dublin regulation and declared 'Wir schaffen das' on 31 August 2015; over 1.2 million people applied for asylum in Germany in 2015-16, primarily from Syria, Afghanistan, and Iraq — the largest refugee intake in modern German history.",
+        "source": "https://en.wikipedia.org/wiki/Wir_schaffen_das",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Wir_schaffen_das"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Volkswagen Dieselgate scandal damages German industrial reputation",
     "verdict": "PARTIAL",
     "reason": "US authorities revealed Volkswagen's defeat-device emissions fraud in September 2015, affecting ~11 million vehicles worldwide; however the total cost to VW has been estimated at ~€33 billion ($37.5 billion), significantly more than the '$25 billion' cited in the description.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "US authorities revealed Volkswagen's defeat-device emissions fraud in September 2015, affecting ~11 million vehicles worldwide; however the total cost to VW has been estimated at ~€33 billion ($37.5 billion), significantly more than the '$25 billion' cited in the description.",
+        "source": "https://en.wikipedia.org/wiki/Volkswagen_emissions_scandal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Volkswagen_emissions_scandal"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "Berlin Christmas market attack kills 12 people",
     "verdict": "TRUE",
     "reason": "On 19 December 2016 Tunisian asylum-seeker Anis Amri drove a truck into the Breitscheidplatz Christmas market, killing 12 people (including the truck's original driver) and wounding 56; the IS-linked attacker was known to security services as a risk but had not been deported.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 19 December 2016 Tunisian asylum-seeker Anis Amri drove a truck into the Breitscheidplatz Christmas market, killing 12 people (including the truck's original driver) and wounding 56; the IS-linked attacker was known to security services as a risk but had not been deported.",
+        "source": "https://en.wikipedia.org/wiki/2016_Berlin_truck_attack",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2016_Berlin_truck_attack"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "Bundestag legalizes same-sex marriage; AfD enters parliament as major force",
     "verdict": "TRUE",
     "reason": "The Bundestag legalised same-sex marriage on 30 June 2017 (393-226, with Merkel herself voting against); in September's election the AfD entered the Bundestag for the first time with 12.6% of the vote — the first far-right party in the federal parliament since the 1950s.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Bundestag legalised same-sex marriage on 30 June 2017 (393-226, with Merkel herself voting against); in September's election the AfD entered the Bundestag for the first time with 12.6% of the vote — the first far-right party in the federal parliament since the 1950s.",
+        "source": "https://en.wikipedia.org/wiki/Same-sex_marriage_in_Germany",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Same-sex_marriage_in_Germany"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "Far-right terror escalates: Lubcke assassination and Halle synagogue attack",
     "verdict": "TRUE",
     "reason": "CDU politician Walter Lübcke was shot dead by neo-Nazi Stephan Ernst on 1 June 2019 — the first far-right political assassination since the Weimar Republic; on 9 October 2019 (Yom Kippur) a gunman attacked a Halle synagogue, failed to enter, then killed two people nearby.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "CDU politician Walter Lübcke was shot dead by neo-Nazi Stephan Ernst on 1 June 2019 — the first far-right political assassination since the Weimar Republic; on 9 October 2019 (Yom Kippur) a gunman attacked a Halle synagogue, failed to enter, then killed two people nearby.",
+        "source": "https://en.wikipedia.org/wiki/Halle_synagogue_shooting",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Halle_synagogue_shooting"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "Germany leads EU recovery fund breakthrough, enabling common EU debt",
     "verdict": "PARTIAL",
     "reason": "Germany and France jointly proposed a €500 billion EU recovery fund on 18 May 2020; the final Next Generation EU instrument agreed by EU leaders on 21 July 2020 was €750 billion — the description accurately credits the Franco-German initiative but misstates the proposed amount as €750 billion when the Franco-German proposal was €500 billion.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Germany and France jointly proposed a €500 billion EU recovery fund on 18 May 2020; the final Next Generation EU instrument agreed by EU leaders on 21 July 2020 was €750 billion — the description accurately credits the Franco-German initiative but misstates the proposed amount as €750 billion when the Franco-German proposal was €500 billion.",
+        "source": "https://en.wikipedia.org/wiki/Next_Generation_EU",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Next_Generation_EU"
   },
   {
@@ -424,6 +1504,24 @@
     "title": "COVID-19: Germany suspends debt brake for massive economic rescue",
     "verdict": "TRUE",
     "reason": "Germany went into lockdown in March 2020; Merkel's nationally televised address was widely praised; the constitutional debt brake was suspended and a supplementary budget of ~156 billion euros approved, with the Kurzarbeit scheme massively expanded to prevent mass unemployment.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Germany went into lockdown in March 2020; Merkel's nationally televised address was widely praised; the constitutional debt brake was suspended and a supplementary budget of ~156 billion euros approved, with the Kurzarbeit scheme massively expanded to prevent mass unemployment.",
+        "source": "https://en.wikipedia.org/wiki/German_government_response_to_the_COVID-19_pandemic",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/German_government_response_to_the_COVID-19_pandemic"
   },
   {
@@ -431,6 +1529,24 @@
     "title": "Ahr Valley floods kill 184 in Germany's deadliest disaster in decades",
     "verdict": "PARTIAL",
     "reason": "Catastrophic flooding hit the Ahr Valley on 14-15 July 2021 — Germany's deadliest natural disaster in decades; however the death toll was approximately 190 total (134 in the Ahr valley alone), not 184 as stated, though the figure is in the right range.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Catastrophic flooding hit the Ahr Valley on 14-15 July 2021 — Germany's deadliest natural disaster in decades; however the death toll was approximately 190 total (134 in the Ahr valley alone), not 184 as stated, though the figure is in the right range.",
+        "source": "https://en.wikipedia.org/wiki/2021_European_floods",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2021_European_floods"
   },
   {
@@ -438,6 +1554,24 @@
     "title": "Federal election ends Merkel era; Scholz forms traffic light coalition",
     "verdict": "TRUE",
     "reason": "The 26 September 2021 election resulted in a narrow SPD victory (25.7% vs CDU/CSU's 24.1%); Olaf Scholz formed Germany's first three-party federal coalition (SPD-Greens-FDP) — ending Merkel's 16-year chancellorship.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 26 September 2021 election resulted in a narrow SPD victory (25.7% vs CDU/CSU's 24.1%); Olaf Scholz formed Germany's first three-party federal coalition (SPD-Greens-FDP) — ending Merkel's 16-year chancellorship.",
+        "source": "https://en.wikipedia.org/wiki/2021_German_federal_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2021_German_federal_election"
   },
   {
@@ -445,6 +1579,24 @@
     "title": "Russia invades Ukraine: Germany announces Zeitenwende defense policy shift",
     "verdict": "TRUE",
     "reason": "On 27 February 2022, three days after Russia's full-scale invasion, Chancellor Scholz announced a Zeitenwende in a Bundestag speech, pledging a €100 billion special Bundeswehr fund and commitment to NATO's 2% GDP target — the most dramatic shift in German defence policy since 1955.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 27 February 2022, three days after Russia's full-scale invasion, Chancellor Scholz announced a Zeitenwende in a Bundestag speech, pledging a €100 billion special Bundeswehr fund and commitment to NATO's 2% GDP target — the most dramatic shift in German defence policy since 1955.",
+        "source": "https://en.wikipedia.org/wiki/Zeitenwende_speech",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zeitenwende_speech"
   },
   {
@@ -452,6 +1604,24 @@
     "title": "Germany conducts crash program to phase out Russian gas after Ukraine invasion",
     "verdict": "TRUE",
     "reason": "Russia had supplied ~55% of Germany's gas imports in 2021; following the invasion and supply cuts Germany leased floating LNG terminals (first online December 2022), passed the LNG Acceleration Act, extended coal plants, and provided hundreds of billions in energy subsidies.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Russia had supplied ~55% of Germany's gas imports in 2021; following the invasion and supply cuts Germany leased floating LNG terminals (first online December 2022), passed the LNG Acceleration Act, extended coal plants, and provided hundreds of billions in energy subsidies.",
+        "source": "https://www.cleanenergywire.org/factsheets/liquefied-gas-does-lng-have-place-germanys-energy-future",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cleanenergywire.org/factsheets/liquefied-gas-does-lng-have-place-germanys-energy-future"
   },
   {
@@ -459,6 +1629,24 @@
     "title": "Constitutional Court strikes down budget reallocation, triggering fiscal crisis",
     "verdict": "TRUE",
     "reason": "On 15 November 2023 the Federal Constitutional Court ruled that reallocating €60 billion in unused COVID emergency funds to the Climate and Transformation Fund was unconstitutional under debt brake rules, plunging the traffic light coalition into a severe fiscal and political crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 15 November 2023 the Federal Constitutional Court ruled that reallocating €60 billion in unused COVID emergency funds to the Climate and Transformation Fund was unconstitutional under debt brake rules, plunging the traffic light coalition into a severe fiscal and political crisis.",
+        "source": "https://en.wikipedia.org/wiki/German_balanced_budget_amendment",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/German_balanced_budget_amendment"
   },
   {
@@ -466,6 +1654,24 @@
     "title": "Last nuclear power plants shut down, completing Germany's nuclear exit",
     "verdict": "TRUE",
     "reason": "Germany's last three nuclear power plants — Emsland, Isar 2, and Neckarwestheim 2 — were shut down on 15 April 2023, completing the nuclear phase-out originally planned for end-2022 but extended by months due to the energy crisis from Russia's Ukraine invasion.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Germany's last three nuclear power plants — Emsland, Isar 2, and Neckarwestheim 2 — were shut down on 15 April 2023, completing the nuclear phase-out originally planned for end-2022 but extended by months due to the energy crisis from Russia's Ukraine invasion.",
+        "source": "https://en.wikipedia.org/wiki/Nuclear_power_phase-out",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Nuclear_power_phase-out"
   },
   {
@@ -473,6 +1679,24 @@
     "title": "AfD wins Thuringia state election; traffic light coalition collapses",
     "verdict": "TRUE",
     "reason": "The AfD won the 1 September 2024 Thuringia state election with ~32.8% — the first far-right party to win a German state election since the Nazi era; on 6 November 2024 Scholz dismissed Finance Minister Lindner over irreconcilable differences on the debt brake, collapsing the coalition and triggering the February 2025 snap election.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The AfD won the 1 September 2024 Thuringia state election with ~32.8% — the first far-right party to win a German state election since the Nazi era; on 6 November 2024 Scholz dismissed Finance Minister Lindner over irreconcilable differences on the debt brake, collapsing the coalition and triggering the February 2025 snap election.",
+        "source": "https://en.wikipedia.org/wiki/2024_Thuringian_state_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2024_Thuringian_state_election"
   },
   {
@@ -480,6 +1704,24 @@
     "title": "Friedrich Merz wins federal election; Germany suspends debt brake for defense",
     "verdict": "TRUE",
     "reason": "The CDU/CSU won the 23 February 2025 election with ~28.8% and formed a coalition with the SPD; the outgoing Bundestag passed a constitutional amendment exempting defence spending above 1% of GDP from the debt brake and creating a €500 billion infrastructure fund — the most dramatic fiscal shift in a generation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The CDU/CSU won the 23 February 2025 election with ~28.8% and formed a coalition with the SPD; the outgoing Bundestag passed a constitutional amendment exempting defence spending above 1% of GDP from the debt brake and creating a €500 billion infrastructure fund — the most dramatic fiscal shift in a generation.",
+        "source": "https://en.wikipedia.org/wiki/2025_German_federal_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2025_German_federal_election"
   }
 ]

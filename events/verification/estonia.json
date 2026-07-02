@@ -4,6 +4,24 @@
     "title": "Supreme Soviet Declares Transitional Period to Independence",
     "verdict": "TRUE",
     "reason": "On 30 March 1990, the Supreme Soviet of the Estonian SSR adopted a resolution declaring the Soviet occupation of 17 June 1940 illegal and proclaiming a transitional period toward the restoration of de facto independence. This is extensively documented across Estonian and international sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 30 March 1990, the Supreme Soviet of the Estonian SSR adopted a resolution declaring the Soviet occupation of 17 June 1940 illegal and proclaiming a transitional period toward the restoration of de facto independence. This is extensively documented across Estonian and international sources.",
+        "source": "https://en.wikipedia.org/wiki/Estonian_Restoration_of_Independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Estonian_Restoration_of_Independence"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Independence Referendum Passes with 78% Support",
     "verdict": "TRUE",
     "reason": "A referendum held on 3 March 1991 in the Estonian SSR returned 77.83% in favour of restoring independence with an approximately 83% turnout, consistent with the 78% figure cited. The result is confirmed by Wikipedia, the Washington Post, and Estonian electoral archives.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A referendum held on 3 March 1991 in the Estonian SSR returned 77.83% in favour of restoring independence with an approximately 83% turnout, consistent with the 78% figure cited. The result is confirmed by Wikipedia, the Washington Post, and Estonian electoral archives.",
+        "source": "https://en.wikipedia.org/wiki/1991_Estonian_independence_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1991_Estonian_independence_referendum"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Estonia Restores Independence During Moscow Coup",
     "verdict": "TRUE",
     "reason": "Estonia's Supreme Council voted to restore independence on 20 August 1991 at 23:02 local time, during the failed Moscow coup. The Soviet Union formally recognised Estonian independence on 6 September 1991, and Estonia joined the UN on 17 September 1991.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Estonia's Supreme Council voted to restore independence on 20 August 1991 at 23:02 local time, during the failed Moscow coup. The Soviet Union formally recognised Estonian independence on 6 September 1991, and Estonia joined the UN on 17 September 1991.",
+        "source": "https://news.err.ee/1609429462/restoration-of-independence-events-of-august-20-1991-explained",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://news.err.ee/1609429462/restoration-of-independence-events-of-august-20-1991-explained"
   },
   {
@@ -25,6 +79,24 @@
     "title": "New Constitution Adopted by Referendum",
     "verdict": "TRUE",
     "reason": "A referendum held on 28 June 1992 approved Estonia's new constitution with 91.1% of attending voters in favour. The constitution established a parliamentary republic and entered into force on 3 July 1992, confirmed by the Wikipedia article on the 1992 Estonian referendum.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A referendum held on 28 June 1992 approved Estonia's new constitution with 91.1% of attending voters in favour. The constitution established a parliamentary republic and entered into force on 3 July 1992, confirmed by the Wikipedia article on the 1992 Estonian referendum.",
+        "source": "https://en.wikipedia.org/wiki/1992_Estonian_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1992_Estonian_referendum"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Lennart Meri Elected First Post-Independence President",
     "verdict": "TRUE",
     "reason": "Lennart Meri was elected president on 6 October 1992 after the parliamentary majority (Pro Patria Alliance) chose him over Arnold Rüütel, and Mart Laar was appointed prime minister on 21 October 1992 at age 32, heading a center-right coalition. Both facts are confirmed by Wikipedia and Estonian presidential archives.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Lennart Meri was elected president on 6 October 1992 after the parliamentary majority (Pro Patria Alliance) chose him over Arnold Rüütel, and Mart Laar was appointed prime minister on 21 October 1992 at age 32, heading a center-right coalition. Both facts are confirmed by Wikipedia and Estonian presidential archives.",
+        "source": "https://en.wikipedia.org/wiki/Lennart_Meri",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Lennart_Meri"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Estonian Kroon Currency Reform",
     "verdict": "TRUE",
     "reason": "Estonia reintroduced the kroon on 20 June 1992, replacing the Soviet rouble at 1 KR = 10 Rbls and pegging it to the Deutsche Mark at 8 KR = DM 1 via a currency board. This halted hyperinflation that had exceeded 1,000% annually, confirmed by Eesti Pank and the Bundesbank.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Estonia reintroduced the kroon on 20 June 1992, replacing the Soviet rouble at 1 KR = 10 Rbls and pegging it to the Deutsche Mark at 8 KR = DM 1 via a currency board. This halted hyperinflation that had exceeded 1,000% annually, confirmed by Eesti Pank and the Bundesbank.",
+        "source": "https://en.wikipedia.org/wiki/Estonian_kroon",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Estonian_kroon"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Aliens Act Establishes Residency Permit System",
     "verdict": "TRUE",
     "reason": "The Aliens Act was passed on 8 July 1993, requiring non-citizens resident before July 1990 to apply for permanent residency permits within one year. The law primarily affected ethnic Russians and drew criticism from European institutions, confirmed by Human Rights Watch and Legislationline archives.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Aliens Act was passed on 8 July 1993, requiring non-citizens resident before July 1990 to apply for permanent residency permits within one year. The law primarily affected ethnic Russians and drew criticism from European institutions, confirmed by Human Rights Watch and Legislationline archives.",
+        "source": "https://legislationline.org/taxonomy/term/13347",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://legislationline.org/taxonomy/term/13347"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Russian Military Forces Complete Withdrawal",
     "verdict": "TRUE",
     "reason": "The last Russian troops withdrew from Estonia on 31 August 1994 following a withdrawal treaty signed by presidents Meri and Yeltsin on 26 July 1994. The withdrawal ended over 50 years of Soviet/Russian military presence, confirmed by ERR, Estonian World, and the Christian Science Monitor.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The last Russian troops withdrew from Estonia on 31 August 1994 following a withdrawal treaty signed by presidents Meri and Yeltsin on 26 July 1994. The withdrawal ended over 50 years of Soviet/Russian military presence, confirmed by ERR, Estonian World, and the Christian Science Monitor.",
+        "source": "https://news.err.ee/1609437929/thirty-years-since-the-last-russian-forces-left-estonia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://news.err.ee/1609437929/thirty-years-since-the-last-russian-forces-left-estonia"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Estonia Sinks in Baltic Sea Ferry Disaster",
     "verdict": "TRUE",
     "reason": "The MS Estonia sank on 28 September 1994 in the Baltic Sea, killing 852 people — one of the deadliest peacetime maritime disasters in European history. The bow visor failure cause and the 852 death toll are confirmed by Wikipedia, Britannica, History.com, and multiple maritime safety sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The MS Estonia sank on 28 September 1994 in the Baltic Sea, killing 852 people — one of the deadliest peacetime maritime disasters in European history. The bow visor failure cause and the 852 death toll are confirmed by Wikipedia, Britannica, History.com, and multiple maritime safety sources.",
+        "source": "https://en.wikipedia.org/wiki/Sinking_of_the_MS_Estonia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sinking_of_the_MS_Estonia"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Coalition Party Wins Parliamentary Elections",
     "verdict": "TRUE",
     "reason": "In elections held 5 March 1995, the Coalition Party–Rural Union alliance won 41 of 101 seats, and Tiit Vähi was appointed prime minister. This was Estonia's first full electoral cycle under the 1992 constitution, confirmed by IPU Parline and Wikipedia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In elections held 5 March 1995, the Coalition Party–Rural Union alliance won 41 of 101 seats, and Tiit Vähi was appointed prime minister. This was Estonia's first full electoral cycle under the 1992 constitution, confirmed by IPU Parline and Wikipedia.",
+        "source": "https://en.wikipedia.org/wiki/Estonian_parliamentary_election,_1995",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Estonian_parliamentary_election,_1995"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Estonia Signs EU Association Agreement",
     "verdict": "TRUE",
     "reason": "Estonia signed its Europe Agreement (association agreement) with the EU on 12 June 1995 in Luxembourg. The agreement entered into force on 1 February 1998 and formalised Estonia's path to EU membership, confirmed by the European Commission press archive.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Estonia signed its Europe Agreement (association agreement) with the EU on 12 June 1995 in Luxembourg. The agreement entered into force on 1 February 1998 and formalised Estonia's path to EU membership, confirmed by the European Commission press archive.",
+        "source": "https://ec.europa.eu/commission/presscorner/detail/en/pres_95_173",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://ec.europa.eu/commission/presscorner/detail/en/pres_95_173"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Mart Siimann Becomes Prime Minister After Political Crisis",
     "verdict": "TRUE",
     "reason": "Mart Siimann was appointed prime minister on 17 March 1997, succeeding Tiit Vähi who resigned on 25 February 1997 under internal party pressure. Siimann's centre-right coalition continued EU and NATO accession work through 1999, confirmed by Wikipedia and Estonian government records.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mart Siimann was appointed prime minister on 17 March 1997, succeeding Tiit Vähi who resigned on 25 February 1997 under internal party pressure. Siimann's centre-right coalition continued EU and NATO accession work through 1999, confirmed by Wikipedia and Estonian government records.",
+        "source": "https://en.wikipedia.org/wiki/Mart_Siimann",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mart_Siimann"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Estonia Opens EU Accession Negotiations",
     "verdict": "TRUE",
     "reason": "Formal EU accession negotiations opened on 31 March 1998, with Estonia in the first wave of six candidate countries (alongside Cyprus, Czech Republic, Hungary, Poland, and Slovenia) selected at the Luxembourg summit in 1997. Confirmed by the Estonian Foreign Ministry timeline and EU enlargement archives.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Formal EU accession negotiations opened on 31 March 1998, with Estonia in the first wave of six candidate countries (alongside Cyprus, Czech Republic, Hungary, Poland, and Slovenia) selected at the Luxembourg summit in 1997. Confirmed by the Estonian Foreign Ministry timeline and EU enlargement archives.",
+        "source": "https://eu.mfa.ee/estonia-eu-timeline/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://eu.mfa.ee/estonia-eu-timeline/"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Mart Laar Returns as Prime Minister",
     "verdict": "TRUE",
     "reason": "After the March 1999 parliamentary elections, Mart Laar formed a three-party centre-right coalition (Pro Patria, Reform Party, Moderates) and was sworn in as prime minister on 25 March 1999, his second term after 1992–1994. Confirmed by Wikipedia and the IPU Parline database.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After the March 1999 parliamentary elections, Mart Laar formed a three-party centre-right coalition (Pro Patria, Reform Party, Moderates) and was sworn in as prime minister on 25 March 1999, his second term after 1992–1994. Confirmed by Wikipedia and the IPU Parline database.",
+        "source": "https://en.wikipedia.org/wiki/Mart_Laar",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mart_Laar"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Internet Voting Legislation Introduced",
     "verdict": "TRUE",
     "reason": "Estonia's Digital Signature Act was codified in 2000, giving digital signatures legal force; legislation specifically enabling internet voting was adopted in 2002, building on the digital ID infrastructure. The 2000 date is accurate for the foundational legislative groundwork. Confirmed by the Estonian NEC website and European Commission digital-building-blocks.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Estonia's Digital Signature Act was codified in 2000, giving digital signatures legal force; legislation specifically enabling internet voting was adopted in 2002, building on the digital ID infrastructure. The 2000 date is accurate for the foundational legislative groundwork. Confirmed by the Estonian NEC website and European Commission digital-building-blocks.",
+        "source": "https://en.wikipedia.org/wiki/Electronic_voting_in_Estonia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Electronic_voting_in_Estonia"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Arnold Ruutel Elected President",
     "verdict": "TRUE",
     "reason": "Arnold Rüütel was elected president by the electoral college on 21 September 2001, winning 186 votes to Toomas Savi's 155 in the second round, and was inaugurated on 8 October 2001. The event and rural/centre-left support base are confirmed by the 2001 Estonian presidential election Wikipedia article.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Arnold Rüütel was elected president by the electoral college on 21 September 2001, winning 186 votes to Toomas Savi's 155 in the second round, and was inaugurated on 8 October 2001. The event and rural/centre-left support base are confirmed by the 2001 Estonian presidential election Wikipedia article.",
+        "source": "https://en.wikipedia.org/wiki/2001_Estonian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2001_Estonian_presidential_election"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Siim Kallas Appointed Prime Minister",
     "verdict": "TRUE",
     "reason": "Siim Kallas of the Reform Party was appointed prime minister on 28 January 2002 after Mart Laar resigned, forming a coalition with the Centre Party. He held the post until 10 April 2003 and continued Estonia's pro-EU trajectory. Confirmed by Wikipedia and U.S. State Department country profiles.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Siim Kallas of the Reform Party was appointed prime minister on 28 January 2002 after Mart Laar resigned, forming a coalition with the Centre Party. He held the post until 10 April 2003 and continued Estonia's pro-EU trajectory. Confirmed by Wikipedia and U.S. State Department country profiles.",
+        "source": "https://en.wikipedia.org/wiki/Siim_Kallas",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Siim_Kallas"
   },
   {
@@ -123,6 +429,24 @@
     "title": "National Digital ID Card System Launched",
     "verdict": "TRUE",
     "reason": "Estonia's mandatory national digital ID card was first issued on 28 January 2002, with the first e-signature issued in October 2002. Since 2002 every citizen over 15 must carry it; by 2022 over 800 million digital signatures had been issued. Confirmed by the Estonian Information System Authority and Wikipedia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Estonia's mandatory national digital ID card was first issued on 28 January 2002, with the first e-signature issued in October 2002. Since 2002 every citizen over 15 must carry it; by 2022 over 800 million digital signatures had been issued. Confirmed by the Estonian Information System Authority and Wikipedia.",
+        "source": "https://en.wikipedia.org/wiki/Estonian_identity_card",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Estonian_identity_card"
   },
   {
@@ -130,6 +454,24 @@
     "title": "EU Accession Referendum Approved",
     "verdict": "TRUE",
     "reason": "A referendum held on 14 September 2003 returned 66.8% in favour of EU membership on 64.1% turnout. The strong yes vote confirmed Estonia's Western integration trajectory and paved the way for accession on 1 May 2004. Confirmed by Wikipedia and European Sources Online.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A referendum held on 14 September 2003 returned 66.8% in favour of EU membership on 64.1% turnout. The strong yes vote confirmed Estonia's Western integration trajectory and paved the way for accession on 1 May 2004. Confirmed by Wikipedia and European Sources Online.",
+        "source": "https://en.wikipedia.org/wiki/2003_Estonian_European_Union_membership_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2003_Estonian_European_Union_membership_referendum"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Juhan Parts Becomes Prime Minister",
     "verdict": "TRUE",
     "reason": "After the March 2003 elections in which Res Publica (founded 2002) tied the Centre Party at 28 seats each, Juhan Parts formed a centre-right coalition with the Reform Party and People's Union, taking office on 10 April 2003. Confirmed by Wikipedia and the IPU Parline database.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After the March 2003 elections in which Res Publica (founded 2002) tied the Centre Party at 28 seats each, Juhan Parts formed a centre-right coalition with the Reform Party and People's Union, taking office on 10 April 2003. Confirmed by Wikipedia and the IPU Parline database.",
+        "source": "https://en.wikipedia.org/wiki/Juhan_Parts",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Juhan_Parts"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Estonia Joins NATO",
     "verdict": "TRUE",
     "reason": "Estonia became a full NATO member on 29 March 2004 at a ceremony in Washington D.C., part of the largest single wave of NATO enlargement to date (seven new members). Confirmed by NATO's official timeline, the Estonian Foreign Ministry, and multiple news sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Estonia became a full NATO member on 29 March 2004 at a ceremony in Washington D.C., part of the largest single wave of NATO enlargement to date (seven new members). Confirmed by NATO's official timeline, the Estonian Foreign Ministry, and multiple news sources.",
+        "source": "https://nato.mfa.ee/timeline-of-estonias-accession-to-nato/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://nato.mfa.ee/timeline-of-estonias-accession-to-nato/"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Estonia Joins the European Union",
     "verdict": "TRUE",
     "reason": "Estonia joined the EU on 1 May 2004 as part of the ten-country enlargement — the largest single EU enlargement at that time. Confirmed by the Estonian Foreign Ministry, the EU Commission, and Britannica.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Estonia joined the EU on 1 May 2004 as part of the ten-country enlargement — the largest single EU enlargement at that time. Confirmed by the Estonian Foreign Ministry, the EU Commission, and Britannica.",
+        "source": "https://en.wikipedia.org/wiki/Accession_of_Estonia_to_the_European_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Accession_of_Estonia_to_the_European_Union"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Andrus Ansip Becomes Prime Minister",
     "verdict": "TRUE",
     "reason": "Andrus Ansip was charged on 31 March 2005 to form a government following Juhan Parts' resignation, and his Reform Party–Centre Party–People's Union coalition was approved on 12 April 2005. He served until 2014, the longest premiership in Estonian history. Confirmed by Wikipedia and Britannica.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Andrus Ansip was charged on 31 March 2005 to form a government following Juhan Parts' resignation, and his Reform Party–Centre Party–People's Union coalition was approved on 12 April 2005. He served until 2014, the longest premiership in Estonian history. Confirmed by Wikipedia and Britannica.",
+        "source": "https://en.wikipedia.org/wiki/Andrus_Ansip",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Andrus_Ansip"
   },
   {
@@ -165,6 +579,24 @@
     "title": "First Nationwide Internet Voting in Local Elections",
     "verdict": "TRUE",
     "reason": "At Estonia's local elections in October 2005, legally binding nationwide internet voting took place for the first time anywhere in the world, with the e-voting window running 10–12 October 2005. Confirmed by academic papers, the Estonian NEC, and the European Commission digital-building-blocks page.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "At Estonia's local elections in October 2005, legally binding nationwide internet voting took place for the first time anywhere in the world, with the e-voting window running 10–12 October 2005. Confirmed by academic papers, the Estonian NEC, and the European Commission digital-building-blocks page.",
+        "source": "https://www.researchgate.net/publication/220764757_E-voting_in_Estonia_2005_The_first_Practice_of_Country-wide_binding_Internet_Voting_in_the_World",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.researchgate.net/publication/220764757_E-voting_in_Estonia_2005_The_first_Practice_of_Country-wide_binding_Internet_Voting_in_the_World"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Toomas Hendrik Ilves Elected President",
     "verdict": "TRUE",
     "reason": "Toomas Hendrik Ilves was elected by the electoral college on 23 September 2006 with 174 votes to Rüütel's 162, and began his term on 9 October 2006. He is a former journalist and diplomat who grew up in the United States, and championed digital governance internationally. Confirmed by Wikipedia and the Estonian presidential website.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Toomas Hendrik Ilves was elected by the electoral college on 23 September 2006 with 174 votes to Rüütel's 162, and began his term on 9 October 2006. He is a former journalist and diplomat who grew up in the United States, and championed digital governance internationally. Confirmed by Wikipedia and the Estonian presidential website.",
+        "source": "https://en.wikipedia.org/wiki/Toomas_Hendrik_Ilves",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Toomas_Hendrik_Ilves"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Bronze Soldier Crisis and Mass Cyberattacks",
     "verdict": "TRUE",
     "reason": "The relocation of the Bronze Soldier from Tallinn's city centre on 27 April 2007 sparked two nights of riots (1,000+ detained) and a three-week DDoS campaign against Estonian government, banking, and media targets widely attributed to Russian actors. The NATO CCDCOE was established in Tallinn in direct response. Confirmed by Wikipedia, ICDS, and NATO sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The relocation of the Bronze Soldier from Tallinn's city centre on 27 April 2007 sparked two nights of riots (1,000+ detained) and a three-week DDoS campaign against Estonian government, banking, and media targets widely attributed to Russian actors. The NATO CCDCOE was established in Tallinn in direct response. Confirmed by Wikipedia, ICDS, and NATO sources.",
+        "source": "https://en.wikipedia.org/wiki/2007_cyberattacks_on_Estonia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2007_cyberattacks_on_Estonia"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Reform Party Wins Parliamentary Elections",
     "verdict": "TRUE",
     "reason": "The Reform Party won the 4 March 2007 parliamentary elections with 27% of the vote (31 seats), and Ansip continued as prime minister. A total of 30,275 i-votes (5.4% of voters) were cast — the world's first parliamentary election with internet voting. Confirmed by Wikipedia and IPU Parline.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Reform Party won the 4 March 2007 parliamentary elections with 27% of the vote (31 seats), and Ansip continued as prime minister. A total of 30,275 i-votes (5.4% of voters) were cast — the world's first parliamentary election with internet voting. Confirmed by Wikipedia and IPU Parline.",
+        "source": "https://en.wikipedia.org/wiki/2007_Estonian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2007_Estonian_parliamentary_election"
   },
   {
@@ -193,6 +679,24 @@
     "title": "NATO Cooperative Cyber Defence Centre Established in Tallinn",
     "verdict": "TRUE",
     "reason": "NATO established the Cooperative Cyber Defence Centre of Excellence (CCDCOE) in Tallinn on 14 May 2008, with full NATO accreditation on 28 October 2008. It was a direct institutional response to the 2007 cyberattacks and became NATO's leading cyber defence research body. Confirmed by NATO's official announcement and the CCDCOE website.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "NATO established the Cooperative Cyber Defence Centre of Excellence (CCDCOE) in Tallinn on 14 May 2008, with full NATO accreditation on 28 October 2008. It was a direct institutional response to the 2007 cyberattacks and became NATO's leading cyber defence research body. Confirmed by NATO's official announcement and the CCDCOE website.",
+        "source": "https://www.nato.int/docu/update/2008/05-may/e0514a.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nato.int/docu/update/2008/05-may/e0514a.html"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Global Financial Crisis Hits Estonian Economy",
     "verdict": "TRUE",
     "reason": "Estonia's GDP fell approximately 4.2% in 2008 and 14.1% in 2009 — the third-deepest EU decline — as a property and credit bubble burst. The government implemented austerity maintaining a deficit of only 1.7% of GDP in 2009. The curated event states 5.4% for 2008, slightly overstating the contraction but the narrative is substantively accurate. Confirmed by IMF Article IV consultation and academic papers.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Estonia's GDP fell approximately 4.2% in 2008 and 14.1% in 2009 — the third-deepest EU decline — as a property and credit bubble burst. The government implemented austerity maintaining a deficit of only 1.7% of GDP in 2009. The curated event states 5.4% for 2008, slightly overstating the contraction but the narrative is substantively accurate. Confirmed by IMF Article IV consultation and academic papers.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Estonia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Estonia"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Estonia Approved for Eurozone Membership",
     "verdict": "TRUE",
     "reason": "On 13 July 2010, EU Finance Ministers approved Estonia's adoption of the euro, after the European Commission confirmed Estonia met all Maastricht convergence criteria including average inflation of -0.7% (well below the reference value) and no excessive deficit. Confirmed by EUR-Lex and the European Commission press release.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 13 July 2010, EU Finance Ministers approved Estonia's adoption of the euro, after the European Commission confirmed Estonia met all Maastricht convergence criteria including average inflation of -0.7% (well below the reference value) and no excessive deficit. Confirmed by EUR-Lex and the European Commission press release.",
+        "source": "https://eur-lex.europa.eu/EN/legal-content/summary/accession-by-estonia-to-the-euro-2011.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://eur-lex.europa.eu/EN/legal-content/summary/accession-by-estonia-to-the-euro-2011.html"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Estonia Adopts the Euro",
     "verdict": "TRUE",
     "reason": "Estonia adopted the euro on 1 January 2011, becoming the 17th eurozone member and the first former Soviet republic to do so, replacing the kroon at a fixed rate of 15.6466 EEK = 1 EUR. Confirmed by the European Commission, European Central Bank, and Baltic Times.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Estonia adopted the euro on 1 January 2011, becoming the 17th eurozone member and the first former Soviet republic to do so, replacing the kroon at a fixed rate of 15.6466 EEK = 1 EUR. Confirmed by the European Commission, European Central Bank, and Baltic Times.",
+        "source": "https://ec.europa.eu/economy_finance/articles/euro/estonia_euro_en.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://ec.europa.eu/economy_finance/articles/euro/estonia_euro_en.htm"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Tallinn Manual on Cyber Warfare Published",
     "verdict": "TRUE",
     "reason": "The Tallinn Manual on the International Law Applicable to Cyber Warfare was officially published on 15 March 2013 at Chatham House, produced by 20 international law experts under the auspices of the NATO CCDCOE. It contains 95 black-letter rules and is the authoritative non-binding academic study on the topic. Confirmed by the CCDCOE website and Wikipedia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Tallinn Manual on the International Law Applicable to Cyber Warfare was officially published on 15 March 2013 at Chatham House, produced by 20 international law experts under the auspices of the NATO CCDCOE. It contains 95 black-letter rules and is the authoritative non-binding academic study on the topic. Confirmed by the CCDCOE website and Wikipedia.",
+        "source": "https://ccdcoe.org/research/tallinn-manual/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://ccdcoe.org/research/tallinn-manual/"
   },
   {
@@ -228,6 +804,24 @@
     "title": "E-Residency Program Launched",
     "verdict": "TRUE",
     "reason": "Estonia launched the world's first e-Residency programme on 1 December 2014, with British journalist Edward Lucas as the first e-resident. The programme allows non-citizens to obtain a digital identity and establish EU-based companies online. By 2026 it had over 130,000 e-residents from 180+ countries. Confirmed by the official e-Residency website and Wikipedia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Estonia launched the world's first e-Residency programme on 1 December 2014, with British journalist Edward Lucas as the first e-resident. The programme allows non-citizens to obtain a digital identity and establish EU-based companies online. By 2026 it had over 130,000 e-residents from 180+ countries. Confirmed by the official e-Residency website and Wikipedia.",
+        "source": "https://en.wikipedia.org/wiki/E-Residency_of_Estonia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/E-Residency_of_Estonia"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Taavi Roivas Becomes Youngest PM in Europe",
     "verdict": "TRUE",
     "reason": "President Ilves approved Taavi Rõivas' cabinet on 26 March 2014; at 34 years old he was the youngest prime minister in the EU at the time. His government focused on digital innovation and responded to the changed security environment following Russia's annexation of Crimea. Confirmed by Wikipedia, Naharnet, and EU40.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "President Ilves approved Taavi Rõivas' cabinet on 26 March 2014; at 34 years old he was the youngest prime minister in the EU at the time. His government focused on digital innovation and responded to the changed security environment following Russia's annexation of Crimea. Confirmed by Wikipedia, Naharnet, and EU40.",
+        "source": "https://en.wikipedia.org/wiki/Taavi_R%C3%B5ivas",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Taavi_R%C3%B5ivas"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Estonia Increases Defense Spending to 2% of GDP",
     "verdict": "TRUE",
     "reason": "Estonia was among the very few NATO members meeting the 2% of GDP defence spending target in 2015; an all-party parliamentary agreement to maintain this threshold has been in place since 2012. The commitment increased in salience after Russia's 2014 annexation of Crimea. Confirmed by the Estonian Ministry of Defence and NATO PA reporting.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Estonia was among the very few NATO members meeting the 2% of GDP defence spending target in 2015; an all-party parliamentary agreement to maintain this threshold has been in place since 2012. The commitment increased in salience after Russia's 2014 annexation of Crimea. Confirmed by the Estonian Ministry of Defence and NATO PA reporting.",
+        "source": "https://www.kaitseministeerium.ee/en/objectives-activities/defence-budget",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.kaitseministeerium.ee/en/objectives-activities/defence-budget"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Juri Ratas Forms Center Party Coalition Government",
     "verdict": "TRUE",
     "reason": "Jüri Ratas was elected Centre Party leader on 5 November 2016 and sworn in as prime minister on 23 November 2016, forming a coalition with the Social Democrats and Pro Patria and Res Publica Union. It was the first time the Centre Party led government in over two decades. Confirmed by Wikipedia and Estonian World.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Jüri Ratas was elected Centre Party leader on 5 November 2016 and sworn in as prime minister on 23 November 2016, forming a coalition with the Social Democrats and Pro Patria and Res Publica Union. It was the first time the Centre Party led government in over two decades. Confirmed by Wikipedia and Estonian World.",
+        "source": "https://en.wikipedia.org/wiki/J%C3%BCri_Ratas",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/J%C3%BCri_Ratas"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Kersti Kaljulaid Elected First Female President",
     "verdict": "TRUE",
     "reason": "Kersti Kaljulaid was elected president by the Riigikogu on 3 October 2016 with 81 votes, becoming Estonia's first female head of state and its youngest president at age 46. She was nominated as a consensus candidate after five previous parliamentary rounds failed. Confirmed by Wikipedia, the Estonian presidential website, and ERR.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kersti Kaljulaid was elected president by the Riigikogu on 3 October 2016 with 81 votes, becoming Estonia's first female head of state and its youngest president at age 46. She was nominated as a consensus candidate after five previous parliamentary rounds failed. Confirmed by Wikipedia, the Estonian presidential website, and ERR.",
+        "source": "https://en.wikipedia.org/wiki/Kersti_Kaljulaid",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kersti_Kaljulaid"
   },
   {
@@ -263,6 +929,24 @@
     "title": "NATO Enhanced Forward Presence Battalion Deployed",
     "verdict": "TRUE",
     "reason": "A UK-led NATO Enhanced Forward Presence battlegroup was deployed to Tapa, Estonia in 2017 under Operation Cabrit, initially based around the 5th Battalion The Rifles with French, Danish, and other allied contributions. The multinational deployment is confirmed by NATO SHAPE, the House of Commons Library, and the Estonian Ministry of Defence.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A UK-led NATO Enhanced Forward Presence battlegroup was deployed to Tapa, Estonia in 2017 under Operation Cabrit, initially based around the 5th Battalion The Rifles with French, Danish, and other allied contributions. The multinational deployment is confirmed by NATO SHAPE, the House of Commons Library, and the Estonian Ministry of Defence.",
+        "source": "https://en.wikipedia.org/wiki/NATO_Enhanced_Forward_Presence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/NATO_Enhanced_Forward_Presence"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Tallinn Manual 2.0 Published",
     "verdict": "TRUE",
     "reason": "Tallinn Manual 2.0 was released in February 2017 by Cambridge University Press, expanding the original's coverage to peacetime cyber operations and identifying 154 black-letter rules. It addressed sovereignty, state responsibility, human rights, and law of the sea in the cyber context. Confirmed by the CCDCOE and Cambridge University Press.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tallinn Manual 2.0 was released in February 2017 by Cambridge University Press, expanding the original's coverage to peacetime cyber operations and identifying 154 black-letter rules. It addressed sovereignty, state responsibility, human rights, and law of the sea in the cyber context. Confirmed by the CCDCOE and Cambridge University Press.",
+        "source": "https://en.wikipedia.org/wiki/Tallinn_Manual",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tallinn_Manual"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Controversial EKRE Enters Government Coalition",
     "verdict": "TRUE",
     "reason": "After the March 2019 elections, the Conservative People's Party (EKRE) joined a coalition with the Centre Party and Isamaa; the cabinet was sworn in on 29 April 2019, marking the first time a far-right populist party entered Estonia's national government. Confirmed by Wikipedia and Freedom House.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After the March 2019 elections, the Conservative People's Party (EKRE) joined a coalition with the Centre Party and Isamaa; the cabinet was sworn in on 29 April 2019, marking the first time a far-right populist party entered Estonia's national government. Confirmed by Wikipedia and Freedom House.",
+        "source": "https://en.wikipedia.org/wiki/2019_Estonian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2019_Estonian_parliamentary_election"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Estonia Elected to UN Security Council",
     "verdict": "TRUE",
     "reason": "Estonia was elected to serve as a non-permanent UN Security Council member for 2020–2021, winning election in the second round with 132 votes at the UN General Assembly in June 2019. It was Estonia's first such seat, used to champion cybersecurity norms. Confirmed by the Estonian Foreign Ministry and UN press releases.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Estonia was elected to serve as a non-permanent UN Security Council member for 2020–2021, winning election in the second round with 132 votes at the UN General Assembly in June 2019. It was Estonia's first such seat, used to champion cybersecurity norms. Confirmed by the Estonian Foreign Ministry and UN press releases.",
+        "source": "https://un.mfa.ee/estonia-elected-for-the-non-permanent-membership-of-the-un-security-council-2020-2021/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://un.mfa.ee/estonia-elected-for-the-non-permanent-membership-of-the-un-security-council-2020-2021/"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Kaja Kallas Becomes First Female Prime Minister",
     "verdict": "TRUE",
     "reason": "Kaja Kallas' first cabinet was formed on 25–26 January 2021 after the Centre Party–led government collapsed. She became Estonia's first female prime minister, and with Kersti Kaljulaid still president, Estonia was for a period led simultaneously by two women at the top executive levels. Confirmed by Wikipedia and Estonian World.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kaja Kallas' first cabinet was formed on 25–26 January 2021 after the Centre Party–led government collapsed. She became Estonia's first female prime minister, and with Kersti Kaljulaid still president, Estonia was for a period led simultaneously by two women at the top executive levels. Confirmed by Wikipedia and Estonian World.",
+        "source": "https://en.wikipedia.org/wiki/Kaja_Kallas",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kaja_Kallas"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Alar Karis Sworn in as President",
     "verdict": "TRUE",
     "reason": "Alar Karis, a molecular geneticist and former national auditor, was elected by the Riigikogu on 31 August 2021 with 72 votes and sworn in as Estonia's sixth president on 11 October 2021, succeeding Kersti Kaljulaid. Confirmed by Wikipedia, Xinhua, and ERR.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Alar Karis, a molecular geneticist and former national auditor, was elected by the Riigikogu on 31 August 2021 with 72 votes and sworn in as Estonia's sixth president on 11 October 2021, succeeding Kersti Kaljulaid. Confirmed by Wikipedia, Xinhua, and ERR.",
+        "source": "https://en.wikipedia.org/wiki/Alar_Karis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Alar_Karis"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Estonia Leads European Response to Russian Invasion of Ukraine",
     "verdict": "TRUE",
     "reason": "Following Russia's full-scale invasion on 24 February 2022, Estonia provided military aid worth approximately €500 million (over 1.3% of GDP) — the highest per-capita contribution of any country — and was the most vocal European advocate for strong sanctions. Confirmed by the Kiel Institute, Estonian Foreign Ministry, and Time magazine.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following Russia's full-scale invasion on 24 February 2022, Estonia provided military aid worth approximately €500 million (over 1.3% of GDP) — the highest per-capita contribution of any country — and was the most vocal European advocate for strong sanctions. Confirmed by the Kiel Institute, Estonian Foreign Ministry, and Time magazine.",
+        "source": "https://vm.ee/en/estonias-aid-ukraine",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://vm.ee/en/estonias-aid-ukraine"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Estonia Removes Soviet-Era Monuments Nationwide",
     "verdict": "TRUE",
     "reason": "On 16 August 2022, the Estonian government approved removal of Soviet war monuments in Narva and other locations, citing public order risks following Russia's invasion of Ukraine. A T-34 tank replica in Narva was relocated to the Estonian War Museum. Confirmed by the Estonian government press office, Al Jazeera, and RFE/RL.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 16 August 2022, the Estonian government approved removal of Soviet war monuments in Narva and other locations, citing public order risks following Russia's invasion of Ukraine. A T-34 tank replica in Narva was relocated to the Estonian War Museum. Confirmed by the Estonian government press office, Al Jazeera, and RFE/RL.",
+        "source": "https://valitsus.ee/en/news/government-will-remove-soviet-union-war-monuments-narva",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://valitsus.ee/en/news/government-will-remove-soviet-union-war-monuments-narva"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Reform Party Wins Elections with Record Support",
     "verdict": "TRUE",
     "reason": "The Reform Party won 31.2% of the vote (31.6% per some counts) and 37 seats in the 5 March 2023 elections — the largest result in Estonian electoral history. Security policy and support for Ukraine dominated the campaign. Kaja Kallas personally received the highest individual vote count ever in Estonia. Confirmed by Wikipedia and Al Jazeera.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Reform Party won 31.2% of the vote (31.6% per some counts) and 37 seats in the 5 March 2023 elections — the largest result in Estonian electoral history. Security policy and support for Ukraine dominated the campaign. Kaja Kallas personally received the highest individual vote count ever in Estonia. Confirmed by Wikipedia and Al Jazeera.",
+        "source": "https://en.wikipedia.org/wiki/2023_Estonian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2023_Estonian_parliamentary_election"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Tallinn Mechanism for Ukraine Cybersecurity Launched",
     "verdict": "TRUE",
     "reason": "The Tallinn Mechanism to coordinate civilian cybersecurity assistance to Ukraine was agreed in principle on 30 May 2023 in Tallinn and officially launched on 20 December 2023, uniting 14 donor countries with Estonia and Poland as co-leads. Over €200 million has been mobilised. Confirmed by the Estonian Foreign Ministry and ESTDEV.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Tallinn Mechanism to coordinate civilian cybersecurity assistance to Ukraine was agreed in principle on 30 May 2023 in Tallinn and officially launched on 20 December 2023, uniting 14 donor countries with Estonia and Poland as co-leads. Over €200 million has been mobilised. Confirmed by the Estonian Foreign Ministry and ESTDEV.",
+        "source": "https://www.vm.ee/en/news/estonia-and-allies-establish-tallinn-mechanism-provide-cyber-assistance-ukraine",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.vm.ee/en/news/estonia-and-allies-establish-tallinn-mechanism-provide-cyber-assistance-ukraine"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "Kaja Kallas Appointed EU Foreign Policy Chief",
     "verdict": "TRUE",
     "reason": "Kaja Kallas was nominated as EU High Representative for Foreign Affairs and Security Policy on 28 June 2024, confirmed by the European Parliament in November 2024, and took office on 1 December 2024. She resigned as prime minister to take up the role. Confirmed by the European Council, EU Commission, and Estonian government.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kaja Kallas was nominated as EU High Representative for Foreign Affairs and Security Policy on 28 June 2024, confirmed by the European Parliament in November 2024, and took office on 1 December 2024. She resigned as prime minister to take up the role. Confirmed by the European Council, EU Commission, and Estonian government.",
+        "source": "https://en.wikipedia.org/wiki/Kaja_Kallas",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kaja_Kallas"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Kristen Michal Becomes Prime Minister",
     "verdict": "TRUE",
     "reason": "Kristen Michal of the Reform Party was nominated on 29 June 2024 and sworn in as prime minister on 23 July 2024, succeeding Kaja Kallas. His cabinet includes ministers from the Reform Party, Social Democrats, and Estonia 200. Confirmed by Wikipedia, ERR, and the Estonian government website.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kristen Michal of the Reform Party was nominated on 29 June 2024 and sworn in as prime minister on 23 July 2024, succeeding Kaja Kallas. His cabinet includes ministers from the Reform Party, Social Democrats, and Estonia 200. Confirmed by Wikipedia, ERR, and the Estonian government website.",
+        "source": "https://en.wikipedia.org/wiki/Kristen_Michal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kristen_Michal"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Parliament Revokes Local Voting Rights for Non-Citizens",
     "verdict": "TRUE",
     "reason": "On 26 March 2025, the Riigikogu approved constitutional amendments revoking local election voting rights for third-country nationals (primarily targeting Russian and Belarusian citizens) with 92 MPs in favour. The amendments take effect for the October 2025 local elections, confirmed by the Riigikogu, Library of Congress, and IDEA Democracy Tracker.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 26 March 2025, the Riigikogu approved constitutional amendments revoking local election voting rights for third-country nationals (primarily targeting Russian and Belarusian citizens) with 92 MPs in favour. The amendments take effect for the October 2025 local elections, confirmed by the Riigikogu, Library of Congress, and IDEA Democracy Tracker.",
+        "source": "https://www.riigikogu.ee/en/news-from-committees/constitutional-committee/the-riigikogu-passed-constitutional-amendment-restricting-the-right-to-vote/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.riigikogu.ee/en/news-from-committees/constitutional-committee/the-riigikogu-passed-constitutional-amendment-restricting-the-right-to-vote/"
   }
 ]

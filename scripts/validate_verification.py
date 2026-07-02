@@ -35,6 +35,20 @@ from pathlib import Path
 EVENTS_ROOT = Path(__file__).resolve().parent.parent / "events"
 VERIFICATION_DIR = EVENTS_ROOT / "verification"
 CURATED_DIR = EVENTS_ROOT / "curated"
+POLICY_PATH = EVENTS_ROOT / "_ledger" / "consensus_policy.json"
+
+POLICIES = ("conservative_downgrade", "majority_overturn")
+
+
+def load_active_policy(path: Path = POLICY_PATH) -> str | None:
+    """The founder-ratified B1 policy (events/_ledger/consensus_policy.json).
+    Returns None when the file is absent/unreadable — the consensus check then
+    falls back to accepting either policy's recompute (pre-ratification behavior)."""
+    try:
+        p = json.loads(path.read_text(encoding="utf-8")).get("active_policy")
+        return p if p in POLICIES else None
+    except Exception:
+        return None
 
 VERDICTS = ("TRUE", "FALSE", "PARTIAL", "UNCERTAIN")
 CONSENSUS_VERDICTS = VERDICTS + ("CONTESTED",)
@@ -128,7 +142,8 @@ def _validate_pass(prefix: str, i: int, p, errors: list[str]) -> None:
 
 
 def validate_entry(prefix: str, e, curated_keys: set[tuple[int, str]] | None,
-                   errors: list[str], warnings: list[str], strict_join: bool) -> None:
+                   errors: list[str], warnings: list[str], strict_join: bool,
+                   active_policy: str | None = None) -> None:
     if not isinstance(e, dict):
         errors.append(f"{prefix}: entry must be a dict")
         return
@@ -160,16 +175,16 @@ def validate_entry(prefix: str, e, curated_keys: set[tuple[int, str]] | None,
             errors.append(f"{prefix}: source_independence {e.get('source_independence')!r} invalid")
         if passes and all(isinstance(p, dict) and str(p.get("verdict")).upper() in VERDICTS
                           for p in passes):
-            # Entries record no policy field, and the two founder-gated policies (B1)
-            # differ only in soft-disagreement outcomes (downgraded vs soft_kept) —
-            # the stored consensus_status itself discriminates which policy produced
-            # the entry. So an entry is consistent iff ALL derived fields (verdict,
-            # consensus_verdict, consensus_status, needs_tiebreak, had_dissent) match
-            # the recompute under at least ONE policy. This keeps CI green across a
-            # policy flip while still catching every hand-edit that contradicts the
-            # recorded passes.
-            recomputes = [recompute_consensus(passes, p)
-                          for p in ("conservative_downgrade", "majority_overturn")]
+            # B1 ratified (2026-07-02): when events/_ledger/consensus_policy.json
+            # names the active policy, every entry's derived fields (verdict,
+            # consensus_verdict, consensus_status, needs_tiebreak, had_dissent) must
+            # match THAT policy's recompute — a hand-edit that promotes a downgraded
+            # entry to soft_kept under the conservative regime fails CI. Only when
+            # no policy file exists (pre-ratification checkouts) does the check fall
+            # back to accepting either policy's recompute.
+            recomputes = ([recompute_consensus(passes, active_policy)]
+                          if active_policy
+                          else [recompute_consensus(passes, p) for p in POLICIES])
 
             def _matches(c: dict) -> bool:
                 return (verdict == c["consensus_verdict"]
@@ -179,16 +194,16 @@ def validate_entry(prefix: str, e, curated_keys: set[tuple[int, str]] | None,
                         and bool(e.get("had_dissent", False)) == bool(c.get("had_dissent", False)))
 
             if not any(_matches(c) for c in recomputes):
-                cons = recomputes[0]
+                expected = "; ".join(
+                    f"{c['consensus_verdict']}/{c['consensus_status']}" for c in recomputes)
+                regime = f"active policy {active_policy}" if active_policy else "either policy"
                 errors.append(
                     f"{prefix}: consensus mismatch — stored (verdict={verdict!r}, "
                     f"consensus_verdict={e.get('consensus_verdict')!r}, "
                     f"consensus_status={e.get('consensus_status')!r}, "
                     f"needs_tiebreak={e.get('needs_tiebreak')!r}, "
-                    f"had_dissent={e.get('had_dissent', False)!r}) matches neither policy's "
-                    f"recompute (conservative: {cons['consensus_verdict']}/"
-                    f"{cons['consensus_status']}; majority: {recomputes[1]['consensus_verdict']}/"
-                    f"{recomputes[1]['consensus_status']})")
+                    f"had_dissent={e.get('had_dissent', False)!r}) does not match the "
+                    f"recompute under {regime} (expected {expected})")
     else:
         if verdict not in VERDICTS:
             errors.append(f"{prefix}: legacy 'verdict' {verdict!r} not in {VERDICTS} "
@@ -204,9 +219,15 @@ def validate_entry(prefix: str, e, curated_keys: set[tuple[int, str]] | None,
             (errors if strict_join else warnings).append(msg)
 
 
+_UNSET = object()  # sentinel: "load the ratified policy from disk"
+
+
 def validate_directory(verification_dir: Path = VERIFICATION_DIR,
                        curated_dir: Path = CURATED_DIR,
-                       strict_join: bool = False) -> tuple[list[str], list[str], int, int]:
+                       strict_join: bool = False,
+                       active_policy=_UNSET) -> tuple[list[str], list[str], int, int]:
+    if active_policy is _UNSET:
+        active_policy = load_active_policy()
     errors: list[str] = []
     warnings: list[str] = []
     n_files = n_entries = 0
@@ -236,7 +257,8 @@ def validate_directory(verification_dir: Path = VERIFICATION_DIR,
             ck = set()
         for i, e in enumerate(data):
             n_entries += 1
-            validate_entry(f"{vf.name}[{i}]", e, ck, errors, warnings, strict_join)
+            validate_entry(f"{vf.name}[{i}]", e, ck, errors, warnings, strict_join,
+                           active_policy)
 
     return errors, warnings, n_files, n_entries
 
@@ -251,10 +273,13 @@ def main(argv=None) -> int:
                     help="print at most this many warnings (all are counted)")
     args = ap.parse_args(argv)
 
+    active = load_active_policy()
     errors, warnings, n_files, n_entries = validate_directory(
-        args.verification_dir, args.curated_dir, strict_join=args.strict_join)
+        args.verification_dir, args.curated_dir, strict_join=args.strict_join,
+        active_policy=active)
 
-    print(f"Validated {n_files} verification files, {n_entries} entries total.")
+    print(f"Validated {n_files} verification files, {n_entries} entries total "
+          f"(consensus regime: {active or 'either-policy fallback — no policy file'}).")
     if warnings:
         print(f"\n{len(warnings)} warnings:")
         for w in warnings[:args.max_warnings]:

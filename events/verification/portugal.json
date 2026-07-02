@@ -4,6 +4,24 @@
     "title": "Estado Novo Authoritarian Rule Under Salazar",
     "verdict": "TRUE",
     "reason": "Salazar regime, PIDE secret police, economic underdevelopment all confirmed for 1950.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Salazar regime, PIDE secret police, economic underdevelopment all confirmed for 1950.",
+        "source": "https://en.wikipedia.org/wiki/Estado_Novo_(Portugal)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Estado_Novo_(Portugal)"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Salazar Reclassifies Colonies as 'Overseas Provinces'",
     "verdict": "TRUE",
     "reason": "1951 constitutional revision reclassifying colonies as overseas provinces confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1951 constitutional revision reclassifying colonies as overseas provinces confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Overseas_province",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Overseas_province"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Portugal Joins the United Nations",
     "verdict": "TRUE",
     "reason": "Portugal admitted 14 December 1955 in a package deal of 16 new members. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Portugal admitted 14 December 1955 in a package deal of 16 new members. Confirmed.",
+        "source": "https://portugal4unsc.com/news-statement/70-years-ago-on-14-december-1955-portugal-was-admitted-to-the-un-marking-a-new-era-for-our-diplomacy-at-multilateral-level/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://portugal4unsc.com/news-statement/70-years-ago-on-14-december-1955-portugal-was-admitted-to-the-un-marking-a-new-era-for-our-diplomacy-at-multilateral-level/"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Emigration Wave to France and Western Europe Begins",
     "verdict": "TRUE",
     "reason": "Emigration to France accelerated from late 1950s; remittances confirmed. Year plausible as start.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Emigration to France accelerated from late 1950s; remittances confirmed. Year plausible as start.",
+        "source": "https://en.wikipedia.org/wiki/Portuguese_in_France",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Portuguese_in_France"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Calouste Gulbenkian Foundation Established in Lisbon",
     "verdict": "FALSE",
     "reason": "Foundation was established on 18 July 1956, not 1957. Year off by 1.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Foundation was established on 18 July 1956, not 1957. Year off by 1.",
+        "source": "https://gulbenkian.pt/en/chronology/calouste-gulbenkian-foundation/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://gulbenkian.pt/en/chronology/calouste-gulbenkian-foundation/"
   },
   {
@@ -39,6 +129,24 @@
     "title": "General Humberto Delgado's Defiant Presidential Campaign",
     "verdict": "TRUE",
     "reason": "Election held 8 June 1958; Delgado's 'obviously I'll fire him' quote confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Election held 8 June 1958; Delgado's 'obviously I'll fire him' quote confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1958_Portuguese_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1958_Portuguese_presidential_election"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Pidjiguiti Massacre in Guinea-Bissau",
     "verdict": "FALSE",
     "reason": "Massacre occurred on 3 August 1959, not 1960. Year off by 1.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Massacre occurred on 3 August 1959, not 1960. Year off by 1.",
+        "source": "https://en.wikipedia.org/wiki/Pidjiguiti_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Pidjiguiti_massacre"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Angola War of Independence Begins",
     "verdict": "TRUE",
     "reason": "War began 1961 with multiple uprisings. FNLA formally named March 1962 but uprising started 1961. Verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "War began 1961 with multiple uprisings. FNLA formally named March 1962 but uprising started 1961. Verified.",
+        "source": "https://en.wikipedia.org/wiki/Angolan_War_of_Independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Angolan_War_of_Independence"
   },
   {
@@ -60,6 +204,24 @@
     "title": "India Annexes Goa — Humiliating Loss for Estado Novo",
     "verdict": "TRUE",
     "reason": "Operation Vijay December 1961; 36-hour operation confirmed; 450+ years of Portuguese rule confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Vijay December 1961; 36-hour operation confirmed; 450+ years of Portuguese rule confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Annexation_of_Goa",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Annexation_of_Goa"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Academic Crisis — Students Protest Dictatorship",
     "verdict": "TRUE",
     "reason": "Academic Crisis of 1962 at Lisbon and Coimbra confirmed; PIDE arrests confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Academic Crisis of 1962 at Lisbon and Coimbra confirmed; PIDE arrests confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Academic_Crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Academic_Crisis"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Military Conscription Dramatically Expanded for Colonial Wars",
     "verdict": "TRUE",
     "reason": "Conscription expansion confirmed; army grew to 217,000 by 1974. Over 200,000 figure is accurate for later in the war.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Conscription expansion confirmed; army grew to 217,000 by 1974. Over 200,000 figure is accurate for later in the war.",
+        "source": "https://en.wikipedia.org/wiki/Portuguese_Colonial_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Portuguese_Colonial_War"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Mozambique War of Independence Opens",
     "verdict": "TRUE",
     "reason": "FRELIMO's first attack 25 September 1964 in Cabo Delgado confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "FRELIMO's first attack 25 September 1964 in Cabo Delgado confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mozambican_War_of_Independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mozambican_War_of_Independence"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Salazar Bridge (Ponte 25 de Abril) Opens Over Tagus",
     "verdict": "TRUE",
     "reason": "Inaugurated 6 August 1966; longest suspension bridge in Europe at the time; renamed confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Inaugurated 6 August 1966; longest suspension bridge in Europe at the time; renamed confirmed.",
+        "source": "https://en.wikipedia.org/wiki/25_de_Abril_Bridge",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/25_de_Abril_Bridge"
   },
   {
@@ -95,6 +329,24 @@
     "title": "General Delgado Assassinated by PIDE in Spain",
     "verdict": "FALSE",
     "reason": "Delgado was assassinated on 13 February 1965, not 1966. Year off by 1.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Delgado was assassinated on 13 February 1965, not 1966. Year off by 1.",
+        "source": "https://en.wikipedia.org/wiki/Humberto_Delgado",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Humberto_Delgado"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Salazar Incapacitated — Caetano Becomes Prime Minister",
     "verdict": "TRUE",
     "reason": "Salazar stroke September 1968; Caetano appointed 27 September 1968 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Salazar stroke September 1968; Caetano appointed 27 September 1968 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Marcelo_Caetano",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Marcelo_Caetano"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Death of Salazar — End of an Era",
     "verdict": "TRUE",
     "reason": "Salazar died 27 July 1970, age 81; never told he had been removed confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Salazar died 27 July 1970, age 81; never told he had been removed confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ant%C3%B3nio_de_Oliveira_Salazar",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ant%C3%B3nio_de_Oliveira_Salazar"
   },
   {
@@ -116,6 +404,24 @@
     "title": "MFA Formally Organized — Coup Planning Begins",
     "verdict": "TRUE",
     "reason": "MFA formally founded 9 September 1973 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MFA formally founded 9 September 1973 confirmed.",
+        "source": "https://www.mylisbontours.com/day-portuguese-history-creation-movement-armed-forces/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.mylisbontours.com/day-portuguese-history-creation-movement-armed-forces/"
   },
   {
@@ -123,6 +429,24 @@
     "title": "PAIGC Declares Guinea-Bissau Independence",
     "verdict": "TRUE",
     "reason": "Independence declared 24 September 1973; Cabral assassinated 20 January 1973 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independence declared 24 September 1973; Cabral assassinated 20 January 1973 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/African_Party_for_the_Independence_of_Guinea_and_Cape_Verde",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/African_Party_for_the_Independence_of_Guinea_and_Cape_Verde"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Carnation Revolution — April 25 Ends Dictatorship",
     "verdict": "TRUE",
     "reason": "All key facts confirmed: April 25 1974, MFA coup, Grandola Vila Morena, carnations in rifle barrels.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All key facts confirmed: April 25 1974, MFA coup, Grandola Vila Morena, carnations in rifle barrels.",
+        "source": "https://en.wikipedia.org/wiki/Carnation_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Carnation_Revolution"
   },
   {
@@ -137,6 +479,24 @@
     "title": "PIDE Secret Police Dissolved After Coup",
     "verdict": "TRUE",
     "reason": "DGS (formerly PIDE) dissolved after April 25 1974 coup confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "DGS (formerly PIDE) dissolved after April 25 1974 coup confirmed.",
+        "source": "https://en.wikipedia.org/wiki/PIDE",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/PIDE"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Revolutionary Turmoil — Hot Summer of 1975",
     "verdict": "TRUE",
     "reason": "Hot Summer of 1975, factory occupations, left-right struggle for power all confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Hot Summer of 1975, factory occupations, left-right struggle for power all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Hot_Summer_of_1975",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hot_Summer_of_1975"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Angola and Mozambique Independence — Chaotic Decolonization",
     "verdict": "TRUE",
     "reason": "Mozambique independent 25 June 1975; Angola 11 November 1975. Dates confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mozambique independent 25 June 1975; Angola 11 November 1975. Dates confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mozambican_War_of_Independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mozambican_War_of_Independence"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Retornados — 500,000–800,000 Settlers Return from Africa",
     "verdict": "TRUE",
     "reason": "Estimates 500,000 to 1 million; range in event (500k-800k) consistent with sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Estimates 500,000 to 1 million; range in event (500k-800k) consistent with sources.",
+        "source": "https://en.wikipedia.org/wiki/Retornados",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Retornados"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Constitution of 1976 Adopted — Democratic Republic Established",
     "verdict": "TRUE",
     "reason": "Constitution adopted 2 April 1976 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitution adopted 2 April 1976 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_Portugal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Constitution_of_Portugal"
   },
   {
@@ -172,6 +604,24 @@
     "title": "First Free Parliamentary Elections — Mário Soares PM",
     "verdict": "TRUE",
     "reason": "First free elections April 1976; Soares as PM, Eanes as president confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "First free elections April 1976; Soares as PM, Eanes as president confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1976_Portuguese_legislative_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1976_Portuguese_legislative_election"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Portugal Applies for EEC Membership",
     "verdict": "TRUE",
     "reason": "Formal application submitted 28 March 1977 by Soares confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Formal application submitted 28 March 1977 by Soares confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1986_enlargement_of_the_European_Communities",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1986_enlargement_of_the_European_Communities"
   },
   {
@@ -186,6 +654,24 @@
     "title": "First IMF Stabilization Program",
     "verdict": "TRUE",
     "reason": "Portugal drew first tranche in 1977; formal standby arrangement concluded May 1978. Event year of 1977 is when discussions and first drawing occurred.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Portugal drew first tranche in 1977; formal standby arrangement concluded May 1978. Event year of 1977 is when discussions and first drawing occurred.",
+        "source": "https://www.imf.org/en/countries/prt/portugal-lending-case-study",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.imf.org/en/countries/prt/portugal-lending-case-study"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Prime Minister Sá Carneiro Killed in Plane Crash",
     "verdict": "TRUE",
     "reason": "Died in plane crash 4 December 1980. Circumstances disputed (accident vs bomb). Facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Died in plane crash 4 December 1980. Circumstances disputed (accident vs bomb). Facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Francisco_S%C3%A1_Carneiro",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Francisco_S%C3%A1_Carneiro"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Council of Revolution Abolished — Military Removed from Politics",
     "verdict": "TRUE",
     "reason": "Council of Revolution disbanded 30 September 1982 by first constitutional revision; Constitutional Court created.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Council of Revolution disbanded 30 September 1982 by first constitutional revision; Constitutional Court created.",
+        "source": "https://en.wikipedia.org/wiki/Revolutionary_Council_(Portugal)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Revolutionary_Council_(Portugal)"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Second IMF Program — Fiscal Stabilization Before EEC",
     "verdict": "TRUE",
     "reason": "Second IMF program confirmed in 1983.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Second IMF program confirmed in 1983.",
+        "source": "https://en.wikipedia.org/wiki/Portugal_and_the_International_Monetary_Fund",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Portugal_and_the_International_Monetary_Fund"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Cavaco Silva Takes PSD Leadership — Reform Agenda",
     "verdict": "TRUE",
     "reason": "Cavaco Silva became PSD leader and PM in 1985 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cavaco Silva became PSD leader and PM in 1985 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/An%C3%ADbal_Cavaco_Silva",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/An%C3%ADbal_Cavaco_Silva"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Portugal Joins the European Economic Community",
     "verdict": "TRUE",
     "reason": "Portugal and Spain joined EEC 1 January 1986 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Portugal and Spain joined EEC 1 January 1986 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1986_enlargement_of_the_European_Communities",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1986_enlargement_of_the_European_Communities"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Mário Soares Elected President — First Civilian Since Estado Novo",
     "verdict": "TRUE",
     "reason": "Soares elected president February 1986; first civilian in 60 years confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Soares elected president February 1986; first civilian in 60 years confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1986_Portuguese_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1986_Portuguese_presidential_election"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Cavaco Silva Wins Unprecedented Absolute Majority",
     "verdict": "TRUE",
     "reason": "PSD won 50.2% and 148 seats; first absolute majority in democratic era confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PSD won 50.2% and 148 seats; first absolute majority in democratic era confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1987_Portuguese_legislative_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1987_Portuguese_legislative_election"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Chiado Fire Destroys Historic Lisbon Quarter",
     "verdict": "TRUE",
     "reason": "Fire on 25 August 1988; Álvaro Siza Vieira reconstruction confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Fire on 25 August 1988; Álvaro Siza Vieira reconstruction confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Chiado",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Chiado"
   },
   {
@@ -249,6 +879,24 @@
     "title": "EU Single Market Completed — Full Integration for Portugal",
     "verdict": "TRUE",
     "reason": "Single market completed end of 1992 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Single market completed end of 1992 confirmed.",
+        "source": "https://ec.europa.eu/internal_market/index_en.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://ec.europa.eu/internal_market/index_en.htm"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Lisbon Named European Capital of Culture",
     "verdict": "TRUE",
     "reason": "Lisbon was European Capital of Culture 1994 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Lisbon was European Capital of Culture 1994 confirmed.",
+        "source": "https://www.lisbon.vip/lisbon-essentials/history-heritage/lisbon-european-capital-of-culture-in-1994",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.lisbon.vip/lisbon-essentials/history-heritage/lisbon-european-capital-of-culture-in-1994"
   },
   {
@@ -263,6 +929,24 @@
     "title": "António Guterres Becomes Prime Minister",
     "verdict": "TRUE",
     "reason": "Guterres won October 1995 elections; became PM 28 October 1995 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Guterres won October 1995 elections; became PM 28 October 1995 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1995_Portuguese_legislative_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1995_Portuguese_legislative_election"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Community of Portuguese Language Countries (CPLP) Founded",
     "verdict": "FALSE",
     "reason": "East Timor listed as a founding member is materially wrong — East Timor joined in 2002. The seven founders were Angola, Brazil, Cape Verde, Guinea-Bissau, Mozambique, Portugal, São Tomé and Príncipe.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "East Timor listed as a founding member is materially wrong — East Timor joined in 2002. The seven founders were Angola, Brazil, Cape Verde, Guinea-Bissau, Mozambique, Portugal, São Tomé and Príncipe.",
+        "source": "https://en.wikipedia.org/wiki/Community_of_Portuguese_Language_Countries",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Community_of_Portuguese_Language_Countries"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Vasco da Gama Bridge Opens — Longest in Europe",
     "verdict": "FALSE",
     "reason": "Bridge was inaugurated on 29 March 1998, not 1997. Year off by 1.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Bridge was inaugurated on 29 March 1998, not 1997. Year off by 1.",
+        "source": "https://en.wikipedia.org/wiki/Vasco_da_Gama_Bridge",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Vasco_da_Gama_Bridge"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Expo 98 World's Fair Draws 11 Million to Lisbon",
     "verdict": "FALSE",
     "reason": "Official visitor count was 10,128,204 (just over 10 million). Event states '11 million' — materially wrong.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Official visitor count was 10,128,204 (just over 10 million). Event states '11 million' — materially wrong.",
+        "source": "https://www.bie-paris.org/site/en/1998-lisbon",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.bie-paris.org/site/en/1998-lisbon"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "José Saramago Wins Nobel Prize in Literature",
     "verdict": "TRUE",
     "reason": "Nobel Prize in Literature 1998 confirmed; first Portuguese-language writer from Portugal confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nobel Prize in Literature 1998 confirmed; first Portuguese-language writer from Portugal confirmed.",
+        "source": "https://www.nobelprize.org/prizes/literature/1998/saramago/facts/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nobelprize.org/prizes/literature/1998/saramago/facts/"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Portugal Joins the Euro as Founding Member",
     "verdict": "TRUE",
     "reason": "Portugal one of 11 founding eurozone members 1 January 1999 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Portugal one of 11 founding eurozone members 1 January 1999 confirmed.",
+        "source": "https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro/portugal-and-euro_en",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro/portugal-and-euro_en"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "East Timor Votes for Independence — Portugal's Diplomatic Win",
     "verdict": "TRUE",
     "reason": "Referendum 30 August 1999; 78.5% voted for independence; Australian-led INTERFET confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Referendum 30 August 1999; 78.5% voted for independence; Australian-led INTERFET confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1999_East_Timorese_independence_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1999_East_Timorese_independence_referendum"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Drug Decriminalization Model Draws Global Attention",
     "verdict": "TRUE",
     "reason": "Decriminalization came into effect July 2001 confirmed; global attention confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Decriminalization came into effect July 2001 confirmed; global attention confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Drug_policy_of_Portugal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Drug_policy_of_Portugal"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Azores Summit Hosts Bush, Blair, Aznar — Iraq War",
     "verdict": "TRUE",
     "reason": "Summit 16 March 2003 at Lajes; Barroso as host PM confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Summit 16 March 2003 at Lajes; Barroso as host PM confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Azores_Summit",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Azores_Summit"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "UEFA Euro 2004 Hosted in Portugal",
     "verdict": "TRUE",
     "reason": "Portugal hosted Euro 2004; Greece defeated Portugal 1-0 in the final confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Portugal hosted Euro 2004; Greece defeated Portugal 1-0 in the final confirmed.",
+        "source": "https://www.uefa.com/uefaeuro/history/editions/2004/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.uefa.com/uefaeuro/history/editions/2004/"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "Sócrates Government Launches Technological Modernization Plan",
     "verdict": "TRUE",
     "reason": "Sócrates won February 2005 with absolute majority; Technological Plan launched confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sócrates won February 2005 with absolute majority; Technological Plan launched confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Jos%C3%A9_S%C3%B3crates",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Jos%C3%A9_S%C3%B3crates"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Lisbon Treaty Signed at EU Summit",
     "verdict": "TRUE",
     "reason": "Signed 13 December 2007 in Lisbon; entered into force 1 December 2009 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed 13 December 2007 in Lisbon; entered into force 1 December 2009 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Treaty_of_Lisbon",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Treaty_of_Lisbon"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Budget Deficit Surges to 10% of GDP — Crisis Deepens",
     "verdict": "TRUE",
     "reason": "Deficit ~9.4–10% of GDP in 2009 confirmed; Excessive Deficit Procedure confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Deficit ~9.4–10% of GDP in 2009 confirmed; Excessive Deficit Procedure confirmed.",
+        "source": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_finance_statistics",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_finance_statistics"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "Geração à Rasca Mass Protest — Generation in a Bind",
     "verdict": "TRUE",
     "reason": "12 March 2011 protest; ~300,000–500,000 people; largest since Carnation Revolution confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "12 March 2011 protest; ~300,000–500,000 people; largest since Carnation Revolution confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Anti-austerity_movement_in_Portugal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Anti-austerity_movement_in_Portugal"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "EU/IMF Troika Bailout — €78 Billion Package",
     "verdict": "TRUE",
     "reason": "€78 billion bailout, April 2011 request, Sócrates resignation confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "€78 billion bailout, April 2011 request, Sócrates resignation confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Economic_Adjustment_Programme_for_Portugal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economic_Adjustment_Programme_for_Portugal"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "'Que se Lixe a Troika' — Massive Anti-Austerity Protests",
     "verdict": "TRUE",
     "reason": "15 September 2012 protest; 500,000–1 million; government retreated on social security contribution hike confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "15 September 2012 protest; 500,000–1 million; government retreated on social security contribution hike confirmed.",
+        "source": "https://globalvoices.org/2012/09/17/portugal-15spt-troika-austerity-queselixeatroika/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://globalvoices.org/2012/09/17/portugal-15spt-troika-austerity-queselixeatroika/"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "Unemployment Peaks at 17.5% — Mass Emigration Wave",
     "verdict": "TRUE",
     "reason": "Unemployment peaked ~17.5% in 2013; youth unemployment ~38%; emigration wave confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Unemployment peaked ~17.5% in 2013; youth unemployment ~38%; emigration wave confirmed.",
+        "source": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Unemployment_statistics",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Unemployment_statistics"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Portugal Exits EU/IMF Bailout Without Precautionary Credit",
     "verdict": "TRUE",
     "reason": "Portugal exited bailout May 2014 without precautionary credit line confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Portugal exited bailout May 2014 without precautionary credit line confirmed.",
+        "source": "https://ec.europa.eu/economy_finance/assistance_eu_ms/portugal/index_en.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://ec.europa.eu/economy_finance/assistance_eu_ms/portugal/index_en.htm"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Geringonça Left Coalition — Costa PM Without Majority",
     "verdict": "TRUE",
     "reason": "October 2015 election; geringonça minority government with Left Bloc and Communists confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 2015 election; geringonça minority government with Left Bloc and Communists confirmed.",
+        "source": "https://www.economist.com/europe/2016/07/28/the-portuguese-exception",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.economist.com/europe/2016/07/28/the-portuguese-exception"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "Pedrogão Grande Wildfires Kill 66 — Worst in Portuguese History",
     "verdict": "TRUE",
     "reason": "17-18 June 2017; 66 deaths confirmed as official count; eucalyptus monoculture debate confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "17-18 June 2017; 66 deaths confirmed as official count; eucalyptus monoculture debate confirmed.",
+        "source": "https://en.wikipedia.org/wiki/June_2017_Portugal_wildfires",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/June_2017_Portugal_wildfires"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "Web Summit Moves to Lisbon — Tech Hub Status Emerges",
     "verdict": "FALSE",
     "reason": "Web Summit moved from Dublin to Lisbon in 2016, not 2017. Year off by 1.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Web Summit moved from Dublin to Lisbon in 2016, not 2017. Year off by 1.",
+        "source": "https://en.wikipedia.org/wiki/Web_Summit",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Web_Summit"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "Costa Wins Absolute Majority — Economy Near Full Employment",
     "verdict": "FALSE",
     "reason": "Costa did NOT win an absolute majority. PS won 108 of 230 seats (36.7%); it was a plurality, not majority. Title and description claim 'absolute majority' and 'without formal left-wing support' — both materially wrong.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Costa did NOT win an absolute majority. PS won 108 of 230 seats (36.7%); it was a plurality, not majority. Title and description claim 'absolute majority' and 'without formal left-wing support' — both materially wrong.",
+        "source": "https://en.wikipedia.org/wiki/2019_Portuguese_legislative_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2019_Portuguese_legislative_election"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "COVID-19 — First State of Emergency Since 1974 Revolution",
     "verdict": "TRUE",
     "reason": "State of emergency declared 18 March 2020; first since 1974 Carnation Revolution confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "State of emergency declared 18 March 2020; first since 1974 Carnation Revolution confirmed.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Portugal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Portugal"
   },
   {
@@ -424,6 +1504,24 @@
     "title": "Tourism Collapse — GDP Contracts 8.4%",
     "verdict": "TRUE",
     "reason": "GDP contracted 8.4% in real terms in 2020 confirmed by Statistics Portugal.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "GDP contracted 8.4% in real terms in 2020 confirmed by Statistics Portugal.",
+        "source": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=GDP_main_aggregates_and_employment",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=GDP_main_aggregates_and_employment"
   },
   {
@@ -431,6 +1529,24 @@
     "title": "Fastest COVID-19 Vaccination in Europe — Army-Led Campaign",
     "verdict": "TRUE",
     "reason": "85% full vaccination by October 2021; Vice-Admiral Gouveia e Melo confirmed; world-leading rate confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "85% full vaccination by October 2021; Vice-Admiral Gouveia e Melo confirmed; world-leading rate confirmed.",
+        "source": "https://www.newsweek.com/portugal-closing-covid-vaccines-85-percent-population-highest-rate-world-1632047",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.newsweek.com/portugal-closing-covid-vaccines-85-percent-population-highest-rate-world-1632047"
   },
   {
@@ -438,6 +1554,24 @@
     "title": "Housing Affordability Crisis Intensifies in Lisbon and Porto",
     "verdict": "TRUE",
     "reason": "Housing prices surge in Lisbon/Porto driven by tourism, short-term rentals, golden visa confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Housing prices surge in Lisbon/Porto driven by tourism, short-term rentals, golden visa confirmed.",
+        "source": "https://www.oecd.org/housing/data/affordable-housing-database/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.oecd.org/housing/data/affordable-housing-database/"
   },
   {
@@ -445,6 +1579,24 @@
     "title": "Costa Resigns Amid Corruption Investigation",
     "verdict": "TRUE",
     "reason": "Costa resigned 7 November 2023 amid corruption probe on lithium/hydrogen contracts; elected European Council president confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Costa resigned 7 November 2023 amid corruption probe on lithium/hydrogen contracts; elected European Council president confirmed.",
+        "source": "https://www.bbc.com/news/world-europe-67324244",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.bbc.com/news/world-europe-67324244"
   },
   {
@@ -452,6 +1604,24 @@
     "title": "Chega Far-Right Surges — Third-Largest Political Force",
     "verdict": "TRUE",
     "reason": "March 2024 elections; Chega won 18% and 50 seats; third-largest party confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 2024 elections; Chega won 18% and 50 seats; third-largest party confirmed.",
+        "source": "https://www.bbc.com/news/world-europe-68500553",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.bbc.com/news/world-europe-68500553"
   },
   {
@@ -459,6 +1629,24 @@
     "title": "Portugal Marks 50 Years Since Carnation Revolution",
     "verdict": "FALSE",
     "reason": "The 50th anniversary of the Carnation Revolution was celebrated on April 25, 2024, not 2025. Year off by 1 — the 51st anniversary would be in 2025, not the 50th.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The 50th anniversary of the Carnation Revolution was celebrated on April 25, 2024, not 2025. Year off by 1 — the 51st anniversary would be in 2025, not the 50th.",
+        "source": "https://globalvoices.org/2024/05/01/in-portugal-crowds-in-the-streets-celebrate-democracy-at-the-50th-anniversary-of-the-carnation-revolution/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://globalvoices.org/2024/05/01/in-portugal-crowds-in-the-streets-celebrate-democracy-at-the-50th-anniversary-of-the-carnation-revolution/"
   },
   {
@@ -466,6 +1654,24 @@
     "title": "Lithium Mining Controversy — Critical Minerals vs. Environment",
     "verdict": "TRUE",
     "reason": "Portugal's lithium reserves among largest in Europe; EU strategic interest; local environmental opposition all confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Portugal's lithium reserves among largest in Europe; EU strategic interest; local environmental opposition all confirmed.",
+        "source": "https://www.euronews.com/2023/06/09/portugal-wants-to-exploit-its-lithium-reserves-but-at-what-cost-to-the-environment",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.euronews.com/2023/06/09/portugal-wants-to-exploit-its-lithium-reserves-but-at-what-cost-to-the-environment"
   }
 ]

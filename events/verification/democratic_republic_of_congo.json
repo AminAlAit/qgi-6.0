@@ -4,6 +4,24 @@
     "title": "Independence from Belgium",
     "verdict": "TRUE",
     "reason": "June 30 1960 date, Lumumba as PM, Kasavubu as President all confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 30 1960 date, Lumumba as PM, Kasavubu as President all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Patrice_Lumumba",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Patrice_Lumumba"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Lumumba's Independence Day Speech",
     "verdict": "TRUE",
     "reason": "Speech on June 30 1960 addressing King Baudouin, criticising colonial rule, confirmed by multiple primary sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Speech on June 30 1960 addressing King Baudouin, criticising colonial rule, confirmed by multiple primary sources.",
+        "source": "https://www.marxists.org/subject/africa/lumumba/1960/06/independence.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.marxists.org/subject/africa/lumumba/1960/06/independence.htm"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Force Publique Mutiny",
     "verdict": "TRUE",
     "reason": "Mutiny within days of independence, Belgian paratroopers deployed without consent, confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mutiny within days of independence, Belgian paratroopers deployed without consent, confirmed.",
+        "source": "https://history.state.gov/milestones/1961-1968/congo-decolonization",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://history.state.gov/milestones/1961-1968/congo-decolonization"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Katanga Secession Under Tshombe",
     "verdict": "TRUE",
     "reason": "July 11 1960 secession, Belgian mining interests (Union Minière) support, confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 11 1960 secession, Belgian mining interests (Union Minière) support, confirmed.",
+        "source": "https://en.wikipedia.org/wiki/State_of_Katanga",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/State_of_Katanga"
   },
   {
@@ -32,6 +104,24 @@
     "title": "South Kasai Secession and Diamond Conflict",
     "verdict": "TRUE",
     "reason": "Albert Kalonji August 1960 secession of South Kasai over diamond areas confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Albert Kalonji August 1960 secession of South Kasai over diamond areas confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Congo_Crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Congo_Crisis"
   },
   {
@@ -39,6 +129,24 @@
     "title": "UN ONUC Deployment",
     "verdict": "TRUE",
     "reason": "ONUC deployed 1960, grew to ~20,000 troops, Hammarskjold death link confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ONUC deployed 1960, grew to ~20,000 troops, Hammarskjold death link confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Congo_Crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Congo_Crisis"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Kasavubu Dismisses Lumumba",
     "verdict": "TRUE",
     "reason": "September 1960 dismissal, Western backing, Lumumba's appeal to Soviets, confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 1960 dismissal, Western backing, Lumumba's appeal to Soviets, confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Patrice_Lumumba",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Patrice_Lumumba"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Mobutu's First Coup — 'Neutralization' of Politicians",
     "verdict": "TRUE",
     "reason": "September 1960 neutralisation coup, expulsion of Soviet/Czech diplomats, Kasavubu restored, confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 1960 neutralisation coup, expulsion of Soviet/Czech diplomats, Kasavubu restored, confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mobutu_Sese_Seko",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mobutu_Sese_Seko"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Assassination of Patrice Lumumba",
     "verdict": "TRUE",
     "reason": "Executed January 17 1961 in Katanga, CIA and Belgian complicity confirmed via declassified records; Belgium officially acknowledged in 2002.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Executed January 17 1961 in Katanga, CIA and Belgian complicity confirmed via declassified records; Belgium officially acknowledged in 2002.",
+        "source": "https://www.zinnedproject.org/news/tdih/patrice-lumumba-executed/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.zinnedproject.org/news/tdih/patrice-lumumba-executed/"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Death of Dag Hammarskjold",
     "verdict": "TRUE",
     "reason": "Crash near Ndola September 18 1961 confirmed. UN 2019 inquiry found 'persuasive evidence' of hostile action; 'shot down' theory credible but not definitively proven.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Crash near Ndola September 18 1961 confirmed. UN 2019 inquiry found 'persuasive evidence' of hostile action; 'shot down' theory credible but not definitively proven.",
+        "source": "https://news.un.org/en/story/2024/10/1155876",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://news.un.org/en/story/2024/10/1155876"
   },
   {
@@ -74,6 +254,24 @@
     "title": "End of Katanga Secession",
     "verdict": "TRUE",
     "reason": "UN forces ended Katanga secession January 1963, Tshombe exiled, confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UN forces ended Katanga secession January 1963, Tshombe exiled, confirmed.",
+        "source": "https://en.wikipedia.org/wiki/State_of_Katanga",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/State_of_Katanga"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Simba and Mulele Rebellions",
     "verdict": "TRUE",
     "reason": "Mulele Kwilu uprising and Simba seizure of Stanleyville (Kisangani), People's Republic declared, confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mulele Kwilu uprising and Simba seizure of Stanleyville (Kisangani), People's Republic declared, confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Congo_Crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Congo_Crisis"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Stanleyville Hostage Crisis and Belgian-US Intervention",
     "verdict": "TRUE",
     "reason": "Operation Dragon Rouge November 1964, Belgian paratroopers airlifted by US Air Force, confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Dragon Rouge November 1964, Belgian paratroopers airlifted by US Air Force, confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Congo_Crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Congo_Crisis"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Mobutu's Second Coup — Total Power Seizure",
     "verdict": "TRUE",
     "reason": "Coup confirmed November 1965 (some sources say 24th, others 25th). Bloodless, 32-year rule confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Coup confirmed November 1965 (some sources say 24th, others 25th). Bloodless, 32-year rule confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Second_Mobutu_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Second_Mobutu_coup_d%27%C3%A9tat"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Execution of Former Prime Ministers",
     "verdict": "TRUE",
     "reason": "MINOR ERRORS: Hanging was June 2 not May 30; crowd was 100,000-125,000 not 50,000. Core facts (Kimba hanged, four men, public execution in Kinshasa) confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MINOR ERRORS: Hanging was June 2 not May 30; crowd was 100,000-125,000 not 50,000. Core facts (Kimba hanged, four men, public execution in Kinshasa) confirmed.",
+        "source": "https://www.executedtoday.com/2008/06/02/1966-evariste-kimba-mobutu-sese-seko-pentecost-plot/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.executedtoday.com/2008/06/02/1966-evariste-kimba-mobutu-sese-seko-pentecost-plot/"
   },
   {
@@ -109,6 +379,24 @@
     "title": "New Constitution and One-Party Framework",
     "verdict": "TRUE",
     "reason": "1967 constitution, MPR one-party state, automatic party membership confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1967 constitution, MPR one-party state, automatic party membership confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mobutu_Sese_Seko",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mobutu_Sese_Seko"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Zaire Renaming and Authenticite Campaign",
     "verdict": "TRUE",
     "reason": "Country renamed Zaire October 27 1971, Christian names banned, Mobutu's name change, all confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Country renamed Zaire October 27 1971, Christian names banned, Mobutu's name change, all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Authenticit%C3%A9_(Zaire)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Authenticit%C3%A9_(Zaire)"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Zaireanization — Mass Asset Nationalization",
     "verdict": "TRUE",
     "reason": "November 1973 nationalisation of foreign businesses, transfer to cronies, economic collapse confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 1973 nationalisation of foreign businesses, transfer to cronies, economic collapse confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Zairianisation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zairianisation"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Retrocession — Partial Re-privatization",
     "verdict": "TRUE",
     "reason": "1974 partial return of businesses as joint ventures following economic disaster confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1974 partial return of businesses as joint ventures following economic disaster confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Zairianisation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zairianisation"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Rumble in the Jungle — Ali vs Foreman in Kinshasa",
     "verdict": "TRUE",
     "reason": "October 1974 Kinshasa, $10M state-funded, Ali wins, international prestige vehicle confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 1974 Kinshasa, $10M state-funded, Ali wins, international prestige vehicle confirmed.",
+        "source": "https://en.wikipedia.org/wiki/The_Rumble_in_the_Jungle",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/The_Rumble_in_the_Jungle"
   },
   {
@@ -144,6 +504,24 @@
     "title": "First Shaba Invasion (Katanga Gendarmes)",
     "verdict": "TRUE",
     "reason": "March 1977 invasion from Angola, Moroccan troops airlifted by France required to repel, confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 1977 invasion from Angola, Moroccan troops airlifted by France required to repel, confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Shaba_I",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Shaba_I"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Second Shaba Invasion and Kolwezi Massacre",
     "verdict": "TRUE",
     "reason": "May 1978, Kolwezi seized, European technicians killed, French/Belgian paratrooper operations confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 1978, Kolwezi seized, European technicians killed, French/Belgian paratrooper operations confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Shaba_II",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Shaba_II"
   },
   {
@@ -158,6 +554,24 @@
     "title": "UDPS Founded — First Opposition Party",
     "verdict": "TRUE",
     "reason": "13 MPs letter to Mobutu, imprisonment, UDPS founded 1982 under Etienne Tshisekedi confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "13 MPs letter to Mobutu, imprisonment, UDPS founded 1982 under Etienne Tshisekedi confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Union_for_Democracy_and_Social_Progress",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Union_for_Democracy_and_Social_Progress"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Debt Crisis and IMF Structural Adjustment",
     "verdict": "TRUE",
     "reason": "~$9B external debt by late 1980s, IMF defaults, structural adjustment programmes confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "~$9B external debt by late 1980s, IMF defaults, structural adjustment programmes confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Zaire",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zaire"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Mobutu Announces Multi-Party Transition",
     "verdict": "TRUE",
     "reason": "April 1990 multi-party announcement, Lubumbashi University massacre of students days later confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 1990 multi-party announcement, Lubumbashi University massacre of students days later confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mobutu_Sese_Seko",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mobutu_Sese_Seko"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Sovereign National Conference and Tshisekedi Premier",
     "verdict": "TRUE",
     "reason": "Conference convened 1991, Tshisekedi appointed transitional PM, dismissed within days by Mobutu, confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Conference convened 1991, Tshisekedi appointed transitional PM, dismissed within days by Mobutu, confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Sovereign_National_Conference_(Zaire)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sovereign_National_Conference_(Zaire)"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Kinshasa Pillaging — Military Looting Spree",
     "verdict": "TRUE",
     "reason": "September 1991 unpaid soldiers looted Kinshasa, Belgian/French evacuations confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 1991 unpaid soldiers looted Kinshasa, Belgian/French evacuations confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Zaire",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zaire"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Hyperinflation and New Zaire Currency Crisis",
     "verdict": "TRUE",
     "reason": "Hyperinflation exceeding several thousand percent 1993, new banknotes, dollar substitution confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Hyperinflation exceeding several thousand percent 1993, new banknotes, dollar substitution confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Zaire",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zaire"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Ethnic Violence in North Kivu — Banyarwanda Expulsions",
     "verdict": "TRUE",
     "reason": "1993 North Kivu ethnic violence between indigenous communities and Banyarwanda, link to 1994 genocide dynamics confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1993 North Kivu ethnic violence between indigenous communities and Banyarwanda, link to 1994 genocide dynamics confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Banyarwanda",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Banyarwanda"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Rwanda Genocide Refugee Influx — 2 Million Hutu Flee",
     "verdict": "TRUE",
     "reason": "July 1994 massive Hutu refugee influx into eastern Zaire (~1.2-2M), militarised camps, FDLR cross-border attacks confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 1994 massive Hutu refugee influx into eastern Zaire (~1.2-2M), militarised camps, FDLR cross-border attacks confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Great_Lakes_refugee_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Great_Lakes_refugee_crisis"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Cholera Epidemic in Goma Refugee Camps",
     "verdict": "TRUE",
     "reason": "July-August 1994 cholera epidemic in Goma camps estimated ~50,000 dead in weeks confirmed. International relief inadvertently protected genocidaire structures confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July-August 1994 cholera epidemic in Goma camps estimated ~50,000 dead in weeks confirmed. International relief inadvertently protected genocidaire structures confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Great_Lakes_refugee_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Great_Lakes_refugee_crisis"
   },
   {
@@ -221,6 +779,24 @@
     "title": "First Congo War Begins — AFDL and Rwanda Invade",
     "verdict": "TRUE",
     "reason": "October 1996 AFDL insurgency, Rwandan/Ugandan covert backing, regime-change objective confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 1996 AFDL insurgency, Rwandan/Ugandan covert backing, regime-change objective confirmed.",
+        "source": "https://en.wikipedia.org/wiki/First_Congo_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/First_Congo_War"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Mugunga Refugee Camp Destruction",
     "verdict": "TRUE",
     "reason": "November 1996 Mugunga attack, mass repatriation, UN investigation blocked by Rwanda confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 1996 Mugunga attack, mass repatriation, UN investigation blocked by Rwanda confirmed.",
+        "source": "https://en.wikipedia.org/wiki/First_Congo_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/First_Congo_War"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Fall of Mobutu — AFDL Takes Kinshasa",
     "verdict": "TRUE",
     "reason": "AFDL entered Kinshasa May 17 1997 confirmed. Mobutu fled to Morocco (not immediately; sources note he fled country before May 17, died Morocco September 1997) confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "AFDL entered Kinshasa May 17 1997 confirmed. Mobutu fled to Morocco (not immediately; sources note he fled country before May 17, died Morocco September 1997) confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Laurent-D%C3%A9sir%C3%A9_Kabila",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Laurent-D%C3%A9sir%C3%A9_Kabila"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Laurent Kabila Bans Political Parties",
     "verdict": "TRUE",
     "reason": "Kabila banned political parties, ruled by decree, alienated Rwandan/Ugandan allies confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kabila banned political parties, ruled by decree, alienated Rwandan/Ugandan allies confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Laurent-D%C3%A9sir%C3%A9_Kabila",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Laurent-D%C3%A9sir%C3%A9_Kabila"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Second Congo War Begins — Africa's World War",
     "verdict": "TRUE",
     "reason": "August 2 1998 start, RCD backed by Rwanda/Uganda, nine nations involved, Angola/Zimbabwe/Namibia on Kabila side confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 2 1998 start, RCD backed by Rwanda/Uganda, nine nations involved, Angola/Zimbabwe/Namibia on Kabila side confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Second_Congo_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Second_Congo_War"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Kasika and Makobola Massacres",
     "verdict": "TRUE",
     "reason": "Kasika massacre August 1998 (~700-1000 civilians) and Makobola December 1998 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kasika massacre August 1998 (~700-1000 civilians) and Makobola December 1998 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kasika_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kasika_massacre"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Lusaka Ceasefire Agreement",
     "verdict": "TRUE",
     "reason": "Signed July 10 1999 by six governments, rebel groups signed separately in August, repeated collapses confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed July 10 1999 by six governments, rebel groups signed separately in August, repeated collapses confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Lusaka_Ceasefire_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Lusaka_Ceasefire_Agreement"
   },
   {
@@ -270,6 +954,24 @@
     "title": "MONUC Peacekeeping Mission Authorized",
     "verdict": "TRUE",
     "reason": "MONUC authorised November 1999, grew to ~17,000 troops, UN's largest mission at time confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MONUC authorised November 1999, grew to ~17,000 troops, UN's largest mission at time confirmed.",
+        "source": "https://en.wikipedia.org/wiki/MONUC",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/MONUC"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Assassination of Laurent Kabila",
     "verdict": "TRUE",
     "reason": "Shot January 16 2001 by bodyguard Rashidi Mizele at presidential palace, died in Zimbabwe confirmed. Orchestration never definitively established confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Shot January 16 2001 by bodyguard Rashidi Mizele at presidential palace, died in Zimbabwe confirmed. Orchestration never definitively established confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Laurent-D%C3%A9sir%C3%A9_Kabila",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Assassination_of_Laurent-D%C3%A9sir%C3%A9_Kabila"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Joseph Kabila Becomes President",
     "verdict": "TRUE",
     "reason": "Sworn in January 26 2001 aged 29, reversed father's isolationism confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sworn in January 26 2001 aged 29, reversed father's isolationism confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Joseph_Kabila",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Joseph_Kabila"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Pretoria Accords — Rwanda and Uganda Withdrawal",
     "verdict": "TRUE",
     "reason": "Pretoria Accord July 2002 with Rwanda, Luanda Agreement September 2002 with Uganda, FDLR disarmament conditionality confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pretoria Accord July 2002 with Rwanda, Luanda Agreement September 2002 with Uganda, FDLR disarmament conditionality confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Pretoria_Accord_(DRC)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Pretoria_Accord_(DRC)"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Sun City Peace Agreement",
     "verdict": "TRUE",
     "reason": "TITLE INACCURACY: The December 2002 deal is the Global and Inclusive Agreement signed in Pretoria (Dec 16-17). Sun City was a separate partial agreement from April 2002. The 1+4 government structure and 3.8M death toll figure confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "TITLE INACCURACY: The December 2002 deal is the Global and Inclusive Agreement signed in Pretoria (Dec 16-17). Sun City was a separate partial agreement from April 2002. The 1+4 government structure and 3.8M death toll figure confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Sun_City_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sun_City_Agreement"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Transitional Government Installed",
     "verdict": "TRUE",
     "reason": "Sworn in July 4 2003, Kabila as president with four vice-presidents from rebel/opposition groups confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sworn in July 4 2003, Kabila as president with four vice-presidents from rebel/opposition groups confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Transitional_Government_of_the_Democratic_Republic_of_the_Congo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Transitional_Government_of_the_Democratic_Republic_of_the_Congo"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Ituri Massacres and French-Led Artemis Operation",
     "verdict": "TRUE",
     "reason": "Lendu-Hema violence, Operation Artemis stabilising Bunia, Ugandan commander gold exploitation confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Lendu-Hema violence, Operation Artemis stabilising Bunia, Ugandan commander gold exploitation confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Artemis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Artemis"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Bukavu Crisis — Nkunda Forces Seize City",
     "verdict": "TRUE",
     "reason": "Nkunda forces seized Bukavu June 2004, held days then withdrew under pressure confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nkunda forces seized Bukavu June 2004, held days then withdrew under pressure confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Laurent_Nkunda",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Laurent_Nkunda"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Constitutional Referendum",
     "verdict": "TRUE",
     "reason": "December 2005 referendum, ~84% yes vote, two five-year term limits confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 2005 referendum, ~84% yes vote, two five-year term limits confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2005_Congolese_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2005_Congolese_constitutional_referendum"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "First Multi-Party Elections Since Independence",
     "verdict": "TRUE",
     "reason": "July and October 2006 elections, Kabila defeats Bemba in runoff, broadly validated by observers confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July and October 2006 elections, Kabila defeats Bemba in runoff, broadly validated by observers confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2006_Congolese_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2006_Congolese_presidential_election"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Kinshasa Fighting Between Kabila and Bemba Forces",
     "verdict": "TRUE",
     "reason": "August 2006 street fighting between Kabila presidential guard and Bemba's forces, EUFOR deployment confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 2006 street fighting between Kabila presidential guard and Bemba's forces, EUFOR deployment confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2006_Kinshasa_clashes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2006_Kinshasa_clashes"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "CNDP Founded — Nkunda's North Kivu Insurgency",
     "verdict": "TRUE",
     "reason": "CNDP founded 2007 by Nkunda, Rwanda-backed proxy claim, North Kivu control confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "CNDP founded 2007 by Nkunda, Rwanda-backed proxy claim, North Kivu control confirmed.",
+        "source": "https://en.wikipedia.org/wiki/National_Congress_for_the_Defence_of_the_People",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/National_Congress_for_the_Defence_of_the_People"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "Goma Peace Conference and Nkunda Offensive",
     "verdict": "TRUE",
     "reason": "January 2008 Amani Agreement, October 2008 CNDP offensive reaching Goma outskirts, mass displacement confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 2008 Amani Agreement, October 2008 CNDP offensive reaching Goma outskirts, mass displacement confirmed.",
+        "source": "https://en.wikipedia.org/wiki/North_Kivu_campaign_(2008)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/North_Kivu_campaign_(2008)"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "Nkunda Arrested — CNDP Integrated into Army",
     "verdict": "TRUE",
     "reason": "Rwanda arrested Nkunda January 2009, CNDP integrated into FARDC superficially, parallel command structures retained confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Rwanda arrested Nkunda January 2009, CNDP integrated into FARDC superficially, parallel command structures retained confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Laurent_Nkunda",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Laurent_Nkunda"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Kimia II Operation — Anti-FDLR Offensive",
     "verdict": "TRUE",
     "reason": "Joint DRC-Rwanda anti-FDLR operation 2009, FARDC atrocities against civilians documented by UN investigators confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Joint DRC-Rwanda anti-FDLR operation 2009, FARDC atrocities against civilians documented by UN investigators confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Kimia_II",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Kimia_II"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "UN Mapping Report Documents Mass Atrocities",
     "verdict": "TRUE",
     "reason": "Released October 2010, 617 incidents documented 1993-2003, possible genocide finding, Rwanda's threat to withdraw peacekeepers confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Released October 2010, 617 incidents documented 1993-2003, possible genocide finding, Rwanda's threat to withdraw peacekeepers confirmed.",
+        "source": "https://en.wikipedia.org/wiki/UN_Mapping_Report",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/UN_Mapping_Report"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Disputed Presidential Election — Kabila Re-elected",
     "verdict": "TRUE",
     "reason": "November 2011, Carter Center and EU described as seriously flawed, Tshisekedi declared himself winner, Constitutional Court validated Kabila confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 2011, Carter Center and EU described as seriously flawed, Tshisekedi declared himself winner, Constitutional Court validated Kabila confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2011_Congolese_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2011_Congolese_presidential_election"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "M23 Rebellion — CNDP Officers Mutiny",
     "verdict": "TRUE",
     "reason": "April 2012 mutiny, UN Group of Experts documented direct Rwandan command and logistics confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 2012 mutiny, UN Group of Experts documented direct Rwandan command and logistics confirmed.",
+        "source": "https://en.wikipedia.org/wiki/M23_rebellion_(2012%E2%80%932013)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/M23_rebellion_(2012%E2%80%932013)"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "M23 Captures Goma",
     "verdict": "TRUE",
     "reason": "November 20 2012 Goma captured despite 17,000 MONUC troops, demands for offensive mandate confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 20 2012 Goma captured despite 17,000 MONUC troops, demands for offensive mandate confirmed.",
+        "source": "https://en.wikipedia.org/wiki/M23_rebellion_(2012%E2%80%932013)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/M23_rebellion_(2012%E2%80%932013)"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "Peace, Security and Cooperation Framework Signed",
     "verdict": "TRUE",
     "reason": "Addis Ababa February 2013, eleven states including Rwanda committed to non-interference confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Addis Ababa February 2013, eleven states including Rwanda committed to non-interference confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Peace,_Security_and_Cooperation_Framework",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Peace,_Security_and_Cooperation_Framework"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "MONUSCO Intervention Brigade Authorized",
     "verdict": "TRUE",
     "reason": "FIB authorised March 2013, first UN force with explicit neutralisation mandate, South Africa/Tanzania/Malawi troops confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "FIB authorised March 2013, first UN force with explicit neutralisation mandate, South Africa/Tanzania/Malawi troops confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Force_Intervention_Brigade",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Force_Intervention_Brigade"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "M23 Defeated — Rwanda Withdraws Support",
     "verdict": "TRUE",
     "reason": "FARDC+FIB offensive October-November 2013, M23 leadership fled to Rwanda/Uganda, US/EU donor pressure decisive confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "FARDC+FIB offensive October-November 2013, M23 leadership fled to Rwanda/Uganda, US/EU donor pressure decisive confirmed.",
+        "source": "https://en.wikipedia.org/wiki/M23_rebellion_(2012%E2%80%932013)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/M23_rebellion_(2012%E2%80%932013)"
   },
   {
@@ -424,6 +1504,24 @@
     "title": "ADF Massacres in Beni Territory",
     "verdict": "TRUE",
     "reason": "ADF systematic massacres starting October 2014 in Beni territory, ISCAP designation confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ADF systematic massacres starting October 2014 in Beni territory, ISCAP designation confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Allied_Democratic_Forces_(DRC)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Allied_Democratic_Forces_(DRC)"
   },
   {
@@ -431,6 +1529,24 @@
     "title": "Kabila Term Limit Crisis Begins",
     "verdict": "TRUE",
     "reason": "2015 census delay manoeuvre to push elections, Rassemblement protests, international pressure confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2015 census delay manoeuvre to push elections, Rassemblement protests, international pressure confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Joseph_Kabila",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Joseph_Kabila"
   },
   {
@@ -438,6 +1554,24 @@
     "title": "Kabila Refuses to Leave Power — Election Delayed",
     "verdict": "TRUE",
     "reason": "December 19 2016 mandate expiry without elections, protests violently suppressed, CENCO December 31 deal confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 19 2016 mandate expiry without elections, protests violently suppressed, CENCO December 31 deal confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Joseph_Kabila",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Joseph_Kabila"
   },
   {
@@ -445,6 +1579,24 @@
     "title": "Kasai Conflict — Kamuina Nsapu Uprising",
     "verdict": "TRUE",
     "reason": "August 2016 Kamuina Nsapu uprising after his killing, mass graves, 3,000+ deaths, 1.4M displaced confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 2016 Kamuina Nsapu uprising after his killing, mass graves, 3,000+ deaths, 1.4M displaced confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kasai_conflict",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kasai_conflict"
   },
   {
@@ -452,6 +1604,24 @@
     "title": "UN Investigators Killed in Kasai",
     "verdict": "TRUE",
     "reason": "Michael Sharp and Zaida Catalan kidnapped and murdered March 2017 in Kasai, government-linked militia, confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Michael Sharp and Zaida Catalan kidnapped and murdered March 2017 in Kasai, government-linked militia, confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Killing_of_Michael_Sharp_and_Zaïda_Català",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Killing_of_Michael_Sharp_and_Zaïda_Català"
   },
   {
@@ -459,6 +1629,24 @@
     "title": "Ebola Outbreak in North Kivu",
     "verdict": "TRUE",
     "reason": "August 2018 outbreak, 2,299 deaths, second-largest Ebola outbreak in history, armed group attacks on health facilities confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 2018 outbreak, 2,299 deaths, second-largest Ebola outbreak in history, armed group attacks on health facilities confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kivu_Ebola_epidemic",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kivu_Ebola_epidemic"
   },
   {
@@ -466,6 +1654,24 @@
     "title": "Tshisekedi Wins Election — First Peaceful Transfer of Power",
     "verdict": "TRUE",
     "reason": "December 2018 election, first-ever non-violent presidential transfer, backroom deal allegations with Fayulu confirmed by international observers.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 2018 election, first-ever non-violent presidential transfer, backroom deal allegations with Fayulu confirmed by international observers.",
+        "source": "https://en.wikipedia.org/wiki/F%C3%A9lix_Tshisekedi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/F%C3%A9lix_Tshisekedi"
   },
   {
@@ -473,6 +1679,24 @@
     "title": "Tshisekedi Takes Power — Coalition with Kabila",
     "verdict": "TRUE",
     "reason": "Inaugurated January 24 2019, FCC-CACH coalition constraining presidential authority confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Inaugurated January 24 2019, FCC-CACH coalition constraining presidential authority confirmed.",
+        "source": "https://en.wikipedia.org/wiki/F%C3%A9lix_Tshisekedi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/F%C3%A9lix_Tshisekedi"
   },
   {
@@ -480,6 +1704,24 @@
     "title": "Tshisekedi Breaks with Kabila — Sacred Union",
     "verdict": "TRUE",
     "reason": "December 6 2020 declaration dissolving FCC-CACH coalition, Sacred Union built, anti-Kabila prosecutions wave confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 6 2020 declaration dissolving FCC-CACH coalition, Sacred Union built, anti-Kabila prosecutions wave confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Sacred_Union_of_the_Nation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sacred_Union_of_the_Nation"
   },
   {
@@ -487,6 +1729,24 @@
     "title": "State of Siege Declared in North Kivu and Ituri",
     "verdict": "TRUE",
     "reason": "May 2021 state of siege in North Kivu and Ituri, military governors, repeatedly renewed confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 2021 state of siege in North Kivu and Ituri, military governors, repeatedly renewed confirmed.",
+        "source": "https://en.wikipedia.org/wiki/North_Kivu",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/North_Kivu"
   },
   {
@@ -494,6 +1754,24 @@
     "title": "Sama Lukonde Appointed Prime Minister",
     "verdict": "TRUE",
     "reason": "February 2021 appointment, former Gecamines head, Sacred Union government confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 2021 appointment, former Gecamines head, Sacred Union government confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Jean-Michel_Sama_Lukonde",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Jean-Michel_Sama_Lukonde"
   },
   {
@@ -501,6 +1779,24 @@
     "title": "DRC-Rwanda Tensions Escalate Over M23 Resurgence",
     "verdict": "TRUE",
     "reason": "Late 2021 former M23 fighters filtering back into North Kivu, renewed attacks on FARDC confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Late 2021 former M23 fighters filtering back into North Kivu, renewed attacks on FARDC confirmed.",
+        "source": "https://en.wikipedia.org/wiki/M23_campaign_(2022%E2%80%93present)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/M23_campaign_(2022%E2%80%93present)"
   },
   {
@@ -508,6 +1804,24 @@
     "title": "M23 Resurgence — Rwanda Again Backs Rebels",
     "verdict": "TRUE",
     "reason": "March 2022 major M23 offensive, 800,000+ displaced, UN Group of Experts documented RDF deployment, DRC recalled ambassador confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 2022 major M23 offensive, 800,000+ displaced, UN Group of Experts documented RDF deployment, DRC recalled ambassador confirmed.",
+        "source": "https://en.wikipedia.org/wiki/M23_campaign_(2022%E2%80%93present)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/M23_campaign_(2022%E2%80%93present)"
   },
   {
@@ -515,6 +1829,24 @@
     "title": "Luanda Peace Process — Angola Mediates",
     "verdict": "TRUE",
     "reason": "Angola Luanda Process 2022, EAC regional force deployment, repeated ceasefire failures confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Angola Luanda Process 2022, EAC regional force deployment, repeated ceasefire failures confirmed.",
+        "source": "https://en.wikipedia.org/wiki/M23_campaign_(2022%E2%80%93present)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/M23_campaign_(2022%E2%80%93present)"
   },
   {
@@ -522,6 +1854,24 @@
     "title": "EAC Regional Force Deployed",
     "verdict": "TRUE",
     "reason": "EACRF deployed November 2022 (Kenyan, Ugandan, Burundian troops), DRC asked it to leave late 2023 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "EACRF deployed November 2022 (Kenyan, Ugandan, Burundian troops), DRC asked it to leave late 2023 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/EACRF",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/EACRF"
   },
   {
@@ -529,6 +1879,24 @@
     "title": "DRC Joins East African Community",
     "verdict": "TRUE",
     "reason": "DRC formally admitted to EAC April 2022 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "DRC formally admitted to EAC April 2022 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/East_African_Community",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/East_African_Community"
   },
   {
@@ -536,6 +1904,24 @@
     "title": "Cobalt and Coltan Mining — Chinese Dominance",
     "verdict": "TRUE",
     "reason": "DRC ~70-75% global cobalt supply by 2022, Chinese companies controlling ~44% of mine supply confirmed (>70% claim approximately correct).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "DRC ~70-75% global cobalt supply by 2022, Chinese companies controlling ~44% of mine supply confirmed (>70% claim approximately correct).",
+        "source": "https://pubs.usgs.gov/myb/vol1/2022/myb1-2022-cobalt.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://pubs.usgs.gov/myb/vol1/2022/myb1-2022-cobalt.pdf"
   },
   {
@@ -543,6 +1929,24 @@
     "title": "Tshisekedi Re-elected in Disputed Election",
     "verdict": "TRUE",
     "reason": "December 2023, ~73% declared (CENI reported 72-74%), Catholic Church and observers raised serious irregularities, internationally accepted confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 2023, ~73% declared (CENI reported 72-74%), Catholic Church and observers raised serious irregularities, internationally accepted confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2023_Democratic_Republic_of_the_Congo_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2023_Democratic_Republic_of_the_Congo_general_election"
   },
   {
@@ -550,6 +1954,24 @@
     "title": "SADC Decides to Deploy Mission",
     "verdict": "TRUE",
     "reason": "SADC SAMIDRC deployed December 15 2023, South Africa/Tanzania/Malawi troops confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "SADC SAMIDRC deployed December 15 2023, South Africa/Tanzania/Malawi troops confirmed.",
+        "source": "https://en.wikipedia.org/wiki/SADC_Mission_in_the_Democratic_Republic_of_the_Congo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/SADC_Mission_in_the_Democratic_Republic_of_the_Congo"
   },
   {
@@ -557,6 +1979,24 @@
     "title": "Wazalendo Militias Rise as Pro-Government Forces",
     "verdict": "TRUE",
     "reason": "Wazalendo coalition 2023 emergence alongside FARDC against M23, atrocities confirmed by multiple reports.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Wazalendo coalition 2023 emergence alongside FARDC against M23, atrocities confirmed by multiple reports.",
+        "source": "https://acleddata.com",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://acleddata.com"
   },
   {
@@ -564,6 +2004,24 @@
     "title": "Humanitarian Crisis Reaches Record Levels",
     "verdict": "TRUE",
     "reason": "6.9M IDPs 2023, 120+ armed groups, 25M food insecure confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "6.9M IDPs 2023, 120+ armed groups, 25M food insecure confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Internal_displacement_in_the_Democratic_Republic_of_Congo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Internal_displacement_in_the_Democratic_Republic_of_Congo"
   },
   {
@@ -571,6 +2029,24 @@
     "title": "M23 and Rwanda Capture Goma",
     "verdict": "TRUE",
     "reason": "YEAR LABEL ERROR: Event occurred January 2025 not 2024. M23 seized Goma January 26-27 2025, South African SADC soldiers killed (14 SANDF deaths), 2,900+ killed confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "YEAR LABEL ERROR: Event occurred January 2025 not 2024. M23 seized Goma January 26-27 2025, South African SADC soldiers killed (14 SANDF deaths), 2,900+ killed confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2025_Goma_offensive",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2025_Goma_offensive"
   },
   {
@@ -578,6 +2054,24 @@
     "title": "Bukavu Falls to M23",
     "verdict": "TRUE",
     "reason": "YEAR LABEL ERROR: Event occurred February 2025 not 2024. Bukavu fell to M23/Rwanda February 16 2025, city of 1.3M people, WFP depot looted confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "YEAR LABEL ERROR: Event occurred February 2025 not 2024. Bukavu fell to M23/Rwanda February 16 2025, city of 1.3M people, WFP depot looted confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2025_Bukavu_offensive",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2025_Bukavu_offensive"
   },
   {
@@ -585,6 +2079,24 @@
     "title": "Ceasefire Attempts and Nairobi-Luanda Process",
     "verdict": "TRUE",
     "reason": "Multiple ceasefire failures through Luanda/Nairobi processes 2024, Rwanda denial of military role, Western aid suspensions confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple ceasefire failures through Luanda/Nairobi processes 2024, Rwanda denial of military role, Western aid suspensions confirmed.",
+        "source": "https://www.crisisgroup.org/africa/democratic-republic-congo-rwanda/320-m23-offensive-elusive-peace-great-lakes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.crisisgroup.org/africa/democratic-republic-congo-rwanda/320-m23-offensive-elusive-peace-great-lakes"
   },
   {
@@ -592,6 +2104,24 @@
     "title": "Displacement Crisis in Eastern Congo Catastrophic Scale",
     "verdict": "TRUE",
     "reason": "1M+ additional displaced in early 2024-2025, total ~7M IDPs in eastern Congo, Goma camp conditions catastrophic confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1M+ additional displaced in early 2024-2025, total ~7M IDPs in eastern Congo, Goma camp conditions catastrophic confirmed.",
+        "source": "https://reliefweb.int",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://reliefweb.int"
   },
   {
@@ -599,6 +2129,24 @@
     "title": "Diplomatic Isolation of Rwanda and Western Aid Suspensions",
     "verdict": "TRUE",
     "reason": "US, UK, Germany suspended aid to Rwanda over M23 support in 2024, Rwanda denied role citing FDLR threat confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "US, UK, Germany suspended aid to Rwanda over M23 support in 2024, Rwanda denied role citing FDLR threat confirmed.",
+        "source": "https://www.crisisgroup.org/africa/democratic-republic-congo-rwanda/320-m23-offensive-elusive-peace-great-lakes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.crisisgroup.org/africa/democratic-republic-congo-rwanda/320-m23-offensive-elusive-peace-great-lakes"
   }
 ]

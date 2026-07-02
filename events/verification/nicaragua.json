@@ -4,6 +4,24 @@
     "title": "Cotton Boom Transforms Nicaraguan Pacific Lowlands",
     "verdict": "TRUE",
     "reason": "Well-documented: DDT made cotton viable in the early 1950s, and Korean War price spike drove rapid Pacific lowland expansion. Between 1952 and 1967 cotton land grew ~400%. Somoza family owned 10-20% of arable land and benefited directly.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Well-documented: DDT made cotton viable in the early 1950s, and Korean War price spike drove rapid Pacific lowland expansion. Between 1952 and 1967 cotton land grew ~400%. Somoza family owned 10-20% of arable land and benefited directly.",
+        "source": "https://en.wikipedia.org/wiki/Economic_history_of_Nicaragua",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economic_history_of_Nicaragua"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Nicaragua Serves as CIA Staging Ground Against Guatemala",
     "verdict": "TRUE",
     "reason": "Confirmed: Somoza García allowed CIA to use Nicaraguan territory (training camps at Momotombito island and El Tamarindo, and the Puerto Cabezas airstrip) for Operation PBSUCCESS. NSC authorized the operation in August 1953; Arbenz ousted June 1954.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Somoza García allowed CIA to use Nicaraguan territory (training camps at Momotombito island and El Tamarindo, and the Puerto Cabezas airstrip) for Operation PBSUCCESS. NSC authorized the operation in August 1953; Arbenz ousted June 1954.",
+        "source": "https://en.wikipedia.org/wiki/1954_Guatemalan_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1954_Guatemalan_coup_d%27%C3%A9tat"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Assassination of Somoza García and Dynastic Succession",
     "verdict": "TRUE",
     "reason": "Confirmed: Poet Rigoberto López Pérez shot Anastasio Somoza García in León on September 21, 1956; Somoza died at Gorgas Hospital, Panama Canal Zone, on September 29. Son Luis assumed the presidency per constitutional succession.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Poet Rigoberto López Pérez shot Anastasio Somoza García in León on September 21, 1956; Somoza died at Gorgas Hospital, Panama Canal Zone, on September 29. Son Luis assumed the presidency per constitutional succession.",
+        "source": "https://en.wikipedia.org/wiki/Anastasio_Somoza_Garc%C3%ADa",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Anastasio_Somoza_Garc%C3%ADa"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Cuban Revolution Inspires Nicaraguan Armed Opposition",
     "verdict": "TRUE",
     "reason": "Confirmed: Fidel Castro's guerrilla success convinced future FSLN founders (especially Carlos Fonseca, who visited Cuba in 1959) that armed revolution was viable. Ramon Raudales began guerrilla operations against Somoza in October 1958. Failed armed incursions from Honduras/Costa Rica in 1959 followed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Fidel Castro's guerrilla success convinced future FSLN founders (especially Carlos Fonseca, who visited Cuba in 1959) that armed revolution was viable. Ramon Raudales began guerrilla operations against Somoza in October 1958. Failed armed incursions from Honduras/Costa Rica in 1959 followed.",
+        "source": "https://en.wikipedia.org/wiki/Sandinista_National_Liberation_Front",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sandinista_National_Liberation_Front"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Sandinista National Liberation Front Founded",
     "verdict": "TRUE",
     "reason": "Confirmed: The FSLN was founded in 1961 by Carlos Fonseca Amador, Silvio Mayorga, and Tomás Borge (among others). The traditional founding is placed in Tegucigalpa on July 19, 1961, though documentation is limited. The organization adopted the Sandinista name later. Britannica and Wikipedia corroborate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: The FSLN was founded in 1961 by Carlos Fonseca Amador, Silvio Mayorga, and Tomás Borge (among others). The traditional founding is placed in Tegucigalpa on July 19, 1961, though documentation is limited. The organization adopted the Sandinista name later. Britannica and Wikipedia corroborate.",
+        "source": "https://www.britannica.com/topic/Sandinista",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/topic/Sandinista"
   },
   {
@@ -39,6 +129,24 @@
     "title": "National Guard Massacres Conservative Demonstrators in Managua",
     "verdict": "TRUE",
     "reason": "Confirmed: On January 22, 1967, the National Guard attacked a large Conservative Party/UNO demonstration in Managua. Casualty estimates vary (dozens to over 500), with a CIA estimate of 16 dead and 66 wounded; other sources cite much higher tolls. The event is well-attested as a turning point radicalizing Nicaraguan youth.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: On January 22, 1967, the National Guard attacked a large Conservative Party/UNO demonstration in Managua. Casualty estimates vary (dozens to over 500), with a CIA estimate of 16 dead and 66 wounded; other sources cite much higher tolls. The event is well-attested as a turning point radicalizing Nicaraguan youth.",
+        "source": "https://en.wikipedia.org/wiki/National_Opposition_Union_(1966)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/National_Opposition_Union_(1966)"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Liberation Theology Fractures Church Support for Somoza",
     "verdict": "TRUE",
     "reason": "Confirmed: The 1968 Medellín Conference produced the 'preferential option for the poor' and legitimized base communities. Nicaraguan progressive clergy began openly criticizing the Somoza regime from the late 1960s onward, providing organizational infrastructure that intersected with FSLN networks.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: The 1968 Medellín Conference produced the 'preferential option for the poor' and legitimized base communities. Nicaraguan progressive clergy began openly criticizing the Somoza regime from the late 1960s onward, providing organizational infrastructure that intersected with FSLN networks.",
+        "source": "https://en.wikipedia.org/wiki/Second_Episcopal_Conference_of_Latin_America",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Second_Episcopal_Conference_of_Latin_America"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Managua Earthquake Kills Thousands and Exposes Regime Corruption",
     "verdict": "TRUE",
     "reason": "Confirmed: Magnitude 6.2-6.3 earthquake on December 23, 1972, killed 4,000–11,000 and left ~300,000 homeless. Over $100 million in international aid was systematically diverted by Somoza and associates. AID investigations documented inflated land purchases and diverted funds. Alienated business class and Church.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Magnitude 6.2-6.3 earthquake on December 23, 1972, killed 4,000–11,000 and left ~300,000 homeless. Over $100 million in international aid was systematically diverted by Somoza and associates. AID investigations documented inflated land purchases and diverted funds. Alienated business class and Church.",
+        "source": "https://en.wikipedia.org/wiki/1972_Nicaragua_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1972_Nicaragua_earthquake"
   },
   {
@@ -60,6 +204,24 @@
     "title": "FSLN Christmas Party Hostage Operation Forces Regime Concessions",
     "verdict": "TRUE",
     "reason": "Confirmed: On December 27, 1974, 13 FSLN commandos seized hostages at a Managua party attended by senior officials. After a 61-hour siege the regime released 14 political prisoners, paid ransom, and broadcast a 12,000-word FSLN manifesto. All involved were flown to Cuba.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: On December 27, 1974, 13 FSLN commandos seized hostages at a Managua party attended by senior officials. After a 61-hour siege the regime released 14 political prisoners, paid ransom, and broadcast a 12,000-word FSLN manifesto. All involved were flown to Cuba.",
+        "source": "https://en.wikipedia.org/wiki/1974_Nicaraguan_hostage_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1974_Nicaraguan_hostage_crisis"
   },
   {
@@ -67,6 +229,24 @@
     "title": "National Guard Massacres in Northern Highlands During Counterinsurgency",
     "verdict": "TRUE",
     "reason": "Confirmed: Following the 1974 hostage crisis Somoza declared a state of siege and the National Guard launched violent 1975-76 counterinsurgency sweeps in Matagalpa, Jinotega, and Zelaya, killing and disappearing hundreds of peasants. Catholic missionaries documented the atrocities. Human Rights Watch and Amnesty International have recorded this period.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Following the 1974 hostage crisis Somoza declared a state of siege and the National Guard launched violent 1975-76 counterinsurgency sweeps in Matagalpa, Jinotega, and Zelaya, killing and disappearing hundreds of peasants. Catholic missionaries documented the atrocities. Human Rights Watch and Amnesty International have recorded this period.",
+        "source": "https://en.wikipedia.org/wiki/Nicaraguan_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Nicaraguan_Revolution"
   },
   {
@@ -74,6 +254,24 @@
     "title": "FSLN Founder Carlos Fonseca Killed in Ambush",
     "verdict": "TRUE",
     "reason": "Confirmed: Carlos Fonseca Amador was killed on November 8, 1976, in the Boca de Piedra/Cerro Zinica area of Waslala, northern Nicaragua, in a National Guard operation. He had clandestinely returned to Nicaragua in 1975. His body was later reburied in Managua's Plaza of the Revolution.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Carlos Fonseca Amador was killed on November 8, 1976, in the Boca de Piedra/Cerro Zinica area of Waslala, northern Nicaragua, in a National Guard operation. He had clandestinely returned to Nicaragua in 1975. His body was later reburied in Managua's Plaza of the Revolution.",
+        "source": "https://en.wikipedia.org/wiki/Carlos_Fonseca",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Carlos_Fonseca"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Carter Administration Links Military Aid to Human Rights",
     "verdict": "TRUE",
     "reason": "Confirmed: The Carter administration (inaugurated January 1977) made human rights a stated foreign policy cornerstone. Nicaragua was an early target. In a notable October 1977 decision, the administration denied economic aid but approved military assistance, reflecting the contradictions of its Nicaragua policy. Carter later terminated all military assistance in February 1979.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: The Carter administration (inaugurated January 1977) made human rights a stated foreign policy cornerstone. Nicaragua was an early target. In a notable October 1977 decision, the administration denied economic aid but approved military assistance, reflecting the contradictions of its Nicaragua policy. Carter later terminated all military assistance in February 1979.",
+        "source": "https://history.state.gov/milestones/1977-1980/central-america-carter",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://history.state.gov/milestones/1977-1980/central-america-carter"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Chamorro Assassination Ignites National Uprising Against Somoza",
     "verdict": "TRUE",
     "reason": "Confirmed: La Prensa editor Pedro Joaquín Chamorro was assassinated on January 10, 1978. The killing provoked mass outrage and a spontaneous national strike. In August 1978 Eden Pastora led 25 FSLN fighters in seizing the National Palace and taking 2,000+ hostages. Together these events transformed the anti-Somoza movement into a national insurrection.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: La Prensa editor Pedro Joaquín Chamorro was assassinated on January 10, 1978. The killing provoked mass outrage and a spontaneous national strike. In August 1978 Eden Pastora led 25 FSLN fighters in seizing the National Palace and taking 2,000+ hostages. Together these events transformed the anti-Somoza movement into a national insurrection.",
+        "source": "https://en.wikipedia.org/wiki/Pedro_Joaqu%C3%ADn_Chamorro_Cardenal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Pedro_Joaqu%C3%ADn_Chamorro_Cardenal"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Sandinista Revolution Overthrows Somoza Dynasty",
     "verdict": "TRUE",
     "reason": "Confirmed: FSLN launched its final offensive in June 1979; Somoza fled to Miami on July 17; the Sandinista junta entered Managua on July 19, 1979 to mass celebrations, ending 43 years of Somoza family rule. The new government nationalized Somoza holdings and Nicaraguan banks.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: FSLN launched its final offensive in June 1979; Somoza fled to Miami on July 17; the Sandinista junta entered Managua on July 19, 1979 to mass celebrations, ending 43 years of Somoza family rule. The new government nationalized Somoza holdings and Nicaraguan banks.",
+        "source": "https://en.wikipedia.org/wiki/Nicaraguan_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Nicaraguan_Revolution"
   },
   {
@@ -102,6 +354,24 @@
     "title": "National Literacy Crusade Cuts Illiteracy Rate from 50% to 13%",
     "verdict": "TRUE",
     "reason": "Confirmed: The Nicaraguan National Literacy Campaign ran March 3 to August 23, 1980. Over 60,000 young volunteers deployed nationally, reducing illiteracy from 50.3% to 12.9% in five months and creating 400,000 new literates. UNESCO awarded Nicaragua the Nadezhda K. Krupskaya prize in September 1980.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: The Nicaraguan National Literacy Campaign ran March 3 to August 23, 1980. Over 60,000 young volunteers deployed nationally, reducing illiteracy from 50.3% to 12.9% in five months and creating 400,000 new literates. UNESCO awarded Nicaragua the Nadezhda K. Krupskaya prize in September 1980.",
+        "source": "https://en.wikipedia.org/wiki/Nicaraguan_Literacy_Campaign",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Nicaraguan_Literacy_Campaign"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Reagan Authorizes CIA Contra Program, Cuts Economic Aid",
     "verdict": "TRUE",
     "reason": "Confirmed: President Reagan signed National Security Directive 17 on November 17, 1981, and a formal presidential finding on December 1, 1981, authorizing CIA covert operations in Nicaragua with a $19 million budget. Economic aid was simultaneously terminated and pressure applied to multilateral lenders.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: President Reagan signed National Security Directive 17 on November 17, 1981, and a formal presidential finding on December 1, 1981, authorizing CIA covert operations in Nicaragua with a $19 million budget. Economic aid was simultaneously terminated and pressure applied to multilateral lenders.",
+        "source": "https://www.history.com/this-day-in-history/november-17/reagan-gives-cia-authority-to-establish-the-contras",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.history.com/this-day-in-history/november-17/reagan-gives-cia-authority-to-establish-the-contras"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Contra War Escalates, Sandinistas Declare State of Emergency",
     "verdict": "TRUE",
     "reason": "Confirmed: CIA-directed Contra forces expanded dramatically inside Nicaragua in 1982 (budget grew to $30 million in 1983). The Sandinista government declared a state of emergency restricting civil liberties. Nicaragua received Cuban and Soviet-bloc military assistance and instituted mandatory military service.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: CIA-directed Contra forces expanded dramatically inside Nicaragua in 1982 (budget grew to $30 million in 1983). The Sandinista government declared a state of emergency restricting civil liberties. Nicaragua received Cuban and Soviet-bloc military assistance and instituted mandatory military service.",
+        "source": "https://en.wikipedia.org/wiki/Contras",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Contras"
   },
   {
@@ -123,6 +429,24 @@
     "title": "CIA Mines Nicaraguan Harbors, Triggering Congressional Backlash",
     "verdict": "TRUE",
     "reason": "Confirmed: From January to March 1984 the CIA mined Nicaragua's main ports (Corinto, Puerto Sandino, El Bluff). Senator Barry Goldwater publicly condemned CIA Director Casey in a famous 'Dear Bill' letter. Nicaragua filed at the ICJ, which ruled against the US in 1986. Congressional Democrats used the scandal to block further Contra funding.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: From January to March 1984 the CIA mined Nicaragua's main ports (Corinto, Puerto Sandino, El Bluff). Senator Barry Goldwater publicly condemned CIA Director Casey in a famous 'Dear Bill' letter. Nicaragua filed at the ICJ, which ruled against the US in 1986. Congressional Democrats used the scandal to block further Contra funding.",
+        "source": "https://en.wikipedia.org/wiki/CIA_activities_in_Nicaragua",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/CIA_activities_in_Nicaragua"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Sandinistas Win Internationally Observed National Elections",
     "verdict": "TRUE",
     "reason": "Confirmed: Daniel Ortega won Nicaragua's November 4, 1984 election with 67% of the vote (75% turnout). Western European and Latin American international observers certified the election as substantially free and fair. Reagan dismissed it as a 'Soviet-style sham'. Contra-aligned parties boycotted; others participated and won legislative seats.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Daniel Ortega won Nicaragua's November 4, 1984 election with 67% of the vote (75% turnout). Western European and Latin American international observers certified the election as substantially free and fair. Reagan dismissed it as a 'Soviet-style sham'. Contra-aligned parties boycotted; others participated and won legislative seats.",
+        "source": "https://en.wikipedia.org/wiki/1984_Nicaraguan_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1984_Nicaraguan_general_election"
   },
   {
@@ -137,6 +479,24 @@
     "title": "ICJ Rules United States Violated International Law in Nicaragua",
     "verdict": "TRUE",
     "reason": "Confirmed: The ICJ issued its landmark ruling in Nicaragua v. United States on June 27, 1986, finding the US violated customary international law through mining harbors, supporting Contras, and conducting direct attacks. The US refused to comply and vetoed UN Security Council enforcement. The case remains a foundational precedent.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: The ICJ issued its landmark ruling in Nicaragua v. United States on June 27, 1986, finding the US violated customary international law through mining harbors, supporting Contras, and conducting direct attacks. The US refused to comply and vetoed UN Security Council enforcement. The case remains a foundational precedent.",
+        "source": "https://www.icj-cij.org/case/70",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.icj-cij.org/case/70"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Iran-Contra Affair Exposes Illegal Funding of Contra War",
     "verdict": "TRUE",
     "reason": "Confirmed: The Iran-Contra affair became public in November 1986. The CIA supply plane crash over Nicaragua exposed the network. Reagan officials had secretly sold arms to Iran and diverted proceeds to Contras in violation of the Boland Amendment. Oliver North acknowledged diverting funds. Multiple Reagan officials were convicted.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: The Iran-Contra affair became public in November 1986. The CIA supply plane crash over Nicaragua exposed the network. Reagan officials had secretly sold arms to Iran and diverted proceeds to Contras in violation of the Boland Amendment. Oliver North acknowledged diverting funds. Multiple Reagan officials were convicted.",
+        "source": "https://en.wikipedia.org/wiki/Iran%E2%80%93Contra_affair",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Iran%E2%80%93Contra_affair"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Arias Peace Plan Creates Framework for Regional Settlement",
     "verdict": "TRUE",
     "reason": "Confirmed: Costa Rican President Óscar Arias brokered the Esquipulas II Accord, signed by all five Central American presidents on August 7, 1987, calling for ceasefires, democratization, and negotiations. Arias received the Nobel Peace Prize in 1987. The accords provided the framework leading to the 1988 Sapoa ceasefire and 1990 Nicaraguan elections.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Costa Rican President Óscar Arias brokered the Esquipulas II Accord, signed by all five Central American presidents on August 7, 1987, calling for ceasefires, democratization, and negotiations. Arias received the Nobel Peace Prize in 1987. The accords provided the framework leading to the 1988 Sapoa ceasefire and 1990 Nicaraguan elections.",
+        "source": "https://www.nobelprize.org/prizes/peace/1987/arias/facts/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nobelprize.org/prizes/peace/1987/arias/facts/"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Sapoa Ceasefire Halts Large-Scale Contra Hostilities",
     "verdict": "TRUE",
     "reason": "Confirmed: The Sapoa Agreement was signed March 23, 1988, establishing a 60-day ceasefire between the Sandinista government and Contra forces. Mediated by OAS Secretary General and Archbishop Obando y Bravo, it provided for prisoner releases and Contra political participation. The Contra War killed approximately 30,000 Nicaraguans.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: The Sapoa Agreement was signed March 23, 1988, establishing a 60-day ceasefire between the Sandinista government and Contra forces. Mediated by OAS Secretary General and Archbishop Obando y Bravo, it provided for prisoner releases and Contra political participation. The Contra War killed approximately 30,000 Nicaraguans.",
+        "source": "https://en.wikipedia.org/wiki/Nicaraguan_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Nicaraguan_Revolution"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Hurricane Joan Devastates Nicaragua's Atlantic Coast",
     "verdict": "TRUE",
     "reason": "Confirmed: Hurricane Joan made landfall near Bluefields, Nicaragua on October 22, 1988 with 145 mph winds. Killed 148 people in Nicaragua, nearly all structures in Bluefields destroyed, 500,000 hectares of rain forest destroyed, and $2 billion in total damage. Struck an already-marginalized Atlantic coast community.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Hurricane Joan made landfall near Bluefields, Nicaragua on October 22, 1988 with 145 mph winds. Killed 148 people in Nicaragua, nearly all structures in Bluefields destroyed, 500,000 hectares of rain forest destroyed, and $2 billion in total damage. Struck an already-marginalized Atlantic coast community.",
+        "source": "https://en.wikipedia.org/wiki/Hurricane_Joan%E2%80%93Miriam",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hurricane_Joan%E2%80%93Miriam"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Chamorro Defeats Ortega in Historic Democratic Transfer of Power",
     "verdict": "TRUE",
     "reason": "Confirmed: Violeta Barrios de Chamorro won Nicaragua's February 25, 1990 election with 54.7% of the vote, defeating Ortega. Internationally observed. Ortega conceded. Chamorro was inaugurated April 25, 1990 — the first peaceful democratic transfer of power in Nicaragua's modern history.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Violeta Barrios de Chamorro won Nicaragua's February 25, 1990 election with 54.7% of the vote, defeating Ortega. Internationally observed. Ortega conceded. Chamorro was inaugurated April 25, 1990 — the first peaceful democratic transfer of power in Nicaragua's modern history.",
+        "source": "https://en.wikipedia.org/wiki/1990_Nicaraguan_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1990_Nicaraguan_general_election"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Contra Demobilization Leaves Legacy of Armed Instability",
     "verdict": "TRUE",
     "reason": "Confirmed: Contra forces demobilized under international supervision following the Chamorro election. Only ~3,000 of promised 20,000 land grants were delivered. By June 1991 approximately 30 rearmed Recontra groups were active. Armed Recompas (ex-Sandinista civilians) also emerged, creating sustained rural insecurity through the mid-1990s.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Contra forces demobilized under international supervision following the Chamorro election. Only ~3,000 of promised 20,000 land grants were delivered. By June 1991 approximately 30 rearmed Recontra groups were active. Armed Recompas (ex-Sandinista civilians) also emerged, creating sustained rural insecurity through the mid-1990s.",
+        "source": "https://en.wikipedia.org/wiki/Contras",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Contras"
   },
   {
@@ -186,6 +654,24 @@
     "title": "IMF Structural Adjustment Tackles Hyperinflation but Deepens Poverty",
     "verdict": "TRUE",
     "reason": "Confirmed: Chamorro inherited ~13,000% inflation and GDP below 1950s levels. IMF/World Bank structural adjustment beginning in 1991 (Nicaragua took an IMF loan September 1991) brought inflation under control but caused short-term unemployment spikes and crippling strikes. Under/unemployment exceeded 50% and poverty increased before recovery began in 1994.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Chamorro inherited ~13,000% inflation and GDP below 1950s levels. IMF/World Bank structural adjustment beginning in 1991 (Nicaragua took an IMF loan September 1991) brought inflation under control but caused short-term unemployment spikes and crippling strikes. Under/unemployment exceeded 50% and poverty increased before recovery began in 1994.",
+        "source": "https://en.wikipedia.org/wiki/Nicaragua_and_the_International_Monetary_Fund",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Nicaragua_and_the_International_Monetary_Fund"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Pacific Earthquake and Tsunami Kill 170 and Destroy Coastal Communities",
     "verdict": "TRUE",
     "reason": "Confirmed: On September 2, 1992, a magnitude 7.6 earthquake off Nicaragua's Pacific coast generated a tsunami with waves up to 10 meters, killing approximately 170 people and injuring ~500, leaving 13,500+ homeless across 300 km of coastline. First tsunami earthquake ever recorded by broadband seismometers.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: On September 2, 1992, a magnitude 7.6 earthquake off Nicaragua's Pacific coast generated a tsunami with waves up to 10 meters, killing approximately 170 people and injuring ~500, leaving 13,500+ homeless across 300 km of coastline. First tsunami earthquake ever recorded by broadband seismometers.",
+        "source": "https://en.wikipedia.org/wiki/1992_Nicaragua_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1992_Nicaragua_earthquake"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Sandinista Split Produces Reform Faction, Ortega Consolidates Party Control",
     "verdict": "TRUE",
     "reason": "Confirmed: Internal FSLN conflict during 1994-1995 produced a formal split. An extraordinary FSLN congress in May 1994 saw Ortega win control. On January 8, 1995, Sergio Ramírez and others formally quit to found the Sandinista Renovation Movement (MRS), with Dora María Téllez also leaving. Ortega consolidated party machinery.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Internal FSLN conflict during 1994-1995 produced a formal split. An extraordinary FSLN congress in May 1994 saw Ortega win control. On January 8, 1995, Sergio Ramírez and others formally quit to found the Sandinista Renovation Movement (MRS), with Dora María Téllez also leaving. Ortega consolidated party machinery.",
+        "source": "https://en.wikipedia.org/wiki/Sandinista_Renovation_Movement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sandinista_Renovation_Movement"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Ortega Accused of Sexual Abuse by Stepdaughter",
     "verdict": "FALSE",
     "reason": "Year fabricated. All credible sources confirm Zoilamérica Narváez made her public accusation on March 2, 1998 — not 1994. The accusation was filed formally in 1998 and covered by international press (Washington Post March 14, 1998). Placing this event in 1994 represents a >2-year factual drift.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year fabricated. All credible sources confirm Zoilamérica Narváez made her public accusation on March 2, 1998 — not 1994. The accusation was filed formally in 1998 and covered by international press (Washington Post March 14, 1998). Placing this event in 1994 represents a >2-year factual drift.",
+        "source": "https://en.wikipedia.org/wiki/Zoilam%C3%A9rica_Ortega_Murillo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Zoilam%C3%A9rica_Ortega_Murillo"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Alemán Wins Presidency, Inaugurating Era of Systematic Corruption",
     "verdict": "TRUE",
     "reason": "Confirmed: Arnoldo Alemán won Nicaragua's October 1996 election with 51% of the vote. His administration systematically embezzled an estimated $100 million. Convicted in December 2003 for fraud and embezzlement and sentenced to 20 years; Transparency International ranked him among the world's 10 most corrupt leaders.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Arnoldo Alemán won Nicaragua's October 1996 election with 51% of the vote. His administration systematically embezzled an estimated $100 million. Convicted in December 2003 for fraud and embezzlement and sentenced to 20 years; Transparency International ranked him among the world's 10 most corrupt leaders.",
+        "source": "https://en.wikipedia.org/wiki/Arnoldo_Alem%C3%A1n",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Arnoldo_Alem%C3%A1n"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Hurricane Mitch Causes Catastrophic Death and Destruction",
     "verdict": "TRUE",
     "reason": "Confirmed: Hurricane Mitch struck Central America in late October 1998, killing approximately 3,800 people in Nicaragua. The Casita volcano mudslide alone buried four villages and killed over 2,000. Damage exceeded $1 billion. One of the deadliest Atlantic hurricanes since 1780.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Hurricane Mitch struck Central America in late October 1998, killing approximately 3,800 people in Nicaragua. The Casita volcano mudslide alone buried four villages and killed over 2,000. Damage exceeded $1 billion. One of the deadliest Atlantic hurricanes since 1780.",
+        "source": "https://en.wikipedia.org/wiki/Hurricane_Mitch",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hurricane_Mitch"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Alemán-Ortega Pact Cartelizes Nicaraguan Politics",
     "verdict": "TRUE",
     "reason": "Confirmed: In 1999 Alemán and Ortega secretly negotiated 'El Pacto', dividing Supreme Court seats, Electoral Council positions, and government posts between PLC and FSLN. The pact lowered the presidential first-round threshold from 45% to 35% and guaranteed legislative immunity for both leaders. Condemned by Carter Center, EU observers, and civil society.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: In 1999 Alemán and Ortega secretly negotiated 'El Pacto', dividing Supreme Court seats, Electoral Council positions, and government posts between PLC and FSLN. The pact lowered the presidential first-round threshold from 45% to 35% and guaranteed legislative immunity for both leaders. Condemned by Carter Center, EU observers, and civil society.",
+        "source": "https://www.cartercenter.org/resources/pdfs/peace/americas/nicaragua_election_report_2001.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cartercenter.org/resources/pdfs/peace/americas/nicaragua_election_report_2001.pdf"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Coffee Price Collapse Triggers Severe Rural Humanitarian Crisis",
     "verdict": "TRUE",
     "reason": "Confirmed: World coffee prices fell to 30-year lows in 2000-2001. Nicaragua's coffee exports dropped 50% in 2001; 200,000 permanent and 400,000 temporary pickers lost their jobs. Farms foreclosed; starving workers marched to Managua highways. NPR, World Bank, and multiple academic sources document the severe humanitarian crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: World coffee prices fell to 30-year lows in 2000-2001. Nicaragua's coffee exports dropped 50% in 2001; 200,000 permanent and 400,000 temporary pickers lost their jobs. Farms foreclosed; starving workers marched to Managua highways. NPR, World Bank, and multiple academic sources document the severe humanitarian crisis.",
+        "source": "https://www.npr.org/2001/09/09/1128732/nicaraguas-coffee-crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.npr.org/2001/09/09/1128732/nicaraguas-coffee-crisis"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Bolaños Prosecutes Former President Alemán for Embezzlement",
     "verdict": "TRUE",
     "reason": "Confirmed: President Enrique Bolaños (inaugurated January 2002) broke with El Pacto and prosecuted Alemán. Alemán was stripped of legislative immunity and convicted on December 8, 2003, of fraud, embezzlement, and electoral crimes, sentenced to 20 years — the first such conviction of a Nicaraguan former president. He served largely under house arrest.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: President Enrique Bolaños (inaugurated January 2002) broke with El Pacto and prosecuted Alemán. Alemán was stripped of legislative immunity and convicted on December 8, 2003, of fraud, embezzlement, and electoral crimes, sentenced to 20 years — the first such conviction of a Nicaraguan former president. He served largely under house arrest.",
+        "source": "https://en.wikipedia.org/wiki/Enrique_Bola%C3%B1os",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Enrique_Bola%C3%B1os"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Total Abortion Ban Criminalized Termination in All Circumstances",
     "verdict": "TRUE",
     "reason": "Confirmed: In October 2006, days before the November election, the National Assembly voted 52-0 to eliminate Nicaragua's century-old therapeutic abortion exception. President Bolaños signed it into law November 17, 2006, making Nicaragua the sixth country worldwide with an absolute abortion prohibition. HRW documented increased maternal mortality.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: In October 2006, days before the November election, the National Assembly voted 52-0 to eliminate Nicaragua's century-old therapeutic abortion exception. President Bolaños signed it into law November 17, 2006, making Nicaragua the sixth country worldwide with an absolute abortion prohibition. HRW documented increased maternal mortality.",
+        "source": "https://www.hrw.org/reports/2007/nicaragua1007/nicaragua1007.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/reports/2007/nicaragua1007/nicaragua1007.htm"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Ortega Returns to Power on Fourth Presidential Attempt",
     "verdict": "TRUE",
     "reason": "Confirmed: Daniel Ortega won Nicaragua's November 2006 presidential election with 38% of the vote in a divided field, using the 35% threshold negotiated in El Pacto. It was his fourth presidential campaign (lost 1990, 1996, 2001). He ran as a moderate, pledging to honor CAFTA and maintain macroeconomic stability.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Daniel Ortega won Nicaragua's November 2006 presidential election with 38% of the vote in a divided field, using the 35% threshold negotiated in El Pacto. It was his fourth presidential campaign (lost 1990, 1996, 2001). He ran as a moderate, pledging to honor CAFTA and maintain macroeconomic stability.",
+        "source": "https://en.wikipedia.org/wiki/2006_Nicaraguan_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2006_Nicaraguan_general_election"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Nicaragua Joins ALBA, Secures Venezuelan Oil Subsidy",
     "verdict": "TRUE",
     "reason": "Confirmed: Ortega joined ALBA immediately upon inauguration in January 2007 and signed the Petrocaribe Energy Cooperation Agreement. The joint venture ALBANISA was created (51% PDVSA, 49% PetroNic), with Venezuela supplying Nicaragua's full oil needs on 50/50 payment terms (half over 25 years at 2% interest). Between 2007-2016 Venezuela shipped $3.7 billion in oil.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Ortega joined ALBA immediately upon inauguration in January 2007 and signed the Petrocaribe Energy Cooperation Agreement. The joint venture ALBANISA was created (51% PDVSA, 49% PetroNic), with Venezuela supplying Nicaragua's full oil needs on 50/50 payment terms (half over 25 years at 2% interest). Between 2007-2016 Venezuela shipped $3.7 billion in oil.",
+        "source": "https://theconversation.com/venezuelan-oil-fueled-the-rise-and-fall-of-nicaraguas-ortega-regime-100507",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://theconversation.com/venezuelan-oil-fueled-the-rise-and-fall-of-nicaraguas-ortega-regime-100507"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Fraudulent Municipal Elections Mark Start of Electoral Regression",
     "verdict": "TRUE",
     "reason": "Confirmed: Nicaragua's November 2008 municipal elections were marred by widespread fraud allegations; domestic observers documented fraud in 33-40+ municipalities. EU, US, Carter Center observers were excluded. The US suspended $64 million in development grants; European countries suspended direct budget support. Marked the beginning of systematic electoral degradation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Nicaragua's November 2008 municipal elections were marred by widespread fraud allegations; domestic observers documented fraud in 33-40+ municipalities. EU, US, Carter Center observers were excluded. The US suspended $64 million in development grants; European countries suspended direct budget support. Marked the beginning of systematic electoral degradation.",
+        "source": "https://www.csmonitor.com/World/Americas/2008/1206/p25s08-woam.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.csmonitor.com/World/Americas/2008/1206/p25s08-woam.html"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Sandinista-Aligned Court Clears Path for Ortega Re-election",
     "verdict": "TRUE",
     "reason": "Confirmed: On October 19, 2009, a Sandinista-aligned Constitutional Chamber of the Supreme Court declared the constitutional prohibition on immediate presidential re-election unconstitutional, without a full quorum. Opposition parties, constitutional lawyers, and international observers condemned the ruling as a judicial coup, but it cleared the path for Ortega's 2011 re-election.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: On October 19, 2009, a Sandinista-aligned Constitutional Chamber of the Supreme Court declared the constitutional prohibition on immediate presidential re-election unconstitutional, without a full quorum. Opposition parties, constitutional lawyers, and international observers condemned the ruling as a judicial coup, but it cleared the path for Ortega's 2011 re-election.",
+        "source": "https://www.loc.gov/item/global-legal-monitor/2009-12-18/nicaragua-supreme-court-decision-permitting-president-others-to-seek-reelection/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.loc.gov/item/global-legal-monitor/2009-12-18/nicaragua-supreme-court-decision-permitting-president-others-to-seek-reelection/"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Grand Canal Concession Granted to Chinese Company Without Bidding",
     "verdict": "TRUE",
     "reason": "Confirmed within ±2yr tolerance: A MOU was signed in September 2012; Law 840 granting the formal 50-year concession to HKND was passed by the National Assembly on June 13, 2013 — without competitive bidding, environmental assessment, or public consultation. Communities along the route protested. HKND closed offices in April 2018 without breaking ground.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed within ±2yr tolerance: A MOU was signed in September 2012; Law 840 granting the formal 50-year concession to HKND was passed by the National Assembly on June 13, 2013 — without competitive bidding, environmental assessment, or public consultation. Communities along the route protested. HKND closed offices in April 2018 without breaking ground.",
+        "source": "https://en.wikipedia.org/wiki/Nicaraguan_Canal_and_Development_Project",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Nicaraguan_Canal_and_Development_Project"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Constitution Amended to Allow Indefinite Presidential Re-election",
     "verdict": "TRUE",
     "reason": "Confirmed: In January 2014 the Ortega-controlled National Assembly formally amended the constitution to eliminate all restrictions on presidential re-election. The National Assembly voted 64-25 for the changes. The amendments also reduced legislative supermajority requirements and concentrated executive powers.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: In January 2014 the Ortega-controlled National Assembly formally amended the constitution to eliminate all restrictions on presidential re-election. The National Assembly voted 64-25 for the changes. The amendments also reduced legislative supermajority requirements and concentrated executive powers.",
+        "source": "https://www.hrw.org/world-report/2015/country-chapters/nicaragua",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/world-report/2015/country-chapters/nicaragua"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Ortega Wins Third Term, Installs Wife as Vice President",
     "verdict": "TRUE",
     "reason": "Confirmed: Ortega won Nicaragua's November 2016 election with 72% of the vote, with Rosario Murillo — his wife — as vice presidential running mate. Main opposition parties boycotted the election. International observers noted total Sandinista control of electoral institutions. Murillo was sworn in as Vice President on January 10, 2017.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Ortega won Nicaragua's November 2016 election with 72% of the vote, with Rosario Murillo — his wife — as vice presidential running mate. Main opposition parties boycotted the election. International observers noted total Sandinista control of electoral institutions. Murillo was sworn in as Vice President on January 10, 2017.",
+        "source": "https://www.nbcnews.com/news/latino/nicaraguas-daniel-ortega-wins-third-term-wife-serve-vp-n678766",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nbcnews.com/news/latino/nicaraguas-daniel-ortega-wins-third-term-wife-serve-vp-n678766"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Venezuelan Oil Revenue Collapse Forces Fiscal Adjustment",
     "verdict": "TRUE",
     "reason": "Confirmed: Venezuela's crisis sharply cut oil transfers to Nicaragua. Venezuela went from supplying 83% of Nicaragua's hydrocarbons to covering only a third of needs by 2015-2016, forcing Nicaragua to import from other sources in foreign exchange. ALBANISA transfers fell hundreds of millions from peak, creating fiscal pressure that contributed to the 2018 social security reform crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Venezuela's crisis sharply cut oil transfers to Nicaragua. Venezuela went from supplying 83% of Nicaragua's hydrocarbons to covering only a third of needs by 2015-2016, forcing Nicaragua to import from other sources in foreign exchange. ALBANISA transfers fell hundreds of millions from peak, creating fiscal pressure that contributed to the 2018 social security reform crisis.",
+        "source": "https://theconversation.com/venezuelan-oil-fueled-the-rise-and-fall-of-nicaraguas-ortega-regime-100507",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://theconversation.com/venezuelan-oil-fueled-the-rise-and-fall-of-nicaraguas-ortega-regime-100507"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "April Protests Ignite National Uprising Against Ortega",
     "verdict": "TRUE",
     "reason": "Confirmed: On April 18, 2018, social security reform protests rapidly escalated into a national anti-Ortega uprising. The IACHR documented at least 355 killed; local agencies estimated up to 684. Snipers and paramilitary 'turbas' were deployed. Over 2,000 arbitrarily detained, 2,000+ injured. Ortega withdrew the reform after five days of deadly unrest.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: On April 18, 2018, social security reform protests rapidly escalated into a national anti-Ortega uprising. The IACHR documented at least 355 killed; local agencies estimated up to 684. Snipers and paramilitary 'turbas' were deployed. Over 2,000 arbitrarily detained, 2,000+ injured. Ortega withdrew the reform after five days of deadly unrest.",
+        "source": "https://www.hrw.org/report/2018/06/29/suppressing-protests-nicaragua/human-rights-violations-april-2018-nicaraguan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/report/2018/06/29/suppressing-protests-nicaragua/human-rights-violations-april-2018-nicaraguan"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "National Dialogue Collapses, Systematic Authoritarian Consolidation Begins",
     "verdict": "TRUE",
     "reason": "Confirmed: A national dialogue began May 16, 2018, but collapsed when the government refused accountability for killings and rejected early elections. From August 2018 the Ortega government designated opposition as 'terrorists and coup plotters,' arrested civil society leaders, and used anti-terrorism laws against pro-democracy activities.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: A national dialogue began May 16, 2018, but collapsed when the government refused accountability for killings and rejected early elections. From August 2018 the Ortega government designated opposition as 'terrorists and coup plotters,' arrested civil society leaders, and used anti-terrorism laws against pro-democracy activities.",
+        "source": "https://www.amnesty.org/en/latest/news/2018/09/nicaragua-in-state-of-repression-the-aftermath-of-uprising/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.amnesty.org/en/latest/news/2018/09/nicaragua-in-state-of-repression-the-aftermath-of-uprising/"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Mass Arrests and Show Trials of Opposition, Journalists, and Activists",
     "verdict": "TRUE",
     "reason": "Confirmed: Following the 2018 uprising suppression, the government systematically arrested protest leaders, student activists, journalists, and human rights defenders. Show trials in closed-door proceedings violated due process. HRW, IACHR, and Amnesty International extensively documented torture, cruel treatment, and politically motivated convictions on terrorism/organized crime charges.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Following the 2018 uprising suppression, the government systematically arrested protest leaders, student activists, journalists, and human rights defenders. Show trials in closed-door proceedings violated due process. HRW, IACHR, and Amnesty International extensively documented torture, cruel treatment, and politically motivated convictions on terrorism/organized crime charges.",
+        "source": "https://www.hrw.org/report/2019/06/19/crackdown-nicaragua/torture-ill-treatment-and-prosecutions-protesters-and",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/report/2019/06/19/crackdown-nicaragua/torture-ill-treatment-and-prosecutions-protesters-and"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "U.S., EU, and Canada Impose Targeted Sanctions Over 2018 Crackdown",
     "verdict": "TRUE",
     "reason": "Confirmed: The US Treasury imposed sanctions on Nicaraguan officials in July and November 2018; the NICA Act passed the US House in December 2018. Canada coordinated sanctions on June 21, 2019. The EU established its Nicaragua sanctions framework in October 2019, imposing travel bans and asset freezes on officials responsible for the 2018 crackdown.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: The US Treasury imposed sanctions on Nicaraguan officials in July and November 2018; the NICA Act passed the US House in December 2018. Canada coordinated sanctions on June 21, 2019. The EU established its Nicaragua sanctions framework in October 2019, imposing travel bans and asset freezes on officials responsible for the 2018 crackdown.",
+        "source": "https://www.state.gov/nicaragua-sanctions/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.state.gov/nicaragua-sanctions/"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Government Rejects COVID-19 Emergency, Encourages Mass Gatherings",
     "verdict": "TRUE",
     "reason": "Confirmed: Nicaragua was the only Central American country that refused to declare a public health emergency. On March 14, 2020, Vice President Murillo organized a 'Love in the Time of COVID-19' national march. Government discouraged masks and fired health workers who contradicted official narratives. PAHO called prevention measures 'inadequate' in April 2020.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Nicaragua was the only Central American country that refused to declare a public health emergency. On March 14, 2020, Vice President Murillo organized a 'Love in the Time of COVID-19' national march. Government discouraged masks and fired health workers who contradicted official narratives. PAHO called prevention measures 'inadequate' in April 2020.",
+        "source": "https://www.hrw.org/news/2020/04/10/nicaragua-reckless-covid-19-response",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2020/04/10/nicaragua-reckless-covid-19-response"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Hurricanes Eta and Iota Strike Caribbean Coast Two Weeks Apart",
     "verdict": "TRUE",
     "reason": "Confirmed: Category 4 Hurricane Eta made landfall November 3, 2020, and Category 5 Hurricane Iota made landfall November 16-17, 2020, approximately 25 miles from Eta's landfall point. Together they killed over 100 in Nicaragua, displaced hundreds of thousands, damaged or destroyed 6,900+ homes, and caused at least $564 million in preliminary damage from Iota alone.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Category 4 Hurricane Eta made landfall November 3, 2020, and Category 5 Hurricane Iota made landfall November 16-17, 2020, approximately 25 miles from Eta's landfall point. Together they killed over 100 in Nicaragua, displaced hundreds of thousands, damaged or destroyed 6,900+ homes, and caused at least $564 million in preliminary damage from Iota alone.",
+        "source": "https://reliefweb.int/report/nicaragua/central-america-hurricanes-eta-iota-final-report-mdr43007",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://reliefweb.int/report/nicaragua/central-america-hurricanes-eta-iota-final-report-mdr43007"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "Legislative Package Criminalizes Free Expression and Civil Society",
     "verdict": "TRUE",
     "reason": "Confirmed: Nicaragua passed a Foreign Agents Law in October 2020 requiring organizations receiving foreign funding to register as 'foreign agents', and a Special Cybercrimes Law on October 27, 2020, creating broad, vague offenses including 'fake news' and 'espionage'. The IACHR called for repeal. European Parliament condemned the laws. Designed to disqualify opposition candidates ahead of 2021 elections.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Nicaragua passed a Foreign Agents Law in October 2020 requiring organizations receiving foreign funding to register as 'foreign agents', and a Special Cybercrimes Law on October 27, 2020, creating broad, vague offenses including 'fake news' and 'espionage'. The IACHR called for repeal. European Parliament condemned the laws. Designed to disqualify opposition candidates ahead of 2021 elections.",
+        "source": "https://monitor.civicus.org/explore/recently-approved-laws-foreign-agents-and-cybercrimes-restrict-civic-space-further-nicaragua/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://monitor.civicus.org/explore/recently-approved-laws-foreign-agents-and-cybercrimes-restrict-civic-space-further-nicaragua/"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "All Credible Opposition Presidential Candidates Arrested Before Election",
     "verdict": "TRUE",
     "reason": "Confirmed: Between June and July 2021, the government arrested at least seven credible opposition presidential candidates including Cristiana Chamorro (June 2), Arturo Cruz (June 5), Félix Maradiaga (June 8), and Juan Sebastián Chamorro (June 8). Charges included treason, money laundering, and acting as foreign agents. Ortega won November 7, 2021 with 75% against token opposition. US, EU, OAS condemned as a 'sham election'.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Between June and July 2021, the government arrested at least seven credible opposition presidential candidates including Cristiana Chamorro (June 2), Arturo Cruz (June 5), Félix Maradiaga (June 8), and Juan Sebastián Chamorro (June 8). Charges included treason, money laundering, and acting as foreign agents. Ortega won November 7, 2021 with 75% against token opposition. US, EU, OAS condemned as a 'sham election'.",
+        "source": "https://www.hrw.org/report/2021/08/11/arresting-opposition/crackdown-presidential-candidates-nicaragua",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/report/2021/08/11/arresting-opposition/crackdown-presidential-candidates-nicaragua"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "222 Political Prisoners Exiled to United States, Stripped of Citizenship",
     "verdict": "TRUE",
     "reason": "Confirmed within ±2yr tolerance: On February 9, 2023, 222 political prisoners were flown to the United States and simultaneously stripped of Nicaraguan citizenship. The curated year is 2022, but the event occurred in February 2023 — a 1-year drift within the ±2yr tolerance. An additional 94 exiled dissidents were stripped of citizenship on February 16, 2023.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed within ±2yr tolerance: On February 9, 2023, 222 political prisoners were flown to the United States and simultaneously stripped of Nicaraguan citizenship. The curated year is 2022, but the event occurred in February 2023 — a 1-year drift within the ±2yr tolerance. An additional 94 exiled dissidents were stripped of citizenship on February 16, 2023.",
+        "source": "https://www.amnesty.org/en/latest/news/2023/02/222-people-forcibly-expelled-from-nicaragua/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.amnesty.org/en/latest/news/2023/02/222-people-forcibly-expelled-from-nicaragua/"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "Bishop Álvarez Imprisoned, Church Broadcasts Suspended",
     "verdict": "TRUE",
     "reason": "Confirmed: Bishop Rolando Álvarez was placed under house arrest on August 4, 2022, then formally arrested August 19, 2022. Sentenced to 26 years in prison February 10, 2023. The government expelled the Apostolic Nuncio, suspended Catholic radio broadcasts, and expelled the Jesuit order. Bishop Álvarez was eventually exiled to Rome in January 2024.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Bishop Rolando Álvarez was placed under house arrest on August 4, 2022, then formally arrested August 19, 2022. Sentenced to 26 years in prison February 10, 2023. The government expelled the Apostolic Nuncio, suspended Catholic radio broadcasts, and expelled the Jesuit order. Bishop Álvarez was eventually exiled to Rome in January 2024.",
+        "source": "https://www.vaticannews.va/en/church/news/2023-02/bishop-alvarez-sentenced-to-26-years-imprisonment.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.vaticannews.va/en/church/news/2023-02/bishop-alvarez-sentenced-to-26-years-imprisonment.html"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Over 1,500 NGOs, Universities, and Cultural Institutions Forcibly Closed",
     "verdict": "TRUE",
     "reason": "Confirmed: The Nicaraguan government used the 2020 Foreign Agents Law and a March 2022 NGO control law to forcibly close over 770 organizations by mid-2022 (exceeding 3,500 total by November 2023). The Jesuit-run Universidad Centroamericana (UCA) was stripped of legal status in August 2023. The Jesuit order was expelled. The curated figure of '1,500+' is conservative relative to eventual total.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: The Nicaraguan government used the 2020 Foreign Agents Law and a March 2022 NGO control law to forcibly close over 770 organizations by mid-2022 (exceeding 3,500 total by November 2023). The Jesuit-run Universidad Centroamericana (UCA) was stripped of legal status in August 2023. The Jesuit order was expelled. The curated figure of '1,500+' is conservative relative to eventual total.",
+        "source": "https://www.hrw.org/news/2022/07/19/nicaragua-government-dismantles-civil-society",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2022/07/19/nicaragua-government-dismantles-civil-society"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Mass Emigration Reaches 15 Percent of Population Since 2018",
     "verdict": "TRUE",
     "reason": "Confirmed: IOM and Migration Policy Institute document record emigration from Nicaragua since 2018. By 2022-2023 an estimated 800,000+ Nicaraguans lived outside their country (over 10-15% of the ~6.2 million population). Nicaragua became the leading per-capita Central American source of US-Mexico border crossers. Remittances exceeded $4 billion annually.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: IOM and Migration Policy Institute document record emigration from Nicaragua since 2018. By 2022-2023 an estimated 800,000+ Nicaraguans lived outside their country (over 10-15% of the ~6.2 million population). Nicaragua became the leading per-capita Central American source of US-Mexico border crossers. Remittances exceeded $4 billion annually.",
+        "source": "https://www.migrationpolicy.org/article/record-emigration-nicaragua-crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.migrationpolicy.org/article/record-emigration-nicaragua-crisis"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "Government Strips Citizenship from Hundreds of Exiled Critics",
     "verdict": "TRUE",
     "reason": "Confirmed: In February 2023, alongside the release of the 222 political prisoners, 316 individuals were made stateless through citizenship stripping. An additional 94 exiled dissidents lost citizenship on February 16, 2023. By 2023 at least 450 government opponents had been stripped of nationality. UN, IACHR, and Amnesty International condemned the measures as violations of international law.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: In February 2023, alongside the release of the 222 political prisoners, 316 individuals were made stateless through citizenship stripping. An additional 94 exiled dissidents lost citizenship on February 16, 2023. By 2023 at least 450 government opponents had been stripped of nationality. UN, IACHR, and Amnesty International condemned the measures as violations of international law.",
+        "source": "https://www.ohchr.org/en/press-releases/2023/02/nicaragua-un-experts-denounce-mass-deprivation-nationality-destabilize",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.ohchr.org/en/press-releases/2023/02/nicaragua-un-experts-denounce-mass-deprivation-nationality-destabilize"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "Rosario Murillo's Role as Co-President Expands to Dominant Position",
     "verdict": "TRUE",
     "reason": "Confirmed: In November 2024, Ortega unveiled constitutional reform proposals formally naming Murillo as co-president. The reforms passed the National Assembly November 22, 2024, entering into force February 18, 2025. Political analysts had increasingly described her as the operational co-president before the formal change. The family co-presidency drew widespread comparisons to Somoza-era dynastic rule.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: In November 2024, Ortega unveiled constitutional reform proposals formally naming Murillo as co-president. The reforms passed the National Assembly November 22, 2024, entering into force February 18, 2025. Political analysts had increasingly described her as the operational co-president before the formal change. The family co-presidency drew widespread comparisons to Somoza-era dynastic rule.",
+        "source": "https://en.wikipedia.org/wiki/Rosario_Murillo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Rosario_Murillo"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "Nicaragua Ranked Among World's Most Authoritarian States",
     "verdict": "TRUE",
     "reason": "Confirmed: The EIU Democracy Index 2024, Freedom House Freedom in the World 2025, and V-Dem 2025 all classify Nicaragua among the hemisphere's most authoritarian states — grouped with Cuba and Venezuela. Freedom House's 2025 report documents elimination of independent judiciary, free press, civil society, and competitive elections since 2018.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: The EIU Democracy Index 2024, Freedom House Freedom in the World 2025, and V-Dem 2025 all classify Nicaragua among the hemisphere's most authoritarian states — grouped with Cuba and Venezuela. Freedom House's 2025 report documents elimination of independent judiciary, free press, civil society, and competitive elections since 2018.",
+        "source": "https://freedomhouse.org/country/nicaragua/freedom-world/2025",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://freedomhouse.org/country/nicaragua/freedom-world/2025"
   }
 ]

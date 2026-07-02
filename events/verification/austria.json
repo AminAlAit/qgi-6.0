@@ -4,6 +4,24 @@
     "title": "Austria holds first postwar parliamentary elections under occupation",
     "verdict": "PARTIAL",
     "reason": "Elections were held on 9 October 1949 and the far-right VdU (known as WdU/Federation of Independents) did enter parliament for the first time with 11.7% and 16 seats. However, these were not the 'first postwar elections' — those were held in November 1945; 1949 was the second postwar election.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Elections were held on 9 October 1949 and the far-right VdU (known as WdU/Federation of Independents) did enter parliament for the first time with 11.7% and 16 seats. However, these were not the 'first postwar elections' — those were held in November 1945; 1949 was the second postwar election.",
+        "source": "https://en.wikipedia.org/wiki/1949_Austrian_legislative_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1949_Austrian_legislative_election"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Communist-led general strike attempt suppressed",
     "verdict": "TRUE",
     "reason": "Austrian Communist Party, with limited Soviet backing, launched general strikes in September–October 1950 that failed when Social Democrat trade union leaders refused to join and workers rejected the action, decisively ending communist influence in Austrian politics.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austrian Communist Party, with limited Soviet backing, launched general strikes in September–October 1950 that failed when Social Democrat trade union leaders refused to join and workers rejected the action, decisively ending communist influence in Austrian politics.",
+        "source": "https://en.wikipedia.org/wiki/1950_Austrian_general_strikes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1950_Austrian_general_strikes"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Austria joins the Council of Europe",
     "verdict": "TRUE",
     "reason": "Austria was admitted as the 15th member of the Council of Europe on 16 April 1956, following the restoration of sovereignty through the State Treaty the previous year.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria was admitted as the 15th member of the Council of Europe on 16 April 1956, following the restoration of sovereignty through the State Treaty the previous year.",
+        "source": "https://www.cvce.eu/en/obj/accession_of_austria_to_the_council_of_europe_strasbourg_16_april_1956-en-93b74310-0f6f-4c48-b67b-11631e397e27.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cvce.eu/en/obj/accession_of_austria_to_the_council_of_europe_strasbourg_16_april_1956-en-93b74310-0f6f-4c48-b67b-11631e397e27.html"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Austrian State Treaty restores sovereignty after ten years of occupation",
     "verdict": "TRUE",
     "reason": "The Austrian State Treaty was signed on 15 May 1955 at Belvedere Palace in Vienna by the four Allied powers, restoring full Austrian sovereignty after a decade of occupation and prohibiting Anschluss.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Austrian State Treaty was signed on 15 May 1955 at Belvedere Palace in Vienna by the four Allied powers, restoring full Austrian sovereignty after a decade of occupation and prohibiting Anschluss.",
+        "source": "https://en.wikipedia.org/wiki/Austrian_State_Treaty",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Austrian_State_Treaty"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Austria declares permanent neutrality",
     "verdict": "TRUE",
     "reason": "Austria's parliament unanimously adopted the Federal Constitutional Law on Neutrality on 26 October 1955, permanently prohibiting military alliances and foreign military bases, becoming a cornerstone of Austrian national identity.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria's parliament unanimously adopted the Federal Constitutional Law on Neutrality on 26 October 1955, permanently prohibiting military alliances and foreign military bases, becoming a cornerstone of Austrian national identity.",
+        "source": "https://en.wikipedia.org/wiki/Declaration_of_Neutrality",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Declaration_of_Neutrality"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Austria admitted to the United Nations",
     "verdict": "TRUE",
     "reason": "Austria was admitted to the United Nations on 14 December 1955 as its 70th member as part of a package deal admitting sixteen states.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria was admitted to the United Nations on 14 December 1955 as its 70th member as part of a package deal admitting sixteen states.",
+        "source": "https://www.bmeia.gv.at/en/european-foreign-policy/austria-and-the-united-nations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.bmeia.gv.at/en/european-foreign-policy/austria-and-the-united-nations"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Austria receives Hungarian refugees after failed revolution",
     "verdict": "TRUE",
     "reason": "Following the suppression of the Hungarian Revolution, approximately 180,000 Hungarians fled to Austria; Austria's humanitarian response was internationally praised and most refugees were resettled in Western Europe, North America, and Australia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following the suppression of the Hungarian Revolution, approximately 180,000 Hungarians fled to Austria; Austria's humanitarian response was internationally praised and most refugees were resettled in Western Europe, North America, and Australia.",
+        "source": "https://www.uscis.gov/about-us/our-history/stories-from-the-archives/operation-safe-haven-the-hungarian-refugee-crisis-of-1956",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.uscis.gov/about-us/our-history/stories-from-the-archives/operation-safe-haven-the-hungarian-refugee-crisis-of-1956"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Social Partnership institutionalized as Austria's economic governance model",
     "verdict": "TRUE",
     "reason": "Austria's Parity Commission for Wages and Prices (Paritätische Kommission) was formally established in 1957, institutionalizing the corporatist Social Partnership framework involving employer and employee federations alongside government representatives.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria's Parity Commission for Wages and Prices (Paritätische Kommission) was formally established in 1957, institutionalizing the corporatist Social Partnership framework involving employer and employee federations alongside government representatives.",
+        "source": "https://www.advantageaustria.org/ao/zentral/business-guide/investieren-in-oesterreich/arbeit-und-beruf/sozialpartnerschaft/sozialpartnerschaft.en.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.advantageaustria.org/ao/zentral/business-guide/investieren-in-oesterreich/arbeit-und-beruf/sozialpartnerschaft/sozialpartnerschaft.en.html"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Austria signs European Free Trade Association agreement",
     "verdict": "PARTIAL",
     "reason": "Austria was a founding signatory of the Stockholm Convention establishing EFTA, signed on 4 January 1960 (not 1959), though the agreement was reached in 1959. The year in the entry is slightly off; EFTA entered into force on 3 May 1960.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Austria was a founding signatory of the Stockholm Convention establishing EFTA, signed on 4 January 1960 (not 1959), though the agreement was reached in 1959. The year in the entry is slightly off; EFTA entered into force on 3 May 1960.",
+        "source": "https://www.efta.int/about-efta/european-free-trade-association/history",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.efta.int/about-efta/european-free-trade-association/history"
   },
   {
@@ -67,6 +229,24 @@
     "title": "South Tyrol conflict escalates with bombings, straining Austrian-Italian relations",
     "verdict": "PARTIAL",
     "reason": "The major escalation — the 'Night of Fires' bombing of 47 pylons — occurred in June 1961, not 1960; Austria brought the matter to the UN General Assembly in 1960, which is accurate, but the bombings campaign escalated in 1961.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The major escalation — the 'Night of Fires' bombing of 47 pylons — occurred in June 1961, not 1960; Austria brought the matter to the UN General Assembly in 1960, which is accurate, but the bombings campaign escalated in 1961.",
+        "source": "https://en.wikipedia.org/wiki/South_Tyrolean_independence_movement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/South_Tyrolean_independence_movement"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Vienna Summit: Kennedy and Khrushchev meet in neutral Austria",
     "verdict": "TRUE",
     "reason": "US President Kennedy and Soviet Premier Khrushchev met in Vienna on 3–4 June 1961, using Austria's neutral status as a diplomatic venue; the Berlin Wall was constructed two months later.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "US President Kennedy and Soviet Premier Khrushchev met in Vienna on 3–4 June 1961, using Austria's neutral status as a diplomatic venue; the Berlin Wall was constructed two months later.",
+        "source": "https://en.wikipedia.org/wiki/Vienna_Summit",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Vienna_Summit"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Austrian People's Party wins first sole majority government since 1945",
     "verdict": "TRUE",
     "reason": "The OVP under Josef Klaus won an outright majority in the 6 March 1966 elections and formed the first single-party government of Austria's Second Republic, ending the grand coalition that had governed since 1945.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The OVP under Josef Klaus won an outright majority in the 6 March 1966 elections and formed the first single-party government of Austria's Second Republic, ending the grand coalition that had governed since 1945.",
+        "source": "https://en.wikipedia.org/wiki/1966_Austrian_legislative_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1966_Austrian_legislative_election"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Bruno Kreisky leads Social Democrats to power; begins thirteen-year chancellorship",
     "verdict": "TRUE",
     "reason": "Kreisky led the SPO to a minority government victory in 1970 and absolute majority in 1971, serving as Chancellor until 1983 — a thirteen-year tenure marked by welfare state expansion and active neutral foreign policy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kreisky led the SPO to a minority government victory in 1970 and absolute majority in 1971, serving as Chancellor until 1983 — a thirteen-year tenure marked by welfare state expansion and active neutral foreign policy.",
+        "source": "https://en.wikipedia.org/wiki/Bruno_Kreisky",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bruno_Kreisky"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Austria signs free trade agreement with European Economic Community",
     "verdict": "TRUE",
     "reason": "Austria signed a free trade agreement with the EEC on 22 July 1972 in Brussels, providing tariff-free access for Austrian industrial goods while respecting Austria's neutrality constraints that precluded full membership.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria signed a free trade agreement with the EEC on 22 July 1972 in Brussels, providing tariff-free access for Austrian industrial goods while respecting Austria's neutrality constraints that precluded full membership.",
+        "source": "https://www.cvce.eu/en/obj/agreement_between_the_european_economic_community_and_austria_brussels_22_july_1972-en-52a511c7-4610-4b23-9380-0de9ea4de0b4.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cvce.eu/en/obj/agreement_between_the_european_economic_community_and_austria_brussels_22_july_1972-en-52a511c7-4610-4b23-9380-0de9ea4de0b4.html"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Vienna becomes seat of OPEC headquarters",
     "verdict": "FALSE",
     "reason": "OPEC moved its permanent headquarters to Vienna on 1 September 1965, not 1973; the move was approved in April 1965 after Switzerland declined to extend diplomatic privileges to OPEC.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "OPEC moved its permanent headquarters to Vienna on 1 September 1965, not 1973; the move was approved in April 1965 after Switzerland declined to extend diplomatic privileges to OPEC.",
+        "source": "https://www.opec.org/opec_web/en/about_us/26.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.opec.org/opec_web/en/about_us/26.htm"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Kreisky welfare state expansion: Austria introduces paid maternity leave and social reforms",
     "verdict": "PARTIAL",
     "reason": "Kreisky's era produced extensive welfare state reforms including maternity leave extension, 40-hour work week, and education reforms, but these were spread across multiple years in the 1970s rather than concentrated in 1975; the reforms are real but the 1975 date is an approximation.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Kreisky's era produced extensive welfare state reforms including maternity leave extension, 40-hour work week, and education reforms, but these were spread across multiple years in the 1970s rather than concentrated in 1975; the reforms are real but the 1975 date is an approximation.",
+        "source": "https://www.archive.austria.org/the-welfare-state",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.archive.austria.org/the-welfare-state"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Austria hosts CSCE Final Act signing in Helsinki through diplomatic role",
     "verdict": "PARTIAL",
     "reason": "The CSCE Final Act was signed in Helsinki, not Austria, which is correctly noted; Austria played a genuine role as a neutral facilitator in the N+N group of neutral and non-aligned states, but the title misleadingly suggests Austria hosted the signing.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The CSCE Final Act was signed in Helsinki, not Austria, which is correctly noted; Austria played a genuine role as a neutral facilitator in the N+N group of neutral and non-aligned states, but the title misleadingly suggests Austria hosted the signing.",
+        "source": "https://en.wikipedia.org/wiki/Helsinki_Accords",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Helsinki_Accords"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Referendum narrowly rejects nuclear power, blocking completed Zwentendorf plant",
     "verdict": "TRUE",
     "reason": "Austrian voters rejected nuclear power by 50.47% to 49.53% on 5 November 1978, permanently mothballing the completed Zwentendorf plant; Chancellor Kreisky had staked his political reputation on the yes vote.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austrian voters rejected nuclear power by 50.47% to 49.53% on 5 November 1978, permanently mothballing the completed Zwentendorf plant; Chancellor Kreisky had staked his political reputation on the yes vote.",
+        "source": "https://en.wikipedia.org/wiki/1978_Austrian_nuclear_power_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1978_Austrian_nuclear_power_referendum"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Carlos the Jackal's OPEC siege at Vienna headquarters",
     "verdict": "TRUE",
     "reason": "On 21 December 1975, Carlos the Jackal led a six-person team that seized the OPEC headquarters in Vienna, taking over 60 hostages including oil ministers; after ransom negotiations all hostages were flown to Algiers and released.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 21 December 1975, Carlos the Jackal led a six-person team that seized the OPEC headquarters in Vienna, taking over 60 hostages including oil ministers; after ransom negotiations all hostages were flown to Algiers and released.",
+        "source": "https://en.wikipedia.org/wiki/OPEC_siege",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/OPEC_siege"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Social Democrats lose majority; enter coalition with Freedom Party under Sinowatz",
     "verdict": "TRUE",
     "reason": "In the April 1983 elections the SPO lost its absolute majority; Kreisky resigned and Fred Sinowatz formed the first SPO-FPO coalition, bringing the FPO into government for the first time.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In the April 1983 elections the SPO lost its absolute majority; Kreisky resigned and Fred Sinowatz formed the first SPO-FPO coalition, bringing the FPO into government for the first time.",
+        "source": "https://en.wikipedia.org/wiki/Austria_legislative_election,_1983",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Austria_legislative_election,_1983"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Waldheim Affair: presidential candidate's Nazi past triggers international crisis",
     "verdict": "TRUE",
     "reason": "Kurt Waldheim's concealed wartime record as a Wehrmacht officer was revealed during his 1986 presidential campaign; he won the June 1986 election with 53.9% despite international condemnation and being placed on the US watchlist.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kurt Waldheim's concealed wartime record as a Wehrmacht officer was revealed during his 1986 presidential campaign; he won the June 1986 election with 53.9% despite international condemnation and being placed on the US watchlist.",
+        "source": "https://en.wikipedia.org/wiki/Kurt_Waldheim",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kurt_Waldheim"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Jorg Haider takes over Freedom Party, beginning radical right transformation",
     "verdict": "TRUE",
     "reason": "Haider defeated Norbert Steger at the FPO party convention in September 1986 in Innsbruck with 58% of delegate votes, fundamentally reorienting the party toward right-wing populism; FPO vote share grew from under 5% to over 26% under his leadership.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Haider defeated Norbert Steger at the FPO party convention in September 1986 in Innsbruck with 58% of delegate votes, fundamentally reorienting the party toward right-wing populism; FPO vote share grew from under 5% to over 26% under his leadership.",
+        "source": "https://en.wikipedia.org/wiki/J%C3%B6rg_Haider",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/J%C3%B6rg_Haider"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Grand coalition of SPO and OVP returns to govern Austria",
     "verdict": "TRUE",
     "reason": "Following Haider's FPO takeover and the coalition's breakdown, Chancellor Vranitzky called new elections and formed a grand coalition with the OVP from January 1987, returning Austria to the format that had governed for most of the postwar period.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following Haider's FPO takeover and the coalition's breakdown, Chancellor Vranitzky called new elections and formed a grand coalition with the OVP from January 1987, returning Austria to the format that had governed for most of the postwar period.",
+        "source": "https://en.wikipedia.org/wiki/Franz_Vranitzky",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Franz_Vranitzky"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Austria applies for European Community membership",
     "verdict": "TRUE",
     "reason": "Austria formally applied for EC membership on 17 July 1989, arguing that changes in European politics made full membership compatible with its neutrality.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria formally applied for EC membership on 17 July 1989, arguing that changes in European politics made full membership compatible with its neutrality.",
+        "source": "https://www.bmeia.gv.at/en/european-foreign-policy/european-policy/austria-in-the-eu",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.bmeia.gv.at/en/european-foreign-policy/european-policy/austria-in-the-eu"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Austria opens border with Hungary, enabling East German exodus",
     "verdict": "TRUE",
     "reason": "Hungary opened its border with Austria in September 1989, allowing an estimated 70,000 East Germans to flee West within days; this mass exodus was one of the pivotal events leading to the fall of the Berlin Wall in November 1989.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Hungary opened its border with Austria in September 1989, allowing an estimated 70,000 East Germans to flee West within days; this mass exodus was one of the pivotal events leading to the fall of the Berlin Wall in November 1989.",
+        "source": "https://en.wikipedia.org/wiki/Removal_of_Hungary%27s_border_fence_with_Austria",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Removal_of_Hungary%27s_border_fence_with_Austria"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Letter Bomb Campaign by far-right extremist Franz Fuchs begins",
     "verdict": "FALSE",
     "reason": "Franz Fuchs's letter bomb campaign began in December 1993, not 1992; he sent five waves of mail bombs between 1993 and 1997 killing four people and injuring fifteen.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Franz Fuchs's letter bomb campaign began in December 1993, not 1992; he sent five waves of mail bombs between 1993 and 1997 killing four people and injuring fifteen.",
+        "source": "https://en.wikipedia.org/wiki/Franz_Fuchs",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Franz_Fuchs"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Lichtenberger Petition against Haider's FPO collects 817,000 signatures",
     "verdict": "FALSE",
     "reason": "The 1993 event was the 'Lichtermeer' (Sea of Lights) candlelight demonstration of up to 300,000 participants on 23 January 1993 against Haider's 'Austria First' FPO petition, which itself collected only 416,531 signatures — not 817,000; both the name 'Lichtenberger Petition' and the signature count are incorrect.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The 1993 event was the 'Lichtermeer' (Sea of Lights) candlelight demonstration of up to 300,000 participants on 23 January 1993 against Haider's 'Austria First' FPO petition, which itself collected only 416,531 signatures — not 817,000; both the name 'Lichtenberger Petition' and the signature count are incorrect.",
+        "source": "https://hdgoe.at/anti_migrant_referendum_sea_of_lights",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://hdgoe.at/anti_migrant_referendum_sea_of_lights"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Austria votes to join the European Union",
     "verdict": "TRUE",
     "reason": "Austrian voters approved EU accession on 12 June 1994 with 66.6% in favour and 82.3% turnout, the highest approval among the states voting that year.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austrian voters approved EU accession on 12 June 1994 with 66.6% in favour and 82.3% turnout, the highest approval among the states voting that year.",
+        "source": "https://en.wikipedia.org/wiki/1994_Austrian_European_Union_membership_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1994_Austrian_European_Union_membership_referendum"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Austria joins the European Union",
     "verdict": "TRUE",
     "reason": "Austria acceded to the European Union on 1 January 1995 alongside Finland and Sweden, completing the EFTA enlargement round.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria acceded to the European Union on 1 January 1995 alongside Finland and Sweden, completing the EFTA enlargement round.",
+        "source": "https://en.wikipedia.org/wiki/1995_enlargement_of_the_European_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1995_enlargement_of_the_European_Union"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Oberwart pipe bomb kills four Roma in far-right attack",
     "verdict": "TRUE",
     "reason": "On 4 February 1995, a pipe bomb killed four Roma men at Oberwart, Burgenland; the attack was part of Franz Fuchs's bombing campaign and was the deadliest domestic terrorist act in postwar Austria.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 4 February 1995, a pipe bomb killed four Roma men at Oberwart, Burgenland; the attack was part of Franz Fuchs's bombing campaign and was the deadliest domestic terrorist act in postwar Austria.",
+        "source": "https://en.wikipedia.org/wiki/Franz_Fuchs",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Franz_Fuchs"
   },
   {
@@ -214,6 +754,24 @@
     "title": "South Tyrol dispute fully resolved through Package negotiations",
     "verdict": "PARTIAL",
     "reason": "Austria and Italy formally settled the dispute before the UN in June 1992, not 1997; the autonomy package negotiations were concluded in 1969, ratified in the early 1970s, and declared resolved at the UN in 1992 — the 1997 date in the entry is incorrect.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Austria and Italy formally settled the dispute before the UN in June 1992, not 1997; the autonomy package negotiations were concluded in 1969, ratified in the early 1970s, and declared resolved at the UN in 1992 — the 1997 date in the entry is incorrect.",
+        "source": "https://www.researchgate.net/publication/317369012_Austria-Italy_1992_-_Dispute_Settlement_to_South_Tyrol_before_the_UNO_the_Council_of_Europe_and_the_International_Court_of_Justice",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.researchgate.net/publication/317369012_Austria-Italy_1992_-_Dispute_Settlement_to_South_Tyrol_before_the_UNO_the_Council_of_Europe_and_the_International_Court_of_Justice"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Austria joins the eurozone, adopting the euro",
     "verdict": "PARTIAL",
     "reason": "Austria qualified for and joined the eurozone on 1 January 1999 (locking the schilling's rate), with euro notes and coins replacing the schilling in January 2002; the year 1998 given is incorrect — eurozone membership began 1 January 1999.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Austria qualified for and joined the eurozone on 1 January 1999 (locking the schilling's rate), with euro notes and coins replacing the schilling in January 2002; the year 1998 given is incorrect — eurozone membership began 1 January 1999.",
+        "source": "https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro/austria-and-euro_en",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro/austria-and-euro_en"
   },
   {
@@ -228,6 +804,24 @@
     "title": "FPO surges to 27% in parliamentary elections, equaling OVP in second place",
     "verdict": "TRUE",
     "reason": "Haider's FPO won 26.9% in the October 1999 elections, exactly matching the OVP for second place behind the SPO by approximately 500 votes, triggering international alarm before the party eventually entered government in February 2000.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Haider's FPO won 26.9% in the October 1999 elections, exactly matching the OVP for second place behind the SPO by approximately 500 votes, triggering international alarm before the party eventually entered government in February 2000.",
+        "source": "https://en.wikipedia.org/wiki/1999_Austrian_legislative_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1999_Austrian_legislative_election"
   },
   {
@@ -235,6 +829,24 @@
     "title": "EU sanctions Austria after FPO enters coalition government",
     "verdict": "TRUE",
     "reason": "When the OVP formed a coalition with Haider's FPO in February 2000, the other fourteen EU member states imposed unprecedented diplomatic sanctions that lasted seven months before being lifted after an EU-commissioned report found Austria's democratic standards intact.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "When the OVP formed a coalition with Haider's FPO in February 2000, the other fourteen EU member states imposed unprecedented diplomatic sanctions that lasted seven months before being lifted after an EU-commissioned report found Austria's democratic standards intact.",
+        "source": "https://pure.mpg.de/rest/items/item_1234915/component/file_3521392/content",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://pure.mpg.de/rest/items/item_1234915/component/file_3521392/content"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Haider resigns as FPO leader but retains influence from Carinthia",
     "verdict": "TRUE",
     "reason": "Under domestic and international pressure, Haider resigned as FPO federal chairman in February 2000 while retaining the Carinthian governorship; he continued to exercise influence over the FPO before founding the BZO in 2005.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Under domestic and international pressure, Haider resigned as FPO federal chairman in February 2000 while retaining the Carinthian governorship; he continued to exercise influence over the FPO before founding the BZO in 2005.",
+        "source": "https://en.wikipedia.org/wiki/J%C3%B6rg_Haider",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/J%C3%B6rg_Haider"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Knittelfeld rebellion collapses FPO coalition, triggering early elections",
     "verdict": "TRUE",
     "reason": "FPO delegates revolted at Knittelfeld on 7 September 2002, leading to Riess-Passer's resignation and coalition collapse; in the November 2002 elections OVP won 42.3% while FPO collapsed from 26.9% to 10%.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "FPO delegates revolted at Knittelfeld on 7 September 2002, leading to Riess-Passer's resignation and coalition collapse; in the November 2002 elections OVP won 42.3% while FPO collapsed from 26.9% to 10%.",
+        "source": "https://en.wikipedia.org/wiki/Knittelfeld_Putsch",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Knittelfeld_Putsch"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Heinz Fischer elected first Social Democratic president in decades",
     "verdict": "TRUE",
     "reason": "Heinz Fischer of the SPO won the presidential election on 25 April 2004 with 52.41%, becoming the first social democrat elected to the Austrian presidency since the Waldheim era.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Heinz Fischer of the SPO won the presidential election on 25 April 2004 with 52.41%, becoming the first social democrat elected to the Austrian presidency since the Waldheim era.",
+        "source": "https://en.wikipedia.org/wiki/2004_Austrian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2004_Austrian_presidential_election"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Haider founds BZO, splitting the Austrian far-right",
     "verdict": "TRUE",
     "reason": "Haider announced the formation of the BZO (Alliance for the Future of Austria) on 3 April 2005, taking FPO government ministers with him and temporarily weakening the far-right vote.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Haider announced the formation of the BZO (Alliance for the Future of Austria) on 3 April 2005, taking FPO government ministers with him and temporarily weakening the far-right vote.",
+        "source": "https://en.wikipedia.org/wiki/Alliance_for_the_Future_of_Austria",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Alliance_for_the_Future_of_Austria"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Grand coalition of SPO and OVP returns under Gusenbauer",
     "verdict": "TRUE",
     "reason": "SPO narrowly won the September 2006 elections and formed a grand coalition with the OVP under Alfred Gusenbauer; internal tensions and undelivered campaign promises led to the coalition's replacement in 2008 snap elections.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "SPO narrowly won the September 2006 elections and formed a grand coalition with the OVP under Alfred Gusenbauer; internal tensions and undelivered campaign promises led to the coalition's replacement in 2008 snap elections.",
+        "source": "https://en.wikipedia.org/wiki/2006_Austrian_legislative_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2006_Austrian_legislative_election"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Austrian banks face major losses from Eastern European exposure",
     "verdict": "TRUE",
     "reason": "Austrian banks had the highest exposure to Eastern European markets relative to GDP in Western Europe; Hypo Alpe Adria faced massive write-downs in autumn 2008 and required government recapitalization of EUR 1.6 billion in December 2008.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austrian banks had the highest exposure to Eastern European markets relative to GDP in Western Europe; Hypo Alpe Adria faced massive write-downs in autumn 2008 and required government recapitalization of EUR 1.6 billion in December 2008.",
+        "source": "https://en.wikipedia.org/wiki/Hypo_Alpe_Adria_Bank",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hypo_Alpe_Adria_Bank"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Far-right parties win combined 29% in elections; Haider dies in car crash",
     "verdict": "TRUE",
     "reason": "In September 2008 elections FPO and BZO together won approximately 29% (FPO 18%, BZO 11%); Haider died in a car crash on 11 October 2008 in Carinthia while driving at 142 km/h in a 70 km/h zone.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In September 2008 elections FPO and BZO together won approximately 29% (FPO 18%, BZO 11%); Haider died in a car crash on 11 October 2008 in Carinthia while driving at 142 km/h in a 70 km/h zone.",
+        "source": "https://en.wikipedia.org/wiki/J%C3%B6rg_Haider",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/J%C3%B6rg_Haider"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Hypo Alpe Adria nationalized to prevent collapse",
     "verdict": "TRUE",
     "reason": "The Austrian federal government nationalized Hypo Alpe Adria on 14 December 2009, paying one symbolic euro to BayernLB for its 67% stake to prevent disorderly collapse; the bailout ultimately cost Austrian taxpayers approximately EUR 6–8 billion.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Austrian federal government nationalized Hypo Alpe Adria on 14 December 2009, paying one symbolic euro to BayernLB for its 67% stake to prevent disorderly collapse; the bailout ultimately cost Austrian taxpayers approximately EUR 6–8 billion.",
+        "source": "https://en.wikipedia.org/wiki/Hypo_Alpe_Adria_Bank",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hypo_Alpe_Adria_Bank"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Carinthia faces near-insolvency from Hypo guarantees",
     "verdict": "TRUE",
     "reason": "Carinthia had issued approximately EUR 11–12.5 billion in state guarantees for Hypo Alpe Adria debt, far exceeding the state's annual budget of EUR 2.2 billion, risking provincial insolvency if creditors called in the guarantees.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Carinthia had issued approximately EUR 11–12.5 billion in state guarantees for Hypo Alpe Adria debt, far exceeding the state's annual budget of EUR 2.2 billion, risking provincial insolvency if creditors called in the guarantees.",
+        "source": "https://wolfstreet.com/2015/03/04/austria-pulls-ripcord-on-bailouts-lets-bottomless-pit-hypo-alpe-bank-drag-state-of-carinthia-into-bankruptcy/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://wolfstreet.com/2015/03/04/austria-pulls-ripcord-on-bailouts-lets-bottomless-pit-hypo-alpe-bank-drag-state-of-carinthia-into-bankruptcy/"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Austria resists eurozone bailout fund, then accepts European Stability Mechanism",
     "verdict": "PARTIAL",
     "reason": "Austria contributed to EFSF bailouts and supported the ESM, but 'resists' overstates the position; Austria was a cooperative member of eurozone stabilization efforts, motivated by its banks' heavy Eastern European exposure rather than resistance then acceptance.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Austria contributed to EFSF bailouts and supported the ESM, but 'resists' overstates the position; Austria was a cooperative member of eurozone stabilization efforts, motivated by its banks' heavy Eastern European exposure rather than resistance then acceptance.",
+        "source": "https://en.wikipedia.org/wiki/European_Stability_Mechanism",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/European_Stability_Mechanism"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Bad Bank established for Hypo Alpe Adria wind-down",
     "verdict": "PARTIAL",
     "reason": "HETA Asset Resolution AG was formally established in 2014, not 2012; the Austrian government decided in March 2014 to split Hypo into a bad bank structure, and legislation enabling HETA was passed in August 2014.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "HETA Asset Resolution AG was formally established in 2014, not 2012; the Austrian government decided in March 2014 to split Hypo into a bad bank structure, and legislation enabling HETA was passed in August 2014.",
+        "source": "https://elischolar.library.yale.edu/journal-of-financial-crises/vol6/iss1/2/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://elischolar.library.yale.edu/journal-of-financial-crises/vol6/iss1/2/"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Worm affair and SPO-OVP coalition tensions dominate politics",
     "verdict": "PARTIAL",
     "reason": "The SPO-OVP grand coalition under Faymann was re-elected in September 2013 with declining combined vote share, and Hypo/corruption scandals eroded trust — but the 'Worm affair' name for these tensions is not a recognized historical event label; the underlying political dynamics described are broadly accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The SPO-OVP grand coalition under Faymann was re-elected in September 2013 with declining combined vote share, and Hypo/corruption scandals eroded trust — but the 'Worm affair' name for these tensions is not a recognized historical event label; the underlying political dynamics described are broadly accurate.",
+        "source": "https://en.wikipedia.org/wiki/Austrian_People%27s_Party",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Austrian_People%27s_Party"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "HETA resolution sparks international creditor dispute",
     "verdict": "TRUE",
     "reason": "The Austrian government's establishment of HETA Asset Resolution and a March 2015 debt moratorium triggered intense legal battles with German and Swiss bank creditors, raising questions about EU bank resolution rules and lasting years in arbitration.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Austrian government's establishment of HETA Asset Resolution and a March 2015 debt moratorium triggered intense legal battles with German and Swiss bank creditors, raising questions about EU bank resolution rules and lasting years in arbitration.",
+        "source": "https://www.financierworldwide.com/the-austrian-heta-saga-successful-investor-appeasement-at-last",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.financierworldwide.com/the-austrian-heta-saga-successful-investor-appeasement-at-last"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "Austria receives over 90,000 asylum applications during refugee crisis",
     "verdict": "TRUE",
     "reason": "Austria received 88,098 asylum applications in 2015, approximately 90,000, placing it among the top EU recipients per capita; FPO political pressure rapidly pushed policy toward border restrictions.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria received 88,098 asylum applications in 2015, approximately 90,000, placing it among the top EU recipients per capita; FPO political pressure rapidly pushed policy toward border restrictions.",
+        "source": "https://asylumineurope.org/reports/country/austria/statistics/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://asylumineurope.org/reports/country/austria/statistics/"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Presidential election result disputed; re-run ordered after mail ballot irregularities",
     "verdict": "TRUE",
     "reason": "The May 2016 runoff result (Van der Bellen 50.3% vs Hofer 49.7%) was annulled by the Constitutional Court on 1 July 2016 over procedural irregularities with postal votes; Van der Bellen won the December 2016 re-run with 53.8%.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The May 2016 runoff result (Van der Bellen 50.3% vs Hofer 49.7%) was annulled by the Constitutional Court on 1 July 2016 over procedural irregularities with postal votes; Van der Bellen won the December 2016 re-run with 53.8%.",
+        "source": "https://en.wikipedia.org/wiki/2016_Austrian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2016_Austrian_presidential_election"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Austria unilaterally imposes asylum cap and closes Brenner Pass to migrants",
     "verdict": "TRUE",
     "reason": "Austria introduced a unilateral daily cap of 80 asylum applications in mid-February 2016 and prepared border barriers at the Brenner Pass with Italy, causing a diplomatic row with Rome and Brussels over Schengen norms.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria introduced a unilateral daily cap of 80 asylum applications in mid-February 2016 and prepared border barriers at the Brenner Pass with Italy, causing a diplomatic row with Rome and Brussels over Schengen norms.",
+        "source": "https://www.hrw.org/news/2016/04/27/austria-drastic-unjustified-measures-against-asylum-seekers",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2016/04/27/austria-drastic-unjustified-measures-against-asylum-seekers"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "Sebastian Kurz leads OVP to victory; forms coalition with FPO",
     "verdict": "TRUE",
     "reason": "Kurz's Liste Kurz/OVP won 31.5% in October 2017 and formed a coalition with the FPO under Strache, returning the far-right to government; the coalition pursued sharp cuts to asylum and integration policy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kurz's Liste Kurz/OVP won 31.5% in October 2017 and formed a coalition with the FPO under Strache, returning the far-right to government; the coalition pursued sharp cuts to asylum and integration policy.",
+        "source": "https://en.wikipedia.org/wiki/2017_Austrian_legislative_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2017_Austrian_legislative_election"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "Austria holds rotating EU Council Presidency and pushes migration agenda",
     "verdict": "TRUE",
     "reason": "Austria's July–December 2018 EU Council Presidency under the motto 'A Europe that Protects' prioritized migration control, external border protection, and Western Balkans accession, reflecting the Kurz government's hard-line migration stance.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria's July–December 2018 EU Council Presidency under the motto 'A Europe that Protects' prioritized migration control, external border protection, and Western Balkans accession, reflecting the Kurz government's hard-line migration stance.",
+        "source": "https://www.eu2018.at/agenda-priorities/priorities.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.eu2018.at/agenda-priorities/priorities.html"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Ibiza Affair video destroys FPO coalition, triggers snap elections",
     "verdict": "TRUE",
     "reason": "On 17 May 2019, Der Spiegel and Süddeutsche Zeitung published the Ibiza video showing Strache apparently offering government contracts in exchange for campaign funding; Strache resigned and Chancellor Kurz dissolved the coalition, calling snap elections.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 17 May 2019, Der Spiegel and Süddeutsche Zeitung published the Ibiza video showing Strache apparently offering government contracts in exchange for campaign funding; Strache resigned and Chancellor Kurz dissolved the coalition, calling snap elections.",
+        "source": "https://en.wikipedia.org/wiki/Ibiza_affair",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ibiza_affair"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "Kurz wins snap election; forms coalition with Greens in historic arrangement",
     "verdict": "TRUE",
     "reason": "OVP won 37.5% in the October 2019 snap elections; Kurz then formed an unprecedented coalition with the Greens, combining conservative migration policy with green climate commitments — the only such coalition in Europe at the time.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "OVP won 37.5% in the October 2019 snap elections; Kurz then formed an unprecedented coalition with the Greens, combining conservative migration policy with green climate commitments — the only such coalition in Europe at the time.",
+        "source": "https://en.wikipedia.org/wiki/2019_Austrian_legislative_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2019_Austrian_legislative_election"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Austria implements some of Europe's strictest COVID-19 lockdowns",
     "verdict": "TRUE",
     "reason": "Austria entered lockdown in March 2020 with strict mobility restrictions; the country later became the first EU state to mandate COVID-19 vaccination for the general population (law passed January 2022, though it was subsequently suspended).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria entered lockdown in March 2020 with strict mobility restrictions; the country later became the first EU state to mandate COVID-19 vaccination for the general population (law passed January 2022, though it was subsequently suspended).",
+        "source": "https://www.sciencemediacentre.org/expert-reaction-to-austria-announcing-a-national-lockdown-and-mandatory-vaccination-from-february-and-the-general-covid-19-situation-in-europe/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.sciencemediacentre.org/expert-reaction-to-austria-announcing-a-national-lockdown-and-mandatory-vaccination-from-february-and-the-general-covid-19-situation-in-europe/"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Vienna terrorist attack kills four people near synagogue",
     "verdict": "TRUE",
     "reason": "On 2 November 2020, a lone gunman with IS ties launched attacks at multiple locations in central Vienna near the main synagogue, killing four people and wounding twenty-three before being shot dead by police.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 2 November 2020, a lone gunman with IS ties launched attacks at multiple locations in central Vienna near the main synagogue, killing four people and wounding twenty-three before being shot dead by police.",
+        "source": "https://en.wikipedia.org/wiki/2020_Vienna_attack",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2020_Vienna_attack"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "Sebastian Kurz resigns amid corruption investigation; succeeded by Schallenberg then Nehammer",
     "verdict": "TRUE",
     "reason": "Kurz resigned as Chancellor on 9 October 2021 after prosecutors raided party headquarters over allegations of using public funds to commission manipulated polls; Schallenberg briefly succeeded him before Karl Nehammer became Chancellor in December 2021.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kurz resigned as Chancellor on 9 October 2021 after prosecutors raided party headquarters over allegations of using public funds to commission manipulated polls; Schallenberg briefly succeeded him before Karl Nehammer became Chancellor in December 2021.",
+        "source": "https://en.wikipedia.org/wiki/Kurz_corruption_probe",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kurz_corruption_probe"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "Austria mandates COVID-19 vaccination, then abandons the policy",
     "verdict": "TRUE",
     "reason": "Austria's vaccine mandate entered force on 5 February 2022, was suspended on 9 March 2022 amid protests, and formally repealed in June 2022; health minister cited societal division and changed epidemiological conditions.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria's vaccine mandate entered force on 5 February 2022, was suspended on 9 March 2022 amid protests, and formally repealed in June 2022; health minister cited societal division and changed epidemiological conditions.",
+        "source": "https://www.loc.gov/item/global-legal-monitor/2022-03-17/austria-general-covid-19-vaccine-mandate-suspended/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.loc.gov/item/global-legal-monitor/2022-03-17/austria-general-covid-19-vaccine-mandate-suspended/"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "Austria faces energy price shock from Russian gas dependence after Ukraine invasion",
     "verdict": "TRUE",
     "reason": "At the time of Russia's February 2022 invasion of Ukraine, Austria imported 80% of its natural gas from Russia — the highest share in Western Europe — and scrambled to diversify sources as energy prices soared.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "At the time of Russia's February 2022 invasion of Ukraine, Austria imported 80% of its natural gas from Russia — the highest share in Western Europe — and scrambled to diversify sources as energy prices soared.",
+        "source": "https://www.wu.ac.at/en/research/research-portal/news/details-news/detail/russisches-gas-was-oesterreich-und-europa-aus-der-abhaengigkeit-gelernt-haben",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.wu.ac.at/en/research/research-portal/news/details-news/detail/russisches-gas-was-oesterreich-und-europa-aus-der-abhaengigkeit-gelernt-haben"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "Austria maintains neutrality stance amid Ukrainian pressure to join sanctions",
     "verdict": "TRUE",
     "reason": "Austria implemented all EU sanctions on Russia but declined to supply military equipment, citing its constitutional neutrality; the war revived domestic debate about whether Austrian neutrality remained meaningful.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria implemented all EU sanctions on Russia but declined to supply military equipment, citing its constitutional neutrality; the war revived domestic debate about whether Austrian neutrality remained meaningful.",
+        "source": "https://foreignpolicy.com/2022/07/12/austria-neutrality-nato-ukraine-russia-security-strategy/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://foreignpolicy.com/2022/07/12/austria-neutrality-nato-ukraine-russia-security-strategy/"
   },
   {
@@ -424,6 +1504,24 @@
     "title": "FPO surges to first place in polls as migration and cost-of-living dominate",
     "verdict": "TRUE",
     "reason": "FPO under Herbert Kickl led national polls throughout 2023 and into 2024, capitalizing on migration concerns and cost-of-living pressures, with polling above 30% — the party's highest since the Haider era.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "FPO under Herbert Kickl led national polls throughout 2023 and into 2024, capitalizing on migration concerns and cost-of-living pressures, with polling above 30% — the party's highest since the Haider era.",
+        "source": "https://www.aa.com.tr/en/europe/leader-of-austrias-far-right-party-hits-record-high-in-poll/3777741",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aa.com.tr/en/europe/leader-of-austrias-far-right-party-hits-record-high-in-poll/3777741"
   },
   {
@@ -431,6 +1529,24 @@
     "title": "Austria extends closure of border controls with neighboring Schengen states",
     "verdict": "TRUE",
     "reason": "Austria repeatedly extended temporary Schengen border controls with Slovenia, Hungary, and Slovakia well beyond the standard Schengen duration, citing irregular migration pressures; extensions were accepted by the European Commission under political pressure.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria repeatedly extended temporary Schengen border controls with Slovenia, Hungary, and Slovakia well beyond the standard Schengen duration, citing irregular migration pressures; extensions were accepted by the European Commission under political pressure.",
+        "source": "https://home-affairs.ec.europa.eu/policies/schengen/schengen-area/temporary-reintroduction-border-control_en",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://home-affairs.ec.europa.eu/policies/schengen/schengen-area/temporary-reintroduction-border-control_en"
   },
   {
@@ -438,6 +1554,24 @@
     "title": "FPO wins parliamentary elections for first time in Austrian history",
     "verdict": "PARTIAL",
     "reason": "FPO won 28.8% in the September 2024 elections — the party's first plurality — but President Van der Bellen initially asked the second-place OVP to form a government; a three-party OVP-SPO-NEOS coalition was indeed attempted but ultimately collapsed, and Van der Bellen later tasked Kickl with forming a government in January 2025.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "FPO won 28.8% in the September 2024 elections — the party's first plurality — but President Van der Bellen initially asked the second-place OVP to form a government; a three-party OVP-SPO-NEOS coalition was indeed attempted but ultimately collapsed, and Van der Bellen later tasked Kickl with forming a government in January 2025.",
+        "source": "https://en.wikipedia.org/wiki/2024_Austrian_legislative_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2024_Austrian_legislative_election"
   },
   {
@@ -445,6 +1579,24 @@
     "title": "Austria tightens integration requirements for migrants amid political shift",
     "verdict": "TRUE",
     "reason": "Austria enacted stricter integration requirements in 2024 including expanded German language testing, stricter family reunification rules (DNA checks from May 2024), and accelerated deportation procedures reflecting broad political consensus on migration control.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria enacted stricter integration requirements in 2024 including expanded German language testing, stricter family reunification rules (DNA checks from May 2024), and accelerated deportation procedures reflecting broad political consensus on migration control.",
+        "source": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/migrant-integration/migrant-integration-hub/eu-countries-updates-and-facts/migrant-integration-austria_en",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/migrant-integration/migrant-integration-hub/eu-countries-updates-and-facts/migrant-integration-austria_en"
   }
 ]

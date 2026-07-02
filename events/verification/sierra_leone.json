@@ -4,6 +4,24 @@
     "title": "Sierra Leone Independence",
     "verdict": "TRUE",
     "reason": "Sierra Leone gained independence from the UK on 27 April 1961, with Sir Milton Margai of the SLPP sworn in as the first Prime Minister. The country joined the Commonwealth and UN the same year.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sierra Leone gained independence from the UK on 27 April 1961, with Sir Milton Margai of the SLPP sworn in as the first Prime Minister. The country joined the Commonwealth and UN the same year.",
+        "source": "https://en.wikipedia.org/wiki/Sierra_Leone_(1961%E2%80%931971)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sierra_Leone_(1961%E2%80%931971)"
   },
   {
@@ -11,6 +29,24 @@
     "title": "First Post-Independence General Elections",
     "verdict": "TRUE",
     "reason": "General elections were held on 25 May 1962 under universal suffrage — the first since independence — returning the SLPP under Milton Margai to power with 28 of 74 seats.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "General elections were held on 25 May 1962 under universal suffrage — the first since independence — returning the SLPP under Milton Margai to power with 28 of 74 seats.",
+        "source": "https://en.wikipedia.org/wiki/Sierra_Leonean_general_election,_1962",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sierra_Leonean_general_election,_1962"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Sir Albert Margai Becomes Prime Minister",
     "verdict": "TRUE",
     "reason": "Sir Albert Margai succeeded his brother Sir Milton (who died on 28 April 1964) as Prime Minister on 29 April 1964, serving until the 1967 military coup.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sir Albert Margai succeeded his brother Sir Milton (who died on 28 April 1964) as Prime Minister on 29 April 1964, serving until the 1967 military coup.",
+        "source": "https://en.wikipedia.org/wiki/Albert_Margai",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Albert_Margai"
   },
   {
@@ -25,6 +79,24 @@
     "title": "APC Election Victory Blocked by Military",
     "verdict": "TRUE",
     "reason": "Siaka Stevens won the 17 March 1967 election but was immediately prevented from taking power by Brigadier David Lansana, who declared martial law; a subsequent junta, the NRC, suspended the constitution.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Siaka Stevens won the 17 March 1967 election but was immediately prevented from taking power by Brigadier David Lansana, who declared martial law; a subsequent junta, the NRC, suspended the constitution.",
+        "source": "https://en.wikipedia.org/wiki/1967_Sierra_Leonean_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1967_Sierra_Leonean_general_election"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Counter-Coup Restores Siaka Stevens",
     "verdict": "TRUE",
     "reason": "On 18 April 1968, the Anti-Corruption Revolutionary Movement (ACRM) overthrew the NRC junta and restored Siaka Stevens as Prime Minister. The ACRM is widely known as the 'sergeants' coup'.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 18 April 1968, the Anti-Corruption Revolutionary Movement (ACRM) overthrew the NRC junta and restored Siaka Stevens as Prime Minister. The ACRM is widely known as the 'sergeants' coup'.",
+        "source": "https://en.wikipedia.org/wiki/Sergeants%27_Coup_(Sierra_Leone)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sergeants%27_Coup_(Sierra_Leone)"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Sierra Leone Declared a Republic",
     "verdict": "TRUE",
     "reason": "On 19 April 1971 Sierra Leone became a republic with Siaka Stevens as its first executive president, replacing the constitutional monarchy under the Crown.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 19 April 1971 Sierra Leone became a republic with Siaka Stevens as its first executive president, replacing the constitutional monarchy under the Crown.",
+        "source": "https://en.wikipedia.org/wiki/Siaka_Stevens",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Siaka_Stevens"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Boycotted Elections Entrench APC Power",
     "verdict": "TRUE",
     "reason": "The 1973 elections were effectively boycotted by the SLPP after APC candidates were declared unopposed in 46 of 85 constituencies amid widespread violence and intimidation, entrenching single-party drift.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 1973 elections were effectively boycotted by the SLPP after APC candidates were declared unopposed in 46 of 85 constituencies amid widespread violence and intimidation, entrenching single-party drift.",
+        "source": "https://sierraleonetrc.org/index.php/view-report-text-vol-3a/item/volume-three-a-chapter-two",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://sierraleonetrc.org/index.php/view-report-text-vol-3a/item/volume-three-a-chapter-two"
   },
   {
@@ -53,6 +179,24 @@
     "title": "ECOWAS Founding Membership",
     "verdict": "TRUE",
     "reason": "Sierra Leone was one of 15 original signatories of the Treaty of Lagos on 28 May 1975 that established the Economic Community of West African States (ECOWAS).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sierra Leone was one of 15 original signatories of the Treaty of Lagos on 28 May 1975 that established the Economic Community of West African States (ECOWAS).",
+        "source": "https://en.wikipedia.org/wiki/ECOWAS",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/ECOWAS"
   },
   {
@@ -60,6 +204,24 @@
     "title": "One-Party State Constitution",
     "verdict": "TRUE",
     "reason": "A 1978 constitutional referendum — reported at 97.1% in favour amid acknowledged fraud — made the APC the sole legal party; the SLPP was outlawed and opposition members were required to join the APC or lose their seats.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A 1978 constitutional referendum — reported at 97.1% in favour amid acknowledged fraud — made the APC the sole legal party; the SLPP was outlawed and opposition members were required to join the APC or lose their seats.",
+        "source": "https://en.wikipedia.org/wiki/Sierra_Leonean_constitutional_referendum,_1978",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sierra_Leonean_constitutional_referendum,_1978"
   },
   {
@@ -67,6 +229,24 @@
     "title": "OAU Summit in Freetown",
     "verdict": "TRUE",
     "reason": "The Organisation of African Unity held its 17th Ordinary Session in Freetown from 1–4 July 1980, with President Siaka Stevens becoming OAU chairman. The Washington Post reported significant economic strain from the hosting costs.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Organisation of African Unity held its 17th Ordinary Session in Freetown from 1–4 July 1980, with President Siaka Stevens becoming OAU chairman. The Washington Post reported significant economic strain from the hosting costs.",
+        "source": "https://au.int/sites/default/files/decisions/9527-assembly_en_01_04_july_1980_assembly_heads_state_government_eighteenth_ordinary_session.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://au.int/sites/default/files/decisions/9527-assembly_en_01_04_july_1980_assembly_heads_state_government_eighteenth_ordinary_session.pdf"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Momoh Succeeds Stevens",
     "verdict": "TRUE",
     "reason": "Major-General Joseph Saidu Momoh became the sole APC candidate and was elected president on 8 October 1985, succeeding Siaka Stevens and inheriting a severely weakened economy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Major-General Joseph Saidu Momoh became the sole APC candidate and was elected president on 8 October 1985, succeeding Siaka Stevens and inheriting a severely weakened economy.",
+        "source": "https://en.wikipedia.org/wiki/Joseph_Saidu_Momoh",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Joseph_Saidu_Momoh"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Economic Emergency Declared",
     "verdict": "TRUE",
     "reason": "In 1987 President Momoh declared a national economic emergency and introduced a World Bank/IMF-backed Structural Adjustment Programme, including a floating exchange rate and removal of subsidies, with the IMF withdrawing support by 1988 due to non-payment of arrears.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 1987 President Momoh declared a national economic emergency and introduced a World Bank/IMF-backed Structural Adjustment Programme, including a floating exchange rate and removal of subsidies, with the IMF withdrawing support by 1988 due to non-payment of arrears.",
+        "source": "https://worldhistory.biz/sundries/41335-sierra-leone-momoh-joseph-saidu.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://worldhistory.biz/sundries/41335-sierra-leone-momoh-joseph-saidu.html"
   },
   {
@@ -88,6 +304,24 @@
     "title": "RUF Civil War Begins",
     "verdict": "TRUE",
     "reason": "On 23 March 1991 Foday Sankoh's Revolutionary United Front (RUF), backed by Charles Taylor of Liberia, launched its first attack in Kailahun District in eastern Sierra Leone, starting an eleven-year civil war.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 23 March 1991 Foday Sankoh's Revolutionary United Front (RUF), backed by Charles Taylor of Liberia, launched its first attack in Kailahun District in eastern Sierra Leone, starting an eleven-year civil war.",
+        "source": "https://en.wikipedia.org/wiki/Sierra_Leone_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sierra_Leone_Civil_War"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Multi-Party Constitution Adopted",
     "verdict": "TRUE",
     "reason": "A new multi-party constitution was approved by parliament and ratified in an August 1991 referendum, becoming effective 1 October 1991, restoring competitive elections and ending the 1978 one-party framework.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A new multi-party constitution was approved by parliament and ratified in an August 1991 referendum, becoming effective 1 October 1991, restoring competitive elections and ending the 1978 one-party framework.",
+        "source": "https://constitutionnet.org/country/sierra-leone",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://constitutionnet.org/country/sierra-leone"
   },
   {
@@ -102,6 +354,24 @@
     "title": "NPRC Coup — Strasser Takes Power",
     "verdict": "TRUE",
     "reason": "On 29 April 1992, Captain Valentine Strasser (aged 25) and junior officers overthrew President Momoh and established the National Provisional Ruling Council (NPRC), making Strasser the world's youngest head of state.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 29 April 1992, Captain Valentine Strasser (aged 25) and junior officers overthrew President Momoh and established the National Provisional Ruling Council (NPRC), making Strasser the world's youngest head of state.",
+        "source": "https://en.wikipedia.org/wiki/1992_Sierra_Leonean_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1992_Sierra_Leonean_coup_d%27%C3%A9tat"
   },
   {
@@ -109,6 +379,24 @@
     "title": "ECOMOG Deploys to Sierra Leone",
     "verdict": "TRUE",
     "reason": "In March 1993, ECOWAS Monitoring Group (ECOMOG) — predominantly Nigerian troops — deployed to Freetown and assisted the NPRC government in recapturing diamond districts from the RUF; by end-1993 the RUF had largely ceased operations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In March 1993, ECOWAS Monitoring Group (ECOMOG) — predominantly Nigerian troops — deployed to Freetown and assisted the NPRC government in recapturing diamond districts from the RUF; by end-1993 the RUF had largely ceased operations.",
+        "source": "https://en.wikipedia.org/wiki/Sierra_Leone_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sierra_Leone_Civil_War"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Executive Outcomes Mercenaries Deployed",
     "verdict": "TRUE",
     "reason": "In March 1995 the NPRC contracted Executive Outcomes, a South African private military company, to push back the RUF; within months the firm recaptured the Kono diamond fields and drove the RUF to remote border regions.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In March 1995 the NPRC contracted Executive Outcomes, a South African private military company, to push back the RUF; within months the firm recaptured the Kono diamond fields and drove the RUF to remote border regions.",
+        "source": "https://en.wikipedia.org/wiki/Executive_Outcomes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Executive_Outcomes"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Strasser Ousted; Bio Hands Over to Civilians",
     "verdict": "TRUE",
     "reason": "On 16 January 1996 Brigadier Julius Maada Bio ousted Strasser in an intra-junta coup; Bio then honoured his pledge and oversaw multi-party elections, handing power to the elected civilian Kabbah on 29 March 1996.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 16 January 1996 Brigadier Julius Maada Bio ousted Strasser in an intra-junta coup; Bio then honoured his pledge and oversaw multi-party elections, handing power to the elected civilian Kabbah on 29 March 1996.",
+        "source": "https://en.wikipedia.org/wiki/Julius_Maada_Bio",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Julius_Maada_Bio"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Kabbah Elected President",
     "verdict": "TRUE",
     "reason": "Ahmad Tejan Kabbah of the SLPP won the February–March 1996 presidential election run-off with approximately 60% of the vote, defeating John Karefa-Smart; it was Sierra Leone's first competitive multi-party vote in over two decades.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ahmad Tejan Kabbah of the SLPP won the February–March 1996 presidential election run-off with approximately 60% of the vote, defeating John Karefa-Smart; it was Sierra Leone's first competitive multi-party vote in over two decades.",
+        "source": "https://en.wikipedia.org/wiki/1996_Sierra_Leonean_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1996_Sierra_Leonean_general_election"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Abidjan Peace Accord",
     "verdict": "TRUE",
     "reason": "The Kabbah government and RUF signed the Abidjan Peace Accord on 30 November 1996 in Côte d'Ivoire, calling for a ceasefire and RUF legalisation, but the accord collapsed within months as the RUF failed to disarm.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Kabbah government and RUF signed the Abidjan Peace Accord on 30 November 1996 in Côte d'Ivoire, calling for a ceasefire and RUF legalisation, but the accord collapsed within months as the RUF failed to disarm.",
+        "source": "https://en.wikipedia.org/wiki/Abidjan_Peace_Accord",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Abidjan_Peace_Accord"
   },
   {
@@ -144,6 +504,24 @@
     "title": "AFRC Coup Ousts Kabbah",
     "verdict": "TRUE",
     "reason": "On 25 May 1997, Major Johnny Paul Koroma and the Armed Forces Revolutionary Council (AFRC) overthrew Kabbah, who fled to Guinea; the RUF was invited to join the junta and the international community widely condemned the coup.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 25 May 1997, Major Johnny Paul Koroma and the Armed Forces Revolutionary Council (AFRC) overthrew Kabbah, who fled to Guinea; the RUF was invited to join the junta and the international community widely condemned the coup.",
+        "source": "https://en.wikipedia.org/wiki/Johnny_Paul_Koromah",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Johnny_Paul_Koromah"
   },
   {
@@ -151,6 +529,24 @@
     "title": "UN Sanctions and Arms Embargo",
     "verdict": "TRUE",
     "reason": "UN Security Council Resolution 1132, adopted 8 October 1997 under Chapter VII, imposed an oil and arms embargo and travel bans on the AFRC/RUF junta government following the May 1997 coup.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UN Security Council Resolution 1132, adopted 8 October 1997 under Chapter VII, imposed an oil and arms embargo and travel bans on the AFRC/RUF junta government following the May 1997 coup.",
+        "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_1132",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_1132"
   },
   {
@@ -158,6 +554,24 @@
     "title": "ECOMOG Restores Kabbah",
     "verdict": "TRUE",
     "reason": "In February 1998, Nigerian-led ECOMOG forces launched a military offensive that expelled the AFRC/RUF junta from Freetown; Kabbah returned to power on 10 March 1998.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In February 1998, Nigerian-led ECOMOG forces launched a military offensive that expelled the AFRC/RUF junta from Freetown; Kabbah returned to power on 10 March 1998.",
+        "source": "https://en.wikipedia.org/wiki/Sierra_Leone_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sierra_Leone_Civil_War"
   },
   {
@@ -165,6 +579,24 @@
     "title": "RUF January Offensive — Operation No Living Thing",
     "verdict": "TRUE",
     "reason": "On 6 January 1999, the RUF and AFRC launched 'Operation No Living Thing' on Freetown, killing thousands of civilians, committing amputations and mass rape; ECOMOG eventually repulsed the attack after approximately three weeks.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 6 January 1999, the RUF and AFRC launched 'Operation No Living Thing' on Freetown, killing thousands of civilians, committing amputations and mass rape; ECOMOG eventually repulsed the attack after approximately three weeks.",
+        "source": "https://www.switsalone.com/18923_on-this-day-in-sierra-leones-civil-war-operation-no-living-thing/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.switsalone.com/18923_on-this-day-in-sierra-leones-civil-war-operation-no-living-thing/"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Lomé Peace Accord",
     "verdict": "TRUE",
     "reason": "The Lomé Peace Agreement was signed on 7 July 1999 between the Kabbah government and the RUF, granting Sankoh a vice-presidential status and blanket amnesty; the accord was widely criticised by human rights groups.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Lomé Peace Agreement was signed on 7 July 1999 between the Kabbah government and the RUF, granting Sankoh a vice-presidential status and blanket amnesty; the accord was widely criticised by human rights groups.",
+        "source": "https://en.wikipedia.org/wiki/Lom%C3%A9_Peace_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Lom%C3%A9_Peace_Agreement"
   },
   {
@@ -179,6 +629,24 @@
     "title": "UNAMSIL Peacekeeping Mission Established",
     "verdict": "TRUE",
     "reason": "UN Security Council Resolution 1270 (22 October 1999) created UNAMSIL, initially authorised at 6,000 troops and later expanded to 17,500 — the largest UN peacekeeping mission at the time — to implement the Lomé Accord.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UN Security Council Resolution 1270 (22 October 1999) created UNAMSIL, initially authorised at 6,000 troops and later expanded to 17,500 — the largest UN peacekeeping mission at the time — to implement the Lomé Accord.",
+        "source": "https://en.wikipedia.org/wiki/United_Nations_Mission_in_Sierra_Leone",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/United_Nations_Mission_in_Sierra_Leone"
   },
   {
@@ -186,6 +654,24 @@
     "title": "RUF Hostage Crisis and British Intervention",
     "verdict": "TRUE",
     "reason": "In May 2000 the RUF detained approximately 500 UNAMSIL peacekeepers; Britain deployed around 1,000 troops under Operation Palliser (launched 5 May 2000), stabilising Freetown and ultimately breaking RUF military power.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In May 2000 the RUF detained approximately 500 UNAMSIL peacekeepers; Britain deployed around 1,000 troops under Operation Palliser (launched 5 May 2000), stabilising Freetown and ultimately breaking RUF military power.",
+        "source": "https://en.wikipedia.org/wiki/British_military_intervention_in_the_Sierra_Leone_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/British_military_intervention_in_the_Sierra_Leone_Civil_War"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Foday Sankoh Arrested",
     "verdict": "TRUE",
     "reason": "Foday Sankoh was captured on 17 May 2000 by Sierra Leonean forces after his fighters shot more than a dozen pro-peace demonstrators outside his Freetown home; his arrest decapitated the RUF's political leadership.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Foday Sankoh was captured on 17 May 2000 by Sierra Leonean forces after his fighters shot more than a dozen pro-peace demonstrators outside his Freetown home; his arrest decapitated the RUF's political leadership.",
+        "source": "https://en.wikipedia.org/wiki/Foday_Sankoh",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Foday_Sankoh"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Disarmament Process Completed",
     "verdict": "TRUE",
     "reason": "The formal DDR process was declared complete on 18 January 2002 (year listed as 2001 in the curated file but within ±2 years); by that point over 70,000 combatants and more than 6,800 child soldiers had been processed through UNAMSIL-supervised cantonment sites.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The formal DDR process was declared complete on 18 January 2002 (year listed as 2001 in the curated file but within ±2 years); by that point over 70,000 combatants and more than 6,800 child soldiers had been processed through UNAMSIL-supervised cantonment sites.",
+        "source": "https://peacekeeping.un.org/mission/past/unamsil/factsheet1_DDR.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://peacekeeping.un.org/mission/past/unamsil/factsheet1_DDR.pdf"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Civil War Officially Ends",
     "verdict": "TRUE",
     "reason": "President Kabbah formally declared the Sierra Leone civil war over on 18 January 2002 at a ceremony at Lungi Airport; the eleven-year conflict killed an estimated 50,000–70,000 people and displaced over two million.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "President Kabbah formally declared the Sierra Leone civil war over on 18 January 2002 at a ceremony at Lungi Airport; the eleven-year conflict killed an estimated 50,000–70,000 people and displaced over two million.",
+        "source": "https://www.sierra-leone.org/Speeches/kabbah-011802.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.sierra-leone.org/Speeches/kabbah-011802.html"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Kabbah Re-elected; SLPP Wins Landslide",
     "verdict": "TRUE",
     "reason": "In the 14 May 2002 elections, Kabbah won 70.3% of the presidential vote in the first round; the SLPP won 83 of 112 parliamentary seats. The RUF failed to win a single parliamentary seat.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In the 14 May 2002 elections, Kabbah won 70.3% of the presidential vote in the first round; the SLPP won 83 of 112 parliamentary seats. The RUF failed to win a single parliamentary seat.",
+        "source": "https://en.wikipedia.org/wiki/2002_Sierra_Leonean_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2002_Sierra_Leonean_general_election"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Special Court for Sierra Leone Established",
     "verdict": "TRUE",
     "reason": "The Special Court for Sierra Leone was formally established by agreement between the UN and the Sierra Leonean government on 16 January 2002, beginning operations in July 2002 as a hybrid international–domestic tribunal.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Special Court for Sierra Leone was formally established by agreement between the UN and the Sierra Leonean government on 16 January 2002, beginning operations in July 2002 as a hybrid international–domestic tribunal.",
+        "source": "https://en.wikipedia.org/wiki/Special_Court_for_Sierra_Leone",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Special_Court_for_Sierra_Leone"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Special Court Indictments and First Trials",
     "verdict": "TRUE",
     "reason": "By 2004 the Special Court had indicted 13 individuals from the RUF, AFRC, and CDF (including Foday Sankoh who died in custody 2003, and Johnny Paul Koroma still at large); the new courthouse opened in March 2004.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "By 2004 the Special Court had indicted 13 individuals from the RUF, AFRC, and CDF (including Foday Sankoh who died in custody 2003, and Johnny Paul Koroma still at large); the new courthouse opened in March 2004.",
+        "source": "https://en.wikipedia.org/wiki/Special_Court_for_Sierra_Leone",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Special_Court_for_Sierra_Leone"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Truth and Reconciliation Commission Report",
     "verdict": "TRUE",
     "reason": "The Sierra Leone TRC presented its 1,500-page final report to the UN Security Council in October 2004 (published to the public by 2005), documenting systematic abuses including amputations, sexual violence, and child soldiers, and recommending reparations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Sierra Leone TRC presented its 1,500-page final report to the UN Security Council in October 2004 (published to the public by 2005), documenting systematic abuses including amputations, sexual violence, and child soldiers, and recommending reparations.",
+        "source": "https://en.wikipedia.org/wiki/Truth_and_Reconciliation_Commission_(Sierra_Leone)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Truth_and_Reconciliation_Commission_(Sierra_Leone)"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Koroma and APC Win Landmark Election",
     "verdict": "TRUE",
     "reason": "Ernest Bai Koroma of the APC defeated SLPP incumbent Vice-President Solomon Berewa in the September 2007 run-off (54.6% vs 45.4%), marking the first peaceful inter-party power transfer since independence; international observers certified it as largely free and fair.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ernest Bai Koroma of the APC defeated SLPP incumbent Vice-President Solomon Berewa in the September 2007 run-off (54.6% vs 45.4%), marking the first peaceful inter-party power transfer since independence; international observers certified it as largely free and fair.",
+        "source": "https://en.wikipedia.org/wiki/2007_Sierra_Leonean_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2007_Sierra_Leonean_general_election"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Freetown Post-Election Violence",
     "verdict": "TRUE",
     "reason": "In March 2009, violent clashes between APC and SLPP supporters in Freetown (and Kenema, Pujehun District) left several dead and led to attacks on the SLPP headquarters; ECOWAS-mediated dialogue followed to defuse the political tension.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In March 2009, violent clashes between APC and SLPP supporters in Freetown (and Kenema, Pujehun District) left several dead and led to attacks on the SLPP headquarters; ECOWAS-mediated dialogue followed to defuse the political tension.",
+        "source": "https://www.thesierraleonetelegraph.com/march-2009-remembering-slpps-victims-of-political-violence-and-the-disturbing-legacy-of-president-koromas-apc/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.thesierraleonetelegraph.com/march-2009-remembering-slpps-victims-of-political-violence-and-the-disturbing-legacy-of-president-koromas-apc/"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Charles Taylor Trial Resumes at Special Court",
     "verdict": "TRUE",
     "reason": "Charles Taylor's defence phase concluded on 12 November 2010 at the Special Court for Sierra Leone (relocated to The Hague); Taylor himself testified in his own defence from July 2009 to February 2010, making it the first international prosecution of a former African head of state.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Charles Taylor's defence phase concluded on 12 November 2010 at the Special Court for Sierra Leone (relocated to The Hague); Taylor himself testified in his own defence from July 2009 to February 2010, making it the first international prosecution of a former African head of state.",
+        "source": "https://rscsl.org/the-scsl/cases/charles-taylor/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://rscsl.org/the-scsl/cases/charles-taylor/"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Charles Taylor Convicted",
     "verdict": "TRUE",
     "reason": "On 26 April 2012 the Special Court found Charles Taylor guilty on all 11 counts of war crimes and crimes against humanity; he was sentenced to 50 years on 30 May 2012, the first conviction of a former African head of state by an international tribunal.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 26 April 2012 the Special Court found Charles Taylor guilty on all 11 counts of war crimes and crimes against humanity; he was sentenced to 50 years on 30 May 2012, the first conviction of a former African head of state by an international tribunal.",
+        "source": "https://en.wikipedia.org/wiki/Charles_Taylor_(Liberian_politician)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Charles_Taylor_(Liberian_politician)"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Koroma Re-elected; Iron Ore Boom Begins",
     "verdict": "TRUE",
     "reason": "President Koroma won a second term in November 2012; Sierra Leone's economy grew ~21% that year (fastest in sub-Saharan Africa per the IMF) driven by African Minerals' Tonkolili iron ore mine exports.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "President Koroma won a second term in November 2012; Sierra Leone's economy grew ~21% that year (fastest in sub-Saharan Africa per the IMF) driven by African Minerals' Tonkolili iron ore mine exports.",
+        "source": "https://resourcegovernance.org/articles/miracle-became-debacle-iron-ore-sierra-leone",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://resourcegovernance.org/articles/miracle-became-debacle-iron-ore-sierra-leone"
   },
   {
@@ -277,6 +979,24 @@
     "title": "London Mining and African Minerals Iron Ore Exports Peak",
     "verdict": "TRUE",
     "reason": "In 2013 African Minerals shipped 12.1 million tonnes from Tonkolili (generating US$869m revenue) and London Mining's Marampa mine also operated near capacity; both companies entered administration in 2014–2015 as prices collapsed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 2013 African Minerals shipped 12.1 million tonnes from Tonkolili (generating US$869m revenue) and London Mining's Marampa mine also operated near capacity; both companies entered administration in 2014–2015 as prices collapsed.",
+        "source": "https://www.fastmarkets.com/insights/african-minerals-london-mining-and-the-fall-of-sierra-leone-s-iron-ore-sector/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.fastmarkets.com/insights/african-minerals-london-mining-and-the-fall-of-sierra-leone-s-iron-ore-sector/"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Ebola Outbreak Begins",
     "verdict": "TRUE",
     "reason": "Sierra Leone confirmed its first Ebola cases on 23–24 May 2014 in Kailahun District (adjacent to Guinea's epicentre); the country ultimately recorded approximately 14,124 confirmed cases — the highest globally — and ~3,956 deaths.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sierra Leone confirmed its first Ebola cases on 23–24 May 2014 in Kailahun District (adjacent to Guinea's epicentre); the country ultimately recorded approximately 14,124 confirmed cases — the highest globally — and ~3,956 deaths.",
+        "source": "https://en.wikipedia.org/wiki/Ebola_virus_epidemic_in_Sierra_Leone",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ebola_virus_epidemic_in_Sierra_Leone"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "State of Emergency and International Ebola Response",
     "verdict": "TRUE",
     "reason": "President Koroma declared a state of emergency on 31 July 2014, deploying 750 troops to quarantine hotspots; UK military medical units, US forces, and WHO teams all mounted major responses as the UN Security Council declared Ebola a threat to international peace in September 2014.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "President Koroma declared a state of emergency on 31 July 2014, deploying 750 troops to quarantine hotspots; UK military medical units, US forces, and WHO teams all mounted major responses as the UN Security Council declared Ebola a threat to international peace in September 2014.",
+        "source": "https://reliefweb.int/report/sierra-leone/address-nation-ebola-outbreak-his-excellency-president-dr-ernest-bai-koroma-july",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://reliefweb.int/report/sierra-leone/address-nation-ebola-outbreak-his-excellency-president-dr-ernest-bai-koroma-july"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Iron Ore Sector Collapse",
     "verdict": "TRUE",
     "reason": "London Mining entered administration on 16 October 2014, citing falling iron ore prices (down 40% YoY) and Ebola's operational disruption; African Minerals followed into administration in early 2015, effectively ending the iron ore boom.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "London Mining entered administration on 16 October 2014, citing falling iron ore prices (down 40% YoY) and Ebola's operational disruption; African Minerals followed into administration in early 2015, effectively ending the iron ore boom.",
+        "source": "https://www.fastmarkets.com/insights/african-minerals-london-mining-and-the-fall-of-sierra-leone-s-iron-ore-sector/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.fastmarkets.com/insights/african-minerals-london-mining-and-the-fall-of-sierra-leone-s-iron-ore-sector/"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Ebola Declared Eliminated",
     "verdict": "TRUE",
     "reason": "The WHO declared Sierra Leone free of Ebola transmission on 7 November 2015 after a 42-day transmission-free period; the epidemic killed 3,589 Sierra Leoneans and devastated the health system.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The WHO declared Sierra Leone free of Ebola transmission on 7 November 2015 after a 42-day transmission-free period; the epidemic killed 3,589 Sierra Leoneans and devastated the health system.",
+        "source": "https://www.who.int/en/news-room/detail/07-11-2015-sierra-leone-stops-transmission-of-ebola-virus",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.who.int/en/news-room/detail/07-11-2015-sierra-leone-stops-transmission-of-ebola-virus"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Ebola Economic Contraction and Recovery Plan",
     "verdict": "TRUE",
     "reason": "Real GDP contracted by approximately 21% in 2015 due to the twin shocks of Ebola and the iron ore price collapse; IMF and World Bank provided emergency financing and a recovery plan targeted health system rebuilding.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Real GDP contracted by approximately 21% in 2015 due to the twin shocks of Ebola and the iron ore price collapse; IMF and World Bank provided emergency financing and a recovery plan targeted health system rebuilding.",
+        "source": "https://www.imf.org/external/pubs/ft/fandd/2017/06/cangul.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.imf.org/external/pubs/ft/fandd/2017/06/cangul.htm"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Mudslide Disaster Kills Hundreds",
     "verdict": "TRUE",
     "reason": "On 14 August 2017, catastrophic mudslides struck the Regent area near Freetown following intense rainfall, killing 1,141 people and leaving over 3,000 homeless, highlighting the vulnerability of informal hillside settlements.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 14 August 2017, catastrophic mudslides struck the Regent area near Freetown following intense rainfall, killing 1,141 people and leaving over 3,000 homeless, highlighting the vulnerability of informal hillside settlements.",
+        "source": "https://en.wikipedia.org/wiki/2017_Sierra_Leone_mudslides",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2017_Sierra_Leone_mudslides"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Julius Maada Bio Elected President",
     "verdict": "TRUE",
     "reason": "Julius Maada Bio of the SLPP defeated APC candidate Samura Kamara in the 31 March 2018 run-off with 51.8% of the vote, returning the SLPP to power; international and local observers declared the election free, fair, and credible.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Julius Maada Bio of the SLPP defeated APC candidate Samura Kamara in the 31 March 2018 run-off with 51.8% of the vote, returning the SLPP to power; international and local observers declared the election free, fair, and credible.",
+        "source": "https://en.wikipedia.org/wiki/Julius_Maada_Bio",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Julius_Maada_Bio"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "Free Quality Education Programme Launched",
     "verdict": "TRUE",
     "reason": "President Bio officially launched the Free Quality School Education (FQSE) programme effective 17 September 2018, extending free tuition from primary through senior secondary; the education budget share was raised from 11% to 20% of national spending.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "President Bio officially launched the Free Quality School Education (FQSE) programme effective 17 September 2018, extending free tuition from primary through senior secondary; the education budget share was raised from 11% to 20% of national spending.",
+        "source": "https://statehouse.gov.sl/president-bio-launches-free-education-calls-on-parents-and-teachers-to-support-the-initiative/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://statehouse.gov.sl/president-bio-launches-free-education-calls-on-parents-and-teachers-to-support-the-initiative/"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Gender-Based Violence State of Emergency",
     "verdict": "TRUE",
     "reason": "President Bio declared a national state of emergency on sexual and gender-based violence on 7 February 2019 following high-profile rape cases including an attack on a five-year-old; a Sexual Offences Model Court was subsequently launched in July 2020.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "President Bio declared a national state of emergency on sexual and gender-based violence on 7 February 2019 following high-profile rape cases including an attack on a five-year-old; a Sexual Offences Model Court was subsequently launched in July 2020.",
+        "source": "https://www.aljazeera.com/news/2019/02/sierra-leone-president-declares-rape-national-emergency-190208145036124.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2019/02/sierra-leone-president-declares-rape-national-emergency-190208145036124.html"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "COVID-19 Pandemic Response",
     "verdict": "TRUE",
     "reason": "Sierra Leone confirmed its first COVID-19 case on 31 March 2020; the government declared a state of emergency on 25 March (before first confirmed case), closed borders, and imposed lockdowns drawing on Ebola institutional memory.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sierra Leone confirmed its first COVID-19 case on 31 March 2020; the government declared a state of emergency on 25 March (before first confirmed case), closed borders, and imposed lockdowns drawing on Ebola institutional memory.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Sierra_Leone",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Sierra_Leone"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "Diamond Revenue Dispute with Octea Mining",
     "verdict": "TRUE",
     "reason": "The Sierra Leonean government pursued Octea Mining (operator of the Koidu kimberlite diamond mine, owned by billionaire Benjamin Steinmetz) over unpaid taxes and royalties; a 2022 class-action lawsuit also documented environmental and livelihood harm.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Sierra Leonean government pursued Octea Mining (operator of the Koidu kimberlite diamond mine, owned by billionaire Benjamin Steinmetz) over unpaid taxes and royalties; a 2022 class-action lawsuit also documented environmental and livelihood harm.",
+        "source": "https://news.mongabay.com/2022/02/sierra-leone-lawsuit-against-diamond-mine-runs-up-against-corporate-opacity/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://news.mongabay.com/2022/02/sierra-leone-lawsuit-against-diamond-mine-runs-up-against-corporate-opacity/"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "August Protests and Fuel Price Unrest",
     "verdict": "TRUE",
     "reason": "Large anti-government protests erupted in Freetown, Makeni, and Kamakwie on 10 August 2022 triggered by a >20% fuel price rise amid 27% inflation; at least 27 civilians and 6 police officers were killed, representing the worst civil unrest in years.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Large anti-government protests erupted in Freetown, Makeni, and Kamakwie on 10 August 2022 triggered by a >20% fuel price rise amid 27% inflation; at least 27 civilians and 6 police officers were killed, representing the worst civil unrest in years.",
+        "source": "https://en.wikipedia.org/wiki/2022_Sierra_Leone_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2022_Sierra_Leone_protests"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Food and Cost-of-Living Crisis",
     "verdict": "TRUE",
     "reason": "By late 2022, inflation in Sierra Leone exceeded 27% (rising toward 50% by mid-2023); the price of imported rice rose 40% between January–October 2022, with 81% of households unable to meet basic food needs per WFP monitoring.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "By late 2022, inflation in Sierra Leone exceeded 27% (rising toward 50% by mid-2023); the price of imported rice rose 40% between January–October 2022, with 81% of households unable to meet basic food needs per WFP monitoring.",
+        "source": "https://www.worldbank.org/en/country/sierraleone/publication/sierra-leone-economic-update-2023-macroeconomic-stability-key-to-attainment-of-food-security",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.worldbank.org/en/country/sierraleone/publication/sierra-leone-economic-update-2023-macroeconomic-stability-key-to-attainment-of-food-security"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "Currency Depreciation and IMF Engagement",
     "verdict": "TRUE",
     "reason": "Sierra Leone redenominated its currency on 1 July 2022 at a rate of 1,000 old leones to 1 new leone (SLE); the leone had depreciated 28% year-on-year by May 2022 and the government engaged the IMF for balance-of-payments support.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sierra Leone redenominated its currency on 1 July 2022 at a rate of 1,000 old leones to 1 new leone (SLE); the leone had depreciated 28% year-on-year by May 2022 and the government engaged the IMF for balance-of-payments support.",
+        "source": "https://www.aljazeera.com/economy/2022/7/1/sierra-leone-knocks-zeros-off-bank-notes-in-currency-re-calibration",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/economy/2022/7/1/sierra-leone-knocks-zeros-off-bank-notes-in-currency-re-calibration"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Bio Re-elected Amid Disputed Results",
     "verdict": "TRUE",
     "reason": "Bio was re-elected on 27 June 2023 with 56.17% of the vote, narrowly avoiding a run-off; EU observers, the US, UK, and other Western governments raised serious concerns about the lack of transparency in vote tallying and 'statistical inconsistencies' in published results.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bio was re-elected on 27 June 2023 with 56.17% of the vote, narrowly avoiding a run-off; EU observers, the US, UK, and other Western governments raised serious concerns about the lack of transparency in vote tallying and 'statistical inconsistencies' in published results.",
+        "source": "https://en.wikipedia.org/wiki/2023_Sierra_Leonean_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2023_Sierra_Leonean_general_election"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Post-Election APC Boycott and Political Crisis",
     "verdict": "TRUE",
     "reason": "Following the disputed June 2023 election, the APC boycotted all governance institutions and parliamentary proceedings, deepening ethnic and regional polarisation; the boycott was resolved by an ECOWAS/AU/Commonwealth-mediated agreement in October 2023.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following the disputed June 2023 election, the APC boycotted all governance institutions and parliamentary proceedings, deepening ethnic and regional polarisation; the boycott was resolved by an ECOWAS/AU/Commonwealth-mediated agreement in October 2023.",
+        "source": "https://democracyinafrica.org/a-parliament-without-an-opposition-the-democratic-crisis-in-sierra-leone-deepens/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://democracyinafrica.org/a-parliament-without-an-opposition-the-democratic-crisis-in-sierra-leone-deepens/"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "Attempted Military Mutiny — Aboo Bashar Incident",
     "verdict": "TRUE",
     "reason": "On 26 November 2023 militants attacked the Wilberforce Barracks armoury and Pademba Road Prison in Freetown, freeing ~2,200 prisoners; 21 people were killed. The government declared it an attempted coup; current and former military officials were implicated though the perpetrators' identity remained disputed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 26 November 2023 militants attacked the Wilberforce Barracks armoury and Pademba Road Prison in Freetown, freeing ~2,200 prisoners; 21 people were killed. The government declared it an attempted coup; current and former military officials were implicated though the perpetrators' identity remained disputed.",
+        "source": "https://en.wikipedia.org/wiki/2023_Sierra_Leone_coup_attempt",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2023_Sierra_Leone_coup_attempt"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "National Dialogue Commission Established",
     "verdict": "TRUE",
     "reason": "Under ECOWAS/AU/Commonwealth mediation (led by Aja Fatoumata Jallow-Tambajang, not Goodluck Jonathan as stated in the curated description), the Bio government and APC signed an Agreement for National Unity in October 2023, establishing a cross-party electoral review committee. The core event is real; the Goodluck Jonathan attribution is incorrect.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Under ECOWAS/AU/Commonwealth mediation (led by Aja Fatoumata Jallow-Tambajang, not Goodluck Jonathan as stated in the curated description), the Bio government and APC signed an Agreement for National Unity in October 2023, establishing a cross-party electoral review committee. The core event is real; the Goodluck Jonathan attribution is incorrect.",
+        "source": "https://ecowas.int/archives/85511",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://ecowas.int/archives/85511"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "Humanitarian Aid Dependency and Debt Concerns",
     "verdict": "TRUE",
     "reason": "Sierra Leone ranked 184th out of 193 on the 2024 HDI with a value of 0.458; public debt rose to ~96% of GDP by 2022 and remained at high risk of distress; approximately one-fifth of the national budget comes from official development assistance.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sierra Leone ranked 184th out of 193 on the 2024 HDI with a value of 0.458; public debt rose to ~96% of GDP by 2022 and remained at high risk of distress; approximately one-fifth of the national budget comes from official development assistance.",
+        "source": "https://www.imf.org/en/News/Articles/2024/10/31/pr-24402-sierra-leone-imf-concludes-2024-aiv-consultation-approves-req-38-month-arr-under-ecf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.imf.org/en/News/Articles/2024/10/31/pr-24402-sierra-leone-imf-concludes-2024-aiv-consultation-approves-req-38-month-arr-under-ecf"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "Continued Iron Ore and Diamond Export Disputes",
     "verdict": "TRUE",
     "reason": "In 2024 parliamentary debates occurred over Chinese company Kingho Mining's iron ore exports without parliamentary approval, and longstanding concerns about revenue leakage from Octea/Koidu diamond operations persisted, with civil society documenting gaps between declared and estimated export values.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 2024 parliamentary debates occurred over Chinese company Kingho Mining's iron ore exports without parliamentary approval, and longstanding concerns about revenue leakage from Octea/Koidu diamond operations persisted, with civil society documenting gaps between declared and estimated export values.",
+        "source": "https://www.thesierraleonetelegraph.com/sierra-leones-ministry-of-mines-debunks-allegations-of-illegal-shipping-of-iron-ore/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.thesierraleonetelegraph.com/sierra-leones-ministry-of-mines-debunks-allegations-of-illegal-shipping-of-iron-ore/"
   }
 ]
