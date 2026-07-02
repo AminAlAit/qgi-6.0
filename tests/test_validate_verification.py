@@ -119,18 +119,41 @@ def test_consistent_contested_v2_valid(tmp_path):
     assert errors == []
 
 
-def test_soft_kept_entry_from_majority_policy_validates(tmp_path):
-    """Entries legitimately written under the alternative B1 policy
-    (majority_overturn -> soft_kept) must not fail CI (either-policy check)."""
+def _soft_kept_entry():
     v2 = migrate_entry(dict(LEGACY_ENTRY))
     v2["verifications"].append({"pass_n": 2, "verdict": "UNCERTAIN",
                                 "reason": "no independent source found", "source": None,
                                 "verifier": {"model": "m", "date": None, "method": "web_search"}})
     v2.update(verify_count=2, verdict="TRUE", consensus_verdict="TRUE",
               consensus_status="soft_kept", needs_tiebreak=False)
-    vdir, cdir = make_dirs(tmp_path, [CURATED_EVENT], [v2])
-    errors, *_ = validate_directory(vdir, cdir)
+    return v2
+
+
+def test_soft_kept_rejected_under_ratified_conservative_policy(tmp_path):
+    """B1 ratified 2026-07-02 = conservative_downgrade: a TRUE/soft_kept entry (a
+    hand-promotion of a downgraded verdict) must fail CI under the active policy —
+    both when passed explicitly and via the default load of the ratified file."""
+    vdir, cdir = make_dirs(tmp_path, [CURATED_EVENT], [_soft_kept_entry()])
+    errors, *_ = validate_directory(vdir, cdir, active_policy="conservative_downgrade")
+    assert any("consensus mismatch" in e for e in errors)
+    errors, *_ = validate_directory(vdir, cdir)  # default: loads the ratified policy file
+    assert any("consensus mismatch" in e for e in errors)
+
+
+def test_soft_kept_valid_under_majority_policy_and_fallback(tmp_path):
+    """The same entry is legitimate under majority_overturn, and under the
+    either-policy fallback used when no policy file exists (pre-ratification)."""
+    vdir, cdir = make_dirs(tmp_path, [CURATED_EVENT], [_soft_kept_entry()])
+    errors, *_ = validate_directory(vdir, cdir, active_policy="majority_overturn")
     assert errors == []
+    errors, *_ = validate_directory(vdir, cdir, active_policy=None)  # no-file fallback
+    assert errors == []
+
+
+def test_load_active_policy_missing_file_returns_none(tmp_path):
+    from validate_verification import load_active_policy
+    assert load_active_policy(tmp_path / "nope.json") is None
+    assert load_active_policy() == "conservative_downgrade"  # the ratified repo file
 
 
 def test_hidden_dissent_is_error(tmp_path):

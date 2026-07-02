@@ -4,6 +4,24 @@
     "title": "Batista Military Coup Ends Cuban Constitutional Democracy",
     "verdict": "TRUE",
     "reason": "March 10, 1952 confirmed. Three months before scheduled elections confirmed. US recognition came March 27.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 10, 1952 confirmed. Three months before scheduled elections confirmed. US recognition came March 27.",
+        "source": "https://en.wikipedia.org/wiki/1952_Cuban_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1952_Cuban_coup_d%27%C3%A9tat"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Moncada Barracks Attack Launches Castro's Revolutionary Movement",
     "verdict": "TRUE",
     "reason": "July 26, 1953 confirmed. Rebel count varies by source (122–160); event says ~160 which is at the high end but within range. Core facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 26, 1953 confirmed. Rebel count varies by source (122–160); event says ~160 which is at the high end but within range. Core facts correct.",
+        "source": "https://en.wikipedia.org/wiki/Attack_on_the_Moncada_Barracks",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Attack_on_the_Moncada_Barracks"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Granma Landing Begins Cuban Guerrilla War",
     "verdict": "TRUE",
     "reason": "December 2, 1956 confirmed. 82 fighters (not 81 as stated) is a minor discrepancy — Wikipedia consistently says 82. Core narrative correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 2, 1956 confirmed. 82 fighters (not 81 as stated) is a minor discrepancy — Wikipedia consistently says 82. Core narrative correct.",
+        "source": "https://en.wikipedia.org/wiki/Landing_of_the_Granma",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Landing_of_the_Granma"
   },
   {
@@ -25,6 +79,24 @@
     "title": "United States Arms Embargo Signals Withdrawal of Support for Batista",
     "verdict": "TRUE",
     "reason": "Arms embargo imposed March 14, 1958. Event says 'March 1958' — correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Arms embargo imposed March 14, 1958. Event says 'March 1958' — correct.",
+        "source": "https://coldwarstudies.com/2013/12/17/cold-war-cuba-batista-the-revolutionaries-and-the-us-arms-embargo/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://coldwarstudies.com/2013/12/17/cold-war-cuba-batista-the-revolutionaries-and-the-us-arms-embargo/"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Cuban Revolution Triumphs â€” Batista Flees, Castro Takes Power",
     "verdict": "TRUE",
     "reason": "Batista fled January 1, 1959; Castro entered Havana January 8, 1959. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Batista fled January 1, 1959; Castro entered Havana January 8, 1959. All facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cuban_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cuban_Revolution"
   },
   {
@@ -39,6 +129,24 @@
     "title": "First Agrarian Reform Law Redistributes Cuban Landholdings",
     "verdict": "TRUE",
     "reason": "Promulgated May 17, 1959. 1,000-acre (402 hectare) limit confirmed. Redistribution to tenant farmers and cooperatives confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Promulgated May 17, 1959. 1,000-acre (402 hectare) limit confirmed. Redistribution to tenant farmers and cooperatives confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Agrarian_reforms_in_Cuba",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Agrarian_reforms_in_Cuba"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Cuba Nationalizes US Oil Refineries and Major Businesses",
     "verdict": "TRUE",
     "reason": "Texaco seized June 29, Esso and Shell July 1, 1960. Nationalization of broader US assets confirmed. '$1 billion+' figure is approximate; sources cite ~$1.7B in oil assets alone.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Texaco seized June 29, Esso and Shell July 1, 1960. Nationalization of broader US assets confirmed. '$1 billion+' figure is approximate; sources cite ~$1.7B in oil assets alone.",
+        "source": "https://en.granma.cu/cuba/2015-08-10/cuba-nationalizes-us-companies",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.granma.cu/cuba/2015-08-10/cuba-nationalizes-us-companies"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Cuba and Soviet Union Restore Diplomatic and Trade Relations",
     "verdict": "TRUE",
     "reason": "Event says 'May 1960' for restoration — diplomatic relations formally established May 8, 1960. Mikoyan trade agreement was February 13, 1960. Event accurately frames 'restored' diplomatic relations as May 1960. Correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Event says 'May 1960' for restoration — diplomatic relations formally established May 8, 1960. Mikoyan trade agreement was February 13, 1960. Event accurately frames 'restored' diplomatic relations as May 1960. Correct.",
+        "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93Soviet_Union_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93Soviet_Union_relations"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Bay of Pigs Invasion Fails Disastrously, Embarrassing the United States",
     "verdict": "TRUE",
     "reason": "April 17, 1961 confirmed. ~1,400 exiles (event says 'approximately 1,400') confirmed. Three-day defeat confirmed. Castro declared Cuba socialist shortly after — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 17, 1961 confirmed. ~1,400 exiles (event says 'approximately 1,400') confirmed. Three-day defeat confirmed. Castro declared Cuba socialist shortly after — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Bay_of_Pigs_Invasion",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bay_of_Pigs_Invasion"
   },
   {
@@ -67,6 +229,24 @@
     "title": "National Literacy Campaign Reduces Cuban Illiteracy from 24% to 4%",
     "verdict": "TRUE",
     "reason": "Event cites 23.6% to 3.9%; Wikipedia confirms exactly 23.6% to 3.9%. Event rounds to '24% to 4%' in the title — minor rounding, not materially wrong.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Event cites 23.6% to 3.9%; Wikipedia confirms exactly 23.6% to 3.9%. Event rounds to '24% to 4%' in the title — minor rounding, not materially wrong.",
+        "source": "https://en.wikipedia.org/wiki/Cuban_literacy_campaign",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cuban_literacy_campaign"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Cuban Missile Crisis Brings World to Nuclear Brink",
     "verdict": "TRUE",
     "reason": "October 1962 confirmed. 13-day standoff confirmed (Oct 16–28). U-2 discovery confirmed. Naval blockade and Turkey missile secret deal confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 1962 confirmed. 13-day standoff confirmed (Oct 16–28). U-2 discovery confirmed. Naval blockade and Turkey missile secret deal confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cuban_Missile_Crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cuban_Missile_Crisis"
   },
   {
@@ -81,6 +279,24 @@
     "title": "United States Imposes Comprehensive Trade Embargo on Cuba",
     "verdict": "TRUE",
     "reason": "Kennedy extended embargo February 1962. 'el bloqueo' framing confirmed. Longest-standing sanctions narrative confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kennedy extended embargo February 1962. 'el bloqueo' framing confirmed. Longest-standing sanctions narrative confirmed.",
+        "source": "https://www.state.gov/cuba-sanctions/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.state.gov/cuba-sanctions/"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Cuba Introduces Permanent National Rationing System",
     "verdict": "TRUE",
     "reason": "Libreta de abastecimiento system established 1962. Persisting into 21st century confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Libreta de abastecimiento system established 1962. Persisting into 21st century confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Cuba",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Cuba"
   },
   {
@@ -95,6 +329,24 @@
     "title": "UMAP Labor Camps Imprison Gay Men, Clergy, and Religious Minorities",
     "verdict": "TRUE",
     "reason": "Camps operated November 1965–July 1968. ~25,000–35,000 interned confirmed. Populations (gay men, Jehovah's Witnesses, Catholic priests) confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Camps operated November 1965–July 1968. ~25,000–35,000 interned confirmed. Populations (gay men, Jehovah's Witnesses, Catholic priests) confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Military_Units_to_Aid_Production",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Military_Units_to_Aid_Production"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Cuban Communist Party Formally Constituted as Sole Ruling Party",
     "verdict": "TRUE",
     "reason": "October 1965 founding confirmed. Merger of 26th of July Movement, PSP, and Revolutionary Directorate confirmed. Castro as First Secretary confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 1965 founding confirmed. Merger of 26th of July Movement, PSP, and Revolutionary Directorate confirmed. Castro as First Secretary confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Communist_Party_of_Cuba",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Communist_Party_of_Cuba"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Cuban Adjustment Act Grants Cubans Special US Immigration Status",
     "verdict": "TRUE",
     "reason": "Signed November 2, 1966 confirmed. One-year residency pathway confirmed (note: original law was two years, amended to one year in 1976; event states 'one year' which reflects the amended version). Ended 2017 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed November 2, 1966 confirmed. One-year residency pathway confirmed (note: original law was two years, amended to one year in 1976; event states 'one year' which reflects the amended version). Ended 2017 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cuban_Adjustment_Act",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cuban_Adjustment_Act"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Ten-Million-Ton Sugar Harvest Fails, Castro Admits Economic Defeat",
     "verdict": "TRUE",
     "reason": "8.5 million ton result confirmed (world record but short of 10M target). Castro's public admission and offer to resign confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "8.5 million ton result confirmed (world record but short of 10M target). Castro's public admission and offer to resign confirmed.",
+        "source": "https://cubanstudies.history.ufl.edu/gems-of-the-archive/the-ten-million-ton-harvest-of-1970/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://cubanstudies.history.ufl.edu/gems-of-the-archive/the-ten-million-ton-harvest-of-1970/"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Padilla Affair Marks Beginning of Cultural Repression â€” 'Quinquenio Gris'",
     "verdict": "TRUE",
     "reason": "Arrested March 20, 1971. Held 37–38 days (sources vary slightly). Televised confession confirmed. Sartre/de Beauvoir/Vargas Llosa condemnation confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Arrested March 20, 1971. Held 37–38 days (sources vary slightly). Televised confession confirmed. Sartre/de Beauvoir/Vargas Llosa condemnation confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Padilla_affair",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Padilla_affair"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Cuba Formally Joins Soviet COMECON Economic Bloc",
     "verdict": "TRUE",
     "reason": "Formally admitted July 10–12, 1972 at the 26th CMEA session in Moscow. Event says 'July 1972' — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Formally admitted July 10–12, 1972 at the 26th CMEA session in Moscow. Event says 'July 1972' — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Comecon",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Comecon"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Cuba Sends Troops to Angola, Repels South African Invasion",
     "verdict": "TRUE",
     "reason": "Operation Carlota launched November 1975. South African-backed invasion repelled confirmed. Total 300,000+ personnel over 16 years confirmed (some sources say ~380,000 total including civilians).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Carlota launched November 1975. South African-backed invasion repelled confirmed. Total 300,000+ personnel over 16 years confirmed (some sources say ~380,000 total including civilians).",
+        "source": "https://en.wikipedia.org/wiki/Cuban_intervention_in_Angola",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cuban_intervention_in_Angola"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Cuba Adopts New Socialist Constitution by National Referendum",
     "verdict": "TRUE",
     "reason": "Referendum February 15, 1976. 97.7% approval confirmed (event cites exactly 97.7%). Castro elected President under new framework confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Referendum February 15, 1976. 97.7% approval confirmed (event cites exactly 97.7%). Castro elected President under new framework confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1976_Cuban_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1976_Cuban_constitutional_referendum"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Cubana Airlines Bombing Kills 73 Over Barbados",
     "verdict": "TRUE",
     "reason": "October 6, 1976 confirmed. 73 killed confirmed. Posada Carriles and Bosch implicated confirmed. Event says 'DC-8' — confirmed aircraft type.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 6, 1976 confirmed. 73 killed confirmed. Posada Carriles and Bosch implicated confirmed. Event says 'DC-8' — confirmed aircraft type.",
+        "source": "https://en.wikipedia.org/wiki/Cubana_de_Aviaci%C3%B3n_Flight_455",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cubana_de_Aviaci%C3%B3n_Flight_455"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Cuba-Exile Dialogue Produces Release of Over 3,000 Political Prisoners",
     "verdict": "TRUE",
     "reason": "1978 dialogue confirmed. 3,000–3,600 prisoners released (event says 'over 3,000') — confirmed as accurate. First significant engagement with exile community confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1978 dialogue confirmed. 3,000–3,600 prisoners released (event says 'over 3,000') — confirmed as accurate. First significant engagement with exile community confirmed.",
+        "source": "https://en.wikipedia.org/wiki/El_Di%C3%A1logo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/El_Di%C3%A1logo"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Mariel Boatlift Sends 125,000 Cubans to United States",
     "verdict": "TRUE",
     "reason": "April–October 1980 confirmed. ~125,000 migrants confirmed. Some prisoners and mental institution releasees included confirmed. Carter political difficulty confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April–October 1980 confirmed. ~125,000 migrants confirmed. Some prisoners and mental institution releasees included confirmed. Carter political difficulty confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mariel_boatlift",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mariel_boatlift"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Cuba Defaults on Western Hard-Currency Debt",
     "verdict": "TRUE",
     "reason": "1982 debt suspension confirmed in context of falling sugar prices and Latin American debt crisis. $3.5B figure is consistent with historical accounts.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1982 debt suspension confirmed in context of falling sugar prices and Latin American debt crisis. $3.5B figure is consistent with historical accounts.",
+        "source": "https://www.imf.org/external/pubs/ft/wp/2000/wp0040.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.imf.org/external/pubs/ft/wp/2000/wp0040.pdf"
   },
   {
@@ -179,6 +629,24 @@
     "title": "World's First Meningitis B Vaccine Developed and Released by Cuba",
     "verdict": "TRUE",
     "reason": "World's first serogroup B meningococcal vaccine confirmed. 1987 field trials and domestic use confirmed. International licensing and hard currency generation confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "World's first serogroup B meningococcal vaccine confirmed. 1987 field trials and domestic use confirmed. International licensing and hard currency generation confirmed.",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/32335565/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://pubmed.ncbi.nlm.nih.gov/32335565/"
   },
   {
@@ -186,6 +654,24 @@
     "title": "New York Accords Settle Angola Conflict, Cuba Withdraws Troops",
     "verdict": "TRUE",
     "reason": "Signed December 22, 1988 at UN in New York. Cuba, South Africa, Angola signatories confirmed. ~50,000 troops at time of accord confirmed. 300,000+ total confirmed. ~2,000 Cuban lives — consistent with historical accounts.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed December 22, 1988 at UN in New York. Cuba, South Africa, Angola signatories confirmed. ~50,000 troops at time of accord confirmed. 300,000+ total confirmed. ~2,000 Cuban lives — consistent with historical accounts.",
+        "source": "https://en.wikipedia.org/wiki/Tripartite_Accord_(1988)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tripartite_Accord_(1988)"
   },
   {
@@ -193,6 +679,24 @@
     "title": "General Ochoa Executed for Drug Trafficking in High-Profile Trial",
     "verdict": "TRUE",
     "reason": "Executed July 13, 1989. Event says 'four other senior officials' — four were executed total (Ochoa + 3 others), so 'four other' is slightly off; should be 'three others'. Minor factual error in count but core narrative correct. Angola hero status confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Executed July 13, 1989. Event says 'four other senior officials' — four were executed total (Ochoa + 3 others), so 'four other' is slightly off; should be 'three others'. Minor factual error in count but core narrative correct. Angola hero status confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Arnaldo_Ochoa",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Arnaldo_Ochoa"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Cuba Declares 'Special Period' as Soviet Subsidies Collapse",
     "verdict": "TRUE",
     "reason": "Declared August 1990. GDP contracted ~35% by 1993 (event says 'over 35%' — consistent). Peacetime contraction framing confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Declared August 1990. GDP contracted ~35% by 1993 (event says 'over 35%' — consistent). Peacetime contraction framing confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Special_Period",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Special_Period"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Soviet Union Dissolution Eliminates Cuba's Primary Economic Patron",
     "verdict": "TRUE",
     "reason": "Soviet dissolution December 1991 confirmed. $4–6B annual assistance estimate confirmed. Forced economic restructuring confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Soviet dissolution December 1991 confirmed. $4–6B annual assistance estimate confirmed. Forced economic restructuring confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93Soviet_Union_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93Soviet_Union_relations"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Torricelli Act Tightens US Embargo, Bans Foreign Subsidiary Trade",
     "verdict": "TRUE",
     "reason": "Signed October 23, 1992 (event says 'October 1992' — correct). Foreign subsidiary trade ban and 180-day ship ban confirmed. First UN General Assembly condemnation vote confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed October 23, 1992 (event says 'October 1992' — correct). Foreign subsidiary trade ban and 180-day ship ban confirmed. First UN General Assembly condemnation vote confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cuban_Democracy_Act",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cuban_Democracy_Act"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Cuba Legalizes Dollar Possession and Expands Self-Employment",
     "verdict": "TRUE",
     "reason": "Dollar legalization August 13, 1993 confirmed. Self-employment in ~117–140 occupations confirmed (event says 'over 100 occupations' — accurate). Two-tier economy consequence confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Dollar legalization August 13, 1993 confirmed. Self-employment in ~117–140 occupations confirmed (event says 'over 100 occupations' — accurate). Two-tier economy consequence confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Dollarization_of_Cuba",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dollarization_of_Cuba"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Malecon Riots and Balsero Crisis â€” Largest Unrest Since Revolution",
     "verdict": "TRUE",
     "reason": "August 5, 1994 Maleconazo confirmed. ~35,000–37,000 balseros confirmed (event says 'approximately 35,000'). Clinton reversal and Guantanamo detention confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 5, 1994 Maleconazo confirmed. ~35,000–37,000 balseros confirmed (event says 'approximately 35,000'). Clinton reversal and Guantanamo detention confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Maleconazo",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Maleconazo"
   },
   {
@@ -235,6 +829,24 @@
     "title": "US-Cuba Migration Accord Establishes 20,000 Annual Visa Commitment",
     "verdict": "TRUE",
     "reason": "September 1994 accord confirmed. 20,000 annual visa minimum confirmed. 'Wet foot, dry foot' follow-up May 1995 confirmed. Ended 2017 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 1994 accord confirmed. 20,000 annual visa minimum confirmed. 'Wet foot, dry foot' follow-up May 1995 confirmed. Ended 2017 confirmed.",
+        "source": "https://1997-2001.state.gov/briefings/statements/970516a.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://1997-2001.state.gov/briefings/statements/970516a.html"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Cuba Opens Economy to Foreign Investment with New Law",
     "verdict": "TRUE",
     "reason": "Law 77 of 1995 confirmed. 100% foreign ownership allowed in most sectors. Exceptions: education, healthcare, defense (event says 'education, healthcare, and defense' — confirmed).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Law 77 of 1995 confirmed. 100% foreign ownership allowed in most sectors. Exceptions: education, healthcare, defense (event says 'education, healthcare, and defense' — confirmed).",
+        "source": "https://investmentpolicy.unctad.org/investment-laws/laws/55/cuba-foreign-investment-act",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://investmentpolicy.unctad.org/investment-laws/laws/55/cuba-foreign-investment-act"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Helms-Burton Act Codifies US Embargo into Law After Plane Shootdown",
     "verdict": "TRUE",
     "reason": "February 24, 1996 shootdown confirmed. Four Cuban-American pilots killed confirmed. Clinton signed Helms-Burton March 12, 1996 confirmed. EU/Canada/allies condemnation confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 24, 1996 shootdown confirmed. Four Cuban-American pilots killed confirmed. Clinton signed Helms-Burton March 12, 1996 confirmed. EU/Canada/allies condemnation confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1996_shootdown_of_Brothers_to_the_Rescue_aircraft",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1996_shootdown_of_Brothers_to_the_Rescue_aircraft"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Pope John Paul II Makes Historic Visit to Cuba, Criticizes Embargo",
     "verdict": "TRUE",
     "reason": "January 21–25, 1998 visit confirmed. First papal visit to Cuba confirmed. Met Castro confirmed. Criticized embargo and called for freedoms confirmed. Some prisoner releases followed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 21–25, 1998 visit confirmed. First papal visit to Cuba confirmed. Met Castro confirmed. Criticized embargo and called for freedoms confirmed. Some prisoner releases followed.",
+        "source": "https://www.vatican.va/content/john-paul-ii/en/travels/1998/travels/documents/trav_cuba-1998.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.vatican.va/content/john-paul-ii/en/travels/1998/travels/documents/trav_cuba-1998.html"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Elian Gonzalez Custody Battle Inflames US-Cuba Relations",
     "verdict": "FALSE",
     "reason": "Elian was 5 years old when found (born December 6, 1993; found November 25, 1999), not 'six-year-old' as stated in the event. He turned 6 about 11 days after being found.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Elian was 5 years old when found (born December 6, 1993; found November 25, 1999), not 'six-year-old' as stated in the event. He turned 6 about 11 days after being found.",
+        "source": "https://en.wikipedia.org/wiki/Eli%C3%A1n_Gonz%C3%A1lez",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Eli%C3%A1n_Gonz%C3%A1lez"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Cuba-Venezuela Energy Alliance Forged Under Chavez",
     "verdict": "TRUE",
     "reason": "Convenio Integral de Cooperacion signed October 2000 confirmed. 53,000 barrels/day confirmed. Cuban doctors/teachers/coaches in exchange confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Convenio Integral de Cooperacion signed October 2000 confirmed. 53,000 barrels/day confirmed. Cuban doctors/teachers/coaches in exchange confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93Venezuela_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93Venezuela_relations"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Cuba Permanently Closes 71 Sugar Mills, Ends Sugar-Centered Economy",
     "verdict": "TRUE",
     "reason": "71 of 156 mills closed confirmed (announced April 10, 2002). Tens of thousands workers displaced confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "71 of 156 mills closed confirmed (announced April 10, 2002). Tens of thousands workers displaced confirmed.",
+        "source": "https://edis.ifas.ufl.edu/publication/FE472",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://edis.ifas.ufl.edu/publication/FE472"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Varela Project Submits 11,000-Signature Petition for Political Reform",
     "verdict": "TRUE",
     "reason": "11,020 signatures submitted in May 2002 confirmed. Jimmy Carter endorsement during his May 2002 visit confirmed. Government declared petition illegal confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "11,020 signatures submitted in May 2002 confirmed. Jimmy Carter endorsement during his May 2002 visit confirmed. Government declared petition illegal confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Varela_Project",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Varela_Project"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Black Spring â€” Cuba Arrests 75 Journalists and Dissidents",
     "verdict": "TRUE",
     "reason": "March 2003 arrests of 75 dissidents confirmed. Sentences up to 27 years confirmed (event says 'up to 28 years' — one source says 27, another 28; minor discrepancy). Most released 2004–2010 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 2003 arrests of 75 dissidents confirmed. Sentences up to 27 years confirmed (event says 'up to 28 years' — one source says 27, another 28; minor discrepancy). Most released 2004–2010 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Black_Spring_(Cuba)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Black_Spring_(Cuba)"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Fidel Castro Transfers Power to Raul After Emergency Surgery",
     "verdict": "TRUE",
     "reason": "July 31, 2006 transfer confirmed. Intestinal surgery (gastrointestinal bleeding) confirmed. Fidel never returned to formal presidency confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 31, 2006 transfer confirmed. Intestinal surgery (gastrointestinal bleeding) confirmed. Fidel never returned to formal presidency confirmed.",
+        "source": "https://www.cnn.com/2006/WORLD/americas/07/31/cuba.castro/index.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cnn.com/2006/WORLD/americas/07/31/cuba.castro/index.html"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Raul Castro Formally Elected President, Signals Reform Intent",
     "verdict": "TRUE",
     "reason": "February 24, 2008 election confirmed. First leadership transition in nearly five decades confirmed. Mobile phones and tourist hotel access reforms confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 24, 2008 election confirmed. First leadership transition in nearly five decades confirmed. Mobile phones and tourist hotel access reforms confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ra%C3%BAl_Castro",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ra%C3%BAl_Castro"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Hurricanes Gustav and Ike Cause $10 Billion in Damage to Cuba",
     "verdict": "TRUE",
     "reason": "Gustav ($2.1B) + Ike ($7.3B) = ~$9.4B combined (event says '$10 billion' — rounded figure, consistent with range). Worst natural disaster framing confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Gustav ($2.1B) + Ike ($7.3B) = ~$9.4B combined (event says '$10 billion' — rounded figure, consistent with range). Worst natural disaster framing confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Hurricane_Ike",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hurricane_Ike"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Obama Eases Cuba Restrictions on Family Travel and Remittances",
     "verdict": "TRUE",
     "reason": "April 2009 easing confirmed. Cuban-American family travel and remittance limits lifted confirmed. Broader embargo remained confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 2009 easing confirmed. Cuban-American family travel and remittance limits lifted confirmed. Broader embargo remained confirmed.",
+        "source": "https://obamawhitehouse.archives.gov/blog/2016/03/21/sharing-presidents-obama-trip-cuba-cubavisit",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://obamawhitehouse.archives.gov/blog/2016/03/21/sharing-presidents-obama-trip-cuba-cubavisit"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Cuba Announces Mass State Worker Layoffs and Self-Employment Expansion",
     "verdict": "TRUE",
     "reason": "September 2010 announcement of 500,000 layoffs confirmed. Sixth Party Congress 2011 formalized 313 reform guidelines confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 2010 announcement of 500,000 layoffs confirmed. Sixth Party Congress 2011 formalized 313 reform guidelines confirmed.",
+        "source": "https://www.economist.com/americas/2010/09/30/laying-off-500000",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.economist.com/americas/2010/09/30/laying-off-500000"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "Cuba Abolishes Exit Visa Requirement, Allows Citizens to Travel Freely",
     "verdict": "TRUE",
     "reason": "Announced October 2012, effective January 2013 confirmed. Some professionals/dissidents still restricted confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Announced October 2012, effective January 2013 confirmed. Some professionals/dissidents still restricted confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93United_States_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93United_States_relations"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "US-Cuba Historic Diplomatic Normalization Announced by Obama and Castro",
     "verdict": "TRUE",
     "reason": "December 17, 2014 simultaneous announcements confirmed. Pope Francis facilitation confirmed. Alan Gross and three Cuban agents released confirmed. Embassy reopenings 2015 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 17, 2014 simultaneous announcements confirmed. Pope Francis facilitation confirmed. Alan Gross and three Cuban agents released confirmed. Embassy reopenings 2015 confirmed.",
+        "source": "https://obamawhitehouse.archives.gov/the-press-office/2014/12/17/statement-president-cuba-policy-changes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://obamawhitehouse.archives.gov/the-press-office/2014/12/17/statement-president-cuba-policy-changes"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Obama Visits Cuba â€” First US Sitting President Since 1928",
     "verdict": "TRUE",
     "reason": "March 2016 visit confirmed. Last sitting president was Calvin Coolidge in 1928 confirmed. Rolling Stones concert for ~500,000 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 2016 visit confirmed. Last sitting president was Calvin Coolidge in 1928 confirmed. Rolling Stones concert for ~500,000 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cuban_thaw",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cuban_thaw"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "Cuba Hosts Colombia-FARC Peace Agreement after Four Years of Talks",
     "verdict": "TRUE",
     "reason": "Talks in Havana 2012–2016 confirmed. Final agreement signed November 24, 2016 confirmed. Cuba as neutral venue and facilitator confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Talks in Havana 2012–2016 confirmed. Final agreement signed November 24, 2016 confirmed. Cuba as neutral venue and facilitator confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Colombian_peace_process",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Colombian_peace_process"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "Fidel Castro Dies at Age 90 After Six Decades in Power",
     "verdict": "TRUE",
     "reason": "Died November 25, 2016, age 90 confirmed. Nine days national mourning confirmed. Ashes interred in Santiago de Cuba confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Died November 25, 2016, age 90 confirmed. Nine days national mourning confirmed. Ashes interred in Santiago de Cuba confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Fidel_Castro",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Fidel_Castro"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Trump Reverses Obama Cuba Policies, Restricts Travel and Business",
     "verdict": "TRUE",
     "reason": "June 2017 Trump reversal confirmed. Restrictions on American travel and transactions with Cuban military businesses confirmed. Diplomatic relations maintained confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 2017 Trump reversal confirmed. Restrictions on American travel and transactions with Cuban military businesses confirmed. Diplomatic relations maintained confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cuban_thaw",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Cuban_thaw"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "Hurricane Irma Causes $13 Billion in Damage to Northern Cuba",
     "verdict": "TRUE",
     "reason": "September 2017 confirmed. Category 5 at Cuba landfall confirmed. 10 deaths in Cuba confirmed. Damage cited as 13,500M Cuban pesos; event's '$13 billion' figure appears to be a USD conversion estimate that may be high — Cuban peso figure converts to far less in USD at official rates; this is a potential calibration issue but source ambiguity prevents marking FALSE.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 2017 confirmed. Category 5 at Cuba landfall confirmed. 10 deaths in Cuba confirmed. Damage cited as 13,500M Cuban pesos; event's '$13 billion' figure appears to be a USD conversion estimate that may be high — Cuban peso figure converts to far less in USD at official rates; this is a potential calibration issue but source ambiguity prevents marking FALSE.",
+        "source": "https://en.wikipedia.org/wiki/Hurricane_Irma",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hurricane_Irma"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Miguel Diaz-Canel Elected President â€” First Non-Castro Since 1959",
     "verdict": "TRUE",
     "reason": "April 19, 2018 election confirmed. First president not surnamed Castro since 1959 confirmed. Raul remained Party First Secretary confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 19, 2018 election confirmed. First president not surnamed Castro since 1959 confirmed. Raul remained Party First Secretary confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Miguel_D%C3%ADaz-Canel",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Miguel_D%C3%ADaz-Canel"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "New Cuban Constitution Ratified, Acknowledges Market Economy",
     "verdict": "TRUE",
     "reason": "February 24, 2019 referendum confirmed. ~87% approval (of valid votes) confirmed. Communist Party's leading role retained confirmed. Same-sex marriage pathway confirmed. First major revision since 1976 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 24, 2019 referendum confirmed. ~87% approval (of valid votes) confirmed. Communist Party's leading role retained confirmed. Same-sex marriage pathway confirmed. First major revision since 1976 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2019_Cuban_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2019_Cuban_constitutional_referendum"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "Cuba Develops Domestic COVID-19 Vaccines â€” Soberana and Abdala",
     "verdict": "TRUE",
     "reason": "Soberana 02 and Abdala developed 2020–2021 confirmed. ~82–90% of population vaccinated with domestic vaccines confirmed. Vaccine exports confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Soberana 02 and Abdala developed 2020–2021 confirmed. ~82–90% of population vaccinated with domestic vaccines confirmed. Vaccine exports confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Abdala_(vaccine)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Abdala_(vaccine)"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "Cuba Unifies Dual Currency System â€” CUC Eliminated",
     "verdict": "TRUE",
     "reason": "Announced December 2020, implemented January 1, 2021 confirmed. Severe inflation (70%+) in 2021 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Announced December 2020, implemented January 1, 2021 confirmed. Severe inflation (70%+) in 2021 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Dual_economy_of_Cuba",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Dual_economy_of_Cuba"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "July 11 Protests â€” Largest Demonstrations Against Government Since 1959",
     "verdict": "TRUE",
     "reason": "July 11, 2021 confirmed. Over 50 cities (Wikipedia says 'at least 40') — minor discrepancy, event says '50+'. 'Over 1,000' arrested confirmed (1,400–1,500 reported). Multi-year sentences confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 11, 2021 confirmed. Over 50 cities (Wikipedia says 'at least 40') — minor discrepancy, event says '50+'. 'Over 1,000' arrested confirmed (1,400–1,500 reported). Multi-year sentences confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2021_Cuban_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2021_Cuban_protests"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "Cuba Legalizes Same-Sex Marriage by National Referendum",
     "verdict": "TRUE",
     "reason": "September 25, 2022 referendum confirmed. 66.87% in favor confirmed (event says '67%' — correct rounding). Same-sex adoption legalization confirmed. Mariela Castro's advocacy confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 25, 2022 referendum confirmed. 66.87% in favor confirmed (event says '67%' — correct rounding). Same-sex adoption legalization confirmed. Mariela Castro's advocacy confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Same-sex_marriage_in_Cuba",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Same-sex_marriage_in_Cuba"
   },
   {
@@ -424,6 +1504,24 @@
     "title": "Record 225,000 Cuban Migrants Encountered at US-Mexico Border",
     "verdict": "TRUE",
     "reason": "FY2022 record Cuban migration confirmed. Exact figure ~224,000 (event says 'nearly 225,000' — consistent). Largest since 1980 Mariel framing confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "FY2022 record Cuban migration confirmed. Exact figure ~224,000 (event says 'nearly 225,000' — consistent). Largest since 1980 Mariel framing confirmed.",
+        "source": "https://www.cbp.gov/newsroom/stats/nationwide-encounters",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.cbp.gov/newsroom/stats/nationwide-encounters"
   },
   {
@@ -431,6 +1529,24 @@
     "title": "Cuba's National Electrical Grid Collapses Entirely, Island-Wide Blackouts",
     "verdict": "TRUE",
     "reason": "October 2024 total grid collapse confirmed. Antonio Guiteras thermoelectric plant failure as trigger confirmed. Repeated multi-day blackouts confirmed. New protests confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 2024 total grid collapse confirmed. Antonio Guiteras thermoelectric plant failure as trigger confirmed. Repeated multi-day blackouts confirmed. New protests confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2024%E2%80%932026_Cuba_blackouts",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2024%E2%80%932026_Cuba_blackouts"
   }
 ]

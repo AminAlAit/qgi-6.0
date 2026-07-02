@@ -837,7 +837,22 @@ function cliArg(args, name, fallback = null) {
   return i >= 0 && i + 1 < args.length ? args[i + 1] : fallback;
 }
 
+/** B1 guard: schemas.mjs CONSENSUS_POLICY must equal the founder-ratified policy in
+ * events/_ledger/consensus_policy.json — the validator enforces entries against the
+ * file, the workflows compute against the constant; they must never diverge. */
+function assertPolicySync() {
+  const p = path.join(LEDGER_DIR, "consensus_policy.json");
+  if (!fs.existsSync(p)) return; // pre-ratification checkout — nothing to assert
+  const active = loadJson(p).active_policy;
+  if (active !== CONSENSUS_POLICY) {
+    throw new Error(`consensus-policy drift: schemas.mjs CONSENSUS_POLICY=` +
+      `${CONSENSUS_POLICY} but events/_ledger/consensus_policy.json says ${active}. ` +
+      `A policy flip must update both AND re-derive all verification entries in one commit.`);
+  }
+}
+
 function main() {
+  assertPolicySync();
   const [cmd, ...rest] = process.argv.slice(2);
   const out = cliArg(rest, "out");
   const emit = (obj) => {

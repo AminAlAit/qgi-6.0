@@ -4,6 +4,24 @@
     "title": "Anglo-Egyptian Condominium Governance and Nationalist Movements",
     "verdict": "TRUE",
     "reason": "Confirmed — Umma Party (pro-independence, backed by Ansar/Mahdi family) and NUP (pro-union with Egypt) rivalry is well-documented in multiple encyclopedia and academic sources for this period.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Umma Party (pro-independence, backed by Ansar/Mahdi family) and NUP (pro-union with Egypt) rivalry is well-documented in multiple encyclopedia and academic sources for this period.",
+        "source": "https://www.britannica.com/place/Sudan/The-growth-of-national-consciousness",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/place/Sudan/The-growth-of-national-consciousness"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Egypt Abrogates 1899 Condominium Agreement",
     "verdict": "TRUE",
     "reason": "Confirmed — Egypt's parliament on 16 October 1951 abrogated the Anglo-Egyptian Treaty and Condominium Agreement; Farouk declared King of Egypt and Sudan. Core claim matches.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Egypt's parliament on 16 October 1951 abrogated the Anglo-Egyptian Treaty and Condominium Agreement; Farouk declared King of Egypt and Sudan. Core claim matches.",
+        "source": "https://en.wikipedia.org/wiki/Anglo-Egyptian_Sudan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Anglo-Egyptian_Sudan"
   },
   {
@@ -18,6 +54,24 @@
     "title": "First Sudanese Parliament Established in Khartoum",
     "verdict": "FALSE",
     "reason": "Incorrect year. Sudan's first parliament was elected in November–December 1953 (not 1951) following the Anglo-Egyptian Agreement signed in February 1953. The event description conflates the 1951 abrogation with later parliamentary establishment.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Incorrect year. Sudan's first parliament was elected in November–December 1953 (not 1951) following the Anglo-Egyptian Agreement signed in February 1953. The event description conflates the 1951 abrogation with later parliamentary establishment.",
+        "source": "https://en.wikipedia.org/wiki/Sudan_Self-Government_Statute",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sudan_Self-Government_Statute"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Egyptian Revolution Opens Path to Sudanese Independence",
     "verdict": "TRUE",
     "reason": "Confirmed — Free Officers Revolution on 23 July 1952 overthrew Farouk; new Egyptian government agreed to Sudanese self-determination; Anglo-Egyptian Agreement followed in February 1953.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Free Officers Revolution on 23 July 1952 overthrew Farouk; new Egyptian government agreed to Sudanese self-determination; Anglo-Egyptian Agreement followed in February 1953.",
+        "source": "https://en.wikipedia.org/wiki/Egyptian_revolution_of_1952",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Egyptian_revolution_of_1952"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Anglo-Egyptian Agreement on Sudanese Self-Governance Signed",
     "verdict": "TRUE",
     "reason": "Confirmed — Self-Government Statute signed 12 February 1953; 3-year transitional period; NUP won elections; al-Azhari became Chief Minister January 1954. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Self-Government Statute signed 12 February 1953; 3-year transitional period; NUP won elections; al-Azhari became Chief Minister January 1954. All core claims verified.",
+        "source": "https://api.parliament.uk/historic-hansard/commons/1953/feb/12/sudan-anglo-egyptian-agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://api.parliament.uk/historic-hansard/commons/1953/feb/12/sudan-anglo-egyptian-agreement"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Al-Azhari Government and Sudanization of Civil Service",
     "verdict": "TRUE",
     "reason": "Confirmed — al-Azhari sworn in as first Sudanese PM; Sudanization Committee appointed February 1954; southern under-representation (6 of 800 posts) documented. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — al-Azhari sworn in as first Sudanese PM; Sudanization Committee appointed February 1954; southern under-representation (6 of 800 posts) documented. Core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Ismail_al-Azhari",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ismail_al-Azhari"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Torit Mutiny and Southern Discontent — First Civil War Begins",
     "verdict": "TRUE",
     "reason": "Confirmed — Equatoria Corps mutiny began 18 August 1955 at Torit; federal demands rejected; first civil war started. Date in description says 'August 1955' which matches Wikipedia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Equatoria Corps mutiny began 18 August 1955 at Torit; federal demands rejected; first civil war started. Date in description says 'August 1955' which matches Wikipedia.",
+        "source": "https://en.wikipedia.org/wiki/Torit_mutiny",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Torit_mutiny"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Sudanese Independence Proclaimed and Foreign Policy Alignment",
     "verdict": "TRUE",
     "reason": "Confirmed — Independence 1 January 1956; joined Arab League 19 January 1956; joined UN November 1957. Minor note: Sudan is not correctly described as 'first sub-Saharan African country' — it is geographically North/Northeast Africa, but the independence fact is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Independence 1 January 1956; joined Arab League 19 January 1956; joined UN November 1957. Minor note: Sudan is not correctly described as 'first sub-Saharan African country' — it is geographically North/Northeast Africa, but the independence fact is accurate.",
+        "source": "https://en.wikipedia.org/wiki/Republic_of_Sudan_(1956%E2%80%931969)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Republic_of_Sudan_(1956%E2%80%931969)"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Parliamentary Instability and First Civil War Intensifies",
     "verdict": "TRUE",
     "reason": "Confirmed — al-Azhari lost coalition (June 1956, not 1957), Khalil became PM; southern armed resistance expanded throughout 1957. The year is slightly imprecise (transition occurred mid-1956) but events described happened across 1956-1957.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — al-Azhari lost coalition (June 1956, not 1957), Khalil became PM; southern armed resistance expanded throughout 1957. The year is slightly imprecise (transition occurred mid-1956) but events described happened across 1956-1957.",
+        "source": "https://en.wikipedia.org/wiki/Abdallah_Khalil",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Abdallah_Khalil"
   },
   {
@@ -67,6 +229,24 @@
     "title": "General Abboud Military Coup",
     "verdict": "TRUE",
     "reason": "Confirmed — General Ibrahim Abboud coup on 17 November 1958; dissolved parliament; suspended constitution; suspended political parties. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — General Ibrahim Abboud coup on 17 November 1958; dissolved parliament; suspended constitution; suspended political parties. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Ibrahim_Abboud",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ibrahim_Abboud"
   },
   {
@@ -74,6 +254,24 @@
     "title": "Nile Waters Agreement with Egypt",
     "verdict": "TRUE",
     "reason": "Confirmed — Signed 8 November 1959; Sudan allocated 18.5 bcm, Egypt 55.5 bcm; upstream states (Ethiopia, Uganda) excluded. All figures and claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Signed 8 November 1959; Sudan allocated 18.5 bcm, Egypt 55.5 bcm; upstream states (Ethiopia, Uganda) excluded. All figures and claims verified.",
+        "source": "https://www.weaspire.info/the-1959-agreement-for-the-full-utilization-of-the-nile-waters-the-crux-of-the-problem-in-the-nile-basin-water-use/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.weaspire.info/the-1959-agreement-for-the-full-utilization-of-the-nile-waters-the-crux-of-the-problem-in-the-nile-basin-water-use/"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Arabization and Islamization Policies in Southern Sudan",
     "verdict": "TRUE",
     "reason": "Confirmed — Abboud imposed Arabic as official language, replaced Sunday with Friday as day of rest; missionaries eventually expelled (mostly 1964 but policies began earlier). Minor: full missionary expulsion was 1964, not 1959, but policies began under Abboud throughout his tenure.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Abboud imposed Arabic as official language, replaced Sunday with Friday as day of rest; missionaries eventually expelled (mostly 1964 but policies began earlier). Minor: full missionary expulsion was 1964, not 1959, but policies began under Abboud throughout his tenure.",
+        "source": "https://www.researchgate.net/publication/236695716_General_Ibrahim_Abboud's_Military_Administration_in_the_Sudan_1958-1964",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.researchgate.net/publication/236695716_General_Ibrahim_Abboud's_Military_Administration_in_the_Sudan_1958-1964"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Anyanya Rebellion Consolidates in Southern Sudan",
     "verdict": "TRUE",
     "reason": "Confirmed — Anyanya movement coalesced from scattered guerrilla resistance in early 1960s; refugee flows to Uganda, Congo, Ethiopia documented. Academic sources date Anyanya insurgency formation to 1961-64 period specifically; 1960 as 'consolidation' year is slightly early but broadly consistent.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Anyanya movement coalesced from scattered guerrilla resistance in early 1960s; refugee flows to Uganda, Congo, Ethiopia documented. Academic sources date Anyanya insurgency formation to 1961-64 period specifically; 1960 as 'consolidation' year is slightly early but broadly consistent.",
+        "source": "https://en.wikipedia.org/wiki/First_Sudanese_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/First_Sudanese_Civil_War"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Sudan Non-Aligned Movement Membership",
     "verdict": "TRUE",
     "reason": "Confirmed — Sudan was among the 25 founding participant countries at the Belgrade NAM summit, 1-6 September 1961.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Sudan was among the 25 founding participant countries at the Belgrade NAM summit, 1-6 September 1961.",
+        "source": "https://en.wikipedia.org/wiki/1st_Summit_of_the_Non-Aligned_Movement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1st_Summit_of_the_Non-Aligned_Movement"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Sudan Armed Forces Escalate Southern Campaign and SSANU Founded in Exile",
     "verdict": "TRUE",
     "reason": "Confirmed — SANU founded in Uganda in 1963 by Saturnino Ohure and William Deng Nhial (formally changed from SACDNU); Anyanya began military operations September 1963. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — SANU founded in Uganda in 1963 by Saturnino Ohure and William Deng Nhial (formally changed from SACDNU); Anyanya began military operations September 1963. Core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Sudan_African_National_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sudan_African_National_Union"
   },
   {
@@ -109,6 +379,24 @@
     "title": "October Revolution Overthrows Abboud",
     "verdict": "TRUE",
     "reason": "Confirmed — Popular uprising October 1964 led by students, trade unions, professionals; Abboud dissolved Supreme Council and resigned 3 December 1964. Round Table Conference on the south convened 1965. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Popular uprising October 1964 led by students, trade unions, professionals; Abboud dissolved Supreme Council and resigned 3 December 1964. Round Table Conference on the south convened 1965. All core claims verified.",
+        "source": "https://nvdatabase.swarthmore.edu/content/sudanese-bring-down-dictator-abbud-october-revolution-1964",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://nvdatabase.swarthmore.edu/content/sudanese-bring-down-dictator-abbud-october-revolution-1964"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Parliamentary Elections Restored and Juba and Wau Massacres",
     "verdict": "TRUE",
     "reason": "Confirmed — Elections held 21 April and 8 May 1965; Umma won; Mahgoub became PM. Army atrocities at Juba and Wau documented in academic sources (burning villages, civilian killings). Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Elections held 21 April and 8 May 1965; Umma won; Mahgoub became PM. Army atrocities at Juba and Wau documented in academic sources (burning villages, civilian killings). Core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/1965_Sudanese_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1965_Sudanese_parliamentary_election"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Sadiq al-Mahdi Government and Anyanya External Support",
     "verdict": "TRUE",
     "reason": "Confirmed — Sadiq al-Mahdi became PM in 1966 (at age 30-31, described as youngest). Israel, Ethiopia, Uganda support to Anyanya is documented in academic literature on first civil war. Core claims verified; his age: born 1935, so he was ~30 when he became PM in July 1966.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Sadiq al-Mahdi became PM in 1966 (at age 30-31, described as youngest). Israel, Ethiopia, Uganda support to Anyanya is documented in academic literature on first civil war. Core claims verified; his age: born 1935, so he was ~30 when he became PM in July 1966.",
+        "source": "https://en.wikipedia.org/wiki/Sadiq_al-Mahdi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sadiq_al-Mahdi"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Sudan Sides with Arab States in Six-Day War",
     "verdict": "TRUE",
     "reason": "Confirmed — Sudan aligned with Egypt/Arab states in 1967 Six-Day War; broke diplomatic relations with US and Israel. Well documented in multiple sources on Sudanese foreign policy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Sudan aligned with Egypt/Arab states in 1967 Six-Day War; broke diplomatic relations with US and Israel. Well documented in multiple sources on Sudanese foreign policy.",
+        "source": "https://en.wikipedia.org/wiki/Republic_of_Sudan_(1956%E2%80%931969)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Republic_of_Sudan_(1956%E2%80%931969)"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Parliamentary Instability and Anyanya Military Consolidation",
     "verdict": "TRUE",
     "reason": "Confirmed — Parliamentary instability and coalition shifting documented in 1968; Joseph Lagu consolidated command of Anyanya in this period. Core claims consistent with historical record.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Parliamentary instability and coalition shifting documented in 1968; Joseph Lagu consolidated command of Anyanya in this period. Core claims consistent with historical record.",
+        "source": "https://en.wikipedia.org/wiki/First_Sudanese_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/First_Sudanese_Civil_War"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Nimeiry's May Revolution Military Coup",
     "verdict": "TRUE",
     "reason": "Confirmed — Colonel Nimeiry seized power on 25 May 1969; RCC established; socialist policies including nationalization of banks and industries; aligned with Egypt's Nasserist model. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Colonel Nimeiry seized power on 25 May 1969; RCC established; socialist policies including nationalization of banks and industries; aligned with Egypt's Nasserist model. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/1969_Sudanese_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1969_Sudanese_coup_d'%C3%A9tat"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Ansar Massacre at Aba Island and Islamist-Mahdist Suppression",
     "verdict": "TRUE",
     "reason": "Confirmed — Nimeiry attacked Aba Island March 1970 with Egyptian air force support; Imam al-Hadi al-Mahdi killed; estimated thousands of Ansar dead (figures range 3,000-12,000). Core claims verified; death toll estimates vary by source.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Nimeiry attacked Aba Island March 1970 with Egyptian air force support; Imam al-Hadi al-Mahdi killed; estimated thousands of Ansar dead (figures range 3,000-12,000). Core claims verified; death toll estimates vary by source.",
+        "source": "https://en.wikipedia.org/wiki/Ansar_(Sudan)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ansar_(Sudan)"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Communist Coup Attempt Reversed — Sudan Pivots to Egypt and Arab World",
     "verdict": "TRUE",
     "reason": "Confirmed — Communist officers (Major Hashem al-Atta) coup on 19 July 1971; reversed within 3 days with Egyptian and Libyan support; Nimeiry executed Communist Party leaders; pivoted away from USSR toward Egypt, Saudi Arabia, West. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Communist officers (Major Hashem al-Atta) coup on 19 July 1971; reversed within 3 days with Egyptian and Libyan support; Nimeiry executed Communist Party leaders; pivoted away from USSR toward Egypt, Saudi Arabia, West. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/1971_Sudanese_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1971_Sudanese_coup_d'%C3%A9tat"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Addis Ababa Agreement Ends First Civil War — Southern Autonomy Established",
     "verdict": "TRUE",
     "reason": "Confirmed — Agreement signed 27 February 1972; Joseph Lagu represented south; Abel Alier led government delegation; Southern Sudan Autonomous Region created; Anyanya fighters integrated into SAF. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Agreement signed 27 February 1972; Joseph Lagu represented south; Abel Alier led government delegation; Southern Sudan Autonomous Region created; Anyanya fighters integrated into SAF. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Addis_Ababa_Agreement_(1972)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Addis_Ababa_Agreement_(1972)"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Post-War Reconstruction in Southern Sudan",
     "verdict": "TRUE",
     "reason": "Confirmed — Post-war reconstruction period following Addis Ababa Agreement is well documented; international relief organizations operated in south; refugee returns documented. Core narrative verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Post-war reconstruction period following Addis Ababa Agreement is well documented; international relief organizations operated in south; refugee returns documented. Core narrative verified.",
+        "source": "https://en.wikipedia.org/wiki/Addis_Ababa_Agreement_(1972)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Addis_Ababa_Agreement_(1972)"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Sudan Permanent Constitution Adopted",
     "verdict": "TRUE",
     "reason": "Confirmed — 1973 Permanent Constitution adopted; Sudanese Socialist Union as sole legal party; formalizes Nimeiry's presidential system; incorporated Addis Ababa provisions; no Islamic law imposed. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — 1973 Permanent Constitution adopted; Sudanese Socialist Union as sole legal party; formalizes Nimeiry's presidential system; incorporated Addis Ababa provisions; no Islamic law imposed. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/1973_Constitution_of_Sudan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1973_Constitution_of_Sudan"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Arab Development Fund and Breadbasket Ambitions",
     "verdict": "TRUE",
     "reason": "Confirmed — Sudan's 'breadbasket of the Arab world' ambitions and Gulf Arab investment in agricultural projects in the 1970s is well documented in multiple sources. Core narrative verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Sudan's 'breadbasket of the Arab world' ambitions and Gulf Arab investment in agricultural projects in the 1970s is well documented in multiple sources. Core narrative verified.",
+        "source": "https://www.britannica.com/place/Sudan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/place/Sudan"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Sudan-Ethiopia Regional Tensions Following Ethiopian Revolution",
     "verdict": "TRUE",
     "reason": "Confirmed — Ethiopian revolution of 1974 overthrew Haile Selassie; created regional uncertainty; Sudan-Ethiopia relations affected. Core claim is accurate and well-documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Ethiopian revolution of 1974 overthrew Haile Selassie; created regional uncertainty; Sudan-Ethiopia relations affected. Core claim is accurate and well-documented.",
+        "source": "https://en.wikipedia.org/wiki/Ethiopian_revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ethiopian_revolution"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Attempted Coup Against Nimeiry",
     "verdict": "TRUE",
     "reason": "Confirmed — Multiple coup attempts against Nimeiry in 1970s documented; 1975 Ansar-linked attempt is consistent with historical record. Nimeiry survived multiple coup attempts throughout this period.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Multiple coup attempts against Nimeiry in 1970s documented; 1975 Ansar-linked attempt is consistent with historical record. Nimeiry survived multiple coup attempts throughout this period.",
+        "source": "https://face2faceafrica.com/article/the-little-known-sudanese-leader-who-survived-22-coup-plots-in-the-1970s",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://face2faceafrica.com/article/the-little-known-sudanese-leader-who-survived-22-coup-plots-in-the-1970s"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Failed Libyan-Backed Coup and Khartoum Reconciliation",
     "verdict": "TRUE",
     "reason": "Confirmed — Libya-backed coup attempt on 2 July 1976 led by Sadiq al-Mahdi's forces; defeated with Egyptian/American help; national reconciliation followed in 1977; Turabi returned and became Attorney General. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Libya-backed coup attempt on 2 July 1976 led by Sadiq al-Mahdi's forces; defeated with Egyptian/American help; national reconciliation followed in 1977; Turabi returned and became Attorney General. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/1976_Sudanese_coup_attempt",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1976_Sudanese_coup_attempt"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Nimeiry Embraces Islamist Movement",
     "verdict": "TRUE",
     "reason": "Confirmed — Nimeiry's 1977 reconciliation brought Turabi back; Turabi became Attorney General (1979); Muslim Brotherhood members integrated into government; Islamic banking introduced. Core claims verified; Turabi became AG in 1979 not immediately in 1977.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Nimeiry's 1977 reconciliation brought Turabi back; Turabi became Attorney General (1979); Muslim Brotherhood members integrated into government; Islamic banking introduced. Core claims verified; Turabi became AG in 1979 not immediately in 1977.",
+        "source": "https://en.wikipedia.org/wiki/National_Reconciliation_(Sudan)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/National_Reconciliation_(Sudan)"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Oil Discovered in Southern Sudan",
     "verdict": "FALSE",
     "reason": "Wrong year. Chevron started drilling in 1977 but oil was actually discovered/confirmed in 1978 (Bentu and Heglig districts). The first commercial flow was in 1979. The event should be dated 1978, not 1977.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Wrong year. Chevron started drilling in 1977 but oil was actually discovered/confirmed in 1978 (Bentu and Heglig districts). The first commercial flow was in 1979. The event should be dated 1978, not 1977.",
+        "source": "https://www.hrw.org/reports/2003/sudan1103/10.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/reports/2003/sudan1103/10.htm"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Redivision Plans Threaten Southern Autonomy",
     "verdict": "TRUE",
     "reason": "Confirmed — Nimeiry's plans to redivide Southern Region are documented as beginning in late 1970s-early 1980s; southern leaders opposed redivision. Core narrative verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Nimeiry's plans to redivide Southern Region are documented as beginning in late 1970s-early 1980s; southern leaders opposed redivision. Core narrative verified.",
+        "source": "https://www.britannica.com/place/Sudan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/place/Sudan"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Sudan Economic Crisis and IMF Austerity",
     "verdict": "TRUE",
     "reason": "Confirmed — Sudan's economic crisis and IMF engagement in late 1970s is well documented in academic literature on Sudanese political economy. Core narrative verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Sudan's economic crisis and IMF engagement in late 1970s is well documented in academic literature on Sudanese political economy. Core narrative verified.",
+        "source": "https://www.britannica.com/place/Sudan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/place/Sudan"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Ethiopian Refugees Flood Eastern Sudan",
     "verdict": "TRUE",
     "reason": "Confirmed — Large-scale Ethiopian refugee flows into eastern Sudan from late 1970s-1980s due to Eritrean war and Ethiopian famine is well documented in humanitarian and academic sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Large-scale Ethiopian refugee flows into eastern Sudan from late 1970s-1980s due to Eritrean war and Ethiopian famine is well documented in humanitarian and academic sources.",
+        "source": "https://www.britannica.com/place/Sudan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/place/Sudan"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Addis Ababa Agreement Eroded — Sudan as US Strategic Partner",
     "verdict": "TRUE",
     "reason": "Confirmed — Nimeiry's erosion of the Addis Ababa Agreement through the late 1970s-early 1980s and Sudan becoming a major US aid recipient during this period are well documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Nimeiry's erosion of the Addis Ababa Agreement through the late 1970s-early 1980s and Sudan becoming a major US aid recipient during this period are well documented.",
+        "source": "https://www.britannica.com/place/Sudan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/place/Sudan"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Southern Region Redivision and Nimeiry's Increasing Authoritarianism",
     "verdict": "TRUE",
     "reason": "Confirmed — Nimeiry formally divided Southern Sudan into three regions (Equatoria, Bahr el-Ghazal, Upper Nile) in 1983 (redivision decree), though moves toward redivision began in 1981-82. The 1981 date for planning/announcement is consistent with sources; implementation was 1983.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Nimeiry formally divided Southern Sudan into three regions (Equatoria, Bahr el-Ghazal, Upper Nile) in 1983 (redivision decree), though moves toward redivision began in 1981-82. The 1981 date for planning/announcement is consistent with sources; implementation was 1983.",
+        "source": "https://en.wikipedia.org/wiki/Addis_Ababa_Agreement_(1972)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Addis_Ababa_Agreement_(1972)"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Economic Decline Accelerates",
     "verdict": "TRUE",
     "reason": "Confirmed — Sudan's acute economic deterioration in the early 1980s with debt, inflation, and budget deficits is well documented. Core narrative verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Sudan's acute economic deterioration in the early 1980s with debt, inflation, and budget deficits is well documented. Core narrative verified.",
+        "source": "https://www.britannica.com/place/Sudan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/place/Sudan"
   },
   {
@@ -270,6 +954,24 @@
     "title": "September Laws — Imposition of Sharia Across Sudan",
     "verdict": "TRUE",
     "reason": "Confirmed — September 1983 Laws imposed sharia across all Sudan including non-Muslim south; hudud punishments applied regardless of religion; directly precipitated second civil war. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — September 1983 Laws imposed sharia across all Sudan including non-Muslim south; hudud punishments applied regardless of religion; directly precipitated second civil war. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/September_Laws_(Sudan)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/September_Laws_(Sudan)"
   },
   {
@@ -277,6 +979,24 @@
     "title": "SPLA Founded — Second Civil War Begins",
     "verdict": "TRUE",
     "reason": "Confirmed — Bor mutiny May 1983; SPLA/M founded by John Garang; Ethiopia provided support; 'New Sudan' secular vision; approximately 2 million died in 22-year war. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Bor mutiny May 1983; SPLA/M founded by John Garang; Ethiopia provided support; 'New Sudan' secular vision; approximately 2 million died in 22-year war. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/John_Garang",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/John_Garang"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Chevron Oil Operations Disrupted by SPLA",
     "verdict": "TRUE",
     "reason": "Confirmed — SPLA attacked Chevron oil facilities in February 1984 (not 1983), killing 3 foreign workers (a Briton, a Kenyan, and a Filipino — not Americans as described). Chevron suspended operations. The year is slightly off (attack was February 1984) and the nationalities are wrong (not Americans).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — SPLA attacked Chevron oil facilities in February 1984 (not 1983), killing 3 foreign workers (a Briton, a Kenyan, and a Filipino — not Americans as described). Chevron suspended operations. The year is slightly off (attack was February 1984) and the nationalities are wrong (not Americans).",
+        "source": "https://www.hrw.org/reports/2003/sudan1103/10.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/reports/2003/sudan1103/10.htm"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Nimeiry's Islamic State Policies Intensify",
     "verdict": "TRUE",
     "reason": "Confirmed — Nimeiry declared himself Imam in 1984; public floggings documented; Turabi gained extensive judicial influence; discrimination against non-Muslims documented. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Nimeiry declared himself Imam in 1984; public floggings documented; Turabi gained extensive judicial influence; discrimination against non-Muslims documented. Core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/September_Laws_(Sudan)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/September_Laws_(Sudan)"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Famine Strikes Western Sudan",
     "verdict": "TRUE",
     "reason": "Confirmed — 1983-85 drought-famine struck Kordofan, Darfur, Red Sea Province; estimated ~250,000 deaths; Nimeiry downplayed it. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — 1983-85 drought-famine struck Kordofan, Darfur, Red Sea Province; estimated ~250,000 deaths; Nimeiry downplayed it. Core claims verified.",
+        "source": "https://pdf.usaid.gov/pdf_docs/pbaab327.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://pdf.usaid.gov/pdf_docs/pbaab327.pdf"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Operation Moses — Covert Ethiopian Jewish Airlift through Sudan",
     "verdict": "TRUE",
     "reason": "Confirmed — Operation Moses ran 21 November 1984 to 5 January 1985; ~8,000 Ethiopian Jews airlifted via Sudan to Israel; CIA and Sudan security cooperated; halted when news leaked to Arab League. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Operation Moses ran 21 November 1984 to 5 January 1985; ~8,000 Ethiopian Jews airlifted via Sudan to Israel; CIA and Sudan security cooperated; halted when news leaked to Arab League. Core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Moses",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Moses"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Popular Uprising and Military Coup Ousts Nimeiry",
     "verdict": "TRUE",
     "reason": "Confirmed — Popular uprising March-April 1985; Swar al-Dahab led coup on 6 April 1985 while Nimeiry was abroad; Transitional Military Council promised civilian rule within a year; September Laws frozen but not repealed. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Popular uprising March-April 1985; Swar al-Dahab led coup on 6 April 1985 while Nimeiry was abroad; Transitional Military Council promised civilian rule within a year; September Laws frozen but not repealed. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/1985_Sudanese_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1985_Sudanese_coup_d'%C3%A9tat"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Parliamentary Elections — Sadiq al-Mahdi Returns; SPLA Controls South",
     "verdict": "TRUE",
     "reason": "Confirmed — April 1986 elections; Umma won 100 seats (not majority); NIF under Turabi won 51 seats (~18% is roughly right); SPLA controlled rural south by 1986. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — April 1986 elections; Umma won 100 seats (not majority); NIF under Turabi won 51 seats (~18% is roughly right); SPLA controlled rural south by 1986. Core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/1986_Sudanese_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1986_Sudanese_parliamentary_election"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Koka Dam Declaration and Ethnic Violence in Darfur",
     "verdict": "FALSE",
     "reason": "Wrong year. The Koka Dam Declaration was signed on 24 March 1986, not 1987. The 1987 year is incorrect. Darfur ethnic violence in 1987 is plausible but the Koka Dam date is clearly wrong.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Wrong year. The Koka Dam Declaration was signed on 24 March 1986, not 1987. The 1987 year is incorrect. Darfur ethnic violence in 1987 is plausible but the Koka Dam date is clearly wrong.",
+        "source": "https://peacemaker.un.org/sudan-kokadam-declaration86",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://peacemaker.un.org/sudan-kokadam-declaration86"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "DUP-SPLA Peace Initiative Blocked",
     "verdict": "TRUE",
     "reason": "Confirmed — DUP signed peace deal with SPLA in November 1988; NIF opposed; al-Mahdi refused to implement under Islamist pressure; missed peace opportunity extended civil war. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — DUP signed peace deal with SPLA in November 1988; NIF opposed; al-Mahdi refused to implement under Islamist pressure; missed peace opportunity extended civil war. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Democratic_Unionist_Party_(Sudan)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Democratic_Unionist_Party_(Sudan)"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "NIF-Military Coup — Bashir Seizes Power",
     "verdict": "TRUE",
     "reason": "Confirmed — Coup on 30 June 1989; al-Bashir led coup organized with NIF/Turabi; dissolved government just before peace deal implementation; suspended constitution; banned parties; thousands arrested. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Coup on 30 June 1989; al-Bashir led coup organized with NIF/Turabi; dissolved government just before peace deal implementation; suspended constitution; banned parties; thousands arrested. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/1989_Sudanese_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1989_Sudanese_coup_d'%C3%A9tat"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Sudan Sides with Iraq in Gulf War — Islamist State-Building Intensifies",
     "verdict": "TRUE",
     "reason": "Confirmed — Sudan sided with Iraq in Gulf War 1990-91; alienated Saudi Arabia and Gulf donors; NIF government systematically purged secular bureaucrats and built Popular Defense Forces. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Sudan sided with Iraq in Gulf War 1990-91; alienated Saudi Arabia and Gulf donors; NIF government systematically purged secular bureaucrats and built Popular Defense Forces. Core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Gulf_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Gulf_War"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "Sudan Hosts Al-Qaeda; SPLA Splits — Bor Massacre",
     "verdict": "TRUE",
     "reason": "Confirmed — Bin Laden arrived in Sudan late 1991; Turabi invited him; Riek Machar and Lam Akol split from SPLA August 1991; Bor massacre November 1991 killed estimated 5,000-20,000 Dinka civilians by Nuer fighters. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Bin Laden arrived in Sudan late 1991; Turabi invited him; Riek Machar and Lam Akol split from SPLA August 1991; Bor massacre November 1991 killed estimated 5,000-20,000 Dinka civilians by Nuer fighters. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Bor_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Bor_massacre"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "Government Offensive Retakes South Amid SPLA Split; Terrorism Designation",
     "verdict": "TRUE",
     "reason": "Confirmed — US designated Sudan state sponsor of terrorism in 1993 (not 1992 as implied). Government offensive using PDF militias with atrocities documented in 1992. Minor: designation was 1993, not 1992.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — US designated Sudan state sponsor of terrorism in 1993 (not 1992 as implied). Government offensive using PDF militias with atrocities documented in 1992. Minor: designation was 1993, not 1992.",
+        "source": "https://www.state.gov/reports/country-reports-on-terrorism-2020/sudan/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.state.gov/reports/country-reports-on-terrorism-2020/sudan/"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Bashir Assumes Presidency — Civilian Facade Adopted",
     "verdict": "TRUE",
     "reason": "Confirmed — Bashir dissolved RCC and became President in October 1993; nominally civilian structure while maintaining military-Islamist control; Turabi's influence continued. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Bashir dissolved RCC and became President in October 1993; nominally civilian structure while maintaining military-Islamist control; Turabi's influence continued. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Revolutionary_Command_Council_for_National_Salvation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Revolutionary_Command_Council_for_National_Salvation"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "Turabi's Popular Arab Islamic Conference Makes Sudan Global Islamist Hub",
     "verdict": "TRUE",
     "reason": "Confirmed — PAIC founded 1991, annual conferences in Khartoum hosted Hamas, Hezbollah, Egyptian Islamic Jihad, Iranian officials, etc. The 1994 year is plausible for a PAIC conference; organization is confirmed. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — PAIC founded 1991, annual conferences in Khartoum hosted Hamas, Hezbollah, Egyptian Islamic Jihad, Iranian officials, etc. The 1994 year is plausible for a PAIC conference; organization is confirmed. Core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Popular_Arab_and_Islamic_Congress",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Popular_Arab_and_Islamic_Congress"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Assassination Attempt on Mubarak — Sudan Faces Intensified International Pressure",
     "verdict": "TRUE",
     "reason": "Confirmed — Assassination attempt on Mubarak in Addis Ababa 25 June 1995; Sudan-based Egyptian Islamic Jihad operatives; Sudan refused extradition; UN Security Council sanctions followed. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Assassination attempt on Mubarak in Addis Ababa 25 June 1995; Sudan-based Egyptian Islamic Jihad operatives; Sudan refused extradition; UN Security Council sanctions followed. All core claims verified.",
+        "source": "https://unredacted.com/2011/02/04/document-friday-mubarak-al-bashir-al-zawahiriand-bin-laden-the-1995-assassination-atempt-in-addis-ababa/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://unredacted.com/2011/02/04/document-friday-mubarak-al-bashir-al-zawahiriand-bin-laden-the-1995-assassination-atempt-in-addis-ababa/"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Osama bin Laden Expelled from Sudan",
     "verdict": "TRUE",
     "reason": "Confirmed — Bin Laden expelled from Sudan in May 1996; fled to Afghanistan on 18 May 1996 chartered flight; US and Saudi pressure cited. Sudan reportedly offered bin Laden to US or Saudi Arabia; both declined. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Bin Laden expelled from Sudan in May 1996; fled to Afghanistan on 18 May 1996 chartered flight; US and Saudi pressure cited. Sudan reportedly offered bin Laden to US or Saudi Arabia; both declined. Core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Osama_bin_Laden",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Osama_bin_Laden"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "US Comprehensive Sanctions Imposed; Khartoum Peace Agreement with Nuer Militias",
     "verdict": "TRUE",
     "reason": "Confirmed — US comprehensive sanctions imposed 4 November 1997 via Executive Order 13067; blocked all trade and assets. Khartoum Peace Agreement with Riek Machar's SPLA-United also signed in 1997. Both core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — US comprehensive sanctions imposed 4 November 1997 via Executive Order 13067; blocked all trade and assets. Khartoum Peace Agreement with Riek Machar's SPLA-United also signed in 1997. Both core claims verified.",
+        "source": "https://1997-2001.state.gov/statements/971104.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://1997-2001.state.gov/statements/971104.html"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "New Constitution; Bashir-Turabi Conflict Emerges",
     "verdict": "TRUE",
     "reason": "Confirmed — New constitution signed 30 June 1998 allowing political parties; Bashir-Turabi split emerged in 1998-1999; Turabi introduced bill to reduce presidential powers; Bashir dissolved parliament and declared state of emergency. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — New constitution signed 30 June 1998 allowing political parties; Bashir-Turabi split emerged in 1998-1999; Turabi introduced bill to reduce presidential powers; Bashir dissolved parliament and declared state of emergency. Core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/National_Congress_Party_(Sudan)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/National_Congress_Party_(Sudan)"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "Sudan Begins Oil Exports; Bashir-Turabi Split",
     "verdict": "TRUE",
     "reason": "Confirmed — First Sudan crude oil export on 30 August 1999 via pipeline to Port Sudan; CNPC (40%) and Petronas (30%) partners; Bashir declared state of emergency December 1999 to neutralize Turabi. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — First Sudan crude oil export on 30 August 1999 via pipeline to Port Sudan; CNPC (40%) and Petronas (30%) partners; Bashir declared state of emergency December 1999 to neutralize Turabi. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Greater_Nile_Oil_Pipeline",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Greater_Nile_Oil_Pipeline"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "Oil Revenue Transforms Khartoum While Deepening Regional Inequalities",
     "verdict": "TRUE",
     "reason": "Confirmed — Oil revenues fueled construction boom in Khartoum; Chinese and Gulf investment; contrast with peripheral regions documented; SPLA military resurgence in Upper Nile documented. Core narrative verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Oil revenues fueled construction boom in Khartoum; Chinese and Gulf investment; contrast with peripheral regions documented; SPLA military resurgence in Upper Nile documented. Core narrative verified.",
+        "source": "https://en.wikipedia.org/wiki/Petroleum_industry_in_Sudan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Petroleum_industry_in_Sudan"
   },
   {
@@ -424,6 +1504,24 @@
     "title": "Post-9/11 Sudan-US Intelligence Cooperation; Hassan al-Turabi Arrested",
     "verdict": "TRUE",
     "reason": "Confirmed — Turabi arrested 21 February 2001 after signing MOU with SPLA; Sudan cooperated with CIA post-9/11 sharing bin Laden intelligence files; earned limited US concessions. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Turabi arrested 21 February 2001 after signing MOU with SPLA; Sudan cooperated with CIA post-9/11 sharing bin Laden intelligence files; earned limited US concessions. All core claims verified.",
+        "source": "https://www.npr.org/2005/05/02/4627075/sudan-cia-forge-close-ties-despite-rights-abuses",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.npr.org/2005/05/02/4627075/sudan-cia-forge-close-ties-despite-rights-abuses"
   },
   {
@@ -431,6 +1529,24 @@
     "title": "Machakos Protocol — Southern Self-Determination Framework Agreed",
     "verdict": "TRUE",
     "reason": "Confirmed — Machakos Protocol signed 20 July 2002 in Kenya under IGAD; agreed on self-determination referendum after 6-year interim period; Nuba Mountains ceasefire allowing humanitarian access also agreed. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Machakos Protocol signed 20 July 2002 in Kenya under IGAD; agreed on self-determination referendum after 6-year interim period; Nuba Mountains ceasefire allowing humanitarian access also agreed. All core claims verified.",
+        "source": "https://reliefweb.int/report/sudan/landmark-sudanese-peace-agreement-sudan-government-concludes-splma-machakos-protocol",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://reliefweb.int/report/sudan/landmark-sudanese-peace-agreement-sudan-government-concludes-splma-machakos-protocol"
   },
   {
@@ -438,6 +1554,24 @@
     "title": "Darfur Rebellion and Janjaweed Militia Unleashed",
     "verdict": "TRUE",
     "reason": "Confirmed — SLA and JEM launched rebellion February 2003; government armed and deployed Janjaweed; systematic ethnic cleansing of Fur, Masalit, and Zaghawa documented with air support. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — SLA and JEM launched rebellion February 2003; government armed and deployed Janjaweed; systematic ethnic cleansing of Fur, Masalit, and Zaghawa documented with air support. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/War_in_Darfur",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/War_in_Darfur"
   },
   {
@@ -445,6 +1579,24 @@
     "title": "Darfur Genocide Documented Internationally; AU Mission Deployed",
     "verdict": "TRUE",
     "reason": "Confirmed — Colin Powell declared 'genocide' 9 September 2004 (first sitting US official for ongoing conflict); AU deployed AMIS in 2004; AMIS was severely under-resourced. Death estimate of 200,000+ matches academic consensus. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Colin Powell declared 'genocide' 9 September 2004 (first sitting US official for ongoing conflict); AU deployed AMIS in 2004; AMIS was severely under-resourced. Death estimate of 200,000+ matches academic consensus. Core claims verified.",
+        "source": "https://www.pbs.org/newshour/politics/africa-july-dec04-sudan_09-09",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.pbs.org/newshour/politics/africa-july-dec04-sudan_09-09"
   },
   {
@@ -452,6 +1604,24 @@
     "title": "Comprehensive Peace Agreement Ends Second Civil War",
     "verdict": "TRUE",
     "reason": "Confirmed — CPA signed 9 January 2005 in Nairobi; 22-year war ended; six-year interim period; 2011 referendum on independence; ~2 million deaths; John Garang became First VP. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — CPA signed 9 January 2005 in Nairobi; 22-year war ended; six-year interim period; 2011 referendum on independence; ~2 million deaths; John Garang became First VP. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Comprehensive_Peace_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Comprehensive_Peace_Agreement"
   },
   {
@@ -459,6 +1629,24 @@
     "title": "John Garang Dies in Helicopter Crash",
     "verdict": "TRUE",
     "reason": "Confirmed — Garang died 30 July 2005 in helicopter crash in mountains on Sudanese-Ugandan border; three weeks after becoming VP; riots erupted in Khartoum; Salva Kiir succeeded him. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Garang died 30 July 2005 in helicopter crash in mountains on Sudanese-Ugandan border; three weeks after becoming VP; riots erupted in Khartoum; Salva Kiir succeeded him. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/John_Garang",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/John_Garang"
   },
   {
@@ -466,6 +1654,24 @@
     "title": "Darfur Peace Agreement Rejected; Sudan Blocks UN Peacekeeping Force",
     "verdict": "TRUE",
     "reason": "Confirmed — Abuja DPA signed May 2006 rejected by JEM and SLA-Abdul Wahid faction; Sudan blocked UN takeover of AU mission; China and Russia provided Security Council cover. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Abuja DPA signed May 2006 rejected by JEM and SLA-Abdul Wahid faction; Sudan blocked UN takeover of AU mission; China and Russia provided Security Council cover. Core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Darfur_Peace_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Darfur_Peace_Agreement"
   },
   {
@@ -473,6 +1679,24 @@
     "title": "ICC Warrants Sought for Darfur; UNAMID Hybrid Force Authorized",
     "verdict": "TRUE",
     "reason": "Confirmed — ICC Prosecutor sought Bashir arrest warrant in 2007-2008 (first warrant issued March 2009); UNAMID authorized by UN Security Council in 2007; Sudan's obstruction hampered deployment. Core claims verified; note warrant requested 2007, first issued 2009.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — ICC Prosecutor sought Bashir arrest warrant in 2007-2008 (first warrant issued March 2009); UNAMID authorized by UN Security Council in 2007; Sudan's obstruction hampered deployment. Core claims verified; note warrant requested 2007, first issued 2009.",
+        "source": "https://www.icc-cpi.int/darfur/albashir",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.icc-cpi.int/darfur/albashir"
   },
   {
@@ -480,6 +1704,24 @@
     "title": "ICC Arrest Warrant for Bashir; JEM Attacks Khartoum",
     "verdict": "FALSE",
     "reason": "Wrong year for ICC warrant. The ICC issued Bashir's first arrest warrant on 4 March 2009, not 2008. The ICC prosecutor requested the warrant in July 2008. The JEM raid on Omdurman in 2008 is confirmed. The event conflates the 2008 warrant request with the 2009 issuance.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Wrong year for ICC warrant. The ICC issued Bashir's first arrest warrant on 4 March 2009, not 2008. The ICC prosecutor requested the warrant in July 2008. The JEM raid on Omdurman in 2008 is confirmed. The event conflates the 2008 warrant request with the 2009 issuance.",
+        "source": "https://www.icc-cpi.int/darfur/albashir",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.icc-cpi.int/darfur/albashir"
   },
   {
@@ -487,6 +1729,24 @@
     "title": "Bashir Defies ICC with Arab-African Support; Referendum Preparations Begin",
     "verdict": "TRUE",
     "reason": "Confirmed — Bashir travelled to Arab and African countries that refused to enforce ICC warrant; Arab League and AU characterized ICC as neo-colonial tool; referendum preparations for 2011 began with international technical assistance. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Bashir travelled to Arab and African countries that refused to enforce ICC warrant; Arab League and AU characterized ICC as neo-colonial tool; referendum preparations for 2011 began with international technical assistance. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Omar_al-Bashir",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Omar_al-Bashir"
   },
   {
@@ -494,6 +1754,24 @@
     "title": "Presidential Elections and Referendum Preparations",
     "verdict": "TRUE",
     "reason": "Confirmed — April 2010 elections (first multiparty in 24 years); Bashir officially won 68% amid opposition boycotts; voter registration for 2011 referendum including diaspora documented. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — April 2010 elections (first multiparty in 24 years); Bashir officially won 68% amid opposition boycotts; voter registration for 2011 referendum including diaspora documented. Core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Elections_in_Sudan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Elections_in_Sudan"
   },
   {
@@ -501,6 +1779,24 @@
     "title": "South Sudan Independence Referendum — 98.8% Vote Yes; Republic of South Sudan Proclaimed",
     "verdict": "TRUE",
     "reason": "Confirmed — Referendum 9-15 January 2011; 98.83% voted for independence; 97.58% turnout; Republic of South Sudan proclaimed 9 July 2011; Sudan lost ~75% of oil production. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Referendum 9-15 January 2011; 98.83% voted for independence; 97.58% turnout; Republic of South Sudan proclaimed 9 July 2011; Sudan lost ~75% of oil production. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/2011_South_Sudanese_independence_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2011_South_Sudanese_independence_referendum"
   },
   {
@@ -508,6 +1804,24 @@
     "title": "Sudan-South Sudan Border Conflict over Abyei and Oil; Austerity Protests",
     "verdict": "TRUE",
     "reason": "Confirmed — South Sudan briefly occupied Heglig oil field in April 2012 before withdrawing under pressure; AU mediated oil transit agreement; large-scale street protests in Khartoum June 2012 against austerity. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — South Sudan briefly occupied Heglig oil field in April 2012 before withdrawing under pressure; AU mediated oil transit agreement; large-scale street protests in Khartoum June 2012 against austerity. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Heglig_Crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Heglig_Crisis"
   },
   {
@@ -515,6 +1829,24 @@
     "title": "Severe Economic Crisis and September Protests Violently Suppressed",
     "verdict": "TRUE",
     "reason": "Confirmed — September 2013 protests against fuel subsidy cuts; security forces killed at least 170-185+ people using live ammunition; protests in Khartoum, Omdurman, Kassala, Nyala. Currency devaluation and 40%+ inflation documented. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — September 2013 protests against fuel subsidy cuts; security forces killed at least 170-185+ people using live ammunition; protests in Khartoum, Omdurman, Kassala, Nyala. Currency devaluation and 40%+ inflation documented. All core claims verified.",
+        "source": "https://www.hrw.org/report/2014/04/21/we-stood-they-opened-fire/killings-and-arrests-sudans-security-forces-during",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/report/2014/04/21/we-stood-they-opened-fire/killings-and-arrests-sudans-security-forces-during"
   },
   {
@@ -522,6 +1854,24 @@
     "title": "Renewed Darfur Violence; Peripheral Peace Talks Fail",
     "verdict": "TRUE",
     "reason": "Confirmed — Renewed Darfur violence and RSF attacks documented in 2014; UNAMID access restrictions; Addis Ababa peace talks with Darfur/South Kordofan/Blue Nile rebels made minimal progress. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Renewed Darfur violence and RSF attacks documented in 2014; UNAMID access restrictions; Addis Ababa peace talks with Darfur/South Kordofan/Blue Nile rebels made minimal progress. Core claims verified.",
+        "source": "https://www.hrw.org/world-report/2013/country-chapters/sudan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/world-report/2013/country-chapters/sudan"
   },
   {
@@ -529,6 +1879,24 @@
     "title": "Bashir Wins Boycotted Election; RSF Formally Created from Janjaweed",
     "verdict": "TRUE",
     "reason": "Confirmed — Bashir won April 2015 election with ~94% amid opposition boycott. RSF: operationally created in 2013; formal legal codification via RSF Act occurred in 2017 (not 2015). The 2015 date for RSF 'formal creation' is inaccurate — it was legally codified in 2017. The election boycott claim is fully verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Bashir won April 2015 election with ~94% amid opposition boycott. RSF: operationally created in 2013; formal legal codification via RSF Act occurred in 2017 (not 2015). The 2015 date for RSF 'formal creation' is inaccurate — it was legally codified in 2017. The election boycott claim is fully verified.",
+        "source": "https://www.aljazeera.com/news/2015/4/27/more-of-the-same-bashir-sweeps-sudan-election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2015/4/27/more-of-the-same-bashir-sweeps-sudan-election"
   },
   {
@@ -536,6 +1904,24 @@
     "title": "Sudan's Economy Continues Deterioration Amid Ongoing Peripheral Conflicts",
     "verdict": "TRUE",
     "reason": "Confirmed — Economic deterioration with 30%+ inflation documented; continued fighting in South Kordofan/Blue Nile with aerial bombardment of civilian areas documented; UNAMID access restrictions noted. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Economic deterioration with 30%+ inflation documented; continued fighting in South Kordofan/Blue Nile with aerial bombardment of civilian areas documented; UNAMID access restrictions noted. Core claims verified.",
+        "source": "https://www.state.gov/reports/2016-country-reports-on-human-rights-practices/sudan/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.state.gov/reports/2016-country-reports-on-human-rights-practices/sudan/"
   },
   {
@@ -543,6 +1929,24 @@
     "title": "US Partially Lifts Sudan Sanctions",
     "verdict": "FALSE",
     "reason": "Misdescribed. The Obama administration partially eased sanctions in January 2017 (6-month trial) and then the Trump administration fully lifted them in October 2017 — not merely 'partially lifted' as described. Also, this was not just Obama's final days — it was completed under Trump. The event title says 'partially lifts' but the October 2017 action was a full lift.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Misdescribed. The Obama administration partially eased sanctions in January 2017 (6-month trial) and then the Trump administration fully lifted them in October 2017 — not merely 'partially lifted' as described. Also, this was not just Obama's final days — it was completed under Trump. The event title says 'partially lifts' but the October 2017 action was a full lift.",
+        "source": "https://www.washingtonpost.com/world/national-security/us-lifts-sanctions-on-sudan-ending-two-decades-of-embargo/2017/10/06/aac1bd22-86d5-434e-9a21-1e0d57a72cb0_story.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.washingtonpost.com/world/national-security/us-lifts-sanctions-on-sudan-ending-two-decades-of-embargo/2017/10/06/aac1bd22-86d5-434e-9a21-1e0d57a72cb0_story.html"
   },
   {
@@ -550,6 +1954,24 @@
     "title": "December Revolution Begins — Bread Protests Ignite Uprising Against Bashir",
     "verdict": "TRUE",
     "reason": "Confirmed — Protests began 19 December 2018 in Atbara after bread price tripled; rapidly spread nationwide; SPA emerged as key organizer; 'tasqut bas' slogan documented. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Protests began 19 December 2018 in Atbara after bread price tripled; rapidly spread nationwide; SPA emerged as key organizer; 'tasqut bas' slogan documented. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/2019_Sudanese_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2019_Sudanese_coup_d'%C3%A9tat"
   },
   {
@@ -557,6 +1979,24 @@
     "title": "Sudan Revolution — Bashir Overthrown After 30 Years",
     "verdict": "TRUE",
     "reason": "Confirmed — Bashir removed 11 April 2019; Ibn Auf announced removal (not 'Defense Minister Ibn Auf' precisely — he was both VP and Defense Minister); Bashir arrested; Constitutional Declaration establishing Sovereignty Council and civilian PM Hamdok signed. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Bashir removed 11 April 2019; Ibn Auf announced removal (not 'Defense Minister Ibn Auf' precisely — he was both VP and Defense Minister); Bashir arrested; Constitutional Declaration establishing Sovereignty Council and civilian PM Hamdok signed. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/2019_Sudanese_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2019_Sudanese_coup_d'%C3%A9tat"
   },
   {
@@ -564,6 +2004,24 @@
     "title": "June 3 Massacre by RSF Forces",
     "verdict": "TRUE",
     "reason": "Confirmed — RSF cleared sit-in on 3 June 2019; Sudanese Doctors Syndicate reported 124 killed (some sources say 128+); bodies thrown into the Nile; widespread sexual violence documented; AU suspended Sudan. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — RSF cleared sit-in on 3 June 2019; Sudanese Doctors Syndicate reported 124 killed (some sources say 128+); bodies thrown into the Nile; widespread sexual violence documented; AU suspended Sudan. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Khartoum_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Khartoum_massacre"
   },
   {
@@ -571,6 +2029,24 @@
     "title": "Abraham Accords Normalization with Israel; Juba Peace Agreement",
     "verdict": "TRUE",
     "reason": "Confirmed — Sudan agreed to normalize with Israel October 2020; removed from terrorism sponsor list; Juba Peace Agreement signed with armed movements in 2020; Hamdok government initiated IMF-supported economic reforms. Note: Sudan signed declaration but not full normalization documents unlike UAE/Bahrain. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Sudan agreed to normalize with Israel October 2020; removed from terrorism sponsor list; Juba Peace Agreement signed with armed movements in 2020; Hamdok government initiated IMF-supported economic reforms. Note: Sudan signed declaration but not full normalization documents unlike UAE/Bahrain. Core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Israel%E2%80%93Sudan_normalization_agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Israel%E2%80%93Sudan_normalization_agreement"
   },
   {
@@ -578,6 +2054,24 @@
     "title": "October 25 Military Coup — Generals Seize Power; Resistance Committees Mobilize",
     "verdict": "TRUE",
     "reason": "Confirmed — Burhan coup on 25 October 2021; Hamdok arrested; RSF/Hemetti participated; international aid suspended; resistance committees organized civil disobedience; 100+ protesters killed. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Burhan coup on 25 October 2021; Hamdok arrested; RSF/Hemetti participated; international aid suspended; resistance committees organized civil disobedience; 100+ protesters killed. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/2021_Sudanese_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2021_Sudanese_coup_d'%C3%A9tat"
   },
   {
@@ -585,6 +2079,24 @@
     "title": "Hamdok Resigns; Political Deadlock and Human Rights Crisis",
     "verdict": "TRUE",
     "reason": "Confirmed — Hamdok resigned 2 January 2022 after short-lived return deal proved unworkable; 120+ protesters killed throughout 2022; UN Framework Agreement in December 2022 documented. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — Hamdok resigned 2 January 2022 after short-lived return deal proved unworkable; 120+ protesters killed throughout 2022; UN Framework Agreement in December 2022 documented. All core claims verified.",
+        "source": "https://www.aljazeera.com/news/2022/1/2/sudan-pm-abdalla-hamdok-resigns-after-deadly-protest",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.aljazeera.com/news/2022/1/2/sudan-pm-abdalla-hamdok-resigns-after-deadly-protest"
   },
   {
@@ -592,6 +2104,24 @@
     "title": "RSF-SAF Civil War Erupts — April 15",
     "verdict": "TRUE",
     "reason": "Confirmed — War erupted 15 April 2023; dispute over RSF integration timeline (RSF wanted 10 years, SAF wanted 2); Khartoum became battlefield; spread to Darfur. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — War erupted 15 April 2023; dispute over RSF integration timeline (RSF wanted 10 years, SAF wanted 2); Khartoum became battlefield; spread to Darfur. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Sudanese_civil_war_(2023%E2%80%93present)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sudanese_civil_war_(2023%E2%80%93present)"
   },
   {
@@ -599,6 +2129,24 @@
     "title": "El Fasher and Darfur Atrocities — Genocide Renewed",
     "verdict": "TRUE",
     "reason": "Confirmed — RSF systematically attacked Masalit in El Geneina; governor Khamis Abakar shot dead after accusing RSF of genocide; UN panel estimates 10,000-15,000 Masalit killed; El Fasher remained under SAF control. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — RSF systematically attacked Masalit in El Geneina; governor Khamis Abakar shot dead after accusing RSF of genocide; UN panel estimates 10,000-15,000 Masalit killed; El Fasher remained under SAF control. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Masalit_genocide",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Masalit_genocide"
   },
   {
@@ -606,6 +2154,24 @@
     "title": "Humanitarian Catastrophe — World's Worst Displacement Crisis",
     "verdict": "TRUE",
     "reason": "Confirmed — By end 2023, Sudan had 9+ million IDPs (world's largest internal displacement crisis); over 1.5 million refugees to neighboring countries. The 6.5 million IDP figure in the event is conservative; actual figures were higher. Core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — By end 2023, Sudan had 9+ million IDPs (world's largest internal displacement crisis); over 1.5 million refugees to neighboring countries. The 6.5 million IDP figure in the event is conservative; actual figures were higher. Core claims verified.",
+        "source": "https://www.unocha.org/publications/report/sudan/sudan-one-year-conflict-key-facts-and-figures-15-april-2024",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.unocha.org/publications/report/sudan/sudan-one-year-conflict-key-facts-and-figures-15-april-2024"
   },
   {
@@ -613,6 +2179,24 @@
     "title": "Famine Declared in Sudan",
     "verdict": "TRUE",
     "reason": "Confirmed — IPC famine declared in North Darfur (Zamzam camp) on 1 August 2024; first famine declaration in years; children dying of malnutrition; RSF and SAF blockades compound crisis. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — IPC famine declared in North Darfur (Zamzam camp) on 1 August 2024; first famine declaration in years; children dying of malnutrition; RSF and SAF blockades compound crisis. All core claims verified.",
+        "source": "https://www.wfp.org/news/famine-confirmed-sudans-north-darfur-confirming-un-agencies-worst-fears",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.wfp.org/news/famine-confirmed-sudans-north-darfur-confirming-un-agencies-worst-fears"
   },
   {
@@ -620,6 +2204,24 @@
     "title": "Sudan War Enters Third Year — International Accountability Efforts",
     "verdict": "TRUE",
     "reason": "Confirmed — War entered third year April 2025; estimated 150,000 killed; 11+ million displaced; ICC expanded investigations; US and UK imposed sanctions on RSF commanders; multiple ceasefire attempts failed. All core claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed — War entered third year April 2025; estimated 150,000 killed; 11+ million displaced; ICC expanded investigations; US and UK imposed sanctions on RSF commanders; multiple ceasefire attempts failed. All core claims verified.",
+        "source": "https://en.wikipedia.org/wiki/Sudanese_civil_war_(2023%E2%80%93present)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sudanese_civil_war_(2023%E2%80%93present)"
   }
 ]

@@ -4,6 +4,24 @@
     "title": "Mass Jewish Emigration from Iraq",
     "verdict": "TRUE",
     "reason": "Denaturalization Law passed March 1950. Operation Ezra and Nehemiah airlifted ~120,000 Iraqi Jews 1950-1951. Well documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Denaturalization Law passed March 1950. Operation Ezra and Nehemiah airlifted ~120,000 Iraqi Jews 1950-1951. Well documented.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Ezra_and_Nehemiah",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Ezra_and_Nehemiah"
   },
   {
@@ -11,6 +29,24 @@
     "title": "IPC Oil Royalties Renegotiated — 50/50 Profit Sharing",
     "verdict": "TRUE",
     "reason": "IPC conceded 50-50 split on 14 February 1952, retroactive to January 1951. Minor year nuance: negotiated 1951-52, formalized Feb 1952. Event year 1951 is defensible as onset of negotiations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "IPC conceded 50-50 split on 14 February 1952, retroactive to January 1951. Minor year nuance: negotiated 1951-52, formalized Feb 1952. Event year 1951 is defensible as onset of negotiations.",
+        "source": "https://en.wikipedia.org/wiki/Iraq_Petroleum_Company",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Iraq_Petroleum_Company"
   },
   {
@@ -18,6 +54,24 @@
     "title": "November Uprising — Intifada of 1952",
     "verdict": "TRUE",
     "reason": "Confirmed. November 1952 protests against monarchy; government declared martial law, shut down parties, detained leaders.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. November 1952 protests against monarchy; government declared martial law, shut down parties, detained leaders.",
+        "source": "https://en.wikipedia.org/wiki/Iraqi_Intifada_(1952)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Iraqi_Intifada_(1952)"
   },
   {
@@ -25,6 +79,24 @@
     "title": "King Faisal II Assumes the Throne",
     "verdict": "TRUE",
     "reason": "Faisal II attained his majority and commenced active rule on 2 May 1953, aged 18. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Faisal II attained his majority and commenced active rule on 2 May 1953, aged 18. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/Faisal_II",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Faisal_II"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Baghdad Development Board's Five-Year Plan",
     "verdict": "TRUE",
     "reason": "Development Board established 1950 and ran five-year plans prioritizing agriculture, transport, construction. The description placing emphasis on the mid-1950s plan is consistent with sources. Year is approximate but correct era.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Development Board established 1950 and ran five-year plans prioritizing agriculture, transport, construction. The description placing emphasis on the mid-1950s plan is consistent with sources. Year is approximate but correct era.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Iraq",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Iraq"
   },
   {
@@ -39,6 +129,24 @@
     "title": "Iraq Joins the Baghdad Pact",
     "verdict": "TRUE",
     "reason": "Baghdad Pact signed 24 February 1955 by Iraq and Turkey; UK, Pakistan, Iran joined same year. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Baghdad Pact signed 24 February 1955 by Iraq and Turkey; UK, Pakistan, Iran joined same year. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Central_Treaty_Organization",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Central_Treaty_Organization"
   },
   {
@@ -46,6 +154,24 @@
     "title": "Suez Crisis Inflames Iraqi Public Opinion",
     "verdict": "TRUE",
     "reason": "Confirmed. Mass protests in Baghdad; Hashemite government's pro-British position severely eroded its legitimacy. Category listed as 'bilateral_treaty' is wrong — should be 'mass_protest' or 'diplomatic_rupture' — but the event itself is real.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Mass protests in Baghdad; Hashemite government's pro-British position severely eroded its legitimacy. Category listed as 'bilateral_treaty' is wrong — should be 'mass_protest' or 'diplomatic_rupture' — but the event itself is real.",
+        "source": "https://en.wikipedia.org/wiki/Suez_Crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Suez_Crisis"
   },
   {
@@ -53,6 +179,24 @@
     "title": "14 July Revolution — Monarchy Overthrown",
     "verdict": "TRUE",
     "reason": "Confirmed. Qasim and Arif led the coup on 14 July 1958; Faisal II, Abd al-Ilah, and Nuri al-Said killed. Iraq declared republic.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Qasim and Arif led the coup on 14 July 1958; Faisal II, Abd al-Ilah, and Nuri al-Said killed. Iraq declared republic.",
+        "source": "https://en.wikipedia.org/wiki/14_July_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/14_July_Revolution"
   },
   {
@@ -60,6 +204,24 @@
     "title": "Agrarian Reform Law Issued",
     "verdict": "TRUE",
     "reason": "Confirmed. Agrarian Reform Law of September 1958 capped landholdings and redistributed land. Well documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Agrarian Reform Law of September 1958 capped landholdings and redistributed land. Well documented.",
+        "source": "https://www.britannica.com/topic/Agrarian-Reform-Law-1958-Iraq",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.britannica.com/topic/Agrarian-Reform-Law-1958-Iraq"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Failed Ba'athist Assassination Attempt on Qasim",
     "verdict": "TRUE",
     "reason": "Confirmed. Ambush on Al-Rashid Street, 7 October 1959. Saddam participated, fled to Syria then Egypt. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Ambush on Al-Rashid Street, 7 October 1959. Saddam participated, fled to Syria then Egypt. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/Attempted_assassination_of_Abdul-Karim_Qasim",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Attempted_assassination_of_Abdul-Karim_Qasim"
   },
   {
@@ -74,6 +254,24 @@
     "title": "OPEC Founded with Iraqi Participation",
     "verdict": "TRUE",
     "reason": "Confirmed. OPEC founded in Baghdad 10-14 September 1960 by Iraq, Iran, Kuwait, Saudi Arabia, Venezuela.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. OPEC founded in Baghdad 10-14 September 1960 by Iraq, Iran, Kuwait, Saudi Arabia, Venezuela.",
+        "source": "https://www.opec.org/opec_web/en/about_us/24.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.opec.org/opec_web/en/about_us/24.htm"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Kurdish Revolt Begins under Mustafa Barzani",
     "verdict": "TRUE",
     "reason": "Confirmed. First Iraqi-Kurdish War erupted 11 September 1961. Barzani and KDP led the uprising.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. First Iraqi-Kurdish War erupted 11 September 1961. Barzani and KDP led the uprising.",
+        "source": "https://en.wikipedia.org/wiki/First_Iraqi%E2%80%93Kurdish_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/First_Iraqi%E2%80%93Kurdish_War"
   },
   {
@@ -88,6 +304,24 @@
     "title": "Iraq Claims Kuwait at Independence",
     "verdict": "TRUE",
     "reason": "Confirmed. Kuwait gained independence June 19 1961; Qasim claimed Kuwait as part of Iraq on June 25 citing Ottoman vilayet of Basra.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Kuwait gained independence June 19 1961; Qasim claimed Kuwait as part of Iraq on June 25 citing Ottoman vilayet of Basra.",
+        "source": "https://en.wikipedia.org/wiki/History_of_Kuwait",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/History_of_Kuwait"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Ba'ath Party Seizes Power — Qasim Killed",
     "verdict": "TRUE",
     "reason": "Confirmed. Ba'ath coup 8 February 1963; Qasim killed. CIA intelligence assistance claimed but disputed. Event itself solid.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Ba'ath coup 8 February 1963; Qasim killed. CIA intelligence assistance claimed but disputed. Event itself solid.",
+        "source": "https://en.wikipedia.org/wiki/Ramadan_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Ramadan_Revolution"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Ba'athist Massacre of Iraqi Communists",
     "verdict": "TRUE",
     "reason": "Confirmed. Post-coup Ba'athist National Guard hunted down and killed hundreds of communists. CIA-provided lists claim is contested but the massacre is documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Post-coup Ba'athist National Guard hunted down and killed hundreds of communists. CIA-provided lists claim is contested but the massacre is documented.",
+        "source": "https://archive.globalpolicy.org/security/issues/iraq/history/1963cialist.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://archive.globalpolicy.org/security/issues/iraq/history/1963cialist.htm"
   },
   {
@@ -109,6 +379,24 @@
     "title": "First Ba'ath Regime Collapses — Arif Takes Power",
     "verdict": "TRUE",
     "reason": "Confirmed. November 13-18 1963 counter-coup; Arif ousted Ba'athists after nine months.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. November 13-18 1963 counter-coup; Arif ousted Ba'athists after nine months.",
+        "source": "https://en.wikipedia.org/wiki/November_1963_Iraqi_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/November_1963_Iraqi_coup_d'%C3%A9tat"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Economic Nationalizations under Arif",
     "verdict": "TRUE",
     "reason": "Confirmed. Arif nationalized banks, insurance companies, and ~30 industrial firms in 1964, following Egyptian model.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Arif nationalized banks, insurance companies, and ~30 industrial firms in 1964, following Egyptian model.",
+        "source": "https://www.globalsecurity.org/military/world/iraq/history-republic-2.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.globalsecurity.org/military/world/iraq/history-republic-2.htm"
   },
   {
@@ -123,6 +429,24 @@
     "title": "Iraq in the Six-Day War",
     "verdict": "TRUE",
     "reason": "Confirmed. Iraqi armored and commando units deployed to Jordan; minimal combat before ceasefire. Category 'civil_war_and_insurgency' is inaccurate — it was an interstate war — but factual content is correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Iraqi armored and commando units deployed to Jordan; minimal combat before ceasefire. Category 'civil_war_and_insurgency' is inaccurate — it was an interstate war — but factual content is correct.",
+        "source": "https://en.wikipedia.org/wiki/Six-Day_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Six-Day_War"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Ba'ath Party Returns to Power — July Revolution",
     "verdict": "TRUE",
     "reason": "Confirmed. 17 July 1968 coup; al-Bakr became president; Saddam deputy chairman of RCC. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. 17 July 1968 coup; al-Bakr became president; Saddam deputy chairman of RCC. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/17_July_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/17_July_Revolution"
   },
   {
@@ -137,6 +479,24 @@
     "title": "March 1970 Manifesto — Kurdish Autonomy Agreement",
     "verdict": "TRUE",
     "reason": "Confirmed. March 11 Manifesto signed 1970, promising Kurdish autonomy in four years, recognizing Kurdish language.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. March 11 Manifesto signed 1970, promising Kurdish autonomy in four years, recognizing Kurdish language.",
+        "source": "https://en.wikipedia.org/wiki/Iraqi%E2%80%93Kurdish_Autonomy_Agreement_of_1970",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Iraqi%E2%80%93Kurdish_Autonomy_Agreement_of_1970"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Nationalization of Iraq Petroleum Company",
     "verdict": "TRUE",
     "reason": "Confirmed. IPC nationalized 1 June 1972 with Soviet technical support. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. IPC nationalized 1 June 1972 with Soviet technical support. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/Iraq_Petroleum_Company",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Iraq_Petroleum_Company"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Iraqi-Soviet Friendship Treaty Signed",
     "verdict": "TRUE",
     "reason": "Confirmed. Treaty of Friendship and Cooperation signed 9 April 1972 in Baghdad by Kosygin and al-Bakr. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Treaty of Friendship and Cooperation signed 9 April 1972 in Baghdad by Kosygin and al-Bakr. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/Iraq%E2%80%93Russia_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Iraq%E2%80%93Russia_relations"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Oil Price Shock — Revenue Windfall and Ba'ath Consolidation",
     "verdict": "TRUE",
     "reason": "Confirmed. 1973 Arab oil embargo quadrupled prices; Iraq's oil revenues surged dramatically funding military and social programs.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. 1973 Arab oil embargo quadrupled prices; Iraq's oil revenues surged dramatically funding military and social programs.",
+        "source": "https://en.wikipedia.org/wiki/1973_oil_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1973_oil_crisis"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Kurdish Autonomy Agreement Collapses — War Resumes",
     "verdict": "TRUE",
     "reason": "Confirmed. March 1974 deadline passed without genuine implementation; Ba'ath offered limited autonomy excluding Kirkuk; Barzani rejected it and renewed war with Iranian backing.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. March 1974 deadline passed without genuine implementation; Ba'ath offered limited autonomy excluding Kirkuk; Barzani rejected it and renewed war with Iranian backing.",
+        "source": "https://en.wikipedia.org/wiki/Second_Iraqi%E2%80%93Kurdish_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Second_Iraqi%E2%80%93Kurdish_War"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Arabization and Mass Displacement of Kurds",
     "verdict": "TRUE",
     "reason": "Confirmed. Arabization of Kirkuk and border zones began mid-1970s; hundreds of thousands displaced. HRW and UN documented extensively.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Arabization of Kirkuk and border zones began mid-1970s; hundreds of thousands displaced. HRW and UN documented extensively.",
+        "source": "https://www.hrw.org/reports/2004/iraq0804/4.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/reports/2004/iraq0804/4.htm"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Algiers Accord — Iran Ends Kurdish Support",
     "verdict": "TRUE",
     "reason": "Confirmed. Algiers Accord signed 6 March 1975 by Saddam and Shah; Iran cut Kurdish support; revolt collapsed within weeks.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Algiers Accord signed 6 March 1975 by Saddam and Shah; Iran cut Kurdish support; revolt collapsed within weeks.",
+        "source": "https://en.wikipedia.org/wiki/1975_Algiers_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1975_Algiers_Agreement"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Ba'ath Literacy Campaign and Social Development",
     "verdict": "TRUE",
     "reason": "Confirmed. National literacy campaign 1976-1982 recognized by UNESCO; compulsory education law passed; illiteracy reduced substantially. Year 1976 is accurate as campaign launch.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. National literacy campaign 1976-1982 recognized by UNESCO; compulsory education law passed; illiteracy reduced substantially. Year 1976 is accurate as campaign launch.",
+        "source": "https://unesdoc.unesco.org/ark:/48223/pf0000066879",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://unesdoc.unesco.org/ark:/48223/pf0000066879"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Shia Pilgrimage Protests — Safar Intifada",
     "verdict": "TRUE",
     "reason": "Confirmed. February 1977 Arbaeen protests between Najaf and Karbala; government executed eight demonstrators. Title says 'Safar' but event was Arbaeen (Muharram/Safar commemoration period) — minor label issue but factually correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. February 1977 Arbaeen protests between Najaf and Karbala; government executed eight demonstrators. Title says 'Safar' but event was Arbaeen (Muharram/Safar commemoration period) — minor label issue but factually correct.",
+        "source": "https://en.wikipedia.org/wiki/1977_Shia_uprising_in_Iraq",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1977_Shia_uprising_in_Iraq"
   },
   {
@@ -200,6 +704,24 @@
     "title": "Saddam Hussein Becomes President — Ba'ath Purge",
     "verdict": "TRUE",
     "reason": "Confirmed. Saddam became president 16 July 1979; purge conducted 22 July; 22 Ba'athists sentenced to death, executed by fellow party members. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Saddam became president 16 July 1979; purge conducted 22 July; 22 Ba'athists sentenced to death, executed by fellow party members. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/1979_Ba'ath_Party_Purge",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1979_Ba'ath_Party_Purge"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Ayatollah Muhammad Baqir al-Sadr Executed",
     "verdict": "FALSE",
     "reason": "YEAR ERROR. Al-Sadr was arrested and executed on 9 April 1980, not 1979. He was arrested after the Iranian Revolution influenced Iraqi Shia unrest. The file places this in 1979 which is incorrect — execution was 1980.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "YEAR ERROR. Al-Sadr was arrested and executed on 9 April 1980, not 1979. He was arrested after the Iranian Revolution influenced Iraqi Shia unrest. The file places this in 1979 which is incorrect — execution was 1980.",
+        "source": "https://en.wikipedia.org/wiki/Muhammad_Baqir_al-Sadr",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Muhammad_Baqir_al-Sadr"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Iran-Iraq War Begins",
     "verdict": "TRUE",
     "reason": "Confirmed. Iraqi invasion launched 22 September 1980. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Iraqi invasion launched 22 September 1980. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/Iran%E2%80%93Iraq_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Iran%E2%80%93Iraq_War"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Israel Destroys Iraq's Osirak Nuclear Reactor",
     "verdict": "TRUE",
     "reason": "Confirmed. Operation Opera, 7 June 1981. Israeli F-16s destroyed Osirak. Category 'civil_war_and_insurgency' is incorrect (it was a foreign airstrike) but event is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Operation Opera, 7 June 1981. Israeli F-16s destroyed Osirak. Category 'civil_war_and_insurgency' is incorrect (it was a foreign airstrike) but event is accurate.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Opera",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Opera"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Chemical Weapons Deployed Against Iran",
     "verdict": "FALSE",
     "reason": "YEAR ERROR. Iraq used riot-control agents in 1982 but first deployed actual chemical weapons (mustard gas) in mid-1983, confirmed by UN inspectors in March 1984. Describing 1982 as 'chemical weapons deployed' overstates what happened that year. First verified mustard gas battlefield use was 1983. The event should be dated 1983.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "YEAR ERROR. Iraq used riot-control agents in 1982 but first deployed actual chemical weapons (mustard gas) in mid-1983, confirmed by UN inspectors in March 1984. Describing 1982 as 'chemical weapons deployed' overstates what happened that year. First verified mustard gas battlefield use was 1983. The event should be dated 1983.",
+        "source": "https://en.wikipedia.org/wiki/Iraqi_chemical_weapons_program",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Iraqi_chemical_weapons_program"
   },
   {
@@ -235,6 +829,24 @@
     "title": "Barzani Clan Members Massacred",
     "verdict": "TRUE",
     "reason": "Confirmed. 31 July 1983: ~8,000 Barzani men and boys arrested; later executed in mass graves near Saudi border. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. 31 July 1983: ~8,000 Barzani men and boys arrested; later executed in mass graves near Saudi border. Accurate.",
+        "source": "https://www.pbs.org/frontlineworld/stories/iraq501/events_barzanis.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.pbs.org/frontlineworld/stories/iraq501/events_barzanis.html"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Tanker War in the Persian Gulf",
     "verdict": "TRUE",
     "reason": "Confirmed. Iraq escalated tanker attacks from March 1984 using French-supplied Super Etendards with Exocet missiles. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Iraq escalated tanker attacks from March 1984 using French-supplied Super Etendards with Exocet missiles. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/Tanker_war",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tanker_war"
   },
   {
@@ -249,6 +879,24 @@
     "title": "War of the Cities — Missile Strikes on Civilian Populations",
     "verdict": "TRUE",
     "reason": "Confirmed. Second campaign March-April 1985; Iraq struck Iranian cities with Scuds; Iran responded targeting Baghdad, Basra. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Second campaign March-April 1985; Iraq struck Iranian cities with Scuds; Iran responded targeting Baghdad, Basra. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/War_of_the_cities",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/War_of_the_cities"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Iraq's War Economy and Alternative Oil Routes",
     "verdict": "TRUE",
     "reason": "Confirmed. Iraq developed Turkey and Saudi Arabia pipelines; accumulated $80+ billion in war debt. The $80 billion figure for war debt is a common round number estimate and plausible.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Iraq developed Turkey and Saudi Arabia pipelines; accumulated $80+ billion in war debt. The $80 billion figure for war debt is a common round number estimate and plausible.",
+        "source": "https://www.nonproliferation.org/wp-content/uploads/npr/81ali.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nonproliferation.org/wp-content/uploads/npr/81ali.pdf"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Iran Captures Faw Peninsula",
     "verdict": "TRUE",
     "reason": "Confirmed. Operation Dawn 8 launched 9 February 1986; Iran captured Faw peninsula. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Operation Dawn 8 launched 9 February 1986; Iran captured Faw peninsula. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/First_Battle_of_al-Faw",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/First_Battle_of_al-Faw"
   },
   {
@@ -270,6 +954,24 @@
     "title": "Halabja Chemical Massacre",
     "verdict": "TRUE",
     "reason": "Confirmed. 16 March 1988 (primarily); file says '16-17' which is acceptable. 3,200-5,000 immediate deaths confirmed. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. 16 March 1988 (primarily); file says '16-17' which is acceptable. 3,200-5,000 immediate deaths confirmed. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/Halabja_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Halabja_massacre"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Anfal Genocide Against Iraqi Kurds",
     "verdict": "TRUE",
     "reason": "Confirmed. February-September 1988. Casualties: 50,000-182,000. Village count: event says '4,000 villages destroyed' — this figure refers to broader Kurdish repression 1975-1989; Anfal directly destroyed ~1,200 villages. The 4,000 figure is sometimes cited for the whole period and is used in Kurdish sources. Acceptable given framing.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. February-September 1988. Casualties: 50,000-182,000. Village count: event says '4,000 villages destroyed' — this figure refers to broader Kurdish repression 1975-1989; Anfal directly destroyed ~1,200 villages. The 4,000 figure is sometimes cited for the whole period and is used in Kurdish sources. Acceptable given framing.",
+        "source": "https://en.wikipedia.org/wiki/Anfal_campaign",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Anfal_campaign"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Iran-Iraq War Ends with UN Ceasefire",
     "verdict": "TRUE",
     "reason": "Confirmed. Iran accepted Resolution 598 on 17-18 July 1988 (sources vary by one day); ceasefire effective 20 August 1988. File says July 18 — within acceptable range.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Iran accepted Resolution 598 on 17-18 July 1988 (sources vary by one day); ceasefire effective 20 August 1988. File says July 18 — within acceptable range.",
+        "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_598",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_598"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "Post-War Economic Crisis and Kuwait Tensions",
     "verdict": "TRUE",
     "reason": "Confirmed. Post-war debt crisis; Iraq owed ~$14-37 billion to Gulf creditors; Rumaila slant-drilling dispute; Kuwait over-producing OPEC quota. All accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Post-war debt crisis; Iraq owed ~$14-37 billion to Gulf creditors; Rumaila slant-drilling dispute; Kuwait over-producing OPEC quota. All accurate.",
+        "source": "https://en.wikipedia.org/wiki/Iraqi_invasion_of_Kuwait",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Iraqi_invasion_of_Kuwait"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "Iraq Invades and Annexes Kuwait",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/Iraqi_invasion_of_Kuwait",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Iraqi_invasion_of_Kuwait"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "UN Comprehensive Sanctions Imposed on Iraq",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_661",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_661"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "Gulf War — Operation Desert Storm",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/Gulf_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Gulf_War"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Shia and Kurdish Uprisings Crushed — 1991 Intifada",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/1991_Iraqi_uprisings",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1991_Iraqi_uprisings"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "Kurdish Refugee Crisis and Northern No-Fly Zone",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Provide_Comfort",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Operation_Provide_Comfort"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "Kurdish Regional Government Established",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/1992_Kurdistan_Region_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1992_Kurdistan_Region_presidential_election"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "Oil-for-Food Program Negotiations Begin",
     "verdict": "FALSE",
     "reason": "YEAR/CONTENT MISMATCH. The event is dated 1993 but describes the Oil-for-Food program as established by Resolution 986 in April 1995 (signed MOU May 1996, first exports December 1996). The 1993 date is misleading — the UN proposed Resolution 706 in 1991, negotiations stalled for years, and the actual program didn't begin until 1995-1996. The description internally contradicts the 1993 year. Should be dated 1995 or 1996.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "YEAR/CONTENT MISMATCH. The event is dated 1993 but describes the Oil-for-Food program as established by Resolution 986 in April 1995 (signed MOU May 1996, first exports December 1996). The 1993 date is misleading — the UN proposed Resolution 706 in 1991, negotiations stalled for years, and the actual program didn't begin until 1995-1996. The description internally contradicts the 1993 year. Should be dated 1995 or 1996.",
+        "source": "https://en.wikipedia.org/wiki/Oil-for-Food_Programme",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Oil-for-Food_Programme"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "Intra-Kurdish Civil War",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/Iraqi_Kurdish_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Iraqi_Kurdish_Civil_War"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "UNSCOM Discovers Full Extent of Biological Weapons Program",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. Hussein Kamel defected August 1995; revealed BW program scale.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. Hussein Kamel defected August 1995; revealed BW program scale.",
+        "source": "https://en.wikipedia.org/wiki/Hussein_Kamel_al-Majid",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hussein_Kamel_al-Majid"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "Oil-for-Food Program Begins Operating",
     "verdict": "TRUE",
     "reason": "Pre-verified. MOU signed May 1996; first oil exports December 1996. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. MOU signed May 1996; first oil exports December 1996. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/Oil-for-Food_Programme",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Oil-for-Food_Programme"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Operation Desert Fox — US-UK Air Strikes",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/1998_bombing_of_Iraq",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1998_bombing_of_Iraq"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "Grand Ayatollah al-Sadr II Assassinated",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. Muhammad Sadiq al-Sadr assassinated 19 February 1999 in Najaf.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. Muhammad Sadiq al-Sadr assassinated 19 February 1999 in Najaf.",
+        "source": "https://en.wikipedia.org/wiki/Mohammed_al-Sadr",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mohammed_al-Sadr"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "9/11 Aftermath and Iraq in US War Planning",
     "verdict": "TRUE",
     "reason": "Pre-verified. Category listed as 'bilateral_treaty' is wrong for this event, but factual content is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Category listed as 'bilateral_treaty' is wrong for this event, but factual content is accurate.",
+        "source": "https://www.brookings.edu/articles/9-11-and-iraq-the-making-of-a-tragedy/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.brookings.edu/articles/9-11-and-iraq-the-making-of-a-tragedy/"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "UN Weapons Inspectors Return — UNMOVIC",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/Hans_Blix",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hans_Blix"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "US-Led Invasion of Iraq — Operation Iraqi Freedom",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/2003_invasion_of_Iraq",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2003_invasion_of_Iraq"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "De-Ba'athification and Army Dissolution",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. CPA Orders 1 and 2 dated May 16 and May 23 2003.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. CPA Orders 1 and 2 dated May 16 and May 23 2003.",
+        "source": "https://en.wikipedia.org/wiki/Coalition_Provisional_Authority_Order_2",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Coalition_Provisional_Authority_Order_2"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "Saddam Hussein Captured",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. Operation Red Dawn, 13 December 2003, near ad-Dawr.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. Operation Red Dawn, 13 December 2003, near ad-Dawr.",
+        "source": "https://en.wikipedia.org/wiki/Capture_of_Saddam_Hussein",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Capture_of_Saddam_Hussein"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "Abu Ghraib Prison Abuse Scandal",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/Abu_Ghraib_torture_and_prisoner_abuse",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Abu_Ghraib_torture_and_prisoner_abuse"
   },
   {
@@ -424,6 +1504,24 @@
     "title": "Battles of Fallujah and Sovereignty Transfer",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/Second_Battle_of_Fallujah",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Second_Battle_of_Fallujah"
   },
   {
@@ -431,6 +1529,24 @@
     "title": "Iraqi Elections, Constitution, and Shia Political Dominance",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/January_2005_Iraqi_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/January_2005_Iraqi_parliamentary_election"
   },
   {
@@ -438,6 +1554,24 @@
     "title": "Samarra Shrine Bombing Triggers Sectarian Civil War",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. 22 February 2006.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. 22 February 2006.",
+        "source": "https://en.wikipedia.org/wiki/2006_al-Askari_mosque_bombing",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2006_al-Askari_mosque_bombing"
   },
   {
@@ -445,6 +1579,24 @@
     "title": "Saddam Hussein Executed",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. 30 December 2006.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. 30 December 2006.",
+        "source": "https://en.wikipedia.org/wiki/Execution_of_Saddam_Hussein",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Execution_of_Saddam_Hussein"
   },
   {
@@ -452,6 +1604,24 @@
     "title": "US Troop Surge and Sunni Awakening",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/Iraq_War_troop_surge_of_2007",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Iraq_War_troop_surge_of_2007"
   },
   {
@@ -459,6 +1629,24 @@
     "title": "Battle of Basra and US-Iraq Status of Forces Agreement",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/U.S.%E2%80%93Iraq_Status_of_Forces_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/U.S.%E2%80%93Iraq_Status_of_Forces_Agreement"
   },
   {
@@ -466,6 +1654,24 @@
     "title": "Maliki Consolidates Sectarian Governance",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://carnegieendowment.org/research/2014/04/iraqs-sectarian-crisis-a-legacy-of-exclusion",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://carnegieendowment.org/research/2014/04/iraqs-sectarian-crisis-a-legacy-of-exclusion"
   },
   {
@@ -473,6 +1679,24 @@
     "title": "Iraqi Parliamentary Elections and Nine-Month Deadlock",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. Allawi 91, Maliki 89 seats.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. Allawi 91, Maliki 89 seats.",
+        "source": "https://en.wikipedia.org/wiki/2010_Iraqi_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2010_Iraqi_parliamentary_election"
   },
   {
@@ -480,6 +1704,24 @@
     "title": "US Forces Complete Withdrawal from Iraq",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. 18 December 2011.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. 18 December 2011.",
+        "source": "https://en.wikipedia.org/wiki/Withdrawal_of_United_States_troops_from_Iraq_(2007%E2%80%932011)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Withdrawal_of_United_States_troops_from_Iraq_(2007%E2%80%932011)"
   },
   {
@@ -487,6 +1729,24 @@
     "title": "ISIS Exploits Syrian Civil War to Rebuild",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://www.wilsoncenter.org/article/timeline-the-rise-spread-and-fall-the-islamic-state",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.wilsoncenter.org/article/timeline-the-rise-spread-and-fall-the-islamic-state"
   },
   {
@@ -494,6 +1754,24 @@
     "title": "Hawija Massacre and Sunni Insurgency Revival",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. 23 April 2013.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. 23 April 2013.",
+        "source": "https://en.wikipedia.org/wiki/2013_Hawija_clashes",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2013_Hawija_clashes"
   },
   {
@@ -501,6 +1779,24 @@
     "title": "ISIS Captures Mosul and Declares Caliphate",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/Fall_of_Mosul",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Fall_of_Mosul"
   },
   {
@@ -508,6 +1804,24 @@
     "title": "Yazidi Genocide on Sinjar Mountain",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. 3 August 2014.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. 3 August 2014.",
+        "source": "https://en.wikipedia.org/wiki/Yazidi_genocide",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Yazidi_genocide"
   },
   {
@@ -515,6 +1829,24 @@
     "title": "Maliki Replaced by Haider al-Abadi; US-Led Coalition Launches Airstrikes",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/Haider_al-Abadi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Haider_al-Abadi"
   },
   {
@@ -522,6 +1854,24 @@
     "title": "Counter-ISIS Campaign — Tikrit Retaken; ISIS at Peak Territorial Control",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/Second_Battle_of_Tikrit",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Second_Battle_of_Tikrit"
   },
   {
@@ -529,6 +1879,24 @@
     "title": "Battle of Fallujah and PMF Institutionalization",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/Third_Battle_of_Fallujah",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Third_Battle_of_Fallujah"
   },
   {
@@ -536,6 +1904,24 @@
     "title": "Battle of Mosul — ISIS Territorial Defeat Declared",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/Battle_of_Mosul_(2016%E2%80%932017)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Battle_of_Mosul_(2016%E2%80%932017)"
   },
   {
@@ -543,6 +1929,24 @@
     "title": "Kurdistan Independence Referendum Backfires",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. Barzani resigned 1 November 2017.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. Barzani resigned 1 November 2017.",
+        "source": "https://en.wikipedia.org/wiki/2017_Kurdistan_Region_independence_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2017_Kurdistan_Region_independence_referendum"
   },
   {
@@ -550,6 +1954,24 @@
     "title": "Post-ISIS Elections and Iran-Backed Parties Win",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.m.wikipedia.org/wiki/2018_Iraqi_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.m.wikipedia.org/wiki/2018_Iraqi_parliamentary_election"
   },
   {
@@ -557,6 +1979,24 @@
     "title": "Basra Protests Over Services and Contaminated Water",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://www.hrw.org/news/2019/07/22/iraq-water-crisis-basra",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.hrw.org/news/2019/07/22/iraq-water-crisis-basra"
   },
   {
@@ -564,6 +2004,24 @@
     "title": "Post-ISIS Reconstruction Crisis and Displacement",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://www.france24.com/en/20180214-allies-pledge-30-billion-rebuild-iraq-kuwait-short-88-billion-goal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.france24.com/en/20180214-allies-pledge-30-billion-rebuild-iraq-kuwait-short-88-billion-goal"
   },
   {
@@ -571,6 +2029,24 @@
     "title": "October Revolution — Mass Anti-Government Uprising",
     "verdict": "FALSE",
     "reason": "DETAIL ERROR. File says protests erupted 'on October 25, 2019' — but the Tishreen movement began on October 1, 2019, not October 25. October 25 was a significant escalation date but not the start. This is a factual error in the description.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "DETAIL ERROR. File says protests erupted 'on October 25, 2019' — but the Tishreen movement began on October 1, 2019, not October 25. October 25 was a significant escalation date but not the start. This is a factual error in the description.",
+        "source": "https://en.wikipedia.org/wiki/2019%E2%80%932021_Iraqi_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2019%E2%80%932021_Iraqi_protests"
   },
   {
@@ -578,6 +2054,24 @@
     "title": "Systematic Assassination of Protest Activists",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://www.washingtoninstitute.org/policy-analysis/ongoing-assassinations-iraqi-activists",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.washingtoninstitute.org/policy-analysis/ongoing-assassinations-iraqi-activists"
   },
   {
@@ -585,6 +2079,24 @@
     "title": "US Kills Soleimani at Baghdad Airport",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. 3 January 2020.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. 3 January 2020.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Qasem_Soleimani",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Assassination_of_Qasem_Soleimani"
   },
   {
@@ -592,6 +2104,24 @@
     "title": "Mustafa al-Kadhimi Becomes Prime Minister",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. Confirmed by parliament 6 May 2020.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. Confirmed by parliament 6 May 2020.",
+        "source": "https://en.wikipedia.org/wiki/Mustafa_Al-Kadhimi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mustafa_Al-Kadhimi"
   },
   {
@@ -599,6 +2129,24 @@
     "title": "Iraqi Elections — Record Low Turnout Amid Political Crisis",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. 10 October 2021; ~41% turnout.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. 10 October 2021; ~41% turnout.",
+        "source": "https://en.wikipedia.org/wiki/2021_Iraqi_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2021_Iraqi_parliamentary_election"
   },
   {
@@ -606,6 +2154,24 @@
     "title": "Government Formation Deadlock and Green Zone Clashes",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. Al-Sudani confirmed 27 October 2022.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. Al-Sudani confirmed 27 October 2022.",
+        "source": "https://en.wikipedia.org/wiki/2021%E2%80%932022_Iraqi_political_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2021%E2%80%932022_Iraqi_political_crisis"
   },
   {
@@ -613,6 +2179,24 @@
     "title": "Iraq's Regional Diplomacy — Saudi-Iranian Rapprochement",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. Iraq hosted reconciliation talks 2021-2022; China-brokered deal March 10 2023.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. Iraq hosted reconciliation talks 2021-2022; China-brokered deal March 10 2023.",
+        "source": "https://www.usip.org/publications/2023/03/what-you-need-know-about-chinas-saudi-iran-deal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.usip.org/publications/2023/03/what-you-need-know-about-chinas-saudi-iran-deal"
   },
   {
@@ -620,6 +2204,24 @@
     "title": "Kurdistan Oil Dispute — Turkey Halts Pipeline Exports",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. ICC ruling February 2023; Turkey halted Ceyhan pipeline.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. ICC ruling February 2023; Turkey halted Ceyhan pipeline.",
+        "source": "https://www.lexology.com/library/detail.aspx?g=0373c4ac-6d21-4126-be43-2788426811c0",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.lexology.com/library/detail.aspx?g=0373c4ac-6d21-4126-be43-2788426811c0"
   },
   {
@@ -627,6 +2229,24 @@
     "title": "Severe Drought and Water Crisis in Southern Iraq",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://science.nasa.gov/earth/earth-observatory/iraq-reservoirs-plunge-to-low-levels/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://science.nasa.gov/earth/earth-observatory/iraq-reservoirs-plunge-to-low-levels/"
   },
   {
@@ -634,6 +2254,24 @@
     "title": "US-Iran Proxy Tensions on Iraqi Soil Escalate",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. Tower 22 strike 28 January 2024; US retaliation 2 February 2024.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. Tower 22 strike 28 January 2024; US retaliation 2 February 2024.",
+        "source": "https://en.wikipedia.org/wiki/Tower_22_drone_attack",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Tower_22_drone_attack"
   },
   {
@@ -641,6 +2279,24 @@
     "title": "Iraq Negotiates US Troop Withdrawal",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://www.al-monitor.com/originals/2024/07/us-resumes-talks-iraq-over-future-troop-presence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.al-monitor.com/originals/2024/07/us-resumes-talks-iraq-over-future-troop-presence"
   },
   {
@@ -648,6 +2304,24 @@
     "title": "Yazidi Survivors Begin Return to Sinjar",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://www.pbs.org/wgbh/frontline/article/yazidis-decade-after-isis-genocidal-campaign/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.pbs.org/wgbh/frontline/article/yazidis-decade-after-isis-genocidal-campaign/"
   }
 ]

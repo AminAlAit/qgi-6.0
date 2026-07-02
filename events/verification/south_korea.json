@@ -4,6 +4,24 @@
     "title": "Korean War Begins â€” North Korean Invasion",
     "verdict": "TRUE",
     "reason": "North Korea crossed the 38th parallel on June 25, 1950; Seoul fell within days; UN Security Council authorized intervention under US command — all confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "North Korea crossed the 38th parallel on June 25, 1950; Seoul fell within days; UN Security Council authorized intervention under US command — all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Korean_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Korean_War"
   },
   {
@@ -11,6 +29,24 @@
     "title": "Inchon Landing and Recapture of Seoul",
     "verdict": "TRUE",
     "reason": "MacArthur's amphibious assault began September 15, 1950; Seoul was returned to South Korean control on September 29 — dates and facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MacArthur's amphibious assault began September 15, 1950; Seoul was returned to South Korean control on September 29 — dates and facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Battle_of_Inchon",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Battle_of_Inchon"
   },
   {
@@ -18,6 +54,24 @@
     "title": "Chinese Military Intervention Transforms Korean War",
     "verdict": "TRUE",
     "reason": "PVA crossed into Korea on October 19, 1950 with ~250,000 troops, drove UN forces south, and recaptured Seoul — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "PVA crossed into Korea on October 19, 1950 with ~250,000 troops, drove UN forces south, and recaptured Seoul — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/China_in_the_Korean_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/China_in_the_Korean_War"
   },
   {
@@ -25,6 +79,24 @@
     "title": "Syngman Rhee Consolidates Authoritarian Rule",
     "verdict": "TRUE",
     "reason": "Rhee imposed martial law in Pusan in May 1952, arrested assembly members, and coerced passage of a constitutional amendment for direct presidential elections — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Rhee imposed martial law in Pusan in May 1952, arrested assembly members, and coerced passage of a constitutional amendment for direct presidential elections — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/First_Republic_of_Korea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/First_Republic_of_Korea"
   },
   {
@@ -32,6 +104,24 @@
     "title": "Korean War Armistice Signed at Panmunjom",
     "verdict": "TRUE",
     "reason": "Armistice signed July 27, 1953 at Panmunjom; no peace treaty was ever concluded — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Armistice signed July 27, 1953 at Panmunjom; no peace treaty was ever concluded — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Korean_Armistice_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Korean_Armistice_Agreement"
   },
   {
@@ -39,6 +129,24 @@
     "title": "US-South Korea Mutual Defense Treaty",
     "verdict": "TRUE",
     "reason": "Treaty signed October 1, 1953 in Washington, providing the security foundation for the postwar period — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Treaty signed October 1, 1953 in Washington, providing the security foundation for the postwar period — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mutual_Defense_Treaty_(United_States%E2%80%93South_Korea)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Mutual_Defense_Treaty_(United_States%E2%80%93South_Korea)"
   },
   {
@@ -46,6 +154,24 @@
     "title": "April Revolution Overthrows Syngman Rhee",
     "verdict": "TRUE",
     "reason": "Student protests starting April 11 over election fraud led to Rhee's resignation on April 26, 1960 and exile to the United States (not Hawaii per Wikipedia, though Hawaii is sometimes cited); core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Student protests starting April 11 over election fraud led to Rhee's resignation on April 26, 1960 and exile to the United States (not Hawaii per Wikipedia, though Hawaii is sometimes cited); core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/April_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/April_Revolution"
   },
   {
@@ -53,6 +179,24 @@
     "title": "Park Chung-hee Military Coup Ends Second Republic",
     "verdict": "TRUE",
     "reason": "Park led a coup on May 16, 1961, overthrowing PM Chang Myon's government and suspending the constitution — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Park led a coup on May 16, 1961, overthrowing PM Chang Myon's government and suspending the constitution — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/May_16_coup",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/May_16_coup"
   },
   {
@@ -60,6 +204,24 @@
     "title": "First Five-Year Economic Development Plan Launched",
     "verdict": "TRUE",
     "reason": "First plan ran 1962–1966, prioritised light manufacturing and export promotion; average GDP growth was approximately 7.8% annually (event says 9.1% — minor discrepancy in the figure).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "First plan ran 1962–1966, prioritised light manufacturing and export promotion; average GDP growth was approximately 7.8% annually (event says 9.1% — minor discrepancy in the figure).",
+        "source": "https://en.wikipedia.org/wiki/Five-Year_Plans_of_South_Korea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Five-Year_Plans_of_South_Korea"
   },
   {
@@ -67,6 +229,24 @@
     "title": "Park Chung-hee Elected President â€” Third Republic Begins",
     "verdict": "TRUE",
     "reason": "Park won the October 15, 1963 election by 1.5% margin (event says 'less than 2%' — consistent); Third Republic inaugurated December 17, 1963.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Park won the October 15, 1963 election by 1.5% margin (event says 'less than 2%' — consistent); Third Republic inaugurated December 17, 1963.",
+        "source": "https://en.wikipedia.org/wiki/1963_South_Korean_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1963_South_Korean_presidential_election"
   },
   {
@@ -74,6 +254,24 @@
     "title": "South Korean Troops Deployed to Vietnam",
     "verdict": "TRUE",
     "reason": "Initial 130-man medical/taekwondo contingent deployed in 1964; combat troops authorised in 1965; total of over 300,000 served through 1973 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Initial 130-man medical/taekwondo contingent deployed in 1964; combat troops authorised in 1965; total of over 300,000 served through 1973 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/South_Korea_in_the_Vietnam_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/South_Korea_in_the_Vietnam_War"
   },
   {
@@ -81,6 +279,24 @@
     "title": "Korea-Japan Normalization Treaty",
     "verdict": "TRUE",
     "reason": "Signed June 22, 1965; $300 million grants and $200 million loans from Japan; comfort women and forced labour issues remain disputed — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed June 22, 1965; $300 million grants and $200 million loans from Japan; comfort women and forced labour issues remain disputed — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Treaty_on_Basic_Relations_Between_Japan_and_the_Republic_of_Korea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Treaty_on_Basic_Relations_Between_Japan_and_the_Republic_of_Korea"
   },
   {
@@ -88,6 +304,24 @@
     "title": "North Korean Commando Raid on Blue House",
     "verdict": "TRUE",
     "reason": "31-man Unit 124 infiltrated Seoul on January 21, 1968; intercepted near the Blue House; 29 raiders killed, 26 South Korean casualties — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "31-man Unit 124 infiltrated Seoul on January 21, 1968; intercepted near the Blue House; 29 raiders killed, 26 South Korean casualties — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Blue_House_raid",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Blue_House_raid"
   },
   {
@@ -95,6 +329,24 @@
     "title": "Chun Tae-il Self-Immolation Galvanizes Labor Movement",
     "verdict": "TRUE",
     "reason": "Jeon Tae-il self-immolated on November 13, 1970 protesting sweatshop conditions in Seoul's Peace Market — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Jeon Tae-il self-immolated on November 13, 1970 protesting sweatshop conditions in Seoul's Peace Market — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Jeon_Tae-il",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Jeon_Tae-il"
   },
   {
@@ -102,6 +354,24 @@
     "title": "Yushin Constitution Establishes Authoritarian System",
     "verdict": "TRUE",
     "reason": "Park declared martial law October 17, 1972 and imposed the Yushin Constitution, abolishing direct presidential elections and granting near-unlimited presidential powers — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Park declared martial law October 17, 1972 and imposed the Yushin Constitution, abolishing direct presidential elections and granting near-unlimited presidential powers — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/October_Restoration",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/October_Restoration"
   },
   {
@@ -109,6 +379,24 @@
     "title": "Heavy and Chemical Industry Drive",
     "verdict": "TRUE",
     "reason": "HCI Drive announced in 1972, directing state investment into steel, petrochemicals, shipbuilding, electronics, and machinery — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "HCI Drive announced in 1972, directing state investment into steel, petrochemicals, shipbuilding, electronics, and machinery — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Heavy_and_Chemical_Industry_Drive",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Heavy_and_Chemical_Industry_Drive"
   },
   {
@@ -116,6 +404,24 @@
     "title": "Kim Dae-jung Kidnapped by South Korean Intelligence",
     "verdict": "TRUE",
     "reason": "KCIA agents kidnapped Kim from a Tokyo hotel on August 8, 1973; US diplomatic intervention likely saved his life — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "KCIA agents kidnapped Kim from a Tokyo hotel on August 8, 1973; US diplomatic intervention likely saved his life — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kidnapping_of_Kim_Dae-jung",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kidnapping_of_Kim_Dae-jung"
   },
   {
@@ -123,6 +429,24 @@
     "title": "POSCO Pohang Steel Mill Opens",
     "verdict": "TRUE",
     "reason": "First blast furnace began producing molten iron on June 9, 1973; plant officially operational July 3, 1973 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "First blast furnace began producing molten iron on June 9, 1973; plant officially operational July 3, 1973 — confirmed.",
+        "source": "https://asia.nikkei.com/Business/Companies/POSCO-s-Pohang-steel-plant-origin-of-Japan-South-Korea-cooperation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://asia.nikkei.com/Business/Companies/POSCO-s-Pohang-steel-plant-origin-of-Japan-South-Korea-cooperation"
   },
   {
@@ -130,6 +454,24 @@
     "title": "Yushin Emergency Decrees Criminalize Political Opposition",
     "verdict": "TRUE",
     "reason": "Emergency decrees in 1974 criminalised calls to revise the Yushin Constitution; ED No. 9 (1975) extended restrictions — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Emergency decrees in 1974 criminalised calls to revise the Yushin Constitution; ED No. 9 (1975) extended restrictions — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Emergency_Decree_of_South_Korea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Emergency_Decree_of_South_Korea"
   },
   {
@@ -137,6 +479,24 @@
     "title": "Hyundai Launches First Domestic Automobile â€” the Pony",
     "verdict": "TRUE",
     "reason": "Pony went on domestic sale in February 1976 with Giugiaro styling and Mitsubishi engine; first exports to Ecuador in 1976 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pony went on domestic sale in February 1976 with Giugiaro styling and Mitsubishi engine; first exports to Ecuador in 1976 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Hyundai_Pony",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hyundai_Pony"
   },
   {
@@ -144,6 +504,24 @@
     "title": "Park Chung-hee Assassinated by KCIA Director",
     "verdict": "TRUE",
     "reason": "KCIA Director Kim Jae-gyu shot Park at a private dinner on October 26, 1979 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "KCIA Director Kim Jae-gyu shot Park at a private dinner on October 26, 1979 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Park_Chung_Hee",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Assassination_of_Park_Chung_Hee"
   },
   {
@@ -151,6 +529,24 @@
     "title": "Chun Doo-hwan Seizes Military Control â€” December Coup",
     "verdict": "TRUE",
     "reason": "Chun's Hanahoe faction seized control of the military on December 12, 1979 by arresting the army chief of staff — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chun's Hanahoe faction seized control of the military on December 12, 1979 by arresting the army chief of staff — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1979_South_Korean_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1979_South_Korean_coup_d%27%C3%A9tat"
   },
   {
@@ -158,6 +554,24 @@
     "title": "Gwangju Uprising and Massacre",
     "verdict": "TRUE",
     "reason": "May 1980 uprising suppressed by paratroopers; death toll estimates range widely; the event is confirmed, though the '200 or more civilians' figure is conservative relative to some estimates.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 1980 uprising suppressed by paratroopers; death toll estimates range widely; the event is confirmed, though the '200 or more civilians' figure is conservative relative to some estimates.",
+        "source": "https://en.wikipedia.org/wiki/Gwangju_Uprising",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Gwangju_Uprising"
   },
   {
@@ -165,6 +579,24 @@
     "title": "Chun Doo-hwan Becomes President â€” Fifth Republic",
     "verdict": "TRUE",
     "reason": "Chun elected by electoral college on August 27, 1980, inaugurated September 1; new constitution limiting president to one seven-year term approved in October — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chun elected by electoral college on August 27, 1980, inaugurated September 1; new constitution limiting president to one seven-year term approved in October — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Fifth_Republic_of_Korea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Fifth_Republic_of_Korea"
   },
   {
@@ -172,6 +604,24 @@
     "title": "Seoul Selected to Host 1988 Summer Olympics",
     "verdict": "TRUE",
     "reason": "IOC voted 52–27 for Seoul over Nagoya on September 30, 1981 at the Baden-Baden session — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "IOC voted 52–27 for Seoul over Nagoya on September 30, 1981 at the Baden-Baden session — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1988_Summer_Olympics",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1988_Summer_Olympics"
   },
   {
@@ -179,6 +629,24 @@
     "title": "Rangoon Bombing Kills South Korean Cabinet Members",
     "verdict": "TRUE",
     "reason": "October 9, 1983 bombing killed 17 South Koreans including 4 cabinet ministers; Chun survived because his car was delayed — confirmed. Event says '4 cabinet members', sources confirm 4 senior officials.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 9, 1983 bombing killed 17 South Koreans including 4 cabinet ministers; Chun survived because his car was delayed — confirmed. Event says '4 cabinet members', sources confirm 4 senior officials.",
+        "source": "https://en.wikipedia.org/wiki/Rangoon_bombing",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Rangoon_bombing"
   },
   {
@@ -186,6 +654,24 @@
     "title": "Opposition NKDP Formed â€” Signature Campaign for Direct Elections",
     "verdict": "TRUE",
     "reason": "NKDP founded January 18, 1985; won 29.3% in February elections; Kim Young-sam and Kim Dae-jung supported the party and led the direct-elections petition — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "NKDP founded January 18, 1985; won 29.3% in February elections; Kim Young-sam and Kim Dae-jung supported the party and led the direct-elections petition — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/New_Korean_Democratic_Party",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/New_Korean_Democratic_Party"
   },
   {
@@ -193,6 +679,24 @@
     "title": "Hyundai Excel Achieves Record US First-Year Import Sales",
     "verdict": "FALSE",
     "reason": "The Excel began US sales in February 1986, not 1985; the 168,882 first-year record was for calendar year 1986. Year is off by one year.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Excel began US sales in February 1986, not 1985; the 168,882 first-year record was for calendar year 1986. Year is off by one year.",
+        "source": "https://en.wikipedia.org/wiki/Hyundai_Excel",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Hyundai_Excel"
   },
   {
@@ -200,6 +704,24 @@
     "title": "June Democracy Movement Restores Direct Presidential Elections",
     "verdict": "TRUE",
     "reason": "Nationwide protests June 10–29, 1987; Lee Han-yeol struck by tear gas canister June 9; Roh's June 29 Declaration accepted direct elections — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nationwide protests June 10–29, 1987; Lee Han-yeol struck by tear gas canister June 9; Roh's June 29 Declaration accepted direct elections — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/June_Democratic_Struggle",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/June_Democratic_Struggle"
   },
   {
@@ -207,6 +729,24 @@
     "title": "Constitution of 1987 â€” Democratic Framework Established",
     "verdict": "TRUE",
     "reason": "New constitution adopted October 1987 establishing direct elections and a single five-year presidential term — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "New constitution adopted October 1987 establishing direct elections and a single five-year presidential term — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_South_Korea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Constitution_of_South_Korea"
   },
   {
@@ -214,6 +754,24 @@
     "title": "Great Labor Struggle â€” Mass Strikes Across Industry",
     "verdict": "TRUE",
     "reason": "Over 3,000 strikes July–September 1987; over 3 million workers participated; major wage gains at Hyundai and other chaebols — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Over 3,000 strikes July–September 1987; over 3 million workers participated; major wage gains at Hyundai and other chaebols — confirmed.",
+        "source": "https://libcom.org/article/1987-great-workers-struggle-south-korea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://libcom.org/article/1987-great-workers-struggle-south-korea"
   },
   {
@@ -221,6 +779,24 @@
     "title": "Seoul Summer Olympics â€” South Korea on the World Stage",
     "verdict": "TRUE",
     "reason": "159 nations attended; both US and Soviet Union participated, ending the mutual boycotts of 1980 and 1984 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "159 nations attended; both US and Soviet Union participated, ending the mutual boycotts of 1980 and 1984 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1988_Summer_Olympics",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1988_Summer_Olympics"
   },
   {
@@ -228,6 +804,24 @@
     "title": "Roh Tae-woo Elected â€” First Democratic Presidential Transfer",
     "verdict": "FALSE",
     "reason": "The election took place on December 16, 1987, not 1988; Roh was inaugurated in February 1988. Year should be 1987.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The election took place on December 16, 1987, not 1988; Roh was inaugurated in February 1988. Year should be 1987.",
+        "source": "https://en.wikipedia.org/wiki/1987_South_Korean_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1987_South_Korean_presidential_election"
   },
   {
@@ -235,6 +829,24 @@
     "title": "South Korea Establishes Relations with Soviet Union",
     "verdict": "TRUE",
     "reason": "Diplomatic relations formalised on September 30, 1990 as part of Roh's Nordpolitik; accompanied by a $3 billion South Korean economic package — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Diplomatic relations formalised on September 30, 1990 as part of Roh's Nordpolitik; accompanied by a $3 billion South Korean economic package — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/North_Korea%E2%80%93South_Korea_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/North_Korea%E2%80%93South_Korea_relations"
   },
   {
@@ -242,6 +854,24 @@
     "title": "Both Koreas Join United Nations Simultaneously",
     "verdict": "TRUE",
     "reason": "Both Koreas admitted to the UN on September 17, 1991 under General Assembly Resolution 46/1 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Both Koreas admitted to the UN on September 17, 1991 under General Assembly Resolution 46/1 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Korea_and_the_United_Nations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Korea_and_the_United_Nations"
   },
   {
@@ -249,6 +879,24 @@
     "title": "Kim Young-sam Elected â€” First Civilian President in 32 Years",
     "verdict": "TRUE",
     "reason": "Kim won December 19, 1992 election as first civilian president in over 30 years; prosecuted former presidents and joined the OECD — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kim won December 19, 1992 election as first civilian president in over 30 years; prosecuted former presidents and joined the OECD — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kim_Young-sam",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kim_Young-sam"
   },
   {
@@ -256,6 +904,24 @@
     "title": "Financial Real-Name System Dismantles Anonymous Accounts",
     "verdict": "TRUE",
     "reason": "Presidential decree issued August 12, 1993 requiring verified identities for all financial transactions — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Presidential decree issued August 12, 1993 requiring verified identities for all financial transactions — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Kim_Young-sam",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Kim_Young-sam"
   },
   {
@@ -263,6 +929,24 @@
     "title": "Former Presidents Chun and Roh Arrested for Treason and Corruption",
     "verdict": "TRUE",
     "reason": "Both arrested in late 1995; convicted in 1996. Initial sentence was death for Chun (not life), reduced to life on appeal; Roh initially 22.5 years, reduced to 17 — the event describes the appeal sentences as original ones, a minor inaccuracy. Both pardoned December 1997.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Both arrested in late 1995; convicted in 1996. Initial sentence was death for Chun (not life), reduced to life on appeal; Roh initially 22.5 years, reduced to 17 — the event describes the appeal sentences as original ones, a minor inaccuracy. Both pardoned December 1997.",
+        "source": "https://en.wikipedia.org/wiki/Chun_Doo-hwan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Chun_Doo-hwan"
   },
   {
@@ -270,6 +954,24 @@
     "title": "OECD Membership â€” South Korea Joins Advanced Economies",
     "verdict": "TRUE",
     "reason": "South Korea joined the OECD on December 12, 1996 as the 29th member — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "South Korea joined the OECD on December 12, 1996 as the 29th member — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/OECD",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/OECD"
   },
   {
@@ -277,6 +979,24 @@
     "title": "Asian Financial Crisis â€” South Korea IMF Bailout",
     "verdict": "TRUE",
     "reason": "Won lost ~50% of its value; total IMF package was ~$58 billion (event says $57 billion — minor rounding); signed December 3, 1997 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Won lost ~50% of its value; total IMF package was ~$58 billion (event says $57 billion — minor rounding); signed December 3, 1997 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/South_Korean_International_Monetary_Fund_Agreement,_1997",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/South_Korean_International_Monetary_Fund_Agreement,_1997"
   },
   {
@@ -284,6 +1004,24 @@
     "title": "Kim Dae-jung Elected President â€” First Opposition Transfer of Power",
     "verdict": "TRUE",
     "reason": "Kim won December 18, 1997 with ~40% in the first peaceful ruling-to-opposition power transfer in Korean history — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kim won December 18, 1997 with ~40% in the first peaceful ruling-to-opposition power transfer in Korean history — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1997_South_Korean_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/1997_South_Korean_presidential_election"
   },
   {
@@ -291,6 +1029,24 @@
     "title": "IMF Restructuring â€” Chaebol Reform and Economic Overhaul",
     "verdict": "TRUE",
     "reason": "Fiscal austerity, financial restructuring and chaebol rationalization implemented 1998; gold collection campaign confirmed; Daewoo collapse (~$80 billion debt) confirmed — all facts verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Fiscal austerity, financial restructuring and chaebol rationalization implemented 1998; gold collection campaign confirmed; Daewoo collapse (~$80 billion debt) confirmed — all facts verified.",
+        "source": "https://www.imf.org/external/np/seminars/eng/2006/cpem/pdf/kihwan.pdf",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.imf.org/external/np/seminars/eng/2006/cpem/pdf/kihwan.pdf"
   },
   {
@@ -298,6 +1054,24 @@
     "title": "South Korea Repays IMF Loan Three Years Ahead of Schedule",
     "verdict": "TRUE",
     "reason": "Final IMF repayment made August 23, 2001 — approximately 3 years early from the original schedule. The '10.7% growth in 1999' figure is consistent with known data. Event year of 1999 reflects the growth year, not the repayment year, which is an acceptable framing.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Final IMF repayment made August 23, 2001 — approximately 3 years early from the original schedule. The '10.7% growth in 1999' figure is consistent with known data. Event year of 1999 reflects the growth year, not the repayment year, which is an acceptable framing.",
+        "source": "https://en.wikipedia.org/wiki/South_Korea_and_the_International_Monetary_Fund",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/South_Korea_and_the_International_Monetary_Fund"
   },
   {
@@ -305,6 +1079,24 @@
     "title": "Inter-Korean Summit â€” Kim Dae-jung Meets Kim Jong-il",
     "verdict": "TRUE",
     "reason": "Kim traveled to Pyongyang June 13–15, 2000; Nobel Peace Prize awarded October 2000; $150 million payment to secure summit later confirmed — all facts verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kim traveled to Pyongyang June 13–15, 2000; Nobel Peace Prize awarded October 2000; $150 million payment to secure summit later confirmed — all facts verified.",
+        "source": "https://www.nobelprize.org/prizes/peace/2000/dae-jung/facts/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://www.nobelprize.org/prizes/peace/2000/dae-jung/facts/"
   },
   {
@@ -312,6 +1104,24 @@
     "title": "South Korea Reaches World Cup Semifinal",
     "verdict": "TRUE",
     "reason": "South Korea co-hosted with Japan and reached the semifinal, losing 1–0 to Germany; Turkey beat South Korea 3–2 for third place — confirmed as best-ever Asian performance.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "South Korea co-hosted with Japan and reached the semifinal, losing 1–0 to Germany; Turkey beat South Korea 3–2 for third place — confirmed as best-ever Asian performance.",
+        "source": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup"
   },
   {
@@ -319,6 +1129,24 @@
     "title": "Korean Wave (Hallyu) Begins International Expansion",
     "verdict": "TRUE",
     "reason": "Winter Sonata aired on NHK in 2003–2004, sparking Korean Wave fever in Japan; Hallyu expansion across China and Southeast Asia also confirmed for this period.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Winter Sonata aired on NHK in 2003–2004, sparking Korean Wave fever in Japan; Hallyu expansion across China and Southeast Asia also confirmed for this period.",
+        "source": "https://en.wikipedia.org/wiki/Korean_Wave",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Korean_Wave"
   },
   {
@@ -326,6 +1154,24 @@
     "title": "North Korea Conducts First Nuclear Weapons Test",
     "verdict": "TRUE",
     "reason": "First underground nuclear test conducted October 9, 2006; yield less than 1 kiloton; UN Security Council sanctions followed — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "First underground nuclear test conducted October 9, 2006; yield less than 1 kiloton; UN Security Council sanctions followed — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2006_North_Korean_nuclear_test",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2006_North_Korean_nuclear_test"
   },
   {
@@ -333,6 +1179,24 @@
     "title": "Global Financial Crisis â€” South Korea Currency Shock and Recovery",
     "verdict": "TRUE",
     "reason": "Won fell sharply in 2008 as capital fled; US Federal Reserve currency swap arranged; recovery was faster than 1997 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Won fell sharply in 2008 as capital fled; US Federal Reserve currency swap arranged; recovery was faster than 1997 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2007%E2%80%932008_financial_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2007%E2%80%932008_financial_crisis"
   },
   {
@@ -340,6 +1204,24 @@
     "title": "North Korea Sinks Cheonan Naval Vessel â€” 46 Killed",
     "verdict": "TRUE",
     "reason": "Corvette sank March 26, 2010, killing 46 of 104 sailors; international investigation attributed it to a North Korean torpedo — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Corvette sank March 26, 2010, killing 46 of 104 sailors; international investigation attributed it to a North Korean torpedo — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/ROKS_Cheonan_sinking",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/ROKS_Cheonan_sinking"
   },
   {
@@ -347,6 +1229,24 @@
     "title": "North Korea Shells Yeonpyeong Island â€” Civilian Casualties",
     "verdict": "TRUE",
     "reason": "November 23, 2010 shelling killed 2 marines and 2 civilians; South Korea returned fire — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 23, 2010 shelling killed 2 marines and 2 civilians; South Korea returned fire — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2010_Yeonpyeongdo_bombardment",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2010_Yeonpyeongdo_bombardment"
   },
   {
@@ -354,6 +1254,24 @@
     "title": "Gangnam Style â€” K-Pop Reaches Global Mass Audiences",
     "verdict": "TRUE",
     "reason": "Gangnam Style reached 1 billion YouTube views on December 21, 2012, the first video to do so; topped charts in 30+ countries — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Gangnam Style reached 1 billion YouTube views on December 21, 2012, the first video to do so; topped charts in 30+ countries — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Gangnam_Style",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Gangnam_Style"
   },
   {
@@ -361,6 +1279,24 @@
     "title": "Park Geun-hye Elected South Korea's First Female President",
     "verdict": "TRUE",
     "reason": "Park won December 19, 2012 election with 51.6%, becoming South Korea's first female president — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Park won December 19, 2012 election with 51.6%, becoming South Korea's first female president — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Park_Geun-hye",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Park_Geun-hye"
   },
   {
@@ -368,6 +1304,24 @@
     "title": "Sewol Ferry Disaster â€” 304 Dead, Mostly Students",
     "verdict": "TRUE",
     "reason": "MV Sewol capsized April 16, 2014, killing 304 out of 476 aboard, approximately 250 being Danwon High School students — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MV Sewol capsized April 16, 2014, killing 304 out of 476 aboard, approximately 250 being Danwon High School students — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Sinking_of_MV_Sewol",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Sinking_of_MV_Sewol"
   },
   {
@@ -375,6 +1329,24 @@
     "title": "Korea-Japan Comfort Women Agreement",
     "verdict": "TRUE",
     "reason": "Agreement reached December 28, 2015; Japan provided 1 billion yen to a reconciliation fund; survivors and NGOs rejected it; Moon government later dissolved the foundation — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Agreement reached December 28, 2015; Japan provided 1 billion yen to a reconciliation fund; survivors and NGOs rejected it; Moon government later dissolved the foundation — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Japan%E2%80%93South_Korea_Comfort_Women_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Japan%E2%80%93South_Korea_Comfort_Women_Agreement"
   },
   {
@@ -382,6 +1354,24 @@
     "title": "Candlelight Protests and Park Geun-hye Impeachment",
     "verdict": "TRUE",
     "reason": "Choi Soon-sil scandal broke October 2016; ~15.87 million protesters participated in candlelight demonstrations; National Assembly voted to impeach on December 9, 2016 with 234 votes — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Choi Soon-sil scandal broke October 2016; ~15.87 million protesters participated in candlelight demonstrations; National Assembly voted to impeach on December 9, 2016 with 234 votes — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2016_South_Korean_political_scandal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2016_South_Korean_political_scandal"
   },
   {
@@ -389,6 +1379,24 @@
     "title": "Constitutional Court Upholds Impeachment â€” Park Removed",
     "verdict": "TRUE",
     "reason": "Constitutional Court upheld impeachment unanimously (8–0) on March 10, 2017; Park later sentenced to 24 years — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitutional Court upheld impeachment unanimously (8–0) on March 10, 2017; Park later sentenced to 24 years — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Impeachment_of_Park_Geun-hye",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Impeachment_of_Park_Geun-hye"
   },
   {
@@ -396,6 +1404,24 @@
     "title": "PyeongChang Olympics and Inter-Korean Diplomatic Breakthrough",
     "verdict": "TRUE",
     "reason": "North Korea participated; both Koreas marched under unified flag; three inter-Korean summits and Singapore US-DPRK summit in 2018 followed — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "North Korea participated; both Koreas marched under unified flag; three inter-Korean summits and Singapore US-DPRK summit in 2018 followed — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2018_Winter_Olympics",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2018_Winter_Olympics"
   },
   {
@@ -403,6 +1429,24 @@
     "title": "MeToo Movement Reshapes South Korean Public Life",
     "verdict": "TRUE",
     "reason": "Movement launched January 2018 when prosecutor Seo Ji-hyun went public; multiple high-profile convictions followed — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Movement launched January 2018 when prosecutor Seo Ji-hyun went public; multiple high-profile convictions followed — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Me_Too_movement_(South_Korea)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Me_Too_movement_(South_Korea)"
   },
   {
@@ -410,6 +1454,24 @@
     "title": "COVID-19 â€” South Korea's K-Quarantine Model Goes Global",
     "verdict": "TRUE",
     "reason": "South Korea's aggressive testing, digital contact tracing and targeted quarantine became an internationally recognised model; MERS 2015 reforms were the foundation — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "South Korea's aggressive testing, digital contact tracing and targeted quarantine became an internationally recognised model; MERS 2015 reforms were the foundation — confirmed.",
+        "source": "https://ourworldindata.org/covid-exemplar-south-korea-2020",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://ourworldindata.org/covid-exemplar-south-korea-2020"
   },
   {
@@ -417,6 +1479,24 @@
     "title": "Parasite Wins Best Picture â€” First Non-English Film at Oscars",
     "verdict": "TRUE",
     "reason": "Parasite won Best Picture and Best Director at the 92nd Academy Awards on February 9, 2020, the first non-English-language film to win Best Picture in the ceremony's 92-year history — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Parasite won Best Picture and Best Director at the 92nd Academy Awards on February 9, 2020, the first non-English-language film to win Best Picture in the ceremony's 92-year history — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Parasite_(2019_film)"
   },
   {
@@ -424,6 +1504,24 @@
     "title": "Yoon Suk-yeol Elected President â€” Narrowest Victory in History",
     "verdict": "TRUE",
     "reason": "Yoon won March 9, 2022 by 0.73 percentage points (247,077 votes), the narrowest margin in South Korean presidential election history — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Yoon won March 9, 2022 by 0.73 percentage points (247,077 votes), the narrowest margin in South Korean presidential election history — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2022_South_Korean_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2022_South_Korean_presidential_election"
   },
   {
@@ -431,6 +1529,24 @@
     "title": "Itaewon Crowd Crush â€” 159 Dead at Halloween Gathering",
     "verdict": "TRUE",
     "reason": "Crowd crush on October 29, 2022 in Itaewon killed 159 people; event description matches confirmed facts on inadequate crowd management and emergency response.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Crowd crush on October 29, 2022 in Itaewon killed 159 people; event description matches confirmed facts on inadequate crowd management and emergency response.",
+        "source": "https://en.wikipedia.org/wiki/Seoul_Halloween_crowd_crush",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Seoul_Halloween_crowd_crush"
   },
   {
@@ -438,6 +1554,24 @@
     "title": "National Assembly Elections â€” Opposition Wins Supermajority",
     "verdict": "FALSE",
     "reason": "The opposition won ~175 seats (58%), not a supermajority; they fell about 12 seats short of the 180-seat threshold to fast-track legislation and could not unilaterally override presidential vetoes (requiring 200 seats). The claim of 'over 60% of seats and ability to override vetoes' is materially incorrect.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The opposition won ~175 seats (58%), not a supermajority; they fell about 12 seats short of the 180-seat threshold to fast-track legislation and could not unilaterally override presidential vetoes (requiring 200 seats). The claim of 'over 60% of seats and ability to override vetoes' is materially incorrect.",
+        "source": "https://en.wikipedia.org/wiki/2024_South_Korean_legislative_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2024_South_Korean_legislative_election"
   },
   {
@@ -445,6 +1579,24 @@
     "title": "Yoon Declares Emergency Martial Law â€” Reversed Within Hours",
     "verdict": "TRUE",
     "reason": "Martial law declared December 3–4, 2024; National Assembly voted 190–0 to lift it; Yoon rescinded after ~6 hours; impeachment and insurrection investigation followed — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Martial law declared December 3–4, 2024; National Assembly voted 190–0 to lift it; Yoon rescinded after ~6 hours; impeachment and insurrection investigation followed — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2024_South_Korean_martial_law_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/2024_South_Korean_martial_law_crisis"
   },
   {
@@ -452,6 +1604,24 @@
     "title": "National Assembly Impeaches President Yoon Suk-yeol",
     "verdict": "TRUE",
     "reason": "National Assembly voted 204–0 to impeach on December 14, 2024; Constitutional Court upheld unanimously on April 4, 2025 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "National Assembly voted 204–0 to impeach on December 14, 2024; Constitutional Court upheld unanimously on April 4, 2025 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Impeachment_of_Yoon_Suk_Yeol",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
     "source": "https://en.wikipedia.org/wiki/Impeachment_of_Yoon_Suk_Yeol"
   }
 ]
