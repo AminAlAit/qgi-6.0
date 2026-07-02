@@ -915,10 +915,10 @@
     "year": 2023,
     "title": "Eco-Tourism Sector Recovers to Record Visitor Numbers",
     "verdict": "TRUE",
-    "reason": "Tourism rebounded post-COVID surpassing pre-pandemic levels. Eco-tourism model and 25% territory under parks broadly confirmed.",
-    "verify_count": 1,
+    "reason": "Costa Rica's official tourism board (Instituto Costarricense de Turismo, ICT) confirmed a record 2,471,150 international tourists arrived by air in 2023 — a 16.7% increase over 2022 and, critically, 2.2% above 2019 (pre-pandemic) levels, making it a new all-time record for air arrivals and surpassing pre-COVID levels as the event states. This is corroborated independently by The Tico Times (\"Costa Rica Sets New Tourism Records in 2023\" and \"Robust Recovery: Costa Rica's 2023 Tourism Rebounds to New Heights\"), La República, El Financiero, and Forbes Centroamérica, all reporting the same ICT figures. The secondary claim that Costa Rica's national parks system covers roughly 25% of its territory and anchors an eco-tourism-centered economy is a well-established, independently verifiable fact (multiple sources confirm protected areas cover ~25-28% of Costa Rica's land area, among the highest percentages of any country). One nuance: total arrivals via all channels (air+land+sea) reached 2.75 million, still ~87.6% of 2019 levels, since land/sea crossings lagged; but air arrivals — the dominant and headline-reported metric — did surpass 2019, and this is exactly the metric ICT and press outlets used to declare the \"record\" and \"recovery to pre-pandemic levels,\" so the event holds materially as described.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -932,8 +932,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Costa Rica's official tourism board (Instituto Costarricense de Turismo, ICT) confirmed a record 2,471,150 international tourists arrived by air in 2023 — a 16.7% increase over 2022 and, critically, 2.2% above 2019 (pre-pandemic) levels, making it a new all-time record for air arrivals and surpassing pre-COVID levels as the event states. This is corroborated independently by The Tico Times (\"Costa Rica Sets New Tourism Records in 2023\" and \"Robust Recovery: Costa Rica's 2023 Tourism Rebounds to New Heights\"), La República, El Financiero, and Forbes Centroamérica, all reporting the same ICT figures. The secondary claim that Costa Rica's national parks system covers roughly 25% of its territory and anchors an eco-tourism-centered economy is a well-established, independently verifiable fact (multiple sources confirm protected areas cover ~25-28% of Costa Rica's land area, among the highest percentages of any country). One nuance: total arrivals via all channels (air+land+sea) reached 2.75 million, still ~87.6% of 2019 levels, since land/sea crossings lagged; but air arrivals — the dominant and headline-reported metric — did surpass 2019, and this is exactly the metric ICT and press outlets used to declare the \"record\" and \"recovery to pre-pandemic levels,\" so the event holds materially as described.",
+        "source": "https://www.ict.go.cr/es/noticias-destacadas/2269-2023-llega-a-cifra-r%C3%A9cord-de-arribo-de-turistas-con-2,47-millones-por-la-v%C3%ADa-a%C3%A9rea.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.ict.go.cr/es/noticias-destacadas/2269-2023-llega-a-cifra-r%C3%A9cord-de-arribo-de-turistas-con-2,47-millones-por-la-v%C3%ADa-a%C3%A9rea.html"
   },
   {
     "year": 2024,

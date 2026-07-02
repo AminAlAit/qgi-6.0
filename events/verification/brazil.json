@@ -228,12 +228,12 @@
     "year": 1953,
     "title": "General Strike in Sao Paulo",
     "verdict": "TRUE",
-    "reason": "Labor unrest and strikes in São Paulo in 1953 are well-documented.",
-    "verify_count": 1,
+    "reason": "Independently confirmed as the \"Greve dos 300 mil\" (Strike of the 300 Thousand), a major general strike in São Paulo from late March through April 21-23, 1953, involving roughly 300,000 workers across textile, metalworking, printing and other industries. Workers demanded a 60% wage increase amid severe cost-of-living inflation (cost of living had risen 100% between 1943-1951 while minimum wage rose only 14%), occurring during Getúlio Vargas's second presidency and highlighting labor tensions under his populist government. Strike ended with a negotiated ~32% wage increase. All material details (country, year, scale, cause, actors, government context) match the description.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -245,9 +245,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed as the \"Greve dos 300 mil\" (Strike of the 300 Thousand), a major general strike in São Paulo from late March through April 21-23, 1953, involving roughly 300,000 workers across textile, metalworking, printing and other industries. Workers demanded a 60% wage increase amid severe cost-of-living inflation (cost of living had risen 100% between 1943-1951 while minimum wage rose only 14%), occurring during Getúlio Vargas's second presidency and highlighting labor tensions under his populist government. Strike ended with a negotiated ~32% wage increase. All material details (country, year, scale, cause, actors, government context) match the description.",
+        "source": "https://www.saopauloinfoco.com.br/greve-dos-300-mil/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Getúlio_Vargas"
+    "source": "https://www.saopauloinfoco.com.br/greve-dos-300-mil/"
   },
   {
     "year": 1953,
@@ -803,12 +814,12 @@
     "year": 1962,
     "title": "General Strike Supports Presidential Powers Referendum",
     "verdict": "TRUE",
-    "reason": "CGT-organized general strike in 1962 pressured for early plebiscite. Confirmed.",
-    "verify_count": 1,
+    "reason": "Confirmed from independent (non-Wikipedia) sources: in 1962 the CGT (Comando Geral dos Trabalhadores), Brazil's new labor federation formed that August, organized general strikes (July 5 and September 15, 1962) explicitly to pressure the government/Congress into holding an early plebiscite restoring full presidential powers to João Goulart, who had taken office under a weakened parliamentary system after Jânio Quadros's 1961 resignation. The CGT threatened and then carried out the September 15 general strike after demanding the plebiscite be moved up; Congress capitulated and scheduled the plebiscite for January 6, 1963 (held early, restoring presidentialism). FGV's Atlas Histórico do Brasil (Fundação Getúlio Vargas, an independent academic source) explicitly describes CGT's 1962 strike pressure as demonstrating 'organized labor's considerable power' in this period, matching the event description almost verbatim. Year, country, actor (CGT), and causal mechanism (strike -> early referendum) all check out for 1962.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -820,9 +831,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from independent (non-Wikipedia) sources: in 1962 the CGT (Comando Geral dos Trabalhadores), Brazil's new labor federation formed that August, organized general strikes (July 5 and September 15, 1962) explicitly to pressure the government/Congress into holding an early plebiscite restoring full presidential powers to João Goulart, who had taken office under a weakened parliamentary system after Jânio Quadros's 1961 resignation. The CGT threatened and then carried out the September 15 general strike after demanding the plebiscite be moved up; Congress capitulated and scheduled the plebiscite for January 6, 1963 (held early, restoring presidentialism). FGV's Atlas Histórico do Brasil (Fundação Getúlio Vargas, an independent academic source) explicitly describes CGT's 1962 strike pressure as demonstrating 'organized labor's considerable power' in this period, matching the event description almost verbatim. Year, country, actor (CGT), and causal mechanism (strike -> early referendum) all check out for 1962.",
+        "source": "https://atlas.fgv.br/verbete/8751",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/João_Goulart"
+    "source": "https://atlas.fgv.br/verbete/8751"
   },
   {
     "year": 1962,
@@ -903,12 +925,12 @@
     "year": 1963,
     "title": "Rural Unions Legalized in Brazil",
     "verdict": "TRUE",
-    "reason": "Rural Workers' Statute (Estatuto do Trabalhador Rural) enacted 1963. Confirmed.",
-    "verify_count": 1,
+    "reason": "The Estatuto do Trabalhador Rural (Law No. 4.914) was promulgated on March 2, 1963 under President João Goulart's government. It legalized rural labor unions for the first time in Brazil, establishing a tiered union structure (municipal syndicates, state federations, and the national CONTAG confederation), and extended core labor protections — eight-hour workday, minimum wage, weekly rest, paid vacation, notice requirements — to millions of previously-excluded agricultural workers, sharecroppers, and tenant farmers. This matches the event description on country (Brazil), year (1963), actor (Goulart government), and substance (legalization of rural unions + statute of basic labor rights) with no material discrepancy. Corroborated by an independent, non-Wikipedia source (FGV/CPDOC, a leading Brazilian academic historical research center) and cross-confirmed by Senado Notícias, dmtemdebate.com.br, and an academic Hispanic American Historical Review article on the same 1963 legislation.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -920,9 +942,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "The Estatuto do Trabalhador Rural (Law No. 4.914) was promulgated on March 2, 1963 under President João Goulart's government. It legalized rural labor unions for the first time in Brazil, establishing a tiered union structure (municipal syndicates, state federations, and the national CONTAG confederation), and extended core labor protections — eight-hour workday, minimum wage, weekly rest, paid vacation, notice requirements — to millions of previously-excluded agricultural workers, sharecroppers, and tenant farmers. This matches the event description on country (Brazil), year (1963), actor (Goulart government), and substance (legalization of rural unions + statute of basic labor rights) with no material discrepancy. Corroborated by an independent, non-Wikipedia source (FGV/CPDOC, a leading Brazilian academic historical research center) and cross-confirmed by Senado Notícias, dmtemdebate.com.br, and an academic Hispanic American Historical Review article on the same 1963 legislation.",
+        "source": "https://www18.fgv.br/cpdoc/acervo/dicionarios/verbete-tematico/estatuto-do-trabalhador-rural",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/João_Goulart"
+    "source": "https://www18.fgv.br/cpdoc/acervo/dicionarios/verbete-tematico/estatuto-do-trabalhador-rural"
   },
   {
     "year": 1964,
@@ -1327,13 +1360,13 @@
   {
     "year": 1970,
     "title": "Brazilian Economic Miracle Begins",
-    "verdict": "TRUE",
-    "reason": "Economic miracle 1968–1973 with ~10% average annual growth. Entry places start at 1970, which is within the period.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "The \"Brazilian Miracle\" is real and well-documented: independent sources (Encyclopedia.com, Brown University Library) confirm Brazil averaged roughly 11% annual real GDP growth from 1968-1974 (individual years ranged ~9.8%-14%), driven by heavy state infrastructure investment, foreign borrowing/capital, export promotion/diversification, and rapid industrialization (industrial sector grew ~12.6%/yr) — and that benefits were highly inequitably distributed (top 20% of population captured the large majority of gains, \"Belindia\" framing). All of this matches the description's substance closely. However, the title says the miracle \"Begins\" in 1970, while every independent source consistently dates the onset of the boom to 1968, not 1970 — 1970 falls in the middle of the boom period, not its start. The event's own description text even says \"from 1968 to 1973,\" contradicting its own year field of 1970 for a \"Begins\" milestone. This is a material date discrepancy on an event framed specifically as a beginning/onset milestone, so I mark PARTIAL rather than TRUE and flag the corrected onset year.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1345,9 +1378,21 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The \"Brazilian Miracle\" is real and well-documented: independent sources (Encyclopedia.com, Brown University Library) confirm Brazil averaged roughly 11% annual real GDP growth from 1968-1974 (individual years ranged ~9.8%-14%), driven by heavy state infrastructure investment, foreign borrowing/capital, export promotion/diversification, and rapid industrialization (industrial sector grew ~12.6%/yr) — and that benefits were highly inequitably distributed (top 20% of population captured the large majority of gains, \"Belindia\" framing). All of this matches the description's substance closely. However, the title says the miracle \"Begins\" in 1970, while every independent source consistently dates the onset of the boom to 1968, not 1970 — 1970 falls in the middle of the boom period, not its start. The event's own description text even says \"from 1968 to 1973,\" contradicting its own year field of 1970 for a \"Begins\" milestone. This is a material date discrepancy on an event framed specifically as a beginning/onset milestone, so I mark PARTIAL rather than TRUE and flag the corrected onset year.",
+        "source": "https://www.encyclopedia.com/humanities/encyclopedias-almanacs-transcripts-and-maps/brazil-economic-miracle-1968-1974",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1968
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Brazilian_economic_miracle"
+    "source": "https://www.encyclopedia.com/humanities/encyclopedias-almanacs-transcripts-and-maps/brazil-economic-miracle-1968-1974"
   },
   {
     "year": 1971,
@@ -1803,12 +1848,12 @@
     "year": 1978,
     "title": "ABC Steel Workers Strike Defies Military Regime",
     "verdict": "TRUE",
-    "reason": "Confirmed: 1978 ABC metalworkers strike led by Lula.",
-    "verify_count": 1,
+    "reason": "Multiple independent (non-Wikipedia) sources confirm: the strike began Friday, May 12, 1978, at the Scania (Saab-Scania) truck factory in São Bernardo do Campo in the ABC industrial region of greater São Paulo, led by Luiz Inácio Lula da Silva as president of the Metalworkers' Union of São Bernardo and Diadema. CUT (Central Única dos Trabalhadores) explicitly notes it occurred 'in a time practically without strike rights, governed by Law 4,330 from 1964' — i.e., in defiance of the military regime's effective ban on strikes. The Real News Network and other labor-history sources corroborate that this action (and the escalating strikes it triggered in the following years) is widely credited with reviving Brazilian labor militancy and beginning to erode the military dictatorship's grip on power, eventually feeding into the political transformation that made Lula a national political figure. All material elements of the description (country=Brazil, year=1978, location=ABC/São Paulo, actor=Lula, act=strike in defiance of strike ban, consequence=wave of labor militancy transforming Brazilian politics) are corroborated.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1820,9 +1865,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent (non-Wikipedia) sources confirm: the strike began Friday, May 12, 1978, at the Scania (Saab-Scania) truck factory in São Bernardo do Campo in the ABC industrial region of greater São Paulo, led by Luiz Inácio Lula da Silva as president of the Metalworkers' Union of São Bernardo and Diadema. CUT (Central Única dos Trabalhadores) explicitly notes it occurred 'in a time practically without strike rights, governed by Law 4,330 from 1964' — i.e., in defiance of the military regime's effective ban on strikes. The Real News Network and other labor-history sources corroborate that this action (and the escalating strikes it triggered in the following years) is widely credited with reviving Brazilian labor militancy and beginning to erode the military dictatorship's grip on power, eventually feeding into the political transformation that made Lula a national political figure. All material elements of the description (country=Brazil, year=1978, location=ABC/São Paulo, actor=Lula, act=strike in defiance of strike ban, consequence=wave of labor militancy transforming Brazilian politics) are corroborated.",
+        "source": "https://www.cut.org.br/noticias/greve-de-1978-enfrentou-patroes-e-ditadura-tem-de-se-repetir-diz-lula-c5ca",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva"
+    "source": "https://www.cut.org.br/noticias/greve-de-1978-enfrentou-patroes-e-ditadura-tem-de-se-repetir-diz-lula-c5ca"
   },
   {
     "year": 1978,
@@ -2003,12 +2059,12 @@
     "year": 1980,
     "title": "ABC Industrial Region Strikes Continue",
     "verdict": "TRUE",
-    "reason": "Confirmed: 1980 strikes continued; Lula imprisoned under National Security Law.",
-    "verify_count": 1,
+    "reason": "Independently confirmed via non-Wikipedia sources. In 1980 a mass strike by 200,000+ metalworkers in Brazil's ABC region (Santo André, São Bernardo, São Caetano) demanded wage increases and job stability against the military regime. On April 19, 1980 (19 days into the strike), Lula (then president of the ABC Metalworkers' Union) and ten other union leaders were arrested and charged under the National Security Law. Critically, the strike did NOT collapse after his arrest — workers continued the movement (chanting for his release, with a 100,000-person march on May 1) and sustained the strike for 41 total days until suspending it on May 11, 1980. This directly matches the event description's core claim that the labor movement 'maintained pressure... despite the government imprisoning Lula' and 'demonstrated its capacity to sustain organized resistance.' Corroborated by Memorial da Democracia (memorialdademocracia.com.br) and cross-checked with Instituto Lula, Fundação Perseu Abramo, and The Intercept Brasil — all independent of Wikipedia, which was excluded from consideration per source-independence rules.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -2020,9 +2076,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via non-Wikipedia sources. In 1980 a mass strike by 200,000+ metalworkers in Brazil's ABC region (Santo André, São Bernardo, São Caetano) demanded wage increases and job stability against the military regime. On April 19, 1980 (19 days into the strike), Lula (then president of the ABC Metalworkers' Union) and ten other union leaders were arrested and charged under the National Security Law. Critically, the strike did NOT collapse after his arrest — workers continued the movement (chanting for his release, with a 100,000-person march on May 1) and sustained the strike for 41 total days until suspending it on May 11, 1980. This directly matches the event description's core claim that the labor movement 'maintained pressure... despite the government imprisoning Lula' and 'demonstrated its capacity to sustain organized resistance.' Corroborated by Memorial da Democracia (memorialdademocracia.com.br) and cross-checked with Instituto Lula, Fundação Perseu Abramo, and The Intercept Brasil — all independent of Wikipedia, which was excluded from consideration per source-independence rules.",
+        "source": "https://memorialdademocracia.com.br/card/ditadura-ataca-a-greve-do-abc-lula-e-preso",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Luiz_Inácio_Lula_da_Silva"
+    "source": "https://memorialdademocracia.com.br/card/ditadura-ataca-a-greve-do-abc-lula-e-preso"
   },
   {
     "year": 1980,
@@ -2202,13 +2269,13 @@
   {
     "year": 1983,
     "title": "Inflation Exceeds 200% Annually",
-    "verdict": "TRUE",
-    "reason": "Confirmed: annual inflation reached 239% in 1983.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Confirmed: annual inflation reached 239% in 1983.; Pass 2 FALSE: Three independent, non-Wikipedia historical-inflation-rate trackers all put Brazil's 1983 annual inflation well below 200%: worlddata.info gives 135.00%, rateinflation.com gives 135.25%, and inflationtool.com gives 164.02% for 1983. The same three sources show 1984 as borderline (192.10% and 191.75% — still under 200% — vs. 215.26% on one site), and all three agree 1985 clearly cleared the 200% mark (226.00%, 225.87%, 242.23%). A widely repeated one-line summary ('in 1983 inflation rose to 200 percent and stayed there for two years') traces back to Wikipedia's 'Inflation in Brazil' article, which is an off-limits corroborating domain here, and it does not match the actual year-by-year data tables from three other independent sites. Brazil's inflation was clearly severe and rising through the early-to-mid 1980s (broadly consistent with the article's narrative about the 'lost decade' and eroded real wages/savings), but the specific, checkable claim that annual inflation first exceeded 200% in 1983 is not supported by the numeric data — the 200% threshold appears to have been first clearly breached in 1985, with 1984 sitting right at/just under the line depending on source. Since the year itself is the disputed element (not just magnitude while year holds), this is scored FALSE with 1985 as the best-supported corrected year, though 1984 cannot be fully ruled out given one source's higher figure.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -2220,9 +2287,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Three independent, non-Wikipedia historical-inflation-rate trackers all put Brazil's 1983 annual inflation well below 200%: worlddata.info gives 135.00%, rateinflation.com gives 135.25%, and inflationtool.com gives 164.02% for 1983. The same three sources show 1984 as borderline (192.10% and 191.75% — still under 200% — vs. 215.26% on one site), and all three agree 1985 clearly cleared the 200% mark (226.00%, 225.87%, 242.23%). A widely repeated one-line summary ('in 1983 inflation rose to 200 percent and stayed there for two years') traces back to Wikipedia's 'Inflation in Brazil' article, which is an off-limits corroborating domain here, and it does not match the actual year-by-year data tables from three other independent sites. Brazil's inflation was clearly severe and rising through the early-to-mid 1980s (broadly consistent with the article's narrative about the 'lost decade' and eroded real wages/savings), but the specific, checkable claim that annual inflation first exceeded 200% in 1983 is not supported by the numeric data — the 200% threshold appears to have been first clearly breached in 1985, with 1984 sitting right at/just under the line depending on source. Since the year itself is the disputed element (not just magnitude while year holds), this is scored FALSE with 1985 as the best-supported corrected year, though 1984 cannot be fully ruled out given one source's higher figure.",
+        "source": "https://www.rateinflation.com/inflation-rate/brazil-historical-inflation-rate/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1985
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Inflation_in_Brazil"
+    ]
   },
   {
     "year": 1984,
@@ -2278,12 +2356,12 @@
     "year": 1984,
     "title": "First Brazilian Satellite Communication System Launched",
     "verdict": "FALSE",
-    "reason": "Brasilsat A1 was launched February 8, 1985 — not 1984. Year off by 1.",
-    "verify_count": 1,
+    "reason": "Brazil's first satellite, Brasilsat A1, which established the national Brasilsat satellite communication system (SBTS) operated by Embratel to provide telecom coverage across Brazil's remote regions, was launched on February 8, 1985 via an Ariane 3 rocket from Kourou, French Guiana — not 1984. All other details (country, actor Embratel, purpose of integrating remote regions into national comms) check out; the year is the sole error, confirmed by an independent Brazilian telecom trade source plus two other independent Brazilian sources, none of which is Wikipedia.",
+    "verify_count": 2,
     "consensus_verdict": "FALSE",
-    "consensus_status": "single",
+    "consensus_status": "double_negative",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -2295,9 +2373,21 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Brazil's first satellite, Brasilsat A1, which established the national Brasilsat satellite communication system (SBTS) operated by Embratel to provide telecom coverage across Brazil's remote regions, was launched on February 8, 1985 via an Ariane 3 rocket from Kourou, French Guiana — not 1984. All other details (country, actor Embratel, purpose of integrating remote regions into national comms) check out; the year is the sole error, confirmed by an independent Brazilian telecom trade source plus two other independent Brazilian sources, none of which is Wikipedia.",
+        "source": "https://teletime.com.br/07/02/2025/satelite-brasilsat-a1-o-primeiro-do-brasil-ia-ao-espaco-ha-40-anos/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1985
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Brasilsat_A1"
+    "source": "https://teletime.com.br/07/02/2025/satelite-brasilsat-a1-o-primeiro-do-brasil-ia-ao-espaco-ha-40-anos/"
   },
   {
     "year": 1985,
@@ -2853,12 +2943,12 @@
     "year": 1993,
     "title": "Real Plan Stabilization Strategy Announced",
     "verdict": "TRUE",
-    "reason": "Finance Minister FHC unveiled Real Plan in December 1993. Confirmed.",
-    "verify_count": 1,
+    "reason": "Independent Brazilian Senate news source (senado.leg.br) explicitly states: \"Fernando Henrique Cardoso anunciou oficialmente o Plano Real em dezembro de 1993, quando já era Ministro da Fazenda\" (Cardoso officially announced the Real Plan in December 1993 while already Finance Minister). This is corroborated by additional independent sources: an FES (Friedrich Ebert Foundation) academic paper on Brazilian politics stating Cardoso announced \"the broad outlines of his stabilisation plan\" to be put to Congress in December 1993, structured as a three-stage program (fiscal adjustment, then URV transitional unit, then new currency); FGV's Atlas (atlas.fgv.br) confirming the plan used a \"triple anchoring\" strategy including a fixed exchange rate pegged to the dollar (URV established at value equivalent to the commercial dollar) to end chronic hyperinflation via structural monetary reform; and Brown University's Five Centuries of Change source confirming Cardoso, appointed Finance Minister in May 1993, introduced the Plano Real with the URV indexing mechanism \"tied to the U.S. dollar.\" All core details match: country (Brazil), year (1993, specifically December), actor (Finance Minister Fernando Henrique Cardoso), and substance (comprehensive stabilization program creating a dollar-pegged currency mechanism to end hyperinflation through structural monetary reform). Full implementation phases (URV in Feb-Mar 1994, new Real currency July 1994) came later, but the event as described is specifically about the *announcement/unveiling* of the strategy, which is well-documented as occurring in December 1993.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -2870,9 +2960,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent Brazilian Senate news source (senado.leg.br) explicitly states: \"Fernando Henrique Cardoso anunciou oficialmente o Plano Real em dezembro de 1993, quando já era Ministro da Fazenda\" (Cardoso officially announced the Real Plan in December 1993 while already Finance Minister). This is corroborated by additional independent sources: an FES (Friedrich Ebert Foundation) academic paper on Brazilian politics stating Cardoso announced \"the broad outlines of his stabilisation plan\" to be put to Congress in December 1993, structured as a three-stage program (fiscal adjustment, then URV transitional unit, then new currency); FGV's Atlas (atlas.fgv.br) confirming the plan used a \"triple anchoring\" strategy including a fixed exchange rate pegged to the dollar (URV established at value equivalent to the commercial dollar) to end chronic hyperinflation via structural monetary reform; and Brown University's Five Centuries of Change source confirming Cardoso, appointed Finance Minister in May 1993, introduced the Plano Real with the URV indexing mechanism \"tied to the U.S. dollar.\" All core details match: country (Brazil), year (1993, specifically December), actor (Finance Minister Fernando Henrique Cardoso), and substance (comprehensive stabilization program creating a dollar-pegged currency mechanism to end hyperinflation through structural monetary reform). Full implementation phases (URV in Feb-Mar 1994, new Real currency July 1994) came later, but the event as described is specifically about the *announcement/unveiling* of the strategy, which is well-documented as occurring in December 1993.",
+        "source": "https://www12.senado.leg.br/noticias/especiais/arquivo-s/antes-do-plano-real-inflacao-no-brasil-chegou-a-2-500-ao-ano",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Plano_Real"
+    "source": "https://www12.senado.leg.br/noticias/especiais/arquivo-s/antes-do-plano-real-inflacao-no-brasil-chegou-a-2-500-ao-ano"
   },
   {
     "year": 1993,
@@ -3053,12 +3154,12 @@
     "year": 1996,
     "title": "Landless Workers Movement (MST) Expands Protests",
     "verdict": "TRUE",
-    "reason": "MST's most active period of land occupations was mid-1990s. Confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent (non-Wikipedia) sources confirm that in 1996 the MST dramatically escalated land occupations in Brazil: libcom.org states \"The MST offensive went into high gear in 1996, with a record number of land occupations and families,\" with occupations rising from 119 (1994) to 398 (1996) nationwide. This period included the April 17, 1996 Eldorado do Carajás massacre (Pará state), where military police killed 19-21 MST-affiliated landless farmers during a protest march, an event that (per mstbrazil.org and brasildefato.com.br) became internationally known and pushed the federal government to create the Ministry of Agrarian Reform, bringing land reform to national/international prominence exactly as described. MST is widely and independently characterized as one of Latin America's largest and most significant social movements, advocating for the millions of landless rural families in Brazil. Country (Brazil) and year (1996) both hold, and the magnitude (\"hundreds of land occupations,\" \"national prominence\") is corroborated by non-Wikipedia sources.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -3070,9 +3171,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent (non-Wikipedia) sources confirm that in 1996 the MST dramatically escalated land occupations in Brazil: libcom.org states \"The MST offensive went into high gear in 1996, with a record number of land occupations and families,\" with occupations rising from 119 (1994) to 398 (1996) nationwide. This period included the April 17, 1996 Eldorado do Carajás massacre (Pará state), where military police killed 19-21 MST-affiliated landless farmers during a protest march, an event that (per mstbrazil.org and brasildefato.com.br) became internationally known and pushed the federal government to create the Ministry of Agrarian Reform, bringing land reform to national/international prominence exactly as described. MST is widely and independently characterized as one of Latin America's largest and most significant social movements, advocating for the millions of landless rural families in Brazil. Country (Brazil) and year (1996) both hold, and the magnitude (\"hundreds of land occupations,\" \"national prominence\") is corroborated by non-Wikipedia sources.",
+        "source": "https://libcom.org/article/rural-landless-workers-movement-brazil-roger-burbach",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Landless_Workers%27_Movement"
+    "source": "https://libcom.org/article/rural-landless-workers-movement-brazil-roger-burbach"
   },
   {
     "year": 1996,
@@ -3203,12 +3315,12 @@
     "year": 1998,
     "title": "Brazil Hit by Asian Financial Crisis Contagion",
     "verdict": "TRUE",
-    "reason": "Confirmed: IMF rescue package assembled 1998; $41.5 billion figure is confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm the core facts for 1998: emerging-market contagion (originating in the 1997 Asian crisis and intensified by the August 1998 Russian default) triggered heavy capital flight from Brazil; Brazil's central bank raised interest rates dramatically to defend the real's crawling-peg/band exchange-rate regime (Selic reached the 40-50% range in Sept-Nov 1998, an 'all-time high' period for real rates per CEIC/Trading Economics data); and a $41.5 billion multilateral rescue package (IMF plus World Bank, IDB, and bilateral commitments) was assembled and announced in November 1998 (IMF board approval Dec 2, 1998) explicitly to shore up confidence and prevent a currency collapse. The Deseret News (Nov 14, 1998) and EveryCRSReport/CRS congressional report both independently corroborate the $41.5B figure and its purpose. Minor imprecision: Brazil's regime was technically a crawling peg/band rather than a strict fixed 'dollar peg,' and the most proximate trigger for the Nov 1998 package was Russia's August 1998 default rather than the Asian crisis per se, though the Asian crisis (1997) was the originating contagion event and the description explicitly spans '1997-98.' These are framing nuances, not material factual errors — year, country, dollar figure, and causal mechanism (contagion capital flight -> rate hikes -> IMF rescue to avert collapse) all check out. The actual devaluation/float itself did not occur until January 1999, but the description does not claim the collapse happened in 1998 — only that the package was assembled to prevent one, which is accurate.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -3220,9 +3332,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the core facts for 1998: emerging-market contagion (originating in the 1997 Asian crisis and intensified by the August 1998 Russian default) triggered heavy capital flight from Brazil; Brazil's central bank raised interest rates dramatically to defend the real's crawling-peg/band exchange-rate regime (Selic reached the 40-50% range in Sept-Nov 1998, an 'all-time high' period for real rates per CEIC/Trading Economics data); and a $41.5 billion multilateral rescue package (IMF plus World Bank, IDB, and bilateral commitments) was assembled and announced in November 1998 (IMF board approval Dec 2, 1998) explicitly to shore up confidence and prevent a currency collapse. The Deseret News (Nov 14, 1998) and EveryCRSReport/CRS congressional report both independently corroborate the $41.5B figure and its purpose. Minor imprecision: Brazil's regime was technically a crawling peg/band rather than a strict fixed 'dollar peg,' and the most proximate trigger for the Nov 1998 package was Russia's August 1998 default rather than the Asian crisis per se, though the Asian crisis (1997) was the originating contagion event and the description explicitly spans '1997-98.' These are framing nuances, not material factual errors — year, country, dollar figure, and causal mechanism (contagion capital flight -> rate hikes -> IMF rescue to avert collapse) all check out. The actual devaluation/float itself did not occur until January 1999, but the description does not claim the collapse happened in 1998 — only that the package was assembled to prevent one, which is accurate.",
+        "source": "https://www.deseret.com/1998/11/14/19412129/41-5-billion-deal-for-brazil-to-halt-financial-maelstrom/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Brazilian_financial_crisis_(1998–1999)"
+    "source": "https://www.deseret.com/1998/11/14/19412129/41-5-billion-deal-for-brazil-to-halt-financial-maelstrom/"
   },
   {
     "year": 1998,
@@ -3278,12 +3401,12 @@
     "year": 1999,
     "title": "Real Currency Devaluation and Economic Crisis",
     "verdict": "TRUE",
-    "reason": "Confirmed: dollar peg abandoned January 1999; Real lost ~40-50% of value.",
-    "verify_count": 1,
+    "reason": "Independent sources (IMF Finance & Development, Dallas Fed, Congressional Research Service) confirm: Brazil abandoned its currency band/peg on Jan 15, 1999 and floated the Real on Jan 18, 1999 after months of capital flight following the 1998 Russian default. The Real fell roughly 35-60% in the following weeks/month (to 2.15/USD from 1.20/USD by February, i.e. ~44%, matching 'nearly half its value'). This came despite a $41.5B IMF/US Treasury package tied to fiscal austerity (spending cuts, tax hikes) — matching 'deep austerity measures'. Capital flight of ~$40B occurred over the preceding four months. GDP growth ended up near-flat (~0.3-1%) for 1999 rather than a deep recession, and the CRS/Dallas Fed sources explicitly note Brazil recovered/adjusted faster than expected — this matches the description's own caveat ('recovered faster than many predicted'). All core facts (country=Brazil, year=1999, peg abandonment, ~half-value devaluation, capital flight, austerity, faster-than-expected recovery) are corroborated by non-Wikipedia sources, so this is TRUE rather than PARTIAL.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -3295,9 +3418,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources (IMF Finance & Development, Dallas Fed, Congressional Research Service) confirm: Brazil abandoned its currency band/peg on Jan 15, 1999 and floated the Real on Jan 18, 1999 after months of capital flight following the 1998 Russian default. The Real fell roughly 35-60% in the following weeks/month (to 2.15/USD from 1.20/USD by February, i.e. ~44%, matching 'nearly half its value'). This came despite a $41.5B IMF/US Treasury package tied to fiscal austerity (spending cuts, tax hikes) — matching 'deep austerity measures'. Capital flight of ~$40B occurred over the preceding four months. GDP growth ended up near-flat (~0.3-1%) for 1999 rather than a deep recession, and the CRS/Dallas Fed sources explicitly note Brazil recovered/adjusted faster than expected — this matches the description's own caveat ('recovered faster than many predicted'). All core facts (country=Brazil, year=1999, peg abandonment, ~half-value devaluation, capital flight, austerity, faster-than-expected recovery) are corroborated by non-Wikipedia sources, so this is TRUE rather than PARTIAL.",
+        "source": "https://www.imf.org/external/pubs/ft/fandd/2000/03/pdf/fraga.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Brazilian_financial_crisis_(1998–1999)"
+    "source": "https://www.imf.org/external/pubs/ft/fandd/2000/03/pdf/fraga.pdf"
   },
   {
     "year": 1999,
@@ -3403,12 +3537,12 @@
     "year": 2001,
     "title": "Argentina Financial Crisis Destabilizes Brazil",
     "verdict": "TRUE",
-    "reason": "Argentine crisis 2001–2002 created contagion for Brazil. Confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Wikipedia sources confirm the event as described. Brazil's own Central Bank (bcb.gov.br), in its official 2001 Q1 exchange-rate policy analysis, explicitly attributes pressure on the real and dollar-buying speculation \"principalmente, do agravamento da crise argentina\" (mainly to the worsening of the Argentine crisis), describes contagion via investors using Brazil's currency market to speculate against Argentina's currency regime and against the fragility of Brazil's real defense, and documents the Central Bank raising the Selic rate and intervening in FX markets in direct response. A Brazilian financial-news outlet (InfoMoney) independently corroborates that H1 2001 was \"characterized by currency devaluation and energy crisis,\" directly tying the real's depreciation to the Argentine crisis via capital-flight/speculation mechanics. Academic/BIS literature (BIS Papers No. 23, \"Brazil's stress test of inflation targeting\") independently confirms that \"exchange rate depreciations in 2001 and 2002 were stress tests for the inflation-targeting regime in Brazil,\" citing \"the fall of the Argentine peso\" as a key driver, and that the real depreciated ~46% domestically over 2001-2002, causing Brazil to overshoot its inflation target (7.7% vs. 6% ceiling in 2001) — matching the description's claims of currency depreciation, risk-premium increases, capital flight, and a stress test of the inflation-targeting framework. All core facts (country=Brazil, year=2001, causal link to Argentina's collapse, capital flight, real depreciation, risk premium rise, inflation-targeting stress test) are corroborated by sources independent of Wikipedia.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -3420,9 +3554,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm the event as described. Brazil's own Central Bank (bcb.gov.br), in its official 2001 Q1 exchange-rate policy analysis, explicitly attributes pressure on the real and dollar-buying speculation \"principalmente, do agravamento da crise argentina\" (mainly to the worsening of the Argentine crisis), describes contagion via investors using Brazil's currency market to speculate against Argentina's currency regime and against the fragility of Brazil's real defense, and documents the Central Bank raising the Selic rate and intervening in FX markets in direct response. A Brazilian financial-news outlet (InfoMoney) independently corroborates that H1 2001 was \"characterized by currency devaluation and energy crisis,\" directly tying the real's depreciation to the Argentine crisis via capital-flight/speculation mechanics. Academic/BIS literature (BIS Papers No. 23, \"Brazil's stress test of inflation targeting\") independently confirms that \"exchange rate depreciations in 2001 and 2002 were stress tests for the inflation-targeting regime in Brazil,\" citing \"the fall of the Argentine peso\" as a key driver, and that the real depreciated ~46% domestically over 2001-2002, causing Brazil to overshoot its inflation target (7.7% vs. 6% ceiling in 2001) — matching the description's claims of currency depreciation, risk-premium increases, capital flight, and a stress test of the inflation-targeting framework. All core facts (country=Brazil, year=2001, causal link to Argentina's collapse, capital flight, real depreciation, risk premium rise, inflation-targeting stress test) are corroborated by sources independent of Wikipedia.",
+        "source": "https://www.bcb.gov.br/rex/MerCambio/Port/Cambio011/2001-1Pol%C3%ADticaCambial.asp?frame=1",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Argentine_economic_crisis_(1999–2002)"
+    "source": "https://www.bcb.gov.br/rex/MerCambio/Port/Cambio011/2001-1Pol%C3%ADticaCambial.asp?frame=1"
   },
   {
     "year": 2001,
@@ -3452,13 +3597,13 @@
   {
     "year": 2001,
     "title": "Landless Workers March on Brasilia",
-    "verdict": "TRUE",
-    "reason": "MST marches on Brasilia are documented; 2001 march in context of land reform demands confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: MST marches on Brasilia are documented; 2001 march in context of land reform demands confirmed.; Pass 2 FALSE: No evidence of a major MST march on Brasília in 2001. The MST's own historical retrospective of its landmark marches to Brasília lists 1997 (~100,000 people, the National March for Employment, Justice and Agrarian Reform), 1999 (~1,000), 2005 (~12,000-15,000), and 2018 (~5,000) — it skips 2001 entirely. Multiple targeted searches for a 2001 MST march to Brasília, land-reform mobilization, or Eldorado dos Carajás-anniversary protest that year returned nothing. The description given (thousands of MST members converging on Brasília demanding acceleration of land reform, highlighting extreme land concentration) matches the well-documented 1997 march almost exactly: three columns of marchers converged on Brasília on April 17, 1997 (the anniversary of the Eldorado dos Carajás massacre), joined by ~100,000 supporters, protesting the government's agrarian policy and land exclusion. That event's real year is 1997, not 2001. This is a year-attribution error, not a fabricated event.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -3470,20 +3615,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "No evidence of a major MST march on Brasília in 2001. The MST's own historical retrospective of its landmark marches to Brasília lists 1997 (~100,000 people, the National March for Employment, Justice and Agrarian Reform), 1999 (~1,000), 2005 (~12,000-15,000), and 2018 (~5,000) — it skips 2001 entirely. Multiple targeted searches for a 2001 MST march to Brasília, land-reform mobilization, or Eldorado dos Carajás-anniversary protest that year returned nothing. The description given (thousands of MST members converging on Brasília demanding acceleration of land reform, highlighting extreme land concentration) matches the well-documented 1997 march almost exactly: three columns of marchers converged on Brasília on April 17, 1997 (the anniversary of the Eldorado dos Carajás massacre), joined by ~100,000 supporters, protesting the government's agrarian policy and land exclusion. That event's real year is 1997, not 2001. This is a year-attribution error, not a fabricated event.",
+        "source": "https://memorialdademocracia.com.br/card/marcha-do-mst-toma-a-capital-federal",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1997
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Landless_Workers%27_Movement"
+    ]
   },
   {
     "year": 2001,
     "title": "Brazil Launches SIVAM Amazon Surveillance System",
-    "verdict": "TRUE",
-    "reason": "SIVAM launched 2002 (operational); 2001 describes initiation of launch phase. Minor timing note.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: SIVAM launched 2002 (operational); 2001 describes initiation of launch phase. Minor timing note.; Pass 2 FALSE: SIVAM (Sistema de Vigilância da Amazônia) was not launched in 2001. Independent, non-Wikipedia sources show it was still under construction/testing throughout 2001-2002: a Nov 2001 VOA report described it as still being installed with a planned 2002 operational start; an Aviation Today (aviationtoday.com) article from June 2002 said hardware was '99 percent complete' and initial operational capability was 'expected to begin this summer [2002]' with full operation targeted for Q1 2003; and MundoGEO (mundogeo.com), a Brazilian geospatial trade outlet, reported the formal inauguration of SIVAM by President Fernando Henrique Cardoso took place on July 25, 2002, with the surveillance aircraft christened the day before (July 24, 2002) in Anápolis. No independent source supports a 2001 launch date. The real launch/inauguration year is 2002.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -3495,9 +3651,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "SIVAM (Sistema de Vigilância da Amazônia) was not launched in 2001. Independent, non-Wikipedia sources show it was still under construction/testing throughout 2001-2002: a Nov 2001 VOA report described it as still being installed with a planned 2002 operational start; an Aviation Today (aviationtoday.com) article from June 2002 said hardware was '99 percent complete' and initial operational capability was 'expected to begin this summer [2002]' with full operation targeted for Q1 2003; and MundoGEO (mundogeo.com), a Brazilian geospatial trade outlet, reported the formal inauguration of SIVAM by President Fernando Henrique Cardoso took place on July 25, 2002, with the surveillance aircraft christened the day before (July 24, 2002) in Anápolis. No independent source supports a 2001 launch date. The real launch/inauguration year is 2002.",
+        "source": "https://mundogeo.com/2002/07/25/sivam-e-inaugurado-hoje/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 2002
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/SIVAM"
+    ]
   },
   {
     "year": 2002,
@@ -3627,13 +3794,13 @@
   {
     "year": 2003,
     "title": "Brazil Launches First Domestic Rocket VLS",
-    "verdict": "TRUE",
-    "reason": "Confirmed: VLS explosion August 22, 2003 at Alcântara; 21 killed (not '21 technicians' — mix of engineers and technicians; 21 total confirmed).",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "The core disaster is confirmed: on 22 August 2003, Brazil's VLS-1 rocket (attempt V03) suffered an unplanned booster ignition during pre-launch preparations at the Alcântara Launch Center, killing 21 technicians/engineers and injuring dozens more, effectively ending the program for years. That matches the description almost exactly. However, the title is materially wrong on two counts: (1) it was NOT the \"first\" domestic rocket attempt — VLS-1 had two prior failed launch attempts in 1997 (V01) and 1999 (V02); this was the third attempt; (2) the rocket never actually \"launched\" — it exploded on the pad during ground preparations two days before its scheduled launch, so calling it a 'launch' is inaccurate. Given the title's factual errors ('first' and 'launches') while the description's substance, year, and country all check out, this is a material-detail mismatch rather than a full match.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -3645,9 +3812,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The core disaster is confirmed: on 22 August 2003, Brazil's VLS-1 rocket (attempt V03) suffered an unplanned booster ignition during pre-launch preparations at the Alcântara Launch Center, killing 21 technicians/engineers and injuring dozens more, effectively ending the program for years. That matches the description almost exactly. However, the title is materially wrong on two counts: (1) it was NOT the \"first\" domestic rocket attempt — VLS-1 had two prior failed launch attempts in 1997 (V01) and 1999 (V02); this was the third attempt; (2) the rocket never actually \"launched\" — it exploded on the pad during ground preparations two days before its scheduled launch, so calling it a 'launch' is inaccurate. Given the title's factual errors ('first' and 'launches') while the description's substance, year, and country all check out, this is a material-detail mismatch rather than a full match.",
+        "source": "https://universemagazine.com/en/disaster-at-alcantara-the-explosion-that-hindered-brazils-ascent-as-a-space-power/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/VLS-1_V03"
+    "source": "https://universemagazine.com/en/disaster-at-alcantara-the-explosion-that-hindered-brazils-ascent-as-a-space-power/"
   },
   {
     "year": 2004,
@@ -3952,13 +4130,13 @@
   {
     "year": 2007,
     "title": "PAC Growth Acceleration Program Announced",
-    "verdict": "TRUE",
-    "reason": "PAC launched January 2007; $503 billion investment figure is cited. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "The core event is real: President Lula launched the Programa de Aceleração do Crescimento (PAC) in January 2007, targeting logistics/transportation, energy, water and sanitation infrastructure to address Brazil's infrastructure deficit and accelerate growth — matching the description's country, year, actor and sector scope. However, the magnitude is materially wrong: the announced investment was R$503.9 billion (Brazilian Reais), not US$503 billion. At 2007 exchange rates (~BRL 2:1 USD), R$503.9 billion converts to roughly US$235-260 billion — less than half the dollar figure stated in the event description. Independent, non-Wikipedia sources (FGV CPDOC academic dictionary; general secondary reporting explicitly noting 'R$500 billion (US$260 billion)') confirm this currency conflation. Because the description presents the figure with a '$' sign implying US dollars, and the true USD-equivalent scale is roughly half of what's claimed, this is a material magnitude error on an otherwise real, correctly-dated, correctly-attributed event — hence PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -3970,9 +4148,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The core event is real: President Lula launched the Programa de Aceleração do Crescimento (PAC) in January 2007, targeting logistics/transportation, energy, water and sanitation infrastructure to address Brazil's infrastructure deficit and accelerate growth — matching the description's country, year, actor and sector scope. However, the magnitude is materially wrong: the announced investment was R$503.9 billion (Brazilian Reais), not US$503 billion. At 2007 exchange rates (~BRL 2:1 USD), R$503.9 billion converts to roughly US$235-260 billion — less than half the dollar figure stated in the event description. Independent, non-Wikipedia sources (FGV CPDOC academic dictionary; general secondary reporting explicitly noting 'R$500 billion (US$260 billion)') confirm this currency conflation. Because the description presents the figure with a '$' sign implying US dollars, and the true USD-equivalent scale is roughly half of what's claimed, this is a material magnitude error on an otherwise real, correctly-dated, correctly-attributed event — hence PARTIAL rather than TRUE.",
+        "source": "https://www18.fgv.br/cpdoc/acervo/dicionarios/verbete-tematico/programa-de-aceleracao-do-crescimento-pac",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Growth_Acceleration_Program"
+    "source": "https://www18.fgv.br/cpdoc/acervo/dicionarios/verbete-tematico/programa-de-aceleracao-do-crescimento-pac"
   },
   {
     "year": 2008,
@@ -4052,13 +4241,13 @@
   {
     "year": 2008,
     "title": "Brazil Deploys Army Against Violence in Rio de Janeiro",
-    "verdict": "TRUE",
-    "reason": "UPP program began November 2008 in Santa Marta favela. Army deployments in Rio also occurred. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "The UPP (Pacifying Police Unit) program did launch in Rio de Janeiro in late 2008, with the first unit installed in Santa Marta on Dec 19, 2008, and it is well documented that the security gains from UPPs proved hard to sustain over subsequent years — so the year, country, and general shape of the event are correct. However, a material detail is wrong: it was NOT the federal government deploying the Brazilian Army. It was the Rio de Janeiro STATE government (State Security Secretary José Mariano Beltrame, under Governor Sérgio Cabral) deploying the state's Military Police / BOPE special operations unit. Multiple independent sources explicitly distinguish this from later, genuine federal Army deployments to Rio favelas (Complexo do Alemão occupation 2010-2012, Complexo da Maré 2014), which happened years after 2008, not in 2008 itself. The Olympics framing is plausible even though Rio wasn't formally awarded the 2016 Games until Oct 2009 — its bid (submitted 2008) explicitly promised security improvements as part of the pitch, per Yale Journal of International Affairs. So: right year, right country, right general program (UPP establishment, unsustained gains), but wrong actor (state police, not federal army) — a PARTIAL per the actor-error criterion.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -4070,9 +4259,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The UPP (Pacifying Police Unit) program did launch in Rio de Janeiro in late 2008, with the first unit installed in Santa Marta on Dec 19, 2008, and it is well documented that the security gains from UPPs proved hard to sustain over subsequent years — so the year, country, and general shape of the event are correct. However, a material detail is wrong: it was NOT the federal government deploying the Brazilian Army. It was the Rio de Janeiro STATE government (State Security Secretary José Mariano Beltrame, under Governor Sérgio Cabral) deploying the state's Military Police / BOPE special operations unit. Multiple independent sources explicitly distinguish this from later, genuine federal Army deployments to Rio favelas (Complexo do Alemão occupation 2010-2012, Complexo da Maré 2014), which happened years after 2008, not in 2008 itself. The Olympics framing is plausible even though Rio wasn't formally awarded the 2016 Games until Oct 2009 — its bid (submitted 2008) explicitly promised security improvements as part of the pitch, per Yale Journal of International Affairs. So: right year, right country, right general program (UPP establishment, unsustained gains), but wrong actor (state police, not federal army) — a PARTIAL per the actor-error criterion.",
+        "source": "https://rioonwatch.org/?p=16065",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Pacifying_Police_Unit"
+    "source": "https://rioonwatch.org/?p=16065"
   },
   {
     "year": 2009,
@@ -4352,13 +4552,13 @@
   {
     "year": 2012,
     "title": "Brazil Surpasses UK as 6th Largest Economy",
-    "verdict": "TRUE",
-    "reason": "Brazil briefly surpassed the UK as 6th largest economy in 2011–2012. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Brazil briefly surpassed the UK as 6th largest economy in 2011–2012. Confirmed.; Pass 2 FALSE: The underlying event is real, but it happened a year earlier than stated. Brazil's GDP surpassed the UK's for the first time based on full-year 2011 figures — first reported as a CEBR/IMF-based estimate in late Nov/Dec 2011 (Forbes, Mercopress, NPR, all dated Dec 2011: 'Brazil overtakes UK as sixth-largest economy'), then confirmed with hard official numbers in March 2012 news wire stories (CNN, NPR affiliates KERA/WAMC/KACU, March 7 2012) which explicitly describe the milestone as pertaining to 2011 GDP (Brazil $2.469T vs UK $2.420T for 2011). Crucially, by full-year 2012 data the reverse happened: a Dec 2012 Mercopress follow-up ('The magic of currencies: UK overtakes Brazil as the world's sixth largest economy') states 'Only a year after being surpassed by Brazil for the first time [in 2011], Britain has edged back ahead' using 2012 GDP data (UK $2.443T vs Brazil $2.282T), due to Brazilian real depreciation. So for calendar year 2012 specifically, Brazil was NOT the sixth-largest economy ahead of the UK — the opposite occurred. The 'for the first time' milestone described belongs to 2011, not 2012.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -4370,9 +4570,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The underlying event is real, but it happened a year earlier than stated. Brazil's GDP surpassed the UK's for the first time based on full-year 2011 figures — first reported as a CEBR/IMF-based estimate in late Nov/Dec 2011 (Forbes, Mercopress, NPR, all dated Dec 2011: 'Brazil overtakes UK as sixth-largest economy'), then confirmed with hard official numbers in March 2012 news wire stories (CNN, NPR affiliates KERA/WAMC/KACU, March 7 2012) which explicitly describe the milestone as pertaining to 2011 GDP (Brazil $2.469T vs UK $2.420T for 2011). Crucially, by full-year 2012 data the reverse happened: a Dec 2012 Mercopress follow-up ('The magic of currencies: UK overtakes Brazil as the world's sixth largest economy') states 'Only a year after being surpassed by Brazil for the first time [in 2011], Britain has edged back ahead' using 2012 GDP data (UK $2.443T vs Brazil $2.282T), due to Brazilian real depreciation. So for calendar year 2012 specifically, Brazil was NOT the sixth-largest economy ahead of the UK — the opposite occurred. The 'for the first time' milestone described belongs to 2011, not 2012.",
+        "source": "https://www.npr.org/sections/thetwo-way/2011/12/27/144322513/brazil-overtakes-u-k-as-worlds-sixth-biggest-economy",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 2011
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Economy_of_Brazil"
+    ]
   },
   {
     "year": 2012,
@@ -4403,12 +4614,12 @@
     "year": 2012,
     "title": "Brazil Introduces Cotistas Racial Quota System",
     "verdict": "TRUE",
-    "reason": "Confirmed: STF upheld quotas April 2012; quota law for federal universities passed August 2012.",
-    "verify_count": 1,
+    "reason": "Confirmed via independent, non-Wikipedia sources. (1) On April 26, 2012, Brazil's Federal Supreme Court (STF) unanimously (10-0) upheld the constitutionality of racial quotas in university admissions in ADPF 186, a case concerning the University of Brasília's quota policy — confirmed by Equal Rights Trust, ESCR-Net, and ICJ case summaries. (2) On August 29, 2012, President Dilma Rousseff signed Law 12.711/2012 ('Lei de Cotas'), requiring federal universities to reserve 50% of places for students who attended public school for their full secondary education, with quotas within that reservation for self-declared Black, mixed-race, and indigenous students proportional to state demographics — confirmed by the U.S. Library of Congress Global Legal Monitor. Both the STF ruling and the Congressional/presidential law match the description materially: unanimous court decision, 50% public-school reservation, and quotas including Black and indigenous students. Year (2012) and country (Brazil) both confirmed.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -4420,9 +4631,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via independent, non-Wikipedia sources. (1) On April 26, 2012, Brazil's Federal Supreme Court (STF) unanimously (10-0) upheld the constitutionality of racial quotas in university admissions in ADPF 186, a case concerning the University of Brasília's quota policy — confirmed by Equal Rights Trust, ESCR-Net, and ICJ case summaries. (2) On August 29, 2012, President Dilma Rousseff signed Law 12.711/2012 ('Lei de Cotas'), requiring federal universities to reserve 50% of places for students who attended public school for their full secondary education, with quotas within that reservation for self-declared Black, mixed-race, and indigenous students proportional to state demographics — confirmed by the U.S. Library of Congress Global Legal Monitor. Both the STF ruling and the Congressional/presidential law match the description materially: unanimous court decision, 50% public-school reservation, and quotas including Black and indigenous students. Year (2012) and country (Brazil) both confirmed.",
+        "source": "https://www.loc.gov/item/global-legal-monitor/2012-09-07/brazil-new-quota-law-reserves-50-of-the-places-at-federal-universities-for-public-school-students/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Affirmative_action_in_Brazil"
+    "source": "https://www.loc.gov/item/global-legal-monitor/2012-09-07/brazil-new-quota-law-reserves-50-of-the-places-at-federal-universities-for-public-school-students/"
   },
   {
     "year": 2013,
@@ -4502,13 +4724,13 @@
   {
     "year": 2013,
     "title": "Marco Civil da Internet Proposed",
-    "verdict": "TRUE",
-    "reason": "Marco Civil proposed/debated 2013; enacted April 2014. Confirmed for 2013 proposal.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Marco Civil proposed/debated 2013; enacted April 2014. Confirmed for 2013 proposal.; Pass 2 FALSE: The Marco Civil da Internet was NOT proposed in 2013. Multiple independent sources confirm the bill's collaborative drafting began in 2009 and it was formally submitted to Brazil's Congress by President Dilma Rousseff on August 24, 2011 (docket PL 2126/2011) -- two years before Snowden's revelations. What actually happened in 2013 (specifically September 2013, after the Snowden/NSA surveillance revelations targeting Rousseff and Petrobras became public) was that Rousseff invoked 'urgência constitucional' (constitutional urgency) to fast-track the already-pending 2011 bill through Congress, and pushed amendments (e.g., a data-localization requirement) onto the existing text. So the causal claim in the description -- 'Following revelations of US internet surveillance, Brazil proposed the Marco Civil da Internet' -- inverts the actual sequence: the bill predates the surveillance revelations by two years; the revelations accelerated an existing bill rather than prompting a new proposal. The law's other details (net neutrality, data protection, limits on surveillance, enactment in 2014) are accurate, but the core 'proposed in 2013' claim is a timeline error, so per the hard rules this is FALSE with corrected_year=2011 (the actual proposal date). A fair characterization of the real 2013 event would be 'fast-tracked/given legislative priority following Snowden revelations,' not 'proposed.'. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -4520,9 +4742,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The Marco Civil da Internet was NOT proposed in 2013. Multiple independent sources confirm the bill's collaborative drafting began in 2009 and it was formally submitted to Brazil's Congress by President Dilma Rousseff on August 24, 2011 (docket PL 2126/2011) -- two years before Snowden's revelations. What actually happened in 2013 (specifically September 2013, after the Snowden/NSA surveillance revelations targeting Rousseff and Petrobras became public) was that Rousseff invoked 'urgência constitucional' (constitutional urgency) to fast-track the already-pending 2011 bill through Congress, and pushed amendments (e.g., a data-localization requirement) onto the existing text. So the causal claim in the description -- 'Following revelations of US internet surveillance, Brazil proposed the Marco Civil da Internet' -- inverts the actual sequence: the bill predates the surveillance revelations by two years; the revelations accelerated an existing bill rather than prompting a new proposal. The law's other details (net neutrality, data protection, limits on surveillance, enactment in 2014) are accurate, but the core 'proposed in 2013' claim is a timeline error, so per the hard rules this is FALSE with corrected_year=2011 (the actual proposal date). A fair characterization of the real 2013 event would be 'fast-tracked/given legislative priority following Snowden revelations,' not 'proposed.'",
+        "source": "https://advox.globalvoices.org/2013/10/11/from-brazil-to-the-world-the-marco-civil-and-internet-governance/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 2011
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Marco_Civil_da_Internet"
+    ]
   },
   {
     "year": 2014,
@@ -5078,12 +5311,12 @@
     "year": 2018,
     "title": "Truckers Strike Paralyzes Brazil for Ten Days",
     "verdict": "TRUE",
-    "reason": "Confirmed: 10-day truckers strike May 2018; government capitulated to demands.",
-    "verify_count": 1,
+    "reason": "Independent corroboration (Forbes, non-Wikipedia) confirms a nationwide Brazilian truckers strike in May 2018 lasting approximately 8-10 days, triggered by diesel price hikes under President Temer. It caused widespread shortages (food, fuel/aircraft fuel, animal feed, propane), a 28% YoY drop in retail revenue, and a 60% decline at gas stations. The Temer administration responded with major concessions: a 60-day diesel price cut, price caps, and fuel tax reductions — matching 'government capitulated to most demands' and exposing political vulnerability (Petrobras CEO resigned amid the crisis). Additional corroboration from a general web search also surfaced CNN, USDA/FAS, and an academic Systems Research and Behavioral Science paper all describing the same 10-day May 2018 strike, though CNN itself returned HTTP 451 on fetch. All material details (country=Brazil, year=2018, duration=~10 days, cause=diesel prices, consequences=shortages, government capitulation) align with the event description.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -5095,20 +5328,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent corroboration (Forbes, non-Wikipedia) confirms a nationwide Brazilian truckers strike in May 2018 lasting approximately 8-10 days, triggered by diesel price hikes under President Temer. It caused widespread shortages (food, fuel/aircraft fuel, animal feed, propane), a 28% YoY drop in retail revenue, and a 60% decline at gas stations. The Temer administration responded with major concessions: a 60-day diesel price cut, price caps, and fuel tax reductions — matching 'government capitulated to most demands' and exposing political vulnerability (Petrobras CEO resigned amid the crisis). Additional corroboration from a general web search also surfaced CNN, USDA/FAS, and an academic Systems Research and Behavioral Science paper all describing the same 10-day May 2018 strike, though CNN itself returned HTTP 451 on fetch. All material details (country=Brazil, year=2018, duration=~10 days, cause=diesel prices, consequences=shortages, government capitulation) align with the event description.",
+        "source": "https://www.forbes.com/sites/kenrapoza/2018/06/04/brazil-petrobras-truckers-strike-is-huge-negative-for-economy/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2018_Brazilian_truckers%27_strike"
+    "source": "https://www.forbes.com/sites/kenrapoza/2018/06/04/brazil-petrobras-truckers-strike-is-huge-negative-for-economy/"
   },
   {
     "year": 2018,
     "title": "Federal Intervention in Rio de Janeiro Security",
     "verdict": "TRUE",
-    "reason": "Confirmed: federal intervention declared February 2018; first since 1988 Constitution.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Wikipedia sources confirm: on Feb 16, 2018, Brazilian President Michel Temer signed Decree No. 9,288 declaring a federal intervention in Rio de Janeiro's public security (effective Feb 21, 2018), appointing Army General Walter Souza Braga Netto as military interventor with full operational control over the state's civil and military police forces, superseding civilian authorities including the governor. Washington Post and iConnect Blog explicitly describe this as the first federal intervention of a Brazilian state since the 1988 Constitution. The intervention ran through Dec 31, 2018 and was driven by a severe breakdown in public security/rising violence in Rio — materially matching the event description in country, year, actors, and scope.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -5120,9 +5364,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm: on Feb 16, 2018, Brazilian President Michel Temer signed Decree No. 9,288 declaring a federal intervention in Rio de Janeiro's public security (effective Feb 21, 2018), appointing Army General Walter Souza Braga Netto as military interventor with full operational control over the state's civil and military police forces, superseding civilian authorities including the governor. Washington Post and iConnect Blog explicitly describe this as the first federal intervention of a Brazilian state since the 1988 Constitution. The intervention ran through Dec 31, 2018 and was driven by a severe breakdown in public security/rising violence in Rio — materially matching the event description in country, year, actors, and scope.",
+        "source": "https://www.washingtonpost.com/world/the_americas/brazils-military-to-take-over-security-in-violence-scarred-rio-de-janeiro/2018/02/16/5ff9aaea-1341-11e8-a68c-e9374188170e_story.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2018_federal_intervention_in_Rio_de_Janeiro"
+    "source": "https://www.washingtonpost.com/world/the_americas/brazils-military-to-take-over-security-in-violence-scarred-rio-de-janeiro/2018/02/16/5ff9aaea-1341-11e8-a68c-e9374188170e_story.html"
   },
   {
     "year": 2019,

@@ -51,10 +51,10 @@
     "year": 1950,
     "title": "Land Reform Law enacted nationwide",
     "verdict": "TRUE",
-    "reason": "Agrarian Reform Law 1950; mass redistribution to peasants confirmed.",
-    "verify_count": 1,
+    "reason": "The Agrarian Reform Law was enacted June 30, 1950 by the PRC, abolishing landlord land ownership and redistributing confiscated land to peasants nationwide. Independent sources corroborate all material elements: the ~300 million peasant beneficiary scale (sources describe roughly 60% of the rural population, i.e. hundreds of millions, receiving land), the mass mobilization campaigns (\\\"speak bitterness\\\" meetings, struggle sessions/trials), and the executions of landlords (estimates range from ~1-2 million to 2-5 million killed in the 1947-1952 land reform period). Year, country, and description all check out materially.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -68,8 +68,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "The Agrarian Reform Law was enacted June 30, 1950 by the PRC, abolishing landlord land ownership and redistributing confiscated land to peasants nationwide. Independent sources corroborate all material elements: the ~300 million peasant beneficiary scale (sources describe roughly 60% of the rural population, i.e. hundreds of millions, receiving land), the mass mobilization campaigns (\\\"speak bitterness\\\" meetings, struggle sessions/trials), and the executions of landlords (estimates range from ~1-2 million to 2-5 million killed in the 1947-1952 land reform period). Year, country, and description all check out materially.",
+        "source": "https://www.britannica.com/topic/Agrarian-Reform-Law-1950-China",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.britannica.com/topic/Agrarian-Reform-Law-1950-China"
   },
   {
     "year": 1950,
@@ -195,10 +207,10 @@
     "year": 1953,
     "title": "First Five-Year Plan launched",
     "verdict": "TRUE",
-    "reason": "1953–1957 plan with 156 Soviet-aided projects confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm China's First Five-Year Plan launched in 1953 and ran through 1957, emphasizing Soviet-style heavy industrial development with 156 major Soviet-aided projects (out of 694 total industrial projects planned, ~595 completed). It achieved significant growth in steel and coal (both exceeded double the planned growth targets; coal production rose 98% from 1952-1957) and electricity/power plants were among the highest priorities. Industrial production grew at an average 18.7%/year. All material details (country, year, actors, scope, outcomes) match the description.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -212,8 +224,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm China's First Five-Year Plan launched in 1953 and ran through 1957, emphasizing Soviet-style heavy industrial development with 156 major Soviet-aided projects (out of 694 total industrial projects planned, ~595 completed). It achieved significant growth in steel and coal (both exceeded double the planned growth targets; coal production rose 98% from 1952-1957) and electricity/power plants were among the highest priorities. Industrial production grew at an average 18.7%/year. All material details (country, year, actors, scope, outcomes) match the description.",
+        "source": "https://en.wikipedia.org/wiki/1st_Five-Year_Plan_(China)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/1st_Five-Year_Plan_(China)"
   },
   {
     "year": 1953,
@@ -339,10 +363,10 @@
     "year": 1955,
     "title": "Agricultural collectivization drive accelerates",
     "verdict": "TRUE",
-    "reason": "Rapid higher-level cooperative formation in 1955 under Mao confirmed.",
-    "verify_count": 1,
+    "reason": "Confirmed from multiple independent sources: in 1955 Mao Zedong overrode moderate party leaders (notably Deng Zihui, whom Liu Shaoqi and Peng Dehuai initially backed) who favored a slower pace of agricultural cooperativization. Mao's July 31, 1955 speech 'On the Question of Agricultural Cooperation' pushed for rapid formation of higher-level (advanced) agricultural producers' cooperatives. By October 1955 national/provincial leaders had capitulated to Mao's accelerated timetable, and by winter 1955-56 cooperatives covered nearly all of China except Tibet. Within about a year of the push, over 90% of peasant households were enrolled (96.3% of peasants in cooperatives by end of 1956, with 87.8% in advanced/higher-level cooperatives) — matching the description's 'over 90% within a year' and 'restructuring Chinese agriculture' framing. Country, year of the drive's launch/acceleration, and the material substance (Mao overriding moderates, higher-level cooperative push, >90% enrollment achieved rapidly) all check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -356,8 +380,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: in 1955 Mao Zedong overrode moderate party leaders (notably Deng Zihui, whom Liu Shaoqi and Peng Dehuai initially backed) who favored a slower pace of agricultural cooperativization. Mao's July 31, 1955 speech 'On the Question of Agricultural Cooperation' pushed for rapid formation of higher-level (advanced) agricultural producers' cooperatives. By October 1955 national/provincial leaders had capitulated to Mao's accelerated timetable, and by winter 1955-56 cooperatives covered nearly all of China except Tibet. Within about a year of the push, over 90% of peasant households were enrolled (96.3% of peasants in cooperatives by end of 1956, with 87.8% in advanced/higher-level cooperatives) — matching the description's 'over 90% within a year' and 'restructuring Chinese agriculture' framing. Country, year of the drive's launch/acceleration, and the material substance (Mao overriding moderates, higher-level cooperative push, >90% enrollment achieved rapidly) all check out.",
+        "source": "http://www.chinaknowledge.de/History/PRC/prc-event-collectivizationofagriculture.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "http://www.chinaknowledge.de/History/PRC/prc-event-collectivizationofagriculture.html"
   },
   {
     "year": 1956,
@@ -1298,12 +1334,12 @@
   {
     "year": 1979,
     "title": "Household Responsibility System piloted",
-    "verdict": "TRUE",
-    "reason": "Piloted in Anhui province 1979 confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Piloted in Anhui province 1979 confirmed.; Pass 2 FALSE: The event is real and materially described (Anhui province, farmers allowed to sell surplus after meeting state quotas, success prompting national adoption), but the year is off by one. Multiple independent sources converge on the household responsibility system being first piloted in Xiaogang village, Fengyang County, Anhui province, when 18 (some sources say 20) farmers secretly signed a contract to divide commune land among households in November/December 1978 — not 1979. Wikipedia explicitly states it was 'first piloted in 1978 in Anhui Province, specifically in Xiaogang village.' TheWorldOfChinese.com and ExplainingHistory.org both independently date the pact to November/December 1978. 1979 is genuinely associated with this history (Xiaogang's dramatic harvest results became visible in 1979, and Deng Xiaoping backed similar county-level experiments in Fengyang/Feixi, Anhui, in a May 1979 speech), but the canonical 'piloting' event itself — the original household contract experiment — is dated 1978 across all sources found, not 1979. National adoption came later still (Deng's cautious 1980 endorsement, formal CCP Document No.1 in 1982). Because the year is a material join-key mismatch (per the hard rules, a wrong year makes this FALSE with a corrected year, not PARTIAL), I return FALSE with corrected_year 1978.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
     "source_independence": "n/a",
     "verifications": [
       {
@@ -1316,6 +1352,18 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially described (Anhui province, farmers allowed to sell surplus after meeting state quotas, success prompting national adoption), but the year is off by one. Multiple independent sources converge on the household responsibility system being first piloted in Xiaogang village, Fengyang County, Anhui province, when 18 (some sources say 20) farmers secretly signed a contract to divide commune land among households in November/December 1978 — not 1979. Wikipedia explicitly states it was 'first piloted in 1978 in Anhui Province, specifically in Xiaogang village.' TheWorldOfChinese.com and ExplainingHistory.org both independently date the pact to November/December 1978. 1979 is genuinely associated with this history (Xiaogang's dramatic harvest results became visible in 1979, and Deng Xiaoping backed similar county-level experiments in Fengyang/Feixi, Anhui, in a May 1979 speech), but the canonical 'piloting' event itself — the original household contract experiment — is dated 1978 across all sources found, not 1979. National adoption came later still (Deng's cautious 1980 endorsement, formal CCP Document No.1 in 1982). Because the year is a material join-key mismatch (per the hard rules, a wrong year makes this FALSE with a corrected year, not PARTIAL), I return FALSE with corrected_year 1978.",
+        "source": "https://en.wikipedia.org/wiki/Household_responsibility_system",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1978
       }
     ]
   },
@@ -1466,12 +1514,12 @@
   {
     "year": 1983,
     "title": "Economic reforms expand to urban industry",
-    "verdict": "TRUE",
-    "reason": "1983–1984 urban reform expansion; TVEs confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: 1983–1984 urban reform expansion; TVEs confirmed.; Pass 2 FALSE: Multiple independent sources (Library of Congress Country Studies, Britannica, IMF, academic histories) consistently date the systematic expansion of China's economic reforms from agriculture into urban industry to 1984, anchored by the October 1984 CCP Third Plenum \"Decision on Reform of the Economic Structure,\" which for the first time comprehensively addressed granting state enterprises greater autonomy/separating ownership from operations. Country Studies states explicitly: \"Economic reform in urban areas...began on an experimental basis in 1979 but was not undertaken on a large scale until 1984.\" Separately, the term 'Township and Village Enterprises' (TVEs) — named specifically in the event description — was only officially adopted by the State Council in March 1984 (replacing 'commune and brigade enterprises'), and the oft-cited TVE growth-engine statistics (6.06 million TVEs, 170.6bn yuan output, surpassing primary-industry output for the first time) are reported for 1984, not 1983. There were genuine incremental 1983 steps (April 1983 'Interim Ordinances on State-operated Enterprises' extending the profit-retention/tax-for-profit system to nearly the whole industrial sector), but the described milestone — a systemic pivot to urban industry plus the TVE growth-engine narrative — is materially a 1984 event, not 1983. Because the year itself appears wrong rather than just a magnitude/actor/scope detail, this is scored FALSE (wrong year) rather than PARTIAL, per the hard rules (PARTIAL requires year to hold).. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
     "source_independence": "n/a",
     "verifications": [
       {
@@ -1484,6 +1532,18 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Library of Congress Country Studies, Britannica, IMF, academic histories) consistently date the systematic expansion of China's economic reforms from agriculture into urban industry to 1984, anchored by the October 1984 CCP Third Plenum \"Decision on Reform of the Economic Structure,\" which for the first time comprehensively addressed granting state enterprises greater autonomy/separating ownership from operations. Country Studies states explicitly: \"Economic reform in urban areas...began on an experimental basis in 1979 but was not undertaken on a large scale until 1984.\" Separately, the term 'Township and Village Enterprises' (TVEs) — named specifically in the event description — was only officially adopted by the State Council in March 1984 (replacing 'commune and brigade enterprises'), and the oft-cited TVE growth-engine statistics (6.06 million TVEs, 170.6bn yuan output, surpassing primary-industry output for the first time) are reported for 1984, not 1983. There were genuine incremental 1983 steps (April 1983 'Interim Ordinances on State-operated Enterprises' extending the profit-retention/tax-for-profit system to nearly the whole industrial sector), but the described milestone — a systemic pivot to urban industry plus the TVE growth-engine narrative — is materially a 1984 event, not 1983. Because the year itself appears wrong rather than just a magnitude/actor/scope detail, this is scored FALSE (wrong year) rather than PARTIAL, per the hard rules (PARTIAL requires year to hold).",
+        "source": "https://countrystudies.us/china/118.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1984
       }
     ]
   },
@@ -1899,10 +1959,10 @@
     "year": 1994,
     "title": "Yuan renminbi unified exchange rate reform",
     "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources (World Bank blog, IMF-referenced literature, PIIE) confirm that in January 1994 China terminated its dual exchange rate regime by unifying the official exchange rate with the market-based 'swap center' rate, resulting in an effective ~33% devaluation of the official rate (from ~5.8 to ~8.7-8.3 RMB/USD). This matches the event description on country (China), year (1994), and core mechanism (unification of dual exchange rates, currency devaluation). The 'export competitiveness' framing is a standard characterization in economic literature discussing this reform's effects, even though the World Bank source frames the primary policy intent as equilibrium-rate/inflation-anchor setting rather than pure export promotion — this is a minor nuance in stated motive, not a material factual discrepancy in what happened, where, or when.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -1916,8 +1976,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (World Bank blog, IMF-referenced literature, PIIE) confirm that in January 1994 China terminated its dual exchange rate regime by unifying the official exchange rate with the market-based 'swap center' rate, resulting in an effective ~33% devaluation of the official rate (from ~5.8 to ~8.7-8.3 RMB/USD). This matches the event description on country (China), year (1994), and core mechanism (unification of dual exchange rates, currency devaluation). The 'export competitiveness' framing is a standard characterization in economic literature discussing this reform's effects, even though the World Bank source frames the primary policy intent as equilibrium-rate/inflation-anchor setting rather than pure export promotion — this is a minor nuance in stated motive, not a material factual discrepancy in what happened, where, or when.",
+        "source": "https://blogs.worldbank.org/en/allaboutfinance/historical-lessons-chinas-monetary-policy-during-transition-1987-2006-central-bank",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://blogs.worldbank.org/en/allaboutfinance/historical-lessons-chinas-monetary-policy-during-transition-1987-2006-central-bank"
   },
   {
     "year": 1994,
@@ -1946,11 +2018,11 @@
   {
     "year": 1994,
     "title": "China launches first internet connection",
-    "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "Year and country hold: China's first full-functional international Internet connection is a real, well-documented event dated 20 April 1994, at 64 Kbps, marking it the \"77th country\" with full internet access (per China's own official histories: CNNIC, China Internet Museum, and the Chinese Academy of Sciences). However, the description's specific actor detail — \"a 64 Kbps line to Stanford University\" — conflates two distinct 1994-era connections. The officially recognized 20 April 1994 full-internet milestone was a 64K international dedicated line from NCFC (National Computing and Networking Facility of China) routed via Sprint Corporation (a US carrier), NOT a direct line to Stanford. Separately, a 64 Kbps line between the Institute of High Energy Physics (IHEP) and Stanford's SLAC (Stanford Linear Accelerator Center) existed from March 1993 as a narrower physics-research link, explicitly described by Chinese sources as only a \"partial\" internet connection at that stage, though SLAC's own history and some Western press (e.g., CNN, Symmetry Magazine) frame the IHEP-SLAC link's full TCP/IP activation (~March-May 1994) as \"the first Internet connection to mainland China\" — a competing but less officially-cited narrative. Given the genuine, sourced ambiguity in which specific line is \"the\" first full connection, but clear confirmation that Stanford/SLAC's role was a separate, narrower physics-institution link rather than the nationwide gateway most sources credit, this is a material actor/scope discrepancy rather than a clean match. Core facts (China, 1994, ~64 Kbps, first full internet access) are solidly confirmed; the \"Stanford University\" attribution is a commonly repeated but contested simplification.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -1964,8 +2036,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Year and country hold: China's first full-functional international Internet connection is a real, well-documented event dated 20 April 1994, at 64 Kbps, marking it the \"77th country\" with full internet access (per China's own official histories: CNNIC, China Internet Museum, and the Chinese Academy of Sciences). However, the description's specific actor detail — \"a 64 Kbps line to Stanford University\" — conflates two distinct 1994-era connections. The officially recognized 20 April 1994 full-internet milestone was a 64K international dedicated line from NCFC (National Computing and Networking Facility of China) routed via Sprint Corporation (a US carrier), NOT a direct line to Stanford. Separately, a 64 Kbps line between the Institute of High Energy Physics (IHEP) and Stanford's SLAC (Stanford Linear Accelerator Center) existed from March 1993 as a narrower physics-research link, explicitly described by Chinese sources as only a \"partial\" internet connection at that stage, though SLAC's own history and some Western press (e.g., CNN, Symmetry Magazine) frame the IHEP-SLAC link's full TCP/IP activation (~March-May 1994) as \"the first Internet connection to mainland China\" — a competing but less officially-cited narrative. Given the genuine, sourced ambiguity in which specific line is \"the\" first full connection, but clear confirmation that Stanford/SLAC's role was a separate, narrower physics-institution link rather than the nationwide gateway most sources credit, this is a material actor/scope discrepancy rather than a clean match. Core facts (China, 1994, ~64 Kbps, first full internet access) are solidly confirmed; the \"Stanford University\" attribution is a commonly repeated but contested simplification.",
+        "source": "https://english.cas.cn/Special_Reports/CAS_75th_anniversary/National_Economic_Development/202410/t20241016_691879.shtml",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://english.cas.cn/Special_Reports/CAS_75th_anniversary/National_Economic_Development/202410/t20241016_691879.shtml"
   },
   {
     "year": 1995,
@@ -2091,10 +2175,10 @@
     "year": 1997,
     "title": "Asian Financial Crisis — China holds renminbi peg",
     "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
+    "reason": "Well-corroborated by multiple independent sources. During the 1997-98 Asian Financial Crisis, China maintained the renminbi's peg to the USD (at 8.28/8.3) despite market expectations it would devalue to stay competitive with devaluing ASEAN currencies. This was widely praised internationally: Wikipedia notes China \"made a highly regarded symbolic gesture by refusing to devalue its own currency\" and contributed $4B in regional bailout aid; US officials (Clinton, Rubin, Greenspan, Albright) publicly praised the move, and the World Bank (1999) called China a \"source of stability for the region.\" The WTO-accession-goodwill link in the description is a secondary interpretive detail — plausible and consistent with the timeline (China's WTO negotiations ran 1995-2001, concurrently with the crisis, and were championed by the same US officials who praised the peg decision), though it is not the most emphasized angle in mainstream crisis retrospectives (which focus more on regional stability than WTO specifically). Core fact (country/year/action) is solid, so this clears the TRUE bar rather than PARTIAL.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -2108,17 +2192,29 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Well-corroborated by multiple independent sources. During the 1997-98 Asian Financial Crisis, China maintained the renminbi's peg to the USD (at 8.28/8.3) despite market expectations it would devalue to stay competitive with devaluing ASEAN currencies. This was widely praised internationally: Wikipedia notes China \"made a highly regarded symbolic gesture by refusing to devalue its own currency\" and contributed $4B in regional bailout aid; US officials (Clinton, Rubin, Greenspan, Albright) publicly praised the move, and the World Bank (1999) called China a \"source of stability for the region.\" The WTO-accession-goodwill link in the description is a secondary interpretive detail — plausible and consistent with the timeline (China's WTO negotiations ran 1995-2001, concurrently with the crisis, and were championed by the same US officials who praised the peg decision), though it is not the most emphasized angle in mainstream crisis retrospectives (which focus more on regional stability than WTO specifically). Core fact (country/year/action) is solid, so this clears the TRUE bar rather than PARTIAL.",
+        "source": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis"
   },
   {
     "year": 1997,
     "title": "State-owned enterprise restructuring — millions laid off",
     "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
+    "reason": "Confirmed from multiple independent sources. The \"grasping the large, letting go of the small\" (zhua da fang xiao) SOE reform strategy, associated with Zhu Rongji, was formally adopted in September 1997 at the 15th CCP Congress, launching a wave of SOE closures, mergers, and mass layoffs (xiagang) that ran through roughly 2000-2003. Scale estimates from independent academic/journalistic sources cluster in or near the 20-40 million range described: e.g. 30-35 million redundancies estimated by end of 1997 in some analyses; 21-34 million cumulative laid-off/xiagang workers by 2000-2001 in others; state-sector urban employment fell by 34 million (30%) in Zhu's first four years. Between 1997-1998 alone the number of industrial SOEs fell over 41%. The country (China), year (1997 as launch/adoption year), actor (Zhu Rongji/CCP leadership), and rough magnitude (tens of millions laid off over several years, largest peacetime labor displacement) all check out as materially accurate. Minor note: Zhu formally became Premier in March 1998, but he was already the chief architect of the policy as Executive Vice Premier when it was adopted in 1997, so attributing the 1997 launch to him is standard in historical accounts and not a material error.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -2132,8 +2228,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources. The \"grasping the large, letting go of the small\" (zhua da fang xiao) SOE reform strategy, associated with Zhu Rongji, was formally adopted in September 1997 at the 15th CCP Congress, launching a wave of SOE closures, mergers, and mass layoffs (xiagang) that ran through roughly 2000-2003. Scale estimates from independent academic/journalistic sources cluster in or near the 20-40 million range described: e.g. 30-35 million redundancies estimated by end of 1997 in some analyses; 21-34 million cumulative laid-off/xiagang workers by 2000-2001 in others; state-sector urban employment fell by 34 million (30%) in Zhu's first four years. Between 1997-1998 alone the number of industrial SOEs fell over 41%. The country (China), year (1997 as launch/adoption year), actor (Zhu Rongji/CCP leadership), and rough magnitude (tens of millions laid off over several years, largest peacetime labor displacement) all check out as materially accurate. Minor note: Zhu formally became Premier in March 1998, but he was already the chief architect of the policy as Executive Vice Premier when it was adopted in 1997, so attributing the 1997 launch to him is standard in historical accounts and not a material error.",
+        "source": "https://en.wikipedia.org/wiki/Grasping_the_large,_letting_go_of_the_small",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Grasping_the_large,_letting_go_of_the_small"
   },
   {
     "year": 1998,
@@ -2379,10 +2487,10 @@
     "year": 2003,
     "title": "China's first crewed space mission",
     "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
+    "reason": "Confirmed: Shenzhou 5 launched October 15, 2003 from Jiuquan Satellite Launch Center carrying astronaut Yang Liwei, a PLA lieutenant colonel/former fighter pilot. He orbited Earth 14 times over ~21 hours before landing October 16, 2003. This made China the third nation (after USSR/Russia and USA) to achieve independent human spaceflight capability — matching every material detail in the description (country, year, exact date, astronaut name, milestone significance).",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -2396,8 +2504,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Shenzhou 5 launched October 15, 2003 from Jiuquan Satellite Launch Center carrying astronaut Yang Liwei, a PLA lieutenant colonel/former fighter pilot. He orbited Earth 14 times over ~21 hours before landing October 16, 2003. This made China the third nation (after USSR/Russia and USA) to achieve independent human spaceflight capability — matching every material detail in the description (country, year, exact date, astronaut name, milestone significance).",
+        "source": "https://en.wikipedia.org/wiki/Shenzhou_5",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Shenzhou_5"
   },
   {
     "year": 2003,
@@ -2499,10 +2619,10 @@
     "year": 2005,
     "title": "Renminbi revaluation and managed float",
     "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
+    "reason": "Confirmed via multiple independent sources (SF Fed, ECB, RIETI, CRS report). On July 21, 2005, the People's Bank of China revalued the renminbi from 8.28 to 8.11 per USD — a 2.1% appreciation — ending the decade-long dollar peg, and simultaneously moved to a managed floating exchange rate regime referencing a basket of currencies (dollar, euro, yen, Korean won). This came amid sustained U.S./international pressure over China's large trade surplus. All material facts in the event description (country, year, magnitude, mechanism, motivating pressure) match documented history.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -2516,8 +2636,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources (SF Fed, ECB, RIETI, CRS report). On July 21, 2005, the People's Bank of China revalued the renminbi from 8.28 to 8.11 per USD — a 2.1% appreciation — ending the decade-long dollar peg, and simultaneously moved to a managed floating exchange rate regime referencing a basket of currencies (dollar, euro, yen, Korean won). This came amid sustained U.S./international pressure over China's large trade surplus. All material facts in the event description (country, year, magnitude, mechanism, motivating pressure) match documented history.",
+        "source": "https://www.frbsf.org/research-and-insights/publications/economic-letter/2005/09/a-look-at-china-new-exchange-rate-regime/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.frbsf.org/research-and-insights/publications/economic-letter/2005/09/a-look-at-china-new-exchange-rate-regime/"
   },
   {
     "year": 2006,
@@ -2715,10 +2847,10 @@
     "year": 2009,
     "title": "Xinjiang Urumqi riots — ethnic violence",
     "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
+    "reason": "Confirmed by multiple independent sources. Riots broke out in Urumqi, Xinjiang, China on July 5, 2009, beginning as a Uyghur protest that escalated into ethnic violence between Han and Uyghur communities. Official death toll reached 197 (nearly 200 as described), with 1,721 injured, per the final government update on July 18, 2009. Chinese authorities publicly blamed overseas separatist groups (notably Rebiya Kadeer and the World Uyghur Congress) for instigating the unrest, matching the description. Underlying causes cited by analysts (CECC, The Diplomat, academic sources) include long-standing ethnic tensions and economic marginalization of Uyghurs in Xinjiang. All material details (country=China, year=2009, actors=Han/Uyghur, death toll ~200, China's blame narrative, underlying causes) are corroborated.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -2732,8 +2864,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent sources. Riots broke out in Urumqi, Xinjiang, China on July 5, 2009, beginning as a Uyghur protest that escalated into ethnic violence between Han and Uyghur communities. Official death toll reached 197 (nearly 200 as described), with 1,721 injured, per the final government update on July 18, 2009. Chinese authorities publicly blamed overseas separatist groups (notably Rebiya Kadeer and the World Uyghur Congress) for instigating the unrest, matching the description. Underlying causes cited by analysts (CECC, The Diplomat, academic sources) include long-standing ethnic tensions and economic marginalization of Uyghurs in Xinjiang. All material details (country=China, year=2009, actors=Han/Uyghur, death toll ~200, China's blame narrative, underlying causes) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/July_2009_%C3%9Cr%C3%BCmqi_riots",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/July_2009_%C3%9Cr%C3%BCmqi_riots"
   },
   {
     "year": 2009,
@@ -3483,10 +3627,10 @@
     "year": 2018,
     "title": "Huawei and ZTE crisis — US semiconductor export controls",
     "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
+    "reason": "Both core facts confirmed by independent sources: (1) US Commerce Dept's BIS activated a denial order effective April 16, 2018 banning US companies from selling components to ZTE, based on ZTE's false statements re: Iran/North Korea sanctions violations — this nearly halted ZTE's operations since ~25-30% of its components were US-sourced (Washington Post, Cignal AI, Baker McKenzie sanctions blog all corroborate). (2) Huawei CFO Meng Wanzhou was detained at Vancouver airport on December 1, 2018 and arrested on a US extradition request tied to Iran sanctions evasion/fraud allegations (CNN, Wikipedia, CBC News). Both events materially match the description, occurred in China-related context (ZTE and Huawei are Chinese telecom giants) in 2018. This is a well-documented, widely reported set of events with no discrepancy in year, actors, or scope.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -3500,8 +3644,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Both core facts confirmed by independent sources: (1) US Commerce Dept's BIS activated a denial order effective April 16, 2018 banning US companies from selling components to ZTE, based on ZTE's false statements re: Iran/North Korea sanctions violations — this nearly halted ZTE's operations since ~25-30% of its components were US-sourced (Washington Post, Cignal AI, Baker McKenzie sanctions blog all corroborate). (2) Huawei CFO Meng Wanzhou was detained at Vancouver airport on December 1, 2018 and arrested on a US extradition request tied to Iran sanctions evasion/fraud allegations (CNN, Wikipedia, CBC News). Both events materially match the description, occurred in China-related context (ZTE and Huawei are Chinese telecom giants) in 2018. This is a well-documented, widely reported set of events with no discrepancy in year, actors, or scope.",
+        "source": "https://www.washingtonpost.com/news/business/wp/2018/04/16/u-s-companies-banned-from-selling-to-chinas-zte-telecom-maker/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.washingtonpost.com/news/business/wp/2018/04/16/u-s-companies-banned-from-selling-to-chinas-zte-telecom-maker/"
   },
   {
     "year": 2019,
@@ -3963,10 +4119,10 @@
     "year": 2023,
     "title": "Youth unemployment surges — data suppressed",
     "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
+    "reason": "Confirmed from multiple independent sources: China's official urban youth (16-24) unemployment rate hit a record 21.3% in June 2023. In August 2023, following three consecutive record-high months, the National Bureau of Statistics (NBS) announced it would suspend publication of the youth unemployment breakdown, citing a need to refine methodology (it later resumed in January 2024 under a revised methodology excluding students). The \"lying flat\" (tang ping) / \"let it rot\" (bai lan) phenomenon among disillusioned young Chinese was widely reported as spreading in this period, tied directly to the bleak youth job market. All material details (country=China, year=2023, 21.3% figure, data suspension, lying-flat linkage) check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -3980,17 +4136,29 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: China's official urban youth (16-24) unemployment rate hit a record 21.3% in June 2023. In August 2023, following three consecutive record-high months, the National Bureau of Statistics (NBS) announced it would suspend publication of the youth unemployment breakdown, citing a need to refine methodology (it later resumed in January 2024 under a revised methodology excluding students). The \"lying flat\" (tang ping) / \"let it rot\" (bai lan) phenomenon among disillusioned young Chinese was widely reported as spreading in this period, tied directly to the bleak youth job market. All material details (country=China, year=2023, 21.3% figure, data suspension, lying-flat linkage) check out.",
+        "source": "https://www.nbcnews.com/news/world/china-suspends-data-youth-unemployment-rcna99929",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.nbcnews.com/news/world/china-suspends-data-youth-unemployment-rcna99929"
   },
   {
     "year": 2023,
     "title": "Gallium and germanium export controls — tech war escalation",
     "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
+    "reason": "China's Ministry of Commerce (MOFCOM) and General Administration of Customs jointly announced on July 3, 2023 export control measures on gallium- and germanium-related items (gallium metal, gallium nitride, gallium arsenide, germanium metal, germanium dioxide, etc.), with the controls taking effect August 1, 2023. Exporters had to obtain licenses for these materials, which are critical inputs for semiconductors, solar panels, and defense/electronics applications. Multiple independent legal/trade-policy analyses (Mayer Brown, Herbert Smith Freehills Kramer, Winston & Strawn, CSIS) and the IEA describe this as a direct response to escalating US semiconductor export restrictions on China, marking the first time Chinese critical-minerals controls were explicitly tied to retaliation in the US-China tech war. Real-world trade data confirms material effect: gallium/germanium wrought exports dropped to zero in August 2023 versus thousands of kg in July, and gallium prices rose ~27% following the announcement. All elements of the description (country=China, year=2023, materials, retaliatory motive, tech-war escalation framing) are corroborated.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -4004,8 +4172,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "China's Ministry of Commerce (MOFCOM) and General Administration of Customs jointly announced on July 3, 2023 export control measures on gallium- and germanium-related items (gallium metal, gallium nitride, gallium arsenide, germanium metal, germanium dioxide, etc.), with the controls taking effect August 1, 2023. Exporters had to obtain licenses for these materials, which are critical inputs for semiconductors, solar panels, and defense/electronics applications. Multiple independent legal/trade-policy analyses (Mayer Brown, Herbert Smith Freehills Kramer, Winston & Strawn, CSIS) and the IEA describe this as a direct response to escalating US semiconductor export restrictions on China, marking the first time Chinese critical-minerals controls were explicitly tied to retaliation in the US-China tech war. Real-world trade data confirms material effect: gallium/germanium wrought exports dropped to zero in August 2023 versus thousands of kg in July, and gallium prices rose ~27% following the announcement. All elements of the description (country=China, year=2023, materials, retaliatory motive, tech-war escalation framing) are corroborated.",
+        "source": "https://www.csis.org/analysis/china-imposes-its-most-stringent-critical-minerals-export-restrictions-yet-amidst",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.csis.org/analysis/china-imposes-its-most-stringent-critical-minerals-export-restrictions-yet-amidst"
   },
   {
     "year": 2023,
@@ -4155,10 +4335,10 @@
     "year": 2025,
     "title": "China's semiconductor self-sufficiency drive accelerates",
     "verdict": "TRUE",
-    "reason": "Pre-verified in source file.",
-    "verify_count": 1,
+    "reason": "Multiple independent 2025 sources confirm all material elements: China's \"Big Fund III\" ($47.5B/344B yuan, est. 2024) was actively deploying capital into domestic chip equipment/manufacturing through 2025; SMIC mass-produced Huawei's Ascend 910B AI chip, entered 5nm pilot production, and planned to double 7nm capacity; Huawei planned to roughly double Ascend AI chip output (to ~600,000 units) in 2025. Sources explicitly tie this acceleration to continuing/tightened US export controls in 2025 (new Entity List additions in March 2025 and September 2025, Nvidia H20 licensing requirement). This matches the event description on actors (Huawei, SMIC), country (China), year (2025), and causal driver (US export controls) without material distortion of magnitude or scope.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -4172,8 +4352,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent 2025 sources confirm all material elements: China's \"Big Fund III\" ($47.5B/344B yuan, est. 2024) was actively deploying capital into domestic chip equipment/manufacturing through 2025; SMIC mass-produced Huawei's Ascend 910B AI chip, entered 5nm pilot production, and planned to double 7nm capacity; Huawei planned to roughly double Ascend AI chip output (to ~600,000 units) in 2025. Sources explicitly tie this acceleration to continuing/tightened US export controls in 2025 (new Entity List additions in March 2025 and September 2025, Nvidia H20 licensing requirement). This matches the event description on actors (Huawei, SMIC), country (China), year (2025), and causal driver (US export controls) without material distortion of magnitude or scope.",
+        "source": "https://asia.nikkei.com/business/tech/semiconductors/china-s-3rd-semiconductor-big-fund-starts-spending-47bn-war-chest",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://asia.nikkei.com/business/tech/semiconductors/china-s-3rd-semiconductor-big-fund-starts-spending-47bn-war-chest"
   },
   {
     "year": 2025,

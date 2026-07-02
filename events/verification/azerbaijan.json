@@ -171,10 +171,10 @@
     "year": 1988,
     "title": "Sumgait Pogrom â€” Anti-Armenian Violence Shocks Soviet Union",
     "verdict": "TRUE",
-    "reason": "Pogrom occurred 27–29 February 1988. Official death toll was 32 (26 Armenians, 6 Azerbaijanis). Event says 'at least 26 people' — undercounts official figure of 32. Materially low but not a year error; verdict VERIFIED with caveat that '26' understates the confirmed toll.",
-    "verify_count": 1,
+    "reason": "Well-documented historical event confirmed by multiple independent sources. The Sumgait pogrom occurred in Sumgait, Azerbaijan SSR, over several days from Feb 26/27 to 29 (some sources say through March 1), 1988. Mobs of Azerbaijanis attacked and killed Armenian residents; the official Soviet Procurator General's death toll was 32 people (26 Armenians and 6 Azerbaijanis) — matching the description's 'at least 26 people' figure exactly. It was triggered by escalating Nagorno-Karabakh tensions, specifically the Feb 20, 1988 vote of the Nagorno-Karabakh Autonomous Oblast Soviet to seek unification with Armenia, as the description states. Sources consistently describe it as the worst inter-ethnic violence in the USSR in decades, causing mass Armenian displacement across the Caucasus and marking the transformation of the Karabakh territorial dispute into an entrenched ethnic conflict — all matching the event description materially. Country, year, actors, magnitude, trigger, and consequences all check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -188,8 +188,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Well-documented historical event confirmed by multiple independent sources. The Sumgait pogrom occurred in Sumgait, Azerbaijan SSR, over several days from Feb 26/27 to 29 (some sources say through March 1), 1988. Mobs of Azerbaijanis attacked and killed Armenian residents; the official Soviet Procurator General's death toll was 32 people (26 Armenians and 6 Azerbaijanis) — matching the description's 'at least 26 people' figure exactly. It was triggered by escalating Nagorno-Karabakh tensions, specifically the Feb 20, 1988 vote of the Nagorno-Karabakh Autonomous Oblast Soviet to seek unification with Armenia, as the description states. Sources consistently describe it as the worst inter-ethnic violence in the USSR in decades, causing mass Armenian displacement across the Caucasus and marking the transformation of the Karabakh territorial dispute into an entrenched ethnic conflict — all matching the event description materially. Country, year, actors, magnitude, trigger, and consequences all check out.",
+        "source": "https://en.wikipedia.org/wiki/Sumgait_pogrom",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sumgait_pogrom"
   },
   {
     "year": 1988,
@@ -315,10 +327,10 @@
     "year": 1992,
     "title": "Khojaly Massacre â€” Hundreds of Azerbaijani Civilians Killed",
     "verdict": "TRUE",
-    "reason": "Massacre 26 February 1992. Azerbaijani official toll 613; HRW estimate at least 161–200+. Description cites '613 to 700' which reflects Azerbaijani official figures. Contested but not fabricated.",
-    "verify_count": 1,
+    "reason": "Confirmed via Wikipedia and Washington Post reporting: On 26 February 1992, Armenian forces (with the 366th CIS regiment) captured Khojaly in Nagorno-Karabakh, killing civilians as they fled toward Azerbaijani lines. Death toll estimates vary by source (HRW ~200-500+, Azerbaijani parliament 485, Azerbaijani government 613 incl. 106 women/63 children; some accounts cite up to 700), consistent with the description's 613-700 range. It is widely commemorated in Azerbaijan every February 26 and remains a defining national trauma central to wartime narrative and identity. It triggered a political crisis: President Ayaz Mutalibov resigned on 6 March 1992 (Washington Post: \"Azerbaijan's President Resigns Over Reports of War Massacre\") amid public outrage and Popular Front pressure over the massacre and military failures. All material details (year, country, actors, casualty magnitude, political consequence) check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -332,8 +344,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via Wikipedia and Washington Post reporting: On 26 February 1992, Armenian forces (with the 366th CIS regiment) captured Khojaly in Nagorno-Karabakh, killing civilians as they fled toward Azerbaijani lines. Death toll estimates vary by source (HRW ~200-500+, Azerbaijani parliament 485, Azerbaijani government 613 incl. 106 women/63 children; some accounts cite up to 700), consistent with the description's 613-700 range. It is widely commemorated in Azerbaijan every February 26 and remains a defining national trauma central to wartime narrative and identity. It triggered a political crisis: President Ayaz Mutalibov resigned on 6 March 1992 (Washington Post: \"Azerbaijan's President Resigns Over Reports of War Massacre\") amid public outrage and Popular Front pressure over the massacre and military failures. All material details (year, country, actors, casualty magnitude, political consequence) check out.",
+        "source": "https://en.wikipedia.org/wiki/Khojaly_massacre",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Khojaly_massacre"
   },
   {
     "year": 1992,

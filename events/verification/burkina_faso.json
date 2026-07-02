@@ -303,12 +303,12 @@
     "year": 1984,
     "title": "Sankara Confronts Traditional Chiefs and IMF — Rejects Dependency",
     "verdict": "TRUE",
-    "reason": "Sankara's land redistribution from chiefs and public defiance of IMF structural adjustment are well-documented features of his rule. Year 1984 as label for his revolutionary tenure is reasonable.",
-    "verify_count": 1,
+    "reason": "Two independent facts both confirm materially. (1) In August 1984 Sankara's government enacted the Réorganisation Agraire et Foncière (RAF), nationalizing all land, stripping Mossi and other traditional chiefs of their executive/land-control powers and their rights to tribute payments and obligatory (forced) labor from peasants, transferring authority to the CDRs (Committees for the Defense of the Revolution) and redistributing land/plots to ordinary citizens — confirmed by Wikipedia and the official thomassankara.net site (interviews with land-reform officials Souleymane Ouedraogo and Roger Nama), which describe chiefs losing tribute/forced-labor extraction rights and being excluded from the new land-management chain, provoking denunciations from customary/religious leaders. This sparked fierce opposition from rural/traditional elites, consistent with the description. (2) Sankara publicly and explicitly rejected Western donor dependency and IMF/World Bank-style structural adjustment throughout his tenure, and specifically in his October 4, 1984 UN General Assembly speech (fetched directly from marxists.org) he denounced foreign aid dependency, argued it served Western/creditor interests over African development, and declared Burkina Faso's rejection of 'outside diktats.' Multiple other sources (Wikipedia, CADTM) corroborate his broader rejection of IMF loans and consequent isolation from Western donors (Burkina Faso received no Western/IMF/World Bank aid roughly 1985-1988), and his status as an icon of African anti-colonial/leftist movements is well documented. The one soft detail — chiefs being 'required to work like other citizens' — is a reasonable gloss on their loss of forced-labor/tribute extraction privileges rather than a literally sourced phrase, but does not contradict the well-corroborated core facts. No britannica.com source was used or needed.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -320,9 +320,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Two independent facts both confirm materially. (1) In August 1984 Sankara's government enacted the Réorganisation Agraire et Foncière (RAF), nationalizing all land, stripping Mossi and other traditional chiefs of their executive/land-control powers and their rights to tribute payments and obligatory (forced) labor from peasants, transferring authority to the CDRs (Committees for the Defense of the Revolution) and redistributing land/plots to ordinary citizens — confirmed by Wikipedia and the official thomassankara.net site (interviews with land-reform officials Souleymane Ouedraogo and Roger Nama), which describe chiefs losing tribute/forced-labor extraction rights and being excluded from the new land-management chain, provoking denunciations from customary/religious leaders. This sparked fierce opposition from rural/traditional elites, consistent with the description. (2) Sankara publicly and explicitly rejected Western donor dependency and IMF/World Bank-style structural adjustment throughout his tenure, and specifically in his October 4, 1984 UN General Assembly speech (fetched directly from marxists.org) he denounced foreign aid dependency, argued it served Western/creditor interests over African development, and declared Burkina Faso's rejection of 'outside diktats.' Multiple other sources (Wikipedia, CADTM) corroborate his broader rejection of IMF loans and consequent isolation from Western donors (Burkina Faso received no Western/IMF/World Bank aid roughly 1985-1988), and his status as an icon of African anti-colonial/leftist movements is well documented. The one soft detail — chiefs being 'required to work like other citizens' — is a reasonable gloss on their loss of forced-labor/tribute extraction privileges rather than a literally sourced phrase, but does not contradict the well-corroborated core facts. No britannica.com source was used or needed.",
+        "source": "https://en.wikipedia.org/wiki/Thomas_Sankara",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.britannica.com/biography/Thomas-Sankara"
+    "source": "https://en.wikipedia.org/wiki/Thomas_Sankara"
   },
   {
     "year": 1985,
@@ -478,12 +489,12 @@
     "year": 1994,
     "title": "CFA Franc Devaluation Shocks Economy",
     "verdict": "TRUE",
-    "reason": "CFA franc devalued 50% in January 1994; impacted all member countries including Burkina Faso. Year and percentage confirmed.",
-    "verify_count": 1,
+    "reason": "Independently corroborated (non-IMF sources): the CFA franc was devalued by 50% in January 1994 (Wikipedia's West African CFA franc article: \"In 1994 the currency was devalued by half\"), and Burkina Faso is one of the West African CFA franc zone/UEMOA member states directly subject to this devaluation (founding UEMOA member per Jan 1994 treaty, per Wikipedia's WAEMU article). Contemporaneous reporting (Washington Post, June 1994, via search snippet) describes the devaluation causing prices for imported goods to double or triple and hitting Sahel countries including Burkina Faso and its urban poor hardest, while boosting export incentives, especially for cotton (Cato Institute/FAO sources on West African cotton note producer prices did rise post-devaluation, though by less than the world-price increase — consistent with \"cotton farmers eventually benefited from higher producer prices\"). The description's mention of gold as a co-beneficiary export is a minor anachronism (gold only overtook cotton as Burkina Faso's top export around 2010) but does not misstate the core event, timing, magnitude, or country. Year, country, and the central causal chain (devaluation -> import cost shock/urban hardship -> export/cotton competitiveness gain) all check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -495,9 +506,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated (non-IMF sources): the CFA franc was devalued by 50% in January 1994 (Wikipedia's West African CFA franc article: \"In 1994 the currency was devalued by half\"), and Burkina Faso is one of the West African CFA franc zone/UEMOA member states directly subject to this devaluation (founding UEMOA member per Jan 1994 treaty, per Wikipedia's WAEMU article). Contemporaneous reporting (Washington Post, June 1994, via search snippet) describes the devaluation causing prices for imported goods to double or triple and hitting Sahel countries including Burkina Faso and its urban poor hardest, while boosting export incentives, especially for cotton (Cato Institute/FAO sources on West African cotton note producer prices did rise post-devaluation, though by less than the world-price increase — consistent with \"cotton farmers eventually benefited from higher producer prices\"). The description's mention of gold as a co-beneficiary export is a minor anachronism (gold only overtook cotton as Burkina Faso's top export around 2010) but does not misstate the core event, timing, magnitude, or country. Year, country, and the central causal chain (devaluation -> import cost shock/urban hardship -> export/cotton competitiveness gain) all check out.",
+        "source": "https://en.wikipedia.org/wiki/West_African_CFA_franc",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.imf.org/external/pubs/ft/wp/2005/wp05145.pdf"
+    "source": "https://en.wikipedia.org/wiki/West_African_CFA_franc"
   },
   {
     "year": 1996,
@@ -1653,12 +1675,12 @@
     "year": 2004,
     "title": "GM Cotton Introduced — Agricultural Biotechnology Adoption",
     "verdict": "FALSE",
-    "reason": "GM Bt cotton was commercially introduced in Burkina Faso in 2008, not 2004. Field trials ran 2003–2005. Year is off by four years.",
-    "verify_count": 1,
+    "reason": "The substance of the event is real and well documented: Burkina Faso partnered with SOFITEX and Monsanto to adopt Bt (GM) cotton, it was hailed as a productivity breakthrough, and the program was later rolled back after fiber/staple quality problems emerged. However, the year is materially wrong. In 2004, Burkina Faso was still mid-way through confined field trials (three seasons, 2003-2005) of Bollgard II Bt cotton — not a large-scale commercial adoption. Large-scale commercial adoption (the actual event described) began in 2008, when Burkina Faso's National Biosafety Agency authorized commercial planting of two Bollgard II varieties for SOFITEX and other cotton companies; commercial hectarage then scaled rapidly (from an initial release in 2008 to ~125,000-129,000 ha in 2009, and ~400,000 ha by 2010). Independent sources (GMWatch, and multiple non-isaaa search-aggregated sources) converge on 2008-2009 as the commercialization window, a 4-5 year gap from the stated 2004, which is a material discrepancy (2004 was trial phase, not large-scale adoption). Per instructions, isaaa.org (and its africenter.isaaa.org subdomain) was excluded as corroboration for this verdict; the year correction is supported independently by GMWatch and cross-source search synthesis (ICTSD headline, academic reviews).",
+    "verify_count": 2,
     "consensus_verdict": "FALSE",
-    "consensus_status": "single",
+    "consensus_status": "double_negative",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1670,9 +1692,21 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The substance of the event is real and well documented: Burkina Faso partnered with SOFITEX and Monsanto to adopt Bt (GM) cotton, it was hailed as a productivity breakthrough, and the program was later rolled back after fiber/staple quality problems emerged. However, the year is materially wrong. In 2004, Burkina Faso was still mid-way through confined field trials (three seasons, 2003-2005) of Bollgard II Bt cotton — not a large-scale commercial adoption. Large-scale commercial adoption (the actual event described) began in 2008, when Burkina Faso's National Biosafety Agency authorized commercial planting of two Bollgard II varieties for SOFITEX and other cotton companies; commercial hectarage then scaled rapidly (from an initial release in 2008 to ~125,000-129,000 ha in 2009, and ~400,000 ha by 2010). Independent sources (GMWatch, and multiple non-isaaa search-aggregated sources) converge on 2008-2009 as the commercialization window, a 4-5 year gap from the stated 2004, which is a material discrepancy (2004 was trial phase, not large-scale adoption). Per instructions, isaaa.org (and its africenter.isaaa.org subdomain) was excluded as corroboration for this verdict; the year correction is supported independently by GMWatch and cross-source search synthesis (ICTSD headline, academic reviews).",
+        "source": "https://www.gmwatch.org/en/106-news/latest-news/16677-burkina-faso-abandons-gm-bt-cotton",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 2008
       }
     ],
-    "source": "https://africenter.isaaa.org/wp-content/uploads/2015/03/Burkina-Faso-Bt-cotton-progress-2013.pdf"
+    "source": "https://www.gmwatch.org/en/106-news/latest-news/16677-burkina-faso-abandons-gm-bt-cotton"
   },
   {
     "year": 2014,

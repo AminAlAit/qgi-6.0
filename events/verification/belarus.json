@@ -302,13 +302,13 @@
   {
     "year": 1993,
     "title": "Belarus introduces the Belarusian ruble",
-    "verdict": "TRUE",
-    "reason": "Belarusian ruble introduced in 1992-1993 replacing Soviet ruble. Redenominations in 2000 and 2016 confirmed. Description accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Belarusian ruble introduced in 1992-1993 replacing Soviet ruble. Redenominations in 2000 and 2016 confirmed. Description accurate.; Pass 2 FALSE: Independent sourcing consistently dates the introduction of the Belarusian ruble to May 25, 1992 (replacing the Soviet ruble at 1:10), not 1993. The minskherald.com article states plainly: \"May 1992, is the year the first Belarusian ruble was printed,\" and that it took two more years before it was declared the sole official currency of Belarus in May 1994. WebSearch results (National Bank of Belarus references, banknote history sites) corroborate the 1992 introduction date. The described event (introducing the currency to replace the Soviet ruble) is real and materially accurate in substance, but the year is wrong by one year — 1993 was mid-transition (e.g., new denominations added), not the introduction year. Since the year is wrong, this must be scored FALSE with corrected_year, per the hard rules (year mismatch = FALSE, not PARTIAL).. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -320,9 +320,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Independent sourcing consistently dates the introduction of the Belarusian ruble to May 25, 1992 (replacing the Soviet ruble at 1:10), not 1993. The minskherald.com article states plainly: \"May 1992, is the year the first Belarusian ruble was printed,\" and that it took two more years before it was declared the sole official currency of Belarus in May 1994. WebSearch results (National Bank of Belarus references, banknote history sites) corroborate the 1992 introduction date. The described event (introducing the currency to replace the Soviet ruble) is real and materially accurate in substance, but the year is wrong by one year — 1993 was mid-transition (e.g., new denominations added), not the introduction year. Since the year is wrong, this must be scored FALSE with corrected_year, per the hard rules (year mismatch = FALSE, not PARTIAL).",
+        "source": "https://minskherald.com/2016/12/history-national-currency-belarus/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1992
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Belarusian_ruble"
+    ]
   },
   {
     "year": 1994,
@@ -928,12 +939,12 @@
     "year": 2008,
     "title": "Global financial crisis hits Belarus; IMF emergency loan",
     "verdict": "TRUE",
-    "reason": "$2.46 billion IMF standby loan confirmed. Balance-of-payments crisis confirmed. Description accurate.",
-    "verify_count": 1,
+    "reason": "Independently confirmed via WSWS, VOA, and IMF-sourced search snippets. The 2008 global financial crisis hit Belarus hard in 2008: export revenues from potash and refined oil products fell sharply, and Belarus spent roughly 25% of its gold/FX reserves defending the currency in the second half of 2008, producing a balance-of-payments crisis. An IMF mission visited Minsk in October 2008 and Belarus applied for a loan; a staff-level agreement for a $2.5bn (SDR-equivalent $2.46bn) stand-by arrangement was announced by IMF Managing Director Strauss-Kahn in December 2008, i.e. negotiated within 2008 as the description states ('Belarus negotiated a $2.46 billion IMF standby loan'). The IMF Executive Board's formal approval landed just after year-end on January 12, 2009 (418.8% of quota), with the currency devaluation (~20%, 2,200→2,650 BYR/USD) occurring January 2, 2009 — both are the natural conclusion of the 2008 negotiation/crisis process rather than a different, unrelated event. Belarus also received a parallel ~$2 billion loan from Russia around the same period, matching 'alongside loans from Russia' in the description. All material facts (country, approximate loan figure, cause, timing of negotiation, reform/devaluation consequence) check out for 2008; only the final IMF Board vote fell in the first weeks of the following January, which does not change the substance of the described event.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -945,9 +956,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via WSWS, VOA, and IMF-sourced search snippets. The 2008 global financial crisis hit Belarus hard in 2008: export revenues from potash and refined oil products fell sharply, and Belarus spent roughly 25% of its gold/FX reserves defending the currency in the second half of 2008, producing a balance-of-payments crisis. An IMF mission visited Minsk in October 2008 and Belarus applied for a loan; a staff-level agreement for a $2.5bn (SDR-equivalent $2.46bn) stand-by arrangement was announced by IMF Managing Director Strauss-Kahn in December 2008, i.e. negotiated within 2008 as the description states ('Belarus negotiated a $2.46 billion IMF standby loan'). The IMF Executive Board's formal approval landed just after year-end on January 12, 2009 (418.8% of quota), with the currency devaluation (~20%, 2,200→2,650 BYR/USD) occurring January 2, 2009 — both are the natural conclusion of the 2008 negotiation/crisis process rather than a different, unrelated event. Belarus also received a parallel ~$2 billion loan from Russia around the same period, matching 'alongside loans from Russia' in the description. All material facts (country, approximate loan figure, cause, timing of negotiation, reform/devaluation consequence) check out for 2008; only the final IMF Board vote fell in the first weeks of the following January, which does not change the substance of the described event.",
+        "source": "https://www.wsws.org/en/articles/2009/01/bela-j22.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Economy_of_Belarus"
+    "source": "https://www.wsws.org/en/articles/2009/01/bela-j22.html"
   },
   {
     "year": 2008,
@@ -1078,12 +1100,12 @@
     "year": 2011,
     "title": "Currency crisis and hyperinflation shock Belarusian economy",
     "verdict": "TRUE",
-    "reason": "2011 currency crisis confirmed: ruble devalued ~190% vs dollar, inflation 108.7% confirmed (description says 'exceeded 100%'). $3 billion Russian stabilization loan confirmed. Description accurate.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Wikipedia sources confirm the 2011 Belarus currency crisis materially as described. The National Bank of Belarus devalued the ruble by up to 56% against the currency basket on May 24, 2011 (OSW Centre for Eastern Studies), and by year-end (Oct 21, 2011) the ruble had lost about 189% against the dollar basket cumulatively — i.e., roughly two-thirds of its dollar value gone — per RFE/RL and Jamestown reporting. Year-on-year inflation hit 108-118% (FREE Network policy brief, Jamestown), consistent with \"exceeded 100%.\" Russia extended a $3 billion stabilization loan via the EurAsEC Anti-Crisis Fund, disbursed in $1 billion annual installments, confirmed by OSW and Jamestown, matching the description's \"Russia provided an emergency $3 billion stabilization loan through the Eurasian Economic Community.\" Background causes (pre-election wage hikes, Russian energy subsidy cuts, large current account deficits) are also corroborated by these same independent sources. All key facts — country, year, magnitude of devaluation, inflation rate, and the $3B EurAsEC loan — check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1095,9 +1117,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm the 2011 Belarus currency crisis materially as described. The National Bank of Belarus devalued the ruble by up to 56% against the currency basket on May 24, 2011 (OSW Centre for Eastern Studies), and by year-end (Oct 21, 2011) the ruble had lost about 189% against the dollar basket cumulatively — i.e., roughly two-thirds of its dollar value gone — per RFE/RL and Jamestown reporting. Year-on-year inflation hit 108-118% (FREE Network policy brief, Jamestown), consistent with \"exceeded 100%.\" Russia extended a $3 billion stabilization loan via the EurAsEC Anti-Crisis Fund, disbursed in $1 billion annual installments, confirmed by OSW and Jamestown, matching the description's \"Russia provided an emergency $3 billion stabilization loan through the Eurasian Economic Community.\" Background causes (pre-election wage hikes, Russian energy subsidy cuts, large current account deficits) are also corroborated by these same independent sources. All key facts — country, year, magnitude of devaluation, inflation rate, and the $3B EurAsEC loan — check out.",
+        "source": "https://www.osw.waw.pl/en/publikacje/analyses/2011-05-25/unprecedented-devaluation-belarusian-rouble-and-a-russian-loan",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2011_Belarus_financial_crisis"
+    "source": "https://www.osw.waw.pl/en/publikacje/analyses/2011-05-25/unprecedented-devaluation-belarusian-rouble-and-a-russian-loan"
   },
   {
     "year": 2011,
@@ -1403,12 +1436,12 @@
     "year": 2016,
     "title": "Belarus redenominates currency; removes four zeros from ruble",
     "verdict": "TRUE",
-    "reason": "July 1, 2016 redenomination at 10,000:1 confirmed. Second redenomination (first was 2000) confirmed. Description accurate.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm Belarus redenominated its currency effective July 1, 2016, replacing old Belarusian rubles (BYR) with new Belarusian rubles (BYN) at a rate of 10,000:1, removing four zeros. The Moscow Times headline itself is \"Belarus Wipes Four Zeros Off Currency in Redenomination\" (published July 1, 2016), matching the event title verbatim. RFE/RL and Wikipedia corroborate the mechanics (10,000:1 exchange, new banknotes/coins introduced, parallel circulation of old and new currency through end of 2016). This was Belarus's second formal ruble redenomination since independence (the first being in 2000, which cut three zeros), consistent with the description, though some sources frame the 1992 introduction of the Belarusian ruble itself as a distinct 'first' conversion event — a minor historiographical framing difference that does not affect the core facts. I did not use nbrb.by (off-limits) as corroboration; verdict rests on Moscow Times, RFE/RL, Wikipedia, Coinweek, and Library of Congress sources.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1420,9 +1453,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Belarus redenominated its currency effective July 1, 2016, replacing old Belarusian rubles (BYR) with new Belarusian rubles (BYN) at a rate of 10,000:1, removing four zeros. The Moscow Times headline itself is \"Belarus Wipes Four Zeros Off Currency in Redenomination\" (published July 1, 2016), matching the event title verbatim. RFE/RL and Wikipedia corroborate the mechanics (10,000:1 exchange, new banknotes/coins introduced, parallel circulation of old and new currency through end of 2016). This was Belarus's second formal ruble redenomination since independence (the first being in 2000, which cut three zeros), consistent with the description, though some sources frame the 1992 introduction of the Belarusian ruble itself as a distinct 'first' conversion event — a minor historiographical framing difference that does not affect the core facts. I did not use nbrb.by (off-limits) as corroboration; verdict rests on Moscow Times, RFE/RL, Wikipedia, Coinweek, and Library of Congress sources.",
+        "source": "https://www.themoscowtimes.com/2016/07/01/belarus-wipes-four-zeros-off-currency-in-redenomination-a53542",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.nbrb.by/engl/news/4565"
+    "source": "https://www.themoscowtimes.com/2016/07/01/belarus-wipes-four-zeros-off-currency-in-redenomination-a53542"
   },
   {
     "year": 2017,
@@ -1653,12 +1697,12 @@
     "year": 2020,
     "title": "Labor strikes at major state enterprises challenge regime",
     "verdict": "TRUE",
-    "reason": "MZKT, BelAZ, Minsk Tractor Works walkouts in August 2020 confirmed. Strikes suppressed by dismissals and arrests confirmed. Description accurate.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Wikipedia sources confirm the event materially as described. NPR (Aug 17, 2020) and Moscow Times (Aug 13-17, 2020) report workers at MZKT (Minsk Wheel Tractor Plant), BelAZ (Zhodino), and Minsk Tractor Works (MTZ) walking off the job in August 2020, chanting for Lukashenko to resign/leave. Lukashenko personally visited MZKT and was jeered/shouted down with 'Leave!' chants (Washington Post, ITV News, Globe and Mail all corroborate this specific incident). Follow-up reporting (RFE/RL, openDemocracy) confirms subsequent suppression: mass dismissals (120-130 fired at Belaruskali, ~20 at BMZ, 50+ at Grodno Azot for political reasons) and KGB involvement in actions against strike leaders, plus broader arrests (~15,000 arrested in the crackdown). All material details -- companies named, year, country, demand for resignation, and suppression via dismissals/arrests -- are confirmed by sources independent of Wikipedia.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1670,9 +1714,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm the event materially as described. NPR (Aug 17, 2020) and Moscow Times (Aug 13-17, 2020) report workers at MZKT (Minsk Wheel Tractor Plant), BelAZ (Zhodino), and Minsk Tractor Works (MTZ) walking off the job in August 2020, chanting for Lukashenko to resign/leave. Lukashenko personally visited MZKT and was jeered/shouted down with 'Leave!' chants (Washington Post, ITV News, Globe and Mail all corroborate this specific incident). Follow-up reporting (RFE/RL, openDemocracy) confirms subsequent suppression: mass dismissals (120-130 fired at Belaruskali, ~20 at BMZ, 50+ at Grodno Azot for political reasons) and KGB involvement in actions against strike leaders, plus broader arrests (~15,000 arrested in the crackdown). All material details -- companies named, year, country, demand for resignation, and suppression via dismissals/arrests -- are confirmed by sources independent of Wikipedia.",
+        "source": "https://www.npr.org/2020/08/17/903205824/belarus-factory-workers-walk-out-joining-mass-protests-calling-for-president-to-",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2020%E2%80%932021_Belarusian_protests"
+    "source": "https://www.npr.org/2020/08/17/903205824/belarus-factory-workers-walk-out-joining-mass-protests-calling-for-president-to-"
   },
   {
     "year": 2020,

@@ -170,11 +170,11 @@
   {
     "year": 1951,
     "title": "Argentina's First Television Broadcast",
-    "verdict": "TRUE",
-    "reason": "First broadcast was 17 October 1951 (Loyalty Day), Canal 7 (LR3). The event description says 'October 17' which matches. The claim that Argentina was first in Latin America is confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "The core event is confirmed: Argentina's first television broadcast occurred on October 17, 1951, timed to Loyalty Day (Día de la Lealtad), inaugurating Canal 7 (LR3 Radio Belgrano TV) in Buenos Aires, developed by Jaime Yankelevich, with the first transmission covering a Perón public act from Plaza de Mayo. Country, year, date, station, and Peronist-holiday framing all check out via Wikipedia and other sources. However, the description's claim that Canal 7 \"became the first television station in Latin America to broadcast\" is materially wrong: multiple independent sources (English Wikipedia's Rede Tupi/Television in Argentina pages, Spanish Wikipedia's Televisión en Argentina page) confirm Argentina was actually the FOURTH Latin American country to get television, after Mexico (XHTV, 1950), Brazil (TV Tupi, Sept 18 1950), and Cuba (1950). Spanish Wikipedia explicitly states television development in Argentina was \"relatively slow\" compared to Brazil, Cuba, Mexico, Dominican Republic and Venezuela. Since this scope/magnitude claim (regional 'first') is false while the year and country of the actual event hold, this is a PARTIAL rather than TRUE verdict.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -188,8 +188,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The core event is confirmed: Argentina's first television broadcast occurred on October 17, 1951, timed to Loyalty Day (Día de la Lealtad), inaugurating Canal 7 (LR3 Radio Belgrano TV) in Buenos Aires, developed by Jaime Yankelevich, with the first transmission covering a Perón public act from Plaza de Mayo. Country, year, date, station, and Peronist-holiday framing all check out via Wikipedia and other sources. However, the description's claim that Canal 7 \"became the first television station in Latin America to broadcast\" is materially wrong: multiple independent sources (English Wikipedia's Rede Tupi/Television in Argentina pages, Spanish Wikipedia's Televisión en Argentina page) confirm Argentina was actually the FOURTH Latin American country to get television, after Mexico (XHTV, 1950), Brazil (TV Tupi, Sept 18 1950), and Cuba (1950). Spanish Wikipedia explicitly states television development in Argentina was \"relatively slow\" compared to Brazil, Cuba, Mexico, Dominican Republic and Venezuela. Since this scope/magnitude claim (regional 'first') is false while the year and country of the actual event hold, this is a PARTIAL rather than TRUE verdict.",
+        "source": "https://en.wikipedia.org/wiki/Television_in_Argentina",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Television_in_Argentina"
   },
   {
     "year": 1952,
@@ -314,12 +326,12 @@
   {
     "year": 1953,
     "title": "Argentina Nationalizes Foreign Telephone Companies",
-    "verdict": "TRUE",
-    "reason": "Telephone nationalization under ENTEL framework in early 1950s is documented. Year plausible.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Telephone nationalization under ENTEL framework in early 1950s is documented. Year plausible.; Pass 2 FALSE: No completion of foreign telephone nationalization occurred in Argentina in 1953. The real nationalization was of the ITT-owned Unión Telefónica del Río de la Plata: purchased by the state in September 1946, converted from the mixed EMTA structure to full state ownership by decree 8.104 on 18 March 1948, then renamed 'Teléfonos del Estado' in 1949 — all years before 1953. The 'ENTEL framework' cited in the description is anachronistic: ENTel was not created until 1956, under decree 310 of the post-Perón 'Revolución Libertadora' government, not as part of 'the broader Peronist nationalization program.' Crucially, the only telephone operators still foreign-owned by the early 1950s — the Swedish/Ericsson-controlled Compañía Argentina de Teléfonos (CAT) and Compañía Entrerriana de Teléfonos (CET), covering Mendoza, San Juan, Tucumán, Salta, Santiago del Estero and Entre Ríos — were never nationalized during this period; multiple sources state plans to acquire them were 'finally abandoned in 1960.' So the specific claim that in 1953 the government 'completed nationalization of the remaining foreign-owned telephone infrastructure' is false on both the year and the substance — no such completion event happened, under ENTEL or otherwise, in 1953.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
     "source_independence": "n/a",
     "verifications": [
       {
@@ -332,6 +344,18 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "No completion of foreign telephone nationalization occurred in Argentina in 1953. The real nationalization was of the ITT-owned Unión Telefónica del Río de la Plata: purchased by the state in September 1946, converted from the mixed EMTA structure to full state ownership by decree 8.104 on 18 March 1948, then renamed 'Teléfonos del Estado' in 1949 — all years before 1953. The 'ENTEL framework' cited in the description is anachronistic: ENTel was not created until 1956, under decree 310 of the post-Perón 'Revolución Libertadora' government, not as part of 'the broader Peronist nationalization program.' Crucially, the only telephone operators still foreign-owned by the early 1950s — the Swedish/Ericsson-controlled Compañía Argentina de Teléfonos (CAT) and Compañía Entrerriana de Teléfonos (CET), covering Mendoza, San Juan, Tucumán, Salta, Santiago del Estero and Entre Ríos — were never nationalized during this period; multiple sources state plans to acquire them were 'finally abandoned in 1960.' So the specific claim that in 1953 the government 'completed nationalization of the remaining foreign-owned telephone infrastructure' is false on both the year and the substance — no such completion event happened, under ENTEL or otherwise, in 1953.",
+        "source": "https://www.laizquierdadiario.com/1948-la-nacionalizacion-de-los-telefonos",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1948
       }
     ]
   },
@@ -339,10 +363,10 @@
     "year": 1954,
     "title": "Perón in Conflict with Catholic Church",
     "verdict": "TRUE",
-    "reason": "Conflict began in 1954 and included removal of religious education, legalization of divorce. All facts match.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm the 1954 rupture between the Perón government and the Catholic Church in Argentina, materially as described. In 1954, following friction that began with a Protestant evangelical rally at Atlanta stadium (which angered the Catholic hierarchy) and Perón's accusations that clergy were aiding the political opposition, the government: (1) repealed the compulsory Catholic religious education law (12,978) in schools; (2) had Congress pass a constitutional-reform bill separating Church and State (approved 121-12 in the Chamber, unanimously in the Senate); and (3) passed a divorce law on December 14, 1954 (in effect 1954-1956). This escalated further into 1955 (deportation of clergy, Vatican excommunication of Perón, church burnings) and is widely credited by historians with undermining Perón's support base ahead of his 1955 overthrow. Year and country both match; no material detail is off.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -356,8 +380,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the 1954 rupture between the Perón government and the Catholic Church in Argentina, materially as described. In 1954, following friction that began with a Protestant evangelical rally at Atlanta stadium (which angered the Catholic hierarchy) and Perón's accusations that clergy were aiding the political opposition, the government: (1) repealed the compulsory Catholic religious education law (12,978) in schools; (2) had Congress pass a constitutional-reform bill separating Church and State (approved 121-12 in the Chamber, unanimously in the Senate); and (3) passed a divorce law on December 14, 1954 (in effect 1954-1956). This escalated further into 1955 (deportation of clergy, Vatican excommunication of Perón, church burnings) and is widely credited by historians with undermining Perón's support base ahead of his 1955 overthrow. Year and country both match; no material detail is off.",
+        "source": "https://en.wikipedia.org/wiki/Catholic_Church%E2%80%93state_relations_in_Argentina",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Catholic_Church%E2%80%93state_relations_in_Argentina"
   },
   {
     "year": 1954,
@@ -387,10 +423,10 @@
     "year": 1954,
     "title": "Legalization of Divorce and Anti-Clerical Legislation",
     "verdict": "TRUE",
-    "reason": "Divorce legalized in 1954, Church mobilized opposition. Facts match.",
-    "verify_count": 1,
+    "reason": "Confirmed by multiple independent sources. Argentina's pro-Perón Congress passed Law 14,394 in December 1954, whose Article 31 legalized absolute divorce for the first time in the country, over strong Catholic Church opposition. This was part of a broader anti-clerical push in 1954 (suppression of religious education in schools, legalization of prostitution, proposed separation of church and state, abolition of Catholic holidays, ban on religious displays in public places). This triggered a major escalating church-state conflict: the Church mobilized opposition, and mass Catholic demonstrations (notably the Corpus Christi procession in June 1955, which turned into an anti-government protest) directly challenged Perón's authority. This confrontation is widely credited by historians as a key factor leading to the September 1955 military coup ('Revolución Libertadora') that ousted Perón. All material elements of the description — country (Argentina), year (1954 for the divorce law's passage), the church-state clash, mass Catholic mobilization, and the framing as a precursor to Perón's downfall — are corroborated.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -404,8 +440,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent sources. Argentina's pro-Perón Congress passed Law 14,394 in December 1954, whose Article 31 legalized absolute divorce for the first time in the country, over strong Catholic Church opposition. This was part of a broader anti-clerical push in 1954 (suppression of religious education in schools, legalization of prostitution, proposed separation of church and state, abolition of Catholic holidays, ban on religious displays in public places). This triggered a major escalating church-state conflict: the Church mobilized opposition, and mass Catholic demonstrations (notably the Corpus Christi procession in June 1955, which turned into an anti-government protest) directly challenged Perón's authority. This confrontation is widely credited by historians as a key factor leading to the September 1955 military coup ('Revolución Libertadora') that ousted Perón. All material elements of the description — country (Argentina), year (1954 for the divorce law's passage), the church-state clash, mass Catholic mobilization, and the framing as a precursor to Perón's downfall — are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/Catholic_Church%E2%80%93state_relations_in_Argentina",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Catholic_Church%E2%80%93state_relations_in_Argentina"
   },
   {
     "year": 1955,
@@ -555,10 +603,10 @@
     "year": 1957,
     "title": "Argentina Joins the International Monetary Fund",
     "verdict": "FALSE",
-    "reason": "Argentina joined the IMF on 20 September 1956, not 1957. Year is off by one.",
-    "verify_count": 1,
+    "reason": "Argentina did join the IMF under the Aramburu government as part of a break from Perón's economic nationalism, and IMF membership did shape Argentine economic policy for decades — the substance of the description is accurate. However, multiple independent sources agree Argentina's actual date of entry into the IMF was September 20, 1956, not 1957. Since the hard rules classify a wrong year as FALSE (with corrected_year reported) rather than PARTIAL, this is FALSE on the year while the country/actor/nature of the event holds.",
+    "verify_count": 2,
     "consensus_verdict": "FALSE",
-    "consensus_status": "single",
+    "consensus_status": "double_negative",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -572,18 +620,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Argentina did join the IMF under the Aramburu government as part of a break from Perón's economic nationalism, and IMF membership did shape Argentine economic policy for decades — the substance of the description is accurate. However, multiple independent sources agree Argentina's actual date of entry into the IMF was September 20, 1956, not 1957. Since the hard rules classify a wrong year as FALSE (with corrected_year reported) rather than PARTIAL, this is FALSE on the year while the country/actor/nature of the event holds.",
+        "source": "https://en.wikipedia.org/wiki/Argentina_and_the_International_Monetary_Fund",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1956
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Argentina_and_the_International_Monetary_Fund"
   },
   {
     "year": 1957,
     "title": "CGT Labor Federation Reconstituted After Aramburu Crackdown",
-    "verdict": "TRUE",
-    "reason": "CGT reconstituted after dissolution following 1955 coup. Year plausible.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: CGT reconstituted after dissolution following 1955 coup. Year plausible.; Pass 2 FALSE: A CGT \"Congreso Normalizador\" did take place in Argentina in 1957 (Aug 26-Sep 5, at the Les Ambassadeurs hall), two years after Aramburu's 1955 coup had dissolved/intervened the CGT. But multiple independent Spanish-language historical sources agree the congress FAILED to reconstitute the CGT: after a narrow 298-291 procedural vote exposed inflated pro-government union delegate counts, the pro-dictatorship unions walked out, leaving the congress without quorum, and it collapsed without electing any new leadership. Rather than being 're-established,' the labor movement instead split into two rival factions born directly from this failed congress: the Peronist/communist-aligned '62 Organizaciones' and the anti-Peronist '32 Gremios Democráticos.' The CGT remained under state intervention/receivership for nearly six years after 1955 -- English Wikipedia and multiple Spanish sources confirm the government-appointed intervention (started Nov 1955 under interventor Alberto Patrón Laplacette) was not ended until March 1961, when the CGT's assets/institutions were handed to the 'Comisión de los 20.' The CGT was not 'finally normalized' with an elected Secretary General (José Alonso) until a January 1963 Congreso Normalizador. So the described outcome ('CGT was formally re-established' in 1957) is the opposite of what the sources say happened that year -- it's not a minor magnitude/actor detail but a wrong outcome (failure vs. success) for the year given. The 'torn between Peronist and non-Peronist factions' detail is accurate as an aftermath, but it describes the consequence of the congress's failure, not a description of a reconstituted body. Best-supported corrected year for actual (though still contested/factional) CGT reconstitution is 1963.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
     "source_independence": "n/a",
     "verifications": [
       {
@@ -596,6 +657,18 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "A CGT \"Congreso Normalizador\" did take place in Argentina in 1957 (Aug 26-Sep 5, at the Les Ambassadeurs hall), two years after Aramburu's 1955 coup had dissolved/intervened the CGT. But multiple independent Spanish-language historical sources agree the congress FAILED to reconstitute the CGT: after a narrow 298-291 procedural vote exposed inflated pro-government union delegate counts, the pro-dictatorship unions walked out, leaving the congress without quorum, and it collapsed without electing any new leadership. Rather than being 're-established,' the labor movement instead split into two rival factions born directly from this failed congress: the Peronist/communist-aligned '62 Organizaciones' and the anti-Peronist '32 Gremios Democráticos.' The CGT remained under state intervention/receivership for nearly six years after 1955 -- English Wikipedia and multiple Spanish sources confirm the government-appointed intervention (started Nov 1955 under interventor Alberto Patrón Laplacette) was not ended until March 1961, when the CGT's assets/institutions were handed to the 'Comisión de los 20.' The CGT was not 'finally normalized' with an elected Secretary General (José Alonso) until a January 1963 Congreso Normalizador. So the described outcome ('CGT was formally re-established' in 1957) is the opposite of what the sources say happened that year -- it's not a minor magnitude/actor detail but a wrong outcome (failure vs. success) for the year given. The 'torn between Peronist and non-Peronist factions' detail is accurate as an aftermath, but it describes the consequence of the congress's failure, not a description of a reconstituted body. Best-supported corrected year for actual (though still contested/factional) CGT reconstitution is 1963.",
+        "source": "https://historiaobrera.com.ar/events/1957-congreso-normalizador-de-la-cgt/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1963
       }
     ]
   },
@@ -603,10 +676,10 @@
     "year": 1957,
     "title": "Constitutional Convention Adds Article 14bis — Labor Rights",
     "verdict": "TRUE",
-    "reason": "1957 constituent assembly added Article 14bis enshrining labor rights. Facts match.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm the 1957 Argentine Constituent Assembly (Convención Constituyente) added Article 14 bis to the 1853 Constitution, enshrining labor rights: dignified working conditions, fair pay, and for unions specifically the right to collective bargaining, conciliation/arbitration, and the right to strike, plus integral social security provisions. Spanish Wikipedia confirms this was one of only two changes made in the 1957 reform and explicitly notes the historical context: the 1949 Peronist constitutional reform (which had included social rights) was annulled by the 1955 military coup ('Revolución Libertadora'), and the 1957 reform occurred under the anti-Peronist provisional government of Aramburu, with the labor movement pressuring for reinstatement of social/labor guarantees as a political concession — matching the description's note about it being 'a concession to labor despite the anti-Peronist orientation of the government.' Article 14 bis is well documented as the enduring constitutional foundation of Argentine labor law (still in force, referenced in WIPO Lex's official Argentine constitution text and by the UN Women constitutional database, ILO-related labor law scholarship, etc.). Year, country, and substance all check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -620,8 +693,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the 1957 Argentine Constituent Assembly (Convención Constituyente) added Article 14 bis to the 1853 Constitution, enshrining labor rights: dignified working conditions, fair pay, and for unions specifically the right to collective bargaining, conciliation/arbitration, and the right to strike, plus integral social security provisions. Spanish Wikipedia confirms this was one of only two changes made in the 1957 reform and explicitly notes the historical context: the 1949 Peronist constitutional reform (which had included social rights) was annulled by the 1955 military coup ('Revolución Libertadora'), and the 1957 reform occurred under the anti-Peronist provisional government of Aramburu, with the labor movement pressuring for reinstatement of social/labor guarantees as a political concession — matching the description's note about it being 'a concession to labor despite the anti-Peronist orientation of the government.' Article 14 bis is well documented as the enduring constitutional foundation of Argentine labor law (still in force, referenced in WIPO Lex's official Argentine constitution text and by the UN Women constitutional database, ILO-related labor law scholarship, etc.). Year, country, and substance all check out.",
+        "source": "https://es.wikipedia.org/wiki/Reforma_constitucional_argentina_de_1957",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://es.wikipedia.org/wiki/Reforma_constitucional_argentina_de_1957"
   },
   {
     "year": 1958,
@@ -722,11 +807,11 @@
   {
     "year": 1959,
     "title": "Argentine Government Suppresses Labor Strikes with Military",
-    "verdict": "TRUE",
-    "reason": "Military used to break 1959 strikes including oil sector and Ingeniero White port. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "Multiple independent sources confirm the core event: Frondizi used the military and his CONINTES (\"Conmoción Interna del Estado\") emergency decree to suppress major labor strikes in 1958-1959, including a general oil workers' strike protesting his oil contracts, and this decisively broke his earlier Frondizi-Perón pact / Peronist-friendly stance, alienating labor unions. English Wikipedia and Spanish-language sources (todo-argentina.net, an academic Redalyc article on Frondizi-era railway strikes) also confirm labor unrest (railway, meatpacking [Lisandro de la Torre, Jan 1959], banking, metalworking, oil) continued as an endemic feature of his presidency, matching the description's closing claim. However, I could not independently corroborate the specific detail that this 1959 military strike-breaking occurred 'particularly in the Ingeniero White port' — extensive targeted searches (Spanish and English) on Ingeniero White strikes only turned up documented labor conflicts there in 1907 (a tragic strike with fatalities) and 1966 (dockworkers' strike under Onganía), with no source placing a 1959 strike or military action at that specific port. The oil-sector part of the claim is solid; the Ingeniero White port detail appears to be a probable inaccuracy or at least is unconfirmed by any source I could find, so I'm marking this PARTIAL rather than TRUE. Year and country are correct.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -740,8 +825,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Multiple independent sources confirm the core event: Frondizi used the military and his CONINTES (\"Conmoción Interna del Estado\") emergency decree to suppress major labor strikes in 1958-1959, including a general oil workers' strike protesting his oil contracts, and this decisively broke his earlier Frondizi-Perón pact / Peronist-friendly stance, alienating labor unions. English Wikipedia and Spanish-language sources (todo-argentina.net, an academic Redalyc article on Frondizi-era railway strikes) also confirm labor unrest (railway, meatpacking [Lisandro de la Torre, Jan 1959], banking, metalworking, oil) continued as an endemic feature of his presidency, matching the description's closing claim. However, I could not independently corroborate the specific detail that this 1959 military strike-breaking occurred 'particularly in the Ingeniero White port' — extensive targeted searches (Spanish and English) on Ingeniero White strikes only turned up documented labor conflicts there in 1907 (a tragic strike with fatalities) and 1966 (dockworkers' strike under Onganía), with no source placing a 1959 strike or military action at that specific port. The oil-sector part of the claim is solid; the Ingeniero White port detail appears to be a probable inaccuracy or at least is unconfirmed by any source I could find, so I'm marking this PARTIAL rather than TRUE. Year and country are correct.",
+        "source": "https://en.wikipedia.org/wiki/Arturo_Frondizi",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Arturo_Frondizi"
   },
   {
     "year": 1959,
@@ -891,10 +988,10 @@
     "year": 1962,
     "title": "Economic Stagnation and Balance of Payments Crisis",
     "verdict": "TRUE",
-    "reason": "Documented currency and balance-of-payments instability in 1962. Facts match.",
-    "verify_count": 1,
+    "reason": "Independent academic and historical sources corroborate all material elements. The BFI/University of Chicago \"Monetary and Fiscal History of Latin America\" project confirms: reserves depleted through 1961 (half lost by year-end) due to central-bank financing of deficits, the fixed exchange rate was abandoned in February 1962, followed by a 60% devaluation over the next three months, pushing inflation to ~30% by end of 1962 — matching the description's 'sharp peso devaluation, rising inflation, and a balance-of-payments crisis.' Separately, Wikipedia and Duke University Press (Hispanic American Historical Review, 'The Army and Politics in Argentina, 1962-1973: From Frondizi's Fall to the Peronist Restoration') confirm the political radicalization and military interventionism: the March 29, 1962 military coup ousted President Frondizi after Peronist electoral gains, installing civilian José María Guido — directly corroborating 'contributed to political radicalization and military interventionism.' The 'stop-go economic cycle' characterization is a standard descriptor for this era of Argentine economic history in the literature reviewed. Year and country both hold; no material detail is off.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -908,8 +1005,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent academic and historical sources corroborate all material elements. The BFI/University of Chicago \"Monetary and Fiscal History of Latin America\" project confirms: reserves depleted through 1961 (half lost by year-end) due to central-bank financing of deficits, the fixed exchange rate was abandoned in February 1962, followed by a 60% devaluation over the next three months, pushing inflation to ~30% by end of 1962 — matching the description's 'sharp peso devaluation, rising inflation, and a balance-of-payments crisis.' Separately, Wikipedia and Duke University Press (Hispanic American Historical Review, 'The Army and Politics in Argentina, 1962-1973: From Frondizi's Fall to the Peronist Restoration') confirm the political radicalization and military interventionism: the March 29, 1962 military coup ousted President Frondizi after Peronist electoral gains, installing civilian José María Guido — directly corroborating 'contributed to political radicalization and military interventionism.' The 'stop-go economic cycle' characterization is a standard descriptor for this era of Argentine economic history in the literature reviewed. Year and country both hold; no material detail is off.",
+        "source": "https://manifold.bfi.uchicago.edu/read/a-monetary-and-fiscal-history-of-latin-america-1960-2017/section/4fb09bf3-b545-4f6f-91f3-76f3d201b15a",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://manifold.bfi.uchicago.edu/read/a-monetary-and-fiscal-history-of-latin-america-1960-2017/section/4fb09bf3-b545-4f6f-91f3-76f3d201b15a"
   },
   {
     "year": 1963,
@@ -963,10 +1072,10 @@
     "year": 1964,
     "title": "CGT Plan de Lucha — Mass Factory Occupations",
     "verdict": "TRUE",
-    "reason": "1964 Plan de Lucha involving ~11,000 factory occupations and millions of workers is documented.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources (Spanish Wikipedia, laizquierdadiario, redalyc/scielo academic article, ANRed) confirm the CGT's Plan de Lucha's second phase produced a wave of rolling factory occupations across Argentina between May 21 and June 24, 1964, involving roughly 11,000 establishments (matches '11,000 establishments' exactly) and approximately 3.9 million workers (close to the described 'over 4 million,' a minor rounding difference, not a material discrepancy). The actions were explicitly directed against President Arturo Umberto Illia's government, and demands included wage/economic gains plus political-syndical objectives tied to Peronism (support for Perón's return, recognition of Peronist political rights) — matching the description's claims about wage increases and Peronist political rights. Country, year, actor (CGT/Peronist unionism), target (Illia government), and scale all check out materially as described.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -980,8 +1089,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Spanish Wikipedia, laizquierdadiario, redalyc/scielo academic article, ANRed) confirm the CGT's Plan de Lucha's second phase produced a wave of rolling factory occupations across Argentina between May 21 and June 24, 1964, involving roughly 11,000 establishments (matches '11,000 establishments' exactly) and approximately 3.9 million workers (close to the described 'over 4 million,' a minor rounding difference, not a material discrepancy). The actions were explicitly directed against President Arturo Umberto Illia's government, and demands included wage/economic gains plus political-syndical objectives tied to Peronism (support for Perón's return, recognition of Peronist political rights) — matching the description's claims about wage increases and Peronist political rights. Country, year, actor (CGT/Peronist unionism), target (Illia government), and scale all check out materially as described.",
+        "source": "https://es.wikipedia.org/wiki/Toma_de_f%C3%A1bricas_en_Argentina_de_1964",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://es.wikipedia.org/wiki/Toma_de_f%C3%A1bricas_en_Argentina_de_1964"
   },
   {
     "year": 1964,
@@ -1082,12 +1203,12 @@
   {
     "year": 1966,
     "title": "Krieger Vasena Economic Stabilization Plan",
-    "verdict": "TRUE",
-    "reason": "Minister Adalbert Krieger Vasena implemented stabilization including devaluation and exchange-rate freeze. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Minister Adalbert Krieger Vasena implemented stabilization including devaluation and exchange-rate freeze. Facts match.; Pass 2 FALSE: The plan described (large peso devaluation, exchange rate freeze, wage controls, trade liberalization under Economy Minister Adalbert Krieger Vasena) is real and materially matches the description, but it did not occur in 1966. Krieger Vasena was not even appointed Minister of Economy until the very end of December 1966, formally sworn in January 2, 1967 (replacing Jorge Salimei). The actual Plan de Estabilización y Desarrollo — the 40% devaluation, wage freeze, and trade/exchange liberalization — was announced and implemented in March 1967, with IMF backing, and its effects (falling inflation, GDP growth, then the 1969 Cordobazo backlash) all unfolded in 1967-1969. Multiple independent sources (Britannica, Wikipedia, Infobae, academic/SciELO articles) consistently date the plan's launch to March 1967, not 1966. Since the year is a join key and is materially wrong (event is anchored to a specific minister and plan launch date that fall in 1967), this is a year-mismatch FALSE rather than TRUE/PARTIAL.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
     "source_independence": "n/a",
     "verifications": [
       {
@@ -1100,6 +1221,18 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The plan described (large peso devaluation, exchange rate freeze, wage controls, trade liberalization under Economy Minister Adalbert Krieger Vasena) is real and materially matches the description, but it did not occur in 1966. Krieger Vasena was not even appointed Minister of Economy until the very end of December 1966, formally sworn in January 2, 1967 (replacing Jorge Salimei). The actual Plan de Estabilización y Desarrollo — the 40% devaluation, wage freeze, and trade/exchange liberalization — was announced and implemented in March 1967, with IMF backing, and its effects (falling inflation, GDP growth, then the 1969 Cordobazo backlash) all unfolded in 1967-1969. Multiple independent sources (Britannica, Wikipedia, Infobae, academic/SciELO articles) consistently date the plan's launch to March 1967, not 1966. Since the year is a join key and is materially wrong (event is anchored to a specific minister and plan launch date that fall in 1967), this is a year-mismatch FALSE rather than TRUE/PARTIAL.",
+        "source": "https://en.wikipedia.org/wiki/Adalbert_Krieger_Vasena",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 1967
       }
     ]
   },
@@ -1131,10 +1264,10 @@
     "year": 1968,
     "title": "CGT de los Argentinos Founded — Radical Labor Faction",
     "verdict": "TRUE",
-    "reason": "Founded in 1968 by Raimundo Ongaro as combative faction. Facts match.",
-    "verify_count": 1,
+    "reason": "Multiple independent Argentine sources confirm: the CGT de los Argentinos (CGT-A) was founded in March 1968 at the \"Amado Olmos\" normalizing congress, as a militant split from the mainstream, accommodationist CGT (the \"CGT Azopardo\" faction led by Augusto Vandor), during Onganía's military dictatorship. Raimundo Ongaro, a printworkers'/graphic union leader, was elected its secretary general. On May 1, 1968 the CGT-A published its manifesto \"Mensaje a los trabajadores y el pueblo argentino\" in its newspaper, explicitly calling to combat imperialism and monopolies and criticizing the capitalist system and military rule, with contributions from journalist Rodolfo Walsh. All material details (year, country, founder, militant/split nature, anti-imperialist manifesto) are corroborated.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -1148,8 +1281,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent Argentine sources confirm: the CGT de los Argentinos (CGT-A) was founded in March 1968 at the \"Amado Olmos\" normalizing congress, as a militant split from the mainstream, accommodationist CGT (the \"CGT Azopardo\" faction led by Augusto Vandor), during Onganía's military dictatorship. Raimundo Ongaro, a printworkers'/graphic union leader, was elected its secretary general. On May 1, 1968 the CGT-A published its manifesto \"Mensaje a los trabajadores y el pueblo argentino\" in its newspaper, explicitly calling to combat imperialism and monopolies and criticizing the capitalist system and military rule, with contributions from journalist Rodolfo Walsh. All material details (year, country, founder, militant/split nature, anti-imperialist manifesto) are corroborated.",
+        "source": "https://es.wikipedia.org/wiki/Confederaci%C3%B3n_General_del_Trabajo_de_los_Argentinos",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://es.wikipedia.org/wiki/Confederaci%C3%B3n_General_del_Trabajo_de_los_Argentinos"
   },
   {
     "year": 1968,
@@ -1323,10 +1468,10 @@
     "year": 1971,
     "title": "Rapid Peso Depreciation and Inflation Acceleration",
     "verdict": "TRUE",
-    "reason": "Peso depreciation and inflation acceleration in 1971 well-documented.",
-    "verify_count": 1,
+    "reason": "Confirmed from two independent sources. (1) The \"Historical exchange rates of Argentine currency\" table shows the peso ley depreciating from 4.275/USD in January 1971 to 9.40/USD in December 1971 — the dollar's peso price more than doubled within the single calendar year, a severe currency depreciation. (2) The Spanish Wikipedia \"Inflación en Argentina\" article states inflation reached 34.7% in 1971, part of an accelerating trend (average 26.7% for 1967-1972, peaking at 58.5% in 1972) up from single-digit inflation (~7.6%) in 1969 — consistent with 'inflation acceleration.' Context corroborates the political frame: Argentina was under military rule during this period (Gen. Levingston removed in March 1971, replaced by Gen. Lanusse), a period marked by well-documented social unrest (e.g., the 1969 Cordobazo and 1971 Viborazo uprisings in Córdoba) and declining confidence in military economic management, which pushed Lanusse toward a promised return to elections in 1973. Argentina's chronic inflation problem in subsequent decades is well-established historical fact. All material elements of the event (country, year, peso depreciation, inflation acceleration under military rule, social unrest) are corroborated.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -1340,8 +1485,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from two independent sources. (1) The \"Historical exchange rates of Argentine currency\" table shows the peso ley depreciating from 4.275/USD in January 1971 to 9.40/USD in December 1971 — the dollar's peso price more than doubled within the single calendar year, a severe currency depreciation. (2) The Spanish Wikipedia \"Inflación en Argentina\" article states inflation reached 34.7% in 1971, part of an accelerating trend (average 26.7% for 1967-1972, peaking at 58.5% in 1972) up from single-digit inflation (~7.6%) in 1969 — consistent with 'inflation acceleration.' Context corroborates the political frame: Argentina was under military rule during this period (Gen. Levingston removed in March 1971, replaced by Gen. Lanusse), a period marked by well-documented social unrest (e.g., the 1969 Cordobazo and 1971 Viborazo uprisings in Córdoba) and declining confidence in military economic management, which pushed Lanusse toward a promised return to elections in 1973. Argentina's chronic inflation problem in subsequent decades is well-established historical fact. All material elements of the event (country, year, peso depreciation, inflation acceleration under military rule, social unrest) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/Historical_exchange_rates_of_Argentine_currency",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Historical_exchange_rates_of_Argentine_currency"
   },
   {
     "year": 1972,
@@ -1875,10 +2032,10 @@
     "year": 1980,
     "title": "Economic Crisis — Foreign Debt Escalation",
     "verdict": "TRUE",
-    "reason": "Foreign debt grew rapidly during military era. Seeds of 1981–1982 crisis planted by 1980. Facts match.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources corroborate the described buildup: under the Proceso military government, Economy Minister Martínez de Hoz's 1978 \"tablita\" crawling-peg scheme overvalued the peso, making imports and dollar borrowing artificially cheap while masking a growing external imbalance; external debt escalated sharply in this period (from ~$4.6-9.7B in 1976 toward $25-45B by 1983); one source states an internal financial crisis began in early 1980 with the tablita program collapsing in early 1981, directly matching the claim that the seeds of the 1981-1982 crisis were 'fully planted by 1980.' This is a description of a multi-year structural buildup culminating around 1980 rather than a single dated event, but it is materially accurate to the historical record as described.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -1892,8 +2049,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the described buildup: under the Proceso military government, Economy Minister Martínez de Hoz's 1978 \"tablita\" crawling-peg scheme overvalued the peso, making imports and dollar borrowing artificially cheap while masking a growing external imbalance; external debt escalated sharply in this period (from ~$4.6-9.7B in 1976 toward $25-45B by 1983); one source states an internal financial crisis began in early 1980 with the tablita program collapsing in early 1981, directly matching the claim that the seeds of the 1981-1982 crisis were 'fully planted by 1980.' This is a description of a multi-year structural buildup culminating around 1980 rather than a single dated event, but it is materially accurate to the historical record as described.",
+        "source": "https://geopoliticaleconomy.com/2022/12/18/argentina-neocolonial-debt-history/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://geopoliticaleconomy.com/2022/12/18/argentina-neocolonial-debt-history/"
   },
   {
     "year": 1981,
@@ -1923,10 +2092,10 @@
     "year": 1981,
     "title": "Peso Collapse and Economic Crisis",
     "verdict": "TRUE",
-    "reason": "1981 banking and currency crisis following tablita collapse. Facts match.",
-    "verify_count": 1,
+    "reason": "Independent sources corroborate every material element: the \"tablita\" crawling-peg scheme introduced Dec 1978 under Martínez de Hoz made the peso severely overvalued by 1980; in February 1981 the peso was sharply devalued, shattering the tablita and triggering \"one of the worst financial crises in the history of modern Argentina\" (via Circular 1050 currency-mismatched loans, causing a banking crisis). Foreign debt quadrupled from $7B to $43B during/after this period. GDP fell 11.4% and manufacturing output fell 22.9% in 1981 (devastated industrial sector), with the crisis continuing into 1982 (inflation 140%, further contraction) and contributing to the political backdrop of the 1982 Falklands invasion, which historians link to the junta seeking to distract from economic mismanagement. All core facts (country, year, causal mechanism, banking crisis, foreign debt, industrial collapse, continuation into 1982, Falklands linkage) check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -1940,8 +2109,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources corroborate every material element: the \"tablita\" crawling-peg scheme introduced Dec 1978 under Martínez de Hoz made the peso severely overvalued by 1980; in February 1981 the peso was sharply devalued, shattering the tablita and triggering \"one of the worst financial crises in the history of modern Argentina\" (via Circular 1050 currency-mismatched loans, causing a banking crisis). Foreign debt quadrupled from $7B to $43B during/after this period. GDP fell 11.4% and manufacturing output fell 22.9% in 1981 (devastated industrial sector), with the crisis continuing into 1982 (inflation 140%, further contraction) and contributing to the political backdrop of the 1982 Falklands invasion, which historians link to the junta seeking to distract from economic mismanagement. All core facts (country, year, causal mechanism, banking crisis, foreign debt, industrial collapse, continuation into 1982, Falklands linkage) check out.",
+        "source": "https://en.wikipedia.org/wiki/Jos%C3%A9_Alfredo_Mart%C3%ADnez_de_Hoz",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Jos%C3%A9_Alfredo_Mart%C3%ADnez_de_Hoz"
   },
   {
     "year": 1982,
@@ -1995,10 +2176,10 @@
     "year": 1982,
     "title": "Debt Crisis and Banking System Collapse",
     "verdict": "TRUE",
-    "reason": "State absorbed private foreign debt. External debt ~$45 billion figure is documented. Facts match.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm Argentina's 1982 banking/debt crisis: the central bank (under Domingo Cavallo) nationalized/absorbed roughly $15-17 billion of private-sector foreign debt in a controversial 'socialization of losses' following a wave of bank failures caused by currency mismatches and devaluation (exchange-rate insurance/'seguro de cambio' losses). This culminated in December 1982, the same year Argentina also formally defaulted on foreign debt and approached the IMF (Aug 1982). Argentina's total external debt at end-1982 is documented in the $38-43.6 billion range across sources (gross vs. total measures vary), close to the \"approximately $45B\" figure given, and Argentina was indeed among the largest debtors in Latin America/the world at the time (alongside Mexico and Brazil). All core elements of the description (banking collapse, government bailout of banks with FX liabilities, socialization of private debt, large external debt) are corroborated.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -2012,8 +2193,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Argentina's 1982 banking/debt crisis: the central bank (under Domingo Cavallo) nationalized/absorbed roughly $15-17 billion of private-sector foreign debt in a controversial 'socialization of losses' following a wave of bank failures caused by currency mismatches and devaluation (exchange-rate insurance/'seguro de cambio' losses). This culminated in December 1982, the same year Argentina also formally defaulted on foreign debt and approached the IMF (Aug 1982). Argentina's total external debt at end-1982 is documented in the $38-43.6 billion range across sources (gross vs. total measures vary), close to the \"approximately $45B\" figure given, and Argentina was indeed among the largest debtors in Latin America/the world at the time (alongside Mexico and Brazil). All core elements of the description (banking collapse, government bailout of banks with FX liabilities, socialization of private debt, large external debt) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/Central_Bank_of_Argentina",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Central_Bank_of_Argentina"
   },
   {
     "year": 1983,
@@ -2307,10 +2500,10 @@
     "year": 1989,
     "title": "Hyperinflation Crisis — Alfonsín Resigns Early",
     "verdict": "TRUE",
-    "reason": "Monthly inflation 196% in July 1989; annual exceeded 3,000%. Food riots. Alfonsín resigned five months early. Facts match.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm Argentina's 1989 hyperinflation crisis: annual inflation for 1989 was approximately 3,079% (exceeding 3,000% as described), with a monthly peak around 196-197% in July 1989. The crisis triggered food riots and looting in cities across Argentina in May-June 1989. President Raúl Alfonsín, unable to arrange a proper transition amid the collapse, resigned roughly five to six months early and transferred power to President-elect Carlos Menem in July 1989 instead of the scheduled December date. All material details (country, year, magnitude, actors, sequence of events) match the description.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -2324,8 +2517,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Argentina's 1989 hyperinflation crisis: annual inflation for 1989 was approximately 3,079% (exceeding 3,000% as described), with a monthly peak around 196-197% in July 1989. The crisis triggered food riots and looting in cities across Argentina in May-June 1989. President Raúl Alfonsín, unable to arrange a proper transition amid the collapse, resigned roughly five to six months early and transferred power to President-elect Carlos Menem in July 1989 instead of the scheduled December date. All material details (country, year, magnitude, actors, sequence of events) match the description.",
+        "source": "https://en.wikipedia.org/wiki/1989_hyperinflation_in_Argentina",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/1989_hyperinflation_in_Argentina"
   },
   {
     "year": 1989,
@@ -2451,10 +2656,10 @@
     "year": 1991,
     "title": "Convertibility Plan — Peso Pegged to US Dollar",
     "verdict": "TRUE",
-    "reason": "April 1991, Domingo Cavallo implemented 1:1 peg. Ended hyperinflation. Facts match.",
-    "verify_count": 1,
+    "reason": "Confirmed via independent web search: Argentina's Convertibility Law, initiated by Economy Minister Domingo Cavallo, was approved in 1991 and took effect April 1, 1991, pegging the Argentine currency (soon renamed peso, replacing the austral) to the US dollar at a 1:1 fixed rate, backed by a currency board requiring full reserve backing of the monetary base. This ended Argentina's hyperinflation (from >3,000% in 1989 down to 3.4% by 1994) and ushered in roughly a decade of monetary stability before the peg's eventual collapse in 2001-2002 — matching all material details in the description (country, year, actor, mechanism, immediate effect, and eventual unsustainability).",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -2468,8 +2673,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via independent web search: Argentina's Convertibility Law, initiated by Economy Minister Domingo Cavallo, was approved in 1991 and took effect April 1, 1991, pegging the Argentine currency (soon renamed peso, replacing the austral) to the US dollar at a 1:1 fixed rate, backed by a currency board requiring full reserve backing of the monetary base. This ended Argentina's hyperinflation (from >3,000% in 1989 down to 3.4% by 1994) and ushered in roughly a decade of monetary stability before the peg's eventual collapse in 2001-2002 — matching all material details in the description (country, year, actor, mechanism, immediate effect, and eventual unsustainability).",
+        "source": "https://en.wikipedia.org/wiki/Convertibility_plan",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Convertibility_plan"
   },
   {
     "year": 1991,
@@ -2643,10 +2860,10 @@
     "year": 1994,
     "title": "Tequila Effect — Banking Crisis from Mexican Peso Collapse",
     "verdict": "TRUE",
-    "reason": "December 1994 Mexican peso crisis triggered Argentina banking crisis. $8 billion deposit flight. GDP fell ~4.6% in 1995. IMF rescue. Facts match.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources (IMF Finance & Development, Federal Reserve/IFDP paper, Richmond Fed, PIIE, Dallas Fed) confirm the Mexican peso devaluation of Dec 20, 1994 triggered a 'Tequila Effect' banking crisis in Argentina. Aggregate bank deposits fell from $45.6 billion (Dec 20, 1994) to $36.8 billion (May 12, 1995) — a net withdrawal of ~$8 billion (16% of deposit base), matching the description precisely. 34 banks and 6 nonbanks closed in the first nine months of 1995. The convertibility (currency board) system survived the shock. Argentina received IMF support/rescue financing during this period. GDP decline figures vary slightly by source/revision (2.8% to 4.4% cited across sources vs. 4.6% claimed), which is within normal variation for historical GDP vintages and does not change the material accuracy of the event. All core facts (country, year, mechanism, magnitude of deposit flight, banking crisis, convertibility survival, IMF involvement) are corroborated by independent academic and institutional sources.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -2660,8 +2877,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (IMF Finance & Development, Federal Reserve/IFDP paper, Richmond Fed, PIIE, Dallas Fed) confirm the Mexican peso devaluation of Dec 20, 1994 triggered a 'Tequila Effect' banking crisis in Argentina. Aggregate bank deposits fell from $45.6 billion (Dec 20, 1994) to $36.8 billion (May 12, 1995) — a net withdrawal of ~$8 billion (16% of deposit base), matching the description precisely. 34 banks and 6 nonbanks closed in the first nine months of 1995. The convertibility (currency board) system survived the shock. Argentina received IMF support/rescue financing during this period. GDP decline figures vary slightly by source/revision (2.8% to 4.4% cited across sources vs. 4.6% claimed), which is within normal variation for historical GDP vintages and does not change the material accuracy of the event. All core facts (country, year, mechanism, magnitude of deposit flight, banking crisis, convertibility survival, IMF involvement) are corroborated by independent academic and institutional sources.",
+        "source": "https://www.federalreserve.gov/econres/ifdp/the-tequila-effect-theory-and-evidence-from-argentina.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.federalreserve.gov/econres/ifdp/the-tequila-effect-theory-and-evidence-from-argentina.htm"
   },
   {
     "year": 1995,
@@ -2715,10 +2944,10 @@
     "year": 1996,
     "title": "General Strike Against Menem Economic Policies",
     "verdict": "TRUE",
-    "reason": "September 1996 general strike. Unemployment above 17%. Facts match.",
-    "verify_count": 1,
+    "reason": "Confirmed: CGT (jointly with CTA) called a general strike on September 26-27, 1996 in Argentina, explicitly against Menem's economic and social policy and labor flexibilization (per the Wikipedia strike-history table, matched by an August 1996 IPS Noticias article and a UNM NotiSur report covering the same period's labor-code/flexibilization fight — proposed longer shifts, reduced severance pay, weakened collective bargaining). Unemployment was confirmed at ~17.1-18.6% through the mid-1990s (NotiSur/state.gov background notes), consistent with 'above 17%' in the description. This was part of a wave of three 1996 general strikes (Aug 8, Sept 26-27, Dec 26), all under Menem and citing similar grievances (unemployment, labor flexibilization, economic/social policy, spending cuts). One minor inaccuracy in the event description: calling it 'the first major labor mobilization in several years' is not well supported — CGT/CTA/MTA had already staged general strikes in Nov 1992, Aug 1994, Apr 1995 and Sept 1995, so labor mobilization against Menem was fairly frequent, not a multi-year gap. This is framing/context rather than the core factual claim (who/what/when/why), so it does not change the verdict, but it is flagged as a caveat.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -2732,8 +2961,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed: CGT (jointly with CTA) called a general strike on September 26-27, 1996 in Argentina, explicitly against Menem's economic and social policy and labor flexibilization (per the Wikipedia strike-history table, matched by an August 1996 IPS Noticias article and a UNM NotiSur report covering the same period's labor-code/flexibilization fight — proposed longer shifts, reduced severance pay, weakened collective bargaining). Unemployment was confirmed at ~17.1-18.6% through the mid-1990s (NotiSur/state.gov background notes), consistent with 'above 17%' in the description. This was part of a wave of three 1996 general strikes (Aug 8, Sept 26-27, Dec 26), all under Menem and citing similar grievances (unemployment, labor flexibilization, economic/social policy, spending cuts). One minor inaccuracy in the event description: calling it 'the first major labor mobilization in several years' is not well supported — CGT/CTA/MTA had already staged general strikes in Nov 1992, Aug 1994, Apr 1995 and Sept 1995, so labor mobilization against Menem was fairly frequent, not a multi-year gap. This is framing/context rather than the core factual claim (who/what/when/why), so it does not change the verdict, but it is flagged as a caveat.",
+        "source": "https://es.wikipedia.org/wiki/Anexo:Paros_y_planes_de_lucha_en_Argentina",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://es.wikipedia.org/wiki/Anexo:Paros_y_planes_de_lucha_en_Argentina"
   },
   {
     "year": 1997,
@@ -2859,10 +3100,10 @@
     "year": 1999,
     "title": "Argentina Enters Recession — Convertibility Strains",
     "verdict": "TRUE",
-    "reason": "Recession began 1999 with ~3.4% GDP contraction. Brazilian devaluation a factor. Facts match.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm Argentina's economy contracted in 1999 (figures cited range 3%-4%, with 3-3.5% most common, consistent with the described 3.4%), driven by the overvalued peso under the Convertibility Plan currency board (peso pegged 1:1 to USD), loss of export competitiveness, and Brazil's January 1999 real devaluation (Brazil was ~30% of Argentine trade; devaluation eroded ~20% of Argentina's competitiveness overnight and cut exports to Brazil from $12.86B in 1998 to $9.96B in 1999). Sources also confirm the currency board's rigidity prevented the normal devaluation-based adjustment, forcing painful internal wage/price deflation instead, and that this recession (beginning Q3 1998) persisted through the government's fall/debt default in December 2001 before the deeper 2002 collapse — matching the description's \"four-year contraction\" ending December 2001. All material elements (country, year, magnitude, causal mechanism) are corroborated across Wikipedia, World Bank working papers, CEPR, ILO, and a US Congressional JEC report.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -2876,8 +3117,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Argentina's economy contracted in 1999 (figures cited range 3%-4%, with 3-3.5% most common, consistent with the described 3.4%), driven by the overvalued peso under the Convertibility Plan currency board (peso pegged 1:1 to USD), loss of export competitiveness, and Brazil's January 1999 real devaluation (Brazil was ~30% of Argentine trade; devaluation eroded ~20% of Argentina's competitiveness overnight and cut exports to Brazil from $12.86B in 1998 to $9.96B in 1999). Sources also confirm the currency board's rigidity prevented the normal devaluation-based adjustment, forcing painful internal wage/price deflation instead, and that this recession (beginning Q3 1998) persisted through the government's fall/debt default in December 2001 before the deeper 2002 collapse — matching the description's \"four-year contraction\" ending December 2001. All material elements (country, year, magnitude, causal mechanism) are corroborated across Wikipedia, World Bank working papers, CEPR, ILO, and a US Congressional JEC report.",
+        "source": "https://en.wikipedia.org/wiki/1998%E2%80%932002_Argentine_great_depression",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/1998%E2%80%932002_Argentine_great_depression"
   },
   {
     "year": 2000,
@@ -2979,10 +3232,10 @@
     "year": 2002,
     "title": "Peso Devaluation Ends Convertibility",
     "verdict": "TRUE",
-    "reason": "January 2002. Duhalde ended convertibility. Peso devalued to 3.5:1 (initially), then floated further. Facts match.",
-    "verify_count": 1,
+    "reason": "Confirmed from multiple independent sources: On 6 January 2002, newly installed President Eduardo Duhalde signed the law ending the decade-long Convertibility Plan, scrapping the 1:1 peso-dollar peg. The peso was initially set at a provisional 1.4:1 rate, then floated and fell to nearly 4:1 by mid-2002 before settling in the roughly 3-3.5:1 range by year-end — consistent with the description's '3.5:1' figure as the settled/approximate post-devaluation rate. The devaluation devastated middle-class dollar savers via the 'pesification' of bank deposits/corralito (deposits forcibly converted from dollars to pesos at unfavorable rates), which was challenged in court (Supreme Court ruled on it in 2002-2004) and caused years of litigation, exactly as described. It also restored export competitiveness, a widely cited consequence in economic analyses of the crisis. All material elements (country, year, actor, magnitude, causal effects) check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -2996,8 +3249,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: On 6 January 2002, newly installed President Eduardo Duhalde signed the law ending the decade-long Convertibility Plan, scrapping the 1:1 peso-dollar peg. The peso was initially set at a provisional 1.4:1 rate, then floated and fell to nearly 4:1 by mid-2002 before settling in the roughly 3-3.5:1 range by year-end — consistent with the description's '3.5:1' figure as the settled/approximate post-devaluation rate. The devaluation devastated middle-class dollar savers via the 'pesification' of bank deposits/corralito (deposits forcibly converted from dollars to pesos at unfavorable rates), which was challenged in court (Supreme Court ruled on it in 2002-2004) and caused years of litigation, exactly as described. It also restored export competitiveness, a widely cited consequence in economic analyses of the crisis. All material elements (country, year, actor, magnitude, causal effects) check out.",
+        "source": "https://en.wikipedia.org/wiki/Convertibility_plan",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Convertibility_plan"
   },
   {
     "year": 2002,
@@ -3027,10 +3292,10 @@
     "year": 2002,
     "title": "Argentina's Economy Contracts 10.9% — Worst Depression",
     "verdict": "TRUE",
-    "reason": "GDP contracted 10.9% in 2002. Poverty ~57%, unemployment ~21%. Facts match.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm all material facts: Argentina's GDP contracted 10.9% in 2002 (Haver Analytics, economics commentary), following the December 2001 sovereign default and the early-2002 abandonment of the peso-dollar peg (devaluation). Poverty peaked around 57-57.5% of the population in 2002 per INDEC-sourced figures, and unemployment reached roughly 21% (21.5% cited in Wikipedia's 1998-2002 Argentine Great Depression article, sourced to contemporary reporting). This is part of the well-documented 1998-2002 Argentine Great Depression, described by multiple sources as the country's worst economic and social crisis in its democratic era. All details in the event (year, country, magnitude of GDP contraction, poverty rate, unemployment rate, causal link to 2001 default/devaluation) are corroborated.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -3044,8 +3309,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material facts: Argentina's GDP contracted 10.9% in 2002 (Haver Analytics, economics commentary), following the December 2001 sovereign default and the early-2002 abandonment of the peso-dollar peg (devaluation). Poverty peaked around 57-57.5% of the population in 2002 per INDEC-sourced figures, and unemployment reached roughly 21% (21.5% cited in Wikipedia's 1998-2002 Argentine Great Depression article, sourced to contemporary reporting). This is part of the well-documented 1998-2002 Argentine Great Depression, described by multiple sources as the country's worst economic and social crisis in its democratic era. All details in the event (year, country, magnitude of GDP contraction, poverty rate, unemployment rate, causal link to 2001 default/devaluation) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/1998%E2%80%932002_Argentine_great_depression",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/1998%E2%80%932002_Argentine_great_depression"
   },
   {
     "year": 2003,
@@ -3315,10 +3592,10 @@
     "year": 2008,
     "title": "Soy Export Tax Crisis — Agro-Business Conflict",
     "verdict": "TRUE",
-    "reason": "Resolution 125 variable export tax on soybeans. Four-month rural lockout. VP Cobos cast deciding Senate vote against. Facts match.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm all material facts: in March 2008 Cristina Fernández de Kirchner's government imposed Resolution 125, a variable/sliding-scale export tax on soybeans (raising the effective rate toward 44%), which triggered a roughly four-month nationwide rural lockout and roadblocks led by farm organizations (the 'Mesa de Enlace'), widely described as the most severe political conflict of the Kirchner era. The lower house narrowly passed the measure (129-122) but the Senate tied 36-36 on July 17, 2008, and Vice President Julio Cobos cast the deciding 'voto no positivo' (non-positive/against vote), defeating the government's own bill — the next day the government reversed the measure. Country, year, actors, mechanism, duration, and outcome all match the description materially.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -3332,17 +3609,29 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material facts: in March 2008 Cristina Fernández de Kirchner's government imposed Resolution 125, a variable/sliding-scale export tax on soybeans (raising the effective rate toward 44%), which triggered a roughly four-month nationwide rural lockout and roadblocks led by farm organizations (the 'Mesa de Enlace'), widely described as the most severe political conflict of the Kirchner era. The lower house narrowly passed the measure (129-122) but the Senate tied 36-36 on July 17, 2008, and Vice President Julio Cobos cast the deciding 'voto no positivo' (non-positive/against vote), defeating the government's own bill — the next day the government reversed the measure. Country, year, actors, mechanism, duration, and outcome all match the description materially.",
+        "source": "https://en.wikipedia.org/wiki/2008_Argentine_government_conflict_with_the_agricultural_sector",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/2008_Argentine_government_conflict_with_the_agricultural_sector"
   },
   {
     "year": 2008,
     "title": "Renationalization of Pension System",
     "verdict": "TRUE",
-    "reason": "November 2008. ~$30 billion in pension assets transferred to ANSES. Facts match.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm Argentina's private pension system (AFJP) was renationalized in 2008: President Cristina Fernández de Kirchner signed the bill on October 21, 2008; the Chamber of Deputies passed it in early November; the Senate approved it 46-18 on November 20, 2008; assets were transferred to the state ANSES fund (creating the Sustainability Guarantee Fund/FGS). Reported asset value at the time ranged $26-30 billion depending on exact valuation date, consistent with the description's $30 billion figure. The government's justification (protecting pensions from the global financial crisis) and critics' counter-accusation (using the funds to cover fiscal deficits and debt) are both corroborated by contemporaneous reporting from France24, Al Jazeera, and WSWS.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -3356,8 +3645,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Argentina's private pension system (AFJP) was renationalized in 2008: President Cristina Fernández de Kirchner signed the bill on October 21, 2008; the Chamber of Deputies passed it in early November; the Senate approved it 46-18 on November 20, 2008; assets were transferred to the state ANSES fund (creating the Sustainability Guarantee Fund/FGS). Reported asset value at the time ranged $26-30 billion depending on exact valuation date, consistent with the description's $30 billion figure. The government's justification (protecting pensions from the global financial crisis) and critics' counter-accusation (using the funds to cover fiscal deficits and debt) are both corroborated by contemporaneous reporting from France24, Al Jazeera, and WSWS.",
+        "source": "https://www.aljazeera.com/news/2008/11/21/argentina-passes-pension-takeover",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.aljazeera.com/news/2008/11/21/argentina-passes-pension-takeover"
   },
   {
     "year": 2009,
@@ -3483,10 +3784,10 @@
     "year": 2012,
     "title": "YPF Renationalization from Repsol",
     "verdict": "TRUE",
-    "reason": "April 2012. 51% nationalized from Repsol. Spain imposed sanctions. $5 billion compensation settled 2014. Facts match.",
-    "verify_count": 1,
+    "reason": "Confirmed via independent sources: In April 2012, Argentine President Cristina Fernández de Kirchner introduced and Congress approved legislation expropriating 51% of YPF (Argentina's largest energy firm), the shares taken primarily from Spain's Repsol, which had held a controlling stake. The stated justification was Repsol's underinvestment in oil exploration/production. Spain reacted with threats of trade retaliation, and the dispute was resolved in 2014 when Argentina agreed to pay Repsol approximately $5 billion in compensation (via sovereign bonds). All material details in the event description (country, year, magnitude 51%, target company Repsol, stated rationale, congressional approval, Spanish reaction, and 2014 $5B settlement) are corroborated by multiple independent sources including Wikipedia's 'Renationalization of YPF' article, Americas Quarterly, Buenos Aires Times, and the Seven Pillars Institute case study.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -3500,8 +3801,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via independent sources: In April 2012, Argentine President Cristina Fernández de Kirchner introduced and Congress approved legislation expropriating 51% of YPF (Argentina's largest energy firm), the shares taken primarily from Spain's Repsol, which had held a controlling stake. The stated justification was Repsol's underinvestment in oil exploration/production. Spain reacted with threats of trade retaliation, and the dispute was resolved in 2014 when Argentina agreed to pay Repsol approximately $5 billion in compensation (via sovereign bonds). All material details in the event description (country, year, magnitude 51%, target company Repsol, stated rationale, congressional approval, Spanish reaction, and 2014 $5B settlement) are corroborated by multiple independent sources including Wikipedia's 'Renationalization of YPF' article, Americas Quarterly, Buenos Aires Times, and the Seven Pillars Institute case study.",
+        "source": "https://en.wikipedia.org/wiki/Renationalization_of_YPF",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Renationalization_of_YPF"
   },
   {
     "year": 2012,
@@ -3531,10 +3844,10 @@
     "year": 2013,
     "title": "Pope Francis — First Argentine Pope Elected",
     "verdict": "TRUE",
-    "reason": "13 March 2013. Cardinal Bergoglio of Buenos Aires. First pope from Americas, first Jesuit pope. Facts match.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm Cardinal Jorge Mario Bergoglio, Archbishop of Buenos Aires, Argentina, was elected Pope on March 13, 2013, during the second day of the 2013 papal conclave, taking the name Francis. He was the first pope from the Americas and the first Jesuit pope, matching all material details in the description (person, country of origin, date, title firsts). His subsequent influence on global social/environmental discourse (e.g., Laudato Si') is also well documented and consistent with the broader claim.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -3548,8 +3861,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Cardinal Jorge Mario Bergoglio, Archbishop of Buenos Aires, Argentina, was elected Pope on March 13, 2013, during the second day of the 2013 papal conclave, taking the name Francis. He was the first pope from the Americas and the first Jesuit pope, matching all material details in the description (person, country of origin, date, title firsts). His subsequent influence on global social/environmental discourse (e.g., Laudato Si') is also well documented and consistent with the broader claim.",
+        "source": "https://en.wikipedia.org/wiki/Pope_Francis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Pope_Francis"
   },
   {
     "year": 2014,
@@ -3747,10 +4072,10 @@
     "year": 2018,
     "title": "Argentina Seeks $57 Billion IMF Bailout — Largest in History",
     "verdict": "TRUE",
-    "reason": "June 2018. $57 billion (initially $50 billion, augmented to $57 billion in September 2018). Largest in IMF history. Peso lost over 50% in 2018. Facts match.",
-    "verify_count": 1,
+    "reason": "Confirmed via IMF's own records: on June 20, 2018 the IMF Executive Board approved the largest stand-by arrangement in Fund history for Argentina; after an October 2018 augmentation, access totaled $57 billion (1,227% of quota), with strict fiscal conditionality. Independently, CNBC/Al Jazeera/Wikipedia confirm the peso fell over 50% against the dollar during 2018 (51.85% down by late August alone, worsening further), driven by rising US interest rates and investor concern over Argentina's fiscal deficit — matching every material detail in the event description (country, year, dollar amount, 'largest in history' framing, trigger, and currency depreciation magnitude).",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -3764,8 +4089,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via IMF's own records: on June 20, 2018 the IMF Executive Board approved the largest stand-by arrangement in Fund history for Argentina; after an October 2018 augmentation, access totaled $57 billion (1,227% of quota), with strict fiscal conditionality. Independently, CNBC/Al Jazeera/Wikipedia confirm the peso fell over 50% against the dollar during 2018 (51.85% down by late August alone, worsening further), driven by rising US interest rates and investor concern over Argentina's fiscal deficit — matching every material detail in the event description (country, year, dollar amount, 'largest in history' framing, trigger, and currency depreciation magnitude).",
+        "source": "https://www.imf.org/en/news/articles/2021/12/22/pr21401-argentina",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.imf.org/en/news/articles/2021/12/22/pr21401-argentina"
   },
   {
     "year": 2018,
@@ -3842,11 +4179,11 @@
   {
     "year": 2019,
     "title": "New Peso Crisis and Capital Controls Reimposed",
-    "verdict": "TRUE",
-    "reason": "Peso lost ~25% in single day after August primary. Capital controls reimposed. Facts match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "Core event is real and correctly dated/placed: after Macri's crushing defeat to Alberto Fernández in the Aug 11, 2019 PASO primary, the peso and Argentine markets crashed, and Macri's government reimposed capital controls (announced Sept 1, 2019, effective Sept 2) — limiting individuals to $10,000/month in dollar purchases and forcing exporters to repatriate FX earnings — reversing the liberalization begun in 2015, with the country sliding toward what would become its 2020 default (a third default after 2001/2014). However, the magnitude detail is materially wrong: multiple contemporaneous, non-overlapping sources (Al Jazeera's Aug 12 2019 report citing Reuters-sourced data, CNN, CNBC) put the peso's single-day (close-to-close) loss at ~15% (peso closed 15.27% weaker at 53.5/USD vs 45.25 the prior session), not 25%. The peso did briefly plunge intraday to a record low of 65/USD (~30% off) before recovering to close ~15% down, and only lost 'about a quarter of its value' cumulatively over the following weeks of capital flight — not in a single day as the description states. Separately, the Merval stock index (not the peso) fell >30%/31% that day, which may be the source of the conflated '25%' figure in some later recaps (e.g., a Sept 2019 Al Jazeera piece). Capital controls also came about 3 weeks after the primary (Sept 1), not literally 'within days,' though this is a minor timing compression compared to the magnitude error. Because the single-day peso-loss figure is a specific, material, and incorrect number while country/year/overall narrative hold, this is a PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -3860,8 +4197,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core event is real and correctly dated/placed: after Macri's crushing defeat to Alberto Fernández in the Aug 11, 2019 PASO primary, the peso and Argentine markets crashed, and Macri's government reimposed capital controls (announced Sept 1, 2019, effective Sept 2) — limiting individuals to $10,000/month in dollar purchases and forcing exporters to repatriate FX earnings — reversing the liberalization begun in 2015, with the country sliding toward what would become its 2020 default (a third default after 2001/2014). However, the magnitude detail is materially wrong: multiple contemporaneous, non-overlapping sources (Al Jazeera's Aug 12 2019 report citing Reuters-sourced data, CNN, CNBC) put the peso's single-day (close-to-close) loss at ~15% (peso closed 15.27% weaker at 53.5/USD vs 45.25 the prior session), not 25%. The peso did briefly plunge intraday to a record low of 65/USD (~30% off) before recovering to close ~15% down, and only lost 'about a quarter of its value' cumulatively over the following weeks of capital flight — not in a single day as the description states. Separately, the Merval stock index (not the peso) fell >30%/31% that day, which may be the source of the conflated '25%' figure in some later recaps (e.g., a Sept 2019 Al Jazeera piece). Capital controls also came about 3 weeks after the primary (Sept 1), not literally 'within days,' though this is a minor timing compression compared to the magnitude error. Because the single-day peso-loss figure is a specific, material, and incorrect number while country/year/overall narrative hold, this is a PARTIAL rather than TRUE.",
+        "source": "https://www.aljazeera.com/economy/2019/8/12/argentina-peso-plunges-after-voters-punish-macri-at-polls",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.aljazeera.com/economy/2019/8/12/argentina-peso-plunges-after-voters-punish-macri-at-polls"
   },
   {
     "year": 2020,
@@ -4131,10 +4480,10 @@
     "year": 2023,
     "title": "Inflation Reaches 211% — Historic Crisis",
     "verdict": "TRUE",
-    "reason": "211.4% annual inflation in 2023. Highest since 1990 hyperinflation. December monthly rates >25%. Facts match.",
-    "verify_count": 1,
+    "reason": "Multiple independent reputable sources (Reuters/Seattle Times, Bloomberg, Yahoo Finance/Reuters citing Argentina's INDEC) confirm Argentina's annual inflation hit 211.4% in 2023, the highest since the early-1990s hyperinflation era. December 2023 monthly inflation was ~25.5%, consistent with 'exceeding 25%'. The peso underwent a sharp ~50% devaluation and multiple exchange-rate distortions were widely reported during this period. The crisis is consistently cited as a major driver of Javier Milei's November 2023 electoral victory. All material details in the event description are corroborated; year and country hold.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -4148,8 +4497,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent reputable sources (Reuters/Seattle Times, Bloomberg, Yahoo Finance/Reuters citing Argentina's INDEC) confirm Argentina's annual inflation hit 211.4% in 2023, the highest since the early-1990s hyperinflation era. December 2023 monthly inflation was ~25.5%, consistent with 'exceeding 25%'. The peso underwent a sharp ~50% devaluation and multiple exchange-rate distortions were widely reported during this period. The crisis is consistently cited as a major driver of Javier Milei's November 2023 electoral victory. All material details in the event description are corroborated; year and country hold.",
+        "source": "https://www.bloomberg.com/news/articles/2024-01-11/argentina-inflation-hits-211-in-2023-fastest-in-three-decades",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.bloomberg.com/news/articles/2024-01-11/argentina-inflation-hits-211-in-2023-fastest-in-three-decades"
   },
   {
     "year": 2023,
@@ -4251,10 +4612,10 @@
     "year": 2024,
     "title": "General Strike Against Milei Economic Program",
     "verdict": "TRUE",
-    "reason": "January 2024 general strike (first since 2019). Second strike in May 2024. Facts match.",
-    "verify_count": 1,
+    "reason": "Multiple independent, reputable sources confirm: (1) CGT (Argentina's largest labor federation) led a general strike on January 24, 2024, the first general strike in Argentina since 2019, against Milei's shock economic program, deregulation, and devaluation, just 45 days into his term, with over 1.5 million participating and major cities affected; (2) a second general strike was called and held on May 9, 2024, again led by CGT/CTA unions, in defense of labor rights against austerity, with significant economic impact (halted transit, flights cancelled, ~1.1% of GDP lost). This matches the event description's claims on country, year, actor, scope, and the two-strike timeline.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -4268,8 +4629,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, reputable sources confirm: (1) CGT (Argentina's largest labor federation) led a general strike on January 24, 2024, the first general strike in Argentina since 2019, against Milei's shock economic program, deregulation, and devaluation, just 45 days into his term, with over 1.5 million participating and major cities affected; (2) a second general strike was called and held on May 9, 2024, again led by CGT/CTA unions, in defense of labor rights against austerity, with significant economic impact (halted transit, flights cancelled, ~1.1% of GDP lost). This matches the event description's claims on country, year, actor, scope, and the two-strike timeline.",
+        "source": "https://www.cnbc.com/2024/01/24/argentina-strike-poses-major-battle-to-mileis-shock-economic-agenda.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://www.cnbc.com/2024/01/24/argentina-strike-poses-major-battle-to-mileis-shock-economic-agenda.html"
   },
   {
     "year": 2024,

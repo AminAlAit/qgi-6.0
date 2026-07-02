@@ -228,12 +228,12 @@
     "year": 2003,
     "title": "First Crude Oil Exported via Chad-Cameroon Pipeline",
     "verdict": "TRUE",
-    "reason": "First crude oil loaded on 3 October 2003 from the FSO vessel offshore Kribi, Cameroon. Year and core facts confirmed.",
-    "verify_count": 1,
+    "reason": "Independently corroborated: Chad's first crude oil cargo (950,000 bbl) was loaded on 3 October 2003 from the FSO vessel offshore Kribi, Cameroon, via the newly completed Chad-Cameroon pipeline, marking Chad's entry into oil export markets. Oil & Gas Journal (non-Wikipedia, industry trade press) confirms the date and volume; this is corroborated by additional independent sources found in search (Chevron corporate press release on \"First Oil Operations,\" World Bank project documentation, American Diplomacy magazine's October 2003 contemporaneous article, and Global Energy Monitor's project page). The description's claim that oil revenues transformed Chad's fiscal position and became a source of political controversy over fund management is also well-documented (World Bank-mandated revenue management law, later disputes/2005-06 amendment fights are widely reported in later sources). Year and country match exactly; no material detail is off.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -245,9 +245,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated: Chad's first crude oil cargo (950,000 bbl) was loaded on 3 October 2003 from the FSO vessel offshore Kribi, Cameroon, via the newly completed Chad-Cameroon pipeline, marking Chad's entry into oil export markets. Oil & Gas Journal (non-Wikipedia, industry trade press) confirms the date and volume; this is corroborated by additional independent sources found in search (Chevron corporate press release on \"First Oil Operations,\" World Bank project documentation, American Diplomacy magazine's October 2003 contemporaneous article, and Global Energy Monitor's project page). The description's claim that oil revenues transformed Chad's fiscal position and became a source of political controversy over fund management is also well-documented (World Bank-mandated revenue management law, later disputes/2005-06 amendment fights are widely reported in later sources). Year and country match exactly; no material detail is off.",
+        "source": "https://www.ogj.com/general-interest/companies/article/17256608/exxonmobil-chad-cameroon-oil-pipeline-in-service",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Chad%E2%80%93Cameroon_Petroleum_Development_and_Pipeline_Project"
+    "source": "https://www.ogj.com/general-interest/companies/article/17256608/exxonmobil-chad-cameroon-oil-pipeline-in-service"
   },
   {
     "year": 2004,

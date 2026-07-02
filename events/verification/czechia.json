@@ -103,12 +103,12 @@
     "year": 1953,
     "title": "Plzeň Workers' Uprising at Škoda Factory",
     "verdict": "TRUE",
-    "reason": "On June 1, 1953, workers at the Škoda Works in Plzeň led a major uprising against a punishing currency reform, storming the town hall and destroying Communist symbols. The revolt spread and was suppressed by armed forces with mass arrests.",
-    "verify_count": 1,
+    "reason": "Multiple independent, non-Wikipedia sources confirm the event materially as described: on May 31-June 2, 1953 (uprising began night of May 31/June 1), workers at the Škoda Works in Plzeň, Czechoslovakia, struck and marched in response to a punishing currency reform that devalued savings (50:1) and wages (5:1), over 20,000 workers stormed the town hall, threw out furniture and communist symbols/busts, burned a Soviet flag, and the regime suppressed the unrest violently (approx. 200 injured) with subsequent mass arrests documented in academic literature (Bray/Shriver/Adams 2019, Sage Journals; Cambridge Core article by Kevin McDermott). The broader detail that unrest spread to other Czechoslovak towns is consistent with established historiography of the June 1953 currency-reform protests, which were not confined to Plzeň alone.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -120,9 +120,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm the event materially as described: on May 31-June 2, 1953 (uprising began night of May 31/June 1), workers at the Škoda Works in Plzeň, Czechoslovakia, struck and marched in response to a punishing currency reform that devalued savings (50:1) and wages (5:1), over 20,000 workers stormed the town hall, threw out furniture and communist symbols/busts, burned a Soviet flag, and the regime suppressed the unrest violently (approx. 200 injured) with subsequent mass arrests documented in academic literature (Bray/Shriver/Adams 2019, Sage Journals; Cambridge Core article by Kevin McDermott). The broader detail that unrest spread to other Czechoslovak towns is consistent with established historiography of the June 1953 currency-reform protests, which were not confined to Plzeň alone.",
+        "source": "https://enrs.eu/news/plzen-uprising-of-1953",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Plze%C5%88_uprising_of_1953"
+    "source": "https://enrs.eu/news/plzen-uprising-of-1953"
   },
   {
     "year": 1955,
@@ -903,12 +914,12 @@
     "year": 1994,
     "title": "Banking and Privatization Scandals Undermine Czech 'Economic Miracle'",
     "verdict": "TRUE",
-    "reason": "In early 1994, three bank failures (Industrial Credit Bank, AB Bank, Bank of Bohemia) occurred, and systemic abuses in voucher privatization investment funds became apparent. Scandals including Viktor Kožený's siphoning of fund assets eroded the Czech 'economic miracle' narrative.",
-    "verify_count": 1,
+    "reason": "Independent sources confirm the core claims. (1) Banka Bohemia scandal: the Czech National Bank held an extraordinary board meeting on March 11, 1994 after Reuters exposed that Banka Bohemia had issued ~$1.2bn in fraudulent bank guarantees (nearly 40x its capital); its trading license was revoked and it entered liquidation on July 1, 1994, per contemporaneous Czech weekly Respekt (1994 issues #12, #14, #47) — this was the first major international banking scandal involving a Czech bank since 1989. (2) AB Banka also ran into serious problems in 1994, part of the wave of small-bank failures (Banka Bohemia and AB Banka in 1994, followed by more in 1995-96). (3) Voucher-privatization investment-fund asset-stripping (\"tunneling\") was already a live public scandal in 1994: a contemporaneous UPI wire story (Feb 28, 1994) covers the president of Harvard Capital & Consulting (Viktor Kožený's fund empire), which had attracted ~800,000 small investors' vouchers and was later shown to have stripped assets and moved money offshore. Together these confirm that in 1994 Czech banking-sector fraud and privatization-fund abuses were publicly emerging and beginning to tarnish the internationally-touted \"Czech economic miracle\" narrative, materially matching the event description. Sole caveat: the very largest fund-collapse losses (e.g., Trend/CS Fondy, ~750,000 Czechs affected) are documented for 1996-97, so \"several banks and funds collapsed\" describes a process that continued to escalate after 1994, but the onset/eruption described is correctly dated to 1994.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -920,20 +931,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm the core claims. (1) Banka Bohemia scandal: the Czech National Bank held an extraordinary board meeting on March 11, 1994 after Reuters exposed that Banka Bohemia had issued ~$1.2bn in fraudulent bank guarantees (nearly 40x its capital); its trading license was revoked and it entered liquidation on July 1, 1994, per contemporaneous Czech weekly Respekt (1994 issues #12, #14, #47) — this was the first major international banking scandal involving a Czech bank since 1989. (2) AB Banka also ran into serious problems in 1994, part of the wave of small-bank failures (Banka Bohemia and AB Banka in 1994, followed by more in 1995-96). (3) Voucher-privatization investment-fund asset-stripping (\"tunneling\") was already a live public scandal in 1994: a contemporaneous UPI wire story (Feb 28, 1994) covers the president of Harvard Capital & Consulting (Viktor Kožený's fund empire), which had attracted ~800,000 small investors' vouchers and was later shown to have stripped assets and moved money offshore. Together these confirm that in 1994 Czech banking-sector fraud and privatization-fund abuses were publicly emerging and beginning to tarnish the internationally-touted \"Czech economic miracle\" narrative, materially matching the event description. Sole caveat: the very largest fund-collapse losses (e.g., Trend/CS Fondy, ~750,000 Czechs affected) are documented for 1996-97, so \"several banks and funds collapsed\" describes a process that continued to escalate after 1994, but the onset/eruption described is correctly dated to 1994.",
+        "source": "https://www.respekt.cz/tydenik/1994/12/banka-bohemia-rozjela-hru-o-miliardy",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://dl.tufts.edu/downloads/ns064j05f?filename=44558r16f.pdf"
+    "source": "https://www.respekt.cz/tydenik/1994/12/banka-bohemia-rozjela-hru-o-miliardy"
   },
   {
     "year": 1995,
     "title": "Czech Republic Joins OECD as First Post-Communist Member",
     "verdict": "TRUE",
-    "reason": "The Czech Republic formally acceded to the OECD on December 21, 1995, becoming its 26th member and the first post-Communist country to join this club of wealthy market democracies. This validated the Czech Republic's economic transition.",
-    "verify_count": 1,
+    "reason": "Multiple independent (non-oecd.org) sources confirm the Czech Republic became an OECD member on 21 December 1995 (the 26th member), via deposit of the instrument of accession. Wikipedia and the Czech Ministry of Foreign Affairs (mzv.gov.cz) both confirm the December 1995 date. An independent ITCILO training document listing OECD accession dates shows the ordering: Mexico (1994, not post-communist), Czech Republic (1995), then Hungary (May 1996) and Poland (November 1996) — the other former Eastern Bloc 'Partners in Transition' countries. This confirms the Czech Republic was indeed the first former-communist country to join the OECD, ahead of Hungary and Poland who joined roughly a year later. All material details (country, year, month, 'first post-communist member' claim) check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -945,9 +967,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent (non-oecd.org) sources confirm the Czech Republic became an OECD member on 21 December 1995 (the 26th member), via deposit of the instrument of accession. Wikipedia and the Czech Ministry of Foreign Affairs (mzv.gov.cz) both confirm the December 1995 date. An independent ITCILO training document listing OECD accession dates shows the ordering: Mexico (1994, not post-communist), Czech Republic (1995), then Hungary (May 1996) and Poland (November 1996) — the other former Eastern Bloc 'Partners in Transition' countries. This confirms the Czech Republic was indeed the first former-communist country to join the OECD, ahead of Hungary and Poland who joined roughly a year later. All material details (country, year, month, 'first post-communist member' claim) check out.",
+        "source": "https://en.wikipedia.org/wiki/Czech_Republic",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.oecd.org/czech/czech-republic-and-oecd.htm"
+    "source": "https://en.wikipedia.org/wiki/Czech_Republic"
   },
   {
     "year": 1997,

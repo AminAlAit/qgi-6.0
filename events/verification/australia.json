@@ -483,10 +483,10 @@
     "year": 2005,
     "title": "Cronulla Riots Expose Ethnic Tensions in Sydney",
     "verdict": "TRUE",
-    "reason": "Riots began 11 December 2005 in Cronulla between Anglo-Australian and Middle Eastern heritage youth. Emergency powers and national debate followed.",
-    "verify_count": 1,
+    "reason": "Web search confirms the 2005 Cronulla riots occurred 11 December 2005 in Sydney's Cronulla beach suburb and spread to neighbouring suburbs. Racially motivated mob violence erupted between groups mobilized via mass text messages, targeting people of Middle Eastern (Lebanese) heritage, following an earlier altercation between Middle Eastern youths and lifeguards. Approximately 5,000 gathered, 26 injured, 104 arrested, 285 charges laid; NSW granted police emergency powers to quell the unrest. The event triggered widespread national debate about multiculturalism, integration, and social tensions in Australia, exactly as described. Country (Australia), year (2005), and material details (mob violence, Anglo-Australian vs Middle Eastern heritage youths, emergency powers, multiculturalism debate) all match.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -500,17 +500,29 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Web search confirms the 2005 Cronulla riots occurred 11 December 2005 in Sydney's Cronulla beach suburb and spread to neighbouring suburbs. Racially motivated mob violence erupted between groups mobilized via mass text messages, targeting people of Middle Eastern (Lebanese) heritage, following an earlier altercation between Middle Eastern youths and lifeguards. Approximately 5,000 gathered, 26 injured, 104 arrested, 285 charges laid; NSW granted police emergency powers to quell the unrest. The event triggered widespread national debate about multiculturalism, integration, and social tensions in Australia, exactly as described. Country (Australia), year (2005), and material details (mob violence, Anglo-Australian vs Middle Eastern heritage youths, emergency powers, multiculturalism debate) all match.",
+        "source": "https://en.wikipedia.org/wiki/2005_Cronulla_riots",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/2005_Cronulla_riots"
   },
   {
     "year": 2005,
     "title": "WorkChoices Industrial Relations Reform Enacted",
     "verdict": "TRUE",
-    "reason": "Workplace Relations Amendment (Work Choices) Act passed November 2005. Major union protests; central issue in 2007 election.",
-    "verify_count": 1,
+    "reason": "The Workplace Relations Amendment (Work Choices) Act 2005 was passed by the Howard government (House 10 Nov 2005, Senate 2 Dec 2005, Royal Assent 14 Dec 2005), deregulating labour relations by curbing union power and the industrial relations tribunal's role. It triggered massive union-led protests, including the ACTU's 'Your Rights at Work' campaign and a national day of action on 15 Nov 2005 with hundreds of thousands of participants, and became a central issue in the 2007 federal election, contributing to Howard's defeat. All material details (country, year, actor, scope, consequences) match.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -524,8 +536,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "The Workplace Relations Amendment (Work Choices) Act 2005 was passed by the Howard government (House 10 Nov 2005, Senate 2 Dec 2005, Royal Assent 14 Dec 2005), deregulating labour relations by curbing union power and the industrial relations tribunal's role. It triggered massive union-led protests, including the ACTU's 'Your Rights at Work' campaign and a national day of action on 15 Nov 2005 with hundreds of thousands of participants, and became a central issue in the 2007 federal election, contributing to Howard's defeat. All material details (country, year, actor, scope, consequences) match.",
+        "source": "https://en.wikipedia.org/wiki/WorkChoices",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/WorkChoices"
   },
   {
     "year": 2007,
@@ -579,10 +603,10 @@
     "year": 2008,
     "title": "Global Financial Crisis Tests Australian Economy",
     "verdict": "TRUE",
-    "reason": "Australia avoided recession. Stimulus packages totalled ~$52.4 billion (event says 'over 50 billion' — correct). Chinese demand and stimulus both credited.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm all material elements: Australia was among a small handful of OECD/developed economies to avoid a technical recession (two consecutive quarters of negative GDP growth) during the 2008-09 GFC, with only one negative quarter (Dec 2008, -0.5%). Analysts attribute this to rapid RBA rate cuts, continued Chinese demand for resources (iron ore/mining exports), and the Rudd government's fiscal stimulus. The Rudd government's stimulus packages are well documented: an initial $10.4 billion package (Oct/Dec 2008) plus a $42 billion Nation Building and Jobs Plan (Feb 2009) sum to about $52.4 billion — matching 'totalling over 50 billion dollars' (some broader tallies across all five 2008-09 stimulus initiatives put the figure even higher, up to ~$75bn). Year/country/category all hold; description is materially accurate.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
@@ -596,8 +620,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material elements: Australia was among a small handful of OECD/developed economies to avoid a technical recession (two consecutive quarters of negative GDP growth) during the 2008-09 GFC, with only one negative quarter (Dec 2008, -0.5%). Analysts attribute this to rapid RBA rate cuts, continued Chinese demand for resources (iron ore/mining exports), and the Rudd government's fiscal stimulus. The Rudd government's stimulus packages are well documented: an initial $10.4 billion package (Oct/Dec 2008) plus a $42 billion Nation Building and Jobs Plan (Feb 2009) sum to about $52.4 billion — matching 'totalling over 50 billion dollars' (some broader tallies across all five 2008-09 stimulus initiatives put the figure even higher, up to ~$75bn). Year/country/category all hold; description is materially accurate.",
+        "source": "https://en.wikipedia.org/wiki/Great_Recession_in_Oceania",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Great_Recession_in_Oceania"
   },
   {
     "year": 2009,

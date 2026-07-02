@@ -53,12 +53,12 @@
     "year": 1953,
     "title": "Forced Agricultural Collectivization Reversed in Yugoslavia",
     "verdict": "TRUE",
-    "reason": "KPJ abandoned collectivization by spring 1953. Yugoslavia's uniqueness among socialist states confirmed.",
-    "verify_count": 1,
+    "reason": "Independent academic source (Michael Palairet, 'The mismanagement of the Yugoslav rural economy, 1945-1990', unpublished manuscript hosted by the European Stability Initiative) confirms: 'In March 1953, peasants were allowed to leave the collectives, and between 1952 and 1953, the number of collective farm members declined abruptly from 1.5 million to [~192,000]'. The same source shows cereal output (wheat/maize) rebounding sharply in 1953 from the disastrous 1952 harvest, and documents that by 1955 Yugoslavia had 2.32 million private peasant holdings covering ~90% of farm area, confirming restoration of private farming as described. This was a Yugoslavia-wide (federal) policy reversal applying to all constituent republics including Croatia, consistent with the country file. Additional corroboration from WebSearch results (H-Net review of Bokovoy's 'Peasants and Communists', and other academic abstracts, none Wikipedia) independently states 'By the spring of 1953, the KPJ had abandoned collectivization' and that Yugoslavia 'deviated from the Soviet collectivization pattern by abandoning collectivization in 1953... due to awareness that persistence... might harm their rule.' Year, core event (forced collectivization abandoned, private farming restored), and scope (Yugoslavia/Croatia) all check out. The 'unique among Eastern European states' framing is a mild simplification (Poland is sometimes cited as a comparable case, though its reversal came later in 1956) but does not rise to a material factual error, since Yugoslavia was first and most thorough in reversing collectivization and never resumed it.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -70,9 +70,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent academic source (Michael Palairet, 'The mismanagement of the Yugoslav rural economy, 1945-1990', unpublished manuscript hosted by the European Stability Initiative) confirms: 'In March 1953, peasants were allowed to leave the collectives, and between 1952 and 1953, the number of collective farm members declined abruptly from 1.5 million to [~192,000]'. The same source shows cereal output (wheat/maize) rebounding sharply in 1953 from the disastrous 1952 harvest, and documents that by 1955 Yugoslavia had 2.32 million private peasant holdings covering ~90% of farm area, confirming restoration of private farming as described. This was a Yugoslavia-wide (federal) policy reversal applying to all constituent republics including Croatia, consistent with the country file. Additional corroboration from WebSearch results (H-Net review of Bokovoy's 'Peasants and Communists', and other academic abstracts, none Wikipedia) independently states 'By the spring of 1953, the KPJ had abandoned collectivization' and that Yugoslavia 'deviated from the Soviet collectivization pattern by abandoning collectivization in 1953... due to awareness that persistence... might harm their rule.' Year, core event (forced collectivization abandoned, private farming restored), and scope (Yugoslavia/Croatia) all check out. The 'unique among Eastern European states' framing is a mild simplification (Poland is sometimes cited as a comparable case, though its reversal came later in 1956) but does not rise to a material factual error, since Yugoslavia was first and most thorough in reversing collectivization and never resumed it.",
+        "source": "https://www.esiweb.org/pdf/esi_bridges_id_3.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Collectivization_in_Yugoslavia"
+    "source": "https://www.esiweb.org/pdf/esi_bridges_id_3.pdf"
   },
   {
     "year": 1954,
@@ -403,12 +414,12 @@
     "year": 1980,
     "title": "Yugoslav Foreign Debt Crisis Hits Croatian Economy",
     "verdict": "TRUE",
-    "reason": "Yugoslav foreign debt crisis escalated from 1980 onward causing economic deterioration throughout the decade. Facts plausible and consistent with sources.",
-    "verify_count": 1,
+    "reason": "Multiple independent (non-Wikipedia) sources confirm: Yugoslavia's foreign debt reached ~$20 billion by 1980 (over a quarter of national income, ~20% of export revenue going to debt service), and deveconhub.com explicitly states 'the crisis in Yugoslavia began in 1980,' which set off a decade-long economic crisis marked by import restrictions, currency collapse (dinar fell from 15 to 1,370/USD by 1985), and declining real incomes/living standards throughout the 1980s. wsws.org corroborates the $20bn 1980 debt figure, the credit deregulation/collapse of investment for socially-owned enterprises, import quota cuts, and explicitly identifies Croatia as one of the industrialized northern republics affected by and resentful of the federal debt-driven austerity. Since Croatia was a constituent republic of Yugoslavia (no independent Croatian state existed until 1991), the federation-wide debt crisis, credit squeeze on socially-owned enterprises, import restrictions, and falling real wages did materially affect Croatian enterprises and workers as described. The 'market socialism without private ownership' structural critique is also well-attested in the literature on Yugoslavia's self-management system. Year, country-context, and substance all check out; this is a real, well-documented historical event.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -420,20 +431,31 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent (non-Wikipedia) sources confirm: Yugoslavia's foreign debt reached ~$20 billion by 1980 (over a quarter of national income, ~20% of export revenue going to debt service), and deveconhub.com explicitly states 'the crisis in Yugoslavia began in 1980,' which set off a decade-long economic crisis marked by import restrictions, currency collapse (dinar fell from 15 to 1,370/USD by 1985), and declining real incomes/living standards throughout the 1980s. wsws.org corroborates the $20bn 1980 debt figure, the credit deregulation/collapse of investment for socially-owned enterprises, import quota cuts, and explicitly identifies Croatia as one of the industrialized northern republics affected by and resentful of the federal debt-driven austerity. Since Croatia was a constituent republic of Yugoslavia (no independent Croatian state existed until 1991), the federation-wide debt crisis, credit squeeze on socially-owned enterprises, import restrictions, and falling real wages did materially affect Croatian enterprises and workers as described. The 'market socialism without private ownership' structural critique is also well-attested in the literature on Yugoslavia's self-management system. Year, country-context, and substance all check out; this is a real, well-documented historical event.",
+        "source": "https://deveconhub.com/the-myth-of-yugoslavia-living-on-debt/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Economy_of_Yugoslavia"
+    "source": "https://deveconhub.com/the-myth-of-yugoslavia-living-on-debt/"
   },
   {
     "year": 1986,
     "title": "Serbian Academy Memorandum Published — Croatian Alarm at Serbian Nationalism",
-    "verdict": "TRUE",
-    "reason": "SANU Memorandum draft leaked to Večernje novosti on September 24, 1986. Milošević's simultaneous rise confirmed. Croatian alarm response confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "verdict": "PARTIAL",
+    "reason": "The core event is confirmed by multiple independent, non-Wikipedia sources: the SANU (Serbian Academy of Sciences and Arts) Memorandum was leaked and excerpts published in Belgrade's Večernje novosti on September 24-25, 1986; the document articulated Serbian nationalist grievances including claims that Serbs in Kosovo and Croatia were persecuted/oppressed, and it caused broad alarm across Yugoslavia, being perceived by many as a blueprint for Serbian domination. Milošević was also elected head of the Serbian League of Communists in May 1986, concurrent with the leak, supporting the 'simultaneous rise' framing. However, the specific claim that 'Croatian politicians condemned the document' is not well supported and is actually contradicted by Croatian retrospective sources: multiple independent Croatian-language accounts (Kamenjar, Index.hr) state that the reaction of SR Croatia's own state-party leadership was 'lukewarm' in 1986, and that Croatian dissidents/intellectuals took no public action at the time, largely due to lingering repression from the 1971 Croatian Spring crackdown. The organized, vocal Croatian condemnation (the Croatian National Council/HNV rebuttal, 'Croatian Position on the SANU Memorandum') came a year later, in 1987, and from diaspora/emigration circles rather than domestic Croatian politicians. So while the memorandum, its 1986 leak, its Serb-nationalist content concerning Croatia/Kosovo, and general Yugoslav alarm are all verified, the specific actor/scope detail — 'Croatian politicians condemned' it in 1986 — appears overstated; the documented domestic Croatian political reaction at the time was muted rather than a sharp public condemnation.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -445,9 +467,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The core event is confirmed by multiple independent, non-Wikipedia sources: the SANU (Serbian Academy of Sciences and Arts) Memorandum was leaked and excerpts published in Belgrade's Večernje novosti on September 24-25, 1986; the document articulated Serbian nationalist grievances including claims that Serbs in Kosovo and Croatia were persecuted/oppressed, and it caused broad alarm across Yugoslavia, being perceived by many as a blueprint for Serbian domination. Milošević was also elected head of the Serbian League of Communists in May 1986, concurrent with the leak, supporting the 'simultaneous rise' framing. However, the specific claim that 'Croatian politicians condemned the document' is not well supported and is actually contradicted by Croatian retrospective sources: multiple independent Croatian-language accounts (Kamenjar, Index.hr) state that the reaction of SR Croatia's own state-party leadership was 'lukewarm' in 1986, and that Croatian dissidents/intellectuals took no public action at the time, largely due to lingering repression from the 1971 Croatian Spring crackdown. The organized, vocal Croatian condemnation (the Croatian National Council/HNV rebuttal, 'Croatian Position on the SANU Memorandum') came a year later, in 1987, and from diaspora/emigration circles rather than domestic Croatian politicians. So while the memorandum, its 1986 leak, its Serb-nationalist content concerning Croatia/Kosovo, and general Yugoslav alarm are all verified, the specific actor/scope detail — 'Croatian politicians condemned' it in 1986 — appears overstated; the documented domestic Croatian political reaction at the time was muted rather than a sharp public condemnation.",
+        "source": "https://kamenjar.com/memorandum-sanu-dok-su-neki-hrvatski-intelektualci-sutjeli-reagirala-je-nasa-brojna-politicka-emigracija/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/SANU_Memorandum"
+    "source": "https://kamenjar.com/memorandum-sanu-dok-su-neki-hrvatski-intelektualci-sutjeli-reagirala-je-nasa-brojna-politicka-emigracija/"
   },
   {
     "year": 1989,
@@ -1078,12 +1111,12 @@
     "year": 2014,
     "title": "Swiss Franc Mortgage Crisis — Government Orders Mandatory Loan Conversion",
     "verdict": "FALSE",
-    "reason": "The mandatory conversion law was passed by parliament in September 2015 (following the SNB franc uncapping in January 2015), not 2014. In 2014, loans were still accumulating but no government conversion was ordered. Year off by 1 and the described action belongs to 2015.",
-    "verify_count": 1,
+    "reason": "The event is real and materially matches the description (Croatian government mandated conversion of Swiss-franc mortgages to euros at favorable rates, costing banks billions to protect borrowers), but it did not happen in 2014. The triggering shock was the Swiss National Bank's abandonment of its CHF/EUR peg on 15 January 2015 ('Francogeddon'), which caused the franc to spike against the kuna. Croatia's government first fixed the CHF/HRK exchange rate by emergency amendment in January 2015, then passed the actual mandatory conversion-to-euro law in September 2015, effective 1 October 2015. Multiple independent sources (CNBC, Lexology, Lawyer Issue, bne IntelliNews, EU Parliament research brief) consistently place both the trigger and the legislative response in 2015, not 2014 — in 2014 the SNB peg was still intact and there was no franc-mortgage crisis in Croatia. Because the year is a join key that must be accurate, this is FALSE with corrected_year 2015.",
+    "verify_count": 2,
     "consensus_verdict": "FALSE",
-    "consensus_status": "single",
+    "consensus_status": "double_negative",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1095,9 +1128,21 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially matches the description (Croatian government mandated conversion of Swiss-franc mortgages to euros at favorable rates, costing banks billions to protect borrowers), but it did not happen in 2014. The triggering shock was the Swiss National Bank's abandonment of its CHF/EUR peg on 15 January 2015 ('Francogeddon'), which caused the franc to spike against the kuna. Croatia's government first fixed the CHF/HRK exchange rate by emergency amendment in January 2015, then passed the actual mandatory conversion-to-euro law in September 2015, effective 1 October 2015. Multiple independent sources (CNBC, Lexology, Lawyer Issue, bne IntelliNews, EU Parliament research brief) consistently place both the trigger and the legislative response in 2015, not 2014 — in 2014 the SNB peg was still intact and there was no franc-mortgage crisis in Croatia. Because the year is a join key that must be accurate, this is FALSE with corrected_year 2015.",
+        "source": "https://www.cnbc.com/2015/01/15/swiss-franc-sours-stocks-tank-as-euro-peg-scrapped.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        },
+        "corrected_year": 2015
       }
     ],
-    "source": "https://www.bloomberg.com/news/articles/2015-09-18/croatia-approves-swiss-franc-loan-law-after-banks-cry-foul"
+    "source": "https://www.cnbc.com/2015/01/15/swiss-franc-sours-stocks-tank-as-euro-peg-scrapped.html"
   },
   {
     "year": 2015,
@@ -1153,12 +1198,12 @@
     "year": 2017,
     "title": "Agrokor Crisis — Lex Agrokor Emergency Law Saves Croatia's Largest Company",
     "verdict": "TRUE",
-    "reason": "Lex Agrokor passed April 6/7, 2017. Agrokor accounted for ~15-16% of GDP; total debt ~€7.8 billion. 60,000 employees confirmed. Fortenova Group outcome confirmed.",
-    "verify_count": 1,
+    "reason": "Independently confirmed via Balkan Insight and other non-Wikipedia sources: Croatia's parliament adopted the 'Law on Procedures for Extraordinary Management in Companies of Systematic Significance' (nicknamed 'Lex Agrokor') on 6 April 2017 (83-46-2 vote), targeting Agrokor, Croatia's largest privately-owned company (~15-16% of GDP, ~60,000 employees per multiple sources). Following the law, on 10 April 2017 a Croatian court placed Agrokor and 50 affiliates under extraordinary administration. The debt figure of ~€7.8 billion matches state-appointed emergency administrator Ante Ramljak's October 2017 statement that overall group debt was about €7.81 billion (other snapshots at different points cite €5-7 billion, reflecting the evolving crisis). The restructuring culminated on 1 April 2019 when Agrokor's business/assets transferred to the new creditor-owned Fortenova Group, described by industry sources as one of the region's most complex corporate restructurings. All material details (country, year, law name, date, debt scale, employee count, GDP share, Fortenova outcome) check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1170,9 +1215,20 @@
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Balkan Insight and other non-Wikipedia sources: Croatia's parliament adopted the 'Law on Procedures for Extraordinary Management in Companies of Systematic Significance' (nicknamed 'Lex Agrokor') on 6 April 2017 (83-46-2 vote), targeting Agrokor, Croatia's largest privately-owned company (~15-16% of GDP, ~60,000 employees per multiple sources). Following the law, on 10 April 2017 a Croatian court placed Agrokor and 50 affiliates under extraordinary administration. The debt figure of ~€7.8 billion matches state-appointed emergency administrator Ante Ramljak's October 2017 statement that overall group debt was about €7.81 billion (other snapshots at different points cite €5-7 billion, reflecting the evolving crisis). The restructuring culminated on 1 April 2019 when Agrokor's business/assets transferred to the new creditor-owned Fortenova Group, described by industry sources as one of the region's most complex corporate restructurings. All material details (country, year, law name, date, debt scale, employee count, GDP share, Fortenova outcome) check out.",
+        "source": "https://balkaninsight.com/2017/04/07/croatia-agrokor-law-potentially-unconstitutional-04-06-2017/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Agrokor"
+    "source": "https://balkaninsight.com/2017/04/07/croatia-agrokor-law-potentially-unconstitutional-04-06-2017/"
   },
   {
     "year": 2018,
