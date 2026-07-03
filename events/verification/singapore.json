@@ -911,6 +911,42 @@
     "source": "https://en.wikipedia.org/wiki/Protection_from_Online_Falsehoods_and_Manipulation_Act_2019"
   },
   {
+    "year": 2019,
+    "title": "Singapore Implements Southeast Asia's First Carbon Tax",
+    "verdict": "TRUE",
+    "reason": "Singapore's National Climate Change Secretariat (NCCS, government of Singapore) confirms every material detail: carbon tax took effect January 1, 2019 at S$5/tCO2e, explicitly billed as \"the first carbon pricing scheme in Southeast Asia,\" established under the Carbon Pricing Act (Act 23/2018, independently corroborated by MSE.gov.sg and climate-laws.org), covering ~50 facilities in manufacturing, power, waste, and water sectors that together represent ~70% of national emissions. Rate trajectory also matches exactly: raised to S$25/tCO2e in 2024, targeting S$50-80/tCO2e by 2030. No material discrepancies found.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material details confirmed by independent, authoritative sources. Singapore's Carbon Pricing Act 2018 took effect January 1, 2019, imposing a carbon tax initially at S$5 per tonne CO2e (2019-2023), applying to ~50 facilities in manufacturing, power, waste and water sectors emitting at least 25,000 tCO2e annually, which together account for ~70% of Singapore's national emissions — consistent with official National Climate Change Secretariat (NCCS) and Ministry of Sustainability and the Environment (MSE) descriptions and widely cited as the first carbon tax in Southeast Asia. The later trajectory described (raised to S$25/tCO2e in 2024, targeting S$50-80 by 2030) is also independently confirmed via Budget 2022 announcements and subsequent NCCS updates.",
+        "source": "https://www.nccs.gov.sg/singapores-climate-action/mitigation-efforts/carbontax/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Singapore's National Climate Change Secretariat (NCCS, government of Singapore) confirms every material detail: carbon tax took effect January 1, 2019 at S$5/tCO2e, explicitly billed as \"the first carbon pricing scheme in Southeast Asia,\" established under the Carbon Pricing Act (Act 23/2018, independently corroborated by MSE.gov.sg and climate-laws.org), covering ~50 facilities in manufacturing, power, waste, and water sectors that together represent ~70% of national emissions. Rate trajectory also matches exactly: raised to S$25/tCO2e in 2024, targeting S$50-80/tCO2e by 2030. No material discrepancies found.",
+        "source": "https://www.nccs.gov.sg/singapores-climate-action/mitigation-efforts/carbontax/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.nccs.gov.sg/singapores-climate-action/mitigation-efforts/carbontax/"
+  },
+  {
     "year": 2020,
     "title": "COVID-19 Circuit Breaker Lockdown Imposed",
     "verdict": "TRUE",

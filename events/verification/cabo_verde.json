@@ -1,0 +1,38 @@
+[
+  {
+    "year": 2011,
+    "title": "Cabo Verde Adopts Roadmap to 100 Percent Renewable Electricity",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm the core facts: (1) In 2011 Cabo Verde enacted Decree-Law 1/2011, establishing the legal framework for independent power producers (IPPs) based on renewable energy to access, license, and feed electricity into the national grid (confirmed via Gesto Energy project page and IRENA regulatory document). (2) The Ministry of Tourism, Industry and Energy (MTIE) conducted a 2010-2011 study of the archipelago's wind and solar potential, compiled into the publication \"Cape Verde 50% Renewable: A Roadmap to 2020,\" published in 2011 (confirmed via African Power Platform, which hosts/describes the actual report, publisher MTIE, year 2011). (3) The government's overarching declared policy goal, set out in 2011, was 100% renewable electricity by 2020 (confirmed by futurepolicy.org, a World Future Council policy database entry titled \"100% Renewable Energy in the Global South - Cape Verde 2011,\" and by a UN DESA/SDG partnerships page describing Cabo Verde's \"ambitious plan... to achieve the 100% penetration of renewable energies... by 2020\"). (4) Actual renewable electricity share fell well short of 100% by 2020 (World Bank/trade.gov/IRENA data put it around 17-21% for most years post-2016, \"less than 20 percent\" per US ITA trade.gov guide), and Cabo Verde subsequently revised its targets (now 30% by 2025, 50% by 2030 per trade.gov and other sources) -- directionally matching the description's claim of falling short and prompting revised targets, though the description's \"roughly a quarter\" is a slightly generous rounding of the commonly cited ~17-21% figures. This is a minor magnitude imprecision in a secondary, retrospective sentence, not in the core dated policy-adoption event, so it does not change the verdict. All central claims (country, year, law, roadmap name, 100%-by-2020 target, underlying 2010-2011 study, later shortfall/revision) are corroborated by independent, non-overlapping sources (a project/regulatory tracker, a dedicated international policy database, a UN partnerships page, and a US government trade guide).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the core facts: (1) In 2011 Cabo Verde adopted Decree-Law 1/2011, establishing the legal framework for licensing and grid access of independent power producers (IPPs) generating from renewable energy sources (confirmed by IRENA's 'RE Regulatory Environment in Cabo Verde' presentation and Gesto Energy's project page). (2) In 2011 the government also published/finalized 'Cape Verde 50% Renewable: A Roadmap to 2020,' which, per futurepolicy.org (World Future Council), determined the country's renewable energy policy framework in greater detail, including a roadmap on how to reach a 100% renewable electricity target by 2020 — matching the event title and description almost exactly. (3) The roadmap was based on prior wind/solar resource assessment work (2010-2011 study referenced across multiple sources, e.g. Gesto Energy, IRENA statistical profile). (4) The outcome matches: multiple sources (africanbusinessmagazine.com, EU/UN documents) report Cabo Verde's renewable electricity share reached roughly 18-25% by around 2020 (short of the 100% and even the 50% goal), and targets were subsequently revised (e.g., 30% by 2025, 50% by 2030, or 100% pushed to 2040) — matching the description's claim that renewables reached 'roughly a quarter' and 'prompting later revised targets.' Year, country, actor (government), and all material details (law enabling IPP grid feed-in, roadmap name, 100%-by-2020 target, underperformance, revised targets) are corroborated by several independent, non-overlapping sources (futurepolicy.org, IRENA, Gesto Energy, African Power Platform, africanbusinessmagazine.com).",
+        "source": "https://www.futurepolicy.org/renewable-energies/100-renewable-energy-in-the-global-south-cape-verde-2011/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the core facts: (1) In 2011 Cabo Verde enacted Decree-Law 1/2011, establishing the legal framework for independent power producers (IPPs) based on renewable energy to access, license, and feed electricity into the national grid (confirmed via Gesto Energy project page and IRENA regulatory document). (2) The Ministry of Tourism, Industry and Energy (MTIE) conducted a 2010-2011 study of the archipelago's wind and solar potential, compiled into the publication \"Cape Verde 50% Renewable: A Roadmap to 2020,\" published in 2011 (confirmed via African Power Platform, which hosts/describes the actual report, publisher MTIE, year 2011). (3) The government's overarching declared policy goal, set out in 2011, was 100% renewable electricity by 2020 (confirmed by futurepolicy.org, a World Future Council policy database entry titled \"100% Renewable Energy in the Global South - Cape Verde 2011,\" and by a UN DESA/SDG partnerships page describing Cabo Verde's \"ambitious plan... to achieve the 100% penetration of renewable energies... by 2020\"). (4) Actual renewable electricity share fell well short of 100% by 2020 (World Bank/trade.gov/IRENA data put it around 17-21% for most years post-2016, \"less than 20 percent\" per US ITA trade.gov guide), and Cabo Verde subsequently revised its targets (now 30% by 2025, 50% by 2030 per trade.gov and other sources) -- directionally matching the description's claim of falling short and prompting revised targets, though the description's \"roughly a quarter\" is a slightly generous rounding of the commonly cited ~17-21% figures. This is a minor magnitude imprecision in a secondary, retrospective sentence, not in the core dated policy-adoption event, so it does not change the verdict. All central claims (country, year, law, roadmap name, 100%-by-2020 target, underlying 2010-2011 study, later shortfall/revision) are corroborated by independent, non-overlapping sources (a project/regulatory tracker, a dedicated international policy database, a UN partnerships page, and a US government trade guide).",
+        "source": "https://www.futurepolicy.org/renewable-energies/100-renewable-energy-in-the-global-south-cape-verde-2011/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.futurepolicy.org/renewable-energies/100-renewable-energy-in-the-global-south-cape-verde-2011/"
+  }
+]

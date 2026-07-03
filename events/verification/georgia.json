@@ -1,31 +1,6 @@
 [
   {
     "year": 1990,
-    "title": "Georgia Declares State Sovereignty from the Soviet Union",
-    "verdict": "TRUE",
-    "reason": "The Supreme Soviet of the Georgian SSR adopted the sovereignty resolution on 9 March 1990, condemning the 1921 Soviet annexation as illegal. Date and framing confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Supreme Soviet of the Georgian SSR adopted the sovereignty resolution on 9 March 1990, condemning the 1921 Soviet annexation as illegal. Date and framing confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Declaration_of_State_Sovereignty_of_Georgia",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Declaration_of_State_Sovereignty_of_Georgia"
-  },
-  {
-    "year": 1990,
     "title": "First Multi-Party Elections in Soviet Georgia",
     "verdict": "TRUE",
     "reason": "Elections held 28 October 1990 (second round 11 November). Round Table–Free Georgia led by Gamsakhurdia won 155 of 250 seats. All facts confirmed.",
@@ -50,10 +25,10 @@
     "source": "https://en.wikipedia.org/wiki/1990_Georgian_Supreme_Soviet_election"
   },
   {
-    "year": 1991,
-    "title": "South Ossetia Conflict Erupts into Armed Clashes",
+    "year": 1990,
+    "title": "Georgia Declares State Sovereignty from the Soviet Union",
     "verdict": "TRUE",
-    "reason": "Armed conflict began January 1991 after Georgia abolished South Ossetia's autonomous status in December 1990 (not 1991 as implied). The autonomous status revocation was late 1990; fighting started January 1991. Description is essentially correct.",
+    "reason": "The Supreme Soviet of the Georgian SSR adopted the sovereignty resolution on 9 March 1990, condemning the 1921 Soviet annexation as illegal. Date and framing confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -63,8 +38,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Armed conflict began January 1991 after Georgia abolished South Ossetia's autonomous status in December 1990 (not 1991 as implied). The autonomous status revocation was late 1990; fighting started January 1991. Description is essentially correct.",
-        "source": "https://en.wikipedia.org/wiki/South_Ossetia_war_(1991%E2%80%931992)",
+        "reason": "The Supreme Soviet of the Georgian SSR adopted the sovereignty resolution on 9 March 1990, condemning the 1921 Soviet annexation as illegal. Date and framing confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Declaration_of_State_Sovereignty_of_Georgia",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -72,32 +47,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/South_Ossetia_war_(1991%E2%80%931992)"
-  },
-  {
-    "year": 1991,
-    "title": "Independence Referendum Approved by 99% of Voters",
-    "verdict": "TRUE",
-    "reason": "Held 31 March 1991. Official result 98.9–99.5% in favor (minor source variation), turnout 90.6%. The title says '99%' which matches rounded official figures.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Held 31 March 1991. Official result 98.9–99.5% in favor (minor source variation), turnout 90.6%. The title says '99%' which matches rounded official figures.",
-        "source": "https://en.wikipedia.org/wiki/1991_Georgian_independence_referendum",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1991_Georgian_independence_referendum"
+    "source": "https://en.wikipedia.org/wiki/Declaration_of_State_Sovereignty_of_Georgia"
   },
   {
     "year": 1991,
@@ -126,6 +76,56 @@
   },
   {
     "year": 1991,
+    "title": "Independence Referendum Approved by 99% of Voters",
+    "verdict": "TRUE",
+    "reason": "Held 31 March 1991. Official result 98.9–99.5% in favor (minor source variation), turnout 90.6%. The title says '99%' which matches rounded official figures.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Held 31 March 1991. Official result 98.9–99.5% in favor (minor source variation), turnout 90.6%. The title says '99%' which matches rounded official figures.",
+        "source": "https://en.wikipedia.org/wiki/1991_Georgian_independence_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1991_Georgian_independence_referendum"
+  },
+  {
+    "year": 1991,
+    "title": "South Ossetia Conflict Erupts into Armed Clashes",
+    "verdict": "TRUE",
+    "reason": "Armed conflict began January 1991 after Georgia abolished South Ossetia's autonomous status in December 1990 (not 1991 as implied). The autonomous status revocation was late 1990; fighting started January 1991. Description is essentially correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Armed conflict began January 1991 after Georgia abolished South Ossetia's autonomous status in December 1990 (not 1991 as implied). The autonomous status revocation was late 1990; fighting started January 1991. Description is essentially correct.",
+        "source": "https://en.wikipedia.org/wiki/South_Ossetia_war_(1991%E2%80%931992)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/South_Ossetia_war_(1991%E2%80%931992)"
+  },
+  {
+    "year": 1991,
     "title": "Zviad Gamsakhurdia Elected First President of Georgia",
     "verdict": "TRUE",
     "reason": "Election held 26 May 1991. Gamsakhurdia received 86–88% depending on source (event says 86%, within range). Confirmed as first direct presidential election.",
@@ -151,31 +151,6 @@
   },
   {
     "year": 1992,
-    "title": "Military Coup Overthrows President Gamsakhurdia",
-    "verdict": "TRUE",
-    "reason": "Coup ran 22 December 1991 to 6 January 1992. Kitovani and Ioseliani led the paramilitary forces. Gamsakhurdia fled 2 January 1992. Military Council took power. All facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Coup ran 22 December 1991 to 6 January 1992. Kitovani and Ioseliani led the paramilitary forces. Gamsakhurdia fled 2 January 1992. Military Council took power. All facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1991%E2%80%931992_Georgian_coup_d%27%C3%A9tat",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1991%E2%80%931992_Georgian_coup_d%27%C3%A9tat"
-  },
-  {
-    "year": 1992,
     "title": "Eduard Shevardnadze Returns to Lead Georgia",
     "verdict": "TRUE",
     "reason": "Shevardnadze returned March 1992 and was appointed head of the State Council. Former Soviet Foreign Minister framing confirmed.",
@@ -198,6 +173,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Eduard_Shevardnadze"
+  },
+  {
+    "year": 1992,
+    "title": "Military Coup Overthrows President Gamsakhurdia",
+    "verdict": "TRUE",
+    "reason": "Coup ran 22 December 1991 to 6 January 1992. Kitovani and Ioseliani led the paramilitary forces. Gamsakhurdia fled 2 January 1992. Military Council took power. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Coup ran 22 December 1991 to 6 January 1992. Kitovani and Ioseliani led the paramilitary forces. Gamsakhurdia fled 2 January 1992. Military Council took power. All facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1991%E2%80%931992_Georgian_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1991%E2%80%931992_Georgian_coup_d%27%C3%A9tat"
   },
   {
     "year": 1992,
@@ -351,31 +351,6 @@
   },
   {
     "year": 1995,
-    "title": "New Constitution Adopted Establishing Presidential Republic",
-    "verdict": "TRUE",
-    "reason": "Constitution adopted by parliament on 24 August 1995 by 159–8 vote, entered into force 17 October 1995. All facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Constitution adopted by parliament on 24 August 1995 by 159–8 vote, entered into force 17 October 1995. All facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Constitution_of_Georgia_(country)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Constitution_of_Georgia_(country)"
-  },
-  {
-    "year": 1995,
     "title": "Georgian Lari Replaces Hyperinflated Coupon Currency",
     "verdict": "TRUE",
     "reason": "The lari was introduced 25 September 1995 (not October 2 as stated in the event — October 2 was the date coins entered circulation). Exchange rate 1 lari = 1,000,000 coupons confirmed. Minor date discrepancy; year is correct.",
@@ -398,6 +373,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Georgian_lari"
+  },
+  {
+    "year": 1995,
+    "title": "New Constitution Adopted Establishing Presidential Republic",
+    "verdict": "TRUE",
+    "reason": "Constitution adopted by parliament on 24 August 1995 by 159–8 vote, entered into force 17 October 1995. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitution adopted by parliament on 24 August 1995 by 159–8 vote, entered into force 17 October 1995. All facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_Georgia_(country)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Constitution_of_Georgia_(country)"
   },
   {
     "year": 1995,
@@ -526,31 +526,6 @@
   },
   {
     "year": 2004,
-    "title": "Mikheil Saakashvili Inaugurated as President",
-    "verdict": "TRUE",
-    "reason": "Inaugurated 25 January 2004, elected 4 January 2004 with 96% of vote. Event states he was 36; he was 36 at election and 37 at inauguration (born 21 December 1967). Minor age discrepancy. Described as 'youngest European head of state' — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Inaugurated 25 January 2004, elected 4 January 2004 with 96% of vote. Event states he was 36; he was 36 at election and 37 at inauguration (born 21 December 1967). Minor age discrepancy. Described as 'youngest European head of state' — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2004_Georgian_presidential_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2004_Georgian_presidential_election"
-  },
-  {
-    "year": 2004,
     "title": "Ajara Crisis Resolved Peacefully Under Saakashvili",
     "verdict": "TRUE",
     "reason": "May 2004 crisis; Abashidze fled to Russia; central authority restored without bloodshed. All facts confirmed.",
@@ -573,6 +548,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2004_Adjara_crisis"
+  },
+  {
+    "year": 2004,
+    "title": "Mikheil Saakashvili Inaugurated as President",
+    "verdict": "TRUE",
+    "reason": "Inaugurated 25 January 2004, elected 4 January 2004 with 96% of vote. Event states he was 36; he was 36 at election and 37 at inauguration (born 21 December 1967). Minor age discrepancy. Described as 'youngest European head of state' — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Inaugurated 25 January 2004, elected 4 January 2004 with 96% of vote. Event states he was 36; he was 36 at election and 37 at inauguration (born 21 December 1967). Minor age discrepancy. Described as 'youngest European head of state' — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2004_Georgian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2004_Georgian_presidential_election"
   },
   {
     "year": 2004,
@@ -701,6 +701,56 @@
   },
   {
     "year": 2008,
+    "title": "NATO Bucharest Summit Promises Future Membership for Georgia",
+    "verdict": "TRUE",
+    "reason": "April 2008 Bucharest summit declared Georgia and Ukraine would eventually become NATO members but denied MAP. Considered a factor in the August war. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 2008 Bucharest summit declared Georgia and Ukraine would eventually become NATO members but denied MAP. Considered a factor in the August war. All facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2008_Bucharest_summit",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2008_Bucharest_summit"
+  },
+  {
+    "year": 2008,
+    "title": "Russia Recognizes Independence of Abkhazia and South Ossetia",
+    "verdict": "TRUE",
+    "reason": "Russia recognized both territories on 26 August 2008 and established permanent military bases. International community condemned the move. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Russia recognized both territories on 26 August 2008 and established permanent military bases. International community condemned the move. All facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/International_recognition_of_Abkhazia_and_South_Ossetia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/International_recognition_of_Abkhazia_and_South_Ossetia"
+  },
+  {
+    "year": 2008,
     "title": "Russia-Georgia War Over South Ossetia",
     "verdict": "TRUE",
     "reason": "War began 7–8 August 2008; five days of fighting; Russian forces advanced toward Tbilisi; French-brokered ceasefire. All facts confirmed.",
@@ -748,56 +798,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Russo-Georgian_War"
-  },
-  {
-    "year": 2008,
-    "title": "Russia Recognizes Independence of Abkhazia and South Ossetia",
-    "verdict": "TRUE",
-    "reason": "Russia recognized both territories on 26 August 2008 and established permanent military bases. International community condemned the move. All facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Russia recognized both territories on 26 August 2008 and established permanent military bases. International community condemned the move. All facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/International_recognition_of_Abkhazia_and_South_Ossetia",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/International_recognition_of_Abkhazia_and_South_Ossetia"
-  },
-  {
-    "year": 2008,
-    "title": "NATO Bucharest Summit Promises Future Membership for Georgia",
-    "verdict": "TRUE",
-    "reason": "April 2008 Bucharest summit declared Georgia and Ukraine would eventually become NATO members but denied MAP. Considered a factor in the August war. All facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "April 2008 Bucharest summit declared Georgia and Ukraine would eventually become NATO members but denied MAP. Considered a factor in the August war. All facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2008_Bucharest_summit",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2008_Bucharest_summit"
   },
   {
     "year": 2009,
@@ -1001,31 +1001,6 @@
   },
   {
     "year": 2017,
-    "title": "EU Grants Visa-Free Travel to Georgian Citizens",
-    "verdict": "TRUE",
-    "reason": "Visa-free travel came into force 28 March 2017. All facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Visa-free travel came into force 28 March 2017. All facts confirmed.",
-        "source": "https://www.eeas.europa.eu/node/23697_en",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.eeas.europa.eu/node/23697_en"
-  },
-  {
-    "year": 2017,
     "title": "Constitutional Amendments Transition to Fully Parliamentary System",
     "verdict": "TRUE",
     "reason": "2017 constitutional reforms abolished direct presidential elections in favor of parliamentary appointment and moved to fully proportional system by 2024. All facts confirmed.",
@@ -1048,6 +1023,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Constitution_of_Georgia_(country)"
+  },
+  {
+    "year": 2017,
+    "title": "EU Grants Visa-Free Travel to Georgian Citizens",
+    "verdict": "TRUE",
+    "reason": "Visa-free travel came into force 28 March 2017. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Visa-free travel came into force 28 March 2017. All facts confirmed.",
+        "source": "https://www.eeas.europa.eu/node/23697_en",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.eeas.europa.eu/node/23697_en"
   },
   {
     "year": 2018,
@@ -1125,6 +1125,42 @@
     "source": "https://en.wikipedia.org/wiki/2020_Georgian_parliamentary_election"
   },
   {
+    "year": 2021,
+    "title": "Namakhvani Hydropower Project Canceled After Mass Environmental Protests",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm all material elements: Turkish company ENKA Renewables began preparatory construction on the $800 million Namakhvani hydropower cascade in Georgia's Rioni Valley (Imereti region) around October 2020; a grassroots protest movement ('Save the Rioni Valley'/Rioni Valley Defenders) staged a 170+ day tent protest, with road blockades near Kutaisi (Gumati, April 2021) and mass rallies in Tbilisi (May 2021); PM Irakli Garibashvili announced a 9-12 month construction moratorium on April 24, 2021; and ENKA Renewables announced on September 20, 2021 that it was terminating the project contract, citing government breaches of contract and force majeure. All year/country/actor/magnitude details in the description match the sourced record.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material elements: Turkish company ENKA began preparatory works on the Namakhvani HPP cascade in Georgia's Rioni Valley around 2019-2020; large, sustained protests ('Guardians of the Rioni Valley') occurred in Kutaisi and Tbilisi from late 2020 into 2021 (one report calls it a '170+ day protest'); PM Irakli Garibashvili announced a 9-12 month construction moratorium on 24 April 2021 after negotiations with the company; and Civil.ge (independent Georgian outlet) reports ENKA Renewables 'finally' terminated the HPP contract on 20 September 2021, citing breaches/force majeure amid the continued opposition. The $800M cost figure is close to the $750M figure cited by one source (minor variance, not material). All core facts — country, year, actors, sequence of events, and outcome — are corroborated by independent sources (oc-media.org, civil.ge, georgiatoday.ge, agenda.ge), none of which are on any off-limits list.",
+        "source": "https://civil.ge/archives/481355",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material elements: Turkish company ENKA Renewables began preparatory construction on the $800 million Namakhvani hydropower cascade in Georgia's Rioni Valley (Imereti region) around October 2020; a grassroots protest movement ('Save the Rioni Valley'/Rioni Valley Defenders) staged a 170+ day tent protest, with road blockades near Kutaisi (Gumati, April 2021) and mass rallies in Tbilisi (May 2021); PM Irakli Garibashvili announced a 9-12 month construction moratorium on April 24, 2021; and ENKA Renewables announced on September 20, 2021 that it was terminating the project contract, citing government breaches of contract and force majeure. All year/country/actor/magnitude details in the description match the sourced record.",
+        "source": "https://oc-media.org/construction-of-georgias-namakhvani-hydropower-plant-cancelled/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://oc-media.org/construction-of-georgias-namakhvani-hydropower-plant-cancelled/"
+  },
+  {
     "year": 2022,
     "title": "Georgia Applies for EU Membership",
     "verdict": "TRUE",
@@ -1139,6 +1175,31 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Application submitted 3 March 2022, days after Russia's invasion of Ukraine. Ukraine and Moldova applied simultaneously. All facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Accession_of_Georgia_to_the_European_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Accession_of_Georgia_to_the_European_Union"
+  },
+  {
+    "year": 2023,
+    "title": "EU Grants Georgia Candidate Status with Conditions",
+    "verdict": "TRUE",
+    "reason": "European Council granted candidate status 14–15 December 2023 conditional on reforms. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "European Council granted candidate status 14–15 December 2023 conditional on reforms. All facts confirmed.",
         "source": "https://en.wikipedia.org/wiki/Accession_of_Georgia_to_the_European_Union",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1175,10 +1236,10 @@
     "source": "https://en.wikipedia.org/wiki/2023%E2%80%932024_Georgian_protests"
   },
   {
-    "year": 2023,
-    "title": "EU Grants Georgia Candidate Status with Conditions",
+    "year": 2024,
+    "title": "Disputed October Parliamentary Elections Trigger Crisis",
     "verdict": "TRUE",
-    "reason": "European Council granted candidate status 14–15 December 2023 conditional on reforms. All facts confirmed.",
+    "reason": "Elections 26 October 2024; opposition and international observers alleged fraud; massive protests followed; opposition boycotted new parliament. All facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1188,8 +1249,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "European Council granted candidate status 14–15 December 2023 conditional on reforms. All facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Accession_of_Georgia_to_the_European_Union",
+        "reason": "Elections 26 October 2024; opposition and international observers alleged fraud; massive protests followed; opposition boycotted new parliament. All facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2024_Georgian_parliamentary_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1197,7 +1258,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Accession_of_Georgia_to_the_European_Union"
+    "source": "https://en.wikipedia.org/wiki/2024_Georgian_parliamentary_election"
   },
   {
     "year": 2024,
@@ -1226,31 +1287,6 @@
   },
   {
     "year": 2024,
-    "title": "Disputed October Parliamentary Elections Trigger Crisis",
-    "verdict": "TRUE",
-    "reason": "Elections 26 October 2024; opposition and international observers alleged fraud; massive protests followed; opposition boycotted new parliament. All facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Elections 26 October 2024; opposition and international observers alleged fraud; massive protests followed; opposition boycotted new parliament. All facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2024_Georgian_parliamentary_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2024_Georgian_parliamentary_election"
-  },
-  {
-    "year": 2024,
     "title": "Georgian Dream Suspends EU Accession Talks",
     "verdict": "TRUE",
     "reason": "PM Kobakhidze announced suspension on 28 November 2024 (event says 28 November — confirmed). Talks suspended until 2028. Triggered massive protests. All facts confirmed.",
@@ -1276,31 +1312,6 @@
   },
   {
     "year": 2025,
-    "title": "President Zourabichvili Refuses to Vacate Office",
-    "verdict": "TRUE",
-    "reason": "As of September 2025 Zourabichvili still refuses to stand down, declared the October 2024 elections fraudulent and continues performing presidential functions from a new Tbilisi office. All facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "As of September 2025 Zourabichvili still refuses to stand down, declared the October 2024 elections fraudulent and continues performing presidential functions from a new Tbilisi office. All facts confirmed.",
-        "source": "https://www.npr.org/2025/09/10/nx-s1-5534081/salome-zourabichvili-incumbent-president-of-georgia-refuses-to-stand-down",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.npr.org/2025/09/10/nx-s1-5534081/salome-zourabichvili-incumbent-president-of-georgia-refuses-to-stand-down"
-  },
-  {
-    "year": 2025,
     "title": "Expanded Foreign Agents Law Introduces Criminal Penalties",
     "verdict": "TRUE",
     "reason": "New Foreign Agents Registration Act came into force 1 June 2025 with criminal penalties including up to 5 years imprisonment. Broader than 2024 law. All facts confirmed.",
@@ -1323,5 +1334,30 @@
       }
     ],
     "source": "https://commonslibrary.parliament.uk/research-briefings/cbp-10432/"
+  },
+  {
+    "year": 2025,
+    "title": "President Zourabichvili Refuses to Vacate Office",
+    "verdict": "TRUE",
+    "reason": "As of September 2025 Zourabichvili still refuses to stand down, declared the October 2024 elections fraudulent and continues performing presidential functions from a new Tbilisi office. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "As of September 2025 Zourabichvili still refuses to stand down, declared the October 2024 elections fraudulent and continues performing presidential functions from a new Tbilisi office. All facts confirmed.",
+        "source": "https://www.npr.org/2025/09/10/nx-s1-5534081/salome-zourabichvili-incumbent-president-of-georgia-refuses-to-stand-down",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.npr.org/2025/09/10/nx-s1-5534081/salome-zourabichvili-incumbent-president-of-georgia-refuses-to-stand-down"
   }
 ]

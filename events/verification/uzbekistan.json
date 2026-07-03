@@ -1,31 +1,6 @@
 [
   {
     "year": 1991,
-    "title": "Uzbekistan Declares Independence from the Soviet Union",
-    "verdict": "TRUE",
-    "reason": "Uzbekistan's Supreme Soviet voted to declare independence on August 31, 1991, the day after the failed Moscow coup, with Islam Karimov presiding. September 1 was established as Independence Day and is still observed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Uzbekistan's Supreme Soviet voted to declare independence on August 31, 1991, the day after the failed Moscow coup, with Islam Karimov presiding. September 1 was established as Independence Day and is still observed.",
-        "source": "https://en.wikipedia.org/wiki/Independence_Day_(Uzbekistan)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Independence_Day_(Uzbekistan)"
-  },
-  {
-    "year": 1991,
     "title": "Islam Karimov Wins First Presidential Election with 86% of the Vote",
     "verdict": "TRUE",
     "reason": "Karimov won the December 29-30, 1991 presidential election with 86% against Erk Party candidate Muhammad Salih (approx. 12.3%). International observers and opposition reported widespread irregularities and ballot stuffing.",
@@ -48,6 +23,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1991_Uzbek_presidential_election"
+  },
+  {
+    "year": 1991,
+    "title": "Uzbekistan Declares Independence from the Soviet Union",
+    "verdict": "TRUE",
+    "reason": "Uzbekistan's Supreme Soviet voted to declare independence on August 31, 1991, the day after the failed Moscow coup, with Islam Karimov presiding. September 1 was established as Independence Day and is still observed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Uzbekistan's Supreme Soviet voted to declare independence on August 31, 1991, the day after the failed Moscow coup, with Islam Karimov presiding. September 1 was established as Independence Day and is still observed.",
+        "source": "https://en.wikipedia.org/wiki/Independence_Day_(Uzbekistan)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Independence_Day_(Uzbekistan)"
   },
   {
     "year": 1992,
@@ -151,31 +151,6 @@
   },
   {
     "year": 1995,
-    "title": "Referendum Extends Karimov's Term Without Election",
-    "verdict": "TRUE",
-    "reason": "A referendum held March 26, 1995 extended Karimov's presidential term to 2000, officially approved by 99.6% of voters. The US criticized it for lacking public debate; international observers condemned it as undemocratic.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "A referendum held March 26, 1995 extended Karimov's presidential term to 2000, officially approved by 99.6% of voters. The US criticized it for lacking public debate; international observers condemned it as undemocratic.",
-        "source": "https://en.wikipedia.org/wiki/1995_Uzbek_presidential_term_referendum",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1995_Uzbek_presidential_term_referendum"
-  },
-  {
-    "year": 1995,
     "title": "Islamic Movement of Uzbekistan (IMU) Founded in Namangan",
     "verdict": "FALSE",
     "reason": "The IMU was formally founded in 1998, not 1995. The Namangan-based precursor organization Adolat was established in 1991-92. Yuldashev and Namangani founded the IMU proper after relocating to Tajikistan and Afghanistan, with the organization established in 1998 according to Wikipedia and START.",
@@ -198,6 +173,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Islamic_Movement_of_Uzbekistan"
+  },
+  {
+    "year": 1995,
+    "title": "Referendum Extends Karimov's Term Without Election",
+    "verdict": "TRUE",
+    "reason": "A referendum held March 26, 1995 extended Karimov's presidential term to 2000, officially approved by 99.6% of voters. The US criticized it for lacking public debate; international observers condemned it as undemocratic.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A referendum held March 26, 1995 extended Karimov's presidential term to 2000, officially approved by 99.6% of voters. The US criticized it for lacking public debate; international observers condemned it as undemocratic.",
+        "source": "https://en.wikipedia.org/wiki/1995_Uzbek_presidential_term_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1995_Uzbek_presidential_term_referendum"
   },
   {
     "year": 1997,
@@ -251,31 +251,6 @@
   },
   {
     "year": 1999,
-    "title": "Tashkent Bombings Kill 16 in Assassination Attempt on Karimov",
-    "verdict": "TRUE",
-    "reason": "On February 16, 1999, six car bombs exploded in central Tashkent, killing 16 people and injuring over 100. The blasts targeted government buildings minutes after Karimov had reportedly left. The government blamed the IMU and used the attacks to justify mass crackdowns on religious communities.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On February 16, 1999, six car bombs exploded in central Tashkent, killing 16 people and injuring over 100. The blasts targeted government buildings minutes after Karimov had reportedly left. The government blamed the IMU and used the attacks to justify mass crackdowns on religious communities.",
-        "source": "https://en.wikipedia.org/wiki/1999_Tashkent_bombings",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1999_Tashkent_bombings"
-  },
-  {
-    "year": 1999,
     "title": "IMU Launches Armed Incursion into Southern Kyrgyzstan and Uzbekistan",
     "verdict": "TRUE",
     "reason": "In August 1999, approximately 800 IMU fighters under Juma Namangani launched the Batken incursion from Tajikistan into Kyrgyzstan's Batken Oblast. Japanese geologists and local officials were taken hostage; militants withdrew to Afghanistan via Russian-piloted helicopters after months of fighting.",
@@ -298,6 +273,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Batken_conflict"
+  },
+  {
+    "year": 1999,
+    "title": "Tashkent Bombings Kill 16 in Assassination Attempt on Karimov",
+    "verdict": "TRUE",
+    "reason": "On February 16, 1999, six car bombs exploded in central Tashkent, killing 16 people and injuring over 100. The blasts targeted government buildings minutes after Karimov had reportedly left. The government blamed the IMU and used the attacks to justify mass crackdowns on religious communities.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On February 16, 1999, six car bombs exploded in central Tashkent, killing 16 people and injuring over 100. The blasts targeted government buildings minutes after Karimov had reportedly left. The government blamed the IMU and used the attacks to justify mass crackdowns on religious communities.",
+        "source": "https://en.wikipedia.org/wiki/1999_Tashkent_bombings",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1999_Tashkent_bombings"
   },
   {
     "year": 2000,
@@ -351,31 +351,6 @@
   },
   {
     "year": 2001,
-    "title": "Uzbekistan Grants US Military Base Access After 9/11",
-    "verdict": "TRUE",
-    "reason": "On October 6, 2001, the US and Uzbekistan signed a Status of Forces Agreement allowing up to 1,500 US troops at Karshi-Khanabad (K2) air base. Up to 7,000 DoD personnel used K2 between 2001-2005 for Afghanistan operations. The deal brought substantial US financial assistance.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On October 6, 2001, the US and Uzbekistan signed a Status of Forces Agreement allowing up to 1,500 US troops at Karshi-Khanabad (K2) air base. Up to 7,000 DoD personnel used K2 between 2001-2005 for Afghanistan operations. The deal brought substantial US financial assistance.",
-        "source": "https://en.wikipedia.org/wiki/Karshi-Khanabad_Air_Base",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Karshi-Khanabad_Air_Base"
-  },
-  {
-    "year": 2001,
     "title": "IMU Loses Afghan Sanctuary as Taliban Regime Falls",
     "verdict": "TRUE",
     "reason": "The US-led intervention in late 2001 destroyed the IMU's Afghan sanctuary. IMU leader Juma Namangani was killed in a US airstrike in northern Afghanistan in November 2001 (near Kunduz). US General Tommy Franks confirmed Namangani's death in January 2002.",
@@ -398,6 +373,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Juma_Namangani"
+  },
+  {
+    "year": 2001,
+    "title": "Uzbekistan Grants US Military Base Access After 9/11",
+    "verdict": "TRUE",
+    "reason": "On October 6, 2001, the US and Uzbekistan signed a Status of Forces Agreement allowing up to 1,500 US troops at Karshi-Khanabad (K2) air base. Up to 7,000 DoD personnel used K2 between 2001-2005 for Afghanistan operations. The deal brought substantial US financial assistance.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On October 6, 2001, the US and Uzbekistan signed a Status of Forces Agreement allowing up to 1,500 US troops at Karshi-Khanabad (K2) air base. Up to 7,000 DoD personnel used K2 between 2001-2005 for Afghanistan operations. The deal brought substantial US financial assistance.",
+        "source": "https://en.wikipedia.org/wiki/Karshi-Khanabad_Air_Base",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Karshi-Khanabad_Air_Base"
   },
   {
     "year": 2002,
@@ -501,9 +501,9 @@
   },
   {
     "year": 2005,
-    "title": "Uzbekistan Expels US Military from Karshi-Khanabad Base",
+    "title": "Andijan Refugees Flee to Kyrgyzstan; Resettled Internationally",
     "verdict": "TRUE",
-    "reason": "On July 29, 2005, Uzbekistan served the US with a diplomatic note demanding vacation of K2 within 180 days. Withdrawal was completed November 21, 2005. The expulsion directly followed US calls for an independent Andijan inquiry that Karimov rejected.",
+    "reason": "Over 500 Uzbek survivors fled to Kyrgyzstan after May 13, 2005. UNHCR airlifted 439 refugees to Romania as a transit point. Final resettlement to the US, Canada, Australia, Switzerland, Germany, Sweden, Finland, Netherlands, and Czech Republic followed in 2005.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -513,8 +513,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "On July 29, 2005, Uzbekistan served the US with a diplomatic note demanding vacation of K2 within 180 days. Withdrawal was completed November 21, 2005. The expulsion directly followed US calls for an independent Andijan inquiry that Karimov rejected.",
-        "source": "https://www.washingtonpost.com/wp-dyn/content/article/2005/07/29/AR2005072902038.html",
+        "reason": "Over 500 Uzbek survivors fled to Kyrgyzstan after May 13, 2005. UNHCR airlifted 439 refugees to Romania as a transit point. Final resettlement to the US, Canada, Australia, Switzerland, Germany, Sweden, Finland, Netherlands, and Czech Republic followed in 2005.",
+        "source": "https://www.unhcr.org/news/news-releases/unhcr-calls-urgent-resettlement-uzbek-asylum-seekers-kyrgyzstan",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -522,7 +522,7 @@
         }
       }
     ],
-    "source": "https://www.washingtonpost.com/wp-dyn/content/article/2005/07/29/AR2005072902038.html"
+    "source": "https://www.unhcr.org/news/news-releases/unhcr-calls-urgent-resettlement-uzbek-asylum-seekers-kyrgyzstan"
   },
   {
     "year": 2005,
@@ -551,9 +551,9 @@
   },
   {
     "year": 2005,
-    "title": "Andijan Refugees Flee to Kyrgyzstan; Resettled Internationally",
+    "title": "Uzbekistan Expels US Military from Karshi-Khanabad Base",
     "verdict": "TRUE",
-    "reason": "Over 500 Uzbek survivors fled to Kyrgyzstan after May 13, 2005. UNHCR airlifted 439 refugees to Romania as a transit point. Final resettlement to the US, Canada, Australia, Switzerland, Germany, Sweden, Finland, Netherlands, and Czech Republic followed in 2005.",
+    "reason": "On July 29, 2005, Uzbekistan served the US with a diplomatic note demanding vacation of K2 within 180 days. Withdrawal was completed November 21, 2005. The expulsion directly followed US calls for an independent Andijan inquiry that Karimov rejected.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -563,8 +563,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Over 500 Uzbek survivors fled to Kyrgyzstan after May 13, 2005. UNHCR airlifted 439 refugees to Romania as a transit point. Final resettlement to the US, Canada, Australia, Switzerland, Germany, Sweden, Finland, Netherlands, and Czech Republic followed in 2005.",
-        "source": "https://www.unhcr.org/news/news-releases/unhcr-calls-urgent-resettlement-uzbek-asylum-seekers-kyrgyzstan",
+        "reason": "On July 29, 2005, Uzbekistan served the US with a diplomatic note demanding vacation of K2 within 180 days. Withdrawal was completed November 21, 2005. The expulsion directly followed US calls for an independent Andijan inquiry that Karimov rejected.",
+        "source": "https://www.washingtonpost.com/wp-dyn/content/article/2005/07/29/AR2005072902038.html",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -572,7 +572,7 @@
         }
       }
     ],
-    "source": "https://www.unhcr.org/news/news-releases/unhcr-calls-urgent-resettlement-uzbek-asylum-seekers-kyrgyzstan"
+    "source": "https://www.washingtonpost.com/wp-dyn/content/article/2005/07/29/AR2005072902038.html"
   },
   {
     "year": 2006,
@@ -976,6 +976,31 @@
   },
   {
     "year": 2018,
+    "title": "Foreign Investment Surge Follows Economic Liberalization Signals",
+    "verdict": "TRUE",
+    "reason": "Following the 2017 currency liberalization, Uzbekistan attracted pledged investment from Chinese, South Korean, Russian, and Turkish investors. China (65%+ of FDI stock), South Korea, Russia, and Turkey were the top investing nations. The State Department 2018 investment climate report confirmed an improved but still constrained environment.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following the 2017 currency liberalization, Uzbekistan attracted pledged investment from Chinese, South Korean, Russian, and Turkish investors. China (65%+ of FDI stock), South Korea, Russia, and Turkey were the top investing nations. The State Department 2018 investment climate report confirmed an improved but still constrained environment.",
+        "source": "https://2021-2025.state.gov/reports/2018-investment-climate-statements/uzbekistan/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://2021-2025.state.gov/reports/2018-investment-climate-statements/uzbekistan/"
+  },
+  {
+    "year": 2018,
     "title": "Political Prisoners Released in Mirziyoyev Amnesty Program",
     "verdict": "TRUE",
     "reason": "Uzbekistan released over 35 politically motivated prisoners from 2016-2018. Notable releases included journalist Muhammad Bekzhanov (17 years), Samandar Kukanov (23+ years), and Erkin Musaev (11 of 20 years). HRW documented these releases while noting most prisoners remained.",
@@ -1001,6 +1026,42 @@
   },
   {
     "year": 2018,
+    "title": "Uzbekistan Launches UN Trust Fund to Address Aral Sea Ecological Disaster",
+    "verdict": "TRUE",
+    "reason": "Multiple independent official sources (UN.org, UN Human Security Unit, UNDP/MPTF Office) confirm that on 27 November 2018 the Government of Uzbekistan and the UN MPTF Office signed an agreement establishing the Multi-Partner Human Security Trust Fund for the Aral Sea Region, with Uzbekistan contributing $6.5 million (its first donor tranche, later described as split across 2019-2022 tranches). The High-Level Event at UN HQ New York on that date was co-organized by the Governments of Japan, Nigeria, and Norway alongside Uzbekistan, matching the description's list of backer countries. This matches the event description on date, country, amount, actors, and purpose (addressing the ecological/health/economic devastation of the Aral Sea desiccation under President Mirziyoyev's government).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: on 27 November 2018, at UN Headquarters in New York, the Governments of Uzbekistan, Japan, Nigeria, and Norway, together with the UN Human Security Unit and the Multi-Partner Trust Fund Office, held a High-Level Event launching/signing the Multi-Partner Human Security Trust Fund for the Aral Sea Region (MPHSTF). UN press release (press.un.org) and un.org/humansecurity confirm the exact date, the fund name, and the four-government partnership (Japan, Nigeria, Norway, Uzbekistan). Additional sources (mptf.undp.org, UNDP Uzbekistan) corroborate that Uzbekistan signed a Standard Administrative Agreement contributing USD 6.5 million (to be transferred in tranches from 2019-2022), matching the description's financial figure. The fund addresses the ecological/socio-economic devastation from the Aral Sea's desiccation, consistent with description. All material facts (date, country, year, actors, purpose, amount) check out.",
+        "source": "https://press.un.org/en/2018/sgsm19367.doc.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent official sources (UN.org, UN Human Security Unit, UNDP/MPTF Office) confirm that on 27 November 2018 the Government of Uzbekistan and the UN MPTF Office signed an agreement establishing the Multi-Partner Human Security Trust Fund for the Aral Sea Region, with Uzbekistan contributing $6.5 million (its first donor tranche, later described as split across 2019-2022 tranches). The High-Level Event at UN HQ New York on that date was co-organized by the Governments of Japan, Nigeria, and Norway alongside Uzbekistan, matching the description's list of backer countries. This matches the event description on date, country, amount, actors, and purpose (addressing the ecological/health/economic devastation of the Aral Sea desiccation under President Mirziyoyev's government).",
+        "source": "https://mptf.undp.org/news/government-uzbekistan-makes-third-tranche-un-multi-partner-human-security-trust-fund-aral-sea",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://mptf.undp.org/news/government-uzbekistan-makes-third-tranche-un-multi-partner-human-security-trust-fund-aral-sea"
+  },
+  {
+    "year": 2018,
     "title": "Uzbekistan Restores Diplomatic Relations with Neighbors After Karimov-Era Freeze",
     "verdict": "TRUE",
     "reason": "Direct Tashkent-Dushanbe flights resumed April 2017 for the first time in 25 years. A Uzbekistan-Kyrgyzstan border treaty was signed September 5, 2017 covering 1,170 km. Mirziyoyev's first state visit to Tajikistan occurred March 2018. These were the most dramatic foreign policy shifts of his early presidency.",
@@ -1023,56 +1084,6 @@
       }
     ],
     "source": "https://www.tandfonline.com/doi/full/10.1080/02634937.2025.2482186"
-  },
-  {
-    "year": 2018,
-    "title": "Foreign Investment Surge Follows Economic Liberalization Signals",
-    "verdict": "TRUE",
-    "reason": "Following the 2017 currency liberalization, Uzbekistan attracted pledged investment from Chinese, South Korean, Russian, and Turkish investors. China (65%+ of FDI stock), South Korea, Russia, and Turkey were the top investing nations. The State Department 2018 investment climate report confirmed an improved but still constrained environment.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Following the 2017 currency liberalization, Uzbekistan attracted pledged investment from Chinese, South Korean, Russian, and Turkish investors. China (65%+ of FDI stock), South Korea, Russia, and Turkey were the top investing nations. The State Department 2018 investment climate report confirmed an improved but still constrained environment.",
-        "source": "https://2021-2025.state.gov/reports/2018-investment-climate-statements/uzbekistan/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://2021-2025.state.gov/reports/2018-investment-climate-statements/uzbekistan/"
-  },
-  {
-    "year": 2019,
-    "title": "Uzbekistan Abolishes Exit Visa Requirements",
-    "verdict": "TRUE",
-    "reason": "Uzbekistan cancelled its exit visa system from January 1, 2019, implementing a Mirziyoyev August 2017 decree. Uzbekistan had been the last former Soviet state to retain the system. Human rights organizations had long advocated for this reform.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Uzbekistan cancelled its exit visa system from January 1, 2019, implementing a Mirziyoyev August 2017 decree. Uzbekistan had been the last former Soviet state to retain the system. Human rights organizations had long advocated for this reform.",
-        "source": "https://thediplomat.com/2019/01/uzbekistan-abolishes-exit-visa-system/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://thediplomat.com/2019/01/uzbekistan-abolishes-exit-visa-system/"
   },
   {
     "year": 2019,
@@ -1125,6 +1136,31 @@
     "source": "https://unrcca.unmissions.org/unrcca-and-uzbekistan-hosted-international-conference-%E2%80%9Ccentral-asian-connectivity-challenges-and-new"
   },
   {
+    "year": 2019,
+    "title": "Uzbekistan Abolishes Exit Visa Requirements",
+    "verdict": "TRUE",
+    "reason": "Uzbekistan cancelled its exit visa system from January 1, 2019, implementing a Mirziyoyev August 2017 decree. Uzbekistan had been the last former Soviet state to retain the system. Human rights organizations had long advocated for this reform.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Uzbekistan cancelled its exit visa system from January 1, 2019, implementing a Mirziyoyev August 2017 decree. Uzbekistan had been the last former Soviet state to retain the system. Human rights organizations had long advocated for this reform.",
+        "source": "https://thediplomat.com/2019/01/uzbekistan-abolishes-exit-visa-system/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://thediplomat.com/2019/01/uzbekistan-abolishes-exit-visa-system/"
+  },
+  {
     "year": 2020,
     "title": "COVID-19 Pandemic Hits Uzbekistan; Government Imposes Strict Lockdowns",
     "verdict": "TRUE",
@@ -1148,31 +1184,6 @@
       }
     ],
     "source": "https://www.undp.org/press-releases/uzbekistans-health-care-system-economy-hit-hard-covid-19"
-  },
-  {
-    "year": 2021,
-    "title": "Mirziyoyev Re-elected with 80.1% Amid Controlled Liberalization",
-    "verdict": "TRUE",
-    "reason": "Presidential elections on October 24, 2021 gave Mirziyoyev 80.1% of the vote. OSCE observers stated the election 'lacked genuine competition' and found 'fundamental deficiencies' including absence of real political pluralism, though the margin was marginally lower than Karimov's typical 88-92%.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Presidential elections on October 24, 2021 gave Mirziyoyev 80.1% of the vote. OSCE observers stated the election 'lacked genuine competition' and found 'fundamental deficiencies' including absence of real political pluralism, though the margin was marginally lower than Karimov's typical 88-92%.",
-        "source": "https://en.wikipedia.org/wiki/2021_Uzbek_presidential_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2021_Uzbek_presidential_election"
   },
   {
     "year": 2021,
@@ -1225,10 +1236,10 @@
     "source": "https://www.ilo.org/publications/2021-third-party-monitoring-child-labour-and-forced-labour-during-cotton"
   },
   {
-    "year": 2022,
-    "title": "Karakalpakstan Unrest and Violent Crackdown After Constitutional Protests",
+    "year": 2021,
+    "title": "Mirziyoyev Re-elected with 80.1% Amid Controlled Liberalization",
     "verdict": "TRUE",
-    "reason": "On July 1-2, 2022, mass protests erupted in Nukus against constitutional amendments removing Karakalpakstan's secession right. Security forces used lethal force; the Uzbek government acknowledged 18 killed and 243 injured (opposition sources suggest higher figures). Mirziyoyev withdrew the amendment on July 2.",
+    "reason": "Presidential elections on October 24, 2021 gave Mirziyoyev 80.1% of the vote. OSCE observers stated the election 'lacked genuine competition' and found 'fundamental deficiencies' including absence of real political pluralism, though the margin was marginally lower than Karimov's typical 88-92%.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1238,8 +1249,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "On July 1-2, 2022, mass protests erupted in Nukus against constitutional amendments removing Karakalpakstan's secession right. Security forces used lethal force; the Uzbek government acknowledged 18 killed and 243 injured (opposition sources suggest higher figures). Mirziyoyev withdrew the amendment on July 2.",
-        "source": "https://en.wikipedia.org/wiki/2022_Karakalpak_protests",
+        "reason": "Presidential elections on October 24, 2021 gave Mirziyoyev 80.1% of the vote. OSCE observers stated the election 'lacked genuine competition' and found 'fundamental deficiencies' including absence of real political pluralism, though the margin was marginally lower than Karimov's typical 88-92%.",
+        "source": "https://en.wikipedia.org/wiki/2021_Uzbek_presidential_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1247,57 +1258,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2022_Karakalpak_protests"
-  },
-  {
-    "year": 2023,
-    "title": "Constitutional Referendum Resets Presidential Term Limits, Extends Mirziyoyev's Rule",
-    "verdict": "TRUE",
-    "reason": "The April 30, 2023 referendum approved sweeping amendments with a reported 90.2% approval, extending the presidential term from five to seven years and resetting Mirziyoyev's term count, potentially allowing him to serve until 2037. OSCE observers noted 'serious violations' during voting and counting.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The April 30, 2023 referendum approved sweeping amendments with a reported 90.2% approval, extending the presidential term from five to seven years and resetting Mirziyoyev's term count, potentially allowing him to serve until 2037. OSCE observers noted 'serious violations' during voting and counting.",
-        "source": "https://en.wikipedia.org/wiki/2023_Uzbek_constitutional_referendum",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2023_Uzbek_constitutional_referendum"
-  },
-  {
-    "year": 2022,
-    "title": "Russia's Ukraine Invasion Forces Uzbekistan's Diplomatic Tightrope",
-    "verdict": "TRUE",
-    "reason": "After Russia's February 2022 invasion of Ukraine, Uzbekistan declined to condemn the invasion in UNGA votes (abstained or did not vote). Remittances from Russia reached a record high of approximately $16.1 billion in 2022, representing 21% of Uzbek GDP, explaining the careful diplomatic balancing act.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "After Russia's February 2022 invasion of Ukraine, Uzbekistan declined to condemn the invasion in UNGA votes (abstained or did not vote). Remittances from Russia reached a record high of approximately $16.1 billion in 2022, representing 21% of Uzbek GDP, explaining the careful diplomatic balancing act.",
-        "source": "https://kun.uz/en/news/2022/12/02/remittances-from-russia-to-uzbekistan-reaching-record-high-in-2022-world-bank",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://kun.uz/en/news/2022/12/02/remittances-from-russia-to-uzbekistan-reaching-record-high-in-2022-world-bank"
+    "source": "https://en.wikipedia.org/wiki/2021_Uzbek_presidential_election"
   },
   {
     "year": 2022,
@@ -1326,6 +1287,56 @@
   },
   {
     "year": 2022,
+    "title": "Karakalpakstan Unrest and Violent Crackdown After Constitutional Protests",
+    "verdict": "TRUE",
+    "reason": "On July 1-2, 2022, mass protests erupted in Nukus against constitutional amendments removing Karakalpakstan's secession right. Security forces used lethal force; the Uzbek government acknowledged 18 killed and 243 injured (opposition sources suggest higher figures). Mirziyoyev withdrew the amendment on July 2.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On July 1-2, 2022, mass protests erupted in Nukus against constitutional amendments removing Karakalpakstan's secession right. Security forces used lethal force; the Uzbek government acknowledged 18 killed and 243 injured (opposition sources suggest higher figures). Mirziyoyev withdrew the amendment on July 2.",
+        "source": "https://en.wikipedia.org/wiki/2022_Karakalpak_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2022_Karakalpak_protests"
+  },
+  {
+    "year": 2022,
+    "title": "Russia's Ukraine Invasion Forces Uzbekistan's Diplomatic Tightrope",
+    "verdict": "TRUE",
+    "reason": "After Russia's February 2022 invasion of Ukraine, Uzbekistan declined to condemn the invasion in UNGA votes (abstained or did not vote). Remittances from Russia reached a record high of approximately $16.1 billion in 2022, representing 21% of Uzbek GDP, explaining the careful diplomatic balancing act.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "After Russia's February 2022 invasion of Ukraine, Uzbekistan declined to condemn the invasion in UNGA votes (abstained or did not vote). Remittances from Russia reached a record high of approximately $16.1 billion in 2022, representing 21% of Uzbek GDP, explaining the careful diplomatic balancing act.",
+        "source": "https://kun.uz/en/news/2022/12/02/remittances-from-russia-to-uzbekistan-reaching-record-high-in-2022-world-bank",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://kun.uz/en/news/2022/12/02/remittances-from-russia-to-uzbekistan-reaching-record-high-in-2022-world-bank"
+  },
+  {
+    "year": 2022,
     "title": "Uzbekistan Deepens China Economic Partnership Through BRI Agreements",
     "verdict": "TRUE",
     "reason": "In September 2022, Uzbekistan, Kyrgyzstan, and China signed a memorandum of cooperation for the CKU railway. Bilateral trade with China increased 20% to nearly $9 billion in 2022. Since 2017, China invested over $10 billion in Uzbekistan across energy, manufacturing, and logistics sectors.",
@@ -1348,6 +1359,56 @@
       }
     ],
     "source": "https://www.globaltimes.cn/page/202209/1275920.shtml"
+  },
+  {
+    "year": 2023,
+    "title": "Constitutional Referendum Resets Presidential Term Limits, Extends Mirziyoyev's Rule",
+    "verdict": "TRUE",
+    "reason": "The April 30, 2023 referendum approved sweeping amendments with a reported 90.2% approval, extending the presidential term from five to seven years and resetting Mirziyoyev's term count, potentially allowing him to serve until 2037. OSCE observers noted 'serious violations' during voting and counting.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The April 30, 2023 referendum approved sweeping amendments with a reported 90.2% approval, extending the presidential term from five to seven years and resetting Mirziyoyev's term count, potentially allowing him to serve until 2037. OSCE observers noted 'serious violations' during voting and counting.",
+        "source": "https://en.wikipedia.org/wiki/2023_Uzbek_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2023_Uzbek_constitutional_referendum"
+  },
+  {
+    "year": 2023,
+    "title": "Mirziyoyev Re-elected Under New Seven-Year Term Rules",
+    "verdict": "TRUE",
+    "reason": "Following the April 2023 referendum, Mirziyoyev called a snap election for July 9, 2023, winning with 87.1-87.7% of the vote (sources vary slightly). The election was held 18 months early under the new 7-year term framework. OSCE observers found the election fell short of democratic standards.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following the April 2023 referendum, Mirziyoyev called a snap election for July 9, 2023, winning with 87.1-87.7% of the vote (sources vary slightly). The election was held 18 months early under the new 7-year term framework. OSCE observers found the election fell short of democratic standards.",
+        "source": "https://www.aljazeera.com/news/2023/7/10/uzbek-president-re-elected-for-seven-year-term-in-snap-election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2023/7/10/uzbek-president-re-elected-for-seven-year-term-in-snap-election"
   },
   {
     "year": 2023,
@@ -1400,46 +1461,21 @@
     "source": "https://www.wto.org/english/news_e/news23_e/acc_14mar23_e.htm"
   },
   {
-    "year": 2023,
-    "title": "Mirziyoyev Re-elected Under New Seven-Year Term Rules",
-    "verdict": "TRUE",
-    "reason": "Following the April 2023 referendum, Mirziyoyev called a snap election for July 9, 2023, winning with 87.1-87.7% of the vote (sources vary slightly). The election was held 18 months early under the new 7-year term framework. OSCE observers found the election fell short of democratic standards.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Following the April 2023 referendum, Mirziyoyev called a snap election for July 9, 2023, winning with 87.1-87.7% of the vote (sources vary slightly). The election was held 18 months early under the new 7-year term framework. OSCE observers found the election fell short of democratic standards.",
-        "source": "https://www.aljazeera.com/news/2023/7/10/uzbek-president-re-elected-for-seven-year-term-in-snap-election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.aljazeera.com/news/2023/7/10/uzbek-president-re-elected-for-seven-year-term-in-snap-election"
-  },
-  {
     "year": 2024,
-    "title": "Uzbekistan–Kyrgyzstan–China Railway Agreement Signed",
-    "verdict": "TRUE",
-    "reason": "On June 6, 2024, the intergovernmental agreement for the China-Kyrgyzstan-Uzbekistan (CKU) railway was signed in Beijing. Total project cost is estimated at $4.7 billion, with China providing a 35-year loan for half. Construction ceremonially began December 27, 2024 in Kyrgyzstan's Jalal-Abad region.",
+    "title": "Gulnara Karimova Sentenced to 13 Years for Corruption and Extortion",
+    "verdict": "FALSE",
+    "reason": "Gulnara Karimova's 13-year-and-four-month sentence was handed down on March 18, 2020, not 2024. The 2014-2020 period saw progressive sentencing (house arrest 2014, 10-year sentence 2017, 13-year sentence 2020). Western telecom settlements recovered over $800 million. The year is wrong by 4 years.",
     "verify_count": 1,
-    "consensus_verdict": "TRUE",
+    "consensus_verdict": "FALSE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On June 6, 2024, the intergovernmental agreement for the China-Kyrgyzstan-Uzbekistan (CKU) railway was signed in Beijing. Total project cost is estimated at $4.7 billion, with China providing a 35-year loan for half. Construction ceremonially began December 27, 2024 in Kyrgyzstan's Jalal-Abad region.",
-        "source": "https://en.wikipedia.org/wiki/China%E2%80%93Kyrgyzstan%E2%80%93Uzbekistan_railway",
+        "verdict": "FALSE",
+        "reason": "Gulnara Karimova's 13-year-and-four-month sentence was handed down on March 18, 2020, not 2024. The 2014-2020 period saw progressive sentencing (house arrest 2014, 10-year sentence 2017, 13-year sentence 2020). Western telecom settlements recovered over $800 million. The year is wrong by 4 years.",
+        "source": "https://eurasianet.org/uzbekistan-karimova-gets-fresh-13-year-sentence",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1447,7 +1483,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/China%E2%80%93Kyrgyzstan%E2%80%93Uzbekistan_railway"
+    "source": "https://eurasianet.org/uzbekistan-karimova-gets-fresh-13-year-sentence"
   },
   {
     "year": 2024,
@@ -1476,31 +1512,6 @@
   },
   {
     "year": 2024,
-    "title": "Gulnara Karimova Sentenced to 13 Years for Corruption and Extortion",
-    "verdict": "FALSE",
-    "reason": "Gulnara Karimova's 13-year-and-four-month sentence was handed down on March 18, 2020, not 2024. The 2014-2020 period saw progressive sentencing (house arrest 2014, 10-year sentence 2017, 13-year sentence 2020). Western telecom settlements recovered over $800 million. The year is wrong by 4 years.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Gulnara Karimova's 13-year-and-four-month sentence was handed down on March 18, 2020, not 2024. The 2014-2020 period saw progressive sentencing (house arrest 2014, 10-year sentence 2017, 13-year sentence 2020). Western telecom settlements recovered over $800 million. The year is wrong by 4 years.",
-        "source": "https://eurasianet.org/uzbekistan-karimova-gets-fresh-13-year-sentence",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://eurasianet.org/uzbekistan-karimova-gets-fresh-13-year-sentence"
-  },
-  {
-    "year": 2024,
     "title": "Uzbekistan–EU Enhanced Partnership and Cooperation Agreement Initialed",
     "verdict": "FALSE",
     "reason": "The EPCA text was initialled on July 6, 2022, not 2024. EU Council authorization documents (ST-14755/24, ST-14756/24) date from October 21, 2024, but these relate to ratification procedures, not initialing. The agreement was formally signed October 24, 2025. The year of initialing stated in the event is inaccurate.",
@@ -1523,5 +1534,30 @@
       }
     ],
     "source": "https://www.eeas.europa.eu/eeas/uzbekistan-european-union-and-uzbekistan-complete-negotiations-new-enhanced-partnership-and_en"
+  },
+  {
+    "year": 2024,
+    "title": "Uzbekistan–Kyrgyzstan–China Railway Agreement Signed",
+    "verdict": "TRUE",
+    "reason": "On June 6, 2024, the intergovernmental agreement for the China-Kyrgyzstan-Uzbekistan (CKU) railway was signed in Beijing. Total project cost is estimated at $4.7 billion, with China providing a 35-year loan for half. Construction ceremonially began December 27, 2024 in Kyrgyzstan's Jalal-Abad region.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On June 6, 2024, the intergovernmental agreement for the China-Kyrgyzstan-Uzbekistan (CKU) railway was signed in Beijing. Total project cost is estimated at $4.7 billion, with China providing a 35-year loan for half. Construction ceremonially began December 27, 2024 in Kyrgyzstan's Jalal-Abad region.",
+        "source": "https://en.wikipedia.org/wiki/China%E2%80%93Kyrgyzstan%E2%80%93Uzbekistan_railway",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/China%E2%80%93Kyrgyzstan%E2%80%93Uzbekistan_railway"
   }
 ]

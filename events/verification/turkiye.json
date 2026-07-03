@@ -2136,6 +2136,42 @@
     "source": "https://www.aljazeera.com/economy/2021/3/22/turkish-lira-plunges-after-erdogan-sacks-central-bank-chief"
   },
   {
+    "year": 2021,
+    "title": "Turkiye Ratifies Paris Climate Agreement as Last G20 Holdout",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm every material detail: on October 6, 2021, Turkey's Grand National Assembly voted 353-0 to ratify the Paris Climate Agreement, five years after signing it in 2016 (COP21), making Turkey the last G20 member to ratify. Days before the vote, the cabinet approved a net-zero-by-2053 target. Turkey's ratification declared it would implement the agreement as a developing country despite being classified Annex I (industrialized) under the UNFCCC — a longstanding Turkish objection that caused the multi-year ratification delay. All figures (vote count, date, year gap, G20 status, 2053 target, developing-country framing) match across multiple independent outlets.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (CNN, Al Jazeera, Bloomberg, The Hill, Globe and Mail, Reuters via Bangkok Post, Hurriyet Daily News, Climate Change News) confirm: on October 6, 2021, Turkiye's Grand National Assembly voted 353-0 to ratify the Paris Climate Agreement, five years after signing in 2016, making it the last G20 country to do so. Reports also confirm the cabinet's approval of a net-zero-by-2053 target announced just before/around the ratification (Climate Change News: 'Turkey ratifies the Paris Agreement after approving a 2053 net zero goal'), and that lawmakers ratified while separately declaring intent to implement as a developing country despite Annex I status (CNN, The Hill). All material details in the description are corroborated.",
+        "source": "https://www.cnn.com/2021/10/06/world/turkey-ratify-paris-climate-agreement-intl/index.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm every material detail: on October 6, 2021, Turkey's Grand National Assembly voted 353-0 to ratify the Paris Climate Agreement, five years after signing it in 2016 (COP21), making Turkey the last G20 member to ratify. Days before the vote, the cabinet approved a net-zero-by-2053 target. Turkey's ratification declared it would implement the agreement as a developing country despite being classified Annex I (industrialized) under the UNFCCC — a longstanding Turkish objection that caused the multi-year ratification delay. All figures (vote count, date, year gap, G20 status, 2053 target, developing-country framing) match across multiple independent outlets.",
+        "source": "https://www.climatechangenews.com/2021/10/06/turkey-ratifies-paris-agreement-approving-2053-net-zero-goal/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.climatechangenews.com/2021/10/06/turkey-ratifies-paris-agreement-approving-2053-net-zero-goal/"
+  },
+  {
     "year": 2022,
     "title": "Turkey Blocks Sweden-Finland NATO Bids; Extracts Concessions",
     "verdict": "TRUE",

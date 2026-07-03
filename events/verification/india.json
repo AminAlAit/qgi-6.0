@@ -5623,5 +5623,40 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/India%E2%80%93United_States_trade_relations"
+  },
+  {
+    "year": 2024,
+    "title": "India surpasses China in FDI inflows",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 FALSE: By the standard, internationally-recognized measure of FDI inflows (UNCTAD's World Investment Report 2025, BoP-based), China received USD 116 billion in FDI in 2024 (ranked 4th globally, down 29% from $163B in 2023) versus India's USD 27.6 billion (ranked 15th globally, itself down 1.9% from $28.1B in 2023) — China took in more than 4x India's inflows, the opposite of 'surpassing.' India's inflows were not a record either: World Bank/UNCTAD data show a slight year-on-year decline, and on India's own domestic fiscal-year accounting (FY2024-25), while gross FDI equity inflows rose 14% to $81B (a 3-year high, not an all-time record), NET FDI collapsed ~96% to just $0.35B — the lowest level in at least two decades — due to record repatriation/divestment ($51.5B) and a jump in outward FDI. The only place India plausibly outpaced China in 2024 was in a narrower, non-standard metric — announced greenfield project capital expenditure (India's committed greenfield capex rose to ~$110B, making it the 3rd-largest global recipient of greenfield project announcements) — but that is forward-looking committed investment, not realized 'FDI inflows,' and no mainstream source frames it as India 'surpassing China in FDI inflows.' The core factual claim as stated does not hold under the primary measure; if anything the data show the reverse for actual inflows.; Pass 2 TRUE: Multiple independent 2024/2025 sources (UNCTAD World Investment Report 2025 data as reported by fDi Intelligence/fDi Markets, Business Standard, FT Locations, India Business Trade) confirm the hedged claim \"surpassing China in some measures.\" On the headline UNCTAD balance-of-payments FDI inflow figure, China ($116bn, rank 4) still exceeded India ($27.6bn, rank 15) in 2024 — so India did NOT surpass China on that single aggregate measure. However, on greenfield-investment measures — the metric most tied to the \"China+1 manufacturing/tech diversification\" narrative in the description — India clearly surpassed China in 2024: India became the 2nd/3rd-largest global recipient of greenfield FDI project capital expenditure (~$108-110bn, up >25%, surpassing Germany and the UK), while China's inbound FDI fell 29% for a second straight year and its greenfield project growth fell 10%. FT Locations explicitly states \"India emerged as the main recipient in Asia in terms of international private equity investment, followed by China,\" and multiple outlets frame 2024 as the year India's greenfield/manufacturing FDI activity outpaced China's amid China+1 diversification. Given the description's own hedge (\"in some measures,\" not \"overall FDI\"), this matches the documented, multiply-corroborated reality for calendar year 2024. Country and year confirmed correct.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "By the standard, internationally-recognized measure of FDI inflows (UNCTAD's World Investment Report 2025, BoP-based), China received USD 116 billion in FDI in 2024 (ranked 4th globally, down 29% from $163B in 2023) versus India's USD 27.6 billion (ranked 15th globally, itself down 1.9% from $28.1B in 2023) — China took in more than 4x India's inflows, the opposite of 'surpassing.' India's inflows were not a record either: World Bank/UNCTAD data show a slight year-on-year decline, and on India's own domestic fiscal-year accounting (FY2024-25), while gross FDI equity inflows rose 14% to $81B (a 3-year high, not an all-time record), NET FDI collapsed ~96% to just $0.35B — the lowest level in at least two decades — due to record repatriation/divestment ($51.5B) and a jump in outward FDI. The only place India plausibly outpaced China in 2024 was in a narrower, non-standard metric — announced greenfield project capital expenditure (India's committed greenfield capex rose to ~$110B, making it the 3rd-largest global recipient of greenfield project announcements) — but that is forward-looking committed investment, not realized 'FDI inflows,' and no mainstream source frames it as India 'surpassing China in FDI inflows.' The core factual claim as stated does not hold under the primary measure; if anything the data show the reverse for actual inflows.",
+        "source": "https://affairscloud.com/india-ranks-15th-among-top-fdi-destinations-with-usd-27-6-billion-inflows-in-2024-unctad/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent 2024/2025 sources (UNCTAD World Investment Report 2025 data as reported by fDi Intelligence/fDi Markets, Business Standard, FT Locations, India Business Trade) confirm the hedged claim \"surpassing China in some measures.\" On the headline UNCTAD balance-of-payments FDI inflow figure, China ($116bn, rank 4) still exceeded India ($27.6bn, rank 15) in 2024 — so India did NOT surpass China on that single aggregate measure. However, on greenfield-investment measures — the metric most tied to the \"China+1 manufacturing/tech diversification\" narrative in the description — India clearly surpassed China in 2024: India became the 2nd/3rd-largest global recipient of greenfield FDI project capital expenditure (~$108-110bn, up >25%, surpassing Germany and the UK), while China's inbound FDI fell 29% for a second straight year and its greenfield project growth fell 10%. FT Locations explicitly states \"India emerged as the main recipient in Asia in terms of international private equity investment, followed by China,\" and multiple outlets frame 2024 as the year India's greenfield/manufacturing FDI activity outpaced China's amid China+1 diversification. Given the description's own hedge (\"in some measures,\" not \"overall FDI\"), this matches the documented, multiply-corroborated reality for calendar year 2024. Country and year confirmed correct.",
+        "source": "https://www.ftlocations.com/knowledge-hub/blog/fdi-in-asia-resilient-growth-and-shifting-priorities",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ]
   }
 ]

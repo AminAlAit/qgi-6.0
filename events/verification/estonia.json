@@ -1,5 +1,41 @@
 [
   {
+    "year": 1987,
+    "title": "Phosphorite War Halts Soviet Plans to Expand Mining in Northern Estonia",
+    "verdict": "TRUE",
+    "reason": "All material details confirmed by multiple independent sources: Estonian TV revealed Moscow's plans to expand phosphorite mining in Virumaa (northern Estonia) on 25 February 1987; Tartu University students held a protest meeting in the university's main hall in April 1987 (specifically the April 2 'aula meeting' per the Global Nonviolent Action Database); students wore yellow 'Phosphorite - no thanks' T-shirts and protested at May Day demonstrations; Soviet authorities abandoned the mining expansion plans on 18 September 1987 (exact date confirmed via Wikipedia). Concerns about groundwater pollution and mass in-migration of workers match the sourced motivations for opposition. Year and country both hold, and no material detail is off.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material details confirmed: Estonian TV revealed Moscow's plans to expand phosphorite mining in Virumaa (Northern Estonia) on 25 February 1987, sparking what became known as the Phosphorite War; concerns centered on groundwater/environmental degradation and mass in-migration of workers, matching the description. Tartu University students held a protest/condemnation meeting in the university's main hall (aula) in April 1987. At May Day demonstrations, students wore yellow T-shirts reading \"Phosphorite - no thanks.\" Facing sustained public opposition, Soviet authorities abandoned the mining expansion plans on 18 September 1987. Every date and detail in the event description matches independent sourcing exactly.",
+        "source": "https://en.wikipedia.org/wiki/Phosphorite_War",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material details confirmed by multiple independent sources: Estonian TV revealed Moscow's plans to expand phosphorite mining in Virumaa (northern Estonia) on 25 February 1987; Tartu University students held a protest meeting in the university's main hall in April 1987 (specifically the April 2 'aula meeting' per the Global Nonviolent Action Database); students wore yellow 'Phosphorite - no thanks' T-shirts and protested at May Day demonstrations; Soviet authorities abandoned the mining expansion plans on 18 September 1987 (exact date confirmed via Wikipedia). Concerns about groundwater pollution and mass in-migration of workers match the sourced motivations for opposition. Year and country both hold, and no material detail is off.",
+        "source": "https://en.wikipedia.org/wiki/Phosphorite_War",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Phosphorite_War"
+  },
+  {
     "year": 1990,
     "title": "Supreme Soviet Declares Transitional Period to Independence",
     "verdict": "TRUE",

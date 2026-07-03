@@ -2323,5 +2323,41 @@
       }
     ],
     "source": "https://www.pbs.org/wgbh/frontline/article/yazidis-decade-after-isis-genocidal-campaign/"
+  },
+  {
+    "year": 2025,
+    "title": "Iraq's Economic Diversification Efforts",
+    "verdict": "TRUE",
+    "reason": "Confirmed via independent sources: (1) The $17B Iraq Development Road project (1,200km rail/highway corridor from Al Faw Port to Turkish border, part of a quadripartite Iraq-Turkey-Qatar-UAE framework) continued advancing through 2025, with PM al-Sudani inaugurating a 63km completed section on 2025-12-05. (2) The World Bank Board of Executive Directors approved exactly US$930 million on 2025-06-25 for the Iraq Railways Extension and Modernization (IREM) Project, upgrading 1,047km of rail between Umm Qasr and Mosul — matching the description precisely (official World Bank press release, corroborated by Railway Gazette and Iraq Business News). (3) Oil remains ~99% of Iraq's exports per Washington Institute analysis, with the rentier state model still entrenched despite al-Sudani's diversification rhetoric (solar partnerships, flared-gas capture), per BTI Project and Washington Institute reporting. All material details (dollar figures, project names, actors, year) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material claims independently corroborated for 2025: (1) The $17B Development Road project (Faw Port to Turkey border, Gulf-to-Europe transport corridor) advanced through 2025, with PM al-Sudani inaugurating a 63km paved stretch on Dec 5, 2025, and tenders proceeding through the year. (2) World Bank's own June 25, 2025 press release confirms Board approval of a $930 million Iraq Railways Extension and Modernization (IREM) project to rehabilitate 1,047km of railway from Umm Qasr to Mosul, explicitly framed around boosting trade, jobs, and economic diversification. (3) Oil dependency figures (crude ~99% of exports) and entrenched rentier-state dynamics are corroborated by EIA and Washington Institute analysis. (4) PM al-Sudani's rhetorical diversification push (reducing oil reliance, refining, investment, renewables) alongside limited actual structural progress is corroborated by Washington Institute reporting. No off-limits domains were used; World Bank's own site is a primary source.",
+        "source": "https://www.worldbank.org/en/news/press-release/2025/06/25/iraq-new-us-930-million-project-to-extend-and-modernize-railways-promote-regional-connectivity-and-boost-growth",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via independent sources: (1) The $17B Iraq Development Road project (1,200km rail/highway corridor from Al Faw Port to Turkish border, part of a quadripartite Iraq-Turkey-Qatar-UAE framework) continued advancing through 2025, with PM al-Sudani inaugurating a 63km completed section on 2025-12-05. (2) The World Bank Board of Executive Directors approved exactly US$930 million on 2025-06-25 for the Iraq Railways Extension and Modernization (IREM) Project, upgrading 1,047km of rail between Umm Qasr and Mosul — matching the description precisely (official World Bank press release, corroborated by Railway Gazette and Iraq Business News). (3) Oil remains ~99% of Iraq's exports per Washington Institute analysis, with the rentier state model still entrenched despite al-Sudani's diversification rhetoric (solar partnerships, flared-gas capture), per BTI Project and Washington Institute reporting. All material details (dollar figures, project names, actors, year) check out.",
+        "source": "https://www.worldbank.org/en/news/press-release/2025/06/25/iraq-new-us-930-million-project-to-extend-and-modernize-railways-promote-regional-connectivity-and-boost-growth",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.worldbank.org/en/news/press-release/2025/06/25/iraq-new-us-930-million-project-to-extend-and-modernize-railways-promote-regional-connectivity-and-boost-growth"
   }
 ]

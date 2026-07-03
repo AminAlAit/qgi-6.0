@@ -501,31 +501,6 @@
   },
   {
     "year": 1994,
-    "title": "Washington Agreement Ends Croat-Muslim War",
-    "verdict": "TRUE",
-    "reason": "Washington Agreement of March 1994 ended the Croat-Muslim conflict, established the Federation of Bosnia and Herzegovina under US brokerage.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Washington Agreement of March 1994 ended the Croat-Muslim conflict, established the Federation of Bosnia and Herzegovina under US brokerage.",
-        "source": "https://en.wikipedia.org/wiki/Washington_Agreement",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Washington_Agreement"
-  },
-  {
-    "year": 1994,
     "title": "Markale Marketplace Massacre Triggers NATO Ultimatum",
     "verdict": "TRUE",
     "reason": "First Markale massacre: 5 February 1994; 68 killed, 144 wounded (event says 'over 140' — confirmed). NATO ultimatum followed.",
@@ -550,10 +525,10 @@
     "source": "https://en.wikipedia.org/wiki/Markale_massacres"
   },
   {
-    "year": 1995,
-    "title": "Srebrenica Genocide — 8,000 Bosniak Men and Boys Executed",
+    "year": 1994,
+    "title": "Washington Agreement Ends Croat-Muslim War",
     "verdict": "TRUE",
-    "reason": "July 1995; ~8,000 executed; ICJ and ICTY both ruled genocide. All stated facts confirmed.",
+    "reason": "Washington Agreement of March 1994 ended the Croat-Muslim conflict, established the Federation of Bosnia and Herzegovina under US brokerage.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -563,8 +538,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "July 1995; ~8,000 executed; ICJ and ICTY both ruled genocide. All stated facts confirmed.",
-        "source": "https://www.un.org/en/observances/srebrenica-genocide-commemoration-day/about",
+        "reason": "Washington Agreement of March 1994 ended the Croat-Muslim conflict, established the Federation of Bosnia and Herzegovina under US brokerage.",
+        "source": "https://en.wikipedia.org/wiki/Washington_Agreement",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -572,7 +547,32 @@
         }
       }
     ],
-    "source": "https://www.un.org/en/observances/srebrenica-genocide-commemoration-day/about"
+    "source": "https://en.wikipedia.org/wiki/Washington_Agreement"
+  },
+  {
+    "year": 1995,
+    "title": "Dayton Peace Agreement Ends Bosnian War",
+    "verdict": "TRUE",
+    "reason": "Initialed 21 November 1995 at Wright-Patterson AFB; signed in Paris 14 December 1995. Two-entity structure and OHR confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Initialed 21 November 1995 at Wright-Patterson AFB; signed in Paris 14 December 1995. Two-entity structure and OHR confirmed.",
+        "source": "https://www.ohr.int/dayton-peace-agreement/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.ohr.int/dayton-peace-agreement/"
   },
   {
     "year": 1995,
@@ -601,9 +601,9 @@
   },
   {
     "year": 1995,
-    "title": "Dayton Peace Agreement Ends Bosnian War",
+    "title": "Srebrenica Genocide — 8,000 Bosniak Men and Boys Executed",
     "verdict": "TRUE",
-    "reason": "Initialed 21 November 1995 at Wright-Patterson AFB; signed in Paris 14 December 1995. Two-entity structure and OHR confirmed.",
+    "reason": "July 1995; ~8,000 executed; ICJ and ICTY both ruled genocide. All stated facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -613,8 +613,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Initialed 21 November 1995 at Wright-Patterson AFB; signed in Paris 14 December 1995. Two-entity structure and OHR confirmed.",
-        "source": "https://www.ohr.int/dayton-peace-agreement/",
+        "reason": "July 1995; ~8,000 executed; ICJ and ICTY both ruled genocide. All stated facts confirmed.",
+        "source": "https://www.un.org/en/observances/srebrenica-genocide-commemoration-day/about",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -622,7 +622,7 @@
         }
       }
     ],
-    "source": "https://www.ohr.int/dayton-peace-agreement/"
+    "source": "https://www.un.org/en/observances/srebrenica-genocide-commemoration-day/about"
   },
   {
     "year": 1996,
@@ -801,31 +801,6 @@
   },
   {
     "year": 2004,
-    "title": "Stari Most Reopened — UNESCO World Heritage Symbol Restored",
-    "verdict": "TRUE",
-    "reason": "Official reopening 23 July 2004 confirmed; UNESCO World Heritage inscription 2005 confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Official reopening 23 July 2004 confirmed; UNESCO World Heritage inscription 2005 confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Stari_Most",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Stari_Most"
-  },
-  {
-    "year": 2004,
     "title": "EUFOR Operation Althea Replaces NATO SFOR in Bosnia",
     "verdict": "TRUE",
     "reason": "NATO SFOR replaced by EUFOR Operation Althea December 2004.",
@@ -848,6 +823,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/EUFOR_Althea"
+  },
+  {
+    "year": 2004,
+    "title": "Stari Most Reopened — UNESCO World Heritage Symbol Restored",
+    "verdict": "TRUE",
+    "reason": "Official reopening 23 July 2004 confirmed; UNESCO World Heritage inscription 2005 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Official reopening 23 July 2004 confirmed; UNESCO World Heritage inscription 2005 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Stari_Most",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Stari_Most"
   },
   {
     "year": 2005,
@@ -1076,6 +1076,31 @@
   },
   {
     "year": 2016,
+    "title": "Bosnia Submits Formal EU Membership Application",
+    "verdict": "TRUE",
+    "reason": "Bosnia formally applied for EU membership 15 February 2016; Commission questionnaire followed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bosnia formally applied for EU membership 15 February 2016; Commission questionnaire followed.",
+        "source": "https://en.wikipedia.org/wiki/Accession_of_Bosnia_and_Herzegovina_to_the_European_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Accession_of_Bosnia_and_Herzegovina_to_the_European_Union"
+  },
+  {
+    "year": 2016,
     "title": "Karadžić Convicted of Genocide, Sentenced to 40 Years (Later Life)",
     "verdict": "TRUE",
     "reason": "Convicted 24 March 2016; 40-year sentence; increased to life on appeal March 2019.",
@@ -1123,31 +1148,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2016_Republika_Srpska_referendum"
-  },
-  {
-    "year": 2016,
-    "title": "Bosnia Submits Formal EU Membership Application",
-    "verdict": "TRUE",
-    "reason": "Bosnia formally applied for EU membership 15 February 2016; Commission questionnaire followed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Bosnia formally applied for EU membership 15 February 2016; Commission questionnaire followed.",
-        "source": "https://en.wikipedia.org/wiki/Accession_of_Bosnia_and_Herzegovina_to_the_European_Union",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Accession_of_Bosnia_and_Herzegovina_to_the_European_Union"
   },
   {
     "year": 2017,
@@ -1273,6 +1273,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2022_Bosnian_general_election"
+  },
+  {
+    "year": 2023,
+    "title": "Sarajevo Declares State of Emergency Over Extreme Air Pollution",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm the Sarajevo Canton Government declared emergency pollution measures around 20-21 December 2023 after PM2.5 hit 245 µg/m3, reported as 49 times the WHO-tolerated level — matching the description's figures exactly. Euronews Albania reports the state of emergency covered the four municipalities of Sarajevo, banning EURO 3 (older) vehicles from traffic and closing dust-emitting facilities where possible — again matching the description almost verbatim. Euronews.com (2023-12-21) independently corroborates Sarajevo topping world's-most-polluted-city rankings during this exact window (IQAir AQI 301, 'very unhealthy'), with toxic fog since December. One minor nuance: the official Bosnian government term for the alert tier is 'Uzbuna' (Alarm/Alert episode) rather than a literal constitutional 'state of emergency,' but this is the standard English-media translation used by Euronews and other outlets, not a material misdescription — the substantive facts (pollution level, date, measures) all check out. The wood/coal-heating + coal power plant causation is well-established, widely-reported background for Sarajevo/BiH winter pollution, consistent with (though not independently re-verified word-for-word in) the fetched sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the Sarajevo Canton government declared a state of emergency/alert for the four municipalities of Sarajevo in December 2023 due to extreme air pollution. Euronews Albania (citing AP wire content) reports PM2.5 at 245 micrograms per cubic meter, 49 times the WHO-tolerated level, and states the emergency banned EURO 3 (and lower) vehicles from city traffic and ordered closure of dust-emitting facilities where feasible -- matching the candidate description essentially verbatim. Radio Sarajevo (independent Bosnian-language outlet) corroborates the same December 2023 crisis, EURO 3 vehicle restrictions, and coal/wood household heating as the dominant pollution source, consistent with Bosnia's heavy reliance on coal-fired power plants. Euronews.com and RFE/RL confirm Sarajevo topped the world's most-polluted-city rankings for consecutive days in mid-to-late December 2023 (AQI ~301-500+), consistent with the described crisis. One minor discrepancy: the euronews.al source dates the declaration to \"Thursday, December 21, 2023\" rather than the \"20 December 2023\" given in the candidate description -- a one-day date variance that does not change year, country, actor, or scope, and is well within normal reporting-lag variance (declaration vs. published-report date). All material facts (country, year, actor, magnitude, measures, causal mechanism) are corroborated by multiple independent sources, so this does not rise to a PARTIAL-triggering discrepancy.",
+        "source": "https://euronews.al/en/state-of-emergency-declared-in-sarajevo-due-to-alarming-air-pollution/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the Sarajevo Canton Government declared emergency pollution measures around 20-21 December 2023 after PM2.5 hit 245 µg/m3, reported as 49 times the WHO-tolerated level — matching the description's figures exactly. Euronews Albania reports the state of emergency covered the four municipalities of Sarajevo, banning EURO 3 (older) vehicles from traffic and closing dust-emitting facilities where possible — again matching the description almost verbatim. Euronews.com (2023-12-21) independently corroborates Sarajevo topping world's-most-polluted-city rankings during this exact window (IQAir AQI 301, 'very unhealthy'), with toxic fog since December. One minor nuance: the official Bosnian government term for the alert tier is 'Uzbuna' (Alarm/Alert episode) rather than a literal constitutional 'state of emergency,' but this is the standard English-media translation used by Euronews and other outlets, not a material misdescription — the substantive facts (pollution level, date, measures) all check out. The wood/coal-heating + coal power plant causation is well-established, widely-reported background for Sarajevo/BiH winter pollution, consistent with (though not independently re-verified word-for-word in) the fetched sources.",
+        "source": "https://euronews.al/en/state-of-emergency-declared-in-sarajevo-due-to-alarming-air-pollution/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://euronews.al/en/state-of-emergency-declared-in-sarajevo-due-to-alarming-air-pollution/"
   },
   {
     "year": 2024,

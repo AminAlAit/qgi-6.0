@@ -1571,13 +1571,13 @@
   {
     "year": 2024,
     "title": "IMF and World Bank resume engagement — economic reform dialogue",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: Confirmed from multiple independent sources that in 2024 both the IMF and World Bank had substantial, active structured policy engagement with Burundi. IMF: staff mission Jan 11-21 2024 held first-review discussions under the July 2023 ECF arrangement (Burundi's first UCT-quality IMF program since 2015), with fiscal consolidation under the revised 2023/24 budget, FX market liberalization, and structural reforms modernizing the coffee and mining sectors explicitly cited as program priorities (imf.org PR2419, Jan 2024; IMF Country Report 23/270). World Bank: in August 2024 signed nearly half a billion dollars in new financing with Burundi's government — a $113M urban resilience project, $100M clean-energy access project, and a $227.6M human-capital project — plus a January 2024 PFM support boost and Burundi's new IDA PRA eligibility (75% funding increase for FY24-25), described by local press as the Bank's effort to \"revive the country.\" Poverty framing checks out: multiple sources place Burundi's 2024 GDP per capita in the $150-190 range (well below $300) and rank it among the world's poorest nations, with ~80% of the population dependent on subsistence agriculture. One nuance: the *formal* re-engagement/resumption milestones (IMF's first Article IV consultation since 2014, concluded 2022; first IMF loan in 8 years, approved July 2023) technically predate 2024 — 2024 itself was a year of continuing/deepening that resumed engagement (ECF first-review, new IMF Article IV mission prep, and major new WB financing) rather than the literal first resumption. This is a minor timing/framing imprecision, not a substantive error — country, actors, and reform substance (fiscal consolidation, coffee-sector reform focus, extreme poverty context) all hold for 2024, and concrete, sourced IMF/World Bank activity did occur in that year, so the event is materially accurate as described.; Pass 2 FALSE: The substance (IMF/World Bank re-engagement with Burundi after Nkurunziza-era isolation, focused on fiscal consolidation and coffee-sector reform) is real, but the year is wrong — the resumption did not happen in 2024. It happened years earlier as a phased process: Ndayishimiye took office in May 2020 and began reconnecting with donors (resumed IMF data provision, restarted WHO/World Bank COVID cooperation); the IMF approved emergency RCF financing (~$76.2M) in 2021; the 2022 Article IV Consultation (completed July 2022) was explicitly described by the IMF as sealing 'the full reengagement' — the first Article IV since 2014; and in July 2023 the IMF Executive Board approved a $261.7M, 38-month Extended Credit Facility arrangement, Burundi's first major IMF program since 2015, with structural benchmarks covering fiscal consolidation and coffee/mining sector reform. By 2024, the only IMF Burundi action was the routine 'first review' of that already-active ECF program (Jan 2024 mission, completed later in 2024) — a continuation, not a resumption. World Bank engagement also deepened gradually from 2020-2024 (e.g., a Jan 2024 PFM support announcement) rather than 'resuming' in a discrete 2024 event; per World Bank DSA documents, full budget support had still not resumed even by FY2024. Framing 2024 as the year engagement 'resumed... following years of reduced engagement' misdates a milestone that actually occurred in 2022 (IMF full reengagement) / 2023 (major financing program restored). GDP-per-capita-below-$300 detail is accurate but doesn't rescue the year.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
-    "source_independence": "weak",
+    "verdict": "FALSE",
+    "reason": "The described \"resumption\" of IMF/World Bank engagement with Burundi did not happen in 2024 — it had already occurred years earlier. IMF Article IV consultations (last held 2014) resumed in 2021 and the IMF's own July 2022 press release states the 2022 Article IV Consultation \"sealed the full reengagement\" with Burundi; EU/US sanctions were lifted in late 2021/early 2022. By 2023 Burundi had a full IMF financing program: a 38-month, $271m Extended Credit Facility (ECF) arrangement was approved in July 2023, and the World Bank published its flagship Country Economic Memorandum in May 2023 explicitly recommending trade/agriculture reforms (including coffee, which accounts for over half of export earnings) to reduce dependence on subsistence farming and boost growth — matching the description's specific policy content almost exactly, but a year earlier than claimed. What actually happened in 2024 was continuation of that already-established program (IMF's first ECF review mission, Jan 2024; a World Bank AFISC smallholder-farmer project announced Jan 2024) — deepening of dialogue, not a \"resumption... following years of reduced engagement.\" The GDP-per-capita detail (below $300) is independently confirmed as accurate for Burundi in this period, but the core dated claim — that IMF/WB engagement resumed in 2024 — is materially wrong on timing; the substantive resumption/reform-agenda cluster centers on 2021-2023, most concretely 2023.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
+    "source_independence": "same_domain",
     "verifications": [
       {
         "pass_n": 1,
@@ -1601,8 +1601,22 @@
           "method": "web_search"
         },
         "corrected_year": 2023
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "The described \"resumption\" of IMF/World Bank engagement with Burundi did not happen in 2024 — it had already occurred years earlier. IMF Article IV consultations (last held 2014) resumed in 2021 and the IMF's own July 2022 press release states the 2022 Article IV Consultation \"sealed the full reengagement\" with Burundi; EU/US sanctions were lifted in late 2021/early 2022. By 2023 Burundi had a full IMF financing program: a 38-month, $271m Extended Credit Facility (ECF) arrangement was approved in July 2023, and the World Bank published its flagship Country Economic Memorandum in May 2023 explicitly recommending trade/agriculture reforms (including coffee, which accounts for over half of export earnings) to reduce dependence on subsistence farming and boost growth — matching the description's specific policy content almost exactly, but a year earlier than claimed. What actually happened in 2024 was continuation of that already-established program (IMF's first ECF review mission, Jan 2024; a World Bank AFISC smallholder-farmer project announced Jan 2024) — deepening of dialogue, not a \"resumption... following years of reduced engagement.\" The GDP-per-capita detail (below $300) is independently confirmed as accurate for Burundi in this period, but the core dated claim — that IMF/WB engagement resumed in 2024 — is materially wrong on timing; the substantive resumption/reform-agenda cluster centers on 2021-2023, most concretely 2023.",
+        "source": "https://www.worldbank.org/en/news/press-release/2023/05/17/burundi-afe-greater-macroeconomic-stability-and-reforms-in-the-trade-and-agriculture-sectors-can-boost-economic-growth",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2023
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://www.worldbank.org/en/news/press-release/2023/05/17/burundi-afe-greater-macroeconomic-stability-and-reforms-in-the-trade-and-agriculture-sectors-can-boost-economic-growth"
   },
   {
     "year": 2023,
@@ -1639,5 +1653,43 @@
       }
     ],
     "source": "https://burundi-eco.com/campagne-cafe-2023-2024-le-prix-au-producteur-du-cafe-cerise-est-passe-de-800-fbu-a-1200-fbu-le-kg/"
+  },
+  {
+    "year": 1973,
+    "title": "Burundi joins the East African Community",
+    "verdict": "FALSE",
+    "reason": "The original East African Community (EAC) was founded in June 1967 by the Treaty for East African Co-operation, with only three members: Kenya, Tanzania, and Uganda. Burundi was never part of that original bloc, which collapsed in 1977. The EAC was revived in 2000, and Burundi (along with Rwanda) only acceded to the EAC Treaty on 18 June 2007, becoming a full member effective 1 July 2007. There is no evidence of any Burundi-EAC relationship in 1973 — the event as described did not happen in that year; the correct year for Burundi's actual EAC accession is 2007.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The original East African Community (EAC) was founded in 1967 by only Kenya, Tanzania, and Uganda via the Treaty for East African Co-operation; it collapsed in 1977. Burundi was never a member of that first EAC and there is no record of Burundi joining in 1973. Burundi actually joined the (revived, post-2000) EAC on 1 July 2007, alongside Rwanda — more than 30 years after the described event and after the original community's collapse. The event as described (country, year, and membership claim) does not match the historical record.",
+        "source": "https://en.wikipedia.org/wiki/East_African_Community",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2007
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The original East African Community (EAC) was founded in June 1967 by the Treaty for East African Co-operation, with only three members: Kenya, Tanzania, and Uganda. Burundi was never part of that original bloc, which collapsed in 1977. The EAC was revived in 2000, and Burundi (along with Rwanda) only acceded to the EAC Treaty on 18 June 2007, becoming a full member effective 1 July 2007. There is no evidence of any Burundi-EAC relationship in 1973 — the event as described did not happen in that year; the correct year for Burundi's actual EAC accession is 2007.",
+        "source": "https://www.voanews.com/a/a-13-2007-07-12-voa37/406029.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2007
+      }
+    ],
+    "source": "https://www.voanews.com/a/a-13-2007-07-12-voa37/406029.html"
   }
 ]

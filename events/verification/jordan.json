@@ -2487,6 +2487,44 @@
   },
   {
     "year": 2021,
+    "title": "Jordan Launches Green Growth National Action Plan 2021-2025",
+    "verdict": "FALSE",
+    "reason": "The plan itself is real and matches the description (Ministry of Environment + GGGI, six sectors: agriculture, energy, tourism, transport, waste, water, five national objectives, builds on Jordan's 2017 green growth declaration) — but it was launched/published in 2020, not 2021. GGGI's own event page, titled 'Launch of the Green Growth National Action Plan 2021-2025,' states the virtual launch ceremony with Jordan's Minister of Environment Saleh Al Kharabsheh and GGGI Director-General Frank Rijsberman was held on July 6, 2020. Independently, climate-laws.org lists the Transport Sector GG-NAP document's publication Year as 2020, and the official sector PDF hosted on sustainability.gov (energy sector) carries an internal creation timestamp of 2020/08/31. The '2021-2025' in the plan's name refers to its implementation period, not its launch date — a name-vs-launch-date trap. Year is therefore wrong; country and substantive content hold.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event is real in substance — Jordan's Ministry of Environment, with GGGI support, developed and launched the Green Growth National Action Plan 2021-2025 (GG-NAP) covering agriculture, energy, tourism, transport, waste, and water, building on Jordan's 2017 green-growth declaration — but the launch happened in 2020, not 2021. Multiple independent sources (GGGI's own launch page, Jordan Times headline, and search-snippet corroboration) confirm the GGGI/Ministry of Environment held a virtual launch ceremony for the GG-NAP on July 6, 2020, with Minister Saleh Al Kharabsheh giving opening remarks. GGGI's own published agriculture-sector action-plan report (part of the same GG-NAP package) is dated October 28, 2020. The '2021-2025' in the title refers to the plan's forward-looking implementation period, not the year it was launched. Since year is a join key and the actual launch year (2020) does not match the input year (2021), this is a year-wrong FALSE per the hard rules, with corrected_year=2020.",
+        "source": "https://gggi.org/launch-of-the-green-growth-national-action-plan-2021-2025/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2020
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The plan itself is real and matches the description (Ministry of Environment + GGGI, six sectors: agriculture, energy, tourism, transport, waste, water, five national objectives, builds on Jordan's 2017 green growth declaration) — but it was launched/published in 2020, not 2021. GGGI's own event page, titled 'Launch of the Green Growth National Action Plan 2021-2025,' states the virtual launch ceremony with Jordan's Minister of Environment Saleh Al Kharabsheh and GGGI Director-General Frank Rijsberman was held on July 6, 2020. Independently, climate-laws.org lists the Transport Sector GG-NAP document's publication Year as 2020, and the official sector PDF hosted on sustainability.gov (energy sector) carries an internal creation timestamp of 2020/08/31. The '2021-2025' in the plan's name refers to its implementation period, not its launch date — a name-vs-launch-date trap. Year is therefore wrong; country and substantive content hold.",
+        "source": "https://gggi.org/launch-of-the-green-growth-national-action-plan-2021-2025/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2020
+      }
+    ],
+    "source": "https://gggi.org/launch-of-the-green-growth-national-action-plan-2021-2025/"
+  },
+  {
+    "year": 2021,
     "title": "Royal Family Rift — Prince Hamzah Affair",
     "verdict": "TRUE",
     "reason": "King Abdullah placed his half-brother Prince Hamzah under house arrest in April 2021, accusing him of participating in a foreign-backed destabilization plot; two co-conspirators were sentenced to 15 years in prison.",

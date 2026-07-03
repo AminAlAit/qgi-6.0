@@ -151,6 +151,43 @@
   },
   {
     "year": 1963,
+    "title": "Recurrent Drought Devastates Somali Pastoral Economy",
+    "verdict": "FALSE",
+    "reason": "Extensive web searching (15+ queries covering Somalia drought history, FAO veterinary/rinderpest campaigns, EM-DAT-style disaster listings, I.M. Lewis's Somali drought scholarship, USAID/State Dept archives, and general Somali economic history) turned up zero corroboration for a drought or livestock-disease emergency in Somalia specifically in 1963. No source — academic, FAO, Wikipedia, or news archive — references a 1963 Somali drought, and one source explicitly notes Somalia 'remained virtually self-sufficient in food until the 1970s.' By contrast, the Wikipedia 'Economic history of Somalia' article documents a real, well-known event matching this description's shape almost exactly but dated over a decade later: 'During 1974–75 a drought devastated the pastoral economy,' with the same article noting that FAO had foreseen this in a 1967 report on range deterioration. Somalia's JP15 rinderpest/livestock-disease vaccination campaign coverage of the country also falls in the mid-to-late 1970s (phases IV-VI), not 1963. This pattern (real event type, wrong year) strongly indicates the ticket's event is a mis-dated version of the 1974-75 Somali drought/pastoral-economy crisis rather than a genuine 1963 occurrence. I could not find a source confirming the specific FAO-veterinary-vaccine detail for 1974-75 either, so corrected_year should be treated as an approximate best match (1974) rather than a fully verified replacement.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "UNCERTAIN",
+        "reason": "I ran roughly 20 targeted web searches (drought chronologies, EM-DAT, FAO historical records, Wikipedia \"1963 in Somalia\", country-study economic histories, named-drought lists, Italian-language sources, NYT/UN archives) and could not find any independent source confirming a 1963 drought/livestock-disease event in Somalia with FAO emergency vaccines and food aid. Wikipedia's \"1963 in Somalia\" content covers only the Ogaden rebellion, municipal elections, and Somalia-Britain/Kenya diplomatic rupture — no drought. Documented named Somali droughts (Xarama-cune 1913-14, Abaartii Dabadheer 1973-75, Mahanaw 1980s, Mahadiid 1990s, Sima 2011+) do not include 1963. The one closest academic source I could fully verify — Abdulkadir G. (2017), \"Assessment of Drought Recurrence in Somaliland,\" J. Climatol. Weather Forecasting 5:204 (FAO-SWALIM affiliated author), Table 3 \"Historical drought disasters in Somaliland\" — lists the earliest entry as a bare \"Drought, 1964\" (not 1963), with no accompanying narrative about livestock disease, cattle/camel die-offs, or FAO vaccine/food-aid response, so it neither confirms the year nor the material details claimed. This is too thin and off by a year to support TRUE/PARTIAL, and not solid enough to confidently assert FALSE with a corrected year either. I found background on OAU's 1962 \"Joint Project 15\" continent-wide rinderpest-eradication campaign (which did involve Somalia among other East African countries in the 1960s) but no source ties a specific 1963 drought/vaccination emergency to Somalia. Given the total absence of a source that either confirms or clearly refutes this specific 1963 event, I cannot resolve it beyond UNCERTAIN.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Extensive web searching (15+ queries covering Somalia drought history, FAO veterinary/rinderpest campaigns, EM-DAT-style disaster listings, I.M. Lewis's Somali drought scholarship, USAID/State Dept archives, and general Somali economic history) turned up zero corroboration for a drought or livestock-disease emergency in Somalia specifically in 1963. No source — academic, FAO, Wikipedia, or news archive — references a 1963 Somali drought, and one source explicitly notes Somalia 'remained virtually self-sufficient in food until the 1970s.' By contrast, the Wikipedia 'Economic history of Somalia' article documents a real, well-known event matching this description's shape almost exactly but dated over a decade later: 'During 1974–75 a drought devastated the pastoral economy,' with the same article noting that FAO had foreseen this in a 1967 report on range deterioration. Somalia's JP15 rinderpest/livestock-disease vaccination campaign coverage of the country also falls in the mid-to-late 1970s (phases IV-VI), not 1963. This pattern (real event type, wrong year) strongly indicates the ticket's event is a mis-dated version of the 1974-75 Somali drought/pastoral-economy crisis rather than a genuine 1963 occurrence. I could not find a source confirming the specific FAO-veterinary-vaccine detail for 1974-75 either, so corrected_year should be treated as an approximate best match (1974) rather than a fully verified replacement.",
+        "source": "https://en.wikipedia.org/wiki/Economic_history_of_Somalia",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1974
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Economic_history_of_Somalia"
+  },
+  {
+    "year": 1963,
     "title": "Somalia Severs Diplomatic Relations with Britain over NFD",
     "verdict": "TRUE",
     "reason": "Confirmed: March 18, 1963, Somalia severed diplomatic relations with Britain following Britain's decision to include the NFD in Kenya despite the Somali population's preference for union with Somalia.",
@@ -550,6 +587,79 @@
     "source": "https://en.wikipedia.org/wiki/Isaaq_genocide"
   },
   {
+    "year": 1984,
+    "title": "Mass Killings of Civilians and Famine in Northern Somalia",
+    "verdict": "FALSE",
+    "reason": "Two compound claims, both misdated/unsupported for 1984. (1) Isaaq persecution: real documented 1984 incidents exist (Oct 15 1984 Gogol Wanaag: 6 executed; Nov 17 1984 Boqol Jirreh: 26 sentenced to death; Dec 1984 Burao: 43 executed — per Wikipedia's Isaaq genocide timeline, sourced to Africa Watch), but these are isolated reprisal executions of dozens of people, not the \"mass killings\" / systematic village-burning-and-well-poisoning campaign the description implies. Human Rights Watch/Africa Watch, the Lemkin Institute, and UN findings all bound the actual genocidal mass-killing campaign (est. 200,000 Isaaq dead, systematic destruction of settlements and water points) to 1987-1989, triggered by the SNM's May 1988 offensive and the bombardment of Hargeisa/Burao — not 1984. (2) Famine claim: multiple independent sources state the 1984 Horn of Africa drought produced catastrophic famine in Ethiopia but explicitly did NOT produce famine in Somalia that year (the government mobilized relief; Somalia's next major famine was 1991-92). No corroborating source was found for a \"significant famine emergency\" newly developing in southern/central Somalia in 1984 specifically. Given the year is essentially wrong for the severity/nature of the killings campaign, and the famine component appears to have no factual basis for 1984, this does not hold materially as described for the stated year. Country (Somalia) and general phenomenon (Isaaq persecution under Barre) are real, but the compound event as dated to 1984 is not supported.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Two compound claims, both misdated/unsupported for 1984. (1) Isaaq persecution: real documented 1984 incidents exist (Oct 15 1984 Gogol Wanaag: 6 executed; Nov 17 1984 Boqol Jirreh: 26 sentenced to death; Dec 1984 Burao: 43 executed — per Wikipedia's Isaaq genocide timeline, sourced to Africa Watch), but these are isolated reprisal executions of dozens of people, not the \"mass killings\" / systematic village-burning-and-well-poisoning campaign the description implies. Human Rights Watch/Africa Watch, the Lemkin Institute, and UN findings all bound the actual genocidal mass-killing campaign (est. 200,000 Isaaq dead, systematic destruction of settlements and water points) to 1987-1989, triggered by the SNM's May 1988 offensive and the bombardment of Hargeisa/Burao — not 1984. (2) Famine claim: multiple independent sources state the 1984 Horn of Africa drought produced catastrophic famine in Ethiopia but explicitly did NOT produce famine in Somalia that year (the government mobilized relief; Somalia's next major famine was 1991-92). No corroborating source was found for a \"significant famine emergency\" newly developing in southern/central Somalia in 1984 specifically. Given the year is essentially wrong for the severity/nature of the killings campaign, and the famine component appears to have no factual basis for 1984, this does not hold materially as described for the stated year. Country (Somalia) and general phenomenon (Isaaq persecution under Barre) are real, but the compound event as dated to 1984 is not supported.",
+        "source": "https://en.wikipedia.org/wiki/Isaaq_genocide",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1988
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The human-rights-violation core of the event is confirmed for Somalia/1984: per Human Rights Watch's Africa Watch report \"Somalia: A Government at War with Its Own People\" (Jan 1990), \"from early 1984, the 12th Division was used against the local Isaaq population,\" and it documents specific dated 1984 atrocities — six Isaaq men executed at Gogol Wanaag (Oct 1984), 26 civilians sentenced to death by a mobile military court at Boqol Jirreh (Nov 1984), and 43 Isaaq men executed in Burao central prison (Dec 1984) — i.e., organized summary executions of Isaaq civilians suspected of SNM sympathies did occur in 1984, consistent with the description's \"summary executions\" element. However, the description's specific tactics of \"burning villages\" and \"poisoning wells\" are documented parts of the broader Isaaq counter-insurgency campaign but are attested in the sources mainly for the 1987-89 peak (the ~200,000-death \"genocide\" phase, Hargeisa/Burao bombardment from May 1988), not specifically dated to 1984 in any source I found — so calling 1984 itself a year of \"mass killings\" (plural, large-scale) somewhat overstates the scale versus the escalating/early phase it actually was. More importantly, the famine claim is not corroborated and appears to be a conflation with a different country's crisis: multiple independent sources state the well-known 1984-85 Horn of Africa famine devastated Ethiopia specifically, and list Somalia's own UN-recognized famine declarations as 1991-92 and 2011 only (with a mid-80s Somalia drought/nutrition crisis documented instead for 1986-87, per a CDC MMWR report on a 1987 nutrition survey following 1986 drought). I found no independent source describing a \"significant famine emergency\" in southern/central Somalia specifically in 1984. Country and year hold for the core violent-repression narrative, but the famine detail is a material inaccuracy/likely conflation, so this is PARTIAL rather than TRUE.",
+        "source": "https://en.wikipedia.org/wiki/Isaaq_genocide",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Isaaq_genocide"
+  },
+  {
+    "year": 1987,
+    "title": "Economic Collapse and IMF Structural Adjustment",
+    "verdict": "PARTIAL",
+    "reason": "The core economic narrative checks out: Somalia's IMF/AID-driven structural adjustment process was real and materially matches the description around 1987 — the 1987-91 Five-Year Plan wrote privatization into policy, a foreign-exchange auction system (devaluation mechanism) had begun in Sept 1986 and continued merging pegged/market rates through 1987-88, the fiscal deficit was cut from 10% to 7% of GDP, fuel/rent/sales taxes were raised, and thousands of civil servants had been dismissed with real wages falling — all consistent with 'immediate hardship, rising prices, deteriorating services, falling civil-service pay' (countrystudies.us Library of Congress study; onlinelibrary.wiley.com Jamal 1988). SNM (founded 1981) and SSDF (founded 1978) were indeed both fighting Barre's regime by 1987, confirmed by documented 1987 SNM attacks. However, the added claim that 'the United Somali Congress (USC)...also formed in 1987' is not supported — multiple independent sources converge on the USC being founded on 7 or 12 January 1989 in Rome (Wikipedia's United Somali Congress article; an independent academic journal article in Cahiers d'Études Africaines at journals.openedition.org/etudesafricaines/26951, which states 'On 12 January 1989 at the Hotel Andaluus in Rome, Italy, exiled Hawiye political actors...declare[d] the formation of the USC'). So Barre did not yet face 'simultaneous armed opposition from the SNM, SSDF, and USC' in 1987 — that three-way configuration only existed from 1989. This is a material actor/timing detail embedded in the event that is off by two years, while the core economic-collapse/SAP event and country/primary-year hold.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The core economic claim checks out: Somalia's economy was under an IMF/USAID-driven structural adjustment push in 1987 (the 1987-91 Five-Year Plan), including currency devaluation (the shilling was devalued through 1986 and a new USD peg of 100 shillings was set on 12 Oct 1987), fiscal austerity, and civil-service cuts amid worsening real wages — consistent with 'economic collapse under debt and mismanagement' framing. However, the 'privatizing state enterprises' detail is overstated: sources (countrystudies.us, citing the Library of Congress country study) indicate the government only held informal/procrastinating discussions of liquidating parastatals in this period rather than actually privatizing them, and subsidies to parastatals continued. More importantly, the claim that 'The United Somali Congress (USC)...also formed in 1987' is factually wrong: multiple independent sources (Wikipedia, and corroborating summaries of the USC's history) consistently state the USC was founded in Rome on 7 January 1989 (by Ali Mohamed Osoble/'Ali Wardhigley'), not 1987, with its armed wing forming in late 1989 in Ethiopia. So in 1987 Barre did not yet face 'simultaneous armed opposition from the SNM, SSDF, and USC' — that three-way alignment only existed from 1989 onward. Year and country hold for the primary economic-collapse/IMF-adjustment narrative, but the USC-formation detail (actor/timing) is a material two-year error, so this is a PARTIAL rather than a clean TRUE.",
+        "source": "https://countrystudies.us/somalia/61.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The core economic narrative checks out: Somalia's IMF/AID-driven structural adjustment process was real and materially matches the description around 1987 — the 1987-91 Five-Year Plan wrote privatization into policy, a foreign-exchange auction system (devaluation mechanism) had begun in Sept 1986 and continued merging pegged/market rates through 1987-88, the fiscal deficit was cut from 10% to 7% of GDP, fuel/rent/sales taxes were raised, and thousands of civil servants had been dismissed with real wages falling — all consistent with 'immediate hardship, rising prices, deteriorating services, falling civil-service pay' (countrystudies.us Library of Congress study; onlinelibrary.wiley.com Jamal 1988). SNM (founded 1981) and SSDF (founded 1978) were indeed both fighting Barre's regime by 1987, confirmed by documented 1987 SNM attacks. However, the added claim that 'the United Somali Congress (USC)...also formed in 1987' is not supported — multiple independent sources converge on the USC being founded on 7 or 12 January 1989 in Rome (Wikipedia's United Somali Congress article; an independent academic journal article in Cahiers d'Études Africaines at journals.openedition.org/etudesafricaines/26951, which states 'On 12 January 1989 at the Hotel Andaluus in Rome, Italy, exiled Hawiye political actors...declare[d] the formation of the USC'). So Barre did not yet face 'simultaneous armed opposition from the SNM, SSDF, and USC' in 1987 — that three-way configuration only existed from 1989. This is a material actor/timing detail embedded in the event that is off by two years, while the core economic-collapse/SAP event and country/primary-year hold.",
+        "source": "https://countrystudies.us/somalia/61.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://countrystudies.us/somalia/61.htm"
+  },
+  {
     "year": 1988,
     "title": "SNM Offensive and Aerial Destruction of Hargeisa",
     "verdict": "TRUE",
@@ -673,6 +783,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Siad_Barre"
+  },
+  {
+    "year": 1992,
+    "title": "UNOSOM I Deployed — First UN Intervention in Somalia",
+    "verdict": "TRUE",
+    "reason": "Confirmed from multiple independent sources: UNOSOM I was established by UN Security Council Resolution 751 on 24 April 1992 to monitor the Mogadishu ceasefire and protect/escort humanitarian aid. Its force was limited (initially ~50 observers, later negotiated to 500 troops with warlord Aidid's consent in August 1992), and it lacked an enforcement mandate. Aidid and other warlords obstructed aid convoys, blocked and shelled relief ships, fired on aircraft, and Aidid formally defied the Security Council by November 1992. This demonstrated inadequacy directly led to Security Council Resolution 794 (3 Dec 1992) authorizing the much larger, US-led UNITAF ('Operation Restore Hope') intervention. All material details in the description (year, country, troop size ~500, lack of mandate/capacity, Aidid's obstruction, and the transition to UNITAF) are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm: UNOSOM I (United Nations Operation in Somalia I) was established in April 1992 via UN Security Council Resolution 751, the first UN intervention in Somalia. It began with just 50 unarmed ceasefire observers and was later authorized/expanded to a security force of around 500 troops (via Res. 775, Aug 1992) to protect humanitarian convoys. This lightly-armed force lacked the mandate and capacity to secure aid delivery — warlord Mohamed Farrah Aidid proved uncooperative, and convoys, ships, and aircraft were attacked/obstructed (troops shot at, aid ships prevented from docking, cargo planes fired on, agencies subject to theft/extortion). By November-December 1992 Aidid formally defied the Security Council and demanded peacekeeper withdrawal, and the failure of UNOSOM I directly led the Security Council to authorize the much larger US-led UNITAF (Operation Restore Hope) in December 1992. All core elements of the description (country: Somalia; year: 1992; ~500-troop UN mission; inadequate mandate/capacity; Aidid's obstruction; paving the way for the larger UNITAF later that year) are corroborated. The description compresses the timeline slightly (the 500-troop figure was reached progressively through 1992 rather than at the April launch), but this does not change the year, country, or substantive narrative, so it does not rise to a material discrepancy.",
+        "source": "https://en.wikipedia.org/wiki/United_Nations_Operation_in_Somalia_I",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: UNOSOM I was established by UN Security Council Resolution 751 on 24 April 1992 to monitor the Mogadishu ceasefire and protect/escort humanitarian aid. Its force was limited (initially ~50 observers, later negotiated to 500 troops with warlord Aidid's consent in August 1992), and it lacked an enforcement mandate. Aidid and other warlords obstructed aid convoys, blocked and shelled relief ships, fired on aircraft, and Aidid formally defied the Security Council by November 1992. This demonstrated inadequacy directly led to Security Council Resolution 794 (3 Dec 1992) authorizing the much larger, US-led UNITAF ('Operation Restore Hope') intervention. All material details in the description (year, country, troop size ~500, lack of mandate/capacity, Aidid's obstruction, and the transition to UNITAF) are corroborated.",
+        "source": "https://peacekeeping.un.org/mission/past/unosom1mandate.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://peacekeeping.un.org/mission/past/unosom1mandate.html"
   },
   {
     "year": 1993,
@@ -1136,6 +1282,42 @@
     "source": "https://en.wikipedia.org/wiki/Hassan_Sheikh_Mohamud"
   },
   {
+    "year": 2012,
+    "title": "Somalia and UN Impose Charcoal Export Ban to Curb Deforestation",
+    "verdict": "TRUE",
+    "reason": "Core facts independently corroborated: (1) UN Security Council Resolution 2036 was passed on 22 February 2012, imposing an embargo on charcoal exports from Somalia — confirmed by the independent Security Council Report NGO tracker (securitycouncilreport.org) and by Bloomberg Law. (2) The stated purpose was both environmental (curbing deforestation of acacia woodlands) and counter-terrorism (cutting Al-Shabaab's charcoal-trade revenue, estimated at tens of millions of dollars/year) — corroborated by multiple independent sources (Security Council Report, Bloomberg Law, Wikipedia synthesis of UN monitoring group reports). (3) The Somali government (Transitional Federal Government) is independently reported by multiple sources (Wikipedia's charcoal-trafficking article, africabusinesscommunities.com) as having also banned charcoal exports in 2012, in parallel with/reinforcing the UNSC action — though one nuance found is that Somalia's TFG had already instituted a domestic export ban back in December 2010 under President Sharif Sheikh Ahmed, and in Jan 2012 PM Abdiweli Gaas wrote to the UNSC seeking international backing for that ban; multiple sources nonetheless describe 2012 as when 'the Somali Government banned charcoal exports' alongside the UN action, so this detail is reasonably supported even if the domestic ban had earlier roots. (4) The '8.2 million trees cut 2011-2017' (also phrased as 'more than 8 million trees' / 'one tree every 30 seconds') statistic, sourced to FAO/UN monitoring, is corroborated by Bloomberg Law and Wikipedia. All material elements of the event (actors, mechanism, date, motive, and downstream deforestation statistic) check out from independent sources; no off-limits domains were used.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: the UN Security Council unanimously adopted Resolution 2036 on 22 February 2012, imposing a ban on the direct/indirect import of charcoal originating in Somalia and requiring Somali authorities to take measures preventing charcoal export, explicitly citing both environmental degradation (deforestation of acacia woodlands) and the tens of millions of dollars in annual revenue the trade generated for Al-Shabaab (The National reported it as providing 'significant revenue' to Al-Shabaab, tied to a London conference on Somalia). Somalia's Transitional Federal Government (PM Abdiweli Gaas) had itself requested the ban in a January 2012 letter to the Council, and multiple sources (Wikipedia's Charcoal trafficking in Somalia article, UNEP) describe the export ban as being in force 'both by a 2012 United Nations Security Council resolution and by the Somali Government' — one search snippet states directly 'In 2012, the Somali Government banned charcoal exports and the United Nations Security Council passed a resolution.' (Note: an earlier, narrower domestic ban on charcoal from government-controlled ports had also been enacted in December 2010 under President Sharif Sheikh Ahmed — a minor prior-history nuance, but multiple sources still frame 2012 as the year Somalia's ban (alongside the UN's) took effect, so this does not rise to a material discrepancy.) The '8.2 million trees cut down between 2011-2017' figure is independently corroborated by VOA News and journalist Harun Maruf citing UN figures, matching the description almost verbatim. All core facts — actor (UN Security Council + Somali government), year (2012), mechanism (export ban/embargo), and dual motive (environment + Al-Shabaab financing) — check out across independent, non-overlapping sources.",
+        "source": "https://en.wikipedia.org/wiki/Charcoal_trafficking_in_Somalia",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Core facts independently corroborated: (1) UN Security Council Resolution 2036 was passed on 22 February 2012, imposing an embargo on charcoal exports from Somalia — confirmed by the independent Security Council Report NGO tracker (securitycouncilreport.org) and by Bloomberg Law. (2) The stated purpose was both environmental (curbing deforestation of acacia woodlands) and counter-terrorism (cutting Al-Shabaab's charcoal-trade revenue, estimated at tens of millions of dollars/year) — corroborated by multiple independent sources (Security Council Report, Bloomberg Law, Wikipedia synthesis of UN monitoring group reports). (3) The Somali government (Transitional Federal Government) is independently reported by multiple sources (Wikipedia's charcoal-trafficking article, africabusinesscommunities.com) as having also banned charcoal exports in 2012, in parallel with/reinforcing the UNSC action — though one nuance found is that Somalia's TFG had already instituted a domestic export ban back in December 2010 under President Sharif Sheikh Ahmed, and in Jan 2012 PM Abdiweli Gaas wrote to the UNSC seeking international backing for that ban; multiple sources nonetheless describe 2012 as when 'the Somali Government banned charcoal exports' alongside the UN action, so this detail is reasonably supported even if the domestic ban had earlier roots. (4) The '8.2 million trees cut 2011-2017' (also phrased as 'more than 8 million trees' / 'one tree every 30 seconds') statistic, sourced to FAO/UN monitoring, is corroborated by Bloomberg Law and Wikipedia. All material elements of the event (actors, mechanism, date, motive, and downstream deforestation statistic) check out from independent sources; no off-limits domains were used.",
+        "source": "https://www.securitycouncilreport.org/un-documents/document/somalia-s-res-2036.php",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.securitycouncilreport.org/un-documents/document/somalia-s-res-2036.php"
+  },
+  {
     "year": 2013,
     "title": "Al-Shabaab Westgate Mall Attack in Nairobi",
     "verdict": "TRUE",
@@ -1384,78 +1566,5 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/African_Union_Transition_Mission_in_Somalia"
-  },
-  {
-    "year": 1984,
-    "title": "Mass Killings of Civilians and Famine in Northern Somalia",
-    "verdict": "FALSE",
-    "reason": "Two compound claims, both misdated/unsupported for 1984. (1) Isaaq persecution: real documented 1984 incidents exist (Oct 15 1984 Gogol Wanaag: 6 executed; Nov 17 1984 Boqol Jirreh: 26 sentenced to death; Dec 1984 Burao: 43 executed — per Wikipedia's Isaaq genocide timeline, sourced to Africa Watch), but these are isolated reprisal executions of dozens of people, not the \"mass killings\" / systematic village-burning-and-well-poisoning campaign the description implies. Human Rights Watch/Africa Watch, the Lemkin Institute, and UN findings all bound the actual genocidal mass-killing campaign (est. 200,000 Isaaq dead, systematic destruction of settlements and water points) to 1987-1989, triggered by the SNM's May 1988 offensive and the bombardment of Hargeisa/Burao — not 1984. (2) Famine claim: multiple independent sources state the 1984 Horn of Africa drought produced catastrophic famine in Ethiopia but explicitly did NOT produce famine in Somalia that year (the government mobilized relief; Somalia's next major famine was 1991-92). No corroborating source was found for a \"significant famine emergency\" newly developing in southern/central Somalia in 1984 specifically. Given the year is essentially wrong for the severity/nature of the killings campaign, and the famine component appears to have no factual basis for 1984, this does not hold materially as described for the stated year. Country (Somalia) and general phenomenon (Isaaq persecution under Barre) are real, but the compound event as dated to 1984 is not supported.",
-    "verify_count": 2,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "downgraded",
-    "needs_tiebreak": false,
-    "source_independence": "weak",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Two compound claims, both misdated/unsupported for 1984. (1) Isaaq persecution: real documented 1984 incidents exist (Oct 15 1984 Gogol Wanaag: 6 executed; Nov 17 1984 Boqol Jirreh: 26 sentenced to death; Dec 1984 Burao: 43 executed — per Wikipedia's Isaaq genocide timeline, sourced to Africa Watch), but these are isolated reprisal executions of dozens of people, not the \"mass killings\" / systematic village-burning-and-well-poisoning campaign the description implies. Human Rights Watch/Africa Watch, the Lemkin Institute, and UN findings all bound the actual genocidal mass-killing campaign (est. 200,000 Isaaq dead, systematic destruction of settlements and water points) to 1987-1989, triggered by the SNM's May 1988 offensive and the bombardment of Hargeisa/Burao — not 1984. (2) Famine claim: multiple independent sources state the 1984 Horn of Africa drought produced catastrophic famine in Ethiopia but explicitly did NOT produce famine in Somalia that year (the government mobilized relief; Somalia's next major famine was 1991-92). No corroborating source was found for a \"significant famine emergency\" newly developing in southern/central Somalia in 1984 specifically. Given the year is essentially wrong for the severity/nature of the killings campaign, and the famine component appears to have no factual basis for 1984, this does not hold materially as described for the stated year. Country (Somalia) and general phenomenon (Isaaq persecution under Barre) are real, but the compound event as dated to 1984 is not supported.",
-        "source": "https://en.wikipedia.org/wiki/Isaaq_genocide",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        },
-        "corrected_year": 1988
-      },
-      {
-        "pass_n": 2,
-        "verdict": "PARTIAL",
-        "reason": "The human-rights-violation core of the event is confirmed for Somalia/1984: per Human Rights Watch's Africa Watch report \"Somalia: A Government at War with Its Own People\" (Jan 1990), \"from early 1984, the 12th Division was used against the local Isaaq population,\" and it documents specific dated 1984 atrocities — six Isaaq men executed at Gogol Wanaag (Oct 1984), 26 civilians sentenced to death by a mobile military court at Boqol Jirreh (Nov 1984), and 43 Isaaq men executed in Burao central prison (Dec 1984) — i.e., organized summary executions of Isaaq civilians suspected of SNM sympathies did occur in 1984, consistent with the description's \"summary executions\" element. However, the description's specific tactics of \"burning villages\" and \"poisoning wells\" are documented parts of the broader Isaaq counter-insurgency campaign but are attested in the sources mainly for the 1987-89 peak (the ~200,000-death \"genocide\" phase, Hargeisa/Burao bombardment from May 1988), not specifically dated to 1984 in any source I found — so calling 1984 itself a year of \"mass killings\" (plural, large-scale) somewhat overstates the scale versus the escalating/early phase it actually was. More importantly, the famine claim is not corroborated and appears to be a conflation with a different country's crisis: multiple independent sources state the well-known 1984-85 Horn of Africa famine devastated Ethiopia specifically, and list Somalia's own UN-recognized famine declarations as 1991-92 and 2011 only (with a mid-80s Somalia drought/nutrition crisis documented instead for 1986-87, per a CDC MMWR report on a 1987 nutrition survey following 1986 drought). I found no independent source describing a \"significant famine emergency\" in southern/central Somalia specifically in 1984. Country and year hold for the core violent-repression narrative, but the famine detail is a material inaccuracy/likely conflation, so this is PARTIAL rather than TRUE.",
-        "source": "https://en.wikipedia.org/wiki/Isaaq_genocide",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Isaaq_genocide"
-  },
-  {
-    "year": 1987,
-    "title": "Economic Collapse and IMF Structural Adjustment",
-    "verdict": "PARTIAL",
-    "reason": "The core economic narrative checks out: Somalia's IMF/AID-driven structural adjustment process was real and materially matches the description around 1987 — the 1987-91 Five-Year Plan wrote privatization into policy, a foreign-exchange auction system (devaluation mechanism) had begun in Sept 1986 and continued merging pegged/market rates through 1987-88, the fiscal deficit was cut from 10% to 7% of GDP, fuel/rent/sales taxes were raised, and thousands of civil servants had been dismissed with real wages falling — all consistent with 'immediate hardship, rising prices, deteriorating services, falling civil-service pay' (countrystudies.us Library of Congress study; onlinelibrary.wiley.com Jamal 1988). SNM (founded 1981) and SSDF (founded 1978) were indeed both fighting Barre's regime by 1987, confirmed by documented 1987 SNM attacks. However, the added claim that 'the United Somali Congress (USC)...also formed in 1987' is not supported — multiple independent sources converge on the USC being founded on 7 or 12 January 1989 in Rome (Wikipedia's United Somali Congress article; an independent academic journal article in Cahiers d'Études Africaines at journals.openedition.org/etudesafricaines/26951, which states 'On 12 January 1989 at the Hotel Andaluus in Rome, Italy, exiled Hawiye political actors...declare[d] the formation of the USC'). So Barre did not yet face 'simultaneous armed opposition from the SNM, SSDF, and USC' in 1987 — that three-way configuration only existed from 1989. This is a material actor/timing detail embedded in the event that is off by two years, while the core economic-collapse/SAP event and country/primary-year hold.",
-    "verify_count": 2,
-    "consensus_verdict": "PARTIAL",
-    "consensus_status": "double_negative",
-    "needs_tiebreak": false,
-    "source_independence": "weak",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "PARTIAL",
-        "reason": "The core economic claim checks out: Somalia's economy was under an IMF/USAID-driven structural adjustment push in 1987 (the 1987-91 Five-Year Plan), including currency devaluation (the shilling was devalued through 1986 and a new USD peg of 100 shillings was set on 12 Oct 1987), fiscal austerity, and civil-service cuts amid worsening real wages — consistent with 'economic collapse under debt and mismanagement' framing. However, the 'privatizing state enterprises' detail is overstated: sources (countrystudies.us, citing the Library of Congress country study) indicate the government only held informal/procrastinating discussions of liquidating parastatals in this period rather than actually privatizing them, and subsidies to parastatals continued. More importantly, the claim that 'The United Somali Congress (USC)...also formed in 1987' is factually wrong: multiple independent sources (Wikipedia, and corroborating summaries of the USC's history) consistently state the USC was founded in Rome on 7 January 1989 (by Ali Mohamed Osoble/'Ali Wardhigley'), not 1987, with its armed wing forming in late 1989 in Ethiopia. So in 1987 Barre did not yet face 'simultaneous armed opposition from the SNM, SSDF, and USC' — that three-way alignment only existed from 1989 onward. Year and country hold for the primary economic-collapse/IMF-adjustment narrative, but the USC-formation detail (actor/timing) is a material two-year error, so this is a PARTIAL rather than a clean TRUE.",
-        "source": "https://countrystudies.us/somalia/61.htm",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "PARTIAL",
-        "reason": "The core economic narrative checks out: Somalia's IMF/AID-driven structural adjustment process was real and materially matches the description around 1987 — the 1987-91 Five-Year Plan wrote privatization into policy, a foreign-exchange auction system (devaluation mechanism) had begun in Sept 1986 and continued merging pegged/market rates through 1987-88, the fiscal deficit was cut from 10% to 7% of GDP, fuel/rent/sales taxes were raised, and thousands of civil servants had been dismissed with real wages falling — all consistent with 'immediate hardship, rising prices, deteriorating services, falling civil-service pay' (countrystudies.us Library of Congress study; onlinelibrary.wiley.com Jamal 1988). SNM (founded 1981) and SSDF (founded 1978) were indeed both fighting Barre's regime by 1987, confirmed by documented 1987 SNM attacks. However, the added claim that 'the United Somali Congress (USC)...also formed in 1987' is not supported — multiple independent sources converge on the USC being founded on 7 or 12 January 1989 in Rome (Wikipedia's United Somali Congress article; an independent academic journal article in Cahiers d'Études Africaines at journals.openedition.org/etudesafricaines/26951, which states 'On 12 January 1989 at the Hotel Andaluus in Rome, Italy, exiled Hawiye political actors...declare[d] the formation of the USC'). So Barre did not yet face 'simultaneous armed opposition from the SNM, SSDF, and USC' in 1987 — that three-way configuration only existed from 1989. This is a material actor/timing detail embedded in the event that is off by two years, while the core economic-collapse/SAP event and country/primary-year hold.",
-        "source": "https://countrystudies.us/somalia/61.htm",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://countrystudies.us/somalia/61.htm"
   }
 ]

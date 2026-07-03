@@ -6530,5 +6530,298 @@
       }
     ],
     "source": "https://libcom.org/article/1974-ethiopian-general-strike"
+  },
+  {
+    "year": 1966,
+    "title": "New commercial bank established to support development",
+    "verdict": "FALSE",
+    "reason": "No independent source corroborates a 1966 restructuring of the Commercial Bank of Ethiopia aimed at expanding credit to smallholder farmers/small businesses. The well-documented CBE timeline (Wikipedia, National Bank of Ethiopia official history, CBE's own history page) shows the bank was created in 1963 when the government split the State Bank of Ethiopia into the National Bank of Ethiopia (central bank) and the Commercial Bank of Ethiopia (commercial bank), with CBE beginning operations 1 January 1964 — not 1966. The next documented reorganizations of CBE are 1970 (Sudan branch nationalized), 1980 (Addis Bank merger), 1991/1994 (Eritrea-related reorganization), and 2022 — none in 1966, and none framed around smallholder-farmer credit expansion. The closest related 1966 Ethiopian institutional event found was the unrelated 'Cooperative Societies Proclamation of 1966,' which concerns cooperatives, not CBE restructuring. The Development Bank of Ethiopia / Agricultural and Industrial Development Bank lineage (a more plausible candidate for smallholder agricultural credit) also shows no 1966 event — it was 'Investment Bank of Ethiopia' 1964-1970, not renamed/restructured until 1970. Given multiple authoritative, independent sources cover this exact period in detail with no mention of the described event, this appears to be a fabricated or misdated entry rather than an under-documented true event.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "No independent source corroborates a 1966 restructuring of the Commercial Bank of Ethiopia aimed at expanding credit to smallholder farmers/small businesses. The well-documented CBE timeline (Wikipedia, National Bank of Ethiopia official history, CBE's own history page) shows the bank was created in 1963 when the government split the State Bank of Ethiopia into the National Bank of Ethiopia (central bank) and the Commercial Bank of Ethiopia (commercial bank), with CBE beginning operations 1 January 1964 — not 1966. The next documented reorganizations of CBE are 1970 (Sudan branch nationalized), 1980 (Addis Bank merger), 1991/1994 (Eritrea-related reorganization), and 2022 — none in 1966, and none framed around smallholder-farmer credit expansion. The closest related 1966 Ethiopian institutional event found was the unrelated 'Cooperative Societies Proclamation of 1966,' which concerns cooperatives, not CBE restructuring. The Development Bank of Ethiopia / Agricultural and Industrial Development Bank lineage (a more plausible candidate for smallholder agricultural credit) also shows no 1966 event — it was 'Investment Bank of Ethiopia' 1964-1970, not renamed/restructured until 1970. Given multiple authoritative, independent sources cover this exact period in detail with no mention of the described event, this appears to be a fabricated or misdated entry rather than an under-documented true event.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "UNCERTAIN",
+        "reason": "Extensive searching found no source confirming a 1966 restructuring of the Commercial Bank of Ethiopia (CBE) aimed at expanding credit to smallholder farmers/small businesses, or framed as Haile Selassie-era financial liberalization to attract foreign investment. What IS well documented: CBE was created in 1963 when the State Bank of Ethiopia was split into the National Bank of Ethiopia (central bank) and CBE (commercial bank) per Proclamation 206/207 of 1963; CBE's head office was inaugurated by Haile Selassie in November 1965; by 1968 CBE had 26 branches and 5.0 million birr capital. Separately, agricultural/development lending in this era ran through the Development Bank of Ethiopia / Investment Bank of Ethiopia (est. 1963), later merged into the Agricultural and Industrial Development Bank (AIDB) in 1970 — not through CBE. No source ties a specific 1966 CBE restructuring, smallholder-farmer credit mandate, or foreign-investment liberalization framing to that year. This could be a mis-dated/conflated reference to the 1963 CBE founding, or a genuine but poorly-digitized historical detail — insufficient evidence either way after multiple search angles (CBE history, Wikipedia, IDS banking-reform working paper, five-year plan documents, investment proclamation history, branch-expansion data).",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2009,
+    "title": "Dire Dawa floods kill dozens, displace thousands",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources (ReliefWeb/OCHA situation reports, NBC News, Hiiraan Online, and academic literature on Dire Dawa flood history) consistently document a devastating flash flood in Dire Dawa on the night of 5-6 August 2006 — killing roughly 200-256 people, displacing ~10,000-20,000, and destroying/damaging over 1,600 homes, exactly matching this description's substance (flash floods, dozens/hundreds killed, thousands displaced, homes destroyed, exposed urban vulnerability). Academic sources listing Dire Dawa's major flood years (1945, 1968, 1977, 1983, 1985, 1995, 2003, 2005, 2006, 2010, 2016) do NOT include 2009, and no news report, OCHA situation report, or EM-DAT-referencing source could be found describing a comparable flood disaster in Dire Dawa in 2009. This event appears to be the well-documented August 2006 Dire Dawa flood mislabeled with the wrong year.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event as described (flash floods devastating Dire Dawa, killing dozens/hundreds, destroying thousands of homes in low-lying areas, exposing urban vulnerability) matches the well-documented Dire Dawa flash flood disaster that occurred on the night of 5-6 August 2006, not 2009. Multiple independent sources (ReliefWeb/OCHA Situation Reports, NBC News, Wikinews, ADRC disaster database, UNDRR) consistently describe the 2006 event: the Dechatu river burst its banks, killing ~190-256 people and displacing ~10,000-20,000 people, destroying hundreds to over a thousand homes. I found no evidence of a comparable flood disaster in Dire Dawa in 2009 specifically — the only 2009-related Dire Dawa item found was an unrelated truck accident. A smaller 2007 flash flood damaged houses in Dire Dawa but caused no reported casualties, and 2009 is otherwise associated with Horn of Africa drought conditions, not major flooding. This appears to be a year misattribution of the real 2006 Dire Dawa flood disaster.",
+        "source": "https://reliefweb.int/report/ethiopia/ethiopia-dire-dawa-floods-ocha-situation-report-no-1",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2006
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (ReliefWeb/OCHA situation reports, NBC News, Hiiraan Online, and academic literature on Dire Dawa flood history) consistently document a devastating flash flood in Dire Dawa on the night of 5-6 August 2006 — killing roughly 200-256 people, displacing ~10,000-20,000, and destroying/damaging over 1,600 homes, exactly matching this description's substance (flash floods, dozens/hundreds killed, thousands displaced, homes destroyed, exposed urban vulnerability). Academic sources listing Dire Dawa's major flood years (1945, 1968, 1977, 1983, 1985, 1995, 2003, 2005, 2006, 2010, 2016) do NOT include 2009, and no news report, OCHA situation report, or EM-DAT-referencing source could be found describing a comparable flood disaster in Dire Dawa in 2009. This event appears to be the well-documented August 2006 Dire Dawa flood mislabeled with the wrong year.",
+        "source": "https://reliefweb.int/report/ethiopia/ethiopia-dire-dawa-floods-ocha-situation-report-no-1",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2006
+      }
+    ],
+    "source": "https://reliefweb.int/report/ethiopia/ethiopia-dire-dawa-floods-ocha-situation-report-no-1"
+  },
+  {
+    "year": 1979,
+    "title": "Ethiopia and Cuba sign cooperation agreement",
+    "verdict": "UNCERTAIN",
+    "reason": "The general character of the claim (Cuba trained Ethiopian military forces, Cuban doctors served in Ethiopian health institutions, Cuba provided education/scholarships to Ethiopians) is broadly corroborated across many independent sources as an ongoing relationship that developed from 1975 onward. However, I could not find any independent source confirming a specific, formally-signed 'cooperation agreement' dated to 1979 specifically. The well-documented dated milestones are: diplomatic relations established July 18, 1975; embassies opened August 1976; Castro's visit to Addis Ababa and Ogaden War outbreak in 1977 (Cuban troops/advisers begin arriving); Ogaden War concludes and Mengistu visits Cuba (decorated with Order of Playa Girón) in March 1978. No source I checked (English-language Wikipedia, Spanish-language Wikipedia, Cuban Foreign Ministry diplomatic mission pages, U.S. State Department Office of the Historian, Library of Congress country study, countrystudies.us, academic articles on Cuba's Horn of Africa involvement) mentions a discrete 1979-dated treaty/agreement signing, nor names the parties/venue/date of such a document. It is plausible the underlying cooperation was formalized incrementally or that a specific 1979 signing exists in archival records (e.g., Keesing's Contemporary Archives, FBIS daily reports, or Cuban state archives) not indexed/accessible via web search, but I cannot confirm this from acceptable open sources, nor can I rule it out. Per the hard rules, since I could not confirm or refute the specific year+event from acceptable sources, this is UNCERTAIN rather than TRUE or FALSE.",
+    "verify_count": 2,
+    "consensus_verdict": "UNCERTAIN",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "UNCERTAIN",
+        "reason": "Extensive searching (English and Spanish sources: Wikipedia Cuba-Ethiopia relations en/es, Cuban government misiones.cubaminrex.cu pages, CIA reading room, DTIC report, academic articles) confirms the general substance is real and well-documented: Cuba deployed military advisers/troops to Ethiopia from 1977 (Ogaden War), and after the war Cuba sent doctors to Addis Ababa/Jimma health institutions and scholarships/teachers for Ethiopian students, with thousands of Ethiopians (including war orphans) educated in Cuba. However, no source I could access ties this to a specific, formally-named 'cooperation agreement' signed in 1979 — the cooperation is described everywhere as an evolving relationship built through 1975 (diplomatic relations), 1976 (embassies), 1977-78 (military intervention), and an ongoing post-war framework of health/education aid, not a single 1979 signing event. I could not locate the specific bilateral treaty/agreement text, signing date, or ceremony via UN Treaty Collection, Keesing's excerpts, Cuban state media, or academic sources. Given the specific dated claim (a 1979 signing) is unconfirmed while the general relationship type is plausible and consistent with corroborated facts, I cannot confirm or refute the precise event as stated.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "UNCERTAIN",
+        "reason": "The general character of the claim (Cuba trained Ethiopian military forces, Cuban doctors served in Ethiopian health institutions, Cuba provided education/scholarships to Ethiopians) is broadly corroborated across many independent sources as an ongoing relationship that developed from 1975 onward. However, I could not find any independent source confirming a specific, formally-signed 'cooperation agreement' dated to 1979 specifically. The well-documented dated milestones are: diplomatic relations established July 18, 1975; embassies opened August 1976; Castro's visit to Addis Ababa and Ogaden War outbreak in 1977 (Cuban troops/advisers begin arriving); Ogaden War concludes and Mengistu visits Cuba (decorated with Order of Playa Girón) in March 1978. No source I checked (English-language Wikipedia, Spanish-language Wikipedia, Cuban Foreign Ministry diplomatic mission pages, U.S. State Department Office of the Historian, Library of Congress country study, countrystudies.us, academic articles on Cuba's Horn of Africa involvement) mentions a discrete 1979-dated treaty/agreement signing, nor names the parties/venue/date of such a document. It is plausible the underlying cooperation was formalized incrementally or that a specific 1979 signing exists in archival records (e.g., Keesing's Contemporary Archives, FBIS daily reports, or Cuban state archives) not indexed/accessible via web search, but I cannot confirm this from acceptable open sources, nor can I rule it out. Per the hard rules, since I could not confirm or refute the specific year+event from acceptable sources, this is UNCERTAIN rather than TRUE or FALSE.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1951,
+    "title": "Imperial Highway Authority established",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm Ethiopia established the Imperial Highway Authority (IHA) in 1951 under Proclamation No. 115/1951, as a semi-autonomous agency to plan, design, construct, and maintain the national road network. A World Bank project appraisal document states directly: \"The Imperial Highway Authority was established in 1951 to develop and maintain the highway system of the Empire,\" and confirms US technical assistance: \"Staff of the U.S. Bureau of Public Roads assisted in the management of the Highway Authority from its establishment until 1963.\" This matches the event description's country, year, establishment fact, and US technical-assistance detail. The broader framing (central to Haile Selassie's modernization agenda, tied to military logistics) is consistent with well-documented Ethiopian history of the period (post-Italian-occupation road rehabilitation, US Point Four Program assistance) though not verbatim in the single cited document.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Ethiopia's Imperial Highway Authority (IHA) was established in 1951 under Proclamation No. 115/1951 as a semi-autonomous agency to plan, design, construct, and maintain a national road network, following the end of Italian occupation. The US provided technical assistance via the U.S. Bureau of Public Roads under the Point Four Program; the US State Department's own historical records (FRUS 1951) document a US-Ethiopia Agreement concerning a Highway Project and a Point Four General Agreement for Technical Cooperation signed at Addis Ababa in 1951, corroborating the 'US technical assistance' detail. This road-building program is well documented as central to Haile Selassie's modernization push (sources found emphasize civilian/economic development and trade more than explicitly 'military logistics', but that is a plausible secondary framing rather than a contradiction). Country, year, and core substance (establishment of IHA in 1951 for a national road network with US technical assistance) all hold.",
+        "source": "https://history.state.gov/historicaldocuments/frus1951v05/ch15subch2",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Ethiopia established the Imperial Highway Authority (IHA) in 1951 under Proclamation No. 115/1951, as a semi-autonomous agency to plan, design, construct, and maintain the national road network. A World Bank project appraisal document states directly: \"The Imperial Highway Authority was established in 1951 to develop and maintain the highway system of the Empire,\" and confirms US technical assistance: \"Staff of the U.S. Bureau of Public Roads assisted in the management of the Highway Authority from its establishment until 1963.\" This matches the event description's country, year, establishment fact, and US technical-assistance detail. The broader framing (central to Haile Selassie's modernization agenda, tied to military logistics) is consistent with well-documented Ethiopian history of the period (post-Italian-occupation road rehabilitation, US Point Four Program assistance) though not verbatim in the single cited document.",
+        "source": "https://documents1.worldbank.org/curated/en/857441468030841826/txt/multi-page.txt",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://documents1.worldbank.org/curated/en/857441468030841826/txt/multi-page.txt"
+  },
+  {
+    "year": 1981,
+    "title": "Ethiopian sugar industry expanded under state control",
+    "verdict": "FALSE",
+    "reason": "Independent research confirms the Derg did nationalize Ethiopia's sugar plantations (Wonji, Shoa, Metahara, all in the Awash Valley) and consolidate state control — but this happened in 1975 (nationalization) with the Ethiopian Sugar Corporation formally established by Legal Notice No. 58/1978, not 1981. No source found documents any specific 1981 expansion or processing-capacity investment event. The Derg's one major documented sugar expansion initiative from this era was a 1978 feasibility study for a NEW factory in the Fincha Valley (a different location, not Awash) — and even that project stalled for a decade, with construction only starting in 1988 and production in 1998. Most importantly, the claim that \"sugar became one of Ethiopia's few export commodities\" appears materially wrong: multiple sources describe Ethiopia's Derg-era export economy as overwhelmingly coffee-dependent (30-33% of foreign exchange earnings), with sugar produced mainly for domestic consumption; Ethiopia has instead been characterized as a chronic sugar IMPORTER for decades (still importing 200,000-300,000+ tons/year as of the 2010s-2020s), and even a later ambitious government plan (GTP I, 2010s) to export surplus sugar failed, with exports subsequently banned rather than pursued. I found no corroboration, on any source, of a discrete 1981 Awash Valley sugar-expansion event or of sugar functioning as a notable Ethiopian export commodity under the Derg.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Independent research confirms the Derg did nationalize Ethiopia's sugar plantations (Wonji, Shoa, Metahara, all in the Awash Valley) and consolidate state control — but this happened in 1975 (nationalization) with the Ethiopian Sugar Corporation formally established by Legal Notice No. 58/1978, not 1981. No source found documents any specific 1981 expansion or processing-capacity investment event. The Derg's one major documented sugar expansion initiative from this era was a 1978 feasibility study for a NEW factory in the Fincha Valley (a different location, not Awash) — and even that project stalled for a decade, with construction only starting in 1988 and production in 1998. Most importantly, the claim that \"sugar became one of Ethiopia's few export commodities\" appears materially wrong: multiple sources describe Ethiopia's Derg-era export economy as overwhelmingly coffee-dependent (30-33% of foreign exchange earnings), with sugar produced mainly for domestic consumption; Ethiopia has instead been characterized as a chronic sugar IMPORTER for decades (still importing 200,000-300,000+ tons/year as of the 2010s-2020s), and even a later ambitious government plan (GTP I, 2010s) to export surplus sugar failed, with exports subsequently banned rather than pursued. I found no corroboration, on any source, of a discrete 1981 Awash Valley sugar-expansion event or of sugar functioning as a notable Ethiopian export commodity under the Derg.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Confirmed: the Derg nationalized Ethiopia's sugar factories/plantations in 1975, formed the Ethiopian Sugar Corporation (1978), and academic sources (Tandfonline \"State-led modernization of the Ethiopian sugar industry\"; ResearchGate \"Shifting Regimes of Violence within Ethiopia's Awash Valley Investment Frontier\") confirm the Derg regime (1974-91) pursued continued state investment in large-scale sugar estates in the Awash Valley lowlands, expanding processing capacity at Wonji-Shoa and Metahara and later studying Fincha Valley expansion (1978 study, though construction didn't begin until 1988). This broad process spans the whole Derg era including 1981, so country/year/core-mechanism (state-led expansion of Awash Valley sugar plantations) are corroborated, though I found no single dated 1981 anchor event (expansion was continuous/incremental, not a discrete 1981 milestone). However, one material detail is contradicted by sources: sugar was NOT \"one of Ethiopia's few export commodities\" — Wonji was built explicitly for import substitution (domestic consumption), and multiple sources on Derg-era export composition (coffee ~55-65%, pulses/oilseeds, hides and skins, khat, live animals, gold) do not list sugar as a significant export commodity; Ethiopia in fact later became a major sugar importer. Given the correct country/regime/general mechanism but an incorrect \"export commodity\" characterization, this is PARTIAL rather than TRUE.",
+        "source": "https://www.tandfonline.com/doi/full/10.1080/17531055.2023.2166449",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1968,
+    "title": "Ethiopia sends peacekeeping troops to Congo",
+    "verdict": "FALSE",
+    "reason": "Ethiopia did contribute substantial troops to UN peacekeeping in the Congo (ONUC), but this happened in 1960-1963, not 1968. ONUC itself was formed 14 July 1960 and completed 30 June 1964 — there was no UN peacekeeping mission in the Congo at all in 1968 (the next one, MONUC, didn't start until 1999). 460 Ethiopian troops arrived by 20 July 1960 forming the Tekil/Tekel Brigade stationed in Stanleyville; Ethiopia's 3rd Brigade was active into early 1963; an Ethiopian general (Kebede Gebre) commanded ONUC 1962-63. No evidence of any Ethiopian peacekeeping deployment to Congo in 1968. Year is wrong; the real deployment year is 1960 (initial arrival) or more broadly 1960-1963.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Ethiopia did contribute peacekeeping troops to the UN Operation in the Congo (ONUC), but the mission ran only from July 1960 to June 1964, with Ethiopian troops (the Tekil Brigade, ~460 initial troops, growing to three brigades/~10,000 personnel over the mission) deployed during that window. ONUC was formally completed and all UN personnel withdrawn by 30 June 1964. No UN peacekeeping operation existed in the Congo in 1968, so Ethiopia could not have sent peacekeeping troops there that year. The event is substantively real (Ethiopia's ONUC contribution, including Lt. Gen. Kebede Gebre serving as ONUC Force Commander 1962-63) but the year in the record is wrong by roughly 4-8 years.",
+        "source": "https://en.wikipedia.org/wiki/United_Nations_Operation_in_the_Congo",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1960
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Ethiopia did contribute substantial troops to UN peacekeeping in the Congo (ONUC), but this happened in 1960-1963, not 1968. ONUC itself was formed 14 July 1960 and completed 30 June 1964 — there was no UN peacekeeping mission in the Congo at all in 1968 (the next one, MONUC, didn't start until 1999). 460 Ethiopian troops arrived by 20 July 1960 forming the Tekil/Tekel Brigade stationed in Stanleyville; Ethiopia's 3rd Brigade was active into early 1963; an Ethiopian general (Kebede Gebre) commanded ONUC 1962-63. No evidence of any Ethiopian peacekeeping deployment to Congo in 1968. Year is wrong; the real deployment year is 1960 (initial arrival) or more broadly 1960-1963.",
+        "source": "https://en.wikipedia.org/wiki/United_Nations_Operation_in_the_Congo",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1960
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/United_Nations_Operation_in_the_Congo"
+  },
+  {
+    "year": 1956,
+    "title": "Ethiopian students abroad begin political organizing",
+    "verdict": "FALSE",
+    "reason": "Multiple independent, converging sources place the actual start of organized, eventually Marxist-influenced Ethiopian student activity abroad several years later than 1956. The first confirmed formal organization of Ethiopian students abroad, the Ethiopian Students Association in North America (ESANA, later ESUNA), was founded by Ephraim Isaac in Chicago in 1959 -- not 1956. The parallel Ethiopian Student Union in Europe (ESUE) is documented holding its 5th annual conference in 1965, implying a founding around 1960-1961. Historians (notably Bahru Zewde, the leading scholar of the movement, per multiple secondary summaries) describe the 1950s-era student unions as a 'moderate prelude,' with the movement's radicalization (Marxist-Leninist framing, anti-feudal/anti-imperialist rhetoric) emerging only after the December 1960 coup attempt, the 1963 founding of the Marxist-Leninist 'Crocodiles' group, and the 1965 'Land to the Tiller' demonstrations. So both the specific year (1956) and the 'radical...Marxist' characterization are anachronistic for that year -- the earliest documented, comparable organizing abroad happened in 1959, and the described radical Marxist character didn't crystallize until the 1960s. No source found ties any Ethiopian student organizing abroad specifically to 1956.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The broad phenomenon described (Ethiopian students in Europe/North America forming radical, Marxist- and African-nationalist-influenced political organizations that later fed the 1960s-70s opposition, e.g. EPRP, MEISON) is real and well documented — but no source supports 1956 as the start year. The concretely dated founding event for the North American student body (ESANA, later ESUNA) is 1959: Ephraim Isaac organized its founding meeting in Chicago in 1959 (Wikipedia; corroborated independently in a Gale/academic search snippet). Multiple scholarly treatments (Bahru Zewde's authoritative 'Quest for Socialist Utopia', H-Net/DSA summaries, and search-derived academic snippets) describe the Marxist-influenced student grouping abroad as emerging in the 'late 1950s' (1957-1959), with the movement's main scholarly periodization given as 'c. 1960-1974', and the first public Marxist-Leninist demonstration only in 1965. The Ethiopian Student Union in Europe's congress numbering (5th annual conference in 1965) likewise implies founding circa 1959-1961, not 1956. No source — including primary/memoir material (Habtu's ESUNA memoir, marxists.org ERoL index) — places any organizing milestone in 1956 specifically. Given the country holds but the year does not match any documented starting point, this is a year-wrong case (best-supported corrected year ~1959, i.e. ESANA's founding), not a mere magnitude/scope discrepancy.",
+        "source": "https://en.wikipedia.org/wiki/Ephraim_Isaac",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1959
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent, converging sources place the actual start of organized, eventually Marxist-influenced Ethiopian student activity abroad several years later than 1956. The first confirmed formal organization of Ethiopian students abroad, the Ethiopian Students Association in North America (ESANA, later ESUNA), was founded by Ephraim Isaac in Chicago in 1959 -- not 1956. The parallel Ethiopian Student Union in Europe (ESUE) is documented holding its 5th annual conference in 1965, implying a founding around 1960-1961. Historians (notably Bahru Zewde, the leading scholar of the movement, per multiple secondary summaries) describe the 1950s-era student unions as a 'moderate prelude,' with the movement's radicalization (Marxist-Leninist framing, anti-feudal/anti-imperialist rhetoric) emerging only after the December 1960 coup attempt, the 1963 founding of the Marxist-Leninist 'Crocodiles' group, and the 1965 'Land to the Tiller' demonstrations. So both the specific year (1956) and the 'radical...Marxist' characterization are anachronistic for that year -- the earliest documented, comparable organizing abroad happened in 1959, and the described radical Marxist character didn't crystallize until the 1960s. No source found ties any Ethiopian student organizing abroad specifically to 1956.",
+        "source": "https://en.wikipedia.org/wiki/Ephraim_Isaac",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1959
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ephraim_Isaac"
+  },
+  {
+    "year": 1962,
+    "title": "Ethiopian students stage first major protest",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources (Wikipedia's Ethiopian Student Movement article, Jacobin, and general search results on the DSA article) agree the first major organized student demonstration against the imperial government — demanding land reform under the slogan 'Land to the Tiller' and radicalizing future opposition leaders — occurred in 1965 (with rallying around land tenure beginning in 1964), not 1962. What did happen in 1962 was much smaller-scale: at the May 1962 Student Day Ceremonies, students read politically charged poems criticizing Haile Selassie's regime (e.g., Tamiru Feyessa's 'The Poor Man Speaks Out'), resulting in some student suspensions and warnings — this was not an organized mass protest, did not explicitly demand land reform/democratic rights in the way described, and unrest in the early 1960s was described by historians as lacking central leadership or a unifying cause (the university was shut down in 1963 to quell disturbances). The event as described (first significant organized protest demanding land reform and democratic rights, radicalizing a generation of opposition leaders) matches the 1965 'Land to the Tiller' demonstrations, not 1962.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Wikipedia's Ethiopian Student Movement article, Jacobin, DSA education, libcom.org) consistently describe 1962 as only a minor incident: at May 1962 Student Day Ceremonies, students read poems with political commentary criticizing Haile Selassie's regime, resulting in a few suspensions and warnings -- not an organized mass protest demanding land reform. The event as described (first significant organized protest demanding land reform and democratic rights, met with harsh government response that radicalized future opposition leaders) matches the well-documented 1964-1965 'Land to the Tiller' demonstrations, which Wikipedia explicitly calls 'The first demonstration' by Ethiopian students, held outside Parliament in 1965 demanding land redistribution. The country (Ethiopia) and general phenomenon (student protest movement) are real, but the year is materially wrong -- the actual first major land-reform protest occurred in 1965, three years later than claimed.",
+        "source": "https://en.wikipedia.org/wiki/Ethiopian_Student_Movement",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1965
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Wikipedia's Ethiopian Student Movement article, Jacobin, and general search results on the DSA article) agree the first major organized student demonstration against the imperial government — demanding land reform under the slogan 'Land to the Tiller' and radicalizing future opposition leaders — occurred in 1965 (with rallying around land tenure beginning in 1964), not 1962. What did happen in 1962 was much smaller-scale: at the May 1962 Student Day Ceremonies, students read politically charged poems criticizing Haile Selassie's regime (e.g., Tamiru Feyessa's 'The Poor Man Speaks Out'), resulting in some student suspensions and warnings — this was not an organized mass protest, did not explicitly demand land reform/democratic rights in the way described, and unrest in the early 1960s was described by historians as lacking central leadership or a unifying cause (the university was shut down in 1963 to quell disturbances). The event as described (first significant organized protest demanding land reform and democratic rights, radicalizing a generation of opposition leaders) matches the 1965 'Land to the Tiller' demonstrations, not 1962.",
+        "source": "https://en.wikipedia.org/wiki/Ethiopian_Student_Movement",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1965
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ethiopian_Student_Movement"
   }
 ]

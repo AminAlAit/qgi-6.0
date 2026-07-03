@@ -2384,5 +2384,41 @@
       }
     ],
     "source": "https://www.presidency.gov.lb/English/PresidentoftheRepublic/FormerPresidents/Pages/CheikhBecharaElKhoury.aspx"
+  },
+  {
+    "year": 1950,
+    "title": "Beirut Emerges as Arab World's Financial and Commercial Hub",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources corroborate that Beirut developed into the Arab world's financial and commercial hub beginning in the early-to-mid 1950s, driven by Lebanon's liberal, unregulated free-market economy and banking sector, which attracted Arab capital fleeing nationalization/instability in Syria, Egypt, and Iraq, plus petrodollar flows from the Gulf. Contributing factors dated to this period: the 1950 breakdown of the Lebanon-Syria customs union (giving Lebanon independent liberal economic policy), Beirut picking up Haifa's role as regional commercial center after the 1948 war, the founding of Intra Bank in 1951, rapid growth in bank numbers (9 in 1945 to 85 by 1960), and the formal 1956 banking secrecy law that cemented the model. Sources describe Beirut/Lebanon as 'the Switzerland of the Middle East' and the region's banking/services capital through the 1950s-1960s. The event description itself frames this as a gradual process 'during the early 1950s' rather than a single-day event, and the substance (liberal banking laws, free-market economy, capital inflows, services economy, East-West bridge role) matches historical accounts closely. Country (Lebanon) and general timeframe (early 1950s) are both confirmed by independent sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate that Beirut developed into the Arab world's leading financial/commercial hub starting in the 1950s. Al Majalla states: \"After its independence in the 1950s, Lebanese economic policy had favored the development of a service economy, with a special emphasis placed on developing the banking sector, then the largest in the Middle East\" and \"Lebanon's banks were at their peak in the 1950s and 1960s... the most successful in the Middle East.\" This lines up with the description's claims of a free-market economy, liberal banking climate, and role as an East-West bridge. Britannica corroborates a closely overlapping timeframe (noting Beirut's regional hub role from 1952-1975), and other sources (Kellogg Institute, Lebanon Embassy) confirm the \"Switzerland/Bank of the Arab World\" reputation traces to this era, driven by Lebanon's free economic/foreign-exchange system and post-1948 trade diversion from Haifa to Beirut's port. This is a gradual/trend-type development (not a single dated event), and 1950 (marking the \"early 1950s\" onset right after independence-era policy took hold) is a reasonable anchor year consistent with the sourced timeline. No material detail (country, general timeframe, mechanism) is contradicted.",
+        "source": "https://en.majalla.com/2013/07/article55243458/banking-on-beirut",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate that Beirut developed into the Arab world's financial and commercial hub beginning in the early-to-mid 1950s, driven by Lebanon's liberal, unregulated free-market economy and banking sector, which attracted Arab capital fleeing nationalization/instability in Syria, Egypt, and Iraq, plus petrodollar flows from the Gulf. Contributing factors dated to this period: the 1950 breakdown of the Lebanon-Syria customs union (giving Lebanon independent liberal economic policy), Beirut picking up Haifa's role as regional commercial center after the 1948 war, the founding of Intra Bank in 1951, rapid growth in bank numbers (9 in 1945 to 85 by 1960), and the formal 1956 banking secrecy law that cemented the model. Sources describe Beirut/Lebanon as 'the Switzerland of the Middle East' and the region's banking/services capital through the 1950s-1960s. The event description itself frames this as a gradual process 'during the early 1950s' rather than a single-day event, and the substance (liberal banking laws, free-market economy, capital inflows, services economy, East-West bridge role) matches historical accounts closely. Country (Lebanon) and general timeframe (early 1950s) are both confirmed by independent sources.",
+        "source": "https://en.majalla.com/2013/07/article55243458/banking-on-beirut",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.majalla.com/2013/07/article55243458/banking-on-beirut"
   }
 ]

@@ -61,6 +61,42 @@
   },
   {
     "year": 1951,
+    "title": "Belene Island Labor Camp System Expanded",
+    "verdict": "PARTIAL",
+    "reason": "Country/year and the core substance hold: Bulgaria's communist regime did intensify its labor-camp system around 1951 — in 1951 the Politburo increased the mandatory internment term from 6 months to 3-7 years, and Belene (opened 1949) was indeed the most notorious camp, holding political opponents, Agrarian/Democratic Party members, army officers, Orthodox and Protestant clergy, and (per some sources) some kulaks/farmers alongside intellectuals — closely matching the description's targeted groups. However, the magnitude claim \"10,000-15,000 political prisoners held at peak capacity\" is not supported and appears to conflate different figures: the camp's own planning documents envisaged capacity for up to ~3,000 inmates; the best-documented single-year peak (1952, height of Chervenkov's repressions) was 2,323 inmates officially, with one witness estimate of ~7,000 in 1952; the \"15,000+\" figure that does appear in sources (belene.camp memorial site) is explicitly a CUMULATIVE total of people sent through Belene over its entire ~1949-1987 existence, not a peak-capacity snapshot in any single year including 1951. So this is a real event with the year/country/actors correct, but the specific quantitative claim (peak capacity magnitude) is materially overstated by roughly 2-6x relative to documented single-year figures.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Country, general narrative, and rough timing are confirmed by multiple independent sources: communist Bulgaria ran a network of ~100 forced-labour camps, Belene (on an island in the Danube) was the most notorious, conditions included starvation and forced labor, and targets included intellectuals, priests/pastors, kulaks, agrarians, monarchists and other perceived political opponents. 1951 specifically saw a hardening of the system (Bulgarian authorities raised maximum forced-labor sentences from 6 months to 3-7 years that year), consistent with continued 'expansion' of the camp system in the early-1950s growth period. However, the headline magnitude claim — '10,000-15,000 political prisoners held at peak capacity' — is materially wrong. Multiple sources (Wikipedia, beleneisland.org, belene.camp) agree the camp's DESIGNED/simultaneous capacity was ~3,000, and the actual documented peak simultaneous population was ~2,323 inmates in 1952 (per Bulgarian state archives) or a witness estimate of ~7,000 in 1952 — not 10,000-15,000. The 12,000-15,000+ figures that do appear in sources are CUMULATIVE totals of everyone who ever passed through the camp over 1949-1953 (12,000) or its entire 1949-1989 existence (est. 30,000; 'more than 15,000' per belene.camp), not a peak-capacity snapshot. This is a conflation of cumulative throughput with simultaneous peak population, inflating the peak figure roughly 3-5x. Year and country hold; the scale detail is off, so PARTIAL.",
+        "source": "https://en.wikipedia.org/wiki/Belene_labour_camp",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Country/year and the core substance hold: Bulgaria's communist regime did intensify its labor-camp system around 1951 — in 1951 the Politburo increased the mandatory internment term from 6 months to 3-7 years, and Belene (opened 1949) was indeed the most notorious camp, holding political opponents, Agrarian/Democratic Party members, army officers, Orthodox and Protestant clergy, and (per some sources) some kulaks/farmers alongside intellectuals — closely matching the description's targeted groups. However, the magnitude claim \"10,000-15,000 political prisoners held at peak capacity\" is not supported and appears to conflate different figures: the camp's own planning documents envisaged capacity for up to ~3,000 inmates; the best-documented single-year peak (1952, height of Chervenkov's repressions) was 2,323 inmates officially, with one witness estimate of ~7,000 in 1952; the \"15,000+\" figure that does appear in sources (belene.camp memorial site) is explicitly a CUMULATIVE total of people sent through Belene over its entire ~1949-1987 existence, not a peak-capacity snapshot in any single year including 1951. So this is a real event with the year/country/actors correct, but the specific quantitative claim (peak capacity magnitude) is materially overstated by roughly 2-6x relative to documented single-year figures.",
+        "source": "https://en.wikipedia.org/wiki/Belene_labour_camp",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Belene_labour_camp"
+  },
+  {
+    "year": 1951,
     "title": "First Five-Year Plan Drives Heavy Industrialization",
     "verdict": "FALSE",
     "reason": "Kremikovtsi was part of the Fourth Five-Year Plan (1961-1965), not the First. Decision to build Kremikovtsi made 1956; construction started 1960; opened 1963. Attributing it to the First Five-Year Plan is materially wrong.",
@@ -205,30 +241,6 @@
   },
   {
     "year": 1962,
-    "title": "Zhivkov Combines Party and State Leadership",
-    "verdict": "TRUE",
-    "reason": "November 19, 1962, Zhivkov elected PM. He held both First Secretary and PM roles until 1971 (then shifted to State Council Chairman). Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "November 19, 1962, Zhivkov elected PM. He held both First Secretary and PM roles until 1971 (then shifted to State Council Chairman). Confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1962,
     "title": "Kremikovtsi Steel Plant Opens as Communist Showcase",
     "verdict": "FALSE",
     "reason": "Year is wrong. Kremikovtsi Iron and Steel Works opened November 5, 1963, not 1962. Construction began 1960. Year-off by 1 = FALSE.",
@@ -242,6 +254,30 @@
         "pass_n": 1,
         "verdict": "FALSE",
         "reason": "Year is wrong. Kremikovtsi Iron and Steel Works opened November 5, 1963, not 1962. Construction began 1960. Year-off by 1 = FALSE.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1962,
+    "title": "Zhivkov Combines Party and State Leadership",
+    "verdict": "TRUE",
+    "reason": "November 19, 1962, Zhivkov elected PM. He held both First Secretary and PM roles until 1971 (then shifted to State Council Chairman). Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 19, 1962, Zhivkov elected PM. He held both First Secretary and PM roles until 1971 (then shifted to State Council Chairman). Confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -530,30 +566,6 @@
   },
   {
     "year": 1989,
-    "title": "Expulsion of 360,000 Ethnic Turks â€” Largest Postwar Forced Migration in Europe",
-    "verdict": "TRUE",
-    "reason": "May-August 1989, approximately 360,000 expelled. Described as Cold War Europe's largest ethnic cleansing. Turkey closed borders due to influx. All confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "May-August 1989, approximately 360,000 expelled. Described as Cold War Europe's largest ethnic cleansing. Turkey closed borders due to influx. All confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1989,
     "title": "Ecoglasnost Protest at CSCE Conference Embarrasses Regime",
     "verdict": "TRUE",
     "reason": "October 1989 Sofia CSCE follow-up meeting; Ecoglasnost petition broadcast internationally. Confirmed.",
@@ -578,6 +590,30 @@
   },
   {
     "year": 1989,
+    "title": "Expulsion of 360,000 Ethnic Turks â€” Largest Postwar Forced Migration in Europe",
+    "verdict": "TRUE",
+    "reason": "May-August 1989, approximately 360,000 expelled. Described as Cold War Europe's largest ethnic cleansing. Turkey closed borders due to influx. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May-August 1989, approximately 360,000 expelled. Described as Cold War Europe's largest ethnic cleansing. Turkey closed borders due to influx. All confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1989,
     "title": "Zhivkov Removed from Power After 35-Year Rule",
     "verdict": "TRUE",
     "reason": "November 10, 1989 (day after Berlin Wall fell); internal Politburo coup; Petar Mladenov led ouster. 35-year rule confirmed.",
@@ -591,30 +627,6 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "November 10, 1989 (day after Berlin Wall fell); internal Politburo coup; Petar Mladenov led ouster. 35-year rule confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1990,
-    "title": "Roundtable Talks Produce Agreement on Free Elections",
-    "verdict": "TRUE",
-    "reason": "Roundtable negotiations between BCP/BSP and UDF; agreements on free elections and constitutional reform confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Roundtable negotiations between BCP/BSP and UDF; agreements on free elections and constitutional reform confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -685,10 +697,10 @@
     ]
   },
   {
-    "year": 1991,
-    "title": "New Democratic Constitution Adopted",
+    "year": 1990,
+    "title": "Roundtable Talks Produce Agreement on Free Elections",
     "verdict": "TRUE",
-    "reason": "Adopted July 12, 1991 by 7th Grand National Assembly; parliamentary republic established. Confirmed.",
+    "reason": "Roundtable negotiations between BCP/BSP and UDF; agreements on free elections and constitutional reform confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -698,7 +710,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Adopted July 12, 1991 by 7th Grand National Assembly; parliamentary republic established. Confirmed.",
+        "reason": "Roundtable negotiations between BCP/BSP and UDF; agreements on free elections and constitutional reform confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -723,6 +735,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "October 1991 elections; UDF narrowly won; Filip Dimitrov formed first non-communist government since 1944. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1991,
+    "title": "New Democratic Constitution Adopted",
+    "verdict": "TRUE",
+    "reason": "Adopted July 12, 1991 by 7th Grand National Assembly; parliamentary republic established. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Adopted July 12, 1991 by 7th Grand National Assembly; parliamentary republic established. Confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -818,30 +854,6 @@
   },
   {
     "year": 1997,
-    "title": "Mass Protests Storm Parliament â€” BSP Government Falls",
-    "verdict": "TRUE",
-    "reason": "January 1997 storming of National Assembly; BSP resigned; Ivan Kostov center-right government followed. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "January 1997 storming of National Assembly; BSP resigned; Ivan Kostov center-right government followed. Confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1997,
     "title": "Currency Board Introduced â€” Lev Pegged to Deutsche Mark",
     "verdict": "TRUE",
     "reason": "Confirmed: on July 1, 1997, Bulgaria introduced a currency board arrangement pegging the lev to the Deutsche Mark at a fixed rate of 1000 leva to 1 DEM, eliminating central bank discretion over monetary policy. This followed a hyperinflation crisis where monthly inflation peaked at 242% in February 1997 and annualized inflation exceeded 2,000%. The currency board halted the crisis, inflation and interest rates fell rapidly, and the arrangement remained in place (later re-pegged to the euro in 1999 at the same effective rate) as the cornerstone of Bulgarian monetary policy. All material details (country, year, mechanism, ratio, effect) match the description.",
@@ -875,6 +887,30 @@
       }
     ],
     "source": "https://www.bta.bg/en/news/archives/921311-july-1-1997-currency-board-takes-effect-pegging-lev-to-deutsche-mark"
+  },
+  {
+    "year": 1997,
+    "title": "Mass Protests Storm Parliament â€” BSP Government Falls",
+    "verdict": "TRUE",
+    "reason": "January 1997 storming of National Assembly; BSP resigned; Ivan Kostov center-right government followed. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 1997 storming of National Assembly; BSP resigned; Ivan Kostov center-right government followed. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1998,
@@ -995,6 +1031,42 @@
         }
       }
     ]
+  },
+  {
+    "year": 2006,
+    "title": "Bulgaria Shuts Down Kozloduy Reactors Under EU Accession Safety Terms",
+    "verdict": "TRUE",
+    "reason": "Multiple independent, authoritative sources confirm all material details. Bulgaria committed during EU accession negotiations to close the Soviet-era VVER-440 (V-230 design) reactors at Kozloduy that the EU had deemed non-upgradable. Units 1 and 2 closed by 31 December 2002; units 3 and 4 closed on 31 December 2006, in the final hours before Bulgaria's EU accession on 1 January 2007. EU compensation for the early closure of units 3 and 4 was raised to approximately €550 million (from an initial €200 million offer) once 2006 was agreed as the shutdown date. This matches the event description on year, country, actors, mechanism, and magnitude.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via World Nuclear Association and corroborating search results (World Nuclear News, BTA, Wikipedia, EUR-Lex): Kozloduy units 1&2 (Soviet-era VVER-440 V-230 reactors, deemed non-upgradable by the EU) closed at the end of 2002; units 3&4 closed on 31 December 2006, both as conditions of Bulgaria's EU accession negotiations. A 2005 opinion poll showed 75% public support for keeping units 3&4 running despite the mandated shutdown. Bulgaria received €550 million in EU compensation for the early closures (increased from an initial €200 million offer). Bulgaria joined the EU on 1 January 2007. Every material detail in the event description is corroborated.",
+        "source": "https://world-nuclear.org/information-library/country-profiles/countries-a-f/bulgaria",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources confirm all material details. Bulgaria committed during EU accession negotiations to close the Soviet-era VVER-440 (V-230 design) reactors at Kozloduy that the EU had deemed non-upgradable. Units 1 and 2 closed by 31 December 2002; units 3 and 4 closed on 31 December 2006, in the final hours before Bulgaria's EU accession on 1 January 2007. EU compensation for the early closure of units 3 and 4 was raised to approximately €550 million (from an initial €200 million offer) once 2006 was agreed as the shutdown date. This matches the event description on year, country, actors, mechanism, and magnitude.",
+        "source": "https://www.world-nuclear-news.org/Articles/EU-accession-brings-early-reactor-closures",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.world-nuclear-news.org/Articles/EU-accession-brings-early-reactor-closures"
   },
   {
     "year": 2007,
@@ -1166,6 +1238,30 @@
   },
   {
     "year": 2014,
+    "title": "Bulgaria Blocks South Stream Pipeline Under EU and US Pressure",
+    "verdict": "TRUE",
+    "reason": "Bulgaria suspended then cancelled South Stream under EU/US pressure; Russia cancelled entire project. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bulgaria suspended then cancelled South Stream under EU/US pressure; Russia cancelled entire project. Confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2014,
     "title": "Corporate Commercial Bank Collapse Freezes 200,000 Depositors",
     "verdict": "TRUE",
     "reason": "Well-corroborated by multiple independent sources. Corporate Commercial Bank (KTB/Corpbank), confirmed as Bulgaria's fourth-largest bank by assets (end of Nov 2013), suffered a bank run in June 2014 triggered by allegations of massive fraud and related-party lending — Forbes and Bulgarian outlets detail that ~72% of its 5.2bn BGN loan portfolio (3.7bn BGN) went to shell companies controlled by owner Tsvetan Vasilev and politically connected figures (Delyan Peevski, Ahmed Dogan). The BNB placed the bank under special administration after the run and withdrew its license on 6 Nov 2014, freezing depositor access for ~6 months. On depositor count: sources give ~250,000-300,000 individuals plus ~6,000 businesses holding guaranteed deposits (up to 196,000 BGN each), with 111,981 actually claiming payouts by 2019 — the description's \"200,000 depositors\" is within the credible range reported (close to but slightly under the commonly cited 250,000 figure) and is materially accurate as an order-of-magnitude/scope claim. Cost to the state: guaranteed deposits totaled ~3.686-3.7 billion leva (matches description's \"3.7 billion leva\" almost exactly), funded via a ~2bn leva state loan to the underfunded Deposit Insurance Fund. All core facts (country=Bulgaria, year=2014, bank identity, fraud/related-party lending mechanism, deposit freeze, ~3.7bn leva resolution cost) check out via independent sources (Wikipedia, Forbes, Mediapool.bg, Capital.bg), none of which are on the off-limits list.",
@@ -1199,30 +1295,6 @@
       }
     ],
     "source": "https://www.mediapool.bg/krazhbata-na-veka-kakvo-se-sluchva-pet-godini-sled-sriva-na-ktb-news294713.html"
-  },
-  {
-    "year": 2014,
-    "title": "Bulgaria Blocks South Stream Pipeline Under EU and US Pressure",
-    "verdict": "TRUE",
-    "reason": "Bulgaria suspended then cancelled South Stream under EU/US pressure; Russia cancelled entire project. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Bulgaria suspended then cancelled South Stream under EU/US pressure; Russia cancelled entire project. Confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
   },
   {
     "year": 2016,
@@ -1382,30 +1454,6 @@
   },
   {
     "year": 2022,
-    "title": "Russia Cuts Gas to Bulgaria â€” Energy Crisis After Ukraine Invasion",
-    "verdict": "TRUE",
-    "reason": "April 26, 2022 Gazprom cut gas after Bulgaria refused ruble payments. Bulgaria accelerated LNG and Azerbaijan alternatives. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "April 26, 2022 Gazprom cut gas after Bulgaria refused ruble payments. Bulgaria accelerated LNG and Azerbaijan alternatives. Confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2022,
     "title": "Bulgaria Vetoes North Macedonia's EU Accession Over Historical Disputes",
     "verdict": "TRUE",
     "reason": "Bulgaria maintained veto; lifted June 24, 2022 after French mediation/proposal. Ongoing bilateral conditionality disputes confirmed.",
@@ -1419,6 +1467,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Bulgaria maintained veto; lifted June 24, 2022 after French mediation/proposal. Ongoing bilateral conditionality disputes confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2022,
+    "title": "Russia Cuts Gas to Bulgaria â€” Energy Crisis After Ukraine Invasion",
+    "verdict": "TRUE",
+    "reason": "April 26, 2022 Gazprom cut gas after Bulgaria refused ruble payments. Bulgaria accelerated LNG and Azerbaijan alternatives. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 26, 2022 Gazprom cut gas after Bulgaria refused ruble payments. Bulgaria accelerated LNG and Azerbaijan alternatives. Confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",

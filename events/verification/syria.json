@@ -4247,5 +4247,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Tabqa_Dam"
+  },
+  {
+    "year": 1951,
+    "title": "Syrian Army Expands Soviet Military Contacts",
+    "verdict": "FALSE",
+    "reason": "Extensive research (multiple web searches plus a 100+ page ADST Foreign Service oral-history compilation on Syria covering 1949-1997, including firsthand accounts from political officers stationed in Damascus in 1951-1954) contradicts this claim rather than supporting it. In 1951 Shishakli's regime was oriented toward the West, not the USSR: his army's \"fighting ability he increased with French aid\" (Britannica), he sought US/UK military aid, and Britain's main practical achievement of courting him was delivery of Meteor trainer aircraft in 1952. Ambassador William Brewer, who served in Damascus 1951-1954, explicitly wrote that this period \"witnessed the earliest tentative Soviet moves into the Near East, including Syria,\" dating Moscow's \"first overt move\" to a September-October 1953 UN Security Council dispute (Jisr Banat Yacub), not 1951 — and that led to \"close Syro-Soviet collaboration by 1957,\" well after Shishakli's 1954 overthrow. Real, substantial Syrian arms shopping in the Eastern bloc did not begin until 1955-1956 (following Egypt's 1955 Czech arms deal), under different Syrian leadership. No source found corroborates a 1951 Shishakli-era Soviet military-contact overture; the weight of contemporary and retrospective diplomatic testimony indicates the opposite occurred in 1951 (Western orientation, no Soviet outreach).",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources contradict this claim. Shishakli's 1951-1954 regime is explicitly characterized as \"pro-Western\" (Helion/Middle East@War publisher description of Czechoslovak Arms Exports to Syria), and other sources describe Shishakli as seeking Western military aid (from the US and Britain) which was largely refused (US feared arming Syria would threaten Israel), while he simultaneously \"shunned military aid from the Eisenhower Administration but also kept Syria from falling into the Soviet Bloc\" and actively repressed the domestic Syrian Communist Party. No source found documents any 1951 Syrian military overture to the USSR or any British/US alarm about Soviet contacts that year. The documented historical timeline places Syria's actual pivot toward Soviet-bloc arms much later: Czechoslovakia only began investing seriously in the relationship and opened an embassy in Damascus in March 1955, \"after the toppling of the... pro-Western regime of Adib... Shishakli... and the instalment of a new, more pro-left regime in 1954.\" The substantive Soviet arms relationship is consistently dated to 1954-1956 under Khaled al-Azm/Sabri al-Asali governments (rejecting the Baghdad Pact, arms deals with Czechoslovakia from 1955, and the major Syria-USSR arms pact of November 1956) — after Shishakli's overthrow in the February 1954 coup, not under his leadership in 1951. The event as described (actor, year, and Cold War framing) does not match the historical record; it appears to conflate/misattribute the later 1954-1956 Soviet-arms pivot to Shishakli in 1951.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1955
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Extensive research (multiple web searches plus a 100+ page ADST Foreign Service oral-history compilation on Syria covering 1949-1997, including firsthand accounts from political officers stationed in Damascus in 1951-1954) contradicts this claim rather than supporting it. In 1951 Shishakli's regime was oriented toward the West, not the USSR: his army's \"fighting ability he increased with French aid\" (Britannica), he sought US/UK military aid, and Britain's main practical achievement of courting him was delivery of Meteor trainer aircraft in 1952. Ambassador William Brewer, who served in Damascus 1951-1954, explicitly wrote that this period \"witnessed the earliest tentative Soviet moves into the Near East, including Syria,\" dating Moscow's \"first overt move\" to a September-October 1953 UN Security Council dispute (Jisr Banat Yacub), not 1951 — and that led to \"close Syro-Soviet collaboration by 1957,\" well after Shishakli's 1954 overthrow. Real, substantial Syrian arms shopping in the Eastern bloc did not begin until 1955-1956 (following Egypt's 1955 Czech arms deal), under different Syrian leadership. No source found corroborates a 1951 Shishakli-era Soviet military-contact overture; the weight of contemporary and retrospective diplomatic testimony indicates the opposite occurred in 1951 (Western orientation, no Soviet outreach).",
+        "source": "https://adst.org/Readers/Syria.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://adst.org/Readers/Syria.pdf"
   }
 ]

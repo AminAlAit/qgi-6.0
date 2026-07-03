@@ -1303,6 +1303,42 @@
   },
   {
     "year": 2010,
+    "title": "Bolivia Passes Law of the Rights of Mother Earth",
+    "verdict": "TRUE",
+    "reason": "Confirmed via multiple independent, authoritative sources including Bolivia's official government legal database (FAOLEX/Ministry of Planning) and Wikipedia. Bolivia's Plurinational Legislative Assembly passed Law No. 071, Ley de Derechos de la Madre Tierra (Law of the Rights of Mother Earth), on December 21, 2010. The law declares Mother Earth a 'collective subject of public interest' and titleholder of enumerated rights including life, diversity of life, water, clean air, equilibrium, restoration, and pollution-free living — matching the event description closely. The law's origins trace to the World People's Conference on Climate Change and the Rights of Mother Earth held in Tiquipaya (Cochabamba department), Bolivia, April 19-22, 2010, consistent with the description's claim it 'originated from the World People's Conference on Climate Change and the Rights of Mother Earth held in Cochabamba earlier in 2010.' The follow-up Framework Law of Mother Earth and Integral Development (Law 300) is also independently well-documented as passed in October 2012, consistent with the description (not independently re-verified in depth here but widely corroborated in the same sources). All material details — country, year, actor, substance of the law — check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources: Bolivia's Plurinational Legislative Assembly passed Law No. 071, the Law of the Rights of Mother Earth (Ley de Derechos de la Madre Tierra), promulgated December 21, 2010. It declares Mother Earth a 'collective subject of public interest' with legally enumerated rights (life, biodiversity, water, clean air, freedom from contamination). It originated from the World People's Conference on Climate Change and the Rights of Mother Earth held in Cochabamba/Tiquipaya, April 19-22, 2010. The follow-up Framework Law of Mother Earth and Integral Development (Law 300) was passed October 15, 2012, exactly as described. All material details (country, year, actor, content, origin, follow-up law) match.",
+        "source": "https://en.wikipedia.org/wiki/Law_of_the_Rights_of_Mother_Earth",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent, authoritative sources including Bolivia's official government legal database (FAOLEX/Ministry of Planning) and Wikipedia. Bolivia's Plurinational Legislative Assembly passed Law No. 071, Ley de Derechos de la Madre Tierra (Law of the Rights of Mother Earth), on December 21, 2010. The law declares Mother Earth a 'collective subject of public interest' and titleholder of enumerated rights including life, diversity of life, water, clean air, equilibrium, restoration, and pollution-free living — matching the event description closely. The law's origins trace to the World People's Conference on Climate Change and the Rights of Mother Earth held in Tiquipaya (Cochabamba department), Bolivia, April 19-22, 2010, consistent with the description's claim it 'originated from the World People's Conference on Climate Change and the Rights of Mother Earth held in Cochabamba earlier in 2010.' The follow-up Framework Law of Mother Earth and Integral Development (Law 300) is also independently well-documented as passed in October 2012, consistent with the description (not independently re-verified in depth here but widely corroborated in the same sources). All material details — country, year, actor, substance of the law — check out.",
+        "source": "https://faolex.fao.org/docs/pdf/bol144985.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://faolex.fao.org/docs/pdf/bol144985.pdf"
+  },
+  {
+    "year": 2010,
     "title": "Gasolinazo: Fuel Subsidy Removal Reversed After Mass Protests",
     "verdict": "TRUE",
     "reason": "December 2010 fuel price hike 70-80% and rapid reversal confirmed.",

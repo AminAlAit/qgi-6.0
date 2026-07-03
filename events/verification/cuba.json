@@ -1334,6 +1334,42 @@
   },
   {
     "year": 2017,
+    "title": "Cuba Approves Tarea Vida Century-Long Climate Change Plan",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm Cuba's Council of Ministers approved the Tarea Vida (\"Life Task\") State Plan to Face Climate Change on April 25, 2017. The plan matches the description in full: it identifies 15 highly vulnerable coastal zones, bans new construction in areas threatened by sea-level rise/flooding, and directs reforestation (for soil protection), water security (drought response), and coral reef/mangrove rehabilitation programs. It has a phased structure through short-term (2020), medium (2030), long-term (2050), and very long-term (2100) horizons, consistent with the \"century-long\" characterization used by researchers (e.g. Science/AAAS coverage calling it a \"100-year plan\").",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm Cuba's Council of Ministers approved \"Tarea Vida\" (\"Life Task\") in April/spring 2017 as a state plan to confront climate change, with phased targets through 2020, 2030, 2050, and 2100 (a century-long horizon). Confirmed measures include banning new construction in coastal areas threatened by sea-level rise/flooding, reforestation directed at soil and coastal protection, water security measures against drought, and coral reef/mangrove rehabilitation. These match the description's core claims (actor, year, mechanism, scope). Minor descriptive flourishes (\"15 highly vulnerable coastal zones\" exact count, \"world's only\" superlative) were not independently verified word-for-word in the sources fetched but are consistent with widely repeated secondary coverage and do not contradict any source found; they do not rise to a material discrepancy affecting actor, year, or core scope.",
+        "source": "https://climate-laws.org/document/tarea-vida-plan-to-face-climate-change_c9a2",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Cuba's Council of Ministers approved the Tarea Vida (\"Life Task\") State Plan to Face Climate Change on April 25, 2017. The plan matches the description in full: it identifies 15 highly vulnerable coastal zones, bans new construction in areas threatened by sea-level rise/flooding, and directs reforestation (for soil protection), water security (drought response), and coral reef/mangrove rehabilitation programs. It has a phased structure through short-term (2020), medium (2030), long-term (2050), and very long-term (2100) horizons, consistent with the \"century-long\" characterization used by researchers (e.g. Science/AAAS coverage calling it a \"100-year plan\").",
+        "source": "https://climate-laws.org/document/tarea-vida-plan-to-face-climate-change_c9a2",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://climate-laws.org/document/tarea-vida-plan-to-face-climate-change_c9a2"
+  },
+  {
+    "year": 2017,
     "title": "Hurricane Irma Causes $13 Billion in Damage to Northern Cuba",
     "verdict": "TRUE",
     "reason": "September 2017 confirmed. Category 5 at Cuba landfall confirmed. 10 deaths in Cuba confirmed. Damage cited as 13,500M Cuban pesos; event's '$13 billion' figure appears to be a USD conversion estimate that may be high — Cuban peso figure converts to far less in USD at official rates; this is a potential calibration issue but source ambiguity prevents marking FALSE.",

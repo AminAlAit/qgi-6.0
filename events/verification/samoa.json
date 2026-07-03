@@ -1,0 +1,38 @@
+[
+  {
+    "year": 2019,
+    "title": "Samoa Bans Single-Use Plastic Bags and Straws",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm Samoa's Waste (Plastic Ban) Management Regulation 2018, endorsed by Cabinet, took effect January 30, 2019, banning import/manufacture/export/sale/distribution of plastic shopping bags, packing bags, and straws, with a SAT $10,000 fine (100 penalty units) for violators. Exemptions exist for food-safety packaging (frozen meat, ice, produce, biscuits, etc.). The ban's timing meant vendors at the 2019 Pacific Games hosted in Samoa could not use single-use plastics, and the Games were subsequently praised by UNEP as the first 'green' Pacific Games. All material details in the event description are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material details: Samoa's Cabinet endorsed the Waste (Plastic Ban) Management Regulation 2018 in 2018, and the ban on single-use plastic shopping bags, packing bags, and straws took effect January 30, 2019. This meant vendors at the 2019 Pacific Games (hosted in Apia, Samoa) could not legally use single-use plastic products - the event was celebrated by UNEP as the first 'plastic free'/green Pacific Games. Non-compliance carries a fine of SAT $10,000 (100 penalty units). Exemptions exist for food-safety packaging (e.g., bags for frozen meat, local produce). All figures, dates, and actors match the event description precisely.",
+        "source": "https://www.samoaobserver.ws/category/samoa/10940",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Samoa's Waste (Plastic Ban) Management Regulation 2018, endorsed by Cabinet, took effect January 30, 2019, banning import/manufacture/export/sale/distribution of plastic shopping bags, packing bags, and straws, with a SAT $10,000 fine (100 penalty units) for violators. Exemptions exist for food-safety packaging (frozen meat, ice, produce, biscuits, etc.). The ban's timing meant vendors at the 2019 Pacific Games hosted in Samoa could not use single-use plastics, and the Games were subsequently praised by UNEP as the first 'green' Pacific Games. All material details in the event description are corroborated.",
+        "source": "https://www.samoaobserver.ws/category/samoa/13680",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.samoaobserver.ws/category/samoa/13680"
+  }
+]

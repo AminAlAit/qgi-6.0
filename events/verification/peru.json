@@ -1101,6 +1101,42 @@
   },
   {
     "year": 2008,
+    "title": "Peru Creates Ministry of Environment",
+    "verdict": "TRUE",
+    "reason": "Independently confirmed via UN-SPIDER Knowledge Portal (UN-affiliated, not Wikipedia) and cross-checked against Wikipedia's Ministry of Environment (Peru) page: MINAM was created on May 13, 2008 via Legislative Decree No. 1013, consolidating environmental authority previously spread across sectoral agencies, with biologist Antonio Brack Egg appointed as first minister (took office May 16, 2008). All material details in the event description (date, country, legal instrument, consolidation function, first minister, mandate scope including climate change) match found sources with no contradictions.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Peru created the Ministry of Environment (MINAM) via Legislative Decree No. 1013 on May 13, 2008, consolidating environmental policymaking authority previously dispersed across sectoral agencies. Antonio Brack Egg, a biologist, was appointed as the ministry's first minister (took office May 16, 2008). All material details in the description (date, decree number, ministry name, minister's name/profession, and the consolidation-of-authority framing) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/Ministry_of_Environment_(Peru)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via UN-SPIDER Knowledge Portal (UN-affiliated, not Wikipedia) and cross-checked against Wikipedia's Ministry of Environment (Peru) page: MINAM was created on May 13, 2008 via Legislative Decree No. 1013, consolidating environmental authority previously spread across sectoral agencies, with biologist Antonio Brack Egg appointed as first minister (took office May 16, 2008). All material details in the event description (date, country, legal instrument, consolidation function, first minister, mandate scope including climate change) match found sources with no contradictions.",
+        "source": "https://un-spider.org/ministry-environment-peru-minam",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://un-spider.org/ministry-environment-peru-minam"
+  },
+  {
+    "year": 2008,
     "title": "Peru Economy Grows 9.8% Amid Commodity Boom",
     "verdict": "TRUE",
     "reason": "~9.8% GDP growth in 2008 confirmed. Poverty rate decline from ~55% in 2001 to below 40% by 2008 broadly confirmed.",

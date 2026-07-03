@@ -1160,6 +1160,42 @@
     "source": "https://en.wikipedia.org/wiki/Ceibal_project"
   },
   {
+    "year": 2008,
+    "title": "Uruguay Approves National Energy Policy Driving Renewables Shift",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm Uruguay's Executive Power/Council of Ministers approved the Politica Energetica 2005-2030 (often cited as 2008-2030) in 2008, developed under the leadership of physicist Ramon Mendez Galain, who served as National Director of Energy 2008-2015 and is widely credited as the policy's architect (Kleinman Center, Penn Today/Carnot Prize profile). The policy aimed to replace imported fossil fuels with wind, biomass and solar, used competitive technology-neutral reverse auctions and long-term PPAs with the state utility UTE instead of direct subsidies (Norton Rose Fulbright, IRENA policy brief), and set renewable targets for the 2015 horizon that multiple sources describe in the 15%-90% range depending on the metric (non-hydro electricity share vs. installed capacity/generation share) - consistent with the description's 'initially 15%, later raised to 90% of capacity' framing. Actual outcomes matched or exceeded targets: 94.5% renewable electricity in 2015 per IRENA, commonly cited at 95-98% in subsequent years (Forbes, Earth.org, Yale Climate Connections). Year, country, and the substance of the policy all check out; the 15%->90% target evolution is a real but somewhat compressed/simplified rendering of the actual multi-metric target history, a minor nuance rather than a material factual error.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: Uruguay's government approved the \"Política Energética Uruguay 2030\" (also cited as 2005-2030) in 2008, developed by physicist Ramón Méndez Galain, who served as National Director of Energy 2008-2015. The policy aimed to replace imported fossil fuels with wind, biomass, solar (and hydro), used competitive technology-based auctions and long-term public-private contracts, and is widely described as achieved largely without direct government subsidies (with sources noting IMF/World Bank skepticism and the government instead removing fossil-fuel subsidies while offering auction-won long-term purchase contracts). The initial target was 15% of electricity demand from renewables (wind/biomass/micro-hydro) by 2015, which Norton Rose Fulbright's legal analysis confirms was later raised (in 2013) to 90% of total generation capacity from renewables by end of 2015 (later pushed to 2016). Within about a decade, Uruguay reached 95-99% renewable electricity generation (confirmed by NPR/Planet Money, Wikipedia, Yale Climate Connections, and Norton Rose Fulbright reporting figures of 98-99%). All material details (year, country, actor, policy mechanism, targets, and outcome) check out across independent, authoritative sources with no contradictions found.",
+        "source": "https://www.nortonrosefulbright.com/en/knowledge/publications/c7fa4c24/renewable-energy-in-latin-america-uruguay",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Uruguay's Executive Power/Council of Ministers approved the Politica Energetica 2005-2030 (often cited as 2008-2030) in 2008, developed under the leadership of physicist Ramon Mendez Galain, who served as National Director of Energy 2008-2015 and is widely credited as the policy's architect (Kleinman Center, Penn Today/Carnot Prize profile). The policy aimed to replace imported fossil fuels with wind, biomass and solar, used competitive technology-neutral reverse auctions and long-term PPAs with the state utility UTE instead of direct subsidies (Norton Rose Fulbright, IRENA policy brief), and set renewable targets for the 2015 horizon that multiple sources describe in the 15%-90% range depending on the metric (non-hydro electricity share vs. installed capacity/generation share) - consistent with the description's 'initially 15%, later raised to 90% of capacity' framing. Actual outcomes matched or exceeded targets: 94.5% renewable electricity in 2015 per IRENA, commonly cited at 95-98% in subsequent years (Forbes, Earth.org, Yale Climate Connections). Year, country, and the substance of the policy all check out; the 15%->90% target evolution is a real but somewhat compressed/simplified rendering of the actual multi-metric target history, a minor nuance rather than a material factual error.",
+        "source": "https://kleinmanenergy.upenn.edu/commentary/blog/learning-from-uruguays-energy-transition/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://kleinmanenergy.upenn.edu/commentary/blog/learning-from-uruguays-energy-transition/"
+  },
+  {
     "year": 2009,
     "title": "ICJ Rules in Uruguay's Favor on Pulp Mill Dispute",
     "verdict": "TRUE",

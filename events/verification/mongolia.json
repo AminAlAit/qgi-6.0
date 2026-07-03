@@ -1,6 +1,31 @@
 [
   {
     "year": 1990,
+    "title": "Constitution Amended to Legalize Opposition Parties",
+    "verdict": "TRUE",
+    "reason": "In March 1990 the People's Great Khural abolished the MPRP's constitutional monopoly on power; May 1990 law on political parties formally legalised opposition parties and created a standing legislature and the office of president. Confirmed by Constitution of Mongolia Wikipedia and ConstitutionNet.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In March 1990 the People's Great Khural abolished the MPRP's constitutional monopoly on power; May 1990 law on political parties formally legalised opposition parties and created a standing legislature and the office of president. Confirmed by Constitution of Mongolia Wikipedia and ConstitutionNet.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_Mongolia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Constitution_of_Mongolia"
+  },
+  {
+    "year": 1990,
     "title": "Democratic Revolution Ends 70 Years of Communist Rule",
     "verdict": "TRUE",
     "reason": "Hunger strike in Sukhbaatar Square March 1990 forced MPRP Politburo under Jambyn Batmonkh to resign (variously cited as March 9 or March 21). Well-documented peaceful end of single-party rule.",
@@ -50,31 +75,6 @@
     "source": "https://en.wikipedia.org/wiki/1990_Mongolian_parliamentary_election"
   },
   {
-    "year": 1990,
-    "title": "Constitution Amended to Legalize Opposition Parties",
-    "verdict": "TRUE",
-    "reason": "In March 1990 the People's Great Khural abolished the MPRP's constitutional monopoly on power; May 1990 law on political parties formally legalised opposition parties and created a standing legislature and the office of president. Confirmed by Constitution of Mongolia Wikipedia and ConstitutionNet.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "In March 1990 the People's Great Khural abolished the MPRP's constitutional monopoly on power; May 1990 law on political parties formally legalised opposition parties and created a standing legislature and the office of president. Confirmed by Constitution of Mongolia Wikipedia and ConstitutionNet.",
-        "source": "https://en.wikipedia.org/wiki/Constitution_of_Mongolia",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Constitution_of_Mongolia"
-  },
-  {
     "year": 1991,
     "title": "Mass Privatization Voucher Program Launched",
     "verdict": "TRUE",
@@ -101,31 +101,6 @@
   },
   {
     "year": 1992,
-    "title": "New Democratic Constitution Adopted",
-    "verdict": "TRUE",
-    "reason": "Constitution ratified January 13 1992, entered force February 12 1992, establishing unicameral State Great Khural of 76 seats, semi-presidential republic, independent judiciary. Dates and details confirmed by Wikipedia and UN Women constitutions database.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Constitution ratified January 13 1992, entered force February 12 1992, establishing unicameral State Great Khural of 76 seats, semi-presidential republic, independent judiciary. Dates and details confirmed by Wikipedia and UN Women constitutions database.",
-        "source": "https://en.wikipedia.org/wiki/Constitution_of_Mongolia",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Constitution_of_Mongolia"
-  },
-  {
-    "year": 1992,
     "title": "Hyperinflation Crisis Peaks at 325 Percent",
     "verdict": "TRUE",
     "reason": "Annual inflation reached 325.5% in 1992, with food prices rising 476.6%, caused by shock therapy price liberalization after Soviet aid collapse. Real GDP contracted ~11% in 1992. Confirmed by IMF and academic sources.",
@@ -148,6 +123,31 @@
       }
     ],
     "source": "https://www.researchgate.net/publication/242460002_NEO-LIBERAL_SHOCK_THERAPY_POLICY_DURING_THE_MONGOLIAN_ECONOMIC_TRANSITION"
+  },
+  {
+    "year": 1992,
+    "title": "New Democratic Constitution Adopted",
+    "verdict": "TRUE",
+    "reason": "Constitution ratified January 13 1992, entered force February 12 1992, establishing unicameral State Great Khural of 76 seats, semi-presidential republic, independent judiciary. Dates and details confirmed by Wikipedia and UN Women constitutions database.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitution ratified January 13 1992, entered force February 12 1992, establishing unicameral State Great Khural of 76 seats, semi-presidential republic, independent judiciary. Dates and details confirmed by Wikipedia and UN Women constitutions database.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_Mongolia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Constitution_of_Mongolia"
   },
   {
     "year": 1993,
@@ -326,31 +326,6 @@
   },
   {
     "year": 2001,
-    "title": "Triple Dzud Kills 4.8 Million Animals in Second Winter",
-    "verdict": "TRUE",
-    "reason": "The 2000-2001 dzud was the second in a consecutive three-year run affecting all 20 provinces; total livestock lost across the 2000-2002 cycle exceeded 11 million. The 4.8 million figure for 2000-2001 is consistent with ReliefWeb reports describing the second dzud as the most severe, and the total three-year figure of 11 million. Confirmed by Wikipedia Zud article and IOP Science.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The 2000-2001 dzud was the second in a consecutive three-year run affecting all 20 provinces; total livestock lost across the 2000-2002 cycle exceeded 11 million. The 4.8 million figure for 2000-2001 is consistent with ReliefWeb reports describing the second dzud as the most severe, and the total three-year figure of 11 million. Confirmed by Wikipedia Zud article and IOP Science.",
-        "source": "https://reliefweb.int/report/mongolia/dzud-20002001-brief-picture",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://reliefweb.int/report/mongolia/dzud-20002001-brief-picture"
-  },
-  {
-    "year": 2001,
     "title": "Oyu Tolgoi Copper-Gold Deposit Resource Estimated",
     "verdict": "TRUE",
     "reason": "In 2001, Ivanhoe Mines (Canadian) announced the major resource estimate for Oyu Tolgoi in the South Gobi Desert. By 2003 the site had 18 drill rigs and was called the world's biggest mining exploration project. Confirmed by Wikipedia Oyu Tolgoi article and mining-technology.com.",
@@ -373,6 +348,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Oyu_Tolgoi_mine"
+  },
+  {
+    "year": 2001,
+    "title": "Triple Dzud Kills 4.8 Million Animals in Second Winter",
+    "verdict": "TRUE",
+    "reason": "The 2000-2001 dzud was the second in a consecutive three-year run affecting all 20 provinces; total livestock lost across the 2000-2002 cycle exceeded 11 million. The 4.8 million figure for 2000-2001 is consistent with ReliefWeb reports describing the second dzud as the most severe, and the total three-year figure of 11 million. Confirmed by Wikipedia Zud article and IOP Science.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 2000-2001 dzud was the second in a consecutive three-year run affecting all 20 provinces; total livestock lost across the 2000-2002 cycle exceeded 11 million. The 4.8 million figure for 2000-2001 is consistent with ReliefWeb reports describing the second dzud as the most severe, and the total three-year figure of 11 million. Confirmed by Wikipedia Zud article and IOP Science.",
+        "source": "https://reliefweb.int/report/mongolia/dzud-20002001-brief-picture",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://reliefweb.int/report/mongolia/dzud-20002001-brief-picture"
   },
   {
     "year": 2002,
@@ -501,9 +501,9 @@
   },
   {
     "year": 2009,
-    "title": "Tsakhiagiin Elbegdorj Elected President",
+    "title": "Mongolia Deploys Troops to Afghanistan Under ISAF",
     "verdict": "TRUE",
-    "reason": "Elbegdorj won the May 24 2009 presidential election with 51.21% of the vote, defeating incumbent Enkhbayar (47.41%). First opposition president, creating divided government. Confirmed by Wikipedia 2009 election article.",
+    "reason": "Mongolia sent 114 troops to ISAF Afghanistan in 2009, providing force protection in Feyzabad and Kabul airport security. Mongolia became the 45th ISAF contributing nation. Confirmed by NATO press release and Providing for Peacekeeping source.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -513,8 +513,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Elbegdorj won the May 24 2009 presidential election with 51.21% of the vote, defeating incumbent Enkhbayar (47.41%). First opposition president, creating divided government. Confirmed by Wikipedia 2009 election article.",
-        "source": "https://en.wikipedia.org/wiki/2009_Mongolian_presidential_election",
+        "reason": "Mongolia sent 114 troops to ISAF Afghanistan in 2009, providing force protection in Feyzabad and Kabul airport security. Mongolia became the 45th ISAF contributing nation. Confirmed by NATO press release and Providing for Peacekeeping source.",
+        "source": "https://www.nato.int/cps/en/natolive/news_62450.htm?mode=news",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -522,7 +522,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2009_Mongolian_presidential_election"
+    "source": "https://www.nato.int/cps/en/natolive/news_62450.htm?mode=news"
   },
   {
     "year": 2009,
@@ -551,9 +551,9 @@
   },
   {
     "year": 2009,
-    "title": "Mongolia Deploys Troops to Afghanistan Under ISAF",
+    "title": "Tsakhiagiin Elbegdorj Elected President",
     "verdict": "TRUE",
-    "reason": "Mongolia sent 114 troops to ISAF Afghanistan in 2009, providing force protection in Feyzabad and Kabul airport security. Mongolia became the 45th ISAF contributing nation. Confirmed by NATO press release and Providing for Peacekeeping source.",
+    "reason": "Elbegdorj won the May 24 2009 presidential election with 51.21% of the vote, defeating incumbent Enkhbayar (47.41%). First opposition president, creating divided government. Confirmed by Wikipedia 2009 election article.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -563,8 +563,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Mongolia sent 114 troops to ISAF Afghanistan in 2009, providing force protection in Feyzabad and Kabul airport security. Mongolia became the 45th ISAF contributing nation. Confirmed by NATO press release and Providing for Peacekeeping source.",
-        "source": "https://www.nato.int/cps/en/natolive/news_62450.htm?mode=news",
+        "reason": "Elbegdorj won the May 24 2009 presidential election with 51.21% of the vote, defeating incumbent Enkhbayar (47.41%). First opposition president, creating divided government. Confirmed by Wikipedia 2009 election article.",
+        "source": "https://en.wikipedia.org/wiki/2009_Mongolian_presidential_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -572,7 +572,7 @@
         }
       }
     ],
-    "source": "https://www.nato.int/cps/en/natolive/news_62450.htm?mode=news"
+    "source": "https://en.wikipedia.org/wiki/2009_Mongolian_presidential_election"
   },
   {
     "year": 2010,
@@ -901,31 +901,6 @@
   },
   {
     "year": 2017,
-    "title": "Khaltmaagiin Battulga Elected President in First-Ever Runoff",
-    "verdict": "TRUE",
-    "reason": "Battulga won Mongolia's first-ever presidential runoff on July 7 2017 with exactly 50.6% of the vote, defeating MPP's Enkhbold. He is described as a former martial arts champion and businessman (not wrestler as some sources say). Confirmed by Wikipedia 2017 election article and Bloomberg.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Battulga won Mongolia's first-ever presidential runoff on July 7 2017 with exactly 50.6% of the vote, defeating MPP's Enkhbold. He is described as a former martial arts champion and businessman (not wrestler as some sources say). Confirmed by Wikipedia 2017 election article and Bloomberg.",
-        "source": "https://en.wikipedia.org/wiki/2017_Mongolian_presidential_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2017_Mongolian_presidential_election"
-  },
-  {
-    "year": 2017,
     "title": "IMF Approves $5.5 Billion Bailout Package",
     "verdict": "TRUE",
     "reason": "IMF approved a 3-year Extended Fund Facility of $434 million on May 24 2017 as part of a $5.5 billion multi-donor package including ADB, World Bank, Japan, Korea, and China's RMB 15 billion swap line. Confirmed by official IMF press release.",
@@ -948,6 +923,31 @@
       }
     ],
     "source": "https://www.imf.org/en/News/Articles/2017/05/31/NA053117Mongolia-Turns-the-Corner-with-5-5-Billion-IMF-Led-Financing-Package"
+  },
+  {
+    "year": 2017,
+    "title": "Khaltmaagiin Battulga Elected President in First-Ever Runoff",
+    "verdict": "TRUE",
+    "reason": "Battulga won Mongolia's first-ever presidential runoff on July 7 2017 with exactly 50.6% of the vote, defeating MPP's Enkhbold. He is described as a former martial arts champion and businessman (not wrestler as some sources say). Confirmed by Wikipedia 2017 election article and Bloomberg.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Battulga won Mongolia's first-ever presidential runoff on July 7 2017 with exactly 50.6% of the vote, defeating MPP's Enkhbold. He is described as a former martial arts champion and businessman (not wrestler as some sources say). Confirmed by Wikipedia 2017 election article and Bloomberg.",
+        "source": "https://en.wikipedia.org/wiki/2017_Mongolian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2017_Mongolian_presidential_election"
   },
   {
     "year": 2019,
@@ -973,6 +973,42 @@
       }
     ],
     "source": "https://constitutionnet.org/news/mongolias-long-participatory-route-constitutional-reforms"
+  },
+  {
+    "year": 2019,
+    "title": "Mongolia Bans Raw Coal in Ulaanbaatar to Combat Severe Air Pollution",
+    "verdict": "TRUE",
+    "reason": "Confirmed from multiple independent sources. Montsame (Mongolia's state news agency) confirms the raw-coal ban took effect 15 May 2019, applying to Ulaanbaatar (excluding licensed power/thermal plants), with refined coal briquettes as the subsidized replacement fuel; it cites ~202,000 ger-area households burning 1.1 million tons of raw coal, producing ~80% of the city's smog — matching the description's 'over 200,000 ger households' and '80% of the city's air pollution' figures closely. Peer-reviewed literature (PMC interrupted-time-series study, PMC10151914; MDPI Atmosphere 2025 study) independently reports a PM2.5 decline of -17.1 µg/m³ immediately post-intervention, matching the description's '~17 micrograms per cubic meter' claim in the first year almost exactly. One phrasing nuance: the description calls it a 'nationwide ban... in Ulaanbaatar,' but the actual ban's geographic scope is Ulaanbaatar specifically (a national-government policy targeting the capital), not literally a countrywide ban — Montsame explicitly notes the restriction 'applies specifically to Ulaanbaatar, not nationwide.' This is a minor wording ambiguity rather than a factual error, since the object/scope stated ('in Ulaanbaatar') is correct; all core indicators (date, actor, mechanism, magnitude, replacement fuel) are materially accurate, so I verdict TRUE rather than PARTIAL.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed from scratch via independent sources. Montsame (Mongolia's state news agency) confirms the Mongolian government banned raw coal consumption in Ulaanbaatar effective 15 May 2019, replacing it with subsidized refined coal briquettes. Multiple peer-reviewed studies (PMC/MDPI Atmosphere 2025 interrupted time-series analysis) and the Asian Development Bank corroborate: ~200,000-202,000 ger households were responsible for ~80% of the city's air pollution from raw coal burning, and the MDPI study reports PM2.5 decreased by -17.1 µg/m3 immediately post-intervention, matching the description's '17 micrograms per cubic meter' figure almost exactly. Ulaanbaatar's status as one of the world's most polluted capitals prior to the ban is well documented. All material details (country, year, date, mechanism, scale, magnitude) are corroborated by independent, non-overlapping sources (Mongolian state news, peer-reviewed journals, ADB).",
+        "source": "https://montsame.mn/en/read/133813",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources. Montsame (Mongolia's state news agency) confirms the raw-coal ban took effect 15 May 2019, applying to Ulaanbaatar (excluding licensed power/thermal plants), with refined coal briquettes as the subsidized replacement fuel; it cites ~202,000 ger-area households burning 1.1 million tons of raw coal, producing ~80% of the city's smog — matching the description's 'over 200,000 ger households' and '80% of the city's air pollution' figures closely. Peer-reviewed literature (PMC interrupted-time-series study, PMC10151914; MDPI Atmosphere 2025 study) independently reports a PM2.5 decline of -17.1 µg/m³ immediately post-intervention, matching the description's '~17 micrograms per cubic meter' claim in the first year almost exactly. One phrasing nuance: the description calls it a 'nationwide ban... in Ulaanbaatar,' but the actual ban's geographic scope is Ulaanbaatar specifically (a national-government policy targeting the capital), not literally a countrywide ban — Montsame explicitly notes the restriction 'applies specifically to Ulaanbaatar, not nationwide.' This is a minor wording ambiguity rather than a factual error, since the object/scope stated ('in Ulaanbaatar') is correct; all core indicators (date, actor, mechanism, magnitude, replacement fuel) are materially accurate, so I verdict TRUE rather than PARTIAL.",
+        "source": "https://montsame.mn/en/read/133813",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://montsame.mn/en/read/133813"
   },
   {
     "year": 2020,
@@ -1126,31 +1162,6 @@
   },
   {
     "year": 2023,
-    "title": "US-Mongolia Strategic Third Neighbor Partnership Elevated",
-    "verdict": "TRUE",
-    "reason": "Vice President Harris hosted PM Oyun-Erdene in Washington on August 2 2023, formally elevating the relationship to a Strategic Third Neighbor Partnership with expanded cooperation on critical minerals, defense, and democratic governance. Confirmed by official White House joint statement.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Vice President Harris hosted PM Oyun-Erdene in Washington on August 2 2023, formally elevating the relationship to a Strategic Third Neighbor Partnership with expanded cooperation on critical minerals, defense, and democratic governance. Confirmed by official White House joint statement.",
-        "source": "https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2023/08/02/joint-statement-on-the-strategic-third-neighbor-partnership-between-the-united-states-of-america-and-mongolia/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2023/08/02/joint-statement-on-the-strategic-third-neighbor-partnership-between-the-united-states-of-america-and-mongolia/"
-  },
-  {
-    "year": 2023,
     "title": "Oyu Tolgoi Underground Mine Begins Production",
     "verdict": "TRUE",
     "reason": "Underground production at Oyu Tolgoi commenced in March 2023, with sustainable production confirmed. At full capacity (~500,000 t/yr copper by 2028-2036), it is expected to be the fourth-largest copper mine in the world. Confirmed by Rio Tinto official press release and Mining Weekly.",
@@ -1175,10 +1186,10 @@
     "source": "https://www.riotinto.com/en/news/releases/2023/underground-production-celebrated-at-oyu-tolgoi"
   },
   {
-    "year": 2024,
-    "title": "Record Dzud Kills 8.1 Million Livestock",
+    "year": 2023,
+    "title": "US-Mongolia Strategic Third Neighbor Partnership Elevated",
     "verdict": "TRUE",
-    "reason": "The 2023-2024 dzud killed 8.1 million livestock (12.6% of national herd), with snowfall at 49-year highs covering ~90% of territory. Over 2,250 herder families lost more than 70% of animals. Worst since 2010 dzud. Confirmed by Asia Pathways ADBI and UN Mongolia reports.",
+    "reason": "Vice President Harris hosted PM Oyun-Erdene in Washington on August 2 2023, formally elevating the relationship to a Strategic Third Neighbor Partnership with expanded cooperation on critical minerals, defense, and democratic governance. Confirmed by official White House joint statement.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1188,8 +1199,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The 2023-2024 dzud killed 8.1 million livestock (12.6% of national herd), with snowfall at 49-year highs covering ~90% of territory. Over 2,250 herder families lost more than 70% of animals. Worst since 2010 dzud. Confirmed by Asia Pathways ADBI and UN Mongolia reports.",
-        "source": "https://www.asiapathways-adbi.org/2024/11/how-climate-change-is-fueling-the-dzud-crisis-in-mongolia/",
+        "reason": "Vice President Harris hosted PM Oyun-Erdene in Washington on August 2 2023, formally elevating the relationship to a Strategic Third Neighbor Partnership with expanded cooperation on critical minerals, defense, and democratic governance. Confirmed by official White House joint statement.",
+        "source": "https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2023/08/02/joint-statement-on-the-strategic-third-neighbor-partnership-between-the-united-states-of-america-and-mongolia/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1197,7 +1208,7 @@
         }
       }
     ],
-    "source": "https://www.asiapathways-adbi.org/2024/11/how-climate-change-is-fueling-the-dzud-crisis-in-mongolia/"
+    "source": "https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2023/08/02/joint-statement-on-the-strategic-third-neighbor-partnership-between-the-united-states-of-america-and-mongolia/"
   },
   {
     "year": 2024,
@@ -1223,6 +1234,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2024_Mongolian_parliamentary_election"
+  },
+  {
+    "year": 2024,
+    "title": "Record Dzud Kills 8.1 Million Livestock",
+    "verdict": "TRUE",
+    "reason": "The 2023-2024 dzud killed 8.1 million livestock (12.6% of national herd), with snowfall at 49-year highs covering ~90% of territory. Over 2,250 herder families lost more than 70% of animals. Worst since 2010 dzud. Confirmed by Asia Pathways ADBI and UN Mongolia reports.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 2023-2024 dzud killed 8.1 million livestock (12.6% of national herd), with snowfall at 49-year highs covering ~90% of territory. Over 2,250 herder families lost more than 70% of animals. Worst since 2010 dzud. Confirmed by Asia Pathways ADBI and UN Mongolia reports.",
+        "source": "https://www.asiapathways-adbi.org/2024/11/how-climate-change-is-fueling-the-dzud-crisis-in-mongolia/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.asiapathways-adbi.org/2024/11/how-climate-change-is-fueling-the-dzud-crisis-in-mongolia/"
   },
   {
     "year": 2025,

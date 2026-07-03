@@ -1,6 +1,31 @@
 [
   {
     "year": 1960,
+    "title": "British Togoland Votes to Join Ghana, Not Togo",
+    "verdict": "TRUE",
+    "reason": "A UN-supervised plebiscite on May 9, 1956 resulted in 58% of voters in British Togoland choosing integration with the Gold Coast (Ghana) — though the vote split geographically, with the north strongly for and south against. The UN General Assembly ratified the outcome in December 1956. British Togoland integrated with Ghana on March 6, 1957. Wikipedia's article on British Togoland and the 1956 plebiscite confirm all key facts. The curated event's note on the Ewe partition and the 1967 political divide is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A UN-supervised plebiscite on May 9, 1956 resulted in 58% of voters in British Togoland choosing integration with the Gold Coast (Ghana) — though the vote split geographically, with the north strongly for and south against. The UN General Assembly ratified the outcome in December 1956. British Togoland integrated with Ghana on March 6, 1957. Wikipedia's article on British Togoland and the 1956 plebiscite confirm all key facts. The curated event's note on the Ewe partition and the 1967 political divide is accurate.",
+        "source": "https://en.wikipedia.org/wiki/1956_British_Togoland_status_plebiscite",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1956_British_Togoland_status_plebiscite"
+  },
+  {
+    "year": 1960,
     "title": "Togo Gains Independence — Olympio Becomes First President",
     "verdict": "TRUE",
     "reason": "Togo became independent from French trusteeship on April 27, 1960, with Sylvanus Olympio as the leading political figure; he was formally elected president in 1961 under a new constitution. The independence date, Olympio's role as first head of government, and his CUT-led political movement are confirmed across Britannica, Blackpast, and official sources. The description correctly notes his Harvard economics background and pan-Africanist orientation; technically he was prime minister at independence and president from 1961, a minor precision issue that does not materially affect the event.",
@@ -76,31 +101,6 @@
   },
   {
     "year": 1963,
-    "title": "Olympio Assassinated — Africa's First Post-Colonial Coup-Assassination",
-    "verdict": "TRUE",
-    "reason": "The January 13, 1963 assassination of Olympio by a group of demobilised soldiers led by Sergeant Gnassingbé Eyadéma is confirmed by Wikipedia, Britannica, and multiple historical sources. His body was found near the US Embassy. The claim that it was Africa's first post-colonial coup-assassination and set a continental precedent is widely accepted in the literature.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The January 13, 1963 assassination of Olympio by a group of demobilised soldiers led by Sergeant Gnassingbé Eyadéma is confirmed by Wikipedia, Britannica, and multiple historical sources. His body was found near the US Embassy. The claim that it was Africa's first post-colonial coup-assassination and set a continental precedent is widely accepted in the literature.",
-        "source": "https://en.wikipedia.org/wiki/1963_Togolese_coup_d%27%C3%A9tat",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1963_Togolese_coup_d%27%C3%A9tat"
-  },
-  {
-    "year": 1963,
     "title": "Nicolas Grunitzky Installed as Civilian President After Coup",
     "verdict": "TRUE",
     "reason": "Following the coup, the military junta chose Nicolas Grunitzky — Olympio's political rival and brother-in-law — to head a provisional government. He returned from exile, was elected president in May 1963 under a new constitution with Antoine Meatchi as vice-president, and served until Eyadéma's 1967 coup. All details confirmed by Wikipedia's article on Grunitzky and the 1963 Togolese coup.",
@@ -123,6 +123,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Nicolas_Grunitzky"
+  },
+  {
+    "year": 1963,
+    "title": "Olympio Assassinated — Africa's First Post-Colonial Coup-Assassination",
+    "verdict": "TRUE",
+    "reason": "The January 13, 1963 assassination of Olympio by a group of demobilised soldiers led by Sergeant Gnassingbé Eyadéma is confirmed by Wikipedia, Britannica, and multiple historical sources. His body was found near the US Embassy. The claim that it was Africa's first post-colonial coup-assassination and set a continental precedent is widely accepted in the literature.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The January 13, 1963 assassination of Olympio by a group of demobilised soldiers led by Sergeant Gnassingbé Eyadéma is confirmed by Wikipedia, Britannica, and multiple historical sources. His body was found near the US Embassy. The claim that it was Africa's first post-colonial coup-assassination and set a continental precedent is widely accepted in the literature.",
+        "source": "https://en.wikipedia.org/wiki/1963_Togolese_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1963_Togolese_coup_d%27%C3%A9tat"
   },
   {
     "year": 1967,
@@ -350,6 +375,31 @@
     "source": "https://www.encyclopedia.com/people/history/african-history-biographies/gnassingbe-eyadema"
   },
   {
+    "year": 1985,
+    "title": "Lomé III Convention Renews ACP-EC Development Partnership",
+    "verdict": "TRUE",
+    "reason": "Lomé III was signed on December 8, 1984 at Lomé, Togo, between the EEC and 71 ACP states; it came into force for trade in March 1985 and for aid provisions in May 1986. EU Publications Office and IMF Finance and Development (1985) confirm the date and the Lomé hosting. The curated event's year (1985) refers to the year the convention entered into force, which is a defensible framing, and the characterisation of European realpolitik over conditionality during the Cold War is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Lomé III was signed on December 8, 1984 at Lomé, Togo, between the EEC and 71 ACP states; it came into force for trade in March 1985 and for aid provisions in May 1986. EU Publications Office and IMF Finance and Development (1985) confirm the date and the Lomé hosting. The curated event's year (1985) refers to the year the convention entered into force, which is a defensible framing, and the characterisation of European realpolitik over conditionality during the Cold War is accurate.",
+        "source": "https://op.europa.eu/en/publication-detail/-/publication/851e7cf4-1d67-4c13-9d1a-abb8a220feef/language-en",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://op.europa.eu/en/publication-detail/-/publication/851e7cf4-1d67-4c13-9d1a-abb8a220feef/language-en"
+  },
+  {
     "year": 1986,
     "title": "Further Coup Attempt and Mass Arrests",
     "verdict": "TRUE",
@@ -398,6 +448,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1990%E2%80%931991_Togo_protests"
+  },
+  {
+    "year": 1991,
+    "title": "High Commission for Human Rights and Reconciliation Established",
+    "verdict": "UNCERTAIN",
+    "reason": "The 1991 National Conference established transitional institutions including the Haut Conseil de la République (HCR), but a specific 'High Commission for Human Rights and Reconciliation' as described is not confirmed in multiple sources. HRW's 2001 report on government human rights commissions in Africa and OHCHR materials refer to a later 2009 CVJR. A transitional human rights body may have existed but its specific name, mandate, and outcome as described cannot be independently verified from available search results.",
+    "verify_count": 1,
+    "consensus_verdict": "UNCERTAIN",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "UNCERTAIN",
+        "reason": "The 1991 National Conference established transitional institutions including the Haut Conseil de la République (HCR), but a specific 'High Commission for Human Rights and Reconciliation' as described is not confirmed in multiple sources. HRW's 2001 report on government human rights commissions in Africa and OHCHR materials refer to a later 2009 CVJR. A transitional human rights body may have existed but its specific name, mandate, and outcome as described cannot be independently verified from available search results.",
+        "source": "https://www.hrw.org/reports/2001/africa/togo/togo3.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/reports/2001/africa/togo/togo3.html"
   },
   {
     "year": 1991,
@@ -501,31 +576,6 @@
   },
   {
     "year": 1994,
-    "title": "Legislative Elections — Partial Opposition Entry",
-    "verdict": "TRUE",
-    "reason": "Legislative elections on February 6 and March 18, 1994 produced a narrow opposition majority: CAR + UTD won enough seats to constrain RPT. However, Eyadéma refused to accept the CAR's nomination of Agboyibo as PM and instead appointed the UTD's Edem Kodjo, fracturing the opposition coalition and returning RPT to effective government. The outcome represents partial — but ultimately aborted — opposition entry, as the curated event states. Wikipedia's 1994 Togolese parliamentary election article confirms the results and subsequent political crisis.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Legislative elections on February 6 and March 18, 1994 produced a narrow opposition majority: CAR + UTD won enough seats to constrain RPT. However, Eyadéma refused to accept the CAR's nomination of Agboyibo as PM and instead appointed the UTD's Edem Kodjo, fracturing the opposition coalition and returning RPT to effective government. The outcome represents partial — but ultimately aborted — opposition entry, as the curated event states. Wikipedia's 1994 Togolese parliamentary election article confirms the results and subsequent political crisis.",
-        "source": "https://en.wikipedia.org/wiki/1994_Togolese_parliamentary_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1994_Togolese_parliamentary_election"
-  },
-  {
-    "year": 1994,
     "title": "Kara Massacre of Political Prisoners",
     "verdict": "TRUE",
     "reason": "Amnesty International's 1994 Togo report (Refworld) confirms that on August 26, 1994, at least 40 people were arrested in Agbandi and taken to Blitta gendarmerie; at least 21 died in custody within 24 hours including four minors. The government attributed deaths to food poisoning, but evidence pointed to assault and asphyxiation in overcrowded cells. The curated title says 'Kara' but the actual location was Blitta/Sokodé — a geographic imprecision, not a fabrication, since the broader pattern of northern security force violence is accurately captured.",
@@ -548,6 +598,31 @@
       }
     ],
     "source": "https://www.refworld.org/reference/countryrep/amnesty/1994/en/21330"
+  },
+  {
+    "year": 1994,
+    "title": "Legislative Elections — Partial Opposition Entry",
+    "verdict": "TRUE",
+    "reason": "Legislative elections on February 6 and March 18, 1994 produced a narrow opposition majority: CAR + UTD won enough seats to constrain RPT. However, Eyadéma refused to accept the CAR's nomination of Agboyibo as PM and instead appointed the UTD's Edem Kodjo, fracturing the opposition coalition and returning RPT to effective government. The outcome represents partial — but ultimately aborted — opposition entry, as the curated event states. Wikipedia's 1994 Togolese parliamentary election article confirms the results and subsequent political crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Legislative elections on February 6 and March 18, 1994 produced a narrow opposition majority: CAR + UTD won enough seats to constrain RPT. However, Eyadéma refused to accept the CAR's nomination of Agboyibo as PM and instead appointed the UTD's Edem Kodjo, fracturing the opposition coalition and returning RPT to effective government. The outcome represents partial — but ultimately aborted — opposition entry, as the curated event states. Wikipedia's 1994 Togolese parliamentary election article confirms the results and subsequent political crisis.",
+        "source": "https://en.wikipedia.org/wiki/1994_Togolese_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1994_Togolese_parliamentary_election"
   },
   {
     "year": 1996,
@@ -701,9 +776,9 @@
   },
   {
     "year": 2005,
-    "title": "Eyadéma Dies — Army Installs Son Faure Gnassingbé",
+    "title": "Diaspora Remittances Become Major Economic Lifeline",
     "verdict": "TRUE",
-    "reason": "Gnassingbé Eyadéma died on February 5, 2005 aboard a plane near Tunis. The army immediately installed his son Faure, bypassing the constitutional succession provision (requiring the National Assembly speaker to serve as interim). The AU's Alpha Oumar Konaré declared it a military coup, and ECOWAS condemned the dynastic transfer. Wikipedia's article on the 2005 Togolese coup d'état and Britannica confirm all key facts. The age of 39 attributed to Faure is slightly off — he was born 1966, making him 38 in February 2005.",
+    "reason": "By 2005, Togolese diaspora remittances totalled approximately $143 million USD, representing 8.5% of GDP, and CADTM data confirms remittances were 3-6 times higher than bilateral budget aid for multiple years. Diaspora communities are concentrated in France, Germany, Belgium, and West African neighbouring states. The characterisation of remittances exceeding ODA and reflecting political emigration is accurate.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -713,8 +788,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Gnassingbé Eyadéma died on February 5, 2005 aboard a plane near Tunis. The army immediately installed his son Faure, bypassing the constitutional succession provision (requiring the National Assembly speaker to serve as interim). The AU's Alpha Oumar Konaré declared it a military coup, and ECOWAS condemned the dynastic transfer. Wikipedia's article on the 2005 Togolese coup d'état and Britannica confirm all key facts. The age of 39 attributed to Faure is slightly off — he was born 1966, making him 38 in February 2005.",
-        "source": "https://en.wikipedia.org/wiki/2005_Togolese_coup_d%27%C3%A9tat",
+        "reason": "By 2005, Togolese diaspora remittances totalled approximately $143 million USD, representing 8.5% of GDP, and CADTM data confirms remittances were 3-6 times higher than bilateral budget aid for multiple years. Diaspora communities are concentrated in France, Germany, Belgium, and West African neighbouring states. The characterisation of remittances exceeding ODA and reflecting political emigration is accurate.",
+        "source": "https://www.cadtm.org/The-Togolese-migrants-largest",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -722,7 +797,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2005_Togolese_coup_d%27%C3%A9tat"
+    "source": "https://www.cadtm.org/The-Togolese-migrants-largest"
   },
   {
     "year": 2005,
@@ -748,6 +823,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2005_Togolese_presidential_election"
+  },
+  {
+    "year": 2005,
+    "title": "Eyadéma Dies — Army Installs Son Faure Gnassingbé",
+    "verdict": "TRUE",
+    "reason": "Gnassingbé Eyadéma died on February 5, 2005 aboard a plane near Tunis. The army immediately installed his son Faure, bypassing the constitutional succession provision (requiring the National Assembly speaker to serve as interim). The AU's Alpha Oumar Konaré declared it a military coup, and ECOWAS condemned the dynastic transfer. Wikipedia's article on the 2005 Togolese coup d'état and Britannica confirm all key facts. The age of 39 attributed to Faure is slightly off — he was born 1966, making him 38 in February 2005.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Gnassingbé Eyadéma died on February 5, 2005 aboard a plane near Tunis. The army immediately installed his son Faure, bypassing the constitutional succession provision (requiring the National Assembly speaker to serve as interim). The AU's Alpha Oumar Konaré declared it a military coup, and ECOWAS condemned the dynastic transfer. Wikipedia's article on the 2005 Togolese coup d'état and Britannica confirm all key facts. The age of 39 attributed to Faure is slightly off — he was born 1966, making him 38 in February 2005.",
+        "source": "https://en.wikipedia.org/wiki/2005_Togolese_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2005_Togolese_coup_d%27%C3%A9tat"
   },
   {
     "year": 2006,
@@ -825,6 +925,31 @@
     "source": "https://ink.library.smu.edu.sg/cgi/viewcontent.cgi?article=2940&context=soss_research"
   },
   {
+    "year": 2009,
+    "title": "Truth, Justice and Reconciliation Commission Created",
+    "verdict": "TRUE",
+    "reason": "The CVJR (Commission Vérité, Justice et Réconciliation) was established by presidential decree in 2005 and became operational on February 25, 2009. It investigated violations from 1958 to 2005, collected 22,415 statements, held 523 hearings, and published its report volumes from 2012. The African Transitional Justice Hub (CSVR) and JusticeInfo.net confirm all key details. Implementation of the 68 recommendations has been slow and underfunded, as stated.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The CVJR (Commission Vérité, Justice et Réconciliation) was established by presidential decree in 2005 and became operational on February 25, 2009. It investigated violations from 1958 to 2005, collected 22,415 statements, held 523 hearings, and published its report volumes from 2012. The African Transitional Justice Hub (CSVR) and JusticeInfo.net confirm all key details. Implementation of the 68 recommendations has been slow and underfunded, as stated.",
+        "source": "https://atjhub.csvr.org.za/togo-truth-justice-and-reconciliation-commission-2009-2012/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://atjhub.csvr.org.za/togo-truth-justice-and-reconciliation-commission-2009-2012/"
+  },
+  {
     "year": 2010,
     "title": "Faure Gnassingbé Re-Elected in Contested Vote",
     "verdict": "TRUE",
@@ -848,6 +973,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2010_Togolese_presidential_election"
+  },
+  {
+    "year": 2011,
+    "title": "Togo Bans Import and Sale of Non-Biodegradable Plastic Bags",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: Togo's government announced Jan 12, 2011 it would ban import, manufacture, and sale of non-biodegradable plastic bags, per trade ministry official Mohamed Saad Sama, with importers given a six-month grace period and manufacturers nine months. GlobalTradeAlert.org (an independent trade-policy tracking database) separately confirms the import ban took effect precisely on 5 September 2011, matching the candidate event's date exactly. News coverage (AllAfrica/wildsingaporenews mirror) confirms the 400-year decomposition rationale cited by officials and situates the ban within a wave of similar African bans (Kenya's contemporaneous ban announcement, Rwanda's 2008 ban), matching all material details of the description.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources. Togo's government issued Decree No. 2011-003/PR on January 5, 2011, prohibiting production, importation, distribution and commercialization of non-biodegradable plastic sachets/packaging (confirmed via InforMEA legislation database). The Global Trade Alert database independently confirms the import ban on non-degradable plastic bags took effect specifically on September 5, 2011. French-language search results corroborate the grace-period structure described (6 months for importers, 9 months for producers/manufacturers to comply), matching the event description almost verbatim. The broader context — plastic taking ~400 years to decompose and a contemporaneous wave of West African bans (Kenya attempted a ban in 2011; Rwanda's ban was in force from 2008 and Rwanda was encouraging regional bans around 2011) — is directionally consistent with independent general sources, though these framing details are not from a single Togo-specific article. All material facts (country: Togo, year: 2011 announcement with Sept 2011 import-ban effective date, scope: import/manufacture/sale ban on non-biodegradable plastic bags, grace periods) check out.",
+        "source": "https://www.globaltradealert.org/intervention/16428/import-ban/togo-import-ban-on-certain-plastic-bags",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: Togo's government announced Jan 12, 2011 it would ban import, manufacture, and sale of non-biodegradable plastic bags, per trade ministry official Mohamed Saad Sama, with importers given a six-month grace period and manufacturers nine months. GlobalTradeAlert.org (an independent trade-policy tracking database) separately confirms the import ban took effect precisely on 5 September 2011, matching the candidate event's date exactly. News coverage (AllAfrica/wildsingaporenews mirror) confirms the 400-year decomposition rationale cited by officials and situates the ban within a wave of similar African bans (Kenya's contemporaneous ban announcement, Rwanda's 2008 ban), matching all material details of the description.",
+        "source": "https://www.globaltradealert.org/intervention/16428/import-ban/togo-import-ban-on-certain-plastic-bags",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.globaltradealert.org/intervention/16428/import-ban/togo-import-ban-on-certain-plastic-bags"
   },
   {
     "year": 2012,
@@ -948,6 +1109,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Togolese_presidential_election,_2015"
+  },
+  {
+    "year": 2016,
+    "title": "West Africa's Largest Solar Plant Opens Near Lomé",
+    "verdict": "FALSE",
+    "reason": "The largest solar plant in West Africa opened in Blitta (approximately 267 km north of Lomé, not near Lomé) in June 2021, not 2016. It was a 50 MW facility built by AMEA Power, financed by the West African Development Bank and Abu Dhabi Fund for Development — not the European Investment Bank as stated. The curated event is wrong on the year (2016 vs 2021), location ('near Lomé' vs Blitta), and financing source (EIB vs West African/Abu Dhabi funds).",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The largest solar plant in West Africa opened in Blitta (approximately 267 km north of Lomé, not near Lomé) in June 2021, not 2016. It was a 50 MW facility built by AMEA Power, financed by the West African Development Bank and Abu Dhabi Fund for Development — not the European Investment Bank as stated. The curated event is wrong on the year (2016 vs 2021), location ('near Lomé' vs Blitta), and financing source (EIB vs West African/Abu Dhabi funds).",
+        "source": "https://www.africanews.com/2021/06/24/togo-inaugurates-largest-solar-plant-in-west-africa/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.africanews.com/2021/06/24/togo-inaugurates-largest-solar-plant-in-west-africa/"
   },
   {
     "year": 2017,
@@ -1075,21 +1261,21 @@
     "source": "https://data.ipu.org/parliament/TG/TG-LC01/election/TG-LC01-E20181220/"
   },
   {
-    "year": 2020,
-    "title": "Faure Gnassingbé Elected to Fourth Presidential Term",
-    "verdict": "TRUE",
-    "reason": "Faure won the February 22, 2020 presidential election with an official 72% against Agbéyomé Kodjo's 18.4%. Kodjo alleged fraud; he was subsequently arrested. Al Jazeera, Africanews, and France 24 confirm the result, the 72% official figure, and the fraud allegations. The election occurred during COVID-19's emergence though international observer presence was not notably reduced at that time.",
+    "year": 2019,
+    "title": "Togo Elected to UN Security Council Non-Permanent Seat",
+    "verdict": "FALSE",
+    "reason": "Togo was elected to the UN Security Council as a non-permanent member for the 2012-2013 term (elected in October 2011), not for 2020-2021 as stated, and not in 2019. The UN Security Council membership records and the UN Press release (October 2011) confirm Togo's Security Council term was 2012-2013. The 2019 UNSC election did not include Togo. The event's year (2019) and the claimed 2020-2021 term are both incorrect.",
     "verify_count": 1,
-    "consensus_verdict": "TRUE",
+    "consensus_verdict": "FALSE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Faure won the February 22, 2020 presidential election with an official 72% against Agbéyomé Kodjo's 18.4%. Kodjo alleged fraud; he was subsequently arrested. Al Jazeera, Africanews, and France 24 confirm the result, the 72% official figure, and the fraud allegations. The election occurred during COVID-19's emergence though international observer presence was not notably reduced at that time.",
-        "source": "https://www.aljazeera.com/news/2020/2/24/togo-president-faure-gnassingbe-wins-fourth-term-in-landslide",
+        "verdict": "FALSE",
+        "reason": "Togo was elected to the UN Security Council as a non-permanent member for the 2012-2013 term (elected in October 2011), not for 2020-2021 as stated, and not in 2019. The UN Security Council membership records and the UN Press release (October 2011) confirm Togo's Security Council term was 2012-2013. The 2019 UNSC election did not include Togo. The event's year (2019) and the claimed 2020-2021 term are both incorrect.",
+        "source": "https://press.un.org/en/2011/ga11160.doc.htm",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1097,7 +1283,7 @@
         }
       }
     ],
-    "source": "https://www.aljazeera.com/news/2020/2/24/togo-president-faure-gnassingbe-wins-fourth-term-in-landslide"
+    "source": "https://press.un.org/en/2011/ga11160.doc.htm"
   },
   {
     "year": 2020,
@@ -1123,6 +1309,31 @@
       }
     ],
     "source": "https://www.worldbank.org/en/results/2021/04/13/prioritizing-the-poorest-and-most-vulnerable-in-west-africa-togo-s-novissi-platform-for-social-protection-uses-machine-l"
+  },
+  {
+    "year": 2020,
+    "title": "Faure Gnassingbé Elected to Fourth Presidential Term",
+    "verdict": "TRUE",
+    "reason": "Faure won the February 22, 2020 presidential election with an official 72% against Agbéyomé Kodjo's 18.4%. Kodjo alleged fraud; he was subsequently arrested. Al Jazeera, Africanews, and France 24 confirm the result, the 72% official figure, and the fraud allegations. The election occurred during COVID-19's emergence though international observer presence was not notably reduced at that time.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Faure won the February 22, 2020 presidential election with an official 72% against Agbéyomé Kodjo's 18.4%. Kodjo alleged fraud; he was subsequently arrested. Al Jazeera, Africanews, and France 24 confirm the result, the 72% official figure, and the fraud allegations. The election occurred during COVID-19's emergence though international observer presence was not notably reduced at that time.",
+        "source": "https://www.aljazeera.com/news/2020/2/24/togo-president-faure-gnassingbe-wins-fourth-term-in-landslide",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2020/2/24/togo-president-faure-gnassingbe-wins-fourth-term-in-landslide"
   },
   {
     "year": 2021,
@@ -1176,20 +1387,20 @@
   },
   {
     "year": 2022,
-    "title": "Togo Joins Sahel Security Architecture as Coastal States Seek Help",
-    "verdict": "TRUE",
-    "reason": "Togo deepened security cooperation with France, the US (AFRICOM), and neighbouring coastal states through the Accra Initiative (Ghana, Benin, Côte d'Ivoire, Togo, Burkina Faso — established 2017, with a multinational joint force announced in November 2022). France's FM visited Togo in 2023 calling it a 'pivotal role' partner. The Hill and Africa Center confirm US-Togo security cooperation and Togo's balancing act as France's influence declined after Sahel coups.",
+    "title": "Allegations of Wagner Group Contacts Surface",
+    "verdict": "UNCERTAIN",
+    "reason": "No specific reporting confirms Togolese military officials held preliminary contacts with Wagner Group in late 2022 or 2023. Wagner's known footprint was concentrated in Mali, Burkina Faso, CAR, and Sudan; searches found no credible sourced report of Togo-Wagner contacts. The government denial is consistent with a complete lack of documentary evidence. The curated event may conflate Togo's geographic proximity to Wagner-active Burkina Faso with direct contacts that cannot be verified.",
     "verify_count": 1,
-    "consensus_verdict": "TRUE",
+    "consensus_verdict": "UNCERTAIN",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Togo deepened security cooperation with France, the US (AFRICOM), and neighbouring coastal states through the Accra Initiative (Ghana, Benin, Côte d'Ivoire, Togo, Burkina Faso — established 2017, with a multinational joint force announced in November 2022). France's FM visited Togo in 2023 calling it a 'pivotal role' partner. The Hill and Africa Center confirm US-Togo security cooperation and Togo's balancing act as France's influence declined after Sahel coups.",
-        "source": "https://thehill.com/opinion/national-security/5408504-the-us-needs-a-toe-hold-in-the-sahel-and-togo-is-here-to-help/",
+        "verdict": "UNCERTAIN",
+        "reason": "No specific reporting confirms Togolese military officials held preliminary contacts with Wagner Group in late 2022 or 2023. Wagner's known footprint was concentrated in Mali, Burkina Faso, CAR, and Sudan; searches found no credible sourced report of Togo-Wagner contacts. The government denial is consistent with a complete lack of documentary evidence. The curated event may conflate Togo's geographic proximity to Wagner-active Burkina Faso with direct contacts that cannot be verified.",
+        "source": "https://www.counterextremism.com/wagner-group-sahel",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1197,7 +1408,7 @@
         }
       }
     ],
-    "source": "https://thehill.com/opinion/national-security/5408504-the-us-needs-a-toe-hold-in-the-sahel-and-togo-is-here-to-help/"
+    "source": "https://www.counterextremism.com/wagner-group-sahel"
   },
   {
     "year": 2022,
@@ -1226,20 +1437,20 @@
   },
   {
     "year": 2022,
-    "title": "Allegations of Wagner Group Contacts Surface",
-    "verdict": "UNCERTAIN",
-    "reason": "No specific reporting confirms Togolese military officials held preliminary contacts with Wagner Group in late 2022 or 2023. Wagner's known footprint was concentrated in Mali, Burkina Faso, CAR, and Sudan; searches found no credible sourced report of Togo-Wagner contacts. The government denial is consistent with a complete lack of documentary evidence. The curated event may conflate Togo's geographic proximity to Wagner-active Burkina Faso with direct contacts that cannot be verified.",
+    "title": "Togo Joins Sahel Security Architecture as Coastal States Seek Help",
+    "verdict": "TRUE",
+    "reason": "Togo deepened security cooperation with France, the US (AFRICOM), and neighbouring coastal states through the Accra Initiative (Ghana, Benin, Côte d'Ivoire, Togo, Burkina Faso — established 2017, with a multinational joint force announced in November 2022). France's FM visited Togo in 2023 calling it a 'pivotal role' partner. The Hill and Africa Center confirm US-Togo security cooperation and Togo's balancing act as France's influence declined after Sahel coups.",
     "verify_count": 1,
-    "consensus_verdict": "UNCERTAIN",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "UNCERTAIN",
-        "reason": "No specific reporting confirms Togolese military officials held preliminary contacts with Wagner Group in late 2022 or 2023. Wagner's known footprint was concentrated in Mali, Burkina Faso, CAR, and Sudan; searches found no credible sourced report of Togo-Wagner contacts. The government denial is consistent with a complete lack of documentary evidence. The curated event may conflate Togo's geographic proximity to Wagner-active Burkina Faso with direct contacts that cannot be verified.",
-        "source": "https://www.counterextremism.com/wagner-group-sahel",
+        "verdict": "TRUE",
+        "reason": "Togo deepened security cooperation with France, the US (AFRICOM), and neighbouring coastal states through the Accra Initiative (Ghana, Benin, Côte d'Ivoire, Togo, Burkina Faso — established 2017, with a multinational joint force announced in November 2022). France's FM visited Togo in 2023 calling it a 'pivotal role' partner. The Hill and Africa Center confirm US-Togo security cooperation and Togo's balancing act as France's influence declined after Sahel coups.",
+        "source": "https://thehill.com/opinion/national-security/5408504-the-us-needs-a-toe-hold-in-the-sahel-and-togo-is-here-to-help/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1247,7 +1458,7 @@
         }
       }
     ],
-    "source": "https://www.counterextremism.com/wagner-group-sahel"
+    "source": "https://thehill.com/opinion/national-security/5408504-the-us-needs-a-toe-hold-in-the-sahel-and-togo-is-here-to-help/"
   },
   {
     "year": 2023,
@@ -1301,20 +1512,20 @@
   },
   {
     "year": 2024,
-    "title": "New Constitution Shifts Togo to Parliamentary System",
-    "verdict": "TRUE",
-    "reason": "On March 25, 2024, the National Assembly adopted a new constitution shifting Togo from a presidential to a parliamentary system, abolishing direct presidential elections and creating the position of 'President of the Council of Ministers' elected by parliament for six-year terms without term limits. No referendum was held despite constitutional requirements. Africanews, Al Jazeera, and the Library of Congress confirm the March 25 date, the constitutional content, and the absence of a referendum.",
+    "title": "ECOWAS and African Union Criticise Constitutional Process",
+    "verdict": "UNCERTAIN",
+    "reason": "ECOWAS issued a communiqué on April 15, 2024 criticising the constitutional reforms and announced a fact-finding mission, but its overall response was described by observers as weak and ultimately the bloc (along with the AU and OIF) commended the April 29 elections as peaceful. The AU's response was not a strong condemnation. The curated event overstates the force of regional criticism — ECOWAS did criticise but then effectively endorsed the outcome. The EU reportedly reviewed its partnership framework, but evidence of a formal EU suspension is not confirmed.",
     "verify_count": 1,
-    "consensus_verdict": "TRUE",
+    "consensus_verdict": "UNCERTAIN",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On March 25, 2024, the National Assembly adopted a new constitution shifting Togo from a presidential to a parliamentary system, abolishing direct presidential elections and creating the position of 'President of the Council of Ministers' elected by parliament for six-year terms without term limits. No referendum was held despite constitutional requirements. Africanews, Al Jazeera, and the Library of Congress confirm the March 25 date, the constitutional content, and the absence of a referendum.",
-        "source": "https://www.loc.gov/item/global-legal-monitor/2024-05-16/togo-new-constitution-promulgated/",
+        "verdict": "UNCERTAIN",
+        "reason": "ECOWAS issued a communiqué on April 15, 2024 criticising the constitutional reforms and announced a fact-finding mission, but its overall response was described by observers as weak and ultimately the bloc (along with the AU and OIF) commended the April 29 elections as peaceful. The AU's response was not a strong condemnation. The curated event overstates the force of regional criticism — ECOWAS did criticise but then effectively endorsed the outcome. The EU reportedly reviewed its partnership framework, but evidence of a formal EU suspension is not confirmed.",
+        "source": "https://africacenter.org/spotlight/togo-revises-constitution-to-eliminate-term-limits-an-explainer/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1322,7 +1533,7 @@
         }
       }
     ],
-    "source": "https://www.loc.gov/item/global-legal-monitor/2024-05-16/togo-new-constitution-promulgated/"
+    "source": "https://africacenter.org/spotlight/togo-revises-constitution-to-eliminate-term-limits-an-explainer/"
   },
   {
     "year": 2024,
@@ -1351,20 +1562,20 @@
   },
   {
     "year": 2024,
-    "title": "ECOWAS and African Union Criticise Constitutional Process",
-    "verdict": "UNCERTAIN",
-    "reason": "ECOWAS issued a communiqué on April 15, 2024 criticising the constitutional reforms and announced a fact-finding mission, but its overall response was described by observers as weak and ultimately the bloc (along with the AU and OIF) commended the April 29 elections as peaceful. The AU's response was not a strong condemnation. The curated event overstates the force of regional criticism — ECOWAS did criticise but then effectively endorsed the outcome. The EU reportedly reviewed its partnership framework, but evidence of a formal EU suspension is not confirmed.",
+    "title": "New Constitution Shifts Togo to Parliamentary System",
+    "verdict": "TRUE",
+    "reason": "On March 25, 2024, the National Assembly adopted a new constitution shifting Togo from a presidential to a parliamentary system, abolishing direct presidential elections and creating the position of 'President of the Council of Ministers' elected by parliament for six-year terms without term limits. No referendum was held despite constitutional requirements. Africanews, Al Jazeera, and the Library of Congress confirm the March 25 date, the constitutional content, and the absence of a referendum.",
     "verify_count": 1,
-    "consensus_verdict": "UNCERTAIN",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "UNCERTAIN",
-        "reason": "ECOWAS issued a communiqué on April 15, 2024 criticising the constitutional reforms and announced a fact-finding mission, but its overall response was described by observers as weak and ultimately the bloc (along with the AU and OIF) commended the April 29 elections as peaceful. The AU's response was not a strong condemnation. The curated event overstates the force of regional criticism — ECOWAS did criticise but then effectively endorsed the outcome. The EU reportedly reviewed its partnership framework, but evidence of a formal EU suspension is not confirmed.",
-        "source": "https://africacenter.org/spotlight/togo-revises-constitution-to-eliminate-term-limits-an-explainer/",
+        "verdict": "TRUE",
+        "reason": "On March 25, 2024, the National Assembly adopted a new constitution shifting Togo from a presidential to a parliamentary system, abolishing direct presidential elections and creating the position of 'President of the Council of Ministers' elected by parliament for six-year terms without term limits. No referendum was held despite constitutional requirements. Africanews, Al Jazeera, and the Library of Congress confirm the March 25 date, the constitutional content, and the absence of a referendum.",
+        "source": "https://www.loc.gov/item/global-legal-monitor/2024-05-16/togo-new-constitution-promulgated/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1372,7 +1583,7 @@
         }
       }
     ],
-    "source": "https://africacenter.org/spotlight/togo-revises-constitution-to-eliminate-term-limits-an-explainer/"
+    "source": "https://www.loc.gov/item/global-legal-monitor/2024-05-16/togo-new-constitution-promulgated/"
   },
   {
     "year": 2024,
@@ -1423,180 +1634,5 @@
       }
     ],
     "source": "https://reliefweb.int/report/togo/giews-country-brief-togolese-republic-11-october-2024"
-  },
-  {
-    "year": 1960,
-    "title": "British Togoland Votes to Join Ghana, Not Togo",
-    "verdict": "TRUE",
-    "reason": "A UN-supervised plebiscite on May 9, 1956 resulted in 58% of voters in British Togoland choosing integration with the Gold Coast (Ghana) — though the vote split geographically, with the north strongly for and south against. The UN General Assembly ratified the outcome in December 1956. British Togoland integrated with Ghana on March 6, 1957. Wikipedia's article on British Togoland and the 1956 plebiscite confirm all key facts. The curated event's note on the Ewe partition and the 1967 political divide is accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "A UN-supervised plebiscite on May 9, 1956 resulted in 58% of voters in British Togoland choosing integration with the Gold Coast (Ghana) — though the vote split geographically, with the north strongly for and south against. The UN General Assembly ratified the outcome in December 1956. British Togoland integrated with Ghana on March 6, 1957. Wikipedia's article on British Togoland and the 1956 plebiscite confirm all key facts. The curated event's note on the Ewe partition and the 1967 political divide is accurate.",
-        "source": "https://en.wikipedia.org/wiki/1956_British_Togoland_status_plebiscite",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1956_British_Togoland_status_plebiscite"
-  },
-  {
-    "year": 1985,
-    "title": "Lomé III Convention Renews ACP-EC Development Partnership",
-    "verdict": "TRUE",
-    "reason": "Lomé III was signed on December 8, 1984 at Lomé, Togo, between the EEC and 71 ACP states; it came into force for trade in March 1985 and for aid provisions in May 1986. EU Publications Office and IMF Finance and Development (1985) confirm the date and the Lomé hosting. The curated event's year (1985) refers to the year the convention entered into force, which is a defensible framing, and the characterisation of European realpolitik over conditionality during the Cold War is accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Lomé III was signed on December 8, 1984 at Lomé, Togo, between the EEC and 71 ACP states; it came into force for trade in March 1985 and for aid provisions in May 1986. EU Publications Office and IMF Finance and Development (1985) confirm the date and the Lomé hosting. The curated event's year (1985) refers to the year the convention entered into force, which is a defensible framing, and the characterisation of European realpolitik over conditionality during the Cold War is accurate.",
-        "source": "https://op.europa.eu/en/publication-detail/-/publication/851e7cf4-1d67-4c13-9d1a-abb8a220feef/language-en",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://op.europa.eu/en/publication-detail/-/publication/851e7cf4-1d67-4c13-9d1a-abb8a220feef/language-en"
-  },
-  {
-    "year": 1991,
-    "title": "High Commission for Human Rights and Reconciliation Established",
-    "verdict": "UNCERTAIN",
-    "reason": "The 1991 National Conference established transitional institutions including the Haut Conseil de la République (HCR), but a specific 'High Commission for Human Rights and Reconciliation' as described is not confirmed in multiple sources. HRW's 2001 report on government human rights commissions in Africa and OHCHR materials refer to a later 2009 CVJR. A transitional human rights body may have existed but its specific name, mandate, and outcome as described cannot be independently verified from available search results.",
-    "verify_count": 1,
-    "consensus_verdict": "UNCERTAIN",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "UNCERTAIN",
-        "reason": "The 1991 National Conference established transitional institutions including the Haut Conseil de la République (HCR), but a specific 'High Commission for Human Rights and Reconciliation' as described is not confirmed in multiple sources. HRW's 2001 report on government human rights commissions in Africa and OHCHR materials refer to a later 2009 CVJR. A transitional human rights body may have existed but its specific name, mandate, and outcome as described cannot be independently verified from available search results.",
-        "source": "https://www.hrw.org/reports/2001/africa/togo/togo3.html",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.hrw.org/reports/2001/africa/togo/togo3.html"
-  },
-  {
-    "year": 2005,
-    "title": "Diaspora Remittances Become Major Economic Lifeline",
-    "verdict": "TRUE",
-    "reason": "By 2005, Togolese diaspora remittances totalled approximately $143 million USD, representing 8.5% of GDP, and CADTM data confirms remittances were 3-6 times higher than bilateral budget aid for multiple years. Diaspora communities are concentrated in France, Germany, Belgium, and West African neighbouring states. The characterisation of remittances exceeding ODA and reflecting political emigration is accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "By 2005, Togolese diaspora remittances totalled approximately $143 million USD, representing 8.5% of GDP, and CADTM data confirms remittances were 3-6 times higher than bilateral budget aid for multiple years. Diaspora communities are concentrated in France, Germany, Belgium, and West African neighbouring states. The characterisation of remittances exceeding ODA and reflecting political emigration is accurate.",
-        "source": "https://www.cadtm.org/The-Togolese-migrants-largest",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.cadtm.org/The-Togolese-migrants-largest"
-  },
-  {
-    "year": 2009,
-    "title": "Truth, Justice and Reconciliation Commission Created",
-    "verdict": "TRUE",
-    "reason": "The CVJR (Commission Vérité, Justice et Réconciliation) was established by presidential decree in 2005 and became operational on February 25, 2009. It investigated violations from 1958 to 2005, collected 22,415 statements, held 523 hearings, and published its report volumes from 2012. The African Transitional Justice Hub (CSVR) and JusticeInfo.net confirm all key details. Implementation of the 68 recommendations has been slow and underfunded, as stated.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The CVJR (Commission Vérité, Justice et Réconciliation) was established by presidential decree in 2005 and became operational on February 25, 2009. It investigated violations from 1958 to 2005, collected 22,415 statements, held 523 hearings, and published its report volumes from 2012. The African Transitional Justice Hub (CSVR) and JusticeInfo.net confirm all key details. Implementation of the 68 recommendations has been slow and underfunded, as stated.",
-        "source": "https://atjhub.csvr.org.za/togo-truth-justice-and-reconciliation-commission-2009-2012/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://atjhub.csvr.org.za/togo-truth-justice-and-reconciliation-commission-2009-2012/"
-  },
-  {
-    "year": 2016,
-    "title": "West Africa's Largest Solar Plant Opens Near Lomé",
-    "verdict": "FALSE",
-    "reason": "The largest solar plant in West Africa opened in Blitta (approximately 267 km north of Lomé, not near Lomé) in June 2021, not 2016. It was a 50 MW facility built by AMEA Power, financed by the West African Development Bank and Abu Dhabi Fund for Development — not the European Investment Bank as stated. The curated event is wrong on the year (2016 vs 2021), location ('near Lomé' vs Blitta), and financing source (EIB vs West African/Abu Dhabi funds).",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "The largest solar plant in West Africa opened in Blitta (approximately 267 km north of Lomé, not near Lomé) in June 2021, not 2016. It was a 50 MW facility built by AMEA Power, financed by the West African Development Bank and Abu Dhabi Fund for Development — not the European Investment Bank as stated. The curated event is wrong on the year (2016 vs 2021), location ('near Lomé' vs Blitta), and financing source (EIB vs West African/Abu Dhabi funds).",
-        "source": "https://www.africanews.com/2021/06/24/togo-inaugurates-largest-solar-plant-in-west-africa/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.africanews.com/2021/06/24/togo-inaugurates-largest-solar-plant-in-west-africa/"
-  },
-  {
-    "year": 2019,
-    "title": "Togo Elected to UN Security Council Non-Permanent Seat",
-    "verdict": "FALSE",
-    "reason": "Togo was elected to the UN Security Council as a non-permanent member for the 2012-2013 term (elected in October 2011), not for 2020-2021 as stated, and not in 2019. The UN Security Council membership records and the UN Press release (October 2011) confirm Togo's Security Council term was 2012-2013. The 2019 UNSC election did not include Togo. The event's year (2019) and the claimed 2020-2021 term are both incorrect.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Togo was elected to the UN Security Council as a non-permanent member for the 2012-2013 term (elected in October 2011), not for 2020-2021 as stated, and not in 2019. The UN Security Council membership records and the UN Press release (October 2011) confirm Togo's Security Council term was 2012-2013. The 2019 UNSC election did not include Togo. The event's year (2019) and the claimed 2020-2021 term are both incorrect.",
-        "source": "https://press.un.org/en/2011/ga11160.doc.htm",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://press.un.org/en/2011/ga11160.doc.htm"
   }
 ]

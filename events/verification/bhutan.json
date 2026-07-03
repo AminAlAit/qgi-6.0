@@ -1168,12 +1168,12 @@
   {
     "year": 1976,
     "title": "Gross National Happiness Concept Introduced",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: Country and actor confirmed: King Jigme Singye Wangchuck of Bhutan is credited across all sources (Wikipedia, GNH Centre Bhutan, ADB, IR Review, academic literature) as the originator of the Gross National Happiness concept, and the four pillars cited (sustainable/equitable socio-economic development, environmental conservation, cultural preservation, good governance) match Bhutan's official GNH framework exactly. The precise year is genuinely contested in the historical/academic record: tertiary sources (Wikipedia, ADB, GNH Centre Bhutan, OPHI) commonly cite 1972 (tied to his ascension to the throne), while other independent sources (International Relations Review) state GNH was 'first articulated in the late 1970s', and a peer-reviewed academic paper (M. Givel, 'Where did Bhutan's gross national happiness come from? The origins of an invented tradition', Asian Affairs 2016) documents that publications since 1996 make at least four different, competing claims about GNH's origin point, ranging from the 1972 ascension to a story of the king developing the idea while touring the countryside in the 'mid- to late-1970s', to Givel's own assessment that it was coined as a vague phrase around 1980 and only formalized decades later. Given this acknowledged scholarly disagreement, the event description's hedged 'around 1976' falls within the range of credible dates found in the literature (particularly the mid-to-late-1970s countryside-touring narrative and the independently-cited 'late 1970s' articulation), so the year is not treated as clearly wrong. Substance, country, and actor are all solid; the year is defensible given genuine source disagreement, so verdict is TRUE rather than FALSE/PARTIAL/UNCERTAIN.; Pass 2 FALSE: The core substance is real — Bhutan's 4th King, Jigme Singye Wangchuck, did articulate the Gross National Happiness (GNH) philosophy, and its four pillars (sustainable/equitable socio-economic development, environmental conservation, cultural preservation, good governance) did become Bhutan's guiding development framework. But the year 1976 does not match any documented milestone. Multiple independent sources converge on two competing, well-documented dates instead: (1) 1972 — loosely cited by many tertiary sources (Wikipedia, Blue Planet Prize profile of the King, testbook.com, gktoday) as when the King 'conceptualized' GNH, coinciding with his ascension to the throne after his father's death that year; and (2) 1979 — the specific, well-sourced episode when the King, returning from the NAM summit in Havana, told Indian journalists at Bombay airport 'Gross National Happiness is more important than Gross National Product,' later publicized via Michael T. Kaufman's April 29, 1980 New York Times piece. His formal coronation was actually 1974, and his coronation speech emphasized 'economic self-reliance,' not GNH specifically. A peer-reviewed paper (Asian Affairs, 2016, 'Where did Bhutan's gross national happiness come from? The origins of an invented tradition') further argues Bhutan-related publications from 1972-1995 don't actually mention GNH, meaning even the 1972/1979 dating is contested as a later-constructed origin story — but no source anywhere ties the articulation to 1976 specifically. Since none of the corroborating evidence supports the given year, and the year is a join key that must be accurate, this is a wrong-year FALSE rather than PARTIAL (which requires year to hold).. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
+    "verdict": "TRUE",
+    "reason": "Multiple independent, non-Wikipedia sources confirm King Jigme Singye Wangchuck of Bhutan originated the Gross National Happiness (GNH) concept — the idea that national progress should be measured by collective wellbeing rather than GDP alone. The exact year the king first articulated this is genuinely disputed across sources (some cite 1972, tied to his ascension to the throne; some cite a documented 1979 Bombay-airport interview with Indian journalists returning from the Havana NAM summit as the moment the phrase became internationally known), but the Asian Development Bank's feature 'Gross National Happiness in Bhutan: 12 Things to Know' (adb.org) explicitly states GNH was 'first introduced' by the king 'during the mid-1970s' — directly consistent with the event's hedged 'around 1976' framing. The core substance (GNH as GDP alternative measuring wellbeing) and country/actor are corroborated by many additional independent sources (Asahi Glass Foundation/Blue Planet Prize, GNH Centre Bhutan, JSW Law School Bhutan, OPHI) even though they disagree amongst themselves on the precise year (ranging 1972-1979), which is itself evidence the 'around 1976' hedge in the description is a defensible position within scholarly disagreement rather than a clear error. The four-pillars framework (sustainable development, environment, culture, governance) is the well-documented, widely-cited structure of GNH as it came to be applied, though it was more formally operationalized later (Centre for Bhutan Studies, est. 1998) — a timing nuance common to almost all general descriptions of GNH's history and not treated as a material misstatement of actor/country/core event.",
+    "verify_count": 3,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
     "source_independence": "independent",
     "verifications": [
       {
@@ -1198,8 +1198,21 @@
           "method": "web_search"
         },
         "corrected_year": 1972
+      },
+      {
+        "pass_n": 3,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-Wikipedia sources confirm King Jigme Singye Wangchuck of Bhutan originated the Gross National Happiness (GNH) concept — the idea that national progress should be measured by collective wellbeing rather than GDP alone. The exact year the king first articulated this is genuinely disputed across sources (some cite 1972, tied to his ascension to the throne; some cite a documented 1979 Bombay-airport interview with Indian journalists returning from the Havana NAM summit as the moment the phrase became internationally known), but the Asian Development Bank's feature 'Gross National Happiness in Bhutan: 12 Things to Know' (adb.org) explicitly states GNH was 'first introduced' by the king 'during the mid-1970s' — directly consistent with the event's hedged 'around 1976' framing. The core substance (GNH as GDP alternative measuring wellbeing) and country/actor are corroborated by many additional independent sources (Asahi Glass Foundation/Blue Planet Prize, GNH Centre Bhutan, JSW Law School Bhutan, OPHI) even though they disagree amongst themselves on the precise year (ranging 1972-1979), which is itself evidence the 'around 1976' hedge in the description is a defensible position within scholarly disagreement rather than a clear error. The four-pillars framework (sustainable development, environment, culture, governance) is the well-documented, widely-cited structure of GNH as it came to be applied, though it was more formally operationalized later (Centre for Bhutan Studies, est. 1998) — a timing nuance common to almost all general descriptions of GNH's history and not treated as a material misstatement of actor/country/core event.",
+        "source": "https://www.adb.org/news/features/gross-national-happiness-bhutan-12-things-know",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://www.adb.org/news/features/gross-national-happiness-bhutan-12-things-know"
   },
   {
     "year": 2007,
@@ -1274,5 +1287,79 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/April_2015_Nepal_earthquake"
+  },
+  {
+    "year": 2024,
+    "title": "Lhotshampa Repatriation Discussions Revived",
+    "verdict": "FALSE",
+    "reason": "Extensive searching (Wikipedia, HRW, Nepali Times, Kathmandu Post, myRepublica, Himal Southasian, Freedom House, CNN) found no evidence that Bhutan's government under PM Tshering Tobgay indicated any renewed willingness in 2024 to discuss repatriation of Lhotshampa refugees, nor any indication that a small number of verified individuals might be allowed to return. What the sources actually show is the opposite: as of 2024 Bhutan's government still 'does not recognize the refugees as citizens and refuses to allow them to repatriate' (per academic/HRW-sourced summaries), and refugee advocacy groups (not the Bhutanese government) were the ones initiating renewed outreach, hopeful that the Gelephu Mindfulness City project (announced Dec 2023) might create leverage. Tobgay's own 2025 memoir was noted by Himal Southasian as sidestepping the Lhotshampa issue rather than engaging it. Further evidence into 2025 shows Bhutan actively disowning/rejecting Lhotshampa deportees sent back by the US, refusing to accept them at the border -- the opposite of a 'renewed willingness' posture. No contemporaneous 2024 news article, Bhutanese government statement, or Nepali government readout describing a Tobgay-era policy shift on repatriation could be found despite multiple targeted search attempts covering Bhutanese, Nepali, and international outlets.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Extensive searching found no independent source confirming that Bhutan's Tobgay government showed \"renewed willingness\" in 2024 to discuss repatriation or allow verified Lhotshampa individuals to return. Instead, multiple independent sources from and about 2024 point the opposite direction: (1) at Bhutan's Universal Periodic Review at the UN Human Rights Council in November 2024, Bhutan formally \"noted\" (i.e., did not accept) recommendations on citizenship rights and the right of return for Nepali-speaking refugees, and rejected 68 of 203 recommendations overall; (2) a 2025 Bhutan Watch report reviewing this period states Bhutan \"continues to obstruct third-party negotiations or UN-led solutions\" and that recommendations to recognize Lhotshampa as citizens and permit repatriation were \"measures the government has historically resisted rather than endorsed\"; (3) contemporaneous/adjacent reporting (Kathmandu Post, CNN, The World/PRX, Himal Southasian) describes Bhutan continuing to deny citizenship, refusing comment requests, and — in 2025 — actively expelling US-deported Lhotshampa individuals to India rather than accepting them. No news source (Kuensel, Kathmandu Post, ReliefWeb, UNHCR reporting) could be found reporting a 2024 statement by PM Tshering Tobgay or his government expressing new openness to repatriation or verification-based returns. The description appears to invert the actual 2024 record, in which Bhutan reaffirmed its longstanding refusal.",
+        "source": "https://myrepublica.nagariknetwork.com/news/bhutan-watch-exposes-deepening-human-rights-crisis-in-bhutan-in-2025-report-35-73.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Extensive searching (Wikipedia, HRW, Nepali Times, Kathmandu Post, myRepublica, Himal Southasian, Freedom House, CNN) found no evidence that Bhutan's government under PM Tshering Tobgay indicated any renewed willingness in 2024 to discuss repatriation of Lhotshampa refugees, nor any indication that a small number of verified individuals might be allowed to return. What the sources actually show is the opposite: as of 2024 Bhutan's government still 'does not recognize the refugees as citizens and refuses to allow them to repatriate' (per academic/HRW-sourced summaries), and refugee advocacy groups (not the Bhutanese government) were the ones initiating renewed outreach, hopeful that the Gelephu Mindfulness City project (announced Dec 2023) might create leverage. Tobgay's own 2025 memoir was noted by Himal Southasian as sidestepping the Lhotshampa issue rather than engaging it. Further evidence into 2025 shows Bhutan actively disowning/rejecting Lhotshampa deportees sent back by the US, refusing to accept them at the border -- the opposite of a 'renewed willingness' posture. No contemporaneous 2024 news article, Bhutanese government statement, or Nepali government readout describing a Tobgay-era policy shift on repatriation could be found despite multiple targeted search attempts covering Bhutanese, Nepali, and international outlets.",
+        "source": "https://edition.cnn.com/2025/07/18/asia/bhutan-refugees-trump-deportations-nepal-intl-hnk",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://edition.cnn.com/2025/07/18/asia/bhutan-refugees-trump-deportations-nepal-intl-hnk"
+  },
+  {
+    "year": 1997,
+    "title": "India-Bhutan Power Trade Agreement",
+    "verdict": "FALSE",
+    "reason": "Extensive research across the Royal Bhutanese Embassy's hydropower relations page, ORF, IDSA, and a detailed peer-reviewed academic paper (Saklani & Tortajada 2019, Water Alternatives) with a full sourced chronology of India-Bhutan hydropower agreements found no record of any bilateral power trade agreement signed in 1997. The documented milestones are: 1974 Chukha agreement, 1987-88 Chukha commissioning, March 1996 Tala inter-governmental agreement (construction groundbreaking followed in April 1997, but this was a single-project construction pact, not a general power-trade framework), and July 2006 Agreement on Cooperation in the Field of Hydroelectric Power (HEP) -- the actual comprehensive framework that matches the description of formalizing long-term power export and locking in India as primary off-taker for decades. No independent source supports a distinct 1997 'Power Trade Agreement'.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "No independent source documents a distinct \"India-Bhutan Power Trade Agreement\" in 1997. Multiple sources (Royal Bhutanese Embassy in New Delhi, ORF, IDSA, ICRIER, Vasudha Foundation study on India-Bhutan energy cooperation) give a well-documented timeline of Indo-Bhutan hydropower cooperation: 1961 Jaldhaka agreement, 23 March 1974 Chukha Hydropower Project agreement, 1994 Kurichhu project agreement, and — closest in substance to this event — the Tala Hydroelectric Project agreement signed 5 March 1996 (in the presence of the King of Bhutan and Indian PM Narasimha Rao), which formalized the 1,020 MW project with India as financier (60% grant/40% loan) and long-term off-taker of the power. The next formal bilateral power framework agreement was July 2006. Nothing in any source is dated 1997. The event description (bilateral agreement formalizing long-term hydropower export, India as primary off-taker, underpinning multiple hydropower projects) matches the substance of the Tala Agreement closely, but that agreement is dated 1996, not 1997, so this appears to be a one-year date error rather than a fabricated event.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1996
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Extensive research across the Royal Bhutanese Embassy's hydropower relations page, ORF, IDSA, and a detailed peer-reviewed academic paper (Saklani & Tortajada 2019, Water Alternatives) with a full sourced chronology of India-Bhutan hydropower agreements found no record of any bilateral power trade agreement signed in 1997. The documented milestones are: 1974 Chukha agreement, 1987-88 Chukha commissioning, March 1996 Tala inter-governmental agreement (construction groundbreaking followed in April 1997, but this was a single-project construction pact, not a general power-trade framework), and July 2006 Agreement on Cooperation in the Field of Hydroelectric Power (HEP) -- the actual comprehensive framework that matches the description of formalizing long-term power export and locking in India as primary off-taker for decades. No independent source supports a distinct 1997 'Power Trade Agreement'.",
+        "source": "https://www.mfa.gov.bt/rbedelhi/bhutan-india-relations/bhutan-india-hydropower-relations/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2006
+      }
+    ],
+    "source": "https://www.mfa.gov.bt/rbedelhi/bhutan-india-relations/bhutan-india-hydropower-relations/"
   }
 ]

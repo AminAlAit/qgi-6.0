@@ -962,6 +962,42 @@
   },
   {
     "year": 2021,
+    "title": "Swiss Voters Reject Stricter CO2 Climate Law in Referendum",
+    "verdict": "TRUE",
+    "reason": "Confirmed via multiple independent sources: On 13 June 2021, Swiss voters rejected an amendment to the federal CO2 Act by 51.59% (rounds to 51.6%) to 48.41%, on 59.68% (rounds to 59.7%) turnout. The law would have raised fuel import levies (up to 12 cents/litre) and introduced a new air ticket levy of CHF 30 (short/medium-haul) up to CHF 120 (long-haul), aiming to cut GHG emissions 50% by 2030 per the Paris Agreement. Opposition included the oil lobby, auto and construction interests, and aviation industry, combined with cost-of-living/economic recovery concerns post-COVID. All material details (date, vote share, turnout, levy amounts, target year/percentage, opposition actors) match the event description.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources. On 13 June 2021, Swiss voters rejected the revised CO2 Act with 51.59% voting no on 59.68% turnout (matches \"51.6%\"/\"59.7%\" in description). The amendment aimed to cut GHG emissions 50% by 2030 per the Paris Agreement, and would have raised the fuel tax (petrol/diesel) and imposed an airline ticket levy of up to 120 CHF on long-haul flights (30-120 CHF sliding scale) — matching the \"up to 120 francs\" detail exactly. Opposition came from the oil lobby, car associations/auto industry, homeowners/construction interests, and aviation-related business groups, combined with cost-of-living concerns (SVP and rural voters citing financial burden) — matching the description's opposition coalition and cost-of-living framing. All material details (date, country, vote margins, turnout, policy content, opposition actors, motive) check out.",
+        "source": "https://www.loc.gov/item/global-legal-monitor/2021-06-25/switzerland-co2-act-amendment-rejected-by-voters/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources: On 13 June 2021, Swiss voters rejected an amendment to the federal CO2 Act by 51.59% (rounds to 51.6%) to 48.41%, on 59.68% (rounds to 59.7%) turnout. The law would have raised fuel import levies (up to 12 cents/litre) and introduced a new air ticket levy of CHF 30 (short/medium-haul) up to CHF 120 (long-haul), aiming to cut GHG emissions 50% by 2030 per the Paris Agreement. Opposition included the oil lobby, auto and construction interests, and aviation industry, combined with cost-of-living/economic recovery concerns post-COVID. All material details (date, vote share, turnout, levy amounts, target year/percentage, opposition actors) match the event description.",
+        "source": "https://www.loc.gov/item/global-legal-monitor/2021-06-25/switzerland-co2-act-amendment-rejected-by-voters/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.loc.gov/item/global-legal-monitor/2021-06-25/switzerland-co2-act-amendment-rejected-by-voters/"
+  },
+  {
+    "year": 2021,
     "title": "Switzerland Unilaterally Terminates EU Framework Agreement",
     "verdict": "TRUE",
     "reason": "On 26 May 2021, the Federal Council broke off seven years of negotiations on an Institutional Framework Agreement with the EU, citing irreconcilable differences on wage protection, state aid rules, and citizens' access to social benefits, leaving Swiss-EU relations in their worst state in decades.",

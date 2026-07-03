@@ -1548,5 +1548,81 @@
       }
     ],
     "source": "https://www.aljazeera.com/features/2025/1/22/as-gold-prices-surge-ghana-faces-looming-crisis-over-illegal-mining"
+  },
+  {
+    "year": 2002,
+    "title": "National Health Insurance Act Creates Public Health Coverage Scheme",
+    "verdict": "FALSE",
+    "reason": "The event is real and materially accurate (Kufuor government, NHIS financed via payroll contributions and a VAT-linked National Health Insurance Levy, hailed as a major sub-Saharan African social policy innovation) but the year is wrong. Ghana's National Health Insurance Act is Act 650 of 2003, assented to by President Kufuor on 5 September 2003 and gazetted 12 September 2003 — not 2002. Multiple independent, authoritative sources (Ghana's Parliament repository, CommonLII legal database, GhanaLegal, Ghana Ministry of Health) uniformly cite 2003 as the year of passage/assent. No source found dates the Act itself to 2002 (the NPP's campaign promise to abolish 'cash and carry' dates to the 2000 election, and an inter-ministerial task force was set up after the Dec 2000 win, but the actual Act followed in 2003).",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially accurate in substance (Kufuor government's NHIS, financed by payroll/SSNIT contributions plus a dedicated VAT-linked National Health Insurance Levy, aimed at removing upfront \"cash and carry\" payment for essential health services), but the year is wrong. Multiple independent sources (Ghana's Parliament repository, PMC/NCBI peer-reviewed literature, GhanaWeb, Wikipedia, Dubawa Ghana fact-check) consistently date the National Health Insurance Act as Act 650 of 2003, passed by Parliament in the last quarter of 2003 (with scheme implementation beginning in 2004-2005), not 2002. Since year is a join key and it is off by one year, this is a FALSE (year-wrong) rather than TRUE/PARTIAL.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3426378/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2003
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially accurate (Kufuor government, NHIS financed via payroll contributions and a VAT-linked National Health Insurance Levy, hailed as a major sub-Saharan African social policy innovation) but the year is wrong. Ghana's National Health Insurance Act is Act 650 of 2003, assented to by President Kufuor on 5 September 2003 and gazetted 12 September 2003 — not 2002. Multiple independent, authoritative sources (Ghana's Parliament repository, CommonLII legal database, GhanaLegal, Ghana Ministry of Health) uniformly cite 2003 as the year of passage/assent. No source found dates the Act itself to 2002 (the NPP's campaign promise to abolish 'cash and carry' dates to the 2000 election, and an inter-ministerial task force was set up after the Dec 2000 win, but the actual Act followed in 2003).",
+        "source": "https://repository.parliament.gh/bitstream/handle/123456789/2605/ACT%20650%20Rev%20Ed.pdf?sequence=1&isAllowed=y",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2003
+      }
+    ],
+    "source": "https://repository.parliament.gh/bitstream/handle/123456789/2605/ACT%20650%20Rev%20Ed.pdf?sequence=1&isAllowed=y"
+  },
+  {
+    "year": 2025,
+    "title": "Ghana Finalises External Debt Restructuring with Eurobond Holders",
+    "verdict": "FALSE",
+    "reason": "The ~$13 billion Eurobond restructuring/exchange with commercial bondholders described here did happen materially as described (98.6% participation, ~37% haircut, celebrated as removing a major uncertainty overhang and as an IMF-program milestone) — but it was finalized in October 2024, not 2025. Ghana's Ministry of Finance press conference confirms the exchange offer and consent solicitation were completed on October 9-10, 2024, exchanging US$13,103.9 million in outstanding Eurobonds. Multiple independent sources (Ghana MoFEP, Bloomberg, Citinewsroom, Afronomicslaw) corroborate the October 2024 completion date. What happened in 2025 was Ghana servicing scheduled debt payments under the already-completed restructuring (e.g., $349.52M and $709M Eurobond coupon/principal payments), not finalizing the restructuring itself. So the event is real but mis-dated by one year.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Eurobond exchange/restructuring described (~$13 billion, celebrated by government and IMF as a critical post-crisis milestone) occurred in October 2024, not 2025. Ghana's Ministry of Finance announced completion of the exchange offer and consent solicitation on Oct 3-4, 2024, with settlement on Oct 9-10, 2024, covering US$13,103.9 million of Eurobonds at 98.6% participation — matching the description almost exactly but a year earlier. As of the 2025 reporting period, Ghana's broader external debt restructuring (bilateral official creditors, ~60 commercial banks covering the remaining ~7% of external debt) was still ongoing/not finalized (MOU with Official Creditor Committee signed Jan 2025; commercial bank talks continuing into 2025-2026), so no matching 'finalisation' of Eurobond-holder restructuring happened in 2025 either — the Eurobond piece was already done in 2024.",
+        "source": "https://mofep.gov.gh/news-and-events/2024-10-03/bondholders-overwhelmingly-support-and-participate-in-exchange-offer-and-consent-solicitation-in-respect-of-ghanas-eurobonds-restructuring",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2024
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The ~$13 billion Eurobond restructuring/exchange with commercial bondholders described here did happen materially as described (98.6% participation, ~37% haircut, celebrated as removing a major uncertainty overhang and as an IMF-program milestone) — but it was finalized in October 2024, not 2025. Ghana's Ministry of Finance press conference confirms the exchange offer and consent solicitation were completed on October 9-10, 2024, exchanging US$13,103.9 million in outstanding Eurobonds. Multiple independent sources (Ghana MoFEP, Bloomberg, Citinewsroom, Afronomicslaw) corroborate the October 2024 completion date. What happened in 2025 was Ghana servicing scheduled debt payments under the already-completed restructuring (e.g., $349.52M and $709M Eurobond coupon/principal payments), not finalizing the restructuring itself. So the event is real but mis-dated by one year.",
+        "source": "https://www.mofep.gov.gh/speeches/2024-10-04",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2024
+      }
+    ],
+    "source": "https://www.mofep.gov.gh/speeches/2024-10-04"
   }
 ]

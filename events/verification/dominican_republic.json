@@ -1319,5 +1319,43 @@
         }
       }
     ]
+  },
+  {
+    "year": 1958,
+    "title": "Anti-Trujillo Exile Invasion Crushed",
+    "verdict": "FALSE",
+    "reason": "The event as described (Dominican exiles trained in Cuba, backed by Venezuela, launching an armed invasion that was rapidly crushed by Dominican military forces, followed by mass arrests/executions) is real and well-documented, but it occurred in June 1959, not 1958. This is the famous Constanza-Maimón-Estero Hondo expedition of June 14-20, 1959: a Cuban plane landed ~56 fighters near Constanza on June 14, 1959, followed by two boat landings at Maimón and Estero Hondo on June 20, 1959. Dominican forces killed the vast majority of the ~224 invaders (killing 217, capturing 7 per one account), with survivors tortured/executed. Multiple independent sources (US State Dept FRUS historical documents, Dominican news/historical outlets, encyclopedic sources) consistently date this to 1959. No comparable Cuban/Venezuelan-backed exile invasion of the Dominican Republic occurred in 1958. Country and substance match; year is off by one.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The invasion described (Dominican exiles trained in Cuba, backed by Venezuela, landing by air and sea in June, crushed by Trujillo's military, followed by mass arrests/executions) is real and well-documented, but it occurred in June 1959, not June 1958. This is the famous \"Expedición de Constanza, Maimón y Estero Hondo\": on June 14, 1959, ~56-60 expeditionaries (Dominicans, Cubans, Venezuelans, and others) trained in Cuba landed by plane at Constanza; on June 20, 1959, ~150-170 more landed by ship at Maimón and Estero Hondo. All were rapidly crushed by Trujillo's ~3,000-strong military response, and brutal mass arrests, torture, and executions of suspected collaborators followed — matching the description almost exactly except for the year. A US State Department FRUS document (covering 1958-1960) explicitly dates these landings to June 14 and June 20, 1959. No independent source corroborates a matching invasion in June 1958; the closest earlier exile invasion attempts (Cayo Confites 1947, Luperón 1949) do not match this description (no Venezuela backing, different scale/outcome).",
+        "source": "https://history.state.gov/historicaldocuments/frus1958-60v05/d90",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1959
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event as described (Dominican exiles trained in Cuba, backed by Venezuela, launching an armed invasion that was rapidly crushed by Dominican military forces, followed by mass arrests/executions) is real and well-documented, but it occurred in June 1959, not 1958. This is the famous Constanza-Maimón-Estero Hondo expedition of June 14-20, 1959: a Cuban plane landed ~56 fighters near Constanza on June 14, 1959, followed by two boat landings at Maimón and Estero Hondo on June 20, 1959. Dominican forces killed the vast majority of the ~224 invaders (killing 217, capturing 7 per one account), with survivors tortured/executed. Multiple independent sources (US State Dept FRUS historical documents, Dominican news/historical outlets, encyclopedic sources) consistently date this to 1959. No comparable Cuban/Venezuelan-backed exile invasion of the Dominican Republic occurred in 1958. Country and substance match; year is off by one.",
+        "source": "https://history.state.gov/historicaldocuments/frus1958-60v05/d90",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1959
+      }
+    ],
+    "source": "https://history.state.gov/historicaldocuments/frus1958-60v05/d90"
   }
 ]

@@ -1261,6 +1261,42 @@
     "source": "https://en.wikipedia.org/wiki/2017_Stockholm_truck_attack"
   },
   {
+    "year": 2017,
+    "title": "Sweden Adopts Climate Policy Framework Targeting Net Zero by 2045",
+    "verdict": "TRUE",
+    "reason": "Confirmed via multiple independent authoritative sources. In June 2017, Sweden's Riksdag adopted a climate policy framework by broad cross-party majority, comprising new climate goals, a Climate Act, and the Swedish Climate Policy Council. The Climate Act entered into force on January 1, 2018. The framework commits Sweden to net-zero greenhouse gas emissions by 2045, requiring territorial emissions to be at least 85% lower than 1990 levels (remaining 15% via supplementary measures like carbon sequestration/CCS). The Climate Policy Council is an independent body tasked with annual assessment of government progress toward climate goals. All material details (year, country, actor, mechanism, magnitude, institution) match the description exactly.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources confirm every material element: in June 2017 Sweden's Riksdag adopted a climate policy framework by a broad cross-party majority, comprising national climate goals, a Climate Act, and an independent Climate Policy Council; the Climate Act entered into force January 1, 2018; the framework commits to net-zero GHG emissions by 2045 with territorial emissions at least 85% below 1990 levels (remaining 15% via supplementary measures). Confirmed by Sweden's Government (government.se press release dated June 2017 titled \"Riksdag passes historic climate policy framework\" and government.se explainer article), Naturvårdsverket (Swedish EPA), and the Grantham Research Institute's Climate Change Laws of the World database (climate-laws.org), plus the Swedish Climate Policy Council's own site describing its creation and mandate. No discrepancies found on year, country, actor, or scope.",
+        "source": "https://climate-laws.org/document/the-swedish-climate-policy-framework_747b",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent authoritative sources. In June 2017, Sweden's Riksdag adopted a climate policy framework by broad cross-party majority, comprising new climate goals, a Climate Act, and the Swedish Climate Policy Council. The Climate Act entered into force on January 1, 2018. The framework commits Sweden to net-zero greenhouse gas emissions by 2045, requiring territorial emissions to be at least 85% lower than 1990 levels (remaining 15% via supplementary measures like carbon sequestration/CCS). The Climate Policy Council is an independent body tasked with annual assessment of government progress toward climate goals. All material details (year, country, actor, mechanism, magnitude, institution) match the description exactly.",
+        "source": "https://www.government.se/articles/2021/03/swedens-climate-policy-framework/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.government.se/articles/2021/03/swedens-climate-policy-framework/"
+  },
+  {
     "year": 2018,
     "title": "Election Produces Four-Month Government Formation Deadlock",
     "verdict": "TRUE",

@@ -1187,6 +1187,42 @@
   },
   {
     "year": 2020,
+    "title": "Mauritius Declares State of Environmental Emergency After Oil Spill",
+    "verdict": "TRUE",
+    "reason": "Confirmed via multiple independent sources. The Japanese-owned bulk carrier MV Wakashio ran aground on a coral reef off southern Mauritius on 25 July 2020; it began leaking fuel oil around 6 August 2020. PM Pravind Jugnauth declared a 'state of environmental emergency' on 7-8 August 2020 (Mauritius-local Aug 7 evening reported Aug 8 UTC in some outlets), appealing to France and other countries for help. An estimated 1,000 tonnes of fuel oil spilled near the ecologically sensitive Pointe d'Esny wetlands and Blue Bay Marine Park (Ramsar site), described by officials/scientists as the worst environmental disaster in Mauritius's history. Dozens of dolphins and melon-headed whales subsequently washed up dead on nearby beaches (widely reported; ~47 whale deaths documented by late August 2020). All material details in the description (country, year, actors, cause, magnitude, location, and aftermath) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via independent sources: the Japanese-controlled bulk carrier MV Wakashio ran aground on a coral reef near Pointe d'Esny on July 25, 2020; PM Pravind Jugnauth declared a state of environmental emergency on August 7, 2020 as oil began leaking; an estimated ~1,000 tonnes of fuel oil spilled near the ecologically sensitive Pointe d'Esny wetlands and Blue Bay Marine Park; it was widely called Mauritius's worst environmental disaster; and dozens of dolphins and melon-headed whales later washed up dead on nearby beaches (though the exact causal link between the oil and the strandings was later disputed by experts). All material facts in the description (date, actors, location, magnitude, dolphin/whale deaths) are corroborated.",
+        "source": "https://reliefweb.int/report/mauritius/mauritius-mw-wakashio-oil-spill-flash-update-no-1-8-august-2020",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources. The Japanese-owned bulk carrier MV Wakashio ran aground on a coral reef off southern Mauritius on 25 July 2020; it began leaking fuel oil around 6 August 2020. PM Pravind Jugnauth declared a 'state of environmental emergency' on 7-8 August 2020 (Mauritius-local Aug 7 evening reported Aug 8 UTC in some outlets), appealing to France and other countries for help. An estimated 1,000 tonnes of fuel oil spilled near the ecologically sensitive Pointe d'Esny wetlands and Blue Bay Marine Park (Ramsar site), described by officials/scientists as the worst environmental disaster in Mauritius's history. Dozens of dolphins and melon-headed whales subsequently washed up dead on nearby beaches (widely reported; ~47 whale deaths documented by late August 2020). All material details in the description (country, year, actors, cause, magnitude, location, and aftermath) check out.",
+        "source": "https://www.euronews.com/2020/08/08/mauritius-declares-state-of-environmental-emergency-after-oil-leak-from-stranded-ship",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.euronews.com/2020/08/08/mauritius-declares-state-of-environmental-emergency-after-oil-leak-from-stranded-ship"
+  },
+  {
+    "year": 2020,
     "title": "Wakashio Oil Spill — Worst Environmental Disaster in Mauritian History",
     "verdict": "TRUE",
     "reason": "MV Wakashio ran aground off Pointe d'Esny on July 25, 2020 and began leaking ~1,000 tonnes of heavy fuel oil on August 6, affecting Blue Bay Marine Park. Dozens of dolphins and melon-headed whales washed up dead. The event is widely confirmed as Mauritius's worst environmental disaster.",

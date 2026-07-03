@@ -1959,5 +1959,77 @@
       }
     ],
     "source": "https://press.un.org/en/2025/sc16258.doc.htm"
+  },
+  {
+    "year": 2012,
+    "title": "Proliferation of Armed Militias",
+    "verdict": "PARTIAL",
+    "reason": "The core narrative is well corroborated for 2012: post-revolution Libya had a proliferating, fragmented militia landscape, the NTC/GNC's attempts at disarmament and integration (Warrior Affairs Commission registering ~213k-250k fighters, 'putting militias on the payroll') had limited success, revolutionary brigades refused to disband and developed economic/territorial interests, and this was widely described as the defining security challenge of the transition (Washington Institute, Amnesty International, Wikipedia, CFR). However, the specific magnitude 'over 1,700 armed militias' does not match contemporaneous 2012 sources. The International Crisis Group's 2012 report 'Holding Libya Together: Security Challenges after Qadhafi' states the number of militias was 'a mystery: 100 according to some; three times that others say' (i.e., roughly 100-300 in 2012), and other 2012-era sources describe 'hundreds' of armed groups, not 1,700+. Multiple independent searches trace the ~1,600-1,700 figure specifically to a 2014 assessment (VOA, 29 July 2014: 'analysts estimate there are up to 1,700 armed groups operating in Libya'; a Small Arms Survey/Clingendael-cited 2014 assessment gives ~1,600). Since militia numbers grew substantially between 2012 and 2014, applying the 1,700 figure to 2012 appears to be a magnitude/timing overstatement -- a material detail off while the country, year, and overall event substance hold.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The core narrative is well corroborated for 2012: post-revolution Libya had a proliferating, fragmented militia landscape, the NTC/GNC's attempts at disarmament and integration (Warrior Affairs Commission registering ~213k-250k fighters, 'putting militias on the payroll') had limited success, revolutionary brigades refused to disband and developed economic/territorial interests, and this was widely described as the defining security challenge of the transition (Washington Institute, Amnesty International, Wikipedia, CFR). However, the specific magnitude 'over 1,700 armed militias' does not match contemporaneous 2012 sources. The International Crisis Group's 2012 report 'Holding Libya Together: Security Challenges after Qadhafi' states the number of militias was 'a mystery: 100 according to some; three times that others say' (i.e., roughly 100-300 in 2012), and other 2012-era sources describe 'hundreds' of armed groups, not 1,700+. Multiple independent searches trace the ~1,600-1,700 figure specifically to a 2014 assessment (VOA, 29 July 2014: 'analysts estimate there are up to 1,700 armed groups operating in Libya'; a Small Arms Survey/Clingendael-cited 2014 assessment gives ~1,600). Since militia numbers grew substantially between 2012 and 2014, applying the 1,700 figure to 2012 appears to be a magnitude/timing overstatement -- a material detail off while the country, year, and overall event substance hold.",
+        "source": "https://www.crisisgroup.org/middle-east-north-africa/north-africa/libya/holding-libya-together-security-challenges-after-qadhafi",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the core claim: Libya's post-revolution transition (2011-2012) saw massive militia proliferation with no central authority able to disarm or integrate them. ACCORD's \"Four Years After the Fall of Gaddafi\" (citing Devore 2014, Mediterranean Politics) states militia groups numbered \"some 1,700 - a total of 231,000 registered fighters\" organized in three confederations (Eastern Libya, Misrata, Nafousa Mountains) that formed during the anti-Gaddafi fight and persisted into the transition. This closely matches the event's \"over 1,700 armed militias\" figure. Carnegie Endowment pieces from Feb 2012 (\"Disarming Libya's Militias\") and July 2012 (\"Libya's Militia Menace\") document contemporaneously that NTC-era militias refused to disband, that distrust made disarmament a negotiating chip, and that the Ministry of Interior managed to dismantle only a handful of militias out of the total. HRW World Report 2013 (covering 2012) confirms armed groups formed during the 2011 revolution \"refused to give up their weapons\" and acted independently of state control, with thousands held in illegal militia detention. Small Arms Survey's Oct 2012 working paper \"After the Fall: Libya's Evolving Armed Groups\" independently documents hundreds of distinct, well-organized armed groups (236 in Misrata alone, ~40,000 fighters) resisting integration. The one soft spot: some secondary sources (USIP timeline) tie a similar \"~1,600\" figure to July 2014 rather than 2012, and the ACCORD/Devore figure is anchored to \"the time of Gaddafi's demise\" (Oct 2011) rather than specifically dated to 2012 — but since the militia landscape was essentially static/worsening through the 2011-2012 transition (this was the defining, unresolved security crisis of that period, per Carnegie/HRW/Small Arms Survey reporting written contemporaneously in 2012), the magnitude and substance hold for 2012 as described.",
+        "source": "https://www.accord.org.za/conflict-trends/four-years-fall-gaddafi/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.crisisgroup.org/middle-east-north-africa/north-africa/libya/holding-libya-together-security-challenges-after-qadhafi"
+  },
+  {
+    "year": 1991,
+    "title": "Islamist Opposition Emerges",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources (Wikipedia, Jamestown Foundation, Stanford's Mapping Militants Project) corroborate the described process: following the Soviet withdrawal from Afghanistan (1989), Libyan \"Afghan-Arab\" veterans who had fought against Soviet forces returned to Libya in the early 1990s and organized underground to overthrow Gaddafi, ultimately forming the Libyan Islamic Fighting Group (LIFG). Wikipedia and multiple sources date LIFG's founding to 1990, with the \"first nucleus\" formed circa 1989-1992 depending on the source; the group only publicly announced itself in 1995 after a botched hospital raid exposed it. The Gaddafi regime's brutal suppression (imprisonment, executions, driving the movement underground) is also well-documented, intensifying through the mid-to-late 1990s. The event description narrates a multi-year organizing process (Afghan veterans returning, LIFG forming, regime crackdown) rather than a single dated incident, and 1991 falls squarely within the well-documented \"early 1990s\" window when this organizing occurred, making the year, country, and substance materially accurate.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the core narrative: after the Soviet withdrawal from Afghanistan (Feb 1989), Libyan \"Afghan Arab\" veterans returned home and formed the Libyan Islamic Fighting Group (LIFG) to overthrow Gaddafi and establish an Islamic state, and the regime suppressed the movement, driving it underground until its 1995 public declaration and 1996 armed clashes. On the exact founding year, sources vary: Wikipedia states 1990; Stanford's CISAC Mapping Militants Project states the \"first nucleus of the LIFG was formed (c. 1989–92)\" with Libyan-Afghan veterans returning \"in the early 1990s\" to establish it; Jamestown similarly places the Afghan-veteran network's formation in \"the early 1990s,\" with the formal public communiqué only in 1995. Given this is a gradual organizing process (not a single dated incident) and 1991 falls squarely within the documented \"c. 1989-92\" formation window cited by the Stanford academic source, the event's year, country, and substance hold up as materially accurate.",
+        "source": "https://mappingmilitants.org/profiles/libyan-islamic-fighting-group",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Wikipedia, Jamestown Foundation, Stanford's Mapping Militants Project) corroborate the described process: following the Soviet withdrawal from Afghanistan (1989), Libyan \"Afghan-Arab\" veterans who had fought against Soviet forces returned to Libya in the early 1990s and organized underground to overthrow Gaddafi, ultimately forming the Libyan Islamic Fighting Group (LIFG). Wikipedia and multiple sources date LIFG's founding to 1990, with the \"first nucleus\" formed circa 1989-1992 depending on the source; the group only publicly announced itself in 1995 after a botched hospital raid exposed it. The Gaddafi regime's brutal suppression (imprisonment, executions, driving the movement underground) is also well-documented, intensifying through the mid-to-late 1990s. The event description narrates a multi-year organizing process (Afghan veterans returning, LIFG forming, regime crackdown) rather than a single dated incident, and 1991 falls squarely within the well-documented \"early 1990s\" window when this organizing occurred, making the year, country, and substance materially accurate.",
+        "source": "https://jamestown.org/the-libyan-islamic-fighting-group-lifg/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://jamestown.org/the-libyan-islamic-fighting-group-lifg/"
   }
 ]
