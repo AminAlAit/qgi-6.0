@@ -75,29 +75,40 @@
     "source": "https://en.wikipedia.org/wiki/Chernobyl_disaster"
   },
   {
-    "year": 1991,
-    "title": "Ukraine Declares Independence from the Soviet Union",
+    "year": 1988,
+    "title": "Antonov An-225 Mriya, World's Largest Aircraft, Makes Maiden Flight",
     "verdict": "TRUE",
-    "reason": "Date August 24 1991, 90.3% referendum result, Kravchuk elected first president — all confirmed.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources (Wikipedia, AeroTime) confirm the An-225 Mriya, designed by the Antonov Design Bureau in Kyiv to ferry the Buran shuttle, made its maiden flight on 21 December 1988 from the Svyatoshyn factory aerodrome in Kyiv. It had a max takeoff weight of 640 tonnes and six turbofan (Progress D-18T) engines, and held the record as heaviest aircraft ever built. It was destroyed at Antonov Airport (Hostomel) during fighting on 27 February 2022, matching the description's \"February 2022\" detail. All material claims (year, country, designer/purpose, specs, fate) are corroborated.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Date August 24 1991, 90.3% referendum result, Kravchuk elected first president — all confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Declaration_of_Independence_of_Ukraine",
+        "reason": "Multiple independent, authoritative sources confirm every material detail: the An-225 Mriya, designed by the Antonov Design Bureau in Kyiv (Ukraine, then Ukrainian SSR) to ferry the Soviet Buran space shuttle, made its maiden flight on 21 December 1988 from the Svyatoshyn factory aerodrome, piloted by a crew led by Oleksandr Galunenko. It had a maximum takeoff weight of 640 tonnes and six Progress D-18T turbofan engines, was the heaviest aircraft ever built, and could carry single oversized cargo pieces up to ~200-250 tonnes (200t on the upper fuselage / 250t internally per Wikipedia). The sole completed airframe was destroyed during fighting at Antonov/Hostomel Airport during the Russian invasion, confirmed destroyed around 27 February 2022. No material discrepancies found.",
+        "source": "https://en.wikipedia.org/wiki/Antonov_An-225_Mriya",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Wikipedia, AeroTime) confirm the An-225 Mriya, designed by the Antonov Design Bureau in Kyiv to ferry the Buran shuttle, made its maiden flight on 21 December 1988 from the Svyatoshyn factory aerodrome in Kyiv. It had a max takeoff weight of 640 tonnes and six turbofan (Progress D-18T) engines, and held the record as heaviest aircraft ever built. It was destroyed at Antonov Airport (Hostomel) during fighting on 27 February 2022, matching the description's \"February 2022\" detail. All material claims (year, country, designer/purpose, specs, fate) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/Antonov_An-225_Mriya",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Declaration_of_Independence_of_Ukraine"
+    "source": "https://en.wikipedia.org/wiki/Antonov_An-225_Mriya"
   },
   {
     "year": 1991,
@@ -123,6 +134,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Belovezha_Accords"
+  },
+  {
+    "year": 1991,
+    "title": "Ukraine Declares Independence from the Soviet Union",
+    "verdict": "TRUE",
+    "reason": "Date August 24 1991, 90.3% referendum result, Kravchuk elected first president — all confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Date August 24 1991, 90.3% referendum result, Kravchuk elected first president — all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Declaration_of_Independence_of_Ukraine",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Declaration_of_Independence_of_Ukraine"
   },
   {
     "year": 1994,
@@ -251,31 +287,6 @@
   },
   {
     "year": 2006,
-    "title": "Verkhovna Rada Recognizes Holodomor as Genocide",
-    "verdict": "TRUE",
-    "reason": "November 2006 law confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "November 2006 law confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Holodomor_in_modern_politics",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Holodomor_in_modern_politics"
-  },
-  {
-    "year": 2006,
     "title": "Russia–Ukraine Gas Dispute: First Supply Cutoff",
     "verdict": "TRUE",
     "reason": "January 1 2006 cutoff, settlement January 4 — confirmed.",
@@ -298,6 +309,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2005%E2%80%932006_Russia%E2%80%93Ukraine_gas_dispute"
+  },
+  {
+    "year": 2006,
+    "title": "Verkhovna Rada Recognizes Holodomor as Genocide",
+    "verdict": "TRUE",
+    "reason": "November 2006 law confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 2006 law confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Holodomor_in_modern_politics",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Holodomor_in_modern_politics"
   },
   {
     "year": 2008,
@@ -351,31 +387,6 @@
   },
   {
     "year": 2010,
-    "title": "Yanukovych Elected President on Pro-Russia Platform",
-    "verdict": "TRUE",
-    "reason": "February 2010 runoff, 3.5pp margin vs Tymoshenko, deemed free and fair — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "February 2010 runoff, 3.5pp margin vs Tymoshenko, deemed free and fair — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2010_Ukrainian_presidential_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2010_Ukrainian_presidential_election"
-  },
-  {
-    "year": 2010,
     "title": "Kharkiv Pact: Russian Black Sea Fleet Lease Extended to 2042",
     "verdict": "TRUE",
     "reason": "April 21 2010, 25-year extension for discounted gas — confirmed.",
@@ -398,6 +409,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Kharkiv_Pact"
+  },
+  {
+    "year": 2010,
+    "title": "Yanukovych Elected President on Pro-Russia Platform",
+    "verdict": "TRUE",
+    "reason": "February 2010 runoff, 3.5pp margin vs Tymoshenko, deemed free and fair — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 2010 runoff, 3.5pp margin vs Tymoshenko, deemed free and fair — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2010_Ukrainian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2010_Ukrainian_presidential_election"
   },
   {
     "year": 2013,
@@ -426,9 +462,9 @@
   },
   {
     "year": 2014,
-    "title": "Revolution of Dignity: Yanukovych Ousted",
+    "title": "Donbas War Begins: Russia-Backed Separatists Seize Eastern Ukraine",
     "verdict": "TRUE",
-    "reason": "108 protesters/13 police killed Feb 18–20 confirmed. Yanukovych fled night of Feb 21 after signing peace deal — confirmed. Parliament removal confirmed.",
+    "reason": "April 2014 ATO launch, 14,000+ deaths by 2022 — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -438,8 +474,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "108 protesters/13 police killed Feb 18–20 confirmed. Yanukovych fled night of Feb 21 after signing peace deal — confirmed. Parliament removal confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Revolution_of_Dignity",
+        "reason": "April 2014 ATO launch, 14,000+ deaths by 2022 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/War_in_Donbas",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -447,32 +483,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Revolution_of_Dignity"
-  },
-  {
-    "year": 2014,
-    "title": "Russia Annexes Crimea",
-    "verdict": "TRUE",
-    "reason": "March 16 referendum, March 18 annexation formalized, UN vote 100–11 — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "March 16 referendum, March 18 annexation formalized, UN vote 100–11 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2014_Russian_annexation_of_Crimea",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2014_Russian_annexation_of_Crimea"
+    "source": "https://en.wikipedia.org/wiki/War_in_Donbas"
   },
   {
     "year": 2014,
@@ -498,31 +509,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/European_Union%E2%80%93Ukraine_Association_Agreement"
-  },
-  {
-    "year": 2014,
-    "title": "Donbas War Begins: Russia-Backed Separatists Seize Eastern Ukraine",
-    "verdict": "TRUE",
-    "reason": "April 2014 ATO launch, 14,000+ deaths by 2022 — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "April 2014 ATO launch, 14,000+ deaths by 2022 — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/War_in_Donbas",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/War_in_Donbas"
   },
   {
     "year": 2014,
@@ -600,6 +586,56 @@
     "source": "https://en.wikipedia.org/wiki/Minsk_agreements"
   },
   {
+    "year": 2014,
+    "title": "Revolution of Dignity: Yanukovych Ousted",
+    "verdict": "TRUE",
+    "reason": "108 protesters/13 police killed Feb 18–20 confirmed. Yanukovych fled night of Feb 21 after signing peace deal — confirmed. Parliament removal confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "108 protesters/13 police killed Feb 18–20 confirmed. Yanukovych fled night of Feb 21 after signing peace deal — confirmed. Parliament removal confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Revolution_of_Dignity",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Revolution_of_Dignity"
+  },
+  {
+    "year": 2014,
+    "title": "Russia Annexes Crimea",
+    "verdict": "TRUE",
+    "reason": "March 16 referendum, March 18 annexation formalized, UN vote 100–11 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 16 referendum, March 18 annexation formalized, UN vote 100–11 — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2014_Russian_annexation_of_Crimea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2014_Russian_annexation_of_Crimea"
+  },
+  {
     "year": 2015,
     "title": "Minsk II Agreement Signed Under German–French Mediation",
     "verdict": "TRUE",
@@ -648,6 +684,206 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2019_Ukrainian_presidential_election"
+  },
+  {
+    "year": 2022,
+    "title": "Black Sea Grain Initiative Signed, Unblocking Ukrainian Exports",
+    "verdict": "TRUE",
+    "reason": "July 22 2022, Istanbul signing, three ports confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 22 2022, Istanbul signing, three ports confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Black_Sea_Grain_Initiative",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Black_Sea_Grain_Initiative"
+  },
+  {
+    "year": 2022,
+    "title": "Bucha Massacre Revealed: War Crimes Evidence Triggers International Response",
+    "verdict": "TRUE",
+    "reason": "April 2–4 2022, 450+ bodies, ICC investigations — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 2–4 2022, 450+ bodies, ICC investigations — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Bucha_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Bucha_massacre"
+  },
+  {
+    "year": 2022,
+    "title": "Crimean Bridge Attacked, Partially Destroyed",
+    "verdict": "TRUE",
+    "reason": "October 8 2022 truck bomb, two road spans collapsed — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 8 2022 truck bomb, two road spans collapsed — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2022_Crimean_Bridge_explosion",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2022_Crimean_Bridge_explosion"
+  },
+  {
+    "year": 2022,
+    "title": "EU Grants Ukraine Candidate Status",
+    "verdict": "TRUE",
+    "reason": "June 23 2022, unanimous European Council vote — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 23 2022, unanimous European Council vote — confirmed.",
+        "source": "https://www.consilium.europa.eu/en/press/press-releases/2022/06/23/european-council-conclusions-on-ukraine-the-membership-applications-of-ukraine-the-republic-of-moldova-and-georgia-western-balkans-and-external-relations-23-june-2022/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.consilium.europa.eu/en/press/press-releases/2022/06/23/european-council-conclusions-on-ukraine-the-membership-applications-of-ukraine-the-republic-of-moldova-and-georgia-western-balkans-and-external-relations-23-june-2022/"
+  },
+  {
+    "year": 2022,
+    "title": "Kharkiv Counteroffensive: Ukraine Recaptures 12,000 km²",
+    "verdict": "TRUE",
+    "reason": "Launched September 6 2022, 12,000 km² recovered including Balakliya/Kupiansk/Izyum — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Launched September 6 2022, 12,000 km² recovered including Balakliya/Kupiansk/Izyum — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2022_Kharkiv_counteroffensive",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2022_Kharkiv_counteroffensive"
+  },
+  {
+    "year": 2022,
+    "title": "Mariupol Falls After Azovstal Siege",
+    "verdict": "TRUE",
+    "reason": "May 20 2022, 86-day siege, 2,439 defenders surrendered — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 20 2022, 86-day siege, 2,439 defenders surrendered — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Siege_of_Mariupol",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Siege_of_Mariupol"
+  },
+  {
+    "year": 2022,
+    "title": "Russia Captures Zaporizhzhia Nuclear Plant",
+    "verdict": "TRUE",
+    "reason": "March 4 2022, Europe's largest plant, first military occupation of operational nuclear plant — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 4 2022, Europe's largest plant, first military occupation of operational nuclear plant — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Zaporizhzhia_Nuclear_Power_Plant_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Zaporizhzhia_Nuclear_Power_Plant_crisis"
+  },
+  {
+    "year": 2022,
+    "title": "Russia Illegally Annexes Four Ukrainian Oblasts",
+    "verdict": "TRUE",
+    "reason": "September 30 2022, UN vote 143–5 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 30 2022, UN vote 143–5 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Russian_annexation_of_Donetsk,_Kherson,_Luhansk_and_Zaporizhzhia_oblasts",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Russian_annexation_of_Donetsk,_Kherson,_Luhansk_and_Zaporizhzhia_oblasts"
   },
   {
     "year": 2022,
@@ -701,156 +937,6 @@
   },
   {
     "year": 2022,
-    "title": "Russia Captures Zaporizhzhia Nuclear Plant",
-    "verdict": "TRUE",
-    "reason": "March 4 2022, Europe's largest plant, first military occupation of operational nuclear plant — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "March 4 2022, Europe's largest plant, first military occupation of operational nuclear plant — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Zaporizhzhia_Nuclear_Power_Plant_crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Zaporizhzhia_Nuclear_Power_Plant_crisis"
-  },
-  {
-    "year": 2022,
-    "title": "Bucha Massacre Revealed: War Crimes Evidence Triggers International Response",
-    "verdict": "TRUE",
-    "reason": "April 2–4 2022, 450+ bodies, ICC investigations — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "April 2–4 2022, 450+ bodies, ICC investigations — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Bucha_massacre",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Bucha_massacre"
-  },
-  {
-    "year": 2022,
-    "title": "Mariupol Falls After Azovstal Siege",
-    "verdict": "TRUE",
-    "reason": "May 20 2022, 86-day siege, 2,439 defenders surrendered — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "May 20 2022, 86-day siege, 2,439 defenders surrendered — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Siege_of_Mariupol",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Siege_of_Mariupol"
-  },
-  {
-    "year": 2022,
-    "title": "EU Grants Ukraine Candidate Status",
-    "verdict": "TRUE",
-    "reason": "June 23 2022, unanimous European Council vote — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "June 23 2022, unanimous European Council vote — confirmed.",
-        "source": "https://www.consilium.europa.eu/en/press/press-releases/2022/06/23/european-council-conclusions-on-ukraine-the-membership-applications-of-ukraine-the-republic-of-moldova-and-georgia-western-balkans-and-external-relations-23-june-2022/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.consilium.europa.eu/en/press/press-releases/2022/06/23/european-council-conclusions-on-ukraine-the-membership-applications-of-ukraine-the-republic-of-moldova-and-georgia-western-balkans-and-external-relations-23-june-2022/"
-  },
-  {
-    "year": 2022,
-    "title": "Black Sea Grain Initiative Signed, Unblocking Ukrainian Exports",
-    "verdict": "TRUE",
-    "reason": "July 22 2022, Istanbul signing, three ports confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "July 22 2022, Istanbul signing, three ports confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Black_Sea_Grain_Initiative",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Black_Sea_Grain_Initiative"
-  },
-  {
-    "year": 2022,
-    "title": "Kharkiv Counteroffensive: Ukraine Recaptures 12,000 km²",
-    "verdict": "TRUE",
-    "reason": "Launched September 6 2022, 12,000 km² recovered including Balakliya/Kupiansk/Izyum — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Launched September 6 2022, 12,000 km² recovered including Balakliya/Kupiansk/Izyum — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2022_Kharkiv_counteroffensive",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2022_Kharkiv_counteroffensive"
-  },
-  {
-    "year": 2022,
     "title": "Ukraine Formally Applies for NATO Membership",
     "verdict": "TRUE",
     "reason": "September 30 2022, same day as four-oblast annexation announcement — confirmed.",
@@ -873,56 +959,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Ukraine%E2%80%93NATO_relations"
-  },
-  {
-    "year": 2022,
-    "title": "Russia Illegally Annexes Four Ukrainian Oblasts",
-    "verdict": "TRUE",
-    "reason": "September 30 2022, UN vote 143–5 confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "September 30 2022, UN vote 143–5 confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Russian_annexation_of_Donetsk,_Kherson,_Luhansk_and_Zaporizhzhia_oblasts",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Russian_annexation_of_Donetsk,_Kherson,_Luhansk_and_Zaporizhzhia_oblasts"
-  },
-  {
-    "year": 2022,
-    "title": "Crimean Bridge Attacked, Partially Destroyed",
-    "verdict": "TRUE",
-    "reason": "October 8 2022 truck bomb, two road spans collapsed — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "October 8 2022 truck bomb, two road spans collapsed — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2022_Crimean_Bridge_explosion",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2022_Crimean_Bridge_explosion"
   },
   {
     "year": 2022,
@@ -1001,31 +1037,6 @@
   },
   {
     "year": 2024,
-    "title": "US Congress Approves $61 Billion Ukraine Aid Package After Six-Month Delay",
-    "verdict": "TRUE",
-    "reason": "April 20 House vote 311–112, Senate April 23 79–18 — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "April 20 House vote 311–112, Senate April 23 79–18 — confirmed.",
-        "source": "https://www.pbs.org/newshour/politics/house-passes-new-61-billion-aid-package-for-ukraine-after-long-congressional-stalemate",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.pbs.org/newshour/politics/house-passes-new-61-billion-aid-package-for-ukraine-after-long-congressional-stalemate"
-  },
-  {
-    "year": 2024,
     "title": "Ukraine Launches Kursk Incursion into Russian Territory",
     "verdict": "TRUE",
     "reason": "August 6 2024, ~1,000 km² seized, first foreign occupation of Russian territory since WWII — confirmed.",
@@ -1048,6 +1059,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2024_Kursk_offensive"
+  },
+  {
+    "year": 2024,
+    "title": "US Congress Approves $61 Billion Ukraine Aid Package After Six-Month Delay",
+    "verdict": "TRUE",
+    "reason": "April 20 House vote 311–112, Senate April 23 79–18 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 20 House vote 311–112, Senate April 23 79–18 — confirmed.",
+        "source": "https://www.pbs.org/newshour/politics/house-passes-new-61-billion-aid-package-for-ukraine-after-long-congressional-stalemate",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.pbs.org/newshour/politics/house-passes-new-61-billion-aid-package-for-ukraine-after-long-congressional-stalemate"
   },
   {
     "year": 2025,
@@ -1073,5 +1109,365 @@
       }
     ],
     "source": "https://www.pbs.org/newshour/world/ukraine-and-russia-quickly-end-their-latest-round-of-direct-peace-talks-in-istanbul"
+  },
+  {
+    "year": 2022,
+    "title": "Lyman Liberated: Ukraine Encircles and Routes Russian Forces in Donbas",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm all material elements: Ukrainian forces completed the encirclement of Lyman (a Donetsk Oblast rail/logistics hub) on October 1, 2022, one day after Putin's September 30 annexation announcement covering Donetsk Oblast. Ukrainian forces crossed the Siverskyi Donets River and closed a pincer, with Ukrainian officials (Serhii Haidai, Luhansk Oblast administration head) estimating ~5,000 Russian troops encircled — corroborated by AP/AA, Newsweek, Ukrinform, and Wikipedia's Battle of Lyman article. Russia's Defense Ministry confirmed on October 1 it was withdrawing forces \"in connection with the creation of a threat of encirclement.\" Analysts and outlets (Al Jazeera, Moscow Times) described the recapture as undermining the legitimacy of Russia's annexation declaration, matching the description's framing. The capture followed the Kharkiv counteroffensive as stated. All details (country=Ukraine, year=2022, actors, magnitude, timing, strategic significance) are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: Ukrainian forces liberated Lyman on 1 October 2022, one day after Russia's 30 September 2022 annexation announcement of Donetsk Oblast. Ukrainian forces conducted a pincer/encirclement movement across the Siverskyi Donets River. Russia's Defense Ministry confirmed withdrawal, citing \"threat of encirclement.\" An estimated ~5,000 Russian troops were reported trapped, per Ukrainian eastern-forces spokesperson Serhii Cherevatyi (widely reported by Newsweek and others). Lyman was Russia's key rail/logistics hub for northern Donetsk operations, and the event followed directly from the Kharkiv counteroffensive momentum. All material details (country, year, date, encirclement mechanism, troop estimate, timing relative to annexation, strategic significance) match independent reporting.",
+        "source": "https://www.aljazeera.com/news/2022/10/1/russia-withdraws-from-lyman-ukrainian-troops-retake-city",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material elements: Ukrainian forces completed the encirclement of Lyman (a Donetsk Oblast rail/logistics hub) on October 1, 2022, one day after Putin's September 30 annexation announcement covering Donetsk Oblast. Ukrainian forces crossed the Siverskyi Donets River and closed a pincer, with Ukrainian officials (Serhii Haidai, Luhansk Oblast administration head) estimating ~5,000 Russian troops encircled — corroborated by AP/AA, Newsweek, Ukrinform, and Wikipedia's Battle of Lyman article. Russia's Defense Ministry confirmed on October 1 it was withdrawing forces \"in connection with the creation of a threat of encirclement.\" Analysts and outlets (Al Jazeera, Moscow Times) described the recapture as undermining the legitimacy of Russia's annexation declaration, matching the description's framing. The capture followed the Kharkiv counteroffensive as stated. All details (country=Ukraine, year=2022, actors, magnitude, timing, strategic significance) are corroborated.",
+        "source": "https://www.aljazeera.com/news/2022/10/1/russia-withdraws-from-lyman-ukrainian-troops-retake-city",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2022/10/1/russia-withdraws-from-lyman-ukrainian-troops-retake-city"
+  },
+  {
+    "year": 2024,
+    "title": "North Korea Deploys 10,000 Troops to Fight Alongside Russia Against Ukraine",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm the core event. The Pentagon (Oct 28, 2024, per DoD spokeswoman Sabrina Singh) stated North Korea sent approximately 10,000 troops to Russia to train and fight, with concern they would be used in combat in Russia's Kursk region against Ukraine's incursion force. NATO Secretary-General Mark Rutte confirmed North Korean troops had deployed to Kursk, calling it \"a significant escalation\" and \"a dangerous expansion of Russia's war.\" Ukrainian military intelligence (HUR) reported the first DPRK soldiers arrived in Kursk Oblast around October 25, 2024. This is widely documented as the first deployment of North Korean ground combat forces to an active European theater. DPRK troops suffered substantial casualties fighting Ukrainian forces in Kursk (estimates range from ~6,000 per South Korean/British intelligence to Ukrainian HUR claims of 7,000+, with Zelensky claiming roughly one-third of ~12,000 troops killed). The deployment is widely reported in contemporaneous coverage as a contributing factor to Biden's November 2024 authorization of ATACMS strikes inside Russia. All material details (actors, magnitude ~10,000, timing late Oct 2024, Kursk theater, multi-source confirmation, casualties) check out against the description.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources (NATO Secretary-General Rutte, US Department of Defense/Pentagon, Ukrainian military intelligence, and multiple news outlets) confirm that starting around October 25-31, 2024, approximately 10,000-11,000 North Korean troops deployed to Russia's Kursk Oblast to fight against Ukraine's Kursk incursion force. This was widely reported as the first deployment of DPRK ground forces to an active European theater. NATO called it a \"significant escalation.\" Casualty reports later confirmed heavy DPRK losses (South Korean/British intelligence estimated ~6,000 casualties; Ukrainian intelligence later claimed 7,000+ out of ~11,000 deployed). Biden's November 17, 2024 authorization of ATACMS strikes inside Russia was explicitly reported by multiple outlets (Washington Post, CNN, NPR, NBC, Foreign Policy) as a direct response to the North Korean troop deployment to Kursk. All material details (magnitude, actors, location, timing, consequences) in the description are corroborated.",
+        "source": "https://www.war.gov/News/News-Stories/Article/Article/3955757/pentagon-says-10k-north-korean-troops-in-kursk-oblast/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the core event. The Pentagon (Oct 28, 2024, per DoD spokeswoman Sabrina Singh) stated North Korea sent approximately 10,000 troops to Russia to train and fight, with concern they would be used in combat in Russia's Kursk region against Ukraine's incursion force. NATO Secretary-General Mark Rutte confirmed North Korean troops had deployed to Kursk, calling it \"a significant escalation\" and \"a dangerous expansion of Russia's war.\" Ukrainian military intelligence (HUR) reported the first DPRK soldiers arrived in Kursk Oblast around October 25, 2024. This is widely documented as the first deployment of North Korean ground combat forces to an active European theater. DPRK troops suffered substantial casualties fighting Ukrainian forces in Kursk (estimates range from ~6,000 per South Korean/British intelligence to Ukrainian HUR claims of 7,000+, with Zelensky claiming roughly one-third of ~12,000 troops killed). The deployment is widely reported in contemporaneous coverage as a contributing factor to Biden's November 2024 authorization of ATACMS strikes inside Russia. All material details (actors, magnitude ~10,000, timing late Oct 2024, Kursk theater, multi-source confirmation, casualties) check out against the description.",
+        "source": "https://foreignpolicy.com/2024/10/29/north-korea-troops-russia-kursk-nato-ukraine-us/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://foreignpolicy.com/2024/10/29/north-korea-troops-russia-kursk-nato-ukraine-us/"
+  },
+  {
+    "year": 2023,
+    "title": "UK Delivers Storm Shadow Cruise Missiles to Ukraine",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: on 11 May 2023, UK Defence Secretary Ben Wallace announced the UK was supplying Storm Shadow air-launched cruise missiles to Ukraine — the first Western country to provide this class of long-range (>250km) deep-strike weapon. CNN reported the delivery on the same date. UK confirmed on 18 May that Ukraine had already used them. Subsequent reporting (militarnyi.com, ukdefencejournal.org.uk, IISS) confirms Ukraine used Storm Shadow to strike Russian command-and-control nodes, logistics hubs, and headquarters in occupied Crimea (e.g., Chonhar bridge June 2023, Black Sea Fleet HQ Sevastopol September 2023), matching the description's claim about targeting rear positions and C2 nodes in Crimea. All material details (country=UK/Ukraine, year=2023, missile type=Storm Shadow, range >250km, first Western long-range cruise missile, use against Crimea C2 nodes) are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: UK Defence Secretary Ben Wallace announced on 11 May 2023 that the UK would supply Storm Shadow long-range (250+ km) air-launched cruise missiles to Ukraine — the first Western country to provide this class of long-range cruise missile. CNN's 11 May 2023 report frames it explicitly as the UK becoming the first Western country to supply Ukraine with long-range cruise missiles. IISS analysis (May 2023) confirms Wallace's announcement and the >250km range, and notes the missiles give Ukraine reach against high-value targets such as command-and-control nodes and logistics hubs in occupied territory. UK confirmed successful combat use by 18 May 2023. Subsequent reporting throughout 2023 (e.g., the September 2023 strike on the Russian Black Sea Fleet HQ in Sevastopol, Crimea, and other strikes on rear logistics/command targets in Crimea) confirms Ukraine used Storm Shadow against Russian command-and-control and rear positions in occupied Crimea as described. All material details (actor=UK, recipient=Ukraine, year=2023, date ~11 May, capability=long-range cruise missile >250km, first Western supplier of this weapon class, subsequent use against C2 nodes in Crimea) check out.",
+        "source": "https://www.cnn.com/2023/05/11/politics/uk-storm-shadow-cruise-missiles-ukraine/index.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: on 11 May 2023, UK Defence Secretary Ben Wallace announced the UK was supplying Storm Shadow air-launched cruise missiles to Ukraine — the first Western country to provide this class of long-range (>250km) deep-strike weapon. CNN reported the delivery on the same date. UK confirmed on 18 May that Ukraine had already used them. Subsequent reporting (militarnyi.com, ukdefencejournal.org.uk, IISS) confirms Ukraine used Storm Shadow to strike Russian command-and-control nodes, logistics hubs, and headquarters in occupied Crimea (e.g., Chonhar bridge June 2023, Black Sea Fleet HQ Sevastopol September 2023), matching the description's claim about targeting rear positions and C2 nodes in Crimea. All material details (country=UK/Ukraine, year=2023, missile type=Storm Shadow, range >250km, first Western long-range cruise missile, use against Crimea C2 nodes) are corroborated.",
+        "source": "https://www.cnn.com/2023/05/11/politics/uk-storm-shadow-cruise-missiles-ukraine/index.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cnn.com/2023/05/11/politics/uk-storm-shadow-cruise-missiles-ukraine/index.html"
+  },
+  {
+    "year": 2015,
+    "title": "Battle of Debaltseve: Russia Overruns Ukrainian Salient After Minsk II",
+    "verdict": "PARTIAL",
+    "reason": "Core event confirmed by multiple independent sources: Russian/separatist forces besieged and encircled Debaltseve (a Ukrainian-held road/rail salient between DPR and LPR territory) from mid-January to 18 February 2015, continuing the assault despite the Minsk II ceasefire nominally taking effect 15 February 2015 (separatist commander Zakharchenko said Minsk II didn't apply to Debaltseve); Ukrainian forces withdrew under fire to Artemivsk with casualties in the hundreds. However, two magnitude/scope details in the description do not hold up against the best-sourced figures: (1) '500 captured' is overstated — the Ukrainian General Staff's official count was 90-121 captured (with ~81-90 missing), and even the highest rebel claims cited in contemporary press were ~300, not 500; (2) calling it 'the single deadliest engagement of the 2014-2022 phase' is contradicted by mainstream sourcing — Wikipedia's Battle of Debaltseve infobox cites 179-267 Ukrainian killed (highest claim), while the Battle of Ilovaisk (August 2014) is documented with higher Ukrainian death tolls (366 per official Ukrainian military count, up to 1,000+ per a Ukrainian parliamentary commission estimate), making Ilovaisk the deadlier engagement by most citations, not Debaltseve. Country, year, and the core narrative (Minsk-II-defying encirclement and forced withdrawal) are correct; the casualty/capture magnitude and the 'deadliest' superlative are the material inaccuracies.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core event confirmed: from mid-January to 18 February 2015, Russian-backed separatist (with Russian regular support) forces encircled the Debaltseve salient — a key road/rail junction — and the siege continued despite the Minsk II ceasefire nominally starting 15 February 2015 (separatist commander Zakharchenko even claimed Debaltseve was excluded from it). Ukrainian forces withdrew under fire on 18 February, and multiple sources (Small Wars Journal, Jamestown, Wikipedia) describe it as the single deadliest engagement for Ukraine's army in that phase of the Donbas war. 'Hundreds killed' is well supported (official tallies range 136-267 KIA depending on when counted, with soldier testimony suggesting the true toll was 'clearly in the hundreds'). However, the '500 captured' figure is on the high end of disputed estimates: Ukraine's own government figures put POWs at ~112 (104 later released), while separatist/press claims at the time ranged from ~300 up to 500 — the higher number appears rooted in separatist propaganda rather than the now-generally-accepted count. Country (Ukraine) and year (2015) are both correct and the overall narrative holds, but the captured-troops magnitude is materially overstated versus the best-documented figures, so this is a PARTIAL rather than a clean TRUE.",
+        "source": "https://en.wikipedia.org/wiki/Battle_of_Debaltseve",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core event confirmed by multiple independent sources: Russian/separatist forces besieged and encircled Debaltseve (a Ukrainian-held road/rail salient between DPR and LPR territory) from mid-January to 18 February 2015, continuing the assault despite the Minsk II ceasefire nominally taking effect 15 February 2015 (separatist commander Zakharchenko said Minsk II didn't apply to Debaltseve); Ukrainian forces withdrew under fire to Artemivsk with casualties in the hundreds. However, two magnitude/scope details in the description do not hold up against the best-sourced figures: (1) '500 captured' is overstated — the Ukrainian General Staff's official count was 90-121 captured (with ~81-90 missing), and even the highest rebel claims cited in contemporary press were ~300, not 500; (2) calling it 'the single deadliest engagement of the 2014-2022 phase' is contradicted by mainstream sourcing — Wikipedia's Battle of Debaltseve infobox cites 179-267 Ukrainian killed (highest claim), while the Battle of Ilovaisk (August 2014) is documented with higher Ukrainian death tolls (366 per official Ukrainian military count, up to 1,000+ per a Ukrainian parliamentary commission estimate), making Ilovaisk the deadlier engagement by most citations, not Debaltseve. Country, year, and the core narrative (Minsk-II-defying encirclement and forced withdrawal) are correct; the casualty/capture magnitude and the 'deadliest' superlative are the material inaccuracies.",
+        "source": "https://en.wikipedia.org/wiki/Battle_of_Debaltseve",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Battle_of_Debaltseve"
+  },
+  {
+    "year": 2022,
+    "title": "Azovstal POW Exchange: 215 Defenders Freed Including Azov Commanders",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm all material details: on 21 September 2022, Russia released 215 Ukrainian/foreign POWs (including 108 Azov Regiment fighters from Azovstal) in exchange for Viktor Medvedchuk (Putin's ally) and 55 Russian POWs, mediated by Turkey and Saudi Arabia. Separately, 5 senior Azovstal commanders (Prokopenko, Palamar, Volynskyi, Shleha, Khomenko) were transferred to Turkey to remain until war's end, per agreement with Erdogan. Described by sources as the largest prisoner exchange since the invasion began. All figures, actors, dates, and scope match the event description exactly.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm all material details: on 21 September 2022, Russia released 215 Ukrainian POWs (108 from the Azov Regiment) in exchange for Viktor Medvedchuk and 55 Russian POWs, and separately transferred five senior Azov/Azovstal commanders (Denys Prokopenko, Sviatoslav Palamar, Serhiy Volynskyi, Oleh Khomenko, Denys Shlega) to Turkey under a guarantee they remain there until war's end. This was widely reported as the largest prisoner exchange of the war to that point.",
+        "source": "https://www.rferl.org/a/ukraine-russia-prisoner-swap-azovstal/32045591.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material details: on 21 September 2022, Russia released 215 Ukrainian/foreign POWs (including 108 Azov Regiment fighters from Azovstal) in exchange for Viktor Medvedchuk (Putin's ally) and 55 Russian POWs, mediated by Turkey and Saudi Arabia. Separately, 5 senior Azovstal commanders (Prokopenko, Palamar, Volynskyi, Shleha, Khomenko) were transferred to Turkey to remain until war's end, per agreement with Erdogan. Described by sources as the largest prisoner exchange since the invasion began. All figures, actors, dates, and scope match the event description exactly.",
+        "source": "https://www.rferl.org/a/ukraine-russia-prisoner-swap-azovstal/32045591.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.rferl.org/a/ukraine-russia-prisoner-swap-azovstal/32045591.html"
+  },
+  {
+    "year": 2022,
+    "title": "Zelensky Suspends 11 Opposition Political Parties Under Martial Law",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: on 20 March 2022 Ukraine's National Security and Defense Council (announced by Zelensky) suspended activities of 11 political parties for the duration of martial law, citing Russia ties, including Opposition Platform — For Life (44 seats, second-largest party, led by Medvedchuk), Shariy Party, Opposition Bloc, Left Opposition, Union of Left Forces, Nashi, State, Progressive Socialist Party, Socialist Party, Socialists Party, and Volodymyr Saldo Bloc. The Ukrainian parliament (Rada) formalized/passed a law banning these parties in May 2022, which Zelensky signed. Separately, in March 2022 Zelensky signed a decree merging all national TV channels' programming into a single unified telethon ('Yedyni Novyny'/United News) under martial law. The European Commission has publicly criticized this state-run telethon and called for restoration of a pluralistic media landscape, corroborating the civil-liberties-concerns detail. All material elements of the description (date, country, 11 parties, the 44-seat party by name, May parliamentary formalization, TV channel merger, EU Commission concern) are independently corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Axios, Al Jazeera, Times of Israel, Ukrinform, Kyiv Post) confirm that on 20 March 2022, Ukraine's National Security and Defense Council, under Zelensky, suspended the activities of 11 political parties citing ties to Russia, including the 44-seat Opposition Platform — For Life (Ukraine's second-largest party). The Verkhovna Rada formalized the ban with a law adopted 3 May 2022 (in force 18 May 2022), matching the description's \"parliament formalized the bans in May.\" Independently, on the same day (20 March 2022) Zelensky signed a decree merging all national TV channels into a single unified broadcast platform (\"United News\") citing martial law and a \"unified information policy\" — confirmed by multiple outlets (Advanced Television, BroadbandTVNews, Al Arabiya, Deadline). The claim that the European Commission specifically acknowledged civil liberties concerns is a minor imprecision — the sharpest institutional pushback found was from European Parliament members and the Venice Commission rather than the European Commission by name — but this does not change the substance, country, or year of the core event, which is corroborated by numerous independent, non-overlapping sources.",
+        "source": "https://www.axios.com/2022/03/20/ukraine-ban-political-parties-russian-ties",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: on 20 March 2022 Ukraine's National Security and Defense Council (announced by Zelensky) suspended activities of 11 political parties for the duration of martial law, citing Russia ties, including Opposition Platform — For Life (44 seats, second-largest party, led by Medvedchuk), Shariy Party, Opposition Bloc, Left Opposition, Union of Left Forces, Nashi, State, Progressive Socialist Party, Socialist Party, Socialists Party, and Volodymyr Saldo Bloc. The Ukrainian parliament (Rada) formalized/passed a law banning these parties in May 2022, which Zelensky signed. Separately, in March 2022 Zelensky signed a decree merging all national TV channels' programming into a single unified telethon ('Yedyni Novyny'/United News) under martial law. The European Commission has publicly criticized this state-run telethon and called for restoration of a pluralistic media landscape, corroborating the civil-liberties-concerns detail. All material elements of the description (date, country, 11 parties, the 44-seat party by name, May parliamentary formalization, TV channel merger, EU Commission concern) are independently corroborated.",
+        "source": "https://www.axios.com/2022/03/20/ukraine-ban-political-parties-russian-ties",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.axios.com/2022/03/20/ukraine-ban-political-parties-russian-ties"
+  },
+  {
+    "year": 2023,
+    "title": "US Secretly Delivers ATACMS Long-Range Missiles to Ukraine",
+    "verdict": "TRUE",
+    "reason": "Multiple independent reputable sources confirm: Biden secretly approved ATACMS transfer to Ukraine in mid-September 2023 (told Zelensky at White House Sept 21), missiles delivered quietly \"in recent days\" before mid-October to prevent Russia from repositioning assets, and Ukraine first used them in combat on 17 October 2023 to strike Russian-controlled airfields near occupied Berdyansk (Zaporizhzhia Oblast) and Luhansk, destroying at least 9 helicopters and other equipment/air defenses - the largest single loss of Russian helicopters in the war. Missile range cited as 165-186 km, consistent with the ~160 km figure in the description. All material details (country, year, actors, secrecy motive, targets, date of first use) match precisely.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent reputable sources (CNN, Washington Post, C4ISRNET, RBC-Ukraine, Reuters via Kyiv Post) confirm: the US secretly transferred ATACMS (~160km range, M39 Block 1 variant) to Ukraine in September 2023, with Biden informing Zelensky on Sept 21 2023; the transfer was kept secret specifically to prevent Russia from repositioning assets; Ukraine first used ATACMS in combat on 17 October 2023, striking Russian-controlled airfields at occupied Berdyansk (Zaporizhzhia Oblast) and Luhansk, destroying at least 9 helicopters and other equipment. All material details (country, year, secrecy motive, ~160km range, first-use date, specific targets) match the event description.",
+        "source": "https://www.washingtonpost.com/world/2023/10/17/atacms-missile-ukraine-russia-war/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent reputable sources confirm: Biden secretly approved ATACMS transfer to Ukraine in mid-September 2023 (told Zelensky at White House Sept 21), missiles delivered quietly \"in recent days\" before mid-October to prevent Russia from repositioning assets, and Ukraine first used them in combat on 17 October 2023 to strike Russian-controlled airfields near occupied Berdyansk (Zaporizhzhia Oblast) and Luhansk, destroying at least 9 helicopters and other equipment/air defenses - the largest single loss of Russian helicopters in the war. Missile range cited as 165-186 km, consistent with the ~160 km figure in the description. All material details (country, year, actors, secrecy motive, targets, date of first use) match precisely.",
+        "source": "https://www.washingtonpost.com/world/2023/10/17/atacms-missile-ukraine-russia-war/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.washingtonpost.com/world/2023/10/17/atacms-missile-ukraine-russia-war/"
+  },
+  {
+    "year": 2024,
+    "title": "Russia Destroys Half of Ukraine's Power Generation Capacity in Spring–Winter Campaign",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm the campaign materially as described. IEA's \"Ukraine's Energy Security and the Coming Winter\" report confirms ~9 GW of generation capacity lost March-May 2024 (roughly half of winter peak demand), plus a projected 6 GW winter 2024-25 supply shortfall. Kyiv Independent reports Zelensky stating at the UN General Assembly (Sept 2024) that Russia had destroyed all Ukrainian thermal power plants and nearly all hydroelectric capacity. CNN/Bloomberg/Power Technology/Wikipedia confirm the Trypilska thermal power plant (largest in Kyiv Oblast, 1800 MW) was completely destroyed in an April 11, 2024 strike using 82 missiles/drones including Kinzhal hypersonics. UN reporting (Matthias Schmale, UN Resident/Humanitarian Coordinator in Ukraine, mid-Nov 2024) cited ~65% of Ukraine's energy production capacity destroyed. All key figures (9 GW, half capacity, 15 thermal plants, Trypilska, IEA 6GW shortfall, UN 65% figure) are corroborated by independent non-overlapping sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material elements. Russia launched a systematic aerial campaign against Ukraine's energy infrastructure starting March 22, 2024 (nine coordinated waves through August, continuing into winter), using missiles and Shahed drones. All 15 of Ukraine's thermal power plants were damaged or destroyed by year end, per Zelensky's own statement (Kyiv Independent), with thermal's share of the energy mix collapsing from 23.5% to ~5%. Approximately 9 GW of generation capacity was destroyed — roughly half of Ukraine's ~18 GW pre-war/peak-winter capacity — corroborated by IEA and multiple outlets (Reuters/CNN citing similar figures). The Trypilska coal-fired plant near Kyiv, the largest in Kyiv Oblast supplying ~50% of Kyiv's electricity, was destroyed in an April 11, 2024 strike (confirmed by Bloomberg and CNN). Kharkiv's heating infrastructure was severely hit as part of a nationwide pattern in which 18 large CHP plants and 800+ boiler houses were damaged/destroyed. The IEA's September 2024 report \"Ukraine's Energy Security and the Coming Winter\" explicitly projected a 6 GW winter supply shortfall. UN humanitarian coordinator Matthias Schmale stated in November 2024 that ~65% of Ukraine's energy production capacity had been destroyed, calling the 2024-25 winter potentially the hardest of the war. Every specific figure and claim in the event description is independently corroborated.",
+        "source": "https://www.iea.org/reports/ukraines-energy-security-and-the-coming-winter/ukraines-energy-system-under-attack",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the campaign materially as described. IEA's \"Ukraine's Energy Security and the Coming Winter\" report confirms ~9 GW of generation capacity lost March-May 2024 (roughly half of winter peak demand), plus a projected 6 GW winter 2024-25 supply shortfall. Kyiv Independent reports Zelensky stating at the UN General Assembly (Sept 2024) that Russia had destroyed all Ukrainian thermal power plants and nearly all hydroelectric capacity. CNN/Bloomberg/Power Technology/Wikipedia confirm the Trypilska thermal power plant (largest in Kyiv Oblast, 1800 MW) was completely destroyed in an April 11, 2024 strike using 82 missiles/drones including Kinzhal hypersonics. UN reporting (Matthias Schmale, UN Resident/Humanitarian Coordinator in Ukraine, mid-Nov 2024) cited ~65% of Ukraine's energy production capacity destroyed. All key figures (9 GW, half capacity, 15 thermal plants, Trypilska, IEA 6GW shortfall, UN 65% figure) are corroborated by independent non-overlapping sources.",
+        "source": "https://www.iea.org/reports/ukraines-energy-security-and-the-coming-winter/ukraines-energy-system-under-attack",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.iea.org/reports/ukraines-energy-security-and-the-coming-winter/ukraines-energy-system-under-attack"
+  },
+  {
+    "year": 2014,
+    "title": "Donetsk and Luhansk People's Republics Declare Independence",
+    "verdict": "TRUE",
+    "reason": "Independently corroborated: Russian-backed armed groups began seizing government buildings in Donetsk from 7 April 2014; a widely-reported sham referendum on 11 May 2014 produced a claimed ~89% vote for sovereignty (with credible reporting, e.g. from intercepted communications cited by OSW, that the figure was pre-arranged rather than counted); the Donetsk and Luhansk 'people's republics' formally declared independence on 12 May 2014 via separatist leaders Denis Pushilin and Valery Bolotov. Neither Ukraine, the US, the EU, nor Russia itself formally recognized the entities at the time, while Russia covertly supplied troops, weapons, and commanders throughout the subsequent war — all matching the description's substance, dates, and non-recognition status.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via multiple sources: pro-Russian armed groups began seizing government buildings in Donetsk starting 7 April 2014 (NPR, Wikipedia's \"2014 pro-Russian unrest in Ukraine\", France24). A referendum held 11 May 2014 produced a claimed ~89.07% vote for sovereignty in Donetsk (Wikipedia's \"2014 Donbas status referendums\", Time magazine), with reporting noting the figure was likely predetermined/falsified (Forbes). The Donetsk People's Republic and Luhansk People's Republic formally declared independence on 12 May 2014 (Al Jazeera, Wikipedia). Neither the US, EU, nor Russia recognized the entities at the time — Russia only recognized them nearly eight years later, on 21 February 2022, just before its full-scale invasion (Wikipedia's \"International recognition of the Donetsk People's Republic and the Luhansk People's Republic\"). All material details (country, year, sequence of events, non-recognition, eventual Russian backing) match the description.",
+        "source": "https://en.wikipedia.org/wiki/2014_Donbas_status_referendums",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated: Russian-backed armed groups began seizing government buildings in Donetsk from 7 April 2014; a widely-reported sham referendum on 11 May 2014 produced a claimed ~89% vote for sovereignty (with credible reporting, e.g. from intercepted communications cited by OSW, that the figure was pre-arranged rather than counted); the Donetsk and Luhansk 'people's republics' formally declared independence on 12 May 2014 via separatist leaders Denis Pushilin and Valery Bolotov. Neither Ukraine, the US, the EU, nor Russia itself formally recognized the entities at the time, while Russia covertly supplied troops, weapons, and commanders throughout the subsequent war — all matching the description's substance, dates, and non-recognition status.",
+        "source": "https://www.aljazeera.com/news/2014/5/12/ukraine-separatists-declare-independence",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2014/5/12/ukraine-separatists-declare-independence"
+  },
+  {
+    "year": 2023,
+    "title": "Bakhmut Falls to Wagner Group After Nine-Month Siege",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm: Ukrainian forces lost control of most of Bakhmut around 20 May 2023, with Wagner chief Prigozhin publicly claiming full capture that day (a \"224-day operation,\" consistent with the fighting starting ~August 2022, i.e. ~9 months). The battle is widely described by analysts/media as one of the bloodiest since WWII. US National Security Council spokesman John Kirby stated on 1 May 2023 that Russia suffered over 100,000 casualties (20,000 killed, 80,000 wounded) on the Bakhmut front since December 2022, matching the description's casualty figure. Analysts (Kyiv Independent, US Army War College article, Al Jazeera) confirm it was Russia's most significant territorial gain since the 2022 invasion but of limited strategic value since Russian forces did not advance meaningfully beyond the city. All material details (country, year, date, actors, casualties, strategic significance) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm all material elements: on 20 May 2023, Wagner Group chief Yevgeny Prigozhin claimed full capture of Bakhmut ('at 12 noon, Bakhmut was completely taken'); Ukrainian forces (per Zelensky) had withdrawn to more advantageous flanking positions while Russia/Wagner controlled the city center. The siege ran from August 2022 to May 2023 (~9-10 months), widely described as one of the bloodiest battles since WWII/of the 21st century. US President Biden stated at the G7 summit on 21 May 2023 that Russia had suffered 'over 100,000 casualties in Bakhmut,' matching the description's casualty figure. Bakhmut was Russia's largest territorial gain since the 2022 invasion, and is widely assessed as of limited strategic value given the cost. All country (Ukraine), year (2023), and substantive details (siege length, casualties, territorial significance) are corroborated.",
+        "source": "https://www.aljazeera.com/news/2023/5/20/the-battle-for-ukraine-bakhmut-a-timeline",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm: Ukrainian forces lost control of most of Bakhmut around 20 May 2023, with Wagner chief Prigozhin publicly claiming full capture that day (a \"224-day operation,\" consistent with the fighting starting ~August 2022, i.e. ~9 months). The battle is widely described by analysts/media as one of the bloodiest since WWII. US National Security Council spokesman John Kirby stated on 1 May 2023 that Russia suffered over 100,000 casualties (20,000 killed, 80,000 wounded) on the Bakhmut front since December 2022, matching the description's casualty figure. Analysts (Kyiv Independent, US Army War College article, Al Jazeera) confirm it was Russia's most significant territorial gain since the 2022 invasion but of limited strategic value since Russian forces did not advance meaningfully beyond the city. All material details (country, year, date, actors, casualties, strategic significance) check out.",
+        "source": "https://www.aljazeera.com/news/2023/5/20/russias-prigozhin-claims-complete-capture-of-bakhmut",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2023/5/20/russias-prigozhin-claims-complete-capture-of-bakhmut"
   }
 ]

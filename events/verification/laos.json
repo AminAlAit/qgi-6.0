@@ -1006,5 +1006,41 @@
         }
       }
     ]
+  },
+  {
+    "year": 2005,
+    "title": "Nam Theun 2 Hydropower Dam Begins Construction",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: Nam Theun 2 (NT2) reached financial closing and began construction in June 2005 in Khammouane Province (also spanning Bolikhamxay), Laos. It was a $1.3 billion project, jointly financed by 27 parties including the World Bank (up to $270M) and Asian Development Bank (up to $120M), and was described as the largest foreign investment in Laos at the time of signing/closing in 2005. This matches the event description on country, year, and substance.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm construction on the Nam Theun 2 Hydropower Project in Khammouane Province, Laos began in 2005 following financial closure in June 2005. The World Bank and ADB provided loans/guarantees ($270M and $120M respectively) backing the project, consortium financed by 27 parties. At the time it was described as the largest foreign investment in Laos and the world's largest private cross-border power project financing. World Bank materials explicitly frame it as a test case for whether large infrastructure/dam projects can reduce poverty (Lao treasury revenues from the project were channeled into poverty reduction and environmental programs). All material details (country, year, location, cost scale, institutional backers, poverty-reduction test-case framing) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/Nam_Theun_2_Dam",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: Nam Theun 2 (NT2) reached financial closing and began construction in June 2005 in Khammouane Province (also spanning Bolikhamxay), Laos. It was a $1.3 billion project, jointly financed by 27 parties including the World Bank (up to $270M) and Asian Development Bank (up to $120M), and was described as the largest foreign investment in Laos at the time of signing/closing in 2005. This matches the event description on country, year, and substance.",
+        "source": "https://en.wikipedia.org/wiki/Nam_Theun_2_Dam",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Nam_Theun_2_Dam"
   }
 ]

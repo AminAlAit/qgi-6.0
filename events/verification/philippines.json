@@ -26,31 +26,6 @@
   },
   {
     "year": 1950,
-    "title": "Ramon Magsaysay Appointed Defense Secretary",
-    "verdict": "TRUE",
-    "reason": "Magsaysay was appointed Secretary of National Defense on September 1, 1950 by President Quirino. Year and core facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Magsaysay was appointed Secretary of National Defense on September 1, 1950 by President Quirino. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Ramon_Magsaysay",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Ramon_Magsaysay"
-  },
-  {
-    "year": 1950,
     "title": "Post-War Economic Reconstruction",
     "verdict": "TRUE",
     "reason": "Philippines post-war reconstruction with US aid in 1950 is well-documented historical context. Core claims plausible and consistent with historical record.",
@@ -75,10 +50,10 @@
     "source": "https://en.wikipedia.org/wiki/Ramon_Magsaysay"
   },
   {
-    "year": 1951,
-    "title": "Mutual Defense Treaty with the United States",
+    "year": 1950,
+    "title": "Ramon Magsaysay Appointed Defense Secretary",
     "verdict": "TRUE",
-    "reason": "Signed August 30, 1951 in Washington D.C. Year and core facts confirmed by multiple sources.",
+    "reason": "Magsaysay was appointed Secretary of National Defense on September 1, 1950 by President Quirino. Year and core facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -88,32 +63,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Signed August 30, 1951 in Washington D.C. Year and core facts confirmed by multiple sources.",
-        "source": "https://en.wikipedia.org/wiki/Mutual_Defense_Treaty_(United_States%E2%80%93Philippines)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Mutual_Defense_Treaty_(United_States%E2%80%93Philippines)"
-  },
-  {
-    "year": 1951,
-    "title": "Magsaysay's Military Reforms Against Huks",
-    "verdict": "TRUE",
-    "reason": "Magsaysay's EDCOR and military reform programs in 1951 are well documented. Core facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Magsaysay's EDCOR and military reform programs in 1951 are well documented. Core facts correct.",
+        "reason": "Magsaysay was appointed Secretary of National Defense on September 1, 1950 by President Quirino. Year and core facts confirmed.",
         "source": "https://en.wikipedia.org/wiki/Ramon_Magsaysay",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -148,6 +98,56 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Ramon_Magsaysay"
+  },
+  {
+    "year": 1951,
+    "title": "Magsaysay's Military Reforms Against Huks",
+    "verdict": "TRUE",
+    "reason": "Magsaysay's EDCOR and military reform programs in 1951 are well documented. Core facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Magsaysay's EDCOR and military reform programs in 1951 are well documented. Core facts correct.",
+        "source": "https://en.wikipedia.org/wiki/Ramon_Magsaysay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ramon_Magsaysay"
+  },
+  {
+    "year": 1951,
+    "title": "Mutual Defense Treaty with the United States",
+    "verdict": "TRUE",
+    "reason": "Signed August 30, 1951 in Washington D.C. Year and core facts confirmed by multiple sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Signed August 30, 1951 in Washington D.C. Year and core facts confirmed by multiple sources.",
+        "source": "https://en.wikipedia.org/wiki/Mutual_Defense_Treaty_(United_States%E2%80%93Philippines)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Mutual_Defense_Treaty_(United_States%E2%80%93Philippines)"
   },
   {
     "year": 1952,
@@ -201,31 +201,6 @@
   },
   {
     "year": 1953,
-    "title": "Ramon Magsaysay Elected President",
-    "verdict": "TRUE",
-    "reason": "Magsaysay won the 1953 presidential election in a landslide over Quirino. Year and core facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Magsaysay won the 1953 presidential election in a landslide over Quirino. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Ramon_Magsaysay",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Ramon_Magsaysay"
-  },
-  {
-    "year": 1953,
     "title": "Huk Rebellion Effectively Suppressed",
     "verdict": "TRUE",
     "reason": "By 1953 the Huk insurgency was largely neutralized; Taruc surrendered in May 1954. Description correctly notes Taruc would surrender 'the following year.'",
@@ -248,6 +223,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Hukbalahap_rebellion"
+  },
+  {
+    "year": 1953,
+    "title": "Ramon Magsaysay Elected President",
+    "verdict": "TRUE",
+    "reason": "Magsaysay won the 1953 presidential election in a landslide over Quirino. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Magsaysay won the 1953 presidential election in a landslide over Quirino. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ramon_Magsaysay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ramon_Magsaysay"
   },
   {
     "year": 1954,
@@ -301,31 +301,6 @@
   },
   {
     "year": 1955,
-    "title": "Land Reform and Agricultural Development",
-    "verdict": "TRUE",
-    "reason": "Magsaysay's land reform and agricultural programs in 1955 are well documented. The Agricultural Tenancy Act was signed in 1954 and enforced under his administration. Core facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Magsaysay's land reform and agricultural programs in 1955 are well documented. The Agricultural Tenancy Act was signed in 1954 and enforced under his administration. Core facts correct.",
-        "source": "https://en.wikipedia.org/wiki/Ramon_Magsaysay",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Ramon_Magsaysay"
-  },
-  {
-    "year": 1955,
     "title": "Economic Nationalism Movement Grows",
     "verdict": "TRUE",
     "reason": "Philippine economic nationalism movement grew in the mid-1950s, culminating in the Retail Trade Nationalization Act. Core claims historically plausible.",
@@ -348,6 +323,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Economic_nationalism_in_the_Philippines"
+  },
+  {
+    "year": 1955,
+    "title": "Land Reform and Agricultural Development",
+    "verdict": "TRUE",
+    "reason": "Magsaysay's land reform and agricultural programs in 1955 are well documented. The Agricultural Tenancy Act was signed in 1954 and enforced under his administration. Core facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Magsaysay's land reform and agricultural programs in 1955 are well documented. The Agricultural Tenancy Act was signed in 1954 and enforced under his administration. Core facts correct.",
+        "source": "https://en.wikipedia.org/wiki/Ramon_Magsaysay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ramon_Magsaysay"
   },
   {
     "year": 1956,
@@ -376,31 +376,6 @@
   },
   {
     "year": 1957,
-    "title": "Death of President Magsaysay in Plane Crash",
-    "verdict": "TRUE",
-    "reason": "Magsaysay died March 17, 1957 when the Mt. Pinatubo presidential plane crashed on Mount Manunggal, Cebu. All but one aboard killed. Year and core facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Magsaysay died March 17, 1957 when the Mt. Pinatubo presidential plane crashed on Mount Manunggal, Cebu. All but one aboard killed. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1957_Cebu_Douglas_C-47_crash",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1957_Cebu_Douglas_C-47_crash"
-  },
-  {
-    "year": 1957,
     "title": "Carlos P. Garcia Elected President",
     "verdict": "TRUE",
     "reason": "Garcia won the 1957 presidential election on a Filipino First platform. Year and core facts confirmed.",
@@ -423,6 +398,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Carlos_P._Garcia"
+  },
+  {
+    "year": 1957,
+    "title": "Death of President Magsaysay in Plane Crash",
+    "verdict": "TRUE",
+    "reason": "Magsaysay died March 17, 1957 when the Mt. Pinatubo presidential plane crashed on Mount Manunggal, Cebu. All but one aboard killed. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Magsaysay died March 17, 1957 when the Mt. Pinatubo presidential plane crashed on Mount Manunggal, Cebu. All but one aboard killed. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1957_Cebu_Douglas_C-47_crash",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1957_Cebu_Douglas_C-47_crash"
   },
   {
     "year": 1958,
@@ -476,31 +476,6 @@
   },
   {
     "year": 1959,
-    "title": "Mindanao Land Settlement and Ethnic Tensions",
-    "verdict": "TRUE",
-    "reason": "Christian settler migration to Muslim Mindanao generating land disputes in the late 1950s is well documented. Core facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Christian settler migration to Muslim Mindanao generating land disputes in the late 1950s is well documented. Core facts correct.",
-        "source": "https://en.wikipedia.org/wiki/Mindanao",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Mindanao"
-  },
-  {
-    "year": 1959,
     "title": "Expansion of Public Education System",
     "verdict": "TRUE",
     "reason": "Garcia government education expansion in 1959 is historically plausible. Philippines had high literacy rates relative to regional peers.",
@@ -525,10 +500,10 @@
     "source": "https://en.wikipedia.org/wiki/Education_in_the_Philippines"
   },
   {
-    "year": 1960,
-    "title": "Macapagal Challenges Garcia",
+    "year": 1959,
+    "title": "Mindanao Land Settlement and Ethnic Tensions",
     "verdict": "TRUE",
-    "reason": "Macapagal's Liberal Party challenge against Garcia ahead of the 1961 election is documented. The pre-campaign activity in 1960 is historically consistent.",
+    "reason": "Christian settler migration to Muslim Mindanao generating land disputes in the late 1950s is well documented. Core facts correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -538,8 +513,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Macapagal's Liberal Party challenge against Garcia ahead of the 1961 election is documented. The pre-campaign activity in 1960 is historically consistent.",
-        "source": "https://en.wikipedia.org/wiki/Diosdado_Macapagal",
+        "reason": "Christian settler migration to Muslim Mindanao generating land disputes in the late 1950s is well documented. Core facts correct.",
+        "source": "https://en.wikipedia.org/wiki/Mindanao",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -547,7 +522,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Diosdado_Macapagal"
+    "source": "https://en.wikipedia.org/wiki/Mindanao"
   },
   {
     "year": 1960,
@@ -573,6 +548,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Communist_Party_of_the_Philippines"
+  },
+  {
+    "year": 1960,
+    "title": "Macapagal Challenges Garcia",
+    "verdict": "TRUE",
+    "reason": "Macapagal's Liberal Party challenge against Garcia ahead of the 1961 election is documented. The pre-campaign activity in 1960 is historically consistent.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Macapagal's Liberal Party challenge against Garcia ahead of the 1961 election is documented. The pre-campaign activity in 1960 is historically consistent.",
+        "source": "https://en.wikipedia.org/wiki/Diosdado_Macapagal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Diosdado_Macapagal"
   },
   {
     "year": 1961,
@@ -626,31 +626,6 @@
   },
   {
     "year": 1962,
-    "title": "Land Reform Code of 1963 Drafted",
-    "verdict": "TRUE",
-    "reason": "The Agricultural Land Reform Code of 1963 was drafted under Macapagal starting in 1962. Core facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Agricultural Land Reform Code of 1963 was drafted under Macapagal starting in 1962. Core facts correct.",
-        "source": "https://en.wikipedia.org/wiki/Diosdado_Macapagal",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Diosdado_Macapagal"
-  },
-  {
-    "year": 1962,
     "title": "Independence Day Moved to June 12",
     "verdict": "TRUE",
     "reason": "Macapagal issued Proclamation No. 28 on May 12, 1962, declaring June 12 as Independence Day; observed first time June 12, 1962. Year and core facts confirmed.",
@@ -673,6 +648,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Independence_Day_(Philippines)"
+  },
+  {
+    "year": 1962,
+    "title": "Land Reform Code of 1963 Drafted",
+    "verdict": "TRUE",
+    "reason": "The Agricultural Land Reform Code of 1963 was drafted under Macapagal starting in 1962. Core facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Agricultural Land Reform Code of 1963 was drafted under Macapagal starting in 1962. Core facts correct.",
+        "source": "https://en.wikipedia.org/wiki/Diosdado_Macapagal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Diosdado_Macapagal"
   },
   {
     "year": 1963,
@@ -826,31 +826,6 @@
   },
   {
     "year": 1966,
-    "title": "Philippines Sends Troops to Vietnam",
-    "verdict": "TRUE",
-    "reason": "The PHILCAG deployment of ~2,000 troops to Vietnam under Marcos in 1966 is historically documented. Core facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The PHILCAG deployment of ~2,000 troops to Vietnam under Marcos in 1966 is historically documented. Core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Philippine_Civic_Action_Group",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Philippine_Civic_Action_Group"
-  },
-  {
-    "year": 1966,
     "title": "Green Revolution Agricultural Programs",
     "verdict": "TRUE",
     "reason": "IRRI based in Los Banos released IR8 ('miracle rice') in 1966. Year and core facts confirmed.",
@@ -873,6 +848,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/International_Rice_Research_Institute"
+  },
+  {
+    "year": 1966,
+    "title": "Philippines Sends Troops to Vietnam",
+    "verdict": "TRUE",
+    "reason": "The PHILCAG deployment of ~2,000 troops to Vietnam under Marcos in 1966 is historically documented. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The PHILCAG deployment of ~2,000 troops to Vietnam under Marcos in 1966 is historically documented. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Philippine_Civic_Action_Group",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Philippine_Civic_Action_Group"
   },
   {
     "year": 1967,
@@ -926,31 +926,6 @@
   },
   {
     "year": 1968,
-    "title": "Jabidah Massacre and Muslim Resistance",
-    "verdict": "TRUE",
-    "reason": "The Jabidah massacre occurred March 18, 1968 on Corregidor Island involving Muslim army recruits. Year and core facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Jabidah massacre occurred March 18, 1968 on Corregidor Island involving Muslim army recruits. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Jabidah_massacre",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Jabidah_massacre"
-  },
-  {
-    "year": 1968,
     "title": "Communist Party of the Philippines Refounded",
     "verdict": "TRUE",
     "reason": "CPP was refounded December 26, 1968 by Sison on Marxist-Leninist-Maoist principles. Year and core facts confirmed.",
@@ -975,10 +950,10 @@
     "source": "https://en.wikipedia.org/wiki/Communist_Party_of_the_Philippines"
   },
   {
-    "year": 1969,
-    "title": "New People's Army Founded",
+    "year": 1968,
+    "title": "Jabidah Massacre and Muslim Resistance",
     "verdict": "TRUE",
-    "reason": "NPA was founded March 29, 1969 by Sison and Bernabe Buscayno (Commander Dante). Year and core facts confirmed.",
+    "reason": "The Jabidah massacre occurred March 18, 1968 on Corregidor Island involving Muslim army recruits. Year and core facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -988,8 +963,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "NPA was founded March 29, 1969 by Sison and Bernabe Buscayno (Commander Dante). Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/New_People%27s_Army",
+        "reason": "The Jabidah massacre occurred March 18, 1968 on Corregidor Island involving Muslim army recruits. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Jabidah_massacre",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -997,7 +972,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/New_People%27s_Army"
+    "source": "https://en.wikipedia.org/wiki/Jabidah_massacre"
   },
   {
     "year": 1969,
@@ -1023,6 +998,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Ferdinand_Marcos"
+  },
+  {
+    "year": 1969,
+    "title": "New People's Army Founded",
+    "verdict": "TRUE",
+    "reason": "NPA was founded March 29, 1969 by Sison and Bernabe Buscayno (Commander Dante). Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "NPA was founded March 29, 1969 by Sison and Bernabe Buscayno (Commander Dante). Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/New_People%27s_Army",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/New_People%27s_Army"
   },
   {
     "year": 1970,
@@ -1076,31 +1076,6 @@
   },
   {
     "year": 1971,
-    "title": "Plaza Miranda Bombing",
-    "verdict": "TRUE",
-    "reason": "Bombing occurred August 21, 1971 killing 9 and wounding 95. Description states 'killing nine' — correct. Core facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Bombing occurred August 21, 1971 killing 9 and wounding 95. Description states 'killing nine' — correct. Core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Plaza_Miranda_bombing",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Plaza_Miranda_bombing"
-  },
-  {
-    "year": 1971,
     "title": "Constitutional Convention Controversy",
     "verdict": "TRUE",
     "reason": "The 1971 Constitutional Convention bribery scandal (Leido papers) is well documented. Year and core facts confirmed.",
@@ -1123,6 +1098,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1971_Philippine_Constitutional_Convention"
+  },
+  {
+    "year": 1971,
+    "title": "Plaza Miranda Bombing",
+    "verdict": "TRUE",
+    "reason": "Bombing occurred August 21, 1971 killing 9 and wounding 95. Description states 'killing nine' — correct. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bombing occurred August 21, 1971 killing 9 and wounding 95. Description states 'killing nine' — correct. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Plaza_Miranda_bombing",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Plaza_Miranda_bombing"
   },
   {
     "year": 1972,
@@ -1176,31 +1176,6 @@
   },
   {
     "year": 1973,
-    "title": "New Constitution Ratified Under Martial Law",
-    "verdict": "TRUE",
-    "reason": "The 1973 constitution was ratified through citizen assemblies under martial law. Year and core facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The 1973 constitution was ratified through citizen assemblies under martial law. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1973_Philippine_Constitution",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1973_Philippine_Constitution"
-  },
-  {
-    "year": 1973,
     "title": "Marcos New Society Development Program",
     "verdict": "TRUE",
     "reason": "Marcos's 'New Society' (Bagong Lipunan) program launched under martial law with initial economic growth. Core facts correct.",
@@ -1223,6 +1198,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Ferdinand_Marcos"
+  },
+  {
+    "year": 1973,
+    "title": "New Constitution Ratified Under Martial Law",
+    "verdict": "TRUE",
+    "reason": "The 1973 constitution was ratified through citizen assemblies under martial law. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 1973 constitution was ratified through citizen assemblies under martial law. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1973_Philippine_Constitution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1973_Philippine_Constitution"
   },
   {
     "year": 1974,
@@ -1276,31 +1276,6 @@
   },
   {
     "year": 1975,
-    "title": "Tripoli Agreement with MNLF",
-    "verdict": "TRUE",
-    "reason": "Negotiations leading to the Tripoli Agreement were conducted in 1975-1976; the agreement was signed December 23, 1976. The 1975 date for negotiations is slightly early — the final agreement was 1976, but preliminary negotiations occurred in 1975. Minor discrepancy; core facts otherwise correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Negotiations leading to the Tripoli Agreement were conducted in 1975-1976; the agreement was signed December 23, 1976. The 1975 date for negotiations is slightly early — the final agreement was 1976, but preliminary negotiations occurred in 1975. Minor discrepancy; core facts otherwise correct.",
-        "source": "https://en.wikipedia.org/wiki/Tripoli_Agreement_(1976)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Tripoli_Agreement_(1976)"
-  },
-  {
-    "year": 1975,
     "title": "Crony Capitalism Entrenchment",
     "verdict": "TRUE",
     "reason": "The named cronies (Cojuangco, Benedicto, Disini, Cuenca) and their monopolies under Marcos are well documented. Core facts confirmed.",
@@ -1323,6 +1298,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Crony_capitalism_in_the_Philippines"
+  },
+  {
+    "year": 1975,
+    "title": "Tripoli Agreement with MNLF",
+    "verdict": "TRUE",
+    "reason": "Negotiations leading to the Tripoli Agreement were conducted in 1975-1976; the agreement was signed December 23, 1976. The 1975 date for negotiations is slightly early — the final agreement was 1976, but preliminary negotiations occurred in 1975. Minor discrepancy; core facts otherwise correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Negotiations leading to the Tripoli Agreement were conducted in 1975-1976; the agreement was signed December 23, 1976. The 1975 date for negotiations is slightly early — the final agreement was 1976, but preliminary negotiations occurred in 1975. Minor discrepancy; core facts otherwise correct.",
+        "source": "https://en.wikipedia.org/wiki/Tripoli_Agreement_(1976)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Tripoli_Agreement_(1976)"
   },
   {
     "year": 1976,
@@ -1376,31 +1376,6 @@
   },
   {
     "year": 1977,
-    "title": "Human Rights Abuses Under Martial Law",
-    "verdict": "TRUE",
-    "reason": "Amnesty International and international reporting on Marcos-era human rights abuses in 1977 is documented. Core facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Amnesty International and international reporting on Marcos-era human rights abuses in 1977 is documented. Core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Human_rights_in_the_Philippines",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Human_rights_in_the_Philippines"
-  },
-  {
-    "year": 1977,
     "title": "Export Processing Zones Development",
     "verdict": "TRUE",
     "reason": "Bataan Export Processing Zone and other EPZs were expanded in the late 1970s under Marcos. Core facts consistent.",
@@ -1425,10 +1400,10 @@
     "source": "https://en.wikipedia.org/wiki/Bataan_Export_Processing_Zone"
   },
   {
-    "year": 1978,
-    "title": "Interim Batasang Pambansa Elections",
+    "year": 1977,
+    "title": "Human Rights Abuses Under Martial Law",
     "verdict": "TRUE",
-    "reason": "Elections for the Interim Batasang Pambansa were held in April 1978 with Aquino running from prison under LABAN. Year and core facts confirmed.",
+    "reason": "Amnesty International and international reporting on Marcos-era human rights abuses in 1977 is documented. Core facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1438,8 +1413,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Elections for the Interim Batasang Pambansa were held in April 1978 with Aquino running from prison under LABAN. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1978_Interim_Batasang_Pambansa_election",
+        "reason": "Amnesty International and international reporting on Marcos-era human rights abuses in 1977 is documented. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Human_rights_in_the_Philippines",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1447,7 +1422,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1978_Interim_Batasang_Pambansa_election"
+    "source": "https://en.wikipedia.org/wiki/Human_rights_in_the_Philippines"
   },
   {
     "year": 1978,
@@ -1473,6 +1448,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Ninoy_Aquino"
+  },
+  {
+    "year": 1978,
+    "title": "Interim Batasang Pambansa Elections",
+    "verdict": "TRUE",
+    "reason": "Elections for the Interim Batasang Pambansa were held in April 1978 with Aquino running from prison under LABAN. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Elections for the Interim Batasang Pambansa were held in April 1978 with Aquino running from prison under LABAN. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1978_Interim_Batasang_Pambansa_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1978_Interim_Batasang_Pambansa_election"
   },
   {
     "year": 1979,
@@ -1526,31 +1526,6 @@
   },
   {
     "year": 1980,
-    "title": "Philippine Debt Crisis Begins",
-    "verdict": "TRUE",
-    "reason": "The Philippine debt crisis building through 1980 due to Marcos-era borrowing is documented. Core facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Philippine debt crisis building through 1980 due to Marcos-era borrowing is documented. Core facts correct.",
-        "source": "https://en.wikipedia.org/wiki/Philippine_debt_crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Philippine_debt_crisis"
-  },
-  {
-    "year": 1980,
     "title": "Marcos Lifts Martial Law — Partially",
     "verdict": "TRUE",
     "reason": "Martial law was formally lifted January 17, 1981 (announced/intended in 1980). Pope John Paul II visited in February 1981. Core facts correct — the description notes the intent announced in 1980 with lifting in 1981.",
@@ -1573,6 +1548,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Martial_law_under_Ferdinand_Marcos"
+  },
+  {
+    "year": 1980,
+    "title": "Philippine Debt Crisis Begins",
+    "verdict": "TRUE",
+    "reason": "The Philippine debt crisis building through 1980 due to Marcos-era borrowing is documented. Core facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Philippine debt crisis building through 1980 due to Marcos-era borrowing is documented. Core facts correct.",
+        "source": "https://en.wikipedia.org/wiki/Philippine_debt_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Philippine_debt_crisis"
   },
   {
     "year": 1981,
@@ -1676,31 +1676,6 @@
   },
   {
     "year": 1983,
-    "title": "Assassination of Benigno Aquino Jr.",
-    "verdict": "TRUE",
-    "reason": "Aquino was shot dead August 21, 1983 at Manila International Airport. Rolando Galman was immediately killed. Year and core facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Aquino was shot dead August 21, 1983 at Manila International Airport. Rolando Galman was immediately killed. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Assassination_of_Ninoy_Aquino",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Assassination_of_Ninoy_Aquino"
-  },
-  {
-    "year": 1983,
     "title": "Aquino Funeral Draws Millions to the Streets",
     "verdict": "TRUE",
     "reason": "The funeral procession drew an estimated two million people. Year and core facts confirmed.",
@@ -1725,10 +1700,10 @@
     "source": "https://en.wikipedia.org/wiki/Assassination_of_Ninoy_Aquino"
   },
   {
-    "year": 1984,
-    "title": "National Assembly Elections — Opposition Makes Gains",
+    "year": 1983,
+    "title": "Assassination of Benigno Aquino Jr.",
     "verdict": "TRUE",
-    "reason": "The 1984 Batasan elections saw opposition win around 60 seats despite fraud. Year and core facts confirmed.",
+    "reason": "Aquino was shot dead August 21, 1983 at Manila International Airport. Rolando Galman was immediately killed. Year and core facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1738,8 +1713,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The 1984 Batasan elections saw opposition win around 60 seats despite fraud. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1984_Batasang_Pambansa_election",
+        "reason": "Aquino was shot dead August 21, 1983 at Manila International Airport. Rolando Galman was immediately killed. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Ninoy_Aquino",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1747,7 +1722,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1984_Batasang_Pambansa_election"
+    "source": "https://en.wikipedia.org/wiki/Assassination_of_Ninoy_Aquino"
   },
   {
     "year": 1984,
@@ -1775,10 +1750,10 @@
     "source": "https://en.wikipedia.org/wiki/Philippine_debt_crisis"
   },
   {
-    "year": 1985,
-    "title": "Marcos Calls Snap Election",
+    "year": 1984,
+    "title": "National Assembly Elections — Opposition Makes Gains",
     "verdict": "TRUE",
-    "reason": "Marcos announced the snap election in late 1985 for February 1986. Year and core facts confirmed.",
+    "reason": "The 1984 Batasan elections saw opposition win around 60 seats despite fraud. Year and core facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1788,8 +1763,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Marcos announced the snap election in late 1985 for February 1986. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1986_Philippine_presidential_election",
+        "reason": "The 1984 Batasan elections saw opposition win around 60 seats despite fraud. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1984_Batasang_Pambansa_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1797,7 +1772,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1986_Philippine_presidential_election"
+    "source": "https://en.wikipedia.org/wiki/1984_Batasang_Pambansa_election"
   },
   {
     "year": 1985,
@@ -1825,10 +1800,10 @@
     "source": "https://en.wikipedia.org/wiki/Corazon_Aquino"
   },
   {
-    "year": 1986,
-    "title": "People Power Revolution Ousts Marcos",
+    "year": 1985,
+    "title": "Marcos Calls Snap Election",
     "verdict": "TRUE",
-    "reason": "The EDSA Revolution February 22-25, 1986 with Enrile, Ramos, Cardinal Sin, and civilian human chain is confirmed. Marcos fled February 25. Core facts confirmed.",
+    "reason": "Marcos announced the snap election in late 1985 for February 1986. Year and core facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1838,8 +1813,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The EDSA Revolution February 22-25, 1986 with Enrile, Ramos, Cardinal Sin, and civilian human chain is confirmed. Marcos fled February 25. Core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/People_Power_Revolution",
+        "reason": "Marcos announced the snap election in late 1985 for February 1986. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1986_Philippine_presidential_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1847,7 +1822,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/People_Power_Revolution"
+    "source": "https://en.wikipedia.org/wiki/1986_Philippine_presidential_election"
   },
   {
     "year": 1986,
@@ -1900,10 +1875,10 @@
     "source": "https://en.wikipedia.org/wiki/People_Power_Revolution"
   },
   {
-    "year": 1987,
-    "title": "New Philippine Constitution Ratified",
+    "year": 1986,
+    "title": "People Power Revolution Ousts Marcos",
     "verdict": "TRUE",
-    "reason": "New constitution ratified by about 76% of voters in February 1987. Year and core facts confirmed.",
+    "reason": "The EDSA Revolution February 22-25, 1986 with Enrile, Ramos, Cardinal Sin, and civilian human chain is confirmed. Marcos fled February 25. Core facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1913,8 +1888,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "New constitution ratified by about 76% of voters in February 1987. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Constitution_of_the_Philippines",
+        "reason": "The EDSA Revolution February 22-25, 1986 with Enrile, Ramos, Cardinal Sin, and civilian human chain is confirmed. Marcos fled February 25. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/People_Power_Revolution",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1922,7 +1897,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Constitution_of_the_Philippines"
+    "source": "https://en.wikipedia.org/wiki/People_Power_Revolution"
   },
   {
     "year": 1987,
@@ -1948,6 +1923,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Corazon_Aquino"
+  },
+  {
+    "year": 1987,
+    "title": "New Philippine Constitution Ratified",
+    "verdict": "TRUE",
+    "reason": "New constitution ratified by about 76% of voters in February 1987. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "New constitution ratified by about 76% of voters in February 1987. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_the_Philippines",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Constitution_of_the_Philippines"
   },
   {
     "year": 1988,
@@ -2401,31 +2401,6 @@
   },
   {
     "year": 1998,
-    "title": "Joseph Estrada Elected President",
-    "verdict": "TRUE",
-    "reason": "Estrada won the 1998 presidential election in a landslide. Year and core facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Estrada won the 1998 presidential election in a landslide. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Joseph_Estrada",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Joseph_Estrada"
-  },
-  {
-    "year": 1998,
     "title": "Abu Sayyaf Kidnappings Intensify",
     "verdict": "TRUE",
     "reason": "Abu Sayyaf intensified kidnapping operations in Basilan and southern Philippines in the late 1990s. Core facts confirmed.",
@@ -2450,10 +2425,10 @@
     "source": "https://en.wikipedia.org/wiki/Abu_Sayyaf"
   },
   {
-    "year": 1999,
-    "title": "Visiting Forces Agreement with United States",
+    "year": 1998,
+    "title": "Joseph Estrada Elected President",
     "verdict": "TRUE",
-    "reason": "VFA was ratified by the Philippine Senate in May 1999. Year and core facts confirmed.",
+    "reason": "Estrada won the 1998 presidential election in a landslide. Year and core facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2463,8 +2438,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "VFA was ratified by the Philippine Senate in May 1999. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Philippines%E2%80%93United_States_Visiting_Forces_Agreement",
+        "reason": "Estrada won the 1998 presidential election in a landslide. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Joseph_Estrada",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2472,7 +2447,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Philippines%E2%80%93United_States_Visiting_Forces_Agreement"
+    "source": "https://en.wikipedia.org/wiki/Joseph_Estrada"
   },
   {
     "year": 1999,
@@ -2498,6 +2473,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Moro_Islamic_Liberation_Front"
+  },
+  {
+    "year": 1999,
+    "title": "Visiting Forces Agreement with United States",
+    "verdict": "TRUE",
+    "reason": "VFA was ratified by the Philippine Senate in May 1999. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "VFA was ratified by the Philippine Senate in May 1999. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Philippines%E2%80%93United_States_Visiting_Forces_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Philippines%E2%80%93United_States_Visiting_Forces_Agreement"
   },
   {
     "year": 2000,
@@ -2526,9 +2526,9 @@
   },
   {
     "year": 2001,
-    "title": "People Power II — Estrada Ousted",
+    "title": "Abu Sayyaf Kidnaps Foreign Tourists",
     "verdict": "TRUE",
-    "reason": "EDSA II in January 2001 with military withdrawal from Estrada and Arroyo assuming presidency. Year and core facts confirmed.",
+    "reason": "Abu Sayyaf kidnapped tourists from Sipadan resort in Malaysia in April 2000 (not 2001), taking them to Jolo. Note: the Sipadan kidnapping was April 2000, not 2001 — but the event description is placed under 2001, likely referring to continued hostage crisis and post-9/11 US designation. Minor discrepancy; the kidnapping itself was 2000.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2538,8 +2538,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "EDSA II in January 2001 with military withdrawal from Estrada and Arroyo assuming presidency. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2001_EDSA_Revolution",
+        "reason": "Abu Sayyaf kidnapped tourists from Sipadan resort in Malaysia in April 2000 (not 2001), taking them to Jolo. Note: the Sipadan kidnapping was April 2000, not 2001 — but the event description is placed under 2001, likely referring to continued hostage crisis and post-9/11 US designation. Minor discrepancy; the kidnapping itself was 2000.",
+        "source": "https://en.wikipedia.org/wiki/Sipadan_kidnappings",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2547,7 +2547,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2001_EDSA_Revolution"
+    "source": "https://en.wikipedia.org/wiki/Sipadan_kidnappings"
   },
   {
     "year": 2001,
@@ -2576,9 +2576,9 @@
   },
   {
     "year": 2001,
-    "title": "Abu Sayyaf Kidnaps Foreign Tourists",
+    "title": "People Power II — Estrada Ousted",
     "verdict": "TRUE",
-    "reason": "Abu Sayyaf kidnapped tourists from Sipadan resort in Malaysia in April 2000 (not 2001), taking them to Jolo. Note: the Sipadan kidnapping was April 2000, not 2001 — but the event description is placed under 2001, likely referring to continued hostage crisis and post-9/11 US designation. Minor discrepancy; the kidnapping itself was 2000.",
+    "reason": "EDSA II in January 2001 with military withdrawal from Estrada and Arroyo assuming presidency. Year and core facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2588,8 +2588,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Abu Sayyaf kidnapped tourists from Sipadan resort in Malaysia in April 2000 (not 2001), taking them to Jolo. Note: the Sipadan kidnapping was April 2000, not 2001 — but the event description is placed under 2001, likely referring to continued hostage crisis and post-9/11 US designation. Minor discrepancy; the kidnapping itself was 2000.",
-        "source": "https://en.wikipedia.org/wiki/Sipadan_kidnappings",
+        "reason": "EDSA II in January 2001 with military withdrawal from Estrada and Arroyo assuming presidency. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2001_EDSA_Revolution",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2597,7 +2597,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Sipadan_kidnappings"
+    "source": "https://en.wikipedia.org/wiki/2001_EDSA_Revolution"
   },
   {
     "year": 2002,
@@ -2926,31 +2926,6 @@
   },
   {
     "year": 2012,
-    "title": "Scarborough Shoal Standoff with China",
-    "verdict": "TRUE",
-    "reason": "The April-June 2012 standoff ending with China's de facto control is confirmed. Year and core facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The April-June 2012 standoff ending with China's de facto control is confirmed. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Scarborough_Shoal_standoff",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Scarborough_Shoal_standoff"
-  },
-  {
-    "year": 2012,
     "title": "Cybercrime Prevention Act Passed",
     "verdict": "TRUE",
     "reason": "Philippines Cybercrime Prevention Act passed in 2012 with online libel provisions. Year and core facts confirmed.",
@@ -2973,6 +2948,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Cybercrime_Prevention_Act_of_2012"
+  },
+  {
+    "year": 2012,
+    "title": "Scarborough Shoal Standoff with China",
+    "verdict": "TRUE",
+    "reason": "The April-June 2012 standoff ending with China's de facto control is confirmed. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The April-June 2012 standoff ending with China's de facto control is confirmed. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Scarborough_Shoal_standoff",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Scarborough_Shoal_standoff"
   },
   {
     "year": 2013,
@@ -3151,6 +3151,31 @@
   },
   {
     "year": 2016,
+    "title": "Drug War Begins — Thousands Killed",
+    "verdict": "TRUE",
+    "reason": "Drug war killings began immediately in 2016; official police count over 2,000 by end of year, human rights groups estimated 6,000+. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Drug war killings began immediately in 2016; official police count over 2,000 by end of year, human rights groups estimated 6,000+. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Philippine_drug_war",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Philippine_drug_war"
+  },
+  {
+    "year": 2016,
     "title": "International Tribunal Rules Against China's South China Sea Claims",
     "verdict": "TRUE",
     "reason": "PCA ruled in July 2016 invalidating China's nine-dash line. China rejected the ruling. Year and core facts confirmed.",
@@ -3173,6 +3198,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/South_China_Sea_Arbitration"
+  },
+  {
+    "year": 2016,
+    "title": "Philippines Deploys Diwata-1, Its First Filipino-Built Microsatellite",
+    "verdict": "TRUE",
+    "reason": "Confirmed by JAXA's official press release and multiple university sources: Diwata-1, the Philippines' first microsatellite, launched to the ISS in March 2016 aboard Cygnus CRS-6 and was deployed from the Kibo module on 27 April 2016 (JAXA's first success of a 50kg-class microsatellite deployment). It was built by Filipino engineers (the 'Magnificent 9' team) from the University of the Philippines Diliman and DOST-ASTI, in partnership with Japan's Tohoku University and Hokkaido University. It carried three earth-observation instruments (High Precision Telescope, Space-borne Multispectral Imager, Wide Field Camera) and its mission ended in early 2020 (decommissioned/re-entered atmosphere around April 2020), matching 'operated until 2020.' All material facts in the description are corroborated by independent, authoritative sources (JAXA, Hokkaido University, Tohoku University, DOST-ASTI).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via JAXA's official press release and multiple university/agency sources: Diwata-1 was carried to the ISS in March 2016 and deployed from the Kibo module on 27 April 2016 — JAXA's release is titled \"Successful Deployment of DIWATA-1, First Microsatellite developed by the Republic of the Philippines, from ISS Kibo.\" It was built by a team of Filipino engineers (the \"Magnificent 9\") from DOST-ASTI and University of the Philippines Diliman, in partnership with Japan's Tohoku University (bus development) and Hokkaido University, per eoPortal, Tohoku University, and Hokkaido University sources. It carried three Earth-observation instruments (High Precision Telescope, Space-borne Multispectral Imager, Wide Field Camera) per eoPortal/CEOS. Per Inquirer and the PHL-Microsat project blog, Diwata-1 was decommissioned and re-entered the atmosphere around April 2020, matching \"operated until 2020.\" All material details (country, year, actors, instrument count, end date) check out.",
+        "source": "https://global.jaxa.jp/press/2016/04/20160427_diwata1.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by JAXA's official press release and multiple university sources: Diwata-1, the Philippines' first microsatellite, launched to the ISS in March 2016 aboard Cygnus CRS-6 and was deployed from the Kibo module on 27 April 2016 (JAXA's first success of a 50kg-class microsatellite deployment). It was built by Filipino engineers (the 'Magnificent 9' team) from the University of the Philippines Diliman and DOST-ASTI, in partnership with Japan's Tohoku University and Hokkaido University. It carried three earth-observation instruments (High Precision Telescope, Space-borne Multispectral Imager, Wide Field Camera) and its mission ended in early 2020 (decommissioned/re-entered atmosphere around April 2020), matching 'operated until 2020.' All material facts in the description are corroborated by independent, authoritative sources (JAXA, Hokkaido University, Tohoku University, DOST-ASTI).",
+        "source": "https://global.jaxa.jp/press/2016/04/20160427_diwata1.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://global.jaxa.jp/press/2016/04/20160427_diwata1.html"
   },
   {
     "year": 2016,
@@ -3200,10 +3261,10 @@
     "source": "https://en.wikipedia.org/wiki/Rodrigo_Duterte"
   },
   {
-    "year": 2016,
-    "title": "Drug War Begins — Thousands Killed",
+    "year": 2017,
+    "title": "Drug War Killings Continue Amid International Condemnation",
     "verdict": "TRUE",
-    "reason": "Drug war killings began immediately in 2016; official police count over 2,000 by end of year, human rights groups estimated 6,000+. Core facts confirmed.",
+    "reason": "Drug war killings continued in 2017; ICC opened preliminary examination; Senator de Lima arrested. Year and core facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3213,7 +3274,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Drug war killings began immediately in 2016; official police count over 2,000 by end of year, human rights groups estimated 6,000+. Core facts confirmed.",
+        "reason": "Drug war killings continued in 2017; ICC opened preliminary examination; Senator de Lima arrested. Year and core facts confirmed.",
         "source": "https://en.wikipedia.org/wiki/Philippine_drug_war",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -3248,31 +3309,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Siege_of_Marawi"
-  },
-  {
-    "year": 2017,
-    "title": "Drug War Killings Continue Amid International Condemnation",
-    "verdict": "TRUE",
-    "reason": "Drug war killings continued in 2017; ICC opened preliminary examination; Senator de Lima arrested. Year and core facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Drug war killings continued in 2017; ICC opened preliminary examination; Senator de Lima arrested. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Philippine_drug_war",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Philippine_drug_war"
   },
   {
     "year": 2018,
@@ -3376,31 +3412,6 @@
   },
   {
     "year": 2020,
-    "title": "COVID-19 Pandemic — One of Asia's Hardest-Hit Nations",
-    "verdict": "TRUE",
-    "reason": "Philippines economy contracted 9.6% in 2020, one of worst COVID impacts in Asia. Long lockdowns documented. Year and core facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Philippines economy contracted 9.6% in 2020, one of worst COVID impacts in Asia. Long lockdowns documented. Year and core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_the_Philippines",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_the_Philippines"
-  },
-  {
-    "year": 2020,
     "title": "Anti-Terror Law Passed — Civil Liberties Concerns",
     "verdict": "TRUE",
     "reason": "Anti-Terror Act signed July 2020 despite pandemic emergency; civil liberties concerns widely documented. Year and core facts confirmed.",
@@ -3423,6 +3434,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Anti-Terrorism_Act_of_2020"
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 Pandemic — One of Asia's Hardest-Hit Nations",
+    "verdict": "TRUE",
+    "reason": "Philippines economy contracted 9.6% in 2020, one of worst COVID impacts in Asia. Long lockdowns documented. Year and core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Philippines economy contracted 9.6% in 2020, one of worst COVID impacts in Asia. Long lockdowns documented. Year and core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_the_Philippines",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_the_Philippines"
   },
   {
     "year": 2020,
@@ -3651,6 +3687,31 @@
   },
   {
     "year": 2024,
+    "title": "Marcos Jr. Midterm Consolidation Efforts",
+    "verdict": "TRUE",
+    "reason": "Marcos political maneuvering against Duterte faction ahead of 2025 midterms, including House investigation of Sara Duterte, is documented in 2024. Core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Marcos political maneuvering against Duterte faction ahead of 2025 midterms, including House investigation of Sara Duterte, is documented in 2024. Core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ferdinand_Marcos_Jr.",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ferdinand_Marcos_Jr."
+  },
+  {
+    "year": 2024,
     "title": "Philippines-US-Japan Defense Cooperation Deepens",
     "verdict": "TRUE",
     "reason": "Trilateral Philippines-US-Japan defense cooperation deepened in 2024 with joint maritime patrols. Core facts confirmed.",
@@ -3725,10 +3786,10 @@
     "source": "https://en.wikipedia.org/wiki/2024_Pacific_typhoon_season"
   },
   {
-    "year": 2024,
-    "title": "Marcos Jr. Midterm Consolidation Efforts",
+    "year": 2025,
+    "title": "2025 Midterm Elections — Marcos vs Duterte Political Battle",
     "verdict": "TRUE",
-    "reason": "Marcos political maneuvering against Duterte faction ahead of 2025 midterms, including House investigation of Sara Duterte, is documented in 2024. Core facts confirmed.",
+    "reason": "May 2025 midterm elections as proxy battle between Marcos and Duterte dynasties is consistent with documented political dynamics.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3738,8 +3799,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Marcos political maneuvering against Duterte faction ahead of 2025 midterms, including House investigation of Sara Duterte, is documented in 2024. Core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Ferdinand_Marcos_Jr.",
+        "reason": "May 2025 midterm elections as proxy battle between Marcos and Duterte dynasties is consistent with documented political dynamics.",
+        "source": "https://en.wikipedia.org/wiki/2025_Philippine_elections",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3747,7 +3808,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Ferdinand_Marcos_Jr."
+    "source": "https://en.wikipedia.org/wiki/2025_Philippine_elections"
   },
   {
     "year": 2025,
@@ -3776,6 +3837,31 @@
   },
   {
     "year": 2025,
+    "title": "OFW Remittances Remain Economic Lifeline",
+    "verdict": "TRUE",
+    "reason": "OFW remittances projected at $37-38 billion for 2025 consistent with Bangko Sentral projections. Core facts plausible.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "OFW remittances projected at $37-38 billion for 2025 consistent with Bangko Sentral projections. Core facts plausible.",
+        "source": "https://en.wikipedia.org/wiki/Overseas_Filipino_Worker",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Overseas_Filipino_Worker"
+  },
+  {
+    "year": 2025,
     "title": "West Philippine Sea Confrontations Continue",
     "verdict": "TRUE",
     "reason": "Ongoing West Philippine Sea confrontations in 2025 at Ayungin, Scarborough Shoal with US/Japan/Australia coordination is consistent with documented trends.",
@@ -3800,53 +3886,39 @@
     "source": "https://en.wikipedia.org/wiki/Second_Thomas_Shoal"
   },
   {
-    "year": 2025,
-    "title": "2025 Midterm Elections — Marcos vs Duterte Political Battle",
+    "year": 1956,
+    "title": "Growth of OFW Precursor Labor Migration",
     "verdict": "TRUE",
-    "reason": "May 2025 midterm elections as proxy battle between Marcos and Duterte dynasties is consistent with documented political dynamics.",
-    "verify_count": 1,
+    "reason": "The broad trend described is well-documented: Filipino labor migration abroad grew steadily through the 1950s as a precursor to the later mass OFW phenomenon, involving both US-linked professional migration and Pacific/Asia construction contract labor. Guampedia's dedicated history \"Filipino Migration to Guam 1945-1975\" documents that following a 1947 US-Philippine labor recruitment agreement, Filipino workers filled the bulk of the Guam construction workforce (up to 65% by 1950), and \"by the mid-1950s, BPM [Brown-Pacific-Maxon] employed more than 17,000 laborers\" on US-territory Pacific construction projects — directly overlapping the 1956 timeframe and matching the description's \"construction projects in Asia and the Pacific.\" Multiple secondary sources (Wikipedia's Overseas Filipino Worker article, IIAS \"Laboring pioneers\" piece, Philippine DOLE historical accounts) independently corroborate that non-professional contract labor migration to Asia (Sabah/Sarawak logging, Pacific construction) and continued postwar professional emigration to the US mainland were both underway and expanding across the 1950s-1960s, explicitly framed by historians as the pre-1974 \"Filipino Pioneers\" era that laid groundwork for the formal OFW program. No source pins a single discrete 1956 event, but this is a multi-year growth trend, and 1956 falls squarely within the documented expansion window; nothing found contradicts the description or suggests it belongs to a different, non-adjacent year. The remittance detail is a plausible, consistent inference (wages of 30-50 cents/hour on Guam already exceeded homeland pay) though not separately verified in isolation for 1956.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "May 2025 midterm elections as proxy battle between Marcos and Duterte dynasties is consistent with documented political dynamics.",
-        "source": "https://en.wikipedia.org/wiki/2025_Philippine_elections",
+        "reason": "Multiple independent sources corroborate this as an accurate characterization of Philippine labor emigration trends in the mid-1950s, of which 1956 was squarely a part. (1) Guampedia's history of Filipino migration to Guam confirms that by the mid-1950s the U.S. Navy's Base Facilities/Base Property Maintenance program employed 'more than 17,000 laborers' from the Philippines in construction camp-cities (e.g., Camp Roxas, 7,000 workers), with the downturn only beginning in the 'late 1950s' amid an economic slump — i.e., 1956 falls within the active growth/peak period, not the decline. (2) Independent aggregated search results (DOLE historical accounts, IIAS, Center for Migrant Advocacy) confirm the Philippine government formally recognized and began managing this outward migration in 1956 itself, establishing the Manila Employment Office with a mandate to encourage 'domestic as well as overseas migration' and creating a parallel Overseas and Fee-charging Employment Agencies Unit — a direct institutional precursor to the later POEA/OFW system. (3) Migration to the United States specifically also grew in this era via the 1948 Exchange Visitor Program, under which Filipino nurses (and other professionals) began arriving in large numbers through the 1950s-60s (over 11,000 nurses by the 1960s), consistent with the description's emphasis on U.S.-bound migration alongside Pacific/Asia construction work (Guam, Wake Island, and Sabah/Sarawak logging camps). Combined, the country, year, and substance (growing overseas labor migration to the US and Asia-Pacific construction, laying groundwork for the later OFW phenomenon, with remittances a natural corollary) are all corroborated. This is a broad multi-year sociological trend rather than a single dated event, but 1956 is well within — not adjacent to — the documented active-growth window, so no year correction is warranted.",
+        "source": "https://www.guampedia.com/filipino-migration-to-guam-1945-1975/",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
         }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2025_Philippine_elections"
-  },
-  {
-    "year": 2025,
-    "title": "OFW Remittances Remain Economic Lifeline",
-    "verdict": "TRUE",
-    "reason": "OFW remittances projected at $37-38 billion for 2025 consistent with Bangko Sentral projections. Core facts plausible.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
+      },
       {
-        "pass_n": 1,
+        "pass_n": 2,
         "verdict": "TRUE",
-        "reason": "OFW remittances projected at $37-38 billion for 2025 consistent with Bangko Sentral projections. Core facts plausible.",
-        "source": "https://en.wikipedia.org/wiki/Overseas_Filipino_Worker",
+        "reason": "The broad trend described is well-documented: Filipino labor migration abroad grew steadily through the 1950s as a precursor to the later mass OFW phenomenon, involving both US-linked professional migration and Pacific/Asia construction contract labor. Guampedia's dedicated history \"Filipino Migration to Guam 1945-1975\" documents that following a 1947 US-Philippine labor recruitment agreement, Filipino workers filled the bulk of the Guam construction workforce (up to 65% by 1950), and \"by the mid-1950s, BPM [Brown-Pacific-Maxon] employed more than 17,000 laborers\" on US-territory Pacific construction projects — directly overlapping the 1956 timeframe and matching the description's \"construction projects in Asia and the Pacific.\" Multiple secondary sources (Wikipedia's Overseas Filipino Worker article, IIAS \"Laboring pioneers\" piece, Philippine DOLE historical accounts) independently corroborate that non-professional contract labor migration to Asia (Sabah/Sarawak logging, Pacific construction) and continued postwar professional emigration to the US mainland were both underway and expanding across the 1950s-1960s, explicitly framed by historians as the pre-1974 \"Filipino Pioneers\" era that laid groundwork for the formal OFW program. No source pins a single discrete 1956 event, but this is a multi-year growth trend, and 1956 falls squarely within the documented expansion window; nothing found contradicts the description or suggests it belongs to a different, non-adjacent year. The remittance detail is a plausible, consistent inference (wages of 30-50 cents/hour on Guam already exceeded homeland pay) though not separately verified in isolation for 1956.",
+        "source": "https://www.guampedia.com/filipino-migration-to-guam-1945-1975/",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Overseas_Filipino_Worker"
+    "source": "https://www.guampedia.com/filipino-migration-to-guam-1945-1975/"
   }
 ]

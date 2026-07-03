@@ -1,31 +1,6 @@
 [
   {
     "year": 1950,
-    "title": "UN Trusteeship of Italian Somalia Established",
-    "verdict": "TRUE",
-    "reason": "UN Trust Territory of Somaliland placed under Italian administration confirmed effective December 2, 1950, with a ten-year mandate ending July 1, 1960. Somali Youth League role well documented.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "UN Trust Territory of Somaliland placed under Italian administration confirmed effective December 2, 1950, with a ten-year mandate ending July 1, 1960. Somali Youth League role well documented.",
-        "source": "https://en.wikipedia.org/wiki/Trust_Territory_of_Somaliland",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Trust_Territory_of_Somaliland"
-  },
-  {
-    "year": 1950,
     "title": "Somali Youth League Dominates Pre-Independence Politics",
     "verdict": "TRUE",
     "reason": "SYL founded 1943 (as Somali Youth Club), renamed SYL ~1948, championed pan-Somali unity. Aden Abdulle Osman's role confirmed. SYL won 1956 elections and formed independence-era government.",
@@ -48,6 +23,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Somali_Youth_League"
+  },
+  {
+    "year": 1950,
+    "title": "UN Trusteeship of Italian Somalia Established",
+    "verdict": "TRUE",
+    "reason": "UN Trust Territory of Somaliland placed under Italian administration confirmed effective December 2, 1950, with a ten-year mandate ending July 1, 1960. Somali Youth League role well documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UN Trust Territory of Somaliland placed under Italian administration confirmed effective December 2, 1950, with a ten-year mandate ending July 1, 1960. Somali Youth League role well documented.",
+        "source": "https://en.wikipedia.org/wiki/Trust_Territory_of_Somaliland",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Trust_Territory_of_Somaliland"
   },
   {
     "year": 1954,
@@ -601,9 +601,9 @@
   },
   {
     "year": 1991,
-    "title": "State Collapse: Siad Barre Flees and Civil War Begins",
+    "title": "Famine and Humanitarian Catastrophe Following State Collapse",
     "verdict": "TRUE",
-    "reason": "January 26, 1991 Barre flight from Mogadishu confirmed. USC forces' role confirmed. Aidid vs Ali Mahdi split leading to factional warfare confirmed. 21-year military rule confirmed (1969-1991).",
+    "reason": "Post-1991 famine catastrophe confirmed. Food aid looting by factions confirmed. Death estimates of 300,000+ from famine-related causes in 1991-1992 are consistent with the historical record.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -613,8 +613,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "January 26, 1991 Barre flight from Mogadishu confirmed. USC forces' role confirmed. Aidid vs Ali Mahdi split leading to factional warfare confirmed. 21-year military rule confirmed (1969-1991).",
-        "source": "https://en.wikipedia.org/wiki/Siad_Barre",
+        "reason": "Post-1991 famine catastrophe confirmed. Food aid looting by factions confirmed. Death estimates of 300,000+ from famine-related causes in 1991-1992 are consistent with the historical record.",
+        "source": "https://www.un.org/en/preventgenocide/rwanda/historical-background/somalia.shtml",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -622,7 +622,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Siad_Barre"
+    "source": "https://www.un.org/en/preventgenocide/rwanda/historical-background/somalia.shtml"
   },
   {
     "year": 1991,
@@ -651,9 +651,9 @@
   },
   {
     "year": 1991,
-    "title": "Famine and Humanitarian Catastrophe Following State Collapse",
+    "title": "State Collapse: Siad Barre Flees and Civil War Begins",
     "verdict": "TRUE",
-    "reason": "Post-1991 famine catastrophe confirmed. Food aid looting by factions confirmed. Death estimates of 300,000+ from famine-related causes in 1991-1992 are consistent with the historical record.",
+    "reason": "January 26, 1991 Barre flight from Mogadishu confirmed. USC forces' role confirmed. Aidid vs Ali Mahdi split leading to factional warfare confirmed. 21-year military rule confirmed (1969-1991).",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -663,8 +663,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Post-1991 famine catastrophe confirmed. Food aid looting by factions confirmed. Death estimates of 300,000+ from famine-related causes in 1991-1992 are consistent with the historical record.",
-        "source": "https://www.un.org/en/preventgenocide/rwanda/historical-background/somalia.shtml",
+        "reason": "January 26, 1991 Barre flight from Mogadishu confirmed. USC forces' role confirmed. Aidid vs Ali Mahdi split leading to factional warfare confirmed. 21-year military rule confirmed (1969-1991).",
+        "source": "https://en.wikipedia.org/wiki/Siad_Barre",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -672,7 +672,7 @@
         }
       }
     ],
-    "source": "https://www.un.org/en/preventgenocide/rwanda/historical-background/somalia.shtml"
+    "source": "https://en.wikipedia.org/wiki/Siad_Barre"
   },
   {
     "year": 1993,
@@ -751,31 +751,6 @@
   },
   {
     "year": 1998,
-    "title": "Puntland Declares Autonomous State Within Federal Somalia",
-    "verdict": "TRUE",
-    "reason": "Puntland declared August 1, 1998 at Garowe confirmed. Abdullahi Yusuf Ahmed elected first president confirmed. Puntland's pro-federation (vs Somaliland's pro-independence) stance confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Puntland declared August 1, 1998 at Garowe confirmed. Abdullahi Yusuf Ahmed elected first president confirmed. Puntland's pro-federation (vs Somaliland's pro-independence) stance confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Puntland",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Puntland"
-  },
-  {
-    "year": 1998,
     "title": "El Nino Floods Devastate Southern Somalia",
     "verdict": "TRUE",
     "reason": "El Nino floods confirmed late 1997/1998 affecting Jubba and Shebelle rivers. FAO confirms 80% crop losses, approximately 1 million displaced, ~2,000 deaths. The event dates it as 1998 but the floods started in October 1997 — this is a minor framing issue, not a factual error.",
@@ -798,6 +773,31 @@
       }
     ],
     "source": "https://www.fao.org/4/w7832e/w7832e00.htm"
+  },
+  {
+    "year": 1998,
+    "title": "Puntland Declares Autonomous State Within Federal Somalia",
+    "verdict": "TRUE",
+    "reason": "Puntland declared August 1, 1998 at Garowe confirmed. Abdullahi Yusuf Ahmed elected first president confirmed. Puntland's pro-federation (vs Somaliland's pro-independence) stance confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Puntland declared August 1, 1998 at Garowe confirmed. Abdullahi Yusuf Ahmed elected first president confirmed. Puntland's pro-federation (vs Somaliland's pro-independence) stance confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Puntland",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Puntland"
   },
   {
     "year": 2000,
@@ -901,31 +901,6 @@
   },
   {
     "year": 2006,
-    "title": "Islamic Courts Union Captures Mogadishu",
-    "verdict": "TRUE",
-    "reason": "ICU defeated ARPCT warlord alliance and captured Mogadishu June 5, 2006 confirmed. First unified control of Mogadishu in 15 years confirmed. Strict Islamic law and ban on cinemas/football confirmed. Ethiopian and US alarm confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "ICU defeated ARPCT warlord alliance and captured Mogadishu June 5, 2006 confirmed. First unified control of Mogadishu in 15 years confirmed. Strict Islamic law and ban on cinemas/football confirmed. Ethiopian and US alarm confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Islamic_Courts_Union",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Islamic_Courts_Union"
-  },
-  {
-    "year": 2006,
     "title": "Ethiopian Military Invasion Defeats ICU",
     "verdict": "TRUE",
     "reason": "Ethiopian invasion December 2006 confirmed. ICU dissolved/evacuated December 27, Mogadishu fell December 28, 2006. Al-Shabaab nationalist backlash confirmed. ICU exile integration into politics confirmed.",
@@ -948,6 +923,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/War_in_Somalia_(2006%E2%80%932009)"
+  },
+  {
+    "year": 2006,
+    "title": "Islamic Courts Union Captures Mogadishu",
+    "verdict": "TRUE",
+    "reason": "ICU defeated ARPCT warlord alliance and captured Mogadishu June 5, 2006 confirmed. First unified control of Mogadishu in 15 years confirmed. Strict Islamic law and ban on cinemas/football confirmed. Ethiopian and US alarm confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ICU defeated ARPCT warlord alliance and captured Mogadishu June 5, 2006 confirmed. First unified control of Mogadishu in 15 years confirmed. Strict Islamic law and ban on cinemas/football confirmed. Ethiopian and US alarm confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Islamic_Courts_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Islamic_Courts_Union"
   },
   {
     "year": 2007,
@@ -1073,6 +1073,42 @@
       }
     ],
     "source": "https://news.un.org/en/story/2013/05/438682"
+  },
+  {
+    "year": 2011,
+    "title": "Hormuud Telecom Launches EVC Plus, Somalia's Dominant Mobile Money Platform",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm Hormuud Telecom launched EVC Plus mobile money in Somalia in 2011, and that it became the country's dominant digital payment system amid the absence of a functioning formal banking sector. A 2025 academic article (Frontiers in Human Dynamics) independently confirms the 2011 launch year and the ~$2.7 billion/month transaction volume figure. TechAfrica News (Aug 2025) corroborates the 4.5 million user figure, 145+ NGOs using it for humanitarian cash aid distribution, and the 155 million transactions/$2.7 billion per month national mobile-money volume. Wikipedia's Hormuud Telecom article and multiple news outlets (Shabelle Media, allAfrica) also confirm the 2011 launch and rapid dominant adoption. All material details (year, country, actor, scale, humanitarian use) are corroborated across independent sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Hormuud Telecom launched EVC Plus mobile money in Somalia in 2011 (Wikipedia's Hormuud Telecom and Mobile Money in Somalia pages; allAfrica.com's March 2022 'Ten Years' retrospective, i.e. 2011+10; Hormuud's own Medium retrospective). It became Somalia's dominant/most-used mobile money platform amid the absence of a functioning banking sector, reaching roughly 80% adult penetration. The mid-2020s figures in the description are corroborated: a 2025 Frontiers (human-dynamics) academic article on EVC-Plus and humanitarian aid states it is used by over 4.5 million Somalis and by more than 145 NGOs to distribute cash aid. The ~155 million transactions worth $2.7 billion per month figure is a widely-cited World Bank-derived statistic for Somalia's mobile-money market (World Bank blogs/press releases, academic press, Quartz/Africa reporting), consistent with EVC Plus's dominant market share. All material details (actor, country, year, magnitude, scope) are corroborated across independent, non-overlapping sources.",
+        "source": "https://en.wikipedia.org/wiki/Hormuud_Telecom",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Hormuud Telecom launched EVC Plus mobile money in Somalia in 2011, and that it became the country's dominant digital payment system amid the absence of a functioning formal banking sector. A 2025 academic article (Frontiers in Human Dynamics) independently confirms the 2011 launch year and the ~$2.7 billion/month transaction volume figure. TechAfrica News (Aug 2025) corroborates the 4.5 million user figure, 145+ NGOs using it for humanitarian cash aid distribution, and the 155 million transactions/$2.7 billion per month national mobile-money volume. Wikipedia's Hormuud Telecom article and multiple news outlets (Shabelle Media, allAfrica) also confirm the 2011 launch and rapid dominant adoption. All material details (year, country, actor, scale, humanitarian use) are corroborated across independent sources.",
+        "source": "https://techafricanews.com/2025/08/20/somalias-hormuud-telecom-secures-gsma-mobile-money-re-certification/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://techafricanews.com/2025/08/20/somalias-hormuud-telecom-secures-gsma-mobile-money-re-certification/"
   },
   {
     "year": 2012,
@@ -1348,5 +1384,78 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/African_Union_Transition_Mission_in_Somalia"
+  },
+  {
+    "year": 1984,
+    "title": "Mass Killings of Civilians and Famine in Northern Somalia",
+    "verdict": "FALSE",
+    "reason": "Two compound claims, both misdated/unsupported for 1984. (1) Isaaq persecution: real documented 1984 incidents exist (Oct 15 1984 Gogol Wanaag: 6 executed; Nov 17 1984 Boqol Jirreh: 26 sentenced to death; Dec 1984 Burao: 43 executed — per Wikipedia's Isaaq genocide timeline, sourced to Africa Watch), but these are isolated reprisal executions of dozens of people, not the \"mass killings\" / systematic village-burning-and-well-poisoning campaign the description implies. Human Rights Watch/Africa Watch, the Lemkin Institute, and UN findings all bound the actual genocidal mass-killing campaign (est. 200,000 Isaaq dead, systematic destruction of settlements and water points) to 1987-1989, triggered by the SNM's May 1988 offensive and the bombardment of Hargeisa/Burao — not 1984. (2) Famine claim: multiple independent sources state the 1984 Horn of Africa drought produced catastrophic famine in Ethiopia but explicitly did NOT produce famine in Somalia that year (the government mobilized relief; Somalia's next major famine was 1991-92). No corroborating source was found for a \"significant famine emergency\" newly developing in southern/central Somalia in 1984 specifically. Given the year is essentially wrong for the severity/nature of the killings campaign, and the famine component appears to have no factual basis for 1984, this does not hold materially as described for the stated year. Country (Somalia) and general phenomenon (Isaaq persecution under Barre) are real, but the compound event as dated to 1984 is not supported.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Two compound claims, both misdated/unsupported for 1984. (1) Isaaq persecution: real documented 1984 incidents exist (Oct 15 1984 Gogol Wanaag: 6 executed; Nov 17 1984 Boqol Jirreh: 26 sentenced to death; Dec 1984 Burao: 43 executed — per Wikipedia's Isaaq genocide timeline, sourced to Africa Watch), but these are isolated reprisal executions of dozens of people, not the \"mass killings\" / systematic village-burning-and-well-poisoning campaign the description implies. Human Rights Watch/Africa Watch, the Lemkin Institute, and UN findings all bound the actual genocidal mass-killing campaign (est. 200,000 Isaaq dead, systematic destruction of settlements and water points) to 1987-1989, triggered by the SNM's May 1988 offensive and the bombardment of Hargeisa/Burao — not 1984. (2) Famine claim: multiple independent sources state the 1984 Horn of Africa drought produced catastrophic famine in Ethiopia but explicitly did NOT produce famine in Somalia that year (the government mobilized relief; Somalia's next major famine was 1991-92). No corroborating source was found for a \"significant famine emergency\" newly developing in southern/central Somalia in 1984 specifically. Given the year is essentially wrong for the severity/nature of the killings campaign, and the famine component appears to have no factual basis for 1984, this does not hold materially as described for the stated year. Country (Somalia) and general phenomenon (Isaaq persecution under Barre) are real, but the compound event as dated to 1984 is not supported.",
+        "source": "https://en.wikipedia.org/wiki/Isaaq_genocide",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1988
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The human-rights-violation core of the event is confirmed for Somalia/1984: per Human Rights Watch's Africa Watch report \"Somalia: A Government at War with Its Own People\" (Jan 1990), \"from early 1984, the 12th Division was used against the local Isaaq population,\" and it documents specific dated 1984 atrocities — six Isaaq men executed at Gogol Wanaag (Oct 1984), 26 civilians sentenced to death by a mobile military court at Boqol Jirreh (Nov 1984), and 43 Isaaq men executed in Burao central prison (Dec 1984) — i.e., organized summary executions of Isaaq civilians suspected of SNM sympathies did occur in 1984, consistent with the description's \"summary executions\" element. However, the description's specific tactics of \"burning villages\" and \"poisoning wells\" are documented parts of the broader Isaaq counter-insurgency campaign but are attested in the sources mainly for the 1987-89 peak (the ~200,000-death \"genocide\" phase, Hargeisa/Burao bombardment from May 1988), not specifically dated to 1984 in any source I found — so calling 1984 itself a year of \"mass killings\" (plural, large-scale) somewhat overstates the scale versus the escalating/early phase it actually was. More importantly, the famine claim is not corroborated and appears to be a conflation with a different country's crisis: multiple independent sources state the well-known 1984-85 Horn of Africa famine devastated Ethiopia specifically, and list Somalia's own UN-recognized famine declarations as 1991-92 and 2011 only (with a mid-80s Somalia drought/nutrition crisis documented instead for 1986-87, per a CDC MMWR report on a 1987 nutrition survey following 1986 drought). I found no independent source describing a \"significant famine emergency\" in southern/central Somalia specifically in 1984. Country and year hold for the core violent-repression narrative, but the famine detail is a material inaccuracy/likely conflation, so this is PARTIAL rather than TRUE.",
+        "source": "https://en.wikipedia.org/wiki/Isaaq_genocide",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Isaaq_genocide"
+  },
+  {
+    "year": 1987,
+    "title": "Economic Collapse and IMF Structural Adjustment",
+    "verdict": "PARTIAL",
+    "reason": "The core economic narrative checks out: Somalia's IMF/AID-driven structural adjustment process was real and materially matches the description around 1987 — the 1987-91 Five-Year Plan wrote privatization into policy, a foreign-exchange auction system (devaluation mechanism) had begun in Sept 1986 and continued merging pegged/market rates through 1987-88, the fiscal deficit was cut from 10% to 7% of GDP, fuel/rent/sales taxes were raised, and thousands of civil servants had been dismissed with real wages falling — all consistent with 'immediate hardship, rising prices, deteriorating services, falling civil-service pay' (countrystudies.us Library of Congress study; onlinelibrary.wiley.com Jamal 1988). SNM (founded 1981) and SSDF (founded 1978) were indeed both fighting Barre's regime by 1987, confirmed by documented 1987 SNM attacks. However, the added claim that 'the United Somali Congress (USC)...also formed in 1987' is not supported — multiple independent sources converge on the USC being founded on 7 or 12 January 1989 in Rome (Wikipedia's United Somali Congress article; an independent academic journal article in Cahiers d'Études Africaines at journals.openedition.org/etudesafricaines/26951, which states 'On 12 January 1989 at the Hotel Andaluus in Rome, Italy, exiled Hawiye political actors...declare[d] the formation of the USC'). So Barre did not yet face 'simultaneous armed opposition from the SNM, SSDF, and USC' in 1987 — that three-way configuration only existed from 1989. This is a material actor/timing detail embedded in the event that is off by two years, while the core economic-collapse/SAP event and country/primary-year hold.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The core economic claim checks out: Somalia's economy was under an IMF/USAID-driven structural adjustment push in 1987 (the 1987-91 Five-Year Plan), including currency devaluation (the shilling was devalued through 1986 and a new USD peg of 100 shillings was set on 12 Oct 1987), fiscal austerity, and civil-service cuts amid worsening real wages — consistent with 'economic collapse under debt and mismanagement' framing. However, the 'privatizing state enterprises' detail is overstated: sources (countrystudies.us, citing the Library of Congress country study) indicate the government only held informal/procrastinating discussions of liquidating parastatals in this period rather than actually privatizing them, and subsidies to parastatals continued. More importantly, the claim that 'The United Somali Congress (USC)...also formed in 1987' is factually wrong: multiple independent sources (Wikipedia, and corroborating summaries of the USC's history) consistently state the USC was founded in Rome on 7 January 1989 (by Ali Mohamed Osoble/'Ali Wardhigley'), not 1987, with its armed wing forming in late 1989 in Ethiopia. So in 1987 Barre did not yet face 'simultaneous armed opposition from the SNM, SSDF, and USC' — that three-way alignment only existed from 1989 onward. Year and country hold for the primary economic-collapse/IMF-adjustment narrative, but the USC-formation detail (actor/timing) is a material two-year error, so this is a PARTIAL rather than a clean TRUE.",
+        "source": "https://countrystudies.us/somalia/61.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The core economic narrative checks out: Somalia's IMF/AID-driven structural adjustment process was real and materially matches the description around 1987 — the 1987-91 Five-Year Plan wrote privatization into policy, a foreign-exchange auction system (devaluation mechanism) had begun in Sept 1986 and continued merging pegged/market rates through 1987-88, the fiscal deficit was cut from 10% to 7% of GDP, fuel/rent/sales taxes were raised, and thousands of civil servants had been dismissed with real wages falling — all consistent with 'immediate hardship, rising prices, deteriorating services, falling civil-service pay' (countrystudies.us Library of Congress study; onlinelibrary.wiley.com Jamal 1988). SNM (founded 1981) and SSDF (founded 1978) were indeed both fighting Barre's regime by 1987, confirmed by documented 1987 SNM attacks. However, the added claim that 'the United Somali Congress (USC)...also formed in 1987' is not supported — multiple independent sources converge on the USC being founded on 7 or 12 January 1989 in Rome (Wikipedia's United Somali Congress article; an independent academic journal article in Cahiers d'Études Africaines at journals.openedition.org/etudesafricaines/26951, which states 'On 12 January 1989 at the Hotel Andaluus in Rome, Italy, exiled Hawiye political actors...declare[d] the formation of the USC'). So Barre did not yet face 'simultaneous armed opposition from the SNM, SSDF, and USC' in 1987 — that three-way configuration only existed from 1989. This is a material actor/timing detail embedded in the event that is off by two years, while the core economic-collapse/SAP event and country/primary-year hold.",
+        "source": "https://countrystudies.us/somalia/61.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://countrystudies.us/somalia/61.htm"
   }
 ]

@@ -76,31 +76,6 @@
   },
   {
     "year": 1951,
-    "title": "Guerrilla Campaign Against British Forces in Canal Zone",
-    "verdict": "TRUE",
-    "reason": "Fedayeen operations against British garrison in Canal Zone through late 1951 documented in British military and diplomatic records.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Fedayeen operations against British garrison in Canal Zone through late 1951 documented in British military and diplomatic records.",
-        "source": "https://en.wikipedia.org/wiki/Suez_Crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Suez_Crisis"
-  },
-  {
-    "year": 1951,
     "title": "Egyptian Cotton Exports Reach Record Levels",
     "verdict": "TRUE",
     "reason": "Korean War commodity boom driving Egyptian cotton revenues to record levels in 1950-51 is consistent with economic histories of the period.",
@@ -123,6 +98,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Egypt"
+  },
+  {
+    "year": 1951,
+    "title": "Guerrilla Campaign Against British Forces in Canal Zone",
+    "verdict": "TRUE",
+    "reason": "Fedayeen operations against British garrison in Canal Zone through late 1951 documented in British military and diplomatic records.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Fedayeen operations against British garrison in Canal Zone through late 1951 documented in British military and diplomatic records.",
+        "source": "https://en.wikipedia.org/wiki/Suez_Crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Suez_Crisis"
   },
   {
     "year": 1952,
@@ -262,31 +262,6 @@
   },
   {
     "year": 1954,
-    "title": "Nasser Defeats Naguib and Consolidates Power",
-    "verdict": "TRUE",
-    "reason": "Naguib placed under house arrest November 1954; Nasser became prime minister — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Naguib placed under house arrest November 1954; Nasser became prime minister — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Muhammad_Naguib",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Muhammad_Naguib"
-  },
-  {
-    "year": 1954,
     "title": "Anglo-Egyptian Agreement on Suez Canal Withdrawal",
     "verdict": "TRUE",
     "reason": "October 1954 agreement providing 20-month British withdrawal with right of reactivation confirmed in diplomatic histories.",
@@ -309,6 +284,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Anglo-Egyptian_Agreement_1954"
+  },
+  {
+    "year": 1954,
+    "title": "Lavon Affair: Israeli Sabotage Operation in Egypt Exposed",
+    "verdict": "TRUE",
+    "reason": "Operation Susannah / Lavon Affair confirmed; operatives arrested in Egypt in 1954; triggered Israeli political crisis — all accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Operation Susannah / Lavon Affair confirmed; operatives arrested in Egypt in 1954; triggered Israeli political crisis — all accurate.",
+        "source": "https://en.wikipedia.org/wiki/Lavon_affair",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Lavon_affair"
   },
   {
     "year": 1954,
@@ -337,9 +337,9 @@
   },
   {
     "year": 1954,
-    "title": "Lavon Affair: Israeli Sabotage Operation in Egypt Exposed",
+    "title": "Nasser Defeats Naguib and Consolidates Power",
     "verdict": "TRUE",
-    "reason": "Operation Susannah / Lavon Affair confirmed; operatives arrested in Egypt in 1954; triggered Israeli political crisis — all accurate.",
+    "reason": "Naguib placed under house arrest November 1954; Nasser became prime minister — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -349,8 +349,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Operation Susannah / Lavon Affair confirmed; operatives arrested in Egypt in 1954; triggered Israeli political crisis — all accurate.",
-        "source": "https://en.wikipedia.org/wiki/Lavon_affair",
+        "reason": "Naguib placed under house arrest November 1954; Nasser became prime minister — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Muhammad_Naguib",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -358,32 +358,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Lavon_affair"
-  },
-  {
-    "year": 1955,
-    "title": "Egypt Attends Bandung Conference",
-    "verdict": "TRUE",
-    "reason": "April 1955 Bandung Conference in Indonesia; Nasser as prominent voice; 29 nations — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "April 1955 Bandung Conference in Indonesia; Nasser as prominent voice; 29 nations — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Bandung_Conference",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Bandung_Conference"
+    "source": "https://en.wikipedia.org/wiki/Muhammad_Naguib"
   },
   {
     "year": 1955,
@@ -409,6 +384,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Czech%E2%80%93Egyptian_arms_deal"
+  },
+  {
+    "year": 1955,
+    "title": "Egypt Attends Bandung Conference",
+    "verdict": "TRUE",
+    "reason": "April 1955 Bandung Conference in Indonesia; Nasser as prominent voice; 29 nations — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 1955 Bandung Conference in Indonesia; Nasser as prominent voice; 29 nations — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Bandung_Conference",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Bandung_Conference"
   },
   {
     "year": 1955,
@@ -459,6 +459,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Suez_Crisis"
+  },
+  {
+    "year": 1956,
+    "title": "Egypt Adopts New Constitution",
+    "verdict": "TRUE",
+    "reason": "January 1956 constitution establishing republic confirmed; concentrated executive power and single-party framework.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 1956 constitution establishing republic confirmed; concentrated executive power and single-party framework.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_Egypt",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Constitution_of_Egypt"
   },
   {
     "year": 1956,
@@ -522,31 +547,6 @@
     "source": "https://en.wikipedia.org/wiki/Suez_Crisis"
   },
   {
-    "year": 1956,
-    "title": "Egypt Adopts New Constitution",
-    "verdict": "TRUE",
-    "reason": "January 1956 constitution establishing republic confirmed; concentrated executive power and single-party framework.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "January 1956 constitution establishing republic confirmed; concentrated executive power and single-party framework.",
-        "source": "https://en.wikipedia.org/wiki/Constitution_of_Egypt",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Constitution_of_Egypt"
-  },
-  {
     "year": 1957,
     "title": "Egyptianization Laws Transfer Foreign Businesses to Egyptian Ownership",
     "verdict": "TRUE",
@@ -598,31 +598,6 @@
   },
   {
     "year": 1958,
-    "title": "United Arab Republic Formed with Syria",
-    "verdict": "TRUE",
-    "reason": "February 1, 1958 UAR formation with Nasser as president confirmed. Pan-Arab enthusiasm described accurately.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "February 1, 1958 UAR formation with Nasser as president confirmed. Pan-Arab enthusiasm described accurately.",
-        "source": "https://en.wikipedia.org/wiki/United_Arab_Republic",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/United_Arab_Republic"
-  },
-  {
-    "year": 1958,
     "title": "Aswan High Dam Construction Begins with Soviet Assistance",
     "verdict": "TRUE",
     "reason": "Soviet financing after US/World Bank withdrawal (1956) confirmed. Construction began 1960 (some sources say formal start 1960, not 1958). Year is approximate start of planning/agreements — borderline but core claim is accurate.",
@@ -645,6 +620,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Aswan_High_Dam"
+  },
+  {
+    "year": 1958,
+    "title": "United Arab Republic Formed with Syria",
+    "verdict": "TRUE",
+    "reason": "February 1, 1958 UAR formation with Nasser as president confirmed. Pan-Arab enthusiasm described accurately.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 1, 1958 UAR formation with Nasser as president confirmed. Pan-Arab enthusiasm described accurately.",
+        "source": "https://en.wikipedia.org/wiki/United_Arab_Republic",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/United_Arab_Republic"
   },
   {
     "year": 1959,
@@ -682,6 +682,31 @@
       }
     ],
     "source": "https://www.merip.org/1982/07/egypts-transition-under-nasser/"
+  },
+  {
+    "year": 1961,
+    "title": "Egyptian University Enrollment Doubles Under Free Education Policy",
+    "verdict": "TRUE",
+    "reason": "Nasser's free university education decree and resulting enrollment surge confirmed by education historians.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nasser's free university education decree and resulting enrollment surge confirmed by education historians.",
+        "source": "https://en.wikipedia.org/wiki/Education_in_Egypt",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Education_in_Egypt"
   },
   {
     "year": 1961,
@@ -745,10 +770,10 @@
     "source": "https://en.wikipedia.org/wiki/United_Arab_Republic"
   },
   {
-    "year": 1961,
-    "title": "Egyptian University Enrollment Doubles Under Free Education Policy",
+    "year": 1962,
+    "title": "Arab Socialist Union Founded as Egypt's Single Party",
     "verdict": "TRUE",
-    "reason": "Nasser's free university education decree and resulting enrollment surge confirmed by education historians.",
+    "reason": "ASU established 1962 replacing National Union following National Charter — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -758,8 +783,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Nasser's free university education decree and resulting enrollment surge confirmed by education historians.",
-        "source": "https://en.wikipedia.org/wiki/Education_in_Egypt",
+        "reason": "ASU established 1962 replacing National Union following National Charter — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Arab_Socialist_Union_(Egypt)",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -767,7 +792,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Education_in_Egypt"
+    "source": "https://en.wikipedia.org/wiki/Arab_Socialist_Union_(Egypt)"
   },
   {
     "year": 1962,
@@ -795,10 +820,10 @@
     "source": "https://en.wikipedia.org/wiki/Egyptian_involvement_in_the_North_Yemen_Civil_War"
   },
   {
-    "year": 1962,
-    "title": "Arab Socialist Union Founded as Egypt's Single Party",
+    "year": 1964,
+    "title": "Aswan High Dam First Stage Completed",
     "verdict": "TRUE",
-    "reason": "ASU established 1962 replacing National Union following National Charter — confirmed.",
+    "reason": "First phase completion allowing Nile diversion in 1964 confirmed; celebrated as Egyptian-Soviet achievement.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -808,8 +833,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "ASU established 1962 replacing National Union following National Charter — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Arab_Socialist_Union_(Egypt)",
+        "reason": "First phase completion allowing Nile diversion in 1964 confirmed; celebrated as Egyptian-Soviet achievement.",
+        "source": "https://en.wikipedia.org/wiki/Aswan_High_Dam",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -817,7 +842,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Arab_Socialist_Union_(Egypt)"
+    "source": "https://en.wikipedia.org/wiki/Aswan_High_Dam"
   },
   {
     "year": 1964,
@@ -843,31 +868,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Palestine_Liberation_Organization"
-  },
-  {
-    "year": 1964,
-    "title": "Aswan High Dam First Stage Completed",
-    "verdict": "TRUE",
-    "reason": "First phase completion allowing Nile diversion in 1964 confirmed; celebrated as Egyptian-Soviet achievement.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "First phase completion allowing Nile diversion in 1964 confirmed; celebrated as Egyptian-Soviet achievement.",
-        "source": "https://en.wikipedia.org/wiki/Aswan_High_Dam",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Aswan_High_Dam"
   },
   {
     "year": 1965,
@@ -921,31 +921,6 @@
   },
   {
     "year": 1967,
-    "title": "Six-Day War: Egypt Suffers Catastrophic Defeat, Sinai Occupied",
-    "verdict": "TRUE",
-    "reason": "June 5-10, 1967; Israeli preemptive strikes destroyed Egyptian air force on ground; full Sinai occupied; Suez Canal closed — all confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "June 5-10, 1967; Israeli preemptive strikes destroyed Egyptian air force on ground; full Sinai occupied; Suez Canal closed — all confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Six-Day_War",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Six-Day_War"
-  },
-  {
-    "year": 1967,
     "title": "Khartoum Summit: Three Nos Resolution",
     "verdict": "TRUE",
     "reason": "September 1967 Khartoum summit; Three Nos (peace, recognition, negotiation with Israel) confirmed.",
@@ -970,10 +945,10 @@
     "source": "https://en.wikipedia.org/wiki/Khartoum_Resolution"
   },
   {
-    "year": 1968,
-    "title": "Student and Worker Protests Shake Egypt After 1967 Defeat",
+    "year": 1967,
+    "title": "Six-Day War: Egypt Suffers Catastrophic Defeat, Sinai Occupied",
     "verdict": "TRUE",
-    "reason": "February 1968 protests over lenient sentences for air force commanders; Nasser's promises of liberalization — confirmed.",
+    "reason": "June 5-10, 1967; Israeli preemptive strikes destroyed Egyptian air force on ground; full Sinai occupied; Suez Canal closed — all confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -983,8 +958,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "February 1968 protests over lenient sentences for air force commanders; Nasser's promises of liberalization — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1968_Egyptian_protests",
+        "reason": "June 5-10, 1967; Israeli preemptive strikes destroyed Egyptian air force on ground; full Sinai occupied; Suez Canal closed — all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Six-Day_War",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -992,7 +967,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1968_Egyptian_protests"
+    "source": "https://en.wikipedia.org/wiki/Six-Day_War"
   },
   {
     "year": 1968,
@@ -1018,6 +993,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Yom_Kippur_War"
+  },
+  {
+    "year": 1968,
+    "title": "Student and Worker Protests Shake Egypt After 1967 Defeat",
+    "verdict": "TRUE",
+    "reason": "February 1968 protests over lenient sentences for air force commanders; Nasser's promises of liberalization — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 1968 protests over lenient sentences for air force commanders; Nasser's promises of liberalization — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1968_Egyptian_protests",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1968_Egyptian_protests"
   },
   {
     "year": 1969,
@@ -1046,31 +1046,6 @@
   },
   {
     "year": 1970,
-    "title": "Nasser Dies; Anwar Sadat Becomes President",
-    "verdict": "TRUE",
-    "reason": "Nasser died of heart attack September 28, 1970; Sadat as vice president and successor confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Nasser died of heart attack September 28, 1970; Sadat as vice president and successor confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Gamal_Abdel_Nasser",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Gamal_Abdel_Nasser"
-  },
-  {
-    "year": 1970,
     "title": "Aswan High Dam Completed",
     "verdict": "TRUE",
     "reason": "Dam construction effectively completed 1970, officially inaugurated January 1971 — event notes this nuance correctly.",
@@ -1095,10 +1070,10 @@
     "source": "https://en.wikipedia.org/wiki/Aswan_High_Dam"
   },
   {
-    "year": 1971,
-    "title": "Sadat Consolidates Power: 'Corrective Revolution'",
+    "year": 1970,
+    "title": "Nasser Dies; Anwar Sadat Becomes President",
     "verdict": "TRUE",
-    "reason": "May 1971 Corrective Revolution; Ali Sabri and other Nasserist rivals arrested — confirmed.",
+    "reason": "Nasser died of heart attack September 28, 1970; Sadat as vice president and successor confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1108,8 +1083,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "May 1971 Corrective Revolution; Ali Sabri and other Nasserist rivals arrested — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Anwar_Sadat",
+        "reason": "Nasser died of heart attack September 28, 1970; Sadat as vice president and successor confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Gamal_Abdel_Nasser",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1117,7 +1092,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Anwar_Sadat"
+    "source": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Gamal_Abdel_Nasser"
   },
   {
     "year": 1971,
@@ -1143,6 +1118,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Constitution_of_Egypt"
+  },
+  {
+    "year": 1971,
+    "title": "Sadat Consolidates Power: 'Corrective Revolution'",
+    "verdict": "TRUE",
+    "reason": "May 1971 Corrective Revolution; Ali Sabri and other Nasserist rivals arrested — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 1971 Corrective Revolution; Ali Sabri and other Nasserist rivals arrested — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Anwar_Sadat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Anwar_Sadat"
   },
   {
     "year": 1971,
@@ -1196,31 +1196,6 @@
   },
   {
     "year": 1973,
-    "title": "October War: Egypt Crosses Suez Canal and Regains Leverage",
-    "verdict": "TRUE",
-    "reason": "October 6, 1973 crossing confirmed; Bar-Lev Line breached; Egyptian Third Army later encircled; UN ceasefire — all confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "October 6, 1973 crossing confirmed; Bar-Lev Line breached; Egyptian Third Army later encircled; UN ceasefire — all confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Yom_Kippur_War",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Yom_Kippur_War"
-  },
-  {
-    "year": 1973,
     "title": "Arab Oil Embargo Deployed as Weapon During October War",
     "verdict": "TRUE",
     "reason": "Arab oil embargo on US and Western Israel supporters; oil prices quadrupled; Egypt benefited from Arab solidarity — confirmed.",
@@ -1270,10 +1245,10 @@
     "source": "https://en.wikipedia.org/wiki/Egypt%E2%80%93Israel_disengagement_agreement_of_1974"
   },
   {
-    "year": 1974,
-    "title": "Sinai I Disengagement Agreement and Infitah Economic Opening",
+    "year": 1973,
+    "title": "October War: Egypt Crosses Suez Canal and Regains Leverage",
     "verdict": "TRUE",
-    "reason": "Sinai I signed January 1974 confirmed. Infitah (Open Door) policy announced simultaneously — confirmed.",
+    "reason": "October 6, 1973 crossing confirmed; Bar-Lev Line breached; Egyptian Third Army later encircled; UN ceasefire — all confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1283,8 +1258,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Sinai I signed January 1974 confirmed. Infitah (Open Door) policy announced simultaneously — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Egypt%E2%80%93Israel_disengagement_agreement_of_1974",
+        "reason": "October 6, 1973 crossing confirmed; Bar-Lev Line breached; Egyptian Third Army later encircled; UN ceasefire — all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Yom_Kippur_War",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1292,7 +1267,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Egypt%E2%80%93Israel_disengagement_agreement_of_1974"
+    "source": "https://en.wikipedia.org/wiki/Yom_Kippur_War"
   },
   {
     "year": 1974,
@@ -1320,10 +1295,10 @@
     "source": "https://en.wikipedia.org/wiki/Egypt%E2%80%93United_States_relations"
   },
   {
-    "year": 1975,
-    "title": "Suez Canal Reopened After Eight-Year Closure",
+    "year": 1974,
+    "title": "Sinai I Disengagement Agreement and Infitah Economic Opening",
     "verdict": "TRUE",
-    "reason": "Canal reopened June 5, 1975 (exactly 8 years after 1967 closure); Sadat's symbolic sailing confirmed.",
+    "reason": "Sinai I signed January 1974 confirmed. Infitah (Open Door) policy announced simultaneously — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1333,8 +1308,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Canal reopened June 5, 1975 (exactly 8 years after 1967 closure); Sadat's symbolic sailing confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Suez_Canal",
+        "reason": "Sinai I signed January 1974 confirmed. Infitah (Open Door) policy announced simultaneously — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Egypt%E2%80%93Israel_disengagement_agreement_of_1974",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1342,7 +1317,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Suez_Canal"
+    "source": "https://en.wikipedia.org/wiki/Egypt%E2%80%93Israel_disengagement_agreement_of_1974"
   },
   {
     "year": 1975,
@@ -1370,10 +1345,10 @@
     "source": "https://en.wikipedia.org/wiki/Sinai_II_Agreement"
   },
   {
-    "year": 1976,
-    "title": "Egyptian Political Parties Reestablished",
+    "year": 1975,
+    "title": "Suez Canal Reopened After Eight-Year Closure",
     "verdict": "TRUE",
-    "reason": "Sadat permitted limited party competition via ASU 'platforms' in 1976 confirmed. NDP emergence as ruling party confirmed.",
+    "reason": "Canal reopened June 5, 1975 (exactly 8 years after 1967 closure); Sadat's symbolic sailing confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1383,8 +1358,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Sadat permitted limited party competition via ASU 'platforms' in 1976 confirmed. NDP emergence as ruling party confirmed.",
-        "source": "https://en.wikipedia.org/wiki/National_Democratic_Party_(Egypt)",
+        "reason": "Canal reopened June 5, 1975 (exactly 8 years after 1967 closure); Sadat's symbolic sailing confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Suez_Canal",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1392,7 +1367,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/National_Democratic_Party_(Egypt)"
+    "source": "https://en.wikipedia.org/wiki/Suez_Canal"
   },
   {
     "year": 1976,
@@ -1418,6 +1393,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Egyptian_Treaty_of_Friendship_and_Cooperation"
+  },
+  {
+    "year": 1976,
+    "title": "Egyptian Political Parties Reestablished",
+    "verdict": "TRUE",
+    "reason": "Sadat permitted limited party competition via ASU 'platforms' in 1976 confirmed. NDP emergence as ruling party confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sadat permitted limited party competition via ASU 'platforms' in 1976 confirmed. NDP emergence as ruling party confirmed.",
+        "source": "https://en.wikipedia.org/wiki/National_Democratic_Party_(Egypt)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/National_Democratic_Party_(Egypt)"
   },
   {
     "year": 1977,
@@ -1621,31 +1621,6 @@
   },
   {
     "year": 1982,
-    "title": "Sinai Peninsula Fully Restored to Egypt",
-    "verdict": "TRUE",
-    "reason": "April 25, 1982 Israeli withdrawal from Sinai complete; MFO deployment confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "April 25, 1982 Israeli withdrawal from Sinai complete; MFO deployment confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Egypt%E2%80%93Israel_peace_treaty",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Egypt%E2%80%93Israel_peace_treaty"
-  },
-  {
-    "year": 1982,
     "title": "Egypt's Natural Gas Sector Begins Development",
     "verdict": "TRUE",
     "reason": "Egypt's gas sector development in Western Desert and Mediterranean offshore starting early 1980s confirmed.",
@@ -1668,6 +1643,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Natural_gas_in_Egypt"
+  },
+  {
+    "year": 1982,
+    "title": "Sinai Peninsula Fully Restored to Egypt",
+    "verdict": "TRUE",
+    "reason": "April 25, 1982 Israeli withdrawal from Sinai complete; MFO deployment confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 25, 1982 Israeli withdrawal from Sinai complete; MFO deployment confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Egypt%E2%80%93Israel_peace_treaty",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Egypt%E2%80%93Israel_peace_treaty"
   },
   {
     "year": 1983,
@@ -1721,31 +1721,6 @@
   },
   {
     "year": 1984,
-    "title": "Parliamentary Elections with Muslim Brotherhood Alliance",
-    "verdict": "TRUE",
-    "reason": "May 1984 elections; Brotherhood-Wafd alliance winning ~15% confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "May 1984 elections; Brotherhood-Wafd alliance winning ~15% confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1984_Egyptian_parliamentary_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1984_Egyptian_parliamentary_election"
-  },
-  {
-    "year": 1984,
     "title": "Egypt Begins IMF-Backed Economic Reforms",
     "verdict": "TRUE",
     "reason": "Egypt's mid-1980s IMF and World Bank reform negotiations for subsidy reduction and currency adjustment confirmed.",
@@ -1768,6 +1743,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Egypt"
+  },
+  {
+    "year": 1984,
+    "title": "Parliamentary Elections with Muslim Brotherhood Alliance",
+    "verdict": "TRUE",
+    "reason": "May 1984 elections; Brotherhood-Wafd alliance winning ~15% confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 1984 elections; Brotherhood-Wafd alliance winning ~15% confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1984_Egyptian_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1984_Egyptian_parliamentary_election"
   },
   {
     "year": 1985,
@@ -1896,31 +1896,6 @@
   },
   {
     "year": 1988,
-    "title": "Naguib Mahfouz Wins Nobel Prize in Literature",
-    "verdict": "TRUE",
-    "reason": "Nobel Prize in Literature awarded to Mahfouz in October 1988; first Arab author — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Nobel Prize in Literature awarded to Mahfouz in October 1988; first Arab author — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Naguib_Mahfouz",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Naguib_Mahfouz"
-  },
-  {
-    "year": 1988,
     "title": "Egyptian Foreign Debt Reaches Peak Levels",
     "verdict": "TRUE",
     "reason": "~$50B foreign debt by late 1980s confirmed; debt-to-GDP ratio among highest in developing world confirmed.",
@@ -1943,6 +1918,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Egypt"
+  },
+  {
+    "year": 1988,
+    "title": "Naguib Mahfouz Wins Nobel Prize in Literature",
+    "verdict": "TRUE",
+    "reason": "Nobel Prize in Literature awarded to Mahfouz in October 1988; first Arab author — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nobel Prize in Literature awarded to Mahfouz in October 1988; first Arab author — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Naguib_Mahfouz",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Naguib_Mahfouz"
   },
   {
     "year": 1989,
@@ -1996,31 +1996,6 @@
   },
   {
     "year": 1990,
-    "title": "Speaker of Parliament Rifaat al-Mahgoub Assassinated",
-    "verdict": "TRUE",
-    "reason": "October 1990 assassination by al-Gama'a al-Islamiyya confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "October 1990 assassination by al-Gama'a al-Islamiyya confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Rifaat_el-Mahgoub",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Rifaat_el-Mahgoub"
-  },
-  {
-    "year": 1990,
     "title": "Egyptian Workers Return from Kuwait After Iraqi Invasion",
     "verdict": "TRUE",
     "reason": "~700,000 Egyptian workers forced out of Kuwait/Iraq confirmed.",
@@ -2043,6 +2018,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Iraqi_invasion_of_Kuwait"
+  },
+  {
+    "year": 1990,
+    "title": "Speaker of Parliament Rifaat al-Mahgoub Assassinated",
+    "verdict": "TRUE",
+    "reason": "October 1990 assassination by al-Gama'a al-Islamiyya confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 1990 assassination by al-Gama'a al-Islamiyya confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Rifaat_el-Mahgoub",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Rifaat_el-Mahgoub"
   },
   {
     "year": 1991,
@@ -2307,31 +2307,6 @@
   },
   {
     "year": 1996,
-    "title": "Egyptian Militants Massacre Greek Tourists in Cairo",
-    "verdict": "TRUE",
-    "reason": "April 1996 Europa Hotel shooting; 18 Greek tourists killed (mistaken for Israelis) confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "April 1996 Europa Hotel shooting; 18 Greek tourists killed (mistaken for Israelis) confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1996_Cairo_shooting",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1996_Cairo_shooting"
-  },
-  {
-    "year": 1996,
     "title": "Egypt Joins World Trade Organization",
     "verdict": "TRUE",
     "reason": "Egypt was a founding WTO member in January 1995 (not 1996). Event dated 1996 describes Egypt 'deepening engagement' — the founding membership was 1995. Minor year imprecision but core claim valid.",
@@ -2356,10 +2331,10 @@
     "source": "https://www.wto.org/english/thewto_e/countries_e/egypt_e.htm"
   },
   {
-    "year": 1997,
-    "title": "Luxor Massacre Kills 62 Tourists; Al-Gama'a Announces Ceasefire",
+    "year": 1996,
+    "title": "Egyptian Militants Massacre Greek Tourists in Cairo",
     "verdict": "TRUE",
-    "reason": "November 17, 1997 attack at Hatshepsut temple; 62 killed (mostly Swiss tourists) confirmed. Al-Gama'a ceasefire — note: ceasefire was announced in 1997 but reports vary on exact timing relative to the attack. Core claim confirmed.",
+    "reason": "April 1996 Europa Hotel shooting; 18 Greek tourists killed (mistaken for Israelis) confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2369,8 +2344,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "November 17, 1997 attack at Hatshepsut temple; 62 killed (mostly Swiss tourists) confirmed. Al-Gama'a ceasefire — note: ceasefire was announced in 1997 but reports vary on exact timing relative to the attack. Core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Luxor_massacre",
+        "reason": "April 1996 Europa Hotel shooting; 18 Greek tourists killed (mistaken for Israelis) confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1996_Cairo_shooting",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2378,7 +2353,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Luxor_massacre"
+    "source": "https://en.wikipedia.org/wiki/1996_Cairo_shooting"
   },
   {
     "year": 1997,
@@ -2404,6 +2379,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Qualifying_industrial_zone"
+  },
+  {
+    "year": 1997,
+    "title": "Luxor Massacre Kills 62 Tourists; Al-Gama'a Announces Ceasefire",
+    "verdict": "TRUE",
+    "reason": "November 17, 1997 attack at Hatshepsut temple; 62 killed (mostly Swiss tourists) confirmed. Al-Gama'a ceasefire — note: ceasefire was announced in 1997 but reports vary on exact timing relative to the attack. Core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "November 17, 1997 attack at Hatshepsut temple; 62 killed (mostly Swiss tourists) confirmed. Al-Gama'a ceasefire — note: ceasefire was announced in 1997 but reports vary on exact timing relative to the attack. Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Luxor_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Luxor_massacre"
   },
   {
     "year": 1998,
@@ -2532,6 +2532,31 @@
   },
   {
     "year": 2001,
+    "title": "Egypt Condemns September 11 Attacks But Faces Scrutiny",
+    "verdict": "TRUE",
+    "reason": "Egyptian lead hijacker Atta; al-Zawahiri Egyptian identity; Egypt's condemnation and cooperation confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Egyptian lead hijacker Atta; al-Zawahiri Egyptian identity; Egypt's condemnation and cooperation confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mohamed_Atta",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Mohamed_Atta"
+  },
+  {
+    "year": 2001,
     "title": "Egyptian Pound Devaluation and Currency Crisis",
     "verdict": "TRUE",
     "reason": "Confirmed from multiple independent (non-madamasr) sources. Egypt's pound was pegged/overvalued against the dollar through the late 1990s; the peg came under pressure as reserves fell and the dollar strengthened. The IMF's 2001 Article IV Consultation (title itself: 'IMF Concludes 2001 Article IV Consultation with the Arab Republic of Egypt') documents 'sizable official reserve losses' and continued dollar-peg pressure in 2000/2001, with a 'tightly managed' float introduced in 2001. Independent reporting (Egyptian Streets timeline) confirms the pound weakened progressively to about EGP 4/USD by 2002 as part of this multi-step devaluation sequence. This culminated in the Egyptian government's full float announcement on 28 January 2003 (PM Atef Ebeid), after which the rate jumped from ~EGP 3.85 to over EGP 6-7/USD, with black-market rates running above the official rate — consistent with the described parallel-market pressure. All core elements (country=Egypt, year=2001 start of the pressure/devaluation series, overvalued peg, reserve decline, parallel/black market growth, series of devaluations culminating in full float in 2003) are corroborated by independent sources. Note: madamasr.com corroboration was excluded per instructions; verdict rests on Egyptian Streets, IMF Article IV PN01116 (title/metadata), and multiple secondary economic sources (PWC, Global Finance Magazine, academic sources) describing the same 2000-2003 devaluation trajectory.",
@@ -2568,31 +2593,6 @@
   },
   {
     "year": 2001,
-    "title": "Egypt Condemns September 11 Attacks But Faces Scrutiny",
-    "verdict": "TRUE",
-    "reason": "Egyptian lead hijacker Atta; al-Zawahiri Egyptian identity; Egypt's condemnation and cooperation confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Egyptian lead hijacker Atta; al-Zawahiri Egyptian identity; Egypt's condemnation and cooperation confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Mohamed_Atta",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Mohamed_Atta"
-  },
-  {
-    "year": 2001,
     "title": "Queen Boat Incident: Mass Arrest of Gay Men",
     "verdict": "TRUE",
     "reason": "May 2001 Queen Boat raid; 52 men arrested on debauchery charges — confirmed.",
@@ -2618,28 +2618,39 @@
   },
   {
     "year": 2003,
-    "title": "Egyptian Protests Against US Invasion of Iraq",
+    "title": "Egypt's Internet Penetration Begins Accelerating",
     "verdict": "TRUE",
-    "reason": "March 2003 mass anti-Iraq war protests in Cairo — confirmed.",
-    "verify_count": 1,
+    "reason": "Independent (non-Wikipedia) corroboration confirms the trend described. Naila Nabil Hamdy's academic paper \"The Internet and Egypt's National Development\" (American University in Cairo, published via Global Media Journal) documents: the government's Free Internet Model launched by the Ministry of Communications and Information Technology (MCIT) with Telecom Egypt in the beginning of 2002 (15,000 dial-up ports, ~2 million user capacity, no subscription charge beyond local call tariff), and MCIT granting ISPs licenses specifically to expand broadband capacity and establish international gateways. It gives concrete user-growth figures showing rapid acceleration: ~440,000 users in 1999, an estimated 560,000 by March 2001, rising to an estimated 1.8-4 million by the time of writing (2002-2004). Corroborating web search results (from an academic paper on the Free Internet Access project, via the MCIT counselor's public statement) put Egypt's internet users at 1,500,000 as of January 2003 -- based on Telecom Egypt tracking 750,000 phone lines dialing the free-internet access numbers -- and other tertiary sources describe roughly 3 million users by 2003 as Egypt's blogosphere began emerging, growing to ~5% penetration (roughly 3.5-4 million users) by 2004. This is a clear, well-documented multi-year acceleration (roughly 2x-3x user growth within about two years) driven directly by the described government free-internet and broadband-capacity initiatives, with 2003 sitting squarely inside the described \"began accelerating rapidly in the early 2000s\" window. The subsequent link to 2011 social-media activism is standard, widely-repeated context in this literature (not independently fact-checked here as it is a forward-looking framing claim, not the falsifiable core of the event). Because this is framed as a multi-year trend beginning in \"the early 2000s\" rather than a single dated action, and 2003 is mid-trend rather than the sole inception point, I did not downgrade to PARTIAL -- the country, general timeframe, actors (Egyptian government/MCIT/Telecom Egypt), and mechanism (free internet + broadband rollout) are all materially correct and independently verified.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "March 2003 mass anti-Iraq war protests in Cairo — confirmed.",
-        "source": "https://www.merip.org/2003/03/egypt-struggles-to-control-anti-war-protests/",
+        "reason": "Free internet programs and digital expansion in early 2000s confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Internet_in_Egypt",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent (non-Wikipedia) corroboration confirms the trend described. Naila Nabil Hamdy's academic paper \"The Internet and Egypt's National Development\" (American University in Cairo, published via Global Media Journal) documents: the government's Free Internet Model launched by the Ministry of Communications and Information Technology (MCIT) with Telecom Egypt in the beginning of 2002 (15,000 dial-up ports, ~2 million user capacity, no subscription charge beyond local call tariff), and MCIT granting ISPs licenses specifically to expand broadband capacity and establish international gateways. It gives concrete user-growth figures showing rapid acceleration: ~440,000 users in 1999, an estimated 560,000 by March 2001, rising to an estimated 1.8-4 million by the time of writing (2002-2004). Corroborating web search results (from an academic paper on the Free Internet Access project, via the MCIT counselor's public statement) put Egypt's internet users at 1,500,000 as of January 2003 -- based on Telecom Egypt tracking 750,000 phone lines dialing the free-internet access numbers -- and other tertiary sources describe roughly 3 million users by 2003 as Egypt's blogosphere began emerging, growing to ~5% penetration (roughly 3.5-4 million users) by 2004. This is a clear, well-documented multi-year acceleration (roughly 2x-3x user growth within about two years) driven directly by the described government free-internet and broadband-capacity initiatives, with 2003 sitting squarely inside the described \"began accelerating rapidly in the early 2000s\" window. The subsequent link to 2011 social-media activism is standard, widely-repeated context in this literature (not independently fact-checked here as it is a forward-looking framing claim, not the falsifiable core of the event). Because this is framed as a multi-year trend beginning in \"the early 2000s\" rather than a single dated action, and 2003 is mid-trend rather than the sole inception point, I did not downgrade to PARTIAL -- the country, general timeframe, actors (Egyptian government/MCIT/Telecom Egypt), and mechanism (free internet + broadband rollout) are all materially correct and independently verified.",
+        "source": "https://www.globalmediajournal.com/open-access/the-internet-and-egypts-national-development.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://www.merip.org/2003/03/egypt-struggles-to-control-anti-war-protests/"
+    "source": "https://www.globalmediajournal.com/open-access/the-internet-and-egypts-national-development.pdf"
   },
   {
     "year": 2003,
@@ -2679,45 +2690,9 @@
   },
   {
     "year": 2003,
-    "title": "Egypt's Internet Penetration Begins Accelerating",
+    "title": "Egyptian Protests Against US Invasion of Iraq",
     "verdict": "TRUE",
-    "reason": "Independent (non-Wikipedia) corroboration confirms the trend described. Naila Nabil Hamdy's academic paper \"The Internet and Egypt's National Development\" (American University in Cairo, published via Global Media Journal) documents: the government's Free Internet Model launched by the Ministry of Communications and Information Technology (MCIT) with Telecom Egypt in the beginning of 2002 (15,000 dial-up ports, ~2 million user capacity, no subscription charge beyond local call tariff), and MCIT granting ISPs licenses specifically to expand broadband capacity and establish international gateways. It gives concrete user-growth figures showing rapid acceleration: ~440,000 users in 1999, an estimated 560,000 by March 2001, rising to an estimated 1.8-4 million by the time of writing (2002-2004). Corroborating web search results (from an academic paper on the Free Internet Access project, via the MCIT counselor's public statement) put Egypt's internet users at 1,500,000 as of January 2003 -- based on Telecom Egypt tracking 750,000 phone lines dialing the free-internet access numbers -- and other tertiary sources describe roughly 3 million users by 2003 as Egypt's blogosphere began emerging, growing to ~5% penetration (roughly 3.5-4 million users) by 2004. This is a clear, well-documented multi-year acceleration (roughly 2x-3x user growth within about two years) driven directly by the described government free-internet and broadband-capacity initiatives, with 2003 sitting squarely inside the described \"began accelerating rapidly in the early 2000s\" window. The subsequent link to 2011 social-media activism is standard, widely-repeated context in this literature (not independently fact-checked here as it is a forward-looking framing claim, not the falsifiable core of the event). Because this is framed as a multi-year trend beginning in \"the early 2000s\" rather than a single dated action, and 2003 is mid-trend rather than the sole inception point, I did not downgrade to PARTIAL -- the country, general timeframe, actors (Egyptian government/MCIT/Telecom Egypt), and mechanism (free internet + broadband rollout) are all materially correct and independently verified.",
-    "verify_count": 2,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Free internet programs and digital expansion in early 2000s confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Internet_in_Egypt",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Independent (non-Wikipedia) corroboration confirms the trend described. Naila Nabil Hamdy's academic paper \"The Internet and Egypt's National Development\" (American University in Cairo, published via Global Media Journal) documents: the government's Free Internet Model launched by the Ministry of Communications and Information Technology (MCIT) with Telecom Egypt in the beginning of 2002 (15,000 dial-up ports, ~2 million user capacity, no subscription charge beyond local call tariff), and MCIT granting ISPs licenses specifically to expand broadband capacity and establish international gateways. It gives concrete user-growth figures showing rapid acceleration: ~440,000 users in 1999, an estimated 560,000 by March 2001, rising to an estimated 1.8-4 million by the time of writing (2002-2004). Corroborating web search results (from an academic paper on the Free Internet Access project, via the MCIT counselor's public statement) put Egypt's internet users at 1,500,000 as of January 2003 -- based on Telecom Egypt tracking 750,000 phone lines dialing the free-internet access numbers -- and other tertiary sources describe roughly 3 million users by 2003 as Egypt's blogosphere began emerging, growing to ~5% penetration (roughly 3.5-4 million users) by 2004. This is a clear, well-documented multi-year acceleration (roughly 2x-3x user growth within about two years) driven directly by the described government free-internet and broadband-capacity initiatives, with 2003 sitting squarely inside the described \"began accelerating rapidly in the early 2000s\" window. The subsequent link to 2011 social-media activism is standard, widely-repeated context in this literature (not independently fact-checked here as it is a forward-looking framing claim, not the falsifiable core of the event). Because this is framed as a multi-year trend beginning in \"the early 2000s\" rather than a single dated action, and 2003 is mid-trend rather than the sole inception point, I did not downgrade to PARTIAL -- the country, general timeframe, actors (Egyptian government/MCIT/Telecom Egypt), and mechanism (free internet + broadband rollout) are all materially correct and independently verified.",
-        "source": "https://www.globalmediajournal.com/open-access/the-internet-and-egypts-national-development.pdf",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-02",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.globalmediajournal.com/open-access/the-internet-and-egypts-national-development.pdf"
-  },
-  {
-    "year": 2004,
-    "title": "Sinai Bombings Target Tourist Resorts; New Extremist Network Emerges",
-    "verdict": "TRUE",
-    "reason": "October 2004 Taba Hilton and Ras al-Shaytan bombings; 34 killed; Sinai extremist network — confirmed.",
+    "reason": "March 2003 mass anti-Iraq war protests in Cairo — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2727,8 +2702,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "October 2004 Taba Hilton and Ras al-Shaytan bombings; 34 killed; Sinai extremist network — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2004_Sinai_bombings",
+        "reason": "March 2003 mass anti-Iraq war protests in Cairo — confirmed.",
+        "source": "https://www.merip.org/2003/03/egypt-struggles-to-control-anti-war-protests/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2736,7 +2711,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2004_Sinai_bombings"
+    "source": "https://www.merip.org/2003/03/egypt-struggles-to-control-anti-war-protests/"
   },
   {
     "year": 2004,
@@ -2789,6 +2764,31 @@
     "source": "https://policy.trade.ec.europa.eu/eu-trade-relationships-country-and-region/countries-and-regions/egypt_en"
   },
   {
+    "year": 2004,
+    "title": "Sinai Bombings Target Tourist Resorts; New Extremist Network Emerges",
+    "verdict": "TRUE",
+    "reason": "October 2004 Taba Hilton and Ras al-Shaytan bombings; 34 killed; Sinai extremist network — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 2004 Taba Hilton and Ras al-Shaytan bombings; 34 killed; Sinai extremist network — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2004_Sinai_bombings",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2004_Sinai_bombings"
+  },
+  {
     "year": 2005,
     "title": "First Contested Presidential Election; Brotherhood Wins 88 Parliamentary Seats",
     "verdict": "TRUE",
@@ -2812,31 +2812,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2005_Egyptian_presidential_election"
-  },
-  {
-    "year": 2005,
-    "title": "Sharm el-Sheikh Bombings Kill 88",
-    "verdict": "TRUE",
-    "reason": "July 23, 2005 bombings; 88 killed confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "July 23, 2005 bombings; 88 killed confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2005_Sharm_El_Sheikh_bombings",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2005_Sharm_El_Sheikh_bombings"
   },
   {
     "year": 2005,
@@ -2864,10 +2839,10 @@
     "source": "https://en.wikipedia.org/wiki/Kefaya"
   },
   {
-    "year": 2006,
-    "title": "Ferry Sinking on Red Sea Kills Hundreds",
+    "year": 2005,
+    "title": "Sharm el-Sheikh Bombings Kill 88",
     "verdict": "TRUE",
-    "reason": "February 2006 Al Salam Boccaccio 98 sinking; ~1,000 killed confirmed.",
+    "reason": "July 23, 2005 bombings; 88 killed confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2877,8 +2852,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "February 2006 Al Salam Boccaccio 98 sinking; ~1,000 killed confirmed.",
-        "source": "https://en.wikipedia.org/wiki/MS_al-Salam_Boccaccio_98",
+        "reason": "July 23, 2005 bombings; 88 killed confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2005_Sharm_El_Sheikh_bombings",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2886,7 +2861,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/MS_al-Salam_Boccaccio_98"
+    "source": "https://en.wikipedia.org/wiki/2005_Sharm_El_Sheikh_bombings"
   },
   {
     "year": 2006,
@@ -2914,6 +2889,31 @@
     "source": "https://en.wikipedia.org/wiki/Wael_Abbas"
   },
   {
+    "year": 2006,
+    "title": "Ferry Sinking on Red Sea Kills Hundreds",
+    "verdict": "TRUE",
+    "reason": "February 2006 Al Salam Boccaccio 98 sinking; ~1,000 killed confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 2006 Al Salam Boccaccio 98 sinking; ~1,000 killed confirmed.",
+        "source": "https://en.wikipedia.org/wiki/MS_al-Salam_Boccaccio_98",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/MS_al-Salam_Boccaccio_98"
+  },
+  {
     "year": 2007,
     "title": "Constitutional Amendments Weaken Opposition",
     "verdict": "TRUE",
@@ -2937,6 +2937,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Egyptian_Constitution_of_1971"
+  },
+  {
+    "year": 2007,
+    "title": "Egypt Launches Its First Remote-Sensing Satellite, EgyptSat-1",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources (Wikipedia, Gunter's Space Page, eoPortal, RussianSpaceWeb, NASA NSSDCA) confirm all material details: EgyptSat-1 (MisrSat-1), Egypt's first Earth remote-sensing satellite, launched 17 April 2007 aboard a Dnepr rocket from Baikonur Cosmodrome. It was jointly built by Egypt's National Authority for Remote Sensing and Space Sciences (NARSS) and Ukraine's Yuzhnoye Design Bureau, weighed 100 kg, and carried an infrared sensor and multispectral imager. Ground controllers lost contact with the satellite in mid-2010 (sources cite loss of S-band control-signal communication in July 2010, publicly announced in October 2010). All facts in the event description (country, year, satellite name, builders, launch vehicle/site, mass, payload, end-of-life timing) match independent sourcing exactly.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (eoPortal, Gunter's Space Page, RussianSpaceWeb, NASA NSSDCA, FlightGlobal) confirm EgyptSat-1 (MisrSat-1), Egypt's first Earth remote-sensing satellite, launched 17 April 2007 aboard a Dnepr rocket from Baikonur Cosmodrome. It was jointly developed by Egypt's National Authority for Remote Sensing and Space Sciences and Ukraine's Yuzhnoye Design Bureau, was a ~100 kg minisatellite carrying infrared and high-resolution multispectral imagers, and ground controllers lost contact with it in mid-2010 (S-band control signal lost 19 July 2010, officially announced by NARSS on 23 October 2010). All material details in the description (date, country, satellite name, builders, launch vehicle/site, mass, payload type, and loss-of-contact timing) are corroborated.",
+        "source": "https://www.eoportal.org/satellite-missions/egyptsat-1",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Wikipedia, Gunter's Space Page, eoPortal, RussianSpaceWeb, NASA NSSDCA) confirm all material details: EgyptSat-1 (MisrSat-1), Egypt's first Earth remote-sensing satellite, launched 17 April 2007 aboard a Dnepr rocket from Baikonur Cosmodrome. It was jointly built by Egypt's National Authority for Remote Sensing and Space Sciences (NARSS) and Ukraine's Yuzhnoye Design Bureau, weighed 100 kg, and carried an infrared sensor and multispectral imager. Ground controllers lost contact with the satellite in mid-2010 (sources cite loss of S-band control-signal communication in July 2010, publicly announced in October 2010). All facts in the event description (country, year, satellite name, builders, launch vehicle/site, mass, payload, end-of-life timing) match independent sourcing exactly.",
+        "source": "https://en.wikipedia.org/wiki/EgyptSat_1",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/EgyptSat_1"
   },
   {
     "year": 2007,
@@ -3001,31 +3037,6 @@
   },
   {
     "year": 2008,
-    "title": "Global Food Price Crisis Hits Egypt Hard",
-    "verdict": "TRUE",
-    "reason": "2008 food price spike; subsidized bakery queues and deaths confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "2008 food price spike; subsidized bakery queues and deaths confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2007%E2%80%932008_world_food_price_crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2007%E2%80%932008_world_food_price_crisis"
-  },
-  {
-    "year": 2008,
     "title": "Egypt Tightens Gaza Blockade with Israel",
     "verdict": "TRUE",
     "reason": "Egypt tightening Gaza blockade after Hamas Gaza takeover confirmed.",
@@ -3048,6 +3059,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Blockade_of_the_Gaza_Strip"
+  },
+  {
+    "year": 2008,
+    "title": "Global Food Price Crisis Hits Egypt Hard",
+    "verdict": "TRUE",
+    "reason": "2008 food price spike; subsidized bakery queues and deaths confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "2008 food price spike; subsidized bakery queues and deaths confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2007%E2%80%932008_world_food_price_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2007%E2%80%932008_world_food_price_crisis"
   },
   {
     "year": 2009,
@@ -3101,6 +3137,31 @@
   },
   {
     "year": 2010,
+    "title": "Alexandria Church Bombing Kills 23 Coptic Christians",
+    "verdict": "TRUE",
+    "reason": "New Year's Eve 2010/2011 Two Saints Church bombing killing 23 confirmed. Event dated 2010 which is correct (attack was Jan 1 2011 local midnight, occurring Dec 31 2010 in some accounts). Wikipedia dates it 2011.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "New Year's Eve 2010/2011 Two Saints Church bombing killing 23 confirmed. Event dated 2010 which is correct (attack was Jan 1 2011 local midnight, occurring Dec 31 2010 in some accounts). Wikipedia dates it 2011.",
+        "source": "https://en.wikipedia.org/wiki/2011_Alexandria_bombing",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2011_Alexandria_bombing"
+  },
+  {
+    "year": 2010,
     "title": "Khaled Said Beaten to Death by Police",
     "verdict": "TRUE",
     "reason": "June 2010 Khaled Said killing; 'We Are All Khaled Said' Facebook page confirmed.",
@@ -3150,10 +3211,10 @@
     "source": "https://en.wikipedia.org/wiki/2010_Egyptian_parliamentary_election"
   },
   {
-    "year": 2010,
-    "title": "Alexandria Church Bombing Kills 23 Coptic Christians",
+    "year": 2011,
+    "title": "First Free Parliamentary Elections in Egypt's History",
     "verdict": "TRUE",
-    "reason": "New Year's Eve 2010/2011 Two Saints Church bombing killing 23 confirmed. Event dated 2010 which is correct (attack was Jan 1 2011 local midnight, occurring Dec 31 2010 in some accounts). Wikipedia dates it 2011.",
+    "reason": "November-December 2011 elections; FJP ~47%; Nour ~25% — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3163,8 +3224,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "New Year's Eve 2010/2011 Two Saints Church bombing killing 23 confirmed. Event dated 2010 which is correct (attack was Jan 1 2011 local midnight, occurring Dec 31 2010 in some accounts). Wikipedia dates it 2011.",
-        "source": "https://en.wikipedia.org/wiki/2011_Alexandria_bombing",
+        "reason": "November-December 2011 elections; FJP ~47%; Nour ~25% — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2011%E2%80%9312_Egyptian_parliamentary_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3172,7 +3233,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2011_Alexandria_bombing"
+    "source": "https://en.wikipedia.org/wiki/2011%E2%80%9312_Egyptian_parliamentary_election"
   },
   {
     "year": 2011,
@@ -3201,31 +3262,6 @@
   },
   {
     "year": 2011,
-    "title": "First Free Parliamentary Elections in Egypt's History",
-    "verdict": "TRUE",
-    "reason": "November-December 2011 elections; FJP ~47%; Nour ~25% — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "November-December 2011 elections; FJP ~47%; Nour ~25% — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2011%E2%80%9312_Egyptian_parliamentary_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2011%E2%80%9312_Egyptian_parliamentary_election"
-  },
-  {
-    "year": 2011,
     "title": "Mubarak and Sons Arrested, Tried for Corruption and Murder",
     "verdict": "TRUE",
     "reason": "Mubarak and sons arrested; corruption and murder trial; eventual acquittal on murder charges 2014 confirmed.",
@@ -3248,6 +3284,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Hosni_Mubarak"
+  },
+  {
+    "year": 2012,
+    "title": "Egypt's New Islamist-Drafted Constitution Approved in Referendum",
+    "verdict": "TRUE",
+    "reason": "December 2012 referendum; 63.8% approval; Islamist-dominated assembly; widespread boycott confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 2012 referendum; 63.8% approval; Islamist-dominated assembly; widespread boycott confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2012_Egyptian_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2012_Egyptian_constitutional_referendum"
   },
   {
     "year": 2012,
@@ -3300,31 +3361,6 @@
     "source": "https://en.wikipedia.org/wiki/2012%E2%80%932013_Egyptian_protests"
   },
   {
-    "year": 2012,
-    "title": "Egypt's New Islamist-Drafted Constitution Approved in Referendum",
-    "verdict": "TRUE",
-    "reason": "December 2012 referendum; 63.8% approval; Islamist-dominated assembly; widespread boycott confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "December 2012 referendum; 63.8% approval; Islamist-dominated assembly; widespread boycott confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2012_Egyptian_constitutional_referendum",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2012_Egyptian_constitutional_referendum"
-  },
-  {
     "year": 2013,
     "title": "Military Removes Morsi in Coup",
     "verdict": "TRUE",
@@ -3351,31 +3387,6 @@
   },
   {
     "year": 2013,
-    "title": "Rabaa Massacre: Security Forces Kill Hundreds of Brotherhood Supporters",
-    "verdict": "TRUE",
-    "reason": "August 14, 2013; HRW documents minimum 817 killed (event says 'at least 817') confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "August 14, 2013; HRW documents minimum 817 killed (event says 'at least 817') confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Rabaa_massacre",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Rabaa_massacre"
-  },
-  {
-    "year": 2013,
     "title": "Muslim Brotherhood Declared Terrorist Organization",
     "verdict": "TRUE",
     "reason": "December 2013 terrorist designation confirmed.",
@@ -3398,6 +3409,31 @@
       }
     ],
     "source": "https://www.loc.gov/item/global-legal-monitor/2014-04-17/egypt-council-of-ministers-issues-decree-classifying-muslim-brotherhood-as-terrorist-organization"
+  },
+  {
+    "year": 2013,
+    "title": "Rabaa Massacre: Security Forces Kill Hundreds of Brotherhood Supporters",
+    "verdict": "TRUE",
+    "reason": "August 14, 2013; HRW documents minimum 817 killed (event says 'at least 817') confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 14, 2013; HRW documents minimum 817 killed (event says 'at least 817') confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Rabaa_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Rabaa_massacre"
   },
   {
     "year": 2013,
@@ -3451,31 +3487,6 @@
   },
   {
     "year": 2014,
-    "title": "New Suez Canal Expansion Project Announced",
-    "verdict": "TRUE",
-    "reason": "Sisi's 2014 expanded Suez Canal project announcement confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Sisi's 2014 expanded Suez Canal project announcement confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Suez_Canal_Area_Development_Project",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Suez_Canal_Area_Development_Project"
-  },
-  {
-    "year": 2014,
     "title": "Egypt's Economy Under Severe Stress; Gulf Bailout",
     "verdict": "TRUE",
     "reason": "Gulf states' $12B+ emergency assistance post-2013 coup confirmed.",
@@ -3500,10 +3511,10 @@
     "source": "https://www.washingtoninstitute.org/policy-analysis/gulf-aid-egypt-and-us-policy"
   },
   {
-    "year": 2015,
-    "title": "New Suez Canal Opened; Russian Plane Bombing Devastates Tourism",
+    "year": 2014,
+    "title": "New Suez Canal Expansion Project Announced",
     "verdict": "TRUE",
-    "reason": "New Suez Canal inaugurated August 2015; Metrojet Flight 9268 bombed October 2015 killing 224 confirmed.",
+    "reason": "Sisi's 2014 expanded Suez Canal project announcement confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3513,8 +3524,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "New Suez Canal inaugurated August 2015; Metrojet Flight 9268 bombed October 2015 killing 224 confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Metrojet_Flight_9268",
+        "reason": "Sisi's 2014 expanded Suez Canal project announcement confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Suez_Canal_Area_Development_Project",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3522,7 +3533,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Metrojet_Flight_9268"
+    "source": "https://en.wikipedia.org/wiki/Suez_Canal_Area_Development_Project"
   },
   {
     "year": 2015,
@@ -3550,10 +3561,10 @@
     "source": "https://en.wikipedia.org/wiki/Saudi-led_intervention_in_the_Yemeni_civil_war"
   },
   {
-    "year": 2016,
-    "title": "Egypt Transfers Tiran and Sanafir Islands to Saudi Arabia",
+    "year": 2015,
+    "title": "New Suez Canal Opened; Russian Plane Bombing Devastates Tourism",
     "verdict": "TRUE",
-    "reason": "April 2016 island transfer agreement confirmed; public protests confirmed.",
+    "reason": "New Suez Canal inaugurated August 2015; Metrojet Flight 9268 bombed October 2015 killing 224 confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3563,8 +3574,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "April 2016 island transfer agreement confirmed; public protests confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Sanafir_Island",
+        "reason": "New Suez Canal inaugurated August 2015; Metrojet Flight 9268 bombed October 2015 killing 224 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Metrojet_Flight_9268",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3572,7 +3583,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Sanafir_Island"
+    "source": "https://en.wikipedia.org/wiki/Metrojet_Flight_9268"
   },
   {
     "year": 2016,
@@ -3612,6 +3623,31 @@
   },
   {
     "year": 2016,
+    "title": "Egypt Transfers Tiran and Sanafir Islands to Saudi Arabia",
+    "verdict": "TRUE",
+    "reason": "April 2016 island transfer agreement confirmed; public protests confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "April 2016 island transfer agreement confirmed; public protests confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Sanafir_Island",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sanafir_Island"
+  },
+  {
+    "year": 2016,
     "title": "Giulio Regeni Murder Strains Egypt-Italy Relations",
     "verdict": "TRUE",
     "reason": "February 2016 Regeni body found; evidence pointing to Egyptian security services; Italy recalled ambassador confirmed.",
@@ -3634,31 +3670,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Killing_of_Giulio_Regeni"
-  },
-  {
-    "year": 2017,
-    "title": "Palm Sunday Church Bombings Kill Dozens of Coptic Christians",
-    "verdict": "TRUE",
-    "reason": "April 9, 2017 bombings in Tanta and Alexandria; 45 killed; ISIS confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "April 9, 2017 bombings in Tanta and Alexandria; 45 killed; ISIS confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Palm_Sunday_church_bombings",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Palm_Sunday_church_bombings"
   },
   {
     "year": 2017,
@@ -3711,10 +3722,10 @@
     "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis"
   },
   {
-    "year": 2018,
-    "title": "Sisi Re-elected with 97%; Operation Sinai 2018 Launched",
+    "year": 2017,
+    "title": "Palm Sunday Church Bombings Kill Dozens of Coptic Christians",
     "verdict": "TRUE",
-    "reason": "March 2018 re-election 97%; Operation Sinai 2018 simultaneous launch confirmed.",
+    "reason": "April 9, 2017 bombings in Tanta and Alexandria; 45 killed; ISIS confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3724,8 +3735,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "March 2018 re-election 97%; Operation Sinai 2018 simultaneous launch confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2018_Egyptian_presidential_election",
+        "reason": "April 9, 2017 bombings in Tanta and Alexandria; 45 killed; ISIS confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Palm_Sunday_church_bombings",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3733,7 +3744,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2018_Egyptian_presidential_election"
+    "source": "https://en.wikipedia.org/wiki/Palm_Sunday_church_bombings"
   },
   {
     "year": 2018,
@@ -3759,6 +3770,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/The_New_Capital"
+  },
+  {
+    "year": 2018,
+    "title": "Sisi Re-elected with 97%; Operation Sinai 2018 Launched",
+    "verdict": "TRUE",
+    "reason": "March 2018 re-election 97%; Operation Sinai 2018 simultaneous launch confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 2018 re-election 97%; Operation Sinai 2018 simultaneous launch confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2018_Egyptian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2018_Egyptian_presidential_election"
   },
   {
     "year": 2019,
@@ -3912,31 +3948,6 @@
   },
   {
     "year": 2021,
-    "title": "Ever Given Container Ship Blocks Suez Canal for Six Days",
-    "verdict": "TRUE",
-    "reason": "March 2021 Ever Given grounding; six-day blockage; $9.6B/day estimate confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "March 2021 Ever Given grounding; six-day blockage; $9.6B/day estimate confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2021_Suez_Canal_obstruction",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2021_Suez_Canal_obstruction"
-  },
-  {
-    "year": 2021,
     "title": "Egypt Mediates Gaza-Israel Ceasefire",
     "verdict": "TRUE",
     "reason": "May 2021 Egypt-mediated Gaza ceasefire after 11-day conflict confirmed.",
@@ -3959,6 +3970,31 @@
       }
     ],
     "source": "https://www.aljazeera.com/news/2021/5/20/israel-and-hamas-annouce-gaza-ceasefire"
+  },
+  {
+    "year": 2021,
+    "title": "Ever Given Container Ship Blocks Suez Canal for Six Days",
+    "verdict": "TRUE",
+    "reason": "March 2021 Ever Given grounding; six-day blockage; $9.6B/day estimate confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 2021 Ever Given grounding; six-day blockage; $9.6B/day estimate confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2021_Suez_Canal_obstruction",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2021_Suez_Canal_obstruction"
   },
   {
     "year": 2022,
@@ -4048,31 +4084,6 @@
   },
   {
     "year": 2023,
-    "title": "Gaza War Creates Refugee and Diplomatic Crisis for Egypt",
-    "verdict": "TRUE",
-    "reason": "October 2023 Gaza war; Egypt refusing Palestinian refugees into Sinai; pressure and red-line statements confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "October 2023 Gaza war; Egypt refusing Palestinian refugees into Sinai; pressure and red-line statements confirmed.",
-        "source": "https://www.npr.org/2023/12/12/1218388766/egypt-israel-gaza-palestinians-hamas",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.npr.org/2023/12/12/1218388766/egypt-israel-gaza-palestinians-hamas"
-  },
-  {
-    "year": 2023,
     "title": "Egypt's Economy Faces Currency Shortage and Inflation",
     "verdict": "TRUE",
     "reason": "Multiple independent, non-Wikipedia sources confirm all material elements: (1) acute foreign currency shortage in 2023 prevented importers from opening letters of credit — Al Jazeera reported Egypt's state grains buyer deferring wheat-import LCs due to the dollar crunch, trade.gov documented the EGP losing ~40% of its value in Jan 2023 devaluation and a $9.5B import backlog, EgyptToday/Mada Masr covered central bank LC restrictions on non-essential imports; (2) inflation materially exceeded the 35-40% range — Bloomberg (July 2023) reported food inflation surging past 35% to a record, VOA reported headline inflation hit nearly 40% (peaking 39.7% in August 2023), core inflation reached 41% in June per FocusEconomics/tradingeconomics; (3) discussion of the limits of Sisi's military-led mega-project model is extensively documented in 2023 commentary — Al Jazeera ('As economic crisis deepens, will Egypt slow megaprojects down?'), Middle East Eye ('Sisi's vision has crippled Egypt'), Arab Center DC, and CSMonitor all discuss exactly this framing, including the IMF's Jan 2023 report pushing Egypt to slow public investment and limit the military's economic role. Year and country both hold; no material detail is off.",
@@ -4108,10 +4119,10 @@
     "source": "https://www.bloomberg.com/news/articles/2023-07-10/egypt-s-inflation-soars-to-record-as-food-drives-surge-past-35"
   },
   {
-    "year": 2024,
-    "title": "Egypt-IMF Deal Expanded to $8 Billion; UAE Ras el-Hekma Investment",
+    "year": 2023,
+    "title": "Gaza War Creates Refugee and Diplomatic Crisis for Egypt",
     "verdict": "TRUE",
-    "reason": "March 2024 $8B IMF deal; $35B UAE Ras el-Hekma investment; 60% additional pound devaluation confirmed.",
+    "reason": "October 2023 Gaza war; Egypt refusing Palestinian refugees into Sinai; pressure and red-line statements confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4121,8 +4132,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "March 2024 $8B IMF deal; $35B UAE Ras el-Hekma investment; 60% additional pound devaluation confirmed.",
-        "source": "https://www.imf.org/en/news/articles/2024/03/29/pr24101-egypt-imf-executive-board-completes-first-second-reviews-eff-approves-augmentation",
+        "reason": "October 2023 Gaza war; Egypt refusing Palestinian refugees into Sinai; pressure and red-line statements confirmed.",
+        "source": "https://www.npr.org/2023/12/12/1218388766/egypt-israel-gaza-palestinians-hamas",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4130,7 +4141,7 @@
         }
       }
     ],
-    "source": "https://www.imf.org/en/news/articles/2024/03/29/pr24101-egypt-imf-executive-board-completes-first-second-reviews-eff-approves-augmentation"
+    "source": "https://www.npr.org/2023/12/12/1218388766/egypt-israel-gaza-palestinians-hamas"
   },
   {
     "year": 2024,
@@ -4156,6 +4167,31 @@
       }
     ],
     "source": "https://www.aljazeera.com/news/2024/8/8/qatar-egypt-us-leaders-invite-israel-and-hamas-to-resume-ceasefire-talks"
+  },
+  {
+    "year": 2024,
+    "title": "Egypt-IMF Deal Expanded to $8 Billion; UAE Ras el-Hekma Investment",
+    "verdict": "TRUE",
+    "reason": "March 2024 $8B IMF deal; $35B UAE Ras el-Hekma investment; 60% additional pound devaluation confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 2024 $8B IMF deal; $35B UAE Ras el-Hekma investment; 60% additional pound devaluation confirmed.",
+        "source": "https://www.imf.org/en/news/articles/2024/03/29/pr24101-egypt-imf-executive-board-completes-first-second-reviews-eff-approves-augmentation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.imf.org/en/news/articles/2024/03/29/pr24101-egypt-imf-executive-board-completes-first-second-reviews-eff-approves-augmentation"
   },
   {
     "year": 2024,

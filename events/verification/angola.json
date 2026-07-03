@@ -327,12 +327,12 @@
   {
     "year": 1977,
     "title": "Nationalization of Banks and Major Industries",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: MPLA nationalizations of banks and industries in the socialist period are well documented; timing consistent with 1975-1977 socialist consolidation.; Pass 2 FALSE: The content described (MPLA nationalizing banks, insurance companies, major industries and agricultural estates, causing economic collapse amid the exodus of Portuguese settlers) is real for Angola, but multiple independent, non-Wikipedia sources converge that the core legal nationalization wave happened in 1976, not 1977. Specifically: the March 1976 'Law on State Intervention' (also referenced as the 'Nationalizations and Expropriation Law of 1976') nationalized abandoned businesses including a steel works, cement plant, textile and sugar mills, agricultural complexes, the central bank and all commercial banks, and the insurance industry; Banco de Angola was reconstituted as Banco Nacional de Angola via Decree-Law 69/76 (Official Gazette, 10 Nov 1976); the state oil company (precursor to Sonangol) was created via Decree 52 of 1976. Insurance was later further consolidated into the state monopoly ENSA in February 1978. No source found ties a comparable major nationalization act specifically to 1977 — the defining 1977 events in Angola are the Nito Alves coup attempt (May 1977) and the MPLA's First Congress declaring itself Marxist-Leninist (December 1977), neither of which is the nationalization act itself. Since the year is a hard join key and does not hold, this is FALSE with corrected_year=1976 rather than PARTIAL.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
+    "verdict": "FALSE",
+    "reason": "The MPLA government's nationalization of banks, industries, and agricultural estates in Angola is real, but it happened predominantly in 1975-1976, not 1977. Independent sources (countrystudies.us, a public-domain Library of Congress Federal Research Division country study, and encyclopedia.com) show: banks (Bank of Angola, Commercial Bank of Angola) were nationalized in 1976; the Law on State Intervention (March 1976) formally nationalized abandoned private industrial enterprises; a further October 1976 party plenum resolution created a large state sector covering abandoned commercial farms, mining, and banking. Insurance was nationalized later still, in 1978. 1977 itself was dominated by a different set of events (the MPLA crushing the Nitista coup attempt and formally declaring itself a Marxist-Leninist vanguard party at its December 1977 congress) rather than the bank/industry/insurance nationalization wave described here. Since no independent source places the described bundle of nationalizations (banks + insurance + industries + agricultural estates) concretely in 1977, and the core legislative/economic actions cluster in 1976 (with insurance trailing into 1978), the year as given is wrong. Corrected to 1976, the year of the Law on State Intervention and the bank/industry nationalizations that form the bulk of the description.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
     "source_independence": "independent",
     "verifications": [
       {
@@ -357,8 +357,22 @@
           "method": "web_search"
         },
         "corrected_year": 1976
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "The MPLA government's nationalization of banks, industries, and agricultural estates in Angola is real, but it happened predominantly in 1975-1976, not 1977. Independent sources (countrystudies.us, a public-domain Library of Congress Federal Research Division country study, and encyclopedia.com) show: banks (Bank of Angola, Commercial Bank of Angola) were nationalized in 1976; the Law on State Intervention (March 1976) formally nationalized abandoned private industrial enterprises; a further October 1976 party plenum resolution created a large state sector covering abandoned commercial farms, mining, and banking. Insurance was nationalized later still, in 1978. 1977 itself was dominated by a different set of events (the MPLA crushing the Nitista coup attempt and formally declaring itself a Marxist-Leninist vanguard party at its December 1977 congress) rather than the bank/industry/insurance nationalization wave described here. Since no independent source places the described bundle of nationalizations (banks + insurance + industries + agricultural estates) concretely in 1977, and the core legislative/economic actions cluster in 1976 (with insurance trailing into 1978), the year as given is wrong. Corrected to 1976, the year of the Law on State Intervention and the bank/industry nationalizations that form the bulk of the description.",
+        "source": "https://countrystudies.us/angola/43.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1976
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://countrystudies.us/angola/43.htm"
   },
   {
     "year": 1979,
@@ -1220,5 +1234,43 @@
       }
     ],
     "source": "https://www.state.gov/u-s-relations-with-angola/"
+  },
+  {
+    "year": 1963,
+    "title": "Gulf Oil Begins Offshore Exploration in Cabinda",
+    "verdict": "FALSE",
+    "reason": "Country and general premise (Gulf Oil / Cabinda Gulf Oil Company exploring for oil in the Cabinda enclave under Portuguese concession) are real, but the year 1963 is not supported by any source found. Multiple independent sources consistently place the actual milestones years apart from 1963: CABGOC began exploration with a geological field survey in 1954 (confirmed directly on offshore-mag.com and Wikipedia's Cabinda Province page); the original concession covering both onshore and offshore acreage was awarded on 22 Nov 1957; the first onshore well was drilled in 1958 at Ponta Vermelha; and offshore drilling/discovery (the Malongo field) came later, cited variously as 1966 (most common), 1967 (Wikipedia), or 1968 (GeoExpro), with first oil production in 1968. No source mentions 1963 as a milestone year for Cabinda oil exploration - it falls in a quiet gap between the 1957 concession and the mid/late-1960s offshore drilling campaign. Since the year is materially wrong for the specific claim ('began offshore exploration'), this is a FALSE per the hard rule (year wrong), with corrected_year set to 1966, the most frequently cited year for the first offshore well/discovery.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources consistently document a different timeline for Gulf Oil / Cabinda Gulf Oil Company (CABGOC) in Cabinda: formed 1954 with first geological field survey; original concession (covering both onshore and offshore acreage) awarded by Portugal on November 22, 1957; first onshore well drilled at Ponta Vermelha in 1958; operations disrupted by the 1961 colonial war outbreak and resumed after Portugal regained control of Cabinda in 1962; the first OFFSHORE discovery (Malongo Field) came in 1966, with first offshore oil production in 1968. No source found supports 1963 as the year offshore exploration began or as when 'early surveys confirmed significant hydrocarbon reserves' — that description matches the well-documented 1966 discovery far better than 1963. The underlying company/country/broad narrative (Gulf Oil, Cabinda, Portugal concession, eventual major oil producer) is real, but the specific year and the 'offshore exploration begins + reserves confirmed' framing do not match 1963.",
+        "source": "https://geoexpro.com/milestones-in-angolas-oil-history/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1966
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Country and general premise (Gulf Oil / Cabinda Gulf Oil Company exploring for oil in the Cabinda enclave under Portuguese concession) are real, but the year 1963 is not supported by any source found. Multiple independent sources consistently place the actual milestones years apart from 1963: CABGOC began exploration with a geological field survey in 1954 (confirmed directly on offshore-mag.com and Wikipedia's Cabinda Province page); the original concession covering both onshore and offshore acreage was awarded on 22 Nov 1957; the first onshore well was drilled in 1958 at Ponta Vermelha; and offshore drilling/discovery (the Malongo field) came later, cited variously as 1966 (most common), 1967 (Wikipedia), or 1968 (GeoExpro), with first oil production in 1968. No source mentions 1963 as a milestone year for Cabinda oil exploration - it falls in a quiet gap between the 1957 concession and the mid/late-1960s offshore drilling campaign. Since the year is materially wrong for the specific claim ('began offshore exploration'), this is a FALSE per the hard rule (year wrong), with corrected_year set to 1966, the most frequently cited year for the first offshore well/discovery.",
+        "source": "https://www.offshore-mag.com/business-briefs/company-news/company/55293229/cabinda-gulf-oil-company-limited",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1966
+      }
+    ],
+    "source": "https://www.offshore-mag.com/business-briefs/company-news/company/55293229/cabinda-gulf-oil-company-limited"
   }
 ]

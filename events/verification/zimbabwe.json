@@ -101,31 +101,6 @@
   },
   {
     "year": 1963,
-    "title": "ZANU Splits from ZAPU",
-    "verdict": "TRUE",
-    "reason": "ZANU founded August 1963 by Ndabaningi Sithole and others (Mugabe as secretary-general). Split reasons (Nkomo leadership style, external vs internal struggle) confirmed. Broad ethnic dimension (Shona/ZANU, Ndebele/ZAPU) documented.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "ZANU founded August 1963 by Ndabaningi Sithole and others (Mugabe as secretary-general). Split reasons (Nkomo leadership style, external vs internal struggle) confirmed. Broad ethnic dimension (Shona/ZANU, Ndebele/ZAPU) documented.",
-        "source": "https://en.wikipedia.org/wiki/Zimbabwe_African_National_Union",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Zimbabwe_African_National_Union"
-  },
-  {
-    "year": 1963,
     "title": "Central African Federation Dissolved",
     "verdict": "TRUE",
     "reason": "Federation dissolved 31 December 1963. Northern Rhodesia became Zambia (Oct 1964) and Nyasaland became Malawi (July 1964). Southern Rhodesia reverted to colonial status. All facts correct.",
@@ -148,6 +123,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Federation_of_Rhodesia_and_Nyasaland"
+  },
+  {
+    "year": 1963,
+    "title": "ZANU Splits from ZAPU",
+    "verdict": "TRUE",
+    "reason": "ZANU founded August 1963 by Ndabaningi Sithole and others (Mugabe as secretary-general). Split reasons (Nkomo leadership style, external vs internal struggle) confirmed. Broad ethnic dimension (Shona/ZANU, Ndebele/ZAPU) documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ZANU founded August 1963 by Ndabaningi Sithole and others (Mugabe as secretary-general). Split reasons (Nkomo leadership style, external vs internal struggle) confirmed. Broad ethnic dimension (Shona/ZANU, Ndebele/ZAPU) documented.",
+        "source": "https://en.wikipedia.org/wiki/Zimbabwe_African_National_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Zimbabwe_African_National_Union"
   },
   {
     "year": 1964,
@@ -201,31 +201,6 @@
   },
   {
     "year": 1966,
-    "title": "UN Security Council Imposes Mandatory Sanctions",
-    "verdict": "TRUE",
-    "reason": "Resolution 232 adopted 16 December 1966 imposing mandatory comprehensive economic sanctions including tobacco, chrome, asbestos. Vote 11-0 with 4 abstentions. Description says 'first time UN imposed compulsory sanctions on any state' — confirmed by SIPRI. South Africa and Portugal sanctions-busting confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Resolution 232 adopted 16 December 1966 imposing mandatory comprehensive economic sanctions including tobacco, chrome, asbestos. Vote 11-0 with 4 abstentions. Description says 'first time UN imposed compulsory sanctions on any state' — confirmed by SIPRI. South Africa and Portugal sanctions-busting confirmed.",
-        "source": "https://digitallibrary.un.org/record/90502",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://digitallibrary.un.org/record/90502"
-  },
-  {
-    "year": 1966,
     "title": "Battle of Sinoia — First ZANU Guerrilla Attack",
     "verdict": "TRUE",
     "reason": "28 April 1966, seven ZANLA combatants engaged Rhodesian police at Sinoia; all killed. Commemorated as Chimurenga Day. Described as ZANU insurgents (technically ZANLA wing) — correct. Number of combatants (seven) confirmed.",
@@ -248,6 +223,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Battle_of_Sinoia"
+  },
+  {
+    "year": 1966,
+    "title": "UN Security Council Imposes Mandatory Sanctions",
+    "verdict": "TRUE",
+    "reason": "Resolution 232 adopted 16 December 1966 imposing mandatory comprehensive economic sanctions including tobacco, chrome, asbestos. Vote 11-0 with 4 abstentions. Description says 'first time UN imposed compulsory sanctions on any state' — confirmed by SIPRI. South Africa and Portugal sanctions-busting confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Resolution 232 adopted 16 December 1966 imposing mandatory comprehensive economic sanctions including tobacco, chrome, asbestos. Vote 11-0 with 4 abstentions. Description says 'first time UN imposed compulsory sanctions on any state' — confirmed by SIPRI. South Africa and Portugal sanctions-busting confirmed.",
+        "source": "https://digitallibrary.un.org/record/90502",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://digitallibrary.un.org/record/90502"
   },
   {
     "year": 1972,
@@ -451,31 +451,6 @@
   },
   {
     "year": 1980,
-    "title": "Zimbabwe Independence — Mugabe Becomes Prime Minister",
-    "verdict": "TRUE",
-    "reason": "Independence 18 April 1980. Elections February 1980; ZANU-PF won 57 of 80 common roll seats. Mugabe sworn in as PM. Conciliatory inaugural address confirmed. Claim of 'surprising Western observers' is consistent with historical accounts.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Independence 18 April 1980. Elections February 1980; ZANU-PF won 57 of 80 common roll seats. Mugabe sworn in as PM. Conciliatory inaugural address confirmed. Claim of 'surprising Western observers' is consistent with historical accounts.",
-        "source": "https://en.wikipedia.org/wiki/1980_Southern_Rhodesian_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1980_Southern_Rhodesian_general_election"
-  },
-  {
-    "year": 1980,
     "title": "Reconciliation Policy Announced",
     "verdict": "TRUE",
     "reason": "Reconciliation policy widely documented — white civil servants, security officers, and farm owners retained. Prevented white exodus, maintained economic functioning. Critics noting deferred land issue — confirmed in historical literature.",
@@ -498,6 +473,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Robert_Mugabe"
+  },
+  {
+    "year": 1980,
+    "title": "Zimbabwe Independence — Mugabe Becomes Prime Minister",
+    "verdict": "TRUE",
+    "reason": "Independence 18 April 1980. Elections February 1980; ZANU-PF won 57 of 80 common roll seats. Mugabe sworn in as PM. Conciliatory inaugural address confirmed. Claim of 'surprising Western observers' is consistent with historical accounts.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independence 18 April 1980. Elections February 1980; ZANU-PF won 57 of 80 common roll seats. Mugabe sworn in as PM. Conciliatory inaugural address confirmed. Claim of 'surprising Western observers' is consistent with historical accounts.",
+        "source": "https://en.wikipedia.org/wiki/1980_Southern_Rhodesian_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1980_Southern_Rhodesian_general_election"
   },
   {
     "year": 1981,
@@ -601,31 +601,6 @@
   },
   {
     "year": 1987,
-    "title": "Unity Accord — ZANU-PF Absorbs ZAPU",
-    "verdict": "TRUE",
-    "reason": "Unity Accord signed 22 December 1987 merging ZAPU into ZANU-PF. Ended Gukurahundi. De facto one-party state created with 99 of 100 parliamentary seats. Executive presidency created simultaneously. All facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Unity Accord signed 22 December 1987 merging ZAPU into ZANU-PF. Ended Gukurahundi. De facto one-party state created with 99 of 100 parliamentary seats. Executive presidency created simultaneously. All facts correct.",
-        "source": "https://en.wikipedia.org/wiki/Zimbabwe_African_People%27s_Union",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Zimbabwe_African_People%27s_Union"
-  },
-  {
-    "year": 1987,
     "title": "Mugabe Becomes Executive President",
     "verdict": "TRUE",
     "reason": "Mugabe became Zimbabwe's first executive president on 31 December 1987, abolishing the Prime Minister role. Combined head of state and government powers. Constitutional amendments described are accurate.",
@@ -648,6 +623,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Robert_Mugabe"
+  },
+  {
+    "year": 1987,
+    "title": "Unity Accord — ZANU-PF Absorbs ZAPU",
+    "verdict": "TRUE",
+    "reason": "Unity Accord signed 22 December 1987 merging ZAPU into ZANU-PF. Ended Gukurahundi. De facto one-party state created with 99 of 100 parliamentary seats. Executive presidency created simultaneously. All facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Unity Accord signed 22 December 1987 merging ZAPU into ZANU-PF. Ended Gukurahundi. De facto one-party state created with 99 of 100 parliamentary seats. Executive presidency created simultaneously. All facts correct.",
+        "source": "https://en.wikipedia.org/wiki/Zimbabwe_African_People%27s_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Zimbabwe_African_People%27s_Union"
   },
   {
     "year": 1990,
@@ -676,31 +676,6 @@
   },
   {
     "year": 1997,
-    "title": "War Veterans Compensation Crisis",
-    "verdict": "TRUE",
-    "reason": "Mugabe capitulated to war veterans' demands for unbudgeted gratuities (Z$50,000 per veteran). Currency collapsed ~72% on 14 November 1997 ('Black Friday'). Event marks start of economic implosion. Description's 'Z$50,000 per veteran' confirmed. Month (November) and percent collapse confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Mugabe capitulated to war veterans' demands for unbudgeted gratuities (Z$50,000 per veteran). Currency collapsed ~72% on 14 November 1997 ('Black Friday'). Event marks start of economic implosion. Description's 'Z$50,000 per veteran' confirmed. Month (November) and percent collapse confirmed.",
-        "source": "https://www.newsday.co.zw/letters/article/200012406/did-war-vets-collapse-zimdollar",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.newsday.co.zw/letters/article/200012406/did-war-vets-collapse-zimdollar"
-  },
-  {
-    "year": 1997,
     "title": "Gukurahundi Report Published — Catholic Commission",
     "verdict": "TRUE",
     "reason": "Report 'Breaking the Silence, Building True Peace' published 1997 jointly by Catholic Commission for Justice and Peace and Legal Resources Foundation. Based on 1,000+ eyewitness accounts. Government refused accountability. Confirmed as definitive primary source.",
@@ -723,6 +698,31 @@
       }
     ],
     "source": "https://catalog.hathitrust.org/Record/004282473"
+  },
+  {
+    "year": 1997,
+    "title": "War Veterans Compensation Crisis",
+    "verdict": "TRUE",
+    "reason": "Mugabe capitulated to war veterans' demands for unbudgeted gratuities (Z$50,000 per veteran). Currency collapsed ~72% on 14 November 1997 ('Black Friday'). Event marks start of economic implosion. Description's 'Z$50,000 per veteran' confirmed. Month (November) and percent collapse confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mugabe capitulated to war veterans' demands for unbudgeted gratuities (Z$50,000 per veteran). Currency collapsed ~72% on 14 November 1997 ('Black Friday'). Event marks start of economic implosion. Description's 'Z$50,000 per veteran' confirmed. Month (November) and percent collapse confirmed.",
+        "source": "https://www.newsday.co.zw/letters/article/200012406/did-war-vets-collapse-zimdollar",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.newsday.co.zw/letters/article/200012406/did-war-vets-collapse-zimdollar"
   },
   {
     "year": 1998,
@@ -901,31 +901,6 @@
   },
   {
     "year": 2002,
-    "title": "Presidential Election — Mugabe Re-elected Amid Violence and Fraud",
-    "verdict": "TRUE",
-    "reason": "March 2002 election; Mugabe won 56.2%. EU observers prevented from monitoring. Systematic ballot stuffing, urban disenfranchisement, violence against MDC supporters documented. AU acknowledged irregularities. EU/Commonwealth declared it failed democratic standards. All confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "March 2002 election; Mugabe won 56.2%. EU observers prevented from monitoring. Systematic ballot stuffing, urban disenfranchisement, violence against MDC supporters documented. AU acknowledged irregularities. EU/Commonwealth declared it failed democratic standards. All confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Zimbabwean_presidential_election,_2002",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Zimbabwean_presidential_election,_2002"
-  },
-  {
-    "year": 2002,
     "title": "EU and Commonwealth Sanctions Imposed",
     "verdict": "TRUE",
     "reason": "EU imposed targeted sanctions (travel bans, asset freezes) on Mugabe and ruling elite. Commonwealth suspended Zimbabwe. Description says Zimbabwe 'withdrew from Commonwealth 2003' — it was suspended 2002, then withdrew 2003. Minor clarification but not a factual error in this event.",
@@ -948,6 +923,31 @@
       }
     ],
     "source": "https://edition.cnn.com/2002/WORLD/africa/03/19/zimbabwe.commonwealth/"
+  },
+  {
+    "year": 2002,
+    "title": "Presidential Election — Mugabe Re-elected Amid Violence and Fraud",
+    "verdict": "TRUE",
+    "reason": "March 2002 election; Mugabe won 56.2%. EU observers prevented from monitoring. Systematic ballot stuffing, urban disenfranchisement, violence against MDC supporters documented. AU acknowledged irregularities. EU/Commonwealth declared it failed democratic standards. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 2002 election; Mugabe won 56.2%. EU observers prevented from monitoring. Systematic ballot stuffing, urban disenfranchisement, violence against MDC supporters documented. AU acknowledged irregularities. EU/Commonwealth declared it failed democratic standards. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Zimbabwean_presidential_election,_2002",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Zimbabwean_presidential_election,_2002"
   },
   {
     "year": 2003,
@@ -1076,6 +1076,56 @@
   },
   {
     "year": 2008,
+    "title": "Cholera Epidemic Kills Thousands",
+    "verdict": "TRUE",
+    "reason": "Cholera outbreak 2008-2009: 98,585 cases, 4,287 deaths — exceeds event's 'over 4,000 deaths and nearly 100,000 infected' which is accurate. Water infrastructure collapse documented. Mugabe's denial confirmed. All claims verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cholera outbreak 2008-2009: 98,585 cases, 4,287 deaths — exceeds event's 'over 4,000 deaths and nearly 100,000 infected' which is accurate. Water infrastructure collapse documented. Mugabe's denial confirmed. All claims verified.",
+        "source": "https://en.wikipedia.org/wiki/2008_Zimbabwean_cholera_outbreak",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2008_Zimbabwean_cholera_outbreak"
+  },
+  {
+    "year": 2008,
+    "title": "Hyperinflation Reaches 89.7 Sextillion Percent",
+    "verdict": "TRUE",
+    "reason": "Peak inflation November 2008: officially estimated at 89.7 sextillion percent (89,700,000,000,000,000,000,000%). Second-worst hyperinflation in history after Hungary 1946. Prices doubled multiple times per day. Informal dollarization confirmed. All claims correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Peak inflation November 2008: officially estimated at 89.7 sextillion percent (89,700,000,000,000,000,000,000%). Second-worst hyperinflation in history after Hungary 1946. Prices doubled multiple times per day. Informal dollarization confirmed. All claims correct.",
+        "source": "https://truflation.com/blog/89-7-sextillion-percent-zimbabwe-and-inflation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://truflation.com/blog/89-7-sextillion-percent-zimbabwe-and-inflation"
+  },
+  {
+    "year": 2008,
     "title": "March Elections — MDC Wins Parliament, Runoff Needed for Presidency",
     "verdict": "TRUE",
     "reason": "March 2008 harmonized elections: MDC won parliamentary majority (109 of 210 seats). Tsvangirai won 47.87% of presidential votes vs Mugabe 43.24% — below 50% threshold for outright win. ZANU-PF delayed results weeks. All facts confirmed.",
@@ -1125,10 +1175,10 @@
     "source": "https://www.hrw.org/report/2008/06/09/bullets-each-you/state-sponsored-violence-zimbabwes-march-29-elections"
   },
   {
-    "year": 2008,
-    "title": "Hyperinflation Reaches 89.7 Sextillion Percent",
+    "year": 2009,
+    "title": "Government of National Unity Formed",
     "verdict": "TRUE",
-    "reason": "Peak inflation November 2008: officially estimated at 89.7 sextillion percent (89,700,000,000,000,000,000,000%). Second-worst hyperinflation in history after Hungary 1946. Prices doubled multiple times per day. Informal dollarization confirmed. All claims correct.",
+    "reason": "GNU formed 13 February 2009 (Global Political Agreement signed September 2008, implemented February 2009). Tsvangirai as PM, Mugabe retained presidency. MDC gained economic ministries; ZANU-PF kept security. All claims confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1138,8 +1188,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Peak inflation November 2008: officially estimated at 89.7 sextillion percent (89,700,000,000,000,000,000,000%). Second-worst hyperinflation in history after Hungary 1946. Prices doubled multiple times per day. Informal dollarization confirmed. All claims correct.",
-        "source": "https://truflation.com/blog/89-7-sextillion-percent-zimbabwe-and-inflation",
+        "reason": "GNU formed 13 February 2009 (Global Political Agreement signed September 2008, implemented February 2009). Tsvangirai as PM, Mugabe retained presidency. MDC gained economic ministries; ZANU-PF kept security. All claims confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Zimbabwe_Government_of_National_Unity_of_2009",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1147,32 +1197,7 @@
         }
       }
     ],
-    "source": "https://truflation.com/blog/89-7-sextillion-percent-zimbabwe-and-inflation"
-  },
-  {
-    "year": 2008,
-    "title": "Cholera Epidemic Kills Thousands",
-    "verdict": "TRUE",
-    "reason": "Cholera outbreak 2008-2009: 98,585 cases, 4,287 deaths — exceeds event's 'over 4,000 deaths and nearly 100,000 infected' which is accurate. Water infrastructure collapse documented. Mugabe's denial confirmed. All claims verified.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Cholera outbreak 2008-2009: 98,585 cases, 4,287 deaths — exceeds event's 'over 4,000 deaths and nearly 100,000 infected' which is accurate. Water infrastructure collapse documented. Mugabe's denial confirmed. All claims verified.",
-        "source": "https://en.wikipedia.org/wiki/2008_Zimbabwean_cholera_outbreak",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2008_Zimbabwean_cholera_outbreak"
+    "source": "https://en.wikipedia.org/wiki/Zimbabwe_Government_of_National_Unity_of_2009"
   },
   {
     "year": 2009,
@@ -1200,29 +1225,40 @@
     "source": "https://en.wikipedia.org/wiki/Hyperinflation_in_Zimbabwe"
   },
   {
-    "year": 2009,
-    "title": "Government of National Unity Formed",
+    "year": 2011,
+    "title": "Econet Launches EcoCash, Transforming Mobile Money in Zimbabwe",
     "verdict": "TRUE",
-    "reason": "GNU formed 13 February 2009 (Global Political Agreement signed September 2008, implemented February 2009). Tsvangirai as PM, Mugabe retained presidency. MDC gained economic ministries; ZANU-PF kept security. All claims confirmed.",
-    "verify_count": 1,
+    "reason": "Confirmed from multiple independent sources: Econet Wireless launched EcoCash mobile money service in Zimbabwe on 30 September 2011 (contemporaneous itnewsafrica.com article from October 2011 explicitly states 'Eco-Cash officially was launched on 30 September 2011'). By November 2017, EcoCash had 6.7 million registered users versus 2 million conventional bank account holders, controlled 99.8% of Zimbabwe's mobile money market, and had processed over $23 billion since launch — all figures confirmed by Techzim's November 2017 report and corroborated independently by Wikipedia's EcoCash article. Country, year, and all material details (launch actor, date, service description, later-stage user/market-share/volume figures) match the event description precisely.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "GNU formed 13 February 2009 (Global Political Agreement signed September 2008, implemented February 2009). Tsvangirai as PM, Mugabe retained presidency. MDC gained economic ministries; ZANU-PF kept security. All claims confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Zimbabwe_Government_of_National_Unity_of_2009",
+        "reason": "Confirmed via multiple independent sources: Econet Wireless officially launched EcoCash mobile money in Zimbabwe on 30 September 2011 (contemporaneous itnewsafrica.com article dated Oct 2011, and thezimbabwean.co Sept 2011 article), allowing subscribers to send/receive money, buy airtime, pay bills, and move money via mobile handset without needing a bank account. By November 2017, Wikipedia's EcoCash article corroborates all cited figures: 6.7 million registered users vs. 2 million conventional bank account holders, 99.8% share of Zimbabwe's mobile money market, and over $23 billion processed in the service's first six years. All material details in the description (actor, country, year, launch date, mechanism, and 2017 statistics) match found sources exactly.",
+        "source": "https://en.wikipedia.org/wiki/EcoCash",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: Econet Wireless launched EcoCash mobile money service in Zimbabwe on 30 September 2011 (contemporaneous itnewsafrica.com article from October 2011 explicitly states 'Eco-Cash officially was launched on 30 September 2011'). By November 2017, EcoCash had 6.7 million registered users versus 2 million conventional bank account holders, controlled 99.8% of Zimbabwe's mobile money market, and had processed over $23 billion since launch — all figures confirmed by Techzim's November 2017 report and corroborated independently by Wikipedia's EcoCash article. Country, year, and all material details (launch actor, date, service description, later-stage user/market-share/volume figures) match the event description precisely.",
+        "source": "https://www.itnewsafrica.com/2011/10/econet-finally-launches-eco-cash-mobile-money/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Zimbabwe_Government_of_National_Unity_of_2009"
+    "source": "https://www.itnewsafrica.com/2011/10/econet-finally-launches-eco-cash-mobile-money/"
   },
   {
     "year": 2011,
@@ -1251,31 +1287,6 @@
   },
   {
     "year": 2013,
-    "title": "New Constitution Adopted by Referendum",
-    "verdict": "TRUE",
-    "reason": "Referendum 16-17 March 2013; approved by 94.5% of voters (event says 95% — close rounding). Presidential term limits (two five-year terms), devolved senate, bill of rights, gender quotas confirmed. Term limits not applying retroactively to Mugabe confirmed. All facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Referendum 16-17 March 2013; approved by 94.5% of voters (event says 95% — close rounding). Presidential term limits (two five-year terms), devolved senate, bill of rights, gender quotas confirmed. Term limits not applying retroactively to Mugabe confirmed. All facts correct.",
-        "source": "https://en.wikipedia.org/wiki/2013_Zimbabwean_constitutional_referendum",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2013_Zimbabwean_constitutional_referendum"
-  },
-  {
-    "year": 2013,
     "title": "Mugabe Re-elected — MDC Alleges Massive Fraud",
     "verdict": "TRUE",
     "reason": "July 2013: Mugabe won 61% vs Tsvangirai ~34%. MDC alleged voters' roll discrepancies, urban voter exclusion, security force structural advantage. Constitutional Court upheld result. Power-sharing ended. All claims confirmed.",
@@ -1298,6 +1309,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Zimbabwean_general_election,_2013"
+  },
+  {
+    "year": 2013,
+    "title": "New Constitution Adopted by Referendum",
+    "verdict": "TRUE",
+    "reason": "Referendum 16-17 March 2013; approved by 94.5% of voters (event says 95% — close rounding). Presidential term limits (two five-year terms), devolved senate, bill of rights, gender quotas confirmed. Term limits not applying retroactively to Mugabe confirmed. All facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Referendum 16-17 March 2013; approved by 94.5% of voters (event says 95% — close rounding). Presidential term limits (two five-year terms), devolved senate, bill of rights, gender quotas confirmed. Term limits not applying retroactively to Mugabe confirmed. All facts correct.",
+        "source": "https://en.wikipedia.org/wiki/2013_Zimbabwean_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2013_Zimbabwean_constitutional_referendum"
   },
   {
     "year": 2014,
@@ -1476,31 +1512,6 @@
   },
   {
     "year": 2019,
-    "title": "Fuel Price Protests — January 2019 Crackdown",
-    "verdict": "TRUE",
-    "reason": "Fuel price hike ~130% announced 12 January 2019. Nationwide shutdown. Security forces killed at least 12-17 people (sources vary 8-17). Door-to-door raids, torture documented by Amnesty/HRW. Internet shutdown confirmed. ZCTU-led shutdown confirmed. All claims consistent.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Fuel price hike ~130% announced 12 January 2019. Nationwide shutdown. Security forces killed at least 12-17 people (sources vary 8-17). Door-to-door raids, torture documented by Amnesty/HRW. Internet shutdown confirmed. ZCTU-led shutdown confirmed. All claims consistent.",
-        "source": "https://www.amnesty.org/en/latest/news/2019/01/zimbabwe-crackdown-escalates-on-protests-over-massive-fuel-price-hikes-hundreds-arrested/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.amnesty.org/en/latest/news/2019/01/zimbabwe-crackdown-escalates-on-protests-over-massive-fuel-price-hikes-hundreds-arrested/"
-  },
-  {
-    "year": 2019,
     "title": "Cyclone Idai Devastates Eastern Zimbabwe",
     "verdict": "TRUE",
     "reason": "Cyclone Idai struck March 2019; ~340 deaths in Zimbabwe, mainly Chimanimani and Chipinge districts. ~270,000 affected, ~51,000 displaced. Flash floods and landslides confirmed. All claims accurate.",
@@ -1525,10 +1536,10 @@
     "source": "https://en.wikipedia.org/wiki/Cyclone_Idai"
   },
   {
-    "year": 2020,
-    "title": "Journalist Hopewell Chin'ono Arrested Amid COVID Crackdown",
+    "year": 2019,
+    "title": "Fuel Price Protests — January 2019 Crackdown",
     "verdict": "TRUE",
-    "reason": "Chin'ono arrested 20 July 2020 for incitement after exposing COVID PPE procurement fraud (linked to Mnangagwa's son). 44 days pre-trial detention. Arrested alongside Job Sikhala (opposition MP) — confirmed. Global press freedom symbol. All claims accurate.",
+    "reason": "Fuel price hike ~130% announced 12 January 2019. Nationwide shutdown. Security forces killed at least 12-17 people (sources vary 8-17). Door-to-door raids, torture documented by Amnesty/HRW. Internet shutdown confirmed. ZCTU-led shutdown confirmed. All claims consistent.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1538,8 +1549,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Chin'ono arrested 20 July 2020 for incitement after exposing COVID PPE procurement fraud (linked to Mnangagwa's son). 44 days pre-trial detention. Arrested alongside Job Sikhala (opposition MP) — confirmed. Global press freedom symbol. All claims accurate.",
-        "source": "https://cpj.org/2020/07/journalist-hopewell-chinono-arrested-charged-with-incitement-in-zimbabwe/",
+        "reason": "Fuel price hike ~130% announced 12 January 2019. Nationwide shutdown. Security forces killed at least 12-17 people (sources vary 8-17). Door-to-door raids, torture documented by Amnesty/HRW. Internet shutdown confirmed. ZCTU-led shutdown confirmed. All claims consistent.",
+        "source": "https://www.amnesty.org/en/latest/news/2019/01/zimbabwe-crackdown-escalates-on-protests-over-massive-fuel-price-hikes-hundreds-arrested/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1547,7 +1558,7 @@
         }
       }
     ],
-    "source": "https://cpj.org/2020/07/journalist-hopewell-chinono-arrested-charged-with-incitement-in-zimbabwe/"
+    "source": "https://www.amnesty.org/en/latest/news/2019/01/zimbabwe-crackdown-escalates-on-protests-over-massive-fuel-price-hikes-hundreds-arrested/"
   },
   {
     "year": 2020,
@@ -1573,6 +1584,31 @@
       }
     ],
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8558728/"
+  },
+  {
+    "year": 2020,
+    "title": "Journalist Hopewell Chin'ono Arrested Amid COVID Crackdown",
+    "verdict": "TRUE",
+    "reason": "Chin'ono arrested 20 July 2020 for incitement after exposing COVID PPE procurement fraud (linked to Mnangagwa's son). 44 days pre-trial detention. Arrested alongside Job Sikhala (opposition MP) — confirmed. Global press freedom symbol. All claims accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Chin'ono arrested 20 July 2020 for incitement after exposing COVID PPE procurement fraud (linked to Mnangagwa's son). 44 days pre-trial detention. Arrested alongside Job Sikhala (opposition MP) — confirmed. Global press freedom symbol. All claims accurate.",
+        "source": "https://cpj.org/2020/07/journalist-hopewell-chinono-arrested-charged-with-incitement-in-zimbabwe/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://cpj.org/2020/07/journalist-hopewell-chinono-arrested-charged-with-incitement-in-zimbabwe/"
   },
   {
     "year": 2021,
@@ -1626,31 +1662,6 @@
   },
   {
     "year": 2023,
-    "title": "SADC Election Observer Mission Condemns August Election",
-    "verdict": "TRUE",
-    "reason": "August 2023 elections: Mnangagwa won 52.6% vs Chamisa 44%. SADC observer mission issued unprecedented critical report. Mission head Mumba later called elections 'most fraudulent in SADC history'. All claims confirmed including specific percentage.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "August 2023 elections: Mnangagwa won 52.6% vs Chamisa 44%. SADC observer mission issued unprecedented critical report. Mission head Mumba later called elections 'most fraudulent in SADC history'. All claims confirmed including specific percentage.",
-        "source": "https://www.sadc.int/sites/default/files/2023-08/ZIMBABWE%20SEOM%20-2023%20PRELIMINARY_STATEMENT-Revised%20adopted-25%20August%202023%2012pt.pdf",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.sadc.int/sites/default/files/2023-08/ZIMBABWE%20SEOM%20-2023%20PRELIMINARY_STATEMENT-Revised%20adopted-25%20August%202023%2012pt.pdf"
-  },
-  {
-    "year": 2023,
     "title": "Opposition MPs and Activists Jailed",
     "verdict": "TRUE",
     "reason": "Post-election wave of arrests against CCC members, opposition MPs, and civil society confirmed. Job Sikhala's extended pre-trial detention (over a year) documented. Formal opposition structure dismantled. All claims confirmed.",
@@ -1675,10 +1686,10 @@
     "source": "https://www.hrw.org/world-report/2019/country-chapters/zimbabwe"
   },
   {
-    "year": 2024,
-    "title": "Zimbabwe Gold (ZiG) Currency Launched",
+    "year": 2023,
+    "title": "SADC Election Observer Mission Condemns August Election",
     "verdict": "TRUE",
-    "reason": "ZiG launched 8 April 2024, backed by gold and foreign exchange reserves. Initial rate 13.56 ZiG per USD confirmed (description says replaced ZWL at 13.56 — accurate). Within months ZiG depreciated significantly and parallel market diverged. All claims correct.",
+    "reason": "August 2023 elections: Mnangagwa won 52.6% vs Chamisa 44%. SADC observer mission issued unprecedented critical report. Mission head Mumba later called elections 'most fraudulent in SADC history'. All claims confirmed including specific percentage.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1688,8 +1699,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "ZiG launched 8 April 2024, backed by gold and foreign exchange reserves. Initial rate 13.56 ZiG per USD confirmed (description says replaced ZWL at 13.56 — accurate). Within months ZiG depreciated significantly and parallel market diverged. All claims correct.",
-        "source": "https://en.wikipedia.org/wiki/Zimbabwean_ZiG",
+        "reason": "August 2023 elections: Mnangagwa won 52.6% vs Chamisa 44%. SADC observer mission issued unprecedented critical report. Mission head Mumba later called elections 'most fraudulent in SADC history'. All claims confirmed including specific percentage.",
+        "source": "https://www.sadc.int/sites/default/files/2023-08/ZIMBABWE%20SEOM%20-2023%20PRELIMINARY_STATEMENT-Revised%20adopted-25%20August%202023%2012pt.pdf",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1697,7 +1708,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Zimbabwean_ZiG"
+    "source": "https://www.sadc.int/sites/default/files/2023-08/ZIMBABWE%20SEOM%20-2023%20PRELIMINARY_STATEMENT-Revised%20adopted-25%20August%202023%2012pt.pdf"
   },
   {
     "year": 2024,
@@ -1748,5 +1759,30 @@
       }
     ],
     "source": "https://africanarguments.org/2024/09/zambia-faces-21-hour-power-cuts-as-lake-kariba-dries-up/"
+  },
+  {
+    "year": 2024,
+    "title": "Zimbabwe Gold (ZiG) Currency Launched",
+    "verdict": "TRUE",
+    "reason": "ZiG launched 8 April 2024, backed by gold and foreign exchange reserves. Initial rate 13.56 ZiG per USD confirmed (description says replaced ZWL at 13.56 — accurate). Within months ZiG depreciated significantly and parallel market diverged. All claims correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ZiG launched 8 April 2024, backed by gold and foreign exchange reserves. Initial rate 13.56 ZiG per USD confirmed (description says replaced ZWL at 13.56 — accurate). Within months ZiG depreciated significantly and parallel market diverged. All claims correct.",
+        "source": "https://en.wikipedia.org/wiki/Zimbabwean_ZiG",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Zimbabwean_ZiG"
   }
 ]

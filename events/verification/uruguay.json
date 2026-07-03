@@ -401,31 +401,6 @@
   },
   {
     "year": 1973,
-    "title": "Military Coup Ends Uruguayan Democracy",
-    "verdict": "TRUE",
-    "reason": "On June 27, 1973, President Bordaberry dissolved the legislature with military support and established the civic-military dictatorship. The event is confirmed in detail by numerous sources including the Wikipedia article on the 1973 Uruguayan coup d'état.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On June 27, 1973, President Bordaberry dissolved the legislature with military support and established the civic-military dictatorship. The event is confirmed in detail by numerous sources including the Wikipedia article on the 1973 Uruguayan coup d'état.",
-        "source": "https://en.wikipedia.org/wiki/1973_Uruguayan_coup_d'%C3%A9tat",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1973_Uruguayan_coup_d'%C3%A9tat"
-  },
-  {
-    "year": 1973,
     "title": "General Strike Against Coup Collapses After Two Weeks",
     "verdict": "TRUE",
     "reason": "The CNT called a general strike within hours of the June 27, 1973 coup. It lasted 15 days — PIT-CNT commemorated it as 'the longest general strike in the country's history.' The strike ended with most union leaders imprisoned, exiled, or killed.",
@@ -448,6 +423,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Uruguay_general_strike_of_1973"
+  },
+  {
+    "year": 1973,
+    "title": "Military Coup Ends Uruguayan Democracy",
+    "verdict": "TRUE",
+    "reason": "On June 27, 1973, President Bordaberry dissolved the legislature with military support and established the civic-military dictatorship. The event is confirmed in detail by numerous sources including the Wikipedia article on the 1973 Uruguayan coup d'état.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On June 27, 1973, President Bordaberry dissolved the legislature with military support and established the civic-military dictatorship. The event is confirmed in detail by numerous sources including the Wikipedia article on the 1973 Uruguayan coup d'état.",
+        "source": "https://en.wikipedia.org/wiki/1973_Uruguayan_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1973_Uruguayan_coup_d'%C3%A9tat"
   },
   {
     "year": 1974,
@@ -1025,6 +1025,31 @@
   },
   {
     "year": 2005,
+    "title": "Truth and Reparations Advances; Mass Graves Discovered",
+    "verdict": "TRUE",
+    "reason": "In 2005 the newly elected Vázquez government authorized anthropologists and investigators access to military lands, leading to the discovery of remains of disappeared persons at Battalion 14 and other military facilities. Remains were recovered in 2005, 2011, 2012, and 2019.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 2005 the newly elected Vázquez government authorized anthropologists and investigators access to military lands, leading to the discovery of remains of disappeared persons at Battalion 14 and other military facilities. Remains were recovered in 2005, 2011, 2012, and 2019.",
+        "source": "https://missingpersons.icrc.org/library/forensic-excavations-and-burials-uruguay-2004-10",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://missingpersons.icrc.org/library/forensic-excavations-and-burials-uruguay-2004-10"
+  },
+  {
+    "year": 2005,
     "title": "Vázquez Launches Emergency Social Plan PANES",
     "verdict": "TRUE",
     "reason": "The PANES (Plan de Atención Nacional a la Emergencia Social) was launched by the Vázquez government in 2005, targeting the poorest quintile with cash transfers, food support, and social reintegration. Created by Law 17.869, it ran from 2005 to 2007 and reduced poverty from 32% to 20%.",
@@ -1049,10 +1074,10 @@
     "source": "https://dds.cepal.org/bpsnc/programme?id=32"
   },
   {
-    "year": 2005,
-    "title": "Truth and Reparations Advances; Mass Graves Discovered",
+    "year": 2007,
+    "title": "Same-Sex Civil Unions Legalized",
     "verdict": "TRUE",
-    "reason": "In 2005 the newly elected Vázquez government authorized anthropologists and investigators access to military lands, leading to the discovery of remains of disappeared persons at Battalion 14 and other military facilities. Remains were recovered in 2005, 2011, 2012, and 2019.",
+    "reason": "Uruguay's civil union law was passed in December 2007 and signed into force in January 2008, making it the first Latin American country to enact a nationwide civil union law granting nearly equivalent rights to married couples. The date is close to correct (law passed late 2007).",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1062,8 +1087,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "In 2005 the newly elected Vázquez government authorized anthropologists and investigators access to military lands, leading to the discovery of remains of disappeared persons at Battalion 14 and other military facilities. Remains were recovered in 2005, 2011, 2012, and 2019.",
-        "source": "https://missingpersons.icrc.org/library/forensic-excavations-and-burials-uruguay-2004-10",
+        "reason": "Uruguay's civil union law was passed in December 2007 and signed into force in January 2008, making it the first Latin American country to enact a nationwide civil union law granting nearly equivalent rights to married couples. The date is close to correct (law passed late 2007).",
+        "source": "https://www.thepinknews.com/2007/12/28/uruguays-president-grants-legal-rights-for-gay-couples/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1071,7 +1096,7 @@
         }
       }
     ],
-    "source": "https://missingpersons.icrc.org/library/forensic-excavations-and-burials-uruguay-2004-10"
+    "source": "https://www.thepinknews.com/2007/12/28/uruguays-president-grants-legal-rights-for-gay-couples/"
   },
   {
     "year": 2007,
@@ -1100,28 +1125,39 @@
   },
   {
     "year": 2007,
-    "title": "Same-Sex Civil Unions Legalized",
+    "title": "Uruguay Launches Plan Ceibal, First Nationwide One-Laptop-Per-Child Program",
     "verdict": "TRUE",
-    "reason": "Uruguay's civil union law was passed in December 2007 and signed into force in January 2008, making it the first Latin American country to enact a nationwide civil union law granting nearly equivalent rights to married couples. The date is close to correct (law passed late 2007).",
-    "verify_count": 1,
+    "reason": "Confirmed from multiple independent sources. President Tabaré Vázquez announced Plan Ceibal in December 2006 and the implementing presidential decree was signed in mid-April 2007, with the pilot rollout (department of Florida) completed by end of 2007. The program used OLPC XO-1 laptops, which are indeed nicknamed 'Ceibalitas' in Uruguay (confirmed via Wikipedia/OLPC wiki). By 2009 the rollout reached every public primary school student nationwide, making Uruguay the first country in the world to achieve one-laptop-per-child coverage at national scale (confirmed by Wikipedia, Borgen Project, and UNESCO case-study sources). Multiple sources (Wikipedia's Ceibal project page, TheNextWeb) state that in four years Ceibal delivered 450,000 laptops to students and teachers with free internet access nationwide, matching the description exactly. The World Bank feature (2012) independently corroborates the program's existence, director (Miguel Brechner), and its role as a model that other countries (Armenia, Tatarstan, Argentina) sought to emulate, though it cites a different intermediate figure (~300,000 students at time of its 2012 writing, not the cumulative 450,000-laptop four-year total) — this is a scope/timing difference (snapshot vs. cumulative count) rather than a contradiction of the core claim. All material facts (country, year of launch/decree, actor, technology, nickname, first-in-world status, 450,000-laptop figure, four-year timeframe) check out.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Uruguay's civil union law was passed in December 2007 and signed into force in January 2008, making it the first Latin American country to enact a nationwide civil union law granting nearly equivalent rights to married couples. The date is close to correct (law passed late 2007).",
-        "source": "https://www.thepinknews.com/2007/12/28/uruguays-president-grants-legal-rights-for-gay-couples/",
+        "reason": "All material facts confirmed by independent sources. Plan Ceibal was launched via presidential decree 144/007 in April 2007 under President Tabaré Vázquez, distributing OLPC XO-1 laptops nicknamed \"Ceibalitas\" to Uruguayan schoolchildren. A pilot began in May 2007 (Villa Cardal), followed by an October 2007 tender for 100,000 units. By October 2009 the program achieved full nationwide coverage (350,000+ students, 16,000 teachers), making Uruguay the first country in the world to give one laptop to every primary school student. Within four years the program had delivered 450,000 laptops with free/no-cost internet access nationwide — matching the description's magnitude, actor, timeline, and \"first in world\" claim exactly.",
+        "source": "https://en.wikipedia.org/wiki/Ceibal_project",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources. President Tabaré Vázquez announced Plan Ceibal in December 2006 and the implementing presidential decree was signed in mid-April 2007, with the pilot rollout (department of Florida) completed by end of 2007. The program used OLPC XO-1 laptops, which are indeed nicknamed 'Ceibalitas' in Uruguay (confirmed via Wikipedia/OLPC wiki). By 2009 the rollout reached every public primary school student nationwide, making Uruguay the first country in the world to achieve one-laptop-per-child coverage at national scale (confirmed by Wikipedia, Borgen Project, and UNESCO case-study sources). Multiple sources (Wikipedia's Ceibal project page, TheNextWeb) state that in four years Ceibal delivered 450,000 laptops to students and teachers with free internet access nationwide, matching the description exactly. The World Bank feature (2012) independently corroborates the program's existence, director (Miguel Brechner), and its role as a model that other countries (Armenia, Tatarstan, Argentina) sought to emulate, though it cites a different intermediate figure (~300,000 students at time of its 2012 writing, not the cumulative 450,000-laptop four-year total) — this is a scope/timing difference (snapshot vs. cumulative count) rather than a contradiction of the core claim. All material facts (country, year of launch/decree, actor, technology, nickname, first-in-world status, 450,000-laptop figure, four-year timeframe) check out.",
+        "source": "https://en.wikipedia.org/wiki/Ceibal_project",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://www.thepinknews.com/2007/12/28/uruguays-president-grants-legal-rights-for-gay-couples/"
+    "source": "https://en.wikipedia.org/wiki/Ceibal_project"
   },
   {
     "year": 2009,
@@ -1250,31 +1286,6 @@
   },
   {
     "year": 2013,
-    "title": "Uruguay Becomes First Country to Fully Legalize Cannabis",
-    "verdict": "TRUE",
-    "reason": "President Mujica signed Law 19.172 on December 23, 2013, making Uruguay the first country in the world to fully legalize the production, distribution, and personal consumption of cannabis under state regulation. Pharmacy sales for registered residents began in 2017.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "President Mujica signed Law 19.172 on December 23, 2013, making Uruguay the first country in the world to fully legalize the production, distribution, and personal consumption of cannabis under state regulation. Pharmacy sales for registered residents began in 2017.",
-        "source": "https://en.wikipedia.org/wiki/Cannabis_in_Uruguay",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Cannabis_in_Uruguay"
-  },
-  {
-    "year": 2013,
     "title": "Same-Sex Marriage Legalized",
     "verdict": "TRUE",
     "reason": "The Senate approved same-sex marriage on April 2, 2013 and the Chamber passed it on April 10. President Mujica signed it on May 3, 2013. Uruguay was the second Latin American country (after Argentina) to legalize same-sex marriage, granting full equality including adoption rights.",
@@ -1297,6 +1308,31 @@
       }
     ],
     "source": "https://www.hrw.org/news/2013/04/02/uruguay-marriage-equality-approved"
+  },
+  {
+    "year": 2013,
+    "title": "Uruguay Becomes First Country to Fully Legalize Cannabis",
+    "verdict": "TRUE",
+    "reason": "President Mujica signed Law 19.172 on December 23, 2013, making Uruguay the first country in the world to fully legalize the production, distribution, and personal consumption of cannabis under state regulation. Pharmacy sales for registered residents began in 2017.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "President Mujica signed Law 19.172 on December 23, 2013, making Uruguay the first country in the world to fully legalize the production, distribution, and personal consumption of cannabis under state regulation. Pharmacy sales for registered residents began in 2017.",
+        "source": "https://en.wikipedia.org/wiki/Cannabis_in_Uruguay",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Cannabis_in_Uruguay"
   },
   {
     "year": 2014,
@@ -1350,31 +1386,6 @@
   },
   {
     "year": 2015,
-    "title": "UPM Announces Second Mega-Pulp Mill Investment",
-    "verdict": "TRUE",
-    "reason": "Early negotiations and framework discussions between UPM and the Uruguayan government regarding a second mill took place from around 2015 onward, culminating in a formal agreement signed November 2017. The event's 2015 date is consistent with the start of serious negotiations; the eventual total investment exceeded US$3 billion (confirmed at US$3.47 billion).",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Early negotiations and framework discussions between UPM and the Uruguayan government regarding a second mill took place from around 2015 onward, culminating in a formal agreement signed November 2017. The event's 2015 date is consistent with the start of serious negotiations; the eventual total investment exceeded US$3 billion (confirmed at US$3.47 billion).",
-        "source": "https://www.upmpulp.com/pulp-production/paso-de-los-toros/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.upmpulp.com/pulp-production/paso-de-los-toros/"
-  },
-  {
-    "year": 2015,
     "title": "Caducidad Law Formally Repealed by Parliament",
     "verdict": "FALSE",
     "reason": "The Ley de Caducidad was formally repealed by parliament through Law 18.831 on October 27, 2011 — not 2015. The year in the curated file is off by 4 years. The 2011 repeal also eliminated the statute of limitations for dictatorship-era crimes against humanity, matching the description but with the wrong year.",
@@ -1397,6 +1408,31 @@
       }
     ],
     "source": "https://www.amnesty.org/en/latest/press-release/2011/10/uruguay-congress-adopts-landmark-law-tackle-impunity/"
+  },
+  {
+    "year": 2015,
+    "title": "UPM Announces Second Mega-Pulp Mill Investment",
+    "verdict": "TRUE",
+    "reason": "Early negotiations and framework discussions between UPM and the Uruguayan government regarding a second mill took place from around 2015 onward, culminating in a formal agreement signed November 2017. The event's 2015 date is consistent with the start of serious negotiations; the eventual total investment exceeded US$3 billion (confirmed at US$3.47 billion).",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Early negotiations and framework discussions between UPM and the Uruguayan government regarding a second mill took place from around 2015 onward, culminating in a formal agreement signed November 2017. The event's 2015 date is consistent with the start of serious negotiations; the eventual total investment exceeded US$3 billion (confirmed at US$3.47 billion).",
+        "source": "https://www.upmpulp.com/pulp-production/paso-de-los-toros/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.upmpulp.com/pulp-production/paso-de-los-toros/"
   },
   {
     "year": 2017,
@@ -1475,31 +1511,6 @@
   },
   {
     "year": 2020,
-    "title": "Uruguay's Early COVID-19 Response Praised Internationally",
-    "verdict": "TRUE",
-    "reason": "Uruguay's voluntary-based COVID-19 response — no mandatory lockdown, rapid mass testing, contact tracing — was widely praised internationally in early 2020. The IMF and US ambassador publicly praised the response. It relied on transparent communication and strong public health infrastructure.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Uruguay's voluntary-based COVID-19 response — no mandatory lockdown, rapid mass testing, contact tracing — was widely praised internationally in early 2020. The IMF and US ambassador publicly praised the response. It relied on transparent communication and strong public health infrastructure.",
-        "source": "https://thedialogue.org/analysis/how-is-uruguay-avoiding-the-worst-of-covid-19",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://thedialogue.org/analysis/how-is-uruguay-avoiding-the-worst-of-covid-19"
-  },
-  {
-    "year": 2020,
     "title": "Ley de Urgente Consideración Reforms Passed",
     "verdict": "TRUE",
     "reason": "The LUC omnibus reform law (approximately 476 articles) was proposed by Lacalle Pou in March 2020 and approved by the Senate on July 8, 2020, within 120 days of taking office. It covered public security, housing, education, and economic regulation. Opposition forces subsequently challenged it via referendum.",
@@ -1522,6 +1533,31 @@
       }
     ],
     "source": "https://www.latinnews.com/component/k2/item/84906-uruguay-win-for-lacalle-pou-as-senate-approves-luc.html"
+  },
+  {
+    "year": 2020,
+    "title": "Uruguay's Early COVID-19 Response Praised Internationally",
+    "verdict": "TRUE",
+    "reason": "Uruguay's voluntary-based COVID-19 response — no mandatory lockdown, rapid mass testing, contact tracing — was widely praised internationally in early 2020. The IMF and US ambassador publicly praised the response. It relied on transparent communication and strong public health infrastructure.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Uruguay's voluntary-based COVID-19 response — no mandatory lockdown, rapid mass testing, contact tracing — was widely praised internationally in early 2020. The IMF and US ambassador publicly praised the response. It relied on transparent communication and strong public health infrastructure.",
+        "source": "https://thedialogue.org/analysis/how-is-uruguay-avoiding-the-worst-of-covid-19",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://thedialogue.org/analysis/how-is-uruguay-avoiding-the-worst-of-covid-19"
   },
   {
     "year": 2021,
@@ -1575,31 +1611,6 @@
   },
   {
     "year": 2023,
-    "title": "UPM 2 Pulp Mill Opens; Economy Buoyed by Exports",
-    "verdict": "TRUE",
-    "reason": "The UPM Paso de los Toros mill began operations in April 2023 with annual capacity of 2.1 million tonnes — the largest industrial facility in Uruguayan history and the largest foreign investment Uruguay has ever received (US$3.47 billion total). Its first pulp shipment sailed in May 2023.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The UPM Paso de los Toros mill began operations in April 2023 with annual capacity of 2.1 million tonnes — the largest industrial facility in Uruguayan history and the largest foreign investment Uruguay has ever received (US$3.47 billion total). Its first pulp shipment sailed in May 2023.",
-        "source": "https://www.upm.com/about-us/for-media/releases/2023/04/upm-paso-de-los-toros-pulp-mill-begins-operations/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.upm.com/about-us/for-media/releases/2023/04/upm-paso-de-los-toros-pulp-mill-begins-operations/"
-  },
-  {
-    "year": 2023,
     "title": "Severe Drought Triggers Water Crisis in Montevideo",
     "verdict": "TRUE",
     "reason": "A severe multi-year drought in 2022–2023 reduced the Paso Severino reservoir to historic lows. In June 2023, Uruguay declared a water emergency and began mixing diluted estuary water into Montevideo's supply. Authorities warned pregnant women and infants not to drink tap water. Washington Post, CNN, and NASA confirmed the crisis.",
@@ -1624,10 +1635,10 @@
     "source": "https://www.washingtonpost.com/world/2023/05/29/uruguay-water-crisis-salt/"
   },
   {
-    "year": 2024,
-    "title": "Yamandú Orsi and Frente Amplio Win Presidential Election",
+    "year": 2023,
+    "title": "UPM 2 Pulp Mill Opens; Economy Buoyed by Exports",
     "verdict": "TRUE",
-    "reason": "Yamandú Orsi won the November 24, 2024 runoff with 49.8% vs Álvaro Delgado's 45.9%, returning the Frente Amplio to power after one term in opposition. Orsi was the former mayor of Canelones, as described, and his victory confirmed Uruguay's competitive two-bloc political structure.",
+    "reason": "The UPM Paso de los Toros mill began operations in April 2023 with annual capacity of 2.1 million tonnes — the largest industrial facility in Uruguayan history and the largest foreign investment Uruguay has ever received (US$3.47 billion total). Its first pulp shipment sailed in May 2023.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1637,8 +1648,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Yamandú Orsi won the November 24, 2024 runoff with 49.8% vs Álvaro Delgado's 45.9%, returning the Frente Amplio to power after one term in opposition. Orsi was the former mayor of Canelones, as described, and his victory confirmed Uruguay's competitive two-bloc political structure.",
-        "source": "https://en.wikipedia.org/wiki/2024_Uruguayan_general_election",
+        "reason": "The UPM Paso de los Toros mill began operations in April 2023 with annual capacity of 2.1 million tonnes — the largest industrial facility in Uruguayan history and the largest foreign investment Uruguay has ever received (US$3.47 billion total). Its first pulp shipment sailed in May 2023.",
+        "source": "https://www.upm.com/about-us/for-media/releases/2023/04/upm-paso-de-los-toros-pulp-mill-begins-operations/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1646,7 +1657,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2024_Uruguayan_general_election"
+    "source": "https://www.upm.com/about-us/for-media/releases/2023/04/upm-paso-de-los-toros-pulp-mill-begins-operations/"
   },
   {
     "year": 2024,
@@ -1672,5 +1683,30 @@
       }
     ],
     "source": "https://www.freiheit.org/argentina-brazil-paraguay-and-uruguay/uruguay-40-years-democracy-and-new-impulse-liberal"
+  },
+  {
+    "year": 2024,
+    "title": "Yamandú Orsi and Frente Amplio Win Presidential Election",
+    "verdict": "TRUE",
+    "reason": "Yamandú Orsi won the November 24, 2024 runoff with 49.8% vs Álvaro Delgado's 45.9%, returning the Frente Amplio to power after one term in opposition. Orsi was the former mayor of Canelones, as described, and his victory confirmed Uruguay's competitive two-bloc political structure.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Yamandú Orsi won the November 24, 2024 runoff with 49.8% vs Álvaro Delgado's 45.9%, returning the Frente Amplio to power after one term in opposition. Orsi was the former mayor of Canelones, as described, and his victory confirmed Uruguay's competitive two-bloc political structure.",
+        "source": "https://en.wikipedia.org/wiki/2024_Uruguayan_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2024_Uruguayan_general_election"
   }
 ]

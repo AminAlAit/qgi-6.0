@@ -7473,5 +7473,41 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Shadow_fleet"
+  },
+  {
+    "year": 2025,
+    "title": "Trump-Putin ceasefire negotiations begin over Ukraine",
+    "verdict": "TRUE",
+    "reason": "Confirmed from multiple independent sources: on Feb 12, 2025, Trump and Putin held a phone call agreeing to begin immediate negotiations to end the Ukraine war, with Trump tasking Rubio, Witkoff and others to lead talks. Subsequent US-Russia bilateral meetings in Riyadh, Saudi Arabia (Feb 18 and Feb 25, 2025) proceeded without Ukrainian or European officials present, drawing explicit criticism from Zelensky and European allies over being sidelined — matching the description of ceasefire negotiations beginning in early 2025 that controversially excluded European allies from initial talks.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent sources: on Feb 18, 2025, US Secretary of State Marco Rubio met Russian FM Sergey Lavrov in Riyadh, Saudi Arabia — the first high-level US-Russia talks under the Trump administration aimed at ending the Ukraine war. No Ukrainian or European officials were present, drawing criticism from Zelensky (who cancelled a planned Saudi visit) and European allies who said they were sidelined. A second round followed Feb 25, 2025 in Riyadh. This matches the description of Trump administration ceasefire negotiations with Russia over Ukraine beginning in early 2025 while excluding European allies (and Ukraine itself) from initial talks — a widely reported controversial move.",
+        "source": "https://en.wikipedia.org/wiki/February_2025_United_States%E2%80%93Russia_summit_in_Saudi_Arabia",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: on Feb 12, 2025, Trump and Putin held a phone call agreeing to begin immediate negotiations to end the Ukraine war, with Trump tasking Rubio, Witkoff and others to lead talks. Subsequent US-Russia bilateral meetings in Riyadh, Saudi Arabia (Feb 18 and Feb 25, 2025) proceeded without Ukrainian or European officials present, drawing explicit criticism from Zelensky and European allies over being sidelined — matching the description of ceasefire negotiations beginning in early 2025 that controversially excluded European allies from initial talks.",
+        "source": "https://www.cnn.com/2025/02/12/politics/putin-trump-phone-call/index.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cnn.com/2025/02/12/politics/putin-trump-phone-call/index.html"
   }
 ]

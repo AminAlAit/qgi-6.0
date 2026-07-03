@@ -4173,5 +4173,79 @@
       }
     ],
     "source": "https://www.worldbank.org/en/news/press-release/2025/10/21/syria-s-post-conflict-reconstruction-costs-estimated-at-216-billion"
+  },
+  {
+    "year": 1951,
+    "title": "Drought Devastates Syrian Agricultural Heartland",
+    "verdict": "FALSE",
+    "reason": "Extensive searching (English, French) turned up no source of any kind — academic, historical, journalistic, or climatological — documenting a severe drought in Syria's Jazira/Hauran region in 1951. Contemporary academic sources actually contradict this: a 1953 French geography-journal article on the Syrian Jazira (written after a March 1952 field survey) describes 1950-1953 as a period of 'rapid growth of agricultural capitalism' in the Djezireh, i.e. an expansion, not a crisis. A detailed French-language history of rural Syria (books.openedition.org/iremam/744) explicitly enumerates Syria's mid-century drought years as 1954-55 ('la sécheresse de 1954-55 provoqua l'effondrement de la production céréalière' — collapse of cereal production) and 1957-1961 ('les années sèches se succédèrent de 1957 à 1961'), with repeated droughts driving nomadic/rural populations toward the cities — the same causal mechanism described in the QGI event, but dated to the mid-to-late 1950s, not 1951. Other searches (Patrick Seale's political history, the 1955 World Bank Economic Development of Syria report, FAO historical data, climate-history papers) turned up nothing for 1951 either. Given a well-documented, closely-matching drought/cereal-collapse event exists for 1954-55 and no evidence at all supports 1951, the year in this event appears to be wrong rather than the event being wholly invented.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "UNCERTAIN",
+        "reason": "no independent source found. Extensive searching (Syrian drought history literature — Gleick 2014, PNAS Kelley et al. 2015, PMC recurring-drought papers; Syrian political/economic history of the Shishakli era and Akram al-Hourani's peasant politics; Warriner's land-reform studies; World Bank 1955 Syria mission report; FAO historical data) turned up no mention of a 1951 drought in Syria's Jazira region or Hauran plain. Academic climate-history sources document Syrian drought episodes in the late 1950s, 1972-73, 1998-2001, and 2006-2011, but not 1951. FAOSTAT and most quantitative Syrian agricultural datasets only begin in 1961, so no contemporaneous production statistics could be checked. I found neither corroboration nor refutation — this appears to be an obscure historical claim not covered in readily accessible English-language sources.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Extensive searching (English, French) turned up no source of any kind — academic, historical, journalistic, or climatological — documenting a severe drought in Syria's Jazira/Hauran region in 1951. Contemporary academic sources actually contradict this: a 1953 French geography-journal article on the Syrian Jazira (written after a March 1952 field survey) describes 1950-1953 as a period of 'rapid growth of agricultural capitalism' in the Djezireh, i.e. an expansion, not a crisis. A detailed French-language history of rural Syria (books.openedition.org/iremam/744) explicitly enumerates Syria's mid-century drought years as 1954-55 ('la sécheresse de 1954-55 provoqua l'effondrement de la production céréalière' — collapse of cereal production) and 1957-1961 ('les années sèches se succédèrent de 1957 à 1961'), with repeated droughts driving nomadic/rural populations toward the cities — the same causal mechanism described in the QGI event, but dated to the mid-to-late 1950s, not 1951. Other searches (Patrick Seale's political history, the 1955 World Bank Economic Development of Syria report, FAO historical data, climate-history papers) turned up nothing for 1951 either. Given a well-documented, closely-matching drought/cereal-collapse event exists for 1954-55 and no evidence at all supports 1951, the year in this event appears to be wrong rather than the event being wholly invented.",
+        "source": "https://books.openedition.org/iremam/744?lang=en",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1954
+      }
+    ],
+    "source": "https://books.openedition.org/iremam/744?lang=en"
+  },
+  {
+    "year": 1954,
+    "title": "Euphrates River Dam Feasibility Studies Begin",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources (Wikipedia's Euphrates/Tabqa Dam history, an academic paper on the Syrian Tabqa Dam, and the intarch.ac.uk archaeology journal summaries) converge on a different chronology than described. The Syrian government's first documented feasibility study for a Euphrates dam was contracted with an English engineering firm on March 30, 1947 (to study exploiting Euphrates waters for Aleppo's electricity and irrigation) -- not 1954. Interest then went dormant. Soviet involvement (hydrological/geological surveys) only began after the October 1957 Syria-USSR economic aid agreement -- a decade after the year given -- not concurrently with Western firm interest in the same period. No source found (World Bank mission announcements, Wikipedia, academic articles, FRUS archives) documents a 1954 Syrian government commissioning of feasibility studies that simultaneously attracted both Soviet and Western firms; that dual-interest narrative more closely matches Egypt's contemporaneous Aswan High Dam history (Nile River, a different country/river), which did see competing Western financing interest in 1953-1956 before Soviet financing after 1956. A World Bank general economic survey mission to Syria did occur Feb-April 1954 (led by Pieter Lieftinck), but it was a broad economic development mission, not a dam-specific feasibility study, and no source ties it to Euphrates dam engineering work or Soviet/Western firm competition. Given the consistent, convergent timeline placing the actual \"first serious\" feasibility study at 1947 and Soviet interest at 1957, the 1954 date and described substance (simultaneous Soviet+Western interest) do not hold.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "UNCERTAIN",
+        "reason": "The broader narrative is real: Syria did pursue Euphrates dam studies that eventually became the Soviet-built Tabqa Dam (agreement 1957, construction 1968-1973). But I could not find any source confirming 1954 specifically as the year \"first serious feasibility studies\" were commissioned, nor confirming that studies \"attracted interest from both Soviet and Western engineering firms.\" Independent sources cluster around different dates instead: an English firm was contracted for Euphrates feasibility studies on 30 March 1947 (per an academic summary reproduced by intarch.ac.uk); English Wikipedia says post-1946-independence feasibility was \"studied and shelved\"; Al Jazeera's Arabic encyclopedia states \"the idea of building the dam was proposed in 1955\" (طرحت فكرة بناء السد عام 1955), with no mention of 1954; an academic paper (agronomy.org Euphrates-Tigris case study) says only that Syria \"began feasibility studies... in the mid-1950s\" without a precise year. None of these sources mention Soviet firms competing for the early feasibility work -- documented early foreign involvement was English/French/German, with Soviet involvement entering later as a 1957 political/financing agreement, not as a competing feasibility-study bidder. One search surfaced a \"1954\" hydraulic-works date, but that referred to Turkey's General Directorate of State Hydraulic Works (DSI), not Syria -- likely a source of date confusion rather than corroboration. No source flatly contradicts a 1954 Syrian feasibility commission either (it falls within the loosely-documented \"mid-1950s\" window), so I cannot confirm or confidently overturn the specific year or the Soviet-firm detail from the sources available.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Wikipedia's Euphrates/Tabqa Dam history, an academic paper on the Syrian Tabqa Dam, and the intarch.ac.uk archaeology journal summaries) converge on a different chronology than described. The Syrian government's first documented feasibility study for a Euphrates dam was contracted with an English engineering firm on March 30, 1947 (to study exploiting Euphrates waters for Aleppo's electricity and irrigation) -- not 1954. Interest then went dormant. Soviet involvement (hydrological/geological surveys) only began after the October 1957 Syria-USSR economic aid agreement -- a decade after the year given -- not concurrently with Western firm interest in the same period. No source found (World Bank mission announcements, Wikipedia, academic articles, FRUS archives) documents a 1954 Syrian government commissioning of feasibility studies that simultaneously attracted both Soviet and Western firms; that dual-interest narrative more closely matches Egypt's contemporaneous Aswan High Dam history (Nile River, a different country/river), which did see competing Western financing interest in 1953-1956 before Soviet financing after 1956. A World Bank general economic survey mission to Syria did occur Feb-April 1954 (led by Pieter Lieftinck), but it was a broad economic development mission, not a dam-specific feasibility study, and no source ties it to Euphrates dam engineering work or Soviet/Western firm competition. Given the consistent, convergent timeline placing the actual \"first serious\" feasibility study at 1947 and Soviet interest at 1957, the 1954 date and described substance (simultaneous Soviet+Western interest) do not hold.",
+        "source": "https://en.wikipedia.org/wiki/Tabqa_Dam",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1947
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Tabqa_Dam"
   }
 ]

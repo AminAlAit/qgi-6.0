@@ -201,31 +201,6 @@
   },
   {
     "year": 1968,
-    "title": "Velasco Alvarado Military Coup and Revolution",
-    "verdict": "TRUE",
-    "reason": "Coup confirmed October 3, 1968. Nationalist-reformist motivation and sweeping reforms accurately described.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Coup confirmed October 3, 1968. Nationalist-reformist motivation and sweeping reforms accurately described.",
-        "source": "https://en.wikipedia.org/wiki/1968_Peruvian_coup_d%27%C3%A9tat",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1968_Peruvian_coup_d%27%C3%A9tat"
-  },
-  {
-    "year": 1968,
     "title": "IPC Expropriation: Talara Act Asserts Oil Sovereignty",
     "verdict": "TRUE",
     "reason": "Act of Talara expropriation of IPC refinery days after the coup is confirmed. Hickenlooper Amendment threat documented.",
@@ -248,6 +223,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Talara_Act"
+  },
+  {
+    "year": 1968,
+    "title": "Velasco Alvarado Military Coup and Revolution",
+    "verdict": "TRUE",
+    "reason": "Coup confirmed October 3, 1968. Nationalist-reformist motivation and sweeping reforms accurately described.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Coup confirmed October 3, 1968. Nationalist-reformist motivation and sweeping reforms accurately described.",
+        "source": "https://en.wikipedia.org/wiki/1968_Peruvian_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1968_Peruvian_coup_d%27%C3%A9tat"
   },
   {
     "year": 1969,
@@ -451,31 +451,6 @@
   },
   {
     "year": 1980,
-    "title": "Sendero Luminoso Launches Armed Campaign",
-    "verdict": "TRUE",
-    "reason": "Ballot box burning in Chuschi on May 17, 1980, the eve of elections, confirmed. Death toll of ~69,000 from TRC confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Ballot box burning in Chuschi on May 17, 1980, the eve of elections, confirmed. Death toll of ~69,000 from TRC confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Chuschi_ballot_burning_incident",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Chuschi_ballot_burning_incident"
-  },
-  {
-    "year": 1980,
     "title": "BelaÃºnde Returns in Democratic Elections",
     "verdict": "TRUE",
     "reason": "Belaúnde wins 1980 election and succeeds military government as described. Confirmed.",
@@ -498,6 +473,31 @@
       }
     ],
     "source": "https://www.britannica.com/biography/Fernando-Belaunde-Terry"
+  },
+  {
+    "year": 1980,
+    "title": "Sendero Luminoso Launches Armed Campaign",
+    "verdict": "TRUE",
+    "reason": "Ballot box burning in Chuschi on May 17, 1980, the eve of elections, confirmed. Death toll of ~69,000 from TRC confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ballot box burning in Chuschi on May 17, 1980, the eve of elections, confirmed. Death toll of ~69,000 from TRC confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Chuschi_ballot_burning_incident",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Chuschi_ballot_burning_incident"
   },
   {
     "year": 1982,
@@ -851,31 +851,6 @@
   },
   {
     "year": 1995,
-    "title": "Cenepa War with Ecuador Over Border Dispute",
-    "verdict": "TRUE",
-    "reason": "January 26 – February 28, 1995. Peru military advantage confirmed. 1998 Brasília Presidential Act peace agreement confirmed. Minor note: cease-fire was February 17, 1995, not end of February.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "January 26 – February 28, 1995. Peru military advantage confirmed. 1998 Brasília Presidential Act peace agreement confirmed. Minor note: cease-fire was February 17, 1995, not end of February.",
-        "source": "https://en.wikipedia.org/wiki/Cenepa_War",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Cenepa_War"
-  },
-  {
-    "year": 1995,
     "title": "Amnesty Law Shields Military from Human Rights Prosecution",
     "verdict": "TRUE",
     "reason": "June 1995 amnesty law, Barrios Altos/La Cantuta coverage, Inter-American Court ruling confirmed.",
@@ -898,6 +873,31 @@
       }
     ],
     "source": "https://www.corteidh.or.cr/docs/casos/articulos/seriec_75_ing.pdf"
+  },
+  {
+    "year": 1995,
+    "title": "Cenepa War with Ecuador Over Border Dispute",
+    "verdict": "TRUE",
+    "reason": "January 26 – February 28, 1995. Peru military advantage confirmed. 1998 Brasília Presidential Act peace agreement confirmed. Minor note: cease-fire was February 17, 1995, not end of February.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 26 – February 28, 1995. Peru military advantage confirmed. 1998 Brasília Presidential Act peace agreement confirmed. Minor note: cease-fire was February 17, 1995, not end of February.",
+        "source": "https://en.wikipedia.org/wiki/Cenepa_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Cenepa_War"
   },
   {
     "year": 1996,
@@ -1176,31 +1176,6 @@
   },
   {
     "year": 2011,
-    "title": "Ollanta Humala Wins Presidential Election",
-    "verdict": "TRUE",
-    "reason": "Humala wins with 51.34% vs Fujimori 48.66% confirmed. Event says '51.5 percent' — minor rounding discrepancy, VERIFIED.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Humala wins with 51.34% vs Fujimori 48.66% confirmed. Event says '51.5 percent' — minor rounding discrepancy, VERIFIED.",
-        "source": "https://en.wikipedia.org/wiki/2011_Peruvian_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2011_Peruvian_general_election"
-  },
-  {
-    "year": 2011,
     "title": "Conga Mining Project Conflict in Cajamarca",
     "verdict": "TRUE",
     "reason": "Protests against Conga gold/copper project over water lagoons in Cajamarca confirmed. Indefinite suspension confirmed.",
@@ -1223,6 +1198,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Conga_mine"
+  },
+  {
+    "year": 2011,
+    "title": "Ollanta Humala Wins Presidential Election",
+    "verdict": "TRUE",
+    "reason": "Humala wins with 51.34% vs Fujimori 48.66% confirmed. Event says '51.5 percent' — minor rounding discrepancy, VERIFIED.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Humala wins with 51.34% vs Fujimori 48.66% confirmed. Event says '51.5 percent' — minor rounding discrepancy, VERIFIED.",
+        "source": "https://en.wikipedia.org/wiki/2011_Peruvian_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2011_Peruvian_general_election"
   },
   {
     "year": 2014,
@@ -1273,6 +1273,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2016_Peruvian_general_election"
+  },
+  {
+    "year": 2016,
+    "title": "PeruSAT-1 Gives Peru Latin America's Most Powerful Earth-Observation Satellite",
+    "verdict": "TRUE",
+    "reason": "Confirmed via Airbus's own press release and independent spaceflight trade press (Spaceflight Now, eoPortal, NASASpaceFlight.com, Gunter's Space Page). PeruSAT-1, Peru's first satellite, launched 16 September 2016 from Kourou, French Guiana on a Vega rocket (flight VV07), built by Airbus Defence and Space for CONIDA (Peruvian Space Agency). It captures panchromatic imagery at 0.7m (70cm) resolution and is explicitly stated by Airbus to be \"the most powerful Earth observation satellite in the Latin American region.\" Airbus's page also lists applications matching the description: agriculture/crop monitoring, natural disaster evaluation, border control/security. All material facts (country, year, actor/builder, resolution, superlative claim, use cases) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources: PeruSAT-1 launched 16 September 2016 from Kourou, French Guiana on an Arianespace Vega rocket (flight VV07), built by Airbus Defence and Space in under 24 months for Peru's space agency CONIDA. It captures imagery at 0.70m (70cm) resolution. Independent third-party source (MAAP/Amazon Conservation Association, not Airbus PR) corroborates the claim that it was the most powerful Earth-observation satellite in Latin America at the time, used for agriculture/crop monitoring, disaster management, border control/security. All material details (country, year, actor, magnitude, scope) match the description.",
+        "source": "https://www.amazonconservation.org/introducing-perusat-1-perus-new-high-resolution-satellite/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via Airbus's own press release and independent spaceflight trade press (Spaceflight Now, eoPortal, NASASpaceFlight.com, Gunter's Space Page). PeruSAT-1, Peru's first satellite, launched 16 September 2016 from Kourou, French Guiana on a Vega rocket (flight VV07), built by Airbus Defence and Space for CONIDA (Peruvian Space Agency). It captures panchromatic imagery at 0.7m (70cm) resolution and is explicitly stated by Airbus to be \"the most powerful Earth observation satellite in the Latin American region.\" Airbus's page also lists applications matching the description: agriculture/crop monitoring, natural disaster evaluation, border control/security. All material facts (country, year, actor/builder, resolution, superlative claim, use cases) check out.",
+        "source": "https://www.airbus.com/en/newsroom/news/2016-10-airbus-defence-and-space-built-perusat-1-delivers-first-images",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.airbus.com/en/newsroom/news/2016-10-airbus-defence-and-space-built-perusat-1-delivers-first-images"
   },
   {
     "year": 2017,
@@ -1326,31 +1362,6 @@
   },
   {
     "year": 2019,
-    "title": "Vizcarra Dissolves Congress in Constitutional Standoff",
-    "verdict": "TRUE",
-    "reason": "September 30, 2019 dissolution confirmed. Constitutional Tribunal ruled it constitutional January 14, 2020. New fragmented legislature confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "September 30, 2019 dissolution confirmed. Constitutional Tribunal ruled it constitutional January 14, 2020. New fragmented legislature confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2019%E2%80%932020_Peruvian_constitutional_crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2019%E2%80%932020_Peruvian_constitutional_crisis"
-  },
-  {
-    "year": 2019,
     "title": "Former Presidents Prosecuted in Odebrecht Cases",
     "verdict": "TRUE",
     "reason": "Toledo fugitive in US; García suicide when police arrived April 2019 and died; Humala and wife briefly jailed — all confirmed.",
@@ -1375,10 +1386,10 @@
     "source": "https://www.bbc.com/news/world-latin-america-47832479"
   },
   {
-    "year": 2020,
-    "title": "Peru Cycles Through Three Presidents in One Week",
+    "year": 2019,
+    "title": "Vizcarra Dissolves Congress in Constitutional Standoff",
     "verdict": "TRUE",
-    "reason": "Vizcarra impeached Nov 9, Merino resigned Nov 15, Sagasti sworn Nov 17 — all within ~one week. Two protesters killed confirmed.",
+    "reason": "September 30, 2019 dissolution confirmed. Constitutional Tribunal ruled it constitutional January 14, 2020. New fragmented legislature confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1388,8 +1399,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Vizcarra impeached Nov 9, Merino resigned Nov 15, Sagasti sworn Nov 17 — all within ~one week. Two protesters killed confirmed.",
-        "source": "https://www.washingtonpost.com/world/2020/11/20/peru-third-president-francisco-sagasti/",
+        "reason": "September 30, 2019 dissolution confirmed. Constitutional Tribunal ruled it constitutional January 14, 2020. New fragmented legislature confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2019%E2%80%932020_Peruvian_constitutional_crisis",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1397,7 +1408,7 @@
         }
       }
     ],
-    "source": "https://www.washingtonpost.com/world/2020/11/20/peru-third-president-francisco-sagasti/"
+    "source": "https://en.wikipedia.org/wiki/2019%E2%80%932020_Peruvian_constitutional_crisis"
   },
   {
     "year": 2020,
@@ -1423,6 +1434,31 @@
       }
     ],
     "source": "https://www.who.int/countries/per/"
+  },
+  {
+    "year": 2020,
+    "title": "Peru Cycles Through Three Presidents in One Week",
+    "verdict": "TRUE",
+    "reason": "Vizcarra impeached Nov 9, Merino resigned Nov 15, Sagasti sworn Nov 17 — all within ~one week. Two protesters killed confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Vizcarra impeached Nov 9, Merino resigned Nov 15, Sagasti sworn Nov 17 — all within ~one week. Two protesters killed confirmed.",
+        "source": "https://www.washingtonpost.com/world/2020/11/20/peru-third-president-francisco-sagasti/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.washingtonpost.com/world/2020/11/20/peru-third-president-francisco-sagasti/"
   },
   {
     "year": 2021,
@@ -1476,31 +1512,6 @@
   },
   {
     "year": 2023,
-    "title": "Castillo's Self-Coup Attempt Leads to Impeachment and Arrest",
-    "verdict": "FALSE",
-    "reason": "Event is filed under year 2023 but all events occurred on December 7, 2022. Self-coup, impeachment (101 to 6, not '101 to 47' as some sources misrepresent), and Boluarte succession all happened December 7, 2022. Year is wrong by 1 year — should be 2022.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Event is filed under year 2023 but all events occurred on December 7, 2022. Self-coup, impeachment (101 to 6, not '101 to 47' as some sources misrepresent), and Boluarte succession all happened December 7, 2022. Year is wrong by 1 year — should be 2022.",
-        "source": "https://en.wikipedia.org/wiki/2022_Peruvian_self-coup_attempt",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2022_Peruvian_self-coup_attempt"
-  },
-  {
-    "year": 2023,
     "title": "Boluarte Government Kills Dozens of Protesters",
     "verdict": "TRUE",
     "reason": "Protests Dec 2022–March 2023; ~50 civilians killed (event says 'exceeds 60' which is slightly high — most sources cite ~50 total protesters killed). OAS/UN calls for investigation confirmed. Ayacucho and Juliaca as main sites confirmed.",
@@ -1523,6 +1534,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Juliaca_massacre"
+  },
+  {
+    "year": 2023,
+    "title": "Castillo's Self-Coup Attempt Leads to Impeachment and Arrest",
+    "verdict": "FALSE",
+    "reason": "Event is filed under year 2023 but all events occurred on December 7, 2022. Self-coup, impeachment (101 to 6, not '101 to 47' as some sources misrepresent), and Boluarte succession all happened December 7, 2022. Year is wrong by 1 year — should be 2022.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Event is filed under year 2023 but all events occurred on December 7, 2022. Self-coup, impeachment (101 to 6, not '101 to 47' as some sources misrepresent), and Boluarte succession all happened December 7, 2022. Year is wrong by 1 year — should be 2022.",
+        "source": "https://en.wikipedia.org/wiki/2022_Peruvian_self-coup_attempt",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2022_Peruvian_self-coup_attempt"
   },
   {
     "year": 2024,

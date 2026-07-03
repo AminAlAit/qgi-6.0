@@ -1501,5 +1501,41 @@
       }
     ],
     "source": "https://edition.cnn.com/2024/08/05/asia/cambodia-breaks-ground-on-china-funded-canal-intl-hnk"
+  },
+  {
+    "year": 1994,
+    "title": "Cambodia Begins Market Economy Transition with IMF Support",
+    "verdict": "TRUE",
+    "reason": "Independently confirmed: the IMF approved its first Enhanced Structural Adjustment Facility (ESAF) arrangement for Cambodia on May 6, 1994 (SDR 84 million over three years), explicitly supporting the Royal Cambodian Government's transition from a centrally-planned/socialist economy to a market economy — including privatization of state enterprises, trade liberalization (removal of import licensing/quantitative restrictions building on the 1989 foreign investment law), and financial sector reform. This IMF-backed liberalization coincided with the takeoff of Cambodia's garment export sector (essentially zero in 1994, growing to $1.1B in exports and 80,000+ workers by 1998/99) driven by new FDI incentives, matching the description's claim about attracting foreign investment particularly in garments. Independent economic literature also confirms rising income inequality (Gini rising from ~33.5% in 1990 toward ~37-40% through the 1990s/2000s) even as aggregate GDP growth accelerated, matching the description's final claim about growth-inequality divergence. All material elements (country, year, actor, mechanism, sectoral effect, distributional outcome) are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: the IMF approved a first arrangement for Cambodia (structural adjustment support, ~84 million SDR) on 6 May 1994 under what became the Enhanced Structural Adjustment Facility (ESAF), explicitly to support Cambodia's transition from a centrally planned to a market economy after the 1991 Paris Peace Agreements and 1993 elections. The Royal Government's medium-term program (backed by the March 1994 ICORC donor plan following Washington Consensus prescriptions) included macroeconomic stabilization, financial-sector reform, and structural reforms; a privatization law was adopted in December 1994, and trade liberalization proceeded alongside it. This matches the description's core claims (year, country, IMF-supported transition, privatization, trade liberalization, financial-sector development). The broader claims about foreign investment flowing into the garment sector and rising inequality alongside growth are also independently corroborated as consequences of this same transition process that took hold through the mid-to-late 1990s (garment sector FDI boom from the mid/late 1990s; inequality rising substantially \"since the mid-1990s\" per Wikipedia's Economy of Cambodia page), consistent with the description framing these as downstream effects of the transition begun in 1994 rather than events confined strictly to calendar year 1994. No off-limits domains were used.",
+        "source": "https://en.wikipedia.org/wiki/Cambodia_and_the_International_Monetary_Fund",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed: the IMF approved its first Enhanced Structural Adjustment Facility (ESAF) arrangement for Cambodia on May 6, 1994 (SDR 84 million over three years), explicitly supporting the Royal Cambodian Government's transition from a centrally-planned/socialist economy to a market economy — including privatization of state enterprises, trade liberalization (removal of import licensing/quantitative restrictions building on the 1989 foreign investment law), and financial sector reform. This IMF-backed liberalization coincided with the takeoff of Cambodia's garment export sector (essentially zero in 1994, growing to $1.1B in exports and 80,000+ workers by 1998/99) driven by new FDI incentives, matching the description's claim about attracting foreign investment particularly in garments. Independent economic literature also confirms rising income inequality (Gini rising from ~33.5% in 1990 toward ~37-40% through the 1990s/2000s) even as aggregate GDP growth accelerated, matching the description's final claim about growth-inequality divergence. All material elements (country, year, actor, mechanism, sectoral effect, distributional outcome) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/Cambodia_and_the_International_Monetary_Fund",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Cambodia_and_the_International_Monetary_Fund"
   }
 ]
