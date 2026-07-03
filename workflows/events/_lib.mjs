@@ -27,8 +27,11 @@ import process from "node:process";
 import { fileURLToPath } from "node:url";
 import {
   CAPS, CATEGORY_SUBSTITUTIONS, CONSENSUS_POLICY, SHARDS,
-  VERDICTS, YEAR_RANGE, normTitle, recomputeConsensus,
-  RESEARCH_OUTPUT_SCHEMA, CURATE_OUTPUT_SCHEMA, VERIFY_OUTPUT_SCHEMA
+  VERDICTS, YEAR_RANGE, TRAIN_WINDOW, normTitle, recomputeConsensus,
+  ACTIVE_TRENDS, DEACTIVATED_TRENDS, HAZARD_OVERLAP, RUNNABLE_GATE, THIN_MIN,
+  MAX_VERIFY_DEPTH,
+  RESEARCH_OUTPUT_SCHEMA, CURATE_OUTPUT_SCHEMA, VERIFY_OUTPUT_SCHEMA,
+  TREND_RESEARCH_OUTPUT_SCHEMA, TREND_CURATE_OUTPUT_SCHEMA
 } from "./schemas.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -351,44 +354,96 @@ Hard rules:
 - NEVER fabricate a URL, a quote, or a date.`;
 }
 
-// ─── Mode B priority (§5.2) ──────────────────────────────────────────────────
+// NOTE: the old §5.2 tier-priority Mode B selection (P1_FRAGILE / P2_LOW_JOIN /
+// P3_FLAGSHIP + eventTier + tierWhy) was retired 2026-07-03 when the founder made
+// Mode B trend-agnostic + depth-escalating (see planB / depthWhy below).
 
-export const P1_FRAGILE_CATEGORIES = [
-  "religious_and_social_movement", "technology_breakthrough", "economic_growth_milestone",
-  "economic_nationalization", "monetary_policy_change", "currency_crisis", "labor_action",
-  "banking_and_financial_crisis", "agricultural_policy", "ethnic_and_communal_conflict"
-];
-export const P2_LOW_JOIN_COUNTRIES = ["ukraine", "venezuela", "iran", "bhutan", "ethiopia", "madagascar"];
-export const P3_FLAGSHIP_CATEGORIES = [
-  "elections_and_voting", "bilateral_treaty", "government_formation", "civil_war_and_insurgency",
-  "constitutional_change", "political_repression", "democratic_transition", "mass_protest"
-];
+// ─── positives computation (JS mirror of build_verified_positives.py) ─────────
 
-export function eventTier(slug, category) {
-  if (category && P1_FRAGILE_CATEGORIES.includes(category)) return 1;
-  if (P2_LOW_JOIN_COUNTRIES.includes(slug)) return 2;
-  if (category && P3_FLAGSHIP_CATEGORIES.includes(category)) return 3;
-  return 4;
-}
-
-// NOTE (blindness contract): these strings are injected into BLIND verifier prompts.
-// They must never reveal a prior pass's verdict/reason/direction, imply the event is
-// currently counted one way, or make one verdict sound more helpful than another.
-export function tierWhy(tier, category) {
-  switch (tier) {
-    case 1: return `'${category}' feeds a Trend whose training set sits near its minimum-size threshold, so each verdict here carries outsized weight. An accurate verdict matters more than any particular one: a wrong TRUE injects noise into a small training set; a wrong FALSE discards scarce real signal. Both errors are equally costly.`;
-    case 2: return "This country's event records have known title/encoding drift, so careful, from-scratch fact-checking of the exact year and event is especially valuable here. Accuracy in either direction is the goal.";
-    case 3: return `'${category}' is a high-volume Trend; verdict accuracy at scale is the goal — a wrong TRUE and a wrong FALSE are equally costly.`;
-    default: return "This event is part of a systematic accuracy sweep across the corpus. A wrong TRUE and a wrong FALSE are equally costly.";
+/** Load every country's verdict map: slug -> Map("year|normTitle" -> verdict).
+ * Migrates legacy entries in memory so v1 and v2 files both read correctly. */
+function loadAllVerdictMaps() {
+  const maps = new Map();
+  for (const slug of listCountrySlugs(VERIFICATION_DIR)) {
+    const m = new Map();
+    try {
+      for (const e of loadJson(path.join(VERIFICATION_DIR, `${slug}.json`)).map(migrateEntry)) {
+        if (e && typeof e === "object" && e.year != null) {
+          m.set(`${Number(e.year)}|${normTitle(e.title)}`, String(e.verdict).toUpperCase());
+        }
+      }
+    } catch { /* skip unreadable */ }
+    maps.set(slug, m);
   }
+  return maps;
 }
 
-/** Verification slugs in §5.2 priority order (P2 low-join countries first as whole
- * files, then everything else alphabetically; event-level tiers do the fine ordering). */
-export function listVerificationSlugsByPriority() {
-  const all = listCountrySlugs(VERIFICATION_DIR);
-  const p2 = P2_LOW_JOIN_COUNTRIES.filter((s) => all.includes(s));
-  return [...p2, ...all.filter((s) => !p2.includes(s))];
+/** {trend -> n_pos}: distinct (country, year) with verdict==TRUE in the training
+ * window, per category. Mirrors build_verified_positives.build_positives so the
+ * trend picker sees the same numbers the fleet trains on. */
+export function computePositives() {
+  const verdictMaps = loadAllVerdictMaps();
+  const [minY, maxY] = TRAIN_WINDOW;
+  const perTrend = new Map(); // trend -> Set("country|year")
+  for (const slug of listCountrySlugs(CURATED_DIR)) {
+    const vmap = verdictMaps.get(slug);
+    if (!vmap) continue; // no verification file → contributes no positives
+    let events;
+    try { events = loadJson(path.join(CURATED_DIR, `${slug}.json`)); } catch { continue; }
+    for (const e of events) {
+      if (!e || e.category == null || e.year == null) continue;
+      const yr = Number(e.year);
+      if (yr < minY || yr > maxY) continue;
+      if (vmap.get(`${yr}|${normTitle(e.title)}`) !== "TRUE") continue;
+      if (!perTrend.has(e.category)) perTrend.set(e.category, new Set());
+      perTrend.get(e.category).add(`${slug}|${yr}`);
+    }
+  }
+  const out = {};
+  for (const t of ACTIVE_TRENDS) out[t] = perTrend.has(t) ? perTrend.get(t).size : 0;
+  return out;
+}
+
+export function trendTier(nPos) {
+  return nPos >= RUNNABLE_GATE ? "runnable" : (nPos >= THIN_MIN ? "thin" : "skip");
+}
+
+/** Rank active Trends by marginal training value (highest first), then pick the
+ * top not-yet-exhausted one. Heuristic (founder-delegated, "be wise"):
+ *   1. THIN Trends closest to the runnable gate — fewest verified events to make a
+ *      whole new Trend trainable (biggest unlock per event).
+ *   2. FRAGILE-FLOOR runnable (gate..gate+15) — pre-emptively pad so a later Mode B
+ *      flip can't de-list them.
+ *   3. SKIP-tier distinctive Trends — larger lift, expands coverage.
+ * Hazard-overlap subtypes are ranked last within their tier (add few NEW Trends).
+ * Deactivated Trends never appear (ACTIVE_TRENDS excludes them). */
+export function rankTrends(positives = null) {
+  const pos = positives ?? computePositives();
+  const score = (t) => {
+    const n = pos[t] ?? 0;
+    const tier = trendTier(n);
+    const hazardPenalty = HAZARD_OVERLAP.includes(t) ? 1000 : 0;
+    // lower key = higher priority
+    if (tier === "thin") return [0, RUNNABLE_GATE - n + hazardPenalty, t]; // closest-to-gate first
+    if (tier === "runnable" && n <= RUNNABLE_GATE + 15) return [1, n + hazardPenalty, t]; // lowest margin first
+    if (tier === "skip") return [2, RUNNABLE_GATE - n + hazardPenalty, t];
+    return [3, n + hazardPenalty, t]; // comfortably runnable — lowest value
+  };
+  return [...ACTIVE_TRENDS].sort((a, b) => {
+    const sa = score(a), sb = score(b);
+    return sa[0] - sb[0] || sa[1] - sb[1] || String(sa[2]).localeCompare(String(sb[2]));
+  }).map((t) => ({ trend: t, n_pos: pos[t] ?? 0, tier: trendTier(pos[t] ?? 0) }));
+}
+
+/** Pick the next Trend to enrich: highest-ranked one whose Mode-A ledger cell
+ * isn't already saturated for this pass (candidates_added < TREND_CANDIDATES_TARGET). */
+export function pickTrend(ledger, positives = null) {
+  const ranked = rankTrends(positives);
+  for (const r of ranked) {
+    const cell = ledger.trends?.[r.trend];
+    if (!cell || (cell.candidates_added ?? 0) < CAPS.TREND_CANDIDATES_TARGET) return r;
+  }
+  return ranked[0] ?? null;
 }
 
 // ─── plan-a ──────────────────────────────────────────────────────────────────
@@ -578,6 +633,222 @@ function fileSha256(p) {
   return fs.existsSync(p) ? createHash("sha256").update(fs.readFileSync(p)).digest("hex") : null;
 }
 
+// ─── plan-a-trend (trend-first enrichment; founder redesign 2026-07-02) ───────
+
+/** All existing curated events of one Trend, across every country — the dedup set
+ * the researcher must avoid, plus a coverage picture (which countries/years exist). */
+export function existingTrendEvents(trend) {
+  const out = [];
+  for (const slug of listCountrySlugs(CURATED_DIR)) {
+    let events;
+    try { events = loadJson(path.join(CURATED_DIR, `${slug}.json`)); } catch { continue; }
+    for (const e of events) {
+      if (e && e.category === trend && e.year != null) out.push({ country: slug, year: e.year, title: e.title });
+    }
+  }
+  return out;
+}
+
+export function buildTrendResearchPrompt({ trend, existing, why, regionHint }) {
+  const covered = existing.map((e) => `${e.country} ${e.year}: ${e.title}`);
+  return `You are a QGI event-research agent (web research only: WebSearch/WebFetch).
+
+## Mission context (the why)
+${why}
+You are enriching ONE QGI Trend — **${trend}** — by finding REAL, verifiable historical
+events whose PRIMARY causal driver is this Trend, across MANY countries. Positives are
+distinct (country, year) per Trend, so BREADTH across countries matters far more than depth
+in any one country: prefer one strong event each from many countries over several from one.
+
+## Anti-confabulation hard rules
+- NEVER invent an event, a year, a figure, or a source URL. Every candidate MUST cite a real
+  working source_url you actually found. If you cannot confirm year + country from a real
+  source, DO NOT include it.
+- category MUST be exactly "${trend}" for every candidate — the event's PRIMARY driver must
+  genuinely be this Trend (not a side-effect). If an event fits another Trend better, drop it.
+- country MUST be the file slug: lowercase_with_underscores (e.g. "saudi_arabia",
+  "democratic_republic_of_congo"). year within ${YEAR_RANGE[0]}–${YEAR_RANGE[1]}.
+- Titles <=120 chars, plain ASCII punctuation. description: 2–4 factual sentences with
+  verifiable specifics (dates, names, magnitudes).
+
+## What "${trend}" means
+Only events whose primary causal driver is ${trend}. ${regionHint ? `\n## Focus for THIS agent\n${regionHint}\nStay within this country set to avoid overlap with the other research agents.` : ""}
+
+## Already-curated ${trend} events — do NOT return these or near-duplicates
+${covered.length ? covered.map((t) => `- ${t}`).join("\n") : "(none yet)"}
+
+## Target
+~15 strong candidates from DIFFERENT countries (fewer is fine — never pad with weak or
+invented entries; note gaps in coverage_note). Set category_all_match=true only after
+re-checking every candidate's category is exactly "${trend}".`;
+}
+
+export function buildTrendCuratePrompt({ trend }) {
+  return `You are a QGI event-curation agent (no tools — work only from the JSON below).
+
+Curate candidate **${trend}** events gathered across many countries.
+
+Rules:
+- Emit curated_events entries with EXACTLY {country, year, title, description, category} —
+  category must be "${trend}"; country is the lowercase_with_underscores file slug.
+- Drop: duplicates of the already-curated list below (duplicate_existing); duplicates within
+  this batch, INCLUDING the same event from the same country worded differently or ±1 year
+  (duplicate_within_batch); events whose primary driver is NOT ${trend} (wrong_trend);
+  non-events / vague multi-decade processes (non_event); year out of range (out_of_range);
+  low-confidence (low_confidence); a country slug you cannot resolve to a real country
+  (unknown_country).
+- Keep at most ONE event per (country, year) — positives dedup to one per country-year, so a
+  second same-country-year event is wasted; keep the strongest.
+- Explain EVERY drop in dropped[] with its reason code. Do not alter factual content beyond
+  fixing encoding / trimming length.
+
+## Already-curated ${trend} events (dedup against these)
+__EXISTING_EVENTS__
+
+Set all_categories_valid=true only after re-checking every kept event's category is "${trend}".`;
+}
+
+/** Split a country list into N roughly-even groups for breadth-oriented research
+ * fan-out (each research agent gets a distinct slice → less overlap). */
+function regionGroupsForTrend(existing, n) {
+  // spread the KNOWN universe of country slugs so agents cover different areas;
+  // fall back to the curated-country list if we have few existing events.
+  const universe = listCountrySlugs(CURATED_DIR);
+  const groups = Array.from({ length: n }, () => []);
+  universe.forEach((slug, i) => groups[i % n].push(slug));
+  return groups.map((g) => `Prioritize events from these countries (but you may include a ` +
+    `strong event from any country not already covered): ${g.join(", ")}.`);
+}
+
+export function planATrend({ trend = null } = {}) {
+  const ledger = loadLedgerA();
+  if (!ledger.trends) ledger.trends = {};
+  const positives = computePositives();
+  let picked;
+  if (trend) {
+    if (DEACTIVATED_TRENDS.includes(trend)) {
+      throw new Error(`plan-a-trend: '${trend}' is a DEACTIVATED Trend — not enrichable`);
+    }
+    if (!ACTIVE_TRENDS.includes(trend)) throw new Error(`plan-a-trend: '${trend}' is not a canonical Trend`);
+    picked = { trend, n_pos: positives[trend] ?? 0, tier: trendTier(positives[trend] ?? 0) };
+  } else {
+    picked = pickTrend(ledger, positives);
+  }
+  if (!picked) throw new Error("plan-a-trend: no Trend to enrich");
+  const existing = existingTrendEvents(picked.trend);
+  const why = `The '${picked.trend}' Trend currently has ${picked.n_pos} training positives ` +
+    `(tier: ${picked.tier}; the runnable gate is ${RUNNABLE_GATE}). Every real, verifiable event ` +
+    `found here — in a country-year not already covered — expands what this Trend can learn from.`;
+  const verifyWhy = `This is a fresh candidate event for the QGI '${picked.trend}' ground-truth ` +
+    `database. Your verdict makes it usable or not; a wrong TRUE ships label noise, a wrong FALSE ` +
+    `discards real signal. Both errors are equally costly.`;
+  const nAgents = CAPS.TREND_RESEARCH_AGENTS;
+  const regionHints = regionGroupsForTrend(existing, nAgents);
+  return {
+    mode: "A-trend",
+    trend: picked.trend,
+    n_pos: picked.n_pos,
+    tier: picked.tier,
+    gap_to_gate: Math.max(0, RUNNABLE_GATE - picked.n_pos),
+    policy: CONSENSUS_POLICY,
+    caps: CAPS,
+    researchAgents: regionHints.map((regionHint, i) => ({
+      idx: i + 1,
+      researchPrompt: buildTrendResearchPrompt({ trend: picked.trend, existing, why, regionHint })
+    })),
+    curatePrompt: fillTemplate(buildTrendCuratePrompt({ trend: picked.trend }), {
+      __EXISTING_EVENTS__: existing.map((e) => `- ${e.country} ${e.year}: ${e.title}`).join("\n") || "(none yet)"
+    }),
+    verifyPromptTemplate: verifyPromptTemplate(),
+    verifyWhy,
+    schemas: { research: TREND_RESEARCH_OUTPUT_SCHEMA, curate: TREND_CURATE_OUTPUT_SCHEMA, verify: VERIFY_OUTPUT_SCHEMA }
+  };
+}
+
+// ─── merge-a-trend (deterministic persist; routes to per-country files) ───────
+
+export function mergeATrend(plan, results) {
+  const trend = plan.trend;
+  const ledger = loadLedgerA();
+  if (!ledger.trends) ledger.trends = {};
+  const globalKeys = new Set(ledger.event_keys);
+  const validCountries = new Set(listCountrySlugs(CURATED_DIR));
+  const summary = {
+    trend, added: 0, dup_existing: 0, dup_within_batch: 0, dup_ledger: 0,
+    unknown_country: 0, echo_mismatch: 0, capped: 0, unverified_skipped: 0,
+    verdicts: { TRUE: 0, FALSE: 0, PARTIAL: 0, UNCERTAIN: 0, CONTESTED: 0 },
+    independence: {}, countries_touched: new Set(), added_events: [], dropped_events: []
+  };
+  const addedThisRun = new Set();
+  // group verified events by country so each country file is read/written once
+  const byCountry = new Map();
+  for (const item of results.events ?? []) {
+    const ev = item.event;
+    if (!ev || !validCountries.has(ev.country)) { summary.unknown_country++; continue; }
+    if (ev.category !== trend) continue; // curate should guarantee this; belt-and-suspenders
+    if (!byCountry.has(ev.country)) byCountry.set(ev.country, []);
+    byCountry.get(ev.country).push(item);
+  }
+
+  let budget = plan.caps.TREND_CANDIDATES_TARGET;
+  for (const [slug, items] of byCountry) {
+    const curatedPath = path.join(CURATED_DIR, `${slug}.json`);
+    const verificationPath = path.join(VERIFICATION_DIR, `${slug}.json`);
+    const curated = fs.existsSync(curatedPath) ? loadJson(curatedPath) : [];
+    const verification = fs.existsSync(verificationPath) ? loadJson(verificationPath).map(migrateEntry) : [];
+    const joinKey = (y, t) => `${Number(y)}|${normTitle(t)}`;
+    const curatedByKey = new Map(curated.filter((e) => e && e.year != null).map((e) => [joinKey(e.year, e.title), e]));
+    const verifiedKeys = new Set(verification.filter((e) => e && e.year != null).map((e) => joinKey(e.year, e.title)));
+    const newCurated = [], newVerification = [];
+
+    for (const item of items) {
+      const ev = item.event;
+      const passesRaw = (item.passes ?? []).filter((p) =>
+        p && Number(p.year) === Number(ev.year) && normTitle(p.title) === normTitle(ev.title));
+      if ((item.passes ?? []).length !== passesRaw.length) summary.echo_mismatch++;
+      if (passesRaw.length < 2) { summary.unverified_skipped++; continue; } // born double-verified or not at all
+      const jk = joinKey(ev.year, ev.title);
+      if (addedThisRun.has(dedupKey(slug, ev.year, ev.title))) { summary.dup_within_batch++; continue; }
+      if (curatedByKey.has(jk)) { summary.dup_existing++; continue; }
+      const key = dedupKey(slug, ev.year, ev.title);
+      if (globalKeys.has(key)) { summary.dup_ledger++; continue; }
+      if (budget <= 0) { summary.capped++; summary.dropped_events.push({ country: slug, year: ev.year, title: ev.title, reason: "TREND_CANDIDATES_TARGET cap" }); continue; }
+
+      const passes = passesRaw.map((p, i) => passFromAgentResult(p, i + 1));
+      const entry = buildVerificationEntry(ev.year, ev.title, passes, plan.policy);
+      newCurated.push(cleanCuratedEvent({ year: ev.year, title: ev.title, description: ev.description, category: trend }));
+      newVerification.push(entry);
+      addedThisRun.add(key); verifiedKeys.add(jk); globalKeys.add(key); budget--;
+      summary.added++;
+      summary.verdicts[entry.consensus_verdict] = (summary.verdicts[entry.consensus_verdict] ?? 0) + 1;
+      summary.independence[entry.source_independence] = (summary.independence[entry.source_independence] ?? 0) + 1;
+      summary.countries_touched.add(slug);
+      summary.added_events.push({ country: slug, year: ev.year, title: ev.title, consensus: entry.consensus_verdict });
+    }
+
+    if (newCurated.length) {
+      newCurated.sort((a, b) => a.year - b.year || a.title.localeCompare(b.title));
+      saveJson(curatedPath, [...curated, ...newCurated]);
+    }
+    if (newVerification.length) {
+      const merged = [...verification, ...newVerification].sort((a, b) => a.year - b.year || String(a.title).localeCompare(String(b.title)));
+      saveJson(verificationPath, merged);
+    }
+  }
+
+  const cell = ledger.trends[trend] ?? { candidates_added: 0, runs: 0 };
+  cell.candidates_added = (cell.candidates_added ?? 0) + summary.added;
+  cell.runs = (cell.runs ?? 0) + 1;
+  cell.n_pos_after = (computePositives()[trend] ?? 0);
+  cell.last_run = new Date().toISOString();
+  ledger.trends[trend] = cell;
+  ledger.event_keys = [...globalKeys].sort();
+  saveLedgerA(ledger);
+  regenTracking();
+  summary.countries_touched = [...summary.countries_touched].sort();
+  return summary;
+}
+
 // ─── plan-b ──────────────────────────────────────────────────────────────────
 
 /** Ledger-side "this event is settled" predicate (mirror of isDoubleVerified for
@@ -586,10 +857,42 @@ export function ledgerSettled(led) {
   return Boolean(led && led.verify_count >= 2 && !led.needs_tiebreak);
 }
 
-export function planB({ country = null, batch = CAPS.EVENT_BATCH_SIZE, includeUnverified = false } = {}) {
+/** Verification depth reached (ledger side): fully verified to maxDepth and not
+ * awaiting a tiebreak. Generalizes ledgerSettled across the depth ladder. */
+export function ledgerDepthReached(led, maxDepth = MAX_VERIFY_DEPTH) {
+  return Boolean(led && led.verify_count >= maxDepth && !led.needs_tiebreak);
+}
+
+/** Deterministic shuffle within an ordering key (seed varies per run via `seed`
+ * so successive batches cover different events, but a single plan is reproducible
+ * for the same seed). xorshift over a string hash — no Math.random dependency. */
+function seededShuffle(arr, seed) {
+  let s = 0;
+  for (const c of String(seed)) s = (Math.imul(31, s) + c.charCodeAt(0)) | 0;
+  s = s || 1;
+  const rand = () => { s ^= s << 13; s ^= s >>> 17; s ^= s << 5; return ((s >>> 0) % 1e6) / 1e6; };
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/**
+ * Mode B (founder redesign 2026-07-02): trend-agnostic, random, DEPTH-ESCALATING.
+ * Drives the LEAST-verified events up first — everything to 2 passes, then to 3
+ * (triple), capped at maxDepth. No strategic tiering: uniform coverage of the
+ * corpus, random within a depth tier.
+ * Selection tiers by current depth: 0 (curated, no verdict → needs 2 passes),
+ * 1 (single verdict → 1 pass), 2-and-needs-tiebreak (contested → 1 pass).
+ */
+export function planB({ country = null, batch = CAPS.EVENT_BATCH_SIZE,
+                        maxDepth = MAX_VERIFY_DEPTH, seed = "qgi", includeUnverified = true } = {}) {
   const ledgerB = loadLedgerB();
-  const slugs = country ? [country] : listVerificationSlugsByPriority();
+  const slugs = country ? [country] : listCountrySlugs(VERIFICATION_DIR);
   const selected = [], skippedOrphans = [];
+  const seenCuratedZero = country ? new Set() : null; // only walk zero-verdict for a named country by default
 
   for (const slug of slugs) {
     const vPath = path.join(VERIFICATION_DIR, `${slug}.json`);
@@ -602,57 +905,73 @@ export function planB({ country = null, batch = CAPS.EVENT_BATCH_SIZE, includeUn
       const jk = `${Number(entry.year)}|${normTitle(entry.title)}`;
       verifiedKeys.add(jk);
       if (!("verifications" in entry)) continue; // malformed legacy verdict — manual review, not batchable
-      if (isDoubleVerified(entry)) continue;
-      if (ledgerSettled(ledgerB.events[dedupKey(slug, entry.year, entry.title)])) continue;
+      const depth = entry.verify_count ?? entry.verifications.length;
+      const needsTiebreak = entry.needs_tiebreak === true;
+      if (depth >= maxDepth && !needsTiebreak) continue;              // fully verified to the ceiling
+      if (ledgerDepthReached(ledgerB.events[dedupKey(slug, entry.year, entry.title)], maxDepth)) continue;
       const cur = cIdx.get(jk);
       if (!cur) { skippedOrphans.push({ slug, year: entry.year, title: entry.title }); continue; }
-      selected.push({ slug, entry, cur, tier: eventTier(slug, cur.category), passesNeeded: 1 });
+      // contested (needs a 3rd pass) sorts with depth-2 events; otherwise by real depth
+      selected.push({ slug, entry, cur, depthBefore: depth, needsTiebreak, passesNeeded: 1 });
     }
 
-    // zero-verdict curated events (the 43-country lever, or a named country's gaps):
-    // these need TWO fresh blind passes to be born double-verified.
+    // zero-verdict curated events (depth 0). Included by default in a corpus-wide
+    // sweep (founder: "double-verify all events we have"); they need 2 fresh passes.
     if (includeUnverified || country) {
       for (const [jk, cur] of cIdx) {
         if (verifiedKeys.has(jk)) continue;
-        if (ledgerSettled(ledgerB.events[dedupKey(slug, cur.year, cur.title)])) continue;
-        selected.push({ slug, entry: null, cur, tier: eventTier(slug, cur.category), passesNeeded: 2 });
+        if (ledgerDepthReached(ledgerB.events[dedupKey(slug, cur.year, cur.title)], maxDepth)) continue;
+        selected.push({ slug, entry: null, cur, depthBefore: 0, needsTiebreak: false, passesNeeded: 2 });
       }
     }
   }
 
-  selected.sort((a, b) => a.tier - b.tier || a.slug.localeCompare(b.slug) ||
-    a.cur.year - b.cur.year || a.cur.title.localeCompare(b.cur.title));
-  // materialize per-event fields ONLY for the sliced batch — right after migration
-  // ~11.7k events are selectable and building payloads for all of them is pure waste
-  const batchEvents = selected.slice(0, batch).map(makePlanBEvent);
+  // Ordering: contested (needs_tiebreak) FIRST — they're stuck at 2 passes and block
+  // a positive/negative determination, so resolve them promptly; then depth-ascending
+  // (lowest verify_count first → every event reaches 2 before any reaches 3, per the
+  // founder's "double-verify all, then triple" rule); random within each tier.
+  const rankKey = (e) => (e.needsTiebreak ? -1 : e.depthBefore);
+  const shuffled = seededShuffle(selected, seed);
+  shuffled.sort((a, b) => rankKey(a) - rankKey(b));
+  const batchEvents = shuffled.slice(0, batch).map(makePlanBEvent);
   return {
     mode: "B",
     policy: CONSENSUS_POLICY,
     caps: CAPS,
+    maxDepth,
     // the workflow composes each blind prompt from this ONE template + the
     // per-event fields below (fillTemplate semantics: replacer-fn, verbatim)
     verifyPromptTemplate: verifyPromptTemplate(),
     batch: batchEvents,
     totalSelectable: selected.length,
+    selectableByDepth: selected.reduce((m, e) => (m[e.depthBefore] = (m[e.depthBefore] ?? 0) + 1, m), {}),
     skippedOrphans,
     schemas: { verify: VERIFY_OUTPUT_SCHEMA }
   };
 }
 
-function makePlanBEvent({ slug, entry, cur, tier, passesNeeded }) {
+function makePlanBEvent({ slug, entry, cur, depthBefore, needsTiebreak, passesNeeded }) {
   const priorPasses = entry?.verifications ?? [];
   const priorDomains = [...new Set(priorPasses.map((p) => p.source && registrableDomain(p.source))
     .filter(Boolean))];
   return {
     key: dedupKey(slug, cur.year, cur.title),
-    slug, year: cur.year, title: cur.title, category: cur.category, tier,
+    slug, year: cur.year, title: cur.title, category: cur.category,
+    depthBefore, needsTiebreak,
     passesNeeded, // the workflow spawns this many blind passes of the same prompt
     eventJson: JSON.stringify(
       { year: cur.year, title: cur.title, description: cur.description, category: cur.category },
       null, 2),
     priorDomains: priorDomains.length ? priorDomains.join(", ") : "(none)",
-    why: tierWhy(tier, cur.category)
+    why: depthWhy(depthBefore)
   };
+}
+
+/** Neutral, blindness-safe why-context for a Mode B verifier (never reveals prior
+ * verdicts/direction). */
+export function depthWhy(depthBefore) {
+  if (depthBefore === 0) return "This event is part of the QGI ground-truth database and is being fact-checked from scratch. Confirm the country, year, and substance from independent sources. A wrong TRUE and a wrong FALSE are equally costly.";
+  return "This event is undergoing an additional independent fact-check to raise confidence in its label. Verify it fresh, on its own merits — a wrong TRUE and a wrong FALSE are equally costly.";
 }
 
 // ─── consolidate-b (deterministic persist for Mode B) ────────────────────────
@@ -704,7 +1023,12 @@ export function consolidateB(plan, results) {
       const i = idx.get(jk);
       let entry = i != null ? entries[i] : null;
 
-      if (entry && isDoubleVerified(entry)) { summary.reentrancy_skipped++; continue; } // overlapping-run guard
+      // overlapping-run guard (depth-aware): if the entry advanced past the depth
+      // this plan selected it at, another run already applied a pass — skip. This
+      // replaces the old isDoubleVerified check so triple-verification (2→3) is NOT
+      // wrongly blocked, while still preventing double-apply from concurrent runs.
+      const curDepth = entry ? (entry.verify_count ?? entry.verifications.length) : 0;
+      if (pe.depthBefore != null && curDepth !== pe.depthBefore) { summary.reentrancy_skipped++; continue; }
       const before = entry ? String(entry.verdict).toUpperCase() : null;
       const priorPasses = entry?.verifications ?? [];
       // replay guard: an identical (verdict,reason,source) pass is a re-run of the
@@ -872,11 +1196,24 @@ function main() {
       emit(planB({
         country: cliArg(rest, "country"),
         batch: Number(cliArg(rest, "batch", CAPS.EVENT_BATCH_SIZE)),
-        includeUnverified: rest.includes("--include-unverified")
+        maxDepth: Number(cliArg(rest, "max-depth", MAX_VERIFY_DEPTH)),
+        seed: cliArg(rest, "seed", "qgi")
       }));
       break;
     case "consolidate-b":
       emit(consolidateB(loadJson(cliArg(rest, "plan")), loadJson(cliArg(rest, "results"))));
+      break;
+    case "plan-a-trend":
+      emit(planATrend({ trend: cliArg(rest, "trend") }));
+      break;
+    case "merge-a-trend":
+      emit(mergeATrend(loadJson(cliArg(rest, "plan")), loadJson(cliArg(rest, "results"))));
+      break;
+    case "rank-trends":
+      emit(rankTrends());
+      break;
+    case "next-trend":
+      emit(pickTrend(loadLedgerA()));
       break;
     case "regen-tracking": {
       const counters = computeVerifiedCounters();
@@ -887,7 +1224,7 @@ function main() {
       emit({ next: nextModeACountry(loadLedgerA()) });
       break;
     default:
-      console.error("usage: node _lib.mjs <plan-a|merge-a|plan-b|consolidate-b|regen-tracking|next-a> [--country s] [--batch n] [--include-unverified] [--plan f] [--results f] [--out f]");
+      console.error("usage: node _lib.mjs <plan-b|consolidate-b|plan-a-trend|merge-a-trend|rank-trends|next-trend|plan-a|merge-a|regen-tracking|next-a|next-trend> [--country s] [--trend t] [--batch n] [--max-depth n] [--seed s] [--plan f] [--results f] [--out f]");
       process.exitCode = 2;
   }
 }

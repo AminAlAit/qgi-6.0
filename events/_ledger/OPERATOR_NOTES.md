@@ -68,6 +68,21 @@ what's been *learned*.
   workflow (do NOT `resumeFromRunId` — errored agents can cache as null); combine
   harvested+remainder → full results → one consolidate-b. Idempotent by design: un-run events
   stay at verify_count 1 and re-select, so nothing is ever lost to a limit.
+- **2026-07-03** — **BATCHING REDESIGN (founder-directed), packaged as `/qgi-enrich-events`.**
+  (1) **69 active Trends, not 71:** taxonomy stays 71 for curation/validation, but Mode A
+  selects only from the 69 active Trends (`natural_disaster` + `epidemic_and_pandemic` are
+  deactivated per the charter's endogenous-only rule). (2) **Mode A is now TREND-FIRST:** pick
+  ONE Trend (highest unlock value — thin closest to gate 60 first, then fragile-floor runnable,
+  then distinctive starved; hazards deprioritized), research events FOR that Trend across MANY
+  countries we don't already have (breadth — positives are one-per-country-year), curate,
+  double-verify. `plan-a-trend` / `merge-a-trend` / `rank-trends` / `next-trend`. (3) **Mode B is
+  now trend-agnostic + random + DEPTH-ESCALATING:** drive least-verified first — contested
+  (needs_tiebreak) first, then depth-0, depth-1, … to `MAX_VERIFY_DEPTH=3` (double everything,
+  then triple). `plan-b --max-depth --seed`; `depthWhy` replaces the retired §5.2 tier machinery
+  (eventTier/tierWhy/P-constants deleted). (4) **A batch does BOTH modes → one PR** via the
+  `/qgi-enrich-events` command (`.claude/commands/qgi-enrich-events.md`). Self-correcting loop:
+  Mode B de-lists a fragile Trend, Mode A's auto-pick rescues it (top pick right now =
+  technology_breakthrough, gap 3 — the one batch 1 de-listed).
 - **2026-07-02** — **Batch 1 result (Mode B, 200 tier-1 fragile-floor):** conservative policy
   removed 52 unconfirmed TRUEs; `technology_breakthrough` 62→57 DE-LISTED (runnable→thin),
   `religious_and_social_movement` held at exactly 60. Expected per B1 ratification — the fix
