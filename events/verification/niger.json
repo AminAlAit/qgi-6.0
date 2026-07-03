@@ -1423,5 +1423,43 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Niger%E2%80%93Benin_Oil_Pipeline"
+  },
+  {
+    "year": 2015,
+    "title": "US Drone Base Established at Agadez",
+    "verdict": "FALSE",
+    "reason": "The underlying claim is real (the US did build a large drone/ISR base, \"Air Base 201,\" near Agadez, Niger, at enormous cost, giving it Sahara/Sahel intelligence-gathering reach), but the year is wrong. Multiple independent, mutually-corroborating sources place the actual establishment in different, later years than 2015: Niger's government approved the site in 2014; in September 2015 the US reclassified the site from a temporary \"contingency location\" to an enduring \"cooperative security location\" and Congress appropriated $50M via the FY2016 NDAA (enacted Nov 2015) — but no physical base existed yet. The US military presence at the site and actual construction began on 19 April 2016 (Wikipedia infobox: \"Built: 2016-2019\"), construction wasn't complete until spring 2019 (delayed from an original end-2018 target), and the base only began delivering the \"significant intelligence-gathering capacity\" described (ISR drone flights) on 1 November 2019. So under any reasonable definition of \"established\" (ground broken / military presence begun, or fully operational), the correct year is 2016 (construction/occupation start) — not 2015, which only saw an internal bureaucratic reclassification and a funding appropriation, not the base's establishment. Country holds (Niger); the core fact pattern holds; only the year is off, which per the verdict rules makes this FALSE with a corrected year rather than PARTIAL.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The underlying claim is real (the US did build a large drone/ISR base, \"Air Base 201,\" near Agadez, Niger, at enormous cost, giving it Sahara/Sahel intelligence-gathering reach), but the year is wrong. Multiple independent, mutually-corroborating sources place the actual establishment in different, later years than 2015: Niger's government approved the site in 2014; in September 2015 the US reclassified the site from a temporary \"contingency location\" to an enduring \"cooperative security location\" and Congress appropriated $50M via the FY2016 NDAA (enacted Nov 2015) — but no physical base existed yet. The US military presence at the site and actual construction began on 19 April 2016 (Wikipedia infobox: \"Built: 2016-2019\"), construction wasn't complete until spring 2019 (delayed from an original end-2018 target), and the base only began delivering the \"significant intelligence-gathering capacity\" described (ISR drone flights) on 1 November 2019. So under any reasonable definition of \"established\" (ground broken / military presence begun, or fully operational), the correct year is 2016 (construction/occupation start) — not 2015, which only saw an internal bureaucratic reclassification and a funding appropriation, not the base's establishment. Country holds (Niger); the core fact pattern holds; only the year is off, which per the verdict rules makes this FALSE with a corrected year rather than PARTIAL.",
+        "source": "https://en.wikipedia.org/wiki/Niger_Air_Base_201",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2016
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core facts confirmed real and materially accurate: the US did build a drone/ISR base (Air Base 201) near Agadez, Niger, which became one of the most expensive drone facilities in Africa (~$110M+ vs $50M budgeted, per DoD IG evaluation DODIG-2020-077) and gave the US significant ISR reach over the Sahara/Sahel. However, the year is imprecise for \"established.\" The specific \"Congressional notification\" the description references is real and correctly dated to 2015 — the National Defense Authorization Act for FY2016 (signed into law Nov 25, 2015) explicitly appropriated $50 million by name for \"Airfield and Base Camp at Agadez, Niger\" (confirmed via Newsweek 9/30/2016 and The Intercept). But the physical establishment of the base itself — US military presence on site and construction start — began in 2016 (multiple sources: Wikipedia \"U.S. military presence at Base 201 began on 19 April 2016\"; another summary states construction began \"in the summer of 2016\"), camp/hangar buildout continued through 2017, and the base did not actually become operational for ISR/drone flights until August-November 2019. Only one secondary source (defenceweb, paraphrasing the DoD IG report) vaguely states \"construction began around 2015.\" Given the weight of evidence points to 2016 as the year physical establishment began (with 2015 being the year Congress funded/authorized it), the year in the event conflates two distinct, both-real milestones — country and core substance hold, but the year is off by roughly one year for the \"established\" framing.",
+        "source": "https://www.newsweek.com/us-building-50-million-drone-base-niger-504522",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2016
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Niger_Air_Base_201"
   }
 ]

@@ -402,12 +402,12 @@
   {
     "year": 1990,
     "title": "Melayu Islam Beraja Officially Codified as State Ideology",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: The government institutionalized MIB around 1990, establishing the Academy of Brunei Studies to host the MIB Supreme Council's secretariat. MIB had been proclaimed at independence in 1984 but its formal codification and educational implementation solidified in 1990–1991.; Pass 2 FALSE: Melayu Islam Beraja (MIB) was officially proclaimed as Brunei's national philosophy/ideology on 1 January 1984, the day Brunei achieved full independence from Britain, by Sultan Hassanal Bolkiah — not 1990. Multiple independent, non-Wikipedia sources converge on this: a UKEssays history essay states 'His Majesty Sultan Haji Hassanal Bolkiah... officially proclaimed the MIB philosophy on 1st January 1984, the day of Brunei's independence'; tripwordwide.com states 'When Brunei regained its full independence from British protection in 1984, His Majesty Sultan Hassanal Bolkiah formally declared MIB as the national philosophy... Since its official declaration in 1984, MIB has served as the foundation of Brunei's modern statehood.' A separate academic source (Kyoto Review of Southeast Asia) describes a gradual institutionalization process — an MIB Concept Committee formed in 1986 (later becoming the MIB Supreme Council) and the Academy of Brunei Studies established in 1990 to promote MIB — but this is institutional elaboration, not the original 'official codification' of MIB as state ideology, which is consistently dated to 1984. One source noted the Sultan 'formally enunciated'/reaffirmed MIB again during his 44th birthday on 15 July 1990, and MIB became a core school subject in the early 1990s, which likely explains the 1990 conflation in the event description, but the actual proclamation/codification event is 1984. Additionally, the claim that MIB 'justif[ied] the suspension of elections' is itself chronologically backwards independent of the year error: Brunei's Legislative Council elections and constitutional provisions were suspended in 1962 under a state of emergency declared by Sultan Omar Ali Saifuddien III after the Brunei Revolt — 22 years before MIB existed — so MIB could only have been used to retroactively justify continuing an already-existing suspension, not to originally justify it. Given the year itself is materially wrong (off by 6 years, tied to the well-documented independence-day proclamation), this is a FALSE verdict with corrected_year 1984, not a PARTIAL.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
+    "verdict": "TRUE",
+    "reason": "Multiple independent, non-off-limits sources corroborate that 1990 is the year Brunei's Sultan Hassanal Bolkiah formally advanced Melayu Islam Beraja (MIB) as the country's official state ideology. Encyclopedia.com states explicitly: 'Beginning in 1990, Hassanal began trying to strengthen the role of Islam through the concept of Melayu Islam Beraja (or Malay Islamic Monarchy), which links Malay identity, Islam, and the role of the monarchy as an official ideology.' Britannica's Brunei history page (via search snippet, page itself blocked 403) independently states 'In 1990 the sultan encouraged Bruneians to adopt Melayu Islam Beraja (MIB; Malay Islamic Monarchy), the country's official ideology,' noting it 'called for more rigid adherence to traditional Islamic principles' and was 'viewed with anxiety by non-Muslims.' Separately, the Kyoto Review of Southeast Asia (academic, non-Wikipedia) documents that 1990 was the year the Academy of Brunei Studies was established at the University of Brunei Darussalam, becoming 'the key force for MIB-knowledge production,' hosting the MIB Supreme Council's secretariat and propagating the ideology across schools — directly matching the description's 'doctrine taught in schools.' While the MIB term was first proclaimed at independence in 1984, the specific claim in this event — that 1990 marks the formal/active codification of MIB as official state ideology integrating Malay culture, Islam, and monarchy, taught in schools and underpinning the justification for the monarchy's centralized, election-free rule — is materially corroborated by independent 1990-anchored sources (Encyclopedia.com, Britannica), so I confirm TRUE rather than PARTIAL/FALSE on the year discrepancy.",
+    "verify_count": 3,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
     "source_independence": "independent",
     "verifications": [
       {
@@ -432,8 +432,21 @@
           "method": "web_search"
         },
         "corrected_year": 1984
+      },
+      {
+        "pass_n": 3,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-off-limits sources corroborate that 1990 is the year Brunei's Sultan Hassanal Bolkiah formally advanced Melayu Islam Beraja (MIB) as the country's official state ideology. Encyclopedia.com states explicitly: 'Beginning in 1990, Hassanal began trying to strengthen the role of Islam through the concept of Melayu Islam Beraja (or Malay Islamic Monarchy), which links Malay identity, Islam, and the role of the monarchy as an official ideology.' Britannica's Brunei history page (via search snippet, page itself blocked 403) independently states 'In 1990 the sultan encouraged Bruneians to adopt Melayu Islam Beraja (MIB; Malay Islamic Monarchy), the country's official ideology,' noting it 'called for more rigid adherence to traditional Islamic principles' and was 'viewed with anxiety by non-Muslims.' Separately, the Kyoto Review of Southeast Asia (academic, non-Wikipedia) documents that 1990 was the year the Academy of Brunei Studies was established at the University of Brunei Darussalam, becoming 'the key force for MIB-knowledge production,' hosting the MIB Supreme Council's secretariat and propagating the ideology across schools — directly matching the description's 'doctrine taught in schools.' While the MIB term was first proclaimed at independence in 1984, the specific claim in this event — that 1990 marks the formal/active codification of MIB as official state ideology integrating Malay culture, Islam, and monarchy, taught in schools and underpinning the justification for the monarchy's centralized, election-free rule — is materially corroborated by independent 1990-anchored sources (Encyclopedia.com, Britannica), so I confirm TRUE rather than PARTIAL/FALSE on the year discrepancy.",
+        "source": "https://www.encyclopedia.com/history/encyclopedias-almanacs-transcripts-and-maps/hassanal-bolkiah-sultan-brunei",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://www.encyclopedia.com/history/encyclopedias-almanacs-transcripts-and-maps/hassanal-bolkiah-sultan-brunei"
   },
   {
     "year": 1991,

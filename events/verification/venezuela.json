@@ -151,31 +151,6 @@
   },
   {
     "year": 1998,
-    "title": "Oil Price Collapse and Economic Crisis",
-    "verdict": "TRUE",
-    "reason": "Confirmed: oil collapsed to ~$10/barrel in 1998, devastating Venezuela's oil-dependent economy. The claim about GDP per capita falling to 1963 levels and a one-third decline from the 1978 peak is cited in academic literature and consistent with CFR and other sources. Chavez won December 1998 election. Core narrative accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: oil collapsed to ~$10/barrel in 1998, devastating Venezuela's oil-dependent economy. The claim about GDP per capita falling to 1963 levels and a one-third decline from the 1978 peak is cited in academic literature and consistent with CFR and other sources. Chavez won December 1998 election. Core narrative accurate.",
-        "source": "https://www.cfr.org/backgrounders/venezuela-crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.cfr.org/backgrounders/venezuela-crisis"
-  },
-  {
-    "year": 1998,
     "title": "Hugo ChÃ¡vez Elected President",
     "verdict": "TRUE",
     "reason": "Confirmed: December 6, 1998; 56.2% of the vote; defeated Henrique Salas Römer (not 'Salas Römer' spelled identically — minor transliteration). Ended 40 years of AD/COPEI dominance. All details accurate.",
@@ -198,6 +173,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1998_Venezuelan_presidential_election"
+  },
+  {
+    "year": 1998,
+    "title": "Oil Price Collapse and Economic Crisis",
+    "verdict": "TRUE",
+    "reason": "Confirmed: oil collapsed to ~$10/barrel in 1998, devastating Venezuela's oil-dependent economy. The claim about GDP per capita falling to 1963 levels and a one-third decline from the 1978 peak is cited in academic literature and consistent with CFR and other sources. Chavez won December 1998 election. Core narrative accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: oil collapsed to ~$10/barrel in 1998, devastating Venezuela's oil-dependent economy. The claim about GDP per capita falling to 1963 levels and a one-third decline from the 1978 peak is cited in academic literature and consistent with CFR and other sources. Chavez won December 1998 election. Core narrative accurate.",
+        "source": "https://www.cfr.org/backgrounders/venezuela-crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cfr.org/backgrounders/venezuela-crisis"
   },
   {
     "year": 1999,
@@ -401,6 +401,31 @@
   },
   {
     "year": 2007,
+    "title": "Constitutional Reform Referendum Defeated",
+    "verdict": "TRUE",
+    "reason": "Confirmed: December 2, 2007; 69 constitutional amendments; defeated 51% no vs 49% yes; first and only electoral defeat of Chávez's career; amendments substantially reintroduced in 2009 referendum limited to term limits. All details accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: December 2, 2007; 69 constitutional amendments; defeated 51% no vs 49% yes; first and only electoral defeat of Chávez's career; amendments substantially reintroduced in 2009 referendum limited to term limits. All details accurate.",
+        "source": "https://en.wikipedia.org/wiki/2007_Venezuelan_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2007_Venezuelan_constitutional_referendum"
+  },
+  {
+    "year": 2007,
     "title": "RCTV Broadcast License Non-Renewal",
     "verdict": "TRUE",
     "reason": "Confirmed: RCTV went off air May 27, 2007; government cited RCTV's support for the 2002 coup; large student protests followed; condemned by HRW, RSF, CPJ, OAS. First large-scale broadcast media restriction under Chávez confirmed. All details accurate.",
@@ -425,10 +450,10 @@
     "source": "https://en.wikipedia.org/wiki/RCTV"
   },
   {
-    "year": 2007,
-    "title": "Constitutional Reform Referendum Defeated",
+    "year": 2008,
+    "title": "ChÃ¡vez Nationalizes Cement, Steel, and Banking Sectors",
     "verdict": "TRUE",
-    "reason": "Confirmed: December 2, 2007; 69 constitutional amendments; defeated 51% no vs 49% yes; first and only electoral defeat of Chávez's career; amendments substantially reintroduced in 2009 referendum limited to term limits. All details accurate.",
+    "reason": "Confirmed for cement (CEMEX Venezuela, Holcim, Lafarge) and steel (SIDOR from Ternium/Argentine firm). Banking sector: Chávez nationalized Banco de Venezuela (Santander subsidiary) in July 2008 for $1.05 billion — so a major bank nationalization did occur in 2008. The event's claim of 'several banks' is slightly overstated for 2008 specifically (major multi-bank wave came in 2009-2010), but the Banco de Venezuela nationalization in 2008 supports the banking element. Confidence medium due to minor overstatement on banking breadth.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -438,8 +463,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: December 2, 2007; 69 constitutional amendments; defeated 51% no vs 49% yes; first and only electoral defeat of Chávez's career; amendments substantially reintroduced in 2009 referendum limited to term limits. All details accurate.",
-        "source": "https://en.wikipedia.org/wiki/2007_Venezuelan_constitutional_referendum",
+        "reason": "Confirmed for cement (CEMEX Venezuela, Holcim, Lafarge) and steel (SIDOR from Ternium/Argentine firm). Banking sector: Chávez nationalized Banco de Venezuela (Santander subsidiary) in July 2008 for $1.05 billion — so a major bank nationalization did occur in 2008. The event's claim of 'several banks' is slightly overstated for 2008 specifically (major multi-bank wave came in 2009-2010), but the Banco de Venezuela nationalization in 2008 supports the banking element. Confidence medium due to minor overstatement on banking breadth.",
+        "source": "https://en.wikipedia.org/wiki/Nationalization_in_Venezuela",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -447,7 +472,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2007_Venezuelan_constitutional_referendum"
+    "source": "https://en.wikipedia.org/wiki/Nationalization_in_Venezuela"
   },
   {
     "year": 2008,
@@ -476,28 +501,39 @@
   },
   {
     "year": 2008,
-    "title": "ChÃ¡vez Nationalizes Cement, Steel, and Banking Sectors",
+    "title": "Venezuela Launches Simon Bolivar, Its First Satellite",
     "verdict": "TRUE",
-    "reason": "Confirmed for cement (CEMEX Venezuela, Holcim, Lafarge) and steel (SIDOR from Ternium/Argentine firm). Banking sector: Chávez nationalized Banco de Venezuela (Santander subsidiary) in July 2008 for $1.05 billion — so a major bank nationalization did occur in 2008. The event's claim of 'several banks' is slightly overstated for 2008 specifically (major multi-bank wave came in 2009-2010), but the Banco de Venezuela nationalization in 2008 supports the banking element. Confidence medium due to minor overstatement on banking breadth.",
-    "verify_count": 1,
+    "reason": "Multiple independent, authoritative sources (Wikipedia, NASA NSSDCA, Gunter's Space Page, NASASpaceflight.com) confirm all material details: VENESAT-1 (Simon Bolivar), Venezuela's first satellite, launched 29 October 2008 aboard a Chinese Long March 3B rocket from Xichang Satellite Launch Center; built on a Chinese DFH-4 bus; operated by Venezuela's Bolivarian Agency for Space Activities (ABAE); mass 5,049 kg; payload of 14 C-band, 12 Ku-band, and 2 Ka-band transponders; provided TV broadcasting and broadband connectivity; went out of service in March 2020 (13 March 2020 per NASA/Wikipedia). Every detail in the event description matches the sources exactly.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed for cement (CEMEX Venezuela, Holcim, Lafarge) and steel (SIDOR from Ternium/Argentine firm). Banking sector: Chávez nationalized Banco de Venezuela (Santander subsidiary) in July 2008 for $1.05 billion — so a major bank nationalization did occur in 2008. The event's claim of 'several banks' is slightly overstated for 2008 specifically (major multi-bank wave came in 2009-2010), but the Banco de Venezuela nationalization in 2008 supports the banking element. Confidence medium due to minor overstatement on banking breadth.",
-        "source": "https://en.wikipedia.org/wiki/Nationalization_in_Venezuela",
+        "reason": "Confirmed via independent sources: VeneSat-1 (Simón Bolívar), Venezuela's first satellite, launched 29 October 2008 (16:53 UTC) aboard a Chinese Long March 3B from Xichang Satellite Launch Center. Built on a Chinese DFH-4 bus, operated by Venezuela's Bolivarian Agency for Space Activities (ABAE), mass 5,049 kg, payload of 14 C-band/12 Ku-band/2 Ka-band transponders for TV broadcasting and broadband. Satellite lost service on 13 March 2020 (officially declared lost 25 March 2020) due to solar array drive failures leaving it tumbling and drifting. Every material detail in the description (date, country, rocket, bus, operator, mass, transponder counts, failure date) matches corroborating sources.",
+        "source": "https://en.wikipedia.org/wiki/Venesat-1",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources (Wikipedia, NASA NSSDCA, Gunter's Space Page, NASASpaceflight.com) confirm all material details: VENESAT-1 (Simon Bolivar), Venezuela's first satellite, launched 29 October 2008 aboard a Chinese Long March 3B rocket from Xichang Satellite Launch Center; built on a Chinese DFH-4 bus; operated by Venezuela's Bolivarian Agency for Space Activities (ABAE); mass 5,049 kg; payload of 14 C-band, 12 Ku-band, and 2 Ka-band transponders; provided TV broadcasting and broadband connectivity; went out of service in March 2020 (13 March 2020 per NASA/Wikipedia). Every detail in the event description matches the sources exactly.",
+        "source": "https://en.wikipedia.org/wiki/Venesat-1",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Nationalization_in_Venezuela"
+    "source": "https://en.wikipedia.org/wiki/Venesat-1"
   },
   {
     "year": 2009,
@@ -751,6 +787,31 @@
   },
   {
     "year": 2016,
+    "title": "Electricity Crisis and El NiÃ±o Drought",
+    "verdict": "TRUE",
+    "reason": "Confirmed: El Niño-driven drought reduced Guri reservoir to historic lows; April 2016 rotating four-hour daily blackouts implemented; public-sector week cut to two days in several states; schools closed Fridays. All details accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: El Niño-driven drought reduced Guri reservoir to historic lows; April 2016 rotating four-hour daily blackouts implemented; public-sector week cut to two days in several states; schools closed Fridays. All details accurate.",
+        "source": "https://climateandsecurity.org/2019/02/drought-mismanagement-and-political-instability-in-venezuela/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://climateandsecurity.org/2019/02/drought-mismanagement-and-political-instability-in-venezuela/"
+  },
+  {
+    "year": 2016,
     "title": "Hyperinflation Begins â€” GDP Contracts 18.6%",
     "verdict": "TRUE",
     "reason": "Confirmed: Venezuela entered hyperinflation late 2016; GDP contracted 18.6% per Venezuelan central bank (confirmed by CNBC citing the figure); annual inflation ~800% confirmed. ENCOVI 2016 survey confirmed 74.3% (rounded to '75%' in event) of population involuntarily lost average 8.7 kg (19 lb). State of economic emergency January 2016 and two-day work week confirmed. All core details accurate.",
@@ -775,10 +836,10 @@
     "source": "https://en.wikipedia.org/wiki/Hyperinflation_in_Venezuela"
   },
   {
-    "year": 2016,
-    "title": "Electricity Crisis and El NiÃ±o Drought",
+    "year": 2017,
+    "title": "Constituent Assembly Installed â€” National Assembly Bypassed",
     "verdict": "TRUE",
-    "reason": "Confirmed: El Niño-driven drought reduced Guri reservoir to historic lows; April 2016 rotating four-hour daily blackouts implemented; public-sector week cut to two days in several states; schools closed Fridays. All details accurate.",
+    "reason": "Confirmed: July 30, 2017 election; opposition boycotted; government claimed 8 million voters but Smartmatic (the voting technology provider) stated results were off by at least 1 million votes; independent estimates put turnout under 3.7 million. ANC inaugurated August 4, 2017 and assumed supreme legislative powers. Recognized by only a handful of governments. All core details accurate — note: event says 'government claimed 8 million voters but independent analysts estimated turnout at under 3.7 million'; Smartmatic fraud allegation confirms this.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -788,8 +849,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: El Niño-driven drought reduced Guri reservoir to historic lows; April 2016 rotating four-hour daily blackouts implemented; public-sector week cut to two days in several states; schools closed Fridays. All details accurate.",
-        "source": "https://climateandsecurity.org/2019/02/drought-mismanagement-and-political-instability-in-venezuela/",
+        "reason": "Confirmed: July 30, 2017 election; opposition boycotted; government claimed 8 million voters but Smartmatic (the voting technology provider) stated results were off by at least 1 million votes; independent estimates put turnout under 3.7 million. ANC inaugurated August 4, 2017 and assumed supreme legislative powers. Recognized by only a handful of governments. All core details accurate — note: event says 'government claimed 8 million voters but independent analysts estimated turnout at under 3.7 million'; Smartmatic fraud allegation confirms this.",
+        "source": "https://en.wikipedia.org/wiki/2017_Venezuelan_Constituent_Assembly_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -797,7 +858,7 @@
         }
       }
     ],
-    "source": "https://climateandsecurity.org/2019/02/drought-mismanagement-and-political-instability-in-venezuela/"
+    "source": "https://en.wikipedia.org/wiki/2017_Venezuelan_Constituent_Assembly_election"
   },
   {
     "year": 2017,
@@ -848,31 +909,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2017_Venezuelan_protests"
-  },
-  {
-    "year": 2017,
-    "title": "Constituent Assembly Installed â€” National Assembly Bypassed",
-    "verdict": "TRUE",
-    "reason": "Confirmed: July 30, 2017 election; opposition boycotted; government claimed 8 million voters but Smartmatic (the voting technology provider) stated results were off by at least 1 million votes; independent estimates put turnout under 3.7 million. ANC inaugurated August 4, 2017 and assumed supreme legislative powers. Recognized by only a handful of governments. All core details accurate — note: event says 'government claimed 8 million voters but independent analysts estimated turnout at under 3.7 million'; Smartmatic fraud allegation confirms this.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: July 30, 2017 election; opposition boycotted; government claimed 8 million voters but Smartmatic (the voting technology provider) stated results were off by at least 1 million votes; independent estimates put turnout under 3.7 million. ANC inaugurated August 4, 2017 and assumed supreme legislative powers. Recognized by only a handful of governments. All core details accurate — note: event says 'government claimed 8 million voters but independent analysts estimated turnout at under 3.7 million'; Smartmatic fraud allegation confirms this.",
-        "source": "https://en.wikipedia.org/wiki/2017_Venezuelan_Constituent_Assembly_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2017_Venezuelan_Constituent_Assembly_election"
   },
   {
     "year": 2018,
@@ -1001,31 +1037,6 @@
   },
   {
     "year": 2020,
-    "title": "Maduro-Allied PSUV Recaptures National Assembly",
-    "verdict": "TRUE",
-    "reason": "Confirmed: December 6, 2020; boycotted by main opposition; PSUV won 253 seats (event says '255 of 277' — actual figure is 253 seats for the PSUV-led coalition out of 277 total, a minor discrepancy of 2 seats); turnout ~30-31% confirmed as the lowest in Venezuelan democratic history. PSUV assumed control of the National Assembly January 5, 2021. Core narrative accurate; seat count 253 vs 255 is minor.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: December 6, 2020; boycotted by main opposition; PSUV won 253 seats (event says '255 of 277' — actual figure is 253 seats for the PSUV-led coalition out of 277 total, a minor discrepancy of 2 seats); turnout ~30-31% confirmed as the lowest in Venezuelan democratic history. PSUV assumed control of the National Assembly January 5, 2021. Core narrative accurate; seat count 253 vs 255 is minor.",
-        "source": "https://en.wikipedia.org/wiki/2020_Venezuelan_parliamentary_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2020_Venezuelan_parliamentary_election"
-  },
-  {
-    "year": 2020,
     "title": "COVID-19 Pandemic Deepens Humanitarian Crisis",
     "verdict": "TRUE",
     "reason": "Confirmed: first case March 13, 2020; strict quarantine measures imposed; health system near collapse with severe supply shortages. The claim about 'one ventilator per 100 ICU beds' attributed to PAHO — search found only ~102 ventilators total across all 23 states as of Feb 2020, consistent with severe shortage. Used pandemic to intensify repression confirmed. All core facts accurate.",
@@ -1048,6 +1059,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Venezuela"
+  },
+  {
+    "year": 2020,
+    "title": "Maduro-Allied PSUV Recaptures National Assembly",
+    "verdict": "TRUE",
+    "reason": "Confirmed: December 6, 2020; boycotted by main opposition; PSUV won 253 seats (event says '255 of 277' — actual figure is 253 seats for the PSUV-led coalition out of 277 total, a minor discrepancy of 2 seats); turnout ~30-31% confirmed as the lowest in Venezuelan democratic history. PSUV assumed control of the National Assembly January 5, 2021. Core narrative accurate; seat count 253 vs 255 is minor.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: December 6, 2020; boycotted by main opposition; PSUV won 253 seats (event says '255 of 277' — actual figure is 253 seats for the PSUV-led coalition out of 277 total, a minor discrepancy of 2 seats); turnout ~30-31% confirmed as the lowest in Venezuelan democratic history. PSUV assumed control of the National Assembly January 5, 2021. Core narrative accurate; seat count 253 vs 255 is minor.",
+        "source": "https://en.wikipedia.org/wiki/2020_Venezuelan_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2020_Venezuelan_parliamentary_election"
   },
   {
     "year": 2021,
@@ -1076,31 +1112,6 @@
   },
   {
     "year": 2022,
-    "title": "GuaidÃ³'s Interim Government Dissolved â€” Opposition Restructures",
-    "verdict": "TRUE",
-    "reason": "Confirmed: National Assembly voted in late December 2022 to dissolve Guaidó's interim government; US stopped recognizing Guaidó's claim January 2023; opposition restructured under Unitary Platform; Edmundo González Urrutia became 2024 candidate. All details accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: National Assembly voted in late December 2022 to dissolve Guaidó's interim government; US stopped recognizing Guaidó's claim January 2023; opposition restructured under Unitary Platform; Edmundo González Urrutia became 2024 candidate. All details accurate.",
-        "source": "https://en.wikipedia.org/wiki/Venezuelan_presidential_crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Venezuelan_presidential_crisis"
-  },
-  {
-    "year": 2022,
     "title": "Chevron Licence Restored â€” Partial Easing of US Oil Sanctions",
     "verdict": "TRUE",
     "reason": "Confirmed: November 26, 2022; Biden administration issued GL 41 allowing Chevron to resume oil-for-debt operations; first significant US sanctions relief; conditioned on Venezuelan government-opposition talks in Mexico City. Chevron's return modestly increased production. All details accurate.",
@@ -1123,6 +1134,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/United_States_sanctions_during_the_Venezuelan_crisis"
+  },
+  {
+    "year": 2022,
+    "title": "GuaidÃ³'s Interim Government Dissolved â€” Opposition Restructures",
+    "verdict": "TRUE",
+    "reason": "Confirmed: National Assembly voted in late December 2022 to dissolve Guaidó's interim government; US stopped recognizing Guaidó's claim January 2023; opposition restructured under Unitary Platform; Edmundo González Urrutia became 2024 candidate. All details accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: National Assembly voted in late December 2022 to dissolve Guaidó's interim government; US stopped recognizing Guaidó's claim January 2023; opposition restructured under Unitary Platform; Edmundo González Urrutia became 2024 candidate. All details accurate.",
+        "source": "https://en.wikipedia.org/wiki/Venezuelan_presidential_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Venezuelan_presidential_crisis"
   },
   {
     "year": 2023,
@@ -1151,31 +1187,6 @@
   },
   {
     "year": 2024,
-    "title": "Presidential Election Fraud â€” Maduro Declared Winner Despite Evidence of Gonzalez Victory",
-    "verdict": "TRUE",
-    "reason": "Confirmed: July 28, 2024; CNE declared Maduro winner without booth-level tallies; opposition gathered tallies from ~80% of machines showing González won by wide margin; Carter Center, OAS, UN, and most Western governments refused to recognize official results. At least 22 people killed in post-election protests (some sources say 24+). All core details accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: July 28, 2024; CNE declared Maduro winner without booth-level tallies; opposition gathered tallies from ~80% of machines showing González won by wide margin; Carter Center, OAS, UN, and most Western governments refused to recognize official results. At least 22 people killed in post-election protests (some sources say 24+). All core details accurate.",
-        "source": "https://en.wikipedia.org/wiki/2024_Venezuelan_presidential_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2024_Venezuelan_presidential_election"
-  },
-  {
-    "year": 2024,
     "title": "Operation Tun Tun â€” Mass Post-Election Arrests",
     "verdict": "TRUE",
     "reason": "Confirmed: 'Operation Tun Tun' (door-to-door knock operation) launched post-election; over 2,000–2,400 people detained within weeks including children, journalists, civil society leaders; arrest warrant issued for González (September 2, 2024); González fled to Spain for asylum (confirmed September 7, 2024). HRW documented torture and arbitrary detention. All details accurate.",
@@ -1198,6 +1209,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2024_Venezuelan_political_crisis"
+  },
+  {
+    "year": 2024,
+    "title": "Presidential Election Fraud â€” Maduro Declared Winner Despite Evidence of Gonzalez Victory",
+    "verdict": "TRUE",
+    "reason": "Confirmed: July 28, 2024; CNE declared Maduro winner without booth-level tallies; opposition gathered tallies from ~80% of machines showing González won by wide margin; Carter Center, OAS, UN, and most Western governments refused to recognize official results. At least 22 people killed in post-election protests (some sources say 24+). All core details accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: July 28, 2024; CNE declared Maduro winner without booth-level tallies; opposition gathered tallies from ~80% of machines showing González won by wide margin; Carter Center, OAS, UN, and most Western governments refused to recognize official results. At least 22 people killed in post-election protests (some sources say 24+). All core details accurate.",
+        "source": "https://en.wikipedia.org/wiki/2024_Venezuelan_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2024_Venezuelan_presidential_election"
   },
   {
     "year": 2025,
@@ -1223,5 +1259,77 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Third_inauguration_of_Nicol%C3%A1s_Maduro"
+  },
+  {
+    "year": 2019,
+    "title": "Bank of England Freezes $1.95 Billion Venezuelan Gold Reserves",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: in Nov-Dec 2018 Venezuela's central bank (BCV) requested withdrawal of its gold from the Bank of England, and following the UK government's Feb 4, 2019 recognition of Juan Guaidó as interim president, the BoE refused to honor withdrawal instructions from the Maduro-appointed BCV board. The gold total was ~31 tonnes (after a Dec 2018 Deutsche Bank swap closeout raised holdings from 14 to 31 tonnes). UK Supreme Court documents value the reserves at approximately $1.95 billion (as of 2020 court filings; the exact USD figure fluctuates with gold price over time, with other snapshots giving $1.2-1.8bn). A multi-year legal dispute followed (Maduro-appointed board sued the BoE in 2020; courts including the UK Supreme Court in 2021 ruled based on the 'one voice' recognition doctrine, generally favoring the UK-recognized side; the dispute continued into 2023 and beyond as the UK's recognition of Guaidó itself lapsed). This matches the event description in country, year, and substance (magnitude, actors, and outcome all check out).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: in early 2019, after the UK recognized Juan Guaidó as interim president of Venezuela, the Bank of England refused requests by the Maduro-appointed Central Bank of Venezuela (BCV) board to repatriate its gold held in London (~31 tonnes). Supreme Court documents valued the gold at approximately $1.95 billion as of 2020. The dispute became a prolonged multi-year legal battle (BCV sued the Bank of England in 2020) with UK courts issuing shifting rulings depending on which board -- Guaidó's or Maduro's -- was recognized as the legitimate representative of the BCV at various points. This left Venezuela unable to access this asset amid US sanctions on the central bank (imposed April 2019). All material details (country, year, actors, approximate value, tonnage, cause, and legal aftermath) match the description.",
+        "source": "https://www.foxnews.com/world/uk-keeps-billions-venezuelan-gold-reserves-frozen-bank-england-maduro-arrest.amp",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: in Nov-Dec 2018 Venezuela's central bank (BCV) requested withdrawal of its gold from the Bank of England, and following the UK government's Feb 4, 2019 recognition of Juan Guaidó as interim president, the BoE refused to honor withdrawal instructions from the Maduro-appointed BCV board. The gold total was ~31 tonnes (after a Dec 2018 Deutsche Bank swap closeout raised holdings from 14 to 31 tonnes). UK Supreme Court documents value the reserves at approximately $1.95 billion (as of 2020 court filings; the exact USD figure fluctuates with gold price over time, with other snapshots giving $1.2-1.8bn). A multi-year legal dispute followed (Maduro-appointed board sued the BoE in 2020; courts including the UK Supreme Court in 2021 ruled based on the 'one voice' recognition doctrine, generally favoring the UK-recognized side; the dispute continued into 2023 and beyond as the UK's recognition of Guaidó itself lapsed). This matches the event description in country, year, and substance (magnitude, actors, and outcome all check out).",
+        "source": "https://www.foxnews.com/world/uk-keeps-billions-venezuelan-gold-reserves-frozen-bank-england-maduro-arrest",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.foxnews.com/world/uk-keeps-billions-venezuelan-gold-reserves-frozen-bank-england-maduro-arrest"
+  },
+  {
+    "year": 2021,
+    "title": "Regional Elections — Opposition Wins Several Governorships",
+    "verdict": "PARTIAL",
+    "reason": "Core event confirmed: Venezuela held regional elections on 21 November 2021; PSUV won the large majority of governorships (widely reported as ~18-20 of 23) while the opposition made symbolically significant gains, including Cojedes and Nueva Esparta (Fuerza Vecinal's Morel Rodríguez beat PSUV 43-39%), Zulia (Manuel Rosales beat incumbent PSUV governor 57-37%), and — after a contested rerun on 9 January 2022 — Barinas, Chávez's home state, won by opposition candidate Sergio Garrido (55.4%) over PSUV's Jorge Arreaza. However, the description's inclusion of Anzoátegui as an opposition win is factually backwards: PSUV's Luis Marcano won Anzoátegui with ~46% of the vote, unseating the sitting opposition governor Antonio Barreto Sira (who placed third) — i.e., PSUV flipped that state FROM the opposition, not the reverse. Multiple sources confirm PSUV \"overturned rightwing incumbents in Mérida, Táchira and Anzoátegui.\" The real headline opposition win omitted from the description is Zulia, Venezuela's most populous state. So year/country/overall thrust hold, but one of the four named governorships (Anzoátegui) is a materially wrong actor/scope detail.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The core event is confirmed: in Venezuela's 21 November 2021 regional elections, the opposition won several governorships despite the ruling PSUV's structural advantages, and PSUV retained roughly 20 of 23 governorships (widely reported figure, e.g. Maduro's own count and multiple outlets). Cojedes and Nueva Esparta were indeed won by opposition candidates (Alberto Galíndez and Morel Rodríguez respectively), and Barinas — Hugo Chávez's home state — was a symbolically major opposition win (Freddy Superlano led initially; the TSJ annulled the result and a rerun on 9 January 2022 gave the seat to opposition candidate Sergio Garrido, ending 22 years of PSUV rule there). However, the description's inclusion of Anzoátegui as an opposition win is factually incorrect: Anzoátegui was won decisively by PSUV candidate Luis Marcano (45.98%-46.48% depending on source) over opposition candidate José Brito (28.58%), confirmed/proclaimed by the CNE on 24 November 2021. The state the opposition actually won (alongside Cojedes and Nueva Esparta) was Zulia, where Manuel Rosales won ~57% against the PSUV incumbent — Zulia is omitted from the description while the incorrect Anzoátegui is substituted in. This is a material factual error (wrong actor/state for one of four named governorships) while the year, country, and overall gist (opposition gains, Barinas significance, ~20/23 PSUV retention) hold.",
+        "source": "https://en.wikipedia.org/wiki/2021_Venezuelan_regional_elections",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core event confirmed: Venezuela held regional elections on 21 November 2021; PSUV won the large majority of governorships (widely reported as ~18-20 of 23) while the opposition made symbolically significant gains, including Cojedes and Nueva Esparta (Fuerza Vecinal's Morel Rodríguez beat PSUV 43-39%), Zulia (Manuel Rosales beat incumbent PSUV governor 57-37%), and — after a contested rerun on 9 January 2022 — Barinas, Chávez's home state, won by opposition candidate Sergio Garrido (55.4%) over PSUV's Jorge Arreaza. However, the description's inclusion of Anzoátegui as an opposition win is factually backwards: PSUV's Luis Marcano won Anzoátegui with ~46% of the vote, unseating the sitting opposition governor Antonio Barreto Sira (who placed third) — i.e., PSUV flipped that state FROM the opposition, not the reverse. Multiple sources confirm PSUV \"overturned rightwing incumbents in Mérida, Táchira and Anzoátegui.\" The real headline opposition win omitted from the description is Zulia, Venezuela's most populous state. So year/country/overall thrust hold, but one of the four named governorships (Anzoátegui) is a materially wrong actor/scope detail.",
+        "source": "https://www.aljazeera.com/news/2021/11/22/maduro-allies-win-big-in-venezuela-regional-vote",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2021/11/22/maduro-allies-win-big-in-venezuela-regional-vote"
   }
 ]

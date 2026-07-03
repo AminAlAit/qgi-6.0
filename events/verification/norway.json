@@ -1,28 +1,39 @@
 [
   {
-    "year": 1990,
-    "title": "Norway Mediates Sri Lankan Peace Talks",
-    "verdict": "FALSE",
-    "reason": "Norway's formal facilitation role in Sri Lanka began in 2000 (announced by President Kumaratunga) and informally in 1997 — not 1990. The year is off by at least 7 years, well outside the ±2 year tolerance.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
+    "year": 1967,
+    "title": "Simula 67 Introduces the World's First Object-Oriented Programming Language",
+    "verdict": "TRUE",
+    "reason": "Independently confirmed: Ole-Johan Dahl and Kristen Nygaard, working at the Norwegian Computing Center in Oslo, presented their paper on class and subclass declarations (the Simula 67 standard) at the IFIP Working Conference on simulation languages in Oslo in May 1967, introducing classes, subclasses, and virtual procedures -- foundational OOP concepts. Simula is widely credited by Wikipedia, Britannica, and ACM as the first object-oriented programming language, and it influenced Bjarne Stroustrup (C++) and James Gosling (Java), consistent with the description's claim of influence on C++/Java/Python lineage. Dahl and Nygaard received the 2001 A.M. Turing Award (\"for ideas fundamental to the emergence of object-oriented programming, through their design of the programming languages Simula I and Simula 67\") and the IEEE John von Neumann Medal in 2001, exactly as described. Country (Norway), year (1967), and all material details (actors, location, concepts introduced, later award) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Norway's formal facilitation role in Sri Lanka began in 2000 (announced by President Kumaratunga) and informally in 1997 — not 1990. The year is off by at least 7 years, well outside the ±2 year tolerance.",
-        "source": "https://www.cmi.no/projects/1446-evaluation-of-norwegian-peace-efforts-in-sri-lanka",
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent authoritative sources: Ole-Johan Dahl and Kristen Nygaard, working at the Norwegian Computing Center in Oslo, presented the paper defining classes and subclasses at the IFIP Working Conference on simulation languages in Oslo in May 1967 -- the first formal definition of Simula 67 (per Wikipedia's Simula article and ACM Turing Award bio pages). Simula 67 introduced objects, classes, subclasses, virtual procedures (methods), inheritance, and is widely recognized as the first object-oriented programming language, directly influencing later OOP languages including C++, Java, and Python-style OOP. Dahl and Nygaard received the 2001 A.M. Turing Award, with ACM's official citation reading: \"For ideas fundamental to the emergence of object oriented programming, through their design of the programming languages Simula I and Simula 67.\" All material details -- country, year, actors, institution, technical concepts, and the Turing Award -- check out.",
+        "source": "https://en.wikipedia.org/wiki/Simula",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed: Ole-Johan Dahl and Kristen Nygaard, working at the Norwegian Computing Center in Oslo, presented their paper on class and subclass declarations (the Simula 67 standard) at the IFIP Working Conference on simulation languages in Oslo in May 1967, introducing classes, subclasses, and virtual procedures -- foundational OOP concepts. Simula is widely credited by Wikipedia, Britannica, and ACM as the first object-oriented programming language, and it influenced Bjarne Stroustrup (C++) and James Gosling (Java), consistent with the description's claim of influence on C++/Java/Python lineage. Dahl and Nygaard received the 2001 A.M. Turing Award (\"for ideas fundamental to the emergence of object-oriented programming, through their design of the programming languages Simula I and Simula 67\") and the IEEE John von Neumann Medal in 2001, exactly as described. Country (Norway), year (1967), and all material details (actors, location, concepts introduced, later award) check out.",
+        "source": "https://en.wikipedia.org/wiki/Simula",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://www.cmi.no/projects/1446-evaluation-of-norwegian-peace-efforts-in-sri-lanka"
+    "source": "https://en.wikipedia.org/wiki/Simula"
   },
   {
     "year": 1990,
@@ -75,21 +86,21 @@
     "source": "https://en.wikipedia.org/wiki/Government_Pension_Fund_of_Norway"
   },
   {
-    "year": 1992,
-    "title": "Norway Resumes Commercial Whaling Despite International Ban",
-    "verdict": "TRUE",
-    "reason": "Norway had filed a formal objection to the IWC moratorium and in 1992 the IWC Scientific Committee found minke whale stocks sustainable, with commercial whaling resuming in 1993; the curated year of 1992 refers to the policy decision and IWC finding that enabled the resumption, within ±2 years of actual resumption.",
+    "year": 1990,
+    "title": "Norway Mediates Sri Lankan Peace Talks",
+    "verdict": "FALSE",
+    "reason": "Norway's formal facilitation role in Sri Lanka began in 2000 (announced by President Kumaratunga) and informally in 1997 — not 1990. The year is off by at least 7 years, well outside the ±2 year tolerance.",
     "verify_count": 1,
-    "consensus_verdict": "TRUE",
+    "consensus_verdict": "FALSE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Norway had filed a formal objection to the IWC moratorium and in 1992 the IWC Scientific Committee found minke whale stocks sustainable, with commercial whaling resuming in 1993; the curated year of 1992 refers to the policy decision and IWC finding that enabled the resumption, within ±2 years of actual resumption.",
-        "source": "https://en.wikipedia.org/wiki/Whaling_in_Norway",
+        "verdict": "FALSE",
+        "reason": "Norway's formal facilitation role in Sri Lanka began in 2000 (announced by President Kumaratunga) and informally in 1997 — not 1990. The year is off by at least 7 years, well outside the ±2 year tolerance.",
+        "source": "https://www.cmi.no/projects/1446-evaluation-of-norwegian-peace-efforts-in-sri-lanka",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -97,7 +108,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Whaling_in_Norway"
+    "source": "https://www.cmi.no/projects/1446-evaluation-of-norwegian-peace-efforts-in-sri-lanka"
   },
   {
     "year": 1992,
@@ -125,10 +136,10 @@
     "source": "https://en.wikipedia.org/wiki/European_Economic_Area"
   },
   {
-    "year": 1993,
-    "title": "Oslo Accords Brokered Between Israel and PLO",
+    "year": 1992,
+    "title": "Norway Resumes Commercial Whaling Despite International Ban",
     "verdict": "TRUE",
-    "reason": "Secret negotiations hosted by Norway's Fafo institute concluded 20 August 1993; the Oslo Accords were officially signed at the White House on 13 September 1993 in the presence of Rabin, Arafat, and Clinton.",
+    "reason": "Norway had filed a formal objection to the IWC moratorium and in 1992 the IWC Scientific Committee found minke whale stocks sustainable, with commercial whaling resuming in 1993; the curated year of 1992 refers to the policy decision and IWC finding that enabled the resumption, within ±2 years of actual resumption.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -138,8 +149,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Secret negotiations hosted by Norway's Fafo institute concluded 20 August 1993; the Oslo Accords were officially signed at the White House on 13 September 1993 in the presence of Rabin, Arafat, and Clinton.",
-        "source": "https://en.wikipedia.org/wiki/Oslo_Accords",
+        "reason": "Norway had filed a formal objection to the IWC moratorium and in 1992 the IWC Scientific Committee found minke whale stocks sustainable, with commercial whaling resuming in 1993; the curated year of 1992 refers to the policy decision and IWC finding that enabled the resumption, within ±2 years of actual resumption.",
+        "source": "https://en.wikipedia.org/wiki/Whaling_in_Norway",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -147,7 +158,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Oslo_Accords"
+    "source": "https://en.wikipedia.org/wiki/Whaling_in_Norway"
   },
   {
     "year": 1993,
@@ -173,6 +184,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Barents_Euro-Arctic_Council"
+  },
+  {
+    "year": 1993,
+    "title": "Oslo Accords Brokered Between Israel and PLO",
+    "verdict": "TRUE",
+    "reason": "Secret negotiations hosted by Norway's Fafo institute concluded 20 August 1993; the Oslo Accords were officially signed at the White House on 13 September 1993 in the presence of Rabin, Arafat, and Clinton.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Secret negotiations hosted by Norway's Fafo institute concluded 20 August 1993; the Oslo Accords were officially signed at the White House on 13 September 1993 in the presence of Rabin, Arafat, and Clinton.",
+        "source": "https://en.wikipedia.org/wiki/Oslo_Accords",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Oslo_Accords"
   },
   {
     "year": 1994,
@@ -626,31 +662,6 @@
   },
   {
     "year": 2014,
-    "title": "Stoltenberg Appointed NATO Secretary General",
-    "verdict": "TRUE",
-    "reason": "Jens Stoltenberg was confirmed as NATO Secretary General in March 2014 and took office on 1 October 2014, succeeding Anders Fogh Rasmussen; his appointment coincided with heightened Russia-NATO tensions following the annexation of Crimea.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Jens Stoltenberg was confirmed as NATO Secretary General in March 2014 and took office on 1 October 2014, succeeding Anders Fogh Rasmussen; his appointment coincided with heightened Russia-NATO tensions following the annexation of Crimea.",
-        "source": "https://www.nato.int/cps/po/natohq/who_is_who_49999.htm",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.nato.int/cps/po/natohq/who_is_who_49999.htm"
-  },
-  {
-    "year": 2014,
     "title": "Oil Price Crash Exposes Norwegian Economic Vulnerability",
     "verdict": "TRUE",
     "reason": "From mid-2014, global oil prices fell sharply, triggering approximately 12,000–30,000 job losses in Norway's petroleum sector and cutting petroleum sector investment forecasts by 25%; Statistics Norway cut GDP forecasts and the crisis accelerated diversification debate.",
@@ -673,6 +684,31 @@
       }
     ],
     "source": "https://theconversation.com/why-norway-is-not-panicking-about-the-oil-price-collapse-37392"
+  },
+  {
+    "year": 2014,
+    "title": "Stoltenberg Appointed NATO Secretary General",
+    "verdict": "TRUE",
+    "reason": "Jens Stoltenberg was confirmed as NATO Secretary General in March 2014 and took office on 1 October 2014, succeeding Anders Fogh Rasmussen; his appointment coincided with heightened Russia-NATO tensions following the annexation of Crimea.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Jens Stoltenberg was confirmed as NATO Secretary General in March 2014 and took office on 1 October 2014, succeeding Anders Fogh Rasmussen; his appointment coincided with heightened Russia-NATO tensions following the annexation of Crimea.",
+        "source": "https://www.nato.int/cps/po/natohq/who_is_who_49999.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.nato.int/cps/po/natohq/who_is_who_49999.htm"
   },
   {
     "year": 2015,
@@ -801,31 +837,6 @@
   },
   {
     "year": 2018,
-    "title": "Pension Fund Divests from Coal and Oil Exploration",
-    "verdict": "TRUE",
-    "reason": "Norges Bank recommended removing oil and gas from the benchmark index in November 2017; the government issued its formal divestment proposal in 2018, and the Storting approved the removal of upstream oil and gas exploration companies in 2019. The curated year of 2018 corresponds to the government's formal proposal stage, within ±2 years of Storting approval.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Norges Bank recommended removing oil and gas from the benchmark index in November 2017; the government issued its formal divestment proposal in 2018, and the Storting approved the removal of upstream oil and gas exploration companies in 2019. The curated year of 2018 corresponds to the government's formal proposal stage, within ±2 years of Storting approval.",
-        "source": "https://www.norges-bank.no/en/news-events/news/Press-releases/2017/2017-11-16-press-release/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.norges-bank.no/en/news-events/news/Press-releases/2017/2017-11-16-press-release/"
-  },
-  {
-    "year": 2018,
     "title": "NATO Trident Juncture Exercise Held in Norway",
     "verdict": "TRUE",
     "reason": "Exercise Trident Juncture 18 took place in Norway from 25 October to 7 November 2018, involving approximately 50,000 troops and personnel from 31 nations — NATO's largest exercise since the Cold War and Norway's largest since the 1980s.",
@@ -848,6 +859,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Exercise_Trident_Juncture_2018"
+  },
+  {
+    "year": 2018,
+    "title": "Pension Fund Divests from Coal and Oil Exploration",
+    "verdict": "TRUE",
+    "reason": "Norges Bank recommended removing oil and gas from the benchmark index in November 2017; the government issued its formal divestment proposal in 2018, and the Storting approved the removal of upstream oil and gas exploration companies in 2019. The curated year of 2018 corresponds to the government's formal proposal stage, within ±2 years of Storting approval.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Norges Bank recommended removing oil and gas from the benchmark index in November 2017; the government issued its formal divestment proposal in 2018, and the Storting approved the removal of upstream oil and gas exploration companies in 2019. The curated year of 2018 corresponds to the government's formal proposal stage, within ±2 years of Storting approval.",
+        "source": "https://www.norges-bank.no/en/news-events/news/Press-releases/2017/2017-11-16-press-release/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.norges-bank.no/en/news-events/news/Press-releases/2017/2017-11-16-press-release/"
   },
   {
     "year": 2019,
@@ -951,31 +987,6 @@
   },
   {
     "year": 2021,
-    "title": "Labour-Led Government Formed Under Jonas Gahr Store",
-    "verdict": "TRUE",
-    "reason": "After the September 2021 elections, Jonas Gahr Støre was appointed Prime Minister on 14 October 2021, forming a minority coalition of Labour and the Centre Party after the Socialist Left withdrew from negotiations.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "After the September 2021 elections, Jonas Gahr Støre was appointed Prime Minister on 14 October 2021, forming a minority coalition of Labour and the Centre Party after the Socialist Left withdrew from negotiations.",
-        "source": "https://en.wikipedia.org/wiki/St%C3%B8re_Cabinet",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/St%C3%B8re_Cabinet"
-  },
-  {
-    "year": 2021,
     "title": "Gjerdrum Landslide Displaces Hundreds",
     "verdict": "TRUE",
     "reason": "A quick-clay landslide struck Ask village in Gjerdrum municipality at 04:00 on 30 December 2020, killing 10 people and forcing the evacuation of over 1,000 residents; the curated year 2021 is off by one year but is within the ±2 year tolerance, and all other details are accurate.",
@@ -1000,10 +1011,10 @@
     "source": "https://en.wikipedia.org/wiki/2020_Gjerdrum_landslide"
   },
   {
-    "year": 2022,
-    "title": "Norway Becomes Europe's Top Gas Supplier After Russia Cuts",
+    "year": 2021,
+    "title": "Labour-Led Government Formed Under Jonas Gahr Store",
     "verdict": "TRUE",
-    "reason": "Following Russia's February 2022 invasion of Ukraine and subsequent gas supply cuts, Norway overtook Russia as Europe's largest natural gas supplier; Norwegian windfall petroleum revenues for 2022–2023 were estimated by the Finance Ministry at approximately USD 111 billion.",
+    "reason": "After the September 2021 elections, Jonas Gahr Støre was appointed Prime Minister on 14 October 2021, forming a minority coalition of Labour and the Centre Party after the Socialist Left withdrew from negotiations.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1013,8 +1024,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Following Russia's February 2022 invasion of Ukraine and subsequent gas supply cuts, Norway overtook Russia as Europe's largest natural gas supplier; Norwegian windfall petroleum revenues for 2022–2023 were estimated by the Finance Ministry at approximately USD 111 billion.",
-        "source": "https://theworld.org/stories/2023/09/18/norways-becomes-top-gas-supplier-europe-after-russia-invasion",
+        "reason": "After the September 2021 elections, Jonas Gahr Støre was appointed Prime Minister on 14 October 2021, forming a minority coalition of Labour and the Centre Party after the Socialist Left withdrew from negotiations.",
+        "source": "https://en.wikipedia.org/wiki/St%C3%B8re_Cabinet",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1022,7 +1033,7 @@
         }
       }
     ],
-    "source": "https://theworld.org/stories/2023/09/18/norways-becomes-top-gas-supplier-europe-after-russia-invasion"
+    "source": "https://en.wikipedia.org/wiki/St%C3%B8re_Cabinet"
   },
   {
     "year": 2022,
@@ -1048,6 +1059,31 @@
       }
     ],
     "source": "https://www.pbs.org/newshour/world/unidentified-drones-over-norways-offshore-platforms-fuel-fears-of-russian-threat"
+  },
+  {
+    "year": 2022,
+    "title": "Norway Becomes Europe's Top Gas Supplier After Russia Cuts",
+    "verdict": "TRUE",
+    "reason": "Following Russia's February 2022 invasion of Ukraine and subsequent gas supply cuts, Norway overtook Russia as Europe's largest natural gas supplier; Norwegian windfall petroleum revenues for 2022–2023 were estimated by the Finance Ministry at approximately USD 111 billion.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following Russia's February 2022 invasion of Ukraine and subsequent gas supply cuts, Norway overtook Russia as Europe's largest natural gas supplier; Norwegian windfall petroleum revenues for 2022–2023 were estimated by the Finance Ministry at approximately USD 111 billion.",
+        "source": "https://theworld.org/stories/2023/09/18/norways-becomes-top-gas-supplier-europe-after-russia-invasion",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://theworld.org/stories/2023/09/18/norways-becomes-top-gas-supplier-europe-after-russia-invasion"
   },
   {
     "year": 2022,

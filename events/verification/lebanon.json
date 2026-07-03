@@ -2348,5 +2348,41 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Joseph_Aoun"
+  },
+  {
+    "year": 1950,
+    "title": "Lebanese Republic Consolidates Post-Independence Institutions",
+    "verdict": "TRUE",
+    "reason": "All material facts check out against independent sources: Bechara El Khoury was President of Lebanon from 21 Sept 1943 to 18 Sept 1952 (confirmed by Lebanon's official presidency.gov.lb page and Wikipedia), so he was indeed president in 1950. The National Pact of 1943 — an unwritten power-sharing agreement between President El Khoury and PM Riad Al Solh dividing top offices among Maronite Christians (presidency), Sunni Muslims (premiership), and Shia Muslims (speakership) — is well documented as the foundational governance arrangement that remained in force through this period (Wikipedia's National Pact article, moulahazat.com's founding-fathers piece, presidency.gov.lb). Sources on Lebanon's bureaucracy (countrystudies.us/Library of Congress-derived) confirm the modern civil service and administrative structure trace to this 1943 pact and that post-independence institution-building continued through the early 1950s, consistent with the description of establishing \"a functioning bureaucracy and diplomatic presence.\" The description is a general/vague characterization of an ongoing consolidation process rather than a single discrete incident, but every specific claim in it (country, year, president's identity and tenure, National Pact terms and date) is independently corroborated and none is contradicted.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material elements check out against independent sources. Bechara El Khoury was confirmed President of Lebanon from 21 Sept 1943 to 18 Sept 1952, spanning 1950. The National Pact of 1943 — an unwritten power-sharing agreement negotiated by El Khoury and PM Riad Al Solh dividing the presidency (Maronite), premiership (Sunni), and speakership (Shia) — is independently confirmed as the foundational governing arrangement, and sources note it was 'generally tolerated by most sects until 1958,' meaning it remained the governance foundation through 1950 as described. The broader claim of institutional/sovereignty consolidation in this period is corroborated by a concrete, independently-documented 1950 event: the Syrian-Lebanese customs union (a holdover from the French Mandate era binding the two economies) collapsed in 1950 as Lebanon pursued a distinct free-market economic policy from Syria's protectionism — a clear instance of Lebanon asserting separate sovereign economic/administrative institutions in exactly this period. No contradicting evidence found; description is a general (not single-point) historical characterization and all its checkable claims (leader, dates, National Pact terms, era of institution-building) are accurate.",
+        "source": "https://en.wikipedia.org/wiki/National_Pact",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material facts check out against independent sources: Bechara El Khoury was President of Lebanon from 21 Sept 1943 to 18 Sept 1952 (confirmed by Lebanon's official presidency.gov.lb page and Wikipedia), so he was indeed president in 1950. The National Pact of 1943 — an unwritten power-sharing agreement between President El Khoury and PM Riad Al Solh dividing top offices among Maronite Christians (presidency), Sunni Muslims (premiership), and Shia Muslims (speakership) — is well documented as the foundational governance arrangement that remained in force through this period (Wikipedia's National Pact article, moulahazat.com's founding-fathers piece, presidency.gov.lb). Sources on Lebanon's bureaucracy (countrystudies.us/Library of Congress-derived) confirm the modern civil service and administrative structure trace to this 1943 pact and that post-independence institution-building continued through the early 1950s, consistent with the description of establishing \"a functioning bureaucracy and diplomatic presence.\" The description is a general/vague characterization of an ongoing consolidation process rather than a single discrete incident, but every specific claim in it (country, year, president's identity and tenure, National Pact terms and date) is independently corroborated and none is contradicted.",
+        "source": "https://www.presidency.gov.lb/English/PresidentoftheRepublic/FormerPresidents/Pages/CheikhBecharaElKhoury.aspx",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.presidency.gov.lb/English/PresidentoftheRepublic/FormerPresidents/Pages/CheikhBecharaElKhoury.aspx"
   }
 ]

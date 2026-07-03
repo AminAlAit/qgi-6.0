@@ -351,31 +351,6 @@
   },
   {
     "year": 1972,
-    "title": "Military Coup Brings Rodríguez Lara to Power; Oil Exports Begin",
-    "verdict": "TRUE",
-    "reason": "Coup and SOTE pipeline opening confirmed 1972.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Coup and SOTE pipeline opening confirmed 1972.",
-        "source": "https://countrystudies.us/ecuador/15.htm",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://countrystudies.us/ecuador/15.htm"
-  },
-  {
-    "year": 1972,
     "title": "CEPE State Oil Company Created",
     "verdict": "TRUE",
     "reason": "CEPE founding 1972 confirmed.",
@@ -389,6 +364,31 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "CEPE founding 1972 confirmed.",
+        "source": "https://countrystudies.us/ecuador/15.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://countrystudies.us/ecuador/15.htm"
+  },
+  {
+    "year": 1972,
+    "title": "Military Coup Brings Rodríguez Lara to Power; Oil Exports Begin",
+    "verdict": "TRUE",
+    "reason": "Coup and SOTE pipeline opening confirmed 1972.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Coup and SOTE pipeline opening confirmed 1972.",
         "source": "https://countrystudies.us/ecuador/15.htm",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -951,31 +951,6 @@
   },
   {
     "year": 1998,
-    "title": "Brasília Peace Agreement Permanently Resolves Ecuador-Peru Border Dispute",
-    "verdict": "TRUE",
-    "reason": "October 26, 1998 Brasília agreement confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "October 26, 1998 Brasília agreement confirmed.",
-        "source": "https://peacemaker.un.org/en/node/9287",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://peacemaker.un.org/en/node/9287"
-  },
-  {
-    "year": 1998,
     "title": "Banking Crisis Erupts; 1998 Constitution Adopted",
     "verdict": "TRUE",
     "reason": "Banking crisis onset and 1998 constitution confirmed.",
@@ -998,6 +973,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1998%E2%80%931999_Ecuador_economic_crisis"
+  },
+  {
+    "year": 1998,
+    "title": "Brasília Peace Agreement Permanently Resolves Ecuador-Peru Border Dispute",
+    "verdict": "TRUE",
+    "reason": "October 26, 1998 Brasília agreement confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 26, 1998 Brasília agreement confirmed.",
+        "source": "https://peacemaker.un.org/en/node/9287",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://peacemaker.un.org/en/node/9287"
   },
   {
     "year": 1999,
@@ -1325,6 +1325,42 @@
     "source": "https://theconversation.com/paying-ecuador-to-save-yasuni-was-an-idea-ahead-of-its-time-19182"
   },
   {
+    "year": 2013,
+    "title": "NEE-01 Pegaso Becomes Ecuador's First Satellite in Orbit",
+    "verdict": "TRUE",
+    "reason": "Confirmed via Wikipedia and independently via eoPortal (European Space Agency-affiliated database): NEE-01 Pegaso, Ecuador's first satellite, was built by EXA (Ecuadorian Civilian Space Agency) for approximately $30,000, launched as a secondary payload on a Chinese Long March 2D rocket from Jiuquan Satellite Launch Center on 26 April 2013. It transmitted its first live video from orbit on 16 May 2013. On 23 May 2013 it had a close pass/glancing collision with debris from a 1985 Tsyklon-3 rocket upper stage, causing damage/uncontrolled rotation. A signal recovery effort (EXA received audio signal via the NEE-02 Krysaor satellite, confirmed by January 2014) verified Pegaso had survived the collision. All material details (country, year, actor, cost, launch vehicle, dates, debris incident, recovery) match the description exactly.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material details confirmed by multiple independent sources: NEE-01 Pegaso, a CubeSat built by Ecuador's EXA (Ecuadorian Civilian Space Agency) for about $30,000, was Ecuador's first satellite, launched as a secondary payload on a Chinese Long March 2D rocket from Jiuquan Satellite Launch Center on 26 April 2013. It transmitted its first live video from orbit on 16 May 2013. On 23 May 2013 it passed very close to debris from a spent 1985 Tsyklon-3 rocket upper stage over the Indian Ocean, suffering a 'glancing blow' that damaged/disabled it (declared lost 28 August 2013). On 25 January 2014, EXA recovered an audio segment of the Pegaso signal during a transmission from sister satellite NEE-02 Krysaor, confirming Pegaso had survived the collision. Every detail in the description (country, year, cost, builder, launch vehicle/date, first video date, collision date, 2014 recovery) matches the historical record exactly.",
+        "source": "https://en.wikipedia.org/wiki/NEE-01_Pegaso",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via Wikipedia and independently via eoPortal (European Space Agency-affiliated database): NEE-01 Pegaso, Ecuador's first satellite, was built by EXA (Ecuadorian Civilian Space Agency) for approximately $30,000, launched as a secondary payload on a Chinese Long March 2D rocket from Jiuquan Satellite Launch Center on 26 April 2013. It transmitted its first live video from orbit on 16 May 2013. On 23 May 2013 it had a close pass/glancing collision with debris from a 1985 Tsyklon-3 rocket upper stage, causing damage/uncontrolled rotation. A signal recovery effort (EXA received audio signal via the NEE-02 Krysaor satellite, confirmed by January 2014) verified Pegaso had survived the collision. All material details (country, year, actor, cost, launch vehicle, dates, debris incident, recovery) match the description exactly.",
+        "source": "https://www.eoportal.org/satellite-missions/nee-01-pegasus",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.eoportal.org/satellite-missions/nee-01-pegasus"
+  },
+  {
     "year": 2014,
     "title": "Oil Price Decline Begins; China Financing Expands; Indigenous Mining Protests",
     "verdict": "TRUE",
@@ -1551,31 +1587,6 @@
   },
   {
     "year": 2023,
-    "title": "Lasso Invokes 'Muerte Cruzada'; Villavicencio Assassinated; Noboa Elected",
-    "verdict": "TRUE",
-    "reason": "Muerte cruzada, Villavicencio assassination (August 9), and Noboa election all confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Muerte cruzada, Villavicencio assassination (August 9), and Noboa election all confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2023_Ecuadorian_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2023_Ecuadorian_general_election"
-  },
-  {
-    "year": 2023,
     "title": "Historic Referendum Votes to Halt Yasuni Amazon Oil Drilling",
     "verdict": "TRUE",
     "reason": "August 2023 referendum (~59% yes) to halt ITT block drilling confirmed.",
@@ -1600,10 +1611,10 @@
     "source": "https://news.mongabay.com/2023/08/ecuador-referendum-halts-oil-extraction-in-yasuni-national-park/"
   },
   {
-    "year": 2024,
-    "title": "TC Televisión Siege; Noboa Declares Internal Armed Conflict",
+    "year": 2023,
+    "title": "Lasso Invokes 'Muerte Cruzada'; Villavicencio Assassinated; Noboa Elected",
     "verdict": "TRUE",
-    "reason": "January 9, 2024 TC Televisión seizure and internal armed conflict declaration confirmed.",
+    "reason": "Muerte cruzada, Villavicencio assassination (August 9), and Noboa election all confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1613,8 +1624,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "January 9, 2024 TC Televisión seizure and internal armed conflict declaration confirmed.",
-        "source": "https://www.cnn.com/2024/01/09/americas/armed-men-interrupt-live-tv-ecuador-intl/index.html",
+        "reason": "Muerte cruzada, Villavicencio assassination (August 9), and Noboa election all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2023_Ecuadorian_general_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1622,7 +1633,7 @@
         }
       }
     ],
-    "source": "https://www.cnn.com/2024/01/09/americas/armed-men-interrupt-live-tv-ecuador-intl/index.html"
+    "source": "https://en.wikipedia.org/wiki/2023_Ecuadorian_general_election"
   },
   {
     "year": 2024,
@@ -1673,5 +1684,30 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2025_Ecuadorian_general_election"
+  },
+  {
+    "year": 2024,
+    "title": "TC Televisión Siege; Noboa Declares Internal Armed Conflict",
+    "verdict": "TRUE",
+    "reason": "January 9, 2024 TC Televisión seizure and internal armed conflict declaration confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 9, 2024 TC Televisión seizure and internal armed conflict declaration confirmed.",
+        "source": "https://www.cnn.com/2024/01/09/americas/armed-men-interrupt-live-tv-ecuador-intl/index.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cnn.com/2024/01/09/americas/armed-men-interrupt-live-tv-ecuador-intl/index.html"
   }
 ]

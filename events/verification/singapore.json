@@ -1,5 +1,41 @@
 [
   {
+    "year": 1989,
+    "title": "Creative Technology Launches Sound Blaster, Setting the PC Audio Standard",
+    "verdict": "TRUE",
+    "reason": "All material details confirmed by multiple independent sources: Singapore's Creative Technology (founded by Sim Wong Hoo) launched the Sound Blaster sound card at Comdex in Las Vegas on 16 November 1989; sold 600 units over the five-day show (one order roughly every four minutes, with 20-person queues at three cashiers in their booth); the card was built around a Yamaha OPL2 (YM3812) FM synthesizer chip; and by 1995 Sound Blaster had sold over 15 million units worldwide, capturing seven of every ten sound card sales. Wikipedia independently confirms the OPL2 chip and the exact 1995 figure (15 million units, seven of ten sales) verbatim. Creative's own 30-year retrospective and Custom PC's detailed history piece corroborate the Comdex date/location and sales-rush anecdote. No material detail in the description is contradicted by any source found.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via independent sources: Creative Technology (Singapore) launched the Sound Blaster 1.0 sound card at Comdex in Las Vegas on 16 November 1989, selling 600 units over the five-day show (per Singapore National Library Board's official history archive, corroborated by multiple retro-tech sources). The card was built around the Yamaha YM3812 (OPL2) FM synthesizer chip (confirmed via Wikipedia and DOS Days hardware archives). Wikipedia's Sound Blaster article independently confirms: 'By 1995, Sound Blaster cards had sold over 15 million units worldwide and accounted for seven out of ten sound card sales' — matching the description's claims on units sold and market share verbatim. All material details (actor, country, year, event, magnitude) check out.",
+        "source": "https://en.wikipedia.org/wiki/Sound_Blaster",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material details confirmed by multiple independent sources: Singapore's Creative Technology (founded by Sim Wong Hoo) launched the Sound Blaster sound card at Comdex in Las Vegas on 16 November 1989; sold 600 units over the five-day show (one order roughly every four minutes, with 20-person queues at three cashiers in their booth); the card was built around a Yamaha OPL2 (YM3812) FM synthesizer chip; and by 1995 Sound Blaster had sold over 15 million units worldwide, capturing seven of every ten sound card sales. Wikipedia independently confirms the OPL2 chip and the exact 1995 figure (15 million units, seven of ten sales) verbatim. Creative's own 30-year retrospective and Custom PC's detailed history piece corroborate the Comdex date/location and sales-rush anecdote. No material detail in the description is contradicted by any source found.",
+        "source": "https://en.wikipedia.org/wiki/Sound_Blaster",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sound_Blaster"
+  },
+  {
     "year": 1990,
     "title": "Lee Kuan Yew Steps Down After 31 Years as Prime Minister",
     "verdict": "TRUE",
@@ -51,31 +87,6 @@
   },
   {
     "year": 1991,
-    "title": "PAP Records Lowest Vote Share Since Independence at 61%",
-    "verdict": "TRUE",
-    "reason": "The 1991 general election returned the PAP with 60.97% of the popular vote, its lowest since independence, and four opposition seats won in parliament.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The 1991 general election returned the PAP with 60.97% of the popular vote, its lowest since independence, and four opposition seats won in parliament.",
-        "source": "https://en.wikipedia.org/wiki/1991_Singaporean_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1991_Singaporean_general_election"
-  },
-  {
-    "year": 1991,
     "title": "Constitutional Amendment Introduces Elected Presidency",
     "verdict": "TRUE",
     "reason": "The Constitution of the Republic of Singapore (Amendment) Act 1991 transformed the previously ceremonial presidency into a directly elected office with custodial powers over national reserves and key civil service appointments.",
@@ -98,6 +109,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/President_of_Singapore"
+  },
+  {
+    "year": 1991,
+    "title": "PAP Records Lowest Vote Share Since Independence at 61%",
+    "verdict": "TRUE",
+    "reason": "The 1991 general election returned the PAP with 60.97% of the popular vote, its lowest since independence, and four opposition seats won in parliament.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 1991 general election returned the PAP with 60.97% of the popular vote, its lowest since independence, and four opposition seats won in parliament.",
+        "source": "https://en.wikipedia.org/wiki/1991_Singaporean_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1991_Singaporean_general_election"
   },
   {
     "year": 1993,
@@ -501,31 +537,6 @@
   },
   {
     "year": 2011,
-    "title": "Watershed Election as Workers Party Captures First GRC",
-    "verdict": "TRUE",
-    "reason": "The Workers' Party won Aljunied GRC on 7 May 2011 with 54.72%, the first opposition GRC win ever; cabinet minister George Yeo lost his seat and the PAP's vote share fell to 60.14%.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Workers' Party won Aljunied GRC on 7 May 2011 with 54.72%, the first opposition GRC win ever; cabinet minister George Yeo lost his seat and the PAP's vote share fell to 60.14%.",
-        "source": "https://en.wikipedia.org/wiki/2011_Singaporean_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2011_Singaporean_general_election"
-  },
-  {
-    "year": 2011,
     "title": "First Expiry of 1961 Johor Water Agreement",
     "verdict": "TRUE",
     "reason": "The 1961 water agreement expired on 31 August 2011; Singapore let it lapse without supply disruption due to NEWater and desalination investments, while the 1962 agreement remains in force until 2061.",
@@ -548,6 +559,31 @@
       }
     ],
     "source": "https://www.mfa.gov.sg/about-mfa/key-issues/water-agreements/"
+  },
+  {
+    "year": 2011,
+    "title": "Watershed Election as Workers Party Captures First GRC",
+    "verdict": "TRUE",
+    "reason": "The Workers' Party won Aljunied GRC on 7 May 2011 with 54.72%, the first opposition GRC win ever; cabinet minister George Yeo lost his seat and the PAP's vote share fell to 60.14%.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Workers' Party won Aljunied GRC on 7 May 2011 with 54.72%, the first opposition GRC win ever; cabinet minister George Yeo lost his seat and the PAP's vote share fell to 60.14%.",
+        "source": "https://en.wikipedia.org/wiki/2011_Singaporean_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2011_Singaporean_general_election"
   },
   {
     "year": 2012,
@@ -576,31 +612,6 @@
   },
   {
     "year": 2013,
-    "title": "Population White Paper Sparks Largest Post-Independence Protest",
-    "verdict": "PARTIAL",
-    "reason": "The 16 February 2013 protest at Hong Lim Park drew approximately 4,000-5,000 people against the 6.9 million population projection; however it was the second-largest crowd at Hong Lim Park (behind Pink Dot 2012), not the largest post-independence protest overall.",
-    "verify_count": 1,
-    "consensus_verdict": "PARTIAL",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "PARTIAL",
-        "reason": "The 16 February 2013 protest at Hong Lim Park drew approximately 4,000-5,000 people against the 6.9 million population projection; however it was the second-largest crowd at Hong Lim Park (behind Pink Dot 2012), not the largest post-independence protest overall.",
-        "source": "https://en.wikipedia.org/wiki/Population_White_Paper",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Population_White_Paper"
-  },
-  {
-    "year": 2013,
     "title": "Little India Riot Exposes Foreign Worker Tensions",
     "verdict": "TRUE",
     "reason": "A bus accident killing a migrant worker on 8 December 2013 triggered a riot involving about 300 migrants in Little India, injuring 54 police officers and 8 civilians; it was Singapore's first civil disturbance in 44 years.",
@@ -623,6 +634,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2013_Little_India_riot"
+  },
+  {
+    "year": 2013,
+    "title": "Population White Paper Sparks Largest Post-Independence Protest",
+    "verdict": "PARTIAL",
+    "reason": "The 16 February 2013 protest at Hong Lim Park drew approximately 4,000-5,000 people against the 6.9 million population projection; however it was the second-largest crowd at Hong Lim Park (behind Pink Dot 2012), not the largest post-independence protest overall.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The 16 February 2013 protest at Hong Lim Park drew approximately 4,000-5,000 people against the 6.9 million population projection; however it was the second-largest crowd at Hong Lim Park (behind Pink Dot 2012), not the largest post-independence protest overall.",
+        "source": "https://en.wikipedia.org/wiki/Population_White_Paper",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Population_White_Paper"
   },
   {
     "year": 2015,
@@ -651,31 +687,6 @@
   },
   {
     "year": 2015,
-    "title": "SG50 Golden Jubilee Celebrates 50 Years of Independence",
-    "verdict": "TRUE",
-    "reason": "Singapore marked its 50th anniversary of independence with year-long SG50 celebrations including a 26,000-person National Day Parade, and the Monetary Authority issued commemorative notes.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Singapore marked its 50th anniversary of independence with year-long SG50 celebrations including a 26,000-person National Day Parade, and the Monetary Authority issued commemorative notes.",
-        "source": "https://en.wikipedia.org/wiki/Singapore",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Singapore"
-  },
-  {
-    "year": 2015,
     "title": "PAP Wins GE2015 with 69.9% Amid SG50 Surge",
     "verdict": "TRUE",
     "reason": "The PAP won 69.86% of the popular vote (rounded to 69.9%) in the 11 September 2015 general election, up sharply from the 2011 low; analysts attributed this to SG50 sentiment and national mourning for Lee Kuan Yew.",
@@ -698,6 +709,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2015_Singaporean_general_election"
+  },
+  {
+    "year": 2015,
+    "title": "SG50 Golden Jubilee Celebrates 50 Years of Independence",
+    "verdict": "TRUE",
+    "reason": "Singapore marked its 50th anniversary of independence with year-long SG50 celebrations including a 26,000-person National Day Parade, and the Monetary Authority issued commemorative notes.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Singapore marked its 50th anniversary of independence with year-long SG50 celebrations including a 26,000-person National Day Parade, and the Monetary Authority issued commemorative notes.",
+        "source": "https://en.wikipedia.org/wiki/Singapore",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Singapore"
   },
   {
     "year": 2016,
@@ -726,31 +762,6 @@
   },
   {
     "year": 2017,
-    "title": "Reserved Presidential Election Installs Halimah Yacob Uncontested",
-    "verdict": "TRUE",
-    "reason": "Under a 2016 constitutional amendment, the 2017 election was reserved for Malay candidates; Halimah Yacob was declared president without a vote on 13 September 2017 after both other candidates failed eligibility requirements.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Under a 2016 constitutional amendment, the 2017 election was reserved for Malay candidates; Halimah Yacob was declared president without a vote on 13 September 2017 after both other candidates failed eligibility requirements.",
-        "source": "https://en.wikipedia.org/wiki/2017_Singaporean_presidential_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2017_Singaporean_presidential_election"
-  },
-  {
-    "year": 2017,
     "title": "Lee Family Feud Over Oxley Road House Becomes Public",
     "verdict": "TRUE",
     "reason": "Lee Hsien Yang and Lee Wei Ling publicly accused PM Lee Hsien Loong of abusing power over 38 Oxley Road on 14 June 2017; a special two-day parliamentary session was convened on 3-4 July 2017 to debate the allegations.",
@@ -775,10 +786,10 @@
     "source": "https://en.wikipedia.org/wiki/38_Oxley_Road"
   },
   {
-    "year": 2018,
-    "title": "Trump-Kim Summit Held at Capella Hotel on Sentosa",
+    "year": 2017,
+    "title": "Reserved Presidential Election Installs Halimah Yacob Uncontested",
     "verdict": "TRUE",
-    "reason": "The first-ever US-North Korea summit was held at Capella Hotel, Sentosa, on 12 June 2018; Trump and Kim signed a joint statement committing to complete denuclearisation of the Korean Peninsula.",
+    "reason": "Under a 2016 constitutional amendment, the 2017 election was reserved for Malay candidates; Halimah Yacob was declared president without a vote on 13 September 2017 after both other candidates failed eligibility requirements.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -788,8 +799,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The first-ever US-North Korea summit was held at Capella Hotel, Sentosa, on 12 June 2018; Trump and Kim signed a joint statement committing to complete denuclearisation of the Korean Peninsula.",
-        "source": "https://en.wikipedia.org/wiki/2018_North_Korea%E2%80%93United_States_Singapore_Summit",
+        "reason": "Under a 2016 constitutional amendment, the 2017 election was reserved for Malay candidates; Halimah Yacob was declared president without a vote on 13 September 2017 after both other candidates failed eligibility requirements.",
+        "source": "https://en.wikipedia.org/wiki/2017_Singaporean_presidential_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -797,7 +808,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2018_North_Korea%E2%80%93United_States_Singapore_Summit"
+    "source": "https://en.wikipedia.org/wiki/2017_Singaporean_presidential_election"
+  },
+  {
+    "year": 2018,
+    "title": "Malaysia Reopens Water Price Dispute Under Returning PM Mahathir",
+    "verdict": "TRUE",
+    "reason": "Following his May 2018 election win, PM Mahathir declared the 1962 water agreement unfair and sought to renegotiate the price; Singapore invoked binding treaty terms and rejected renegotiation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following his May 2018 election win, PM Mahathir declared the 1962 water agreement unfair and sought to renegotiate the price; Singapore invoked binding treaty terms and rejected renegotiation.",
+        "source": "https://en.wikipedia.org/wiki/Water_conflicts_between_Malaysia_and_Singapore",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Water_conflicts_between_Malaysia_and_Singapore"
   },
   {
     "year": 2018,
@@ -826,9 +862,9 @@
   },
   {
     "year": 2018,
-    "title": "Malaysia Reopens Water Price Dispute Under Returning PM Mahathir",
+    "title": "Trump-Kim Summit Held at Capella Hotel on Sentosa",
     "verdict": "TRUE",
-    "reason": "Following his May 2018 election win, PM Mahathir declared the 1962 water agreement unfair and sought to renegotiate the price; Singapore invoked binding treaty terms and rejected renegotiation.",
+    "reason": "The first-ever US-North Korea summit was held at Capella Hotel, Sentosa, on 12 June 2018; Trump and Kim signed a joint statement committing to complete denuclearisation of the Korean Peninsula.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -838,8 +874,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Following his May 2018 election win, PM Mahathir declared the 1962 water agreement unfair and sought to renegotiate the price; Singapore invoked binding treaty terms and rejected renegotiation.",
-        "source": "https://en.wikipedia.org/wiki/Water_conflicts_between_Malaysia_and_Singapore",
+        "reason": "The first-ever US-North Korea summit was held at Capella Hotel, Sentosa, on 12 June 2018; Trump and Kim signed a joint statement committing to complete denuclearisation of the Korean Peninsula.",
+        "source": "https://en.wikipedia.org/wiki/2018_North_Korea%E2%80%93United_States_Singapore_Summit",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -847,7 +883,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Water_conflicts_between_Malaysia_and_Singapore"
+    "source": "https://en.wikipedia.org/wiki/2018_North_Korea%E2%80%93United_States_Singapore_Summit"
   },
   {
     "year": 2019,
@@ -901,31 +937,6 @@
   },
   {
     "year": 2020,
-    "title": "Massive COVID-19 Outbreak in Migrant Worker Dormitories",
-    "verdict": "TRUE",
-    "reason": "By 6 May 2020, dormitory workers comprised 87.9% (nearly 88%) of Singapore's 20,198 confirmed COVID-19 cases; the crisis prompted reforms to dormitory standards.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "By 6 May 2020, dormitory workers comprised 87.9% (nearly 88%) of Singapore's 20,198 confirmed COVID-19 cases; the crisis prompted reforms to dormitory standards.",
-        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7476302/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7476302/"
-  },
-  {
-    "year": 2020,
     "title": "GE2020 Gives Workers Party Record 10 Parliamentary Seats",
     "verdict": "TRUE",
     "reason": "On 10 July 2020 the PAP won 83 of 93 seats (61.24% of votes); the WP captured Sengkang GRC and retained Aljunied GRC and Hougang SMC for a total of 10 seats, the largest opposition presence since 1966, with Pritam Singh recognised as formal leader of the opposition.",
@@ -948,6 +959,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2020_Singaporean_general_election"
+  },
+  {
+    "year": 2020,
+    "title": "Massive COVID-19 Outbreak in Migrant Worker Dormitories",
+    "verdict": "TRUE",
+    "reason": "By 6 May 2020, dormitory workers comprised 87.9% (nearly 88%) of Singapore's 20,198 confirmed COVID-19 cases; the crisis prompted reforms to dormitory standards.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "By 6 May 2020, dormitory workers comprised 87.9% (nearly 88%) of Singapore's 20,198 confirmed COVID-19 cases; the crisis prompted reforms to dormitory standards.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7476302/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7476302/"
   },
   {
     "year": 2021,
@@ -1050,31 +1086,6 @@
     "source": "https://en.wikipedia.org/wiki/Prosecution_of_S._Iswaran"
   },
   {
-    "year": 2024,
-    "title": "Lawrence Wong Sworn In as Singapore's Fourth Prime Minister",
-    "verdict": "TRUE",
-    "reason": "Lawrence Wong was sworn in as Singapore's fourth prime minister on 15 May 2024, the first PM born after independence (1965); it ended Lee Hsien Loong's 20-year tenure.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Lawrence Wong was sworn in as Singapore's fourth prime minister on 15 May 2024, the first PM born after independence (1965); it ended Lee Hsien Loong's 20-year tenure.",
-        "source": "https://en.wikipedia.org/wiki/Lawrence_Wong",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Lawrence_Wong"
-  },
-  {
     "year": 2023,
     "title": "Tharman Shanmugaratnam Elected President with 70.4% of Vote",
     "verdict": "TRUE",
@@ -1098,6 +1109,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2023_Singaporean_presidential_election"
+  },
+  {
+    "year": 2024,
+    "title": "Lawrence Wong Sworn In as Singapore's Fourth Prime Minister",
+    "verdict": "TRUE",
+    "reason": "Lawrence Wong was sworn in as Singapore's fourth prime minister on 15 May 2024, the first PM born after independence (1965); it ended Lee Hsien Loong's 20-year tenure.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Lawrence Wong was sworn in as Singapore's fourth prime minister on 15 May 2024, the first PM born after independence (1965); it ended Lee Hsien Loong's 20-year tenure.",
+        "source": "https://en.wikipedia.org/wiki/Lawrence_Wong",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Lawrence_Wong"
   },
   {
     "year": 2025,

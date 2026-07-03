@@ -2373,5 +2373,113 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/European_migrant_crisis"
+  },
+  {
+    "year": 1975,
+    "title": "Gafsa Phosphate Region — Economic Importance and Interior Inequality",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources corroborate the material substance: (1) Tunisia's phosphate production grew significantly through the 1970s (from ~3M tons early 1960s to ~4M tons by the mid-1970s), coinciding with the well-documented global fertilizer/phosphate price boom of 1974 (prices roughly quadrupled, $16→$68/ton) driven by the oil-crisis-era commodity surge; (2) the Compagnie des Phosphates de Gafsa (CPG) was consistently described across sources (Wikipedia, Geographical, EJAtlas, academic mining-firm history) as the dominant/only major employer in the Gafsa interior, described by one source as functioning like 'a state within a state' in the region — consistent with 'economic backbone of the interior region'; workforce figures found (over 10,000 miners by 1980, later cut from 11,000 to 5,000 in 2008, ~27,000 direct jobs in recent decades) support a large workforce, though 'tens of thousands' is a loose upper-bound characterization rather than a precisely documented 1975 headcount; (3) poor wages/working conditions in the mines and pollution affecting miners and residents are documented; (4) the disparity between the mining basin/interior and the rest of Tunisia (including underinvestment, high unemployment, 'no political will to develop the mining regions' dating to the Bourguiba era) is repeatedly documented as a structural, colonial-era-inherited pattern; (5) this tension is tied to a real violent event in January 1980 — the Gafsa Uprising/raid — confirmed via Wikipedia and other sources, matching 'would erupt violently in 1980.' No source contradicts the year, country, or general narrative; this is a scene-setting/structural economic description (not a single dated incident), and all its checkable material claims hold up under independent corroboration.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the substance. (1) Global phosphate/fertilizer demand and prices boomed in the mid-1970s: phosphate rock prices jumped from ~$12-16/ton to $68/ton in 1974-75 concurrent with the oil shock, and Tunisia's phosphate output rose from ~1.2M tons in the late 1950s to over 4M tons by the mid-1970s, making CPG's Gafsa-region output increasingly valuable to the national economy. (2) CPG (Compagnie des Phosphates de Gafsa) was, per an NRGI/IACE governance report, the entity around which \"quasi-integral management of social and economic life\" in the region revolved \"until the mid-1970s,\" and it employed roughly 14,000 people by the early 1980s (likely similar or higher during the mid-1970s production boom before a 1986 IMF/World Bank-driven restructuring cut headcount to 5,300 by 2007) -- consistent with, if slightly more modest than, the description's \"tens of thousands.\" The same source documents recurring strikes over wages and working conditions dating back to 1914, supporting the \"poor wages and working conditions\" characterization. (3) Official Tunisian development policy from the 1970s explicitly favored the coastal regions, leaving Gafsa-area interior populations as, per scholarly accounts, a \"workforce reserve\" -- documented structural coastal-interior inequality. (4) This dynamic is widely tied by historians to the January 1980 Gafsa raid/uprising (an armed incursion exploiting local economic grievances) and, later, the 2008 Gafsa mining-basin uprising, confirming the \"erupt violently in 1980\" forward reference. The one soft spot is the precise \"tens of thousands\" employment figure, which published data puts closer to ~14,000 for CPG's direct payroll in this era rather than 20,000+, a minor magnitude imprecision rather than a substantive error. Overall the event (Gafsa phosphate's growing economic importance amid global demand growth, its role as the interior's economic backbone, poor labor conditions, and coastal-interior inequality foreshadowing 1980) is well supported by independent sources.",
+        "source": "https://resourcegovernance.org/sites/default/files/documents/la-compagnie-des-phosphates-de-gafsa.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the material substance: (1) Tunisia's phosphate production grew significantly through the 1970s (from ~3M tons early 1960s to ~4M tons by the mid-1970s), coinciding with the well-documented global fertilizer/phosphate price boom of 1974 (prices roughly quadrupled, $16→$68/ton) driven by the oil-crisis-era commodity surge; (2) the Compagnie des Phosphates de Gafsa (CPG) was consistently described across sources (Wikipedia, Geographical, EJAtlas, academic mining-firm history) as the dominant/only major employer in the Gafsa interior, described by one source as functioning like 'a state within a state' in the region — consistent with 'economic backbone of the interior region'; workforce figures found (over 10,000 miners by 1980, later cut from 11,000 to 5,000 in 2008, ~27,000 direct jobs in recent decades) support a large workforce, though 'tens of thousands' is a loose upper-bound characterization rather than a precisely documented 1975 headcount; (3) poor wages/working conditions in the mines and pollution affecting miners and residents are documented; (4) the disparity between the mining basin/interior and the rest of Tunisia (including underinvestment, high unemployment, 'no political will to develop the mining regions' dating to the Bourguiba era) is repeatedly documented as a structural, colonial-era-inherited pattern; (5) this tension is tied to a real violent event in January 1980 — the Gafsa Uprising/raid — confirmed via Wikipedia and other sources, matching 'would erupt violently in 1980.' No source contradicts the year, country, or general narrative; this is a scene-setting/structural economic description (not a single dated incident), and all its checkable material claims hold up under independent corroboration.",
+        "source": "https://en.wikipedia.org/wiki/Compagnie_des_phosphates_de_Gafsa",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Compagnie_des_phosphates_de_Gafsa"
+  },
+  {
+    "year": 2025,
+    "title": "Political Prisoners and Press Freedom Concerns Persist",
+    "verdict": "TRUE",
+    "reason": "Multiple independent 2025-dated sources confirm all material claims: (1) RSF's 2025 World Press Freedom Index shows Tunisia dropping to its lowest-ever recorded level (129th/180, 43.48 points), explicitly attributed to Ben Ali-era legal tools (Telecommunications Code) being weaponized under Saied — directly matching the 'falling back to levels approaching the Ben Ali era' claim. (2) CPJ documented a record number of journalists jailed via Decree-Law 54 (the 2022 cybercrime law) throughout 2025, with named cases (Sonia Dahmani, Mourad Zeghidi, Borhen Bsaies, Mohamed Boughalleb, Chadha Hadj Mbarek) convicted for social-media commentary/'false news' charges. (3) HRW and Amnesty International documented mass convictions of opposition politicians, activists, and lawyers in the 'Conspiracy Case' (April 2025 initial sentences up to 66 years; November 2025 appeal upholding 5-45 year sentences for 34 defendants including prominent figures Ahmed Nejib Chebbi, Chaima Issa, and Ayachi Hammami) under state-security/terrorism laws. All key elements — political prisoners, journalists/bloggers, cybercrime/state-security law weaponization, press freedom decline to Ben Ali-era levels — are corroborated by RSF, CPJ, HRW, Amnesty, and Al Jazeera reporting specific to 2025.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent 2025 sources confirm all material elements: CPJ (Jan 2025) reported Tunisia jailed a record number of journalists (at least 5) under the 2022 cybercrime law (Decree 54); HRW's April 2025 report 'All Conspirators' documented systematic arbitrary detention of opposition politicians, journalists, activists and lawyers under state-security/terrorism charges, with over 80 political detainees by November 2025 and 37 dissidents convicted with decades-long sentences in a mass conspiracy trial; RSF's 2025 World Press Freedom Index showed Tunisia falling 11 places to 129th/180 (score dropping from 49.97 to 43.48, 5th straight year of decline), explicitly attributing this to Saied 'strengthening the repressive legal framework from the era of former president Ben Ali'; RSF also documented widespread self-censorship and specific restrictions on foreign correspondents (Le Monde's Monia Ben Hamadi and Mosaïque FM's Bochra Sellami barred from a hearing; Danish freelancer Jakob Plaschke banned from leaving the country for 7 months). These corroborate the description's claims on press freedom index decline, Ben Ali-era comparison, self-censorship, foreign correspondent restrictions, and political imprisonment under cybercrime/security laws.",
+        "source": "https://cpj.org/2025/01/tunisia-uses-new-cybercrime-law-to-jail-record-number-of-journalists/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent 2025-dated sources confirm all material claims: (1) RSF's 2025 World Press Freedom Index shows Tunisia dropping to its lowest-ever recorded level (129th/180, 43.48 points), explicitly attributed to Ben Ali-era legal tools (Telecommunications Code) being weaponized under Saied — directly matching the 'falling back to levels approaching the Ben Ali era' claim. (2) CPJ documented a record number of journalists jailed via Decree-Law 54 (the 2022 cybercrime law) throughout 2025, with named cases (Sonia Dahmani, Mourad Zeghidi, Borhen Bsaies, Mohamed Boughalleb, Chadha Hadj Mbarek) convicted for social-media commentary/'false news' charges. (3) HRW and Amnesty International documented mass convictions of opposition politicians, activists, and lawyers in the 'Conspiracy Case' (April 2025 initial sentences up to 66 years; November 2025 appeal upholding 5-45 year sentences for 34 defendants including prominent figures Ahmed Nejib Chebbi, Chaima Issa, and Ayachi Hammami) under state-security/terrorism laws. All key elements — political prisoners, journalists/bloggers, cybercrime/state-security law weaponization, press freedom decline to Ben Ali-era levels — are corroborated by RSF, CPJ, HRW, Amnesty, and Al Jazeera reporting specific to 2025.",
+        "source": "https://rsf.org/en/tunisia-s-press-freedom-dramatic-decline",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://rsf.org/en/tunisia-s-press-freedom-dramatic-decline"
+  },
+  {
+    "year": 2025,
+    "title": "Youth Emigration Accelerates — Brain Drain Crisis",
+    "verdict": "TRUE",
+    "reason": "Multiple independent 2025-dated sources confirm record skilled emigration from Tunisia in 2025. The Dean of the Tunisian Order of Engineers (Kamel Sahnoun) reported 39,000 of 90,000 registered engineers had left Tunisia, with ~20 engineers departing daily against ~8,000 trained annually; of a 2025 graduating class of 1,900 doctors, 1,600 left to work abroad. This matches the description's claim that doctors, engineers, and other skilled professionals were leaving in numbers stripping the country of human capital. Afrobarometer Round 10 survey data (referencing Tunisia, 2025/2026 release) found 65% of Tunisian youth had considered emigrating and 51% had thought about it 'a lot' (up from 38% in 2018) — directly corroborating 'majorities of young educated Tunisians expressed desire to emigrate.' Separate reporting (Irish Times, Dec 2025; Amnesty International, 2025) confirms the '15 years after the Jasmine Revolution' framing and documents that those without resources to emigrate legally were attempting dangerous Mediterranean sea crossings, with irregular departures having soared and hundreds of deaths recorded — matching the description's dual-track narrative (skilled legal emigration vs. dangerous crossings for the poor). IT workers and teachers were not individually quantified in sources found, but the overarching skilled-labor exodus and demographic/human-capital crisis framing is robustly and independently confirmed as a real, actively-reported 2025 Tunisia phenomenon.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent 2025 sources confirm record skilled emigration from Tunisia in 2025: 1,600 of 1,900 newly graduated doctors (84%) left to work abroad in 2025; 39,000 of 90,000 registered engineers have emigrated, with ~20 engineers leaving per day; the exodus is explicitly described (mdi-international, African Manager, University World News) as spanning doctors, engineers, IT specialists, researchers, academics and teachers. Afrobarometer's Tunisia youth report found 65% of youth and a clear majority (57-60%) of the most-educated/college-educated Tunisians have considered emigrating, up sharply from 2018 levels — matching the description's claim of majorities of young educated Tunisians expressing a desire to leave. The parallel phenomenon of poorer Tunisians attempting irregular sea crossings while the skilled/wealthy emigrate legally is also well documented in this and broader coverage of Tunisian migration. The 'fifteen years after the Jasmine Revolution' framing (Jan 2011 revolution) is a reasonable rhetorical rounding for a 2025 event and not a material factual claim. All core claims — country, year, and substance (brain drain across medical/engineering/IT/teaching professions plus majority emigration sentiment among educated youth) — are corroborated by independent sources.",
+        "source": "https://mdi-international.org/2025/10/27/a-nation-drained-the-alarming-rise-of-tunisian-migration-among-youth/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent 2025-dated sources confirm record skilled emigration from Tunisia in 2025. The Dean of the Tunisian Order of Engineers (Kamel Sahnoun) reported 39,000 of 90,000 registered engineers had left Tunisia, with ~20 engineers departing daily against ~8,000 trained annually; of a 2025 graduating class of 1,900 doctors, 1,600 left to work abroad. This matches the description's claim that doctors, engineers, and other skilled professionals were leaving in numbers stripping the country of human capital. Afrobarometer Round 10 survey data (referencing Tunisia, 2025/2026 release) found 65% of Tunisian youth had considered emigrating and 51% had thought about it 'a lot' (up from 38% in 2018) — directly corroborating 'majorities of young educated Tunisians expressed desire to emigrate.' Separate reporting (Irish Times, Dec 2025; Amnesty International, 2025) confirms the '15 years after the Jasmine Revolution' framing and documents that those without resources to emigrate legally were attempting dangerous Mediterranean sea crossings, with irregular departures having soared and hundreds of deaths recorded — matching the description's dual-track narrative (skilled legal emigration vs. dangerous crossings for the poor). IT workers and teachers were not individually quantified in sources found, but the overarching skilled-labor exodus and demographic/human-capital crisis framing is robustly and independently confirmed as a real, actively-reported 2025 Tunisia phenomenon.",
+        "source": "https://mdi-international.org/2025/10/27/a-nation-drained-the-alarming-rise-of-tunisian-migration-among-youth/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://mdi-international.org/2025/10/27/a-nation-drained-the-alarming-rise-of-tunisian-migration-among-youth/"
   }
 ]

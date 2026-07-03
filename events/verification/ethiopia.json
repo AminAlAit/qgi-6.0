@@ -6198,5 +6198,337 @@
       }
     ],
     "source": "https://reliefweb.int/disaster/fl-2024-000074-eth"
+  },
+  {
+    "year": 1959,
+    "title": "Addis Ababa University established on Haile Selassie I University campus",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources (Wikipedia, Britannica, AAU official history page, ethiosports/Aklilu Habte book coverage) consistently agree the University College of Addis Ababa (founded 1950, itself growing out of Trinity College) was restructured and combined with other colleges (including the Theological College) into 'Haile Selassie I University' in February 1961, formally chartered/named in 1961-62 — not 1959. 'Addis Ababa University' as a name only appears in 1975-76 after the revolution, so the event as titled ('Addis Ababa University established...') is anachronistic for any year in this range, and the specific claimed year 1959 falls between the 1950 founding and 1961 restructuring with no corroborated milestone. The described faculty/graduate-program expansion and Trinity College incorporation matches the 1961 restructuring, not 1959.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Independent sources (Wikipedia, aggregated web search results) agree Haile Selassie I University was formed in February 1961, not 1959, when the University College of Addis Ababa (est. 1950), Imperial College of Engineering, Imperial Ethiopian College of Agricultural and Mechanical Arts, Ethio-Swedish Institute of Building Technology, Public Health College, and the Theological College of the Holy Trinity (est. 1960) were brought together into one comprehensive university structure under Emperor Haile Selassie I. This matches the description's substance (expanded faculties, graduate programs, Trinity College incorporation) closely, but the year is wrong by two years. No source shows any comparable university-founding/expansion event in Ethiopia in 1959; the timeline goes directly from 1955 (Building College opens) to February 1961 (Haile Selassie University formed). The university was later renamed Addis Ababa University in 1975, so the title's phrasing is also slightly anachronistic for a 1959/1961 event, but the substantive act described (comprehensive university structure formed, Trinity College incorporated) is the 1961 restructuring.",
+        "source": "https://en.wikipedia.org/wiki/Addis_Ababa_University",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1961
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Wikipedia, Britannica, AAU official history page, ethiosports/Aklilu Habte book coverage) consistently agree the University College of Addis Ababa (founded 1950, itself growing out of Trinity College) was restructured and combined with other colleges (including the Theological College) into 'Haile Selassie I University' in February 1961, formally chartered/named in 1961-62 — not 1959. 'Addis Ababa University' as a name only appears in 1975-76 after the revolution, so the event as titled ('Addis Ababa University established...') is anachronistic for any year in this range, and the specific claimed year 1959 falls between the 1950 founding and 1961 restructuring with no corroborated milestone. The described faculty/graduate-program expansion and Trinity College incorporation matches the 1961 restructuring, not 1959.",
+        "source": "https://en.wikipedia.org/wiki/Addis_Ababa_University",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1961
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Addis_Ababa_University"
+  },
+  {
+    "year": 1965,
+    "title": "Third Five-Year Plan emphasizes agriculture",
+    "verdict": "FALSE",
+    "reason": "Ethiopia's Third Five-Year Development Plan ran 1968–1973, not 1965. In 1965 Ethiopia was still under its Second Five-Year Development Plan (1963–1967), which itself was oriented toward converting the economy to agro-industry rather than the peasant-agriculture/extension/fertilizer emphasis described. Multiple sources (African Studies Centre Leiden's plan listing, and academic literature on Ethiopian agricultural administration) confirm the Third Plan's 1968–1973 dates and its emphasis on comprehensive package programmes, extension services (EPID), and unresolved tenancy/land-tenure reform — i.e., the substantive description matches the Third Plan reasonably well, but the year given (1965) is wrong by 3+ years and falls in the prior plan period instead.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources agree Ethiopia's Third Five-Year Development Plan ran 1968-1973, not 1965. The year 1965 falls within the Second Five-Year Plan period (1962/63-1967) instead. The substantive description in the event (comprehensive package programmes / extension services, fertilizer-focused agricultural modernization, with land tenure left untouched) matches documented accounts of the actual Third Plan (1968-1973) - e.g. the Extension and Project Implementation Department (EPID) was created under the Third Plan to deliver integrated extension services, while land tenure reform was politically resisted throughout this era and land policy remained largely untouched until the 1974 revolution. So the plan/content described is real, but it is misdated by roughly 3 years - the event should be dated to 1968 (the plan's start), not 1965. Per the hard rules, year is echoed verbatim as given but the correct year is reported in corrected_year.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_the_Ethiopian_Empire",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1968
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Ethiopia's Third Five-Year Development Plan ran 1968–1973, not 1965. In 1965 Ethiopia was still under its Second Five-Year Development Plan (1963–1967), which itself was oriented toward converting the economy to agro-industry rather than the peasant-agriculture/extension/fertilizer emphasis described. Multiple sources (African Studies Centre Leiden's plan listing, and academic literature on Ethiopian agricultural administration) confirm the Third Plan's 1968–1973 dates and its emphasis on comprehensive package programmes, extension services (EPID), and unresolved tenancy/land-tenure reform — i.e., the substantive description matches the Third Plan reasonably well, but the year given (1965) is wrong by 3+ years and falls in the prior plan period instead.",
+        "source": "https://www.ascleiden.nl/content/development-plans-ethiopia",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1968
+      }
+    ],
+    "source": "https://www.ascleiden.nl/content/development-plans-ethiopia"
+  },
+  {
+    "year": 1951,
+    "title": "Land reform debates begin in imperial court",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources (Wikipedia's \"Land reform in Ethiopia\", Country Studies, an academic AJPSIR article on land tenure politics, and a TWAILR paper on Ethiopian imperial law) consistently place the actual emergence of land reform debate/pressure in Ethiopia in the mid-1960s to early 1970s (\"By the mid-1960s, many sectors of Ethiopian society favored land reform... University students led the land reform movement\"), driven by students, progressives, and international agencies pressuring the imperial government — not by internal 'imperial court' deliberation. What actually happened in 1951 was different: Haile Selassie agreed to reduce a flat agricultural tax (following the failed 1942 progressive tax attempt), and 1951/52 saw armed peasant tax-resistance/revolt in Gojjam province — tax unrest, not a government debate about redistributing feudal landholdings. One source explicitly states that internal imperial-government deliberation on land redistribution only emerges with the Derg's 1974-75 reforms, and that the 1942/1951/1969 episodes were peasant resistance TO reform attempts, not government debate FOR reform. No source found describes any 1951 imperial-court discussion of land redistribution.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Wikipedia's \"Land reform in Ethiopia\", Country Studies, an academic AJPSIR article on land tenure politics, and a TWAILR paper on Ethiopian imperial law) consistently place the actual emergence of land reform debate/pressure in Ethiopia in the mid-1960s to early 1970s (\"By the mid-1960s, many sectors of Ethiopian society favored land reform... University students led the land reform movement\"), driven by students, progressives, and international agencies pressuring the imperial government — not by internal 'imperial court' deliberation. What actually happened in 1951 was different: Haile Selassie agreed to reduce a flat agricultural tax (following the failed 1942 progressive tax attempt), and 1951/52 saw armed peasant tax-resistance/revolt in Gojjam province — tax unrest, not a government debate about redistributing feudal landholdings. One source explicitly states that internal imperial-government deliberation on land redistribution only emerges with the Derg's 1974-75 reforms, and that the 1942/1951/1969 episodes were peasant resistance TO reform attempts, not government debate FOR reform. No source found describes any 1951 imperial-court discussion of land redistribution.",
+        "source": "https://en.wikipedia.org/wiki/Land_reform_in_Ethiopia",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1965
+      },
+      {
+        "pass_n": 2,
+        "verdict": "UNCERTAIN",
+        "reason": "Extensive searching found no source describing land reform debates or discussions about redistributing feudal landholdings beginning in Ethiopia's imperial court/government in 1951 specifically. Standard histories of Ethiopian land tenure (Wikipedia 'Land reform in Ethiopia', country-data/countrystudies.us, academic land-tenure literature) place the major imperial-era land-related legislative action at the 1942 land tax proclamation (Proclamation No. 8), note a 1951 tax reduction agreed by Haile Selassie under noble pressure (unrelated to land redistribution), and consistently identify the 1960s (Crown Prince Asfa Wossen's 1960 coup-attempt promise, the mid-1960s student 'Land to the Tiller' movement) as when land reform first became a live political/governmental issue, with substantive reform only enacted after the 1974 revolution (Derg's March 1975 proclamation). No source -- Wikipedia, country studies, academic journal articles, or Haile Selassie biographical material -- mentions any 1951 imperial-court debate on redistributing feudal landholdings. Cannot confirm or refute the event from available sources.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Land_reform_in_Ethiopia"
+  },
+  {
+    "year": 1966,
+    "title": "Ethiopia joins international human rights conventions",
+    "verdict": "FALSE",
+    "reason": "No independent source corroborates Ethiopia signing multiple UN human rights instruments in 1966. The authoritative OHCHR treaty-body page for Ethiopia (tbinternet.ohchr.org) lists ALL of Ethiopia's core human-rights-treaty dates and none fall in 1966: Genocide Convention ratified 1949; ICERD accession 23 Jun 1976 (no prior signature — direct accession); CEDAW signature 1980/ratification 1981; CRC accession 1991; ICCPR and ICESCR both by accession 11 Jun 1993 (again, no prior 1966 signature — Ethiopia joined these by direct accession decades after they opened for signature, not by signing them when adopted in Dec 1966); CAT accession 1994. Multiple independent searches (UMN Human Rights Library ratification table, OHCHR treaty body database, UN Treaty Collection, ICERD 60th-anniversary retrospective from the Ethiopian Human Rights Commission itself) all confirm this same chronology and none show any 1966 signature or ratification of a UN human-rights instrument by Ethiopia. The only 1966-dated item found for Ethiopia in any register was a single ILO labor convention (Discrimination (Employment and Occupation) Convention, No. 111) allegedly ratified in June 1966 per one secondary source — but this is one specialized-agency labor convention, not 'several UN human rights instruments,' and could not be independently confirmed against ILO's own NORMLEX database (blocked/403). Given that Ethiopia's actual accessions to the core UN human rights covenants happened in 1976, 1980-81, 1991, 1993 and 1994 — not 1966 — and no source describes any 1966 'diplomatic gesture' signing event, the event as dated and described does not check out. There is no clear single corrected year either, since no cluster of 'several' UN human-rights-instrument signings by imperial-era Ethiopia (contemporaneous with the Eritrea insurgency) is documented anywhere.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Independent sourcing (University of Minnesota Human Rights Library ratification archive, cross-checked against OHCHR treaty body database) confirms Ethiopia ratified exactly ONE international human rights-related instrument in 1966: the ILO Discrimination (Employment and Occupation) Convention No. 111, ratified 11 June 1966. Country and year both check out, and the broader context (Eritrean insurgency ongoing since 1961, domestic repression under Haile Selassie) is independently corroborated as real. However, the description's claim that Ethiopia 'signed several UN human rights instruments' in 1966 is not supported — the OHCHR core-treaty database shows zero core UN human rights treaty (ICCPR, ICESCR, ICERD, CEDAW, CAT, CRC) actions by Ethiopia in 1966; those all came in 1976, 1981, or 1993+. The only 1966 action found is a single ILO convention (ILO is a UN specialized agency, but this is a labor-nondiscrimination convention, not one of the flagship 'UN human rights instruments,' and it was a ratification of a single instrument, not a plural signing spree). No second or third 1966 instrument could be found despite targeted searches (ICERD, Convention on Political Rights of Women, Slavery conventions, UNESCO education-discrimination convention, ICCPR/ICESCR signature-only records). So the event is real in substance and timing but overstates scope/magnitude ('several instruments' vs. one confirmed instrument).",
+        "source": "https://hrlibrary.umn.edu/research/ratification-ethiopia.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "No independent source corroborates Ethiopia signing multiple UN human rights instruments in 1966. The authoritative OHCHR treaty-body page for Ethiopia (tbinternet.ohchr.org) lists ALL of Ethiopia's core human-rights-treaty dates and none fall in 1966: Genocide Convention ratified 1949; ICERD accession 23 Jun 1976 (no prior signature — direct accession); CEDAW signature 1980/ratification 1981; CRC accession 1991; ICCPR and ICESCR both by accession 11 Jun 1993 (again, no prior 1966 signature — Ethiopia joined these by direct accession decades after they opened for signature, not by signing them when adopted in Dec 1966); CAT accession 1994. Multiple independent searches (UMN Human Rights Library ratification table, OHCHR treaty body database, UN Treaty Collection, ICERD 60th-anniversary retrospective from the Ethiopian Human Rights Commission itself) all confirm this same chronology and none show any 1966 signature or ratification of a UN human-rights instrument by Ethiopia. The only 1966-dated item found for Ethiopia in any register was a single ILO labor convention (Discrimination (Employment and Occupation) Convention, No. 111) allegedly ratified in June 1966 per one secondary source — but this is one specialized-agency labor convention, not 'several UN human rights instruments,' and could not be independently confirmed against ILO's own NORMLEX database (blocked/403). Given that Ethiopia's actual accessions to the core UN human rights covenants happened in 1976, 1980-81, 1991, 1993 and 1994 — not 1966 — and no source describes any 1966 'diplomatic gesture' signing event, the event as dated and described does not check out. There is no clear single corrected year either, since no cluster of 'several' UN human-rights-instrument signings by imperial-era Ethiopia (contemporaneous with the Eritrea insurgency) is documented anywhere.",
+        "source": "https://tbinternet.ohchr.org/_layouts/15/TreatyBodyExternal/Treaty.aspx?CountryID=59&Lang=en",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://tbinternet.ohchr.org/_layouts/15/TreatyBodyExternal/Treaty.aspx?CountryID=59&Lang=en"
+  },
+  {
+    "year": 1967,
+    "title": "Ethiopian Telecommunications Board expands telephone network",
+    "verdict": "UNCERTAIN",
+    "reason": "Extensive search found no source that directly confirms a specific 1967 event of provincial capitals being connected to Addis Ababa by telephone 'for the first time.' Sources on Ethiopian telecom history (Wikipedia's Telecommunications in Ethiopia, Ethio Telecom's official history page, an IMF Finance & Development article from 1969) describe the responsible body in that era as the 'Imperial Board of Telecommunications of Ethiopia' (IBTE, est. 1952) — not an 'Ethiopian Telecommunications Board' — and note IBTE earnings grew ~17.2%/year from 1962-1967 (general expansion, but no specific 1967 milestone found). More concerningly, the 1969 IMF article (contemporaneous, just 2 years after the claimed event) describes provincial telephone access as still very poor circa 1966-69 (e.g., a Kaffa province deputy governor reporting only ~20% of theoretically-served population had reasonable phone access, provincial governors using private radio licenses to work around telecom gaps) and describes IBTE's plan to install microwave links with direct-dialing between Addis Ababa and provincial population centers as a FUTURE 1969-73 investment program (partly financed by a $4.5M World Bank loan), not something already completed by 1967. This suggests the 'connected for the first time' framing more plausibly describes developments in the early-to-mid 1970s rather than 1967, but I could not find a source explicitly confirming or denying the 1967 event itself, so I cannot assert a confident FALSE with a specific corrected year either. I also could not access the full IMF 1969 article text or a University of Oregon dissertation on Ethiopian telecom politics that likely has a detailed timeline (paywalled/inaccessible via WebFetch: 405/403/404 errors on elibrary.imf.org, core.ac.uk, ethiotelecom.et history page (cert error), and web.archive.org (blocked)).",
+    "verify_count": 2,
+    "consensus_verdict": "UNCERTAIN",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Independently confirmed that Ethiopia's telecom authority (the Imperial Board of Telecommunications of Ethiopia, IBTE — the real-world entity the event calls the 'Ethiopian Telecommunications Board') ran a World Bank-financed 1965-67 investment program (Bank Press Release No. 65/58, Nov 17 1965) explicitly 'designed to expand and improve telephone and telegraph services in the main urban centers, between towns in Ethiopia and between Ethiopia and other countries.' The program built/expanded exchanges at Harrar, Assab, Jimma, Gondar, Nazareth, Massawa and Asmara plus a new 10,000-line central exchange in Addis Ababa — materially matching 'expanding the network to connect provincial capitals to Addis Ababa' and its stated rationale (meeting surging business/administrative demand) in a program running through 1967. However, the description's claim that this connected provincial capitals to Addis Ababa 'for the first time' is not supported and appears materially wrong: the same World Bank document shows towns like Harrar, Jimma, Gondar and Asmara already HAD telephone exchanges that were merely being extended/reused/upgraded (not newly built), and independent sources (Wikipedia's Telecommunications in Ethiopia history, IMF Finance & Development 1969) confirm Addis Ababa's telephone/telegraph links to provincial towns like Harrar dated back to 1894-1905 and had been expanding continuously since IBTE's 1952 founding (with an earlier 1962 World Bank loan for the same purpose). So country/year/general substance (a real, dated IBTE network-expansion program running through 1967) check out, but the 'first time' framing overstates the scope/magnitude of what was materially a capacity upgrade of an already-existing decades-old network, not an initial connection — meeting the PARTIAL bar of 'real event, material detail (scope) off, year+country hold.'",
+        "source": "https://documents1.worldbank.org/curated/en/917101587980013455/pdf/Announcement-of-4-8-Million-Dollars-Loan-for-Telecommunications-in-Ethiopia-on-November-17-1965.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "UNCERTAIN",
+        "reason": "Extensive search found no source that directly confirms a specific 1967 event of provincial capitals being connected to Addis Ababa by telephone 'for the first time.' Sources on Ethiopian telecom history (Wikipedia's Telecommunications in Ethiopia, Ethio Telecom's official history page, an IMF Finance & Development article from 1969) describe the responsible body in that era as the 'Imperial Board of Telecommunications of Ethiopia' (IBTE, est. 1952) — not an 'Ethiopian Telecommunications Board' — and note IBTE earnings grew ~17.2%/year from 1962-1967 (general expansion, but no specific 1967 milestone found). More concerningly, the 1969 IMF article (contemporaneous, just 2 years after the claimed event) describes provincial telephone access as still very poor circa 1966-69 (e.g., a Kaffa province deputy governor reporting only ~20% of theoretically-served population had reasonable phone access, provincial governors using private radio licenses to work around telecom gaps) and describes IBTE's plan to install microwave links with direct-dialing between Addis Ababa and provincial population centers as a FUTURE 1969-73 investment program (partly financed by a $4.5M World Bank loan), not something already completed by 1967. This suggests the 'connected for the first time' framing more plausibly describes developments in the early-to-mid 1970s rather than 1967, but I could not find a source explicitly confirming or denying the 1967 event itself, so I cannot assert a confident FALSE with a specific corrected year either. I also could not access the full IMF 1969 article text or a University of Oregon dissertation on Ethiopian telecom politics that likely has a detailed timeline (paywalled/inaccessible via WebFetch: 405/403/404 errors on elibrary.imf.org, core.ac.uk, ethiotelecom.et history page (cert error), and web.archive.org (blocked)).",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1957,
+    "title": "Ethiopian Air Force modernized with US jets",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm that in 1957 the Imperial Ethiopian Air Force received its first jet aircraft — three Lockheed T-33 Shooting Star jet trainers — supplied under US military assistance (following the 1953 US-Ethiopia Mutual Defense Assistance Agreement), with F-86 Sabre fighters following in 1960. This was part of a broader modernization effort involving US training of Ethiopian pilots (25 sent to the US for jet training) and reliance on US-supplied equipment, matching the description's claims of enhanced air capability and deepened dependency on American spare parts/training. Country, year, and substance all check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm that in 1957 the Imperial Ethiopian Air Force received its first jet aircraft — Lockheed T-33 Shooting Star jet trainers — under the US Military Assistance Program (formalized by the 1953 US-Ethiopia defense agreement), with North American F-86 Sabre fighters following in 1960. Sources describe this US-driven modernization (aircraft, training of Ethiopian pilots in the US, and reliance on US Defense personnel/spare parts) as making the IEAF \"the most prestigious show-piece of American aid in Ethiopia,\" directly matching the event's description of enhanced capability paired with deepened dependency on American parts/training. Country, year, and substance all check out.",
+        "source": "https://en.wikipedia.org/wiki/Ethiopian_Air_Force",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm that in 1957 the Imperial Ethiopian Air Force received its first jet aircraft — three Lockheed T-33 Shooting Star jet trainers — supplied under US military assistance (following the 1953 US-Ethiopia Mutual Defense Assistance Agreement), with F-86 Sabre fighters following in 1960. This was part of a broader modernization effort involving US training of Ethiopian pilots (25 sent to the US for jet training) and reliance on US-supplied equipment, matching the description's claims of enhanced air capability and deepened dependency on American spare parts/training. Country, year, and substance all check out.",
+        "source": "https://en.wikipedia.org/wiki/Ethiopian_Air_Force",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ethiopian_Air_Force"
+  },
+  {
+    "year": 1981,
+    "title": "Ethiopia hosts Non-Aligned Movement summit",
+    "verdict": "FALSE",
+    "reason": "No Non-Aligned Movement summit occurred in 1981 anywhere, and Ethiopia/Addis Ababa has never hosted a NAM summit in the movement's entire history. The 6th NAM Summit was held in Havana, Cuba (3-9 Sept 1979), and the 7th NAM Summit was held in New Delhi, India (7-12 March 1983) — there is a documented 3.5-year gap with no summit in between. The full list of 19 NAM summits (Belgrade, Cairo, Lusaka, Algiers, Colombo, Havana, New Delhi, Harare, Belgrade, Jakarta, Cartagena, Durban, Kuala Lumpur, Havana, Sharm el-Sheikh, Tehran, Porlamar, Baku, Kampala) contains no Addis Ababa entry. Separately, the actual 1981 OAU (Organization of African Unity) summit — a different body, though also HQ'd in Addis Ababa — was held in Nairobi, Kenya (15-27 June 1981), not Addis Ababa, so even a charitable OAU/NAM conflation doesn't rescue this. I found no evidence of any Ethiopia-hosted NAM-level ministerial/coordinating-bureau meeting in 1981 either. The event as described appears to be fabricated/confused; no corrected year applies since Addis Ababa never hosted a NAM summit at any point.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "No Non-Aligned Movement summit was held in Addis Ababa in 1981. The full chronological list of NAM Heads-of-State/Government summits runs 1961 Belgrade, 1964 Cairo, 1970 Lusaka, 1973 Algiers, 1976 Colombo, 1979 Havana, 1983 New Delhi, 1986 Harare, 1989 Belgrade, etc. — there is a gap between the 6th summit (Havana, Sept 1979) and the 7th (New Delhi, March 1983) with no NAM summit convened anywhere in 1981, and Ethiopia/Addis Ababa never appears as a NAM summit host in this list at all. Separately, the major pan-African summit actually held in 1981 was the OAU's 18th Ordinary Assembly of Heads of State and Government, which took place in Nairobi, Kenya (15-27 June 1981, notable for adopting the African Charter on Human and Peoples' Rights) — not in Addis Ababa. Mengistu did host an OAU summit in Addis Ababa, but that was in 1985, not 1981. No source corroborates a 1981 NAM (or any comparable) summit hosted by Ethiopia. This appears to be a fabricated/misattributed event rather than a real one with a wrong year, so no single corrected year/event substitutes for it.",
+        "source": "https://en.wikipedia.org/wiki/Non-Aligned_Movement",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "No Non-Aligned Movement summit occurred in 1981 anywhere, and Ethiopia/Addis Ababa has never hosted a NAM summit in the movement's entire history. The 6th NAM Summit was held in Havana, Cuba (3-9 Sept 1979), and the 7th NAM Summit was held in New Delhi, India (7-12 March 1983) — there is a documented 3.5-year gap with no summit in between. The full list of 19 NAM summits (Belgrade, Cairo, Lusaka, Algiers, Colombo, Havana, New Delhi, Harare, Belgrade, Jakarta, Cartagena, Durban, Kuala Lumpur, Havana, Sharm el-Sheikh, Tehran, Porlamar, Baku, Kampala) contains no Addis Ababa entry. Separately, the actual 1981 OAU (Organization of African Unity) summit — a different body, though also HQ'd in Addis Ababa — was held in Nairobi, Kenya (15-27 June 1981), not Addis Ababa, so even a charitable OAU/NAM conflation doesn't rescue this. I found no evidence of any Ethiopia-hosted NAM-level ministerial/coordinating-bureau meeting in 1981 either. The event as described appears to be fabricated/confused; no corrected year applies since Addis Ababa never hosted a NAM summit at any point.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Non-Aligned_Movement"
+  },
+  {
+    "year": 1950,
+    "title": "Imperial Ethiopian Airlines expands international routes",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources (Wikipedia, corporate Ethiopian Airlines history page, and secondary aviation histories) agree on the actual timeline: in 1950 the airline secured a US$1 million Ex-Im Bank loan and took delivery of two Convair CV-240 aircraft (Dec 1950), but no new routes were actually launched that year. The concrete route expansion happened afterward — beginning January 1951 the CV-240s were deployed on Addis Ababa–Cairo, Addis Ababa–Nairobi, and an Addis Ababa–Jeddah–Dhahran–Karachi corridor (Middle East/South Asia), with Dhahran and Sharjah added Feb 20, 1951. The airline's first European destination (Athens) was not launched until April 3, 1954, and Frankfurt followed even later in the 1950s. So in 1950 specifically there were no new routes to 'European and Middle Eastern destinations' as the entry claims — that is a conflation of the 1951 Middle East expansion and the 1954 European expansion, misattributed to 1950 (the year of the aircraft-financing deal, not of any route launch). Country holds (Ethiopia/Ethiopian Airlines), but the year is materially wrong for the described event.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Wikipedia's sourced history, corroborated by other aviation-history summaries) agree that in 1950 Ethiopian Airlines only secured a $1,000,000 Ex-Im Bank loan and took delivery of two new Convair CV-240 aircraft (in December 1950) — it did NOT yet fly any new international routes that year. The actual new-route launches (Addis Ababa–Cairo, Addis Ababa–Nairobi, Addis Ababa–Jeddah–Dhahran–Karachi, plus Sharjah) began in January/February 1951, one year after the date given. Additionally, none of those routes were to Europe: they served Egypt, Kenya, Saudi Arabia, Pakistan and the Trucial Coast (Middle East/Africa/South Asia). Ethiopian Airlines' first European route (Athens, via Khartoum and Wadi Halfa) did not open until 1954. So both the year (should be 1951 for the actual route launches) and a material fact (\\\"routes to European... destinations\\\" — false; no European service existed until 1954) are wrong. Country (Ethiopia) and general founding facts (1945) are correct, but the specific expansion event as dated and described did not happen in 1950.",
+        "source": "https://en.wikipedia.org/wiki/Ethiopian_Airlines",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1951
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Wikipedia, corporate Ethiopian Airlines history page, and secondary aviation histories) agree on the actual timeline: in 1950 the airline secured a US$1 million Ex-Im Bank loan and took delivery of two Convair CV-240 aircraft (Dec 1950), but no new routes were actually launched that year. The concrete route expansion happened afterward — beginning January 1951 the CV-240s were deployed on Addis Ababa–Cairo, Addis Ababa–Nairobi, and an Addis Ababa–Jeddah–Dhahran–Karachi corridor (Middle East/South Asia), with Dhahran and Sharjah added Feb 20, 1951. The airline's first European destination (Athens) was not launched until April 3, 1954, and Frankfurt followed even later in the 1950s. So in 1950 specifically there were no new routes to 'European and Middle Eastern destinations' as the entry claims — that is a conflation of the 1951 Middle East expansion and the 1954 European expansion, misattributed to 1950 (the year of the aircraft-financing deal, not of any route launch). Country holds (Ethiopia/Ethiopian Airlines), but the year is materially wrong for the described event.",
+        "source": "https://en.wikipedia.org/wiki/Ethiopian_Airlines",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1951
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ethiopian_Airlines"
+  },
+  {
+    "year": 1972,
+    "title": "Ethiopian civil service strike paralyzes Addis Ababa",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources consistently document this exact event — government teachers and civil servants striking over salary/parity issues, paralyzing Addis Ababa, and marking organized labor's entry into political opposition — as occurring in 1974, not 1972. Ethiopian Teachers' Association members struck in February 1974 over pay parity with civil servants; the Confederation of Ethiopian Labour Unions (CELU, ~85,000 members) launched a general strike March 8-11, 1974 that 'immobilized the majority of Ethiopia' and forced a 17-point government concession within 4 days. This is a well-known precursor to the 1974 Ethiopian Revolution. No source found any comparable civil-service/teacher strike in 1972; CELU's prior general-strike attempts were in 1964 and 1970, both of which failed to gain traction (unlike the 'paralyzing' description given). The description matches the 1974 events almost verbatim, indicating a year error in the source record.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (libcom.org's detailed account of the 1974 Ethiopian General Strike, the Global Nonviolent Action Database entry on CELU's 1974 general strike, and academic labor-history sources on the Ethiopian labor movement 1960-1974) consistently document that the civil service/teacher strikes over salary arrears that paralyzed Addis Ababa and marked organized labor's entry into political opposition against Haile Selassie's regime occurred in February-March 1974 (teachers, taxi drivers, students struck Feb 18, 1974; CELU's 85,000-member general strike began March 8, 1974, immobilizing most of the country and winning a 17-point agreement), not 1972. Academic sources place the escalating strike wave (after failed 1964 and 1970 general strikes) as 'exploding' in 1973 and culminating in the successful March 1974 general strike — CELU's 1972 activity was limited to its 3rd Triannual Conference, not a paralyzing civil-service strike. No source found any distinct 1972 civil service/teacher strike in Ethiopia. The described event matches the well-documented 1974 CELU/teacher strikes almost exactly (same actors, same grievances, same 'entry of organized labor into political opposition' framing, same 'paralyzes Addis Ababa' language used by GNAD re: CELU 1974), indicating the year in the record is off by two years.",
+        "source": "https://libcom.org/article/1974-ethiopian-general-strike",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1974
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources consistently document this exact event — government teachers and civil servants striking over salary/parity issues, paralyzing Addis Ababa, and marking organized labor's entry into political opposition — as occurring in 1974, not 1972. Ethiopian Teachers' Association members struck in February 1974 over pay parity with civil servants; the Confederation of Ethiopian Labour Unions (CELU, ~85,000 members) launched a general strike March 8-11, 1974 that 'immobilized the majority of Ethiopia' and forced a 17-point government concession within 4 days. This is a well-known precursor to the 1974 Ethiopian Revolution. No source found any comparable civil-service/teacher strike in 1972; CELU's prior general-strike attempts were in 1964 and 1970, both of which failed to gain traction (unlike the 'paralyzing' description given). The description matches the 1974 events almost verbatim, indicating a year error in the source record.",
+        "source": "https://libcom.org/article/1974-ethiopian-general-strike",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1974
+      }
+    ],
+    "source": "https://libcom.org/article/1974-ethiopian-general-strike"
   }
 ]

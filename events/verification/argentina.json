@@ -326,13 +326,13 @@
   {
     "year": 1953,
     "title": "Argentina Nationalizes Foreign Telephone Companies",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: Telephone nationalization under ENTEL framework in early 1950s is documented. Year plausible.; Pass 2 FALSE: No completion of foreign telephone nationalization occurred in Argentina in 1953. The real nationalization was of the ITT-owned Unión Telefónica del Río de la Plata: purchased by the state in September 1946, converted from the mixed EMTA structure to full state ownership by decree 8.104 on 18 March 1948, then renamed 'Teléfonos del Estado' in 1949 — all years before 1953. The 'ENTEL framework' cited in the description is anachronistic: ENTel was not created until 1956, under decree 310 of the post-Perón 'Revolución Libertadora' government, not as part of 'the broader Peronist nationalization program.' Crucially, the only telephone operators still foreign-owned by the early 1950s — the Swedish/Ericsson-controlled Compañía Argentina de Teléfonos (CAT) and Compañía Entrerriana de Teléfonos (CET), covering Mendoza, San Juan, Tucumán, Salta, Santiago del Estero and Entre Ríos — were never nationalized during this period; multiple sources state plans to acquire them were 'finally abandoned in 1960.' So the specific claim that in 1953 the government 'completed nationalization of the remaining foreign-owned telephone infrastructure' is false on both the year and the substance — no such completion event happened, under ENTEL or otherwise, in 1953.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
-    "source_independence": "n/a",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources (English & Spanish Wikipedia, jdperon.gob.ar, historiaybiografias.com, CONICET research) converge on a consistent timeline that does not include 1953 as the nationalization-completion year. Argentina's government purchased the ITT-owned Unión Telefónica del Río de la Plata on Sept 3, 1946, creating the mixed state/private company EMTA. The 'remaining' foreign/private stake was bought out and the company became fully state-owned via Decree 12.912 in March 1948, renamed 'Compañía/Teléfonos del Estado' — this is the actual completion of nationalization of the (previously partly foreign-owned) telephone infrastructure, matching the description's 'completed nationalization of the remaining foreign-owned telephone infrastructure.' It also aligns chronologically with railway nationalization (March 1948) and other Peronist utility nationalizations, consistent with the description's 'already included railways and utilities.' The 'ENTEL' name is itself anachronistic for 1953 — Empresa Nacional de Telecomunicaciones (ENTel) was not created until 1956, under the post-Perón Aramburu government, and had nothing to do with foreign-company nationalization (Perón was already overthrown by then). What actually happened in 1953, per Spanish Wikipedia and other Argentine sources, was the installation of public pay-phones in major cities — an unrelated infrastructure rollout, not a nationalization event. Between 1948-1953 the state did acquire additional small local telephone operators to consolidate the network, but these were incremental domestic acquisitions, not a discrete 'completion of remaining foreign-owned infrastructure' event, and none of the sources tie a nationalization-completion milestone to 1953 specifically. Given the year is materially wrong and the named institutional framework (ENTEL) did not yet exist, this fails as described for 1953; the real completing event is 1948.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -356,8 +356,22 @@
           "method": "web_search"
         },
         "corrected_year": 1948
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (English & Spanish Wikipedia, jdperon.gob.ar, historiaybiografias.com, CONICET research) converge on a consistent timeline that does not include 1953 as the nationalization-completion year. Argentina's government purchased the ITT-owned Unión Telefónica del Río de la Plata on Sept 3, 1946, creating the mixed state/private company EMTA. The 'remaining' foreign/private stake was bought out and the company became fully state-owned via Decree 12.912 in March 1948, renamed 'Compañía/Teléfonos del Estado' — this is the actual completion of nationalization of the (previously partly foreign-owned) telephone infrastructure, matching the description's 'completed nationalization of the remaining foreign-owned telephone infrastructure.' It also aligns chronologically with railway nationalization (March 1948) and other Peronist utility nationalizations, consistent with the description's 'already included railways and utilities.' The 'ENTEL' name is itself anachronistic for 1953 — Empresa Nacional de Telecomunicaciones (ENTel) was not created until 1956, under the post-Perón Aramburu government, and had nothing to do with foreign-company nationalization (Perón was already overthrown by then). What actually happened in 1953, per Spanish Wikipedia and other Argentine sources, was the installation of public pay-phones in major cities — an unrelated infrastructure rollout, not a nationalization event. Between 1948-1953 the state did acquire additional small local telephone operators to consolidate the network, but these were incremental domestic acquisitions, not a discrete 'completion of remaining foreign-owned infrastructure' event, and none of the sources tie a nationalization-completion milestone to 1953 specifically. Given the year is materially wrong and the named institutional framework (ENTEL) did not yet exist, this fails as described for 1953; the real completing event is 1948.",
+        "source": "https://en.wikipedia.org/wiki/ENTel",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1948
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://en.wikipedia.org/wiki/ENTel"
   },
   {
     "year": 1954,
@@ -639,13 +653,13 @@
   {
     "year": 1957,
     "title": "CGT Labor Federation Reconstituted After Aramburu Crackdown",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: CGT reconstituted after dissolution following 1955 coup. Year plausible.; Pass 2 FALSE: A CGT \"Congreso Normalizador\" did take place in Argentina in 1957 (Aug 26-Sep 5, at the Les Ambassadeurs hall), two years after Aramburu's 1955 coup had dissolved/intervened the CGT. But multiple independent Spanish-language historical sources agree the congress FAILED to reconstitute the CGT: after a narrow 298-291 procedural vote exposed inflated pro-government union delegate counts, the pro-dictatorship unions walked out, leaving the congress without quorum, and it collapsed without electing any new leadership. Rather than being 're-established,' the labor movement instead split into two rival factions born directly from this failed congress: the Peronist/communist-aligned '62 Organizaciones' and the anti-Peronist '32 Gremios Democráticos.' The CGT remained under state intervention/receivership for nearly six years after 1955 -- English Wikipedia and multiple Spanish sources confirm the government-appointed intervention (started Nov 1955 under interventor Alberto Patrón Laplacette) was not ended until March 1961, when the CGT's assets/institutions were handed to the 'Comisión de los 20.' The CGT was not 'finally normalized' with an elected Secretary General (José Alonso) until a January 1963 Congreso Normalizador. So the described outcome ('CGT was formally re-established' in 1957) is the opposite of what the sources say happened that year -- it's not a minor magnitude/actor detail but a wrong outcome (failure vs. success) for the year given. The 'torn between Peronist and non-Peronist factions' detail is accurate as an aftermath, but it describes the consequence of the congress's failure, not a description of a reconstituted body. Best-supported corrected year for actual (though still contested/factional) CGT reconstitution is 1963.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
-    "source_independence": "n/a",
+    "verdict": "FALSE",
+    "reason": "In 1957 the Aramburu government did hold a \"Congreso Normalizador\" (normalizing congress) for the CGT, held Aug 26–Sep 5, 1957 at the Les Ambassadeurs hall, with 673 delegates from 98 unions — but this attempt FAILED to reconstitute a unified CGT. A Peronist-Communist alliance won the credentials vote against the military-backed \"democratic\" slate, the congress fractured, and three separate rival groupings emerged instead of one reconstituted federation: the 62 Organizaciones (Peronist), the 32 Gremios Democráticos (anti-Peronist), and the MUCS (communist/independent). The CGT itself remained under government intervention/receivership for years afterward — it was not handed back to labor until March 3, 1961 (returned to the \"Comisión de los 20,\" ending ~6 years of receivership under Frondizi), and was not formally normalized with an elected leadership (José Alonso as general secretary) until a normalizing congress in January 1963. So the event's central claim — that the CGT \"was formally re-established\" in 1957 — is factually wrong; 1957 was a failed normalization attempt/split, not a reconstitution. The \"torn between Peronist and non-Peronist factions\" framing and \"labor politics as central conflict arena\" framing are directionally true of the era, but the pivotal factual claim (formal re-establishment) belongs to 1961/1963, not 1957. Multiple independent sources (Spanish/English Wikipedia, ctaacordoba.org, tribunavm.com.ar, diccionarioperonismo55-69.ar, laopinionpopular.com.ar) agree on this sequence; none of them is the off-limits historiaobrera.com.ar domain.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -669,8 +683,22 @@
           "method": "web_search"
         },
         "corrected_year": 1963
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "In 1957 the Aramburu government did hold a \"Congreso Normalizador\" (normalizing congress) for the CGT, held Aug 26–Sep 5, 1957 at the Les Ambassadeurs hall, with 673 delegates from 98 unions — but this attempt FAILED to reconstitute a unified CGT. A Peronist-Communist alliance won the credentials vote against the military-backed \"democratic\" slate, the congress fractured, and three separate rival groupings emerged instead of one reconstituted federation: the 62 Organizaciones (Peronist), the 32 Gremios Democráticos (anti-Peronist), and the MUCS (communist/independent). The CGT itself remained under government intervention/receivership for years afterward — it was not handed back to labor until March 3, 1961 (returned to the \"Comisión de los 20,\" ending ~6 years of receivership under Frondizi), and was not formally normalized with an elected leadership (José Alonso as general secretary) until a normalizing congress in January 1963. So the event's central claim — that the CGT \"was formally re-established\" in 1957 — is factually wrong; 1957 was a failed normalization attempt/split, not a reconstitution. The \"torn between Peronist and non-Peronist factions\" framing and \"labor politics as central conflict arena\" framing are directionally true of the era, but the pivotal factual claim (formal re-establishment) belongs to 1961/1963, not 1957. Multiple independent sources (Spanish/English Wikipedia, ctaacordoba.org, tribunavm.com.ar, diccionarioperonismo55-69.ar, laopinionpopular.com.ar) agree on this sequence; none of them is the off-limits historiaobrera.com.ar domain.",
+        "source": "https://es.wikipedia.org/wiki/Confederaci%C3%B3n_General_del_Trabajo_de_la_Rep%C3%BAblica_Argentina",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1963
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://es.wikipedia.org/wiki/Confederaci%C3%B3n_General_del_Trabajo_de_la_Rep%C3%BAblica_Argentina"
   },
   {
     "year": 1957,
@@ -1203,13 +1231,13 @@
   {
     "year": 1966,
     "title": "Krieger Vasena Economic Stabilization Plan",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: Minister Adalbert Krieger Vasena implemented stabilization including devaluation and exchange-rate freeze. Facts match.; Pass 2 FALSE: The plan described (large peso devaluation, exchange rate freeze, wage controls, trade liberalization under Economy Minister Adalbert Krieger Vasena) is real and materially matches the description, but it did not occur in 1966. Krieger Vasena was not even appointed Minister of Economy until the very end of December 1966, formally sworn in January 2, 1967 (replacing Jorge Salimei). The actual Plan de Estabilización y Desarrollo — the 40% devaluation, wage freeze, and trade/exchange liberalization — was announced and implemented in March 1967, with IMF backing, and its effects (falling inflation, GDP growth, then the 1969 Cordobazo backlash) all unfolded in 1967-1969. Multiple independent sources (Britannica, Wikipedia, Infobae, academic/SciELO articles) consistently date the plan's launch to March 1967, not 1966. Since the year is a join key and is materially wrong (event is anchored to a specific minister and plan launch date that fall in 1967), this is a year-mismatch FALSE rather than TRUE/PARTIAL.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
-    "source_independence": "n/a",
+    "verdict": "FALSE",
+    "reason": "Multiple independent, non-Wikipedia sources place this plan in 1967, not 1966. Krieger Vasena was sworn in as Economy Minister on January 2, 1967 (having been selected in the closing days of December 1966 after Jorge Salimei's resignation), and the actual stabilization package he is famous for — the ~40-50% peso devaluation, simultaneous export-tax hikes, wage freeze, and trade liberalization — was announced and launched at Easter/Semana Santa in March 1967 (Infobae). Encyclopedia.com corroborates: his ministerial tenure and the implementation of the devaluation/wage-freeze/export-tax package are dated '1967 to 1969,' with only the appointment process beginning in 'late 1966.' No source found dates the devaluation, exchange-rate freeze, or wage controls to calendar year 1966 itself — 1966 was only the year of Onganía's coup and the initial cabinet reshuffle. All other details (actor, mechanism, 1969 Cordobazo aftermath) match the description, so this is a year error rather than a fabricated event: country and substance hold, but the correct year is 1967.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1233,8 +1261,22 @@
           "method": "web_search"
         },
         "corrected_year": 1967
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "Multiple independent, non-Wikipedia sources place this plan in 1967, not 1966. Krieger Vasena was sworn in as Economy Minister on January 2, 1967 (having been selected in the closing days of December 1966 after Jorge Salimei's resignation), and the actual stabilization package he is famous for — the ~40-50% peso devaluation, simultaneous export-tax hikes, wage freeze, and trade liberalization — was announced and launched at Easter/Semana Santa in March 1967 (Infobae). Encyclopedia.com corroborates: his ministerial tenure and the implementation of the devaluation/wage-freeze/export-tax package are dated '1967 to 1969,' with only the appointment process beginning in 'late 1966.' No source found dates the devaluation, exchange-rate freeze, or wage controls to calendar year 1966 itself — 1966 was only the year of Onganía's coup and the initial cabinet reshuffle. All other details (actor, mechanism, 1969 Cordobazo aftermath) match the description, so this is a year error rather than a fabricated event: country and substance hold, but the correct year is 1967.",
+        "source": "https://www.infobae.com/sociedad/2022/07/24/el-plan-de-krieger-vasena-para-salir-de-la-crisis-economica-en-los-60-el-cordobazo-y-las-torpezas-de-ongania/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1967
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://www.infobae.com/sociedad/2022/07/24/el-plan-de-krieger-vasena-para-salir-de-la-crisis-economica-en-los-60-el-cordobazo-y-las-torpezas-de-ongania/"
   },
   {
     "year": 1967,

@@ -25,6 +25,42 @@
     "source": "https://en.wikipedia.org/wiki/Abortion_in_Belgium"
   },
   {
+    "year": 1990,
+    "title": "Materialise Founded in Belgium, Pioneering Industrial 3D Printing in Europe",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: Materialise was founded in June 1990 in Leuven, Belgium by Wilfried Vancraen and his wife Hilde Ingelaere as a rapid-prototyping service bureau after acquiring a stereolithography machine (SLA 1), making it the first company of its kind in the Benelux region. In 1992 the company began digitally mapping human anatomy from sliced CT scan data, which led to development of its Mimics medical image-processing software, alongside its industrial Magics software — corroborating the description's claim about helping establish 3D printing as an industrial technology in Europe. All material details (year, country, founders, location, mechanism, 1992 CT/Mimics follow-on) check out consistently across Wikipedia, Materialise's own corporate history page, and independent business history summaries.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent corroboration (Wikipedia, and consistent with multiple other search-result summaries) confirms: Materialise was founded in June 1990 in Leuven, Belgium by Wilfried Vancraen and his wife Hilde Ingelaere; the company acquired a stereolithography machine (the SLA 1), making it the first company of its kind in the Benelux region; in 1992 it began digitally mapping human anatomy from CT scan data, leading to development of the Mimics medical image-processing software. All material details (year, country, founders, actors, sequence of events) match the description.",
+        "source": "https://en.wikipedia.org/wiki/Materialise_NV",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: Materialise was founded in June 1990 in Leuven, Belgium by Wilfried Vancraen and his wife Hilde Ingelaere as a rapid-prototyping service bureau after acquiring a stereolithography machine (SLA 1), making it the first company of its kind in the Benelux region. In 1992 the company began digitally mapping human anatomy from sliced CT scan data, which led to development of its Mimics medical image-processing software, alongside its industrial Magics software — corroborating the description's claim about helping establish 3D printing as an industrial technology in Europe. All material details (year, country, founders, location, mechanism, 1992 CT/Mimics follow-on) check out consistently across Wikipedia, Materialise's own corporate history page, and independent business history summaries.",
+        "source": "https://en.wikipedia.org/wiki/Materialise_NV",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Materialise_NV"
+  },
+  {
     "year": 1991,
     "title": "Black Sunday Election Breakthrough for Vlaams Blok",
     "verdict": "TRUE",
@@ -151,31 +187,6 @@
   },
   {
     "year": 1994,
-    "title": "Ten Belgian Peacekeepers Killed in Rwanda Genocide",
-    "verdict": "TRUE",
-    "reason": "On 7 April 1994, ten Belgian UNAMIR paratroopers were murdered by Rwandan government forces while guarding Prime Minister Agathe Uwilingiyimana; Belgium subsequently withdrew its UNAMIR contingent, critically weakening the peacekeeping mission.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On 7 April 1994, ten Belgian UNAMIR paratroopers were murdered by Rwandan government forces while guarding Prime Minister Agathe Uwilingiyimana; Belgium subsequently withdrew its UNAMIR contingent, critically weakening the peacekeeping mission.",
-        "source": "https://www.un.org/en/preventgenocide/rwanda/historical-background.shtml",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.un.org/en/preventgenocide/rwanda/historical-background.shtml"
-  },
-  {
-    "year": 1994,
     "title": "Province of Brabant Split Along Linguistic Lines",
     "verdict": "TRUE",
     "reason": "In 1995, following the 1993 constitutional reform, the province of Brabant was formally divided into Flemish Brabant, Walloon Brabant, and the Brussels-Capital Region along linguistic boundaries.",
@@ -198,6 +209,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Province_of_Brabant"
+  },
+  {
+    "year": 1994,
+    "title": "Ten Belgian Peacekeepers Killed in Rwanda Genocide",
+    "verdict": "TRUE",
+    "reason": "On 7 April 1994, ten Belgian UNAMIR paratroopers were murdered by Rwandan government forces while guarding Prime Minister Agathe Uwilingiyimana; Belgium subsequently withdrew its UNAMIR contingent, critically weakening the peacekeeping mission.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 7 April 1994, ten Belgian UNAMIR paratroopers were murdered by Rwandan government forces while guarding Prime Minister Agathe Uwilingiyimana; Belgium subsequently withdrew its UNAMIR contingent, critically weakening the peacekeeping mission.",
+        "source": "https://www.un.org/en/preventgenocide/rwanda/historical-background.shtml",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.un.org/en/preventgenocide/rwanda/historical-background.shtml"
   },
   {
     "year": 1996,
@@ -412,31 +448,6 @@
   },
   {
     "year": 2003,
-    "title": "Nuclear Phase-Out Law Enacted Banning New Reactors",
-    "verdict": "TRUE",
-    "reason": "The Belgian Federal Act of 31 January 2003 prohibited construction of new nuclear plants and limited existing reactors to 40-year operating lifetimes, scheduling all seven Belgian reactors for closure by 2025.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Belgian Federal Act of 31 January 2003 prohibited construction of new nuclear plants and limited existing reactors to 40-year operating lifetimes, scheduling all seven Belgian reactors for closure by 2025.",
-        "source": "https://en.wikipedia.org/wiki/Nuclear_power_in_Belgium",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Nuclear_power_in_Belgium"
-  },
-  {
-    "year": 2003,
     "title": "Belgium Legalizes Euthanasia Among First Countries Worldwide",
     "verdict": "TRUE",
     "reason": "Belgium's euthanasia law (passed 28 May 2002, in force from 23 September 2002) made Belgium the second country in the world to legalize voluntary euthanasia; the event year of 2003 is off by one year but within acceptable range as reporting and first full operational year.",
@@ -459,6 +470,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Euthanasia_in_Belgium"
+  },
+  {
+    "year": 2003,
+    "title": "Nuclear Phase-Out Law Enacted Banning New Reactors",
+    "verdict": "TRUE",
+    "reason": "The Belgian Federal Act of 31 January 2003 prohibited construction of new nuclear plants and limited existing reactors to 40-year operating lifetimes, scheduling all seven Belgian reactors for closure by 2025.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Belgian Federal Act of 31 January 2003 prohibited construction of new nuclear plants and limited existing reactors to 40-year operating lifetimes, scheduling all seven Belgian reactors for closure by 2025.",
+        "source": "https://en.wikipedia.org/wiki/Nuclear_power_in_Belgium",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Nuclear_power_in_Belgium"
   },
   {
     "year": 2004,
@@ -512,42 +548,6 @@
   },
   {
     "year": 2008,
-    "title": "Fortis Bank Nationalization During Global Financial Crisis",
-    "verdict": "TRUE",
-    "reason": "Independent contemporaneous sourcing confirms all material elements: Fortis, Belgium's largest financial institution, was partially nationalized on 28 September 2008 after its 2007 acquisition of ABN Amro (as part of a consortium with RBS and Santander) left it critically undercapitalized amid the global credit crunch. Belgium, the Netherlands, and Luxembourg jointly injected EUR 11.2 billion (Belgium EUR 4.7bn for 49% of Fortis Bank Belgium, Netherlands EUR 4bn for 49% of Fortis Bank Netherlands, Luxembourg EUR 2.5bn convertible loan for 49% of Fortis Bank Luxembourg). The Belgian operations were subsequently sold to BNP Paribas, a deal that triggered shareholder lawsuits (later resulting in a large Dutch collective settlement, per D&O Diary coverage found in search). All details in the event description are corroborated by a non-Wikipedia source: a Forbes article published the day of/after the event (28 Sept 2008) explicitly stating the EUR 11.2 billion pooled rescue by the three countries, the per-country breakdown, and the ABN Amro-driven capital weakness.",
-    "verify_count": 2,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Fortis was partially nationalized on 28 September 2008 with Belgium, the Netherlands, and Luxembourg injecting 11.2 billion euros; the Belgian operations were subsequently sold to BNP Paribas.",
-        "source": "https://en.wikipedia.org/wiki/2008%E2%80%932009_Belgian_financial_crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Independent contemporaneous sourcing confirms all material elements: Fortis, Belgium's largest financial institution, was partially nationalized on 28 September 2008 after its 2007 acquisition of ABN Amro (as part of a consortium with RBS and Santander) left it critically undercapitalized amid the global credit crunch. Belgium, the Netherlands, and Luxembourg jointly injected EUR 11.2 billion (Belgium EUR 4.7bn for 49% of Fortis Bank Belgium, Netherlands EUR 4bn for 49% of Fortis Bank Netherlands, Luxembourg EUR 2.5bn convertible loan for 49% of Fortis Bank Luxembourg). The Belgian operations were subsequently sold to BNP Paribas, a deal that triggered shareholder lawsuits (later resulting in a large Dutch collective settlement, per D&O Diary coverage found in search). All details in the event description are corroborated by a non-Wikipedia source: a Forbes article published the day of/after the event (28 Sept 2008) explicitly stating the EUR 11.2 billion pooled rescue by the three countries, the per-country breakdown, and the ABN Amro-driven capital weakness.",
-        "source": "https://www.forbes.com/2008/09/28/fortis-bailout-pingan-markets-equity-cx_tw_0928markets01.html",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-02",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.forbes.com/2008/09/28/fortis-bailout-pingan-markets-equity-cx_tw_0928markets01.html"
-  },
-  {
-    "year": 2008,
     "title": "Dexia Bank Requires Emergency Bailout",
     "verdict": "TRUE",
     "reason": "Multiple independent, non-Wikipedia sources confirm: on 30 September 2008, Franco-Belgian bank Dexia received a €6.4 billion emergency capital injection from the Belgian State and regional governments (€3bn), the French State and Caisse des Dépôts (€3bn), and the Luxembourg government (€376 million), after Dexia's exposure to toxic US housing-market assets (notably via subsidiary FSA and loans to Depfa) caused a liquidity crunch following Lehman Brothers' collapse. Dexia's chairman and CEO resigned as part of the deal (France24). Yale's Journal of Financial Crises / New Bagehot Project documents the same figures and timeline in detail, and confirms Dexia required a further restructuring/bailout in 2011 leading to its eventual dismantling, matching the description's claim about a second 2011 bailout. All material details (country, year, amount, actors, cause, sequel) check out.",
@@ -581,6 +581,42 @@
       }
     ],
     "source": "https://www.france24.com/en/20080930-dexia-chairman-ceo-resign-after-govt-capital-injection-banking-crisis"
+  },
+  {
+    "year": 2008,
+    "title": "Fortis Bank Nationalization During Global Financial Crisis",
+    "verdict": "TRUE",
+    "reason": "Independent contemporaneous sourcing confirms all material elements: Fortis, Belgium's largest financial institution, was partially nationalized on 28 September 2008 after its 2007 acquisition of ABN Amro (as part of a consortium with RBS and Santander) left it critically undercapitalized amid the global credit crunch. Belgium, the Netherlands, and Luxembourg jointly injected EUR 11.2 billion (Belgium EUR 4.7bn for 49% of Fortis Bank Belgium, Netherlands EUR 4bn for 49% of Fortis Bank Netherlands, Luxembourg EUR 2.5bn convertible loan for 49% of Fortis Bank Luxembourg). The Belgian operations were subsequently sold to BNP Paribas, a deal that triggered shareholder lawsuits (later resulting in a large Dutch collective settlement, per D&O Diary coverage found in search). All details in the event description are corroborated by a non-Wikipedia source: a Forbes article published the day of/after the event (28 Sept 2008) explicitly stating the EUR 11.2 billion pooled rescue by the three countries, the per-country breakdown, and the ABN Amro-driven capital weakness.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Fortis was partially nationalized on 28 September 2008 with Belgium, the Netherlands, and Luxembourg injecting 11.2 billion euros; the Belgian operations were subsequently sold to BNP Paribas.",
+        "source": "https://en.wikipedia.org/wiki/2008%E2%80%932009_Belgian_financial_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent contemporaneous sourcing confirms all material elements: Fortis, Belgium's largest financial institution, was partially nationalized on 28 September 2008 after its 2007 acquisition of ABN Amro (as part of a consortium with RBS and Santander) left it critically undercapitalized amid the global credit crunch. Belgium, the Netherlands, and Luxembourg jointly injected EUR 11.2 billion (Belgium EUR 4.7bn for 49% of Fortis Bank Belgium, Netherlands EUR 4bn for 49% of Fortis Bank Netherlands, Luxembourg EUR 2.5bn convertible loan for 49% of Fortis Bank Luxembourg). The Belgian operations were subsequently sold to BNP Paribas, a deal that triggered shareholder lawsuits (later resulting in a large Dutch collective settlement, per D&O Diary coverage found in search). All details in the event description are corroborated by a non-Wikipedia source: a Forbes article published the day of/after the event (28 Sept 2008) explicitly stating the EUR 11.2 billion pooled rescue by the three countries, the per-country breakdown, and the ABN Amro-driven capital weakness.",
+        "source": "https://www.forbes.com/2008/09/28/fortis-bailout-pingan-markets-equity-cx_tw_0928markets01.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.forbes.com/2008/09/28/fortis-bailout-pingan-markets-equity-cx_tw_0928markets01.html"
   },
   {
     "year": 2010,
@@ -845,31 +881,6 @@
   },
   {
     "year": 2019,
-    "title": "Youth Climate Strikes Mobilize Tens of Thousands Weekly",
-    "verdict": "TRUE",
-    "reason": "From January 2019, Belgian students led by Anuna De Wever and Adélaïde Charlier organized weekly school climate strikes in Brussels drawing up to tens of thousands; Flemish Environment Minister Joke Schauvliege resigned after falsely claiming protests were orchestrated by intelligence services.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "From January 2019, Belgian students led by Anuna De Wever and Adélaïde Charlier organized weekly school climate strikes in Brussels drawing up to tens of thousands; Flemish Environment Minister Joke Schauvliege resigned after falsely claiming protests were orchestrated by intelligence services.",
-        "source": "https://en.wikipedia.org/wiki/Anuna_De_Wever",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Anuna_De_Wever"
-  },
-  {
-    "year": 2019,
     "title": "Fragmented Elections Produce Record Vlaams Belang Gains",
     "verdict": "TRUE",
     "reason": "The 26 May 2019 federal elections saw Vlaams Belang triple its federal seats from 3 to 18, its best federal result ever, while producing extreme fragmentation that eventually required 493 days to form a new government.",
@@ -892,6 +903,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2019_Belgian_federal_election"
+  },
+  {
+    "year": 2019,
+    "title": "Youth Climate Strikes Mobilize Tens of Thousands Weekly",
+    "verdict": "TRUE",
+    "reason": "From January 2019, Belgian students led by Anuna De Wever and Adélaïde Charlier organized weekly school climate strikes in Brussels drawing up to tens of thousands; Flemish Environment Minister Joke Schauvliege resigned after falsely claiming protests were orchestrated by intelligence services.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "From January 2019, Belgian students led by Anuna De Wever and Adélaïde Charlier organized weekly school climate strikes in Brussels drawing up to tens of thousands; Flemish Environment Minister Joke Schauvliege resigned after falsely claiming protests were orchestrated by intelligence services.",
+        "source": "https://en.wikipedia.org/wiki/Anuna_De_Wever",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Anuna_De_Wever"
   },
   {
     "year": 2020,
@@ -995,9 +1031,9 @@
   },
   {
     "year": 2022,
-    "title": "Lumumba's Remains Returned to Congo in Colonial Reckoning",
+    "title": "Belgium Extends Two Nuclear Reactors Amid Energy Crisis",
     "verdict": "TRUE",
-    "reason": "On 20 June 2022, Belgium returned a gold tooth believed to be the only physical remains of Patrice Lumumba to his family in a ceremony at the Egmont Palace in Brussels; the tooth had been seized from the daughter of a Belgian police commissioner who participated in the disposal of Lumumba's body.",
+    "reason": "On 18 March 2022, amid the energy crisis triggered by the Russia-Ukraine war, Prime Minister De Croo announced Belgium would extend the operation of Doel 4 and Tihange 3 by ten years beyond their planned 2025 closure.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1007,8 +1043,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "On 20 June 2022, Belgium returned a gold tooth believed to be the only physical remains of Patrice Lumumba to his family in a ceremony at the Egmont Palace in Brussels; the tooth had been seized from the daughter of a Belgian police commissioner who participated in the disposal of Lumumba's body.",
-        "source": "https://www.nbcnews.com/news/world/tooth-patrice-lumumba-congo-independence-returned-familly-belgium-rcna33270",
+        "reason": "On 18 March 2022, amid the energy crisis triggered by the Russia-Ukraine war, Prime Minister De Croo announced Belgium would extend the operation of Doel 4 and Tihange 3 by ten years beyond their planned 2025 closure.",
+        "source": "https://world-nuclear.org/information-library/country-profiles/countries-a-f/belgium",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1016,7 +1052,7 @@
         }
       }
     ],
-    "source": "https://www.nbcnews.com/news/world/tooth-patrice-lumumba-congo-independence-returned-familly-belgium-rcna33270"
+    "source": "https://world-nuclear.org/information-library/country-profiles/countries-a-f/belgium"
   },
   {
     "year": 2022,
@@ -1045,9 +1081,9 @@
   },
   {
     "year": 2022,
-    "title": "Belgium Extends Two Nuclear Reactors Amid Energy Crisis",
+    "title": "Lumumba's Remains Returned to Congo in Colonial Reckoning",
     "verdict": "TRUE",
-    "reason": "On 18 March 2022, amid the energy crisis triggered by the Russia-Ukraine war, Prime Minister De Croo announced Belgium would extend the operation of Doel 4 and Tihange 3 by ten years beyond their planned 2025 closure.",
+    "reason": "On 20 June 2022, Belgium returned a gold tooth believed to be the only physical remains of Patrice Lumumba to his family in a ceremony at the Egmont Palace in Brussels; the tooth had been seized from the daughter of a Belgian police commissioner who participated in the disposal of Lumumba's body.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1057,8 +1093,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "On 18 March 2022, amid the energy crisis triggered by the Russia-Ukraine war, Prime Minister De Croo announced Belgium would extend the operation of Doel 4 and Tihange 3 by ten years beyond their planned 2025 closure.",
-        "source": "https://world-nuclear.org/information-library/country-profiles/countries-a-f/belgium",
+        "reason": "On 20 June 2022, Belgium returned a gold tooth believed to be the only physical remains of Patrice Lumumba to his family in a ceremony at the Egmont Palace in Brussels; the tooth had been seized from the daughter of a Belgian police commissioner who participated in the disposal of Lumumba's body.",
+        "source": "https://www.nbcnews.com/news/world/tooth-patrice-lumumba-congo-independence-returned-familly-belgium-rcna33270",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1066,7 +1102,7 @@
         }
       }
     ],
-    "source": "https://world-nuclear.org/information-library/country-profiles/countries-a-f/belgium"
+    "source": "https://www.nbcnews.com/news/world/tooth-patrice-lumumba-congo-independence-returned-familly-belgium-rcna33270"
   },
   {
     "year": 2024,

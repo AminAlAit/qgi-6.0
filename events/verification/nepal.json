@@ -101,31 +101,6 @@
   },
   {
     "year": 1955,
-    "title": "Nepal Joins the United Nations",
-    "verdict": "TRUE",
-    "reason": "Nepal was admitted to the United Nations on 14 December 1955 as the 75th member, by UN General Assembly resolution 995 (X), along with fifteen other nations including Austria, Ireland, and Italy.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Nepal was admitted to the United Nations on 14 December 1955 as the 75th member, by UN General Assembly resolution 995 (X), along with fifteen other nations including Austria, Ireland, and Italy.",
-        "source": "https://nepal.un.org/en/307283-seventy-years-partnership-eighty-years-multilateralism-nepal-and-united-nations-celebrate",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://nepal.un.org/en/307283-seventy-years-partnership-eighty-years-multilateralism-nepal-and-united-nations-celebrate"
-  },
-  {
-    "year": 1955,
     "title": "King Tribhuvan Dies, Mahendra Ascends Throne",
     "verdict": "TRUE",
     "reason": "King Tribhuvan died in Zurich on 13 March 1955 (some sources cite 9 March), and his son Mahendra Bir Bikram Shah Dev ascended the throne on 14 March 1955. Mahendra was indeed educated abroad and was known for his conservative views on direct royal governance.",
@@ -148,6 +123,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Tribhuvan_of_Nepal"
+  },
+  {
+    "year": 1955,
+    "title": "Nepal Joins the United Nations",
+    "verdict": "TRUE",
+    "reason": "Nepal was admitted to the United Nations on 14 December 1955 as the 75th member, by UN General Assembly resolution 995 (X), along with fifteen other nations including Austria, Ireland, and Italy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nepal was admitted to the United Nations on 14 December 1955 as the 75th member, by UN General Assembly resolution 995 (X), along with fifteen other nations including Austria, Ireland, and Italy.",
+        "source": "https://nepal.un.org/en/307283-seventy-years-partnership-eighty-years-multilateralism-nepal-and-united-nations-celebrate",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://nepal.un.org/en/307283-seventy-years-partnership-eighty-years-multilateralism-nepal-and-united-nations-celebrate"
   },
   {
     "year": 1956,
@@ -226,31 +226,6 @@
   },
   {
     "year": 1961,
-    "title": "Panchayat System of Governance Introduced",
-    "verdict": "TRUE",
-    "reason": "King Mahendra formally introduced the Panchayat system on 5 January 1961 as a partyless tiered governance structure. It banned political parties and concentrated power under the crown, operating until 1990. A new constitution codifying it followed in 1962.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "King Mahendra formally introduced the Panchayat system on 5 January 1961 as a partyless tiered governance structure. It banned political parties and concentrated power under the crown, operating until 1990. A new constitution codifying it followed in 1962.",
-        "source": "https://en.wikipedia.org/wiki/Panchayat_(Nepal)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Panchayat_(Nepal)"
-  },
-  {
-    "year": 1961,
     "title": "Nepal-China Boundary Treaty Signed",
     "verdict": "TRUE",
     "reason": "A final Nepal-China boundary treaty was signed in Beijing on 5 October 1961 by King Mahendra and Chinese Chairman Liu Shaoqi, formally delimiting the 1,389 km shared Himalayan border including the Everest area. China provided road construction and economic aid in parallel.",
@@ -273,6 +248,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/China%E2%80%93Nepal_border"
+  },
+  {
+    "year": 1961,
+    "title": "Panchayat System of Governance Introduced",
+    "verdict": "TRUE",
+    "reason": "King Mahendra formally introduced the Panchayat system on 5 January 1961 as a partyless tiered governance structure. It banned political parties and concentrated power under the crown, operating until 1990. A new constitution codifying it followed in 1962.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "King Mahendra formally introduced the Panchayat system on 5 January 1961 as a partyless tiered governance structure. It banned political parties and concentrated power under the crown, operating until 1990. A new constitution codifying it followed in 1962.",
+        "source": "https://en.wikipedia.org/wiki/Panchayat_(Nepal)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Panchayat_(Nepal)"
   },
   {
     "year": 1963,
@@ -501,31 +501,6 @@
   },
   {
     "year": 1990,
-    "title": "People's Movement I (Jana Andolan) Erupts",
-    "verdict": "TRUE",
-    "reason": "The Jana Andolan (People's Movement) officially began on 18 February 1990, launched jointly by the Nepali Congress and the United Left Front demanding an end to the Panchayat system. Strikes and protests paralyzed the country over the following 49 days.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Jana Andolan (People's Movement) officially began on 18 February 1990, launched jointly by the Nepali Congress and the United Left Front demanding an end to the Panchayat system. Strikes and protests paralyzed the country over the following 49 days.",
-        "source": "https://en.wikipedia.org/wiki/1990_Nepalese_revolution",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1990_Nepalese_revolution"
-  },
-  {
-    "year": 1990,
     "title": "King Birendra Restores Democracy and Lifts Party Ban",
     "verdict": "TRUE",
     "reason": "On 8 April 1990, King Birendra lifted the ban on political parties and accepted constitutional monarchy after 49 days of mass protests that killed over 50 people. The Panchayat system that had dominated Nepal for 30 years formally ended.",
@@ -573,6 +548,31 @@
       }
     ],
     "source": "https://constitutionnet.org/country/nepal"
+  },
+  {
+    "year": 1990,
+    "title": "People's Movement I (Jana Andolan) Erupts",
+    "verdict": "TRUE",
+    "reason": "The Jana Andolan (People's Movement) officially began on 18 February 1990, launched jointly by the Nepali Congress and the United Left Front demanding an end to the Panchayat system. Strikes and protests paralyzed the country over the following 49 days.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Jana Andolan (People's Movement) officially began on 18 February 1990, launched jointly by the Nepali Congress and the United Left Front demanding an end to the Panchayat system. Strikes and protests paralyzed the country over the following 49 days.",
+        "source": "https://en.wikipedia.org/wiki/1990_Nepalese_revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1990_Nepalese_revolution"
   },
   {
     "year": 1991,
@@ -726,31 +726,6 @@
   },
   {
     "year": 2001,
-    "title": "Royal Massacre — King Birendra and Family Killed",
-    "verdict": "TRUE",
-    "reason": "On 1 June 2001, Crown Prince Dipendra shot and killed King Birendra, Queen Aishwarya, and seven other royals at Narayanhiti Palace. Dipendra was declared king while comatose and died three days later; his uncle Gyanendra then ascended the throne.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On 1 June 2001, Crown Prince Dipendra shot and killed King Birendra, Queen Aishwarya, and seven other royals at Narayanhiti Palace. Dipendra was declared king while comatose and died three days later; his uncle Gyanendra then ascended the throne.",
-        "source": "https://en.wikipedia.org/wiki/Nepalese_royal_massacre",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Nepalese_royal_massacre"
-  },
-  {
-    "year": 2001,
     "title": "Peace Talks Collapse — Nepal Army Deployed Against Maoists",
     "verdict": "TRUE",
     "reason": "A ceasefire declared on 25 July 2001 led to three rounds of peace talks, which broke down on 23 November 2001 when the Maoists unilaterally withdrew and attacked police and army posts in 42 districts. The Nepal Army was deployed against the insurgency for the first time.",
@@ -773,6 +748,31 @@
       }
     ],
     "source": "https://reliefweb.int/report/nepal/nepal-chronology-decade-long-conflict"
+  },
+  {
+    "year": 2001,
+    "title": "Royal Massacre — King Birendra and Family Killed",
+    "verdict": "TRUE",
+    "reason": "On 1 June 2001, Crown Prince Dipendra shot and killed King Birendra, Queen Aishwarya, and seven other royals at Narayanhiti Palace. Dipendra was declared king while comatose and died three days later; his uncle Gyanendra then ascended the throne.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 1 June 2001, Crown Prince Dipendra shot and killed King Birendra, Queen Aishwarya, and seven other royals at Narayanhiti Palace. Dipendra was declared king while comatose and died three days later; his uncle Gyanendra then ascended the throne.",
+        "source": "https://en.wikipedia.org/wiki/Nepalese_royal_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Nepalese_royal_massacre"
   },
   {
     "year": 2002,
@@ -826,31 +826,6 @@
   },
   {
     "year": 2005,
-    "title": "King Gyanendra Seizes Full Executive Power",
-    "verdict": "TRUE",
-    "reason": "On 1 February 2005, King Gyanendra dismissed the government, assumed direct executive power, declared a state of emergency, cut communications, and arrested political leaders. India, the US, and the UN condemned the move and military aid was suspended.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On 1 February 2005, King Gyanendra dismissed the government, assumed direct executive power, declared a state of emergency, cut communications, and arrested political leaders. India, the US, and the UN condemned the move and military aid was suspended.",
-        "source": "https://en.wikipedia.org/wiki/2005_Nepal_coup_d%27%C3%A9tat",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2005_Nepal_coup_d%27%C3%A9tat"
-  },
-  {
-    "year": 2005,
     "title": "12-Point Agreement Between Parties and Maoists",
     "verdict": "TRUE",
     "reason": "Nepal's seven mainstream political parties and the CPN-Maoist signed a 12-point agreement in New Delhi on 22 November 2005, establishing a common front against royal autocracy and committing both sides to a constituent assembly and competitive multiparty democracy.",
@@ -875,10 +850,10 @@
     "source": "https://www.refworld.org/docid/5b3f76f34.html"
   },
   {
-    "year": 2006,
-    "title": "People's Movement II Topples Royal Autocracy",
+    "year": 2005,
+    "title": "King Gyanendra Seizes Full Executive Power",
     "verdict": "TRUE",
-    "reason": "The second People's Movement in April 2006 brought hundreds of thousands into the streets, with over 500,000 protesters on 21 April alone. After 19 days and at least 18 deaths, King Gyanendra reinstated parliament on 24 April 2006, ending royal political authority.",
+    "reason": "On 1 February 2005, King Gyanendra dismissed the government, assumed direct executive power, declared a state of emergency, cut communications, and arrested political leaders. India, the US, and the UN condemned the move and military aid was suspended.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -888,8 +863,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The second People's Movement in April 2006 brought hundreds of thousands into the streets, with over 500,000 protesters on 21 April alone. After 19 days and at least 18 deaths, King Gyanendra reinstated parliament on 24 April 2006, ending royal political authority.",
-        "source": "https://en.wikipedia.org/wiki/2006_Nepalese_revolution",
+        "reason": "On 1 February 2005, King Gyanendra dismissed the government, assumed direct executive power, declared a state of emergency, cut communications, and arrested political leaders. India, the US, and the UN condemned the move and military aid was suspended.",
+        "source": "https://en.wikipedia.org/wiki/2005_Nepal_coup_d%27%C3%A9tat",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -897,7 +872,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2006_Nepalese_revolution"
+    "source": "https://en.wikipedia.org/wiki/2005_Nepal_coup_d%27%C3%A9tat"
   },
   {
     "year": 2006,
@@ -923,6 +898,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Comprehensive_Peace_Accord"
+  },
+  {
+    "year": 2006,
+    "title": "People's Movement II Topples Royal Autocracy",
+    "verdict": "TRUE",
+    "reason": "The second People's Movement in April 2006 brought hundreds of thousands into the streets, with over 500,000 protesters on 21 April alone. After 19 days and at least 18 deaths, King Gyanendra reinstated parliament on 24 April 2006, ending royal political authority.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The second People's Movement in April 2006 brought hundreds of thousands into the streets, with over 500,000 protesters on 21 April alone. After 19 days and at least 18 deaths, King Gyanendra reinstated parliament on 24 April 2006, ending royal political authority.",
+        "source": "https://en.wikipedia.org/wiki/2006_Nepalese_revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2006_Nepalese_revolution"
   },
   {
     "year": 2007,
@@ -976,31 +976,6 @@
   },
   {
     "year": 2008,
-    "title": "Constituent Assembly Elections Held",
-    "verdict": "TRUE",
-    "reason": "Constituent Assembly elections were held on 10 April 2008 and the CPN-Maoist won the largest share with 220 of 575 elected seats. The elections included proportional representation provisions significantly increasing seats for women, Dalits, and ethnic minorities.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Constituent Assembly elections were held on 10 April 2008 and the CPN-Maoist won the largest share with 220 of 575 elected seats. The elections included proportional representation provisions significantly increasing seats for women, Dalits, and ethnic minorities.",
-        "source": "https://en.wikipedia.org/wiki/2008_Nepalese_Constituent_Assembly_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2008_Nepalese_Constituent_Assembly_election"
-  },
-  {
-    "year": 2008,
     "title": "240-Year Shah Monarchy Abolished — Republic Declared",
     "verdict": "TRUE",
     "reason": "The Constituent Assembly voted on 28 May 2008 to abolish the Shah monarchy by 560 to 4 votes, declaring Nepal a Federal Democratic Republic. King Gyanendra vacated the palace within weeks, ending the Shah dynasty that had ruled since 1768.",
@@ -1023,6 +998,31 @@
       }
     ],
     "source": "https://www.aljazeera.com/news/2008/5/29/nepal-abolishes-monarchy"
+  },
+  {
+    "year": 2008,
+    "title": "Constituent Assembly Elections Held",
+    "verdict": "TRUE",
+    "reason": "Constituent Assembly elections were held on 10 April 2008 and the CPN-Maoist won the largest share with 220 of 575 elected seats. The elections included proportional representation provisions significantly increasing seats for women, Dalits, and ethnic minorities.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constituent Assembly elections were held on 10 April 2008 and the CPN-Maoist won the largest share with 220 of 575 elected seats. The elections included proportional representation provisions significantly increasing seats for women, Dalits, and ethnic minorities.",
+        "source": "https://en.wikipedia.org/wiki/2008_Nepalese_Constituent_Assembly_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2008_Nepalese_Constituent_Assembly_election"
   },
   {
     "year": 2009,
@@ -1151,31 +1151,6 @@
   },
   {
     "year": 2015,
-    "title": "New Constitution Promulgated — Federal Democratic Republic",
-    "verdict": "TRUE",
-    "reason": "Nepal's Constituent Assembly adopted a new constitution on 20 September 2015, declaring a federal democratic republic with seven provinces. It was immediately contested by Madhesi and Tharu groups who opposed the provincial demarcation and claimed under-representation.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Nepal's Constituent Assembly adopted a new constitution on 20 September 2015, declaring a federal democratic republic with seven provinces. It was immediately contested by Madhesi and Tharu groups who opposed the provincial demarcation and claimed under-representation.",
-        "source": "https://en.wikipedia.org/wiki/Constitution_of_Nepal",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Constitution_of_Nepal"
-  },
-  {
-    "year": 2015,
     "title": "India Blockade Follows Constitution Protests",
     "verdict": "TRUE",
     "reason": "Following the September 2015 constitution, Madhesi protesters blockaded border crossings and India effectively closed most checkpoints, creating a severe fuel, medicine, and cooking gas shortage. The blockade lasted approximately five months and deepened anti-India sentiment.",
@@ -1198,6 +1173,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2015_Nepal_blockade"
+  },
+  {
+    "year": 2015,
+    "title": "New Constitution Promulgated — Federal Democratic Republic",
+    "verdict": "TRUE",
+    "reason": "Nepal's Constituent Assembly adopted a new constitution on 20 September 2015, declaring a federal democratic republic with seven provinces. It was immediately contested by Madhesi and Tharu groups who opposed the provincial demarcation and claimed under-representation.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nepal's Constituent Assembly adopted a new constitution on 20 September 2015, declaring a federal democratic republic with seven provinces. It was immediately contested by Madhesi and Tharu groups who opposed the provincial demarcation and claimed under-representation.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_Nepal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Constitution_of_Nepal"
   },
   {
     "year": 2016,
@@ -1300,29 +1300,40 @@
     "source": "https://en.wikipedia.org/wiki/Kalapani_territory"
   },
   {
-    "year": 2020,
-    "title": "Nepal Communist Party Fractures — Political Crisis",
+    "year": 2019,
+    "title": "NepaliSat-1 Becomes Nepal's First Satellite",
     "verdict": "TRUE",
-    "reason": "In 2020, the Nepal Communist Party experienced a severe internal power struggle between Oli and Prachanda factions. PM Oli dissolved parliament on 20 December 2020 in an unconstitutional move overruled by the Supreme Court in February 2021, and the party formally split with Prachanda expelling Oli.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources (Wikipedia, Kathmandu Post, Himalayan Times, The Diplomat) confirm all material details: NepaliSat-1 was Nepal's first satellite, a 1.3kg 1U CubeSat developed by Nepalese engineers Abhas (Aabhas) Maskey and Hariram Shrestha while studying at Kyushu Institute of Technology, Japan. It launched aboard Cygnus NG-11 from Wallops Island on 17 April 2019, arrived at the ISS on 19 April 2019, and was deployed into orbit on 17 June 2019. It carried a 5-megapixel camera to photograph Nepal's terrain (plus a magnetometer) and cost approximately 20 million Nepali rupees (~$177,000-180,000), funded via Nepal's NAST. The only minor imprecision in the description is 'deployed shortly after' launch — deployment actually occurred about two months later (17 June 2019) rather than immediately, but this is a minor timing nuance, not a material misstatement of the core event, actor, or year.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "In 2020, the Nepal Communist Party experienced a severe internal power struggle between Oli and Prachanda factions. PM Oli dissolved parliament on 20 December 2020 in an unconstitutional move overruled by the Supreme Court in February 2021, and the party formally split with Prachanda expelling Oli.",
-        "source": "https://en.wikipedia.org/wiki/2021_split_in_Nepalese_communist_parties",
+        "reason": "Multiple independent sources (Kathmandu Post, Himalayan Times, Wikipedia, Via Satellite) confirm: NepaliSat-1, Nepal's first satellite, developed by Nepalese engineers Abhas Maskey and Hariram Shrestha while studying at Japan's Kyushu Institute of Technology (BIRDS-3 project), launched aboard Cygnus NG-11 on an Antares rocket from Wallops Flight Facility, Virginia on 17 April 2019, arriving at the ISS on 19 April 2019 and later deployed into low Earth orbit (deployment occurred 17 June 2019, ~2 months after arrival — the description's \"deployed shortly after\" compresses this timeline slightly but is not a material distortion). It was a 1.3kg (1U) CubeSat carrying a 5-megapixel camera to photograph Nepal's terrain and measure Earth's magnetic field. Development cost was reported as Rs 20 million (~20 million Nepali rupees), funded by the Nepal government via NAST — consistent with the ~$180,000 figure at 2019 exchange rates (~113 NPR/USD). All material details (country, year, actors, institution, launch vehicle, weight, camera, cost) check out.",
+        "source": "https://kathmandupost.com/science-technology/2019/04/18/nepals-first-ever-satellite-launched-into-space",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Wikipedia, Kathmandu Post, Himalayan Times, The Diplomat) confirm all material details: NepaliSat-1 was Nepal's first satellite, a 1.3kg 1U CubeSat developed by Nepalese engineers Abhas (Aabhas) Maskey and Hariram Shrestha while studying at Kyushu Institute of Technology, Japan. It launched aboard Cygnus NG-11 from Wallops Island on 17 April 2019, arrived at the ISS on 19 April 2019, and was deployed into orbit on 17 June 2019. It carried a 5-megapixel camera to photograph Nepal's terrain (plus a magnetometer) and cost approximately 20 million Nepali rupees (~$177,000-180,000), funded via Nepal's NAST. The only minor imprecision in the description is 'deployed shortly after' launch — deployment actually occurred about two months later (17 June 2019) rather than immediately, but this is a minor timing nuance, not a material misstatement of the core event, actor, or year.",
+        "source": "https://en.wikipedia.org/wiki/NepaliSat-1",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2021_split_in_Nepalese_communist_parties"
+    "source": "https://en.wikipedia.org/wiki/NepaliSat-1"
   },
   {
     "year": 2020,
@@ -1348,6 +1359,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Nepal"
+  },
+  {
+    "year": 2020,
+    "title": "Nepal Communist Party Fractures — Political Crisis",
+    "verdict": "TRUE",
+    "reason": "In 2020, the Nepal Communist Party experienced a severe internal power struggle between Oli and Prachanda factions. PM Oli dissolved parliament on 20 December 2020 in an unconstitutional move overruled by the Supreme Court in February 2021, and the party formally split with Prachanda expelling Oli.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 2020, the Nepal Communist Party experienced a severe internal power struggle between Oli and Prachanda factions. PM Oli dissolved parliament on 20 December 2020 in an unconstitutional move overruled by the Supreme Court in February 2021, and the party formally split with Prachanda expelling Oli.",
+        "source": "https://en.wikipedia.org/wiki/2021_split_in_Nepalese_communist_parties",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2021_split_in_Nepalese_communist_parties"
   },
   {
     "year": 2022,

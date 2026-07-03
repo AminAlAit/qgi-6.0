@@ -4598,5 +4598,43 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Eritrea"
+  },
+  {
+    "year": 2004,
+    "title": "Eritrea Blocks Food Aid from WFP",
+    "verdict": "FALSE",
+    "reason": "The event is real in substance but the year is wrong. In 2004 Eritrea was in the grip of a severe food crisis and was RECEIVING large-scale WFP/international food aid (443,000 MT of emergency food required for ~1.9 million people; a record 61,200 MT US wheat shipment docked at Massawa in Oct 2004; UN warned in Dec 2004 that Eritrea would need aid 'well into 2005') — the opposite of blocking aid. The actual policy of ending cooperation with WFP, claiming self-sufficiency, and refusing food aid unfolded in 2005-2006: Eritrea imposed restrictive NGO registration rules (June 2005), expelled USAID (July 2005), cut free-food recipients by 94% (Sept 2005, from 1.3M to 72,000 people), and in 2006 the government seized WFP stocks, monetized food aid into a cash/food-for-work program, and WFP general food distributions were suspended (per Human Rights Watch World Report 2007 and ODI/HPN reporting: 'World Food Programme (WFP) general food distributions have been suspended since 2006'). Multiple NGOs were also expelled in 2006, and the self-sufficiency claim was widely condemned as contradicted by real hunger. So country and substance hold, but the correct year is 2006 (with the run-up beginning in 2005), not 2004.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The substance is real but the year is wrong. In 2004, Eritrea was in the grip of a severe food crisis — UN/FEWS reporting shows 1.7-1.9 million people (roughly half the population) needed emergency food aid that year, and in December 2004 the UN explicitly said Eritrea would need food aid 'well into 2005.' That is the opposite of blocking aid or declaring self-sufficiency. The actual policy shift described (self-sufficiency rhetoric, restricting/expelling aid organizations, and cutting off WFP-distributed food aid to large numbers of people) unfolded in 2005-2006: Eritrea expelled USAID (July 2005), imposed a restrictive NGO proclamation (May/June 2005) that shrank the number of operating NGOs from 37 to 5, and then in 2006 suspended WFP's general food distribution program entirely in favor of a 'food/cash-for-work' policy, with aid workers reporting Eritrean authorities seized food stocks from a WFP warehouse. Multiple independent sources (ReliefWeb/IRIN via The New Humanitarian, UN OCHA, ODI Humanitarian Practice Network, Foreign Policy Association, openDemocracy) converge on 2006 as the year WFP's general distribution ended and the self-sufficiency policy took full effect, following the 2005 groundwork. Year and country substance are real, but 2004 is incorrect — best corrected year is 2006.",
+        "source": "https://reliefweb.int/report/eritrea/eritrea-how-bad-food-crisis-really",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2006
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real in substance but the year is wrong. In 2004 Eritrea was in the grip of a severe food crisis and was RECEIVING large-scale WFP/international food aid (443,000 MT of emergency food required for ~1.9 million people; a record 61,200 MT US wheat shipment docked at Massawa in Oct 2004; UN warned in Dec 2004 that Eritrea would need aid 'well into 2005') — the opposite of blocking aid. The actual policy of ending cooperation with WFP, claiming self-sufficiency, and refusing food aid unfolded in 2005-2006: Eritrea imposed restrictive NGO registration rules (June 2005), expelled USAID (July 2005), cut free-food recipients by 94% (Sept 2005, from 1.3M to 72,000 people), and in 2006 the government seized WFP stocks, monetized food aid into a cash/food-for-work program, and WFP general food distributions were suspended (per Human Rights Watch World Report 2007 and ODI/HPN reporting: 'World Food Programme (WFP) general food distributions have been suspended since 2006'). Multiple NGOs were also expelled in 2006, and the self-sufficiency claim was widely condemned as contradicted by real hunger. So country and substance hold, but the correct year is 2006 (with the run-up beginning in 2005), not 2004.",
+        "source": "https://odihpn.org/en/publication/when-there-are-no-statistics-emergency-nutrition-programming-in-eritrea/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2006
+      }
+    ],
+    "source": "https://odihpn.org/en/publication/when-there-are-no-statistics-emergency-nutrition-programming-in-eritrea/"
   }
 ]
