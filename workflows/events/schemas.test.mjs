@@ -12,10 +12,14 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { CATEGORIES_71, SHARDS, VERDICTS, normTitle, recomputeConsensus } from "./schemas.mjs";
 import {
-  buildVerificationEntry, cleanCuratedEvent, dedupKey, eventTier, fillTemplate,
-  isDoubleVerified, ledgerSettled, migrateEntry, registrableDomain, sourceIndependence
+  CATEGORIES_71, ACTIVE_TRENDS, DEACTIVATED_TRENDS, HAZARD_OVERLAP, SHARDS, VERDICTS,
+  RUNNABLE_GATE, MAX_VERIFY_DEPTH, normTitle, recomputeConsensus
+} from "./schemas.mjs";
+import {
+  buildVerificationEntry, cleanCuratedEvent, dedupKey, depthWhy, fillTemplate,
+  isDoubleVerified, ledgerDepthReached, ledgerSettled, migrateEntry, rankTrends, pickTrend,
+  trendTier, registrableDomain, sourceIndependence
 } from "./_lib.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -161,16 +165,71 @@ test("buildVerificationEntry assembles v2 with consensus + independence", () => 
   assert.equal(resolved.had_dissent, true); // founder spot-check queue marker
 });
 
-test("eventTier encodes §5.2 priority", () => {
-  assert.equal(eventTier("france", "currency_crisis"), 1);        // fragile floor
-  assert.equal(eventTier("ukraine", "urban_development"), 2);     // low-join country
-  assert.equal(eventTier("france", "elections_and_voting"), 3);   // flagship
-  assert.equal(eventTier("france", "urban_development"), 4);
-  assert.equal(eventTier("ukraine", "currency_crisis"), 1);       // category beats country
-});
-
 test("VERDICTS never contains CONTESTED (pass-level vocabulary)", () => {
   assert.ok(!VERDICTS.includes("CONTESTED"));
+});
+
+test("ACTIVE_TRENDS = 69 (taxonomy 71 minus the 2 deactivated Trends)", () => {
+  assert.equal(CATEGORIES_71.length, 71);
+  assert.equal(ACTIVE_TRENDS.length, 69);
+  assert.deepEqual([...DEACTIVATED_TRENDS].sort(), ["epidemic_and_pandemic", "natural_disaster"]);
+  for (const d of DEACTIVATED_TRENDS) assert.ok(!ACTIVE_TRENDS.includes(d));
+  // all active are still canonical taxonomy codes
+  for (const t of ACTIVE_TRENDS) assert.ok(CATEGORIES_71.includes(t));
+});
+
+test("trendTier maps n_pos to tier at the gates", () => {
+  assert.equal(trendTier(60), "runnable");
+  assert.equal(trendTier(59), "thin");
+  assert.equal(trendTier(8), "thin");
+  assert.equal(trendTier(7), "skip");
+});
+
+test("rankTrends: thin-closest-to-gate first, deactivated never appear, hazards deprioritized", () => {
+  const pos = Object.fromEntries(ACTIVE_TRENDS.map((t) => [t, 100])); // all comfortably runnable
+  pos.technology_breakthrough = 57;   // thin, gap 3 → should rank #1
+  pos.digital_policy = 20;            // thin, gap 40
+  pos.currency_crisis = 62;          // fragile-floor runnable
+  pos.flood_and_cyclone = 58;        // thin gap 2 BUT hazard-overlap → deprioritized below tech
+  const ranked = rankTrends(pos);
+  assert.equal(ranked[0].trend, "technology_breakthrough");
+  assert.ok(!ranked.some((r) => DEACTIVATED_TRENDS.includes(r.trend)));
+  assert.equal(ranked.length, 69);
+  const iTech = ranked.findIndex((r) => r.trend === "technology_breakthrough");
+  const iFlood = ranked.findIndex((r) => r.trend === "flood_and_cyclone");
+  assert.ok(iTech < iFlood, "hazard-overlap flood ranked below non-hazard tech despite smaller gap");
+});
+
+test("pickTrend skips a Trend already saturated for this pass", () => {
+  const pos = Object.fromEntries(ACTIVE_TRENDS.map((t) => [t, 100]));
+  pos.technology_breakthrough = 57;
+  pos.environmental_policy = 56;
+  const led = { trends: { technology_breakthrough: { candidates_added: 40 } } }; // saturated (>= target)
+  assert.equal(pickTrend(led, pos).trend, "environmental_policy");
+  assert.equal(pickTrend({ trends: {} }, pos).trend, "technology_breakthrough");
+});
+
+test("ledgerDepthReached generalizes across the depth ladder", () => {
+  assert.equal(ledgerDepthReached({ verify_count: 2, needs_tiebreak: false }, 2), true);
+  assert.equal(ledgerDepthReached({ verify_count: 2, needs_tiebreak: false }, 3), false); // want triple
+  assert.equal(ledgerDepthReached({ verify_count: 3, needs_tiebreak: false }, 3), true);
+  assert.equal(ledgerDepthReached({ verify_count: 3, needs_tiebreak: true }, 3), false);  // still contested
+  assert.equal(ledgerDepthReached(undefined, 2), false);
+});
+
+test("depthWhy is blindness-safe (no prior-verdict/direction leak)", () => {
+  for (const d of [0, 1, 2]) {
+    const w = depthWhy(d);
+    // must NOT reveal the event's current label or which way an earlier pass went
+    assert.doesNotMatch(w, /\b(previous verdict|prior pass|re-verify|currently (true|false)|already (confirmed|verified as)|was (true|false))\b/i);
+    // must keep both error directions explicitly equal-cost (the intended framing)
+    assert.match(w, /a wrong TRUE and a wrong FALSE are equally costly/i);
+  }
+});
+
+test("MAX_VERIFY_DEPTH is 3 (double then triple)", () => {
+  assert.equal(MAX_VERIFY_DEPTH, 3);
+  assert.equal(RUNNABLE_GATE, 60);
 });
 
 test("CONSENSUS_POLICY matches the ratified policy file (B1)", async () => {

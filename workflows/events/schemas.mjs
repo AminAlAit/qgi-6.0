@@ -34,8 +34,37 @@ export const CAPS = {
   EVENT_BATCH_SIZE: 200,     // Mode B events per run
   SHARD_CONCURRENCY: 4,      // Mode A shard chains in flight
   VERIFIER_CONCURRENCY_A: 2, // parallel blind verifiers per event (Mode A)
-  VERIFIER_CONCURRENCY_B: 10 // parallel single-event verifiers (Mode B)
+  VERIFIER_CONCURRENCY_B: 10, // parallel single-event verifiers (Mode B)
+  // /qgi-enrich-events combined-batch defaults (bounded for the ~200-agent-call
+  // session-limit ceiling; the recovery pattern handles any overrun):
+  ENRICH_MODE_B_CHUNK: 100,  // Mode B events double/triple-verified per enrich run
+  TREND_RESEARCH_AGENTS: 4,  // Mode A trend-first: research agents (breadth across regions)
+  TREND_CANDIDATES_TARGET: 40 // Mode A trend-first: hard cap on new candidates per run
 };
+
+// Mode B escalation ceiling: drive every event to 2 passes, then every event to
+// 3 (triple), then stop. plan-b targets the least-verified events first, so 1→2
+// completes before any 2→3 begins. Founder rule (2026-07-02): Mode B is
+// trend-agnostic + random, double-verify everything, then triple.
+export const MAX_VERIFY_DEPTH = 3;
+
+// Trainability thresholds (mirror build_verified_positives.py / build_recipe_manifest.py).
+export const RUNNABLE_GATE = 60;
+export const THIN_MIN = 8;
+
+// ── active Trends (69) vs event taxonomy (71) ────────────────────────────────
+// The taxonomy stays 71 for CURATION/VALIDATION (events of any type still get
+// classified). But two Trends are DEACTIVATED from the QGI Trend catalog per the
+// charter's endogenous-only rule (founder-authorized 2026-06-20): their onset is
+// an exogenous shock, not structurally predictable. Mode A (trend-first enrich)
+// selects ONLY from the 69 active Trends — enriching a dead Trend has no value.
+export const DEACTIVATED_TRENDS = Object.freeze(["natural_disaster", "epidemic_and_pandemic"]);
+// Natural-hazard subtypes remain active Trends but overlap the (deactivated)
+// natural_disaster and each other; deprioritized in trend selection (add few NEW
+// Trends). Not excluded — just ranked last among active candidates.
+export const HAZARD_OVERLAP = Object.freeze([
+  "earthquake", "flood_and_cyclone", "volcanic_eruption", "drought_and_famine"
+]);
 
 export const TRAIN_WINDOW = [1789, 2021]; // build_verified_positives.py window
 export const YEAR_RANGE = [1900, 2030];   // validate_events.py allowed range
@@ -95,6 +124,10 @@ if (CATEGORIES_71.length !== 71 || new Set(CATEGORIES_71).size !== 71) {
   throw new Error(`CATEGORIES_71 drift: ${CATEGORIES_71.length} entries, ` +
     `${new Set(CATEGORIES_71).size} unique — must both be 71`);
 }
+
+/** The 69 active Trends Mode A may enrich (taxonomy 71 minus the 2 deactivated). */
+export const ACTIVE_TRENDS = Object.freeze(
+  CATEGORIES_71.filter((c) => !DEACTIVATED_TRENDS.includes(c)));
 
 // Force-map for the most common label confabulations (see
 // qgi-docs/internal/ops/event-curation-prompt-template.md; full map in
@@ -202,6 +235,72 @@ export const RESEARCH_OUTPUT_SCHEMA = {
     },
     categories_valid: { const: true }, // self-validation gate: agent asserts every category is in the inline 71-list
     coverage_note: { type: "string" }
+  }
+};
+
+/** Trend-first research: candidates span MANY countries for ONE Trend, so each
+ * carries a `country` slug. category is the target Trend (self-validated). */
+export const TREND_RESEARCH_OUTPUT_SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  required: ["candidates", "category_all_match", "coverage_note"],
+  properties: {
+    candidates: {
+      type: "array",
+      maxItems: 40,
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["country", "year", "title", "description", "category", "source_url", "confidence"],
+        properties: {
+          country: { type: "string", pattern: "^[a-z_]+$" }, // file slug: lowercase_with_underscores
+          ...EVENT_CORE_PROPS,
+          source_url: { type: "string", pattern: "^https?://" },
+          confidence: { enum: ["high", "medium", "low"] }
+        }
+      }
+    },
+    category_all_match: { const: true }, // agent asserts every candidate's category == the target Trend
+    coverage_note: { type: "string" }
+  }
+};
+
+/** Trend-first curate: keeps the country field so merge can route to per-country files. */
+export const TREND_CURATE_OUTPUT_SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  required: ["curated_events", "dropped", "dedup_report", "all_categories_valid"],
+  properties: {
+    curated_events: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["country", "year", "title", "description", "category"],
+        properties: {
+          country: { type: "string", pattern: "^[a-z_]+$" },
+          ...EVENT_CORE_PROPS
+        }
+      }
+    },
+    dropped: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["title", "reason"],
+        properties: {
+          title: { type: "string" },
+          country: { type: "string" },
+          year: { type: ["integer", "null"] },
+          reason: { enum: ["duplicate_existing", "duplicate_within_batch", "non_event",
+                           "wrong_trend", "out_of_range", "low_confidence", "unknown_country"] },
+          note: { type: "string" }
+        }
+      }
+    },
+    dedup_report: { type: "string" },
+    all_categories_valid: { const: true }
   }
 };
 
