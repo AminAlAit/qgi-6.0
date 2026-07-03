@@ -4636,5 +4636,41 @@
       }
     ],
     "source": "https://odihpn.org/en/publication/when-there-are-no-statistics-emergency-nutrition-programming-in-eritrea/"
+  },
+  {
+    "year": 1982,
+    "title": "Ethiopia's Sixth Nakfa Offensive Repelled",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: in Feb-June 1982, Ethiopia (under Mengistu Haile Mariam) launched the \"Red Star Campaign\" — widely described as the sixth major Ethiopian offensive against the EPLF's Nakfa stronghold — deploying 80,000-120,000 troops with heavy Soviet-supplied armor/air support. Despite months of intense fighting and devastating casualties on both sides (Ethiopian losses reported around 10,000+ killed, 23,000+ wounded per Wikipedia; EPLF ~4,000 killed), Ethiopian forces failed to capture Nakfa and the offensive was abandoned/wound down by June-July 1982. Sources explicitly note the failure damaged Mengistu's government's credibility and was suppressed in state media, consistent with \"eroding morale.\" This matches the event description materially: country (Eritrea/Ethiopia conflict), year (1982), the sixth-offensive framing, the repelling of Ethiopian forces at Nakfa, heavy casualties, and morale erosion.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm that in 1982 the Mengistu regime launched its sixth major counteroffensive against the EPLF, code-named the \"Red Star Campaign\" (Feb 15 - Jul 5, 1982), targeting the Nakfa front along with Barka and Alghena. Despite deploying 80,000-120,000 troops with Soviet/East German/South Yemeni/Libyan support, Ethiopian forces failed to capture Nakfa and were repelled after months of intense fighting, suffering massive casualties (roughly 10,000-54,000 killed/wounded/missing depending on source, with tens of thousands of casualties widely cited). Sources describe the failure as a severe blow to Mengistu's regime and to army morale/leadership (one divisional commander committed suicide rather than face execution for a retreat), and note the campaign strengthened rather than crushed the EPLF. This matches the event description (sixth offensive, weeks of fighting, massive casualties, repelled, eroded Ethiopian army morale) in country, year, and substance.",
+        "source": "https://en.wikipedia.org/wiki/Red_Star_Campaign",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: in Feb-June 1982, Ethiopia (under Mengistu Haile Mariam) launched the \"Red Star Campaign\" — widely described as the sixth major Ethiopian offensive against the EPLF's Nakfa stronghold — deploying 80,000-120,000 troops with heavy Soviet-supplied armor/air support. Despite months of intense fighting and devastating casualties on both sides (Ethiopian losses reported around 10,000+ killed, 23,000+ wounded per Wikipedia; EPLF ~4,000 killed), Ethiopian forces failed to capture Nakfa and the offensive was abandoned/wound down by June-July 1982. Sources explicitly note the failure damaged Mengistu's government's credibility and was suppressed in state media, consistent with \"eroding morale.\" This matches the event description materially: country (Eritrea/Ethiopia conflict), year (1982), the sixth-offensive framing, the repelling of Ethiopian forces at Nakfa, heavy casualties, and morale erosion.",
+        "source": "https://en.wikipedia.org/wiki/Red_Star_Campaign",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Red_Star_Campaign"
   }
 ]

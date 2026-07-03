@@ -1537,6 +1537,42 @@
   },
   {
     "year": 2021,
+    "title": "Greece Creates Ministry of Climate Crisis After Devastating Wildfires",
+    "verdict": "PARTIAL",
+    "reason": "Core event confirmed: after catastrophic wildfires during Greece's worst heatwave in ~30 years (Aug 2021, ~100,800-130,000 hectares burned per Euronews/OECD/EFFIS/NASA), PM Mitsotakis announced on Aug 31, 2021 the creation of a new Civil Protection ministry (initially declined by nominee Apostolakis), which was formally established as the 'Ministry of Climate Crisis and Civil Protection' via Presidential Decree 70/2021 (Government Gazette 161/A, effective ~Sept 6-9, 2021), consolidating fire/disaster/climate-adaptation authority; the former Citizen Protection portfolio was reorganized (Theodorikakos took a narrower 'Citizen Protection' role for police matters) rather than a clean 1:1 replacement, but the net institutional change described (new climate-crisis-focused ministry absorbing civil protection/fire authority) is accurate. The '116,000 hectares' figure is consistent with multiple independent sources (100,800-130,000 ha range). However, the description's claim 'Greece recorded 1.3 million acres burned in 2021 alone, nearly matching the combined total for 2013-2020' is materially wrong: every independent source found (EFFIS/Copernicus, NASA Earth Observatory, IAWF, MDPI peer-reviewed studies, phys.org) puts Greece's full-year 2021 burned area at ~100,000-130,000 hectares (~250,000-320,000 acres), roughly 4-5x lower than the stated 1.3 million acres. Year and country hold, and the central institutional action is real, but this is a significant magnitude error in a cited statistic, so PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources. Devastating wildfires burned roughly 110,000-130,000 hectares in Greece in August 2021 during a historic heatwave (widely reported figure closely matching the description's \"116,000 hectares\"); PM Kyriakos Mitsotakis announced a cabinet reshuffle on August 31, 2021 creating a new Civil Protection ministry (splitting fire-service/civil-protection functions out of the former Ministry of Citizen Protection) explicitly framed around the \"climate crisis\" (Mitsotakis: \"we created a climate crisis ministry, and I emphasize the term 'crisis'\"). This was formalized days later via Presidential Decree 70/2021 (Government Gazette 161/A, 9-9-2021), which established the Ministry of Climate Crisis and Civil Protection (Υπουργείο Κλιματικής Κρίσης και Πολιτικής Προστασίας), confirmed on the ministry's own official government site. Independent Greek-media reporting (greekcitytimes, citing forestry-service data) also corroborates that 2021's total burned area (reported as roughly 1.3 million of the relevant land-area unit) nearly equaled the combined total for 2013-2020, matching the description's framing. Only minor imprecision: the announcement on Aug 31 initially named it \"Civil Protection Ministry,\" with the \"Climate Crisis\" branding/decree formalized about a week later (Sept 9) — a small telescoping of a two-step process, not a material factual error, since year, country, causal wildfires, decree number, and predecessor ministry all check out.",
+        "source": "https://www.euronews.com/2021/08/31/greek-pm-creates-civil-protection-ministry-after-devastating-wildfires",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core event confirmed: after catastrophic wildfires during Greece's worst heatwave in ~30 years (Aug 2021, ~100,800-130,000 hectares burned per Euronews/OECD/EFFIS/NASA), PM Mitsotakis announced on Aug 31, 2021 the creation of a new Civil Protection ministry (initially declined by nominee Apostolakis), which was formally established as the 'Ministry of Climate Crisis and Civil Protection' via Presidential Decree 70/2021 (Government Gazette 161/A, effective ~Sept 6-9, 2021), consolidating fire/disaster/climate-adaptation authority; the former Citizen Protection portfolio was reorganized (Theodorikakos took a narrower 'Citizen Protection' role for police matters) rather than a clean 1:1 replacement, but the net institutional change described (new climate-crisis-focused ministry absorbing civil protection/fire authority) is accurate. The '116,000 hectares' figure is consistent with multiple independent sources (100,800-130,000 ha range). However, the description's claim 'Greece recorded 1.3 million acres burned in 2021 alone, nearly matching the combined total for 2013-2020' is materially wrong: every independent source found (EFFIS/Copernicus, NASA Earth Observatory, IAWF, MDPI peer-reviewed studies, phys.org) puts Greece's full-year 2021 burned area at ~100,000-130,000 hectares (~250,000-320,000 acres), roughly 4-5x lower than the stated 1.3 million acres. Year and country hold, and the central institutional action is real, but this is a significant magnitude error in a cited statistic, so PARTIAL rather than TRUE.",
+        "source": "https://www.euronews.com/2021/08/31/greek-pm-creates-civil-protection-ministry-after-devastating-wildfires",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.euronews.com/2021/08/31/greek-pm-creates-civil-protection-ministry-after-devastating-wildfires"
+  },
+  {
+    "year": 2021,
     "title": "Historic wildfires ravage Evia island and Attica in record-breaking heat",
     "verdict": "TRUE",
     "reason": "The August 2021 wildfires were the worst in Greece since 2007, burning over 125,000 hectares including over 50,000 in northern Evia; tens of thousands were evacuated and EU civil protection aircraft assisted.",

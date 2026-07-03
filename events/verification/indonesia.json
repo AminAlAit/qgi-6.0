@@ -1673,5 +1673,78 @@
       }
     ],
     "source": "https://www.hrw.org/news/2025/05/29/indonesia-renewed-fighting-threatens-west-papua-civilians"
+  },
+  {
+    "year": 1957,
+    "title": "Nationalization of Dutch assets — 700 companies expropriated",
+    "verdict": "TRUE",
+    "reason": "Well-corroborated by multiple independent sources. In response to Indonesia's failed third UN resolution on West New Guinea (West Irian) in November 1957, Sukarno's government launched a retaliatory nationalization campaign starting with a 24-hour strike against Dutch companies on December 1, 1957, followed by labor-union/army takeovers and formal nationalization decrees. Wikipedia's West New Guinea dispute article states ~700 Dutch-owned companies valued at roughly $1.5 billion were nationalized, including KLM landing rights, the KPM shipping line, oil companies BPM (Royal Dutch Shell's Indonesian subsidiary) and Borsumij, and Dutch banks/estates — directly matching the description's \"700 companies including Royal Dutch Shell operations.\" Multiple sources corroborate expulsion of Dutch nationals in the tens of thousands (10,000 by Jan 1958 rising to 40,000-50,000 in contemporary Dutch government/press accounts), consistent with the description's \"~46,000.\" One academic source (Economic History Review-affiliated, via tandfonline) suggested Shell/Unilever/Heineken partly evaded full nationalization by claiming \"international\" corporate status and only fully divested via a 1965 negotiated sale — creating some nuance on the Shell detail — but this doesn't contradict that Shell's BPM subsidiary and assets (e.g., North Sumatra fields feeding into the new state firm Permina) were seized/affected in the December 1957 wave per multiple other sources. Core facts (country, year, trigger, scale, expulsion) are solid; the Shell nuance is a minor secondary-source disagreement, not a material scope error.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: after the UN rejected Indonesia's third Afro-Asian resolution on West Irian/West New Guinea on 26 Nov 1957, Indonesia launched a retaliatory campaign against Dutch interests starting 1 Dec 1957 (24-hour strike order, then occupation/seizure of KPM shipping line, BPM — Royal Dutch Shell's Indonesian subsidiary — Borsumij, Dutch banks and plantations). Wikipedia's \"West New Guinea dispute\" article and other sources state a total of ~700 Dutch-owned companies (valued ~$1.5 billion) were nationalized, matching the description almost exactly, including that Shell/BPM operations were among them. Sources also confirm tens of thousands of Dutch nationals left/were expelled (estimates range 10,000 by Jan 1958 rising to a commonly-cited total of ~46,000-50,000 over the following months), consistent with the \"some 46,000\" figure in the description. The formal legal nationalization statute (Act No. 86/1958) was codified a year later in Dec 1958, but virtually all historical accounts (including Wikipedia) frame the actual seizure/nationalization action as beginning and substantially occurring in December 1957, matching the event's stated year. The broader claim that the resulting state sector was poorly managed and contributed to economic deterioration through the 1960s is also consistent with mainstream historical assessment of the era.",
+        "source": "https://en.wikipedia.org/wiki/West_New_Guinea_dispute",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Well-corroborated by multiple independent sources. In response to Indonesia's failed third UN resolution on West New Guinea (West Irian) in November 1957, Sukarno's government launched a retaliatory nationalization campaign starting with a 24-hour strike against Dutch companies on December 1, 1957, followed by labor-union/army takeovers and formal nationalization decrees. Wikipedia's West New Guinea dispute article states ~700 Dutch-owned companies valued at roughly $1.5 billion were nationalized, including KLM landing rights, the KPM shipping line, oil companies BPM (Royal Dutch Shell's Indonesian subsidiary) and Borsumij, and Dutch banks/estates — directly matching the description's \"700 companies including Royal Dutch Shell operations.\" Multiple sources corroborate expulsion of Dutch nationals in the tens of thousands (10,000 by Jan 1958 rising to 40,000-50,000 in contemporary Dutch government/press accounts), consistent with the description's \"~46,000.\" One academic source (Economic History Review-affiliated, via tandfonline) suggested Shell/Unilever/Heineken partly evaded full nationalization by claiming \"international\" corporate status and only fully divested via a 1965 negotiated sale — creating some nuance on the Shell detail — but this doesn't contradict that Shell's BPM subsidiary and assets (e.g., North Sumatra fields feeding into the new state firm Permina) were seized/affected in the December 1957 wave per multiple other sources. Core facts (country, year, trigger, scale, expulsion) are solid; the Shell nuance is a minor secondary-source disagreement, not a material scope error.",
+        "source": "https://en.wikipedia.org/wiki/West_New_Guinea_dispute",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/West_New_Guinea_dispute"
+  },
+  {
+    "year": 2017,
+    "title": "Nickel ore export ban — downstream industrialization strategy",
+    "verdict": "FALSE",
+    "reason": "Indonesia's nickel export ban timeline does not match the description's characterization of 2017. The original export ban was first imposed in January 2014. In 2017, Indonesia did NOT 'announce' a ban to take effect in 2020 — it did the opposite: Government Regulation 1/2017 RELAXED the existing ban, allowing companies to export nickel ore with concentration below 1.7% between January 2017 and December 2019, with a plan for the full ban to be reinstated only in January 2022. The actual reinstatement — the announcement that produced the January 1, 2020 effective ban described in this event (forcing Chinese smelter investment, EV supply chain positioning) — was made by President Jokowi in August 2019, accelerating the timeline by two years from the originally planned 2022 date. So 2017 is the wrong year for the described action; the year that matches 'announced the ban that took effect Jan 2020' is 2019, not 2017. The 'effective January 2020' detail is correct, but 'first announced in 2017' is factually backwards (2017 was a relaxation, not an announcement of reinstatement).",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core event confirmed by multiple independent sources: Indonesia did reinstate a full ban on unprocessed nickel ore exports effective January 1, 2020, this did force Chinese stainless-steel/battery firms to build smelters domestically (48 smelters by 2023 vs 17 in 2019, ~$30B in Chinese downstream investment), and Indonesia (holding the world's largest nickel reserves) did use this to position itself in the global EV/battery supply chain — matching the description's substance closely. However, the \"first announced in 2017\" framing is materially inaccurate: in 2017 the government actually RELAXED the pre-existing 2014 ore export ban (Government Regulation 1/2017), allowing exports of low-grade ore/concentrate on the condition companies build smelters, with the full ban's reinstatement originally scheduled for January 2022, not 2020. The move to accelerate reinstatement to January 2020 was only announced in August 2019 (via Permen ESDM 11/2019). So 2017 was not when the eventual Jan-2020 ban was \"announced\" — it was when the ban was eased with a later (2022) sunset target that was subsequently moved up in 2019. Country holds (Indonesia); the core downstream-industrialization outcome and Jan-2020 effective date hold; but the specific 2017-announcement claim in the description does not match the historical record.",
+        "source": "https://www.iea.org/policies/16084-prohibition-of-the-export-of-nickel-ore",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Indonesia's nickel export ban timeline does not match the description's characterization of 2017. The original export ban was first imposed in January 2014. In 2017, Indonesia did NOT 'announce' a ban to take effect in 2020 — it did the opposite: Government Regulation 1/2017 RELAXED the existing ban, allowing companies to export nickel ore with concentration below 1.7% between January 2017 and December 2019, with a plan for the full ban to be reinstated only in January 2022. The actual reinstatement — the announcement that produced the January 1, 2020 effective ban described in this event (forcing Chinese smelter investment, EV supply chain positioning) — was made by President Jokowi in August 2019, accelerating the timeline by two years from the originally planned 2022 date. So 2017 is the wrong year for the described action; the year that matches 'announced the ban that took effect Jan 2020' is 2019, not 2017. The 'effective January 2020' detail is correct, but 'first announced in 2017' is factually backwards (2017 was a relaxation, not an announcement of reinstatement).",
+        "source": "https://www.iea.org/policies/16084-prohibition-of-the-export-of-nickel-ore",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2019
+      }
+    ],
+    "source": "https://www.iea.org/policies/16084-prohibition-of-the-export-of-nickel-ore"
   }
 ]

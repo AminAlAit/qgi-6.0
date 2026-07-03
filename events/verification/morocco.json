@@ -3273,5 +3273,41 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Western_Sahara"
+  },
+  {
+    "year": 2012,
+    "title": "Hirak Rif Movement Precursors in North",
+    "verdict": "PARTIAL",
+    "reason": "2012 protests in Morocco's Rif region are well-corroborated: starting March 5, 2012 in Beni Bouayach (Al Hoceima province), a general strike and road blockades triggered escalating confrontations with police that spread to Imzouren, Boukidane, and other Rif towns through March. Grievances cited by protesters and local officials included unemployment (especially among diploma holders), poor water/electricity supply, weak education services, high cost of living, and regional marginalization -- matching the description's 'chronic underdevelopment, high unemployment, marginalisation' framing. These protests were smaller/more localized than the 2011 February 20 Movement wave and are explicitly discussed by academic sources (CIDOB's 'Le temps des cerises' analysis) as a precursor protest cycle to the 2016-2017 Hirak Rif movement. HOWEVER, the specific claim of 'fish vendor protests' in 2012 is not corroborated by any source found. No account of 2012 Rif unrest (Moroccan press, Marxist.com contemporaneous report, academic literature) mentions fish vendors or market vendors as protagonists. The famous fish-vendor-triggered unrest in the Rif is the 2016 death of Mouhcine Fikri (crushed in a garbage truck retrieving confiscated swordfish), which actually launched Hirak Rif -- this appears to be a conflation/anachronistic detail inserted into the 2012 description. Country and year hold, and the general socioeconomic-protest/precursor narrative holds, but the 'fish vendor protests' actor detail is unsubstantiated and likely incorrect, so I'm marking this PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The core claim checks out: in 2012 (peaking March 8, 2012) the Rif region (Al Hoceima province, especially the town of Bni Bouayach) saw sustained social/economic protests led by unemployed youth and 20 February Movement activists over 'generalised lack of jobs and bad social and economic conditions,' with police using truncheons/teargas/water cannons on a sit-in — a documented continuation of the 2011 February 20 Movement in the historically marginalized Rif, consistent with 'chronic underdevelopment, high unemployment, and grievances about marginalisation.' This is independently corroborated by a contemporaneous report (marxist.com) plus an academic paper (CIHRS/Rowaq Arabi) and a CIDOB monograph both describing a 2011-2012 Rif protest cycle feeding into Hirak Rif 2016-17. However, the description's specific detail 'Fish vendor protests... foreshadowed the larger Hirak Rif movement' does not check out for 2012 — no source found a fish-vendor-centered protest that year. The famous fish-vendor incident (Mouhcine Fikri, crushed in a garbage truck, which actually ignited Hirak Rif) occurred in October 2016, not 2012; the description appears to have backdated/conflated that detail. Year and country hold and the general phenomenon is real, but this specific actor/detail is materially wrong, so PARTIAL rather than TRUE.",
+        "source": "https://marxist.com/revolt-in-the-city-of-bni-bouayach.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "2012 protests in Morocco's Rif region are well-corroborated: starting March 5, 2012 in Beni Bouayach (Al Hoceima province), a general strike and road blockades triggered escalating confrontations with police that spread to Imzouren, Boukidane, and other Rif towns through March. Grievances cited by protesters and local officials included unemployment (especially among diploma holders), poor water/electricity supply, weak education services, high cost of living, and regional marginalization -- matching the description's 'chronic underdevelopment, high unemployment, marginalisation' framing. These protests were smaller/more localized than the 2011 February 20 Movement wave and are explicitly discussed by academic sources (CIDOB's 'Le temps des cerises' analysis) as a precursor protest cycle to the 2016-2017 Hirak Rif movement. HOWEVER, the specific claim of 'fish vendor protests' in 2012 is not corroborated by any source found. No account of 2012 Rif unrest (Moroccan press, Marxist.com contemporaneous report, academic literature) mentions fish vendors or market vendors as protagonists. The famous fish-vendor-triggered unrest in the Rif is the 2016 death of Mouhcine Fikri (crushed in a garbage truck retrieving confiscated swordfish), which actually launched Hirak Rif -- this appears to be a conflation/anachronistic detail inserted into the 2012 description. Country and year hold, and the general socioeconomic-protest/precursor narrative holds, but the 'fish vendor protests' actor detail is unsubstantiated and likely incorrect, so I'm marking this PARTIAL rather than TRUE.",
+        "source": "https://aujourdhui.ma/focus/apres-beni-bouayach-les-violences-setendent-a-imzouren-81885",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://aujourdhui.ma/focus/apres-beni-bouayach-les-violences-setendent-a-imzouren-81885"
   }
 ]

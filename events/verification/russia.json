@@ -7509,5 +7509,77 @@
       }
     ],
     "source": "https://www.cnn.com/2025/02/12/politics/putin-trump-phone-call/index.html"
+  },
+  {
+    "year": 2025,
+    "title": "Russia continues advancing in eastern Ukraine",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm Russian forces made slow but steady advances in Donetsk Oblast throughout 2025, capturing additional towns and villages (e.g., Pokrovsk fell in early December 2025, Kostiantynivka entered, Siversk seized by Dec 21 2025, villages Popiv Yar and Ivano-Darivka captured) while suffering heavy casualties (~415,000 Russian casualties in 2025 per CSIS analysis) alongside Ukrainian losses. The pace was notably slow (15-70 meters/day in places), matching the 'slow but steady' characterization, with Russia gaining about 0.8% of Ukrainian territory over the year. Country, year, and substance all confirmed.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Russian forces made slow, grinding advances in Donetsk Oblast throughout 2025, capturing numerous villages/towns (Sredneye, Kleban-Byk, Popiv Yar, Ivano-Darivka, Nadezhdynka, Novosilka, and ultimately Pokrovsk/Myrnohrad by late 2025/early 2026), while sustaining very heavy casualties on both sides (ISW/CSIS estimate Russia approaching ~1 million cumulative casualties by summer 2025, ~300,000 in 2025 alone, advancing at only ~50-70 meters/day). This matches the event's description of slow but steady advances, capturing additional towns, with heavy losses on both sides, in Donetsk region in 2025.",
+        "source": "https://kyivindependent.com/russia-captures-two-more-villages-in-donetsk-oblast-ukraines-military-says/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Russian forces made slow but steady advances in Donetsk Oblast throughout 2025, capturing additional towns and villages (e.g., Pokrovsk fell in early December 2025, Kostiantynivka entered, Siversk seized by Dec 21 2025, villages Popiv Yar and Ivano-Darivka captured) while suffering heavy casualties (~415,000 Russian casualties in 2025 per CSIS analysis) alongside Ukrainian losses. The pace was notably slow (15-70 meters/day in places), matching the 'slow but steady' characterization, with Russia gaining about 0.8% of Ukrainian territory over the year. Country, year, and substance all confirmed.",
+        "source": "https://www.themoscowtimes.com/2025/08/29/russia-grinds-ahead-in-donetsk-testing-ukraines-fortress-belt-a90375",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.themoscowtimes.com/2025/08/29/russia-grinds-ahead-in-donetsk-testing-ukraines-fortress-belt-a90375"
+  },
+  {
+    "year": 2025,
+    "title": "Russia expands military presence in Africa",
+    "verdict": "TRUE",
+    "reason": "Multiple independent 2025 sources confirm the event materially as described. Wagner Group formally withdrew from Mali on June 6, 2025, after which Russia's Ministry of Defense announced deployment of the state-controlled Africa Corps (Wagner's successor) the very next day to continue backing the Malian junta. Africa Corps/Russian forces are separately confirmed operating in Niger (~100 troops since April 2024) and Burkina Faso (100-300 personnel since late 2023, continuing through 2025), consistent with 'Wagner successor forces expanded operations in Mali, Niger, Burkina Faso.' Reports from mid-to-late 2025 also describe further Russian expansion into 'other African nations' including Chad, Madagascar, and Togo, and frame this explicitly as Russia challenging Western influence in the Sahel/Africa. All core elements of the claim (countries, actor identity as Wagner successor, year, framing vs. Western influence) are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent 2025-dated sources confirm: Wagner Group formally withdrew from Mali (announced June 6, 2025; some sources cite Oct 6, 2025 as final departure), and Russia's Ministry of Defense deployed the state-controlled Africa Corps as its successor force starting June 7, 2025. Africa Corps expanded operations in Mali, Niger, and Burkina Faso (the Sahel Alliance juntas), with three large Russian military convoys (tanks, armored vehicles, boats) reaching Bamako in the first five months of 2025 — described by analysts as a significant escalation. This directly challenges Western/French influence in the region, matching the event description almost exactly (country, year, actors, and the four listed nations of expansion).",
+        "source": "https://www.africanews.com/2025/07/24/russia-expands-military-footprint-in-sahel-with-shift-from-wagner-to-state-controlled-afri/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent 2025 sources confirm the event materially as described. Wagner Group formally withdrew from Mali on June 6, 2025, after which Russia's Ministry of Defense announced deployment of the state-controlled Africa Corps (Wagner's successor) the very next day to continue backing the Malian junta. Africa Corps/Russian forces are separately confirmed operating in Niger (~100 troops since April 2024) and Burkina Faso (100-300 personnel since late 2023, continuing through 2025), consistent with 'Wagner successor forces expanded operations in Mali, Niger, Burkina Faso.' Reports from mid-to-late 2025 also describe further Russian expansion into 'other African nations' including Chad, Madagascar, and Togo, and frame this explicitly as Russia challenging Western influence in the Sahel/Africa. All core elements of the claim (countries, actor identity as Wagner successor, year, framing vs. Western influence) are corroborated.",
+        "source": "https://www.aljazeera.com/news/2025/6/16/wagner-vs-africa-corps-the-future-of-russian-paramilitaries-in-mali",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2025/6/16/wagner-vs-africa-corps-the-future-of-russian-paramilitaries-in-mali"
   }
 ]

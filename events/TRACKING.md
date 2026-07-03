@@ -143,7 +143,7 @@ event survives on disk.
 | vietnam | 1 | 1 | 1 | 2026-07-02 | curated 220→79 (Vietnam War collapsed to phase markers) |
 | yemen | 1 | 1 | 1 | 2026-07-02 | curated 176→149 |
 | andorra | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
-| antigua_and_barbuda | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| antigua_and_barbuda | - | - | 2 | 2026-07-03 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | bahamas | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | bahrain | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | bangladesh | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
@@ -156,7 +156,7 @@ event survives on disk.
 | brunei | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | burkina_faso | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | burundi | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
-| cabo_verde | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| cabo_verde | - | - | 2 | 2026-07-03 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | comoros | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | cyprus | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | democratic_republic_of_congo | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
@@ -182,7 +182,7 @@ event survives on disk.
 | luxembourg | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | malawi | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | maldives | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
-| malta | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| malta | - | - | 2 | 2026-07-03 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | marshall_islands | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | mauritania | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | mauritius | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
@@ -208,7 +208,7 @@ event survives on disk.
 | saint_kitts_and_nevis | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | saint_lucia | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | saint_vincent_and_the_grenadines | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
-| samoa | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| samoa | - | - | 2 | 2026-07-03 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | san_marino | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | sao_tome_and_principe | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | senegal | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |

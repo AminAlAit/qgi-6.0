@@ -1226,6 +1226,31 @@
   },
   {
     "year": 2021,
+    "title": "Cyclone Shaheen Strikes Northern Oman",
+    "verdict": "TRUE",
+    "reason": "Tropical Cyclone Shaheen made landfall on 3 October 2021 near Al Suwayq in North Al Batinah Governorate — the first cyclone to strike Oman's northern coast in over 130 years. It killed at least 13 people, caused widespread flooding (up to 369 mm rainfall at Khabourah) and major infrastructure damage across northern governorates.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tropical Cyclone Shaheen made landfall on 3 October 2021 near Al Suwayq in North Al Batinah Governorate — the first cyclone to strike Oman's northern coast in over 130 years. It killed at least 13 people, caused widespread flooding (up to 369 mm rainfall at Khabourah) and major infrastructure damage across northern governorates.",
+        "source": "https://floodlist.com/asia/oman-iran-cyclone-shaheen-october-2021",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://floodlist.com/asia/oman-iran-cyclone-shaheen-october-2021"
+  },
+  {
+    "year": 2021,
     "title": "Oman Vision 2040 Launched as Structural Transformation Framework",
     "verdict": "TRUE",
     "reason": "Sultan Haitham unveiled Oman Vision 2040 in January 2021, targeting diversification away from oil, with an aim to reduce hydrocarbon revenue dependence from 68% to under 20% of government revenue by 2040. The Vision was accompanied by IMF technical assistance and a dedicated Implementation Follow-up Unit reporting directly to the Sultan.",
@@ -1273,31 +1298,6 @@
       }
     ],
     "source": "https://www.pinsentmasons.com/out-law/analysis/oman-confirms-vat-implementation-april-2021"
-  },
-  {
-    "year": 2021,
-    "title": "Cyclone Shaheen Strikes Northern Oman",
-    "verdict": "TRUE",
-    "reason": "Tropical Cyclone Shaheen made landfall on 3 October 2021 near Al Suwayq in North Al Batinah Governorate — the first cyclone to strike Oman's northern coast in over 130 years. It killed at least 13 people, caused widespread flooding (up to 369 mm rainfall at Khabourah) and major infrastructure damage across northern governorates.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Tropical Cyclone Shaheen made landfall on 3 October 2021 near Al Suwayq in North Al Batinah Governorate — the first cyclone to strike Oman's northern coast in over 130 years. It killed at least 13 people, caused widespread flooding (up to 369 mm rainfall at Khabourah) and major infrastructure damage across northern governorates.",
-        "source": "https://floodlist.com/asia/oman-iran-cyclone-shaheen-october-2021",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://floodlist.com/asia/oman-iran-cyclone-shaheen-october-2021"
   },
   {
     "year": 2022,
@@ -1351,6 +1351,31 @@
   },
   {
     "year": 2023,
+    "title": "Elected Municipal Council System Expanded",
+    "verdict": "TRUE",
+    "reason": "Omani general elections were held on 29 October 2023 for the expanded 90-seat Consultative Assembly. Municipal council elections had previously been held in December 2022 (postponed from 2020 due to COVID). The 2023 cycle included a fully digitised voting process via the Intikhab app with 65.88% turnout, and expanded electoral coverage across all governorates.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Omani general elections were held on 29 October 2023 for the expanded 90-seat Consultative Assembly. Municipal council elections had previously been held in December 2022 (postponed from 2020 due to COVID). The 2023 cycle included a fully digitised voting process via the Intikhab app with 65.88% turnout, and expanded electoral coverage across all governorates.",
+        "source": "https://en.wikipedia.org/wiki/2023_Omani_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2023_Omani_general_election"
+  },
+  {
+    "year": 2023,
     "title": "Oman Hosts Saudi-Houthi Peace Negotiations",
     "verdict": "TRUE",
     "reason": "Muscat hosted multiple rounds of direct Saudi-Houthi talks throughout 2023; Saudi and Omani envoys visited Sanaa in April 2023 for talks with Houthi leader Mahdi al-Mashat. Oman provided both the Muscat venue and facilitation infrastructure for negotiations described as the most substantive in years by multiple independent analysts.",
@@ -1375,10 +1400,10 @@
     "source": "https://www.aljazeera.com/news/2023/4/9/saudi-omani-envoys-in-yemen-for-peace-talks-with-houthi-leaders"
   },
   {
-    "year": 2023,
-    "title": "Elected Municipal Council System Expanded",
+    "year": 2024,
+    "title": "Green Hydrogen and Renewable Energy Investments Accelerate",
     "verdict": "TRUE",
-    "reason": "Omani general elections were held on 29 October 2023 for the expanded 90-seat Consultative Assembly. Municipal council elections had previously been held in December 2022 (postponed from 2020 due to COVID). The 2023 cycle included a fully digitised voting process via the Intikhab app with 65.88% turnout, and expanded electoral coverage across all governorates.",
+    "reason": "In April 2024 Oman's Hydrom authority signed two major green hydrogen project agreements in Dhofar valued at $11 billion combined, involving EDF, J-POWER, Actis and Fortescue. Projects are sited in Duqm and Dhofar special economic zones. Oman has earmarked ~50,000 km² for green hydrogen development as a cornerstone of Vision 2040.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1388,8 +1413,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Omani general elections were held on 29 October 2023 for the expanded 90-seat Consultative Assembly. Municipal council elections had previously been held in December 2022 (postponed from 2020 due to COVID). The 2023 cycle included a fully digitised voting process via the Intikhab app with 65.88% turnout, and expanded electoral coverage across all governorates.",
-        "source": "https://en.wikipedia.org/wiki/2023_Omani_general_election",
+        "reason": "In April 2024 Oman's Hydrom authority signed two major green hydrogen project agreements in Dhofar valued at $11 billion combined, involving EDF, J-POWER, Actis and Fortescue. Projects are sited in Duqm and Dhofar special economic zones. Oman has earmarked ~50,000 km² for green hydrogen development as a cornerstone of Vision 2040.",
+        "source": "https://www.offshore-energy.biz/oman-sees-signing-of-two-new-green-hydrogen-project-agreements/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1397,7 +1422,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2023_Omani_general_election"
+    "source": "https://www.offshore-energy.biz/oman-sees-signing-of-two-new-green-hydrogen-project-agreements/"
   },
   {
     "year": 2024,
@@ -1426,27 +1451,38 @@
   },
   {
     "year": 2024,
-    "title": "Green Hydrogen and Renewable Energy Investments Accelerate",
+    "title": "Oman Enacts Nationwide Ban on Thin Single-Use Plastic Bags",
     "verdict": "TRUE",
-    "reason": "In April 2024 Oman's Hydrom authority signed two major green hydrogen project agreements in Dhofar valued at $11 billion combined, involving EDF, J-POWER, Actis and Fortescue. Projects are sited in Duqm and Dhofar special economic zones. Oman has earmarked ~50,000 km² for green hydrogen development as a cornerstone of Vision 2040.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources (Times of Oman, Oman Observer, Muscat Daily, decree.om official legal database, Gulf Insider, PackagingInsights) confirm Oman's Environment Authority issued Decision/Ministerial Resolution No. 8/2024 on 24 January 2024, banning single-use plastic shopping bags less than 50 microns thick nationwide. Phased rollout confirmed starting with the health sector (pharmacies, hospitals, clinics) on 1 July 2024, expanding to retail, textile, and food sectors through 2025 (and further phases into 2026-2027). Fines confirmed at OMR 50 to OMR 1,000, doubling for repeat violations - matching the description's \"fines up to RO 1,000.\" All material details (decision number, date, micron threshold, phased sequence, fine ceiling) match precisely across independent, non-overlapping sources.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "In April 2024 Oman's Hydrom authority signed two major green hydrogen project agreements in Dhofar valued at $11 billion combined, involving EDF, J-POWER, Actis and Fortescue. Projects are sited in Duqm and Dhofar special economic zones. Oman has earmarked ~50,000 km² for green hydrogen development as a cornerstone of Vision 2040.",
-        "source": "https://www.offshore-energy.biz/oman-sees-signing-of-two-new-green-hydrogen-project-agreements/",
+        "reason": "Multiple independent sources confirm Oman's Environment Authority Decision No. 8/2024, issued 24 January 2024, banned plastic shopping bags thinner than 50 microns nationwide. Rollout began with the health sector (pharmacies, hospitals, clinics) on 1 July 2024, expanding to retail sectors (fabric, clothing, eyewear, furniture, mobile/watch retailers) from January 2025 and continuing through subsequent phases in 2025-2026. Fines are RO 50 to RO 1,000 (doubling for repeat violations), matching the described 'up to RO 1,000' penalty. The decision also included an import ban on thin plastic bags effective September 2024 to prevent circumvention. All material details (actor, date, threshold, phasing, penalty ceiling, import ban) check out.",
+        "source": "https://www.omanobserver.om/article/1155765/oman/ban-on-single-use-plastic-bags-comes-into-effect",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Times of Oman, Oman Observer, Muscat Daily, decree.om official legal database, Gulf Insider, PackagingInsights) confirm Oman's Environment Authority issued Decision/Ministerial Resolution No. 8/2024 on 24 January 2024, banning single-use plastic shopping bags less than 50 microns thick nationwide. Phased rollout confirmed starting with the health sector (pharmacies, hospitals, clinics) on 1 July 2024, expanding to retail, textile, and food sectors through 2025 (and further phases into 2026-2027). Fines confirmed at OMR 50 to OMR 1,000, doubling for repeat violations - matching the description's \"fines up to RO 1,000.\" All material details (decision number, date, micron threshold, phased sequence, fine ceiling) match precisely across independent, non-overlapping sources.",
+        "source": "https://timesofoman.com/article/141875-plastic-ban-fines-of-up-to-omr-1000-for-using-plastic-shopping-bags",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://www.offshore-energy.biz/oman-sees-signing-of-two-new-green-hydrogen-project-agreements/"
+    "source": "https://timesofoman.com/article/141875-plastic-ban-fines-of-up-to-omr-1000-for-using-plastic-shopping-bags"
   }
 ]

@@ -1662,6 +1662,42 @@
   },
   {
     "year": 2016,
+    "title": "Formosa Steel Plant Toxic Spill Triggers Nationwide Environmental Crackdown",
+    "verdict": "TRUE",
+    "reason": "Independently corroborated across multiple sources: In April 2016, a power failure disabled the wastewater treatment system at Formosa Ha Tinh Steel's plant, causing illegal discharge of phenol, cyanide, and iron hydroxide into coastal waters off Ha Tinh province. Fish carcasses washed ashore from ~6 April across four central provinces (Ha Tinh, Quang Binh, Quang Tri, Thua Thien-Hue), devastating fishing and tourism industries. After months of denial, Formosa admitted responsibility on 30 June 2016 and agreed to pay $500 million in compensation to the Vietnamese government. The disaster also triggered widespread public protests and increased regulatory scrutiny of industrial polluters (Formosa itself was found to have violated 53 environmental regulations). All material details in the description (year, country, chemicals, cause, scope, admission date, compensation amount) are confirmed.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate every material element: in April 2016 a power failure disabled the wastewater treatment system at Formosa Ha Tinh Steel's plant, causing illegal discharge of untreated water containing phenol, cyanide, and iron hydroxide off Ha Tinh province; the toxic plume killed mass quantities of fish (100+ metric tons washed ashore) along four central provinces (Ha Tinh, Quang Binh, Quang Tri, Thua Thien-Hue), devastating fishing (2,600+ boats grounded, ~44,000 affected families) and tourism. Formosa publicly admitted responsibility on 30 June 2016 and pledged/paid $500 million in compensation to the Vietnamese government. This triggered a nationwide regulatory response: the PM directed nationwide scrutiny of waste-discharging factories, and Vietnam's Environment Administration (VEA) inspected 825 industrial establishments across 32 provinces/cities in 2016, uncovering 50+ additional pollution cases -- matching the 'nationwide environmental crackdown' framing.",
+        "source": "https://en.wikipedia.org/wiki/2016_Vietnam_marine_life_disaster",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across multiple sources: In April 2016, a power failure disabled the wastewater treatment system at Formosa Ha Tinh Steel's plant, causing illegal discharge of phenol, cyanide, and iron hydroxide into coastal waters off Ha Tinh province. Fish carcasses washed ashore from ~6 April across four central provinces (Ha Tinh, Quang Binh, Quang Tri, Thua Thien-Hue), devastating fishing and tourism industries. After months of denial, Formosa admitted responsibility on 30 June 2016 and agreed to pay $500 million in compensation to the Vietnamese government. The disaster also triggered widespread public protests and increased regulatory scrutiny of industrial polluters (Formosa itself was found to have violated 53 environmental regulations). All material details in the description (year, country, chemicals, cause, scope, admission date, compensation amount) are confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2016_Vietnam_marine_life_disaster",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2016_Vietnam_marine_life_disaster"
+  },
+  {
+    "year": 2016,
     "title": "Twelfth Party Congress; Anti-Corruption Drive; Obama Lifts Arms Embargo; Formosa Environmental Disaster",
     "verdict": "TRUE",
     "reason": "Trong was re-elected General Secretary at the 12th Congress (January 2016) defeating Nguyen Tan Dung. Obama lifted the arms embargo during his May 2016 visit. Formosa Ha Tinh Steel discharged toxic waste killing marine life along 200+ km of coastline; Formosa paid $500 million compensation.",

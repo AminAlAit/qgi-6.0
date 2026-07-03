@@ -1,0 +1,38 @@
+[
+  {
+    "year": 2015,
+    "title": "Malta Holds National Referendum on Spring Bird Hunting",
+    "verdict": "TRUE",
+    "reason": "Confirmed via Wikipedia (independent, authoritative source): Malta held a national referendum on 11 April 2015 on whether to abolish recreational spring hunting of turtle doves and quails. Malta is the only EU country to permit this practice. Voters narrowly chose to retain the hunt with 50.4% voting to keep it (49.6% to abolish), on a 74.8% turnout — matching the description's figures exactly. The referendum was triggered by a ~45,000-signature petition from the Coalition for the Abolition of Spring Hunting. The 2009 ECJ ruling finding Malta in breach of EU treaty obligations over the same practice is well-established background to this referendum and is consistent with the timeline. All material details (country, year, date, subject, result, turnout, EU-uniqueness) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia and multiple news sources (MaltaToday, Nature in Mind) that Malta held a referendum on 11 April 2015 on abolishing recreational spring hunting of turtle doves and quails. Voters narrowly chose to retain the hunt at 50.4% to 49.6%, with 74.8% turnout, exactly matching the description. Malta is confirmed as the only EU country permitting recreational spring hunting. The 2009 ECJ breach finding over the same practice (Case C-76/08, Commission v Malta) is well-established background fact consistent with the description. All material details (date, country, margin, turnout, subject matter) match precisely.",
+        "source": "https://en.wikipedia.org/wiki/2015_Maltese_spring_hunting_referendum",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via Wikipedia (independent, authoritative source): Malta held a national referendum on 11 April 2015 on whether to abolish recreational spring hunting of turtle doves and quails. Malta is the only EU country to permit this practice. Voters narrowly chose to retain the hunt with 50.4% voting to keep it (49.6% to abolish), on a 74.8% turnout — matching the description's figures exactly. The referendum was triggered by a ~45,000-signature petition from the Coalition for the Abolition of Spring Hunting. The 2009 ECJ ruling finding Malta in breach of EU treaty obligations over the same practice is well-established background to this referendum and is consistent with the timeline. All material details (country, year, date, subject, result, turnout, EU-uniqueness) check out.",
+        "source": "https://en.wikipedia.org/wiki/Maltese_spring_hunting_referendum,_2015",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Maltese_spring_hunting_referendum,_2015"
+  }
+]

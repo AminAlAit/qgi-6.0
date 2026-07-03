@@ -1426,5 +1426,79 @@
       }
     ],
     "source": "https://fr.wikipedia.org/wiki/Loi_fran%C3%A7aise_relative_%C3%A0_la_reconnaissance_du_g%C3%A9nocide_arm%C3%A9nien_de_1915"
+  },
+  {
+    "year": 1978,
+    "title": "Karabakh Petitions Submitted to Moscow Amid Rising Tensions",
+    "verdict": "FALSE",
+    "reason": "The petition campaign described (Armenian intellectuals/community figures in Nagorno-Karabakh submitting appeals to Moscow requesting transfer of the region from Soviet Azerbaijan to Soviet Armenia, citing demographic and cultural grounds, Moscow rejecting it, foreshadowing the 1988 conflict) is real, but multiple independent sources consistently date this specific episode to 1977, not 1978. It coincided with the debate over the new USSR Constitution (adopted October 7, 1977): a dated primary document exists — 'Letter by Sero Khanzadian to Leonid Brezhnev,' dated October 15, 1977 (per the Karabagh File documents archive), covered contemporaneously by the New York Times in 1977 (per PanARMENIAN's retrospective). Wikipedia's Karabakh movement article and the USC Institute of Armenian Studies both list the pre-1988 petition years as 1945, 1965/1967, and 1977 — none cite a separate 1978 petition. The USC Institute of Armenian Studies detailed chronology jumps from these earlier appeals directly to the December 1987-February 1988 delegations, with no 1978 entry. Since the year does not hold (country and substance otherwise match a real, well-documented episode), this is scored FALSE with corrected_year 1977 per the hard rule that PARTIAL requires year+country to hold.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The underlying event is real — Armenians (including prominent cultural/intellectual figures) periodically petitioned Moscow requesting transfer of Nagorno-Karabakh from Soviet Azerbaijan to Soviet Armenia on demographic/cultural grounds, Moscow rejected these requests, and the episode is widely cited as a precursor to the 1988 Karabakh conflict. However, multiple independent, converging sources (Wikipedia's 'Karabakh movement' and 'Nagorno-Karabakh Autonomous Oblast' articles, Real Artsakh's Soviet-period history page, and general historiography e.g. Thomas de Waal's 'Black Garden') consistently date this specific, named wave of petitioning to 1977 — tied to the drafting/adoption of the new USSR Constitution that year (including author Sero Khanzadyan's 1977 open letter to Brezhnev and the USSR Council of Ministers Presidium's Nov 23, 1977 internal acknowledgment, which was then rejected by the CPSU Central Committee). Only one secondary source (insightkarabakh.com) additionally attaches a parallel 1978 petition to the Azerbaijan SSR constitution's adoption that year, but this is not corroborated elsewhere and appears to be a less rigorously sourced framing. Given the weight of evidence points to 1977 as the documented year for this petition episode, I assess the year given (1978) as most likely incorrect by one year, so this is a real event mis-dated rather than a materially accurate 1978 occurrence.",
+        "source": "https://en.wikipedia.org/wiki/Karabakh_movement",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1977
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The petition campaign described (Armenian intellectuals/community figures in Nagorno-Karabakh submitting appeals to Moscow requesting transfer of the region from Soviet Azerbaijan to Soviet Armenia, citing demographic and cultural grounds, Moscow rejecting it, foreshadowing the 1988 conflict) is real, but multiple independent sources consistently date this specific episode to 1977, not 1978. It coincided with the debate over the new USSR Constitution (adopted October 7, 1977): a dated primary document exists — 'Letter by Sero Khanzadian to Leonid Brezhnev,' dated October 15, 1977 (per the Karabagh File documents archive), covered contemporaneously by the New York Times in 1977 (per PanARMENIAN's retrospective). Wikipedia's Karabakh movement article and the USC Institute of Armenian Studies both list the pre-1988 petition years as 1945, 1965/1967, and 1977 — none cite a separate 1978 petition. The USC Institute of Armenian Studies detailed chronology jumps from these earlier appeals directly to the December 1987-February 1988 delegations, with no 1978 entry. Since the year does not hold (country and substance otherwise match a real, well-documented episode), this is scored FALSE with corrected_year 1977 per the hard rule that PARTIAL requires year+country to hold.",
+        "source": "https://en.wikipedia.org/wiki/Karabakh_movement",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1977
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Karabakh_movement"
+  },
+  {
+    "year": 1978,
+    "title": "Armenian Language Enshrined in New SSR Constitution",
+    "verdict": "PARTIAL",
+    "reason": "Country and year check out, and the core provision is real: the Armenian SSR's 1978 constitution (like the 1926 and 1937 ones) explicitly retained Armenian as the sole state language, one of only three Soviet republics (with Georgia and Azerbaijan) to do so in their 1978 constitutions — an anomaly Moscow had tried to remove via the 1977 all-Union constitutional template. However, the description's framing that this was 'won against Soviet pressure' as 'a significant victory for Armenian cultural activists' overstates Armenia's own agency. Multiple independent, mutually consistent sources (English and Armenian Wikipedia, corroborated by an Armenian-history country study) state the actual driver was the April 1978 mass demonstrations in Tbilisi, Georgia, which forced Moscow to let Georgia keep its constitutional language clause; Soviet authorities then extended the same concession to Armenia and Azerbaijan preemptively 'without waiting for similar manifestations in either republic.' One source notes events were dramatic 'in Georgia and to a lesser extent Armenia,' but no source names specific Armenian cultural activists or describes an Armenia-led campaign comparable to Georgia's. So: real event, correct country/year, but the actor/agency detail (Armenian activists 'winning' the provision) is materially overstated relative to the documented Georgia-led causal chain — hence PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent sources. When new Soviet republic constitutions (following the 1977 USSR Constitution) were drafted in 1978, Moscow tried to remove the sole 'state language' status of Georgian, Armenian, and Azerbaijani in favor of Russian-language parity. Mass protests in Tbilisi (April 14, 1978) forced Moscow to concede on Georgian; as a direct consequence, the same concession was extended to Armenia and Azerbaijan, and their 1978 constitutions retained/enshrined the titular language (Armenian) as the sole state language -- a result won against Soviet pressure, matching the event description. Wikipedia's Constitution of Armenia page and academic literature confirm Armenian was declared the state language in the 1978 Armenian SSR Constitution (in force until 1995), and RFE/RL and Washington Post archive material corroborate the broader Transcaucasian 1978 language dispute and its outcome.",
+        "source": "https://en.wikipedia.org/wiki/1978_Georgian_demonstrations",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Country and year check out, and the core provision is real: the Armenian SSR's 1978 constitution (like the 1926 and 1937 ones) explicitly retained Armenian as the sole state language, one of only three Soviet republics (with Georgia and Azerbaijan) to do so in their 1978 constitutions — an anomaly Moscow had tried to remove via the 1977 all-Union constitutional template. However, the description's framing that this was 'won against Soviet pressure' as 'a significant victory for Armenian cultural activists' overstates Armenia's own agency. Multiple independent, mutually consistent sources (English and Armenian Wikipedia, corroborated by an Armenian-history country study) state the actual driver was the April 1978 mass demonstrations in Tbilisi, Georgia, which forced Moscow to let Georgia keep its constitutional language clause; Soviet authorities then extended the same concession to Armenia and Azerbaijan preemptively 'without waiting for similar manifestations in either republic.' One source notes events were dramatic 'in Georgia and to a lesser extent Armenia,' but no source names specific Armenian cultural activists or describes an Armenia-led campaign comparable to Georgia's. So: real event, correct country/year, but the actor/agency detail (Armenian activists 'winning' the provision) is materially overstated relative to the documented Georgia-led causal chain — hence PARTIAL rather than TRUE.",
+        "source": "https://en.wikipedia.org/wiki/1978_Georgian_demonstrations",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1978_Georgian_demonstrations"
   }
 ]

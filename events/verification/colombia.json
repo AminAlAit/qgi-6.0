@@ -1770,6 +1770,42 @@
   },
   {
     "year": 2018,
+    "title": "Colombian Supreme Court Declares Amazon Subject of Rights",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm all material details. Colombia's Supreme Court (Corte Suprema de Justicia) issued Sentencia STC4360-2018 on April 5, 2018, ruling on a tutela action brought by 25 children/youth plaintiffs aged 7-25 against the Presidency and Ministry of Environment. The Court found the government had failed to curb Amazon deforestation despite international climate commitments, violating citizens' constitutional rights to a healthy environment, and declared the Colombian Amazon an entity 'subject of rights' entitled to protection, conservation, maintenance and restoration. It ordered the national government and Amazon municipalities to formulate action plans, including creation of an 'Intergenerational Pact for the Life of the Colombian Amazon' (PIVAC) within five months. This is corroborated by CELDF, Dejusticia, IUCN, ESCR-Net, and Colombia's own environmental licensing authority (ANLA), among others -- an independent, non-overlapping set of authoritative NGO/legal and government sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent, authoritative sources. On April 5, 2018, Colombia's Supreme Court ruled in case STC4360-2018 (Radicación No. 11001-22-03-000-2018-00319-01) on a tutela brought by 25 youth plaintiffs aged 7-25, declaring the Colombian Amazon a 'subject of rights' entitled to protection, conservation, maintenance and restoration. The Court found the government had violated the plaintiffs' rights to a healthy environment, life, and health by failing to curb deforestation contributing to climate change, and ordered the national government and affected municipalities to develop action plans, including an 'Intergenerational Pact for the Life of the Colombian Amazon' within five months (other action plans within four months). All material details in the description — date, case number context, plaintiff count/age range, legal designation, causal finding, and the five-month Pact deadline — are corroborated across IUCN, Dejusticia, ESCR-Net, Mongabay, CELDF, and Gaia Foundation.",
+        "source": "https://iucn.org/news/world-commission-environmental-law/201804/colombian-supreme-court-recognizes-rights-amazon-river-ecosystem",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material details. Colombia's Supreme Court (Corte Suprema de Justicia) issued Sentencia STC4360-2018 on April 5, 2018, ruling on a tutela action brought by 25 children/youth plaintiffs aged 7-25 against the Presidency and Ministry of Environment. The Court found the government had failed to curb Amazon deforestation despite international climate commitments, violating citizens' constitutional rights to a healthy environment, and declared the Colombian Amazon an entity 'subject of rights' entitled to protection, conservation, maintenance and restoration. It ordered the national government and Amazon municipalities to formulate action plans, including creation of an 'Intergenerational Pact for the Life of the Colombian Amazon' (PIVAC) within five months. This is corroborated by CELDF, Dejusticia, IUCN, ESCR-Net, and Colombia's own environmental licensing authority (ANLA), among others -- an independent, non-overlapping set of authoritative NGO/legal and government sources.",
+        "source": "https://celdf.org/2018/04/press-release-colombia-supreme-court-rules-that-amazon-region-is-subject-of-rights/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://celdf.org/2018/04/press-release-colombia-supreme-court-rules-that-amazon-region-is-subject-of-rights/"
+  },
+  {
+    "year": 2018,
     "title": "Iván Duque Elected; Dissident FARC Factions Return to Arms",
     "verdict": "TRUE",
     "reason": "2018 Duque election confirmed; Márquez/Santrich 2019 return to arms and Segunda Marquetalia confirmed.",

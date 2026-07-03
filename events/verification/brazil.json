@@ -4780,12 +4780,12 @@
   {
     "year": 2013,
     "title": "Marco Civil da Internet Proposed",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: Marco Civil proposed/debated 2013; enacted April 2014. Confirmed for 2013 proposal.; Pass 2 FALSE: The Marco Civil da Internet was NOT proposed in 2013. Multiple independent sources confirm the bill's collaborative drafting began in 2009 and it was formally submitted to Brazil's Congress by President Dilma Rousseff on August 24, 2011 (docket PL 2126/2011) -- two years before Snowden's revelations. What actually happened in 2013 (specifically September 2013, after the Snowden/NSA surveillance revelations targeting Rousseff and Petrobras became public) was that Rousseff invoked 'urgência constitucional' (constitutional urgency) to fast-track the already-pending 2011 bill through Congress, and pushed amendments (e.g., a data-localization requirement) onto the existing text. So the causal claim in the description -- 'Following revelations of US internet surveillance, Brazil proposed the Marco Civil da Internet' -- inverts the actual sequence: the bill predates the surveillance revelations by two years; the revelations accelerated an existing bill rather than prompting a new proposal. The law's other details (net neutrality, data protection, limits on surveillance, enactment in 2014) are accurate, but the core 'proposed in 2013' claim is a timeline error, so per the hard rules this is FALSE with corrected_year=2011 (the actual proposal date). A fair characterization of the real 2013 event would be 'fast-tracked/given legislative priority following Snowden revelations,' not 'proposed.'; Pass 3 PARTIAL: The Snowden-surveillance-to-Marco-Civil-to-2014-law causal chain is real, but \"proposed\" mis-describes 2013's role. The Marco Civil bill was conceived by Ronaldo Lemos in 2007, built via a public multistakeholder drafting process in 2009-2010, and formally sent to Congress in August 2011 — nearly two years before Snowden's June 2013 NSA leaks. What actually happened in 2013 was that after the Snowden revelations (which showed the NSA had spied on Brazilian citizens, companies, and President Rousseff herself), the government revived a bill that had been stalled in Congress for two years: Rousseff made it a legislative priority, its privacy/data-protection and anti-surveillance clauses were strengthened in response to the leaks, and on 2013-09-11 she formally requested a constitutional \"regime de urgência\" (45-day urgent-vote status) for it. It then passed the Chamber (2014-03-25) and Senate (2014-04-22) and was signed into law on 2014-04-23. So year (2013) and country (Brazil) are right, and the substance (net neutrality, data protection, surveillance limits, became law 2014) is right, but the described action — Brazil \"proposed\" the framework in 2013 in response to surveillance revelations — is materially inaccurate: the bill already existed and was already before Congress; 2013's event was acceleration/urgency-declaration and provision-strengthening of a pre-existing 2011 proposal, not a new proposal.. Tiebreak required.",
-    "verify_count": 3,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm the core narrative: after Snowden's 2013 revelations that the NSA spied on President Dilma Rousseff and Petrobras, Brazil's government (Rousseff) pushed forward the Marco Civil da Internet with new/strengthened provisions — she gave the bill 'constitutional urgency' status in September 2013 and introduced stronger privacy/data-protection language in direct response to the surveillance revelations. The bill went on to become law in April 2014, establishing net neutrality and data-protection/privacy principles (Americas Quarterly: 'stringent privacy protections' requiring consent to collect personal data; net neutrality via nondiscriminatory treatment of content) and originally included data-localization requirements aimed at limiting foreign government surveillance (later dropped from the final text). The one imprecision is that the bill was originally drafted/sent to Congress in 2011, not literally 'proposed' for the first time in 2013 — the 2013 action was Rousseff's surveillance-driven push to add privacy provisions and fast-track passage — but this is the standard way multiple outlets (Americas Quarterly, CDT, AS/COA, Igarapé Institute) frame the 2013 event, and year/country/core substance (net neutrality, data protection, surveillance limits, became law 2014) all hold. No off-limits-domain reliance was needed.",
+    "verify_count": 4,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
     "source_independence": "independent",
     "verifications": [
       {
@@ -4821,8 +4821,21 @@
           "date": "2026-07-03",
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 4,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the core narrative: after Snowden's 2013 revelations that the NSA spied on President Dilma Rousseff and Petrobras, Brazil's government (Rousseff) pushed forward the Marco Civil da Internet with new/strengthened provisions — she gave the bill 'constitutional urgency' status in September 2013 and introduced stronger privacy/data-protection language in direct response to the surveillance revelations. The bill went on to become law in April 2014, establishing net neutrality and data-protection/privacy principles (Americas Quarterly: 'stringent privacy protections' requiring consent to collect personal data; net neutrality via nondiscriminatory treatment of content) and originally included data-localization requirements aimed at limiting foreign government surveillance (later dropped from the final text). The one imprecision is that the bill was originally drafted/sent to Congress in 2011, not literally 'proposed' for the first time in 2013 — the 2013 action was Rousseff's surveillance-driven push to add privacy provisions and fast-track passage — but this is the standard way multiple outlets (Americas Quarterly, CDT, AS/COA, Igarapé Institute) frame the 2013 event, and year/country/core substance (net neutrality, data protection, surveillance limits, became law 2014) all hold. No off-limits-domain reliance was needed.",
+        "source": "https://www.americasquarterly.org/fulltextarticle/brazils-internet-bill-of-rights/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://www.americasquarterly.org/fulltextarticle/brazils-internet-bill-of-rights/"
   },
   {
     "year": 2014,

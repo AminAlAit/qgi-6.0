@@ -1223,5 +1223,80 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Daniel_Chapo"
+  },
+  {
+    "year": 2008,
+    "title": "Anadarko and ENI Acquire Rovuma Basin Exploration Blocks",
+    "verdict": "FALSE",
+    "reason": "The substance of the event (Anadarko awarded Area 1, ENI awarded Area 4 in the Rovuma Basin offshore northern Mozambique, later yielding massive gas discoveries exceeding 100 Tcf combined) is real, but the acquisition year is wrong. Anadarko's Area 1 Exploration and Production Concession Contract (EPC) was signed 20 December 2006 (effective 1 February 2007) following Mozambique's second licensing round. ENI's Area 4 deepwater exploration license was awarded 13 March 2006. Nothing matching an 'acquisition' of these blocks occurred in 2008 — 2008 activity in Area 1 was limited to a 3D seismic survey, with actual drilling not starting until 2009 and the first major discoveries announced in 2010. Since the year is a hard join key and is materially wrong (2006 vs 2008), this is FALSE with corrected_year 2006.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources confirm Anadarko and Eni were awarded their Rovuma Basin exploration licenses (Area 1 and Area 4 respectively, offshore northern Mozambique) in 2006, not 2008. Eni's award was announced March 13, 2006 (Offshore Magazine) and formal Exploration and Production Concession Contracts (EPCCs) for both Area 1 (Anadarko, operator) and Area 4 (Eni, operator) were signed in December 2006 following Mozambique's second offshore licensing round launched in 2005 (inp.mzbusiness.com / INP concession description). Subsequent drilling did lead to major discoveries (e.g., Windjammer well drilled starting Dec 2009, announced Feb 2010) and reserves ultimately estimated well over 100 tcf combined across Area 1 and Area 4 — so the substance of the story (companies, blocks, scale of discoveries, economic transformation) is accurate — but the acquisition year is off by two years. Since year+country must both hold for a PARTIAL verdict and the year does not hold, this is FALSE with corrected_year 2006.",
+        "source": "https://www.offshore-mag.com/home/article/16791400/eni-wins-deepwater-exploration-license-off-mozambique",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2006
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The substance of the event (Anadarko awarded Area 1, ENI awarded Area 4 in the Rovuma Basin offshore northern Mozambique, later yielding massive gas discoveries exceeding 100 Tcf combined) is real, but the acquisition year is wrong. Anadarko's Area 1 Exploration and Production Concession Contract (EPC) was signed 20 December 2006 (effective 1 February 2007) following Mozambique's second licensing round. ENI's Area 4 deepwater exploration license was awarded 13 March 2006. Nothing matching an 'acquisition' of these blocks occurred in 2008 — 2008 activity in Area 1 was limited to a 3D seismic survey, with actual drilling not starting until 2009 and the first major discoveries announced in 2010. Since the year is a hard join key and is materially wrong (2006 vs 2008), this is FALSE with corrected_year 2006.",
+        "source": "https://www.offshore-mag.com/home/article/16791400/eni-wins-deepwater-exploration-license-off-mozambique",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2006
+      }
+    ],
+    "source": "https://www.offshore-mag.com/home/article/16791400/eni-wins-deepwater-exploration-license-off-mozambique"
+  },
+  {
+    "year": 1956,
+    "title": "Dock Workers Strike in Lourenco Marques Suppressed",
+    "verdict": "FALSE",
+    "reason": "No independent source corroborates a 1956 dock workers' strike in Lourenço Marques, Mozambique. The well-documented 1956 dock-workers' strike matching this description (workers demanding higher wages, colonial police intervention, arrests) occurred instead in Bissau, Portuguese Guinea (the Casa Gouveia strike of 6 March 1956, per Wikipedia's Pidjiguiti Massacre article) — a different country in the Portuguese empire, not Mozambique. Meanwhile, the actual event matching this description almost verbatim for Lourenço Marques (Mozambique) — African dock/stevedore workers demanding higher wages and better conditions, violently suppressed by Portuguese colonial police with arrests/deportations of leaders, described as one of the first major manifestations of African labor resistance in colonial Mozambique — is the 28 August 1933 'Greve dos Quinhentos' (Strike of the Five Hundred) at the Port of Lourenço Marques (corroborated by a JSTOR-indexed academic article 'Labor Struggles at the Port of Lourenço Marques, 1900-1933' and secondary summaries). No source places a comparable significant dock strike in Lourenço Marques in 1956. Given country=Mozambique is fixed for this file, the year 1956 does not check out; the material description best matches a real Mozambican event dated 1933.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Extensive searching (20 queries, English and Portuguese) found no corroboration of a dock workers' strike in Lourenço Marques in 1956. Well-documented Lourenço Marques port/dock labor unrest clusters in other years: the 1933 'Greve das Quinhentas' (railway/port workers strike against wage cuts, met with police repression and press censorship - widely cited as one of Mozambique's first significant colonial-era labor protests), 1947 stevedore strikes that spread to plantations, an abortive 1948 uprising with 200+ arrests, a 1950 strike broken up by police, and a 1957 strike that paralyzed the port and required chibalo strikebreakers and troops. None of these sources place a comparable event in 1956. Moreover, the specific pattern in the input description (African dock workers demanding wages, Portuguese colonial police, violent repression, dated '1956') matches almost verbatim a real, well-documented event - but in a different country: the 6 March 1956 Casa Gouveia dockworkers' confrontation with Portuguese police in Bissau, Portuguese Guinea (present-day Guinea-Bissau), a precursor to the 1959 Pidjiguiti massacre. This strongly suggests a country/year conflation or a fabricated composite entry rather than a genuine, independently verifiable 1956 Lourenço Marques event. Because no source confirms the country+year combination as given, and I cannot confidently identify a single specific correct year among the several real Mozambique candidates (1933/1947/1948/1950/1957) that this entry might be distorting, I return FALSE with corrected_year left null rather than guess.",
+        "source": "https://en.wikipedia.org/wiki/Pidjiguiti_massacre",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "No independent source corroborates a 1956 dock workers' strike in Lourenço Marques, Mozambique. The well-documented 1956 dock-workers' strike matching this description (workers demanding higher wages, colonial police intervention, arrests) occurred instead in Bissau, Portuguese Guinea (the Casa Gouveia strike of 6 March 1956, per Wikipedia's Pidjiguiti Massacre article) — a different country in the Portuguese empire, not Mozambique. Meanwhile, the actual event matching this description almost verbatim for Lourenço Marques (Mozambique) — African dock/stevedore workers demanding higher wages and better conditions, violently suppressed by Portuguese colonial police with arrests/deportations of leaders, described as one of the first major manifestations of African labor resistance in colonial Mozambique — is the 28 August 1933 'Greve dos Quinhentos' (Strike of the Five Hundred) at the Port of Lourenço Marques (corroborated by a JSTOR-indexed academic article 'Labor Struggles at the Port of Lourenço Marques, 1900-1933' and secondary summaries). No source places a comparable significant dock strike in Lourenço Marques in 1956. Given country=Mozambique is fixed for this file, the year 1956 does not check out; the material description best matches a real Mozambican event dated 1933.",
+        "source": "https://en.wikipedia.org/wiki/Pidjiguiti_Massacre",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1933
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Pidjiguiti_Massacre"
   }
 ]

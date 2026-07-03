@@ -1,31 +1,6 @@
 [
   {
     "year": 1964,
-    "title": "Malawi Independence — Banda Becomes Prime Minister",
-    "verdict": "TRUE",
-    "reason": "Nyasaland became independent as Malawi on July 6, 1964, with Hastings Banda inaugurated as prime minister. This is well-documented across multiple authoritative sources.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Nyasaland became independent as Malawi on July 6, 1964, with Hastings Banda inaugurated as prime minister. This is well-documented across multiple authoritative sources.",
-        "source": "https://en.wikipedia.org/wiki/Malawi",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Malawi"
-  },
-  {
-    "year": 1964,
     "title": "Cabinet Crisis — Banda Purges Reformist Ministers",
     "verdict": "TRUE",
     "reason": "The 1964 Cabinet Crisis is thoroughly documented: Banda dismissed four ministers in September 1964 and others resigned, eliminating reformist voices including Chipembere and Chiume over disputes about autocratic rule and ties to apartheid South Africa.",
@@ -48,6 +23,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1964_Malawi_cabinet_crisis"
+  },
+  {
+    "year": 1964,
+    "title": "Malawi Independence — Banda Becomes Prime Minister",
+    "verdict": "TRUE",
+    "reason": "Nyasaland became independent as Malawi on July 6, 1964, with Hastings Banda inaugurated as prime minister. This is well-documented across multiple authoritative sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nyasaland became independent as Malawi on July 6, 1964, with Hastings Banda inaugurated as prime minister. This is well-documented across multiple authoritative sources.",
+        "source": "https://en.wikipedia.org/wiki/Malawi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Malawi"
   },
   {
     "year": 1965,
@@ -376,31 +376,6 @@
   },
   {
     "year": 1992,
-    "title": "Donors Suspend Non-Humanitarian Aid",
-    "verdict": "TRUE",
-    "reason": "In May 1992 the Paris Club consultative group froze all balance-of-payments assistance except humanitarian aid, citing systematic human rights abuses, costing around $74 million in immediate disbursements.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "In May 1992 the Paris Club consultative group froze all balance-of-payments assistance except humanitarian aid, citing systematic human rights abuses, costing around $74 million in immediate disbursements.",
-        "source": "https://www.washingtonpost.com/archive/politics/1992/05/14/west-suspends-most-aid-to-malawi-regime/9371e152-31ae-4fe3-9cf7-e708dfc8fefe/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.washingtonpost.com/archive/politics/1992/05/14/west-suspends-most-aid-to-malawi-regime/9371e152-31ae-4fe3-9cf7-e708dfc8fefe/"
-  },
-  {
-    "year": 1992,
     "title": "Chilembwe Day Riots in Blantyre and Lilongwe",
     "verdict": "PARTIAL",
     "reason": "Protests and riots did erupt in Blantyre and Lilongwe in May 1992 after Chakufwa Chihana's arrest (he was arrested in April 1992 at the airport, not on Chilembwe Day), with police killing protesters; sources cite 38 deaths in Blantyre alone. The title's link to Chilembwe Day is unverified.",
@@ -423,6 +398,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1992%E2%80%931993_Malawian_protests"
+  },
+  {
+    "year": 1992,
+    "title": "Donors Suspend Non-Humanitarian Aid",
+    "verdict": "TRUE",
+    "reason": "In May 1992 the Paris Club consultative group froze all balance-of-payments assistance except humanitarian aid, citing systematic human rights abuses, costing around $74 million in immediate disbursements.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In May 1992 the Paris Club consultative group froze all balance-of-payments assistance except humanitarian aid, citing systematic human rights abuses, costing around $74 million in immediate disbursements.",
+        "source": "https://www.washingtonpost.com/archive/politics/1992/05/14/west-suspends-most-aid-to-malawi-regime/9371e152-31ae-4fe3-9cf7-e708dfc8fefe/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.washingtonpost.com/archive/politics/1992/05/14/west-suspends-most-aid-to-malawi-regime/9371e152-31ae-4fe3-9cf7-e708dfc8fefe/"
   },
   {
     "year": 1993,
@@ -651,31 +651,6 @@
   },
   {
     "year": 2002,
-    "title": "Maize Crisis and Donor Rift",
-    "verdict": "TRUE",
-    "reason": "Drought and prior depletion of the grain reserve caused a severe food crisis in early 2002 with hundreds of starvation deaths. The IMF suspended its program and withheld $47 million over fiscal slippage and the maize export controversy.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Drought and prior depletion of the grain reserve caused a severe food crisis in early 2002 with hundreds of starvation deaths. The IMF suspended its program and withheld $47 million over fiscal slippage and the maize export controversy.",
-        "source": "https://www.cadtm.org/Famine-in-Malawi-Exposes-IMF",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.cadtm.org/Famine-in-Malawi-Exposes-IMF"
-  },
-  {
-    "year": 2002,
     "title": "Cholera Outbreak Compounds Food Crisis",
     "verdict": "TRUE",
     "reason": "The 2001–02 cholera outbreak was Malawi's largest at the time, affecting 26 of 29 districts with 33,546 cases and 968 deaths, concentrated in southern districts alongside the food crisis.",
@@ -698,6 +673,31 @@
       }
     ],
     "source": "https://pubmed.ncbi.nlm.nih.gov/24916870/"
+  },
+  {
+    "year": 2002,
+    "title": "Maize Crisis and Donor Rift",
+    "verdict": "TRUE",
+    "reason": "Drought and prior depletion of the grain reserve caused a severe food crisis in early 2002 with hundreds of starvation deaths. The IMF suspended its program and withheld $47 million over fiscal slippage and the maize export controversy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Drought and prior depletion of the grain reserve caused a severe food crisis in early 2002 with hundreds of starvation deaths. The IMF suspended its program and withheld $47 million over fiscal slippage and the maize export controversy.",
+        "source": "https://www.cadtm.org/Famine-in-Malawi-Exposes-IMF",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cadtm.org/Famine-in-Malawi-Exposes-IMF"
   },
   {
     "year": 2003,
@@ -751,31 +751,6 @@
   },
   {
     "year": 2005,
-    "title": "Drought Triggers Five-Million-Person Hunger Crisis",
-    "verdict": "TRUE",
-    "reason": "The 2004-05 drought cut maize production sharply, leaving approximately 4–5 million Malawians food insecure, which became the direct catalyst for the Farm Input Subsidy Programme launched in the 2005-06 season.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The 2004-05 drought cut maize production sharply, leaving approximately 4–5 million Malawians food insecure, which became the direct catalyst for the Farm Input Subsidy Programme launched in the 2005-06 season.",
-        "source": "https://en.wikipedia.org/wiki/Food_security_in_Malawi",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Food_security_in_Malawi"
-  },
-  {
-    "year": 2005,
     "title": "Anti-Corruption Drive Splits UDF",
     "verdict": "TRUE",
     "reason": "Mutharika launched a high-profile anti-corruption campaign leading to arrests of UDF figures; he resigned from the UDF in February 2005 and formed the Democratic Progressive Party.",
@@ -798,6 +773,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Democratic_Progressive_Party_(Malawi)"
+  },
+  {
+    "year": 2005,
+    "title": "Drought Triggers Five-Million-Person Hunger Crisis",
+    "verdict": "TRUE",
+    "reason": "The 2004-05 drought cut maize production sharply, leaving approximately 4–5 million Malawians food insecure, which became the direct catalyst for the Farm Input Subsidy Programme launched in the 2005-06 season.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 2004-05 drought cut maize production sharply, leaving approximately 4–5 million Malawians food insecure, which became the direct catalyst for the Farm Input Subsidy Programme launched in the 2005-06 season.",
+        "source": "https://en.wikipedia.org/wiki/Food_security_in_Malawi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Food_security_in_Malawi"
   },
   {
     "year": 2006,
@@ -926,31 +926,6 @@
   },
   {
     "year": 2010,
-    "title": "Flag Change and Symbolic Re-engineering",
-    "verdict": "TRUE",
-    "reason": "Mutharika approved changes to the national flag on July 29, 2010, replacing the rising sun with a fully risen sun amid widespread public and opposition objection. Joyce Banda reversed the change on May 28, 2012.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Mutharika approved changes to the national flag on July 29, 2010, replacing the rising sun with a fully risen sun amid widespread public and opposition objection. Joyce Banda reversed the change on May 28, 2012.",
-        "source": "https://en.wikipedia.org/wiki/Flag_of_Malawi",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Flag_of_Malawi"
-  },
-  {
-    "year": 2010,
     "title": "Anti-Homosexuality Conviction Sparks International Outcry",
     "verdict": "TRUE",
     "reason": "Steven Monjeza and Tiwonge Chimbalanga were sentenced to 14 years' hard labour in May 2010; UN Secretary-General Ban Ki-moon's visit secured a presidential pardon from Mutharika on May 29, 2010.",
@@ -975,10 +950,10 @@
     "source": "https://www.thepinknews.com/2010/05/20/malawi-gay-couple-receive-maximum-14-year-sentence/"
   },
   {
-    "year": 2011,
-    "title": "Forex and Fuel Shortages Cripple Economy",
+    "year": 2010,
+    "title": "Flag Change and Symbolic Re-engineering",
     "verdict": "TRUE",
-    "reason": "Malawi entered a severe foreign-exchange crisis in 2011 driven by an overvalued kwacha and declining tobacco earnings; the IMF suspended its Extended Credit Facility after Mutharika refused to devalue.",
+    "reason": "Mutharika approved changes to the national flag on July 29, 2010, replacing the rising sun with a fully risen sun amid widespread public and opposition objection. Joyce Banda reversed the change on May 28, 2012.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -988,8 +963,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Malawi entered a severe foreign-exchange crisis in 2011 driven by an overvalued kwacha and declining tobacco earnings; the IMF suspended its Extended Credit Facility after Mutharika refused to devalue.",
-        "source": "https://www.scienceopen.com/hosted-document?doi=10.1080/03056244.2012.688651",
+        "reason": "Mutharika approved changes to the national flag on July 29, 2010, replacing the rising sun with a fully risen sun amid widespread public and opposition objection. Joyce Banda reversed the change on May 28, 2012.",
+        "source": "https://en.wikipedia.org/wiki/Flag_of_Malawi",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -997,7 +972,7 @@
         }
       }
     ],
-    "source": "https://www.scienceopen.com/hosted-document?doi=10.1080/03056244.2012.688651"
+    "source": "https://en.wikipedia.org/wiki/Flag_of_Malawi"
   },
   {
     "year": 2011,
@@ -1026,6 +1001,31 @@
   },
   {
     "year": 2011,
+    "title": "Forex and Fuel Shortages Cripple Economy",
+    "verdict": "TRUE",
+    "reason": "Malawi entered a severe foreign-exchange crisis in 2011 driven by an overvalued kwacha and declining tobacco earnings; the IMF suspended its Extended Credit Facility after Mutharika refused to devalue.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Malawi entered a severe foreign-exchange crisis in 2011 driven by an overvalued kwacha and declining tobacco earnings; the IMF suspended its Extended Credit Facility after Mutharika refused to devalue.",
+        "source": "https://www.scienceopen.com/hosted-document?doi=10.1080/03056244.2012.688651",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.scienceopen.com/hosted-document?doi=10.1080/03056244.2012.688651"
+  },
+  {
+    "year": 2011,
     "title": "July 20 Protests — At Least 19 Killed",
     "verdict": "TRUE",
     "reason": "Nationwide protests on July 20, 2011 were met with live fire by police, killing 19 people across Mzuzu, Lilongwe, and Blantyre. Human Rights Watch confirmed the killings and called for prompt investigation.",
@@ -1051,31 +1051,6 @@
   },
   {
     "year": 2012,
-    "title": "Mutharika's Death and Joyce Banda's Constitutional Succession",
-    "verdict": "TRUE",
-    "reason": "Bingu wa Mutharika died of cardiac arrest on April 5, 2012. After a tense 48-hour standoff in which DPP factions attempted to block succession, Vice-President Joyce Banda was sworn in on April 7, becoming Africa's second female head of state.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Bingu wa Mutharika died of cardiac arrest on April 5, 2012. After a tense 48-hour standoff in which DPP factions attempted to block succession, Vice-President Joyce Banda was sworn in on April 7, becoming Africa's second female head of state.",
-        "source": "https://opportunity.org/news/blog/2012/04/death-of-malawis-president-and-swearing-in-of-former-vp-joyce-banda-malawis-first-female-president",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://opportunity.org/news/blog/2012/04/death-of-malawis-president-and-swearing-in-of-former-vp-joyce-banda-malawis-first-female-president"
-  },
-  {
-    "year": 2012,
     "title": "Kwacha Devalued by 49% Under New IMF Program",
     "verdict": "TRUE",
     "reason": "Joyce Banda devalued the kwacha by 49% on May 7, 2012 and floated the currency, restoring an IMF Extended Credit Facility and unlocking around US$160 million in budget support.",
@@ -1098,6 +1073,31 @@
       }
     ],
     "source": "https://www.scotland-malawipartnership.org/news/malawi-devalues-the-kwacha-by-25"
+  },
+  {
+    "year": 2012,
+    "title": "Mutharika's Death and Joyce Banda's Constitutional Succession",
+    "verdict": "TRUE",
+    "reason": "Bingu wa Mutharika died of cardiac arrest on April 5, 2012. After a tense 48-hour standoff in which DPP factions attempted to block succession, Vice-President Joyce Banda was sworn in on April 7, becoming Africa's second female head of state.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Bingu wa Mutharika died of cardiac arrest on April 5, 2012. After a tense 48-hour standoff in which DPP factions attempted to block succession, Vice-President Joyce Banda was sworn in on April 7, becoming Africa's second female head of state.",
+        "source": "https://opportunity.org/news/blog/2012/04/death-of-malawis-president-and-swearing-in-of-former-vp-joyce-banda-malawis-first-female-president",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://opportunity.org/news/blog/2012/04/death-of-malawis-president-and-swearing-in-of-former-vp-joyce-banda-malawis-first-female-president"
   },
   {
     "year": 2013,
@@ -1198,6 +1198,42 @@
       }
     ],
     "source": "https://reliefweb.int/disaster/ep-2015-000184-mwi"
+  },
+  {
+    "year": 2015,
+    "title": "Malawi Bans Production and Sale of Thin Plastic Bags",
+    "verdict": "TRUE",
+    "reason": "Confirmed via multiple independent sources. Malawi's government introduced the Environment Management (Plastics) Regulations in 2015, banning the manufacture, import, distribution and trade of plastics/plastic bags thinner than 60 microns, citing slow decomposition and environmental harm. Plastics manufacturers challenged the regulations in court; a seven-judge Supreme Court panel (led by Chief Justice Andrew Nyirenda) dismissed the manufacturers' appeal on 31 July 2019 and upheld the ban, ruling that producers had been given sufficient notice. Legal challenges continued after 2019, with courts (including a January 2025 High Court ruling by Justice Howard Pemba) continuing to side with the government's environmental regulation — matching the description's claim of \"repeated legal challenges since.\" All material details (country, year, thickness threshold, court outcome) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources. Malawi's Environment Management (Plastics) Regulations, 2015 banned the import, manufacture, trade and distribution of plastics/plastic bags/sheets with wall thickness under 60 micrometres (matches 'thin plastics under 60 microns'). Plastics manufacturers (14 of them) legally challenged the ban, initially winning a High Court overturn in 2016, but on appeal Malawi's Supreme Court of Appeal (7 judges) dismissed the manufacturers' appeal on 31 July/1 Aug 2019 and upheld the ban, ruling production of thin plastics under 60 microns illegal. Legal contestation continued afterward (the ban needed further reinstatement enforcement action as late as 2025), consistent with the description's 'repeated legal challenges since, with courts continuing to side with the government.' All material facts (country, year of original ban, threshold, court challenge, 2019 Supreme Court outcome) check out.",
+        "source": "https://www.globalcitizen.org/en/content/malawi-plastic-bag-ban-supreme-court/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources. Malawi's government introduced the Environment Management (Plastics) Regulations in 2015, banning the manufacture, import, distribution and trade of plastics/plastic bags thinner than 60 microns, citing slow decomposition and environmental harm. Plastics manufacturers challenged the regulations in court; a seven-judge Supreme Court panel (led by Chief Justice Andrew Nyirenda) dismissed the manufacturers' appeal on 31 July 2019 and upheld the ban, ruling that producers had been given sufficient notice. Legal challenges continued after 2019, with courts (including a January 2025 High Court ruling by Justice Howard Pemba) continuing to side with the government's environmental regulation — matching the description's claim of \"repeated legal challenges since.\" All material details (country, year, thickness threshold, court outcome) check out.",
+        "source": "https://lilongwewildlife.org/2019/07/31/breaking-supreme-court-rules-in-favour-of-thin-plastics-ban",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://lilongwewildlife.org/2019/07/31/breaking-supreme-court-rules-in-favour-of-thin-plastics-ban"
   },
   {
     "year": 2016,
@@ -1301,31 +1337,6 @@
   },
   {
     "year": 2020,
-    "title": "Constitutional Court Annuls 2019 Election",
-    "verdict": "TRUE",
-    "reason": "On February 3, 2020, a five-judge constitutional court annulled the 2019 presidential election citing 'widespread, systematic and grave' irregularities, ordering a fresh vote. This was only the second such annulment in African history after Kenya 2017.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On February 3, 2020, a five-judge constitutional court annulled the 2019 presidential election citing 'widespread, systematic and grave' irregularities, ordering a fresh vote. This was only the second such annulment in African history after Kenya 2017.",
-        "source": "https://en.wikipedia.org/wiki/2020_Malawian_presidential_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2020_Malawian_presidential_election"
-  },
-  {
-    "year": 2020,
     "title": "Chakwera Wins Re-Run as Tonse Alliance Candidate",
     "verdict": "TRUE",
     "reason": "On June 23, 2020, Lazarus Chakwera won the court-ordered rerun with 58.6% against Mutharika's 39.9%, leading the MCP-UTM Tonse Alliance with Saulos Chilima as vice-president.",
@@ -1348,6 +1359,31 @@
       }
     ],
     "source": "https://freedomhouse.org/article/malawi-voters-uphold-electoral-integrity-and-democracy-presidential-rerun"
+  },
+  {
+    "year": 2020,
+    "title": "Constitutional Court Annuls 2019 Election",
+    "verdict": "TRUE",
+    "reason": "On February 3, 2020, a five-judge constitutional court annulled the 2019 presidential election citing 'widespread, systematic and grave' irregularities, ordering a fresh vote. This was only the second such annulment in African history after Kenya 2017.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On February 3, 2020, a five-judge constitutional court annulled the 2019 presidential election citing 'widespread, systematic and grave' irregularities, ordering a fresh vote. This was only the second such annulment in African history after Kenya 2017.",
+        "source": "https://en.wikipedia.org/wiki/2020_Malawian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2020_Malawian_presidential_election"
   },
   {
     "year": 2020,
@@ -1401,31 +1437,6 @@
   },
   {
     "year": 2022,
-    "title": "Tropical Storm Ana and Cyclone Gombe",
-    "verdict": "TRUE",
-    "reason": "Tropical Storm Ana hit Malawi in January 2022 and Cyclone Gombe struck in March 2022; together they caused 64 fatalities, displaced over 200,000, and knocked out approximately 130 MW of Kapichira hydropower capacity.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Tropical Storm Ana hit Malawi in January 2022 and Cyclone Gombe struck in March 2022; together they caused 64 fatalities, displaced over 200,000, and knocked out approximately 130 MW of Kapichira hydropower capacity.",
-        "source": "https://en.wikipedia.org/wiki/Tropical_Storm_Ana_(2022)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Tropical_Storm_Ana_(2022)"
-  },
-  {
-    "year": 2022,
     "title": "Cholera Outbreak Becomes Worst on Record",
     "verdict": "TRUE",
     "reason": "The cholera outbreak beginning March 2022 spread to all 29 districts and by mid-2023 recorded 59,376 cases and 1,772 deaths — the worst in Malawi's history, eclipsing the 2002 outbreak.",
@@ -1476,6 +1487,31 @@
   },
   {
     "year": 2022,
+    "title": "Tropical Storm Ana and Cyclone Gombe",
+    "verdict": "TRUE",
+    "reason": "Tropical Storm Ana hit Malawi in January 2022 and Cyclone Gombe struck in March 2022; together they caused 64 fatalities, displaced over 200,000, and knocked out approximately 130 MW of Kapichira hydropower capacity.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tropical Storm Ana hit Malawi in January 2022 and Cyclone Gombe struck in March 2022; together they caused 64 fatalities, displaced over 200,000, and knocked out approximately 130 MW of Kapichira hydropower capacity.",
+        "source": "https://en.wikipedia.org/wiki/Tropical_Storm_Ana_(2022)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Tropical_Storm_Ana_(2022)"
+  },
+  {
+    "year": 2022,
     "title": "Vice-President Chilima Charged in Bribery Case",
     "verdict": "TRUE",
     "reason": "In November 2022 the Anti-Corruption Bureau arrested and charged Vice-President Saulos Chilima with corruption-related offences over alleged kickbacks from British-Malawian businessman Zuneth Sattar, fracturing the Tonse Alliance.",
@@ -1498,6 +1534,31 @@
       }
     ],
     "source": "https://www.aljazeera.com/news/2022/11/25/malawi-vice-president-arrested-by-anti-corruption-bureau"
+  },
+  {
+    "year": 2023,
+    "title": "44% Devaluation Resets the Kwacha",
+    "verdict": "TRUE",
+    "reason": "On November 9, 2023, the Reserve Bank of Malawi devalued the kwacha by 44% — from 1,180 to 1,700 per USD — unlocking the IMF deal while pushing inflation above 30%. The 2012 devaluation of 49% was larger in percentage terms.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On November 9, 2023, the Reserve Bank of Malawi devalued the kwacha by 44% — from 1,180 to 1,700 per USD — unlocking the IMF deal while pushing inflation above 30%. The 2012 devaluation of 49% was larger in percentage terms.",
+        "source": "https://times.mw/kwacha-devalued-by-44/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://times.mw/kwacha-devalued-by-44/"
   },
   {
     "year": 2023,
@@ -1550,31 +1611,6 @@
     "source": "https://www.imf.org/en/News/Articles/2023/11/15/pr23394-malawi-exec-board-2nd-review-ssmp-involvement-approved-48-month-arrangement-ecf"
   },
   {
-    "year": 2023,
-    "title": "44% Devaluation Resets the Kwacha",
-    "verdict": "TRUE",
-    "reason": "On November 9, 2023, the Reserve Bank of Malawi devalued the kwacha by 44% — from 1,180 to 1,700 per USD — unlocking the IMF deal while pushing inflation above 30%. The 2012 devaluation of 49% was larger in percentage terms.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On November 9, 2023, the Reserve Bank of Malawi devalued the kwacha by 44% — from 1,180 to 1,700 per USD — unlocking the IMF deal while pushing inflation above 30%. The 2012 devaluation of 49% was larger in percentage terms.",
-        "source": "https://times.mw/kwacha-devalued-by-44/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://times.mw/kwacha-devalued-by-44/"
-  },
-  {
     "year": 2024,
     "title": "Drought Triggers National Disaster Declaration",
     "verdict": "TRUE",
@@ -1598,31 +1634,6 @@
       }
     ],
     "source": "https://www.africanews.com/2024/03/25/malawi-declares-state-of-disaster-over-drought-wrought-by-el-nino/"
-  },
-  {
-    "year": 2024,
-    "title": "Vice-President Chilima Killed in Plane Crash",
-    "verdict": "TRUE",
-    "reason": "Vice-President Saulos Chilima and nine others were killed when a Malawi Defence Force Dornier 228 crashed in the Chikangawa forest on June 10, 2024; investigators attributed the crash to pilot error and poor weather.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Vice-President Saulos Chilima and nine others were killed when a Malawi Defence Force Dornier 228 crashed in the Chikangawa forest on June 10, 2024; investigators attributed the crash to pilot error and poor weather.",
-        "source": "https://en.wikipedia.org/wiki/2024_Chikangawa_Dornier_228_crash",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2024_Chikangawa_Dornier_228_crash"
   },
   {
     "year": 2024,
@@ -1651,31 +1662,6 @@
   },
   {
     "year": 2024,
-    "title": "Mining Pivot — Kasiya Rutile and Lake Malawi Oil Tensions",
-    "verdict": "TRUE",
-    "reason": "The Kasiya rutile and graphite project progressed significantly in 2024 with Rio Tinto investing and mining trials concluded; Lake Malawi boundary tensions with Tanzania continued with Malawi protesting Tanzania's port construction in early 2024.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Kasiya rutile and graphite project progressed significantly in 2024 with Rio Tinto investing and mining trials concluded; Lake Malawi boundary tensions with Tanzania continued with Malawi protesting Tanzania's port construction in early 2024.",
-        "source": "https://www.mining-technology.com/projects/kasiya-rutile-graphite-project-malawi/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.mining-technology.com/projects/kasiya-rutile-graphite-project-malawi/"
-  },
-  {
-    "year": 2024,
     "title": "Lake Malawi Boundary Dispute Intensifies",
     "verdict": "TRUE",
     "reason": "Friction with Tanzania over the Lake Malawi/Nyasa boundary intensified in 2024; Malawi formally protested Tanzania's Mbamba Bay port expansion and Tanzania issued maps showing a median-line boundary. SADC mediation has stalled since 2017.",
@@ -1701,6 +1687,31 @@
   },
   {
     "year": 2024,
+    "title": "Mining Pivot — Kasiya Rutile and Lake Malawi Oil Tensions",
+    "verdict": "TRUE",
+    "reason": "The Kasiya rutile and graphite project progressed significantly in 2024 with Rio Tinto investing and mining trials concluded; Lake Malawi boundary tensions with Tanzania continued with Malawi protesting Tanzania's port construction in early 2024.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Kasiya rutile and graphite project progressed significantly in 2024 with Rio Tinto investing and mining trials concluded; Lake Malawi boundary tensions with Tanzania continued with Malawi protesting Tanzania's port construction in early 2024.",
+        "source": "https://www.mining-technology.com/projects/kasiya-rutile-graphite-project-malawi/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.mining-technology.com/projects/kasiya-rutile-graphite-project-malawi/"
+  },
+  {
+    "year": 2024,
     "title": "Tobacco Reforms and Diversification Drive",
     "verdict": "TRUE",
     "reason": "The government pursued tobacco auction-floor reforms and expanded the Mega Farms programme alongside soya and macadamia exports in 2024, though tobacco still represented 57.6% of merchandise exports and diversification lagged targets.",
@@ -1723,6 +1734,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Tobacco_industry_in_Malawi"
+  },
+  {
+    "year": 2024,
+    "title": "Vice-President Chilima Killed in Plane Crash",
+    "verdict": "TRUE",
+    "reason": "Vice-President Saulos Chilima and nine others were killed when a Malawi Defence Force Dornier 228 crashed in the Chikangawa forest on June 10, 2024; investigators attributed the crash to pilot error and poor weather.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Vice-President Saulos Chilima and nine others were killed when a Malawi Defence Force Dornier 228 crashed in the Chikangawa forest on June 10, 2024; investigators attributed the crash to pilot error and poor weather.",
+        "source": "https://en.wikipedia.org/wiki/2024_Chikangawa_Dornier_228_crash",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2024_Chikangawa_Dornier_228_crash"
   },
   {
     "year": 2025,

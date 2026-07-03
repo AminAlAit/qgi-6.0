@@ -217,6 +217,30 @@
   },
   {
     "year": 1974,
+    "title": "Cheikh Anta Diop Publishes 'Nations Negres et Culture' Influence Peaks",
+    "verdict": "FALSE",
+    "reason": "Year is materially wrong. 'Nations Negres et Culture' was first published in 1954, not 1974. The event title says 'Publishes' but the description says 'influence peaks' in the 1970s. Using 1974 as the year for publication is factually false. The book was published 20 years earlier.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Year is materially wrong. 'Nations Negres et Culture' was first published in 1954, not 1974. The event title says 'Publishes' but the description says 'influence peaks' in the 1970s. Using 1974 as the year for publication is factually false. The book was published 20 years earlier.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1974,
     "title": "Controlled Multiparty System Introduced",
     "verdict": "TRUE",
     "reason": "Three-party limited system introduced 1974; PDS founded July 1974. Confirmed by multiple sources. Note: event description says 'three parties' but sources indicate some flexibility.",
@@ -494,6 +518,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Ceasefire signed 31 May 1991 in Cacheu, Guinea-Bissau by Sidi Badji and Defence Minister Medoune Fall. Confirmed by Casamance conflict sources. Event says 'mediated by Catholic diocese of Ziguinchor' — location was Cacheu, Guinea-Bissau, not Ziguinchor, but minor detail.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1993,
+    "title": "Disputed 1993 Presidential Election and Political Violence",
+    "verdict": "TRUE",
+    "reason": "Diouf won 58% on 21 February 1993. Babacar Seye (VP of Constitutional Council) assassinated on 15 May 1993. Wade charged but charges later dropped. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Diouf won 58% on 21 February 1993. Babacar Seye (VP of Constitutional Council) assassinated on 15 May 1993. Wade charged but charges later dropped. All facts confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -792,6 +840,41 @@
     ]
   },
   {
+    "year": 2006,
+    "title": "Senegal Hosts African Union Summit — Dakar Becomes Continental Hub",
+    "verdict": "FALSE",
+    "reason": "No African Union Summit was held in Dakar, Senegal in 2006. The two 2006 AU Assembly summits were held in Khartoum, Sudan (January 2006, where Denis Sassou Nguesso of Congo was elected AU Chairperson, explicitly to block Sudan's Bashir) and Banjul, Gambia (July 2006, hosted by Yahya Jammeh). President Wade of Senegal did not hold the AU chairmanship in 2006 and Dakar was not the summit venue. Searches for any AU/OAU summit ever hosted in Dakar found only the 1992 OAU (Organisation of African Unity, the AU's pre-2002 predecessor) session under President Abdou Diouf — a different organization, different Senegalese leader, and 14 years off. No corroborating source (news, AU official site, academic) places an AU Summit in Dakar in 2006 or associates Wade with an AU chairmanship/host role that year. The event as described did not happen in the stated country/year.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "No African Union Summit was hosted in Dakar, Senegal in 2006. The two 2006 AU Assembly summits were the 6th Ordinary Session in Khartoum, Sudan (January 2006) and the 7th Ordinary Session in Banjul, The Gambia (1-2 July 2006) — where Sudan's bid for the AU chairmanship was contested and Denis Sassou-Nguesso of Congo was elected chair instead. Independent sourcing (AU's own 'cities' history page) shows Dakar hosted an OAU (predecessor) summit in 1992 and later the 31st AU Assembly in 2018 (under President Macky Sall, not Wade) — but no AU summit in 2006. The only major Dakar-hosted multilateral summit near this period under President Wade was the 11th OIC (Organization of Islamic Cooperation) Summit in March 2008, a different organization and a different year. NEPAD's West Africa regional bureau is indeed based in Dakar, but that is a regional secretariat office, not evidence of an AU summit in 2006. The core claim (AU Summit hosted in Dakar in 2006) does not check out against any source found.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "No African Union Summit was held in Dakar, Senegal in 2006. The two 2006 AU Assembly summits were held in Khartoum, Sudan (January 2006, where Denis Sassou Nguesso of Congo was elected AU Chairperson, explicitly to block Sudan's Bashir) and Banjul, Gambia (July 2006, hosted by Yahya Jammeh). President Wade of Senegal did not hold the AU chairmanship in 2006 and Dakar was not the summit venue. Searches for any AU/OAU summit ever hosted in Dakar found only the 1992 OAU (Organisation of African Unity, the AU's pre-2002 predecessor) session under President Abdou Diouf — a different organization, different Senegalese leader, and 14 years off. No corroborating source (news, AU official site, academic) places an AU Summit in Dakar in 2006 or associates Wade with an AU chairmanship/host role that year. The event as described did not happen in the stated country/year.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
     "year": 2007,
     "title": "Wade Re-elected in First-Round Presidential Victory",
     "verdict": "TRUE",
@@ -889,30 +972,6 @@
   },
   {
     "year": 2012,
-    "title": "Third-Term Controversy and Constitutional Court Ruling",
-    "verdict": "TRUE",
-    "reason": "Constitutional Council ruled Wade's first term did not count toward two-term limit. Mass protests, deaths, M23 coalition. West African leaders involved. All facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Constitutional Council ruled Wade's first term did not count toward two-term limit. Mass protests, deaths, M23 coalition. West African leaders involved. All facts confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2012,
     "title": "Macky Sall Defeats Wade in Presidential Runoff",
     "verdict": "TRUE",
     "reason": "Runoff 25 March 2012; Sall won 65.8% vs Wade 34.2%. Wade conceded promptly. Confirmed by France 24 and Wikipedia.",
@@ -926,6 +985,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Runoff 25 March 2012; Sall won 65.8% vs Wade 34.2%. Wade conceded promptly. Confirmed by France 24 and Wikipedia.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2012,
+    "title": "Third-Term Controversy and Constitutional Court Ruling",
+    "verdict": "TRUE",
+    "reason": "Constitutional Council ruled Wade's first term did not count toward two-term limit. Mass protests, deaths, M23 coalition. West African leaders involved. All facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitutional Council ruled Wade's first term did not count toward two-term limit. Mass protests, deaths, M23 coalition. West African leaders involved. All facts confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -982,6 +1065,44 @@
         }
       }
     ]
+  },
+  {
+    "year": 2014,
+    "title": "Senegal Joins ECOWAS Force Against Gambian Crisis",
+    "verdict": "FALSE",
+    "reason": "The event described — Senegal leading/joining an ECOWAS force to confront a Gambian political crisis under Yahya Jammeh (troops massing, hosting exiles, economic pressure to force him from power) — is the well-documented ECOWAS military intervention in The Gambia (Operation Restore Democracy / ECOMIG), which took place in January 2017, after Jammeh refused to accept his December 2016 election loss to Adama Barrow. Senegalese troops entered Gambia on 19 January 2017 at Barrow's request; Jammeh departed 21 January 2017. Nothing matching this description occurred in 2014. The only Gambia-related event in 2014 was a failed coup attempt against Jammeh (30 December 2014) staged by plotters who entered FROM Senegal — the opposite framing (Senegalese territory used against Jammeh by private plotters, not an ECOWAS force joining a coalition against him), and no ECOWAS force or Senegalese-led coalition action occurred that year. The description's added detail about Senegal's role in the ECOWAS Mission in Guinea-Bissau (ECOMIB, est. 2012) is a separate, unrelated mission conflated into this entry. Year and substance both indicate this is a real event mis-dated by three years.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Senegal-led ECOWAS military/diplomatic intervention against Yahya Jammeh's Gambia (ECOWAS Mission in the Gambia, ECOMIG) is real, but it occurred in December 2016-January 2017 in response to Jammeh refusing to accept his election defeat to Adama Barrow, not in 2014. Senegal led the coalition force (with Nigeria, Mali, Togo, Ghana) that entered Gambia on Jan 19, 2017; Jammeh stepped down and left the country Jan 21, 2017. In 2014, the only Gambia-related incident was an unrelated failed coup attempt (Dec 30, 2014) by gunmen allegedly transiting via Senegal — there was no ECOWAS force, no Barrow election crisis, and no Senegalese-led regional military mission against Gambia that year. The year is materially wrong, so the event as dated is false.",
+        "source": "https://en.wikipedia.org/wiki/ECOWAS_military_intervention_in_the_Gambia",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2017
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event described — Senegal leading/joining an ECOWAS force to confront a Gambian political crisis under Yahya Jammeh (troops massing, hosting exiles, economic pressure to force him from power) — is the well-documented ECOWAS military intervention in The Gambia (Operation Restore Democracy / ECOMIG), which took place in January 2017, after Jammeh refused to accept his December 2016 election loss to Adama Barrow. Senegalese troops entered Gambia on 19 January 2017 at Barrow's request; Jammeh departed 21 January 2017. Nothing matching this description occurred in 2014. The only Gambia-related event in 2014 was a failed coup attempt against Jammeh (30 December 2014) staged by plotters who entered FROM Senegal — the opposite framing (Senegalese territory used against Jammeh by private plotters, not an ECOWAS force joining a coalition against him), and no ECOWAS force or Senegalese-led coalition action occurred that year. The description's added detail about Senegal's role in the ECOWAS Mission in Guinea-Bissau (ECOMIB, est. 2012) is a separate, unrelated mission conflated into this entry. Year and substance both indicate this is a real event mis-dated by three years.",
+        "source": "https://en.wikipedia.org/wiki/ECOWAS_military_intervention_in_the_Gambia",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2017
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/ECOWAS_military_intervention_in_the_Gambia"
   },
   {
     "year": 2016,
@@ -1104,6 +1225,42 @@
     ]
   },
   {
+    "year": 2020,
+    "title": "Senegal Bans Single-Use Plastics Nationwide",
+    "verdict": "TRUE",
+    "reason": "Law No. 2020-04 (voted Jan 8, 2020), banning production/import/sale of single-use plastics (bags, straws, cups), took effect in Senegal on April 20, 2020, confirmed by phys.org, Greenpeace Africa, and allAfrica. It repeals/builds on the 2015 plastic bag law (Law No. 2015-09) that was barely enforced (phys.org, elaw.org). French-language sources (pfongue.org citing the Heinrich Böll Stiftung legal analysis) confirm the law establishes a deposit-return (consigne) system for plastic bottles (Articles 6-14) and an extended producer responsibility (REP) scheme (Article 11). The COVID-19 exception allowing continued sale of plastic water sachets is explicitly confirmed by Greenpeace Africa, phys.org, and allAfrica, quoting Environment Minister Abdou Karim Sall. All material details (country, year, effective date, 2015 precursor, deposit-return system, EPR, sachet exception) are corroborated by multiple independent sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent sources. Senegal's Law No. 2020-04 (adopted January 8, 2020) banning production, import, and sale of single-use plastics (bags, straws, cups, sachets) took effect April 20, 2020, exactly as described. It repealed/built on the 2015 Law No. 2015-09 which had banned thin plastic bags but was 'barely enforced' per Heinrich Böll Foundation analysis. Law 2020-04 explicitly establishes a deposit system for plastic bottles and expanded/extended producer responsibility. The COVID-19 exception for plastic water sachets is directly confirmed: Environment Minister Abdou Karim Sall stated the government would relax enforcement on water sachets due to pandemic economic/social impacts (phys.org, Greenpeace Africa, allAfrica). All material details (year, country, scope, mechanism, COVID exception, 2015 precedent) match.",
+        "source": "https://phys.org/news/2020-04-senegal-single-use-plastics.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Law No. 2020-04 (voted Jan 8, 2020), banning production/import/sale of single-use plastics (bags, straws, cups), took effect in Senegal on April 20, 2020, confirmed by phys.org, Greenpeace Africa, and allAfrica. It repeals/builds on the 2015 plastic bag law (Law No. 2015-09) that was barely enforced (phys.org, elaw.org). French-language sources (pfongue.org citing the Heinrich Böll Stiftung legal analysis) confirm the law establishes a deposit-return (consigne) system for plastic bottles (Articles 6-14) and an extended producer responsibility (REP) scheme (Article 11). The COVID-19 exception allowing continued sale of plastic water sachets is explicitly confirmed by Greenpeace Africa, phys.org, and allAfrica, quoting Environment Minister Abdou Karim Sall. All material details (country, year, effective date, 2015 precursor, deposit-return system, EPR, sachet exception) are corroborated by multiple independent sources.",
+        "source": "https://phys.org/news/2020-04-senegal-single-use-plastics.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://phys.org/news/2020-04-senegal-single-use-plastics.html"
+  },
+  {
     "year": 2021,
     "title": "Ousmane Sonko Trial Triggers Deadly Protests",
     "verdict": "TRUE",
@@ -1177,30 +1334,6 @@
   },
   {
     "year": 2023,
-    "title": "Sonko Convicted and PASTEF Dissolved",
-    "verdict": "TRUE",
-    "reason": "Sonko convicted June 2023 of 'corrupting youth'; sentenced to 2 years. PASTEF dissolved by government decree July 2023. At least 16 people killed in protests per government (higher figures from opposition/Amnesty). All facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Sonko convicted June 2023 of 'corrupting youth'; sentenced to 2 years. PASTEF dissolved by government decree July 2023. At least 16 people killed in protests per government (higher figures from opposition/Amnesty). All facts confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2023,
     "title": "Massive Wave of Arrests of Opposition Supporters",
     "verdict": "TRUE",
     "reason": "Over 1,000 arrests documented by human rights organisations following PASTEF dissolution and protests. Amnesty International and HRW documented abuses. Facts confirmed.",
@@ -1224,10 +1357,10 @@
     ]
   },
   {
-    "year": 2024,
-    "title": "Sall Postpones Presidential Election by Decree",
+    "year": 2023,
+    "title": "Sonko Convicted and PASTEF Dissolved",
     "verdict": "TRUE",
-    "reason": "Sall signed decree 3 February 2024 postponing 25 February election. ECOWAS and Constitutional Council condemned. First such postponement in Senegal's history. All facts confirmed.",
+    "reason": "Sonko convicted June 2023 of 'corrupting youth'; sentenced to 2 years. PASTEF dissolved by government decree July 2023. At least 16 people killed in protests per government (higher figures from opposition/Amnesty). All facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1237,7 +1370,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Sall signed decree 3 February 2024 postponing 25 February election. ECOWAS and Constitutional Council condemned. First such postponement in Senegal's history. All facts confirmed.",
+        "reason": "Sonko convicted June 2023 of 'corrupting youth'; sentenced to 2 years. PASTEF dissolved by government decree July 2023. At least 16 people killed in protests per government (higher figures from opposition/Amnesty). All facts confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1273,30 +1406,6 @@
   },
   {
     "year": 2024,
-    "title": "Sonko Released from Prison, Faye Wins Landslide Victory",
-    "verdict": "TRUE",
-    "reason": "Faye won 54.28% on 24 March 2024 in first round. Released from prison 10 days before election under amnesty. Youngest elected president in Africa at 44. All facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Faye won 54.28% on 24 March 2024 in first round. Released from prison 10 days before election under amnesty. Youngest elected president in Africa at 44. All facts confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2024,
     "title": "Ousmane Sonko Appointed Prime Minister",
     "verdict": "TRUE",
     "reason": "Faye appointed Sonko as PM on 3 April 2024 after inauguration on 2 April. Facts confirmed by Al Jazeera and France 24.",
@@ -1320,20 +1429,20 @@
     ]
   },
   {
-    "year": 1974,
-    "title": "Cheikh Anta Diop Publishes 'Nations Negres et Culture' Influence Peaks",
-    "verdict": "FALSE",
-    "reason": "Year is materially wrong. 'Nations Negres et Culture' was first published in 1954, not 1974. The event title says 'Publishes' but the description says 'influence peaks' in the 1970s. Using 1974 as the year for publication is factually false. The book was published 20 years earlier.",
+    "year": 2024,
+    "title": "Sall Postpones Presidential Election by Decree",
+    "verdict": "TRUE",
+    "reason": "Sall signed decree 3 February 2024 postponing 25 February election. ECOWAS and Constitutional Council condemned. First such postponement in Senegal's history. All facts confirmed.",
     "verify_count": 1,
-    "consensus_verdict": "FALSE",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Year is materially wrong. 'Nations Negres et Culture' was first published in 1954, not 1974. The event title says 'Publishes' but the description says 'influence peaks' in the 1970s. Using 1974 as the year for publication is factually false. The book was published 20 years earlier.",
+        "verdict": "TRUE",
+        "reason": "Sall signed decree 3 February 2024 postponing 25 February election. ECOWAS and Constitutional Council condemned. First such postponement in Senegal's history. All facts confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1344,10 +1453,10 @@
     ]
   },
   {
-    "year": 1993,
-    "title": "Disputed 1993 Presidential Election and Political Violence",
+    "year": 2024,
+    "title": "Sonko Released from Prison, Faye Wins Landslide Victory",
     "verdict": "TRUE",
-    "reason": "Diouf won 58% on 21 February 1993. Babacar Seye (VP of Constitutional Council) assassinated on 15 May 1993. Wade charged but charges later dropped. All facts confirmed.",
+    "reason": "Faye won 54.28% on 24 March 2024 in first round. Released from prison 10 days before election under amnesty. Youngest elected president in Africa at 44. All facts confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1357,7 +1466,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Diouf won 58% on 21 February 1993. Babacar Seye (VP of Constitutional Council) assassinated on 15 May 1993. Wade charged but charges later dropped. All facts confirmed.",
+        "reason": "Faye won 54.28% on 24 March 2024 in first round. Released from prison 10 days before election under amnesty. Youngest elected president in Africa at 44. All facts confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",

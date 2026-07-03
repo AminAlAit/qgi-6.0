@@ -386,6 +386,42 @@
     "source": "https://en.wikipedia.org/wiki/2001_Bangladeshi_general_election"
   },
   {
+    "year": 2002,
+    "title": "Bangladesh Becomes First Country to Ban Thin Polythene Bags Nationwide",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm all material details: on 1 January 2002 Bangladesh's Ministry of Environment and Forest banned production, sale and use of thin polythene bags (≤20 microns thick), starting in Dhaka and later expanded nationwide, in direct response to bags clogging drainage and worsening the catastrophic late-1990s Dhaka floods. Guinness World Records officially recognizes Bangladesh as the first country to ban single-use plastic bags on this basis, citing the same date and micron threshold. Bangladeshi press (The Daily Star) and international coverage (Eco-Business, UNEP, NPF Packaging) independently confirm the ban's later enforcement weakened while the law remained on the books as the global pioneering model for plastic bag bans — matching the description's claim verbatim.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: on 1 January 2002, Bangladesh legislated a ban on production, sale, and use of thin polythene bags (≤20 microns thick), starting in Dhaka before nationwide rollout. Guinness World Records lists this as the record for 'First country to ban single-use plastic bags,' explicitly citing the 1 Jan 2002 date, the 20-micron threshold, the Dhaka-first/nationwide-expansion pattern, and the drainage-clogging/flooding motivation (bags exacerbating Dhaka flooding). Additional corroboration from NPF Packaging, Daily Star, Eco-Business, and a ResearchGate paper on 'The Policy Failure of Polythene Ban in 2002' all describe the same event, including the later enforcement weakening mentioned in the event description. All material details (year, country, action, threshold, driver, enforcement trajectory) match.",
+        "source": "https://www.guinnessworldrecords.com/world-records/636873-first-country-to-ban-single-use-plastic-bags",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material details: on 1 January 2002 Bangladesh's Ministry of Environment and Forest banned production, sale and use of thin polythene bags (≤20 microns thick), starting in Dhaka and later expanded nationwide, in direct response to bags clogging drainage and worsening the catastrophic late-1990s Dhaka floods. Guinness World Records officially recognizes Bangladesh as the first country to ban single-use plastic bags on this basis, citing the same date and micron threshold. Bangladeshi press (The Daily Star) and international coverage (Eco-Business, UNEP, NPF Packaging) independently confirm the ban's later enforcement weakened while the law remained on the books as the global pioneering model for plastic bag bans — matching the description's claim verbatim.",
+        "source": "https://www.guinnessworldrecords.com/world-records/636873-first-country-to-ban-single-use-plastic-bags",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.guinnessworldrecords.com/world-records/636873-first-country-to-ban-single-use-plastic-bags"
+  },
+  {
     "year": 2003,
     "title": "Dhakaâ€“Chittagong Highway Expansion",
     "verdict": "TRUE",

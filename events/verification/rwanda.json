@@ -1809,5 +1809,41 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Vision_2050_(Rwanda)"
+  },
+  {
+    "year": 1978,
+    "title": "New constitution and Habyarimana re-election by referendum",
+    "verdict": "TRUE",
+    "reason": "Confirmed via independent sources. Rwanda held a constitutional referendum on 17 December 1978 (approved by ~89% of voters), which established MRND as the sole legal party (one-party state) under Habyarimana, who had taken power in the 1973 coup. A week later, on 24 December 1978, Habyarimana ran unopposed in a presidential election and won with 98.99% of votes cast (matches the described \"98%\" support). The regime's entrenchment of northern Hutu (Gisenyi/akazu network) domination of state institutions and the military, replacing the prior southern Hutu-dominated Kayibanda regime, is independently corroborated by Wikipedia, Britannica, HRW, and Grokipedia. All material elements (country, year, constitution, referendum, MRND single-party institutionalization, ~98% Habyarimana vote share, northern Hutu domination of state/military) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia. On 17 December 1978, Rwanda held a constitutional referendum (~89% approval) that formally made the National Revolutionary Movement for Development (MRND) the sole legal party, fusing party and state structures. One week later, on 24 December 1978, a presidential election/plebiscite was held in which incumbent Juvénal Habyarimana ran unopposed as MRND's sole nominee and won with 98.99% support — matching the description's \"98% support\" claim for the presidential referendum. Historical sources (Grokipedia's Akazu/Habyarimana pages, Beyond Intractability) also corroborate that Habyarimana's Second Republic, formalized by this 1978 constitutional order, entrenched a power base of northern Hutu elites (from Gisenyi/Ruhengeri, his home region) in state, party, and military institutions, displacing the previously dominant central/southern Hutu elite of the Kayibanda era — consistent with the description's claim of entrenched northern Hutu domination of state institutions and the military. All material elements (country, year, new constitution, MRND single-party institutionalization, ~98% Habyarimana referendum/election result, northern Hutu entrenchment) check out.",
+        "source": "https://en.wikipedia.org/wiki/1978_Rwandan_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via independent sources. Rwanda held a constitutional referendum on 17 December 1978 (approved by ~89% of voters), which established MRND as the sole legal party (one-party state) under Habyarimana, who had taken power in the 1973 coup. A week later, on 24 December 1978, Habyarimana ran unopposed in a presidential election and won with 98.99% of votes cast (matches the described \"98%\" support). The regime's entrenchment of northern Hutu (Gisenyi/akazu network) domination of state institutions and the military, replacing the prior southern Hutu-dominated Kayibanda regime, is independently corroborated by Wikipedia, Britannica, HRW, and Grokipedia. All material elements (country, year, constitution, referendum, MRND single-party institutionalization, ~98% Habyarimana vote share, northern Hutu domination of state/military) check out.",
+        "source": "https://en.wikipedia.org/wiki/1978_Rwandan_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1978_Rwandan_presidential_election"
   }
 ]

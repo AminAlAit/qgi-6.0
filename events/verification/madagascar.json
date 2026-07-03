@@ -1210,5 +1210,43 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2025_Malagasy_coup_d'%C3%A9tat"
+  },
+  {
+    "year": 1952,
+    "title": "Forced Labor Formally Abolished in French Madagascar",
+    "verdict": "FALSE",
+    "reason": "The formal abolition of the prestation forced-labor system across French colonial territories, including Madagascar, was enacted by law no. 46-645 of 11 April 1946 (the 'Loi Houphouët-Boigny'), following the 1944 Brazzaville Conference recommendations and post-WWII international pressure. Multiple independent sources (EHNE/Sorbonne encyclopedia, France Info) confirm this 1946 date and describe exactly the pattern in the description (formal abolition while economic coercion persisted in practice). 1952 instead corresponds to a different, later French law (Loi n° 52-1322 du 15 décembre 1952) that established a broader 'Code du travail' (labor code) for overseas territories, regulating wages/conditions -- it was not the act that abolished forced labor, since that had already been abolished six years earlier. The year is materially wrong by 6 years, so this does not verify as described for 1952.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event is real in substance but the year is wrong. France's formal abolition of forced/prestation labor across its colonial territories — including Madagascar — was enacted by the \"Loi Houphouët-Boigny\" (Law No. 46-645), adopted 11 April 1946, following the 1944 Brazzaville Conference commitments and post-war international/domestic pressure. Multiple independent sources converge on 1946, not 1952: Wikipedia's Félix Houphouët-Boigny article confirms the law's 11 April 1946 date; the EHNE (Encyclopédie d'histoire numérique de l'Europe) entry on forced labor in European colonies states the possibility of forced labor \"remained law until 1946\" when the indigénat/forced-labor regime was suppressed; a World History summary of Madagascar's colonial period states \"Only at the end of 1946 was compulsory labour abolished, after much opposition from the representatives of the French settlers,\" specifically in the Madagascar context (and notes settlers subsequently defied the ban in coffee regions in 1946-47, feeding into the 1947 uprising); and the Wikipedia \"Indigénat\" article places the legal dismantling of the forced-labor/native-code regime in the 1944-1947 phase. No source found ties a comparable formal abolition event to 1952 for Madagascar or French colonies generally (1952 instead corresponds to a later, broader \"Code du travail des territoires d'outre-mer,\" which is a distinct labor-code event, not the forced-labor abolition described). Description substance (symbolic abolition following international pressure, continued de facto economic coercion) matches the 1946 law closely, so this looks like a straightforward year mislabel of a real event.",
+        "source": "https://en.wikipedia.org/wiki/F%C3%A9lix_Houphou%C3%ABt-Boigny",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1946
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The formal abolition of the prestation forced-labor system across French colonial territories, including Madagascar, was enacted by law no. 46-645 of 11 April 1946 (the 'Loi Houphouët-Boigny'), following the 1944 Brazzaville Conference recommendations and post-WWII international pressure. Multiple independent sources (EHNE/Sorbonne encyclopedia, France Info) confirm this 1946 date and describe exactly the pattern in the description (formal abolition while economic coercion persisted in practice). 1952 instead corresponds to a different, later French law (Loi n° 52-1322 du 15 décembre 1952) that established a broader 'Code du travail' (labor code) for overseas territories, regulating wages/conditions -- it was not the act that abolished forced labor, since that had already been abolished six years earlier. The year is materially wrong by 6 years, so this does not verify as described for 1952.",
+        "source": "https://ehne.fr/en/encyclopedia/themes/europe-europeans-and-world/forced-migration-and-work-in-european-colonies/forced-labor-in-european-colonies",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1946
+      }
+    ],
+    "source": "https://ehne.fr/en/encyclopedia/themes/europe-europeans-and-world/forced-migration-and-work-in-european-colonies/forced-labor-in-european-colonies"
   }
 ]

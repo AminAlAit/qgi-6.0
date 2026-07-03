@@ -1209,5 +1209,41 @@
       }
     ],
     "source": "https://www.nbim.no/en/about-us/about-the-fund/"
+  },
+  {
+    "year": 2024,
+    "title": "Offshore Wind Licensing Round Awards First Major Contracts",
+    "verdict": "TRUE",
+    "reason": "Confirmed from multiple independent sources. Norway held its first offshore wind auction for the Sørlige Nordsjø II zone in the North Sea on 18 March 2024, awarded to Ventyr SN II AS (a Parkwind/Ingka Investments consortium), beating an Equinor/RWE joint venture. The Norwegian government signed a two-way Contract for Difference (CfD) with Ventyr in April 2024, formalizing the award. This is documented as Norway's first commercial offshore wind farm contract. Independently, Norway's stated national ambition — reaffirmed in government/industry sources — is to allocate 30 GW of offshore wind capacity by 2040, explicitly framed as leveraging the country's offshore oil & gas engineering base. All material elements (country=Norway, year=2024, North Sea location, first major licensing award, 30 GW by 2040 target) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent sources: Norway's first offshore wind auction (Sørlige Nordsjø II) was won by Ventyr SN II AS (Parkwind + Ingka/IKEA Investments) on 20-21 March 2024, and the contract-for-difference with the Norwegian state was signed in April 2024 — reported by Electrek as \"Norway just signed a contract for its first commercial offshore wind farm\" and by the Norwegian government (regjeringen.no) as a milestone. Norway's 30 GW-by-2040 offshore wind ambition is independently confirmed (regjeringen.no, offshorewind.biz, WindEurope, Electrek). The petroleum-expertise leverage angle is a commonly cited general framing for Norway's offshore wind strategy in industry commentary (e.g., DLA Piper), consistent with though not verbatim-sourced from the auction-specific articles. Minor nuance: only the Sørlige Nordsjø II award was finalized in 2024 (singular project/contract); the companion Utsira Nord round was delayed to 2025, so \"licenses\" plural is slightly generous, but year, country, and core substance (first major offshore wind licensing/contract award, North Sea, 30 GW/2040 target) all hold.",
+        "source": "https://electrek.co/2024/04/19/norway-just-signed-a-contract-for-its-first-commercial-offshore-wind-farm/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources. Norway held its first offshore wind auction for the Sørlige Nordsjø II zone in the North Sea on 18 March 2024, awarded to Ventyr SN II AS (a Parkwind/Ingka Investments consortium), beating an Equinor/RWE joint venture. The Norwegian government signed a two-way Contract for Difference (CfD) with Ventyr in April 2024, formalizing the award. This is documented as Norway's first commercial offshore wind farm contract. Independently, Norway's stated national ambition — reaffirmed in government/industry sources — is to allocate 30 GW of offshore wind capacity by 2040, explicitly framed as leveraging the country's offshore oil & gas engineering base. All material elements (country=Norway, year=2024, North Sea location, first major licensing award, 30 GW by 2040 target) check out.",
+        "source": "https://www.offshorewind.biz/2024/04/19/contract-signed-for-norways-first-commercial-offshore-wind-farm/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.offshorewind.biz/2024/04/19/contract-signed-for-norways-first-commercial-offshore-wind-farm/"
   }
 ]

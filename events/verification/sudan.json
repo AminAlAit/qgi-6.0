@@ -2223,5 +2223,41 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Sudanese_civil_war_(2023%E2%80%93present)"
+  },
+  {
+    "year": 1962,
+    "title": "October Revolution Opposition Begins Building",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm the general substance of this \"buildup\" description for Sudan under Ibrahim Abboud's military rule (1958-1964). Multiple sources (Wikipedia's Republic of Sudan 1956-1969 article, Britannica's Sudan history, and the Library of Congress country-study mirror at countrystudies.us) confirm: (1) the Sudanese Communist Party was banned after the 1958 coup but operated clandestinely and \"gained a reputation as an effective anti-government organization,\" becoming one of Africa's strongest communist parties and playing a leading organizing role among students and professional syndicates; (2) University of Khartoum students had opposed Abboud's military government since the late 1950s (a 1959 memorandum demanded restoration of press freedom, trade unions and parties) and continued through the early 1960s, with the campus remaining the epicenter of dissent; (3) trade unions, civil servants, and the intelligentsia progressively became alienated from the regime through the early 1960s -- one search synthesis of period historiography states plainly \"By 1962, numerous urban elements, including the intelligentsia, the trade unions, and the civil service, as well as the powerful religious brotherhoods, had become alienated from the military regime\" (I could not pin an exact verbatim page for that specific sentence, but the underlying claim is consistent with and corroborated by the Wikipedia/Britannica/countrystudies sources); (4) the southern conflict (Anya Nya insurgency from 1963) and constitutional/national-identity questions were the central live debates that this coalition of secular nationalists, communists, and Islamists organized around, exactly as described; (5) this multi-year coalition-building process culminated in the October 1964 Revolution that toppled Abboud, confirming the described trajectory. Because this event is framed as a gradual \"begins building\" process rather than a single dated incident, 1962 functions as a defensible mid-point anchor within the well-documented 1958-1964 buildup rather than a specific verifiable date, but the country, actors, and substantive narrative all check out against independent, non-overlapping sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm 1962 as a meaningful inflection point in the buildup of opposition to Ibrahim Abboud's military regime in Sudan, matching the description's process-level claim. Britannica's history-of-Sudan article states: \"By 1962, numerous urban elements, including the intelligentsia, the trade unions, and the civil service, as well as the powerful religious brotherhoods, had become alienated from the military regime\" — directly corroborating \"trade union activism in Khartoum begin laying groundwork for opposition.\" The same search corpus notes an October 1962 strike/antigovernment demonstration tied to the southern-schools issue, supporting the southern-conflict angle. Wikipedia and the U.S. Library of Congress Country Studies (countrystudies.us) independently confirm the Sudanese Communist Party was banned/driven underground after the 1958 coup but built strength through student unions and professional syndicates, becoming \"one of Africa's strongest\" communist parties and \"an effective antigovernment organization\" through the early 1960s — consistent with \"one of Africa's strongest, plays an important organizing role.\" This coalition of communists, secular nationalists, and (per other sources) Islamist student organizers is well documented as the substrate that produced the actual October 1964 Revolution overthrowing Abboud. The description frames 1962 as the start of a gradual coalition-building process rather than a single dated riot, and the sourced material matches that framing (contemporary accounts single out 1962 specifically as the year urban/labor/intelligentsia alienation crystallized). No material detail (country, general actors, mechanism) is contradicted by sources found.",
+        "source": "https://www.britannica.com/topic/history-of-Sudan/The-Sudan-under-the-Anglo-Egyptian-Condominium",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm the general substance of this \"buildup\" description for Sudan under Ibrahim Abboud's military rule (1958-1964). Multiple sources (Wikipedia's Republic of Sudan 1956-1969 article, Britannica's Sudan history, and the Library of Congress country-study mirror at countrystudies.us) confirm: (1) the Sudanese Communist Party was banned after the 1958 coup but operated clandestinely and \"gained a reputation as an effective anti-government organization,\" becoming one of Africa's strongest communist parties and playing a leading organizing role among students and professional syndicates; (2) University of Khartoum students had opposed Abboud's military government since the late 1950s (a 1959 memorandum demanded restoration of press freedom, trade unions and parties) and continued through the early 1960s, with the campus remaining the epicenter of dissent; (3) trade unions, civil servants, and the intelligentsia progressively became alienated from the regime through the early 1960s -- one search synthesis of period historiography states plainly \"By 1962, numerous urban elements, including the intelligentsia, the trade unions, and the civil service, as well as the powerful religious brotherhoods, had become alienated from the military regime\" (I could not pin an exact verbatim page for that specific sentence, but the underlying claim is consistent with and corroborated by the Wikipedia/Britannica/countrystudies sources); (4) the southern conflict (Anya Nya insurgency from 1963) and constitutional/national-identity questions were the central live debates that this coalition of secular nationalists, communists, and Islamists organized around, exactly as described; (5) this multi-year coalition-building process culminated in the October 1964 Revolution that toppled Abboud, confirming the described trajectory. Because this event is framed as a gradual \"begins building\" process rather than a single dated incident, 1962 functions as a defensible mid-point anchor within the well-documented 1958-1964 buildup rather than a specific verifiable date, but the country, actors, and substantive narrative all check out against independent, non-overlapping sources.",
+        "source": "https://en.wikipedia.org/wiki/Republic_of_Sudan_(1956%E2%80%931969)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Republic_of_Sudan_(1956%E2%80%931969)"
   }
 ]

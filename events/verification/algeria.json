@@ -3328,5 +3328,43 @@
       }
     ],
     "source": "https://newsaf.cgtn.com/news/2022-11-08/Algeria-officially-submits-application-to-join-the-BRICS-1eMb4SFA0uc/index.html"
+  },
+  {
+    "year": 2023,
+    "title": "Algeria assumes presidency of Arab League",
+    "verdict": "FALSE",
+    "reason": "The event is real but misdated. Algeria assumed the Arab League chairmanship and hosted the summit in Algiers on November 1-2, 2022 (the 31st Arab Summit), not 2023 — confirmed by Wikipedia's dedicated \"2022 Arab League summit\" page, Brookings, Al Jazeera, and Egypt's State Information Service. Algeria's presidency ran roughly six months until the next summit (Jeddah, May 2023) under Saudi Arabia's chairmanship. Syria's actual Arab League readmission was a later, separate decision made at a Cairo foreign ministers' meeting on 7 May 2023 — not at the Algiers summit itself, and Syria subsequently attended the Jeddah summit, not one chaired by Algeria. So the described 'summit hosted in Algiers' where Algeria assumed the presidency happened in 2022, and the year given (2023) does not match the actual summit date.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The described event (Algiers hosting the Arab League summit, Algeria assuming the League's rotating chairmanship, President Tebboune pushing for Syria's readmission and advocating Palestinian rights) is real and materially accurate, but it happened in November 2022, not 2023. Wikipedia and multiple news sources (Al Jazeera, Brookings, Arab News, Africanews) confirm the 31st Arab League summit was held in Algiers Nov 1-2, 2022, chaired by Algeria under Tebboune, with Syria's readmission bid failing and Palestinian issues featured prominently. By 2023, chairmanship had passed to Saudi Arabia, which hosted the 32nd Arab League summit in Jeddah on May 19, 2023 — Algeria was no longer the chair in 2023.",
+        "source": "https://en.wikipedia.org/wiki/2022_Arab_League_summit",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2022
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real but misdated. Algeria assumed the Arab League chairmanship and hosted the summit in Algiers on November 1-2, 2022 (the 31st Arab Summit), not 2023 — confirmed by Wikipedia's dedicated \"2022 Arab League summit\" page, Brookings, Al Jazeera, and Egypt's State Information Service. Algeria's presidency ran roughly six months until the next summit (Jeddah, May 2023) under Saudi Arabia's chairmanship. Syria's actual Arab League readmission was a later, separate decision made at a Cairo foreign ministers' meeting on 7 May 2023 — not at the Algiers summit itself, and Syria subsequently attended the Jeddah summit, not one chaired by Algeria. So the described 'summit hosted in Algiers' where Algeria assumed the presidency happened in 2022, and the year given (2023) does not match the actual summit date.",
+        "source": "https://en.wikipedia.org/wiki/2022_Arab_League_summit",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2022
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2022_Arab_League_summit"
   }
 ]

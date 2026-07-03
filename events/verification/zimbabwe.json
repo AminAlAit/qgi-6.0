@@ -1225,6 +1225,42 @@
     "source": "https://en.wikipedia.org/wiki/Hyperinflation_in_Zimbabwe"
   },
   {
+    "year": 2010,
+    "title": "Zimbabwe Bans Thin Plastic Bags Under New Environmental Regulation",
+    "verdict": "TRUE",
+    "reason": "Confirmed via ECOLEX (authoritative UN-affiliated environmental law database): Zimbabwe's Statutory Instrument 98 of 2010 (Plastic Packaging and Plastic Bottles Regulation) banned plastic packaging with wall thickness under 30 micrometers, with bread packaging exempted (25 micron allowance). Multiple independent secondary sources (academic journal article on \"the plastic bag ban controversy in Zimbabwe,\" Global Press Journal, Zimbabwean news outlets) corroborate: issued May 2010 by the Ministry of Environment and Natural Resources, penalties of US$5,000 fine or one year imprisonment for violators, bread packaging exemption, and subsequent enforcement weakening amid informal-sector plastic imports. All material details in the event description (year, country, actor, mechanism, thickness threshold, penalty amount, exemption, and enforcement decay) match found sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Zimbabwe's Statutory Instrument 98 of 2010 (Plastic Packaging and Plastic Bottles Regulations), issued in May 2010 by the then Ministry of Environment and Natural Resources (later renamed Ministry of Environment, Water and Climate). It prohibits manufacture, distribution and importation of plastic packaging/bags with wall thickness under 30 micrometers, with bread packaging exempted (permitted at ~25 microns). News and academic sources (ISDS journal article, ResearchGate paper on 'the plastic bag ban controversy in Zimbabwe', Global Press Journal, News Hub Zimbabwe) corroborate the US$5,000/one-year-jail penalty and confirm the later erosion of enforcement amid informal-sector plastic imports from China. All material details in the event description (year, country, instrument number, micron threshold, exemption, penalty, and subsequent weak enforcement) are corroborated across independent sources including the FAO ECOLEX legal database entry for the actual statutory instrument.",
+        "source": "https://www.ecolex.org/details/legislation/plastic-packaging-and-plastic-bottles-regulation-2010-si-no-98-of-2010-lex-faoc171720/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via ECOLEX (authoritative UN-affiliated environmental law database): Zimbabwe's Statutory Instrument 98 of 2010 (Plastic Packaging and Plastic Bottles Regulation) banned plastic packaging with wall thickness under 30 micrometers, with bread packaging exempted (25 micron allowance). Multiple independent secondary sources (academic journal article on \"the plastic bag ban controversy in Zimbabwe,\" Global Press Journal, Zimbabwean news outlets) corroborate: issued May 2010 by the Ministry of Environment and Natural Resources, penalties of US$5,000 fine or one year imprisonment for violators, bread packaging exemption, and subsequent enforcement weakening amid informal-sector plastic imports. All material details in the event description (year, country, actor, mechanism, thickness threshold, penalty amount, exemption, and enforcement decay) match found sources.",
+        "source": "https://www.ecolex.org/details/legislation/plastic-packaging-and-plastic-bottles-regulation-2010-si-no-98-of-2010-lex-faoc171720/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.ecolex.org/details/legislation/plastic-packaging-and-plastic-bottles-regulation-2010-si-no-98-of-2010-lex-faoc171720/"
+  },
+  {
     "year": 2011,
     "title": "Econet Launches EcoCash, Transforming Mobile Money in Zimbabwe",
     "verdict": "TRUE",
@@ -1659,6 +1695,44 @@
       }
     ],
     "source": "https://chinaglobalsouth.com/analysis/zimbabwe-lithium-export-ban-china-supply-chain/"
+  },
+  {
+    "year": 2023,
+    "title": "Nelson Chamisa Resigns as CCC Leader",
+    "verdict": "FALSE",
+    "reason": "The substance is real — Chamisa did resign from CCC citing ZANU-PF infiltration via Sengezo Tshabangu's fake 'interim secretary general' claim and mass recalls of CCC MPs/councillors, which subverted the parliamentary caucus — but the resignation itself did not happen in December 2023. Multiple independent sources (Africanews, Report Focus News, allAfrica, The EastAfrican, Al Jazeera) place Chamisa's actual withdrawal announcement on January 25, 2024, in a 13-page statement. The Tshabangu-led recalls/crisis began in October 2023 and continued into December 2023, but the terminating event described (Chamisa's resignation) occurred in 2024, not the stated year. Year is a material join-key error, so this is FALSE-by-wrong-year rather than TRUE/PARTIAL.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event is real and substantively accurate (Chamisa resigned from CCC citing ZANU-PF infiltration via fake/imposter party representatives led by Sengezo Tshabangu, and said he was withdrawing from institutionalized politics), but the year is wrong. Multiple independent sources (Bloomberg, Africanews, Report Focus News, TRT, Al Jazeera) confirm the resignation was announced on January 25, 2024 — not December 2023. December 2023 was when the Tshabangu-led parliamentary/council recalls (the triggering crisis) occurred, but the resignation itself falls in 2024.",
+        "source": "https://www.bloomberg.com/news/articles/2024-01-25/zimbabwe-opposition-leader-chamisa-says-he-has-quit-ccc-party",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2024
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The substance is real — Chamisa did resign from CCC citing ZANU-PF infiltration via Sengezo Tshabangu's fake 'interim secretary general' claim and mass recalls of CCC MPs/councillors, which subverted the parliamentary caucus — but the resignation itself did not happen in December 2023. Multiple independent sources (Africanews, Report Focus News, allAfrica, The EastAfrican, Al Jazeera) place Chamisa's actual withdrawal announcement on January 25, 2024, in a 13-page statement. The Tshabangu-led recalls/crisis began in October 2023 and continued into December 2023, but the terminating event described (Chamisa's resignation) occurred in 2024, not the stated year. Year is a material join-key error, so this is FALSE-by-wrong-year rather than TRUE/PARTIAL.",
+        "source": "https://www.africanews.com/2024/01/25/zimbabwean-opposition-leader-nelson-chamisa-leaves-ccc-party/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2024
+      }
+    ],
+    "source": "https://www.africanews.com/2024/01/25/zimbabwean-opposition-leader-nelson-chamisa-leaves-ccc-party/"
   },
   {
     "year": 2023,

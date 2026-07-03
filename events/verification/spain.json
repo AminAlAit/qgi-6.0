@@ -1476,6 +1476,42 @@
     ]
   },
   {
+    "year": 2018,
+    "title": "Spain Signs Just Transition Agreement to Close Coal Mines",
+    "verdict": "TRUE",
+    "reason": "Confirmed via multiple independent sources: on October 24, 2018, Spain's Ministry for Ecological Transition signed a framework agreement ('Just Transition from Coal Mining and Sustainable Development of Mining Regions 2019-2027') with unions (CCOO, UGT/FICA, USO) and mining employers' federation Carbunión, backed by roughly €250 million. Euracoal's industry archive confirms the exact October 24, 2018 signing date. energy-reporters.com and industriALL both confirm ~10 coal mines closing by year end 2018 with early retirement for miners over 48 (with 25 years service), redundancy payments (~€10,000 plus 35 days' pay per year of service) for younger workers, and funding for environmental restoration and green retraining. The industriALL summary specifically ties the deal to 1,677 jobs across eight companies in four regions. The agreement is widely described by unions and outlets as a model/landmark deal for EU coal-phaseout labor agreements. All material details in the description (date, amount, job losses, retirement/redundancy terms, 'model' framing) are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: on 24 October 2018, Spain's Ministry for Ecological Transition (Minister Teresa Ribera) signed a framework agreement with unions (UGT-FICA, CCOO Industria, USO) and the Carbunión employers' association for a €250 million 'Just Transition' plan (Plan del Carbón) covering 2019-2027. Ten pits/open-cast mines closed by year-end 2018, resulting in 1,677 job losses across eight companies/12 production units in four regions. Terms matched exactly: early retirement for miners 48+ with 25 years' service, €10,000 redundancy plus 35 days' pay per year of service for younger miners, funding for environmental restoration of former mining sites and green retraining/reskilling. The deal was widely characterized (IndustriALL, ETUC) as a landmark/model Just Transition agreement cited as a precedent for coal-phaseout labor deals in the EU. All material details in the event description check out.",
+        "source": "https://www.industriall-union.org/spanish-coal-unions-win-landmark-just-transition-deal",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources: on October 24, 2018, Spain's Ministry for Ecological Transition signed a framework agreement ('Just Transition from Coal Mining and Sustainable Development of Mining Regions 2019-2027') with unions (CCOO, UGT/FICA, USO) and mining employers' federation Carbunión, backed by roughly €250 million. Euracoal's industry archive confirms the exact October 24, 2018 signing date. energy-reporters.com and industriALL both confirm ~10 coal mines closing by year end 2018 with early retirement for miners over 48 (with 25 years service), redundancy payments (~€10,000 plus 35 days' pay per year of service) for younger workers, and funding for environmental restoration and green retraining. The industriALL summary specifically ties the deal to 1,677 jobs across eight companies in four regions. The agreement is widely described by unions and outlets as a model/landmark deal for EU coal-phaseout labor agreements. All material details in the description (date, amount, job losses, retirement/redundancy terms, 'model' framing) are corroborated.",
+        "source": "https://euracoal.eu/library/archive/spain-7/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://euracoal.eu/library/archive/spain-7/"
+  },
+  {
     "year": 2019,
     "title": "Supreme Court Sentences Catalan Independence Leaders to Prison",
     "verdict": "TRUE",

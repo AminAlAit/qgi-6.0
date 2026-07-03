@@ -1362,6 +1362,42 @@
   },
   {
     "year": 1989,
+    "title": "Mexico City Launches Hoy No Circula Driving Restrictions to Cut Smog",
+    "verdict": "TRUE",
+    "reason": "Confirmed from multiple independent sources: Mexico City's Hoy No Circula program launched on 20 November 1989 in response to record airborne pollution, restricting vehicles from driving one weekday per week based on license plate number, initially covering 2.3 million vehicles (460,000/day). Lucas Davis's peer-reviewed study (Journal of Political Economy, 2008, based on NBER working paper) found the program failed to improve air quality because households responded by acquiring additional vehicles (often more polluting ones) to circumvent the restriction — matching the description's claim about later research findings materially and precisely.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via independent academic sources: the Mexico City government launched Hoy No Circula on November 20, 1989, restricting vehicles from driving one weekday based on license plate number, in response to record airborne pollution. The program initially covered 2.3 million vehicles (460,000/day), matching the description exactly. Lucas Davis's peer-reviewed 2008 Journal of Political Economy study (and its NBER working-paper precursor) found no evidence the restriction improved air quality, and documented that households responded by acquiring additional vehicles to evade the rule — precisely the 'later research found the program failed' claim in the description. All material details (date, country, scope, mechanism, and the negative research finding) check out.",
+        "source": "https://users.nber.org/~confer/2006/si2006/ee/davis.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: Mexico City's Hoy No Circula program launched on 20 November 1989 in response to record airborne pollution, restricting vehicles from driving one weekday per week based on license plate number, initially covering 2.3 million vehicles (460,000/day). Lucas Davis's peer-reviewed study (Journal of Political Economy, 2008, based on NBER working paper) found the program failed to improve air quality because households responded by acquiring additional vehicles (often more polluting ones) to circumvent the restriction — matching the description's claim about later research findings materially and precisely.",
+        "source": "https://en.wikipedia.org/wiki/Hoy_No_Circula",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Hoy_No_Circula"
+  },
+  {
+    "year": 1989,
     "title": "PEMEX Oil Workers' Union Boss Arrested",
     "verdict": "TRUE",
     "reason": "La Quina arrested January 10, 1989 in dawn army raid. PEMEX union control broken confirmed.",

@@ -1,0 +1,38 @@
+[
+  {
+    "year": 2016,
+    "title": "Antigua and Barbuda Becomes First Caribbean Nation to Ban Plastic Bags",
+    "verdict": "TRUE",
+    "reason": "Confirmed from scratch across independent sources. (1) UN in the Caribbean (caribbean.un.org, independent UN regional office) states verbatim: \"In 2016 Antigua and Barbuda became the first country in Latin America and the Caribbean to ban plastic bags\" — confirms country, year, and the 'first' claim. (2) The Global Plastics Policy Centre (University of Portsmouth, academic/independent) policy review confirms the ban's mechanics: tax incentives for importation of reusable bags, Chinese (\"financial support from China which allowed for capacity building\") funding of the public awareness campaign (logo competition co-financed by PRC + OECS Commission), the awareness slogan campaign, and the 15.1% decrease in landfill plastic within the first year. (3) Antigua's own legal order (laws.gov.ag PDF, \"External Trade (Import Prohibition) Order, 2016\") and multiple secondary sources corroborate the effective date \"after the 30th June, 2016.\" (4) Caribbean News Global, an independent regional outlet, independently corroborates the landfill-proportion statistic: \"The proportion of plastic at landfills declined from 19.5 percent in 2006 to 4.4 percent in 2017.\" One minor wrinkle: the UN SDG Partnership Platform page (sdgs.un.org) documents the rollout as a three-phase process (import ban → 6-month supermarket phase-out → end of circulation), not explicitly 'five-phased' as in the candidate description — search-engine summaries repeat a 'five-phased' characterization but I could not pin it to a primary source describing five distinct phases (it may conflate with the '5 types of plastics targeted' language used in several sources). This is a minor scope wrinkle, not a material misstatement of actor/date/country/magnitude, so I still rate the event TRUE rather than PARTIAL — every headline claim (country, year, effective date, first-in-region, tax incentives, Chinese funding, 15.1% drop, 19.5%→4.4% landfill share) is independently corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-overlapping sources corroborate all material claims: (1) UN Environment Programme and UN Caribbean confirm Antigua and Barbuda became the first country in Latin America and the Caribbean to ban plastic bags in 2016, prohibiting importation, distribution, sale and use of shopping bags; (2) Antigua and Barbuda's own Ministry of Health, Wellness and Environment site confirms the 2016 ban and 'first country in the region' framing; (3) the Global Plastics Policy Centre (University of Portsmouth) policy review confirms the phased implementation approach, tax incentives for importation of reusable bags, and the 15.1% decrease in landfill plastic within the first year; (4) search results (sourced from UNEP/CEP factsheets) confirm the financial support from China (People's Republic of China, alongside the OECS Commission) for capacity building and the public awareness campaign, plus the 19.5%-to-4.4% landfill-proportion drop. The official legal instrument (External Trade Prohibition of Plastic Bags Order, 2016, No.16) exists on the Antigua and Barbuda government laws site, consistent with an effective date around 30 June/1 July 2016. All key facts in the description (year, country, 'first' claim, phased approach, tax incentives, Chinese funding, landfill statistics) are corroborated by at least one authoritative independent source each, with no contradicting evidence found.",
+        "source": "https://www.unep.org/news-and-stories/story/latin-america-and-caribbean-bids-good-bye-plastic-bags",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from scratch across independent sources. (1) UN in the Caribbean (caribbean.un.org, independent UN regional office) states verbatim: \"In 2016 Antigua and Barbuda became the first country in Latin America and the Caribbean to ban plastic bags\" — confirms country, year, and the 'first' claim. (2) The Global Plastics Policy Centre (University of Portsmouth, academic/independent) policy review confirms the ban's mechanics: tax incentives for importation of reusable bags, Chinese (\"financial support from China which allowed for capacity building\") funding of the public awareness campaign (logo competition co-financed by PRC + OECS Commission), the awareness slogan campaign, and the 15.1% decrease in landfill plastic within the first year. (3) Antigua's own legal order (laws.gov.ag PDF, \"External Trade (Import Prohibition) Order, 2016\") and multiple secondary sources corroborate the effective date \"after the 30th June, 2016.\" (4) Caribbean News Global, an independent regional outlet, independently corroborates the landfill-proportion statistic: \"The proportion of plastic at landfills declined from 19.5 percent in 2006 to 4.4 percent in 2017.\" One minor wrinkle: the UN SDG Partnership Platform page (sdgs.un.org) documents the rollout as a three-phase process (import ban → 6-month supermarket phase-out → end of circulation), not explicitly 'five-phased' as in the candidate description — search-engine summaries repeat a 'five-phased' characterization but I could not pin it to a primary source describing five distinct phases (it may conflate with the '5 types of plastics targeted' language used in several sources). This is a minor scope wrinkle, not a material misstatement of actor/date/country/magnitude, so I still rate the event TRUE rather than PARTIAL — every headline claim (country, year, effective date, first-in-region, tax incentives, Chinese funding, 15.1% drop, 19.5%→4.4% landfill share) is independently corroborated.",
+        "source": "https://caribbean.un.org/en/234870-blue-awakening-caribbean-states-say-no-plastic-alongside-latin-america",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://caribbean.un.org/en/234870-blue-awakening-caribbean-states-say-no-plastic-alongside-latin-america"
+  }
+]

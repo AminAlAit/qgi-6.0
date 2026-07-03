@@ -76,31 +76,6 @@
   },
   {
     "year": 1964,
-    "title": "Zanzibar Revolution",
-    "verdict": "TRUE",
-    "reason": "January 12 1964 confirmed; Karume became president confirmed. Minor note: revolution was physically led by John Okello, not ASP directly, but Karume/ASP took power — description is broadly accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "January 12 1964 confirmed; Karume became president confirmed. Minor note: revolution was physically led by John Okello, not ASP directly, but Karume/ASP took power — description is broadly accurate.",
-        "source": "https://en.wikipedia.org/wiki/Zanzibar_Revolution",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Zanzibar_Revolution"
-  },
-  {
-    "year": 1964,
     "title": "Tanganyika and Zanzibar Unite to Form Tanzania",
     "verdict": "TRUE",
     "reason": "April 26 1964 confirmed; Nyerere president, Karume first VP confirmed; autonomous Zanzibar institutions confirmed.",
@@ -123,6 +98,31 @@
       }
     ],
     "source": "https://cafrad.io/en/april-26-union-day-of-tanganyika-and-zanzibar-the-birth-of-modern-tanzania/"
+  },
+  {
+    "year": 1964,
+    "title": "Zanzibar Revolution",
+    "verdict": "TRUE",
+    "reason": "January 12 1964 confirmed; Karume became president confirmed. Minor note: revolution was physically led by John Okello, not ASP directly, but Karume/ASP took power — description is broadly accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 12 1964 confirmed; Karume became president confirmed. Minor note: revolution was physically led by John Okello, not ASP directly, but Karume/ASP took power — description is broadly accurate.",
+        "source": "https://en.wikipedia.org/wiki/Zanzibar_Revolution",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Zanzibar_Revolution"
   },
   {
     "year": 1965,
@@ -301,31 +301,6 @@
   },
   {
     "year": 1977,
-    "title": "TANU and ASP Merge to Form CCM",
-    "verdict": "TRUE",
-    "reason": "February 5 1977 confirmed; TANU + ASP merger confirmed; CCM monopoly until 1992 confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "February 5 1977 confirmed; TANU + ASP merger confirmed; CCM monopoly until 1992 confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Chama_Cha_Mapinduzi",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Chama_Cha_Mapinduzi"
-  },
-  {
-    "year": 1977,
     "title": "East African Community Collapses",
     "verdict": "TRUE",
     "reason": "1977 dissolution confirmed; ideological/financial disputes Tanzania-Kenya confirmed; border closure confirmed.",
@@ -348,6 +323,31 @@
       }
     ],
     "source": "https://www.britannica.com/topic/East-African-Community"
+  },
+  {
+    "year": 1977,
+    "title": "TANU and ASP Merge to Form CCM",
+    "verdict": "TRUE",
+    "reason": "February 5 1977 confirmed; TANU + ASP merger confirmed; CCM monopoly until 1992 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 5 1977 confirmed; TANU + ASP merger confirmed; CCM monopoly until 1992 confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Chama_Cha_Mapinduzi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Chama_Cha_Mapinduzi"
   },
   {
     "year": 1978,
@@ -925,6 +925,42 @@
     "source": "https://www.eisa.org/pdf/JAE17.1Minde.pdf"
   },
   {
+    "year": 2011,
+    "title": "Tanzania Shelves Plan to Pave Highway Through Serengeti After UNESCO Pressure",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: Tanzania planned a 452-km tarmac highway linking Arusha to Musoma through Serengeti National Park, which conservationists and scientists warned would disrupt the wildebeest migration. A joint UNESCO World Heritage Centre/IUCN monitoring mission (Nov-Dec 2010) examined the project and found it posed a threat to the park's Outstanding Universal Value. At the 2011 World Heritage Committee session in Paris, Tanzania announced it would reconsider and not pave the road through the park, opting instead to build/maintain an unpaved gravel route (approx. 53 km stretch) managed by TANAPA. The paving plan did indeed resurface in later years (2013 elevated highway compromise proposal, 2014 East African Court of Justice ruling against it, and reports as recent as 2026 of Tanzania reviving the tarmac plan). All material details (country, year, actors, mechanism, outcome) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: Tanzania's \"North Road\" project (452 km Arusha-Musoma tarmac highway) would have cut through Serengeti National Park. A joint UNESCO World Heritage Centre/IUCN monitoring mission visited Nov 29-Dec 8, 2010 and found the EIA showed significant negative impacts (disrupted migration, habitat loss, species threats). At the 35th World Heritage Committee session held at UNESCO Headquarters in Paris in June 2011, Tanzania's minister for natural resources and tourism sent a June 22, 2011 letter confirming the government would not build a tarmac road dissecting the park, and would instead maintain the Kleins Gate-Tabora B stretch (53km) as an unpaved gravel road for tourism/administrative use under TANAPA, while seeking international support for an alternative southern route. This matches the event description on all material points: country (Tanzania), year (2011), the UNESCO/IUCN pressure mechanism, the Paris WHC session, the shelving of the paved plan, the retained gravel-road alternative, and even the detail that the paving plan resurfaced later (corroborated by 2013 \"elevated highway compromise\" and 2014 East African Court of Justice ruling against the paved highway).",
+        "source": "https://whc.unesco.org/en/news/769",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: Tanzania planned a 452-km tarmac highway linking Arusha to Musoma through Serengeti National Park, which conservationists and scientists warned would disrupt the wildebeest migration. A joint UNESCO World Heritage Centre/IUCN monitoring mission (Nov-Dec 2010) examined the project and found it posed a threat to the park's Outstanding Universal Value. At the 2011 World Heritage Committee session in Paris, Tanzania announced it would reconsider and not pave the road through the park, opting instead to build/maintain an unpaved gravel route (approx. 53 km stretch) managed by TANAPA. The paving plan did indeed resurface in later years (2013 elevated highway compromise proposal, 2014 East African Court of Justice ruling against it, and reports as recent as 2026 of Tanzania reviving the tarmac plan). All material details (country, year, actors, mechanism, outcome) check out.",
+        "source": "https://whc.unesco.org/en/news/769",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://whc.unesco.org/en/news/769"
+  },
+  {
     "year": 2012,
     "title": "Sectarian Violence in Zanzibar",
     "verdict": "TRUE",
@@ -948,6 +984,41 @@
       }
     ],
     "source": "https://mycharisma.com/news/growing-religious-tensions-drive-zanzibar-acid-attack/"
+  },
+  {
+    "year": 2013,
+    "title": "Kisutu Courthouse Bombing — Dar es Salaam",
+    "verdict": "FALSE",
+    "reason": "Extensive multi-angle searching (direct name searches, alternate phrasings, Swahili-language sources, GTD, U.S. State Dept Country Reports on Terrorism, academic/think-tank PDFs on Tanzania extremism, news archives) turned up no evidence of any bomb explosion at or near the Kisutu courthouse in Dar es Salaam in May 2013 or any other year. What does exist and is well-documented for May 2013 is a different, unrelated attack: a bomb outside St. Joseph's Roman Catholic Church in Arusha on 5 May 2013, which killed 3 and injured 60+, which President Kikwete called 'an act of terrorism' (Arusha, not Dar es Salaam; a church, not a courthouse). Separately, the real Kisutu Resident Magistrate's Court in Dar es Salaam is documented as the venue where, starting in July 2014, 17 terrorism suspects (tied to the 2013-14 Arusha bombing wave) were arraigned and tried — but no source describes the court itself being bombed. The event as described appears to conflate the real trial venue (Kisutu court) with a bombing that occurred elsewhere (Arusha church) or did not occur at all. No independent source corroborates a 'Kisutu Courthouse Bombing' in May 2013.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Extensive searching (9+ queries) found zero corroboration for a bomb attack at the Kisutu courthouse in Dar es Salaam in May 2013. Detailed, specialized timelines of Tanzania's 2013 domestic-terrorism wave (Counter Extremism Project country profile, NDU Press stratforum report on Tanzania Islamist militancy, USIP special report on violent extremism and community policing in Tanzania) document a Feb 2013 priest killing, Aug/Sept 2013 Zanzibar acid attacks, Oct 2013 church arsons in Zanzibar and Dar es Salaam, and an Oct-Nov 2013 Kilindi terror-camp raid — but none mention a courthouse bombing. A bombing at a courthouse would be a distinctive, trackable incident; its total absence from every specialized source checked indicates the event as described did not happen. No alternative year or location could be identified for a real underlying incident, so no corrected_year is offered.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Extensive multi-angle searching (direct name searches, alternate phrasings, Swahili-language sources, GTD, U.S. State Dept Country Reports on Terrorism, academic/think-tank PDFs on Tanzania extremism, news archives) turned up no evidence of any bomb explosion at or near the Kisutu courthouse in Dar es Salaam in May 2013 or any other year. What does exist and is well-documented for May 2013 is a different, unrelated attack: a bomb outside St. Joseph's Roman Catholic Church in Arusha on 5 May 2013, which killed 3 and injured 60+, which President Kikwete called 'an act of terrorism' (Arusha, not Dar es Salaam; a church, not a courthouse). Separately, the real Kisutu Resident Magistrate's Court in Dar es Salaam is documented as the venue where, starting in July 2014, 17 terrorism suspects (tied to the 2013-14 Arusha bombing wave) were arraigned and tried — but no source describes the court itself being bombed. The event as described appears to conflate the real trial venue (Kisutu court) with a bombing that occurred elsewhere (Arusha church) or did not occur at all. No independent source corroborates a 'Kisutu Courthouse Bombing' in May 2013.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2014,
@@ -1051,31 +1122,6 @@
   },
   {
     "year": 2017,
-    "title": "Opposition Activity Banned — Rallies and Meetings Prohibited",
-    "verdict": "TRUE",
-    "reason": "Ban imposed 2016/2017 confirmed (6-year ban lifted January 2023 confirms it started ~2016-2017); applied only to opposition in practice confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Ban imposed 2016/2017 confirmed (6-year ban lifted January 2023 confirms it started ~2016-2017); applied only to opposition in practice confirmed.",
-        "source": "https://www.hrw.org/news/2023/01/09/tanzania-ends-ban-political-rallies",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.hrw.org/news/2023/01/09/tanzania-ends-ban-political-rallies"
-  },
-  {
-    "year": 2017,
     "title": "EACOP Pipeline Agreement Signed",
     "verdict": "TRUE",
     "reason": "May 2017 IGA confirmed; 1,443 km confirmed; Hoima to Tanga port confirmed; TotalEnergies lead investor confirmed; environmental controversy confirmed.",
@@ -1100,10 +1146,10 @@
     "source": "https://totalenergies.ug/uganda-and-tanzania-sign-inter-governmental-agreement-crude-oil-pipeline"
   },
   {
-    "year": 2018,
-    "title": "Magufuli Withdraws from EAC Economic Partnership Agreement",
+    "year": 2017,
+    "title": "Opposition Activity Banned — Rallies and Meetings Prohibited",
     "verdict": "TRUE",
-    "reason": "Magufuli refused to sign EU-EAC EPA confirmed; 'form of colonialism' language confirmed; EAC partners tension confirmed. Refusal began ~2016-2017 not strictly 2018, but the stance was maintained and formalized through 2018.",
+    "reason": "Ban imposed 2016/2017 confirmed (6-year ban lifted January 2023 confirms it started ~2016-2017); applied only to opposition in practice confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1113,8 +1159,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Magufuli refused to sign EU-EAC EPA confirmed; 'form of colonialism' language confirmed; EAC partners tension confirmed. Refusal began ~2016-2017 not strictly 2018, but the stance was maintained and formalized through 2018.",
-        "source": "https://theconversation.com/tanzanias-refusal-to-sign-eu-trade-pact-gives-east-africa-time-to-rethink-62707",
+        "reason": "Ban imposed 2016/2017 confirmed (6-year ban lifted January 2023 confirms it started ~2016-2017); applied only to opposition in practice confirmed.",
+        "source": "https://www.hrw.org/news/2023/01/09/tanzania-ends-ban-political-rallies",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1122,7 +1168,7 @@
         }
       }
     ],
-    "source": "https://theconversation.com/tanzanias-refusal-to-sign-eu-trade-pact-gives-east-africa-time-to-rethink-62707"
+    "source": "https://www.hrw.org/news/2023/01/09/tanzania-ends-ban-political-rallies"
   },
   {
     "year": 2018,
@@ -1148,6 +1194,31 @@
       }
     ],
     "source": "https://www.hrw.org/report/2020/02/03/if-we-dont-get-services-we-will-die/tanzanias-anti-lgbt-crackdown-and-right"
+  },
+  {
+    "year": 2018,
+    "title": "Magufuli Withdraws from EAC Economic Partnership Agreement",
+    "verdict": "TRUE",
+    "reason": "Magufuli refused to sign EU-EAC EPA confirmed; 'form of colonialism' language confirmed; EAC partners tension confirmed. Refusal began ~2016-2017 not strictly 2018, but the stance was maintained and formalized through 2018.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Magufuli refused to sign EU-EAC EPA confirmed; 'form of colonialism' language confirmed; EAC partners tension confirmed. Refusal began ~2016-2017 not strictly 2018, but the stance was maintained and formalized through 2018.",
+        "source": "https://theconversation.com/tanzanias-refusal-to-sign-eu-trade-pact-gives-east-africa-time-to-rethink-62707",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://theconversation.com/tanzanias-refusal-to-sign-eu-trade-pact-gives-east-africa-time-to-rethink-62707"
   },
   {
     "year": 2018,
@@ -1201,31 +1272,6 @@
   },
   {
     "year": 2020,
-    "title": "Tanzania 2020 Elections — Opposition Decimated",
-    "verdict": "TRUE",
-    "reason": "Official result ~84-85% for Magufuli confirmed; opposition fraud/suppression allegations confirmed; at least 7 killed confirmed; international observers denied access confirmed; Lissu in exile confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Official result ~84-85% for Magufuli confirmed; opposition fraud/suppression allegations confirmed; at least 7 killed confirmed; international observers denied access confirmed; Lissu in exile confirmed.",
-        "source": "https://www.aljazeera.com/news/2020/10/30/magufuli-wins-re-election-in-tanzania-says-electoral-commission",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.aljazeera.com/news/2020/10/30/magufuli-wins-re-election-in-tanzania-says-electoral-commission"
-  },
-  {
-    "year": 2020,
     "title": "Magufuli Denies COVID-19 — Promotes Herbal Cures",
     "verdict": "TRUE",
     "reason": "COVID denial confirmed; herbal remedies/prayer promotion confirmed; data reporting stopped May 2020 confirmed; no lockdown confirmed.",
@@ -1250,10 +1296,10 @@
     "source": "https://foreignpolicy.com/2021/02/17/tanzania-president-magufuli-coronavirus-pandemic-denial/"
   },
   {
-    "year": 2021,
-    "title": "Magufuli Dies — Samia Hassan Becomes First Female President",
+    "year": 2020,
+    "title": "Tanzania 2020 Elections — Opposition Decimated",
     "verdict": "TRUE",
-    "reason": "March 17 2021 Magufuli death confirmed; officially heart failure confirmed; Hassan sworn in March 19 2021 confirmed; first female president in East Africa confirmed.",
+    "reason": "Official result ~84-85% for Magufuli confirmed; opposition fraud/suppression allegations confirmed; at least 7 killed confirmed; international observers denied access confirmed; Lissu in exile confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1263,8 +1309,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "March 17 2021 Magufuli death confirmed; officially heart failure confirmed; Hassan sworn in March 19 2021 confirmed; first female president in East Africa confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Samia_Suluhu_Hassan",
+        "reason": "Official result ~84-85% for Magufuli confirmed; opposition fraud/suppression allegations confirmed; at least 7 killed confirmed; international observers denied access confirmed; Lissu in exile confirmed.",
+        "source": "https://www.aljazeera.com/news/2020/10/30/magufuli-wins-re-election-in-tanzania-says-electoral-commission",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1272,7 +1318,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Samia_Suluhu_Hassan"
+    "source": "https://www.aljazeera.com/news/2020/10/30/magufuli-wins-re-election-in-tanzania-says-electoral-commission"
+  },
+  {
+    "year": 2021,
+    "title": "EACOP Final Investment Decision Approaches",
+    "verdict": "TRUE",
+    "reason": "February 2021 FID signed confirmed; TotalEnergies and CNOOC confirmed; European bank withdrawals confirmed; ESG controversy confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 2021 FID signed confirmed; TotalEnergies and CNOOC confirmed; European bank withdrawals confirmed; ESG controversy confirmed.",
+        "source": "https://medicug.com/2021-eacop-deal-signed-museveni-suluhu-total-cnooc-seal-project-agreement/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://medicug.com/2021-eacop-deal-signed-museveni-suluhu-total-cnooc-seal-project-agreement/"
   },
   {
     "year": 2021,
@@ -1301,9 +1372,9 @@
   },
   {
     "year": 2021,
-    "title": "EACOP Final Investment Decision Approaches",
+    "title": "Magufuli Dies — Samia Hassan Becomes First Female President",
     "verdict": "TRUE",
-    "reason": "February 2021 FID signed confirmed; TotalEnergies and CNOOC confirmed; European bank withdrawals confirmed; ESG controversy confirmed.",
+    "reason": "March 17 2021 Magufuli death confirmed; officially heart failure confirmed; Hassan sworn in March 19 2021 confirmed; first female president in East Africa confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1313,8 +1384,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "February 2021 FID signed confirmed; TotalEnergies and CNOOC confirmed; European bank withdrawals confirmed; ESG controversy confirmed.",
-        "source": "https://medicug.com/2021-eacop-deal-signed-museveni-suluhu-total-cnooc-seal-project-agreement/",
+        "reason": "March 17 2021 Magufuli death confirmed; officially heart failure confirmed; Hassan sworn in March 19 2021 confirmed; first female president in East Africa confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Samia_Suluhu_Hassan",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1322,7 +1393,7 @@
         }
       }
     ],
-    "source": "https://medicug.com/2021-eacop-deal-signed-museveni-suluhu-total-cnooc-seal-project-agreement/"
+    "source": "https://en.wikipedia.org/wiki/Samia_Suluhu_Hassan"
   },
   {
     "year": 2022,
@@ -1401,31 +1472,6 @@
   },
   {
     "year": 2023,
-    "title": "EACOP Construction Controversy Intensifies",
-    "verdict": "TRUE",
-    "reason": "Displacement of Tanzanian households without adequate compensation confirmed; harassment of communities and activists confirmed; TotalEnergies pressing ahead with alternative financing confirmed; ESG debate confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Displacement of Tanzanian households without adequate compensation confirmed; harassment of communities and activists confirmed; TotalEnergies pressing ahead with alternative financing confirmed; ESG debate confirmed.",
-        "source": "https://www.banktrack.org/project/east_african_crude_oil_pipeline",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.banktrack.org/project/east_african_crude_oil_pipeline"
-  },
-  {
-    "year": 2023,
     "title": "Constitutional Review Process Launched",
     "verdict": "TRUE",
     "reason": "May 2023 Hassan directed constitutional review process confirmed; Zanzibar union question as most sensitive issue confirmed. Note: Hassan then stalled process in September 2023 citing 'insufficient time' — so launch confirmed but outcome uncertain.",
@@ -1448,6 +1494,31 @@
       }
     ],
     "source": "https://constitutionnet.org/news/tanzanias-pathway-new-constitution-genuine-progress-or-political-rhetoric"
+  },
+  {
+    "year": 2023,
+    "title": "EACOP Construction Controversy Intensifies",
+    "verdict": "TRUE",
+    "reason": "Displacement of Tanzanian households without adequate compensation confirmed; harassment of communities and activists confirmed; TotalEnergies pressing ahead with alternative financing confirmed; ESG debate confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Displacement of Tanzanian households without adequate compensation confirmed; harassment of communities and activists confirmed; TotalEnergies pressing ahead with alternative financing confirmed; ESG debate confirmed.",
+        "source": "https://www.banktrack.org/project/east_african_crude_oil_pipeline",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.banktrack.org/project/east_african_crude_oil_pipeline"
   },
   {
     "year": 2023,

@@ -175,6 +175,42 @@
     "source": "https://en.wikipedia.org/wiki/1974_Nigerien_coup_d'%C3%A9tat"
   },
   {
+    "year": 1975,
+    "title": "Kountche Renegotiates Uranium Contracts with France",
+    "verdict": "TRUE",
+    "reason": "Independent corroboration confirms the substance and timing. (1) Official Niger government transparency-initiative data (ITIE-Niger, Nov. 2025 'Note sur l'evolution du prix de l'uranium au Niger') shows the 'Prix Niger' paid for uranium jumping from 5,000 F CFA/kgU in 1974 (the year of Kountche's April 15 coup, explicitly annotated in the table as 'Changement de regime du 15 avril 1974') to 8,750 F CFA/kgU in 1975, then 14,000 in 1976 and 20,000 in 1977 -- a sustained, large price increase beginning precisely in 1975, consistent with 'securing higher prices.' The same document states that from 1974/1975 onward pricing was arranged so ONAREM (Niger's state mining agency) could itself lift and sell its own share of production, i.e. greater state participation. (2) Gabrielle Hecht's peer-reviewed academic monograph 'Being Nuclear: Africans and the Global Uranium Trade' (MIT Press, 2012) states that Kountche 'negotiated an agreement that entitled Niger to sell -- directly and independently -- a proportion of yellowcake output equal to the percentage of its capital holdings in the mining companies,' directly matching 'greater state participation in mining revenues.' (3) Multiple secondary sources (Jeune Afrique, Multinationals Observatory, France's uranium-history literature) corroborate that predecessor Hamani Diori tried and failed to win a uranium price renegotiation from France in 1973-74 and was overthrown in the April 1974 coup that brought Kountche to power, after which Kountche's military government -- not Diori's -- actually secured the improved terms. The timing of the documented price jump (1975, the year after the coup) and the substance (higher prices + greater state participation) both align with the event description; country (Niger) and actor (Kountche's military government) are also confirmed.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm that after the April 1974 coup, Seyni Kountché's government pressed France for better uranium terms amid the mid-1970s uranium price boom (uranium spot prices rose roughly 320% from 1972 to 1976 following the 1973 oil crisis and nuclear-energy expansion). A specific corroborating source (a scholarly thesis on Niger-France relations under Kountché, memoireonline.com) states that in April 1975 Niger's participation in the SOMAIR uranium mining company was raised from 15% to 33% — i.e., greater state participation in mining revenues, exactly as described. Multiple additional independent sources (WebSearch results citing analyses of Franco-Nigerien uranium history) corroborate that under Kountché, unlike his predecessor Diori, Niger succeeded in aligning the 'Niger price' upward with the rapidly rising global spot price during 1973-1979, consistent with 'securing higher prices.' All material elements — country (Niger), year (1975), actor (Kountché military government), counterpart (France), subject (uranium contract renegotiation with higher prices/greater state participation), and context (global uranium demand from the nuclear boom) — are corroborated by independent, non-overlapping sources.",
+        "source": "https://www.memoireonline.com/09/07/604/niger-foreign-policy-with-france-1974-1987.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent corroboration confirms the substance and timing. (1) Official Niger government transparency-initiative data (ITIE-Niger, Nov. 2025 'Note sur l'evolution du prix de l'uranium au Niger') shows the 'Prix Niger' paid for uranium jumping from 5,000 F CFA/kgU in 1974 (the year of Kountche's April 15 coup, explicitly annotated in the table as 'Changement de regime du 15 avril 1974') to 8,750 F CFA/kgU in 1975, then 14,000 in 1976 and 20,000 in 1977 -- a sustained, large price increase beginning precisely in 1975, consistent with 'securing higher prices.' The same document states that from 1974/1975 onward pricing was arranged so ONAREM (Niger's state mining agency) could itself lift and sell its own share of production, i.e. greater state participation. (2) Gabrielle Hecht's peer-reviewed academic monograph 'Being Nuclear: Africans and the Global Uranium Trade' (MIT Press, 2012) states that Kountche 'negotiated an agreement that entitled Niger to sell -- directly and independently -- a proportion of yellowcake output equal to the percentage of its capital holdings in the mining companies,' directly matching 'greater state participation in mining revenues.' (3) Multiple secondary sources (Jeune Afrique, Multinationals Observatory, France's uranium-history literature) corroborate that predecessor Hamani Diori tried and failed to win a uranium price renegotiation from France in 1973-74 and was overthrown in the April 1974 coup that brought Kountche to power, after which Kountche's military government -- not Diori's -- actually secured the improved terms. The timing of the documented price jump (1975, the year after the coup) and the substance (higher prices + greater state participation) both align with the event description; country (Niger) and actor (Kountche's military government) are also confirmed.",
+        "source": "https://itieniger.ne/wp-content/uploads/2025/11/Evolution-prix-de-luranium-1971-2022.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://itieniger.ne/wp-content/uploads/2025/11/Evolution-prix-de-luranium-1971-2022.pdf"
+  },
+  {
     "year": 1980,
     "title": "Development Society (Societe de Developpement) National Framework Launched",
     "verdict": "TRUE",
@@ -276,31 +312,6 @@
   },
   {
     "year": 1990,
-    "title": "Pro-Democracy Protests Erupt",
-    "verdict": "TRUE",
-    "reason": "Confirmed: February 9, 1990 — security forces killed several students during pro-democracy demonstrations in Niamey. The 'massacre of 9 February' became a landmark event. Government made concessions on political openness. Event year, country, and core claim match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: February 9, 1990 — security forces killed several students during pro-democracy demonstrations in Niamey. The 'massacre of 9 February' became a landmark event. Government made concessions on political openness. Event year, country, and core claim match.",
-        "source": "https://www.cambridge.org/core/journals/international-review-of-social-history/article/democracy-and-adjustment-in-niger",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.cambridge.org/core/journals/international-review-of-social-history/article/democracy-and-adjustment-in-niger"
-  },
-  {
-    "year": 1990,
     "title": "First Tuareg Insurgency Begins in Northern Niger",
     "verdict": "TRUE",
     "reason": "Confirmed: In May 1990, Tuareg attacked a police station in Tchin-Tabaradene; Nigerien military response killed hundreds of civilians. Libya-trained fighters involved. Insurgency in Agadez/Air region confirmed for 1990. All key claims match.",
@@ -323,6 +334,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Tuareg_rebellion_(1990%E2%80%931995)"
+  },
+  {
+    "year": 1990,
+    "title": "Pro-Democracy Protests Erupt",
+    "verdict": "TRUE",
+    "reason": "Confirmed: February 9, 1990 — security forces killed several students during pro-democracy demonstrations in Niamey. The 'massacre of 9 February' became a landmark event. Government made concessions on political openness. Event year, country, and core claim match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: February 9, 1990 — security forces killed several students during pro-democracy demonstrations in Niamey. The 'massacre of 9 February' became a landmark event. Government made concessions on political openness. Event year, country, and core claim match.",
+        "source": "https://www.cambridge.org/core/journals/international-review-of-social-history/article/democracy-and-adjustment-in-niger",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cambridge.org/core/journals/international-review-of-social-history/article/democracy-and-adjustment-in-niger"
   },
   {
     "year": 1991,
@@ -676,31 +712,6 @@
   },
   {
     "year": 2009,
-    "title": "Tandja Pushes Through Controversial Constitutional Referendum",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Referendum held August 4, 2009; abolished presidential term limits and extended Tandja's rule by three years. Constitutional Court ruled against it on May 25 and June 20, 2009; Tandja dissolved the court. All details match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Referendum held August 4, 2009; abolished presidential term limits and extended Tandja's rule by three years. Constitutional Court ruled against it on May 25 and June 20, 2009; Tandja dissolved the court. All details match.",
-        "source": "https://en.wikipedia.org/wiki/Nigerien_constitutional_referendum,_2009",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Nigerien_constitutional_referendum,_2009"
-  },
-  {
-    "year": 2009,
     "title": "ECOWAS and African Union Condemn Tandja",
     "verdict": "TRUE",
     "reason": "Confirmed: ECOWAS suspended Niger in October 2009; EU suspended budget support. African Union expressed condemnation. All core details match. Note: the AU suspension of Niger from all activities was formally enacted after the February 2010 coup, not in 2009; the 2009 AU response was condemnation/concern rather than formal suspension.",
@@ -723,6 +734,31 @@
       }
     ],
     "source": "https://www.voanews.com/a/a-13-2009-10-20-voa19/415129.html"
+  },
+  {
+    "year": 2009,
+    "title": "Tandja Pushes Through Controversial Constitutional Referendum",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Referendum held August 4, 2009; abolished presidential term limits and extended Tandja's rule by three years. Constitutional Court ruled against it on May 25 and June 20, 2009; Tandja dissolved the court. All details match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Referendum held August 4, 2009; abolished presidential term limits and extended Tandja's rule by three years. Constitutional Court ruled against it on May 25 and June 20, 2009; Tandja dissolved the court. All details match.",
+        "source": "https://en.wikipedia.org/wiki/Nigerien_constitutional_referendum,_2009",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Nigerien_constitutional_referendum,_2009"
   },
   {
     "year": 2010,
@@ -925,6 +961,44 @@
     "source": "https://edition.cnn.com/2015/01/20/world/charlie-hebdo-violence/index.html"
   },
   {
+    "year": 2015,
+    "title": "US Drone Base Established at Agadez",
+    "verdict": "FALSE",
+    "reason": "The underlying claim is real (the US did build a large drone/ISR base, \"Air Base 201,\" near Agadez, Niger, at enormous cost, giving it Sahara/Sahel intelligence-gathering reach), but the year is wrong. Multiple independent, mutually-corroborating sources place the actual establishment in different, later years than 2015: Niger's government approved the site in 2014; in September 2015 the US reclassified the site from a temporary \"contingency location\" to an enduring \"cooperative security location\" and Congress appropriated $50M via the FY2016 NDAA (enacted Nov 2015) — but no physical base existed yet. The US military presence at the site and actual construction began on 19 April 2016 (Wikipedia infobox: \"Built: 2016-2019\"), construction wasn't complete until spring 2019 (delayed from an original end-2018 target), and the base only began delivering the \"significant intelligence-gathering capacity\" described (ISR drone flights) on 1 November 2019. So under any reasonable definition of \"established\" (ground broken / military presence begun, or fully operational), the correct year is 2016 (construction/occupation start) — not 2015, which only saw an internal bureaucratic reclassification and a funding appropriation, not the base's establishment. Country holds (Niger); the core fact pattern holds; only the year is off, which per the verdict rules makes this FALSE with a corrected year rather than PARTIAL.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The underlying claim is real (the US did build a large drone/ISR base, \"Air Base 201,\" near Agadez, Niger, at enormous cost, giving it Sahara/Sahel intelligence-gathering reach), but the year is wrong. Multiple independent, mutually-corroborating sources place the actual establishment in different, later years than 2015: Niger's government approved the site in 2014; in September 2015 the US reclassified the site from a temporary \"contingency location\" to an enduring \"cooperative security location\" and Congress appropriated $50M via the FY2016 NDAA (enacted Nov 2015) — but no physical base existed yet. The US military presence at the site and actual construction began on 19 April 2016 (Wikipedia infobox: \"Built: 2016-2019\"), construction wasn't complete until spring 2019 (delayed from an original end-2018 target), and the base only began delivering the \"significant intelligence-gathering capacity\" described (ISR drone flights) on 1 November 2019. So under any reasonable definition of \"established\" (ground broken / military presence begun, or fully operational), the correct year is 2016 (construction/occupation start) — not 2015, which only saw an internal bureaucratic reclassification and a funding appropriation, not the base's establishment. Country holds (Niger); the core fact pattern holds; only the year is off, which per the verdict rules makes this FALSE with a corrected year rather than PARTIAL.",
+        "source": "https://en.wikipedia.org/wiki/Niger_Air_Base_201",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2016
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core facts confirmed real and materially accurate: the US did build a drone/ISR base (Air Base 201) near Agadez, Niger, which became one of the most expensive drone facilities in Africa (~$110M+ vs $50M budgeted, per DoD IG evaluation DODIG-2020-077) and gave the US significant ISR reach over the Sahara/Sahel. However, the year is imprecise for \"established.\" The specific \"Congressional notification\" the description references is real and correctly dated to 2015 — the National Defense Authorization Act for FY2016 (signed into law Nov 25, 2015) explicitly appropriated $50 million by name for \"Airfield and Base Camp at Agadez, Niger\" (confirmed via Newsweek 9/30/2016 and The Intercept). But the physical establishment of the base itself — US military presence on site and construction start — began in 2016 (multiple sources: Wikipedia \"U.S. military presence at Base 201 began on 19 April 2016\"; another summary states construction began \"in the summer of 2016\"), camp/hangar buildout continued through 2017, and the base did not actually become operational for ISR/drone flights until August-November 2019. Only one secondary source (defenceweb, paraphrasing the DoD IG report) vaguely states \"construction began around 2015.\" Given the weight of evidence points to 2016 as the year physical establishment began (with 2015 being the year Congress funded/authorized it), the year in the event conflates two distinct, both-real milestones — country and core substance hold, but the year is off by roughly one year for the \"established\" framing.",
+        "source": "https://www.newsweek.com/us-building-50-million-drone-base-niger-504522",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2016
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Niger_Air_Base_201"
+  },
+  {
     "year": 2016,
     "title": "Issoufou Re-elected in Second Term",
     "verdict": "TRUE",
@@ -948,31 +1022,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2016_Nigerien_general_election"
-  },
-  {
-    "year": 2017,
-    "title": "Four US Special Forces Soldiers Killed in Tongo Tongo Ambush",
-    "verdict": "TRUE",
-    "reason": "Confirmed: October 4, 2017 ambush near Tongo Tongo; 4 US soldiers and 4 Nigerien soldiers killed; ISGS responsible (AQIM affiliation). Congressional investigation followed. All details match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: October 4, 2017 ambush near Tongo Tongo; 4 US soldiers and 4 Nigerien soldiers killed; ISGS responsible (AQIM affiliation). Congressional investigation followed. All details match.",
-        "source": "https://en.wikipedia.org/wiki/Tongo_Tongo_ambush",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Tongo_Tongo_ambush"
   },
   {
     "year": 2017,
@@ -1000,6 +1049,31 @@
     "source": "https://en.wikipedia.org/wiki/Orano"
   },
   {
+    "year": 2017,
+    "title": "Four US Special Forces Soldiers Killed in Tongo Tongo Ambush",
+    "verdict": "TRUE",
+    "reason": "Confirmed: October 4, 2017 ambush near Tongo Tongo; 4 US soldiers and 4 Nigerien soldiers killed; ISGS responsible (AQIM affiliation). Congressional investigation followed. All details match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: October 4, 2017 ambush near Tongo Tongo; 4 US soldiers and 4 Nigerien soldiers killed; ISGS responsible (AQIM affiliation). Congressional investigation followed. All details match.",
+        "source": "https://en.wikipedia.org/wiki/Tongo_Tongo_ambush",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Tongo_Tongo_ambush"
+  },
+  {
     "year": 2019,
     "title": "Islamic State Greater Sahara Escalates Attacks in Tillaberi",
     "verdict": "TRUE",
@@ -1025,29 +1099,40 @@
     "source": "https://www.crisisgroup.org/africa/sahel/niger/289-sidelining-islamic-state-nigers-tillabery"
   },
   {
-    "year": 2021,
-    "title": "Mohamed Bazoum Wins Presidential Election",
+    "year": 2020,
+    "title": "Niger Decrees Legal Framework for Farmer-Managed Natural Regeneration",
     "verdict": "TRUE",
-    "reason": "Confirmed: Bazoum of PNDS won February 2021 second-round runoff with 55.7% defeating Mahamane Ousmane. Niger's first peaceful transfer of power between elected presidents. All details match.",
-    "verify_count": 1,
+    "reason": "Multiple independent, authoritative sources (World Agroforestry/ICRAF blog, Regreening Africa project update and PDF outcome story) confirm Niger's government adopted a presidential decree on Assisted/Farmer-Managed Natural Regeneration on 30 July 2020, making it one of the first countries to codify FMNR into national law. The decree awards farmers/producers exclusive rights to trees they plant or regenerate on their land (addressing the fear of others harvesting mature trees), establishes village monitoring committees and a national FMNR prize, and references the well-documented restoration of at least 5 million hectares in Niger's Maradi and Zinder regions over the prior decades. All material details (country, year, month, decree substance, legal ownership guarantee, hectare figure) match the event description. The \"~200 million trees\" figure is a standard companion statistic in FMNR literature (commonly attributed to Chris Reij's research) consistent with, though not independently re-verified word-for-word in, the two sources checked.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Bazoum of PNDS won February 2021 second-round runoff with 55.7% defeating Mahamane Ousmane. Niger's first peaceful transfer of power between elected presidents. All details match.",
-        "source": "https://en.wikipedia.org/wiki/Mohamed_Bazoum",
+        "reason": "Confirmed via independent sources: Niger's government issued presidential decree N° 2020-602/PRN/ME/SU/DD dated 30 July 2020, which regulates and promotes farmer-managed natural regeneration (FMNR) and grants farmers/landowners the exclusive right to exploit the greenwood/trees they plant or maintain on their fields — directly matching the described legal ownership guarantee and the fear-of-seizure rationale. Sources describe Niger as \"one of the first countries globally\" to adopt such a decree, matching the claim. The ~5 million hectares restored and ~200 million trees regenerated in Niger's Maradi and Zinder regions over the prior two decades (pre-2020) figures are also independently corroborated by World Agroforestry (CIFOR-ICRAF) research publications, an authoritative agroforestry research organization distinct from any prior-pass source list (none was given as off-limits). All material details (country, year, decree nature, ownership guarantee, scale figures) check out.",
+        "source": "https://www.worldagroforestry.org/blog/2021/01/12/niger-formally-adopts-farmer-managed-natural-regeneration",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources (World Agroforestry/ICRAF blog, Regreening Africa project update and PDF outcome story) confirm Niger's government adopted a presidential decree on Assisted/Farmer-Managed Natural Regeneration on 30 July 2020, making it one of the first countries to codify FMNR into national law. The decree awards farmers/producers exclusive rights to trees they plant or regenerate on their land (addressing the fear of others harvesting mature trees), establishes village monitoring committees and a national FMNR prize, and references the well-documented restoration of at least 5 million hectares in Niger's Maradi and Zinder regions over the prior decades. All material details (country, year, month, decree substance, legal ownership guarantee, hectare figure) match the event description. The \"~200 million trees\" figure is a standard companion statistic in FMNR literature (commonly attributed to Chris Reij's research) consistent with, though not independently re-verified word-for-word in, the two sources checked.",
+        "source": "https://www.worldagroforestry.org/blog/2021/01/12/niger-formally-adopts-farmer-managed-natural-regeneration",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Mohamed_Bazoum"
+    "source": "https://www.worldagroforestry.org/blog/2021/01/12/niger-formally-adopts-farmer-managed-natural-regeneration"
   },
   {
     "year": 2021,
@@ -1100,6 +1185,31 @@
     "source": "https://en.wikipedia.org/wiki/Tillia_massacres"
   },
   {
+    "year": 2021,
+    "title": "Mohamed Bazoum Wins Presidential Election",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Bazoum of PNDS won February 2021 second-round runoff with 55.7% defeating Mahamane Ousmane. Niger's first peaceful transfer of power between elected presidents. All details match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Bazoum of PNDS won February 2021 second-round runoff with 55.7% defeating Mahamane Ousmane. Niger's first peaceful transfer of power between elected presidents. All details match.",
+        "source": "https://en.wikipedia.org/wiki/Mohamed_Bazoum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Mohamed_Bazoum"
+  },
+  {
     "year": 2022,
     "title": "Niger Becomes Key Transit for European Migration Policy",
     "verdict": "TRUE",
@@ -1126,9 +1236,9 @@
   },
   {
     "year": 2023,
-    "title": "Military Coup Overthrows President Bazoum",
+    "title": "Bazoum Held in Detention; International Release Demands Ignored",
     "verdict": "TRUE",
-    "reason": "Confirmed: Presidential Guard commander General Abdourahamane Tchiani led coup on July 26, 2023; Bazoum detained; CNSP established. All details match.",
+    "reason": "Confirmed: Bazoum remained in detention throughout 2023 and beyond; ECOWAS court, UN Working Group on Arbitrary Detention, and multiple international bodies demanded his release; junta ignored all demands. All details match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1138,8 +1248,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Presidential Guard commander General Abdourahamane Tchiani led coup on July 26, 2023; Bazoum detained; CNSP established. All details match.",
-        "source": "https://en.wikipedia.org/wiki/2023_Nigerien_coup_d'%C3%A9tat",
+        "reason": "Confirmed: Bazoum remained in detention throughout 2023 and beyond; ECOWAS court, UN Working Group on Arbitrary Detention, and multiple international bodies demanded his release; junta ignored all demands. All details match.",
+        "source": "https://www.hrw.org/news/2025/07/23/niger-two-years-on-ex-president-still-arbitrarily-detained",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1147,7 +1257,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2023_Nigerien_coup_d'%C3%A9tat"
+    "source": "https://www.hrw.org/news/2025/07/23/niger-two-years-on-ex-president-still-arbitrarily-detained"
   },
   {
     "year": 2023,
@@ -1201,6 +1311,31 @@
   },
   {
     "year": 2023,
+    "title": "Military Coup Overthrows President Bazoum",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Presidential Guard commander General Abdourahamane Tchiani led coup on July 26, 2023; Bazoum detained; CNSP established. All details match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Presidential Guard commander General Abdourahamane Tchiani led coup on July 26, 2023; Bazoum detained; CNSP established. All details match.",
+        "source": "https://en.wikipedia.org/wiki/2023_Nigerien_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2023_Nigerien_coup_d'%C3%A9tat"
+  },
+  {
+    "year": 2023,
     "title": "Niger, Mali, and Burkina Faso Form Alliance of Sahel States",
     "verdict": "TRUE",
     "reason": "Confirmed: Alliance of Sahel States (AES) mutual defense pact signed September 16, 2023 in response to ECOWAS intervention threat. All three junta-led states signed. All details match.",
@@ -1250,35 +1385,10 @@
     "source": "https://www.france24.com/en/live-news/20231010-france-turns-a-page-as-troops-begin-leaving-coup-hit-niger"
   },
   {
-    "year": 2023,
-    "title": "Bazoum Held in Detention; International Release Demands Ignored",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Bazoum remained in detention throughout 2023 and beyond; ECOWAS court, UN Working Group on Arbitrary Detention, and multiple international bodies demanded his release; junta ignored all demands. All details match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Bazoum remained in detention throughout 2023 and beyond; ECOWAS court, UN Working Group on Arbitrary Detention, and multiple international bodies demanded his release; junta ignored all demands. All details match.",
-        "source": "https://www.hrw.org/news/2025/07/23/niger-two-years-on-ex-president-still-arbitrarily-detained",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.hrw.org/news/2025/07/23/niger-two-years-on-ex-president-still-arbitrarily-detained"
-  },
-  {
     "year": 2024,
-    "title": "US Agadez Drone Base Eviction Ordered by Junta",
+    "title": "AES States Sign Confederation Treaty",
     "verdict": "TRUE",
-    "reason": "Confirmed: Junta terminated SOFA on March 16, 2024 with immediate effect; US completed withdrawal from Air Base 101 (Niamey) July 7 and Air Base 201 (Agadez) August 5, 2024. Approximately 1,000 US troops withdrawn. All details match.",
+    "reason": "Confirmed: Niger, Mali, Burkina Faso signed confederation treaty July 6, 2024 at summit in Niamey; established formal confederation with shared institutions, rotating presidency, and goal of eventual federation. All key details match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1288,8 +1398,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Junta terminated SOFA on March 16, 2024 with immediate effect; US completed withdrawal from Air Base 101 (Niamey) July 7 and Air Base 201 (Agadez) August 5, 2024. Approximately 1,000 US troops withdrawn. All details match.",
-        "source": "https://en.wikipedia.org/wiki/Niger_Air_Base_201",
+        "reason": "Confirmed: Niger, Mali, Burkina Faso signed confederation treaty July 6, 2024 at summit in Niamey; established formal confederation with shared institutions, rotating presidency, and goal of eventual federation. All key details match.",
+        "source": "https://en.wikipedia.org/wiki/Alliance_of_Sahel_States",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1297,32 +1407,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Niger_Air_Base_201"
-  },
-  {
-    "year": 2024,
-    "title": "Russian Wagner Forces Arrive in Niger",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Russian Africa Corps (Wagner successor) deployed to Niger; troops arrived April 12, 2024, training Nigerien forces including drone operations. Event correctly identifies Africa Corps as Wagner successor. All key details match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Russian Africa Corps (Wagner successor) deployed to Niger; troops arrived April 12, 2024, training Nigerien forces including drone operations. Event correctly identifies Africa Corps as Wagner successor. All key details match.",
-        "source": "https://www.criticalthreats.org/analysis/africa-file-special-edition-russias-africa-corps-arrives-in-niger-whats-next",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.criticalthreats.org/analysis/africa-file-special-edition-russias-africa-corps-arrives-in-niger-whats-next"
+    "source": "https://en.wikipedia.org/wiki/Alliance_of_Sahel_States"
   },
   {
     "year": 2024,
@@ -1351,6 +1436,56 @@
   },
   {
     "year": 2024,
+    "title": "Niger Pipeline and Oil Exports Resume Amid Political Uncertainty",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Niger-Benin pipeline (CNPC-built, 1,950km) began exports May 2024 after border dispute resolved; pipeline attacked June 2024 after first shipment; exports resumed August 2024. Niger's first oil export infrastructure. All key details match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Niger-Benin pipeline (CNPC-built, 1,950km) began exports May 2024 after border dispute resolved; pipeline attacked June 2024 after first shipment; exports resumed August 2024. Niger's first oil export infrastructure. All key details match.",
+        "source": "https://en.wikipedia.org/wiki/Niger%E2%80%93Benin_Oil_Pipeline",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Niger%E2%80%93Benin_Oil_Pipeline"
+  },
+  {
+    "year": 2024,
+    "title": "Russian Wagner Forces Arrive in Niger",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Russian Africa Corps (Wagner successor) deployed to Niger; troops arrived April 12, 2024, training Nigerien forces including drone operations. Event correctly identifies Africa Corps as Wagner successor. All key details match.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Russian Africa Corps (Wagner successor) deployed to Niger; troops arrived April 12, 2024, training Nigerien forces including drone operations. Event correctly identifies Africa Corps as Wagner successor. All key details match.",
+        "source": "https://www.criticalthreats.org/analysis/africa-file-special-edition-russias-africa-corps-arrives-in-niger-whats-next",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.criticalthreats.org/analysis/africa-file-special-edition-russias-africa-corps-arrives-in-niger-whats-next"
+  },
+  {
+    "year": 2024,
     "title": "Uranium Export Contracts Re-evaluated; Orano Operations Suspended",
     "verdict": "TRUE",
     "reason": "Confirmed: Niger revoked Imouraren mining license June 20-21, 2024; SOMAIR (Orano's Arlit operation) also faced suspension; government opened reviews of all extraction agreements. Orano initiated legal proceedings. All key details match.",
@@ -1376,9 +1511,9 @@
   },
   {
     "year": 2024,
-    "title": "AES States Sign Confederation Treaty",
+    "title": "US Agadez Drone Base Eviction Ordered by Junta",
     "verdict": "TRUE",
-    "reason": "Confirmed: Niger, Mali, Burkina Faso signed confederation treaty July 6, 2024 at summit in Niamey; established formal confederation with shared institutions, rotating presidency, and goal of eventual federation. All key details match.",
+    "reason": "Confirmed: Junta terminated SOFA on March 16, 2024 with immediate effect; US completed withdrawal from Air Base 101 (Niamey) July 7 and Air Base 201 (Agadez) August 5, 2024. Approximately 1,000 US troops withdrawn. All details match.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1388,76 +1523,13 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Niger, Mali, Burkina Faso signed confederation treaty July 6, 2024 at summit in Niamey; established formal confederation with shared institutions, rotating presidency, and goal of eventual federation. All key details match.",
-        "source": "https://en.wikipedia.org/wiki/Alliance_of_Sahel_States",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Alliance_of_Sahel_States"
-  },
-  {
-    "year": 2024,
-    "title": "Niger Pipeline and Oil Exports Resume Amid Political Uncertainty",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Niger-Benin pipeline (CNPC-built, 1,950km) began exports May 2024 after border dispute resolved; pipeline attacked June 2024 after first shipment; exports resumed August 2024. Niger's first oil export infrastructure. All key details match.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Niger-Benin pipeline (CNPC-built, 1,950km) began exports May 2024 after border dispute resolved; pipeline attacked June 2024 after first shipment; exports resumed August 2024. Niger's first oil export infrastructure. All key details match.",
-        "source": "https://en.wikipedia.org/wiki/Niger%E2%80%93Benin_Oil_Pipeline",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Niger%E2%80%93Benin_Oil_Pipeline"
-  },
-  {
-    "year": 2015,
-    "title": "US Drone Base Established at Agadez",
-    "verdict": "FALSE",
-    "reason": "The underlying claim is real (the US did build a large drone/ISR base, \"Air Base 201,\" near Agadez, Niger, at enormous cost, giving it Sahara/Sahel intelligence-gathering reach), but the year is wrong. Multiple independent, mutually-corroborating sources place the actual establishment in different, later years than 2015: Niger's government approved the site in 2014; in September 2015 the US reclassified the site from a temporary \"contingency location\" to an enduring \"cooperative security location\" and Congress appropriated $50M via the FY2016 NDAA (enacted Nov 2015) — but no physical base existed yet. The US military presence at the site and actual construction began on 19 April 2016 (Wikipedia infobox: \"Built: 2016-2019\"), construction wasn't complete until spring 2019 (delayed from an original end-2018 target), and the base only began delivering the \"significant intelligence-gathering capacity\" described (ISR drone flights) on 1 November 2019. So under any reasonable definition of \"established\" (ground broken / military presence begun, or fully operational), the correct year is 2016 (construction/occupation start) — not 2015, which only saw an internal bureaucratic reclassification and a funding appropriation, not the base's establishment. Country holds (Niger); the core fact pattern holds; only the year is off, which per the verdict rules makes this FALSE with a corrected year rather than PARTIAL.",
-    "verify_count": 2,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "downgraded",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "The underlying claim is real (the US did build a large drone/ISR base, \"Air Base 201,\" near Agadez, Niger, at enormous cost, giving it Sahara/Sahel intelligence-gathering reach), but the year is wrong. Multiple independent, mutually-corroborating sources place the actual establishment in different, later years than 2015: Niger's government approved the site in 2014; in September 2015 the US reclassified the site from a temporary \"contingency location\" to an enduring \"cooperative security location\" and Congress appropriated $50M via the FY2016 NDAA (enacted Nov 2015) — but no physical base existed yet. The US military presence at the site and actual construction began on 19 April 2016 (Wikipedia infobox: \"Built: 2016-2019\"), construction wasn't complete until spring 2019 (delayed from an original end-2018 target), and the base only began delivering the \"significant intelligence-gathering capacity\" described (ISR drone flights) on 1 November 2019. So under any reasonable definition of \"established\" (ground broken / military presence begun, or fully operational), the correct year is 2016 (construction/occupation start) — not 2015, which only saw an internal bureaucratic reclassification and a funding appropriation, not the base's establishment. Country holds (Niger); the core fact pattern holds; only the year is off, which per the verdict rules makes this FALSE with a corrected year rather than PARTIAL.",
+        "reason": "Confirmed: Junta terminated SOFA on March 16, 2024 with immediate effect; US completed withdrawal from Air Base 101 (Niamey) July 7 and Air Base 201 (Agadez) August 5, 2024. Approximately 1,000 US troops withdrawn. All details match.",
         "source": "https://en.wikipedia.org/wiki/Niger_Air_Base_201",
         "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
           "method": "web_search"
-        },
-        "corrected_year": 2016
-      },
-      {
-        "pass_n": 2,
-        "verdict": "PARTIAL",
-        "reason": "Core facts confirmed real and materially accurate: the US did build a drone/ISR base (Air Base 201) near Agadez, Niger, which became one of the most expensive drone facilities in Africa (~$110M+ vs $50M budgeted, per DoD IG evaluation DODIG-2020-077) and gave the US significant ISR reach over the Sahara/Sahel. However, the year is imprecise for \"established.\" The specific \"Congressional notification\" the description references is real and correctly dated to 2015 — the National Defense Authorization Act for FY2016 (signed into law Nov 25, 2015) explicitly appropriated $50 million by name for \"Airfield and Base Camp at Agadez, Niger\" (confirmed via Newsweek 9/30/2016 and The Intercept). But the physical establishment of the base itself — US military presence on site and construction start — began in 2016 (multiple sources: Wikipedia \"U.S. military presence at Base 201 began on 19 April 2016\"; another summary states construction began \"in the summer of 2016\"), camp/hangar buildout continued through 2017, and the base did not actually become operational for ISR/drone flights until August-November 2019. Only one secondary source (defenceweb, paraphrasing the DoD IG report) vaguely states \"construction began around 2015.\" Given the weight of evidence points to 2016 as the year physical establishment began (with 2015 being the year Congress funded/authorized it), the year in the event conflates two distinct, both-real milestones — country and core substance hold, but the year is off by roughly one year for the \"established\" framing.",
-        "source": "https://www.newsweek.com/us-building-50-million-drone-base-niger-504522",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        },
-        "corrected_year": 2016
+        }
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Niger_Air_Base_201"
