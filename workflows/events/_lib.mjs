@@ -775,7 +775,7 @@ export function mergeATrend(plan, results) {
   const validCountries = new Set(listCountrySlugs(CURATED_DIR));
   const summary = {
     trend, added: 0, dup_existing: 0, dup_within_batch: 0, dup_ledger: 0,
-    unknown_country: 0, echo_mismatch: 0, capped: 0, unverified_skipped: 0,
+    unknown_country: 0, wrong_trend: 0, echo_mismatch: 0, capped: 0, unverified_skipped: 0,
     verdicts: { TRUE: 0, FALSE: 0, PARTIAL: 0, UNCERTAIN: 0, CONTESTED: 0 },
     independence: {}, countries_touched: new Set(), added_events: [], dropped_events: []
   };
@@ -785,7 +785,7 @@ export function mergeATrend(plan, results) {
   for (const item of results.events ?? []) {
     const ev = item.event;
     if (!ev || !validCountries.has(ev.country)) { summary.unknown_country++; continue; }
-    if (ev.category !== trend) continue; // curate should guarantee this; belt-and-suspenders
+    if (ev.category !== trend) { summary.wrong_trend++; continue; } // curate should guarantee this; count if it slips
     if (!byCountry.has(ev.country)) byCountry.set(ev.country, []);
     byCountry.get(ev.country).push(item);
   }
@@ -892,7 +892,6 @@ export function planB({ country = null, batch = CAPS.EVENT_BATCH_SIZE,
   const ledgerB = loadLedgerB();
   const slugs = country ? [country] : listCountrySlugs(VERIFICATION_DIR);
   const selected = [], skippedOrphans = [];
-  const seenCuratedZero = country ? new Set() : null; // only walk zero-verdict for a named country by default
 
   for (const slug of slugs) {
     const vPath = path.join(VERIFICATION_DIR, `${slug}.json`);
