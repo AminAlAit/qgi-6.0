@@ -1,31 +1,6 @@
 [
   {
     "year": 1950,
-    "title": "Suppression of Communism Act",
-    "verdict": "TRUE",
-    "reason": "Act No. 44 of 1950 was approved by parliament on 26 June 1950 and came into force on 17 July 1950, broadly defining communism to include any opposition to apartheid and dissolving the Communist Party of South Africa.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Act No. 44 of 1950 was approved by parliament on 26 June 1950 and came into force on 17 July 1950, broadly defining communism to include any opposition to apartheid and dissolving the Communist Party of South Africa.",
-        "source": "https://en.wikipedia.org/wiki/Suppression_of_Communism_Act,_1950",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Suppression_of_Communism_Act,_1950"
-  },
-  {
-    "year": 1950,
     "title": "Group Areas Act Enacted",
     "verdict": "TRUE",
     "reason": "The Group Areas Act (Act No. 41 of 1950) was enacted on 7 July 1950, providing for the physical separation of racial groups and leading to mass forced removals of non-white South Africans from their homes.",
@@ -75,10 +50,10 @@
     "source": "https://en.wikipedia.org/wiki/Population_Registration_Act,_1950"
   },
   {
-    "year": 1951,
-    "title": "Separate Representation of Voters Act",
+    "year": 1950,
+    "title": "Suppression of Communism Act",
     "verdict": "TRUE",
-    "reason": "The Separate Representation of Voters Act No. 46 was introduced on 18 June 1951 to remove Coloured voters from the common voters' roll in the Cape Province, triggering the Coloured vote constitutional crisis when initially ruled invalid by the Supreme Court.",
+    "reason": "Act No. 44 of 1950 was approved by parliament on 26 June 1950 and came into force on 17 July 1950, broadly defining communism to include any opposition to apartheid and dissolving the Communist Party of South Africa.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -88,8 +63,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The Separate Representation of Voters Act No. 46 was introduced on 18 June 1951 to remove Coloured voters from the common voters' roll in the Cape Province, triggering the Coloured vote constitutional crisis when initially ruled invalid by the Supreme Court.",
-        "source": "https://en.wikipedia.org/wiki/Separate_Representation_of_Voters_Act,_1951",
+        "reason": "Act No. 44 of 1950 was approved by parliament on 26 June 1950 and came into force on 17 July 1950, broadly defining communism to include any opposition to apartheid and dissolving the Communist Party of South Africa.",
+        "source": "https://en.wikipedia.org/wiki/Suppression_of_Communism_Act,_1950",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -97,7 +72,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Separate_Representation_of_Voters_Act,_1951"
+    "source": "https://en.wikipedia.org/wiki/Suppression_of_Communism_Act,_1950"
   },
   {
     "year": 1951,
@@ -123,6 +98,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Bantu_Authorities_Act,_1951"
+  },
+  {
+    "year": 1951,
+    "title": "Separate Representation of Voters Act",
+    "verdict": "TRUE",
+    "reason": "The Separate Representation of Voters Act No. 46 was introduced on 18 June 1951 to remove Coloured voters from the common voters' roll in the Cape Province, triggering the Coloured vote constitutional crisis when initially ruled invalid by the Supreme Court.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Separate Representation of Voters Act No. 46 was introduced on 18 June 1951 to remove Coloured voters from the common voters' roll in the Cape Province, triggering the Coloured vote constitutional crisis when initially ruled invalid by the Supreme Court.",
+        "source": "https://en.wikipedia.org/wiki/Separate_Representation_of_Voters_Act,_1951",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Separate_Representation_of_Voters_Act,_1951"
   },
   {
     "year": 1952,
@@ -326,31 +326,6 @@
   },
   {
     "year": 1956,
-    "title": "Women's March on Union Buildings",
-    "verdict": "TRUE",
-    "reason": "On 9 August 1956, approximately 20,000 women of all races marched to the Union Buildings in Pretoria, delivered a petition with over 100,000 signatures against pass laws, and stood in silence for 30 minutes; the date is now National Women's Day.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On 9 August 1956, approximately 20,000 women of all races marched to the Union Buildings in Pretoria, delivered a petition with over 100,000 signatures against pass laws, and stood in silence for 30 minutes; the date is now National Women's Day.",
-        "source": "https://en.wikipedia.org/wiki/Women%27s_March_(South_Africa)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Women%27s_March_(South_Africa)"
-  },
-  {
-    "year": 1956,
     "title": "Treason Trial Begins",
     "verdict": "TRUE",
     "reason": "On 5 December 1956, 156 Congress Alliance activists including Nelson Mandela, Oliver Tambo, and Walter Sisulu were arrested on high treason charges connected to the Freedom Charter; the trial lasted until 1961 when all were acquitted.",
@@ -375,21 +350,21 @@
     "source": "https://en.wikipedia.org/wiki/1956_Treason_Trial"
   },
   {
-    "year": 1957,
-    "title": "Industrial Conciliation Act Amendments — Job Reservation",
-    "verdict": "PARTIAL",
-    "reason": "Job reservation provisions were introduced in the Industrial Conciliation Act of 1956 (Act No. 28 of 1956) rather than 1957; sources reference 1956 and 1959 amendments but no distinct 1957 amendment for job reservation has been confirmed.",
+    "year": 1956,
+    "title": "Women's March on Union Buildings",
+    "verdict": "TRUE",
+    "reason": "On 9 August 1956, approximately 20,000 women of all races marched to the Union Buildings in Pretoria, delivered a petition with over 100,000 signatures against pass laws, and stood in silence for 30 minutes; the date is now National Women's Day.",
     "verify_count": 1,
-    "consensus_verdict": "PARTIAL",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "PARTIAL",
-        "reason": "Job reservation provisions were introduced in the Industrial Conciliation Act of 1956 (Act No. 28 of 1956) rather than 1957; sources reference 1956 and 1959 amendments but no distinct 1957 amendment for job reservation has been confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Industrial_Conciliation_Act,_1956",
+        "verdict": "TRUE",
+        "reason": "On 9 August 1956, approximately 20,000 women of all races marched to the Union Buildings in Pretoria, delivered a petition with over 100,000 signatures against pass laws, and stood in silence for 30 minutes; the date is now National Women's Day.",
+        "source": "https://en.wikipedia.org/wiki/Women%27s_March_(South_Africa)",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -397,7 +372,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Industrial_Conciliation_Act,_1956"
+    "source": "https://en.wikipedia.org/wiki/Women%27s_March_(South_Africa)"
   },
   {
     "year": 1957,
@@ -425,6 +400,56 @@
     "source": "https://sahistory.org.za/article/apartheid-legislation-1850s-1970s"
   },
   {
+    "year": 1957,
+    "title": "Industrial Conciliation Act Amendments — Job Reservation",
+    "verdict": "PARTIAL",
+    "reason": "Job reservation provisions were introduced in the Industrial Conciliation Act of 1956 (Act No. 28 of 1956) rather than 1957; sources reference 1956 and 1959 amendments but no distinct 1957 amendment for job reservation has been confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Job reservation provisions were introduced in the Industrial Conciliation Act of 1956 (Act No. 28 of 1956) rather than 1957; sources reference 1956 and 1959 amendments but no distinct 1957 amendment for job reservation has been confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Industrial_Conciliation_Act,_1956",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Industrial_Conciliation_Act,_1956"
+  },
+  {
+    "year": 1958,
+    "title": "ANC Youth League Splits — Africanist Breakaway",
+    "verdict": "TRUE",
+    "reason": "Tensions between Africanists and the Congress Alliance multiracial approach within the ANC Youth League intensified in 1958-1959, culminating in Robert Sobukwe's group leaving to form the Pan Africanist Congress on 6 April 1959.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Tensions between Africanists and the Congress Alliance multiracial approach within the ANC Youth League intensified in 1958-1959, culminating in Robert Sobukwe's group leaving to form the Pan Africanist Congress on 6 April 1959.",
+        "source": "https://en.wikipedia.org/wiki/Pan_Africanist_Congress_of_Azania",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Pan_Africanist_Congress_of_Azania"
+  },
+  {
     "year": 1958,
     "title": "Hendrik Verwoerd Becomes Prime Minister",
     "verdict": "TRUE",
@@ -450,10 +475,10 @@
     "source": "https://en.wikipedia.org/wiki/Hendrik_Verwoerd"
   },
   {
-    "year": 1958,
-    "title": "ANC Youth League Splits — Africanist Breakaway",
+    "year": 1959,
+    "title": "Pan Africanist Congress Founded",
     "verdict": "TRUE",
-    "reason": "Tensions between Africanists and the Congress Alliance multiracial approach within the ANC Youth League intensified in 1958-1959, culminating in Robert Sobukwe's group leaving to form the Pan Africanist Congress on 6 April 1959.",
+    "reason": "Robert Sobukwe led the founding of the Pan Africanist Congress on 6 April 1959 at Orlando Community Hall in Soweto after breaking from the ANC over its multiracial Congress Alliance orientation.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -463,7 +488,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Tensions between Africanists and the Congress Alliance multiracial approach within the ANC Youth League intensified in 1958-1959, culminating in Robert Sobukwe's group leaving to form the Pan Africanist Congress on 6 April 1959.",
+        "reason": "Robert Sobukwe led the founding of the Pan Africanist Congress on 6 April 1959 at Orlando Community Hall in Soweto after breaking from the ANC over its multiracial Congress Alliance orientation.",
         "source": "https://en.wikipedia.org/wiki/Pan_Africanist_Congress_of_Azania",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -500,10 +525,10 @@
     "source": "https://en.wikipedia.org/wiki/Promotion_of_Bantu_Self-government_Act,_1959"
   },
   {
-    "year": 1959,
-    "title": "Pan Africanist Congress Founded",
+    "year": 1960,
+    "title": "Republic Referendum and Commonwealth Exit",
     "verdict": "TRUE",
-    "reason": "Robert Sobukwe led the founding of the Pan Africanist Congress on 6 April 1959 at Orlando Community Hall in Soweto after breaking from the ANC over its multiracial Congress Alliance orientation.",
+    "reason": "A whites-only referendum on 5 October 1960 approved a republic by 52.29% and South Africa subsequently withdrew from the Commonwealth in 1961 under pressure from newly independent African and Asian member states.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -513,8 +538,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Robert Sobukwe led the founding of the Pan Africanist Congress on 6 April 1959 at Orlando Community Hall in Soweto after breaking from the ANC over its multiracial Congress Alliance orientation.",
-        "source": "https://en.wikipedia.org/wiki/Pan_Africanist_Congress_of_Azania",
+        "reason": "A whites-only referendum on 5 October 1960 approved a republic by 52.29% and South Africa subsequently withdrew from the Commonwealth in 1961 under pressure from newly independent African and Asian member states.",
+        "source": "https://en.wikipedia.org/wiki/1960_South_African_republic_referendum",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -522,7 +547,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Pan_Africanist_Congress_of_Azania"
+    "source": "https://en.wikipedia.org/wiki/1960_South_African_republic_referendum"
   },
   {
     "year": 1960,
@@ -575,10 +600,10 @@
     "source": "https://en.wikipedia.org/wiki/Unlawful_Organizations_Act,_1960"
   },
   {
-    "year": 1960,
-    "title": "Republic Referendum and Commonwealth Exit",
+    "year": 1961,
+    "title": "Treason Trial Acquittals",
     "verdict": "TRUE",
-    "reason": "A whites-only referendum on 5 October 1960 approved a republic by 52.29% and South Africa subsequently withdrew from the Commonwealth in 1961 under pressure from newly independent African and Asian member states.",
+    "reason": "The Treason Trial concluded in 1961 with the acquittal of all remaining accused, including Nelson Mandela, as the judge found the prosecution had not proven the Freedom Charter advocated violent revolution.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -588,8 +613,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "A whites-only referendum on 5 October 1960 approved a republic by 52.29% and South Africa subsequently withdrew from the Commonwealth in 1961 under pressure from newly independent African and Asian member states.",
-        "source": "https://en.wikipedia.org/wiki/1960_South_African_republic_referendum",
+        "reason": "The Treason Trial concluded in 1961 with the acquittal of all remaining accused, including Nelson Mandela, as the judge found the prosecution had not proven the Freedom Charter advocated violent revolution.",
+        "source": "https://en.wikipedia.org/wiki/1956_Treason_Trial",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -597,7 +622,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1960_South_African_republic_referendum"
+    "source": "https://en.wikipedia.org/wiki/1956_Treason_Trial"
   },
   {
     "year": 1961,
@@ -625,10 +650,10 @@
     "source": "https://en.wikipedia.org/wiki/UMkhonto_weSizwe"
   },
   {
-    "year": 1961,
-    "title": "Treason Trial Acquittals",
+    "year": 1962,
+    "title": "General Laws Amendment Act — Sabotage Act",
     "verdict": "TRUE",
-    "reason": "The Treason Trial concluded in 1961 with the acquittal of all remaining accused, including Nelson Mandela, as the judge found the prosecution had not proven the Freedom Charter advocated violent revolution.",
+    "reason": "The General Laws Amendment Act (Sabotage Act) of 1962 broadly defined sabotage to encompass most anti-apartheid activism, introduced the death penalty for many offences, and empowered the Minister of Justice to place individuals under house arrest without trial.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -638,8 +663,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The Treason Trial concluded in 1961 with the acquittal of all remaining accused, including Nelson Mandela, as the judge found the prosecution had not proven the Freedom Charter advocated violent revolution.",
-        "source": "https://en.wikipedia.org/wiki/1956_Treason_Trial",
+        "reason": "The General Laws Amendment Act (Sabotage Act) of 1962 broadly defined sabotage to encompass most anti-apartheid activism, introduced the death penalty for many offences, and empowered the Minister of Justice to place individuals under house arrest without trial.",
+        "source": "https://sahistory.org.za/article/apartheid-legislation-1850s-1970s",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -647,7 +672,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1956_Treason_Trial"
+    "source": "https://sahistory.org.za/article/apartheid-legislation-1850s-1970s"
   },
   {
     "year": 1962,
@@ -675,56 +700,6 @@
     "source": "https://www.nelsonmandela.org/trials-and-prison-chronology"
   },
   {
-    "year": 1962,
-    "title": "General Laws Amendment Act — Sabotage Act",
-    "verdict": "TRUE",
-    "reason": "The General Laws Amendment Act (Sabotage Act) of 1962 broadly defined sabotage to encompass most anti-apartheid activism, introduced the death penalty for many offences, and empowered the Minister of Justice to place individuals under house arrest without trial.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The General Laws Amendment Act (Sabotage Act) of 1962 broadly defined sabotage to encompass most anti-apartheid activism, introduced the death penalty for many offences, and empowered the Minister of Justice to place individuals under house arrest without trial.",
-        "source": "https://sahistory.org.za/article/apartheid-legislation-1850s-1970s",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://sahistory.org.za/article/apartheid-legislation-1850s-1970s"
-  },
-  {
-    "year": 1963,
-    "title": "Rivonia Trial Arrests",
-    "verdict": "TRUE",
-    "reason": "Police raided Liliesleaf Farm in Rivonia on 11 July 1963, arresting leading ANC and MK underground members including Walter Sisulu and Govan Mbeki; Operation Mayibuye documents were found and Mandela was added to charges.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Police raided Liliesleaf Farm in Rivonia on 11 July 1963, arresting leading ANC and MK underground members including Walter Sisulu and Govan Mbeki; Operation Mayibuye documents were found and Mandela was added to charges.",
-        "source": "https://en.wikipedia.org/wiki/Rivonia_Trial",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Rivonia_Trial"
-  },
-  {
     "year": 1963,
     "title": "90-Day Detention Law",
     "verdict": "TRUE",
@@ -750,10 +725,10 @@
     "source": "https://omalley.nelsonmandela.org/index.php/site/q/03lv01538/04lv01828/05lv01829/06lv01910.htm"
   },
   {
-    "year": 1964,
-    "title": "Rivonia Trial — Mandela and Comrades Sentenced to Life",
+    "year": 1963,
+    "title": "Rivonia Trial Arrests",
     "verdict": "TRUE",
-    "reason": "On 12 June 1964, Nelson Mandela, Walter Sisulu, Govan Mbeki, and five others were convicted of sabotage and sentenced to life imprisonment rather than death; all were transported to Robben Island.",
+    "reason": "Police raided Liliesleaf Farm in Rivonia on 11 July 1963, arresting leading ANC and MK underground members including Walter Sisulu and Govan Mbeki; Operation Mayibuye documents were found and Mandela was added to charges.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -763,7 +738,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "On 12 June 1964, Nelson Mandela, Walter Sisulu, Govan Mbeki, and five others were convicted of sabotage and sentenced to life imprisonment rather than death; all were transported to Robben Island.",
+        "reason": "Police raided Liliesleaf Farm in Rivonia on 11 July 1963, arresting leading ANC and MK underground members including Walter Sisulu and Govan Mbeki; Operation Mayibuye documents were found and Mandela was added to charges.",
         "source": "https://en.wikipedia.org/wiki/Rivonia_Trial",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -800,6 +775,31 @@
     "source": "https://en.wikipedia.org/wiki/Oliver_Tambo"
   },
   {
+    "year": 1964,
+    "title": "Rivonia Trial — Mandela and Comrades Sentenced to Life",
+    "verdict": "TRUE",
+    "reason": "On 12 June 1964, Nelson Mandela, Walter Sisulu, Govan Mbeki, and five others were convicted of sabotage and sentenced to life imprisonment rather than death; all were transported to Robben Island.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 12 June 1964, Nelson Mandela, Walter Sisulu, Govan Mbeki, and five others were convicted of sabotage and sentenced to life imprisonment rather than death; all were transported to Robben Island.",
+        "source": "https://en.wikipedia.org/wiki/Rivonia_Trial",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Rivonia_Trial"
+  },
+  {
     "year": 1965,
     "title": "Terrorism Act and Expanded Security Powers",
     "verdict": "PARTIAL",
@@ -823,6 +823,31 @@
       }
     ],
     "source": "https://sahistory.org.za/article/apartheid-legislation-1850s-1970s"
+  },
+  {
+    "year": 1966,
+    "title": "Bantustans Begin Formal Development",
+    "verdict": "TRUE",
+    "reason": "The apartheid government accelerated formal Bantustan development in the mid-1960s following the 1959 and 1963 legislation, establishing territorial authorities and legislatures; Transkei in particular was promoted as the showpiece of separate development.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The apartheid government accelerated formal Bantustan development in the mid-1960s following the 1959 and 1963 legislation, establishing territorial authorities and legislatures; Transkei in particular was promoted as the showpiece of separate development.",
+        "source": "https://en.wikipedia.org/wiki/Bantustan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Bantustan"
   },
   {
     "year": 1966,
@@ -850,10 +875,10 @@
     "source": "https://en.wikipedia.org/wiki/Dimitri_Tsafendas"
   },
   {
-    "year": 1966,
-    "title": "Bantustans Begin Formal Development",
+    "year": 1967,
+    "title": "South African Defence Force Counterinsurgency Operations Begin",
     "verdict": "TRUE",
-    "reason": "The apartheid government accelerated formal Bantustan development in the mid-1960s following the 1959 and 1963 legislation, establishing territorial authorities and legislatures; Transkei in particular was promoted as the showpiece of separate development.",
+    "reason": "The SADF began operations in the Caprivi Strip against SWAPO guerrillas in cooperation with Portuguese colonial forces from 1966-1967, marking the start of South Africa's militarised regional policy across southern Africa.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -863,8 +888,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The apartheid government accelerated formal Bantustan development in the mid-1960s following the 1959 and 1963 legislation, establishing territorial authorities and legislatures; Transkei in particular was promoted as the showpiece of separate development.",
-        "source": "https://en.wikipedia.org/wiki/Bantustan",
+        "reason": "The SADF began operations in the Caprivi Strip against SWAPO guerrillas in cooperation with Portuguese colonial forces from 1966-1967, marking the start of South Africa's militarised regional policy across southern Africa.",
+        "source": "https://en.wikipedia.org/wiki/South_African_Border_War",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -872,7 +897,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Bantustan"
+    "source": "https://en.wikipedia.org/wiki/South_African_Border_War"
   },
   {
     "year": 1967,
@@ -901,28 +926,39 @@
   },
   {
     "year": 1967,
-    "title": "South African Defence Force Counterinsurgency Operations Begin",
+    "title": "World's First Human Heart Transplant Performed in Cape Town",
     "verdict": "TRUE",
-    "reason": "The SADF began operations in the Caprivi Strip against SWAPO guerrillas in cooperation with Portuguese colonial forces from 1966-1967, marking the start of South Africa's militarised regional policy across southern Africa.",
-    "verify_count": 1,
+    "reason": "Multiple independent authoritative sources (HRSA/HHS, History.com, University of Cape Town's own Cardiothoracic Surgery page, South African History Online, Britannica) confirm Christiaan Barnard performed the world's first human-to-human heart transplant on 3 December 1967 at Groote Schuur Hospital, Cape Town, South Africa. Patient Louis Washkansky received the heart of accident victim Denise Darvall and died 18 days later of pneumonia linked to immunosuppressive drugs — matching the description exactly on country, year, date, actors, and outcome. The operation opened the field of cardiac transplant surgery, with roughly 100 transplants performed worldwide the following year, consistent with the description's claim of hundreds of procedures within a few years.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The SADF began operations in the Caprivi Strip against SWAPO guerrillas in cooperation with Portuguese colonial forces from 1966-1967, marking the start of South Africa's militarised regional policy across southern Africa.",
-        "source": "https://en.wikipedia.org/wiki/South_African_Border_War",
+        "reason": "Multiple independent sources (Wikipedia, Britannica, HISTORY.com, South African History Online, NIH/PMC, EBSCO) confirm: on 3 December 1967, South African surgeon Christiaan Barnard led a team of about thirty at Groote Schuur Hospital in Cape Town in performing the world's first human-to-human heart transplant. Patient Louis Washkansky (54) received the heart of accident victim Denise Darvall and survived 18 days before dying of pneumonia linked to immunosuppressive drugs. This opened cardiac transplant surgery as a field, with rapid worldwide proliferation of the procedure in following years (Barnard's second transplant, Philip Blaiberg, survived 19 months). One minor, non-material discrepancy exists across sources on operation duration (cited variously as 4.5, 5, or 9 hours depending on source), but all other facts — date, country, hospital, surgeon, patient names, cause of death, survival duration, and historical significance — are corroborated consistently across multiple independent, authoritative sources.",
+        "source": "https://en.wikipedia.org/wiki/Christiaan_Barnard",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent authoritative sources (HRSA/HHS, History.com, University of Cape Town's own Cardiothoracic Surgery page, South African History Online, Britannica) confirm Christiaan Barnard performed the world's first human-to-human heart transplant on 3 December 1967 at Groote Schuur Hospital, Cape Town, South Africa. Patient Louis Washkansky received the heart of accident victim Denise Darvall and died 18 days later of pneumonia linked to immunosuppressive drugs — matching the description exactly on country, year, date, actors, and outcome. The operation opened the field of cardiac transplant surgery, with roughly 100 transplants performed worldwide the following year, consistent with the description's claim of hundreds of procedures within a few years.",
+        "source": "https://www.hrsa.gov/optn/news-events/news/first-heart-transplant-performed-35-years-ago",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/South_African_Border_War"
+    "source": "https://www.hrsa.gov/optn/news-events/news/first-heart-transplant-performed-35-years-ago"
   },
   {
     "year": 1968,
@@ -1201,6 +1237,31 @@
   },
   {
     "year": 1977,
+    "title": "Black Consciousness Organizations Banned",
+    "verdict": "TRUE",
+    "reason": "On 19 October 1977, following Biko's death, the government banned SASO and 17 other Black Consciousness organisations, as well as several Black newspapers, in a sweeping crackdown on the movement.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 19 October 1977, following Biko's death, the government banned SASO and 17 other Black Consciousness organisations, as well as several Black newspapers, in a sweeping crackdown on the movement.",
+        "source": "https://en.wikipedia.org/wiki/Black_Consciousness_Movement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Black_Consciousness_Movement"
+  },
+  {
+    "year": 1977,
     "title": "Steve Biko Murdered in Police Detention",
     "verdict": "TRUE",
     "reason": "Steve Biko was arrested on 18 August 1977, subjected to brutal interrogation in Port Elizabeth, and died on 12 September 1977 from a severe head injury inflicted during interrogation; the government initially falsely claimed he died of a hunger strike.",
@@ -1248,31 +1309,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_418"
-  },
-  {
-    "year": 1977,
-    "title": "Black Consciousness Organizations Banned",
-    "verdict": "TRUE",
-    "reason": "On 19 October 1977, following Biko's death, the government banned SASO and 17 other Black Consciousness organisations, as well as several Black newspapers, in a sweeping crackdown on the movement.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On 19 October 1977, following Biko's death, the government banned SASO and 17 other Black Consciousness organisations, as well as several Black newspapers, in a sweeping crackdown on the movement.",
-        "source": "https://en.wikipedia.org/wiki/Black_Consciousness_Movement",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Black_Consciousness_Movement"
   },
   {
     "year": 1978,
@@ -1426,31 +1462,6 @@
   },
   {
     "year": 1983,
-    "title": "United Democratic Front Founded",
-    "verdict": "TRUE",
-    "reason": "The United Democratic Front was launched on 20 August 1983 at Rocklands community hall in Mitchell's Plain near Cape Town, bringing together over 400 anti-apartheid organisations explicitly aligned with the Freedom Charter and the ANC.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The United Democratic Front was launched on 20 August 1983 at Rocklands community hall in Mitchell's Plain near Cape Town, bringing together over 400 anti-apartheid organisations explicitly aligned with the Freedom Charter and the ANC.",
-        "source": "https://en.wikipedia.org/wiki/United_Democratic_Front_(South_Africa)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/United_Democratic_Front_(South_Africa)"
-  },
-  {
-    "year": 1983,
     "title": "New Constitution — Tricameral Parliament Created",
     "verdict": "TRUE",
     "reason": "A whites-only referendum in November 1983 approved P.W. Botha's new constitution creating a tricameral parliament for Whites, Coloureds, and Indians while continuing to exclude Black South Africans from any parliamentary representation.",
@@ -1473,6 +1484,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Tricameral_Parliament"
+  },
+  {
+    "year": 1983,
+    "title": "United Democratic Front Founded",
+    "verdict": "TRUE",
+    "reason": "The United Democratic Front was launched on 20 August 1983 at Rocklands community hall in Mitchell's Plain near Cape Town, bringing together over 400 anti-apartheid organisations explicitly aligned with the Freedom Charter and the ANC.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The United Democratic Front was launched on 20 August 1983 at Rocklands community hall in Mitchell's Plain near Cape Town, bringing together over 400 anti-apartheid organisations explicitly aligned with the Freedom Charter and the ANC.",
+        "source": "https://en.wikipedia.org/wiki/United_Democratic_Front_(South_Africa)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/United_Democratic_Front_(South_Africa)"
   },
   {
     "year": 1984,
@@ -1526,9 +1562,9 @@
   },
   {
     "year": 1985,
-    "title": "State of Emergency Declared",
+    "title": "International Disinvestment Campaign Gains Momentum",
     "verdict": "TRUE",
-    "reason": "P.W. Botha declared a partial state of emergency in 36 magisterial districts on 20 July 1985 as township unrest intensified — the first such declaration since 1960 — granting broad security force powers including detention without trial.",
+    "reason": "Following the Rubicon speech and continued unrest in 1985, US banks refused to roll over South African loans, forcing the government to declare a debt standstill; American corporations, universities, and pension funds accelerated disinvestment under activist pressure.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1538,8 +1574,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "P.W. Botha declared a partial state of emergency in 36 magisterial districts on 20 July 1985 as township unrest intensified — the first such declaration since 1960 — granting broad security force powers including detention without trial.",
-        "source": "https://sahistory.org.za/article/state-emergency-1985",
+        "reason": "Following the Rubicon speech and continued unrest in 1985, US banks refused to roll over South African loans, forcing the government to declare a debt standstill; American corporations, universities, and pension funds accelerated disinvestment under activist pressure.",
+        "source": "https://en.wikipedia.org/wiki/Disinvestment_from_South_Africa",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1547,7 +1583,7 @@
         }
       }
     ],
-    "source": "https://sahistory.org.za/article/state-emergency-1985"
+    "source": "https://en.wikipedia.org/wiki/Disinvestment_from_South_Africa"
   },
   {
     "year": 1985,
@@ -1576,9 +1612,9 @@
   },
   {
     "year": 1985,
-    "title": "International Disinvestment Campaign Gains Momentum",
+    "title": "State of Emergency Declared",
     "verdict": "TRUE",
-    "reason": "Following the Rubicon speech and continued unrest in 1985, US banks refused to roll over South African loans, forcing the government to declare a debt standstill; American corporations, universities, and pension funds accelerated disinvestment under activist pressure.",
+    "reason": "P.W. Botha declared a partial state of emergency in 36 magisterial districts on 20 July 1985 as township unrest intensified — the first such declaration since 1960 — granting broad security force powers including detention without trial.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1588,8 +1624,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Following the Rubicon speech and continued unrest in 1985, US banks refused to roll over South African loans, forcing the government to declare a debt standstill; American corporations, universities, and pension funds accelerated disinvestment under activist pressure.",
-        "source": "https://en.wikipedia.org/wiki/Disinvestment_from_South_Africa",
+        "reason": "P.W. Botha declared a partial state of emergency in 36 magisterial districts on 20 July 1985 as township unrest intensified — the first such declaration since 1960 — granting broad security force powers including detention without trial.",
+        "source": "https://sahistory.org.za/article/state-emergency-1985",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1597,7 +1633,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Disinvestment_from_South_Africa"
+    "source": "https://sahistory.org.za/article/state-emergency-1985"
   },
   {
     "year": 1986,
@@ -1801,31 +1837,6 @@
   },
   {
     "year": 1990,
-    "title": "Mandela Released — ANC and PAC Unbanned",
-    "verdict": "TRUE",
-    "reason": "On 2 February 1990 de Klerk announced the unbanning of the ANC, PAC, SACP, and 33 other organisations; on 11 February 1990 Nelson Mandela walked free from Victor Verster Prison after 27 years.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On 2 February 1990 de Klerk announced the unbanning of the ANC, PAC, SACP, and 33 other organisations; on 11 February 1990 Nelson Mandela walked free from Victor Verster Prison after 27 years.",
-        "source": "https://www.nelsonmandela.org/news/entry/nelson-mandelas-release-from-prison-33-years-on",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.nelsonmandela.org/news/entry/nelson-mandelas-release-from-prison-33-years-on"
-  },
-  {
-    "year": 1990,
     "title": "Groote Schuur and Pretoria Minutes — Talks Begin",
     "verdict": "TRUE",
     "reason": "ANC and government delegations met at Groote Schuur and the Union Buildings in 1990, signing agreements establishing the framework for negotiations including release of political prisoners, return of exiles, and suspension of the ANC's armed struggle.",
@@ -1848,6 +1859,31 @@
       }
     ],
     "source": "https://sahistory.org.za/dated-event/talks-between-government-and-anc-negotiations-proceed"
+  },
+  {
+    "year": 1990,
+    "title": "Mandela Released — ANC and PAC Unbanned",
+    "verdict": "TRUE",
+    "reason": "On 2 February 1990 de Klerk announced the unbanning of the ANC, PAC, SACP, and 33 other organisations; on 11 February 1990 Nelson Mandela walked free from Victor Verster Prison after 27 years.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 2 February 1990 de Klerk announced the unbanning of the ANC, PAC, SACP, and 33 other organisations; on 11 February 1990 Nelson Mandela walked free from Victor Verster Prison after 27 years.",
+        "source": "https://www.nelsonmandela.org/news/entry/nelson-mandelas-release-from-prison-33-years-on",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.nelsonmandela.org/news/entry/nelson-mandelas-release-from-prison-33-years-on"
   },
   {
     "year": 1991,
@@ -1876,31 +1912,6 @@
   },
   {
     "year": 1991,
-    "title": "Inkathagate Scandal — Security Forces Fund Inkatha",
-    "verdict": "TRUE",
-    "reason": "In July 1991 revelations confirmed that the apartheid government had secretly funded Inkatha and that security forces had fomented ANC-IFP violence killing thousands, severely damaging de Klerk's credibility going into negotiations.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "In July 1991 revelations confirmed that the apartheid government had secretly funded Inkatha and that security forces had fomented ANC-IFP violence killing thousands, severely damaging de Klerk's credibility going into negotiations.",
-        "source": "https://fwdeklerk.org/inkathagate/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://fwdeklerk.org/inkathagate/"
-  },
-  {
-    "year": 1991,
     "title": "CODESA Negotiations Begin",
     "verdict": "TRUE",
     "reason": "The Convention for a Democratic South Africa brought together 19 political parties and organisations in December 1991 to negotiate a new constitutional order, representing the formal beginning of multiparty transition negotiations.",
@@ -1925,10 +1936,10 @@
     "source": "https://sahistory.org.za/article/convention-democratic-south-africa-codesa"
   },
   {
-    "year": 1992,
-    "title": "White Referendum Endorses Negotiations",
+    "year": 1991,
+    "title": "Inkathagate Scandal — Security Forces Fund Inkatha",
     "verdict": "TRUE",
-    "reason": "On 17 March 1992, over 68 percent of white voters endorsed continued negotiations in F.W. de Klerk's referendum called after losing a by-election to the Conservative Party, isolating the white far right.",
+    "reason": "In July 1991 revelations confirmed that the apartheid government had secretly funded Inkatha and that security forces had fomented ANC-IFP violence killing thousands, severely damaging de Klerk's credibility going into negotiations.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1938,8 +1949,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "On 17 March 1992, over 68 percent of white voters endorsed continued negotiations in F.W. de Klerk's referendum called after losing a by-election to the Conservative Party, isolating the white far right.",
-        "source": "https://en.wikipedia.org/wiki/1992_South_African_apartheid_referendum",
+        "reason": "In July 1991 revelations confirmed that the apartheid government had secretly funded Inkatha and that security forces had fomented ANC-IFP violence killing thousands, severely damaging de Klerk's credibility going into negotiations.",
+        "source": "https://fwdeklerk.org/inkathagate/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1947,7 +1958,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1992_South_African_apartheid_referendum"
+    "source": "https://fwdeklerk.org/inkathagate/"
   },
   {
     "year": 1992,
@@ -1973,6 +1984,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Boipatong_massacre"
+  },
+  {
+    "year": 1992,
+    "title": "White Referendum Endorses Negotiations",
+    "verdict": "TRUE",
+    "reason": "On 17 March 1992, over 68 percent of white voters endorsed continued negotiations in F.W. de Klerk's referendum called after losing a by-election to the Conservative Party, isolating the white far right.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 17 March 1992, over 68 percent of white voters endorsed continued negotiations in F.W. de Klerk's referendum called after losing a by-election to the Conservative Party, isolating the white far right.",
+        "source": "https://en.wikipedia.org/wiki/1992_South_African_apartheid_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1992_South_African_apartheid_referendum"
   },
   {
     "year": 1993,
@@ -2051,31 +2087,6 @@
   },
   {
     "year": 1994,
-    "title": "Nelson Mandela Inaugurated as President",
-    "verdict": "TRUE",
-    "reason": "Nelson Mandela was inaugurated as South Africa's first Black president at the Union Buildings in Pretoria on 10 May 1994 in a globally watched ceremony; South Africa rejoined the international community and took its UN seat as a newly democratic state.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Nelson Mandela was inaugurated as South Africa's first Black president at the Union Buildings in Pretoria on 10 May 1994 in a globally watched ceremony; South Africa rejoined the international community and took its UN seat as a newly democratic state.",
-        "source": "https://sahistory.org.za/dated-event/south-africas-first-democratic-elections",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://sahistory.org.za/dated-event/south-africas-first-democratic-elections"
-  },
-  {
-    "year": 1994,
     "title": "Government of National Unity Formed",
     "verdict": "TRUE",
     "reason": "The Government of National Unity brought together the ANC, National Party, and IFP in a coalition cabinet, with F.W. de Klerk as one of two Deputy Presidents alongside Thabo Mbeki and Mangosuthu Buthelezi as Home Affairs Minister.",
@@ -2100,10 +2111,10 @@
     "source": "https://sahistory.org.za/article/south-african-government-national-unity-gnu-1994-1999"
   },
   {
-    "year": 1995,
-    "title": "Truth and Reconciliation Commission Established",
+    "year": 1994,
+    "title": "Nelson Mandela Inaugurated as President",
     "verdict": "TRUE",
-    "reason": "Parliament established the TRC under Archbishop Desmond Tutu in 1995 to investigate gross human rights violations from 1960 to 1994, granting amnesty to perpetrators making full disclosure and providing reparations to victims.",
+    "reason": "Nelson Mandela was inaugurated as South Africa's first Black president at the Union Buildings in Pretoria on 10 May 1994 in a globally watched ceremony; South Africa rejoined the international community and took its UN seat as a newly democratic state.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2113,8 +2124,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Parliament established the TRC under Archbishop Desmond Tutu in 1995 to investigate gross human rights violations from 1960 to 1994, granting amnesty to perpetrators making full disclosure and providing reparations to victims.",
-        "source": "https://www.britannica.com/topic/Truth-and-Reconciliation-Commission-South-Africa",
+        "reason": "Nelson Mandela was inaugurated as South Africa's first Black president at the Union Buildings in Pretoria on 10 May 1994 in a globally watched ceremony; South Africa rejoined the international community and took its UN seat as a newly democratic state.",
+        "source": "https://sahistory.org.za/dated-event/south-africas-first-democratic-elections",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2122,7 +2133,7 @@
         }
       }
     ],
-    "source": "https://www.britannica.com/topic/Truth-and-Reconciliation-Commission-South-Africa"
+    "source": "https://sahistory.org.za/dated-event/south-africas-first-democratic-elections"
   },
   {
     "year": 1995,
@@ -2148,6 +2159,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1995_Rugby_World_Cup"
+  },
+  {
+    "year": 1995,
+    "title": "Truth and Reconciliation Commission Established",
+    "verdict": "TRUE",
+    "reason": "Parliament established the TRC under Archbishop Desmond Tutu in 1995 to investigate gross human rights violations from 1960 to 1994, granting amnesty to perpetrators making full disclosure and providing reparations to victims.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Parliament established the TRC under Archbishop Desmond Tutu in 1995 to investigate gross human rights violations from 1960 to 1994, granting amnesty to perpetrators making full disclosure and providing reparations to victims.",
+        "source": "https://www.britannica.com/topic/Truth-and-Reconciliation-Commission-South-Africa",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.britannica.com/topic/Truth-and-Reconciliation-Commission-South-Africa"
   },
   {
     "year": 1996,
@@ -2176,31 +2212,6 @@
   },
   {
     "year": 1996,
-    "title": "National Party Withdraws from Government of National Unity",
-    "verdict": "TRUE",
-    "reason": "F.W. de Klerk announced the National Party's withdrawal from the Government of National Unity in June 1996, citing dissatisfaction with the ANC's governance style and the desire to function as an effective opposition party.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "F.W. de Klerk announced the National Party's withdrawal from the Government of National Unity in June 1996, citing dissatisfaction with the ANC's governance style and the desire to function as an effective opposition party.",
-        "source": "https://sahistory.org.za/article/south-african-government-national-unity-gnu-1994-1999",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://sahistory.org.za/article/south-african-government-national-unity-gnu-1994-1999"
-  },
-  {
-    "year": 1996,
     "title": "GEAR Economic Policy Adopted",
     "verdict": "TRUE",
     "reason": "The ANC government adopted the Growth, Employment and Redistribution macroeconomic framework in June 1996, replacing the RDP with a more orthodox market-oriented approach that COSATU and the SACP denounced as surrendering to neoliberalism.",
@@ -2225,10 +2236,10 @@
     "source": "https://www.treasury.gov.za/publications/other/gear/all.pdf"
   },
   {
-    "year": 1997,
-    "title": "TRC Hearings — Apartheid Atrocities Documented",
+    "year": 1996,
+    "title": "National Party Withdraws from Government of National Unity",
     "verdict": "TRUE",
-    "reason": "The TRC held extensive public hearings in 1997 in which thousands of victims testified about torture, murder, and disappearances, and perpetrators applied for amnesty by disclosing their crimes, documenting apartheid-era systematic brutality.",
+    "reason": "F.W. de Klerk announced the National Party's withdrawal from the Government of National Unity in June 1996, citing dissatisfaction with the ANC's governance style and the desire to function as an effective opposition party.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2238,8 +2249,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The TRC held extensive public hearings in 1997 in which thousands of victims testified about torture, murder, and disappearances, and perpetrators applied for amnesty by disclosing their crimes, documenting apartheid-era systematic brutality.",
-        "source": "https://en.wikipedia.org/wiki/Truth_and_Reconciliation_Commission_(South_Africa)",
+        "reason": "F.W. de Klerk announced the National Party's withdrawal from the Government of National Unity in June 1996, citing dissatisfaction with the ANC's governance style and the desire to function as an effective opposition party.",
+        "source": "https://sahistory.org.za/article/south-african-government-national-unity-gnu-1994-1999",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2247,7 +2258,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Truth_and_Reconciliation_Commission_(South_Africa)"
+    "source": "https://sahistory.org.za/article/south-african-government-national-unity-gnu-1994-1999"
   },
   {
     "year": 1997,
@@ -2275,10 +2286,10 @@
     "source": "https://en.wikipedia.org/wiki/50th_National_Conference_of_the_African_National_Congress"
   },
   {
-    "year": 1998,
-    "title": "TRC Final Report Released",
+    "year": 1997,
+    "title": "TRC Hearings — Apartheid Atrocities Documented",
     "verdict": "TRUE",
-    "reason": "The TRC submitted its final report in October 1998, finding the ANC, National Party, security forces, IFP, and homeland governments all guilty of gross human rights violations; the ANC unsuccessfully attempted to interdict its publication.",
+    "reason": "The TRC held extensive public hearings in 1997 in which thousands of victims testified about torture, murder, and disappearances, and perpetrators applied for amnesty by disclosing their crimes, documenting apartheid-era systematic brutality.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2288,8 +2299,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The TRC submitted its final report in October 1998, finding the ANC, National Party, security forces, IFP, and homeland governments all guilty of gross human rights violations; the ANC unsuccessfully attempted to interdict its publication.",
-        "source": "https://www.justice.gov.za/trc/report/finalreport/Volume%201.pdf",
+        "reason": "The TRC held extensive public hearings in 1997 in which thousands of victims testified about torture, murder, and disappearances, and perpetrators applied for amnesty by disclosing their crimes, documenting apartheid-era systematic brutality.",
+        "source": "https://en.wikipedia.org/wiki/Truth_and_Reconciliation_Commission_(South_Africa)",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2297,7 +2308,7 @@
         }
       }
     ],
-    "source": "https://www.justice.gov.za/trc/report/finalreport/Volume%201.pdf"
+    "source": "https://en.wikipedia.org/wiki/Truth_and_Reconciliation_Commission_(South_Africa)"
   },
   {
     "year": 1998,
@@ -2325,10 +2336,10 @@
     "source": "https://en.wikipedia.org/wiki/South_African_Arms_Deal"
   },
   {
-    "year": 1999,
-    "title": "Second Democratic Elections — Mbeki Becomes President",
+    "year": 1998,
+    "title": "TRC Final Report Released",
     "verdict": "TRUE",
-    "reason": "Thabo Mbeki led the ANC to a 66 percent victory in the 1999 general elections and was inaugurated as South Africa's second post-apartheid president; the Democratic Party replaced the National Party as the official opposition.",
+    "reason": "The TRC submitted its final report in October 1998, finding the ANC, National Party, security forces, IFP, and homeland governments all guilty of gross human rights violations; the ANC unsuccessfully attempted to interdict its publication.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2338,8 +2349,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Thabo Mbeki led the ANC to a 66 percent victory in the 1999 general elections and was inaugurated as South Africa's second post-apartheid president; the Democratic Party replaced the National Party as the official opposition.",
-        "source": "https://en.wikipedia.org/wiki/1999_South_African_general_election",
+        "reason": "The TRC submitted its final report in October 1998, finding the ANC, National Party, security forces, IFP, and homeland governments all guilty of gross human rights violations; the ANC unsuccessfully attempted to interdict its publication.",
+        "source": "https://www.justice.gov.za/trc/report/finalreport/Volume%201.pdf",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2347,7 +2358,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1999_South_African_general_election"
+    "source": "https://www.justice.gov.za/trc/report/finalreport/Volume%201.pdf"
   },
   {
     "year": 1999,
@@ -2373,6 +2384,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/HIV/AIDS_denialism_in_South_Africa"
+  },
+  {
+    "year": 1999,
+    "title": "Second Democratic Elections — Mbeki Becomes President",
+    "verdict": "TRUE",
+    "reason": "Thabo Mbeki led the ANC to a 66 percent victory in the 1999 general elections and was inaugurated as South Africa's second post-apartheid president; the Democratic Party replaced the National Party as the official opposition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Thabo Mbeki led the ANC to a 66 percent victory in the 1999 general elections and was inaugurated as South Africa's second post-apartheid president; the Democratic Party replaced the National Party as the official opposition.",
+        "source": "https://en.wikipedia.org/wiki/1999_South_African_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1999_South_African_general_election"
   },
   {
     "year": 2000,
@@ -2476,31 +2512,6 @@
   },
   {
     "year": 2002,
-    "title": "Zimbabwean Crisis Drives Refugee Flows to South Africa",
-    "verdict": "TRUE",
-    "reason": "As Zimbabwe's crisis deepened under Mugabe's land reform and political repression from 2002 onward, hundreds of thousands of Zimbabweans fled to South Africa, eventually estimated at 2-3 million people, straining services and fuelling xenophobia.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "As Zimbabwe's crisis deepened under Mugabe's land reform and political repression from 2002 onward, hundreds of thousands of Zimbabweans fled to South Africa, eventually estimated at 2-3 million people, straining services and fuelling xenophobia.",
-        "source": "https://en.wikipedia.org/wiki/Land_reform_in_Zimbabwe",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Land_reform_in_Zimbabwe"
-  },
-  {
-    "year": 2002,
     "title": "Land Reform Progress Remains Slow",
     "verdict": "TRUE",
     "reason": "A decade after democracy, land reform under the willing-buyer-willing-seller approach had delivered far less than the 30 percent redistribution target; the slow pace became an increasingly explosive political issue throughout the 2000s.",
@@ -2523,6 +2534,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Land_reform_in_South_Africa"
+  },
+  {
+    "year": 2002,
+    "title": "Zimbabwean Crisis Drives Refugee Flows to South Africa",
+    "verdict": "TRUE",
+    "reason": "As Zimbabwe's crisis deepened under Mugabe's land reform and political repression from 2002 onward, hundreds of thousands of Zimbabweans fled to South Africa, eventually estimated at 2-3 million people, straining services and fuelling xenophobia.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "As Zimbabwe's crisis deepened under Mugabe's land reform and political repression from 2002 onward, hundreds of thousands of Zimbabweans fled to South Africa, eventually estimated at 2-3 million people, straining services and fuelling xenophobia.",
+        "source": "https://en.wikipedia.org/wiki/Land_reform_in_Zimbabwe",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Land_reform_in_Zimbabwe"
   },
   {
     "year": 2003,
@@ -2576,31 +2612,6 @@
   },
   {
     "year": 2004,
-    "title": "Third Democratic Elections — ANC Wins Near Two-Thirds Majority",
-    "verdict": "TRUE",
-    "reason": "The ANC won 69.7 percent in the 2004 general elections — its largest ever majority — and Mbeki was re-elected for his second and final term; the IFP's support declined sharply.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The ANC won 69.7 percent in the 2004 general elections — its largest ever majority — and Mbeki was re-elected for his second and final term; the IFP's support declined sharply.",
-        "source": "https://en.wikipedia.org/wiki/2004_South_African_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2004_South_African_general_election"
-  },
-  {
-    "year": 2004,
     "title": "FIFA World Cup 2010 Hosting Rights Awarded to South Africa",
     "verdict": "TRUE",
     "reason": "South Africa was awarded the right to host the 2010 FIFA World Cup in May 2004, the first to be held on African soil, generating enormous national pride and affirming South Africa's post-apartheid democratic success.",
@@ -2623,6 +2634,31 @@
       }
     ],
     "source": "https://sahistory.org.za/dated-event/south-africa-wins-2010-bid-host-soccer-world-cup"
+  },
+  {
+    "year": 2004,
+    "title": "Third Democratic Elections — ANC Wins Near Two-Thirds Majority",
+    "verdict": "TRUE",
+    "reason": "The ANC won 69.7 percent in the 2004 general elections — its largest ever majority — and Mbeki was re-elected for his second and final term; the IFP's support declined sharply.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The ANC won 69.7 percent in the 2004 general elections — its largest ever majority — and Mbeki was re-elected for his second and final term; the IFP's support declined sharply.",
+        "source": "https://en.wikipedia.org/wiki/2004_South_African_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2004_South_African_general_election"
   },
   {
     "year": 2005,
@@ -2701,31 +2737,6 @@
   },
   {
     "year": 2007,
-    "title": "Zuma Defeats Mbeki at Polokwane — ANC Leadership Race",
-    "verdict": "TRUE",
-    "reason": "Jacob Zuma defeated Thabo Mbeki for the ANC presidency at the party's 52nd national conference in Polokwane in December 2007, the most competitive ANC leadership election since 1994, setting in motion Mbeki's removal as president.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Jacob Zuma defeated Thabo Mbeki for the ANC presidency at the party's 52nd national conference in Polokwane in December 2007, the most competitive ANC leadership election since 1994, setting in motion Mbeki's removal as president.",
-        "source": "https://en.wikipedia.org/wiki/52nd_National_Conference_of_the_African_National_Congress",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/52nd_National_Conference_of_the_African_National_Congress"
-  },
-  {
-    "year": 2007,
     "title": "Load Shedding Crisis Begins",
     "verdict": "TRUE",
     "reason": "South Africa experienced its first serious rolling power blackouts in early 2007 as Eskom's generation capacity proved insufficient to meet demand, causing economic disruption, halting mining operations, and beginning an electricity emergency that worsened progressively.",
@@ -2750,10 +2761,10 @@
     "source": "https://en.wikipedia.org/wiki/South_African_energy_crisis"
   },
   {
-    "year": 2008,
-    "title": "Xenophobic Violence Kills 62",
+    "year": 2007,
+    "title": "Zuma Defeats Mbeki at Polokwane — ANC Leadership Race",
     "verdict": "TRUE",
-    "reason": "A wave of xenophobic violence swept through townships in Gauteng and KwaZulu-Natal in May 2008, killing 62 people, displacing over 100,000, and destroying the homes and businesses of foreign nationals from across Africa.",
+    "reason": "Jacob Zuma defeated Thabo Mbeki for the ANC presidency at the party's 52nd national conference in Polokwane in December 2007, the most competitive ANC leadership election since 1994, setting in motion Mbeki's removal as president.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2763,8 +2774,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "A wave of xenophobic violence swept through townships in Gauteng and KwaZulu-Natal in May 2008, killing 62 people, displacing over 100,000, and destroying the homes and businesses of foreign nationals from across Africa.",
-        "source": "https://en.wikipedia.org/wiki/May_2008_South_Africa_riots",
+        "reason": "Jacob Zuma defeated Thabo Mbeki for the ANC presidency at the party's 52nd national conference in Polokwane in December 2007, the most competitive ANC leadership election since 1994, setting in motion Mbeki's removal as president.",
+        "source": "https://en.wikipedia.org/wiki/52nd_National_Conference_of_the_African_National_Congress",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2772,7 +2783,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/May_2008_South_Africa_riots"
+    "source": "https://en.wikipedia.org/wiki/52nd_National_Conference_of_the_African_National_Congress"
+  },
+  {
+    "year": 2008,
+    "title": "COPE Founded as ANC Splinter Party",
+    "verdict": "TRUE",
+    "reason": "Former Mbeki supporters Terror Lekota and Mbhazima Shilowa founded the Congress of the People in December 2008 as a breakaway from the ANC following Mbeki's recall; COPE was plagued from the outset by internal conflicts between its founders.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Former Mbeki supporters Terror Lekota and Mbhazima Shilowa founded the Congress of the People in December 2008 as a breakaway from the ANC following Mbeki's recall; COPE was plagued from the outset by internal conflicts between its founders.",
+        "source": "https://en.wikipedia.org/wiki/Congress_of_the_People_(South_African_political_party)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Congress_of_the_People_(South_African_political_party)"
   },
   {
     "year": 2008,
@@ -2801,9 +2837,9 @@
   },
   {
     "year": 2008,
-    "title": "COPE Founded as ANC Splinter Party",
+    "title": "Xenophobic Violence Kills 62",
     "verdict": "TRUE",
-    "reason": "Former Mbeki supporters Terror Lekota and Mbhazima Shilowa founded the Congress of the People in December 2008 as a breakaway from the ANC following Mbeki's recall; COPE was plagued from the outset by internal conflicts between its founders.",
+    "reason": "A wave of xenophobic violence swept through townships in Gauteng and KwaZulu-Natal in May 2008, killing 62 people, displacing over 100,000, and destroying the homes and businesses of foreign nationals from across Africa.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2813,8 +2849,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Former Mbeki supporters Terror Lekota and Mbhazima Shilowa founded the Congress of the People in December 2008 as a breakaway from the ANC following Mbeki's recall; COPE was plagued from the outset by internal conflicts between its founders.",
-        "source": "https://en.wikipedia.org/wiki/Congress_of_the_People_(South_African_political_party)",
+        "reason": "A wave of xenophobic violence swept through townships in Gauteng and KwaZulu-Natal in May 2008, killing 62 people, displacing over 100,000, and destroying the homes and businesses of foreign nationals from across Africa.",
+        "source": "https://en.wikipedia.org/wiki/May_2008_South_Africa_riots",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2822,7 +2858,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Congress_of_the_People_(South_African_political_party)"
+    "source": "https://en.wikipedia.org/wiki/May_2008_South_Africa_riots"
   },
   {
     "year": 2009,
@@ -2926,31 +2962,6 @@
   },
   {
     "year": 2011,
-    "title": "Malema Expelled from ANC Youth League",
-    "verdict": "TRUE",
-    "reason": "Julius Malema was suspended in 2011 and eventually expelled from the ANC in April 2012 following a prolonged disciplinary process for sowing division; he subsequently founded the Economic Freedom Fighters as a new political party in 2013.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Julius Malema was suspended in 2011 and eventually expelled from the ANC in April 2012 following a prolonged disciplinary process for sowing division; he subsequently founded the Economic Freedom Fighters as a new political party in 2013.",
-        "source": "https://www.aljazeera.com/news/2012/4/25/south-africas-anc-upholds-malema-expulsion",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.aljazeera.com/news/2012/4/25/south-africas-anc-upholds-malema-expulsion"
-  },
-  {
-    "year": 2011,
     "title": "Local Government Elections — DA Consolidates Western Cape",
     "verdict": "TRUE",
     "reason": "The Democratic Alliance under Helen Zille consolidated control of the Western Cape and made gains in other metropolitan areas in the 2011 municipal elections, positioning itself as the most credible opposition force.",
@@ -2975,10 +2986,10 @@
     "source": "https://en.wikipedia.org/wiki/2011_South_African_municipal_elections"
   },
   {
-    "year": 2012,
-    "title": "Marikana Massacre",
+    "year": 2011,
+    "title": "Malema Expelled from ANC Youth League",
     "verdict": "TRUE",
-    "reason": "On 16 August 2012, police opened fire on striking platinum miners at Lonmin's Marikana mine, killing 34 miners in the deadliest security force action since Sharpeville; the miners were on a wildcat strike demanding higher wages.",
+    "reason": "Julius Malema was suspended in 2011 and eventually expelled from the ANC in April 2012 following a prolonged disciplinary process for sowing division; he subsequently founded the Economic Freedom Fighters as a new political party in 2013.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2988,8 +2999,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "On 16 August 2012, police opened fire on striking platinum miners at Lonmin's Marikana mine, killing 34 miners in the deadliest security force action since Sharpeville; the miners were on a wildcat strike demanding higher wages.",
-        "source": "https://en.wikipedia.org/wiki/Marikana_massacre",
+        "reason": "Julius Malema was suspended in 2011 and eventually expelled from the ANC in April 2012 following a prolonged disciplinary process for sowing division; he subsequently founded the Economic Freedom Fighters as a new political party in 2013.",
+        "source": "https://www.aljazeera.com/news/2012/4/25/south-africas-anc-upholds-malema-expulsion",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2997,7 +3008,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Marikana_massacre"
+    "source": "https://www.aljazeera.com/news/2012/4/25/south-africas-anc-upholds-malema-expulsion"
   },
   {
     "year": 2012,
@@ -3023,6 +3034,31 @@
       }
     ],
     "source": "https://sahistory.org.za/article/2014-south-african-platinum-strike-longest-wage-strike-south-africa"
+  },
+  {
+    "year": 2012,
+    "title": "Marikana Massacre",
+    "verdict": "TRUE",
+    "reason": "On 16 August 2012, police opened fire on striking platinum miners at Lonmin's Marikana mine, killing 34 miners in the deadliest security force action since Sharpeville; the miners were on a wildcat strike demanding higher wages.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 16 August 2012, police opened fire on striking platinum miners at Lonmin's Marikana mine, killing 34 miners in the deadliest security force action since Sharpeville; the miners were on a wildcat strike demanding higher wages.",
+        "source": "https://en.wikipedia.org/wiki/Marikana_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Marikana_massacre"
   },
   {
     "year": 2013,
@@ -3176,6 +3212,31 @@
   },
   {
     "year": 2016,
+    "title": "Gupta Family and State Capture Exposed",
+    "verdict": "TRUE",
+    "reason": "Investigative journalists and whistleblowers produced mounting evidence in 2016 that the Gupta family had captured key state-owned enterprises, cabinet appointments, and government contracts; leaked Gupta emails confirmed the extent of the patronage network.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Investigative journalists and whistleblowers produced mounting evidence in 2016 that the Gupta family had captured key state-owned enterprises, cabinet appointments, and government contracts; leaked Gupta emails confirmed the extent of the patronage network.",
+        "source": "https://en.wikipedia.org/wiki/Gupta_family",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Gupta_family"
+  },
+  {
+    "year": 2016,
     "title": "Local Government Elections — DA Wins Tshwane and Johannesburg",
     "verdict": "TRUE",
     "reason": "The 2016 municipal elections saw the DA win outright control of Tshwane and Nelson Mandela Bay and form coalition governments to govern Johannesburg; the ANC received its lowest national vote since 1994 at around 54 percent.",
@@ -3200,10 +3261,10 @@
     "source": "https://en.wikipedia.org/wiki/2016_South_African_municipal_elections"
   },
   {
-    "year": 2016,
-    "title": "Gupta Family and State Capture Exposed",
+    "year": 2017,
+    "title": "Cyril Ramaphosa Elected ANC President at Nasrec",
     "verdict": "TRUE",
-    "reason": "Investigative journalists and whistleblowers produced mounting evidence in 2016 that the Gupta family had captured key state-owned enterprises, cabinet appointments, and government contracts; leaked Gupta emails confirmed the extent of the patronage network.",
+    "reason": "Cyril Ramaphosa defeated Nkosazana Dlamini-Zuma for the ANC presidency at the 54th national conference at Nasrec in December 2017 by the narrowest margin of 2,440 to 2,261 votes.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3213,8 +3274,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Investigative journalists and whistleblowers produced mounting evidence in 2016 that the Gupta family had captured key state-owned enterprises, cabinet appointments, and government contracts; leaked Gupta emails confirmed the extent of the patronage network.",
-        "source": "https://en.wikipedia.org/wiki/Gupta_family",
+        "reason": "Cyril Ramaphosa defeated Nkosazana Dlamini-Zuma for the ANC presidency at the 54th national conference at Nasrec in December 2017 by the narrowest margin of 2,440 to 2,261 votes.",
+        "source": "https://en.wikipedia.org/wiki/54th_National_Conference_of_the_African_National_Congress",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3222,7 +3283,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Gupta_family"
+    "source": "https://en.wikipedia.org/wiki/54th_National_Conference_of_the_African_National_Congress"
   },
   {
     "year": 2017,
@@ -3275,56 +3336,6 @@
     "source": "https://www.aljazeera.com/news/2017/8/8/south-africas-jacob-zuma-survives-no-confidence-vote"
   },
   {
-    "year": 2017,
-    "title": "Cyril Ramaphosa Elected ANC President at Nasrec",
-    "verdict": "TRUE",
-    "reason": "Cyril Ramaphosa defeated Nkosazana Dlamini-Zuma for the ANC presidency at the 54th national conference at Nasrec in December 2017 by the narrowest margin of 2,440 to 2,261 votes.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Cyril Ramaphosa defeated Nkosazana Dlamini-Zuma for the ANC presidency at the 54th national conference at Nasrec in December 2017 by the narrowest margin of 2,440 to 2,261 votes.",
-        "source": "https://en.wikipedia.org/wiki/54th_National_Conference_of_the_African_National_Congress",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/54th_National_Conference_of_the_African_National_Congress"
-  },
-  {
-    "year": 2018,
-    "title": "Zuma Resigns — Ramaphosa Becomes President",
-    "verdict": "TRUE",
-    "reason": "Jacob Zuma resigned as State President in February 2018 after the ANC decided to recall him from office, ending nine tumultuous years; Cyril Ramaphosa was sworn in as President with cautious optimism about South Africa's recovery.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Jacob Zuma resigned as State President in February 2018 after the ANC decided to recall him from office, ending nine tumultuous years; Cyril Ramaphosa was sworn in as President with cautious optimism about South Africa's recovery.",
-        "source": "https://www.cfr.org/blog/finally-jacob-zuma-resigns-president-south-africa",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.cfr.org/blog/finally-jacob-zuma-resigns-president-south-africa"
-  },
-  {
     "year": 2018,
     "title": "South Africa's Economy in Recession — Land Expropriation Debate",
     "verdict": "TRUE",
@@ -3375,10 +3386,10 @@
     "source": "https://en.wikipedia.org/wiki/Zondo_Commission"
   },
   {
-    "year": 2019,
-    "title": "Sixth Democratic Elections — ANC Wins Under Ramaphosa",
+    "year": 2018,
+    "title": "Zuma Resigns — Ramaphosa Becomes President",
     "verdict": "TRUE",
-    "reason": "The ANC won 57.5 percent in the 2019 general elections under Ramaphosa, with the EFF growing to 10.8 percent and the DA declining slightly; Ramaphosa was inaugurated for a full five-year term.",
+    "reason": "Jacob Zuma resigned as State President in February 2018 after the ANC decided to recall him from office, ending nine tumultuous years; Cyril Ramaphosa was sworn in as President with cautious optimism about South Africa's recovery.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3388,8 +3399,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The ANC won 57.5 percent in the 2019 general elections under Ramaphosa, with the EFF growing to 10.8 percent and the DA declining slightly; Ramaphosa was inaugurated for a full five-year term.",
-        "source": "https://en.wikipedia.org/wiki/2019_South_African_general_election",
+        "reason": "Jacob Zuma resigned as State President in February 2018 after the ANC decided to recall him from office, ending nine tumultuous years; Cyril Ramaphosa was sworn in as President with cautious optimism about South Africa's recovery.",
+        "source": "https://www.cfr.org/blog/finally-jacob-zuma-resigns-president-south-africa",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3397,7 +3408,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2019_South_African_general_election"
+    "source": "https://www.cfr.org/blog/finally-jacob-zuma-resigns-president-south-africa"
   },
   {
     "year": 2019,
@@ -3423,6 +3434,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/South_African_energy_crisis"
+  },
+  {
+    "year": 2019,
+    "title": "Sixth Democratic Elections — ANC Wins Under Ramaphosa",
+    "verdict": "TRUE",
+    "reason": "The ANC won 57.5 percent in the 2019 general elections under Ramaphosa, with the EFF growing to 10.8 percent and the DA declining slightly; Ramaphosa was inaugurated for a full five-year term.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The ANC won 57.5 percent in the 2019 general elections under Ramaphosa, with the EFF growing to 10.8 percent and the DA declining slightly; Ramaphosa was inaugurated for a full five-year term.",
+        "source": "https://en.wikipedia.org/wiki/2019_South_African_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2019_South_African_general_election"
   },
   {
     "year": 2020,
@@ -3526,31 +3562,6 @@
   },
   {
     "year": 2022,
-    "title": "Phala Phala Scandal Threatens Ramaphosa Presidency",
-    "verdict": "TRUE",
-    "reason": "Revelations in 2022 that President Ramaphosa had hidden millions of dollars in foreign currency at his Phala Phala game farm and not reported the subsequent theft raised money laundering allegations; an independent panel found grounds for impeachment proceedings but he survived.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Revelations in 2022 that President Ramaphosa had hidden millions of dollars in foreign currency at his Phala Phala game farm and not reported the subsequent theft raised money laundering allegations; an independent panel found grounds for impeachment proceedings but he survived.",
-        "source": "https://en.wikipedia.org/wiki/2020_Phala_Phala_Robbery",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2020_Phala_Phala_Robbery"
-  },
-  {
-    "year": 2022,
     "title": "Load Shedding Reaches Stage 6 — Unprecedented Power Crisis",
     "verdict": "TRUE",
     "reason": "Load shedding reached Stage 6 for the first time in 2022 as Eskom's aging coal power stations broke down at record rates; South Africans bought generators, inverters, and solar systems in unprecedented numbers to cope with up to 12 hours of cuts daily.",
@@ -3576,6 +3587,31 @@
   },
   {
     "year": 2022,
+    "title": "Phala Phala Scandal Threatens Ramaphosa Presidency",
+    "verdict": "TRUE",
+    "reason": "Revelations in 2022 that President Ramaphosa had hidden millions of dollars in foreign currency at his Phala Phala game farm and not reported the subsequent theft raised money laundering allegations; an independent panel found grounds for impeachment proceedings but he survived.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Revelations in 2022 that President Ramaphosa had hidden millions of dollars in foreign currency at his Phala Phala game farm and not reported the subsequent theft raised money laundering allegations; an independent panel found grounds for impeachment proceedings but he survived.",
+        "source": "https://en.wikipedia.org/wiki/2020_Phala_Phala_Robbery",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2020_Phala_Phala_Robbery"
+  },
+  {
+    "year": 2022,
     "title": "South Africa Abstains on Russia-Ukraine UN Vote",
     "verdict": "TRUE",
     "reason": "South Africa abstained on UN General Assembly votes condemning Russia's invasion of Ukraine in 2022, citing its policy of non-alignment; the abstention was condemned by Western governments and raised questions about South Africa's geopolitical alignment.",
@@ -3598,31 +3634,6 @@
       }
     ],
     "source": "https://www.voanews.com/a/south-africa-criticized-for-abstaining-on-un-ukraine-resolution/6468748.html"
-  },
-  {
-    "year": 2023,
-    "title": "Russian Navy Exercises and Lady R Weapons Controversy",
-    "verdict": "TRUE",
-    "reason": "South Africa conducted naval exercises with Russia and China in early 2023, and was accused by the US Ambassador of secretly supplying weapons to Russia via the Lady R vessel; the allegations severely strained US-South Africa relations.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "South Africa conducted naval exercises with Russia and China in early 2023, and was accused by the US Ambassador of secretly supplying weapons to Russia via the Lady R vessel; the allegations severely strained US-South Africa relations.",
-        "source": "https://en.wikipedia.org/wiki/Lady_R_incident",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Lady_R_incident"
   },
   {
     "year": 2023,
@@ -3675,10 +3686,10 @@
     "source": "https://en.wikipedia.org/wiki/South_African_energy_crisis"
   },
   {
-    "year": 2024,
-    "title": "MK Party Shocks — ANC Loses Parliamentary Majority",
+    "year": 2023,
+    "title": "Russian Navy Exercises and Lady R Weapons Controversy",
     "verdict": "TRUE",
-    "reason": "The 2024 general elections saw the ANC fall below 40 percent for the first time, losing its parliamentary majority; Jacob Zuma's uMkhonto we Sizwe party won approximately 14.5 percent, devastating ANC support in KwaZulu-Natal.",
+    "reason": "South Africa conducted naval exercises with Russia and China in early 2023, and was accused by the US Ambassador of secretly supplying weapons to Russia via the Lady R vessel; the allegations severely strained US-South Africa relations.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3688,8 +3699,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The 2024 general elections saw the ANC fall below 40 percent for the first time, losing its parliamentary majority; Jacob Zuma's uMkhonto we Sizwe party won approximately 14.5 percent, devastating ANC support in KwaZulu-Natal.",
-        "source": "https://en.wikipedia.org/wiki/2024_South_African_general_election",
+        "reason": "South Africa conducted naval exercises with Russia and China in early 2023, and was accused by the US Ambassador of secretly supplying weapons to Russia via the Lady R vessel; the allegations severely strained US-South Africa relations.",
+        "source": "https://en.wikipedia.org/wiki/Lady_R_incident",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3697,7 +3708,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2024_South_African_general_election"
+    "source": "https://en.wikipedia.org/wiki/Lady_R_incident"
+  },
+  {
+    "year": 2024,
+    "title": "Eskom Load Shedding Ends — Temporary Grid Stabilization",
+    "verdict": "TRUE",
+    "reason": "For the first time in years, South Africa experienced an extended period without load shedding in 2024 as new IPP capacity, improved Eskom plant performance, and demand reduction combined to stabilise the grid, with Eskom marking 300 days without load shedding.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "For the first time in years, South Africa experienced an extended period without load shedding in 2024 as new IPP capacity, improved Eskom plant performance, and demand reduction combined to stabilise the grid, with Eskom marking 300 days without load shedding.",
+        "source": "https://www.eskom.co.za/eskom-marks-300-days-without-loadshedding-as-sustained-generation-performance-maintains-grid-stability-and-energy-security/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.eskom.co.za/eskom-marks-300-days-without-loadshedding-as-sustained-generation-performance-maintains-grid-stability-and-energy-security/"
   },
   {
     "year": 2024,
@@ -3726,6 +3762,31 @@
   },
   {
     "year": 2024,
+    "title": "MK Party Shocks — ANC Loses Parliamentary Majority",
+    "verdict": "TRUE",
+    "reason": "The 2024 general elections saw the ANC fall below 40 percent for the first time, losing its parliamentary majority; Jacob Zuma's uMkhonto we Sizwe party won approximately 14.5 percent, devastating ANC support in KwaZulu-Natal.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The 2024 general elections saw the ANC fall below 40 percent for the first time, losing its parliamentary majority; Jacob Zuma's uMkhonto we Sizwe party won approximately 14.5 percent, devastating ANC support in KwaZulu-Natal.",
+        "source": "https://en.wikipedia.org/wiki/2024_South_African_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2024_South_African_general_election"
+  },
+  {
+    "year": 2024,
     "title": "Zuma Barred from Parliament — MK Party Legal Battle",
     "verdict": "TRUE",
     "reason": "The Constitutional Court upheld an Electoral Court ruling in 2024 that Jacob Zuma was barred from standing for parliament due to his criminal conviction for contempt of court, while the MK Party itself was allowed to compete.",
@@ -3750,10 +3811,10 @@
     "source": "https://en.wikipedia.org/wiki/2024_South_African_general_election"
   },
   {
-    "year": 2024,
-    "title": "Eskom Load Shedding Ends — Temporary Grid Stabilization",
+    "year": 2025,
+    "title": "Economic Stagnation and Youth Unemployment Crisis",
     "verdict": "TRUE",
-    "reason": "For the first time in years, South Africa experienced an extended period without load shedding in 2024 as new IPP capacity, improved Eskom plant performance, and demand reduction combined to stabilise the grid, with Eskom marking 300 days without load shedding.",
+    "reason": "South Africa's unemployment rate remained stubbornly above 32 percent with youth unemployment exceeding 60 percent in 2025, among the highest in the world, representing a persistent structural failure thirty years after democracy.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3763,8 +3824,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "For the first time in years, South Africa experienced an extended period without load shedding in 2024 as new IPP capacity, improved Eskom plant performance, and demand reduction combined to stabilise the grid, with Eskom marking 300 days without load shedding.",
-        "source": "https://www.eskom.co.za/eskom-marks-300-days-without-loadshedding-as-sustained-generation-performance-maintains-grid-stability-and-energy-security/",
+        "reason": "South Africa's unemployment rate remained stubbornly above 32 percent with youth unemployment exceeding 60 percent in 2025, among the highest in the world, representing a persistent structural failure thirty years after democracy.",
+        "source": "https://tradingeconomics.com/south-africa/unemployment-rate",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3772,7 +3833,7 @@
         }
       }
     ],
-    "source": "https://www.eskom.co.za/eskom-marks-300-days-without-loadshedding-as-sustained-generation-performance-maintains-grid-stability-and-energy-security/"
+    "source": "https://tradingeconomics.com/south-africa/unemployment-rate"
   },
   {
     "year": 2025,
@@ -3823,30 +3884,5 @@
       }
     ],
     "source": "https://www.aljazeera.com/news/2024/5/15/south-africas-ramaphosa-signs-health-bill-weeks-before-election"
-  },
-  {
-    "year": 2025,
-    "title": "Economic Stagnation and Youth Unemployment Crisis",
-    "verdict": "TRUE",
-    "reason": "South Africa's unemployment rate remained stubbornly above 32 percent with youth unemployment exceeding 60 percent in 2025, among the highest in the world, representing a persistent structural failure thirty years after democracy.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "South Africa's unemployment rate remained stubbornly above 32 percent with youth unemployment exceeding 60 percent in 2025, among the highest in the world, representing a persistent structural failure thirty years after democracy.",
-        "source": "https://tradingeconomics.com/south-africa/unemployment-rate",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://tradingeconomics.com/south-africa/unemployment-rate"
   }
 ]

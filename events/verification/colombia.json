@@ -1,31 +1,6 @@
 [
   {
     "year": 1950,
-    "title": "Laureano Gómez Authoritarian Government Deepens La Violencia",
-    "verdict": "TRUE",
-    "reason": "Gómez won uncontested 1950 election after Liberal boycott; chulavitas role confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Gómez won uncontested 1950 election after Liberal boycott; chulavitas role confirmed.",
-        "source": "https://en.wikipedia.org/wiki/La_Violencia",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/La_Violencia"
-  },
-  {
-    "year": 1950,
     "title": "Colombia Deploys Combat Troops to Korean War",
     "verdict": "TRUE",
     "reason": "Confirmed as only Latin American country to send combat troops under UN command.",
@@ -48,6 +23,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Colombia_in_the_Korean_War"
+  },
+  {
+    "year": 1950,
+    "title": "Laureano Gómez Authoritarian Government Deepens La Violencia",
+    "verdict": "TRUE",
+    "reason": "Gómez won uncontested 1950 election after Liberal boycott; chulavitas role confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Gómez won uncontested 1950 election after Liberal boycott; chulavitas role confirmed.",
+        "source": "https://en.wikipedia.org/wiki/La_Violencia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/La_Violencia"
   },
   {
     "year": 1953,
@@ -226,6 +226,31 @@
   },
   {
     "year": 1961,
+    "title": "Colombia Breaks Diplomatic Relations with Cuba",
+    "verdict": "TRUE",
+    "reason": "1961 diplomatic break confirmed under US Cold War pressure.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "1961 diplomatic break confirmed under US Cold War pressure.",
+        "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93Colombia_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93Colombia_relations"
+  },
+  {
+    "year": 1961,
     "title": "Social Agrarian Reform Law Creates INCORA",
     "verdict": "TRUE",
     "reason": "Independent, non-Wikipedia sources confirm all material elements: Colombia's Law 135 of 1961 (Social Agrarian Reform Law) created INCORA (Colombian Institute for Agrarian Reform) to redistribute unused/poorly used land to peasants. Encyclopedia.com confirms the 1961/Law 135/INCORA creation and states implementation was severely limited by elite political influence (Society of Agriculturalists SAC, coffee growers federation FEDECAFE) blocking meaningful land redistribution. Duke University Press (Hispanic American Historical Review) and other academic sources corroborate the Alliance for Progress context and the slow, obstructed implementation, consistent with the description's claim that unaddressed rural grievances fueled later peasant insurgency. Year, country, actor, and outcome all hold.",
@@ -261,10 +286,10 @@
     "source": "https://www.encyclopedia.com/humanities/encyclopedias-almanacs-transcripts-and-maps/colombian-institute-agrarian-reform-incora"
   },
   {
-    "year": 1961,
-    "title": "Colombia Breaks Diplomatic Relations with Cuba",
+    "year": 1964,
+    "title": "ELN Founded by Cuban-Inspired Students",
     "verdict": "TRUE",
-    "reason": "1961 diplomatic break confirmed under US Cold War pressure.",
+    "reason": "July 4 1964 founding confirmed; Fabio Vásquez Castaño, Cuban training, Santander base confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -274,8 +299,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "1961 diplomatic break confirmed under US Cold War pressure.",
-        "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93Colombia_relations",
+        "reason": "July 4 1964 founding confirmed; Fabio Vásquez Castaño, Cuban training, Santander base confirmed.",
+        "source": "https://en.wikipedia.org/wiki/National_Liberation_Army_(Colombia)",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -283,7 +308,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93Colombia_relations"
+    "source": "https://en.wikipedia.org/wiki/National_Liberation_Army_(Colombia)"
   },
   {
     "year": 1964,
@@ -309,31 +334,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Revolutionary_Armed_Forces_of_Colombia"
-  },
-  {
-    "year": 1964,
-    "title": "ELN Founded by Cuban-Inspired Students",
-    "verdict": "TRUE",
-    "reason": "July 4 1964 founding confirmed; Fabio Vásquez Castaño, Cuban training, Santander base confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "July 4 1964 founding confirmed; Fabio Vásquez Castaño, Cuban training, Santander base confirmed.",
-        "source": "https://en.wikipedia.org/wiki/National_Liberation_Army_(Colombia)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/National_Liberation_Army_(Colombia)"
   },
   {
     "year": 1969,
@@ -484,31 +484,6 @@
   },
   {
     "year": 1978,
-    "title": "Security Statute Enacted; Systematic Torture of Detainees",
-    "verdict": "TRUE",
-    "reason": "Security Statute under Turbay Ayala confirmed; IACHR-documented abuses confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Security Statute under Turbay Ayala confirmed; IACHR-documented abuses confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Julio_C%C3%A9sar_Turbay_Ayala",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Julio_C%C3%A9sar_Turbay_Ayala"
-  },
-  {
-    "year": 1978,
     "title": "M-19 Steals 5,000 Weapons from Military Arsenal",
     "verdict": "TRUE",
     "reason": "December 1978 Cantón Norte tunnel theft confirmed; ~5,000 weapons figure confirmed.",
@@ -531,6 +506,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/M-19"
+  },
+  {
+    "year": 1978,
+    "title": "Security Statute Enacted; Systematic Torture of Detainees",
+    "verdict": "TRUE",
+    "reason": "Security Statute under Turbay Ayala confirmed; IACHR-documented abuses confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Security Statute under Turbay Ayala confirmed; IACHR-documented abuses confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Julio_C%C3%A9sar_Turbay_Ayala",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Julio_C%C3%A9sar_Turbay_Ayala"
   },
   {
     "year": 1980,
@@ -784,31 +784,6 @@
   },
   {
     "year": 1989,
-    "title": "Presidential Candidate Luis Carlos Galán Assassinated",
-    "verdict": "TRUE",
-    "reason": "August 18 1989 confirmed; Soacha rally confirmed; Medellín Cartel hitmen confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "August 18 1989 confirmed; Soacha rally confirmed; Medellín Cartel hitmen confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Luis_Carlos_Gal%C3%A1n",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Luis_Carlos_Gal%C3%A1n"
-  },
-  {
-    "year": 1989,
     "title": "M-19 Signs Peace Agreement and Demobilizes",
     "verdict": "TRUE",
     "reason": "Agreement signed January 1989; arms handover March 1990; AD-M19 formation and Navarro Wolf role confirmed.",
@@ -831,6 +806,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/M-19"
+  },
+  {
+    "year": 1989,
+    "title": "Presidential Candidate Luis Carlos Galán Assassinated",
+    "verdict": "TRUE",
+    "reason": "August 18 1989 confirmed; Soacha rally confirmed; Medellín Cartel hitmen confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "August 18 1989 confirmed; Soacha rally confirmed; Medellín Cartel hitmen confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Luis_Carlos_Gal%C3%A1n",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Luis_Carlos_Gal%C3%A1n"
   },
   {
     "year": 1990,
@@ -856,6 +856,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Colombian_Constituent_Assembly_(1991)"
+  },
+  {
+    "year": 1991,
+    "title": "Economic Apertura: Market Liberalization Reforms",
+    "verdict": "TRUE",
+    "reason": "Gaviria apertura económica 1991 confirmed; tariff reductions and privatizations confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Gaviria apertura económica 1991 confirmed; tariff reductions and privatizations confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Colombia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Economy_of_Colombia"
   },
   {
     "year": 1991,
@@ -906,31 +931,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/La_Catedral"
-  },
-  {
-    "year": 1991,
-    "title": "Economic Apertura: Market Liberalization Reforms",
-    "verdict": "TRUE",
-    "reason": "Gaviria apertura económica 1991 confirmed; tariff reductions and privatizations confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Gaviria apertura económica 1991 confirmed; tariff reductions and privatizations confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Economy_of_Colombia",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Economy_of_Colombia"
   },
   {
     "year": 1993,
@@ -1184,31 +1184,6 @@
   },
   {
     "year": 2002,
-    "title": "Bojayá Church Massacre by FARC: 79 Civilians Killed",
-    "verdict": "TRUE",
-    "reason": "May 2 2002 confirmed; cylinder bomb through church roof confirmed; 79 killed in church explosion confirmed (total day toll higher at ~119, but 79 is the direct church death count).",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "May 2 2002 confirmed; cylinder bomb through church roof confirmed; 79 killed in church explosion confirmed (total day toll higher at ~119, but 79 is the direct church death count).",
-        "source": "https://en.wikipedia.org/wiki/Bojay%C3%A1_massacre",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Bojay%C3%A1_massacre"
-  },
-  {
-    "year": 2002,
     "title": "Álvaro Uribe Elected on 'Democratic Security' Platform",
     "verdict": "TRUE",
     "reason": "2002 first-round victory with 53% confirmed; democratic security platform confirmed.",
@@ -1233,10 +1208,10 @@
     "source": "https://en.wikipedia.org/wiki/%C3%81lvaro_Uribe_V%C3%A9lez"
   },
   {
-    "year": 2003,
-    "title": "El Nogal Club Bombing in Bogotá: 36 Killed",
+    "year": 2002,
+    "title": "Bojayá Church Massacre by FARC: 79 Civilians Killed",
     "verdict": "TRUE",
-    "reason": "February 7 2003 confirmed; 36 killed confirmed.",
+    "reason": "May 2 2002 confirmed; cylinder bomb through church roof confirmed; 79 killed in church explosion confirmed (total day toll higher at ~119, but 79 is the direct church death count).",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1246,8 +1221,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "February 7 2003 confirmed; 36 killed confirmed.",
-        "source": "https://en.wikipedia.org/wiki/El_Nogal_Club_bombing",
+        "reason": "May 2 2002 confirmed; cylinder bomb through church roof confirmed; 79 killed in church explosion confirmed (total day toll higher at ~119, but 79 is the direct church death count).",
+        "source": "https://en.wikipedia.org/wiki/Bojay%C3%A1_massacre",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1255,7 +1230,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/El_Nogal_Club_bombing"
+    "source": "https://en.wikipedia.org/wiki/Bojay%C3%A1_massacre"
   },
   {
     "year": 2003,
@@ -1281,6 +1256,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/United_Self-Defense_Forces_of_Colombia"
+  },
+  {
+    "year": 2003,
+    "title": "El Nogal Club Bombing in Bogotá: 36 Killed",
+    "verdict": "TRUE",
+    "reason": "February 7 2003 confirmed; 36 killed confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 7 2003 confirmed; 36 killed confirmed.",
+        "source": "https://en.wikipedia.org/wiki/El_Nogal_Club_bombing",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/El_Nogal_Club_bombing"
   },
   {
     "year": 2005,
@@ -1383,29 +1383,40 @@
     "source": "https://en.wikipedia.org/wiki/%22False_positives%22_scandal_(Colombia)"
   },
   {
-    "year": 2008,
-    "title": "Operation Jaque Rescues Ingrid Betancourt and 14 Others",
+    "year": 2007,
+    "title": "Libertad 1 Becomes Colombia's First Satellite in Orbit",
     "verdict": "TRUE",
-    "reason": "July 2 2008 confirmed; 15 hostages including Betancourt and 3 US contractors confirmed; bloodless deception operation confirmed.",
-    "verify_count": 1,
+    "reason": "Independently confirmed via Wikipedia and Sergio Arboleda University sources: Libertad 1, a CubeSat built by students at Universidad Sergio Arboleda, launched 17 April 2007 aboard a Dnepr rocket from Baikonur Cosmodrome, becoming Colombia's first satellite in orbit. Confirmed 10x10x10cm, ~1kg mass, apogee of 781.1 km (matches description's \"up to 781km\"), planned 50-day lifespan vastly exceeded (still operating years later per news reports), and over 2,320 transmissions carrying more than 11,600 data packets — matching the description's \"more than 2,320 transmissions\" claim exactly.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "July 2 2008 confirmed; 15 hostages including Betancourt and 3 US contractors confirmed; bloodless deception operation confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Operation_Jaque",
+        "reason": "Independently confirmed via multiple sources. Libertad 1 was a CubeSat (10x10x10cm, under 1kg) built by the Space Program of Sergio Arboleda University in Colombia, launched aboard a Dnepr rocket from Baikonur Cosmodrome on 17 April 2007 as one of seven secondary CubeSat payloads. It became Colombia's first satellite in orbit, reached a maximum altitude of 781.1 km, and vastly outlived its planned 50-day mission (still transmitting years later). The specific detail of \"more than 2,320 transmissions\" (sending over 11,600 data packets) is corroborated both by Wikipedia and the university's own page. All material details (country, year, actor, satellite specs, launch vehicle/site, altitude, transmission count, lifespan overrun) check out.",
+        "source": "https://en.wikipedia.org/wiki/Libertad_1",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia and Sergio Arboleda University sources: Libertad 1, a CubeSat built by students at Universidad Sergio Arboleda, launched 17 April 2007 aboard a Dnepr rocket from Baikonur Cosmodrome, becoming Colombia's first satellite in orbit. Confirmed 10x10x10cm, ~1kg mass, apogee of 781.1 km (matches description's \"up to 781km\"), planned 50-day lifespan vastly exceeded (still operating years later per news reports), and over 2,320 transmissions carrying more than 11,600 data packets — matching the description's \"more than 2,320 transmissions\" claim exactly.",
+        "source": "https://en.wikipedia.org/wiki/Libertad_1",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Operation_Jaque"
+    "source": "https://en.wikipedia.org/wiki/Libertad_1"
   },
   {
     "year": 2008,
@@ -1431,6 +1442,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2008_Andean_diplomatic_crisis"
+  },
+  {
+    "year": 2008,
+    "title": "Operation Jaque Rescues Ingrid Betancourt and 14 Others",
+    "verdict": "TRUE",
+    "reason": "July 2 2008 confirmed; 15 hostages including Betancourt and 3 US contractors confirmed; bloodless deception operation confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 2 2008 confirmed; 15 hostages including Betancourt and 3 US contractors confirmed; bloodless deception operation confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Jaque",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Jaque"
   },
   {
     "year": 2010,
@@ -1484,31 +1520,6 @@
   },
   {
     "year": 2011,
-    "title": "Victims and Land Restitution Law: Landmark Reparations Framework",
-    "verdict": "TRUE",
-    "reason": "Law 1448 June 2011 confirmed; ~8 million victims recognized confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Law 1448 June 2011 confirmed; ~8 million victims recognized confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Victims_and_Land_Restitution_Law",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Victims_and_Land_Restitution_Law"
-  },
-  {
-    "year": 2011,
     "title": "US-Colombia Free Trade Agreement Ratified",
     "verdict": "TRUE",
     "reason": "October 2011 US Congress ratification confirmed; union violence delay confirmed.",
@@ -1531,6 +1542,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Colombia_Free_Trade_Agreement"
+  },
+  {
+    "year": 2011,
+    "title": "Victims and Land Restitution Law: Landmark Reparations Framework",
+    "verdict": "TRUE",
+    "reason": "Law 1448 June 2011 confirmed; ~8 million victims recognized confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Law 1448 June 2011 confirmed; ~8 million victims recognized confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Victims_and_Land_Restitution_Law",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Victims_and_Land_Restitution_Law"
   },
   {
     "year": 2012,
@@ -1584,56 +1620,6 @@
   },
   {
     "year": 2016,
-    "title": "FARC Peace Accord Signed, Then Rejected in Referendum",
-    "verdict": "TRUE",
-    "reason": "September 26 Cartagena signing confirmed; October 2 referendum rejection 50.2% vs 49.8% confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "September 26 Cartagena signing confirmed; October 2 referendum rejection 50.2% vs 49.8% confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2016_Colombian_peace_agreement_referendum",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2016_Colombian_peace_agreement_referendum"
-  },
-  {
-    "year": 2016,
-    "title": "Santos Awarded Nobel Peace Prize for Colombia Accord",
-    "verdict": "TRUE",
-    "reason": "October 2016 Nobel Prize days after referendum rejection confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "October 2016 Nobel Prize days after referendum rejection confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Juan_Manuel_Santos",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Juan_Manuel_Santos"
-  },
-  {
-    "year": 2016,
     "title": "Constitutional Court Legalizes Same-Sex Marriage",
     "verdict": "TRUE",
     "reason": "April 28 2016 6–3 ruling confirmed.",
@@ -1656,6 +1642,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Same-sex_marriage_in_Colombia"
+  },
+  {
+    "year": 2016,
+    "title": "FARC Peace Accord Signed, Then Rejected in Referendum",
+    "verdict": "TRUE",
+    "reason": "September 26 Cartagena signing confirmed; October 2 referendum rejection 50.2% vs 49.8% confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "September 26 Cartagena signing confirmed; October 2 referendum rejection 50.2% vs 49.8% confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2016_Colombian_peace_agreement_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2016_Colombian_peace_agreement_referendum"
   },
   {
     "year": 2016,
@@ -1683,10 +1694,10 @@
     "source": "https://en.wikipedia.org/wiki/Colombian_peace_process"
   },
   {
-    "year": 2017,
-    "title": "FARC Completes Weapons Handover and Transforms into Political Party",
+    "year": 2016,
+    "title": "Santos Awarded Nobel Peace Prize for Colombia Accord",
     "verdict": "TRUE",
-    "reason": "June 27 2017 UN-certified disarmament confirmed; ~7,000–13,000 demobilized combatants confirmed.",
+    "reason": "October 2016 Nobel Prize days after referendum rejection confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1696,8 +1707,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "June 27 2017 UN-certified disarmament confirmed; ~7,000–13,000 demobilized combatants confirmed.",
-        "source": "https://en.wikipedia.org/wiki/FARC",
+        "reason": "October 2016 Nobel Prize days after referendum rejection confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Juan_Manuel_Santos",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1705,7 +1716,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/FARC"
+    "source": "https://en.wikipedia.org/wiki/Juan_Manuel_Santos"
   },
   {
     "year": 2017,
@@ -1731,6 +1742,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Deforestation_in_Colombia"
+  },
+  {
+    "year": 2017,
+    "title": "FARC Completes Weapons Handover and Transforms into Political Party",
+    "verdict": "TRUE",
+    "reason": "June 27 2017 UN-certified disarmament confirmed; ~7,000–13,000 demobilized combatants confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 27 2017 UN-certified disarmament confirmed; ~7,000–13,000 demobilized combatants confirmed.",
+        "source": "https://en.wikipedia.org/wiki/FARC",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/FARC"
   },
   {
     "year": 2018,
@@ -1809,31 +1845,6 @@
   },
   {
     "year": 2020,
-    "title": "COVID-19 Pandemic: 130,000+ Dead; Economy Contracts 6.8%",
-    "verdict": "TRUE",
-    "reason": "March 6 2020 first case confirmed; strict early quarantine confirmed; 6.8% GDP contraction confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "March 6 2020 first case confirmed; strict early quarantine confirmed; 6.8% GDP contraction confirmed.",
-        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Colombia",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Colombia"
-  },
-  {
-    "year": 2020,
     "title": "Colombia Joins OECD as Full Member",
     "verdict": "TRUE",
     "reason": "April 28 2020 confirmed as 37th OECD member; 8-year accession process confirmed.",
@@ -1856,6 +1867,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Colombia_and_the_OECD"
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 Pandemic: 130,000+ Dead; Economy Contracts 6.8%",
+    "verdict": "TRUE",
+    "reason": "March 6 2020 first case confirmed; strict early quarantine confirmed; 6.8% GDP contraction confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 6 2020 first case confirmed; strict early quarantine confirmed; 6.8% GDP contraction confirmed.",
+        "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Colombia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Colombia"
   },
   {
     "year": 2021,
@@ -1884,31 +1920,6 @@
   },
   {
     "year": 2022,
-    "title": "Gustavo Petro Elected Colombia's First Leftist President",
-    "verdict": "TRUE",
-    "reason": "June 19 2022 runoff win confirmed; Francia Márquez as first Afro-Colombian VP confirmed; ~3pp margin confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "June 19 2022 runoff win confirmed; Francia Márquez as first Afro-Colombian VP confirmed; ~3pp margin confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2022_Colombian_presidential_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2022_Colombian_presidential_election"
-  },
-  {
-    "year": 2022,
     "title": "Colombia Decriminalizes Abortion Up to 24 Weeks",
     "verdict": "TRUE",
     "reason": "February 21 2022 Constitutional Court 5-4 ruling confirmed.",
@@ -1931,6 +1942,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Abortion_in_Colombia"
+  },
+  {
+    "year": 2022,
+    "title": "Gustavo Petro Elected Colombia's First Leftist President",
+    "verdict": "TRUE",
+    "reason": "June 19 2022 runoff win confirmed; Francia Márquez as first Afro-Colombian VP confirmed; ~3pp margin confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 19 2022 runoff win confirmed; Francia Márquez as first Afro-Colombian VP confirmed; ~3pp margin confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2022_Colombian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2022_Colombian_presidential_election"
   },
   {
     "year": 2022,

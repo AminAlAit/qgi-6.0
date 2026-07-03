@@ -188,12 +188,12 @@
   {
     "year": 1977,
     "title": "Burundi nationalizes coffee sector",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: Bagaza government coffee sector reforms and state control confirmed via multiple sources. OCIBU as state marketing board is a known historical fact for Burundi's coffee industry.; Pass 2 FALSE: The core event (state nationalization of Burundi's coffee sector, private factories placed under OCIBU's management, ending private coffee marketing) is real and well documented, but every independent source found dates it to 1976, not 1977. A 2007 International Alert/USAID-funded report on Burundi's coffee sector states explicitly and repeats twice: 'In 1976, the private coffee factories (Ceduca, Indurundi) were nationalized and all activities related to export were placed under OCIBU's management, thereby making the industry completely state-controlled,' and later refers to 'those factories nationalized in 1976 (Ceduca, Unicafé, UCB)... currently managed by OCIBU.' This is corroborated by greenplantation.com ('In 1976, the state took control of all coffee fields and production, and both quality and quantity plummeted') and other coffee-trade histories that place the nationalization in 1976. This timing also aligns with Bagaza's coup of November 1976. I found no independent source placing the nationalization in 1977. Additionally, OCIBU appears to have already existed as the export-management body at the time of the 1976 nationalization (other sources trace an earlier origin for the office) rather than being newly 'created' by this act, though the year discrepancy is the decisive, well-corroborated issue. Because the year is wrong by my best independent evidence, this is FALSE with corrected_year=1976; country and the substance of the nationalization event otherwise check out.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
+    "verdict": "TRUE",
+    "reason": "Independent academic source (Alexandre Hatungimana, \"Le café et les pouvoirs au Burundi,\" Les Cahiers d'Outre-Mer, Issue 243, 2008 — published on journals.openedition.org, a peer-reviewed French geography journal platform) states explicitly: \"la nationalisation des usines de café entamée en 1977\" (nationalization of coffee factories undertaken in 1977), and that this placed \"toutes les activités en amont de l'exportation du café\" (all upstream coffee-export activities) under OCIBU's (Office du Café du Burundi) control, making the sector \"complètement administré\" (completely state-administered). This directly matches the event's core claims: 1977 timing, nationalization, OCIBU as the controlling state body, and state control over export revenues. The same source and others confirm coffee's overwhelming dominance of Burundi's export earnings (87.69% by 1997, consistent with \"over 85 percent\"). Timeline is also consistent with Bagaza having taken power via the November 1976 coup and being in office by 1977. Note: several tertiary/industry-blog sources (Green Plantation, Sagebrush Coffee, Atlas Coffee, Cafe Imports) round the date to \"1976\" when describing the broader shift to state control of coffee (factories Ceduca/Indurundi), but the specific, citable academic source pins the factory-nationalization/OCIBU-takeover event to 1977, matching the input year exactly. No off-limits domains (wikipedia.org, international-alert.org) were relied upon for corroboration.",
+    "verify_count": 3,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
     "source_independence": "independent",
     "verifications": [
       {
@@ -218,8 +218,21 @@
           "method": "web_search"
         },
         "corrected_year": 1976
+      },
+      {
+        "pass_n": 3,
+        "verdict": "TRUE",
+        "reason": "Independent academic source (Alexandre Hatungimana, \"Le café et les pouvoirs au Burundi,\" Les Cahiers d'Outre-Mer, Issue 243, 2008 — published on journals.openedition.org, a peer-reviewed French geography journal platform) states explicitly: \"la nationalisation des usines de café entamée en 1977\" (nationalization of coffee factories undertaken in 1977), and that this placed \"toutes les activités en amont de l'exportation du café\" (all upstream coffee-export activities) under OCIBU's (Office du Café du Burundi) control, making the sector \"complètement administré\" (completely state-administered). This directly matches the event's core claims: 1977 timing, nationalization, OCIBU as the controlling state body, and state control over export revenues. The same source and others confirm coffee's overwhelming dominance of Burundi's export earnings (87.69% by 1997, consistent with \"over 85 percent\"). Timeline is also consistent with Bagaza having taken power via the November 1976 coup and being in office by 1977. Note: several tertiary/industry-blog sources (Green Plantation, Sagebrush Coffee, Atlas Coffee, Cafe Imports) round the date to \"1976\" when describing the broader shift to state control of coffee (factories Ceduca/Indurundi), but the specific, citable academic source pins the factory-nationalization/OCIBU-takeover event to 1977, matching the input year exactly. No off-limits domains (wikipedia.org, international-alert.org) were relied upon for corroboration.",
+        "source": "https://journals.openedition.org/com/5298",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://journals.openedition.org/com/5298"
   },
   {
     "year": 1981,
@@ -1481,5 +1494,150 @@
       }
     ],
     "source": "https://africacenter.org/spotlight/burundi-the-forgotten-crisis-still-burns/"
+  },
+  {
+    "year": 2007,
+    "title": "Post-war economic recovery begins — GDP growth accelerates",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm Burundi's GDP grew approximately 3.5% in 2007 (Wikipedia's Economy of Burundi macro-table cites 3.5% for 2007 and 4.9% for 2008; IndexMundi, citing IMF data, cites 3.452% real GDP growth for 2007), which matches the event's claimed 3-5% range. This aligns with the broader documented narrative: Burundi's 1993-2005 civil war caused a ~30% GDP contraction, and the Arusha peace process plus subsequent ceasefires led to a recovery phase from 2007-2014 averaging 4.3% annual growth, driven by returning aid flows, HIPC debt relief, and improved macroeconomic management. General context of refugee returns, agricultural recovery, and microfinance-supported rural livelihoods during Burundi's post-conflict reintegration in this period is also independently documented (IOM/UNHCR reporting on Burundian returnee reintegration programs), though I could not find a source specifically dated to 2007 naming \"coffee rehabilitation programs\" by that exact name. The core claim (country=Burundi, year=2007, GDP growth 3-5% amid post-war recovery) is well corroborated by two independent, non-overlapping sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources corroborate the description. Burundi's real GDP growth in 2007 was ~3.45% (Indexmundi/World Bank-derived series), with surrounding years 2006 (5.41%) and 2008 (4.86%) also in the 3-5% band cited. ISS African Futures confirms growth \"modestly resumed\" from 2006 and \"relatively accelerated\" from 2007-2014 (averaging 4.3%), driven by improved macroeconomic management, HIPC debt relief, and aid inflows after the Arusha peace process. Burundi's PRSP was discussed by IMF/World Bank boards in March 2007 as a step toward HIPC completion. Refugee return from Tanzania/DRC was actively underway in this period (peaking at ~95,000 in 2008). A 2007 International Alert report documents coffee sector rehabilitation programs (OCIBU/INADES-Formation pilot for coffee farmer associations), and ReliefWeb/Clingendael sources document microfinance support for returnees rebuilding livelihoods. All material elements of the description (year, country, magnitude of growth, drivers) are corroborated across multiple independent sources.",
+        "source": "https://futures.issafrica.org/geographic/countries/burundi/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm Burundi's GDP grew approximately 3.5% in 2007 (Wikipedia's Economy of Burundi macro-table cites 3.5% for 2007 and 4.9% for 2008; IndexMundi, citing IMF data, cites 3.452% real GDP growth for 2007), which matches the event's claimed 3-5% range. This aligns with the broader documented narrative: Burundi's 1993-2005 civil war caused a ~30% GDP contraction, and the Arusha peace process plus subsequent ceasefires led to a recovery phase from 2007-2014 averaging 4.3% annual growth, driven by returning aid flows, HIPC debt relief, and improved macroeconomic management. General context of refugee returns, agricultural recovery, and microfinance-supported rural livelihoods during Burundi's post-conflict reintegration in this period is also independently documented (IOM/UNHCR reporting on Burundian returnee reintegration programs), though I could not find a source specifically dated to 2007 naming \"coffee rehabilitation programs\" by that exact name. The core claim (country=Burundi, year=2007, GDP growth 3-5% amid post-war recovery) is well corroborated by two independent, non-overlapping sources.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Burundi",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Economy_of_Burundi"
+  },
+  {
+    "year": 1969,
+    "title": "First Five-Year Development Plan launched",
+    "verdict": "FALSE",
+    "reason": "The substance of the event (Micombero-era Five-Year Development Plan emphasizing agricultural modernization and infrastructure with Belgian/multilateral assistance, coffee providing roughly 80% of foreign exchange) is corroborated, but the launch year is wrong. Multiple independent sources converge on 1968, not 1969, as the start of Burundi's Five-Year Development Plan: (1) a contemporary 1969 World Bank Economic Committee paper on Burundi describes the 'Five-Year Development Plan (1968-1972)' as already 'under way' at the time of an IMF/World Bank mission; (2) an IRD Editions academic study explicitly states 'Burundi's initial Five-Year Plan ran from 1968-1973'; (3) a scholarly summary on coffee and power in Burundi references 'Four Five-Year Plans between 1968 and 1987', again anchoring the first plan's start to 1968. No source found dates the plan's launch to 1969 specifically - by 1969 it was already in its second year. Because the event's year is a join key and the hard rule requires reporting year errors as FALSE with a corrected_year (not PARTIAL), this is FALSE with corrected_year 1968, despite the descriptive content (agriculture/infrastructure focus, Belgian aid, coffee ~80% of exports) being materially accurate for the plan in general.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "UNCERTAIN",
+        "reason": "Core context checks out: Micombero ruled Burundi 1966-1976; coffee has long been documented (nationsencyclopedia.com, multiple sources) as ~80%+ of Burundi's export/foreign-exchange earnings, matching the description closely; World Bank archival folder listings from 1969-1970 (e.g. \"Economic Committee Papers - Burundi EC/M/69-5\", EC/O/70-161) reference a Burundian \"Five-Year Development Plan\" with priority sectors of agriculture, transportation, power and education, and Belgium is repeatedly confirmed as Burundi's principal historical donor. An academic paper (Nkurunziza & Ngaruko, \"Explaining Growth in Burundi: 1960-2000\") independently confirms Micombero (like the pre-1966 monarchy) \"adopted multi-year plans of economic development.\" However, I could not pin down a clean, text-readable primary source confirming the exact launch year: every WebFetch of the actual World Bank archive PDFs returned only scanned-image binary data with no extractable text, so all \"1968-1972\" period references I found were secondhand AI-search syntheses, not directly quoted text. Multiple independent search syntheses also repeatedly (and possibly wrongly, possibly not) surfaced a conflicting claim that Burundi's \"first\" formal Five-Year Plan cycle actually began only in 1978 under Bagaza's Third Republic, which would contradict labeling a 1968/1969 Micombero-era plan as \"first.\" I could not resolve this conflict — between (a) a real 1968-1972-labeled plan under Micombero matching the description's substance, and (b) a competing claim that the true \"first\" numbered Five-Year Plan was Bagaza's 1978 plan — from any primary source with confirmable, quotable text. Given the join-key year (1969) could plausibly be off by one (plan period commonly cited as starting 1968) and the \"first\" ordinal is contested, and I have no acceptable independent source with directly quoted text nailing down the precise launch year or the \"first\" claim, I cannot confirm or confidently refute this event.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The substance of the event (Micombero-era Five-Year Development Plan emphasizing agricultural modernization and infrastructure with Belgian/multilateral assistance, coffee providing roughly 80% of foreign exchange) is corroborated, but the launch year is wrong. Multiple independent sources converge on 1968, not 1969, as the start of Burundi's Five-Year Development Plan: (1) a contemporary 1969 World Bank Economic Committee paper on Burundi describes the 'Five-Year Development Plan (1968-1972)' as already 'under way' at the time of an IMF/World Bank mission; (2) an IRD Editions academic study explicitly states 'Burundi's initial Five-Year Plan ran from 1968-1973'; (3) a scholarly summary on coffee and power in Burundi references 'Four Five-Year Plans between 1968 and 1987', again anchoring the first plan's start to 1968. No source found dates the plan's launch to 1969 specifically - by 1969 it was already in its second year. Because the event's year is a join key and the hard rule requires reporting year errors as FALSE with a corrected_year (not PARTIAL), this is FALSE with corrected_year 1968, despite the descriptive content (agriculture/infrastructure focus, Belgian aid, coffee ~80% of exports) being materially accurate for the plan in general.",
+        "source": "https://books.openedition.org/irdeditions/8822?lang=en",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1968
+      }
+    ],
+    "source": "https://books.openedition.org/irdeditions/8822?lang=en"
+  },
+  {
+    "year": 2024,
+    "title": "IMF and World Bank resume engagement — economic reform dialogue",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Confirmed from multiple independent sources that in 2024 both the IMF and World Bank had substantial, active structured policy engagement with Burundi. IMF: staff mission Jan 11-21 2024 held first-review discussions under the July 2023 ECF arrangement (Burundi's first UCT-quality IMF program since 2015), with fiscal consolidation under the revised 2023/24 budget, FX market liberalization, and structural reforms modernizing the coffee and mining sectors explicitly cited as program priorities (imf.org PR2419, Jan 2024; IMF Country Report 23/270). World Bank: in August 2024 signed nearly half a billion dollars in new financing with Burundi's government — a $113M urban resilience project, $100M clean-energy access project, and a $227.6M human-capital project — plus a January 2024 PFM support boost and Burundi's new IDA PRA eligibility (75% funding increase for FY24-25), described by local press as the Bank's effort to \"revive the country.\" Poverty framing checks out: multiple sources place Burundi's 2024 GDP per capita in the $150-190 range (well below $300) and rank it among the world's poorest nations, with ~80% of the population dependent on subsistence agriculture. One nuance: the *formal* re-engagement/resumption milestones (IMF's first Article IV consultation since 2014, concluded 2022; first IMF loan in 8 years, approved July 2023) technically predate 2024 — 2024 itself was a year of continuing/deepening that resumed engagement (ECF first-review, new IMF Article IV mission prep, and major new WB financing) rather than the literal first resumption. This is a minor timing/framing imprecision, not a substantive error — country, actors, and reform substance (fiscal consolidation, coffee-sector reform focus, extreme poverty context) all hold for 2024, and concrete, sourced IMF/World Bank activity did occur in that year, so the event is materially accurate as described.; Pass 2 FALSE: The substance (IMF/World Bank re-engagement with Burundi after Nkurunziza-era isolation, focused on fiscal consolidation and coffee-sector reform) is real, but the year is wrong — the resumption did not happen in 2024. It happened years earlier as a phased process: Ndayishimiye took office in May 2020 and began reconnecting with donors (resumed IMF data provision, restarted WHO/World Bank COVID cooperation); the IMF approved emergency RCF financing (~$76.2M) in 2021; the 2022 Article IV Consultation (completed July 2022) was explicitly described by the IMF as sealing 'the full reengagement' — the first Article IV since 2014; and in July 2023 the IMF Executive Board approved a $261.7M, 38-month Extended Credit Facility arrangement, Burundi's first major IMF program since 2015, with structural benchmarks covering fiscal consolidation and coffee/mining sector reform. By 2024, the only IMF Burundi action was the routine 'first review' of that already-active ECF program (Jan 2024 mission, completed later in 2024) — a continuation, not a resumption. World Bank engagement also deepened gradually from 2020-2024 (e.g., a Jan 2024 PFM support announcement) rather than 'resuming' in a discrete 2024 event; per World Bank DSA documents, full budget support had still not resumed even by FY2024. Framing 2024 as the year engagement 'resumed... following years of reduced engagement' misdates a milestone that actually occurred in 2022 (IMF full reengagement) / 2023 (major financing program restored). GDP-per-capita-below-$300 detail is accurate but doesn't rescue the year.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources that in 2024 both the IMF and World Bank had substantial, active structured policy engagement with Burundi. IMF: staff mission Jan 11-21 2024 held first-review discussions under the July 2023 ECF arrangement (Burundi's first UCT-quality IMF program since 2015), with fiscal consolidation under the revised 2023/24 budget, FX market liberalization, and structural reforms modernizing the coffee and mining sectors explicitly cited as program priorities (imf.org PR2419, Jan 2024; IMF Country Report 23/270). World Bank: in August 2024 signed nearly half a billion dollars in new financing with Burundi's government — a $113M urban resilience project, $100M clean-energy access project, and a $227.6M human-capital project — plus a January 2024 PFM support boost and Burundi's new IDA PRA eligibility (75% funding increase for FY24-25), described by local press as the Bank's effort to \"revive the country.\" Poverty framing checks out: multiple sources place Burundi's 2024 GDP per capita in the $150-190 range (well below $300) and rank it among the world's poorest nations, with ~80% of the population dependent on subsistence agriculture. One nuance: the *formal* re-engagement/resumption milestones (IMF's first Article IV consultation since 2014, concluded 2022; first IMF loan in 8 years, approved July 2023) technically predate 2024 — 2024 itself was a year of continuing/deepening that resumed engagement (ECF first-review, new IMF Article IV mission prep, and major new WB financing) rather than the literal first resumption. This is a minor timing/framing imprecision, not a substantive error — country, actors, and reform substance (fiscal consolidation, coffee-sector reform focus, extreme poverty context) all hold for 2024, and concrete, sourced IMF/World Bank activity did occur in that year, so the event is materially accurate as described.",
+        "source": "https://www.imf.org/en/News/Articles/2024/01/22/pr2419-burundi-imf-staff-conducted-discussions-for-the-first-review-under-ecf-arrangement",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The substance (IMF/World Bank re-engagement with Burundi after Nkurunziza-era isolation, focused on fiscal consolidation and coffee-sector reform) is real, but the year is wrong — the resumption did not happen in 2024. It happened years earlier as a phased process: Ndayishimiye took office in May 2020 and began reconnecting with donors (resumed IMF data provision, restarted WHO/World Bank COVID cooperation); the IMF approved emergency RCF financing (~$76.2M) in 2021; the 2022 Article IV Consultation (completed July 2022) was explicitly described by the IMF as sealing 'the full reengagement' — the first Article IV since 2014; and in July 2023 the IMF Executive Board approved a $261.7M, 38-month Extended Credit Facility arrangement, Burundi's first major IMF program since 2015, with structural benchmarks covering fiscal consolidation and coffee/mining sector reform. By 2024, the only IMF Burundi action was the routine 'first review' of that already-active ECF program (Jan 2024 mission, completed later in 2024) — a continuation, not a resumption. World Bank engagement also deepened gradually from 2020-2024 (e.g., a Jan 2024 PFM support announcement) rather than 'resuming' in a discrete 2024 event; per World Bank DSA documents, full budget support had still not resumed even by FY2024. Framing 2024 as the year engagement 'resumed... following years of reduced engagement' misdates a milestone that actually occurred in 2022 (IMF full reengagement) / 2023 (major financing program restored). GDP-per-capita-below-$300 detail is accurate but doesn't rescue the year.",
+        "source": "https://www.imf.org/en/News/Articles/2023/07/17/pr23266-burundi-imf-executive-board-approves-a-38-month-arrangement-under-the-ecf-for-burundi",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2023
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "title": "Coffee sector reform — liberalization and quality investment",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources show the opposite policy direction. Burundi's coffee sector was liberalized in the 1990s-2009 (private washing stations permitted from 2006, direct export contracts legalized 2008) — under prior administrations, not Ndayishimiye. Ndayishimiye's government, in office since 2020, did the reverse: it renationalized the sector via decree (Jan 7, 2020), creating ODECA to seize control of SOGESTAL washing stations from private/mixed ownership, acting as both regulator and buyer, and launching a state auction system to control export pricing (multiple sources: burundi-eco.com, IWACU, africabriefing.com, International Alert). For 2023 specifically, a contemporaneous March 2023 article confirms the government/ministerial council — not the market — fixed the producer price of cherry coffee at 1,200 FBu/kg for the 2023-2024 campaign, a hallmark of continued/tightened state control, not liberalization. Other 2023-era reporting describes private investors 'en débandade' (in retreat/disarray) since the 2020 nationalization, and calls in 2023 to reform ODECA's dual regulator/buyer role — but no evidence of an actual liberalization reform in 2023. Burundi's specialty-coffee quality recognition (Cup of Excellence, premium washed arabicas) is real and longstanding, but it is not tied to a 2023 liberalization reform by the Ndayishimiye government as the event claims — the government's direction was toward more state control, not less.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Independent sources show the Ndayishimiye government's actual coffee-sector policy trajectory was the OPPOSITE of what the event describes. Burundi's coffee sector was liberalized in 1991 and again privatized in 2008 (washing stations sold to private exporters/cooperatives, reaching ~283 stations, 70% privately owned by 2019). Starting in late 2019/January 2020 — under President Ndayishimiye, who took office June 2020 — the government REVERSED course and re-nationalized the sector: it scrapped the public-private 'Sogestal' washing-station network and placed all stations under state control via a new central authority, ODECA (Office pour le Développement du Café du Burundi), replacing the earlier ARFIC body. This state-control model was still in force through 2023 (e.g., ODECA-run washing stations certified 4,500 farmers in 2023). No source found describes a 2023 (or any Ndayishimiye-era) move to 'partially liberalize' the sector, allow private washing stations, or enable direct export deals — the government instead tightened state marketing-board control. While Burundi's washed arabica has genuinely earned specialty-market recognition, that recognition is occurring under renewed state oversight, not liberalization. The central claim of the event — a liberalizing reform — is factually inverted, not merely a magnitude/detail discrepancy.",
+        "source": "https://efico.com/press-cuprima/burundi-2024-2025-crop-review/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources show the opposite policy direction. Burundi's coffee sector was liberalized in the 1990s-2009 (private washing stations permitted from 2006, direct export contracts legalized 2008) — under prior administrations, not Ndayishimiye. Ndayishimiye's government, in office since 2020, did the reverse: it renationalized the sector via decree (Jan 7, 2020), creating ODECA to seize control of SOGESTAL washing stations from private/mixed ownership, acting as both regulator and buyer, and launching a state auction system to control export pricing (multiple sources: burundi-eco.com, IWACU, africabriefing.com, International Alert). For 2023 specifically, a contemporaneous March 2023 article confirms the government/ministerial council — not the market — fixed the producer price of cherry coffee at 1,200 FBu/kg for the 2023-2024 campaign, a hallmark of continued/tightened state control, not liberalization. Other 2023-era reporting describes private investors 'en débandade' (in retreat/disarray) since the 2020 nationalization, and calls in 2023 to reform ODECA's dual regulator/buyer role — but no evidence of an actual liberalization reform in 2023. Burundi's specialty-coffee quality recognition (Cup of Excellence, premium washed arabicas) is real and longstanding, but it is not tied to a 2023 liberalization reform by the Ndayishimiye government as the event claims — the government's direction was toward more state control, not less.",
+        "source": "https://burundi-eco.com/campagne-cafe-2023-2024-le-prix-au-producteur-du-cafe-cerise-est-passe-de-800-fbu-a-1200-fbu-le-kg/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://burundi-eco.com/campagne-cafe-2023-2024-le-prix-au-producteur-du-cafe-cerise-est-passe-de-800-fbu-a-1200-fbu-le-kg/"
   }
 ]

@@ -26,31 +26,6 @@
   },
   {
     "year": 1951,
-    "title": "Trucial Oman Scouts Established",
-    "verdict": "TRUE",
-    "reason": "The Trucial Oman Scouts (originally Trucial Oman Levies) were established in 1951 at Sharjah under British command for security across the Trucial States.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Trucial Oman Scouts (originally Trucial Oman Levies) were established in 1951 at Sharjah under British command for security across the Trucial States.",
-        "source": "https://en.wikipedia.org/wiki/Trucial_Oman_Scouts",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Trucial_Oman_Scouts"
-  },
-  {
-    "year": 1951,
     "title": "Early Oil Exploration Surveys in Abu Dhabi",
     "verdict": "TRUE",
     "reason": "PDTC drilled at Jebel Ali in 1951 and conducted geological surveys in Abu Dhabi territory; the well proved dry but seismic survey activities were ongoing in this period.",
@@ -75,10 +50,10 @@
     "source": "https://geoexpro.com/the-abu-dhabi-oil-discoveries/"
   },
   {
-    "year": 1952,
-    "title": "Trucial States Council Formed",
+    "year": 1951,
+    "title": "Trucial Oman Scouts Established",
     "verdict": "TRUE",
-    "reason": "The Trucial States Council was established in 1952 with its first meetings that spring and autumn, serving as an advisory forum for the seven rulers under British chairmanship.",
+    "reason": "The Trucial Oman Scouts (originally Trucial Oman Levies) were established in 1951 at Sharjah under British command for security across the Trucial States.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -88,8 +63,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The Trucial States Council was established in 1952 with its first meetings that spring and autumn, serving as an advisory forum for the seven rulers under British chairmanship.",
-        "source": "https://www.cambridge.org/core/books/abs/britain-and-the-administration-of-the-trucial-states-19471965/trucial-states-council-19521965/04DBE85C4E6C56C21195130EF00B3408",
+        "reason": "The Trucial Oman Scouts (originally Trucial Oman Levies) were established in 1951 at Sharjah under British command for security across the Trucial States.",
+        "source": "https://en.wikipedia.org/wiki/Trucial_Oman_Scouts",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -97,7 +72,7 @@
         }
       }
     ],
-    "source": "https://www.cambridge.org/core/books/abs/britain-and-the-administration-of-the-trucial-states-19471965/trucial-states-council-19521965/04DBE85C4E6C56C21195130EF00B3408"
+    "source": "https://en.wikipedia.org/wiki/Trucial_Oman_Scouts"
   },
   {
     "year": 1952,
@@ -123,6 +98,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Dubai_Creek"
+  },
+  {
+    "year": 1952,
+    "title": "Trucial States Council Formed",
+    "verdict": "TRUE",
+    "reason": "The Trucial States Council was established in 1952 with its first meetings that spring and autumn, serving as an advisory forum for the seven rulers under British chairmanship.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Trucial States Council was established in 1952 with its first meetings that spring and autumn, serving as an advisory forum for the seven rulers under British chairmanship.",
+        "source": "https://www.cambridge.org/core/books/abs/britain-and-the-administration-of-the-trucial-states-19471965/trucial-states-council-19521965/04DBE85C4E6C56C21195130EF00B3408",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cambridge.org/core/books/abs/britain-and-the-administration-of-the-trucial-states-19471965/trucial-states-council-19521965/04DBE85C4E6C56C21195130EF00B3408"
   },
   {
     "year": 1953,
@@ -326,31 +326,6 @@
   },
   {
     "year": 1963,
-    "title": "Sheikh Zayed's Progressive Governance in Al Ain",
-    "verdict": "TRUE",
-    "reason": "Sheikh Zayed served as ruler's representative in Al Ain from 1946 and throughout the early 1960s actively built schools, hospitals and infrastructure, earning a reformist reputation documented in official UAE histories.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Sheikh Zayed served as ruler's representative in Al Ain from 1946 and throughout the early 1960s actively built schools, hospitals and infrastructure, earning a reformist reputation documented in official UAE histories.",
-        "source": "https://en.wikipedia.org/wiki/Zayed_bin_Sultan_Al_Nahyan",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Zayed_bin_Sultan_Al_Nahyan"
-  },
-  {
-    "year": 1963,
     "title": "Dubai Establishes Major Gold Trading Hub",
     "verdict": "PARTIAL",
     "reason": "Dubai's gold trade grew significantly through the 1940s-1960s; by the 1960s Dubai was a major hub for gold re-export to India, though pinpointing 1963 as the establishment year is imprecise rather than clearly false.",
@@ -373,6 +348,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Dubai_Gold_Souk"
+  },
+  {
+    "year": 1963,
+    "title": "Sheikh Zayed's Progressive Governance in Al Ain",
+    "verdict": "TRUE",
+    "reason": "Sheikh Zayed served as ruler's representative in Al Ain from 1946 and throughout the early 1960s actively built schools, hospitals and infrastructure, earning a reformist reputation documented in official UAE histories.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sheikh Zayed served as ruler's representative in Al Ain from 1946 and throughout the early 1960s actively built schools, hospitals and infrastructure, earning a reformist reputation documented in official UAE histories.",
+        "source": "https://en.wikipedia.org/wiki/Zayed_bin_Sultan_Al_Nahyan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Zayed_bin_Sultan_Al_Nahyan"
   },
   {
     "year": 1964,
@@ -476,31 +476,6 @@
   },
   {
     "year": 1968,
-    "title": "Union of Arab Emirates Proposed — Federation Negotiations Begin",
-    "verdict": "TRUE",
-    "reason": "Sheikh Zayed and Sheikh Rashid met at Argoub Al Sedirah (Al Smeih area) on 18 February 1968 and agreed to form a union, subsequently inviting the other Trucial States, Bahrain, and Qatar.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Sheikh Zayed and Sheikh Rashid met at Argoub Al Sedirah (Al Smeih area) on 18 February 1968 and agreed to form a union, subsequently inviting the other Trucial States, Bahrain, and Qatar.",
-        "source": "https://en.wikipedia.org/wiki/Foundation_of_the_United_Arab_Emirates",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Foundation_of_the_United_Arab_Emirates"
-  },
-  {
-    "year": 1968,
     "title": "Port Rashid Construction Begins in Dubai",
     "verdict": "PARTIAL",
     "reason": "Port Rashid construction is variously cited as starting 1967 or 1969; the core event is real but the exact 1968 start date is uncertain across sources, with the port officially opened in 1972.",
@@ -523,6 +498,31 @@
       }
     ],
     "source": "https://www.dubaiasitusedtobe.net/PortRashid1959-2008.shtml"
+  },
+  {
+    "year": 1968,
+    "title": "Union of Arab Emirates Proposed — Federation Negotiations Begin",
+    "verdict": "TRUE",
+    "reason": "Sheikh Zayed and Sheikh Rashid met at Argoub Al Sedirah (Al Smeih area) on 18 February 1968 and agreed to form a union, subsequently inviting the other Trucial States, Bahrain, and Qatar.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sheikh Zayed and Sheikh Rashid met at Argoub Al Sedirah (Al Smeih area) on 18 February 1968 and agreed to form a union, subsequently inviting the other Trucial States, Bahrain, and Qatar.",
+        "source": "https://en.wikipedia.org/wiki/Foundation_of_the_United_Arab_Emirates",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Foundation_of_the_United_Arab_Emirates"
   },
   {
     "year": 1969,
@@ -576,9 +576,9 @@
   },
   {
     "year": 1971,
-    "title": "United Arab Emirates Established — December 2",
+    "title": "Iranian Occupation of Tunb Islands and Abu Musa",
     "verdict": "TRUE",
-    "reason": "Six Trucial States formed the UAE on 2 December 1971, with Sheikh Zayed as first President; Ras Al Khaimah joined on 10 February 1972 completing the seven-emirate union.",
+    "reason": "On 30 November 1971, Iran seized the Greater and Lesser Tunbs from Ras Al Khaimah by force and occupied part of Abu Musa under a memorandum of understanding with Sharjah.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -588,8 +588,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Six Trucial States formed the UAE on 2 December 1971, with Sheikh Zayed as first President; Ras Al Khaimah joined on 10 February 1972 completing the seven-emirate union.",
-        "source": "https://en.wikipedia.org/wiki/United_Arab_Emirates",
+        "reason": "On 30 November 1971, Iran seized the Greater and Lesser Tunbs from Ras Al Khaimah by force and occupied part of Abu Musa under a memorandum of understanding with Sharjah.",
+        "source": "https://en.wikipedia.org/wiki/Seizure_of_Abu_Musa_and_the_Greater_and_Lesser_Tunbs",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -597,7 +597,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/United_Arab_Emirates"
+    "source": "https://en.wikipedia.org/wiki/Seizure_of_Abu_Musa_and_the_Greater_and_Lesser_Tunbs"
   },
   {
     "year": 1971,
@@ -626,9 +626,9 @@
   },
   {
     "year": 1971,
-    "title": "Iranian Occupation of Tunb Islands and Abu Musa",
+    "title": "United Arab Emirates Established — December 2",
     "verdict": "TRUE",
-    "reason": "On 30 November 1971, Iran seized the Greater and Lesser Tunbs from Ras Al Khaimah by force and occupied part of Abu Musa under a memorandum of understanding with Sharjah.",
+    "reason": "Six Trucial States formed the UAE on 2 December 1971, with Sheikh Zayed as first President; Ras Al Khaimah joined on 10 February 1972 completing the seven-emirate union.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -638,8 +638,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "On 30 November 1971, Iran seized the Greater and Lesser Tunbs from Ras Al Khaimah by force and occupied part of Abu Musa under a memorandum of understanding with Sharjah.",
-        "source": "https://en.wikipedia.org/wiki/Seizure_of_Abu_Musa_and_the_Greater_and_Lesser_Tunbs",
+        "reason": "Six Trucial States formed the UAE on 2 December 1971, with Sheikh Zayed as first President; Ras Al Khaimah joined on 10 February 1972 completing the seven-emirate union.",
+        "source": "https://en.wikipedia.org/wiki/United_Arab_Emirates",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -647,7 +647,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Seizure_of_Abu_Musa_and_the_Greater_and_Lesser_Tunbs"
+    "source": "https://en.wikipedia.org/wiki/United_Arab_Emirates"
   },
   {
     "year": 1972,
@@ -676,31 +676,6 @@
   },
   {
     "year": 1973,
-    "title": "Oil Embargo Dramatically Boosts UAE Revenues",
-    "verdict": "TRUE",
-    "reason": "The October 1973 Arab oil embargo following the Yom Kippur War quadrupled global oil prices from ~$3 to ~$12 per barrel, generating an extraordinary revenue windfall for UAE oil exporters.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The October 1973 Arab oil embargo following the Yom Kippur War quadrupled global oil prices from ~$3 to ~$12 per barrel, generating an extraordinary revenue windfall for UAE oil exporters.",
-        "source": "https://en.wikipedia.org/wiki/1973_oil_crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1973_oil_crisis"
-  },
-  {
-    "year": 1973,
     "title": "Abu Dhabi Investment Authority Formally Established",
     "verdict": "PARTIAL",
     "reason": "ADIA was formally established in 1976, not 1973; Abu Dhabi did acquire 25% of ADPC on 1 January 1973 but ADIA as an institution was created in 1976.",
@@ -725,10 +700,10 @@
     "source": "https://en.wikipedia.org/wiki/Abu_Dhabi_Investment_Authority"
   },
   {
-    "year": 1974,
-    "title": "UAE Nationalizes Majority Stakes in Oil Companies",
+    "year": 1973,
+    "title": "Oil Embargo Dramatically Boosts UAE Revenues",
     "verdict": "TRUE",
-    "reason": "Abu Dhabi raised ADNOC's stake in ADPC and ADMA to 60% as of 1 January 1974, acquiring majority control of the international oil consortium in line with global resource nationalism trends.",
+    "reason": "The October 1973 Arab oil embargo following the Yom Kippur War quadrupled global oil prices from ~$3 to ~$12 per barrel, generating an extraordinary revenue windfall for UAE oil exporters.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -738,8 +713,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Abu Dhabi raised ADNOC's stake in ADPC and ADMA to 60% as of 1 January 1974, acquiring majority control of the international oil consortium in line with global resource nationalism trends.",
-        "source": "https://en.wikipedia.org/wiki/Abu_Dhabi_Petroleum_Company",
+        "reason": "The October 1973 Arab oil embargo following the Yom Kippur War quadrupled global oil prices from ~$3 to ~$12 per barrel, generating an extraordinary revenue windfall for UAE oil exporters.",
+        "source": "https://en.wikipedia.org/wiki/1973_oil_crisis",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -747,7 +722,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Abu_Dhabi_Petroleum_Company"
+    "source": "https://en.wikipedia.org/wiki/1973_oil_crisis"
   },
   {
     "year": 1974,
@@ -775,21 +750,21 @@
     "source": "https://en.wikipedia.org/wiki/History_of_the_United_Arab_Emirates"
   },
   {
-    "year": 1975,
-    "title": "UAE Population Surpasses One Million — Majority Expatriate",
-    "verdict": "PARTIAL",
-    "reason": "The 1975 census recorded a total population of only ~557,887, not yet one million; expatriates were already 69.5% of the population but the one-million threshold was crossed later.",
+    "year": 1974,
+    "title": "UAE Nationalizes Majority Stakes in Oil Companies",
+    "verdict": "TRUE",
+    "reason": "Abu Dhabi raised ADNOC's stake in ADPC and ADMA to 60% as of 1 January 1974, acquiring majority control of the international oil consortium in line with global resource nationalism trends.",
     "verify_count": 1,
-    "consensus_verdict": "PARTIAL",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "PARTIAL",
-        "reason": "The 1975 census recorded a total population of only ~557,887, not yet one million; expatriates were already 69.5% of the population but the one-million threshold was crossed later.",
-        "source": "https://en.wikipedia.org/wiki/Demographics_of_the_United_Arab_Emirates",
+        "verdict": "TRUE",
+        "reason": "Abu Dhabi raised ADNOC's stake in ADPC and ADMA to 60% as of 1 January 1974, acquiring majority control of the international oil consortium in line with global resource nationalism trends.",
+        "source": "https://en.wikipedia.org/wiki/Abu_Dhabi_Petroleum_Company",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -797,7 +772,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Demographics_of_the_United_Arab_Emirates"
+    "source": "https://en.wikipedia.org/wiki/Abu_Dhabi_Petroleum_Company"
   },
   {
     "year": 1975,
@@ -823,6 +798,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Port_of_Jebel_Ali"
+  },
+  {
+    "year": 1975,
+    "title": "UAE Population Surpasses One Million — Majority Expatriate",
+    "verdict": "PARTIAL",
+    "reason": "The 1975 census recorded a total population of only ~557,887, not yet one million; expatriates were already 69.5% of the population but the one-million threshold was crossed later.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The 1975 census recorded a total population of only ~557,887, not yet one million; expatriates were already 69.5% of the population but the one-million threshold was crossed later.",
+        "source": "https://en.wikipedia.org/wiki/Demographics_of_the_United_Arab_Emirates",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Demographics_of_the_United_Arab_Emirates"
   },
   {
     "year": 1976,
@@ -1101,31 +1101,6 @@
   },
   {
     "year": 1986,
-    "title": "Oil Price Collapse Tests UAE Economy",
-    "verdict": "TRUE",
-    "reason": "Global oil prices collapsed from ~$27 to below $10 per barrel in 1986, significantly reducing UAE revenues and reinforcing diversification planning; Abu Dhabi's sovereign reserves provided a buffer.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Global oil prices collapsed from ~$27 to below $10 per barrel in 1986, significantly reducing UAE revenues and reinforcing diversification planning; Abu Dhabi's sovereign reserves provided a buffer.",
-        "source": "https://en.wikipedia.org/wiki/1980s_oil_glut",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1980s_oil_glut"
-  },
-  {
-    "year": 1986,
     "title": "Jebel Ali Port Achieves Operational Capacity",
     "verdict": "PARTIAL",
     "reason": "Jebel Ali Port opened in February 1979 and grew through the early 1980s; no specific 1986 milestone of 'initial planned operational capacity' is documented, though by the mid-1980s it was the region's largest port.",
@@ -1148,6 +1123,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Port_of_Jebel_Ali"
+  },
+  {
+    "year": 1986,
+    "title": "Oil Price Collapse Tests UAE Economy",
+    "verdict": "TRUE",
+    "reason": "Global oil prices collapsed from ~$27 to below $10 per barrel in 1986, significantly reducing UAE revenues and reinforcing diversification planning; Abu Dhabi's sovereign reserves provided a buffer.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Global oil prices collapsed from ~$27 to below $10 per barrel in 1986, significantly reducing UAE revenues and reinforcing diversification planning; Abu Dhabi's sovereign reserves provided a buffer.",
+        "source": "https://en.wikipedia.org/wiki/1980s_oil_glut",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1980s_oil_glut"
   },
   {
     "year": 1987,
@@ -1351,31 +1351,6 @@
   },
   {
     "year": 1995,
-    "title": "Sheikh Mohammed Becomes Dubai Crown Prince",
-    "verdict": "TRUE",
-    "reason": "Sheikh Mohammed bin Rashid Al Maktoum was appointed Crown Prince of Dubai by decree on 3 January 1995, formalizing his role as architect of the emirate's development strategy.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Sheikh Mohammed bin Rashid Al Maktoum was appointed Crown Prince of Dubai by decree on 3 January 1995, formalizing his role as architect of the emirate's development strategy.",
-        "source": "https://www.thenationalnews.com/weekend/2024/01/05/sheikh-mohammed-bin-rashid/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.thenationalnews.com/weekend/2024/01/05/sheikh-mohammed-bin-rashid/"
-  },
-  {
-    "year": 1995,
     "title": "Burj Al Arab Construction Begins",
     "verdict": "PARTIAL",
     "reason": "Construction of Burj Al Arab began on 8 July 1994, not 1995; the island reclamation and building construction were underway from mid-1994.",
@@ -1398,6 +1373,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Burj_Al_Arab"
+  },
+  {
+    "year": 1995,
+    "title": "Sheikh Mohammed Becomes Dubai Crown Prince",
+    "verdict": "TRUE",
+    "reason": "Sheikh Mohammed bin Rashid Al Maktoum was appointed Crown Prince of Dubai by decree on 3 January 1995, formalizing his role as architect of the emirate's development strategy.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sheikh Mohammed bin Rashid Al Maktoum was appointed Crown Prince of Dubai by decree on 3 January 1995, formalizing his role as architect of the emirate's development strategy.",
+        "source": "https://www.thenationalnews.com/weekend/2024/01/05/sheikh-mohammed-bin-rashid/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.thenationalnews.com/weekend/2024/01/05/sheikh-mohammed-bin-rashid/"
   },
   {
     "year": 1997,
@@ -1576,31 +1576,6 @@
   },
   {
     "year": 2002,
-    "title": "UAE Real Estate Opens to Foreign Ownership",
-    "verdict": "TRUE",
-    "reason": "Dubai enacted the Freehold Decree in 2002 allowing non-UAE nationals to own freehold property in designated areas, triggering an immediate surge in expatriate and international investment.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Dubai enacted the Freehold Decree in 2002 allowing non-UAE nationals to own freehold property in designated areas, triggering an immediate surge in expatriate and international investment.",
-        "source": "https://meraas.com/en/latest-post/guide/everything-you-need-know-about-freehold-property-ownership-dubai-expat",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://meraas.com/en/latest-post/guide/everything-you-need-know-about-freehold-property-ownership-dubai-expat"
-  },
-  {
-    "year": 2002,
     "title": "Emaar Properties Launches — Modern Real Estate Sector Begins",
     "verdict": "PARTIAL",
     "reason": "Emaar Properties was established in 1997, not 2002; it launched major residential projects like Emirates Hills in the early 2000s following the 2002 freehold law, but the company itself predates this event by five years.",
@@ -1625,10 +1600,10 @@
     "source": "https://en.wikipedia.org/wiki/Emaar_Properties"
   },
   {
-    "year": 2004,
-    "title": "Sheikh Zayed Passes Away — Sheikh Khalifa Becomes UAE President",
+    "year": 2002,
+    "title": "UAE Real Estate Opens to Foreign Ownership",
     "verdict": "TRUE",
-    "reason": "Sheikh Zayed died on 2 November 2004 and his son Sheikh Khalifa was immediately elected UAE President by the Supreme Council; the transition was smooth and well-documented.",
+    "reason": "Dubai enacted the Freehold Decree in 2002 allowing non-UAE nationals to own freehold property in designated areas, triggering an immediate surge in expatriate and international investment.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1638,8 +1613,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Sheikh Zayed died on 2 November 2004 and his son Sheikh Khalifa was immediately elected UAE President by the Supreme Council; the transition was smooth and well-documented.",
-        "source": "https://en.wikipedia.org/wiki/Zayed_bin_Sultan_Al_Nahyan",
+        "reason": "Dubai enacted the Freehold Decree in 2002 allowing non-UAE nationals to own freehold property in designated areas, triggering an immediate surge in expatriate and international investment.",
+        "source": "https://meraas.com/en/latest-post/guide/everything-you-need-know-about-freehold-property-ownership-dubai-expat",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1647,7 +1622,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Zayed_bin_Sultan_Al_Nahyan"
+    "source": "https://meraas.com/en/latest-post/guide/everything-you-need-know-about-freehold-property-ownership-dubai-expat"
   },
   {
     "year": 2004,
@@ -1675,21 +1650,21 @@
     "source": "https://en.wikipedia.org/wiki/Mohammed_bin_Rashid_Al_Maktoum"
   },
   {
-    "year": 2005,
-    "title": "Burj Khalifa Construction Begins",
-    "verdict": "PARTIAL",
-    "reason": "Burj Khalifa construction began on 12 January 2004, not 2005; the year is off by one though the building's scale and symbolic significance described are accurate.",
+    "year": 2004,
+    "title": "Sheikh Zayed Passes Away — Sheikh Khalifa Becomes UAE President",
+    "verdict": "TRUE",
+    "reason": "Sheikh Zayed died on 2 November 2004 and his son Sheikh Khalifa was immediately elected UAE President by the Supreme Council; the transition was smooth and well-documented.",
     "verify_count": 1,
-    "consensus_verdict": "PARTIAL",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "PARTIAL",
-        "reason": "Burj Khalifa construction began on 12 January 2004, not 2005; the year is off by one though the building's scale and symbolic significance described are accurate.",
-        "source": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+        "verdict": "TRUE",
+        "reason": "Sheikh Zayed died on 2 November 2004 and his son Sheikh Khalifa was immediately elected UAE President by the Supreme Council; the transition was smooth and well-documented.",
+        "source": "https://en.wikipedia.org/wiki/Zayed_bin_Sultan_Al_Nahyan",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1697,7 +1672,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Burj_Khalifa"
+    "source": "https://en.wikipedia.org/wiki/Zayed_bin_Sultan_Al_Nahyan"
   },
   {
     "year": 2005,
@@ -1725,21 +1700,21 @@
     "source": "https://u.ae/en/about-the-uae/strategies-initiatives-and-awards/strategies-plans-and-visions/finance-and-economy/abu-dhabi-economic-vision-2030"
   },
   {
-    "year": 2006,
-    "title": "Dubai Property Prices Double — Speculative Boom",
-    "verdict": "TRUE",
-    "reason": "Dubai real estate prices roughly doubled between 2004 and 2006, driven by easy credit and speculative demand following the 2002 freehold law; this property boom was widely documented.",
+    "year": 2005,
+    "title": "Burj Khalifa Construction Begins",
+    "verdict": "PARTIAL",
+    "reason": "Burj Khalifa construction began on 12 January 2004, not 2005; the year is off by one though the building's scale and symbolic significance described are accurate.",
     "verify_count": 1,
-    "consensus_verdict": "TRUE",
+    "consensus_verdict": "PARTIAL",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Dubai real estate prices roughly doubled between 2004 and 2006, driven by easy credit and speculative demand following the 2002 freehold law; this property boom was widely documented.",
-        "source": "https://en.wikipedia.org/wiki/Dubai",
+        "verdict": "PARTIAL",
+        "reason": "Burj Khalifa construction began on 12 January 2004, not 2005; the year is off by one though the building's scale and symbolic significance described are accurate.",
+        "source": "https://en.wikipedia.org/wiki/Burj_Khalifa",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1747,7 +1722,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Dubai"
+    "source": "https://en.wikipedia.org/wiki/Burj_Khalifa"
   },
   {
     "year": 2006,
@@ -1773,6 +1748,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Dubai_Ports_World_controversy"
+  },
+  {
+    "year": 2006,
+    "title": "Dubai Property Prices Double — Speculative Boom",
+    "verdict": "TRUE",
+    "reason": "Dubai real estate prices roughly doubled between 2004 and 2006, driven by easy credit and speculative demand following the 2002 freehold law; this property boom was widely documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Dubai real estate prices roughly doubled between 2004 and 2006, driven by easy credit and speculative demand following the 2002 freehold law; this property boom was widely documented.",
+        "source": "https://en.wikipedia.org/wiki/Dubai",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Dubai"
   },
   {
     "year": 2007,
@@ -2126,31 +2126,6 @@
   },
   {
     "year": 2017,
-    "title": "UAE-Qatar Diplomatic Crisis and GCC Blockade",
-    "verdict": "TRUE",
-    "reason": "On 5-6 June 2017, the UAE, Saudi Arabia, Bahrain, and Egypt severed diplomatic relations with Qatar and imposed a blockade; the crisis split the GCC and lasted until January 2021.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On 5-6 June 2017, the UAE, Saudi Arabia, Bahrain, and Egypt severed diplomatic relations with Qatar and imposed a blockade; the crisis split the GCC and lasted until January 2021.",
-        "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis"
-  },
-  {
-    "year": 2017,
     "title": "UAE National Artificial Intelligence Strategy Launched",
     "verdict": "TRUE",
     "reason": "In October 2017, the UAE launched the world's first national AI strategy and appointed Omar Sultan Al Olama as the world's first Minister of State for Artificial Intelligence.",
@@ -2173,6 +2148,31 @@
       }
     ],
     "source": "https://u.ae/en/about-the-uae/strategies-initiatives-and-awards/strategies-plans-and-visions/government-services-and-digital-transformation/uae-strategy-for-artificial-intelligence"
+  },
+  {
+    "year": 2017,
+    "title": "UAE-Qatar Diplomatic Crisis and GCC Blockade",
+    "verdict": "TRUE",
+    "reason": "On 5-6 June 2017, the UAE, Saudi Arabia, Bahrain, and Egypt severed diplomatic relations with Qatar and imposed a blockade; the crisis split the GCC and lasted until January 2021.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 5-6 June 2017, the UAE, Saudi Arabia, Bahrain, and Egypt severed diplomatic relations with Qatar and imposed a blockade; the crisis split the GCC and lasted until January 2021.",
+        "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis"
   },
   {
     "year": 2018,
@@ -2200,29 +2200,40 @@
     "source": "https://u.ae/en/information-and-services/finance-and-investment/taxation/vat/valueaddedtaxvat"
   },
   {
-    "year": 2020,
-    "title": "Emirates Mars Mission Hope Probe Launched",
+    "year": 2018,
+    "title": "UAE Launches KhalifaSat, First Satellite Built by Emirati Engineers",
     "verdict": "TRUE",
-    "reason": "The Hope Probe was successfully launched from Tanegashima Space Centre, Japan on 19-20 July 2020, beginning its 493-million-kilometer journey; it entered Mars orbit on 9 February 2021.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources confirm KhalifaSat launched 29 October 2018 (13:08 JST / 08:08 UAE time) from Japan's Tanegashima Space Center aboard an H-IIA rocket (Mitsubishi Heavy Industries press release timestamped 2018-10-29 confirms same-day launch). It is widely reported as the first satellite 100% designed and manufactured by Emirati engineers at Dubai's Mohammed Bin Rashid Space Centre. Specs match exactly: 330 kg mass, 0.7 m (70 cm) panchromatic resolution, ~70-member Emirati engineering team, with the team's prior training in South Korea (during the DubaiSat-1/DubaiSat-2 program) cited as the knowledge-transfer foundation. All material details in the description are corroborated.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The Hope Probe was successfully launched from Tanegashima Space Centre, Japan on 19-20 July 2020, beginning its 493-million-kilometer journey; it entered Mars orbit on 9 February 2021.",
-        "source": "https://en.wikipedia.org/wiki/Emirates_Mars_Mission",
+        "reason": "Confirmed from multiple independent sources: KhalifaSat launched 29 October 2018 from Tanegashima Space Center, Japan, aboard an H-IIA rocket. It was designed and built entirely by a team of ~70 Emirati engineers at the Mohammed Bin Rashid Space Centre in Dubai, making it the first fully Emirati-built satellite. The satellite has a mass of approximately 330 kg and achieves 70 cm ground sampling distance resolution for panchromatic imagery. Engineers initially trained in South Korea at Satrec Initiative's facilities before building KhalifaSat domestically. All material details (date, location, actor, satellite specs, training background) match the event description exactly.",
+        "source": "https://en.wikipedia.org/wiki/KhalifaSat",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm KhalifaSat launched 29 October 2018 (13:08 JST / 08:08 UAE time) from Japan's Tanegashima Space Center aboard an H-IIA rocket (Mitsubishi Heavy Industries press release timestamped 2018-10-29 confirms same-day launch). It is widely reported as the first satellite 100% designed and manufactured by Emirati engineers at Dubai's Mohammed Bin Rashid Space Centre. Specs match exactly: 330 kg mass, 0.7 m (70 cm) panchromatic resolution, ~70-member Emirati engineering team, with the team's prior training in South Korea (during the DubaiSat-1/DubaiSat-2 program) cited as the knowledge-transfer foundation. All material details in the description are corroborated.",
+        "source": "https://www.mhi.com/news/1810292140.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Emirates_Mars_Mission"
+    "source": "https://www.mhi.com/news/1810292140.html"
   },
   {
     "year": 2020,
@@ -2275,10 +2286,10 @@
     "source": "https://en.wikipedia.org/wiki/COVID-19_vaccination_in_the_United_Arab_Emirates"
   },
   {
-    "year": 2021,
-    "title": "Hope Probe Enters Mars Orbit — UAE Joins Space Elite",
+    "year": 2020,
+    "title": "Emirates Mars Mission Hope Probe Launched",
     "verdict": "TRUE",
-    "reason": "On 9 February 2021, the Hope Probe successfully entered Mars orbit, making the UAE the fifth entity to reach Mars and the first Arab country to do so, transmitting images of the Martian atmosphere.",
+    "reason": "The Hope Probe was successfully launched from Tanegashima Space Centre, Japan on 19-20 July 2020, beginning its 493-million-kilometer journey; it entered Mars orbit on 9 February 2021.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2288,7 +2299,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "On 9 February 2021, the Hope Probe successfully entered Mars orbit, making the UAE the fifth entity to reach Mars and the first Arab country to do so, transmitting images of the Martian atmosphere.",
+        "reason": "The Hope Probe was successfully launched from Tanegashima Space Centre, Japan on 19-20 July 2020, beginning its 493-million-kilometer journey; it entered Mars orbit on 9 February 2021.",
         "source": "https://en.wikipedia.org/wiki/Emirates_Mars_Mission",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -2350,10 +2361,10 @@
     "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis"
   },
   {
-    "year": 2022,
-    "title": "Sheikh Mohamed Bin Zayed Becomes UAE President",
+    "year": 2021,
+    "title": "Hope Probe Enters Mars Orbit — UAE Joins Space Elite",
     "verdict": "TRUE",
-    "reason": "Sheikh Khalifa died on 13 May 2022; Sheikh Mohamed bin Zayed was unanimously elected UAE President the following day and simultaneously became Ruler of Abu Dhabi.",
+    "reason": "On 9 February 2021, the Hope Probe successfully entered Mars orbit, making the UAE the fifth entity to reach Mars and the first Arab country to do so, transmitting images of the Martian atmosphere.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2363,8 +2374,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Sheikh Khalifa died on 13 May 2022; Sheikh Mohamed bin Zayed was unanimously elected UAE President the following day and simultaneously became Ruler of Abu Dhabi.",
-        "source": "https://en.wikipedia.org/wiki/Khalifa_bin_Zayed_Al_Nahyan",
+        "reason": "On 9 February 2021, the Hope Probe successfully entered Mars orbit, making the UAE the fifth entity to reach Mars and the first Arab country to do so, transmitting images of the Martian atmosphere.",
+        "source": "https://en.wikipedia.org/wiki/Emirates_Mars_Mission",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2372,7 +2383,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Khalifa_bin_Zayed_Al_Nahyan"
+    "source": "https://en.wikipedia.org/wiki/Emirates_Mars_Mission"
   },
   {
     "year": 2022,
@@ -2398,6 +2409,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Barakah_nuclear_power_plant"
+  },
+  {
+    "year": 2022,
+    "title": "Sheikh Mohamed Bin Zayed Becomes UAE President",
+    "verdict": "TRUE",
+    "reason": "Sheikh Khalifa died on 13 May 2022; Sheikh Mohamed bin Zayed was unanimously elected UAE President the following day and simultaneously became Ruler of Abu Dhabi.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sheikh Khalifa died on 13 May 2022; Sheikh Mohamed bin Zayed was unanimously elected UAE President the following day and simultaneously became Ruler of Abu Dhabi.",
+        "source": "https://en.wikipedia.org/wiki/Khalifa_bin_Zayed_Al_Nahyan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Khalifa_bin_Zayed_Al_Nahyan"
   },
   {
     "year": 2022,
@@ -2476,9 +2512,9 @@
   },
   {
     "year": 2024,
-    "title": "Unprecedented Flooding Exposes Infrastructure Vulnerabilities",
+    "title": "UAE Expands Renewable Energy Capacity",
     "verdict": "TRUE",
-    "reason": "In April 2024 the UAE experienced its heaviest rainfall in 75 years of recorded history, with up to 254mm in under 24 hours causing widespread flooding across all seven emirates including Dubai International Airport.",
+    "reason": "In 2024 the UAE made significant clean energy progress, with solar PV and nuclear generation surging to 35% of power production (up from 3% in 2019) driven by Mohammed bin Rashid Solar Park expansion and Barakah units.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2488,8 +2524,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "In April 2024 the UAE experienced its heaviest rainfall in 75 years of recorded history, with up to 254mm in under 24 hours causing widespread flooding across all seven emirates including Dubai International Airport.",
-        "source": "https://en.wikipedia.org/wiki/2024_United_Arab_Emirates_floods",
+        "reason": "In 2024 the UAE made significant clean energy progress, with solar PV and nuclear generation surging to 35% of power production (up from 3% in 2019) driven by Mohammed bin Rashid Solar Park expansion and Barakah units.",
+        "source": "https://www.thenationalnews.com/business/energy/2025/03/06/uae-power-generation-from-solar-pv-and-nuclear-surged-in-2024-says-agency/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2497,7 +2533,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2024_United_Arab_Emirates_floods"
+    "source": "https://www.thenationalnews.com/business/energy/2025/03/06/uae-power-generation-from-solar-pv-and-nuclear-surged-in-2024-says-agency/"
   },
   {
     "year": 2024,
@@ -2526,31 +2562,6 @@
   },
   {
     "year": 2024,
-    "title": "UAE Expands Renewable Energy Capacity",
-    "verdict": "TRUE",
-    "reason": "In 2024 the UAE made significant clean energy progress, with solar PV and nuclear generation surging to 35% of power production (up from 3% in 2019) driven by Mohammed bin Rashid Solar Park expansion and Barakah units.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "In 2024 the UAE made significant clean energy progress, with solar PV and nuclear generation surging to 35% of power production (up from 3% in 2019) driven by Mohammed bin Rashid Solar Park expansion and Barakah units.",
-        "source": "https://www.thenationalnews.com/business/energy/2025/03/06/uae-power-generation-from-solar-pv-and-nuclear-surged-in-2024-says-agency/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.thenationalnews.com/business/energy/2025/03/06/uae-power-generation-from-solar-pv-and-nuclear-surged-in-2024-says-agency/"
-  },
-  {
-    "year": 2024,
     "title": "UAE Lunar Rover Program Advances",
     "verdict": "TRUE",
     "reason": "In 2024 UAE's MBRSC sought a lunar lander vehicle for the Rashid 2 rover following the April 2023 crash of Rashid 1; the program is advancing though the south pole targeting detail is not yet fully confirmed in public sources.",
@@ -2575,10 +2586,10 @@
     "source": "https://www.thenationalnews.com/uae/2024/02/15/uae-space-centre-on-hunt-for-lunar-lander-vehicle-for-rashid-2-rover/"
   },
   {
-    "year": 2025,
-    "title": "UAE Advances AI National Strategy — Global Leadership Bid",
+    "year": 2024,
+    "title": "Unprecedented Flooding Exposes Infrastructure Vulnerabilities",
     "verdict": "TRUE",
-    "reason": "In 2025 the UAE accelerated its AI strategy with major partnerships (Stargate UAE, Microsoft-G42), $100 billion in AI-related assets, and 580+ MW of AI-ready data center capacity attracting OpenAI, NVIDIA, and Oracle.",
+    "reason": "In April 2024 the UAE experienced its heaviest rainfall in 75 years of recorded history, with up to 254mm in under 24 hours causing widespread flooding across all seven emirates including Dubai International Airport.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2588,8 +2599,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "In 2025 the UAE accelerated its AI strategy with major partnerships (Stargate UAE, Microsoft-G42), $100 billion in AI-related assets, and 580+ MW of AI-ready data center capacity attracting OpenAI, NVIDIA, and Oracle.",
-        "source": "https://www.wam.ae/en/article/15xmr3g-uae-marks-2025-with-strategic-transformation",
+        "reason": "In April 2024 the UAE experienced its heaviest rainfall in 75 years of recorded history, with up to 254mm in under 24 hours causing widespread flooding across all seven emirates including Dubai International Airport.",
+        "source": "https://en.wikipedia.org/wiki/2024_United_Arab_Emirates_floods",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2597,7 +2608,7 @@
         }
       }
     ],
-    "source": "https://www.wam.ae/en/article/15xmr3g-uae-marks-2025-with-strategic-transformation"
+    "source": "https://en.wikipedia.org/wiki/2024_United_Arab_Emirates_floods"
   },
   {
     "year": 2025,
@@ -2623,5 +2634,30 @@
       }
     ],
     "source": "https://www.arabianbusiness.com/industries/real-estate/palm-jebel-ali-overtakes-palm-jumeirah-as-dubais-top-ultra-luxury-property-market-report"
+  },
+  {
+    "year": 2025,
+    "title": "UAE Advances AI National Strategy — Global Leadership Bid",
+    "verdict": "TRUE",
+    "reason": "In 2025 the UAE accelerated its AI strategy with major partnerships (Stargate UAE, Microsoft-G42), $100 billion in AI-related assets, and 580+ MW of AI-ready data center capacity attracting OpenAI, NVIDIA, and Oracle.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 2025 the UAE accelerated its AI strategy with major partnerships (Stargate UAE, Microsoft-G42), $100 billion in AI-related assets, and 580+ MW of AI-ready data center capacity attracting OpenAI, NVIDIA, and Oracle.",
+        "source": "https://www.wam.ae/en/article/15xmr3g-uae-marks-2025-with-strategic-transformation",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.wam.ae/en/article/15xmr3g-uae-marks-2025-with-strategic-transformation"
   }
 ]

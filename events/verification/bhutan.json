@@ -1126,5 +1126,153 @@
         }
       }
     ]
+  },
+  {
+    "year": 2022,
+    "title": "Mangdechhu Hydropower Project Completed",
+    "verdict": "FALSE",
+    "reason": "The 720 MW Mangdechhu Hydroelectric Project achieved commercial operation in 2019, not 2022. All four turbine units were commissioned between June and August 2019, the India-Bhutan export tariff protocol was signed in April 2019, and the plant was jointly inaugurated by PM Modi and PM Lotay Tshering on August 17, 2019. By 2021 it was already exporting Rs 12.13 billion of electricity to India. The event that actually occurred in December 2022 was an administrative handover of the already-operating project from the Mangdechhu Hydroelectric Project Authority (MHPA, the India-Bhutan construction body) to Bhutan's Druk Green Power Corporation (DGPC, the operating utility) on December 27, 2022 — a management/ownership transfer, not the plant achieving commercial operation. No source found mentions pandemic delays pushing commissioning to 2022; commissioning was completed on schedule in 2019.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The 720 MW Mangdechhu Hydroelectric Project's four units were commissioned between June 28 and Aug 16, 2019, and the plant was officially inaugurated in August 2019 by PMs Modi and Lotay Tshering -- this is when it achieved full commercial operation and began exporting power to India (it had already exported electricity worth Rs 12.13 billion to India in 2021 alone). This predates COVID-19, so the described 'pandemic-related delays' do not fit. What actually occurred in 2022 (Dec 27, 2022) was a distinct event: the formal handover of the project from the joint India-Bhutan construction authority (MHPA) to Bhutan's own utility, Druk Green Power Corporation (DGPC) -- an ownership/operational transfer, not the achievement of commercial operation. The event description conflates these two distinct milestones and misattributes the 2019 commissioning event to 2022.",
+        "source": "https://powerline.net.in/2022/12/29/indian-assisted-720-mw-mangdechhu-hydro-project-handed-over-to-bhutans-dgpc/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2019
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The 720 MW Mangdechhu Hydroelectric Project achieved commercial operation in 2019, not 2022. All four turbine units were commissioned between June and August 2019, the India-Bhutan export tariff protocol was signed in April 2019, and the plant was jointly inaugurated by PM Modi and PM Lotay Tshering on August 17, 2019. By 2021 it was already exporting Rs 12.13 billion of electricity to India. The event that actually occurred in December 2022 was an administrative handover of the already-operating project from the Mangdechhu Hydroelectric Project Authority (MHPA, the India-Bhutan construction body) to Bhutan's Druk Green Power Corporation (DGPC, the operating utility) on December 27, 2022 — a management/ownership transfer, not the plant achieving commercial operation. No source found mentions pandemic delays pushing commissioning to 2022; commissioning was completed on schedule in 2019.",
+        "source": "https://www.business-standard.com/article/current-affairs/bhutan-dgpc-handed-keys-to-indian-backed-720-mw-mangdechhu-hydro-project-122122800654_1.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2019
+      }
+    ],
+    "source": "https://www.business-standard.com/article/current-affairs/bhutan-dgpc-handed-keys-to-indian-backed-720-mw-mangdechhu-hydro-project-122122800654_1.html"
+  },
+  {
+    "year": 1976,
+    "title": "Gross National Happiness Concept Introduced",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 TRUE: Country and actor confirmed: King Jigme Singye Wangchuck of Bhutan is credited across all sources (Wikipedia, GNH Centre Bhutan, ADB, IR Review, academic literature) as the originator of the Gross National Happiness concept, and the four pillars cited (sustainable/equitable socio-economic development, environmental conservation, cultural preservation, good governance) match Bhutan's official GNH framework exactly. The precise year is genuinely contested in the historical/academic record: tertiary sources (Wikipedia, ADB, GNH Centre Bhutan, OPHI) commonly cite 1972 (tied to his ascension to the throne), while other independent sources (International Relations Review) state GNH was 'first articulated in the late 1970s', and a peer-reviewed academic paper (M. Givel, 'Where did Bhutan's gross national happiness come from? The origins of an invented tradition', Asian Affairs 2016) documents that publications since 1996 make at least four different, competing claims about GNH's origin point, ranging from the 1972 ascension to a story of the king developing the idea while touring the countryside in the 'mid- to late-1970s', to Givel's own assessment that it was coined as a vague phrase around 1980 and only formalized decades later. Given this acknowledged scholarly disagreement, the event description's hedged 'around 1976' falls within the range of credible dates found in the literature (particularly the mid-to-late-1970s countryside-touring narrative and the independently-cited 'late 1970s' articulation), so the year is not treated as clearly wrong. Substance, country, and actor are all solid; the year is defensible given genuine source disagreement, so verdict is TRUE rather than FALSE/PARTIAL/UNCERTAIN.; Pass 2 FALSE: The core substance is real — Bhutan's 4th King, Jigme Singye Wangchuck, did articulate the Gross National Happiness (GNH) philosophy, and its four pillars (sustainable/equitable socio-economic development, environmental conservation, cultural preservation, good governance) did become Bhutan's guiding development framework. But the year 1976 does not match any documented milestone. Multiple independent sources converge on two competing, well-documented dates instead: (1) 1972 — loosely cited by many tertiary sources (Wikipedia, Blue Planet Prize profile of the King, testbook.com, gktoday) as when the King 'conceptualized' GNH, coinciding with his ascension to the throne after his father's death that year; and (2) 1979 — the specific, well-sourced episode when the King, returning from the NAM summit in Havana, told Indian journalists at Bombay airport 'Gross National Happiness is more important than Gross National Product,' later publicized via Michael T. Kaufman's April 29, 1980 New York Times piece. His formal coronation was actually 1974, and his coronation speech emphasized 'economic self-reliance,' not GNH specifically. A peer-reviewed paper (Asian Affairs, 2016, 'Where did Bhutan's gross national happiness come from? The origins of an invented tradition') further argues Bhutan-related publications from 1972-1995 don't actually mention GNH, meaning even the 1972/1979 dating is contested as a later-constructed origin story — but no source anywhere ties the articulation to 1976 specifically. Since none of the corroborating evidence supports the given year, and the year is a join key that must be accurate, this is a wrong-year FALSE rather than PARTIAL (which requires year to hold).. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Country and actor confirmed: King Jigme Singye Wangchuck of Bhutan is credited across all sources (Wikipedia, GNH Centre Bhutan, ADB, IR Review, academic literature) as the originator of the Gross National Happiness concept, and the four pillars cited (sustainable/equitable socio-economic development, environmental conservation, cultural preservation, good governance) match Bhutan's official GNH framework exactly. The precise year is genuinely contested in the historical/academic record: tertiary sources (Wikipedia, ADB, GNH Centre Bhutan, OPHI) commonly cite 1972 (tied to his ascension to the throne), while other independent sources (International Relations Review) state GNH was 'first articulated in the late 1970s', and a peer-reviewed academic paper (M. Givel, 'Where did Bhutan's gross national happiness come from? The origins of an invented tradition', Asian Affairs 2016) documents that publications since 1996 make at least four different, competing claims about GNH's origin point, ranging from the 1972 ascension to a story of the king developing the idea while touring the countryside in the 'mid- to late-1970s', to Givel's own assessment that it was coined as a vague phrase around 1980 and only formalized decades later. Given this acknowledged scholarly disagreement, the event description's hedged 'around 1976' falls within the range of credible dates found in the literature (particularly the mid-to-late-1970s countryside-touring narrative and the independently-cited 'late 1970s' articulation), so the year is not treated as clearly wrong. Substance, country, and actor are all solid; the year is defensible given genuine source disagreement, so verdict is TRUE rather than FALSE/PARTIAL/UNCERTAIN.",
+        "source": "https://www.irreview.org/articles/2026/4/7/measuring-what-matters-bhutan-and-the-politics-of-happiness",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The core substance is real — Bhutan's 4th King, Jigme Singye Wangchuck, did articulate the Gross National Happiness (GNH) philosophy, and its four pillars (sustainable/equitable socio-economic development, environmental conservation, cultural preservation, good governance) did become Bhutan's guiding development framework. But the year 1976 does not match any documented milestone. Multiple independent sources converge on two competing, well-documented dates instead: (1) 1972 — loosely cited by many tertiary sources (Wikipedia, Blue Planet Prize profile of the King, testbook.com, gktoday) as when the King 'conceptualized' GNH, coinciding with his ascension to the throne after his father's death that year; and (2) 1979 — the specific, well-sourced episode when the King, returning from the NAM summit in Havana, told Indian journalists at Bombay airport 'Gross National Happiness is more important than Gross National Product,' later publicized via Michael T. Kaufman's April 29, 1980 New York Times piece. His formal coronation was actually 1974, and his coronation speech emphasized 'economic self-reliance,' not GNH specifically. A peer-reviewed paper (Asian Affairs, 2016, 'Where did Bhutan's gross national happiness come from? The origins of an invented tradition') further argues Bhutan-related publications from 1972-1995 don't actually mention GNH, meaning even the 1972/1979 dating is contested as a later-constructed origin story — but no source anywhere ties the articulation to 1976 specifically. Since none of the corroborating evidence supports the given year, and the year is a join key that must be accurate, this is a wrong-year FALSE rather than PARTIAL (which requires year to hold).",
+        "source": "https://en.wikipedia.org/wiki/Gross_National_Happiness",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1972
+      }
+    ]
+  },
+  {
+    "year": 2007,
+    "title": "Third Repatriation Pilot Programme Collapses",
+    "verdict": "FALSE",
+    "reason": "The substance is real but the year is wrong. The joint Bhutan-Nepal Joint Verification Team (JVT) screened the one pilot camp (Khudunabari, ~12,600 people) in the field between March-December 2001, but withheld results until June 2003. The four-category classification (bona fide citizens, voluntary emigrants, non-Bhutanese, criminals) was confirmed and the restrictive repatriation terms (only the 2.4% in Category 1 eligible) were locked in during the 15th round of bilateral talks in October 2003, after which HRW states 'no progress has been made' and no Khudunabari residents were ever repatriated. This is the collapse described in the event: a joint committee finishing camp assessment, identifying return categories, and Bhutan refusing citizenship to the majority, causing the process to stall. All of that concluded in 2003, not 2007. By 2007 the pivot to third-country resettlement (the Core Group of 8 nations) was already underway as a consequence of the multi-year-old collapse, not concurrent with it. So country and substance check out, but the year is off by about four years.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Human Rights Watch's contemporaneous May 2007 report, Wikipedia, bhutaneserefugees.com) show the joint Bhutan-Nepal Verification Team's assessment of Khudunabari camp (the only camp ever verified — there was no \"third\" pilot; this was the sole pilot exercise) was conducted March-December 2001, with results released June 2003 and a government agreement on categories reached February 2003 (Category 1 = 2.4% eligible for automatic citizenship; Category 2 = 70.55% would have to reapply for citizenship, i.e. Bhutan refusing to accept the majority outright). The process then broke down after a Joint Verification Team member was attacked in Jhapa in December 2003, and the 15th round of bilateral ministerial talks failed the same year. HRW's 2007 report states plainly \"since then no progress has been made\" — i.e., by 2007 this was old, already-stalled history, not a new collapse. The actual 2007 event in Bhutanese refugee history was the announcement/launch of third-country resettlement (a UNHCR/Core Group initiative), which is a distinct event from a \"repatriation pilot\" completing or collapsing. So while the description's broad arc (verification -> stalled acceptance -> shift to resettlement) is essentially correct, it is mis-dated: the verification/collapse happened in 2001-2003, not 2007, and no evidence supports a \"third\" pilot programme (there was only one pilot camp, Khudunabari). Year is materially wrong, so this is FALSE rather than PARTIAL.",
+        "source": "https://www.hrw.org/reports/2007/bhutan0507/7.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2003
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The substance is real but the year is wrong. The joint Bhutan-Nepal Joint Verification Team (JVT) screened the one pilot camp (Khudunabari, ~12,600 people) in the field between March-December 2001, but withheld results until June 2003. The four-category classification (bona fide citizens, voluntary emigrants, non-Bhutanese, criminals) was confirmed and the restrictive repatriation terms (only the 2.4% in Category 1 eligible) were locked in during the 15th round of bilateral talks in October 2003, after which HRW states 'no progress has been made' and no Khudunabari residents were ever repatriated. This is the collapse described in the event: a joint committee finishing camp assessment, identifying return categories, and Bhutan refusing citizenship to the majority, causing the process to stall. All of that concluded in 2003, not 2007. By 2007 the pivot to third-country resettlement (the Core Group of 8 nations) was already underway as a consequence of the multi-year-old collapse, not concurrent with it. So country and substance check out, but the year is off by about four years.",
+        "source": "https://www.hrw.org/reports/2007/bhutan0507/7.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2003
+      }
+    ],
+    "source": "https://www.hrw.org/reports/2007/bhutan0507/7.htm"
+  },
+  {
+    "year": 2015,
+    "title": "Nepal Earthquake Causes Damage in Southern Bhutan",
+    "verdict": "FALSE",
+    "reason": "The April 25, 2015 Gorkha earthquake in Nepal was indeed felt in Bhutan, but multiple independent sources contradict the specific claims in the event description. First, geography: sources consistently place the felt tremors in western Bhutan (Thimphu registered Mercalli intensity IV), not \"southern and eastern Bhutan\" as claimed. Second and more importantly, substance: contemporaneous reporting states Bhutanese officials reported \"no reports of any damage or loss to property\" and a Bhutanese minister said \"Everything is fine in Bhutan\" — directly contradicting the claim of infrastructure damage and casualties in Bhutan. One Kuensel (Bhutan's national paper) reference mentions minor building cracks in Thimphu, but this is cosmetic and in the wrong region, not the \"damaging infrastructure and causing casualties\" described. No source found for landslides occurring in Bhutan from this event, nor for any resulting Bhutanese building-code enforcement changes — Bhutan's response was instead sending a 63-person medical team and a Nu. 62 million relief fund to Nepal, i.e., Bhutan was a donor/helper, not a damage site. The core disaster-impact claims in the event (landslides, infrastructure damage, casualties, building-code reform) are unsupported and actively contradicted by every source found; only the trivially-true fact that tremors were felt in Bhutan holds up.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The April 25, 2015 Gorkha earthquake in Nepal was real, but its effect on Bhutan was limited to light tremors (Mercalli intensity IV) felt in western Bhutan — not damaging infrastructure or causing casualties in 'southern and eastern Bhutan' as claimed. Bhutan's Economic Affairs Minister Norbu Wangchuk explicitly stated there was 'no major damage in Bhutan.' Wikipedia's dedicated articles on the earthquake and its humanitarian response contain no mention of Bhutanese damage, casualties, or landslides; instead Bhutan is documented only as an aid donor to Nepal (a 63-person medical team plus ~$1M in aid). No source corroborates landslides in Bhutan or building-code reform tied to this specific event. The description appears to conflate or fabricate impacts that actually occurred elsewhere (Tibet, India, Bangladesh).",
+        "source": "https://en.wikipedia.org/wiki/Humanitarian_response_to_the_April_2015_Nepal_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The April 25, 2015 Gorkha earthquake in Nepal was indeed felt in Bhutan, but multiple independent sources contradict the specific claims in the event description. First, geography: sources consistently place the felt tremors in western Bhutan (Thimphu registered Mercalli intensity IV), not \"southern and eastern Bhutan\" as claimed. Second and more importantly, substance: contemporaneous reporting states Bhutanese officials reported \"no reports of any damage or loss to property\" and a Bhutanese minister said \"Everything is fine in Bhutan\" — directly contradicting the claim of infrastructure damage and casualties in Bhutan. One Kuensel (Bhutan's national paper) reference mentions minor building cracks in Thimphu, but this is cosmetic and in the wrong region, not the \"damaging infrastructure and causing casualties\" described. No source found for landslides occurring in Bhutan from this event, nor for any resulting Bhutanese building-code enforcement changes — Bhutan's response was instead sending a 63-person medical team and a Nu. 62 million relief fund to Nepal, i.e., Bhutan was a donor/helper, not a damage site. The core disaster-impact claims in the event (landslides, infrastructure damage, casualties, building-code reform) are unsupported and actively contradicted by every source found; only the trivially-true fact that tremors were felt in Bhutan holds up.",
+        "source": "https://en.wikipedia.org/wiki/April_2015_Nepal_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/April_2015_Nepal_earthquake"
   }
 ]

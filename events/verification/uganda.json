@@ -1673,5 +1673,81 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Lord's_Resistance_Army"
+  },
+  {
+    "year": 2022,
+    "title": "Oil Production Start — Tilenga Project",
+    "verdict": "FALSE",
+    "reason": "The Tilenga project is real (TotalEnergies-operated, Lake Albert/Albertine Graben, ~6.5 billion barrels, largest landlocked oil discovery in Africa, with civil-society/displacement concerns around Murchison Falls NP — all accurate general facts). However, the specific event described — TotalEnergies beginning to drill production wells — did NOT happen in 2022. In 2022, only the Final Investment Decision (1 Feb 2022, ~$10B, covering Tilenga, Kingfisher, and EACOP) was taken, along with site prep, EPC contracting, and rig mobilization — no wells were spudded. Commercial/production drilling of the actual Tilenga wells began in 2023: the SINOPEC 1501 rig spudded the first well at the Jobi-Rii 05 pad on 28 June 2023, and TotalEnergies publicly announced the start of commercial drilling at Tilenga in late July 2023 (multiple trade-press sources dated July 2023 confirm 'drilling of the Tilenga wells began in July 2023'). So year+substance are both off in a way that matters: this is a 2023 event, not a 2022 event — the described action (drilling start) simply had not occurred yet in 2022.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Independent sources converge: TotalEnergies' Final Investment Decision (FID) for Tilenga/Lake Albert Development was made in Feb 2022, and well-pad/CPF construction proceeded through 2022, but actual drilling of production wells did NOT begin in 2022 as the event claims. Drilling had been planned for Q4 2022 but slipped; the first well was spudded on 28 June 2023 (Jobi-Rii 05 well pad), with TotalEnergies publicly announcing commencement of commercial drilling in late July 2023 (Reuters/JPT/World Oil/Offshore Technology all agree on 2023). The other details (6.5bn barrel Albertine Rift discovery, largest landlocked reserve claim, civil society/African Court concerns over Murchison Falls National Park displacement) are broadly accurate for the project, but the core claim — drilling of production wells starting in 2022 — is factually wrong; it happened in 2023. Since the year itself is the wrong material detail, this fails the PARTIAL bar (which requires year+country to hold) and is scored FALSE with corrected_year 2023.",
+        "source": "https://jpt.spe.org/totalenergies-spuds-first-of-hundreds-of-wells-in-uganda-megaproject",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2023
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The Tilenga project is real (TotalEnergies-operated, Lake Albert/Albertine Graben, ~6.5 billion barrels, largest landlocked oil discovery in Africa, with civil-society/displacement concerns around Murchison Falls NP — all accurate general facts). However, the specific event described — TotalEnergies beginning to drill production wells — did NOT happen in 2022. In 2022, only the Final Investment Decision (1 Feb 2022, ~$10B, covering Tilenga, Kingfisher, and EACOP) was taken, along with site prep, EPC contracting, and rig mobilization — no wells were spudded. Commercial/production drilling of the actual Tilenga wells began in 2023: the SINOPEC 1501 rig spudded the first well at the Jobi-Rii 05 pad on 28 June 2023, and TotalEnergies publicly announced the start of commercial drilling at Tilenga in late July 2023 (multiple trade-press sources dated July 2023 confirm 'drilling of the Tilenga wells began in July 2023'). So year+substance are both off in a way that matters: this is a 2023 event, not a 2022 event — the described action (drilling start) simply had not occurred yet in 2022.",
+        "source": "https://www.offshore-technology.com/news/totalenergies-begins-drilling-at-tilenga/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2023
+      }
+    ],
+    "source": "https://www.offshore-technology.com/news/totalenergies-begins-drilling-at-tilenga/"
+  },
+  {
+    "year": 2018,
+    "title": "EACOP Pipeline Agreement Signed",
+    "verdict": "FALSE",
+    "reason": "No agreement between Uganda, Tanzania, TotalEnergies and CNOOC for EACOP was signed in 2018. The actual timeline: the Uganda-Tanzania Inter-Governmental Agreement (IGA) was signed 26 May 2017; FEED was completed February 2018 (engineering only, no signing ceremony); ownership shares were reallocated among UNOC/TPDC/CNOOC/Total in March 2019; the substantive multi-party agreements matching this description — the Host Government Agreement, Shareholders' Agreement, and Transportation & Tariffing Agreement between Uganda, Tanzania, TotalEnergies and CNOOC — were signed at a ceremony in Entebbe on 11 April 2021, attended by Presidents Museveni and Samia Suluhu Hassan, TotalEnergies CEO Patrick Pouyanné, and CNOOC representatives. The Final Investment Decision followed in February 2022. A separate 2017-2018 Tullow-Total-CNOOC farm-down deal (unrelated to Tanzania) was itself terminated in 2019 without completing. No source places a Uganda-Tanzania-Total-CNOOC EACOP signing event in 2018.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The EACOP project and its various formal agreements are real, but none of the major Uganda-Tanzania-TotalEnergies-CNOOC signings occurred in 2018. The documented timeline is: Inter-Governmental Agreement (IGA) between Uganda and Tanzania signed 26 May 2017 (with a foundation-stone ceremony 5 Aug 2017); Uganda-Total and Tanzania-Total Host Government Agreements signed Sept-Oct 2020; the Tripartite Project Agreement/Shareholders Agreement signed 11-12 April 2021 in Entebbe by Presidents Museveni and Samia Suluhu together with TotalEnergies and CNOOC leadership (this is the event that most closely matches 'agreements with TotalEnergies and CNOOC'); and the Final Investment Decision signed by TotalEnergies and CNOOC in Kampala on 1 Feb 2022, after which project cost estimates rose to ~$5 billion. Multiple independent sources (Wikipedia, EACOP.com, TotalEnergies, Anadolu Agency) show 2016-2018 was only a route-study/environmental-assessment phase with no major signing ceremony; no source places a Uganda-Tanzania-Total-CNOOC EACOP signing in 2018. Year is wrong; closest-matching real event is the April 2021 tripartite signing.",
+        "source": "https://en.wikipedia.org/wiki/East_African_Crude_Oil_Pipeline",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2021
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "No agreement between Uganda, Tanzania, TotalEnergies and CNOOC for EACOP was signed in 2018. The actual timeline: the Uganda-Tanzania Inter-Governmental Agreement (IGA) was signed 26 May 2017; FEED was completed February 2018 (engineering only, no signing ceremony); ownership shares were reallocated among UNOC/TPDC/CNOOC/Total in March 2019; the substantive multi-party agreements matching this description — the Host Government Agreement, Shareholders' Agreement, and Transportation & Tariffing Agreement between Uganda, Tanzania, TotalEnergies and CNOOC — were signed at a ceremony in Entebbe on 11 April 2021, attended by Presidents Museveni and Samia Suluhu Hassan, TotalEnergies CEO Patrick Pouyanné, and CNOOC representatives. The Final Investment Decision followed in February 2022. A separate 2017-2018 Tullow-Total-CNOOC farm-down deal (unrelated to Tanzania) was itself terminated in 2019 without completing. No source places a Uganda-Tanzania-Total-CNOOC EACOP signing event in 2018.",
+        "source": "https://www.eacop.com/host-government-agreements-signed/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2021
+      }
+    ],
+    "source": "https://www.eacop.com/host-government-agreements-signed/"
   }
 ]

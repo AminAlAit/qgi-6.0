@@ -1159,5 +1159,77 @@
       }
     ],
     "source": "https://www.france24.com/en/live-news/20250130-france-hands-over-last-base-in-chad-amid-withdrawal"
+  },
+  {
+    "year": 1991,
+    "title": "Movement for Democracy and Development Rebellion Begins",
+    "verdict": "PARTIAL",
+    "reason": "The Movement for Democracy and Development (MDD) is a real group that did launch a rebellion against Idriss Déby's new government beginning in 1991 (formed ~15 Oct 1991), so year/country/actor-existence hold. But the description's core substantive claim is wrong: MDD was not a southern movement and its insurgency was not fought in \"southern Chad.\" Multiple independent sources (PRIF/HIIK conflict database working paper, Wikipedia) show MDD was formed from remnants of ousted president Hissène Habré's FANT forces, based in the Lake Chad region (Chad's northwest, bordering Niger/Nigeria/Cameroon), and fought to restore Habré to power. The conflict is characterized in the scholarly literature as an intra-northern ethnic rivalry between the Zaghawa (Déby's base) and the Gorane (Habré/MDD's base) — not a \"northern-dominated regime vs. southern populations\" cleavage. The rebellion actually matching the \"southern Chad ethnic/regional grievance against the northern-dominated regime\" narrative is a different, separate group — the CSNPD (Comité de Sursaut National pour la Paix et la Démocratie), led by Lt. Moïse Kette, which emerged afterward (chiefly from 1992) over issues including oil exploitation in the southern Doba Basin. So the event conflates MDD's (northern, pro-Habré, Lake Chad-based) rebellion with the distinct southern CSNPD rebellion's causes/geography — a material scope/actor-characterization error, while the underlying fact of an MDD rebellion beginning in 1991 against Déby is true.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The MDD (Mouvement pour la Démocratie et le Développement) did indeed form in Chad on 15 October 1991 as an armed rebel movement seeking to overthrow Idriss Déby's new MPS government — country and year check out. However, the description's core substance is materially wrong: multiple independent sources (Refworld/IRB via ecoi.net, PRIF conflict working paper, Wikipedia/state.gov-sourced summaries) consistently place MDD's formation and base of operations in the Lake Chad region (western/northwestern Chad), not southern Chad, and describe it as a pro-Hissène Habré movement (founded by Habré, Goukouni Guet, Moussa Medella) drawing a self-described multi-ethnic, multi-religious coalition aimed at power-sharing — i.e., essentially an intra-northern-elite power struggle (Habré loyalists vs. Déby's MPS), not a 'southern population vs. northern-dominated regime' ethnic conflict. The actual southern-Chad rebellion matching that north-south ethnic-tension narrative was a different organization, the CSNPD led by Lt. Moïse Kette, which arose in 1992 (triggered by the killing of southern leader Joseph Behidi), not 1991 and not under the MDD banner. So the event is real (actor, country, year) but the geographic location and the ethnic/regional causal framing given in the description are incorrect — a material detail off while year and country hold, warranting PARTIAL rather than TRUE.",
+        "source": "https://www.ecoi.net/en/document/1154875.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The Movement for Democracy and Development (MDD) is a real group that did launch a rebellion against Idriss Déby's new government beginning in 1991 (formed ~15 Oct 1991), so year/country/actor-existence hold. But the description's core substantive claim is wrong: MDD was not a southern movement and its insurgency was not fought in \"southern Chad.\" Multiple independent sources (PRIF/HIIK conflict database working paper, Wikipedia) show MDD was formed from remnants of ousted president Hissène Habré's FANT forces, based in the Lake Chad region (Chad's northwest, bordering Niger/Nigeria/Cameroon), and fought to restore Habré to power. The conflict is characterized in the scholarly literature as an intra-northern ethnic rivalry between the Zaghawa (Déby's base) and the Gorane (Habré/MDD's base) — not a \"northern-dominated regime vs. southern populations\" cleavage. The rebellion actually matching the \"southern Chad ethnic/regional grievance against the northern-dominated regime\" narrative is a different, separate group — the CSNPD (Comité de Sursaut National pour la Paix et la Démocratie), led by Lt. Moïse Kette, which emerged afterward (chiefly from 1992) over issues including oil exploitation in the southern Doba Basin. So the event conflates MDD's (northern, pro-Habré, Lake Chad-based) rebellion with the distinct southern CSNPD rebellion's causes/geography — a material scope/actor-characterization error, while the underlying fact of an MDD rebellion beginning in 1991 against Déby is true.",
+        "source": "https://www.prif.org/fileadmin/Daten/Publikationen/Prif_Working_Papers/Anh%C3%A4nge/Chad__MPS-MDD__1990-1993.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.prif.org/fileadmin/Daten/Publikationen/Prif_Working_Papers/Anh%C3%A4nge/Chad__MPS-MDD__1990-1993.pdf"
+  },
+  {
+    "year": 2023,
+    "title": "Lake Chad Basin Displacement Exceeds 3 Million",
+    "verdict": "TRUE",
+    "reason": "Confirmed from independent sources. (1) OCHA's Lake Chad Basin Humanitarian Snapshot (24 June 2023) reports \"In May, 3.2 million people were recorded as internally displaced\" across the basin, with almost 70% in Nigeria (2.2M), followed by Cameroon (428,000) and Chad (381,000) — i.e. over 3 million IDPs across the four Lake Chad Basin countries (Nigeria, Cameroon, Chad, Niger), matching \"over 3 million people across four countries\" and giving Chad's IDP count in the hundreds of thousands as described. (2) On Chad's Sudanese-refugee hosting: driven by the April 2023 Sudan war, Chad already had ~407,000-420,000 Sudanese refugees from the earlier Darfur conflict, plus new arrivals that reached \"almost 500,000\" by 4 January 2024 (ReliefWeb/OCHA Sudanese Emergency Weekly Update) and UNHCR briefing notes describing the population \"tripling.\" Independently, a World Bank feature dated 20 November 2023 states Chad \"now hosts one million refugees\" overall (the large majority Sudanese) — comfortably exceeding the \"over 600,000 Sudanese refugees\" figure in the description by year-end 2023. All three material claims (basin-wide displacement over 3 million across four countries, Chad's Sudanese refugee count over 600,000, and hundreds of thousands of Chadian IDPs) check out for 2023, so the event is materially accurate.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent UN/humanitarian sources confirm this materially as described. (1) Lake Chad Basin displacement: OCHA humanitarian snapshots and IOM/DTM dashboards throughout 2023 record internal displacement across the four basin countries (Cameroon, Chad, Niger, Nigeria) rising from ~2.9 million (Jan 2023, per UN News) to 3.2 million (May 2023 OCHA) to more than 3.3 million (June/Nov 2023 OCHA/DTM figures), consistent with \"over 3 million people across four countries.\" (2) Chad/Sudanese refugees: A UN News article dated October 2023 (directly fetched and confirmed), reporting on UNHCR data, states there were already \"over 420,000 new refugees in Chad\" from the Sudan conflict (which began April 2023) and that \"by the end of 2023, the number of refugees in Chad could number 600,000, according to UNHCR estimates\" — matching \"hosted over 600,000 Sudanese refugees.\" (3) Chad IDPs: OCHA figures put Chad's own IDP population at ~381,000 (May 2023), matching \"hundreds of thousands of internally displaced persons\" in-country. All three components of the description (magnitude, actors, scope, year, countries) are corroborated by independent sources; one false lead (a 2016 IOM press release with an almost identical headline about \"nearly three million in four countries\") was checked and ruled out as it referred to a different year's crisis, not 2023.",
+        "source": "https://news.un.org/en/story/2023/10/1142197",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from independent sources. (1) OCHA's Lake Chad Basin Humanitarian Snapshot (24 June 2023) reports \"In May, 3.2 million people were recorded as internally displaced\" across the basin, with almost 70% in Nigeria (2.2M), followed by Cameroon (428,000) and Chad (381,000) — i.e. over 3 million IDPs across the four Lake Chad Basin countries (Nigeria, Cameroon, Chad, Niger), matching \"over 3 million people across four countries\" and giving Chad's IDP count in the hundreds of thousands as described. (2) On Chad's Sudanese-refugee hosting: driven by the April 2023 Sudan war, Chad already had ~407,000-420,000 Sudanese refugees from the earlier Darfur conflict, plus new arrivals that reached \"almost 500,000\" by 4 January 2024 (ReliefWeb/OCHA Sudanese Emergency Weekly Update) and UNHCR briefing notes describing the population \"tripling.\" Independently, a World Bank feature dated 20 November 2023 states Chad \"now hosts one million refugees\" overall (the large majority Sudanese) — comfortably exceeding the \"over 600,000 Sudanese refugees\" figure in the description by year-end 2023. All three material claims (basin-wide displacement over 3 million across four countries, Chad's Sudanese refugee count over 600,000, and hundreds of thousands of Chadian IDPs) check out for 2023, so the event is materially accurate.",
+        "source": "https://reliefweb.int/report/nigeria/lake-chad-basin-humanitarian-snapshot-24-june-2023",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://reliefweb.int/report/nigeria/lake-chad-basin-humanitarian-snapshot-24-june-2023"
   }
 ]

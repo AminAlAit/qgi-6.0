@@ -2823,5 +2823,41 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Saudi_Aramco"
+  },
+  {
+    "year": 1969,
+    "title": "Coup Attempt Suppressed",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm the 1969 Saudi Arabian coup attempt: high-ranking Royal Saudi Air Force officers (colonels Daoud Roumi and Said al-Omari, major Yusuf Tawwil, and 200-300 co-conspirators) plotted to bomb the Riyadh royal palace, assassinate King Faisal, and declare a republic. The plot was motivated by pan-Arab nationalist/Nasserist ideology, with the conspiratorial 'National Liberation Front' described as aligned with Baathist elements, and inspired in part by Gaddafi's 1969 Libyan coup. Saudi security forces uncovered and crushed the plot in mid-1969, arresting ~200 officers immediately (about 2,000 by year's end) and executing several ringleaders. This matches country (Saudi Arabia), year (1969), category (military coup, suppressed), and the described actors (air force personnel, Arab nationalist/Baathist-linked networks). The specific detail of 'suspected ties to Iraq and Libya' is plausible/consistent with the confirmed Baathist and Nasserist/Gaddafi-inspired framing but not verbatim-confirmed by name in the sources checked; this is a minor framing nuance, not a material discrepancy, so the event stands as TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm the 1969 Saudi Arabian coup attempt: security forces under King Faisal uncovered and suppressed a plot (discovered ~late June 1969, mass arrests continuing through the year) organized primarily by Royal Saudi Air Force officers and other military/civil personnel. The Christian Science Monitor (csmonitor.com) explicitly confirms the plotters were part of the \"National Liberation Front, a Saudi organization with Baathist and Marxist sympathies,\" and that tribesmen swept up in the affair were \"accused of being agents of the Iraqi Baathist party\" — corroborating the Arab-nationalist/Baathist and Iraq-linked elements of the description. Wikipedia and other tertiary sources corroborate the air force's central role, the pan-Arab-nationalist/Nasserist ideology, and the scale of the crackdown (~2,000 arrested by year end, executions of at least two colonels). The \"Libya\" tie in the description is weaker/less directly corroborated (Gaddafi's own Libyan coup occurred September 1, 1969, slightly after the plot's June discovery, and sources frame Libya mainly as a contextual/inspirational parallel for Saudi fears rather than a proven direct link for the plotters) — but this is a soft, hedged (\"suspected ties\") secondary detail, not the core claim. The core substance — country, year, security-force suppression of a coup plot by military/air-force officers with Arab-nationalist/Baathist and Iraq linkages, reinforcing Al Saud loyalty controls over the armed forces — is well corroborated, so this is TRUE rather than PARTIAL.",
+        "source": "https://www.csmonitor.com/1990/0824/ecaes.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm the 1969 Saudi Arabian coup attempt: high-ranking Royal Saudi Air Force officers (colonels Daoud Roumi and Said al-Omari, major Yusuf Tawwil, and 200-300 co-conspirators) plotted to bomb the Riyadh royal palace, assassinate King Faisal, and declare a republic. The plot was motivated by pan-Arab nationalist/Nasserist ideology, with the conspiratorial 'National Liberation Front' described as aligned with Baathist elements, and inspired in part by Gaddafi's 1969 Libyan coup. Saudi security forces uncovered and crushed the plot in mid-1969, arresting ~200 officers immediately (about 2,000 by year's end) and executing several ringleaders. This matches country (Saudi Arabia), year (1969), category (military coup, suppressed), and the described actors (air force personnel, Arab nationalist/Baathist-linked networks). The specific detail of 'suspected ties to Iraq and Libya' is plausible/consistent with the confirmed Baathist and Nasserist/Gaddafi-inspired framing but not verbatim-confirmed by name in the sources checked; this is a minor framing nuance, not a material discrepancy, so the event stands as TRUE.",
+        "source": "https://en.wikipedia.org/wiki/1969_Saudi_Arabian_coup_attempt",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1969_Saudi_Arabian_coup_attempt"
   }
 ]

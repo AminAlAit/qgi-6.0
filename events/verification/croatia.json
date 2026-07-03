@@ -1354,5 +1354,40 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Croatia_and_the_euro"
+  },
+  {
+    "year": 1958,
+    "title": "First Mass International Tourism Season on the Dalmatian Coast",
+    "verdict": "FALSE",
+    "reason": "Extensive searching (English and Croatian sources: Croatian Wikipedia's Turizam u Hrvatskoj, Croatian Encyclopedia (enciklopedija.hr), English Wikipedia's Tourism in Croatia, academic literature on Yugoslav tourism policy/Tchoukarine's 'Open-Door Policy' study, Springer chapter on Post-WWII Yugoslav tourism policy, and local Dalmatian tourism histories e.g. Novalja) found zero corroboration of 1958 as a milestone year for Dalmatian coast tourism. Every source that discusses periodization instead places: (1) the pre-war record season in 1938 (399,608 visitors); (2) 'meaningful development of foreign tourism' beginning in 1952, with the Croatian Tourist Association founded 1953; and (3) the actual mass-tourism boom and tourism's rise to a major foreign-currency/economic pillar in the 1960s and especially 1970s (hotel-construction wave, 5-year-plan investment, local accounts describing the 'first serious influx of tourists' as the late 1960s and 1970). No source connects 1958 specifically to Dalmatian tourism at all — the only 1958 hit in this domain is Yugoslavia's unrelated pavilion at the 1958 Brussels World's Fair. This contradicts the event's central, specific claim that 1958 was the 'first mass' season that 'established tourism as a structural pillar' of the economy; the weight of independent evidence places that development roughly a decade later. Could not pin one precise corrected year because sources describe a gradual multi-year build-up rather than a single discrete turning-point year, so corrected_year is left null.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "UNCERTAIN",
+        "reason": "The broad backdrop is real and well documented: socialist Yugoslavia pursued an \"open-door\" tourism policy from the early-mid 1950s to earn hard currency, and West Germans and Austrians were indeed the dominant foreign visitor nationalities on the Adriatic/Dalmatian coast throughout the socialist era (confirmed via Tchoukarine's \"Yugoslavia's Open-Door Policy and Global Tourism\" scholarship and multiple tourism-history surveys). However, I could not find any independent, verifiable source that specifically corroborates 1958 as an exceptional/\"unprecedented\"/\"first mass\" season, as opposed to earlier or later years. Multiple sources instead date the real mass-tourism takeoff to the 1960s-1970s (Croatian Wikipedia's tourism-in-Croatia sourcing notes foreign tourism \"significant development\" began 1952, and separately that \"mass tourism begins to develop in Dalmatia and Istria in the 1970s\"; other scholarship ties the boom to 1960s visa liberalization, five-year-plan coastal infrastructure investment, and the 1960s Adriatic Highway construction). I also caught and discarded an apparent AI-hallucinated \"quote\" (purportedly from a Cambridge/Austrian History Yearbook article) citing precise 1958 tourist-count statistics — on a second, more skeptical fetch of the same article, the actual abstract was about 1980-1991 and contained no such 1958 data, so that \"evidence\" is not trustworthy and is excluded. Some academic periodization (e.g., an hrcak.srce.hr article coded \"1958/1969\" studying English-language guidebooks on Yugoslavia, and Igor Duda's scholarship spanning roughly 1958-1971) treats 1958 as a meaningful start-of-era boundary, which is weak circumstantial support but not a direct confirmation of the specific \"first mass season / structural pillar\" claim for that exact year. Given the mix of plausible general context, no direct corroboration, and conflicting decade-level claims across sources, I cannot confirm this as TRUE/PARTIAL (no reliable citable source for the specific 1958 claim) nor confidently mark it FALSE with a single corrected year (sources disagree on which decade \"mass\" tourism truly began).",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Extensive searching (English and Croatian sources: Croatian Wikipedia's Turizam u Hrvatskoj, Croatian Encyclopedia (enciklopedija.hr), English Wikipedia's Tourism in Croatia, academic literature on Yugoslav tourism policy/Tchoukarine's 'Open-Door Policy' study, Springer chapter on Post-WWII Yugoslav tourism policy, and local Dalmatian tourism histories e.g. Novalja) found zero corroboration of 1958 as a milestone year for Dalmatian coast tourism. Every source that discusses periodization instead places: (1) the pre-war record season in 1938 (399,608 visitors); (2) 'meaningful development of foreign tourism' beginning in 1952, with the Croatian Tourist Association founded 1953; and (3) the actual mass-tourism boom and tourism's rise to a major foreign-currency/economic pillar in the 1960s and especially 1970s (hotel-construction wave, 5-year-plan investment, local accounts describing the 'first serious influx of tourists' as the late 1960s and 1970). No source connects 1958 specifically to Dalmatian tourism at all — the only 1958 hit in this domain is Yugoslavia's unrelated pavilion at the 1958 Brussels World's Fair. This contradicts the event's central, specific claim that 1958 was the 'first mass' season that 'established tourism as a structural pillar' of the economy; the weight of independent evidence places that development roughly a decade later. Could not pin one precise corrected year because sources describe a gradual multi-year build-up rather than a single discrete turning-point year, so corrected_year is left null.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ]
   }
 ]

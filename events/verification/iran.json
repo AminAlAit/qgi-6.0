@@ -3648,5 +3648,329 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Shanghai_Cooperation_Organisation"
+  },
+  {
+    "year": 1981,
+    "title": "MEK Assassination Campaign Kills President, Prime Minister, and 72 Officials",
+    "verdict": "TRUE",
+    "reason": "Independent sources corroborate both bombings occurred in Iran in 1981 as described. June 28, 1981 Haft-e Tir bombing destroyed IRP headquarters during a leadership meeting, killing Chief Justice Ayatollah Beheshti and dozens of officials including 27 MPs; death toll is reported variably as 72, 73, or 74 across sources, so the \"72\" figure is within normal historical variance, not an error. August 30, 1981 bombing at a Supreme National Security Council meeting killed President Mohammad-Ali Rajai and PM Mohammad-Javad Bahonar. Both attacks are attributed to the MEK (People's Mojahedin) by the Iranian government and most historical accounts, matching the description's actor and substance.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Both bombings are independently confirmed by multiple sources. (1) June 28, 1981: a bomb destroyed the Islamic Republican Party headquarters in Tehran during a leadership meeting, killing Chief Justice Ayatollah Mohammad Beheshti along with dozens of senior officials and 27 members of parliament (Wikipedia's Haft-e Tir bombing article cites 74 killed, including 4 cabinet ministers and 27 lawmakers; other sources commonly cite ~72-73 — the 72 figure in the event description is within the range widely reported and not a material discrepancy). (2) August 30, 1981: a bomb at a Supreme Defence/National Security Council meeting killed President Mohammad-Ali Rajai and Prime Minister Mohammad Javad Bahonar plus six other officials. Both attacks are widely attributed to the People's Mojahedin of Iran (MEK), matching the event's description of a coordinated MEK assassination campaign devastating to the Islamic Republic's leadership. Country (Iran) and year (1981) both confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Haft-e_Tir_bombing",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources corroborate both bombings occurred in Iran in 1981 as described. June 28, 1981 Haft-e Tir bombing destroyed IRP headquarters during a leadership meeting, killing Chief Justice Ayatollah Beheshti and dozens of officials including 27 MPs; death toll is reported variably as 72, 73, or 74 across sources, so the \"72\" figure is within normal historical variance, not an error. August 30, 1981 bombing at a Supreme National Security Council meeting killed President Mohammad-Ali Rajai and PM Mohammad-Javad Bahonar. Both attacks are attributed to the MEK (People's Mojahedin) by the Iranian government and most historical accounts, matching the description's actor and substance.",
+        "source": "https://en.wikipedia.org/wiki/Haft-e_Tir_bombing",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Haft-e_Tir_bombing"
+  },
+  {
+    "year": 2026,
+    "title": "US-Israel Strikes Kill Khamenei; Iran Counter-Strikes Begin",
+    "verdict": "PARTIAL",
+    "reason": "Confirmed via multiple independent sources (NPR, Al Jazeera, CNN, Wikipedia) that on Feb 28, 2026, Israel and the US launched coordinated strikes on Iran ('Operation Roaring Lion'/'Operation Epic Fury'), killing Supreme Leader Ali Khamenei and dozens of senior officials/family members, and that Iran retaliated with hundreds of drones/missiles against Israel, US bases (Al Udeid/Qatar, Ali Al Salem/Kuwait, Al Dhafra/UAE, 5th Fleet HQ/Bahrain) and Arab states (Bahrain, Jordan, Kuwait, Oman, Qatar, Saudi Arabia, UAE). This is indeed the second major Israel-Iran war after the June 2025 'Twelve-Day War,' matching the description's framing. However, the claim that Ali Larijani was ALSO assassinated 'on February 28, 2026' alongside Khamenei is materially inaccurate: independent sources (Wikipedia 'Assassination of Ali Larijani', Al Jazeera) confirm Larijani was killed in a separate Israeli strike on the night of March 16-17, 2026 — roughly 2.5 weeks after the Khamenei strike, as a later phase of the same war, not simultaneously. The core event (country=Iran, year=2026, Khamenei's assassination, multi-front Iranian counter-strikes) is TRUE, but conflating Larijani's later, separate killing into the same Feb 28 event is a material date/scope error, hence PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core event confirmed by multiple independent sources (Al Jazeera, NPR, CNN, Fox News, Wikipedia): on Feb 28, 2026, the US and Israel launched a coordinated military campaign against Iran that killed Supreme Leader Ali Khamenei at his Tehran compound, along with senior IRGC/military leadership; Iran retaliated the same day with ballistic missiles and drones against Israel and against US bases across Gulf Arab states (Al Udeid in Qatar, Al Dhafra in UAE, US Fifth Fleet HQ in Bahrain, plus targets in Kuwait, Saudi Arabia, Oman), matching the description of a multi-front, region-reshaping conflict. However, one material detail is wrong: Ali Larijani was NOT killed on Feb 28 alongside Khamenei — per Wikipedia's 'List of Iranian officials killed during the 2026 Iran war' and Al Jazeera (2026-03-17/18), Larijani (Secretary of the Supreme National Security Council) was assassinated separately on March 17, 2026, nearly three weeks into the war, in a later wave of Israeli strikes. The description incorrectly conflates his death with the Feb 28 opening strike. Country and year are correct and the overwhelming substance holds, so this is PARTIAL rather than FALSE.",
+        "source": "https://www.aljazeera.com/news/2026/2/28/irans-supreme-leader-ali-khamenei-killed-in-us-israeli-attacks-reports",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Confirmed via multiple independent sources (NPR, Al Jazeera, CNN, Wikipedia) that on Feb 28, 2026, Israel and the US launched coordinated strikes on Iran ('Operation Roaring Lion'/'Operation Epic Fury'), killing Supreme Leader Ali Khamenei and dozens of senior officials/family members, and that Iran retaliated with hundreds of drones/missiles against Israel, US bases (Al Udeid/Qatar, Ali Al Salem/Kuwait, Al Dhafra/UAE, 5th Fleet HQ/Bahrain) and Arab states (Bahrain, Jordan, Kuwait, Oman, Qatar, Saudi Arabia, UAE). This is indeed the second major Israel-Iran war after the June 2025 'Twelve-Day War,' matching the description's framing. However, the claim that Ali Larijani was ALSO assassinated 'on February 28, 2026' alongside Khamenei is materially inaccurate: independent sources (Wikipedia 'Assassination of Ali Larijani', Al Jazeera) confirm Larijani was killed in a separate Israeli strike on the night of March 16-17, 2026 — roughly 2.5 weeks after the Khamenei strike, as a later phase of the same war, not simultaneously. The core event (country=Iran, year=2026, Khamenei's assassination, multi-front Iranian counter-strikes) is TRUE, but conflating Larijani's later, separate killing into the same Feb 28 event is a material date/scope error, hence PARTIAL rather than TRUE.",
+        "source": "https://en.wikipedia.org/wiki/2026_Iran_war",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2026_Iran_war"
+  },
+  {
+    "year": 2010,
+    "title": "Israeli-Attributed Assassinations of Iranian Nuclear Scientists Begin",
+    "verdict": "PARTIAL",
+    "reason": "Core event confirmed: a covert campaign of attacks on Iranian nuclear-linked scientists occurred in Tehran, Iran between Jan 2010 and Jan 2012, widely attributed to Israel (with Iran also blaming the US, and both denying involvement). Individually confirmed: Masoud Ali-Mohammadi killed by a remote-detonated bomb attached to a motorcycle outside his home on 12 Jan 2010; Majid Shahriari killed and Fereydoon Abbasi wounded/survived on 29 Nov 2010 when motorcycle-riding assailants attached bombs to their cars; Mostafa Ahmadi Roshan killed by a magnetized bomb attached to his car by a motorcyclist on 11 Jan 2012. However, the description's claim that ALL FOUR scientists were killed 'using motorcycle-mounted magnetic bombs' is materially wrong for Darioush Rezaeinejad: on 23 July 2011 he was shot five times by gunmen riding a motorcycle, not killed by a bomb/explosive device. Since one of the four named killings (25% of the cited cases) used a different method (gunfire, not a magnetic bomb) than the blanket method claim in the description, this is a material factual inaccuracy while country, year, overall campaign, actors, and casualty count all hold — hence PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via multiple sources (Wikipedia, Al Jazeera, CNN, NPR, Times of Israel, ABC News). Masoud Ali-Mohammadi was killed by a remote-detonated motorcycle bomb in Tehran on Jan 12, 2010 (campaign start year matches). Majid Shahriari was killed by a magnetic bomb attached to his car by motorcycle assailants on Nov 29, 2010, the same day Fereydoon Abbasi survived an identical attack on his car. Mostafa Ahmadi Roshan was killed by a magnetic bomb attached to his car by a motorcyclist on Jan 11, 2012. Iran blamed Israel/Mossad and the US in all cases; both denied involvement; Iranian authorities arrested/convicted several people (e.g., Majid Jamali Fashi executed for the Ali-Mohammadi killing) alleged to be Mossad-trained operatives. One minor discrepancy: Darioush Rezaeinejad (July 23, 2011) was killed by motorcycle-riding gunmen who shot him, not a magnetic bomb, contradicting the description's blanket claim that all four killings used \"motorcycle-mounted magnetic bombs.\" This is a minor method detail on 1 of 4 named victims; the core event (year 2010 onset, country Iran, the four named scientists, the dates, the Israel/US attribution, and Abbasi's survival) is materially accurate, so verdict remains TRUE rather than PARTIAL.",
+        "source": "https://en.wikipedia.org/wiki/Assassinations_of_Iranian_nuclear_scientists",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core event confirmed: a covert campaign of attacks on Iranian nuclear-linked scientists occurred in Tehran, Iran between Jan 2010 and Jan 2012, widely attributed to Israel (with Iran also blaming the US, and both denying involvement). Individually confirmed: Masoud Ali-Mohammadi killed by a remote-detonated bomb attached to a motorcycle outside his home on 12 Jan 2010; Majid Shahriari killed and Fereydoon Abbasi wounded/survived on 29 Nov 2010 when motorcycle-riding assailants attached bombs to their cars; Mostafa Ahmadi Roshan killed by a magnetized bomb attached to his car by a motorcyclist on 11 Jan 2012. However, the description's claim that ALL FOUR scientists were killed 'using motorcycle-mounted magnetic bombs' is materially wrong for Darioush Rezaeinejad: on 23 July 2011 he was shot five times by gunmen riding a motorcycle, not killed by a bomb/explosive device. Since one of the four named killings (25% of the cited cases) used a different method (gunfire, not a magnetic bomb) than the blanket method claim in the description, this is a material factual inaccuracy while country, year, overall campaign, actors, and casualty count all hold — hence PARTIAL rather than TRUE.",
+        "source": "https://en.wikipedia.org/wiki/Assassinations_of_Iranian_nuclear_scientists",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Assassinations_of_Iranian_nuclear_scientists"
+  },
+  {
+    "year": 2009,
+    "title": "Green Movement Crushed: Opposition Leaders Placed Under House Arrest",
+    "verdict": "CONTESTED",
+    "reason": "Pass 1 FALSE: The substance is accurate and well-corroborated (2009 post-election crackdown killed dozens and detained thousands; Mousavi and Karroubi were later placed under extrajudicial house arrest, never charged or tried, and remained detained for over a decade), but the year given (2009) is wrong for the titular event. The house arrest itself — the specific act described in the title (\"Opposition Leaders Placed Under House Arrest\") — occurred on February 14, 2011, after Mousavi and Karroubi called for demonstrations in solidarity with the Arab Spring uprisings in Tunisia/Egypt, not in 2009. Multiple independent sources (HRW, Iran Primer/USIP, NIAC) confirm the February 2011 date for the house arrest. 2009 correctly covers the earlier election-protest crackdown context but not the headline event.; Pass 2 TRUE: Independent sources (Human Rights Watch, NIAC, Iran Primer/USIP, Wikipedia) confirm: the 2009 disputed presidential election triggered mass protests brutally suppressed by security forces (dozens killed, thousands arrested) — the Green Movement. In February 2011 (around Feb 14), reformist 2009 presidential candidates Mir Hossein Mousavi and Mehdi Karroubi (plus their wives) were placed under extrajudicial house arrest after publicly calling for demonstrations in solidarity with the Arab Spring uprisings in Tunisia/Egypt. Neither was ever charged or tried. Both remained under house arrest for over a decade — Karroubi was released around August 2024 after roughly 13.5 years, and Mousavi remained under house arrest per NIAC's most recent tracking. All material facts (country, actors, mechanism, timing, lack of due process, multi-year duration) match the description. The description's year field of 2009 reflects the anchoring event (the disputed election and crackdown) that the title/description frame as background context for the subsequent 2011 house arrests, consistent with how the event is written as a single narrative arc.. Tiebreak required.",
+    "verify_count": 2,
+    "consensus_verdict": "CONTESTED",
+    "consensus_status": "contested_open",
+    "needs_tiebreak": true,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The substance is accurate and well-corroborated (2009 post-election crackdown killed dozens and detained thousands; Mousavi and Karroubi were later placed under extrajudicial house arrest, never charged or tried, and remained detained for over a decade), but the year given (2009) is wrong for the titular event. The house arrest itself — the specific act described in the title (\"Opposition Leaders Placed Under House Arrest\") — occurred on February 14, 2011, after Mousavi and Karroubi called for demonstrations in solidarity with the Arab Spring uprisings in Tunisia/Egypt, not in 2009. Multiple independent sources (HRW, Iran Primer/USIP, NIAC) confirm the February 2011 date for the house arrest. 2009 correctly covers the earlier election-protest crackdown context but not the headline event.",
+        "source": "https://www.hrw.org/news/2013/02/14/iran-end-house-arrests-mousavi-karroubi-and-rahnavard",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2011
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources (Human Rights Watch, NIAC, Iran Primer/USIP, Wikipedia) confirm: the 2009 disputed presidential election triggered mass protests brutally suppressed by security forces (dozens killed, thousands arrested) — the Green Movement. In February 2011 (around Feb 14), reformist 2009 presidential candidates Mir Hossein Mousavi and Mehdi Karroubi (plus their wives) were placed under extrajudicial house arrest after publicly calling for demonstrations in solidarity with the Arab Spring uprisings in Tunisia/Egypt. Neither was ever charged or tried. Both remained under house arrest for over a decade — Karroubi was released around August 2024 after roughly 13.5 years, and Mousavi remained under house arrest per NIAC's most recent tracking. All material facts (country, actors, mechanism, timing, lack of due process, multi-year duration) match the description. The description's year field of 2009 reflects the anchoring event (the disputed election and crackdown) that the title/description frame as background context for the subsequent 2011 house arrests, consistent with how the event is written as a single narrative arc.",
+        "source": "https://www.hrw.org/news/2013/02/14/iran-end-house-arrests-mousavi-karroubi-and-rahnavard",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2005,
+    "title": "Ahmadinejad Wins Presidency; Guardian Council Engineers Hardliner Restoration",
+    "verdict": "TRUE",
+    "reason": "All material elements confirmed by independent sources. The Guardian Council disqualified roughly 2,500-3,600 reformist/independent candidates ahead of the 2004 parliamentary elections (RFE/RL, HRW, MERIP), clearing the way for conservative dominance. Ahmadinejad won the June 2005 presidential runoff with 63% of the vote (Al Jazeera, Wikipedia). Multiple losing candidates (Karroubi, Rafsanjani's camp) alleged the Basij and IRGC illegally mobilized institutional/mosque networks to steer votes to Ahmadinejad — documented in depth by a dedicated Jamestown Foundation analysis on the \"electoral coup\" role of the Guards and Basij, and by Wikipedia's election article. The claim that Guardian Council candidate-exclusion recurred in 2021 and 2024 is independently confirmed by HRW, Freedom House, and the Center for Human Rights in Iran (mass disqualifications including prominent figures like Jahangiri, Larijani in both cycles), and HRW/rights bodies have long characterized this vetting regime as denying Iranians free choice of government.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via independent sources: Guardian Council disqualified ~3,600 of ~8,200 candidates (mostly reformists) ahead of the Feb/May 2004 parliamentary elections, triggering a Majles sit-in protest and accusations of a \"silent coup\" (Wikipedia, HRW, The National). Ahmadinejad won the June 2005 presidential runoff (63%) after finishing second in round one; reformist parties and Rafsanjani aides alleged Basij militia intimidation/mobilization and improper campaigning by Guardian-Council-appointed election supervisors who were legally required to stay impartial (Wikipedia, TIME, Washington Institute, Al Jazeera). The pattern of mass Guardian Council candidate disqualification recurred in the 2021 presidential election (only 7 of ~600 approved, including barring sitting VP Jahangiri and Larijani) and the March 2024 parliamentary/Assembly of Experts elections (barring Rouhani and other centrists), with Freedom House/HRW/CHRI characterizing this exclusionary vetting as violating citizens' political rights under the ICCPR. All material elements of the description (country, year, disqualifications, engineered victory, Basij/IRGC role, irregularities, recurrence in 2021/2024, rights-body characterization) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/2005_Iranian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material elements confirmed by independent sources. The Guardian Council disqualified roughly 2,500-3,600 reformist/independent candidates ahead of the 2004 parliamentary elections (RFE/RL, HRW, MERIP), clearing the way for conservative dominance. Ahmadinejad won the June 2005 presidential runoff with 63% of the vote (Al Jazeera, Wikipedia). Multiple losing candidates (Karroubi, Rafsanjani's camp) alleged the Basij and IRGC illegally mobilized institutional/mosque networks to steer votes to Ahmadinejad — documented in depth by a dedicated Jamestown Foundation analysis on the \"electoral coup\" role of the Guards and Basij, and by Wikipedia's election article. The claim that Guardian Council candidate-exclusion recurred in 2021 and 2024 is independently confirmed by HRW, Freedom House, and the Center for Human Rights in Iran (mass disqualifications including prominent figures like Jahangiri, Larijani in both cycles), and HRW/rights bodies have long characterized this vetting regime as denying Iranians free choice of government.",
+        "source": "https://jamestown.org/the-role-of-the-revolutionary-guards-and-basij-militia-in-irans-electoral-coup/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://jamestown.org/the-role-of-the-revolutionary-guards-and-basij-militia-in-irans-electoral-coup/"
+  },
+  {
+    "year": 1992,
+    "title": "MEK Simultaneously Attacks Iranian Embassies in 13 Countries",
+    "verdict": "TRUE",
+    "reason": "Independently corroborated across multiple sources: on April 5, 1992, MEK members (then based in Iraq near Baghdad) carried out near-simultaneous armed raids on Iranian diplomatic missions in roughly a dozen countries, including the Iranian Mission to the UN in New York (five men with knives took hostages in a two-hour rampage), Ottawa, Bonn, Hamburg, The Hague, Oslo, Stockholm, Copenhagen, Bern, Paris and London. The Investigative Project on Terrorism states the figure exactly as described: '13 countries.' CFR and Wikipedia cite '10 countries' instead, so the exact count varies slightly by source, but no source reports any diplomat deaths (only hostages, injuries, and property damage), matching the description's 'killed no diplomats.' MEK stated the attacks were retaliation for an Iranian airstrike on their Iraq base, and the episode is consistently cited as bolstering the case for MEK's later terrorist designation. Country, year, and substance all check out; the minor variance in country-count across sources (10 vs 13) does not rise to a material discrepancy given at least one credible source matches the stated figure exactly.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm that in April 1992 the MEK (Mojahedin-e Khalq), operating from bases in Iraq, carried out coordinated/near-simultaneous armed assaults on Iranian diplomatic missions in numerous countries, including the Iranian Mission to the United Nations in New York, using knives/weapons, taking hostages and ransacking offices, with injuries but no diplomats killed, and dozens of arrests. Wikipedia's PMOI article and the CFR backgrounder both confirm the core event (April 1992, MEK, New York UN mission among targets, injuries not deaths, MEK's stated rationale of retaliation for an Iranian airstrike on a MEK base). The exact country count varies across otherwise reputable sources (Wikipedia/CFR say ~10, a CRS report via everycrsreport.com says 11, and several other secondary sources/search summaries repeatedly cite '13 countries' consistent with the event description), which reads as normal variance in historical secondary-source tallies rather than a substantive mischaracterization of the event's actor, timing, or nature. Country (Iran, as target), year (1992), and substance (coordinated multi-country MEK attack on Iranian missions, no diplomats killed, propaganda/designation-campaign framing) all hold.",
+        "source": "https://en.wikipedia.org/wiki/People%27s_Mojahedin_Organization_of_Iran",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across multiple sources: on April 5, 1992, MEK members (then based in Iraq near Baghdad) carried out near-simultaneous armed raids on Iranian diplomatic missions in roughly a dozen countries, including the Iranian Mission to the UN in New York (five men with knives took hostages in a two-hour rampage), Ottawa, Bonn, Hamburg, The Hague, Oslo, Stockholm, Copenhagen, Bern, Paris and London. The Investigative Project on Terrorism states the figure exactly as described: '13 countries.' CFR and Wikipedia cite '10 countries' instead, so the exact count varies slightly by source, but no source reports any diplomat deaths (only hostages, injuries, and property damage), matching the description's 'killed no diplomats.' MEK stated the attacks were retaliation for an Iranian airstrike on their Iraq base, and the episode is consistently cited as bolstering the case for MEK's later terrorist designation. Country, year, and substance all check out; the minor variance in country-count across sources (10 vs 13) does not rise to a material discrepancy given at least one credible source matches the stated figure exactly.",
+        "source": "https://www.investigativeproject.org/profile/140/mujahedin-e-khalq-organization-mek",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.investigativeproject.org/profile/140/mujahedin-e-khalq-organization-mek"
+  },
+  {
+    "year": 1994,
+    "title": "AMIA Bombing in Buenos Aires: Iran-Directed Attack Kills 85",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: on July 18, 1994, a suicide car bomb destroyed the AMIA Jewish community center in Buenos Aires, killing 85 and wounding ~300 — Argentina's deadliest terrorist attack. On April 11, 2024, Argentina's Court of Cassation (top criminal court) ruled in an ~800-page decision that Iran directed the attack and Hezbollah carried it out, declaring it a crime against humanity and Iran a 'terrorist state.' Iran has denied responsibility (Tehran press rejecting the ruling as 'unsubstantiated'). All material details in the description (date, death toll, 2024 court ruling, Iran-direction/Hezbollah-execution, Iranian denial) are corroborated by independent sources (Wikipedia, VOA News, Jewish Telegraphic Agency, Buenos Aires Times, Iran International).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, reputable sources confirm every material detail. The AMIA (Argentine Israelite Mutual Association) Jewish community center in Buenos Aires was bombed on July 18, 1994, by a car/van bomb, killing 85 and wounding over 300 — Argentina's deadliest terrorist attack (confirmed by Wikipedia, AMIA's own site, US Embassy Argentina, World Jewish Congress, AJC). On April 11, 2024, Argentina's Court of Cassation (highest criminal court) ruled in an ~800-page decision that Iran organized, financed, and planned the attack and that Hezbollah executed it on Iran's behalf, declaring the bombing a crime against humanity and Iran a 'terrorist state' (confirmed by Buenos Aires Times, VOA News, Jewish Telegraphic Agency, Iran International). This matches the earlier 2006 Argentine prosecutorial findings that also named Iran/Hezbollah. Interpol red notices against senior Iranian officials (including Fallahian and Vahidi) and Iran's denial of responsibility are long-standing, uncontested facts of this widely documented case, consistent with all corroborating sources. Country, year, and substance all hold.",
+        "source": "https://www.jta.org/2024/04/12/global/in-landmark-ruling-argentine-court-says-iran-and-hezbollah-were-responsible-for-1994-jewish-center-bombing",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: on July 18, 1994, a suicide car bomb destroyed the AMIA Jewish community center in Buenos Aires, killing 85 and wounding ~300 — Argentina's deadliest terrorist attack. On April 11, 2024, Argentina's Court of Cassation (top criminal court) ruled in an ~800-page decision that Iran directed the attack and Hezbollah carried it out, declaring it a crime against humanity and Iran a 'terrorist state.' Iran has denied responsibility (Tehran press rejecting the ruling as 'unsubstantiated'). All material details in the description (date, death toll, 2024 court ruling, Iran-direction/Hezbollah-execution, Iranian denial) are corroborated by independent sources (Wikipedia, VOA News, Jewish Telegraphic Agency, Buenos Aires Times, Iran International).",
+        "source": "https://www.jta.org/2024/04/12/global/in-landmark-ruling-argentine-court-says-iran-and-hezbollah-were-responsible-for-1994-jewish-center-bombing",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.jta.org/2024/04/12/global/in-landmark-ruling-argentine-court-says-iran-and-hezbollah-were-responsible-for-1994-jewish-center-bombing"
+  },
+  {
+    "year": 2016,
+    "title": "PJAK Resumes Armed Operations Against IRGC After Five-Year Lull",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm PJAK (Kurdistan Free Life Party) resumed armed operations against IRGC in Iranian Kurdistan in 2016, following the September 2011 ceasefire that had produced roughly five years of relative quiescence (with only sporadic incidents). Confirmed 2016 incidents include: a June 13, 2016 IRGC ambush killing 5 PJAK members; escalating clashes through the year; an October 4, 2016 clash (12 PJAK/Kurdish militants killed, 3 IRGC wounded) followed by PJAK's October 13, 2016 retaliatory cross-border attacks claiming 26-32 IRGC/affiliated personnel killed; and a July 10, 2016 assassination attempt on an Iranian MP from Eslamabad-e Gharb (Kermanshah province) by armed militants linked to PJAK activity, in which the MP escaped but a driver and a local official were killed and others injured. This matches the description's claims of ambushes, an attempted assassination of an MP, and coincidence with renewed Turkish-PKK fighting and continued PJAK capacity despite Iranian strikes on its Iraq bases.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm PJAK (Kurdistan Free Life Party), an Iranian Kurdish rebel group, resumed armed operations against IRGC forces in Iranian Kurdistan in 2016, following the 2011 unilateral ceasefire period. Confirmed incidents include: a close-quarter assassination attempt on Iranian MP Heshmatollah Falahatpishe (representative for Islamabad-e Gharb) on July 10, 2016 in Kermanshah province (4 gunmen fired on his convoy, killing 2 and wounding the MP and others), attributed to PJAK by Iranian officials; a June 13, 2016 IRGC ambush killing PJAK members; and an October 2016 escalation with PJAK claiming cross-border attacks on IRGC forces. This activity is documented as part of the broader 2016 Western Iran clashes and occurred alongside renewed PKK-Turkey fighting, consistent with the description. Minor caveat: some sources note sporadic PJAK-IRGC clashes also occurred in 2012-2013 (not a totally clean \"five-year lull\"), but the overall claim of a 2016 resumption of sustained armed operations after a period of relative post-2011 quiescence, including the ambushes and the MP assassination attempt, is well corroborated and material to the description.",
+        "source": "http://www.rudaw.net/english/middleeast/iran/10072016",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm PJAK (Kurdistan Free Life Party) resumed armed operations against IRGC in Iranian Kurdistan in 2016, following the September 2011 ceasefire that had produced roughly five years of relative quiescence (with only sporadic incidents). Confirmed 2016 incidents include: a June 13, 2016 IRGC ambush killing 5 PJAK members; escalating clashes through the year; an October 4, 2016 clash (12 PJAK/Kurdish militants killed, 3 IRGC wounded) followed by PJAK's October 13, 2016 retaliatory cross-border attacks claiming 26-32 IRGC/affiliated personnel killed; and a July 10, 2016 assassination attempt on an Iranian MP from Eslamabad-e Gharb (Kermanshah province) by armed militants linked to PJAK activity, in which the MP escaped but a driver and a local official were killed and others injured. This matches the description's claims of ambushes, an attempted assassination of an MP, and coincidence with renewed Turkish-PKK fighting and continued PJAK capacity despite Iranian strikes on its Iraq bases.",
+        "source": "https://en.wikipedia.org/wiki/Iran%E2%80%93PJAK_conflict",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Iran%E2%80%93PJAK_conflict"
+  },
+  {
+    "year": 2020,
+    "title": "Fakhrizadeh Assassination: Mossad Kills Iran's Top Nuclear Weapons Scientist",
+    "verdict": "TRUE",
+    "reason": "Confirmed from independent sources: Mohsen Fakhrizadeh, head of Iran's Project AMAD nuclear weapons program, was killed on November 27, 2020 in Absard near Tehran. He was attacked using a remote-controlled/AI-operated machine gun (modified FN MAG) mounted on a Nissan pickup truck — matching the description exactly. Israel's Mossad has been widely identified as responsible by Iranian officials, Israeli media reporting, a 2021 NYT investigative report, and subsequent semi-admissions by former Mossad chief Yossi Cohen. All material details (country, year, target's role, method, location, attributed actor) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: Mohsen Fakhrizadeh, head of Iran's AMAD nuclear weapons program (Iran's covert weapons effort), was killed on November 27, 2020 in Absard, near Tehran, via a remote-controlled/AI-assisted machine gun (modified FN MAG) mounted on a Nissan Zamyad pickup truck. Israeli responsibility is widely attributed by Iranian and Israeli/international media, with former Mossad chief Yossi Cohen later giving Israel's closest admission of responsibility. Sources also confirm the pattern of at least four prior Iranian nuclear-scientist assassinations attributed to Israel between 2010-2012 (e.g., Masoud Ali-Mohammadi, Majid Shahriari, and others), matching the description. Country, year, and substance all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mohsen_Fakhrizadeh",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from independent sources: Mohsen Fakhrizadeh, head of Iran's Project AMAD nuclear weapons program, was killed on November 27, 2020 in Absard near Tehran. He was attacked using a remote-controlled/AI-operated machine gun (modified FN MAG) mounted on a Nissan pickup truck — matching the description exactly. Israel's Mossad has been widely identified as responsible by Iranian officials, Israeli media reporting, a 2021 NYT investigative report, and subsequent semi-admissions by former Mossad chief Yossi Cohen. All material details (country, year, target's role, method, location, attributed actor) check out.",
+        "source": "https://en.wikipedia.org/wiki/Mohsen_Fakhrizadeh",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Mohsen_Fakhrizadeh"
   }
 ]

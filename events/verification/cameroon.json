@@ -277,12 +277,12 @@
   {
     "year": 1998,
     "title": "Cameroon Begins Oil Production Expansion at Kribi",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: The World Bank appraised the Chad-Cameroon Petroleum Development and Pipeline Project in June 1999 (feasibility work underway from 1998); the project positions Cameroon as transit country with a marine terminal at Kribi, matching the event description within the ±2-year tolerance.; Pass 2 FALSE: No World Bank approval of feasibility studies for the Chad-Cameroon pipeline occurred in 1998. Feasibility studies were conducted 1993–early 1996; the Chad-Cameroon bilateral treaty was signed Feb 1996; the consortium-government agreement was reached Sept 1997; the World Bank appraised the project in June 1999; and the World Bank Board formally approved financing on June 6, 2000. Construction of the pipeline/Kribi terminal began October 2000, with first oil not flowing until October 2003. Nothing distinctive matching this description (World Bank approval, transit-revenue positioning, Kribi terminal development) is documented for 1998 specifically — the year and the core claimed action do not match the historical record.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
+    "verdict": "FALSE",
+    "reason": "No evidence supports this event happening in 1998, and the description mischaracterizes the underlying project. The Chad-Cameroon pipeline's feasibility/economic studies were conducted 1993-1996 (with a bilateral treaty signed Feb 1996), well before 1998. In 1998 itself, the project was actually facing setbacks/opposition (86 NGOs sent an open letter to World Bank president Wolfensohn in July 1998 urging suspension of the project over human-rights/environmental concerns) -- the opposite of 'gained momentum.' The World Bank's Board of Executive Directors did not approve the project (financing, not 'feasibility studies') until June 2000, after Shell and Elf withdrew (1999) and Chevron/Petronas joined (April 2000); pipeline construction began in October 2000 and the Kribi export terminal/FSO began operating in 2003. Additionally, the title 'Cameroon Begins Oil Production Expansion' is itself materially wrong: Kribi is a transit/export terminal for Chadian crude, not a Cameroonian oil-production site -- Cameroon's own oil production (from fields like Ebome, discovered/producing since the late 1970s-1997) was actually in decline through the 1990s, not expanding. No source found ties any 'World Bank approval of feasibility studies' milestone to 1998 for this project.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
@@ -307,8 +307,21 @@
           "method": "web_search"
         },
         "corrected_year": 2000
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "No evidence supports this event happening in 1998, and the description mischaracterizes the underlying project. The Chad-Cameroon pipeline's feasibility/economic studies were conducted 1993-1996 (with a bilateral treaty signed Feb 1996), well before 1998. In 1998 itself, the project was actually facing setbacks/opposition (86 NGOs sent an open letter to World Bank president Wolfensohn in July 1998 urging suspension of the project over human-rights/environmental concerns) -- the opposite of 'gained momentum.' The World Bank's Board of Executive Directors did not approve the project (financing, not 'feasibility studies') until June 2000, after Shell and Elf withdrew (1999) and Chevron/Petronas joined (April 2000); pipeline construction began in October 2000 and the Kribi export terminal/FSO began operating in 2003. Additionally, the title 'Cameroon Begins Oil Production Expansion' is itself materially wrong: Kribi is a transit/export terminal for Chadian crude, not a Cameroonian oil-production site -- Cameroon's own oil production (from fields like Ebome, discovered/producing since the late 1970s-1997) was actually in decline through the 1990s, not expanding. No source found ties any 'World Bank approval of feasibility studies' milestone to 1998 for this project.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2000
       }
-    ]
+    ],
+    "had_dissent": true
   },
   {
     "year": 1999,

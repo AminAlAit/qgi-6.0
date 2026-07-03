@@ -302,12 +302,12 @@
   {
     "year": 1993,
     "title": "Belarus introduces the Belarusian ruble",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: Belarusian ruble introduced in 1992-1993 replacing Soviet ruble. Redenominations in 2000 and 2016 confirmed. Description accurate.; Pass 2 FALSE: Independent sourcing consistently dates the introduction of the Belarusian ruble to May 25, 1992 (replacing the Soviet ruble at 1:10), not 1993. The minskherald.com article states plainly: \"May 1992, is the year the first Belarusian ruble was printed,\" and that it took two more years before it was declared the sole official currency of Belarus in May 1994. WebSearch results (National Bank of Belarus references, banknote history sites) corroborate the 1992 introduction date. The described event (introducing the currency to replace the Soviet ruble) is real and materially accurate in substance, but the year is wrong by one year — 1993 was mid-transition (e.g., new denominations added), not the introduction year. Since the year is wrong, this must be scored FALSE with corrected_year, per the hard rules (year mismatch = FALSE, not PARTIAL).. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
+    "verdict": "FALSE",
+    "reason": "Multiple independent, non-off-limits sources (Numismatic News, atsnotes.com banknote catalog, factorin.bg, coinz.eu) converge on the Belarusian ruble being introduced on 25 May 1992, replacing the Soviet ruble at a 1:10 exchange rate, immediately after Belarus's 1991 independence — not in 1993. In 1993 no new currency was introduced; the only 1993 development was the addition of a 1,000-ruble banknote denomination and wider circulation of already-existing National Bank notes amid the hyperinflation of that period (annual CPI inflation ~1,190% in 1993). The currency did not become the sole legal tender (fully replacing the Russian/Soviet ruble) until May 1994, which is also not 1993. So the described event — the founding introduction of the Belarusian ruble as a monetary-independence act — is real, but it happened in 1992, not 1993, making the year in this record incorrect. Everything else in the description (severe 1990s inflation, later 2000 and 2016 redenominations) checks out and is well documented elsewhere, but the core dated event does not match 1993.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
     "source_independence": "independent",
     "verifications": [
       {
@@ -332,8 +332,22 @@
           "method": "web_search"
         },
         "corrected_year": 1992
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "Multiple independent, non-off-limits sources (Numismatic News, atsnotes.com banknote catalog, factorin.bg, coinz.eu) converge on the Belarusian ruble being introduced on 25 May 1992, replacing the Soviet ruble at a 1:10 exchange rate, immediately after Belarus's 1991 independence — not in 1993. In 1993 no new currency was introduced; the only 1993 development was the addition of a 1,000-ruble banknote denomination and wider circulation of already-existing National Bank notes amid the hyperinflation of that period (annual CPI inflation ~1,190% in 1993). The currency did not become the sole legal tender (fully replacing the Russian/Soviet ruble) until May 1994, which is also not 1993. So the described event — the founding introduction of the Belarusian ruble as a monetary-independence act — is real, but it happened in 1992, not 1993, making the year in this record incorrect. Everything else in the description (severe 1990s inflation, later 2000 and 2016 redenominations) checks out and is well documented elsewhere, but the core dated event does not match 1993.",
+        "source": "https://www.numismaticnews.net/paper-money/belarus-recalls-former-currency",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1992
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://www.numismaticnews.net/paper-money/belarus-recalls-former-currency"
   },
   {
     "year": 1994,

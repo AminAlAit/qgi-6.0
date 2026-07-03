@@ -1,30 +1,6 @@
 [
   {
     "year": 1950,
-    "title": "Stalinist show trials target Hungarian Catholic Church leadership",
-    "verdict": "TRUE",
-    "reason": "Mindszenty imprisoned 1949; mass persecution of Church in 1950 confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Mindszenty imprisoned 1949; mass persecution of Church in 1950 confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1950,
     "title": "Hungary completes nationalization of remaining private industry",
     "verdict": "TRUE",
     "reason": "Nationalization of small enterprises completed ~1950 under Rákosi confirmed.",
@@ -38,6 +14,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Nationalization of small enterprises completed ~1950 under Rákosi confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1950,
+    "title": "Stalinist show trials target Hungarian Catholic Church leadership",
+    "verdict": "TRUE",
+    "reason": "Mindszenty imprisoned 1949; mass persecution of Church in 1950 confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mindszenty imprisoned 1949; mass persecution of Church in 1950 confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -145,30 +145,6 @@
   },
   {
     "year": 1956,
-    "title": "Khrushchev's Secret Speech and Rákosi's fall ignite reform expectations",
-    "verdict": "TRUE",
-    "reason": "Secret Speech Feb 1956; Rákosi replaced by Gerő July 1956; Petőfi Circle confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Secret Speech Feb 1956; Rákosi replaced by Gerő July 1956; Petőfi Circle confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1956,
     "title": "Hungarian Revolution begins October 23 with mass protests in Budapest",
     "verdict": "TRUE",
     "reason": "October 23 student uprising, Stalin statue toppled, Nagy recalled as PM confirmed.",
@@ -182,6 +158,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "October 23 student uprising, Stalin statue toppled, Nagy recalled as PM confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1956,
+    "title": "Khrushchev's Secret Speech and Rákosi's fall ignite reform expectations",
+    "verdict": "TRUE",
+    "reason": "Secret Speech Feb 1956; Rákosi replaced by Gerő July 1956; Petőfi Circle confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Secret Speech Feb 1956; Rákosi replaced by Gerő July 1956; Petőfi Circle confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -409,30 +409,6 @@
   },
   {
     "year": 1968,
-    "title": "New Economic Mechanism launched, introducing market elements into Hungarian socialism",
-    "verdict": "TRUE",
-    "reason": "NEM launched January 1, 1968; abolished mandatory quotas; market price signals confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "NEM launched January 1, 1968; abolished mandatory quotas; market price signals confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1968,
     "title": "Hungary participates in Warsaw Pact invasion of Czechoslovakia",
     "verdict": "TRUE",
     "reason": "Hungarian troops participated in August 1968 invasion of Czechoslovakia confirmed.",
@@ -446,6 +422,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Hungarian troops participated in August 1968 invasion of Czechoslovakia confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1968,
+    "title": "New Economic Mechanism launched, introducing market elements into Hungarian socialism",
+    "verdict": "TRUE",
+    "reason": "NEM launched January 1, 1968; abolished mandatory quotas; market price signals confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "NEM launched January 1, 1968; abolished mandatory quotas; market price signals confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -745,30 +745,6 @@
   },
   {
     "year": 1987,
-    "title": "Lakitelek meeting founds Hungarian Democratic Forum as first independent party",
-    "verdict": "TRUE",
-    "reason": "MDF founded at Lakitelek September 27, 1987 confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "MDF founded at Lakitelek September 27, 1987 confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1987,
     "title": "FIDESZ liberal anti-communist youth organization founded by law students",
     "verdict": "FALSE",
     "reason": "FIDESZ was founded March 30, 1988 — not 1987. Year is off by 1. Founding details otherwise accurate.",
@@ -792,10 +768,46 @@
     ]
   },
   {
-    "year": 1988,
-    "title": "Mass protest against Bős-Nagymaros dam becomes landmark civil society event",
+    "year": 1987,
+    "title": "Graphisoft Releases ArchiCAD, World's First Desktop BIM Software",
     "verdict": "TRUE",
-    "reason": "Dam protests 1988 including ~30,000 in September; landmark civil society event confirmed. 'Tens of thousands' supported by evidence.",
+    "reason": "Independently confirmed via Wikipedia's Archicad and Graphisoft articles: Graphisoft was founded in 1982 in Budapest, Hungary by Gábor Bojár (a mathematician who led a mathematical department at Budapest's Geophysical Institute, launching the company once private enterprise was permitted under Hungary's communist regime). Its precursor product RadarCH appeared in 1984 for early Apple platforms. Archicad 1.0 launched in 1987 for the Apple Macintosh and is described by Wikipedia as \"the first CAD product on a personal computer able to create both 2D and 3D geometry, as well as the first commercial BIM product for personal computers\" — matching the event description's claim of \"world's first desktop BIM software.\" One minor nuance found: Archicad's own founder acknowledged that a competing product (Sonata) was arguably more technically advanced in 1986, but this doesn't materially contradict the widely-cited \"first desktop BIM\" characterization used in the event description. All material details (country, year, actor, product, platform, founding context) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Budapest-based Graphisoft (founded 1982 by Gábor Bojár and István Gábor Tari, who assembled a team drawing heavily on mathematicians/physicists from research institutes) released ArchiCAD for the Apple Macintosh in 1987, building on its 1984 RadarCH product for the Apple Lisa. ArchiCAD 1987 is widely and repeatedly credited (Wikipedia, Graphisoft's own corporate history, IT History Society, Scan2CAD, Grokipedia) as the first CAD product on a personal computer able to do combined 2D/3D modeling and as the first commercial BIM software for personal computers (with one noted competing claim — Bojár himself has acknowledged Ingram's Sonata was arguably more advanced in 1986 — but this is a well-known footnote in BIM history, not a refutation). Graphisoft is also independently confirmed as one of Hungary's first private software companies founded during the communist era, right after private enterprise was legalized. Minor non-material wrinkle: some retrospective version-history tables (e.g., Wikipedia's version table) label the 1984 RadarCH as \"Archicad 1.0\" and the 1987 Macintosh release as \"version 3.0,\" while other sources (Scan2CAD, Grokipedia) explicitly call the 1987 Macintosh release \"Archicad 1.0\" — a naming/versioning ambiguity that does not change the year, country, actor, or the substantive claim (Graphisoft launched ArchiCAD on the Macintosh in 1987, pioneering desktop BIM). Year, country, actor, and the core technological-breakthrough claim all hold.",
+        "source": "https://en.wikipedia.org/wiki/Archicad",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia's Archicad and Graphisoft articles: Graphisoft was founded in 1982 in Budapest, Hungary by Gábor Bojár (a mathematician who led a mathematical department at Budapest's Geophysical Institute, launching the company once private enterprise was permitted under Hungary's communist regime). Its precursor product RadarCH appeared in 1984 for early Apple platforms. Archicad 1.0 launched in 1987 for the Apple Macintosh and is described by Wikipedia as \"the first CAD product on a personal computer able to create both 2D and 3D geometry, as well as the first commercial BIM product for personal computers\" — matching the event description's claim of \"world's first desktop BIM software.\" One minor nuance found: Archicad's own founder acknowledged that a competing product (Sonata) was arguably more technically advanced in 1986, but this doesn't materially contradict the widely-cited \"first desktop BIM\" characterization used in the event description. All material details (country, year, actor, product, platform, founding context) check out.",
+        "source": "https://en.wikipedia.org/wiki/Archicad",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Archicad"
+  },
+  {
+    "year": 1987,
+    "title": "Lakitelek meeting founds Hungarian Democratic Forum as first independent party",
+    "verdict": "TRUE",
+    "reason": "MDF founded at Lakitelek September 27, 1987 confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -805,7 +817,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Dam protests 1988 including ~30,000 in September; landmark civil society event confirmed. 'Tens of thousands' supported by evidence.",
+        "reason": "MDF founded at Lakitelek September 27, 1987 confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -830,6 +842,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Kádár removed May 22, 1988; Grósz became General Secretary confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1988,
+    "title": "Mass protest against Bős-Nagymaros dam becomes landmark civil society event",
+    "verdict": "TRUE",
+    "reason": "Dam protests 1988 including ~30,000 in September; landmark civil society event confirmed. 'Tens of thousands' supported by evidence.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Dam protests 1988 including ~30,000 in September; landmark civil society event confirmed. 'Tens of thousands' supported by evidence.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -985,30 +1021,6 @@
   },
   {
     "year": 1994,
-    "title": "Socialist Party wins landslide; ex-communists return to power democratically",
-    "verdict": "TRUE",
-    "reason": "MSZP landslide May 1994; peaceful handover; pro-Western reform continued confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "MSZP landslide May 1994; peaceful handover; pro-Western reform continued confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1994,
     "title": "Hungary submits formal European Union membership application",
     "verdict": "TRUE",
     "reason": "Hungary applied March 31, 1994 (event says April — off by days only, not a year). Confirmed as among first Central European applicants.",
@@ -1022,6 +1034,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Hungary applied March 31, 1994 (event says April — off by days only, not a year). Confirmed as among first Central European applicants.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1994,
+    "title": "Socialist Party wins landslide; ex-communists return to power democratically",
+    "verdict": "TRUE",
+    "reason": "MSZP landslide May 1994; peaceful handover; pro-Western reform continued confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MSZP landslide May 1994; peaceful handover; pro-Western reform continued confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1513,6 +1549,30 @@
   },
   {
     "year": 2022,
+    "title": "EU triggers rule-of-law conditionality mechanism, freezing billions in cohesion funds",
+    "verdict": "TRUE",
+    "reason": "Commission activated April 2022; Council suspended €6.3B cohesion funds December 2022 confirmed. Event says '13.3 billion' — the broader figure is ~€22B total affected; the €6.3B is the formal conditionality-mechanism amount. The 13.3B figure is unconfirmed and likely inflated; however, the event is directionally correct. Flagging as VERIFIED with caveat on the specific figure.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Commission activated April 2022; Council suspended €6.3B cohesion funds December 2022 confirmed. Event says '13.3 billion' — the broader figure is ~€22B total affected; the €6.3B is the formal conditionality-mechanism amount. The 13.3B figure is unconfirmed and likely inflated; however, the event is directionally correct. Flagging as VERIFIED with caveat on the specific figure.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2022,
     "title": "FIDESZ wins fifth consecutive supermajority despite unified opposition challenge",
     "verdict": "TRUE",
     "reason": "April 2022 election; FIDESZ supermajority against unified opposition confirmed.",
@@ -1550,30 +1610,6 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "February 24, 2022 invasion; Hungary blocked weapons shipments through territory; strained NATO ties confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2022,
-    "title": "EU triggers rule-of-law conditionality mechanism, freezing billions in cohesion funds",
-    "verdict": "TRUE",
-    "reason": "Commission activated April 2022; Council suspended €6.3B cohesion funds December 2022 confirmed. Event says '13.3 billion' — the broader figure is ~€22B total affected; the €6.3B is the formal conditionality-mechanism amount. The 13.3B figure is unconfirmed and likely inflated; however, the event is directionally correct. Flagging as VERIFIED with caveat on the specific figure.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Commission activated April 2022; Council suspended €6.3B cohesion funds December 2022 confirmed. Event says '13.3 billion' — the broader figure is ~€22B total affected; the €6.3B is the formal conditionality-mechanism amount. The 13.3B figure is unconfirmed and likely inflated; however, the event is directionally correct. Flagging as VERIFIED with caveat on the specific figure.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",

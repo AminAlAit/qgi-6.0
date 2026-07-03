@@ -1,5 +1,41 @@
 [
   {
+    "year": 1989,
+    "title": "World Wide Web Invented at CERN in Switzerland",
+    "verdict": "TRUE",
+    "reason": "CERN's own official history confirms all material details: on 12 March 1989, Tim Berners-Lee (British scientist at CERN, Geneva, Switzerland) distributed \"Information Management: A Proposal,\" the founding document of the Web. By December 1990 he had built the first web server, browser and editor (first website published 20 Dec 1990). On 30 April 1993, CERN placed the WWW software in the public domain, per CERN's own timeline and document server, enabling global adoption. Every date, actor, and location in the description matches primary/authoritative sources exactly.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: Tim Berners-Lee (British, at CERN near Geneva, Switzerland) circulated \"Information Management: A Proposal\" on 12 March 1989, describing a distributed hypertext system that became the WWW. By 25 December 1990, he and Robert Cailliau had the WorldWideWeb browser/editor and server software running at CERN. On 30 April 1993, CERN's directors (H. Weber and W. Hoogland) signed a document placing the WWW software (client, server, common library) into the public domain, enabling free global adoption. All three dates, the actor, the location (CERN, Switzerland), and the sequence of events in the description are corroborated by CERN's own official history pages and independent encyclopedic sources — no material detail is off.",
+        "source": "https://home.cern/science/computing/birth-web/short-history-web",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "CERN's own official history confirms all material details: on 12 March 1989, Tim Berners-Lee (British scientist at CERN, Geneva, Switzerland) distributed \"Information Management: A Proposal,\" the founding document of the Web. By December 1990 he had built the first web server, browser and editor (first website published 20 Dec 1990). On 30 April 1993, CERN placed the WWW software in the public domain, per CERN's own timeline and document server, enabling global adoption. Every date, actor, and location in the description matches primary/authoritative sources exactly.",
+        "source": "https://timeline.web.cern.ch/sir-tim-berners-lee-submitted-his-first-proposal-what-became-world-wide-web",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://timeline.web.cern.ch/sir-tim-berners-lee-submitted-his-first-proposal-what-became-world-wide-web"
+  },
+  {
     "year": 1990,
     "title": "Switzerland Applies for IMF and World Bank Membership",
     "verdict": "TRUE",
@@ -501,31 +537,6 @@
   },
   {
     "year": 2009,
-    "title": "UBS Agrees to Disclose Client Names to U.S. Tax Authorities",
-    "verdict": "TRUE",
-    "reason": "On 12 August 2009, UBS settled with the IRS, agreeing to disclose the names and account data of 4,450 American clients suspected of tax evasion, marking a watershed erosion of Swiss banking secrecy that had stood for nearly a century.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On 12 August 2009, UBS settled with the IRS, agreeing to disclose the names and account data of 4,450 American clients suspected of tax evasion, marking a watershed erosion of Swiss banking secrecy that had stood for nearly a century.",
-        "source": "https://en.wikipedia.org/wiki/UBS_tax_evasion_controversies",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/UBS_tax_evasion_controversies"
-  },
-  {
-    "year": 2009,
     "title": "Minaret Ban Approved in National Referendum",
     "verdict": "TRUE",
     "reason": "On 29 November 2009, Swiss voters approved a constitutional ban on the construction of new minarets by 57.5% (1,534,054 voters) and 19.5 of 26 cantons, over the objections of the Federal Council and parliament; the provision entered the constitution immediately.",
@@ -548,6 +559,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2009_Swiss_minaret_referendum"
+  },
+  {
+    "year": 2009,
+    "title": "UBS Agrees to Disclose Client Names to U.S. Tax Authorities",
+    "verdict": "TRUE",
+    "reason": "On 12 August 2009, UBS settled with the IRS, agreeing to disclose the names and account data of 4,450 American clients suspected of tax evasion, marking a watershed erosion of Swiss banking secrecy that had stood for nearly a century.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 12 August 2009, UBS settled with the IRS, agreeing to disclose the names and account data of 4,450 American clients suspected of tax evasion, marking a watershed erosion of Swiss banking secrecy that had stood for nearly a century.",
+        "source": "https://en.wikipedia.org/wiki/UBS_tax_evasion_controversies",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/UBS_tax_evasion_controversies"
   },
   {
     "year": 2010,
@@ -626,31 +662,6 @@
   },
   {
     "year": 2013,
-    "title": "Minder Initiative Limits Executive Pay via Shareholder Votes",
-    "verdict": "TRUE",
-    "reason": "On 3 March 2013, Swiss voters approved the Minder Initiative by 68% support, requiring binding annual shareholder votes on executive compensation for listed companies and banning golden parachutes and sign-on bonuses.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On 3 March 2013, Swiss voters approved the Minder Initiative by 68% support, requiring binding annual shareholder votes on executive compensation for listed companies and banning golden parachutes and sign-on bonuses.",
-        "source": "https://en.wikipedia.org/wiki/2013_Swiss_executive_pay_initiative",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2013_Swiss_executive_pay_initiative"
-  },
-  {
-    "year": 2013,
     "title": "FATCA Agreement Signed with the United States",
     "verdict": "TRUE",
     "reason": "Switzerland signed a bilateral FATCA agreement with the United States on 14 February 2013, requiring Swiss financial institutions to report US account-holders' information to the IRS, effectively ending Swiss banking secrecy for US persons.",
@@ -673,6 +684,31 @@
       }
     ],
     "source": "https://www.admin.ch/gov/en/start/documentation/media-releases.msg-id-47779.html"
+  },
+  {
+    "year": 2013,
+    "title": "Minder Initiative Limits Executive Pay via Shareholder Votes",
+    "verdict": "TRUE",
+    "reason": "On 3 March 2013, Swiss voters approved the Minder Initiative by 68% support, requiring binding annual shareholder votes on executive compensation for listed companies and banning golden parachutes and sign-on bonuses.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 3 March 2013, Swiss voters approved the Minder Initiative by 68% support, requiring binding annual shareholder votes on executive compensation for listed companies and banning golden parachutes and sign-on bonuses.",
+        "source": "https://en.wikipedia.org/wiki/2013_Swiss_executive_pay_initiative",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2013_Swiss_executive_pay_initiative"
   },
   {
     "year": 2014,
@@ -901,31 +937,6 @@
   },
   {
     "year": 2021,
-    "title": "Switzerland Unilaterally Terminates EU Framework Agreement",
-    "verdict": "TRUE",
-    "reason": "On 26 May 2021, the Federal Council broke off seven years of negotiations on an Institutional Framework Agreement with the EU, citing irreconcilable differences on wage protection, state aid rules, and citizens' access to social benefits, leaving Swiss-EU relations in their worst state in decades.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On 26 May 2021, the Federal Council broke off seven years of negotiations on an Institutional Framework Agreement with the EU, citing irreconcilable differences on wage protection, state aid rules, and citizens' access to social benefits, leaving Swiss-EU relations in their worst state in decades.",
-        "source": "https://ec.europa.eu/commission/presscorner/detail/en/statement_21_2683",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://ec.europa.eu/commission/presscorner/detail/en/statement_21_2683"
-  },
-  {
-    "year": 2021,
     "title": "Burka Ban Narrowly Approved in National Referendum",
     "verdict": "TRUE",
     "reason": "On 7 March 2021, Swiss voters approved a constitutional ban on face coverings in public spaces by 51.2% and 20 of 26 cantons (double majority achieved), despite opposition from the Federal Council; the measure added Article 10a to the constitution.",
@@ -948,6 +959,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2021_Swiss_referendums"
+  },
+  {
+    "year": 2021,
+    "title": "Switzerland Unilaterally Terminates EU Framework Agreement",
+    "verdict": "TRUE",
+    "reason": "On 26 May 2021, the Federal Council broke off seven years of negotiations on an Institutional Framework Agreement with the EU, citing irreconcilable differences on wage protection, state aid rules, and citizens' access to social benefits, leaving Swiss-EU relations in their worst state in decades.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 26 May 2021, the Federal Council broke off seven years of negotiations on an Institutional Framework Agreement with the EU, citing irreconcilable differences on wage protection, state aid rules, and citizens' access to social benefits, leaving Swiss-EU relations in their worst state in decades.",
+        "source": "https://ec.europa.eu/commission/presscorner/detail/en/statement_21_2683",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://ec.europa.eu/commission/presscorner/detail/en/statement_21_2683"
   },
   {
     "year": 2022,
@@ -1001,31 +1037,6 @@
   },
   {
     "year": 2023,
-    "title": "Credit Suisse Collapses and Is Absorbed by UBS",
-    "verdict": "TRUE",
-    "reason": "On 19 March 2023, the Federal Council used emergency powers to broker UBS's acquisition of Credit Suisse for CHF 3 billion after a catastrophic client confidence collapse; the deal ended 167 years of Credit Suisse independence and the Swiss government provided CHF 9 billion in guarantees to UBS.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On 19 March 2023, the Federal Council used emergency powers to broker UBS's acquisition of Credit Suisse for CHF 3 billion after a catastrophic client confidence collapse; the deal ended 167 years of Credit Suisse independence and the Swiss government provided CHF 9 billion in guarantees to UBS.",
-        "source": "https://en.wikipedia.org/wiki/Acquisition_of_Credit_Suisse_by_UBS",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Acquisition_of_Credit_Suisse_by_UBS"
-  },
-  {
-    "year": 2023,
     "title": "Climate Protection Act Approved in Referendum",
     "verdict": "TRUE",
     "reason": "On 18 June 2023, Swiss voters approved the Climate and Innovation Act by 59.07%, codifying a net-zero greenhouse gas emissions target by 2050 and setting an interim reduction target of 75% by 2040 relative to 1990 levels, with CHF 3.2 billion earmarked for building renovation and decarbonisation.",
@@ -1048,6 +1059,31 @@
       }
     ],
     "source": "https://www.admin.ch/gov/en/start/documentation/votes/20230618/climate-and-innovation-act.html"
+  },
+  {
+    "year": 2023,
+    "title": "Credit Suisse Collapses and Is Absorbed by UBS",
+    "verdict": "TRUE",
+    "reason": "On 19 March 2023, the Federal Council used emergency powers to broker UBS's acquisition of Credit Suisse for CHF 3 billion after a catastrophic client confidence collapse; the deal ended 167 years of Credit Suisse independence and the Swiss government provided CHF 9 billion in guarantees to UBS.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 19 March 2023, the Federal Council used emergency powers to broker UBS's acquisition of Credit Suisse for CHF 3 billion after a catastrophic client confidence collapse; the deal ended 167 years of Credit Suisse independence and the Swiss government provided CHF 9 billion in guarantees to UBS.",
+        "source": "https://en.wikipedia.org/wiki/Acquisition_of_Credit_Suisse_by_UBS",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Acquisition_of_Credit_Suisse_by_UBS"
   },
   {
     "year": 2023,

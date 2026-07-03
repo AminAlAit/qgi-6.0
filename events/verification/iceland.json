@@ -151,6 +151,42 @@
   },
   {
     "year": 1996,
+    "title": "deCODE Genetics Founded in Iceland, Pioneering Population Genomics",
+    "verdict": "TRUE",
+    "reason": "Independent corroboration (Wikipedia, cross-checked with CNBC and NAS bio search snippets) confirms: deCODE genetics was founded in 1996 in Reykjavik, Iceland by geneticist Kari Stefansson (who left a tenured Harvard Medical School position to do so); it was funded initially by $12 million in American venture capital; and it went on to genotype more than 160,000 Icelandic participants (reached by 2018, representing about two-thirds of Iceland's adult population), leveraging Iceland's genealogical records and relatively homogeneous population to search for disease-linked genes. All material details in the description — year, country, founder, funding amount, and participant scale — are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: deCODE genetics was founded in 1996 in Reykjavik, Iceland by geneticist Kari Stefansson, who left a tenured position at Harvard Medical School to do so. It was capitalized with $12 million in American venture capital raised in summer 1996. The company's stated mission was to use Iceland's genealogical records and relatively homogeneous population to find disease-linked genes at large scale. Participant numbers grew over subsequent years, exceeding 160,000 Icelandic participants by 2018 (roughly two-thirds of Iceland's adult population), matching the description's 'went on to genotype and sequence data from over 160,000 Icelandic participants.' All material details (year, country, founder, funding amount, methodology, eventual scale) check out.",
+        "source": "https://en.wikipedia.org/wiki/DeCODE_genetics",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent corroboration (Wikipedia, cross-checked with CNBC and NAS bio search snippets) confirms: deCODE genetics was founded in 1996 in Reykjavik, Iceland by geneticist Kari Stefansson (who left a tenured Harvard Medical School position to do so); it was funded initially by $12 million in American venture capital; and it went on to genotype more than 160,000 Icelandic participants (reached by 2018, representing about two-thirds of Iceland's adult population), leveraging Iceland's genealogical records and relatively homogeneous population to search for disease-linked genes. All material details in the description — year, country, founder, funding amount, and participant scale — are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/DeCODE_genetics",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/DeCODE_genetics"
+  },
+  {
+    "year": 1996,
     "title": "Olafur Ragnar Grimsson Elected President",
     "verdict": "TRUE",
     "reason": "Olafur Ragnar Grimsson was elected President of Iceland in 1996 with 41.4% of the vote, succeeding Vigdis Finnbogadottir (who served 1980–1996). He served five terms until 2016.",
@@ -301,31 +337,6 @@
   },
   {
     "year": 2006,
-    "title": "US Forces Withdraw from Keflavik Naval Air Station",
-    "verdict": "TRUE",
-    "reason": "US Secretary of Defense Donald Rumsfeld ordered the withdrawal of all US forces from Iceland in March 2006. NAS Keflavik was formally closed and turned over to the Icelandic Defense Agency on 8 September 2006, ending approximately 50 years of continuous US military operations there.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "US Secretary of Defense Donald Rumsfeld ordered the withdrawal of all US forces from Iceland in March 2006. NAS Keflavik was formally closed and turned over to the Icelandic Defense Agency on 8 September 2006, ending approximately 50 years of continuous US military operations there.",
-        "source": "https://en.wikipedia.org/wiki/Naval_Air_Station_Keflavik",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Naval_Air_Station_Keflavik"
-  },
-  {
-    "year": 2006,
     "title": "Mini-Crisis Shakes Financial Markets",
     "verdict": "TRUE",
     "reason": "The 'Geyser Crisis' erupted in spring 2006 after Fitch Ratings revised Iceland's outlook to Negative on 21 February 2006, citing unsustainable 30% annual credit growth and a current account deficit. The ISK and Icelandic equity markets suffered severe sell-offs before stabilizing in May 2006. No corrective policy followed.",
@@ -348,6 +359,31 @@
       }
     ],
     "source": "https://thelondonfinancial.com/economics/emea/iceland-in-2006-ignorance-in-action-part-1-2"
+  },
+  {
+    "year": 2006,
+    "title": "US Forces Withdraw from Keflavik Naval Air Station",
+    "verdict": "TRUE",
+    "reason": "US Secretary of Defense Donald Rumsfeld ordered the withdrawal of all US forces from Iceland in March 2006. NAS Keflavik was formally closed and turned over to the Icelandic Defense Agency on 8 September 2006, ending approximately 50 years of continuous US military operations there.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "US Secretary of Defense Donald Rumsfeld ordered the withdrawal of all US forces from Iceland in March 2006. NAS Keflavik was formally closed and turned over to the Icelandic Defense Agency on 8 September 2006, ending approximately 50 years of continuous US military operations there.",
+        "source": "https://en.wikipedia.org/wiki/Naval_Air_Station_Keflavik",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Naval_Air_Station_Keflavik"
   },
   {
     "year": 2008,
@@ -401,31 +437,6 @@
   },
   {
     "year": 2009,
-    "title": "Pots and Pans Revolution Forces Government Resignation",
-    "verdict": "TRUE",
-    "reason": "From October 2008 through January 2009, Icelanders banged pots and pans outside the Althing demanding accountability for the financial crisis. Prime Minister Geir Haarde announced his resignation on 26 January 2009, and the center-right government fell. Haarde later became the first (and only) head of government prosecuted for the financial crisis, convicted on one charge in April 2012.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "From October 2008 through January 2009, Icelanders banged pots and pans outside the Althing demanding accountability for the financial crisis. Prime Minister Geir Haarde announced his resignation on 26 January 2009, and the center-right government fell. Haarde later became the first (and only) head of government prosecuted for the financial crisis, convicted on one charge in April 2012.",
-        "source": "https://en.wikipedia.org/wiki/2009_Icelandic_financial_crisis_protests",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2009_Icelandic_financial_crisis_protests"
-  },
-  {
-    "year": 2009,
     "title": "First Left-Wing Government and Openly Gay Head of State",
     "verdict": "TRUE",
     "reason": "Johanna Sigurdardottir became Prime Minister on 1 February 2009, leading Iceland's first left-wing government and becoming the world's first openly gay head of government. She served until 2013 and married her partner under Iceland's new same-sex marriage law in 2010.",
@@ -448,6 +459,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/J%C3%B3hanna_Sigur%C3%B0ard%C3%B3ttir"
+  },
+  {
+    "year": 2009,
+    "title": "GDP Contracts 6.5 Percent in Post-Crisis Recession",
+    "verdict": "TRUE",
+    "reason": "Iceland's GDP contracted by 6.5% in 2009 and by approximately 4% in 2010. Unemployment rose from near-zero pre-crisis levels to approximately 8–10% by 2010, and emigration increased sharply.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Iceland's GDP contracted by 6.5% in 2009 and by approximately 4% in 2010. Unemployment rose from near-zero pre-crisis levels to approximately 8–10% by 2010, and emigration increased sharply.",
+        "source": "https://www.britannica.com/place/Iceland/Financial-boom-and-bust",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.britannica.com/place/Iceland/Financial-boom-and-bust"
   },
   {
     "year": 2009,
@@ -476,9 +512,9 @@
   },
   {
     "year": 2009,
-    "title": "GDP Contracts 6.5 Percent in Post-Crisis Recession",
+    "title": "Pots and Pans Revolution Forces Government Resignation",
     "verdict": "TRUE",
-    "reason": "Iceland's GDP contracted by 6.5% in 2009 and by approximately 4% in 2010. Unemployment rose from near-zero pre-crisis levels to approximately 8–10% by 2010, and emigration increased sharply.",
+    "reason": "From October 2008 through January 2009, Icelanders banged pots and pans outside the Althing demanding accountability for the financial crisis. Prime Minister Geir Haarde announced his resignation on 26 January 2009, and the center-right government fell. Haarde later became the first (and only) head of government prosecuted for the financial crisis, convicted on one charge in April 2012.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -488,8 +524,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Iceland's GDP contracted by 6.5% in 2009 and by approximately 4% in 2010. Unemployment rose from near-zero pre-crisis levels to approximately 8–10% by 2010, and emigration increased sharply.",
-        "source": "https://www.britannica.com/place/Iceland/Financial-boom-and-bust",
+        "reason": "From October 2008 through January 2009, Icelanders banged pots and pans outside the Althing demanding accountability for the financial crisis. Prime Minister Geir Haarde announced his resignation on 26 January 2009, and the center-right government fell. Haarde later became the first (and only) head of government prosecuted for the financial crisis, convicted on one charge in April 2012.",
+        "source": "https://en.wikipedia.org/wiki/2009_Icelandic_financial_crisis_protests",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -497,13 +533,13 @@
         }
       }
     ],
-    "source": "https://www.britannica.com/place/Iceland/Financial-boom-and-bust"
+    "source": "https://en.wikipedia.org/wiki/2009_Icelandic_financial_crisis_protests"
   },
   {
     "year": 2010,
-    "title": "Icesave Referendum Rejects Depositor Repayment Deal",
+    "title": "Crowdsourced Constitutional Reform Process Launched",
     "verdict": "TRUE",
-    "reason": "The first Icesave referendum was held on 6 March 2010 after President Grimsson declined to sign the repayment bill. Over 93% (some sources cite 98%) voted against the deal to repay the UK and Netherlands minimum guaranteed deposits, asserting that private bank losses should not be socialized.",
+    "reason": "The Althing passed Act No. 90/2010 in June 2010 establishing a consultative Constitutional Assembly, and a National Forum of 950 randomly selected citizens convened in November 2010. The process was the first use of crowdsourcing for constitutional revision, drawing on social media (Facebook, Twitter, YouTube).",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -513,8 +549,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The first Icesave referendum was held on 6 March 2010 after President Grimsson declined to sign the repayment bill. Over 93% (some sources cite 98%) voted against the deal to repay the UK and Netherlands minimum guaranteed deposits, asserting that private bank losses should not be socialized.",
-        "source": "https://en.wikipedia.org/wiki/Icesave_dispute",
+        "reason": "The Althing passed Act No. 90/2010 in June 2010 establishing a consultative Constitutional Assembly, and a National Forum of 950 randomly selected citizens convened in November 2010. The process was the first use of crowdsourcing for constitutional revision, drawing on social media (Facebook, Twitter, YouTube).",
+        "source": "https://academic.oup.com/icon/article/18/1/179/5841490",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -522,7 +558,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Icesave_dispute"
+    "source": "https://academic.oup.com/icon/article/18/1/179/5841490"
   },
   {
     "year": 2010,
@@ -551,6 +587,31 @@
   },
   {
     "year": 2010,
+    "title": "Icesave Referendum Rejects Depositor Repayment Deal",
+    "verdict": "TRUE",
+    "reason": "The first Icesave referendum was held on 6 March 2010 after President Grimsson declined to sign the repayment bill. Over 93% (some sources cite 98%) voted against the deal to repay the UK and Netherlands minimum guaranteed deposits, asserting that private bank losses should not be socialized.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The first Icesave referendum was held on 6 March 2010 after President Grimsson declined to sign the repayment bill. Over 93% (some sources cite 98%) voted against the deal to repay the UK and Netherlands minimum guaranteed deposits, asserting that private bank losses should not be socialized.",
+        "source": "https://en.wikipedia.org/wiki/Icesave_dispute",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Icesave_dispute"
+  },
+  {
+    "year": 2010,
     "title": "Same-Sex Marriage Legalized by Unanimous Vote",
     "verdict": "TRUE",
     "reason": "The Althing voted 49–0 on 11 June 2010 to legalize gender-neutral marriage, with effect from 27 June 2010, making Iceland the ninth country in the world to do so. Prime Minister Sigurdardottir married her partner on the day the law took effect.",
@@ -573,31 +634,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Same-sex_marriage_in_Iceland"
-  },
-  {
-    "year": 2010,
-    "title": "Crowdsourced Constitutional Reform Process Launched",
-    "verdict": "TRUE",
-    "reason": "The Althing passed Act No. 90/2010 in June 2010 establishing a consultative Constitutional Assembly, and a National Forum of 950 randomly selected citizens convened in November 2010. The process was the first use of crowdsourcing for constitutional revision, drawing on social media (Facebook, Twitter, YouTube).",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Althing passed Act No. 90/2010 in June 2010 establishing a consultative Constitutional Assembly, and a National Forum of 950 randomly selected citizens convened in November 2010. The process was the first use of crowdsourcing for constitutional revision, drawing on social media (Facebook, Twitter, YouTube).",
-        "source": "https://academic.oup.com/icon/article/18/1/179/5841490",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://academic.oup.com/icon/article/18/1/179/5841490"
   },
   {
     "year": 2011,
@@ -651,31 +687,6 @@
   },
   {
     "year": 2013,
-    "title": "EU Accession Negotiations Suspended",
-    "verdict": "TRUE",
-    "reason": "Following the April 2013 elections which brought the Progressive Party and Independence Party to power, the new government announced on 13 June 2013 that it was suspending EU accession talks, and on 13 September 2013 formally dissolved the accession negotiating team.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Following the April 2013 elections which brought the Progressive Party and Independence Party to power, the new government announced on 13 June 2013 that it was suspending EU accession talks, and on 13 September 2013 formally dissolved the accession negotiating team.",
-        "source": "https://en.wikipedia.org/wiki/Iceland%E2%80%93European_Union_relations",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Iceland%E2%80%93European_Union_relations"
-  },
-  {
-    "year": 2013,
     "title": "EFTA Court Clears Iceland in Icesave Case",
     "verdict": "TRUE",
     "reason": "On 28 January 2013, the EFTA Court dismissed all claims against Iceland, ruling that it had not breached EU deposit guarantee directives given the magnitude of the systemic crisis. The ruling freed Iceland from the disputed €4 billion obligation to the UK and Netherlands.",
@@ -698,6 +709,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/EFTA_Surveillance_Authority_v_Iceland"
+  },
+  {
+    "year": 2013,
+    "title": "EU Accession Negotiations Suspended",
+    "verdict": "TRUE",
+    "reason": "Following the April 2013 elections which brought the Progressive Party and Independence Party to power, the new government announced on 13 June 2013 that it was suspending EU accession talks, and on 13 September 2013 formally dissolved the accession negotiating team.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following the April 2013 elections which brought the Progressive Party and Independence Party to power, the new government announced on 13 June 2013 that it was suspending EU accession talks, and on 13 September 2013 formally dissolved the accession negotiating team.",
+        "source": "https://en.wikipedia.org/wiki/Iceland%E2%80%93European_Union_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Iceland%E2%80%93European_Union_relations"
   },
   {
     "year": 2015,

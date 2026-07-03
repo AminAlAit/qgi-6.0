@@ -150,29 +150,40 @@
     "source": "https://www.justice.gov/sites/default/files/eoir/legacy/2013/11/07/ISSUES_PAPER_CHRONOLOGY-OF-EVENTS-JANUARY-1994-DECEMBER-1995.pdf"
   },
   {
-    "year": 1996,
-    "title": "Thirteenth Amendment Enshrines Caretaker Government System",
-    "verdict": "TRUE",
-    "reason": "Thirteenth Amendment passed March 1996 after boycotted February 1996 poll. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "year": 1995,
+    "title": "Female Garment Workers Gain Economic Agency",
+    "verdict": "PARTIAL",
+    "reason": "The core phenomenon is real and well documented: Bangladesh's export garment industry became overwhelmingly female-staffed and is one of the most cited case studies in development economics for export-led female empowerment (delayed marriage/childbirth, schooling gains, household bargaining power — see Kabeer & Mahmud 2004; Heath & Mobarak 2015, J. Dev. Econ.). However, the headline magnitude in the event ('approximately two million women employed... by the mid-1990s') is materially overstated. Primary BGMEA data reproduced in Kabeer & Mahmud's peer-reviewed chapter show female RMG employment of only ~1.08 million in 1994-95, ~1.17 million in 1995-96, and ~1.26 million in 1996-97 (total sector employment 1.2-1.4 million, ~90% female) — roughly 40-45% below the claimed 'two million.' Female employment did not approach ~2 million until roughly a decade later (total sector employment was still only ~1.8 million as late as 2000-01). So the qualitative story (country, year window, and the empowerment narrative) holds, but the quantitative headline is off by a wide margin — a wrong-magnitude PARTIAL rather than TRUE. The comparative claim ('highest share of female industrial employment in South Asia') is plausible given the ~85-90% female share but was not independently corroborated with a South-Asia-wide comparison.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Thirteenth Amendment passed March 1996 after boycotted February 1996 poll. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Caretaker_government_of_Bangladesh",
+        "reason": "By mid-1990s ~2 million women in garment factories, highest female industrial employment in South Asia. Documented empowerment effects. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Bangladesh",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
           "method": "web_search"
         }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The core phenomenon is real and well documented: Bangladesh's export garment industry became overwhelmingly female-staffed and is one of the most cited case studies in development economics for export-led female empowerment (delayed marriage/childbirth, schooling gains, household bargaining power — see Kabeer & Mahmud 2004; Heath & Mobarak 2015, J. Dev. Econ.). However, the headline magnitude in the event ('approximately two million women employed... by the mid-1990s') is materially overstated. Primary BGMEA data reproduced in Kabeer & Mahmud's peer-reviewed chapter show female RMG employment of only ~1.08 million in 1994-95, ~1.17 million in 1995-96, and ~1.26 million in 1996-97 (total sector employment 1.2-1.4 million, ~90% female) — roughly 40-45% below the claimed 'two million.' Female employment did not approach ~2 million until roughly a decade later (total sector employment was still only ~1.8 million as late as 2000-01). So the qualitative story (country, year window, and the empowerment narrative) holds, but the quantitative headline is off by a wide margin — a wrong-magnitude PARTIAL rather than TRUE. The comparative claim ('highest share of female industrial employment in South Asia') is plausible given the ~85-90% female share but was not independently corroborated with a South-Asia-wide comparison.",
+        "source": "https://www.wiego.org/wp-content/uploads/2019/09/Kabeer-Mahmud-Export-Oriented-Garment-Bangladesh.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Caretaker_government_of_Bangladesh"
+    "source": "https://www.wiego.org/wp-content/uploads/2019/09/Kabeer-Mahmud-Export-Oriented-Garment-Bangladesh.pdf"
   },
   {
     "year": 1996,
@@ -223,6 +234,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Ganges_water_dispute"
+  },
+  {
+    "year": 1996,
+    "title": "Thirteenth Amendment Enshrines Caretaker Government System",
+    "verdict": "TRUE",
+    "reason": "Thirteenth Amendment passed March 1996 after boycotted February 1996 poll. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Thirteenth Amendment passed March 1996 after boycotted February 1996 poll. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Caretaker_government_of_Bangladesh",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Caretaker_government_of_Bangladesh"
   },
   {
     "year": 1997,
@@ -300,6 +336,31 @@
     "source": "https://en.wikipedia.org/wiki/Economy_of_Bangladesh"
   },
   {
+    "year": 2000,
+    "title": "Bangladesh Achieves Major MDG Gains in Child Mortality",
+    "verdict": "TRUE",
+    "reason": "Rapid child mortality decline from ~150 per 1,000 in 1990 to under 80 by 2000. ORT, immunisation, NGO networks cited. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Rapid child mortality decline from ~150 per 1,000 in 1990 to under 80 by 2000. ORT, immunisation, NGO networks cited. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Health_in_Bangladesh",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Health_in_Bangladesh"
+  },
+  {
     "year": 2001,
     "title": "BNP Wins Landslide Election; Khaleda Zia Returns as PM",
     "verdict": "TRUE",
@@ -323,6 +384,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2001_Bangladeshi_general_election"
+  },
+  {
+    "year": 2003,
+    "title": "Dhakaâ€“Chittagong Highway Expansion",
+    "verdict": "TRUE",
+    "reason": "ADB co-financed four-lane expansion of Dhaka-Chittagong corridor, substantially completed 2003-2005. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ADB co-financed four-lane expansion of Dhaka-Chittagong corridor, substantially completed 2003-2005. Confirmed.",
+        "source": "https://www.adb.org/projects/27334-013/main",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.adb.org/projects/27334-013/main"
   },
   {
     "year": 2004,
@@ -426,31 +512,6 @@
   },
   {
     "year": 2007,
-    "title": "Military-Backed Caretaker Government Installed ('1/11')",
-    "verdict": "TRUE",
-    "reason": "11 January 2007, Fakhruddin Ahmed installed as chief adviser, state of emergency, both Hasina and Khaleda arrested under 'minus-two' formula. Elections held December 2008. All confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "11 January 2007, Fakhruddin Ahmed installed as chief adviser, state of emergency, both Hasina and Khaleda arrested under 'minus-two' formula. Elections held December 2008. All confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Fakhruddin_Ahmed_ministry",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Fakhruddin_Ahmed_ministry"
-  },
-  {
-    "year": 2007,
     "title": "Cyclone Sidr Devastates the Southwest Coast",
     "verdict": "TRUE",
     "reason": "Landfall 15 November 2007, 3,447 deaths, US$1.7 billion damage, Sundarbans absorbed surge. All facts confirmed.",
@@ -473,6 +534,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Cyclone_Sidr"
+  },
+  {
+    "year": 2007,
+    "title": "Military-Backed Caretaker Government Installed ('1/11')",
+    "verdict": "TRUE",
+    "reason": "11 January 2007, Fakhruddin Ahmed installed as chief adviser, state of emergency, both Hasina and Khaleda arrested under 'minus-two' formula. Elections held December 2008. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "11 January 2007, Fakhruddin Ahmed installed as chief adviser, state of emergency, both Hasina and Khaleda arrested under 'minus-two' formula. Elections held December 2008. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Fakhruddin_Ahmed_ministry",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Fakhruddin_Ahmed_ministry"
   },
   {
     "year": 2008,
@@ -637,9 +723,45 @@
   },
   {
     "year": 2013,
-    "title": "Shahbag Protests Demand Execution of War Criminals",
+    "title": "Bangladesh Accord on Fire and Building Safety Signed",
     "verdict": "TRUE",
-    "reason": "5 February 2013, Shahbag Square, demanding capital punishment for Abdul Quader Mollah (sentenced to life). Spread nationwide, led to tribunal law amendment. Confirmed.",
+    "reason": "Multiple independent, non-ILO sources confirm the Accord on Fire and Building Safety in Bangladesh was signed 15 May 2013, directly following the Rana Plaza collapse (24 April 2013). It began with 43 corporate signatories and grew to over 200/220 international brands and retailers; it was legally binding, required independent factory inspections and brand-funded remediation, and by 2015 its inspections covered over 1,600 factories. All material claims in the description (year, country, actor scale, mechanism, scope) are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 2013 following Rana Plaza, 200+ brands signed. Covered 1,600+ factories by 2015. Confirmed.",
+        "source": "https://www.ilo.org/infostories/en-GB/Stories/Country-Focus/rana-plaza",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, non-ILO sources confirm the Accord on Fire and Building Safety in Bangladesh was signed 15 May 2013, directly following the Rana Plaza collapse (24 April 2013). It began with 43 corporate signatories and grew to over 200/220 international brands and retailers; it was legally binding, required independent factory inspections and brand-funded remediation, and by 2015 its inspections covered over 1,600 factories. All material claims in the description (year, country, actor scale, mechanism, scope) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/Accord_on_Fire_and_Building_Safety_in_Bangladesh",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-02",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Accord_on_Fire_and_Building_Safety_in_Bangladesh"
+  },
+  {
+    "year": 2013,
+    "title": "Jamaat-e-Islami Registration Cancelled by High Court",
+    "verdict": "TRUE",
+    "reason": "1 August 2013 High Court ruling cancelling Jamaat's registration confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -649,8 +771,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "5 February 2013, Shahbag Square, demanding capital punishment for Abdul Quader Mollah (sentenced to life). Spread nationwide, led to tribunal law amendment. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2013_Shahbag_protests",
+        "reason": "1 August 2013 High Court ruling cancelling Jamaat's registration confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Bangladesh_Jamaat-e-Islami",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -658,7 +780,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2013_Shahbag_protests"
+    "source": "https://en.wikipedia.org/wiki/Bangladesh_Jamaat-e-Islami"
   },
   {
     "year": 2013,
@@ -698,9 +820,9 @@
   },
   {
     "year": 2013,
-    "title": "Jamaat-e-Islami Registration Cancelled by High Court",
+    "title": "Shahbag Protests Demand Execution of War Criminals",
     "verdict": "TRUE",
-    "reason": "1 August 2013 High Court ruling cancelling Jamaat's registration confirmed.",
+    "reason": "5 February 2013, Shahbag Square, demanding capital punishment for Abdul Quader Mollah (sentenced to life). Spread nationwide, led to tribunal law amendment. Confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -710,8 +832,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "1 August 2013 High Court ruling cancelling Jamaat's registration confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Bangladesh_Jamaat-e-Islami",
+        "reason": "5 February 2013, Shahbag Square, demanding capital punishment for Abdul Quader Mollah (sentenced to life). Spread nationwide, led to tribunal law amendment. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2013_Shahbag_protests",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -719,43 +841,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Bangladesh_Jamaat-e-Islami"
-  },
-  {
-    "year": 2013,
-    "title": "Bangladesh Accord on Fire and Building Safety Signed",
-    "verdict": "TRUE",
-    "reason": "Multiple independent, non-ILO sources confirm the Accord on Fire and Building Safety in Bangladesh was signed 15 May 2013, directly following the Rana Plaza collapse (24 April 2013). It began with 43 corporate signatories and grew to over 200/220 international brands and retailers; it was legally binding, required independent factory inspections and brand-funded remediation, and by 2015 its inspections covered over 1,600 factories. All material claims in the description (year, country, actor scale, mechanism, scope) are corroborated.",
-    "verify_count": 2,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "May 2013 following Rana Plaza, 200+ brands signed. Covered 1,600+ factories by 2015. Confirmed.",
-        "source": "https://www.ilo.org/infostories/en-GB/Stories/Country-Focus/rana-plaza",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Multiple independent, non-ILO sources confirm the Accord on Fire and Building Safety in Bangladesh was signed 15 May 2013, directly following the Rana Plaza collapse (24 April 2013). It began with 43 corporate signatories and grew to over 200/220 international brands and retailers; it was legally binding, required independent factory inspections and brand-funded remediation, and by 2015 its inspections covered over 1,600 factories. All material claims in the description (year, country, actor scale, mechanism, scope) are corroborated.",
-        "source": "https://en.wikipedia.org/wiki/Accord_on_Fire_and_Building_Safety_in_Bangladesh",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-02",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Accord_on_Fire_and_Building_Safety_in_Bangladesh"
+    "source": "https://en.wikipedia.org/wiki/2013_Shahbag_protests"
   },
   {
     "year": 2014,
@@ -809,31 +895,6 @@
   },
   {
     "year": 2016,
-    "title": "Holey Artisan Bakery Terrorist Attack in Dhaka",
-    "verdict": "FALSE",
-    "reason": "Event states '22 people killed — mostly foreign nationals including 7 Japanese, 7 Italians, and 3 Bangladeshis'. Wikipedia confirms 20 hostages killed (17 foreigners + 3 Bangladeshis) plus 2 police + 2 bakery staff + 5 terrorists = 29 total. Italian victims were 9, not 7. The '7 Italians' figure is materially wrong (correct: 9 Italians). Total hostage deaths 20, not 22.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Event states '22 people killed — mostly foreign nationals including 7 Japanese, 7 Italians, and 3 Bangladeshis'. Wikipedia confirms 20 hostages killed (17 foreigners + 3 Bangladeshis) plus 2 police + 2 bakery staff + 5 terrorists = 29 total. Italian victims were 9, not 7. The '7 Italians' figure is materially wrong (correct: 9 Italians). Total hostage deaths 20, not 22.",
-        "source": "https://en.wikipedia.org/wiki/July_2016_Dhaka_attack",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/July_2016_Dhaka_attack"
-  },
-  {
-    "year": 2016,
     "title": "Dhaka Metro Rail Project Launched",
     "verdict": "TRUE",
     "reason": "Ground broken 26 June 2016 (event says 'June 2016'). JICA-financed. First section opened December 2022. Confirmed.",
@@ -858,21 +919,21 @@
     "source": "https://en.wikipedia.org/wiki/Dhaka_Metro_Rail"
   },
   {
-    "year": 2017,
-    "title": "Rohingya Mass Exodus into Cox's Bazar",
-    "verdict": "TRUE",
-    "reason": "Crackdown from 25 August 2017. Event says 655,000 fled 'within weeks'; UNHCR gives 700,000-745,000 over several months. 'Eventually exceeding 900,000' and 'over one million' total are consistent. Minor discrepancy in the initial wave figure (655k vs ~700k+) — not materially wrong.",
+    "year": 2016,
+    "title": "Holey Artisan Bakery Terrorist Attack in Dhaka",
+    "verdict": "FALSE",
+    "reason": "Event states '22 people killed — mostly foreign nationals including 7 Japanese, 7 Italians, and 3 Bangladeshis'. Wikipedia confirms 20 hostages killed (17 foreigners + 3 Bangladeshis) plus 2 police + 2 bakery staff + 5 terrorists = 29 total. Italian victims were 9, not 7. The '7 Italians' figure is materially wrong (correct: 9 Italians). Total hostage deaths 20, not 22.",
     "verify_count": 1,
-    "consensus_verdict": "TRUE",
+    "consensus_verdict": "FALSE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Crackdown from 25 August 2017. Event says 655,000 fled 'within weeks'; UNHCR gives 700,000-745,000 over several months. 'Eventually exceeding 900,000' and 'over one million' total are consistent. Minor discrepancy in the initial wave figure (655k vs ~700k+) — not materially wrong.",
-        "source": "https://www.unrefugees.org/news/rohingya-refugee-crisis-explained/",
+        "verdict": "FALSE",
+        "reason": "Event states '22 people killed — mostly foreign nationals including 7 Japanese, 7 Italians, and 3 Bangladeshis'. Wikipedia confirms 20 hostages killed (17 foreigners + 3 Bangladeshis) plus 2 police + 2 bakery staff + 5 terrorists = 29 total. Italian victims were 9, not 7. The '7 Italians' figure is materially wrong (correct: 9 Italians). Total hostage deaths 20, not 22.",
+        "source": "https://en.wikipedia.org/wiki/July_2016_Dhaka_attack",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -880,7 +941,7 @@
         }
       }
     ],
-    "source": "https://www.unrefugees.org/news/rohingya-refugee-crisis-explained/"
+    "source": "https://en.wikipedia.org/wiki/July_2016_Dhaka_attack"
   },
   {
     "year": 2017,
@@ -908,6 +969,31 @@
     "source": "https://en.wikipedia.org/wiki/Economy_of_Bangladesh"
   },
   {
+    "year": 2017,
+    "title": "Rohingya Mass Exodus into Cox's Bazar",
+    "verdict": "TRUE",
+    "reason": "Crackdown from 25 August 2017. Event says 655,000 fled 'within weeks'; UNHCR gives 700,000-745,000 over several months. 'Eventually exceeding 900,000' and 'over one million' total are consistent. Minor discrepancy in the initial wave figure (655k vs ~700k+) — not materially wrong.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Crackdown from 25 August 2017. Event says 655,000 fled 'within weeks'; UNHCR gives 700,000-745,000 over several months. 'Eventually exceeding 900,000' and 'over one million' total are consistent. Minor discrepancy in the initial wave figure (655k vs ~700k+) — not materially wrong.",
+        "source": "https://www.unrefugees.org/news/rohingya-refugee-crisis-explained/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.unrefugees.org/news/rohingya-refugee-crisis-explained/"
+  },
+  {
     "year": 2018,
     "title": "Awami League Wins Disputed 'Night-Before' Election",
     "verdict": "TRUE",
@@ -931,6 +1017,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2018_Bangladeshi_general_election"
+  },
+  {
+    "year": 2018,
+    "title": "Bangladesh Launches Its First Satellite, Bangabandhu-1",
+    "verdict": "TRUE",
+    "reason": "Multiple independent, authoritative sources confirm every material detail: Bangabandhu Satellite-1 launched 11-12 May 2018 (liftoff ~4:14pm EDT May 11, reaching orbit early May 12 UTC) aboard a SpaceX Falcon 9 Block 5 rocket (its maiden flight) from Kennedy Space Center. Built by Thales Alenia Space, it is Bangladesh's first geostationary communications satellite, named after Sheikh Mujibur Rahman (Bangabandhu), carrying exactly 40 Ku- and C-band transponders. Bangladesh became the 57th country to independently own/operate a satellite. All details in the description are corroborated with no discrepancies.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across Wikipedia, NASASpaceFlight.com, and AmericaSpace: Bangabandhu Satellite-1 launched 11-12 May 2018 aboard a SpaceX Falcon 9 Block 5 rocket from Kennedy Space Center, built by Thales Alenia Space, named after independence leader Sheikh Mujibur Rahman (Bangabandhu), carrying 40 total Ku- and C-band transponders (24 Ku + 16 C), making Bangladesh the 57th country to own a satellite. All material details in the description match confirmed reporting.",
+        "source": "https://en.wikipedia.org/wiki/Bangladesh_Satellite-1",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources confirm every material detail: Bangabandhu Satellite-1 launched 11-12 May 2018 (liftoff ~4:14pm EDT May 11, reaching orbit early May 12 UTC) aboard a SpaceX Falcon 9 Block 5 rocket (its maiden flight) from Kennedy Space Center. Built by Thales Alenia Space, it is Bangladesh's first geostationary communications satellite, named after Sheikh Mujibur Rahman (Bangabandhu), carrying exactly 40 Ku- and C-band transponders. Bangladesh became the 57th country to independently own/operate a satellite. All details in the description are corroborated with no discrepancies.",
+        "source": "https://en.wikipedia.org/wiki/Bangabandhu-1",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Bangabandhu-1"
   },
   {
     "year": 2018,
@@ -1084,9 +1206,9 @@
   },
   {
     "year": 2022,
-    "title": "Padma Bridge Inaugurated",
+    "title": "Dhaka Metro Rail First Section Opens",
     "verdict": "TRUE",
-    "reason": "Inaugurated 25 June 2022, 6.15 km, cost 30,193 crore taka (~$3-4 billion). Event says '$3 billion' — slightly low vs some sources citing $3.6-4B, but within acceptable range. Connects 21 southwestern districts claim broadly consistent. Confirmed.",
+    "reason": "Inaugurated 28 December 2022, public service from 29 December, Uttara North to Agargaon. Confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1096,8 +1218,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Inaugurated 25 June 2022, 6.15 km, cost 30,193 crore taka (~$3-4 billion). Event says '$3 billion' — slightly low vs some sources citing $3.6-4B, but within acceptable range. Connects 21 southwestern districts claim broadly consistent. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Padma_Bridge",
+        "reason": "Inaugurated 28 December 2022, public service from 29 December, Uttara North to Agargaon. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Dhaka_Metro_Rail",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1105,7 +1227,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Padma_Bridge"
+    "source": "https://en.wikipedia.org/wiki/Dhaka_Metro_Rail"
   },
   {
     "year": 2022,
@@ -1134,9 +1256,9 @@
   },
   {
     "year": 2022,
-    "title": "Dhaka Metro Rail First Section Opens",
+    "title": "Padma Bridge Inaugurated",
     "verdict": "TRUE",
-    "reason": "Inaugurated 28 December 2022, public service from 29 December, Uttara North to Agargaon. Confirmed.",
+    "reason": "Inaugurated 25 June 2022, 6.15 km, cost 30,193 crore taka (~$3-4 billion). Event says '$3 billion' — slightly low vs some sources citing $3.6-4B, but within acceptable range. Connects 21 southwestern districts claim broadly consistent. Confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1146,8 +1268,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Inaugurated 28 December 2022, public service from 29 December, Uttara North to Agargaon. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Dhaka_Metro_Rail",
+        "reason": "Inaugurated 25 June 2022, 6.15 km, cost 30,193 crore taka (~$3-4 billion). Event says '$3 billion' — slightly low vs some sources citing $3.6-4B, but within acceptable range. Connects 21 southwestern districts claim broadly consistent. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Padma_Bridge",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1155,7 +1277,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Dhaka_Metro_Rail"
+    "source": "https://en.wikipedia.org/wiki/Padma_Bridge"
   },
   {
     "year": 2023,
@@ -1184,31 +1306,6 @@
   },
   {
     "year": 2024,
-    "title": "Student Quota Protests and Downfall of Sheikh Hasina",
-    "verdict": "TRUE",
-    "reason": "July 2024 protests against 30% freedom-fighter quota reinstatement. Hasina resigned and fled 5 August 2024. ~300+ killed in crackdown. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "July 2024 protests against 30% freedom-fighter quota reinstatement. Hasina resigned and fled 5 August 2024. ~300+ killed in crackdown. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/July_Uprising_(Bangladesh)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/July_Uprising_(Bangladesh)"
-  },
-  {
-    "year": 2024,
     "title": "Muhammad Yunus Heads Interim Government",
     "verdict": "TRUE",
     "reason": "Sworn in 8 August 2024 as chief adviser. Confirmed.",
@@ -1231,6 +1328,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Interim_government_of_Bangladesh_(2024)"
+  },
+  {
+    "year": 2024,
+    "title": "Student Quota Protests and Downfall of Sheikh Hasina",
+    "verdict": "TRUE",
+    "reason": "July 2024 protests against 30% freedom-fighter quota reinstatement. Hasina resigned and fled 5 August 2024. ~300+ killed in crackdown. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "July 2024 protests against 30% freedom-fighter quota reinstatement. Hasina resigned and fled 5 August 2024. ~300+ killed in crackdown. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/July_Uprising_(Bangladesh)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/July_Uprising_(Bangladesh)"
   },
   {
     "year": 2025,
@@ -1256,92 +1378,6 @@
       }
     ],
     "source": "https://www.compas.ox.ac.uk/article/the-rohingya-crisis-in-bangladesh-vulnerabilities-amid-repatriation-uncertainty"
-  },
-  {
-    "year": 1995,
-    "title": "Female Garment Workers Gain Economic Agency",
-    "verdict": "PARTIAL",
-    "reason": "The core phenomenon is real and well documented: Bangladesh's export garment industry became overwhelmingly female-staffed and is one of the most cited case studies in development economics for export-led female empowerment (delayed marriage/childbirth, schooling gains, household bargaining power — see Kabeer & Mahmud 2004; Heath & Mobarak 2015, J. Dev. Econ.). However, the headline magnitude in the event ('approximately two million women employed... by the mid-1990s') is materially overstated. Primary BGMEA data reproduced in Kabeer & Mahmud's peer-reviewed chapter show female RMG employment of only ~1.08 million in 1994-95, ~1.17 million in 1995-96, and ~1.26 million in 1996-97 (total sector employment 1.2-1.4 million, ~90% female) — roughly 40-45% below the claimed 'two million.' Female employment did not approach ~2 million until roughly a decade later (total sector employment was still only ~1.8 million as late as 2000-01). So the qualitative story (country, year window, and the empowerment narrative) holds, but the quantitative headline is off by a wide margin — a wrong-magnitude PARTIAL rather than TRUE. The comparative claim ('highest share of female industrial employment in South Asia') is plausible given the ~85-90% female share but was not independently corroborated with a South-Asia-wide comparison.",
-    "verify_count": 2,
-    "consensus_verdict": "PARTIAL",
-    "consensus_status": "downgraded",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "By mid-1990s ~2 million women in garment factories, highest female industrial employment in South Asia. Documented empowerment effects. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Economy_of_Bangladesh",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "PARTIAL",
-        "reason": "The core phenomenon is real and well documented: Bangladesh's export garment industry became overwhelmingly female-staffed and is one of the most cited case studies in development economics for export-led female empowerment (delayed marriage/childbirth, schooling gains, household bargaining power — see Kabeer & Mahmud 2004; Heath & Mobarak 2015, J. Dev. Econ.). However, the headline magnitude in the event ('approximately two million women employed... by the mid-1990s') is materially overstated. Primary BGMEA data reproduced in Kabeer & Mahmud's peer-reviewed chapter show female RMG employment of only ~1.08 million in 1994-95, ~1.17 million in 1995-96, and ~1.26 million in 1996-97 (total sector employment 1.2-1.4 million, ~90% female) — roughly 40-45% below the claimed 'two million.' Female employment did not approach ~2 million until roughly a decade later (total sector employment was still only ~1.8 million as late as 2000-01). So the qualitative story (country, year window, and the empowerment narrative) holds, but the quantitative headline is off by a wide margin — a wrong-magnitude PARTIAL rather than TRUE. The comparative claim ('highest share of female industrial employment in South Asia') is plausible given the ~85-90% female share but was not independently corroborated with a South-Asia-wide comparison.",
-        "source": "https://www.wiego.org/wp-content/uploads/2019/09/Kabeer-Mahmud-Export-Oriented-Garment-Bangladesh.pdf",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-02",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.wiego.org/wp-content/uploads/2019/09/Kabeer-Mahmud-Export-Oriented-Garment-Bangladesh.pdf"
-  },
-  {
-    "year": 2003,
-    "title": "Dhakaâ€“Chittagong Highway Expansion",
-    "verdict": "TRUE",
-    "reason": "ADB co-financed four-lane expansion of Dhaka-Chittagong corridor, substantially completed 2003-2005. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "ADB co-financed four-lane expansion of Dhaka-Chittagong corridor, substantially completed 2003-2005. Confirmed.",
-        "source": "https://www.adb.org/projects/27334-013/main",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.adb.org/projects/27334-013/main"
-  },
-  {
-    "year": 2000,
-    "title": "Bangladesh Achieves Major MDG Gains in Child Mortality",
-    "verdict": "TRUE",
-    "reason": "Rapid child mortality decline from ~150 per 1,000 in 1990 to under 80 by 2000. ORT, immunisation, NGO networks cited. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Rapid child mortality decline from ~150 per 1,000 in 1990 to under 80 by 2000. ORT, immunisation, NGO networks cited. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Health_in_Bangladesh",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Health_in_Bangladesh"
   },
   {
     "year": 2026,

@@ -1,6 +1,31 @@
 [
   {
     "year": 1968,
+    "title": "Chagos Archipelago Excised to Form British Indian Ocean Territory",
+    "verdict": "TRUE",
+    "reason": "Britain detached the Chagos Archipelago from Mauritius in 1965 (before independence, taking effect with BIOT on November 8, 1965) and paid Mauritius a £3 million grant. The year listed is the independence year when the arrangement continued; the excision itself was 1965. The description accurately captures the event and its long-term implications.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Britain detached the Chagos Archipelago from Mauritius in 1965 (before independence, taking effect with BIOT on November 8, 1965) and paid Mauritius a £3 million grant. The year listed is the independence year when the arrangement continued; the excision itself was 1965. The description accurately captures the event and its long-term implications.",
+        "source": "https://en.wikipedia.org/wiki/British_Indian_Ocean_Territory",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/British_Indian_Ocean_Territory"
+  },
+  {
+    "year": 1968,
     "title": "Independence from Britain Under Seewoosagur Ramgoolam",
     "verdict": "TRUE",
     "reason": "Mauritius became independent within the Commonwealth on March 12, 1968, with Sir Seewoosagur Ramgoolam as first Prime Minister after the 1967 election victory. The title slightly undersells the event but is substantively correct.",
@@ -48,31 +73,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1968_Mauritian_riots"
-  },
-  {
-    "year": 1968,
-    "title": "Chagos Archipelago Excised to Form British Indian Ocean Territory",
-    "verdict": "TRUE",
-    "reason": "Britain detached the Chagos Archipelago from Mauritius in 1965 (before independence, taking effect with BIOT on November 8, 1965) and paid Mauritius a £3 million grant. The year listed is the independence year when the arrangement continued; the excision itself was 1965. The description accurately captures the event and its long-term implications.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Britain detached the Chagos Archipelago from Mauritius in 1965 (before independence, taking effect with BIOT on November 8, 1965) and paid Mauritius a £3 million grant. The year listed is the independence year when the arrangement continued; the excision itself was 1965. The description accurately captures the event and its long-term implications.",
-        "source": "https://en.wikipedia.org/wiki/British_Indian_Ocean_Territory",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/British_Indian_Ocean_Territory"
   },
   {
     "year": 1970,
@@ -176,31 +176,6 @@
   },
   {
     "year": 1979,
-    "title": "Sugar Price Crash Triggers Balance-of-Payments Crisis",
-    "verdict": "TRUE",
-    "reason": "A sharp sugar-price decline from 1976 and the second oil shock of 1979 together produced a severe balance-of-payments crisis; the deficit reached US$111 million by 1979 and external debt tripled. The description accurately captures the causes.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "A sharp sugar-price decline from 1976 and the second oil shock of 1979 together produced a severe balance-of-payments crisis; the deficit reached US$111 million by 1979 and external debt tripled. The description accurately captures the causes.",
-        "source": "https://www.elibrary.imf.org/display/book/9781589064164/ch08.xml",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.elibrary.imf.org/display/book/9781589064164/ch08.xml"
-  },
-  {
-    "year": 1979,
     "title": "First IMF Standby and Structural Adjustment Begins",
     "verdict": "TRUE",
     "reason": "Mauritius signed its first IMF standby arrangement in 1979 and implemented a 30% rupee devaluation in October 1979 along with wage restraints and subsidy cuts; successive stand-by arrangements ran until 1986.",
@@ -223,6 +198,31 @@
       }
     ],
     "source": "https://www.thecommonwealth-ilibrary.org/index.php/comsec/catalog/download/745/745/5696?inline=1"
+  },
+  {
+    "year": 1979,
+    "title": "Sugar Price Crash Triggers Balance-of-Payments Crisis",
+    "verdict": "TRUE",
+    "reason": "A sharp sugar-price decline from 1976 and the second oil shock of 1979 together produced a severe balance-of-payments crisis; the deficit reached US$111 million by 1979 and external debt tripled. The description accurately captures the causes.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A sharp sugar-price decline from 1976 and the second oil shock of 1979 together produced a severe balance-of-payments crisis; the deficit reached US$111 million by 1979 and external debt tripled. The description accurately captures the causes.",
+        "source": "https://www.elibrary.imf.org/display/book/9781589064164/ch08.xml",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.elibrary.imf.org/display/book/9781589064164/ch08.xml"
   },
   {
     "year": 1980,
@@ -301,31 +301,6 @@
   },
   {
     "year": 1985,
-    "title": "Export Processing Zone Takes Off — Textile Boom Begins",
-    "verdict": "TRUE",
-    "reason": "The Mauritian EPZ surged from ~115 companies in 1982 to nearly 600 by 1988, driven by Hong Kong investors exploiting preferential access under the Multi-Fibre Arrangement and Lomé Convention. EPZ employment exceeded 78,000 by 1987.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Mauritian EPZ surged from ~115 companies in 1982 to nearly 600 by 1988, driven by Hong Kong investors exploiting preferential access under the Multi-Fibre Arrangement and Lomé Convention. EPZ employment exceeded 78,000 by 1987.",
-        "source": "https://en.wikipedia.org/wiki/Clothing_in_Mauritius",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Clothing_in_Mauritius"
-  },
-  {
-    "year": 1985,
     "title": "Air Mauritius Heroin Trafficking Scandal",
     "verdict": "TRUE",
     "reason": "In December 1985, four MSM members of parliament were arrested at Amsterdam's Schiphol Airport with 20 kg of heroin while traveling on diplomatic passports. The event is well-documented as 'The Amsterdam Affair'.",
@@ -348,6 +323,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Corruption_in_Mauritius"
+  },
+  {
+    "year": 1985,
+    "title": "Export Processing Zone Takes Off — Textile Boom Begins",
+    "verdict": "TRUE",
+    "reason": "The Mauritian EPZ surged from ~115 companies in 1982 to nearly 600 by 1988, driven by Hong Kong investors exploiting preferential access under the Multi-Fibre Arrangement and Lomé Convention. EPZ employment exceeded 78,000 by 1987.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Mauritian EPZ surged from ~115 companies in 1982 to nearly 600 by 1988, driven by Hong Kong investors exploiting preferential access under the Multi-Fibre Arrangement and Lomé Convention. EPZ employment exceeded 78,000 by 1987.",
+        "source": "https://en.wikipedia.org/wiki/Clothing_in_Mauritius",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Clothing_in_Mauritius"
   },
   {
     "year": 1987,
@@ -625,6 +625,42 @@
     "source": "https://landscopemauritius.com/our-properties-business-parks/ebene-cybercity/"
   },
   {
+    "year": 2002,
+    "title": "SAFE Submarine Cable Connects Mauritius to High-Speed International Internet",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm the SAFE (South Africa Far East) cable, a 13,500km submarine fiber system linking South Africa, Mauritius, Réunion, India, and Malaysia, was ready for service/commissioned in April 2002, landing at Baie du Jacotet, Mauritius. Wikipedia and submarinenetworks.com both confirm an initial design capacity of 10Gbps that was later upgraded (Wikipedia cites a later 440Gbps figure reflecting further upgrades over the cable's lifetime; other sources, including the event description, cite an intermediate 130Gbps upgrade stage — not a contradiction, just different points in the cable's multi-stage upgrade history). Mauritius Telecom was a consortium member. All material facts (year, country, cable name, route, initial capacity, role as first high-capacity international broadband link) are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (sysadmin-journal.com, Wikipedia, geocables.com, submarinenetworks.com via search) confirm the SAFE (South Africa Far East) submarine fiber-optic cable, ~13,500km, linking South Africa, Mauritius, Reunion, India and Malaysia, became operational/ready for service in April 2002, with initial capacity of 10Gbps later upgraded to 130Gbps. Mauritius is explicitly named as one of the landing points (Baie du Jacotet/Baie Jacotet, Savanne). All material details in the description (year, cable name, route, length, capacity figures, Mauritius as a landing point) are corroborated. Minor length discrepancy exists across sources (13,500km commonly cited vs. 13,104km on Wikipedia) but this is immaterial and within normal variance for how submarine cable route lengths are reported.",
+        "source": "https://sysadmin-journal.com/what-is-the-safe-submarine-cable/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the SAFE (South Africa Far East) cable, a 13,500km submarine fiber system linking South Africa, Mauritius, Réunion, India, and Malaysia, was ready for service/commissioned in April 2002, landing at Baie du Jacotet, Mauritius. Wikipedia and submarinenetworks.com both confirm an initial design capacity of 10Gbps that was later upgraded (Wikipedia cites a later 440Gbps figure reflecting further upgrades over the cable's lifetime; other sources, including the event description, cite an intermediate 130Gbps upgrade stage — not a contradiction, just different points in the cable's multi-stage upgrade history). Mauritius Telecom was a consortium member. All material facts (year, country, cable name, route, initial capacity, role as first high-capacity international broadband link) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/SAFE_(cable_system)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/SAFE_(cable_system)"
+  },
+  {
     "year": 2003,
     "title": "Berenger Becomes Prime Minister — First Non-Hindu Head of Government",
     "verdict": "TRUE",
@@ -676,9 +712,9 @@
   },
   {
     "year": 2006,
-    "title": "Sugar Protocol Ends — EU Phases Out Preferential Prices",
+    "title": "Business Facilitation Act and 'Doing Business' Reforms",
     "verdict": "TRUE",
-    "reason": "The EU reformed its sugar regime in 2006 with a 36% cut in support prices; the ACP Sugar Protocol formally expired on September 30, 2009. Mauritius received €250 million in EU transitional funds for restructuring. The year 2006 is accurate as the beginning of the phase-out.",
+    "reason": "The Business Facilitation Act 2006 slashed business-start times; World Bank's 2008 Doing Business report ranked Mauritius first in Africa (27th globally) for ease of doing business, a ranking held for multiple consecutive years.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -688,8 +724,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The EU reformed its sugar regime in 2006 with a 36% cut in support prices; the ACP Sugar Protocol formally expired on September 30, 2009. Mauritius received €250 million in EU transitional funds for restructuring. The year 2006 is accurate as the beginning of the phase-out.",
-        "source": "https://www.fao.org/4/a0334e/a0334e0f.htm",
+        "reason": "The Business Facilitation Act 2006 slashed business-start times; World Bank's 2008 Doing Business report ranked Mauritius first in Africa (27th globally) for ease of doing business, a ranking held for multiple consecutive years.",
+        "source": "https://edbmauritius.org/doing-business-reforms",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -697,7 +733,7 @@
         }
       }
     ],
-    "source": "https://www.fao.org/4/a0334e/a0334e0f.htm"
+    "source": "https://edbmauritius.org/doing-business-reforms"
   },
   {
     "year": 2006,
@@ -726,9 +762,9 @@
   },
   {
     "year": 2006,
-    "title": "Business Facilitation Act and 'Doing Business' Reforms",
+    "title": "Sugar Protocol Ends — EU Phases Out Preferential Prices",
     "verdict": "TRUE",
-    "reason": "The Business Facilitation Act 2006 slashed business-start times; World Bank's 2008 Doing Business report ranked Mauritius first in Africa (27th globally) for ease of doing business, a ranking held for multiple consecutive years.",
+    "reason": "The EU reformed its sugar regime in 2006 with a 36% cut in support prices; the ACP Sugar Protocol formally expired on September 30, 2009. Mauritius received €250 million in EU transitional funds for restructuring. The year 2006 is accurate as the beginning of the phase-out.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -738,8 +774,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The Business Facilitation Act 2006 slashed business-start times; World Bank's 2008 Doing Business report ranked Mauritius first in Africa (27th globally) for ease of doing business, a ranking held for multiple consecutive years.",
-        "source": "https://edbmauritius.org/doing-business-reforms",
+        "reason": "The EU reformed its sugar regime in 2006 with a 36% cut in support prices; the ACP Sugar Protocol formally expired on September 30, 2009. Mauritius received €250 million in EU transitional funds for restructuring. The year 2006 is accurate as the beginning of the phase-out.",
+        "source": "https://www.fao.org/4/a0334e/a0334e0f.htm",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -747,7 +783,7 @@
         }
       }
     ],
-    "source": "https://edbmauritius.org/doing-business-reforms"
+    "source": "https://www.fao.org/4/a0334e/a0334e0f.htm"
   },
   {
     "year": 2007,
@@ -1001,6 +1037,31 @@
   },
   {
     "year": 2019,
+    "title": "Cyclone Belna Tracks Past Mauritius",
+    "verdict": "TRUE",
+    "reason": "Cyclone Belna (December 2019) tracked toward the Indian Ocean region and warnings were issued for Mauritius before it made landfall in northwestern Madagascar on December 9, 2019. Direct impact on Mauritius was limited; the description of class-3 warnings and disruptions is consistent with available reports.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Cyclone Belna (December 2019) tracked toward the Indian Ocean region and warnings were issued for Mauritius before it made landfall in northwestern Madagascar on December 9, 2019. Direct impact on Mauritius was limited; the description of class-3 warnings and disruptions is consistent with available reports.",
+        "source": "https://en.wikipedia.org/wiki/Cyclone_Belna",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Cyclone_Belna"
+  },
+  {
+    "year": 2019,
     "title": "ICJ Advisory Opinion on Chagos: UK Occupation Unlawful",
     "verdict": "TRUE",
     "reason": "On February 25, 2019 the ICJ issued an advisory opinion (13-1) that the UK's continued administration of the Chagos Archipelago is unlawful and that decolonization of Mauritius was not lawfully completed. The UN General Assembly endorsed it 116-6 in May 2019.",
@@ -1050,31 +1111,6 @@
     "source": "https://en.wikipedia.org/wiki/2019_Mauritian_general_election"
   },
   {
-    "year": 2019,
-    "title": "Cyclone Belna Tracks Past Mauritius",
-    "verdict": "TRUE",
-    "reason": "Cyclone Belna (December 2019) tracked toward the Indian Ocean region and warnings were issued for Mauritius before it made landfall in northwestern Madagascar on December 9, 2019. Direct impact on Mauritius was limited; the description of class-3 warnings and disruptions is consistent with available reports.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Cyclone Belna (December 2019) tracked toward the Indian Ocean region and warnings were issued for Mauritius before it made landfall in northwestern Madagascar on December 9, 2019. Direct impact on Mauritius was limited; the description of class-3 warnings and disruptions is consistent with available reports.",
-        "source": "https://en.wikipedia.org/wiki/Cyclone_Belna",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Cyclone_Belna"
-  },
-  {
     "year": 2020,
     "title": "COVID-19 Lockdown — Tourism Collapse",
     "verdict": "TRUE",
@@ -1098,31 +1134,6 @@
       }
     ],
     "source": "https://www.afdb.org/en/countries/southern-africa/mauritius/mauritius-economic-outlook"
-  },
-  {
-    "year": 2020,
-    "title": "Wakashio Oil Spill — Worst Environmental Disaster in Mauritian History",
-    "verdict": "TRUE",
-    "reason": "MV Wakashio ran aground off Pointe d'Esny on July 25, 2020 and began leaking ~1,000 tonnes of heavy fuel oil on August 6, affecting Blue Bay Marine Park. Dozens of dolphins and melon-headed whales washed up dead. The event is widely confirmed as Mauritius's worst environmental disaster.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "MV Wakashio ran aground off Pointe d'Esny on July 25, 2020 and began leaking ~1,000 tonnes of heavy fuel oil on August 6, affecting Blue Bay Marine Park. Dozens of dolphins and melon-headed whales washed up dead. The event is widely confirmed as Mauritius's worst environmental disaster.",
-        "source": "https://en.wikipedia.org/wiki/MV_Wakashio_oil_spill",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/MV_Wakashio_oil_spill"
   },
   {
     "year": 2020,
@@ -1175,10 +1186,10 @@
     "source": "https://en.wikipedia.org/wiki/2020_Mauritian_protests"
   },
   {
-    "year": 2021,
-    "title": "Vaccination Campaign and Border Reopening",
+    "year": 2020,
+    "title": "Wakashio Oil Spill — Worst Environmental Disaster in Mauritian History",
     "verdict": "TRUE",
-    "reason": "Mauritius launched its vaccination campaign on January 26, 2021, using AstraZeneca, Sinopharm, Covaxin, and Pfizer doses. Borders reopened in phases from July 15, 2021 with vaccine-passport rules; fully open from October 1, 2021.",
+    "reason": "MV Wakashio ran aground off Pointe d'Esny on July 25, 2020 and began leaking ~1,000 tonnes of heavy fuel oil on August 6, affecting Blue Bay Marine Park. Dozens of dolphins and melon-headed whales washed up dead. The event is widely confirmed as Mauritius's worst environmental disaster.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1188,8 +1199,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Mauritius launched its vaccination campaign on January 26, 2021, using AstraZeneca, Sinopharm, Covaxin, and Pfizer doses. Borders reopened in phases from July 15, 2021 with vaccine-passport rules; fully open from October 1, 2021.",
-        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8823574/",
+        "reason": "MV Wakashio ran aground off Pointe d'Esny on July 25, 2020 and began leaking ~1,000 tonnes of heavy fuel oil on August 6, affecting Blue Bay Marine Park. Dozens of dolphins and melon-headed whales washed up dead. The event is widely confirmed as Mauritius's worst environmental disaster.",
+        "source": "https://en.wikipedia.org/wiki/MV_Wakashio_oil_spill",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1197,7 +1208,7 @@
         }
       }
     ],
-    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8823574/"
+    "source": "https://en.wikipedia.org/wiki/MV_Wakashio_oil_spill"
   },
   {
     "year": 2021,
@@ -1225,10 +1236,10 @@
     "source": "https://www.dentons.com/en/insights/alerts/2021/october/21/fatf-announces-removal-of-mauritius-from-its-grey-list"
   },
   {
-    "year": 2022,
-    "title": "Tourism Rebounds and GDP Recovery",
+    "year": 2021,
+    "title": "Vaccination Campaign and Border Reopening",
     "verdict": "TRUE",
-    "reason": "Mauritius recorded real GDP growth of approximately 8.7–8.9% in 2022 driven by tourism recovery (arrivals ~87% of pre-pandemic levels). Headline inflation averaged 10.8% in 2022, linked to global energy and food price shocks from the Ukraine war.",
+    "reason": "Mauritius launched its vaccination campaign on January 26, 2021, using AstraZeneca, Sinopharm, Covaxin, and Pfizer doses. Borders reopened in phases from July 15, 2021 with vaccine-passport rules; fully open from October 1, 2021.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1238,8 +1249,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Mauritius recorded real GDP growth of approximately 8.7–8.9% in 2022 driven by tourism recovery (arrivals ~87% of pre-pandemic levels). Headline inflation averaged 10.8% in 2022, linked to global energy and food price shocks from the Ukraine war.",
-        "source": "https://www.afdb.org/en/countries/southern-africa/mauritius/mauritius-economic-outlook",
+        "reason": "Mauritius launched its vaccination campaign on January 26, 2021, using AstraZeneca, Sinopharm, Covaxin, and Pfizer doses. Borders reopened in phases from July 15, 2021 with vaccine-passport rules; fully open from October 1, 2021.",
+        "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8823574/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1247,7 +1258,7 @@
         }
       }
     ],
-    "source": "https://www.afdb.org/en/countries/southern-africa/mauritius/mauritius-economic-outlook"
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8823574/"
   },
   {
     "year": 2022,
@@ -1275,10 +1286,10 @@
     "source": "https://www.bom.mu/monetary-policy/interest-rate-decisions/media-release-monetary-policy-committee-bank-mauritius-raises-key-repo-rate-50"
   },
   {
-    "year": 2023,
-    "title": "Moris Lakwizinn Cost-of-Living Movement",
+    "year": 2022,
+    "title": "Tourism Rebounds and GDP Recovery",
     "verdict": "TRUE",
-    "reason": "Cost-of-living protests began in late April 2022 and continued into 2023, with demonstrations in Port Louis, Beau Bassin, and Rose Hill against soaring food and fuel prices, corruption, and opposition harassment. The 'Moris Lakwizinn' framing is referenced in multiple sources covering this protest wave.",
+    "reason": "Mauritius recorded real GDP growth of approximately 8.7–8.9% in 2022 driven by tourism recovery (arrivals ~87% of pre-pandemic levels). Headline inflation averaged 10.8% in 2022, linked to global energy and food price shocks from the Ukraine war.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1288,8 +1299,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Cost-of-living protests began in late April 2022 and continued into 2023, with demonstrations in Port Louis, Beau Bassin, and Rose Hill against soaring food and fuel prices, corruption, and opposition harassment. The 'Moris Lakwizinn' framing is referenced in multiple sources covering this protest wave.",
-        "source": "https://africanarguments.org/2022/05/mauritius-protests-when-people-feel-lost-they-resort-to-revolt/",
+        "reason": "Mauritius recorded real GDP growth of approximately 8.7–8.9% in 2022 driven by tourism recovery (arrivals ~87% of pre-pandemic levels). Headline inflation averaged 10.8% in 2022, linked to global energy and food price shocks from the Ukraine war.",
+        "source": "https://www.afdb.org/en/countries/southern-africa/mauritius/mauritius-economic-outlook",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1297,7 +1308,7 @@
         }
       }
     ],
-    "source": "https://africanarguments.org/2022/05/mauritius-protests-when-people-feel-lost-they-resort-to-revolt/"
+    "source": "https://www.afdb.org/en/countries/southern-africa/mauritius/mauritius-economic-outlook"
   },
   {
     "year": 2023,
@@ -1325,10 +1336,10 @@
     "source": "https://www.comsuregroup.com/news/briefing-on-mauritius-aml-updates-from-2023-25/"
   },
   {
-    "year": 2024,
-    "title": "UK-Mauritius Chagos Sovereignty Deal Announced",
+    "year": 2023,
+    "title": "Moris Lakwizinn Cost-of-Living Movement",
     "verdict": "TRUE",
-    "reason": "On October 3, 2024 the UK and Mauritius announced a political agreement ceding sovereignty of the Chagos Archipelago to Mauritius while leasing Diego Garcia to the UK for 99 years for approximately £101 million per year. Criticism from Chagossian groups and UK opposition is confirmed.",
+    "reason": "Cost-of-living protests began in late April 2022 and continued into 2023, with demonstrations in Port Louis, Beau Bassin, and Rose Hill against soaring food and fuel prices, corruption, and opposition harassment. The 'Moris Lakwizinn' framing is referenced in multiple sources covering this protest wave.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1338,8 +1349,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "On October 3, 2024 the UK and Mauritius announced a political agreement ceding sovereignty of the Chagos Archipelago to Mauritius while leasing Diego Garcia to the UK for 99 years for approximately £101 million per year. Criticism from Chagossian groups and UK opposition is confirmed.",
-        "source": "https://www.washingtonpost.com/world/2024/10/03/uk-mauritius-chagos-diego-garcia-base/",
+        "reason": "Cost-of-living protests began in late April 2022 and continued into 2023, with demonstrations in Port Louis, Beau Bassin, and Rose Hill against soaring food and fuel prices, corruption, and opposition harassment. The 'Moris Lakwizinn' framing is referenced in multiple sources covering this protest wave.",
+        "source": "https://africanarguments.org/2022/05/mauritius-protests-when-people-feel-lost-they-resort-to-revolt/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1347,32 +1358,7 @@
         }
       }
     ],
-    "source": "https://www.washingtonpost.com/world/2024/10/03/uk-mauritius-chagos-diego-garcia-base/"
-  },
-  {
-    "year": 2024,
-    "title": "Phone-Tapping Scandal — 'Missie Moustass' Recordings",
-    "verdict": "TRUE",
-    "reason": "From mid-October 2024, anonymous TikTok/social-media account 'Missie Moustass' published 107 wiretapped recordings implicating senior MSM figures in corruption and police interference. The government's brief social-media blackout (October 31–November 2, 2024) triggered a fierce backlash and dominated the final weeks before the November 10 election.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "From mid-October 2024, anonymous TikTok/social-media account 'Missie Moustass' published 107 wiretapped recordings implicating senior MSM figures in corruption and police interference. The government's brief social-media blackout (October 31–November 2, 2024) triggered a fierce backlash and dominated the final weeks before the November 10 election.",
-        "source": "https://en.wikipedia.org/wiki/2024_Mauritian_social_media_ban",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2024_Mauritian_social_media_ban"
+    "source": "https://africanarguments.org/2022/05/mauritius-protests-when-people-feel-lost-they-resort-to-revolt/"
   },
   {
     "year": 2024,
@@ -1425,10 +1411,10 @@
     "source": "https://en.wikipedia.org/wiki/Cyclone_Belal"
   },
   {
-    "year": 2025,
-    "title": "Ramgoolam Government Audit Reveals Fiscal Hole",
+    "year": 2024,
+    "title": "Phone-Tapping Scandal — 'Missie Moustass' Recordings",
     "verdict": "TRUE",
-    "reason": "The incoming Ramgoolam government's audit found the fiscal deficit had surged from an estimated Rs 26.8 billion to ~Rs 70 billion (9.8% of GDP); public debt reached 90% of GDP for 2024–25. Ramgoolam publicly accused the outgoing MSM administration of statistical manipulation.",
+    "reason": "From mid-October 2024, anonymous TikTok/social-media account 'Missie Moustass' published 107 wiretapped recordings implicating senior MSM figures in corruption and police interference. The government's brief social-media blackout (October 31–November 2, 2024) triggered a fierce backlash and dominated the final weeks before the November 10 election.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1438,8 +1424,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The incoming Ramgoolam government's audit found the fiscal deficit had surged from an estimated Rs 26.8 billion to ~Rs 70 billion (9.8% of GDP); public debt reached 90% of GDP for 2024–25. Ramgoolam publicly accused the outgoing MSM administration of statistical manipulation.",
-        "source": "https://www.mauritiustimes.com/mt/alliance-du-changement-rupture-and-reality/",
+        "reason": "From mid-October 2024, anonymous TikTok/social-media account 'Missie Moustass' published 107 wiretapped recordings implicating senior MSM figures in corruption and police interference. The government's brief social-media blackout (October 31–November 2, 2024) triggered a fierce backlash and dominated the final weeks before the November 10 election.",
+        "source": "https://en.wikipedia.org/wiki/2024_Mauritian_social_media_ban",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1447,7 +1433,57 @@
         }
       }
     ],
-    "source": "https://www.mauritiustimes.com/mt/alliance-du-changement-rupture-and-reality/"
+    "source": "https://en.wikipedia.org/wiki/2024_Mauritian_social_media_ban"
+  },
+  {
+    "year": 2024,
+    "title": "UK-Mauritius Chagos Sovereignty Deal Announced",
+    "verdict": "TRUE",
+    "reason": "On October 3, 2024 the UK and Mauritius announced a political agreement ceding sovereignty of the Chagos Archipelago to Mauritius while leasing Diego Garcia to the UK for 99 years for approximately £101 million per year. Criticism from Chagossian groups and UK opposition is confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On October 3, 2024 the UK and Mauritius announced a political agreement ceding sovereignty of the Chagos Archipelago to Mauritius while leasing Diego Garcia to the UK for 99 years for approximately £101 million per year. Criticism from Chagossian groups and UK opposition is confirmed.",
+        "source": "https://www.washingtonpost.com/world/2024/10/03/uk-mauritius-chagos-diego-garcia-base/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.washingtonpost.com/world/2024/10/03/uk-mauritius-chagos-diego-garcia-base/"
+  },
+  {
+    "year": 2025,
+    "title": "Anti-Corruption Inquiries and Asset-Recovery Drive",
+    "verdict": "TRUE",
+    "reason": "From early 2025 the new Labour-MMM government pursued anti-corruption investigations: former PM Pravind Jugnauth was arrested by the Financial Crimes Commission on February 15, 2025 on money-laundering charges; the former Bank of Mauritius governor was charged with fraud conspiracy; the Public Inquiries Act 2025 was enacted to enable parliamentary commissions.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "From early 2025 the new Labour-MMM government pursued anti-corruption investigations: former PM Pravind Jugnauth was arrested by the Financial Crimes Commission on February 15, 2025 on money-laundering charges; the former Bank of Mauritius governor was charged with fraud conspiracy; the Public Inquiries Act 2025 was enacted to enable parliamentary commissions.",
+        "source": "https://www.comsuregroup.com/news/mauritius-2025-multiple-cases-of-money-laundering-fraud-corruption-and-other-high-level-criminal-activities-being-investigated/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.comsuregroup.com/news/mauritius-2025-multiple-cases-of-money-laundering-fraud-corruption-and-other-high-level-criminal-activities-being-investigated/"
   },
   {
     "year": 2025,
@@ -1476,9 +1512,9 @@
   },
   {
     "year": 2025,
-    "title": "Anti-Corruption Inquiries and Asset-Recovery Drive",
+    "title": "Ramgoolam Government Audit Reveals Fiscal Hole",
     "verdict": "TRUE",
-    "reason": "From early 2025 the new Labour-MMM government pursued anti-corruption investigations: former PM Pravind Jugnauth was arrested by the Financial Crimes Commission on February 15, 2025 on money-laundering charges; the former Bank of Mauritius governor was charged with fraud conspiracy; the Public Inquiries Act 2025 was enacted to enable parliamentary commissions.",
+    "reason": "The incoming Ramgoolam government's audit found the fiscal deficit had surged from an estimated Rs 26.8 billion to ~Rs 70 billion (9.8% of GDP); public debt reached 90% of GDP for 2024–25. Ramgoolam publicly accused the outgoing MSM administration of statistical manipulation.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1488,8 +1524,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "From early 2025 the new Labour-MMM government pursued anti-corruption investigations: former PM Pravind Jugnauth was arrested by the Financial Crimes Commission on February 15, 2025 on money-laundering charges; the former Bank of Mauritius governor was charged with fraud conspiracy; the Public Inquiries Act 2025 was enacted to enable parliamentary commissions.",
-        "source": "https://www.comsuregroup.com/news/mauritius-2025-multiple-cases-of-money-laundering-fraud-corruption-and-other-high-level-criminal-activities-being-investigated/",
+        "reason": "The incoming Ramgoolam government's audit found the fiscal deficit had surged from an estimated Rs 26.8 billion to ~Rs 70 billion (9.8% of GDP); public debt reached 90% of GDP for 2024–25. Ramgoolam publicly accused the outgoing MSM administration of statistical manipulation.",
+        "source": "https://www.mauritiustimes.com/mt/alliance-du-changement-rupture-and-reality/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1497,6 +1533,6 @@
         }
       }
     ],
-    "source": "https://www.comsuregroup.com/news/mauritius-2025-multiple-cases-of-money-laundering-fraud-corruption-and-other-high-level-criminal-activities-being-investigated/"
+    "source": "https://www.mauritiustimes.com/mt/alliance-du-changement-rupture-and-reality/"
   }
 ]

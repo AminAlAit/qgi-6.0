@@ -1,31 +1,6 @@
 [
   {
     "year": 1950,
-    "title": "Viet Minh Receives Chinese Military Aid and U.S. Backs Bao Dai",
-    "verdict": "TRUE",
-    "reason": "The PRC recognized the DRV and began supplying weapons, advisors, and logistics to the Viet Minh from early 1950. The United States recognized the Bao Dai State of Vietnam on 7 February 1950 and began funding France's war effort.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The PRC recognized the DRV and began supplying weapons, advisors, and logistics to the Viet Minh from early 1950. The United States recognized the Bao Dai State of Vietnam on 7 February 1950 and began funding France's war effort.",
-        "source": "https://en.wikipedia.org/wiki/First_Indochina_War",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/First_Indochina_War"
-  },
-  {
-    "year": 1950,
     "title": "Battle of Route Coloniale 4",
     "verdict": "TRUE",
     "reason": "The Viet Minh offensive along RC4 in October 1950 inflicted over 6,000 French casualties and seized border supply routes near China, constituting a decisive Viet Minh victory.",
@@ -48,6 +23,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Battle_of_Route_Coloniale_4"
+  },
+  {
+    "year": 1950,
+    "title": "Viet Minh Receives Chinese Military Aid and U.S. Backs Bao Dai",
+    "verdict": "TRUE",
+    "reason": "The PRC recognized the DRV and began supplying weapons, advisors, and logistics to the Viet Minh from early 1950. The United States recognized the Bao Dai State of Vietnam on 7 February 1950 and began funding France's war effort.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The PRC recognized the DRV and began supplying weapons, advisors, and logistics to the Viet Minh from early 1950. The United States recognized the Bao Dai State of Vietnam on 7 February 1950 and began funding France's war effort.",
+        "source": "https://en.wikipedia.org/wiki/First_Indochina_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/First_Indochina_War"
   },
   {
     "year": 1951,
@@ -226,31 +226,6 @@
   },
   {
     "year": 1956,
-    "title": "Reunification Elections Blocked; Land Reform Errors in North",
-    "verdict": "TRUE",
-    "reason": "Diem refused to hold the Geneva-mandated 1956 elections. Simultaneously Ho Chi Minh publicly admitted errors in the North's land reform campaign in which thousands were wrongly executed; Truong Chinh resigned as General Secretary.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Diem refused to hold the Geneva-mandated 1956 elections. Simultaneously Ho Chi Minh publicly admitted errors in the North's land reform campaign in which thousands were wrongly executed; Truong Chinh resigned as General Secretary.",
-        "source": "https://en.wikipedia.org/wiki/Land_reform_in_North_Vietnam",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Land_reform_in_North_Vietnam"
-  },
-  {
-    "year": 1956,
     "title": "Nhan Van Giai Pham Intellectual Protest Movement",
     "verdict": "PARTIAL",
     "reason": "The Nhan Van-Giai Pham affair began in 1955-56 and was suppressed by December 1956; the event is real, but the movement started in 1955 (not solely 1956) and drew inspiration from Khrushchev's Secret Speech earlier that year.",
@@ -273,6 +248,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Nh%C3%A2n_V%C4%83n%E2%80%93Giai_Ph%E1%BA%A9m_affair"
+  },
+  {
+    "year": 1956,
+    "title": "Reunification Elections Blocked; Land Reform Errors in North",
+    "verdict": "TRUE",
+    "reason": "Diem refused to hold the Geneva-mandated 1956 elections. Simultaneously Ho Chi Minh publicly admitted errors in the North's land reform campaign in which thousands were wrongly executed; Truong Chinh resigned as General Secretary.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Diem refused to hold the Geneva-mandated 1956 elections. Simultaneously Ho Chi Minh publicly admitted errors in the North's land reform campaign in which thousands were wrongly executed; Truong Chinh resigned as General Secretary.",
+        "source": "https://en.wikipedia.org/wiki/Land_reform_in_North_Vietnam",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Land_reform_in_North_Vietnam"
   },
   {
     "year": 1957,
@@ -451,31 +451,6 @@
   },
   {
     "year": 1965,
-    "title": "First U.S. Combat Troops Land; Operation Rolling Thunder Begins",
-    "verdict": "TRUE",
-    "reason": "3,500 Marines landed at Da Nang on 8 March 1965; Operation Rolling Thunder bombing of North Vietnam commenced 2 March 1965 and lasted over three years, far exceeding WWII Pacific tonnage.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "3,500 Marines landed at Da Nang on 8 March 1965; Operation Rolling Thunder bombing of North Vietnam commenced 2 March 1965 and lasted over three years, far exceeding WWII Pacific tonnage.",
-        "source": "https://en.wikipedia.org/wiki/Operation_Rolling_Thunder",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Operation_Rolling_Thunder"
-  },
-  {
-    "year": 1965,
     "title": "Battle of Ia Drang Valley",
     "verdict": "TRUE",
     "reason": "The Battle of Ia Drang (14-18 November 1965) was the first major engagement between U.S. airmobile forces and PAVN regulars; it established air-mobile tactics and demonstrated PAVN's close-combat counter-strategy.",
@@ -498,6 +473,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Battle_of_Ia_Drang"
+  },
+  {
+    "year": 1965,
+    "title": "First U.S. Combat Troops Land; Operation Rolling Thunder Begins",
+    "verdict": "TRUE",
+    "reason": "3,500 Marines landed at Da Nang on 8 March 1965; Operation Rolling Thunder bombing of North Vietnam commenced 2 March 1965 and lasted over three years, far exceeding WWII Pacific tonnage.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "3,500 Marines landed at Da Nang on 8 March 1965; Operation Rolling Thunder bombing of North Vietnam commenced 2 March 1965 and lasted over three years, far exceeding WWII Pacific tonnage.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Rolling_Thunder",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_Rolling_Thunder"
   },
   {
     "year": 1966,
@@ -776,31 +776,6 @@
   },
   {
     "year": 1976,
-    "title": "Socialist Republic of Vietnam Formally Proclaimed",
-    "verdict": "TRUE",
-    "reason": "National elections for a unified assembly were held 25 April 1976; the National Assembly proclaimed the Socialist Republic of Vietnam on 2 July 1976, renaming Saigon as Ho Chi Minh City on the same day.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "National elections for a unified assembly were held 25 April 1976; the National Assembly proclaimed the Socialist Republic of Vietnam on 2 July 1976, renaming Saigon as Ho Chi Minh City on the same day.",
-        "source": "https://en.wikipedia.org/wiki/Vietnam",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Vietnam"
-  },
-  {
-    "year": 1976,
     "title": "Re-education Camps Established",
     "verdict": "TRUE",
     "reason": "From May-June 1975 onward, up to 300,000 former South Vietnamese military officers and officials were sent to re-education camps involving hard labor, malnutrition, and political indoctrination; thousands died in custody.",
@@ -823,6 +798,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Re-education_camp_(Vietnam)"
+  },
+  {
+    "year": 1976,
+    "title": "Socialist Republic of Vietnam Formally Proclaimed",
+    "verdict": "TRUE",
+    "reason": "National elections for a unified assembly were held 25 April 1976; the National Assembly proclaimed the Socialist Republic of Vietnam on 2 July 1976, renaming Saigon as Ho Chi Minh City on the same day.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "National elections for a unified assembly were held 25 April 1976; the National Assembly proclaimed the Socialist Republic of Vietnam on 2 July 1976, renaming Saigon as Ho Chi Minh City on the same day.",
+        "source": "https://en.wikipedia.org/wiki/Vietnam",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Vietnam"
   },
   {
     "year": 1977,
@@ -851,31 +851,6 @@
   },
   {
     "year": 1978,
-    "title": "Soviet-Vietnam Treaty; Vietnam Invades Cambodia",
-    "verdict": "TRUE",
-    "reason": "Vietnam signed the Treaty of Friendship with the USSR on 3 November 1978; Vietnamese forces invaded Cambodia on 25 December 1978, toppling the Khmer Rouge within weeks and installing the Heng Samrin government.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Vietnam signed the Treaty of Friendship with the USSR on 3 November 1978; Vietnamese forces invaded Cambodia on 25 December 1978, toppling the Khmer Rouge within weeks and installing the Heng Samrin government.",
-        "source": "https://en.wikipedia.org/wiki/Cambodian%E2%80%93Vietnamese_War",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Cambodian%E2%80%93Vietnamese_War"
-  },
-  {
-    "year": 1978,
     "title": "Collectivization of Southern Agriculture",
     "verdict": "TRUE",
     "reason": "Following Politburo Directive 43 in 1976, forced collectivization of southern agriculture was implemented through 1978; southern rice output fell from 1.9 million tons in 1976 to 0.64 million tons by 1979.",
@@ -900,10 +875,10 @@
     "source": "https://en.wikipedia.org/wiki/Land_reform_in_Vietnam"
   },
   {
-    "year": 1979,
-    "title": "Sino-Vietnamese War",
+    "year": 1978,
+    "title": "Soviet-Vietnam Treaty; Vietnam Invades Cambodia",
     "verdict": "TRUE",
-    "reason": "China invaded northern Vietnam with approximately 200,000 troops on 17 February 1979 as a punitive action; China declared its mission accomplished on 6 March after heavy casualties on both sides. Large numbers of ethnic Chinese were expelled from Vietnam.",
+    "reason": "Vietnam signed the Treaty of Friendship with the USSR on 3 November 1978; Vietnamese forces invaded Cambodia on 25 December 1978, toppling the Khmer Rouge within weeks and installing the Heng Samrin government.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -913,8 +888,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "China invaded northern Vietnam with approximately 200,000 troops on 17 February 1979 as a punitive action; China declared its mission accomplished on 6 March after heavy casualties on both sides. Large numbers of ethnic Chinese were expelled from Vietnam.",
-        "source": "https://en.wikipedia.org/wiki/Sino-Vietnamese_War",
+        "reason": "Vietnam signed the Treaty of Friendship with the USSR on 3 November 1978; Vietnamese forces invaded Cambodia on 25 December 1978, toppling the Khmer Rouge within weeks and installing the Heng Samrin government.",
+        "source": "https://en.wikipedia.org/wiki/Cambodian%E2%80%93Vietnamese_War",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -922,7 +897,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Sino-Vietnamese_War"
+    "source": "https://en.wikipedia.org/wiki/Cambodian%E2%80%93Vietnamese_War"
   },
   {
     "year": 1979,
@@ -948,6 +923,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Vietnamese_boat_people"
+  },
+  {
+    "year": 1979,
+    "title": "Sino-Vietnamese War",
+    "verdict": "TRUE",
+    "reason": "China invaded northern Vietnam with approximately 200,000 troops on 17 February 1979 as a punitive action; China declared its mission accomplished on 6 March after heavy casualties on both sides. Large numbers of ethnic Chinese were expelled from Vietnam.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "China invaded northern Vietnam with approximately 200,000 troops on 17 February 1979 as a punitive action; China declared its mission accomplished on 6 March after heavy casualties on both sides. Large numbers of ethnic Chinese were expelled from Vietnam.",
+        "source": "https://en.wikipedia.org/wiki/Sino-Vietnamese_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sino-Vietnamese_War"
   },
   {
     "year": 1981,
@@ -1500,6 +1500,42 @@
     "source": "https://en.wikipedia.org/wiki/Bauxite_mining_in_Vietnam"
   },
   {
+    "year": 2008,
+    "title": "Vietnam Launches VINASAT-1, Its First Telecommunications Satellite",
+    "verdict": "TRUE",
+    "reason": "Multiple independent, authoritative sources confirm all material details: VINASAT-1 launched 18 April 2008 aboard an Ariane 5 ECA rocket from the Guiana Space Centre in Kourou, French Guiana (co-passenger Star One C2); built by Lockheed Martin on the A2100A platform; payload of 12 Ku-band and 8 C-band transponders; it was Vietnam's first telecommunications satellite, operated by Vietnam Posts and Telecommunications Group (VNPT), giving Vietnam an independent satellite platform for radio, TV, and telephone services. Lockheed Martin's own contemporaneous press release (news.lockheedmartin.com, Apr 16 & Apr 18, 2008) corroborates independently of Wikipedia, and NASA's NSSDCA spacecraft catalog and Arianespace mission materials align.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via Lockheed Martin's official press release and corroborating search results (Wikipedia, Arianespace, NASA NSSDCA, Wikinews). VINASAT-1 launched 18 April 2008 (lift-off 22:17 GMT / 6:17pm EDT) aboard an Ariane 5 ECA rocket from the Guiana Space Centre, Kourou, French Guiana. Built by Lockheed Martin for Vietnam Posts and Telecommunications Group (VNPT), the satellite carries 12 Ku-band and 8 C-band transponders, and was explicitly described as Vietnam's first (inaugural) satellite system, providing radio/TV/telephone service to Vietnam. All material details in the event description (date, country, rocket, builder, transponder counts, 'first' claim, purpose) match the sources exactly.",
+        "source": "https://news.lockheedmartin.com/2008-04-18-Lockheed-Martin-Built-VINASAT-1-Satellite-Launched-Successfully-for-Vietnam-Posts-and-Telecommunications-Group",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources confirm all material details: VINASAT-1 launched 18 April 2008 aboard an Ariane 5 ECA rocket from the Guiana Space Centre in Kourou, French Guiana (co-passenger Star One C2); built by Lockheed Martin on the A2100A platform; payload of 12 Ku-band and 8 C-band transponders; it was Vietnam's first telecommunications satellite, operated by Vietnam Posts and Telecommunications Group (VNPT), giving Vietnam an independent satellite platform for radio, TV, and telephone services. Lockheed Martin's own contemporaneous press release (news.lockheedmartin.com, Apr 16 & Apr 18, 2008) corroborates independently of Wikipedia, and NASA's NSSDCA spacecraft catalog and Arianespace mission materials align.",
+        "source": "https://news.lockheedmartin.com/2008-04-18-Lockheed-Martin-Built-VINASAT-1-Satellite-Launched-Successfully-for-Vietnam-Posts-and-Telecommunications-Group",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://news.lockheedmartin.com/2008-04-18-Lockheed-Martin-Built-VINASAT-1-Satellite-Launched-Successfully-for-Vietnam-Posts-and-Telecommunications-Group"
+  },
+  {
     "year": 2011,
     "title": "South China Sea Cable-Cutting Incidents; Eleventh Party Congress",
     "verdict": "TRUE",
@@ -1726,31 +1762,6 @@
   },
   {
     "year": 2020,
-    "title": "Vietnam Successfully Contains Initial COVID-19; Chairs ASEAN and UN Security Council",
-    "verdict": "TRUE",
-    "reason": "Vietnam's early COVID-19 containment allowed 2.9% GDP growth in 2020, among the best globally. Vietnam held the 2020 ASEAN chairmanship and a UN Security Council non-permanent seat, and hosted the virtual RCEP signing.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Vietnam's early COVID-19 containment allowed 2.9% GDP growth in 2020, among the best globally. Vietnam held the 2020 ASEAN chairmanship and a UN Security Council non-permanent seat, and hosted the virtual RCEP signing.",
-        "source": "https://en.wikipedia.org/wiki/Vietnamese_government_response_to_the_COVID-19_pandemic",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Vietnamese_government_response_to_the_COVID-19_pandemic"
-  },
-  {
-    "year": 2020,
     "title": "RCEP Trade Agreement Signed",
     "verdict": "TRUE",
     "reason": "RCEP was formally signed on 15 November 2020 at the virtual ASEAN Summit hosted by Vietnam, creating the world's largest free trade area covering approximately 30% of global GDP.",
@@ -1773,6 +1784,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Regional_Comprehensive_Economic_Partnership"
+  },
+  {
+    "year": 2020,
+    "title": "Vietnam Successfully Contains Initial COVID-19; Chairs ASEAN and UN Security Council",
+    "verdict": "TRUE",
+    "reason": "Vietnam's early COVID-19 containment allowed 2.9% GDP growth in 2020, among the best globally. Vietnam held the 2020 ASEAN chairmanship and a UN Security Council non-permanent seat, and hosted the virtual RCEP signing.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Vietnam's early COVID-19 containment allowed 2.9% GDP growth in 2020, among the best globally. Vietnam held the 2020 ASEAN chairmanship and a UN Security Council non-permanent seat, and hosted the virtual RCEP signing.",
+        "source": "https://en.wikipedia.org/wiki/Vietnamese_government_response_to_the_COVID-19_pandemic",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Vietnamese_government_response_to_the_COVID-19_pandemic"
   },
   {
     "year": 2021,
@@ -1826,31 +1862,6 @@
   },
   {
     "year": 2023,
-    "title": "U.S.-Vietnam Comprehensive Strategic Partnership Upgrade; Apple Expands Manufacturing",
-    "verdict": "TRUE",
-    "reason": "President Biden and General Secretary Trong upgraded bilateral relations to Comprehensive Strategic Partnership on 10 September 2023. Apple has expanded AirPod and iPad production in Vietnam, making it Apple's second-largest production base after China.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "President Biden and General Secretary Trong upgraded bilateral relations to Comprehensive Strategic Partnership on 10 September 2023. Apple has expanded AirPod and iPad production in Vietnam, making it Apple's second-largest production base after China.",
-        "source": "https://www.whitehouse.gov/briefing-room/statements-releases/2023/09/11/joint-leaders-statement-elevating-united-states-vietnam-relations-to-a-comprehensive-strategic-partnership/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.whitehouse.gov/briefing-room/statements-releases/2023/09/11/joint-leaders-statement-elevating-united-states-vietnam-relations-to-a-comprehensive-strategic-partnership/"
-  },
-  {
-    "year": 2023,
     "title": "Senior Leadership Purge Through Anti-Corruption Campaign",
     "verdict": "TRUE",
     "reason": "State President Nguyen Xuan Phuc resigned on 17 January 2023, and two deputy prime ministers (Pham Binh Minh and Vu Duc Dam) were simultaneously removed in the unprecedented anti-corruption purge.",
@@ -1873,6 +1884,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Nguyen_Xuan_Phuc"
+  },
+  {
+    "year": 2023,
+    "title": "U.S.-Vietnam Comprehensive Strategic Partnership Upgrade; Apple Expands Manufacturing",
+    "verdict": "TRUE",
+    "reason": "President Biden and General Secretary Trong upgraded bilateral relations to Comprehensive Strategic Partnership on 10 September 2023. Apple has expanded AirPod and iPad production in Vietnam, making it Apple's second-largest production base after China.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "President Biden and General Secretary Trong upgraded bilateral relations to Comprehensive Strategic Partnership on 10 September 2023. Apple has expanded AirPod and iPad production in Vietnam, making it Apple's second-largest production base after China.",
+        "source": "https://www.whitehouse.gov/briefing-room/statements-releases/2023/09/11/joint-leaders-statement-elevating-united-states-vietnam-relations-to-a-comprehensive-strategic-partnership/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.whitehouse.gov/briefing-room/statements-releases/2023/09/11/joint-leaders-statement-elevating-united-states-vietnam-relations-to-a-comprehensive-strategic-partnership/"
   },
   {
     "year": 2024,

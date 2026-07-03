@@ -1334,13 +1334,13 @@
   {
     "year": 1979,
     "title": "Household Responsibility System piloted",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: Piloted in Anhui province 1979 confirmed.; Pass 2 FALSE: The event is real and materially described (Anhui province, farmers allowed to sell surplus after meeting state quotas, success prompting national adoption), but the year is off by one. Multiple independent sources converge on the household responsibility system being first piloted in Xiaogang village, Fengyang County, Anhui province, when 18 (some sources say 20) farmers secretly signed a contract to divide commune land among households in November/December 1978 — not 1979. Wikipedia explicitly states it was 'first piloted in 1978 in Anhui Province, specifically in Xiaogang village.' TheWorldOfChinese.com and ExplainingHistory.org both independently date the pact to November/December 1978. 1979 is genuinely associated with this history (Xiaogang's dramatic harvest results became visible in 1979, and Deng Xiaoping backed similar county-level experiments in Fengyang/Feixi, Anhui, in a May 1979 speech), but the canonical 'piloting' event itself — the original household contract experiment — is dated 1978 across all sources found, not 1979. National adoption came later still (Deng's cautious 1980 endorsement, formal CCP Document No.1 in 1982). Because the year is a material join-key mismatch (per the hard rules, a wrong year makes this FALSE with a corrected year, not PARTIAL), I return FALSE with corrected_year 1978.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
-    "source_independence": "n/a",
+    "verdict": "FALSE",
+    "reason": "The event is real and materially accurate in substance (household responsibility system piloted in Anhui province, allowing farmers to sell surplus after meeting state quotas, later adopted nationally), but the year is wrong. Multiple independent, non-Wikipedia sources — China Daily, a Cambridge Core (Journal of Institutional Economics) peer-reviewed article, an SOAS academic working paper, and World of Chinese magazine — consistently date the actual pilot to November-December 1978, when 18-20 farmers in Xiaogang village, Fengyang county, Anhui province, secretly signed a contract dividing collective land among households. The dramatic harvest results (grain yield exceeding 70,000 kg, equaling 1955-1970 combined) came in 1979, and provincial/national government endorsement (Wan Li's visit, Deng Xiaoping's praise) came in January/1980, with national spread through 1982-1983. But the 'piloting' act itself — the event this record describes — occurred in 1978, not 1979. This is a one-year date error, so per the hard rules (year wrong → FALSE with corrected_year) rather than PARTIAL (which requires year to hold).",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1364,8 +1364,22 @@
           "method": "web_search"
         },
         "corrected_year": 1978
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially accurate in substance (household responsibility system piloted in Anhui province, allowing farmers to sell surplus after meeting state quotas, later adopted nationally), but the year is wrong. Multiple independent, non-Wikipedia sources — China Daily, a Cambridge Core (Journal of Institutional Economics) peer-reviewed article, an SOAS academic working paper, and World of Chinese magazine — consistently date the actual pilot to November-December 1978, when 18-20 farmers in Xiaogang village, Fengyang county, Anhui province, secretly signed a contract dividing collective land among households. The dramatic harvest results (grain yield exceeding 70,000 kg, equaling 1955-1970 combined) came in 1979, and provincial/national government endorsement (Wan Li's visit, Deng Xiaoping's praise) came in January/1980, with national spread through 1982-1983. But the 'piloting' act itself — the event this record describes — occurred in 1978, not 1979. This is a one-year date error, so per the hard rules (year wrong → FALSE with corrected_year) rather than PARTIAL (which requires year to hold).",
+        "source": "https://www.cambridge.org/core/journals/journal-of-institutional-economics/article/resolving-douglass-c-norths-puzzle-concerning-chinas-household-responsibility-system/7627E68395A4A2FC24566233F08F287C",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1978
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://www.cambridge.org/core/journals/journal-of-institutional-economics/article/resolving-douglass-c-norths-puzzle-concerning-chinas-household-responsibility-system/7627E68395A4A2FC24566233F08F287C"
   },
   {
     "year": 1980,
@@ -1514,13 +1528,13 @@
   {
     "year": 1983,
     "title": "Economic reforms expand to urban industry",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: 1983–1984 urban reform expansion; TVEs confirmed.; Pass 2 FALSE: Multiple independent sources (Library of Congress Country Studies, Britannica, IMF, academic histories) consistently date the systematic expansion of China's economic reforms from agriculture into urban industry to 1984, anchored by the October 1984 CCP Third Plenum \"Decision on Reform of the Economic Structure,\" which for the first time comprehensively addressed granting state enterprises greater autonomy/separating ownership from operations. Country Studies states explicitly: \"Economic reform in urban areas...began on an experimental basis in 1979 but was not undertaken on a large scale until 1984.\" Separately, the term 'Township and Village Enterprises' (TVEs) — named specifically in the event description — was only officially adopted by the State Council in March 1984 (replacing 'commune and brigade enterprises'), and the oft-cited TVE growth-engine statistics (6.06 million TVEs, 170.6bn yuan output, surpassing primary-industry output for the first time) are reported for 1984, not 1983. There were genuine incremental 1983 steps (April 1983 'Interim Ordinances on State-operated Enterprises' extending the profit-retention/tax-for-profit system to nearly the whole industrial sector), but the described milestone — a systemic pivot to urban industry plus the TVE growth-engine narrative — is materially a 1984 event, not 1983. Because the year itself appears wrong rather than just a magnitude/actor/scope detail, this is scored FALSE (wrong year) rather than PARTIAL, per the hard rules (PARTIAL requires year to hold).. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
-    "source_independence": "n/a",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm concrete 1983 urban-industry reform actions in China matching the description. (1) In January 1983 the State Council launched stage-1 of the \"li gai shui\" (tax-for-profit) reform, replacing full profit remittance with a tax system for state-owned enterprises — explicitly described in sources as \"an important measure of enterprise reform and city economic reform.\" (2) In April 1983 the State Council issued the \"Interim Ordinances on State-Owned Enterprises,\" which for the first time defined an enterprise as a legal person with the right of independent production and operations — i.e., materially \"greater autonomy\" for state enterprises. (3) Private businesses (getihu/private enterprises) grew from 5.9 million to 11.7 million between 1983 and 1985 and, per the sourced account, \"slowly became more prominent in the cities\" during this window, matching \"permitting private businesses\" moving into urban areas. (4) Rural collective enterprises (commune/brigade enterprises, renamed Township and Village Enterprises in March 1984) had already grown their added value from 20.8 billion yuan (1978) to 40.8 billion yuan by 1983, i.e., were already emerging as a major growth engine by 1983 even before the TVE label was formally adopted the following year. Country (China) and year (1983) both hold, and the substantive claims (urban-industry reform expansion, state-enterprise autonomy, permitted private business, rural-enterprise growth engine) are all corroborated for 1983 or the immediately surrounding period by independent, non-off-limits sources (ScienceDirect academic review of 40 years of SOE reform; CIKD analysis of TVE evolution). The only soft anachronism is that the specific term \"TVE\" was coined in March 1984 rather than 1983, but the underlying phenomenon it describes was already well underway in 1983 — not material enough to downgrade below TRUE.",
+    "verify_count": 3,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
@@ -1544,8 +1558,21 @@
           "method": "web_search"
         },
         "corrected_year": 1984
+      },
+      {
+        "pass_n": 3,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm concrete 1983 urban-industry reform actions in China matching the description. (1) In January 1983 the State Council launched stage-1 of the \"li gai shui\" (tax-for-profit) reform, replacing full profit remittance with a tax system for state-owned enterprises — explicitly described in sources as \"an important measure of enterprise reform and city economic reform.\" (2) In April 1983 the State Council issued the \"Interim Ordinances on State-Owned Enterprises,\" which for the first time defined an enterprise as a legal person with the right of independent production and operations — i.e., materially \"greater autonomy\" for state enterprises. (3) Private businesses (getihu/private enterprises) grew from 5.9 million to 11.7 million between 1983 and 1985 and, per the sourced account, \"slowly became more prominent in the cities\" during this window, matching \"permitting private businesses\" moving into urban areas. (4) Rural collective enterprises (commune/brigade enterprises, renamed Township and Village Enterprises in March 1984) had already grown their added value from 20.8 billion yuan (1978) to 40.8 billion yuan by 1983, i.e., were already emerging as a major growth engine by 1983 even before the TVE label was formally adopted the following year. Country (China) and year (1983) both hold, and the substantive claims (urban-industry reform expansion, state-enterprise autonomy, permitted private business, rural-enterprise growth engine) are all corroborated for 1983 or the immediately surrounding period by independent, non-off-limits sources (ScienceDirect academic review of 40 years of SOE reform; CIKD analysis of TVE evolution). The only soft anachronism is that the specific term \"TVE\" was coined in March 1984 rather than 1983, but the underlying phenomenon it describes was already well underway in 1983 — not material enough to downgrade below TRUE.",
+        "source": "https://www.sciencedirect.com/science/article/pii/S1755309119300437",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://www.sciencedirect.com/science/article/pii/S1755309119300437"
   },
   {
     "year": 1984,

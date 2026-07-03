@@ -25,30 +25,6 @@
   },
   {
     "year": 1953,
-    "title": "Pact of Madrid: US Military Bases End Spain's Cold War Isolation",
-    "verdict": "FALSE",
-    "reason": "Event says 'four strategic bases' — actual agreement established five major bases (four air bases + one naval base at Rota). Materially wrong fact.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Event says 'four strategic bases' — actual agreement established five major bases (four air bases + one naval base at Rota). Materially wrong fact.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1953,
     "title": "Concordat with the Holy See Cements Church-State Alliance",
     "verdict": "TRUE",
     "reason": "Confirmed: signed 27 August 1953 between Spain and Vatican.",
@@ -62,6 +38,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Confirmed: signed 27 August 1953 between Spain and Vatican.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1953,
+    "title": "Pact of Madrid: US Military Bases End Spain's Cold War Isolation",
+    "verdict": "FALSE",
+    "reason": "Event says 'four strategic bases' — actual agreement established five major bases (four air bases + one naval base at Rota). Materially wrong fact.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Event says 'four strategic bases' — actual agreement established five major bases (four air bases + one naval base at Rota). Materially wrong fact.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -289,30 +289,6 @@
   },
   {
     "year": 1973,
-    "title": "ETA Assassinates Prime Minister Carrero Blanco",
-    "verdict": "TRUE",
-    "reason": "Confirmed: 20 December 1973, car bomb under Carrero Blanco's vehicle in central Madrid.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: 20 December 1973, car bomb under Carrero Blanco's vehicle in central Madrid.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1973,
     "title": "Arab Oil Embargo Ends Spain's Economic Miracle Decade",
     "verdict": "TRUE",
     "reason": "Confirmed: October 1973 oil embargo hit Spain severely due to dependence on imported petroleum.",
@@ -336,10 +312,10 @@
     ]
   },
   {
-    "year": 1975,
-    "title": "Franco Executes Five Political Prisoners Despite International Appeals",
+    "year": 1973,
+    "title": "ETA Assassinates Prime Minister Carrero Blanco",
     "verdict": "TRUE",
-    "reason": "Confirmed: 27 September 1975, two ETA and three FRAP members executed despite widespread international protests.",
+    "reason": "Confirmed: 20 December 1973, car bomb under Carrero Blanco's vehicle in central Madrid.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -349,7 +325,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: 27 September 1975, two ETA and three FRAP members executed despite widespread international protests.",
+        "reason": "Confirmed: 20 December 1973, car bomb under Carrero Blanco's vehicle in central Madrid.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -374,6 +350,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Confirmed: died 20 November 1975 from heart failure.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1975,
+    "title": "Franco Executes Five Political Prisoners Despite International Appeals",
+    "verdict": "TRUE",
+    "reason": "Confirmed: 27 September 1975, two ETA and three FRAP members executed despite widespread international protests.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: 27 September 1975, two ETA and three FRAP members executed despite widespread international protests.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -816,6 +816,42 @@
     ]
   },
   {
+    "year": 1992,
+    "title": "Hispasat 1A Becomes Spain's First Satellite",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm all material details: Hispasat 1A, Spain's first satellite, launched on an Ariane 4 (Ariane-44LP) rocket from the Guiana Space Centre near Kourou, French Guiana, on 11 September 1992 (local Spain-referenced date; Kourou local time was 10 September 23:04, which UTC/Spain time converts to 11 September — a documented timezone nuance, not a factual error). It weighed 2,194 kg at launch and was placed in geostationary orbit at 30° West. It began commercial broadcasting on 5 December 1992, transmitting the OTI Festival (held in Valencia) to launch Retevisión/RTVE's transatlantic broadcast service. All figures (weight, date, orbital slot, launch vehicle, launch site, first broadcast event and date) match the event description exactly.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Hispasat's own official blog and Wikipedia/Gunter's Space Page) confirm every material detail: Hispasat 1A was Spain's first satellite, launched on an Ariane 4 (44LP variant) from Kourou, French Guiana on 11 September 1992 (23:04 local Kourou time on Sept 10, which is 11 Sept in UTC/Spain time — a timezone artifact, not a factual error), placed in geostationary orbit at 30°W, with a launch mass of 2,194 kg exactly matching the description. Commercial broadcasting service began 5 December 1992 with the OTI Festival 1992 (held in Valencia) transmitted via Retevisión's DBS channel, reaching audiences from New York to Tierra del Fuego, exactly as described. All magnitudes, actors, dates and scope match; this made Spain one of the small number of nations with its own satellite fleet at the time.",
+        "source": "https://blog.hispasat.com/en/articulo/116/hispasat-1a-30-years-without-stopping-dreaming",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material details: Hispasat 1A, Spain's first satellite, launched on an Ariane 4 (Ariane-44LP) rocket from the Guiana Space Centre near Kourou, French Guiana, on 11 September 1992 (local Spain-referenced date; Kourou local time was 10 September 23:04, which UTC/Spain time converts to 11 September — a documented timezone nuance, not a factual error). It weighed 2,194 kg at launch and was placed in geostationary orbit at 30° West. It began commercial broadcasting on 5 December 1992, transmitting the OTI Festival (held in Valencia) to launch Retevisión/RTVE's transatlantic broadcast service. All figures (weight, date, orbital slot, launch vehicle, launch site, first broadcast event and date) match the event description exactly.",
+        "source": "https://en.wikipedia.org/wiki/Hispasat_1A",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Hispasat_1A"
+  },
+  {
     "year": 1993,
     "title": "Peseta Devalued Three Times as EMS Crisis Triggers Recession",
     "verdict": "TRUE",
@@ -1177,30 +1213,6 @@
   },
   {
     "year": 2011,
-    "title": "Indignados 15-M Movement Occupies City Squares Across Spain",
-    "verdict": "TRUE",
-    "reason": "Confirmed: 15 May 2011, occupation of Puerta del Sol and squares across Spain; seeded Podemos.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: 15 May 2011, occupation of Puerta del Sol and squares across Spain; seeded Podemos.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2011,
     "title": "ETA Announces Permanent Cessation of Armed Activity",
     "verdict": "TRUE",
     "reason": "Confirmed: announced 20–21 October 2011 via video, following Aiete peace conference.",
@@ -1214,6 +1226,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Confirmed: announced 20–21 October 2011 via video, following Aiete peace conference.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2011,
+    "title": "Indignados 15-M Movement Occupies City Squares Across Spain",
+    "verdict": "TRUE",
+    "reason": "Confirmed: 15 May 2011, occupation of Puerta del Sol and squares across Spain; seeded Podemos.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: 15 May 2011, occupation of Puerta del Sol and squares across Spain; seeded Podemos.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1369,30 +1405,6 @@
   },
   {
     "year": 2017,
-    "title": "Catalonia's Illegal Independence Referendum and Article 155",
-    "verdict": "TRUE",
-    "reason": "Confirmed: 1 October 2017 referendum; 27 October UDI declared; Senate invoked Article 155 same day.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: 1 October 2017 referendum; 27 October UDI declared; Senate invoked Article 155 same day.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2017,
     "title": "Barcelona La Rambla Attack Kills 13 in Spain's Worst Jihadist Strike",
     "verdict": "TRUE",
     "reason": "Confirmed: 17 August 2017, 13 killed initially (one more died 10 days later for total 14); Cambrils second attack hours later.",
@@ -1406,6 +1418,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Confirmed: 17 August 2017, 13 killed initially (one more died 10 days later for total 14); Cambrils second attack hours later.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2017,
+    "title": "Catalonia's Illegal Independence Referendum and Article 155",
+    "verdict": "TRUE",
+    "reason": "Confirmed: 1 October 2017 referendum; 27 October UDI declared; Senate invoked Article 155 same day.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: 1 October 2017 referendum; 27 October UDI declared; Senate invoked Article 155 same day.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",

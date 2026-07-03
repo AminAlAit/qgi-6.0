@@ -49,6 +49,42 @@
   },
   {
     "year": 1992,
+    "title": "CSIRO Files Landmark Wi-Fi Patent, Inventing Modern Wireless Networking",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources (CSIRO's own official site, Wikipedia, National Museum of Australia, patentology blog, Google Patents record) confirm every material detail: CSIRO's radio-astronomy team led by Dr John O'Sullivan, with Terry Percival, Diet Ostry, Graham Daniels and John Deane, developed a WLAN technique combining OFDM, forward error correction and interleaving to overcome multipath distortion; an Australian patent application was filed in 1992 and the corresponding US application was filed 23 Nov 1993, exactly matching the '1992-93' filing description. The core US patent US5,487,069 ('Wireless LAN') was granted 23 January 1996, confirmed on Google Patents. CSIRO's own current webpage states the invention 'is embedded in more than 15 billion devices worldwide,' matching the description's figure verbatim, and the technology underpins the 802.11a/g Wi-Fi standards, for which CSIRO collected $430M+ in licensing/settlements. One contrarian tech-blog source (Hackaday, 2024) argues the patent's original claims centered on 60GHz applications and that CSIRO wasn't part of the 802.11 working group, so 'invented Wi-Fi' is a loose simplification of 'invented a wireless-LAN technique later incorporated into Wi-Fi standards' — but the event description itself is carefully worded ('technical basis of Wi-Fi', not 'invented the 802.11 standard'), matching the mainstream, court-validated, and CSIRO-endorsed characterization. All year, country, actor, and technical details hold.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources: CSIRO's radiophysics/ICT Centre team led by John O'Sullivan, with Terry Percival, Diet Ostry, Graham Daniels and John Deane, developed a wireless LAN technique combining OFDM, forward error correction, and interleaving to overcome multipath distortion. Australian patent application was filed in 1992 (US application followed in 1993), matching the described '1992-93' filing window. The core US patent no. 5,487,069 was granted 23 January 1996, exactly as stated. CSIRO's own published materials state the invention is now embedded in 'more than 15 billion devices worldwide,' matching the description verbatim. All key indicators (actors, year, country, technical description, patent number, grant date, device-count claim) check out materially as described.",
+        "source": "https://www.csiro.au/en/research/technology-space/it/WLAN",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (CSIRO's own official site, Wikipedia, National Museum of Australia, patentology blog, Google Patents record) confirm every material detail: CSIRO's radio-astronomy team led by Dr John O'Sullivan, with Terry Percival, Diet Ostry, Graham Daniels and John Deane, developed a WLAN technique combining OFDM, forward error correction and interleaving to overcome multipath distortion; an Australian patent application was filed in 1992 and the corresponding US application was filed 23 Nov 1993, exactly matching the '1992-93' filing description. The core US patent US5,487,069 ('Wireless LAN') was granted 23 January 1996, confirmed on Google Patents. CSIRO's own current webpage states the invention 'is embedded in more than 15 billion devices worldwide,' matching the description's figure verbatim, and the technology underpins the 802.11a/g Wi-Fi standards, for which CSIRO collected $430M+ in licensing/settlements. One contrarian tech-blog source (Hackaday, 2024) argues the patent's original claims centered on 60GHz applications and that CSIRO wasn't part of the 802.11 working group, so 'invented Wi-Fi' is a loose simplification of 'invented a wireless-LAN technique later incorporated into Wi-Fi standards' — but the event description itself is carefully worded ('technical basis of Wi-Fi', not 'invented the 802.11 standard'), matching the mainstream, court-validated, and CSIRO-endorsed characterization. All year, country, actor, and technical details hold.",
+        "source": "https://www.csiro.au/en/research/technology-space/it/wireless-lan",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.csiro.au/en/research/technology-space/it/wireless-lan"
+  },
+  {
+    "year": 1992,
     "title": "Mabo Decision Overturns Terra Nullius Doctrine",
     "verdict": "TRUE",
     "reason": "High Court ruled 3 June 1992 in Mabo v Queensland (No 2), rejecting terra nullius.",
@@ -73,30 +109,6 @@
   },
   {
     "year": 1993,
-    "title": "Native Title Act Gives Legislative Effect to Mabo",
-    "verdict": "TRUE",
-    "reason": "Native Title Act 1993 passed by Keating government, commenced 1 January 1994.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Native Title Act 1993 passed by Keating government, commenced 1 January 1994.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1993,
     "title": "Keating Wins Surprise 1993 Federal Election",
     "verdict": "TRUE",
     "reason": "Labor won fifth consecutive term. Hewson's GST-centred Fightback! platform defeated. Surprise result confirmed.",
@@ -110,6 +122,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Labor won fifth consecutive term. Hewson's GST-centred Fightback! platform defeated. Surprise result confirmed.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1993,
+    "title": "Native Title Act Gives Legislative Effect to Mabo",
+    "verdict": "TRUE",
+    "reason": "Native Title Act 1993 passed by Keating government, commenced 1 January 1994.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Native Title Act 1993 passed by Keating government, commenced 1 January 1994.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -241,30 +277,6 @@
   },
   {
     "year": 1999,
-    "title": "Republic Referendum Defeated Despite Majority Support",
-    "verdict": "TRUE",
-    "reason": "54.87% voted No (rounds to 55%). Model was parliamentary appointment not direct election — event description is correct on this point.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "54.87% voted No (rounds to 55%). Model was parliamentary appointment not direct election — event description is correct on this point.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1999,
     "title": "Australia Leads INTERFET Peacekeeping Force in East Timor",
     "verdict": "TRUE",
     "reason": "INTERFET deployed 20 September 1999, commanded by Australian Major General Cosgrove. Largest deployment since Vietnam.",
@@ -288,10 +300,10 @@
     ]
   },
   {
-    "year": 2000,
-    "title": "Sydney Hosts Summer Olympic Games",
+    "year": 1999,
+    "title": "Republic Referendum Defeated Despite Majority Support",
     "verdict": "TRUE",
-    "reason": "Sydney 2000 widely praised. Cathy Freeman won gold in 400m, carried both flags as symbol of reconciliation.",
+    "reason": "54.87% voted No (rounds to 55%). Model was parliamentary appointment not direct election — event description is correct on this point.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -301,7 +313,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Sydney 2000 widely praised. Cathy Freeman won gold in 400m, carried both flags as symbol of reconciliation.",
+        "reason": "54.87% voted No (rounds to 55%). Model was parliamentary appointment not direct election — event description is correct on this point.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -336,10 +348,10 @@
     ]
   },
   {
-    "year": 2001,
-    "title": "Tampa Affair Transforms Immigration Policy",
+    "year": 2000,
+    "title": "Sydney Hosts Summer Olympic Games",
     "verdict": "TRUE",
-    "reason": "MV Tampa carrying 433 rescued asylum seekers; military deployed; Pacific Solution of offshore detention on Nauru followed.",
+    "reason": "Sydney 2000 widely praised. Cathy Freeman won gold in 400m, carried both flags as symbol of reconciliation.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -349,7 +361,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "MV Tampa carrying 433 rescued asylum seekers; military deployed; Pacific Solution of offshore detention on Nauru followed.",
+        "reason": "Sydney 2000 widely praised. Cathy Freeman won gold in 400m, carried both flags as symbol of reconciliation.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -374,6 +386,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "First-ever ANZUS invocation, three days after 9/11. SAS troops committed to Afghanistan under Operation Enduring Freedom.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2001,
+    "title": "Tampa Affair Transforms Immigration Policy",
+    "verdict": "TRUE",
+    "reason": "MV Tampa carrying 433 rescued asylum seekers; military deployed; Pacific Solution of offshore detention on Nauru followed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "MV Tampa carrying 433 rescued asylum seekers; military deployed; Pacific Solution of offshore detention on Nauru followed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -577,30 +613,6 @@
   },
   {
     "year": 2008,
-    "title": "National Apology to Stolen Generations Delivered",
-    "verdict": "TRUE",
-    "reason": "Rudd delivered formal apology 13 February 2008, first order of business in parliament. Passed unanimously.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Rudd delivered formal apology 13 February 2008, first order of business in parliament. Passed unanimously.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2008,
     "title": "Global Financial Crisis Tests Australian Economy",
     "verdict": "TRUE",
     "reason": "Multiple independent sources confirm all material elements: Australia was among a small handful of OECD/developed economies to avoid a technical recession (two consecutive quarters of negative GDP growth) during the 2008-09 GFC, with only one negative quarter (Dec 2008, -0.5%). Analysts attribute this to rapid RBA rate cuts, continued Chinese demand for resources (iron ore/mining exports), and the Rudd government's fiscal stimulus. The Rudd government's stimulus packages are well documented: an initial $10.4 billion package (Oct/Dec 2008) plus a $42 billion Nation Building and Jobs Plan (Feb 2009) sum to about $52.4 billion — matching 'totalling over 50 billion dollars' (some broader tallies across all five 2008-09 stimulus initiatives put the figure even higher, up to ~$75bn). Year/country/category all hold; description is materially accurate.",
@@ -634,6 +646,30 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Great_Recession_in_Oceania"
+  },
+  {
+    "year": 2008,
+    "title": "National Apology to Stolen Generations Delivered",
+    "verdict": "TRUE",
+    "reason": "Rudd delivered formal apology 13 February 2008, first order of business in parliament. Passed unanimously.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Rudd delivered formal apology 13 February 2008, first order of business in parliament. Passed unanimously.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 2009,
@@ -829,30 +865,6 @@
   },
   {
     "year": 2015,
-    "title": "Turnbull Ousts Abbott in Liberal Leadership Challenge",
-    "verdict": "TRUE",
-    "reason": "Turnbull defeated Abbott 54-44 on 14 September 2015. Cited economic leadership and 30 consecutive Newspoll losses.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Turnbull defeated Abbott 54-44 on 14 September 2015. Cited economic leadership and 30 consecutive Newspoll losses.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2015,
     "title": "China-Australia Free Trade Agreement Enters Force",
     "verdict": "TRUE",
     "reason": "ChAFTA entered into force 20 December 2015. China confirmed as Australia's largest trading partner.",
@@ -876,10 +888,10 @@
     ]
   },
   {
-    "year": 2017,
-    "title": "Same-Sex Marriage Legalised After Postal Survey",
+    "year": 2015,
+    "title": "Turnbull Ousts Abbott in Liberal Leadership Challenge",
     "verdict": "TRUE",
-    "reason": "61.6% voted Yes in November 2017. Marriage Act amended in December 2017.",
+    "reason": "Turnbull defeated Abbott 54-44 on 14 September 2015. Cited economic leadership and 30 consecutive Newspoll losses.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -889,7 +901,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "61.6% voted Yes in November 2017. Marriage Act amended in December 2017.",
+        "reason": "Turnbull defeated Abbott 54-44 on 14 September 2015. Cited economic leadership and 30 consecutive Newspoll losses.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -924,10 +936,10 @@
     ]
   },
   {
-    "year": 2018,
-    "title": "Morrison Replaces Turnbull After Leadership Spill",
+    "year": 2017,
+    "title": "Same-Sex Marriage Legalised After Postal Survey",
     "verdict": "TRUE",
-    "reason": "Morrison defeated Dutton 45-40 on 24 August 2018. No PM had served a full term since Howard.",
+    "reason": "61.6% voted Yes in November 2017. Marriage Act amended in December 2017.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -937,7 +949,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Morrison defeated Dutton 45-40 on 24 August 2018. No PM had served a full term since Howard.",
+        "reason": "61.6% voted Yes in November 2017. Marriage Act amended in December 2017.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -972,10 +984,10 @@
     ]
   },
   {
-    "year": 2019,
-    "title": "Morrison Wins Surprise Federal Election Victory",
+    "year": 2018,
+    "title": "Morrison Replaces Turnbull After Leadership Spill",
     "verdict": "TRUE",
-    "reason": "Coalition won May 2019 defying all polling. Queensland result key. Shorten resigned Labor leadership.",
+    "reason": "Morrison defeated Dutton 45-40 on 24 August 2018. No PM had served a full term since Howard.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -985,7 +997,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Coalition won May 2019 defying all polling. Queensland result key. Shorten resigned Labor leadership.",
+        "reason": "Morrison defeated Dutton 45-40 on 24 August 2018. No PM had served a full term since Howard.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1020,10 +1032,10 @@
     ]
   },
   {
-    "year": 2020,
-    "title": "COVID-19 Border Closures and Economic Response",
+    "year": 2019,
+    "title": "Morrison Wins Surprise Federal Election Victory",
     "verdict": "TRUE",
-    "reason": "Near-total international travel ban. JobKeeper total cost ~$130 billion (event says 'exceeding 90 billion' — conservative undercount). Supported over 3.5 million workers confirmed.",
+    "reason": "Coalition won May 2019 defying all polling. Queensland result key. Shorten resigned Labor leadership.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1033,7 +1045,31 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Near-total international travel ban. JobKeeper total cost ~$130 billion (event says 'exceeding 90 billion' — conservative undercount). Supported over 3.5 million workers confirmed.",
+        "reason": "Coalition won May 2019 defying all polling. Queensland result key. Shorten resigned Labor leadership.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "title": "Brereton Report Reveals War Crimes in Afghanistan",
+    "verdict": "TRUE",
+    "reason": "Released 19 November 2020. 39 unlawful killings by 25 personnel. Criminal referrals and reassessment of special forces culture followed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Released 19 November 2020. 39 unlawful killings by 25 personnel. Criminal referrals and reassessment of special forces culture followed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1069,9 +1105,9 @@
   },
   {
     "year": 2020,
-    "title": "Brereton Report Reveals War Crimes in Afghanistan",
+    "title": "COVID-19 Border Closures and Economic Response",
     "verdict": "TRUE",
-    "reason": "Released 19 November 2020. 39 unlawful killings by 25 personnel. Criminal referrals and reassessment of special forces culture followed.",
+    "reason": "Near-total international travel ban. JobKeeper total cost ~$130 billion (event says 'exceeding 90 billion' — conservative undercount). Supported over 3.5 million workers confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1081,7 +1117,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Released 19 November 2020. 39 unlawful killings by 25 personnel. Criminal referrals and reassessment of special forces culture followed.",
+        "reason": "Near-total international travel ban. JobKeeper total cost ~$130 billion (event says 'exceeding 90 billion' — conservative undercount). Supported over 3.5 million workers confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1189,30 +1225,6 @@
   },
   {
     "year": 2023,
-    "title": "Voice to Parliament Referendum Defeated",
-    "verdict": "TRUE",
-    "reason": "39.9% Yes, defeated nationally and in all six states. Significant setback for Indigenous recognition.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "39.9% Yes, defeated nationally and in all six states. Significant setback for Indigenous recognition.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2023,
     "title": "AUKUS Submarine Pathway Details Announced",
     "verdict": "TRUE",
     "reason": "San Diego announcement March 2023. Virginia-class SSNs, then SSN-AUKUS. Total cost $286-386 billion AUD (event says 'exceeded 360 billion' — within the reported range).",
@@ -1250,6 +1262,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "80.5% barley tariff removed effective 5 August 2023. Followed Albanese government diplomatic engagement.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "title": "Voice to Parliament Referendum Defeated",
+    "verdict": "TRUE",
+    "reason": "39.9% Yes, defeated nationally and in all six states. Significant setback for Indigenous recognition.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "39.9% Yes, defeated nationally and in all six states. Significant setback for Indigenous recognition.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
