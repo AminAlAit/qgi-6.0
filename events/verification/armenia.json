@@ -1390,5 +1390,41 @@
         }
       }
     ]
+  },
+  {
+    "year": 1998,
+    "title": "France Officially Recognizes the Armenian Genocide",
+    "verdict": "PARTIAL",
+    "reason": "Country/date/actor and diplomatic-fallout details are correct: on May 29, 1998, the French National Assembly did adopt (unanimously among deputies present) a one-sentence proposition de loi stating \"France recognizes the Armenian genocide of 1915,\" using the Socialist group's reserved-order-of-business slot, and Turkey did protest and threaten trade/diplomatic retaliation. However, the description's core claim that the Assembly \"passed a law officially recognizing the Armenian Genocide\" that day is materially imprecise: this was only a first-chamber vote on a bill, not an enacted law. The bill then sat blocked in the Senate for over two years (neither the government nor the Conference of Presidents would schedule it), and France's actual law recognizing the genocide — Law No. 2001-70 — was not adopted by the Senate until January 2001 and was only promulgated by President Chirac on January 29, 2001, nearly three years after the Assembly vote described here. So the \"template for subsequent campaigns\" framing fits the 1998 vote, but calling it a completed \"law\" in 1998 overstates its legal status at that time.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Country/date/actor and diplomatic-fallout details are correct: on May 29, 1998, the French National Assembly did adopt (unanimously among deputies present) a one-sentence proposition de loi stating \"France recognizes the Armenian genocide of 1915,\" using the Socialist group's reserved-order-of-business slot, and Turkey did protest and threaten trade/diplomatic retaliation. However, the description's core claim that the Assembly \"passed a law officially recognizing the Armenian Genocide\" that day is materially imprecise: this was only a first-chamber vote on a bill, not an enacted law. The bill then sat blocked in the Senate for over two years (neither the government nor the Conference of Presidents would schedule it), and France's actual law recognizing the genocide — Law No. 2001-70 — was not adopted by the Senate until January 2001 and was only promulgated by President Chirac on January 29, 2001, nearly three years after the Assembly vote described here. So the \"template for subsequent campaigns\" framing fits the 1998 vote, but calling it a completed \"law\" in 1998 overstates its legal status at that time.",
+        "source": "https://fr.wikipedia.org/wiki/Loi_fran%C3%A7aise_relative_%C3%A0_la_reconnaissance_du_g%C3%A9nocide_arm%C3%A9nien_de_1915",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm that on May 29, 1998, the French National Assembly adopted (without government opposition) a bill stating \"France publicly recognizes the Armenian genocide of 1915\" — the first time a French Republic legislative text explicitly used the word \"genocide\" regarding 1915. This triggered strong Turkish diplomatic protests, as described. One nuance: the Senate initially blocked the text and it did not become fully enacted/promulgated law until January 29-30, 2001; the May 1998 National Assembly vote was the first-chamber adoption, not the final presidential promulgation. However, this is the standard way the event is described in historical accounts (including contemporaneous 1998 reporting, e.g. RFE/RL's \"French Parliament's Recognition of 1915 Genocide Angers Turkey\"), and the core facts — year (1998), exact date (May 29), actor (French National Assembly), and substance (recognition of the 1915 Armenian genocide, Turkish diplomatic protest, France as an early major Western recognizer, later becoming a template cited by subsequent genocide-recognition campaigns) — all check out as materially accurate.",
+        "source": "https://fr.wikipedia.org/wiki/Loi_fran%C3%A7aise_relative_%C3%A0_la_reconnaissance_du_g%C3%A9nocide_arm%C3%A9nien_de_1915",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://fr.wikipedia.org/wiki/Loi_fran%C3%A7aise_relative_%C3%A0_la_reconnaissance_du_g%C3%A9nocide_arm%C3%A9nien_de_1915"
   }
 ]

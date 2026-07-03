@@ -2,12 +2,12 @@
   {
     "year": 1951,
     "title": "Berber cultural identity movement suppressed",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: Berberist crisis of 1949-1951 and FLN divisions are well-documented; French suppression of Kabyle activism confirmed.; Pass 2 FALSE: Multiple independent (non-Wikipedia) sources on the 'crise berbériste' consistently describe it as an internal purge carried out BY the Algerian nationalist party (PPA-MTLD) itself, under Messali Hadj's leadership, against Kabyle/Berberist-leaning militants within its own ranks — not a crackdown by French colonial authorities on an external Berber cultural/political movement. WebFetch of algeriepatriotique.com explicitly states 'the MTLD/PPA party itself' repressed the activists, describing it as a power struggle over strategy (legalism vs. armed uprising) rather than French colonial repression of Berber identity. The core crisis also dates to 1949 (originating March/June 1949, with the party's federal conference proclaiming resolution in December 1950), not 1951 as stated in the event. No source found documents a distinct 1951 French-authorities crackdown on a Berber cultural/political movement. The described actor (French authorities) is materially wrong and the year is materially off, so this does not hold as TRUE or PARTIAL.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
+    "verdict": "FALSE",
+    "reason": "Every independent academic/journalistic source found (Persée/Ouerdane 1987, British Journal of Middle Eastern Studies/tandfonline, Cairn.info/Ali Guenoun's monograph, MERIP) dates the \"Berberist crisis\" (crise berbériste) — both the internal MTLD ideological rupture AND the associated arrests/expulsions of Kabyle militants (Amar Ould Hamouda, Saïd Oubouzar, Omar Oussedik, Omar Boudaoud, Ouali Bennai, Ali Yahia Abdennour, etc.) — to 1949, not 1951. Sources also complicate the description's framing: the repression was primarily an internal MTLD/PPA leadership purge (expulsion, marginalization, factional sanctioning of \"berbériste\" militants by Messali Hadj's apparatus) rather than a \"French authorities crack down\" action; French colonial police (Renseignements généraux) did arrest a handful of the same Kabyle leaders in 1949, but as a secondary actor, not the primary driver framed in the description. I found no independent corroboration of a distinct or continuing crackdown specifically in 1951 (the only 1951-52 repressive episode found in this period was the unrelated Organisation Spéciale (OS) trials, a different paramilitary-network affair, not a Berberist-identity crackdown). Since the year does not hold (off by two years) this does not qualify as PARTIAL; it is FALSE with corrected year 1949.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
     "source_independence": "independent",
     "verifications": [
       {
@@ -32,8 +32,22 @@
           "method": "web_search"
         },
         "corrected_year": 1949
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "Every independent academic/journalistic source found (Persée/Ouerdane 1987, British Journal of Middle Eastern Studies/tandfonline, Cairn.info/Ali Guenoun's monograph, MERIP) dates the \"Berberist crisis\" (crise berbériste) — both the internal MTLD ideological rupture AND the associated arrests/expulsions of Kabyle militants (Amar Ould Hamouda, Saïd Oubouzar, Omar Oussedik, Omar Boudaoud, Ouali Bennai, Ali Yahia Abdennour, etc.) — to 1949, not 1951. Sources also complicate the description's framing: the repression was primarily an internal MTLD/PPA leadership purge (expulsion, marginalization, factional sanctioning of \"berbériste\" militants by Messali Hadj's apparatus) rather than a \"French authorities crack down\" action; French colonial police (Renseignements généraux) did arrest a handful of the same Kabyle leaders in 1949, but as a secondary actor, not the primary driver framed in the description. I found no independent corroboration of a distinct or continuing crackdown specifically in 1951 (the only 1951-52 repressive episode found in this period was the unrelated Organisation Spéciale (OS) trials, a different paramilitary-network affair, not a Berberist-identity crackdown). Since the year does not hold (off by two years) this does not qualify as PARTIAL; it is FALSE with corrected year 1949.",
+        "source": "https://www.persee.fr/doc/remmm_0035-1474_1987_num_44_1_2153",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1949
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://www.persee.fr/doc/remmm_0035-1474_1987_num_44_1_2153"
   },
   {
     "year": 1952,
@@ -913,12 +927,12 @@
   {
     "year": 1965,
     "title": "Nationalization of French mining interests begins",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: Progressive nationalizations of French/foreign mining and industrial interests under Boumediene confirmed.; Pass 2 FALSE: Multiple independent sources (Algerian state press agency APS, El Watan, TransactionDAlgerie) confirm the mining nationalization decree — targeting 11 major mines including El Ouenza, Hammam N'baïls, Boukaïd, Sidi Kamber, and Miliana, and creating BAREM (later SONAREM) — was announced by Boumediene on 6 May 1966, not 1965. Boumediene only seized power in a coup on 19 June 1965, leaving no realistic window for a mining nationalization program to have 'begun' within calendar year 1965; sources describing 1965 events characterize that year's oil-sector move as a 51% state-participation agreement with French companies (short of nationalization), not a mining nationalization. The event as described (progressive nationalization of French/foreign mining interests as part of economic sovereignty) is real and materially accurate, but it began in 1966, one year later than stated. Wikipedia was excluded per source-independence rule; the finding rests on aps.dz (Algeria's official press agency), elwatan.dz, and transactiondalgerie.com.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
+    "verdict": "FALSE",
+    "reason": "Boumediene seized power in a coup on 19 June 1965, but the actual nationalization of French/foreign mining interests did not begin until the following year. Multiple independent, non-Wikipedia/non-aps.dz sources converge on 1966: twala.info states \"1966: An Ordinance established the foundation for mining nationalization,\" placing mines (Ouenza, Boukhadra, Gara Djebilet, Sidi Kamber, COMIPHOS) under state control via BAREM then SONAREM. Grokipedia's mining-industry-of-Algeria page and an EBSCO/aggregated search snippet both independently give the specific date of the nationalization decree as 6-7 May 1966 (with a follow-up ordinance 14 July 1966), \"a year after Houari Boumédiène seized power,\" alongside nationalization of foreign insurance companies the same year. No source found shows any mining/industrial nationalization action taken in 1965 itself — that year was occupied by the coup and its immediate aftermath, with the Evian Accords cooperation framework (1962) still nominally in effect through 1965. The event's substance (Boumediene government progressively nationalizing French mining/industrial interests as an economic-sovereignty program) is real and well documented, but it began in 1966, not 1965 — a one-year date error, which per the hard rules makes this FALSE (wrong year) rather than TRUE/PARTIAL, since year+country must both hold for PARTIAL.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
     "source_independence": "independent",
     "verifications": [
       {
@@ -943,8 +957,22 @@
           "method": "web_search"
         },
         "corrected_year": 1966
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "Boumediene seized power in a coup on 19 June 1965, but the actual nationalization of French/foreign mining interests did not begin until the following year. Multiple independent, non-Wikipedia/non-aps.dz sources converge on 1966: twala.info states \"1966: An Ordinance established the foundation for mining nationalization,\" placing mines (Ouenza, Boukhadra, Gara Djebilet, Sidi Kamber, COMIPHOS) under state control via BAREM then SONAREM. Grokipedia's mining-industry-of-Algeria page and an EBSCO/aggregated search snippet both independently give the specific date of the nationalization decree as 6-7 May 1966 (with a follow-up ordinance 14 July 1966), \"a year after Houari Boumédiène seized power,\" alongside nationalization of foreign insurance companies the same year. No source found shows any mining/industrial nationalization action taken in 1965 itself — that year was occupied by the coup and its immediate aftermath, with the Evian Accords cooperation framework (1962) still nominally in effect through 1965. The event's substance (Boumediene government progressively nationalizing French mining/industrial interests as an economic-sovereignty program) is real and well documented, but it began in 1966, not 1965 — a one-year date error, which per the hard rules makes this FALSE (wrong year) rather than TRUE/PARTIAL, since year+country must both hold for PARTIAL.",
+        "source": "https://twala.info/en/business-en/sovereignty-to-the-letter-how-algeria-won-the-subsoil-battlethen-lost-the-contract-war/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1966
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://twala.info/en/business-en/sovereignty-to-the-letter-how-algeria-won-the-subsoil-battlethen-lost-the-contract-war/"
   },
   {
     "year": 1966,
@@ -1024,12 +1052,12 @@
   {
     "year": 1968,
     "title": "Agrarian Revolution program announced",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: Boumediene announced Agrarian Revolution plans; implemented from 1971. Confirmed.; Pass 2 FALSE: Multiple independent academic and journalistic sources (Persée/CNRS academic journals, Cairn.info, ElWatan, Cato Institute, Jacobin) consistently date Boumediene's announcement and promulgation of the Agrarian Revolution to November 1971 (Ordinance 71-73, 'Charter of the Agrarian Revolution' promulgated 8 Nov 1971, with a seminar 10-13 Nov 1971 where Boumediene outlined the reform's philosophy) — not 1968. No independent, non-Wikipedia source was found corroborating a distinct 1968 announcement of these plans. The description's own claim that the program was 'implemented from 1971 onwards' aligns with when the reform was both announced AND launched in reality, indicating the input year of 1968 is a factual error rather than a legitimate 'announcement precedes implementation' gap.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources consistently place Boumediene's announcement/launch of the Agrarian Revolution in 1971, not 1968. countrystudies.us states plainly: \"Dissolution of the state farming sector was announced in 1971 by Boumediene, who introduced an agrarian reform program that called for breaking up large state-owned farms and redistributing them to landless peasants.\" A separate search result (via country-data.com content) notes President Boumediene announced the agrarian program in July 1971, with the formal Charter of the Agrarian Revolution promulgated November 8, 1971, and the first implementation stage (land registration) beginning March 1972 — matching the event description's own claim that 'the program was implemented from 1971 onwards.' One source even indicates Boumediene had merely 'promised' agrarian reform back in 1966, but no source found mentions any 1968 announcement of the program. Since the description's core content (redistribution of land from large landholders to poor peasants, complementing earlier autogestion, uneven/contested implementation) matches the real 1971 Agrarian Revolution, but the stated year (1968) does not match any documented announcement date, this is a year error rather than a fabricated event.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
     "source_independence": "independent",
     "verifications": [
       {
@@ -1054,18 +1082,32 @@
           "method": "web_search"
         },
         "corrected_year": 1971
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources consistently place Boumediene's announcement/launch of the Agrarian Revolution in 1971, not 1968. countrystudies.us states plainly: \"Dissolution of the state farming sector was announced in 1971 by Boumediene, who introduced an agrarian reform program that called for breaking up large state-owned farms and redistributing them to landless peasants.\" A separate search result (via country-data.com content) notes President Boumediene announced the agrarian program in July 1971, with the formal Charter of the Agrarian Revolution promulgated November 8, 1971, and the first implementation stage (land registration) beginning March 1972 — matching the event description's own claim that 'the program was implemented from 1971 onwards.' One source even indicates Boumediene had merely 'promised' agrarian reform back in 1966, but no source found mentions any 1968 announcement of the program. Since the description's core content (redistribution of land from large landholders to poor peasants, complementing earlier autogestion, uneven/contested implementation) matches the real 1971 Agrarian Revolution, but the stated year (1968) does not match any documented announcement date, this is a year error rather than a fabricated event.",
+        "source": "https://countrystudies.us/algeria/90.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1971
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://countrystudies.us/algeria/90.htm"
   },
   {
     "year": 1969,
     "title": "Algeria nationalizes majority stake in French oil companies",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: Algeria's 51% controlling stake in French oil company operations confirmed as step toward 1971 full nationalization.; Pass 2 FALSE: The 51% nationalization of French oil company assets (CFP and ERAP/Elf-Erap) in Algeria did not happen in 1969. Multiple independent sources place this action in February 1971: the US State Department's Office of the Historian documents state 'in February 1971, the Algerian Government unilaterally nationalized enough of the French companies' assets to raise its participation in them to 51 percent,' with President Boumediene's formal announcement on February 24, 1971 (also seizing 100% of gas infrastructure). In 1969, the relevant developments were Algeria joining OPEC and disputes over oil taxation revision with France, not a 51% equity seizure. The description's substance (51% stake, France oil sovereignty step) is real, but the year is wrong by two years, so this cannot be TRUE or PARTIAL for 1969 — it is FALSE with corrected_year 1971.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
+    "verdict": "FALSE",
+    "reason": "Algeria's 51% nationalization of French oil company operations did not occur in 1969. Multiple independent sources (encyclopedia.com, the Garavini academic paper via humanityjournal.org, Wikipedia/state.gov corroboration) consistently date this to February 24, 1971, when President Boumediene's government unilaterally raised its stake in French petroleum assets to 51% and fully nationalized natural gas fields. In 1969, Algeria's key oil-related development was joining OPEC, and Sonatrach bought out remaining foreign (CFP/Shell, not majority-French) interests in the Algiers refinery — neither matches the described 51% seizure of French oil operations. The event is real and materially matches the description, but the year is off by two years.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
     "source_independence": "independent",
     "verifications": [
       {
@@ -1090,8 +1132,22 @@
           "method": "web_search"
         },
         "corrected_year": 1971
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "Algeria's 51% nationalization of French oil company operations did not occur in 1969. Multiple independent sources (encyclopedia.com, the Garavini academic paper via humanityjournal.org, Wikipedia/state.gov corroboration) consistently date this to February 24, 1971, when President Boumediene's government unilaterally raised its stake in French petroleum assets to 51% and fully nationalized natural gas fields. In 1969, Algeria's key oil-related development was joining OPEC, and Sonatrach bought out remaining foreign (CFP/Shell, not majority-French) interests in the Algiers refinery — neither matches the described 51% seizure of French oil operations. The event is real and materially matches the description, but the year is off by two years.",
+        "source": "https://www.encyclopedia.com/books/politics-and-business-magazines/entreprise-nationale-sonatrach",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1971
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://www.encyclopedia.com/books/politics-and-business-magazines/entreprise-nationale-sonatrach"
   },
   {
     "year": 1971,
@@ -3200,5 +3256,77 @@
       }
     ],
     "source": "https://rsf.org/en/country/algeria"
+  },
+  {
+    "year": 2024,
+    "title": "Algeria expels French ambassador and military attachés",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources (Morocco World News, Wikipedia's Algeria–France relations page, Kenyan Foreign Policy, allAfrica, globalsecurity.org, Al Jazeera, Middle East Eye) confirm that on 30 July 2024, following Macron's letter recognizing Morocco's autonomy plan for Western Sahara as the 'only' solution, it was ALGERIA that recalled its OWN ambassador from Paris (reducing its Paris mission to a chargé d'affaires) — not France's ambassador being expelled by Algeria. France, separately, summoned its own ambassador Stéphane Romatet back to Paris for consultations. No source found any mention of French 'military attachés' being expelled in July 2024. The actual expulsion of French diplomatic/consular staff (12 officials) did not occur until April 2025, triggered by an unrelated matter (indictment of Algerian nationals over the 2024 Amir Boukhors kidnapping case in Paris), and France's tit-for-tat retaliation expelled Algerian diplomats and recalled its own ambassador — again, no 'military attachés' specified. The described event inverts the actual action (Algeria expelling France's ambassador vs. the real fact of Algeria recalling its own ambassador) and adds an unconfirmed detail (military attachés), so it did not happen as described in July 2024.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The described event did not happen as stated. In July 2024, after Macron announced France's recognition of Moroccan sovereignty over Western Sahara, it was ALGERIA that withdrew/recalled ITS OWN ambassador FROM France (Algerian FM statement, 'withdrawal with immediate effect' of its ambassador) — the opposite action of 'Algeria expels the French ambassador.' The French ambassador to Algeria, Stéphane Romatet, was NOT expelled or recalled in July 2024; he remained in post and was even summoned by Algeria's foreign ministry for a reprimand as late as December 2024. There is no corroboration anywhere of French 'military attachés' being expelled in July 2024. A real expulsion of French personnel (12 embassy officials, not specifically the ambassador or military attachés) did occur, but in April 2025, and it was triggered by a different, unrelated incident (the arrest/indictment of an Algerian consular official in France over an alleged kidnapping of a dissident) — not directly the Western Sahara recognition. France's own ambassador recall from Algiers likewise occurred around the 2025 crisis, not July 2024. So while the underlying context (Western Sahara-driven diplomatic rupture, worst since independence) is real and dated correctly to July 2024, the specific claimed actions — Algeria expelling the French ambassador and attachés, and France reciprocally recalling its ambassador — are factually inverted/fabricated for that year.",
+        "source": "https://www.moroccoworldnews.com/2024/07/16534/western-sahara-algeria-recalls-ambassador-from-france/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Morocco World News, Wikipedia's Algeria–France relations page, Kenyan Foreign Policy, allAfrica, globalsecurity.org, Al Jazeera, Middle East Eye) confirm that on 30 July 2024, following Macron's letter recognizing Morocco's autonomy plan for Western Sahara as the 'only' solution, it was ALGERIA that recalled its OWN ambassador from Paris (reducing its Paris mission to a chargé d'affaires) — not France's ambassador being expelled by Algeria. France, separately, summoned its own ambassador Stéphane Romatet back to Paris for consultations. No source found any mention of French 'military attachés' being expelled in July 2024. The actual expulsion of French diplomatic/consular staff (12 officials) did not occur until April 2025, triggered by an unrelated matter (indictment of Algerian nationals over the 2024 Amir Boukhors kidnapping case in Paris), and France's tit-for-tat retaliation expelled Algerian diplomats and recalled its own ambassador — again, no 'military attachés' specified. The described event inverts the actual action (Algeria expelling France's ambassador vs. the real fact of Algeria recalling its own ambassador) and adds an unconfirmed detail (military attachés), so it did not happen as described in July 2024.",
+        "source": "https://en.wikipedia.org/wiki/Algeria%E2%80%93France_relations",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Algeria%E2%80%93France_relations"
+  },
+  {
+    "year": 2022,
+    "title": "Algeria joins BRICS+ discussions; deepens ties with Russia and China",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm all material elements in 2022: Algeria's President Tebboune publicly voiced interest in joining BRICS in July 2022, invoking Algeria's non-aligned tradition; Algeria officially submitted its BRICS membership application on November 7, 2022 via Foreign Ministry envoy Leila Zerrouki; Russia's FM Lavrov publicly welcomed the bid, calling Algeria a \"leading contender,\" evidencing deepened Russia ties. Separately, Algeria abstained on the UN General Assembly's March 2, 2022 resolution condemning Russia's invasion of Ukraine, and again abstained on the October 2022 resolution condemning Russia's annexation of Ukrainian territories (143-5-35 vote), consistent with a non-interference/non-alignment stance. All country, year, and substantive details align with the event description.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material elements for 2022. (1) Algeria expressed interest in BRICS as early as June 2022 (Tebboun was first guest speaker at the BRICS virtual summit) and officially submitted a formal application to join BRICS on November 7, 2022, welcomed by Russia and China (Lavrov called Algeria a 'leading contender'). (2) Algeria abstained (rather than voting yes) on UN General Assembly resolutions condemning Russia's invasion of Ukraine in March 2022 and on the resolution condemning Russia's annexation of Ukrainian regions in October 2022, consistent with its stated non-alignment/non-interference tradition. (3) Its rationale is widely reported as balancing Western energy partnerships (gas exports to Europe) against strategic ties with Russia (major arms supplier, mutual UN support on Western Sahara) and China. All core claims — country (Algeria), year (2022), BRICS application, Russia/China tie deepening, UN abstention, non-alignment framing — are corroborated by independent, non-overlapping outlets (CGTN, Africanews, Middle East Monitor, Morocco World News, Al Jazeera/Brookings), none of which are on the off-limits list (which is empty).",
+        "source": "https://newsaf.cgtn.com/news/2022-11-08/Algeria-officially-submits-application-to-join-the-BRICS-1eMb4SFA0uc/index.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material elements in 2022: Algeria's President Tebboune publicly voiced interest in joining BRICS in July 2022, invoking Algeria's non-aligned tradition; Algeria officially submitted its BRICS membership application on November 7, 2022 via Foreign Ministry envoy Leila Zerrouki; Russia's FM Lavrov publicly welcomed the bid, calling Algeria a \"leading contender,\" evidencing deepened Russia ties. Separately, Algeria abstained on the UN General Assembly's March 2, 2022 resolution condemning Russia's invasion of Ukraine, and again abstained on the October 2022 resolution condemning Russia's annexation of Ukrainian territories (143-5-35 vote), consistent with a non-interference/non-alignment stance. All country, year, and substantive details align with the event description.",
+        "source": "https://newsaf.cgtn.com/news/2022-11-08/Algeria-officially-submits-application-to-join-the-BRICS-1eMb4SFA0uc/index.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://newsaf.cgtn.com/news/2022-11-08/Algeria-officially-submits-application-to-join-the-BRICS-1eMb4SFA0uc/index.html"
   }
 ]

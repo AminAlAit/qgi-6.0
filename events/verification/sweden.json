@@ -401,6 +401,42 @@
   },
   {
     "year": 1981,
+    "title": "Nordic Mobile Telephone Network Launches, First International Cellular System",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm all material details: NMT opened for commercial service on 1 October 1981 in Sweden and Norway, was the world's first fully automatic, international cellular network with cross-border roaming, Denmark and Finland joined in 1982, and by 1985 the network reached 110,000 subscribers making it the world's largest mobile network at the time. Ericsson's own historical archive corroborates independently of Wikipedia.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Wikipedia, Ericsson's own corporate history page, and telecom-history sites) confirm NMT opened for commercial service in Sweden and Norway on 1 October 1981, described as the world's first automatic, international cellular network with cross-border roaming built into the standard. Denmark and Finland joined in 1982, confirmed. By 1985 the network reached 110,000 subscribers across Scandinavia/Finland, making it the world's largest mobile network at the time — this exact figure is stated verbatim on Wikipedia. All material details in the event description (country, year, date, roaming-first claim, 1982 expansion, 1985 subscriber count) check out. Minor footnote (not material): Ericsson ran a small pilot deployment of NMT-like tech in Saudi Arabia one month earlier as a 1,200-user test, but this does not contradict the described Nordic commercial launch or its roaming/international-first significance.",
+        "source": "https://en.wikipedia.org/wiki/Nordic_Mobile_Telephone",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material details: NMT opened for commercial service on 1 October 1981 in Sweden and Norway, was the world's first fully automatic, international cellular network with cross-border roaming, Denmark and Finland joined in 1982, and by 1985 the network reached 110,000 subscribers making it the world's largest mobile network at the time. Ericsson's own historical archive corroborates independently of Wikipedia.",
+        "source": "https://en.wikipedia.org/wiki/Nordic_Mobile_Telephone",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Nordic_Mobile_Telephone"
+  },
+  {
+    "year": 1981,
     "title": "Soviet Submarine U-137 Runs Aground Near Naval Base",
     "verdict": "TRUE",
     "reason": "Soviet Whiskey-class submarine S-363 (nicknamed U-137 in Sweden) ran aground on 27 October 1981 approximately 10 km from the Karlskrona naval base in a restricted military zone, creating a major Cold War incident known as 'Whiskey on the Rocks.'",
@@ -476,31 +512,6 @@
   },
   {
     "year": 1986,
-    "title": "Prime Minister Olof Palme Assassinated in Stockholm",
-    "verdict": "TRUE",
-    "reason": "Olof Palme was shot and killed on 28 February 1986 while walking home from a cinema on Sveavägen in central Stockholm without bodyguard protection. The case remained officially unsolved for decades and was closed in 2020 pointing to Stig Engström, though his status as suspect was again revised in December 2025.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Olof Palme was shot and killed on 28 February 1986 while walking home from a cinema on Sveavägen in central Stockholm without bodyguard protection. The case remained officially unsolved for decades and was closed in 2020 pointing to Stig Engström, though his status as suspect was again revised in December 2025.",
-        "source": "https://en.wikipedia.org/wiki/Assassination_of_Olof_Palme",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Assassination_of_Olof_Palme"
-  },
-  {
-    "year": 1986,
     "title": "Chernobyl Fallout Reaches Sweden, Exposing Soviet Concealment",
     "verdict": "TRUE",
     "reason": "On 28 April 1986 radiation alarms at the Forsmark Nuclear Power Plant in Sweden (over 1,000 km from Chernobyl) were the first outside the Soviet Union to detect the disaster, forcing the USSR to acknowledge the accident publicly.",
@@ -523,6 +534,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Chernobyl_disaster"
+  },
+  {
+    "year": 1986,
+    "title": "Prime Minister Olof Palme Assassinated in Stockholm",
+    "verdict": "TRUE",
+    "reason": "Olof Palme was shot and killed on 28 February 1986 while walking home from a cinema on Sveavägen in central Stockholm without bodyguard protection. The case remained officially unsolved for decades and was closed in 2020 pointing to Stig Engström, though his status as suspect was again revised in December 2025.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Olof Palme was shot and killed on 28 February 1986 while walking home from a cinema on Sveavägen in central Stockholm without bodyguard protection. The case remained officially unsolved for decades and was closed in 2020 pointing to Stig Engström, though his status as suspect was again revised in December 2025.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Olof_Palme",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Assassination_of_Olof_Palme"
   },
   {
     "year": 1988,
@@ -801,31 +837,6 @@
   },
   {
     "year": 2000,
-    "title": "Stockholm International Forum on the Holocaust Launches",
-    "verdict": "TRUE",
-    "reason": "Sweden hosted the Stockholm International Forum on the Holocaust on 27–29 January 2000, attended by 46 governments. The Stockholm Declaration was unanimously adopted and the International Holocaust Remembrance Alliance was established.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Sweden hosted the Stockholm International Forum on the Holocaust on 27–29 January 2000, attended by 46 governments. The Stockholm Declaration was unanimously adopted and the International Holocaust Remembrance Alliance was established.",
-        "source": "https://holocaustremembrance.com/resources/stockholm-declaration",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://holocaustremembrance.com/resources/stockholm-declaration"
-  },
-  {
-    "year": 2000,
     "title": "Privatization Wave Accelerates Under Persson Government",
     "verdict": "TRUE",
     "reason": "On 13 June 2000, approximately one-third of state-owned Telia's shares were listed on the Stockholm Stock Exchange in a public offering under the Persson government, reflecting Sweden's post-crisis embrace of market competition.",
@@ -848,6 +859,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Telia_Company"
+  },
+  {
+    "year": 2000,
+    "title": "Stockholm International Forum on the Holocaust Launches",
+    "verdict": "TRUE",
+    "reason": "Sweden hosted the Stockholm International Forum on the Holocaust on 27–29 January 2000, attended by 46 governments. The Stockholm Declaration was unanimously adopted and the International Holocaust Remembrance Alliance was established.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sweden hosted the Stockholm International Forum on the Holocaust on 27–29 January 2000, attended by 46 governments. The Stockholm Declaration was unanimously adopted and the International Holocaust Remembrance Alliance was established.",
+        "source": "https://holocaustremembrance.com/resources/stockholm-declaration",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://holocaustremembrance.com/resources/stockholm-declaration"
   },
   {
     "year": 2003,
@@ -1001,6 +1037,31 @@
   },
   {
     "year": 2010,
+    "title": "Rosengård Riots Highlight Suburban Integration Failures",
+    "verdict": "PARTIAL",
+    "reason": "The most documented Rosengård riots occurred in December 2008 (not 2010) when closure of an Islamic cultural centre sparked violent clashes in Malmö's Rosengård suburb. The entry's year is inaccurate; the broader integration-failure narrative is accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The most documented Rosengård riots occurred in December 2008 (not 2010) when closure of an Islamic cultural centre sparked violent clashes in Malmö's Rosengård suburb. The entry's year is inaccurate; the broader integration-failure narrative is accurate.",
+        "source": "https://en.wikipedia.org/wiki/2008_Malm%C3%B6_mosque_riots",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2008_Malm%C3%B6_mosque_riots"
+  },
+  {
+    "year": 2010,
     "title": "Stockholm Suicide Bombing: First Islamist Attack on Swedish Soil",
     "verdict": "TRUE",
     "reason": "On 11 December 2010 Taimour Abdulwahab al-Abdaly detonated explosives on Drottninggatan in central Stockholm, killing only himself; a second car bomb failed to detonate. He cited Sweden's presence in Afghanistan and Lars Vilks cartoons in a warning message.",
@@ -1048,31 +1109,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2010_Swedish_general_election"
-  },
-  {
-    "year": 2010,
-    "title": "Rosengård Riots Highlight Suburban Integration Failures",
-    "verdict": "PARTIAL",
-    "reason": "The most documented Rosengård riots occurred in December 2008 (not 2010) when closure of an Islamic cultural centre sparked violent clashes in Malmö's Rosengård suburb. The entry's year is inaccurate; the broader integration-failure narrative is accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "PARTIAL",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "PARTIAL",
-        "reason": "The most documented Rosengård riots occurred in December 2008 (not 2010) when closure of an Islamic cultural centre sparked violent clashes in Malmö's Rosengård suburb. The entry's year is inaccurate; the broader integration-failure narrative is accurate.",
-        "source": "https://en.wikipedia.org/wiki/2008_Malm%C3%B6_mosque_riots",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2008_Malm%C3%B6_mosque_riots"
   },
   {
     "year": 2013,
@@ -1276,31 +1312,6 @@
   },
   {
     "year": 2020,
-    "title": "Sweden's COVID-19 Strategy Avoids Lockdown, Sparks Global Debate",
-    "verdict": "TRUE",
-    "reason": "Sweden under chief epidemiologist Anders Tegnell relied on voluntary measures and kept schools and businesses open while other European countries locked down; Sweden suffered higher early death tolls than Nordic neighbours before later outcomes converged.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Sweden under chief epidemiologist Anders Tegnell relied on voluntary measures and kept schools and businesses open while other European countries locked down; Sweden suffered higher early death tolls than Nordic neighbours before later outcomes converged.",
-        "source": "https://en.wikipedia.org/wiki/Swedish_government_response_to_the_COVID-19_pandemic",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Swedish_government_response_to_the_COVID-19_pandemic"
-  },
-  {
-    "year": 2020,
     "title": "Gang Violence Bombings Reach Record Levels",
     "verdict": "PARTIAL",
     "reason": "Gang-related explosive and shooting violence in Sweden surged dramatically through the 2010s and 2020; however, specific data shows 366 shootings in 2020 and bombings in the hundreds, but the claim of 100+ bombings as a single-year record for all of Scandinavia could not be precisely verified for 2020 specifically.",
@@ -1323,6 +1334,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Bombings_in_Sweden"
+  },
+  {
+    "year": 2020,
+    "title": "Sweden's COVID-19 Strategy Avoids Lockdown, Sparks Global Debate",
+    "verdict": "TRUE",
+    "reason": "Sweden under chief epidemiologist Anders Tegnell relied on voluntary measures and kept schools and businesses open while other European countries locked down; Sweden suffered higher early death tolls than Nordic neighbours before later outcomes converged.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sweden under chief epidemiologist Anders Tegnell relied on voluntary measures and kept schools and businesses open while other European countries locked down; Sweden suffered higher early death tolls than Nordic neighbours before later outcomes converged.",
+        "source": "https://en.wikipedia.org/wiki/Swedish_government_response_to_the_COVID-19_pandemic",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Swedish_government_response_to_the_COVID-19_pandemic"
   },
   {
     "year": 2021,
@@ -1426,9 +1462,9 @@
   },
   {
     "year": 2023,
-    "title": "Turkey Drops NATO Veto After Swedish Concessions",
+    "title": "Gang Violence Surge Prompts Army Deployment Debate",
     "verdict": "TRUE",
-    "reason": "At the Vilnius summit on 10 July 2023, Turkey agreed to forward Sweden's accession protocol to its parliament after Sweden amended laws, expanded counter-terrorism cooperation, resumed arms exports to Turkey, and provided a terrorism roadmap. Hungary later ratified clearing the final obstacle.",
+    "reason": "A wave of gang-related shootings and explosions in 2023 — Sweden's rate of fatal shootings reached among the highest in Europe — prompted the Kristersson government to consider using the military to assist police in troubled areas, and drove urgent criminal-justice legislation.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1438,8 +1474,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "At the Vilnius summit on 10 July 2023, Turkey agreed to forward Sweden's accession protocol to its parliament after Sweden amended laws, expanded counter-terrorism cooperation, resumed arms exports to Turkey, and provided a terrorism roadmap. Hungary later ratified clearing the final obstacle.",
-        "source": "https://www.nato.int/en/news-and-events/articles/news/2023/07/10/nato-secretary-general-welcomes-turkiyes-decision-to-forward-sweden-accession-protocols-to-parliament",
+        "reason": "A wave of gang-related shootings and explosions in 2023 — Sweden's rate of fatal shootings reached among the highest in Europe — prompted the Kristersson government to consider using the military to assist police in troubled areas, and drove urgent criminal-justice legislation.",
+        "source": "https://en.wikipedia.org/wiki/Gun_violence_in_Sweden",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1447,7 +1483,7 @@
         }
       }
     ],
-    "source": "https://www.nato.int/en/news-and-events/articles/news/2023/07/10/nato-secretary-general-welcomes-turkiyes-decision-to-forward-sweden-accession-protocols-to-parliament"
+    "source": "https://en.wikipedia.org/wiki/Gun_violence_in_Sweden"
   },
   {
     "year": 2023,
@@ -1476,9 +1512,9 @@
   },
   {
     "year": 2023,
-    "title": "Gang Violence Surge Prompts Army Deployment Debate",
+    "title": "Turkey Drops NATO Veto After Swedish Concessions",
     "verdict": "TRUE",
-    "reason": "A wave of gang-related shootings and explosions in 2023 — Sweden's rate of fatal shootings reached among the highest in Europe — prompted the Kristersson government to consider using the military to assist police in troubled areas, and drove urgent criminal-justice legislation.",
+    "reason": "At the Vilnius summit on 10 July 2023, Turkey agreed to forward Sweden's accession protocol to its parliament after Sweden amended laws, expanded counter-terrorism cooperation, resumed arms exports to Turkey, and provided a terrorism roadmap. Hungary later ratified clearing the final obstacle.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1488,8 +1524,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "A wave of gang-related shootings and explosions in 2023 — Sweden's rate of fatal shootings reached among the highest in Europe — prompted the Kristersson government to consider using the military to assist police in troubled areas, and drove urgent criminal-justice legislation.",
-        "source": "https://en.wikipedia.org/wiki/Gun_violence_in_Sweden",
+        "reason": "At the Vilnius summit on 10 July 2023, Turkey agreed to forward Sweden's accession protocol to its parliament after Sweden amended laws, expanded counter-terrorism cooperation, resumed arms exports to Turkey, and provided a terrorism roadmap. Hungary later ratified clearing the final obstacle.",
+        "source": "https://www.nato.int/en/news-and-events/articles/news/2023/07/10/nato-secretary-general-welcomes-turkiyes-decision-to-forward-sweden-accession-protocols-to-parliament",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1497,7 +1533,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Gun_violence_in_Sweden"
+    "source": "https://www.nato.int/en/news-and-events/articles/news/2023/07/10/nato-secretary-general-welcomes-turkiyes-decision-to-forward-sweden-accession-protocols-to-parliament"
   },
   {
     "year": 2024,

@@ -1102,5 +1102,113 @@
         }
       }
     ]
+  },
+  {
+    "year": 1994,
+    "title": "Cyclone Geralda Devastates Vanilla Plantations in Northeast",
+    "verdict": "FALSE",
+    "reason": "Cyclone Geralda is a real, well-documented storm, but its documented facts contradict the event as described on two material axes — location and magnitude — with no independent evidence supporting the vanilla-plantation claim. Geralda formed 26 Jan 1994 and made landfall on 2 Feb 1994 'just north of Toamasina' (east-central Madagascar), not in the northeastern Sava/vanilla region (Sambava-Antalaha-Vohemar-Andapa). Its worst-hit areas per Wikipedia/NOAA/reliefweb sources were Toamasina province and the capital Antananarivo (43 deaths from flooding there). The national death toll was 'at least 231, with 73 missing' — roughly 3x the '70' claimed. No source found (English or French) documents Geralda destroying vanilla-plantation infrastructure in Sava specifically; general crop-damage figures cited are national (rice, cattle, 'export crops like vanilla and coffee' as a generic phrase, not Sava-specific). Notably, a different storm — Cyclone Nadia — did make landfall in the Sava region near Antalaha/Vohemar, but in March 1994 (not January) and killed only 12 people, not 70. The described event appears to conflate the real, large Toamasina-area cyclone (Geralda, 231 dead) with the real but much smaller Sava-region cyclone (Nadia, 12 dead, wrong month) into a hybrid narrative that matches neither storm's actual location/toll. Country and storm-year are correct, but the core described event (where it struck, how many died, and the vanilla-plantation devastation) is not supported and is contradicted by primary sources.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Cyclone Geralda did strike Madagascar in 1994 (formed 26 Jan, made landfall 2 Feb), but every independently corroborated detail of this event contradicts the description. Multiple independent sources (Wikipedia, NOAA/AOML, ReliefWeb-sourced summaries) agree Geralda made landfall just north of Toamasina, on Madagascar's central-east coast — not in the Sava region of the northeast, which is roughly 500+ km away and is the country's vanilla-growing heartland (Antalaha/Sambava/Vohemar). Regional impact reports name Toamasina, Île Sainte-Marie, Fénérive, Brickaville, and Antananarivo — never Sava, Antalaha, or Sambava. The death toll is also materially wrong: sources consistently give 231 dead (with 73 missing), not 70. No source found (English or French-language searches) ties Cyclone Geralda to vanilla plantation destruction; well-documented vanilla-crop cyclone disasters in Madagascar's history are the 2000 cyclone and 2017's Cyclone Enawo, not Geralda in 1994. Given the wrong region (which undercuts the entire vanilla-plantation premise) plus a >3x death-toll discrepancy, this is not a minor magnitude slip but a materially false account, so verdict is FALSE rather than PARTIAL. Year is not the issue (1994 is correct for Geralda), so corrected_year is left null.",
+        "source": "https://en.wikipedia.org/wiki/Cyclone_Geralda",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Cyclone Geralda is a real, well-documented storm, but its documented facts contradict the event as described on two material axes — location and magnitude — with no independent evidence supporting the vanilla-plantation claim. Geralda formed 26 Jan 1994 and made landfall on 2 Feb 1994 'just north of Toamasina' (east-central Madagascar), not in the northeastern Sava/vanilla region (Sambava-Antalaha-Vohemar-Andapa). Its worst-hit areas per Wikipedia/NOAA/reliefweb sources were Toamasina province and the capital Antananarivo (43 deaths from flooding there). The national death toll was 'at least 231, with 73 missing' — roughly 3x the '70' claimed. No source found (English or French) documents Geralda destroying vanilla-plantation infrastructure in Sava specifically; general crop-damage figures cited are national (rice, cattle, 'export crops like vanilla and coffee' as a generic phrase, not Sava-specific). Notably, a different storm — Cyclone Nadia — did make landfall in the Sava region near Antalaha/Vohemar, but in March 1994 (not January) and killed only 12 people, not 70. The described event appears to conflate the real, large Toamasina-area cyclone (Geralda, 231 dead) with the real but much smaller Sava-region cyclone (Nadia, 12 dead, wrong month) into a hybrid narrative that matches neither storm's actual location/toll. Country and storm-year are correct, but the core described event (where it struck, how many died, and the vanilla-plantation devastation) is not supported and is contradicted by primary sources.",
+        "source": "https://en.wikipedia.org/wiki/Cyclone_Geralda",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Cyclone_Geralda"
+  },
+  {
+    "year": 1970,
+    "title": "Southern Drought Triggers Famine in Grand Sud Region",
+    "verdict": "TRUE",
+    "reason": "Independently corroborated by two separate English Wikipedia articles. The \"Kere (famine)\" article lists a documented famine cycle named \"Menaleogne\"/\"Zaramofo\" spanning 1970-1972 in Madagascar's Deep South (Grand Sud), triggered by drought/El Niño, severe enough that the government distributed emergency bread aid and it later triggered a proclamation of Antandroy secession. The separate \"Rotaka\" article independently confirms that \"impoverished peasants in Androy\" rose up in 1971 in part due to \"the failure of the government to provide disaster relief in response to a serious drought,\" and that a Kere famine event in the south around this time fed into the 1971-72 rotaka uprising that toppled President Tsiranana's government. Both sources agree on country (Madagascar), region (Androy/Deep South, encompassing the Androy and Mahafaly areas), the causal mechanism (drought → famine, \"Kere\"), and the timeframe (1970-1972, matching the given start year of 1970). The specific magnitude (\"hundreds of thousands affected\") and the \"international\" (vs. domestic government) framing of food aid were not independently quantified/confirmed in the sources found, but these are minor, plausible details consistent with the well-documented scale of the region's recurring Kere famines, and do not contradict the core, well-corroborated event. No off-limits domains were used.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent corroboration found: Wikipedia's \"Kere (famine)\" article contains a historical table entry for a famine named \"Menaleogne\" ('Red Pounder'), also called \"Zaramofo\" ('Distribution of Bread'), dated 1970–1972, caused by El Niño-driven drought, geographically scoped to Madagascar's \"Deep South\" (the region comprising Androy and Mahafaly territories, i.e. the Grand Sud), with impact described as having \"triggered proclamation of Antandroy secession\" — the government distributed bread as emergency food aid during the crisis. This matches the core claims: country (Madagascar), year (1970 as the drought/famine's start year, continuing into 1971-72), region and affected peoples (Grand Sud, Androy, Mahafaly), causal mechanism (drought), and emergency food-aid response. Related searches on the 1971-72 \"Rotaka\" uprising and Antandroy unrest corroborate that a severe famine/drought crisis in this exact period and region fed into major political consequences, consistent with the description's claim that \"the crisis highlighted the chronic vulnerability of southern Madagascar to climate variability.\" One detail is not independently confirmed: the description specifies \"international food aid,\" whereas my best source describes government-distributed bread aid rather than explicitly international assistance — a minor, non-disqualifying gap given the other strong matches on country, year, region, cause, and scale of crisis. No off-limits domains were used (none were listed as off-limits).",
+        "source": "https://en.wikipedia.org/wiki/Kere_(famine)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated by two separate English Wikipedia articles. The \"Kere (famine)\" article lists a documented famine cycle named \"Menaleogne\"/\"Zaramofo\" spanning 1970-1972 in Madagascar's Deep South (Grand Sud), triggered by drought/El Niño, severe enough that the government distributed emergency bread aid and it later triggered a proclamation of Antandroy secession. The separate \"Rotaka\" article independently confirms that \"impoverished peasants in Androy\" rose up in 1971 in part due to \"the failure of the government to provide disaster relief in response to a serious drought,\" and that a Kere famine event in the south around this time fed into the 1971-72 rotaka uprising that toppled President Tsiranana's government. Both sources agree on country (Madagascar), region (Androy/Deep South, encompassing the Androy and Mahafaly areas), the causal mechanism (drought → famine, \"Kere\"), and the timeframe (1970-1972, matching the given start year of 1970). The specific magnitude (\"hundreds of thousands affected\") and the \"international\" (vs. domestic government) framing of food aid were not independently quantified/confirmed in the sources found, but these are minor, plausible details consistent with the well-documented scale of the region's recurring Kere famines, and do not contradict the core, well-corroborated event. No off-limits domains were used.",
+        "source": "https://en.wikipedia.org/wiki/Kere_(famine)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Kere_(famine)"
+  },
+  {
+    "year": 2025,
+    "title": "Political Opposition Organizes for Electoral Reform Ahead of Next Cycle",
+    "verdict": "FALSE",
+    "reason": "This description frames 2025 as a continuation of a gradual opposition-vs-government standoff over electoral reform, mediated by SADC 'ahead of the next election cycle' — implying the Rajoelina government remained in place and stable. That is not what happened. From late September 2025, Gen-Z-led protests over water/power shortages and corruption escalated rapidly; on 11-13 October 2025 the elite CAPSAT military unit backed the protesters, seized Antananarivo, and President Andry Rajoelina fled the country. Colonel Michael Randrianirina was sworn in as transitional president on 17 October. The military junta suspended the Electoral Commission (CENI), the High Constitutional Court, and the Constitution itself. SADC's mediation efforts (Panel of Elders, roadmap deadlines, dialogue-readiness reports) that followed were aimed at managing the POST-COUP transition and a path back to elections around 2027 — not at 'bridging the gulf between the government and opposition' while Rajoelina's government persisted toward a routine next election. Genuine electoral-reform activity (voter-list overhaul, CENI legal-framework consultations) is documented, but it occurred under the transitional government from December 2025 onward, not as pre-coup opposition pressure on a sitting Rajoelina administration. The description omits/misrepresents the year's defining political event (a coup and full regime change) and substitutes a much milder continuity narrative that did not hold for 2025. This is a material mischaracterization, not a minor magnitude/actor detail, so it does not meet the TRUE or PARTIAL bar despite country and nominal year being correct.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The description depicts 2025 Madagascar as a year of routine, low-intensity opposition/civil-society advocacy for electoral reform with SADC quietly mediating a government-opposition 'gulf' ahead of a future vote. That is not what happened. 2025 in Madagascar was dominated by: (1) May 2025 legislative elections won by Rajoelina's IRMAR coalition amid fraud/irregularity allegations from the Safidy Electoral Observatory and a SADC monitoring mission; (2) Gen Z-led mass protests from late September through October 2025 sparked by chronic power and water outages that escalated into demands for Rajoelina's resignation; and (3) a military coup on 12-17 October 2025 in which the CAPSAT unit overthrew Rajoelina (who fled the country and was impeached) and installed Colonel Michael Randrianirina as transitional president, with the military suspending the electoral commission and other institutions. SADC's 2025 engagement was not routine pre-election mediation 'to bridge the gulf ahead of the next election cycle' as described, but emergency post-coup crisis diplomacy (a Panel of Elders led by Joyce Banda, tasked in Dec 2025 with getting a transitional roadmap toward a 2027 constitutional referendum/election). The event description omits the coup entirely and mischaracterizes the nature and trigger of SADC's involvement, which is a material misrepresentation of scope and substance, not a minor detail error. Country and year are correct, but the event as described did not occur.",
+        "source": "https://en.wikipedia.org/wiki/2025_Malagasy_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "This description frames 2025 as a continuation of a gradual opposition-vs-government standoff over electoral reform, mediated by SADC 'ahead of the next election cycle' — implying the Rajoelina government remained in place and stable. That is not what happened. From late September 2025, Gen-Z-led protests over water/power shortages and corruption escalated rapidly; on 11-13 October 2025 the elite CAPSAT military unit backed the protesters, seized Antananarivo, and President Andry Rajoelina fled the country. Colonel Michael Randrianirina was sworn in as transitional president on 17 October. The military junta suspended the Electoral Commission (CENI), the High Constitutional Court, and the Constitution itself. SADC's mediation efforts (Panel of Elders, roadmap deadlines, dialogue-readiness reports) that followed were aimed at managing the POST-COUP transition and a path back to elections around 2027 — not at 'bridging the gulf between the government and opposition' while Rajoelina's government persisted toward a routine next election. Genuine electoral-reform activity (voter-list overhaul, CENI legal-framework consultations) is documented, but it occurred under the transitional government from December 2025 onward, not as pre-coup opposition pressure on a sitting Rajoelina administration. The description omits/misrepresents the year's defining political event (a coup and full regime change) and substitutes a much milder continuity narrative that did not hold for 2025. This is a material mischaracterization, not a minor magnitude/actor detail, so it does not meet the TRUE or PARTIAL bar despite country and nominal year being correct.",
+        "source": "https://en.wikipedia.org/wiki/2025_Malagasy_coup_d'%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2025_Malagasy_coup_d'%C3%A9tat"
   }
 ]

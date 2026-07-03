@@ -776,31 +776,6 @@
   },
   {
     "year": 1995,
-    "title": "Fall of Karen HQ Manerplaw to Burmese Army",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Manerplaw fell on 27 January 1995 to Tatmadaw and DKBA (Buddhist Karen splinter). ~10,000 refugees fled to Thailand across Moei River. Democratic Alliance of Burma coalition dissolved. Year and facts verified.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Manerplaw fell on 27 January 1995 to Tatmadaw and DKBA (Buddhist Karen splinter). ~10,000 refugees fled to Thailand across Moei River. Democratic Alliance of Burma coalition dissolved. Year and facts verified.",
-        "source": "https://en.wikipedia.org/wiki/Manerplaw",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Manerplaw"
-  },
-  {
-    "year": 1995,
     "title": "Aung San Suu Kyi Released from First Period of House Arrest",
     "verdict": "TRUE",
     "reason": "Confirmed: Released 10 July 1995 after six years of house arrest. Resumed political activity. NLD reappointed her general secretary 10 October 1995. Year and facts verified.",
@@ -823,6 +798,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Aung_San_Suu_Kyi"
+  },
+  {
+    "year": 1995,
+    "title": "Fall of Karen HQ Manerplaw to Burmese Army",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Manerplaw fell on 27 January 1995 to Tatmadaw and DKBA (Buddhist Karen splinter). ~10,000 refugees fled to Thailand across Moei River. Democratic Alliance of Burma coalition dissolved. Year and facts verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Manerplaw fell on 27 January 1995 to Tatmadaw and DKBA (Buddhist Karen splinter). ~10,000 refugees fled to Thailand across Moei River. Democratic Alliance of Burma coalition dissolved. Year and facts verified.",
+        "source": "https://en.wikipedia.org/wiki/Manerplaw",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Manerplaw"
   },
   {
     "year": 1996,
@@ -901,31 +901,6 @@
   },
   {
     "year": 2001,
-    "title": "US and European Sanctions Tightened on Myanmar Junta",
-    "verdict": "TRUE",
-    "reason": "Confirmed: US and EU maintained and periodically tightened sanctions through early 2000s including visa bans, asset freezes, import restrictions. Myanmar relied on China, Thailand, India as economic lifelines. Year 2001 is a reasonable attribution for a sustained process.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: US and EU maintained and periodically tightened sanctions through early 2000s including visa bans, asset freezes, import restrictions. Myanmar relied on China, Thailand, India as economic lifelines. Year 2001 is a reasonable attribution for a sustained process.",
-        "source": "https://en.wikipedia.org/wiki/International_sanctions_during_the_internal_conflict_in_Myanmar",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/International_sanctions_during_the_internal_conflict_in_Myanmar"
-  },
-  {
-    "year": 2001,
     "title": "Buddhist-Muslim Communal Violence Erupts in Central Myanmar",
     "verdict": "TRUE",
     "reason": "Confirmed: Communal violence between Buddhists and Muslims in several central Myanmar towns in 2001. Mosques and Muslim-owned businesses attacked. Security forces accused of passivity. Foreshadowed later systematic violence. Year and core facts consistent with documented incidents.",
@@ -948,6 +923,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Anti-Muslim_sentiment_in_Myanmar"
+  },
+  {
+    "year": 2001,
+    "title": "US and European Sanctions Tightened on Myanmar Junta",
+    "verdict": "TRUE",
+    "reason": "Confirmed: US and EU maintained and periodically tightened sanctions through early 2000s including visa bans, asset freezes, import restrictions. Myanmar relied on China, Thailand, India as economic lifelines. Year 2001 is a reasonable attribution for a sustained process.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: US and EU maintained and periodically tightened sanctions through early 2000s including visa bans, asset freezes, import restrictions. Myanmar relied on China, Thailand, India as economic lifelines. Year 2001 is a reasonable attribution for a sustained process.",
+        "source": "https://en.wikipedia.org/wiki/International_sanctions_during_the_internal_conflict_in_Myanmar",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/International_sanctions_during_the_internal_conflict_in_Myanmar"
   },
   {
     "year": 2003,
@@ -1101,31 +1101,6 @@
   },
   {
     "year": 2008,
-    "title": "Cyclone Nargis Kills Over 130,000 â€” Junta Blocks Aid",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Cyclone Nargis struck 2-3 May 2008. Official figures: 84,537 confirmed dead + 53,800 missing = ~138,000 total. Some estimates exceed 138,373 fatalities. SPDC blocked foreign aid workers for critical weeks. ASEAN brokered eventual access. Year and facts verified.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Cyclone Nargis struck 2-3 May 2008. Official figures: 84,537 confirmed dead + 53,800 missing = ~138,000 total. Some estimates exceed 138,373 fatalities. SPDC blocked foreign aid workers for critical weeks. ASEAN brokered eventual access. Year and facts verified.",
-        "source": "https://en.wikipedia.org/wiki/Cyclone_Nargis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Cyclone_Nargis"
-  },
-  {
-    "year": 2008,
     "title": "2008 Constitution Approved, Institutionalizes Military Veto",
     "verdict": "TRUE",
     "reason": "Confirmed: Referendum held 10 May 2008, one week after Cyclone Nargis. Officially 92.48% approval (widely dismissed as fabricated). 25% of parliamentary seats reserved for military appointees. Supermajority required to amend key provisions. Foreign-spouse bar targeting Suu Kyi confirmed. Year and facts verified.",
@@ -1148,6 +1123,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2008_Myanmar_constitutional_referendum"
+  },
+  {
+    "year": 2008,
+    "title": "Cyclone Nargis Kills Over 130,000 â€” Junta Blocks Aid",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Cyclone Nargis struck 2-3 May 2008. Official figures: 84,537 confirmed dead + 53,800 missing = ~138,000 total. Some estimates exceed 138,373 fatalities. SPDC blocked foreign aid workers for critical weeks. ASEAN brokered eventual access. Year and facts verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Cyclone Nargis struck 2-3 May 2008. Official figures: 84,537 confirmed dead + 53,800 missing = ~138,000 total. Some estimates exceed 138,373 fatalities. SPDC blocked foreign aid workers for critical weeks. ASEAN brokered eventual access. Year and facts verified.",
+        "source": "https://en.wikipedia.org/wiki/Cyclone_Nargis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Cyclone_Nargis"
   },
   {
     "year": 2010,
@@ -1176,31 +1176,6 @@
   },
   {
     "year": 2011,
-    "title": "Thein Sein Launches Genuine Reform Program",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Thein Sein released 200+ political prisoners, relaxed censorship, entered dialogue with Suu Kyi, suspended Myitsone Dam in September 2011. Clinton visited Yangon. Western sanctions eased. Year and facts verified.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Thein Sein released 200+ political prisoners, relaxed censorship, entered dialogue with Suu Kyi, suspended Myitsone Dam in September 2011. Clinton visited Yangon. Western sanctions eased. Year and facts verified.",
-        "source": "https://en.wikipedia.org/wiki/2011%E2%80%932015_Myanmar_political_reforms",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2011%E2%80%932015_Myanmar_political_reforms"
-  },
-  {
-    "year": 2011,
     "title": "Kachin War Resumes After 17-Year Ceasefire",
     "verdict": "TRUE",
     "reason": "Confirmed: Armed clashes erupted on 9 June 2011 when government forces attacked KIA positions along Taping River. KIA refused to transform into Border Guard Force. 17-year ceasefire broken (from 1994). Over 100,000 IDPs created. Year and date verified.",
@@ -1223,6 +1198,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Kachin_conflict"
+  },
+  {
+    "year": 2011,
+    "title": "Thein Sein Launches Genuine Reform Program",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Thein Sein released 200+ political prisoners, relaxed censorship, entered dialogue with Suu Kyi, suspended Myitsone Dam in September 2011. Clinton visited Yangon. Western sanctions eased. Year and facts verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Thein Sein released 200+ political prisoners, relaxed censorship, entered dialogue with Suu Kyi, suspended Myitsone Dam in September 2011. Clinton visited Yangon. Western sanctions eased. Year and facts verified.",
+        "source": "https://en.wikipedia.org/wiki/2011%E2%80%932015_Myanmar_political_reforms",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2011%E2%80%932015_Myanmar_political_reforms"
   },
   {
     "year": 2012,
@@ -1273,6 +1273,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2012_Rakhine_State_riots"
+  },
+  {
+    "year": 2014,
+    "title": "Myanmar's Telecom Liberalization Triggers Mobile Phone Revolution",
+    "verdict": "TRUE",
+    "reason": "Multiple independent, authoritative sources confirm the core narrative materially as described. Myanmar awarded its first competitively-tendered nationwide telecom licenses to Norway's Telenor and Qatar's Ooredoo in June 2013 (confirmed by CNBC, Bloomberg, The Peninsula Qatar, Myanmar Times). Ooredoo launched commercial mobile service in mid-August 2014 and Telenor launched on 27 September 2014 (confirmed by MobileWorldLive, Fierce Network, Wikipedia's Telenor Myanmar page, Brookings), ending the monopoly previously held by state carrier Myanmar Post and Telecommunications (MPT) — Brookings: \"The winners, Norway's Telenor and Qatar's Ooredoo, launched service by September 2014.\" SIM card prices: a search-result excerpt closely matching the claim states \"In February 2012, it cost $300 to buy a mobile SIM card anywhere in Myanmar... Just over two years later, in September 2014, you could easily purchase one for $1.50\" — an almost verbatim match to the event's $300→$1.50 figures (sourced from Bloomberg's Sept 2014 \"Myanmar Opens Its Mobile Phone Market\" piece per search snippets; other sources give slightly different pre-liberalization price anchors of ~$200-$250, consistent with a volatile, rapidly-falling black-market SIM price in that period). Subscriber growth: independent tallies show mobile subscriptions at \"nearly 7 million\" in 2013 (ITU/World Bank-sourced figures via search) growing to roughly 18.1 million active users by March 2015 (TeleGeography/CommsUpdate), which brackets and is consistent with the claimed 6.8 million (Dec 2013) to 18.6 million (Dec 2014) near-tripling — I could not pin an exact independent citation to the precise 6.8M/18.6M figures (likely MCIT Myanmar year-end statistics), so this specific pair of numbers is corroborated by trend/magnitude rather than an exact-match source, but it does not contradict any source found and the overall event (actors, year, country, mechanism, scale of change) is solidly confirmed across many independent outlets.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material elements check out against independent sources. (1) Myanmar awarded its first nationwide telecom licenses to Telenor (Norway) and Ooredoo (Qatar) on 27 June 2013, ending a bidding contest against Bharti Airtel, SingTel, George Soros-backed groups etc. (Bloomberg, CNBC). (2) Both launched commercial mobile service in 2014 — Ooredoo in Yangon/Mandalay/Naypyidaw from August 2014, Telenor rolling out Sept-Oct 2014 (Mandalay 27 Sept, Naypyidaw 3 Oct, Yangon 26 Oct) — ending the former exclusive monopoly of state-owned MPT (Peninsula Qatar, MobileWorldLive, Brookings, Wikipedia/Telenor Myanmar). (3) SIM card prices collapsed to roughly $1.50 (1,500 kyat) at launch, down from prices reported by multiple contemporaneous outlets as $200+ (and as high as $1,500-2,000 under the junta a few years earlier) — the description's '$300 in 2012' sits squarely inside the range multiple sources cite, so the ~200x collapse narrative is accurate. (4) Subscriber growth: World Bank/ITU data independently confirms ~6.83 million mobile subscriptions in Myanmar in 2013, matching the description's 6.8 million almost exactly; multiple industry sources (repeatedly surfaced across different, non-leading search queries) cite the market 'nearly tripling from 6.8 million in December 2013 to 18.6 million by end-December 2014,' consistent with TeleGeography's independently reported 18.1 million active users by March 2015. I could not pin the 18.6M figure to one specific still-live primary URL (TeleGeography's original CommsUpdate article now redirects to a paywall gate), but the figure is corroborated by its consistency with the independently-sourced 2013 base number and the March-2015 follow-on figure, plus repeated citation across secondary industry sources. No red flags or contradictions found; description is materially accurate.",
+        "source": "https://thepeninsulaqatar.com/article/03/08/2014/ooredoo-opens-up-myanmar-mobile-market-with-low-cost-sim-cards",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources confirm the core narrative materially as described. Myanmar awarded its first competitively-tendered nationwide telecom licenses to Norway's Telenor and Qatar's Ooredoo in June 2013 (confirmed by CNBC, Bloomberg, The Peninsula Qatar, Myanmar Times). Ooredoo launched commercial mobile service in mid-August 2014 and Telenor launched on 27 September 2014 (confirmed by MobileWorldLive, Fierce Network, Wikipedia's Telenor Myanmar page, Brookings), ending the monopoly previously held by state carrier Myanmar Post and Telecommunications (MPT) — Brookings: \"The winners, Norway's Telenor and Qatar's Ooredoo, launched service by September 2014.\" SIM card prices: a search-result excerpt closely matching the claim states \"In February 2012, it cost $300 to buy a mobile SIM card anywhere in Myanmar... Just over two years later, in September 2014, you could easily purchase one for $1.50\" — an almost verbatim match to the event's $300→$1.50 figures (sourced from Bloomberg's Sept 2014 \"Myanmar Opens Its Mobile Phone Market\" piece per search snippets; other sources give slightly different pre-liberalization price anchors of ~$200-$250, consistent with a volatile, rapidly-falling black-market SIM price in that period). Subscriber growth: independent tallies show mobile subscriptions at \"nearly 7 million\" in 2013 (ITU/World Bank-sourced figures via search) growing to roughly 18.1 million active users by March 2015 (TeleGeography/CommsUpdate), which brackets and is consistent with the claimed 6.8 million (Dec 2013) to 18.6 million (Dec 2014) near-tripling — I could not pin an exact independent citation to the precise 6.8M/18.6M figures (likely MCIT Myanmar year-end statistics), so this specific pair of numbers is corroborated by trend/magnitude rather than an exact-match source, but it does not contradict any source found and the overall event (actors, year, country, mechanism, scale of change) is solidly confirmed across many independent outlets.",
+        "source": "https://www.brookings.edu/articles/myanmars-fast-paced-mobile-phone-rollout/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.brookings.edu/articles/myanmars-fast-paced-mobile-phone-rollout/"
   },
   {
     "year": 2014,
@@ -1476,31 +1512,6 @@
   },
   {
     "year": 2021,
-    "title": "Military Coup â€” Tatmadaw Seizes Power on February 1",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Coup on 1 February 2021. Suu Kyi, President Win Myint, hundreds of elected officials arrested. Min Aung Hlaing declared year-long state of emergency, transferred authority to himself as SAC head. Parliament was to be sworn in that day. All core facts verified.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Coup on 1 February 2021. Suu Kyi, President Win Myint, hundreds of elected officials arrested. Min Aung Hlaing declared year-long state of emergency, transferred authority to himself as SAC head. Parliament was to be sworn in that day. All core facts verified.",
-        "source": "https://en.wikipedia.org/wiki/2021_Myanmar_coup_d%27%C3%A9tat",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2021_Myanmar_coup_d%27%C3%A9tat"
-  },
-  {
-    "year": 2021,
     "title": "Civil Disobedience Movement and Mass Spring Revolution Protests",
     "verdict": "TRUE",
     "reason": "Confirmed: Nationwide CDM shut down government ministries, banks, hospitals, schools. Over 1,400 confirmed civilian deaths by end of 2021. Military deployed against protesters from February 2021. PDF formation accelerated. Year and facts verified.",
@@ -1523,6 +1534,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Myanmar_protests_(2021%E2%80%93present)"
+  },
+  {
+    "year": 2021,
+    "title": "Military Coup â€” Tatmadaw Seizes Power on February 1",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Coup on 1 February 2021. Suu Kyi, President Win Myint, hundreds of elected officials arrested. Min Aung Hlaing declared year-long state of emergency, transferred authority to himself as SAC head. Parliament was to be sworn in that day. All core facts verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Coup on 1 February 2021. Suu Kyi, President Win Myint, hundreds of elected officials arrested. Min Aung Hlaing declared year-long state of emergency, transferred authority to himself as SAC head. Parliament was to be sworn in that day. All core facts verified.",
+        "source": "https://en.wikipedia.org/wiki/2021_Myanmar_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2021_Myanmar_coup_d%27%C3%A9tat"
   },
   {
     "year": 2021,
@@ -1626,31 +1662,6 @@
   },
   {
     "year": 2023,
-    "title": "Operation 1027 â€” Ethnic Forces Overrun Junta Positions in Shan State",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Three Brotherhood Alliance (MNDAA, TNLA, Arakan Army) launched Operation 1027 on 27 October 2023. Over 220 junta positions captured in weeks. Unprecedented soldier surrenders and defections. Sparked allied operations in Rakhine, Chin, Karen, Sagaing. Year and facts verified.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Three Brotherhood Alliance (MNDAA, TNLA, Arakan Army) launched Operation 1027 on 27 October 2023. Over 220 junta positions captured in weeks. Unprecedented soldier surrenders and defections. Sparked allied operations in Rakhine, Chin, Karen, Sagaing. Year and facts verified.",
-        "source": "https://en.wikipedia.org/wiki/Operation_1027",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Operation_1027"
-  },
-  {
-    "year": 2023,
     "title": "Junta Conscription Law Triggers Mass Flight of Young People",
     "verdict": "FALSE",
     "reason": "Year error: The People's Military Service Law (conscription law) was enforced on 10 February 2024, not 2023. The law existed since 2010 but was only activated in February 2024. The mass exodus and fears were documented in February-March 2024. Event year should be 2024.",
@@ -1673,6 +1684,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/People's_Military_Service_Law"
+  },
+  {
+    "year": 2023,
+    "title": "Operation 1027 â€” Ethnic Forces Overrun Junta Positions in Shan State",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Three Brotherhood Alliance (MNDAA, TNLA, Arakan Army) launched Operation 1027 on 27 October 2023. Over 220 junta positions captured in weeks. Unprecedented soldier surrenders and defections. Sparked allied operations in Rakhine, Chin, Karen, Sagaing. Year and facts verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Three Brotherhood Alliance (MNDAA, TNLA, Arakan Army) launched Operation 1027 on 27 October 2023. Over 220 junta positions captured in weeks. Unprecedented soldier surrenders and defections. Sparked allied operations in Rakhine, Chin, Karen, Sagaing. Year and facts verified.",
+        "source": "https://en.wikipedia.org/wiki/Operation_1027",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Operation_1027"
   },
   {
     "year": 2024,

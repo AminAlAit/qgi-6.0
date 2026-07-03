@@ -251,31 +251,6 @@
   },
   {
     "year": 1990,
-    "title": "RPF invasion begins the Rwandan Civil War",
-    "verdict": "TRUE",
-    "reason": "RPF invaded October 1, 1990 from Uganda with ~2,500 fighters. Rwigyema killed on second day; Kagame returned from US to take command. All core facts confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "RPF invaded October 1, 1990 from Uganda with ~2,500 fighters. Rwigyema killed on second day; Kagame returned from US to take command. All core facts confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Rwandan_Civil_War",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Rwandan_Civil_War"
-  },
-  {
-    "year": 1990,
     "title": "France and Belgium intervene militarily to back Habyarimana",
     "verdict": "TRUE",
     "reason": "France deployed 600 troops (Operation Noroît) to directly block RPF advance. Belgium took a more neutral diplomatic role and did not militarily back Habyarimana — description overstates Belgian military intervention. French role fully confirmed.",
@@ -298,6 +273,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/France_and_the_Rwandan_genocide"
+  },
+  {
+    "year": 1990,
+    "title": "RPF invasion begins the Rwandan Civil War",
+    "verdict": "TRUE",
+    "reason": "RPF invaded October 1, 1990 from Uganda with ~2,500 fighters. Rwigyema killed on second day; Kagame returned from US to take command. All core facts confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "RPF invaded October 1, 1990 from Uganda with ~2,500 fighters. Rwigyema killed on second day; Kagame returned from US to take command. All core facts confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Rwandan_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Rwandan_Civil_War"
   },
   {
     "year": 1991,
@@ -401,31 +401,6 @@
   },
   {
     "year": 1994,
-    "title": "Habyarimana's plane shot down — genocide begins",
-    "verdict": "TRUE",
-    "reason": "April 6, 1994 plane shot down killing Habyarimana and Burundian president Ntaryamira. Presidential Guard and Interahamwe began systematic killings within hours using pre-prepared lists. All confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "April 6, 1994 plane shot down killing Habyarimana and Burundian president Ntaryamira. Presidential Guard and Interahamwe began systematic killings within hours using pre-prepared lists. All confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Assassination_of_Juv%C3%A9nal_Habyarimana_and_Cyprien_Ntaryamira",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Assassination_of_Juv%C3%A9nal_Habyarimana_and_Cyprien_Ntaryamira"
-  },
-  {
-    "year": 1994,
     "title": "Assassination of Prime Minister Uwilingiyimana and UN peacekeepers",
     "verdict": "TRUE",
     "reason": "Uwilingiyimana murdered April 7, 1994; ten Belgian UNAMIR peacekeepers killed; Belgium subsequently withdrew its UNAMIR battalion. All core facts confirmed.",
@@ -448,81 +423,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Agathe_Uwilingiyimana"
-  },
-  {
-    "year": 1994,
-    "title": "Radio Mille Collines broadcasts incitement to mass murder",
-    "verdict": "TRUE",
-    "reason": "RTLM broadcasted inyenzi (cockroach) dehumanization and directed killers to locations. Three RTLM leaders convicted at ICTR for genocide/incitement. All confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "RTLM broadcasted inyenzi (cockroach) dehumanization and directed killers to locations. Three RTLM leaders convicted at ICTR for genocide/incitement. All confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Radio_T%C3%A9l%C3%A9vision_Libre_des_Mille_Collines",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Radio_T%C3%A9l%C3%A9vision_Libre_des_Mille_Collines"
-  },
-  {
-    "year": 1994,
-    "title": "UN Security Council reduces UNAMIR force amid genocide",
-    "verdict": "TRUE",
-    "reason": "UNSC Resolution 912 on April 21, 1994 reduced UNAMIR from 2,500 to 270 personnel. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "UNSC Resolution 912 on April 21, 1994 reduced UNAMIR from 2,500 to 270 personnel. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/United_Nations_Assistance_Mission_for_Rwanda",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/United_Nations_Assistance_Mission_for_Rwanda"
-  },
-  {
-    "year": 1994,
-    "title": "Nyamata and Ntarama church massacres",
-    "verdict": "TRUE",
-    "reason": "Nyamata: ~10,000 killed April 14-19, 50,000 buried at memorial. Ntarama: 5,000 killed April 15. Event states '40,000 victims' combined — actual burial count at Nyamata alone is 50,000. Undercount in description but not false.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Nyamata: ~10,000 killed April 14-19, 50,000 buried at memorial. Ntarama: 5,000 killed April 15. Event states '40,000 victims' combined — actual burial count at Nyamata alone is 50,000. Undercount in description but not false.",
-        "source": "https://en.wikipedia.org/wiki/Nyamata_Genocide_Memorial_Centre",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Nyamata_Genocide_Memorial_Centre"
   },
   {
     "year": 1994,
@@ -551,9 +451,9 @@
   },
   {
     "year": 1994,
-    "title": "Operation Turquoise — French military intervention in western Rwanda",
+    "title": "Habyarimana's plane shot down — genocide begins",
     "verdict": "TRUE",
-    "reason": "France launched Operation Turquoise June 22, 1994 per UNSC Resolution 929; Zone Turquoise in southwestern Rwanda. Critics document that it allowed genocidaires to escape into Zaire. All confirmed.",
+    "reason": "April 6, 1994 plane shot down killing Habyarimana and Burundian president Ntaryamira. Presidential Guard and Interahamwe began systematic killings within hours using pre-prepared lists. All confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -563,8 +463,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "France launched Operation Turquoise June 22, 1994 per UNSC Resolution 929; Zone Turquoise in southwestern Rwanda. Critics document that it allowed genocidaires to escape into Zaire. All confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Op%C3%A9ration_Turquoise",
+        "reason": "April 6, 1994 plane shot down killing Habyarimana and Burundian president Ntaryamira. Presidential Guard and Interahamwe began systematic killings within hours using pre-prepared lists. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Juv%C3%A9nal_Habyarimana_and_Cyprien_Ntaryamira",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -572,13 +472,13 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Op%C3%A9ration_Turquoise"
+    "source": "https://en.wikipedia.org/wiki/Assassination_of_Juv%C3%A9nal_Habyarimana_and_Cyprien_Ntaryamira"
   },
   {
     "year": 1994,
-    "title": "RPF captures Kigali and ends the genocide",
+    "title": "International Criminal Tribunal for Rwanda established",
     "verdict": "TRUE",
-    "reason": "RPF captured Kigali July 4, declared ceasefire July 18, 1994. Estimated 500,000-800,000 killed in ~100 days. All confirmed.",
+    "reason": "ICTR established November 8, 1994 by UNSC Resolution 955; based in Arusha, Tanzania. First international court to convict specifically for genocide. Operated until December 2015. All confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -588,8 +488,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "RPF captured Kigali July 4, declared ceasefire July 18, 1994. Estimated 500,000-800,000 killed in ~100 days. All confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Liberation_Day_(Rwanda)",
+        "reason": "ICTR established November 8, 1994 by UNSC Resolution 955; based in Arusha, Tanzania. First international court to convict specifically for genocide. Operated until December 2015. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/International_Criminal_Tribunal_for_Rwanda",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -597,7 +497,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Liberation_Day_(Rwanda)"
+    "source": "https://en.wikipedia.org/wiki/International_Criminal_Tribunal_for_Rwanda"
   },
   {
     "year": 1994,
@@ -626,6 +526,106 @@
   },
   {
     "year": 1994,
+    "title": "Nyamata and Ntarama church massacres",
+    "verdict": "TRUE",
+    "reason": "Nyamata: ~10,000 killed April 14-19, 50,000 buried at memorial. Ntarama: 5,000 killed April 15. Event states '40,000 victims' combined — actual burial count at Nyamata alone is 50,000. Undercount in description but not false.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Nyamata: ~10,000 killed April 14-19, 50,000 buried at memorial. Ntarama: 5,000 killed April 15. Event states '40,000 victims' combined — actual burial count at Nyamata alone is 50,000. Undercount in description but not false.",
+        "source": "https://en.wikipedia.org/wiki/Nyamata_Genocide_Memorial_Centre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Nyamata_Genocide_Memorial_Centre"
+  },
+  {
+    "year": 1994,
+    "title": "Operation Turquoise — French military intervention in western Rwanda",
+    "verdict": "TRUE",
+    "reason": "France launched Operation Turquoise June 22, 1994 per UNSC Resolution 929; Zone Turquoise in southwestern Rwanda. Critics document that it allowed genocidaires to escape into Zaire. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "France launched Operation Turquoise June 22, 1994 per UNSC Resolution 929; Zone Turquoise in southwestern Rwanda. Critics document that it allowed genocidaires to escape into Zaire. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Op%C3%A9ration_Turquoise",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Op%C3%A9ration_Turquoise"
+  },
+  {
+    "year": 1994,
+    "title": "Radio Mille Collines broadcasts incitement to mass murder",
+    "verdict": "TRUE",
+    "reason": "RTLM broadcasted inyenzi (cockroach) dehumanization and directed killers to locations. Three RTLM leaders convicted at ICTR for genocide/incitement. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "RTLM broadcasted inyenzi (cockroach) dehumanization and directed killers to locations. Three RTLM leaders convicted at ICTR for genocide/incitement. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Radio_T%C3%A9l%C3%A9vision_Libre_des_Mille_Collines",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Radio_T%C3%A9l%C3%A9vision_Libre_des_Mille_Collines"
+  },
+  {
+    "year": 1994,
+    "title": "RPF captures Kigali and ends the genocide",
+    "verdict": "TRUE",
+    "reason": "RPF captured Kigali July 4, declared ceasefire July 18, 1994. Estimated 500,000-800,000 killed in ~100 days. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "RPF captured Kigali July 4, declared ceasefire July 18, 1994. Estimated 500,000-800,000 killed in ~100 days. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Liberation_Day_(Rwanda)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Liberation_Day_(Rwanda)"
+  },
+  {
+    "year": 1994,
     "title": "Transitional Government of National Unity formed",
     "verdict": "TRUE",
     "reason": "Bizimungu as president, Twagiramungu as PM, Kagame as VP and defense minister with RPF holding effective control. Confirmed.",
@@ -651,9 +651,9 @@
   },
   {
     "year": 1994,
-    "title": "International Criminal Tribunal for Rwanda established",
+    "title": "UN Security Council reduces UNAMIR force amid genocide",
     "verdict": "TRUE",
-    "reason": "ICTR established November 8, 1994 by UNSC Resolution 955; based in Arusha, Tanzania. First international court to convict specifically for genocide. Operated until December 2015. All confirmed.",
+    "reason": "UNSC Resolution 912 on April 21, 1994 reduced UNAMIR from 2,500 to 270 personnel. Confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -663,8 +663,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "ICTR established November 8, 1994 by UNSC Resolution 955; based in Arusha, Tanzania. First international court to convict specifically for genocide. Operated until December 2015. All confirmed.",
-        "source": "https://en.wikipedia.org/wiki/International_Criminal_Tribunal_for_Rwanda",
+        "reason": "UNSC Resolution 912 on April 21, 1994 reduced UNAMIR from 2,500 to 270 personnel. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/United_Nations_Assistance_Mission_for_Rwanda",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -672,7 +672,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/International_Criminal_Tribunal_for_Rwanda"
+    "source": "https://en.wikipedia.org/wiki/United_Nations_Assistance_Mission_for_Rwanda"
   },
   {
     "year": 1995,
@@ -901,31 +901,6 @@
   },
   {
     "year": 2003,
-    "title": "New constitution adopted by referendum",
-    "verdict": "TRUE",
-    "reason": "Constitutional referendum May 26, 2003; approved by 93% of voters; bicameral parliament with 30% women quota; banned ethnicity-based parties. All confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Constitutional referendum May 26, 2003; approved by 93% of voters; bicameral parliament with 30% women quota; banned ethnicity-based parties. All confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2003_Rwandan_constitutional_referendum",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2003_Rwandan_constitutional_referendum"
-  },
-  {
-    "year": 2003,
     "title": "First multiparty presidential elections — Kagame wins with 95%",
     "verdict": "TRUE",
     "reason": "August 25, 2003 elections; Kagame won 95.05%; climate of fear and harassment documented. All confirmed.",
@@ -948,6 +923,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2003_Rwandan_presidential_election"
+  },
+  {
+    "year": 2003,
+    "title": "New constitution adopted by referendum",
+    "verdict": "TRUE",
+    "reason": "Constitutional referendum May 26, 2003; approved by 93% of voters; bicameral parliament with 30% women quota; banned ethnicity-based parties. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Constitutional referendum May 26, 2003; approved by 93% of voters; bicameral parliament with 30% women quota; banned ethnicity-based parties. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2003_Rwandan_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2003_Rwandan_constitutional_referendum"
   },
   {
     "year": 2004,
@@ -1051,31 +1051,6 @@
   },
   {
     "year": 2008,
-    "title": "Rwanda's economy achieves sustained high growth",
-    "verdict": "TRUE",
-    "reason": "GDP growth rates of 7-11% confirmed by mid-to-late 2000s; World Bank recognition of Rwanda as top reformer confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "GDP growth rates of 7-11% confirmed by mid-to-late 2000s; World Bank recognition of Rwanda as top reformer confirmed.",
-        "source": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=RW",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=RW"
-  },
-  {
-    "year": 2008,
     "title": "Rwanda joins the Commonwealth",
     "verdict": "TRUE",
     "reason": "Rwanda admitted to Commonwealth at 2009 CHOGM (event year 2008 is one year early — admission was 2009). Second country with no British colonial ties (after Mozambique). Core claim confirmed with minor year correction needed.",
@@ -1098,6 +1073,31 @@
       }
     ],
     "source": "https://thecommonwealth.org/our-member-countries/rwanda"
+  },
+  {
+    "year": 2008,
+    "title": "Rwanda's economy achieves sustained high growth",
+    "verdict": "TRUE",
+    "reason": "GDP growth rates of 7-11% confirmed by mid-to-late 2000s; World Bank recognition of Rwanda as top reformer confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "GDP growth rates of 7-11% confirmed by mid-to-late 2000s; World Bank recognition of Rwanda as top reformer confirmed.",
+        "source": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=RW",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=RW"
   },
   {
     "year": 2008,
@@ -1151,31 +1151,6 @@
   },
   {
     "year": 2010,
-    "title": "Kagame re-elected with 93% in second presidential election",
-    "verdict": "TRUE",
-    "reason": "Kagame won 93.08% in August 2010. Campaign marked by assassination of opposition figures, journalist murder, party bans. All confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Kagame won 93.08% in August 2010. Campaign marked by assassination of opposition figures, journalist murder, party bans. All confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2010_Rwandan_presidential_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2010_Rwandan_presidential_election"
-  },
-  {
-    "year": 2010,
     "title": "ICTR completes major genocide convictions",
     "verdict": "TRUE",
     "reason": "ICTR completed major trials by 2010 including Kambanda guilty plea and RTLM media executives. Landmark precedents on genocide and media responsibility confirmed.",
@@ -1198,6 +1173,31 @@
       }
     ],
     "source": "https://unictr.irmct.org/en/tribunal"
+  },
+  {
+    "year": 2010,
+    "title": "Kagame re-elected with 93% in second presidential election",
+    "verdict": "TRUE",
+    "reason": "Kagame won 93.08% in August 2010. Campaign marked by assassination of opposition figures, journalist murder, party bans. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kagame won 93.08% in August 2010. Campaign marked by assassination of opposition figures, journalist murder, party bans. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2010_Rwandan_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2010_Rwandan_presidential_election"
   },
   {
     "year": 2011,
@@ -1375,6 +1375,42 @@
     "source": "https://www.providingforpeacekeeping.org/2015/03/30/peacekeeping-contributor-profile-rwanda/"
   },
   {
+    "year": 2016,
+    "title": "Rwanda Launches World's First National Drone Delivery Network",
+    "verdict": "TRUE",
+    "reason": "Fully corroborated by multiple independent, high-authority sources. President Paul Kagame launched the service in Muhanga District on 14 October 2016 (GlobeNewswire's press release/dateline of 13 Oct refers to the announcement immediately preceding the ceremony reported elsewhere as 14 Oct — a one-day dateline discrepancy, not material). Operator confirmed as California-based Zipline. Gavi, Zipline's own newsroom, and the original GlobeNewswire release all confirm: up to 150 on-demand emergency deliveries per day, to 21 transfusion facilities in western Rwanda, each drone flying up to 150km round trip carrying 1.5kg of blood. The December 2016 life-saving case is also independently confirmed: on 21 December 2016, a 2-year-old girl (Ghislane Ihimbazwe) suffering severe malaria-induced blood loss received a drone-delivered blood transfusion credited with saving her life (reported by multiple outlets including a detailed account matching the description). All material details (actor, location, year, scope, magnitude) match the event description precisely.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources (Gavi, WHO, Zipline, MIT Technology Review, Wikipedia) confirm President Paul Kagame launched the Zipline drone delivery service on 14 October 2016 in Rwanda's Muhanga District, making Rwanda the first country with a national drone delivery network. The service delivered up to 150 on-demand blood shipments daily to 21 transfusion facilities across western Rwanda, using drones capable of 150km round trips carrying 1.5kg of blood. WHO and MIT Technology Review both document a December 2016 case (the \"Ghislane\" case, Dec 21 2016) where a rapid drone blood delivery was credited with saving a young child's life. All material details in the description (date, location, operator, capacity, distance, payload, and the life-saving December delivery) are corroborated.",
+        "source": "https://www.who.int/news-room/feature-stories/detail/drones-take-rwandas-national-blood-service-to-new-heights",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Fully corroborated by multiple independent, high-authority sources. President Paul Kagame launched the service in Muhanga District on 14 October 2016 (GlobeNewswire's press release/dateline of 13 Oct refers to the announcement immediately preceding the ceremony reported elsewhere as 14 Oct — a one-day dateline discrepancy, not material). Operator confirmed as California-based Zipline. Gavi, Zipline's own newsroom, and the original GlobeNewswire release all confirm: up to 150 on-demand emergency deliveries per day, to 21 transfusion facilities in western Rwanda, each drone flying up to 150km round trip carrying 1.5kg of blood. The December 2016 life-saving case is also independently confirmed: on 21 December 2016, a 2-year-old girl (Ghislane Ihimbazwe) suffering severe malaria-induced blood loss received a drone-delivered blood transfusion credited with saving her life (reported by multiple outlets including a detailed account matching the description). All material details (actor, location, year, scope, magnitude) match the event description precisely.",
+        "source": "https://www.zipline.com/newsroom/rwanda-expands-with-zipline-to-become-first-country-in-the-world-with-nationwide-autonomous-delivery-including-africa-s-first-urban-drone-delivery-network",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.zipline.com/newsroom/rwanda-expands-with-zipline-to-become-first-country-in-the-world-with-nationwide-autonomous-delivery-including-africa-s-first-urban-drone-delivery-network"
+  },
+  {
     "year": 2017,
     "title": "Kagame wins third presidential election with 99% of the vote",
     "verdict": "TRUE",
@@ -1401,31 +1437,6 @@
   },
   {
     "year": 2018,
-    "title": "Rwanda bans plastic bags — regional environmental leadership",
-    "verdict": "FALSE",
-    "reason": "Rwanda's plastic bag ban was enacted September 2008 (Law N57/2008), not 2018. The year tag is factually incorrect by a decade. The 2018 date may reflect international recognition but the policy is from 2008.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Rwanda's plastic bag ban was enacted September 2008 (Law N57/2008), not 2018. The year tag is factually incorrect by a decade. The 2018 date may reflect international recognition but the policy is from 2008.",
-        "source": "https://issuu.com/world.bank.publications/docs/9781464818813/s/16438690",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://issuu.com/world.bank.publications/docs/9781464818813/s/16438690"
-  },
-  {
-    "year": 2018,
     "title": "Kagame assumes AU Commission chairmanship",
     "verdict": "TRUE",
     "reason": "Kagame elected AU Chair January 2018; championed AU reform, African Continental Free Trade Area launched March 2018 in Kigali. Confirmed.",
@@ -1448,6 +1459,31 @@
       }
     ],
     "source": "https://au.int/en/pressreleases/20180128/president-paul-kagame-elected-new-chairperson-african-union-year-2018"
+  },
+  {
+    "year": 2018,
+    "title": "Rwanda bans plastic bags — regional environmental leadership",
+    "verdict": "FALSE",
+    "reason": "Rwanda's plastic bag ban was enacted September 2008 (Law N57/2008), not 2018. The year tag is factually incorrect by a decade. The 2018 date may reflect international recognition but the policy is from 2008.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Rwanda's plastic bag ban was enacted September 2008 (Law N57/2008), not 2018. The year tag is factually incorrect by a decade. The 2018 date may reflect international recognition but the policy is from 2008.",
+        "source": "https://issuu.com/world.bank.publications/docs/9781464818813/s/16438690",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://issuu.com/world.bank.publications/docs/9781464818813/s/16438690"
   },
   {
     "year": 2019,
@@ -1501,31 +1537,6 @@
   },
   {
     "year": 2021,
-    "title": "Paul Rusesabagina arrested and convicted of terrorism charges",
-    "verdict": "TRUE",
-    "reason": "Arrested August 2020 via Dubai-to-Kigali flight rendition; convicted September 20, 2021; sentenced to 25 years. US designated him wrongfully detained. All confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Arrested August 2020 via Dubai-to-Kigali flight rendition; convicted September 20, 2021; sentenced to 25 years. US designated him wrongfully detained. All confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Paul_Rusesabagina",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Paul_Rusesabagina"
-  },
-  {
-    "year": 2021,
     "title": "France formally acknowledges 'overwhelming responsibility' for the genocide",
     "verdict": "TRUE",
     "reason": "Macron's May 27, 2021 Kigali speech acknowledging France's 'overwhelming responsibility' confirmed. Kagame called it 'historic'. No formal apology but described as historic acknowledgment. Confirmed.",
@@ -1548,6 +1559,31 @@
       }
     ],
     "source": "https://www.cnn.com/2021/05/27/africa/rwanda-france-genocide-macron-forgiveness-intl/index.html"
+  },
+  {
+    "year": 2021,
+    "title": "Paul Rusesabagina arrested and convicted of terrorism charges",
+    "verdict": "TRUE",
+    "reason": "Arrested August 2020 via Dubai-to-Kigali flight rendition; convicted September 20, 2021; sentenced to 25 years. US designated him wrongfully detained. All confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Arrested August 2020 via Dubai-to-Kigali flight rendition; convicted September 20, 2021; sentenced to 25 years. US designated him wrongfully detained. All confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Paul_Rusesabagina",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Paul_Rusesabagina"
   },
   {
     "year": 2021,
@@ -1601,31 +1637,6 @@
   },
   {
     "year": 2022,
-    "title": "Rwanda-UK migration deal signed",
-    "verdict": "TRUE",
-    "reason": "UK-Rwanda Migration and Economic Development Partnership announced/signed April 13-14, 2022. Supreme Court ruled unlawful November 2023; cancelled by Starmer government July 2024. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "UK-Rwanda Migration and Economic Development Partnership announced/signed April 13-14, 2022. Supreme Court ruled unlawful November 2023; cancelled by Starmer government July 2024. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Rwanda_asylum_plan",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Rwanda_asylum_plan"
-  },
-  {
-    "year": 2022,
     "title": "Rusesabagina released from prison",
     "verdict": "TRUE",
     "reason": "Released March 24, 2023 (event year tag 2022 is incorrect — release was 2023) following US/Qatar facilitation. Year tag is off by one year but event is real.",
@@ -1648,6 +1659,31 @@
       }
     ],
     "source": "https://www.aljazeera.com/news/2023/3/24/hotel-rwanda-hero-paul-rusesabagina-prison-sentence-commuted"
+  },
+  {
+    "year": 2022,
+    "title": "Rwanda-UK migration deal signed",
+    "verdict": "TRUE",
+    "reason": "UK-Rwanda Migration and Economic Development Partnership announced/signed April 13-14, 2022. Supreme Court ruled unlawful November 2023; cancelled by Starmer government July 2024. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UK-Rwanda Migration and Economic Development Partnership announced/signed April 13-14, 2022. Supreme Court ruled unlawful November 2023; cancelled by Starmer government July 2024. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Rwanda_asylum_plan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Rwanda_asylum_plan"
   },
   {
     "year": 2023,

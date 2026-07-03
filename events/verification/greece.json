@@ -351,31 +351,6 @@
   },
   {
     "year": 1967,
-    "title": "Military junta seizes power in coup d'etat on April 21",
-    "verdict": "TRUE",
-    "reason": "A group of colonels led by Papadopoulos, Pattakos, and Makarezos staged a pre-dawn coup on April 21, 1967, suspending the constitution and arresting politicians before scheduled elections the Centre Union was expected to win.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "A group of colonels led by Papadopoulos, Pattakos, and Makarezos staged a pre-dawn coup on April 21, 1967, suspending the constitution and arresting politicians before scheduled elections the Centre Union was expected to win.",
-        "source": "https://en.wikipedia.org/wiki/Greek_junta",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Greek_junta"
-  },
-  {
-    "year": 1967,
     "title": "King Constantine II's counter-coup fails and he goes into exile",
     "verdict": "TRUE",
     "reason": "Constantine's counter-coup on December 13, 1967 failed due to lack of armed forces support; he fled to Rome on December 14, 1967 with his family, then moved to London.",
@@ -398,6 +373,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Constantine_II_of_Greece"
+  },
+  {
+    "year": 1967,
+    "title": "Military junta seizes power in coup d'etat on April 21",
+    "verdict": "TRUE",
+    "reason": "A group of colonels led by Papadopoulos, Pattakos, and Makarezos staged a pre-dawn coup on April 21, 1967, suspending the constitution and arresting politicians before scheduled elections the Centre Union was expected to win.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A group of colonels led by Papadopoulos, Pattakos, and Makarezos staged a pre-dawn coup on April 21, 1967, suspending the constitution and arresting politicians before scheduled elections the Centre Union was expected to win.",
+        "source": "https://en.wikipedia.org/wiki/Greek_junta",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Greek_junta"
   },
   {
     "year": 1968,
@@ -1075,6 +1075,42 @@
     "source": "https://en.wikipedia.org/wiki/Revolutionary_Organization_17_November"
   },
   {
+    "year": 2003,
+    "title": "Hellas Sat 2 Becomes Greece's First Dedicated Communications Satellite",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: Hellas Sat 2 launched 13 May 2003 (22:10 UTC) aboard an Atlas V 401 from Cape Canaveral SLC-41 (confirmed by Lockheed Martin/ILS press release and SpaceNews), carrying 30 active Ku-band transponders to the 39°E orbital slot (confirmed by Wikipedia, Gunter's Space Page/skyrocket.de). It is described across sources (Wikipedia, Hellas-Sat's own corporate history, sky-brokers) as the first telecommunications satellite for Greece and Cyprus jointly, and provided TV broadcasting for the 2004 Athens Olympics. Mass: Wikipedia lists 3,450 kg while the specialist Gunter's Space Page lists 3,250 kg (matching the event description exactly) — a minor source-to-source variance in reported mass (likely dry vs. wet mass), not a material discrepancy given an authoritative specialist source matches the stated figure precisely. The specific detail of \"20-year concession agreements signed with the Greek and Cypriot governments in 2001\" could only be corroborated via an AI-generated wiki (Grokipedia) and could not be independently confirmed via a primary news/government source, but this is a secondary contextual detail; the core event (launch, date, country, purpose, technical specs, Olympics role) is solidly corroborated by multiple independent authoritative sources (Lockheed Martin/ILS official press release, SpaceNews, Wikipedia, Gunter's Space Page).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material details: Hellas Sat 2 launched 13 May 2003 (22:10 UTC) aboard an Atlas V 401 rocket from Cape Canaveral Air Force Station (SLC-41), Florida. The satellite had a launch mass of 3,250 kg (exact match per Gunter's Space Page) and carried 30 active Ku-band transponders, parked at the 39-degrees-East orbital slot. It was explicitly built to provide TV/telecom services for the 2004 Athens Summer Olympics. Sources (SpaceNews, satellite industry trackers) confirm the Hellas Sat Consortium secured 20-year concession agreements from the Greek Ministry of Transport and Communications (signed 23 August 2001) and the Republic of Cyprus granting exclusive rights to the 39 degrees East orbital slot, matching the described 2001 concession agreements. It is repeatedly described as the first Greek(-Cypriot) satellite, consistent with the 'Greece's first dedicated communications satellite' framing. No material discrepancies found; minor mass variance across sources (3,250-3,450 kg depending on measurement convention) is immaterial.",
+        "source": "https://en.wikipedia.org/wiki/Hellas_Sat_2",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: Hellas Sat 2 launched 13 May 2003 (22:10 UTC) aboard an Atlas V 401 from Cape Canaveral SLC-41 (confirmed by Lockheed Martin/ILS press release and SpaceNews), carrying 30 active Ku-band transponders to the 39°E orbital slot (confirmed by Wikipedia, Gunter's Space Page/skyrocket.de). It is described across sources (Wikipedia, Hellas-Sat's own corporate history, sky-brokers) as the first telecommunications satellite for Greece and Cyprus jointly, and provided TV broadcasting for the 2004 Athens Olympics. Mass: Wikipedia lists 3,450 kg while the specialist Gunter's Space Page lists 3,250 kg (matching the event description exactly) — a minor source-to-source variance in reported mass (likely dry vs. wet mass), not a material discrepancy given an authoritative specialist source matches the stated figure precisely. The specific detail of \"20-year concession agreements signed with the Greek and Cypriot governments in 2001\" could only be corroborated via an AI-generated wiki (Grokipedia) and could not be independently confirmed via a primary news/government source, but this is a secondary contextual detail; the core event (launch, date, country, purpose, technical specs, Olympics role) is solidly corroborated by multiple independent authoritative sources (Lockheed Martin/ILS official press release, SpaceNews, Wikipedia, Gunter's Space Page).",
+        "source": "https://investors.lockheedmartin.com/news-releases/news-release-details/ils-launches-hellas-sat-atlas-v-65-successes-row-atlas",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://investors.lockheedmartin.com/news-releases/news-release-details/ils-launches-hellas-sat-atlas-v-65-successes-row-atlas"
+  },
+  {
     "year": 2004,
     "title": "Athens hosts the Summer Olympic Games, presenting Greece to the world",
     "verdict": "TRUE",
@@ -1251,31 +1287,6 @@
   },
   {
     "year": 2012,
-    "title": "Greece receives second bailout and largest-ever sovereign debt write-down (PSI)",
-    "verdict": "TRUE",
-    "reason": "Greece's second bailout of 130 billion euros (finalized February 2012) included the largest-ever private debt restructuring of approximately 107 billion euros with a 53.5% face-value haircut; Greek unemployment did reach 27% by 2013.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Greece's second bailout of 130 billion euros (finalized February 2012) included the largest-ever private debt restructuring of approximately 107 billion euros with a 53.5% face-value haircut; Greek unemployment did reach 27% by 2013.",
-        "source": "https://en.wikipedia.org/wiki/Second_Economic_Adjustment_Programme_for_Greece",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Second_Economic_Adjustment_Programme_for_Greece"
-  },
-  {
-    "year": 2012,
     "title": "Golden Dawn neo-Nazi party enters parliament amid economic crisis",
     "verdict": "TRUE",
     "reason": "Golden Dawn won 7% of the vote in the May 2012 elections, entering parliament for the first time with 21 seats; the party is widely described as neo-Nazi and its members conducted violent attacks on immigrants and political opponents.",
@@ -1300,10 +1311,10 @@
     "source": "https://en.wikipedia.org/wiki/Golden_Dawn_(Greece)"
   },
   {
-    "year": 2015,
-    "title": "SYRIZA wins elections, Tsipras becomes PM pledging to end austerity",
+    "year": 2012,
+    "title": "Greece receives second bailout and largest-ever sovereign debt write-down (PSI)",
     "verdict": "TRUE",
-    "reason": "SYRIZA won the January 25, 2015 elections with 36% of the vote; Tsipras formed a coalition with ANEL and appointed Yanis Varoufakis as finance minister to lead bailout renegotiations.",
+    "reason": "Greece's second bailout of 130 billion euros (finalized February 2012) included the largest-ever private debt restructuring of approximately 107 billion euros with a 53.5% face-value haircut; Greek unemployment did reach 27% by 2013.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1313,8 +1324,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "SYRIZA won the January 25, 2015 elections with 36% of the vote; Tsipras formed a coalition with ANEL and appointed Yanis Varoufakis as finance minister to lead bailout renegotiations.",
-        "source": "https://en.wikipedia.org/wiki/January_2015_Greek_parliamentary_election",
+        "reason": "Greece's second bailout of 130 billion euros (finalized February 2012) included the largest-ever private debt restructuring of approximately 107 billion euros with a 53.5% face-value haircut; Greek unemployment did reach 27% by 2013.",
+        "source": "https://en.wikipedia.org/wiki/Second_Economic_Adjustment_Programme_for_Greece",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1322,7 +1333,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/January_2015_Greek_parliamentary_election"
+    "source": "https://en.wikipedia.org/wiki/Second_Economic_Adjustment_Programme_for_Greece"
   },
   {
     "year": 2015,
@@ -1373,6 +1384,31 @@
       }
     ],
     "source": "https://www.unhcr.org/news/stories/over-one-million-sea-arrivals-reach-europe-2015"
+  },
+  {
+    "year": 2015,
+    "title": "SYRIZA wins elections, Tsipras becomes PM pledging to end austerity",
+    "verdict": "TRUE",
+    "reason": "SYRIZA won the January 25, 2015 elections with 36% of the vote; Tsipras formed a coalition with ANEL and appointed Yanis Varoufakis as finance minister to lead bailout renegotiations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "SYRIZA won the January 25, 2015 elections with 36% of the vote; Tsipras formed a coalition with ANEL and appointed Yanis Varoufakis as finance minister to lead bailout renegotiations.",
+        "source": "https://en.wikipedia.org/wiki/January_2015_Greek_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/January_2015_Greek_parliamentary_election"
   },
   {
     "year": 2018,
@@ -1526,31 +1562,6 @@
   },
   {
     "year": 2023,
-    "title": "Tempi rail collision kills 57 in Greece's deadliest train disaster",
-    "verdict": "TRUE",
-    "reason": "A head-on collision between two trains in the Tempi valley on February 28, 2023 killed 57 people; it is the deadliest rail disaster in Greek history and the most serious railway accident in Europe since Santiago de Compostela 2013.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "A head-on collision between two trains in the Tempi valley on February 28, 2023 killed 57 people; it is the deadliest rail disaster in Greek history and the most serious railway accident in Europe since Santiago de Compostela 2013.",
-        "source": "https://en.wikipedia.org/wiki/Tempi_train_crash",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Tempi_train_crash"
-  },
-  {
-    "year": 2023,
     "title": "New Democracy wins enhanced majority in double elections despite Tempi controversy",
     "verdict": "TRUE",
     "reason": "New Democracy won the June 2023 elections with 41% of the vote and 158 seats (absolute majority) under a renewed bonus electoral system, after an inconclusive May 2023 vote under proportional representation.",
@@ -1573,6 +1584,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/June_2023_Greek_parliamentary_election"
+  },
+  {
+    "year": 2023,
+    "title": "Tempi rail collision kills 57 in Greece's deadliest train disaster",
+    "verdict": "TRUE",
+    "reason": "A head-on collision between two trains in the Tempi valley on February 28, 2023 killed 57 people; it is the deadliest rail disaster in Greek history and the most serious railway accident in Europe since Santiago de Compostela 2013.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A head-on collision between two trains in the Tempi valley on February 28, 2023 killed 57 people; it is the deadliest rail disaster in Greek history and the most serious railway accident in Europe since Santiago de Compostela 2013.",
+        "source": "https://en.wikipedia.org/wiki/Tempi_train_crash",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Tempi_train_crash"
   },
   {
     "year": 2024,

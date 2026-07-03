@@ -63,12 +63,12 @@
   {
     "year": 1954,
     "title": "General Strike Against Klein-Saks Austerity Program",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: Klein-Saks Mission was hired in 1955 (not 1954). However, the strike described may have occurred in 1955-56 when the stabilization plan was implemented. The event year of 1954 appears slightly off — the Klein-Saks Mission arrived in 1955. Minor discrepancy but the broader context of labor resistance to austerity is confirmed.; Pass 2 FALSE: Convergent evidence from multiple independent sources (Memoria Chilena/Biblioteca Nacional de Chile, Wikipedia's Misión Klein-Saks article, ResearchGate/SciELO academic paper on the mission's hiring, and general historiography of Ibáñez's second term) establishes that the Klein-Saks Mission was not invited/contracted until 1955 (contract signed and mission arrived in Chile on July 3, 1955; it began substantive work in September 1955; the stabilization/austerity program with wage freezes was adopted in December 1955). It therefore could not have been the target of a strike in 1954 — the program simply did not exist yet. Chile did see a real CUT-organized general strike in 1954 (led by Clotario Blest, around May Day), but it protested Ibáñez's general inflation/economic policy broadly, not the Klein-Saks plan, which is the specific causal driver named in this event's description ('wage freezes...imposed under the Klein-Saks stabilization plan invited by President Ibáñez'). The strike that actually matches the description — CUT mobilizing specifically against Klein-Saks-driven wage freezes/austerity — was called for January 9, 1956, and multiple sources describe it as a failure (workers' strike capacity exhausted, leading to disorganization of the labor movement), which also contradicts this event's claim of a successful mass mobilization of 'hundreds of thousands.' Given both the year and the outcome/magnitude are off, this is a material mismatch, not a minor detail — hence FALSE rather than PARTIAL, with the real underlying event most plausibly dated to 1956.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
+    "verdict": "FALSE",
+    "reason": "The Klein-Saks Mission did not exist in 1954. Multiple independent sources confirm negotiations to hire the US consulting firm began in April 1955 (\"on April 8, Julius Klein informed that the Chilean government contacted him to negotiate...\"), the contract was signed around July 1955, and the mission operated in Chile 1955-1958. The CUT's general strike explicitly against the Klein-Saks wage-freeze/austerity plan was declared in July 1955 (with further strikes in August 1955), not 1954. CUT did organize labor unrest in 1954 (e.g., a Sept 3, 1954 strike of ~50,000 workers), but this predated and was unrelated to Klein-Saks specifically -- it targeted Ibáñez's general economic conditions before the mission was ever invited. The event as described conflates the real, well-documented 1955 anti-Klein-Saks general strike with the wrong year (1954), so year+causal-attribution to Klein-Saks do not both hold. Corrected year: 1955.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
     "source_independence": "independent",
     "verifications": [
       {
@@ -93,8 +93,22 @@
           "method": "web_search"
         },
         "corrected_year": 1956
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "The Klein-Saks Mission did not exist in 1954. Multiple independent sources confirm negotiations to hire the US consulting firm began in April 1955 (\"on April 8, Julius Klein informed that the Chilean government contacted him to negotiate...\"), the contract was signed around July 1955, and the mission operated in Chile 1955-1958. The CUT's general strike explicitly against the Klein-Saks wage-freeze/austerity plan was declared in July 1955 (with further strikes in August 1955), not 1954. CUT did organize labor unrest in 1954 (e.g., a Sept 3, 1954 strike of ~50,000 workers), but this predated and was unrelated to Klein-Saks specifically -- it targeted Ibáñez's general economic conditions before the mission was ever invited. The event as described conflates the real, well-documented 1955 anti-Klein-Saks general strike with the wrong year (1954), so year+causal-attribution to Klein-Saks do not both hold. Corrected year: 1955.",
+        "source": "https://es.wikipedia.org/wiki/Misi%C3%B3n_Klein-Saks",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1955
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://es.wikipedia.org/wiki/Misi%C3%B3n_Klein-Saks"
   },
   {
     "year": 1955,
@@ -260,12 +274,12 @@
   {
     "year": 1963,
     "title": "First Agrarian Reform Law Passed Under Alessandri",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: Confirmed: Alessandri enacted a limited agrarian reform law in 1963, known as the 'Reforma del Macetero' for its limited scope. CORA created. Accurate description.; Pass 2 FALSE: The event as described (Alessandri's first agrarian reform law, Law No. 15.020, allowing expropriation of abandoned/poorly-managed land, under Alliance for Progress pressure, criticized by left and right as inadequate/the \"Ley Maceta\" or \"flowerpot reform,\" and setting precedent for Frei's and Allende's more sweeping reforms) is real and materially accurate in every respect except the year. Multiple independent sources (Memoria Chilena/Biblioteca Nacional de Chile; a Universidad de Chile thesis repository; SciELO Chile) converge that Law 15.020 was promulgated on November 15, 1962, not 1963. A related 1963 measure (constitutional amendment Law 15.295, enabling expropriation of land voluntarily offered for sale) is a distinct, secondary legal instrument, not \"the first agrarian reform law.\" Since the year is a join key and is materially wrong by a full year, this is a FALSE verdict with corrected_year 1962, per the hard rule that year errors are reported as FALSE.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
+    "verdict": "FALSE",
+    "reason": "The event is real and materially accurate in description (Alessandri, under U.S. Alliance for Progress and domestic pressure, enacted Chile's first agrarian reform law permitting expropriation of abandoned/poorly-managed land, criticized as inadequate by left and right, and setting legal precedent for Frei/Allende's later reforms) — but the year is wrong. Multiple independent, non-off-limits sources converge on Law No. 15.020 being promulgated on 15 November 1962 (published in the Diario Oficial on 27 November 1962), not 1963. Corroborating sources include the Uruguayan Parliament library catalog (pmb.parlamento.gub.uy, confirming \"LEY 15.020 (15/11/1962)\" signed by President Jorge Alessandri Rodríguez for agrarian reform in Chile), a RAND Corporation paper titled 'Politics and Agrarian Reform Bureaucracies in Chile: 1962-1964', and the Universidad de Concepción's Archivo Luis David Cruz Ocampo listing of Ley no. 15.020. Since the year does not hold (country and substance do, but the join-key year is off by one), this is scored FALSE with corrected_year=1962 per the hard rules, rather than PARTIAL.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
     "source_independence": "independent",
     "verifications": [
       {
@@ -290,8 +304,22 @@
           "method": "web_search"
         },
         "corrected_year": 1962
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially accurate in description (Alessandri, under U.S. Alliance for Progress and domestic pressure, enacted Chile's first agrarian reform law permitting expropriation of abandoned/poorly-managed land, criticized as inadequate by left and right, and setting legal precedent for Frei/Allende's later reforms) — but the year is wrong. Multiple independent, non-off-limits sources converge on Law No. 15.020 being promulgated on 15 November 1962 (published in the Diario Oficial on 27 November 1962), not 1963. Corroborating sources include the Uruguayan Parliament library catalog (pmb.parlamento.gub.uy, confirming \"LEY 15.020 (15/11/1962)\" signed by President Jorge Alessandri Rodríguez for agrarian reform in Chile), a RAND Corporation paper titled 'Politics and Agrarian Reform Bureaucracies in Chile: 1962-1964', and the Universidad de Concepción's Archivo Luis David Cruz Ocampo listing of Ley no. 15.020. Since the year does not hold (country and substance do, but the join-key year is off by one), this is scored FALSE with corrected_year=1962 per the hard rules, rather than PARTIAL.",
+        "source": "https://pmb.parlamento.gub.uy/pmb/opac_css/index.php?lvl=categ_see&id=141005",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1962
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://pmb.parlamento.gub.uy/pmb/opac_css/index.php?lvl=categ_see&id=141005"
   },
   {
     "year": 1964,
@@ -321,12 +349,12 @@
   {
     "year": 1965,
     "title": "Chileanization of Copper and Comprehensive Agrarian Reform",
-    "verdict": "CONTESTED",
-    "reason": "Pass 1 TRUE: Confirmed: In 1965 Chile purchased 51% of El Teniente from Kennecott. Agrarian Reform Law also enacted. Consistent with sources.; Pass 2 FALSE: Both reforms described are real but neither was enacted in 1965, and the \"51% Anaconda\" detail is also wrong. (1) Frei's initial Chileanization framework agreements date to December 1964, giving Chile 51% of Kennecott's Braden/El Teniente subsidiary but only 25% of a new Anaconda mine (Exotica) — not 51% of Anaconda. The enabling Chileanization Law 16.425 was published January 25, 1966, and the El Teniente mixed company (SMETSA, 51% state) was formed in 1967. Chile did not get to 51% of Anaconda's main mines until the separate June 1969 \"negotiated nationalization\" agreement. (2) The comprehensive Agrarian Reform Law (16.640) was submitted to Congress by Frei on November 22, 1965, but was held up and not passed/enacted until July 16, 1967 — three years into his term, not simultaneously with a 1965 copper deal. So while \"Chileanization\" and the agrarian reform are both genuine, historically significant Frei-era reforms, they were not co-enacted in 1965 as described; the year is wrong and the 51%-Anaconda detail is materially inaccurate. Closest defensible single year for the described package of concrete enactments (agrarian law passage + El Teniente 51% mixed company) is 1967.. Tiebreak required.",
-    "verify_count": 2,
-    "consensus_verdict": "CONTESTED",
-    "consensus_status": "contested_open",
-    "needs_tiebreak": true,
+    "verdict": "FALSE",
+    "reason": "The underlying phenomena are real but neither reform was actually enacted in 1965. Frei took office Nov 1964 and sent presidential messages/bills for both the copper Chileanization plan and the agrarian reform to Congress around 1965 (Dec 1964 initial Kennecott/Anaconda agreements; agrarian reform bill sent to Congress Nov 1965), but the actual laws were passed later: Ley 16.425 'Chilenización del Cobre' was promulgated Jan 25, 1966 (per Codelco's own official history: 'la chilenización del cobre, iniciada en 1966, partió con la aprobación por parte del Congreso de la ley 16.425'), and the mixed company giving the state 51% of El Teniente (Kennecott) was formed in 1967. The Comprehensive Agrarian Reform Law (Ley 16.640) was promulgated July 28, 1967 (confirmed via Chile's National Library, memoriachilena.gob.cl), not 1965. Moreover, the 51% state stake in Anaconda's main mines (Chuquicamata, El Salvador) — as opposed to just a 25% stake in the new Exótica mine — was not achieved until the June 26, 1969 Frei-Anaconda agreement. So the event as described (both reforms 'enacted'/'acquiring 51%' simultaneously in 1965) does not match the historical record on year: the real legislative enactments span 1966 (copper law), 1967 (El Teniente 51% + agrarian reform law), and 1969 (Anaconda 51%). 1967 is the best single-year approximation since that is when the agrarian reform law was actually enacted and when the Kennecott/El Teniente mixed company reached 51% state ownership, the closest true 'simultaneous' convergence of the two reforms.",
+    "verify_count": 3,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "contested_resolved",
+    "needs_tiebreak": false,
     "source_independence": "independent",
     "verifications": [
       {
@@ -351,8 +379,22 @@
           "method": "web_search"
         },
         "corrected_year": 1967
+      },
+      {
+        "pass_n": 3,
+        "verdict": "FALSE",
+        "reason": "The underlying phenomena are real but neither reform was actually enacted in 1965. Frei took office Nov 1964 and sent presidential messages/bills for both the copper Chileanization plan and the agrarian reform to Congress around 1965 (Dec 1964 initial Kennecott/Anaconda agreements; agrarian reform bill sent to Congress Nov 1965), but the actual laws were passed later: Ley 16.425 'Chilenización del Cobre' was promulgated Jan 25, 1966 (per Codelco's own official history: 'la chilenización del cobre, iniciada en 1966, partió con la aprobación por parte del Congreso de la ley 16.425'), and the mixed company giving the state 51% of El Teniente (Kennecott) was formed in 1967. The Comprehensive Agrarian Reform Law (Ley 16.640) was promulgated July 28, 1967 (confirmed via Chile's National Library, memoriachilena.gob.cl), not 1965. Moreover, the 51% state stake in Anaconda's main mines (Chuquicamata, El Salvador) — as opposed to just a 25% stake in the new Exótica mine — was not achieved until the June 26, 1969 Frei-Anaconda agreement. So the event as described (both reforms 'enacted'/'acquiring 51%' simultaneously in 1965) does not match the historical record on year: the real legislative enactments span 1966 (copper law), 1967 (El Teniente 51% + agrarian reform law), and 1969 (Anaconda 51%). 1967 is the best single-year approximation since that is when the agrarian reform law was actually enacted and when the Kennecott/El Teniente mixed company reached 51% state ownership, the closest true 'simultaneous' convergence of the two reforms.",
+        "source": "https://www.memoriachilena.gob.cl/602/w3-article-59505.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1967
       }
-    ]
+    ],
+    "had_dissent": true,
+    "source": "https://www.memoriachilena.gob.cl/602/w3-article-59505.html"
   },
   {
     "year": 1966,

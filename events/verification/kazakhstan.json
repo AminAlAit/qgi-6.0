@@ -351,31 +351,6 @@
   },
   {
     "year": 1989,
-    "title": "Nevada-Semipalatinsk Anti-Nuclear Movement Founded by Suleimenov",
-    "verdict": "TRUE",
-    "reason": "Olzhas Suleimenov interrupted a poetry reading on national television on February 26, 1989, to demand a halt to nuclear testing, founding the Nevada-Semipalatinsk movement which stopped multiple planned 1989 tests and collected over a million signatures.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Olzhas Suleimenov interrupted a poetry reading on national television on February 26, 1989, to demand a halt to nuclear testing, founding the Nevada-Semipalatinsk movement which stopped multiple planned 1989 tests and collected over a million signatures.",
-        "source": "https://nvdatabase.swarthmore.edu/content/kazakhs-stop-nuclear-testing-nevada-semipalatinsk-antinuclear-campaign-1989-1991",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://nvdatabase.swarthmore.edu/content/kazakhs-stop-nuclear-testing-nevada-semipalatinsk-antinuclear-campaign-1989-1991"
-  },
-  {
-    "year": 1989,
     "title": "Language Law Declares Kazakh State Language",
     "verdict": "TRUE",
     "reason": "Kazakhstan's Supreme Soviet passed a language law in 1989 declaring Kazakh the state language with Russian designated as the language of interethnic communication, forming the legal basis for linguistic revival.",
@@ -398,6 +373,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Languages_of_Kazakhstan"
+  },
+  {
+    "year": 1989,
+    "title": "Nevada-Semipalatinsk Anti-Nuclear Movement Founded by Suleimenov",
+    "verdict": "TRUE",
+    "reason": "Olzhas Suleimenov interrupted a poetry reading on national television on February 26, 1989, to demand a halt to nuclear testing, founding the Nevada-Semipalatinsk movement which stopped multiple planned 1989 tests and collected over a million signatures.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Olzhas Suleimenov interrupted a poetry reading on national television on February 26, 1989, to demand a halt to nuclear testing, founding the Nevada-Semipalatinsk movement which stopped multiple planned 1989 tests and collected over a million signatures.",
+        "source": "https://nvdatabase.swarthmore.edu/content/kazakhs-stop-nuclear-testing-nevada-semipalatinsk-antinuclear-campaign-1989-1991",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://nvdatabase.swarthmore.edu/content/kazakhs-stop-nuclear-testing-nevada-semipalatinsk-antinuclear-campaign-1989-1991"
   },
   {
     "year": 1990,
@@ -423,31 +423,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Kazakh_Soviet_Socialist_Republic"
-  },
-  {
-    "year": 1991,
-    "title": "Semipalatinsk Nuclear Test Site Closed by Nazarbayev Decree",
-    "verdict": "TRUE",
-    "reason": "Nazarbayev signed a decree on August 29, 1991, permanently closing the Semipalatinsk Test Site after 456 nuclear tests, without Soviet leadership approval; the UN later designated August 29 as the International Day Against Nuclear Tests.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Nazarbayev signed a decree on August 29, 1991, permanently closing the Semipalatinsk Test Site after 456 nuclear tests, without Soviet leadership approval; the UN later designated August 29 as the International Day Against Nuclear Tests.",
-        "source": "https://www.nti.org/risky-business/semipalatinsk-closure-at-30-the-importance-of-cooperation-for-managing-nuclear-security-challenges/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.nti.org/risky-business/semipalatinsk-closure-at-30-the-importance-of-cooperation-for-managing-nuclear-security-challenges/"
   },
   {
     "year": 1991,
@@ -500,10 +475,10 @@
     "source": "https://en.wikipedia.org/wiki/Kazakhstan_and_weapons_of_mass_destruction"
   },
   {
-    "year": 1992,
-    "title": "Lisbon Protocol: Kazakhstan Commits to Nuclear Non-Proliferation",
+    "year": 1991,
+    "title": "Semipalatinsk Nuclear Test Site Closed by Nazarbayev Decree",
     "verdict": "TRUE",
-    "reason": "Kazakhstan signed the Lisbon Protocol on May 23, 1992, committing to transfer all nuclear weapons to Russia and accede to the NPT as a non-nuclear state; the protocol set an important precedent in non-proliferation.",
+    "reason": "Nazarbayev signed a decree on August 29, 1991, permanently closing the Semipalatinsk Test Site after 456 nuclear tests, without Soviet leadership approval; the UN later designated August 29 as the International Day Against Nuclear Tests.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -513,8 +488,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Kazakhstan signed the Lisbon Protocol on May 23, 1992, committing to transfer all nuclear weapons to Russia and accede to the NPT as a non-nuclear state; the protocol set an important precedent in non-proliferation.",
-        "source": "https://en.wikipedia.org/wiki/Lisbon_Protocol",
+        "reason": "Nazarbayev signed a decree on August 29, 1991, permanently closing the Semipalatinsk Test Site after 456 nuclear tests, without Soviet leadership approval; the UN later designated August 29 as the International Day Against Nuclear Tests.",
+        "source": "https://www.nti.org/risky-business/semipalatinsk-closure-at-30-the-importance-of-cooperation-for-managing-nuclear-security-challenges/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -522,7 +497,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Lisbon_Protocol"
+    "source": "https://www.nti.org/risky-business/semipalatinsk-closure-at-30-the-importance-of-cooperation-for-managing-nuclear-security-challenges/"
   },
   {
     "year": 1992,
@@ -550,21 +525,21 @@
     "source": "https://www.britannica.com/place/Kazakhstan/Independent-Kazakhstan"
   },
   {
-    "year": 1993,
-    "title": "TengizChevroil: Kazakhstan Signs Landmark 40-Year Oil Deal with Chevron",
-    "verdict": "PARTIAL",
-    "reason": "The TengizChevroil agreement was signed on April 6, 1993, granting Chevron 50%, but the original two-company structure had KazakhOil (later KazMunaiGas) not at 20% — ExxonMobil joined in 1996-1997, making the precise stake breakdown in the event description anachronistic for 1993.",
+    "year": 1992,
+    "title": "Lisbon Protocol: Kazakhstan Commits to Nuclear Non-Proliferation",
+    "verdict": "TRUE",
+    "reason": "Kazakhstan signed the Lisbon Protocol on May 23, 1992, committing to transfer all nuclear weapons to Russia and accede to the NPT as a non-nuclear state; the protocol set an important precedent in non-proliferation.",
     "verify_count": 1,
-    "consensus_verdict": "PARTIAL",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "PARTIAL",
-        "reason": "The TengizChevroil agreement was signed on April 6, 1993, granting Chevron 50%, but the original two-company structure had KazakhOil (later KazMunaiGas) not at 20% — ExxonMobil joined in 1996-1997, making the precise stake breakdown in the event description anachronistic for 1993.",
-        "source": "https://en.wikipedia.org/wiki/Tengizchevroil",
+        "verdict": "TRUE",
+        "reason": "Kazakhstan signed the Lisbon Protocol on May 23, 1992, committing to transfer all nuclear weapons to Russia and accede to the NPT as a non-nuclear state; the protocol set an important precedent in non-proliferation.",
+        "source": "https://en.wikipedia.org/wiki/Lisbon_Protocol",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -572,7 +547,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Tengizchevroil"
+    "source": "https://en.wikipedia.org/wiki/Lisbon_Protocol"
   },
   {
     "year": 1993,
@@ -598,6 +573,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Kazakhstani_tenge"
+  },
+  {
+    "year": 1993,
+    "title": "TengizChevroil: Kazakhstan Signs Landmark 40-Year Oil Deal with Chevron",
+    "verdict": "PARTIAL",
+    "reason": "The TengizChevroil agreement was signed on April 6, 1993, granting Chevron 50%, but the original two-company structure had KazakhOil (later KazMunaiGas) not at 20% — ExxonMobil joined in 1996-1997, making the precise stake breakdown in the event description anachronistic for 1993.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The TengizChevroil agreement was signed on April 6, 1993, granting Chevron 50%, but the original two-company structure had KazakhOil (later KazMunaiGas) not at 20% — ExxonMobil joined in 1996-1997, making the precise stake breakdown in the event description anachronistic for 1993.",
+        "source": "https://en.wikipedia.org/wiki/Tengizchevroil",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Tengizchevroil"
   },
   {
     "year": 1994,
@@ -726,31 +726,6 @@
   },
   {
     "year": 2000,
-    "title": "Kazakhstan National Fund Established to Manage Oil Revenues",
-    "verdict": "TRUE",
-    "reason": "The Kazakhstan National Fund was created in 2000 to manage oil revenues and prevent Dutch Disease-style economic distortions; it became a critical fiscal stabilization buffer over subsequent decades.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Kazakhstan National Fund was created in 2000 to manage oil revenues and prevent Dutch Disease-style economic distortions; it became a critical fiscal stabilization buffer over subsequent decades.",
-        "source": "https://en.wikipedia.org/wiki/National_Fund_of_Kazakhstan",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/National_Fund_of_Kazakhstan"
-  },
-  {
-    "year": 2000,
     "title": "Kashagan Field Discovery: World's Largest Oil Find in Three Decades",
     "verdict": "TRUE",
     "reason": "The Kashagan field was discovered in 2000 and is considered the largest oil discovery in 30 years with recoverable reserves of approximately 13 billion barrels; it is the largest discovery since Alaska's Prudhoe Bay in 1968.",
@@ -773,6 +748,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Kashagan_Field"
+  },
+  {
+    "year": 2000,
+    "title": "Kazakhstan National Fund Established to Manage Oil Revenues",
+    "verdict": "TRUE",
+    "reason": "The Kazakhstan National Fund was created in 2000 to manage oil revenues and prevent Dutch Disease-style economic distortions; it became a critical fiscal stabilization buffer over subsequent decades.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Kazakhstan National Fund was created in 2000 to manage oil revenues and prevent Dutch Disease-style economic distortions; it became a critical fiscal stabilization buffer over subsequent decades.",
+        "source": "https://en.wikipedia.org/wiki/National_Fund_of_Kazakhstan",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/National_Fund_of_Kazakhstan"
   },
   {
     "year": 2001,
@@ -823,6 +823,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Energy_in_Kazakhstan"
+  },
+  {
+    "year": 2006,
+    "title": "Kazakhstan Launches KazSat-1, Its First National Satellite",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm every material detail: KazSat-1, Kazakhstan's first domestically-owned communications satellite, launched aboard a Proton-K/Blok DM-2M rocket from Baikonur Cosmodrome on 17 June 2006 (22:44 UTC, which fell on 18 June local Baikonur time — a routine UTC/local date discrepancy, not a factual error). The launch was watched at Baikonur by Kazakh President Nursultan Nazarbayev and Russian President Vladimir Putin (confirmed via UPI wire photo captions and RFE/RL reporting). The satellite bus was built by Russia's Khrunichev State Research and Production Space Center with the payload from Italy's Thales Alenia Space, carrying 12 Ku-band transponders. KazSat-1 later suffered an onboard system failure and was declared lost in 2008 after ~2 years in orbit, matching the description exactly. All core facts (year, country, actors, technical specs, outcome) are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material details. KazSat-1 launched 17 June 2006 (22:44 UTC) from Baikonur Cosmodrome aboard a Proton-K/Blok DM-2M rocket — the local-time discrepancy some sources show as \"18 June\" is explained by Baikonur's UTC+5/6 offset relative to the UTC launch timestamp. NASA's NSSDCA spacecraft database and Wikipedia both give 17 June 2006 as the launch date. The satellite was Kazakhstan's first domestically-owned geostationary communications satellite, built by Russia's Khrunichev State Research and Production Space Center (bus) with Thales Alenia Space of Italy (payload), carrying 12 Ku-band transponders. The Kremlin's own official site (en.kremlin.ru) confirms Presidents Nazarbayev and Putin were both present at Baikonur to watch the launch. Space.com and RFE/RL corroborate the \"first satellite\" framing and Central Asia regional coverage. Multiple sources (Wikipedia, Gunter's Space Page) confirm the satellite failed/went silent in 2008, ending the mission. Every detail in the description — date, country, rocket type, launch site, dignitaries present, manufacturers, transponder count, and 2008 failure — is corroborated by at least two independent, authoritative sources.",
+        "source": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2006-022A",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm every material detail: KazSat-1, Kazakhstan's first domestically-owned communications satellite, launched aboard a Proton-K/Blok DM-2M rocket from Baikonur Cosmodrome on 17 June 2006 (22:44 UTC, which fell on 18 June local Baikonur time — a routine UTC/local date discrepancy, not a factual error). The launch was watched at Baikonur by Kazakh President Nursultan Nazarbayev and Russian President Vladimir Putin (confirmed via UPI wire photo captions and RFE/RL reporting). The satellite bus was built by Russia's Khrunichev State Research and Production Space Center with the payload from Italy's Thales Alenia Space, carrying 12 Ku-band transponders. KazSat-1 later suffered an onboard system failure and was declared lost in 2008 after ~2 years in orbit, matching the description exactly. All core facts (year, country, actors, technical specs, outcome) are corroborated.",
+        "source": "https://www.rferl.org/amp/1069248.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.rferl.org/amp/1069248.html"
   },
   {
     "year": 2006,
@@ -926,31 +962,6 @@
   },
   {
     "year": 2013,
-    "title": "Xi Jinping Launches Belt and Road Initiative from Astana",
-    "verdict": "TRUE",
-    "reason": "Xi Jinping announced the Silk Road Economic Belt during his September 2013 visit to Kazakhstan, speaking at Nazarbayev University in Astana; this speech launched what became the Belt and Road Initiative.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Xi Jinping announced the Silk Road Economic Belt during his September 2013 visit to Kazakhstan, speaking at Nazarbayev University in Astana; this speech launched what became the Belt and Road Initiative.",
-        "source": "https://en.wikipedia.org/wiki/Belt_and_Road_Initiative",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Belt_and_Road_Initiative"
-  },
-  {
-    "year": 2013,
     "title": "Kashagan Oil Field Begins and Immediately Suspends Production",
     "verdict": "TRUE",
     "reason": "Kashagan achieved first oil on September 11, 2013, but production was halted on September 24 due to hydrogen sulfide leaks from pipeline design flaws; total development costs exceeded $50 billion.",
@@ -973,6 +984,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Kashagan_Field"
+  },
+  {
+    "year": 2013,
+    "title": "Xi Jinping Launches Belt and Road Initiative from Astana",
+    "verdict": "TRUE",
+    "reason": "Xi Jinping announced the Silk Road Economic Belt during his September 2013 visit to Kazakhstan, speaking at Nazarbayev University in Astana; this speech launched what became the Belt and Road Initiative.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Xi Jinping announced the Silk Road Economic Belt during his September 2013 visit to Kazakhstan, speaking at Nazarbayev University in Astana; this speech launched what became the Belt and Road Initiative.",
+        "source": "https://en.wikipedia.org/wiki/Belt_and_Road_Initiative",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Belt_and_Road_Initiative"
   },
   {
     "year": 2014,
@@ -1126,6 +1162,31 @@
   },
   {
     "year": 2022,
+    "title": "Capital Renamed Astana: Symbolic Break with Nazarbayev Era",
+    "verdict": "TRUE",
+    "reason": "Kazakhstan renamed its capital from Nur-Sultan back to Astana on September 13, 2022; the renaming accompanied a June 2022 constitutional referendum that created new checks on power and stripped Nazarbayev of formal titles.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kazakhstan renamed its capital from Nur-Sultan back to Astana on September 13, 2022; the renaming accompanied a June 2022 constitutional referendum that created new checks on power and stripped Nazarbayev of formal titles.",
+        "source": "https://en.wikipedia.org/wiki/Astana",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Astana"
+  },
+  {
+    "year": 2022,
     "title": "January Uprising: Largest Protests in Kazakhstan's History",
     "verdict": "TRUE",
     "reason": "Protests ignited in Zhanaozen over LPG price increases in January 2022, spread nationwide, and resulted in 227-238 official deaths and over 9,900 arrests; Tokayev invoked the CSTO, bringing approximately 3,000 Russian-led troops, and used the crisis to strip Nazarbayev of Security Council chairmanship.",
@@ -1175,21 +1236,21 @@
     "source": "https://www.fpri.org/article/2022/06/how-russias-invasion-of-ukraine-has-affected-kazakh-politics/"
   },
   {
-    "year": 2022,
-    "title": "Capital Renamed Astana: Symbolic Break with Nazarbayev Era",
-    "verdict": "TRUE",
-    "reason": "Kazakhstan renamed its capital from Nur-Sultan back to Astana on September 13, 2022; the renaming accompanied a June 2022 constitutional referendum that created new checks on power and stripped Nazarbayev of formal titles.",
+    "year": 2023,
+    "title": "Tengiz Future Growth Project Nears Completion After Decade of Delays",
+    "verdict": "PARTIAL",
+    "reason": "The Tengiz FGP did experience major delays and cost overruns inflating costs to approximately $47 billion, but first oil from the FGP was achieved on January 24, 2025, not in 2024 as stated in the description; the Wellhead Pressure Management Project started in April 2024.",
     "verify_count": 1,
-    "consensus_verdict": "TRUE",
+    "consensus_verdict": "PARTIAL",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Kazakhstan renamed its capital from Nur-Sultan back to Astana on September 13, 2022; the renaming accompanied a June 2022 constitutional referendum that created new checks on power and stripped Nazarbayev of formal titles.",
-        "source": "https://en.wikipedia.org/wiki/Astana",
+        "verdict": "PARTIAL",
+        "reason": "The Tengiz FGP did experience major delays and cost overruns inflating costs to approximately $47 billion, but first oil from the FGP was achieved on January 24, 2025, not in 2024 as stated in the description; the Wellhead Pressure Management Project started in April 2024.",
+        "source": "https://tengizchevroil.com/company/2025/01/24/tengizchevroil-achieves-first-oil-production-at-tengiz-future-growth-project",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1197,7 +1258,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Astana"
+    "source": "https://tengizchevroil.com/company/2025/01/24/tengizchevroil-achieves-first-oil-production-at-tengiz-future-growth-project"
   },
   {
     "year": 2023,
@@ -1223,31 +1284,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Trans-Caspian_International_Transport_Route"
-  },
-  {
-    "year": 2023,
-    "title": "Tengiz Future Growth Project Nears Completion After Decade of Delays",
-    "verdict": "PARTIAL",
-    "reason": "The Tengiz FGP did experience major delays and cost overruns inflating costs to approximately $47 billion, but first oil from the FGP was achieved on January 24, 2025, not in 2024 as stated in the description; the Wellhead Pressure Management Project started in April 2024.",
-    "verify_count": 1,
-    "consensus_verdict": "PARTIAL",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "PARTIAL",
-        "reason": "The Tengiz FGP did experience major delays and cost overruns inflating costs to approximately $47 billion, but first oil from the FGP was achieved on January 24, 2025, not in 2024 as stated in the description; the Wellhead Pressure Management Project started in April 2024.",
-        "source": "https://tengizchevroil.com/company/2025/01/24/tengizchevroil-achieves-first-oil-production-at-tengiz-future-growth-project",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://tengizchevroil.com/company/2025/01/24/tengizchevroil-achieves-first-oil-production-at-tengiz-future-growth-project"
   },
   {
     "year": 2024,

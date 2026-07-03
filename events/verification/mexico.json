@@ -1,31 +1,6 @@
 [
   {
     "year": 1950,
-    "title": "PRI Consolidates One-Party Dominance",
-    "verdict": "TRUE",
-    "reason": "Well-documented: PRI held every governorship and near-total congressional control through corporatist structures. Mario Vargas Llosa's 'perfect dictatorship' phrase confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Well-documented: PRI held every governorship and near-total congressional control through corporatist structures. Mario Vargas Llosa's 'perfect dictatorship' phrase confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Institutional_Revolutionary_Party",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Institutional_Revolutionary_Party"
-  },
-  {
-    "year": 1950,
     "title": "Mexican Miracle Begins — Sustained GDP Growth",
     "verdict": "TRUE",
     "reason": "6–7% average annual GDP growth during the stabilizing development era confirmed by multiple economic sources.",
@@ -48,6 +23,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Mexican_miracle"
+  },
+  {
+    "year": 1950,
+    "title": "PRI Consolidates One-Party Dominance",
+    "verdict": "TRUE",
+    "reason": "Well-documented: PRI held every governorship and near-total congressional control through corporatist structures. Mario Vargas Llosa's 'perfect dictatorship' phrase confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Well-documented: PRI held every governorship and near-total congressional control through corporatist structures. Mario Vargas Llosa's 'perfect dictatorship' phrase confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Institutional_Revolutionary_Party",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Institutional_Revolutionary_Party"
   },
   {
     "year": 1951,
@@ -201,6 +201,31 @@
   },
   {
     "year": 1957,
+    "title": "Mexico City Earthquake",
+    "verdict": "FALSE",
+    "reason": "Magnitude stated as 7.9 but actual magnitude was 7.6–7.8 Mw. More critically, death toll 'at least two hundred' is materially wrong — confirmed sources report 54–160 deaths. Both the magnitude and death toll are substantially overstated.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Magnitude stated as 7.9 but actual magnitude was 7.6–7.8 Mw. More critically, death toll 'at least two hundred' is materially wrong — confirmed sources report 54–160 deaths. Both the magnitude and death toll are substantially overstated.",
+        "source": "https://en.wikipedia.org/wiki/1957_Guerrero_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1957_Guerrero_earthquake"
+  },
+  {
+    "year": 1957,
     "title": "Teachers' Union Strike Challenges PRI Labor Control",
     "verdict": "TRUE",
     "reason": "MRM founded 1956–1958, challenging SNTE. Arrests and co-optation confirmed.",
@@ -225,21 +250,21 @@
     "source": "https://en.wikipedia.org/wiki/Movimiento_Revolucionario_del_Magisterio"
   },
   {
-    "year": 1957,
-    "title": "Mexico City Earthquake",
-    "verdict": "FALSE",
-    "reason": "Magnitude stated as 7.9 but actual magnitude was 7.6–7.8 Mw. More critically, death toll 'at least two hundred' is materially wrong — confirmed sources report 54–160 deaths. Both the magnitude and death toll are substantially overstated.",
+    "year": 1958,
+    "title": "Adolfo López Mateos Elected President",
+    "verdict": "TRUE",
+    "reason": "Elected July 1958, took office December 1958. Center-left positioning and Cuba policy confirmed.",
     "verify_count": 1,
-    "consensus_verdict": "FALSE",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Magnitude stated as 7.9 but actual magnitude was 7.6–7.8 Mw. More critically, death toll 'at least two hundred' is materially wrong — confirmed sources report 54–160 deaths. Both the magnitude and death toll are substantially overstated.",
-        "source": "https://en.wikipedia.org/wiki/1957_Guerrero_earthquake",
+        "verdict": "TRUE",
+        "reason": "Elected July 1958, took office December 1958. Center-left positioning and Cuba policy confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Adolfo_L%C3%B3pez_Mateos",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -247,7 +272,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/1957_Guerrero_earthquake"
+    "source": "https://en.wikipedia.org/wiki/Adolfo_L%C3%B3pez_Mateos"
   },
   {
     "year": 1958,
@@ -275,10 +300,10 @@
     "source": "https://en.wikipedia.org/wiki/Demetrio_Vallejo"
   },
   {
-    "year": 1958,
-    "title": "Adolfo López Mateos Elected President",
+    "year": 1959,
+    "title": "Agrarian Reform Revived Under López Mateos",
     "verdict": "TRUE",
-    "reason": "Elected July 1958, took office December 1958. Center-left positioning and Cuba policy confirmed.",
+    "reason": "López Mateos distributed more land than any president since Cárdenas. 'Roughly thirty million acres' is within range of documented figures.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -288,7 +313,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Elected July 1958, took office December 1958. Center-left positioning and Cuba policy confirmed.",
+        "reason": "López Mateos distributed more land than any president since Cárdenas. 'Roughly thirty million acres' is within range of documented figures.",
         "source": "https://en.wikipedia.org/wiki/Adolfo_L%C3%B3pez_Mateos",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -323,31 +348,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Mexico%E2%80%93Cuba_relations"
-  },
-  {
-    "year": 1959,
-    "title": "Agrarian Reform Revived Under López Mateos",
-    "verdict": "TRUE",
-    "reason": "López Mateos distributed more land than any president since Cárdenas. 'Roughly thirty million acres' is within range of documented figures.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "López Mateos distributed more land than any president since Cárdenas. 'Roughly thirty million acres' is within range of documented figures.",
-        "source": "https://en.wikipedia.org/wiki/Adolfo_L%C3%B3pez_Mateos",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Adolfo_L%C3%B3pez_Mateos"
   },
   {
     "year": 1960,
@@ -451,31 +451,6 @@
   },
   {
     "year": 1965,
-    "title": "Maquiladora Program Established at the Border",
-    "verdict": "TRUE",
-    "reason": "Border Industrialization Program established May 20, 1965. Link to end of Bracero Program confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Border Industrialization Program established May 20, 1965. Link to end of Bracero Program confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Maquiladora",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Maquiladora"
-  },
-  {
-    "year": 1965,
     "title": "Chihuahua Guerrilla Attack on Military Barracks",
     "verdict": "TRUE",
     "reason": "Arturo Gámiz attack on Cuartel Madera, Chihuahua, September 23, 1965. Confirmed as opening act of Mexico's Dirty War era.",
@@ -498,6 +473,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Madera_massacre"
+  },
+  {
+    "year": 1965,
+    "title": "Maquiladora Program Established at the Border",
+    "verdict": "TRUE",
+    "reason": "Border Industrialization Program established May 20, 1965. Link to end of Bracero Program confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Border Industrialization Program established May 20, 1965. Link to end of Bracero Program confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Maquiladora",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Maquiladora"
   },
   {
     "year": 1966,
@@ -551,31 +551,6 @@
   },
   {
     "year": 1968,
-    "title": "Tlatelolco Massacre",
-    "verdict": "TRUE",
-    "reason": "October 2, 1968, ten days before Olympics. Official figures underreported; credible estimates range into hundreds. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "October 2, 1968, ten days before Olympics. Official figures underreported; credible estimates range into hundreds. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Tlatelolco_massacre",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Tlatelolco_massacre"
-  },
-  {
-    "year": 1968,
     "title": "1968 Student Movement and Mexico City Olympics",
     "verdict": "TRUE",
     "reason": "Smith and Carlos Black Power salute confirmed. Olympics in Mexico City confirmed. Student movement scale and legacy confirmed.",
@@ -598,6 +573,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1968_Olympics_Black_Power_salute"
+  },
+  {
+    "year": 1968,
+    "title": "Tlatelolco Massacre",
+    "verdict": "TRUE",
+    "reason": "October 2, 1968, ten days before Olympics. Official figures underreported; credible estimates range into hundreds. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "October 2, 1968, ten days before Olympics. Official figures underreported; credible estimates range into hundreds. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Tlatelolco_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Tlatelolco_massacre"
   },
   {
     "year": 1969,
@@ -851,31 +851,6 @@
   },
   {
     "year": 1976,
-    "title": "Peso Crisis and IMF Bailout",
-    "verdict": "TRUE",
-    "reason": "1976 devaluation from 12.5 to ~22 pesos per dollar confirmed. IMF austerity conditions confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "1976 devaluation from 12.5 to ~22 pesos per dollar confirmed. IMF austerity conditions confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Mexican_peso",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Mexican_peso"
-  },
-  {
-    "year": 1976,
     "title": "López Portillo Takes Power — Oil Boom Era Begins",
     "verdict": "TRUE",
     "reason": "'Manage abundance' quote and oil-backed borrowing spree confirmed.",
@@ -900,10 +875,10 @@
     "source": "https://en.wikipedia.org/wiki/Jos%C3%A9_L%C3%B3pez_Portillo"
   },
   {
-    "year": 1977,
-    "title": "Political Reform — Opposition Parties Gain Legal Recognition",
+    "year": 1976,
+    "title": "Peso Crisis and IMF Bailout",
     "verdict": "TRUE",
-    "reason": "LOPPE political reform 1977, Reyes Heroles as Interior Secretary, PCM legalized — confirmed.",
+    "reason": "1976 devaluation from 12.5 to ~22 pesos per dollar confirmed. IMF austerity conditions confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -913,8 +888,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "LOPPE political reform 1977, Reyes Heroles as Interior Secretary, PCM legalized — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Ley_Federal_de_Organizaciones_Pol%C3%ADticas_y_Procesos_Electorales",
+        "reason": "1976 devaluation from 12.5 to ~22 pesos per dollar confirmed. IMF austerity conditions confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Mexican_peso",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -922,7 +897,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Ley_Federal_de_Organizaciones_Pol%C3%ADticas_y_Procesos_Electorales"
+    "source": "https://en.wikipedia.org/wiki/Mexican_peso"
   },
   {
     "year": 1977,
@@ -948,6 +923,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Cantarell_Field"
+  },
+  {
+    "year": 1977,
+    "title": "Political Reform — Opposition Parties Gain Legal Recognition",
+    "verdict": "TRUE",
+    "reason": "LOPPE political reform 1977, Reyes Heroles as Interior Secretary, PCM legalized — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "LOPPE political reform 1977, Reyes Heroles as Interior Secretary, PCM legalized — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ley_Federal_de_Organizaciones_Pol%C3%ADticas_y_Procesos_Electorales",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ley_Federal_de_Organizaciones_Pol%C3%ADticas_y_Procesos_Electorales"
   },
   {
     "year": 1980,
@@ -1150,6 +1150,67 @@
     "source": "https://en.wikipedia.org/wiki/Kiki_Camarena"
   },
   {
+    "year": 1985,
+    "title": "Mexico Launches Its First Satellite, Morelos-1",
+    "verdict": "PARTIAL",
+    "reason": "Core claim confirmed: Mexico's first satellite Morelos-1 (Hughes HS-376) was launched into geostationary orbit on 17 June 1985 aboard Space Shuttle Discovery (mission STS-51-G) from Kennedy Space Center, giving Mexico independent telephony/data/TV coverage. However, the description's claim that 'the mission carried Mexico's first astronaut, Rodolfo Neri Vela' is factually wrong. STS-51-G's crew was Brandenstein, Creighton, Lucid, Nagel, Fabian, plus payload specialists Patrick Baudry (France) and Prince Sultan bin Salman Al Saud (Saudi Arabia) — no Mexican astronaut aboard. Neri Vela did not fly until STS-61-B (Space Shuttle Atlantis, 26 Nov-3 Dec 1985), which deployed the *second* Mexican satellite, Morelos-2 (Morelos-B), not Morelos-1. The description conflates two separate 1985 shuttle missions five months apart. This is a material actor/scope error, so PARTIAL rather than TRUE; year (1985) and country (Mexico) both hold for the core satellite-launch event.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core event confirmed: Mexico's first satellite, Morelos-1 (Hughes HS-376), was deployed into geostationary transfer orbit on 17 June 1985 via Space Shuttle Discovery mission STS-51-G, launched from Kennedy Space Center, giving Mexico independent national telephony/data/TV coverage. However, the claim that 'the mission carried Mexico's first astronaut, Rodolfo Neri Vela' is factually wrong: STS-51-G's crew (Brandenstein, Creighton, Lucid, Nagel, Fabian, plus payload specialists Patrick Baudry of France and Sultan bin Salman Al Saud of Saudi Arabia) did NOT include Neri Vela. Neri Vela became Mexico's first astronaut on a different, later mission — STS-61-B aboard Atlantis, launched 26 November 1985 — which deployed Mexico's second satellite, Morelos-B, not Morelos-1. This is a material factual error conflating two separate 1985 shuttle missions, though year (1985) and country (Mexico) both hold for the actual satellite-launch event.",
+        "source": "https://en.wikipedia.org/wiki/STS-51-G",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core claim confirmed: Mexico's first satellite Morelos-1 (Hughes HS-376) was launched into geostationary orbit on 17 June 1985 aboard Space Shuttle Discovery (mission STS-51-G) from Kennedy Space Center, giving Mexico independent telephony/data/TV coverage. However, the description's claim that 'the mission carried Mexico's first astronaut, Rodolfo Neri Vela' is factually wrong. STS-51-G's crew was Brandenstein, Creighton, Lucid, Nagel, Fabian, plus payload specialists Patrick Baudry (France) and Prince Sultan bin Salman Al Saud (Saudi Arabia) — no Mexican astronaut aboard. Neri Vela did not fly until STS-61-B (Space Shuttle Atlantis, 26 Nov-3 Dec 1985), which deployed the *second* Mexican satellite, Morelos-2 (Morelos-B), not Morelos-1. The description conflates two separate 1985 shuttle missions five months apart. This is a material actor/scope error, so PARTIAL rather than TRUE; year (1985) and country (Mexico) both hold for the core satellite-launch event.",
+        "source": "https://en.wikipedia.org/wiki/STS-51-G",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/STS-51-G"
+  },
+  {
+    "year": 1986,
+    "title": "Mexico Hosts FIFA World Cup",
+    "verdict": "TRUE",
+    "reason": "Mexico hosted, Argentina won, Maradona's Hand of God goal confirmed. Pablo Larios as Mexico goalkeeper confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mexico hosted, Argentina won, Maradona's Hand of God goal confirmed. Pablo Larios as Mexico goalkeeper confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup"
+  },
+  {
     "year": 1986,
     "title": "Mexico Joins GATT — Trade Liberalization Begins",
     "verdict": "TRUE",
@@ -1200,31 +1261,6 @@
     "source": "https://en.wikipedia.org/wiki/1980s_oil_glut"
   },
   {
-    "year": 1986,
-    "title": "Mexico Hosts FIFA World Cup",
-    "verdict": "TRUE",
-    "reason": "Mexico hosted, Argentina won, Maradona's Hand of God goal confirmed. Pablo Larios as Mexico goalkeeper confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Mexico hosted, Argentina won, Maradona's Hand of God goal confirmed. Pablo Larios as Mexico goalkeeper confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup"
-  },
-  {
     "year": 1987,
     "title": "Cuauhtémoc Cárdenas Breaks with the PRI — Democratic Current",
     "verdict": "TRUE",
@@ -1251,31 +1287,6 @@
   },
   {
     "year": 1988,
-    "title": "Presidential Election Fraud — 'Se Cayó el Sistema'",
-    "verdict": "TRUE",
-    "reason": "System crash narrative and Salinas declared winner with ~50% confirmed. Widespread credible belief Cárdenas won confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "System crash narrative and Salinas declared winner with ~50% confirmed. Widespread credible belief Cárdenas won confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1988_Mexican_presidential_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1988_Mexican_presidential_election"
-  },
-  {
-    "year": 1988,
     "title": "Cuauhtémoc Cárdenas Forms the PRD",
     "verdict": "TRUE",
     "reason": "PRD founded May 5, 1989 (formally; coalition formed late 1988). Broad left coalition confirmed.",
@@ -1298,6 +1309,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Party_of_the_Democratic_Revolution"
+  },
+  {
+    "year": 1988,
+    "title": "Presidential Election Fraud — 'Se Cayó el Sistema'",
+    "verdict": "TRUE",
+    "reason": "System crash narrative and Salinas declared winner with ~50% confirmed. Widespread credible belief Cárdenas won confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "System crash narrative and Salinas declared winner with ~50% confirmed. Widespread credible belief Cárdenas won confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1988_Mexican_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1988_Mexican_presidential_election"
   },
   {
     "year": 1989,
@@ -1476,31 +1512,6 @@
   },
   {
     "year": 1994,
-    "title": "Zapatista Uprising in Chiapas — EZLN Declares War on NAFTA Day",
-    "verdict": "TRUE",
-    "reason": "Already marked verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Already marked verified in source file.",
-        "source": "https://en.wikipedia.org/wiki/Zapatista_uprising",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Zapatista_uprising"
-  },
-  {
-    "year": 1994,
     "title": "Luis Donaldo Colosio Assassinated",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
@@ -1548,6 +1559,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Mexican_peso_crisis"
+  },
+  {
+    "year": 1994,
+    "title": "Zapatista Uprising in Chiapas — EZLN Declares War on NAFTA Day",
+    "verdict": "TRUE",
+    "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Zapatista_uprising",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Zapatista_uprising"
   },
   {
     "year": 1995,
@@ -1651,31 +1687,6 @@
   },
   {
     "year": 1997,
-    "title": "PRI Loses Congressional Majority — Cárdenas Wins Mexico City",
-    "verdict": "TRUE",
-    "reason": "Already marked verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Already marked verified in source file.",
-        "source": "https://www.britannica.com/biography/Cuauhtemoc-Cardenas-Solorzano",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.britannica.com/biography/Cuauhtemoc-Cardenas-Solorzano"
-  },
-  {
-    "year": 1997,
     "title": "Acteal Massacre in Chiapas — 45 Tzotzil Killed",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
@@ -1723,6 +1734,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Jes%C3%BAs_Guti%C3%A9rrez_Rebollo"
+  },
+  {
+    "year": 1997,
+    "title": "PRI Loses Congressional Majority — Cárdenas Wins Mexico City",
+    "verdict": "TRUE",
+    "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://www.britannica.com/biography/Cuauhtemoc-Cardenas-Solorzano",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.britannica.com/biography/Cuauhtemoc-Cardenas-Solorzano"
   },
   {
     "year": 1999,
@@ -1926,31 +1962,6 @@
   },
   {
     "year": 2006,
-    "title": "Felipe Calderón Defeats AMLO in Disputed Presidential Election",
-    "verdict": "TRUE",
-    "reason": "Already marked verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Already marked verified in source file.",
-        "source": "https://en.wikipedia.org/wiki/2006_Mexican_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2006_Mexican_general_election"
-  },
-  {
-    "year": 2006,
     "title": "Calderón Declares War on Drug Cartels",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
@@ -1973,6 +1984,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Mexican_drug_war"
+  },
+  {
+    "year": 2006,
+    "title": "Felipe Calderón Defeats AMLO in Disputed Presidential Election",
+    "verdict": "TRUE",
+    "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/2006_Mexican_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2006_Mexican_general_election"
   },
   {
     "year": 2006,
@@ -2076,31 +2112,6 @@
   },
   {
     "year": 2009,
-    "title": "H1N1 Swine Flu Pandemic Originates in Mexico",
-    "verdict": "TRUE",
-    "reason": "Already marked verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Already marked verified in source file.",
-        "source": "https://en.wikipedia.org/wiki/2009_swine_flu_pandemic",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2009_swine_flu_pandemic"
-  },
-  {
-    "year": 2009,
     "title": "Ciudad Juárez Becomes World's Most Violent City",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
@@ -2123,6 +2134,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Mexican_drug_war"
+  },
+  {
+    "year": 2009,
+    "title": "H1N1 Swine Flu Pandemic Originates in Mexico",
+    "verdict": "TRUE",
+    "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/2009_swine_flu_pandemic",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2009_swine_flu_pandemic"
   },
   {
     "year": 2010,
@@ -2351,31 +2387,6 @@
   },
   {
     "year": 2017,
-    "title": "September Earthquakes Kill Hundreds",
-    "verdict": "TRUE",
-    "reason": "Already marked verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Already marked verified in source file.",
-        "source": "https://en.wikipedia.org/wiki/2017_Puebla_earthquake",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2017_Puebla_earthquake"
-  },
-  {
-    "year": 2017,
     "title": "Journalists Murdered at Record Rates",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
@@ -2423,6 +2434,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Mexico%E2%80%93Canada_Agreement"
+  },
+  {
+    "year": 2017,
+    "title": "September Earthquakes Kill Hundreds",
+    "verdict": "TRUE",
+    "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/2017_Puebla_earthquake",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2017_Puebla_earthquake"
   },
   {
     "year": 2018,
@@ -2751,56 +2787,6 @@
   },
   {
     "year": 2025,
-    "title": "Mexico Navigates US Tariff Threats Under Trump's Return",
-    "verdict": "TRUE",
-    "reason": "Already marked verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Already marked verified in source file.",
-        "source": "https://en.wikipedia.org/wiki/Trump_tariffs",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Trump_tariffs"
-  },
-  {
-    "year": 2025,
-    "title": "USMCA Review Scheduled for 2026 Creates Trade Uncertainty",
-    "verdict": "TRUE",
-    "reason": "Already marked verified in source file.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Already marked verified in source file.",
-        "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Mexico%E2%80%93Canada_Agreement",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Mexico%E2%80%93Canada_Agreement"
-  },
-  {
-    "year": 2025,
     "title": "First Popular Judicial Elections Generate Controversy",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
@@ -2826,6 +2812,31 @@
   },
   {
     "year": 2025,
+    "title": "Mexico Navigates US Tariff Threats Under Trump's Return",
+    "verdict": "TRUE",
+    "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/Trump_tariffs",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Trump_tariffs"
+  },
+  {
+    "year": 2025,
     "title": "Migration Policy — Mexico as US Buffer State",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",
@@ -2848,5 +2859,30 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Immigration_to_Mexico"
+  },
+  {
+    "year": 2025,
+    "title": "USMCA Review Scheduled for 2026 Creates Trade Uncertainty",
+    "verdict": "TRUE",
+    "reason": "Already marked verified in source file.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Already marked verified in source file.",
+        "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Mexico%E2%80%93Canada_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/United_States%E2%80%93Mexico%E2%80%93Canada_Agreement"
   }
 ]

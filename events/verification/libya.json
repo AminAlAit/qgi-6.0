@@ -1923,5 +1923,41 @@
       }
     ],
     "source": "https://www.unhcr.org/news/stories/libyas-ongoing-migration-crisis"
+  },
+  {
+    "year": 2025,
+    "title": "Election Talks Make Limited Progress",
+    "verdict": "PARTIAL",
+    "reason": "The broad narrative holds for Libya/2025: UN-mediated talks on the electoral/constitutional framework did continue through 2025, consensus was not reached, and international (Security Council) frustration grew visibly as the transition passed the decade mark with elections still distant (UN News Oct 2025: 'UN envoy warns Libya's transition at risk amid stalled political roadmap'; Dec 2025 Security Council briefing: 'fading election prospects'). However, a material factual detail is wrong: Abdoulaye Bathily resigned as UN Special Envoy/Head of UNSMIL in April 2024 — he was NOT the envoy conducting shuttle diplomacy in 2025. His successor, Hanna Serwaa Tetteh of Ghana, was appointed 24 January 2025 and was the actual UN envoy leading the 2025 process. Additionally, what 'reconvened' in 2025 was not literally the original 2020 'Libyan Political Dialogue Forum' but a newly launched UNSMIL 'Structured Dialogue' process (a citizens'-assembly-style body of ~124-137 Libyans, first session held in Tripoli mid-December 2025) — a related but distinctly named/structured mechanism, not the LPDF reconvening under that name. Because the country, year, and overall substance (stalled UN-mediated election talks, no consensus, growing frustration) are correct but the named actor (envoy) and named body are materially wrong, this is a PARTIAL rather than a clean TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The broad narrative holds for 2025: UN-mediated talks on Libya's electoral/constitutional framework stalled through the year, international frustration grew, and elections remained distant more than a decade into the transition (confirmed by UN News Dec 2025 'fading election prospects' story and UN press releases). However, a material detail is wrong: the event names 'special envoy Abdoulaye Bathily' as conducting shuttle diplomacy in 2025, but Bathily resigned as UN Special Envoy/SRSG for Libya on April 16, 2024. Throughout 2025 the actual UN Special Representative for Libya was Hanna Serwaa Tetteh of Ghana, appointed Jan 24 2025 and in post from Feb 2025 — she is the one described in 2025 UN reporting as engaging Libyan stakeholders on the political roadmap, not Bathily. Additionally, the claim that 'the Libyan Political Dialogue Forum reconvened' in 2025 does not match the record; the actual 2025 mechanisms were an UNSMIL Advisory Committee (Feb-May 2025) and a new 'Structured Dialogue' process (launched Dec 2025), not an LPDF reconvening. Country and year are correct and the overall storyline (stalemate, frustration, distant elections) is true, but the named actor/actor-body is wrong, so this is PARTIAL rather than TRUE.",
+        "source": "https://news.un.org/en/story/2025/12/1166646",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The broad narrative holds for Libya/2025: UN-mediated talks on the electoral/constitutional framework did continue through 2025, consensus was not reached, and international (Security Council) frustration grew visibly as the transition passed the decade mark with elections still distant (UN News Oct 2025: 'UN envoy warns Libya's transition at risk amid stalled political roadmap'; Dec 2025 Security Council briefing: 'fading election prospects'). However, a material factual detail is wrong: Abdoulaye Bathily resigned as UN Special Envoy/Head of UNSMIL in April 2024 — he was NOT the envoy conducting shuttle diplomacy in 2025. His successor, Hanna Serwaa Tetteh of Ghana, was appointed 24 January 2025 and was the actual UN envoy leading the 2025 process. Additionally, what 'reconvened' in 2025 was not literally the original 2020 'Libyan Political Dialogue Forum' but a newly launched UNSMIL 'Structured Dialogue' process (a citizens'-assembly-style body of ~124-137 Libyans, first session held in Tripoli mid-December 2025) — a related but distinctly named/structured mechanism, not the LPDF reconvening under that name. Because the country, year, and overall substance (stalled UN-mediated election talks, no consensus, growing frustration) are correct but the named actor (envoy) and named body are materially wrong, this is a PARTIAL rather than a clean TRUE.",
+        "source": "https://press.un.org/en/2025/sc16258.doc.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://press.un.org/en/2025/sc16258.doc.htm"
   }
 ]

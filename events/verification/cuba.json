@@ -162,6 +162,31 @@
   },
   {
     "year": 1960,
+    "title": "Cuba and Soviet Union Restore Diplomatic and Trade Relations",
+    "verdict": "TRUE",
+    "reason": "Event says 'May 1960' for restoration — diplomatic relations formally established May 8, 1960. Mikoyan trade agreement was February 13, 1960. Event accurately frames 'restored' diplomatic relations as May 1960. Correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Event says 'May 1960' for restoration — diplomatic relations formally established May 8, 1960. Mikoyan trade agreement was February 13, 1960. Event accurately frames 'restored' diplomatic relations as May 1960. Correct.",
+        "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93Soviet_Union_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93Soviet_Union_relations"
+  },
+  {
+    "year": 1960,
     "title": "Cuba Nationalizes US Oil Refineries and Major Businesses",
     "verdict": "TRUE",
     "reason": "Independently corroborated (non-Granma sources): Cuba seized Texaco (June 29, 1960) and Esso/Shell (July 1, 1960) refineries after they refused, at Eisenhower's urging, to refine Soviet crude delivered starting May 1960. This was followed by Joint Resolutions in Aug-Oct 1960 nationalizing 36 sugar mills, the telephone and electricity utilities, banks, and eventually all major US businesses on the island (166 remaining properties seized by Oct 24, 1960). Eisenhower retaliated by slashing (July 6) and eventually zeroing out (Proclamation 3383) Cuba's sugar quota. Certified US claims for nationalized Cuban property totaled roughly $1.8-1.9 billion at the time, consistent with the description's 'over $1 billion.' This is widely described as the largest uncompensated taking of American property by a foreign government in history, and it directly precipitated the US trade embargo. All material details (country, year, actors, sequence, causal chain, US response) match across Wikipedia, CounterPunch, FIU Institute for Cuban Studies chronology, and US State Department Foreign Relations documents — none of which are on the off-limits granma.cu domain.",
@@ -195,31 +220,6 @@
       }
     ],
     "source": "https://www.counterpunch.org/2019/03/29/the-cuban-nationalization-of-us-property-in-1960-the-historical-and-global-context/"
-  },
-  {
-    "year": 1960,
-    "title": "Cuba and Soviet Union Restore Diplomatic and Trade Relations",
-    "verdict": "TRUE",
-    "reason": "Event says 'May 1960' for restoration — diplomatic relations formally established May 8, 1960. Mikoyan trade agreement was February 13, 1960. Event accurately frames 'restored' diplomatic relations as May 1960. Correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Event says 'May 1960' for restoration — diplomatic relations formally established May 8, 1960. Mikoyan trade agreement was February 13, 1960. Event accurately frames 'restored' diplomatic relations as May 1960. Correct.",
-        "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93Soviet_Union_relations",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Cuba%E2%80%93Soviet_Union_relations"
   },
   {
     "year": 1961,
@@ -273,6 +273,31 @@
   },
   {
     "year": 1962,
+    "title": "Cuba Introduces Permanent National Rationing System",
+    "verdict": "TRUE",
+    "reason": "Libreta de abastecimiento system established 1962. Persisting into 21st century confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Libreta de abastecimiento system established 1962. Persisting into 21st century confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_Cuba",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Economy_of_Cuba"
+  },
+  {
+    "year": 1962,
     "title": "Cuban Missile Crisis Brings World to Nuclear Brink",
     "verdict": "TRUE",
     "reason": "October 1962 confirmed. 13-day standoff confirmed (Oct 16–28). U-2 discovery confirmed. Naval blockade and Turkey missile secret deal confirmed.",
@@ -322,10 +347,10 @@
     "source": "https://www.state.gov/cuba-sanctions/"
   },
   {
-    "year": 1962,
-    "title": "Cuba Introduces Permanent National Rationing System",
+    "year": 1965,
+    "title": "Cuban Communist Party Formally Constituted as Sole Ruling Party",
     "verdict": "TRUE",
-    "reason": "Libreta de abastecimiento system established 1962. Persisting into 21st century confirmed.",
+    "reason": "October 1965 founding confirmed. Merger of 26th of July Movement, PSP, and Revolutionary Directorate confirmed. Castro as First Secretary confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -335,8 +360,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Libreta de abastecimiento system established 1962. Persisting into 21st century confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Economy_of_Cuba",
+        "reason": "October 1965 founding confirmed. Merger of 26th of July Movement, PSP, and Revolutionary Directorate confirmed. Castro as First Secretary confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Communist_Party_of_Cuba",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -344,7 +369,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Economy_of_Cuba"
+    "source": "https://en.wikipedia.org/wiki/Communist_Party_of_Cuba"
   },
   {
     "year": 1965,
@@ -370,31 +395,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Military_Units_to_Aid_Production"
-  },
-  {
-    "year": 1965,
-    "title": "Cuban Communist Party Formally Constituted as Sole Ruling Party",
-    "verdict": "TRUE",
-    "reason": "October 1965 founding confirmed. Merger of 26th of July Movement, PSP, and Revolutionary Directorate confirmed. Castro as First Secretary confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "October 1965 founding confirmed. Merger of 26th of July Movement, PSP, and Revolutionary Directorate confirmed. Castro as First Secretary confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Communist_Party_of_Cuba",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Communist_Party_of_Cuba"
   },
   {
     "year": 1966,
@@ -1109,31 +1109,6 @@
   },
   {
     "year": 2008,
-    "title": "Raul Castro Formally Elected President, Signals Reform Intent",
-    "verdict": "TRUE",
-    "reason": "February 24, 2008 election confirmed. First leadership transition in nearly five decades confirmed. Mobile phones and tourist hotel access reforms confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "February 24, 2008 election confirmed. First leadership transition in nearly five decades confirmed. Mobile phones and tourist hotel access reforms confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Ra%C3%BAl_Castro",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Ra%C3%BAl_Castro"
-  },
-  {
-    "year": 2008,
     "title": "Hurricanes Gustav and Ike Cause $10 Billion in Damage to Cuba",
     "verdict": "TRUE",
     "reason": "Gustav ($2.1B) + Ike ($7.3B) = ~$9.4B combined (event says '$10 billion' — rounded figure, consistent with range). Worst natural disaster framing confirmed.",
@@ -1156,6 +1131,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Hurricane_Ike"
+  },
+  {
+    "year": 2008,
+    "title": "Raul Castro Formally Elected President, Signals Reform Intent",
+    "verdict": "TRUE",
+    "reason": "February 24, 2008 election confirmed. First leadership transition in nearly five decades confirmed. Mobile phones and tourist hotel access reforms confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "February 24, 2008 election confirmed. First leadership transition in nearly five decades confirmed. Mobile phones and tourist hotel access reforms confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ra%C3%BAl_Castro",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ra%C3%BAl_Castro"
   },
   {
     "year": 2009,
@@ -1259,31 +1259,6 @@
   },
   {
     "year": 2016,
-    "title": "Obama Visits Cuba â€” First US Sitting President Since 1928",
-    "verdict": "TRUE",
-    "reason": "March 2016 visit confirmed. Last sitting president was Calvin Coolidge in 1928 confirmed. Rolling Stones concert for ~500,000 confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "March 2016 visit confirmed. Last sitting president was Calvin Coolidge in 1928 confirmed. Rolling Stones concert for ~500,000 confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Cuban_thaw",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Cuban_thaw"
-  },
-  {
-    "year": 2016,
     "title": "Cuba Hosts Colombia-FARC Peace Agreement after Four Years of Talks",
     "verdict": "TRUE",
     "reason": "Talks in Havana 2012–2016 confirmed. Final agreement signed November 24, 2016 confirmed. Cuba as neutral venue and facilitator confirmed.",
@@ -1333,10 +1308,10 @@
     "source": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Fidel_Castro"
   },
   {
-    "year": 2017,
-    "title": "Trump Reverses Obama Cuba Policies, Restricts Travel and Business",
+    "year": 2016,
+    "title": "Obama Visits Cuba â€” First US Sitting President Since 1928",
     "verdict": "TRUE",
-    "reason": "June 2017 Trump reversal confirmed. Restrictions on American travel and transactions with Cuban military businesses confirmed. Diplomatic relations maintained confirmed.",
+    "reason": "March 2016 visit confirmed. Last sitting president was Calvin Coolidge in 1928 confirmed. Rolling Stones concert for ~500,000 confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1346,7 +1321,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "June 2017 Trump reversal confirmed. Restrictions on American travel and transactions with Cuban military businesses confirmed. Diplomatic relations maintained confirmed.",
+        "reason": "March 2016 visit confirmed. Last sitting president was Calvin Coolidge in 1928 confirmed. Rolling Stones concert for ~500,000 confirmed.",
         "source": "https://en.wikipedia.org/wiki/Cuban_thaw",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1381,6 +1356,67 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Hurricane_Irma"
+  },
+  {
+    "year": 2017,
+    "title": "Trump Reverses Obama Cuba Policies, Restricts Travel and Business",
+    "verdict": "TRUE",
+    "reason": "June 2017 Trump reversal confirmed. Restrictions on American travel and transactions with Cuban military businesses confirmed. Diplomatic relations maintained confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "June 2017 Trump reversal confirmed. Restrictions on American travel and transactions with Cuban military businesses confirmed. Diplomatic relations maintained confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Cuban_thaw",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Cuban_thaw"
+  },
+  {
+    "year": 2018,
+    "title": "Cuba Rolls Out Nationwide 3G Mobile Internet for the First Time",
+    "verdict": "TRUE",
+    "reason": "Multiple independent contemporaneous sources confirm ETECSA officially launched 3G prepaid mobile internet across Cuba starting December 6, 2018 (rollout staggered through the weekend to avoid network congestion), Cuba's first mobile internet service. Confirmed: roughly 1.4 million mobile lines were initially eligible to connect (matched exactly by OnCubaNews/Wikipedia reporting); network ran on the 900MHz band; ETECSA offered tiered speeds of 1/2/3 Mbps (matching \"speeds up to 3Mbps\" in the description); and by the end of 2019 an estimated 7.1 million Cubans (about 63% of the population) were online in some capacity. All material details in the description (actor, timing, scope, magnitude) are corroborated by independent press sources (phys.org/AFP, NPR, CommsUpdate, BNamericas, OnCubaNews, Wikipedia).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm ETECSA officially launched 3G mobile internet for prepaid customers across Cuba on December 6, 2018 (rollout continued through Dec 8), Cuba's first mobile internet service. Confirmed details: 900MHz network, speeds up to 3Mbps (specs cited as 512kbps-3Mbps), and specifically that 1.4 million mobile lines initially met the conditions to connect. The end-of-2019 figure of 7.1 million Cubans online in some capacity is also corroborated (one source notes 3.07 million mobile data lines within the first year, and other reporting describes over half the population — ~7.1 million — online by end of 2019). All material facts (actor, date, country, mechanism, initial eligible base, speed, year-end reach) match the description.",
+        "source": "https://www.commsupdate.com/articles/2018/12/06/etecsa-officially-launches-3g-internet-for-cubans/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent contemporaneous sources confirm ETECSA officially launched 3G prepaid mobile internet across Cuba starting December 6, 2018 (rollout staggered through the weekend to avoid network congestion), Cuba's first mobile internet service. Confirmed: roughly 1.4 million mobile lines were initially eligible to connect (matched exactly by OnCubaNews/Wikipedia reporting); network ran on the 900MHz band; ETECSA offered tiered speeds of 1/2/3 Mbps (matching \"speeds up to 3Mbps\" in the description); and by the end of 2019 an estimated 7.1 million Cubans (about 63% of the population) were online in some capacity. All material details in the description (actor, timing, scope, magnitude) are corroborated by independent press sources (phys.org/AFP, NPR, CommsUpdate, BNamericas, OnCubaNews, Wikipedia).",
+        "source": "https://phys.org/news/2018-12-cuba-mobile-3g-costly.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://phys.org/news/2018-12-cuba-mobile-3g-costly.html"
   },
   {
     "year": 2018,
