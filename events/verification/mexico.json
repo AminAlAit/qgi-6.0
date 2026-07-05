@@ -2073,6 +2073,42 @@
   },
   {
     "year": 2007,
+    "title": "Chichen Itza Named a New Seven Wonders of the World",
+    "verdict": "TRUE",
+    "reason": "Confirmed via independent web search: Chichen Itza (Yucatan, Mexico) was named one of the New Seven Wonders of the World on 7 July 2007, in a global public vote (100M+ votes) organized by Bernard Weber's New7Wonders Foundation, with results announced at Estadio da Luz in Lisbon. Wikipedia's Chichen Itza page confirms UNESCO World Heritage inscription in 1988 and the site's dominance by the El Castillo (Temple of Kukulcan) step pyramid. Separate reporting (banderasnews.com, National Geographic) confirms Mexican tourism officials expected/saw increased visitation from the designation. All material details in the description (date, country, mechanism, UNESCO 1988 status, El Castillo, tourism impact) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed: the New7Wonders Foundation (led by Bernard Weber) announced results of its global public vote on 7 July 2007 at Estádio da Luz in Lisbon, Portugal, naming Chichén Itzá (Yucatán, Mexico) one of the seven winners alongside Petra, the Colosseum, the Great Wall of China, Machu Picchu, the Taj Mahal, and Christ the Redeemer. Chichen Itza was inscribed as a UNESCO World Heritage Site in 1988, is dominated by the El Castillo step pyramid, and was a major Maya civilization center. Tourism increases following the designation are well documented by multiple independent sources. All material details in the description check out.",
+        "source": "https://en.wikipedia.org/wiki/New_7_Wonders_of_the_World",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via independent web search: Chichen Itza (Yucatan, Mexico) was named one of the New Seven Wonders of the World on 7 July 2007, in a global public vote (100M+ votes) organized by Bernard Weber's New7Wonders Foundation, with results announced at Estadio da Luz in Lisbon. Wikipedia's Chichen Itza page confirms UNESCO World Heritage inscription in 1988 and the site's dominance by the El Castillo (Temple of Kukulcan) step pyramid. Separate reporting (banderasnews.com, National Geographic) confirms Mexican tourism officials expected/saw increased visitation from the designation. All material details in the description (date, country, mechanism, UNESCO 1988 status, El Castillo, tourism impact) check out.",
+        "source": "https://en.wikipedia.org/wiki/New_7_Wonders_of_the_World",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/New_7_Wonders_of_the_World"
+  },
+  {
+    "year": 2007,
     "title": "Merida Initiative — US-Mexico Security Cooperation",
     "verdict": "TRUE",
     "reason": "Already marked verified in source file.",

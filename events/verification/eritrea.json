@@ -1,31 +1,6 @@
 [
   {
     "year": 1950,
-    "title": "UN Federal Resolution on Eritrea",
-    "verdict": "TRUE",
-    "reason": "UN GA Resolution 390A(V) adopted December 2, 1950, federating Eritrea with Ethiopia under the Ethiopian Crown. Year, actor, and core claim all confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "UN GA Resolution 390A(V) adopted December 2, 1950, federating Eritrea with Ethiopia under the Ethiopian Crown. Year, actor, and core claim all confirmed.",
-        "source": "https://citizenshiprightsafrica.org/ethiopia-eritrea-un-general-assembly-resolution-390-a-v-of-2-december-1950/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://citizenshiprightsafrica.org/ethiopia-eritrea-un-general-assembly-resolution-390-a-v-of-2-december-1950/"
-  },
-  {
-    "year": 1950,
     "title": "British Administration Winds Down",
     "verdict": "TRUE",
     "reason": "British authorities officially relinquished control on September 15, 1952 per the federation act, with the wind-down process beginning after the 1950 resolution. Core claim correct though the actual transfer was 1952.",
@@ -73,6 +48,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Federation_of_Ethiopia_and_Eritrea"
+  },
+  {
+    "year": 1950,
+    "title": "UN Federal Resolution on Eritrea",
+    "verdict": "TRUE",
+    "reason": "UN GA Resolution 390A(V) adopted December 2, 1950, federating Eritrea with Ethiopia under the Ethiopian Crown. Year, actor, and core claim all confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UN GA Resolution 390A(V) adopted December 2, 1950, federating Eritrea with Ethiopia under the Ethiopian Crown. Year, actor, and core claim all confirmed.",
+        "source": "https://citizenshiprightsafrica.org/ethiopia-eritrea-un-general-assembly-resolution-390-a-v-of-2-december-1950/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://citizenshiprightsafrica.org/ethiopia-eritrea-un-general-assembly-resolution-390-a-v-of-2-december-1950/"
   },
   {
     "year": 1951,
@@ -126,31 +126,6 @@
   },
   {
     "year": 1952,
-    "title": "Federation with Ethiopia Formally Established",
-    "verdict": "TRUE",
-    "reason": "British authorities relinquished control September 15, 1952. Federation formally established September 1952. Date confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "British authorities relinquished control September 15, 1952. Federation formally established September 1952. Date confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Federation_of_Ethiopia_and_Eritrea",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Federation_of_Ethiopia_and_Eritrea"
-  },
-  {
-    "year": 1952,
     "title": "Eritrean Assembly Convenes",
     "verdict": "TRUE",
     "reason": "Tedla Bairu was elected Chief Executive of Eritrea in 1952. The assembly convened in Asmara. Confirmed.",
@@ -173,6 +148,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Tedla_Bairu"
+  },
+  {
+    "year": 1952,
+    "title": "Federation with Ethiopia Formally Established",
+    "verdict": "TRUE",
+    "reason": "British authorities relinquished control September 15, 1952. Federation formally established September 1952. Date confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "British authorities relinquished control September 15, 1952. Federation formally established September 1952. Date confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Federation_of_Ethiopia_and_Eritrea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Federation_of_Ethiopia_and_Eritrea"
   },
   {
     "year": 1952,
@@ -251,31 +251,6 @@
   },
   {
     "year": 1954,
-    "title": "Suppression of Eritrean Press Freedoms",
-    "verdict": "TRUE",
-    "reason": "Suppression of Eritrean-language press under Ethiopian pressure in the 1953–1955 period is well-documented. Year approximate but plausible.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Suppression of Eritrean-language press under Ethiopian pressure in the 1953–1955 period is well-documented. Year approximate but plausible.",
-        "source": "http://www.ehrea.org/youthresis.php",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "http://www.ehrea.org/youthresis.php"
-  },
-  {
-    "year": 1954,
     "title": "Eritrean Trade Unions Dissolved",
     "verdict": "FALSE",
     "reason": "Trade unions were formally dissolved/deregistered in May 1958 (after the general strike), not 1954. The 1958 general strike resulted in all unions being banned on May 13, 1958.",
@@ -325,21 +300,21 @@
     "source": "https://en.wikipedia.org/wiki/Federation_of_Ethiopia_and_Eritrea"
   },
   {
-    "year": 1955,
-    "title": "Eritrean Assembly Votes to Abandon Federal Status",
-    "verdict": "FALSE",
-    "reason": "WRONG YEAR. The formal dissolution vote occurred November 14, 1962, not 1955. In 1955 what happened was Tedla Bairu's forced resignation. The full assembly dissolution is 1962.",
+    "year": 1954,
+    "title": "Suppression of Eritrean Press Freedoms",
+    "verdict": "TRUE",
+    "reason": "Suppression of Eritrean-language press under Ethiopian pressure in the 1953–1955 period is well-documented. Year approximate but plausible.",
     "verify_count": 1,
-    "consensus_verdict": "FALSE",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "WRONG YEAR. The formal dissolution vote occurred November 14, 1962, not 1955. In 1955 what happened was Tedla Bairu's forced resignation. The full assembly dissolution is 1962.",
-        "source": "https://en.wikipedia.org/wiki/Federation_of_Ethiopia_and_Eritrea",
+        "verdict": "TRUE",
+        "reason": "Suppression of Eritrean-language press under Ethiopian pressure in the 1953–1955 period is well-documented. Year approximate but plausible.",
+        "source": "http://www.ehrea.org/youthresis.php",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -347,7 +322,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Federation_of_Ethiopia_and_Eritrea"
+    "source": "http://www.ehrea.org/youthresis.php"
   },
   {
     "year": 1955,
@@ -376,6 +351,31 @@
   },
   {
     "year": 1955,
+    "title": "Eritrean Assembly Votes to Abandon Federal Status",
+    "verdict": "FALSE",
+    "reason": "WRONG YEAR. The formal dissolution vote occurred November 14, 1962, not 1955. In 1955 what happened was Tedla Bairu's forced resignation. The full assembly dissolution is 1962.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "WRONG YEAR. The formal dissolution vote occurred November 14, 1962, not 1955. In 1955 what happened was Tedla Bairu's forced resignation. The full assembly dissolution is 1962.",
+        "source": "https://en.wikipedia.org/wiki/Federation_of_Ethiopia_and_Eritrea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Federation_of_Ethiopia_and_Eritrea"
+  },
+  {
+    "year": 1955,
     "title": "Tedla Bairu Resigns as Chief Executive",
     "verdict": "TRUE",
     "reason": "Tedla Bairu resigned on July 28, 1955, under Emperor's pressure. Year, actor, and core claim confirmed.",
@@ -401,9 +401,9 @@
   },
   {
     "year": 1956,
-    "title": "Eritrean Flag Banned",
+    "title": "Early Resistance Networks Form",
     "verdict": "TRUE",
-    "reason": "Eritrean flag was banned and replaced by Ethiopian flag as part of the suppression of Eritrean symbols. Well-documented in federation history.",
+    "reason": "Formation of clandestine resistance networks (including ELM/Mahber Shewate) in the mid-1950s is confirmed. Year approximate but consistent.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -413,8 +413,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Eritrean flag was banned and replaced by Ethiopian flag as part of the suppression of Eritrean symbols. Well-documented in federation history.",
-        "source": "https://www.britannica.com/place/Eritrea/Federation-with-Ethiopia",
+        "reason": "Formation of clandestine resistance networks (including ELM/Mahber Shewate) in the mid-1950s is confirmed. Year approximate but consistent.",
+        "source": "http://www.ehrea.org/enmar.php",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -422,7 +422,7 @@
         }
       }
     ],
-    "source": "https://www.britannica.com/place/Eritrea/Federation-with-Ethiopia"
+    "source": "http://www.ehrea.org/enmar.php"
   },
   {
     "year": 1956,
@@ -451,9 +451,9 @@
   },
   {
     "year": 1956,
-    "title": "Early Resistance Networks Form",
+    "title": "Eritrean Flag Banned",
     "verdict": "TRUE",
-    "reason": "Formation of clandestine resistance networks (including ELM/Mahber Shewate) in the mid-1950s is confirmed. Year approximate but consistent.",
+    "reason": "Eritrean flag was banned and replaced by Ethiopian flag as part of the suppression of Eritrean symbols. Well-documented in federation history.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -463,8 +463,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Formation of clandestine resistance networks (including ELM/Mahber Shewate) in the mid-1950s is confirmed. Year approximate but consistent.",
-        "source": "http://www.ehrea.org/enmar.php",
+        "reason": "Eritrean flag was banned and replaced by Ethiopian flag as part of the suppression of Eritrean symbols. Well-documented in federation history.",
+        "source": "https://www.britannica.com/place/Eritrea/Federation-with-Ethiopia",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -472,7 +472,7 @@
         }
       }
     ],
-    "source": "http://www.ehrea.org/enmar.php"
+    "source": "https://www.britannica.com/place/Eritrea/Federation-with-Ethiopia"
   },
   {
     "year": 1957,
@@ -526,31 +526,6 @@
   },
   {
     "year": 1958,
-    "title": "General Strike in Asmara",
-    "verdict": "TRUE",
-    "reason": "The workers' general strike of March 1958 is well-documented. It was violently suppressed and led to the banning of all unions on May 13, 1958. Year, location, and core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The workers' general strike of March 1958 is well-documented. It was violently suppressed and led to the banning of all unions on May 13, 1958. Year, location, and core claim confirmed.",
-        "source": "http://www.ehrea.org/1958strk.php",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "http://www.ehrea.org/1958strk.php"
-  },
-  {
-    "year": 1958,
     "title": "Eritrean Liberation Movement Founded in Cairo",
     "verdict": "FALSE",
     "reason": "WRONG YEAR. The ELF was formally founded in July 1960, not 1958. What formed in 1958 was a precursor underground movement (ELM/Mahber Shewate). The event misdates the ELF founding by 2 years.",
@@ -598,6 +573,31 @@
       }
     ],
     "source": "https://www.britannica.com/place/Eritrea/Federation-with-Ethiopia"
+  },
+  {
+    "year": 1958,
+    "title": "General Strike in Asmara",
+    "verdict": "TRUE",
+    "reason": "The workers' general strike of March 1958 is well-documented. It was violently suppressed and led to the banning of all unions on May 13, 1958. Year, location, and core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The workers' general strike of March 1958 is well-documented. It was violently suppressed and led to the banning of all unions on May 13, 1958. Year, location, and core claim confirmed.",
+        "source": "http://www.ehrea.org/1958strk.php",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "http://www.ehrea.org/1958strk.php"
   },
   {
     "year": 1959,
@@ -751,31 +751,6 @@
   },
   {
     "year": 1962,
-    "title": "Full Annexation of Eritrea Completed",
-    "verdict": "TRUE",
-    "reason": "Assembly voted November 14, 1962; Haile Selassie promulgated November 14 (Order No. 27 enacted November 15). Year and core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Assembly voted November 14, 1962; Haile Selassie promulgated November 14 (Order No. 27 enacted November 15). Year and core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Federation_of_Ethiopia_and_Eritrea",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Federation_of_Ethiopia_and_Eritrea"
-  },
-  {
-    "year": 1962,
     "title": "ELF Expands Military Operations",
     "verdict": "TRUE",
     "reason": "Following 1962 annexation, ELF escalated operations with Arab state support. Core claim confirmed.",
@@ -823,6 +798,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence"
+  },
+  {
+    "year": 1962,
+    "title": "Full Annexation of Eritrea Completed",
+    "verdict": "TRUE",
+    "reason": "Assembly voted November 14, 1962; Haile Selassie promulgated November 14 (Order No. 27 enacted November 15). Year and core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Assembly voted November 14, 1962; Haile Selassie promulgated November 14 (Order No. 27 enacted November 15). Year and core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Federation_of_Ethiopia_and_Eritrea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Federation_of_Ethiopia_and_Eritrea"
   },
   {
     "year": 1963,
@@ -951,31 +951,6 @@
   },
   {
     "year": 1965,
-    "title": "Ethiopian Army Massacres Villagers in Ona",
-    "verdict": "FALSE",
-    "reason": "WRONG YEAR. The Ona massacre occurred November 30 – December 1, 1970, not 1965. This is well-documented: 800–900 civilians were killed in Ona and Besikdira on those dates.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "WRONG YEAR. The Ona massacre occurred November 30 – December 1, 1970, not 1965. This is well-documented: 800–900 civilians were killed in Ona and Besikdira on those dates.",
-        "source": "https://zantana.net/the-massacre-at-ona/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://zantana.net/the-massacre-at-ona/"
-  },
-  {
-    "year": 1965,
     "title": "Eritrean Students Union Formed Abroad",
     "verdict": "TRUE",
     "reason": "Eritrean student organizations abroad formed in the 1960s are documented. Year approximately correct.",
@@ -998,6 +973,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Eritrean_Liberation_Front"
+  },
+  {
+    "year": 1965,
+    "title": "Ethiopian Army Massacres Villagers in Ona",
+    "verdict": "FALSE",
+    "reason": "WRONG YEAR. The Ona massacre occurred November 30 – December 1, 1970, not 1965. This is well-documented: 800–900 civilians were killed in Ona and Besikdira on those dates.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "WRONG YEAR. The Ona massacre occurred November 30 – December 1, 1970, not 1965. This is well-documented: 800–900 civilians were killed in Ona and Besikdira on those dates.",
+        "source": "https://zantana.net/the-massacre-at-ona/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://zantana.net/the-massacre-at-ona/"
   },
   {
     "year": 1966,
@@ -1039,6 +1039,31 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "The independence movement making inroads among Christian highlanders in the mid-1960s is documented. Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Eritrean_Liberation_Front",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Eritrean_Liberation_Front"
+  },
+  {
+    "year": 1967,
+    "title": "ELF Splits Along Factional Lines",
+    "verdict": "TRUE",
+    "reason": "Violent ELF intra-factional splits in the late 1960s are well-documented. Core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Violent ELF intra-factional splits in the late 1960s are well-documented. Core claim confirmed.",
         "source": "https://en.wikipedia.org/wiki/Eritrean_Liberation_Front",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1100,31 +1125,6 @@
     "source": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence"
   },
   {
-    "year": 1967,
-    "title": "ELF Splits Along Factional Lines",
-    "verdict": "TRUE",
-    "reason": "Violent ELF intra-factional splits in the late 1960s are well-documented. Core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Violent ELF intra-factional splits in the late 1960s are well-documented. Core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Eritrean_Liberation_Front",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Eritrean_Liberation_Front"
-  },
-  {
     "year": 1968,
     "title": "Eritrean People's Liberation Forces Emerge",
     "verdict": "FALSE",
@@ -1148,6 +1148,41 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Eritrean_People%27s_Liberation_Front"
+  },
+  {
+    "year": 1969,
+    "title": "Ethiopian Forces Conduct Shambko Massacre",
+    "verdict": "UNCERTAIN",
+    "reason": "Shambko (also spelled Shambuko) is confirmed as a real sub-zone/town in the Gash-Barka region of western Eritrea, and the broader pattern described (Ethiopian imperial army collective-punishment/scorched-earth campaigns against western Eritrean villages during the 1967-1970 counterinsurgency period against the ELF) is well documented in general terms by Wikipedia's massacre lists and the ehrea.org human rights archive. However, no source found names this specific event, gives a 1969 date for a massacre at Shambko, or corroborates the specific details (documentation by liberation-movement operatives shared with international human rights organizations). Wikipedia's two dedicated 'List of massacres...Eritrean War of Independence' articles show a documented gap between July 1967 (Hazemo) and January 1970 (Elabared) with zero entries for 1969, and neither list nor any other source mentions Shambko/Shambuko as a massacre site in any year. Extensive spelling-variant searches (Shambeko, Shanbko, Shambaco) and targeted searches on ehrea.org and academic/NGO sources returned no corroboration. Cannot confirm or refute from acceptable independent sources.",
+    "verify_count": 2,
+    "consensus_verdict": "UNCERTAIN",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "UNCERTAIN",
+        "reason": "Extensive independent searching (general web search, Wikipedia's dedicated 'List of massacres during/committed during the Eritrean War of Independence', Africa Watch/HRW report references, Eritrean human-rights site ehrea.org search snippets, and multiple spelling variants of 'Shambko'/'Shambuko'/'Shamqo'/'Shembeko') turned up no source whatsoever documenting a 'Shambko Massacre' in 1969. The most comprehensive English-language massacre list for this exact conflict (Wikipedia, sourced to Africa Watch/HRW) has entries for 1967 (Hazemo, Akordat) and then jumps straight to 1970 (Elabared, Besikdira, Ona, Missian) and 1971 (Keren) with no 1969 entry at all, and contains no Shambko/Shambuko entry in any year. Shambuko/Shambko as a place in western Eritrea (Gash-Barka region) is real and was fought over during the later 1998-2000 Eritrean-Ethiopian border war, but that is a different conflict/era and no source ties it to a 1969 civilian massacre by Ethiopian imperial forces. The general historical backdrop (Ethiopian army counter-insurgency campaigns, village burnings, collective punishment against ELF-supporting communities in the late 1960s) is well documented, so the event type is plausible for the era, but the specific named event, location, and year could not be corroborated or refuted by any independent source found.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "UNCERTAIN",
+        "reason": "Shambko (also spelled Shambuko) is confirmed as a real sub-zone/town in the Gash-Barka region of western Eritrea, and the broader pattern described (Ethiopian imperial army collective-punishment/scorched-earth campaigns against western Eritrean villages during the 1967-1970 counterinsurgency period against the ELF) is well documented in general terms by Wikipedia's massacre lists and the ehrea.org human rights archive. However, no source found names this specific event, gives a 1969 date for a massacre at Shambko, or corroborates the specific details (documentation by liberation-movement operatives shared with international human rights organizations). Wikipedia's two dedicated 'List of massacres...Eritrean War of Independence' articles show a documented gap between July 1967 (Hazemo) and January 1970 (Elabared) with zero entries for 1969, and neither list nor any other source mentions Shambko/Shambuko as a massacre site in any year. Extensive spelling-variant searches (Shambeko, Shanbko, Shambaco) and targeted searches on ehrea.org and academic/NGO sources returned no corroboration. Cannot confirm or refute from acceptable independent sources.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ]
   },
   {
     "year": 1969,
@@ -1176,31 +1211,6 @@
   },
   {
     "year": 1970,
-    "title": "EPLF Formally Established",
-    "verdict": "FALSE",
-    "reason": "WRONG YEAR/DESCRIPTION. The breakaway PLF groups formed in 1970, but the EPLF was formally established August 1973, not 1970. The event says 'formally constituted as a separate organization' for 1970 but formal EPLF constitution was 1973.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "WRONG YEAR/DESCRIPTION. The breakaway PLF groups formed in 1970, but the EPLF was formally established August 1973, not 1970. The event says 'formally constituted as a separate organization' for 1970 but formal EPLF constitution was 1973.",
-        "source": "https://en.wikipedia.org/wiki/Eritrean_People%27s_Liberation_Front",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Eritrean_People%27s_Liberation_Front"
-  },
-  {
-    "year": 1970,
     "title": "ELF-EPLF Rivalry Turns Violent",
     "verdict": "TRUE",
     "reason": "Violent clashes between ELF and the breakaway PLF groups occurred from 1970. Core claim confirmed for approximate period.",
@@ -1223,6 +1233,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Eritrean_Civil_War"
+  },
+  {
+    "year": 1970,
+    "title": "EPLF Formally Established",
+    "verdict": "FALSE",
+    "reason": "WRONG YEAR/DESCRIPTION. The breakaway PLF groups formed in 1970, but the EPLF was formally established August 1973, not 1970. The event says 'formally constituted as a separate organization' for 1970 but formal EPLF constitution was 1973.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "WRONG YEAR/DESCRIPTION. The breakaway PLF groups formed in 1970, but the EPLF was formally established August 1973, not 1970. The event says 'formally constituted as a separate organization' for 1970 but formal EPLF constitution was 1973.",
+        "source": "https://en.wikipedia.org/wiki/Eritrean_People%27s_Liberation_Front",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Eritrean_People%27s_Liberation_Front"
   },
   {
     "year": 1970,
@@ -1376,6 +1411,31 @@
   },
   {
     "year": 1974,
+    "title": "ELF and EPLF Coordinate Against Ethiopia",
+    "verdict": "TRUE",
+    "reason": "ELF-EPLF tactical coordination in 1974-75 after the Derg coup is documented. Core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ELF-EPLF tactical coordination in 1974-75 after the Derg coup is documented. Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence"
+  },
+  {
+    "year": 1974,
     "title": "Haile Selassie Overthrown by Derg Military Council",
     "verdict": "TRUE",
     "reason": "Haile Selassie was overthrown by the Derg on September 12, 1974. Year, actor, and core claim confirmed.",
@@ -1425,10 +1485,10 @@
     "source": "https://en.wikipedia.org/wiki/Derg"
   },
   {
-    "year": 1974,
-    "title": "ELF and EPLF Coordinate Against Ethiopia",
+    "year": 1975,
+    "title": "Asmara Siege and Street Fighting",
     "verdict": "TRUE",
-    "reason": "ELF-EPLF tactical coordination in 1974-75 after the Derg coup is documented. Core claim confirmed.",
+    "reason": "Fighting in and around Asmara in 1975 is documented. Core claim confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1438,7 +1498,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "ELF-EPLF tactical coordination in 1974-75 after the Derg coup is documented. Core claim confirmed.",
+        "reason": "Fighting in and around Asmara in 1975 is documented. Core claim confirmed.",
         "source": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1476,31 +1536,6 @@
   },
   {
     "year": 1975,
-    "title": "Asmara Siege and Street Fighting",
-    "verdict": "TRUE",
-    "reason": "Fighting in and around Asmara in 1975 is documented. Core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Fighting in and around Asmara in 1975 is documented. Core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence"
-  },
-  {
-    "year": 1975,
     "title": "Ethiopia's Derg Declares Socialism",
     "verdict": "TRUE",
     "reason": "Derg declared Ethiopia a socialist state. On March 21, 1975 it abolished the monarchy; broader socialist declarations came in 1974-75. Core claim confirmed.",
@@ -1526,20 +1561,20 @@
   },
   {
     "year": 1976,
-    "title": "Soviet Union Shifts Support to Ethiopia",
-    "verdict": "FALSE",
-    "reason": "WRONG YEAR. The major Soviet shift with Cuban troops and massive arms transfers came in late 1977, not 1976. The shift was triggered by the Derg's 1974 socialism declaration but the actual arms airlift and Cuban combat troops arrived September-November 1977.",
+    "title": "Derg's Urban Terror Campaign in Eritrea",
+    "verdict": "TRUE",
+    "reason": "Derg Red Terror targeting suspected independence sympathizers in Eritrean cities is documented as part of the broader Ethiopian Red Terror. Core claim confirmed.",
     "verify_count": 1,
-    "consensus_verdict": "FALSE",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "WRONG YEAR. The major Soviet shift with Cuban troops and massive arms transfers came in late 1977, not 1976. The shift was triggered by the Derg's 1974 socialism declaration but the actual arms airlift and Cuban combat troops arrived September-November 1977.",
-        "source": "https://en.wikipedia.org/wiki/Ogaden_War",
+        "verdict": "TRUE",
+        "reason": "Derg Red Terror targeting suspected independence sympathizers in Eritrean cities is documented as part of the broader Ethiopian Red Terror. Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ethiopian_Civil_War",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1547,7 +1582,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Ogaden_War"
+    "source": "https://en.wikipedia.org/wiki/Ethiopian_Civil_War"
   },
   {
     "year": 1976,
@@ -1576,20 +1611,20 @@
   },
   {
     "year": 1976,
-    "title": "Derg's Urban Terror Campaign in Eritrea",
-    "verdict": "TRUE",
-    "reason": "Derg Red Terror targeting suspected independence sympathizers in Eritrean cities is documented as part of the broader Ethiopian Red Terror. Core claim confirmed.",
+    "title": "Soviet Union Shifts Support to Ethiopia",
+    "verdict": "FALSE",
+    "reason": "WRONG YEAR. The major Soviet shift with Cuban troops and massive arms transfers came in late 1977, not 1976. The shift was triggered by the Derg's 1974 socialism declaration but the actual arms airlift and Cuban combat troops arrived September-November 1977.",
     "verify_count": 1,
-    "consensus_verdict": "TRUE",
+    "consensus_verdict": "FALSE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Derg Red Terror targeting suspected independence sympathizers in Eritrean cities is documented as part of the broader Ethiopian Red Terror. Core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Ethiopian_Civil_War",
+        "verdict": "FALSE",
+        "reason": "WRONG YEAR. The major Soviet shift with Cuban troops and massive arms transfers came in late 1977, not 1976. The shift was triggered by the Derg's 1974 socialism declaration but the actual arms airlift and Cuban combat troops arrived September-November 1977.",
+        "source": "https://en.wikipedia.org/wiki/Ogaden_War",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1597,32 +1632,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Ethiopian_Civil_War"
-  },
-  {
-    "year": 1977,
-    "title": "EPLF Controls Most of Eritrea",
-    "verdict": "TRUE",
-    "reason": "EPLF captured Keren in July 1977 and liberation forces controlled approximately 90% of Eritrean territory by mid-1977. Core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "EPLF captured Keren in July 1977 and liberation forces controlled approximately 90% of Eritrean territory by mid-1977. Core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence"
+    "source": "https://en.wikipedia.org/wiki/Ogaden_War"
   },
   {
     "year": 1977,
@@ -1650,10 +1660,10 @@
     "source": "https://history.state.gov/milestones/1977-1980/horn-of-africa"
   },
   {
-    "year": 1978,
-    "title": "Ethiopian Counteroffensive Recaptures Keren",
+    "year": 1977,
+    "title": "EPLF Controls Most of Eritrea",
     "verdict": "TRUE",
-    "reason": "Ethiopian counteroffensive with Soviet/Cuban support recaptured Keren in November 1978 after EPLF withdrawal. Year and core claim confirmed.",
+    "reason": "EPLF captured Keren in July 1977 and liberation forces controlled approximately 90% of Eritrean territory by mid-1977. Core claim confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1663,7 +1673,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Ethiopian counteroffensive with Soviet/Cuban support recaptured Keren in November 1978 after EPLF withdrawal. Year and core claim confirmed.",
+        "reason": "EPLF captured Keren in July 1977 and liberation forces controlled approximately 90% of Eritrean territory by mid-1977. Core claim confirmed.",
         "source": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1700,10 +1710,10 @@
     "source": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence"
   },
   {
-    "year": 1979,
-    "title": "Ethiopia Launches First Nakfa Offensive",
+    "year": 1978,
+    "title": "Ethiopian Counteroffensive Recaptures Keren",
     "verdict": "TRUE",
-    "reason": "Multiple Ethiopian offensives against Nakfa from 1979 onward are documented. Core claim confirmed.",
+    "reason": "Ethiopian counteroffensive with Soviet/Cuban support recaptured Keren in November 1978 after EPLF withdrawal. Year and core claim confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1713,7 +1723,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Multiple Ethiopian offensives against Nakfa from 1979 onward are documented. Core claim confirmed.",
+        "reason": "Ethiopian counteroffensive with Soviet/Cuban support recaptured Keren in November 1978 after EPLF withdrawal. Year and core claim confirmed.",
         "source": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1748,6 +1758,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Eritrean_People%27s_Liberation_Front"
+  },
+  {
+    "year": 1979,
+    "title": "Ethiopia Launches First Nakfa Offensive",
+    "verdict": "TRUE",
+    "reason": "Multiple Ethiopian offensives against Nakfa from 1979 onward are documented. Core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple Ethiopian offensives against Nakfa from 1979 onward are documented. Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence"
   },
   {
     "year": 1980,
@@ -1801,31 +1836,6 @@
   },
   {
     "year": 1981,
-    "title": "Ethiopia's Red Star Campaign Fails",
-    "verdict": "FALSE",
-    "reason": "WRONG YEAR. The Red Star Campaign was launched and fought in 1982 (January-July 1982), not 1981. Mengistu announced Operation Red Star in January 1982 with over 84,000 troops deployed.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "WRONG YEAR. The Red Star Campaign was launched and fought in 1982 (January-July 1982), not 1981. Mengistu announced Operation Red Star in January 1982 with over 84,000 troops deployed.",
-        "source": "https://en.wikipedia.org/wiki/Red_Star_Campaign",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Red_Star_Campaign"
-  },
-  {
-    "year": 1981,
     "title": "EPLF Develops Indigenous Arms Production",
     "verdict": "TRUE",
     "reason": "EPLF arms manufacturing workshops at Nakfa are well-documented features of the liberation struggle. Year approximately correct.",
@@ -1848,6 +1858,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Eritrean_People%27s_Liberation_Front"
+  },
+  {
+    "year": 1981,
+    "title": "Ethiopia's Red Star Campaign Fails",
+    "verdict": "FALSE",
+    "reason": "WRONG YEAR. The Red Star Campaign was launched and fought in 1982 (January-July 1982), not 1981. Mengistu announced Operation Red Star in January 1982 with over 84,000 troops deployed.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "WRONG YEAR. The Red Star Campaign was launched and fought in 1982 (January-July 1982), not 1981. Mengistu announced Operation Red Star in January 1982 with over 84,000 troops deployed.",
+        "source": "https://en.wikipedia.org/wiki/Red_Star_Campaign",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Red_Star_Campaign"
   },
   {
     "year": 1982,
@@ -1898,6 +1933,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Eritrean_People%27s_Liberation_Front"
+  },
+  {
+    "year": 1982,
+    "title": "Ethiopia's Sixth Nakfa Offensive Repelled",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: in Feb-June 1982, Ethiopia (under Mengistu Haile Mariam) launched the \"Red Star Campaign\" — widely described as the sixth major Ethiopian offensive against the EPLF's Nakfa stronghold — deploying 80,000-120,000 troops with heavy Soviet-supplied armor/air support. Despite months of intense fighting and devastating casualties on both sides (Ethiopian losses reported around 10,000+ killed, 23,000+ wounded per Wikipedia; EPLF ~4,000 killed), Ethiopian forces failed to capture Nakfa and the offensive was abandoned/wound down by June-July 1982. Sources explicitly note the failure damaged Mengistu's government's credibility and was suppressed in state media, consistent with \"eroding morale.\" This matches the event description materially: country (Eritrea/Ethiopia conflict), year (1982), the sixth-offensive framing, the repelling of Ethiopian forces at Nakfa, heavy casualties, and morale erosion.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm that in 1982 the Mengistu regime launched its sixth major counteroffensive against the EPLF, code-named the \"Red Star Campaign\" (Feb 15 - Jul 5, 1982), targeting the Nakfa front along with Barka and Alghena. Despite deploying 80,000-120,000 troops with Soviet/East German/South Yemeni/Libyan support, Ethiopian forces failed to capture Nakfa and were repelled after months of intense fighting, suffering massive casualties (roughly 10,000-54,000 killed/wounded/missing depending on source, with tens of thousands of casualties widely cited). Sources describe the failure as a severe blow to Mengistu's regime and to army morale/leadership (one divisional commander committed suicide rather than face execution for a retreat), and note the campaign strengthened rather than crushed the EPLF. This matches the event description (sixth offensive, weeks of fighting, massive casualties, repelled, eroded Ethiopian army morale) in country, year, and substance.",
+        "source": "https://en.wikipedia.org/wiki/Red_Star_Campaign",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: in Feb-June 1982, Ethiopia (under Mengistu Haile Mariam) launched the \"Red Star Campaign\" — widely described as the sixth major Ethiopian offensive against the EPLF's Nakfa stronghold — deploying 80,000-120,000 troops with heavy Soviet-supplied armor/air support. Despite months of intense fighting and devastating casualties on both sides (Ethiopian losses reported around 10,000+ killed, 23,000+ wounded per Wikipedia; EPLF ~4,000 killed), Ethiopian forces failed to capture Nakfa and the offensive was abandoned/wound down by June-July 1982. Sources explicitly note the failure damaged Mengistu's government's credibility and was suppressed in state media, consistent with \"eroding morale.\" This matches the event description materially: country (Eritrea/Ethiopia conflict), year (1982), the sixth-offensive framing, the repelling of Ethiopian forces at Nakfa, heavy casualties, and morale erosion.",
+        "source": "https://en.wikipedia.org/wiki/Red_Star_Campaign",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Red_Star_Campaign"
   },
   {
     "year": 1983,
@@ -2001,31 +2072,6 @@
   },
   {
     "year": 1986,
-    "title": "Ethiopia's Villagization Program Affects Eritrea",
-    "verdict": "TRUE",
-    "reason": "Ethiopia's forced villagization program in the mid-1980s is documented; partial application in Eritrean areas is plausible. Core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Ethiopia's forced villagization program in the mid-1980s is documented; partial application in Eritrean areas is plausible. Core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Ethiopian_Civil_War",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Ethiopian_Civil_War"
-  },
-  {
-    "year": 1986,
     "title": "EPLF Holds First Congress",
     "verdict": "FALSE",
     "reason": "WRONG YEAR. The EPLF's FIRST Congress was held January 1977 (not 1986). The SECOND Congress was held March 12-19, 1987 (not 1986). Neither occurred in 1986. Isaias became Secretary-General at the 1987 second congress.",
@@ -2050,10 +2096,10 @@
     "source": "https://en.wikipedia.org/wiki/Eritrean_People%27s_Liberation_Front"
   },
   {
-    "year": 1987,
-    "title": "Ethiopia's Economy Collapses Under War Costs",
+    "year": 1986,
+    "title": "Ethiopia's Villagization Program Affects Eritrea",
     "verdict": "TRUE",
-    "reason": "Ethiopian economic deterioration under war and Marxist mismanagement by the late 1980s is well-documented. Core claim confirmed.",
+    "reason": "Ethiopia's forced villagization program in the mid-1980s is documented; partial application in Eritrean areas is plausible. Core claim confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2063,7 +2109,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Ethiopian economic deterioration under war and Marxist mismanagement by the late 1980s is well-documented. Core claim confirmed.",
+        "reason": "Ethiopia's forced villagization program in the mid-1980s is documented; partial application in Eritrean areas is plausible. Core claim confirmed.",
         "source": "https://en.wikipedia.org/wiki/Ethiopian_Civil_War",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -2098,6 +2144,31 @@
       }
     ],
     "source": "https://www.merip.org/1987/03/alignments-in-the-horn/"
+  },
+  {
+    "year": 1987,
+    "title": "Ethiopia's Economy Collapses Under War Costs",
+    "verdict": "TRUE",
+    "reason": "Ethiopian economic deterioration under war and Marxist mismanagement by the late 1980s is well-documented. Core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ethiopian economic deterioration under war and Marxist mismanagement by the late 1980s is well-documented. Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ethiopian_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ethiopian_Civil_War"
   },
   {
     "year": 1988,
@@ -2176,31 +2247,6 @@
   },
   {
     "year": 1989,
-    "title": "Soviet Union Reduces Support to Ethiopia",
-    "verdict": "TRUE",
-    "reason": "Soviet arms reductions to Ethiopia under Gorbachev in 1989 are documented. Year and core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Soviet arms reductions to Ethiopia under Gorbachev in 1989 are documented. Year and core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Ethiopian_Civil_War",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Ethiopian_Civil_War"
-  },
-  {
-    "year": 1989,
     "title": "Failed Ethiopian Military Coup",
     "verdict": "TRUE",
     "reason": "Coup attempt on May 16, 1989 by Ethiopian military officers while Mengistu was in East Germany is confirmed. Year and core claim confirmed.",
@@ -2223,6 +2269,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1989_Ethiopian_coup_attempt"
+  },
+  {
+    "year": 1989,
+    "title": "Soviet Union Reduces Support to Ethiopia",
+    "verdict": "TRUE",
+    "reason": "Soviet arms reductions to Ethiopia under Gorbachev in 1989 are documented. Year and core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Soviet arms reductions to Ethiopia under Gorbachev in 1989 are documented. Year and core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Ethiopian_Civil_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ethiopian_Civil_War"
   },
   {
     "year": 1990,
@@ -2301,31 +2372,6 @@
   },
   {
     "year": 1991,
-    "title": "Mengistu Flees Ethiopia",
-    "verdict": "TRUE",
-    "reason": "Mengistu fled to Zimbabwe on May 21, 1991. Year, actor, destination, and core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Mengistu fled to Zimbabwe on May 21, 1991. Year, actor, destination, and core claim confirmed.",
-        "source": "https://www.washingtonpost.com/archive/politics/1991/05/22/ethiopian-president-flees-country/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.washingtonpost.com/archive/politics/1991/05/22/ethiopian-president-flees-country/"
-  },
-  {
-    "year": 1991,
     "title": "London Conference on Ethiopia and Eritrea",
     "verdict": "TRUE",
     "reason": "London/Washington conference in May 1991 brokered by Herman Cohen confirmed Eritrean right to referendum. Year and core claim confirmed.",
@@ -2348,6 +2394,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Eritrean_War_of_Independence"
+  },
+  {
+    "year": 1991,
+    "title": "Mengistu Flees Ethiopia",
+    "verdict": "TRUE",
+    "reason": "Mengistu fled to Zimbabwe on May 21, 1991. Year, actor, destination, and core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Mengistu fled to Zimbabwe on May 21, 1991. Year, actor, destination, and core claim confirmed.",
+        "source": "https://www.washingtonpost.com/archive/politics/1991/05/22/ethiopian-president-flees-country/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.washingtonpost.com/archive/politics/1991/05/22/ethiopian-president-flees-country/"
   },
   {
     "year": 1992,
@@ -2426,6 +2497,31 @@
   },
   {
     "year": 1993,
+    "title": "Eritrea Joins United Nations",
+    "verdict": "TRUE",
+    "reason": "Eritrea admitted to UN as 182nd member state on May 28, 1993. Year, date, and core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Eritrea admitted to UN as 182nd member state on May 28, 1993. Year, date, and core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Eritrea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Eritrea"
+  },
+  {
+    "year": 1993,
     "title": "Eritrean Independence Referendum",
     "verdict": "TRUE",
     "reason": "Referendum held April 23-25, 1993; 99.83% voted for independence, turnout ~98.5%. Year, dates, and core claim confirmed.",
@@ -2475,10 +2571,10 @@
     "source": "https://en.wikipedia.org/wiki/Eritrea"
   },
   {
-    "year": 1993,
-    "title": "Eritrea Joins United Nations",
+    "year": 1994,
+    "title": "Constitutional Commission Established",
     "verdict": "TRUE",
-    "reason": "Eritrea admitted to UN as 182nd member state on May 28, 1993. Year, date, and core claim confirmed.",
+    "reason": "Constitutional Commission chaired by Bereket Habte Selassie established in March 1994. Year, actor, and core claim confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2488,8 +2584,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Eritrea admitted to UN as 182nd member state on May 28, 1993. Year, date, and core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Eritrea",
+        "reason": "Constitutional Commission chaired by Bereket Habte Selassie established in March 1994. Year, actor, and core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_Eritrea",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2497,7 +2593,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Eritrea"
+    "source": "https://en.wikipedia.org/wiki/Constitution_of_Eritrea"
   },
   {
     "year": 1994,
@@ -2526,31 +2622,6 @@
   },
   {
     "year": 1994,
-    "title": "Constitutional Commission Established",
-    "verdict": "TRUE",
-    "reason": "Constitutional Commission chaired by Bereket Habte Selassie established in March 1994. Year, actor, and core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Constitutional Commission chaired by Bereket Habte Selassie established in March 1994. Year, actor, and core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Constitution_of_Eritrea",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Constitution_of_Eritrea"
-  },
-  {
-    "year": 1994,
     "title": "Eritrea Introduces National Service",
     "verdict": "TRUE",
     "reason": "National service program introduced in 1994 requiring 18 months initially. Year and core claim confirmed.",
@@ -2573,31 +2644,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Eritrea"
-  },
-  {
-    "year": 1995,
-    "title": "Hanish Islands Dispute with Yemen",
-    "verdict": "TRUE",
-    "reason": "Military clash over Hanish Islands occurred December 15-17, 1995. Eritrea captured Greater Hanish Island. Year and core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Military clash over Hanish Islands occurred December 15-17, 1995. Eritrea captured Greater Hanish Island. Year and core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Hanish_Islands_conflict",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Hanish_Islands_conflict"
   },
   {
     "year": 1995,
@@ -2626,6 +2672,31 @@
   },
   {
     "year": 1995,
+    "title": "Hanish Islands Dispute with Yemen",
+    "verdict": "TRUE",
+    "reason": "Military clash over Hanish Islands occurred December 15-17, 1995. Eritrea captured Greater Hanish Island. Year and core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Military clash over Hanish Islands occurred December 15-17, 1995. Eritrea captured Greater Hanish Island. Year and core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Hanish_Islands_conflict",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Hanish_Islands_conflict"
+  },
+  {
+    "year": 1995,
     "title": "Rapid Economic Growth in Early Independence",
     "verdict": "TRUE",
     "reason": "Eritrea's post-independence economic growth in 1993-1997 praised by international institutions is documented. Core claim confirmed.",
@@ -2639,6 +2710,31 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Eritrea's post-independence economic growth in 1993-1997 praised by international institutions is documented. Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Eritrea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Eritrea"
+  },
+  {
+    "year": 1996,
+    "title": "Eritrean Education Expands Rapidly",
+    "verdict": "TRUE",
+    "reason": "Rapid post-independence education expansion in Eritrea is documented. Core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Rapid post-independence education expansion in Eritrea is documented. Core claim confirmed.",
         "source": "https://en.wikipedia.org/wiki/Eritrea",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -2675,10 +2771,10 @@
     "source": "https://en.wikipedia.org/wiki/Hanish_Islands_conflict"
   },
   {
-    "year": 1996,
-    "title": "Eritrean Education Expands Rapidly",
+    "year": 1997,
+    "title": "Eritrea-Ethiopia Trade Dispute over Nakfa Currency",
     "verdict": "TRUE",
-    "reason": "Rapid post-independence education expansion in Eritrea is documented. Core claim confirmed.",
+    "reason": "Trade dispute over Nakfa/Birr exchange emerged after Nakfa introduction in November 1997. Year and core claim confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2688,8 +2784,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Rapid post-independence education expansion in Eritrea is documented. Core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Eritrea",
+        "reason": "Trade dispute over Nakfa/Birr exchange emerged after Nakfa introduction in November 1997. Year and core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Eritrean_nakfa",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -2697,7 +2793,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Eritrea"
+    "source": "https://en.wikipedia.org/wiki/Eritrean_nakfa"
   },
   {
     "year": 1997,
@@ -2723,31 +2819,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Constitution_of_Eritrea"
-  },
-  {
-    "year": 1997,
-    "title": "Eritrea-Ethiopia Trade Dispute over Nakfa Currency",
-    "verdict": "TRUE",
-    "reason": "Trade dispute over Nakfa/Birr exchange emerged after Nakfa introduction in November 1997. Year and core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Trade dispute over Nakfa/Birr exchange emerged after Nakfa introduction in November 1997. Year and core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Eritrean_nakfa",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Eritrean_nakfa"
   },
   {
     "year": 1998,
@@ -2851,31 +2922,6 @@
   },
   {
     "year": 1999,
-    "title": "OAU Peace Framework Proposed",
-    "verdict": "TRUE",
-    "reason": "OAU peace framework proposals in 1999, with Eritrea initially rejecting and Ethiopia accepting, are documented. Year and core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "OAU peace framework proposals in 1999, with Eritrea initially rejecting and Ethiopia accepting, are documented. Year and core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Eritrean%E2%80%93Ethiopian_War",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Eritrean%E2%80%93Ethiopian_War"
-  },
-  {
-    "year": 1999,
     "title": "Humanitarian Crisis Along War Front",
     "verdict": "TRUE",
     "reason": "Large-scale civilian displacement from border areas during the war is documented. Core claim confirmed.",
@@ -2900,10 +2946,10 @@
     "source": "https://en.wikipedia.org/wiki/Eritrean%E2%80%93Ethiopian_War"
   },
   {
-    "year": 2000,
-    "title": "Ethiopian Offensive Breaks Eritrean Lines",
+    "year": 1999,
+    "title": "OAU Peace Framework Proposed",
     "verdict": "TRUE",
-    "reason": "May 2000 Ethiopian offensive broke through Eritrean lines at Barentu/western sector. Year and core claim confirmed.",
+    "reason": "OAU peace framework proposals in 1999, with Eritrea initially rejecting and Ethiopia accepting, are documented. Year and core claim confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -2913,7 +2959,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "May 2000 Ethiopian offensive broke through Eritrean lines at Barentu/western sector. Year and core claim confirmed.",
+        "reason": "OAU peace framework proposals in 1999, with Eritrea initially rejecting and Ethiopia accepting, are documented. Year and core claim confirmed.",
         "source": "https://en.wikipedia.org/wiki/Eritrean%E2%80%93Ethiopian_War",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -2948,6 +2994,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Algiers_Agreement_(2000)"
+  },
+  {
+    "year": 2000,
+    "title": "Ethiopian Offensive Breaks Eritrean Lines",
+    "verdict": "TRUE",
+    "reason": "May 2000 Ethiopian offensive broke through Eritrean lines at Barentu/western sector. Year and core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "May 2000 Ethiopian offensive broke through Eritrean lines at Barentu/western sector. Year and core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Eritrean%E2%80%93Ethiopian_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Eritrean%E2%80%93Ethiopian_War"
   },
   {
     "year": 2000,
@@ -3001,31 +3072,6 @@
   },
   {
     "year": 2001,
-    "title": "Mass Arrest of G-15 Reformers",
-    "verdict": "TRUE",
-    "reason": "Eleven G-15 signatories arrested September 18-19, 2001. Year, scale, and core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Eleven G-15 signatories arrested September 18-19, 2001. Year, scale, and core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/G-15_(Eritrea)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/G-15_(Eritrea)"
-  },
-  {
-    "year": 2001,
     "title": "Independent Press Shut Down",
     "verdict": "TRUE",
     "reason": "All independent private newspapers shut down September 2001 with arrest of journalists. Year and core claim confirmed.",
@@ -3048,6 +3094,31 @@
       }
     ],
     "source": "https://hrc-eritrea.org/23-years-of-silence-commemorating-the-incommunicado-detention-of-eritreas-g-15-and-the-assault-on-press-freedom/"
+  },
+  {
+    "year": 2001,
+    "title": "Mass Arrest of G-15 Reformers",
+    "verdict": "TRUE",
+    "reason": "Eleven G-15 signatories arrested September 18-19, 2001. Year, scale, and core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Eleven G-15 signatories arrested September 18-19, 2001. Year, scale, and core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/G-15_(Eritrea)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/G-15_(Eritrea)"
   },
   {
     "year": 2002,
@@ -3126,9 +3197,9 @@
   },
   {
     "year": 2003,
-    "title": "National Service Extended Indefinitely",
+    "title": "Eritrea Restricts NGO Operations",
     "verdict": "TRUE",
-    "reason": "Indefinite extension of national service is documented. The formal indefinite extension was in the 2002-2003 period. Core claim confirmed.",
+    "reason": "Severe NGO restrictions documented in 2003-2005. Core claim confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3138,8 +3209,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Indefinite extension of national service is documented. The formal indefinite extension was in the 2002-2003 period. Core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Eritrea",
+        "reason": "Severe NGO restrictions documented in 2003-2005. Core claim confirmed.",
+        "source": "https://www.hrw.org/world-report/2005/country-chapters/eritrea",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3147,7 +3218,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Eritrea"
+    "source": "https://www.hrw.org/world-report/2005/country-chapters/eritrea"
   },
   {
     "year": 2003,
@@ -3176,9 +3247,9 @@
   },
   {
     "year": 2003,
-    "title": "Eritrea Restricts NGO Operations",
+    "title": "National Service Extended Indefinitely",
     "verdict": "TRUE",
-    "reason": "Severe NGO restrictions documented in 2003-2005. Core claim confirmed.",
+    "reason": "Indefinite extension of national service is documented. The formal indefinite extension was in the 2002-2003 period. Core claim confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3188,8 +3259,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Severe NGO restrictions documented in 2003-2005. Core claim confirmed.",
-        "source": "https://www.hrw.org/world-report/2005/country-chapters/eritrea",
+        "reason": "Indefinite extension of national service is documented. The formal indefinite extension was in the 2002-2003 period. Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Eritrea",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3197,7 +3268,45 @@
         }
       }
     ],
-    "source": "https://www.hrw.org/world-report/2005/country-chapters/eritrea"
+    "source": "https://en.wikipedia.org/wiki/Eritrea"
+  },
+  {
+    "year": 2004,
+    "title": "Eritrea Blocks Food Aid from WFP",
+    "verdict": "FALSE",
+    "reason": "The event is real in substance but the year is wrong. In 2004 Eritrea was in the grip of a severe food crisis and was RECEIVING large-scale WFP/international food aid (443,000 MT of emergency food required for ~1.9 million people; a record 61,200 MT US wheat shipment docked at Massawa in Oct 2004; UN warned in Dec 2004 that Eritrea would need aid 'well into 2005') — the opposite of blocking aid. The actual policy of ending cooperation with WFP, claiming self-sufficiency, and refusing food aid unfolded in 2005-2006: Eritrea imposed restrictive NGO registration rules (June 2005), expelled USAID (July 2005), cut free-food recipients by 94% (Sept 2005, from 1.3M to 72,000 people), and in 2006 the government seized WFP stocks, monetized food aid into a cash/food-for-work program, and WFP general food distributions were suspended (per Human Rights Watch World Report 2007 and ODI/HPN reporting: 'World Food Programme (WFP) general food distributions have been suspended since 2006'). Multiple NGOs were also expelled in 2006, and the self-sufficiency claim was widely condemned as contradicted by real hunger. So country and substance hold, but the correct year is 2006 (with the run-up beginning in 2005), not 2004.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The substance is real but the year is wrong. In 2004, Eritrea was in the grip of a severe food crisis — UN/FEWS reporting shows 1.7-1.9 million people (roughly half the population) needed emergency food aid that year, and in December 2004 the UN explicitly said Eritrea would need food aid 'well into 2005.' That is the opposite of blocking aid or declaring self-sufficiency. The actual policy shift described (self-sufficiency rhetoric, restricting/expelling aid organizations, and cutting off WFP-distributed food aid to large numbers of people) unfolded in 2005-2006: Eritrea expelled USAID (July 2005), imposed a restrictive NGO proclamation (May/June 2005) that shrank the number of operating NGOs from 37 to 5, and then in 2006 suspended WFP's general food distribution program entirely in favor of a 'food/cash-for-work' policy, with aid workers reporting Eritrean authorities seized food stocks from a WFP warehouse. Multiple independent sources (ReliefWeb/IRIN via The New Humanitarian, UN OCHA, ODI Humanitarian Practice Network, Foreign Policy Association, openDemocracy) converge on 2006 as the year WFP's general distribution ended and the self-sufficiency policy took full effect, following the 2005 groundwork. Year and country substance are real, but 2004 is incorrect — best corrected year is 2006.",
+        "source": "https://reliefweb.int/report/eritrea/eritrea-how-bad-food-crisis-really",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2006
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real in substance but the year is wrong. In 2004 Eritrea was in the grip of a severe food crisis and was RECEIVING large-scale WFP/international food aid (443,000 MT of emergency food required for ~1.9 million people; a record 61,200 MT US wheat shipment docked at Massawa in Oct 2004; UN warned in Dec 2004 that Eritrea would need aid 'well into 2005') — the opposite of blocking aid. The actual policy of ending cooperation with WFP, claiming self-sufficiency, and refusing food aid unfolded in 2005-2006: Eritrea imposed restrictive NGO registration rules (June 2005), expelled USAID (July 2005), cut free-food recipients by 94% (Sept 2005, from 1.3M to 72,000 people), and in 2006 the government seized WFP stocks, monetized food aid into a cash/food-for-work program, and WFP general food distributions were suspended (per Human Rights Watch World Report 2007 and ODI/HPN reporting: 'World Food Programme (WFP) general food distributions have been suspended since 2006'). Multiple NGOs were also expelled in 2006, and the self-sufficiency claim was widely condemned as contradicted by real hunger. So country and substance hold, but the correct year is 2006 (with the run-up beginning in 2005), not 2004.",
+        "source": "https://odihpn.org/en/publication/when-there-are-no-statistics-emergency-nutrition-programming-in-eritrea/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2006
+      }
+    ],
+    "source": "https://odihpn.org/en/publication/when-there-are-no-statistics-emergency-nutrition-programming-in-eritrea/"
   },
   {
     "year": 2004,
@@ -3251,31 +3360,6 @@
   },
   {
     "year": 2005,
-    "title": "Eritrea Expels UNMEE Peacekeepers",
-    "verdict": "TRUE",
-    "reason": "December 6, 2005 expulsion of US, Canadian, and European UNMEE staff is documented. Year and core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "December 6, 2005 expulsion of US, Canadian, and European UNMEE staff is documented. Year and core claim confirmed.",
-        "source": "https://unis.unvienna.org/unis/en/pressrels/2005/sc8572.html",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://unis.unvienna.org/unis/en/pressrels/2005/sc8572.html"
-  },
-  {
-    "year": 2005,
     "title": "Eritrea Adopts Economic Policies of Self-Reliance",
     "verdict": "TRUE",
     "reason": "Eritrea's self-reliance ideology formalized in the mid-2000s is documented. Core claim confirmed.",
@@ -3298,6 +3382,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Eritrea"
+  },
+  {
+    "year": 2005,
+    "title": "Eritrea Expels UNMEE Peacekeepers",
+    "verdict": "TRUE",
+    "reason": "December 6, 2005 expulsion of US, Canadian, and European UNMEE staff is documented. Year and core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "December 6, 2005 expulsion of US, Canadian, and European UNMEE staff is documented. Year and core claim confirmed.",
+        "source": "https://unis.unvienna.org/unis/en/pressrels/2005/sc8572.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://unis.unvienna.org/unis/en/pressrels/2005/sc8572.html"
   },
   {
     "year": 2005,
@@ -3476,31 +3585,6 @@
   },
   {
     "year": 2009,
-    "title": "UN Imposes Sanctions on Eritrea",
-    "verdict": "TRUE",
-    "reason": "UN Security Council Resolution 1907 adopted December 23, 2009 imposed arms embargo and sanctions. Year and core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "UN Security Council Resolution 1907 adopted December 23, 2009 imposed arms embargo and sanctions. Year and core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_1907",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_1907"
-  },
-  {
-    "year": 2009,
     "title": "Bisha Mine Development Agreement",
     "verdict": "TRUE",
     "reason": "Agreements with Nevsun Resources to develop Bisha mine finalized in 2009. Year and core claim confirmed.",
@@ -3550,21 +3634,21 @@
     "source": "https://en.wikipedia.org/wiki/Eritrea"
   },
   {
-    "year": 2010,
-    "title": "Bisha Mine Opens",
-    "verdict": "FALSE",
-    "reason": "WRONG YEAR. Bisha mine commenced commercial gold production in February 2011, not 2010. Multiple sources confirm the 2011 production start.",
+    "year": 2009,
+    "title": "UN Imposes Sanctions on Eritrea",
+    "verdict": "TRUE",
+    "reason": "UN Security Council Resolution 1907 adopted December 23, 2009 imposed arms embargo and sanctions. Year and core claim confirmed.",
     "verify_count": 1,
-    "consensus_verdict": "FALSE",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "WRONG YEAR. Bisha mine commenced commercial gold production in February 2011, not 2010. Multiple sources confirm the 2011 production start.",
-        "source": "https://www.mining-technology.com/projects/bisha-project/",
+        "verdict": "TRUE",
+        "reason": "UN Security Council Resolution 1907 adopted December 23, 2009 imposed arms embargo and sanctions. Year and core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_1907",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3572,7 +3656,7 @@
         }
       }
     ],
-    "source": "https://www.mining-technology.com/projects/bisha-project/"
+    "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_1907"
   },
   {
     "year": 2010,
@@ -3601,6 +3685,31 @@
   },
   {
     "year": 2010,
+    "title": "Bisha Mine Opens",
+    "verdict": "FALSE",
+    "reason": "WRONG YEAR. Bisha mine commenced commercial gold production in February 2011, not 2010. Multiple sources confirm the 2011 production start.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "WRONG YEAR. Bisha mine commenced commercial gold production in February 2011, not 2010. Multiple sources confirm the 2011 production start.",
+        "source": "https://www.mining-technology.com/projects/bisha-project/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.mining-technology.com/projects/bisha-project/"
+  },
+  {
+    "year": 2010,
     "title": "Qatar Mediates Djibouti-Eritrea Dispute",
     "verdict": "TRUE",
     "reason": "Qatar brokered mediation agreement in 2010; deployed 450 peacekeepers. Year and core claim confirmed.",
@@ -3626,31 +3735,6 @@
   },
   {
     "year": 2011,
-    "title": "UN Somalia-Eritrea Monitoring Group Report",
-    "verdict": "TRUE",
-    "reason": "UN Monitoring Group reports on Eritrea's alleged support for al-Shabaab are documented annually. 2011 report is confirmed. Core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "UN Monitoring Group reports on Eritrea's alleged support for al-Shabaab are documented annually. 2011 report is confirmed. Core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_1907",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_1907"
-  },
-  {
-    "year": 2011,
     "title": "Isaias Afwerki Rejects Arab Spring Comparisons",
     "verdict": "TRUE",
     "reason": "Isaias's dismissal of Arab Spring comparisons in 2011 is documented in press coverage. Core claim confirmed.",
@@ -3673,6 +3757,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Isaias_Afwerki"
+  },
+  {
+    "year": 2011,
+    "title": "UN Somalia-Eritrea Monitoring Group Report",
+    "verdict": "TRUE",
+    "reason": "UN Monitoring Group reports on Eritrea's alleged support for al-Shabaab are documented annually. 2011 report is confirmed. Core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UN Monitoring Group reports on Eritrea's alleged support for al-Shabaab are documented annually. 2011 report is confirmed. Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_1907",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_1907"
   },
   {
     "year": 2012,
@@ -3726,31 +3835,6 @@
   },
   {
     "year": 2013,
-    "title": "January 21 Mutiny at Ministry of Information",
-    "verdict": "TRUE",
-    "reason": "January 21, 2013 soldiers seized Ministry of Information/EriTV building demanding constitutional reforms. Year, date, and core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "January 21, 2013 soldiers seized Ministry of Information/EriTV building demanding constitutional reforms. Year, date, and core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2013_Eritrean_Army_mutiny",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2013_Eritrean_Army_mutiny"
-  },
-  {
-    "year": 2013,
     "title": "Eritrea Becomes Top Refugee Source Globally",
     "verdict": "TRUE",
     "reason": "UNHCR data showing Eritrea among top refugee sources globally by 2013 is documented. Core claim confirmed.",
@@ -3775,10 +3859,10 @@
     "source": "https://en.wikipedia.org/wiki/Eritrea"
   },
   {
-    "year": 2014,
-    "title": "UN Commission of Inquiry on Human Rights Established",
+    "year": 2013,
+    "title": "January 21 Mutiny at Ministry of Information",
     "verdict": "TRUE",
-    "reason": "UN Human Rights Council established Commission of Inquiry on June 27, 2014. Year and core claim confirmed.",
+    "reason": "January 21, 2013 soldiers seized Ministry of Information/EriTV building demanding constitutional reforms. Year, date, and core claim confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3788,8 +3872,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "UN Human Rights Council established Commission of Inquiry on June 27, 2014. Year and core claim confirmed.",
-        "source": "https://www.ohchr.org/en/hr-bodies/hrc/co-i-eritrea/commissioninquiryonhrin-eritrea",
+        "reason": "January 21, 2013 soldiers seized Ministry of Information/EriTV building demanding constitutional reforms. Year, date, and core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2013_Eritrean_Army_mutiny",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -3797,7 +3881,7 @@
         }
       }
     ],
-    "source": "https://www.ohchr.org/en/hr-bodies/hrc/co-i-eritrea/commissioninquiryonhrin-eritrea"
+    "source": "https://en.wikipedia.org/wiki/2013_Eritrean_Army_mutiny"
   },
   {
     "year": 2014,
@@ -3850,6 +3934,56 @@
     "source": "https://www.business-humanrights.org/en/latest-news/nevsun-lawsuit-re-bisha-mine-eritrea/"
   },
   {
+    "year": 2014,
+    "title": "UN Commission of Inquiry on Human Rights Established",
+    "verdict": "TRUE",
+    "reason": "UN Human Rights Council established Commission of Inquiry on June 27, 2014. Year and core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UN Human Rights Council established Commission of Inquiry on June 27, 2014. Year and core claim confirmed.",
+        "source": "https://www.ohchr.org/en/hr-bodies/hrc/co-i-eritrea/commissioninquiryonhrin-eritrea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.ohchr.org/en/hr-bodies/hrc/co-i-eritrea/commissioninquiryonhrin-eritrea"
+  },
+  {
+    "year": 2015,
+    "title": "European Migration Crisis Includes Eritreans",
+    "verdict": "TRUE",
+    "reason": "Eritreans formed significant portion of 2015 Mediterranean crossings. Core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Eritreans formed significant portion of 2015 Mediterranean crossings. Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Eritrea",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Eritrea"
+  },
+  {
     "year": 2015,
     "title": "UN Commission of Inquiry Report Released",
     "verdict": "TRUE",
@@ -3875,10 +4009,10 @@
     "source": "https://www.ohchr.org/en/press-releases/2015/06/un-inquiry-reports-gross-human-rights-violations-eritrea"
   },
   {
-    "year": 2015,
-    "title": "European Migration Crisis Includes Eritreans",
+    "year": 2016,
+    "title": "Eritrean Economy Continues to Stagnate",
     "verdict": "TRUE",
-    "reason": "Eritreans formed significant portion of 2015 Mediterranean crossings. Core claim confirmed.",
+    "reason": "Continued economic stagnation in 2016 is documented. Core claim confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -3888,7 +4022,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Eritreans formed significant portion of 2015 Mediterranean crossings. Core claim confirmed.",
+        "reason": "Continued economic stagnation in 2016 is documented. Core claim confirmed.",
         "source": "https://en.wikipedia.org/wiki/Eritrea",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -3925,29 +4059,40 @@
     "source": "https://www.ohchr.org/en/press-releases/2016/06/un-inquiry-finds-crimes-against-humanity-eritrea"
   },
   {
-    "year": 2016,
-    "title": "Eritrean Economy Continues to Stagnate",
+    "year": 2017,
+    "title": "Asmara Inscribed as UNESCO World Heritage Site for Modernist Architecture",
     "verdict": "TRUE",
-    "reason": "Continued economic stagnation in 2016 is documented. Core claim confirmed.",
-    "verify_count": 1,
+    "reason": "Independent sources confirm Asmara, Eritrea's capital, was inscribed on the UNESCO World Heritage List on 8 July 2017 at the 41st Session of the World Heritage Committee (Krakow, Poland). It was Eritrea's first World Heritage Site and the first entirely modernist city recognized by UNESCO. The city's core was built mainly 1935-1941 under Italian colonial rule and includes Art Deco cinemas (e.g., Cinema Impero) and futurist petrol stations shaped like airplanes (Fiat Tagliero Building). The nomination followed advocacy by the Asmara Heritage Project, established in 2014 by the Eritrean government with international academic support (Prof. Edward Denison et al.). All material details (country, year, date, description, actors) match across the official UNESCO World Heritage Centre page and independent news/academic sources (EEAS, Eritrea's Ministry of Information/Shabait, UCL Bartlett case study, Wikipedia).",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Continued economic stagnation in 2016 is documented. Core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Eritrea",
+        "reason": "Multiple independent sources confirm Asmara, Eritrea's capital, was inscribed on the UNESCO World Heritage List on 8 July 2017 during the 41st World Heritage Committee Session in Krakow, Poland. It is confirmed as Eritrea's first World Heritage Site and the first modernist city in the world to be inscribed in its entirety, recognized for its exceptional early 20th-century modernist urbanism built largely under Italian colonial rule (from the 1930s). The EEAS (EU diplomatic service) page explicitly states inscription date '08 July 2017' and describes the modernist architecture and ~4,300 surveyed historical buildings. Independent search aggregation (Wikipedia, Madote, EEAS, UCL case study, Eritrea Ministry of Information/shabait.com) all corroborate the date, the 'first entirely modernist city' UNESCO framing, and the Italian colonial-era construction period. No material discrepancy found on year, country, or core facts (Art Deco cinemas and futurist petrol station architecture are well-documented features of Asmara's modernist heritage cited across sources on this topic).",
+        "source": "https://www.eeas.europa.eu/node/29545_en",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm Asmara, Eritrea's capital, was inscribed on the UNESCO World Heritage List on 8 July 2017 at the 41st Session of the World Heritage Committee (Krakow, Poland). It was Eritrea's first World Heritage Site and the first entirely modernist city recognized by UNESCO. The city's core was built mainly 1935-1941 under Italian colonial rule and includes Art Deco cinemas (e.g., Cinema Impero) and futurist petrol stations shaped like airplanes (Fiat Tagliero Building). The nomination followed advocacy by the Asmara Heritage Project, established in 2014 by the Eritrean government with international academic support (Prof. Edward Denison et al.). All material details (country, year, date, description, actors) match across the official UNESCO World Heritage Centre page and independent news/academic sources (EEAS, Eritrea's Ministry of Information/Shabait, UCL Bartlett case study, Wikipedia).",
+        "source": "https://whc.unesco.org/en/urban-heritage-atlas/asmara/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Eritrea"
+    "source": "https://whc.unesco.org/en/urban-heritage-atlas/asmara/"
   },
   {
     "year": 2017,
@@ -3976,31 +4121,6 @@
   },
   {
     "year": 2017,
-    "title": "UAE Develops Assab Military Base",
-    "verdict": "FALSE",
-    "reason": "WRONG YEAR. UAE began developing Assab military base in 2015 (heavy buildup May-July 2015), not 2017. By 2017 it was already a major operational base.",
-    "verify_count": 1,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "WRONG YEAR. UAE began developing Assab military base in 2015 (heavy buildup May-July 2015), not 2017. By 2017 it was already a major operational base.",
-        "source": "https://voanews.com/a/africa_uae-dismantles-eritrea-base-it-pulls-back-after-yemen-war/6202212.html",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://voanews.com/a/africa_uae-dismantles-eritrea-base-it-pulls-back-after-yemen-war/6202212.html"
-  },
-  {
-    "year": 2017,
     "title": "Qatar Withdraws from Djibouti-Eritrea Monitoring",
     "verdict": "TRUE",
     "reason": "Qatar withdrew 450 peacekeepers on June 14, 2017 during the Gulf diplomatic crisis. Year, date, and core claim confirmed.",
@@ -4023,6 +4143,31 @@
       }
     ],
     "source": "https://www.aljazeera.com/opinions/2017/6/18/why-did-qatar-leave-the-djibouti-eritrea-border"
+  },
+  {
+    "year": 2017,
+    "title": "UAE Develops Assab Military Base",
+    "verdict": "FALSE",
+    "reason": "WRONG YEAR. UAE began developing Assab military base in 2015 (heavy buildup May-July 2015), not 2017. By 2017 it was already a major operational base.",
+    "verify_count": 1,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "WRONG YEAR. UAE began developing Assab military base in 2015 (heavy buildup May-July 2015), not 2017. By 2017 it was already a major operational base.",
+        "source": "https://voanews.com/a/africa_uae-dismantles-eritrea-base-it-pulls-back-after-yemen-war/6202212.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://voanews.com/a/africa_uae-dismantles-eritrea-base-it-pulls-back-after-yemen-war/6202212.html"
   },
   {
     "year": 2018,
@@ -4051,9 +4196,9 @@
   },
   {
     "year": 2018,
-    "title": "Ethiopia Accepts EEBC Ruling — Peace Breakthrough",
+    "title": "Eritrea-Ethiopia Border Opens",
     "verdict": "TRUE",
-    "reason": "Abiy Ahmed announced acceptance of EEBC ruling in June 2018. Year and core claim confirmed.",
+    "reason": "Border crossings reopened following the July 2018 peace agreement. Year and core claim confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4063,7 +4208,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Abiy Ahmed announced acceptance of EEBC ruling in June 2018. Year and core claim confirmed.",
+        "reason": "Border crossings reopened following the July 2018 peace agreement. Year and core claim confirmed.",
         "source": "https://en.wikipedia.org/wiki/2018_Eritrea%E2%80%93Ethiopia_summit",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -4101,9 +4246,9 @@
   },
   {
     "year": 2018,
-    "title": "Eritrea-Ethiopia Border Opens",
+    "title": "Ethiopia Accepts EEBC Ruling — Peace Breakthrough",
     "verdict": "TRUE",
-    "reason": "Border crossings reopened following the July 2018 peace agreement. Year and core claim confirmed.",
+    "reason": "Abiy Ahmed announced acceptance of EEBC ruling in June 2018. Year and core claim confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -4113,7 +4258,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Border crossings reopened following the July 2018 peace agreement. Year and core claim confirmed.",
+        "reason": "Abiy Ahmed announced acceptance of EEBC ruling in June 2018. Year and core claim confirmed.",
         "source": "https://en.wikipedia.org/wiki/2018_Eritrea%E2%80%93Ethiopia_summit",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -4176,20 +4321,20 @@
   },
   {
     "year": 2019,
-    "title": "Eritrean Refugees Return Hesitantly",
-    "verdict": "TRUE",
-    "reason": "Low refugee return rates in 2019 despite peace deal are documented. Core claim confirmed.",
+    "title": "Canada Supreme Court Rules Nevsun Case Admissible",
+    "verdict": "FALSE",
+    "reason": "WRONG YEAR. The Supreme Court of Canada ruling allowing the case to proceed was issued February 28, 2020, not 2019.",
     "verify_count": 1,
-    "consensus_verdict": "TRUE",
+    "consensus_verdict": "FALSE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Low refugee return rates in 2019 despite peace deal are documented. Core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Eritrea",
+        "verdict": "FALSE",
+        "reason": "WRONG YEAR. The Supreme Court of Canada ruling allowing the case to proceed was issued February 28, 2020, not 2019.",
+        "source": "https://www.mccarthy.ca/en/insights/blogs/mining-prospects/supreme-court-canada-cracks-open-door-international-human-rights-tort-claims-nevsun-resources-ltd-v-araya",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4197,7 +4342,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Eritrea"
+    "source": "https://www.mccarthy.ca/en/insights/blogs/mining-prospects/supreme-court-canada-cracks-open-door-international-human-rights-tort-claims-nevsun-resources-ltd-v-araya"
   },
   {
     "year": 2019,
@@ -4226,20 +4371,20 @@
   },
   {
     "year": 2019,
-    "title": "Canada Supreme Court Rules Nevsun Case Admissible",
-    "verdict": "FALSE",
-    "reason": "WRONG YEAR. The Supreme Court of Canada ruling allowing the case to proceed was issued February 28, 2020, not 2019.",
+    "title": "Eritrean Refugees Return Hesitantly",
+    "verdict": "TRUE",
+    "reason": "Low refugee return rates in 2019 despite peace deal are documented. Core claim confirmed.",
     "verify_count": 1,
-    "consensus_verdict": "FALSE",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "WRONG YEAR. The Supreme Court of Canada ruling allowing the case to proceed was issued February 28, 2020, not 2019.",
-        "source": "https://www.mccarthy.ca/en/insights/blogs/mining-prospects/supreme-court-canada-cracks-open-door-international-human-rights-tort-claims-nevsun-resources-ltd-v-araya",
+        "verdict": "TRUE",
+        "reason": "Low refugee return rates in 2019 despite peace deal are documented. Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Eritrea",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -4247,7 +4392,7 @@
         }
       }
     ],
-    "source": "https://www.mccarthy.ca/en/insights/blogs/mining-prospects/supreme-court-canada-cracks-open-door-international-human-rights-tort-claims-nevsun-resources-ltd-v-araya"
+    "source": "https://en.wikipedia.org/wiki/Eritrea"
   },
   {
     "year": 2020,
@@ -4264,6 +4409,31 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Eritrean forces entered Tigray from the north in November 2020 when the Tigray war began. Year and core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Eritrean_involvement_in_the_Tigray_war",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Eritrean_involvement_in_the_Tigray_war"
+  },
+  {
+    "year": 2020,
+    "title": "International Community Demands Eritrean Withdrawal from Tigray",
+    "verdict": "TRUE",
+    "reason": "International demands for Eritrean withdrawal, with initial denials from both Eritrea and Ethiopia, are documented. Core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "International demands for Eritrean withdrawal, with initial denials from both Eritrea and Ethiopia, are documented. Core claim confirmed.",
         "source": "https://en.wikipedia.org/wiki/Eritrean_involvement_in_the_Tigray_war",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -4298,31 +4468,6 @@
       }
     ],
     "source": "https://www.amnesty.org/en/latest/news/2021/02/ethiopia-eritrean-troops-massacre-of-hundreds-of-axum-civilians-may-amount-to-crime-against-humanity/"
-  },
-  {
-    "year": 2020,
-    "title": "International Community Demands Eritrean Withdrawal from Tigray",
-    "verdict": "TRUE",
-    "reason": "International demands for Eritrean withdrawal, with initial denials from both Eritrea and Ethiopia, are documented. Core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "International demands for Eritrean withdrawal, with initial denials from both Eritrea and Ethiopia, are documented. Core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Eritrean_involvement_in_the_Tigray_war",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Eritrean_involvement_in_the_Tigray_war"
   },
   {
     "year": 2021,
@@ -4401,31 +4546,6 @@
   },
   {
     "year": 2022,
-    "title": "Eritrean Forces Slow to Withdraw from Tigray",
-    "verdict": "TRUE",
-    "reason": "Reports of continued Eritrean presence and abuses in Tigray post-ceasefire in 2022 are documented. Core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Reports of continued Eritrean presence and abuses in Tigray post-ceasefire in 2022 are documented. Core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Eritrean_involvement_in_the_Tigray_war",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Eritrean_involvement_in_the_Tigray_war"
-  },
-  {
-    "year": 2022,
     "title": "Eritrea Among World's Least Free Countries",
     "verdict": "TRUE",
     "reason": "Eritrea consistently ranked among world's most repressive states by Freedom House and others. Core claim confirmed.",
@@ -4448,6 +4568,31 @@
       }
     ],
     "source": "https://www.uscirf.gov/countries/eritrea"
+  },
+  {
+    "year": 2022,
+    "title": "Eritrean Forces Slow to Withdraw from Tigray",
+    "verdict": "TRUE",
+    "reason": "Reports of continued Eritrean presence and abuses in Tigray post-ceasefire in 2022 are documented. Core claim confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Reports of continued Eritrean presence and abuses in Tigray post-ceasefire in 2022 are documented. Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Eritrean_involvement_in_the_Tigray_war",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Eritrean_involvement_in_the_Tigray_war"
   },
   {
     "year": 2023,
@@ -4551,31 +4696,6 @@
   },
   {
     "year": 2024,
-    "title": "No Political Reform — 30 Years of PFDJ Rule",
-    "verdict": "TRUE",
-    "reason": "Eritrea's 30+ years without elections, free press, or legal opposition under continuous PFDJ/Isaias rule is confirmed. Core claim confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Eritrea's 30+ years without elections, free press, or legal opposition under continuous PFDJ/Isaias rule is confirmed. Core claim confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Isaias_Afwerki",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Isaias_Afwerki"
-  },
-  {
-    "year": 2024,
     "title": "Eritrean Diaspora Advocacy Intensifies",
     "verdict": "TRUE",
     "reason": "Intensified Eritrean diaspora advocacy and community divisions are documented. Core claim confirmed.",
@@ -4600,77 +4720,28 @@
     "source": "https://en.wikipedia.org/wiki/Eritrea"
   },
   {
-    "year": 2004,
-    "title": "Eritrea Blocks Food Aid from WFP",
-    "verdict": "FALSE",
-    "reason": "The event is real in substance but the year is wrong. In 2004 Eritrea was in the grip of a severe food crisis and was RECEIVING large-scale WFP/international food aid (443,000 MT of emergency food required for ~1.9 million people; a record 61,200 MT US wheat shipment docked at Massawa in Oct 2004; UN warned in Dec 2004 that Eritrea would need aid 'well into 2005') — the opposite of blocking aid. The actual policy of ending cooperation with WFP, claiming self-sufficiency, and refusing food aid unfolded in 2005-2006: Eritrea imposed restrictive NGO registration rules (June 2005), expelled USAID (July 2005), cut free-food recipients by 94% (Sept 2005, from 1.3M to 72,000 people), and in 2006 the government seized WFP stocks, monetized food aid into a cash/food-for-work program, and WFP general food distributions were suspended (per Human Rights Watch World Report 2007 and ODI/HPN reporting: 'World Food Programme (WFP) general food distributions have been suspended since 2006'). Multiple NGOs were also expelled in 2006, and the self-sufficiency claim was widely condemned as contradicted by real hunger. So country and substance hold, but the correct year is 2006 (with the run-up beginning in 2005), not 2004.",
-    "verify_count": 2,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "double_negative",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "The substance is real but the year is wrong. In 2004, Eritrea was in the grip of a severe food crisis — UN/FEWS reporting shows 1.7-1.9 million people (roughly half the population) needed emergency food aid that year, and in December 2004 the UN explicitly said Eritrea would need food aid 'well into 2005.' That is the opposite of blocking aid or declaring self-sufficiency. The actual policy shift described (self-sufficiency rhetoric, restricting/expelling aid organizations, and cutting off WFP-distributed food aid to large numbers of people) unfolded in 2005-2006: Eritrea expelled USAID (July 2005), imposed a restrictive NGO proclamation (May/June 2005) that shrank the number of operating NGOs from 37 to 5, and then in 2006 suspended WFP's general food distribution program entirely in favor of a 'food/cash-for-work' policy, with aid workers reporting Eritrean authorities seized food stocks from a WFP warehouse. Multiple independent sources (ReliefWeb/IRIN via The New Humanitarian, UN OCHA, ODI Humanitarian Practice Network, Foreign Policy Association, openDemocracy) converge on 2006 as the year WFP's general distribution ended and the self-sufficiency policy took full effect, following the 2005 groundwork. Year and country substance are real, but 2004 is incorrect — best corrected year is 2006.",
-        "source": "https://reliefweb.int/report/eritrea/eritrea-how-bad-food-crisis-really",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        },
-        "corrected_year": 2006
-      },
-      {
-        "pass_n": 2,
-        "verdict": "FALSE",
-        "reason": "The event is real in substance but the year is wrong. In 2004 Eritrea was in the grip of a severe food crisis and was RECEIVING large-scale WFP/international food aid (443,000 MT of emergency food required for ~1.9 million people; a record 61,200 MT US wheat shipment docked at Massawa in Oct 2004; UN warned in Dec 2004 that Eritrea would need aid 'well into 2005') — the opposite of blocking aid. The actual policy of ending cooperation with WFP, claiming self-sufficiency, and refusing food aid unfolded in 2005-2006: Eritrea imposed restrictive NGO registration rules (June 2005), expelled USAID (July 2005), cut free-food recipients by 94% (Sept 2005, from 1.3M to 72,000 people), and in 2006 the government seized WFP stocks, monetized food aid into a cash/food-for-work program, and WFP general food distributions were suspended (per Human Rights Watch World Report 2007 and ODI/HPN reporting: 'World Food Programme (WFP) general food distributions have been suspended since 2006'). Multiple NGOs were also expelled in 2006, and the self-sufficiency claim was widely condemned as contradicted by real hunger. So country and substance hold, but the correct year is 2006 (with the run-up beginning in 2005), not 2004.",
-        "source": "https://odihpn.org/en/publication/when-there-are-no-statistics-emergency-nutrition-programming-in-eritrea/",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        },
-        "corrected_year": 2006
-      }
-    ],
-    "source": "https://odihpn.org/en/publication/when-there-are-no-statistics-emergency-nutrition-programming-in-eritrea/"
-  },
-  {
-    "year": 1982,
-    "title": "Ethiopia's Sixth Nakfa Offensive Repelled",
+    "year": 2024,
+    "title": "No Political Reform — 30 Years of PFDJ Rule",
     "verdict": "TRUE",
-    "reason": "Multiple independent sources confirm: in Feb-June 1982, Ethiopia (under Mengistu Haile Mariam) launched the \"Red Star Campaign\" — widely described as the sixth major Ethiopian offensive against the EPLF's Nakfa stronghold — deploying 80,000-120,000 troops with heavy Soviet-supplied armor/air support. Despite months of intense fighting and devastating casualties on both sides (Ethiopian losses reported around 10,000+ killed, 23,000+ wounded per Wikipedia; EPLF ~4,000 killed), Ethiopian forces failed to capture Nakfa and the offensive was abandoned/wound down by June-July 1982. Sources explicitly note the failure damaged Mengistu's government's credibility and was suppressed in state media, consistent with \"eroding morale.\" This matches the event description materially: country (Eritrea/Ethiopia conflict), year (1982), the sixth-offensive framing, the repelling of Ethiopian forces at Nakfa, heavy casualties, and morale erosion.",
-    "verify_count": 2,
+    "reason": "Eritrea's 30+ years without elections, free press, or legal opposition under continuous PFDJ/Isaias rule is confirmed. Core claim confirmed.",
+    "verify_count": 1,
     "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
+    "consensus_status": "single",
     "needs_tiebreak": false,
-    "source_independence": "weak",
+    "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Multiple independent sources confirm that in 1982 the Mengistu regime launched its sixth major counteroffensive against the EPLF, code-named the \"Red Star Campaign\" (Feb 15 - Jul 5, 1982), targeting the Nakfa front along with Barka and Alghena. Despite deploying 80,000-120,000 troops with Soviet/East German/South Yemeni/Libyan support, Ethiopian forces failed to capture Nakfa and were repelled after months of intense fighting, suffering massive casualties (roughly 10,000-54,000 killed/wounded/missing depending on source, with tens of thousands of casualties widely cited). Sources describe the failure as a severe blow to Mengistu's regime and to army morale/leadership (one divisional commander committed suicide rather than face execution for a retreat), and note the campaign strengthened rather than crushed the EPLF. This matches the event description (sixth offensive, weeks of fighting, massive casualties, repelled, eroded Ethiopian army morale) in country, year, and substance.",
-        "source": "https://en.wikipedia.org/wiki/Red_Star_Campaign",
+        "reason": "Eritrea's 30+ years without elections, free press, or legal opposition under continuous PFDJ/Isaias rule is confirmed. Core claim confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Isaias_Afwerki",
         "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Multiple independent sources confirm: in Feb-June 1982, Ethiopia (under Mengistu Haile Mariam) launched the \"Red Star Campaign\" — widely described as the sixth major Ethiopian offensive against the EPLF's Nakfa stronghold — deploying 80,000-120,000 troops with heavy Soviet-supplied armor/air support. Despite months of intense fighting and devastating casualties on both sides (Ethiopian losses reported around 10,000+ killed, 23,000+ wounded per Wikipedia; EPLF ~4,000 killed), Ethiopian forces failed to capture Nakfa and the offensive was abandoned/wound down by June-July 1982. Sources explicitly note the failure damaged Mengistu's government's credibility and was suppressed in state media, consistent with \"eroding morale.\" This matches the event description materially: country (Eritrea/Ethiopia conflict), year (1982), the sixth-offensive framing, the repelling of Ethiopian forces at Nakfa, heavy casualties, and morale erosion.",
-        "source": "https://en.wikipedia.org/wiki/Red_Star_Campaign",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Red_Star_Campaign"
+    "source": "https://en.wikipedia.org/wiki/Isaias_Afwerki"
   }
 ]

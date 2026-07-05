@@ -933,6 +933,42 @@
     "source": "https://en.wikipedia.org/wiki/1996_shootdown_of_Brothers_to_the_Rescue_aircraft"
   },
   {
+    "year": 1997,
+    "title": "Buena Vista Social Club Album Revives Global Interest in Cuban Music",
+    "verdict": "TRUE",
+    "reason": "All material details corroborate independently: the Buena Vista Social Club album, recorded at Havana's EGREM studios by Ry Cooder and Juan de Marcos González with veteran Cuban musicians, was released June 23, 1997; it won the 1998 Grammy for Best Tropical Latin Performance/Album (40th Grammy Awards, Feb 25 1998); it has sold over 8 million copies worldwide (Guinness World Records: best-selling world music album); and the 1999 Wim Wenders documentary of the same name brought the elderly musicians to international stages (e.g. Carnegie Hall 1998) and was Oscar-nominated. The event is widely credited with sparking a global revival of interest in traditional Cuban music (son, bolero, danzón). Country (Cuba) and year (1997, album's release year) match exactly.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material details confirmed via independent web search: the Buena Vista Social Club album was recorded at Havana's EGREM studios (March 1996), produced by Ry Cooder with Juan de Marcos González, released internationally June 23, 1997 (US release Sept 16, 1997 via Nonesuch). It won the Grammy at the 40th Grammy Awards (Feb 25, 1998) for Best Tropical Latin Performance/Best Traditional Tropical Latin Album category, and has sold over 8 million copies, making it one of the best-selling Latin/world-music albums ever. The 1999 Wim Wenders documentary of the same name, featuring the elderly musicians performing at Amsterdam's Royal Theater Carré and Carnegie Hall, is also confirmed and was later Oscar-nominated. All details in the description (country=Cuba/Havana, year=1997 release, producer, Grammy, sales figure, documentary) check out materially as described.",
+        "source": "https://en.wikipedia.org/wiki/Buena_Vista_Social_Club_(album)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material details corroborate independently: the Buena Vista Social Club album, recorded at Havana's EGREM studios by Ry Cooder and Juan de Marcos González with veteran Cuban musicians, was released June 23, 1997; it won the 1998 Grammy for Best Tropical Latin Performance/Album (40th Grammy Awards, Feb 25 1998); it has sold over 8 million copies worldwide (Guinness World Records: best-selling world music album); and the 1999 Wim Wenders documentary of the same name brought the elderly musicians to international stages (e.g. Carnegie Hall 1998) and was Oscar-nominated. The event is widely credited with sparking a global revival of interest in traditional Cuban music (son, bolero, danzón). Country (Cuba) and year (1997, album's release year) match exactly.",
+        "source": "https://en.wikipedia.org/wiki/Buena_Vista_Social_Club_(album)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Buena_Vista_Social_Club_(album)"
+  },
+  {
     "year": 1998,
     "title": "Pope John Paul II Makes Historic Visit to Cuba, Criticizes Embargo",
     "verdict": "TRUE",

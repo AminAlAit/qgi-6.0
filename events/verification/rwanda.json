@@ -1845,5 +1845,41 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1978_Rwandan_presidential_election"
+  },
+  {
+    "year": 1965,
+    "title": "Kayibanda wins single-party elections; Parmehutu consolidates power",
+    "verdict": "TRUE",
+    "reason": "Confirmed by multiple independent sources. General elections held in Rwanda on 10 March 1965 — the first direct presidential election since independence (1962) — with MDR-Parmehutu as the sole legal party. Grégoire Kayibanda ran unopposed for president (re-elected with ~98% in a field with no rival) and Parmehutu won all 47 National Assembly seats, consolidating one-party rule. Independent sources corroborate the discriminatory quota system under Kayibanda's government, which capped Tutsi access to education, civil service, and university positions at roughly 10%, matching the description's claim of informal quota systems limiting Tutsi access to education and public employment. Country, year, and substance all check out materially as described.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed: Rwanda held its first direct general elections on 10 March 1965, in which MDR-Parmehutu was the sole legal party and Grégoire Kayibanda ran unopposed for president, winning with ~98-100% of the vote (turnout ~88%); Parmehutu also won all 47 National Assembly seats. This matches \"won uncontested elections... consolidating one-party rule.\" Multiple independent sources also confirm that under Kayibanda's Parmehutu-led government, discriminatory ethnic quotas capping Tutsi access to secondary/university education and civil-service positions (around 9-10%, matching their demographic share) were instituted informally from the early-to-mid 1960s (formalized by decree only later, in 1973), matching the description's \"capping their access to education and public employment through informal quota systems.\" Country, year, and substance all check out.",
+        "source": "https://en.wikipedia.org/wiki/1965_Rwandan_general_election",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent sources. General elections held in Rwanda on 10 March 1965 — the first direct presidential election since independence (1962) — with MDR-Parmehutu as the sole legal party. Grégoire Kayibanda ran unopposed for president (re-elected with ~98% in a field with no rival) and Parmehutu won all 47 National Assembly seats, consolidating one-party rule. Independent sources corroborate the discriminatory quota system under Kayibanda's government, which capped Tutsi access to education, civil service, and university positions at roughly 10%, matching the description's claim of informal quota systems limiting Tutsi access to education and public employment. Country, year, and substance all check out materially as described.",
+        "source": "https://en.wikipedia.org/wiki/1965_Rwandan_general_election",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1965_Rwandan_general_election"
   }
 ]

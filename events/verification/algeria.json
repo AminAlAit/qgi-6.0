@@ -3366,5 +3366,79 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2022_Arab_League_summit"
+  },
+  {
+    "year": 2024,
+    "title": "Algeria launches Trans-Saharan gas pipeline project with Nigeria",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources consistently place this event in a different year than claimed. The TSGP timeline: (1) July 2022 — Algeria, Nigeria, Niger energy ministers signed an MOU to revive the project; (2) 2024 — only a bilateral Algeria-Niger meeting occurred (Sept 29, 2024, Arkab met Niger's new petroleum minister Oumarou), which merely 'reaffirmed commitment' and scheduled a future trilateral meeting — no new framework agreements were signed with Nigeria in 2024; (3) February 11, 2025 — Algeria, Nigeria and Niger actually signed the substantive new agreements described in this event (feasibility-study update contract, NDA, and compensation agreement) at the 4th TSGP steering committee ministerial meeting; (4) June 2026 — Algeria's 5th ministerial meeting/groundbreaking and actual construction start on the Algerian section. The event description ('signing new framework agreements... accelerating the project') matches the February 2025 signing, not anything that happened in 2024. Country (Algeria-Nigeria-Niger) and substance (TSGP acceleration amid Europe's post-Ukraine gas diversification) are correct, but the year is wrong — this is a year-shifted FALSE, corrected to 2025.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Trans-Saharan Gas Pipeline (TSGP) MOU was actually signed by Algeria, Nigeria, and Niger back in July 2022. In 2024, the only activity was a meeting: on September 29, 2024, Algeria's energy minister Mohamed Arkab met his Nigerian and Nigerien counterparts in Algiers and merely announced a forthcoming trilateral ministerial meeting to review progress — no new framework agreements were signed in 2024. The actual event matching the description ('signing new framework agreements' — specifically a feasibility-study update contract, a compensation agreement, and an NDA between the three national oil companies, signed during the 4th ministerial steering-committee meeting) took place on February 11-13, 2025, in Algiers, involving Algeria's Arkab, Nigeria's Ekperikpe Ekpo, and Niger's Sahabi Oumarou. So the year is wrong: the material 'signing framework agreements to accelerate TSGP' event happened in 2025, not 2024.",
+        "source": "https://www.pipeline-journal.net/news/algeria-nigeria-niger-sign-agreements-advance-trans-saharan-gas-pipeline-project",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2025
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources consistently place this event in a different year than claimed. The TSGP timeline: (1) July 2022 — Algeria, Nigeria, Niger energy ministers signed an MOU to revive the project; (2) 2024 — only a bilateral Algeria-Niger meeting occurred (Sept 29, 2024, Arkab met Niger's new petroleum minister Oumarou), which merely 'reaffirmed commitment' and scheduled a future trilateral meeting — no new framework agreements were signed with Nigeria in 2024; (3) February 11, 2025 — Algeria, Nigeria and Niger actually signed the substantive new agreements described in this event (feasibility-study update contract, NDA, and compensation agreement) at the 4th TSGP steering committee ministerial meeting; (4) June 2026 — Algeria's 5th ministerial meeting/groundbreaking and actual construction start on the Algerian section. The event description ('signing new framework agreements... accelerating the project') matches the February 2025 signing, not anything that happened in 2024. Country (Algeria-Nigeria-Niger) and substance (TSGP acceleration amid Europe's post-Ukraine gas diversification) are correct, but the year is wrong — this is a year-shifted FALSE, corrected to 2025.",
+        "source": "https://www.pipeline-journal.net/news/algeria-nigeria-niger-sign-agreements-advance-trans-saharan-gas-pipeline-project",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2025
+      }
+    ],
+    "source": "https://www.pipeline-journal.net/news/algeria-nigeria-niger-sign-agreements-advance-trans-saharan-gas-pipeline-project"
+  },
+  {
+    "year": 2018,
+    "title": "Algeria-Morocco tensions spike over Polisario border incident",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm a real, multi-episode Algeria-Morocco tension spike in 2018 tied to Polisario/Western Sahara. (1) A Polisario-Morocco standoff at Guerguerat (demilitarized zone on the Western Sahara border) flared in January 2018 and resurged in April 2018 with reports Morocco threatened military action against Polisario forces there — matching the description's 'incidents near the Moroccan-controlled Western Sahara border.' (2) In May 2018 Morocco's FM Nasser Bourita, in a Jeune Afrique interview, accused Algeria of giving Hezbollah/Iran-backed Polisario arms transfers 'an opening, backing and operational support' (i.e., facilitating the arming of Polisario), which is a reasonable paraphrase of 'Morocco accuses Algeria of arming Polisario fighters.' (3) Algeria responded exactly as described: it summoned Morocco's ambassador on 3 May 2018 to reject the accusations as 'unfounded,' consistent with 'Algeria denies the charge' and its long-standing Sahrawi self-determination policy. (4) The entrenched Algeria-Morocco/Maghreb Union framing is well-supported background context. Country, year, and the substantive chain of events (border standoff, arming accusation, denial, diplomatic protest) all check out; the only softness is that the 'arming' accusation was framed as Algeria enabling an Iran/Hezbollah arms pipeline rather than Algeria directly supplying weapons — a minor nuance, not a different actor or year.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm this materially as described. In January 2018 a Guerguerat border stand-off between Polisario and Moroccan forces strained relations, and tensions resurged in April 2018 when reports emerged that Morocco threatened military action against Polisario forces near the Western Sahara border if they did not withdraw. Then in May 2018, Morocco's Foreign Minister Nasser Bourita publicly accused Algeria of providing 'opening, backing and operational support' for Iran/Hezbollah's arming of the Polisario Front (SAM missiles), effectively accusing Algeria of enabling/arming Polisario; Algeria summoned Morocco's ambassador to protest and Algerian officials called the accusations 'unfounded and unjustified' (a denial), while Algeria's longstanding, consistently-documented position is support for Sahrawi self-determination and recognition of Polisario as the Sahrawi people's legitimate representative (reaffirmed in the concurrent Geneva-format Western Sahara talks in 2018-2019). Independent analysis (ECFR) confirms the broader point that this Algeria-Morocco rivalry over Western Sahara/Polisario has persistently paralyzed the Arab Maghreb Union, matching the description's closing claim. All material elements (country, year, border incident, mutual accusation/denial, self-determination stance, Maghreb Union linkage) check out.",
+        "source": "https://www.aljazeera.com/news/2018/5/13/morocco-accuses-algeria-of-supporting-iran-in-western-sahara-feud",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm a real, multi-episode Algeria-Morocco tension spike in 2018 tied to Polisario/Western Sahara. (1) A Polisario-Morocco standoff at Guerguerat (demilitarized zone on the Western Sahara border) flared in January 2018 and resurged in April 2018 with reports Morocco threatened military action against Polisario forces there — matching the description's 'incidents near the Moroccan-controlled Western Sahara border.' (2) In May 2018 Morocco's FM Nasser Bourita, in a Jeune Afrique interview, accused Algeria of giving Hezbollah/Iran-backed Polisario arms transfers 'an opening, backing and operational support' (i.e., facilitating the arming of Polisario), which is a reasonable paraphrase of 'Morocco accuses Algeria of arming Polisario fighters.' (3) Algeria responded exactly as described: it summoned Morocco's ambassador on 3 May 2018 to reject the accusations as 'unfounded,' consistent with 'Algeria denies the charge' and its long-standing Sahrawi self-determination policy. (4) The entrenched Algeria-Morocco/Maghreb Union framing is well-supported background context. Country, year, and the substantive chain of events (border standoff, arming accusation, denial, diplomatic protest) all check out; the only softness is that the 'arming' accusation was framed as Algeria enabling an Iran/Hezbollah arms pipeline rather than Algeria directly supplying weapons — a minor nuance, not a different actor or year.",
+        "source": "https://www.aljazeera.com/news/2018/5/13/morocco-accuses-algeria-of-supporting-iran-in-western-sahara-feud",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2018/5/13/morocco-accuses-algeria-of-supporting-iran-in-western-sahara-feud"
   }
 ]

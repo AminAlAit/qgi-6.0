@@ -1,5 +1,295 @@
 [
   {
+    "year": 1955,
+    "title": "Integration with UK Referendum Narrowly Approved",
+    "verdict": "FALSE",
+    "reason": "The event is real and materially accurate (77% approval on 59% turnout, boycotted by the Nationalist Party, undermining the mandate and leading toward independence instead of integration eight years later), and it occurred in Malta as described — but the referendum was held on 11-12 February 1956, not 1955. Since the year is wrong, per the hard rules this must be reported as FALSE with corrected_year, even though country and substance both check out.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event is real and matches the description precisely (77% support, 59% turnout, boycott undermining the mandate, leading to independence path instead) but occurred on 11-12 February 1956, not 1955. Multiple independent sources (Wikipedia, lovinmalta.com, spunt.mt) confirm 1956 as the year.",
+        "source": "https://en.wikipedia.org/wiki/1956_Maltese_United_Kingdom_integration_referendum",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1956
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially accurate (77% approval on 59% turnout, boycotted by the Nationalist Party, undermining the mandate and leading toward independence instead of integration eight years later), and it occurred in Malta as described — but the referendum was held on 11-12 February 1956, not 1955. Since the year is wrong, per the hard rules this must be reported as FALSE with corrected_year, even though country and substance both check out.",
+        "source": "https://en.wikipedia.org/wiki/1956_Maltese_United_Kingdom_integration_referendum",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1956
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1956_Maltese_United_Kingdom_integration_referendum"
+  },
+  {
+    "year": 1964,
+    "title": "Malta Achieves Independence from the United Kingdom",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm Malta became independent from the UK on September 21, 1964, under Prime Minister George (Giorgio) Borg Olivier, who led the independence negotiations and is regarded as the \"Father of Independence.\" The Queen was retained as head of state under a Westminster-style constitutional monarchy (the Duke of Edinburgh handed over the independence constitution documents at the Floriana ceremony, and the new State of Malta's flag was raised at midnight). All material details in the description — date, country, PM, and constitutional structure — match multiple independent sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Britannica, Wikipedia, and Maltese news outlets) confirm Malta became independent from the United Kingdom on September 21, 1964, ending 164 years of British rule. George Borg Olivier served as Prime Minister and led the independence negotiations, earning him the title \"Father of Independence.\" Queen Elizabeth II was retained as Queen of Malta / head of state, with Prince Philip presiding at the ceremony transferring constitutional instruments to Borg Olivier. The independence constitution established Malta as a Westminster-style parliamentary constitutional monarchy, following passage of the UK's Malta Independence Act 1964 and a Maltese constitutional referendum. All material details (country, year, actor, event substance) match the description.",
+        "source": "https://www.britannica.com/biography/George-Borg-Olivier",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm Malta became independent from the UK on September 21, 1964, under Prime Minister George (Giorgio) Borg Olivier, who led the independence negotiations and is regarded as the \"Father of Independence.\" The Queen was retained as head of state under a Westminster-style constitutional monarchy (the Duke of Edinburgh handed over the independence constitution documents at the Floriana ceremony, and the new State of Malta's flag was raised at midnight). All material details in the description — date, country, PM, and constitutional structure — match multiple independent sources.",
+        "source": "https://en.wikipedia.org/wiki/George_Borg_Olivier",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/George_Borg_Olivier"
+  },
+  {
+    "year": 1979,
+    "title": "Last British Forces Leave Malta — Freedom Day",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm that on 31 March 1979 the last British military forces (including the Royal Navy) withdrew from Malta, ending the defence agreement that had allowed British forces to remain after Malta's 1964 independence. This date, 31 March, is commemorated annually in Malta as Freedom Day (Jum il-Helsien), marking full sovereignty and the end of nearly 180 years of British military presence dating to the early 19th century. The event, country, and year all match the claim materially.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Wikipedia, MaltaToday, The Dispatch, Malta Daily) confirm that the last British military forces (troops and Royal Navy) withdrew from Malta on 31 March 1979, an event commemorated annually as Freedom Day. British rule/military presence in Malta dates from 1800, so ~179 years (\"nearly 180 years\") matches the description precisely. This marked full de facto sovereignty for Malta, consistent with the event description in all material respects (country, year, actor, event, and significance).",
+        "source": "https://en.wikipedia.org/wiki/Freedom_Day_(Malta)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm that on 31 March 1979 the last British military forces (including the Royal Navy) withdrew from Malta, ending the defence agreement that had allowed British forces to remain after Malta's 1964 independence. This date, 31 March, is commemorated annually in Malta as Freedom Day (Jum il-Helsien), marking full sovereignty and the end of nearly 180 years of British military presence dating to the early 19th century. The event, country, and year all match the claim materially.",
+        "source": "https://en.wikipedia.org/wiki/Freedom_Day_(Malta)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Freedom_Day_(Malta)"
+  },
+  {
+    "year": 1981,
+    "title": "Contested Election — Labour Wins Seats Despite Losing Popular Vote",
+    "verdict": "PARTIAL",
+    "reason": "Country and year confirmed, and the core outcome is real: in Malta's 12 December 1981 general election, the Nationalist Party won a majority of first-preference votes (50.92%, 114,132 votes) but the Labour Party won a majority of seats (34 of 65 vs. 31), Labour's Mintoff government stayed in power, the Nationalists boycotted Parliament, and a genuine constitutional crisis followed that deeply polarized Maltese politics and wasn't resolved until a 1987 constitutional amendment (bonus-seat mechanism) years later. However, the description's stated cause — 'gerrymandered district boundaries' — is materially inaccurate. Multiple independent sources (Wikipedia's account of the election, academic/electoral-system analyses, and a peer-reviewed study specifically testing for gerrymandering in Maltese STV elections) attribute the vote-seat disparity to the inherent disproportionality of the single transferable vote system operating in small five-seat constituencies (low district magnitude), not to deliberate boundary manipulation/redistricting favoring Labour. No source found evidence that district boundaries were deliberately redrawn ('gerrymandered') to produce this outcome. Because the causal mechanism is a material misattribution while country/year/core event hold, this is a PARTIAL rather than a full TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Country and year confirmed, and the core outcome is real: in Malta's 12 December 1981 general election, the Nationalist Party won a majority of first-preference votes (50.92%, 114,132 votes) but the Labour Party won a majority of seats (34 of 65 vs. 31), Labour's Mintoff government stayed in power, the Nationalists boycotted Parliament, and a genuine constitutional crisis followed that deeply polarized Maltese politics and wasn't resolved until a 1987 constitutional amendment (bonus-seat mechanism) years later. However, the description's stated cause — 'gerrymandered district boundaries' — is materially inaccurate. Multiple independent sources (Wikipedia's account of the election, academic/electoral-system analyses, and a peer-reviewed study specifically testing for gerrymandering in Maltese STV elections) attribute the vote-seat disparity to the inherent disproportionality of the single transferable vote system operating in small five-seat constituencies (low district magnitude), not to deliberate boundary manipulation/redistricting favoring Labour. No source found evidence that district boundaries were deliberately redrawn ('gerrymandered') to produce this outcome. Because the causal mechanism is a material misattribution while country/year/core event hold, this is a PARTIAL rather than a full TRUE.",
+        "source": "https://en.wikipedia.org/wiki/1981_Maltese_general_election",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed: in Malta's 12 December 1981 general election, the Nationalist Party won 50.9% of first-preference votes (114,132) vs Labour's 49.1% (109,990), yet Labour won 34 of 65 seats and formed government under Dom Mintoff. Multiple sources (Wikipedia, Lovin Malta, academic literature) attribute the disproportionate outcome to the single transferable vote system operating over Malta's 13 five-seat electoral divisions, with several sources explicitly describing this as gerrymandering/strategic district design favoring Labour (a Constitutional Political Economy/Springer paper is literally titled \"a case study of gerrymandering?\", though some scholars argue low district magnitude rather than intentional gerrymandering was the primary driver -- a debated nuance, but \"gerrymandered district boundaries\" is a commonly used characterization in reliable sources describing this event). The result triggered a real constitutional crisis: the Nationalist Party boycotted parliament, political violence and deep polarization continued through the 1980s, and the deadlock was only resolved via constitutional amendments effective January 1987 (a majority-bonus/majority-rule clause) -- consistent with \"took years to resolve\" and \"deeply polarized Maltese politics.\"",
+        "source": "https://en.wikipedia.org/wiki/1981_Maltese_general_election",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1981_Maltese_general_election"
+  },
+  {
+    "year": 1998,
+    "title": "Nationalists Return — EU Application Reactivated",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm every material element: Alfred Sant's Labour government held only a one-seat majority after 1996; in summer 1998 a rebellion (tied to Dom Mintoff over a coastal land concession) caused the government to lose a parliamentary vote, prompting Sant to call a snap election on 5 September 1998. The Nationalist Party won decisively (35/65 seats, ~13,000 vote margin), and Eddie Fenech Adami returned as Prime Minister, immediately reactivating Malta's EU membership application (which Labour had frozen in 1996) and resuming accession negotiations, later concluded in December 2002.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm: Labour's Alfred Sant government held only a one-seat majority after 1996; a 1998 rebellion by backbencher Dom Mintoff over budget/waterfront issues caused Labour to lose its majority, prompting Sant to call a snap election held 5 September 1998. The Nationalist Party won decisively (five-seat majority / ~13,000 vote margin), Eddie Fenech Adami returned as PM (6 Sept 1998), and he reactivated Malta's EU membership application that the Labour government had frozen in 1996, resuming accession negotiations that eventually led to Malta joining the EU in 2004. All material facts (country, year, actors, sequence of events) match the description.",
+        "source": "https://en.wikipedia.org/wiki/Edward_Fenech_Adami",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm every material element: Alfred Sant's Labour government held only a one-seat majority after 1996; in summer 1998 a rebellion (tied to Dom Mintoff over a coastal land concession) caused the government to lose a parliamentary vote, prompting Sant to call a snap election on 5 September 1998. The Nationalist Party won decisively (35/65 seats, ~13,000 vote margin), and Eddie Fenech Adami returned as Prime Minister, immediately reactivating Malta's EU membership application (which Labour had frozen in 1996) and resuming accession negotiations, later concluded in December 2002.",
+        "source": "https://en.wikipedia.org/wiki/1998_Maltese_general_election",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1998_Maltese_general_election"
+  },
+  {
+    "year": 2003,
+    "title": "EU Membership Referendum Approved",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm Malta held an EU accession referendum on 8 March 2003, with the result 53.65% Yes to 46.35% No (turnout 90.85%). The Labour Party, led by Alfred Sant, led the opposition campaign, calling for rejection, abstention, or spoiled ballots — matching the description of 'significant Labour-led opposition' and 'deep divisions over sovereignty.' All material details (country, year, vote margin, opposition actor) are confirmed.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Malta held its EU accession referendum on 8 March 2003, with the Yes vote winning 53.65% to 46.35% No, on ~91% turnout — the highest turnout but narrowest margin of the 2003 EU-accession referendum wave. The opposition Labour Party campaigned against membership (consistent with 'Labour-led opposition'), and the narrow margin reflected genuine sovereignty/economic-direction divisions per academic literature (West European Politics). Country, year, and all material details (percentages, opposition actor, narrow/divided result) are corroborated by multiple independent sources.",
+        "source": "https://en.wikipedia.org/wiki/2003_Maltese_European_Union_membership_referendum",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm Malta held an EU accession referendum on 8 March 2003, with the result 53.65% Yes to 46.35% No (turnout 90.85%). The Labour Party, led by Alfred Sant, led the opposition campaign, calling for rejection, abstention, or spoiled ballots — matching the description of 'significant Labour-led opposition' and 'deep divisions over sovereignty.' All material details (country, year, vote margin, opposition actor) are confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2003_Maltese_European_Union_membership_referendum",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2003_Maltese_European_Union_membership_referendum"
+  },
+  {
+    "year": 2013,
+    "title": "Joseph Muscat Leads Labour to Landslide Victory",
+    "verdict": "TRUE",
+    "reason": "Confirmed by multiple independent sources. Malta held a general election on 9 March 2013; the Labour Party under Joseph Muscat defeated the incumbent Nationalist Party (in power since 1998, i.e. 15 years) by a record margin of roughly 36,000-37,163 votes (11.5 percentage points, 55% vs 43%), the largest majority since Malta's 1955 elections, giving Labour 39 seats to the Nationalists' 30 and making Muscat PM. The description's campaign themes also check out: Labour's 2013 manifesto centered on economic reforms (energy-tariff cuts, economic modernization) and explicitly promised to introduce civil unions for same-sex couples (a civil-liberties commitment, later enacted 2014), plus a manifesto pledge to \"improve existing schemes... (HNWI/Permanent Residence Scheme)... while introducing new ones to make it more attractive for individuals to invest,\" which evolved into the Individual Investor Programme (citizenship-by-investment scheme) launched in Muscat's first year in office. Core facts (country, year, actor, party, magnitude, ousted incumbent) all hold; the citizenship-by-investment detail is loosely worded (it was a vague manifesto reference to investment/residency schemes rather than an explicit \"citizenship\" pledge, and the specific IIP scheme was formally introduced post-election in late 2013/2014) but is not a fabrication and does not change the substance of the event.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources (Wikipedia, EUobserver, spunt.mt, Maltese Community Council of Victoria) confirm Joseph Muscat's Labour Party won Malta's March 2013 general election by a record landslide: 55% of the vote, a margin of 37,163 votes (the largest in Malta's post-independence history), and 39 seats to the Nationalists' 30. This ended 15 years of Nationalist government under Lawrence Gonzi, and Muscat was sworn in as PM on 11 March 2013. Muscat's 2013 platform was widely reported as centered on economic modernization and civil liberties (e.g. civil unions legislation followed shortly after), and his government subsequently launched Malta's Individual Investor Programme (citizenship-by-investment) later in 2013/2014, consistent with the description's framing of the campaign.",
+        "source": "https://en.wikipedia.org/wiki/2013_Maltese_general_election",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent sources. Malta held a general election on 9 March 2013; the Labour Party under Joseph Muscat defeated the incumbent Nationalist Party (in power since 1998, i.e. 15 years) by a record margin of roughly 36,000-37,163 votes (11.5 percentage points, 55% vs 43%), the largest majority since Malta's 1955 elections, giving Labour 39 seats to the Nationalists' 30 and making Muscat PM. The description's campaign themes also check out: Labour's 2013 manifesto centered on economic reforms (energy-tariff cuts, economic modernization) and explicitly promised to introduce civil unions for same-sex couples (a civil-liberties commitment, later enacted 2014), plus a manifesto pledge to \"improve existing schemes... (HNWI/Permanent Residence Scheme)... while introducing new ones to make it more attractive for individuals to invest,\" which evolved into the Individual Investor Programme (citizenship-by-investment scheme) launched in Muscat's first year in office. Core facts (country, year, actor, party, magnitude, ousted incumbent) all hold; the citizenship-by-investment detail is loosely worded (it was a vague manifesto reference to investment/residency schemes rather than an explicit \"citizenship\" pledge, and the specific IIP scheme was formally introduced post-election in late 2013/2014) but is not a fabrication and does not change the substance of the event.",
+        "source": "https://en.wikipedia.org/wiki/2013_Maltese_general_election",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2013_Maltese_general_election"
+  },
+  {
+    "year": 2014,
+    "title": "Civil Unions and LGBTQ Adoption Rights Enacted",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm Malta's parliament passed the Civil Unions Act on 14 April 2014 (37-0, with 30 abstentions), signed into law 16 April 2014, granting same-sex (and opposite-sex) couples in civil unions the same rights as marriage including joint adoption. This was enacted under the Labour government of PM Joseph Muscat, elected in 2013 on a platform that included this reform, as part of a broader wave of LGBTQ reforms (gender identity law, later same-sex marriage in 2017, conversion therapy ban). Malta subsequently topped ILGA-Europe's Rainbow Map rankings for several consecutive years starting 2016. All material details (country, year, actor/government, scope of civil unions + adoption) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Malta's parliament passed the Civil Unions Act on 14 April 2014 (37-0, with opposition abstaining), signed into law by President Coleiro Preca on 16 April 2014 and published in the Government Gazette on 17 April 2014, under PM Joseph Muscat's Labour government. The Act gave civil union couples (including same-sex couples) the same rights as marriage, including joint adoption rights, making Malta the 15th country to legalize same-sex couple adoption. Malta subsequently topped the ILGA-Europe Rainbow Index (Europe's top LGBTQ rights ranking) in following years, consistent with the description of a \"rapid series of LGBTQ reforms.\" Country, year, and substance all confirmed.",
+        "source": "https://www.jurist.org/news/2014/04/malta-parliament-passes-same-sex-civil-union-bill/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm Malta's parliament passed the Civil Unions Act on 14 April 2014 (37-0, with 30 abstentions), signed into law 16 April 2014, granting same-sex (and opposite-sex) couples in civil unions the same rights as marriage including joint adoption. This was enacted under the Labour government of PM Joseph Muscat, elected in 2013 on a platform that included this reform, as part of a broader wave of LGBTQ reforms (gender identity law, later same-sex marriage in 2017, conversion therapy ban). Malta subsequently topped ILGA-Europe's Rainbow Map rankings for several consecutive years starting 2016. All material details (country, year, actor/government, scope of civil unions + adoption) check out.",
+        "source": "https://www.jurist.org/news/2014/04/malta-parliament-passes-same-sex-civil-union-bill/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.jurist.org/news/2014/04/malta-parliament-passes-same-sex-civil-union-bill/"
+  },
+  {
     "year": 2015,
     "title": "Malta Holds National Referendum on Spring Bird Hunting",
     "verdict": "TRUE",
@@ -34,5 +324,185 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Maltese_spring_hunting_referendum,_2015"
+  },
+  {
+    "year": 2016,
+    "title": "Panama Papers Reveal Maltese Officials' Offshore Holdings",
+    "verdict": "TRUE",
+    "reason": "Independent sources (ICIJ, Wikipedia, Lovin Malta, The Shift News) confirm that the April 2016 Panama Papers leak revealed Maltese Energy Minister Konrad Mizzi and PM Joseph Muscat's chief of staff Keith Schembri each held secret Panama-registered offshore companies (Hearnville Inc. for Mizzi, Tillgate Inc. for Schembri) set up via Mossack Fonseca, structured through New Zealand trusts arranged by a Maltese financial services firm (Nexia BT). The revelations triggered major opposition protests in Malta and a prolonged political/governance crisis that persisted for years, eventually contributing to Muscat's, Mizzi's, and Schembri's resignations/removals from office. Country, year, and substance all match the described event materially.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Panama Papers leak was published starting April 3, 2016 by ICIJ, based on Mossack Fonseca documents. It revealed that Maltese Energy Minister Konrad Mizzi and Prime Minister Joseph Muscat's chief of staff Keith Schembri each held secret offshore companies (via the Panamanian firm Mossack Fonseca, set up through Malta's Nexia BT) — Mizzi's company Hearnville Inc. and Schembri's company Tillgate Inc. This triggered major opposition protests in Malta and a multi-year governance crisis that eventually contributed to the resignations of Schembri, Mizzi, and PM Joseph Muscat (following further revelations, including the 2017 murder of journalist Daphne Caruana Galizia who was investigating the story). All material details (country=Malta, year=2016, actors=Mizzi and Schembri, offshore companies in Panama, resulting political crisis/protests) are corroborated by independent sources (Wikipedia, ICIJ, Lovin Malta, The Shift News).",
+        "source": "https://en.wikipedia.org/wiki/Konrad_Mizzi",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources (ICIJ, Wikipedia, Lovin Malta, The Shift News) confirm that the April 2016 Panama Papers leak revealed Maltese Energy Minister Konrad Mizzi and PM Joseph Muscat's chief of staff Keith Schembri each held secret Panama-registered offshore companies (Hearnville Inc. for Mizzi, Tillgate Inc. for Schembri) set up via Mossack Fonseca, structured through New Zealand trusts arranged by a Maltese financial services firm (Nexia BT). The revelations triggered major opposition protests in Malta and a prolonged political/governance crisis that persisted for years, eventually contributing to Muscat's, Mizzi's, and Schembri's resignations/removals from office. Country, year, and substance all match the described event materially.",
+        "source": "https://www.icij.org/investigations/panama-papers/maltese-mp-voted-out-by-party-amid-turmoil-over-panama-papers-ties/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.icij.org/investigations/panama-papers/maltese-mp-voted-out-by-party-amid-turmoil-over-panama-papers-ties/"
+  },
+  {
+    "year": 2017,
+    "title": "Daphne Caruana Galizia Assassinated by Car Bomb",
+    "verdict": "TRUE",
+    "reason": "Multiple independent reputable sources confirm all material facts: Maltese investigative journalist Daphne Caruana Galizia was killed by a car bomb on October 16, 2017, near her home in Bidnija, Malta, shortly after leaving her house. She had been investigating and breaking news on the Panama Papers scandal implicating senior Maltese government figures (including PM Joseph Muscat's inner circle), and her reporting forced early elections in June 2017. The assassination triggered widespread international condemnation and demands for justice (noted by the Council of Europe, ICIJ, CPJ, and subsequent public inquiry finding state responsibility for an atmosphere of impunity). Country, year, and substance all match the description.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm Maltese investigative journalist Daphne Caruana Galizia was killed by a remotely-detonated car bomb on 16 October 2017 near her home in Bidnija, Malta. She had broken the Panama Papers story implicating senior Maltese government officials, and her murder triggered widespread international condemnation and calls for justice, matching all material details (country, year, actor, cause, location, aftermath) in the event description.",
+        "source": "https://en.wikipedia.org/wiki/Daphne_Caruana_Galizia",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent reputable sources confirm all material facts: Maltese investigative journalist Daphne Caruana Galizia was killed by a car bomb on October 16, 2017, near her home in Bidnija, Malta, shortly after leaving her house. She had been investigating and breaking news on the Panama Papers scandal implicating senior Maltese government figures (including PM Joseph Muscat's inner circle), and her reporting forced early elections in June 2017. The assassination triggered widespread international condemnation and demands for justice (noted by the Council of Europe, ICIJ, CPJ, and subsequent public inquiry finding state responsibility for an atmosphere of impunity). Country, year, and substance all match the description.",
+        "source": "https://en.wikipedia.org/wiki/Daphne_Caruana_Galizia",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Daphne_Caruana_Galizia"
+  },
+  {
+    "year": 2017,
+    "title": "Malta Holds EU Council Presidency",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm Malta held the rotating Presidency of the Council of the European Union for the first half of 2017 (January-June 2017), the first time Malta held this role. Priority areas included the single market, maritime/migration issues, and the presidency also navigated the start of Brexit negotiations and maritime security matters, matching the description materially (migration, single market, maritime security).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm Malta held the rotating Presidency of the Council of the European Union from January to June 2017, its first time holding the presidency as the smallest EU member state. Priority areas explicitly included the single market, maritime sector/security, and migration/asylum policy, matching the description's focus on migration, single market, and maritime security.",
+        "source": "https://en.wikipedia.org/wiki/2017_Maltese_Presidency_of_the_Council_of_the_European_Union",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm Malta held the rotating Presidency of the Council of the European Union for the first half of 2017 (January-June 2017), the first time Malta held this role. Priority areas included the single market, maritime/migration issues, and the presidency also navigated the start of Brexit negotiations and maritime security matters, matching the description materially (migration, single market, maritime security).",
+        "source": "https://en.wikipedia.org/wiki/2017_Maltese_Presidency_of_the_Council_of_the_European_Union",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2017_Maltese_Presidency_of_the_Council_of_the_European_Union"
+  },
+  {
+    "year": 2018,
+    "title": "Valletta Serves as European Capital of Culture",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm every material detail: Valletta was officially inaugurated as European Capital of Culture on 20 January 2018 at a ceremony at the Grand Hospital of the Knights of Malta, with an estimated ~100,000 attendees (about a quarter of Malta's population) per the organizers, reported by Europa Nostra and The Malta Independent. The program comprised over 140 projects and 400 events across three themes (Island Stories, Future Baroque, Voyages), matching the description exactly. Valletta shared the 2018 designation with Leeuwarden, Netherlands (confirmed by europa.eu press release IP-17-5309 and igcat.org). Sustain Europe and Europa Nostra confirm Valletta is the first World Heritage City in Europe to hold the ECoC title, and confirm restoration of roughly 10 kilometres of fortifications and landmark palaces including the Auberge de Castille. All details in the event description are corroborated with no material discrepancies.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material details. Valletta was officially inaugurated as European Capital of Culture on 20 January 2018 at an opening ceremony at the Grand Hospital of the Knights of Malta, attended by the Malta President, PM, and EU Culture Commissioner (Malta Independent, TVMnews, Europa Nostra). Attendance figures of ~100,000 (about a quarter of Malta's population) match official/press reporting exactly. Over 140 projects and 400+ events were staged across three themes (Island Stories, Future Baroque, Voyages) per the official Valletta 2018 program description echoed by Europa Nostra and other coverage. Valletta is confirmed as the first World Heritage City in Europe to hold the ECoC title (multiple sources, including Wikipedia/Valletta page). The designation was shared with Leeuwarden, Netherlands, confirmed by the European Commission's own press release (europa.eu IP-17-5309) and IGCAT. Restoration scope of ~10km of fortifications plus landmark buildings including the Auberge de Castille is corroborated near-verbatim by the Wikipedia \"Fortifications of Valletta\" article and independently by the Maltese government's restoration project pages (restoration.gov.mt) documenting the Auberge de Castille restoration. No material detail is off; year and country hold.",
+        "source": "https://www.independent.com.mt/articles/2018-01-20/local-news/Live-Valletta-officially-becomes-a-European-capital-of-culture-6736183848",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm every material detail: Valletta was officially inaugurated as European Capital of Culture on 20 January 2018 at a ceremony at the Grand Hospital of the Knights of Malta, with an estimated ~100,000 attendees (about a quarter of Malta's population) per the organizers, reported by Europa Nostra and The Malta Independent. The program comprised over 140 projects and 400 events across three themes (Island Stories, Future Baroque, Voyages), matching the description exactly. Valletta shared the 2018 designation with Leeuwarden, Netherlands (confirmed by europa.eu press release IP-17-5309 and igcat.org). Sustain Europe and Europa Nostra confirm Valletta is the first World Heritage City in Europe to hold the ECoC title, and confirm restoration of roughly 10 kilometres of fortifications and landmark palaces including the Auberge de Castille. All details in the event description are corroborated with no material discrepancies.",
+        "source": "https://www.europanostra.org/valletta-european-capital-of-culture-2018/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.europanostra.org/valletta-european-capital-of-culture-2018/"
+  },
+  {
+    "year": 2020,
+    "title": "Robert Abela Becomes Prime Minister",
+    "verdict": "TRUE",
+    "reason": "Robert Abela won the Malta Labour Party leadership election on 12 January 2020 (57.9% of the vote vs Chris Fearne, per MaltaToday/France 24), and was sworn in as Malta's 14th Prime Minister on 13 January 2020, succeeding Joseph Muscat, who had resigned amid the fallout from the Daphne Caruana Galizia murder investigation (institutional credibility crisis). Abela then went on to manage the COVID-19 pandemic starting March 2020, matching the description. Country, year, and all material details corroborated by multiple independent sources (Wikipedia, France 24, MaltaToday, Britannica).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed independently: Robert Abela won the Labour Party leadership election on 12 January 2020 (9,342 votes vs Chris Fearne's 6,798) and was sworn in as Malta's Prime Minister on 13 January 2020, succeeding Joseph Muscat, who had resigned amid the political crisis triggered by the Daphne Caruana Galizia murder investigation. This matches the description's \"restoring institutional credibility\" framing. COVID-19 pandemic management, while not tied to the January inauguration itself, became a defining feature of Abela's subsequent term as described. Country (Malta), year (2020), and substance (Labour leadership + PM succession from Muscat) all check out.",
+        "source": "https://en.wikipedia.org/wiki/Robert_Abela",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Robert Abela won the Malta Labour Party leadership election on 12 January 2020 (57.9% of the vote vs Chris Fearne, per MaltaToday/France 24), and was sworn in as Malta's 14th Prime Minister on 13 January 2020, succeeding Joseph Muscat, who had resigned amid the fallout from the Daphne Caruana Galizia murder investigation (institutional credibility crisis). Abela then went on to manage the COVID-19 pandemic starting March 2020, matching the description. Country, year, and all material details corroborated by multiple independent sources (Wikipedia, France 24, MaltaToday, Britannica).",
+        "source": "https://www.france24.com/en/20200112-malta-s-labour-party-elects-abela-succeed-pm-muscat-wake-journalist-murder-probe",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.france24.com/en/20200112-malta-s-labour-party-elects-abela-succeed-pm-muscat-wake-journalist-murder-probe"
   }
 ]

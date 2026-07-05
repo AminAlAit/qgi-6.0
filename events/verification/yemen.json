@@ -3726,5 +3726,76 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Aden_Colony"
+  },
+  {
+    "year": 1952,
+    "title": "North Yemen Joins Arab League Activities",
+    "verdict": "UNCERTAIN",
+    "reason": "Confirmed facts: Yemen was actually a FOUNDING member of the Arab League in 1945 (not a 1952 \"joiner\" — the title is misleading on this point, though the body text says \"participated more actively\" rather than literally joining). The 1952 Egyptian revolution (Free Officers coup, 23 July 1952) is real, and Imam Ahmad bin Yahya did rule Yemen at the time and was broadly known as a conservative monarch wary of republicanism while rhetorically supporting pan-Arab/anti-Zionist causes (e.g., a 1952 letter to Saudi Arabia's king urging firmness against Israel, per Khamenei.ir — an Iranian state-media source I am not relying on alone). However, I could find no independent, credible source documenting a specific increase in Yemen's Arab League participation in 1952 tied to the Egyptian revolution. Wikipedia's dedicated pages on Ahmad bin Yahya and the Kingdom of Yemen list no 1952 Arab League activity at all — their next foreign-policy milestone after 1945 (Arab League founding) is 1955 (talks on a military pact with Egypt/Syria/Saudi Arabia). A FRUS 1952-54 document shows Yemen only as one of six co-signatories on a routine joint Arab League letter to the UN in September 1952 about Palestine — ordinary collective diplomacy, not evidence of a distinct uptick in Yemen's engagement. Additionally, multiple sources describe Egypt-Saudi relations as cordial (not rivalrous) in the years immediately following the 1952 revolution, with the real Egypt-Saudi rivalry over Yemen only sharpening around the 1962 civil war — which cuts against the description's framing of an \"emerging rivalry\" over Yemen already in 1952. Overall this reads as a generic, plausible-sounding synthesized narrative rather than a specific, independently verifiable event, so I cannot confirm or refute it from acceptable sources.",
+    "verify_count": 2,
+    "consensus_verdict": "UNCERTAIN",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "UNCERTAIN",
+        "reason": "Background facts check out generically: North Yemen (Mutawakkilite Kingdom) was a founding Arab League member since 1945, the Egyptian revolution (Free Officers coup) did occur in July 1952, and Imam Ahmad did later face growing pan-Arab nationalist pressure from Nasser's Egypt and had ambivalence toward republicanism. However, I found no independent source confirming the specific claim that Yemen 'participated more actively in Arab League discussions in 1952' following the revolution. Wikipedia's Ahmad bin Yahya and Kingdom of Yemen articles cover Yemen's foreign-policy timeline in detail but jump from the 1945 Arab League founding straight to 1955-56 (talks on a military pact with Egypt/Syria/Saudi Arabia, then the 1956 mutual defense treaty) with no mention of any 1952 Arab League activity or Yemeni reaction to the coup that year. Most secondary sources place the Egypt-Yemen rapprochement and Nasser's influence on Yemen from 1954 onward (Nasser became president in 1954), not immediately in 1952 when Naguib was still nominally in charge and the revolution was only months old. No source (favorable or contrary) specifically addresses Yemen's Arab League conduct in 1952, so I can neither confirm nor refute this specific, narratively-framed claim. Note also the category tag 'bilateral_treaty' does not match the description, which mentions no treaty at all — a data-quality flag independent of the verdict.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "UNCERTAIN",
+        "reason": "Confirmed facts: Yemen was actually a FOUNDING member of the Arab League in 1945 (not a 1952 \"joiner\" — the title is misleading on this point, though the body text says \"participated more actively\" rather than literally joining). The 1952 Egyptian revolution (Free Officers coup, 23 July 1952) is real, and Imam Ahmad bin Yahya did rule Yemen at the time and was broadly known as a conservative monarch wary of republicanism while rhetorically supporting pan-Arab/anti-Zionist causes (e.g., a 1952 letter to Saudi Arabia's king urging firmness against Israel, per Khamenei.ir — an Iranian state-media source I am not relying on alone). However, I could find no independent, credible source documenting a specific increase in Yemen's Arab League participation in 1952 tied to the Egyptian revolution. Wikipedia's dedicated pages on Ahmad bin Yahya and the Kingdom of Yemen list no 1952 Arab League activity at all — their next foreign-policy milestone after 1945 (Arab League founding) is 1955 (talks on a military pact with Egypt/Syria/Saudi Arabia). A FRUS 1952-54 document shows Yemen only as one of six co-signatories on a routine joint Arab League letter to the UN in September 1952 about Palestine — ordinary collective diplomacy, not evidence of a distinct uptick in Yemen's engagement. Additionally, multiple sources describe Egypt-Saudi relations as cordial (not rivalrous) in the years immediately following the 1952 revolution, with the real Egypt-Saudi rivalry over Yemen only sharpening around the 1962 civil war — which cuts against the description's framing of an \"emerging rivalry\" over Yemen already in 1952. Overall this reads as a generic, plausible-sounding synthesized narrative rather than a specific, independently verifiable event, so I cannot confirm or refute it from acceptable sources.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "title": "Southern Yemen — Separatist Aspirations Persist",
+    "verdict": "TRUE",
+    "reason": "Independent sources (Wikipedia's \"2025–2026 Southern Yemen campaign,\" ACLED's STC profile/Q&A, House of Commons Library briefing \"Yemen in 2025/26,\" and HORN REVIEW) corroborate that throughout 2025 the Southern Transitional Council maintained de facto autonomous control over Aden and coastal Hadramawt (a \"dysfunctional stalemate\" per Commons Library, continuing the post-2019 Riyadh Agreement arrangement), with its Security Belt/Southern Armed Forces controlling security in the city, while integration negotiations with the Presidential Leadership Council remained stalled and the south's ultimate political status (autonomy vs. independence) stayed unresolved. This matches the event description materially. Note: the description covers the pre-escalation status quo of 2025 and does not mention the STC's December 2025 military offensive (\"Operation Promising Future\") and its January 2026 collapse/contested dissolution — but that later escalation is a continuation/culmination of the same unresolved separatist dynamic described, not a contradiction of it.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm that throughout 2025 (prior to the STC's December 2025 \"Operation Promising Future\" offensive and its subsequent January 2026 collapse), the Southern Transitional Council maintained de facto control over Aden — Yemen's internationally recognized interim capital — with STC-affiliated Security Belt Forces exercising overwhelming security control over the city, while the STC (part of the Presidential Leadership Council since 2022) remained locked in stalled talks with the PLC over institutional integration, and the south's ultimate status (autonomy vs. independence, e.g. STC leader al-Zoubaidi's public calls for a separate 'South Arabia' state) remained unresolved. This matches the event description's characterization of the situation as of 2025. Note the description describes the status quo as of most of 2025, not the dramatic escalation (STC's territorial offensive in Dec 2025, its reversal, and disputed dissolution in Jan 2026), which are separate, later events outside this description's scope.",
+        "source": "https://acleddata.com/qa/qa-southern-yemen-how-did-we-get-here-and-what-happens-next",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources (Wikipedia's \"2025–2026 Southern Yemen campaign,\" ACLED's STC profile/Q&A, House of Commons Library briefing \"Yemen in 2025/26,\" and HORN REVIEW) corroborate that throughout 2025 the Southern Transitional Council maintained de facto autonomous control over Aden and coastal Hadramawt (a \"dysfunctional stalemate\" per Commons Library, continuing the post-2019 Riyadh Agreement arrangement), with its Security Belt/Southern Armed Forces controlling security in the city, while integration negotiations with the Presidential Leadership Council remained stalled and the south's ultimate political status (autonomy vs. independence) stayed unresolved. This matches the event description materially. Note: the description covers the pre-escalation status quo of 2025 and does not mention the STC's December 2025 military offensive (\"Operation Promising Future\") and its January 2026 collapse/contested dissolution — but that later escalation is a continuation/culmination of the same unresolved separatist dynamic described, not a contradiction of it.",
+        "source": "https://en.wikipedia.org/wiki/2025%E2%80%932026_Southern_Yemen_campaign",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2025%E2%80%932026_Southern_Yemen_campaign"
   }
 ]

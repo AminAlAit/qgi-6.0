@@ -3309,5 +3309,115 @@
       }
     ],
     "source": "https://aujourdhui.ma/focus/apres-beni-bouayach-les-violences-setendent-a-imzouren-81885"
+  },
+  {
+    "year": 1998,
+    "title": "Tanger Med Port Concept Takes Shape",
+    "verdict": "PARTIAL",
+    "reason": "Country and general timeframe hold up: multiple independent sources confirm the Tanger Med deepwater port concept originated in the mid-to-late 1990s under Moroccan planners, with feasibility/site-selection work culminating in the 1999 choice of the Mediterranean location over an Atlantic-coast alternative, and that Mohammed VI (who acceded to the throne in 1999) subsequently gave the project its political push (foundation stone laid 2002, TMSA created 2003, port inaugurated 2007). This substantially matches the description's core narrative of late-1990s feasibility studies followed by post-1999 political momentum. However, the description contains a clear factual error on a named actor: it states \"Mohammed V's death in 1999,\" but Mohammed V (Mohammed VI's grandfather) died in 1961 — it was Hassan II (Mohammed VI's father) who died on 23 July 1999, triggering Mohammed VI's accession. This is a material misattribution of which monarch died in 1999, even though the surrounding causal claim (a royal death in 1999 opening space for Mohammed VI's push on Tanger Med) is otherwise consistent with the historical record. No source pins the feasibility work to the specific year 1998 rather than 1997 or 1999, but \"late 1990s\" is well corroborated. Given country+year-window hold but a material named-actor detail is wrong, this is a PARTIAL rather than TRUE or FALSE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The core claim — that Moroccan planners/government developed initial feasibility studies and site evaluations for the Tanger Med deepwater port complex in the late 1990s, with the project gaining momentum around the 1999 royal succession — is corroborated: independent sources confirm the transhipment-hub project dates to the mid-1990s, with multiple candidate zones studied before the Mediterranean/Straits of Gibraltar site was finalized in 1999, followed by Mohammed VI's 2002-2003 push to break ground. However, the description contains a clear factual error: it says the project got momentum from 'Mohammed V's death in 1999 and the accession of Mohammed VI' — but Mohammed V died in 1961; it was his grandson Hassan II who died on 23 July 1999 and was succeeded by Mohammed VI. This is a wrong-actor error (the deceased king's name), a material detail, while the year (late-1990s planning) and country (Morocco) hold. Hence PARTIAL rather than TRUE.",
+        "source": "https://market-insights.upply.com/en/tanger-med-chronology-of-an-ambition",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Country and general timeframe hold up: multiple independent sources confirm the Tanger Med deepwater port concept originated in the mid-to-late 1990s under Moroccan planners, with feasibility/site-selection work culminating in the 1999 choice of the Mediterranean location over an Atlantic-coast alternative, and that Mohammed VI (who acceded to the throne in 1999) subsequently gave the project its political push (foundation stone laid 2002, TMSA created 2003, port inaugurated 2007). This substantially matches the description's core narrative of late-1990s feasibility studies followed by post-1999 political momentum. However, the description contains a clear factual error on a named actor: it states \"Mohammed V's death in 1999,\" but Mohammed V (Mohammed VI's grandfather) died in 1961 — it was Hassan II (Mohammed VI's father) who died on 23 July 1999, triggering Mohammed VI's accession. This is a material misattribution of which monarch died in 1999, even though the surrounding causal claim (a royal death in 1999 opening space for Mohammed VI's push on Tanger Med) is otherwise consistent with the historical record. No source pins the feasibility work to the specific year 1998 rather than 1997 or 1999, but \"late 1990s\" is well corroborated. Given country+year-window hold but a material named-actor detail is wrong, this is a PARTIAL rather than TRUE or FALSE.",
+        "source": "https://market-insights.upply.com/en/tanger-med-chronology-of-an-ambition",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://market-insights.upply.com/en/tanger-med-chronology-of-an-ambition"
+  },
+  {
+    "year": 1988,
+    "title": "Tangier Free Zone Established as Export Platform",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources converge on a consistent history of Tangier's free zones, and none place an export-oriented \"Tangier Free Zone\" in 1988. Morocco's legal framework for export free zones (zones franches d'exportation, ZFE) was created by Law 19-94 (Dahir n°1-95-1, 26 Jan 1995). The specific Tangier export free zone (Tanger-Boukhalef), described by memoireonline.com as \"the first export free zone\" of its kind in Morocco -- matching the description's textile/garment/light-manufacturing investors and its role as precursor to the later, much larger Tanger Med complex -- was created by decree n°2-96-511 on 10 November 1997 and entered into operation around 1999 (per North South Management / general search summaries: \"zone franche de Tanger, entrée en exploitation en 1999\"). Earlier Tangier free-zone history (a port free zone from 1961/1962, and an industrial zone from 1970) also does not match 1988. No source found supports an establishment in 1988; the year appears to be wrong by roughly a decade.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources consistently place the establishment of the Tanger/Tangier Free Zone (export processing zone) in 1999, not 1988 — a full 11 years off. The legal framework enabling Moroccan export free zones, Law 19-94 (Dahir No. 1-95-1), dates from January 26, 1995 — meaning no such zone could have legally existed in 1988. No source found any reference to a Tangier free zone, export platform, or related investment initiative in 1988; the only 'Tangier zone' from an earlier era is the unrelated historical Tangier International Zone (1925-1956), which had nothing to do with export manufacturing. The event as described (tax incentives, customs simplification, textile/garment investment, precursor to Tanger Med) accurately describes the real Tanger Free Zone, but its actual founding year is 1999, not 1988.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1999
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources converge on a consistent history of Tangier's free zones, and none place an export-oriented \"Tangier Free Zone\" in 1988. Morocco's legal framework for export free zones (zones franches d'exportation, ZFE) was created by Law 19-94 (Dahir n°1-95-1, 26 Jan 1995). The specific Tangier export free zone (Tanger-Boukhalef), described by memoireonline.com as \"the first export free zone\" of its kind in Morocco -- matching the description's textile/garment/light-manufacturing investors and its role as precursor to the later, much larger Tanger Med complex -- was created by decree n°2-96-511 on 10 November 1997 and entered into operation around 1999 (per North South Management / general search summaries: \"zone franche de Tanger, entrée en exploitation en 1999\"). Earlier Tangier free-zone history (a port free zone from 1961/1962, and an industrial zone from 1970) also does not match 1988. No source found supports an establishment in 1988; the year appears to be wrong by roughly a decade.",
+        "source": "https://www.memoireonline.com/07/10/3720/Tanger-quel-regime-de-zone-franche-.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1999
+      }
+    ],
+    "source": "https://www.memoireonline.com/07/10/3720/Tanger-quel-regime-de-zone-franche-.html"
+  },
+  {
+    "year": 1962,
+    "title": "Security Services Launch Systematic Surveillance of Opposition",
+    "verdict": "PARTIAL",
+    "reason": "The broad narrative is well corroborated by multiple independent sources: Morocco's security apparatus (Sûreté Nationale under Oufkir from 1960, restructured into the CAB1 intelligence service in the early 1960s with CIA/French assistance) targeted the leftist UNFP with surveillance and repression, intensifying after Hassan II's 1961 accession and the contested 1962 constitution, escalating into the July 1963 mass-arrest 'conspiracy' crackdown (100+ UNFP members, 11 death sentences), and feeding directly into the later Years of Lead — this matches the event's core claim (country, approximate year, actor, target, trajectory) closely. However, I could not find any independent source confirming the specific granular tactics claimed — 'telephone tapping, postal interception' as standard tools already in place in 1962, or informants specifically 'placed inside the party and its affiliated trade unions' at that date. These read as plausible but unverified embellishments of an otherwise well-attested repression pattern; several sources instead date the intelligence-service buildup to 1960-61 and the first major documented crackdown to July 1963 rather than 1962 specifically. Country and general year/trajectory hold, but the specific surveillance-method details are unconfirmed, so this is marked PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the core substance. Morocco's Sûreté Nationale/CAB1 intelligence apparatus was reorganized in 1960 with CIA and French assistance, with Mohamed Oufkir as director; he was promoted colonel in 1962 and directed the security campaign against the left-wing UNFP (formed 1959), which became the primary target of state repression. Encyclopedia.com's UNFP entry states explicitly that \"severe repression after 1962\" decimated the party's strength. Independent reporting (CovertAction Magazine) confirms that by November 1962 Oufkir was personally orchestrating operations against UNFP founder Mehdi Ben Barka (an assassination attempt), showing the security services were already actively targeting UNFP leadership that year, consistent with a 1962 launch of systematic action against the party. This activity is widely documented as the seed of the repressive apparatus (informants, infiltration, wiretapping practices attributed to CAB1/\"Cabinet Noir\") that intensified into the \"Years of Lead.\" I could not find a single source stating verbatim \"telephone tapping and postal interception began in 1962,\" but this is consistent scene-setting detail on top of a well-corroborated core event (country, year, primary target UNFP, and the security-services infiltration campaign that fed into the Years of Lead) — no source contradicts it, and no material fact (country/year/actor/target) is in dispute.",
+        "source": "https://covertactionmagazine.com/2026/04/17/the-mossad-planned-1965-assassination-of-mehdi-ben-barka-in-france-why-it-matters-today/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The broad narrative is well corroborated by multiple independent sources: Morocco's security apparatus (Sûreté Nationale under Oufkir from 1960, restructured into the CAB1 intelligence service in the early 1960s with CIA/French assistance) targeted the leftist UNFP with surveillance and repression, intensifying after Hassan II's 1961 accession and the contested 1962 constitution, escalating into the July 1963 mass-arrest 'conspiracy' crackdown (100+ UNFP members, 11 death sentences), and feeding directly into the later Years of Lead — this matches the event's core claim (country, approximate year, actor, target, trajectory) closely. However, I could not find any independent source confirming the specific granular tactics claimed — 'telephone tapping, postal interception' as standard tools already in place in 1962, or informants specifically 'placed inside the party and its affiliated trade unions' at that date. These read as plausible but unverified embellishments of an otherwise well-attested repression pattern; several sources instead date the intelligence-service buildup to 1960-61 and the first major documented crackdown to July 1963 rather than 1962 specifically. Country and general year/trajectory hold, but the specific surveillance-method details are unconfirmed, so this is marked PARTIAL rather than TRUE.",
+        "source": "https://en.wikipedia.org/wiki/National_Union_of_Popular_Forces",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/National_Union_of_Popular_Forces"
   }
 ]

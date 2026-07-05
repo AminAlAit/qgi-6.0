@@ -487,9 +487,9 @@
   },
   {
     "year": 2011,
-    "title": "Saudi-Led GCC Peninsula Shield Force Enters Bahrain",
+    "title": "BICI Report Documents Systematic Torture and Abuse",
     "verdict": "TRUE",
-    "reason": "On March 14, 2011, approximately 1,000–1,200 Saudi troops and 500 UAE police entered Bahrain under the GCC Peninsula Shield Force framework at the king's invitation. This was the first GCC deployment to suppress an internal uprising in a member state.",
+    "reason": "The Bahrain Independent Commission of Inquiry, chaired by Prof. Cherif Bassiouni, released a 500-page report on November 23, 2011, documenting 46 deaths, 559 torture allegations, and 4,000+ dismissals. The report found systematic use of excessive force, torture, and forced confessions by security forces.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -499,8 +499,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "On March 14, 2011, approximately 1,000–1,200 Saudi troops and 500 UAE police entered Bahrain under the GCC Peninsula Shield Force framework at the king's invitation. This was the first GCC deployment to suppress an internal uprising in a member state.",
-        "source": "https://en.wikipedia.org/wiki/Saudi-led_intervention_in_Bahrain",
+        "reason": "The Bahrain Independent Commission of Inquiry, chaired by Prof. Cherif Bassiouni, released a 500-page report on November 23, 2011, documenting 46 deaths, 559 torture allegations, and 4,000+ dismissals. The report found systematic use of excessive force, torture, and forced confessions by security forces.",
+        "source": "https://en.wikipedia.org/wiki/Bahrain_Independent_Commission_of_Inquiry",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -508,7 +508,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Saudi-led_intervention_in_Bahrain"
+    "source": "https://en.wikipedia.org/wiki/Bahrain_Independent_Commission_of_Inquiry"
   },
   {
     "year": 2011,
@@ -562,9 +562,9 @@
   },
   {
     "year": 2011,
-    "title": "BICI Report Documents Systematic Torture and Abuse",
+    "title": "Saudi-Led GCC Peninsula Shield Force Enters Bahrain",
     "verdict": "TRUE",
-    "reason": "The Bahrain Independent Commission of Inquiry, chaired by Prof. Cherif Bassiouni, released a 500-page report on November 23, 2011, documenting 46 deaths, 559 torture allegations, and 4,000+ dismissals. The report found systematic use of excessive force, torture, and forced confessions by security forces.",
+    "reason": "On March 14, 2011, approximately 1,000–1,200 Saudi troops and 500 UAE police entered Bahrain under the GCC Peninsula Shield Force framework at the king's invitation. This was the first GCC deployment to suppress an internal uprising in a member state.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -574,8 +574,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The Bahrain Independent Commission of Inquiry, chaired by Prof. Cherif Bassiouni, released a 500-page report on November 23, 2011, documenting 46 deaths, 559 torture allegations, and 4,000+ dismissals. The report found systematic use of excessive force, torture, and forced confessions by security forces.",
-        "source": "https://en.wikipedia.org/wiki/Bahrain_Independent_Commission_of_Inquiry",
+        "reason": "On March 14, 2011, approximately 1,000–1,200 Saudi troops and 500 UAE police entered Bahrain under the GCC Peninsula Shield Force framework at the king's invitation. This was the first GCC deployment to suppress an internal uprising in a member state.",
+        "source": "https://en.wikipedia.org/wiki/Saudi-led_intervention_in_Bahrain",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -583,32 +583,43 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Bahrain_Independent_Commission_of_Inquiry"
+    "source": "https://en.wikipedia.org/wiki/Saudi-led_intervention_in_Bahrain"
   },
   {
     "year": 2012,
-    "title": "Mass Citizenship Revocations Target Opposition Activists",
+    "title": "Bahrain's Pearling Path Inscribed as UNESCO World Heritage Site",
     "verdict": "TRUE",
-    "reason": "On November 7, 2012, Bahrain's Interior Ministry revoked the citizenship of 31 opposition members, former MPs, lawyers, activists, and clerics — the first use of post-uprising denationalization. Most were rendered stateless as only about 6 held other citizenship.",
-    "verify_count": 1,
+    "reason": "UNESCO's own World Heritage Centre page confirms \"Pearling, Testimony of an Island Economy\" was inscribed on June 30, 2012, as Bahrain's second World Heritage Site (after Bahrain Fort). The site comprises three oyster beds, a stretch of coast/seashore with the Bu Mahir fort, and 17 buildings in historic Muharraq linked by a 3.5km path — matching the description's \"seventeen buildings in Muharraq, three offshore oyster beds, and a stretch of seashore.\" It is described as the last complete surviving example of the pearling culture/economy that dominated the Gulf from antiquity until the 1930s collapse due to Japanese cultured pearls, matching the description verbatim in substance. All material details (date, country, component counts, historical framing, second WHS status) corroborate.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "On November 7, 2012, Bahrain's Interior Ministry revoked the citizenship of 31 opposition members, former MPs, lawyers, activists, and clerics — the first use of post-uprising denationalization. Most were rendered stateless as only about 6 held other citizenship.",
-        "source": "https://www.hrw.org/news/2012/11/08/bahrain-dont-arbitrarily-revoke-citizenship",
+        "reason": "Confirmed via UNESCO's own World Heritage Centre listing (whc.unesco.org/en/list/1364/) and corroborating independent sources (Wikipedia, AramcoWorld, UN News). 'Pearling, Testimony of an Island Economy' was inscribed on the UNESCO World Heritage List on June 30, 2012, as Bahrain's second World Heritage Site. The site comprises 17 historic buildings in Muharraq (merchant houses, storehouses, and the Siyadi family mosque tied to the pearl-merchant elite), three offshore oyster beds (hayrat), and a stretch of coastline including Bu Maher Fort. The description accurately reflects the historical pearling economy that dominated the Gulf from antiquity until its collapse in the 1930s due to the rise of Japanese cultured pearls. All material details (year, country, site name, component count, mosque detail, and historical narrative) match.",
+        "source": "https://whc.unesco.org/en/list/1364/",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "UNESCO's own World Heritage Centre page confirms \"Pearling, Testimony of an Island Economy\" was inscribed on June 30, 2012, as Bahrain's second World Heritage Site (after Bahrain Fort). The site comprises three oyster beds, a stretch of coast/seashore with the Bu Mahir fort, and 17 buildings in historic Muharraq linked by a 3.5km path — matching the description's \"seventeen buildings in Muharraq, three offshore oyster beds, and a stretch of seashore.\" It is described as the last complete surviving example of the pearling culture/economy that dominated the Gulf from antiquity until the 1930s collapse due to Japanese cultured pearls, matching the description verbatim in substance. All material details (date, country, component counts, historical framing, second WHS status) corroborate.",
+        "source": "https://whc.unesco.org/en/list/1364/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://www.hrw.org/news/2012/11/08/bahrain-dont-arbitrarily-revoke-citizenship"
+    "source": "https://whc.unesco.org/en/list/1364/"
   },
   {
     "year": 2012,
@@ -634,6 +645,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2012_Bahrain_Grand_Prix_protests"
+  },
+  {
+    "year": 2012,
+    "title": "Mass Citizenship Revocations Target Opposition Activists",
+    "verdict": "TRUE",
+    "reason": "On November 7, 2012, Bahrain's Interior Ministry revoked the citizenship of 31 opposition members, former MPs, lawyers, activists, and clerics — the first use of post-uprising denationalization. Most were rendered stateless as only about 6 held other citizenship.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On November 7, 2012, Bahrain's Interior Ministry revoked the citizenship of 31 opposition members, former MPs, lawyers, activists, and clerics — the first use of post-uprising denationalization. Most were rendered stateless as only about 6 held other citizenship.",
+        "source": "https://www.hrw.org/news/2012/11/08/bahrain-dont-arbitrarily-revoke-citizenship",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/news/2012/11/08/bahrain-dont-arbitrarily-revoke-citizenship"
   },
   {
     "year": 2013,
@@ -712,6 +748,31 @@
   },
   {
     "year": 2016,
+    "title": "Al Wefaq Dissolved by Court Order",
+    "verdict": "TRUE",
+    "reason": "A Bahraini court ordered the dissolution of Al Wefaq on July 17, 2016, on charges of 'harboring terrorism.' The dissolution eliminated organized Shia political participation and was condemned by UN Secretary-General Ban Ki-moon, the US, UK, and human rights organizations.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A Bahraini court ordered the dissolution of Al Wefaq on July 17, 2016, on charges of 'harboring terrorism.' The dissolution eliminated organized Shia political participation and was condemned by UN Secretary-General Ban Ki-moon, the US, UK, and human rights organizations.",
+        "source": "https://www.aljazeera.com/news/2016/7/17/bahrain-dissolves-main-shia-opposition-al-wefaq-party",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2016/7/17/bahrain-dissolves-main-shia-opposition-al-wefaq-party"
+  },
+  {
+    "year": 2016,
     "title": "Sheikh Isa Qassim Stripped of Citizenship",
     "verdict": "TRUE",
     "reason": "Bahrain's Interior Ministry revoked the citizenship of Bahrain's most senior Shia cleric Sheikh Isa Qassim on June 20, 2016, accusing him of promoting sectarianism. The move triggered a sustained sit-in protest in the village of Duraz around his home.",
@@ -736,10 +797,10 @@
     "source": "https://www.aljazeera.com/news/2016/6/21/bahrain-strips-sheikh-isa-qassim-of-nationality"
   },
   {
-    "year": 2016,
-    "title": "Al Wefaq Dissolved by Court Order",
+    "year": 2017,
+    "title": "Bahrain Joins Saudi-Led Blockade of Qatar",
     "verdict": "TRUE",
-    "reason": "A Bahraini court ordered the dissolution of Al Wefaq on July 17, 2016, on charges of 'harboring terrorism.' The dissolution eliminated organized Shia political participation and was condemned by UN Secretary-General Ban Ki-moon, the US, UK, and human rights organizations.",
+    "reason": "On June 5, 2017, Bahrain severed diplomatic relations with Qatar and joined Saudi Arabia, the UAE, and Egypt in imposing an air, sea, and land blockade. The crisis lasted until the Al-Ula Declaration in January 2021.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -749,8 +810,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "A Bahraini court ordered the dissolution of Al Wefaq on July 17, 2016, on charges of 'harboring terrorism.' The dissolution eliminated organized Shia political participation and was condemned by UN Secretary-General Ban Ki-moon, the US, UK, and human rights organizations.",
-        "source": "https://www.aljazeera.com/news/2016/7/17/bahrain-dissolves-main-shia-opposition-al-wefaq-party",
+        "reason": "On June 5, 2017, Bahrain severed diplomatic relations with Qatar and joined Saudi Arabia, the UAE, and Egypt in imposing an air, sea, and land blockade. The crisis lasted until the Al-Ula Declaration in January 2021.",
+        "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -758,7 +819,7 @@
         }
       }
     ],
-    "source": "https://www.aljazeera.com/news/2016/7/17/bahrain-dissolves-main-shia-opposition-al-wefaq-party"
+    "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis"
   },
   {
     "year": 2017,
@@ -809,31 +870,6 @@
       }
     ],
     "source": "https://www.adhrb.org/2017/05/12478/"
-  },
-  {
-    "year": 2017,
-    "title": "Bahrain Joins Saudi-Led Blockade of Qatar",
-    "verdict": "TRUE",
-    "reason": "On June 5, 2017, Bahrain severed diplomatic relations with Qatar and joined Saudi Arabia, the UAE, and Egypt in imposing an air, sea, and land blockade. The crisis lasted until the Al-Ula Declaration in January 2021.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On June 5, 2017, Bahrain severed diplomatic relations with Qatar and joined Saudi Arabia, the UAE, and Egypt in imposing an air, sea, and land blockade. The crisis lasted until the Al-Ula Declaration in January 2021.",
-        "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Qatar_diplomatic_crisis"
   },
   {
     "year": 2017,
@@ -912,31 +948,6 @@
   },
   {
     "year": 2019,
-    "title": "Three Men Executed Despite Torture Allegations",
-    "verdict": "TRUE",
-    "reason": "On July 27, 2019, Bahrain executed Ali al-Arab and Ahmed al-Malali (plus a Bangladeshi national), despite documented allegations that confessions were extracted under torture including electric shocks and extraction of toenails. Five UN human rights experts had called for a halt to the executions.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On July 27, 2019, Bahrain executed Ali al-Arab and Ahmed al-Malali (plus a Bangladeshi national), despite documented allegations that confessions were extracted under torture including electric shocks and extraction of toenails. Five UN human rights experts had called for a halt to the executions.",
-        "source": "https://www.ohchr.org/en/press-releases/2019/05/un-experts-call-bahrain-halt-executions-two-individuals-amid-torture",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.ohchr.org/en/press-releases/2019/05/un-experts-call-bahrain-halt-executions-two-individuals-amid-torture"
-  },
-  {
-    "year": 2019,
     "title": "Bahrain Hosts Workshop for U.S. Middle East Peace Plan",
     "verdict": "TRUE",
     "reason": "Bahrain hosted the 'Peace to Prosperity' economic workshop on June 25–26, 2019, organized by Jared Kushner to present the economic component of the Trump administration's Middle East peace plan. Palestinian leaders boycotted the event, and Bahraini citizens protested against normalization with Israel.",
@@ -959,6 +970,31 @@
       }
     ],
     "source": "https://www.fpri.org/article/2019/07/neither-peace-nor-prosperity-jared-kushners-middle-east-peace-plan-falls-flat-in-bahrain/"
+  },
+  {
+    "year": 2019,
+    "title": "Three Men Executed Despite Torture Allegations",
+    "verdict": "TRUE",
+    "reason": "On July 27, 2019, Bahrain executed Ali al-Arab and Ahmed al-Malali (plus a Bangladeshi national), despite documented allegations that confessions were extracted under torture including electric shocks and extraction of toenails. Five UN human rights experts had called for a halt to the executions.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On July 27, 2019, Bahrain executed Ali al-Arab and Ahmed al-Malali (plus a Bangladeshi national), despite documented allegations that confessions were extracted under torture including electric shocks and extraction of toenails. Five UN human rights experts had called for a halt to the executions.",
+        "source": "https://www.ohchr.org/en/press-releases/2019/05/un-experts-call-bahrain-halt-executions-two-individuals-amid-torture",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.ohchr.org/en/press-releases/2019/05/un-experts-call-bahrain-halt-executions-two-individuals-amid-torture"
   },
   {
     "year": 2020,
@@ -1087,31 +1123,6 @@
   },
   {
     "year": 2023,
-    "title": "U.S.-Bahrain Comprehensive Security Integration Agreement",
-    "verdict": "TRUE",
-    "reason": "The United States and Bahrain signed the Comprehensive Security Integration and Prosperity Agreement (C-SIPA) on September 13, 2023, in Washington D.C., upgrading defense ties beyond the 1991 DCA. It was signed by Crown Prince Salman and Secretary of State Blinken and entered into force October 20, 2023.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The United States and Bahrain signed the Comprehensive Security Integration and Prosperity Agreement (C-SIPA) on September 13, 2023, in Washington D.C., upgrading defense ties beyond the 1991 DCA. It was signed by Crown Prince Salman and Secretary of State Blinken and entered into force October 20, 2023.",
-        "source": "https://bh.usembassy.gov/u-s-bahrain-comprehensive-security-integration-and-prosperity-agreement/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://bh.usembassy.gov/u-s-bahrain-comprehensive-security-integration-and-prosperity-agreement/"
-  },
-  {
-    "year": 2023,
     "title": "Authorities Crack Down on Gaza Solidarity Protests",
     "verdict": "TRUE",
     "reason": "Following the October 2023 Gaza war outbreak, Bahraini authorities arrested at least 57 people, including 25 children, for participating in pro-Palestine solidarity demonstrations. Human rights organizations documented use of tear gas, stun grenades, and shotguns against peaceful protesters.",
@@ -1134,6 +1145,31 @@
       }
     ],
     "source": "https://www.hrw.org/news/2023/12/22/bahrain-repression-pro-palestine-protests"
+  },
+  {
+    "year": 2023,
+    "title": "U.S.-Bahrain Comprehensive Security Integration Agreement",
+    "verdict": "TRUE",
+    "reason": "The United States and Bahrain signed the Comprehensive Security Integration and Prosperity Agreement (C-SIPA) on September 13, 2023, in Washington D.C., upgrading defense ties beyond the 1991 DCA. It was signed by Crown Prince Salman and Secretary of State Blinken and entered into force October 20, 2023.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The United States and Bahrain signed the Comprehensive Security Integration and Prosperity Agreement (C-SIPA) on September 13, 2023, in Washington D.C., upgrading defense ties beyond the 1991 DCA. It was signed by Crown Prince Salman and Secretary of State Blinken and entered into force October 20, 2023.",
+        "source": "https://bh.usembassy.gov/u-s-bahrain-comprehensive-security-integration-and-prosperity-agreement/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://bh.usembassy.gov/u-s-bahrain-comprehensive-security-integration-and-prosperity-agreement/"
   },
   {
     "year": 2024,

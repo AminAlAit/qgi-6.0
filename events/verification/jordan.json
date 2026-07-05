@@ -1150,6 +1150,42 @@
     "source": "https://en.wikipedia.org/wiki/Palestinian-Jordanian_Joint_Action_Agreement"
   },
   {
+    "year": 1985,
+    "title": "Petra Inscribed as Jordan's First UNESCO World Heritage Site",
+    "verdict": "TRUE",
+    "reason": "Confirmed via the official UNESCO World Heritage Centre listing (Property #326): Petra was inscribed in 1985 (9th session, Dec 6, 1985) under cultural criteria (i)(iii)(iv), with the official description matching the event almost verbatim — \"Nabataean caravan-city, situated between the Red Sea and the Dead Sea... half-built, half-carved into the rock... where ancient Eastern traditions blend with Hellenistic architecture.\" Wikipedia corroborates the site's inscribed area as 26,171 hectares, matching the description exactly. Multiple independent sources (Wikipedia, worldheritagesite.org, everything-everywhere.com, Jordan tourism sites) confirm Petra is regarded as Jordan's first UNESCO World Heritage Site (it and Quseir Amra were both inscribed in 1985, but Petra — WHC ID 326 — is consistently cited as the first). Burckhardt's 1812 rediscovery for Western audiences and the 2007 New7Wonders selection are both independently confirmed standard historical facts. One minor historiographical nuance: Wikipedia's text (as fetched) describes Petra becoming the Nabataean kingdom's capital \"in the second century BCE\" rather than the \"4th century BCE\" figure in the event description, but this is a commonly-cited range across sources for early Nabataean settlement/capital status and does not affect the core verifiable claim (the 1985 UNESCO inscription), so it does not warrant a PARTIAL downgrade.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Petra was inscribed on the UNESCO World Heritage List on December 6, 1985 (9th session of the WH Committee), covering 26,171 ha — an exact match to the description. It is consistently described across multiple sources as Jordan's first UNESCO World Heritage Site (inscribed the same session as Quseir Amra, but Petra is uniformly cited as the flagship/first Jordanian site). All other details check out: Nabataean caravan city carved into sandstone, blend of Eastern tradition and Hellenistic architecture (matches actual UNESCO justification language), rediscovered by Swiss explorer Johann Ludwig Burckhardt in 1812, and later named a New7Wonder of the World in 2007. No material discrepancies found.",
+        "source": "https://en.wikipedia.org/wiki/Petra",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via the official UNESCO World Heritage Centre listing (Property #326): Petra was inscribed in 1985 (9th session, Dec 6, 1985) under cultural criteria (i)(iii)(iv), with the official description matching the event almost verbatim — \"Nabataean caravan-city, situated between the Red Sea and the Dead Sea... half-built, half-carved into the rock... where ancient Eastern traditions blend with Hellenistic architecture.\" Wikipedia corroborates the site's inscribed area as 26,171 hectares, matching the description exactly. Multiple independent sources (Wikipedia, worldheritagesite.org, everything-everywhere.com, Jordan tourism sites) confirm Petra is regarded as Jordan's first UNESCO World Heritage Site (it and Quseir Amra were both inscribed in 1985, but Petra — WHC ID 326 — is consistently cited as the first). Burckhardt's 1812 rediscovery for Western audiences and the 2007 New7Wonders selection are both independently confirmed standard historical facts. One minor historiographical nuance: Wikipedia's text (as fetched) describes Petra becoming the Nabataean kingdom's capital \"in the second century BCE\" rather than the \"4th century BCE\" figure in the event description, but this is a commonly-cited range across sources for early Nabataean settlement/capital status and does not affect the core verifiable claim (the 1985 UNESCO inscription), so it does not warrant a PARTIAL downgrade.",
+        "source": "https://whc.unesco.org/en/list/326/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://whc.unesco.org/en/list/326/"
+  },
+  {
     "year": 1986,
     "title": "Jordan Closes PLO Offices in Amman",
     "verdict": "TRUE",

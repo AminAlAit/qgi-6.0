@@ -376,31 +376,6 @@
   },
   {
     "year": 1991,
-    "title": "March Massacre â€” Security Forces Kill Pro-Democracy Protesters",
-    "verdict": "TRUE",
-    "reason": "March 22, 1991 massacre; death toll estimates 150–300 — confirmed. Description of 100–300 range is consistent with sources.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "March 22, 1991 massacre; death toll estimates 150–300 — confirmed. Description of 100–300 range is consistent with sources.",
-        "source": "https://en.wikipedia.org/wiki/1991_Malian_coup_d%27%C3%A9tat",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1991_Malian_coup_d%27%C3%A9tat"
-  },
-  {
-    "year": 1991,
     "title": "Coup Ends TraorÃ© Era â€” ATT Launches Democratic Transition",
     "verdict": "TRUE",
     "reason": "Coup March 26, 1991, by Lt. Col. ATT; National Conference followed — confirmed.",
@@ -414,6 +389,31 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Coup March 26, 1991, by Lt. Col. ATT; National Conference followed — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1991_Malian_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1991_Malian_coup_d%27%C3%A9tat"
+  },
+  {
+    "year": 1991,
+    "title": "March Massacre â€” Security Forces Kill Pro-Democracy Protesters",
+    "verdict": "TRUE",
+    "reason": "March 22, 1991 massacre; death toll estimates 150–300 — confirmed. Description of 100–300 range is consistent with sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "March 22, 1991 massacre; death toll estimates 150–300 — confirmed. Description of 100–300 range is consistent with sources.",
         "source": "https://en.wikipedia.org/wiki/1991_Malian_coup_d%27%C3%A9tat",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -701,6 +701,56 @@
   },
   {
     "year": 2012,
+    "title": "ECOWAS Sanctions and Transitional Government Installed",
+    "verdict": "TRUE",
+    "reason": "ECOWAS sanctions and Dioncounda Traoré installed as interim president under pressure — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ECOWAS sanctions and Dioncounda Traoré installed as interim president under pressure — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2012_Malian_coup_d%27%C3%A9tat",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2012_Malian_coup_d%27%C3%A9tat"
+  },
+  {
+    "year": 2012,
+    "title": "Islamists Impose Sharia and Destroy Timbuktu Heritage Sites",
+    "verdict": "TRUE",
+    "reason": "Ansar Dine imposed sharia; 14 of 16 UNESCO mausoleums destroyed from June 30, 2012; ICC conviction followed — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ansar Dine imposed sharia; 14 of 16 UNESCO mausoleums destroyed from June 30, 2012; ICC conviction followed — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Fall_of_Timbuktu",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Fall_of_Timbuktu"
+  },
+  {
+    "year": 2012,
     "title": "Military Coup Overthrows ATT Government",
     "verdict": "TRUE",
     "reason": "Coup March 22, 2012 by Captain Amadou Sanogo — confirmed.",
@@ -750,60 +800,10 @@
     "source": "https://en.wikipedia.org/wiki/National_Movement_for_the_Liberation_of_Azawad"
   },
   {
-    "year": 2012,
-    "title": "Islamists Impose Sharia and Destroy Timbuktu Heritage Sites",
-    "verdict": "TRUE",
-    "reason": "Ansar Dine imposed sharia; 14 of 16 UNESCO mausoleums destroyed from June 30, 2012; ICC conviction followed — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Ansar Dine imposed sharia; 14 of 16 UNESCO mausoleums destroyed from June 30, 2012; ICC conviction followed — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Fall_of_Timbuktu",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Fall_of_Timbuktu"
-  },
-  {
-    "year": 2012,
-    "title": "ECOWAS Sanctions and Transitional Government Installed",
-    "verdict": "TRUE",
-    "reason": "ECOWAS sanctions and Dioncounda Traoré installed as interim president under pressure — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "ECOWAS sanctions and Dioncounda Traoré installed as interim president under pressure — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2012_Malian_coup_d%27%C3%A9tat",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2012_Malian_coup_d%27%C3%A9tat"
-  },
-  {
     "year": 2013,
-    "title": "Operation Serval â€” France Repels Islamist Advance",
+    "title": "Ibrahim Boubacar KeÃ¯ta Elected President",
     "verdict": "TRUE",
-    "reason": "Launched January 11, 2013 after Konna fell January 10; rapid liberation of northern cities — confirmed.",
+    "reason": "IBK won August 11, 2013 second round with 77.6% — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -813,8 +813,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Launched January 11, 2013 after Konna fell January 10; rapid liberation of northern cities — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Operation_Serval",
+        "reason": "IBK won August 11, 2013 second round with 77.6% — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2013_Malian_presidential_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -822,7 +822,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Operation_Serval"
+    "source": "https://en.wikipedia.org/wiki/2013_Malian_presidential_election"
   },
   {
     "year": 2013,
@@ -851,9 +851,9 @@
   },
   {
     "year": 2013,
-    "title": "Ibrahim Boubacar KeÃ¯ta Elected President",
+    "title": "Operation Serval â€” France Repels Islamist Advance",
     "verdict": "TRUE",
-    "reason": "IBK won August 11, 2013 second round with 77.6% — confirmed.",
+    "reason": "Launched January 11, 2013 after Konna fell January 10; rapid liberation of northern cities — confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -863,8 +863,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "IBK won August 11, 2013 second round with 77.6% — confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2013_Malian_presidential_election",
+        "reason": "Launched January 11, 2013 after Konna fell January 10; rapid liberation of northern cities — confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Operation_Serval",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -872,7 +872,43 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2013_Malian_presidential_election"
+    "source": "https://en.wikipedia.org/wiki/Operation_Serval"
+  },
+  {
+    "year": 2013,
+    "title": "Timbuktu's Ancient Manuscripts Burned and Smuggled to Safety",
+    "verdict": "TRUE",
+    "reason": "Multiple independent, authoritative sources corroborate all material details. French and Malian forces retook Timbuktu on January 28, 2013 (confirmed by Al Jazeera, CBS News, France24, VOA). Retreating Ansar Dine militants torched the Ahmed Baba Institute, which held roughly 20,000-30,000 manuscripts (NPR, historyofinformation.com); about 2,000 were destroyed while the vast majority (~90%, some 350,000 documents counting all Timbuktu private collections) had already been smuggled out by librarian Abdel Kader Haidara and the SAVAMA-DCI network using rice sacks, donkey carts, boats, motorcycles and 4x4s (National Geographic, Gariwo, Stanford Book Haven, Wikipedia). Manuscripts dating to the 13th century is consistent with reporting on the collection's age. The description of nine Sufi mausoleums and a mosque door (Sidi Yahya Mosque's secret gate) destroyed during the 2012 Ansar Dine occupation of the UNESCO World Heritage-listed city is independently confirmed by the 2016 ICC conviction of Ahmad al-Faqi al-Mahdi for exactly these acts (nine mausoleums + the mosque's secret door, June 30-July 11, 2012), as well as France24 and Al Jazeera 2012 reporting. All key facts — country, year, actors, sequence, magnitudes, and outcome — check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material claims corroborate. French and Malian forces retook Timbuktu on January 28, 2013, as retreating Ansar Dine/AQIM militants set fire to the Ahmed Baba Institute (multiple outlets, incl. the Timbuktu mayor quoted contemporaneously); about 2,000 of the roughly 30,000 manuscripts held there were destroyed, with the vast majority already smuggled out beforehand by librarian Abdel Kader Haidara and local custodians using rice sacks, donkey carts, canoes/boats, motorcycles, and 4x4s to Bamako (National Geographic, The National, NPR). The 2012 destruction of Sufi shrines and a mosque door on Timbuktu's UNESCO World Heritage list by Ansar Dine is independently confirmed — the ICC's 2016 Al Mahdi war-crimes conviction specifically covers the destruction of nine mausoleums and the door of the Sidi Yahia mosque, matching the description's 'nine Sufi mausoleums and a mosque door' during the 2012 occupation.",
+        "source": "https://www.icc-cpi.int/news/icc-trial-chamber-viii-declares-mr-al-mahdi-guilty-war-crime-attacking-historic-and-religious",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources corroborate all material details. French and Malian forces retook Timbuktu on January 28, 2013 (confirmed by Al Jazeera, CBS News, France24, VOA). Retreating Ansar Dine militants torched the Ahmed Baba Institute, which held roughly 20,000-30,000 manuscripts (NPR, historyofinformation.com); about 2,000 were destroyed while the vast majority (~90%, some 350,000 documents counting all Timbuktu private collections) had already been smuggled out by librarian Abdel Kader Haidara and the SAVAMA-DCI network using rice sacks, donkey carts, boats, motorcycles and 4x4s (National Geographic, Gariwo, Stanford Book Haven, Wikipedia). Manuscripts dating to the 13th century is consistent with reporting on the collection's age. The description of nine Sufi mausoleums and a mosque door (Sidi Yahya Mosque's secret gate) destroyed during the 2012 Ansar Dine occupation of the UNESCO World Heritage-listed city is independently confirmed by the 2016 ICC conviction of Ahmad al-Faqi al-Mahdi for exactly these acts (nine mausoleums + the mosque's secret door, June 30-July 11, 2012), as well as France24 and Al Jazeera 2012 reporting. All key facts — country, year, actors, sequence, magnitudes, and outcome — check out.",
+        "source": "https://www.npr.org/sections/thetwo-way/2013/01/29/170586823/ancient-manuscripts-in-timbuktu-reduced-to-ashes",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.npr.org/sections/thetwo-way/2013/01/29/170586823/ancient-manuscripts-in-timbuktu-reduced-to-ashes"
   },
   {
     "year": 2014,
@@ -1151,31 +1187,6 @@
   },
   {
     "year": 2023,
-    "title": "Junta Expels MINUSMA â€” UN Peacekeeping Mission Ends",
-    "verdict": "TRUE",
-    "reason": "Junta requested withdrawal June 16, 2023; Security Council terminated mandate June 30; withdrawal completed December 31, 2023 — confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Junta requested withdrawal June 16, 2023; Security Council terminated mandate June 30; withdrawal completed December 31, 2023 — confirmed.",
-        "source": "https://press.un.org/en/2023/sc15341.doc.htm",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://press.un.org/en/2023/sc15341.doc.htm"
-  },
-  {
-    "year": 2023,
     "title": "Alliance des Ã‰tats du Sahel Formed â€” Mali Pivots from ECOWAS",
     "verdict": "TRUE",
     "reason": "Liptako-Gourma charter signed September 16, 2023; mutual defense pact between Mali, Burkina Faso, Niger — confirmed.",
@@ -1198,6 +1209,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Alliance_of_Sahel_States"
+  },
+  {
+    "year": 2023,
+    "title": "Junta Expels MINUSMA â€” UN Peacekeeping Mission Ends",
+    "verdict": "TRUE",
+    "reason": "Junta requested withdrawal June 16, 2023; Security Council terminated mandate June 30; withdrawal completed December 31, 2023 — confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Junta requested withdrawal June 16, 2023; Security Council terminated mandate June 30; withdrawal completed December 31, 2023 — confirmed.",
+        "source": "https://press.un.org/en/2023/sc15341.doc.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://press.un.org/en/2023/sc15341.doc.htm"
   },
   {
     "year": 2024,

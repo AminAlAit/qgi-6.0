@@ -6823,5 +6823,153 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Ethiopian_Student_Movement"
+  },
+  {
+    "year": 1970,
+    "title": "Ethiopia's military budget consumes 40% of state revenue",
+    "verdict": "PARTIAL",
+    "reason": "Country and year hold, and the broad narrative (defense spending crowding out education/health/agriculture investment, contributing to fiscal strain in the late imperial period) is real and well documented. But the specific \"40% of state revenue\" figure for 1970 is materially too high. Multiple independent sources (Library of Congress Country Study 'Ethiopia: A Country Study', mirrored on countrystudies.us and globalsecurity.org) state defense took roughly 19-24% of the national budget throughout the 1960s and early 1970s (i.e., including 1970), rising to a general imperial-era average of about 36% (defense + internal order combined, spanning the whole 1930-1974 reign), and only reaching 40-50%+ during the Derg era (1974-1988), with a peak near 60% during the actual 1977-78 Ogaden War against Somalia. The Ogaden conflict specifically was not yet a major fiscal driver in 1970 — the Western Somali Liberation Front's insurgency and the Ethiopia-Somalia Ogaden War only escalated from 1975-1978, after Haile Selassie's overthrow. So while Eritrean insurgency-driven defense spending pressure on the imperial budget in/around 1970 is genuine, the \"40%\" magnitude and the framing of \"Ogaden\" as a co-driver in 1970 both appear to be anachronistic/overstated compared to the historical record, which is otherwise consistent that ~1970-era defense spending was in the 19-24% (up to ~36% imperial-era average) range, not 40%.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "The core phenomenon is real and well documented: under Haile Selassie, defense was consistently the single largest item in Ethiopia's budget and did strain state finances, feeding into the fiscal problems that contributed to the imperial system's 1974 collapse, with the Eritrean insurgency a genuine ongoing drain. But the specific \"40% of state revenue\" figure is materially overstated for 1970: the Library of Congress country study's \"Defense Costs\" section states that \"throughout the 1960s and early 1970s, money for defense remained the largest single item in the budget, varying from 19 to 24 percent of the total funds appropriated for all national programs\" -- roughly half the claimed figure. A separate figure in the same source (\"under the emperor, the government dedicated about 36 percent of the annual budget to national defense and maintenance of internal order\") is a whole-imperial-period average combining defense with internal security, still short of 40% and not specific to 1970. Defense spending only later spiked toward 40-60% during/after the 1974 revolution and the 1977-78 Ogaden War. Additionally, framing \"growing insurgencies in ... Ogaden\" as a 1970 driver is anachronistic: independent histories (HRW report on Ethiopia; background on the Western Somali Liberation Front) indicate Ogaden Somali insurgent activity from the 1963 revolt had actually declined through the late 1960s and only re-escalated from 1974-75 with the founding of the WSLF and the 1977-78 Ogaden War -- it was not a growing pressure on the 1970 budget specifically. So country and year hold, and the general narrative direction (military burden crowding out development spending, contributing to fiscal strain) is correct, but both the magnitude (40% vs. documented ~19-24%) and one of the two named drivers (Ogaden was not yet a growing insurgency in 1970) are materially off -- a PARTIAL rather than a clean TRUE.",
+        "source": "https://archive.org/stream/ethiopiacountrys00ofca_0/ethiopiacountrys00ofca_0_djvu.txt",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Country and year hold, and the broad narrative (defense spending crowding out education/health/agriculture investment, contributing to fiscal strain in the late imperial period) is real and well documented. But the specific \"40% of state revenue\" figure for 1970 is materially too high. Multiple independent sources (Library of Congress Country Study 'Ethiopia: A Country Study', mirrored on countrystudies.us and globalsecurity.org) state defense took roughly 19-24% of the national budget throughout the 1960s and early 1970s (i.e., including 1970), rising to a general imperial-era average of about 36% (defense + internal order combined, spanning the whole 1930-1974 reign), and only reaching 40-50%+ during the Derg era (1974-1988), with a peak near 60% during the actual 1977-78 Ogaden War against Somalia. The Ogaden conflict specifically was not yet a major fiscal driver in 1970 — the Western Somali Liberation Front's insurgency and the Ethiopia-Somalia Ogaden War only escalated from 1975-1978, after Haile Selassie's overthrow. So while Eritrean insurgency-driven defense spending pressure on the imperial budget in/around 1970 is genuine, the \"40%\" magnitude and the framing of \"Ogaden\" as a co-driver in 1970 both appear to be anachronistic/overstated compared to the historical record, which is otherwise consistent that ~1970-era defense spending was in the 19-24% (up to ~36% imperial-era average) range, not 40%.",
+        "source": "http://countrystudies.us/ethiopia/81.htm",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "http://countrystudies.us/ethiopia/81.htm"
+  },
+  {
+    "year": 1971,
+    "title": "Ethiopian Teachers Association becomes political forum",
+    "verdict": "TRUE",
+    "reason": "Independent sources corroborate the core facts: in 1971, Ethiopian secondary school teachers went on strike in solidarity with the University Students' Union of Addis Ababa (USUAA), which was under regime sanctions restricting dorms/meal plans. This teacher-student joint action against the imperial government is documented by the Global Nonviolent Action Database (Swarthmore) and independently by libcom.org's history of the Ethiopian student movement, both describing 1971 as a year of teacher-student solidarity actions against Haile Selassie's regime. The broader description of professional-class disillusionment with imperial governance (teachers, students, taxi drivers, military, etc.) building through the early 1970s toward the 1974 revolution is well documented across multiple sources (Wikipedia's Ethiopian Revolution/Opposition to Haile Selassie articles, Jacobin retrospective on the student movement, HRW report on ETA). I could not find a source explicitly naming the formal \"Ethiopian Teachers Association\" (founded 1949) in connection with the 1971 strike specifically -- independent sources describe \"secondary school teachers\" generally -- so the precise institutional framing (\"ETA becomes political forum\") is a reasonable paraphrase rather than a verbatim-confirmed detail, but the country, year, and substantive claim (teachers joining students in political dissent demanding reform against imperial rule) are solidly corroborated by independent sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm that in 1971, Ethiopian secondary school teachers organized a strike in solidarity with the University Students Union of Addis Ababa (USUAA), which was facing regime sanctions (dorm/meal-plan cuts) after student unrest. This matches the description's core claim of teachers joining students in demanding reform that year. The Ethiopian Teachers' Association (ETA), founded 1949 and the country's sole teachers' organization at the time, was the natural organizational vehicle for secondary-teacher collective action in this era, and multiple independent sources document that the broader professional class (teachers, taxi drivers, civil servants) grew increasingly disillusioned with and opposed to Haile Selassie's imperial governance through the early 1970s, culminating in the 1974 revolution. The event description is a general characterization of this documented 1971 solidarity action and surrounding political climate rather than a single narrowly-sourced incident, and it holds up materially: country (Ethiopia), year (1971), and substance (teachers + students jointly opposing imperial rule) all corroborate. Note: ETA's most famous, heavily-documented confrontation with the regime over the \"Education Sector Review\" came later, in 1974, but the 1971 teacher solidarity strike with USUAA is separately and specifically dated to 1971 by independent sources (libcom.org, Swarthmore Global Nonviolent Action Database), supporting the year as given.",
+        "source": "https://libcom.org/article/1967-74-ethiopias-student-movement",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources corroborate the core facts: in 1971, Ethiopian secondary school teachers went on strike in solidarity with the University Students' Union of Addis Ababa (USUAA), which was under regime sanctions restricting dorms/meal plans. This teacher-student joint action against the imperial government is documented by the Global Nonviolent Action Database (Swarthmore) and independently by libcom.org's history of the Ethiopian student movement, both describing 1971 as a year of teacher-student solidarity actions against Haile Selassie's regime. The broader description of professional-class disillusionment with imperial governance (teachers, students, taxi drivers, military, etc.) building through the early 1970s toward the 1974 revolution is well documented across multiple sources (Wikipedia's Ethiopian Revolution/Opposition to Haile Selassie articles, Jacobin retrospective on the student movement, HRW report on ETA). I could not find a source explicitly naming the formal \"Ethiopian Teachers Association\" (founded 1949) in connection with the 1971 strike specifically -- independent sources describe \"secondary school teachers\" generally -- so the precise institutional framing (\"ETA becomes political forum\") is a reasonable paraphrase rather than a verbatim-confirmed detail, but the country, year, and substantive claim (teachers joining students in political dissent demanding reform against imperial rule) are solidly corroborated by independent sources.",
+        "source": "https://nvdatabase.swarthmore.edu/content/ethiopian-students-protest-against-emperor-selaisses-regime-1967-1974",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://nvdatabase.swarthmore.edu/content/ethiopian-students-protest-against-emperor-selaisses-regime-1967-1974"
+  },
+  {
+    "year": 1972,
+    "title": "Ethiopia hosts OAU summit amid growing domestic crisis",
+    "verdict": "FALSE",
+    "reason": "The 1972 OAU Assembly of Heads of State and Government (9th Ordinary Session) was held in Rabat, Morocco, 12-15 June 1972 — not in Addis Ababa. Multiple independent sources confirm this: UNAM Archives documents Sam Nujoma addressing the Council of Foreign Ministers 'which preceded the Summit of the Heads of State, held in Rabat, from 12-15 June, 1972,' and the African Union's own archive holds the 1972 resolutions as 'AHG/Res 67-68 (IX)' from that Rabat session (King Hassan II of Morocco was elected OAU chairman that year). The OAU summit that Addis Ababa/Ethiopia actually hosted in this era was the 10th Ordinary Session, held 25-28 May 1973 (per the official AU.int decisions archive). The underlying domestic-crisis backdrop (the 1972-1975 Wollo famine, suppressed by Haile Selassie's government, and mounting political opposition) is independently well-documented and factually real for Ethiopia in this period — so the famine/opposition contrast described plausibly fits 1973, when Addis Ababa did host the summit. But as dated to 1972, the specific claim 'Ethiopia hosts OAU summit' is factually wrong: that year's summit was in Rabat, Morocco. This is a year error, not a fabricated event, so corrected_year=1973.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The OAU Heads-of-State summit that year (the Ninth Ordinary Session) was held in Rabat, Morocco, 12-15 June 1972, per an independent university archive (UNAM Archives) explicitly quoting \"the Summit of the Heads of State, held in Rabat, from 12-15 June, 1972\" — corroborated by the AU's own archived resolution file naming convention (\"1972_ahg_res_67-68_ix_e.pdf\", i.e. session IX/ninth = 1972). Ethiopia/Addis Ababa did host an OAU Heads-of-State summit amid the Wollo famine and growing unrest, but that was the Tenth Ordinary Session (OAU's 10th-anniversary summit), held in Addis Ababa in May 1973 (AU archive file \"...27_28_may_1973...tenth_ordinary_session.pdf\"), consistent with multiple independent search results placing it in Addis Ababa. The 1972-1975 Wollo famine was indeed ongoing and the regime-dysfunction contrast is well documented (and became a much bigger scandal after Dimbleby's October 1973 documentary), but it attaches to the 1973 summit, not a 1972 one. Country and substance are real; the year is wrong, so this is FALSE with corrected_year 1973.",
+        "source": "https://archives.unam.edu.na/index.php/mr-nujoma-addresses-council-of-foreign-ministers-of-organisation-of-african-unity-oau-which-preceded-summit-of-heads-of-state-held-in-rabat-from-12-15-june-1972",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1973
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The 1972 OAU Assembly of Heads of State and Government (9th Ordinary Session) was held in Rabat, Morocco, 12-15 June 1972 — not in Addis Ababa. Multiple independent sources confirm this: UNAM Archives documents Sam Nujoma addressing the Council of Foreign Ministers 'which preceded the Summit of the Heads of State, held in Rabat, from 12-15 June, 1972,' and the African Union's own archive holds the 1972 resolutions as 'AHG/Res 67-68 (IX)' from that Rabat session (King Hassan II of Morocco was elected OAU chairman that year). The OAU summit that Addis Ababa/Ethiopia actually hosted in this era was the 10th Ordinary Session, held 25-28 May 1973 (per the official AU.int decisions archive). The underlying domestic-crisis backdrop (the 1972-1975 Wollo famine, suppressed by Haile Selassie's government, and mounting political opposition) is independently well-documented and factually real for Ethiopia in this period — so the famine/opposition contrast described plausibly fits 1973, when Addis Ababa did host the summit. But as dated to 1972, the specific claim 'Ethiopia hosts OAU summit' is factually wrong: that year's summit was in Rabat, Morocco. This is a year error, not a fabricated event, so corrected_year=1973.",
+        "source": "https://archives.unam.edu.na/index.php/mr-nujoma-addresses-council-of-foreign-ministers-of-organisation-of-african-unity-oau-which-preceded-summit-of-heads-of-state-held-in-rabat-from-12-15-june-1972",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1973
+      }
+    ],
+    "source": "https://archives.unam.edu.na/index.php/mr-nujoma-addresses-council-of-foreign-ministers-of-organisation-of-african-unity-oau-which-preceded-summit-of-heads-of-state-held-in-rabat-from-12-15-june-1972"
+  },
+  {
+    "year": 1958,
+    "title": "Haile Selassie visits India and Japan",
+    "verdict": "FALSE",
+    "reason": "The event is real in substance (Haile Selassie toured Asia, meeting Nehru in India and Emperor Hirohito/Crown Prince Akihito in Japan, discussing decolonization and development, expanding ties beyond Western partners) but the year is wrong. Multiple independent sources place the entire tour in October-November 1956, not 1958: Selassie arrived at Bombay's Gateway of India on Oct 25/26, 1956, held a three-week state visit to India (received by Nehru and President Rajendra Prasad, visited Nangal/Bhakra Dam, Dehradun, Calcutta), then traveled via Burma to Japan, meeting Emperor Hirohito and Crown Prince Akihito at the Imperial Palace/Haneda airport around Nov 20, 1956. No source found any 1958 recurrence of this trip. Since the year is a join key and is materially wrong (2 years off), this is a FALSE per the hard rules (year wrong → FALSE with corrected_year).",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources converge on 1956, not 1958, for Haile Selassie's combined Asia tour of India and Japan. He arrived in Bombay on 25/26 October 1956 for a three-week state visit to India (meeting President Prasad and PM Nehru, touring Bombay, Poona, Delhi, Nangal, Dehradun, Calcutta), then per scroll.in's itinerary detail his delegation left Calcutta for Burma and Japan, arriving in Tokyo where he met Emperor Hirohito on 20 November 1956 (corroborated by AP/Alamy and Stars and Stripes photo captions, and by unionjah.com's account of the Japan leg). He left India for Ethiopia by air on 29 November 1956. A Wikipedia 'List of diplomatic visits to India' table independently lists an Ethiopian Emperor visit in 1956 as well (though with slightly different internal dates, 11-18 Aug). No credible independent source found for a 1958 combined India+Japan trip; a search for '1958 India visit' surfaces only the same 1956 visit misdated in one AI search summary, which could not be corroborated on a fetchable page. Since the year is the specific error (country and substance — a landmark Asia tour building non-Western diplomatic ties — are accurate), this is a year-wrong case, which per the grading rubric is FALSE with corrected_year given, not PARTIAL.",
+        "source": "https://www.stripes.com/history/archive_photo_of_the_day/2022-05-23/akihito-selassie-tokyo-1956-6103203.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1956
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real in substance (Haile Selassie toured Asia, meeting Nehru in India and Emperor Hirohito/Crown Prince Akihito in Japan, discussing decolonization and development, expanding ties beyond Western partners) but the year is wrong. Multiple independent sources place the entire tour in October-November 1956, not 1958: Selassie arrived at Bombay's Gateway of India on Oct 25/26, 1956, held a three-week state visit to India (received by Nehru and President Rajendra Prasad, visited Nangal/Bhakra Dam, Dehradun, Calcutta), then traveled via Burma to Japan, meeting Emperor Hirohito and Crown Prince Akihito at the Imperial Palace/Haneda airport around Nov 20, 1956. No source found any 1958 recurrence of this trip. Since the year is a join key and is materially wrong (2 years off), this is a FALSE per the hard rules (year wrong → FALSE with corrected_year).",
+        "source": "https://scroll.in/magazine/1065881/when-an-emperor-came-calling-on-a-newly-independent-india-to-learn-from-its-early-successes",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1956
+      }
+    ],
+    "source": "https://scroll.in/magazine/1065881/when-an-emperor-came-calling-on-a-newly-independent-india-to-learn-from-its-early-successes"
   }
 ]

@@ -50,6 +50,44 @@
     "source": "https://en.wikipedia.org/wiki/Hamani_Diori"
   },
   {
+    "year": 1961,
+    "title": "Nigerien Opposition Parties Banned",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources (Wikipedia's Sawaba article, Cambridge Journal of African History article title \"Decolonization by referendum: The anomaly of Niger and the fall of Sawaba, 1958-1959,\" and general search corroboration) consistently place the banning of the opposition Sawaba party and the establishment of de facto PPN-RDA single-party rule in December 1959 — not 1961. At that time Hamani Diori held the title of Prime Minister / President of the Council of Ministers of the pre-independence autonomous government (Niger did not become independent until August 1960, and Diori was not elected President of the Republic until November 1960), so the event's framing of him as 'President Diori' acting in 1961 is also off on the actor's title, though the substance (dissolution of opposition parties, exile/arrest of Sawaba leader Djibo Bakary, entrenchment of PPN-RDA single-party rule) matches. Both country (Niger) and the core substance check out, but the year is materially wrong by about two years, so per the hard rule this is FALSE with corrected_year reported.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Wikipedia articles on Hamani Diori, the Sawaba party/Mouvement Socialiste Africain-Sawaba, and History of Niger) consistently place the banning of Niger's main opposition (Sawaba, led by Djibo Bakary) in 1959 — specifically December 1959, before independence (Aug 3, 1960) and before Diori was even elected President (Nov 1960). During 1959-1960 the French colonial administration/PPN-aligned government banned all parties except the PPN, exiling Bakary and other Sawaba leaders and folding coalition parties into the PPN, producing the de facto single-party state that persisted through the First Republic (1960-1974). No source found any distinct 1961 dissolution event; the substance of the description (opposition banned, leaders arrested/exiled, single-party PPN-RDA rule entrenched) is corroborated, but the year is materially wrong by about two years, and the actor's title ('President' Diori) also doesn't match the timing since he only became President in Nov 1960. Since the year does not hold, this is scored FALSE (year wrong) rather than PARTIAL, with corrected_year=1959.",
+        "source": "https://en.wikipedia.org/wiki/Mouvement_Socialiste_Africain-Sawaba",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1959
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Wikipedia's Sawaba article, Cambridge Journal of African History article title \"Decolonization by referendum: The anomaly of Niger and the fall of Sawaba, 1958-1959,\" and general search corroboration) consistently place the banning of the opposition Sawaba party and the establishment of de facto PPN-RDA single-party rule in December 1959 — not 1961. At that time Hamani Diori held the title of Prime Minister / President of the Council of Ministers of the pre-independence autonomous government (Niger did not become independent until August 1960, and Diori was not elected President of the Republic until November 1960), so the event's framing of him as 'President Diori' acting in 1961 is also off on the actor's title, though the substance (dissolution of opposition parties, exile/arrest of Sawaba leader Djibo Bakary, entrenchment of PPN-RDA single-party rule) matches. Both country (Niger) and the core substance check out, but the year is materially wrong by about two years, so per the hard rule this is FALSE with corrected_year reported.",
+        "source": "https://en.wikipedia.org/wiki/Sawaba",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1959
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sawaba"
+  },
+  {
     "year": 1963,
     "title": "Niger Joins OCAM and Deepens Francophone Ties",
     "verdict": "FALSE",
@@ -862,6 +900,42 @@
   },
   {
     "year": 2013,
+    "title": "Historic Centre of Agadez Inscribed as UNESCO World Heritage Site",
+    "verdict": "TRUE",
+    "reason": "Independently confirmed via web search and Wikipedia (which mirrors the official UNESCO listing text): the Historic Centre of Agadez, Niger was inscribed on the UNESCO World Heritage List in 2013 under criteria (ii) and (iii). All material details match: the old town's 11 irregular quarters with earthen architecture, the Grand Mosque's 27-meter mud-brick minaret described as the tallest such structure in the world, establishment in the 15th-16th centuries when the Sultanate of Aïr was founded and Tuareg tribes were sedentarized, and its status as a trans-Saharan caravan trade hub with living ancestral craft/commercial traditions. No discrepancies found in year, country, or any material detail.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via UNESCO's own World Heritage Centre listing (whc.unesco.org/en/list/1268) and corroborated by Wikipedia: the Historic Centre of Agadez, Niger, was inscribed on the UNESCO World Heritage List in 2013 under criteria (ii) and (iii). All material details in the description check out: the historic centre developed in the 15th-16th centuries when Tuareg tribes settled and the Sultanate of Aïr was established; it is a trans-Saharan caravan trade crossroads; it comprises 11 quarters with irregular shapes containing earthen dwellings and palatial/religious buildings; the Grand Mosque's minaret is 27 meters tall, made of mud brick, and cited as the tallest such earthen structure in the world; the inscription recognized continuing ancestral cultural, commercial, and handicraft (caravan) traditions still practiced today. Country, year, and all specifics match.",
+        "source": "https://en.wikipedia.org/wiki/Historic_Centre_of_Agadez",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via web search and Wikipedia (which mirrors the official UNESCO listing text): the Historic Centre of Agadez, Niger was inscribed on the UNESCO World Heritage List in 2013 under criteria (ii) and (iii). All material details match: the old town's 11 irregular quarters with earthen architecture, the Grand Mosque's 27-meter mud-brick minaret described as the tallest such structure in the world, establishment in the 15th-16th centuries when the Sultanate of Aïr was founded and Tuareg tribes were sedentarized, and its status as a trans-Saharan caravan trade hub with living ancestral craft/commercial traditions. No discrepancies found in year, country, or any material detail.",
+        "source": "https://en.wikipedia.org/wiki/Historic_Centre_of_Agadez",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Historic_Centre_of_Agadez"
+  },
+  {
+    "year": 2013,
     "title": "Suicide Bombings Target Arlit Mine and Military Base",
     "verdict": "TRUE",
     "reason": "Confirmed: Twin suicide bombings on May 23, 2013 hit AREVA's Somair uranium mine in Arlit and military barracks in Agadez. Total killed approximately 20-26. MUJAO claimed responsibility (with Belmokhtar/AQIM connection). Event says 25 killed — close to confirmed count. All key details match.",
@@ -1233,6 +1307,42 @@
       }
     ],
     "source": "https://www.misereor.org/fileadmin/user_upload_misereororg/publication/en/human_rights/country-brief-migration-partnership-niger.pdf"
+  },
+  {
+    "year": 2022,
+    "title": "Niger Signs New Military Cooperation Accord with France",
+    "verdict": "FALSE",
+    "reason": "The underlying strategic shift is real -- France did redeploy Barkhane forces from Mali to Niger in 2022 (Mali withdrawal completed mid-Aug 2022) and roughly 1,000-1,500 French troops did end up based in Niger for counterterrorism operations. However, multiple independent sources show no new or 'renewed' bilateral France-Niger military cooperation accord was signed in 2022. The legal basis for French military presence in Niger remained the pre-existing 1961/1977 defense accords and the March/July 2013 agreements -- these are the exact five accords the 2023 junta later denounced, none dated 2022. A multilateral 26-signatory 'Joint declaration on the fight against the terrorist threat...in the Sahel and West Africa' was signed at the Elysee on Feb 17, 2022, alongside Bazoum's Paris visit, but per the Elysee's own text it is not a bilateral Niger-France military framework, does not mention troop numbers, and mainly addresses the Mali withdrawal plus a plan for 'political and military consultations...by June 2022' -- i.e., consultations, not a signed cooperation framework. A French-language analysis (arabnews.fr) explicitly states France's 2022 Sahel strategy shift 'ne semblent pas s'etre materialises par de nouveaux accords' (does not appear to have been materialized by new agreements). No source found describes a signed 'renewed military cooperation framework' formalizing the 1,500-troop presence in 2022 as the event title/description claims. Since the described treaty-signing event itself did not occur (rather than merely occurring in a different year), corrected_year is left null.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The underlying strategic shift is real -- France did redeploy Barkhane forces from Mali to Niger in 2022 (Mali withdrawal completed mid-Aug 2022) and roughly 1,000-1,500 French troops did end up based in Niger for counterterrorism operations. However, multiple independent sources show no new or 'renewed' bilateral France-Niger military cooperation accord was signed in 2022. The legal basis for French military presence in Niger remained the pre-existing 1961/1977 defense accords and the March/July 2013 agreements -- these are the exact five accords the 2023 junta later denounced, none dated 2022. A multilateral 26-signatory 'Joint declaration on the fight against the terrorist threat...in the Sahel and West Africa' was signed at the Elysee on Feb 17, 2022, alongside Bazoum's Paris visit, but per the Elysee's own text it is not a bilateral Niger-France military framework, does not mention troop numbers, and mainly addresses the Mali withdrawal plus a plan for 'political and military consultations...by June 2022' -- i.e., consultations, not a signed cooperation framework. A French-language analysis (arabnews.fr) explicitly states France's 2022 Sahel strategy shift 'ne semblent pas s'etre materialises par de nouveaux accords' (does not appear to have been materialized by new agreements). No source found describes a signed 'renewed military cooperation framework' formalizing the 1,500-troop presence in 2022 as the event title/description claims. Since the described treaty-signing event itself did not occur (rather than merely occurring in a different year), corrected_year is left null.",
+        "source": "https://www.arabnews.fr/node/410261/france",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The underlying strategic reality is well-corroborated: in 2022, as France withdrew Barkhane from Mali (Feb-Aug 2022; Barkhane formally ended Nov 9, 2022), Niger became France's central Sahel partner. Niger's Bazoum government backed, and Niger's National Assembly voted (April 22, 2022, 131-31) to approve hosting more European/French special forces; French troop levels in Niger built up to roughly 1,000-1,400+ by mid-late 2022, reaching the oft-cited ~1,500 figure that held through 2023. However, extensive bilingual searching (Wikipedia France-Niger relations, Jeune Afrique, France24, Al Jazeera, Africanews, APAnews, coup-era retrospectives) found no documented formal bilateral 'military cooperation accord/framework' actually signed between the French and Nigerien governments in 2022. Documented France-Niger legal instruments are older (1977 defense accord; March/July 2013 accords on French military intervention; a 2015 air-base technical agreement; a 2020 Takuba status-of-forces protocol) or, in 2023, the denunciation of \"security and defense cooperation agreements\" -- none dated to a 2022 signing. What actually happened in 2022 was (a) a Feb 16, 2022 Bazoum-Macron Elysee summit with a political/verbal understanding on troop repositioning, (b) Niger's own parliament passing a domestic bill in April 2022 permitting foreign (not exclusively French) troop presence, and (c) a July 2022 Lecornu/Colonna ministerial visit that signed financial-aid agreements (a EUR50m loan + EUR20m grant) alongside military discussions, not a new defense treaty. So country/year/substance (Niger central to France's post-Mali Sahel strategy, ~1,500 French troops, continued counterterrorism ops) hold, but the specific claim of a signed bilateral \"military cooperation accord/framework\" with France is not substantiated -- the real 2022 process was a domestic parliamentary approval plus an informal political-level understanding, not a treaty-signing event.",
+        "source": "https://www.aljazeera.com/news/2022/4/22/niger-debates-hosting-more-european-forces-withdrawing-from-mali",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.arabnews.fr/node/410261/france"
   },
   {
     "year": 2023,

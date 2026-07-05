@@ -4669,5 +4669,43 @@
       }
     ],
     "source": "https://www.nbcnews.com/news/world/taliban-publish-laws-ban-womens-voices-bare-faces-public-rcna167904"
+  },
+  {
+    "year": 1983,
+    "title": "Soviet forces mount largest offensive of the war in Panjshir",
+    "verdict": "FALSE",
+    "reason": "The event is real in substance (a ~20,000-troop, ~300-aircraft Soviet offensive into the Panjshir Valley that was the largest and, by contemporary count, the seventh of the war, with Massoud's forces avoiding direct confrontation and retreating into mountain sanctuaries while inflicting losses via ambush) but it occurred in 1984 (Panjshir VII, launched 21 April 1984), not 1983. In fact, 1983 was the opposite of an offensive year for the Panjshir: Massoud and Soviet colonel Anatoly Tkachev negotiated a ceasefire/truce in January 1983 that held for roughly a year (extended into early 1984), during which Soviet forces largely withdrew from the valley except for a small garrison at Anava. No major Panjshir offensive took place in 1983. Multiple independent sources (Wikipedia's Panjshir offensives article, and web summaries citing a 1984 Washington Post report and contemporary news describing the April 1984 drive as 'the seventh so far') converge on 1984 as the correct year for this specific described event.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially matches the description (seventh and largest Soviet-Afghan offensive into the Panjshir Valley, >20,000 mostly Soviet troops, Massoud's forces avoiding direct confrontation and using ambush/retreat tactics after evacuating civilians), but it did not occur in 1983. Multiple independent sources place it in 1984: Wikipedia's Panjshir offensives article lists 'Panjshir VII' as April 19-September 1984, and a contemporaneous May 1984 Christian Science Monitor report explicitly states the offensive \"reportedly launched April 21 [1984], is the seventh so far since the Soviet invasion.\" The January 1983 ceasefire is real but it lasted through most of 1983 (extended) and only collapsed when Panjshiris refused to renew it, with the actual offensive beginning in April 1984, not 1983. Year mismatch means this must be scored FALSE per the hard rule, with corrected_year=1984.",
+        "source": "https://www.csmonitor.com/1984/0502/050215.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1984
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real in substance (a ~20,000-troop, ~300-aircraft Soviet offensive into the Panjshir Valley that was the largest and, by contemporary count, the seventh of the war, with Massoud's forces avoiding direct confrontation and retreating into mountain sanctuaries while inflicting losses via ambush) but it occurred in 1984 (Panjshir VII, launched 21 April 1984), not 1983. In fact, 1983 was the opposite of an offensive year for the Panjshir: Massoud and Soviet colonel Anatoly Tkachev negotiated a ceasefire/truce in January 1983 that held for roughly a year (extended into early 1984), during which Soviet forces largely withdrew from the valley except for a small garrison at Anava. No major Panjshir offensive took place in 1983. Multiple independent sources (Wikipedia's Panjshir offensives article, and web summaries citing a 1984 Washington Post report and contemporary news describing the April 1984 drive as 'the seventh so far') converge on 1984 as the correct year for this specific described event.",
+        "source": "https://en.wikipedia.org/wiki/Panjshir_offensives_(Soviet%E2%80%93Afghan_War)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1984
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Panjshir_offensives_(Soviet%E2%80%93Afghan_War)"
   }
 ]

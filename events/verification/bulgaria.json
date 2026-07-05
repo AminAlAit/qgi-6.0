@@ -312,6 +312,42 @@
     ]
   },
   {
+    "year": 1966,
+    "title": "Kozloduy Nuclear Power Plant Agreements Signed with USSR",
+    "verdict": "TRUE",
+    "reason": "Independent sources (Kozloduy NPP official history page, Bulgarian news agency BTA) confirm that on 15 July 1966 Bulgaria signed an intergovernmental agreement with the Soviet Union in Sofia for cooperation on design, construction, and operation of a nuclear power plant to be built on the Danube River near Kozloduy, driven by growing electricity demand. Unit 1 was commissioned into commercial operation in 1974, matching the event description exactly. This made Bulgaria one of the earliest Eastern Bloc nuclear power producers (Southeast Europe's first). All material details -- country, year, actor (USSR), location (Danube/Kozloduy), and the 1974 commercial-operation follow-on -- are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources (BTA news archive, Wikipedia, World Nuclear Association, kznpp.org official plant history) confirm Bulgaria signed a cooperation agreement with the Soviet Union on July 15, 1966 in Sofia for construction of the Kozloduy Nuclear Power Plant on the Danube. The agreement covered Soviet-supplied VVER reactor design, equipment and specialist training. Unit 1 (VVER-440) achieved physical startup June 30, 1974 and grid connection July 24, 1974, making Bulgaria one of the earliest nuclear power producers in Eastern Europe/Southeast Europe. All material details (country, year, actors, purpose, 1974 commercial-operation detail) match the event description.",
+        "source": "https://www.bta.bg/en/news/archives/930785-july-15-1966-bulgaria-and-soviet-union-sign-nuclear-power-agreement",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources (Kozloduy NPP official history page, Bulgarian news agency BTA) confirm that on 15 July 1966 Bulgaria signed an intergovernmental agreement with the Soviet Union in Sofia for cooperation on design, construction, and operation of a nuclear power plant to be built on the Danube River near Kozloduy, driven by growing electricity demand. Unit 1 was commissioned into commercial operation in 1974, matching the event description exactly. This made Bulgaria one of the earliest Eastern Bloc nuclear power producers (Southeast Europe's first). All material details -- country, year, actor (USSR), location (Danube/Kozloduy), and the 1974 commercial-operation follow-on -- are corroborated.",
+        "source": "https://www.kznpp.org/en/about-us/location-and-history",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.kznpp.org/en/about-us/location-and-history"
+  },
+  {
     "year": 1968,
     "title": "Bulgaria Participates in Warsaw Pact Invasion of Czechoslovakia",
     "verdict": "TRUE",
@@ -491,6 +527,42 @@
         }
       }
     ]
+  },
+  {
+    "year": 1983,
+    "title": "Rila Monastery Inscribed as UNESCO World Heritage Site",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources (Wikipedia, Britannica, UNESCO WHC listing per search snippet) confirm Rila Monastery in Bulgaria was inscribed on the UNESCO World Heritage List in 1983 (specifically December 9, 1983, under criterion iv). It was founded in the 10th century by the hermit St John (Ivan) of Rila, was destroyed by fire in 1833 and rebuilt 1834-1862, and is widely described as a defining monument of the Bulgarian National Revival and a symbol of Slavic cultural/national identity preserved under centuries of Ottoman rule, remaining one of Bulgaria's most visited cultural and religious sites. All material details in the event description check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The official UNESCO World Heritage Centre listing confirms Rila Monastery was inscribed on the World Heritage List on 9 December 1983 (criterion iv). Wikipedia and Britannica corroborate the founding by St John of Rila in the 10th century and the rebuild between 1834-1862 after a fire, matching every material detail in the event description (country, year, founder, rebuild dates, cultural significance as a Bulgarian National Revival monument).",
+        "source": "https://whc.unesco.org/en/list/216/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Wikipedia, Britannica, UNESCO WHC listing per search snippet) confirm Rila Monastery in Bulgaria was inscribed on the UNESCO World Heritage List in 1983 (specifically December 9, 1983, under criterion iv). It was founded in the 10th century by the hermit St John (Ivan) of Rila, was destroyed by fire in 1833 and rebuilt 1834-1862, and is widely described as a defining monument of the Bulgarian National Revival and a symbol of Slavic cultural/national identity preserved under centuries of Ottoman rule, remaining one of Bulgaria's most visited cultural and religious sites. All material details in the event description check out.",
+        "source": "https://en.wikipedia.org/wiki/Rila_Monastery",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Rila_Monastery"
   },
   {
     "year": 1984,

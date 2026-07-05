@@ -1,0 +1,38 @@
+[
+  {
+    "year": 2023,
+    "title": "Xeedho Wedding Tradition Inscribed on UNESCO Intangible Heritage List",
+    "verdict": "PARTIAL",
+    "reason": "Confirmed via UNESCO's own ICH site and UNESCO.org: on 5 December 2023, at the 18th session of the Intergovernmental Committee for the Safeguarding of Intangible Cultural Heritage in Kasane, Botswana, Xeedho (the Somali-Djiboutian wedding ritual of a mother-in-law preparing dried/butter-preserved meat in a carved wooden container for her new son-in-law) became the first element from Djibouti inscribed by UNESCO, scoring a perfect 5/5 on evaluation criteria, with an associated safeguarding project that trained 30 young girls (and 30 teachers) amid concern over declining transmission. All of that matches the description precisely. However, one material detail is wrong: Xeedho was inscribed on the **List of Intangible Cultural Heritage in Need of Urgent Safeguarding (USL)**, NOT the **Representative List of the Intangible Cultural Heritage of Humanity** as the event description explicitly states. These are two distinct UNESCO lists under the 2003 Convention with different meanings (urgent safeguarding = at risk of disappearing vs. representative = broadly recognized heritage), and ich.unesco.org's own Djibouti country page and the dedicated Xeedho USL page both confirm it as '(USL)'. Year and country hold; the specific list named is incorrect, so this is a scope/detail error rather than a fabrication.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed by UNESCO's own article and the official ICH (Intangible Cultural Heritage) database entry. Xeedho was inscribed on UNESCO's Representative List of the Intangible Cultural Heritage of Humanity on 5 December 2023, during the 18th session of the Intergovernmental Committee for the Safeguarding of Intangible Cultural Heritage held in Kasane, Botswana. It is confirmed as the first element from Djibouti ever inscribed, scoring a perfect 5/5 on evaluation criteria. Xeedho is described consistently across sources as a Somali-Djiboutian tradition of dromedary/camel meat coated in butter/ghee and preserved in a carved wooden container, presented by a bride's mother to her new son-in-law. UNESCO funding is confirmed to have supported an association training 30 young girls in the practice amid concerns over declining transmission to younger generations. All material details in the event description (date, location, scoring, first-for-Djibouti status, ritual description, training of 30 girls) match the sourced record exactly.",
+        "source": "https://www.unesco.org/en/articles/xeedho-first-intangible-cultural-heritage-treasure-djibouti-be-inscribed-unescos-world-heritage-list",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Confirmed via UNESCO's own ICH site and UNESCO.org: on 5 December 2023, at the 18th session of the Intergovernmental Committee for the Safeguarding of Intangible Cultural Heritage in Kasane, Botswana, Xeedho (the Somali-Djiboutian wedding ritual of a mother-in-law preparing dried/butter-preserved meat in a carved wooden container for her new son-in-law) became the first element from Djibouti inscribed by UNESCO, scoring a perfect 5/5 on evaluation criteria, with an associated safeguarding project that trained 30 young girls (and 30 teachers) amid concern over declining transmission. All of that matches the description precisely. However, one material detail is wrong: Xeedho was inscribed on the **List of Intangible Cultural Heritage in Need of Urgent Safeguarding (USL)**, NOT the **Representative List of the Intangible Cultural Heritage of Humanity** as the event description explicitly states. These are two distinct UNESCO lists under the 2003 Convention with different meanings (urgent safeguarding = at risk of disappearing vs. representative = broadly recognized heritage), and ich.unesco.org's own Djibouti country page and the dedicated Xeedho USL page both confirm it as '(USL)'. Year and country hold; the specific list named is incorrect, so this is a scope/detail error rather than a fabrication.",
+        "source": "https://ich.unesco.org/en/USL/xeedho-02001",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://ich.unesco.org/en/USL/xeedho-02001"
+  }
+]

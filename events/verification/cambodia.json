@@ -274,6 +274,44 @@
   },
   {
     "year": 1967,
+    "title": "Khmer Rouge Launches Formal Armed Insurgency",
+    "verdict": "FALSE",
+    "reason": "The Samlaut peasant uprising (Battambang, April 1967) was real and the CPK did move its leadership to remote northeastern bases (Ratanakiri) around 1966-67 to prepare cadres and recruit ethnic minorities — those background details in the description are broadly accurate. But the CPK's actual FORMAL launch of armed struggle — the decision to switch to full \"People's War,\" the creation of the Revolutionary Army of Kampuchea (RAK) as a military wing, and the first armed offensive (the attack on the Bay Damram army post in Battambang) — is consistently dated by multiple independent sources to 17 January 1968, not 1967. Multiple searches (Wikipedia's Communist Party of Kampuchea / Khmer Rouge / Cambodian Civil War articles, and secondary summaries) consistently describe January 1968 as \"the official start of the Khmer Rouge's armed insurgency\" and the month RAK was established, with Samlaut (1967) treated as the precipitating peasant revolt rather than the formal CPK launch itself. Since the year is the specific element that is off while the substance of the description (formal launch of armed struggle, guerrilla bases, recruitment, transformation into an active military force) matches 1968 rather than 1967, this is a year-wrong case, not a same-year detail discrepancy.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Independent sources consistently place the CPK's formal/national armed insurgency launch in January 1968, not 1967. In 1967, the Samlaut Uprising (April 1967, Battambang) was a spontaneous peasant tax revolt that historian David Chandler describes as NOT centrally directed by the CPK (\"did not respond to orders from the CPK central committee\"), and Wikipedia's Communist Party of Kampuchea article states \"In 1967, the CPK made several small-scale attempts at insurgency but failed with little success.\" The formal, organized launch — first coordinated attack (17 January 1968, ~50 fighters on an army post near Battambang), formation of the Revolutionary Army of Kampuchea as the party's military wing, and the description of it as a \"national insurgency\" — is dated by Wikipedia's Khmer Rouge, Communist Party of Kampuchea, and Cambodian Civil War articles to January/1968. The guerrilla-base-building in the northeast (Ratanakiri/Mondulkiri, recruiting Khmer Loeu minorities) began even earlier, from 1963, and continued through 1967-1969, so it isn't a clean 1967 marker either. Country (Cambodia) and general narrative arc (Saloth Sar's faction, Sihanouk government, northeastern guerrilla bases, minority recruitment) are all correct, but the specific claim \"launches formal armed insurgency\" is materially a 1968 event, not 1967, so the year is wrong per the hard rule.",
+        "source": "https://en.wikipedia.org/wiki/Communist_Party_of_Kampuchea",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1968
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The Samlaut peasant uprising (Battambang, April 1967) was real and the CPK did move its leadership to remote northeastern bases (Ratanakiri) around 1966-67 to prepare cadres and recruit ethnic minorities — those background details in the description are broadly accurate. But the CPK's actual FORMAL launch of armed struggle — the decision to switch to full \"People's War,\" the creation of the Revolutionary Army of Kampuchea (RAK) as a military wing, and the first armed offensive (the attack on the Bay Damram army post in Battambang) — is consistently dated by multiple independent sources to 17 January 1968, not 1967. Multiple searches (Wikipedia's Communist Party of Kampuchea / Khmer Rouge / Cambodian Civil War articles, and secondary summaries) consistently describe January 1968 as \"the official start of the Khmer Rouge's armed insurgency\" and the month RAK was established, with Samlaut (1967) treated as the precipitating peasant revolt rather than the formal CPK launch itself. Since the year is the specific element that is off while the substance of the description (formal launch of armed struggle, guerrilla bases, recruitment, transformation into an active military force) matches 1968 rather than 1967, this is a year-wrong case, not a same-year detail discrepancy.",
+        "source": "https://en.wikipedia.org/wiki/Communist_Party_of_Kampuchea",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1968
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Communist_Party_of_Kampuchea"
+  },
+  {
+    "year": 1967,
     "title": "Samlaut Peasant Uprising Signals Growing Rural Discontent",
     "verdict": "TRUE",
     "reason": "The Samlaut Uprising is a well-documented historical event: a peasant rebellion broke out on 2 April 1967 near Samlaut, Battambang Province, Cambodia, triggered by the government's forced/low-price rice-collection system ('ramassage du paddy') enforced by troops — angry peasants attacked and killed soldiers collecting rice. The Royal Cambodian government (under Sihanouk/Lon Nol) responded with violent military suppression (army sweeps, air force strafing/bombing of villages), with a death toll reported in the hundreds and thousands of villagers fleeing into the forest. It is widely regarded by historians (notably Ben Kiernan, who devoted a two-volume scholarly monograph, 'The Samlaut Rebellion and Its Aftermath, 1967-70: The Origins of Cambodia's Liberation Movement,' Monash Univ., 1975, to this exact event) as a foundational mobilization of rural discontent that fed directly into the Khmer Rouge's formal launch of armed struggle later in 1967-68. Independent (non-Wikipedia) corroboration was found on khmerization.blogspot.com, which confirms the Samlaut location, the land/rice-related grievances against provincial officials, and the rebellion's role in escalating into the civil war that the Khmer Rouge exploited. Multiple other independent leads (Kiernan's monograph listings on Google Books/HathiTrust/Semantic Scholar/Amazon/Goodreads, a ResearchGate peer-reviewed paper on Khmer Rouge state formation in NW Cambodia) all corroborate the same year, location, cause, and historical significance, though those specific pages did not load full text via WebFetch. All material details in the event description (location, trigger, suppression, death toll, and downstream link to Khmer Rouge mobilization) match.",
@@ -884,6 +922,42 @@
   },
   {
     "year": 1992,
+    "title": "Angkor Inscribed as UNESCO World Heritage Site",
+    "verdict": "TRUE",
+    "reason": "Confirmed by UNESCO's own sources: Angkor was inscribed on the World Heritage List on 14 December 1992 at the 16th session of the World Heritage Committee held in Santa Fe, USA, and simultaneously placed on the List of World Heritage in Danger due to looting, illegal excavation, and land mines (per whc.unesco.org news article and unesco.org anniversary article). It was removed from the danger list in 2004 after international conservation efforts (led by ICC-Angkor, involving Japan and France) including clearance of over 25,000 anti-personnel mines. All material details in the event description (date, session/location, reasons for danger listing, 2004 removal) match authoritative UNESCO sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed by UNESCO World Heritage Centre's own decision record and news pages: at the 16th session of the World Heritage Committee in Santa Fe, USA, Angkor was inscribed on the World Heritage List by Decision 16 COM X.A dated 14 December 1992, and was simultaneously placed on the List of World Heritage in Danger due to looting, illegal excavation and land mines. This prompted the 1993 Tokyo intergovernmental conference and creation of ICC-Angkor for international restoration efforts. Angkor was removed from the danger list in June 2004 after over a decade of conservation work. All material details (date, location of session, simultaneous danger listing, reasons, 2004 removal) match exactly.",
+        "source": "https://whc.unesco.org/en/decisions/3438/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by UNESCO's own sources: Angkor was inscribed on the World Heritage List on 14 December 1992 at the 16th session of the World Heritage Committee held in Santa Fe, USA, and simultaneously placed on the List of World Heritage in Danger due to looting, illegal excavation, and land mines (per whc.unesco.org news article and unesco.org anniversary article). It was removed from the danger list in 2004 after international conservation efforts (led by ICC-Angkor, involving Japan and France) including clearance of over 25,000 anti-personnel mines. All material details in the event description (date, session/location, reasons for danger listing, 2004 removal) match authoritative UNESCO sources.",
+        "source": "https://www.unesco.org/en/articles/28th-anniversary-angkor-unesco-world-heritage-list",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.unesco.org/en/articles/28th-anniversary-angkor-unesco-world-heritage-list"
+  },
+  {
+    "year": 1992,
     "title": "UNTAC Deploys 15,000 Personnel to Administer Cambodia",
     "verdict": "TRUE",
     "reason": "UNTAC deployed approximately 15,000 military peacekeepers plus civilian police and administrators in 1992. Was the largest and most expensive UN operation at the time. Core facts confirmed.",
@@ -967,6 +1041,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Cambodia_and_the_International_Monetary_Fund"
+  },
+  {
+    "year": 1995,
+    "title": "Garment Industry Begins Rapid Export-Led Growth",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm Cambodia's garment/textile export industry began its rapid growth phase in the mid-1990s, with 1995 as a credible start point: garment exports grew from roughly $26 million in 1995 to $2 billion by 2004 (average ~45%/year growth 1995-2004), following the 1994 Law on Investment. Asian manufacturers (from Hong Kong, Taiwan, Malaysia, Singapore) began producing for export in Cambodia specifically to exploit quota-free access to US/EU markets combined with low labor costs -- matching the description of 'international brands attracted by low labor costs and trade preferences.' The industry became Cambodia's largest formal-sector employer and largest export earner (40%+ of merchandise exports), employing hundreds of thousands of workers, the large majority young women from rural areas -- confirmed by World Bank, Khmer Times, CamboJA News, and Open Development Cambodia reporting on later years. All material details (country, approximate year, mechanism, employer role, workforce demographics) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Cambodia's garment export industry began its rapid growth from 1995, following the 1994 Law on Investment and post-Paris Peace Agreement stabilization. Garment exports grew from $26 million in 1995 to $2 billion by 2004; exports to the US rose from under $1 million in 1995 to $1.1 billion by 2003; industry employment grew from ~18,000 to over 200,000 (and eventually hundreds of thousands, predominantly young rural women) over the following decade. The industry became Cambodia's largest formal-sector employer and top export earner, attracting Asian and international manufacturers via quota-free access and low labor costs, exactly as described. Year and country both hold; magnitude and characterization match.",
+        "source": "https://www.files.ethz.ch/isn/23286/esau_wp13.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Cambodia's garment/textile export industry began its rapid growth phase in the mid-1990s, with 1995 as a credible start point: garment exports grew from roughly $26 million in 1995 to $2 billion by 2004 (average ~45%/year growth 1995-2004), following the 1994 Law on Investment. Asian manufacturers (from Hong Kong, Taiwan, Malaysia, Singapore) began producing for export in Cambodia specifically to exploit quota-free access to US/EU markets combined with low labor costs -- matching the description of 'international brands attracted by low labor costs and trade preferences.' The industry became Cambodia's largest formal-sector employer and largest export earner (40%+ of merchandise exports), employing hundreds of thousands of workers, the large majority young women from rural areas -- confirmed by World Bank, Khmer Times, CamboJA News, and Open Development Cambodia reporting on later years. All material details (country, approximate year, mechanism, employer role, workforce demographics) check out.",
+        "source": "https://opendevelopmentcambodia.net/topics/garments-and-textiles/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://opendevelopmentcambodia.net/topics/garments-and-textiles/"
   },
   {
     "year": 1996,

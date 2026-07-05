@@ -525,6 +525,42 @@
     "source": "https://countrystudies.us/ecuador/15.htm"
   },
   {
+    "year": 1978,
+    "title": "Quito Named UNESCO's First World Heritage City",
+    "verdict": "TRUE",
+    "reason": "Confirmed from multiple independent sources: the historic center of Quito, Ecuador was inscribed on the UNESCO World Heritage List on 18 September 1978, together with the Historic Centre of Kraków, Poland — both cited repeatedly as the first historic city centers ever inscribed under the 1972 World Heritage Convention, part of the inaugural batch of 12 sites (which also included Galápagos, Yellowstone, Mesa Verde, Aachen Cathedral, etc.). UNESCO's own criteria for Quito cite the exchange between Spanish and indigenous cultures and its status as one of the best-preserved historic centers in Latin America, matching the description's claims about colonial architecture (16th-18th century) and living indigenous/Spanish traditions. Follow-up research also confirms decades of subsequent restoration investment (FONSAL fund created 1987 after earthquake damage, $41M IADB loan in early 2000s, $200M tourism-driven investment ~2000, $55M+ 2020-2024), matching the description's claim about the listing driving restoration investment. Minor note: the World Heritage Committee's 2nd session that made the decision ran 5-8 September 1978 in Washington DC per the official UNESCO archive page, while \"18 September\" is the date used almost universally in secondary/tertiary sources (Wikipedia, multiple anniversary retrospectives) as the formal declaration/publication date — this is a plausible session-vs-publication distinction, not a substantive discrepancy, so it does not change the verdict.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources confirm: the historic center of Quito, Ecuador was inscribed by UNESCO as a World Heritage Site on September 18, 1978, in the same inaugural inscription batch (the first 12 sites ever listed) as the Historic Centre of Kraków, Poland. Both are widely cited as the first historic city centers recognized under the 1972 World Heritage Convention. The official UNESCO World Heritage Centre listing (whc.unesco.org/en/list/2) describes Quito as having 'the best-preserved, least altered historic centre in Latin America' and cites criteria (ii) and (iv) — an important interchange of human values between Spanish and indigenous populations producing a unique architectural ensemble — matching the description's claims about colonial architecture and living indigenous/Spanish traditions. Wikipedia's Quito article independently corroborates the exact date, the joint inscription with Kraków, and the 'first' designation. The claim about subsequent decades of restoration investment in the old town is a well-documented, uncontroversial consequence widely reported (e.g., Casa de la Cultura/BID-funded old-town rehabilitation programs) and consistent with the rest of the record.",
+        "source": "https://en.wikipedia.org/wiki/Quito",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: the historic center of Quito, Ecuador was inscribed on the UNESCO World Heritage List on 18 September 1978, together with the Historic Centre of Kraków, Poland — both cited repeatedly as the first historic city centers ever inscribed under the 1972 World Heritage Convention, part of the inaugural batch of 12 sites (which also included Galápagos, Yellowstone, Mesa Verde, Aachen Cathedral, etc.). UNESCO's own criteria for Quito cite the exchange between Spanish and indigenous cultures and its status as one of the best-preserved historic centers in Latin America, matching the description's claims about colonial architecture (16th-18th century) and living indigenous/Spanish traditions. Follow-up research also confirms decades of subsequent restoration investment (FONSAL fund created 1987 after earthquake damage, $41M IADB loan in early 2000s, $200M tourism-driven investment ~2000, $55M+ 2020-2024), matching the description's claim about the listing driving restoration investment. Minor note: the World Heritage Committee's 2nd session that made the decision ran 5-8 September 1978 in Washington DC per the official UNESCO archive page, while \"18 September\" is the date used almost universally in secondary/tertiary sources (Wikipedia, multiple anniversary retrospectives) as the formal declaration/publication date — this is a plausible session-vs-publication distinction, not a substantive discrepancy, so it does not change the verdict.",
+        "source": "https://en.wikipedia.org/wiki/Quito",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Quito"
+  },
+  {
     "year": 1979,
     "title": "Jaime Roldós Elected; Return to Constitutional Democracy",
     "verdict": "TRUE",

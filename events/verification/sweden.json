@@ -151,6 +151,42 @@
   },
   {
     "year": 1961,
+    "title": "17th-Century Warship Vasa Raised from Stockholm Harbor",
+    "verdict": "TRUE",
+    "reason": "Confirmed via the official Vasa Museum (Stockholm) website and corroborating web search results. The Vasa sank on its maiden voyage on August 10, 1628, after traveling only ~1,300 meters, due to an unstable (top-heavy) design that let water in through open gun ports — matching the description. Anders Franzén located the wreck in 1956 (confirmed by divers Sept 4, 1956), matching 'divers had located the wreck in 1956'. The salvage operation (1957-1959 tunneling under the hull, threading steel cables, suspending the ship in a cable basket connected to pontoons Oden and Frigg) matches 'steel cables threaded beneath the hull and pontoons.' The ship broke the surface on April 24, 1961, exactly as described — 333 years after sinking. Preservation with polyethylene glycol spraying ran from April 1962 to 1979 (17 years), matching '1962-1979' in the description. The ship is now displayed at the Vasa Museum (opened 1990 in its current building), described as one of Scandinavia's most-visited cultural attractions — consistent with the claim. All material details (country, year, date, mechanism, preservation timeline, outcome) check out against the official museum's own historical account.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources (Wikipedia, Britannica, and the Vasa Museum's own official history page) confirm all material details: the Vasa sank on its maiden voyage in Stockholm harbor on August 10, 1628 due to top-heavy instability; the wreck was located by Anders Franzén in the mid-1950s; the ship was raised largely intact on April 24, 1961 (exactly 333 years after sinking) using steel cables threaded under the hull and pontoons; it is now preserved and displayed at the Vasa Museum in Stockholm, one of Scandinavia's most-visited museums. No material discrepancies found.",
+        "source": "https://www.vasamuseet.se/en/explore/vasa-history/salvage",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via the official Vasa Museum (Stockholm) website and corroborating web search results. The Vasa sank on its maiden voyage on August 10, 1628, after traveling only ~1,300 meters, due to an unstable (top-heavy) design that let water in through open gun ports — matching the description. Anders Franzén located the wreck in 1956 (confirmed by divers Sept 4, 1956), matching 'divers had located the wreck in 1956'. The salvage operation (1957-1959 tunneling under the hull, threading steel cables, suspending the ship in a cable basket connected to pontoons Oden and Frigg) matches 'steel cables threaded beneath the hull and pontoons.' The ship broke the surface on April 24, 1961, exactly as described — 333 years after sinking. Preservation with polyethylene glycol spraying ran from April 1962 to 1979 (17 years), matching '1962-1979' in the description. The ship is now displayed at the Vasa Museum (opened 1990 in its current building), described as one of Scandinavia's most-visited cultural attractions — consistent with the claim. All material details (country, year, date, mechanism, preservation timeline, outcome) check out against the official museum's own historical account.",
+        "source": "https://www.vasamuseet.se/en/explore/vasa-history/timeline",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.vasamuseet.se/en/explore/vasa-history/timeline"
+  },
+  {
+    "year": 1961,
     "title": "Dag Hammarskjöld Dies in Plane Crash Over Congo",
     "verdict": "TRUE",
     "reason": "Dag Hammarskjöld was killed on 18 September 1961 when his aircraft crashed near Ndola, Northern Rhodesia (now Zambia), while on a peace mission during the Congo Crisis. The crash remains contested and is the subject of ongoing UN investigations.",

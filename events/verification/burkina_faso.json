@@ -1881,5 +1881,76 @@
       }
     ],
     "source": "https://fr.wikipedia.org/wiki/Festival_panafricain_du_cin%C3%A9ma_et_de_la_t%C3%A9l%C3%A9vision_de_Ouagadougou"
+  },
+  {
+    "year": 1987,
+    "title": "Compaoré Begins Hosting West African Peace Negotiations",
+    "verdict": "FALSE",
+    "reason": "Blaise Compaoré seized power in Burkina Faso on 15 October 1987 (killing Thomas Sankara), but he did not begin hosting West African peace negotiations that year, and the specific claim of \"hosting initial peace talks in the Liberian civil war\" in 1987 is chronologically impossible: the First Liberian Civil War did not begin until December 1989, two years later. Multiple independent sources (Wikipedia via WebFetch, France24, ISS Africa) confirm Compaoré's actual initial involvement in Liberia was the opposite of neutral mediation — he armed and supplied troops to Charles Taylor's NPFL rebels and opposed ECOWAS's military intervention, a role he only partially reversed later. His documented reputation as a \"peacemaker\"/regional mediator developed gradually starting in the early-to-mid 1990s (e.g., the first ECOWAS peace conference on Liberia was at Bamako in November 1990) and became prominent only from the 2000s onward (Inter-Togolese Dialogue 2006, Ivory Coast Ouagadougou Political Agreement 2007, Mali mediation 2012). No source supports any 1987 mediation activity — he had just taken power in a bloody coup and had no such reputation yet. The event description conflates decades of later diplomatic activity into a false 1987 start date.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Chronologically impossible and mischaracterized. Compaoré seized power on Oct 15, 1987 via a coup that killed Sankara, leaving under 3 months in the stated year, during which Burkina Faso was internationally isolated over Sankara's killing, not hosting peace talks. More decisively, the description claims he hosted 'initial peace talks in the Liberian civil war,' but the First Liberian Civil War did not begin until Charles Taylor's NPFL invasion on 24 December 1989 — two years after this event's stated date — so no Liberian peace talks of any kind could have occurred in or shortly after 1987. Independent sources also show Compaoré's actual early relationship to the Liberian conflict was the opposite of neutral mediation: he, alongside Gaddafi, provided Taylor's NPFL with training camps in Ouagadougou, arms transit through Burkina Faso, and Burkinabe troops for the December 1989 invasion — i.e. he was a combatant-enabler in the conflict's origin, not a neutral broker. His documented reputation as a regional mediator (Togo 2006, Côte d'Ivoire/Ouagadougou Political Agreement 2007, Mali 2012) is real but emerged roughly two decades later than claimed, not as an immediate consequence of his 1987 coup. No source found supports Burkina Faso hosting any West African peace negotiation in 1987.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Blaise Compaoré seized power in Burkina Faso on 15 October 1987 (killing Thomas Sankara), but he did not begin hosting West African peace negotiations that year, and the specific claim of \"hosting initial peace talks in the Liberian civil war\" in 1987 is chronologically impossible: the First Liberian Civil War did not begin until December 1989, two years later. Multiple independent sources (Wikipedia via WebFetch, France24, ISS Africa) confirm Compaoré's actual initial involvement in Liberia was the opposite of neutral mediation — he armed and supplied troops to Charles Taylor's NPFL rebels and opposed ECOWAS's military intervention, a role he only partially reversed later. His documented reputation as a \"peacemaker\"/regional mediator developed gradually starting in the early-to-mid 1990s (e.g., the first ECOWAS peace conference on Liberia was at Bamako in November 1990) and became prominent only from the 2000s onward (Inter-Togolese Dialogue 2006, Ivory Coast Ouagadougou Political Agreement 2007, Mali mediation 2012). No source supports any 1987 mediation activity — he had just taken power in a bloody coup and had no such reputation yet. The event description conflates decades of later diplomatic activity into a false 1987 start date.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1990
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "title": "Traoré Declares Burkina Faso a Sovereign State — New Governance Decree",
+    "verdict": "FALSE",
+    "reason": "No source documents a 2024 \"sovereignty decree\" by Traoré matching this description. Extensive searching turns up the real, distinct 2024 governance events instead: (1) a constitutional amendment adopted 30 Dec 2023 by the Transitional Legislative Assembly and validated by the Constitutional Council on 12 Jan 2024 — its actual content was narrow (abolished the Economic and Social Council and the Ombudsman, made national languages official, placed the prosecutor's office more directly under the Justice Ministry) with no clause on parliamentary approval for foreign troop deployments; (2) Burkina Faso's joint declaration (with Mali and Niger) withdrawing from ECOWAS, announced 28 Jan 2024 — a foreign-policy/alliance move, not a domestic sovereignty decree; (3) an April 2024 conscription decree; and (4) the 25 May 2024 amended Transition Charter extending military rule to 2029 and creating a new oversight body (\"korag\") — again with no parliamentary-approval-for-foreign-military clause. No outlet, legal-tracking site (ConstitutionNet, Digithèque MJP), or news source describes a single decree that (a) asserts \"complete sovereignty over all decisions, foreign partnerships, and resource exploitation,\" (b) requires parliamentary approval for foreign military deployments, or (c) is described by constitutional scholars as replacing the 1991 constitutional order. This appears to be a fabricated/composite framing that blends real sovereignty rhetoric and unrelated 2024 legal changes into an event that did not occur as described.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "No single decree matching this description exists. Extensive searching (English and French) found real, separate 2023-2024 developments — ECOWAS withdrawal (Jan 2024), the amended transitional charter extending military rule by five years and creating the discretionary 'korag' body (May 2024), a new Mining Code raising state stakes in mining projects and nationalization of gold mines via SOPAMIB (mid-late 2024), and a constitutional revision promulgated 21 Nov 2024 that demoted French to a 'working language' and abolished the High Court of Justice — but none of these is a decree that (a) formally declares Burkina Faso a 'sovereign state', (b) contains a clause requiring parliamentary approval for foreign military deployments, or (c) is described by constitutional scholars as replacing the 1991 constitutional order. If anything, the real 2024 reforms (korag creation, High Court abolition, presidential eligibility) concentrated power with fewer checks, the opposite of adding a parliamentary-approval requirement over the executive on troop deployments. This reads as a fabricated/composite narrative stitching together real sovereignty-themed headlines into an invented single decree with specific details I could not corroborate anywhere.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "No source documents a 2024 \"sovereignty decree\" by Traoré matching this description. Extensive searching turns up the real, distinct 2024 governance events instead: (1) a constitutional amendment adopted 30 Dec 2023 by the Transitional Legislative Assembly and validated by the Constitutional Council on 12 Jan 2024 — its actual content was narrow (abolished the Economic and Social Council and the Ombudsman, made national languages official, placed the prosecutor's office more directly under the Justice Ministry) with no clause on parliamentary approval for foreign troop deployments; (2) Burkina Faso's joint declaration (with Mali and Niger) withdrawing from ECOWAS, announced 28 Jan 2024 — a foreign-policy/alliance move, not a domestic sovereignty decree; (3) an April 2024 conscription decree; and (4) the 25 May 2024 amended Transition Charter extending military rule to 2029 and creating a new oversight body (\"korag\") — again with no parliamentary-approval-for-foreign-military clause. No outlet, legal-tracking site (ConstitutionNet, Digithèque MJP), or news source describes a single decree that (a) asserts \"complete sovereignty over all decisions, foreign partnerships, and resource exploitation,\" (b) requires parliamentary approval for foreign military deployments, or (c) is described by constitutional scholars as replacing the 1991 constitutional order. This appears to be a fabricated/composite framing that blends real sovereignty rhetoric and unrelated 2024 legal changes into an event that did not occur as described.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ]
   }
 ]

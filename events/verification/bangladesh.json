@@ -1,5 +1,41 @@
 [
   {
+    "year": 1952,
+    "title": "Bengali Language Movement Martyrs Killed on Ekushey February",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: on 21 February 1952, Pakistani police opened fire on Bengali-language protesters in Dhaka (near Dhaka Medical College/Ramna) who defied the Section 144 public-gathering ban demanding official status for Bengali against Urdu-only policy. Students including Abul Barkat and Abdul Jabbar were killed and are among the five officially recognized Language Martyrs (with Rafiquddin Ahmad, Abdus Salam, Shafiur Rahman). The date is commemorated in Bangladesh as Shohid Dibosh/Language Movement Day, and UNESCO declared 21 February International Mother Language Day in 1999 — all details in the description match documented history exactly.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent authoritative sources (Wikipedia, UNESCO.org, Banglapedia, UN Bangladesh) confirm: on 21 February 1952, Pakistani police fired on Dhaka students/protesters who defied a gathering ban to protest Urdu's declaration as Pakistan's sole state language and demand recognition of Bengali. Officially recognized Language Martyrs include Abul Barkat and Abdul Jabbar (plus Rafiquddin Ahmed, Abdus Salam, Shafiur Rahman across 21-22 Feb). The date is commemorated in Bangladesh as Shohid Dibosh/Language Movement Day, and UNESCO's 30th General Assembly in November 1999 proclaimed 21 February as International Mother Language Day explicitly in recognition of these 1952 martyrs. All material details (country, year, actors, causal chain, legacy) match the description.",
+        "source": "https://www.unesco.org/en/days/mother-language",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: on 21 February 1952, Pakistani police opened fire on Bengali-language protesters in Dhaka (near Dhaka Medical College/Ramna) who defied the Section 144 public-gathering ban demanding official status for Bengali against Urdu-only policy. Students including Abul Barkat and Abdul Jabbar were killed and are among the five officially recognized Language Martyrs (with Rafiquddin Ahmad, Abdus Salam, Shafiur Rahman). The date is commemorated in Bangladesh as Shohid Dibosh/Language Movement Day, and UNESCO declared 21 February International Mother Language Day in 1999 — all details in the description match documented history exactly.",
+        "source": "https://en.wikipedia.org/wiki/Language_Movement_Day",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Language_Movement_Day"
+  },
+  {
     "year": 1990,
     "title": "Mass Uprising Ousts General Ershad",
     "verdict": "TRUE",

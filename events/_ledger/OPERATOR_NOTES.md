@@ -88,3 +88,41 @@ what's been *learned*.
   `religious_and_social_movement` held at exactly 60. Expected per B1 ratification — the fix
   is Mode A backfill (both are Mode A priority categories). 26 events landed CONTESTED
   (TRUE-vs-FALSE clash) → auto-selectable for a pass-3 tiebreak in a later Mode B batch.
+- **2026-07-04** — **Mode A CROSS-CATEGORY DEDUP GAP (recurring — check EVERY Mode A batch).**
+  `merge-a-trend` + the research/curate agents dedup new candidates ONLY against the *target
+  trend's* existing events (`existingTrendEvents` is trend-scoped), so a real government act
+  already curated under a DIFFERENT category slips in as "new." Batch 3 leaked 10, batch 4 leaked
+  5 more — all the SAME real act under another category (e.g. Denmark 2019 Climate Act already
+  under climate_agreement; Ecuador 2023 Yasuní under energy_policy; Turkey 2020 Hagia Sophia under
+  constitutional_change; Afghanistan 2001 Bamiyan under political_repression; Eswatini 2018
+  renaming under executive_power_consolidation). **MANDATORY manual step until #1001 fixes it:**
+  after `merge-a-trend`, scan the FULL candidate pool (not just kept-40) for same-(country,year)
+  events across ALL categories in each country file (word-overlap≥2 heuristic), confirm same-act
+  vs distinct-act by reading descriptions, then revert-all + exclude the same-act dups from the
+  results + deterministic re-merge (cap backfills clean; since you scanned the whole pool, backfill
+  can't add a new same-year dup). **Same-year scan MISSES cross-year same-incident overlaps** —
+  batch 4's mali 2013 Ahmed Baba fire restated mali 2012 Timbuktu destruction (a multi-year crisis);
+  Sonnet review caught it. Also scan ±1–2 years / by incident keywords, and trim overlapping context
+  prose (description is NOT a join key, safe to edit) rather than dropping a genuinely-distinct dated
+  act. KEEP genuinely-distinct acts same year/actor (batch 3: mauritius
+  emergency-decl ≠ spill, vietnam Formosa ≠ corruption-bundle; batch 4: tonga coronation ≠
+  power-ceding). Rule of thumb: SAME act (same law/referendum/decree/ceremony) = drop; DIFFERENT
+  act same incident = keep + flag.
+- **2026-07-04** — **CHRONIC CONTESTED events exist (need a park-after-N policy — #1001).** Some
+  events are genuinely un-resolvable by more passes: india 2024 "surpasses China in FDI" (metric-
+  dependent), botswana 1987 "middle-income status" (undocumented exact year — now at verify_count
+  5!), tunisia 1951 "nationalist strikes" (1951-vs-1952 dating dispute). Verifiers keep returning
+  UNCERTAIN/PARTIAL so consensus stays CONTESTED, and contested-first selection re-picks them EVERY
+  Mode B batch (3 wasted passes/batch, forever). top-level verdict stays CONTESTED so they never
+  leak as false positives — harmless but wasteful. Fix: cap tiebreak attempts (e.g. after 3
+  tiebreak passes with no majority → park as permanently CONTESTED, stop auto-selecting).
+- **2026-07-04** — **Activating a country floods the depth-0 pool.** When Mode A creates a country's
+  FIRST verification file (batch 3: antigua/cabo_verde/malta/samoa), ALL that country's other
+  curated events (30–57 each) become depth-0 selectable for Mode B (they were excluded while the
+  country had no verification file — 37–39 "countries w/o verification" stay out entirely). So the
+  depth-0 total can GROW after a batch (batch 3→4: 261→330). Expected/desirable (Mode B then drains
+  them), not a bug — but it means "activated" small countries dominate the next Mode B depth-0 batch.
+- **2026-07-04** — **consolidate-b `--results` MUST be `{results:[...]}` (wrapped).** A bare array
+  silently no-ops (events_updated:0, empty consensus) because the CLI reads `results.results ?? []`.
+  Extract from the task `.output` as `{mode:'B', results: <o.result.results>}`. (merge-a-trend reads
+  `results.events`, so pass the whole `o.result` object there.)
