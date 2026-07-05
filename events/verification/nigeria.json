@@ -3194,5 +3194,79 @@
       }
     ],
     "source": "https://punchng.com/nnpcl-reiterates-2m-bpd-oil-output-target-by-2027/"
+  },
+  {
+    "year": 2004,
+    "title": "Excess Crude Account Established",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm the Excess Crude Account (ECA) was created in 2004 under President Olusegun Obasanjo to save oil revenues above the budgeted benchmark price and insulate the budget from oil price volatility, modeled on schemes like Chile's. It grew to roughly $20 billion by the end of Obasanjo's term in 2007, confirming 'accumulated significant savings during the oil price boom.' It also faced constitutional challenges from state governors (Nigerian Governors Forum, led by Bukola Saraki) who took the federal government to the Supreme Court starting 2008, arguing the ECA violated Section 162 of the 1999 Constitution on Federation Account distribution — matching the description's claim of 'constitutional challenges from governors over federal control.' All material details (country, year, actor, mechanism, outcome) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the Excess Crude Account (ECA) was created in 2004 by the Obasanjo administration to save oil revenues above the budgeted benchmark price and insulate the budget from oil price volatility, exactly as described. It accumulated significant savings during the mid-2000s oil boom (from roughly $5bn to about $20bn by the end of Obasanjo's term in 2007). It also faced constitutional challenges from state governors over federal control: the Nigerian Governors Forum (led by then-Kwara governor Bukola Saraki) took the federal government to the Supreme Court, arguing the ECA's operation from 2004-2007 was unconstitutional under Section 162 of the 1999 Constitution (Federation Account provisions). All material details in the description are corroborated.",
+        "source": "https://www.thecable.ng/accountant-general-nigerias-excess-crude-account-balance-stands-at-473754/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm the Excess Crude Account (ECA) was created in 2004 under President Olusegun Obasanjo to save oil revenues above the budgeted benchmark price and insulate the budget from oil price volatility, modeled on schemes like Chile's. It grew to roughly $20 billion by the end of Obasanjo's term in 2007, confirming 'accumulated significant savings during the oil price boom.' It also faced constitutional challenges from state governors (Nigerian Governors Forum, led by Bukola Saraki) who took the federal government to the Supreme Court starting 2008, arguing the ECA violated Section 162 of the 1999 Constitution on Federation Account distribution — matching the description's claim of 'constitutional challenges from governors over federal control.' All material details (country, year, actor, mechanism, outcome) check out.",
+        "source": "https://businessfront.com/finance/insights/nigerias-excess-crude-account-oil/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://businessfront.com/finance/insights/nigerias-excess-crude-account-oil/"
+  },
+  {
+    "year": 2001,
+    "title": "Economic Reforms — EFCC and Debt Reduction",
+    "verdict": "FALSE",
+    "reason": "The specific reform package described did not happen in 2001. Ngozi Okonjo-Iweala only became Nigeria's Finance Minister in mid-2003 (serving 2003-2006), not 2001 — she led the Paris Club debt-reduction negotiations (culminating in the 2005-2006 deal that eliminated roughly $30B of debt) during that later tenure. The Economic and Financial Crimes Commission (EFCC) was established by an Act signed in December 2002 and became operational under Nuhu Ribadu in April 2003 (re-enacted 2004) — it did not exist in 2001. The comprehensive reform agenda referenced (NEEDS framework, EFCC, Okonjo-Iweala's fiscal reforms) is a hallmark of Obasanjo's SECOND term (2003 onward), not his first-term 2001 activity. Nigeria's GDP growth in 2001 was about 6.67% (up from 5.5% in 2000), so some growth acceleration is real for that year, but the described bundle of EFCC creation + Okonjo-Iweala as finance minister + debt negotiations is materially misdated — none of those three things existed/occurred in 2001. This is a year/date error, best corrected to 2003 when Okonjo-Iweala's appointment and the EFCC's operational launch actually occurred (with the debt deal itself landing in 2005-2006).",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Country and general reform narrative (Obasanjo-era) are real, but the two named specifics did not occur in 2001. The EFCC was established by Act of the National Assembly on 12 Dec 2002 and became operational 13 Apr 2003 (per EFCC official history and Wikipedia) — it did not exist in 2001. Ngozi Okonjo-Iweala was first appointed Nigeria's Finance Minister in 2003 (serving to 2006); she held no such role in 2001, and her Paris Club debt-reduction negotiations (the $18B cancellation of $30B debt) took place in 2005-2006, not 2001. Obasanjo's broader privatization drive (Bureau of Public Enterprises, National Council on Privatization) did start earlier (1999-2000), but the event as written bundles facts that only cohere as a package in 2003, so the year given is materially wrong.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2003
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The specific reform package described did not happen in 2001. Ngozi Okonjo-Iweala only became Nigeria's Finance Minister in mid-2003 (serving 2003-2006), not 2001 — she led the Paris Club debt-reduction negotiations (culminating in the 2005-2006 deal that eliminated roughly $30B of debt) during that later tenure. The Economic and Financial Crimes Commission (EFCC) was established by an Act signed in December 2002 and became operational under Nuhu Ribadu in April 2003 (re-enacted 2004) — it did not exist in 2001. The comprehensive reform agenda referenced (NEEDS framework, EFCC, Okonjo-Iweala's fiscal reforms) is a hallmark of Obasanjo's SECOND term (2003 onward), not his first-term 2001 activity. Nigeria's GDP growth in 2001 was about 6.67% (up from 5.5% in 2000), so some growth acceleration is real for that year, but the described bundle of EFCC creation + Okonjo-Iweala as finance minister + debt negotiations is materially misdated — none of those three things existed/occurred in 2001. This is a year/date error, best corrected to 2003 when Okonjo-Iweala's appointment and the EFCC's operational launch actually occurred (with the debt deal itself landing in 2005-2006).",
+        "source": "https://en.wikipedia.org/wiki/Ngozi_Okonjo-Iweala",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2003
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ngozi_Okonjo-Iweala"
   }
 ]

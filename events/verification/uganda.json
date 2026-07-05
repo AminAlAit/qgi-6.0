@@ -1749,5 +1749,41 @@
       }
     ],
     "source": "https://www.eacop.com/host-government-agreements-signed/"
+  },
+  {
+    "year": 1974,
+    "title": "Amin Declares Uganda an Islamic Republic",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm the core elements: Idi Amin, a Muslim from the Kakwa ethnic group, pivoted Uganda toward the Islamic world starting 1972-1974 to secure financial and military backing — Uganda was formally admitted into the Organisation of Islamic Cooperation/Conference in 1973/1974 (multiple sources pin it specifically to 1974), he cultivated close ties with Libya's Gaddafi (who extended a $25M loan in 1972 and later sent troops) and Saudi Arabia's King Faisal (who gave him a private jet and later granted him asylum), and he \"increasingly spoke of Uganda as a Muslim country\" despite Uganda being overwhelmingly Christian (Muslims were only ~5% of the population). Disproportionate appointment of Muslims and his own Kakwa/Nubian ethnic circle to political and military posts is strongly documented: Muslim cabinet representation surged toward 70% by 1975 and Muslims made up 80-87.5% of top generals/cabinet versus 5% of the population. He also fostered the Uganda Muslim Supreme Council and mosque-building as part of a \"quasi-establishment\" of Islam. I could not find a single source using the literal phrase \"declared an Islamic Republic\" or independently pin down \"introduced Islamic holidays\" as a discrete 1974 legal act, but every other substantive element of the description (country, year, Libya/Saudi courtship, Muslim/Kakwa favoritism, Christian-majority population) is corroborated by multiple independent sources, so I assess this as materially TRUE rather than merely PARTIAL.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the substance and year. The Oxford Encyclopedia of the Islamic World (Oxford Islamic Studies Online, by Omari H. Kokole and Aili Mari Tripp) states plainly: \"In Amin's Uganda, Islam was declared a state religion even though the majority of the population was Christian. Amin surrounded himself increasingly with fellow Muslims and gave preference to Muslims in public-sector hiring... Under Amin, Uganda joined the OIC.\" Independent reporting (Uganda Muslim Brothers and Sisters blog reprint of a Daily Monitor piece on '170 years of Islam in Uganda') pins the OIC registration specifically to 1974, matching Uganda's attendance at the 2nd Islamic Summit Conference in Lahore, Pakistan (Feb 22-24, 1974) — the same year given in the event. Wikipedia's Idi Amin and Second Republic of Uganda articles independently confirm Amin's 1972 pivot to Gaddafi's Libya for aid, his close ties with Saudi Arabia's King Faisal, and the heavy over-representation of Muslims and Amin's own Kakwa/West Nile ethnic bloc in the cabinet and military (Muslims made up 80%/87.5% of top generals/cabinet vs ~5% of the population) despite Uganda being majority Christian. All core elements of the description — Islamic-state declaration, Christian-majority country, Libya/Gaddafi and Saudi financial backing, Arab-world ties via OIC, and disproportionate Muslim/Kakwa appointments — are corroborated by independent sources anchored to 1974 as the pivotal year (OIC entry/Lahore summit), with the broader Islamization pattern documented as continuing/intensifying through 1977. The title's framing as \"Islamic Republic\" is loose (Uganda was never formally renamed that way in law), but the description itself says \"declared Uganda an Islamic state,\" which matches the sourced language \"Islam was declared a state religion\" closely enough to be materially accurate rather than a distorting error.",
+        "source": "http://www.oxfordislamicstudies.com/article/opr/t236/e0813",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the core elements: Idi Amin, a Muslim from the Kakwa ethnic group, pivoted Uganda toward the Islamic world starting 1972-1974 to secure financial and military backing — Uganda was formally admitted into the Organisation of Islamic Cooperation/Conference in 1973/1974 (multiple sources pin it specifically to 1974), he cultivated close ties with Libya's Gaddafi (who extended a $25M loan in 1972 and later sent troops) and Saudi Arabia's King Faisal (who gave him a private jet and later granted him asylum), and he \"increasingly spoke of Uganda as a Muslim country\" despite Uganda being overwhelmingly Christian (Muslims were only ~5% of the population). Disproportionate appointment of Muslims and his own Kakwa/Nubian ethnic circle to political and military posts is strongly documented: Muslim cabinet representation surged toward 70% by 1975 and Muslims made up 80-87.5% of top generals/cabinet versus 5% of the population. He also fostered the Uganda Muslim Supreme Council and mosque-building as part of a \"quasi-establishment\" of Islam. I could not find a single source using the literal phrase \"declared an Islamic Republic\" or independently pin down \"introduced Islamic holidays\" as a discrete 1974 legal act, but every other substantive element of the description (country, year, Libya/Saudi courtship, Muslim/Kakwa favoritism, Christian-majority population) is corroborated by multiple independent sources, so I assess this as materially TRUE rather than merely PARTIAL.",
+        "source": "https://en.wikipedia.org/wiki/Uganda_Muslim_Supreme_Council",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Uganda_Muslim_Supreme_Council"
   }
 ]

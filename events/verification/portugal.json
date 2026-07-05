@@ -1673,5 +1673,41 @@
       }
     ],
     "source": "https://www.euronews.com/2023/06/09/portugal-wants-to-exploit-its-lithium-reserves-but-at-what-cost-to-the-environment"
+  },
+  {
+    "year": 2003,
+    "title": "Catastrophic Forest Fires Burn 430,000 Hectares",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm Portugal suffered a catastrophic wave of forest fires in summer 2003, repeatedly described as the worst in Portugal's modern history up to that point. Area-burned estimates across sources cluster around 425,000-471,750 hectares (one academic source says 'near to 500,000 hectares' of forest/shrub/agricultural land burned), bracketing the event's stated 430,000 figure. Death toll is reported as 18 in tertiary sources (Wikipedia's List of wildfires) but the dedicated academic paper on the disaster (\"The Deep Roots of the 2003 Forest Fires in Portugal\", Varela, International Forest Fire News 35, 2006) states twenty-one human lives were lost, matching the event description's \"at least 21 people\" almost exactly. NASA Earth Observatory imagery from Aug 3, 2003 shows the fires actively burning across central Portugal mid-crisis (9 dead at that snapshot, consistent with a rising toll as the season continued). ReliefWeb/EFFIS reports, a EUMETSAT case study, and multiple academic journals (MDPI, ResearchGate-indexed papers) all corroborate the country, year, and unprecedented scale, and describe the ensuing political/policy scrutiny of Portugal's forest management and emergency response -- all materially matching the event description.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Portugal suffered its worst forest-fire season on record in summer 2003. Burned-area figures across sources cluster tightly around the claimed 430,000 ha: 425,839 ha (ECO/Sapo, citing official ICNF-derived data), 425,000-471,750 ha (academic literature via search aggregation), and 355,976 ha mapped by EFFIS as of Aug 20 alone (an undercount, since EFFIS satellite detection only reliably captures burns ≥50ha and the season continued into September). Economic damage of 611 million euros (ECO/Sapo) matches \"hundreds of millions of euros.\" Deaths: most general-audience sources (Wikipedia, ECO/Sapo, EUMETSAT case study) cite 18 fatalities, but a peer-reviewed academic source specifically studying human losses in Portuguese rural fires (MDPI Applied Sciences, \"Rural Fires-Causes of Human Losses in the 2017 Fires in Portugal\") states 21 deaths in Portugal in 2003 -- matching the event's \"at least 21\" figure exactly. The spread (18 vs 21) likely reflects different counting windows/methodologies (e.g., direct fire deaths vs. broader fire-related fatalities including firefighters/subsequent injuries), which is a minor, non-material discrepancy given \"at least 21\" is itself hedged language and is directly attested by a specialized academic source. Country, year, and the core narrative (catastrophic, unprecedented wildfire disaster exposing forest-management/emergency-response deficiencies) are solidly confirmed across ReliefWeb/EFFIS, Portuguese Wikipedia, ECO/Sapo, EUMETSAT, and academic literature.",
+        "source": "https://eco.sapo.pt/2017/06/18/estatisticas-negras-dos-fogos-em-portugal-2003-2005-e-2017/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Portugal suffered a catastrophic wave of forest fires in summer 2003, repeatedly described as the worst in Portugal's modern history up to that point. Area-burned estimates across sources cluster around 425,000-471,750 hectares (one academic source says 'near to 500,000 hectares' of forest/shrub/agricultural land burned), bracketing the event's stated 430,000 figure. Death toll is reported as 18 in tertiary sources (Wikipedia's List of wildfires) but the dedicated academic paper on the disaster (\"The Deep Roots of the 2003 Forest Fires in Portugal\", Varela, International Forest Fire News 35, 2006) states twenty-one human lives were lost, matching the event description's \"at least 21 people\" almost exactly. NASA Earth Observatory imagery from Aug 3, 2003 shows the fires actively burning across central Portugal mid-crisis (9 dead at that snapshot, consistent with a rising toll as the season continued). ReliefWeb/EFFIS reports, a EUMETSAT case study, and multiple academic journals (MDPI, ResearchGate-indexed papers) all corroborate the country, year, and unprecedented scale, and describe the ensuing political/policy scrutiny of Portugal's forest management and emergency response -- all materially matching the event description.",
+        "source": "https://en.wikipedia.org/wiki/List_of_wildfires",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/List_of_wildfires"
   }
 ]

@@ -2667,5 +2667,41 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Belarusian_Popular_Front"
+  },
+  {
+    "year": 2023,
+    "title": "Lukashenko health concerns emerge; succession speculation grows",
+    "verdict": "TRUE",
+    "reason": "Multiple independent outlets confirm Lukashenko's visibly weakened public appearances in 2023 (pale, bloated, bandaged hand, hoarse voice, unsteady, skipped several scheduled events including a Kremlin breakfast, a corruption meeting, and Flag Day after May 9, 2023 Victory Day parade). Independent journalists (Kyiv Independent, Newsweek, Ukrainska Pravda) reported sourced claims of a viral infection with myocarditis complication and hospitalization, consistent with 'observations consistent with serious illness.' Belarusian state media released photos/videos specifically to dispel the illness rumors, confirming careful image management. Separately, the 2022 constitutional referendum creating/empowering the All-Belarusian People's Assembly (with power to select and remove presidents, and membership retained by former presidents) is well documented and widely analyzed (ConstitutionNet, Atlantic Council) as a mechanism enabling Lukashenko to retain influence or manage a controlled succession. All material elements of the description are corroborated by independent, reputable sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material elements: Lukashenko appeared visibly weakened/unwell at the May 9, 2023 Victory Day parade (bandaged hand, unsteady, pale/bloated), skipped subsequent scheduled events, was reportedly hospitalized (Belarusian Hajun watchdog reported a clinic visit May 13), and later appeared with a hoarse, weak voice — independent journalists and opposition-linked sources (Charter97, Belarusian Hajun, exiled opposition figures) reported observations consistent with serious illness while state media/authorities released curated photos/video to counter the rumors. Succession speculation was widespread (Newsweek, Atlantic Council). The 2022 constitutional referendum creating the All-Belarusian People's Assembly is independently confirmed and widely analyzed (ConstitutionNet, Atlantic Council, Carnegie) as a mechanism for Lukashenko to retain influence/manage succession, matching the description exactly.",
+        "source": "https://www.aljazeera.com/news/2023/5/15/photo-of-belaruss-lukashenko-published-after-rumours-over-health",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent outlets confirm Lukashenko's visibly weakened public appearances in 2023 (pale, bloated, bandaged hand, hoarse voice, unsteady, skipped several scheduled events including a Kremlin breakfast, a corruption meeting, and Flag Day after May 9, 2023 Victory Day parade). Independent journalists (Kyiv Independent, Newsweek, Ukrainska Pravda) reported sourced claims of a viral infection with myocarditis complication and hospitalization, consistent with 'observations consistent with serious illness.' Belarusian state media released photos/videos specifically to dispel the illness rumors, confirming careful image management. Separately, the 2022 constitutional referendum creating/empowering the All-Belarusian People's Assembly (with power to select and remove presidents, and membership retained by former presidents) is well documented and widely analyzed (ConstitutionNet, Atlantic Council) as a mechanism enabling Lukashenko to retain influence or manage a controlled succession. All material elements of the description are corroborated by independent, reputable sources.",
+        "source": "https://www.aljazeera.com/news/2023/5/15/photo-of-belaruss-lukashenko-published-after-rumours-over-health",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2023/5/15/photo-of-belaruss-lukashenko-published-after-rumours-over-health"
   }
 ]

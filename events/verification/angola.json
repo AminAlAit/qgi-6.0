@@ -876,6 +876,44 @@
     "source": "https://www.cgdev.org/publication/china-and-angola-close-political-economic-cooperation"
   },
   {
+    "year": 2005,
+    "title": "Cabinda Separatist Ceasefire and Memorandum of Understanding",
+    "verdict": "FALSE",
+    "reason": "The event is real and matches the description (ceasefire + Memorandum of Understanding for Peace and National Reconciliation in Cabinda Province, granting special/limited autonomy status, ending the FLEC/Cabinda Forum for Dialogue insurgency), but it did not occur in 2005. Multiple independent contemporaneous and retrospective sources confirm the MOU was signed on 1 August 2006 in Namibe Province by the Angolan government and the Cabinda Forum for Dialogue (FCD) leader António Bento Bembe (with a related ceasefire text signed 18 July 2006 in Cabinda). No credible source places any comparable ceasefire/MOU event in 2005. The event description itself even states 'August 2006,' contradicting the year=2005 field it's attached to. Country and substance both check out; only the year is wrong, so this is a FALSE (wrong-year) rather than TRUE/PARTIAL.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event is real and materially accurate — Angola's government reached a ceasefire (18 July 2006) and signed a Memorandum of Understanding (1 August 2006) with the Cabindan Forum for Dialogue/FLEC-Renovada led by António Bento Bembe, granting limited autonomy/special economic status and ending formal armed conflict in the oil-rich Cabinda enclave. However, this occurred in 2006, not 2005 — no ceasefire or MOU matching this description occurred in 2005. The event's own description text even states 'August 2006', contradicting the 2005 year tag. Country, actors, and substance all check out; only the top-level year is wrong.",
+        "source": "https://en.wikipedia.org/wiki/Cabinda_War",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2006
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real and matches the description (ceasefire + Memorandum of Understanding for Peace and National Reconciliation in Cabinda Province, granting special/limited autonomy status, ending the FLEC/Cabinda Forum for Dialogue insurgency), but it did not occur in 2005. Multiple independent contemporaneous and retrospective sources confirm the MOU was signed on 1 August 2006 in Namibe Province by the Angolan government and the Cabinda Forum for Dialogue (FCD) leader António Bento Bembe (with a related ceasefire text signed 18 July 2006 in Cabinda). No credible source places any comparable ceasefire/MOU event in 2005. The event description itself even states 'August 2006,' contradicting the year=2005 field it's attached to. Country and substance both check out; only the year is wrong, so this is a FALSE (wrong-year) rather than TRUE/PARTIAL.",
+        "source": "https://mg.co.za/article/2006-08-02-angola-signs-peace-with-cabinda-separatist-faction/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2006
+      }
+    ],
+    "source": "https://mg.co.za/article/2006-08-02-angola-signs-peace-with-cabinda-separatist-faction/"
+  },
+  {
     "year": 2006,
     "title": "Angola Joins OPEC as 12th Member",
     "verdict": "TRUE",
@@ -974,6 +1012,44 @@
       }
     ],
     "source": "https://www.hrw.org/world-report/2012/country-chapters/angola"
+  },
+  {
+    "year": 2012,
+    "title": "Isabel dos Santos Appointed to Sonangol Board",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources (Wikipedia, ICIJ Luanda Leaks investigation, Yahoo Finance, Vanguard News Nigeria) confirm Isabel dos Santos was appointed chair/board head of Sonangol by presidential decree of her father José Eduardo dos Santos in June 2016, not 2012. In 2012 she did acquire a ~28.8% stake in Galp Energia (via Netherlands-based holding companies, giving her indirect exposure tied to Sonangol's partner) and became a non-executive board member of ZON (November 2012), but no source shows a Sonangol board appointment in 2012. The described event (appointment to Sonangol's board, fusing political power with the state oil company) is real but occurred in 2016, four years later than stated.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Vanguard News, ICIJ, Al Jazeera, Wikipedia) confirm Isabel dos Santos was appointed chairwoman of Sonangol's board of directors in June 2016 by her father José Eduardo dos Santos, after he sacked the previous board — not in 2012. Her documented 2012 business activity was accumulating a controlling ~28.8% stake in Portuguese firm ZON Multimédia, unrelated to Sonangol. No source supports any Sonangol board appointment in 2012, so the year is wrong even though the core fact (dos Santos appointing his daughter to head Sonangol) is real for 2016.",
+        "source": "https://www.vanguardngr.com/2016/06/president-appoints-daughter-boss-oil-firm/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2016
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Wikipedia, ICIJ Luanda Leaks investigation, Yahoo Finance, Vanguard News Nigeria) confirm Isabel dos Santos was appointed chair/board head of Sonangol by presidential decree of her father José Eduardo dos Santos in June 2016, not 2012. In 2012 she did acquire a ~28.8% stake in Galp Energia (via Netherlands-based holding companies, giving her indirect exposure tied to Sonangol's partner) and became a non-executive board member of ZON (November 2012), but no source shows a Sonangol board appointment in 2012. The described event (appointment to Sonangol's board, fusing political power with the state oil company) is real but occurred in 2016, four years later than stated.",
+        "source": "https://en.wikipedia.org/wiki/Isabel_dos_Santos",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2016
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Isabel_dos_Santos"
   },
   {
     "year": 2014,
@@ -1110,6 +1186,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Jo%C3%A3o_Louren%C3%A7o"
+  },
+  {
+    "year": 2017,
+    "title": "Mbanza Kongo Becomes Angola's First UNESCO World Heritage Site",
+    "verdict": "TRUE",
+    "reason": "Confirmed from multiple independent sources. Mbanza Kongo (Vestiges of the Capital of the former Kingdom of Kongo) was inscribed on the UNESCO World Heritage List in July 2017 during the 41st session of the World Heritage Committee held in Krakow, Poland (2-12 July 2017), per whc.unesco.org session records and CNN/africanews coverage. Multiple sources (africanews.com, allAfrica) explicitly confirm this was Angola's first World Heritage Site (\"These are the first world heritage sites in Angola and Eritrea\"). The site is confirmed as the former political/spiritual capital of the Kingdom of Kongo from the 14th-19th centuries, containing the ruins of the Cathedral of the Holy Saviour of Congo, plus royal-grounds structures tied to the Manikongo rulers - the Jalankuwo (judgment tree) and sunguilu (ritual site where the king's body was washed before burial), matching the description's \"royal memorial and traditional judgment sites.\" The UNESCO citation language is confirmed nearly verbatim via search: \"Mbanza Kongo illustrates, more than anywhere in sub-Saharan Africa, the profound changes caused by the introduction of Christianity and the arrival of the Portuguese into Central Africa\" - matching the description's framing about Portuguese colonizers/Christianity. One minor unresolved detail: sources give differing construction dates for the cathedral (one source says built/initiated 1491, extended 1534-1549, elevated to cathedral status 1596; another news source (africanews) explicitly states \"built in 1549\" matching the event description verbatim), but this does not change the core, materially-confirmed facts of the event (year, country, first-UNESCO-site status, site identity, and significance).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Mbanza Kongo (former capital of the Kingdom of Kongo, 14th-19th centuries) was inscribed on the UNESCO World Heritage List in 2017, during the 41st session of the World Heritage Committee held in Krakow, Poland (July 2-12, 2017) — matching the 'July 2017' timing in the description. Multiple sources (Wikipedia, Africanews, UNESCO's own news release) explicitly state this was Angola's first World Heritage Site (Eritrea also got its first site at the same session). The site's official description matches the event almost verbatim: UNESCO's justification states the town 'illustrates, more than anywhere in sub-Saharan Africa, the profound changes caused by the introduction of Christianity and the arrival of the Portuguese into Central Africa,' and the site includes the royal residence, customary court/judgment tree, and royal funeral places tied to the Manikongo (Kongo king) — matching 'royal memorial and traditional judgment sites tied to the Manikongo rulers.' The cathedral ruins detail ('built in 1549') is also historically grounded: construction of a church began in 1491 under João I, with a stone Jesuit structure built in 1549 later elevated to cathedral status in 1596 — so 1549 is a legitimate historical date associated with the cathedral's construction phases, not a fabrication. All material elements (country=Angola, year=2017, event=first UNESCO WHS inscription, site content/significance) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/M'banza-Kongo",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources. Mbanza Kongo (Vestiges of the Capital of the former Kingdom of Kongo) was inscribed on the UNESCO World Heritage List in July 2017 during the 41st session of the World Heritage Committee held in Krakow, Poland (2-12 July 2017), per whc.unesco.org session records and CNN/africanews coverage. Multiple sources (africanews.com, allAfrica) explicitly confirm this was Angola's first World Heritage Site (\"These are the first world heritage sites in Angola and Eritrea\"). The site is confirmed as the former political/spiritual capital of the Kingdom of Kongo from the 14th-19th centuries, containing the ruins of the Cathedral of the Holy Saviour of Congo, plus royal-grounds structures tied to the Manikongo rulers - the Jalankuwo (judgment tree) and sunguilu (ritual site where the king's body was washed before burial), matching the description's \"royal memorial and traditional judgment sites.\" The UNESCO citation language is confirmed nearly verbatim via search: \"Mbanza Kongo illustrates, more than anywhere in sub-Saharan Africa, the profound changes caused by the introduction of Christianity and the arrival of the Portuguese into Central Africa\" - matching the description's framing about Portuguese colonizers/Christianity. One minor unresolved detail: sources give differing construction dates for the cathedral (one source says built/initiated 1491, extended 1534-1549, elevated to cathedral status 1596; another news source (africanews) explicitly states \"built in 1549\" matching the event description verbatim), but this does not change the core, materially-confirmed facts of the event (year, country, first-UNESCO-site status, site identity, and significance).",
+        "source": "https://www.africanews.com/2017/09/09/angola-eritrea-and-south-africa-get-certificates-for-new-world-heritage-sites/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.africanews.com/2017/09/09/angola-eritrea-and-south-africa-get-certificates-for-new-world-heritage-sites/"
   },
   {
     "year": 2018,

@@ -1246,6 +1246,42 @@
     "source": "https://en.wikipedia.org/wiki/2009_Uruguayan_general_election"
   },
   {
+    "year": 2009,
+    "title": "Tango Inscribed as UNESCO Intangible Cultural Heritage",
+    "verdict": "TRUE",
+    "reason": "Multiple independent, authoritative sources confirm: on September 30, 2009, during the 4th session of UNESCO's Intergovernmental Committee for the Safeguarding of Intangible Cultural Heritage held in Abu Dhabi, tango was inscribed on the Representative List of the Intangible Cultural Heritage of Humanity as a joint nomination by Argentina and Uruguay (on behalf of Buenos Aires and Montevideo). UN News confirms the Abu Dhabi venue, the September 30 2009 date, and that 76 elements were inscribed that session, with Argentina and Uruguay both listed among the 27 nations represented. The official UNESCO ICH page confirms the 2009 inscription, the joint Argentina/Uruguay nomination, and the Rio de la Plata basin origin story involving European immigrants, descendants of African slaves, and criollos in Buenos Aires/Montevideo's working-class neighborhoods — matching the description's claims essentially verbatim. Secondary sources (World Music Central) corroborate that the tango nomination was the first of the 76 examined/approved. All material details in the description (year, countries, location of committee meeting, cultural origin narrative, \"first of 76 nominations\") check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via UNESCO's own Intangible Cultural Heritage site (ich.unesco.org/en/RL/tango-00258): tango was inscribed in 2009 on the Representative List of the Intangible Cultural Heritage of Humanity under decision 4.COM 13.01 (4th session of the Intergovernmental Committee), jointly nominated by Argentina and Uruguay. Independent news sources (France 24, UN News, MercoPress) corroborate the Abu Dhabi venue, the September-October 2009 timing, and that tango was the first of the nominations (76 total) examined at that session. The description's account of tango's origins among European immigrants, African-descended people, and criollo natives in working-class Montevideo/Buenos Aires neighborhoods matches UNESCO's own framing. All material details (year, countries, joint nomination, location/session, origin narrative) are corroborated.",
+        "source": "https://ich.unesco.org/en/RL/tango-00258",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources confirm: on September 30, 2009, during the 4th session of UNESCO's Intergovernmental Committee for the Safeguarding of Intangible Cultural Heritage held in Abu Dhabi, tango was inscribed on the Representative List of the Intangible Cultural Heritage of Humanity as a joint nomination by Argentina and Uruguay (on behalf of Buenos Aires and Montevideo). UN News confirms the Abu Dhabi venue, the September 30 2009 date, and that 76 elements were inscribed that session, with Argentina and Uruguay both listed among the 27 nations represented. The official UNESCO ICH page confirms the 2009 inscription, the joint Argentina/Uruguay nomination, and the Rio de la Plata basin origin story involving European immigrants, descendants of African slaves, and criollos in Buenos Aires/Montevideo's working-class neighborhoods — matching the description's claims essentially verbatim. Secondary sources (World Music Central) corroborate that the tango nomination was the first of the 76 examined/approved. All material details in the description (year, countries, location of committee meeting, cultural origin narrative, \"first of 76 nominations\") check out.",
+        "source": "https://ich.unesco.org/en/RL/tango-00258",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://ich.unesco.org/en/RL/tango-00258"
+  },
+  {
     "year": 2010,
     "title": "Caducidad Amnesty Law Partially Annulled",
     "verdict": "TRUE",

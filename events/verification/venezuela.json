@@ -299,6 +299,42 @@
     "source": "https://en.wikipedia.org/wiki/December_1999_Venezuelan_constitutional_referendum"
   },
   {
+    "year": 2000,
+    "title": "Ciudad Universitaria de Caracas Declared UNESCO World Heritage Site",
+    "verdict": "TRUE",
+    "reason": "UNESCO's official World Heritage Centre listing confirms Ciudad Universitaria de Caracas (Universidad Central de Venezuela's central campus, designed by Carlos Raúl Villanueva 1940-1960) was inscribed as a World Heritage Site in 2000, cited as an outstanding example of Modern Movement architecture and urban planning integrating architecture and art (Aula Magna with Calder's 'Clouds', Olympic Stadium, Covered Plaza). Venezuela's Ministry of Culture independently confirms the exact inscription date of 2 December 2000. All material details in the description (architect, dates, artworks, buildings) match authoritative sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "UNESCO inscribed the Ciudad Universitaria de Caracas (Central University of Venezuela's main campus, designed by Carlos Raúl Villanueva 1940-1960) as a World Heritage Site in 2000, recognized as an outstanding example of Modern Movement architecture and urban planning. Multiple independent sources (Wikipedia, UNESCO WHC listing #986, Venezuela's Ministry of Culture) confirm the inscription date of December 2, 2000, the architect, and the integrated artworks including Alexander Calder's 'Clouds' sculptures in the Aula Magna, the Olympic Stadium, and the Covered Plaza (Plaza Cubierta). Wikipedia also confirms the claim that it remains the only 20th-century university campus designed entirely by a single architect to receive UNESCO cultural heritage recognition. All material details in the description match.",
+        "source": "https://en.wikipedia.org/wiki/University_City_of_Caracas",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "UNESCO's official World Heritage Centre listing confirms Ciudad Universitaria de Caracas (Universidad Central de Venezuela's central campus, designed by Carlos Raúl Villanueva 1940-1960) was inscribed as a World Heritage Site in 2000, cited as an outstanding example of Modern Movement architecture and urban planning integrating architecture and art (Aula Magna with Calder's 'Clouds', Olympic Stadium, Covered Plaza). Venezuela's Ministry of Culture independently confirms the exact inscription date of 2 December 2000. All material details in the description (architect, dates, artworks, buildings) match authoritative sources.",
+        "source": "https://whc.unesco.org/en/list/986/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://whc.unesco.org/en/list/986/"
+  },
+  {
     "year": 2001,
     "title": "ChÃ¡vez Issues 49 Decree-Laws â€” Business Sector Backlash",
     "verdict": "TRUE",
@@ -958,6 +994,42 @@
   },
   {
     "year": 2016,
+    "title": "HIV Antiretroviral Shortage — 90% Supply Gap",
+    "verdict": "PARTIAL",
+    "reason": "Core facts check out from multiple independent sources: in 2016 Venezuelan HIV/AIDS advocacy group Asovida reported a 90% shortage of antiretrovirals, and roughly 61,000 people with HIV/AIDS faced losing access to treatment as Ministry of Health ARV stocks were projected to run out by end of June 2016 (mid-year) — this also drove a June 2016 appeal to the Global Fund, which was denied. The broader medicine-shortage figures are also corroborated: the Venezuelan Medical Federation reported ~94% unavailability in public hospitals (Apr 2016) and the Pharmacy Federation ~85% unavailability in private pharmacies (Jul 2016) — close to the description's 95%/85% split. However, one detail is materially off: I fetched the actual 2016 HRW report ('Venezuela's Humanitarian Crisis,' Oct 24 2016) in full and its HIV-specific content is limited to a single passage about mother-to-child-transmission protocol breakdowns (lack of PPE for C-sections) — it does NOT document 'HIV patients unable to obtain treatment for months, leading to preventable deterioration and deaths,' as the event description claims. That specific documentation (ARV stock-outs lasting 9+ months, 38% rise in AIDS deaths, patient case studies of deterioration/death) actually comes from LATER HRW reporting (2017's 'Dying in Agony' and especially the Dec 2018 'HIV+ in Venezuela? Migrate or Die'), not a 2016 report. So the event is real, and country/year/magnitude hold, but the description misattributes 2017-2018 HRW documentation to 'a 2016 Human Rights Watch report.'",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core facts check out from multiple independent sources: in 2016 Venezuelan HIV/AIDS advocacy group Asovida reported a 90% shortage of antiretrovirals, and roughly 61,000 people with HIV/AIDS faced losing access to treatment as Ministry of Health ARV stocks were projected to run out by end of June 2016 (mid-year) — this also drove a June 2016 appeal to the Global Fund, which was denied. The broader medicine-shortage figures are also corroborated: the Venezuelan Medical Federation reported ~94% unavailability in public hospitals (Apr 2016) and the Pharmacy Federation ~85% unavailability in private pharmacies (Jul 2016) — close to the description's 95%/85% split. However, one detail is materially off: I fetched the actual 2016 HRW report ('Venezuela's Humanitarian Crisis,' Oct 24 2016) in full and its HIV-specific content is limited to a single passage about mother-to-child-transmission protocol breakdowns (lack of PPE for C-sections) — it does NOT document 'HIV patients unable to obtain treatment for months, leading to preventable deterioration and deaths,' as the event description claims. That specific documentation (ARV stock-outs lasting 9+ months, 38% rise in AIDS deaths, patient case studies of deterioration/death) actually comes from LATER HRW reporting (2017's 'Dying in Agony' and especially the Dec 2018 'HIV+ in Venezuela? Migrate or Die'), not a 2016 report. So the event is real, and country/year/magnitude hold, but the description misattributes 2017-2018 HRW documentation to 'a 2016 Human Rights Watch report.'",
+        "source": "https://www.hrw.org/report/2016/10/24/venezuelas-humanitarian-crisis/severe-medical-and-food-shortages-inadequate-and",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across multiple non-overlapping sources. (1) Venezuela's 2016 ARV/HIV medicine crisis is well documented: HRW's Oct 2016 report \"Venezuela's Humanitarian Crisis: Severe Medical and Food Shortages, Inadequate and Repressive Government Response\" confirms 85% of medicines unavailable in private pharmacies (Fefarven, July 2016) and ~94% unavailable in public hospitals (Venezuelan Medical Federation, April 2016) — matching the description's 85%/95% figures — and documents HIV-medicine protocol failures (e.g., HIV-positive mothers denied protective ARV protocols during delivery) amid the crisis. Later HRW reporting (2018) states that as of 2016 (the last year Venezuela released HIV program data), 90% of registered ARV patients were not receiving treatment. (2) The Asovida-specific claim (90% shortage report, warning that people would lose treatment access) is corroborated by The New Humanitarian's Nov 2019 feature \"Venezuelans with HIV left with stark choice: leave or die,\" which independently identifies Asovida (Asociación por la Vida, a real, verifiable Mérida-based HIV/AIDS NGO — confirmed via StopVIH's NGO directory) as reporting the 90% shortage in 2016, including a named activist's account of subsequent threats; this appeared consistently and with specific quoted detail across multiple independent search queries, giving confidence the underlying article is genuine even though direct fetch returned HTTP 403 (bot-blocked, not nonexistent). (3) The \"61,000 people\" figure is independently corroborated by a separate May 2016 source citing a petition to the Global Fund stating 61,000+ Venezuelans with HIV were at risk because the Health Ministry's ARV stock would be fully exhausted by June 2016 (~61,686 patients per Ministry of Health figures cited in Spanish-language reporting). One minor caveat: I could not verify from the primary 2016 HRW report text itself the specific framing that it \"documented ... months [of no treatment] leading to preventable deterioration and deaths\" among HIV patients — that fuller death/deterioration narrative is more prominent in HRW's 2017-2019 follow-up reporting — but this is a secondary framing detail, not a substantive error, and does not change country/year/core-magnitude, which all hold.",
+        "source": "https://www.hrw.org/report/2016/10/24/venezuelas-humanitarian-crisis/severe-medical-and-food-shortages-inadequate-and",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/report/2016/10/24/venezuelas-humanitarian-crisis/severe-medical-and-food-shortages-inadequate-and"
+  },
+  {
+    "year": 2016,
     "title": "Hyperinflation Begins â€” GDP Contracts 18.6%",
     "verdict": "TRUE",
     "reason": "Confirmed: Venezuela entered hyperinflation late 2016; GDP contracted 18.6% per Venezuelan central bank (confirmed by CNBC citing the figure); annual inflation ~800% confirmed. ENCOVI 2016 survey confirmed 74.3% (rounded to '75%' in event) of population involuntarily lost average 8.7 kg (19 lb). State of economic emergency January 2016 and two-day work week confirmed. All core details accurate.",
@@ -1296,6 +1368,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Sanctions_during_the_Venezuelan_crisis"
+  },
+  {
+    "year": 2018,
+    "title": "Juan Requesens Arrested — Alleged Drone Assassination Plot",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm all material elements: two explosives-laden drones detonated near a military parade in Caracas on 4 August 2018 while Maduro addressed the National Guard; opposition National Assembly deputy Juan Requesens was arrested on 7 August 2018 (three days later) and held in the SEBIN facility El Helicoide; the government broadcast a video on 10 August 2018 claimed as a confession, with his father saying \"that is not my son\" and behavioral experts noting he appeared to be reciting rather than speaking freely, and Requesens later saying he had no memory of recording it (evidence pointed to possible drugging); human rights advocates and family documented torture, including a widely reported second video showing him disheveled and soiled; he was sentenced to eight years in prison in August 2022, having already been released to house arrest on 28 August 2020, well before the verdict. This matches the description point for point.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources (Wikipedia, Orinoco Tribune, Washington Post/Washington Times, France24, AlDia News) confirm all material elements: Juan Requesens, a Venezuelan opposition National Assembly deputy, was arrested on 7 August 2018 — three days after the 4 August 2018 drone attack near a military event where Maduro was speaking — and detained at El Helicoide. A government-released \"confession\" video is documented in which Requesens did not actually address the drone attack itself (he discussed an unrelated favor for a friend's travel), and his lawyer reported Requesens said he did not even remember making the video, consistent with torture/drugging allegations from his party and human rights advocates. He was sentenced to eight years in prison in August 2022 for conspiracy, having already been moved from El Helicoide/jail custody to house arrest in August 2020 — i.e., released to house arrest well before the 2022 verdict. All country, year, and substantive details match.",
+        "source": "https://en.wikipedia.org/wiki/Detention_of_Juan_Requesens",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm all material elements: two explosives-laden drones detonated near a military parade in Caracas on 4 August 2018 while Maduro addressed the National Guard; opposition National Assembly deputy Juan Requesens was arrested on 7 August 2018 (three days later) and held in the SEBIN facility El Helicoide; the government broadcast a video on 10 August 2018 claimed as a confession, with his father saying \"that is not my son\" and behavioral experts noting he appeared to be reciting rather than speaking freely, and Requesens later saying he had no memory of recording it (evidence pointed to possible drugging); human rights advocates and family documented torture, including a widely reported second video showing him disheveled and soiled; he was sentenced to eight years in prison in August 2022, having already been released to house arrest on 28 August 2020, well before the verdict. This matches the description point for point.",
+        "source": "https://en.wikipedia.org/wiki/Detention_of_Juan_Requesens",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Detention_of_Juan_Requesens"
   },
   {
     "year": 2018,

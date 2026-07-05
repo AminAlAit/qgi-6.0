@@ -600,6 +600,42 @@
     "source": "https://en.wikipedia.org/wiki/1985_Zimbabwean_parliamentary_election"
   },
   {
+    "year": 1986,
+    "title": "Great Zimbabwe Ruins Declared UNESCO World Heritage Site",
+    "verdict": "TRUE",
+    "reason": "UNESCO's own World Heritage Centre listing (site ID 364) confirms Great Zimbabwe National Monument was inscribed on the World Heritage List in 1986. It corroborates all material details: built c.1100-1450 AD by the Shona (Bantu) civilization, extending over almost 800 ha, divided into Hill Ruins/Great Enclosure/Valley Ruins, with archaeological finds of glass beads, Chinese porcelain, and Arab/Kilwa coins evidencing medieval trade networks. Independent secondary sources (Wikipedia, worldheritagesite.org, africanworldheritagesites.org) corroborate the same facts, including that modern Zimbabwe took its name from the ruins at independence in 1980. Year, country, and all described details align with the authoritative UNESCO source.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Great Zimbabwe National Monument was inscribed on the UNESCO World Heritage List in 1986 (10th Session of the World Heritage Committee). Corroborated details: stone ruins built c. 11th-15th century (matches \"1100-1450 AD\") by ancestors of the Shona people; UNESCO's own site description states the property \"extends over almost 800 ha\" (matches \"nearly 800 hectares\"); excavations uncovered glass beads, Chinese porcelain/ceramics, and coins from the Kilwa/Arab trade network, evidencing medieval Indian Ocean trade; the country was renamed Zimbabwe at independence in 1980 after this monument. It is widely described as the largest stone construction in sub-Saharan Africa outside Egypt/Great Zimbabwe-type sites, consistent with the description. All material details (year, country, scope, magnitude) check out.",
+        "source": "https://en.wikipedia.org/wiki/Great_Zimbabwe",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "UNESCO's own World Heritage Centre listing (site ID 364) confirms Great Zimbabwe National Monument was inscribed on the World Heritage List in 1986. It corroborates all material details: built c.1100-1450 AD by the Shona (Bantu) civilization, extending over almost 800 ha, divided into Hill Ruins/Great Enclosure/Valley Ruins, with archaeological finds of glass beads, Chinese porcelain, and Arab/Kilwa coins evidencing medieval trade networks. Independent secondary sources (Wikipedia, worldheritagesite.org, africanworldheritagesites.org) corroborate the same facts, including that modern Zimbabwe took its name from the ruins at independence in 1980. Year, country, and all described details align with the authoritative UNESCO source.",
+        "source": "https://whc.unesco.org/en/list/364/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://whc.unesco.org/en/list/364/"
+  },
+  {
     "year": 1987,
     "title": "Mugabe Becomes Executive President",
     "verdict": "TRUE",
@@ -1645,6 +1681,44 @@
       }
     ],
     "source": "https://cpj.org/2020/07/journalist-hopewell-chinono-arrested-charged-with-incitement-in-zimbabwe/"
+  },
+  {
+    "year": 2021,
+    "title": "Gold Mafia and Illicit Mining Exposed",
+    "verdict": "FALSE",
+    "reason": "The event is real in substance (Al Jazeera's Investigative Unit documented systematic gold smuggling in Zimbabwe implicating ZANU-PF/military-connected networks and presidential-circle figures, with illicit gold exports bypassing the Reserve Bank), but it did not happen in 2021. Al Jazeera's four-part 'Gold Mafia' documentary was released and generated worldwide coverage in March-April 2023 (episode 1 aired 23 March 2023; follow-up coverage through mid-April 2023). No independent source places this investigation or its exposure in 2021. Per the hard rule, since the year is wrong, this must be reported as FALSE with corrected_year, even though country and substance match.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event is real and substantively matches the description (Al Jazeera's \"Gold Mafia\" investigation exposed systematic gold smuggling and money laundering in Zimbabwe, implicating ZANU-PF/presidential-circle-connected figures including ambassador-at-large Uebert Angel, with billions in gold exports and illicit channels bypassing the Reserve Bank), but it occurred in 2023, not 2021. Al Jazeera's four-part documentary series was released March 23-April 13, 2023, with the government response and outrage also dated to March-April 2023. No independent source places this investigation or its substance in 2021. Country and substance hold; year is wrong.",
+        "source": "https://www.aljazeera.com/news/2023/3/23/gold-mafia-looting-southern-africa",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2023
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real in substance (Al Jazeera's Investigative Unit documented systematic gold smuggling in Zimbabwe implicating ZANU-PF/military-connected networks and presidential-circle figures, with illicit gold exports bypassing the Reserve Bank), but it did not happen in 2021. Al Jazeera's four-part 'Gold Mafia' documentary was released and generated worldwide coverage in March-April 2023 (episode 1 aired 23 March 2023; follow-up coverage through mid-April 2023). No independent source places this investigation or its exposure in 2021. Per the hard rule, since the year is wrong, this must be reported as FALSE with corrected_year, even though country and substance match.",
+        "source": "https://www.aljazeera.com/news/2023/3/23/gold-mafia-looting-southern-africa",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2023
+      }
+    ],
+    "source": "https://www.aljazeera.com/news/2023/3/23/gold-mafia-looting-southern-africa"
   },
   {
     "year": 2021,

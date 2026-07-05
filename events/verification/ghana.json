@@ -1624,5 +1624,43 @@
       }
     ],
     "source": "https://www.mofep.gov.gh/speeches/2024-10-04"
+  },
+  {
+    "year": 2009,
+    "title": "Ghana Enacts Petroleum Revenue Management Act Ahead of Oil Production",
+    "verdict": "FALSE",
+    "reason": "The event is real in substance (Ghana's Petroleum Revenue Management Act, Act 815, established a Heritage Fund and Stabilisation Fund modeled on Norway's oil fund, internationally praised), but it was passed by Parliament and assented to by the President on 11 April 2011 — not 2009. Multiple independent, corroborating sources (Ghana Ministry of Finance, Bank of Ghana, IFSWF, Natural Resource Governance Institute, academic/legal repositories) consistently date the Act to 2011. Additionally, Ghana's commercial oil production (Jubilee field) began in December 2010, so the Act actually followed the start of production by ~4 months rather than preceding it as described. Year is off by two years, which fails the year-match bar.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Petroleum Revenue Management Act (Act 815) establishing Ghana's Heritage Fund and Stabilisation Fund (Norway oil-fund model) was passed by Parliament and assented to by the President on 11 April 2011 — not 2009. Multiple independent sources (Bank of Ghana, IFSWF, Ghana's Petroleum Commission/petrocom.gov.gh hosting the official Act text, lawsghana.com legislation database, and academic reviews) converge on 2011. Ghana's Jubilee oil field began production in December 2010, so the Act was actually passed AFTER production started, not 'ahead of' it as the title claims — a second material inconsistency beyond the year. The substantive description (Heritage/Stabilisation funds modeled on Norway, internationally praised) is accurate to the real 2011 Act, but the year (2009) and the 'ahead of production' framing are both wrong, so this is a FALSE (year error) rather than TRUE/PARTIAL.",
+        "source": "https://www.bog.gov.gh/ghana-petroleum-funds/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2011
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real in substance (Ghana's Petroleum Revenue Management Act, Act 815, established a Heritage Fund and Stabilisation Fund modeled on Norway's oil fund, internationally praised), but it was passed by Parliament and assented to by the President on 11 April 2011 — not 2009. Multiple independent, corroborating sources (Ghana Ministry of Finance, Bank of Ghana, IFSWF, Natural Resource Governance Institute, academic/legal repositories) consistently date the Act to 2011. Additionally, Ghana's commercial oil production (Jubilee field) began in December 2010, so the Act actually followed the start of production by ~4 months rather than preceding it as described. Year is off by two years, which fails the year-match bar.",
+        "source": "https://www.mofep.gov.gh/publications/acts-and-policies/petroleum-revenue-management-act-815",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2011
+      }
+    ],
+    "source": "https://www.mofep.gov.gh/publications/acts-and-policies/petroleum-revenue-management-act-815"
   }
 ]

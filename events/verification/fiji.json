@@ -1,0 +1,38 @@
+[
+  {
+    "year": 2013,
+    "title": "Levuka Becomes Fiji's First UNESCO World Heritage Site",
+    "verdict": "TRUE",
+    "reason": "Confirmed via UNESCO World Heritage Centre listing and multiple independent sources: Levuka Historical Port Town on Ovalau island was inscribed on the UNESCO World Heritage List in 2013 (at the 37th session of the World Heritage Committee in Phnom Penh, Decision 37 COM 8B.25), becoming Fiji's first World Heritage Site. It was Fiji's first colonial capital (until 1877), site of the 1874 Deed of Cession to the British Crown, and home to a string of Fijian firsts including the Fiji Times newspaper (founded 4 September 1869), first bank, hospital, and town hall — all matching the event description materially.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed across multiple sources: Levuka Historical Port Town on Ovalau island, Fiji, was inscribed on the UNESCO World Heritage List in 2013 (at the 37th session of the World Heritage Committee in Phnom Penh, per Decision 37 COM 8B.25), and is explicitly documented as Fiji's first and (still) only UNESCO World Heritage Site. Corroborating details all check out: it was Fiji's first colonial capital where King Cakobau signed the Deed of Cession on 10 October 1874 (Cession Site monument marks the spot in Levuka), it remained the capital until 1877 when administration moved to Suva, and the town is credited with Fiji's first bank, post office, school, hospital, town hall/municipal government, and the Fiji Times newspaper founded there in 1869 (still in operation). Every material detail in the description matches the historical record.",
+        "source": "https://en.wikipedia.org/wiki/Levuka",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via UNESCO World Heritage Centre listing and multiple independent sources: Levuka Historical Port Town on Ovalau island was inscribed on the UNESCO World Heritage List in 2013 (at the 37th session of the World Heritage Committee in Phnom Penh, Decision 37 COM 8B.25), becoming Fiji's first World Heritage Site. It was Fiji's first colonial capital (until 1877), site of the 1874 Deed of Cession to the British Crown, and home to a string of Fijian firsts including the Fiji Times newspaper (founded 4 September 1869), first bank, hospital, and town hall — all matching the event description materially.",
+        "source": "https://whc.unesco.org/en/decisions/5153/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://whc.unesco.org/en/decisions/5153/"
+  }
+]

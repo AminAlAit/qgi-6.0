@@ -26,6 +26,42 @@
   },
   {
     "year": 1991,
+    "title": "Fortress of Suomenlinna Inscribed as UNESCO World Heritage Site",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm Suomenlinna (Helsinki, Finland) was inscribed on the UNESCO World Heritage List in 1991. Construction began in 1748 under the Swedish Crown, designed by Admiral Augustin Ehrensvärd applying Vauban's bastion fortification principles; the fortress was renamed from Sveaborg to Suomenlinna in a May 1918 ceremony following Finnish independence (Dec 1917), matching the description's 'after Finnish independence in 1917.' UNESCO's official rationale cites it as an outstanding example of 17th/18th-century European military architecture, exactly matching the event description. All material details (country, year, actors, scope) hold.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via independent web search and Wikipedia fetch: Suomenlinna (site #583) was inscribed on the UNESCO World Heritage List in 1991 (15th session). Construction began in 1748 under the Swedish Crown, designed by Swedish Admiral Augustin Ehrensvärd applying Vauban's bastion fortification principles, on islands at the entrance to Helsinki's harbor. UNESCO's official listing describes it as an outstanding example of 17th- and 18th-century European military architecture/bastion system, matching the description closely. Minor immaterial nuance: the fortress's renaming to 'Suomenlinna' is documented as occurring on 12 May 1918 (a ceremonial flag-raising following the Finnish Civil War), i.e., shortly after Finland's December 1917 independence declaration, rather than in 1917 itself — but the description's phrasing 'renamed ... after Finnish independence in 1917' is reasonably read as 'renamed as a consequence of the 1917 independence' and does not affect the core 1991 UNESCO inscription event being verified. Core claim (year, country, event) fully confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Suomenlinna",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Suomenlinna (Helsinki, Finland) was inscribed on the UNESCO World Heritage List in 1991. Construction began in 1748 under the Swedish Crown, designed by Admiral Augustin Ehrensvärd applying Vauban's bastion fortification principles; the fortress was renamed from Sveaborg to Suomenlinna in a May 1918 ceremony following Finnish independence (Dec 1917), matching the description's 'after Finnish independence in 1917.' UNESCO's official rationale cites it as an outstanding example of 17th/18th-century European military architecture, exactly matching the event description. All material details (country, year, actors, scope) hold.",
+        "source": "https://suomenlinna.fi/en/suomenlinna-world-heritage/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://suomenlinna.fi/en/suomenlinna-world-heritage/"
+  },
+  {
+    "year": 1991,
     "title": "Markka Devalued as Banking Crisis Deepens",
     "verdict": "TRUE",
     "reason": "Finland devalued the markka in November 1991 as the banking sector faced insolvency. The government had attempted to avoid devaluation through wage negotiations but the exchange rate peg collapsed under capital outflows, worsening the burden of foreign-currency loans for Finnish firms.",
@@ -51,31 +87,6 @@
   },
   {
     "year": 1992,
-    "title": "New Treaty with Russia Replaces Cold War FCMA Pact",
-    "verdict": "TRUE",
-    "reason": "On 20 January 1992, Finland and Russia signed the Treaty on the Foundations of Relations, replacing the 1948 FCMA treaty. The new treaty contained no military obligations and was based on sovereign equality, formally ending Finlandization.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On 20 January 1992, Finland and Russia signed the Treaty on the Foundations of Relations, replacing the 1948 FCMA treaty. The new treaty contained no military obligations and was based on sovereign equality, formally ending Finlandization.",
-        "source": "https://www.washingtonpost.com/archive/politics/1992/01/21/russia-finland-sign-political-treaty/84e04ce2-40e9-4b2d-ac5c-843b1174f543/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.washingtonpost.com/archive/politics/1992/01/21/russia-finland-sign-political-treaty/84e04ce2-40e9-4b2d-ac5c-843b1174f543/"
-  },
-  {
-    "year": 1992,
     "title": "Markka Floated Freely After Fixed Exchange Rate Abandoned",
     "verdict": "TRUE",
     "reason": "Finland let the markka float on 8 September 1992 during the European currency crisis after the Bank of Finland exhausted its foreign reserves. The markka immediately fell ~13% and depreciated further, which ultimately helped export competitiveness and anchored the recovery.",
@@ -98,6 +109,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Finnish_markka"
+  },
+  {
+    "year": 1992,
+    "title": "New Treaty with Russia Replaces Cold War FCMA Pact",
+    "verdict": "TRUE",
+    "reason": "On 20 January 1992, Finland and Russia signed the Treaty on the Foundations of Relations, replacing the 1948 FCMA treaty. The new treaty contained no military obligations and was based on sovereign equality, formally ending Finlandization.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 20 January 1992, Finland and Russia signed the Treaty on the Foundations of Relations, replacing the 1948 FCMA treaty. The new treaty contained no military obligations and was based on sovereign equality, formally ending Finlandization.",
+        "source": "https://www.washingtonpost.com/archive/politics/1992/01/21/russia-finland-sign-political-treaty/84e04ce2-40e9-4b2d-ac5c-843b1174f543/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.washingtonpost.com/archive/politics/1992/01/21/russia-finland-sign-political-treaty/84e04ce2-40e9-4b2d-ac5c-843b1174f543/"
   },
   {
     "year": 1993,
@@ -376,31 +412,6 @@
   },
   {
     "year": 2008,
-    "title": "Second School Shooting at Kauhajoki",
-    "verdict": "TRUE",
-    "reason": "On 23 September 2008, 22-year-old Matti Saari killed ten people at the Kauhajoki campus of Seinäjoki University of Applied Sciences before fatally shooting himself. The event led to stricter firearms legislation including raised minimum age requirements.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On 23 September 2008, 22-year-old Matti Saari killed ten people at the Kauhajoki campus of Seinäjoki University of Applied Sciences before fatally shooting himself. The event led to stricter firearms legislation including raised minimum age requirements.",
-        "source": "https://en.wikipedia.org/wiki/Kauhajoki_school_shooting",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Kauhajoki_school_shooting"
-  },
-  {
-    "year": 2008,
     "title": "Global Financial Crisis Ends Finland's Growth Boom",
     "verdict": "TRUE",
     "reason": "The 2008 global financial crisis caused real per capita GDP in Finland to fall 6.7% in 2009, ending a growth period in which Nokia had driven GDP per capita up ~55% since 1995. Finland's recovery was exceptionally slow; GDP did not return to pre-crisis levels for a decade.",
@@ -448,6 +459,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Finland%E2%80%93NATO_relations"
+  },
+  {
+    "year": 2008,
+    "title": "Second School Shooting at Kauhajoki",
+    "verdict": "TRUE",
+    "reason": "On 23 September 2008, 22-year-old Matti Saari killed ten people at the Kauhajoki campus of Seinäjoki University of Applied Sciences before fatally shooting himself. The event led to stricter firearms legislation including raised minimum age requirements.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On 23 September 2008, 22-year-old Matti Saari killed ten people at the Kauhajoki campus of Seinäjoki University of Applied Sciences before fatally shooting himself. The event led to stricter firearms legislation including raised minimum age requirements.",
+        "source": "https://en.wikipedia.org/wiki/Kauhajoki_school_shooting",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Kauhajoki_school_shooting"
   },
   {
     "year": 2010,
@@ -601,31 +637,6 @@
   },
   {
     "year": 2017,
-    "title": "World's First National Basic Income Experiment Launched",
-    "verdict": "TRUE",
-    "reason": "Finland launched the world's first statutory basic income experiment on 1 January 2017, paying 2,000 randomly selected unemployed people €560/month for two years with no conditions. Results showed small employment gains (6 extra days of work) but significant wellbeing improvements.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Finland launched the world's first statutory basic income experiment on 1 January 2017, paying 2,000 randomly selected unemployed people €560/month for two years with no conditions. Results showed small employment gains (6 extra days of work) but significant wellbeing improvements.",
-        "source": "https://stm.fi/en/-/perustulokokeilun-tulokset-tyollisyysvaikutukset-vahaisia-toimeentulo-ja-psyykkinen-terveys-koettiin-paremmaksi",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://stm.fi/en/-/perustulokokeilun-tulokset-tyollisyysvaikutukset-vahaisia-toimeentulo-ja-psyykkinen-terveys-koettiin-paremmaksi"
-  },
-  {
-    "year": 2017,
     "title": "Finland Celebrates 100th Anniversary of Independence",
     "verdict": "TRUE",
     "reason": "Finland celebrated the centennial of its 6 December 1917 independence declaration with a year-long programme under the theme 'Together', involving over 600,000 participants and 5,000 projects. Landmarks worldwide were illuminated in Finnish blue and white.",
@@ -648,6 +659,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Finland_100"
+  },
+  {
+    "year": 2017,
+    "title": "World's First National Basic Income Experiment Launched",
+    "verdict": "TRUE",
+    "reason": "Finland launched the world's first statutory basic income experiment on 1 January 2017, paying 2,000 randomly selected unemployed people €560/month for two years with no conditions. Results showed small employment gains (6 extra days of work) but significant wellbeing improvements.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland launched the world's first statutory basic income experiment on 1 January 2017, paying 2,000 randomly selected unemployed people €560/month for two years with no conditions. Results showed small employment gains (6 extra days of work) but significant wellbeing improvements.",
+        "source": "https://stm.fi/en/-/perustulokokeilun-tulokset-tyollisyysvaikutukset-vahaisia-toimeentulo-ja-psyykkinen-terveys-koettiin-paremmaksi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://stm.fi/en/-/perustulokokeilun-tulokset-tyollisyysvaikutukset-vahaisia-toimeentulo-ja-psyykkinen-terveys-koettiin-paremmaksi"
   },
   {
     "year": 2019,
@@ -726,31 +762,6 @@
   },
   {
     "year": 2022,
-    "title": "Russia Cuts Gas Supply to Finland",
-    "verdict": "TRUE",
-    "reason": "Gazprom halted all natural gas deliveries to Finland on 21 May 2022 after Finnish state energy company Gasum refused to pay in rubles in violation of the euro-denominated contract. Before the cutoff, Russia supplied 100% of Finland's natural gas.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Gazprom halted all natural gas deliveries to Finland on 21 May 2022 after Finnish state energy company Gasum refused to pay in rubles in violation of the euro-denominated contract. Before the cutoff, Russia supplied 100% of Finland's natural gas.",
-        "source": "https://www.euronews.com/2022/05/21/russia-cuts-gas-supplies-to-finland-for-refusing-to-pay-in-roubles",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.euronews.com/2022/05/21/russia-cuts-gas-supplies-to-finland-for-refusing-to-pay-in-roubles"
-  },
-  {
-    "year": 2022,
     "title": "Finland Sends Military Aid to Ukraine",
     "verdict": "TRUE",
     "reason": "Finland broke with its long-held policy of not supplying arms to conflict zones on 27 February 2022, announcing the first military aid package to Ukraine four days after Russia's invasion. Subsequent packages included assault rifles, anti-tank weapons, artillery, and ammunition.",
@@ -775,10 +786,10 @@
     "source": "https://www.defmin.fi/en/topical/press_releases_and_news/press_release_archive/2022/finland_to_send_arms_assistance_to_ukraine.12488.news"
   },
   {
-    "year": 2023,
-    "title": "Finland Officially Joins NATO as 31st Member",
+    "year": 2022,
+    "title": "Russia Cuts Gas Supply to Finland",
     "verdict": "TRUE",
-    "reason": "Finland became the 31st NATO member on 4 April 2023, after Turkey's parliament ratified the accession on 30 March 2023. The accession added 1,340 km of new NATO border with Russia, more than doubling the alliance's existing frontier with Moscow.",
+    "reason": "Gazprom halted all natural gas deliveries to Finland on 21 May 2022 after Finnish state energy company Gasum refused to pay in rubles in violation of the euro-denominated contract. Before the cutoff, Russia supplied 100% of Finland's natural gas.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -788,8 +799,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Finland became the 31st NATO member on 4 April 2023, after Turkey's parliament ratified the accession on 30 March 2023. The accession added 1,340 km of new NATO border with Russia, more than doubling the alliance's existing frontier with Moscow.",
-        "source": "https://en.wikipedia.org/wiki/Accession_of_Finland_to_NATO",
+        "reason": "Gazprom halted all natural gas deliveries to Finland on 21 May 2022 after Finnish state energy company Gasum refused to pay in rubles in violation of the euro-denominated contract. Before the cutoff, Russia supplied 100% of Finland's natural gas.",
+        "source": "https://www.euronews.com/2022/05/21/russia-cuts-gas-supplies-to-finland-for-refusing-to-pay-in-roubles",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -797,57 +808,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Accession_of_Finland_to_NATO"
-  },
-  {
-    "year": 2023,
-    "title": "Conservative Coalition Replaces Marin Government After Elections",
-    "verdict": "TRUE",
-    "reason": "The April 2023 parliamentary elections saw the National Coalition Party win with 20.8%, narrowly ahead of the Finns Party at 20.1%. Petteri Orpo formed a right-wing four-party coalition government sworn in on 20 June 2023, replacing Marin's centre-left government.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The April 2023 parliamentary elections saw the National Coalition Party win with 20.8%, narrowly ahead of the Finns Party at 20.1%. Petteri Orpo formed a right-wing four-party coalition government sworn in on 20 June 2023, replacing Marin's centre-left government.",
-        "source": "https://en.wikipedia.org/wiki/2023_Finnish_parliamentary_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2023_Finnish_parliamentary_election"
-  },
-  {
-    "year": 2023,
-    "title": "Olkiluoto 3 Nuclear Reactor Begins Regular Operation",
-    "verdict": "TRUE",
-    "reason": "Olkiluoto 3 started regular electricity production on 16 April 2023 and entered commercial operation on 1 May 2023, after construction delays stretching back to 2005. The 1,600 MW EPR reactor is Europe's most powerful nuclear unit and produced 31% of Finland's electricity in 2023.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Olkiluoto 3 started regular electricity production on 16 April 2023 and entered commercial operation on 1 May 2023, after construction delays stretching back to 2005. The 1,600 MW EPR reactor is Europe's most powerful nuclear unit and produced 31% of Finland's electricity in 2023.",
-        "source": "https://www.powermag.com/olkiluoto-3-finally-online-in-finland-germany-closes-last-three-nuclear-plants/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.powermag.com/olkiluoto-3-finally-online-in-finland-germany-closes-last-three-nuclear-plants/"
+    "source": "https://www.euronews.com/2022/05/21/russia-cuts-gas-supplies-to-finland-for-refusing-to-pay-in-roubles"
   },
   {
     "year": 2023,
@@ -876,6 +837,31 @@
   },
   {
     "year": 2023,
+    "title": "Conservative Coalition Replaces Marin Government After Elections",
+    "verdict": "TRUE",
+    "reason": "The April 2023 parliamentary elections saw the National Coalition Party win with 20.8%, narrowly ahead of the Finns Party at 20.1%. Petteri Orpo formed a right-wing four-party coalition government sworn in on 20 June 2023, replacing Marin's centre-left government.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The April 2023 parliamentary elections saw the National Coalition Party win with 20.8%, narrowly ahead of the Finns Party at 20.1%. Petteri Orpo formed a right-wing four-party coalition government sworn in on 20 June 2023, replacing Marin's centre-left government.",
+        "source": "https://en.wikipedia.org/wiki/2023_Finnish_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2023_Finnish_parliamentary_election"
+  },
+  {
+    "year": 2023,
     "title": "Finland Closes Entire Eastern Border Over Russian Hybrid Warfare",
     "verdict": "TRUE",
     "reason": "Finland closed all eight eastern border crossings with Russia in November–December 2023 after approximately 1,300 undocumented migrants crossed in weeks. Helsinki accused Moscow of orchestrating the flows as hybrid warfare retaliation for Finland's NATO membership and US defence cooperation.",
@@ -898,6 +884,56 @@
       }
     ],
     "source": "https://www.aljazeera.com/news/2023/12/14/finland-set-to-again-shut-its-entire-border-with-russia"
+  },
+  {
+    "year": 2023,
+    "title": "Finland Officially Joins NATO as 31st Member",
+    "verdict": "TRUE",
+    "reason": "Finland became the 31st NATO member on 4 April 2023, after Turkey's parliament ratified the accession on 30 March 2023. The accession added 1,340 km of new NATO border with Russia, more than doubling the alliance's existing frontier with Moscow.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Finland became the 31st NATO member on 4 April 2023, after Turkey's parliament ratified the accession on 30 March 2023. The accession added 1,340 km of new NATO border with Russia, more than doubling the alliance's existing frontier with Moscow.",
+        "source": "https://en.wikipedia.org/wiki/Accession_of_Finland_to_NATO",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Accession_of_Finland_to_NATO"
+  },
+  {
+    "year": 2023,
+    "title": "Olkiluoto 3 Nuclear Reactor Begins Regular Operation",
+    "verdict": "TRUE",
+    "reason": "Olkiluoto 3 started regular electricity production on 16 April 2023 and entered commercial operation on 1 May 2023, after construction delays stretching back to 2005. The 1,600 MW EPR reactor is Europe's most powerful nuclear unit and produced 31% of Finland's electricity in 2023.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Olkiluoto 3 started regular electricity production on 16 April 2023 and entered commercial operation on 1 May 2023, after construction delays stretching back to 2005. The 1,600 MW EPR reactor is Europe's most powerful nuclear unit and produced 31% of Finland's electricity in 2023.",
+        "source": "https://www.powermag.com/olkiluoto-3-finally-online-in-finland-germany-closes-last-three-nuclear-plants/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.powermag.com/olkiluoto-3-finally-online-in-finland-germany-closes-last-three-nuclear-plants/"
   },
   {
     "year": 2024,

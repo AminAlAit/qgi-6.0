@@ -326,6 +326,42 @@
   },
   {
     "year": 1994,
+    "title": "Historical Monuments of Mtskheta Inscribed as UNESCO World Heritage Site",
+    "verdict": "TRUE",
+    "reason": "Official UNESCO World Heritage Centre records (whc.unesco.org, Site ID 708) confirm the Historical Monuments of Mtskheta — comprising Jvari Monastery, Svetitskhoveli Cathedral, and Samtavro Monastery — were inscribed on the World Heritage List in 1994, recognizing four millennia of Georgian art and culture, with Mtskheta remaining the seat of the Georgian Orthodox Church (Christianity adopted in the 4th century, 317/337 CE). Follow-up searches independently confirm the site was inscribed on the List of World Heritage in Danger in 2009 (due to deterioration of stone fabric/frescoes and later urban sprawl concerns) and removed from that danger list in 2016 (Decision 40 COM 7A.29), matching every material detail in the description.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via independent sources: the Historical Monuments of Mtskheta (Georgia) — comprising Jvari Monastery, Svetitskhoveli Cathedral, and Samtavro Monastery — were inscribed as a UNESCO World Heritage Site in 1994 (18th Session of the World Heritage Committee), recognizing the site's role as the historic center of Georgian Christianity dating to the 4th century and its architectural/cultural significance. The site was added to the List of World Heritage in Danger in 2009 due to conservation/deterioration concerns and removed from that danger list in 2016 after restoration. All material details in the event description (year, monuments, danger-list timeline) match.",
+        "source": "https://en.wikipedia.org/wiki/Mtskheta",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Official UNESCO World Heritage Centre records (whc.unesco.org, Site ID 708) confirm the Historical Monuments of Mtskheta — comprising Jvari Monastery, Svetitskhoveli Cathedral, and Samtavro Monastery — were inscribed on the World Heritage List in 1994, recognizing four millennia of Georgian art and culture, with Mtskheta remaining the seat of the Georgian Orthodox Church (Christianity adopted in the 4th century, 317/337 CE). Follow-up searches independently confirm the site was inscribed on the List of World Heritage in Danger in 2009 (due to deterioration of stone fabric/frescoes and later urban sprawl concerns) and removed from that danger list in 2016 (Decision 40 COM 7A.29), matching every material detail in the description.",
+        "source": "https://whc.unesco.org/en/list/708/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://whc.unesco.org/en/list/708/"
+  },
+  {
+    "year": 1994,
     "title": "Hyperinflation Peaks at Over 15,000%",
     "verdict": "TRUE",
     "reason": "Monthly inflation exceeded 60% in first three quarters of 1994; annualised this exceeds 15,000%. IMF data confirms catastrophic hyperinflation peaked in 1994. Claim is consistent.",

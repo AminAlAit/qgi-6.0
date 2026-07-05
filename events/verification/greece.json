@@ -1212,6 +1212,42 @@
   },
   {
     "year": 2009,
+    "title": "New Acropolis Museum Opens in Athens",
+    "verdict": "TRUE",
+    "reason": "Independently confirmed via Wikipedia and multiple other sources (PMI, Dezeen, Yatzer): the New Acropolis Museum, designed by Bernard Tschumi (with Greek architect Michael Photiadis), opened to the public on June 20, 2009, on the southeastern slope near the Acropolis in Athens, with 14,000 sq m of exhibition space housing 4,000-4,250+ artifacts. The museum's design explicitly includes a dedicated gallery intended for displaying the Parthenon (Elgin) Marbles as part of Greece's repatriation campaign targeting the British Museum, matching the description. The specific 'four million visitors in first three years' figure could not be independently pinpointed, but confirmed early pace (~9,200 visitors/day, 523,540 in first two months) is consistent with that order of magnitude, so this is treated as a minor unverified detail rather than a material discrepancy.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material details confirmed via independent sources. The New Acropolis Museum opened to the public on June 20, 2009, in Athens (Wikipedia, Britannica, multiple architecture outlets). It was designed by Swiss-French architect Bernard Tschumi (with Greek architect Michael Photiadis as local associate). It houses more than 4,000 objects (sources cite ~4,250) across 14,000 square meters of exhibition space. Multiple sources (NPR, Britannica, artnews) confirm the museum was built explicitly to bolster Greece's campaign for the return of the Parthenon (Elgin) Marbles from the British Museum, with a dedicated top-floor Parthenon Gallery designed to display the sculptures in their correct orientation with a direct sightline to the Parthenon, ready to receive the marbles if returned. The visitor claim is also confirmed near-verbatim: a Google Arts & Culture partner page for the museum states \"From its opening in June 2009 until March 2012 more than 4 million local and foreign visitors have passed through the Museum's doors\" -- matching the event description's \"more than four million visitors passed through in its first three years.\" This is also consistent with later cumulative visitor milestones (9.5 million by 2016 at year 7, 14.5 million by 2019 at year 10), which imply an even higher front-loaded visitor rate in the museum's opening years. No detail in the description is materially off.",
+        "source": "https://en.wikipedia.org/wiki/Acropolis_Museum",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia and multiple other sources (PMI, Dezeen, Yatzer): the New Acropolis Museum, designed by Bernard Tschumi (with Greek architect Michael Photiadis), opened to the public on June 20, 2009, on the southeastern slope near the Acropolis in Athens, with 14,000 sq m of exhibition space housing 4,000-4,250+ artifacts. The museum's design explicitly includes a dedicated gallery intended for displaying the Parthenon (Elgin) Marbles as part of Greece's repatriation campaign targeting the British Museum, matching the description. The specific 'four million visitors in first three years' figure could not be independently pinpointed, but confirmed early pace (~9,200 visitors/day, 523,540 in first two months) is consistent with that order of magnitude, so this is treated as a minor unverified detail rather than a material discrepancy.",
+        "source": "https://en.wikipedia.org/wiki/Acropolis_Museum",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Acropolis_Museum"
+  },
+  {
+    "year": 2009,
     "title": "PASOK election win reveals budget deficit at 12.7% of GDP, triggering debt crisis",
     "verdict": "TRUE",
     "reason": "PASOK won the October 4, 2009 elections, and the new government revealed the budget deficit was approximately 12.7% of GDP rather than the previously reported 6-8%, triggering the sovereign debt crisis.",

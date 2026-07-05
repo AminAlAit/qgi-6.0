@@ -1066,5 +1066,41 @@
       }
     ],
     "source": "https://news.co.cr/costa-rica-upholds-ban-on-open-pit-mining/21901/"
+  },
+  {
+    "year": 2025,
+    "title": "Costa Rica Hosts Transit Migration from South America",
+    "verdict": "PARTIAL",
+    "reason": "Costa Rica genuinely was a major transit-migration flashpoint in 2025 and did negotiate a bilateral agreement to manage flows through its territory — but the direction and framing in the description are backwards. Independent reporting (WOLA, Refugees International, Mixed Migration Centre, Tico Times, Library of Congress Global Legal Monitor) shows that after Trump's Jan 20, 2025 inauguration, NORTHBOUND migration through the Darién Gap toward the US collapsed (down ~97% vs 2024, lowest since Feb 2021), while Costa Rica instead faced a SOUTHBOUND reverse-migration crisis: tens of thousands of Venezuelans, Colombians and Ecuadorians who had failed to reach/stay in the US moving back south. On Feb 11, 2025 Costa Rica and Panama signed a bilateral coordinated-transport agreement — but its explicit purpose was to move these southbound returnees safely (Costa Rica registers/vets them, Panama buses them to Colombia via Darién), not to manage northbound flows toward the US as the description states. Separately, Costa Rica also began accepting US deportation flights of third-country nationals (Feb 2025), unrelated to South American transit. So country/year hold and 'transit migration + bilateral agreement' is real, but the described direction ('traveling...toward the United States', 'growing challenges' implying rising northbound pressure) is the opposite of what actually drove the 2025 story.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Costa Rica genuinely was a major transit-migration flashpoint in 2025 and did negotiate a bilateral agreement to manage flows through its territory — but the direction and framing in the description are backwards. Independent reporting (WOLA, Refugees International, Mixed Migration Centre, Tico Times, Library of Congress Global Legal Monitor) shows that after Trump's Jan 20, 2025 inauguration, NORTHBOUND migration through the Darién Gap toward the US collapsed (down ~97% vs 2024, lowest since Feb 2021), while Costa Rica instead faced a SOUTHBOUND reverse-migration crisis: tens of thousands of Venezuelans, Colombians and Ecuadorians who had failed to reach/stay in the US moving back south. On Feb 11, 2025 Costa Rica and Panama signed a bilateral coordinated-transport agreement — but its explicit purpose was to move these southbound returnees safely (Costa Rica registers/vets them, Panama buses them to Colombia via Darién), not to manage northbound flows toward the US as the description states. Separately, Costa Rica also began accepting US deportation flights of third-country nationals (Feb 2025), unrelated to South American transit. So country/year hold and 'transit migration + bilateral agreement' is real, but the described direction ('traveling...toward the United States', 'growing challenges' implying rising northbound pressure) is the opposite of what actually drove the 2025 story.",
+        "source": "https://ticotimes.net/2025/03/04/costa-rica-and-panama-launch-joint-migration-transit-program",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from independent sources. Costa Rica in 2025 continued to be a major transit corridor for migrants (primarily Venezuelans and Colombians) moving from South America through Central America toward the US/North America, alongside a reverse \"southbound\" flow of migrants leaving the US/Mexico border area back toward South America. On Feb 11, 2025, Costa Rica and Panama signed a bilateral agreement (reported by Library of Congress Global Legal Monitor, published 2025-04-03) under which Costa Rica registers southbound migrants, runs criminal background checks, and issues travel permits, while Panama buses them onward toward South America — directly matching the description of \"bilateral agreements to manage migration flows through its territory.\" Migration Policy Institute and Mixed Migration Centre reporting from 2025 corroborate Costa Rica's ongoing role and challenges as a transit/destination country amid shifting US immigration policy. Country, year, and substance all hold; no material detail is off.",
+        "source": "https://www.loc.gov/item/global-legal-monitor/2025-04-03/panama-costa-rica-countries-enter-agreement-to-transport-southbound-migrants/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://ticotimes.net/2025/03/04/costa-rica-and-panama-launch-joint-migration-transit-program"
   }
 ]

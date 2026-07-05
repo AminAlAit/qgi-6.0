@@ -1,5 +1,41 @@
 [
   {
+    "year": 1973,
+    "title": "Sydney Opera House Officially Opens",
+    "verdict": "PARTIAL",
+    "reason": "Core facts confirmed: Queen Elizabeth II formally opened the Sydney Opera House in Sydney, Australia on 20 October 1973; final cost was AU$102 million, substantially funded via the Opera House Lotteries; designed by Danish architect Jorn Utzon; the building was UNESCO World Heritage-listed in 2007. However, one specific claim in the description is factually wrong: the official opening ceremony on 20 October 1973 featured fireworks and a performance of Beethoven's Symphony No. 9 -- not Prokofiev's War and Peace. The Prokofiev opera War and Peace was staged in the Opera Theatre on 28 September 1973, nearly three weeks BEFORE the Queen's official opening, as a separate pre-opening inaugural performance, not as part of the opening ceremony itself. This is a checkable actor/scope error (wrong event attributed to the opening), so I downgrade from TRUE to PARTIAL. Minor/lesser note: construction is usually described as 14 years (1959-1973) rather than 15, though this is a smaller, more debatable point depending on start-date convention (design competition win was 1957).",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core facts confirmed: Queen Elizabeth II officially opened the Sydney Opera House in Australia on 20 October 1973 after construction beginning 1959 (~14 years, commonly cited as 10-14 yrs depending on start point); final cost was AU$102 million (1,357% over original budget), funded substantially via Opera House Lotteries; designed by Danish architect Jørn Utzon; UNESCO World Heritage inscription occurred 28 June 2007; the venue hosts roughly 2,500 events/year per the official Australian government heritage listing (description's \"roughly 3,000\" is a minor overstatement, not material). However, one material detail is wrong: the official opening ceremony on 20 October 1973 did NOT open with Prokofiev's War and Peace — it featured an outdoor concert with fireworks and the Sydney Symphony Orchestra performing Beethoven's Symphony No. 9, and the Queen separately attended a performance of Mozart's The Magic Flute. Prokofiev's War and Peace was indeed the first opera staged in the Opera Theatre, but that happened on 28 September 1973 — nearly a month BEFORE the official royal opening, as part of a preview/trial season by the Australian Opera, not as part of the opening event itself. This conflates two distinct occasions, so the description's central \"opened with a performance of Prokofiev's War and Peace\" claim is factually inaccurate even though the surrounding facts (country, year, cost, architect, lotteries funding, UNESCO status) all hold.",
+        "source": "https://en.wikipedia.org/wiki/Sydney_Opera_House",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core facts confirmed: Queen Elizabeth II formally opened the Sydney Opera House in Sydney, Australia on 20 October 1973; final cost was AU$102 million, substantially funded via the Opera House Lotteries; designed by Danish architect Jorn Utzon; the building was UNESCO World Heritage-listed in 2007. However, one specific claim in the description is factually wrong: the official opening ceremony on 20 October 1973 featured fireworks and a performance of Beethoven's Symphony No. 9 -- not Prokofiev's War and Peace. The Prokofiev opera War and Peace was staged in the Opera Theatre on 28 September 1973, nearly three weeks BEFORE the Queen's official opening, as a separate pre-opening inaugural performance, not as part of the opening ceremony itself. This is a checkable actor/scope error (wrong event attributed to the opening), so I downgrade from TRUE to PARTIAL. Minor/lesser note: construction is usually described as 14 years (1959-1973) rather than 15, though this is a smaller, more debatable point depending on start-date convention (design competition win was 1957).",
+        "source": "https://en.wikipedia.org/wiki/Sydney_Opera_House",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sydney_Opera_House"
+  },
+  {
     "year": 1990,
     "title": "Australia Joins Gulf War Coalition Against Iraq",
     "verdict": "TRUE",

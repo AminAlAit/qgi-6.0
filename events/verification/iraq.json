@@ -276,31 +276,6 @@
   },
   {
     "year": 1961,
-    "title": "Kurdish Revolt Begins under Mustafa Barzani",
-    "verdict": "TRUE",
-    "reason": "Confirmed. First Iraqi-Kurdish War erupted 11 September 1961. Barzani and KDP led the uprising.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed. First Iraqi-Kurdish War erupted 11 September 1961. Barzani and KDP led the uprising.",
-        "source": "https://en.wikipedia.org/wiki/First_Iraqi%E2%80%93Kurdish_War",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/First_Iraqi%E2%80%93Kurdish_War"
-  },
-  {
-    "year": 1961,
     "title": "Iraq Claims Kuwait at Independence",
     "verdict": "TRUE",
     "reason": "Confirmed. Kuwait gained independence June 19 1961; Qasim claimed Kuwait as part of Iraq on June 25 citing Ottoman vilayet of Basra.",
@@ -323,6 +298,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/History_of_Kuwait"
+  },
+  {
+    "year": 1961,
+    "title": "Kurdish Revolt Begins under Mustafa Barzani",
+    "verdict": "TRUE",
+    "reason": "Confirmed. First Iraqi-Kurdish War erupted 11 September 1961. Barzani and KDP led the uprising.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. First Iraqi-Kurdish War erupted 11 September 1961. Barzani and KDP led the uprising.",
+        "source": "https://en.wikipedia.org/wiki/First_Iraqi%E2%80%93Kurdish_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/First_Iraqi%E2%80%93Kurdish_War"
   },
   {
     "year": 1963,
@@ -501,31 +501,6 @@
   },
   {
     "year": 1972,
-    "title": "Nationalization of Iraq Petroleum Company",
-    "verdict": "TRUE",
-    "reason": "Confirmed. IPC nationalized 1 June 1972 with Soviet technical support. Accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed. IPC nationalized 1 June 1972 with Soviet technical support. Accurate.",
-        "source": "https://en.wikipedia.org/wiki/Iraq_Petroleum_Company",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Iraq_Petroleum_Company"
-  },
-  {
-    "year": 1972,
     "title": "Iraqi-Soviet Friendship Treaty Signed",
     "verdict": "TRUE",
     "reason": "Confirmed. Treaty of Friendship and Cooperation signed 9 April 1972 in Baghdad by Kosygin and al-Bakr. Accurate.",
@@ -548,6 +523,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Iraq%E2%80%93Russia_relations"
+  },
+  {
+    "year": 1972,
+    "title": "Nationalization of Iraq Petroleum Company",
+    "verdict": "TRUE",
+    "reason": "Confirmed. IPC nationalized 1 June 1972 with Soviet technical support. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. IPC nationalized 1 June 1972 with Soviet technical support. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/Iraq_Petroleum_Company",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Iraq_Petroleum_Company"
   },
   {
     "year": 1973,
@@ -576,31 +576,6 @@
   },
   {
     "year": 1974,
-    "title": "Kurdish Autonomy Agreement Collapses — War Resumes",
-    "verdict": "TRUE",
-    "reason": "Confirmed. March 1974 deadline passed without genuine implementation; Ba'ath offered limited autonomy excluding Kirkuk; Barzani rejected it and renewed war with Iranian backing.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed. March 1974 deadline passed without genuine implementation; Ba'ath offered limited autonomy excluding Kirkuk; Barzani rejected it and renewed war with Iranian backing.",
-        "source": "https://en.wikipedia.org/wiki/Second_Iraqi%E2%80%93Kurdish_War",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Second_Iraqi%E2%80%93Kurdish_War"
-  },
-  {
-    "year": 1974,
     "title": "Arabization and Mass Displacement of Kurds",
     "verdict": "TRUE",
     "reason": "Confirmed. Arabization of Kirkuk and border zones began mid-1970s; hundreds of thousands displaced. HRW and UN documented extensively.",
@@ -623,6 +598,31 @@
       }
     ],
     "source": "https://www.hrw.org/reports/2004/iraq0804/4.htm"
+  },
+  {
+    "year": 1974,
+    "title": "Kurdish Autonomy Agreement Collapses — War Resumes",
+    "verdict": "TRUE",
+    "reason": "Confirmed. March 1974 deadline passed without genuine implementation; Ba'ath offered limited autonomy excluding Kirkuk; Barzani rejected it and renewed war with Iranian backing.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. March 1974 deadline passed without genuine implementation; Ba'ath offered limited autonomy excluding Kirkuk; Barzani rejected it and renewed war with Iranian backing.",
+        "source": "https://en.wikipedia.org/wiki/Second_Iraqi%E2%80%93Kurdish_War",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Second_Iraqi%E2%80%93Kurdish_War"
   },
   {
     "year": 1975,
@@ -701,31 +701,6 @@
   },
   {
     "year": 1979,
-    "title": "Saddam Hussein Becomes President — Ba'ath Purge",
-    "verdict": "TRUE",
-    "reason": "Confirmed. Saddam became president 16 July 1979; purge conducted 22 July; 22 Ba'athists sentenced to death, executed by fellow party members. Accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed. Saddam became president 16 July 1979; purge conducted 22 July; 22 Ba'athists sentenced to death, executed by fellow party members. Accurate.",
-        "source": "https://en.wikipedia.org/wiki/1979_Ba'ath_Party_Purge",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1979_Ba'ath_Party_Purge"
-  },
-  {
-    "year": 1979,
     "title": "Ayatollah Muhammad Baqir al-Sadr Executed",
     "verdict": "FALSE",
     "reason": "YEAR ERROR. Al-Sadr was arrested and executed on 9 April 1980, not 1979. He was arrested after the Iranian Revolution influenced Iraqi Shia unrest. The file places this in 1979 which is incorrect — execution was 1980.",
@@ -748,6 +723,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Muhammad_Baqir_al-Sadr"
+  },
+  {
+    "year": 1979,
+    "title": "Saddam Hussein Becomes President — Ba'ath Purge",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Saddam became president 16 July 1979; purge conducted 22 July; 22 Ba'athists sentenced to death, executed by fellow party members. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Saddam became president 16 July 1979; purge conducted 22 July; 22 Ba'athists sentenced to death, executed by fellow party members. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/1979_Ba'ath_Party_Purge",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1979_Ba'ath_Party_Purge"
   },
   {
     "year": 1980,
@@ -876,31 +876,6 @@
   },
   {
     "year": 1985,
-    "title": "War of the Cities — Missile Strikes on Civilian Populations",
-    "verdict": "TRUE",
-    "reason": "Confirmed. Second campaign March-April 1985; Iraq struck Iranian cities with Scuds; Iran responded targeting Baghdad, Basra. Accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed. Second campaign March-April 1985; Iraq struck Iranian cities with Scuds; Iran responded targeting Baghdad, Basra. Accurate.",
-        "source": "https://en.wikipedia.org/wiki/War_of_the_cities",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/War_of_the_cities"
-  },
-  {
-    "year": 1985,
     "title": "Iraq's War Economy and Alternative Oil Routes",
     "verdict": "TRUE",
     "reason": "Confirmed. Iraq developed Turkey and Saudi Arabia pipelines; accumulated $80+ billion in war debt. The $80 billion figure for war debt is a common round number estimate and plausible.",
@@ -923,6 +898,31 @@
       }
     ],
     "source": "https://www.nonproliferation.org/wp-content/uploads/npr/81ali.pdf"
+  },
+  {
+    "year": 1985,
+    "title": "War of the Cities — Missile Strikes on Civilian Populations",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Second campaign March-April 1985; Iraq struck Iranian cities with Scuds; Iran responded targeting Baghdad, Basra. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Second campaign March-April 1985; Iraq struck Iranian cities with Scuds; Iran responded targeting Baghdad, Basra. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/War_of_the_cities",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/War_of_the_cities"
   },
   {
     "year": 1986,
@@ -951,31 +951,6 @@
   },
   {
     "year": 1988,
-    "title": "Halabja Chemical Massacre",
-    "verdict": "TRUE",
-    "reason": "Confirmed. 16 March 1988 (primarily); file says '16-17' which is acceptable. 3,200-5,000 immediate deaths confirmed. Accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed. 16 March 1988 (primarily); file says '16-17' which is acceptable. 3,200-5,000 immediate deaths confirmed. Accurate.",
-        "source": "https://en.wikipedia.org/wiki/Halabja_massacre",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Halabja_massacre"
-  },
-  {
-    "year": 1988,
     "title": "Anfal Genocide Against Iraqi Kurds",
     "verdict": "TRUE",
     "reason": "Confirmed. February-September 1988. Casualties: 50,000-182,000. Village count: event says '4,000 villages destroyed' — this figure refers to broader Kurdish repression 1975-1989; Anfal directly destroyed ~1,200 villages. The 4,000 figure is sometimes cited for the whole period and is used in Kurdish sources. Acceptable given framing.",
@@ -998,6 +973,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Anfal_campaign"
+  },
+  {
+    "year": 1988,
+    "title": "Halabja Chemical Massacre",
+    "verdict": "TRUE",
+    "reason": "Confirmed. 16 March 1988 (primarily); file says '16-17' which is acceptable. 3,200-5,000 immediate deaths confirmed. Accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. 16 March 1988 (primarily); file says '16-17' which is acceptable. 3,200-5,000 immediate deaths confirmed. Accurate.",
+        "source": "https://en.wikipedia.org/wiki/Halabja_massacre",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Halabja_massacre"
   },
   {
     "year": 1988,
@@ -1126,31 +1126,6 @@
   },
   {
     "year": 1991,
-    "title": "Shia and Kurdish Uprisings Crushed — 1991 Intifada",
-    "verdict": "TRUE",
-    "reason": "Pre-verified. Confirmed accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified. Confirmed accurate.",
-        "source": "https://en.wikipedia.org/wiki/1991_Iraqi_uprisings",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1991_Iraqi_uprisings"
-  },
-  {
-    "year": 1991,
     "title": "Kurdish Refugee Crisis and Northern No-Fly Zone",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
@@ -1173,6 +1148,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Operation_Provide_Comfort"
+  },
+  {
+    "year": 1991,
+    "title": "Shia and Kurdish Uprisings Crushed — 1991 Intifada",
+    "verdict": "TRUE",
+    "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/1991_Iraqi_uprisings",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1991_Iraqi_uprisings"
   },
   {
     "year": 1992,
@@ -1401,31 +1401,6 @@
   },
   {
     "year": 2003,
-    "title": "US-Led Invasion of Iraq — Operation Iraqi Freedom",
-    "verdict": "TRUE",
-    "reason": "Pre-verified. Confirmed accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified. Confirmed accurate.",
-        "source": "https://en.wikipedia.org/wiki/2003_invasion_of_Iraq",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2003_invasion_of_Iraq"
-  },
-  {
-    "year": 2003,
     "title": "De-Ba'athification and Army Dissolution",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. CPA Orders 1 and 2 dated May 16 and May 23 2003.",
@@ -1473,6 +1448,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Capture_of_Saddam_Hussein"
+  },
+  {
+    "year": 2003,
+    "title": "US-Led Invasion of Iraq — Operation Iraqi Freedom",
+    "verdict": "TRUE",
+    "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.wikipedia.org/wiki/2003_invasion_of_Iraq",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2003_invasion_of_Iraq"
   },
   {
     "year": 2004,
@@ -1551,31 +1551,6 @@
   },
   {
     "year": 2006,
-    "title": "Samarra Shrine Bombing Triggers Sectarian Civil War",
-    "verdict": "TRUE",
-    "reason": "Pre-verified. Confirmed accurate. 22 February 2006.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified. Confirmed accurate. 22 February 2006.",
-        "source": "https://en.wikipedia.org/wiki/2006_al-Askari_mosque_bombing",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2006_al-Askari_mosque_bombing"
-  },
-  {
-    "year": 2006,
     "title": "Saddam Hussein Executed",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. 30 December 2006.",
@@ -1598,6 +1573,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Execution_of_Saddam_Hussein"
+  },
+  {
+    "year": 2006,
+    "title": "Samarra Shrine Bombing Triggers Sectarian Civil War",
+    "verdict": "TRUE",
+    "reason": "Pre-verified. Confirmed accurate. 22 February 2006.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. 22 February 2006.",
+        "source": "https://en.wikipedia.org/wiki/2006_al-Askari_mosque_bombing",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2006_al-Askari_mosque_bombing"
   },
   {
     "year": 2007,
@@ -1801,31 +1801,6 @@
   },
   {
     "year": 2014,
-    "title": "Yazidi Genocide on Sinjar Mountain",
-    "verdict": "TRUE",
-    "reason": "Pre-verified. Confirmed accurate. 3 August 2014.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified. Confirmed accurate. 3 August 2014.",
-        "source": "https://en.wikipedia.org/wiki/Yazidi_genocide",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Yazidi_genocide"
-  },
-  {
-    "year": 2014,
     "title": "Maliki Replaced by Haider al-Abadi; US-Led Coalition Launches Airstrikes",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
@@ -1848,6 +1823,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Haider_al-Abadi"
+  },
+  {
+    "year": 2014,
+    "title": "Yazidi Genocide on Sinjar Mountain",
+    "verdict": "TRUE",
+    "reason": "Pre-verified. Confirmed accurate. 3 August 2014.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. 3 August 2014.",
+        "source": "https://en.wikipedia.org/wiki/Yazidi_genocide",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Yazidi_genocide"
   },
   {
     "year": 2015,
@@ -1951,31 +1951,6 @@
   },
   {
     "year": 2018,
-    "title": "Post-ISIS Elections and Iran-Backed Parties Win",
-    "verdict": "TRUE",
-    "reason": "Pre-verified. Confirmed accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified. Confirmed accurate.",
-        "source": "https://en.m.wikipedia.org/wiki/2018_Iraqi_parliamentary_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.m.wikipedia.org/wiki/2018_Iraqi_parliamentary_election"
-  },
-  {
-    "year": 2018,
     "title": "Basra Protests Over Services and Contaminated Water",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
@@ -1998,6 +1973,31 @@
       }
     ],
     "source": "https://www.hrw.org/news/2019/07/22/iraq-water-crisis-basra"
+  },
+  {
+    "year": 2018,
+    "title": "Post-ISIS Elections and Iran-Backed Parties Win",
+    "verdict": "TRUE",
+    "reason": "Pre-verified. Confirmed accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate.",
+        "source": "https://en.m.wikipedia.org/wiki/2018_Iraqi_parliamentary_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.m.wikipedia.org/wiki/2018_Iraqi_parliamentary_election"
   },
   {
     "year": 2018,
@@ -2076,31 +2076,6 @@
   },
   {
     "year": 2020,
-    "title": "US Kills Soleimani at Baghdad Airport",
-    "verdict": "TRUE",
-    "reason": "Pre-verified. Confirmed accurate. 3 January 2020.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified. Confirmed accurate. 3 January 2020.",
-        "source": "https://en.wikipedia.org/wiki/Assassination_of_Qasem_Soleimani",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Assassination_of_Qasem_Soleimani"
-  },
-  {
-    "year": 2020,
     "title": "Mustafa al-Kadhimi Becomes Prime Minister",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate. Confirmed by parliament 6 May 2020.",
@@ -2123,6 +2098,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Mustafa_Al-Kadhimi"
+  },
+  {
+    "year": 2020,
+    "title": "US Kills Soleimani at Baghdad Airport",
+    "verdict": "TRUE",
+    "reason": "Pre-verified. Confirmed accurate. 3 January 2020.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. 3 January 2020.",
+        "source": "https://en.wikipedia.org/wiki/Assassination_of_Qasem_Soleimani",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Assassination_of_Qasem_Soleimani"
   },
   {
     "year": 2021,
@@ -2251,31 +2251,6 @@
   },
   {
     "year": 2024,
-    "title": "US-Iran Proxy Tensions on Iraqi Soil Escalate",
-    "verdict": "TRUE",
-    "reason": "Pre-verified. Confirmed accurate. Tower 22 strike 28 January 2024; US retaliation 2 February 2024.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Pre-verified. Confirmed accurate. Tower 22 strike 28 January 2024; US retaliation 2 February 2024.",
-        "source": "https://en.wikipedia.org/wiki/Tower_22_drone_attack",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Tower_22_drone_attack"
-  },
-  {
-    "year": 2024,
     "title": "Iraq Negotiates US Troop Withdrawal",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
@@ -2301,6 +2276,31 @@
   },
   {
     "year": 2024,
+    "title": "US-Iran Proxy Tensions on Iraqi Soil Escalate",
+    "verdict": "TRUE",
+    "reason": "Pre-verified. Confirmed accurate. Tower 22 strike 28 January 2024; US retaliation 2 February 2024.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Pre-verified. Confirmed accurate. Tower 22 strike 28 January 2024; US retaliation 2 February 2024.",
+        "source": "https://en.wikipedia.org/wiki/Tower_22_drone_attack",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Tower_22_drone_attack"
+  },
+  {
+    "year": 2024,
     "title": "Yazidi Survivors Begin Return to Sinjar",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",
@@ -2323,6 +2323,42 @@
       }
     ],
     "source": "https://www.pbs.org/wgbh/frontline/article/yazidis-decade-after-isis-genocidal-campaign/"
+  },
+  {
+    "year": 2025,
+    "title": "Al-Nuri Mosque and Its Minaret Reopen in Mosul After ISIS Destruction",
+    "verdict": "TRUE",
+    "reason": "Multiple independent outlets confirm Iraq's Prime Minister officially reopened the Great Mosque of al-Nuri and its al-Hadba leaning minaret in Mosul's Old City on 1 September 2025, eight years after ISIS destroyed the 12th-century mosque and minaret in June 2017 as they lost the battle for Mosul. UNESCO's 'Revive the Spirit of Mosul' project raised $115 million for the reconstruction, with major funding from the UAE and the EU, using traditional techniques and rubble salvaged from the site; the project involved Iraqi heritage authorities and Sunni religious leaders and trained ~2,800 young Iraqis in traditional crafts. All material details (country, year, date, actors, funding figure, funders, destruction date/actor) match across PBS, Euronews, The National, Al Jazeera, and Washington Times reporting.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative outlets (The National, Euronews, PBS, Al Jazeera, Washington Times) confirm the Great Mosque of al-Nuri and its leaning Al-Hadba minaret officially reopened on 1 September 2025 in Mosul, Iraq, attended by PM Mohammed Shia al-Sudani, eight years after ISIS destroyed the 12th-century mosque and minaret in June 2017 during their retreat from the city. The reconstruction was led by UNESCO under the 'Revive the Spirit of Mosul' project, cost approximately $115 million, with major funding from the UAE (~$50.4M) and the EU, used traditional techniques and salvaged rubble, and involved Iraqi heritage authorities and Sunni religious leaders. All material details in the description are corroborated.",
+        "source": "https://www.thenationalnews.com/news/mena/2025/09/01/unesco-chief-hails-reopening-of-mosuls-al-nuri-mosque-after-painstaking-rebuild/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent outlets confirm Iraq's Prime Minister officially reopened the Great Mosque of al-Nuri and its al-Hadba leaning minaret in Mosul's Old City on 1 September 2025, eight years after ISIS destroyed the 12th-century mosque and minaret in June 2017 as they lost the battle for Mosul. UNESCO's 'Revive the Spirit of Mosul' project raised $115 million for the reconstruction, with major funding from the UAE and the EU, using traditional techniques and rubble salvaged from the site; the project involved Iraqi heritage authorities and Sunni religious leaders and trained ~2,800 young Iraqis in traditional crafts. All material details (country, year, date, actors, funding figure, funders, destruction date/actor) match across PBS, Euronews, The National, Al Jazeera, and Washington Times reporting.",
+        "source": "https://www.pbs.org/newshour/world/iraq-reopens-historic-al-nuri-mosque-in-mosul-8-years-after-islamic-state-destruction",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.pbs.org/newshour/world/iraq-reopens-historic-al-nuri-mosque-in-mosul-8-years-after-islamic-state-destruction"
   },
   {
     "year": 2025,

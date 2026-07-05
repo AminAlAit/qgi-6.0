@@ -160,11 +160,11 @@ event survives on disk.
 | comoros | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | cyprus | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | democratic_republic_of_congo | - | - | 1 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
-| djibouti | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| djibouti | - | - | 2 | 2026-07-05 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | dominica | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | equatorial_guinea | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | eswatini | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
-| fiji | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
+| fiji | - | - | 2 | 2026-07-05 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | gabon | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | gambia | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |
 | grenada | - | - | 0 | 2026-07-02 | row added by regen-tracking (Generated/Curated: see session logs below) |

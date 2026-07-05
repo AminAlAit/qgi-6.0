@@ -7581,5 +7581,41 @@
       }
     ],
     "source": "https://www.aljazeera.com/news/2025/6/16/wagner-vs-africa-corps-the-future-of-russian-paramilitaries-in-mali"
+  },
+  {
+    "year": 2025,
+    "title": "Western sanctions pressure intensifies on Russian economy",
+    "verdict": "TRUE",
+    "reason": "Confirmed from multiple independent sources: in 2025 the EU adopted its 18th (July 2025) and 19th (October 23, 2025) sanctions packages against Russia, expanding restrictions on energy (LNG import ban, stripped Rosneft/Gazprom Neft exemptions), finance (Mir card, Fast Payments System, crypto), and adding 45 entities (28 Russian, 17 foreign — chiefly in China, India, Thailand) to export-control lists for acting as backdoor suppliers to Russia's military-industrial complex, plus sanctions on third-country banks in Belarus/Kazakhstan/Tajikistan/Kyrgyzstan/UAE/Hong Kong for sanctions evasion. In parallel, the US Treasury (OFAC) sanctioned Russia's two largest oil companies, Rosneft and Lukoil, on October 22, 2025 — the first major Russia sanctions action under the Trump administration, explicitly tied to pressuring Moscow over the war — and the UK imposed asset freezes on Russian energy companies (Oct 15, 2025). Earlier in 2025, US lawmakers (Sanctioning Russia Act) and President Trump also threatened/pursued secondary sanctions and steep tariffs on countries (India, China, Turkey, etc.) buying Russian oil. This matches the event description (expanded Western sanctions, secondary sanctions on third countries trading with Russia, war in its fourth year since Feb 2022 invasion) essentially exactly — country, year, and substance all confirmed by multiple independent, reputable sources (EU Council/Consilium, Skadden law firm analysis, US Treasury, Sullivan & Cromwell, Steptoe).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all elements. The EU adopted its 18th sanctions package against Russia on 18 July 2025, which explicitly expanded secondary sanctions — lowering the threshold for sanctioning third-country (e.g. Chinese, Hong Kong, Turkish) financial institutions supporting Russia's war economy, and banning refined-petroleum imports from third countries processing Russian crude. In parallel, the US Senate advanced the Sanctioning Russia Act (June 2025) proposing severe secondary sanctions/tariffs on countries buying Russian oil, gas, and uranium, and President Trump threatened 100% tariffs/secondary sanctions on Russian-oil-purchasing countries in July 2025. Independent economic analyses (Atlantic Council, ICDS, Bruegel, Chatham House) describe 2025 — the fourth year of the war — as a period where sanctions and export controls materially squeezed the Russian economy (slowing GDP growth, high interest rates, tech/component shortages). Country, year, and substance all hold.",
+        "source": "https://www.consilium.europa.eu/en/press/press-releases/2025/07/18/russia-s-war-of-aggression-against-ukraine-eu-adopts-18th-package-of-economic-and-individual-measures/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: in 2025 the EU adopted its 18th (July 2025) and 19th (October 23, 2025) sanctions packages against Russia, expanding restrictions on energy (LNG import ban, stripped Rosneft/Gazprom Neft exemptions), finance (Mir card, Fast Payments System, crypto), and adding 45 entities (28 Russian, 17 foreign — chiefly in China, India, Thailand) to export-control lists for acting as backdoor suppliers to Russia's military-industrial complex, plus sanctions on third-country banks in Belarus/Kazakhstan/Tajikistan/Kyrgyzstan/UAE/Hong Kong for sanctions evasion. In parallel, the US Treasury (OFAC) sanctioned Russia's two largest oil companies, Rosneft and Lukoil, on October 22, 2025 — the first major Russia sanctions action under the Trump administration, explicitly tied to pressuring Moscow over the war — and the UK imposed asset freezes on Russian energy companies (Oct 15, 2025). Earlier in 2025, US lawmakers (Sanctioning Russia Act) and President Trump also threatened/pursued secondary sanctions and steep tariffs on countries (India, China, Turkey, etc.) buying Russian oil. This matches the event description (expanded Western sanctions, secondary sanctions on third countries trading with Russia, war in its fourth year since Feb 2022 invasion) essentially exactly — country, year, and substance all confirmed by multiple independent, reputable sources (EU Council/Consilium, Skadden law firm analysis, US Treasury, Sullivan & Cromwell, Steptoe).",
+        "source": "https://www.skadden.com/insights/publications/2025/11/eu-adopts-19th-sanctions-package",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.skadden.com/insights/publications/2025/11/eu-adopts-19th-sanctions-package"
   }
 ]

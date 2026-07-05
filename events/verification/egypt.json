@@ -684,6 +684,44 @@
     "source": "https://www.merip.org/1982/07/egypts-transition-under-nasser/"
   },
   {
+    "year": 1959,
+    "title": "Major Industrial Nationalization Wave",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources place Egypt's nationalization actions in a different sequence than described: 1957 saw nationalization of foreign (British/French) banks, insurance companies and trade agencies following Suez; 1959 itself saw only regulatory laws (forcing joint-stock companies to invest 5% of profits in state bonds and capping shareholder dividends at 10% of nominal share value) — not nationalization of enterprises; the actual nationalization of major industrial enterprises in heavy industry/textiles/chemicals occurred on/around 11 Feb 1960, when Nasser's government nationalized Banque Misr along with its large industrial subsidiary portfolio (e.g., Misr Spinning and Weaving/Misr Helwan textile firm, Misr Oil Refining, and other Bank Misr Group industrial companies), expanding public-sector control ahead of the sweeping July 1961 socialist decrees. This 1960 action matches the description almost exactly (industrial nationalization wave explicitly framed as precursor to 1961's sweeping nationalizations), while no independent source corroborates an equivalent industrial nationalization wave specifically in 1959. The year appears to be off by one.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "No independent source corroborates a major wave of industrial nationalization (heavy industry, textiles, chemicals) in Egypt in 1959. Multiple independent sources converge on a different timeline: (1) 1957 — nationalization of British/French banks and insurance companies following Suez; (2) Feb 1960 — nationalization of the National Bank of Egypt and Banque Misr (and their affiliated industrial holdings); (3) 23 July 1961 — Nasser's sweeping 'Socialist Laws' that nationalized banks, insurance companies, and ALL heavy industry, textiles included — this is the event matching the description almost verbatim. A Yale School of Management analysis of a January-1959 Sednaoui share certificate explicitly states there was 'no major nationalization in 1959 itself' and that 1959 was still a period of private-sector commercial prosperity; the same certificate was only seized by the state in March 1961. The one concrete 1959 economic-policy action found (a law forcing joint-stock companies to invest 5% of profits in state bonds and capping dividends at 10% of nominal share value) is a regulatory/fiscal constraint, not a nationalization of enterprises, and does not match 'major industrial enterprises... nationalized' in heavy industry/textiles/chemicals. Wikipedia's 'List of nationalizations by country' lists no Egypt entry between the 1956 Suez Canal seizure and later events, further failing to corroborate a distinct 1959 wave. The event is very likely a real phenomenon but mis-dated — it matches July 1961 far better than 1959.",
+        "source": "https://som.yale.edu/story/2026/analysis-1959-sednaoui-share-certificate",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1961
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources place Egypt's nationalization actions in a different sequence than described: 1957 saw nationalization of foreign (British/French) banks, insurance companies and trade agencies following Suez; 1959 itself saw only regulatory laws (forcing joint-stock companies to invest 5% of profits in state bonds and capping shareholder dividends at 10% of nominal share value) — not nationalization of enterprises; the actual nationalization of major industrial enterprises in heavy industry/textiles/chemicals occurred on/around 11 Feb 1960, when Nasser's government nationalized Banque Misr along with its large industrial subsidiary portfolio (e.g., Misr Spinning and Weaving/Misr Helwan textile firm, Misr Oil Refining, and other Bank Misr Group industrial companies), expanding public-sector control ahead of the sweeping July 1961 socialist decrees. This 1960 action matches the description almost exactly (industrial nationalization wave explicitly framed as precursor to 1961's sweeping nationalizations), while no independent source corroborates an equivalent industrial nationalization wave specifically in 1959. The year appears to be off by one.",
+        "source": "https://en.wikipedia.org/wiki/Banque_Misr",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1960
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Banque_Misr"
+  },
+  {
     "year": 1961,
     "title": "Egyptian University Enrollment Doubles Under Free Education Policy",
     "verdict": "TRUE",
@@ -3995,6 +4033,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2021_Suez_Canal_obstruction"
+  },
+  {
+    "year": 2021,
+    "title": "Pharaohs' Golden Parade Moves 22 Royal Mummies to New Museum",
+    "verdict": "TRUE",
+    "reason": "Multiple independent, authoritative sources (NPR, Al Jazeera, Wikipedia, SCMP) confirm the Pharaohs' Golden Parade took place in Cairo, Egypt on 3 April 2021 exactly as described: 22 royal mummies (18 kings and 4 queens, including Ramses II and Hatshepsut) were transported roughly 5km from the Egyptian Museum in Tahrir Square to the newly built National Museum of Egyptian Civilization in Fustat, in an elaborately choreographed procession broadcast live nationally and covered internationally, explicitly framed as showcasing pharaonic heritage and boosting post-pandemic tourism. No material detail is off; year and country both confirmed.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated: on 3 April 2021 Egypt held the Pharaohs' Golden Parade, transporting 22 royal mummies (18 kings, 4 queens, including Ramses II and Hatshepsut) roughly 5 km from the Egyptian Museum in Tahrir Square to the National Museum of Egyptian Civilization in Fustat. It was broadcast live nationally and covered internationally, explicitly framed as showcasing pharaonic heritage and boosting post-pandemic tourism, and the mummies were rehoused in the museum's climate-controlled Royal Mummies Hall. All material details in the event description match.",
+        "source": "https://www.npr.org/2021/04/03/984145643/royal-mummies-paraded-through-downtown-cairo-in-museum-move",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources (NPR, Al Jazeera, Wikipedia, SCMP) confirm the Pharaohs' Golden Parade took place in Cairo, Egypt on 3 April 2021 exactly as described: 22 royal mummies (18 kings and 4 queens, including Ramses II and Hatshepsut) were transported roughly 5km from the Egyptian Museum in Tahrir Square to the newly built National Museum of Egyptian Civilization in Fustat, in an elaborately choreographed procession broadcast live nationally and covered internationally, explicitly framed as showcasing pharaonic heritage and boosting post-pandemic tourism. No material detail is off; year and country both confirmed.",
+        "source": "https://www.npr.org/2021/04/03/984145643/royal-mummies-paraded-through-downtown-cairo-in-museum-move",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.npr.org/2021/04/03/984145643/royal-mummies-paraded-through-downtown-cairo-in-museum-move"
   },
   {
     "year": 2022,

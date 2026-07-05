@@ -276,31 +276,6 @@
   },
   {
     "year": 1962,
-    "title": "Kuwait Constitution Promulgated",
-    "verdict": "TRUE",
-    "reason": "Kuwait's constitution was signed into law on 11 November 1962 by Emir Sheikh Abdullah al-Salim al-Sabah, establishing a hereditary constitutional monarchy with an elected National Assembly. It is one of the most liberal constitutions among Gulf Arab states.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Kuwait's constitution was signed into law on 11 November 1962 by Emir Sheikh Abdullah al-Salim al-Sabah, establishing a hereditary constitutional monarchy with an elected National Assembly. It is one of the most liberal constitutions among Gulf Arab states.",
-        "source": "https://en.wikipedia.org/wiki/Constitution_of_Kuwait",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Constitution_of_Kuwait"
-  },
-  {
-    "year": 1962,
     "title": "First National Assembly Elections Held",
     "verdict": "TRUE",
     "reason": "Kuwait held its first parliamentary elections on 23 January 1963 (following constitution promulgation in November 1962) in which 205 candidates contested 50 seats. Elections in 1962 refer to the constituent assembly elections in December 1961 that drafted the constitution; the first National Assembly vote was January 1963 — within the ±2 year tolerance for the 1962 curated year.",
@@ -323,6 +298,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Kuwaiti_parliamentary_election,_1963"
+  },
+  {
+    "year": 1962,
+    "title": "Kuwait Constitution Promulgated",
+    "verdict": "TRUE",
+    "reason": "Kuwait's constitution was signed into law on 11 November 1962 by Emir Sheikh Abdullah al-Salim al-Sabah, establishing a hereditary constitutional monarchy with an elected National Assembly. It is one of the most liberal constitutions among Gulf Arab states.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait's constitution was signed into law on 11 November 1962 by Emir Sheikh Abdullah al-Salim al-Sabah, establishing a hereditary constitutional monarchy with an elected National Assembly. It is one of the most liberal constitutions among Gulf Arab states.",
+        "source": "https://en.wikipedia.org/wiki/Constitution_of_Kuwait",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Constitution_of_Kuwait"
   },
   {
     "year": 1963,
@@ -801,6 +801,31 @@
   },
   {
     "year": 1990,
+    "title": "Iraqi Forces Commit Widespread Atrocities During Occupation",
+    "verdict": "TRUE",
+    "reason": "During the seven-month occupation, Iraqi forces killed approximately 1,000 Kuwaiti civilians, detained over 10,000 residents (many deported to Iraq), and systematically looted the country's assets including bank deposits, hospital equipment, and museum treasures. Human Rights Watch and Amnesty International documented extensive abuses.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "During the seven-month occupation, Iraqi forces killed approximately 1,000 Kuwaiti civilians, detained over 10,000 residents (many deported to Iraq), and systematically looted the country's assets including bank deposits, hospital equipment, and museum treasures. Human Rights Watch and Amnesty International documented extensive abuses.",
+        "source": "https://www.hrw.org/reports/1992/WR92/MEW1-02.htm",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/reports/1992/WR92/MEW1-02.htm"
+  },
+  {
+    "year": 1990,
     "title": "Iraqi Invasion and Occupation of Kuwait",
     "verdict": "TRUE",
     "reason": "On 2 August 1990, Iraqi forces invaded and overran Kuwait in hours. Emir Sheikh Jaber fled to Saudi Arabia. Iraq declared Kuwait its 19th province on 28 August 1990, triggering the largest international crisis since the Cold War and the assembly of a 35-nation coalition.",
@@ -823,31 +848,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Iraqi_invasion_of_Kuwait"
-  },
-  {
-    "year": 1990,
-    "title": "UN Security Council Authorizes Force Against Iraq",
-    "verdict": "TRUE",
-    "reason": "The UN Security Council passed Resolution 678 on 29 November 1990, authorising member states to use 'all necessary means' to expel Iraq from Kuwait if it did not comply by 15 January 1991. The resolution was adopted 12-2 (Cuba and Yemen opposing, China abstaining), providing the legal basis for Operation Desert Storm.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The UN Security Council passed Resolution 678 on 29 November 1990, authorising member states to use 'all necessary means' to expel Iraq from Kuwait if it did not comply by 15 January 1991. The resolution was adopted 12-2 (Cuba and Yemen opposing, China abstaining), providing the legal basis for Operation Desert Storm.",
-        "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_678",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_678"
   },
   {
     "year": 1990,
@@ -876,9 +876,9 @@
   },
   {
     "year": 1990,
-    "title": "Iraqi Forces Commit Widespread Atrocities During Occupation",
+    "title": "UN Security Council Authorizes Force Against Iraq",
     "verdict": "TRUE",
-    "reason": "During the seven-month occupation, Iraqi forces killed approximately 1,000 Kuwaiti civilians, detained over 10,000 residents (many deported to Iraq), and systematically looted the country's assets including bank deposits, hospital equipment, and museum treasures. Human Rights Watch and Amnesty International documented extensive abuses.",
+    "reason": "The UN Security Council passed Resolution 678 on 29 November 1990, authorising member states to use 'all necessary means' to expel Iraq from Kuwait if it did not comply by 15 January 1991. The resolution was adopted 12-2 (Cuba and Yemen opposing, China abstaining), providing the legal basis for Operation Desert Storm.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -888,8 +888,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "During the seven-month occupation, Iraqi forces killed approximately 1,000 Kuwaiti civilians, detained over 10,000 residents (many deported to Iraq), and systematically looted the country's assets including bank deposits, hospital equipment, and museum treasures. Human Rights Watch and Amnesty International documented extensive abuses.",
-        "source": "https://www.hrw.org/reports/1992/WR92/MEW1-02.htm",
+        "reason": "The UN Security Council passed Resolution 678 on 29 November 1990, authorising member states to use 'all necessary means' to expel Iraq from Kuwait if it did not comply by 15 January 1991. The resolution was adopted 12-2 (Cuba and Yemen opposing, China abstaining), providing the legal basis for Operation Desert Storm.",
+        "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_678",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -897,7 +897,7 @@
         }
       }
     ],
-    "source": "https://www.hrw.org/reports/1992/WR92/MEW1-02.htm"
+    "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_678"
   },
   {
     "year": 1991,
@@ -976,31 +976,6 @@
   },
   {
     "year": 1993,
-    "title": "US-Kuwait Defense Cooperation Agreement Signed",
-    "verdict": "TRUE",
-    "reason": "A formal bilateral Defense Cooperation Agreement between Kuwait and the United States was signed in September 1991 (within ±2 years of the curated 1993 date), providing for permanent US military access to Kuwaiti facilities, pre-positioning of equipment, and joint exercises — transforming the relationship from crisis-driven to standing strategic partnership.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "A formal bilateral Defense Cooperation Agreement between Kuwait and the United States was signed in September 1991 (within ±2 years of the curated 1993 date), providing for permanent US military access to Kuwaiti facilities, pre-positioning of equipment, and joint exercises — transforming the relationship from crisis-driven to standing strategic partnership.",
-        "source": "https://en.wikipedia.org/wiki/Kuwait%E2%80%93United_States_relations",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Kuwait%E2%80%93United_States_relations"
-  },
-  {
-    "year": 1993,
     "title": "Palestinian Workers Expelled Following Gulf War",
     "verdict": "TRUE",
     "reason": "Following the PLO's support for Iraq, Kuwait expelled the vast majority of its Palestinian population of roughly 400,000 during March-September 1991 (within ±2 years of the curated 1993 date) through bureaucratic dismissals, school expulsions, and economic pressure. The community was reduced from around 400,000 to fewer than 20,000.",
@@ -1023,6 +998,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Expulsion_of_Palestinians_from_Kuwait_(1990%E2%80%9391)"
+  },
+  {
+    "year": 1993,
+    "title": "US-Kuwait Defense Cooperation Agreement Signed",
+    "verdict": "TRUE",
+    "reason": "A formal bilateral Defense Cooperation Agreement between Kuwait and the United States was signed in September 1991 (within ±2 years of the curated 1993 date), providing for permanent US military access to Kuwaiti facilities, pre-positioning of equipment, and joint exercises — transforming the relationship from crisis-driven to standing strategic partnership.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A formal bilateral Defense Cooperation Agreement between Kuwait and the United States was signed in September 1991 (within ±2 years of the curated 1993 date), providing for permanent US military access to Kuwaiti facilities, pre-positioning of equipment, and joint exercises — transforming the relationship from crisis-driven to standing strategic partnership.",
+        "source": "https://en.wikipedia.org/wiki/Kuwait%E2%80%93United_States_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Kuwait%E2%80%93United_States_relations"
   },
   {
     "year": 1994,
@@ -1126,31 +1126,6 @@
   },
   {
     "year": 2005,
-    "title": "Women Granted Full Political Rights",
-    "verdict": "TRUE",
-    "reason": "The Kuwaiti National Assembly voted on 17 May 2005 to grant women full political rights — 37 votes for, 21 against — effective for subsequent elections. Kuwait was among the last GCC states to grant women's suffrage, following sustained advocacy and international pressure since at least the 1990s.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Kuwaiti National Assembly voted on 17 May 2005 to grant women full political rights — 37 votes for, 21 against — effective for subsequent elections. Kuwait was among the last GCC states to grant women's suffrage, following sustained advocacy and international pressure since at least the 1990s.",
-        "source": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_Kuwait",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_Kuwait"
-  },
-  {
-    "year": 2005,
     "title": "Emir Sheikh Jaber Dies; Sheikh Sabah Becomes Emir",
     "verdict": "TRUE",
     "reason": "Emir Sheikh Jaber al-Ahmad died on 15 January 2006 (within ±2 years of the curated 2005 date). Crown Prince Sheikh Saad was incapacitated and unable to take the constitutional oath, so the National Assembly exercised its constitutional right and voted to install Sheikh Sabah al-Ahmad al-Jaber al-Sabah as Emir on 29 January 2006.",
@@ -1173,6 +1148,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Sabah_Al-Ahmad_Al-Jaber_Al-Sabah"
+  },
+  {
+    "year": 2005,
+    "title": "Women Granted Full Political Rights",
+    "verdict": "TRUE",
+    "reason": "The Kuwaiti National Assembly voted on 17 May 2005 to grant women full political rights — 37 votes for, 21 against — effective for subsequent elections. Kuwait was among the last GCC states to grant women's suffrage, following sustained advocacy and international pressure since at least the 1990s.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Kuwaiti National Assembly voted on 17 May 2005 to grant women full political rights — 37 votes for, 21 against — effective for subsequent elections. Kuwait was among the last GCC states to grant women's suffrage, following sustained advocacy and international pressure since at least the 1990s.",
+        "source": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_Kuwait",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_Kuwait"
   },
   {
     "year": 2006,
@@ -1276,31 +1276,6 @@
   },
   {
     "year": 2012,
-    "title": "National Assembly Dissolved Multiple Times; Opposition Boycotts",
-    "verdict": "TRUE",
-    "reason": "Kuwait's National Assembly was dissolved in December 2011; February 2012 elections were annulled by the Constitutional Court as unconstitutional. A new assembly was elected and then dissolved again, and the Emir's October 2012 electoral law decree reducing votes per citizen prompted major opposition groups to boycott December 2012 elections.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Kuwait's National Assembly was dissolved in December 2011; February 2012 elections were annulled by the Constitutional Court as unconstitutional. A new assembly was elected and then dissolved again, and the Emir's October 2012 electoral law decree reducing votes per citizen prompted major opposition groups to boycott December 2012 elections.",
-        "source": "https://en.wikipedia.org/wiki/February_2012_Kuwaiti_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/February_2012_Kuwaiti_general_election"
-  },
-  {
-    "year": 2012,
     "title": "Bidun Stateless Population Protests for Recognition",
     "verdict": "TRUE",
     "reason": "Kuwait's Bidun population — stateless residents denied citizenship despite generations of residence — staged protests in 2012 demanding legal recognition. The government estimated over 100,000 Bidun; Kuwaiti security forces dispersed demonstrations with water cannons and arrested protesters. Amnesty International documented the crackdown.",
@@ -1323,6 +1298,31 @@
       }
     ],
     "source": "https://www.hrw.org/news/2012/05/03/kuwait-security-forces-forcibly-disperse-stateless-residents"
+  },
+  {
+    "year": 2012,
+    "title": "National Assembly Dissolved Multiple Times; Opposition Boycotts",
+    "verdict": "TRUE",
+    "reason": "Kuwait's National Assembly was dissolved in December 2011; February 2012 elections were annulled by the Constitutional Court as unconstitutional. A new assembly was elected and then dissolved again, and the Emir's October 2012 electoral law decree reducing votes per citizen prompted major opposition groups to boycott December 2012 elections.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Kuwait's National Assembly was dissolved in December 2011; February 2012 elections were annulled by the Constitutional Court as unconstitutional. A new assembly was elected and then dissolved again, and the Emir's October 2012 electoral law decree reducing votes per citizen prompted major opposition groups to boycott December 2012 elections.",
+        "source": "https://en.wikipedia.org/wiki/February_2012_Kuwaiti_general_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/February_2012_Kuwaiti_general_election"
   },
   {
     "year": 2015,
@@ -1376,6 +1376,31 @@
   },
   {
     "year": 2020,
+    "title": "COVID-19 Pandemic and Oil Price Crash Hit Kuwait",
+    "verdict": "TRUE",
+    "reason": "The COVID-19 pandemic and the 2020 Saudi-Russian oil price war caused a severe fiscal shock for Kuwait: real GDP contracted approximately 9.9%, the General Reserve Fund lost $13+ billion within 100 days, and a parliamentary deadlock over a public debt law left Kuwait unable to issue international bonds for years.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The COVID-19 pandemic and the 2020 Saudi-Russian oil price war caused a severe fiscal shock for Kuwait: real GDP contracted approximately 9.9%, the General Reserve Fund lost $13+ billion within 100 days, and a parliamentary deadlock over a public debt law left Kuwait unable to issue international bonds for years.",
+        "source": "https://www.aljazeera.com/economy/2020/11/24/when-kuwait-emerged-from-a-monthslong-coronavirus-lockdown-hundr",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/economy/2020/11/24/when-kuwait-emerged-from-a-monthslong-coronavirus-lockdown-hundr"
+  },
+  {
+    "year": 2020,
     "title": "Emir Sheikh Sabah Dies; Sheikh Nawaf Becomes Emir",
     "verdict": "TRUE",
     "reason": "Emir Sheikh Sabah al-Ahmad al-Sabah died on 29 September 2020 at age 91 in a US hospital. Crown Prince Sheikh Nawaf al-Ahmad al-Jaber al-Sabah was sworn in as Emir the following day, 30 September 2020, inheriting Kuwait amid fiscal pressures and political dysfunction.",
@@ -1401,28 +1426,39 @@
   },
   {
     "year": 2020,
-    "title": "COVID-19 Pandemic and Oil Price Crash Hit Kuwait",
+    "title": "Traditional Al-Sadu Weaving Inscribed on UNESCO Intangible Heritage List",
     "verdict": "TRUE",
-    "reason": "The COVID-19 pandemic and the 2020 Saudi-Russian oil price war caused a severe fiscal shock for Kuwait: real GDP contracted approximately 9.9%, the General Reserve Fund lost $13+ billion within 100 days, and a parliamentary deadlock over a public debt law left Kuwait unable to issue international bonds for years.",
-    "verify_count": 1,
+    "reason": "Multiple independent, authoritative sources confirm that in December 2020 (UNESCO's 15th session of the Intergovernmental Committee, held remotely due to COVID-19), the 'Traditional weaving of Al Sadu' was inscribed on the Representative List of the Intangible Cultural Heritage of Humanity, jointly nominated by Kuwait and Saudi Arabia. Sources describe it as a warp-faced plain-weave textile made by Bedouin women on ground looms using natural fibers (camel fur, goat hair, sheep wool), with geometric patterns — matching the event description closely. UNESCO's own current ICH decision page (20.COM 7.b.54, from the December 2025 session) explicitly frames its action as extending 'the original 2020 inscription' by adding Qatar, corroborating that the initial Kuwait+Saudi Arabia inscription occurred in 2020. Al-Sadu Society's founding year is reported as 1979 in several sources (matching the event) but as 1978 in Wikipedia (as an informal initiative, becoming an official cooperative in 1991) — a minor peripheral detail that doesn't affect the core event's veracity. The Society's active role in the 2020 nomination and its ongoing engagement with UNESCO (2022 advisory NGO accreditation) is also corroborated, consistent with the description of it playing 'a central role.'",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "weak",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The COVID-19 pandemic and the 2020 Saudi-Russian oil price war caused a severe fiscal shock for Kuwait: real GDP contracted approximately 9.9%, the General Reserve Fund lost $13+ billion within 100 days, and a parliamentary deadlock over a public debt law left Kuwait unable to issue international bonds for years.",
-        "source": "https://www.aljazeera.com/economy/2020/11/24/when-kuwait-emerged-from-a-monthslong-coronavirus-lockdown-hundr",
+        "reason": "Multiple independent outlets (Al Arabiya English, Gulf News, Saudi Gazette) dated December 2020 confirm UNESCO's Intergovernmental Committee inscribed the \"Traditional weaving of Al Sadu\" onto the Representative List of the Intangible Cultural Heritage of Humanity in December 2020, as a joint Saudi Arabia-Kuwait nomination. Descriptions match: Bedouin women weavers, ground looms, natural fibers, geometric warp-faced textiles. Kuwait's Al-Sadu Society (preservation body for Bedouin weaving, associated with Sadu House/Beit al-Sadu) is independently documented as central to Kuwait's stewardship of this craft and as the entity later granted WIPO observer status specifically because of its role around this heritage recognition. Minor variance across sources on the society's exact founding year (1978 vs. 1979 cited in different histories) is not material to the core event. UNESCO's own ICH page confirms a 2020 inscription (committee session 15.COM) later extended in 2025 to add Qatar — consistent with the described event being the original two-country (Saudi Arabia + Kuwait) 2020 inscription, with no Qatar mention needed since that came later.",
+        "source": "https://english.alarabiya.net/en/life-style/art-and-culture/2020/12/16/UNESCO-adds-Saudi-Arabia-Kuwait-s-weaving-of-Al-Sadu-to-its-Intangible-Heritage-list",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources confirm that in December 2020 (UNESCO's 15th session of the Intergovernmental Committee, held remotely due to COVID-19), the 'Traditional weaving of Al Sadu' was inscribed on the Representative List of the Intangible Cultural Heritage of Humanity, jointly nominated by Kuwait and Saudi Arabia. Sources describe it as a warp-faced plain-weave textile made by Bedouin women on ground looms using natural fibers (camel fur, goat hair, sheep wool), with geometric patterns — matching the event description closely. UNESCO's own current ICH decision page (20.COM 7.b.54, from the December 2025 session) explicitly frames its action as extending 'the original 2020 inscription' by adding Qatar, corroborating that the initial Kuwait+Saudi Arabia inscription occurred in 2020. Al-Sadu Society's founding year is reported as 1979 in several sources (matching the event) but as 1978 in Wikipedia (as an informal initiative, becoming an official cooperative in 1991) — a minor peripheral detail that doesn't affect the core event's veracity. The Society's active role in the 2020 nomination and its ongoing engagement with UNESCO (2022 advisory NGO accreditation) is also corroborated, consistent with the description of it playing 'a central role.'",
+        "source": "https://english.alarabiya.net/en/life-style/art-and-culture/2020/12/16/UNESCO-adds-Saudi-Arabia-Kuwait-s-weaving-of-Al-Sadu-to-its-Intangible-Heritage-list",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://www.aljazeera.com/economy/2020/11/24/when-kuwait-emerged-from-a-monthslong-coronavirus-lockdown-hundr"
+    "source": "https://english.alarabiya.net/en/life-style/art-and-culture/2020/12/16/UNESCO-adds-Saudi-Arabia-Kuwait-s-weaving-of-Al-Sadu-to-its-Intangible-Heritage-list"
   },
   {
     "year": 2022,

@@ -2573,5 +2573,41 @@
       }
     ],
     "source": "https://www.iea.org/reports/kenya-2024/executive-summary"
+  },
+  {
+    "year": 2025,
+    "title": "Debt Sustainability Crisis Constrains Public Services",
+    "verdict": "PARTIAL",
+    "reason": "Core narrative confirms: Kenya's debt-service-to-revenue ratio was ~67% in May 2025 (well over \"half\"), consistent with debt severely constraining social/infrastructure spending; the government failed its 9th/final IMF EFF/ECF review in March 2025 over missed fiscal targets and requested a new program, i.e. actively working with the IMF on fiscal consolidation; and Kenya negotiated with China (Aug-Oct 2025) to convert ~$3.5bn of dollar-denominated SGR loans into yuan, a real bilateral-creditor restructuring. However, the specific magnitude \"public debt...grown to over 70% of GDP\" is off: independent 2025 data consistently puts Kenya's debt-to-GDP at ~67.6-69.3% throughout 2025 (below the stated 70%+ threshold), having peaked at 73.4% in 2023 before easing; IMF's 2026 outlook projects it climbing back to ~71.6% only in 2026. So country/year/substance (crisis constraining services, IMF talks, China restructuring) all hold, but the \"over 70% of GDP\" figure is a magnitude overstatement for 2025 specifically — hence PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core narrative confirms: Kenya's debt-service-to-revenue ratio was ~67% in May 2025 (well over \"half\"), consistent with debt severely constraining social/infrastructure spending; the government failed its 9th/final IMF EFF/ECF review in March 2025 over missed fiscal targets and requested a new program, i.e. actively working with the IMF on fiscal consolidation; and Kenya negotiated with China (Aug-Oct 2025) to convert ~$3.5bn of dollar-denominated SGR loans into yuan, a real bilateral-creditor restructuring. However, the specific magnitude \"public debt...grown to over 70% of GDP\" is off: independent 2025 data consistently puts Kenya's debt-to-GDP at ~67.6-69.3% throughout 2025 (below the stated 70%+ threshold), having peaked at 73.4% in 2023 before easing; IMF's 2026 outlook projects it climbing back to ~71.6% only in 2026. So country/year/substance (crisis constraining services, IMF talks, China restructuring) all hold, but the \"over 70% of GDP\" figure is a magnitude overstatement for 2025 specifically — hence PARTIAL rather than TRUE.",
+        "source": "https://www.ecofinagency.com/news-finances/0910-49407-kenya-s-public-debt-reaches-67-8-of-gdp-in-june-2025-finance-minister-says",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the core claims for Kenya in 2025: (1) public debt-to-GDP hovered in the high-60s to low-70s% range through 2025 (67.6-67.8% of GDP / KSh 11.8-12.4 trillion as of June 2025, up from 63% in 2024; prior-year figures reported as high as 70.8%; IMF projects 71.6% for 2026), consistent with \"grown to over 70% of GDP\"; (2) debt servicing consumed roughly half or more of government revenue during 2025 (67.1% of revenues as of May 2025 per Cytonn's Kenya debt review; multiple outlets headlined \"Over Half of Kenya's Revenue to Be Spent on Debt in 2025/26\" and \"debt servicing consumes nearly half of government revenue\"), matching \"absorbs over half of government revenue\" and constraining social/development spending; (3) Kenya was actively negotiating with China, its largest bilateral creditor, on debt restructuring in 2025 — converting ~$3.5-5bn of dollar-denominated SGR loans into Chinese yuan at lower interest rates (China-Global South Project, Chatham House, AInvest reporting from mid-late 2025), matching \"negotiates with bilateral creditors including China for debt restructuring\"; (4) Kenya was actively engaged with the IMF on fiscal consolidation throughout 2025 (IMF staff mission concluded March 2025, PR2566; the prior EFF/ECF program expired in 2025 and Kenya formally requested a successor program contingent on a credible fiscal consolidation path), matching \"working with the IMF on fiscal consolidation.\" All key facts — country, year, magnitude, and actors — are corroborated by independent, non-overlapping sources.",
+        "source": "https://www.imf.org/en/news/articles/2025/03/16/pr2566-imf-staff-concludes-visit-to-kenya",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.ecofinagency.com/news-finances/0910-49407-kenya-s-public-debt-reaches-67-8-of-gdp-in-june-2025-finance-minister-says"
   }
 ]

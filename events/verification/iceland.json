@@ -336,6 +336,42 @@
     "source": "https://www.bis.org/fsi/fsicms1.pdf"
   },
   {
+    "year": 2004,
+    "title": "Thingvellir National Park Inscribed as UNESCO World Heritage Site",
+    "verdict": "TRUE",
+    "reason": "Confirmed via the official UNESCO World Heritage Centre listing (whc.unesco.org/en/list/1152) that Thingvellir (Þingvellir) National Park, Iceland was inscribed as a World Heritage Site in 2004, justified under criteria (iii) and (vi) for the Althing — an open-air assembly established in 930 that met there until 1798 (or 18th century) — and its iconic symbolic status tied to Icelandic national/parliamentary identity. Independent sources (search results referencing the WHC document, history sites) corroborate the 1944 detail: the Republic of Iceland's independence (founding of the Republic) was declared/celebrated at Þingvellir on 17 June 1944. All material claims in the description — country (Iceland), year (2004), the UNESCO designation, the Althing's founding year and end date, and the 1944 independence link — are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (UNESCO World Heritage Centre listing whc.unesco.org/en/list/1152/, Wikipedia, Britannica, and heritage/travel sites) confirm Thingvellir National Park in Iceland was inscribed on the UNESCO World Heritage List in 2004 under cultural criteria (iii) and (vi). The inscription reasoning cited is exactly as described: the site is where the Althing, Iceland's open-air parliamentary assembly, was founded in 930 and met there until 1798, and the site holds deep symbolic significance for Icelandic national identity (it also emerged as a nationalist symbol in the 19th century). Iceland's declaration of the republic/independence at Thingvellir in 1944 is a well-established separate historical fact consistent with the description. All material details (country, year, designating body, reasoning) match.",
+        "source": "https://en.wikipedia.org/wiki/%C3%9Eingvellir",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via the official UNESCO World Heritage Centre listing (whc.unesco.org/en/list/1152) that Thingvellir (Þingvellir) National Park, Iceland was inscribed as a World Heritage Site in 2004, justified under criteria (iii) and (vi) for the Althing — an open-air assembly established in 930 that met there until 1798 (or 18th century) — and its iconic symbolic status tied to Icelandic national/parliamentary identity. Independent sources (search results referencing the WHC document, history sites) corroborate the 1944 detail: the Republic of Iceland's independence (founding of the Republic) was declared/celebrated at Þingvellir on 17 June 1944. All material claims in the description — country (Iceland), year (2004), the UNESCO designation, the Althing's founding year and end date, and the 1944 independence link — are corroborated.",
+        "source": "https://whc.unesco.org/en/list/1152/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://whc.unesco.org/en/list/1152/"
+  },
+  {
     "year": 2006,
     "title": "Mini-Crisis Shakes Financial Markets",
     "verdict": "TRUE",

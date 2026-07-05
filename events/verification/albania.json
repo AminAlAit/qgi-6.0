@@ -522,6 +522,42 @@
     "source": "https://en.wikipedia.org/wiki/2005_Albanian_parliamentary_election"
   },
   {
+    "year": 2005,
+    "title": "UNESCO Inscribes Historic Centres of Berat and Gjirokastra",
+    "verdict": "TRUE",
+    "reason": "UNESCO's official World Heritage Centre listing (whc.unesco.org/en/list/569) confirms Gjirokastra was inscribed in 2005 as a rare example of Ottoman-period architectural character in the Balkans, with Berat added as a site extension in 2008 (site renamed 'Historic Centres of Berat and Gjirokastra'). Independent sources (Wikipedia, RTSH English, worldheritagesite.org) corroborate: Berat's citadel (Kala) contains Byzantine churches (mainly 13th century) and Ottoman-era mosques, illustrating coexistence of religious/cultural communities; Gjirokastra features distinctive stone-roofed two-story houses from the 17th century. All material details in the description (year, country, both cities, architectural features, 2008 extension) match the authoritative UNESCO source and are echoed independently.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via UNESCO World Heritage Centre listing (site #569) and corroborating Wikipedia summary: Gjirokastra was inscribed on the UNESCO World Heritage List in 2005 as a rare example of Ottoman-period Balkan architecture (stone-roofed 'city of stone'); Berat was added as a boundary/site extension in 2008, creating the serial property 'Historic Centres of Berat and Gjirokastra.' Both cities are documented as illustrating centuries of coexistence between religious and cultural communities under Ottoman rule, with Berat's hilltop citadel (Kala) containing Byzantine churches and Ottoman-era mosques. All material details in the event description (year, country, sites, architecture type, coexistence theme, extension timing) match authoritative sourcing.",
+        "source": "https://whc.unesco.org/en/list/569/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "UNESCO's official World Heritage Centre listing (whc.unesco.org/en/list/569) confirms Gjirokastra was inscribed in 2005 as a rare example of Ottoman-period architectural character in the Balkans, with Berat added as a site extension in 2008 (site renamed 'Historic Centres of Berat and Gjirokastra'). Independent sources (Wikipedia, RTSH English, worldheritagesite.org) corroborate: Berat's citadel (Kala) contains Byzantine churches (mainly 13th century) and Ottoman-era mosques, illustrating coexistence of religious/cultural communities; Gjirokastra features distinctive stone-roofed two-story houses from the 17th century. All material details in the description (year, country, both cities, architectural features, 2008 extension) match the authoritative UNESCO source and are echoed independently.",
+        "source": "https://whc.unesco.org/en/list/569/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://whc.unesco.org/en/list/569/"
+  },
+  {
     "year": 2006,
     "title": "Stabilisation and Association Agreement with EU Enters Force",
     "verdict": "TRUE",

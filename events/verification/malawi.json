@@ -801,6 +801,42 @@
   },
   {
     "year": 2006,
+    "title": "Chongoni Rock Art Area Inscribed as UNESCO World Heritage Site",
+    "verdict": "TRUE",
+    "reason": "The UNESCO World Heritage Centre official listing confirms Chongoni Rock-Art Area (Dedza District, central Malawi) was inscribed as a World Heritage Site in 2006, comprising 127 rock art sites over 126.4 km2 of forested granite hills — matching the description's '127 rock art sites' and 'roughly 126 square kilometers' almost exactly. UNESCO's own text confirms the site reflects rock art traditions of both BaTwa hunter-gatherers and Chewa agricultural farmers, describes it as the densest/richest concentration of rock art in Central Africa, and states the symbols, closely associated with women, remain culturally relevant and are still used in ceremonies/rituals by the Chewa today — matching every material detail in the candidate event (actors, scope, magnitude, living cultural significance). Country (Malawi) and year (2006) both confirmed by the primary authoritative source.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia (cross-checked against WebSearch results referencing the UNESCO World Heritage Centre listing, africanworldheritagesites.org, and worldheritageexplorer.org) that the Chongoni Rock Art Area in Dedza District, central Malawi, was inscribed as a UNESCO World Heritage Site in 2006 under criteria III and VI. It comprises 127 rock art sites across ~126.4 km2 of forested granite hills, attributed to BaTwa hunter-gatherers (earlier, red pigment art) and Chewa farming communities (later, white clay art). The rock art symbols, especially those associated with women, remain in active ritual use among the Chewa today (women's initiation, rain rituals, funerary rites) — matching the description's claim of continued living cultural significance. All material details (year, country, site count, area, actor groups, living-use claim) check out.",
+        "source": "https://en.wikipedia.org/wiki/Chongoni_Rock_Art_Area",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "The UNESCO World Heritage Centre official listing confirms Chongoni Rock-Art Area (Dedza District, central Malawi) was inscribed as a World Heritage Site in 2006, comprising 127 rock art sites over 126.4 km2 of forested granite hills — matching the description's '127 rock art sites' and 'roughly 126 square kilometers' almost exactly. UNESCO's own text confirms the site reflects rock art traditions of both BaTwa hunter-gatherers and Chewa agricultural farmers, describes it as the densest/richest concentration of rock art in Central Africa, and states the symbols, closely associated with women, remain culturally relevant and are still used in ceremonies/rituals by the Chewa today — matching every material detail in the candidate event (actors, scope, magnitude, living cultural significance). Country (Malawi) and year (2006) both confirmed by the primary authoritative source.",
+        "source": "https://whc.unesco.org/en/list/476/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://whc.unesco.org/en/list/476/"
+  },
+  {
+    "year": 2006,
     "title": "Farm Input Subsidy Programme Launched",
     "verdict": "TRUE",
     "reason": "The FISP was launched in the 2005-06 agricultural season, providing fertiliser and seed coupons to roughly 1.5 million smallholders. It helped produce record maize harvests by 2007-08 and turned Malawi into a net exporter.",

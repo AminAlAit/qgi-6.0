@@ -4454,5 +4454,43 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2026_Iran_war"
+  },
+  {
+    "year": 1980,
+    "title": "Khuzestan Arab Insurgency; Arabistan Liberation Front Operations",
+    "verdict": "FALSE",
+    "reason": "The Arab uprising in Khuzestan led by APCO and allied groups (DRFLA, PFLA, AFLA — the historical 'Arabistan/Al-Ahwaz Liberation Front' lineage) is real, but it is dated and documented as the '1979 Khuzestan insurgency': armed rebellion from late April through 1979, peaking with the May 29, 1979 Khorramshahr crackdown (Iran declared a state of emergency May 31, 1979), and effectively quelled by Iranian forces by late 1979. Total combined casualties across sources are roughly 100-112 (Arab protesters/insurgents plus Revolutionary Guardsmen) — not 'hundreds of insurgents' killed by a 'sustained IRGC campaign through 1980' as described. The only substantiated 1980 activity tied to this movement was the DRFLA's Iranian Embassy siege in London (April 30-May 5, 1980) and, after Iraq's September 1980 invasion, some Arab militants (DRFLA) fighting alongside Iraqi forces at Khorramshahr — not an IRGC anti-insurgency campaign in Khuzestan itself. So both the year (the real event centers on 1979, not 1980) and the magnitude/nature of the described 1980 IRGC campaign are materially wrong, warranting a corrected year of 1979 rather than a TRUE/PARTIAL verdict under 1980.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The Khuzestan Arab uprising was real, but it happened in 1979, not 1980. Wikipedia's dedicated article ('1979 Khuzestan insurgency') dates the conflict to April-December 1979, with the main fighting quelled by mid-to-late 1979, not a 'sustained campaign through 1980.' Total casualties across both sides are cited as roughly 25-112 (about 100 Arabs and a dozen-plus Revolutionary Guardsmen), not the 'hundreds of insurgents' claimed. No organization named 'Arabistan Liberation Front' appears among the actual belligerents (APCO, PFLA, DRFLA, AFLA) — that name belonged to a distinct, earlier (1956-1967) group later renamed the Al-Ahwaz Liberation Front. The link to Iraq's September 1980 invasion is also not directly supported by sources; Iraq supported these Arab separatist groups and hoped to exploit unrest, but the insurgency itself had already been suppressed before the Iran-Iraq War began, and its 1980 sequel (the DRFLA's Iranian Embassy siege) took place in London, not Iran. Because the year is a primary join key and it is wrong (1979, not 1980), and the magnitude/duration/actor-name are also inflated/incorrect, this routes to FALSE rather than PARTIAL per the hard rule that a wrong year is FALSE.",
+        "source": "https://en.wikipedia.org/wiki/1979_Khuzestan_insurgency",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1979
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The Arab uprising in Khuzestan led by APCO and allied groups (DRFLA, PFLA, AFLA — the historical 'Arabistan/Al-Ahwaz Liberation Front' lineage) is real, but it is dated and documented as the '1979 Khuzestan insurgency': armed rebellion from late April through 1979, peaking with the May 29, 1979 Khorramshahr crackdown (Iran declared a state of emergency May 31, 1979), and effectively quelled by Iranian forces by late 1979. Total combined casualties across sources are roughly 100-112 (Arab protesters/insurgents plus Revolutionary Guardsmen) — not 'hundreds of insurgents' killed by a 'sustained IRGC campaign through 1980' as described. The only substantiated 1980 activity tied to this movement was the DRFLA's Iranian Embassy siege in London (April 30-May 5, 1980) and, after Iraq's September 1980 invasion, some Arab militants (DRFLA) fighting alongside Iraqi forces at Khorramshahr — not an IRGC anti-insurgency campaign in Khuzestan itself. So both the year (the real event centers on 1979, not 1980) and the magnitude/nature of the described 1980 IRGC campaign are materially wrong, warranting a corrected year of 1979 rather than a TRUE/PARTIAL verdict under 1980.",
+        "source": "https://en.wikipedia.org/wiki/1979_Khuzestan_insurgency",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1979
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1979_Khuzestan_insurgency"
   }
 ]

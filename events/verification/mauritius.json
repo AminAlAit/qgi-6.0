@@ -712,6 +712,42 @@
   },
   {
     "year": 2006,
+    "title": "Aapravasi Ghat Inscribed as First Indentured Labour UNESCO Site",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm Aapravasi Ghat in Port Louis, Mauritius was inscribed on the UNESCO World Heritage List on 16 July 2006 (30th session, Vilnius), as the first site recognizing the indentured labour diaspora, under criterion (vi) for the British 'great experiment' with contract labour beginning 1834. UNESCO's own site states 'Between 1834 and 1920, over 462,000 migrants – mainly from India – passed through this small immigration depot' (matching 'nearly half a million... between 1834 and 1920'). Search results (e.g. via ilemaurice.im tourism site and multiple travel/heritage pages) confirm laborers were transferred onward to Réunion, Australia, and eastern/southern Africa, exactly matching the description. Population-descent figures across sources range 68% (Wikipedia) to 'over 70%' (multiple tourism/heritage sources), consistent with the description's 'over 70 percent.' All material facts (country, year, date, event, numbers, destinations, demographic legacy) are corroborated by multiple sources including UNESCO's own articles.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Aapravasi Ghat in Port Louis, Mauritius was inscribed on the UNESCO World Heritage List on 16 July 2006 (30th session of the World Heritage Committee, Vilnius), as the first site recognizing the system of indentured labour. Sources corroborate the 1834-1920 operational period and ~462,000 (nearly half a million) migrants, mostly from India, who passed through en route to sugar plantations in Mauritius and beyond in the British Empire. Wikipedia further confirms the demographic legacy (roughly two-thirds to over 70% of Mauritius's population is of Indian/indentured-labourer descent, figures vary slightly by source but the magnitude matches). No material detail is contradicted; year, country, and core facts all check out.",
+        "source": "https://www.unesco.org/en/articles/aapravasi-ghat-how-unesco-world-heritage-site-keeps-memory-indentured-labour-alive",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Aapravasi Ghat in Port Louis, Mauritius was inscribed on the UNESCO World Heritage List on 16 July 2006 (30th session, Vilnius), as the first site recognizing the indentured labour diaspora, under criterion (vi) for the British 'great experiment' with contract labour beginning 1834. UNESCO's own site states 'Between 1834 and 1920, over 462,000 migrants – mainly from India – passed through this small immigration depot' (matching 'nearly half a million... between 1834 and 1920'). Search results (e.g. via ilemaurice.im tourism site and multiple travel/heritage pages) confirm laborers were transferred onward to Réunion, Australia, and eastern/southern Africa, exactly matching the description. Population-descent figures across sources range 68% (Wikipedia) to 'over 70%' (multiple tourism/heritage sources), consistent with the description's 'over 70 percent.' All material facts (country, year, date, event, numbers, destinations, demographic legacy) are corroborated by multiple sources including UNESCO's own articles.",
+        "source": "https://www.unesco.org/en/articles/aapravasi-ghat-how-unesco-world-heritage-site-keeps-memory-indentured-labour-alive",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.unesco.org/en/articles/aapravasi-ghat-how-unesco-world-heritage-site-keeps-memory-indentured-labour-alive"
+  },
+  {
+    "year": 2006,
     "title": "Business Facilitation Act and 'Doing Business' Reforms",
     "verdict": "TRUE",
     "reason": "The Business Facilitation Act 2006 slashed business-start times; World Bank's 2008 Doing Business report ranked Mauritius first in Africa (27th globally) for ease of doing business, a ranking held for multiple consecutive years.",

@@ -1829,5 +1829,113 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Battle_of_Kyiv_(2022)"
+  },
+  {
+    "year": 2022,
+    "title": "Kramatorsk Railway Station Attack Kills 63 Civilians",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: on 8 April 2022, a Russian Tochka-U ballistic missile with a cluster munition warhead struck Kramatorsk railway station in Ukraine while civilians (widely reported as several hundred to 4,000) were awaiting evacuation trains. Death toll of 63 (including 9 children) and 150+ wounded matches Wikipedia, NPR, and UK/OSCE statement figures. HRW and SITU Research conducted a joint forensic investigation (published Feb 2023) analyzing 200+ videos/photos and interviewing 69 people, concluding the strike was carried out by Russian forces and constituted an apparent war crime — matching the event description precisely. Country, year, and substance all confirmed.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources (Wikipedia synthesis of BBC/Pentagon/HRW reporting, NPR, CNN, Euronews) confirm that on 8 April 2022 a Russian Tochka-U ballistic missile fitted with a cluster (9N24 submunition) warhead struck Kramatorsk railway station in Ukraine, where thousands of civilians were gathered awaiting evacuation trains. The confirmed toll is 63 civilians killed (including 9 children) and 150+ wounded (including 34 children). Human Rights Watch, jointly with SITU Research, published a detailed investigation (\"Death at the Station: Russian Cluster Munition Attack in Kramatorsk,\" 21 Feb 2023) that used spatial/temporal video analysis and weapons-fragment identification to confirm Russian forces (Tochka launch vehicles near Kunie village, within 120km range) fired the missile, characterizing the strike as an apparent war crime. Country, year, magnitude, actor, and HRW/SITU attribution all match the description materially.",
+        "source": "https://www.hrw.org/news/2023/02/21/ukraine-new-light-russias-rail-station-attack",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: on 8 April 2022, a Russian Tochka-U ballistic missile with a cluster munition warhead struck Kramatorsk railway station in Ukraine while civilians (widely reported as several hundred to 4,000) were awaiting evacuation trains. Death toll of 63 (including 9 children) and 150+ wounded matches Wikipedia, NPR, and UK/OSCE statement figures. HRW and SITU Research conducted a joint forensic investigation (published Feb 2023) analyzing 200+ videos/photos and interviewing 69 people, concluding the strike was carried out by Russian forces and constituted an apparent war crime — matching the event description precisely. Country, year, and substance all confirmed.",
+        "source": "https://www.hrw.org/news/2023/02/21/ukraine-new-light-russias-rail-station-attack",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/news/2023/02/21/ukraine-new-light-russias-rail-station-attack"
+  },
+  {
+    "year": 2023,
+    "title": "Russia Terminates Black Sea Grain Initiative",
+    "verdict": "TRUE",
+    "reason": "Multiple independent reputable sources confirm every material element: Russia announced termination of the Black Sea Grain Initiative on 17 July 2023 (EU/Consilium statement, NPR, UN News, CBS News); Russia's stated grievance was lack of relief on Western sanctions affecting its agricultural exports (IFPRI); within hours/days Russia struck Odesa port with missiles and drones (Oniks and Kh-22 missiles), destroying an estimated 60,000 tons of grain and damaging grain/oil terminal infrastructure (PBS NewsHour, USNI News, UN Security Council coverage); the collapse triggered renewed food-security alarm and a sharp wheat price rise (largest one-day jump since Feb 2022, per NPR/IFPRI reporting). Country, year, and all substantive details match the description.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm: on 17 July 2023 Russia (via Kremlin spokesman Dmitry Peskov, and a letter to the Joint Coordination Center in Istanbul) terminated/withdrew from the Black Sea Grain Initiative, citing failure to get relief on Western sanctions affecting its agricultural/banking exports (the Consilium/EU statement and IFPRI/CBS coverage confirm the date and stated Russian grievance). Within hours of the announcement Russia launched a missile attack on Odesa port, and over the following days (18-23 July 2023) conducted repeated missile and drone strikes on Odesa's port and grain storage/export terminals, destroying tens of thousands of tonnes of grain and damaging infrastructure (PBS, Al Jazeera, UN Security Council briefing). Wheat futures prices spiked, the largest one-day rise since Feb 2022, and UN/global officials raised food security alarms. All material elements of the description (actor, date, cause, subsequent Odesa strikes, food-price/security impact) are corroborated.",
+        "source": "https://www.consilium.europa.eu/en/press/press-releases/2023/07/17/black-sea-grain-initiative-statement-by-the-high-representative-on-behalf-of-the-european-union-on-russia-s-termination-of-the-black-sea-grain-initiative/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent reputable sources confirm every material element: Russia announced termination of the Black Sea Grain Initiative on 17 July 2023 (EU/Consilium statement, NPR, UN News, CBS News); Russia's stated grievance was lack of relief on Western sanctions affecting its agricultural exports (IFPRI); within hours/days Russia struck Odesa port with missiles and drones (Oniks and Kh-22 missiles), destroying an estimated 60,000 tons of grain and damaging grain/oil terminal infrastructure (PBS NewsHour, USNI News, UN Security Council coverage); the collapse triggered renewed food-security alarm and a sharp wheat price rise (largest one-day jump since Feb 2022, per NPR/IFPRI reporting). Country, year, and all substantive details match the description.",
+        "source": "https://www.consilium.europa.eu/en/press/press-releases/2023/07/17/black-sea-grain-initiative-statement-by-the-high-representative-on-behalf-of-the-european-union-on-russia-s-termination-of-the-black-sea-grain-initiative/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.consilium.europa.eu/en/press/press-releases/2023/07/17/black-sea-grain-initiative-statement-by-the-high-representative-on-behalf-of-the-european-union-on-russia-s-termination-of-the-black-sea-grain-initiative/"
+  },
+  {
+    "year": 2014,
+    "title": "Revolution of Dignity: Berkut Snipers Kill Protesters, Yanukovych Flees",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: in Ukraine's Revolution of Dignity (Maidan Revolution), 108 civilian protesters and 13 police officers were killed, with the heaviest violence on 18-20 February 2014 (48 protesters shot by snipers on Instytutska Street on Feb 20, 'Bloody Thursday'). President Yanukovych fled Kyiv the evening of 21 February 2014. Parliament voted 328-0 to remove him on 22 February and named parliamentary chairman Oleksandr Turchynov as interim president/acting head of state. This matches the event description materially - country (Ukraine), year (2014), casualty figures, sniper fire dates, Yanukovych's flight, and installation of Turchynov-led interim government all confirmed.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm all material elements. Wikipedia's \"Maidan casualties\" and \"Revolution of Dignity\" pages state that clashes between protesters and Berkut riot police in Jan-Feb 2014 resulted in 108 protesters and 13 police killed, with most protester deaths occurring 18-20 February 2014 from police sniper fire (48 killed on 20 Feb alone, \"Bloody Thursday\"). Carnegie Endowment and Wikipedia confirm Yanukovych signed a peace/settlement agreement with opposition on 21 February 2014 promising constitutional changes and early elections, then that same evening secretly fled Kyiv (ultimately to Russia) without informing parliament, effectively abandoning the deal. Parliament then held an emergency session (22 Feb), elected Turchynov as chairman/speaker, voted to remove Yanukovych, and Turchynov became acting president under the reinstated 2004 constitution — establishing the interim government. This is broadly known to have precipitated Russia's annexation of Crimea and the subsequent conflict in eastern Ukraine, consistent with the description's claim it \"directly triggered the Russian military response.\" Country (Ukraine), year (2014), and all substantive details (death toll, sniper fire, dates, Yanukovych's flight, interim government under Turchynov) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/Revolution_of_Dignity",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: in Ukraine's Revolution of Dignity (Maidan Revolution), 108 civilian protesters and 13 police officers were killed, with the heaviest violence on 18-20 February 2014 (48 protesters shot by snipers on Instytutska Street on Feb 20, 'Bloody Thursday'). President Yanukovych fled Kyiv the evening of 21 February 2014. Parliament voted 328-0 to remove him on 22 February and named parliamentary chairman Oleksandr Turchynov as interim president/acting head of state. This matches the event description materially - country (Ukraine), year (2014), casualty figures, sniper fire dates, Yanukovych's flight, and installation of Turchynov-led interim government all confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Revolution_of_Dignity",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Revolution_of_Dignity"
   }
 ]

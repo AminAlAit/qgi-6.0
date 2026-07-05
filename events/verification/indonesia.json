@@ -1746,5 +1746,42 @@
       }
     ],
     "source": "https://www.iea.org/policies/16084-prohibition-of-the-export-of-nickel-ore"
+  },
+  {
+    "year": 1963,
+    "title": "PKI becomes world's third largest communist party",
+    "verdict": "FALSE",
+    "reason": "The PKI's rise to a mass party is real, but the specific quantified claims in this description are misdated. Multiple independent sources place the ~3 million membership figure at 1965, not 1963: Wikipedia's Communist Party of Indonesia article states membership was 1.5 million in 1959 and reached \"about three million by 1965\" (\"With growing popular support and a membership of about three million by 1965, the PKI was the strongest communist party outside China and the republics of the Soviet Union\"). Donald Hindley's authoritative scholarly monograph \"The Communist Party of Indonesia 1951-1963\" (the definitive study of exactly this period) puts PKI membership at \"over 2 million\" by 1963, not exceeding three million — a roughly 50% gap, not a rounding difference. Additionally, the description's claim that \"Aidit's calls to arm peasants and workers intensified the political contest with the Army\" refers to the PKI's \"Fifth Force\" (Angkatan Kelima) proposal, which multiple sources date to early 1965, not 1963. The general framing of PKI as \"largest communist party outside USSR/China\" was also already achieved earlier, around 1955-56 with ~2 million members (per Wikipedia's lead), so dating the milestone specifically to 1963 doesn't match any source. The event as described — three-million membership plus Aidit's arm-the-peasants push — is a real and correctly-described set of facts, but they belong to 1965, not 1963.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The PKI's rise to a mass party is real, but the specific quantified claims in this description are misdated. Multiple independent sources place the ~3 million membership figure at 1965, not 1963: Wikipedia's Communist Party of Indonesia article states membership was 1.5 million in 1959 and reached \"about three million by 1965\" (\"With growing popular support and a membership of about three million by 1965, the PKI was the strongest communist party outside China and the republics of the Soviet Union\"). Donald Hindley's authoritative scholarly monograph \"The Communist Party of Indonesia 1951-1963\" (the definitive study of exactly this period) puts PKI membership at \"over 2 million\" by 1963, not exceeding three million — a roughly 50% gap, not a rounding difference. Additionally, the description's claim that \"Aidit's calls to arm peasants and workers intensified the political contest with the Army\" refers to the PKI's \"Fifth Force\" (Angkatan Kelima) proposal, which multiple sources date to early 1965, not 1963. The general framing of PKI as \"largest communist party outside USSR/China\" was also already achieved earlier, around 1955-56 with ~2 million members (per Wikipedia's lead), so dating the milestone specifically to 1963 doesn't match any source. The event as described — three-million membership plus Aidit's arm-the-peasants push — is a real and correctly-described set of facts, but they belong to 1965, not 1963.",
+        "source": "https://en.wikipedia.org/wiki/Communist_Party_of_Indonesia",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 1965
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Country and year hold and the broad picture is well-corroborated: by the early-to-mid 1960s the PKI was widely described as the world's largest non-ruling communist party / third largest communist party globally (after the USSR's and China's), it dominated labor, peasant, and cultural front organizations, positioned itself as a loyal Sukarno ally under Guided Democracy, and Aidit's push to arm workers/peasants did intensify Army-PKI tension that exploded in 1965 — all consistent with the description. However, the specific magnitude tied to exactly 1963 is off: the U.S. Library of Congress country study (countrystudies.us, drawing on State Dept/contemporary estimates) puts PKI rolls at about 2 million around 1963, already calling it 'the world's largest communist party in a noncommunist country' at that level — not yet the 'over three million' figure. Wikipedia and other secondary sources consistently tie the 'about three million' membership figure to 1965 (the eve of the party's destruction), not specifically to 1963; Wikipedia's own infobox even inconsistently lists 3-4 million for 1960, so sourcing on the exact year the 3-million threshold was crossed is unsettled, but the modal, more careful sourcing (LOC country study) places 1963 membership nearer 2 million. So: real phenomenon, correct country/year window, but the 'exceeding three million' magnitude is more accurately a 1965 figure than a 1963 one.",
+        "source": "https://en.wikipedia.org/wiki/Communist_Party_of_Indonesia",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Communist_Party_of_Indonesia"
   }
 ]

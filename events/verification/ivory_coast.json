@@ -376,31 +376,6 @@
   },
   {
     "year": 1990,
-    "title": "Multi-Party Democracy Legalized After Three Decades of Single-Party Rule",
-    "verdict": "TRUE",
-    "reason": "Opposition parties legalized May 3, 1990. FPI registered and ran in first multiparty elections. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Opposition parties legalized May 3, 1990. FPI registered and ran in first multiparty elections. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/1990_Ivorian_presidential_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1990_Ivorian_presidential_election"
-  },
-  {
-    "year": 1990,
     "title": "Alassane Ouattara Appointed Prime Minister to Manage Austerity",
     "verdict": "TRUE",
     "reason": "Ouattara appointed PM by Houphouet-Boigny in 1990 to implement economic stabilization. Confirmed.",
@@ -423,6 +398,67 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Alassane_Ouattara"
+  },
+  {
+    "year": 1990,
+    "title": "Basilica of Our Lady of Peace Consecrated in Yamoussoukro",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources (Wikipedia, Britannica) confirm the Basilica of Our Lady of Peace in Yamoussoukro, Ivory Coast, was consecrated on 10 September 1990 by Pope John Paul II, who accepted it as a gift to the Catholic Church from President Félix Houphouët-Boigny. It is confirmed to cover 30,000 square meters, stand 158 meters tall, and hold Guinness World Records recognition as the largest church in the world, modeled on (though not an exact replica of) St. Peter's Basilica. All material details in the description match.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources (Wikipedia, Encyclopaedia Britannica, Guinness World Records, The Christian Century) confirm: Pope John Paul II consecrated the Basilica of Our Lady of Peace in Yamoussoukro on 10 September 1990, accepting it as a gift to the Catholic Church from Ivorian President Félix Houphouët-Boigny; the basilica covers 30,000 sq meters, stands 158 meters tall, and is recognized by Guinness World Records as the largest church in the world, modeled loosely on St Peter's Basilica; Houphouët-Boigny made his birthplace Yamoussoukro the country's capital and commissioned the basilica as its centerpiece. All material details in the description match found sources exactly.",
+        "source": "https://en.wikipedia.org/wiki/Basilica_of_Our_Lady_of_Peace",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Wikipedia, Britannica) confirm the Basilica of Our Lady of Peace in Yamoussoukro, Ivory Coast, was consecrated on 10 September 1990 by Pope John Paul II, who accepted it as a gift to the Catholic Church from President Félix Houphouët-Boigny. It is confirmed to cover 30,000 square meters, stand 158 meters tall, and hold Guinness World Records recognition as the largest church in the world, modeled on (though not an exact replica of) St. Peter's Basilica. All material details in the description match.",
+        "source": "https://www.britannica.com/topic/Yamoussoukro-Basilica-of-Our-Lady-of-Peace-at-Yamoussoukro",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.britannica.com/topic/Yamoussoukro-Basilica-of-Our-Lady-of-Peace-at-Yamoussoukro"
+  },
+  {
+    "year": 1990,
+    "title": "Multi-Party Democracy Legalized After Three Decades of Single-Party Rule",
+    "verdict": "TRUE",
+    "reason": "Opposition parties legalized May 3, 1990. FPI registered and ran in first multiparty elections. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Opposition parties legalized May 3, 1990. FPI registered and ran in first multiparty elections. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/1990_Ivorian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1990_Ivorian_presidential_election"
   },
   {
     "year": 1991,
@@ -676,31 +712,6 @@
   },
   {
     "year": 2002,
-    "title": "September 19 Rebellion â€” Civil War Begins, Country Divided",
-    "verdict": "TRUE",
-    "reason": "September 19, 2002 military uprising seizing Bouaké and northern regions confirmed. French buffer zone established. All details accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "September 19, 2002 military uprising seizing Bouaké and northern regions confirmed. French buffer zone established. All details accurate.",
-        "source": "https://en.wikipedia.org/wiki/First_Ivorian_Civil_War",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/First_Ivorian_Civil_War"
-  },
-  {
-    "year": 2002,
     "title": "Forces Nouvelles Unified Rebel Coalition Controls North",
     "verdict": "TRUE",
     "reason": "Forces Nouvelles merger of rebel factions in December 2002 under Soro confirmed. Controlled northern Ivory Coast from Bouaké.",
@@ -725,10 +736,10 @@
     "source": "https://en.wikipedia.org/wiki/Forces_Nouvelles_de_C%C3%B4te_d%27Ivoire"
   },
   {
-    "year": 2003,
-    "title": "Linas-Marcoussis Peace Agreement Signed Under French Pressure",
+    "year": 2002,
+    "title": "September 19 Rebellion â€” Civil War Begins, Country Divided",
     "verdict": "TRUE",
-    "reason": "January 15-24, 2003 peace talks near Paris producing Linas-Marcoussis Agreement confirmed. Pro-Gbagbo protests against French imposition documented.",
+    "reason": "September 19, 2002 military uprising seizing Bouaké and northern regions confirmed. French buffer zone established. All details accurate.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -738,8 +749,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "January 15-24, 2003 peace talks near Paris producing Linas-Marcoussis Agreement confirmed. Pro-Gbagbo protests against French imposition documented.",
-        "source": "https://en.wikipedia.org/wiki/Linas-Marcoussis_Agreement",
+        "reason": "September 19, 2002 military uprising seizing Bouaké and northern regions confirmed. French buffer zone established. All details accurate.",
+        "source": "https://en.wikipedia.org/wiki/First_Ivorian_Civil_War",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -747,7 +758,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Linas-Marcoussis_Agreement"
+    "source": "https://en.wikipedia.org/wiki/First_Ivorian_Civil_War"
   },
   {
     "year": 2003,
@@ -773,6 +784,31 @@
       }
     ],
     "source": "https://www.hrw.org/report/2003/08/01/trapped-between-two-peaces"
+  },
+  {
+    "year": 2003,
+    "title": "Linas-Marcoussis Peace Agreement Signed Under French Pressure",
+    "verdict": "TRUE",
+    "reason": "January 15-24, 2003 peace talks near Paris producing Linas-Marcoussis Agreement confirmed. Pro-Gbagbo protests against French imposition documented.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "January 15-24, 2003 peace talks near Paris producing Linas-Marcoussis Agreement confirmed. Pro-Gbagbo protests against French imposition documented.",
+        "source": "https://en.wikipedia.org/wiki/Linas-Marcoussis_Agreement",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Linas-Marcoussis_Agreement"
   },
   {
     "year": 2004,
@@ -901,9 +937,9 @@
   },
   {
     "year": 2011,
-    "title": "Second Civil War â€” Post-Election Conflict Kills Thousands",
+    "title": "DuÃ©kouÃ© Massacre â€” Pro-Ouattara Forces Kill Hundreds of Civilians",
     "verdict": "TRUE",
-    "reason": "December 2010 to April 2011 conflict with thousands killed, Duékoué massacres, FRCI advance confirmed.",
+    "reason": "March 29, 2011 Duékoué massacre by FRCI forces confirmed; Guéré victims; ICRC estimated 800+ dead. Confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -913,8 +949,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "December 2010 to April 2011 conflict with thousands killed, Duékoué massacres, FRCI advance confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Second_Ivorian_Civil_War",
+        "reason": "March 29, 2011 Duékoué massacre by FRCI forces confirmed; Guéré victims; ICRC estimated 800+ dead. Confirmed.",
+        "source": "https://www.hrw.org/news/2011/04/09/cote-divoire-ouattara-forces-kill-rape-civilians-during-offensive",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -922,7 +958,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Second_Ivorian_Civil_War"
+    "source": "https://www.hrw.org/news/2011/04/09/cote-divoire-ouattara-forces-kill-rape-civilians-during-offensive"
   },
   {
     "year": 2011,
@@ -951,9 +987,9 @@
   },
   {
     "year": 2011,
-    "title": "DuÃ©kouÃ© Massacre â€” Pro-Ouattara Forces Kill Hundreds of Civilians",
+    "title": "Second Civil War â€” Post-Election Conflict Kills Thousands",
     "verdict": "TRUE",
-    "reason": "March 29, 2011 Duékoué massacre by FRCI forces confirmed; Guéré victims; ICRC estimated 800+ dead. Confirmed.",
+    "reason": "December 2010 to April 2011 conflict with thousands killed, Duékoué massacres, FRCI advance confirmed.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -963,8 +999,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "March 29, 2011 Duékoué massacre by FRCI forces confirmed; Guéré victims; ICRC estimated 800+ dead. Confirmed.",
-        "source": "https://www.hrw.org/news/2011/04/09/cote-divoire-ouattara-forces-kill-rape-civilians-during-offensive",
+        "reason": "December 2010 to April 2011 conflict with thousands killed, Duékoué massacres, FRCI advance confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Second_Ivorian_Civil_War",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -972,7 +1008,7 @@
         }
       }
     ],
-    "source": "https://www.hrw.org/news/2011/04/09/cote-divoire-ouattara-forces-kill-rape-civilians-during-offensive"
+    "source": "https://en.wikipedia.org/wiki/Second_Ivorian_Civil_War"
   },
   {
     "year": 2012,
@@ -1026,31 +1062,6 @@
   },
   {
     "year": 2013,
-    "title": "ICC Trial of Laurent Gbagbo Begins",
-    "verdict": "TRUE",
-    "reason": "ICC proceedings against Gbagbo for crimes against humanity confirmed. Formal trial began in 2016; confirmation of charges hearing in 2013. Core claim accurate.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "ICC proceedings against Gbagbo for crimes against humanity confirmed. Formal trial began in 2016; confirmation of charges hearing in 2013. Core claim accurate.",
-        "source": "https://en.wikipedia.org/wiki/Laurent_Gbagbo#ICC_trial",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Laurent_Gbagbo#ICC_trial"
-  },
-  {
-    "year": 2013,
     "title": "Cocoa Sector Reform Guarantees Farmers 60 Percent of World Price",
     "verdict": "TRUE",
     "reason": "Conseil Café Cacao established; 60% farmgate price guarantee policy confirmed.",
@@ -1073,6 +1084,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Conseil_Caf%C3%A9-Cacao"
+  },
+  {
+    "year": 2013,
+    "title": "ICC Trial of Laurent Gbagbo Begins",
+    "verdict": "TRUE",
+    "reason": "ICC proceedings against Gbagbo for crimes against humanity confirmed. Formal trial began in 2016; confirmation of charges hearing in 2013. Core claim accurate.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ICC proceedings against Gbagbo for crimes against humanity confirmed. Formal trial began in 2016; confirmation of charges hearing in 2013. Core claim accurate.",
+        "source": "https://en.wikipedia.org/wiki/Laurent_Gbagbo#ICC_trial",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Laurent_Gbagbo#ICC_trial"
   },
   {
     "year": 2015,
@@ -1301,31 +1337,6 @@
   },
   {
     "year": 2024,
-    "title": "Ivory Coast Hosts and Wins AFCON 2024 â€” Historic National Triumph",
-    "verdict": "TRUE",
-    "reason": "Ivory Coast beat Nigeria 2-1 in final (February 11, 2024) at Ebimpé. Emerse Faé took over mid-tournament. All details confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Ivory Coast beat Nigeria 2-1 in final (February 11, 2024) at Ebimpé. Emerse Faé took over mid-tournament. All details confirmed.",
-        "source": "https://en.wikipedia.org/wiki/2023_Africa_Cup_of_Nations_final",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2023_Africa_Cup_of_Nations_final"
-  },
-  {
-    "year": 2024,
     "title": "Cocoa Prices Hit Historic High Above $10,000 Per Tonne",
     "verdict": "TRUE",
     "reason": "Cocoa surpassed $10,000/tonne in March 2024; reached $12,646 by December 2024. El Niño crop failures confirmed as driver.",
@@ -1348,6 +1359,31 @@
       }
     ],
     "source": "https://fortune.com/2024/02/09/chocolate-cocoa-prices-record-highs-climate-change-el-nino/"
+  },
+  {
+    "year": 2024,
+    "title": "Ivory Coast Hosts and Wins AFCON 2024 â€” Historic National Triumph",
+    "verdict": "TRUE",
+    "reason": "Ivory Coast beat Nigeria 2-1 in final (February 11, 2024) at Ebimpé. Emerse Faé took over mid-tournament. All details confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Ivory Coast beat Nigeria 2-1 in final (February 11, 2024) at Ebimpé. Emerse Faé took over mid-tournament. All details confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2023_Africa_Cup_of_Nations_final",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2023_Africa_Cup_of_Nations_final"
   },
   {
     "year": 2025,

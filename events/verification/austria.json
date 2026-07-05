@@ -61,35 +61,10 @@
     "source": "https://hdgoe.at/oktoberstreik"
   },
   {
-    "year": 1956,
-    "title": "Austria joins the Council of Europe",
-    "verdict": "TRUE",
-    "reason": "Austria was admitted as the 15th member of the Council of Europe on 16 April 1956, following the restoration of sovereignty through the State Treaty the previous year.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Austria was admitted as the 15th member of the Council of Europe on 16 April 1956, following the restoration of sovereignty through the State Treaty the previous year.",
-        "source": "https://www.cvce.eu/en/obj/accession_of_austria_to_the_council_of_europe_strasbourg_16_april_1956-en-93b74310-0f6f-4c48-b67b-11631e397e27.html",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.cvce.eu/en/obj/accession_of_austria_to_the_council_of_europe_strasbourg_16_april_1956-en-93b74310-0f6f-4c48-b67b-11631e397e27.html"
-  },
-  {
     "year": 1955,
-    "title": "Austrian State Treaty restores sovereignty after ten years of occupation",
+    "title": "Austria admitted to the United Nations",
     "verdict": "TRUE",
-    "reason": "The Austrian State Treaty was signed on 15 May 1955 at Belvedere Palace in Vienna by the four Allied powers, restoring full Austrian sovereignty after a decade of occupation and prohibiting Anschluss.",
+    "reason": "Austria was admitted to the United Nations on 14 December 1955 as its 70th member as part of a package deal admitting sixteen states.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -99,8 +74,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "The Austrian State Treaty was signed on 15 May 1955 at Belvedere Palace in Vienna by the four Allied powers, restoring full Austrian sovereignty after a decade of occupation and prohibiting Anschluss.",
-        "source": "https://en.wikipedia.org/wiki/Austrian_State_Treaty",
+        "reason": "Austria was admitted to the United Nations on 14 December 1955 as its 70th member as part of a package deal admitting sixteen states.",
+        "source": "https://www.bmeia.gv.at/en/european-foreign-policy/austria-and-the-united-nations",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -108,7 +83,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Austrian_State_Treaty"
+    "source": "https://www.bmeia.gv.at/en/european-foreign-policy/austria-and-the-united-nations"
   },
   {
     "year": 1955,
@@ -137,9 +112,9 @@
   },
   {
     "year": 1955,
-    "title": "Austria admitted to the United Nations",
+    "title": "Austrian State Treaty restores sovereignty after ten years of occupation",
     "verdict": "TRUE",
-    "reason": "Austria was admitted to the United Nations on 14 December 1955 as its 70th member as part of a package deal admitting sixteen states.",
+    "reason": "The Austrian State Treaty was signed on 15 May 1955 at Belvedere Palace in Vienna by the four Allied powers, restoring full Austrian sovereignty after a decade of occupation and prohibiting Anschluss.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -149,8 +124,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Austria was admitted to the United Nations on 14 December 1955 as its 70th member as part of a package deal admitting sixteen states.",
-        "source": "https://www.bmeia.gv.at/en/european-foreign-policy/austria-and-the-united-nations",
+        "reason": "The Austrian State Treaty was signed on 15 May 1955 at Belvedere Palace in Vienna by the four Allied powers, restoring full Austrian sovereignty after a decade of occupation and prohibiting Anschluss.",
+        "source": "https://en.wikipedia.org/wiki/Austrian_State_Treaty",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -158,7 +133,32 @@
         }
       }
     ],
-    "source": "https://www.bmeia.gv.at/en/european-foreign-policy/austria-and-the-united-nations"
+    "source": "https://en.wikipedia.org/wiki/Austrian_State_Treaty"
+  },
+  {
+    "year": 1956,
+    "title": "Austria joins the Council of Europe",
+    "verdict": "TRUE",
+    "reason": "Austria was admitted as the 15th member of the Council of Europe on 16 April 1956, following the restoration of sovereignty through the State Treaty the previous year.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austria was admitted as the 15th member of the Council of Europe on 16 April 1956, following the restoration of sovereignty through the State Treaty the previous year.",
+        "source": "https://www.cvce.eu/en/obj/accession_of_austria_to_the_council_of_europe_strasbourg_16_april_1956-en-93b74310-0f6f-4c48-b67b-11631e397e27.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cvce.eu/en/obj/accession_of_austria_to_the_council_of_europe_strasbourg_16_april_1956-en-93b74310-0f6f-4c48-b67b-11631e397e27.html"
   },
   {
     "year": 1956,
@@ -398,31 +398,6 @@
   },
   {
     "year": 1975,
-    "title": "Kreisky welfare state expansion: Austria introduces paid maternity leave and social reforms",
-    "verdict": "PARTIAL",
-    "reason": "Kreisky's era produced extensive welfare state reforms including maternity leave extension, 40-hour work week, and education reforms, but these were spread across multiple years in the 1970s rather than concentrated in 1975; the reforms are real but the 1975 date is an approximation.",
-    "verify_count": 1,
-    "consensus_verdict": "PARTIAL",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "PARTIAL",
-        "reason": "Kreisky's era produced extensive welfare state reforms including maternity leave extension, 40-hour work week, and education reforms, but these were spread across multiple years in the 1970s rather than concentrated in 1975; the reforms are real but the 1975 date is an approximation.",
-        "source": "https://www.archive.austria.org/the-welfare-state",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.archive.austria.org/the-welfare-state"
-  },
-  {
-    "year": 1975,
     "title": "Austria hosts CSCE Final Act signing in Helsinki through diplomatic role",
     "verdict": "PARTIAL",
     "reason": "The CSCE Final Act was signed in Helsinki, not Austria, which is correctly noted; Austria played a genuine role as a neutral facilitator in the N+N group of neutral and non-aligned states, but the title misleadingly suggests Austria hosted the signing.",
@@ -445,31 +420,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Helsinki_Accords"
-  },
-  {
-    "year": 1978,
-    "title": "Referendum narrowly rejects nuclear power, blocking completed Zwentendorf plant",
-    "verdict": "TRUE",
-    "reason": "Austrian voters rejected nuclear power by 50.47% to 49.53% on 5 November 1978, permanently mothballing the completed Zwentendorf plant; Chancellor Kreisky had staked his political reputation on the yes vote.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Austrian voters rejected nuclear power by 50.47% to 49.53% on 5 November 1978, permanently mothballing the completed Zwentendorf plant; Chancellor Kreisky had staked his political reputation on the yes vote.",
-        "source": "https://en.wikipedia.org/wiki/1978_Austrian_nuclear_power_referendum",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1978_Austrian_nuclear_power_referendum"
   },
   {
     "year": 1975,
@@ -495,6 +445,56 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/OPEC_siege"
+  },
+  {
+    "year": 1975,
+    "title": "Kreisky welfare state expansion: Austria introduces paid maternity leave and social reforms",
+    "verdict": "PARTIAL",
+    "reason": "Kreisky's era produced extensive welfare state reforms including maternity leave extension, 40-hour work week, and education reforms, but these were spread across multiple years in the 1970s rather than concentrated in 1975; the reforms are real but the 1975 date is an approximation.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Kreisky's era produced extensive welfare state reforms including maternity leave extension, 40-hour work week, and education reforms, but these were spread across multiple years in the 1970s rather than concentrated in 1975; the reforms are real but the 1975 date is an approximation.",
+        "source": "https://www.archive.austria.org/the-welfare-state",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.archive.austria.org/the-welfare-state"
+  },
+  {
+    "year": 1978,
+    "title": "Referendum narrowly rejects nuclear power, blocking completed Zwentendorf plant",
+    "verdict": "TRUE",
+    "reason": "Austrian voters rejected nuclear power by 50.47% to 49.53% on 5 November 1978, permanently mothballing the completed Zwentendorf plant; Chancellor Kreisky had staked his political reputation on the yes vote.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Austrian voters rejected nuclear power by 50.47% to 49.53% on 5 November 1978, permanently mothballing the completed Zwentendorf plant; Chancellor Kreisky had staked his political reputation on the yes vote.",
+        "source": "https://en.wikipedia.org/wiki/1978_Austrian_nuclear_power_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1978_Austrian_nuclear_power_referendum"
   },
   {
     "year": 1983,
@@ -523,9 +523,9 @@
   },
   {
     "year": 1986,
-    "title": "Waldheim Affair: presidential candidate's Nazi past triggers international crisis",
+    "title": "Grand coalition of SPO and OVP returns to govern Austria",
     "verdict": "TRUE",
-    "reason": "Kurt Waldheim's concealed wartime record as a Wehrmacht officer was revealed during his 1986 presidential campaign; he won the June 1986 election with 53.9% despite international condemnation and being placed on the US watchlist.",
+    "reason": "Following Haider's FPO takeover and the coalition's breakdown, Chancellor Vranitzky called new elections and formed a grand coalition with the OVP from January 1987, returning Austria to the format that had governed for most of the postwar period.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -535,8 +535,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Kurt Waldheim's concealed wartime record as a Wehrmacht officer was revealed during his 1986 presidential campaign; he won the June 1986 election with 53.9% despite international condemnation and being placed on the US watchlist.",
-        "source": "https://en.wikipedia.org/wiki/Kurt_Waldheim",
+        "reason": "Following Haider's FPO takeover and the coalition's breakdown, Chancellor Vranitzky called new elections and formed a grand coalition with the OVP from January 1987, returning Austria to the format that had governed for most of the postwar period.",
+        "source": "https://en.wikipedia.org/wiki/Franz_Vranitzky",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -544,7 +544,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Kurt_Waldheim"
+    "source": "https://en.wikipedia.org/wiki/Franz_Vranitzky"
   },
   {
     "year": 1986,
@@ -573,9 +573,9 @@
   },
   {
     "year": 1986,
-    "title": "Grand coalition of SPO and OVP returns to govern Austria",
+    "title": "Waldheim Affair: presidential candidate's Nazi past triggers international crisis",
     "verdict": "TRUE",
-    "reason": "Following Haider's FPO takeover and the coalition's breakdown, Chancellor Vranitzky called new elections and formed a grand coalition with the OVP from January 1987, returning Austria to the format that had governed for most of the postwar period.",
+    "reason": "Kurt Waldheim's concealed wartime record as a Wehrmacht officer was revealed during his 1986 presidential campaign; he won the June 1986 election with 53.9% despite international condemnation and being placed on the US watchlist.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -585,8 +585,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Following Haider's FPO takeover and the coalition's breakdown, Chancellor Vranitzky called new elections and formed a grand coalition with the OVP from January 1987, returning Austria to the format that had governed for most of the postwar period.",
-        "source": "https://en.wikipedia.org/wiki/Franz_Vranitzky",
+        "reason": "Kurt Waldheim's concealed wartime record as a Wehrmacht officer was revealed during his 1986 presidential campaign; he won the June 1986 election with 53.9% despite international condemnation and being placed on the US watchlist.",
+        "source": "https://en.wikipedia.org/wiki/Kurt_Waldheim",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -594,7 +594,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Franz_Vranitzky"
+    "source": "https://en.wikipedia.org/wiki/Kurt_Waldheim"
   },
   {
     "year": 1989,
@@ -770,6 +770,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Franz_Fuchs"
+  },
+  {
+    "year": 1996,
+    "title": "Schonbrunn Palace and Salzburg's Old Town Inscribed as UNESCO Heritage Sites",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm both the Palace and Gardens of Schönbrunn (Vienna) and the Historic Centre of Salzburg were inscribed on the UNESCO World Heritage List in December 1996 at the 20th session of the World Heritage Committee, as Austria's first cultural World Heritage sites. Schönbrunn was designed by Fischer von Erlach and Pacassi and recognized for its Baroque architecture and Gesamtkunstwerk (synthesis of the arts). Salzburg's Baroque old town, with roughly 1,000 protected historic buildings, was cited for its exceptional state of preservation. All material details (year, country, both sites, architects, ~1,000 buildings figure, Baroque characterization) are corroborated by multiple independent sources (Wikipedia, official Schönbrunn Palace site, Salzburg tourism site).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources (Wikipedia articles on Schönbrunn Palace and Historic Centre of the City of Salzburg, plus general web search results) confirm both the Palace and Gardens of Schönbrunn and the Historic Centre of the City of Salzburg were inscribed on the UNESCO World Heritage List at the 20th Session of the World Heritage Committee, held in Mérida, Mexico in December 1996. These were Austria's first two World Heritage inscriptions (both cultural), matching the description. Schönbrunn is confirmed as the Habsburg summer residence designed by Fischer von Erlach and Pacassi, an outstanding Baroque ensemble. Salzburg's old town is confirmed as a well-preserved Baroque historic centre. Details (architects, ~1,000 protected buildings in Salzburg's core zone, December 1996 timing, 'first cultural inscriptions') all check out against independent, non-overlapping sources.",
+        "source": "https://en.wikipedia.org/wiki/Sch%C3%B6nbrunn_Palace",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm both the Palace and Gardens of Schönbrunn (Vienna) and the Historic Centre of Salzburg were inscribed on the UNESCO World Heritage List in December 1996 at the 20th session of the World Heritage Committee, as Austria's first cultural World Heritage sites. Schönbrunn was designed by Fischer von Erlach and Pacassi and recognized for its Baroque architecture and Gesamtkunstwerk (synthesis of the arts). Salzburg's Baroque old town, with roughly 1,000 protected historic buildings, was cited for its exceptional state of preservation. All material details (year, country, both sites, architects, ~1,000 buildings figure, Baroque characterization) are corroborated by multiple independent sources (Wikipedia, official Schönbrunn Palace site, Salzburg tourism site).",
+        "source": "https://en.wikipedia.org/wiki/Sch%C3%B6nbrunn_Palace",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sch%C3%B6nbrunn_Palace"
   },
   {
     "year": 1997,
@@ -1268,31 +1304,6 @@
   },
   {
     "year": 2016,
-    "title": "Presidential election result disputed; re-run ordered after mail ballot irregularities",
-    "verdict": "TRUE",
-    "reason": "The May 2016 runoff result (Van der Bellen 50.3% vs Hofer 49.7%) was annulled by the Constitutional Court on 1 July 2016 over procedural irregularities with postal votes; Van der Bellen won the December 2016 re-run with 53.8%.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The May 2016 runoff result (Van der Bellen 50.3% vs Hofer 49.7%) was annulled by the Constitutional Court on 1 July 2016 over procedural irregularities with postal votes; Van der Bellen won the December 2016 re-run with 53.8%.",
-        "source": "https://en.wikipedia.org/wiki/2016_Austrian_presidential_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2016_Austrian_presidential_election"
-  },
-  {
-    "year": 2016,
     "title": "Austria unilaterally imposes asylum cap and closes Brenner Pass to migrants",
     "verdict": "TRUE",
     "reason": "Austria introduced a unilateral daily cap of 80 asylum applications in mid-February 2016 and prepared border barriers at the Brenner Pass with Italy, causing a diplomatic row with Rome and Brussels over Schengen norms.",
@@ -1315,6 +1326,31 @@
       }
     ],
     "source": "https://www.hrw.org/news/2016/04/27/austria-drastic-unjustified-measures-against-asylum-seekers"
+  },
+  {
+    "year": 2016,
+    "title": "Presidential election result disputed; re-run ordered after mail ballot irregularities",
+    "verdict": "TRUE",
+    "reason": "The May 2016 runoff result (Van der Bellen 50.3% vs Hofer 49.7%) was annulled by the Constitutional Court on 1 July 2016 over procedural irregularities with postal votes; Van der Bellen won the December 2016 re-run with 53.8%.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The May 2016 runoff result (Van der Bellen 50.3% vs Hofer 49.7%) was annulled by the Constitutional Court on 1 July 2016 over procedural irregularities with postal votes; Van der Bellen won the December 2016 re-run with 53.8%.",
+        "source": "https://en.wikipedia.org/wiki/2016_Austrian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2016_Austrian_presidential_election"
   },
   {
     "year": 2017,
@@ -1493,31 +1529,6 @@
   },
   {
     "year": 2022,
-    "title": "Austria mandates COVID-19 vaccination, then abandons the policy",
-    "verdict": "TRUE",
-    "reason": "Austria's vaccine mandate entered force on 5 February 2022, was suspended on 9 March 2022 amid protests, and formally repealed in June 2022; health minister cited societal division and changed epidemiological conditions.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Austria's vaccine mandate entered force on 5 February 2022, was suspended on 9 March 2022 amid protests, and formally repealed in June 2022; health minister cited societal division and changed epidemiological conditions.",
-        "source": "https://www.loc.gov/item/global-legal-monitor/2022-03-17/austria-general-covid-19-vaccine-mandate-suspended/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.loc.gov/item/global-legal-monitor/2022-03-17/austria-general-covid-19-vaccine-mandate-suspended/"
-  },
-  {
-    "year": 2022,
     "title": "Austria faces energy price shock from Russian gas dependence after Ukraine invasion",
     "verdict": "TRUE",
     "reason": "At the time of Russia's February 2022 invasion of Ukraine, Austria imported 80% of its natural gas from Russia — the highest share in Western Europe — and scrambled to diversify sources as energy prices soared.",
@@ -1567,10 +1578,10 @@
     "source": "https://foreignpolicy.com/2022/07/12/austria-neutrality-nato-ukraine-russia-security-strategy/"
   },
   {
-    "year": 2023,
-    "title": "FPO surges to first place in polls as migration and cost-of-living dominate",
+    "year": 2022,
+    "title": "Austria mandates COVID-19 vaccination, then abandons the policy",
     "verdict": "TRUE",
-    "reason": "FPO under Herbert Kickl led national polls throughout 2023 and into 2024, capitalizing on migration concerns and cost-of-living pressures, with polling above 30% — the party's highest since the Haider era.",
+    "reason": "Austria's vaccine mandate entered force on 5 February 2022, was suspended on 9 March 2022 amid protests, and formally repealed in June 2022; health minister cited societal division and changed epidemiological conditions.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1580,8 +1591,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "FPO under Herbert Kickl led national polls throughout 2023 and into 2024, capitalizing on migration concerns and cost-of-living pressures, with polling above 30% — the party's highest since the Haider era.",
-        "source": "https://www.aa.com.tr/en/europe/leader-of-austrias-far-right-party-hits-record-high-in-poll/3777741",
+        "reason": "Austria's vaccine mandate entered force on 5 February 2022, was suspended on 9 March 2022 amid protests, and formally repealed in June 2022; health minister cited societal division and changed epidemiological conditions.",
+        "source": "https://www.loc.gov/item/global-legal-monitor/2022-03-17/austria-general-covid-19-vaccine-mandate-suspended/",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1589,7 +1600,7 @@
         }
       }
     ],
-    "source": "https://www.aa.com.tr/en/europe/leader-of-austrias-far-right-party-hits-record-high-in-poll/3777741"
+    "source": "https://www.loc.gov/item/global-legal-monitor/2022-03-17/austria-general-covid-19-vaccine-mandate-suspended/"
   },
   {
     "year": 2023,
@@ -1617,21 +1628,21 @@
     "source": "https://home-affairs.ec.europa.eu/policies/schengen/schengen-area/temporary-reintroduction-border-control_en"
   },
   {
-    "year": 2024,
-    "title": "FPO wins parliamentary elections for first time in Austrian history",
-    "verdict": "PARTIAL",
-    "reason": "FPO won 28.8% in the September 2024 elections — the party's first plurality — but President Van der Bellen initially asked the second-place OVP to form a government; a three-party OVP-SPO-NEOS coalition was indeed attempted but ultimately collapsed, and Van der Bellen later tasked Kickl with forming a government in January 2025.",
+    "year": 2023,
+    "title": "FPO surges to first place in polls as migration and cost-of-living dominate",
+    "verdict": "TRUE",
+    "reason": "FPO under Herbert Kickl led national polls throughout 2023 and into 2024, capitalizing on migration concerns and cost-of-living pressures, with polling above 30% — the party's highest since the Haider era.",
     "verify_count": 1,
-    "consensus_verdict": "PARTIAL",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "PARTIAL",
-        "reason": "FPO won 28.8% in the September 2024 elections — the party's first plurality — but President Van der Bellen initially asked the second-place OVP to form a government; a three-party OVP-SPO-NEOS coalition was indeed attempted but ultimately collapsed, and Van der Bellen later tasked Kickl with forming a government in January 2025.",
-        "source": "https://en.wikipedia.org/wiki/2024_Austrian_legislative_election",
+        "verdict": "TRUE",
+        "reason": "FPO under Herbert Kickl led national polls throughout 2023 and into 2024, capitalizing on migration concerns and cost-of-living pressures, with polling above 30% — the party's highest since the Haider era.",
+        "source": "https://www.aa.com.tr/en/europe/leader-of-austrias-far-right-party-hits-record-high-in-poll/3777741",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1639,7 +1650,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2024_Austrian_legislative_election"
+    "source": "https://www.aa.com.tr/en/europe/leader-of-austrias-far-right-party-hits-record-high-in-poll/3777741"
   },
   {
     "year": 2024,
@@ -1665,5 +1676,30 @@
       }
     ],
     "source": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/migrant-integration/migrant-integration-hub/eu-countries-updates-and-facts/migrant-integration-austria_en"
+  },
+  {
+    "year": 2024,
+    "title": "FPO wins parliamentary elections for first time in Austrian history",
+    "verdict": "PARTIAL",
+    "reason": "FPO won 28.8% in the September 2024 elections — the party's first plurality — but President Van der Bellen initially asked the second-place OVP to form a government; a three-party OVP-SPO-NEOS coalition was indeed attempted but ultimately collapsed, and Van der Bellen later tasked Kickl with forming a government in January 2025.",
+    "verify_count": 1,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "FPO won 28.8% in the September 2024 elections — the party's first plurality — but President Van der Bellen initially asked the second-place OVP to form a government; a three-party OVP-SPO-NEOS coalition was indeed attempted but ultimately collapsed, and Van der Bellen later tasked Kickl with forming a government in January 2025.",
+        "source": "https://en.wikipedia.org/wiki/2024_Austrian_legislative_election",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2024_Austrian_legislative_election"
   }
 ]

@@ -1,31 +1,6 @@
 [
   {
     "year": 1951,
-    "title": "Libyan Independence Proclaimed",
-    "verdict": "TRUE",
-    "reason": "Confirmed: December 24, 1951, King Idris proclaimed the United Kingdom of Libya. First African country independent via UN process. All core details correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: December 24, 1951, King Idris proclaimed the United Kingdom of Libya. First African country independent via UN process. All core details correct.",
-        "source": "https://www.cvce.eu/en/obj/independence_of_libya_24_december_1951-en-725a3f55-91d5-41af-bf96-59667d44d1c1.html",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.cvce.eu/en/obj/independence_of_libya_24_december_1951-en-725a3f55-91d5-41af-bf96-59667d44d1c1.html"
-  },
-  {
-    "year": 1951,
     "title": "Constitution of the United Kingdom of Libya",
     "verdict": "TRUE",
     "reason": "Confirmed: 1951 constitution established bicameral parliament (Senate + House of Representatives), federal structure across three provinces, Islam as state religion. All details correct.",
@@ -48,6 +23,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Constitution_of_Libya_(1951)"
+  },
+  {
+    "year": 1951,
+    "title": "Libyan Independence Proclaimed",
+    "verdict": "TRUE",
+    "reason": "Confirmed: December 24, 1951, King Idris proclaimed the United Kingdom of Libya. First African country independent via UN process. All core details correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: December 24, 1951, King Idris proclaimed the United Kingdom of Libya. First African country independent via UN process. All core details correct.",
+        "source": "https://www.cvce.eu/en/obj/independence_of_libya_24_december_1951-en-725a3f55-91d5-41af-bf96-59667d44d1c1.html",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cvce.eu/en/obj/independence_of_libya_24_december_1951-en-725a3f55-91d5-41af-bf96-59667d44d1c1.html"
   },
   {
     "year": 1952,
@@ -326,31 +326,6 @@
   },
   {
     "year": 1970,
-    "title": "US Evacuates Wheelus Air Base",
-    "verdict": "TRUE",
-    "reason": "Confirmed: US evacuated Wheelus Air Base on June 11, 1970, following Libyan pressure. Ceremony with US flag lowering attended. Britain also evacuated its Libyan facilities simultaneously. All details correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: US evacuated Wheelus Air Base on June 11, 1970, following Libyan pressure. Ceremony with US flag lowering attended. Britain also evacuated its Libyan facilities simultaneously. All details correct.",
-        "source": "https://en.wikipedia.org/wiki/Wheelus_Air_Base",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Wheelus_Air_Base"
-  },
-  {
-    "year": 1970,
     "title": "Tripoli Agreement on Oil Pricing",
     "verdict": "TRUE",
     "reason": "Confirmed: The Tripoli Agreement was signed April 2, 1971 (not 1970 as the year field states), raising posted prices significantly and setting a precedent for OPEC negotiations. Year in the event is off by one year.",
@@ -373,6 +348,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1971_world_oil_market_chronology"
+  },
+  {
+    "year": 1970,
+    "title": "US Evacuates Wheelus Air Base",
+    "verdict": "TRUE",
+    "reason": "Confirmed: US evacuated Wheelus Air Base on June 11, 1970, following Libyan pressure. Ceremony with US flag lowering attended. Britain also evacuated its Libyan facilities simultaneously. All details correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: US evacuated Wheelus Air Base on June 11, 1970, following Libyan pressure. Ceremony with US flag lowering attended. Britain also evacuated its Libyan facilities simultaneously. All details correct.",
+        "source": "https://en.wikipedia.org/wiki/Wheelus_Air_Base",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Wheelus_Air_Base"
   },
   {
     "year": 1972,
@@ -701,31 +701,6 @@
   },
   {
     "year": 1985,
-    "title": "US Sanctions Expanded on Libya",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Reagan expanded sanctions against Libya in 1985, with comprehensive embargo announced January 1986 following December 1985 airport attacks. US oil companies were given deadlines. Core facts correct though the comprehensive embargo technically came January 1986.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Reagan expanded sanctions against Libya in 1985, with comprehensive embargo announced January 1986 following December 1985 airport attacks. US oil companies were given deadlines. Core facts correct though the comprehensive embargo technically came January 1986.",
-        "source": "https://www.armscontrol.org/factsheets/chronology-libyas-disarmament-and-relations-united-states",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.armscontrol.org/factsheets/chronology-libyas-disarmament-and-relations-united-states"
-  },
-  {
-    "year": 1985,
     "title": "Rome and Vienna Airport Attacks",
     "verdict": "TRUE",
     "reason": "Confirmed: December 27, 1985 attacks at Rome Fiumicino and Vienna Schwechat airports. 19 people killed (including one child), ~140 wounded. Abu Nidal Organization responsible with Libyan intelligence support confirmed. All details correct.",
@@ -748,6 +723,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1985_Rome_and_Vienna_airport_attacks"
+  },
+  {
+    "year": 1985,
+    "title": "US Sanctions Expanded on Libya",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Reagan expanded sanctions against Libya in 1985, with comprehensive embargo announced January 1986 following December 1985 airport attacks. US oil companies were given deadlines. Core facts correct though the comprehensive embargo technically came January 1986.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Reagan expanded sanctions against Libya in 1985, with comprehensive embargo announced January 1986 following December 1985 airport attacks. US oil companies were given deadlines. Core facts correct though the comprehensive embargo technically came January 1986.",
+        "source": "https://www.armscontrol.org/factsheets/chronology-libyas-disarmament-and-relations-united-states",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.armscontrol.org/factsheets/chronology-libyas-disarmament-and-relations-united-states"
   },
   {
     "year": 1986,
@@ -826,6 +826,31 @@
   },
   {
     "year": 1989,
+    "title": "Arab Maghreb Union Founded",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Arab Maghreb Union established by Treaty of Marrakesh on February 17, 1989. Members: Algeria, Libya, Mauritania, Morocco, Tunisia. All five countries confirmed. AMU largely inactive due to Morocco-Algeria disputes. All details correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Arab Maghreb Union established by Treaty of Marrakesh on February 17, 1989. Members: Algeria, Libya, Mauritania, Morocco, Tunisia. All five countries confirmed. AMU largely inactive due to Morocco-Algeria disputes. All details correct.",
+        "source": "https://en.wikipedia.org/wiki/Arab_Maghreb_Union",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Arab_Maghreb_Union"
+  },
+  {
+    "year": 1989,
     "title": "UTA Flight 772 Bombing",
     "verdict": "TRUE",
     "reason": "Confirmed: UTA Flight 772 exploded over Niger on September 19, 1989, killing all 170 aboard. Suitcase bomb in cargo hold. French investigation linked to Libyan intelligence; six Libyans convicted in absentia 1999. All details correct.",
@@ -850,29 +875,40 @@
     "source": "https://en.wikipedia.org/wiki/UTA_Flight_772"
   },
   {
-    "year": 1989,
-    "title": "Arab Maghreb Union Founded",
+    "year": 1991,
+    "title": "Islamist Opposition Emerges",
     "verdict": "TRUE",
-    "reason": "Confirmed: Arab Maghreb Union established by Treaty of Marrakesh on February 17, 1989. Members: Algeria, Libya, Mauritania, Morocco, Tunisia. All five countries confirmed. AMU largely inactive due to Morocco-Algeria disputes. All details correct.",
-    "verify_count": 1,
+    "reason": "Multiple independent sources (Wikipedia, Jamestown Foundation, Stanford's Mapping Militants Project) corroborate the described process: following the Soviet withdrawal from Afghanistan (1989), Libyan \"Afghan-Arab\" veterans who had fought against Soviet forces returned to Libya in the early 1990s and organized underground to overthrow Gaddafi, ultimately forming the Libyan Islamic Fighting Group (LIFG). Wikipedia and multiple sources date LIFG's founding to 1990, with the \"first nucleus\" formed circa 1989-1992 depending on the source; the group only publicly announced itself in 1995 after a botched hospital raid exposed it. The Gaddafi regime's brutal suppression (imprisonment, executions, driving the movement underground) is also well-documented, intensifying through the mid-to-late 1990s. The event description narrates a multi-year organizing process (Afghan veterans returning, LIFG forming, regime crackdown) rather than a single dated incident, and 1991 falls squarely within the well-documented \"early 1990s\" window when this organizing occurred, making the year, country, and substance materially accurate.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Arab Maghreb Union established by Treaty of Marrakesh on February 17, 1989. Members: Algeria, Libya, Mauritania, Morocco, Tunisia. All five countries confirmed. AMU largely inactive due to Morocco-Algeria disputes. All details correct.",
-        "source": "https://en.wikipedia.org/wiki/Arab_Maghreb_Union",
+        "reason": "Multiple independent sources corroborate the core narrative: after the Soviet withdrawal from Afghanistan (Feb 1989), Libyan \"Afghan Arab\" veterans returned home and formed the Libyan Islamic Fighting Group (LIFG) to overthrow Gaddafi and establish an Islamic state, and the regime suppressed the movement, driving it underground until its 1995 public declaration and 1996 armed clashes. On the exact founding year, sources vary: Wikipedia states 1990; Stanford's CISAC Mapping Militants Project states the \"first nucleus of the LIFG was formed (c. 1989–92)\" with Libyan-Afghan veterans returning \"in the early 1990s\" to establish it; Jamestown similarly places the Afghan-veteran network's formation in \"the early 1990s,\" with the formal public communiqué only in 1995. Given this is a gradual organizing process (not a single dated incident) and 1991 falls squarely within the documented \"c. 1989-92\" formation window cited by the Stanford academic source, the event's year, country, and substance hold up as materially accurate.",
+        "source": "https://mappingmilitants.org/profiles/libyan-islamic-fighting-group",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Wikipedia, Jamestown Foundation, Stanford's Mapping Militants Project) corroborate the described process: following the Soviet withdrawal from Afghanistan (1989), Libyan \"Afghan-Arab\" veterans who had fought against Soviet forces returned to Libya in the early 1990s and organized underground to overthrow Gaddafi, ultimately forming the Libyan Islamic Fighting Group (LIFG). Wikipedia and multiple sources date LIFG's founding to 1990, with the \"first nucleus\" formed circa 1989-1992 depending on the source; the group only publicly announced itself in 1995 after a botched hospital raid exposed it. The Gaddafi regime's brutal suppression (imprisonment, executions, driving the movement underground) is also well-documented, intensifying through the mid-to-late 1990s. The event description narrates a multi-year organizing process (Afghan veterans returning, LIFG forming, regime crackdown) rather than a single dated incident, and 1991 falls squarely within the well-documented \"early 1990s\" window when this organizing occurred, making the year, country, and substance materially accurate.",
+        "source": "https://jamestown.org/the-libyan-islamic-fighting-group-lifg/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Arab_Maghreb_Union"
+    "source": "https://jamestown.org/the-libyan-islamic-fighting-group-lifg/"
   },
   {
     "year": 1992,
@@ -1101,31 +1137,6 @@
   },
   {
     "year": 2004,
-    "title": "US Restores Full Diplomatic Relations with Libya",
-    "verdict": "TRUE",
-    "reason": "Confirmed: US Interest Section reopened February 2004, sanctions lifted April-September 2004. Full embassy status achieved May 31, 2006. Description of staged normalization 2004-2006 is accurate. All core facts verified.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: US Interest Section reopened February 2004, sanctions lifted April-September 2004. Full embassy status achieved May 31, 2006. Description of staged normalization 2004-2006 is accurate. All core facts verified.",
-        "source": "https://www.armscontrol.org/factsheets/chronology-libyas-disarmament-and-relations-united-states",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.armscontrol.org/factsheets/chronology-libyas-disarmament-and-relations-united-states"
-  },
-  {
-    "year": 2004,
     "title": "European Energy Investment Boom Begins",
     "verdict": "TRUE",
     "reason": "Confirmed: Following 2004 normalization, Libya released EPSA-4 model agreement inviting international oil companies. ENI, Shell, Total, ExxonMobil, BP, ConocoPhillips, and others all signed agreements. All details correct.",
@@ -1148,6 +1159,31 @@
       }
     ],
     "source": "https://oilprice.com/Energy/Crude-Oil/Libya-Reopens-Its-Oil-Patch-and-Big-Oil-Shows-Up.html"
+  },
+  {
+    "year": 2004,
+    "title": "US Restores Full Diplomatic Relations with Libya",
+    "verdict": "TRUE",
+    "reason": "Confirmed: US Interest Section reopened February 2004, sanctions lifted April-September 2004. Full embassy status achieved May 31, 2006. Description of staged normalization 2004-2006 is accurate. All core facts verified.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: US Interest Section reopened February 2004, sanctions lifted April-September 2004. Full embassy status achieved May 31, 2006. Description of staged normalization 2004-2006 is accurate. All core facts verified.",
+        "source": "https://www.armscontrol.org/factsheets/chronology-libyas-disarmament-and-relations-united-states",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.armscontrol.org/factsheets/chronology-libyas-disarmament-and-relations-united-states"
   },
   {
     "year": 2006,
@@ -1201,6 +1237,31 @@
   },
   {
     "year": 2011,
+    "title": "Fall of Tripoli and Gaddafi's Death",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Tripoli fell August 2011. Gaddafi captured October 20, 2011 in Sirte, hiding in a drainage pipe. Killed shortly after capture, circumstances disputed (suggested summary execution). Death filmed globally. All details correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Tripoli fell August 2011. Gaddafi captured October 20, 2011 in Sirte, hiding in a drainage pipe. Killed shortly after capture, circumstances disputed (suggested summary execution). Death filmed globally. All details correct.",
+        "source": "https://en.wikipedia.org/wiki/Killing_of_Muammar_Gaddafi",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Killing_of_Muammar_Gaddafi"
+  },
+  {
+    "year": 2011,
     "title": "February 17 Revolution Erupts in Benghazi",
     "verdict": "TRUE",
     "reason": "Confirmed: Protests began February 15 (not 17) with the Day of Rage officially February 17. Date chosen to commemorate 2006 consulate killings is confirmed. Security forces fired on protesters, east Libya fell under rebel control. Minor note: protests actually started Feb 15 before the Feb 17 'Day of Rage'.",
@@ -1223,31 +1284,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Libyan_civil_war_(2011)"
-  },
-  {
-    "year": 2011,
-    "title": "NATO Intervention and No-Fly Zone",
-    "verdict": "TRUE",
-    "reason": "Confirmed: UNSC Resolution 1973 passed March 17, 2011. NATO Operation Unified Protector launched March 31, ended October 31, 2011. Qatar and UAE involvement confirmed. All details correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: UNSC Resolution 1973 passed March 17, 2011. NATO Operation Unified Protector launched March 31, ended October 31, 2011. Qatar and UAE involvement confirmed. All details correct.",
-        "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_1973",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_1973"
   },
   {
     "year": 2011,
@@ -1276,9 +1312,9 @@
   },
   {
     "year": 2011,
-    "title": "Fall of Tripoli and Gaddafi's Death",
+    "title": "NATO Intervention and No-Fly Zone",
     "verdict": "TRUE",
-    "reason": "Confirmed: Tripoli fell August 2011. Gaddafi captured October 20, 2011 in Sirte, hiding in a drainage pipe. Killed shortly after capture, circumstances disputed (suggested summary execution). Death filmed globally. All details correct.",
+    "reason": "Confirmed: UNSC Resolution 1973 passed March 17, 2011. NATO Operation Unified Protector launched March 31, ended October 31, 2011. Qatar and UAE involvement confirmed. All details correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1288,8 +1324,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Confirmed: Tripoli fell August 2011. Gaddafi captured October 20, 2011 in Sirte, hiding in a drainage pipe. Killed shortly after capture, circumstances disputed (suggested summary execution). Death filmed globally. All details correct.",
-        "source": "https://en.wikipedia.org/wiki/Killing_of_Muammar_Gaddafi",
+        "reason": "Confirmed: UNSC Resolution 1973 passed March 17, 2011. NATO Operation Unified Protector launched March 31, ended October 31, 2011. Qatar and UAE involvement confirmed. All details correct.",
+        "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_1973",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1297,7 +1333,32 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Killing_of_Muammar_Gaddafi"
+    "source": "https://en.wikipedia.org/wiki/United_Nations_Security_Council_Resolution_1973"
+  },
+  {
+    "year": 2012,
+    "title": "Benghazi US Consulate Attack Kills Ambassador",
+    "verdict": "TRUE",
+    "reason": "Confirmed: September 11, 2012, Ansar al-Sharia attacked US mission in Benghazi, killing Ambassador Christopher Stevens and three other Americans (Sean Smith, Tyrone Woods, Glen Doherty). Later characterized as premeditated terrorist attack. All details correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: September 11, 2012, Ansar al-Sharia attacked US mission in Benghazi, killing Ambassador Christopher Stevens and three other Americans (Sean Smith, Tyrone Woods, Glen Doherty). Later characterized as premeditated terrorist attack. All details correct.",
+        "source": "https://en.wikipedia.org/wiki/2012_Benghazi_attack",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2012_Benghazi_attack"
   },
   {
     "year": 2012,
@@ -1326,53 +1387,39 @@
   },
   {
     "year": 2012,
-    "title": "Benghazi US Consulate Attack Kills Ambassador",
-    "verdict": "TRUE",
-    "reason": "Confirmed: September 11, 2012, Ansar al-Sharia attacked US mission in Benghazi, killing Ambassador Christopher Stevens and three other Americans (Sean Smith, Tyrone Woods, Glen Doherty). Later characterized as premeditated terrorist attack. All details correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "title": "Proliferation of Armed Militias",
+    "verdict": "PARTIAL",
+    "reason": "The core narrative is well corroborated for 2012: post-revolution Libya had a proliferating, fragmented militia landscape, the NTC/GNC's attempts at disarmament and integration (Warrior Affairs Commission registering ~213k-250k fighters, 'putting militias on the payroll') had limited success, revolutionary brigades refused to disband and developed economic/territorial interests, and this was widely described as the defining security challenge of the transition (Washington Institute, Amnesty International, Wikipedia, CFR). However, the specific magnitude 'over 1,700 armed militias' does not match contemporaneous 2012 sources. The International Crisis Group's 2012 report 'Holding Libya Together: Security Challenges after Qadhafi' states the number of militias was 'a mystery: 100 according to some; three times that others say' (i.e., roughly 100-300 in 2012), and other 2012-era sources describe 'hundreds' of armed groups, not 1,700+. Multiple independent searches trace the ~1,600-1,700 figure specifically to a 2014 assessment (VOA, 29 July 2014: 'analysts estimate there are up to 1,700 armed groups operating in Libya'; a Small Arms Survey/Clingendael-cited 2014 assessment gives ~1,600). Since militia numbers grew substantially between 2012 and 2014, applying the 1,700 figure to 2012 appears to be a magnitude/timing overstatement -- a material detail off while the country, year, and overall event substance hold.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: September 11, 2012, Ansar al-Sharia attacked US mission in Benghazi, killing Ambassador Christopher Stevens and three other Americans (Sean Smith, Tyrone Woods, Glen Doherty). Later characterized as premeditated terrorist attack. All details correct.",
-        "source": "https://en.wikipedia.org/wiki/2012_Benghazi_attack",
+        "verdict": "PARTIAL",
+        "reason": "The core narrative is well corroborated for 2012: post-revolution Libya had a proliferating, fragmented militia landscape, the NTC/GNC's attempts at disarmament and integration (Warrior Affairs Commission registering ~213k-250k fighters, 'putting militias on the payroll') had limited success, revolutionary brigades refused to disband and developed economic/territorial interests, and this was widely described as the defining security challenge of the transition (Washington Institute, Amnesty International, Wikipedia, CFR). However, the specific magnitude 'over 1,700 armed militias' does not match contemporaneous 2012 sources. The International Crisis Group's 2012 report 'Holding Libya Together: Security Challenges after Qadhafi' states the number of militias was 'a mystery: 100 according to some; three times that others say' (i.e., roughly 100-300 in 2012), and other 2012-era sources describe 'hundreds' of armed groups, not 1,700+. Multiple independent searches trace the ~1,600-1,700 figure specifically to a 2014 assessment (VOA, 29 July 2014: 'analysts estimate there are up to 1,700 armed groups operating in Libya'; a Small Arms Survey/Clingendael-cited 2014 assessment gives ~1,600). Since militia numbers grew substantially between 2012 and 2014, applying the 1,700 figure to 2012 appears to be a magnitude/timing overstatement -- a material detail off while the country, year, and overall event substance hold.",
+        "source": "https://www.crisisgroup.org/middle-east-north-africa/north-africa/libya/holding-libya-together-security-challenges-after-qadhafi",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources corroborate the core claim: Libya's post-revolution transition (2011-2012) saw massive militia proliferation with no central authority able to disarm or integrate them. ACCORD's \"Four Years After the Fall of Gaddafi\" (citing Devore 2014, Mediterranean Politics) states militia groups numbered \"some 1,700 - a total of 231,000 registered fighters\" organized in three confederations (Eastern Libya, Misrata, Nafousa Mountains) that formed during the anti-Gaddafi fight and persisted into the transition. This closely matches the event's \"over 1,700 armed militias\" figure. Carnegie Endowment pieces from Feb 2012 (\"Disarming Libya's Militias\") and July 2012 (\"Libya's Militia Menace\") document contemporaneously that NTC-era militias refused to disband, that distrust made disarmament a negotiating chip, and that the Ministry of Interior managed to dismantle only a handful of militias out of the total. HRW World Report 2013 (covering 2012) confirms armed groups formed during the 2011 revolution \"refused to give up their weapons\" and acted independently of state control, with thousands held in illegal militia detention. Small Arms Survey's Oct 2012 working paper \"After the Fall: Libya's Evolving Armed Groups\" independently documents hundreds of distinct, well-organized armed groups (236 in Misrata alone, ~40,000 fighters) resisting integration. The one soft spot: some secondary sources (USIP timeline) tie a similar \"~1,600\" figure to July 2014 rather than 2012, and the ACCORD/Devore figure is anchored to \"the time of Gaddafi's demise\" (Oct 2011) rather than specifically dated to 2012 — but since the militia landscape was essentially static/worsening through the 2011-2012 transition (this was the defining, unresolved security crisis of that period, per Carnegie/HRW/Small Arms Survey reporting written contemporaneously in 2012), the magnitude and substance hold for 2012 as described.",
+        "source": "https://www.accord.org.za/conflict-trends/four-years-fall-gaddafi/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2012_Benghazi_attack"
-  },
-  {
-    "year": 2013,
-    "title": "Political Isolation Law Excludes Former Regime Officials",
-    "verdict": "TRUE",
-    "reason": "Confirmed: GNC passed Political Isolation Law in May 2013, passed 164-4 under militia pressure (militias besieged justice and foreign ministries). Banned Gaddafi-era officials for 10 years. All details correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: GNC passed Political Isolation Law in May 2013, passed 164-4 under militia pressure (militias besieged justice and foreign ministries). Banned Gaddafi-era officials for 10 years. All details correct.",
-        "source": "https://www.hrw.org/news/2013/05/04/libya-reject-political-isolation-law",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.hrw.org/news/2013/05/04/libya-reject-political-isolation-law"
+    "source": "https://www.crisisgroup.org/middle-east-north-africa/north-africa/libya/holding-libya-together-security-challenges-after-qadhafi"
   },
   {
     "year": 2013,
@@ -1401,6 +1448,31 @@
   },
   {
     "year": 2013,
+    "title": "Political Isolation Law Excludes Former Regime Officials",
+    "verdict": "TRUE",
+    "reason": "Confirmed: GNC passed Political Isolation Law in May 2013, passed 164-4 under militia pressure (militias besieged justice and foreign ministries). Banned Gaddafi-era officials for 10 years. All details correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: GNC passed Political Isolation Law in May 2013, passed 164-4 under militia pressure (militias besieged justice and foreign ministries). Banned Gaddafi-era officials for 10 years. All details correct.",
+        "source": "https://www.hrw.org/news/2013/05/04/libya-reject-political-isolation-law",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.hrw.org/news/2013/05/04/libya-reject-political-isolation-law"
+  },
+  {
+    "year": 2013,
     "title": "Prime Minister Ali Zeidan Kidnapped",
     "verdict": "TRUE",
     "reason": "Confirmed: PM Ali Zeidan kidnapped early morning October 10, 2013 from Corinthia Hotel in Tripoli by the Operations Room militia. Released hours later. All details correct.",
@@ -1426,31 +1498,6 @@
   },
   {
     "year": 2014,
-    "title": "Libya Descends into Civil War",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Civil war began in 2014. Libya Dawn coalition seized Tripoli, reinstated GNC. Internationally recognized HoR relocated to Tobruk and aligned with Haftar's LNA. Dual government structure confirmed. All details correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Civil war began in 2014. Libya Dawn coalition seized Tripoli, reinstated GNC. Internationally recognized HoR relocated to Tobruk and aligned with Haftar's LNA. Dual government structure confirmed. All details correct.",
-        "source": "https://en.wikipedia.org/wiki/Libyan_civil_war_(2014%E2%80%932020)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Libyan_civil_war_(2014%E2%80%932020)"
-  },
-  {
-    "year": 2014,
     "title": "Khalifa Haftar Launches Operation Dignity",
     "verdict": "TRUE",
     "reason": "Confirmed: Haftar launched Operation Dignity on May 16, 2014, with air strikes against Islamist militias in Benghazi. Called for GNC dissolution. Tobruk government eventually recognized his command. All details correct.",
@@ -1473,6 +1520,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Second_Libyan_Civil_War"
+  },
+  {
+    "year": 2014,
+    "title": "Libya Descends into Civil War",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Civil war began in 2014. Libya Dawn coalition seized Tripoli, reinstated GNC. Internationally recognized HoR relocated to Tobruk and aligned with Haftar's LNA. Dual government structure confirmed. All details correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Civil war began in 2014. Libya Dawn coalition seized Tripoli, reinstated GNC. Internationally recognized HoR relocated to Tobruk and aligned with Haftar's LNA. Dual government structure confirmed. All details correct.",
+        "source": "https://en.wikipedia.org/wiki/Libyan_civil_war_(2014%E2%80%932020)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Libyan_civil_war_(2014%E2%80%932020)"
   },
   {
     "year": 2015,
@@ -1548,6 +1620,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Battle_of_Sirte_(2016)"
+  },
+  {
+    "year": 2016,
+    "title": "Libya's Five Ancient Roman and Desert Sites Added to UNESCO Endangered List",
+    "verdict": "TRUE",
+    "reason": "Confirmed by multiple independent sources. The UNESCO World Heritage Committee, meeting in Istanbul, placed all five of Libya's World Heritage sites — Archaeological Site of Leptis Magna, Archaeological Site of Sabratha, Archaeological Site of Cyrene, Rock-Art Sites of Tadrart Acacus, and Old Town of Ghadamès — on the List of World Heritage in Danger on July 14, 2016. The Committee cited the high level of instability in Libya following the 2011 fall of Gaddafi, the presence of armed groups on or near the sites, and the risk of further damage (consistent with looting/destruction fears in the description). Independent reporting (ASOR/CHI, The Arab Weekly) corroborates that Leptis Magna specifically had largely escaped physical damage at the time of listing, with satellite imagery showing it essentially unmodified and no direct attacks reported by local antiquities officials — matching the description's claim that Leptis Magna \"largely survived the conflict undamaged as of the listing.\" All material details (country, year, all five named sites, cause, Leptis Magna condition) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed by UNESCO's own World Heritage Centre announcement and multiple independent news outlets: on 14 July 2016, the World Heritage Committee placed all five of Libya's World Heritage sites (Leptis Magna, Sabratha, Cyrene, Tadrart Acacus rock art, and the old town of Ghadamès) on the List of World Heritage in Danger, citing the instability and armed-group presence stemming from the civil conflict that followed the 2011 fall of Gaddafi, with fears of looting/destruction. Leptis Magna was indeed inscribed in 1982 and is documented as having survived largely undamaged. All material details (country, year, sites, cause, Leptis Magna's 1982 inscription/undamaged status) check out.",
+        "source": "https://whc.unesco.org/en/news/1523",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent sources. The UNESCO World Heritage Committee, meeting in Istanbul, placed all five of Libya's World Heritage sites — Archaeological Site of Leptis Magna, Archaeological Site of Sabratha, Archaeological Site of Cyrene, Rock-Art Sites of Tadrart Acacus, and Old Town of Ghadamès — on the List of World Heritage in Danger on July 14, 2016. The Committee cited the high level of instability in Libya following the 2011 fall of Gaddafi, the presence of armed groups on or near the sites, and the risk of further damage (consistent with looting/destruction fears in the description). Independent reporting (ASOR/CHI, The Arab Weekly) corroborates that Leptis Magna specifically had largely escaped physical damage at the time of listing, with satellite imagery showing it essentially unmodified and no direct attacks reported by local antiquities officials — matching the description's claim that Leptis Magna \"largely survived the conflict undamaged as of the listing.\" All material details (country, year, all five named sites, cause, Leptis Magna condition) check out.",
+        "source": "https://whc.unesco.org/en/news/1523",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://whc.unesco.org/en/news/1523"
   },
   {
     "year": 2017,
@@ -1676,31 +1784,6 @@
   },
   {
     "year": 2020,
-    "title": "Turkish Military Intervention Reverses Haftar",
-    "verdict": "TRUE",
-    "reason": "Confirmed: Turkey deployed military forces, Bayraktar TB2 drones, and Syrian mercenaries (18,000 sent by September 2020). TB2 drones proved devastatingly effective against LNA armor. Haftar's Tripoli offensive reversed. All details correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed: Turkey deployed military forces, Bayraktar TB2 drones, and Syrian mercenaries (18,000 sent by September 2020). TB2 drones proved devastatingly effective against LNA armor. Haftar's Tripoli offensive reversed. All details correct.",
-        "source": "https://en.wikipedia.org/wiki/Turkish_intervention_in_Libya_(2020%E2%80%93present)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Turkish_intervention_in_Libya_(2020%E2%80%93present)"
-  },
-  {
-    "year": 2020,
     "title": "October Ceasefire Agreement",
     "verdict": "TRUE",
     "reason": "Confirmed: Permanent ceasefire signed October 23, 2020, mediated by Stephanie Williams (UN Acting SRSG). GNA and LNA military representatives signed in Geneva. Held with surprising durability. All details correct.",
@@ -1748,6 +1831,31 @@
       }
     ],
     "source": "https://www.trtworld.com/middle-east/haftar-s-blockade-on-libya-s-oil-production-lifted-39003"
+  },
+  {
+    "year": 2020,
+    "title": "Turkish Military Intervention Reverses Haftar",
+    "verdict": "TRUE",
+    "reason": "Confirmed: Turkey deployed military forces, Bayraktar TB2 drones, and Syrian mercenaries (18,000 sent by September 2020). TB2 drones proved devastatingly effective against LNA armor. Haftar's Tripoli offensive reversed. All details correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed: Turkey deployed military forces, Bayraktar TB2 drones, and Syrian mercenaries (18,000 sent by September 2020). TB2 drones proved devastatingly effective against LNA armor. Haftar's Tripoli offensive reversed. All details correct.",
+        "source": "https://en.wikipedia.org/wiki/Turkish_intervention_in_Libya_(2020%E2%80%93present)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Turkish_intervention_in_Libya_(2020%E2%80%93present)"
   },
   {
     "year": 2021,
@@ -1959,77 +2067,5 @@
       }
     ],
     "source": "https://press.un.org/en/2025/sc16258.doc.htm"
-  },
-  {
-    "year": 2012,
-    "title": "Proliferation of Armed Militias",
-    "verdict": "PARTIAL",
-    "reason": "The core narrative is well corroborated for 2012: post-revolution Libya had a proliferating, fragmented militia landscape, the NTC/GNC's attempts at disarmament and integration (Warrior Affairs Commission registering ~213k-250k fighters, 'putting militias on the payroll') had limited success, revolutionary brigades refused to disband and developed economic/territorial interests, and this was widely described as the defining security challenge of the transition (Washington Institute, Amnesty International, Wikipedia, CFR). However, the specific magnitude 'over 1,700 armed militias' does not match contemporaneous 2012 sources. The International Crisis Group's 2012 report 'Holding Libya Together: Security Challenges after Qadhafi' states the number of militias was 'a mystery: 100 according to some; three times that others say' (i.e., roughly 100-300 in 2012), and other 2012-era sources describe 'hundreds' of armed groups, not 1,700+. Multiple independent searches trace the ~1,600-1,700 figure specifically to a 2014 assessment (VOA, 29 July 2014: 'analysts estimate there are up to 1,700 armed groups operating in Libya'; a Small Arms Survey/Clingendael-cited 2014 assessment gives ~1,600). Since militia numbers grew substantially between 2012 and 2014, applying the 1,700 figure to 2012 appears to be a magnitude/timing overstatement -- a material detail off while the country, year, and overall event substance hold.",
-    "verify_count": 2,
-    "consensus_verdict": "PARTIAL",
-    "consensus_status": "downgraded",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "PARTIAL",
-        "reason": "The core narrative is well corroborated for 2012: post-revolution Libya had a proliferating, fragmented militia landscape, the NTC/GNC's attempts at disarmament and integration (Warrior Affairs Commission registering ~213k-250k fighters, 'putting militias on the payroll') had limited success, revolutionary brigades refused to disband and developed economic/territorial interests, and this was widely described as the defining security challenge of the transition (Washington Institute, Amnesty International, Wikipedia, CFR). However, the specific magnitude 'over 1,700 armed militias' does not match contemporaneous 2012 sources. The International Crisis Group's 2012 report 'Holding Libya Together: Security Challenges after Qadhafi' states the number of militias was 'a mystery: 100 according to some; three times that others say' (i.e., roughly 100-300 in 2012), and other 2012-era sources describe 'hundreds' of armed groups, not 1,700+. Multiple independent searches trace the ~1,600-1,700 figure specifically to a 2014 assessment (VOA, 29 July 2014: 'analysts estimate there are up to 1,700 armed groups operating in Libya'; a Small Arms Survey/Clingendael-cited 2014 assessment gives ~1,600). Since militia numbers grew substantially between 2012 and 2014, applying the 1,700 figure to 2012 appears to be a magnitude/timing overstatement -- a material detail off while the country, year, and overall event substance hold.",
-        "source": "https://www.crisisgroup.org/middle-east-north-africa/north-africa/libya/holding-libya-together-security-challenges-after-qadhafi",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Multiple independent sources corroborate the core claim: Libya's post-revolution transition (2011-2012) saw massive militia proliferation with no central authority able to disarm or integrate them. ACCORD's \"Four Years After the Fall of Gaddafi\" (citing Devore 2014, Mediterranean Politics) states militia groups numbered \"some 1,700 - a total of 231,000 registered fighters\" organized in three confederations (Eastern Libya, Misrata, Nafousa Mountains) that formed during the anti-Gaddafi fight and persisted into the transition. This closely matches the event's \"over 1,700 armed militias\" figure. Carnegie Endowment pieces from Feb 2012 (\"Disarming Libya's Militias\") and July 2012 (\"Libya's Militia Menace\") document contemporaneously that NTC-era militias refused to disband, that distrust made disarmament a negotiating chip, and that the Ministry of Interior managed to dismantle only a handful of militias out of the total. HRW World Report 2013 (covering 2012) confirms armed groups formed during the 2011 revolution \"refused to give up their weapons\" and acted independently of state control, with thousands held in illegal militia detention. Small Arms Survey's Oct 2012 working paper \"After the Fall: Libya's Evolving Armed Groups\" independently documents hundreds of distinct, well-organized armed groups (236 in Misrata alone, ~40,000 fighters) resisting integration. The one soft spot: some secondary sources (USIP timeline) tie a similar \"~1,600\" figure to July 2014 rather than 2012, and the ACCORD/Devore figure is anchored to \"the time of Gaddafi's demise\" (Oct 2011) rather than specifically dated to 2012 — but since the militia landscape was essentially static/worsening through the 2011-2012 transition (this was the defining, unresolved security crisis of that period, per Carnegie/HRW/Small Arms Survey reporting written contemporaneously in 2012), the magnitude and substance hold for 2012 as described.",
-        "source": "https://www.accord.org.za/conflict-trends/four-years-fall-gaddafi/",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.crisisgroup.org/middle-east-north-africa/north-africa/libya/holding-libya-together-security-challenges-after-qadhafi"
-  },
-  {
-    "year": 1991,
-    "title": "Islamist Opposition Emerges",
-    "verdict": "TRUE",
-    "reason": "Multiple independent sources (Wikipedia, Jamestown Foundation, Stanford's Mapping Militants Project) corroborate the described process: following the Soviet withdrawal from Afghanistan (1989), Libyan \"Afghan-Arab\" veterans who had fought against Soviet forces returned to Libya in the early 1990s and organized underground to overthrow Gaddafi, ultimately forming the Libyan Islamic Fighting Group (LIFG). Wikipedia and multiple sources date LIFG's founding to 1990, with the \"first nucleus\" formed circa 1989-1992 depending on the source; the group only publicly announced itself in 1995 after a botched hospital raid exposed it. The Gaddafi regime's brutal suppression (imprisonment, executions, driving the movement underground) is also well-documented, intensifying through the mid-to-late 1990s. The event description narrates a multi-year organizing process (Afghan veterans returning, LIFG forming, regime crackdown) rather than a single dated incident, and 1991 falls squarely within the well-documented \"early 1990s\" window when this organizing occurred, making the year, country, and substance materially accurate.",
-    "verify_count": 2,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Multiple independent sources corroborate the core narrative: after the Soviet withdrawal from Afghanistan (Feb 1989), Libyan \"Afghan Arab\" veterans returned home and formed the Libyan Islamic Fighting Group (LIFG) to overthrow Gaddafi and establish an Islamic state, and the regime suppressed the movement, driving it underground until its 1995 public declaration and 1996 armed clashes. On the exact founding year, sources vary: Wikipedia states 1990; Stanford's CISAC Mapping Militants Project states the \"first nucleus of the LIFG was formed (c. 1989–92)\" with Libyan-Afghan veterans returning \"in the early 1990s\" to establish it; Jamestown similarly places the Afghan-veteran network's formation in \"the early 1990s,\" with the formal public communiqué only in 1995. Given this is a gradual organizing process (not a single dated incident) and 1991 falls squarely within the documented \"c. 1989-92\" formation window cited by the Stanford academic source, the event's year, country, and substance hold up as materially accurate.",
-        "source": "https://mappingmilitants.org/profiles/libyan-islamic-fighting-group",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Multiple independent sources (Wikipedia, Jamestown Foundation, Stanford's Mapping Militants Project) corroborate the described process: following the Soviet withdrawal from Afghanistan (1989), Libyan \"Afghan-Arab\" veterans who had fought against Soviet forces returned to Libya in the early 1990s and organized underground to overthrow Gaddafi, ultimately forming the Libyan Islamic Fighting Group (LIFG). Wikipedia and multiple sources date LIFG's founding to 1990, with the \"first nucleus\" formed circa 1989-1992 depending on the source; the group only publicly announced itself in 1995 after a botched hospital raid exposed it. The Gaddafi regime's brutal suppression (imprisonment, executions, driving the movement underground) is also well-documented, intensifying through the mid-to-late 1990s. The event description narrates a multi-year organizing process (Afghan veterans returning, LIFG forming, regime crackdown) rather than a single dated incident, and 1991 falls squarely within the well-documented \"early 1990s\" window when this organizing occurred, making the year, country, and substance materially accurate.",
-        "source": "https://jamestown.org/the-libyan-islamic-fighting-group-lifg/",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://jamestown.org/the-libyan-islamic-fighting-group-lifg/"
   }
 ]
