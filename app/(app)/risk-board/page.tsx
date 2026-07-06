@@ -12,10 +12,7 @@ import {
 } from "@/components/risk-board/RiskBoardFilters";
 import { RiskBoardViews } from "@/components/risk-board/RiskBoardViews";
 import { TopicBoard } from "@/components/risk-board/TopicBoard";
-import { getHfBoard } from "@/lib/hf/topics-data";
-import { getLivePulse } from "@/lib/hf/live-pulse";
-import { overlayCells } from "@/lib/hf/live-pulse-core";
-import { LivePulseStamp } from "@/components/hf/LivePulseStamp";
+import { getTrendBoard } from "@/lib/hf/trend-board";
 import { familyColor } from "@/lib/te-mock/l1-families";
 import { statusLabel } from "@/lib/te-mock/country-families";
 
@@ -25,22 +22,11 @@ export const metadata: Metadata = {
     "Present-tense, tier-gated discrimination ranks across the trend catalog. The honest replacement for the retired Signals page.",
 };
 
-// ISR: the page is dynamic (it awaits the live pulse), so re-render it at most
-// every 5 minutes — matching getLivePulse's in-process cache TTL. This keeps
-// the overlay fresh without a blocking S3 read on every cold-start request.
-export const revalidate = 300;
-
-export default async function RiskBoardPage() {
-  // Live overlay (Track-2): replace the monthly Topic cells with the hourly
-  // news pulse wherever the live file carries a value, recomputing each
-  // verdict from the same thresholds. Falls back to the monthly board when no
-  // live data is present, so the page can never regress. overlayCells also
-  // returns liveKeys (per-cell live markers), not surfaced in TopicBoard yet.
-  const hfBoard = getHfBoard();
-  const live = await getLivePulse();
-  const liveBoard = { ...hfBoard, cells: overlayCells(hfBoard, live).cells };
-  // The news-pulse freshness stamp (LivePulseStamp) fetches its own state
-  // client-side from /api/live-pulse; it self-hides until live data exists.
+export default function RiskBoardPage() {
+  // Topics->Trends migration (2026-07-04): the per-Trend board has no hourly
+  // live overlay, so this page reads getTrendBoard() straight, no live-pulse
+  // fetch and no freshness stamp.
+  const trendBoard = getTrendBoard();
 
   // Pull rows for the board (the curated set: scored + a representative
   // queued sample) and project to the slim public-safe shape before passing
@@ -203,16 +189,7 @@ export default async function RiskBoardPage() {
               </footer>
             </>
           }
-          topics={
-            <>
-              {/* Self-fetching client stamp; renders nothing until live data
-                  arrives, so no empty space is reserved. */}
-              <div style={{ margin: "0 0 12px" }}>
-                <LivePulseStamp />
-              </div>
-              <TopicBoard data={liveBoard} />
-            </>
-          }
+          topics={<TopicBoard data={trendBoard} />}
         />
 
         {/* V4.1 §2: "Vintage: {BOARD_VINTAGE}" removed from footer.

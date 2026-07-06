@@ -20,7 +20,7 @@
  *   --qgi-text-muted  → steel muted  (#9ab0c4 dark / #475569 light)
  *
  * Font stack: Century Gothic (Windows) → CenturyGothic (alt name) → URW Gothic
- * (Linux) → AppleGothic (macOS legacy) → ITC Avant Garde Gothic → Sora via
+ * (Linux) → AppleGothic (macOS legacy) → ITC Avant Garde Gothic → Jost via
  * var(--font-qg-brand) (next/font/google, guaranteed delivery) → sans-serif.
  */
 

@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * TrendConfirmRejectPanel — the confirm/reject quadrant for ONE country on
+ * TrendConfirmRejectPanel — the structure-vs-news quadrant for ONE country on
  * ONE trend (HF merge step 3, the trend-country drilldown's verdict view).
  *
  * The subject country is highlighted at (trend score x theme pulse) with
@@ -26,9 +26,9 @@ import type { TrendNewsSignal } from "@/lib/hf/trend-signal";
 const ReactECharts = dynamic(() => import("echarts-for-react"), { ssr: false });
 
 const VERDICT_LABEL: Record<HfVerdict, string> = {
-  ACTIVE: "Active",
-  SIGNAL: "Signal",
-  LATENT: "Latent",
+  ACTIVE: "Both Firing",
+  SIGNAL: "News-Only",
+  LATENT: "Elevated & Quiet",
   QUIET: "Quiet",
 };
 
@@ -63,9 +63,15 @@ function cornerCaption(
     [x]: x === "left" ? "13%" : "9%",
     [y]: y === "top" ? "9%" : "16%",
     style: {
+      // The canonical labels run longer than the old Active/Signal/Latent
+      // wording ("Elevated & Quiet"), so this corner text wraps to two lines
+      // (a literal \n in the caller) at a smaller size instead of overrunning
+      // the plot.
       text,
       fill,
-      fontSize: 10,
+      fontSize: 9,
+      lineHeight: 11,
+      align: x,
       fontFamily: "ui-monospace, monospace",
       opacity: 0.8,
     },
@@ -88,10 +94,17 @@ export function TrendConfirmRejectPanel({
   const { isDark } = useTheme();
   const t = getEchartsTokens(isDark);
   const router = useRouter();
-  const { topic, rows, thresholds: th } = signal;
+  const { topic, rows, thresholds: th, perTrend } = signal;
 
   const subject = rows.find((r) => r.name === countryName);
   if (!subject) return null;
+
+  // Per-Trend pulse is a global cross-country percentile (50 = global median);
+  // the legacy crosswalk pulse is a within-country index (50 = own normal).
+  const pulseLabel = perTrend ? trendLabel : topic.label;
+  const tip = perTrend
+    ? `The verdict pairs ${countryName}'s score on this trend with its ${trendLabel.toLowerCase()} news pulse: how much of the country's coverage runs on the trend, ranked across every covered country and month (50 is the global median). Both readings count as elevated from 60 upward; the four corners are the four verdicts.`
+    : `The verdict pairs ${countryName}'s score on this specific trend with the ${topic.label} news pulse: how much of the country's news coverage runs on that theme, against its own normal of 50. Both readings count as elevated from 60 upward; the four corners are the four verdicts. The Risk Board reads the broader ${topic.label} composite across all its trends, so the two readings can differ.`;
 
   const points = rows.map((r) => {
     const isSub = r.name === countryName;
@@ -99,7 +112,7 @@ export function TrendConfirmRejectPanel({
     return {
       name: r.name,
       href: r.iso2 ? `/trends/${slug}/countries/${r.iso2}` : null,
-      value: [r.struct, r.pulse],
+      value: [r.struct ?? 0, r.pulse],
       verdict: r.verdict,
       symbol:
         isSub && iso2 && /^[a-z]{2}$/.test(iso2)
@@ -121,7 +134,7 @@ export function TrendConfirmRejectPanel({
     };
   });
 
-  const structVals = rows.map((r) => r.struct);
+  const structVals = rows.map((r) => r.struct ?? 0);
   const xMin = Math.min(
     30,
     Math.max(0, Math.floor((Math.min(...structVals) - 5) / 10) * 10)
@@ -165,9 +178,9 @@ export function TrendConfirmRejectPanel({
       axisLabel: { color: t.textDim, fontSize: 10 },
     },
     graphic: [
-      cornerCaption("Active", t.warning, "right", "top"),
-      cornerCaption("Signal", t.accent, "left", "top"),
-      cornerCaption("Latent", t.textMuted, "right", "bottom"),
+      cornerCaption("Both Firing", t.warning, "right", "top"),
+      cornerCaption("News-Only", t.accent, "left", "top"),
+      cornerCaption("Elevated &\nQuiet", t.textMuted, "right", "bottom"),
       cornerCaption("Quiet", t.textDim, "left", "bottom"),
     ],
     series: [
@@ -204,9 +217,9 @@ export function TrendConfirmRejectPanel({
 
   return (
     <PanelShell
-      title="Confirm / Reject"
+      title="Structure vs News"
       accent="var(--qgi-accent)"
-      tooltip={`The verdict pairs ${countryName}'s score on this specific trend with the ${topic.label} news pulse: how much of the country's news coverage runs on that theme, against its own normal of 50. Both readings count as elevated from 60 upward; the four corners are the four verdicts. The Risk Board reads the broader ${topic.label} composite across all its trends, so the two readings can differ.`}
+      tooltip={tip}
       caption={
         <>
           {countryName} reads{" "}
@@ -214,10 +227,9 @@ export function TrendConfirmRejectPanel({
             {VERDICT_LABEL[subject.verdict]}
           </strong>{" "}
           on the {trendLabel.toLowerCase()} trend right now: trend score{" "}
-          {Math.round(subject.struct)}, {topic.label}
-          {topic.validated ? " ▲" : ""} news pulse {Math.round(subject.pulse)}
+          {Math.round(subject.struct ?? 0)}, {pulseLabel} news pulse {Math.round(subject.pulse)}
           {subject.verdict !== "ACTIVE" &&
-          ((subject.struct < th.struct && th.struct - subject.struct <= 5) ||
+          (((subject.struct ?? 0) < th.struct && th.struct - (subject.struct ?? 0) <= 5) ||
             (subject.pulse < th.pulse && th.pulse - subject.pulse <= 5))
             ? ", just below the elevated threshold"
             : ""}

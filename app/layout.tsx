@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Sora } from "next/font/google";
+import { Geist, Geist_Mono, Jost } from "next/font/google";
 import "./globals.css";
+import { DevAdminButton } from "@/components/admin/DevAdminButton";
 
 // T16 #309 LOW fix: declare `display: "swap"` so text is visible during
 // webfont download instead of the default "block" FOIT period.
@@ -16,10 +17,14 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const soraBrand = Sora({
+// Brand/logo font. Century Gothic is proprietary and cannot be web-embedded, so
+// Jost — the standard free geometric look-alike — is the guaranteed delivery
+// behind var(--font-qg-brand). The logo font stacks still prefer real Century
+// Gothic wherever the OS has it installed, falling back to Jost otherwise.
+const jostBrand = Jost({
   variable: "--font-qg-brand",
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
@@ -108,7 +113,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${soraBrand.variable} h-full`}
+      className={`${geistSans.variable} ${geistMono.variable} ${jostBrand.variable} h-full`}
       // The no-flash script below may add `class="light"` to <html> before React
       // hydrates (only for users who opted into light); suppress the resulting
       // attribute-mismatch warning. Dark-default users have no mismatch at all.
@@ -130,6 +135,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }}
         />
         {children}
+        <DevAdminButton />
       </body>
     </html>
   );

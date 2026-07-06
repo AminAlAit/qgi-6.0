@@ -35,7 +35,7 @@ import {
   NewsSignalsPanel,
   TopicDriftPanel,
 } from "@/components/countries-v4-1/NewsSignalsPanels";
-import { getHfCountryPanelData } from "@/lib/hf/pulse-detail";
+import { getTrendCountryPanelData } from "@/lib/hf/pulse-detail";
 import { getGprEntry } from "@/lib/gpr/gpr-country-data";
 import { GprConfirmationPanel } from "@/components/countries-v4-1/GprConfirmationPanel";
 
@@ -83,10 +83,10 @@ export default async function CountryV41DetailPage({ params }: Params) {
   const fams = familiesByBestScore(country);
   const driversAccent = fams[0]?.color ?? NEUTRAL_SLATE;
 
-  // News layer (HF merge step 2): board topics + 36-month pulse, sliced
-  // server-side. Null for countries outside the news-coverage set
-  // (see hf-topics.json) — the page renders without the news panels, no placeholder.
-  const hf = getHfCountryPanelData(country.iso);
+  // News layer: the 6 two-layer TRENDS with their native per-Trend news pulse,
+  // sliced server-side. Null for countries outside the news-coverage set — the
+  // page renders without the news panels, no placeholder.
+  const hf = getTrendCountryPanelData(country.iso);
 
   // GPR confirmation layer: present only for the 44 countries with a published
   // benchmark; null (panel absent) everywhere else.

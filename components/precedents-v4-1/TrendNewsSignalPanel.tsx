@@ -1,33 +1,54 @@
 "use client";
 
 /**
- * TrendNewsSignalPanel — the news layer on the trend report card
- * (HF merge step 3, 2026-06-11).
+ * TrendNewsSignalPanel: the news layer on the trend report card
+ * (HF merge step 3, 2026-06-11; rebuilt for the Topics->Trends migration,
+ * founder 2026-07-04).
  *
- * Answers "where is the news confirming THIS trend right now": every
- * covered country's trend score paired with the trend's primary news
- * theme's pulse, read on the standard 60/60 verdicts. Rows link to the
- * trend-country drilldown.
+ * Two render modes now reach this component (a third, coming-soon, is
+ * handled upstream by TrendNewsComingSoonPanel below so a trend with no
+ * native feed never mounts this file at all):
+ *   - FULL live trend (struct + news pressure both exist): an XY quadrant,
+ *     modeled on TrendConfirmRejectPanel's ECharts option, plotting every
+ *     covered country as a dot colored by verdict. Click a dot to open that
+ *     country's drilldown.
+ *   - NEWS-ONLY live trend: reserved for a trend with no structural axis.
+ *     NEWS_ONLY_TRENDS (trend-taxonomy.ts) is empty as of the 2026-07-04
+ *     migration, so labor_action now renders the full two-layer
+ *     QuadrantPanel like every other live trend. NewsOnlyPanel below stays
+ *     wired through signal.pulseOnly so a future news-only trend falls into
+ *     it automatically; nothing currently reaches it.
  *
- * Conventions carried from the earlier review/persona rounds: PanelShell
- * frame, ExplainTip/InfoTooltip (never title-only), thresholds stated
- * inline, sentence-case pills, "theme" noun, /100 cue, >=10.5px text,
- * methodology link in a new tab, no em-dashes.
+ * Conventions carried from the earlier rounds: PanelShell frame,
+ * ExplainTip/InfoTooltip (never title-only), thresholds stated inline,
+ * theme tokens, appendToBody tooltips, no em-dashes. Verdict labels are the
+ * canonical set (Both Firing / News-Only / Elevated & Quiet / Quiet), shared
+ * with the dashboard InteractiveLandscape and the methodology docs.
  */
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { Route } from "next";
 import { PanelShell } from "@/components/countries-v4-1/PanelShell";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { flagFor } from "@/lib/te-mock/country-flags";
+import { useTheme } from "@/lib/hooks/useTheme";
+import { getEchartsTokens, type EchartsTokens } from "@/lib/echarts-theme";
 import type { HfVerdict } from "@/lib/hf/topics-data";
 import type { TrendNewsSignal } from "@/lib/hf/trend-signal";
+import { GLOBAL_PERCENTILE_NOTE } from "@/lib/hf/news-scale";
 
+const ReactECharts = dynamic(() => import("echarts-for-react"), { ssr: false });
+
+// Canonical verdict labels (standardized everywhere, 2026-07-05): the
+// internal HfVerdict enum keys stay ACTIVE/SIGNAL/LATENT/QUIET, only the
+// human-facing labels changed. Same mapping as dashboard InteractiveLandscape.
 const VERDICT_LABEL: Record<HfVerdict, string> = {
-  ACTIVE: "Active",
-  SIGNAL: "Signal",
-  LATENT: "Latent",
+  ACTIVE: "Both Firing",
+  SIGNAL: "News-Only",
+  LATENT: "Elevated & Quiet",
   QUIET: "Quiet",
 };
 
@@ -54,6 +75,85 @@ const VERDICT_STYLE: Record<HfVerdict, { color: string; bg: string; border: stri
   },
 };
 
+function verdictTok(v: HfVerdict, t: EchartsTokens): string {
+  return v === "ACTIVE"
+    ? t.warning
+    : v === "SIGNAL"
+      ? t.accent
+      : v === "LATENT"
+        ? t.textMuted
+        : t.textDim;
+}
+
+/** `text` may contain `\n` to wrap onto a second line (ECharts text graphics
+ *  don't auto-wrap); "Elevated & Quiet" needs it to fit the corner cleanly,
+ *  so it also takes a smaller default fontSize than the other three. */
+function cornerCaption(
+  text: string,
+  fill: string,
+  x: "left" | "right",
+  y: "top" | "bottom",
+  fontSize = 10
+) {
+  return {
+    type: "text" as const,
+    [x]: x === "left" ? "13%" : "9%",
+    [y]: y === "top" ? "9%" : "16%",
+    style: {
+      text,
+      fill,
+      fontSize,
+      lineHeight: fontSize + 2,
+      fontFamily: "ui-monospace, monospace",
+      opacity: 0.8,
+    },
+    silent: true,
+    z: 1,
+  };
+}
+
+/** Shared legend + methodology footer, used by both live-trend modes. */
+function VerdictLegend({ signal }: { signal: TrendNewsSignal }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        alignItems: "center",
+        gap: "14px",
+        marginTop: "12px",
+        fontSize: "11px",
+        color: "var(--qgi-text-muted)",
+      }}
+    >
+      {(Object.keys(VERDICT_STYLE) as HfVerdict[]).map((v) => (
+        <span key={v} style={{ display: "inline-flex", alignItems: "center", gap: "5px" }}>
+          <span
+            aria-hidden="true"
+            style={{
+              width: "7px",
+              height: "7px",
+              borderRadius: "50%",
+              background: VERDICT_STYLE[v].color,
+            }}
+          />
+          {VERDICT_LABEL[v]}
+          <InfoTooltip text={signal.verdicts[v]} />
+        </span>
+      ))}
+      <span style={{ flex: 1 }} />
+      <Link
+        href={"/methodology#news-layer" as Route}
+        target="_blank"
+        rel="noopener"
+        style={{ color: "var(--qgi-accent)", textDecoration: "none", fontSize: "11px" }}
+      >
+        How verdicts are assigned &rarr;
+      </Link>
+    </div>
+  );
+}
+
 export function TrendNewsSignalPanel({
   slug,
   trendLabel,
@@ -63,88 +163,265 @@ export function TrendNewsSignalPanel({
   trendLabel: string;
   signal: TrendNewsSignal;
 }) {
-  const { topic, rows } = signal;
+  if (signal.pulseOnly) {
+    return <NewsOnlyPanel slug={slug} trendLabel={trendLabel} signal={signal} />;
+  }
+  return <QuadrantPanel slug={slug} trendLabel={trendLabel} signal={signal} />;
+}
+
+/* ───────── Mode (a): FULL live trend, struct x news pressure quadrant ── */
+
+function QuadrantPanel({
+  slug,
+  trendLabel,
+  signal,
+}: {
+  slug: string;
+  trendLabel: string;
+  signal: TrendNewsSignal;
+}) {
+  const { isDark } = useTheme();
+  const t = getEchartsTokens(isDark);
+  const router = useRouter();
+  const { rows, thresholds: th, notScored } = signal;
+
+  const trendLower = trendLabel.toLowerCase();
+  const panelTip = `This trend's news pressure: how much of each country's coverage runs on the trend each month, ranked across every covered country and month (50 is the median for this trend). The verdict pairs that pressure with the country's score on this trend; both count as elevated from 60 upward.`;
+
+  const points = rows.map((r) => ({
+    name: r.name,
+    href: r.iso2 ? `/trends/${slug}/countries/${r.iso2}` : null,
+    value: [r.struct ?? 0, r.pulse],
+    verdict: r.verdict,
+    itemStyle: { color: verdictTok(r.verdict, t), opacity: 0.82 },
+  }));
+
+  const structVals = rows.map((r) => r.struct ?? 0);
+  const xMin = Math.min(
+    30,
+    Math.max(0, Math.floor((Math.min(...structVals) - 5) / 10) * 10)
+  );
+
+  const option = {
+    backgroundColor: "transparent",
+    tooltip: {
+      appendToBody: true,
+      confine: true,
+      backgroundColor: t.surface2,
+      borderColor: t.border,
+      textStyle: { color: t.text, fontSize: 11 },
+      formatter: (p: { data: { name: string; value: number[]; verdict: HfVerdict } }) =>
+        `<b>${p.data.name}</b><br/>trend score ${Math.round(p.data.value[0])} · news pressure ${Math.round(
+          p.data.value[1]
+        )}<br/>${VERDICT_LABEL[p.data.verdict]}`,
+    },
+    grid: { left: 52, right: 60, top: 24, bottom: 40 },
+    xAxis: {
+      min: xMin,
+      max: 100,
+      name: "TREND SCORE",
+      nameLocation: "middle",
+      nameGap: 26,
+      nameTextStyle: { color: t.textDim, fontSize: 10, letterSpacing: 1 },
+      axisLine: { lineStyle: { color: t.border } },
+      splitLine: { show: false },
+      axisLabel: { color: t.textDim, fontSize: 10 },
+    },
+    yAxis: {
+      min: 0,
+      max: 100,
+      name: "NEWS PRESSURE",
+      nameLocation: "middle",
+      nameGap: 32,
+      nameTextStyle: { color: t.textDim, fontSize: 10, letterSpacing: 1 },
+      axisLine: { lineStyle: { color: t.border } },
+      splitLine: { show: false },
+      axisLabel: { color: t.textDim, fontSize: 10 },
+    },
+    graphic: [
+      cornerCaption("Both Firing", t.warning, "right", "top"),
+      cornerCaption("News-Only", t.accent, "left", "top"),
+      // Longest label of the four: wrapped to 2 lines + a smaller fontSize
+      // so it fits the corner without crowding the axis.
+      cornerCaption("Elevated &\nQuiet", t.textMuted, "right", "bottom", 9),
+      cornerCaption("Quiet", t.textDim, "left", "bottom"),
+    ],
+    series: [
+      {
+        type: "scatter",
+        data: points,
+        cursor: "pointer",
+        symbolSize: 11,
+        emphasis: { scale: 1.4, itemStyle: { opacity: 1 } },
+        markLine: {
+          silent: true,
+          symbol: "none",
+          lineStyle: { color: t.textDim, type: "dashed", width: 1.2 },
+          label: { show: false },
+          data: [
+            { xAxis: th.struct },
+            {
+              yAxis: th.pulse,
+              label: {
+                show: true,
+                position: "insideEndTop" as const,
+                fontSize: 10,
+                fontFamily: "ui-monospace, monospace",
+                color: t.textDim,
+                formatter: "elevated 60",
+              },
+            },
+          ],
+        },
+      },
+    ],
+  };
 
   return (
     <PanelShell
-      title="News signal"
+      title="News Signal"
+      titleCase
       accent="var(--qgi-accent)"
-      tooltip={`This trend's news comes through the ${topic.label} theme: how much of each country's news coverage runs on that theme each month, against the country's own normal of 50. The verdict pairs that pulse with the country's score on this trend; both count as elevated from 60 upward.`}
+      tooltip={panelTip}
       caption={
         <>
-          {`Where the news is running with the ${trendLabel.toLowerCase()} trend this month. Each covered country's trend score against the ${topic.label}${topic.validated ? " ▲" : ""} news pulse`}
-          <InfoTooltip
-            text={`How much of the country's news coverage is on this theme, measured against its own history. 50 is the country's normal month; 60 and above counts as elevated.${topic.validated ? " The ▲ marks a theme validated to lead its events by about two months." : ""} This panel reads each country's score on this specific trend; the Risk Board reads the broader ${topic.label} composite, so the two can differ.`}
-          />
-          {
-            ", strongest combined readings first. Open a row for the signal-by-signal view."
-          }
+          Where the news is running with the {trendLower}{" "}trend this month: every covered
+          country&apos;s trend score against its news pressure
+          <InfoTooltip text={GLOBAL_PERCENTILE_NOTE} />, strongest combined readings top
+          right. Select a dot to open that country&apos;s drilldown.
         </>
       }
       fullWidth
     >
-      <div
+      <ReactECharts
+        option={option}
+        onEvents={{
+          click: (p: { data?: { href?: string | null } }) => {
+            if (p.data?.href) router.push(p.data.href as Route);
+          },
+        }}
+        style={{ height: "360px", width: "100%" }}
+      />
+
+      <VerdictLegend signal={signal} />
+
+      <p
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(252px, 1fr))",
-          gap: "8px",
+          fontSize: "11px",
+          color: "var(--qgi-text-dim)",
+          margin: "10px 0 0",
+          fontFamily: "ui-monospace, monospace",
+          letterSpacing: "0.3px",
         }}
       >
+        The numbers read trend score, news pressure, both 0 to 100. {GLOBAL_PERCENTILE_NOTE}{" "}
+        Pressure updates monthly.
+        {notScored.length > 0 &&
+          ` ${notScored.join(" and ")} ${notScored.length === 1 ? "is" : "are"} not scored on this trend (indicator coverage), so ${notScored.length === 1 ? "it does" : "they do"} not appear here.`}
+      </p>
+    </PanelShell>
+  );
+}
+
+/* ───────── Mode (b): NEWS-ONLY live trend, compact ranked list ─────────── */
+
+function NewsOnlyPanel({
+  slug,
+  trendLabel,
+  signal,
+}: {
+  slug: string;
+  trendLabel: string;
+  signal: TrendNewsSignal;
+}) {
+  const { rows } = signal;
+  const trendLower = trendLabel.toLowerCase();
+  const panelTip = `This trend's news pressure: how much of each country's coverage runs on the trend each month, ranked across every covered country and month (50 is the median for this trend). This trend is shown news-only right now: the verdict reads the pressure alone, elevated from 60 upward.`;
+
+  return (
+    <PanelShell
+      title="News Signal"
+      titleCase
+      accent="var(--qgi-accent)"
+      tooltip={panelTip}
+      caption={
+        <>
+          Where the news is running with the {trendLower}{" "}trend this month, strongest
+          readings first.
+          <InfoTooltip text={GLOBAL_PERCENTILE_NOTE} />
+        </>
+      }
+    >
+      <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
         {rows.map((r) => {
           const vs = VERDICT_STYLE[r.verdict];
           const inner = (
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "9px",
-                padding: "9px 12px",
-                background: "var(--qgi-bg)",
-                border: "1px solid var(--qgi-border)",
-                borderRadius: "6px",
-                minWidth: 0,
-              }}
-            >
-              <FlagImg emoji={flagFor(r.name)} name={r.name} width={16} radius={2} />
-              <span
+            <div>
+              <div
                 style={{
-                  fontSize: "12.5px",
-                  fontWeight: 600,
-                  color: "var(--qgi-text)",
-                  flex: 1,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "9px",
+                }}
+              >
+                <FlagImg emoji={flagFor(r.name)} name={r.name} width={16} radius={2} />
+                <span
+                  style={{
+                    fontSize: "12.5px",
+                    fontWeight: 600,
+                    color: "var(--qgi-text)",
+                    flex: 1,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {r.name}
+                </span>
+                <span
+                  className="font-data"
+                  style={{
+                    fontSize: "11px",
+                    color: "var(--qgi-text-muted)",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {Math.round(r.pulse)}
+                </span>
+                <span
+                  style={{
+                    fontSize: "10.5px",
+                    fontWeight: 600,
+                    letterSpacing: "0.5px",
+                    padding: "2px 8px",
+                    borderRadius: "9px",
+                    color: vs.color,
+                    background: vs.bg,
+                    border: `1px solid ${vs.border}`,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {VERDICT_LABEL[r.verdict]}
+                </span>
+              </div>
+              <div
+                style={{
+                  height: "3px",
+                  borderRadius: "2px",
+                  background: "var(--qgi-border)",
+                  marginTop: "5px",
                   overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: "nowrap",
                 }}
               >
-                {r.name}
-              </span>
-              <span
-                className="font-data"
-                title={`Trend score ${Math.round(r.struct)} · news pulse ${Math.round(r.pulse)}`}
-                style={{
-                  fontSize: "11px",
-                  color: "var(--qgi-text-muted)",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {Math.round(r.struct)} · {Math.round(r.pulse)}
-              </span>
-              <span
-                style={{
-                  fontSize: "10.5px",
-                  fontWeight: 600,
-                  letterSpacing: "0.5px",
-                  padding: "2px 8px",
-                  borderRadius: "9px",
-                  color: vs.color,
-                  background: vs.bg,
-                  border: `1px solid ${vs.border}`,
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {VERDICT_LABEL[r.verdict]}
-              </span>
+                <div
+                  style={{
+                    width: `${Math.max(2, Math.min(100, r.pulse))}%`,
+                    height: "100%",
+                    background: vs.color,
+                    borderRadius: "2px",
+                  }}
+                />
+              </div>
             </div>
           );
           return r.iso2 ? (
@@ -156,51 +433,28 @@ export function TrendNewsSignalPanel({
               {inner}
             </Link>
           ) : (
-            <span key={r.iso3}>{inner}</span>
+            <div key={r.iso3}>{inner}</div>
           );
         })}
       </div>
 
-      {/* Legend + methodology link (same idiom as the country page) */}
       <div
         style={{
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems: "center",
-          gap: "14px",
-          marginTop: "12px",
-          fontSize: "11px",
+          marginTop: "14px",
+          padding: "10px 12px",
+          border: "1px dashed var(--qgi-border)",
+          borderRadius: "5px",
+          background: "rgba(255,255,255,0.015)",
+          fontSize: "11.5px",
+          lineHeight: 1.5,
           color: "var(--qgi-text-muted)",
         }}
       >
-        {(Object.keys(VERDICT_STYLE) as HfVerdict[]).map((v) => (
-          <span
-            key={v}
-            style={{ display: "inline-flex", alignItems: "center", gap: "5px" }}
-          >
-            <span
-              aria-hidden="true"
-              style={{
-                width: "7px",
-                height: "7px",
-                borderRadius: "50%",
-                background: VERDICT_STYLE[v].color,
-              }}
-            />
-            {VERDICT_LABEL[v]}
-            <InfoTooltip text={signal.verdicts[v]} />
-          </span>
-        ))}
-        <span style={{ flex: 1 }} />
-        <Link
-          href={"/methodology#news-layer" as Route}
-          target="_blank"
-          rel="noopener"
-          style={{ color: "var(--qgi-accent)", textDecoration: "none", fontSize: "11px" }}
-        >
-          How verdicts are assigned →
-        </Link>
+        Structural read coming soon for this trend. Right now, the verdict reads the news
+        pressure alone.
       </div>
+
+      <VerdictLegend signal={signal} />
 
       <p
         style={{
@@ -211,13 +465,168 @@ export function TrendNewsSignalPanel({
           letterSpacing: "0.3px",
         }}
       >
-        The numbers read trend score · news pulse, both 0 to 100.
-        {topic.validated
-          ? ` The ${topic.label} theme carries a validated news lead of about two months.`
-          : " Pulse updates monthly."}
-        {signal.notScored.length > 0 &&
-          ` ${signal.notScored.join(" and ")} ${signal.notScored.length === 1 ? "is" : "are"} not scored on this trend (indicator coverage), so ${signal.notScored.length === 1 ? "it does" : "they do"} not appear here.`}
+        The number is the news pressure, 0 to 100, this trend carries no structural axis.{" "}
+        {GLOBAL_PERCENTILE_NOTE} Pressure updates monthly.
       </p>
+    </PanelShell>
+  );
+}
+
+/* ───────── Mode (c): COMING-SOON trend, no native feed yet ─────────────── */
+
+// Fake preview rows for the coming-soon blur: plausible countries + verdict
+// pills, never real data. Fixed set (not sourced from any trend) so the
+// blur reads as "a preview of the shape of this panel", not a leaked score.
+const COMING_SOON_PREVIEW_ROWS: { name: string; pulse: number; verdict: HfVerdict }[] = [
+  { name: "Nigeria", pulse: 71, verdict: "ACTIVE" },
+  { name: "Pakistan", pulse: 58, verdict: "SIGNAL" },
+  { name: "Brazil", pulse: 46, verdict: "LATENT" },
+  { name: "Indonesia", pulse: 39, verdict: "SIGNAL" },
+  { name: "Turkey", pulse: 27, verdict: "QUIET" },
+  { name: "Vietnam", pulse: 18, verdict: "QUIET" },
+];
+
+/**
+ * TrendNewsComingSoonPanel: the placeholder page.tsx renders in place of
+ * TrendNewsSignalPanel when getTrendNewsSignal().status is 'coming_soon'.
+ * No struct, no pulse, no drilldown, and no naming of the data source: a
+ * blurred preview of the row layout the real News Signal list will use,
+ * with a centered "coming soon" lockup over it. Single column (not
+ * fullWidth), same PanelShell frame as every other panel on the page.
+ */
+export function TrendNewsComingSoonPanel({ trendLabel }: { trendLabel: string }) {
+  const trendLower = trendLabel.toLowerCase();
+  return (
+    <PanelShell
+      title="News Signal"
+      titleCase
+      accent="#7A8FA0"
+      tooltip={`We're building this trend's dedicated news feed. Until it ships, this trend has no news layer.`}
+    >
+      <div style={{ position: "relative" }}>
+        {/* Blurred backdrop: same row shape as the live list (flag, name,
+            pulse number, verdict pill, mini bar), fake data throughout. */}
+        <div
+          aria-hidden="true"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "8px",
+            filter: "blur(4px)",
+            opacity: 0.5,
+            pointerEvents: "none",
+            userSelect: "none",
+          }}
+        >
+          {COMING_SOON_PREVIEW_ROWS.map((r) => {
+            const vs = VERDICT_STYLE[r.verdict];
+            return (
+              <div key={r.name}>
+                <div style={{ display: "flex", alignItems: "center", gap: "9px" }}>
+                  <FlagImg emoji={flagFor(r.name)} name={r.name} width={16} radius={2} />
+                  <span
+                    style={{
+                      fontSize: "12.5px",
+                      fontWeight: 600,
+                      color: "var(--qgi-text)",
+                      flex: 1,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {r.name}
+                  </span>
+                  <span
+                    className="font-data"
+                    style={{ fontSize: "11px", color: "var(--qgi-text-muted)", whiteSpace: "nowrap" }}
+                  >
+                    {r.pulse}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "10.5px",
+                      fontWeight: 600,
+                      letterSpacing: "0.5px",
+                      padding: "2px 8px",
+                      borderRadius: "9px",
+                      color: vs.color,
+                      background: vs.bg,
+                      border: `1px solid ${vs.border}`,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {VERDICT_LABEL[r.verdict]}
+                  </span>
+                </div>
+                <div
+                  style={{
+                    height: "3px",
+                    borderRadius: "2px",
+                    background: "var(--qgi-border)",
+                    marginTop: "5px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: `${Math.max(2, Math.min(100, r.pulse))}%`,
+                      height: "100%",
+                      background: vs.color,
+                      borderRadius: "2px",
+                    }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Centered lockup, overlaid on the blur. */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "12px",
+          }}
+        >
+          <div
+            style={{
+              textAlign: "center",
+              maxWidth: "300px",
+              padding: "14px 22px",
+              border: "1px solid var(--qgi-border)",
+              borderRadius: "8px",
+              background: "var(--qgi-surface-2)",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.35)",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "9.5px",
+                letterSpacing: "2.5px",
+                textTransform: "uppercase",
+                color: "#7A8FA0",
+                fontFamily: "ui-monospace, monospace",
+                marginBottom: "6px",
+              }}
+            >
+              Coming soon
+            </div>
+            <p
+              style={{
+                fontSize: "12px",
+                lineHeight: 1.5,
+                color: "var(--qgi-text-muted)",
+                margin: 0,
+              }}
+            >
+              We&apos;re working on the {trendLower}{" "}trend&apos;s news feed.
+            </p>
+          </div>
+        </div>
+      </div>
     </PanelShell>
   );
 }

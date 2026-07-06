@@ -44,7 +44,10 @@ import { ScoreDistributionPanel } from "@/components/precedents-v4-1/ScoreDistri
 import { PrecedentsTimelinePanel } from "@/components/precedents-v4-1/PrecedentsTimelinePanel";
 import { PatternAlignmentPanel } from "@/components/precedents-v4-1/PatternAlignmentPanel";
 import { IndicatorSensitivityPanel } from "@/components/precedents-v4-1/IndicatorSensitivityPanel";
-import { TrendNewsSignalPanel } from "@/components/precedents-v4-1/TrendNewsSignalPanel";
+import {
+  TrendNewsSignalPanel,
+  TrendNewsComingSoonPanel,
+} from "@/components/precedents-v4-1/TrendNewsSignalPanel";
 import { getTrendNewsSignal } from "@/lib/hf/trend-signal";
 import { ExpandableShell } from "@/components/te-v4-shared/ExpandableShell";
 
@@ -264,16 +267,24 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         />
       </ExpandableShell>
 
-      {/* 2b. NEWS SIGNAL — where the news is running with this trend right
-          now (HF merge step 3). Absent for news-blind trends. */}
-      {newsSignal && (
-        <TrendNewsSignalPanel
-          key={`news-${slug}`}
-          slug={slug}
-          trendLabel={recipe.label}
-          signal={newsSignal}
-        />
-      )}
+      {/* 2b. NEWS SIGNAL: where the news is running with this trend right
+          now (HF merge step 3). Absent for news-blind trends. Coming-soon
+          trends (no native GDELT feed yet) get the compact placeholder
+          instead of the XY quadrant / news-only list. */}
+      {newsSignal &&
+        (newsSignal.status === "coming_soon" ? (
+          <TrendNewsComingSoonPanel
+            key={`news-soon-${slug}`}
+            trendLabel={recipe.label}
+          />
+        ) : (
+          <TrendNewsSignalPanel
+            key={`news-${slug}`}
+            slug={slug}
+            trendLabel={recipe.label}
+            signal={newsSignal}
+          />
+        ))}
 
       {/* 3. RESULTS (what does it find) + the shape it aligns to */}
       <CountriesPanel
