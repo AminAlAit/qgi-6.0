@@ -51,7 +51,7 @@ import {
   buildTopPairTeasers,
   buildWorldActivityRows,
 } from "@/lib/te-mock/dashboard-v4-1-data";
-import { getHfBoard } from "@/lib/hf/topics-data";
+import { getTrendBoard } from "@/lib/hf/trend-board";
 import { getLivePulse } from "@/lib/hf/live-pulse";
 import { overlayCells } from "@/lib/hf/live-pulse-core";
 import { getBucketArticles } from "@/lib/hf/live-pulse-buckets";
@@ -105,8 +105,8 @@ export default async function BriefingHybridPage() {
         );
   const activity = buildWorldActivityRows();
 
-  // ── HF board + live overlay ────────────────────────────────────────────────
-  const hfBoard = getHfBoard();
+  // ── Trend board + live overlay ─────────────────────────────────────────────
+  const hfBoard = getTrendBoard();
   const live = await getLivePulse();
   const overlaid = overlayCells(hfBoard, live);
   const liveCells = overlaid.cells;
@@ -232,15 +232,15 @@ export default async function BriefingHybridPage() {
             label: "News Gap",
             value: `+${Math.round(topAlarm.gap)}`,
             unit: " pts",
-            sub: "ahead of news",
+            sub: "above the news pulse",
             accentColor: "var(--qgi-warning)",
             bgTint: "rgba(245,158,11,0.08)",
           },
         ],
-        headline: "Structure running ahead of news.",
+        headline: "Structural signal elevated, news quiet.",
         sentence:
-          "Structural pressure is pricing in risk the headlines haven't confirmed yet.",
-        verdictLabel: "Silent Alarm",
+          "Structural resemblance is elevated while this month's news coverage stays quiet — two timeframes in divergence.",
+        verdictLabel: "Divergence",
         verdictBg: "rgba(245,158,11,0.10)",
         verdictColor: "var(--qgi-amber)",
         verdictBorder: "rgba(245,158,11,0.30)",

@@ -276,15 +276,19 @@ export default async function CountryRecipeMatchPage({ params }: Params) {
       {/* ── Body ── */}
       <div style={{ maxWidth: "1080px", margin: "0 auto", padding: "24px 24px 64px" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          {hasNewsRow && newsSignal && countryName && (
-            <TrendConfirmRejectPanel
-              key={`cr-${slug}-${iso}`}
-              slug={slug}
-              trendLabel={recipe.label}
-              countryName={countryName}
-              signal={newsSignal}
-            />
-          )}
+          {hasNewsRow &&
+            newsSignal &&
+            newsSignal.status === "live" &&
+            !newsSignal.pulseOnly &&
+            countryName && (
+              <TrendConfirmRejectPanel
+                key={`cr-${slug}-${iso}`}
+                slug={slug}
+                trendLabel={recipe.label}
+                countryName={countryName}
+                signal={newsSignal}
+              />
+            )}
           {match ? (
             <>
               <MatchAlignmentPanel

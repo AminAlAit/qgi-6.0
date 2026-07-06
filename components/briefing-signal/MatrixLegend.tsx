@@ -12,10 +12,10 @@ const VERDICT_COLOR: Record<HfVerdict, string> = {
 };
 
 const VERDICT_LABEL: Record<HfVerdict, string> = {
-  ACTIVE: "ACTIVE",
-  SIGNAL: "SIGNAL",
-  LATENT: "LATENT",
-  QUIET: "QUIET",
+  ACTIVE: "Both Firing",
+  SIGNAL: "News-Only",
+  LATENT: "Elevated & Quiet",
+  QUIET: "Quiet",
 };
 
 interface Props {
