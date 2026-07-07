@@ -135,32 +135,6 @@ export default async function CountryV41DetailPage({ params }: Params) {
               <span>{country.iso}</span>
             </nav>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              {/* ⚡ Live Pulse — the advanced per-country news terminal
-                  (founder-ratified sub-route, 2026-06-10). Only rendered
-                  for covered countries. */}
-              {hf && (
-                <Link
-                  href={`/countries/${iso}/live-pulse` as Route}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "6px",
-                    height: "30px",
-                    padding: "0 14px",
-                    borderRadius: "15px",
-                    border: "1px solid var(--qgi-accent)",
-                    color: "var(--qgi-accent)",
-                    background: "var(--qgi-accent-glow)",
-                    fontSize: "11px",
-                    fontWeight: 600,
-                    letterSpacing: "1px",
-                    textDecoration: "none",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  ⚡ Live Pulse
-                </Link>
-              )}
               <HowToReadButton routeKey="countries-v4.1-detail" />
             </div>
           </div>

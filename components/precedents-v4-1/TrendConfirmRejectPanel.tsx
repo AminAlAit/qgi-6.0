@@ -102,8 +102,13 @@ export function TrendConfirmRejectPanel({
   // Per-Trend pulse is a global cross-country percentile (50 = global median);
   // the legacy crosswalk pulse is a within-country index (50 = own normal).
   const pulseLabel = perTrend ? trendLabel : topic.label;
+  // The perTrend surface calls the 0-100 metric "news pressure"; the legacy
+  // within-country crosswalk (!perTrend) keeps the older "news pulse" wording.
+  // Shared strings below (tooltip, axis, caption) aren't otherwise split on
+  // perTrend, so they read off this word instead of a hardcoded literal.
+  const pulseWord = perTrend ? "news pressure" : "news pulse";
   const tip = perTrend
-    ? `The verdict pairs ${countryName}'s score on this trend with its ${trendLabel.toLowerCase()} news pulse: how much of the country's coverage runs on the trend, ranked across every covered country and month (50 is the global median). Both readings count as elevated from 60 upward; the four corners are the four verdicts.`
+    ? `The verdict pairs ${countryName}'s score on this trend with its ${trendLabel.toLowerCase()} news pressure: how much of the country's coverage runs on the trend, ranked across every covered country and month (50 is the global median). Both readings count as elevated from 60 upward; the four corners are the four verdicts.`
     : `The verdict pairs ${countryName}'s score on this specific trend with the ${topic.label} news pulse: how much of the country's news coverage runs on that theme, against its own normal of 50. Both readings count as elevated from 60 upward; the four corners are the four verdicts. The Risk Board reads the broader ${topic.label} composite across all its trends, so the two readings can differ.`;
 
   const points = rows.map((r) => {
@@ -150,7 +155,7 @@ export function TrendConfirmRejectPanel({
       borderColor: t.border,
       textStyle: { color: t.text, fontSize: 11 },
       formatter: (p: { data: { name: string; value: number[]; verdict: HfVerdict } }) =>
-        `<b>${p.data.name}</b><br/>trend score ${Math.round(p.data.value[0])} · news pulse ${Math.round(
+        `<b>${p.data.name}</b><br/>trend score ${Math.round(p.data.value[0])} · ${pulseWord} ${Math.round(
           p.data.value[1]
         )}<br/>${VERDICT_LABEL[p.data.verdict]}`,
     },
@@ -169,7 +174,7 @@ export function TrendConfirmRejectPanel({
     yAxis: {
       min: 0,
       max: 100,
-      name: "NEWS PULSE",
+      name: pulseWord.toUpperCase(),
       nameLocation: "middle",
       nameGap: 32,
       nameTextStyle: { color: t.textDim, fontSize: 10, letterSpacing: 1 },
@@ -227,9 +232,11 @@ export function TrendConfirmRejectPanel({
             {VERDICT_LABEL[subject.verdict]}
           </strong>{" "}
           on the {trendLabel.toLowerCase()} trend right now: trend score{" "}
-          {Math.round(subject.struct ?? 0)}, {pulseLabel} news pulse {Math.round(subject.pulse)}
+          {Math.round(subject.struct ?? 0)}, {pulseLabel} {pulseWord}{" "}
+          {Math.round(subject.pulse)}
           {subject.verdict !== "ACTIVE" &&
-          (((subject.struct ?? 0) < th.struct && th.struct - (subject.struct ?? 0) <= 5) ||
+          (((subject.struct ?? 0) < th.struct &&
+            th.struct - (subject.struct ?? 0) <= 5) ||
             (subject.pulse < th.pulse && th.pulse - subject.pulse <= 5))
             ? ", just below the elevated threshold"
             : ""}

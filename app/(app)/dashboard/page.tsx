@@ -184,7 +184,7 @@ export default async function BriefingHybridPage() {
         iso3: hotCell.iso3,
         stats: [
           {
-            label: "News Pulse",
+            label: "News Pressure",
             value: String(Math.round(hotCell.pulse)),
             unit: "/100",
             sub: pulseSub,
@@ -222,7 +222,7 @@ export default async function BriefingHybridPage() {
             accentColor: "var(--qgi-amber)",
           },
           {
-            label: "News Pulse",
+            label: "News Pressure",
             value: String(Math.round(topAlarm.pulse)),
             unit: "/100",
             sub: "coverage so far",
@@ -232,7 +232,7 @@ export default async function BriefingHybridPage() {
             label: "News Gap",
             value: `+${Math.round(topAlarm.gap)}`,
             unit: " pts",
-            sub: "above the news pulse",
+            sub: "above the news pressure",
             accentColor: "var(--qgi-warning)",
             bgTint: "rgba(245,158,11,0.08)",
           },
@@ -254,13 +254,13 @@ export default async function BriefingHybridPage() {
         iso3: topRiser.iso3,
         stats: [
           {
-            label: "Pulse Move",
+            label: "Pressure Move",
             value: `+${Math.round(topRiser.delta)}`,
             sub: "points this month",
             accentColor: "var(--qgi-accent)",
           },
           {
-            label: "Current Pulse",
+            label: "News Pressure",
             value: String(Math.round(topRiser.pulse)),
             unit: "/100",
             accentColor: "var(--qgi-text-dim)",

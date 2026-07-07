@@ -77,7 +77,8 @@ const TREND_ORDER_INDEX: Record<string, number> = Object.fromEntries(
  */
 function trendDriftOrder(series: HfTopicSeries[]): HfTopicSeries[] {
   return [...series].sort(
-    (a, b) => (TREND_ORDER_INDEX[a.topic.id] ?? 99) - (TREND_ORDER_INDEX[b.topic.id] ?? 99)
+    (a, b) =>
+      (TREND_ORDER_INDEX[a.topic.id] ?? 99) - (TREND_ORDER_INDEX[b.topic.id] ?? 99)
   );
 }
 
@@ -126,7 +127,7 @@ export function NewsSignalsPanel({ detail }: { detail: HfCountryDetail }) {
 
   return (
     <PanelShell
-      title="News Signals"
+      title="News Pulse"
       titleCase
       accent="var(--qgi-accent)"
       tooltip="This trend's news pressure: how much of a country's news coverage runs on the trend each month, ranked across every covered country and month (50 is the global median for that trend, 60 and up counts as elevated). The verdict pairs that pressure with the trend's structural resemblance, where available."
@@ -502,7 +503,7 @@ export function TopicDriftPanel({
       title="Trend Drift"
       titleCase
       accent={accent}
-      tooltip="Each month's news pressure per trend, stacked to that month's 100% share of total attention, ranked across every covered country and month. Reads the shifting mix of what a country's news is amplifying, not the absolute level (see News Signals for that)."
+      tooltip="Each month's news pressure per trend, stacked to that month's 100% share of total attention, ranked across every covered country and month. Reads the shifting mix of what a country's news is amplifying, not the absolute level (see News Pulse for that)."
       caption={
         <>
           Share of {detail.name}&apos;s news attention across the six trends, over time.

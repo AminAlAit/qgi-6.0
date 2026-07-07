@@ -32,13 +32,20 @@ interface Params {
   params: Promise<{ iso: string }>;
 }
 
+// Founder 2026-07-06: standalone Live Pulse terminal disabled — route 404s everywhere. Code kept intact; flip to true (and nothing else) to restore.
+const LIVE_PULSE_ROUTE_ENABLED = false;
+
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
+  if (!LIVE_PULSE_ROUTE_ENABLED) return [];
   // Every country the news layer covers — the structural country-page set is
   // a separate, broader roster and must not gate news coverage.
   return hfCoveredIso3().map((iso) => ({ iso }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  if (!LIVE_PULSE_ROUTE_ENABLED) return { title: "Not found" };
   const { iso } = await params;
   const detail = getHfCountryDetail(iso);
   const title = detail
@@ -62,6 +69,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 }
 
 export default async function LivePulsePage({ params }: Params) {
+  if (!LIVE_PULSE_ROUTE_ENABLED) notFound();
   const { iso } = await params;
   const detail = getHfCountryDetail(iso);
   if (!detail) notFound();
