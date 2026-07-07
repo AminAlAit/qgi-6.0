@@ -127,7 +127,10 @@ function VerdictLegend({ signal }: { signal: TrendNewsSignal }) {
       }}
     >
       {(Object.keys(VERDICT_STYLE) as HfVerdict[]).map((v) => (
-        <span key={v} style={{ display: "inline-flex", alignItems: "center", gap: "5px" }}>
+        <span
+          key={v}
+          style={{ display: "inline-flex", alignItems: "center", gap: "5px" }}
+        >
           <span
             aria-hidden="true"
             style={{
@@ -279,13 +282,13 @@ function QuadrantPanel({
 
   return (
     <PanelShell
-      title="News Signal"
+      title="News Pulse"
       titleCase
       accent="var(--qgi-accent)"
       tooltip={panelTip}
       caption={
         <>
-          Where the news is running with the {trendLower}{" "}trend this month: every covered
+          Where the news is running with the {trendLower} trend this month: every covered
           country&apos;s trend score against its news pressure
           <InfoTooltip text={GLOBAL_PERCENTILE_NOTE} />, strongest combined readings top
           right. Select a dot to open that country&apos;s drilldown.
@@ -314,8 +317,8 @@ function QuadrantPanel({
           letterSpacing: "0.3px",
         }}
       >
-        The numbers read trend score, news pressure, both 0 to 100. {GLOBAL_PERCENTILE_NOTE}{" "}
-        Pressure updates monthly.
+        The numbers read trend score, news pressure, both 0 to 100.{" "}
+        {GLOBAL_PERCENTILE_NOTE} Pressure updates monthly.
         {notScored.length > 0 &&
           ` ${notScored.join(" and ")} ${notScored.length === 1 ? "is" : "are"} not scored on this trend (indicator coverage), so ${notScored.length === 1 ? "it does" : "they do"} not appear here.`}
       </p>
@@ -340,13 +343,13 @@ function NewsOnlyPanel({
 
   return (
     <PanelShell
-      title="News Signal"
+      title="News Pulse"
       titleCase
       accent="var(--qgi-accent)"
       tooltip={panelTip}
       caption={
         <>
-          Where the news is running with the {trendLower}{" "}trend this month, strongest
+          Where the news is running with the {trendLower} trend this month, strongest
           readings first.
           <InfoTooltip text={GLOBAL_PERCENTILE_NOTE} />
         </>
@@ -490,7 +493,7 @@ const COMING_SOON_PREVIEW_ROWS: { name: string; pulse: number; verdict: HfVerdic
  * TrendNewsComingSoonPanel: the placeholder page.tsx renders in place of
  * TrendNewsSignalPanel when getTrendNewsSignal().status is 'coming_soon'.
  * No struct, no pulse, no drilldown, and no naming of the data source: a
- * blurred preview of the row layout the real News Signal list will use,
+ * blurred preview of the row layout the real News Pulse list will use,
  * with a centered "coming soon" lockup over it. Single column (not
  * fullWidth), same PanelShell frame as every other panel on the page.
  */
@@ -498,7 +501,7 @@ export function TrendNewsComingSoonPanel({ trendLabel }: { trendLabel: string })
   const trendLower = trendLabel.toLowerCase();
   return (
     <PanelShell
-      title="News Signal"
+      title="News Pulse"
       titleCase
       accent="#7A8FA0"
       tooltip={`We're building this trend's dedicated news feed. Until it ships, this trend has no news layer.`}
@@ -537,7 +540,11 @@ export function TrendNewsComingSoonPanel({ trendLabel }: { trendLabel: string })
                   </span>
                   <span
                     className="font-data"
-                    style={{ fontSize: "11px", color: "var(--qgi-text-muted)", whiteSpace: "nowrap" }}
+                    style={{
+                      fontSize: "11px",
+                      color: "var(--qgi-text-muted)",
+                      whiteSpace: "nowrap",
+                    }}
                   >
                     {r.pulse}
                   </span>
@@ -622,7 +629,7 @@ export function TrendNewsComingSoonPanel({ trendLabel }: { trendLabel: string })
                 margin: 0,
               }}
             >
-              We&apos;re working on the {trendLower}{" "}trend&apos;s news feed.
+              We&apos;re working on the {trendLower} trend&apos;s news feed.
             </p>
           </div>
         </div>

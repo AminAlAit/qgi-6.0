@@ -149,8 +149,8 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
       {
         // News layer (2026-06-10): the panels' resemblance-not-forecast
         // firewall, in the designated escape valve (V4.1 §9).
-        title: "News pulse measures attention, not events",
-        body: "The news panels show how much of this country's coverage is running on each theme versus its own history. Pulse confirms or questions a structural reading; it does not forecast an event.",
+        title: "News pressure measures attention, not events",
+        body: "The news panels show how much of this country's coverage is running on each theme versus its own history. News pressure confirms or questions a structural reading; it does not forecast an event.",
       },
       {
         title: "Nothing here is a forecast",

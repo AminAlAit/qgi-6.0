@@ -32,10 +32,26 @@ export const COMING_SOON_TREND_COLUMNS: { slug: string; label: string }[] = [
 ];
 
 /**
+ * The news themes QGI does NOT yet cover as a live Trend. Shown as one honest
+ * "coverage roadmap" note on the board (founder 2026-07-06) — replaces the old
+ * teaser placeholder columns. Broader than COMING_SOON_TREND_COLUMNS (which only
+ * carries the 3 themes that already have a slug). No forecast, no dates.
+ */
+export const COVERAGE_ROADMAP_THEMES: string[] = [
+  "Armed conflict",
+  "Terrorism",
+  "Repression & human rights",
+  "Trade & sanctions",
+  "Diplomacy",
+  "Energy & resources",
+  "Cyber & technology",
+];
+
+/**
  * Trends shown NEWS-ONLY (a news feed but no structural line). EMPTY now:
  * labor_action was promoted to FULL two-layer (founder 2026-07-05) because its
  * structural resemblance score is already shown in the Countries panel, so
- * hiding it in the News Signal while ranking by it next door was inconsistent.
+ * hiding it in the News Pulse panel while ranking by it next door was inconsistent.
  * Kept as a Set so the mechanism survives if a future trend ever needs it.
  */
 export const NEWS_ONLY_TRENDS = new Set<string>([]);
