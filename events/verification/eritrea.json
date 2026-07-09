@@ -1151,6 +1151,41 @@
   },
   {
     "year": 1969,
+    "title": "Eritrean Liberation Movement Gains Arab League Observer Status",
+    "verdict": "FALSE",
+    "reason": "No independent source corroborates the Eritrean Liberation Front (or any Eritrean liberation movement) obtaining formal Arab League observer status in 1969 or at any point during the liberation struggle. Dedicated sources on this exact topic (Wikipedia's ELF article, the dedicated \"Arab League–Eritrean relations\" article, and the \"Eritrean War of Independence\" article) consistently describe only bilateral pledges of support from individual Arab League member states (Syria, Iraq, Libya, Kuwait, Yemen) starting in April 1962, plus later Egyptian/Sudanese backing — not an institutional Arab League observer-status grant. The only documented Arab League observer status connected to Eritrea is the sovereign state of Eritrea's own accession as an Arab League observer in January 2003, a completely different actor (the independent government, not a 1960s liberation front) and a completely different year. A contemporaneous June 1969 US State Department airgram assessing the ELF in detail (FRUS 1969-76, doc. 270) discusses \"radical Arab\" arms/money support but likewise contains no mention of Arab League institutional observer status. Given three independent, topic-specific sources plus a primary 1969 diplomatic document all omit this alleged event, this reads as a fabricated/conflated claim (likely confusing 1962 bilateral Arab support or the 2003 Eritrea-state accession with a 1969 ELF observer-status grant) rather than a real, verifiable event.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Extensive searching across Wikipedia (Eritrean Liberation Front; Arab League–Eritrean relations; Member states of the Arab League), a contemporaneous June 1969 US State Department intelligence assessment of the ELF (which discusses Soviet and 'radical Arab' arms/money/training support but says nothing about any Arab League institutional recognition), an academic PhD dissertation on the ELF (Tedla, 1960-1981), and multiple journal/think-tank pieces on Arab patronage of Eritrean nationalism turned up no corroboration whatsoever of the ELF or any Eritrean liberation movement obtaining 'observer status' at the Arab League in 1969 or at any point during the liberation struggle. What sources consistently document instead is: (1) individual Arab League member states (Syria, Iraq, Libya, Kuwait, Yemen) pledging bilateral support to the ELF starting in April 1962 — informal state patronage, not institutional Arab League observer status; and (2) Eritrea as an independent state only gaining formal Arab League observer status in January 2003, three decades after independence, per Wikipedia's 'Arab League–Eritrean relations' article. No source frames 1969 as a milestone year for Arab League relations with Eritrean nationalists at all. Given a dedicated 1969 US intelligence report specifically cataloguing the ELF's external support relationships makes no mention of any Arab League recognition, and no independent historical source corroborates the claimed institutional recognition, the event as described appears not to have happened.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "No independent source corroborates the Eritrean Liberation Front (or any Eritrean liberation movement) obtaining formal Arab League observer status in 1969 or at any point during the liberation struggle. Dedicated sources on this exact topic (Wikipedia's ELF article, the dedicated \"Arab League–Eritrean relations\" article, and the \"Eritrean War of Independence\" article) consistently describe only bilateral pledges of support from individual Arab League member states (Syria, Iraq, Libya, Kuwait, Yemen) starting in April 1962, plus later Egyptian/Sudanese backing — not an institutional Arab League observer-status grant. The only documented Arab League observer status connected to Eritrea is the sovereign state of Eritrea's own accession as an Arab League observer in January 2003, a completely different actor (the independent government, not a 1960s liberation front) and a completely different year. A contemporaneous June 1969 US State Department airgram assessing the ELF in detail (FRUS 1969-76, doc. 270) discusses \"radical Arab\" arms/money support but likewise contains no mention of Arab League institutional observer status. Given three independent, topic-specific sources plus a primary 1969 diplomatic document all omit this alleged event, this reads as a fabricated/conflated claim (likely confusing 1962 bilateral Arab support or the 2003 Eritrea-state accession with a 1969 ELF observer-status grant) rather than a real, verifiable event.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1969,
     "title": "Ethiopian Forces Conduct Shambko Massacre",
     "verdict": "UNCERTAIN",
     "reason": "Shambko (also spelled Shambuko) is confirmed as a real sub-zone/town in the Gash-Barka region of western Eritrea, and the broader pattern described (Ethiopian imperial army collective-punishment/scorched-earth campaigns against western Eritrean villages during the 1967-1970 counterinsurgency period against the ELF) is well documented in general terms by Wikipedia's massacre lists and the ehrea.org human rights archive. However, no source found names this specific event, gives a 1969 date for a massacre at Shambko, or corroborates the specific details (documentation by liberation-movement operatives shared with international human rights organizations). Wikipedia's two dedicated 'List of massacres...Eritrean War of Independence' articles show a documented gap between July 1967 (Hazemo) and January 1970 (Elabared) with zero entries for 1969, and neither list nor any other source mentions Shambko/Shambuko as a massacre site in any year. Extensive spelling-variant searches (Shambeko, Shanbko, Shambaco) and targeted searches on ehrea.org and academic/NGO sources returned no corroboration. Cannot confirm or refute from acceptable independent sources.",
@@ -3957,6 +3992,42 @@
       }
     ],
     "source": "https://www.ohchr.org/en/hr-bodies/hrc/co-i-eritrea/commissioninquiryonhrin-eritrea"
+  },
+  {
+    "year": 2015,
+    "title": "Eritrean Cyclist Becomes First Black African to Wear a Tour de France Leader's Jersey",
+    "verdict": "TRUE",
+    "reason": "Multiple independent, authoritative sources (CNN, ABC News, Cyclingnews, Cycling Weekly, UCI.org) confirm Daniel Teklehaimanot of Eritrea, riding for MTN-Qhubeka (the first African team to compete in the Tour de France), took the polka-dot King of the Mountains jersey after stage 6 of the 2015 Tour de France on 9 July 2015, becoming the first black African to wear a leader's jersey in the race's 112-year history at that time. All material details in the description (country, year, date, team, achievement) are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources (CNN, ABC News, Cyclingnews, Cycling Weekly, UCI) confirm: Eritrean rider Daniel Teklehaimanot, racing for MTN-Qhubeka (the first African team to compete in the Tour de France), took the polka-dot King of the Mountains jersey after stage 6 of the 2015 Tour de France on 9 July 2015 (Abbeville to Le Havre), becoming the first black rider/first African to wear a leader's jersey in the race's 112-year history at that point. All material details in the description (rider, team, stage, date, jersey type, historic first) match reporting exactly.",
+        "source": "https://edition.cnn.com/2015/07/09/sport/daniel-teklehaimanot-tour-de-france-polka-dot-jersey/index.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources (CNN, ABC News, Cyclingnews, Cycling Weekly, UCI.org) confirm Daniel Teklehaimanot of Eritrea, riding for MTN-Qhubeka (the first African team to compete in the Tour de France), took the polka-dot King of the Mountains jersey after stage 6 of the 2015 Tour de France on 9 July 2015, becoming the first black African to wear a leader's jersey in the race's 112-year history at that time. All material details in the description (country, year, date, team, achievement) are corroborated.",
+        "source": "https://edition.cnn.com/2015/07/09/sport/daniel-teklehaimanot-tour-de-france-polka-dot-jersey/index.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://edition.cnn.com/2015/07/09/sport/daniel-teklehaimanot-tour-de-france-polka-dot-jersey/index.html"
   },
   {
     "year": 2015,

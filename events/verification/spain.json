@@ -1225,6 +1225,42 @@
   },
   {
     "year": 2010,
+    "title": "Spain Wins Its First FIFA World Cup Title",
+    "verdict": "TRUE",
+    "reason": "Independently confirmed via Wikipedia: Spain defeated the Netherlands 1-0 after extra time on 11 July 2010 at Soccer City, Johannesburg, South Africa. Andres Iniesta scored the winning goal in the 116th minute (the latest winning goal in a World Cup final at the time), assisted by Fabregas. This gave Spain its first-ever World Cup title, becoming the eighth nation to win it, and the first European team to win the tournament outside of Europe. All material details in the description (score, date, location, scorer, minute, historical significance) match the historical record exactly.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated by multiple authoritative sources (Wikipedia, CNN, UEFA.com). Confirms: 11 July 2010 final at Soccer City, Johannesburg; Spain defeated Netherlands 1-0 after extra time; Andrés Iniesta scored the winning goal in the 116th minute; this was Spain's first-ever World Cup title. All material facts in the event description (score, date, location, scorer, minute, significance) match verified historical record exactly.",
+        "source": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia: Spain defeated the Netherlands 1-0 after extra time on 11 July 2010 at Soccer City, Johannesburg, South Africa. Andres Iniesta scored the winning goal in the 116th minute (the latest winning goal in a World Cup final at the time), assisted by Fabregas. This gave Spain its first-ever World Cup title, becoming the eighth nation to win it, and the first European team to win the tournament outside of Europe. All material details in the description (score, date, location, scorer, minute, historical significance) match the historical record exactly.",
+        "source": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final"
+  },
+  {
+    "year": 2010,
     "title": "Zapatero's Austerity U-Turn Under Financial Market Pressure",
     "verdict": "TRUE",
     "reason": "Confirmed: May 2010 €15 billion austerity package; September 2010 general strike.",

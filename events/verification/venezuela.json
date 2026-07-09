@@ -560,6 +560,42 @@
     "source": "https://en.wikipedia.org/wiki/RCTV"
   },
   {
+    "year": 2007,
+    "title": "Venezuela Hosts Copa America for the First Time",
+    "verdict": "TRUE",
+    "reason": "Confirmed by Wikipedia and multiple independent sources (ESPN, CONMEBOL's own site, Transfermarkt): Venezuela hosted the 2007 Copa América from 26 June to 15 July 2007, the first time it hosted the tournament. All ten CONMEBOL nations competed plus invited guests Mexico and the United States (12 teams total). Brazil beat Argentina 3-0 in the final (goals: Júlio Baptista 4', Ayala own goal 40', Dani Alves 69'), played in Maracaibo on 15 July 2007. Host cities included Caracas, Maracaibo, and Mérida as stated. One minor discrepancy: the tournament actually used nine host cities (Barinas, Barquisimeto, Caracas, Ciudad Guayana, Maracaibo, Maturín, Mérida, Puerto la Cruz, San Cristóbal), not eight as stated in the description — a trivial count error that does not affect the substance, magnitude, or scope of the event and does not warrant downgrading to PARTIAL.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia and CONMEBOL/ESPN sources: Venezuela hosted the 2007 Copa América from 26 June to 15 July 2007, its first time hosting the tournament, with matches spread across multiple cities including Caracas, Maracaibo, and Mérida (among nine host cities total). All ten CONMEBOL nations competed alongside invited guests Mexico and the United States. Brazil won the tournament, defeating Argentina 3-0 in the final (played in Maracaibo on 15 July 2007, goals from Júlio Baptista, a Roberto Ayala own goal, and Dani Alves). Every material detail in the event description matches the record.",
+        "source": "https://en.wikipedia.org/wiki/2007_Copa_Am%C3%A9rica",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by Wikipedia and multiple independent sources (ESPN, CONMEBOL's own site, Transfermarkt): Venezuela hosted the 2007 Copa América from 26 June to 15 July 2007, the first time it hosted the tournament. All ten CONMEBOL nations competed plus invited guests Mexico and the United States (12 teams total). Brazil beat Argentina 3-0 in the final (goals: Júlio Baptista 4', Ayala own goal 40', Dani Alves 69'), played in Maracaibo on 15 July 2007. Host cities included Caracas, Maracaibo, and Mérida as stated. One minor discrepancy: the tournament actually used nine host cities (Barinas, Barquisimeto, Caracas, Ciudad Guayana, Maracaibo, Maturín, Mérida, Puerto la Cruz, San Cristóbal), not eight as stated in the description — a trivial count error that does not affect the substance, magnitude, or scope of the event and does not warrant downgrading to PARTIAL.",
+        "source": "https://en.wikipedia.org/wiki/2007_Copa_Am%C3%A9rica",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2007_Copa_Am%C3%A9rica"
+  },
+  {
     "year": 2008,
     "title": "ChÃ¡vez Nationalizes Cement, Steel, and Banking Sectors",
     "verdict": "TRUE",
@@ -966,6 +1002,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2015_Venezuelan_parliamentary_election"
+  },
+  {
+    "year": 2016,
+    "title": "Diphtheria Re-emerges After 24-Year Absence",
+    "verdict": "TRUE",
+    "reason": "Independently confirmed by CDC's Emerging Infectious Diseases journal (Resurgence of Vaccine-Preventable Diseases in Venezuela..., 2019): diphtheria had been absent from Venezuela since 1992 (24 years); during July-November 2016, 183 suspected cases were reported across 16 of 24 federal entities, matching the description exactly. Cumulative cases reached 2,170 by late 2018 (324 in 2016, 1,040 in 2017, 806 through Oct 29 2018), matching 'exceeded 2,170 by 2018'. The article attributes the resurgence to collapsing DTP vaccination coverage amid Venezuela's economic/health-system crisis, and confirms spread to neighboring Brazil and Colombia via migration. Corroborated further by PAHO/ReliefWeb epidemiological updates and Nature Scientific Reports molecular epidemiology paper. All material details (country, year, case counts, entities affected, causal attribution, regional spread) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources (CDC Emerging Infectious Diseases journal, PAHO-referenced reporting, and Washington Post) confirm: Venezuela's last diphtheria case before this outbreak was in 1992 (24-year gap); first 2016 cases appeared in July 2016 in Bolívar state; by November 2016, 183 suspected cases had been reported across 16 of Venezuela's 24 federal entities, per IHR National Focal Point reporting to PAHO/WHO; cumulative cases reached 2,170 by end of 2018 (324 in 2016 + 1,040 in 2017 + 806 in 2018) — matching the description's '2,170' figure; CDC/PAHO literature attributes the resurgence to collapse of routine childhood immunization amid Venezuela's health system deterioration; and the outbreak spread to neighboring countries (notably Colombia) via Venezuelan migration, as documented in both the CDC EID review and the Washington Post. All material details (country, year, case counts, cause, cross-border spread) are corroborated.",
+        "source": "https://wwwnc.cdc.gov/eid/article/25/4/18-1305_article",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed by CDC's Emerging Infectious Diseases journal (Resurgence of Vaccine-Preventable Diseases in Venezuela..., 2019): diphtheria had been absent from Venezuela since 1992 (24 years); during July-November 2016, 183 suspected cases were reported across 16 of 24 federal entities, matching the description exactly. Cumulative cases reached 2,170 by late 2018 (324 in 2016, 1,040 in 2017, 806 through Oct 29 2018), matching 'exceeded 2,170 by 2018'. The article attributes the resurgence to collapsing DTP vaccination coverage amid Venezuela's economic/health-system crisis, and confirms spread to neighboring Brazil and Colombia via migration. Corroborated further by PAHO/ReliefWeb epidemiological updates and Nature Scientific Reports molecular epidemiology paper. All material details (country, year, case counts, entities affected, causal attribution, regional spread) check out.",
+        "source": "https://wwwnc.cdc.gov/eid/article/25/4/18-1305_article",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://wwwnc.cdc.gov/eid/article/25/4/18-1305_article"
   },
   {
     "year": 2016,
@@ -1798,6 +1870,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Barbados_Agreement_(Venezuela)"
+  },
+  {
+    "year": 2023,
+    "title": "María Corina Machado Disqualified from Presidential Race",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm all material details: on 30 June 2023 Venezuela's Comptroller General disqualified María Corina Machado from holding public office for 15 years, alleging links to Juan Guaidó's interim government and support for international sanctions. Despite the ban, Machado won the October 2023 opposition primary with over 90% of the vote (she could run because the primary was organized independently of state electoral authorities). The Supreme Tribunal of Justice (TSJ) confirmed/upheld the disqualification in January 2024. WOLA and other observers explicitly frame this as violating the spirit of the Barbados Agreement's commitment to permit opposition participation. Event matches country, year, and substance.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via multiple sources: Venezuela's Comptroller General disqualified María Corina Machado from public office for 15 years on 30 June 2023, citing alleged links to Juan Guaidó's parallel government and support for international sanctions (request originated from politician José Brito). Machado then won the Unitary Platform opposition primary on 22 October 2023 with over 90% of the vote (~93% per early tallies). The Supreme Tribunal of Justice confirmed/upheld the 15-year disqualification on 26/30 January 2024. Multiple outlets (WOLA, Forbes, Caribbean News Global, US State Dept archive) characterize this ruling as contrary to/violating the spirit of the October 2023 Barbados Agreement, under which the Maduro government and opposition had committed to allow free candidate selection. All material facts—country, year, actor, magnitude, and sequence of events—check out.",
+        "source": "https://en.wikipedia.org/wiki/Mar%C3%ADa_Corina_Machado",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm all material details: on 30 June 2023 Venezuela's Comptroller General disqualified María Corina Machado from holding public office for 15 years, alleging links to Juan Guaidó's interim government and support for international sanctions. Despite the ban, Machado won the October 2023 opposition primary with over 90% of the vote (she could run because the primary was organized independently of state electoral authorities). The Supreme Tribunal of Justice (TSJ) confirmed/upheld the disqualification in January 2024. WOLA and other observers explicitly frame this as violating the spirit of the Barbados Agreement's commitment to permit opposition participation. Event matches country, year, and substance.",
+        "source": "https://en.wikipedia.org/wiki/Mar%C3%ADa_Corina_Machado",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Mar%C3%ADa_Corina_Machado"
   },
   {
     "year": 2024,

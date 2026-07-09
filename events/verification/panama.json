@@ -1,31 +1,6 @@
 [
   {
     "year": 1903,
-    "title": "Panama Separates from Colombia with US Backing",
-    "verdict": "TRUE",
-    "reason": "Panama declared independence from Colombia on November 3, 1903, with the USS Nashville blocking Colombian troops. The United States recognized the new republic within three days. Well-documented historical event.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Panama declared independence from Colombia on November 3, 1903, with the USS Nashville blocking Colombian troops. The United States recognized the new republic within three days. Well-documented historical event.",
-        "source": "https://en.wikipedia.org/wiki/Secession_of_Panama_from_Colombia",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Secession_of_Panama_from_Colombia"
-  },
-  {
-    "year": 1903,
     "title": "Hay-Bunau-Varilla Treaty Grants US Canal Zone",
     "verdict": "TRUE",
     "reason": "The Hay-Bunau-Varilla Treaty was signed November 18, 1903, granting the US a 10-mile-wide Canal Zone in perpetuity for $10 million plus annual payments. Negotiated by a French citizen without the Panamanian delegation present.",
@@ -48,6 +23,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Hay%E2%80%93Bunau-Varilla_Treaty"
+  },
+  {
+    "year": 1903,
+    "title": "Panama Separates from Colombia with US Backing",
+    "verdict": "TRUE",
+    "reason": "Panama declared independence from Colombia on November 3, 1903, with the USS Nashville blocking Colombian troops. The United States recognized the new republic within three days. Well-documented historical event.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Panama declared independence from Colombia on November 3, 1903, with the USS Nashville blocking Colombian troops. The United States recognized the new republic within three days. Well-documented historical event.",
+        "source": "https://en.wikipedia.org/wiki/Secession_of_Panama_from_Colombia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Secession_of_Panama_from_Colombia"
   },
   {
     "year": 1904,
@@ -651,31 +651,6 @@
   },
   {
     "year": 1989,
-    "title": "Opposition Wins Election; Noriega Annuls and Beats Candidates",
-    "verdict": "TRUE",
-    "reason": "The May 7, 1989 election saw Guillermo Endara's coalition win by nearly 3:1 per independent observers including former President Carter. Noriega annulled the result on May 10, and regime paramilitaries (Dignity Battalions) publicly beat the opposition candidates, with images broadcast worldwide.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The May 7, 1989 election saw Guillermo Endara's coalition win by nearly 3:1 per independent observers including former President Carter. Noriega annulled the result on May 10, and regime paramilitaries (Dignity Battalions) publicly beat the opposition candidates, with images broadcast worldwide.",
-        "source": "https://en.wikipedia.org/wiki/1989_Panamanian_general_election",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/1989_Panamanian_general_election"
-  },
-  {
-    "year": 1989,
     "title": "Operation Just Cause: US Invades Panama and Removes Noriega",
     "verdict": "TRUE",
     "reason": "On December 20, 1989, over 27,000 US troops launched Operation Just Cause to remove Noriega. Estimated 200-500 Panamanians and 23 US soldiers were killed. The El Chorrillo neighborhood was largely destroyed. Noriega took refuge in the Vatican nunciature before surrendering January 3, 1990.",
@@ -700,10 +675,10 @@
     "source": "https://en.wikipedia.org/wiki/United_States_invasion_of_Panama"
   },
   {
-    "year": 1990,
-    "title": "Endara Government Inaugurated; Panama Abolishes Military",
+    "year": 1989,
+    "title": "Opposition Wins Election; Noriega Annuls and Beats Candidates",
     "verdict": "TRUE",
-    "reason": "Guillermo Endara was inaugurated at Fort Clayton on December 20, 1989. On February 10, 1990, the Panama Defense Forces were disbanded and replaced with civilian police. A constitutional amendment permanently prohibiting a standing military was passed in October 1994.",
+    "reason": "The May 7, 1989 election saw Guillermo Endara's coalition win by nearly 3:1 per independent observers including former President Carter. Noriega annulled the result on May 10, and regime paramilitaries (Dignity Battalions) publicly beat the opposition candidates, with images broadcast worldwide.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -713,8 +688,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Guillermo Endara was inaugurated at Fort Clayton on December 20, 1989. On February 10, 1990, the Panama Defense Forces were disbanded and replaced with civilian police. A constitutional amendment permanently prohibiting a standing military was passed in October 1994.",
-        "source": "https://en.wikipedia.org/wiki/Panamanian_Public_Forces",
+        "reason": "The May 7, 1989 election saw Guillermo Endara's coalition win by nearly 3:1 per independent observers including former President Carter. Noriega annulled the result on May 10, and regime paramilitaries (Dignity Battalions) publicly beat the opposition candidates, with images broadcast worldwide.",
+        "source": "https://en.wikipedia.org/wiki/1989_Panamanian_general_election",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -722,7 +697,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Panamanian_Public_Forces"
+    "source": "https://en.wikipedia.org/wiki/1989_Panamanian_general_election"
   },
   {
     "year": 1990,
@@ -748,6 +723,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/El_Chorrillo"
+  },
+  {
+    "year": 1990,
+    "title": "Endara Government Inaugurated; Panama Abolishes Military",
+    "verdict": "TRUE",
+    "reason": "Guillermo Endara was inaugurated at Fort Clayton on December 20, 1989. On February 10, 1990, the Panama Defense Forces were disbanded and replaced with civilian police. A constitutional amendment permanently prohibiting a standing military was passed in October 1994.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Guillermo Endara was inaugurated at Fort Clayton on December 20, 1989. On February 10, 1990, the Panama Defense Forces were disbanded and replaced with civilian police. A constitutional amendment permanently prohibiting a standing military was passed in October 1994.",
+        "source": "https://en.wikipedia.org/wiki/Panamanian_Public_Forces",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Panamanian_Public_Forces"
   },
   {
     "year": 1992,
@@ -1148,31 +1148,6 @@
   },
   {
     "year": 2012,
-    "title": "Martinelli Surveillance Scandal Revealed",
-    "verdict": "TRUE",
-    "reason": "Investigations revealed that Martinelli used state intelligence resources and Israeli Pegasus spyware acquired in 2012 to illegally surveil over 150 people including opposition politicians, journalists, judges, and US Embassy officials. The Supreme Court launched its formal investigation in June 2015.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Investigations revealed that Martinelli used state intelligence resources and Israeli Pegasus spyware acquired in 2012 to illegally surveil over 150 people including opposition politicians, journalists, judges, and US Embassy officials. The Supreme Court launched its formal investigation in June 2015.",
-        "source": "https://en.wikipedia.org/wiki/Ricardo_Martinelli",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Ricardo_Martinelli"
-  },
-  {
-    "year": 2012,
     "title": "Colon Free Trade Zone Protests Turn Deadly",
     "verdict": "TRUE",
     "reason": "Protests in Colon's Free Trade Zone erupted in October 2012 against government land sale legislation. A 10-year-old boy and two adults were killed, and dozens were injured. The government ultimately cancelled the legislation after the violent unrest spread to Panama City.",
@@ -1195,6 +1170,31 @@
       }
     ],
     "source": "https://www.aljazeera.com/news/2012/10/20/one-dead-in-panama-protests-over-new-land-law"
+  },
+  {
+    "year": 2012,
+    "title": "Martinelli Surveillance Scandal Revealed",
+    "verdict": "TRUE",
+    "reason": "Investigations revealed that Martinelli used state intelligence resources and Israeli Pegasus spyware acquired in 2012 to illegally surveil over 150 people including opposition politicians, journalists, judges, and US Embassy officials. The Supreme Court launched its formal investigation in June 2015.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Investigations revealed that Martinelli used state intelligence resources and Israeli Pegasus spyware acquired in 2012 to illegally surveil over 150 people including opposition politicians, journalists, judges, and US Embassy officials. The Supreme Court launched its formal investigation in June 2015.",
+        "source": "https://en.wikipedia.org/wiki/Ricardo_Martinelli",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ricardo_Martinelli"
   },
   {
     "year": 2014,
@@ -1223,28 +1223,27 @@
   },
   {
     "year": 2016,
-    "title": "Panama Papers Expose Global Offshore Financial System",
-    "verdict": "TRUE",
-    "reason": "On April 3, 2016, the ICIJ published the Panama Papers — 11.5 million leaked documents from Mossack Fonseca revealing offshore arrangements of 12 current/former heads of state and 128 other officials from 200 countries. It was the largest journalistic leak in history at that time.",
+    "title": "Panama and Colombia Open Colon-Bogota Highway Link",
+    "verdict": "FALSE",
+    "reason": "No highway linking Panama to Colombia was opened in 2016 or at any other time. The Darien Gap remains an unbridged break in the Pan-American Highway, with no road connection between the two countries. This event is fabricated — the Darien Gap was not bridged.",
     "verify_count": 1,
-    "consensus_verdict": "TRUE",
+    "consensus_verdict": "FALSE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On April 3, 2016, the ICIJ published the Panama Papers — 11.5 million leaked documents from Mossack Fonseca revealing offshore arrangements of 12 current/former heads of state and 128 other officials from 200 countries. It was the largest journalistic leak in history at that time.",
-        "source": "https://en.wikipedia.org/wiki/Panama_Papers",
+        "verdict": "FALSE",
+        "reason": "No highway linking Panama to Colombia was opened in 2016 or at any other time. The Darien Gap remains an unbridged break in the Pan-American Highway, with no road connection between the two countries. This event is fabricated — the Darien Gap was not bridged.",
+        "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
           "method": "web_search"
         }
       }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Panama_Papers"
+    ]
   },
   {
     "year": 2016,
@@ -1273,27 +1272,28 @@
   },
   {
     "year": 2016,
-    "title": "Panama and Colombia Open Colon-Bogota Highway Link",
-    "verdict": "FALSE",
-    "reason": "No highway linking Panama to Colombia was opened in 2016 or at any other time. The Darien Gap remains an unbridged break in the Pan-American Highway, with no road connection between the two countries. This event is fabricated — the Darien Gap was not bridged.",
+    "title": "Panama Papers Expose Global Offshore Financial System",
+    "verdict": "TRUE",
+    "reason": "On April 3, 2016, the ICIJ published the Panama Papers — 11.5 million leaked documents from Mossack Fonseca revealing offshore arrangements of 12 current/former heads of state and 128 other officials from 200 countries. It was the largest journalistic leak in history at that time.",
     "verify_count": 1,
-    "consensus_verdict": "FALSE",
+    "consensus_verdict": "TRUE",
     "consensus_status": "single",
     "needs_tiebreak": false,
     "source_independence": "n/a",
     "verifications": [
       {
         "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "No highway linking Panama to Colombia was opened in 2016 or at any other time. The Darien Gap remains an unbridged break in the Pan-American Highway, with no road connection between the two countries. This event is fabricated — the Darien Gap was not bridged.",
-        "source": null,
+        "verdict": "TRUE",
+        "reason": "On April 3, 2016, the ICIJ published the Panama Papers — 11.5 million leaked documents from Mossack Fonseca revealing offshore arrangements of 12 current/former heads of state and 128 other officials from 200 countries. It was the largest journalistic leak in history at that time.",
+        "source": "https://en.wikipedia.org/wiki/Panama_Papers",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
           "method": "web_search"
         }
       }
-    ]
+    ],
+    "source": "https://en.wikipedia.org/wiki/Panama_Papers"
   },
   {
     "year": 2017,
@@ -1319,6 +1319,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/China%E2%80%93Panama_relations"
+  },
+  {
+    "year": 2017,
+    "title": "Panama Qualifies for Its First-Ever FIFA World Cup",
+    "verdict": "TRUE",
+    "reason": "Multiple independent, authoritative sources corroborate every material detail: (1) On October 10, 2017, Panama beat Costa Rica 2-1 in the final round of CONCACAF World Cup qualifying, with Roman Torres scoring the winner in the 88th minute, securing Panama's first-ever FIFA World Cup berth and eliminating the United States (confirmed by ESPN, CONCACAF.com, Tico Times, and Sounder At Heart). (2) President Juan Carlos Varela declared the following day a national holiday to celebrate (confirmed by ESPN and Remezcla, with Varela's own quote: \"Tomorrow will be a national holiday\"). (3) Panama subsequently played at the 2018 World Cup in Russia, where Felipe Baloy scored the country's first-ever World Cup goal (in the 78th minute against England on June 24, 2018), confirmed by CONCACAF.com, FIFA.com, and Valley News. All dates, scores, names, and sequence of events match the description exactly with no material discrepancies.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed by multiple independent, authoritative sources. On October 10, 2017, Roman Torres scored in the 88th minute to give Panama a 2-1 win over Costa Rica in the final round of CONCACAF World Cup qualifying, securing Panama's first-ever World Cup berth. The same day's results (combined with the USA's own 2-1 loss to Trinidad and Tobago) eliminated the United States from qualification — widely reported jointly as \"Panama qualifies, USA eliminated.\" President Juan Carlos Varela declared the following day a national holiday. Panama subsequently played at the 2018 World Cup in Russia, and Felipe Baloy scored Panama's first-ever World Cup goal (vs. England, in Panama's second group match) — confirming the substantive claim that Baloy scored the country's first World Cup goal. All material details (date, score, scorer, minute, opponent, consequence for USA, presidential holiday declaration, Baloy's historic goal) check out across ESPN, CONCACAF.com, and Sounder At Heart independently.",
+        "source": "https://www.espn.com/soccer/story/_/id/37621441/panama-usmnt-forever-remember-oct-10-2017-very-different-reasons",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources corroborate every material detail: (1) On October 10, 2017, Panama beat Costa Rica 2-1 in the final round of CONCACAF World Cup qualifying, with Roman Torres scoring the winner in the 88th minute, securing Panama's first-ever FIFA World Cup berth and eliminating the United States (confirmed by ESPN, CONCACAF.com, Tico Times, and Sounder At Heart). (2) President Juan Carlos Varela declared the following day a national holiday to celebrate (confirmed by ESPN and Remezcla, with Varela's own quote: \"Tomorrow will be a national holiday\"). (3) Panama subsequently played at the 2018 World Cup in Russia, where Felipe Baloy scored the country's first-ever World Cup goal (in the 78th minute against England on June 24, 2018), confirmed by CONCACAF.com, FIFA.com, and Valley News. All dates, scores, names, and sequence of events match the description exactly with no material discrepancies.",
+        "source": "https://www.espn.com/soccer/story/_/id/37621441/panama-usmnt-forever-remember-oct-10-2017-very-different-reasons",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.espn.com/soccer/story/_/id/37621441/panama-usmnt-forever-remember-oct-10-2017-very-different-reasons"
   },
   {
     "year": 2018,
@@ -1422,31 +1458,6 @@
   },
   {
     "year": 2021,
-    "title": "Panama Returns to FATF Gray List on Money Laundering",
-    "verdict": "TRUE",
-    "reason": "In June 2021, the FATF placed Panama back on its increased-monitoring gray list after Panama failed to fulfill its action plan by January 2021. This was Panama's second gray-list placement (first was 2014-2016). Panama was ultimately delisted in October 2023.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "In June 2021, the FATF placed Panama back on its increased-monitoring gray list after Panama failed to fulfill its action plan by January 2021. This was Panama's second gray-list placement (first was 2014-2016). Panama was ultimately delisted in October 2023.",
-        "source": "https://thedialogue.org/analysis/why-is-panama-back-on-the-fatfs-gray-list",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://thedialogue.org/analysis/why-is-panama-back-on-the-fatfs-gray-list"
-  },
-  {
-    "year": 2021,
     "title": "Darien Gap Migration Surge Reaches Record Levels",
     "verdict": "TRUE",
     "reason": "Approximately 133,000 migrants crossed the Darien Gap in 2021, a record at the time, including Haitians, Cubans, Venezuelans, and people from Africa and Asia. Panama was overwhelmed by the humanitarian challenge of processing the influx.",
@@ -1469,6 +1480,31 @@
       }
     ],
     "source": "https://www.unhcr.org/news/press-releases/number-venezuelans-crossing-darien-gap-soars"
+  },
+  {
+    "year": 2021,
+    "title": "Panama Returns to FATF Gray List on Money Laundering",
+    "verdict": "TRUE",
+    "reason": "In June 2021, the FATF placed Panama back on its increased-monitoring gray list after Panama failed to fulfill its action plan by January 2021. This was Panama's second gray-list placement (first was 2014-2016). Panama was ultimately delisted in October 2023.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In June 2021, the FATF placed Panama back on its increased-monitoring gray list after Panama failed to fulfill its action plan by January 2021. This was Panama's second gray-list placement (first was 2014-2016). Panama was ultimately delisted in October 2023.",
+        "source": "https://thedialogue.org/analysis/why-is-panama-back-on-the-fatfs-gray-list",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://thedialogue.org/analysis/why-is-panama-back-on-the-fatfs-gray-list"
   },
   {
     "year": 2022,
@@ -1497,9 +1533,9 @@
   },
   {
     "year": 2023,
-    "title": "Martinelli Convicted of Money Laundering",
+    "title": "Canal Drought Reaches Crisis Level; Vessel Backlogs",
     "verdict": "TRUE",
-    "reason": "On July 18, 2023, former President Martinelli was sentenced to 10 years and 8 months in prison for money laundering — specifically using ~$44 million from companies with government contracts to purchase the newspaper publisher Editora Panama America. He subsequently sought asylum in the Nicaraguan embassy.",
+    "reason": "Gatun Lake fell to historic lows in late 2023 under severe El Nino drought, forcing the Panama Canal Authority to reduce daily transits from 34-36 to as low as 18 ships. Hundreds of vessels queued for weeks at both entrances. The crisis caused billions in additional shipping costs.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1509,8 +1545,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "On July 18, 2023, former President Martinelli was sentenced to 10 years and 8 months in prison for money laundering — specifically using ~$44 million from companies with government contracts to purchase the newspaper publisher Editora Panama America. He subsequently sought asylum in the Nicaraguan embassy.",
-        "source": "https://www.aljazeera.com/news/2023/7/18/panamas-ex-president-sentenced-to-10-years-for-money-laundering",
+        "reason": "Gatun Lake fell to historic lows in late 2023 under severe El Nino drought, forcing the Panama Canal Authority to reduce daily transits from 34-36 to as low as 18 ships. Hundreds of vessels queued for weeks at both entrances. The crisis caused billions in additional shipping costs.",
+        "source": "https://www.cnbc.com/2023/11/03/panama-canal-drought-hits-new-crisis-level-amid-severe-el-nino.html",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1518,7 +1554,7 @@
         }
       }
     ],
-    "source": "https://www.aljazeera.com/news/2023/7/18/panamas-ex-president-sentenced-to-10-years-for-money-laundering"
+    "source": "https://www.cnbc.com/2023/11/03/panama-canal-drought-hits-new-crisis-level-amid-severe-el-nino.html"
   },
   {
     "year": 2023,
@@ -1547,9 +1583,9 @@
   },
   {
     "year": 2023,
-    "title": "Canal Drought Reaches Crisis Level; Vessel Backlogs",
+    "title": "Martinelli Convicted of Money Laundering",
     "verdict": "TRUE",
-    "reason": "Gatun Lake fell to historic lows in late 2023 under severe El Nino drought, forcing the Panama Canal Authority to reduce daily transits from 34-36 to as low as 18 ships. Hundreds of vessels queued for weeks at both entrances. The crisis caused billions in additional shipping costs.",
+    "reason": "On July 18, 2023, former President Martinelli was sentenced to 10 years and 8 months in prison for money laundering — specifically using ~$44 million from companies with government contracts to purchase the newspaper publisher Editora Panama America. He subsequently sought asylum in the Nicaraguan embassy.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1559,8 +1595,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Gatun Lake fell to historic lows in late 2023 under severe El Nino drought, forcing the Panama Canal Authority to reduce daily transits from 34-36 to as low as 18 ships. Hundreds of vessels queued for weeks at both entrances. The crisis caused billions in additional shipping costs.",
-        "source": "https://www.cnbc.com/2023/11/03/panama-canal-drought-hits-new-crisis-level-amid-severe-el-nino.html",
+        "reason": "On July 18, 2023, former President Martinelli was sentenced to 10 years and 8 months in prison for money laundering — specifically using ~$44 million from companies with government contracts to purchase the newspaper publisher Editora Panama America. He subsequently sought asylum in the Nicaraguan embassy.",
+        "source": "https://www.aljazeera.com/news/2023/7/18/panamas-ex-president-sentenced-to-10-years-for-money-laundering",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -1568,32 +1604,7 @@
         }
       }
     ],
-    "source": "https://www.cnbc.com/2023/11/03/panama-canal-drought-hits-new-crisis-level-amid-severe-el-nino.html"
-  },
-  {
-    "year": 2024,
-    "title": "Jose Raul Mulino Wins Presidency Amid Martinelli Drama",
-    "verdict": "TRUE",
-    "reason": "Jose Raul Mulino won the May 5, 2024 presidential election with ~34% of the vote as a substitute candidate after Martinelli was disqualified. Martinelli remained in the Nicaraguan embassy in Panama seeking asylum during the campaign. Mulino inherited challenges including the Cobre Panama mine closure and the Darien migration crisis.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Jose Raul Mulino won the May 5, 2024 presidential election with ~34% of the vote as a substitute candidate after Martinelli was disqualified. Martinelli remained in the Nicaraguan embassy in Panama seeking asylum during the campaign. Mulino inherited challenges including the Cobre Panama mine closure and the Darien migration crisis.",
-        "source": "https://en.wikipedia.org/wiki/Jos%C3%A9_Ra%C3%BAl_Mulino",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Jos%C3%A9_Ra%C3%BAl_Mulino"
+    "source": "https://www.aljazeera.com/news/2023/7/18/panamas-ex-president-sentenced-to-10-years-for-money-laundering"
   },
   {
     "year": 2024,
@@ -1619,5 +1630,30 @@
       }
     ],
     "source": "https://www.nbcnews.com/news/latino/migrants-darien-gap-fewer-crossing-rcna186184"
+  },
+  {
+    "year": 2024,
+    "title": "Jose Raul Mulino Wins Presidency Amid Martinelli Drama",
+    "verdict": "TRUE",
+    "reason": "Jose Raul Mulino won the May 5, 2024 presidential election with ~34% of the vote as a substitute candidate after Martinelli was disqualified. Martinelli remained in the Nicaraguan embassy in Panama seeking asylum during the campaign. Mulino inherited challenges including the Cobre Panama mine closure and the Darien migration crisis.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Jose Raul Mulino won the May 5, 2024 presidential election with ~34% of the vote as a substitute candidate after Martinelli was disqualified. Martinelli remained in the Nicaraguan embassy in Panama seeking asylum during the campaign. Mulino inherited challenges including the Cobre Panama mine closure and the Darien migration crisis.",
+        "source": "https://en.wikipedia.org/wiki/Jos%C3%A9_Ra%C3%BAl_Mulino",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Jos%C3%A9_Ra%C3%BAl_Mulino"
   }
 ]

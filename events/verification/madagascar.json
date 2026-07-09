@@ -24,6 +24,44 @@
     ]
   },
   {
+    "year": 1952,
+    "title": "Forced Labor Formally Abolished in French Madagascar",
+    "verdict": "FALSE",
+    "reason": "The formal abolition of the prestation forced-labor system across French colonial territories, including Madagascar, was enacted by law no. 46-645 of 11 April 1946 (the 'Loi Houphouët-Boigny'), following the 1944 Brazzaville Conference recommendations and post-WWII international pressure. Multiple independent sources (EHNE/Sorbonne encyclopedia, France Info) confirm this 1946 date and describe exactly the pattern in the description (formal abolition while economic coercion persisted in practice). 1952 instead corresponds to a different, later French law (Loi n° 52-1322 du 15 décembre 1952) that established a broader 'Code du travail' (labor code) for overseas territories, regulating wages/conditions -- it was not the act that abolished forced labor, since that had already been abolished six years earlier. The year is materially wrong by 6 years, so this does not verify as described for 1952.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event is real in substance but the year is wrong. France's formal abolition of forced/prestation labor across its colonial territories — including Madagascar — was enacted by the \"Loi Houphouët-Boigny\" (Law No. 46-645), adopted 11 April 1946, following the 1944 Brazzaville Conference commitments and post-war international/domestic pressure. Multiple independent sources converge on 1946, not 1952: Wikipedia's Félix Houphouët-Boigny article confirms the law's 11 April 1946 date; the EHNE (Encyclopédie d'histoire numérique de l'Europe) entry on forced labor in European colonies states the possibility of forced labor \"remained law until 1946\" when the indigénat/forced-labor regime was suppressed; a World History summary of Madagascar's colonial period states \"Only at the end of 1946 was compulsory labour abolished, after much opposition from the representatives of the French settlers,\" specifically in the Madagascar context (and notes settlers subsequently defied the ban in coffee regions in 1946-47, feeding into the 1947 uprising); and the Wikipedia \"Indigénat\" article places the legal dismantling of the forced-labor/native-code regime in the 1944-1947 phase. No source found ties a comparable formal abolition event to 1952 for Madagascar or French colonies generally (1952 instead corresponds to a later, broader \"Code du travail des territoires d'outre-mer,\" which is a distinct labor-code event, not the forced-labor abolition described). Description substance (symbolic abolition following international pressure, continued de facto economic coercion) matches the 1946 law closely, so this looks like a straightforward year mislabel of a real event.",
+        "source": "https://en.wikipedia.org/wiki/F%C3%A9lix_Houphou%C3%ABt-Boigny",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1946
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The formal abolition of the prestation forced-labor system across French colonial territories, including Madagascar, was enacted by law no. 46-645 of 11 April 1946 (the 'Loi Houphouët-Boigny'), following the 1944 Brazzaville Conference recommendations and post-WWII international pressure. Multiple independent sources (EHNE/Sorbonne encyclopedia, France Info) confirm this 1946 date and describe exactly the pattern in the description (formal abolition while economic coercion persisted in practice). 1952 instead corresponds to a different, later French law (Loi n° 52-1322 du 15 décembre 1952) that established a broader 'Code du travail' (labor code) for overseas territories, regulating wages/conditions -- it was not the act that abolished forced labor, since that had already been abolished six years earlier. The year is materially wrong by 6 years, so this does not verify as described for 1952.",
+        "source": "https://ehne.fr/en/encyclopedia/themes/europe-europeans-and-world/forced-migration-and-work-in-european-colonies/forced-labor-in-european-colonies",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 1946
+      }
+    ],
+    "source": "https://ehne.fr/en/encyclopedia/themes/europe-europeans-and-world/forced-migration-and-work-in-european-colonies/forced-labor-in-european-colonies"
+  },
+  {
     "year": 1956,
     "title": "Loi Cadre Grants Madagascar Internal Autonomy",
     "verdict": "TRUE",
@@ -144,6 +182,42 @@
     ]
   },
   {
+    "year": 1970,
+    "title": "Southern Drought Triggers Famine in Grand Sud Region",
+    "verdict": "TRUE",
+    "reason": "Independently corroborated by two separate English Wikipedia articles. The \"Kere (famine)\" article lists a documented famine cycle named \"Menaleogne\"/\"Zaramofo\" spanning 1970-1972 in Madagascar's Deep South (Grand Sud), triggered by drought/El Niño, severe enough that the government distributed emergency bread aid and it later triggered a proclamation of Antandroy secession. The separate \"Rotaka\" article independently confirms that \"impoverished peasants in Androy\" rose up in 1971 in part due to \"the failure of the government to provide disaster relief in response to a serious drought,\" and that a Kere famine event in the south around this time fed into the 1971-72 rotaka uprising that toppled President Tsiranana's government. Both sources agree on country (Madagascar), region (Androy/Deep South, encompassing the Androy and Mahafaly areas), the causal mechanism (drought → famine, \"Kere\"), and the timeframe (1970-1972, matching the given start year of 1970). The specific magnitude (\"hundreds of thousands affected\") and the \"international\" (vs. domestic government) framing of food aid were not independently quantified/confirmed in the sources found, but these are minor, plausible details consistent with the well-documented scale of the region's recurring Kere famines, and do not contradict the core, well-corroborated event. No off-limits domains were used.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent corroboration found: Wikipedia's \"Kere (famine)\" article contains a historical table entry for a famine named \"Menaleogne\" ('Red Pounder'), also called \"Zaramofo\" ('Distribution of Bread'), dated 1970–1972, caused by El Niño-driven drought, geographically scoped to Madagascar's \"Deep South\" (the region comprising Androy and Mahafaly territories, i.e. the Grand Sud), with impact described as having \"triggered proclamation of Antandroy secession\" — the government distributed bread as emergency food aid during the crisis. This matches the core claims: country (Madagascar), year (1970 as the drought/famine's start year, continuing into 1971-72), region and affected peoples (Grand Sud, Androy, Mahafaly), causal mechanism (drought), and emergency food-aid response. Related searches on the 1971-72 \"Rotaka\" uprising and Antandroy unrest corroborate that a severe famine/drought crisis in this exact period and region fed into major political consequences, consistent with the description's claim that \"the crisis highlighted the chronic vulnerability of southern Madagascar to climate variability.\" One detail is not independently confirmed: the description specifies \"international food aid,\" whereas my best source describes government-distributed bread aid rather than explicitly international assistance — a minor, non-disqualifying gap given the other strong matches on country, year, region, cause, and scale of crisis. No off-limits domains were used (none were listed as off-limits).",
+        "source": "https://en.wikipedia.org/wiki/Kere_(famine)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated by two separate English Wikipedia articles. The \"Kere (famine)\" article lists a documented famine cycle named \"Menaleogne\"/\"Zaramofo\" spanning 1970-1972 in Madagascar's Deep South (Grand Sud), triggered by drought/El Niño, severe enough that the government distributed emergency bread aid and it later triggered a proclamation of Antandroy secession. The separate \"Rotaka\" article independently confirms that \"impoverished peasants in Androy\" rose up in 1971 in part due to \"the failure of the government to provide disaster relief in response to a serious drought,\" and that a Kere famine event in the south around this time fed into the 1971-72 rotaka uprising that toppled President Tsiranana's government. Both sources agree on country (Madagascar), region (Androy/Deep South, encompassing the Androy and Mahafaly areas), the causal mechanism (drought → famine, \"Kere\"), and the timeframe (1970-1972, matching the given start year of 1970). The specific magnitude (\"hundreds of thousands affected\") and the \"international\" (vs. domestic government) framing of food aid were not independently quantified/confirmed in the sources found, but these are minor, plausible details consistent with the well-documented scale of the region's recurring Kere famines, and do not contradict the core, well-corroborated event. No off-limits domains were used.",
+        "source": "https://en.wikipedia.org/wiki/Kere_(famine)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Kere_(famine)"
+  },
+  {
     "year": 1971,
     "title": "Peasant Revolt and Urban Labor Strikes Challenge Tsiranana Rule",
     "verdict": "TRUE",
@@ -169,30 +243,6 @@
   },
   {
     "year": 1972,
-    "title": "May Revolution Overthrows Tsiranana, Ends First Republic",
-    "verdict": "TRUE",
-    "reason": "Confirmed. Mass protests from May 1972. Tsiranana transferred power to General Ramanantsoa. Demands included end of French neocolonial dominance.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed. Mass protests from May 1972. Tsiranana transferred power to General Ramanantsoa. Demands included end of French neocolonial dominance.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1972,
     "title": "French Cooperation Accords Renegotiated, Military Expelled",
     "verdict": "TRUE",
     "reason": "Confirmed. Ramanantsoa government renegotiated the French cooperation accords, expelled French military, and withdrew from the Franc Zone.",
@@ -206,6 +256,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Confirmed. Ramanantsoa government renegotiated the French cooperation accords, expelled French military, and withdrew from the Franc Zone.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1972,
+    "title": "May Revolution Overthrows Tsiranana, Ends First Republic",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Mass protests from May 1972. Tsiranana transferred power to General Ramanantsoa. Demands included end of French neocolonial dominance.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Mass protests from May 1972. Tsiranana transferred power to General Ramanantsoa. Demands included end of French neocolonial dominance.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -528,6 +602,42 @@
     ]
   },
   {
+    "year": 1994,
+    "title": "Cyclone Geralda Devastates Vanilla Plantations in Northeast",
+    "verdict": "FALSE",
+    "reason": "Cyclone Geralda is a real, well-documented storm, but its documented facts contradict the event as described on two material axes — location and magnitude — with no independent evidence supporting the vanilla-plantation claim. Geralda formed 26 Jan 1994 and made landfall on 2 Feb 1994 'just north of Toamasina' (east-central Madagascar), not in the northeastern Sava/vanilla region (Sambava-Antalaha-Vohemar-Andapa). Its worst-hit areas per Wikipedia/NOAA/reliefweb sources were Toamasina province and the capital Antananarivo (43 deaths from flooding there). The national death toll was 'at least 231, with 73 missing' — roughly 3x the '70' claimed. No source found (English or French) documents Geralda destroying vanilla-plantation infrastructure in Sava specifically; general crop-damage figures cited are national (rice, cattle, 'export crops like vanilla and coffee' as a generic phrase, not Sava-specific). Notably, a different storm — Cyclone Nadia — did make landfall in the Sava region near Antalaha/Vohemar, but in March 1994 (not January) and killed only 12 people, not 70. The described event appears to conflate the real, large Toamasina-area cyclone (Geralda, 231 dead) with the real but much smaller Sava-region cyclone (Nadia, 12 dead, wrong month) into a hybrid narrative that matches neither storm's actual location/toll. Country and storm-year are correct, but the core described event (where it struck, how many died, and the vanilla-plantation devastation) is not supported and is contradicted by primary sources.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Cyclone Geralda did strike Madagascar in 1994 (formed 26 Jan, made landfall 2 Feb), but every independently corroborated detail of this event contradicts the description. Multiple independent sources (Wikipedia, NOAA/AOML, ReliefWeb-sourced summaries) agree Geralda made landfall just north of Toamasina, on Madagascar's central-east coast — not in the Sava region of the northeast, which is roughly 500+ km away and is the country's vanilla-growing heartland (Antalaha/Sambava/Vohemar). Regional impact reports name Toamasina, Île Sainte-Marie, Fénérive, Brickaville, and Antananarivo — never Sava, Antalaha, or Sambava. The death toll is also materially wrong: sources consistently give 231 dead (with 73 missing), not 70. No source found (English or French-language searches) ties Cyclone Geralda to vanilla plantation destruction; well-documented vanilla-crop cyclone disasters in Madagascar's history are the 2000 cyclone and 2017's Cyclone Enawo, not Geralda in 1994. Given the wrong region (which undercuts the entire vanilla-plantation premise) plus a >3x death-toll discrepancy, this is not a minor magnitude slip but a materially false account, so verdict is FALSE rather than PARTIAL. Year is not the issue (1994 is correct for Geralda), so corrected_year is left null.",
+        "source": "https://en.wikipedia.org/wiki/Cyclone_Geralda",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Cyclone Geralda is a real, well-documented storm, but its documented facts contradict the event as described on two material axes — location and magnitude — with no independent evidence supporting the vanilla-plantation claim. Geralda formed 26 Jan 1994 and made landfall on 2 Feb 1994 'just north of Toamasina' (east-central Madagascar), not in the northeastern Sava/vanilla region (Sambava-Antalaha-Vohemar-Andapa). Its worst-hit areas per Wikipedia/NOAA/reliefweb sources were Toamasina province and the capital Antananarivo (43 deaths from flooding there). The national death toll was 'at least 231, with 73 missing' — roughly 3x the '70' claimed. No source found (English or French) documents Geralda destroying vanilla-plantation infrastructure in Sava specifically; general crop-damage figures cited are national (rice, cattle, 'export crops like vanilla and coffee' as a generic phrase, not Sava-specific). Notably, a different storm — Cyclone Nadia — did make landfall in the Sava region near Antalaha/Vohemar, but in March 1994 (not January) and killed only 12 people, not 70. The described event appears to conflate the real, large Toamasina-area cyclone (Geralda, 231 dead) with the real but much smaller Sava-region cyclone (Nadia, 12 dead, wrong month) into a hybrid narrative that matches neither storm's actual location/toll. Country and storm-year are correct, but the core described event (where it struck, how many died, and the vanilla-plantation devastation) is not supported and is contradicted by primary sources.",
+        "source": "https://en.wikipedia.org/wiki/Cyclone_Geralda",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Cyclone_Geralda"
+  },
+  {
     "year": 1996,
     "title": "President Zafy Impeached by National Assembly",
     "verdict": "TRUE",
@@ -625,30 +735,6 @@
   },
   {
     "year": 2002,
-    "title": "Disputed Election Creates Dual Government and Near Civil Conflict",
-    "verdict": "TRUE",
-    "reason": "Confirmed. Disputed December 2001 election. Ravalomanana declared himself president February 2002. General strike, roadblocks, dual-government crisis confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed. Disputed December 2001 election. Ravalomanana declared himself president February 2002. General strike, roadblocks, dual-government crisis confirmed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2002,
     "title": "Constitutional Court Rules for Ravalomanana, Ratsiraka Flees to Exile",
     "verdict": "TRUE",
     "reason": "Confirmed. High Constitutional Court ruled for Ravalomanana. Ratsiraka fled to France. Crisis resolved.",
@@ -662,6 +748,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Confirmed. High Constitutional Court ruled for Ravalomanana. Ratsiraka fled to France. Crisis resolved.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2002,
+    "title": "Disputed Election Creates Dual Government and Near Civil Conflict",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Disputed December 2001 election. Ravalomanana declared himself president February 2002. General strike, roadblocks, dual-government crisis confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Disputed December 2001 election. Ravalomanana declared himself president February 2002. General strike, roadblocks, dual-government crisis confirmed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -817,30 +927,6 @@
   },
   {
     "year": 2009,
-    "title": "US and EU Suspend Hundreds of Millions in Aid After Coup",
-    "verdict": "TRUE",
-    "reason": "Confirmed. US and EU suspended aid. AGOA trade preferences withdrawn. Garment sector devastated, factory closures, tens of thousands of jobs lost.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed. US and EU suspended aid. AGOA trade preferences withdrawn. Garment sector devastated, factory closures, tens of thousands of jobs lost.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2009,
     "title": "Post-Coup Rosewood Logging Crisis Devastates Northern National Parks",
     "verdict": "TRUE",
     "reason": "Confirmed. Organized illegal rosewood logging operations in Marojejy and Masoala national parks after political collapse. Criminal networks exploited the vacuum; exports to China documented by Global Witness.",
@@ -854,6 +940,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Confirmed. Organized illegal rosewood logging operations in Marojejy and Masoala national parks after political collapse. Criminal networks exploited the vacuum; exports to China documented by Global Witness.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2009,
+    "title": "US and EU Suspend Hundreds of Millions in Aid After Coup",
+    "verdict": "TRUE",
+    "reason": "Confirmed. US and EU suspended aid. AGOA trade preferences withdrawn. Garment sector devastated, factory closures, tens of thousands of jobs lost.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. US and EU suspended aid. AGOA trade preferences withdrawn. Garment sector devastated, factory closures, tens of thousands of jobs lost.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -913,30 +1023,6 @@
   },
   {
     "year": 2013,
-    "title": "Presidential Elections Restore Constitutional Rule, End Transition",
-    "verdict": "TRUE",
-    "reason": "Confirmed. Hery Rajaonarimampianina won 2013 election. International observers judged it broadly credible. Aid programs resumed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Confirmed. Hery Rajaonarimampianina won 2013 election. International observers judged it broadly credible. Aid programs resumed.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2013,
     "title": "Ambatovy Nickel Mine Begins Commercial Production",
     "verdict": "TRUE",
     "reason": "Confirmed. Ambatovy reached commercial production January 2013. Nameplate capacity 60,000 tonnes nickel and 5,600 tonnes cobalt annually.",
@@ -950,6 +1036,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Confirmed. Ambatovy reached commercial production January 2013. Nameplate capacity 60,000 tonnes nickel and 5,600 tonnes cobalt annually.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2013,
+    "title": "Presidential Elections Restore Constitutional Rule, End Transition",
+    "verdict": "TRUE",
+    "reason": "Confirmed. Hery Rajaonarimampianina won 2013 election. International observers judged it broadly credible. Aid programs resumed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed. Hery Rajaonarimampianina won 2013 election. International observers judged it broadly credible. Aid programs resumed.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1032,6 +1142,42 @@
     ]
   },
   {
+    "year": 2019,
+    "title": "Madagascar's 'Barea' Reach AFCON Quarterfinals on Tournament Debut",
+    "verdict": "TRUE",
+    "reason": "Independently corroborated across multiple sports news outlets: Madagascar (nicknamed the Barea) made their first-ever AFCON appearance in 2019, topped Group B with a 1-0 win over Burundi, a 2-2 draw with Guinea, and a 2-0 win over Nigeria, then beat DR Congo 4-2 on penalties (after a 2-2 draw) on 7 July 2019 to reach the quarterfinals in their tournament debut. The \"Iceland of Africa\" nickname and the nationwide celebration narrative are widely reported by France24, Guardian Nigeria, Nation Africa, ESPN, Goal.com, Legit.ng, and Punch Newspapers. All material details (year, country, opponents, scorelines, tournament stage) match the description exactly.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via multiple sports-news outlets: Madagascar made its first-ever AFCON appearance in 2019, topped Group B (beat Burundi, beat Nigeria 2-0, drew Guinea 2-2), then beat DR Congo 4-2 on penalties (after a 2-2 draw through extra time) in the Round of 16 on 7 July 2019 to reach the quarterfinals. Pundits explicitly dubbed the run \"the Iceland of Africa.\" The team received a hero's welcome, presidential honors, and knighthoods on return home, confirming nationwide celebration. All material details in the description match.",
+        "source": "https://guardian.ng/sport/madagascar-edge-dr-congo-on-penalties-to-keep-dream-run-alive/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across multiple sports news outlets: Madagascar (nicknamed the Barea) made their first-ever AFCON appearance in 2019, topped Group B with a 1-0 win over Burundi, a 2-2 draw with Guinea, and a 2-0 win over Nigeria, then beat DR Congo 4-2 on penalties (after a 2-2 draw) on 7 July 2019 to reach the quarterfinals in their tournament debut. The \"Iceland of Africa\" nickname and the nationwide celebration narrative are widely reported by France24, Guardian Nigeria, Nation Africa, ESPN, Goal.com, Legit.ng, and Punch Newspapers. All material details (year, country, opponents, scorelines, tournament stage) match the description exactly.",
+        "source": "https://www.france24.com/en/20190707-africa-cup-nations-round-16-madagascar-win-dr-congo-algeria-guinea",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.france24.com/en/20190707-africa-cup-nations-round-16-madagascar-win-dr-congo-algeria-guinea"
+  },
+  {
     "year": 2020,
     "title": "COVID-19 Pandemic Eliminates Tourism Revenue, Government Promotes Unproven Remedy",
     "verdict": "TRUE",
@@ -1104,78 +1250,6 @@
     ]
   },
   {
-    "year": 1994,
-    "title": "Cyclone Geralda Devastates Vanilla Plantations in Northeast",
-    "verdict": "FALSE",
-    "reason": "Cyclone Geralda is a real, well-documented storm, but its documented facts contradict the event as described on two material axes — location and magnitude — with no independent evidence supporting the vanilla-plantation claim. Geralda formed 26 Jan 1994 and made landfall on 2 Feb 1994 'just north of Toamasina' (east-central Madagascar), not in the northeastern Sava/vanilla region (Sambava-Antalaha-Vohemar-Andapa). Its worst-hit areas per Wikipedia/NOAA/reliefweb sources were Toamasina province and the capital Antananarivo (43 deaths from flooding there). The national death toll was 'at least 231, with 73 missing' — roughly 3x the '70' claimed. No source found (English or French) documents Geralda destroying vanilla-plantation infrastructure in Sava specifically; general crop-damage figures cited are national (rice, cattle, 'export crops like vanilla and coffee' as a generic phrase, not Sava-specific). Notably, a different storm — Cyclone Nadia — did make landfall in the Sava region near Antalaha/Vohemar, but in March 1994 (not January) and killed only 12 people, not 70. The described event appears to conflate the real, large Toamasina-area cyclone (Geralda, 231 dead) with the real but much smaller Sava-region cyclone (Nadia, 12 dead, wrong month) into a hybrid narrative that matches neither storm's actual location/toll. Country and storm-year are correct, but the core described event (where it struck, how many died, and the vanilla-plantation devastation) is not supported and is contradicted by primary sources.",
-    "verify_count": 2,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "double_negative",
-    "needs_tiebreak": false,
-    "source_independence": "weak",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Cyclone Geralda did strike Madagascar in 1994 (formed 26 Jan, made landfall 2 Feb), but every independently corroborated detail of this event contradicts the description. Multiple independent sources (Wikipedia, NOAA/AOML, ReliefWeb-sourced summaries) agree Geralda made landfall just north of Toamasina, on Madagascar's central-east coast — not in the Sava region of the northeast, which is roughly 500+ km away and is the country's vanilla-growing heartland (Antalaha/Sambava/Vohemar). Regional impact reports name Toamasina, Île Sainte-Marie, Fénérive, Brickaville, and Antananarivo — never Sava, Antalaha, or Sambava. The death toll is also materially wrong: sources consistently give 231 dead (with 73 missing), not 70. No source found (English or French-language searches) ties Cyclone Geralda to vanilla plantation destruction; well-documented vanilla-crop cyclone disasters in Madagascar's history are the 2000 cyclone and 2017's Cyclone Enawo, not Geralda in 1994. Given the wrong region (which undercuts the entire vanilla-plantation premise) plus a >3x death-toll discrepancy, this is not a minor magnitude slip but a materially false account, so verdict is FALSE rather than PARTIAL. Year is not the issue (1994 is correct for Geralda), so corrected_year is left null.",
-        "source": "https://en.wikipedia.org/wiki/Cyclone_Geralda",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "FALSE",
-        "reason": "Cyclone Geralda is a real, well-documented storm, but its documented facts contradict the event as described on two material axes — location and magnitude — with no independent evidence supporting the vanilla-plantation claim. Geralda formed 26 Jan 1994 and made landfall on 2 Feb 1994 'just north of Toamasina' (east-central Madagascar), not in the northeastern Sava/vanilla region (Sambava-Antalaha-Vohemar-Andapa). Its worst-hit areas per Wikipedia/NOAA/reliefweb sources were Toamasina province and the capital Antananarivo (43 deaths from flooding there). The national death toll was 'at least 231, with 73 missing' — roughly 3x the '70' claimed. No source found (English or French) documents Geralda destroying vanilla-plantation infrastructure in Sava specifically; general crop-damage figures cited are national (rice, cattle, 'export crops like vanilla and coffee' as a generic phrase, not Sava-specific). Notably, a different storm — Cyclone Nadia — did make landfall in the Sava region near Antalaha/Vohemar, but in March 1994 (not January) and killed only 12 people, not 70. The described event appears to conflate the real, large Toamasina-area cyclone (Geralda, 231 dead) with the real but much smaller Sava-region cyclone (Nadia, 12 dead, wrong month) into a hybrid narrative that matches neither storm's actual location/toll. Country and storm-year are correct, but the core described event (where it struck, how many died, and the vanilla-plantation devastation) is not supported and is contradicted by primary sources.",
-        "source": "https://en.wikipedia.org/wiki/Cyclone_Geralda",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Cyclone_Geralda"
-  },
-  {
-    "year": 1970,
-    "title": "Southern Drought Triggers Famine in Grand Sud Region",
-    "verdict": "TRUE",
-    "reason": "Independently corroborated by two separate English Wikipedia articles. The \"Kere (famine)\" article lists a documented famine cycle named \"Menaleogne\"/\"Zaramofo\" spanning 1970-1972 in Madagascar's Deep South (Grand Sud), triggered by drought/El Niño, severe enough that the government distributed emergency bread aid and it later triggered a proclamation of Antandroy secession. The separate \"Rotaka\" article independently confirms that \"impoverished peasants in Androy\" rose up in 1971 in part due to \"the failure of the government to provide disaster relief in response to a serious drought,\" and that a Kere famine event in the south around this time fed into the 1971-72 rotaka uprising that toppled President Tsiranana's government. Both sources agree on country (Madagascar), region (Androy/Deep South, encompassing the Androy and Mahafaly areas), the causal mechanism (drought → famine, \"Kere\"), and the timeframe (1970-1972, matching the given start year of 1970). The specific magnitude (\"hundreds of thousands affected\") and the \"international\" (vs. domestic government) framing of food aid were not independently quantified/confirmed in the sources found, but these are minor, plausible details consistent with the well-documented scale of the region's recurring Kere famines, and do not contradict the core, well-corroborated event. No off-limits domains were used.",
-    "verify_count": 2,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
-    "needs_tiebreak": false,
-    "source_independence": "weak",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Independent corroboration found: Wikipedia's \"Kere (famine)\" article contains a historical table entry for a famine named \"Menaleogne\" ('Red Pounder'), also called \"Zaramofo\" ('Distribution of Bread'), dated 1970–1972, caused by El Niño-driven drought, geographically scoped to Madagascar's \"Deep South\" (the region comprising Androy and Mahafaly territories, i.e. the Grand Sud), with impact described as having \"triggered proclamation of Antandroy secession\" — the government distributed bread as emergency food aid during the crisis. This matches the core claims: country (Madagascar), year (1970 as the drought/famine's start year, continuing into 1971-72), region and affected peoples (Grand Sud, Androy, Mahafaly), causal mechanism (drought), and emergency food-aid response. Related searches on the 1971-72 \"Rotaka\" uprising and Antandroy unrest corroborate that a severe famine/drought crisis in this exact period and region fed into major political consequences, consistent with the description's claim that \"the crisis highlighted the chronic vulnerability of southern Madagascar to climate variability.\" One detail is not independently confirmed: the description specifies \"international food aid,\" whereas my best source describes government-distributed bread aid rather than explicitly international assistance — a minor, non-disqualifying gap given the other strong matches on country, year, region, cause, and scale of crisis. No off-limits domains were used (none were listed as off-limits).",
-        "source": "https://en.wikipedia.org/wiki/Kere_(famine)",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Independently corroborated by two separate English Wikipedia articles. The \"Kere (famine)\" article lists a documented famine cycle named \"Menaleogne\"/\"Zaramofo\" spanning 1970-1972 in Madagascar's Deep South (Grand Sud), triggered by drought/El Niño, severe enough that the government distributed emergency bread aid and it later triggered a proclamation of Antandroy secession. The separate \"Rotaka\" article independently confirms that \"impoverished peasants in Androy\" rose up in 1971 in part due to \"the failure of the government to provide disaster relief in response to a serious drought,\" and that a Kere famine event in the south around this time fed into the 1971-72 rotaka uprising that toppled President Tsiranana's government. Both sources agree on country (Madagascar), region (Androy/Deep South, encompassing the Androy and Mahafaly areas), the causal mechanism (drought → famine, \"Kere\"), and the timeframe (1970-1972, matching the given start year of 1970). The specific magnitude (\"hundreds of thousands affected\") and the \"international\" (vs. domestic government) framing of food aid were not independently quantified/confirmed in the sources found, but these are minor, plausible details consistent with the well-documented scale of the region's recurring Kere famines, and do not contradict the core, well-corroborated event. No off-limits domains were used.",
-        "source": "https://en.wikipedia.org/wiki/Kere_(famine)",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Kere_(famine)"
-  },
-  {
     "year": 2025,
     "title": "Political Opposition Organizes for Electoral Reform Ahead of Next Cycle",
     "verdict": "FALSE",
@@ -1210,43 +1284,5 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2025_Malagasy_coup_d'%C3%A9tat"
-  },
-  {
-    "year": 1952,
-    "title": "Forced Labor Formally Abolished in French Madagascar",
-    "verdict": "FALSE",
-    "reason": "The formal abolition of the prestation forced-labor system across French colonial territories, including Madagascar, was enacted by law no. 46-645 of 11 April 1946 (the 'Loi Houphouët-Boigny'), following the 1944 Brazzaville Conference recommendations and post-WWII international pressure. Multiple independent sources (EHNE/Sorbonne encyclopedia, France Info) confirm this 1946 date and describe exactly the pattern in the description (formal abolition while economic coercion persisted in practice). 1952 instead corresponds to a different, later French law (Loi n° 52-1322 du 15 décembre 1952) that established a broader 'Code du travail' (labor code) for overseas territories, regulating wages/conditions -- it was not the act that abolished forced labor, since that had already been abolished six years earlier. The year is materially wrong by 6 years, so this does not verify as described for 1952.",
-    "verify_count": 2,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "double_negative",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "The event is real in substance but the year is wrong. France's formal abolition of forced/prestation labor across its colonial territories — including Madagascar — was enacted by the \"Loi Houphouët-Boigny\" (Law No. 46-645), adopted 11 April 1946, following the 1944 Brazzaville Conference commitments and post-war international/domestic pressure. Multiple independent sources converge on 1946, not 1952: Wikipedia's Félix Houphouët-Boigny article confirms the law's 11 April 1946 date; the EHNE (Encyclopédie d'histoire numérique de l'Europe) entry on forced labor in European colonies states the possibility of forced labor \"remained law until 1946\" when the indigénat/forced-labor regime was suppressed; a World History summary of Madagascar's colonial period states \"Only at the end of 1946 was compulsory labour abolished, after much opposition from the representatives of the French settlers,\" specifically in the Madagascar context (and notes settlers subsequently defied the ban in coffee regions in 1946-47, feeding into the 1947 uprising); and the Wikipedia \"Indigénat\" article places the legal dismantling of the forced-labor/native-code regime in the 1944-1947 phase. No source found ties a comparable formal abolition event to 1952 for Madagascar or French colonies generally (1952 instead corresponds to a later, broader \"Code du travail des territoires d'outre-mer,\" which is a distinct labor-code event, not the forced-labor abolition described). Description substance (symbolic abolition following international pressure, continued de facto economic coercion) matches the 1946 law closely, so this looks like a straightforward year mislabel of a real event.",
-        "source": "https://en.wikipedia.org/wiki/F%C3%A9lix_Houphou%C3%ABt-Boigny",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        },
-        "corrected_year": 1946
-      },
-      {
-        "pass_n": 2,
-        "verdict": "FALSE",
-        "reason": "The formal abolition of the prestation forced-labor system across French colonial territories, including Madagascar, was enacted by law no. 46-645 of 11 April 1946 (the 'Loi Houphouët-Boigny'), following the 1944 Brazzaville Conference recommendations and post-WWII international pressure. Multiple independent sources (EHNE/Sorbonne encyclopedia, France Info) confirm this 1946 date and describe exactly the pattern in the description (formal abolition while economic coercion persisted in practice). 1952 instead corresponds to a different, later French law (Loi n° 52-1322 du 15 décembre 1952) that established a broader 'Code du travail' (labor code) for overseas territories, regulating wages/conditions -- it was not the act that abolished forced labor, since that had already been abolished six years earlier. The year is materially wrong by 6 years, so this does not verify as described for 1952.",
-        "source": "https://ehne.fr/en/encyclopedia/themes/europe-europeans-and-world/forced-migration-and-work-in-european-colonies/forced-labor-in-european-colonies",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        },
-        "corrected_year": 1946
-      }
-    ],
-    "source": "https://ehne.fr/en/encyclopedia/themes/europe-europeans-and-world/forced-migration-and-work-in-european-colonies/forced-labor-in-european-colonies"
   }
 ]

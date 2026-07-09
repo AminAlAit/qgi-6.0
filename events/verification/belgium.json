@@ -856,6 +856,42 @@
   },
   {
     "year": 2018,
+    "title": "Belgium's 'Golden Generation' Achieves Best-Ever World Cup Finish",
+    "verdict": "TRUE",
+    "reason": "Confirmed from multiple independent sources: Belgium beat England 2-0 on 14 July 2018 in the third-place playoff match of the 2018 FIFA World Cup in Russia (Hazard's assist to Meunier in the 4th minute, Hazard's own goal in the 82nd minute), securing the best World Cup finish in Belgian history, surpassing their previous best of fourth place in 1986. This followed a dramatic round-of-16 comeback from 2-0 down to beat Japan 3-2 (Vertonghen, Fellaini, and a stoppage-time Chadli winner) — the first team since 1970 West Germany to overturn a two-goal World Cup knockout deficit. The squad (Hazard, De Bruyne, Lukaku, etc.) is widely referred to as Belgium's 'golden generation.' The Brazil quarterfinal upset (Belgium won 2-1) is also well-established historical fact consistent with the description, though not separately re-verified via a fresh search query this pass. All material details — country, year, score, date, historical context — check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via multiple authoritative outlets: Belgium beat England 2-0 on 14 July 2018 (Meunier 4', Hazard 82') to take third place at the 2018 FIFA World Cup in Russia, their best-ever finish, surpassing the previous best of fourth place in 1986. The round-of-16 comeback from 2-0 down to beat Japan 3-2 (Vertonghen, Fellaini, Chadli 94') and the quarterfinal upset of Brazil 2-1 (Kompany, De Bruyne) are both confirmed. The squad (Hazard, De Bruyne, Lukaku) is consistently described in coverage as Belgium's \"golden generation.\" All material details in the description check out.",
+        "source": "https://www.aljazeera.com/sports/2018/7/14/world-cup-2018-belgium-beat-england-to-take-third-spot",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed from multiple independent sources: Belgium beat England 2-0 on 14 July 2018 in the third-place playoff match of the 2018 FIFA World Cup in Russia (Hazard's assist to Meunier in the 4th minute, Hazard's own goal in the 82nd minute), securing the best World Cup finish in Belgian history, surpassing their previous best of fourth place in 1986. This followed a dramatic round-of-16 comeback from 2-0 down to beat Japan 3-2 (Vertonghen, Fellaini, and a stoppage-time Chadli winner) — the first team since 1970 West Germany to overturn a two-goal World Cup knockout deficit. The squad (Hazard, De Bruyne, Lukaku, etc.) is widely referred to as Belgium's 'golden generation.' The Brazil quarterfinal upset (Belgium won 2-1) is also well-established historical fact consistent with the description, though not separately re-verified via a fresh search query this pass. All material details — country, year, score, date, historical context — check out.",
+        "source": "https://www.aljazeera.com/sports/2018/7/14/world-cup-2018-belgium-beat-england-to-take-third-spot",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/sports/2018/7/14/world-cup-2018-belgium-beat-england-to-take-third-spot"
+  },
+  {
+    "year": 2018,
     "title": "N-VA Exits Government Over UN Migration Pact Dispute",
     "verdict": "TRUE",
     "reason": "N-VA withdrew from the governing coalition in December 2018 over Prime Minister Michel's decision to sign the UN Global Compact for Migration in Marrakech; Michel resigned on 18 December after parliament passed a motion of no confidence.",

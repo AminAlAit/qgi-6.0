@@ -1475,5 +1475,79 @@
         }
       }
     ]
+  },
+  {
+    "year": 1963,
+    "title": "Groundnut Basin Cooperative System Established",
+    "verdict": "FALSE",
+    "reason": "The substance of this event is real, but the year is wrong. ONCAD (Office National de Coopération et d'Assistance pour le Développement) — the exact institution the description says \"formalized\" the groundnut cooperative/marketing/credit system — was created by Loi n°66-60 on 30 June 1966, not 1963. This is corroborated independently by: the Senegalese news outlet Senenews (\"30 juin 1966, création de l'ONCAD\"), the ILO's NATLEX international legal database entry for \"Loi no 66-60 du 30 juin 1966 portant création de l'Office national de Coopération et d'Assistance pour le Développement (ONCAD)\", the Senegalese government's own legal-document portal vie-publique.sn (which also holds the 1980 dissolution law, confirming that end-date matches), and the academic journal Politique Africaine (Persée), whose retrospective on ONCAD's agricultural policy is titled \"1966-1980.\" All four independent sources converge on 1966 as the founding year and 1980 as the dissolution year (the dissolution date in the description is correct). Additionally, the description's \"Diouf-era\" framing is itself inconsistent with either 1963 or 1966: ONCAD was a Senghor-era institution (Abdou Diouf did not become President until 1981, a year after ONCAD's dissolution), reinforcing that the described timeline is off. Since the year is a joint key and does not hold (per the verdict rules, a wrong year makes this FALSE rather than PARTIAL, even though country and substance are otherwise correct), I return FALSE with corrected_year 1966.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The description explicitly attributes the formalization of Senegal's groundnut cooperative/marketing system to ONCAD (Office National de Coopération et d'Assistance au Développement). Multiple independent sources (ILO NATLEX legal database, senenews.com, Persée academic journal) confirm ONCAD was created by Loi n°66-60 du 30 juin 1966 — i.e., June 30, 1966 — not 1963. The broader rural cooperative movement in Senegal actually traces to an earlier law of 20 May 1960 under Mamadou Dia (nationalizing groundnut marketing via the Office de Commercialisation Agricole, OCA), which was itself superseded/absorbed by ONCAD in 1966. No source found supports a 1963 founding date for either OCA or ONCAD or any other formal cooperative-system milestone that year. Since the event as described is specifically pegged to ONCAD's formalization, and that occurred in 1966 (three years off from the stated 1963), this is a year error, not a minor detail discrepancy — country and substance (state-supervised groundnut marketing/credit cooperative, later dissolved in 1980, fiscal mismanagement) are otherwise well corroborated for ONCAD.",
+        "source": "https://www.senenews.com/aujourdhui/aujourdhui-30-juin-1966-creation-de-loffice-national-de-cooperation-et-dassistance-pour-le-developpement-oncad_361835.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 1966
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The substance of this event is real, but the year is wrong. ONCAD (Office National de Coopération et d'Assistance pour le Développement) — the exact institution the description says \"formalized\" the groundnut cooperative/marketing/credit system — was created by Loi n°66-60 on 30 June 1966, not 1963. This is corroborated independently by: the Senegalese news outlet Senenews (\"30 juin 1966, création de l'ONCAD\"), the ILO's NATLEX international legal database entry for \"Loi no 66-60 du 30 juin 1966 portant création de l'Office national de Coopération et d'Assistance pour le Développement (ONCAD)\", the Senegalese government's own legal-document portal vie-publique.sn (which also holds the 1980 dissolution law, confirming that end-date matches), and the academic journal Politique Africaine (Persée), whose retrospective on ONCAD's agricultural policy is titled \"1966-1980.\" All four independent sources converge on 1966 as the founding year and 1980 as the dissolution year (the dissolution date in the description is correct). Additionally, the description's \"Diouf-era\" framing is itself inconsistent with either 1963 or 1966: ONCAD was a Senghor-era institution (Abdou Diouf did not become President until 1981, a year after ONCAD's dissolution), reinforcing that the described timeline is off. Since the year is a joint key and does not hold (per the verdict rules, a wrong year makes this FALSE rather than PARTIAL, even though country and substance are otherwise correct), I return FALSE with corrected_year 1966.",
+        "source": "https://www.senenews.com/aujourdhui/aujourdhui-30-juin-1966-creation-de-loffice-national-de-cooperation-et-dassistance-pour-le-developpement-oncad_361835.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 1966
+      }
+    ],
+    "source": "https://www.senenews.com/aujourdhui/aujourdhui-30-juin-1966-creation-de-loffice-national-de-cooperation-et-dassistance-pour-le-developpement-oncad_361835.html"
+  },
+  {
+    "year": 1976,
+    "title": "Full Multiparty System Restored",
+    "verdict": "PARTIAL",
+    "reason": "Country, year, and several core facts check out: Senghor did amend the constitution in 1976 (Law 76-01 of March 19, 1976), the ruling UPS was renamed Parti Socialiste (PS) that year, and Abdoulaye Wade's PDS was legally recognized under the new law. However, the event's central characterization is materially wrong: this was NOT a restoration of \"full multiparty competition\" with restrictions removed. Law 76-01 explicitly restricted legal political activity to exactly three parties, each required to represent one of three predefined ideological 'tendencies' (socialist/social-democrat = PS, liberal/democrat = PDS, Marxist-Leninist = PAI, legalized Aug 1976). A fourth tendency (conservative) was added in 1978 (Law 78-60). Unrestricted multiparty competition — any citizen free to form a party — was only established later, by Law 81-17 of May 6, 1981, under Abdou Diouf. So the 'full multiparty' / 'removed restrictions' framing describes 1981, not 1976; 1976 was a limited/managed three-tendency liberalization. This is a scope/magnitude error material to the event's title and thrust, while year, country, and the PS/PDS details hold — hence PARTIAL, not TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Country and year hold, and several specific facts check out: Senghor did push a constitutional/legal reform in 1976, the ruling UPS was renamed the Parti Socialiste (PS) in 1976 (joined Socialist International Nov 1976, took the PS name Dec 1976), and Abdoulaye Wade's Parti Democratique Senegalais (founded 1974) was legally recognized under this reform. However, the event's core characterization is materially wrong: the 1976 reform (Law 76-01 of 19 March 1976) explicitly LIMITED the number of authorized parties to exactly three, each required to represent one of three pre-defined ideological 'currents' — socialist (PS), liberal-democrat (PDS), and Marxist-Leninist (PAI, led by Majhmout Diop). This was a controlled/restricted pluralism, not 'full multiparty competition' as the description and title claim. A fourth party was permitted only in 1978 (Law 78-60), and genuinely unrestricted multiparty competition (any citizen free to found a party) was established only in 1981 under Abdou Diouf (Law 81-17), which removed the numerical cap entirely — leading eventually to 175+ registered parties. So the description overstates the scope of the 1976 change: it should read as 'limited three-party system restored' rather than 'full multiparty system restored.' This is a scope/magnitude error while country and year are correct, hence PARTIAL rather than TRUE or FALSE.",
+        "source": "https://tsep.africa.ufl.edu/the-party-system-and-conditions-of-candidacy/senegal/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Country, year, and several core facts check out: Senghor did amend the constitution in 1976 (Law 76-01 of March 19, 1976), the ruling UPS was renamed Parti Socialiste (PS) that year, and Abdoulaye Wade's PDS was legally recognized under the new law. However, the event's central characterization is materially wrong: this was NOT a restoration of \"full multiparty competition\" with restrictions removed. Law 76-01 explicitly restricted legal political activity to exactly three parties, each required to represent one of three predefined ideological 'tendencies' (socialist/social-democrat = PS, liberal/democrat = PDS, Marxist-Leninist = PAI, legalized Aug 1976). A fourth tendency (conservative) was added in 1978 (Law 78-60). Unrestricted multiparty competition — any citizen free to form a party — was only established later, by Law 81-17 of May 6, 1981, under Abdou Diouf. So the 'full multiparty' / 'removed restrictions' framing describes 1981, not 1976; 1976 was a limited/managed three-tendency liberalization. This is a scope/magnitude error material to the event's title and thrust, while year, country, and the PS/PDS details hold — hence PARTIAL, not TRUE.",
+        "source": "https://tsep.africa.ufl.edu/the-party-system-and-conditions-of-candidacy/senegal/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://tsep.africa.ufl.edu/the-party-system-and-conditions-of-candidacy/senegal/"
   }
 ]

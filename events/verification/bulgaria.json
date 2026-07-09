@@ -866,6 +866,42 @@
   },
   {
     "year": 1994,
+    "title": "Bulgaria's Golden Generation Reaches 1994 World Cup Semifinal",
+    "verdict": "TRUE",
+    "reason": "All material facts confirmed via independent search. Bulgaria beat defending champion Germany 2-1 in the 1994 World Cup quarterfinal (Stoichkov equalizer 76', Lechkov winner 79', after Matthäus penalty 49') — corroborated by ESPN, worldfootball.net, Wikipedia. Bulgaria then lost 2-1 to Italy in the semifinal (Roberto Baggio brace, Stoichkov penalty) — corroborated by ESPN and multiple retrospectives. This remains Bulgaria's best-ever World Cup finish (4th place), achieved under coach Dimitar Penev — confirmed by his Jan 2026 Washington Post obituary, which explicitly credits him with leading Bulgaria to the 1994 semifinals as its \"biggest success.\" Stoichkov finished the tournament with six goals and shared the Golden Boot with Russia's Oleg Salenko (both on 6 goals) — this is a minor nuance (award was shared, not sole) but does not misstate the magnitude (six goals is correct) and multiple reputable sources (goal.com, historyofsoccer.info) still describe Stoichkov as having \"earned/won\" the Golden Boot, so this is not treated as a material discrepancy. Stoichkov's 1994 Ballon d'Or win (awarded 20 Dec 1994, first Bulgarian winner) is independently confirmed via Wikipedia's 1994 Ballon d'Or page and multiple secondary sources. Year and country both hold.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across multiple sources: Bulgaria beat defending champion Germany 2-1 in the 1994 World Cup quarterfinal (goals by Stoichkov and Letchkov, July 10, 1994), then lost 2-1 to Italy (Baggio brace) in the semifinal — Bulgaria's best-ever World Cup finish (4th place), under coach Dimitar Penev, with the squad remembered domestically as the \"Golden Generation.\" Stoichkov shared the tournament's Golden Boot with 6 goals (alongside Oleg Salenko) and separately won the 1994 Ballon d'Or, awarded Dec 20, 1994, on the strength of his club form and this World Cup run. All material details (country, year, opponents, scorelines, coach, awards) check out.",
+        "source": "https://www.fifa.com/en/articles/100-great-world-cup-moments-qatar-2022-32-bulgaria-letchkov-stoichkov-germany-1994",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material facts confirmed via independent search. Bulgaria beat defending champion Germany 2-1 in the 1994 World Cup quarterfinal (Stoichkov equalizer 76', Lechkov winner 79', after Matthäus penalty 49') — corroborated by ESPN, worldfootball.net, Wikipedia. Bulgaria then lost 2-1 to Italy in the semifinal (Roberto Baggio brace, Stoichkov penalty) — corroborated by ESPN and multiple retrospectives. This remains Bulgaria's best-ever World Cup finish (4th place), achieved under coach Dimitar Penev — confirmed by his Jan 2026 Washington Post obituary, which explicitly credits him with leading Bulgaria to the 1994 semifinals as its \"biggest success.\" Stoichkov finished the tournament with six goals and shared the Golden Boot with Russia's Oleg Salenko (both on 6 goals) — this is a minor nuance (award was shared, not sole) but does not misstate the magnitude (six goals is correct) and multiple reputable sources (goal.com, historyofsoccer.info) still describe Stoichkov as having \"earned/won\" the Golden Boot, so this is not treated as a material discrepancy. Stoichkov's 1994 Ballon d'Or win (awarded 20 Dec 1994, first Bulgarian winner) is independently confirmed via Wikipedia's 1994 Ballon d'Or page and multiple secondary sources. Year and country both hold.",
+        "source": "https://www.washingtonpost.com/sports/soccer/2026/01/03/bulgaria-coach-penev-death/84abc08c-e8ac-11f0-ae3e-837f914c795b_story.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.washingtonpost.com/sports/soccer/2026/01/03/bulgaria-coach-penev-death/84abc08c-e8ac-11f0-ae3e-837f914c795b_story.html"
+  },
+  {
+    "year": 1994,
     "title": "Bulgarian Socialist Party Returns to Power â€” Statist Economic Reversal",
     "verdict": "TRUE",
     "reason": "BSP won 1994 elections; Zhan Videnov government reversed privatization; set up 1996-97 crisis. Confirmed.",

@@ -798,6 +798,42 @@
   },
   {
     "year": 2016,
+    "title": "Iceland Stuns England to Reach Euro 2016 Quarterfinals",
+    "verdict": "TRUE",
+    "reason": "Multiple independent, authoritative sources (UEFA.com, The FA, ESPN, CBC Sports, Sky Sports, ITV) confirm all material details: on June 27, 2016 in Nice, Iceland defeated England 2-1 in the Euro 2016 Round of 16. Wayne Rooney's 4th-minute penalty gave England an early lead, overturned by goals from Ragnar Sigurdsson and Kolbeinn Sigthorsson within the next ~14 minutes. This made Iceland (population ~330,000, playing its first-ever major tournament) the smallest nation to reach a European Championship quarterfinal, and Roy Hodgson resigned as England manager immediately after the match. Every detail in the description matches the verified record.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources (UEFA.com official match history, ESPN, CBC, TIME, France24) confirm Iceland beat England 2-1 in the Euro 2016 round of 16 on June 27, 2016 at the Allianz Riviera in Nice. Wayne Rooney scored an early penalty for England; Ragnar Sigurdsson equalized within two minutes; Kolbeinn Sigthorsson scored Iceland's winner, all in the first 18 minutes. Roy Hodgson resigned as England manager after the loss. Iceland, a nation of roughly 330,000 in its first major tournament, became the smallest nation to reach a Euro quarterfinal (they then faced hosts France). All material details in the description (date, score, goal-scorers, venue, Hodgson's resignation, Iceland's small population/first-tournament status, smallest-nation superlative) are corroborated.",
+        "source": "https://www.uefa.com/uefaeuro/match/2018003--england-vs-iceland/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent, authoritative sources (UEFA.com, The FA, ESPN, CBC Sports, Sky Sports, ITV) confirm all material details: on June 27, 2016 in Nice, Iceland defeated England 2-1 in the Euro 2016 Round of 16. Wayne Rooney's 4th-minute penalty gave England an early lead, overturned by goals from Ragnar Sigurdsson and Kolbeinn Sigthorsson within the next ~14 minutes. This made Iceland (population ~330,000, playing its first-ever major tournament) the smallest nation to reach a European Championship quarterfinal, and Roy Hodgson resigned as England manager immediately after the match. Every detail in the description matches the verified record.",
+        "source": "https://www.uefa.com/uefaeuro/history/news/0253-0d8193ba70fb-40c2e7602d67-1000--iceland-into-euro-2016-quarter-finals-after-stunning-england/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.uefa.com/uefaeuro/history/news/0253-0d8193ba70fb-40c2e7602d67-1000--iceland-into-euro-2016-quarter-finals-after-stunning-england/"
+  },
+  {
+    "year": 2016,
     "title": "Panama Papers Force Prime Minister's Resignation",
     "verdict": "TRUE",
     "reason": "ICIJ's Panama Papers investigation revealed Prime Minister Sigmundur David Gunnlaugsson and his wife co-owned offshore company Wintris Inc., which held bonds in Iceland's collapsed banks while Gunnlaugsson oversaw bank restructuring. He resigned on 5 April 2016, the first world leader to fall from the Panama Papers revelations.",

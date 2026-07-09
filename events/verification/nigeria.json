@@ -1725,6 +1725,42 @@
     "source": "https://en.wikipedia.org/wiki/Kudirat_Abiola"
   },
   {
+    "year": 1996,
+    "title": "Nigeria Wins Olympic Football Gold, First for an African Nation",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources (Wikipedia, Olympics.com, CNN, footballdatabase.eu) confirm: on August 3, 1996, Nigeria's Super Eagles beat Argentina 3-2 in the Olympic men's football final at Sanford Stadium (Athens, Georgia, part of the Atlanta 1996 Games), with Emmanuel Amunike scoring the winner in the final minute off a free-kick after Argentina failed to spring the offside trap. Nigeria came from behind twice (Amokachi's 74th-minute equalizer preceded Amunike's winner), and this made Nigeria the first African nation ever to win Olympic football gold. CNN independently corroborates the 2022 documentary \"Super Eagles '96\" covering this win. All material details (date, country, score, scorer, venue, historic first, documentary) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed across multiple sources: Nigeria's Super Eagles beat Argentina 3-2 in the Olympic football final on August 3, 1996 at Sanford Stadium (an Atlanta 1996 Olympic venue, located in Athens, GA), with Emmanuel Amunike scoring the winner in the 90th minute. Goal timeline (Claudio López 3', Celestine Babayaro 28', Hernán Crespo pen 50', Daniel Amokachi 74', Amunike 90') confirms Nigeria twice came back from behind (0-1 to 1-1, then 1-2 to 2-2, then won 3-2). This made Nigeria the first African nation to win Olympic football gold, confirmed by CNN and Olympics.com. The 2022 documentary 'Super Eagles '96' (dir. Yemi Bamiro) about this team is confirmed via IMDb (2022, Documentary/Sport) and Amazon Prime Video listings. All material details in the description match verified facts.",
+        "source": "https://www.olympics.com/en/news/classic-finals-double-nigerian-comeback-makes-history",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Wikipedia, Olympics.com, CNN, footballdatabase.eu) confirm: on August 3, 1996, Nigeria's Super Eagles beat Argentina 3-2 in the Olympic men's football final at Sanford Stadium (Athens, Georgia, part of the Atlanta 1996 Games), with Emmanuel Amunike scoring the winner in the final minute off a free-kick after Argentina failed to spring the offside trap. Nigeria came from behind twice (Amokachi's 74th-minute equalizer preceded Amunike's winner), and this made Nigeria the first African nation ever to win Olympic football gold. CNN independently corroborates the 2022 documentary \"Super Eagles '96\" covering this win. All material details (date, country, score, scorer, venue, historic first, documentary) check out.",
+        "source": "https://www.olympics.com/en/news/classic-finals-double-nigerian-comeback-makes-history",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.olympics.com/en/news/classic-finals-double-nigerian-comeback-makes-history"
+  },
+  {
     "year": 1997,
     "title": "Niger Delta Crisis Deepens — Ijaw Militancy Grows",
     "verdict": "TRUE",
@@ -1976,6 +2012,44 @@
   },
   {
     "year": 2001,
+    "title": "Economic Reforms — EFCC and Debt Reduction",
+    "verdict": "FALSE",
+    "reason": "The specific reform package described did not happen in 2001. Ngozi Okonjo-Iweala only became Nigeria's Finance Minister in mid-2003 (serving 2003-2006), not 2001 — she led the Paris Club debt-reduction negotiations (culminating in the 2005-2006 deal that eliminated roughly $30B of debt) during that later tenure. The Economic and Financial Crimes Commission (EFCC) was established by an Act signed in December 2002 and became operational under Nuhu Ribadu in April 2003 (re-enacted 2004) — it did not exist in 2001. The comprehensive reform agenda referenced (NEEDS framework, EFCC, Okonjo-Iweala's fiscal reforms) is a hallmark of Obasanjo's SECOND term (2003 onward), not his first-term 2001 activity. Nigeria's GDP growth in 2001 was about 6.67% (up from 5.5% in 2000), so some growth acceleration is real for that year, but the described bundle of EFCC creation + Okonjo-Iweala as finance minister + debt negotiations is materially misdated — none of those three things existed/occurred in 2001. This is a year/date error, best corrected to 2003 when Okonjo-Iweala's appointment and the EFCC's operational launch actually occurred (with the debt deal itself landing in 2005-2006).",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Country and general reform narrative (Obasanjo-era) are real, but the two named specifics did not occur in 2001. The EFCC was established by Act of the National Assembly on 12 Dec 2002 and became operational 13 Apr 2003 (per EFCC official history and Wikipedia) — it did not exist in 2001. Ngozi Okonjo-Iweala was first appointed Nigeria's Finance Minister in 2003 (serving to 2006); she held no such role in 2001, and her Paris Club debt-reduction negotiations (the $18B cancellation of $30B debt) took place in 2005-2006, not 2001. Obasanjo's broader privatization drive (Bureau of Public Enterprises, National Council on Privatization) did start earlier (1999-2000), but the event as written bundles facts that only cohere as a package in 2003, so the year given is materially wrong.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2003
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The specific reform package described did not happen in 2001. Ngozi Okonjo-Iweala only became Nigeria's Finance Minister in mid-2003 (serving 2003-2006), not 2001 — she led the Paris Club debt-reduction negotiations (culminating in the 2005-2006 deal that eliminated roughly $30B of debt) during that later tenure. The Economic and Financial Crimes Commission (EFCC) was established by an Act signed in December 2002 and became operational under Nuhu Ribadu in April 2003 (re-enacted 2004) — it did not exist in 2001. The comprehensive reform agenda referenced (NEEDS framework, EFCC, Okonjo-Iweala's fiscal reforms) is a hallmark of Obasanjo's SECOND term (2003 onward), not his first-term 2001 activity. Nigeria's GDP growth in 2001 was about 6.67% (up from 5.5% in 2000), so some growth acceleration is real for that year, but the described bundle of EFCC creation + Okonjo-Iweala as finance minister + debt negotiations is materially misdated — none of those three things existed/occurred in 2001. This is a year/date error, best corrected to 2003 when Okonjo-Iweala's appointment and the EFCC's operational launch actually occurred (with the debt deal itself landing in 2005-2006).",
+        "source": "https://en.wikipedia.org/wiki/Ngozi_Okonjo-Iweala",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        },
+        "corrected_year": 2003
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ngozi_Okonjo-Iweala"
+  },
+  {
+    "year": 2001,
     "title": "Mobile Telecommunications Revolution",
     "verdict": "TRUE",
     "reason": "GSM licenses auctioned January 2001, awarded to MTN, Econet, and NITEL's M-Tel (not 'MTN, Econet, and Glo Mobile' as stated — Glo entered in 2003 as second national operator, not in 2001 auction). Minor factual error: Glo was not part of the 2001 auction. Year correct.",
@@ -2023,6 +2097,44 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Miss_World_2002_riots"
+  },
+  {
+    "year": 2003,
+    "title": "MEND — Movement for the Emancipation of the Niger Delta Forms",
+    "verdict": "FALSE",
+    "reason": "Independent sources (Wikipedia, Council on Foreign Relations) consistently place MEND's emergence in November 2005, with its public debut and first major attacks/kidnappings on oil infrastructure in January 2006. MEND did not exist in 2003 and could not have been attacking oil infrastructure that year. The described substance (MEND as most organized armed group in Niger Delta, combining resource-control grievances with sophisticated tactics, attacks on oil infrastructure costing billions) is materially accurate, but the year is wrong by roughly 2-3 years.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (Wikipedia, CFR, EBSCO Research Starters, GlobalSecurity.org) consistently place MEND's emergence in late 2005/early 2006, not 2003. Wikipedia states MEND formed via a series of meetings in November 2005 among FNDIC, NDPVF, and cult-group fighters (Klansmen Konfraternity, Greenlanders), with its first coordinated public attacks on oil infrastructure and kidnappings occurring in January 2006. CFR's backgrounder and other sources corroborate 2006 as the year MEND became known as the most organized militant group in the Niger Delta, launching attacks that cut Nigerian oil output by up to 25% at times. The substance of the description (MEND as the most organized armed group, combining resource-control grievances with sophisticated tactics, attacks costing Nigeria billions in lost oil production) is materially accurate for the country and phenomenon, but the year 2003 is off by roughly 2-3 years from the group's actual formation/first-attacks timeline. No source found supports any MEND activity, formation, or oil-infrastructure attacks as early as 2003.",
+        "source": "https://en.wikipedia.org/wiki/Movement_for_the_Emancipation_of_the_Niger_Delta",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2006
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Independent sources (Wikipedia, Council on Foreign Relations) consistently place MEND's emergence in November 2005, with its public debut and first major attacks/kidnappings on oil infrastructure in January 2006. MEND did not exist in 2003 and could not have been attacking oil infrastructure that year. The described substance (MEND as most organized armed group in Niger Delta, combining resource-control grievances with sophisticated tactics, attacks on oil infrastructure costing billions) is materially accurate, but the year is wrong by roughly 2-3 years.",
+        "source": "https://en.wikipedia.org/wiki/Movement_for_the_Emancipation_of_the_Niger_Delta",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-03",
+          "method": "web_search"
+        },
+        "corrected_year": 2006
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Movement_for_the_Emancipation_of_the_Niger_Delta"
   },
   {
     "year": 2003,
@@ -2084,6 +2196,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2003_Nigerian_general_election"
+  },
+  {
+    "year": 2004,
+    "title": "Excess Crude Account Established",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm the Excess Crude Account (ECA) was created in 2004 under President Olusegun Obasanjo to save oil revenues above the budgeted benchmark price and insulate the budget from oil price volatility, modeled on schemes like Chile's. It grew to roughly $20 billion by the end of Obasanjo's term in 2007, confirming 'accumulated significant savings during the oil price boom.' It also faced constitutional challenges from state governors (Nigerian Governors Forum, led by Bukola Saraki) who took the federal government to the Supreme Court starting 2008, arguing the ECA violated Section 162 of the 1999 Constitution on Federation Account distribution — matching the description's claim of 'constitutional challenges from governors over federal control.' All material details (country, year, actor, mechanism, outcome) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the Excess Crude Account (ECA) was created in 2004 by the Obasanjo administration to save oil revenues above the budgeted benchmark price and insulate the budget from oil price volatility, exactly as described. It accumulated significant savings during the mid-2000s oil boom (from roughly $5bn to about $20bn by the end of Obasanjo's term in 2007). It also faced constitutional challenges from state governors over federal control: the Nigerian Governors Forum (led by then-Kwara governor Bukola Saraki) took the federal government to the Supreme Court, arguing the ECA's operation from 2004-2007 was unconstitutional under Section 162 of the 1999 Constitution (Federation Account provisions). All material details in the description are corroborated.",
+        "source": "https://www.thecable.ng/accountant-general-nigerias-excess-crude-account-balance-stands-at-473754/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm the Excess Crude Account (ECA) was created in 2004 under President Olusegun Obasanjo to save oil revenues above the budgeted benchmark price and insulate the budget from oil price volatility, modeled on schemes like Chile's. It grew to roughly $20 billion by the end of Obasanjo's term in 2007, confirming 'accumulated significant savings during the oil price boom.' It also faced constitutional challenges from state governors (Nigerian Governors Forum, led by Bukola Saraki) who took the federal government to the Supreme Court starting 2008, arguing the ECA violated Section 162 of the 1999 Constitution on Federation Account distribution — matching the description's claim of 'constitutional challenges from governors over federal control.' All material details (country, year, actor, mechanism, outcome) check out.",
+        "source": "https://businessfront.com/finance/insights/nigerias-excess-crude-account-oil/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-05",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://businessfront.com/finance/insights/nigerias-excess-crude-account-oil/"
   },
   {
     "year": 2004,
@@ -3086,80 +3234,6 @@
     "source": "https://en.wikipedia.org/wiki/End_Bad_Governance_protests"
   },
   {
-    "year": 2003,
-    "title": "MEND — Movement for the Emancipation of the Niger Delta Forms",
-    "verdict": "FALSE",
-    "reason": "Independent sources (Wikipedia, Council on Foreign Relations) consistently place MEND's emergence in November 2005, with its public debut and first major attacks/kidnappings on oil infrastructure in January 2006. MEND did not exist in 2003 and could not have been attacking oil infrastructure that year. The described substance (MEND as most organized armed group in Niger Delta, combining resource-control grievances with sophisticated tactics, attacks on oil infrastructure costing billions) is materially accurate, but the year is wrong by roughly 2-3 years.",
-    "verify_count": 2,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "double_negative",
-    "needs_tiebreak": false,
-    "source_independence": "weak",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Multiple independent sources (Wikipedia, CFR, EBSCO Research Starters, GlobalSecurity.org) consistently place MEND's emergence in late 2005/early 2006, not 2003. Wikipedia states MEND formed via a series of meetings in November 2005 among FNDIC, NDPVF, and cult-group fighters (Klansmen Konfraternity, Greenlanders), with its first coordinated public attacks on oil infrastructure and kidnappings occurring in January 2006. CFR's backgrounder and other sources corroborate 2006 as the year MEND became known as the most organized militant group in the Niger Delta, launching attacks that cut Nigerian oil output by up to 25% at times. The substance of the description (MEND as the most organized armed group, combining resource-control grievances with sophisticated tactics, attacks costing Nigeria billions in lost oil production) is materially accurate for the country and phenomenon, but the year 2003 is off by roughly 2-3 years from the group's actual formation/first-attacks timeline. No source found supports any MEND activity, formation, or oil-infrastructure attacks as early as 2003.",
-        "source": "https://en.wikipedia.org/wiki/Movement_for_the_Emancipation_of_the_Niger_Delta",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        },
-        "corrected_year": 2006
-      },
-      {
-        "pass_n": 2,
-        "verdict": "FALSE",
-        "reason": "Independent sources (Wikipedia, Council on Foreign Relations) consistently place MEND's emergence in November 2005, with its public debut and first major attacks/kidnappings on oil infrastructure in January 2006. MEND did not exist in 2003 and could not have been attacking oil infrastructure that year. The described substance (MEND as most organized armed group in Niger Delta, combining resource-control grievances with sophisticated tactics, attacks on oil infrastructure costing billions) is materially accurate, but the year is wrong by roughly 2-3 years.",
-        "source": "https://en.wikipedia.org/wiki/Movement_for_the_Emancipation_of_the_Niger_Delta",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        },
-        "corrected_year": 2006
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Movement_for_the_Emancipation_of_the_Niger_Delta"
-  },
-  {
-    "year": 2025,
-    "title": "Tinubu's Economic Reforms Show Mixed Results",
-    "verdict": "TRUE",
-    "reason": "Multiple independent sources confirm all material elements for Nigeria in 2025: GDP growth recovered to ~3-4% (3.87% full-year, 3.9% YoY H1, 3.84% Q4 2025, per Businessday NG/AfDB); inflation remained high despite easing from the Dec-2024 peak of 34.8% (28-year high); poverty remained widespread (~56% poverty rate, sharply higher cost-of-living estimates per Vanguard/Guardian NG); federally collected revenues rose sharply (Nigeria Revenue Service collected N28.3tn in 2025, 12% above target; monthly revenue up from ~N711bn in May 2023 to >N3.6tn by Sept 2025; FAAC disbursements up to N1.8-2.6tn/month); and infrastructure investment was substantial (2025 budget allocated N16.76tn to capital expenditure, plus Lagos-Calabar Coastal Highway financing). Government officials explicitly cited these revenue/infrastructure gains as evidence reforms were working, while independent press (Vanguard's \"Gains, Pains, and Missed Targets,\" Guardian NG's \"Power crisis, inflation threatening gains\") framed it as a mixed-results picture, matching the event description closely. Subsidy removal, naira devaluation, and tax restructuring (Tinubu's 2025 tax reform bills) are all independently corroborated as the reform package in question.",
-    "verify_count": 2,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "double_confirmed",
-    "needs_tiebreak": false,
-    "source_independence": "independent",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Independent 2026 retrospective reporting confirms all material elements: Nigeria's real GDP growth recovered to ~3.87% for full-year 2025 (Q4 2025 at 4.07%), squarely matching the described 3-4% range. Inflation, while declining from its Dec-2024 peak of 34.8%, remained elevated (~15-23% depending on measure through 2025) and cost-of-living/poverty was widespread — multiple sources estimate poverty rose to 61-63% of the population in 2025, with over 75% of Nigerians reportedly below estimated cost-of-living thresholds. Federally collected (FAAC) revenues rose sharply to N37.4 trillion in 2025 (roughly doubling post-subsidy-removal), and government officials (including Tinubu himself) cited these revenue gains and infrastructure/recovery signals as evidence the reforms (subsidy removal, naira devaluation/FX unification, tax restructuring) were working, while critics pointed to persistent hardship — exactly the \"mixed results\" framing in the description. Country, year, and substance all check out from multiple independent, non-overlapping outlets.",
-        "source": "https://www.vanguardngr.com/2026/05/tinubus-economic-and-financial-reforms-gains-pains-and-missed-targets/",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      },
-      {
-        "pass_n": 2,
-        "verdict": "TRUE",
-        "reason": "Multiple independent sources confirm all material elements for Nigeria in 2025: GDP growth recovered to ~3-4% (3.87% full-year, 3.9% YoY H1, 3.84% Q4 2025, per Businessday NG/AfDB); inflation remained high despite easing from the Dec-2024 peak of 34.8% (28-year high); poverty remained widespread (~56% poverty rate, sharply higher cost-of-living estimates per Vanguard/Guardian NG); federally collected revenues rose sharply (Nigeria Revenue Service collected N28.3tn in 2025, 12% above target; monthly revenue up from ~N711bn in May 2023 to >N3.6tn by Sept 2025; FAAC disbursements up to N1.8-2.6tn/month); and infrastructure investment was substantial (2025 budget allocated N16.76tn to capital expenditure, plus Lagos-Calabar Coastal Highway financing). Government officials explicitly cited these revenue/infrastructure gains as evidence reforms were working, while independent press (Vanguard's \"Gains, Pains, and Missed Targets,\" Guardian NG's \"Power crisis, inflation threatening gains\") framed it as a mixed-results picture, matching the event description closely. Subsidy removal, naira devaluation, and tax restructuring (Tinubu's 2025 tax reform bills) are all independently corroborated as the reform package in question.",
-        "source": "https://businessday.ng/opinion/article/nigerias-current-economic-situation-and-president-tinubus-reform-efforts/",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-03",
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://businessday.ng/opinion/article/nigerias-current-economic-situation-and-president-tinubus-reform-efforts/"
-  },
-  {
     "year": 2025,
     "title": "Oil Production Recovery — NNPCL Restructured",
     "verdict": "TRUE",
@@ -3196,10 +3270,10 @@
     "source": "https://punchng.com/nnpcl-reiterates-2m-bpd-oil-output-target-by-2027/"
   },
   {
-    "year": 2004,
-    "title": "Excess Crude Account Established",
+    "year": 2025,
+    "title": "Tinubu's Economic Reforms Show Mixed Results",
     "verdict": "TRUE",
-    "reason": "Independent sources confirm the Excess Crude Account (ECA) was created in 2004 under President Olusegun Obasanjo to save oil revenues above the budgeted benchmark price and insulate the budget from oil price volatility, modeled on schemes like Chile's. It grew to roughly $20 billion by the end of Obasanjo's term in 2007, confirming 'accumulated significant savings during the oil price boom.' It also faced constitutional challenges from state governors (Nigerian Governors Forum, led by Bukola Saraki) who took the federal government to the Supreme Court starting 2008, arguing the ECA violated Section 162 of the 1999 Constitution on Federation Account distribution — matching the description's claim of 'constitutional challenges from governors over federal control.' All material details (country, year, actor, mechanism, outcome) check out.",
+    "reason": "Multiple independent sources confirm all material elements for Nigeria in 2025: GDP growth recovered to ~3-4% (3.87% full-year, 3.9% YoY H1, 3.84% Q4 2025, per Businessday NG/AfDB); inflation remained high despite easing from the Dec-2024 peak of 34.8% (28-year high); poverty remained widespread (~56% poverty rate, sharply higher cost-of-living estimates per Vanguard/Guardian NG); federally collected revenues rose sharply (Nigeria Revenue Service collected N28.3tn in 2025, 12% above target; monthly revenue up from ~N711bn in May 2023 to >N3.6tn by Sept 2025; FAAC disbursements up to N1.8-2.6tn/month); and infrastructure investment was substantial (2025 budget allocated N16.76tn to capital expenditure, plus Lagos-Calabar Coastal Highway financing). Government officials explicitly cited these revenue/infrastructure gains as evidence reforms were working, while independent press (Vanguard's \"Gains, Pains, and Missed Targets,\" Guardian NG's \"Power crisis, inflation threatening gains\") framed it as a mixed-results picture, matching the event description closely. Subsidy removal, naira devaluation, and tax restructuring (Tinubu's 2025 tax reform bills) are all independently corroborated as the reform package in question.",
     "verify_count": 2,
     "consensus_verdict": "TRUE",
     "consensus_status": "double_confirmed",
@@ -3209,64 +3283,26 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Multiple independent sources confirm the Excess Crude Account (ECA) was created in 2004 by the Obasanjo administration to save oil revenues above the budgeted benchmark price and insulate the budget from oil price volatility, exactly as described. It accumulated significant savings during the mid-2000s oil boom (from roughly $5bn to about $20bn by the end of Obasanjo's term in 2007). It also faced constitutional challenges from state governors over federal control: the Nigerian Governors Forum (led by then-Kwara governor Bukola Saraki) took the federal government to the Supreme Court, arguing the ECA's operation from 2004-2007 was unconstitutional under Section 162 of the 1999 Constitution (Federation Account provisions). All material details in the description are corroborated.",
-        "source": "https://www.thecable.ng/accountant-general-nigerias-excess-crude-account-balance-stands-at-473754/",
+        "reason": "Independent 2026 retrospective reporting confirms all material elements: Nigeria's real GDP growth recovered to ~3.87% for full-year 2025 (Q4 2025 at 4.07%), squarely matching the described 3-4% range. Inflation, while declining from its Dec-2024 peak of 34.8%, remained elevated (~15-23% depending on measure through 2025) and cost-of-living/poverty was widespread — multiple sources estimate poverty rose to 61-63% of the population in 2025, with over 75% of Nigerians reportedly below estimated cost-of-living thresholds. Federally collected (FAAC) revenues rose sharply to N37.4 trillion in 2025 (roughly doubling post-subsidy-removal), and government officials (including Tinubu himself) cited these revenue gains and infrastructure/recovery signals as evidence the reforms (subsidy removal, naira devaluation/FX unification, tax restructuring) were working, while critics pointed to persistent hardship — exactly the \"mixed results\" framing in the description. Country, year, and substance all check out from multiple independent, non-overlapping outlets.",
+        "source": "https://www.vanguardngr.com/2026/05/tinubus-economic-and-financial-reforms-gains-pains-and-missed-targets/",
         "verifier": {
           "model": "claude-sonnet-5",
-          "date": "2026-07-05",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       },
       {
         "pass_n": 2,
         "verdict": "TRUE",
-        "reason": "Independent sources confirm the Excess Crude Account (ECA) was created in 2004 under President Olusegun Obasanjo to save oil revenues above the budgeted benchmark price and insulate the budget from oil price volatility, modeled on schemes like Chile's. It grew to roughly $20 billion by the end of Obasanjo's term in 2007, confirming 'accumulated significant savings during the oil price boom.' It also faced constitutional challenges from state governors (Nigerian Governors Forum, led by Bukola Saraki) who took the federal government to the Supreme Court starting 2008, arguing the ECA violated Section 162 of the 1999 Constitution on Federation Account distribution — matching the description's claim of 'constitutional challenges from governors over federal control.' All material details (country, year, actor, mechanism, outcome) check out.",
-        "source": "https://businessfront.com/finance/insights/nigerias-excess-crude-account-oil/",
+        "reason": "Multiple independent sources confirm all material elements for Nigeria in 2025: GDP growth recovered to ~3-4% (3.87% full-year, 3.9% YoY H1, 3.84% Q4 2025, per Businessday NG/AfDB); inflation remained high despite easing from the Dec-2024 peak of 34.8% (28-year high); poverty remained widespread (~56% poverty rate, sharply higher cost-of-living estimates per Vanguard/Guardian NG); federally collected revenues rose sharply (Nigeria Revenue Service collected N28.3tn in 2025, 12% above target; monthly revenue up from ~N711bn in May 2023 to >N3.6tn by Sept 2025; FAAC disbursements up to N1.8-2.6tn/month); and infrastructure investment was substantial (2025 budget allocated N16.76tn to capital expenditure, plus Lagos-Calabar Coastal Highway financing). Government officials explicitly cited these revenue/infrastructure gains as evidence reforms were working, while independent press (Vanguard's \"Gains, Pains, and Missed Targets,\" Guardian NG's \"Power crisis, inflation threatening gains\") framed it as a mixed-results picture, matching the event description closely. Subsidy removal, naira devaluation, and tax restructuring (Tinubu's 2025 tax reform bills) are all independently corroborated as the reform package in question.",
+        "source": "https://businessday.ng/opinion/article/nigerias-current-economic-situation-and-president-tinubus-reform-efforts/",
         "verifier": {
           "model": "claude-sonnet-5",
-          "date": "2026-07-05",
+          "date": "2026-07-03",
           "method": "web_search"
         }
       }
     ],
-    "source": "https://businessfront.com/finance/insights/nigerias-excess-crude-account-oil/"
-  },
-  {
-    "year": 2001,
-    "title": "Economic Reforms — EFCC and Debt Reduction",
-    "verdict": "FALSE",
-    "reason": "The specific reform package described did not happen in 2001. Ngozi Okonjo-Iweala only became Nigeria's Finance Minister in mid-2003 (serving 2003-2006), not 2001 — she led the Paris Club debt-reduction negotiations (culminating in the 2005-2006 deal that eliminated roughly $30B of debt) during that later tenure. The Economic and Financial Crimes Commission (EFCC) was established by an Act signed in December 2002 and became operational under Nuhu Ribadu in April 2003 (re-enacted 2004) — it did not exist in 2001. The comprehensive reform agenda referenced (NEEDS framework, EFCC, Okonjo-Iweala's fiscal reforms) is a hallmark of Obasanjo's SECOND term (2003 onward), not his first-term 2001 activity. Nigeria's GDP growth in 2001 was about 6.67% (up from 5.5% in 2000), so some growth acceleration is real for that year, but the described bundle of EFCC creation + Okonjo-Iweala as finance minister + debt negotiations is materially misdated — none of those three things existed/occurred in 2001. This is a year/date error, best corrected to 2003 when Okonjo-Iweala's appointment and the EFCC's operational launch actually occurred (with the debt deal itself landing in 2005-2006).",
-    "verify_count": 2,
-    "consensus_verdict": "FALSE",
-    "consensus_status": "double_negative",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "FALSE",
-        "reason": "Country and general reform narrative (Obasanjo-era) are real, but the two named specifics did not occur in 2001. The EFCC was established by Act of the National Assembly on 12 Dec 2002 and became operational 13 Apr 2003 (per EFCC official history and Wikipedia) — it did not exist in 2001. Ngozi Okonjo-Iweala was first appointed Nigeria's Finance Minister in 2003 (serving to 2006); she held no such role in 2001, and her Paris Club debt-reduction negotiations (the $18B cancellation of $30B debt) took place in 2005-2006, not 2001. Obasanjo's broader privatization drive (Bureau of Public Enterprises, National Council on Privatization) did start earlier (1999-2000), but the event as written bundles facts that only cohere as a package in 2003, so the year given is materially wrong.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-05",
-          "method": "web_search"
-        },
-        "corrected_year": 2003
-      },
-      {
-        "pass_n": 2,
-        "verdict": "FALSE",
-        "reason": "The specific reform package described did not happen in 2001. Ngozi Okonjo-Iweala only became Nigeria's Finance Minister in mid-2003 (serving 2003-2006), not 2001 — she led the Paris Club debt-reduction negotiations (culminating in the 2005-2006 deal that eliminated roughly $30B of debt) during that later tenure. The Economic and Financial Crimes Commission (EFCC) was established by an Act signed in December 2002 and became operational under Nuhu Ribadu in April 2003 (re-enacted 2004) — it did not exist in 2001. The comprehensive reform agenda referenced (NEEDS framework, EFCC, Okonjo-Iweala's fiscal reforms) is a hallmark of Obasanjo's SECOND term (2003 onward), not his first-term 2001 activity. Nigeria's GDP growth in 2001 was about 6.67% (up from 5.5% in 2000), so some growth acceleration is real for that year, but the described bundle of EFCC creation + Okonjo-Iweala as finance minister + debt negotiations is materially misdated — none of those three things existed/occurred in 2001. This is a year/date error, best corrected to 2003 when Okonjo-Iweala's appointment and the EFCC's operational launch actually occurred (with the debt deal itself landing in 2005-2006).",
-        "source": "https://en.wikipedia.org/wiki/Ngozi_Okonjo-Iweala",
-        "verifier": {
-          "model": "claude-sonnet-5",
-          "date": "2026-07-05",
-          "method": "web_search"
-        },
-        "corrected_year": 2003
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Ngozi_Okonjo-Iweala"
+    "source": "https://businessday.ng/opinion/article/nigerias-current-economic-situation-and-president-tinubus-reform-efforts/"
   }
 ]

@@ -2067,5 +2067,41 @@
       }
     ],
     "source": "https://press.un.org/en/2025/sc16258.doc.htm"
+  },
+  {
+    "year": 1965,
+    "title": "Corruption Scandals Rock the Monarchy",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm the substance: Wikipedia's \"Idris of Libya\" article states directly that \"Libya experienced rampant corruption and favouritism. A number of high-profile corruption scandals impacted on the highest levels of Idris's government,\" including King Idris's own 1960 public condemnation of bribery and nepotism as threats to the state. Corroborating sources describe the Shelhi family (Idris's inner circle/royal advisors) as \"utterly corrupt\" and deeply enmeshed in oil-driven patronage (\"Mr. Five Percent... a finger in every commercial, economic deal\"), fueling public resentment despite growing oil wealth — directly matching the description's claims of senior-official/royal-family corruption, oil-driven patronage, and the gap between oil wealth and living standards. The year 1965 is not tied to one single named scandal in available sources (the phenomenon is described as escalating across the 1960s, with the Kingdom of Libya article confirming Libya's petroleum law was amended again in 1965 to boost the government's oil revenue share, precisely the mechanism the event cites as creating \"enormous patronage opportunities\"). Given corruption was already publicly acknowledged by the king in 1960, was described as intensifying through the oil-boom 1960s, and 1965 sits squarely in that window with a documented oil-revenue-law change that year, the year+country+substance all hold. No single contemporaneous 1965 newspaper \"scandal\" report was found, but the condition described (visible, controversial elite corruption amid oil wealth) is well-corroborated as ongoing in this period.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources (Wikipedia's Idris of Libya article and the U.S. Library of Congress Country Study on Libya, via countrystudies.us) confirm that under King Idris's monarchy, oil-revenue-fueled corruption and patronage among senior officials and figures close to the royal family was a well-documented, increasingly visible and controversial phenomenon during the 1960s. Sources describe 'high-profile corruption scandals' at the highest levels of Idris's government, a patronage network built around oil wealth benefiting a 'restricted circle of wealthy and influential families,' and widespread public frustration that 'the wealth was not benefiting ordinary citizens' -- precisely the disconnect between oil wealth and living standards described in the event. The Library of Congress country study explicitly frames these grievances (arbitrariness, corruption, and 'questionable probity in the distribution of oil-funded revenues') as accumulating through the mid-1960s and feeding discontent that led to the 1969 revolution. No source pins this to a single discrete date -- it is a gradual, multi-year condition rather than one bounded incident -- but nothing contradicts 1965 as part of this well-established arc, and no alternative year is indicated by any source. Country, substance, and general timeframe all check out; the one caveat is that I could not find a source isolating a specific 1965-only scandal (as opposed to the broader decade-long pattern), but that does not change the substance being materially true.",
+        "source": "https://en.wikipedia.org/wiki/Idris_of_Libya",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the substance: Wikipedia's \"Idris of Libya\" article states directly that \"Libya experienced rampant corruption and favouritism. A number of high-profile corruption scandals impacted on the highest levels of Idris's government,\" including King Idris's own 1960 public condemnation of bribery and nepotism as threats to the state. Corroborating sources describe the Shelhi family (Idris's inner circle/royal advisors) as \"utterly corrupt\" and deeply enmeshed in oil-driven patronage (\"Mr. Five Percent... a finger in every commercial, economic deal\"), fueling public resentment despite growing oil wealth — directly matching the description's claims of senior-official/royal-family corruption, oil-driven patronage, and the gap between oil wealth and living standards. The year 1965 is not tied to one single named scandal in available sources (the phenomenon is described as escalating across the 1960s, with the Kingdom of Libya article confirming Libya's petroleum law was amended again in 1965 to boost the government's oil revenue share, precisely the mechanism the event cites as creating \"enormous patronage opportunities\"). Given corruption was already publicly acknowledged by the king in 1960, was described as intensifying through the oil-boom 1960s, and 1965 sits squarely in that window with a documented oil-revenue-law change that year, the year+country+substance all hold. No single contemporaneous 1965 newspaper \"scandal\" report was found, but the condition described (visible, controversial elite corruption amid oil wealth) is well-corroborated as ongoing in this period.",
+        "source": "https://en.wikipedia.org/wiki/Idris_of_Libya",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Idris_of_Libya"
   }
 ]

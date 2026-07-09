@@ -536,6 +536,42 @@
     "source": "https://en.wikipedia.org/wiki/Marina_Bay_Sands"
   },
   {
+    "year": 2010,
+    "title": "Singapore Hosts the First-Ever Summer Youth Olympic Games",
+    "verdict": "TRUE",
+    "reason": "Independently confirmed via Wikipedia, olympics.com/IOC, and ESPN: Singapore hosted the inaugural (I) Summer Youth Olympic Games from 14-26 August 2010, the first IOC-sanctioned Olympic event in Southeast Asia. About 3,600 athletes aged 14-18 from 204 nations competed in 26 sports and 201 events, matching the description exactly. Singapore won the host bid on 21 February 2008, defeating Moscow 53-44 in an IOC postal vote of 105 members, confirming the \"2008 IOC vote over Moscow\" detail. All magnitudes, actors, dates, and scope in the description are corroborated by multiple independent authoritative sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources: the inaugural Summer Youth Olympic Games were held in Singapore 14-26 August 2010, the first IOC-sanctioned Olympic event in Southeast Asia. About 3,600 athletes aged 14-18 from 204 nations competed in 26 sports/201 events, matching the description exactly. Singapore won the host vote 53-44 over Moscow at the 119th IOC Session on 21 February 2008, also matching. All material details (dates, scope, magnitude, host-selection narrative) confirmed.",
+        "source": "https://en.wikipedia.org/wiki/2010_Summer_Youth_Olympics",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia, olympics.com/IOC, and ESPN: Singapore hosted the inaugural (I) Summer Youth Olympic Games from 14-26 August 2010, the first IOC-sanctioned Olympic event in Southeast Asia. About 3,600 athletes aged 14-18 from 204 nations competed in 26 sports and 201 events, matching the description exactly. Singapore won the host bid on 21 February 2008, defeating Moscow 53-44 in an IOC postal vote of 105 members, confirming the \"2008 IOC vote over Moscow\" detail. All magnitudes, actors, dates, and scope in the description are corroborated by multiple independent authoritative sources.",
+        "source": "https://en.wikipedia.org/wiki/2010_Summer_Youth_Olympics",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2010_Summer_Youth_Olympics"
+  },
+  {
     "year": 2011,
     "title": "First Expiry of 1961 Johor Water Agreement",
     "verdict": "TRUE",

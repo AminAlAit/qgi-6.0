@@ -3440,5 +3440,41 @@
       }
     ],
     "source": "https://www.aljazeera.com/news/2018/5/13/morocco-accuses-algeria-of-supporting-iran-in-western-sahara-feud"
+  },
+  {
+    "year": 1950,
+    "title": "Algerian nationalist movement gains momentum",
+    "verdict": "PARTIAL",
+    "reason": "Country/year/actor check out: the MTLD (led by Messali Hadj) and the broader Algerian nationalist movement were real and active in 1950, discontent over French settler dominance and discrimination against Muslims was real and ongoing, and former activists from this period did eventually seed the 1954 armed struggle (via CRUA/FLN). However, the description's framing of 1950 as a year the movement 'gains momentum' by 'intensifying political campaigns' inverts what independent sources document as the defining 1950 event: French colonial police dismantled the MTLD's paramilitary wing, the Organisation Spéciale (OS), between March and May 1950, arresting roughly 500 militants (363 arrested in March alone, 195 convicted), imprisoning key leaders (Ben Bella, Mahsas, and others), and triggering an internal leadership crisis within the MTLD that 'progressively sapped the party's effectiveness' in subsequent years. That is a year of severe repression and internal crisis for the movement's organized structure, not a year of momentum-building campaigns — though it did, longer-term, push some activists (via CRUA) toward the armed-struggle track. So the underlying phenomenon and eventual trajectory are real, but the specific 1950 characterization is materially off on magnitude/direction (repression/crisis vs. momentum-gain), which merits PARTIAL rather than a clean TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the MTLD (Mouvement pour le Triomphe des Libertés Démocratiques), Messali Hadj's nationalist party campaigning for full Algerian independence since 1946, was actively organizing through this period against a backdrop of French settler (\"colon\") privilege and systematic exclusion of the Muslim majority (five-sixths of the population) from full citizenship, with electoral fraud in 1947-48/1951 further radicalizing the movement. Critically for the 1950 date, the MTLD's clandestine paramilitary wing, the Organisation Spéciale (OS), founded by Mohamed Belouizdad to prepare armed resistance, was discovered and dismantled by French colonial police in 1950, with hundreds of activists arrested. Surviving OS/MTLD radicals went on to form the CRUA, which became the FLN — directly the \"groundwork for the armed struggle that would follow\" (the 1954 revolution/war of independence). This is corroborated by the English Wikipedia articles on the Special Organisation (Algeria) and Movement for the Triumph of Democratic Liberties, and the French Wikipedia article on the MTLD, which independently describe the same 1950 OS crackdown, the electoral-fraud-driven radicalization, and the direct lineage to the FLN. The event description is a general/trend-level characterization of the nationalist movement's momentum rather than a single dated incident, but it is materially accurate for the country and year given.",
+        "source": "https://en.wikipedia.org/wiki/Special_Organisation_(Algeria)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Country/year/actor check out: the MTLD (led by Messali Hadj) and the broader Algerian nationalist movement were real and active in 1950, discontent over French settler dominance and discrimination against Muslims was real and ongoing, and former activists from this period did eventually seed the 1954 armed struggle (via CRUA/FLN). However, the description's framing of 1950 as a year the movement 'gains momentum' by 'intensifying political campaigns' inverts what independent sources document as the defining 1950 event: French colonial police dismantled the MTLD's paramilitary wing, the Organisation Spéciale (OS), between March and May 1950, arresting roughly 500 militants (363 arrested in March alone, 195 convicted), imprisoning key leaders (Ben Bella, Mahsas, and others), and triggering an internal leadership crisis within the MTLD that 'progressively sapped the party's effectiveness' in subsequent years. That is a year of severe repression and internal crisis for the movement's organized structure, not a year of momentum-building campaigns — though it did, longer-term, push some activists (via CRUA) toward the armed-struggle track. So the underlying phenomenon and eventual trajectory are real, but the specific 1950 characterization is materially off on magnitude/direction (repression/crisis vs. momentum-gain), which merits PARTIAL rather than a clean TRUE.",
+        "source": "https://en.wikipedia.org/wiki/Special_Organisation_(Algeria)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Special_Organisation_(Algeria)"
   }
 ]

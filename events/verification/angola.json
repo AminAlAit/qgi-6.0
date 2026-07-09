@@ -989,6 +989,42 @@
     "source": "https://www.constituteproject.org/constitution/Angola_2010.pdf"
   },
   {
+    "year": 2010,
+    "title": "Angola Hosts Africa Cup of Nations Marred by Fatal Cabinda Attack",
+    "verdict": "TRUE",
+    "reason": "All material facts confirmed by independent sources: Angola hosted the 2010 Africa Cup of Nations (10-31 Jan 2010); on 8 January 2010, FLEC-PM Cabinda separatist gunmen attacked the Togo national team's bus in the Cabinda exclave, killing three team officials (bus driver Mário Adjoua, assistant manager Améleté Abalo, media officer Stanislas Ocloo) and wounding several players; Togo withdrew, reducing the tournament from a planned 32 matches/16 teams to 29 matches/15 teams; Egypt won its third consecutive AFCON title, beating Ghana 1-0 in the 31 January 2010 final. Year, country, and every magnitude/actor/scope detail match.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material facts confirmed by independent sources: Angola hosted AFCON 10-31 Jan 2010; on 8 Jan 2010 (two days before the opener) FLEC-PM separatist gunmen ambushed the Togo team bus in the Cabinda enclave, killing three team officials (bus driver Mário Adjoua, assistant manager Améleté Abalo, media officer Stanislas Ocloo); Togo withdrew the next day, reducing the tournament to 15 teams/29 matches from the planned 32; Egypt beat Ghana 1-0 in the 31 Jan final to win an unprecedented third consecutive title. Every detail in the description matches contemporaneous and retrospective reporting exactly.",
+        "source": "https://en.wikipedia.org/wiki/Togo_national_football_team_attack",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material facts confirmed by independent sources: Angola hosted the 2010 Africa Cup of Nations (10-31 Jan 2010); on 8 January 2010, FLEC-PM Cabinda separatist gunmen attacked the Togo national team's bus in the Cabinda exclave, killing three team officials (bus driver Mário Adjoua, assistant manager Améleté Abalo, media officer Stanislas Ocloo) and wounding several players; Togo withdrew, reducing the tournament from a planned 32 matches/16 teams to 29 matches/15 teams; Egypt won its third consecutive AFCON title, beating Ghana 1-0 in the 31 January 2010 final. Year, country, and every magnitude/actor/scope detail match.",
+        "source": "https://en.wikipedia.org/wiki/Togo_national_football_team_attack",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Togo_national_football_team_attack"
+  },
+  {
     "year": 2011,
     "title": "Arab Spring Inspires Youth Protests; Activists Arrested",
     "verdict": "TRUE",

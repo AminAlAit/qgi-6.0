@@ -1423,6 +1423,42 @@
   },
   {
     "year": 2019,
+    "title": "Peru Hosts the 2019 Pan American Games in Lima",
+    "verdict": "TRUE",
+    "reason": "Independently confirmed via Wikipedia and multiple sports-news outlets: Lima hosted the Pan American Games 26 July-11 August 2019, the first Pan Am Games ever held in Peru. 419 medal events across 38 sports were contested, the most ever at a single edition to that point. The opening ceremony took place at the Estadio Nacional del Peru with President Martin Vizcarra declaring the Games open. Lima was elected host city on 11 October 2013 in a PASO vote in Toronto, after previously losing its bid for the 2015 Games to Toronto. All material details in the description (dates, scale, venue, presiding official, bid history) match independent sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material claims independently confirmed via multiple sources. Lima hosted the XVIII Pan American Games from 26 July to 11 August 2019 — the first Pan American Games ever held in Peru. Lima was elected host city on 11 October 2013, having previously lost the bid for the 2015 Games (to Toronto) — matching the 'prior failed bid' detail. The Games featured 419 medal events across 38 sports, the most ever at a single edition (3,028 total medals: 419 gold/419 silver/523 bronze — some sources round to '419 events' as stated). The opening ceremony was held at Peru's Estadio Nacional (National Stadium) on 26 July 2019, and then-President Martín Vizcarra formally declared the Games open ('It is an honour for me to inaugurate the eighteenth Pan American Games, Lima 2019'). Every checkable detail in the description matches independent sources (Wikipedia, insidethegames.biz, Panam Sports, Peruvian Times).",
+        "source": "https://en.wikipedia.org/wiki/2019_Pan_American_Games",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia and multiple sports-news outlets: Lima hosted the Pan American Games 26 July-11 August 2019, the first Pan Am Games ever held in Peru. 419 medal events across 38 sports were contested, the most ever at a single edition to that point. The opening ceremony took place at the Estadio Nacional del Peru with President Martin Vizcarra declaring the Games open. Lima was elected host city on 11 October 2013 in a PASO vote in Toronto, after previously losing its bid for the 2015 Games to Toronto. All material details in the description (dates, scale, venue, presiding official, bid history) match independent sources.",
+        "source": "https://en.wikipedia.org/wiki/2019_Pan_American_Games",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2019_Pan_American_Games"
+  },
+  {
+    "year": 2019,
     "title": "Vizcarra Dissolves Congress in Constitutional Standoff",
     "verdict": "TRUE",
     "reason": "September 30, 2019 dissolution confirmed. Constitutional Tribunal ruled it constitutional January 14, 2020. New fragmented legislature confirmed.",

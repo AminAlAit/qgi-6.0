@@ -76,31 +76,6 @@
   },
   {
     "year": 1993,
-    "title": "Velvet Divorce creates independent Slovak Republic",
-    "verdict": "TRUE",
-    "reason": "Czechoslovakia dissolved on 1 January 1993; Slovakia became an independent sovereign state for the first time since WWII, with Meciar as PM and Michal Kovac elected first president in February.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Czechoslovakia dissolved on 1 January 1993; Slovakia became an independent sovereign state for the first time since WWII, with Meciar as PM and Michal Kovac elected first president in February.",
-        "source": "https://en.wikipedia.org/wiki/Dissolution_of_Czechoslovakia",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Dissolution_of_Czechoslovakia"
-  },
-  {
-    "year": 1993,
     "title": "Slovakia begins controversial voucher privatization program",
     "verdict": "TRUE",
     "reason": "Meciar abandoned Czechoslovak-style voucher privatization in January 1993, redirecting state assets to political allies in what multiple analyses describe as crony privatization; confirmed by Wikipedia and World Bank sources.",
@@ -123,6 +98,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Privatization_in_Slovakia"
+  },
+  {
+    "year": 1993,
+    "title": "Velvet Divorce creates independent Slovak Republic",
+    "verdict": "TRUE",
+    "reason": "Czechoslovakia dissolved on 1 January 1993; Slovakia became an independent sovereign state for the first time since WWII, with Meciar as PM and Michal Kovac elected first president in February.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Czechoslovakia dissolved on 1 January 1993; Slovakia became an independent sovereign state for the first time since WWII, with Meciar as PM and Michal Kovac elected first president in February.",
+        "source": "https://en.wikipedia.org/wiki/Dissolution_of_Czechoslovakia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Dissolution_of_Czechoslovakia"
   },
   {
     "year": 1994,
@@ -151,31 +151,6 @@
   },
   {
     "year": 1995,
-    "title": "State Language Law restricts Hungarian minority rights",
-    "verdict": "TRUE",
-    "reason": "Act No. 270/1995 severely restricted Hungarian language use in public life, drew OSCE criticism, and was cited as a key factor in Slovakia's exclusion from early EU accession talks.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Act No. 270/1995 severely restricted Hungarian language use in public life, drew OSCE criticism, and was cited as a key factor in Slovakia's exclusion from early EU accession talks.",
-        "source": "https://www.refworld.org/legal/legislation/natlegbod/1996/en/92471",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.refworld.org/legal/legislation/natlegbod/1996/en/92471"
-  },
-  {
-    "year": 1995,
     "title": "President Kovac's son kidnapped by secret service",
     "verdict": "TRUE",
     "reason": "In August 1995, Michal Kovac Jr. was abducted, given electric shocks, forced to drink whisky, and dumped near Hainburg, Austria; the Slovak Intelligence Service (SIS) under Meciar ally Ivan Lexa was widely confirmed responsible.",
@@ -200,10 +175,10 @@
     "source": "https://en.wikipedia.org/wiki/Kidnapping_of_Michal_Kov%C3%A1%C4%8D_Jr."
   },
   {
-    "year": 1997,
-    "title": "Meciar sabotages NATO and EU referendum",
+    "year": 1995,
+    "title": "State Language Law restricts Hungarian minority rights",
     "verdict": "TRUE",
-    "reason": "Interior Minister Krajci removed the question on direct presidential elections from the May 1997 referendum ballot on Meciar's behalf; only 9.5% turnout, referendum declared invalid; Slovakia excluded from first NATO/EU enlargement wave.",
+    "reason": "Act No. 270/1995 severely restricted Hungarian language use in public life, drew OSCE criticism, and was cited as a key factor in Slovakia's exclusion from early EU accession talks.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -213,8 +188,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Interior Minister Krajci removed the question on direct presidential elections from the May 1997 referendum ballot on Meciar's behalf; only 9.5% turnout, referendum declared invalid; Slovakia excluded from first NATO/EU enlargement wave.",
-        "source": "https://en.wikipedia.org/wiki/Slovak_referendum,_1997",
+        "reason": "Act No. 270/1995 severely restricted Hungarian language use in public life, drew OSCE criticism, and was cited as a key factor in Slovakia's exclusion from early EU accession talks.",
+        "source": "https://www.refworld.org/legal/legislation/natlegbod/1996/en/92471",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -222,7 +197,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Slovak_referendum,_1997"
+    "source": "https://www.refworld.org/legal/legislation/natlegbod/1996/en/92471"
   },
   {
     "year": 1997,
@@ -248,6 +223,31 @@
       }
     ],
     "source": "https://www.icj-cij.org/case/92"
+  },
+  {
+    "year": 1997,
+    "title": "Meciar sabotages NATO and EU referendum",
+    "verdict": "TRUE",
+    "reason": "Interior Minister Krajci removed the question on direct presidential elections from the May 1997 referendum ballot on Meciar's behalf; only 9.5% turnout, referendum declared invalid; Slovakia excluded from first NATO/EU enlargement wave.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Interior Minister Krajci removed the question on direct presidential elections from the May 1997 referendum ballot on Meciar's behalf; only 9.5% turnout, referendum declared invalid; Slovakia excluded from first NATO/EU enlargement wave.",
+        "source": "https://en.wikipedia.org/wiki/Slovak_referendum,_1997",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Slovak_referendum,_1997"
   },
   {
     "year": 1998,
@@ -375,6 +375,42 @@
     "source": "https://en.wikipedia.org/wiki/Mikul%C3%A1%C5%A1_Dzurinda"
   },
   {
+    "year": 2002,
+    "title": "Slovakia Wins First Ice Hockey World Championship Gold in Gothenburg",
+    "verdict": "TRUE",
+    "reason": "Independently confirmed via Wikipedia and IIHF.com: the 2002 IIHF World Championship final was played May 11, 2002 in Gothenburg, Sweden; Slovakia beat Russia 4-3 with Peter Bondra scoring the decisive goal in the third period off a Zigmund Palffy assist. Wikipedia's tournament page confirms Slovakia beat Canada 3-2 in the quarterfinal and beat host Sweden in a shootout (3-2) in the semifinal after a 2-2 tie. This was Slovakia's first-ever World Championship gold (independent since 1993). All material details in the description match.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia, IIHF.com, and theihlc.com: the 2002 IIHF World Championship final was played May 11, 2002 at Scandinavium in Gothenburg, Sweden. Slovakia defeated Russia 4-3, with Peter Bondra scoring the game-winning goal on the rush (assisted by Zigmund Palffy) with roughly 1:43 left in regulation, beating goalie Maxim Sokolov. This was Slovakia's first-ever World Championship gold since becoming independent in 1993. Earlier rounds also confirmed: Slovakia beat Canada 3-2 in the quarterfinal (comeback from 2-0 down) and beat host Sweden 3-2 in a shootout in the semifinal. Every material detail in the description (score, scorer, city, date, historical significance, path through Canada and Sweden) matches multiple independent, authoritative sources.",
+        "source": "https://en.wikipedia.org/wiki/2002_IIHF_World_Championship_final",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia and IIHF.com: the 2002 IIHF World Championship final was played May 11, 2002 in Gothenburg, Sweden; Slovakia beat Russia 4-3 with Peter Bondra scoring the decisive goal in the third period off a Zigmund Palffy assist. Wikipedia's tournament page confirms Slovakia beat Canada 3-2 in the quarterfinal and beat host Sweden in a shootout (3-2) in the semifinal after a 2-2 tie. This was Slovakia's first-ever World Championship gold (independent since 1993). All material details in the description match.",
+        "source": "https://en.wikipedia.org/wiki/2002_IIHF_World_Championship_final",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2002_IIHF_World_Championship_final"
+  },
+  {
     "year": 2003,
     "title": "Overwhelming referendum approves EU membership",
     "verdict": "TRUE",
@@ -398,31 +434,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2003_Slovak_European_Union_membership_referendum"
-  },
-  {
-    "year": 2004,
-    "title": "Slovakia joins both NATO and the European Union",
-    "verdict": "TRUE",
-    "reason": "Slovakia joined NATO on 29 March 2004 and the EU on 1 May 2004, completing a reversal from Meciar-era exclusion.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Slovakia joined NATO on 29 March 2004 and the EU on 1 May 2004, completing a reversal from Meciar-era exclusion.",
-        "source": "https://en.wikipedia.org/wiki/Enlargement_of_NATO",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Enlargement_of_NATO"
   },
   {
     "year": 2004,
@@ -473,6 +484,31 @@
       }
     ],
     "source": "https://org-prod2-press.kia.com/content/kiapress/eu/en/home/corporate/factoryslovakia.html"
+  },
+  {
+    "year": 2004,
+    "title": "Slovakia joins both NATO and the European Union",
+    "verdict": "TRUE",
+    "reason": "Slovakia joined NATO on 29 March 2004 and the EU on 1 May 2004, completing a reversal from Meciar-era exclusion.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovakia joined NATO on 29 March 2004 and the EU on 1 May 2004, completing a reversal from Meciar-era exclusion.",
+        "source": "https://en.wikipedia.org/wiki/Enlargement_of_NATO",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Enlargement_of_NATO"
   },
   {
     "year": 2006,
@@ -526,31 +562,6 @@
   },
   {
     "year": 2009,
-    "title": "Slovakia adopts the euro amid global financial crisis",
-    "verdict": "TRUE",
-    "reason": "Slovakia became the 16th eurozone member on 1 January 2009, replacing the Slovak koruna at EUR 1 = SKK 30.126; it was the first Central European country to adopt the euro.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Slovakia became the 16th eurozone member on 1 January 2009, replacing the Slovak koruna at EUR 1 = SKK 30.126; it was the first Central European country to adopt the euro.",
-        "source": "https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro/slovakia-and-euro_en",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro/slovakia-and-euro_en"
-  },
-  {
-    "year": 2009,
     "title": "Global recession causes deepest economic contraction since independence",
     "verdict": "TRUE",
     "reason": "Slovakia's GDP fell by approximately 4.9% in 2009, the steepest contraction since independence, driven by collapsed demand for its export-oriented automotive sector.",
@@ -573,6 +584,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Economy_of_Slovakia"
+  },
+  {
+    "year": 2009,
+    "title": "Slovakia adopts the euro amid global financial crisis",
+    "verdict": "TRUE",
+    "reason": "Slovakia became the 16th eurozone member on 1 January 2009, replacing the Slovak koruna at EUR 1 = SKK 30.126; it was the first Central European country to adopt the euro.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovakia became the 16th eurozone member on 1 January 2009, replacing the Slovak koruna at EUR 1 = SKK 30.126; it was the first Central European country to adopt the euro.",
+        "source": "https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro/slovakia-and-euro_en",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://economy-finance.ec.europa.eu/euro/eu-countries-and-euro/slovakia-and-euro_en"
   },
   {
     "year": 2010,
@@ -626,31 +662,6 @@
   },
   {
     "year": 2012,
-    "title": "Gorilla corruption scandal triggers mass street protests",
-    "verdict": "TRUE",
-    "reason": "Leaked SIS wiretap files covering 2005-2006 alleged corrupt ties between the Penta financial group and Dzurinda-era politicians; protests drew thousands in January-March 2012, with the largest in Bratislava since 1989.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Leaked SIS wiretap files covering 2005-2006 alleged corrupt ties between the Penta financial group and Dzurinda-era politicians; protests drew thousands in January-March 2012, with the largest in Bratislava since 1989.",
-        "source": "https://en.wikipedia.org/wiki/Gorilla_scandal",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Gorilla_scandal"
-  },
-  {
-    "year": 2012,
     "title": "Fico's Smer wins absolute parliamentary majority",
     "verdict": "TRUE",
     "reason": "Smer-SD won 44.4% and 83 of 150 seats in the March 2012 elections, forming Slovakia's first single-party majority government since independence.",
@@ -673,6 +684,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2012_Slovak_parliamentary_election"
+  },
+  {
+    "year": 2012,
+    "title": "Gorilla corruption scandal triggers mass street protests",
+    "verdict": "TRUE",
+    "reason": "Leaked SIS wiretap files covering 2005-2006 alleged corrupt ties between the Penta financial group and Dzurinda-era politicians; protests drew thousands in January-March 2012, with the largest in Bratislava since 1989.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Leaked SIS wiretap files covering 2005-2006 alleged corrupt ties between the Penta financial group and Dzurinda-era politicians; protests drew thousands in January-March 2012, with the largest in Bratislava since 1989.",
+        "source": "https://en.wikipedia.org/wiki/Gorilla_scandal",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Gorilla_scandal"
   },
   {
     "year": 2014,
@@ -726,31 +762,6 @@
   },
   {
     "year": 2016,
-    "title": "Slovakia holds rotating EU Council presidency",
-    "verdict": "TRUE",
-    "reason": "Slovakia assumed the rotating Council of the EU presidency on 1 July 2016 — its first such presidency since EU accession in 2004 — amid the aftermath of the Brexit referendum.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Slovakia assumed the rotating Council of the EU presidency on 1 July 2016 — its first such presidency since EU accession in 2004 — amid the aftermath of the Brexit referendum.",
-        "source": "https://epthinktank.eu/2016/06/02/slovakia-to-take-over-council-of-the-eu-presidency-1-july-2016/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://epthinktank.eu/2016/06/02/slovakia-to-take-over-council-of-the-eu-presidency-1-july-2016/"
-  },
-  {
-    "year": 2016,
     "title": "Far-right LSNS enters parliament for the first time",
     "verdict": "TRUE",
     "reason": "LSNS (Kotlebists — People's Party Our Slovakia) won 8.04% and 14 seats in the March 2016 elections, entering parliament for the first time, despite pre-election polls showing only 0.7-2.2% support.",
@@ -773,6 +784,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2016_Slovak_parliamentary_election"
+  },
+  {
+    "year": 2016,
+    "title": "Slovakia holds rotating EU Council presidency",
+    "verdict": "TRUE",
+    "reason": "Slovakia assumed the rotating Council of the EU presidency on 1 July 2016 — its first such presidency since EU accession in 2004 — amid the aftermath of the Brexit referendum.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Slovakia assumed the rotating Council of the EU presidency on 1 July 2016 — its first such presidency since EU accession in 2004 — amid the aftermath of the Brexit referendum.",
+        "source": "https://epthinktank.eu/2016/06/02/slovakia-to-take-over-council-of-the-eu-presidency-1-july-2016/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://epthinktank.eu/2016/06/02/slovakia-to-take-over-council-of-the-eu-presidency-1-july-2016/"
   },
   {
     "year": 2018,
@@ -926,31 +962,6 @@
   },
   {
     "year": 2022,
-    "title": "Slovakia receives largest Ukrainian refugee influx in its history",
-    "verdict": "TRUE",
-    "reason": "Over 600,000 Ukrainians crossed into Slovakia following Russia's February 2022 full-scale invasion, with approximately 130,000 remaining; Slovakia provided military aid including MiG-29 jets (announced March 2023) and an S-300 system.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Over 600,000 Ukrainians crossed into Slovakia following Russia's February 2022 full-scale invasion, with approximately 130,000 remaining; Slovakia provided military aid including MiG-29 jets (announced March 2023) and an S-300 system.",
-        "source": "https://en.wikipedia.org/wiki/Ukrainian_refugee_crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Ukrainian_refugee_crisis"
-  },
-  {
-    "year": 2022,
     "title": "Heger government loses confidence vote amid coalition collapse",
     "verdict": "TRUE",
     "reason": "On 15 December 2022, parliament voted 78-to-oust the Heger government after SaS withdrew from the coalition; President Caputova subsequently appointed economist Ludovit Odor to lead a caretaker government pending snap elections.",
@@ -973,6 +984,31 @@
       }
     ],
     "source": "https://www.pbs.org/newshour/world/slovak-coalition-government-collapses-after-losing-no-confidence-vote-in-parliament"
+  },
+  {
+    "year": 2022,
+    "title": "Slovakia receives largest Ukrainian refugee influx in its history",
+    "verdict": "TRUE",
+    "reason": "Over 600,000 Ukrainians crossed into Slovakia following Russia's February 2022 full-scale invasion, with approximately 130,000 remaining; Slovakia provided military aid including MiG-29 jets (announced March 2023) and an S-300 system.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Over 600,000 Ukrainians crossed into Slovakia following Russia's February 2022 full-scale invasion, with approximately 130,000 remaining; Slovakia provided military aid including MiG-29 jets (announced March 2023) and an S-300 system.",
+        "source": "https://en.wikipedia.org/wiki/Ukrainian_refugee_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Ukrainian_refugee_crisis"
   },
   {
     "year": 2023,
@@ -1101,31 +1137,6 @@
   },
   {
     "year": 2025,
-    "title": "Slovakia threatens Ukrainian refugee aid cuts over gas transit dispute",
-    "verdict": "TRUE",
-    "reason": "In January 2025, Fico threatened to cut humanitarian aid and social benefits for approximately 130,000 Ukrainian refugees in Slovakia after Ukraine ended Russian gas transit via its territory on 1 January 2025.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "In January 2025, Fico threatened to cut humanitarian aid and social benefits for approximately 130,000 Ukrainian refugees in Slovakia after Ukraine ended Russian gas transit via its territory on 1 January 2025.",
-        "source": "https://www.euronews.com/my-europe/2025/01/03/slovakia-threatens-to-cut-aid-to-ukrainian-refugees-over-end-of-russian-gas",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.euronews.com/my-europe/2025/01/03/slovakia-threatens-to-cut-aid-to-ukrainian-refugees-over-end-of-russian-gas"
-  },
-  {
-    "year": 2025,
     "title": "Constitutional amendment restricts gender recognition to binary",
     "verdict": "TRUE",
     "reason": "On 26 September 2025, Slovakia's parliament passed a constitutional amendment recognizing only two sexes (male and female), banning same-sex adoption, and placing 'national identity' above EU law in some domains, drawing condemnation from Amnesty International and the Council of Europe.",
@@ -1173,5 +1184,30 @@
       }
     ],
     "source": "https://www.aljazeera.com/news/2025/12/16/thousands-protest-in-slovakia-against-fico-governments-judicial-reforms"
+  },
+  {
+    "year": 2025,
+    "title": "Slovakia threatens Ukrainian refugee aid cuts over gas transit dispute",
+    "verdict": "TRUE",
+    "reason": "In January 2025, Fico threatened to cut humanitarian aid and social benefits for approximately 130,000 Ukrainian refugees in Slovakia after Ukraine ended Russian gas transit via its territory on 1 January 2025.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In January 2025, Fico threatened to cut humanitarian aid and social benefits for approximately 130,000 Ukrainian refugees in Slovakia after Ukraine ended Russian gas transit via its territory on 1 January 2025.",
+        "source": "https://www.euronews.com/my-europe/2025/01/03/slovakia-threatens-to-cut-aid-to-ukrainian-refugees-over-end-of-russian-gas",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.euronews.com/my-europe/2025/01/03/slovakia-threatens-to-cut-aid-to-ukrainian-refugees-over-end-of-russian-gas"
   }
 ]

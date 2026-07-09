@@ -2933,5 +2933,77 @@
       }
     ],
     "source": "https://www.securitycouncilreport.org/monthly-forecast/2025-11/yemen-84.php"
+  },
+  {
+    "year": 2023,
+    "title": "Saudi Arabia Joins BRICS",
+    "verdict": "PARTIAL",
+    "reason": "The year and country hold — on 24 August 2023, at the BRICS summit in Johannesburg, South African President Ramaphosa announced Saudi Arabia was one of six countries (alongside Argentina, Egypt, Ethiopia, Iran, and the UAE) invited to join BRICS effective 1 January 2024, and Saudi FM Prince Faisal bin Farhan publicly welcomed this as part of a broader multipolar/hedging foreign policy. However, the description's core claim — that Saudi Arabia \"accepted an invitation to join\" — overstates what happened in 2023. Multiple contemporaneous sources (Al Jazeera, Al Arabiya) report the Saudi FM explicitly did NOT accept in 2023; he said the kingdom would \"review the details\" and take an \"appropriate decision\" before the Jan 1, 2024 date. Saudi Arabia in fact did not join at the start of 2024 as planned either, remained publicly non-committal/ambiguous through 2024 (Carnegie Endowment: \"Why Is Saudi Arabia Hedging Its BRICS Invite?\"), and only had its status resolved (with conflicting reports of full membership vs. continued non-decision, and later reports of a \"suspended\" membership) well after 2023. So: real event, correct country/year, but the described action (accepted/joined) is a material overstatement — the 2023 reality was \"invited, non-committal,\" not \"accepted.\"",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Saudi Arabia, alongside the UAE, Iran, Egypt, Ethiopia, and Argentina, was indeed invited to join BRICS in August 2023 (confirmed by Al Jazeera, CNN, CNBC reporting on the Johannesburg summit) — matching the description's co-invitee list exactly and reflecting the multipolar/hedging framing. However, the description's core claim — that Saudi Arabia 'accepted' the invitation — overstates what actually happened. Saudi FM Prince Faisal bin Farhan only 'welcomed' the invitation and said the kingdom would 'review the details in order to make an appropriate decision' before the Jan 1, 2024 joining date. Saudi Arabia did not join on schedule; it publicly said in mid-January 2024 it was 'still considering the matter,' and per Wikipedia's Member states of BRICS and a Carnegie Endowment analysis (Nov 2024), the kingdom's formal acceptance remained unconfirmed/ambiguous well past 2023-2024 (with conflicting later reports about whether/when it ever formally joined). So country/year/co-invitee list hold, but the material action described (accepted/joined) did not occur as stated in 2023 — it was an invitation Saudi Arabia deliberately left open rather than accepted.",
+        "source": "https://www.aljazeera.com/economy/2023/8/24/saudi-arabia-iran-to-join-brics-as-grouping-admits-six-new-members",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "The year and country hold — on 24 August 2023, at the BRICS summit in Johannesburg, South African President Ramaphosa announced Saudi Arabia was one of six countries (alongside Argentina, Egypt, Ethiopia, Iran, and the UAE) invited to join BRICS effective 1 January 2024, and Saudi FM Prince Faisal bin Farhan publicly welcomed this as part of a broader multipolar/hedging foreign policy. However, the description's core claim — that Saudi Arabia \"accepted an invitation to join\" — overstates what happened in 2023. Multiple contemporaneous sources (Al Jazeera, Al Arabiya) report the Saudi FM explicitly did NOT accept in 2023; he said the kingdom would \"review the details\" and take an \"appropriate decision\" before the Jan 1, 2024 date. Saudi Arabia in fact did not join at the start of 2024 as planned either, remained publicly non-committal/ambiguous through 2024 (Carnegie Endowment: \"Why Is Saudi Arabia Hedging Its BRICS Invite?\"), and only had its status resolved (with conflicting reports of full membership vs. continued non-decision, and later reports of a \"suspended\" membership) well after 2023. So: real event, correct country/year, but the described action (accepted/joined) is a material overstatement — the 2023 reality was \"invited, non-committal,\" not \"accepted.\"",
+        "source": "https://www.aljazeera.com/economy/2023/8/24/saudi-arabia-iran-to-join-brics-as-grouping-admits-six-new-members",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.aljazeera.com/economy/2023/8/24/saudi-arabia-iran-to-join-brics-as-grouping-admits-six-new-members"
+  },
+  {
+    "year": 2025,
+    "title": "Saudi Arabia Advances Green Hydrogen Exports",
+    "verdict": "TRUE",
+    "reason": "Confirmed by NGHC's own 02 June 2025 project update: the NEOM Green Hydrogen Company reached 80% construction completion across all sites (hydrogen facility, wind garden, solar farm, transmission grid) at the start of Q1 2025, targeting up to 600 tonnes/day of carbon-free hydrogen (as green ammonia), matching the description's '600 tonnes of green hydrogen daily' figure. The plant is fully committed under a 30-year Air Products offtake agreement for global export, i.e. positioning Saudi output as a future export commodity, exactly as described. Separately in 2025 Saudi Arabia signed further export-facing agreements (ACWA Power-SEFE MOU, March 2025, for up to 200,000 t/yr green hydrogen exports to Germany by 2030; EnBW Yanbu Hub agreement; Riyadh partnerships with Europe, July 2025), reinforcing the 'positioned as future export commodity' framing. Commercial production itself was not yet reached in 2025 (electrolyser commissioning/first ammonia output pushed to 2027), but the description only claims the project was 'advancing toward' commercial production and progress on the export ambition, not that exports had already begun -- so this is accurate as stated, not an overstatement. Country, year, and substance all check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via NGHC's own official news release (June 2, 2025) and corroborating trade press (Fuel Cells Works, Zawya, Asharq Al-Awsat/aawsat) that in 2025 the NEOM Green Hydrogen Company reached 80% construction completion across the hydrogen facility, wind garden, solar farm, and transmission grid, with a stated production target of up to 600 tonnes/day of carbon-free hydrogen (exported as ~1.2 million tonnes/year of green ammonia). Saudi Arabia's positioning of green hydrogen as a future export commodity is corroborated by the ACWA Power–SEFE Energy MOU (Feb 2025) targeting 200,000 tonnes/year of green hydrogen exports to Europe by 2030, and by multiple 2025 articles framing NEOM/Saudi Arabia's ambition to be a leading global hydrogen exporter. The description's phrase \"advancing toward commercial production\" matches reality: actual first ammonia/hydrogen output was not yet achieved in 2025 (electrolyser commissioning and first product are targeted for 2027, per NGHC and Fuel Cells Works), so the event is accurately framed as progress/advancement rather than completed commercial production — no material overstatement. Country, year, and substance all hold.",
+        "source": "https://nghc.com/news/worlds-largest-green-hydrogen-plant-reaches-80-construction-completion-across-all-sites/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by NGHC's own 02 June 2025 project update: the NEOM Green Hydrogen Company reached 80% construction completion across all sites (hydrogen facility, wind garden, solar farm, transmission grid) at the start of Q1 2025, targeting up to 600 tonnes/day of carbon-free hydrogen (as green ammonia), matching the description's '600 tonnes of green hydrogen daily' figure. The plant is fully committed under a 30-year Air Products offtake agreement for global export, i.e. positioning Saudi output as a future export commodity, exactly as described. Separately in 2025 Saudi Arabia signed further export-facing agreements (ACWA Power-SEFE MOU, March 2025, for up to 200,000 t/yr green hydrogen exports to Germany by 2030; EnBW Yanbu Hub agreement; Riyadh partnerships with Europe, July 2025), reinforcing the 'positioned as future export commodity' framing. Commercial production itself was not yet reached in 2025 (electrolyser commissioning/first ammonia output pushed to 2027), but the description only claims the project was 'advancing toward' commercial production and progress on the export ambition, not that exports had already begun -- so this is accurate as stated, not an overstatement. Country, year, and substance all check out.",
+        "source": "https://nghc.com/news/worlds-largest-green-hydrogen-plant-reaches-80-construction-completion-across-all-sites/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://nghc.com/news/worlds-largest-green-hydrogen-plant-reaches-80-construction-completion-across-all-sites/"
   }
 ]
