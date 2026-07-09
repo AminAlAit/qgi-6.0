@@ -1,0 +1,920 @@
+{
+  "recipe_id": "banking_and_financial_crisis",
+  "arm": "run31",
+  "B_used": 24,
+  "stop_reason": "b_ceiling_reached",
+  "pi": {
+    "MS.MIL.MPRT.KD": 0.041666666666666664,
+    "v2juhcind": 0.041666666666666664,
+    "NY.GDP.DEFL.KD.ZG": 0.125,
+    "SM.POP.NETM": 0.08333333333333333,
+    "UNHCR_FORCDISP_TOTAL": 0.041666666666666664,
+    "EG.IMP.CONS.ZS": 0.041666666666666664,
+    "NY.GDP.PCAP.CD": 0.041666666666666664,
+    "v2pepwrgen": 0.041666666666666664,
+    "SH.DYN.MORT": 0.08333333333333333,
+    "v2jureform": 0.041666666666666664,
+    "v2x_gender": 0.125,
+    "BM.TRF.PWKR.CD.DT": 0.08333333333333333,
+    "v2jupoatck": 0.125,
+    "SP.DYN.LE00.IN": 0.16666666666666666,
+    "FD.AST.PRVT.GD.ZS": 0.08333333333333333,
+    "v2x_pubcorr": 0.041666666666666664,
+    "v2cacamps": 0.041666666666666664,
+    "v2regdur": 0.08333333333333333,
+    "MS.MIL.TOTL.TF.ZS": 0.041666666666666664,
+    "v2pepwrort": 0.041666666666666664,
+    "v2xeg_eqprotec": 0.041666666666666664,
+    "v2juaccnt": 0.041666666666666664,
+    "NE.IMP.GNFS.CD": 0.041666666666666664,
+    "v2csantimv": 0.041666666666666664,
+    "NE.GDI.TOTL.ZS": 0.08333333333333333,
+    "v2svstterr": 0.08333333333333333,
+    "SL.UEM.1524.ZS": 0.041666666666666664,
+    "v2jucorrdc": 0.08333333333333333,
+    "MS.MIL.XPND.GD.ZS": 0.041666666666666664,
+    "NY.GNP.PCAP.CD": 0.08333333333333333,
+    "GC.XPN.INTP.RV.ZS": 0.041666666666666664,
+    "v2clkill": 0.041666666666666664,
+    "EN.GHG.CO2.PC.CE.AR5": 0.041666666666666664,
+    "GC.NLD.TOTL.GD.ZS": 0.041666666666666664,
+    "GC.NFN.TOTL.GD.ZS": 0.041666666666666664,
+    "v2csreprss": 0.041666666666666664,
+    "SE.PRM.ENRR": 0.041666666666666664,
+    "v2exl_legitlead": 0.041666666666666664,
+    "NE.IMP.GNFS.ZS": 0.041666666666666664,
+    "BX.KLT.DINV.WD.GD.ZS": 0.041666666666666664,
+    "NE.CON.GOVT.ZS": 0.041666666666666664,
+    "v2x_veracc": 0.041666666666666664,
+    "v2catrauni": 0.041666666666666664,
+    "NV.SRV.TOTL.ZS": 0.041666666666666664,
+    "v2clrspct": 0.08333333333333333,
+    "v2excrptps": 0.041666666666666664,
+    "AG.PRD.FOOD.XD": 0.041666666666666664,
+    "BM.KLT.DINV.WD.GD.ZS": 0.041666666666666664,
+    "SP.DYN.TFRT.IN": 0.041666666666666664,
+    "OWID_REGIMETYPE": 0.041666666666666664
+  },
+  "stable_set": [],
+  "reference_set": [
+    "FD.AST.PRVT.GD.ZS",
+    "NE.IMP.GNFS.CD",
+    "NV.SRV.TOTL.ZS"
+  ],
+  "resample_selected_sets": [
+    [
+      "MS.MIL.MPRT.KD",
+      "v2juhcind"
+    ],
+    [
+      "UNHCR_FORCDISP_TOTAL",
+      "NY.GDP.DEFL.KD.ZG",
+      "SM.POP.NETM"
+    ],
+    [
+      "EG.IMP.CONS.ZS"
+    ],
+    [
+      "NY.GDP.PCAP.CD",
+      "v2pepwrgen",
+      "SH.DYN.MORT"
+    ],
+    [
+      "NY.GDP.DEFL.KD.ZG"
+    ],
+    [
+      "BM.TRF.PWKR.CD.DT",
+      "v2x_gender",
+      "v2jureform"
+    ],
+    [
+      "FD.AST.PRVT.GD.ZS",
+      "SP.DYN.LE00.IN",
+      "v2x_pubcorr",
+      "v2jupoatck"
+    ],
+    [
+      "v2pepwrort",
+      "MS.MIL.TOTL.TF.ZS",
+      "v2cacamps",
+      "v2regdur"
+    ],
+    [
+      "v2xeg_eqprotec"
+    ],
+    [
+      "SP.DYN.LE00.IN",
+      "BM.TRF.PWKR.CD.DT",
+      "v2juaccnt"
+    ],
+    [
+      "NE.IMP.GNFS.CD",
+      "v2csantimv",
+      "FD.AST.PRVT.GD.ZS",
+      "NE.GDI.TOTL.ZS"
+    ],
+    [
+      "v2svstterr",
+      "SL.UEM.1524.ZS"
+    ],
+    [
+      "NY.GNP.PCAP.CD",
+      "MS.MIL.XPND.GD.ZS",
+      "v2jucorrdc"
+    ],
+    [
+      "GC.XPN.INTP.RV.ZS",
+      "v2clkill"
+    ],
+    [
+      "EN.GHG.CO2.PC.CE.AR5"
+    ],
+    [
+      "GC.NFN.TOTL.GD.ZS",
+      "GC.NLD.TOTL.GD.ZS",
+      "SH.DYN.MORT"
+    ],
+    [
+      "SE.PRM.ENRR",
+      "v2x_gender",
+      "v2csreprss",
+      "v2regdur",
+      "NY.GNP.PCAP.CD"
+    ],
+    [
+      "v2exl_legitlead",
+      "NE.CON.GOVT.ZS",
+      "NE.IMP.GNFS.ZS",
+      "BX.KLT.DINV.WD.GD.ZS"
+    ],
+    [
+      "v2catrauni",
+      "NV.SRV.TOTL.ZS",
+      "v2svstterr",
+      "v2jupoatck",
+      "v2x_veracc"
+    ],
+    [
+      "SP.DYN.LE00.IN",
+      "v2clrspct",
+      "v2jucorrdc"
+    ],
+    [
+      "NE.GDI.TOTL.ZS",
+      "v2clrspct",
+      "v2x_gender",
+      "AG.PRD.FOOD.XD",
+      "v2excrptps"
+    ],
+    [
+      "NY.GDP.DEFL.KD.ZG"
+    ],
+    [
+      "v2jupoatck",
+      "BM.KLT.DINV.WD.GD.ZS",
+      "SP.DYN.TFRT.IN"
+    ],
+    [
+      "SP.DYN.LE00.IN",
+      "SM.POP.NETM",
+      "OWID_REGIMETYPE"
+    ]
+  ],
+  "per_checkpoint": [
+    {
+      "B": 12,
+      "keepset": [],
+      "pi_snapshot": {
+        "BM.TRF.PWKR.CD.DT": 0.16666666666666666,
+        "EG.IMP.CONS.ZS": 0.08333333333333333,
+        "FD.AST.PRVT.GD.ZS": 0.16666666666666666,
+        "MS.MIL.MPRT.KD": 0.08333333333333333,
+        "MS.MIL.TOTL.TF.ZS": 0.08333333333333333,
+        "NE.GDI.TOTL.ZS": 0.08333333333333333,
+        "NE.IMP.GNFS.CD": 0.08333333333333333,
+        "NY.GDP.DEFL.KD.ZG": 0.16666666666666666,
+        "NY.GDP.PCAP.CD": 0.08333333333333333,
+        "SH.DYN.MORT": 0.08333333333333333,
+        "SL.UEM.1524.ZS": 0.08333333333333333,
+        "SM.POP.NETM": 0.08333333333333333,
+        "SP.DYN.LE00.IN": 0.16666666666666666,
+        "UNHCR_FORCDISP_TOTAL": 0.08333333333333333,
+        "v2cacamps": 0.08333333333333333,
+        "v2csantimv": 0.08333333333333333,
+        "v2juaccnt": 0.08333333333333333,
+        "v2juhcind": 0.08333333333333333,
+        "v2jupoatck": 0.08333333333333333,
+        "v2jureform": 0.08333333333333333,
+        "v2pepwrgen": 0.08333333333333333,
+        "v2pepwrort": 0.08333333333333333,
+        "v2regdur": 0.08333333333333333,
+        "v2svstterr": 0.08333333333333333,
+        "v2x_gender": 0.08333333333333333,
+        "v2x_pubcorr": 0.08333333333333333,
+        "v2xeg_eqprotec": 0.08333333333333333
+      },
+      "max_abs_delta_pi_vs_prev": null,
+      "keepset_jaccard_vs_prev": null,
+      "stop_criteria_satisfied": false
+    },
+    {
+      "B": 24,
+      "keepset": [],
+      "pi_snapshot": {
+        "AG.PRD.FOOD.XD": 0.041666666666666664,
+        "BM.KLT.DINV.WD.GD.ZS": 0.041666666666666664,
+        "BM.TRF.PWKR.CD.DT": 0.08333333333333333,
+        "BX.KLT.DINV.WD.GD.ZS": 0.041666666666666664,
+        "EG.IMP.CONS.ZS": 0.041666666666666664,
+        "EN.GHG.CO2.PC.CE.AR5": 0.041666666666666664,
+        "FD.AST.PRVT.GD.ZS": 0.08333333333333333,
+        "GC.NFN.TOTL.GD.ZS": 0.041666666666666664,
+        "GC.NLD.TOTL.GD.ZS": 0.041666666666666664,
+        "GC.XPN.INTP.RV.ZS": 0.041666666666666664,
+        "MS.MIL.MPRT.KD": 0.041666666666666664,
+        "MS.MIL.TOTL.TF.ZS": 0.041666666666666664,
+        "MS.MIL.XPND.GD.ZS": 0.041666666666666664,
+        "NE.CON.GOVT.ZS": 0.041666666666666664,
+        "NE.GDI.TOTL.ZS": 0.08333333333333333,
+        "NE.IMP.GNFS.CD": 0.041666666666666664,
+        "NE.IMP.GNFS.ZS": 0.041666666666666664,
+        "NV.SRV.TOTL.ZS": 0.041666666666666664,
+        "NY.GDP.DEFL.KD.ZG": 0.125,
+        "NY.GDP.PCAP.CD": 0.041666666666666664,
+        "NY.GNP.PCAP.CD": 0.08333333333333333,
+        "OWID_REGIMETYPE": 0.041666666666666664,
+        "SE.PRM.ENRR": 0.041666666666666664,
+        "SH.DYN.MORT": 0.08333333333333333,
+        "SL.UEM.1524.ZS": 0.041666666666666664,
+        "SM.POP.NETM": 0.08333333333333333,
+        "SP.DYN.LE00.IN": 0.16666666666666666,
+        "SP.DYN.TFRT.IN": 0.041666666666666664,
+        "UNHCR_FORCDISP_TOTAL": 0.041666666666666664,
+        "v2cacamps": 0.041666666666666664,
+        "v2catrauni": 0.041666666666666664,
+        "v2clkill": 0.041666666666666664,
+        "v2clrspct": 0.08333333333333333,
+        "v2csantimv": 0.041666666666666664,
+        "v2csreprss": 0.041666666666666664,
+        "v2excrptps": 0.041666666666666664,
+        "v2exl_legitlead": 0.041666666666666664,
+        "v2juaccnt": 0.041666666666666664,
+        "v2jucorrdc": 0.08333333333333333,
+        "v2juhcind": 0.041666666666666664,
+        "v2jupoatck": 0.125,
+        "v2jureform": 0.041666666666666664,
+        "v2pepwrgen": 0.041666666666666664,
+        "v2pepwrort": 0.041666666666666664,
+        "v2regdur": 0.08333333333333333,
+        "v2svstterr": 0.08333333333333333,
+        "v2x_gender": 0.125,
+        "v2x_pubcorr": 0.041666666666666664,
+        "v2x_veracc": 0.041666666666666664,
+        "v2xeg_eqprotec": 0.041666666666666664
+      },
+      "max_abs_delta_pi_vs_prev": 0.08333333333333333,
+      "keepset_jaccard_vs_prev": 1.0,
+      "stop_criteria_satisfied": false
+    }
+  ],
+  "loco_auc": NaN,
+  "ci95_lo": null,
+  "ci95_hi": null,
+  "oof": [],
+  "n_pos": 75,
+  "final_indicator_count": 0,
+  "dedup_cluster_map": {
+    "AG.PRD.FOOD.XD": [
+      "AG.PRD.FOOD.XD"
+    ],
+    "BM.KLT.DINV.WD.GD.ZS": [
+      "BM.KLT.DINV.WD.GD.ZS"
+    ],
+    "BM.TRF.PWKR.CD.DT": [
+      "BM.TRF.PWKR.CD.DT"
+    ],
+    "BN.CAB.XOKA.CD": [
+      "BN.CAB.XOKA.CD"
+    ],
+    "BN.CAB.XOKA.GD.ZS": [
+      "BN.CAB.XOKA.GD.ZS"
+    ],
+    "BX.KLT.DINV.WD.GD.ZS": [
+      "BX.KLT.DINV.WD.GD.ZS"
+    ],
+    "BX.TRF.PWKR.DT.GD.ZS": [
+      "BX.TRF.PWKR.DT.GD.ZS"
+    ],
+    "CC.EST": [
+      "CC.EST",
+      "RL.EST"
+    ],
+    "DT.DOD.DECT.CD": [
+      "DT.DOD.DECT.CD"
+    ],
+    "DT.DOD.DECT.GN.ZS": [
+      "DT.DOD.DECT.GN.ZS"
+    ],
+    "DT.TDS.DECT.EX.ZS": [
+      "DT.TDS.DECT.EX.ZS"
+    ],
+    "DT.TDS.DECT.GN.ZS": [
+      "DT.TDS.DECT.GN.ZS"
+    ],
+    "EAR_XTLP_SEX_RT": [
+      "EAR_XTLP_SEX_RT"
+    ],
+    "EG.ELC.ACCS.RU.ZS": [
+      "EG.ELC.ACCS.RU.ZS"
+    ],
+    "EG.ELC.ACCS.UR.ZS": [
+      "EG.ELC.ACCS.UR.ZS"
+    ],
+    "EG.IMP.CONS.ZS": [
+      "EG.IMP.CONS.ZS"
+    ],
+    "EIP_NEET_SEX_AGE_RT": [
+      "EIP_NEET_SEX_AGE_RT"
+    ],
+    "EMP_NIFL_SEX_RT": [
+      "EMP_NIFL_SEX_RT"
+    ],
+    "EN.CLC.MDAT.ZS": [
+      "EN.CLC.MDAT.ZS"
+    ],
+    "EN.GHG.CO2.PC.CE.AR5": [
+      "EN.GHG.CO2.PC.CE.AR5"
+    ],
+    "ET-001": [
+      "ET-001"
+    ],
+    "FA-01": [
+      "FA-01"
+    ],
+    "FA-02": [
+      "FA-02",
+      "FS-001"
+    ],
+    "FA-03": [
+      "FA-03"
+    ],
+    "FA-04": [
+      "FA-04"
+    ],
+    "FA-05": [
+      "FA-05"
+    ],
+    "FB.AST.NPER.ZS": [
+      "FB.AST.NPER.ZS"
+    ],
+    "FB.BNK.CAPA.ZS": [
+      "FB.BNK.CAPA.ZS"
+    ],
+    "FD.AST.PRVT.GD.ZS": [
+      "FD.AST.PRVT.GD.ZS"
+    ],
+    "FI.RES.TOTL.CD": [
+      "FI.RES.TOTL.CD"
+    ],
+    "FI.RES.TOTL.MO": [
+      "FI.RES.TOTL.MO"
+    ],
+    "FM.LBL.BMNY.GD.ZS": [
+      "FM.LBL.BMNY.GD.ZS"
+    ],
+    "FP.CPI.TOTL.ZG": [
+      "FP.CPI.TOTL.ZG"
+    ],
+    "FR.INR.LEND": [
+      "FR.INR.LEND"
+    ],
+    "FR.INR.RINR": [
+      "FR.INR.RINR"
+    ],
+    "FR.INR.RISK": [
+      "FR.INR.RISK"
+    ],
+    "FS-003": [
+      "FS-003"
+    ],
+    "FS-004": [
+      "FS-004"
+    ],
+    "FS-007": [
+      "FS-007"
+    ],
+    "GC.DOD.TOTL.GD.ZS": [
+      "GC.DOD.TOTL.GD.ZS"
+    ],
+    "GC.NFN.TOTL.GD.ZS": [
+      "GC.NFN.TOTL.GD.ZS"
+    ],
+    "GC.NLD.TOTL.GD.ZS": [
+      "GC.NLD.TOTL.GD.ZS"
+    ],
+    "GC.REV.XGRT.GD.ZS": [
+      "GC.REV.XGRT.GD.ZS"
+    ],
+    "GC.TAX.TOTL.GD.ZS": [
+      "GC.TAX.TOTL.GD.ZS"
+    ],
+    "GC.XPN.INTP.RV.ZS": [
+      "GC.XPN.INTP.RV.ZS"
+    ],
+    "GC.XPN.TOTL.GD.ZS": [
+      "GC.XPN.TOTL.GD.ZS"
+    ],
+    "GE.EST": [
+      "GE.EST",
+      "RQ.EST"
+    ],
+    "GII": [
+      "GII"
+    ],
+    "IC.FRM.BRIB.ZS": [
+      "IC.FRM.BRIB.ZS"
+    ],
+    "IHDI": [
+      "IHDI"
+    ],
+    "ILR_TUMT_NOC_RT": [
+      "ILR_TUMT_NOC_RT"
+    ],
+    "INEQ_INC": [
+      "INEQ_INC"
+    ],
+    "IQ.CPA.IRAI.XQ": [
+      "IQ.CPA.IRAI.XQ"
+    ],
+    "IQ.CPA.PADM.XQ": [
+      "IQ.CPA.PADM.XQ"
+    ],
+    "IQ.CPA.PUBS.XQ": [
+      "IQ.CPA.PUBS.XQ"
+    ],
+    "IT.CEL.SETS.P2": [
+      "IT.CEL.SETS.P2"
+    ],
+    "IT.NET.USER.ZS": [
+      "IT.NET.USER.ZS"
+    ],
+    "LAP_2GDP_NOC_RT": [
+      "LAP_2GDP_NOC_RT"
+    ],
+    "MPI": [
+      "MPI"
+    ],
+    "MS.MIL.MPRT.KD": [
+      "MS.MIL.MPRT.KD"
+    ],
+    "MS.MIL.TOTL.P1": [
+      "MS.MIL.TOTL.P1"
+    ],
+    "MS.MIL.TOTL.TF.ZS": [
+      "MS.MIL.TOTL.TF.ZS"
+    ],
+    "MS.MIL.XPND.CN": [
+      "MS.MIL.XPND.CN"
+    ],
+    "MS.MIL.XPND.GD.ZS": [
+      "MS.MIL.XPND.GD.ZS"
+    ],
+    "MS.MIL.XPND.ZS": [
+      "MS.MIL.XPND.ZS"
+    ],
+    "NE.IMP.GNFS.CD": [
+      "MS.MIL.XPRT.KD",
+      "NE.EXP.GNFS.CD",
+      "NE.IMP.GNFS.CD",
+      "NY.GDP.MKTP.CD",
+      "NY.GDP.MKTP.KD"
+    ],
+    "NE.CON.GOVT.ZS": [
+      "NE.CON.GOVT.ZS"
+    ],
+    "NE.CON.PRVT.ZS": [
+      "NE.CON.PRVT.ZS"
+    ],
+    "NE.EXP.GNFS.ZS": [
+      "NE.EXP.GNFS.ZS"
+    ],
+    "NE.GDI.TOTL.KD.ZG": [
+      "NE.GDI.TOTL.KD.ZG"
+    ],
+    "NE.GDI.TOTL.ZS": [
+      "NE.GDI.TOTL.ZS"
+    ],
+    "NE.IMP.GNFS.ZS": [
+      "NE.IMP.GNFS.ZS"
+    ],
+    "NV.AGR.TOTL.ZS": [
+      "NV.AGR.TOTL.ZS"
+    ],
+    "NV.IND.MANF.KD.ZG": [
+      "NV.IND.MANF.KD.ZG"
+    ],
+    "NV.IND.MANF.ZS": [
+      "NV.IND.MANF.ZS"
+    ],
+    "NV.IND.TOTL.ZS": [
+      "NV.IND.TOTL.ZS"
+    ],
+    "NV.SRV.TOTL.ZS": [
+      "NV.SRV.TOTL.ZS"
+    ],
+    "NY.ADJ.SVNG.GN.ZS": [
+      "NY.ADJ.SVNG.GN.ZS"
+    ],
+    "NY.GDP.DEFL.KD.ZG": [
+      "NY.GDP.DEFL.KD.ZG"
+    ],
+    "NY.GDP.MINR.RT.ZS": [
+      "NY.GDP.MINR.RT.ZS"
+    ],
+    "NY.GDP.MKTP.KD.ZG": [
+      "NY.GDP.MKTP.KD.ZG"
+    ],
+    "NY.GDP.PCAP.CD": [
+      "NY.GDP.PCAP.CD",
+      "NY.GNP.PCAP.CD"
+    ],
+    "NY.GDP.TOTL.RT.ZS": [
+      "NY.GDP.PETR.RT.ZS",
+      "NY.GDP.TOTL.RT.ZS"
+    ],
+    "OWID_AUTOCRATIZATION": [
+      "OWID_AUTOCRATIZATION"
+    ],
+    "OWID_POP_YOUNG": [
+      "OWID_POP_YOUNG"
+    ],
+    "v2mecenefm": [
+      "OWID_REGIMETYPE",
+      "v2caassemb",
+      "v2clkill",
+      "v2cltort",
+      "v2cltrnslw",
+      "v2cseeorgs",
+      "v2csprtcpt",
+      "v2csreprss",
+      "v2exrescon",
+      "v2jucomp",
+      "v2juhccomp",
+      "v2juhcind",
+      "v2juncind",
+      "v2lgoppart",
+      "v2lgqstexp",
+      "v2mebias",
+      "v2mecenefm",
+      "v2mecrit",
+      "v2meharjrn",
+      "v2merange",
+      "v2meslfcen",
+      "v2x_accountability",
+      "v2x_civlib",
+      "v2x_clphy",
+      "v2x_clpol",
+      "v2x_clpriv",
+      "v2x_cspart",
+      "v2x_diagacc",
+      "v2x_frassoc_thick",
+      "v2x_freexp",
+      "v2x_freexp_altinf",
+      "v2x_horacc",
+      "v2x_jucon",
+      "v2x_libdem",
+      "v2x_liberal",
+      "v2x_neopat",
+      "v2x_polyarchy",
+      "v2x_regime",
+      "v2x_regime_amb",
+      "v2x_rule",
+      "v2x_veracc",
+      "v2xca_academ",
+      "v2xcl_rol",
+      "v2xcs_ccsi",
+      "v2xel_frefair",
+      "v2xlg_legcon"
+    ],
+    "OWID_SLUM_SHARE": [
+      "OWID_SLUM_SHARE"
+    ],
+    "OWID_STATECAP": [
+      "OWID_STATECAP"
+    ],
+    "PV.EST": [
+      "PV.EST"
+    ],
+    "SDGB-009": [
+      "SDGB-009"
+    ],
+    "SDGB-012": [
+      "SDGB-012"
+    ],
+    "SDG_0131_SEX_SOC_RT": [
+      "SDG_0131_SEX_SOC_RT"
+    ],
+    "SE.PRM.ENRR": [
+      "SE.PRM.ENRR"
+    ],
+    "SH.DYN.MORT": [
+      "SH.DYN.MORT"
+    ],
+    "SI.POV.GINI": [
+      "SI.POV.GINI"
+    ],
+    "SL.EMP.TOTL.SP.ZS": [
+      "SL.EMP.TOTL.SP.ZS"
+    ],
+    "SL.TLF.CACT.FE.ZS": [
+      "SL.TLF.CACT.FE.ZS"
+    ],
+    "SL.UEM.1524.ZS": [
+      "SL.UEM.1524.ZS",
+      "SL.UEM.TOTL.ZS"
+    ],
+    "SM.POP.NETM": [
+      "SM.POP.NETM"
+    ],
+    "SM.POP.RHCR.EO": [
+      "SM.POP.RHCR.EO",
+      "UNHCR_REF_COO"
+    ],
+    "SP.DYN.LE00.IN": [
+      "SP.DYN.LE00.IN"
+    ],
+    "SP.DYN.TFRT.IN": [
+      "SP.DYN.TFRT.IN"
+    ],
+    "SP.POP.0014.TO.ZS": [
+      "SP.POP.0014.TO.ZS"
+    ],
+    "SP.POP.TOTL": [
+      "SP.POP.TOTL"
+    ],
+    "STR_DAYS_NOC_NB": [
+      "STR_DAYS_NOC_NB"
+    ],
+    "STR_NWRK_NOC_NB": [
+      "STR_NWRK_NOC_NB"
+    ],
+    "TC-002": [
+      "TC-002"
+    ],
+    "TT.PRI.MRCH.XD.WD": [
+      "TT.PRI.MRCH.XD.WD"
+    ],
+    "TX.VAL.TECH.MF.ZS": [
+      "TX.VAL.TECH.MF.ZS"
+    ],
+    "UCDP_CONFLICT_TERMINATED": [
+      "UCDP_CONFLICT_TERMINATED"
+    ],
+    "UCDP_GED_CIV_DEATHS": [
+      "UCDP_GED_CIV_DEATHS"
+    ],
+    "UCDP_GED_GEOREGION_SPREAD": [
+      "UCDP_GED_GEOREGION_SPREAD"
+    ],
+    "UCDP_GED_NS_EVENTS": [
+      "UCDP_GED_NS_EVENTS"
+    ],
+    "UCDP_GED_OS_EVENTS": [
+      "UCDP_GED_OS_EVENTS"
+    ],
+    "UCDP_GED_TOTAL_DEATHS": [
+      "UCDP_GED_TOTAL_DEATHS"
+    ],
+    "UCDP_GED_UNREST_EVENTS": [
+      "UCDP_GED_UNREST_EVENTS"
+    ],
+    "UCDP_NS_DEATHS_BEST": [
+      "UCDP_NS_DEATHS_BEST"
+    ],
+    "UCDP_OS_ACTOR_COUNT": [
+      "UCDP_OS_ACTOR_COUNT"
+    ],
+    "UCDP_OS_DEATHS_BEST": [
+      "UCDP_OS_DEATHS_BEST"
+    ],
+    "UCDP_OS_DEATHS_GOVT": [
+      "UCDP_OS_DEATHS_GOVT"
+    ],
+    "UCDP_OS_GOVT_PERP": [
+      "UCDP_OS_GOVT_PERP"
+    ],
+    "UCDP_SB_CONFLICT_COUNT": [
+      "UCDP_SB_CONFLICT_COUNT"
+    ],
+    "UCDP_SB_DEATHS_BEST": [
+      "UCDP_SB_DEATHS_BEST"
+    ],
+    "UCDP_SB_INCOMPAT_TERR": [
+      "UCDP_SB_INCOMPAT_TERR"
+    ],
+    "UCDP_SB_INTENSITY_WAR": [
+      "UCDP_SB_INTENSITY_WAR"
+    ],
+    "UCDP_SB_INTRA_INTERNATIONALISED": [
+      "UCDP_SB_INTRA_INTERNATIONALISED"
+    ],
+    "UCDP_SB_ONSET": [
+      "UCDP_SB_ONSET"
+    ],
+    "UCDP_YEARS_SINCE_LAST_CONFLICT": [
+      "UCDP_YEARS_SINCE_LAST_CONFLICT"
+    ],
+    "UNHCR_ASYAPP_NEW_COO": [
+      "UNHCR_ASYAPP_NEW_COO"
+    ],
+    "UNHCR_ASY_BACKLOG_YEARS": [
+      "UNHCR_ASY_BACKLOG_YEARS"
+    ],
+    "UNHCR_FORCDISP_TOTAL": [
+      "UNHCR_FORCDISP_TOTAL"
+    ],
+    "UNHCR_IDP": [
+      "UNHCR_IDP"
+    ],
+    "UNHCR_IDP_CHANGE_RATE": [
+      "UNHCR_IDP_CHANGE_RATE"
+    ],
+    "UNHCR_IDP_RATIO_POP": [
+      "UNHCR_IDP_RATIO_POP"
+    ],
+    "UNHCR_RECOG_RATE": [
+      "UNHCR_RECOG_RATE"
+    ],
+    "UNHCR_REF_COA": [
+      "UNHCR_REF_COA"
+    ],
+    "UNHCR_REF_RATIO_POP": [
+      "UNHCR_REF_RATIO_POP"
+    ],
+    "UNHCR_STA": [
+      "UNHCR_STA"
+    ],
+    "VA.EST": [
+      "VA.EST"
+    ],
+    "VC.BTL.DETH": [
+      "VC.BTL.DETH"
+    ],
+    "VC.IDP.NWDS": [
+      "VC.IDP.NWDS"
+    ],
+    "VC.IHR.PSRC.P5": [
+      "VC.IHR.PSRC.P5"
+    ],
+    "v2cacamps": [
+      "v2cacamps"
+    ],
+    "v2catrauni": [
+      "v2catrauni"
+    ],
+    "v2clrspct": [
+      "v2clrspct"
+    ],
+    "v2csantimv": [
+      "v2csantimv"
+    ],
+    "v2elintmon": [
+      "v2elintmon"
+    ],
+    "v2elpeace": [
+      "v2elpeace"
+    ],
+    "v2ex_hosw": [
+      "v2ex_hosw"
+    ],
+    "v2exaphogp": [
+      "v2exaphogp"
+    ],
+    "v2xnp_regcorr": [
+      "v2excrptps",
+      "v2exembez",
+      "v2exthftps",
+      "v2x_corr",
+      "v2x_execorr",
+      "v2x_pubcorr",
+      "v2xnp_regcorr"
+    ],
+    "v2exl_legitideol": [
+      "v2exl_legitideol"
+    ],
+    "v2exl_legitlead": [
+      "v2exl_legitlead"
+    ],
+    "v2exremhog": [
+      "v2exremhog"
+    ],
+    "v2juaccnt": [
+      "v2juaccnt"
+    ],
+    "v2jucorrdc": [
+      "v2jucorrdc"
+    ],
+    "v2jupoatck": [
+      "v2jupoatck"
+    ],
+    "v2jupurge": [
+      "v2jupurge"
+    ],
+    "v2jureform": [
+      "v2jureform"
+    ],
+    "v2lgbicam": [
+      "v2lgbicam"
+    ],
+    "v2lgotovst": [
+      "v2lgotovst"
+    ],
+    "v2mecenefi": [
+      "v2mecenefi"
+    ],
+    "v2pepwrgen": [
+      "v2pepwrgen"
+    ],
+    "v2pepwrort": [
+      "v2pepwrort"
+    ],
+    "v2pepwrses": [
+      "v2pepwrses"
+    ],
+    "v2pepwrsoc": [
+      "v2pepwrsoc"
+    ],
+    "v2psprlnks": [
+      "v2psprlnks"
+    ],
+    "v2regantireg": [
+      "v2regantireg"
+    ],
+    "v2regdur": [
+      "v2regdur"
+    ],
+    "v2regendtype": [
+      "v2regendtype"
+    ],
+    "v2smarrest": [
+      "v2smarrest"
+    ],
+    "v2smfordom": [
+      "v2smfordom"
+    ],
+    "v2smgovdom": [
+      "v2smgovdom"
+    ],
+    "v2smorgviol": [
+      "v2smorgviol"
+    ],
+    "v2smpolsoc": [
+      "v2smpolsoc"
+    ],
+    "v2stcritapparm": [
+      "v2stcritapparm"
+    ],
+    "v2stfisccap": [
+      "v2stfisccap"
+    ],
+    "v2strenarm": [
+      "v2strenarm"
+    ],
+    "v2svdomaut": [
+      "v2svdomaut"
+    ],
+    "v2svinlaut": [
+      "v2svinlaut"
+    ],
+    "v2svstterr": [
+      "v2svstterr"
+    ],
+    "v2x_gender": [
+      "v2x_gender"
+    ],
+    "v2x_partip": [
+      "v2x_partip"
+    ],
+    "v2xcl_prpty": [
+      "v2xcl_prpty"
+    ],
+    "v2xeg_eqprotec": [
+      "v2xeg_eqprotec"
+    ],
+    "v2xnp_client": [
+      "v2xnp_client"
+    ]
+  },
+  "config_signature": "0a18a9a24a213bbe2863f25376f5e167c2d7965c92818e29e69634909825697f",
+  "git_commit": "a7a0513609e0089e63a179ab43d9e471d6968624",
+  "pool_hash": "a6430bbcde55c596",
+  "seed_base": 12345,
+  "source_fingerprint": "28913a527d605e6b7a56a210c27f436c8ff97349311affc5a1c8b8e456113676",
+  "chosen_window": null,
+  "b_schedule": [
+    12,
+    24
+  ],
+  "abs_r_threshold": 0.85,
+  "pi_keep_threshold": 0.6
+}

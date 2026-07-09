@@ -1,0 +1,326 @@
+{
+  "recipe_id": "executive_power_consolidation",
+  "arm": "run3method",
+  "B_used": 24,
+  "stop_reason": "b_ceiling_reached",
+  "pi": {
+    "v2jucomp": 0.125,
+    "v2pepwrses": 0.041666666666666664,
+    "v2xca_academ": 0.08333333333333333,
+    "v2x_diagacc": 0.08333333333333333,
+    "v2x_libdem": 0.041666666666666664,
+    "v2x_horacc": 0.08333333333333333,
+    "v2meharjrn": 0.08333333333333333,
+    "v2mebias": 0.08333333333333333,
+    "v2elpeace": 0.16666666666666666,
+    "v2catrauni": 0.08333333333333333,
+    "v2exl_legitideol": 0.16666666666666666,
+    "v2x_civlib": 0.041666666666666664,
+    "v2x_clpol": 0.08333333333333333,
+    "OWID_AUTOCRATIZATION": 0.041666666666666664,
+    "v2jupurge": 0.08333333333333333,
+    "v2cltrnslw": 0.041666666666666664,
+    "v2pepwrort": 0.08333333333333333,
+    "v2juaccnt": 0.041666666666666664,
+    "EN.GHG.CO2.PC.CE.AR5": 0.041666666666666664,
+    "v2juncind": 0.041666666666666664,
+    "v2x_partip": 0.08333333333333333,
+    "NY.GDP.PCAP.CD": 0.041666666666666664,
+    "v2svstterr": 0.041666666666666664,
+    "v2xcs_ccsi": 0.16666666666666666,
+    "v2x_cspart": 0.125,
+    "NY.GDP.DEFL.KD.ZG": 0.08333333333333333,
+    "v2xnp_client": 0.041666666666666664,
+    "v2xnp_regcorr": 0.08333333333333333,
+    "v2svinlaut": 0.041666666666666664,
+    "v2mecrit": 0.041666666666666664,
+    "v2csreprss": 0.041666666666666664,
+    "v2excrptps": 0.08333333333333333,
+    "v2juhccomp": 0.08333333333333333,
+    "v2lgoppart": 0.041666666666666664,
+    "v2x_clpriv": 0.08333333333333333,
+    "OWID_STATECAP": 0.041666666666666664,
+    "v2svdomaut": 0.08333333333333333,
+    "v2xlg_legcon": 0.041666666666666664,
+    "v2caassemb": 0.041666666666666664,
+    "v2csprtcpt": 0.08333333333333333,
+    "FD.AST.PRVT.GD.ZS": 0.041666666666666664,
+    "v2merange": 0.041666666666666664,
+    "SP.DYN.TFRT.IN": 0.041666666666666664,
+    "v2mecenefm": 0.08333333333333333,
+    "NY.GDP.MKTP.CD": 0.041666666666666664,
+    "SP.DYN.LE00.IN": 0.041666666666666664,
+    "AG.PRD.FOOD.XD": 0.08333333333333333,
+    "v2cltort": 0.041666666666666664,
+    "v2regdur": 0.041666666666666664,
+    "v2cseeorgs": 0.041666666666666664,
+    "SM.POP.NETM": 0.041666666666666664,
+    "v2x_neopat": 0.041666666666666664
+  },
+  "stable_set": [],
+  "reference_set": [
+    "v2csprtcpt"
+  ],
+  "resample_selected_sets": [
+    [
+      "v2jucomp"
+    ],
+    [
+      "v2x_libdem",
+      "v2x_diagacc",
+      "v2xca_academ",
+      "v2pepwrses"
+    ],
+    [
+      "v2xca_academ",
+      "v2mebias",
+      "v2elpeace",
+      "v2meharjrn",
+      "v2x_horacc"
+    ],
+    [
+      "v2exl_legitideol",
+      "v2catrauni",
+      "v2x_civlib",
+      "v2x_clpol"
+    ],
+    [
+      "v2elpeace",
+      "OWID_AUTOCRATIZATION",
+      "v2jupurge"
+    ],
+    [
+      "v2pepwrort",
+      "EN.GHG.CO2.PC.CE.AR5",
+      "v2cltrnslw",
+      "v2juncind",
+      "v2juaccnt"
+    ],
+    [
+      "v2exl_legitideol",
+      "v2x_partip"
+    ],
+    [
+      "v2xcs_ccsi",
+      "v2elpeace",
+      "NY.GDP.PCAP.CD",
+      "v2x_cspart",
+      "v2svstterr"
+    ],
+    [
+      "NY.GDP.DEFL.KD.ZG",
+      "v2xnp_regcorr",
+      "v2xnp_client",
+      "v2x_partip",
+      "v2jupurge"
+    ],
+    [
+      "v2mecrit",
+      "v2svinlaut",
+      "v2excrptps",
+      "v2csreprss"
+    ],
+    [
+      "v2xcs_ccsi",
+      "v2x_clpriv",
+      "v2lgoppart",
+      "v2meharjrn",
+      "v2juhccomp"
+    ],
+    [
+      "OWID_STATECAP",
+      "v2svdomaut"
+    ],
+    [
+      "v2caassemb",
+      "v2xlg_legcon",
+      "v2xcs_ccsi"
+    ],
+    [
+      "v2csprtcpt",
+      "v2svdomaut"
+    ],
+    [
+      "v2exl_legitideol",
+      "FD.AST.PRVT.GD.ZS",
+      "v2excrptps"
+    ],
+    [
+      "v2mecenefm",
+      "SP.DYN.TFRT.IN",
+      "v2pepwrort",
+      "v2elpeace",
+      "v2merange"
+    ],
+    [
+      "v2x_cspart",
+      "NY.GDP.DEFL.KD.ZG",
+      "v2x_diagacc",
+      "v2catrauni",
+      "NY.GDP.MKTP.CD"
+    ],
+    [
+      "v2exl_legitideol",
+      "v2mebias",
+      "v2x_clpol",
+      "AG.PRD.FOOD.XD",
+      "SP.DYN.LE00.IN"
+    ],
+    [
+      "v2xcs_ccsi",
+      "v2cltort",
+      "v2juhccomp"
+    ],
+    [
+      "v2xnp_regcorr"
+    ],
+    [
+      "v2x_cspart",
+      "v2jucomp"
+    ],
+    [
+      "v2csprtcpt",
+      "AG.PRD.FOOD.XD",
+      "v2regdur",
+      "v2x_horacc",
+      "v2jucomp"
+    ],
+    [
+      "v2mecenefm",
+      "v2cseeorgs"
+    ],
+    [
+      "SM.POP.NETM",
+      "v2x_neopat",
+      "v2x_clpriv"
+    ]
+  ],
+  "per_checkpoint": [
+    {
+      "B": 12,
+      "keepset": [],
+      "pi_snapshot": {
+        "EN.GHG.CO2.PC.CE.AR5": 0.08333333333333333,
+        "NY.GDP.DEFL.KD.ZG": 0.08333333333333333,
+        "NY.GDP.PCAP.CD": 0.08333333333333333,
+        "OWID_AUTOCRATIZATION": 0.08333333333333333,
+        "OWID_STATECAP": 0.08333333333333333,
+        "v2catrauni": 0.08333333333333333,
+        "v2cltrnslw": 0.08333333333333333,
+        "v2csreprss": 0.08333333333333333,
+        "v2elpeace": 0.25,
+        "v2excrptps": 0.08333333333333333,
+        "v2exl_legitideol": 0.16666666666666666,
+        "v2juaccnt": 0.08333333333333333,
+        "v2jucomp": 0.08333333333333333,
+        "v2juhccomp": 0.08333333333333333,
+        "v2juncind": 0.08333333333333333,
+        "v2jupurge": 0.16666666666666666,
+        "v2lgoppart": 0.08333333333333333,
+        "v2mebias": 0.08333333333333333,
+        "v2mecrit": 0.08333333333333333,
+        "v2meharjrn": 0.16666666666666666,
+        "v2pepwrort": 0.08333333333333333,
+        "v2pepwrses": 0.08333333333333333,
+        "v2svdomaut": 0.08333333333333333,
+        "v2svinlaut": 0.08333333333333333,
+        "v2svstterr": 0.08333333333333333,
+        "v2x_civlib": 0.08333333333333333,
+        "v2x_clpol": 0.08333333333333333,
+        "v2x_clpriv": 0.08333333333333333,
+        "v2x_cspart": 0.08333333333333333,
+        "v2x_diagacc": 0.08333333333333333,
+        "v2x_horacc": 0.08333333333333333,
+        "v2x_libdem": 0.08333333333333333,
+        "v2x_partip": 0.16666666666666666,
+        "v2xca_academ": 0.16666666666666666,
+        "v2xcs_ccsi": 0.16666666666666666,
+        "v2xnp_client": 0.08333333333333333,
+        "v2xnp_regcorr": 0.08333333333333333
+      },
+      "max_abs_delta_pi_vs_prev": null,
+      "keepset_jaccard_vs_prev": null,
+      "stop_criteria_satisfied": false
+    },
+    {
+      "B": 24,
+      "keepset": [],
+      "pi_snapshot": {
+        "AG.PRD.FOOD.XD": 0.08333333333333333,
+        "EN.GHG.CO2.PC.CE.AR5": 0.041666666666666664,
+        "FD.AST.PRVT.GD.ZS": 0.041666666666666664,
+        "NY.GDP.DEFL.KD.ZG": 0.08333333333333333,
+        "NY.GDP.MKTP.CD": 0.041666666666666664,
+        "NY.GDP.PCAP.CD": 0.041666666666666664,
+        "OWID_AUTOCRATIZATION": 0.041666666666666664,
+        "OWID_STATECAP": 0.041666666666666664,
+        "SM.POP.NETM": 0.041666666666666664,
+        "SP.DYN.LE00.IN": 0.041666666666666664,
+        "SP.DYN.TFRT.IN": 0.041666666666666664,
+        "v2caassemb": 0.041666666666666664,
+        "v2catrauni": 0.08333333333333333,
+        "v2cltort": 0.041666666666666664,
+        "v2cltrnslw": 0.041666666666666664,
+        "v2cseeorgs": 0.041666666666666664,
+        "v2csprtcpt": 0.08333333333333333,
+        "v2csreprss": 0.041666666666666664,
+        "v2elpeace": 0.16666666666666666,
+        "v2excrptps": 0.08333333333333333,
+        "v2exl_legitideol": 0.16666666666666666,
+        "v2juaccnt": 0.041666666666666664,
+        "v2jucomp": 0.125,
+        "v2juhccomp": 0.08333333333333333,
+        "v2juncind": 0.041666666666666664,
+        "v2jupurge": 0.08333333333333333,
+        "v2lgoppart": 0.041666666666666664,
+        "v2mebias": 0.08333333333333333,
+        "v2mecenefm": 0.08333333333333333,
+        "v2mecrit": 0.041666666666666664,
+        "v2meharjrn": 0.08333333333333333,
+        "v2merange": 0.041666666666666664,
+        "v2pepwrort": 0.08333333333333333,
+        "v2pepwrses": 0.041666666666666664,
+        "v2regdur": 0.041666666666666664,
+        "v2svdomaut": 0.08333333333333333,
+        "v2svinlaut": 0.041666666666666664,
+        "v2svstterr": 0.041666666666666664,
+        "v2x_civlib": 0.041666666666666664,
+        "v2x_clpol": 0.08333333333333333,
+        "v2x_clpriv": 0.08333333333333333,
+        "v2x_cspart": 0.125,
+        "v2x_diagacc": 0.08333333333333333,
+        "v2x_horacc": 0.08333333333333333,
+        "v2x_libdem": 0.041666666666666664,
+        "v2x_neopat": 0.041666666666666664,
+        "v2x_partip": 0.08333333333333333,
+        "v2xca_academ": 0.08333333333333333,
+        "v2xcs_ccsi": 0.16666666666666666,
+        "v2xlg_legcon": 0.041666666666666664,
+        "v2xnp_client": 0.041666666666666664,
+        "v2xnp_regcorr": 0.08333333333333333
+      },
+      "max_abs_delta_pi_vs_prev": 0.08333333333333334,
+      "keepset_jaccard_vs_prev": 1.0,
+      "stop_criteria_satisfied": false
+    }
+  ],
+  "loco_auc": NaN,
+  "ci95_lo": null,
+  "ci95_hi": null,
+  "oof": [],
+  "n_pos": 105,
+  "final_indicator_count": 0,
+  "dedup_cluster_map": {},
+  "config_signature": "865202d653ff5ea7107b485d43f40eb3a437c11e1787f9af15dacd063f34d3af",
+  "git_commit": "a7a0513609e0089e63a179ab43d9e471d6968624",
+  "pool_hash": "e25e2fe2b9190a4d",
+  "seed_base": 12345,
+  "source_fingerprint": "28913a527d605e6b7a56a210c27f436c8ff97349311affc5a1c8b8e456113676",
+  "chosen_window": null,
+  "b_schedule": [
+    12,
+    24
+  ],
+  "abs_r_threshold": 0.85,
+  "pi_keep_threshold": 0.6
+}
