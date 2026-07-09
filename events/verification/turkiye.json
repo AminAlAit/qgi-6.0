@@ -550,6 +550,42 @@
     "source": "https://en.wikipedia.org/wiki/Kurdistan_Workers%27_Party_insurgency"
   },
   {
+    "year": 2000,
+    "title": "Galatasaray Becomes First Turkish Club to Win a European Trophy",
+    "verdict": "TRUE",
+    "reason": "Independently confirmed via Wikipedia, UEFA.com, and Daily Sabah: Galatasaray defeated Arsenal 0-0 (4-1 on penalties, Gheorghe Popescu scoring the decisive kick) in the 2000 UEFA Cup final on 17 May 2000 at Parken Stadium, Copenhagen. This was the first time a Turkish club won a major European football trophy. Galatasaray also completed a domestic treble that season by winning the Süper Lig and Turkish Cup alongside the UEFA Cup. All material details in the event description (date, opponent, score/penalties, venue, historic first, treble) match the sourced record exactly.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via UEFA's official history page and Wikipedia: on 17 May 2000 at Parken Stadium, Copenhagen, Galatasaray and Arsenal drew 0-0 through 120 minutes; Galatasaray won 4-1 on penalties to win the 1999-2000 UEFA Cup, becoming the first Turkish club to win a major European trophy. Wikipedia and UEFA also confirm Galatasaray completed a domestic treble that season (Turkish league + Turkish Cup + UEFA Cup). All material details (date, score, venue, penalty result, historic first, treble context) match the event description exactly.",
+        "source": "https://www.uefa.com/uefaeuropaleague/history/video/finals/0257-0de5de32bfbc-10acb1b26ec3-1000--2000-final-highlights/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia, UEFA.com, and Daily Sabah: Galatasaray defeated Arsenal 0-0 (4-1 on penalties, Gheorghe Popescu scoring the decisive kick) in the 2000 UEFA Cup final on 17 May 2000 at Parken Stadium, Copenhagen. This was the first time a Turkish club won a major European football trophy. Galatasaray also completed a domestic treble that season by winning the Süper Lig and Turkish Cup alongside the UEFA Cup. All material details in the event description (date, opponent, score/penalties, venue, historic first, treble) match the sourced record exactly.",
+        "source": "https://en.wikipedia.org/wiki/2000_UEFA_Cup_final",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2000_UEFA_Cup_final"
+  },
+  {
     "year": 2001,
     "title": "Kemal Dervis Implements IMF-Backed Economic Reforms",
     "verdict": "TRUE",

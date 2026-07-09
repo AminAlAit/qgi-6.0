@@ -600,6 +600,42 @@
     "source": "https://en.wikipedia.org/wiki/Amadou_Toumani_Tour%C3%A9"
   },
   {
+    "year": 2002,
+    "title": "Mali Hosts the Africa Cup of Nations for the First Time",
+    "verdict": "TRUE",
+    "reason": "Confirmed via Wikipedia (2002 African Cup of Nations, and the final match page) plus independent corroboration from Athlet.org's match record and RSSSF/Global Sports Archive. Mali hosted the 2002 (23rd) Africa Cup of Nations, having been awarded the tournament by CAF's executive committee on 5 February 1998 over bids from Algeria, Botswana, Egypt, and Ethiopia — exactly as described. Sixteen teams competed in four groups. Cameroon beat Senegal 3-2 on penalties after a 0-0 draw (after extra time) in the final at Stade du 26 Mars, Bamako, on 10 February 2002. Wikipedia explicitly states 'This was the first time that Mali had hosted the competition.' Every material detail in the description is accurate.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sourcing confirms every material claim: Mali hosted the 23rd Africa Cup of Nations in 2002 (its first time hosting), 16 teams in four groups; CAF Executive Committee awarded hosting to Mali on 5 February 1998 in Ouagadougou over bids from Algeria, Botswana, Egypt and Ethiopia (matches description exactly); the final saw Cameroon beat Senegal 3-2 on penalties after a 0-0 draw at Stade du 26 Mars in Bamako. All details match with no discrepancies.",
+        "source": "https://en.wikipedia.org/wiki/2002_African_Cup_of_Nations",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via Wikipedia (2002 African Cup of Nations, and the final match page) plus independent corroboration from Athlet.org's match record and RSSSF/Global Sports Archive. Mali hosted the 2002 (23rd) Africa Cup of Nations, having been awarded the tournament by CAF's executive committee on 5 February 1998 over bids from Algeria, Botswana, Egypt, and Ethiopia — exactly as described. Sixteen teams competed in four groups. Cameroon beat Senegal 3-2 on penalties after a 0-0 draw (after extra time) in the final at Stade du 26 Mars, Bamako, on 10 February 2002. Wikipedia explicitly states 'This was the first time that Mali had hosted the competition.' Every material detail in the description is accurate.",
+        "source": "https://en.wikipedia.org/wiki/2002_African_Cup_of_Nations",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2002_African_Cup_of_Nations"
+  },
+  {
     "year": 2003,
     "title": "GSPC Hostage Crisis Reveals Northern Mali as Jihadist Sanctuary",
     "verdict": "TRUE",

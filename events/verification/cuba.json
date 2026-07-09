@@ -598,6 +598,42 @@
   },
   {
     "year": 1980,
+    "title": "Cuba's Boxing Team Wins Six Gold Medals at the 1980 Moscow Olympics",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm Cuba won 6 gold, 2 silver, and 2 bronze medals in boxing at the 1980 Moscow Olympics (held amid the US-led boycott): Juan Hernández (bantamweight), Ángel Herrera (lightweight), Andrés Aldama (welterweight), Armando Martínez (light-middleweight), José Gómez (middleweight), and Teófilo Stevenson (heavyweight). This tally (10 medals, 6 gold) is corroborated by Olympics.com, Wikipedia, Britannica, and Olympedia.org. Stevenson's win at Moscow was his third consecutive Olympic heavyweight gold (1972, 1976, 1980) — an unprecedented feat confirmed by Britannica and ESPN, making him one of only two three-time Cuban Olympic boxing champions (Félix Savón, 1992/1996/2000, is the other — a widely documented fact). Sources describe Moscow 1980 as \"the peak\"/\"apogee\" of Cuban Olympic boxing, consistent with the description's claim of the best single-Games haul in the sport's history for Cuba. All material details (country, year, medal count, Stevenson's third gold) check out against independent sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Fully corroborated across multiple independent authoritative sources. Cuba won 6 gold, 2 silver, 2 bronze in boxing at the 1980 Moscow Olympics (10 of 11 possible medals), confirmed via Wikipedia's medal table for Boxing at the 1980 Summer Olympics. The 1980 Games were indeed held amid a US-led boycott. Teófilo Stevenson won his third consecutive Olympic heavyweight gold (1972/1976/1980), confirmed by Wikipedia, Britannica, ESPN, and Olympics.com. Félix Savón is independently confirmed (Britannica, Olympics.com, Bleacher Report) as the only other three-time Cuban Olympic boxing champion (1992/1996/2000), matching the description exactly. The state-funded post-1959-revolution amateur boxing program framing is consistent with Olympics.com's own historical coverage of Cuban boxing. All material details check out with no discrepancies.",
+        "source": "https://en.wikipedia.org/wiki/Boxing_at_the_1980_Summer_Olympics",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm Cuba won 6 gold, 2 silver, and 2 bronze medals in boxing at the 1980 Moscow Olympics (held amid the US-led boycott): Juan Hernández (bantamweight), Ángel Herrera (lightweight), Andrés Aldama (welterweight), Armando Martínez (light-middleweight), José Gómez (middleweight), and Teófilo Stevenson (heavyweight). This tally (10 medals, 6 gold) is corroborated by Olympics.com, Wikipedia, Britannica, and Olympedia.org. Stevenson's win at Moscow was his third consecutive Olympic heavyweight gold (1972, 1976, 1980) — an unprecedented feat confirmed by Britannica and ESPN, making him one of only two three-time Cuban Olympic boxing champions (Félix Savón, 1992/1996/2000, is the other — a widely documented fact). Sources describe Moscow 1980 as \"the peak\"/\"apogee\" of Cuban Olympic boxing, consistent with the description's claim of the best single-Games haul in the sport's history for Cuba. All material details (country, year, medal count, Stevenson's third gold) check out against independent sources.",
+        "source": "https://www.olympedia.org/countries/CUB/sports/BOX.1",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.olympedia.org/countries/CUB/sports/BOX.1"
+  },
+  {
+    "year": 1980,
     "title": "Mariel Boatlift Sends 125,000 Cubans to United States",
     "verdict": "TRUE",
     "reason": "April–October 1980 confirmed. ~125,000 migrants confirmed. Some prisoners and mental institution releasees included confirmed. Carter political difficulty confirmed.",

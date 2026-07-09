@@ -775,6 +775,42 @@
     "source": "https://en.wikipedia.org/wiki/Colombo_Central_Bank_bombing"
   },
   {
+    "year": 1996,
+    "title": "Sri Lanka Wins 1996 Cricket World Cup as Co-Host",
+    "verdict": "TRUE",
+    "reason": "Independent sources (Wikipedia, ESPNcricinfo) confirm all material details: Sri Lanka beat Australia by 7 wickets in the 1996 Cricket World Cup final on March 17, 1996 at Gaddafi Stadium, Lahore, Pakistan. Australia scored 241/7 (Mark Taylor 74); Sri Lanka chased it down with Aravinda de Silva scoring an unbeaten 107 and taking 3/42, earning Player of the Match. Arjuna Ranatunga captained the side (47 not out). The tournament was co-hosted by India, Pakistan and Sri Lanka, and Sri Lanka became the first host/co-host nation ever to win the World Cup. Every detail in the description matches sourced fact.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Fully confirmed by independent authoritative sources (ESPNcricinfo scorecard, Wikipedia). Sri Lanka beat Australia by seven wickets on 17 March 1996 at Gaddafi Stadium, Lahore, Pakistan, in the final of the 1996 Cricket World Cup, which Sri Lanka co-hosted with India and Pakistan. Aravinda de Silva scored an unbeaten 107 (off 124 balls) and took 3/42, winning Player of the Match — matching the description exactly. Sri Lanka was indeed the first host nation to win the tournament, captained by Arjuna Ranatunga. All material details (year, country, opponent, margin, venue, MVP performance, co-host status, historic first) check out with no discrepancies.",
+        "source": "https://www.espncricinfo.com/series/wills-world-cup-1995-96-60981/australia-vs-sri-lanka-final-65192/full-scorecard",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources (Wikipedia, ESPNcricinfo) confirm all material details: Sri Lanka beat Australia by 7 wickets in the 1996 Cricket World Cup final on March 17, 1996 at Gaddafi Stadium, Lahore, Pakistan. Australia scored 241/7 (Mark Taylor 74); Sri Lanka chased it down with Aravinda de Silva scoring an unbeaten 107 and taking 3/42, earning Player of the Match. Arjuna Ranatunga captained the side (47 not out). The tournament was co-hosted by India, Pakistan and Sri Lanka, and Sri Lanka became the first host/co-host nation ever to win the World Cup. Every detail in the description matches sourced fact.",
+        "source": "https://en.wikipedia.org/wiki/1996_Cricket_World_Cup_final",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1996_Cricket_World_Cup_final"
+  },
+  {
     "year": 2001,
     "title": "LTTE attacks Bandaranaike Airport — $350M economic damage",
     "verdict": "TRUE",
@@ -901,31 +937,6 @@
   },
   {
     "year": 2009,
-    "title": "LTTE defeated; 26-year civil war ends in military victory",
-    "verdict": "TRUE",
-    "reason": "The Sri Lankan military defeated the LTTE in a final offensive, with Velupillai Prabhakaran killed and his body identified via DNA on 19 May 2009. The 26-year civil war ended in a decisive government military victory. Confirmed.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Sri Lankan military defeated the LTTE in a final offensive, with Velupillai Prabhakaran killed and his body identified via DNA on 19 May 2009. The 26-year civil war ended in a decisive government military victory. Confirmed.",
-        "source": "https://en.wikipedia.org/wiki/Sri_Lankan_civil_war",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Sri_Lankan_civil_war"
-  },
-  {
-    "year": 2009,
     "title": "300,000 Tamil civilians held in internment camps post-war",
     "verdict": "TRUE",
     "reason": "Approximately 300,000 Tamil civilians who had been in the conflict zone were held in the Menik Farm internment camp complex near Vavuniya following the war's end. The conditions drew widespread international criticism. Confirmed by Human Rights Watch and UN sources.",
@@ -948,6 +959,31 @@
       }
     ],
     "source": "https://www.hrw.org/report/2009/02/19/war-displaced/sri-lankan-army-and-ltte-abuses-against-civilians-vanni"
+  },
+  {
+    "year": 2009,
+    "title": "LTTE defeated; 26-year civil war ends in military victory",
+    "verdict": "TRUE",
+    "reason": "The Sri Lankan military defeated the LTTE in a final offensive, with Velupillai Prabhakaran killed and his body identified via DNA on 19 May 2009. The 26-year civil war ended in a decisive government military victory. Confirmed.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Sri Lankan military defeated the LTTE in a final offensive, with Velupillai Prabhakaran killed and his body identified via DNA on 19 May 2009. The 26-year civil war ended in a decisive government military victory. Confirmed.",
+        "source": "https://en.wikipedia.org/wiki/Sri_Lankan_civil_war",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sri_Lankan_civil_war"
   },
   {
     "year": 2010,
@@ -1151,31 +1187,6 @@
   },
   {
     "year": 2022,
-    "title": "Economic collapse — sovereign default and 50% inflation",
-    "verdict": "TRUE",
-    "reason": "Sri Lanka declared a sovereign debt default in April-May 2022. Inflation peaked above 54% (food inflation above 80%) in mid-2022. The country faced severe shortages of fuel, medicine, and food with 12-13 hour daily power cuts. All confirmed by multiple international sources.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Sri Lanka declared a sovereign debt default in April-May 2022. Inflation peaked above 54% (food inflation above 80%) in mid-2022. The country faced severe shortages of fuel, medicine, and food with 12-13 hour daily power cuts. All confirmed by multiple international sources.",
-        "source": "https://en.wikipedia.org/wiki/Sri_Lankan_economic_crisis_(2019%E2%80%932024)",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Sri_Lankan_economic_crisis_(2019%E2%80%932024)"
-  },
-  {
-    "year": 2022,
     "title": "Aragalaya protests force Gotabaya Rajapaksa from power",
     "verdict": "TRUE",
     "reason": "On 9 July 2022 hundreds of thousands stormed the Presidential Secretariat and the president's official residence. Gotabaya fled to the Maldives on 13 July and resigned on 14 July 2022, becoming the first Sri Lankan president forced from office by popular protest. Confirmed.",
@@ -1198,6 +1209,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Aragalaya"
+  },
+  {
+    "year": 2022,
+    "title": "Economic collapse — sovereign default and 50% inflation",
+    "verdict": "TRUE",
+    "reason": "Sri Lanka declared a sovereign debt default in April-May 2022. Inflation peaked above 54% (food inflation above 80%) in mid-2022. The country faced severe shortages of fuel, medicine, and food with 12-13 hour daily power cuts. All confirmed by multiple international sources.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Sri Lanka declared a sovereign debt default in April-May 2022. Inflation peaked above 54% (food inflation above 80%) in mid-2022. The country faced severe shortages of fuel, medicine, and food with 12-13 hour daily power cuts. All confirmed by multiple international sources.",
+        "source": "https://en.wikipedia.org/wiki/Sri_Lankan_economic_crisis_(2019%E2%80%932024)",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Sri_Lankan_economic_crisis_(2019%E2%80%932024)"
   },
   {
     "year": 2022,

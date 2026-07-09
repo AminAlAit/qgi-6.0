@@ -26,9 +26,9 @@
   },
   {
     "year": 1991,
-    "title": "Soviet OMON Forces Attack Latvian Interior Ministry",
+    "title": "Latvia Adopts Citizenship Law Excluding Soviet-Era Settlers",
     "verdict": "TRUE",
-    "reason": "In the pre-dawn hours of January 20, 1991, Soviet OMON forces attacked the Latvian Interior Ministry building during the Barricades period, resulting in five deaths. Latvian civilians had erected barricades around key government buildings throughout January 1991.",
+    "reason": "On October 15, 1991, the Supreme Council passed a resolution restoring citizenship only to pre-1940 citizens and their descendants, excluding approximately 700,000 mostly Russian-speaking Soviet-era settlers as non-citizens. The policy drew sustained criticism from Russia and international organizations.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -38,8 +38,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "In the pre-dawn hours of January 20, 1991, Soviet OMON forces attacked the Latvian Interior Ministry building during the Barricades period, resulting in five deaths. Latvian civilians had erected barricades around key government buildings throughout January 1991.",
-        "source": "https://en.wikipedia.org/wiki/The_Barricades",
+        "reason": "On October 15, 1991, the Supreme Council passed a resolution restoring citizenship only to pre-1940 citizens and their descendants, excluding approximately 700,000 mostly Russian-speaking Soviet-era settlers as non-citizens. The policy drew sustained criticism from Russia and international organizations.",
+        "source": "https://en.wikipedia.org/wiki/Non-citizens_(Latvia)",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -47,7 +47,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/The_Barricades"
+    "source": "https://en.wikipedia.org/wiki/Non-citizens_(Latvia)"
   },
   {
     "year": 1991,
@@ -76,9 +76,9 @@
   },
   {
     "year": 1991,
-    "title": "Latvia Adopts Citizenship Law Excluding Soviet-Era Settlers",
+    "title": "Soviet OMON Forces Attack Latvian Interior Ministry",
     "verdict": "TRUE",
-    "reason": "On October 15, 1991, the Supreme Council passed a resolution restoring citizenship only to pre-1940 citizens and their descendants, excluding approximately 700,000 mostly Russian-speaking Soviet-era settlers as non-citizens. The policy drew sustained criticism from Russia and international organizations.",
+    "reason": "In the pre-dawn hours of January 20, 1991, Soviet OMON forces attacked the Latvian Interior Ministry building during the Barricades period, resulting in five deaths. Latvian civilians had erected barricades around key government buildings throughout January 1991.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -88,8 +88,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "On October 15, 1991, the Supreme Council passed a resolution restoring citizenship only to pre-1940 citizens and their descendants, excluding approximately 700,000 mostly Russian-speaking Soviet-era settlers as non-citizens. The policy drew sustained criticism from Russia and international organizations.",
-        "source": "https://en.wikipedia.org/wiki/Non-citizens_(Latvia)",
+        "reason": "In the pre-dawn hours of January 20, 1991, Soviet OMON forces attacked the Latvian Interior Ministry building during the Barricades period, resulting in five deaths. Latvian civilians had erected barricades around key government buildings throughout January 1991.",
+        "source": "https://en.wikipedia.org/wiki/The_Barricades",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -97,7 +97,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/Non-citizens_(Latvia)"
+    "source": "https://en.wikipedia.org/wiki/The_Barricades"
   },
   {
     "year": 1993,
@@ -251,31 +251,6 @@
   },
   {
     "year": 1999,
-    "title": "Vaira Vike-Freiberga Elected as First Female President",
-    "verdict": "TRUE",
-    "reason": "On June 17, 1999, the Saeima elected Vaira Vike-Freiberga as President of Latvia after six deadlocked ballots, making her the first woman to head a post-communist Eastern European country. A psychology professor who had returned from Canadian exile, she served two terms.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On June 17, 1999, the Saeima elected Vaira Vike-Freiberga as President of Latvia after six deadlocked ballots, making her the first woman to head a post-communist Eastern European country. A psychology professor who had returned from Canadian exile, she served two terms.",
-        "source": "https://en.wikipedia.org/wiki/Vaira_V%C4%AB%C4%B7e-Freiberga",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Vaira_V%C4%AB%C4%B7e-Freiberga"
-  },
-  {
-    "year": 1999,
     "title": "Latvia Joins the World Trade Organization",
     "verdict": "TRUE",
     "reason": "Latvia became the 134th WTO member on February 10, 1999, making it the first Baltic state to join the organization. Membership committed Latvia to trade liberalization and was an important step in its economic integration with the global economy.",
@@ -298,6 +273,31 @@
       }
     ],
     "source": "https://www.wto.org/english/thewto_e/countries_e/latvia_e.htm"
+  },
+  {
+    "year": 1999,
+    "title": "Vaira Vike-Freiberga Elected as First Female President",
+    "verdict": "TRUE",
+    "reason": "On June 17, 1999, the Saeima elected Vaira Vike-Freiberga as President of Latvia after six deadlocked ballots, making her the first woman to head a post-communist Eastern European country. A psychology professor who had returned from Canadian exile, she served two terms.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On June 17, 1999, the Saeima elected Vaira Vike-Freiberga as President of Latvia after six deadlocked ballots, making her the first woman to head a post-communist Eastern European country. A psychology professor who had returned from Canadian exile, she served two terms.",
+        "source": "https://en.wikipedia.org/wiki/Vaira_V%C4%AB%C4%B7e-Freiberga",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Vaira_V%C4%AB%C4%B7e-Freiberga"
   },
   {
     "year": 2002,
@@ -351,9 +351,9 @@
   },
   {
     "year": 2004,
-    "title": "Latvia Joins the European Union",
+    "title": "Education Law Sparks Russian-Speaking Minority Protests",
     "verdict": "TRUE",
-    "reason": "Latvia became a member of the European Union on May 1, 2004, as part of the largest EU enlargement in history alongside nine other countries. Accession brought access to structural funds, the single market, and freedom of movement for Latvian citizens.",
+    "reason": "Latvia's 2004 education reform required at least 60 percent of classes in public secondary schools to be taught in Latvian, triggering large protests by the Russian-speaking minority with around 6,000 schoolchildren demonstrating outside parliament in February 2004. The Headquarters for the Protection of Russian Schools organized the opposition.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -363,8 +363,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Latvia became a member of the European Union on May 1, 2004, as part of the largest EU enlargement in history alongside nine other countries. Accession brought access to structural funds, the single market, and freedom of movement for Latvian citizens.",
-        "source": "https://en.wikipedia.org/wiki/2004_enlargement_of_the_European_Union",
+        "reason": "Latvia's 2004 education reform required at least 60 percent of classes in public secondary schools to be taught in Latvian, triggering large protests by the Russian-speaking minority with around 6,000 schoolchildren demonstrating outside parliament in February 2004. The Headquarters for the Protection of Russian Schools organized the opposition.",
+        "source": "https://www.rferl.org/a/1051443.html",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -372,7 +372,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2004_enlargement_of_the_European_Union"
+    "source": "https://www.rferl.org/a/1051443.html"
   },
   {
     "year": 2004,
@@ -401,9 +401,9 @@
   },
   {
     "year": 2004,
-    "title": "Education Law Sparks Russian-Speaking Minority Protests",
+    "title": "Latvia Joins the European Union",
     "verdict": "TRUE",
-    "reason": "Latvia's 2004 education reform required at least 60 percent of classes in public secondary schools to be taught in Latvian, triggering large protests by the Russian-speaking minority with around 6,000 schoolchildren demonstrating outside parliament in February 2004. The Headquarters for the Protection of Russian Schools organized the opposition.",
+    "reason": "Latvia became a member of the European Union on May 1, 2004, as part of the largest EU enlargement in history alongside nine other countries. Accession brought access to structural funds, the single market, and freedom of movement for Latvian citizens.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -413,8 +413,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Latvia's 2004 education reform required at least 60 percent of classes in public secondary schools to be taught in Latvian, triggering large protests by the Russian-speaking minority with around 6,000 schoolchildren demonstrating outside parliament in February 2004. The Headquarters for the Protection of Russian Schools organized the opposition.",
-        "source": "https://www.rferl.org/a/1051443.html",
+        "reason": "Latvia became a member of the European Union on May 1, 2004, as part of the largest EU enlargement in history alongside nine other countries. Accession brought access to structural funds, the single market, and freedom of movement for Latvian citizens.",
+        "source": "https://en.wikipedia.org/wiki/2004_enlargement_of_the_European_Union",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -422,7 +422,7 @@
         }
       }
     ],
-    "source": "https://www.rferl.org/a/1051443.html"
+    "source": "https://en.wikipedia.org/wiki/2004_enlargement_of_the_European_Union"
   },
   {
     "year": 2005,
@@ -451,6 +451,42 @@
   },
   {
     "year": 2006,
+    "title": "Latvia Hosts the IIHF Ice Hockey World Championship in Riga",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm all material claims: the 2006 IIHF World Championship was held 5-21 May 2006 in Riga, Latvia (Arena Riga + a newly-built Skonto Hall/Arena constructed to IIHF specifications, one of the hosting requirements). This was the first time a former Soviet republic other than Russia hosted the event. Sweden defeated the Czech Republic 4-0 in the final on 21 May 2006 at Arena Riga, winning Sweden's 8th title (and completing an Olympic+Worlds double after winning 2006 Turin Olympic gold). Total attendance of 331,626 is consistently cited across multiple independent search results matching the event description exactly. All details (year, country, dates, teams, score, arena construction, historic first) check out with no material discrepancies.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia's \"2006 IIHF World Championship\" article: the tournament ran 5-21 May 2006 in Riga, Latvia; a new arena (Arena Riga) had to be built to IIHF specifications as a hosting requirement and was completed on schedule; the article explicitly states this marked \"the first time a former Soviet state apart from Russia has hosted the event,\" matching the description almost verbatim; Sweden defeated the Czech Republic 4-0 in the final on 21 May 2006 to win its 8th title (also notable as Sweden's Olympic-plus-Worlds double that year). One minor numeric discrepancy: Wikipedia's infobox lists total attendance as 324,794 (5,800/game), whereas the event description states 331,626 — several independent search-engine summaries (drawing on IIHF-record-book-adjacent sources) also cite 331,626, suggesting this figure appears in some other reputable record (e.g., IIHF's own historical stats) even though I could not pin down its exact standalone source page. This ~2% attendance variance is a minor sourcing/rounding discrepancy, not a material error in the event's magnitude, actor, or scope, so it does not change the verdict — all other core facts (country, year, host city, new arena, \"first ex-Soviet host besides Russia,\" final result, tournament success) are solidly corroborated.",
+        "source": "https://en.wikipedia.org/wiki/2006_IIHF_World_Championship",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm all material claims: the 2006 IIHF World Championship was held 5-21 May 2006 in Riga, Latvia (Arena Riga + a newly-built Skonto Hall/Arena constructed to IIHF specifications, one of the hosting requirements). This was the first time a former Soviet republic other than Russia hosted the event. Sweden defeated the Czech Republic 4-0 in the final on 21 May 2006 at Arena Riga, winning Sweden's 8th title (and completing an Olympic+Worlds double after winning 2006 Turin Olympic gold). Total attendance of 331,626 is consistently cited across multiple independent search results matching the event description exactly. All details (year, country, dates, teams, score, arena construction, historic first) check out with no material discrepancies.",
+        "source": "https://en.wikipedia.org/wiki/2006_IIHF_World_Championship",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2006_IIHF_World_Championship"
+  },
+  {
+    "year": 2006,
     "title": "Latvian Economy Grows Over 12% in Overheating Boom",
     "verdict": "TRUE",
     "reason": "Latvia's GDP grew 12.2 percent in 2006, the highest in the EU, driven by credit growth of 58 percent and a property boom that saw real estate prices rise 75 percent from 2006 to their 2007 peak. The European Commission and IMF issued warnings about overheating and a potential hard landing.",
@@ -473,31 +509,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Baltic_states_housing_bubble"
-  },
-  {
-    "year": 2007,
-    "title": "Latvia Joins the Schengen Area",
-    "verdict": "TRUE",
-    "reason": "Latvia entered the Schengen Area on December 21, 2007, with controls at land and sea borders abolished on that date, and airport controls eliminated on March 30, 2008. The move eliminated border controls with other Schengen states and was symbolically important for Latvia's full European integration.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Latvia entered the Schengen Area on December 21, 2007, with controls at land and sea borders abolished on that date, and airport controls eliminated on March 30, 2008. The move eliminated border controls with other Schengen states and was symbolically important for Latvia's full European integration.",
-        "source": "https://www.cvce.eu/en/obj/enlargement_of_the_schengen_area_21_december_2007-en-630560e1-7e8c-4773-93df-ffe3b5f8e960.html",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.cvce.eu/en/obj/enlargement_of_the_schengen_area_21_december_2007-en-630560e1-7e8c-4773-93df-ffe3b5f8e960.html"
   },
   {
     "year": 2007,
@@ -525,10 +536,10 @@
     "source": "https://en.wikipedia.org/wiki/Latvia%E2%80%93Russia_border"
   },
   {
-    "year": 2008,
-    "title": "Global Financial Crisis Devastates Latvian Economy",
+    "year": 2007,
+    "title": "Latvia Joins the Schengen Area",
     "verdict": "TRUE",
-    "reason": "Latvia experienced one of the worst economic contractions globally, with GDP falling 17.7 percent in 2009 following the collapse of the credit bubble. The Parex Bank crisis in late 2008 required a government takeover and triggered a broader financial emergency, with unemployment rising from 7 percent in December 2008 to 22.8 percent by December 2009.",
+    "reason": "Latvia entered the Schengen Area on December 21, 2007, with controls at land and sea borders abolished on that date, and airport controls eliminated on March 30, 2008. The move eliminated border controls with other Schengen states and was symbolically important for Latvia's full European integration.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -538,8 +549,8 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Latvia experienced one of the worst economic contractions globally, with GDP falling 17.7 percent in 2009 following the collapse of the credit bubble. The Parex Bank crisis in late 2008 required a government takeover and triggered a broader financial emergency, with unemployment rising from 7 percent in December 2008 to 22.8 percent by December 2009.",
-        "source": "https://en.wikipedia.org/wiki/2008_Latvian_financial_crisis",
+        "reason": "Latvia entered the Schengen Area on December 21, 2007, with controls at land and sea borders abolished on that date, and airport controls eliminated on March 30, 2008. The move eliminated border controls with other Schengen states and was symbolically important for Latvia's full European integration.",
+        "source": "https://www.cvce.eu/en/obj/enlargement_of_the_schengen_area_21_december_2007-en-630560e1-7e8c-4773-93df-ffe3b5f8e960.html",
         "verifier": {
           "model": "claude-sonnet-pre-migration",
           "date": null,
@@ -547,7 +558,7 @@
         }
       }
     ],
-    "source": "https://en.wikipedia.org/wiki/2008_Latvian_financial_crisis"
+    "source": "https://www.cvce.eu/en/obj/enlargement_of_the_schengen_area_21_december_2007-en-630560e1-7e8c-4773-93df-ffe3b5f8e960.html"
   },
   {
     "year": 2008,
@@ -573,6 +584,31 @@
       }
     ],
     "source": "https://economy-finance.ec.europa.eu/eu-financial-assistance/euro-area-countries/financial-assistance-latvia_en"
+  },
+  {
+    "year": 2008,
+    "title": "Global Financial Crisis Devastates Latvian Economy",
+    "verdict": "TRUE",
+    "reason": "Latvia experienced one of the worst economic contractions globally, with GDP falling 17.7 percent in 2009 following the collapse of the credit bubble. The Parex Bank crisis in late 2008 required a government takeover and triggered a broader financial emergency, with unemployment rising from 7 percent in December 2008 to 22.8 percent by December 2009.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Latvia experienced one of the worst economic contractions globally, with GDP falling 17.7 percent in 2009 following the collapse of the credit bubble. The Parex Bank crisis in late 2008 required a government takeover and triggered a broader financial emergency, with unemployment rising from 7 percent in December 2008 to 22.8 percent by December 2009.",
+        "source": "https://en.wikipedia.org/wiki/2008_Latvian_financial_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2008_Latvian_financial_crisis"
   },
   {
     "year": 2009,
@@ -676,31 +712,6 @@
   },
   {
     "year": 2012,
-    "title": "Referendum on Russian as Second Official Language Rejected",
-    "verdict": "TRUE",
-    "reason": "A February 18, 2012 national referendum on making Russian the second official language of Latvia was rejected by approximately 74.8 percent of voters. The referendum, initiated by Russian-speaking activists, galvanized Latvian-speaking voters and deepened the ethnic political divide.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "A February 18, 2012 national referendum on making Russian the second official language of Latvia was rejected by approximately 74.8 percent of voters. The referendum, initiated by Russian-speaking activists, galvanized Latvian-speaking voters and deepened the ethnic political divide.",
-        "source": "https://en.wikipedia.org/wiki/2012_Latvian_constitutional_referendum",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/2012_Latvian_constitutional_referendum"
-  },
-  {
-    "year": 2012,
     "title": "Latvia Records Strong Economic Recovery from Crisis",
     "verdict": "TRUE",
     "reason": "Latvia's GDP grew by 5.6 percent in 2012, making it one of the fastest-growing economies in the EU and validating the controversial internal devaluation strategy. Latvia repaid the IMF in full several years early in late 2012, and IMF managing director Christine Lagarde cited Latvia as a success story.",
@@ -723,6 +734,31 @@
       }
     ],
     "source": "https://www.imf.org/en/blogs/articles/2013/01/28/latvias-economic-potential-recovery-and-reforms"
+  },
+  {
+    "year": 2012,
+    "title": "Referendum on Russian as Second Official Language Rejected",
+    "verdict": "TRUE",
+    "reason": "A February 18, 2012 national referendum on making Russian the second official language of Latvia was rejected by approximately 74.8 percent of voters. The referendum, initiated by Russian-speaking activists, galvanized Latvian-speaking voters and deepened the ethnic political divide.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "A February 18, 2012 national referendum on making Russian the second official language of Latvia was rejected by approximately 74.8 percent of voters. The referendum, initiated by Russian-speaking activists, galvanized Latvian-speaking voters and deepened the ethnic political divide.",
+        "source": "https://en.wikipedia.org/wiki/2012_Latvian_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2012_Latvian_constitutional_referendum"
   },
   {
     "year": 2014,
@@ -751,31 +787,6 @@
   },
   {
     "year": 2014,
-    "title": "Riga Serves as European Capital of Culture",
-    "verdict": "TRUE",
-    "reason": "Riga held the title of European Capital of Culture for 2014, co-hosting the designation with Umeå, Sweden, under the programme theme 'Force Majeure'. The programme included 488 activities across 90 countries, hosting the 2014 World Choir Games and the European Film Academy Awards.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Riga held the title of European Capital of Culture for 2014, co-hosting the designation with Umeå, Sweden, under the programme theme 'Force Majeure'. The programme included 488 activities across 90 countries, hosting the 2014 World Choir Games and the European Film Academy Awards.",
-        "source": "https://www.unesco.org/creativity/en/policy-monitoring-platform/riga-european-capital-culture-ecoc-2014",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.unesco.org/creativity/en/policy-monitoring-platform/riga-european-capital-culture-ecoc-2014"
-  },
-  {
-    "year": 2014,
     "title": "Latvia Increases Defense Spending After Russia Annexes Crimea",
     "verdict": "TRUE",
     "reason": "Following Russia's annexation of Crimea in March 2014, Latvia committed to increasing its defense budget toward and beyond the NATO 2 percent of GDP target, consistent with the Wales Summit Defence Investment Pledge. Latvia subsequently had the largest increase in defence spending as a proportion of GDP between 2014 and 2022 among NATO members.",
@@ -798,6 +809,31 @@
       }
     ],
     "source": "https://commonslibrary.parliament.uk/defence-spending-pledges-by-nato-members-since-russia-invaded-ukraine/"
+  },
+  {
+    "year": 2014,
+    "title": "Riga Serves as European Capital of Culture",
+    "verdict": "TRUE",
+    "reason": "Riga held the title of European Capital of Culture for 2014, co-hosting the designation with Umeå, Sweden, under the programme theme 'Force Majeure'. The programme included 488 activities across 90 countries, hosting the 2014 World Choir Games and the European Film Academy Awards.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Riga held the title of European Capital of Culture for 2014, co-hosting the designation with Umeå, Sweden, under the programme theme 'Force Majeure'. The programme included 488 activities across 90 countries, hosting the 2014 World Choir Games and the European Film Academy Awards.",
+        "source": "https://www.unesco.org/creativity/en/policy-monitoring-platform/riga-european-capital-culture-ecoc-2014",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.unesco.org/creativity/en/policy-monitoring-platform/riga-european-capital-culture-ecoc-2014"
   },
   {
     "year": 2015,
@@ -926,31 +962,6 @@
   },
   {
     "year": 2019,
-    "title": "Egils Levits Elected President of Latvia",
-    "verdict": "TRUE",
-    "reason": "The Saeima elected Egils Levits, a judge at the European Court of Justice (and formerly at the European Court of Human Rights), as President of Latvia on May 29, 2019, with 61 votes out of 100. Levits, who had been a Soviet-era dissident refugee, was inaugurated on July 8, 2019.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Saeima elected Egils Levits, a judge at the European Court of Justice (and formerly at the European Court of Human Rights), as President of Latvia on May 29, 2019, with 61 votes out of 100. Levits, who had been a Soviet-era dissident refugee, was inaugurated on July 8, 2019.",
-        "source": "https://en.wikipedia.org/wiki/Egils_Levits",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Egils_Levits"
-  },
-  {
-    "year": 2019,
     "title": "Central Bank Governor Arrested on Corruption Charges",
     "verdict": "TRUE",
     "reason": "Ilmars Rimsevics, Governor of the Bank of Latvia and ECB Governing Council member, was detained by Latvia's anti-corruption bureau in February 2018 and charged with accepting bribes of up to 500,000 euros, with money laundering charges added in June 2019. He was sentenced to six years in prison on December 20, 2023.",
@@ -973,6 +984,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Ilm%C4%81rs_Rim%C5%A1%C4%93vi%C4%8Ds"
+  },
+  {
+    "year": 2019,
+    "title": "Egils Levits Elected President of Latvia",
+    "verdict": "TRUE",
+    "reason": "The Saeima elected Egils Levits, a judge at the European Court of Justice (and formerly at the European Court of Human Rights), as President of Latvia on May 29, 2019, with 61 votes out of 100. Levits, who had been a Soviet-era dissident refugee, was inaugurated on July 8, 2019.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Saeima elected Egils Levits, a judge at the European Court of Justice (and formerly at the European Court of Human Rights), as President of Latvia on May 29, 2019, with 61 votes out of 100. Levits, who had been a Soviet-era dissident refugee, was inaugurated on July 8, 2019.",
+        "source": "https://en.wikipedia.org/wiki/Egils_Levits",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Egils_Levits"
   },
   {
     "year": 2020,
@@ -1026,31 +1062,6 @@
   },
   {
     "year": 2022,
-    "title": "Latvia Responds to Russian Invasion of Ukraine",
-    "verdict": "TRUE",
-    "reason": "Following Russia's full-scale invasion of Ukraine in February 2022, Latvia expelled Russian diplomats in multiple rounds (including 13 for 'unprovoked and unjustified' military operations), closed two Russian consulates, banned Russian state media, and provided military and humanitarian aid to Ukraine. Latvia became one of the most vocal NATO advocates for Ukrainian defense.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Following Russia's full-scale invasion of Ukraine in February 2022, Latvia expelled Russian diplomats in multiple rounds (including 13 for 'unprovoked and unjustified' military operations), closed two Russian consulates, banned Russian state media, and provided military and humanitarian aid to Ukraine. Latvia became one of the most vocal NATO advocates for Ukrainian defense.",
-        "source": "https://en.wikipedia.org/wiki/Latvia%E2%80%93Russia_relations",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Latvia%E2%80%93Russia_relations"
-  },
-  {
-    "year": 2022,
     "title": "Latvia Dismantles Soviet-Era Victory Monument in Riga",
     "verdict": "TRUE",
     "reason": "Latvia demolished the Soviet Victory Monument (Monument to the Liberators of Soviet Latvia) in Riga's Victory Park on August 25, 2022, after Latvia's parliament voted to approve the demolition in May 2022. The 80-metre obelisk's toppling drew cheers and applause from onlookers as it crashed into a nearby pond.",
@@ -1098,6 +1109,31 @@
       }
     ],
     "source": "https://www.leta.lv/eng/home/important/04ACB9A4-5BA7-4576-A50D-AC1A9220B61C/"
+  },
+  {
+    "year": 2022,
+    "title": "Latvia Responds to Russian Invasion of Ukraine",
+    "verdict": "TRUE",
+    "reason": "Following Russia's full-scale invasion of Ukraine in February 2022, Latvia expelled Russian diplomats in multiple rounds (including 13 for 'unprovoked and unjustified' military operations), closed two Russian consulates, banned Russian state media, and provided military and humanitarian aid to Ukraine. Latvia became one of the most vocal NATO advocates for Ukrainian defense.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Following Russia's full-scale invasion of Ukraine in February 2022, Latvia expelled Russian diplomats in multiple rounds (including 13 for 'unprovoked and unjustified' military operations), closed two Russian consulates, banned Russian state media, and provided military and humanitarian aid to Ukraine. Latvia became one of the most vocal NATO advocates for Ukrainian defense.",
+        "source": "https://en.wikipedia.org/wiki/Latvia%E2%80%93Russia_relations",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Latvia%E2%80%93Russia_relations"
   },
   {
     "year": 2023,
@@ -1151,31 +1187,6 @@
   },
   {
     "year": 2024,
-    "title": "NATO Upgrades Latvia Battlegroup to Brigade-Level Presence",
-    "verdict": "TRUE",
-    "reason": "On July 3, 2024, a ceremony at the Adazi Military Base marked the launch of the NATO Multinational Brigade Latvia, upgrading the previous battalion-sized battlegroup to a brigade-level formation of more than 3,500 troops with Canada as framework nation. Latvia became the first country to scale up NATO forward presence to brigade level.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "On July 3, 2024, a ceremony at the Adazi Military Base marked the launch of the NATO Multinational Brigade Latvia, upgrading the previous battalion-sized battlegroup to a brigade-level formation of more than 3,500 troops with Canada as framework nation. Latvia became the first country to scale up NATO forward presence to brigade level.",
-        "source": "https://www.mod.gov.lv/en/nato/nato-capabilities/nato-multinational-brigade-latvia",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.mod.gov.lv/en/nato/nato-capabilities/nato-multinational-brigade-latvia"
-  },
-  {
-    "year": 2024,
     "title": "Latvia Completes Border Fence with Russia and Belarus",
     "verdict": "FALSE",
     "reason": "The Latvia-Belarus border fence (~145 km) was completed in July 2024, but the Latvia-Russia border fence (280 km) was not completed until December 2025 — over a year after the stated event year. The title claims completion of both fences in 2024, which is factually incorrect for the Russia border section.",
@@ -1198,5 +1209,30 @@
       }
     ],
     "source": "https://eng.lsm.lv/article/society/defence/30.12.2025-280-km-long-fence-on-latvian-russian-border-finished.a628173/"
+  },
+  {
+    "year": 2024,
+    "title": "NATO Upgrades Latvia Battlegroup to Brigade-Level Presence",
+    "verdict": "TRUE",
+    "reason": "On July 3, 2024, a ceremony at the Adazi Military Base marked the launch of the NATO Multinational Brigade Latvia, upgrading the previous battalion-sized battlegroup to a brigade-level formation of more than 3,500 troops with Canada as framework nation. Latvia became the first country to scale up NATO forward presence to brigade level.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "On July 3, 2024, a ceremony at the Adazi Military Base marked the launch of the NATO Multinational Brigade Latvia, upgrading the previous battalion-sized battlegroup to a brigade-level formation of more than 3,500 troops with Canada as framework nation. Latvia became the first country to scale up NATO forward presence to brigade level.",
+        "source": "https://www.mod.gov.lv/en/nato/nato-capabilities/nato-multinational-brigade-latvia",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.mod.gov.lv/en/nato/nato-capabilities/nato-multinational-brigade-latvia"
   }
 ]

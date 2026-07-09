@@ -4441,5 +4441,43 @@
         }
       }
     ]
+  },
+  {
+    "year": 2021,
+    "title": "RCEP trade agreement enters into force",
+    "verdict": "FALSE",
+    "reason": "RCEP was signed in November 2020, but it did NOT enter into force in 2021. Multiple independent sources (ASEAN Secretariat, CNBC, China's State Council/gov.cn, Congress.gov CRS) confirm RCEP entered into force on January 1, 2022 for the first 10 ratifying parties, including China. China ratified the agreement and deposited its instrument of ratification with the ASEAN Secretary-General on April 15, 2021, but ratification is a distinct legal step from entry into force. The event title and description both describe 'entry into force,' which occurred on January 1, 2022, not in 2021. The underlying event is real and material to China's regional trade integration, but the year field (2021) is incorrect; the correct year for entry into force is 2022.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event's own description states RCEP \"entered into force on January 1, 2022\" — and independent sources (ASEAN Secretariat, China's State Council/gov.cn, CNBC, Wikipedia) confirm RCEP entered into force on 1 January 2022 for the first 10 ratifying parties including China, not in 2021. China did ratify/deposit its instrument of ratification on 15 April 2021, and the agreement was signed in November 2020, but \"enters into force\" — the specific milestone in the title — is a 2022 event, not 2021. Since the top-level year field (2021) does not match the actual date of the described milestone, this is a year mismatch (FALSE), with the correct year being 2022.",
+        "source": "https://asean.org/regional-comprehensive-economic-partnership-rcep-to-enter-into-force-on-1-january-2022/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 2022
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "RCEP was signed in November 2020, but it did NOT enter into force in 2021. Multiple independent sources (ASEAN Secretariat, CNBC, China's State Council/gov.cn, Congress.gov CRS) confirm RCEP entered into force on January 1, 2022 for the first 10 ratifying parties, including China. China ratified the agreement and deposited its instrument of ratification with the ASEAN Secretary-General on April 15, 2021, but ratification is a distinct legal step from entry into force. The event title and description both describe 'entry into force,' which occurred on January 1, 2022, not in 2021. The underlying event is real and material to China's regional trade integration, but the year field (2021) is incorrect; the correct year for entry into force is 2022.",
+        "source": "https://asean.org/regional-comprehensive-economic-partnership-rcep-to-enter-into-force-on-1-january-2022/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 2022
+      }
+    ],
+    "source": "https://asean.org/regional-comprehensive-economic-partnership-rcep-to-enter-into-force-on-1-january-2022/"
   }
 ]

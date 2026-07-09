@@ -49,30 +49,6 @@
   },
   {
     "year": 1990,
-    "title": "Kosovo Assembly Dissolved After Declaration of Sovereignty",
-    "verdict": "TRUE",
-    "reason": "Albanian deputies declared sovereignty July 2 1990; Serbian assembly dissolved Kosovo assembly July 5 1990. Year and facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Albanian deputies declared sovereignty July 2 1990; Serbian assembly dissolved Kosovo assembly July 5 1990. Year and facts correct.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1990,
     "title": "Democratic League of Kosovo (LDK) Founded Under Ibrahim Rugova",
     "verdict": "FALSE",
     "reason": "LDK was founded December 23 1989, not 1990. Year is off by one — marked FALSE per rules.",
@@ -86,6 +62,30 @@
         "pass_n": 1,
         "verdict": "FALSE",
         "reason": "LDK was founded December 23 1989, not 1990. Year is off by one — marked FALSE per rules.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1990,
+    "title": "Kosovo Assembly Dissolved After Declaration of Sovereignty",
+    "verdict": "TRUE",
+    "reason": "Albanian deputies declared sovereignty July 2 1990; Serbian assembly dissolved Kosovo assembly July 5 1990. Year and facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Albanian deputies declared sovereignty July 2 1990; Serbian assembly dissolved Kosovo assembly July 5 1990. Year and facts correct.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -193,30 +193,6 @@
   },
   {
     "year": 1996,
-    "title": "Kosovo Liberation Army (KLA) Emerges with First Attacks",
-    "verdict": "TRUE",
-    "reason": "KLA claimed first attacks in 1996; arms from Albanian collapse in 1997 expanded capacity. Year and facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "KLA claimed first attacks in 1996; arms from Albanian collapse in 1997 expanded capacity. Year and facts correct.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1996,
     "title": "Education Agreement Between Milošević and Rugova",
     "verdict": "TRUE",
     "reason": "US-mediated education normalisation agreement signed 1996; implementation collapsed. Year and facts correct.",
@@ -230,6 +206,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "US-mediated education normalisation agreement signed 1996; implementation collapsed. Year and facts correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1996,
+    "title": "Kosovo Liberation Army (KLA) Emerges with First Attacks",
+    "verdict": "TRUE",
+    "reason": "KLA claimed first attacks in 1996; arms from Albanian collapse in 1997 expanded capacity. Year and facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "KLA claimed first attacks in 1996; arms from Albanian collapse in 1997 expanded capacity. Year and facts correct.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -289,6 +289,30 @@
   },
   {
     "year": 1998,
+    "title": "Holbrooke-Milošević Agreement and OSCE Verification Mission",
+    "verdict": "TRUE",
+    "reason": "Holbrooke brokered October 1998 deal; 2,000-strong KVM deployed. Implementation patchy; fighting resumed. Year and facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Holbrooke brokered October 1998 deal; 2,000-strong KVM deployed. Implementation patchy; fighting resumed. Year and facts correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1998,
     "title": "UN Security Council Resolution 1199 Demands Ceasefire",
     "verdict": "TRUE",
     "reason": "UNSC Resolution 1199 adopted September 23 1998 under Chapter VII. Year and facts correct.",
@@ -312,10 +336,10 @@
     ]
   },
   {
-    "year": 1998,
-    "title": "Holbrooke-Milošević Agreement and OSCE Verification Mission",
+    "year": 1999,
+    "title": "Kumanovo Agreement and UNSC Resolution 1244",
     "verdict": "TRUE",
-    "reason": "Holbrooke brokered October 1998 deal; 2,000-strong KVM deployed. Implementation patchy; fighting resumed. Year and facts correct.",
+    "reason": "Kumanovo Military-Technical Agreement signed June 9 1999; UNSC Resolution 1244 adopted June 10 1999. Year and facts correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -325,7 +349,79 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Holbrooke brokered October 1998 deal; 2,000-strong KVM deployed. Implementation patchy; fighting resumed. Year and facts correct.",
+        "reason": "Kumanovo Military-Technical Agreement signed June 9 1999; UNSC Resolution 1244 adopted June 10 1999. Year and facts correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1999,
+    "title": "Mass Expulsion of Kosovo Albanians During Bombing",
+    "verdict": "TRUE",
+    "reason": "~850,000 Albanians expelled to Albania, North Macedonia, Montenegro during bombing. Year and facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "~850,000 Albanians expelled to Albania, North Macedonia, Montenegro during bombing. Year and facts correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1999,
+    "title": "Mass Return of Albanian Refugees and Serb Exodus",
+    "verdict": "TRUE",
+    "reason": "Hundreds of thousands of Albanians returned within weeks; 200,000-250,000 Serbs and Roma fled. Year and facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Hundreds of thousands of Albanians returned within weeks; 200,000-250,000 Serbs and Roma fled. Year and facts correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 1999,
+    "title": "NATO Operation Allied Force — 78-Day Bombing Campaign",
+    "verdict": "TRUE",
+    "reason": "Campaign started March 24 1999, lasted exactly 78 days, ended June 10 1999. Year and facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Campaign started March 24 1999, lasted exactly 78 days, ended June 10 1999. Year and facts correct.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -385,78 +481,6 @@
   },
   {
     "year": 1999,
-    "title": "NATO Operation Allied Force — 78-Day Bombing Campaign",
-    "verdict": "TRUE",
-    "reason": "Campaign started March 24 1999, lasted exactly 78 days, ended June 10 1999. Year and facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Campaign started March 24 1999, lasted exactly 78 days, ended June 10 1999. Year and facts correct.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1999,
-    "title": "Mass Expulsion of Kosovo Albanians During Bombing",
-    "verdict": "TRUE",
-    "reason": "~850,000 Albanians expelled to Albania, North Macedonia, Montenegro during bombing. Year and facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "~850,000 Albanians expelled to Albania, North Macedonia, Montenegro during bombing. Year and facts correct.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1999,
-    "title": "Kumanovo Agreement and UNSC Resolution 1244",
-    "verdict": "TRUE",
-    "reason": "Kumanovo Military-Technical Agreement signed June 9 1999; UNSC Resolution 1244 adopted June 10 1999. Year and facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Kumanovo Military-Technical Agreement signed June 9 1999; UNSC Resolution 1244 adopted June 10 1999. Year and facts correct.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1999,
     "title": "UNMIK and KFOR Deploy to Kosovo",
     "verdict": "TRUE",
     "reason": "KFOR entered June 12 1999 with ~50,000 troops; UNMIK assumed civilian governance. Year and facts correct.",
@@ -470,30 +494,6 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "KFOR entered June 12 1999 with ~50,000 troops; UNMIK assumed civilian governance. Year and facts correct.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 1999,
-    "title": "Mass Return of Albanian Refugees and Serb Exodus",
-    "verdict": "TRUE",
-    "reason": "Hundreds of thousands of Albanians returned within weeks; 200,000-250,000 Serbs and Roma fled. Year and facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Hundreds of thousands of Albanians returned within weeks; 200,000-250,000 Serbs and Roma fled. Year and facts correct.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -721,9 +721,9 @@
   },
   {
     "year": 2008,
-    "title": "Kosovo Declares Independence — February 17",
+    "title": "EULEX Rule of Law Mission Deployed",
     "verdict": "TRUE",
-    "reason": "Declaration adopted February 17 2008 by 109 of 120 assembly members (not unanimous — 11 Serb deputies boycotted). Description says 'unanimously' which is slightly inaccurate but not materially wrong about the year or core event.",
+    "reason": "EULEX began operations December 9 2008; largest EU civilian CSDP mission. Year and facts correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -733,7 +733,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Declaration adopted February 17 2008 by 109 of 120 assembly members (not unanimous — 11 Serb deputies boycotted). Description says 'unanimously' which is slightly inaccurate but not materially wrong about the year or core event.",
+        "reason": "EULEX began operations December 9 2008; largest EU civilian CSDP mission. Year and facts correct.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -769,9 +769,9 @@
   },
   {
     "year": 2008,
-    "title": "EULEX Rule of Law Mission Deployed",
+    "title": "Kosovo Declares Independence — February 17",
     "verdict": "TRUE",
-    "reason": "EULEX began operations December 9 2008; largest EU civilian CSDP mission. Year and facts correct.",
+    "reason": "Declaration adopted February 17 2008 by 109 of 120 assembly members (not unanimous — 11 Serb deputies boycotted). Description says 'unanimously' which is slightly inaccurate but not materially wrong about the year or core event.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -781,31 +781,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "EULEX began operations December 9 2008; largest EU civilian CSDP mission. Year and facts correct.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2010,
-    "title": "ICJ Advisory Opinion on Independence Declaration",
-    "verdict": "TRUE",
-    "reason": "ICJ issued advisory opinion July 22 2010; 10-4 vote finding declaration did not violate international law. Year and facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "ICJ issued advisory opinion July 22 2010; 10-4 vote finding declaration did not violate international law. Year and facts correct.",
+        "reason": "Declaration adopted February 17 2008 by 109 of 120 assembly members (not unanimous — 11 Serb deputies boycotted). Description says 'unanimously' which is slightly inaccurate but not materially wrong about the year or core event.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -830,6 +806,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Early elections December 2010 after constitutional court ruled Sejdiu violated constitution; PDK won; fraud allegations. Year and facts correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2010,
+    "title": "ICJ Advisory Opinion on Independence Declaration",
+    "verdict": "TRUE",
+    "reason": "ICJ issued advisory opinion July 22 2010; 10-4 vote finding declaration did not violate international law. Year and facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "ICJ issued advisory opinion July 22 2010; 10-4 vote finding declaration did not violate international law. Year and facts correct.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1032,28 +1032,40 @@
     ]
   },
   {
-    "year": 2017,
-    "title": "Ramush Haradinaj Returns as Prime Minister",
+    "year": 2016,
+    "title": "Kosovo Admitted to FIFA and UEFA, Plays First Competitive Match",
     "verdict": "TRUE",
-    "reason": "Snap elections June 11 2017; Haradinaj elected PM September 9 2017 with coalition. Year and facts correct.",
-    "verify_count": 1,
+    "reason": "All material facts confirmed independently. (1) UEFA's congress in Budapest voted 28-24 on 3 May 2016 to admit the Football Federation of Kosovo as a member, over Serbian objection (confirmed by UEFA.com, Balkan Insight, Fox News, RFE/RL). (2) FIFA's 66th Congress in Mexico City admitted Kosovo as its 210th member on 13 May 2016 (141-23 vote) — 'later that month' relative to the 3 May UEFA vote checks out (Balkan Insight, Top Channel). (3) On 5 September 2016 Kosovo played its first competitive (World Cup qualifying) match, a 1-1 away draw at Finland in Turku, with Valon Berisha scoring Kosovo's first-ever competitive goal from the penalty spot in the 60th minute (ESPN match report, CNN, Balkan Insight). Every specific detail in the description — the 28-24 UEFA vote tally, FIFA's 210th-member status, the 5 September 2016 date, the 1-1 scoreline vs Finland, and Berisha's penalty goal — matches multiple independent, authoritative sources with no contradictions.",
+    "verify_count": 2,
     "consensus_verdict": "TRUE",
-    "consensus_status": "single",
+    "consensus_status": "double_confirmed",
     "needs_tiebreak": false,
-    "source_independence": "n/a",
+    "source_independence": "independent",
     "verifications": [
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Snap elections June 11 2017; Haradinaj elected PM September 9 2017 with coalition. Year and facts correct.",
-        "source": null,
+        "reason": "All elements confirmed independently: (1) UEFA Congress in Budapest voted 28-24 (2 invalid) on 3 May 2016 to admit the Football Federation of Kosovo as its 55th member, per Balkan Insight, Fox News, and UEFA.com. (2) FIFA Congress in Mexico City admitted Kosovo as its 210th member on 13 May 2016 by a 141-23 vote (correctly 'later that month' relative to 3 May), per Balkan Insight and Top Channel. (3) On 5 September 2016 Kosovo played its first competitive match, a 1-1 World Cup qualifying draw away to Finland at Veritas Stadion, Turku, with Valon Berisha scoring Kosovo's first competitive goal from the penalty spot in the 60th minute, per ESPN and eu-football.info match reports. All dates, vote counts, score, and scorer detail match the description exactly.",
+        "source": "https://www.espn.com/soccer/match/_/gameId/457286/kosovo-finland",
         "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material facts confirmed independently. (1) UEFA's congress in Budapest voted 28-24 on 3 May 2016 to admit the Football Federation of Kosovo as a member, over Serbian objection (confirmed by UEFA.com, Balkan Insight, Fox News, RFE/RL). (2) FIFA's 66th Congress in Mexico City admitted Kosovo as its 210th member on 13 May 2016 (141-23 vote) — 'later that month' relative to the 3 May UEFA vote checks out (Balkan Insight, Top Channel). (3) On 5 September 2016 Kosovo played its first competitive (World Cup qualifying) match, a 1-1 away draw at Finland in Turku, with Valon Berisha scoring Kosovo's first-ever competitive goal from the penalty spot in the 60th minute (ESPN match report, CNN, Balkan Insight). Every specific detail in the description — the 28-24 UEFA vote tally, FIFA's 210th-member status, the 5 September 2016 date, the 1-1 scoreline vs Finland, and Berisha's penalty goal — matches multiple independent, authoritative sources with no contradictions.",
+        "source": "https://www.uefa.com/news-media/news/022d-0f8e2b5bf9d1-4268d2e86044-1000--football-federation-of-kosovo-joins-uefa/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
           "method": "web_search"
         }
       }
-    ]
+    ],
+    "source": "https://www.uefa.com/news-media/news/022d-0f8e2b5bf9d1-4268d2e86044-1000--football-federation-of-kosovo-joins-uefa/"
   },
   {
     "year": 2017,
@@ -1080,10 +1092,10 @@
     ]
   },
   {
-    "year": 2018,
-    "title": "Land Swap Proposal Floated and Rejected",
+    "year": 2017,
+    "title": "Ramush Haradinaj Returns as Prime Minister",
     "verdict": "TRUE",
-    "reason": "Land swap/border correction discussions between Thaçi and Vučić in 2018-2019; Germany opposed; idea died. Year and facts correct.",
+    "reason": "Snap elections June 11 2017; Haradinaj elected PM September 9 2017 with coalition. Year and facts correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1093,7 +1105,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Land swap/border correction discussions between Thaçi and Vučić in 2018-2019; Germany opposed; idea died. Year and facts correct.",
+        "reason": "Snap elections June 11 2017; Haradinaj elected PM September 9 2017 with coalition. Year and facts correct.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1128,6 +1140,30 @@
     ]
   },
   {
+    "year": 2018,
+    "title": "Land Swap Proposal Floated and Rejected",
+    "verdict": "TRUE",
+    "reason": "Land swap/border correction discussions between Thaçi and Vučić in 2018-2019; Germany opposed; idea died. Year and facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Land swap/border correction discussions between Thaçi and Vučić in 2018-2019; Germany opposed; idea died. Year and facts correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
     "year": 2019,
     "title": "Albania Earthquake Causes Cross-Border Damage in Kosovo",
     "verdict": "TRUE",
@@ -1142,6 +1178,54 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Magnitude 6.4 earthquake struck near Durrës November 26 2019; 51 deaths; Kosovo sent rescue teams; two Kosovar citizens among victims. Year and facts correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 Pandemic and Health System Strain",
+    "verdict": "TRUE",
+    "reason": "COVID-19 reached Kosovo March 2020; contributed to government collapse; ~5% GDP contraction. Year and facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "COVID-19 reached Kosovo March 2020; contributed to government collapse; ~5% GDP contraction. Year and facts correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2020,
+    "title": "Hashim Thaçi Indicted and Resigns as President",
+    "verdict": "TRUE",
+    "reason": "Indictment confirmed November 2020; Thaçi resigned and transferred to The Hague. Trial began; verdict not yet issued. Year and facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Indictment confirmed November 2020; Thaçi resigned and transferred to The Hague. Trial began; verdict not yet issued. Year and facts correct.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1200,10 +1284,10 @@
     ]
   },
   {
-    "year": 2020,
-    "title": "Hashim Thaçi Indicted and Resigns as President",
+    "year": 2021,
+    "title": "License Plate Crisis at Northern Border Crossings",
     "verdict": "TRUE",
-    "reason": "Indictment confirmed November 2020; Thaçi resigned and transferred to The Hague. Trial began; verdict not yet issued. Year and facts correct.",
+    "reason": "Reciprocal license plate measures September 2021 triggered Serb protests at Jarinje/Bërnjak crossings; KFOR helicopters deployed; EU mediated. Year and facts correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1213,31 +1297,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Indictment confirmed November 2020; Thaçi resigned and transferred to The Hague. Trial began; verdict not yet issued. Year and facts correct.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2020,
-    "title": "COVID-19 Pandemic and Health System Strain",
-    "verdict": "TRUE",
-    "reason": "COVID-19 reached Kosovo March 2020; contributed to government collapse; ~5% GDP contraction. Year and facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "COVID-19 reached Kosovo March 2020; contributed to government collapse; ~5% GDP contraction. Year and facts correct.",
+        "reason": "Reciprocal license plate measures September 2021 triggered Serb protests at Jarinje/Bërnjak crossings; KFOR helicopters deployed; EU mediated. Year and facts correct.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1272,54 +1332,6 @@
     ]
   },
   {
-    "year": 2021,
-    "title": "License Plate Crisis at Northern Border Crossings",
-    "verdict": "TRUE",
-    "reason": "Reciprocal license plate measures September 2021 triggered Serb protests at Jarinje/Bërnjak crossings; KFOR helicopters deployed; EU mediated. Year and facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Reciprocal license plate measures September 2021 triggered Serb protests at Jarinje/Bërnjak crossings; KFOR helicopters deployed; EU mediated. Year and facts correct.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2022,
-    "title": "Northern Mass Resignations and License Plate Standoff",
-    "verdict": "TRUE",
-    "reason": "Kosovo Serb mass resignations from police, judiciary, institutions November 2022 over plate re-registration; barricades; EU/US mediation. Year and facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Kosovo Serb mass resignations from police, judiciary, institutions November 2022 over plate re-registration; barricades; EU/US mediation. Year and facts correct.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
     "year": 2022,
     "title": "Kosovo Formally Applies for EU Membership",
     "verdict": "TRUE",
@@ -1344,10 +1356,10 @@
     ]
   },
   {
-    "year": 2023,
-    "title": "Ohrid Implementation Annex Agreed but Not Signed",
+    "year": 2022,
+    "title": "Northern Mass Resignations and License Plate Standoff",
     "verdict": "TRUE",
-    "reason": "Verbal acceptance of implementation annex March 18 2023 in Ohrid; neither leader signed; Vučić later qualified commitments. Year and facts correct.",
+    "reason": "Kosovo Serb mass resignations from police, judiciary, institutions November 2022 over plate re-registration; barricades; EU/US mediation. Year and facts correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1357,31 +1369,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Verbal acceptance of implementation annex March 18 2023 in Ohrid; neither leader signed; Vučić later qualified commitments. Year and facts correct.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2023,
-    "title": "Northern Mayor Crisis and KFOR Soldiers Injured",
-    "verdict": "TRUE",
-    "reason": "Albanian mayors installed May 26 2023 in four northern municipalities; violent protests May 29 2023; 25 KFOR soldiers injured (11 Italian, 19 Hungarian — with some overlap; ~30 figure in event description is slightly low but within range). Year and facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Albanian mayors installed May 26 2023 in four northern municipalities; violent protests May 29 2023; 25 KFOR soldiers injured (11 Italian, 19 Hungarian — with some overlap; ~30 figure in event description is slightly low but within range). Year and facts correct.",
+        "reason": "Kosovo Serb mass resignations from police, judiciary, institutions November 2022 over plate re-registration; barricades; EU/US mediation. Year and facts correct.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1464,10 +1452,10 @@
     ]
   },
   {
-    "year": 2024,
-    "title": "EU Visa Liberalization Takes Effect",
+    "year": 2023,
+    "title": "Northern Mayor Crisis and KFOR Soldiers Injured",
     "verdict": "TRUE",
-    "reason": "Visa-free travel to Schengen for Kosovo passport holders effective January 1 2024; last Western Balkans state. Year and facts correct.",
+    "reason": "Albanian mayors installed May 26 2023 in four northern municipalities; violent protests May 29 2023; 25 KFOR soldiers injured (11 Italian, 19 Hungarian — with some overlap; ~30 figure in event description is slightly low but within range). Year and facts correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1477,7 +1465,31 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Visa-free travel to Schengen for Kosovo passport holders effective January 1 2024; last Western Balkans state. Year and facts correct.",
+        "reason": "Albanian mayors installed May 26 2023 in four northern municipalities; violent protests May 29 2023; 25 KFOR soldiers injured (11 Italian, 19 Hungarian — with some overlap; ~30 figure in event description is slightly low but within range). Year and facts correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "title": "Ohrid Implementation Annex Agreed but Not Signed",
+    "verdict": "TRUE",
+    "reason": "Verbal acceptance of implementation annex March 18 2023 in Ohrid; neither leader signed; Vučić later qualified commitments. Year and facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Verbal acceptance of implementation annex March 18 2023 in Ohrid; neither leader signed; Vučić later qualified commitments. Year and facts correct.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1502,6 +1514,30 @@
         "pass_n": 1,
         "verdict": "TRUE",
         "reason": "Kosovo authorities closed Serbian parallel municipal offices and services in north in 2024; Western mediators concerned; Brussels dialogue frozen. Year and facts correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "title": "EU Visa Liberalization Takes Effect",
+    "verdict": "TRUE",
+    "reason": "Visa-free travel to Schengen for Kosovo passport holders effective January 1 2024; last Western Balkans state. Year and facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Visa-free travel to Schengen for Kosovo passport holders effective January 1 2024; last Western Balkans state. Year and facts correct.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1561,9 +1597,9 @@
   },
   {
     "year": 2025,
-    "title": "Inconclusive February Elections and Government Deadlock",
+    "title": "Continued Stalemate on Association of Serb Municipalities",
     "verdict": "TRUE",
-    "reason": "Elections February 9 2025; Vetëvendosje won 48 seats (of 120); no majority; all opposition parties refused coalition; snap elections held December 28 2025. Year and facts correct.",
+    "reason": "ASM undelivered through 2025 despite repeated EU/US pressure; core dispute anchor. Year and facts correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1573,55 +1609,7 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "Elections February 9 2025; Vetëvendosje won 48 seats (of 120); no majority; all opposition parties refused coalition; snap elections held December 28 2025. Year and facts correct.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2025,
-    "title": "EU Lifts Punitive Measures on Kosovo",
-    "verdict": "TRUE",
-    "reason": "EU began phasing out punitive measures during 2025 following 2023 northern crisis. Year and facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "EU began phasing out punitive measures during 2025 following 2023 northern crisis. Year and facts correct.",
-        "source": null,
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ]
-  },
-  {
-    "year": 2025,
-    "title": "Trial of Hashim Thaçi Continues at Specialist Chambers",
-    "verdict": "TRUE",
-    "reason": "Trial ongoing through 2025; prosecution demanded 45 years February 2026; verdict expected 2026+. Year and facts correct.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "Trial ongoing through 2025; prosecution demanded 45 years February 2026; verdict expected 2026+. Year and facts correct.",
+        "reason": "ASM undelivered through 2025 despite repeated EU/US pressure; core dispute anchor. Year and facts correct.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",
@@ -1657,9 +1645,9 @@
   },
   {
     "year": 2025,
-    "title": "Continued Stalemate on Association of Serb Municipalities",
+    "title": "EU Lifts Punitive Measures on Kosovo",
     "verdict": "TRUE",
-    "reason": "ASM undelivered through 2025 despite repeated EU/US pressure; core dispute anchor. Year and facts correct.",
+    "reason": "EU began phasing out punitive measures during 2025 following 2023 northern crisis. Year and facts correct.",
     "verify_count": 1,
     "consensus_verdict": "TRUE",
     "consensus_status": "single",
@@ -1669,7 +1657,55 @@
       {
         "pass_n": 1,
         "verdict": "TRUE",
-        "reason": "ASM undelivered through 2025 despite repeated EU/US pressure; core dispute anchor. Year and facts correct.",
+        "reason": "EU began phasing out punitive measures during 2025 following 2023 northern crisis. Year and facts correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "title": "Inconclusive February Elections and Government Deadlock",
+    "verdict": "TRUE",
+    "reason": "Elections February 9 2025; Vetëvendosje won 48 seats (of 120); no majority; all opposition parties refused coalition; snap elections held December 28 2025. Year and facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Elections February 9 2025; Vetëvendosje won 48 seats (of 120); no majority; all opposition parties refused coalition; snap elections held December 28 2025. Year and facts correct.",
+        "source": null,
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "title": "Trial of Hashim Thaçi Continues at Specialist Chambers",
+    "verdict": "TRUE",
+    "reason": "Trial ongoing through 2025; prosecution demanded 45 years February 2026; verdict expected 2026+. Year and facts correct.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Trial ongoing through 2025; prosecution demanded 45 years February 2026; verdict expected 2026+. Year and facts correct.",
         "source": null,
         "verifier": {
           "model": "claude-sonnet-pre-migration",

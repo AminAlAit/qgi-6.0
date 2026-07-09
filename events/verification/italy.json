@@ -1,5 +1,41 @@
 [
   {
+    "year": 1934,
+    "title": "Italy Hosts and Wins the 1934 World Cup Under Fascist Propaganda Campaign",
+    "verdict": "TRUE",
+    "reason": "All material details corroborate independently across multiple sources (These Football Times, Sky HISTORY, Football History Boys, Wikipedia). Fascist Italy hosted the 2nd FIFA World Cup in 1934; Mussolini closely oversaw the organizing committee and used it as a propaganda platform, with a documented poster campaign (300,000+ posters featuring Hercules giving a fascist salute) plus over a million commemorative stamps. New/renovated stadiums in fascist architectural style were built across eight host cities (Milan, Turin, Florence, Rome, Naples, Bologna, Trieste, Genoa) — e.g., Stadio Benito Mussolini in Turin, Stadio Littoriale in Bologna. Multiple sources report allegations that Mussolini/the fascist government influenced referee selection and meddled in FIFA's organization of matches involving Italy. Italy won the final against Czechoslovakia 2-1 in extra time in Rome on 10 June 1934, and Mussolini presented the team the Coppa del Duce, a custom trophy reported as several times larger than the official Jules Rimet trophy. Every material claim in the description is corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm every material claim: Italy hosted the 1934 FIFA World Cup under Mussolini's fascist government, with Mussolini personally overseeing the organizing effort and using it as a propaganda platform (300,000+ posters featuring a fascist-saluting Hercules, plus stamps and other propaganda materials). Matches were played across eight host cities (Naples, Genoa, Bologna, Milan, Trieste, Florence, Turin, Rome), several using stadiums newly built or renamed in fascist style (e.g., Stadio Benito Mussolini in Turin, Stadio Nazionale PNF in Rome). Referee-influence/interference controversies were widely reported at the time and remain a documented historical suspicion (Czechoslovak press called the final's officiating a \"scandal\"; earlier rounds also drew accusations). Italy won the final 2-1 over Czechoslovakia on 10 June 1934 at the Stadio Nazionale PNF in Rome. Mussolini presented the team with the \"Coppa del Duce,\" a custom trophy reported by multiple sources as roughly six times larger than the official Jules Rimet trophy. No material detail in the description is contradicted or inflated beyond what sources support.",
+        "source": "https://en.wikipedia.org/wiki/1934_FIFA_World_Cup",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material details corroborate independently across multiple sources (These Football Times, Sky HISTORY, Football History Boys, Wikipedia). Fascist Italy hosted the 2nd FIFA World Cup in 1934; Mussolini closely oversaw the organizing committee and used it as a propaganda platform, with a documented poster campaign (300,000+ posters featuring Hercules giving a fascist salute) plus over a million commemorative stamps. New/renovated stadiums in fascist architectural style were built across eight host cities (Milan, Turin, Florence, Rome, Naples, Bologna, Trieste, Genoa) — e.g., Stadio Benito Mussolini in Turin, Stadio Littoriale in Bologna. Multiple sources report allegations that Mussolini/the fascist government influenced referee selection and meddled in FIFA's organization of matches involving Italy. Italy won the final against Czechoslovakia 2-1 in extra time in Rome on 10 June 1934, and Mussolini presented the team the Coppa del Duce, a custom trophy reported as several times larger than the official Jules Rimet trophy. Every material claim in the description is corroborated.",
+        "source": "https://en.wikipedia.org/wiki/1934_FIFA_World_Cup",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1934_FIFA_World_Cup"
+  },
+  {
     "year": 1950,
     "title": "Cassa per il Mezzogiorno Development Fund Established",
     "verdict": "TRUE",

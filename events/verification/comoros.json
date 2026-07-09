@@ -1,0 +1,38 @@
+[
+  {
+    "year": 2021,
+    "title": "Comoros Qualifies for Its First-Ever Africa Cup of Nations",
+    "verdict": "TRUE",
+    "reason": "Independently corroborated across multiple sources: Comoros drew 0-0 with Togo on 25 March 2021 at Stade Omnisports de Malouzini in Moroni, sealing their first-ever AFCON qualification (africanfootball.com match report, CAFOnline). CAFOnline explicitly notes Comoros (population ~850,000, \"nearly equivalent to South Dakota\") became the second-smallest nation ever to qualify for AFCON, after Cape Verde — matching the \"under 900,000\" and \"second-smallest\" claims. Wikipedia confirms Comoros joined FIFA in 2005. Squad composition claim (built around French-born players of Comorian heritage) is corroborated by multiple squad-list sources reporting 22 of the 26-man AFCON 2021 squad were born in France. Comoros then reached the Round of 16 at the 2021 AFCON finals (played Jan 2022 in Cameroon), losing 2-1 to hosts Cameroon after captain Jimmy Abdou was sent off in the 7th minute and all three keepers were unavailable (footballingnations.wordpress.com, Ahram Online match facts). All material details in the description check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm every material element. Comoros drew 0-0 with Togo on March 25, 2021 (home leg, Stade Omnisports de Malouzini, Moroni), securing its first-ever AFCON qualification — corroborated by africanfootball.com's match report headline \"Comoros make history with 0-0 draw,\" CAF's own coverage, and a HubPages retrospective. Multiple sources independently note Comoros (population well under 900,000) was the second-smallest nation ever to qualify for AFCON, behind only Cape Verde. Wikipedia's Comoros national football team article confirms Comoros became a FIFA member in 2005. The squad's composition around French-born players of Comorian heritage is a well-documented, recurring characteristic of the team noted across multiple football sources. Comoros then reached the Round of 16 at the 2021 AFCON finals (played Jan 2022 in Cameroon due to COVID delay), losing 2-1 to hosts Cameroon on January 24, 2022, in a match notable for outfield player Chaker Alhadhur playing goalkeeper — confirmed by SuperSport, Ahram Online, footballingnations, and Wikipedia's \"Comoros at the Africa Cup of Nations\" page. All details (country, year, opponent, score, date, population ranking, FIFA join year, tournament outcome) check out as described.",
+        "source": "https://en.wikipedia.org/wiki/Comoros_national_football_team",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated across multiple sources: Comoros drew 0-0 with Togo on 25 March 2021 at Stade Omnisports de Malouzini in Moroni, sealing their first-ever AFCON qualification (africanfootball.com match report, CAFOnline). CAFOnline explicitly notes Comoros (population ~850,000, \"nearly equivalent to South Dakota\") became the second-smallest nation ever to qualify for AFCON, after Cape Verde — matching the \"under 900,000\" and \"second-smallest\" claims. Wikipedia confirms Comoros joined FIFA in 2005. Squad composition claim (built around French-born players of Comorian heritage) is corroborated by multiple squad-list sources reporting 22 of the 26-man AFCON 2021 squad were born in France. Comoros then reached the Round of 16 at the 2021 AFCON finals (played Jan 2022 in Cameroon), losing 2-1 to hosts Cameroon after captain Jimmy Abdou was sent off in the 7th minute and all three keepers were unavailable (footballingnations.wordpress.com, Ahram Online match facts). All material details in the description check out.",
+        "source": "https://africanfootball.com/news/784976/Comoros-make-history-with-0-0-draw",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://africanfootball.com/news/784976/Comoros-make-history-with-0-0-draw"
+  }
+]

@@ -51,6 +51,42 @@
   },
   {
     "year": 1992,
+    "title": "Denmark Wins UEFA Euro 1992 After Late Call-Up to Replace Yugoslavia",
+    "verdict": "TRUE",
+    "reason": "All material facts confirmed by independent sources. Denmark failed to qualify for Euro 1992, was invited as a late replacement after Yugoslavia was disqualified/suspended by UEFA/FIFA on 31 May 1992 due to UN sanctions (UNSC Resolution 757) tied to the Yugoslav Wars, leaving Denmark roughly nine to ten days to prepare. Denmark ('Danish Dynamite') beat Germany 2-0 in the final (26 June 1992, Nya Ullevi, Gothenburg) with goals from John Jensen (18') and Kim Vilfort (78'). This is widely described in sources as one of the biggest shocks/greatest underdog stories in international football history. Year (1992) and country (Denmark) both confirmed; no material detail is off.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via UEFA.com and Wikipedia: Yugoslavia was disqualified from Euro 1992 roughly ten days before the tournament due to UN sanctions stemming from the Yugoslav wars/breakup; Denmark, as qualifying runners-up, were called up as late replacements. Denmark reached the final and beat a newly-reunified Germany 2-0 at Nya Ullevi, Gothenburg on 26 June 1992, with goals from John Jensen (18th minute) and Kim Vilfort, widely cited as one of the biggest upsets in international football history. All material details (country, year, disqualification cause, opponent, scoreline, scorers) check out.",
+        "source": "https://www.uefa.com/uefaeuro/match/6098--denmark-vs-germany/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "All material facts confirmed by independent sources. Denmark failed to qualify for Euro 1992, was invited as a late replacement after Yugoslavia was disqualified/suspended by UEFA/FIFA on 31 May 1992 due to UN sanctions (UNSC Resolution 757) tied to the Yugoslav Wars, leaving Denmark roughly nine to ten days to prepare. Denmark ('Danish Dynamite') beat Germany 2-0 in the final (26 June 1992, Nya Ullevi, Gothenburg) with goals from John Jensen (18') and Kim Vilfort (78'). This is widely described in sources as one of the biggest shocks/greatest underdog stories in international football history. Year (1992) and country (Denmark) both confirmed; no material detail is off.",
+        "source": "https://en.wikipedia.org/wiki/UEFA_Euro_1992_final",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/UEFA_Euro_1992_final"
+  },
+  {
+    "year": 1992,
     "title": "Edinburgh Agreement Grants Denmark Four EU Opt-Outs",
     "verdict": "TRUE",
     "reason": "The December 1992 Edinburgh European Council summit granted Denmark four opt-outs covering the EMU, Common Security and Defence Policy, Justice and Home Affairs, and EU citizenship, enabling eventual Maastricht ratification.",
@@ -401,31 +437,6 @@
   },
   {
     "year": 2006,
-    "title": "Global Cartoon Crisis Erupts with Embassy Attacks",
-    "verdict": "TRUE",
-    "reason": "In early 2006 protests against the Danish cartoons escalated with Danish embassies in Damascus and Beirut attacked and burned; at least 139 people died in protest-related violence and Danish exports to Muslim-majority countries dropped sharply due to boycotts.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "In early 2006 protests against the Danish cartoons escalated with Danish embassies in Damascus and Beirut attacked and burned; at least 139 people died in protest-related violence and Danish exports to Muslim-majority countries dropped sharply due to boycotts.",
-        "source": "https://en.wikipedia.org/wiki/Jyllands-Posten_Muhammad_cartoons_controversy",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Jyllands-Posten_Muhammad_cartoons_controversy"
-  },
-  {
-    "year": 2006,
     "title": "Danish Forces Deploy to Helmand Province Afghanistan",
     "verdict": "TRUE",
     "reason": "In 2006, Danish military operations shifted to combat operations in Helmand Province alongside British forces; from 2006 to 2014 Denmark maintained up to 760 soldiers there and suffered heavy casualties in one of the deadliest per-capita deployments in the NATO coalition.",
@@ -448,6 +459,31 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Helmand_province_campaign"
+  },
+  {
+    "year": 2006,
+    "title": "Global Cartoon Crisis Erupts with Embassy Attacks",
+    "verdict": "TRUE",
+    "reason": "In early 2006 protests against the Danish cartoons escalated with Danish embassies in Damascus and Beirut attacked and burned; at least 139 people died in protest-related violence and Danish exports to Muslim-majority countries dropped sharply due to boycotts.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In early 2006 protests against the Danish cartoons escalated with Danish embassies in Damascus and Beirut attacked and burned; at least 139 people died in protest-related violence and Danish exports to Muslim-majority countries dropped sharply due to boycotts.",
+        "source": "https://en.wikipedia.org/wiki/Jyllands-Posten_Muhammad_cartoons_controversy",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Jyllands-Posten_Muhammad_cartoons_controversy"
   },
   {
     "year": 2007,
@@ -787,6 +823,31 @@
   },
   {
     "year": 2019,
+    "title": "Denmark Passes Landmark Climate Act Targeting 70% Reduction",
+    "verdict": "TRUE",
+    "reason": "The Danish Parliament passed a legally binding Climate Act on 6 December 2019 requiring a 70% reduction in greenhouse gas emissions by 2030 relative to 1990 levels, with climate neutrality by 2050, among the most ambitious national targets in the world.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "The Danish Parliament passed a legally binding Climate Act on 6 December 2019 requiring a 70% reduction in greenhouse gas emissions by 2030 relative to 1990 levels, with climate neutrality by 2050, among the most ambitious national targets in the world.",
+        "source": "https://stateofgreen.com/en/news/during-cop25-denmark-passes-climate-act-with-a-70-per-cent-reduction-target/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://stateofgreen.com/en/news/during-cop25-denmark-passes-climate-act-with-a-70-per-cent-reduction-target/"
+  },
+  {
+    "year": 2019,
     "title": "Mette Frederiksen Becomes Prime Minister",
     "verdict": "TRUE",
     "reason": "Mette Frederiksen became prime minister on 27 June 2019 at age 41, the youngest in Danish history, heading a Social Democrat minority government after the 5 June 2019 election.",
@@ -834,31 +895,6 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Proposed_United_States_acquisition_of_Greenland"
-  },
-  {
-    "year": 2019,
-    "title": "Denmark Passes Landmark Climate Act Targeting 70% Reduction",
-    "verdict": "TRUE",
-    "reason": "The Danish Parliament passed a legally binding Climate Act on 6 December 2019 requiring a 70% reduction in greenhouse gas emissions by 2030 relative to 1990 levels, with climate neutrality by 2050, among the most ambitious national targets in the world.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "The Danish Parliament passed a legally binding Climate Act on 6 December 2019 requiring a 70% reduction in greenhouse gas emissions by 2030 relative to 1990 levels, with climate neutrality by 2050, among the most ambitious national targets in the world.",
-        "source": "https://stateofgreen.com/en/news/during-cop25-denmark-passes-climate-act-with-a-70-per-cent-reduction-target/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://stateofgreen.com/en/news/during-cop25-denmark-passes-climate-act-with-a-70-per-cent-reduction-target/"
   },
   {
     "year": 2020,
@@ -1012,31 +1048,6 @@
   },
   {
     "year": 2023,
-    "title": "Denmark Pledges All Artillery and Remaining Tanks to Ukraine",
-    "verdict": "TRUE",
-    "reason": "In 2023 Denmark donated all 19 of its Caesar howitzers and committed approximately 100 Leopard 1 tanks to Ukraine, effectively transferring most of its conventional artillery stocks and significantly impacting Danish conventional defence capability.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "In 2023 Denmark donated all 19 of its Caesar howitzers and committed approximately 100 Leopard 1 tanks to Ukraine, effectively transferring most of its conventional artillery stocks and significantly impacting Danish conventional defence capability.",
-        "source": "https://www.pravda.com.ua/eng/news/2023/04/10/7397280/",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://www.pravda.com.ua/eng/news/2023/04/10/7397280/"
-  },
-  {
-    "year": 2023,
     "title": "Denmark Imposes Tax on Agricultural Carbon Emissions",
     "verdict": "FALSE",
     "reason": "The tripartite agreement on a carbon tax on agricultural emissions was announced and agreed on 24 June 2024 and adopted by parliament on 18 November 2024 — not 2023. No such tax was announced or legislated in 2023.",
@@ -1059,6 +1070,31 @@
       }
     ],
     "source": "https://cphpost.dk/2024-06-25/news/climate/denmark-announces-world-first-climate-tax-on-agriculture-earmarks-billions-for-rewilding/"
+  },
+  {
+    "year": 2023,
+    "title": "Denmark Pledges All Artillery and Remaining Tanks to Ukraine",
+    "verdict": "TRUE",
+    "reason": "In 2023 Denmark donated all 19 of its Caesar howitzers and committed approximately 100 Leopard 1 tanks to Ukraine, effectively transferring most of its conventional artillery stocks and significantly impacting Danish conventional defence capability.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In 2023 Denmark donated all 19 of its Caesar howitzers and committed approximately 100 Leopard 1 tanks to Ukraine, effectively transferring most of its conventional artillery stocks and significantly impacting Danish conventional defence capability.",
+        "source": "https://www.pravda.com.ua/eng/news/2023/04/10/7397280/",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.pravda.com.ua/eng/news/2023/04/10/7397280/"
   },
   {
     "year": 2024,
@@ -1087,31 +1123,6 @@
   },
   {
     "year": 2025,
-    "title": "Trump Renews Greenland Acquisition Demands with Tariff Threats",
-    "verdict": "TRUE",
-    "reason": "In January 2025, Trump threatened to tariff Denmark at high rates and refused to rule out military or economic coercion to acquire Greenland, prompting Denmark and European allies to issue joint condemnations in the most severe strain in Danish-American relations in modern history.",
-    "verify_count": 1,
-    "consensus_verdict": "TRUE",
-    "consensus_status": "single",
-    "needs_tiebreak": false,
-    "source_independence": "n/a",
-    "verifications": [
-      {
-        "pass_n": 1,
-        "verdict": "TRUE",
-        "reason": "In January 2025, Trump threatened to tariff Denmark at high rates and refused to rule out military or economic coercion to acquire Greenland, prompting Denmark and European allies to issue joint condemnations in the most severe strain in Danish-American relations in modern history.",
-        "source": "https://en.wikipedia.org/wiki/Greenland_crisis",
-        "verifier": {
-          "model": "claude-sonnet-pre-migration",
-          "date": null,
-          "method": "web_search"
-        }
-      }
-    ],
-    "source": "https://en.wikipedia.org/wiki/Greenland_crisis"
-  },
-  {
-    "year": 2025,
     "title": "Denmark Announces Billions in Arctic Defense Spending",
     "verdict": "TRUE",
     "reason": "On 27 January 2025, Denmark announced the First Agreement on the Arctic and North Atlantic investing DKK 14.6 billion (approx. USD 2.05 billion) in naval vessels, surveillance systems, drones, and military infrastructure for Greenland and the Faroe Islands in direct response to Trump's demands.",
@@ -1134,5 +1145,30 @@
       }
     ],
     "source": "https://breakingdefense.com/2025/01/denmark-strengthens-arctic-defense-with-2b-package-for-naval-vessels-drones/"
+  },
+  {
+    "year": 2025,
+    "title": "Trump Renews Greenland Acquisition Demands with Tariff Threats",
+    "verdict": "TRUE",
+    "reason": "In January 2025, Trump threatened to tariff Denmark at high rates and refused to rule out military or economic coercion to acquire Greenland, prompting Denmark and European allies to issue joint condemnations in the most severe strain in Danish-American relations in modern history.",
+    "verify_count": 1,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "single",
+    "needs_tiebreak": false,
+    "source_independence": "n/a",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "In January 2025, Trump threatened to tariff Denmark at high rates and refused to rule out military or economic coercion to acquire Greenland, prompting Denmark and European allies to issue joint condemnations in the most severe strain in Danish-American relations in modern history.",
+        "source": "https://en.wikipedia.org/wiki/Greenland_crisis",
+        "verifier": {
+          "model": "claude-sonnet-pre-migration",
+          "date": null,
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Greenland_crisis"
   }
 ]

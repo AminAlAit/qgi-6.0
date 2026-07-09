@@ -476,6 +476,42 @@
   },
   {
     "year": 2008,
+    "title": "Mongolia Wins Its First-Ever Olympic Gold Medal in Judo",
+    "verdict": "TRUE",
+    "reason": "Confirmed via multiple independent sources (ESPN, Wikipedia, Olympics.com). On August 10, 2008, Naidangiin Tuvshinbayar (Tuvshinbayar Naidan) won the men's 100kg judo final at the Beijing Olympics, defeating Kazakhstan's Askhat Zhitkeyev (waza-ari plus two yuko), giving Mongolia its first-ever Olympic gold medal. Prior to this, Mongolia held the record for most Olympic medals (15) won without a gold. Beijing 2008 was confirmed as Mongolia's most successful Olympics overall, with two golds (judo - Tuvshinbayar; boxing - Enkhbat Badar-Uugan a few days later) and two silvers. All material details in the description (date, athletes, weight class, opponent's nationality, \"first-ever gold\" claim, \"most successful Olympics\" with 2 gold/2 silver tally, and prior no-gold medal record) check out against independent sourcing.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources: Naidangiin Tuvshinbayar (Mongolia) defeated Askhat Zhitkeyev of Kazakhstan in the men's 100kg judo final at the Beijing 2008 Olympics (August 10, 2008), becoming the first Mongolian ever to win an Olympic gold medal. Wikipedia and ESPN both confirm Mongolia had previously held medals (silvers/bronzes going back to 1980) but never gold before this. Mongolia's 2008 Olympic medal haul was confirmed as 2 gold and 2 silver (4 total), its most successful Games ever, matching the description's claim exactly.",
+        "source": "https://www.espn.com/olympics/summer08/judo/news/story?id=3534497",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources (ESPN, Wikipedia, Olympics.com). On August 10, 2008, Naidangiin Tuvshinbayar (Tuvshinbayar Naidan) won the men's 100kg judo final at the Beijing Olympics, defeating Kazakhstan's Askhat Zhitkeyev (waza-ari plus two yuko), giving Mongolia its first-ever Olympic gold medal. Prior to this, Mongolia held the record for most Olympic medals (15) won without a gold. Beijing 2008 was confirmed as Mongolia's most successful Olympics overall, with two golds (judo - Tuvshinbayar; boxing - Enkhbat Badar-Uugan a few days later) and two silvers. All material details in the description (date, athletes, weight class, opponent's nationality, \"first-ever gold\" claim, \"most successful Olympics\" with 2 gold/2 silver tally, and prior no-gold medal record) check out against independent sourcing.",
+        "source": "https://www.espn.com/olympics/summer08/judo/news/story?id=3534497",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.espn.com/olympics/summer08/judo/news/story?id=3534497"
+  },
+  {
+    "year": 2008,
     "title": "Post-Election Riots Kill Five in Ulaanbaatar",
     "verdict": "TRUE",
     "reason": "Riots broke out July 1 2008 following fraud allegations over June 29 elections. MPRP headquarters set on fire; five people killed by police; 700+ arrested; Mongolia declared its first state of emergency. Confirmed by Wikipedia 2008 riot article and Amnesty International.",

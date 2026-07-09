@@ -1601,6 +1601,42 @@
   },
   {
     "year": 2007,
+    "title": "Iraq Wins 2007 AFC Asian Cup, Uniting a War-Torn Nation",
+    "verdict": "TRUE",
+    "reason": "Independent sources (Wikipedia, Al Jazeera) confirm Iraq defeated Saudi Arabia 1-0 in the 2007 AFC Asian Cup final on July 29, 2007 in Jakarta, Indonesia, with captain Younis Mahmoud scoring the winning goal via a header from a corner (taken by Hawar Mulla Mohammed) in the 73rd minute. Mahmoud was named tournament MVP. The team trained outside war-torn Iraq due to security conditions, and the win is widely documented as a unifying moment for the multi-ethnic (Sunni, Shia, Kurdish) squad and nation. All material details in the event description (date, opponent, score, scorer, mechanism, narrative of unity amid war) are corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated by Wikipedia, Al Jazeera, and AFC's own retrospective: on 29 July 2007, Iraq beat Saudi Arabia 1-0 in the AFC Asian Cup final at Gelora Bung Karno Stadium, Jakarta, with Younis Mahmoud (team captain) heading in the winning goal from a Hawar Mulla Mohammed corner in the 73rd minute. Multiple sources (Al Jazeera 2007 contemporaneous report, The National retrospective) corroborate the multi-ethnic (Sunni/Shia/Kurdish) squad training outside Iraq due to the war, and the resulting nationwide celebrations, matching the description as a unifying moment for a war-torn nation. All material facts (date, country, opponent, score, scorer, venue, narrative) align with independent, non-overlapping sources.",
+        "source": "https://en.wikipedia.org/wiki/2007_AFC_Asian_Cup_final",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources (Wikipedia, Al Jazeera) confirm Iraq defeated Saudi Arabia 1-0 in the 2007 AFC Asian Cup final on July 29, 2007 in Jakarta, Indonesia, with captain Younis Mahmoud scoring the winning goal via a header from a corner (taken by Hawar Mulla Mohammed) in the 73rd minute. Mahmoud was named tournament MVP. The team trained outside war-torn Iraq due to security conditions, and the win is widely documented as a unifying moment for the multi-ethnic (Sunni, Shia, Kurdish) squad and nation. All material details in the event description (date, opponent, score, scorer, mechanism, narrative of unity amid war) are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/2007_AFC_Asian_Cup_final",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2007_AFC_Asian_Cup_final"
+  },
+  {
+    "year": 2007,
     "title": "US Troop Surge and Sunni Awakening",
     "verdict": "TRUE",
     "reason": "Pre-verified. Confirmed accurate.",

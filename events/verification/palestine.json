@@ -1061,6 +1061,42 @@
     "source": "https://www.icc-cpi.int/news/icc-welcomes-palestine-new-state-party"
   },
   {
+    "year": 2015,
+    "title": "Palestine Makes Its Debut at the AFC Asian Cup",
+    "verdict": "TRUE",
+    "reason": "Confirmed via Wikipedia and the-afc.com: Palestine won the 2014 AFC Challenge Cup (beating Philippines 1-0 in the final), which granted automatic qualification to the 2015 AFC Asian Cup in Australia, marking Palestine's first-ever appearance in the tournament as the only debutant nation. They were drawn in Group D with Japan, Jordan, and Iraq, and lost all three matches (0-4 to Japan, 1-5 to Jordan, 0-2 to Iraq). Jaka Ihbeisheh scored Palestine's only goal of the tournament against Jordan, which is documented as the country's first-ever Asian Cup goal. All material details in the description (year, country, opponents, result pattern, scorer, and significance) match independent sources.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm every material claim: Palestine made its first-ever AFC Asian Cup appearance at the 2015 tournament in Australia (Jan 2015), having qualified as the 16th and final berth-holder by winning the 2014 AFC Challenge Cup (1-0 over Philippines). Palestine was confirmed as the tournament's only debutant nation (all other 15 teams had appeared before, or in Oman's case since 2007). Palestine lost all three group matches: 0-4 to Japan, 1-5 to Jordan, and 0-2 to Iraq. Jaka Ihbeisheh (also spelled Hbaisha) scored Palestine's first-ever Asian Cup goal in the 85th minute of the Jordan match, which was also his first international goal. All details match the description precisely.",
+        "source": "https://en.wikipedia.org/wiki/Palestine_at_the_AFC_Asian_Cup",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via Wikipedia and the-afc.com: Palestine won the 2014 AFC Challenge Cup (beating Philippines 1-0 in the final), which granted automatic qualification to the 2015 AFC Asian Cup in Australia, marking Palestine's first-ever appearance in the tournament as the only debutant nation. They were drawn in Group D with Japan, Jordan, and Iraq, and lost all three matches (0-4 to Japan, 1-5 to Jordan, 0-2 to Iraq). Jaka Ihbeisheh scored Palestine's only goal of the tournament against Jordan, which is documented as the country's first-ever Asian Cup goal. All material details in the description (year, country, opponents, result pattern, scorer, and significance) match independent sources.",
+        "source": "https://en.wikipedia.org/wiki/Palestine_at_the_AFC_Asian_Cup",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Palestine_at_the_AFC_Asian_Cup"
+  },
+  {
     "year": 2017,
     "title": "Hamas Accepts New Political Document",
     "verdict": "TRUE",

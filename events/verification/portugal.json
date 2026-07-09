@@ -1709,5 +1709,43 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/List_of_wildfires"
+  },
+  {
+    "year": 1970,
+    "title": "Armed Forces Movement Forms Among Disillusioned Officers",
+    "verdict": "FALSE",
+    "reason": "Multiple independent sources (English Wikipedia, Portuguese Wikipedia, and the Associação 25 de Abril historical archive) converge on a well-documented origin story that places the formation of the officers' movement in 1973, not 1970. The proximate trigger was Decree-Law 353/73 (13 July 1973), which let militia officers gain permanent-corps rank via a short course, angering Military Academy graduates. The first clandestine meeting of captains took place in Bissau on 21 August 1973, the first commission of the 'Movimento dos Capitães' was elected 28 August 1973, and a farmhouse meeting of ~163-176 captains in September 1973 (with a formal manifesto in December 1973 and a 5 March 1974 assembly) crystallized it into the Movimento das Forças Armadas (MFA), which then executed the Carnation Revolution on 25 April 1974. No source found any clandestine discontent/discussion groups specifically dating to 1970 that evolved into the MFA — the 'early 1970s' phrasing some sources use refers loosely to the 1973 captains' movement, not an earlier 1970 origin. Country and general substance (disillusioned officers amid the colonial wars forming clandestine groups that became the MFA and planned a coup) are correct, but the year is off by three years.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "Independent sources (English & Portuguese Wikipedia, Infopédia, 50anos25abril.pt) consistently date the formation of this movement to 1973, not 1970. The precursor \"Movimento dos Capitães\" (Captains' Movement) was triggered by Decree-Law 353/73 (July 1973, on militia-officer commissioning) and formally founded on 9 September 1973 at a clandestine meeting of ~163-300 army captains in Cascais; it broadened into political/anti-colonial-war aims by November 1973 and was renamed Movimento das Forças Armadas (MFA) on 5 March 1974, ahead of the 25 April 1974 Carnation Revolution coup. Nothing in the record supports clandestine discussion groups evolving into the MFA as early as 1970 — the specific catalyst (Decree-Law 353/73) postdates 1970 by three years, and no source describes an MFA-precursor movement forming in 1970. The country (Portugal) and general substance (disillusioned junior/colonial-war officers forming clandestine groups that evolved into the MFA and planned the coup) are materially correct, but the year is off by three years, which the hard rules treat as FALSE (with corrected_year reported).",
+        "source": "https://en.wikipedia.org/wiki/Armed_Forces_Movement",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 1973
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Multiple independent sources (English Wikipedia, Portuguese Wikipedia, and the Associação 25 de Abril historical archive) converge on a well-documented origin story that places the formation of the officers' movement in 1973, not 1970. The proximate trigger was Decree-Law 353/73 (13 July 1973), which let militia officers gain permanent-corps rank via a short course, angering Military Academy graduates. The first clandestine meeting of captains took place in Bissau on 21 August 1973, the first commission of the 'Movimento dos Capitães' was elected 28 August 1973, and a farmhouse meeting of ~163-176 captains in September 1973 (with a formal manifesto in December 1973 and a 5 March 1974 assembly) crystallized it into the Movimento das Forças Armadas (MFA), which then executed the Carnation Revolution on 25 April 1974. No source found any clandestine discontent/discussion groups specifically dating to 1970 that evolved into the MFA — the 'early 1970s' phrasing some sources use refers loosely to the 1973 captains' movement, not an earlier 1970 origin. Country and general substance (disillusioned officers amid the colonial wars forming clandestine groups that became the MFA and planned a coup) are correct, but the year is off by three years.",
+        "source": "https://en.wikipedia.org/wiki/Armed_Forces_Movement",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 1973
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Armed_Forces_Movement"
   }
 ]

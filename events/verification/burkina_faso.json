@@ -1952,5 +1952,43 @@
         }
       }
     ]
+  },
+  {
+    "year": 2012,
+    "title": "Cotton Sector Crisis — Smallholder Farmers in Distress",
+    "verdict": "FALSE",
+    "reason": "Independent sources contradict a 2012-specific cotton crisis of this shape. Cotton production in Burkina Faso in the 2012/2013 season was actually near a record high (~630,000 tonnes of seed cotton, making it Africa's #1 producer that year; indexmundi bale data likewise show a jump from 795k bales in 2011 to 1,215k in 2012) — the opposite of \"smallholder farmers reduced planting.\" The AICB producer price was fixed at 245 CFA/kg for the 2011 season and held through the 2012-13 campaign unchanged, so \"producer prices fell below production costs\" does not fit 2012 either. The two real, well-documented episodes this description appears to conflate are: (1) the 2011 farmer boycott/protest in Kénédougou province (west/southwest, SOFITEX zone), where peasants refused to plant and ~225 ha of cotton were destroyed in a price dispute, met with a violent state crackdown — matches \"reduced planting in western regions\" but is dated 2011, not 2012; and (2) the 2014-2015 SOFITEX financial crisis, where an inflexible price-smoothing mechanism failed to pass through falling world cotton prices, causing SOFITEX losses of more than 1% of GDP and a producer price cut for the 2014-15 season — matches \"state cotton companies accumulated massive debts\" but is dated 2014-15, per the IMF's September 2015 survey. No source ties the below-cost-price/debt/reduced-planting narrative specifically to calendar 2012; the concrete production and price data for that year actively contradict it.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The described crisis (producer prices below production costs, state cotton companies — SOFITEX etc. — accumulating massive debts, farmers scaling back) is real, but it happened in 2005-2007, not 2012. IMF/World Bank sources document that SOFITEX and the two smaller ginning companies suffered three consecutive years of major losses from 2005 to 2007 (deficit reportedly ~70 billion CFA francs, producer revenues down 26% between 2004/05 and 2007/08), forcing a 2007 recapitalization in which the government's SOFITEX stake rose from 35% to over 60% because the private shareholder (DAGRIS) would not participate. By contrast, 2012 was a recovery/growth year for the sector: producer prices had just been raised to a record 245 CFA/kg for the 2011-12 season (after 2011 farmer protests demanding higher prices amid record world cotton prices, not prices below cost), Bt-cotton area planted rose from 251,580 ha (2011) to 300,000 ha (2012), and national production for the 2012-13 season jumped 51% to 630,000 tons from 417,000 tons the prior season — the opposite of farmers reducing planting. No independent source corroborates a 2012-dated crisis matching this description; the narrative appears misdated from the real mid-2000s SOFITEX debt crisis.",
+        "source": "https://www.imf.org/en/news/articles/2015/09/28/04/53/socar022508b",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 2007
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "Independent sources contradict a 2012-specific cotton crisis of this shape. Cotton production in Burkina Faso in the 2012/2013 season was actually near a record high (~630,000 tonnes of seed cotton, making it Africa's #1 producer that year; indexmundi bale data likewise show a jump from 795k bales in 2011 to 1,215k in 2012) — the opposite of \"smallholder farmers reduced planting.\" The AICB producer price was fixed at 245 CFA/kg for the 2011 season and held through the 2012-13 campaign unchanged, so \"producer prices fell below production costs\" does not fit 2012 either. The two real, well-documented episodes this description appears to conflate are: (1) the 2011 farmer boycott/protest in Kénédougou province (west/southwest, SOFITEX zone), where peasants refused to plant and ~225 ha of cotton were destroyed in a price dispute, met with a violent state crackdown — matches \"reduced planting in western regions\" but is dated 2011, not 2012; and (2) the 2014-2015 SOFITEX financial crisis, where an inflexible price-smoothing mechanism failed to pass through falling world cotton prices, causing SOFITEX losses of more than 1% of GDP and a producer price cut for the 2014-15 season — matches \"state cotton companies accumulated massive debts\" but is dated 2014-15, per the IMF's September 2015 survey. No source ties the below-cost-price/debt/reduced-planting narrative specifically to calendar 2012; the concrete production and price data for that year actively contradict it.",
+        "source": "https://www.imf.org/en/news/articles/2015/09/28/04/53/socar022508b",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 2011
+      }
+    ],
+    "source": "https://www.imf.org/en/news/articles/2015/09/28/04/53/socar022508b"
   }
 ]

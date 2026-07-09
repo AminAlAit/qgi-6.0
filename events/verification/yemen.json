@@ -3797,5 +3797,43 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/2025%E2%80%932026_Southern_Yemen_campaign"
+  },
+  {
+    "year": 1984,
+    "title": "Islamic Jihad Activity in North Yemen",
+    "verdict": "FALSE",
+    "reason": "No evidence of Islamist militant activity tied to the Afghan jihad emerging in North Yemen in 1984. The real Saudi-backed 'Islamist counterweight to leftists' episode was the Islamic Front militia vs. the National Democratic Front, which was fought 1978-1982 and had already concluded (NDF defeated) two years before 1984. The Afghan-jihad-linked militant network (Yemeni 'Afghan Arabs' returning to form organized groups) is a distinct, later phenomenon: fighters didn't return en masse and coalesce into 'Islamic Jihad in Yemen' until after the 1989 Soviet withdrawal, forming around 1990 under Tariq al-Fadhli -- six years after the claimed date, and after North Yemen had merged into unified Yemen. No source describes any specific 1984 Islamist militant emergence or attack in North Yemen. The description appears to conflate two chronologically distinct real phenomena and mislabel the composite as 1984.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The general background (Saudi Arabia and YAR officials tolerating/using Islamists as a counterweight to leftist/Nasserist forces) is a real historical dynamic, but its roots trace to the late 1970s (the Muslim Brotherhood-linked \"Islamic Front,\" formed with YAR government support to combat Marxists) and its concrete militant/organizational manifestation — armed groups explicitly tied to the global jihadist network and \"energized by the Afghan jihad\" — did not emerge until much later. Multiple independent sources place the actual formation of Afghan-jihad-linked militant organization in Yemen in 1990-1994: the \"Islamic Jihad in Yemen\" group (est. ~1990, led by Tariq al-Fadhli with bin Laden financing, active 1990-1994, carried out the 1992 Aden hotel bombings) formed only after Afghan-Arab fighters returned home following the Soviets' 1989 withdrawal and North-South Yemeni unification in May 1990; likewise Islah (the Muslim Brotherhood/tribal/Salafi party) was founded in 1990, not 1984. In 1984 itself, the concretely documented fact is that Abdul Majeed al-Zindani (the key Yemeni Islamist/Afghan-jihad recruiter) set up a Saudi-funded Quranic-science commission in Jeddah, Saudi Arabia — not the emergence of militant groups inside North Yemen. I found no source describing a distinct wave of \"growing Islamist militant activity\" or \"emergence of groups\" specifically dated to 1984 inside North Yemen; the entry appears to conflate a real multi-decade trend (1970s roots, 1980s recruitment, 1990s organizational emergence) into a single, too-early year, and it is filed under \"terrorist_attack\" despite describing no actual attack. Given the year mismatch, verdict is FALSE (real organizational emergence is better dated to ~1990).",
+        "source": "https://en.wikipedia.org/wiki/Islamic_Jihad_in_Yemen",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 1990
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "No evidence of Islamist militant activity tied to the Afghan jihad emerging in North Yemen in 1984. The real Saudi-backed 'Islamist counterweight to leftists' episode was the Islamic Front militia vs. the National Democratic Front, which was fought 1978-1982 and had already concluded (NDF defeated) two years before 1984. The Afghan-jihad-linked militant network (Yemeni 'Afghan Arabs' returning to form organized groups) is a distinct, later phenomenon: fighters didn't return en masse and coalesce into 'Islamic Jihad in Yemen' until after the 1989 Soviet withdrawal, forming around 1990 under Tariq al-Fadhli -- six years after the claimed date, and after North Yemen had merged into unified Yemen. No source describes any specific 1984 Islamist militant emergence or attack in North Yemen. The description appears to conflate two chronologically distinct real phenomena and mislabel the composite as 1984.",
+        "source": "https://en.wikipedia.org/wiki/Islamic_Jihad_in_Yemen",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 1990
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Islamic_Jihad_in_Yemen"
   }
 ]

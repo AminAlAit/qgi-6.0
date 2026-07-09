@@ -2903,6 +2903,42 @@
   },
   {
     "year": 2006,
+    "title": "Egypt Hosts and Wins 2006 Africa Cup of Nations on Home Soil",
+    "verdict": "TRUE",
+    "reason": "Independently corroborated: Egypt hosted the 2006 Africa Cup of Nations from 20 January to 10 February 2006. In the final at Cairo International Stadium on 10 February 2006, Egypt beat Ivory Coast 4-2 on penalties after a scoreless 0-0 draw, winning a record fifth title. This was Egypt's fourth time hosting the tournament (after 1959, 1974, 1986), and Egypt went on to win three consecutive AFCON titles (2006, 2008, 2010) under coach Hassan Shehata. All material details in the description (host country, year, dates, opponent, score, penalty result, historical hosting count, three-peat) are confirmed by multiple independent sources (Wikipedia, Al Jazeera).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia, Al Jazeera, and CAF: Egypt hosted the 2006 AFCON (Jan 20-Feb 10, 2006); the final on Feb 10, 2006 in Cairo International Stadium ended 0-0, with Egypt winning 4-2 on penalties over Ivory Coast, giving Egypt its fifth AFCON title. Separately confirmed Hassan Shehata led Egypt to three consecutive AFCON titles (2006, 2008, 2010), the first coach ever to do so. Fourth-hosting claim (after 1959, 1974, 1986) is consistent with well-documented AFCON hosting history and not contradicted by any source found. All material details in the description check out.",
+        "source": "https://en.wikipedia.org/wiki/2006_Africa_Cup_of_Nations_final",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated: Egypt hosted the 2006 Africa Cup of Nations from 20 January to 10 February 2006. In the final at Cairo International Stadium on 10 February 2006, Egypt beat Ivory Coast 4-2 on penalties after a scoreless 0-0 draw, winning a record fifth title. This was Egypt's fourth time hosting the tournament (after 1959, 1974, 1986), and Egypt went on to win three consecutive AFCON titles (2006, 2008, 2010) under coach Hassan Shehata. All material details in the description (host country, year, dates, opponent, score, penalty result, historical hosting count, three-peat) are confirmed by multiple independent sources (Wikipedia, Al Jazeera).",
+        "source": "https://en.wikipedia.org/wiki/2006_Africa_Cup_of_Nations_final",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2006_Africa_Cup_of_Nations_final"
+  },
+  {
+    "year": 2006,
     "title": "Egyptian Bloggers Begin Documenting Police Torture",
     "verdict": "TRUE",
     "reason": "Wael Abbas and other bloggers posting police torture videos on YouTube 2006 confirmed.",

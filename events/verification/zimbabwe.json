@@ -250,6 +250,44 @@
     "source": "https://digitallibrary.un.org/record/90502"
   },
   {
+    "year": 1969,
+    "title": "Rhodesia Declares Itself a Republic",
+    "verdict": "FALSE",
+    "reason": "The event is real but dated to the wrong year. On 20 June 1969 Rhodesia held a referendum in which the predominantly white electorate approved (a) becoming a republic and (b) a new constitution entrenching white minority rule — that referendum did happen in 1969. However, the actual declaration/proclamation of the republic (severing formal ties to the British Crown, replacing the Governor with a ceremonial President) did not occur until 2 March 1970, after Parliament passed the new constitution in November 1969. Multiple independent sources (Wikipedia's dedicated 1969 referendum article, the general Rhodesia article, and Britannica) are explicit that Rhodesia 'declared itself a republic' on 2 March 1970 — a full 8+ months after the 1969 vote. Since the title/description describe the declaration itself ('held a...referendum and declared Rhodesia a republic'), and the join-key year here is 1969, the year is wrong per the hard rules (event materially happened, but in 1970, not 1969). Note also a secondary, non-decisive nuance: the referendum was not strictly 'whites-only' — a small number of Africans (~6,600) voted on a separate, discriminatory 'B' roll alongside ~81,500 white 'A' roll voters — but this doesn't change the year verdict. The 'recognized by no foreign government' claim checks out for both dates (only South Africa and Portugal maintained informal diplomatic/consular ties; no state extended formal recognition).",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The event is real but the year is wrong. In 1969 (20 June 1969), Rhodesia held a two-part referendum in which the white-dominated electorate approved (a) adopting republican status and (b) a new constitution entrenching white minority rule. But the actual formal act of declaring/proclaiming Rhodesia a republic — severing all remaining constitutional ties to the British Crown — did not occur until 2 March 1970, when Officer Administrating the Government Clifford Dupont signed the proclamation of the republic. Multiple independent sources (Wikipedia's 1969 Rhodesian constitutional referendum article, the Rhodesia and Rhodesia's UDI Wikipedia articles, the Rhodesian Study Circle, and Britannica) consistently distinguish the 1969 referendum from the 1970 proclamation. The description's other substantive claims check out for the 1970 event: no foreign government recognized the republic (Britain called it illegal; only South Africa and Portugal kept missions open without extending recognition, other Western states withdrew consulates). The 'whites-only' characterization of the 1969 referendum is also an oversimplification — the constitution provided separate white and African voter rolls (50 seats to whites vs 8 to Africans), though power remained overwhelmingly white — but this is secondary to the year error. Since the title's core verb ('Declares Itself a Republic') describes the 1970 proclamation, not the 1969 referendum, and year+country must both hold for PARTIAL, this is FALSE-by-wrong-year with corrected_year 1970.",
+        "source": "https://en.wikipedia.org/wiki/1969_Rhodesian_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 1970
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The event is real but dated to the wrong year. On 20 June 1969 Rhodesia held a referendum in which the predominantly white electorate approved (a) becoming a republic and (b) a new constitution entrenching white minority rule — that referendum did happen in 1969. However, the actual declaration/proclamation of the republic (severing formal ties to the British Crown, replacing the Governor with a ceremonial President) did not occur until 2 March 1970, after Parliament passed the new constitution in November 1969. Multiple independent sources (Wikipedia's dedicated 1969 referendum article, the general Rhodesia article, and Britannica) are explicit that Rhodesia 'declared itself a republic' on 2 March 1970 — a full 8+ months after the 1969 vote. Since the title/description describe the declaration itself ('held a...referendum and declared Rhodesia a republic'), and the join-key year here is 1969, the year is wrong per the hard rules (event materially happened, but in 1970, not 1969). Note also a secondary, non-decisive nuance: the referendum was not strictly 'whites-only' — a small number of Africans (~6,600) voted on a separate, discriminatory 'B' roll alongside ~81,500 white 'A' roll voters — but this doesn't change the year verdict. The 'recognized by no foreign government' claim checks out for both dates (only South Africa and Portugal maintained informal diplomatic/consular ties; no state extended formal recognition).",
+        "source": "https://en.wikipedia.org/wiki/1969_Rhodesian_constitutional_referendum",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 1970
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1969_Rhodesian_constitutional_referendum"
+  },
+  {
     "year": 1972,
     "title": "ZANLA Launches Northeast Offensive",
     "verdict": "TRUE",
@@ -984,6 +1022,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Zimbabwean_presidential_election,_2002"
+  },
+  {
+    "year": 2003,
+    "title": "Zimbabwe Co-Hosts Cricket World Cup With South Africa and Kenya",
+    "verdict": "TRUE",
+    "reason": "Confirmed via independent web search: the 2003 ICC Cricket World Cup was co-hosted by South Africa, Zimbabwe, and Kenya from 9 February to 23 March 2003, the first Cricket World Cup held on African soil, with 14 teams competing. Zimbabwe hosted group-stage matches including one in Harare on 13 February 2003 against England; England refused to travel to Harare and forfeited the match, citing security/safety concerns (death threats received by players) amid Zimbabwe's political crisis, resulting in Zimbabwe being awarded a walkover. The final was contested between Australia and India in Johannesburg, with Australia winning. All material details in the description (co-hosts, dates, first-in-Africa, England forfeit/security reason, 14 teams, Australia-India final with Australia winning) are corroborated. No detail is off.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm all material elements: the 2003 Cricket World Cup was co-hosted by South Africa, Zimbabwe, and Kenya from 9 Feb to 23 Mar 2003 (first World Cup on African soil), Zimbabwe staged group-stage matches, England forfeited its Feb 13, 2003 match against Zimbabwe in Harare over security/political concerns tied to the Mugabe regime, 14 teams competed, and Australia won the tournament. No material detail in the description is contradicted by sources found.",
+        "source": "http://www.espncricinfo.com/series/8039/scorecard/66427/zimbabwe-vs-england-8th-match-world-cup-2002-03/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed via independent web search: the 2003 ICC Cricket World Cup was co-hosted by South Africa, Zimbabwe, and Kenya from 9 February to 23 March 2003, the first Cricket World Cup held on African soil, with 14 teams competing. Zimbabwe hosted group-stage matches including one in Harare on 13 February 2003 against England; England refused to travel to Harare and forfeited the match, citing security/safety concerns (death threats received by players) amid Zimbabwe's political crisis, resulting in Zimbabwe being awarded a walkover. The final was contested between Australia and India in Johannesburg, with Australia winning. All material details in the description (co-hosts, dates, first-in-Africa, England forfeit/security reason, 14 teams, Australia-India final with Australia winning) are corroborated. No detail is off.",
+        "source": "https://en.wikipedia.org/wiki/2003_Cricket_World_Cup",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2003_Cricket_World_Cup"
   },
   {
     "year": 2003,

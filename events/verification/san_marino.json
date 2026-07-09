@@ -1,0 +1,38 @@
+[
+  {
+    "year": 1993,
+    "title": "San Marino's Davide Gualtieri Scores Fastest Goal in World Cup Qualifying History",
+    "verdict": "PARTIAL",
+    "reason": "Core event fully verified true via multiple independent authoritative sources (Wikipedia, FIFA.com, The FA, Sky Sports, Bleacher Report, England football databases): on 17 Nov 1993 in Bologna, San Marino's Davide Gualtieri scored after England defender Stuart Pearce under-hit a back-pass to keeper David Seaman, timed at 8.3 seconds after kickoff, in a World Cup qualifier; England won 7-1. Year, country, actors, and match facts all hold. However, the description's claim that the goal 'remains the fastest ever scored in FIFA World Cup qualifying history' is materially inaccurate/outdated: multiple corroborating sources (ESPN, CNN, CBC Sports, Sky Sports, Sports Illustrated) confirm Christian Benteke scored a faster goal (8.1 seconds) for Belgium against Gibraltar in a World Cup qualifier on 10 October 2016, a record FIFA confirmed at the time, superseding Gualtieri's 8.3-second mark. So the 'remains the fastest' superlative in the description has been false for a decade, even though it was accurate at the time and for years afterward. This is a material factual error embedded in the description (not affecting year/country/core actors), warranting PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core event fully confirmed by multiple independent sources: on 17 November 1993 at Stadio Renato Dall'Ara in Bologna, San Marino's Davide Gualtieri scored 8.3 seconds after kickoff against England, after Stuart Pearce mishit a back-pass to David Seaman; England went on to win 7-1. This was indeed the fastest goal in World Cup qualifying history — AT THE TIME. However, the description's claim that it \"remains the fastest ever scored in FIFA World Cup qualifying history\" is factually false: Christian Benteke scored an 8.1-second goal for Belgium against Gibraltar on 10 October 2016, which FIFA/Guinness World Records officially recognize as the new record for fastest goal in a FIFA World Cup qualifier, breaking Gualtieri's mark. Year and country hold and the central facts (scorer, opponent, timing, venue, final score) are all correct, but the \"remains the fastest\" superlative is a material factual error given the record was broken a decade ago and remains broken as of today.",
+        "source": "https://www.fifa.com/en/articles/davide-gualtieri-the-sammarinese-who-stunned-england-with-an-8-33-second",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core event fully verified true via multiple independent authoritative sources (Wikipedia, FIFA.com, The FA, Sky Sports, Bleacher Report, England football databases): on 17 Nov 1993 in Bologna, San Marino's Davide Gualtieri scored after England defender Stuart Pearce under-hit a back-pass to keeper David Seaman, timed at 8.3 seconds after kickoff, in a World Cup qualifier; England won 7-1. Year, country, actors, and match facts all hold. However, the description's claim that the goal 'remains the fastest ever scored in FIFA World Cup qualifying history' is materially inaccurate/outdated: multiple corroborating sources (ESPN, CNN, CBC Sports, Sky Sports, Sports Illustrated) confirm Christian Benteke scored a faster goal (8.1 seconds) for Belgium against Gibraltar in a World Cup qualifier on 10 October 2016, a record FIFA confirmed at the time, superseding Gualtieri's 8.3-second mark. So the 'remains the fastest' superlative in the description has been false for a decade, even though it was accurate at the time and for years afterward. This is a material factual error embedded in the description (not affecting year/country/core actors), warranting PARTIAL rather than TRUE.",
+        "source": "https://www.fifa.com/en/articles/davide-gualtieri-the-sammarinese-who-stunned-england-with-an-8-33-second",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.fifa.com/en/articles/davide-gualtieri-the-sammarinese-who-stunned-england-with-an-8-33-second"
+  }
+]

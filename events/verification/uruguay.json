@@ -1,5 +1,41 @@
 [
   {
+    "year": 1930,
+    "title": "Uruguay Hosts and Wins the First FIFA World Cup",
+    "verdict": "TRUE",
+    "reason": "Independently confirmed via Wikipedia, RSSSF, and Britannica: the 1930 FIFA World Cup was held in Uruguay 13-30 July 1930, chosen partly to mark the centenary of Uruguay's first constitution; 13 teams total competed (host plus 12 others), matches played mainly at the newly built Estadio Centenario in Montevideo; hosts Uruguay beat Argentina 4-2 in the final on 30 July before an official attendance of 68,346 to become first-ever champions; 31 July was declared a national holiday in celebration. All material details (country, year, score, venue, attendance figure, holiday) match the candidate description exactly.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed by Wikipedia's 1930 FIFA World Cup and 1930 FIFA World Cup final articles, FIFA's own site, and footballhistory.org. Uruguay was chosen to host (linked to the centenary of its 1830 constitution), 13 national teams (Uruguay + 12 others) competed, matches were played mainly at the newly-built Estadio Centenario in Montevideo, and Uruguay beat Argentina 4-2 in the final on 30 July 1930 before an official attendance of 68,346 to become the first-ever World Cup champions. All material details in the description (year, country, host selection rationale, number of teams, venue, final score, opponent, attendance figure) match multiple authoritative, mutually independent sources.",
+        "source": "https://en.wikipedia.org/wiki/1930_FIFA_World_Cup_final",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia, RSSSF, and Britannica: the 1930 FIFA World Cup was held in Uruguay 13-30 July 1930, chosen partly to mark the centenary of Uruguay's first constitution; 13 teams total competed (host plus 12 others), matches played mainly at the newly built Estadio Centenario in Montevideo; hosts Uruguay beat Argentina 4-2 in the final on 30 July before an official attendance of 68,346 to become first-ever champions; 31 July was declared a national holiday in celebration. All material details (country, year, score, venue, attendance figure, holiday) match the candidate description exactly.",
+        "source": "https://en.wikipedia.org/wiki/1930_FIFA_World_Cup",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1930_FIFA_World_Cup"
+  },
+  {
     "year": 1950,
     "title": "Uruguay Wins FIFA World Cup in Brazil",
     "verdict": "TRUE",

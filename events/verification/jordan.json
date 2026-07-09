@@ -2287,6 +2287,42 @@
   },
   {
     "year": 2016,
+    "title": "Jordan Becomes First Arab Country to Host a FIFA Women's World Cup",
+    "verdict": "TRUE",
+    "reason": "Independently confirmed via Wikipedia and corroborated by FIFA.com and Jordan Times search snippets: Jordan hosted the 2016 FIFA U-17 Women's World Cup from 30 September to 21 October 2016 (dates match exactly). Multiple sources state this was the first FIFA women's tournament ever held in the Arab/Middle East region. Jordan's own women's U-17 team competed as host nation in Group A (losses to Spain 0-6, Mexico 1-4, New Zealand 0-5), confirming the description's claim that Jordan's team also competed. All material details (country, year, event type, host status, team participation) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources: Jordan hosted the 2016 FIFA U-17 Women's World Cup from 30 September to 21 October 2016 across Amman, Irbid, and Zarqa. This was the first FIFA women's tournament ever held in the Middle East/Arab world. Jordan's own U-17 women's team competed as automatically-qualified hosts — their first-ever appearance at any FIFA World Cup level. All material details (country, year, dates, 'first Arab nation to host a FIFA women's tournament' framing, Jordan's team also playing) are corroborated by Wikipedia, FIFA.com's official tournament archive, and Jordan Times coverage from the period.",
+        "source": "https://en.wikipedia.org/wiki/2016_FIFA_U-17_Women's_World_Cup",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia and corroborated by FIFA.com and Jordan Times search snippets: Jordan hosted the 2016 FIFA U-17 Women's World Cup from 30 September to 21 October 2016 (dates match exactly). Multiple sources state this was the first FIFA women's tournament ever held in the Arab/Middle East region. Jordan's own women's U-17 team competed as host nation in Group A (losses to Spain 0-6, Mexico 1-4, New Zealand 0-5), confirming the description's claim that Jordan's team also competed. All material details (country, year, event type, host status, team participation) check out.",
+        "source": "https://en.wikipedia.org/wiki/2016_FIFA_U-17_Women's_World_Cup",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2016_FIFA_U-17_Women's_World_Cup"
+  },
+  {
+    "year": 2016,
     "title": "Jordan Compact Signed — Refugees as Development Asset",
     "verdict": "TRUE",
     "reason": "The Jordan Compact was signed at the Supporting Syria conference in London in February 2016, committing Jordan to creating 200,000 jobs for Syrian refugees in exchange for EU trade concessions and donor support.",

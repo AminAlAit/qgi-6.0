@@ -4492,5 +4492,185 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/1979_Khuzestan_insurgency"
+  },
+  {
+    "year": 2019,
+    "title": "Bloody November: Security Forces Kill ~1,500 During Fuel Price Protests",
+    "verdict": "TRUE",
+    "reason": "Independently corroborated via multiple non-overlapping sources: (1) Reuters' investigation (reported via Times of Israel, Axios, NCRI) found Iranian officials' internal count of ~1,500 killed in the crackdown following the Nov 15, 2019 gasoline price hike (up to 300% increase), consistent with the description. (2) Amnesty International's documented death toll of 304 (later revised upward to 321-323) is confirmed directly from amnesty.org, PBS, and Al Jazeera coverage. (3) Wikipedia's \"2019 Internet blackout in Iran\" article, corroborated by RFE/RL and Amnesty press release, confirms a week-long near-total national internet shutdown ordered by the Supreme National Security Council to obscure the crackdown, with economic damage estimated at $1-1.5 billion. All core claims — country (Iran), year (2019), trigger (fuel price hike), Reuters' ~1,500 death toll, Amnesty's 304 minimum, week-long internet blackout, and $1-1.5B economic damage — are verified from independent, non-overlapping sources. The 12,000 arrests figure was not directly re-confirmed in this search pass but is a widely-reported sub-detail (commonly cited by Amnesty/CHRI) and does not constitute a material discrepancy against an otherwise fully corroborated event.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material elements confirmed by independent sources. (1) Iran hiked gasoline prices on 15 Nov 2019 — subsidized rate up 50%, and up to 300% for purchases beyond the monthly quota — triggering nationwide protests within hours (Iran International/Iran Focus reporting; corroborated by Wikipedia's 2019-2020 Iranian protests entry). (2) Reuters' December 2019 special investigation, citing an interior-ministry-linked count, reported approximately 1,500 people killed in the crackdown (Times of Israel, Axios summaries of the Reuters report). (3) Amnesty International's six-month forensic investigation (published May 2020, amnesty.org) documented a minimum of 304 confirmed deaths, noting the true toll was likely higher — matching the description's framing of Amnesty as a lower-bound confirmation vs. Reuters' higher estimate. (4) The government imposed a near-total internet shutdown from ~15-19/21 November (CNBC, Amnesty's dedicated iran-shutdown.amnesty.org investigation, Wikipedia's \"2019 Internet blackout in Iran\" article), described in multiple outlets as producing an estimated $1-1.5 billion in economic damage — an exact match to the description. (5) Arrests were reported in the 12,000-20,000 range across sources (an early Dec 2019 report cited ~13,000 detainees), consistent with the \"at least 12,000\" figure. No material detail is contradicted; country, year, mechanism, and magnitude all hold across multiple independent, non-overlapping sources (Amnesty International, Al Jazeera, CNBC, Human Rights Watch, Times of Israel, Axios, Iran International, Wikipedia).",
+        "source": "https://www.amnesty.org/en/latest/news/2020/05/iran-details-released-of-304-deaths-during-protests-six-months-after-security-forces-killing-spree/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently corroborated via multiple non-overlapping sources: (1) Reuters' investigation (reported via Times of Israel, Axios, NCRI) found Iranian officials' internal count of ~1,500 killed in the crackdown following the Nov 15, 2019 gasoline price hike (up to 300% increase), consistent with the description. (2) Amnesty International's documented death toll of 304 (later revised upward to 321-323) is confirmed directly from amnesty.org, PBS, and Al Jazeera coverage. (3) Wikipedia's \"2019 Internet blackout in Iran\" article, corroborated by RFE/RL and Amnesty press release, confirms a week-long near-total national internet shutdown ordered by the Supreme National Security Council to obscure the crackdown, with economic damage estimated at $1-1.5 billion. All core claims — country (Iran), year (2019), trigger (fuel price hike), Reuters' ~1,500 death toll, Amnesty's 304 minimum, week-long internet blackout, and $1-1.5B economic damage — are verified from independent, non-overlapping sources. The 12,000 arrests figure was not directly re-confirmed in this search pass but is a widely-reported sub-detail (commonly cited by Amnesty/CHRI) and does not constitute a material discrepancy against an otherwise fully corroborated event.",
+        "source": "https://www.amnesty.org/en/latest/news/2020/05/iran-details-released-of-304-deaths-during-protests-six-months-after-security-forces-killing-spree/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.amnesty.org/en/latest/news/2020/05/iran-details-released-of-304-deaths-during-protests-six-months-after-security-forces-killing-spree/"
+  },
+  {
+    "year": 2025,
+    "title": "Twelve-Day War: Israel Launches Massive Strikes on Iranian Nuclear Sites; 95 Killed",
+    "verdict": "PARTIAL",
+    "reason": "Core event confirmed independently: on June 13, 2025 Israel (Operation Rising Lion) launched a large preemptive campaign against Iran's nuclear program and IRGC/military leadership — 200+ fighter jets, five waves, ~330 munitions on ~100 targets including Natanz; opening strikes killed senior commanders (Chief of Staff, IRGC commander, etc.) and nuclear scientists (NPR reported '9 Iranian nuclear scientists killed'; Israeli officials later said 'over 30 security chiefs, 11 nuclear scientists' killed across the whole 12 days). Iran retaliated with 500+ (~550) ballistic missiles and drones over 12 days (Operation True Promise III). The US struck Iranian nuclear facilities on June 21-22 (Operation Midnight Hammer) using B-2s and Tomahawks. A Trump-brokered ceasefire took effect June 24, 2025, ending the war. Hundreds of Iranian civilians were killed by Israeli strikes (independent tallies range ~276-436+ civilian deaths; HRANA reported 1,190 total killed by June 28). All of this matches the description and the year/country are correct — hence not FALSE. However, one material detail is wrong: the description states the US precision strikes hit 'Fordow, Natanz, and Arak,' but multiple sources (Wikipedia's 2025 United States strikes on Iranian nuclear sites, TWZ, CSIS, Congress.gov) confirm the US (Operation Midnight Hammer) struck Fordow, Natanz, and ISFAHAN — not Arak. Arak (Khondab) was hit separately by Israel (IDF) on June 19, days before the US strikes, per Times of Israel/Al Jazeera/FDD. This is a wrong-actor/wrong-target substitution in an otherwise accurate account, which is why I'm marking PARTIAL rather than TRUE. The exact '95 killed' figure in the title could not be independently pinned to a specific dated report (early tallies ranged ~70-78 killed on day one per Iran's UN envoy/NPR, rising into the hundreds within days), so it's plausible as an early/rounded estimate but unverified precisely — a minor, non-disqualifying point compared to the Arak/Isfahan mix-up.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core event is heavily corroborated: on June 13, 2025, Israel launched the \"Twelve-Day War,\" striking ~100 targets across Iran (Natanz, IRGC bases, nuclear scientists' homes) using 200+ fighter jets in five waves, killing 30 Iranian generals and 9 nuclear scientists in the opening hours (Wikipedia, Britannica, Al Jazeera all corroborate). Iran retaliated with 500+ ballistic missiles (sources say \"over 550\") and drones under Operation True Promise III. US forces struck Iranian nuclear sites on June 22 (Operation Midnight Hammer) using B-2 bombers and Tomahawk missiles. A ceasefire brokered by Trump took effect June 24, 2025, ending the 12-day conflict, and hundreds/over a thousand Iranian civilians and military personnel were ultimately killed (HRANA later tallied ~1,190 dead by the war's end; Iran's health ministry cited ~1,062 by July 22). All of this matches the event description's core substance for Iran, 2025. However, two details are off: (1) the US Operation Midnight Hammer struck Fordow, Natanz, and ISFAHAN — not Arak; Arak's Khondab heavy-water reactor was struck separately by ISRAEL on June 19, three days before the US strikes, so the description's claim that \"US forces joined with precision strikes on Fordow, Natanz, and Arak\" misattributes the Arak strike to the US. (2) The title's \"95 Killed\" figure doesn't cleanly match any well-documented casualty count I found for the opening strikes — reported tolls were ~80 within hours, 224 by June 16, and ~1,000+ by war's end — though early wire figures were fluid and a 95 figure is plausible as an early snapshot I simply couldn't pin down. Given the clear actor/target mix-up on Arak (a material detail) while year, country, and the overwhelming bulk of the narrative hold, this is a PARTIAL rather than a clean TRUE.",
+        "source": "https://en.wikipedia.org/wiki/Twelve-Day_War",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core event confirmed independently: on June 13, 2025 Israel (Operation Rising Lion) launched a large preemptive campaign against Iran's nuclear program and IRGC/military leadership — 200+ fighter jets, five waves, ~330 munitions on ~100 targets including Natanz; opening strikes killed senior commanders (Chief of Staff, IRGC commander, etc.) and nuclear scientists (NPR reported '9 Iranian nuclear scientists killed'; Israeli officials later said 'over 30 security chiefs, 11 nuclear scientists' killed across the whole 12 days). Iran retaliated with 500+ (~550) ballistic missiles and drones over 12 days (Operation True Promise III). The US struck Iranian nuclear facilities on June 21-22 (Operation Midnight Hammer) using B-2s and Tomahawks. A Trump-brokered ceasefire took effect June 24, 2025, ending the war. Hundreds of Iranian civilians were killed by Israeli strikes (independent tallies range ~276-436+ civilian deaths; HRANA reported 1,190 total killed by June 28). All of this matches the description and the year/country are correct — hence not FALSE. However, one material detail is wrong: the description states the US precision strikes hit 'Fordow, Natanz, and Arak,' but multiple sources (Wikipedia's 2025 United States strikes on Iranian nuclear sites, TWZ, CSIS, Congress.gov) confirm the US (Operation Midnight Hammer) struck Fordow, Natanz, and ISFAHAN — not Arak. Arak (Khondab) was hit separately by Israel (IDF) on June 19, days before the US strikes, per Times of Israel/Al Jazeera/FDD. This is a wrong-actor/wrong-target substitution in an otherwise accurate account, which is why I'm marking PARTIAL rather than TRUE. The exact '95 killed' figure in the title could not be independently pinned to a specific dated report (early tallies ranged ~70-78 killed on day one per Iran's UN envoy/NPR, rising into the hundreds within days), so it's plausible as an early/rounded estimate but unverified precisely — a minor, non-disqualifying point compared to the Arak/Isfahan mix-up.",
+        "source": "https://en.wikipedia.org/wiki/Twelve-Day_War",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Twelve-Day_War"
+  },
+  {
+    "year": 2021,
+    "title": "Guardian Council Disqualifies All Serious Candidates; Raisi Engineered to Presidency",
+    "verdict": "TRUE",
+    "reason": "Independent sources confirm every material element: the Guardian Council disqualified ~600 of ~600 registered candidates, including former parliamentary speaker Ali Larijani and First VP Eshaq Jahangiri (Al Jazeera, Wikipedia, Iran Primer), clearing the field for hardline judiciary chief Ebrahim Raisi's victory in the June 2021 election. Turnout was a record-low 48.8% (Iran Primer/USIP), the lowest in the Islamic Republic's history at the time. Raisi's role on the 1988 'Death Commission' (deputy prosecutor on the four-member Tehran panel that ordered mass executions of political prisoners) is well documented (Iran Primer, Amnesty International, Wikipedia), and human rights groups have called for his accountability without any prosecution occurring.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm all material elements: Iran's Guardian Council disqualified nearly all serious reformist/moderate candidates for the June 2021 presidential election, including former parliamentary speaker Ali Larijani and First Vice President Eshaq Jahangiri (also former President Ahmadinejad), from among ~600 registrants, approving only 7 candidates including Ebrahim Raisi. This cleared Raisi's path to an uncontested-in-substance victory. Voter turnout was confirmed as a record-low 48.8% (lowest in the Islamic Republic's history, down from 73.3% in 2017), reflecting widespread boycotts/disillusionment, with unprecedented rates of blank/invalid ballots. Raisi's membership on the 1988 \"Death Commission\" that ordered mass extrajudicial executions of political prisoners (est. 2,800-5,000+ killed) is well documented by Amnesty International and Iran Primer, and he faced no accountability for it (indeed publicly defended the killings in 2018). All details in the description match the historical record.",
+        "source": "https://www.aljazeera.com/news/2021/5/25/irans-guardian-council-disqualifies-most-presidential-candidates",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independent sources confirm every material element: the Guardian Council disqualified ~600 of ~600 registered candidates, including former parliamentary speaker Ali Larijani and First VP Eshaq Jahangiri (Al Jazeera, Wikipedia, Iran Primer), clearing the field for hardline judiciary chief Ebrahim Raisi's victory in the June 2021 election. Turnout was a record-low 48.8% (Iran Primer/USIP), the lowest in the Islamic Republic's history at the time. Raisi's role on the 1988 'Death Commission' (deputy prosecutor on the four-member Tehran panel that ordered mass executions of political prisoners) is well documented (Iran Primer, Amnesty International, Wikipedia), and human rights groups have called for his accountability without any prosecution occurring.",
+        "source": "https://en.wikipedia.org/wiki/2021_Iranian_presidential_election",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2021_Iranian_presidential_election"
+  },
+  {
+    "year": 2017,
+    "title": "ISIS-K Attack on Tehran Parliament and Khomeini Shrine Kills 17",
+    "verdict": "TRUE",
+    "reason": "Multiple independent reputable sources (Wikipedia, Al Jazeera, NPR, CBS News, Washington Post, RFE/RL, CTC West Point) confirm that on June 7, 2017, five ISIS/ISIL gunmen and suicide bombers carried out coordinated attacks on the Iranian Parliament building and the Khomeini mausoleum in Tehran, killing 17 and wounding ~43. ISIS claimed responsibility via its Amaq News Agency, which released video from inside the parliament — the group's first claimed attack inside Iran. Country, year, death toll, dual targets, and ISIS/Amaq claim all match the description. This event is well-documented and not attributed to 'ISIS-K' (the Khorasan branch) specifically in mainstream sourcing but simply ISIS/ISIL — a minor labeling nuance that does not change the substance of the event.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent reputable sources (Wikipedia, Al Jazeera, ABC News, Washington Post, NPR, RFE/RL, CNN, CTC West Point) confirm that on June 7, 2017, ISIL/ISIS gunmen and a suicide bomber carried out coordinated twin attacks on the Iranian Parliament building and the Mausoleum of Ayatollah Khomeini in Tehran, killing 17 civilians and wounding 43 (matching \"more than 40\"). Sources confirm it was the first major ISIS attack inside Iran, that ISIS's Amaq Agency released video from inside the parliament, and that Iran blamed Saudi Arabia and subsequently launched retaliatory missile strikes on ISIL targets in Syria on June 18, 2017 (consistent with using the attack to justify military operations in Iraq/Syria). All material details — country, year, actors, targets, casualty figures, significance, and aftermath — match the event description.",
+        "source": "https://en.wikipedia.org/wiki/2017_Tehran_attacks",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent reputable sources (Wikipedia, Al Jazeera, NPR, CBS News, Washington Post, RFE/RL, CTC West Point) confirm that on June 7, 2017, five ISIS/ISIL gunmen and suicide bombers carried out coordinated attacks on the Iranian Parliament building and the Khomeini mausoleum in Tehran, killing 17 and wounding ~43. ISIS claimed responsibility via its Amaq News Agency, which released video from inside the parliament — the group's first claimed attack inside Iran. Country, year, death toll, dual targets, and ISIS/Amaq claim all match the description. This event is well-documented and not attributed to 'ISIS-K' (the Khorasan branch) specifically in mainstream sourcing but simply ISIS/ISIL — a minor labeling nuance that does not change the substance of the event.",
+        "source": "https://en.wikipedia.org/wiki/2017_Tehran_attacks",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2017_Tehran_attacks"
+  },
+  {
+    "year": 2013,
+    "title": "IRGC Formally Enters Syrian Civil War; Deploys Thousands of Troops and Hezbollah",
+    "verdict": "TRUE",
+    "reason": "Multiple independent sources confirm: Iran decided in June 2013 to send an initial contingent of ~4,000 troops to Syria, marking an escalation from advisers to direct combat support; the Battle of al-Qusayr (captured by Syrian Army/Hezbollah forces in June 2013) was a decisive turning point where Hezbollah's participation \"changed the game\" and Iranian officer/IRGC involvement was also reported (8 Iranian officers reportedly killed); this is widely cited as \"the defining battle\" of the war up to that point and preserved Assad's regime while cementing the Tehran-Beirut land corridor. The October 2015 figure of ~7,000 IRGC members operating in Syria is corroborated by a Wall Street Journal report (2 Oct 2015) as reflected in secondary sources (Wikipedia's \"Iranian intervention in the Syrian civil war\" article and search summaries). All material claims (country=Iran, year=2013 for the escalation and Qusair recapture, magnitude of troops, Hezbollah coordination, strategic outcome) hold up.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the core claims. (1) 2013 escalation to direct combat: Iran decided in June 2013 to send a \"first contingent\" of ~4,000 troops to Syria (per Robert Fisk/The Independent, cited via Wikipedia's Iranian intervention page); IRGC personnel, Hezbollah fighters, and Basij militia jointly fought in the Battle of al-Qusayr. (2) Qusair recaptured in June 2013: the Second Battle of al-Qusayr (19 May-5 June 2013) ended with Syrian Army + Hezbollah forces retaking the town on 5 June 2013 after a decisive, hard-fought campaign — confirmed on Wikipedia's dedicated battle page and corroborated by the Combating Terrorism Center at West Point's academic analysis of Hezbollah's war in Syria. (3) Direct IRGC combat involvement (not just advisory): U.S. State Department officials stated Iranian soldiers were involved in the al-Qusayr fighting, and 8 Iranian officers were killed in that battle. (4) Iran coordinating/enabling Hezbollah's deployment into Syria from 2013 onward is well documented across all sources reviewed (Wikipedia, CTC, Atlantic Council). (5) The \"~7,000 IRGC members in Syria by October 2015\" figure traces to a Wall Street Journal report dated 2 October 2015, which multiple independent web-search passes converged on identically (I could not directly fetch the paywalled WSJ article or the Iran Primer piece citing it — the latter had an expired TLS certificate — but three separate independent search queries returned the same specific figure/date/sourcing, and it is consistent with contemporaneous estimates of large-scale IRGC presence, e.g. Wikipedia's infobox figure of 15,000+ Iranian troops for 2015 for the broader Iranian-backed force). No material contradiction found on country, year, or substance; this is a well-established, widely reported turning point in the Syrian civil war.",
+        "source": "https://en.wikipedia.org/wiki/Battle_of_al-Qusayr_(2013)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm: Iran decided in June 2013 to send an initial contingent of ~4,000 troops to Syria, marking an escalation from advisers to direct combat support; the Battle of al-Qusayr (captured by Syrian Army/Hezbollah forces in June 2013) was a decisive turning point where Hezbollah's participation \"changed the game\" and Iranian officer/IRGC involvement was also reported (8 Iranian officers reportedly killed); this is widely cited as \"the defining battle\" of the war up to that point and preserved Assad's regime while cementing the Tehran-Beirut land corridor. The October 2015 figure of ~7,000 IRGC members operating in Syria is corroborated by a Wall Street Journal report (2 Oct 2015) as reflected in secondary sources (Wikipedia's \"Iranian intervention in the Syrian civil war\" article and search summaries). All material claims (country=Iran, year=2013 for the escalation and Qusair recapture, magnitude of troops, Hezbollah coordination, strategic outcome) hold up.",
+        "source": "https://en.wikipedia.org/wiki/Second_Battle_of_al-Qusayr",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Second_Battle_of_al-Qusayr"
   }
 ]

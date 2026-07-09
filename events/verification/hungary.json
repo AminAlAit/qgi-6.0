@@ -169,6 +169,42 @@
   },
   {
     "year": 1956,
+    "title": "Hungary Defeats Soviet Union in 'Blood in the Water' Olympic Water Polo Match",
+    "verdict": "TRUE",
+    "reason": "Multiple independent authoritative sources confirm all material details: the semifinal took place 6 December 1956 at the Melbourne Olympics, Hungary beat the USSR 4-0, Ervin Zádor emerged bloodied after being punched by Valentin Prokopov (requiring 13 stitches), Hungary then defeated Yugoslavia 2-1 in the final to win its fourth Olympic water polo gold medal, and several Hungarian athletes (including Zádor) subsequently defected to the West after the Games. No off-limits domains were needed; corroboration comes from Wikipedia, Britannica, History.com, Olympedia, and Smithsonian Magazine independently.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via multiple authoritative sources (Britannica, History.com, Olympics.com, Smithsonian). On 6 December 1956, weeks after the Soviet crushing of the Hungarian Revolution, Hungary's water polo team beat the USSR 4-0 in a violent Melbourne Olympics semifinal, becoming known as 'Blood in the Water' after Ervin Zádor emerged with blood streaming from his face after being punched by Soviet player Valentin Prokopov (referees stopped the match early with Hungary declared winner on the score). Hungary then beat Yugoslavia 2-1 in the final to win its fourth Olympic gold medal. Several Hungarian athletes, including Zádor and captain Dezső Gyarmati (46 in total per some accounts), subsequently defected to the West after CIA agents posing as press offered them visas. All material details in the description (date, score, teams, venue, context, aftermath, defections) match the historical record exactly.",
+        "source": "https://www.britannica.com/topic/Hungary-v-U-S-S-R-Blood-in-the-Water-1688425",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multiple independent authoritative sources confirm all material details: the semifinal took place 6 December 1956 at the Melbourne Olympics, Hungary beat the USSR 4-0, Ervin Zádor emerged bloodied after being punched by Valentin Prokopov (requiring 13 stitches), Hungary then defeated Yugoslavia 2-1 in the final to win its fourth Olympic water polo gold medal, and several Hungarian athletes (including Zádor) subsequently defected to the West after the Games. No off-limits domains were needed; corroboration comes from Wikipedia, Britannica, History.com, Olympedia, and Smithsonian Magazine independently.",
+        "source": "https://en.wikipedia.org/wiki/Blood_in_the_Water_match",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Blood_in_the_Water_match"
+  },
+  {
+    "year": 1956,
     "title": "Khrushchev's Secret Speech and Rákosi's fall ignite reform expectations",
     "verdict": "TRUE",
     "reason": "Secret Speech Feb 1956; Rákosi replaced by Gerő July 1956; Petőfi Circle confirmed.",

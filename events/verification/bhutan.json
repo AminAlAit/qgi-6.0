@@ -1435,5 +1435,81 @@
       }
     ],
     "source": "https://www.idsa.in/publisher/comments/sino-bhutan-boundary-negotiations-complexities-of-the-package-deal"
+  },
+  {
+    "year": 2021,
+    "title": "China Constructs Village Inside Disputed Bhutanese Territory",
+    "verdict": "FALSE",
+    "reason": "The core fact — China built the village of Pangda inside territory Bhutan claims, revealed via satellite imagery and causing international concern about incremental Himalayan-border encroachment — is real, but two material details are wrong. (1) Location: Pangda sits in the Doklam/Amo Chhu (Torsa River) valley near the India-China-Bhutan trijunction, in WESTERN Bhutan — not inside or near the Sakteng Wildlife Sanctuary, which is a geographically separate disputed area in EASTERN Bhutan's Trashigang district (a distinct Chinese claim raised in June 2020, ~hundreds of km away, with no 'Pangda' village reported there). Multiple sources (PolSci Institute, Chatham House, WION) explicitly list Doklam, Beyul/Jakarlung-Menchuma, and Sakteng as three separate disputed zones. (2) Year: the Maxar satellite imagery and international media (CNN, NDTV, Global Times, SCMP, INSIGHTS IAS) revealed Pangda's construction in NOVEMBER 2020, not 'late 2021' — residents reportedly moved in from Shangdui village, Yadong county, in September 2020. Some further construction/reporting continued into 2021, but the described 'revealed in late 2021' framing and the Sakteng location are both incorrect. Since the year does not hold (real year 2020, not 2021), this cannot qualify as PARTIAL under the stated rules (which require year+country to hold) — it is FALSE with corrected_year 2020.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The village Pangda is real and was indeed built by China inside Bhutanese-claimed territory, but the description conflates two distinct, unrelated China-Bhutan disputes and gets both the location and year wrong. Pangda sits near the Torsa/Amo Chhu river in Bhutan's Haa District, ~10km east of the Doklam trijunction (western/southwestern Bhutan) — not in the Sakteng Wildlife Sanctuary area of eastern Bhutan. Sakteng is a completely separate, much later territorial claim (China first publicly claimed the 740 sq km Sakteng Wildlife Sanctuary in eastern Bhutan in June 2020, at a GEF Council meeting, as a negotiating gambit — there is no reported physical village construction inside the sanctuary itself; Sakteng can only be reached via India's Arunachal Pradesh, not from Chinese territory). Multiple sources (Wikipedia's Pangda article, Jamestown Foundation, Chellaney/9dashline, South Asian Voices) independently confirm Pangda is in the west near Doklam, while Sakteng is an eastern claim with no village. On timing, satellite imagery first revealed Pangda's construction in October-November 2020 (Maxar imagery, widely reported November 2020), not \"late 2021\" — though the village did see further expansion through 2021. Because the description's core locating detail (Pangda inside Sakteng Wildlife Sanctuary, eastern Bhutan) is a fabricated/incorrect conflation and the stated discovery year is off from the actual 2020 revelation, this does not hold up as described for 2021.",
+        "source": "https://en.wikipedia.org/wiki/Pangda",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 2020
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The core fact — China built the village of Pangda inside territory Bhutan claims, revealed via satellite imagery and causing international concern about incremental Himalayan-border encroachment — is real, but two material details are wrong. (1) Location: Pangda sits in the Doklam/Amo Chhu (Torsa River) valley near the India-China-Bhutan trijunction, in WESTERN Bhutan — not inside or near the Sakteng Wildlife Sanctuary, which is a geographically separate disputed area in EASTERN Bhutan's Trashigang district (a distinct Chinese claim raised in June 2020, ~hundreds of km away, with no 'Pangda' village reported there). Multiple sources (PolSci Institute, Chatham House, WION) explicitly list Doklam, Beyul/Jakarlung-Menchuma, and Sakteng as three separate disputed zones. (2) Year: the Maxar satellite imagery and international media (CNN, NDTV, Global Times, SCMP, INSIGHTS IAS) revealed Pangda's construction in NOVEMBER 2020, not 'late 2021' — residents reportedly moved in from Shangdui village, Yadong county, in September 2020. Some further construction/reporting continued into 2021, but the described 'revealed in late 2021' framing and the Sakteng location are both incorrect. Since the year does not hold (real year 2020, not 2021), this cannot qualify as PARTIAL under the stated rules (which require year+country to hold) — it is FALSE with corrected_year 2020.",
+        "source": "https://www.cnn.com/2020/11/24/asia/china-india-bhutan-doklam-intl-hnk/index.html",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 2020
+      }
+    ],
+    "source": "https://www.cnn.com/2020/11/24/asia/china-india-bhutan-doklam-intl-hnk/index.html"
+  },
+  {
+    "year": 2012,
+    "title": "Mangdechhu Hydropower Agreement Signed",
+    "verdict": "FALSE",
+    "reason": "The 720 MW Mangdechhu Hydroelectric Project is real, is a Bhutan-India joint venture, and is financed by India via a 70% loan / 30% grant — but the intergovernmental agreement for its construction was signed in April 2010, not 2012, per consistent independent reporting (power-technology.com/GlobalData, nsenergybusiness.com, dhyeyaias.com current-affairs summary, global-energy-elites.com). All these sources agree that construction physically began in June 2012 (with the EPC contract to Kalpataru Power Transmission awarded in 2013), which appears to be the source of the year confusion in the event description — 2012 marks construction start, not the agreement-signing date. No source found anywhere corroborates an agreement-signing event in 2012 specifically. Since country and substance (project, capacity, financing structure) check out but the year is materially wrong, this is a FALSE with corrected_year=2010 rather than PARTIAL, per the hard rule that a wrong year is FALSE.",
+    "verify_count": 2,
+    "consensus_verdict": "FALSE",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "FALSE",
+        "reason": "The 720 MW Mangdechhu Hydroelectric Project is real, financed by India on a 70% loan/30% grant basis (matches \"grant-and-loan basis\" in the description), and is a genuine part of Bhutan's energy-export-led development model. However, multiple independent sources consistently place the bilateral project/construction agreement signing in April 2010 (one source specifies 30 April 2010), not 2012. What actually happened in 2012 was that major civil/electromechanical/hydromechanical contracts were awarded (March 2012) and physical construction began (June 2012) — a follow-on implementation step, not the signing of the development agreement itself. Since year is a join key and the described event (\"signed a project development agreement... in 2012\") did not occur in 2012 but rather in 2010, this is a year error rather than a true event-in-year match.",
+        "source": "https://www.power-technology.com/projects/mangdechhu-hydroelectric-project-trongsa-dzongkhag/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 2010
+      },
+      {
+        "pass_n": 2,
+        "verdict": "FALSE",
+        "reason": "The 720 MW Mangdechhu Hydroelectric Project is real, is a Bhutan-India joint venture, and is financed by India via a 70% loan / 30% grant — but the intergovernmental agreement for its construction was signed in April 2010, not 2012, per consistent independent reporting (power-technology.com/GlobalData, nsenergybusiness.com, dhyeyaias.com current-affairs summary, global-energy-elites.com). All these sources agree that construction physically began in June 2012 (with the EPC contract to Kalpataru Power Transmission awarded in 2013), which appears to be the source of the year confusion in the event description — 2012 marks construction start, not the agreement-signing date. No source found anywhere corroborates an agreement-signing event in 2012 specifically. Since country and substance (project, capacity, financing structure) check out but the year is materially wrong, this is a FALSE with corrected_year=2010 rather than PARTIAL, per the hard rule that a wrong year is FALSE.",
+        "source": "https://www.power-technology.com/projects/mangdechhu-hydroelectric-project-trongsa-dzongkhag/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-07",
+          "method": "web_search"
+        },
+        "corrected_year": 2010
+      }
+    ],
+    "source": "https://www.power-technology.com/projects/mangdechhu-hydroelectric-project-trongsa-dzongkhag/"
   }
 ]

@@ -1,5 +1,41 @@
 [
   {
+    "year": 1912,
+    "title": "Sweden Hosts the 1912 Stockholm Summer Olympics",
+    "verdict": "TRUE",
+    "reason": "Independently confirmed via Wikipedia and Britannica: the 1912 Summer Olympics (Games of the V Olympiad) were held in Stockholm, Sweden from 6-22 July 1912, with 28 nations and 2,408 athletes competing in 102 events across 14 sports. Sources corroborate the 'Swedish Masterpiece' nickname, the introduction of automatic timing, photo-finish cameras, and a public address system, and confirm these were the last Games to award solid gold medals (switching to gold-plated from 1920 onward). Japan's 1912 debut as the first Asian nation at the Olympics is also well-established Olympic history. All material details in the description check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via multiple independent sources: Stockholm hosted the Games of the V Olympiad in 1912, opening 6 July (main competitions ran 6-22 July, with tennis/football/shooting starting earlier), selected unopposed by the IOC in 1909 (Stockholm was the only bid). 28 nations and 2,408 athletes competed in 102 events across 14 sports. Japan made its Olympic debut, the first Asian nation to compete. The Games introduced automatic timing, photo-finish cameras, and a public address system as Olympic firsts, and were nicknamed the \"Swedish Masterpiece.\" They were also the last Olympics to award solid-gold medals. All material details in the description check out against Wikipedia, Britannica, Olympics.com, and other sources.",
+        "source": "https://en.wikipedia.org/wiki/1912_Summer_Olympics",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Independently confirmed via Wikipedia and Britannica: the 1912 Summer Olympics (Games of the V Olympiad) were held in Stockholm, Sweden from 6-22 July 1912, with 28 nations and 2,408 athletes competing in 102 events across 14 sports. Sources corroborate the 'Swedish Masterpiece' nickname, the introduction of automatic timing, photo-finish cameras, and a public address system, and confirm these were the last Games to award solid gold medals (switching to gold-plated from 1920 onward). Japan's 1912 debut as the first Asian nation at the Olympics is also well-established Olympic history. All material details in the description check out.",
+        "source": "https://en.wikipedia.org/wiki/1912_Summer_Olympics",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/1912_Summer_Olympics"
+  },
+  {
     "year": 1949,
     "title": "Sweden Declines NATO Membership, Chooses Armed Neutrality",
     "verdict": "TRUE",

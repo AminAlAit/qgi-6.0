@@ -1183,6 +1183,42 @@
     "source": "https://en.wikipedia.org/wiki/Plan_Colombia"
   },
   {
+    "year": 2001,
+    "title": "Colombia Hosts and Wins Copa America Despite FARC Threats",
+    "verdict": "TRUE",
+    "reason": "Multi-source corroboration confirms every material element: Colombia hosted the 2001 Copa América from 11-29 July 2001. FARC had carried out bombings in the months prior (reported ~12 killed/200 injured in a June wave, with broader reporting of dozens killed across the pre-tournament period) and had explicitly threatened the tournament; FARC also kidnapped Hernán Campuzano, vice-president of the Colombian football federation. CONMEBOL cancelled the tournament on 1 July 2001 due to security concerns, then reinstated it on 6 July after President Pastrana's negotiations and a truce declaration. Argentina withdrew on 10 July citing player-safety/death-threat concerns (Canada also withdrew, replaced by Costa Rica). Colombia went on to win the tournament for the first time in its history, beating Mexico 1-0 in the final (Iván Córdoba's goal) on 29 July 2001 in Bogotá, completing the campaign without conceding a single goal. All details in the description match independent sources (Wikipedia, These Football Times, Infobae, CopaAmerica.com official site, ColombiaOne, La Gaceta).",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via Wikipedia and corroborating Spanish-language press (Infobae, ESPN Argentina, La Gaceta): Colombia hosted the 2001 Copa America 11-29 July 2001 amid FARC-linked violence (FARC kidnapped the Colombian federation's vice-president Hernán Mejía on 25 June 2001, plus bombings/threats near venues such as El Campín). CONMEBOL cancelled the tournament on 1 July citing inability to guarantee participant safety, then reinstated it on 6 July after Colombian government security assurances — matches the description's dates exactly. Argentina withdrew on 10 July citing death threats against players / safety concerns (replaced by Honduras). Colombia went on to win the tournament for the first time in its history, beating Mexico 1-0 in the final, without conceding a single goal throughout the tournament. Every material detail in the description (dates, FARC threats, cancellation/reinstatement dates, Argentina's withdrawal reason, Colombia's unprecedented and clean-sheet title) is corroborated by multiple independent sources.",
+        "source": "https://en.wikipedia.org/wiki/2001_Copa_Am%C3%A9rica",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Multi-source corroboration confirms every material element: Colombia hosted the 2001 Copa América from 11-29 July 2001. FARC had carried out bombings in the months prior (reported ~12 killed/200 injured in a June wave, with broader reporting of dozens killed across the pre-tournament period) and had explicitly threatened the tournament; FARC also kidnapped Hernán Campuzano, vice-president of the Colombian football federation. CONMEBOL cancelled the tournament on 1 July 2001 due to security concerns, then reinstated it on 6 July after President Pastrana's negotiations and a truce declaration. Argentina withdrew on 10 July citing player-safety/death-threat concerns (Canada also withdrew, replaced by Costa Rica). Colombia went on to win the tournament for the first time in its history, beating Mexico 1-0 in the final (Iván Córdoba's goal) on 29 July 2001 in Bogotá, completing the campaign without conceding a single goal. All details in the description match independent sources (Wikipedia, These Football Times, Infobae, CopaAmerica.com official site, ColombiaOne, La Gaceta).",
+        "source": "https://en.wikipedia.org/wiki/2001_Copa_Am%C3%A9rica",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-09",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2001_Copa_Am%C3%A9rica"
+  },
+  {
     "year": 2002,
     "title": "Álvaro Uribe Elected on 'Democratic Security' Platform",
     "verdict": "TRUE",
