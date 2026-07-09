@@ -54,7 +54,9 @@ async function fileMatches(dest, expected) {
 /** Resolve credentials: OIDC build role on Vercel, default chain locally. */
 async function resolveCredentials() {
   if (!process.env.VERCEL_OIDC_TOKEN) {
-    console.log("[fetch-build-data] no VERCEL_OIDC_TOKEN — using default AWS credential chain (local).");
+    console.log(
+      "[fetch-build-data] no VERCEL_OIDC_TOKEN — using default AWS credential chain (local)."
+    );
     return undefined; // let the SDK use its default chain
   }
   const roleArn = process.env.AWS_BUILD_ROLE_ARN || process.env.AWS_ROLE_ARN;
@@ -63,7 +65,8 @@ async function resolveCredentials() {
       "VERCEL_OIDC_TOKEN is set but neither AWS_BUILD_ROLE_ARN nor AWS_ROLE_ARN is — cannot assume a role to fetch build data."
     );
   }
-  const { awsCredentialsProvider } = await import("@vercel/oidc-aws-credentials-provider");
+  const { awsCredentialsProvider } =
+    await import("@vercel/oidc-aws-credentials-provider");
   console.log(`[fetch-build-data] assuming build role via Vercel OIDC: ${roleArn}`);
   return awsCredentialsProvider({ roleArn });
 }
@@ -79,7 +82,10 @@ function getS3() {
     _s3Promise = (async () => {
       const credentials = await resolveCredentials();
       const { S3Client, GetObjectCommand } = await import("@aws-sdk/client-s3");
-      const client = new S3Client({ region: REGION, ...(credentials ? { credentials } : {}) });
+      const client = new S3Client({
+        region: REGION,
+        ...(credentials ? { credentials } : {}),
+      });
       return { client, GetObjectCommand };
     })();
   }
@@ -109,11 +115,15 @@ async function fetchOne(m, entry) {
     try {
       const buf = await getObjectBuffer(key);
       if (buf.length !== entry.bytes) {
-        throw new Error(`size mismatch for ${key}: got ${buf.length}, expected ${entry.bytes}`);
+        throw new Error(
+          `size mismatch for ${key}: got ${buf.length}, expected ${entry.bytes}`
+        );
       }
       const got = sha256(buf);
       if (got !== entry.sha256) {
-        throw new Error(`checksum mismatch for ${key}: got ${got}, expected ${entry.sha256}`);
+        throw new Error(
+          `checksum mismatch for ${key}: got ${got}, expected ${entry.sha256}`
+        );
       }
       await mkdir(dirname(dest), { recursive: true });
       // Deterministic temp suffix (key+attempt): each key is owned by one worker
@@ -130,17 +140,23 @@ async function fetchOne(m, entry) {
       }
     }
   }
-  throw new Error(`failed after ${MAX_ATTEMPTS} attempts: ${lastErr?.message ?? lastErr}`);
+  throw new Error(
+    `failed after ${MAX_ATTEMPTS} attempts: ${lastErr?.message ?? lastErr}`
+  );
 }
 
 async function main() {
   const manifest = JSON.parse(await readFile(MANIFEST_PATH, "utf-8"));
   const { vintage, s3_prefix, dest_root, count, files } = manifest;
   if (!vintage || !s3_prefix || !dest_root || !Array.isArray(files)) {
-    throw new Error("build-manifest.json is malformed (missing vintage/s3_prefix/dest_root/files).");
+    throw new Error(
+      "build-manifest.json is malformed (missing vintage/s3_prefix/dest_root/files)."
+    );
   }
   if (files.length !== count) {
-    throw new Error(`manifest self-inconsistent: count=${count} but files.length=${files.length}.`);
+    throw new Error(
+      `manifest self-inconsistent: count=${count} but files.length=${files.length}.`
+    );
   }
   console.log(`[fetch-build-data] vintage=${vintage} files=${count} bucket=${BUCKET}`);
 
@@ -156,7 +172,9 @@ async function main() {
       else fetched++;
       const done = fetched + skipped;
       if (done % 20 === 0 || done === count) {
-        console.log(`[fetch-build-data] ${done}/${count} (fetched ${fetched}, skipped ${skipped})`);
+        console.log(
+          `[fetch-build-data] ${done}/${count} (fetched ${fetched}, skipped ${skipped})`
+        );
       }
     }
   }
@@ -167,11 +185,15 @@ async function main() {
   if (total !== count) {
     throw new Error(`vintage incomplete: resolved ${total}/${count} files.`);
   }
-  console.log(`[fetch-build-data] OK — ${vintage}: ${fetched} fetched, ${skipped} verified-present, ${count} total.`);
+  console.log(
+    `[fetch-build-data] OK — ${vintage}: ${fetched} fetched, ${skipped} verified-present, ${count} total.`
+  );
 }
 
 main().catch((err) => {
   console.error(`[fetch-build-data] FAILED: ${err?.message ?? err}`);
-  console.error("[fetch-build-data] Build aborted — refusing to build on partial/corrupt vintage data.");
+  console.error(
+    "[fetch-build-data] Build aborted — refusing to build on partial/corrupt vintage data."
+  );
   process.exit(1);
 });

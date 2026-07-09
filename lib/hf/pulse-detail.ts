@@ -151,13 +151,9 @@ function trendVerdict(
  *
  * Descriptive only: the pulse is recall-validated, NOT a leading indicator.
  */
-export function getTrendCountryPanelData(
-  iso3Upper: string
-): HfCountryDetail | null {
+export function getTrendCountryPanelData(iso3Upper: string): HfCountryDetail | null {
   const board = getHfBoard();
-  const country = board.countries.find(
-    (c) => c.iso3 === iso3Upper.toUpperCase()
-  );
+  const country = board.countries.find((c) => c.iso3 === iso3Upper.toUpperCase());
   if (!country) return null;
 
   const series: HfTopicSeries[] = [];

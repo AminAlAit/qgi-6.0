@@ -273,10 +273,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
           instead of the XY quadrant / news-only list. */}
       {newsSignal &&
         (newsSignal.status === "coming_soon" ? (
-          <TrendNewsComingSoonPanel
-            key={`news-soon-${slug}`}
-            trendLabel={recipe.label}
-          />
+          <TrendNewsComingSoonPanel key={`news-soon-${slug}`} trendLabel={recipe.label} />
         ) : (
           <TrendNewsSignalPanel
             key={`news-${slug}`}

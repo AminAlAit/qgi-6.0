@@ -347,8 +347,7 @@ export function InteractiveLandscape({ points }: Props) {
         >
           One dot per country-trend. Further right = louder in the news right now, higher
           = structure more like past crises. Use the menus or the status keys to spotlight
-          what matters.{" "}
-          {GLOBAL_PERCENTILE_NOTE}
+          what matters. {GLOBAL_PERCENTILE_NOTE}
         </p>
       </div>
 

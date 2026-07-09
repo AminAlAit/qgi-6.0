@@ -54,7 +54,11 @@ const RECENT_CUTOFF_HOURS = 26; // beyond this -> paused
  * Classify a parsed live file into a freshness state. Pure (takes `nowMs`)
  * so the gate thresholds are unit-testable without a clock.
  */
-export function gradeLive(raw: RawLive, source: "s3" | "local", nowMs: number): LivePulse {
+export function gradeLive(
+  raw: RawLive,
+  source: "s3" | "local",
+  nowMs: number
+): LivePulse {
   const staleAfterHours =
     typeof raw.stale_after_hours === "number" ? raw.stale_after_hours : 2;
   const gen = raw.generated_at ?? null;
