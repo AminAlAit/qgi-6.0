@@ -149,8 +149,8 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
       {
         // News layer (2026-06-10): the panels' resemblance-not-forecast
         // firewall, in the designated escape valve (V4.1 §9).
-        title: "News pulse measures attention, not events",
-        body: "The news panels show how much of this country's coverage is running on each theme versus its own history. Pulse confirms or questions a structural reading; it does not forecast an event.",
+        title: "News pressure measures attention, not events",
+        body: "The news panels show how much of this country's coverage is running on each theme versus its own history. News pressure confirms or questions a structural reading; it does not forecast an event.",
       },
       {
         title: "Nothing here is a forecast",
@@ -181,8 +181,8 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
         body: "The pins on the chart mark events from the verified record. Hover a pinned month and the tooltip names what happened.",
       },
       {
-        title: "Some themes move ahead of events",
-        body: "For the Electoral and Economic themes, the news pulse has tended to move about two months ahead of related events on the verified record. Other themes are tracked while their validation runs.",
+        title: "How themes show up in the news",
+        body: "For the Electoral and Economic themes, the news pulse is recall-validated: it fires at known events on the verified record. Other themes are tracked while their validation runs.",
       },
     ],
   },

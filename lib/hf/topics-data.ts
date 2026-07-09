@@ -9,8 +9,10 @@
  * four verdicts: ACTIVE / SIGNAL / LATENT / QUIET (thresholds 60/60).
  *
  * Data: data/hf-topics.json, generated from the validated GDELT PoC
- * artifacts (backfill 2015-02..present; event-study + lead/lag validation
- * 2026-06-10: Electoral + Economic lead events by ~2 months).
+ * artifacts (backfill 2015-02..present; recall-validated 2026-06-10:
+ * Electoral + Economic news coverage clusters reliably around events on
+ * the verified record. Any lead relationship between news pulse and events
+ * is not established — the layer is descriptive, not predictive).
  */
 
 import hfTopics from "@/data/hf-topics.json";
@@ -25,7 +27,7 @@ export interface HfTopic {
   /** Full name, e.g. "Electoral & Regime Change". */
   name: string;
   scope: string;
-  /** True for topics validated to lead events (~2 months): Electoral, Economic. */
+  /** True for topics whose news coverage is recall-validated against the event record (Electoral, Economic). No lead relationship established. */
   validated: boolean;
   /** True for the six founder-ratified board topics. */
   board: boolean;

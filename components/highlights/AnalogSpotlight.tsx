@@ -20,7 +20,7 @@ import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { flagFor } from "@/lib/te-mock/country-flags";
 
 // Build-time JSON import — valid in server components only.
- 
+
 import whatHappenedNext from "@/data/curation/what-happened-next.json";
 
 type WhnMap = Record<string, { blurb: string; confidence: string }>;

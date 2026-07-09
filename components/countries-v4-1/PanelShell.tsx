@@ -21,12 +21,15 @@ export function PanelShell({
   caption,
   tooltip,
   fullWidth = false,
+  titleCase = false,
   children,
   style,
   dataTour,
 }: {
   title: string;
   accent: string;
+  /** Render the eyebrow title in Title Case instead of the default ALL CAPS. */
+  titleCase?: boolean;
   /** Optional leading symbol (e.g. a family-colored RecipeIcon) rendered in
    *  the accent color before the title. */
   icon?: ReactNode;
@@ -73,8 +76,8 @@ export function PanelShell({
           <h2
             style={{
               fontSize: "13px",
-              letterSpacing: "0.6px",
-              textTransform: "uppercase",
+              letterSpacing: titleCase ? "0.2px" : "0.6px",
+              textTransform: titleCase ? "none" : "uppercase",
               color: accent,
               fontFamily: "ui-monospace, monospace",
               fontWeight: 600,

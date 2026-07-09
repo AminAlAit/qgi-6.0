@@ -10,12 +10,7 @@ import {
   RiskBoardFilters,
   type RiskBoardRecipeProjection,
 } from "@/components/risk-board/RiskBoardFilters";
-import { RiskBoardViews } from "@/components/risk-board/RiskBoardViews";
-import { TopicBoard } from "@/components/risk-board/TopicBoard";
-import { getHfBoard } from "@/lib/hf/topics-data";
-import { getLivePulse } from "@/lib/hf/live-pulse";
-import { overlayCells } from "@/lib/hf/live-pulse-core";
-import { LivePulseStamp } from "@/components/hf/LivePulseStamp";
+import { COVERAGE_ROADMAP_THEMES } from "@/lib/hf/trend-taxonomy";
 import { familyColor } from "@/lib/te-mock/l1-families";
 import { statusLabel } from "@/lib/te-mock/country-families";
 
@@ -25,23 +20,7 @@ export const metadata: Metadata = {
     "Present-tense, tier-gated discrimination ranks across the trend catalog. The honest replacement for the retired Signals page.",
 };
 
-// ISR: the page is dynamic (it awaits the live pulse), so re-render it at most
-// every 5 minutes — matching getLivePulse's in-process cache TTL. This keeps
-// the overlay fresh without a blocking S3 read on every cold-start request.
-export const revalidate = 300;
-
-export default async function RiskBoardPage() {
-  // Live overlay (Track-2): replace the monthly Topic cells with the hourly
-  // news pulse wherever the live file carries a value, recomputing each
-  // verdict from the same thresholds. Falls back to the monthly board when no
-  // live data is present, so the page can never regress. overlayCells also
-  // returns liveKeys (per-cell live markers), not surfaced in TopicBoard yet.
-  const hfBoard = getHfBoard();
-  const live = await getLivePulse();
-  const liveBoard = { ...hfBoard, cells: overlayCells(hfBoard, live).cells };
-  // The news-pulse freshness stamp (LivePulseStamp) fetches its own state
-  // client-side from /api/live-pulse; it self-hides until live data exists.
-
+export default function RiskBoardPage() {
   // Pull rows for the board (the curated set: scored + a representative
   // queued sample) and project to the slim public-safe shape before passing
   // to the client. Raw verdict/stats/status enum are stripped server-side.
@@ -152,72 +131,103 @@ export default async function RiskBoardPage() {
             2026-05-30 — redundant with the filter bar that immediately
             announces what this surface is. The grid stands on its own. */}
 
-        {/* HF merge step 1 (2026-06-10): the board now carries two views.
-            Trends = the structural grid (unchanged, below). News Topics =
-            the news-layer verdict board (TopicBoard). Both render
-            server-side and stay mounted; RiskBoardViews only toggles
-            visibility, so filter/lens state survives tab flips. */}
-        <RiskBoardViews
-          trends={
-            <>
-              <p
-                style={{
-                  color: "var(--qgi-text-muted)",
-                  fontSize: "15px",
-                  lineHeight: 1.6,
-                  maxWidth: "820px",
-                  margin: "0 0 16px",
-                }}
-              >
-                {/* 2026-05-30 polish: dropped "discrimination ranks" jargon and
-                    the "Not a forecast" hedge. No em-dashes per V4.1 §11. */}
-                Each row is an event trend, a shape reconstructed from past cases. Each
-                cell shows how closely a country&apos;s recent path matches that shape.
-                Scan a row for today&apos;s closest matches, or pick countries to compare
-                them across the catalog.
-              </p>
-              <div data-tour="risk-board-grid">
-                <RiskBoardFilters
-                  recipes={boardRecipes}
-                  l1Families={l1Families}
-                  countryUniverse={countryUniverse}
-                />
-              </div>
-              {/* Recent movements panel (structural, vintage-over-vintage) */}
-              <RecentMovements />
-              {/* Trends-tab footer (cadence copy is per-view; the Topics view
-                  carries its own). */}
-              <footer
-                style={{
-                  marginTop: "32px",
-                  padding: "16px 0",
-                  borderTop: "1px solid var(--qgi-border)",
-                  fontSize: "11px",
-                  color: "var(--qgi-text-dim)",
-                  fontFamily: "ui-monospace, monospace",
-                  letterSpacing: "0.3px",
-                }}
-              >
-                Scores refresh on each data release. New trends appear as their evidence
-                base grows.
-              </footer>
-            </>
-          }
-          topics={
-            <>
-              {/* Self-fetching client stamp; renders nothing until live data
-                  arrives, so no empty space is reserved. */}
-              <div style={{ margin: "0 0 12px" }}>
-                <LivePulseStamp />
-              </div>
-              <TopicBoard data={liveBoard} />
-            </>
-          }
-        />
+        {/* Topics->Trends (2026-07-04) + "News Topics" tab dropped (founder
+            2026-07-06): the board carries a single view now — the structural
+            Trends grid, followed by an honest coverage-roadmap note. The old
+            duplicate "News Topics" pane rendered the same trends, so it is gone. */}
+        <p
+          style={{
+            color: "var(--qgi-text-muted)",
+            fontSize: "15px",
+            lineHeight: 1.6,
+            maxWidth: "820px",
+            margin: "0 0 16px",
+          }}
+        >
+          Each row is an event trend, a shape reconstructed from past cases. Each cell
+          shows how closely a country&apos;s recent path matches that shape. Scan a row
+          for today&apos;s closest matches, or pick countries to compare them across the
+          catalog.
+        </p>
+        <div data-tour="risk-board-grid">
+          <RiskBoardFilters
+            recipes={boardRecipes}
+            l1Families={l1Families}
+            countryUniverse={countryUniverse}
+          />
+        </div>
+        {/* Recent movements panel (structural, vintage-over-vintage) */}
+        <RecentMovements />
 
-        {/* V4.1 §2: "Vintage: {BOARD_VINTAGE}" removed from footer.
-            2026-06-10: the cadence footer moved inside the Trends tab node
-            so the Topics view doesn't stack two footers. */}
+        {/* Coverage roadmap (founder 2026-07-06): honest note replacing the old
+            "coming soon" teaser columns. Six trends carry a live news reading;
+            these themes are tracked but not yet covered. No dates promised. */}
+        <section
+          style={{
+            marginTop: "28px",
+            padding: "16px 18px",
+            border: "1px solid var(--qgi-border)",
+            borderRadius: "8px",
+          }}
+        >
+          <div
+            style={{
+              color: "var(--qgi-accent)",
+              fontSize: "10px",
+              letterSpacing: "3px",
+              textTransform: "uppercase",
+              fontFamily: "ui-monospace, monospace",
+              marginBottom: "8px",
+            }}
+          >
+            Coverage roadmap
+          </div>
+          <p
+            style={{
+              color: "var(--qgi-text-muted)",
+              fontSize: "14px",
+              lineHeight: 1.6,
+              margin: "0 0 10px",
+              maxWidth: "820px",
+            }}
+          >
+            Six trends carry a live news reading today. These themes are tracked and on
+            the roadmap, with native feeds still to be built:
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+            {COVERAGE_ROADMAP_THEMES.map((theme) => (
+              <span
+                key={theme}
+                style={{
+                  fontSize: "12px",
+                  color: "var(--qgi-text-dim)",
+                  border: "1px solid var(--qgi-border)",
+                  borderRadius: "999px",
+                  padding: "3px 10px",
+                  fontFamily: "ui-monospace, monospace",
+                }}
+              >
+                {theme}
+              </span>
+            ))}
+          </div>
+        </section>
+
+        {/* Cadence footer (single view now, so it lives at page level). */}
+        <footer
+          style={{
+            marginTop: "24px",
+            padding: "16px 0",
+            borderTop: "1px solid var(--qgi-border)",
+            fontSize: "11px",
+            color: "var(--qgi-text-dim)",
+            fontFamily: "ui-monospace, monospace",
+            letterSpacing: "0.3px",
+          }}
+        >
+          Scores refresh on each data release. New trends appear as their evidence base
+          grows.
+        </footer>
       </div>
     </div>
   );

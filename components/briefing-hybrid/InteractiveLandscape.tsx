@@ -1,22 +1,26 @@
 "use client";
 /**
- * InteractiveLandscape — the hybrid Briefing's centre-piece scatter chart.
+ * InteractiveLandscape, the hybrid Briefing's centre-piece scatter chart.
  *
  * Based on briefing-signal/QuadrantChart but with two filter dropdowns:
  *   - Country selector (All + every distinct country present in the data)
- *   - Topic selector  (All + every distinct topic present in the data)
+ *   - Trend selector   (All + every distinct trend present in the data)
  *
  * Selection behaviour:
  *   - All/All        → every dot rendered at normal opacity
  *   - Country only   → that country's dots brightened / enlarged; rest dimmed
- *   - Topic only     → that topic's dots brightened / enlarged; rest dimmed
- *   - Both           → the matching country×topic intersection dot gets a ring
+ *   - Trend only     → that trend's dots brightened / enlarged; rest dimmed
+ *   - Both           → the matching country×trend intersection dot gets a ring
  *                      and label; rest dimmed proportionally
  *
  * 2026-06-20: Verdict color key moved OUT of the ECharts legend and rendered
  * as HTML swatch chips in the controls row. ECharts legend removed to avoid
  * duplication. Active count badge removed. Panel description replaced with
  * plain-English copy.
+ *
+ * Plots the 6 live news trends x countries (Topics->Trends migration,
+ * 2026-07-04). Coming-soon trends carry no cells, so they are simply absent
+ * from the scatter; a small note beneath the chart names them.
  *
  * Rendered with ssr:false via dynamic import in InteractiveLandscapeWrapper.
  */
@@ -26,6 +30,8 @@ import ReactECharts from "echarts-for-react";
 import { useTheme } from "@/lib/hooks/useTheme";
 import { getEchartsTokens } from "@/lib/echarts-theme";
 import type { ScatterPoint } from "@/components/briefing-signal/QuadrantSection";
+import { GLOBAL_PERCENTILE_NOTE } from "@/lib/hf/news-scale";
+import { COMING_SOON_TREND_COLUMNS } from "@/lib/hf/trend-taxonomy";
 
 const VERDICT_COLORS = {
   ACTIVE: "#E05C5C",
@@ -37,7 +43,7 @@ const VERDICT_COLORS = {
 // Verdict key entries shown in the controls row (human-readable label).
 const VERDICT_KEY: { verdict: keyof typeof VERDICT_COLORS; label: string }[] = [
   { verdict: "ACTIVE", label: "Both Firing" },
-  { verdict: "LATENT", label: "Silent Alarm" },
+  { verdict: "LATENT", label: "Elevated & Quiet" },
   { verdict: "SIGNAL", label: "News-Only" },
   { verdict: "QUIET", label: "Quiet" },
 ];
@@ -50,6 +56,17 @@ interface Props {
 }
 
 const ALL = "All";
+
+// Elegant one-liner naming the curated columns that don't have a news feed
+// yet. Handles 1, 2 or 3+ entries (the list is expandable).
+function comingSoonNote(): string | null {
+  const labels = COMING_SOON_TREND_COLUMNS.map((c) => c.label);
+  if (labels.length === 0) return null;
+  if (labels.length === 1) return `${labels[0]}: news feed coming soon.`;
+  const head = labels.slice(0, -1).join(", ");
+  const last = labels[labels.length - 1];
+  return `${head} and ${last}: news feeds coming soon.`;
+}
 
 export function InteractiveLandscape({ points }: Props) {
   const { isDark } = useTheme();
@@ -328,9 +345,9 @@ export function InteractiveLandscape({ points }: Props) {
             lineHeight: 1.4,
           }}
         >
-          One dot per country-topic. Further right = louder in the news right now, higher
+          One dot per country-trend. Further right = louder in the news right now, higher
           = structure more like past crises. Use the menus or the status keys to spotlight
-          what matters.
+          what matters. {GLOBAL_PERCENTILE_NOTE}
         </p>
       </div>
 
@@ -369,11 +386,11 @@ export function InteractiveLandscape({ points }: Props) {
           ))}
         </select>
 
-        {/* Topic dropdown */}
+        {/* Trend dropdown */}
         <select
           value={selectedTopic}
           onChange={(e) => setSelectedTopic(e.target.value)}
-          aria-label="Filter by topic"
+          aria-label="Filter by trend"
           style={{
             fontFamily: "ui-monospace, monospace",
             fontSize: "11px",
@@ -389,7 +406,7 @@ export function InteractiveLandscape({ points }: Props) {
         >
           {topics.map((tp) => (
             <option key={tp} value={tp}>
-              {tp === ALL ? "All topics" : tp}
+              {tp === ALL ? "All trends" : tp}
             </option>
           ))}
         </select>
@@ -492,7 +509,7 @@ export function InteractiveLandscape({ points }: Props) {
           share this same panel) */}
       <div
         role="img"
-        aria-label="Signal landscape scatter: News Pressure (x) versus Structural Fair Value (y), one dot per country-topic."
+        aria-label="Signal landscape scatter: News Pressure (x) versus Structural Fair Value (y), one dot per country-trend."
         aria-describedby={isNarrow ? "landscape-yaxis-caption" : undefined}
       >
         {mounted ? (
@@ -503,12 +520,12 @@ export function InteractiveLandscape({ points }: Props) {
           />
         ) : (
           // Reserve the chart's height before mount so the breakpoint-dependent
-          // ECharts renders exactly once (no desktop→narrow margin flash / CLS).
+          // ECharts renders exactly once (no desktop to narrow margin flash / CLS).
           <div style={{ height: "440px", width: "100%" }} aria-hidden="true" />
         )}
       </div>
-      {/* On narrow phones the y-axis name is suppressed to save space — show it
-          as a plain caption beneath the chart instead. */}
+      {/* On narrow phones the y-axis name is suppressed to save space, so it is
+          shown as a plain caption beneath the chart instead. */}
       {isNarrow && (
         <div
           id="landscape-yaxis-caption"
@@ -523,6 +540,20 @@ export function InteractiveLandscape({ points }: Props) {
         >
           ↑ Structural Fair Value for {new Date().getFullYear()} (%)
         </div>
+      )}
+
+      {/* Coming-soon trends: no cells to plot yet, so name them once, plainly. */}
+      {comingSoonNote() && (
+        <p
+          style={{
+            fontSize: "11px",
+            color: "var(--qgi-text-dim)",
+            margin: "8px 0 0",
+            lineHeight: 1.5,
+          }}
+        >
+          {comingSoonNote()}
+        </p>
       )}
 
       {/* Quadrant guide — what each corner means, in plain English. Laid out
@@ -551,9 +582,9 @@ export function InteractiveLandscape({ points }: Props) {
           <QuadCard
             tint="rgba(91,126,153,0.07)"
             accent="#5B7E99"
-            title="Silent Alarm"
+            title="Elevated & Quiet"
             count={quadCounts.silentAlarm}
-            body="Structure high, news quiet. QGI flags it before the headlines do."
+            body="Structure high, news quiet — the two timeframes diverge."
           />
           <QuadCard
             tint="rgba(224,92,92,0.07)"

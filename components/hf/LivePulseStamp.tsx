@@ -116,9 +116,7 @@ export function LivePulseStamp({ compact = false }: LivePulseStampProps) {
         }}
       />
       <span style={{ color: "var(--qgi-text-muted)" }}>{c.label}</span>
-      {!compact && (
-        <span style={{ color: "var(--qgi-text-dim)" }}>· {c.hint}</span>
-      )}
+      {!compact && <span style={{ color: "var(--qgi-text-dim)" }}>· {c.hint}</span>}
     </span>
   );
 }
