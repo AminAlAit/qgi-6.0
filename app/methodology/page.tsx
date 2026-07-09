@@ -407,23 +407,23 @@ export default function MethodologyPage() {
             </p>
           </Section>
 
-          {/* The news layer — Topics + verdicts (HF merge 2026-06-10) */}
+          {/* The news layer — News Pulse + verdicts */}
           <Section id="news-layer" title="The news layer">
             <p
               className="text-sm leading-relaxed mb-3"
               style={{ color: "var(--qgi-text-muted)" }}
             >
               Trends are structural: shapes learned from decades of indicator history. The
-              news layer adds a second, faster reading.{" "}
-              <strong style={{ color: "var(--qgi-text)" }}>Topics</strong> are fourteen
-              news-native categories, from electoral politics to economic distress, each
-              connected to the trends it can confirm. For every covered country we measure
-              the <strong style={{ color: "var(--qgi-text)" }}>news pulse</strong> of each
-              topic monthly: the share of that country&apos;s global news coverage on that
-              theme, drawn from the GDELT Global Knowledge Graph and indexed against the
-              country&apos;s own eleven-year history. A pulse of 50 is that country&apos;s
-              normal; 100 is far above it. A country is only ever compared with itself, so
-              a loud news cycle in one place never drowns out a quiet one elsewhere.
+              news layer adds a second, faster reading from the open global news record.
+              For the trends that carry enough news to read on their own, we show a
+              per-trend <strong style={{ color: "var(--qgi-text)" }}>News Pulse</strong>:
+              a <strong style={{ color: "var(--qgi-text)" }}>news pressure</strong> score
+              from 0 to 100 for how prominent that trend is in a country&apos;s news this
+              month, counted as elevated from 60 upward. Six trends carry a live News
+              Pulse today; the remaining high-salience themes sit on a published coverage
+              roadmap on the Risk Board. The score is ranked across every covered country
+              and month, so a 70 reads high relative to how that trend has run everywhere,
+              not just locally.
             </p>
             <p
               className="text-sm leading-relaxed mb-3"
@@ -431,26 +431,28 @@ export default function MethodologyPage() {
             >
               The two readings never merge into one number. Both run from 0 to 100, and a
               reading counts as elevated from 60 upward. They combine into a verdict for
-              each country and topic:
+              each country and trend:
             </p>
             <ul
               className="space-y-2 text-sm leading-relaxed mb-3"
               style={{ color: "var(--qgi-text-muted)" }}
             >
               <li>
-                <strong style={{ color: "var(--qgi-warning)" }}>Active.</strong>{" "}
-                Structural resemblance and news pulse are both elevated. The combinations
-                to open first.
+                <strong style={{ color: "var(--qgi-warning)" }}>Both Firing.</strong>{" "}
+                Structural resemblance and news pressure are both elevated. The
+                combinations to open first.
               </li>
               <li>
-                <strong style={{ color: "var(--qgi-accent)" }}>Signal.</strong> The news
-                is loud but the structure is not primed. Often noise; worth a glance, not
-                an alarm.
+                <strong style={{ color: "var(--qgi-accent)" }}>News-Only.</strong> The
+                news is loud but the structure is not primed. Often noise; worth a glance,
+                not an alarm.
               </li>
               <li>
-                <strong style={{ color: "var(--qgi-text)" }}>Latent.</strong> The
-                structure is primed and the news has not arrived. Where attention pays
-                before the coverage does.
+                <strong style={{ color: "var(--qgi-text)" }}>
+                  Elevated &amp; Quiet.
+                </strong>{" "}
+                The structure is elevated while the news stays quiet: two readings on the
+                same country that don&apos;t always move together.
               </li>
               <li>
                 <strong style={{ color: "var(--qgi-text)" }}>Quiet.</strong> Neither
@@ -461,17 +463,18 @@ export default function MethodologyPage() {
               className="text-sm leading-relaxed"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              Each topic earns its standing against the verified event record, election by
-              election, crisis by crisis. Two are validated so far:{" "}
-              <strong style={{ color: "var(--qgi-text)" }}>Electoral</strong> and{" "}
-              <strong style={{ color: "var(--qgi-text)" }}>Economic</strong> pulses tend
-              to move ahead of their events by about two months. That lead was measured by
-              aligning every verified election and economic crisis across the covered
-              countries at month zero and reading the pulse in the months before; the lead
-              held, and for elections strengthened, when the pulse was recomputed using
-              only information available at the time. Themes whose pulse showed no lead,
-              such as conflict onsets, are not marked as leading. The rest are tracked and
-              scored while their validation runs. The layer reads {NEWS_COUNTRIES} countries
+              Each reading earns its standing against the verified event record, election
+              by election, crisis by crisis. The{" "}
+              <strong style={{ color: "var(--qgi-text)" }}>electoral</strong> and{" "}
+              <strong style={{ color: "var(--qgi-text)" }}>economic</strong> readings are
+              recall-validated: they light up consistently around known events of each
+              type across the covered countries. That was established by aligning every
+              verified election and economic crisis at month zero and measuring the news
+              pressure in the surrounding months; the signal holds, and for elections
+              strengthens, when recomputed using only information available at the time.
+              Trends whose news pressure showed no consistent signal around events are not
+              marked as validated, and some are shown news-only while their structural
+              reading is still being validated. The layer reads {NEWS_COUNTRIES} countries
               today and grows as the signal proves out.
             </p>
           </Section>

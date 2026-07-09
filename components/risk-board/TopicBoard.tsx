@@ -6,10 +6,10 @@
  * The structural grid answers "which countries resemble which trends".
  * This view answers "which of those readings the news is confirming right
  * now". Each country x topic cell carries one of four verdicts:
- *   Active  = structure primed AND news live   (act on it)
- *   Signal  = news spike without structure     (often noise)
- *   Latent  = structure primed, news quiet     (watch it)
- *   Quiet   = neither elevated
+ *   Both Firing     = structure primed AND news live   (act on it)
+ *   News-Only       = news spike without structure     (often noise)
+ *   Elevated & Quiet = structure primed, news quiet     (watch it)
+ *   Quiet           = neither elevated
  *
  * Three reading lenses, one per audience (founder ask 2026-06-10):
  *   Scan    — the returning analyst's 10-second sweep (rank by active count)
@@ -21,7 +21,7 @@
  * by structural resemblance x news pulse.
  *
  * Verdict colors ride the token system (no red, founder-ratified):
- * Active=warning amber, Signal=accent cyan, Latent=muted, Quiet=dim.
+ * Both Firing=warning amber, News-Only=accent cyan, Elevated & Quiet=muted, Quiet=dim.
  */
 
 import { useEffect, useMemo, useState } from "react";
@@ -41,6 +41,8 @@ import { useTheme } from "@/lib/hooks/useTheme";
 import { useMediaQuery } from "@/lib/hooks/useMediaQuery";
 import { getEchartsTokens } from "@/lib/echarts-theme";
 import type { HfBoard, HfCell, HfTopic, HfVerdict } from "@/lib/hf/topics-data";
+import type { TrendBoard } from "@/lib/hf/trend-board";
+import { GLOBAL_PERCENTILE_NOTE } from "@/lib/hf/news-scale";
 
 /* ── Verdict presentation ────────────────────────────────────────────── */
 
@@ -49,19 +51,19 @@ const VERDICT_STYLE: Record<
   { label: string; color: string; bg: string; border: string }
 > = {
   ACTIVE: {
-    label: "Active",
+    label: "Both Firing",
     color: "var(--qgi-warning)",
     bg: "color-mix(in srgb, var(--qgi-warning) 13%, transparent)",
     border: "color-mix(in srgb, var(--qgi-warning) 50%, transparent)",
   },
   SIGNAL: {
-    label: "Signal",
+    label: "News-Only",
     color: "var(--qgi-accent)",
     bg: "color-mix(in srgb, var(--qgi-accent) 12%, transparent)",
     border: "color-mix(in srgb, var(--qgi-accent) 50%, transparent)",
   },
   LATENT: {
-    label: "Latent",
+    label: "Elevated & Quiet",
     color: "var(--qgi-text-muted)",
     bg: "var(--qgi-surface-2)",
     border: "var(--qgi-border)",
@@ -89,18 +91,20 @@ const LENS_META: Record<Lens, { label: string; lede: string }> = {
   },
   primed: {
     label: "Primed & quiet",
-    lede: "The Latent readings: structure elevated, news quiet. Where the conditions exist before the coverage arrives.",
+    lede: "The Elevated & Quiet readings: structure elevated, news quiet. The conditions are in place while coverage stays light.",
   },
 };
 
 interface Props {
-  data: HfBoard;
+  data: TrendBoard;
 }
 
 export function TopicBoard({ data }: Props) {
   const [lens, setLensState] = useState<Lens>("scan");
   const [mode, setModeState] = useState<"grid" | "map">("grid");
-  const [mapTopic, setMapTopic] = useState<string>("T06");
+  // Empty default: QuadrantMap falls back to its first (live) topic, so this
+  // never needs to know a live trend's id up front.
+  const [mapTopic, setMapTopic] = useState<string>("");
 
   // Remember the last lens + view between sessions (persona ask). The rAF
   // defer follows the Sidebar's localStorage-sync idiom.
@@ -130,6 +134,16 @@ export function TopicBoard({ data }: Props) {
   };
 
   const topics = data.boardTopics;
+  // The 3 curated "coming soon" columns (no cells yet); the rest render live.
+  const comingSoon = new Set(data.comingSoon);
+  const liveTopics = topics.filter((t) => !comingSoon.has(t.id));
+  // The Quadrant map needs a structural (y) axis, so it further drops any
+  // news-only live trend (e.g. labor_action) whose struct reads null for
+  // every country. A data-driven check, not a hardcoded slug list, so it
+  // keeps working if the news-only set changes.
+  const mapTopics = liveTopics.filter((t) =>
+    data.countries.some((c) => (data.cells[`${c.iso3}|${t.id}`]?.struct ?? null) !== null)
+  );
 
   // One row per country: cells in topic order + per-lens rank metrics.
   const rows = useMemo(() => {
@@ -214,7 +228,7 @@ export function TopicBoard({ data }: Props) {
         Each cell combines a country&apos;s structural resemblance
         <InfoTooltip text="How closely the country's long-run indicators resemble the shape that ran ahead of this kind of event in the past, from 0 to 100. 60 and above counts as elevated." />{" "}
         with its monthly news pulse
-        <InfoTooltip text="How much of this country's news coverage is on this theme, measured against its own history. 50 is the country's normal month; 60 and above counts as elevated." />{" "}
+        <InfoTooltip text="How much of this country's news coverage is on this theme, from 0 to 100, ranked across every covered country and month. 60 and above counts as elevated." />{" "}
         into a single reading. Scan a row for which themes are running hot, or a column
         for which countries are drawing attention on one theme.
       </div>
@@ -306,13 +320,15 @@ export function TopicBoard({ data }: Props) {
             lineHeight: 1.5,
           }}
         >
-          {LENS_META[lens].lede}
+          {LENS_META[lens].lede}{" "}
+          <span style={{ color: "var(--qgi-text-muted)" }}>{GLOBAL_PERCENTILE_NOTE}</span>
         </p>
       )}
 
       {mode === "grid" ? (
         <VerdictGrid
           topics={topics}
+          comingSoon={comingSoon}
           rows={sortedRows}
           lens={lens}
           gridTemplate={gridTemplate}
@@ -321,43 +337,16 @@ export function TopicBoard({ data }: Props) {
       ) : (
         <QuadrantMap
           data={data}
-          topics={topics}
+          topics={mapTopics}
           mapTopic={mapTopic}
           onTopic={setMapTopic}
         />
       )}
 
-      {/* Legend */}
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems: "center",
-          gap: "14px",
-          marginTop: "14px",
-          fontSize: "11.5px",
-          color: "var(--qgi-text-muted)",
-        }}
-      >
-        {(Object.keys(VERDICT_STYLE) as HfVerdict[]).map((v) => (
-          <span
-            key={v}
-            style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
-          >
-            <span
-              aria-hidden="true"
-              style={{
-                width: "8px",
-                height: "8px",
-                borderRadius: "50%",
-                background: VERDICT_STYLE[v].color,
-              }}
-            />
-            {VERDICT_STYLE[v].label}
-            <InfoTooltip text={data.verdicts[v]} />
-          </span>
-        ))}
-        <span style={{ flex: 1 }} />
+      {/* Verdict labels already render on every cell, so the legend row that
+          used to repeat them below the board was dropped (Topics->Trends
+          migration cleanup, 2026-07-04); the methodology link stands alone. */}
+      <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "14px" }}>
         <Link
           href={"/methodology#news-layer" as Route}
           target="_blank"
@@ -382,9 +371,9 @@ export function TopicBoard({ data }: Props) {
           letterSpacing: "0.3px",
         }}
       >
-        Covering {data.countries.length} countries across {data.boardTopics.length} themes
-        today; new ones enter as their signals validate. Pulse updates monthly; structural
-        scores refresh each release.
+        Covering {data.countries.length} countries across {liveTopics.length} live trends
+        today; {comingSoon.size} more are tracked with feeds pending. Pulse updates
+        monthly; structural scores refresh each release.
       </div>
     </div>
   );
@@ -487,26 +476,30 @@ function HeroStrip({
  *  ranking, so the rightmost column always answers the active lens's
  *  question (review finding). */
 const SUMMARY_HEADER: Record<Lens, string> = {
-  scan: "Active",
+  scan: "Both Firing",
   surge: "Jump",
   primed: "Primed",
 };
 
 const SUMMARY_TOOLTIP: Record<Lens, string> = {
-  scan: "How many of this country's themes read Active right now: structure primed and news running together.",
+  scan: "How many of this country's themes read Both Firing right now: structure primed and news running together.",
   surge:
     "This country's biggest single-theme rise in news pulse versus last month, in points on the 0 to 100 pulse scale.",
-  primed: "How many themes read Latent: structure elevated while the news stays quiet.",
+  primed:
+    "How many themes read Elevated & Quiet: structure elevated while the news stays quiet.",
 };
 
 function VerdictGrid({
   topics,
+  comingSoon,
   rows,
   lens,
   gridTemplate,
   history,
 }: {
   topics: HfTopic[];
+  /** Ids of the curated "coming soon" columns (no cells yet). */
+  comingSoon: Set<string>;
   rows: Array<{
     country: { name: string; iso3: string; linkable: boolean };
     cells: Array<HfCell | null>;
@@ -518,11 +511,11 @@ function VerdictGrid({
   gridTemplate: string;
   history: HfBoard["history"];
 }) {
-  // Below 1024px the 14-topic matrix can't fit a phone, so it scrolls
+  // Below 1024px the trend matrix can't fit a phone, so it scrolls
   // horizontally inside a clip frame; the header can't be page-sticky there
   // (an overflow-x:auto ancestor breaks sticky-to-page). On desktop we keep
   // main's design: overflow:visible container + a page-sticky header so the
-  // topic columns stay labelled while scrolling 30 country rows.
+  // trend columns stay labelled while scrolling 30 country rows.
   const isMobile = useMediaQuery("(max-width: 1023px)");
   const headerSticky: React.CSSProperties = isMobile
     ? {}
@@ -552,42 +545,49 @@ function VerdictGrid({
         }}
       >
         <div style={{ padding: "10px 14px", borderRight: "1px solid var(--qgi-border)" }}>
-          Country ↓ · Topic →
+          Country ↓ · Trend →
         </div>
-        {topics.map((t) => (
-          <div
-            key={t.id}
-            style={{
-              padding: "8px 6px",
-              textAlign: "center",
-              borderRight: "1px solid var(--qgi-border)",
-              lineHeight: 1.4,
-            }}
-          >
-            <span style={{ color: "var(--qgi-text-muted)", whiteSpace: "nowrap" }}>
-              {t.label}
-              <InfoTooltip
-                text={`${t.name}. ${t.scope} ${
-                  t.validated
-                    ? "Validated: its news pulse tends to move ahead of related events by about two months."
-                    : "Tracked and scored; validation against the event record is ongoing."
-                }`}
-              />
-            </span>
-            {t.validated && (
-              <div
+        {topics.map((t) => {
+          const soon = comingSoon.has(t.id);
+          return (
+            <div
+              key={t.id}
+              style={{
+                padding: "8px 6px",
+                textAlign: "center",
+                borderRight: "1px solid var(--qgi-border)",
+                lineHeight: 1.4,
+              }}
+            >
+              <span
                 style={{
-                  fontSize: "9.5px",
-                  color: "var(--qgi-success)",
-                  letterSpacing: "0.5px",
-                  marginTop: "2px",
+                  display: "inline-flex",
+                  flexWrap: "wrap",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "2px 5px",
+                  color: soon ? "var(--qgi-text-dim)" : "var(--qgi-text-muted)",
                 }}
               >
-                ▲ Leads ~2 mo
-              </div>
-            )}
-          </div>
-        ))}
+                {/* No whiteSpace: nowrap here: 9 narrower columns + multi-word
+                    trend names (e.g. "Migration & Refugees") need to wrap
+                    instead of overrunning the next column (QA finding,
+                    Topics->Trends migration). */}
+                {t.label}
+                {soon ? (
+                  <>
+                    <SoonPill />
+                    <InfoTooltip text={`${t.name}: tracked, feed pending.`} />
+                  </>
+                ) : (
+                  <InfoTooltip
+                    text={`${t.name}. Tracked and scored; validation against the event record is ongoing.`}
+                  />
+                )}
+              </span>
+            </div>
+          );
+        })}
         <div style={{ padding: "10px 6px", textAlign: "center" }}>
           {SUMMARY_HEADER[lens]}
           <InfoTooltip text={SUMMARY_TOOLTIP[lens]} />
@@ -612,6 +612,7 @@ function VerdictGrid({
               lens={lens}
               country={row.country}
               topic={topics[ci]}
+              comingSoon={comingSoon.has(topics[ci].id)}
               spark={history[`${row.country.iso3}|${topics[ci].id}`]?.pulse}
             />
           ))}
@@ -623,7 +624,8 @@ function VerdictGrid({
 
   if (isMobile) {
     // Mobile (<1024px): horizontal-scroll the matrix inside a rounded clip
-    // frame (14 topics don't fit a phone). Header is not page-sticky here.
+    // frame (the trend columns don't fit a phone). Header is not page-sticky
+    // here.
     return (
       <>
         <div
@@ -636,7 +638,7 @@ function VerdictGrid({
         >
           <div style={{ overflowX: "auto" }}>
             {/* min-width so the scroller always has content wider than a phone.
-                200px label + topics × 44px + 72px summary. */}
+                200px label + trends × 44px + 72px summary. */}
             <div style={{ minWidth: `${200 + topics.length * 44 + 72}px` }}>{matrix}</div>
           </div>
         </div>
@@ -650,14 +652,15 @@ function VerdictGrid({
             textAlign: "center",
           }}
         >
-          ← scroll sideways to see all topics →
+          ← scroll sideways to see all trends →
         </p>
       </>
     );
   }
 
   // Desktop (>=1024px): main's design — overflow:visible so the header can be
-  // page-sticky while scrolling 30 country rows. The 14 topics fit; no h-scroll.
+  // page-sticky while scrolling 30 country rows. The trend columns fit; no
+  // h-scroll.
   return (
     <div
       style={{
@@ -760,19 +763,76 @@ function CountryNameCell({
   );
 }
 
+/** Small, quiet chip for the 3 curated "coming soon" trend columns. */
+function SoonPill() {
+  return (
+    <span
+      aria-hidden="true"
+      style={{
+        fontSize: "8.5px",
+        padding: "1px 6px",
+        borderRadius: "3px",
+        background: "color-mix(in srgb, var(--qgi-accent-dim) 10%, transparent)",
+        border: "1px dashed var(--qgi-text-dim)",
+        color: "var(--qgi-text-dim)",
+        fontFamily: "ui-monospace, monospace",
+        letterSpacing: "0.5px",
+        textTransform: "uppercase",
+        whiteSpace: "nowrap",
+      }}
+    >
+      Soon
+    </span>
+  );
+}
+
 function TopicCell({
   cell,
   lens,
   country,
   topic,
   spark,
+  comingSoon = false,
 }: {
   cell: HfCell | null;
   lens: Lens;
   country: { name: string; iso3: string; linkable: boolean };
   topic: HfTopic;
   spark?: number[];
+  /** Curated "coming soon" column: no cell will ever arrive here yet. */
+  comingSoon?: boolean;
 }) {
+  if (comingSoon) {
+    // Quiet placeholder, not a dash: reads as "tracked, feed pending" rather
+    // than "missing data" (review finding, Topics->Trends migration).
+    const label = `${topic.label}: tracked, feed pending.`;
+    return (
+      <div
+        title={label}
+        role="note"
+        aria-label={label}
+        style={{
+          padding: "7px 8px",
+          borderRight: "1px solid var(--qgi-border)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "56px",
+          opacity: 0.4,
+        }}
+      >
+        <span
+          aria-hidden="true"
+          style={{
+            width: "5px",
+            height: "5px",
+            borderRadius: "50%",
+            background: "var(--qgi-text-dim)",
+          }}
+        />
+      </div>
+    );
+  }
   if (!cell) {
     return (
       <div
@@ -794,8 +854,8 @@ function TopicCell({
   const delta = cell.prevPulse !== null ? cell.pulse - cell.prevPulse : null;
   // Lens emphasis lives on the CELL BACKGROUND, never the pill: verdict
   // pills keep constant weight and color in every lens so the legend's
-  // promise holds (review finding). Primed & quiet highlights its Latent
-  // cells with a soft surface tint.
+  // promise holds (review finding). Primed & quiet highlights its
+  // Elevated & Quiet cells with a soft surface tint.
   const emphasized = lens === "primed" && cell.verdict === "LATENT";
 
   const title = `${country.name} · ${topic.label}: structural ${Math.round(cell.struct ?? 0)}, news pulse ${Math.round(cell.pulse)}${
@@ -967,7 +1027,7 @@ function QuadrantMap({
     xAxis: {
       min: 0,
       max: 100,
-      name: "HOW LOUD THE NEWS IS",
+      name: "How Loud The News Is",
       nameLocation: "middle",
       nameGap: 30,
       nameTextStyle: { color: t.textDim, fontSize: 10, letterSpacing: 1.5 },
@@ -980,7 +1040,7 @@ function QuadrantMap({
     yAxis: {
       min: structMin,
       max: 100,
-      name: "RESEMBLANCE TO HISTORICAL CASES",
+      name: "Resemblance To Historical Cases",
       nameLocation: "middle",
       nameGap: 36,
       nameTextStyle: { color: t.textDim, fontSize: 10, letterSpacing: 1.5 },
@@ -989,9 +1049,9 @@ function QuadrantMap({
       axisLabel: { color: t.textMuted, fontSize: 10.5 },
     },
     graphic: [
-      quadLabel(0.97, 0.06, "Active", t.warning, "right"),
-      quadLabel(0.08, 0.06, "Latent", t.textMuted, "left"),
-      quadLabel(0.97, 0.84, "Signal", t.accent, "right"),
+      quadLabel(0.97, 0.06, "Both Firing", t.warning, "right"),
+      quadLabel(0.08, 0.06, "Elevated & Quiet", t.textMuted, "left"),
+      quadLabel(0.97, 0.84, "News-Only", t.accent, "right"),
       quadLabel(0.08, 0.84, "Quiet", t.textDim, "left"),
     ],
     series: [
@@ -1003,8 +1063,8 @@ function QuadrantMap({
         cursor: "pointer",
         // Shift colliding country labels apart instead of letting them
         // overprint (review finding: NigeriaThailand ran together). shiftXY
-        // (not shiftY) so 30 flags clustering in the Active corner can spread
-        // on both axes.
+        // (not shiftY) so 30 flags clustering in the Both Firing corner can
+        // spread on both axes.
         labelLayout: { moveOverlap: "shiftXY" as const },
         markLine: {
           silent: true,
@@ -1046,7 +1106,6 @@ function QuadrantMap({
                 cursor: "pointer",
               }}
             >
-              {x.validated ? "▲ " : ""}
               {x.label}
             </button>
           );
@@ -1060,16 +1119,14 @@ function QuadrantMap({
           lineHeight: 1.5,
         }}
       >
-        <span style={{ color: "var(--qgi-warning)" }}>Active</span>
+        <span style={{ color: "var(--qgi-warning)" }}>Both Firing</span>
         {" = both elevated · "}
-        <span style={{ color: "var(--qgi-accent)" }}>Signal</span>
+        <span style={{ color: "var(--qgi-accent)" }}>News-Only</span>
         {" = news without structure · "}
-        <span style={{ color: "var(--qgi-text-muted)" }}>Latent</span>
+        <span style={{ color: "var(--qgi-text-muted)" }}>Elevated & Quiet</span>
         {" = structure without news · "}
         <span style={{ color: "var(--qgi-text-dim)" }}>Quiet</span>
         {" = neither."}
-        <br />
-        {"▲ Themes with a validated news lead of about two months."}
       </p>
       <ReactECharts
         option={option}
@@ -1096,7 +1153,9 @@ function quadLabel(
     left: align === "left" ? `${xr * 100}%` : undefined,
     right: align === "right" ? `${(1 - xr) * 100}%` : undefined,
     top: `${yr * 100}%`,
-    style: { text, fill, fontSize: 12, fontWeight: "bold" as const },
+    // fontSize trimmed from 12 to 11 (was sized for "Active"/"Signal"; the
+    // canonical labels run longer, e.g. "Elevated & Quiet").
+    style: { text, fill, fontSize: 11, fontWeight: "bold" as const },
     z: 1,
   };
 }

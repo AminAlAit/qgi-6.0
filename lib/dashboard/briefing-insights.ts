@@ -19,7 +19,7 @@
 import "server-only";
 
 import detail from "@/data/hf-pulse-detail.json";
-import { getHfBoard } from "@/lib/hf/topics-data";
+import { getTrendBoard } from "@/lib/hf/trend-board";
 import type { HfVerdict, HfCell, HfBoard } from "@/lib/hf/topics-data";
 
 // ── Thresholds ────────────────────────────────────────────────────────────────
@@ -263,7 +263,7 @@ function computeLoudestTopic(
  * no await. Re-derives on every ISR revalidation.
  */
 export function deriveBriefingInsights(): BriefingInsights {
-  const board = getHfBoard();
+  const board = getTrendBoard();
   const cells = board.cells;
   const longHistory = rawDetail.history;
 

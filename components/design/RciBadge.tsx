@@ -53,7 +53,7 @@ export function RciBadge({
   }
   if (entry.n_total > 0) {
     tooltipParts.push(
-      `${entry.n_total.toLocaleString()} samples (${entry.n_pos} positive)`
+      `${entry.n_total.toLocaleString("en-US")} samples (${entry.n_pos} positive)`
     );
   }
   if (entry.n_mnar_flagged > 0) {

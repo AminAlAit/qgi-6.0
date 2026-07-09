@@ -238,7 +238,7 @@ export default function MethodologyGprPage() {
                 We checked how many of each country&rsquo;s sharpest risk jumps QGI-GPR
                 also flagged as elevated. It caught {PCT_SPIKES}% of them &mdash; about
                 2.4 times what chance alone would produce, the result that matters most
-                for early warning.
+                for situational awareness.
               </TestCard>
               <TestCard title="Tested against itself, three ways">
                 The headline finding held when we widened the risk vocabulary, and a
