@@ -1,0 +1,331 @@
+{
+  "recipe_id": "territorial_disputes",
+  "arm": "run3method",
+  "B_used": 24,
+  "stop_reason": "b_ceiling_reached",
+  "pi": {
+    "v2pepwrgen": 0.08333333333333333,
+    "IT.CEL.SETS.P2": 0.041666666666666664,
+    "NV.AGR.TOTL.ZS": 0.041666666666666664,
+    "SM.POP.NETM": 0.041666666666666664,
+    "v2jucomp": 0.16666666666666666,
+    "NY.GNP.PCAP.CD": 0.16666666666666666,
+    "v2regendtype": 0.041666666666666664,
+    "v2stfisccap": 0.08333333333333333,
+    "v2svinlaut": 0.08333333333333333,
+    "v2x_gender": 0.041666666666666664,
+    "v2x_execorr": 0.125,
+    "v2mecenefm": 0.08333333333333333,
+    "v2exembez": 0.16666666666666666,
+    "v2x_veracc": 0.041666666666666664,
+    "AG.PRD.FOOD.XD": 0.041666666666666664,
+    "v2mebias": 0.041666666666666664,
+    "OWID_AUTOCRATIZATION": 0.041666666666666664,
+    "v2x_diagacc": 0.041666666666666664,
+    "v2x_cspart": 0.041666666666666664,
+    "v2x_clpriv": 0.041666666666666664,
+    "OWID_STATECAP": 0.041666666666666664,
+    "v2x_corr": 0.041666666666666664,
+    "NY.GDP.PCAP.CD": 0.041666666666666664,
+    "v2csprtcpt": 0.08333333333333333,
+    "v2svstterr": 0.08333333333333333,
+    "UNHCR_REF_COA": 0.041666666666666664,
+    "v2exremhog": 0.041666666666666664,
+    "v2xlg_legcon": 0.041666666666666664,
+    "v2pepwrses": 0.041666666666666664,
+    "NE.IMP.GNFS.ZS": 0.041666666666666664,
+    "NE.CON.GOVT.ZS": 0.041666666666666664,
+    "v2regdur": 0.041666666666666664,
+    "v2cacamps": 0.08333333333333333,
+    "v2juhccomp": 0.041666666666666664,
+    "v2lgqstexp": 0.041666666666666664,
+    "SP.POP.0014.TO.ZS": 0.08333333333333333,
+    "v2jucorrdc": 0.08333333333333333,
+    "v2x_rule": 0.041666666666666664,
+    "SP.POP.TOTL": 0.08333333333333333,
+    "SH.DYN.MORT": 0.08333333333333333,
+    "v2pepwrsoc": 0.041666666666666664,
+    "OWID_POP_YOUNG": 0.041666666666666664,
+    "v2svdomaut": 0.041666666666666664,
+    "UCDP_SB_ONSET": 0.041666666666666664,
+    "NE.EXP.GNFS.ZS": 0.041666666666666664,
+    "NY.GDP.MKTP.CD": 0.125,
+    "NY.GDP.TOTL.RT.ZS": 0.041666666666666664,
+    "ET-001": 0.041666666666666664,
+    "v2csantimv": 0.041666666666666664,
+    "SP.DYN.TFRT.IN": 0.08333333333333333,
+    "FI.RES.TOTL.CD": 0.041666666666666664,
+    "v2xnp_regcorr": 0.041666666666666664,
+    "v2clkill": 0.041666666666666664,
+    "v2cltrnslw": 0.041666666666666664,
+    "v2cltort": 0.041666666666666664
+  },
+  "stable_set": [],
+  "reference_set": [
+    "NY.GNP.PCAP.CD",
+    "v2strenarm"
+  ],
+  "resample_selected_sets": [
+    [
+      "IT.CEL.SETS.P2",
+      "v2pepwrgen"
+    ],
+    [
+      "v2jucomp",
+      "NY.GNP.PCAP.CD",
+      "SM.POP.NETM",
+      "NV.AGR.TOTL.ZS"
+    ],
+    [
+      "v2stfisccap",
+      "v2regendtype"
+    ],
+    [
+      "v2x_execorr",
+      "v2svinlaut",
+      "v2mecenefm",
+      "v2x_gender",
+      "v2exembez"
+    ],
+    [
+      "v2x_veracc",
+      "v2mebias",
+      "v2x_execorr",
+      "v2jucomp",
+      "AG.PRD.FOOD.XD"
+    ],
+    [
+      "v2x_diagacc",
+      "v2x_cspart",
+      "v2x_clpriv",
+      "OWID_AUTOCRATIZATION"
+    ],
+    [
+      "v2x_corr",
+      "OWID_STATECAP",
+      "v2jucomp"
+    ],
+    [
+      "UNHCR_REF_COA",
+      "NY.GDP.PCAP.CD",
+      "v2exembez",
+      "v2svstterr",
+      "v2csprtcpt"
+    ],
+    [
+      "v2exremhog"
+    ],
+    [
+      "NE.CON.GOVT.ZS",
+      "v2pepwrses",
+      "v2xlg_legcon",
+      "NE.IMP.GNFS.ZS"
+    ],
+    [
+      "SP.POP.0014.TO.ZS",
+      "v2juhccomp",
+      "v2lgqstexp",
+      "v2regdur",
+      "v2svstterr",
+      "NY.GNP.PCAP.CD",
+      "v2cacamps"
+    ],
+    [
+      "v2svinlaut",
+      "v2jucorrdc",
+      "SP.POP.TOTL",
+      "v2exembez",
+      "v2x_rule",
+      "v2x_execorr"
+    ],
+    [
+      "v2jucorrdc",
+      "v2csprtcpt"
+    ],
+    [
+      "UCDP_SB_ONSET",
+      "v2pepwrsoc",
+      "SH.DYN.MORT",
+      "OWID_POP_YOUNG",
+      "v2exembez",
+      "v2pepwrgen",
+      "v2svdomaut"
+    ],
+    [
+      "NE.EXP.GNFS.ZS"
+    ],
+    [
+      "NY.GDP.TOTL.RT.ZS",
+      "v2cacamps",
+      "NY.GDP.MKTP.CD"
+    ],
+    [
+      "ET-001",
+      "SP.POP.TOTL"
+    ],
+    [
+      "NY.GDP.MKTP.CD"
+    ],
+    [
+      "SP.DYN.TFRT.IN",
+      "v2csantimv"
+    ],
+    [
+      "v2mecenefm",
+      "v2stfisccap",
+      "NY.GNP.PCAP.CD",
+      "v2jucomp"
+    ],
+    [
+      "FI.RES.TOTL.CD",
+      "NY.GDP.MKTP.CD"
+    ],
+    [
+      "v2xnp_regcorr",
+      "v2clkill",
+      "SH.DYN.MORT"
+    ],
+    [
+      "SP.DYN.TFRT.IN",
+      "v2cltrnslw",
+      "v2cltort",
+      "SP.POP.0014.TO.ZS"
+    ],
+    [
+      "NY.GNP.PCAP.CD"
+    ]
+  ],
+  "per_checkpoint": [
+    {
+      "B": 12,
+      "keepset": [],
+      "pi_snapshot": {
+        "AG.PRD.FOOD.XD": 0.08333333333333333,
+        "IT.CEL.SETS.P2": 0.08333333333333333,
+        "NE.CON.GOVT.ZS": 0.08333333333333333,
+        "NE.IMP.GNFS.ZS": 0.08333333333333333,
+        "NV.AGR.TOTL.ZS": 0.08333333333333333,
+        "NY.GDP.PCAP.CD": 0.08333333333333333,
+        "NY.GNP.PCAP.CD": 0.16666666666666666,
+        "OWID_AUTOCRATIZATION": 0.08333333333333333,
+        "OWID_STATECAP": 0.08333333333333333,
+        "SM.POP.NETM": 0.08333333333333333,
+        "SP.POP.0014.TO.ZS": 0.08333333333333333,
+        "SP.POP.TOTL": 0.08333333333333333,
+        "UNHCR_REF_COA": 0.08333333333333333,
+        "v2cacamps": 0.08333333333333333,
+        "v2csprtcpt": 0.08333333333333333,
+        "v2exembez": 0.25,
+        "v2exremhog": 0.08333333333333333,
+        "v2jucomp": 0.25,
+        "v2jucorrdc": 0.08333333333333333,
+        "v2juhccomp": 0.08333333333333333,
+        "v2lgqstexp": 0.08333333333333333,
+        "v2mebias": 0.08333333333333333,
+        "v2mecenefm": 0.08333333333333333,
+        "v2pepwrgen": 0.08333333333333333,
+        "v2pepwrses": 0.08333333333333333,
+        "v2regdur": 0.08333333333333333,
+        "v2regendtype": 0.08333333333333333,
+        "v2stfisccap": 0.08333333333333333,
+        "v2svinlaut": 0.16666666666666666,
+        "v2svstterr": 0.16666666666666666,
+        "v2x_clpriv": 0.08333333333333333,
+        "v2x_corr": 0.08333333333333333,
+        "v2x_cspart": 0.08333333333333333,
+        "v2x_diagacc": 0.08333333333333333,
+        "v2x_execorr": 0.25,
+        "v2x_gender": 0.08333333333333333,
+        "v2x_rule": 0.08333333333333333,
+        "v2x_veracc": 0.08333333333333333,
+        "v2xlg_legcon": 0.08333333333333333
+      },
+      "max_abs_delta_pi_vs_prev": null,
+      "keepset_jaccard_vs_prev": null,
+      "stop_criteria_satisfied": false
+    },
+    {
+      "B": 24,
+      "keepset": [],
+      "pi_snapshot": {
+        "AG.PRD.FOOD.XD": 0.041666666666666664,
+        "ET-001": 0.041666666666666664,
+        "FI.RES.TOTL.CD": 0.041666666666666664,
+        "IT.CEL.SETS.P2": 0.041666666666666664,
+        "NE.CON.GOVT.ZS": 0.041666666666666664,
+        "NE.EXP.GNFS.ZS": 0.041666666666666664,
+        "NE.IMP.GNFS.ZS": 0.041666666666666664,
+        "NV.AGR.TOTL.ZS": 0.041666666666666664,
+        "NY.GDP.MKTP.CD": 0.125,
+        "NY.GDP.PCAP.CD": 0.041666666666666664,
+        "NY.GDP.TOTL.RT.ZS": 0.041666666666666664,
+        "NY.GNP.PCAP.CD": 0.16666666666666666,
+        "OWID_AUTOCRATIZATION": 0.041666666666666664,
+        "OWID_POP_YOUNG": 0.041666666666666664,
+        "OWID_STATECAP": 0.041666666666666664,
+        "SH.DYN.MORT": 0.08333333333333333,
+        "SM.POP.NETM": 0.041666666666666664,
+        "SP.DYN.TFRT.IN": 0.08333333333333333,
+        "SP.POP.0014.TO.ZS": 0.08333333333333333,
+        "SP.POP.TOTL": 0.08333333333333333,
+        "UCDP_SB_ONSET": 0.041666666666666664,
+        "UNHCR_REF_COA": 0.041666666666666664,
+        "v2cacamps": 0.08333333333333333,
+        "v2clkill": 0.041666666666666664,
+        "v2cltort": 0.041666666666666664,
+        "v2cltrnslw": 0.041666666666666664,
+        "v2csantimv": 0.041666666666666664,
+        "v2csprtcpt": 0.08333333333333333,
+        "v2exembez": 0.16666666666666666,
+        "v2exremhog": 0.041666666666666664,
+        "v2jucomp": 0.16666666666666666,
+        "v2jucorrdc": 0.08333333333333333,
+        "v2juhccomp": 0.041666666666666664,
+        "v2lgqstexp": 0.041666666666666664,
+        "v2mebias": 0.041666666666666664,
+        "v2mecenefm": 0.08333333333333333,
+        "v2pepwrgen": 0.08333333333333333,
+        "v2pepwrses": 0.041666666666666664,
+        "v2pepwrsoc": 0.041666666666666664,
+        "v2regdur": 0.041666666666666664,
+        "v2regendtype": 0.041666666666666664,
+        "v2stfisccap": 0.08333333333333333,
+        "v2svdomaut": 0.041666666666666664,
+        "v2svinlaut": 0.08333333333333333,
+        "v2svstterr": 0.08333333333333333,
+        "v2x_clpriv": 0.041666666666666664,
+        "v2x_corr": 0.041666666666666664,
+        "v2x_cspart": 0.041666666666666664,
+        "v2x_diagacc": 0.041666666666666664,
+        "v2x_execorr": 0.125,
+        "v2x_gender": 0.041666666666666664,
+        "v2x_rule": 0.041666666666666664,
+        "v2x_veracc": 0.041666666666666664,
+        "v2xlg_legcon": 0.041666666666666664,
+        "v2xnp_regcorr": 0.041666666666666664
+      },
+      "max_abs_delta_pi_vs_prev": 0.125,
+      "keepset_jaccard_vs_prev": 1.0,
+      "stop_criteria_satisfied": false
+    }
+  ],
+  "loco_auc": NaN,
+  "ci95_lo": null,
+  "ci95_hi": null,
+  "oof": [],
+  "n_pos": 162,
+  "final_indicator_count": 0,
+  "dedup_cluster_map": {},
+  "config_signature": "79dea9e2dde54c992ea4626b93fe4029607b2663ace1aabd0acfa850bdadeb75",
+  "git_commit": "a7a0513609e0089e63a179ab43d9e471d6968624",
+  "pool_hash": "408d2740fa903ae1",
+  "seed_base": 12345,
+  "source_fingerprint": "28913a527d605e6b7a56a210c27f436c8ff97349311affc5a1c8b8e456113676",
+  "chosen_window": null,
+  "b_schedule": [
+    12,
+    24
+  ],
+  "abs_r_threshold": 0.85,
+  "pi_keep_threshold": 0.6
+}

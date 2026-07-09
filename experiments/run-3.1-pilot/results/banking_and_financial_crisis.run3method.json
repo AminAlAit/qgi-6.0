@@ -1,0 +1,294 @@
+{
+  "recipe_id": "banking_and_financial_crisis",
+  "arm": "run3method",
+  "B_used": 24,
+  "stop_reason": "b_ceiling_reached",
+  "pi": {
+    "MS.MIL.MPRT.KD": 0.041666666666666664,
+    "v2x_corr": 0.08333333333333333,
+    "v2jupurge": 0.041666666666666664,
+    "v2clrspct": 0.125,
+    "v2cltort": 0.041666666666666664,
+    "NY.GDP.DEFL.KD.ZG": 0.16666666666666666,
+    "UNHCR_FORCDISP_TOTAL": 0.041666666666666664,
+    "EG.IMP.CONS.ZS": 0.041666666666666664,
+    "v2exl_legitlead": 0.125,
+    "v2x_execorr": 0.041666666666666664,
+    "v2jureform": 0.041666666666666664,
+    "v2x_gender": 0.041666666666666664,
+    "BM.TRF.PWKR.CD.DT": 0.125,
+    "SP.DYN.LE00.IN": 0.125,
+    "FD.AST.PRVT.GD.ZS": 0.08333333333333333,
+    "v2x_jucon": 0.041666666666666664,
+    "v2juhcind": 0.041666666666666664,
+    "v2pepwrort": 0.08333333333333333,
+    "v2x_libdem": 0.041666666666666664,
+    "v2xeg_eqprotec": 0.08333333333333333,
+    "v2juaccnt": 0.041666666666666664,
+    "v2mebias": 0.041666666666666664,
+    "v2merange": 0.041666666666666664,
+    "v2pepwrgen": 0.041666666666666664,
+    "BM.KLT.DINV.WD.GD.ZS": 0.125,
+    "v2x_freexp": 0.041666666666666664,
+    "v2x_freexp_altinf": 0.041666666666666664,
+    "v2x_neopat": 0.125,
+    "AG.PRD.FOOD.XD": 0.041666666666666664,
+    "NY.GNP.PCAP.CD": 0.041666666666666664,
+    "GC.XPN.INTP.RV.ZS": 0.041666666666666664,
+    "v2clkill": 0.08333333333333333,
+    "EN.GHG.CO2.PC.CE.AR5": 0.041666666666666664,
+    "GC.NLD.TOTL.GD.ZS": 0.041666666666666664,
+    "GC.NFN.TOTL.GD.ZS": 0.041666666666666664,
+    "v2csreprss": 0.041666666666666664,
+    "NE.IMP.GNFS.CD": 0.08333333333333333,
+    "BX.KLT.DINV.WD.GD.ZS": 0.041666666666666664,
+    "NE.CON.GOVT.ZS": 0.041666666666666664,
+    "v2jupoatck": 0.041666666666666664,
+    "NV.SRV.TOTL.ZS": 0.041666666666666664,
+    "v2catrauni": 0.041666666666666664,
+    "v2x_veracc": 0.041666666666666664,
+    "v2cseeorgs": 0.041666666666666664,
+    "v2csantimv": 0.041666666666666664,
+    "NY.GDP.MKTP.KD": 0.041666666666666664,
+    "OWID_REGIMETYPE": 0.041666666666666664,
+    "SM.POP.NETM": 0.041666666666666664
+  },
+  "stable_set": [],
+  "reference_set": [
+    "FD.AST.PRVT.GD.ZS",
+    "NE.EXP.GNFS.CD",
+    "NV.SRV.TOTL.ZS",
+    "NY.GDP.DEFL.KD.ZG"
+  ],
+  "resample_selected_sets": [
+    [
+      "MS.MIL.MPRT.KD",
+      "v2jupurge",
+      "v2x_corr"
+    ],
+    [
+      "UNHCR_FORCDISP_TOTAL",
+      "NY.GDP.DEFL.KD.ZG",
+      "v2cltort",
+      "v2clrspct"
+    ],
+    [
+      "EG.IMP.CONS.ZS"
+    ],
+    [
+      "NY.GDP.DEFL.KD.ZG"
+    ],
+    [
+      "v2x_execorr",
+      "v2exl_legitlead"
+    ],
+    [
+      "BM.TRF.PWKR.CD.DT",
+      "v2x_gender",
+      "v2jureform"
+    ],
+    [
+      "FD.AST.PRVT.GD.ZS",
+      "SP.DYN.LE00.IN",
+      "v2x_jucon"
+    ],
+    [
+      "v2x_libdem",
+      "v2exl_legitlead",
+      "v2pepwrort",
+      "v2juhcind"
+    ],
+    [
+      "v2xeg_eqprotec"
+    ],
+    [
+      "SP.DYN.LE00.IN",
+      "BM.TRF.PWKR.CD.DT",
+      "v2juaccnt"
+    ],
+    [
+      "FD.AST.PRVT.GD.ZS",
+      "v2merange",
+      "v2mebias"
+    ],
+    [
+      "BM.KLT.DINV.WD.GD.ZS",
+      "v2xeg_eqprotec",
+      "v2pepwrgen",
+      "NY.GDP.DEFL.KD.ZG"
+    ],
+    [
+      "v2x_freexp",
+      "NY.GNP.PCAP.CD",
+      "v2x_freexp_altinf",
+      "AG.PRD.FOOD.XD",
+      "v2x_neopat"
+    ],
+    [
+      "GC.XPN.INTP.RV.ZS",
+      "v2clkill"
+    ],
+    [
+      "EN.GHG.CO2.PC.CE.AR5",
+      "v2x_neopat"
+    ],
+    [
+      "GC.NFN.TOTL.GD.ZS",
+      "GC.NLD.TOTL.GD.ZS",
+      "v2x_corr"
+    ],
+    [
+      "NE.IMP.GNFS.CD",
+      "v2csreprss",
+      "v2pepwrort",
+      "v2x_neopat"
+    ],
+    [
+      "v2exl_legitlead",
+      "NE.CON.GOVT.ZS",
+      "BX.KLT.DINV.WD.GD.ZS",
+      "NE.IMP.GNFS.CD"
+    ],
+    [
+      "v2catrauni",
+      "NV.SRV.TOTL.ZS",
+      "v2jupoatck",
+      "v2x_veracc"
+    ],
+    [
+      "v2cseeorgs"
+    ],
+    [
+      "BM.KLT.DINV.WD.GD.ZS",
+      "v2clkill",
+      "NY.GDP.MKTP.KD",
+      "v2csantimv",
+      "v2clrspct"
+    ],
+    [
+      "NY.GDP.DEFL.KD.ZG"
+    ],
+    [
+      "v2clrspct",
+      "BM.TRF.PWKR.CD.DT",
+      "BM.KLT.DINV.WD.GD.ZS"
+    ],
+    [
+      "SP.DYN.LE00.IN",
+      "SM.POP.NETM",
+      "OWID_REGIMETYPE"
+    ]
+  ],
+  "per_checkpoint": [
+    {
+      "B": 12,
+      "keepset": [],
+      "pi_snapshot": {
+        "BM.KLT.DINV.WD.GD.ZS": 0.08333333333333333,
+        "BM.TRF.PWKR.CD.DT": 0.16666666666666666,
+        "EG.IMP.CONS.ZS": 0.08333333333333333,
+        "FD.AST.PRVT.GD.ZS": 0.16666666666666666,
+        "MS.MIL.MPRT.KD": 0.08333333333333333,
+        "NY.GDP.DEFL.KD.ZG": 0.25,
+        "SP.DYN.LE00.IN": 0.16666666666666666,
+        "UNHCR_FORCDISP_TOTAL": 0.08333333333333333,
+        "v2clrspct": 0.08333333333333333,
+        "v2cltort": 0.08333333333333333,
+        "v2exl_legitlead": 0.16666666666666666,
+        "v2juaccnt": 0.08333333333333333,
+        "v2juhcind": 0.08333333333333333,
+        "v2jupurge": 0.08333333333333333,
+        "v2jureform": 0.08333333333333333,
+        "v2mebias": 0.08333333333333333,
+        "v2merange": 0.08333333333333333,
+        "v2pepwrgen": 0.08333333333333333,
+        "v2pepwrort": 0.08333333333333333,
+        "v2x_corr": 0.08333333333333333,
+        "v2x_execorr": 0.08333333333333333,
+        "v2x_gender": 0.08333333333333333,
+        "v2x_jucon": 0.08333333333333333,
+        "v2x_libdem": 0.08333333333333333,
+        "v2xeg_eqprotec": 0.16666666666666666
+      },
+      "max_abs_delta_pi_vs_prev": null,
+      "keepset_jaccard_vs_prev": null,
+      "stop_criteria_satisfied": false
+    },
+    {
+      "B": 24,
+      "keepset": [],
+      "pi_snapshot": {
+        "AG.PRD.FOOD.XD": 0.041666666666666664,
+        "BM.KLT.DINV.WD.GD.ZS": 0.125,
+        "BM.TRF.PWKR.CD.DT": 0.125,
+        "BX.KLT.DINV.WD.GD.ZS": 0.041666666666666664,
+        "EG.IMP.CONS.ZS": 0.041666666666666664,
+        "EN.GHG.CO2.PC.CE.AR5": 0.041666666666666664,
+        "FD.AST.PRVT.GD.ZS": 0.08333333333333333,
+        "GC.NFN.TOTL.GD.ZS": 0.041666666666666664,
+        "GC.NLD.TOTL.GD.ZS": 0.041666666666666664,
+        "GC.XPN.INTP.RV.ZS": 0.041666666666666664,
+        "MS.MIL.MPRT.KD": 0.041666666666666664,
+        "NE.CON.GOVT.ZS": 0.041666666666666664,
+        "NE.IMP.GNFS.CD": 0.08333333333333333,
+        "NV.SRV.TOTL.ZS": 0.041666666666666664,
+        "NY.GDP.DEFL.KD.ZG": 0.16666666666666666,
+        "NY.GDP.MKTP.KD": 0.041666666666666664,
+        "NY.GNP.PCAP.CD": 0.041666666666666664,
+        "OWID_REGIMETYPE": 0.041666666666666664,
+        "SM.POP.NETM": 0.041666666666666664,
+        "SP.DYN.LE00.IN": 0.125,
+        "UNHCR_FORCDISP_TOTAL": 0.041666666666666664,
+        "v2catrauni": 0.041666666666666664,
+        "v2clkill": 0.08333333333333333,
+        "v2clrspct": 0.125,
+        "v2cltort": 0.041666666666666664,
+        "v2csantimv": 0.041666666666666664,
+        "v2cseeorgs": 0.041666666666666664,
+        "v2csreprss": 0.041666666666666664,
+        "v2exl_legitlead": 0.125,
+        "v2juaccnt": 0.041666666666666664,
+        "v2juhcind": 0.041666666666666664,
+        "v2jupoatck": 0.041666666666666664,
+        "v2jupurge": 0.041666666666666664,
+        "v2jureform": 0.041666666666666664,
+        "v2mebias": 0.041666666666666664,
+        "v2merange": 0.041666666666666664,
+        "v2pepwrgen": 0.041666666666666664,
+        "v2pepwrort": 0.08333333333333333,
+        "v2x_corr": 0.08333333333333333,
+        "v2x_execorr": 0.041666666666666664,
+        "v2x_freexp": 0.041666666666666664,
+        "v2x_freexp_altinf": 0.041666666666666664,
+        "v2x_gender": 0.041666666666666664,
+        "v2x_jucon": 0.041666666666666664,
+        "v2x_libdem": 0.041666666666666664,
+        "v2x_neopat": 0.125,
+        "v2x_veracc": 0.041666666666666664,
+        "v2xeg_eqprotec": 0.08333333333333333
+      },
+      "max_abs_delta_pi_vs_prev": 0.125,
+      "keepset_jaccard_vs_prev": 1.0,
+      "stop_criteria_satisfied": false
+    }
+  ],
+  "loco_auc": NaN,
+  "ci95_lo": null,
+  "ci95_hi": null,
+  "oof": [],
+  "n_pos": 75,
+  "final_indicator_count": 0,
+  "dedup_cluster_map": {},
+  "config_signature": "5e9c184c223936124de1fd9dbcbd78ebae39b58c621d9915bd675d9bb56f40f9",
+  "git_commit": "a7a0513609e0089e63a179ab43d9e471d6968624",
+  "pool_hash": "a6430bbcde55c596",
+  "seed_base": 12345,
+  "source_fingerprint": "28913a527d605e6b7a56a210c27f436c8ff97349311affc5a1c8b8e456113676",
+  "chosen_window": null,
+  "b_schedule": [
+    12,
+    24
+  ],
+  "abs_r_threshold": 0.85,
+  "pi_keep_threshold": 0.6
+}

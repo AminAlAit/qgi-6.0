@@ -1,0 +1,430 @@
+{
+  "pilot": "run-3.1 selection-method pilot",
+  "seed_base": 12345,
+  "b_eval": 1000,
+  "fdr_q": 0.1,
+  "pi_keep_threshold": 0.6,
+  "recipe_order": [
+    "civil_war_and_insurgency",
+    "executive_power_consolidation",
+    "military_coup",
+    "banking_and_financial_crisis",
+    "territorial_disputes"
+  ],
+  "recipes": {
+    "civil_war_and_insurgency": {
+      "recipe": "civil_war_and_insurgency",
+      "role": "control_veto",
+      "checks": [
+        {
+          "name": "delta_auc_ci_contains_zero",
+          "pass": false,
+          "detail": {
+            "ci95": [
+              null,
+              null
+            ],
+            "contains_zero": false,
+            "required": true
+          }
+        },
+        {
+          "name": "abs_point_estimate_le",
+          "pass": false,
+          "detail": {
+            "point": null,
+            "threshold": 0.02
+          }
+        },
+        {
+          "name": "selected_set_jaccard_vs_run2_ge",
+          "pass": false,
+          "detail": {
+            "jaccard": 0.0,
+            "threshold": 0.6
+          }
+        }
+      ],
+      "raw_pass": false,
+      "post_fdr_pass": false,
+      "post_fdr_rationale": "control: raw_pass AND not FDR-rejected (no significant harm)",
+      "delta_auc": {
+        "point": null,
+        "auc_a": null,
+        "auc_b": null,
+        "ci95_lo": null,
+        "ci95_hi": null,
+        "p_value": null,
+        "n_pairs": 0,
+        "n_clusters": 0,
+        "n_boot_valid": 0,
+        "b_eval": 1000
+      },
+      "fdr": {
+        "p_value": 1.0,
+        "p_adjusted": 1.0,
+        "reject": false
+      },
+      "pairing": {
+        "n_pairs": 0,
+        "n_a": 0,
+        "n_b": 1880,
+        "label_mismatches": 0
+      },
+      "stability": {
+        "mean_pairwise_jaccard_run31": 0.0683802359074098,
+        "mean_pairwise_jaccard_run3method": 0.05323341111384587,
+        "improvement_over_run3method": 0.015146824793563926
+      },
+      "stable_set_size": 0,
+      "reference_set_size": 6,
+      "mean_pi_over_reference_set": 0.19444444444444445,
+      "run2_loco_auc": 0.6264232355957486,
+      "arm_loco_auc": null,
+      "arm_ci95": [
+        null,
+        null
+      ]
+    },
+    "executive_power_consolidation": {
+      "recipe": "executive_power_consolidation",
+      "role": "patient",
+      "checks": [
+        {
+          "name": "pi_ge_keep_on_frac_of_set_ge",
+          "pass": false,
+          "detail": {
+            "frac_pi_ge_keep": 0.0,
+            "threshold": 0.6,
+            "pi_keep": 0.6,
+            "reference_set_size": 1
+          }
+        },
+        {
+          "name": "split_half_pi_jaccard_reliability_ge",
+          "pass": true,
+          "detail": {
+            "reliability": 1.0,
+            "threshold": 0.7
+          }
+        },
+        {
+          "name": "indicator_count_within_of_run2",
+          "pass": false,
+          "detail": {
+            "count": 0,
+            "run2_count": 9,
+            "diff": 9,
+            "within": 3
+          }
+        },
+        {
+          "name": "loco_auc_ci_lower_ge_run2_minus",
+          "pass": false,
+          "detail": {
+            "arm_ci95_lo": null,
+            "run2_loco_auc": 0.7069751731126499,
+            "margin": 0.02,
+            "required_ge": 0.6869751731126499
+          }
+        }
+      ],
+      "raw_pass": false,
+      "post_fdr_pass": false,
+      "post_fdr_rationale": "patient: bar is \u03c0/count/AUC-CI (FDR of \u0394 not gating)",
+      "delta_auc": {
+        "point": null,
+        "auc_a": null,
+        "auc_b": null,
+        "ci95_lo": null,
+        "ci95_hi": null,
+        "p_value": null,
+        "n_pairs": 0,
+        "n_clusters": 0,
+        "n_boot_valid": 0,
+        "b_eval": 1000
+      },
+      "fdr": {
+        "p_value": 1.0,
+        "p_adjusted": 1.0,
+        "reject": false
+      },
+      "pairing": {
+        "n_pairs": 0,
+        "n_a": 0,
+        "n_b": 253,
+        "label_mismatches": 0
+      },
+      "stability": {
+        "mean_pairwise_jaccard_run31": 0.03279416839199448,
+        "mean_pairwise_jaccard_run3method": 0.024946802392454573,
+        "improvement_over_run3method": 0.007847365999539904
+      },
+      "stable_set_size": 0,
+      "reference_set_size": 1,
+      "mean_pi_over_reference_set": 0.125,
+      "run2_loco_auc": 0.7069751731126499,
+      "arm_loco_auc": null,
+      "arm_ci95": [
+        null,
+        null
+      ]
+    },
+    "military_coup": {
+      "recipe": "military_coup",
+      "role": "patient",
+      "checks": [
+        {
+          "name": "pi_ge_keep_on_frac_of_set_ge",
+          "pass": false,
+          "detail": {
+            "frac_pi_ge_keep": 0.2,
+            "threshold": 0.6,
+            "pi_keep": 0.6,
+            "reference_set_size": 5
+          }
+        },
+        {
+          "name": "split_half_pi_jaccard_reliability_ge",
+          "pass": true,
+          "detail": {
+            "reliability": 1.0,
+            "threshold": 0.7
+          }
+        },
+        {
+          "name": "indicator_count_within_of_run2",
+          "pass": false,
+          "detail": {
+            "count": 1,
+            "run2_count": 5,
+            "diff": 4,
+            "within": 3
+          }
+        },
+        {
+          "name": "loco_auc_ci_lower_ge_run2_minus",
+          "pass": false,
+          "detail": {
+            "arm_ci95_lo": 0.6465594737757763,
+            "run2_loco_auc": 0.6767869106809126,
+            "margin": 0.02,
+            "required_ge": 0.6567869106809126
+          }
+        }
+      ],
+      "raw_pass": false,
+      "post_fdr_pass": false,
+      "post_fdr_rationale": "patient: bar is \u03c0/count/AUC-CI (FDR of \u0394 not gating)",
+      "delta_auc": {
+        "point": 0.007140590288797211,
+        "auc_a": 0.6839275009697098,
+        "auc_b": 0.6767869106809126,
+        "ci95_lo": -0.05971028545416334,
+        "ci95_hi": 0.07950909701213503,
+        "p_value": 0.8131868131868132,
+        "n_pairs": 549,
+        "n_clusters": 70,
+        "n_boot_valid": 1000,
+        "b_eval": 1000
+      },
+      "fdr": {
+        "p_value": 0.8131868131868132,
+        "p_adjusted": 1.0,
+        "reject": false
+      },
+      "pairing": {
+        "n_pairs": 549,
+        "n_a": 776,
+        "n_b": 549,
+        "label_mismatches": 0
+      },
+      "stability": {
+        "mean_pairwise_jaccard_run31": 0.14700838613882103,
+        "mean_pairwise_jaccard_run3method": 0.14598406826667712,
+        "improvement_over_run3method": 0.0010243178721439095
+      },
+      "stable_set_size": 1,
+      "reference_set_size": 5,
+      "mean_pi_over_reference_set": 0.19166666666666668,
+      "run2_loco_auc": 0.6767869106809126,
+      "arm_loco_auc": 0.6932386145188913,
+      "arm_ci95": [
+        0.6465594737757763,
+        0.7351583540830502
+      ]
+    },
+    "banking_and_financial_crisis": {
+      "recipe": "banking_and_financial_crisis",
+      "role": "gain_is_real",
+      "checks": [
+        {
+          "name": "paired_delta_auc_ci_lower_gt",
+          "pass": false,
+          "detail": {
+            "ci_lower": null,
+            "threshold": 0.0
+          }
+        },
+        {
+          "name": "paired_delta_auc_ci_lower_ge",
+          "pass": false,
+          "detail": {
+            "ci_lower": null,
+            "threshold": 0.03
+          }
+        }
+      ],
+      "raw_pass": false,
+      "post_fdr_pass": false,
+      "post_fdr_rationale": "banking: raw_pass AND FDR-rejected (significant positive gain)",
+      "delta_auc": {
+        "point": null,
+        "auc_a": null,
+        "auc_b": null,
+        "ci95_lo": null,
+        "ci95_hi": null,
+        "p_value": null,
+        "n_pairs": 0,
+        "n_clusters": 0,
+        "n_boot_valid": 0,
+        "b_eval": 1000
+      },
+      "fdr": {
+        "p_value": 1.0,
+        "p_adjusted": 1.0,
+        "reject": false
+      },
+      "pairing": {
+        "n_pairs": 0,
+        "n_a": 0,
+        "n_b": 188,
+        "label_mismatches": 0
+      },
+      "stability": {
+        "mean_pairwise_jaccard_run31": 0.018997296986427423,
+        "mean_pairwise_jaccard_run3method": 0.023175465838509327,
+        "improvement_over_run3method": -0.0041781688520819045
+      },
+      "stable_set_size": 0,
+      "reference_set_size": 3,
+      "mean_pi_over_reference_set": 0.05555555555555555,
+      "run2_loco_auc": 0.7707246376811594,
+      "arm_loco_auc": null,
+      "arm_ci95": [
+        null,
+        null
+      ]
+    },
+    "territorial_disputes": {
+      "recipe": "territorial_disputes",
+      "role": "loss_resolve_decisively",
+      "checks": [
+        {
+          "name": "ci_includes_run2_point",
+          "pass": false,
+          "detail": {
+            "arm_ci95": [
+              null,
+              null
+            ],
+            "run2_point": 0.700999149659864
+          }
+        },
+        {
+          "name": "ci_upper_lt_run2_and_tight",
+          "pass": false,
+          "detail": {
+            "arm_ci95_hi": null,
+            "run2_point": 0.700999149659864,
+            "width": null,
+            "width_threshold": 0.08
+          }
+        }
+      ],
+      "raw_pass": false,
+      "post_fdr_pass": false,
+      "post_fdr_rationale": "territorial: ambiguous wide CI -> FAIL",
+      "delta_auc": {
+        "point": null,
+        "auc_a": null,
+        "auc_b": null,
+        "ci95_lo": null,
+        "ci95_hi": null,
+        "p_value": null,
+        "n_pairs": 0,
+        "n_clusters": 0,
+        "n_boot_valid": 0,
+        "b_eval": 1000
+      },
+      "fdr": {
+        "p_value": 1.0,
+        "p_adjusted": 1.0,
+        "reject": false
+      },
+      "pairing": {
+        "n_pairs": 0,
+        "n_a": 0,
+        "n_b": 390,
+        "label_mismatches": 0
+      },
+      "stability": {
+        "mean_pairwise_jaccard_run31": 0.02243239851935504,
+        "mean_pairwise_jaccard_run3method": 0.02015797206014597,
+        "improvement_over_run3method": 0.0022744264592090696
+      },
+      "stable_set_size": 0,
+      "reference_set_size": 3,
+      "mean_pi_over_reference_set": 0.05555555555555555,
+      "run2_loco_auc": 0.700999149659864,
+      "arm_loco_auc": null,
+      "arm_ci95": [
+        null,
+        null
+      ]
+    }
+  },
+  "overall_gate": {
+    "invalidated_by_control": true,
+    "checks": [
+      {
+        "name": "control_passes",
+        "pass": false,
+        "detail": {
+          "control_raw_pass": false,
+          "control_post_fdr_pass": false,
+          "required": true
+        }
+      },
+      {
+        "name": "min_other_recipes_passing_post_fdr",
+        "pass": false,
+        "detail": {
+          "n_passing": 0,
+          "required_min": 3,
+          "of": 4
+        }
+      },
+      {
+        "name": "mean_pi_across_all_5_ge",
+        "pass": false,
+        "detail": {
+          "mean_pi": 0.12444444444444444,
+          "threshold": 0.6
+        }
+      },
+      {
+        "name": "mean_pairwise_jaccard_stability_improvement_ge",
+        "pass": false,
+        "detail": {
+          "mean_improvement": 0.004422953254474981,
+          "threshold": 0.3
+        }
+      }
+    ],
+    "n_other_recipes_passing_post_fdr": 0,
+    "mean_pi_across_all_5": 0.12444444444444444,
+    "mean_pairwise_jaccard_stability_improvement": 0.004422953254474981,
+    "overall_pass": false
+  }
+}

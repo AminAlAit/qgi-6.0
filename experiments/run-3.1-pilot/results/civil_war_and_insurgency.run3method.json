@@ -1,0 +1,326 @@
+{
+  "recipe_id": "civil_war_and_insurgency",
+  "arm": "run3method",
+  "B_used": 24,
+  "stop_reason": "b_ceiling_reached",
+  "pi": {
+    "v2xcl_prpty": 0.041666666666666664,
+    "v2x_horacc": 0.041666666666666664,
+    "v2clkill": 0.16666666666666666,
+    "v2x_civlib": 0.08333333333333333,
+    "SP.POP.0014.TO.ZS": 0.125,
+    "UCDP_SB_ONSET": 0.20833333333333334,
+    "v2x_jucon": 0.041666666666666664,
+    "v2svstterr": 0.2916666666666667,
+    "MS.MIL.XPND.GD.ZS": 0.16666666666666666,
+    "v2x_clpriv": 0.16666666666666666,
+    "v2jupoatck": 0.25,
+    "SP.DYN.LE00.IN": 0.16666666666666666,
+    "v2meharjrn": 0.041666666666666664,
+    "NV.AGR.TOTL.ZS": 0.041666666666666664,
+    "SM.POP.NETM": 0.125,
+    "v2cseeorgs": 0.125,
+    "v2svinlaut": 0.125,
+    "v2regdur": 0.041666666666666664,
+    "v2juhccomp": 0.125,
+    "v2x_rule": 0.041666666666666664,
+    "OWID_STATECAP": 0.08333333333333333,
+    "v2x_clpol": 0.041666666666666664,
+    "NY.GDP.PCAP.CD": 0.08333333333333333,
+    "v2juncind": 0.041666666666666664,
+    "v2cacamps": 0.20833333333333334,
+    "v2x_accountability": 0.041666666666666664,
+    "v2csprtcpt": 0.041666666666666664,
+    "v2x_clphy": 0.08333333333333333,
+    "v2csantimv": 0.125,
+    "v2xcl_rol": 0.041666666666666664,
+    "v2regantireg": 0.041666666666666664,
+    "v2regendtype": 0.041666666666666664,
+    "v2x_regime_amb": 0.041666666666666664,
+    "OWID_REGIMETYPE": 0.041666666666666664,
+    "v2x_libdem": 0.041666666666666664,
+    "SP.DYN.TFRT.IN": 0.125,
+    "v2x_freexp": 0.041666666666666664,
+    "v2x_gender": 0.125,
+    "v2juhcind": 0.08333333333333333,
+    "SH.DYN.MORT": 0.041666666666666664,
+    "v2pepwrort": 0.125,
+    "v2x_diagacc": 0.041666666666666664,
+    "v2jupurge": 0.041666666666666664,
+    "v2x_liberal": 0.041666666666666664,
+    "v2exrescon": 0.041666666666666664
+  },
+  "stable_set": [],
+  "reference_set": [
+    "SP.DYN.LE00.IN",
+    "v2clkill",
+    "v2csantimv",
+    "v2juhccomp",
+    "v2x_clpriv",
+    "v2x_freexp",
+    "v2xcl_prpty",
+    "v2xcl_rol"
+  ],
+  "resample_selected_sets": [
+    [
+      "v2xcl_prpty",
+      "UCDP_SB_ONSET",
+      "v2x_civlib",
+      "v2clkill",
+      "SP.POP.0014.TO.ZS",
+      "v2x_horacc"
+    ],
+    [
+      "MS.MIL.XPND.GD.ZS",
+      "v2svstterr",
+      "v2x_clpriv",
+      "v2x_jucon"
+    ],
+    [
+      "SP.DYN.LE00.IN",
+      "v2jupoatck",
+      "v2meharjrn"
+    ],
+    [
+      "NV.AGR.TOTL.ZS",
+      "SM.POP.NETM"
+    ],
+    [
+      "OWID_STATECAP",
+      "v2jupoatck",
+      "v2svinlaut",
+      "UCDP_SB_ONSET",
+      "v2x_rule",
+      "v2cseeorgs",
+      "v2x_clpol",
+      "v2juhccomp",
+      "v2regdur"
+    ],
+    [
+      "NY.GDP.PCAP.CD",
+      "v2clkill",
+      "v2juncind"
+    ],
+    [
+      "SP.DYN.LE00.IN",
+      "v2juhccomp",
+      "UCDP_SB_ONSET",
+      "v2svinlaut"
+    ],
+    [
+      "v2x_clpriv",
+      "MS.MIL.XPND.GD.ZS",
+      "v2jupoatck",
+      "SP.POP.0014.TO.ZS"
+    ],
+    [
+      "v2cacamps"
+    ],
+    [
+      "SP.DYN.LE00.IN",
+      "v2x_clpriv",
+      "v2x_accountability"
+    ],
+    [
+      "v2csprtcpt",
+      "UCDP_SB_ONSET",
+      "v2x_clphy"
+    ],
+    [
+      "v2svstterr",
+      "v2csantimv",
+      "v2svinlaut",
+      "SP.POP.0014.TO.ZS"
+    ],
+    [
+      "v2csantimv",
+      "v2xcl_rol",
+      "v2cseeorgs",
+      "v2regantireg",
+      "v2regendtype"
+    ],
+    [
+      "v2x_civlib",
+      "v2x_regime_amb",
+      "v2x_libdem",
+      "UCDP_SB_ONSET",
+      "v2cacamps",
+      "OWID_REGIMETYPE"
+    ],
+    [
+      "v2cacamps",
+      "SP.DYN.TFRT.IN",
+      "v2jupoatck",
+      "v2clkill"
+    ],
+    [
+      "v2x_freexp",
+      "v2cseeorgs"
+    ],
+    [
+      "v2x_gender",
+      "v2cacamps",
+      "v2juhcind",
+      "MS.MIL.XPND.GD.ZS",
+      "v2svstterr",
+      "SM.POP.NETM"
+    ],
+    [
+      "v2clkill",
+      "v2svstterr",
+      "v2x_clpriv",
+      "SP.DYN.TFRT.IN",
+      "v2jupoatck"
+    ],
+    [
+      "MS.MIL.XPND.GD.ZS",
+      "v2cacamps",
+      "v2x_clphy",
+      "v2juhcind"
+    ],
+    [
+      "OWID_STATECAP",
+      "SP.DYN.TFRT.IN",
+      "v2jupoatck",
+      "v2pepwrort",
+      "v2svstterr",
+      "SH.DYN.MORT",
+      "v2x_diagacc"
+    ],
+    [
+      "v2svstterr",
+      "NY.GDP.PCAP.CD",
+      "v2pepwrort",
+      "v2csantimv"
+    ],
+    [
+      "v2x_gender"
+    ],
+    [
+      "SP.DYN.LE00.IN",
+      "v2juhccomp",
+      "v2pepwrort",
+      "v2jupurge",
+      "v2x_liberal"
+    ],
+    [
+      "v2svstterr",
+      "v2x_gender",
+      "SM.POP.NETM",
+      "v2exrescon"
+    ]
+  ],
+  "per_checkpoint": [
+    {
+      "B": 12,
+      "keepset": [],
+      "pi_snapshot": {
+        "MS.MIL.XPND.GD.ZS": 0.16666666666666666,
+        "NV.AGR.TOTL.ZS": 0.08333333333333333,
+        "NY.GDP.PCAP.CD": 0.08333333333333333,
+        "OWID_STATECAP": 0.08333333333333333,
+        "SM.POP.NETM": 0.08333333333333333,
+        "SP.DYN.LE00.IN": 0.25,
+        "SP.POP.0014.TO.ZS": 0.25,
+        "UCDP_SB_ONSET": 0.3333333333333333,
+        "v2cacamps": 0.08333333333333333,
+        "v2clkill": 0.16666666666666666,
+        "v2csantimv": 0.08333333333333333,
+        "v2cseeorgs": 0.08333333333333333,
+        "v2csprtcpt": 0.08333333333333333,
+        "v2juhccomp": 0.16666666666666666,
+        "v2juncind": 0.08333333333333333,
+        "v2jupoatck": 0.25,
+        "v2meharjrn": 0.08333333333333333,
+        "v2regdur": 0.08333333333333333,
+        "v2svinlaut": 0.25,
+        "v2svstterr": 0.16666666666666666,
+        "v2x_accountability": 0.08333333333333333,
+        "v2x_civlib": 0.08333333333333333,
+        "v2x_clphy": 0.08333333333333333,
+        "v2x_clpol": 0.08333333333333333,
+        "v2x_clpriv": 0.25,
+        "v2x_horacc": 0.08333333333333333,
+        "v2x_jucon": 0.08333333333333333,
+        "v2x_rule": 0.08333333333333333,
+        "v2xcl_prpty": 0.08333333333333333
+      },
+      "max_abs_delta_pi_vs_prev": null,
+      "keepset_jaccard_vs_prev": null,
+      "stop_criteria_satisfied": false
+    },
+    {
+      "B": 24,
+      "keepset": [],
+      "pi_snapshot": {
+        "MS.MIL.XPND.GD.ZS": 0.16666666666666666,
+        "NV.AGR.TOTL.ZS": 0.041666666666666664,
+        "NY.GDP.PCAP.CD": 0.08333333333333333,
+        "OWID_REGIMETYPE": 0.041666666666666664,
+        "OWID_STATECAP": 0.08333333333333333,
+        "SH.DYN.MORT": 0.041666666666666664,
+        "SM.POP.NETM": 0.125,
+        "SP.DYN.LE00.IN": 0.16666666666666666,
+        "SP.DYN.TFRT.IN": 0.125,
+        "SP.POP.0014.TO.ZS": 0.125,
+        "UCDP_SB_ONSET": 0.20833333333333334,
+        "v2cacamps": 0.20833333333333334,
+        "v2clkill": 0.16666666666666666,
+        "v2csantimv": 0.125,
+        "v2cseeorgs": 0.125,
+        "v2csprtcpt": 0.041666666666666664,
+        "v2exrescon": 0.041666666666666664,
+        "v2juhccomp": 0.125,
+        "v2juhcind": 0.08333333333333333,
+        "v2juncind": 0.041666666666666664,
+        "v2jupoatck": 0.25,
+        "v2jupurge": 0.041666666666666664,
+        "v2meharjrn": 0.041666666666666664,
+        "v2pepwrort": 0.125,
+        "v2regantireg": 0.041666666666666664,
+        "v2regdur": 0.041666666666666664,
+        "v2regendtype": 0.041666666666666664,
+        "v2svinlaut": 0.125,
+        "v2svstterr": 0.2916666666666667,
+        "v2x_accountability": 0.041666666666666664,
+        "v2x_civlib": 0.08333333333333333,
+        "v2x_clphy": 0.08333333333333333,
+        "v2x_clpol": 0.041666666666666664,
+        "v2x_clpriv": 0.16666666666666666,
+        "v2x_diagacc": 0.041666666666666664,
+        "v2x_freexp": 0.041666666666666664,
+        "v2x_gender": 0.125,
+        "v2x_horacc": 0.041666666666666664,
+        "v2x_jucon": 0.041666666666666664,
+        "v2x_libdem": 0.041666666666666664,
+        "v2x_liberal": 0.041666666666666664,
+        "v2x_regime_amb": 0.041666666666666664,
+        "v2x_rule": 0.041666666666666664,
+        "v2xcl_prpty": 0.041666666666666664,
+        "v2xcl_rol": 0.041666666666666664
+      },
+      "max_abs_delta_pi_vs_prev": 0.12500000000000003,
+      "keepset_jaccard_vs_prev": 1.0,
+      "stop_criteria_satisfied": false
+    }
+  ],
+  "loco_auc": NaN,
+  "ci95_lo": null,
+  "ci95_hi": null,
+  "oof": [],
+  "n_pos": 511,
+  "final_indicator_count": 0,
+  "dedup_cluster_map": {},
+  "config_signature": "4121f9bbc7534dc9486a0c6952c715b0c50d60a977149d60cc881a6c89f2afc1",
+  "git_commit": "a7a0513609e0089e63a179ab43d9e471d6968624",
+  "pool_hash": "141fc33d2a21fb19",
+  "seed_base": 12345,
+  "source_fingerprint": "28913a527d605e6b7a56a210c27f436c8ff97349311affc5a1c8b8e456113676",
+  "chosen_window": null,
+  "b_schedule": [
+    12,
+    24
+  ],
+  "abs_r_threshold": 0.85,
+  "pi_keep_threshold": 0.6
+}
