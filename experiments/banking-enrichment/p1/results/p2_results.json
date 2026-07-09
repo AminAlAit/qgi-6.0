@@ -1,0 +1,251 @@
+{
+  "seed": 12345,
+  "recipe_id": "banking_and_financial_crisis",
+  "n_pos_samples": 75,
+  "n_pos_events_csv": 75,
+  "positive_countries_in_samples": [
+    "Albania",
+    "Angola",
+    "Australia",
+    "Austria",
+    "Bahrain",
+    "Belarus",
+    "Belgium",
+    "Brunei",
+    "Bulgaria",
+    "Chile",
+    "Croatia",
+    "Cuba",
+    "Cyprus",
+    "Czechia",
+    "Denmark",
+    "Finland",
+    "Ghana",
+    "Greece",
+    "Hungary",
+    "Iceland",
+    "Ireland",
+    "Italy",
+    "Ivory Coast",
+    "Jamaica",
+    "Japan",
+    "Kazakhstan",
+    "Latvia",
+    "Lithuania",
+    "Mozambique",
+    "Netherlands",
+    "New Zealand",
+    "North Korea",
+    "Norway",
+    "Paraguay",
+    "Portugal",
+    "Slovenia",
+    "South Korea",
+    "Spain",
+    "Sri Lanka",
+    "Sweden",
+    "Switzerland",
+    "Thailand",
+    "Trinidad And Tobago",
+    "United Kingdom",
+    "United States",
+    "Uruguay",
+    "Venezuela",
+    "Zambia"
+  ],
+  "twin_crisis_em_note_list_actually_in_positives": [
+    "South Korea",
+    "Thailand"
+  ],
+  "twin_crisis_em_note_list_absent_from_positives": [
+    "Argentina",
+    "Indonesia",
+    "Mexico",
+    "Turkey"
+  ],
+  "baseline": {
+    "drivers": [
+      "NV.SRV.TOTL.ZS",
+      "v2x_gender",
+      "MS.MIL.XPND.GD.ZS"
+    ],
+    "loco_auc": 0.7707246376811594,
+    "expected_loco_auc": 0.7707246376811594,
+    "reproduced_exactly": true,
+    "ci95_lo": 0.6826595484470861,
+    "ci95_hi": 0.8403781672241184,
+    "chosen_window": 25
+  },
+  "candidates": {
+    "credit_growth_3y_fd": {
+      "recipe_set": [
+        "NV.SRV.TOTL.ZS",
+        "v2x_gender",
+        "MS.MIL.XPND.GD.ZS",
+        "credit_growth_3y_fd"
+      ],
+      "loco_auc": 0.7512903225806452,
+      "ci95_lo": 0.6584758447331216,
+      "ci95_hi": 0.8305339546321545,
+      "chosen_window": 3,
+      "n_oof_rows": 174,
+      "delta_auc": {
+        "point": -0.051984877126654117,
+        "auc_a": 0.7431001890359168,
+        "auc_b": 0.7950850661625709,
+        "ci95_lo": -0.14773819930069937,
+        "ci95_hi": 0.056996222169881455,
+        "p_value": 0.2977022977022977,
+        "n_pairs": 161,
+        "n_clusters": 42,
+        "n_boot_valid": 1000,
+        "b_eval": 1000
+      },
+      "pairing": {
+        "n_pairs": 161,
+        "n_a": 174,
+        "n_b": 188,
+        "label_mismatches": 0,
+        "n_clusters_countries": 42
+      },
+      "per_country_positive_prob_delta_candidate_minus_baseline": {
+        "Angola": {
+          "n": 1,
+          "mean_prob_delta": -0.398015882819891
+        },
+        "Australia": {
+          "n": 1,
+          "mean_prob_delta": -0.8245739489793777
+        },
+        "Austria": {
+          "n": 3,
+          "mean_prob_delta": -0.2002620498339335
+        },
+        "Belarus": {
+          "n": 1,
+          "mean_prob_delta": -0.027956902980804443
+        },
+        "Belgium": {
+          "n": 1,
+          "mean_prob_delta": -0.39540648460388184
+        },
+        "Bulgaria": {
+          "n": 1,
+          "mean_prob_delta": -0.7133179306983948
+        },
+        "Chile": {
+          "n": 1,
+          "mean_prob_delta": 0.7243941873311996
+        },
+        "Cyprus": {
+          "n": 1,
+          "mean_prob_delta": 0.12303245067596436
+        },
+        "Denmark": {
+          "n": 1,
+          "mean_prob_delta": 0.6613848023116589
+        },
+        "Ghana": {
+          "n": 2,
+          "mean_prob_delta": -0.6357924863696098
+        },
+        "Greece": {
+          "n": 1,
+          "mean_prob_delta": 0.2556089460849762
+        },
+        "Hungary": {
+          "n": 1,
+          "mean_prob_delta": 0.5630864202976227
+        },
+        "Ireland": {
+          "n": 3,
+          "mean_prob_delta": 0.5508513152599335
+        },
+        "Italy": {
+          "n": 2,
+          "mean_prob_delta": -0.257222056388855
+        },
+        "Ivory Coast": {
+          "n": 1,
+          "mean_prob_delta": -0.7751415222883224
+        },
+        "Japan": {
+          "n": 1,
+          "mean_prob_delta": 0.7724983394145966
+        },
+        "Kazakhstan": {
+          "n": 1,
+          "mean_prob_delta": -0.11694474518299103
+        },
+        "Latvia": {
+          "n": 1,
+          "mean_prob_delta": -0.41088434029370546
+        },
+        "Mozambique": {
+          "n": 1,
+          "mean_prob_delta": -0.0294484063051641
+        },
+        "Netherlands": {
+          "n": 1,
+          "mean_prob_delta": -0.26576775312423706
+        },
+        "New Zealand": {
+          "n": 1,
+          "mean_prob_delta": 0.49090805649757385
+        },
+        "Norway": {
+          "n": 1,
+          "mean_prob_delta": -0.08320969343185425
+        },
+        "Paraguay": {
+          "n": 1,
+          "mean_prob_delta": 0.03135197190567851
+        },
+        "Portugal": {
+          "n": 1,
+          "mean_prob_delta": 0.07679760456085205
+        },
+        "Slovenia": {
+          "n": 1,
+          "mean_prob_delta": 0.3533359616994858
+        },
+        "South Korea": {
+          "n": 2,
+          "mean_prob_delta": -0.4841189421713352
+        },
+        "Spain": {
+          "n": 2,
+          "mean_prob_delta": -0.004402615129947662
+        },
+        "Sri Lanka": {
+          "n": 1,
+          "mean_prob_delta": -0.5853357762098312
+        },
+        "Sweden": {
+          "n": 1,
+          "mean_prob_delta": 0.16396290063858032
+        },
+        "Switzerland": {
+          "n": 4,
+          "mean_prob_delta": -0.0774388313293457
+        },
+        "United Kingdom": {
+          "n": 2,
+          "mean_prob_delta": 0.060228437185287476
+        },
+        "United States": {
+          "n": 1,
+          "mean_prob_delta": -0.49552157521247864
+        },
+        "Uruguay": {
+          "n": 1,
+          "mean_prob_delta": -0.043019503355026245
+        },
+        "Zambia": {
+          "n": 1,
+          "mean_prob_delta": 0.13688672706484795
+        }
+      }
+    }
+  }
+}

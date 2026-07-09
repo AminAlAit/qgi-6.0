@@ -36,6 +36,33 @@ length, cleaner movement) **and** a real confidence gain.
 
 ---
 
+## Step 0 — Event-set audit (MUST precede any indicator work) ⭐ trend-agnostic
+
+**Enriching a trend means attending to its EVENTS *and* its indicators — not just indicators.** A recipe's positive
+event set is the ground truth every driver is fit and scored against. If the set is **unrepresentative of the trend's
+real-world universe** — missing canonical instances, or skewed to one country-group/era — then *no indicator can add
+signal for the events that aren't there.* An indicator question can be a disguised missing-events problem.
+
+**Before touching a single indicator, audit the positive set:**
+1. **Canonical-instance check** — are the textbook instances of this trend present? (For banking: Argentina 2001,
+   Mexico 1994, the 1997 Asian crisis, Russia 1998…)
+2. **Composition check** — is the country/era mix representative, or skewed? (Compute the country-group + decade
+   distribution; compare against a domain catalog, e.g. Laeven-Valencia for banking crises.)
+3. **Mechanism-coverage check** — do the events span the mechanisms you intend to add? A mechanism (e.g. EM
+   twin-crisis / sudden-stop) is untestable if the events it explains are absent from the set.
+
+**If the set is unrepresentative → fix the events FIRST** (targeted enrichment via the `/qgi-enrich-events` pipeline,
+onset-year, breadth-first over the missing country-group) → rebuild `positives.csv` → *then* proceed to indicators.
+Skipping this wastes indicator effort on a set that structurally can't reward it.
+
+> **Banking worked example (2026-07-10):** the first indicator pass (§3–§6 below) found the sole gate-surviving
+> candidate *lowered* AUC, and external-fragility couldn't even be tested — because the banking positive set was
+> **missing nearly every canonical EM crisis** (Argentina/Mexico/Brazil/Indonesia/Turkey/Russia = 0 events; skewed
+> advanced/European). The blocker was events, not indicators. → event batch requested (76 → ~112, big-EM-first);
+> indicator re-test waits on it. This is why Step 0 exists.
+
+---
+
 ## 1. Admission bar — the 6 QGI indicator criteria (canonical)
 
 Every candidate must pass all six (full spec: `qgi-docs/architecture/indicator-criteria.md`):
@@ -117,6 +144,16 @@ A candidate/enriched recipe is accepted only if:
 
 ## 8. Reusability
 
-The **criteria + this screening/testing engine (§1, §2, §5, §6) are trend-agnostic** — built once, reused for every
-recipe. Only the **mechanism list + shortlist + datasets (§3, §4)** are re-derived per trend (a fresh sourcing panel).
-Banking proves the pipeline end-to-end; later trends turn the same crank with new ingredients.
+The **Step 0 event-set audit + the criteria + the screening/testing engine (Step 0, §1, §2, §5, §6) are
+trend-agnostic** — built once, reused for every recipe. Only the **mechanism list + shortlist + datasets (§3, §4)**
+are re-derived per trend (a fresh sourcing panel). Every per-trend pass runs **Step 0 (events) → §1–§6 (indicators)
+→ re-fit the whole recipe**. Banking proves the pipeline end-to-end; later trends turn the same crank with new
+ingredients.
+
+## 9. Status log
+
+- **2026-07-09** — plan of record created; run-2 → 250-pool origin. Committed qgi-ml `eb96ed9`.
+- **2026-07-10 — P0 (audit):** run-2 banking drivers = `NV.SRV.TOTL.ZS` (services %GDP) + `v2x_gender` + `MS.MIL.XPND.GD.ZS`; **no credit term** → credit-gap genuinely orthogonal. Baseline LOCO-AUC 0.7707 reproduced byte-exact. Machinery + Docker vehicle (`qgi-run31-pilot:py313`) verified.
+- **2026-07-10 — P1–P3 (indicators, first pass):** 6 candidates built; **only `credit_growth_3y_fd` cleared both gates** (80% coverage, orthogonal). Adding it **lowered** AUC: 0.771 → 0.751, **ΔAUC −0.052** (CI [−0.148, +0.057], crosses zero) — REJECTED, robust across all 9 windows, purist-verified byte-exact + leakage-clean. External-fragility (ST-debt/reserves, M2/reserves) **vetoed at the coverage gate** (EM-only data vs advanced-heavy positives). Artifacts under `p1/` (`build_features.py`, `screen.py`, `p2_evaluate.py`, candidates, results).
+- **2026-07-10 — ROOT CAUSE → Step 0 added:** the banking positive set is **missing nearly every canonical EM crisis** (Argentina/Mexico/Brazil/Indonesia/Turkiye/Russia = 0). This — not the indicators — is the blocker. **Event batch requested** (targeted Mode-A, onset-year, big-EM-first, 76 → ~112). Country-id join verified (`turkiye`/`ivory_coast`/`czechia`/`cabo_verde`/Congos all map to the panel's Title-case keys). **Indicator re-test (§1–§6) waits on the event batch merging + `positives.csv` rebuild.**
+- **Bonus flag:** the run-2 0.771 anchor is itself window-selection-fragile (only 0.771 at `window=25`; ~0.5–0.64 elsewhere) — pre-existing multiple-comparisons optimism in run-2, worth revisiting separately.
