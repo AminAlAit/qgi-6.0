@@ -372,8 +372,8 @@ export function TopicBoard({ data }: Props) {
         }}
       >
         Covering {data.countries.length} countries across {liveTopics.length} live trends
-        today; {comingSoon.size} more are tracked with feeds pending. Pulse updates monthly;
-        structural scores refresh each release.
+        today; {comingSoon.size} more are tracked with feeds pending. Pulse updates
+        monthly; structural scores refresh each release.
       </div>
     </div>
   );
@@ -485,7 +485,8 @@ const SUMMARY_TOOLTIP: Record<Lens, string> = {
   scan: "How many of this country's themes read Both Firing right now: structure primed and news running together.",
   surge:
     "This country's biggest single-theme rise in news pulse versus last month, in points on the 0 to 100 pulse scale.",
-  primed: "How many themes read Elevated & Quiet: structure elevated while the news stays quiet.",
+  primed:
+    "How many themes read Elevated & Quiet: structure elevated while the news stays quiet.",
 };
 
 function VerdictGrid({

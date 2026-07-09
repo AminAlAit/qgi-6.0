@@ -1106,13 +1106,13 @@ export default function PakistanProfileReportPage() {
               IMF program builds structural state revenue capacity, the foreign
               intervention score should recede. Third, and most immediately: the
               Repression and Human Rights divergence (structural score 82.6, news pulse
-              25) is the configuration to watch. If repression intensifies and news coverage
-              rises to match it, that combined configuration has
-              historically preceded the Uganda 2021 resolution. If instead the PTI ban is
-              lifted, Khan released, and the February 2024 election results are more fully
-              honoured, the democratic transition model should see its closest analogue
-              shift from Nigeria 1998 (Abacha&apos;s last year) toward Nigeria 1999
-              (Obasanjo&apos;s inauguration).
+              25) is the configuration to watch. If repression intensifies and news
+              coverage rises to match it, that combined configuration has historically
+              preceded the Uganda 2021 resolution. If instead the PTI ban is lifted, Khan
+              released, and the February 2024 election results are more fully honoured,
+              the democratic transition model should see its closest analogue shift from
+              Nigeria 1998 (Abacha&apos;s last year) toward Nigeria 1999 (Obasanjo&apos;s
+              inauguration).
             </p>
 
             <h2 className="text-xl sm:text-2xl font-semibold mt-10 mb-3">

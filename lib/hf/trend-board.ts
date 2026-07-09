@@ -100,7 +100,9 @@ export function getTrendBoard(): TrendBoard {
     // country, matching getRecipeFullScoreMap's per-recipe cost profile.
     const scores = pulseOnly ? null : getRecipeFullScoreMap(slug);
     const maxScore =
-      scores && Object.keys(scores).length > 0 ? Math.max(...Object.values(scores)) : null;
+      scores && Object.keys(scores).length > 0
+        ? Math.max(...Object.values(scores))
+        : null;
     const scale = maxScore != null && maxScore <= 1.5 ? 100 : 1;
 
     for (const country of base.countries) {

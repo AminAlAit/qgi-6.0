@@ -32,10 +32,7 @@ export const TREND_PULSE_MONTHS = trendPulse.months as string[];
 
 type TrendHistory = Record<string, { pulse: (number | null)[] }>;
 const HISTORY = trendPulse.history as TrendHistory;
-const TRENDS = trendPulse.trends as Record<
-  string,
-  { domain: string; role: string }
->;
+const TRENDS = trendPulse.trends as Record<string, { domain: string; role: string }>;
 
 /** The 6 trend slugs that carry a native per-Trend news pulse. */
 export const PER_TREND_SLUGS = Object.keys(TRENDS);
