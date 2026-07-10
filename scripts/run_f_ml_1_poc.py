@@ -166,6 +166,21 @@ MIN_STEPS_BEFORE_ABORT = 3
 # §5.4 window grid
 WINDOW_GRID = [3, 5, 7, 10, 12, 15, 18, 21, 25]
 
+# Per-indicator feature block size (run-3.1 banking wide-net fix #1, 2026-07-10).
+# Extended 8->10: appended two EXPLICIT lag features (z-score at year-2 and year-3;
+# year-1 was already covered by `last_z`) to the end of the existing 8-feature block
+# so all pre-existing positional slots (0-7) are UNCHANGED — only two new slots (8,9)
+# are added. `extract_features_for_indicator` / `build_X_y` / `emit_descriptive` all
+# key off this single constant so the block size is never hard-coded in more than one
+# place inside this module. NOTE: downstream production scripts outside this module
+# (scripts/score_countries.py, scripts/extract_shap_importances.py) still hard-code a
+# LOCAL "8 features per indicator" assumption for SHAP/importance aggregation on
+# ALREADY-GRADUATED recipes (civil_war etc.) that were walked under the old 8-feature
+# block — they are UNCHANGED here (out of scope for the banking wide-net run) but MUST
+# be updated in lockstep before any future walk output produced under this 10-feature
+# block is fed through them, or their per-indicator grouping will silently misalign.
+N_FEATURES_PER_INDICATOR = 10
+
 # §4.2 MLP fold-variance trigger — DEPRECATED 2026-05-22 per F-ML-N amendment
 # (qgi-aws-tf#864). XGBoost is now binding for N_pos>=60; no automatic MLP swap.
 # Constant retained as a historical record only (not referenced in active code).
@@ -302,9 +317,19 @@ def extract_features_for_indicator(
 ) -> np.ndarray | None:
     """Per-indicator per-window feature vector.
 
-    Returns 8 features:
-        [last_z, mean_z, std_z, slope, accel, tertile1_mean, tertile2_mean, tertile3_mean]
+    Returns N_FEATURES_PER_INDICATOR (10) features:
+        [last_z, mean_z, std_z, slope, accel, tertile1_mean, tertile2_mean, tertile3_mean,
+         lag_z2, lag_z3]
     All z-scored vs panel-wide (cross-country) distribution at year-1.
+
+    `lag_z2`/`lag_z3` (run-3.1 banking wide-net fix #1, 2026-07-10): explicit z-score
+    at year-2 / year-3, appended after the original 8-feature block (positional slots
+    0-7 unchanged; new slots are 8 and 9). LEAKAGE-SAFE BY CONSTRUCTION: both are read
+    from `window_data`/`z`, which are already restricted to `series.loc[year - window
+    : year - 1]` — strictly PAST data only, identical provenance to every other feature
+    in this function (including `last_z` = z at year-1). Falls back to 0.0 (neutral,
+    matching the existing tertile-mean fallback convention below) when the exact lag
+    year has no observation in the panel — never imputed from a later year.
 
     Returns None if insufficient data in window.
     """
@@ -348,8 +373,16 @@ def extract_features_for_indicator(
     else:
         accel = 0.0
 
+    # Explicit lag features (year-2, year-3): exact-year lookup into the past-only
+    # window_data/z index. 0.0 fallback when that specific calendar year is absent
+    # from the panel (a real gap, not a leak — we never substitute a later year's value).
+    lag_lookup = dict(zip(window_data.index.tolist(), z.tolist()))
+    lag_z2 = float(lag_lookup.get(year - 2, 0.0))
+    lag_z3 = float(lag_lookup.get(year - 3, 0.0))
+
     return np.array(
-        [float(z[-1]), float(z.mean()), float(z.std()), slope, accel, t1m, t2m, t3m],
+        [float(z[-1]), float(z.mean()), float(z.std()), slope, accel, t1m, t2m, t3m,
+         lag_z2, lag_z3],
         dtype=float,
     )
 
@@ -364,13 +397,13 @@ def build_X_y(
     """Build feature matrix for one (selected_set, window) configuration.
 
     Returns:
-        X: (n_valid, 8 * n_indicators) feature matrix
+        X: (n_valid, N_FEATURES_PER_INDICATOR * n_indicators) feature matrix
         y: (n_valid,) labels
         countries: (n_valid,) per-row country
         years: (n_valid,) per-row year
 
     `feat_cache` (optional): a memo dict keyed by ``(indicator, country, year, window)``
-    → the 8-feature vector (or None for insufficient data). BIT-IDENTICAL by construction:
+    → the N_FEATURES_PER_INDICATOR-feature vector (or None for insufficient data). BIT-IDENTICAL by construction:
     ``extract_features_for_indicator`` is a pure deterministic function of exactly those four
     keys (independent of the selected set), so a cached value equals a freshly-computed one.
     The greedy loop shares ONE cache across all (candidate × window) cells + steps, which kills
@@ -583,6 +616,89 @@ def era_stratified_loco(probs: np.ndarray, labels: np.ndarray, years: np.ndarray
 # ---- LOCO + architecture ----------------------------------------------------
 
 
+def _fit_predict_one_fold(
+    X_train: np.ndarray,
+    y_train: np.ndarray,
+    X_test: np.ndarray,
+    architecture: str,
+    seed: int = 0,
+) -> np.ndarray:
+    """Fit ONE model of `architecture` on (X_train, y_train) and return
+    predict_proba(X_test)[:, 1].
+
+    Extracted verbatim from `fit_predict_loco`'s per-country fold body (run-3.1 banking
+    wide-net fix #6, 2026-07-10) so a genuine train-once/predict-once evaluation — e.g. a
+    LOCKED TEMPORAL HOLD-OUT (train on screening-side rows, predict ONCE on frozen hold-out
+    rows, no re-selection) — reuses the IDENTICAL model-fitting code every LOCO fold already
+    uses, rather than a parallel reimplementation that could silently drift from it.
+    `fit_predict_loco` below calls this exact function once per held-out country; this
+    extraction is a pure refactor (same statements, same order, same `random_state=seed`) —
+    bit-identical to the pre-refactor inline code, confirmed by the existing LOCO unit tests
+    (which exercise `fit_predict_loco`'s public contract, unchanged by this extraction).
+
+    NaN/inf replacement + `scale_pos_weight` (XGBoost class-imbalance) are handled INSIDE
+    this helper (both are pure functions of `X_train`/`y_train`/`X_test`, so encapsulating
+    them here removes a duplication point rather than creating one) — a caller only needs to
+    hand in raw (post-`build_X_y`) train/test arrays.
+    """
+    from sklearn.preprocessing import StandardScaler
+
+    n_pos = int((y_train == 1).sum())
+    n_neg = int((y_train == 0).sum())
+    spw = (n_neg / max(n_pos, 1)) if n_pos > 0 else 1.0
+
+    # Replace residual NaN/inf with 0. NOTE (Ji-Hoon JH-2, 2026-05-25): this is
+    # POST-row-selection numeric stabilization for rare non-finite values produced
+    # by the z-score feature computation (e.g. a zero-variance window → 0/0). It is
+    # NOT imputation of missing indicator windows — rows lacking a selected
+    # indicator's window are already DROPPED in build_X_y (the coverage gate, not
+    # fill, is the remedy). The JH-R1 firewall (no filled row in any fold) holds.
+    X_train = np.where(np.isfinite(X_train), X_train, 0.0)
+    X_test = np.where(np.isfinite(X_test), X_test, 0.0)
+
+    if architecture == "LR":
+        from sklearn.linear_model import LogisticRegression
+        scaler = StandardScaler()
+        Xt = scaler.fit_transform(X_train)
+        Xte = scaler.transform(X_test)
+        # Per F-ML-1 §5.2: L1-regularized inner model (Sonnet PR#90 B1).
+        clf = LogisticRegression(
+            C=1.0, penalty="l1", solver="saga", class_weight="balanced",
+            max_iter=2000, random_state=seed,
+        )
+        clf.fit(Xt, y_train)
+        probs = clf.predict_proba(Xte)[:, 1]
+    elif architecture == "XGBoost":
+        from xgboost import XGBClassifier
+        # Per F-ML-1 §5.2: L1-regularized inner model (Sonnet PR#90 B1).
+        # reg_alpha=0.1 inside XGBoost provides L1 regularization handling
+        # collinearity at each greedy step.
+        clf = XGBClassifier(
+            n_estimators=200, max_depth=6, learning_rate=0.05,
+            reg_alpha=0.1,
+            scale_pos_weight=spw, eval_metric="logloss",
+            random_state=seed, verbosity=0, n_jobs=1,
+        )
+        clf.fit(X_train, y_train)
+        probs = clf.predict_proba(X_test)[:, 1]
+    elif architecture == "MLP":
+        from sklearn.neural_network import MLPClassifier
+        scaler = StandardScaler()
+        Xt = scaler.fit_transform(X_train)
+        Xte = scaler.transform(X_test)
+        clf = MLPClassifier(
+            hidden_layer_sizes=(16,), activation="relu",
+            solver="adam", learning_rate_init=1e-3, max_iter=200,
+            early_stopping=True, random_state=seed,
+        )
+        clf.fit(Xt, y_train)
+        probs = clf.predict_proba(Xte)[:, 1]
+    else:
+        raise ValueError(f"Unknown architecture {architecture!r}")
+
+    return probs
+
+
 def fit_predict_loco(
     X: np.ndarray,
     y: np.ndarray,
@@ -596,8 +712,6 @@ def fit_predict_loco(
     Returns pooled predictions + per-country AUC for fold-variance computation.
     Per Ji-Hoon R2: no subsampling. Full country fold.
     """
-    from sklearn.preprocessing import StandardScaler
-
     unique_countries = sorted(set(countries.tolist()))
     pooled_probs: list[float] = []
     pooled_labels: list[int] = []
@@ -624,58 +738,8 @@ def fit_predict_loco(
         X_train = X[train_mask]
         X_test = X[test_mask]
         y_test = y[test_mask]
-        n_pos = int((y_train == 1).sum())
-        n_neg = int((y_train == 0).sum())
-        spw = (n_neg / max(n_pos, 1)) if n_pos > 0 else 1.0
 
-        # Replace residual NaN/inf with 0. NOTE (Ji-Hoon JH-2, 2026-05-25): this is
-        # POST-row-selection numeric stabilization for rare non-finite values produced
-        # by the z-score feature computation (e.g. a zero-variance window → 0/0). It is
-        # NOT imputation of missing indicator windows — rows lacking a selected
-        # indicator's window are already DROPPED in build_X_y (the coverage gate, not
-        # fill, is the remedy). The JH-R1 firewall (no filled row in any fold) holds.
-        X_train = np.where(np.isfinite(X_train), X_train, 0.0)
-        X_test = np.where(np.isfinite(X_test), X_test, 0.0)
-
-        if architecture == "LR":
-            from sklearn.linear_model import LogisticRegression
-            scaler = StandardScaler()
-            Xt = scaler.fit_transform(X_train)
-            Xte = scaler.transform(X_test)
-            # Per F-ML-1 §5.2: L1-regularized inner model (Sonnet PR#90 B1).
-            clf = LogisticRegression(
-                C=1.0, penalty="l1", solver="saga", class_weight="balanced",
-                max_iter=2000, random_state=seed,
-            )
-            clf.fit(Xt, y_train)
-            probs = clf.predict_proba(Xte)[:, 1]
-        elif architecture == "XGBoost":
-            from xgboost import XGBClassifier
-            # Per F-ML-1 §5.2: L1-regularized inner model (Sonnet PR#90 B1).
-            # reg_alpha=0.1 inside XGBoost provides L1 regularization handling
-            # collinearity at each greedy step.
-            clf = XGBClassifier(
-                n_estimators=200, max_depth=6, learning_rate=0.05,
-                reg_alpha=0.1,
-                scale_pos_weight=spw, eval_metric="logloss",
-                random_state=seed, verbosity=0, n_jobs=1,
-            )
-            clf.fit(X_train, y_train)
-            probs = clf.predict_proba(X_test)[:, 1]
-        elif architecture == "MLP":
-            from sklearn.neural_network import MLPClassifier
-            scaler = StandardScaler()
-            Xt = scaler.fit_transform(X_train)
-            Xte = scaler.transform(X_test)
-            clf = MLPClassifier(
-                hidden_layer_sizes=(16,), activation="relu",
-                solver="adam", learning_rate_init=1e-3, max_iter=200,
-                early_stopping=True, random_state=seed,
-            )
-            clf.fit(Xt, y_train)
-            probs = clf.predict_proba(Xte)[:, 1]
-        else:
-            raise ValueError(f"Unknown architecture {architecture!r}")
+        probs = _fit_predict_one_fold(X_train, y_train, X_test, architecture, seed)
 
         pooled_probs.extend(probs.tolist())
         pooled_labels.extend(y_test.tolist())
@@ -1324,7 +1388,7 @@ def emit_descriptive(
     # SHAP would be ideal but we'll use built-in importances for the PoC; flag as approximation
     field_2 = []
     if feature_importances is not None:
-        n_feat_per_ind = 8
+        n_feat_per_ind = N_FEATURES_PER_INDICATOR
         for k, ind in enumerate(selected):
             block = feature_importances[k * n_feat_per_ind:(k + 1) * n_feat_per_ind]
             field_2.append({
@@ -1339,7 +1403,8 @@ def emit_descriptive(
         "type": "tree_importance" if architecture == "XGBoost" else "linear_coef",
         "values": [
             {"indicator_id": ind, "weight": float(np.mean(np.abs(
-                feature_importances[k*8:(k+1)*8] if feature_importances is not None else [0.0]
+                feature_importances[k * N_FEATURES_PER_INDICATOR:(k + 1) * N_FEATURES_PER_INDICATOR]
+                if feature_importances is not None else [0.0]
             )))}
             for k, ind in enumerate(selected)
         ],
