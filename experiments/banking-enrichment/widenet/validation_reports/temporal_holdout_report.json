@@ -1,0 +1,439 @@
+{
+  "seed": 12345,
+  "selected_indicators": [
+    "GII"
+  ],
+  "window": 10,
+  "architecture": "XGBoost",
+  "candidate_cut_years": [
+    2005,
+    2008,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017
+  ],
+  "cut_selection": {
+    "locked_cut_year": 2015,
+    "attempts": [
+      {
+        "cut_year": 2005,
+        "n_screen_rows": 277,
+        "n_holdout_rows": 187,
+        "holdout_row_fraction": 0.40301724137931033,
+        "screen_coverage": {
+          "n_pos_total": 68,
+          "n_pos_survive": 27,
+          "n_neg_total": 209,
+          "n_neg_survive": 97,
+          "pos_coverage": 0.39705882352941174,
+          "neg_coverage": 0.46411483253588515,
+          "n_countries_survive": 57,
+          "gate_pass": false
+        },
+        "accepted": false
+      },
+      {
+        "cut_year": 2008,
+        "n_screen_rows": 288,
+        "n_holdout_rows": 176,
+        "holdout_row_fraction": 0.3793103448275862,
+        "screen_coverage": {
+          "n_pos_total": 70,
+          "n_pos_survive": 29,
+          "n_neg_total": 218,
+          "n_neg_survive": 104,
+          "pos_coverage": 0.4142857142857143,
+          "neg_coverage": 0.47706422018348627,
+          "n_countries_survive": 60,
+          "gate_pass": false
+        },
+        "accepted": false
+      },
+      {
+        "cut_year": 2010,
+        "n_screen_rows": 365,
+        "n_holdout_rows": 99,
+        "holdout_row_fraction": 0.21336206896551724,
+        "screen_coverage": {
+          "n_pos_total": 93,
+          "n_pos_survive": 50,
+          "n_neg_total": 272,
+          "n_neg_survive": 154,
+          "pos_coverage": 0.5376344086021505,
+          "neg_coverage": 0.5661764705882353,
+          "n_countries_survive": 73,
+          "gate_pass": false
+        },
+        "accepted": false
+      },
+      {
+        "cut_year": 2011,
+        "n_screen_rows": 370,
+        "n_holdout_rows": 94,
+        "holdout_row_fraction": 0.2025862068965517,
+        "screen_coverage": {
+          "n_pos_total": 95,
+          "n_pos_survive": 52,
+          "n_neg_total": 275,
+          "n_neg_survive": 156,
+          "pos_coverage": 0.5473684210526316,
+          "neg_coverage": 0.5672727272727273,
+          "n_countries_survive": 73,
+          "gate_pass": false
+        },
+        "accepted": false
+      },
+      {
+        "cut_year": 2012,
+        "n_screen_rows": 376,
+        "n_holdout_rows": 88,
+        "holdout_row_fraction": 0.1896551724137931,
+        "screen_coverage": {
+          "n_pos_total": 97,
+          "n_pos_survive": 54,
+          "n_neg_total": 279,
+          "n_neg_survive": 160,
+          "pos_coverage": 0.5567010309278351,
+          "neg_coverage": 0.5734767025089605,
+          "n_countries_survive": 73,
+          "gate_pass": false
+        },
+        "accepted": false
+      },
+      {
+        "cut_year": 2013,
+        "n_screen_rows": 385,
+        "n_holdout_rows": 79,
+        "holdout_row_fraction": 0.17025862068965517,
+        "screen_coverage": {
+          "n_pos_total": 99,
+          "n_pos_survive": 56,
+          "n_neg_total": 286,
+          "n_neg_survive": 167,
+          "pos_coverage": 0.5656565656565656,
+          "neg_coverage": 0.583916083916084,
+          "n_countries_survive": 74,
+          "gate_pass": false
+        },
+        "accepted": false
+      },
+      {
+        "cut_year": 2014,
+        "n_screen_rows": 397,
+        "n_holdout_rows": 67,
+        "holdout_row_fraction": 0.14439655172413793,
+        "screen_coverage": {
+          "n_pos_total": 101,
+          "n_pos_survive": 58,
+          "n_neg_total": 296,
+          "n_neg_survive": 177,
+          "pos_coverage": 0.5742574257425742,
+          "neg_coverage": 0.597972972972973,
+          "n_countries_survive": 75,
+          "gate_pass": false
+        },
+        "accepted": false
+      },
+      {
+        "cut_year": 2015,
+        "n_screen_rows": 416,
+        "n_holdout_rows": 48,
+        "holdout_row_fraction": 0.10344827586206896,
+        "screen_coverage": {
+          "n_pos_total": 105,
+          "n_pos_survive": 61,
+          "n_neg_total": 311,
+          "n_neg_survive": 192,
+          "pos_coverage": 0.580952380952381,
+          "neg_coverage": 0.617363344051447,
+          "n_countries_survive": 75,
+          "gate_pass": true
+        },
+        "accepted": true
+      }
+    ],
+    "min_holdout_frac": 0.1
+  },
+  "holdout_result": {
+    "architecture": "XGBoost",
+    "window": 10,
+    "selected_indicators": [
+      "GII"
+    ],
+    "n_train_rows": 253,
+    "n_train_pos": 61,
+    "n_test_rows": 42,
+    "n_test_pos": 11,
+    "holdout_auc": 0.5689149560117303,
+    "holdout_auc_ci95": [
+      0.3597268558560096,
+      0.7768547410354777
+    ],
+    "sensitivity_2008_cohort": {
+      "exclude_year": 2008,
+      "n_total": 42,
+      "n_excluded": 0,
+      "auc_with_cohort": 0.5689149560117303,
+      "auc_without_cohort": 0.5689149560117303
+    },
+    "oof": [
+      {
+        "country": "Angola",
+        "year": 2020,
+        "prob": 0.7392544746398926,
+        "label": 1
+      },
+      {
+        "country": "Croatia",
+        "year": 2017,
+        "prob": 0.08489259332418442,
+        "label": 1
+      },
+      {
+        "country": "Ghana",
+        "year": 2017,
+        "prob": 0.7145893573760986,
+        "label": 1
+      },
+      {
+        "country": "Greece",
+        "year": 2015,
+        "prob": 0.09988858550786972,
+        "label": 1
+      },
+      {
+        "country": "Italy",
+        "year": 2016,
+        "prob": 0.6030488610267639,
+        "label": 1
+      },
+      {
+        "country": "Latvia",
+        "year": 2018,
+        "prob": 0.8250270485877991,
+        "label": 1
+      },
+      {
+        "country": "Mozambique",
+        "year": 2016,
+        "prob": 0.5515758991241455,
+        "label": 1
+      },
+      {
+        "country": "Venezuela",
+        "year": 2017,
+        "prob": 0.1445881873369217,
+        "label": 1
+      },
+      {
+        "country": "Venezuela",
+        "year": 2018,
+        "prob": 0.19046370685100555,
+        "label": 1
+      },
+      {
+        "country": "Venezuela",
+        "year": 2019,
+        "prob": 0.03137655928730965,
+        "label": 1
+      },
+      {
+        "country": "Zambia",
+        "year": 2020,
+        "prob": 0.1895952969789505,
+        "label": 1
+      },
+      {
+        "country": "Nepal",
+        "year": 2017,
+        "prob": 0.09027083218097687,
+        "label": 0
+      },
+      {
+        "country": "Belgium",
+        "year": 2016,
+        "prob": 0.6504464745521545,
+        "label": 0
+      },
+      {
+        "country": "Nigeria",
+        "year": 2016,
+        "prob": 0.30011606216430664,
+        "label": 0
+      },
+      {
+        "country": "Iceland",
+        "year": 2015,
+        "prob": 0.9477818608283997,
+        "label": 0
+      },
+      {
+        "country": "Belgium",
+        "year": 2017,
+        "prob": 0.6277704834938049,
+        "label": 0
+      },
+      {
+        "country": "Panama",
+        "year": 2016,
+        "prob": 0.08980463445186615,
+        "label": 0
+      },
+      {
+        "country": "Czechia",
+        "year": 2020,
+        "prob": 0.10199137032032013,
+        "label": 0
+      },
+      {
+        "country": "Jamaica",
+        "year": 2017,
+        "prob": 0.021922515705227852,
+        "label": 0
+      },
+      {
+        "country": "Indonesia",
+        "year": 2020,
+        "prob": 0.3422868847846985,
+        "label": 0
+      },
+      {
+        "country": "Zambia",
+        "year": 2016,
+        "prob": 0.24656014144420624,
+        "label": 0
+      },
+      {
+        "country": "Denmark",
+        "year": 2019,
+        "prob": 0.1879376471042633,
+        "label": 0
+      },
+      {
+        "country": "Azerbaijan",
+        "year": 2016,
+        "prob": 0.20757010579109192,
+        "label": 0
+      },
+      {
+        "country": "Paraguay",
+        "year": 2017,
+        "prob": 0.042878177016973495,
+        "label": 0
+      },
+      {
+        "country": "Panama",
+        "year": 2020,
+        "prob": 0.011568509973585606,
+        "label": 0
+      },
+      {
+        "country": "Pakistan",
+        "year": 2018,
+        "prob": 0.027862107381224632,
+        "label": 0
+      },
+      {
+        "country": "Ghana",
+        "year": 2015,
+        "prob": 0.3459356427192688,
+        "label": 0
+      },
+      {
+        "country": "Kazakhstan",
+        "year": 2016,
+        "prob": 0.07566961646080017,
+        "label": 0
+      },
+      {
+        "country": "Uruguay",
+        "year": 2016,
+        "prob": 0.618636965751648,
+        "label": 0
+      },
+      {
+        "country": "Venezuela",
+        "year": 2016,
+        "prob": 0.06868976354598999,
+        "label": 0
+      },
+      {
+        "country": "Ecuador",
+        "year": 2016,
+        "prob": 0.12850508093833923,
+        "label": 0
+      },
+      {
+        "country": "Angola",
+        "year": 2019,
+        "prob": 0.5699459314346313,
+        "label": 0
+      },
+      {
+        "country": "Lithuania",
+        "year": 2018,
+        "prob": 0.2601655423641205,
+        "label": 0
+      },
+      {
+        "country": "Bahrain",
+        "year": 2020,
+        "prob": 0.5937432050704956,
+        "label": 0
+      },
+      {
+        "country": "Azerbaijan",
+        "year": 2016,
+        "prob": 0.20757010579109192,
+        "label": 0
+      },
+      {
+        "country": "Cuba",
+        "year": 2018,
+        "prob": 0.8453362584114075,
+        "label": 0
+      },
+      {
+        "country": "India",
+        "year": 2019,
+        "prob": 0.1704898625612259,
+        "label": 0
+      },
+      {
+        "country": "Mozambique",
+        "year": 2017,
+        "prob": 0.10548249632120132,
+        "label": 0
+      },
+      {
+        "country": "Belarus",
+        "year": 2016,
+        "prob": 0.03999916836619377,
+        "label": 0
+      },
+      {
+        "country": "Finland",
+        "year": 2015,
+        "prob": 0.3971427083015442,
+        "label": 0
+      },
+      {
+        "country": "Jordan",
+        "year": 2016,
+        "prob": 0.24625816941261292,
+        "label": 0
+      },
+      {
+        "country": "China",
+        "year": 2017,
+        "prob": 0.6788218021392822,
+        "label": 0
+      }
+    ]
+  }
+}
