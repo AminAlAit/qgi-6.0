@@ -1,0 +1,917 @@
+{
+  "n_pos_total": 113,
+  "n_pos_em_eligible": 56,
+  "n_pos_advanced": 57,
+  "architecture": "LR",
+  "architecture_npos_threshold": 60,
+  "em_eligible_countries": [
+    "Albania",
+    "Angola",
+    "Azerbaijan",
+    "Bahrain",
+    "Bangladesh",
+    "Belarus",
+    "Bulgaria",
+    "Cameroon",
+    "Chile",
+    "China",
+    "Colombia",
+    "Cuba",
+    "Egypt",
+    "Estonia",
+    "Georgia",
+    "Guatemala",
+    "Honduras",
+    "Hungary",
+    "Indonesia",
+    "Ivory Coast",
+    "Jamaica",
+    "Jordan",
+    "Kazakhstan",
+    "Kenya",
+    "Kuwait",
+    "Madagascar",
+    "Mali",
+    "Mexico",
+    "Mozambique",
+    "Nepal",
+    "Nicaragua",
+    "Nigeria",
+    "North Korea",
+    "Pakistan",
+    "Panama",
+    "Paraguay",
+    "Philippines",
+    "Russia",
+    "South Africa",
+    "Sri Lanka",
+    "Taiwan",
+    "Tanzania",
+    "Thailand",
+    "Turkiye",
+    "Uganda",
+    "Ukraine",
+    "Venezuela",
+    "Vietnam",
+    "Zambia",
+    "Zimbabwe"
+  ],
+  "advanced_countries": [
+    "Argentina",
+    "Australia",
+    "Austria",
+    "Belgium",
+    "Bolivia",
+    "Brazil",
+    "Bulgaria",
+    "Costa Rica",
+    "Croatia",
+    "Cyprus",
+    "Czechia",
+    "Denmark",
+    "Ecuador",
+    "Finland",
+    "Ghana",
+    "Greece",
+    "Hungary",
+    "Iceland",
+    "India",
+    "Ireland",
+    "Israel",
+    "Italy",
+    "Japan",
+    "Latvia",
+    "Lithuania",
+    "Netherlands",
+    "New Zealand",
+    "Norway",
+    "Poland",
+    "Portugal",
+    "Slovenia",
+    "South Korea",
+    "Spain",
+    "Sweden",
+    "Switzerland",
+    "United Kingdom",
+    "United States",
+    "Uruguay",
+    "Venezuela"
+  ],
+  "em_eligible_rows": [
+    {
+      "country": "Albania",
+      "event_year": 1997,
+      "lag_year": 1996,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Angola",
+      "event_year": 2020,
+      "lag_year": 2019,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Azerbaijan",
+      "event_year": 1995,
+      "lag_year": 1994,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Bahrain",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Bangladesh",
+      "event_year": 1987,
+      "lag_year": 1986,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Belarus",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Bulgaria",
+      "event_year": 1990,
+      "lag_year": 1989,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Cameroon",
+      "event_year": 1987,
+      "lag_year": 1986,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Chile",
+      "event_year": 1982,
+      "lag_year": 1981,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "China",
+      "event_year": 1998,
+      "lag_year": 1997,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Colombia",
+      "event_year": 1998,
+      "lag_year": 1997,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Cuba",
+      "event_year": 1982,
+      "lag_year": 1981,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Egypt",
+      "event_year": 1988,
+      "lag_year": 1987,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Estonia",
+      "event_year": 1992,
+      "lag_year": 1991,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Georgia",
+      "event_year": 1998,
+      "lag_year": 1997,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Guatemala",
+      "event_year": 2001,
+      "lag_year": 2000,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Honduras",
+      "event_year": 1999,
+      "lag_year": 1998,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Hungary",
+      "event_year": 1974,
+      "lag_year": 1973,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Indonesia",
+      "event_year": 1997,
+      "lag_year": 1996,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Ivory Coast",
+      "event_year": 1982,
+      "lag_year": 1981,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Jamaica",
+      "event_year": 1994,
+      "lag_year": 1993,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Jamaica",
+      "event_year": 1995,
+      "lag_year": 1994,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Jamaica",
+      "event_year": 1996,
+      "lag_year": 1995,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Jordan",
+      "event_year": 1989,
+      "lag_year": 1988,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Kazakhstan",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Kenya",
+      "event_year": 1992,
+      "lag_year": 1991,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Kuwait",
+      "event_year": 1982,
+      "lag_year": 1981,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Madagascar",
+      "event_year": 1988,
+      "lag_year": 1987,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Mali",
+      "event_year": 1989,
+      "lag_year": 1988,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Mexico",
+      "event_year": 1994,
+      "lag_year": 1993,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Mozambique",
+      "event_year": 1998,
+      "lag_year": 1997,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Mozambique",
+      "event_year": 2016,
+      "lag_year": 2015,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Nepal",
+      "event_year": 2011,
+      "lag_year": 2010,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Nicaragua",
+      "event_year": 2000,
+      "lag_year": 1999,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Nigeria",
+      "event_year": 2009,
+      "lag_year": 2008,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "North Korea",
+      "event_year": 1976,
+      "lag_year": 1975,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Pakistan",
+      "event_year": 1998,
+      "lag_year": 1997,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Panama",
+      "event_year": 1988,
+      "lag_year": 1987,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Paraguay",
+      "event_year": 2002,
+      "lag_year": 2001,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Philippines",
+      "event_year": 1981,
+      "lag_year": 1980,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Russia",
+      "event_year": 1998,
+      "lag_year": 1997,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "South Africa",
+      "event_year": 1985,
+      "lag_year": 1984,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Sri Lanka",
+      "event_year": 2014,
+      "lag_year": 2013,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Taiwan",
+      "event_year": 1995,
+      "lag_year": 1994,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Tanzania",
+      "event_year": 1987,
+      "lag_year": 1986,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Thailand",
+      "event_year": 1997,
+      "lag_year": 1996,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Turkiye",
+      "event_year": 2001,
+      "lag_year": 2000,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Uganda",
+      "event_year": 1994,
+      "lag_year": 1993,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Ukraine",
+      "event_year": 2014,
+      "lag_year": 2013,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Venezuela",
+      "event_year": 2017,
+      "lag_year": 2016,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Venezuela",
+      "event_year": 2018,
+      "lag_year": 2017,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Venezuela",
+      "event_year": 2019,
+      "lag_year": 2018,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Vietnam",
+      "event_year": 2012,
+      "lag_year": 2011,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Zambia",
+      "event_year": 1975,
+      "lag_year": 1974,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    },
+    {
+      "country": "Zambia",
+      "event_year": 2020,
+      "lag_year": 2019,
+      "cohort_t_minus_1": "mid-tier",
+      "em_eligible": true
+    },
+    {
+      "country": "Zimbabwe",
+      "event_year": 2004,
+      "lag_year": 2003,
+      "cohort_t_minus_1": "fragile-state",
+      "em_eligible": true
+    }
+  ],
+  "advanced_rows": [
+    {
+      "country": "Argentina",
+      "event_year": 2001,
+      "lag_year": 2000,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Australia",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Austria",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Austria",
+      "event_year": 2009,
+      "lag_year": 2008,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Belgium",
+      "event_year": 2001,
+      "lag_year": 2000,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Belgium",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Bolivia",
+      "event_year": 1994,
+      "lag_year": 1993,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Brazil",
+      "event_year": 1994,
+      "lag_year": 1993,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Bulgaria",
+      "event_year": 2014,
+      "lag_year": 2013,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Costa Rica",
+      "event_year": 1994,
+      "lag_year": 1993,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Croatia",
+      "event_year": 2017,
+      "lag_year": 2016,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Cyprus",
+      "event_year": 2013,
+      "lag_year": 2012,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Czechia",
+      "event_year": 1994,
+      "lag_year": 1993,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Denmark",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Ecuador",
+      "event_year": 1998,
+      "lag_year": 1997,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Finland",
+      "event_year": 1993,
+      "lag_year": 1992,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Ghana",
+      "event_year": 2014,
+      "lag_year": 2013,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Ghana",
+      "event_year": 2017,
+      "lag_year": 2016,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Greece",
+      "event_year": 2015,
+      "lag_year": 2014,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Hungary",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Iceland",
+      "event_year": 2004,
+      "lag_year": 2003,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Iceland",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "India",
+      "event_year": 1993,
+      "lag_year": 1992,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Ireland",
+      "event_year": 2007,
+      "lag_year": 2006,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Ireland",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Ireland",
+      "event_year": 2010,
+      "lag_year": 2009,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Israel",
+      "event_year": 1983,
+      "lag_year": 1982,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Italy",
+      "event_year": 2010,
+      "lag_year": 2009,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Italy",
+      "event_year": 2016,
+      "lag_year": 2015,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Japan",
+      "event_year": 1990,
+      "lag_year": 1989,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Japan",
+      "event_year": 1997,
+      "lag_year": 1996,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Japan",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Latvia",
+      "event_year": 1995,
+      "lag_year": 1994,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Latvia",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Latvia",
+      "event_year": 2018,
+      "lag_year": 2017,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Lithuania",
+      "event_year": 1995,
+      "lag_year": 1994,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Netherlands",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "New Zealand",
+      "event_year": 2001,
+      "lag_year": 2000,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Norway",
+      "event_year": 1990,
+      "lag_year": 1989,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Poland",
+      "event_year": 1992,
+      "lag_year": 1991,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Portugal",
+      "event_year": 2011,
+      "lag_year": 2010,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Slovenia",
+      "event_year": 2013,
+      "lag_year": 2012,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "South Korea",
+      "event_year": 1997,
+      "lag_year": 1996,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "South Korea",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Spain",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Spain",
+      "event_year": 2012,
+      "lag_year": 2011,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Sweden",
+      "event_year": 1991,
+      "lag_year": 1990,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Switzerland",
+      "event_year": 1998,
+      "lag_year": 1997,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Switzerland",
+      "event_year": 2001,
+      "lag_year": 2000,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Switzerland",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Switzerland",
+      "event_year": 2009,
+      "lag_year": 2008,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "United Kingdom",
+      "event_year": 1976,
+      "lag_year": 1975,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "United Kingdom",
+      "event_year": 2007,
+      "lag_year": 2006,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "United Kingdom",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "United States",
+      "event_year": 2008,
+      "lag_year": 2007,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Uruguay",
+      "event_year": 2002,
+      "lag_year": 2001,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    },
+    {
+      "country": "Venezuela",
+      "event_year": 1994,
+      "lag_year": 1993,
+      "cohort_t_minus_1": "stable-democracy",
+      "em_eligible": false
+    }
+  ],
+  "n_pos_unresolved_no_cohort_data": 3,
+  "unresolved_positives": [
+    {
+      "country": "Antigua And Barbuda",
+      "event_year": 2009,
+      "reason": "\"cohort_at: country 'Antigua And Barbuda' not found in cohort-assignments.json\""
+    },
+    {
+      "country": "Croatia",
+      "event_year": 1980,
+      "reason": "\"cohort_at: 'Croatia' has no cohort assignment for year 1979 (covered years: 1941-2025)\""
+    },
+    {
+      "country": "Trinidad And Tobago",
+      "event_year": 2008,
+      "reason": "\"cohort_at: country 'Trinidad And Tobago' not found in cohort-assignments.json\""
+    }
+  ],
+  "proxy_source": "/work/qgi-data/reference/cohort-assignments.json",
+  "advanced_cohort_label": "stable-democracy",
+  "positives_csv": "/work/qgi-ml/data/shape_inputs_v2/banking_and_financial_crisis/positives.csv",
+  "known_limitation": "cohort-assignments.json is a political-stability/governance cohort, not an economic-development classification. Spot-check: Argentina 2001 (t-1=2000) and Brazil 1994 (t-1=1993) resolve to 'stable-democracy' under this proxy and are therefore EXCLUDED from the EM-eligible subset, even though neither is a real advanced economy circa their crisis year. South Korea 1997 (t-1=1996) is also excluded but plausibly agrees with a real income-group table by then. This means the D5 named-twin-crisis per-country decomposition (PLAN.md §11 bar #5) evaluates on 5-of-7 named countries (Mexico, Thailand, Indonesia, Russia, Turkiye), not all 7 -- see this module's docstring for the full spot-check."
+}
