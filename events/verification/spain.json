@@ -1200,6 +1200,42 @@
     ]
   },
   {
+    "year": 2008,
+    "title": "Spain Enters Recession as Housing Bubble Bursts in Global Financial Crisis",
+    "verdict": "TRUE",
+    "reason": "Confirmed materially as described. Spain's national GDP contracted in Q3 2008 for the first time in 15 years, and Spain officially entered recession in February 2009 (confirmed by mid-Feb 2009 data release; France24 headline \"Spain officially in recession for first time in 15 years\", 2009-02-12). GDP contracted 3.7% in 2009 and again (-0.1%) in 2010, matching \"contracted again in 2010.\" Unemployment rose from ~8.4% in early 2007 to 17.4% by end of March 2009 -- consistent with \"surged from 8 percent in 2007 toward double digits within two years\" (description is if anything conservative, since the actual rate exceeded double digits by 2009). Independent search also confirmed the construction-sector collapse (sharpest construction plunge in Europe June 2007-June 2008, near-halt of new construction in 2008, ~40% drop in construction employment 2007-2013) and the pre-crisis Spanish trade deficit / loss of competitiveness accumulated during the housing-boom years. All material elements (country, year, magnitude, causal narrative) check out.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the core claims: Spain's GDP contracted in Q3 2008 for the first time in 15 years; Spain officially entered recession in February 2009 when INE/Bank of Spain data confirmed two consecutive quarterly contractions (Q4 2008 GDP fell ~1%); full-year 2009 GDP contracted 3.7-3.8%; unemployment rose from ~8.2% in 2007 to 11.2% (2008) and 17.9-18.6% (2009), surging from single digits into the high teens within about two years, driven by the collapsing construction sector after the housing bubble burst amid the global financial crisis, compounded by an accumulated trade deficit from the boom years. 2010 GDP is reported as either a marginal contraction (-0.1%, per the dedicated Wikipedia \"2008-2014 Spanish financial crisis\" article and a corroborating search synthesis) or a marginal gain (+0.1 to +0.2%, per Wikipedia's general \"Economy of Spain\" page and countryeconomy.com) depending on data-revision vintage -- effectively flat/near-zero either way, with crisis-specific sources matching the description's \"contracted again in 2010.\" All other magnitudes and the causal narrative (housing bubble burst, GFC, construction collapse, trade deficit) are well-supported and consistent across sources, so this is a materially accurate description of a real, well-documented event.",
+        "source": "https://en.wikipedia.org/wiki/2008%E2%80%932014_Spanish_financial_crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed materially as described. Spain's national GDP contracted in Q3 2008 for the first time in 15 years, and Spain officially entered recession in February 2009 (confirmed by mid-Feb 2009 data release; France24 headline \"Spain officially in recession for first time in 15 years\", 2009-02-12). GDP contracted 3.7% in 2009 and again (-0.1%) in 2010, matching \"contracted again in 2010.\" Unemployment rose from ~8.4% in early 2007 to 17.4% by end of March 2009 -- consistent with \"surged from 8 percent in 2007 toward double digits within two years\" (description is if anything conservative, since the actual rate exceeded double digits by 2009). Independent search also confirmed the construction-sector collapse (sharpest construction plunge in Europe June 2007-June 2008, near-halt of new construction in 2008, ~40% drop in construction employment 2007-2013) and the pre-crisis Spanish trade deficit / loss of competitiveness accumulated during the housing-boom years. All material elements (country, year, magnitude, causal narrative) check out.",
+        "source": "https://en.wikipedia.org/wiki/2008%E2%80%932014_Spanish_financial_crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2008%E2%80%932014_Spanish_financial_crisis"
+  },
+  {
     "year": 2010,
     "title": "Constitutional Tribunal Curbs Catalan Statute, Sparking Independence Movement",
     "verdict": "TRUE",
@@ -1354,6 +1390,42 @@
         }
       }
     ]
+  },
+  {
+    "year": 2012,
+    "title": "Spain Falls Into Double-Dip Recession Amid Eurozone Debt Crisis",
+    "verdict": "PARTIAL",
+    "reason": "Core facts confirmed: Spain re-entered recession in Q1 2012 (a second, double-dip recession following 2008-2009), full-year 2012 GDP contracted ~1.4%, domestic demand fell ~3.9% (description says 'nearly 4 percent' - matches), and Spain requested/received an ESM rescue facility of up to €100 billion in mid-2012 for its banking sector (announced June 2012, first disbursement December 2012) amid the eurozone sovereign debt crisis. However, the unemployment claim is materially off: Spain's unemployment rate did NOT climb past 27% during 2012 — it was ~24.4% in Q1 2012 rising to ~26% by Q4 2012 (per INE/EPA data), and only crossed 27% in Q1 2013 (27.16%, per CNBC). So the 'unemployment climbed past 27 percent' detail belongs to early 2013, not 2012, making this a magnitude/timing error on one material detail while the recession, GDP contraction, and ESM bailout facts (which anchor the event) all hold for 2012.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core event holds for 2012/Spain: Spain officially re-entered recession in Q1 2012 (confirmed by Al Jazeera and CNN, April 2012), driven by austerity and the eurozone debt crisis, and Spain requested/received a Eurogroup/ESM facility of up to €100 billion for its banking sector in mid-2012 (agreed June-July 2012; Wikipedia '2008–2014 Spanish financial crisis'). Domestic demand contracting 'nearly 4 percent' also checks out (multiple sources cite -3.9% domestic demand for 2012). However, the unemployment claim is materially wrong for the stated year: Spain's unemployment rate was 24.63% in Q2 2012 and reached 26.02% in Q4 2012 (a modern-day record at the time per Al Jazeera, Jan 24 2013 article), NOT 'past 27 percent.' The 27% threshold (27.16%) was only crossed in Q1 2013 per CNBC (April 25, 2013) -- i.e. in the following year, not 2012. The GDP figure ('roughly 1.4 percent') matches the contemporaneous INE flash estimate widely reported at the time (referenced in Jan 2013 coverage), though later data revisions show a deeper contraction of about -2.9% for 2012 -- this is common historical-data revision drift and not treated as a hard error on its own. Because the unemployment figure is a clear, verifiable overstatement tied specifically to 2012 (actual was ~26%, not >27%), this is a PARTIAL rather than a clean TRUE.",
+        "source": "https://www.aljazeera.com/economy/2012/4/30/spains-economic-recession-double-dips",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core facts confirmed: Spain re-entered recession in Q1 2012 (a second, double-dip recession following 2008-2009), full-year 2012 GDP contracted ~1.4%, domestic demand fell ~3.9% (description says 'nearly 4 percent' - matches), and Spain requested/received an ESM rescue facility of up to €100 billion in mid-2012 for its banking sector (announced June 2012, first disbursement December 2012) amid the eurozone sovereign debt crisis. However, the unemployment claim is materially off: Spain's unemployment rate did NOT climb past 27% during 2012 — it was ~24.4% in Q1 2012 rising to ~26% by Q4 2012 (per INE/EPA data), and only crossed 27% in Q1 2013 (27.16%, per CNBC). So the 'unemployment climbed past 27 percent' detail belongs to early 2013, not 2012, making this a magnitude/timing error on one material detail while the recession, GDP contraction, and ESM bailout facts (which anchor the event) all hold for 2012.",
+        "source": "https://en.wikipedia.org/wiki/2008%E2%80%932014_Spanish_financial_crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2008%E2%80%932014_Spanish_financial_crisis"
   },
   {
     "year": 2012,
@@ -1630,6 +1702,42 @@
         }
       }
     ]
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 Lockdown Drives Spain's Deepest Recession on Record",
+    "verdict": "PARTIAL",
+    "reason": "Core event confirmed: Spain's economy did collapse in Q2 2020 due to COVID lockdowns, and 2020 was Spain's worst annual recession in modern records. INE's flash estimate (published 31 July 2020) put Q2 2020 QoQ GDP contraction at -18.5% (later revised to -17.8% in the Sept 2020 second estimate), matching the description almost exactly, and the final full-year 2020 GDP contraction was -11.2/-11.3% (multiple INE vintages), matching \"roughly 11 percent.\" However, the description's specific regional figures for the Balearic and Canary Islands are materially wrong. Per INE's official Contabilidad Regional de España (Regional Accounts) press release (19 Dec 2022, covering the 2019-2021 series), the 2020 GDP decline in volume terms was -23.2% for Illes Balears and -19.1% for Canarias (nominal-terms tables in the same release show -22.8% and -18.2% respectively). An earlier (Dec 2021) vintage cited elsewhere put them at roughly -21.7% and -18.1%. None of these vintages/measures come close to the description's claimed \"19.6%\" (Balearic) and especially \"14.1%\" (Canary) — the Canary Islands figure in particular understates the actual regional GDP collapse by roughly 4-5 percentage points (actual ~18-19% vs claimed 14.1%), and Balearic is understated by ~2-3.5 points. Country and year hold, and the top-line national narrative is accurate, but the specific magnitude detail for the two named regions is off enough to be material, so PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core national facts confirm: Spain's GDP fell 18.5% QoQ in Q2 2020 per INE's preliminary flash estimate (later revised to -17.8% in the second estimate) — this was the steepest quarterly EU decline, exactly matching the claim. Full-year 2020 contraction of \"roughly 11 percent\" is a reasonable rounding of the actual INE figure (-10.8%, later stabilized around -11%). However, the specific regional figures cited (Balearic ~19.6%, Canary ~14.1%) do not match any INE vintage I could find: INE's Contabilidad Regional de España (confirmed Dec 2021) shows Balearic Islands GDP fell 21.7% and Canary Islands fell 18.1% in 2020 — both notably deeper than the claimed figures, especially Canary (14.1% claimed vs 18.1% official, a ~4pp/22% relative miss). Other vintages/sources show even steeper Balearic declines (23.1-23.7%) and a lower partial-year AIReF Canary estimate (13.4% through Q3). The qualitative claim (island/tourism-dependent regions hit hardest) is correct and directionally true, but the quantitative magnitudes given for the two islands are off from the best available official data, which is a material-detail discrepancy while year/country/overall narrative hold.",
+        "source": "https://www.spainenglish.com/2020/08/02/spain-gdp-second-quarter-covid-lockdown/",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core event confirmed: Spain's economy did collapse in Q2 2020 due to COVID lockdowns, and 2020 was Spain's worst annual recession in modern records. INE's flash estimate (published 31 July 2020) put Q2 2020 QoQ GDP contraction at -18.5% (later revised to -17.8% in the Sept 2020 second estimate), matching the description almost exactly, and the final full-year 2020 GDP contraction was -11.2/-11.3% (multiple INE vintages), matching \"roughly 11 percent.\" However, the description's specific regional figures for the Balearic and Canary Islands are materially wrong. Per INE's official Contabilidad Regional de España (Regional Accounts) press release (19 Dec 2022, covering the 2019-2021 series), the 2020 GDP decline in volume terms was -23.2% for Illes Balears and -19.1% for Canarias (nominal-terms tables in the same release show -22.8% and -18.2% respectively). An earlier (Dec 2021) vintage cited elsewhere put them at roughly -21.7% and -18.1%. None of these vintages/measures come close to the description's claimed \"19.6%\" (Balearic) and especially \"14.1%\" (Canary) — the Canary Islands figure in particular understates the actual regional GDP collapse by roughly 4-5 percentage points (actual ~18-19% vs claimed 14.1%), and Balearic is understated by ~2-3.5 points. Country and year hold, and the top-line national narrative is accurate, but the specific magnitude detail for the two named regions is off enough to be material, so PARTIAL rather than TRUE.",
+        "source": "https://ine.es/prensa/cre_2021.pdf",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://ine.es/prensa/cre_2021.pdf"
   },
   {
     "year": 2020,

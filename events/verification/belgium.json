@@ -548,6 +548,42 @@
   },
   {
     "year": 2008,
+    "title": "Belgium Enters Recession as Fortis and Dexia Require Emergency Bailouts",
+    "verdict": "PARTIAL",
+    "reason": "Core narrative confirmed: Fortis (partially nationalized 28 Sep 2008, ~€11.2bn from Belgium/Netherlands/Luxembourg, later split with BNP Paribas taking the Belgian arm) and Dexia (€6.4bn injection 30 Sep 2008 from Belgium/France/Luxembourg, later nationalized) both required emergency government rescues in 2008; the Belgian government's own capital injections into the banking sector totaled almost €21bn between 2008-2009 (matches 'roughly 21 billion euros' claim). Belgium's real GDP did fall in Q4 2008 (-1.6% q/q per Eurostat-based reporting) and the economy contracted in 2009 (multiple sources give -1.5% to -2.0% annual, close to the claimed -1.9%); 2008 annual growth was weak (sources split between 0.4% and 1%, still consistent with 'slowed to just 1 percent'). However, the unemployment claim is materially wrong: multiple independent series (Eurostat harmonised rate via ycharts/Wikipedia Economy-of-Belgium table, CEIC) show Belgium unemployment at ~7.0% in 2008 (matches) but rising only to about 8.0-8.4% by end of 2010 — NOT the 9.7% claimed. In fact, per macrotrends/CEIC data, Belgium's unemployment rate never reached 9.7% in the entire 1991-2025 span; its all-time-series peak was 9.65% in 1994, unrelated to this crisis. So the description overstates the unemployment rise by roughly 1.3-1.7 percentage points and misattributes a level the country never actually reached in this period. Country, year, and the central bank-bailout-triggered-recession narrative all hold, but this is a material numeric error, hence PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core facts confirmed independently: Belgium's economy turned negative in Q4 2008 as the global financial crisis hit; Fortis was partially nationalized with an EUR11.2bn Benelux-government injection (28 Sep 2008) and Dexia received a EUR6.4bn Belgian/French/Luxembourg rescue (30 Sep 2008) - both per Wikipedia's '2008-2009 Belgian financial crisis' article. Total Belgian-state bailout costs across Fortis/Dexia/Ethias are independently reported at roughly EUR19.7bn (press coverage), close to the description's 'roughly 21 billion euros.' GDP growth of ~1% in 2008 followed by a 2009 contraction in the 1.5%-2.3% range (multiple sources) is broadly consistent with the description's 1.0%/-1.9% figures. However, the unemployment claim is materially overstated: independent sources (macrotrends/World Economics Eurostat-derived series, IZA World of Labor) put Belgium's unemployment rate at approximately 8.3%-8.4% by 2010, and describe the Great Recession trough as reaching only ~7.8% - not the 9.7% claimed in the event description. That is a meaningful magnitude error (roughly 1.3-1.9 points too high) on an otherwise accurate, correctly-dated, correctly-countried event about the Fortis/Dexia bailouts and Belgium's 2008-2009 recession.",
+        "source": "https://en.wikipedia.org/wiki/2008%E2%80%932009_Belgian_financial_crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core narrative confirmed: Fortis (partially nationalized 28 Sep 2008, ~€11.2bn from Belgium/Netherlands/Luxembourg, later split with BNP Paribas taking the Belgian arm) and Dexia (€6.4bn injection 30 Sep 2008 from Belgium/France/Luxembourg, later nationalized) both required emergency government rescues in 2008; the Belgian government's own capital injections into the banking sector totaled almost €21bn between 2008-2009 (matches 'roughly 21 billion euros' claim). Belgium's real GDP did fall in Q4 2008 (-1.6% q/q per Eurostat-based reporting) and the economy contracted in 2009 (multiple sources give -1.5% to -2.0% annual, close to the claimed -1.9%); 2008 annual growth was weak (sources split between 0.4% and 1%, still consistent with 'slowed to just 1 percent'). However, the unemployment claim is materially wrong: multiple independent series (Eurostat harmonised rate via ycharts/Wikipedia Economy-of-Belgium table, CEIC) show Belgium unemployment at ~7.0% in 2008 (matches) but rising only to about 8.0-8.4% by end of 2010 — NOT the 9.7% claimed. In fact, per macrotrends/CEIC data, Belgium's unemployment rate never reached 9.7% in the entire 1991-2025 span; its all-time-series peak was 9.65% in 1994, unrelated to this crisis. So the description overstates the unemployment rise by roughly 1.3-1.7 percentage points and misattributes a level the country never actually reached in this period. Country, year, and the central bank-bailout-triggered-recession narrative all hold, but this is a material numeric error, hence PARTIAL rather than TRUE.",
+        "source": "https://en.wikipedia.org/wiki/2008%E2%80%932009_Belgian_financial_crisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/2008%E2%80%932009_Belgian_financial_crisis"
+  },
+  {
+    "year": 2008,
     "title": "Dexia Bank Requires Emergency Bailout",
     "verdict": "TRUE",
     "reason": "Multiple independent, non-Wikipedia sources confirm: on 30 September 2008, Franco-Belgian bank Dexia received a €6.4 billion emergency capital injection from the Belgian State and regional governments (€3bn), the French State and Caisse des Dépôts (€3bn), and the Luxembourg government (€376 million), after Dexia's exposure to toxic US housing-market assets (notably via subsidiary FSA and loans to Depfa) caused a liquidity crunch following Lehman Brothers' collapse. Dexia's chairman and CEO resigned as part of the deal (France24). Yale's Journal of Financial Crises / New Bagehot Project documents the same figures and timeline in detail, and confirms Dexia required a further restructuring/bailout in 2011 leading to its eventual dismantling, matching the description's claim about a second 2011 bailout. All material details (country, year, amount, actors, cause, sequel) check out.",
@@ -964,6 +1000,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Anuna_De_Wever"
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 Causes Belgium's Largest GDP Contraction Since World War II",
+    "verdict": "PARTIAL",
+    "reason": "Core claim confirmed: Belgium's 2020 GDP contraction is independently reported as the worst since WWII, more than 3x the 2008-09 crisis (-2%), matching the description's framing. However, magnitude details are materially off: the annual figure of -6.7% matches only a preliminary Dec-2020 NBB Economic Review projection, while NBB's actual reported outturn (per Brussels Times flash estimate and Statbel/Wikipedia) was -6.2% to -6.3%. More materially, the description's claim of a Q4 2020 '0.4 percent contraction... as renewed restrictions took hold' is contradicted by NBB's own flash estimate, which reported GDP GREW 0.2% q/q in Q4 2020 (a later revision put it at -0.1%, still not -0.4%, and not evidence of a renewed-restrictions pullback). Q1-Q3 figures fall within the range seen across different data revision vintages and are not clearly wrong. Year and country hold; a specific quarterly claim is factually reversed and the annual magnitude is off by ~0.4-0.5pp versus the settled data, meeting the bar for PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "double_negative",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "PARTIAL",
+        "reason": "Core event confirmed: Belgium's National Bank (NBB) and independent press (Brussels Times) both confirm COVID-19 caused Belgium's worst GDP decline since WWII in 2020, more than 3x worse than the 2008-09 crisis (-2.0%). However, the magnitude cited (-6.7%) does not match the final, actual outturn reported by NBB itself: NBB's own 2021 Economic Review ('The Belgian economy in the wake of the COVID-19 shock') and Brussels Times both state real GDP fell 6.2-6.3% in 2020, not 6.7%. Tracing the 6.7% figure: it appears verbatim in an NBB December 14, 2020 press release ('Belgian economy gradually recovering after huge COVID-19 hit') which explicitly frames it as a forward projection ('is set to contract by 6.7% this year'), made before Q4 data was final -- not as the final reported outcome the event description implies ('the National Bank of Belgium reported'). The final realized figure, once all four quarters were tallied, was revised down to -6.2%/-6.3%. Quarterly figures in the description are also partially off from best-available data: Q1 commonly reported as -3.3% to -3.6% (vs. -2.8% claimed), Q2 as -11.4% to -12.1% across revisions (roughly consistent with -11.4% claimed), Q3 rebound reported as +10.7% (flash) revised to +11.4% (vs. +11.8% claimed, in the same ballpark), and Q4 reported as -0.1% (NBB's later revision) or even +0.1%/+0.2% (earlier estimates) vs. -0.4% claimed -- same direction (weak/negative) but larger magnitude than found. Country and year are correct and the qualitative narrative (largest contraction since WWII, driven by COVID lockdowns, 3x worse than 2008-09) is solidly confirmed, but the headline magnitude is a forecast figure conflated with the final reported outcome, and quarterly details deviate from the authoritative NBB data -- hence PARTIAL rather than TRUE.",
+        "source": "https://www.brusselstimes.com/157573/belgium-sees-worst-decline-in-gdp-since-world-war-ii-gross-domestic-product-great-recession-coronavirus",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core claim confirmed: Belgium's 2020 GDP contraction is independently reported as the worst since WWII, more than 3x the 2008-09 crisis (-2%), matching the description's framing. However, magnitude details are materially off: the annual figure of -6.7% matches only a preliminary Dec-2020 NBB Economic Review projection, while NBB's actual reported outturn (per Brussels Times flash estimate and Statbel/Wikipedia) was -6.2% to -6.3%. More materially, the description's claim of a Q4 2020 '0.4 percent contraction... as renewed restrictions took hold' is contradicted by NBB's own flash estimate, which reported GDP GREW 0.2% q/q in Q4 2020 (a later revision put it at -0.1%, still not -0.4%, and not evidence of a renewed-restrictions pullback). Q1-Q3 figures fall within the range seen across different data revision vintages and are not clearly wrong. Year and country hold; a specific quarterly claim is factually reversed and the annual magnitude is off by ~0.4-0.5pp versus the settled data, meeting the bar for PARTIAL rather than TRUE.",
+        "source": "https://www.brusselstimes.com/157573/belgium-sees-worst-decline-in-gdp-since-world-war-ii-gross-domestic-product-great-recession-coronavirus",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.brusselstimes.com/157573/belgium-sees-worst-decline-in-gdp-since-world-war-ii-gross-domestic-product-great-recession-coronavirus"
   },
   {
     "year": 2020,

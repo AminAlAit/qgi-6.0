@@ -1136,6 +1136,42 @@
     "source": "https://en.wikipedia.org/wiki/ABN_AMRO"
   },
   {
+    "year": 2008,
+    "title": "Global Financial Crisis Pushes Dutch Economy Into Recession",
+    "verdict": "PARTIAL",
+    "reason": "Core narrative confirmed: the Netherlands entered recession in Q4 2008 as the global financial crisis hit, with full-year 2008 GDP growth still positive (~2.1-2.2% per multiple sources), followed by a sharp 2009 contraction that multiple independent sources peg at exactly -3.7% (Wikipedia Economy of the Netherlands page and others), matching the description almost exactly. The Dutch government's nationalization of Fortis's Dutch banking operations (~EUR 16.8bn, announced Oct 3 2008, later merged into a new ABN AMRO) is well-documented and independently corroborated (Wikipedia's Fortis (finance) and 2008-2009 Belgian financial crisis pages, Yale Journal of Financial Crises case study). However, the unemployment figures are materially off: the specific value \"3.7 percent\" that the event attributes to 2009 is, per an independent peer-reviewed source (PMC/NCBI paper on the added-worker effect in the Netherlands) and corroborated by an OECD-harmonized-definition historical series (indexmundi: 2008=3.663%, 2009=4.359%, 2010=4.995%), actually the 2008 rate — unemployment then rose further in 2009 (to roughly 4.3-4.8% depending on definition/source) rather than holding at 3.7%. The \"peaking at 4.5% in 2010\" claim is a rough match for some definitions/subgroups (a CPB analysis cites 4.5% for native Dutch workers in 2010) but other measures put 2010 closer to 5.0%, and unemployment did not actually peak in 2010 in the broader multi-year sense (it kept climbing after the 2011-2012 double-dip recession, reaching ~7.4% by 2014) — \"peaking\" is only true if read as \"peak of this initial 2008-2010 mini-cycle,\" which is a defensible but non-obvious reading. Net: country and year (2008 recession onset) hold, and the central recession/GDP/Fortis facts are accurate, but the unemployment statistic appears to be shifted by roughly one year and slightly overstates 2009's actual level — a material but secondary detail error, hence PARTIAL rather than TRUE.",
+    "verify_count": 2,
+    "consensus_verdict": "PARTIAL",
+    "consensus_status": "downgraded",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "All material claims check out against independent sources. GDP: countryeconomy.com and Wikipedia's \"Economy of the Netherlands\" both confirm 2008 full-year growth of +2.1%/+2.2% followed by a -3.7% contraction in 2009 (exact match to the description's figures), with the Netherlands entering recession in Q4 2008 as the global financial crisis hit (confirmed by multiple sources including NIAS's \"Great Recession in the Netherlands\" summary and the EC's \"global financial crisis and its effects on the Netherlands\" paper). Fortis's Dutch operations were indeed nationalized: on 3 October 2008 the Dutch government bought Fortis Bank Nederland plus Fortis's stake in ABN AMRO for €16.8bn (confirmed via Wikipedia's Fortis Bank Nederland / Fortis Group / ABN AMRO pages), consistent with \"nationalized banks including Fortis's Dutch operations.\" Large-scale liquidity injections (ING capital support, bank guarantees) during this period are well documented general knowledge of the 2008 Dutch bank rescue package. Unemployment was initially harder to pin down because different methodologies diverge sharply (Dutch CBS's pre-2013 \"national definition\" shows ~3.8%/4.8%/5.4% for 2008/2009/2010, while Wikipedia's summary table shows higher figures still) — but the IMF World Economic Outlook database (Harmonized OECD definition, via econstats.com mirror) gives exactly 3.066% (2008), 3.728% (2009), and 4.458% (2010), matching the description's \"3.7 percent in 2009... peaking at 4.5 percent in 2010\" almost to the decimal. This confirms the description used the standard internationally-harmonized (OECD/IMF) unemployment series rather than the Dutch national-definition series, and under that series the numbers are accurate. All core facts — year, country, recession timing, GDP figures, bank nationalization, and unemployment trajectory — are corroborated.",
+        "source": "https://en.wikipedia.org/wiki/Economy_of_the_Netherlands",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "PARTIAL",
+        "reason": "Core narrative confirmed: the Netherlands entered recession in Q4 2008 as the global financial crisis hit, with full-year 2008 GDP growth still positive (~2.1-2.2% per multiple sources), followed by a sharp 2009 contraction that multiple independent sources peg at exactly -3.7% (Wikipedia Economy of the Netherlands page and others), matching the description almost exactly. The Dutch government's nationalization of Fortis's Dutch banking operations (~EUR 16.8bn, announced Oct 3 2008, later merged into a new ABN AMRO) is well-documented and independently corroborated (Wikipedia's Fortis (finance) and 2008-2009 Belgian financial crisis pages, Yale Journal of Financial Crises case study). However, the unemployment figures are materially off: the specific value \"3.7 percent\" that the event attributes to 2009 is, per an independent peer-reviewed source (PMC/NCBI paper on the added-worker effect in the Netherlands) and corroborated by an OECD-harmonized-definition historical series (indexmundi: 2008=3.663%, 2009=4.359%, 2010=4.995%), actually the 2008 rate — unemployment then rose further in 2009 (to roughly 4.3-4.8% depending on definition/source) rather than holding at 3.7%. The \"peaking at 4.5% in 2010\" claim is a rough match for some definitions/subgroups (a CPB analysis cites 4.5% for native Dutch workers in 2010) but other measures put 2010 closer to 5.0%, and unemployment did not actually peak in 2010 in the broader multi-year sense (it kept climbing after the 2011-2012 double-dip recession, reaching ~7.4% by 2014) — \"peaking\" is only true if read as \"peak of this initial 2008-2010 mini-cycle,\" which is a defensible but non-obvious reading. Net: country and year (2008 recession onset) hold, and the central recession/GDP/Fortis facts are accurate, but the unemployment statistic appears to be shifted by roughly one year and slightly overstates 2009's actual level — a material but secondary detail error, hence PARTIAL rather than TRUE.",
+        "source": "https://en.wikipedia.org/wiki/Fortis_(finance)",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://en.wikipedia.org/wiki/Fortis_(finance)"
+  },
+  {
     "year": 2009,
     "title": "Alphen aan den Rijn Mass Shooting Shocks Netherlands",
     "verdict": "PARTIAL",
@@ -1259,6 +1295,42 @@
       }
     ],
     "source": "https://foreignpolicy.com/2012/08/09/the-netherlands-faces-the-politics-of-austerity/"
+  },
+  {
+    "year": 2012,
+    "title": "Dutch Economy Shrinks Amid Eurozone Debt Crisis Double-Dip Recession",
+    "verdict": "TRUE",
+    "reason": "Confirmed by Statistics Netherlands (CBS), the country's own national statistics agency, and corroborated by independent academic and financial-press sources. CBS's own historical timeline lists Dutch GDP growth as -1.0% in 2012 (matching the description exactly), following 2011 (+1.6-1.8%) and continuing into a further contraction in 2013 (sources place it between -0.1% and -0.7% depending on revision vintage, but all agree 2013 was not a recovery year), and the page uses the term \"dubbele dip\" (double-dip) for this exact episode. A CBS-sourced summary of \"Nederland in 2012\" explicitly states \"From the second quarter of 2011 onwards, the Netherlands found itself in a period of economic downturn\" and that construction was the hardest-hit sector (production down >8%, turnover down 7%), with wholesale/retail trade and financial institutions also still below 2008 turnover levels in 2012 -- matching the description's sector list almost verbatim. Independent academic corroboration (NIAS/Netherlands Institute for Advanced Study symposium page) confirms \"Only in 2015 did the Netherlands reach the level of production it had in 2008,\" matching the \"delayed return to 2008 output levels until 2015\" claim. The austerity/EU-deficit-rule framing is corroborated by multiple contemporaneous sources (World Policy's \"Austerity Fatigue in the Netherlands,\" 2012 budget-deficit-vs-3%-EU-target reporting, and the Rutte government's April 2012 collapse over a euro16bn austerity package). One minor granularity note: a couple of secondary sources place the strict quarter-on-quarter GDP contraction onset at Q3 2011 rather than Q2 2011, but a CBS-derived summary directly supports the Q2 2011 dating used in the description, and this is background/scene-setting context rather than the event's core claim. All core facts (year, country, magnitude, mechanism, sectors, duration, austerity link) hold, so this is TRUE rather than PARTIAL.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "independent",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Multiple independent sources confirm the core facts: (1) Netherlands GDP contracted approximately 1.0% in 2012 (Wikipedia's Economy of the Netherlands GDP-growth table lists 2011: +1.6%, 2012: -1.0%, 2013: -0.1%; countryeconomy.com independently states \"GDP of Netherlands fell -1% in 2012 compared to last year,\" down from +1.8% growth in 2011 - minor variance across sources, e.g. some cite -0.9% to -1.2%, is within normal statistical-revision range for the same fact). (2) The recession's onset in Q2 2011 is corroborated by a Haver Analytics piece titled \"The Netherlands' Second Quarter Decline in GDP,\" noting the Netherlands was the only eurozone country with a GDP decline (-0.20% QoQ) in Q2 2011 - the start of the technical recession. (3) The downturn extended into 2013 (a further contraction, forming the double-dip), confirmed by multiple sources including a World Policy article citing a 2012 contraction of 0.9% and a forecast further contraction in 2013. (4) Return to 2008 output levels only in 2015 is directly confirmed by an NL Times snippet (\"Dutch economy fully recovers from financial crisis,\" GDP only topped the 2008 real level by end of 2015) and echoed by an NIAS summary (\"Only in 2015 did the Netherlands reach the level of production it had in 2008\"). (5) Construction-sector distress (job losses, high bankruptcy rate, ~15% turnover loss vs. 2008) and the role of financial institutions/banks in the housing-crisis dynamic are independently confirmed via CPB/IZA-journal and academic sources. (6) Government austerity under PM Rutte being blamed for prolonging the slump is corroborated by several independent commentary pieces (Bruegel \"Austerity Tales: the Netherlands and Italy,\" World Policy \"Austerity Fatigue in the Netherlands,\" CIGI \"Austerity Fuelling Dutch Revolt\"). The only detail not independently pinned down was \"wholesale trade\" specifically as a struggling sector, but this is a minor supporting detail consistent with a trade-dependent, eurozone-crisis-exposed economy and does not contradict anything found. All material claims (country, year, magnitude, double-dip shape, 2015 recovery date, austerity narrative) are corroborated by multiple independent, non-overlapping sources.",
+        "source": "https://countryeconomy.com/gdp/netherlands?year=2012",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by Statistics Netherlands (CBS), the country's own national statistics agency, and corroborated by independent academic and financial-press sources. CBS's own historical timeline lists Dutch GDP growth as -1.0% in 2012 (matching the description exactly), following 2011 (+1.6-1.8%) and continuing into a further contraction in 2013 (sources place it between -0.1% and -0.7% depending on revision vintage, but all agree 2013 was not a recovery year), and the page uses the term \"dubbele dip\" (double-dip) for this exact episode. A CBS-sourced summary of \"Nederland in 2012\" explicitly states \"From the second quarter of 2011 onwards, the Netherlands found itself in a period of economic downturn\" and that construction was the hardest-hit sector (production down >8%, turnover down 7%), with wholesale/retail trade and financial institutions also still below 2008 turnover levels in 2012 -- matching the description's sector list almost verbatim. Independent academic corroboration (NIAS/Netherlands Institute for Advanced Study symposium page) confirms \"Only in 2015 did the Netherlands reach the level of production it had in 2008,\" matching the \"delayed return to 2008 output levels until 2015\" claim. The austerity/EU-deficit-rule framing is corroborated by multiple contemporaneous sources (World Policy's \"Austerity Fatigue in the Netherlands,\" 2012 budget-deficit-vs-3%-EU-target reporting, and the Rutte government's April 2012 collapse over a euro16bn austerity package). One minor granularity note: a couple of secondary sources place the strict quarter-on-quarter GDP contraction onset at Q3 2011 rather than Q2 2011, but a CBS-derived summary directly supports the Q2 2011 dating used in the description, and this is background/scene-setting context rather than the event's core claim. All core facts (year, country, magnitude, mechanism, sectors, duration, austerity link) hold, so this is TRUE rather than PARTIAL.",
+        "source": "https://www.cbs.nl/nl-nl/longread/diversen/2025/tijdlijn-internationale-handel/7-2008-kredietcrisis-en-eurocrisis",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cbs.nl/nl-nl/longread/diversen/2025/tijdlijn-internationale-handel/7-2008-kredietcrisis-en-eurocrisis"
   },
   {
     "year": 2012,
@@ -1584,6 +1656,42 @@
       }
     ],
     "source": "https://en.wikipedia.org/wiki/Nitrogen_crisis_in_the_Netherlands"
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 Pandemic Triggers Netherlands' Worst Postwar Recession",
+    "verdict": "TRUE",
+    "reason": "Confirmed by Statistics Netherlands (CBS) and independent press (NL Times): Q2 2020 GDP fell 8.5% quarter-on-quarter (9.5% y/y), which CBS itself said \"has never been measured by CBS before\" — matching the description's \"largest ever measured\" claim. This, combined with Q1's -1.7%, put the Netherlands in a technical recession per the two-consecutive-quarters-of-decline definition, exactly as described. CBS's own longread confirms hospitality/food services collapsed ~40% in value added, transport/storage fell 15.3%, culture/recreation fell 24.5%, and healthcare fell ~5% (postponed procedures) — matching \"trade, hospitality, and healthcare sectors\" devastation (note: aggregate \"trade\" value-added itself was only mildly down per CBS, but hospitality/travel-adjacent sectors were hit hard as described). Government relief (the NOW wage-subsidy scheme) demonstrably cushioned employment/bankruptcies (2020 bankruptcies fell to a record low of 2,703 vs 3,209 in 2019), matching \"government relief programs cushioned employment losses.\" The one soft spot: the precise full-year contraction figure varies by source/data vintage — CBS's own official releases show -3.7% (initial, matching 2009) and -3.8% (\"strongest ever recorded, surpassing 2009's -3.7%\") in different vintages, while countryeconomy.com (independent, Eurostat/WB-derived) reports exactly -3.9% as stated in the event. This 0.1-0.2 percentage-point spread reflects normal cross-source/vintage GDP revision noise, not a substantive misrepresentation — the core narrative (worst/near-worst postwar recession, COVID-driven, ~8.5% Q2 collapse, technical recession, sectoral pattern, cushioned employment) is solidly corroborated.",
+    "verify_count": 2,
+    "consensus_verdict": "TRUE",
+    "consensus_status": "double_confirmed",
+    "needs_tiebreak": false,
+    "source_independence": "weak",
+    "verifications": [
+      {
+        "pass_n": 1,
+        "verdict": "TRUE",
+        "reason": "Confirmed via CBS (Statistics Netherlands) official releases and independent corroboration. CBS's Q2 2020 release states Dutch GDP contracted 8.5% quarter-on-quarter in Q2 2020, explicitly calling it the largest quarterly decline on record (surpassing the prior record of -3.6% in Q1 2009), driven by household consumption (-10.4%) and investment (-12.4%) collapses; sector data show trade/transport/accommodation-and-food-services down 16.6% and healthcare down ~21%, consistent with the description's hospitality/trade/healthcare framing. CBS's Q4 2020 release confirms the full-year 2020 contraction (first estimate -3.8%, described by CBS as \"the strongest contraction ever recorded by CBS,\" slightly exceeding the -3.7% 2009 crisis figure); later/other reputable tabulations (World Bank data as reflected via countryeconomy.com/macrotrends, ~-3.87%) round to the -3.9% figure used in the event description — a normal first-estimate-vs-revised-estimate gap of 0.1pp, not a material discrepancy. Q1 2020 also contracted (CBS reported -1.5% to -1.7% in successive releases), so two consecutive quarters of GDP decline (Q1+Q2 2020) satisfy the technical recession definition as stated. Government relief/furlough programs (e.g., the NOW wage-subsidy scheme) cushioning employment during this period is well-established common knowledge consistent with the description, though not itself sourced in the CBS release fetched. All core claims — country, year, magnitude, sector impact, technical-recession framing — check out.",
+        "source": "https://www.cbs.nl/en-gb/news/2020/33/economic-contraction-of-8-5-percent-in-q2-2020",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      },
+      {
+        "pass_n": 2,
+        "verdict": "TRUE",
+        "reason": "Confirmed by Statistics Netherlands (CBS) and independent press (NL Times): Q2 2020 GDP fell 8.5% quarter-on-quarter (9.5% y/y), which CBS itself said \"has never been measured by CBS before\" — matching the description's \"largest ever measured\" claim. This, combined with Q1's -1.7%, put the Netherlands in a technical recession per the two-consecutive-quarters-of-decline definition, exactly as described. CBS's own longread confirms hospitality/food services collapsed ~40% in value added, transport/storage fell 15.3%, culture/recreation fell 24.5%, and healthcare fell ~5% (postponed procedures) — matching \"trade, hospitality, and healthcare sectors\" devastation (note: aggregate \"trade\" value-added itself was only mildly down per CBS, but hospitality/travel-adjacent sectors were hit hard as described). Government relief (the NOW wage-subsidy scheme) demonstrably cushioned employment/bankruptcies (2020 bankruptcies fell to a record low of 2,703 vs 3,209 in 2019), matching \"government relief programs cushioned employment losses.\" The one soft spot: the precise full-year contraction figure varies by source/data vintage — CBS's own official releases show -3.7% (initial, matching 2009) and -3.8% (\"strongest ever recorded, surpassing 2009's -3.7%\") in different vintages, while countryeconomy.com (independent, Eurostat/WB-derived) reports exactly -3.9% as stated in the event. This 0.1-0.2 percentage-point spread reflects normal cross-source/vintage GDP revision noise, not a substantive misrepresentation — the core narrative (worst/near-worst postwar recession, COVID-driven, ~8.5% Q2 collapse, technical recession, sectoral pattern, cushioned employment) is solidly corroborated.",
+        "source": "https://www.cbs.nl/en-gb/news/2021/07/economic-contraction-0-1-percent-in-q4-2020",
+        "verifier": {
+          "model": "claude-sonnet-5",
+          "date": "2026-07-10",
+          "method": "web_search"
+        }
+      }
+    ],
+    "source": "https://www.cbs.nl/en-gb/news/2021/07/economic-contraction-0-1-percent-in-q4-2020"
   },
   {
     "year": 2020,
