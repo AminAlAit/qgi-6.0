@@ -1,0 +1,478 @@
+{
+  "recipe_id": "terrorist_attack",
+  "drivers": [
+    "VC.BTL.DETH",
+    "VC.IDP.NWDS",
+    "DT.TDS.DECT.EX.ZS",
+    "MS.MIL.XPND.GD.ZS",
+    "v2xel_frefair",
+    "SL.UEM.1524.ZS"
+  ],
+  "seed": 12345,
+  "n_pos_samples_built": 242,
+  "n_neg_samples_built": 726,
+  "event_span": [
+    1958,
+    2021
+  ],
+  "depth_floor_years": 20,
+  "note": "coverage_report/coverage_gate_ok run per-driver STANDALONE (single-indicator candidate set), not the joint 6-driver AND-set. Standalone pass does not imply the driver survives the AND across all 6 depths jointly.",
+  "per_driver": [
+    {
+      "indicator": "VC.BTL.DETH",
+      "panel_year_min": 1989,
+      "panel_year_max": 2024,
+      "panel_depth_years": 36,
+      "overlap_years_vs_event_span_1958_2021": 33,
+      "depth_floor_20yr_pass": true,
+      "n_countries_nonnull_in_panel": 109,
+      "best_standalone_pos_coverage": 0.405,
+      "best_window_for_standalone_pos_coverage": 10,
+      "window_grid_coverage": {
+        "3": {
+          "pos_coverage": 0.314,
+          "neg_coverage": 0.1639,
+          "n_pos_survive": 76,
+          "n_countries_survive": 32,
+          "coverage_gate_ok_standalone": false
+        },
+        "5": {
+          "pos_coverage": 0.3554,
+          "neg_coverage": 0.2052,
+          "n_pos_survive": 86,
+          "n_countries_survive": 35,
+          "coverage_gate_ok_standalone": false
+        },
+        "7": {
+          "pos_coverage": 0.3719,
+          "neg_coverage": 0.2218,
+          "n_pos_survive": 90,
+          "n_countries_survive": 35,
+          "coverage_gate_ok_standalone": false
+        },
+        "10": {
+          "pos_coverage": 0.405,
+          "neg_coverage": 0.2479,
+          "n_pos_survive": 98,
+          "n_countries_survive": 37,
+          "coverage_gate_ok_standalone": false
+        },
+        "12": {
+          "pos_coverage": 0.3512,
+          "neg_coverage": 0.2273,
+          "n_pos_survive": 85,
+          "n_countries_survive": 33,
+          "coverage_gate_ok_standalone": false
+        },
+        "15": {
+          "pos_coverage": 0.3306,
+          "neg_coverage": 0.2066,
+          "n_pos_survive": 80,
+          "n_countries_survive": 31,
+          "coverage_gate_ok_standalone": false
+        },
+        "18": {
+          "pos_coverage": 0.3182,
+          "neg_coverage": 0.2066,
+          "n_pos_survive": 77,
+          "n_countries_survive": 31,
+          "coverage_gate_ok_standalone": false
+        },
+        "21": {
+          "pos_coverage": 0.2893,
+          "neg_coverage": 0.1928,
+          "n_pos_survive": 70,
+          "n_countries_survive": 28,
+          "coverage_gate_ok_standalone": false
+        },
+        "25": {
+          "pos_coverage": 0.2727,
+          "neg_coverage": 0.1873,
+          "n_pos_survive": 66,
+          "n_countries_survive": 29,
+          "coverage_gate_ok_standalone": false
+        }
+      }
+    },
+    {
+      "indicator": "VC.IDP.NWDS",
+      "panel_year_min": 2008,
+      "panel_year_max": 2023,
+      "panel_depth_years": 16,
+      "overlap_years_vs_event_span_1958_2021": 14,
+      "depth_floor_20yr_pass": false,
+      "n_countries_nonnull_in_panel": 197,
+      "best_standalone_pos_coverage": 0.1942,
+      "best_window_for_standalone_pos_coverage": 10,
+      "window_grid_coverage": {
+        "3": {
+          "pos_coverage": 0.1446,
+          "neg_coverage": 0.1364,
+          "n_pos_survive": 35,
+          "n_countries_survive": 44,
+          "coverage_gate_ok_standalone": false
+        },
+        "5": {
+          "pos_coverage": 0.1777,
+          "neg_coverage": 0.1667,
+          "n_pos_survive": 43,
+          "n_countries_survive": 54,
+          "coverage_gate_ok_standalone": false
+        },
+        "7": {
+          "pos_coverage": 0.1901,
+          "neg_coverage": 0.1832,
+          "n_pos_survive": 46,
+          "n_countries_survive": 56,
+          "coverage_gate_ok_standalone": false
+        },
+        "10": {
+          "pos_coverage": 0.1942,
+          "neg_coverage": 0.1846,
+          "n_pos_survive": 47,
+          "n_countries_survive": 56,
+          "coverage_gate_ok_standalone": false
+        },
+        "12": {
+          "pos_coverage": 0.1612,
+          "neg_coverage": 0.1529,
+          "n_pos_survive": 39,
+          "n_countries_survive": 52,
+          "coverage_gate_ok_standalone": false
+        },
+        "15": {
+          "pos_coverage": 0.1446,
+          "neg_coverage": 0.1253,
+          "n_pos_survive": 35,
+          "n_countries_survive": 43,
+          "coverage_gate_ok_standalone": false
+        },
+        "18": {
+          "pos_coverage": 0.1033,
+          "neg_coverage": 0.1088,
+          "n_pos_survive": 25,
+          "n_countries_survive": 41,
+          "coverage_gate_ok_standalone": false
+        },
+        "21": {
+          "pos_coverage": 0.0785,
+          "neg_coverage": 0.0854,
+          "n_pos_survive": 19,
+          "n_countries_survive": 35,
+          "coverage_gate_ok_standalone": false
+        },
+        "25": {
+          "pos_coverage": 0.0496,
+          "neg_coverage": 0.0565,
+          "n_pos_survive": 12,
+          "n_countries_survive": 26,
+          "coverage_gate_ok_standalone": false
+        }
+      }
+    },
+    {
+      "indicator": "DT.TDS.DECT.EX.ZS",
+      "panel_year_min": 1970,
+      "panel_year_max": 2024,
+      "panel_depth_years": 55,
+      "overlap_years_vs_event_span_1958_2021": 52,
+      "depth_floor_20yr_pass": true,
+      "n_countries_nonnull_in_panel": 120,
+      "best_standalone_pos_coverage": 0.5413,
+      "best_window_for_standalone_pos_coverage": 7,
+      "window_grid_coverage": {
+        "3": {
+          "pos_coverage": 0.5207,
+          "neg_coverage": 0.4559,
+          "n_pos_survive": 126,
+          "n_countries_survive": 41,
+          "coverage_gate_ok_standalone": false
+        },
+        "5": {
+          "pos_coverage": 0.5372,
+          "neg_coverage": 0.4573,
+          "n_pos_survive": 130,
+          "n_countries_survive": 42,
+          "coverage_gate_ok_standalone": false
+        },
+        "7": {
+          "pos_coverage": 0.5413,
+          "neg_coverage": 0.4614,
+          "n_pos_survive": 131,
+          "n_countries_survive": 42,
+          "coverage_gate_ok_standalone": false
+        },
+        "10": {
+          "pos_coverage": 0.5413,
+          "neg_coverage": 0.4628,
+          "n_pos_survive": 131,
+          "n_countries_survive": 42,
+          "coverage_gate_ok_standalone": false
+        },
+        "12": {
+          "pos_coverage": 0.5207,
+          "neg_coverage": 0.4504,
+          "n_pos_survive": 126,
+          "n_countries_survive": 41,
+          "coverage_gate_ok_standalone": false
+        },
+        "15": {
+          "pos_coverage": 0.5041,
+          "neg_coverage": 0.449,
+          "n_pos_survive": 122,
+          "n_countries_survive": 41,
+          "coverage_gate_ok_standalone": false
+        },
+        "18": {
+          "pos_coverage": 0.4959,
+          "neg_coverage": 0.438,
+          "n_pos_survive": 120,
+          "n_countries_survive": 41,
+          "coverage_gate_ok_standalone": false
+        },
+        "21": {
+          "pos_coverage": 0.5041,
+          "neg_coverage": 0.4298,
+          "n_pos_survive": 122,
+          "n_countries_survive": 41,
+          "coverage_gate_ok_standalone": false
+        },
+        "25": {
+          "pos_coverage": 0.4959,
+          "neg_coverage": 0.4215,
+          "n_pos_survive": 120,
+          "n_countries_survive": 41,
+          "coverage_gate_ok_standalone": false
+        }
+      }
+    },
+    {
+      "indicator": "MS.MIL.XPND.GD.ZS",
+      "panel_year_min": 1960,
+      "panel_year_max": 2024,
+      "panel_depth_years": 65,
+      "overlap_years_vs_event_span_1958_2021": 62,
+      "depth_floor_20yr_pass": true,
+      "n_countries_nonnull_in_panel": 163,
+      "best_standalone_pos_coverage": 0.9215,
+      "best_window_for_standalone_pos_coverage": 10,
+      "window_grid_coverage": {
+        "3": {
+          "pos_coverage": 0.8719,
+          "neg_coverage": 0.8264,
+          "n_pos_survive": 211,
+          "n_countries_survive": 69,
+          "coverage_gate_ok_standalone": true
+        },
+        "5": {
+          "pos_coverage": 0.8926,
+          "neg_coverage": 0.8471,
+          "n_pos_survive": 216,
+          "n_countries_survive": 69,
+          "coverage_gate_ok_standalone": true
+        },
+        "7": {
+          "pos_coverage": 0.9091,
+          "neg_coverage": 0.8609,
+          "n_pos_survive": 220,
+          "n_countries_survive": 69,
+          "coverage_gate_ok_standalone": true
+        },
+        "10": {
+          "pos_coverage": 0.9215,
+          "neg_coverage": 0.8815,
+          "n_pos_survive": 223,
+          "n_countries_survive": 69,
+          "coverage_gate_ok_standalone": true
+        },
+        "12": {
+          "pos_coverage": 0.9174,
+          "neg_coverage": 0.8705,
+          "n_pos_survive": 222,
+          "n_countries_survive": 69,
+          "coverage_gate_ok_standalone": true
+        },
+        "15": {
+          "pos_coverage": 0.905,
+          "neg_coverage": 0.865,
+          "n_pos_survive": 219,
+          "n_countries_survive": 69,
+          "coverage_gate_ok_standalone": true
+        },
+        "18": {
+          "pos_coverage": 0.905,
+          "neg_coverage": 0.8623,
+          "n_pos_survive": 219,
+          "n_countries_survive": 69,
+          "coverage_gate_ok_standalone": true
+        },
+        "21": {
+          "pos_coverage": 0.8884,
+          "neg_coverage": 0.8595,
+          "n_pos_survive": 215,
+          "n_countries_survive": 68,
+          "coverage_gate_ok_standalone": true
+        },
+        "25": {
+          "pos_coverage": 0.8802,
+          "neg_coverage": 0.8623,
+          "n_pos_survive": 213,
+          "n_countries_survive": 68,
+          "coverage_gate_ok_standalone": true
+        }
+      }
+    },
+    {
+      "indicator": "v2xel_frefair",
+      "panel_year_min": 1789,
+      "panel_year_max": 2025,
+      "panel_depth_years": 237,
+      "overlap_years_vs_event_span_1958_2021": 64,
+      "depth_floor_20yr_pass": true,
+      "n_countries_nonnull_in_panel": 175,
+      "best_standalone_pos_coverage": 0.9959,
+      "best_window_for_standalone_pos_coverage": 3,
+      "window_grid_coverage": {
+        "3": {
+          "pos_coverage": 0.9959,
+          "neg_coverage": 0.989,
+          "n_pos_survive": 241,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": true
+        },
+        "5": {
+          "pos_coverage": 0.9959,
+          "neg_coverage": 0.989,
+          "n_pos_survive": 241,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": true
+        },
+        "7": {
+          "pos_coverage": 0.9959,
+          "neg_coverage": 0.989,
+          "n_pos_survive": 241,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": true
+        },
+        "10": {
+          "pos_coverage": 0.9959,
+          "neg_coverage": 0.989,
+          "n_pos_survive": 241,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": true
+        },
+        "12": {
+          "pos_coverage": 0.9959,
+          "neg_coverage": 0.9862,
+          "n_pos_survive": 241,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": true
+        },
+        "15": {
+          "pos_coverage": 0.9959,
+          "neg_coverage": 0.9848,
+          "n_pos_survive": 241,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": true
+        },
+        "18": {
+          "pos_coverage": 0.9959,
+          "neg_coverage": 0.9848,
+          "n_pos_survive": 241,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": true
+        },
+        "21": {
+          "pos_coverage": 0.9959,
+          "neg_coverage": 0.9821,
+          "n_pos_survive": 241,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": true
+        },
+        "25": {
+          "pos_coverage": 0.9959,
+          "neg_coverage": 0.9821,
+          "n_pos_survive": 241,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": true
+        }
+      }
+    },
+    {
+      "indicator": "SL.UEM.1524.ZS",
+      "panel_year_min": 1991,
+      "panel_year_max": 2025,
+      "panel_depth_years": 35,
+      "overlap_years_vs_event_span_1958_2021": 31,
+      "depth_floor_20yr_pass": true,
+      "n_countries_nonnull_in_panel": 186,
+      "best_standalone_pos_coverage": 0.6983,
+      "best_window_for_standalone_pos_coverage": 3,
+      "window_grid_coverage": {
+        "3": {
+          "pos_coverage": 0.6983,
+          "neg_coverage": 0.668,
+          "n_pos_survive": 169,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": true
+        },
+        "5": {
+          "pos_coverage": 0.6983,
+          "neg_coverage": 0.668,
+          "n_pos_survive": 169,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": true
+        },
+        "7": {
+          "pos_coverage": 0.6983,
+          "neg_coverage": 0.668,
+          "n_pos_survive": 169,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": true
+        },
+        "10": {
+          "pos_coverage": 0.6983,
+          "neg_coverage": 0.668,
+          "n_pos_survive": 169,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": true
+        },
+        "12": {
+          "pos_coverage": 0.6694,
+          "neg_coverage": 0.646,
+          "n_pos_survive": 162,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": true
+        },
+        "15": {
+          "pos_coverage": 0.6364,
+          "neg_coverage": 0.6212,
+          "n_pos_survive": 154,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": true
+        },
+        "18": {
+          "pos_coverage": 0.6074,
+          "neg_coverage": 0.5882,
+          "n_pos_survive": 147,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": false
+        },
+        "21": {
+          "pos_coverage": 0.5992,
+          "neg_coverage": 0.5799,
+          "n_pos_survive": 145,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": false
+        },
+        "25": {
+          "pos_coverage": 0.5744,
+          "neg_coverage": 0.5537,
+          "n_pos_survive": 139,
+          "n_countries_survive": 71,
+          "coverage_gate_ok_standalone": false
+        }
+      }
+    }
+  ]
+}
