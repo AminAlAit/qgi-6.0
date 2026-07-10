@@ -41,3 +41,18 @@ If no candidate clears all 7 gates: record **0.652 as military_coup's honest cei
 
 ## Odds (prior, un-anchored)
 Better than banking's 30–50%: homogeneous panel + strong orthogonal military-institution candidates run-2 wholly lacks + a richer literature-backed shortlist. Rough prior **~45–60%** of a real, modest lift.
+
+---
+
+## OUTCOME (2026-07-10) — CONFOUND CAUGHT; honest ceiling 0.652
+
+Build+test: 6 candidates screened (all passed coverage + D3 V-Dem orthogonality). **5 of 6 added no significant lift** (dAUC ~+0.002–0.005, CI crosses 0; military coup-proofing v2stcritapparm/v2strenarm included; GDP-growth negative). **1 candidate — `OWID_AUTOCRATIZATION` — cleared ALL 7 pre-registered gates:** 0.652→0.7105, dAUC +0.0589, CI [0.019, 0.097], p=0.002, FDR-survives, D7 hold-out replicates.
+
+**But it was a look-ahead confound (purist-flagged, then confirmed by a decisive backdating check):** `OWID_AUTOCRATIZATION` is V-Dem ERT's `aut_ep` episode flag, dated retrospectively (episode start only confirmed after several subsequent years of decline; the coup year sits inside the confirmation window). The check:
+- **Lag decay:** +0.059(sig) @t‑1 → +0.022(ns) @t‑2 → −0.013 @t‑3 → ~0 @t‑4/5. Concentrated at t‑1, dead by t‑3 = coincident/backdated, not leading.
+- **Leakage-safe real-time reconstructions** (cum-drop / one-sided z-decline of v2x_polyarchy/libdem/regime, ≤t only): all 6 non-significant.
+- **Strict episode** (start ≥2–3 yrs before t): lift vanishes.
+
+**VERDICT: no candidate honestly beats 0.652 → that is military_coup's honest ceiling.** The winner was episode-coding hindsight; per the pre-reg stop rule, no further indicator search this cycle. Minor live-number parity: 0.677→0.652. Artifacts: `results/` + `confound_check/results/confound_check_report.json`.
+
+**Methodology lesson (transferable):** retrospectively-dated **episode/spell-coded indicators** (V-Dem ERT, similar event-history flags) are systematically hindsight-prone — treat as a leakage class; add a lag-decay + leakage-safe-reconstruction check whenever one survives the battery. The standard D3 (cross-sectional orthogonality) does NOT catch it.

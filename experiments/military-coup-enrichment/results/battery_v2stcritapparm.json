@@ -1,0 +1,183 @@
+{
+  "seed": 12345,
+  "recipe_id": "military_coup",
+  "candidate_id": "v2stcritapparm",
+  "recipe": [
+    "SP.DYN.LE00.IN",
+    "v2excrptps",
+    "v2cltort",
+    "v2xel_frefair",
+    "v2x_clpol",
+    "v2stcritapparm"
+  ],
+  "locked_window": 25,
+  "baseline": {
+    "drivers": [
+      "SP.DYN.LE00.IN",
+      "v2excrptps",
+      "v2cltort",
+      "v2xel_frefair",
+      "v2x_clpol"
+    ],
+    "loco_auc": 0.651644276745926,
+    "ci95_lo": 0.5979895946273269,
+    "ci95_hi": 0.7011109414570955,
+    "chosen_window": 25
+  },
+  "recipe_fit": {
+    "loco_auc": 0.6535826291923853,
+    "ci95_lo": 0.5940325097017243,
+    "ci95_hi": 0.7093610693303403,
+    "chosen_window": 25
+  },
+  "d1_coverage_matched_baseline": {
+    "gate_pass": true,
+    "baseline_loco_auc": 0.651644276745926,
+    "anchor": 0.652,
+    "tolerance": 0.03
+  },
+  "d2_missingness_placebo": {
+    "gate_pass": true,
+    "dummy_delta_vs_baseline": {
+      "point": -0.03557659655220624,
+      "auc_a": 0.6135314915802721,
+      "auc_b": 0.6491080881324783,
+      "ci95_lo": -0.07388149389345225,
+      "ci95_hi": -0.003524098536958784,
+      "p_value": 0.03396603396603397,
+      "n_pairs": 530,
+      "n_clusters": 71,
+      "n_boot_valid": 1000,
+      "b_eval": 1000
+    },
+    "permuted_delta_vs_baseline": {
+      "point": -0.034218253730448844,
+      "auc_a": 0.6148898344020295,
+      "auc_b": 0.6491080881324783,
+      "ci95_lo": -0.08175143683843968,
+      "ci95_hi": 0.00781017278394378,
+      "p_value": 0.12987012987012986,
+      "n_pairs": 530,
+      "n_clusters": 71,
+      "n_boot_valid": 1000,
+      "b_eval": 1000
+    },
+    "gdp_missingness_point_biserial_r": null
+  },
+  "d3_vdem_orthogonality": {
+    "gate_pass": true,
+    "verdict": "PASS_ORTHOGONAL",
+    "applicable": true
+  },
+  "d4_over_couptrap_baseline": {
+    "gate_pass": true,
+    "delta_vs_couptrap": {
+      "point": 0.15704840095084,
+      "auc_a": 0.6535826291923853,
+      "auc_b": 0.4965342282415453,
+      "ci95_lo": 0.08085252052163858,
+      "ci95_hi": 0.2322749961995476,
+      "p_value": 0.001998001998001998,
+      "n_pairs": 530,
+      "n_clusters": 71,
+      "n_boot_valid": 1000,
+      "b_eval": 1000
+    },
+    "couptrap_alone_loco_auc": 0.4915633970454386
+  },
+  "d5_per_country": {
+    "gate_pass": true,
+    "per_country_auc": {
+      "Afghanistan": 0.47619047619047616,
+      "Algeria": 1.0,
+      "Argentina": 1.0,
+      "Bangladesh": 0.5,
+      "Bolivia": 0.5,
+      "Brazil": 1.0,
+      "Burkina Faso": 1.0,
+      "Burundi": 0.25,
+      "Chile": 1.0,
+      "Egypt": 0.25,
+      "El Salvador": 0.2857142857142857,
+      "Ethiopia": 0.6666666666666666,
+      "Fiji": 0.6666666666666666,
+      "Ghana": 0.25,
+      "Guatemala": 0.1,
+      "Guinea": 0.75,
+      "Haiti": 1.0,
+      "Honduras": 0.5,
+      "Iraq": 1.0,
+      "Ivory Coast": 0.8571428571428571,
+      "Kenya": 1.0,
+      "Liberia": 0.625,
+      "Libya": 0.8,
+      "Madagascar": 0.5,
+      "Maldives": 0.8333333333333334,
+      "Mali": 0.75,
+      "Morocco": 0.75,
+      "Myanmar": 1.0,
+      "Nepal": 0.8571428571428571,
+      "Niger": 0.96,
+      "Nigeria": 0.4666666666666667,
+      "Oman": 1.0,
+      "Pakistan": 0.6285714285714286,
+      "Panama": 0.0,
+      "Paraguay": 0.4166666666666667,
+      "Philippines": 0.7142857142857143,
+      "Qatar": 0.35,
+      "Russia": 0.7692307692307693,
+      "Rwanda": 1.0,
+      "Saudi Arabia": 0.2,
+      "Sierra Leone": 0.625,
+      "Somalia": 0.7142857142857143,
+      "South Korea": 0.6666666666666666,
+      "Spain": 0.6666666666666666,
+      "Suriname": 1.0,
+      "Syria": 0.3333333333333333,
+      "Thailand": 0.7083333333333334,
+      "Togo": 0.42857142857142855,
+      "Tunisia": 0.8333333333333334,
+      "Turkiye": 0.5,
+      "Uruguay": 0.375,
+      "Venezuela": 0.5,
+      "Yemen": 0.7222222222222222,
+      "Zambia": 1.0,
+      "Zimbabwe": 0.9
+    },
+    "n_countries": 55
+  },
+  "d6_country_block_bootstrap_provisional": {
+    "gate_pass_no_fdr": false,
+    "delta_vs_baseline": {
+      "point": 0.004474541059906967,
+      "auc_a": 0.6535826291923853,
+      "auc_b": 0.6491080881324783,
+      "ci95_lo": -0.046408050197512866,
+      "ci95_hi": 0.049951734630599945,
+      "p_value": 0.8811188811188811,
+      "n_pairs": 530,
+      "n_clusters": 71,
+      "n_boot_valid": 1000,
+      "b_eval": 1000
+    }
+  },
+  "d7_temporal_holdout": {
+    "gate_pass": true,
+    "advisory": true,
+    "reason": "n_holdout_pos=0 < 8 -> advisory downgrade (non-blocking), too data-starved to bind",
+    "detail": {
+      "fit_failed": true,
+      "reason": "pick_cut_year: no candidate in [1985, 1990, 1995, 2000, 2005, 2010] cleared BOTH the screening-side coverage gate AND holdout_row_fraction >= 0.1. See `attempts` in the raised context for the per-candidate trace -- re-choose the candidate list by hand (attempts=[{'cut_year': 1985, 'n_screen_rows': 486, 'n_holdout_rows': 342, 'holdout_row_fraction': 0.41304347826086957, 'screen_coverage': {'n_pos_total': 124, 'n_pos_survive': 51, 'n_neg_total': 362, 'n_neg_survive': 169, 'pos_coverage': 0.4112903225806452, 'neg_coverage': 0.46685082872928174, 'n_countries_survive': 61, 'gate_pass': False}, 'accepted': False}, {'cut_year': 1990, 'n_screen_rows': 555, 'n_holdout_rows': 273, 'holdout_row_fraction': 0.32971014492753625, 'screen_coverage': {'n_pos_total': 139, 'n_pos_survive': 60, 'n_neg_total': 416, 'n_neg_survive': 219, 'pos_coverage': 0.4316546762589928, 'neg_coverage': 0.5264423076923077, 'n_countries_survive': 64, 'gate_pass': False}, 'accepted': False}, {'cut_year': 1995, 'n_screen_rows': 626, 'n_holdout_rows': 202, 'holdout_row_fraction': 0.24396135265700483, 'screen_coverage': {'n_pos_total': 158, 'n_pos_survive': 75, 'n_neg_total': 468, 'n_neg_survive': 265, 'pos_coverage': 0.47468354430379744, 'neg_coverage': 0.5662393162393162, 'n_countries_survive': 64, 'gate_pass': False}, 'accepted': False}, {'cut_year': 2000, 'n_screen_rows': 679, 'n_holdout_rows': 149, 'holdout_row_fraction': 0.17995169082125603, 'screen_coverage': {'n_pos_total': 172, 'n_pos_survive': 89, 'n_neg_total': 507, 'n_neg_survive': 299, 'pos_coverage': 0.5174418604651163, 'neg_coverage': 0.5897435897435898, 'n_countries_survive': 65, 'gate_pass': False}, 'accepted': False}, {'cut_year': 2005, 'n_screen_rows': 699, 'n_holdout_rows': 129, 'holdout_row_fraction': 0.15579710144927536, 'screen_coverage': {'n_pos_total': 177, 'n_pos_survive': 94, 'n_neg_total': 522, 'n_neg_survive': 313, 'pos_coverage': 0.5310734463276836, 'neg_coverage': 0.5996168582375478, 'n_countries_survive': 66, 'gate_pass': False}, 'accepted': False}, {'cut_year': 2010, 'n_screen_rows': 746, 'n_holdout_rows': 82, 'holdout_row_fraction': 0.09903381642512077, 'screen_coverage': {'n_pos_total': 186, 'n_pos_survive': 103, 'n_neg_total': 560, 'n_neg_survive': 347, 'pos_coverage': 0.553763440860215, 'neg_coverage': 0.6196428571428572, 'n_countries_survive': 67, 'gate_pass': True}, 'accepted': False}])"
+    },
+    "n_holdout_pos": 0
+  },
+  "gates_provisional": {
+    "d1": true,
+    "d2": true,
+    "d3": true,
+    "d4": true,
+    "d5": true,
+    "d6_no_fdr": false,
+    "d7": true
+  }
+}

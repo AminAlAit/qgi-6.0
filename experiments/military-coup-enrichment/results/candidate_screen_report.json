@@ -1,0 +1,251 @@
+{
+  "seed": 12345,
+  "recipe_id": "military_coup",
+  "window": 25,
+  "candidates": {
+    "v2exl_legitlead": {
+      "candidate_id": "v2exl_legitlead",
+      "window": 25,
+      "n_pos_total": 207,
+      "n_pos_survive": 200,
+      "pos_coverage": 0.966183574879227,
+      "n_neg_total": 621,
+      "n_neg_survive": 595,
+      "neg_coverage": 0.9581320450885669,
+      "n_countries_survive": 72,
+      "coverage_verdict": "PASS",
+      "is_vdem_candidate": true,
+      "d3": {
+        "candidate_id": "v2exl_legitlead",
+        "block_ids": [
+          "v2excrptps",
+          "v2cltort",
+          "v2xel_frefair",
+          "v2x_clpol"
+        ],
+        "n_rows": 202,
+        "n_pos_total": 207,
+        "coverage_at_positive_cells": 0.9758454106280193,
+        "r2": 0.24009601915448697,
+        "multiple_r": 0.48999593789590434,
+        "pairwise_r_vs_block": {
+          "v2excrptps": -0.2334514979216349,
+          "v2cltort": -0.2182371589627984,
+          "v2xel_frefair": -0.2909916411006941,
+          "v2x_clpol": -0.3967309486668614
+        },
+        "ols_coefficients_intercept_first": [
+          1.4634207567704258,
+          -0.29902456960544077,
+          0.20795403030266507,
+          -0.06895116823966332,
+          -2.3412631922357656
+        ],
+        "verdict": "PASS_ORTHOGONAL",
+        "threshold": 0.85,
+        "min_n": 30
+      },
+      "screen_verdict": "SCREEN_PASS"
+    },
+    "v2pepwrses": {
+      "candidate_id": "v2pepwrses",
+      "window": 25,
+      "n_pos_total": 207,
+      "n_pos_survive": 200,
+      "pos_coverage": 0.966183574879227,
+      "n_neg_total": 621,
+      "n_neg_survive": 599,
+      "neg_coverage": 0.964573268921095,
+      "n_countries_survive": 72,
+      "coverage_verdict": "PASS",
+      "is_vdem_candidate": true,
+      "d3": {
+        "candidate_id": "v2pepwrses",
+        "block_ids": [
+          "v2excrptps",
+          "v2cltort",
+          "v2xel_frefair",
+          "v2x_clpol"
+        ],
+        "n_rows": 202,
+        "n_pos_total": 207,
+        "coverage_at_positive_cells": 0.9758454106280193,
+        "r2": 0.1596238280018838,
+        "multiple_r": 0.3995295082993042,
+        "pairwise_r_vs_block": {
+          "v2excrptps": 0.20492417228230753,
+          "v2cltort": 0.2488190521064107,
+          "v2xel_frefair": 0.3707993917569549,
+          "v2x_clpol": 0.18166719000503992
+        },
+        "ols_coefficients_intercept_first": [
+          -0.09233633576537174,
+          0.11513525256081696,
+          0.08630225257717959,
+          1.6227559099576547,
+          -0.4259153193552677
+        ],
+        "verdict": "PASS_ORTHOGONAL",
+        "threshold": 0.85,
+        "min_n": 30
+      },
+      "screen_verdict": "SCREEN_PASS"
+    },
+    "v2stcritapparm": {
+      "candidate_id": "v2stcritapparm",
+      "window": 25,
+      "n_pos_total": 207,
+      "n_pos_survive": 177,
+      "pos_coverage": 0.855072463768116,
+      "n_neg_total": 621,
+      "n_neg_survive": 558,
+      "neg_coverage": 0.8985507246376812,
+      "n_countries_survive": 71,
+      "coverage_verdict": "PASS",
+      "is_vdem_candidate": true,
+      "d3": {
+        "candidate_id": "v2stcritapparm",
+        "block_ids": [
+          "v2excrptps",
+          "v2cltort",
+          "v2xel_frefair",
+          "v2x_clpol"
+        ],
+        "n_rows": 181,
+        "n_pos_total": 207,
+        "coverage_at_positive_cells": 0.8743961352657005,
+        "r2": 0.10869966102125206,
+        "multiple_r": 0.3296963163598466,
+        "pairwise_r_vs_block": {
+          "v2excrptps": 0.018775505402934562,
+          "v2cltort": 0.12858312572781808,
+          "v2xel_frefair": 0.16373185922197975,
+          "v2x_clpol": 0.3022733370344718
+        },
+        "ols_coefficients_intercept_first": [
+          -0.9470290212954758,
+          0.08684390359550354,
+          -0.14218118435200752,
+          -0.17408546044923606,
+          1.7414382837113838
+        ],
+        "verdict": "PASS_ORTHOGONAL",
+        "threshold": 0.85,
+        "min_n": 30
+      },
+      "screen_verdict": "SCREEN_PASS"
+    },
+    "v2strenarm": {
+      "candidate_id": "v2strenarm",
+      "window": 25,
+      "n_pos_total": 207,
+      "n_pos_survive": 182,
+      "pos_coverage": 0.8792270531400966,
+      "n_neg_total": 621,
+      "n_neg_survive": 562,
+      "neg_coverage": 0.9049919484702094,
+      "n_countries_survive": 71,
+      "coverage_verdict": "PASS",
+      "is_vdem_candidate": true,
+      "d3": {
+        "candidate_id": "v2strenarm",
+        "block_ids": [
+          "v2excrptps",
+          "v2cltort",
+          "v2xel_frefair",
+          "v2x_clpol"
+        ],
+        "n_rows": 185,
+        "n_pos_total": 207,
+        "coverage_at_positive_cells": 0.893719806763285,
+        "r2": 0.10260012760482651,
+        "multiple_r": 0.32031254674899406,
+        "pairwise_r_vs_block": {
+          "v2excrptps": -0.09025013799815543,
+          "v2cltort": 0.10334701597352243,
+          "v2xel_frefair": 0.05763807860052525,
+          "v2x_clpol": 0.27565788753783577
+        },
+        "ols_coefficients_intercept_first": [
+          0.009834861602547774,
+          -0.006492797502946401,
+          -0.07675565898881379,
+          -0.5445698690688139,
+          1.4823426453811128
+        ],
+        "verdict": "PASS_ORTHOGONAL",
+        "threshold": 0.85,
+        "min_n": 30
+      },
+      "screen_verdict": "SCREEN_PASS"
+    },
+    "OWID_AUTOCRATIZATION": {
+      "candidate_id": "OWID_AUTOCRATIZATION",
+      "window": 25,
+      "n_pos_total": 207,
+      "n_pos_survive": 200,
+      "pos_coverage": 0.966183574879227,
+      "n_neg_total": 621,
+      "n_neg_survive": 599,
+      "neg_coverage": 0.964573268921095,
+      "n_countries_survive": 72,
+      "coverage_verdict": "PASS",
+      "is_vdem_candidate": true,
+      "d3": {
+        "candidate_id": "OWID_AUTOCRATIZATION",
+        "block_ids": [
+          "v2excrptps",
+          "v2cltort",
+          "v2xel_frefair",
+          "v2x_clpol"
+        ],
+        "n_rows": 202,
+        "n_pos_total": 207,
+        "coverage_at_positive_cells": 0.9758454106280193,
+        "r2": 0.09732683285926014,
+        "multiple_r": 0.31197248734345173,
+        "pairwise_r_vs_block": {
+          "v2excrptps": -0.04134296910440202,
+          "v2cltort": 0.17262886007636416,
+          "v2xel_frefair": 0.2767913246054006,
+          "v2x_clpol": 0.26347320020587345
+        },
+        "ols_coefficients_intercept_first": [
+          0.007766778329423134,
+          -0.030385861900253275,
+          -0.020102198074263278,
+          0.4057713722091415,
+          0.2650446525737185
+        ],
+        "verdict": "PASS_ORTHOGONAL",
+        "threshold": 0.85,
+        "min_n": 30
+      },
+      "screen_verdict": "SCREEN_PASS"
+    },
+    "NY.GDP.MKTP.KD.ZG": {
+      "candidate_id": "NY.GDP.MKTP.KD.ZG",
+      "window": 25,
+      "n_pos_total": 207,
+      "n_pos_survive": 121,
+      "pos_coverage": 0.5845410628019324,
+      "n_neg_total": 621,
+      "n_neg_survive": 380,
+      "neg_coverage": 0.6119162640901772,
+      "n_countries_survive": 71,
+      "coverage_verdict": "PASS",
+      "is_vdem_candidate": false,
+      "d3": null,
+      "screen_verdict": "SCREEN_PASS"
+    }
+  },
+  "survivors": [
+    "v2exl_legitlead",
+    "v2pepwrses",
+    "v2stcritapparm",
+    "v2strenarm",
+    "OWID_AUTOCRATIZATION",
+    "NY.GDP.MKTP.KD.ZG"
+  ],
+  "rejected": []
+}
