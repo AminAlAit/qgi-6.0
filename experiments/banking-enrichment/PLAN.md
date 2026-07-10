@@ -173,3 +173,33 @@ The full per-recipe deep-dive, captured 2026-07-10 for when we return to it:
 6. **Window-selection fragility.** run-2's AUC is an argmax over 9 windows with no nested/out-of-sample selection — bake nested window selection into both the honest baseline and candidate comparisons.
 7. **Acceptance discipline (carry from §6).** country-block ΔAUC CI-lower>0 vs 0.638 + mechanism-aligned per-country lift + locked temporal hold-out → then re-fit the whole recipe (`fit_shape_prototype`) for length/movement (the "bake").
 8. **2nd events batch (optional).** Current set = one representative crisis per country (breadth). Deep multi-year episodes (Argentina '80/'89/'01; Turkiye '94/'01) available as a follow-up batch if we want within-country temporal signal.
+
+## 11. PRE-REGISTRATION — EM-scoped external-fragility test (2026-07-10) 🔒
+
+Ratified by the 5-expert consensus panel (positions→reconcile→chair→purist GREEN + 3 hardening edits). **Fixed BEFORE any AUC is computed; no post-hoc relaxation.** This is banking's *last* indicator experiment this cycle.
+
+**Structure — "split the gate/eligibility, pool the fit" (NOT a hard split).** Test the external-fragility mechanism only where it applies + has data (EM), fairly, fraud-checked; if it survives, fold it into the ONE live recipe as a **regime-conditional interaction term** (value if EM-eligible, native-NaN for advanced rows, L2-shrunk) — never two separate models. Hard split is an evidence-gated last resort only.
+
+**EM-eligibility (ex-ante, leak-safe):** WB income-group / IMF-WEO advanced-economy classification at event year **t−1** (lagged so a country's own crisis or later graduation — e.g. South Korea, Poland, Chile — can't reclassify it). Spot-check graduation edge cases.
+
+**🔒 COMMITMENT (write before any AUC):** the resulting EM-eligible **n_pos** and the architecture it triggers under the codebase's binding rule (**n_pos<60 → LR / THIN_CAP=5; n_pos≥60 → XGBoost**) are recorded as a commitment, reported explicitly, and **binding** — no nudging a borderline country's eligibility to cross the 60-line after the fact.
+
+**The experiment (one pass, all reusing built machinery):**
+1. Recompute run-2's 3-driver baseline via LOCO **restricted to the EM-eligible subset**, window **LOCKED** to the pooled baseline's chosen window (no fresh argmax on the smaller sample). *This EM-only baseline — NOT 0.638 — is the only valid denominator.*
+2. Score **stdebt_reserves** + **m2_reserves** LOCO on that identical EM subset, EM-scoped 80% coverage gate (indicator-criteria.md trend-panel-floor exception).
+3. Same pass, secondary/non-gating track: re-test the already-built **credit_growth_3y_fd on the advanced-only subset** vs its own recomputed baseline.
+
+**ACCEPTANCE BAR — all 7 ANDed (D1–D7); the AND-gate is the primary defense:**
+1. **Coverage-matched baseline** — judged vs the EM-subset baseline, never pooled 0.638.
+2. **Missingness/coverage placebo** — a bare "has-IDS-data" dummy AND a values-scrambled (mask-preserved) permutation must each score near-null (~0.50–0.55); if either reproduces the lift → reject. *(new script, test-first)*
+3. **Income-proxy control** — must beat a bare GNI-per-capita fit (`NY.GNP.PCAP.CD`, already in panel), CI excluding zero, **within** the EM subsample. *(new script, test-first)*
+4. **Era/2008 decomposition** — survives `auc_with_without_cohort(exclude 2008)`; must NOT invert/collapse in the 1990s EM twin-crisis era (the GII fingerprint).
+5. **Per-country decomposition** — lift concentrated on named twin-crises (Mexico'94, Thai/Korea/Indonesia'97, Russia'98, Turkiye'01, Argentina'01, Brazil'94), not 2–3 lucky folds.
+6. **Country-block paired-bootstrap ΔAUC 95% CI-lower > 0** vs the coverage-matched baseline, BH-FDR across the ≤3 candidates. *(FDR is weak at k≤3 — a secondary safeguard, NOT the headline defense; the D1–D7 AND-gate is.)*
+7. **Locked leakage-safe temporal hold-out** replicates (downgraded to advisory if EM post-2005 positives < ~8).
+
+**If it clears all 7:** promote as the regime-conditional interaction term → re-score FULL 116/88 LOCO vs the true 0.638 → XGBoost-with-native-regime-flag sensitivity cross-check (disagreement in direction ⇒ unresolved, don't ship) → re-bake `fit_shape_prototype` (length + movement, per §0). Parallel cheap check: nested window selection on the pooled baseline (confirm 0.638 isn't itself argmax-optimistic).
+
+**If ANY gate fails (the modal expected outcome):** record ~0.638 (or its nested-corrected value) as banking's **honest ceiling for this cycle**, push the live-product correction (§10 #5), and redirect to event-depth (§10 #8) or the next trend. **No 4th/5th indicator search.**
+
+**Odds (un-anchored prior, lower-confidence than GII's — no EM-subset discovery number exists yet):** ~**30–50%** of clearing. Expected size if it clears: **modest, EM-concentrated +0.03–0.08** (high-0.6s/low-0.7s), not a return to the 0.771 mirage.
