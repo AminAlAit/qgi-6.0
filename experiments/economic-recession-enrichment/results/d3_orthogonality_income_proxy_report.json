@@ -1,0 +1,197 @@
+{
+  "run2_driver_block": [
+    "v2csreprss",
+    "v2x_freexp_altinf"
+  ],
+  "dev_proxy_id": "NY.GNP.PCAP.CD",
+  "ortho_threshold": 0.5,
+  "proxy_threshold": 0.5,
+  "candidates": {
+    "FD.AST.PRVT.GD.ZS": {
+      "candidate_id": "FD.AST.PRVT.GD.ZS",
+      "n_pos_total": 250,
+      "orthogonality_vs_run2": {
+        "block_ids": [
+          "v2csreprss",
+          "v2x_freexp_altinf"
+        ],
+        "n_rows": 203,
+        "coverage_at_positive_cells": 0.812,
+        "r2": 0.11257279581475677,
+        "multiple_r": 0.3355186966694356,
+        "pairwise_r_vs_block": {
+          "v2csreprss": 0.333619289677895,
+          "v2x_freexp_altinf": 0.3169592987449474
+        },
+        "threshold": 0.5
+      },
+      "income_proxy": {
+        "proxy_id": "NY.GNP.PCAP.CD",
+        "level": {
+          "n_rows": 197,
+          "r": 0.6056632623913861,
+          "coverage_at_positive_cells": 0.788
+        },
+        "yoy_first_diff": {
+          "n_rows": 194,
+          "r": 0.41162909738963627,
+          "coverage_at_positive_cells": 0.776
+        },
+        "threshold": 0.5
+      },
+      "min_n": 30,
+      "verdict": "REJECT_PROXY_CONFOUND"
+    },
+    "FD.AST.PRVT.GD.ZS__accel3": {
+      "candidate_id": "FD.AST.PRVT.GD.ZS__accel3",
+      "n_pos_total": 250,
+      "orthogonality_vs_run2": {
+        "block_ids": [
+          "v2csreprss",
+          "v2x_freexp_altinf"
+        ],
+        "n_rows": 191,
+        "coverage_at_positive_cells": 0.764,
+        "r2": 0.0017186814067648992,
+        "multiple_r": 0.04145698260564677,
+        "pairwise_r_vs_block": {
+          "v2csreprss": -0.033801063343518414,
+          "v2x_freexp_altinf": -0.019987410740799526
+        },
+        "threshold": 0.5
+      },
+      "income_proxy": {
+        "proxy_id": "NY.GNP.PCAP.CD",
+        "level": {
+          "n_rows": 188,
+          "r": -0.13467390155156386,
+          "coverage_at_positive_cells": 0.752
+        },
+        "yoy_first_diff": {
+          "n_rows": 180,
+          "r": 0.5829451889302217,
+          "coverage_at_positive_cells": 0.72
+        },
+        "threshold": 0.5
+      },
+      "min_n": 30,
+      "verdict": "REJECT_PROXY_CONFOUND"
+    },
+    "FM.LBL.BMNY.GD.ZS": {
+      "candidate_id": "FM.LBL.BMNY.GD.ZS",
+      "n_pos_total": 250,
+      "orthogonality_vs_run2": {
+        "block_ids": [
+          "v2csreprss",
+          "v2x_freexp_altinf"
+        ],
+        "n_rows": 185,
+        "coverage_at_positive_cells": 0.74,
+        "r2": 0.012095537739818418,
+        "multiple_r": 0.10997971512882918,
+        "pairwise_r_vs_block": {
+          "v2csreprss": 0.08918486606182197,
+          "v2x_freexp_altinf": 0.05125440861304591
+        },
+        "threshold": 0.5
+      },
+      "income_proxy": {
+        "proxy_id": "NY.GNP.PCAP.CD",
+        "level": {
+          "n_rows": 179,
+          "r": -0.016352330187257978,
+          "coverage_at_positive_cells": 0.716
+        },
+        "yoy_first_diff": {
+          "n_rows": 176,
+          "r": -0.013392207822484545,
+          "coverage_at_positive_cells": 0.704
+        },
+        "threshold": 0.5
+      },
+      "min_n": 30,
+      "verdict": "PASS_ORTHOGONAL"
+    },
+    "FM.LBL.BMNY.GD.ZS__decel3": {
+      "candidate_id": "FM.LBL.BMNY.GD.ZS__decel3",
+      "n_pos_total": 250,
+      "orthogonality_vs_run2": {
+        "block_ids": [
+          "v2csreprss",
+          "v2x_freexp_altinf"
+        ],
+        "n_rows": 176,
+        "coverage_at_positive_cells": 0.704,
+        "r2": 0.01103694245099296,
+        "multiple_r": 0.10505685342229207,
+        "pairwise_r_vs_block": {
+          "v2csreprss": 0.07888073313679149,
+          "v2x_freexp_altinf": 0.039394734889895186
+        },
+        "threshold": 0.5
+      },
+      "income_proxy": {
+        "proxy_id": "NY.GNP.PCAP.CD",
+        "level": {
+          "n_rows": 173,
+          "r": -0.03905166227967288,
+          "coverage_at_positive_cells": 0.692
+        },
+        "yoy_first_diff": {
+          "n_rows": 170,
+          "r": -0.08388132693749636,
+          "coverage_at_positive_cells": 0.68
+        },
+        "threshold": 0.5
+      },
+      "min_n": 30,
+      "verdict": "PASS_ORTHOGONAL"
+    },
+    "NE.GDI.TOTL.ZS": {
+      "candidate_id": "NE.GDI.TOTL.ZS",
+      "n_pos_total": 250,
+      "orthogonality_vs_run2": {
+        "block_ids": [
+          "v2csreprss",
+          "v2x_freexp_altinf"
+        ],
+        "n_rows": 190,
+        "coverage_at_positive_cells": 0.76,
+        "r2": 0.004987006543621275,
+        "multiple_r": 0.07061874073941898,
+        "pairwise_r_vs_block": {
+          "v2csreprss": -0.05178509199084981,
+          "v2x_freexp_altinf": -0.06745494157468908
+        },
+        "threshold": 0.5
+      },
+      "income_proxy": {
+        "proxy_id": "NY.GNP.PCAP.CD",
+        "level": {
+          "n_rows": 190,
+          "r": -0.05139967194992638,
+          "coverage_at_positive_cells": 0.76
+        },
+        "yoy_first_diff": {
+          "n_rows": 187,
+          "r": 0.25013742194766175,
+          "coverage_at_positive_cells": 0.748
+        },
+        "threshold": 0.5
+      },
+      "min_n": 30,
+      "verdict": "PASS_ORTHOGONAL"
+    }
+  },
+  "survivors": [
+    "FM.LBL.BMNY.GD.ZS",
+    "FM.LBL.BMNY.GD.ZS__decel3",
+    "NE.GDI.TOTL.ZS"
+  ],
+  "rejected_collinear_run2": [],
+  "rejected_proxy_confound": [
+    "FD.AST.PRVT.GD.ZS",
+    "FD.AST.PRVT.GD.ZS__accel3"
+  ],
+  "inconclusive": []
+}
